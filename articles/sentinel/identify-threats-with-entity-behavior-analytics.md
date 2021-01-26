@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900900"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784803"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifiera avancerade hot med användar-och enhets beteende analys (UEBA) i Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Funktionerna UEBA och enhets sidor är nu **allmänt tillgängliga** i följande geografiska områden och regioner i Azure Sentinel:
->    - USA geografi
->    - Västra Europa, region
->    - Australien, geografi
->
-> - I alla andra geografiska områden och regioner är dessa funktioner fortfarande för tid i för **hands versionen**. Se [**kompletterande användnings villkor för Microsoft Azure**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
+> - Funktionerna UEBA och enhets sidor är nu **allmänt tillgängliga** i **_alla_* _ Azure Sentinel-geografiska områden och regioner.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Vad är användar-och enhets beteende analys (UEBA)?
 
@@ -50,7 +45,7 @@ När Azure Sentinel samlar in loggar och aviseringar från alla anslutna data k�
 
 Azure Sentinel har inspirerats av Gartners paradigm för UEBA-lösningar och tillhandahåller en "yttre" metod, baserat på tre referens ramar:
 
-- **Användnings fall:** Genom att prioritera relevanta angrepps vektorer och scenarier baserade på säkerhets undersökningar som är justerade med MITRE till&vikt ramverk för taktiker, tekniker och undertekniker som placerar olika entiteter som offer, perpetrators eller Pivot Points i Kill-kedjan. Azure Sentinel fokuserar särskilt på de mest värdefulla loggar som varje data källa kan ge.
+- _ *Användnings fall:** genom att prioritera relevanta angrepps vektorer och scenarier baserade på säkerhets undersökningar som är justerade med MITRE till&vikt ramverk med taktiker, tekniker och undertekniker som placerar olika entiteter som offer, perpetrators eller Pivot Points i Kill-kedjan. Azure Sentinel fokuserar särskilt på de mest värdefulla loggar som varje data källa kan ge.
 
 - **Data Källor:** Medan Azure-datakällor först och främst har stöd för, väljer Azure Sentinel data källor från tredje part för att tillhandahålla data som matchar våra Hot scenarier.
 

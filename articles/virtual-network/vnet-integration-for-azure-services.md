@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2c0c4bec93b8fa61275c376fbae2a3a063e72a6f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218662"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785540"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrera Azure-tjänster med virtuella nätverk för nätverks isolering
 
@@ -76,6 +76,6 @@ Mer information om service märken och Azure-tjänster som stöder dem finns i [
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur [du integrerar din app med ett Azure-nätverk](../app-service/web-sites-integrate-with-vnet.md).
+- Lär dig hur du [integrerar din app med ett Azure-nätverk](../app-service/web-sites-integrate-with-vnet.md).
 - Lär dig hur du [begränsar åtkomsten till resurser med hjälp av service märken](tutorial-restrict-network-access-to-resources.md).
 - Lär dig hur du [ansluter privat till ett Azure Cosmos-konto med hjälp av en privat Azure-länk](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

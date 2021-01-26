@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a08756a1e3153aa69bd0e79dc23e88d4bf211e5d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950694"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785877"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Självstudie: Lägg till sid indelning i Sök resultat med hjälp av .NET SDK
 
@@ -35,7 +35,7 @@ Färdiga versioner av koden som du kommer att utveckla i den här självstudien 
 
 * [2b-Lägg till oändlig rullning (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2b-add-infinite-scroll)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * [1 – Basic-search-Page-projekt (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page) . Projektet kan antingen vara din egen version som skapats från den föregående själv studie kursen eller en kopia från GitHub.
 
@@ -304,7 +304,7 @@ Ha den grundläggande Sök sid lösningen öppen.
     }
     ```
 
-1. Metoden **RunQueryAsync** , som introducerades i föregående lektion, behöver ändras för att lösa syntaxfel. Vi använder fälten **hoppa över**, **storlek**och **IncludeTotalCount** i [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) -klassen för att begära endast en sida med resultat, med början vid **Skip** -inställningen. Vi måste också beräkna växlings variablerna för vår vy. Ersätt hela metoden med följande kod.
+1. Metoden **RunQueryAsync** , som introducerades i föregående lektion, behöver ändras för att lösa syntaxfel. Vi använder fälten **hoppa över**, **storlek** och **IncludeTotalCount** i [**SearchOptions**](/dotnet/api/azure.search.documents.searchoptions) -klassen för att begära endast en sida med resultat, med början vid **Skip** -inställningen. Vi måste också beräkna växlings variablerna för vår vy. Ersätt hela metoden med följande kod.
 
     ```csharp
     private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -439,9 +439,9 @@ Om du vill implementera oändlig rullning börjar vi med projektet innan något 
 
 ### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Lägg till en lodrät rullnings List i vyn
 
-1. Leta upp avsnittet i filen index. cshtml som visar resultatet (det börjar med ** @if (modell! = null)**).
+1. Leta upp avsnittet i filen index. cshtml som visar resultatet (det börjar med **@if (modell! = null)**).
 
-1. Ersätt avsnittet med koden nedan. Det nya ** &lt; div &gt; ** -avsnittet är runt området som ska kunna rullas och lägger till både ett **overflow-y-** attribut och ett anrop till en **onscroll** -funktion som kallas "rullnings Bart ()", som så.
+1. Ersätt avsnittet med koden nedan. Det nya **&lt; div &gt;** -avsnittet är runt området som ska kunna rullas och lägger till både ett **overflow-y-** attribut och ett anrop till en **onscroll** -funktion som kallas "rullnings Bart ()", som så.
 
     ```csharp
     @if (Model != null)
@@ -582,7 +582,7 @@ Det finns bara tre åtgärder som måste skickas till kontrollanten: den första
     }
     ```
 
-1. Om du får ett syntaxfel på **list &lt; strängen &gt; **lägger du till följande **med hjälp av** direktiv i enhets filens huvud.
+1. Om du får ett syntaxfel på **list &lt; strängen &gt;** lägger du till följande **med hjälp av** direktiv i enhets filens huvud.
 
     ```csharp
     using System.Collections.Generic;
@@ -597,7 +597,7 @@ Välj nu **starta utan fel sökning** (eller tryck på tangenten F5).
     ![Oändlig rullning genom "pool"-resultat](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > För att se till att en rullnings List visas på den första sidan måste den första sidan med resultat skilja sig från höjden på det utrymme som de visas i. I vårt exempel **. box1** har höjden 30 bild punkter, **. box2** har en höjd på 100 bild punkter _och_ en botten marginal på 24 bild punkter. Varje post använder alltså 154 bild punkter. Tre poster tar upp 3 x 154 = 462 bild punkter. För att säkerställa att en lodrät rullnings List visas måste en höjd till visnings utrymmet vara inställd på mindre än 462 bild punkter, även 461 fungerar. Det här problemet inträffar bara på den första sidan, efter att en rullnings List är säker på att den ska visas. Raden som ska uppdateras är: ** &lt; div ID = "myDiv" Style = "width: 800px; height: 450px; spill-y: Scroll;" onscroll = "rullad ()" &gt; **.
+    > För att se till att en rullnings List visas på den första sidan måste den första sidan med resultat skilja sig från höjden på det utrymme som de visas i. I vårt exempel **. box1** har höjden 30 bild punkter, **. box2** har en höjd på 100 bild punkter _och_ en botten marginal på 24 bild punkter. Varje post använder alltså 154 bild punkter. Tre poster tar upp 3 x 154 = 462 bild punkter. För att säkerställa att en lodrät rullnings List visas måste en höjd till visnings utrymmet vara inställd på mindre än 462 bild punkter, även 461 fungerar. Det här problemet inträffar bara på den första sidan, efter att en rullnings List är säker på att den ska visas. Raden som ska uppdateras är: **&lt; div ID = "myDiv" Style = "width: 800px; height: 450px; spill-y: Scroll;" onscroll = "rullad ()" &gt;**.
 
 1. Bläddra nedåt längst ned i resultaten. Observera hur all information finns nu på sidan med en vy. Du kan bläddra hela vägen överst utan att utlösa några Server anrop.
 

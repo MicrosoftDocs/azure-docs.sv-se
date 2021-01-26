@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903673"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784485"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Returnera din Azure Stack Edge Pro-enhet
 
@@ -41,7 +41,7 @@ Utför följande steg för att återställa enheten med det lokala webb gränssn
 1. I det lokala webb gränssnittet går du till **underhåll > enhets återställning**.
 2. Välj **Återställ enhet**.
 
-    ![Återställa enhet](media/azure-stack-edge-return-device/device-reset-1.png)
+    ![Återställ enhet](media/azure-stack-edge-return-device/device-reset-1.png)
 
 3. När du uppmanas att bekräfta kontrollerar du varningen och väljer **Ja** för att fortsätta.
 
@@ -59,7 +59,7 @@ Du kan också ansluta till PowerShell-gränssnittet på enheten och använda `Re
 
 Utför följande steg för att påbörja retur processen.
 
-1. Gå till din Azure Stack Edge Pro/Data Box Gateway-resurs i Azure Portal. I **översikten**går du till kommando fältet i den högra rutan och väljer **RETUR enhet**. 
+1. Gå till din Azure Stack Edge Pro/Data Box Gateway-resurs i Azure Portal. I **översikten** går du till kommando fältet i den högra rutan och väljer **RETUR enhet**. 
 
     ![Returnera enhet 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -101,7 +101,7 @@ Utför följande steg för att påbörja retur processen.
 Följ stegen nedan om du vill schemalägga en upphämtning.
 
 1. Stäng av enheten. I det lokala webb gränssnittet går du till **underhåll > energi inställningar**.
-2. Välj **Stäng av**. När du uppmanas att bekräfta klickar du på **Ja** för att fortsätta. Mer information finns i [hantera energi](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
+2. Välj **Stäng av**. När du uppmanas att bekräfta klickar du på **Ja** för att fortsätta. Mer information finns i [hantera energi](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
 3. Koppla bort ström kablar och ta bort alla nätverks kablar från enheten.
 4. Förbered försändelse paketet genom att använda din egen ruta eller den tomma box som du fick från Azure. Placera enheten och de ström sladdar som levererades med enheten i rutan.
 5. Fäst frakt sedeln som du fick från Azure på paketet.

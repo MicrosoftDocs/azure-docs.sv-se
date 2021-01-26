@@ -3,12 +3,12 @@ title: Skapa ett fristående Azure Service Fabric-kluster
 description: Skapa ett Azure Service Fabric-kluster på valfri dator (fysisk eller virtuell) som kör Windows Server, oavsett om det är lokalt eller i valfritt moln.
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843200"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785692"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Skapa ett fristående kluster som körs på Windows Server
 Du kan använda Azure Service Fabric för att skapa Service Fabric-kluster på alla virtuella datorer eller datorer som kör Windows Server. Det innebär att du kan distribuera och köra Service Fabric program i vilken miljö som helst som innehåller en uppsättning anslutna Windows Server-datorer, vara den lokalt eller med någon annan moln leverantör. Service Fabric innehåller ett installations paket för att skapa Service Fabric-kluster som kallas fristående Windows Server-paket. Traditionella Service Fabric kluster i Azure är tillgängliga som en hanterad tjänst, medan fristående Service Fabric kluster är självbetjäning. Mer information om skillnaderna finns i [jämföra Azure och fristående Service Fabric kluster](./service-fabric-deploy-anywhere.md).
@@ -116,7 +116,7 @@ Runtime-paketet kan laddas ned separat från en annan dator som är ansluten til
 *.\ClusterConfig.jspå* och *.\MicrosoftAzureServiceFabric.cab* är Sök vägarna till kluster konfigurationen och filen Runtime. cab.
 
 ### <a name="step-2-connect-to-the-cluster"></a>Steg 2: Anslut till klustret
-Anslut till klustret för att kontrol lera att klustret körs och är tillgängligt. ServiceFabric PowerShell-modulen installeras med runtime.  Du kan ansluta till klustret från en av klusternoderna eller från en fjärrdator med Service Fabric Runtime.  Cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) upprättar en anslutning till klustret.
+Anslut till klustret för att kontrol lera att klustret körs och är tillgängligt. ServiceFabric PowerShell-modulen installeras med runtime.  Du kan ansluta till klustret från en av klusternoderna eller från en fjärrdator med Service Fabric Runtime.  Cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) upprättar en anslutning till klustret.
 
 Kör följande PowerShell-kommando för att ansluta till ett oskyddat kluster:
 
@@ -124,12 +124,12 @@ Kör följande PowerShell-kommando för att ansluta till ett oskyddat kluster:
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Exempel:
+Ett exempel:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-Fler exempel på hur du ansluter till ett kluster finns i [Ansluta till ett säkert kluster](service-fabric-connect-to-secure-cluster.md). När du har anslutit till klustret använder du cmdleten [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) för att visa en lista över noder i klustret och statusinformation för varje nod. **HealthState** bör vara *OK* för varje nod.
+Fler exempel på hur du ansluter till ett kluster finns i [Ansluta till ett säkert kluster](service-fabric-connect-to-secure-cluster.md). När du har anslutit till klustret använder du cmdleten [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) för att visa en lista över noder i klustret och statusinformation för varje nod. **HealthState** bör vara *OK* för varje nod.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table

@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520757"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784820"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Skapa en strömmande kund insikts instrument panel med Azure Logic Apps och Azure Functions
 
@@ -54,7 +54,7 @@ Du kan använda [Azure Cognitive Services](https://azure.microsoft.com/services/
 
 4. Om du uppmanas att ange en giltig Cognitive Services nyckel för tjänsten Textanalys.
 
-5. Under **brödtext i begäran**väljer du textfältet **tweet** , som tillhandahåller tweet-texten som inmatade för analys.
+5. Under **brödtext i begäran** väljer du textfältet **tweet** , som tillhandahåller tweet-texten som inmatade för analys.
 
 När du har skaffat tweet-data och insikter om tweeten kan du nu använda flera andra relevanta anslutningar och deras åtgärder:
 
@@ -67,7 +67,7 @@ Du kan också skapa och en Azure-funktion så att du kan utföra anpassad bearbe
 
 ## <a name="process-data-with-azure-functions"></a>Bearbeta data med Azure Functions
 
-Innan du skapar en funktion skapar du en Function-app i din Azure-prenumeration. För att din Logi Kap par ska anropa en funktion måste funktionen dessutom ha en HTTP trigger-bindning, till exempel, använda **HttpTrigger** -mallen. Lär dig [hur du skapar din första Function-app och fungerar i Azure Portal](../azure-functions/functions-create-first-azure-function.md).
+Innan du skapar en funktion skapar du en Function-app i din Azure-prenumeration. För att din Logi Kap par ska anropa en funktion måste funktionen dessutom ha en HTTP trigger-bindning, till exempel, använda **HttpTrigger** -mallen. Lär dig [hur du skapar din första Function-app och fungerar i Azure Portal](../azure-functions/functions-get-started.md).
 
 I det här scenariot använder du Tweet-texten som begär ande text för din Azure-funktion. I funktions koden definierar du den logik som avgör om tweet-texten innehåller ett nyckelord eller en fras. Håll funktionen så enkel eller komplex som krävs för scenariot.
 I slutet av funktionen returnerar du ett svar till Logic-appen med vissa data, till exempel ett enkelt booleskt värde, till exempel `containsKeyword` eller ett komplext objekt.
@@ -83,7 +83,7 @@ När du är klar sparar du funktionen och lägger sedan till funktionen som en �
 
 2. Leta upp **Azure Functions** -anslutningen och välj sedan den funktion som du skapade.
 
-3. Under **brödtext i begäran**väljer du **Tweet-text**.
+3. Under **brödtext i begäran** väljer du **Tweet-text**.
 
 ![Konfigurerat Azure Function-steg][2]
 

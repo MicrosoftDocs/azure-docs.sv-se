@@ -124,8 +124,6 @@
       items:
         - name: Hantera registreringar – portal
           href: how-to-manage-enrollments.md
-        - name: 'Hantera registreringar – tjänst-SDK:er'
-          href: how-to-manage-enrollments-sdks.md
         - name: Konfigurera verifierade CA-certifikat
           href: how-to-verify-certificates.md
         - name: Löpande enhetscertifikat
@@ -150,10 +148,6 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Använda attesteringsmekanismer med SDK
-      href: use-hsm-with-sdk.md
-    - name: Använda SDK-verktyg för utveckling
-      href: how-to-use-sdk-tools.md
     - name: Så här skickar du ytterligare data från enheter
       href: how-to-send-additional-data.md
     - name: Felsökning

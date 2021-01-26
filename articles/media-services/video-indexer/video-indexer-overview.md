@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014543"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783809"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Vad är Azure Media Services Video Indexer?
 
@@ -115,6 +115,21 @@ Du kan komma åt Video Indexer-funktioner på tre sätt:
     Mer information finns i [bädda in visuella widgetar i ditt program](video-indexer-embed-widgets.md).
 
 Om du använder webbplatsen läggs insikterna till som metadata och visas i portalen. Om du använder API: er är insikterna tillgängliga som en JSON-fil.
+
+## <a name="supported-browsers"></a>Webbläsare som stöds
+
+I följande lista visas de webbläsare som stöds och som du kan använda för Video Indexer webbplats och för dina appar som bäddar in widgetarna. I listan visas även den lägsta webb läsar versionen som stöds:
+
+- Edge, version: 16
+- Firefox, version: 54
+- Chrome, version: 58
+- Safari, version: 11
+- Opera, version: 44
+- Opera Mobile, version: 59
+- Android-webbläsare, version: 81
+- Samsung-webbläsare, version: 7
+- Chrome för Android, version: 87
+- Firefox för Android, version: 83
 
 ## <a name="next-steps"></a>Nästa steg
 

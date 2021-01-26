@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000342"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784943"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Anropa eller utlös Logi Kap par genom att använda Azure Functions och Azure Service Bus
 
@@ -24,7 +24,7 @@ Du kan använda [Azure Functions](../azure-functions/functions-overview.md) för
 
 * Ett Azure Service Bus namn område. Om du inte har ett namn område måste du [först skapa ditt namn område](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* En Function-app, som är en behållare för dina funktioner. Om du inte har en Function-app, [skapar du först din Function-app](../azure-functions/functions-create-first-azure-function.md)och ser till att du väljer .net som körnings stack.
+* En Function-app, som är en behållare för dina funktioner. Om du inte har en Function-app, [skapar du först din Function-app](../azure-functions/functions-get-started.md)och ser till att du väljer .net som körnings stack.
 
 * Grundläggande information om [hur du skapar Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

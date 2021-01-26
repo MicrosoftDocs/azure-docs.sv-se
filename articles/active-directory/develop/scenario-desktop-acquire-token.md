@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753778"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785133"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Skriv bords app som anropar webb-API: er: Hämta en token
 
@@ -451,7 +451,7 @@ I MSAL.NET måste du använda:
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Du behöver normalt bara en parameter ( `scopes` ). Beroende på hur din Windows-administratör har konfigurerat principerna kanske programmen på din Windows-dator inte får söka efter den inloggade användaren. I så fall kan du använda en andra metod `.WithUsername()` och skicka in användar namnet för den inloggade användaren som ett UPN-format, till exempel `joe@contoso.com` . I .NET Core är det bara den överlagring som tar användar namnet tillgängligt eftersom .NET Core Platform inte kan be användar namnet till operativ systemet.
+Du behöver normalt bara en parameter ( `scopes` ). Beroende på hur din Windows-administratör har konfigurerat principerna kanske programmen på din Windows-dator inte får söka efter den inloggade användaren. I så fall kan du använda en andra metod `.WithUsername()` och skicka in användar namnet för den inloggade användaren som ett UPN-format, till exempel `joe@contoso.com` .
 
 Följande exempel visar det mest aktuella fallet med förklaringar av vilken typ av undantag du kan få och deras åtgärder.
 

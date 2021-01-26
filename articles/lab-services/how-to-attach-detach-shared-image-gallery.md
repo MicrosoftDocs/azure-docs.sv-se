@@ -3,18 +3,18 @@ title: Koppla eller koppla från ett delat avbildnings galleri i Azure Lab Servi
 description: I den här artikeln beskrivs hur du ansluter ett delat avbildnings galleri till ett klass rums labb i Azure Lab Services.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: ae0870139d2320fa079f6705956e124f61479882
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660108"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786409"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Koppla eller koppla från ett delat avbildnings galleri i Azure Lab Services
 Den här artikeln visar hur du kopplar eller kopplar från ett delat avbildnings galleri till ett labb konto. 
 
 > [!NOTE]
-> När du [sparar en mall bild av ett labb](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) i Azure Lab Services till ett delat bild galleri laddas bilden upp till galleriet som en specialiserad bild. [Specialiserade avbildningar](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) behåller datorspecifik information och användar profiler. Du kan fortfarande ladda upp en generaliserad avbildning direkt till galleriet utanför Azure Lab Services. 
+> När du [sparar en mall bild av ett labb](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) i Azure Lab Services till ett delat bild galleri laddas bilden upp till galleriet som en specialiserad bild. [Specialiserade avbildningar](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) behåller datorspecifik information och användar profiler. Du kan fortfarande ladda upp en generaliserad avbildning direkt till galleriet utanför Azure Lab Services. 
 >
 > En labb skapare kan skapa en mall för virtuella datorer baserat på både generaliserade och specialiserade avbildningar i Azure Lab Services. 
 
@@ -24,7 +24,7 @@ Här är några av de scenarier som stöds av den här funktionen:
 - En labb konto administratör bifogar ett delat avbildnings galleri till labb kontot och laddar upp en bild till galleriet för delad avbildning utanför kontexten för ett labb. Sedan kan Lab-skapare använda avbildningen från galleriet för delad avbildning för att skapa labb labb. 
 - Ett labb konto administratör bifogar ett delat avbildnings galleri till labb kontot. En labb skapare (instruktör) sparar den anpassade avbildningen av sitt labb labb i det delade avbildnings galleriet. Sedan kan andra labb skapare välja den här avbildningen från galleriet för delade avbildningar för att skapa en mall för sina labb. 
 
-    När en bild sparas i ett delat bild galleri, Azure Lab Services replikerar den sparade avbildningen till andra regioner som är tillgängliga i samma [geografi](https://azure.microsoft.com/global-infrastructure/geographies/). Det garanterar att avbildningen är tillgänglig för labb som skapats i andra regioner i samma geografi. Att spara bilder i ett delat avbildnings Galleri debiteras ytterligare en kostnad, vilket innefattar kostnad för alla replikerade avbildningar. Kostnaden är separat från Azure Lab Services användnings kostnad. Mer information om priser för delade avbildnings gallerier finns i avsnittet [Shared Image Gallery – fakturering](../virtual-machines/windows/shared-image-galleries.md#billing).
+    När en bild sparas i ett delat bild galleri, Azure Lab Services replikerar den sparade avbildningen till andra regioner som är tillgängliga i samma [geografi](https://azure.microsoft.com/global-infrastructure/geographies/). Det garanterar att avbildningen är tillgänglig för labb som skapats i andra regioner i samma geografi. Att spara bilder i ett delat avbildnings Galleri debiteras ytterligare en kostnad, vilket innefattar kostnad för alla replikerade avbildningar. Kostnaden är separat från Azure Lab Services användnings kostnad. Mer information om priser för delade avbildnings gallerier finns i avsnittet [Shared Image Gallery – fakturering](../virtual-machines/shared-image-galleries.md#billing).
 
 > [!IMPORTANT]
 > När du använder ett delat bild galleri Azure Lab Services stöder bara bilder med mindre än 128 GB OS-disk utrymme. Avbildningar med mer än 128 GB disk utrymme eller flera diskar visas inte i listan över avbildningar av virtuella datorer under labb skapandet.
@@ -89,4 +89,4 @@ Endast ett delat avbildnings Galleri kan kopplas till ett labb. Om du vill koppl
 ## <a name="next-steps"></a>Nästa steg
 Information om hur du sparar en labb avbildning i det delade avbildnings galleriet eller använder en avbildning från galleriet för delade avbildningar för att skapa en virtuell dator finns i [använda delade avbildnings galleriet](how-to-use-shared-image-gallery.md).
 
-Mer information om delade avbildnings gallerier i allmänhet finns i avsnittet [Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md).
+Mer information om delade avbildnings gallerier i allmänhet finns i avsnittet [Shared Image Gallery](../virtual-machines/shared-image-galleries.md).

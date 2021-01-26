@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745675"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784905"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Skapa och distribuera IoT Plug and Play-bryggan
 
@@ -212,7 +212,7 @@ För att slutföra det här avsnittet behöver du en kostnads fri Azure IoT-hubb
 
 Stegen i det här avsnittet förutsätter att du har följande utvecklings miljö på en Windows 10-dator. Med dessa verktyg kan du bygga och distribuera en IoT Edge-modul till din IoT Edge-enhet:
 
-- Windows-undersystem för Linux (WSL) 2 som kör Ubuntu 18,04 LTS. Mer information finns i [installations guide för Windows-undersystemet för Linux för Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
+- Windows-undersystem för Linux (WSL) 2 som kör Ubuntu 18,04 LTS. Mer information finns i [installations guide för Windows-undersystemet för Linux för Windows 10](/windows/wsl/install-win10).
 - Docker Desktop för Windows konfigurerat för att använda WSL 2. Mer information finns i [Docker Desktop Wsl 2 Server](https://docs.docker.com/docker-for-windows/wsl/)del.
 - [Visual Studio Code som är installerad i Windows-miljön](https://code.visualstudio.com/docs/setup/windows) med följande tre tillägg installerade:
 

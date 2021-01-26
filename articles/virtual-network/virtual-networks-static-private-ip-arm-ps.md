@@ -4,7 +4,6 @@ description: Lär dig hur du skapar en virtuell dator med en privat IP-adress me
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222606"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783792"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Skapa en virtuell dator med en statisk privat IP-adress med hjälp av PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Du kan skapa en virtuell dator (VM) med en statisk privat IP-adress. Tilldela en statisk privat IP-adress, i stället för en dynamisk adress, om du vill välja vilken adress från ett undernät som är tilldelad en virtuell dator. Läs mer om [statiska privata IP-adresser](./public-ip-addresses.md#allocation-method). Om du vill ändra en privat IP-adress som tilldelats till en befintlig virtuell dator från dynamisk till statisk, eller om du vill arbeta med offentliga IP-adresser, se [Lägg till, ändra eller ta bort IP-](virtual-network-network-interface-addresses.md)adresser.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>Skapa en virtuell dator
 

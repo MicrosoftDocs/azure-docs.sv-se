@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165067"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786477"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Utvecklarens startguide för Azure
 
@@ -84,7 +84,7 @@ I stället för att oroa dig för att skapa och hantera ett helt program eller i
 
 > **När du ska använda**: Använd Azure Functions när du har kod som utlöses av andra Azure-tjänster, via webbaserade händelser eller enligt ett schema. Du kan också använda funktioner när du inte behöver lägga till ett komplett värdbaserade projekt eller om du bara vill betala för den tid som koden körs. Läs mer i [Azure Functions översikt](../../azure-functions/functions-overview.md).
 >
-> **Kom igång**: Följ själv studie kursen om funktionen Functions för att [skapa din första funktion](../../azure-functions/functions-create-first-azure-function.md) från portalen.
+> **Kom igång**: Följ själv studie kursen om funktionen Functions för att [skapa din första funktion](../../azure-functions/functions-get-started.md) från portalen.
 >
 > **Prova nu**: Azure Functions gör att du kan köra din kod utan att behöva registrera dig för ett Azure-konto. Testa nu och [skapa din första Azure-funktion](https://tryappservice.azure.com/).
 

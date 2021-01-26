@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c1c30e4651136ada7264cad8ff4d3921c3aeeb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 894a90c50f968c892a76160a7375f11fe09390d6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547924"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785007"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Framtvinga en namngivnings princip på Microsoft 365 grupper i Azure Active Directory
 
@@ -72,6 +72,7 @@ Blockerade ord List regler:
 Om du vill konfigurera en namngivnings princip krävs en av följande roller:
 - Global administratör
 - Grupp administratör
+- Katalog skrivare
 
 
 De valda administratörerna kan undantas från dessa principer, i alla grupp arbets belastningar och slut punkter, så att de kan skapa grupper med hjälp av blockerade ord och med egna namngivnings konventioner. Följande är en lista över administratörs roller som är undantagna från grupp namngivnings principen.

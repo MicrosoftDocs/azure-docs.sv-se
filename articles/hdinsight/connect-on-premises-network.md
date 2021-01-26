@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005375"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786528"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Ansluta HDInsight till det lokala nätverket
 
@@ -42,7 +42,7 @@ I följande diagram är gröna rader begär Anden om resurser som slutar med DNS
 
 ![Diagram över hur DNS-begäranden löses i konfigurationen](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * En SSH-klient. Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * Om du använder PowerShell behöver du AZ- [modulen](/powershell/azure/).
@@ -52,7 +52,7 @@ I följande diagram är gröna rader begär Anden om resurser som slutar med DNS
 
 Använd följande dokument för att lära dig hur du skapar en Azure-Virtual Network som är ansluten till ditt lokala nätverk:
 
-* [Använda Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Använda Azure Portal](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Använda Azure PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Använda Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 

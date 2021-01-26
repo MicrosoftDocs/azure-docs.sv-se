@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eeb2fd94e6b98bc9d89be22501406db9a8ba7773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127d9906cfe1ba87241bd3810a9567e77bf0391
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013171"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785506"
 ---
 # <a name="view-service-fabric-health-reports"></a>Visa Service Fabric hälso rapporter
 Azure Service Fabric introducerar en [hälso modell](service-fabric-health-introduction.md) med hälsoentiteter där system komponenter och övervaknings enheter kan rapportera lokala villkor som de övervakar. [Hälso arkivet](service-fabric-health-introduction.md#health-store) sammanställer alla hälso data för att avgöra om entiteterna är felfria.
@@ -56,7 +56,7 @@ Vy över klustret med Service Fabric Explorer:
 >
 
 ## <a name="health-queries"></a>Hälso frågor
-Service Fabric exponerar hälso frågor för var och en av de [typer av enheter](service-fabric-health-introduction.md#health-entities-and-hierarchy)som stöds. De kan nås via API: et med metoder på [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), PowerShell-cmdletar och rest. Dessa frågor returnerar fullständig hälso information om entiteten: det sammanställda hälso tillståndet, hälso tillstånds händelser för enheter, underordnade hälso tillstånd (i förekommande fall), felaktiga utvärderingar (om enheten inte är felfri) och hälso statistik för barn (i förekommande fall).
+Service Fabric exponerar hälso frågor för var och en av de [typer av enheter](service-fabric-health-introduction.md#health-entities-and-hierarchy)som stöds. De kan nås via API: et med metoder på [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager), PowerShell-cmdletar och rest. Dessa frågor returnerar fullständig hälso information om entiteten: det sammanställda hälso tillståndet, hälso tillstånds händelser för enheter, underordnade hälso tillstånd (i förekommande fall), felaktiga utvärderingar (om enheten inte är felfri) och hälso statistik för barn (i förekommande fall).
 
 > [!NOTE]
 > En hälsoentitet returneras när den är fullständigt ifylld i hälso lagret. Entiteten måste vara aktiv (inte borttagen) och ha en system rapport. De överordnade entiteterna i hierarkin kedjan måste också ha system rapporter. Om något av dessa villkor inte är uppfyllt returnerar hälso frågorna en [FabricException](/dotnet/api/system.fabric.fabricexception) med [FabricErrorCode](/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` som visar varför entiteten inte returneras.
@@ -128,7 +128,7 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta kluster hälsan är [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta kluster hälsan är [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Klustrets tillstånd är fem noder, system programmet och Fabric:/WordCount som kon figurer ATS enligt beskrivningen.
 
@@ -257,7 +257,7 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta nodens hälsa är [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta nodens hälsa är [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 Följande cmdlet hämtar nodens hälsa genom att använda standard hälso principer:
 
 ```powershell
@@ -343,7 +343,7 @@ ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplic
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta program hälsan är [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta program hälsan är [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Följande cmdlet returnerar hälso tillståndet för **Fabric:/WORDCOUNT-** programmet:
 
@@ -473,7 +473,7 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta tjänstens hälsa är [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta tjänstens hälsa är [Get-ServiceFabricServiceHealth](/powershell/module/servicefabric/get-servicefabricservicehealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Följande cmdlet hämtar tjänst hälsan genom att använda standard hälso principer:
 
@@ -531,7 +531,7 @@ PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionH
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta partitionens hälso tillstånd är [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta partitionens hälso tillstånd är [Get-ServiceFabricPartitionHealth](/powershell/module/servicefabric/get-servicefabricpartitionhealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Följande cmdlet hämtar hälso tillståndet för alla partitioner i tjänsten **Fabric:/WORDCOUNT/WordCountService** och filtrerar bort replik hälso tillstånd:
 
@@ -622,7 +622,7 @@ ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta replik hälsan är [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta replik hälsan är [Get-ServiceFabricReplicaHealth](/powershell/module/servicefabric/get-servicefabricreplicahealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Följande cmdlet hämtar hälso tillståndet för den primära repliken för alla partitioner i tjänsten:
 
@@ -667,7 +667,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta det distribuerade programmets hälsa är [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Om du vill ta reda på var ett program distribueras kör du [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) och tittar på de distribuerade programmens underordnade.
+Cmdleten för att hämta det distribuerade programmets hälsa är [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) . Om du vill ta reda på var ett program distribueras kör du [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth) och tittar på de distribuerade programmens underordnade.
 
 Följande cmdlet hämtar hälso tillståndet för **Fabric:/WORDCOUNT-** programmet som distribueras på **_Node_2**.
 
@@ -725,7 +725,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta det distribuerade tjänst paketets hälso tillstånd är [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Om du vill se var ett program har distribuerats kör du [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) och tittar på de distribuerade programmen. Om du vill se vilka service packs som finns i ett program tittar du på de distribuerade tjänst paketets underordnade i [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) -utdata.
+Cmdleten för att hämta det distribuerade tjänst paketets hälso tillstånd är [Get-ServiceFabricDeployedServicePackageHealth](/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) . Om du vill se var ett program har distribuerats kör du [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth) och tittar på de distribuerade programmen. Om du vill se vilka service packs som finns i ett program tittar du på de distribuerade tjänst paketets underordnade i [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth) -utdata.
 
 Följande cmdlet hämtar hälso tillståndet för **WordCountServicePkg** -tjänst paketet för programmet **Fabric:/WORDCOUNT** som distribueras på **_Node_2**. Entiteten har **system. hosting** -rapporter för lyckad aktivering av service-paket och start punkt och lyckad registrering av tjänst typ.
 
@@ -858,7 +858,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-Cmdleten för att hämta kluster hälsan är [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Cmdleten för att hämta kluster hälsan är [Get-ServiceFabricClusterChunkHealth](/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Anslut först till klustret med hjälp av cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
 
 Följande kod hämtar bara noder om de är i fel syfte, förutom för en speciell nod, som alltid ska returneras.
 

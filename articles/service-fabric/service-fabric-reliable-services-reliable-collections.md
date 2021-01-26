@@ -3,12 +3,12 @@ title: Introduktion till pålitliga samlingar
 description: Service Fabric tillstånds känsliga tjänster tillhandahåller pålitliga samlingar som gör det möjligt att skriva moln program med hög tillgänglighet, skalbarhet och låg latens.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245134"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784384"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Introduktion till pålitliga samlingar i Azure Service Fabric tillstånds känsliga tjänster
 
@@ -40,9 +40,9 @@ API: erna för Reliable Collections är en utveckling av API: er för samtidiga 
 
 Idag innehåller **Microsoft. ServiceFabric. data. Collections** tre samlingar:
 
-* [Tillförlitlig ord lista](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): representerar en replikerad, transaktionell och asynkron samling nyckel/värde-par. Precis som med **ConcurrentDictionary**kan både nyckeln och värdet vara av vilken typ som helst.
-* [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): representerar en replikerad, transaktionell och asynkron, första, första, första, första (FIFO) kö. Precis som med **ConcurrentQueue**kan värdet vara av vilken typ som helst.
-* [Tillförlitlig kö för samtidig](service-fabric-reliable-services-reliable-concurrent-queue.md)användning: motsvarar en ordning för replikerad, transaktionell och asynkron ordning för bästa ansträngningar för stora data flöden. Precis som med **ConcurrentQueue**kan värdet vara av vilken typ som helst.
+* [Tillförlitlig ord lista](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2): representerar en replikerad, transaktionell och asynkron samling nyckel/värde-par. Precis som med **ConcurrentDictionary** kan både nyckeln och värdet vara av vilken typ som helst.
+* [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1): representerar en replikerad, transaktionell och asynkron, första, första, första, första (FIFO) kö. Precis som med **ConcurrentQueue** kan värdet vara av vilken typ som helst.
+* [Tillförlitlig kö för samtidig](service-fabric-reliable-services-reliable-concurrent-queue.md)användning: motsvarar en ordning för replikerad, transaktionell och asynkron ordning för bästa ansträngningar för stora data flöden. Precis som med **ConcurrentQueue** kan värdet vara av vilken typ som helst.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -50,11 +50,11 @@ Idag innehåller **Microsoft. ServiceFabric. data. Collections** tre samlingar:
 * [Arbeta med Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transaktioner och lås](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Hantera data
-  * [Säkerhets kopiering och återställning](service-fabric-reliable-services-backup-restore.md)
+  * [Säkerhetskopiera och återställ](service-fabric-reliable-services-backup-restore.md)
   * [Aviseringar](service-fabric-reliable-services-notifications.md)
   * [Reliable Collection-serialisering](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serialisering och uppgradering](service-fabric-application-upgrade-data-serialization.md)
   * [Tillförlitlig tillstånds hanterarens konfiguration](service-fabric-reliable-services-configuration.md)
 * Andra
   * [Reliable Services snabb start](service-fabric-reliable-services-quick-start.md)
-  * [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

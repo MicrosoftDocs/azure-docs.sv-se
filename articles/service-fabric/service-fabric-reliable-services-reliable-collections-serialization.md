@@ -4,12 +4,12 @@ description: Lär dig mer om Azure Service Fabric Reliable Collections-objekt se
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1d29f5d3391bdea0b21997a392d4d2e053b7ec65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018628"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784367"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Tillförlitlig serialisering av samlings objekt i Azure Service Fabric
 Reliable Collections replikerar och bevarar sina objekt för att se till att de är varaktiga över maskin haverier och strömavbrott.
@@ -20,7 +20,7 @@ Reliable State Manager innehåller inbyggda serialiserare och gör det möjligt 
 
 ## <a name="built-in-serializers"></a>Inbyggda serialiserare
 
-Reliable State Manager innehåller inbyggd serialisering för några vanliga typer, så att de kan serialiseras effektivt som standard. För andra typer är Reliable State Manager tillbaka för att använda [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1).
+Reliable State Manager innehåller inbyggd serialisering för några vanliga typer, så att de kan serialiseras effektivt som standard. För andra typer är Reliable State Manager tillbaka för att använda [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer).
 Inbyggda serialiserare är mer effektiva eftersom de vet att deras typer inte kan ändras och att de inte behöver inkludera information om typen, t. ex. typ namn.
 
 En tillförlitlig tillstånds hanterare har inbyggd serialisering för följande typer: 
@@ -140,7 +140,7 @@ På så sätt kan varje version läsa så mycket som möjligt och hoppa över de
 
 ## <a name="next-steps"></a>Nästa steg
   * [Serialisering och uppgradering](service-fabric-application-upgrade-data-serialization.md)
-  * [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * Genom [att uppgradera programmet med Visual Studio](service-fabric-application-upgrade-tutorial.md) går du igenom en program uppgradering med Visual Studio.
   * Genom [att uppgradera ditt program med hjälp av PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) får du en program uppgradering med PowerShell.
   * Styr hur programmet uppgraderas med hjälp av [uppgraderings parametrar](service-fabric-application-upgrade-parameters.md).

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705276"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786047"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Om Azure Key Vault hemligheter
 
@@ -84,7 +84,7 @@ Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault st
 
 ## <a name="azure-storage-account-key-management"></a>Azure Storage konto nyckel hantering
 
-Key Vault kan hantera [Azure Storage-konto](https://docs.microsoft.com/azure/storage/common/storage-account-overview) nycklar:
+Key Vault kan hantera [Azure Storage-konto](../../storage/common/storage-account-overview.md) nycklar:
 
 - Internt Key Vault kan ange (Sync) nycklar med ett Azure Storage-konto. 
 - Key Vault återskapas (roterar) nycklarna med jämna mellanrum.
@@ -92,7 +92,7 @@ Key Vault kan hantera [Azure Storage-konto](https://docs.microsoft.com/azure/sto
 - Key Vault hanterar nycklar för både lagrings konton och klassiska lagrings konton.
 
 Mer information finns i:
-- [Lagringskontots åtkomstnycklar](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Lagringskontots åtkomstnycklar](../../storage/common/storage-account-keys-manage.md)
 - [Hantering av lagrings konto nycklar i Azure Key Vault](../secrets/overview-storage-keys.md))
 
 
@@ -133,5 +133,5 @@ Instruktions guider för att kontrol lera åtkomst i Key Vault:
 - [Om nycklar, hemligheter och certifikat](../general/about-keys-secrets-certificates.md)
 - [Om nycklar](../keys/about-keys.md)
 - [Om certifikat](../certificates/about-certificates.md)
-- [Säker åtkomst till ett nyckel valv](../general/secure-your-key-vault.md)
+- [Säker åtkomst till ett nyckelvalv](../general/secure-your-key-vault.md)
 - [Utvecklarguide för Key Vault](../general/developers-guide.md)

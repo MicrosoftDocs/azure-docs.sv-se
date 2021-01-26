@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503173"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785828"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor loggar för Azure Standard Load Balancer
 
@@ -74,7 +74,7 @@ Aktivitetsloggning är automatiskt aktiverad för alla Resource Manager-resurser
 
 ## <a name="view-and-analyze-the-activity-log"></a>Visa och analysera aktivitetsloggar
 
-Aktivitets loggen skapas som standard. Du kan konfigurera den så att den exporteras på en prenumerations nivå genom att [följa anvisningarna i den här artikeln](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log). Läs mer om dessa loggar genom att läsa artikeln [Visa aktivitets loggar för att övervaka åtgärder i resurser](../azure-resource-manager/management/view-activity-logs.md) .
+Aktivitets loggen skapas som standard. Du kan konfigurera den så att den exporteras på en prenumerations nivå genom att [följa anvisningarna i den här artikeln](../azure-monitor/platform/activity-log.md). Läs mer om dessa loggar genom att läsa artikeln [Visa aktivitets loggar för att övervaka åtgärder i resurser](../azure-resource-manager/management/view-activity-logs.md) .
 
 Du kan visa och analysera aktivitets logg data med någon av följande metoder:
 
@@ -112,5 +112,5 @@ Export funktionen mått till-loggar för Azure Load Balancer har följande begr�
 * Mått för använda SNAT-portar och allokerade SNAT-portar är för närvarande inte tillgängliga för export som loggar.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Granska tillgängliga mått för belastningsutjämnaren](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
-* [Skapa och testa frågor genom att följa Azure Monitor-instruktioner](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* [Granska tillgängliga mått för belastningsutjämnaren](./load-balancer-standard-diagnostics.md)
+* [Skapa och testa frågor genom att följa Azure Monitor-instruktioner](../azure-monitor/log-query/log-query-overview.md)

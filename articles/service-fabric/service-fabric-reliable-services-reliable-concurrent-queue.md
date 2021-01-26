@@ -3,15 +3,15 @@ title: ReliableConcurrentQueue i Azure Service Fabric
 description: ReliableConcurrentQueue är en kö med hög data flöde som tillåter parallella köer och köer.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d6852982621d3efd3f4a8597a2959fceb13abd12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997128"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784299"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Introduktion till ReliableConcurrentQueue i Azure Service Fabric
-Reliable samtidig kö är en asynkron, transaktionell och replikerad kö som innehåller hög samtidighet för att köa och ta bort åtgärder. Den är utformad för att leverera högt data flöde och låg latens genom att slappa den strikta FIFO-ordningen som tillhandahålls av en [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) och i stället tillhandahålla en ordning för bästa ansträngningar.
+Reliable samtidig kö är en asynkron, transaktionell och replikerad kö som innehåller hög samtidighet för att köa och ta bort åtgärder. Den är utformad för att leverera högt data flöde och låg latens genom att slappa den strikta FIFO-ordningen som tillhandahålls av en [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) och i stället tillhandahålla en ordning för bästa ansträngningar.
 
 ## <a name="apis"></a>API:er
 
@@ -21,11 +21,11 @@ Reliable samtidig kö är en asynkron, transaktionell och replikerad kö som inn
 | bool-TryDequeue (ut T-resultat)  | Uppgift< ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
 | int-antal ()                    | långt antal ()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>Jämförelse med [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)
+## <a name="comparison-with-reliable-queue"></a>Jämförelse med [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)
 
-Tillförlitlig samtidiga köer erbjuds som ett alternativ till [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1). Den bör användas i de fall där det inte krävs någon strikt FIFO-beställning, eftersom det krävs en kompromiss med samtidigheten för att garantera FIFO.  I [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) används lås för att genomdriva FIFO-ordning, med högst en transaktion som tillåts att köa och högst en transaktion som tillåts att ta ur kö i taget. I jämförelsen sänker Reliable-kön ordnings begränsningen och tillåter att alla samtidiga transaktioner översätts till sina åtgärder i kön och ur kö. Sortering efter bästa ansträngningar tillhandahålls, men den relativa ordningen av två värden i en tillförlitlig, tillförlitlig kö kan aldrig garanteras.
+Tillförlitlig samtidiga köer erbjuds som ett alternativ till [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1). Den bör användas i de fall där det inte krävs någon strikt FIFO-beställning, eftersom det krävs en kompromiss med samtidigheten för att garantera FIFO.  I [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) används lås för att genomdriva FIFO-ordning, med högst en transaktion som tillåts att köa och högst en transaktion som tillåts att ta ur kö i taget. I jämförelsen sänker Reliable-kön ordnings begränsningen och tillåter att alla samtidiga transaktioner översätts till sina åtgärder i kön och ur kö. Sortering efter bästa ansträngningar tillhandahålls, men den relativa ordningen av två värden i en tillförlitlig, tillförlitlig kö kan aldrig garanteras.
 
-En tillförlitlig gemensam kö ger högre genomflöde och lägre latens än en [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) när det finns flera samtidiga transaktioner som utför köer och/eller-köer.
+En tillförlitlig gemensam kö ger högre genomflöde och lägre latens än en [tillförlitlig kö](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) när det finns flera samtidiga transaktioner som utför köer och/eller-köer.
 
 Ett exempel på användnings fall för ReliableConcurrentQueue är [meddelande köns](https://en.wikipedia.org/wiki/Message_queue) scenario. I det här scenariot skapar en eller flera meddelande producenter och lägger till objekt i kön och ett eller flera meddelande konsumenter hämtar meddelanden från kön och bearbetar dem. Flera producenter och konsumenter kan arbeta oberoende av varandra, med samtidiga transaktioner för att bearbeta kön.
 
@@ -340,4 +340,4 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Tillförlitlig tillstånds hanterarens konfiguration](service-fabric-reliable-services-configuration.md)
 * [Komma igång med Service Fabric webb-API-tjänster](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Avancerad användning av Reliable Services programmerings modell](./service-fabric-reliable-services-lifecycle.md)
-* [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

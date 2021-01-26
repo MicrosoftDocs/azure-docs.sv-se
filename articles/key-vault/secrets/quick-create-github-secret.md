@@ -8,12 +8,12 @@ ms.date: 11/24/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9509f84b14a42180189a529282b5db348deab279
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1e8062210de1d7d99f57a4e0b155492f7dfdd9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920288"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785984"
 ---
 # <a name="use-key-vault-secrets-in-github-actions-workflows"></a>Använda Key Vault hemligheter i arbets flöden för GitHub-åtgärder
 
@@ -22,10 +22,10 @@ Använd Key Vault hemligheter i dina [GitHub-åtgärder](https://help.github.com
 Med Key Vault-och GitHub-åtgärder har du fördelarna med ett centraliserat hanterings verktyg för hemligheter och alla fördelar med GitHub-åtgärder. GitHub-åtgärder är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling. Du kan distribuera arbets flöden på samma plats där du lagrar kod och samar beta om pull-begäranden och-problem. 
 
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav 
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- En Azure App ansluten till en GitHub-lagringsplats. I det här exemplet används [distributions behållare för att Azure App Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01). 
+- En Azure App ansluten till en GitHub-lagringsplats. I det här exemplet används [distributions behållare för att Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01). 
 - Ett Azure Key Vault.  Du kan skapa en Azure Key Vault med hjälp av Azure Portal, Azure CLI eller Azure PowerShell.
 
 ## <a name="workflow-file-overview"></a>Översikt över arbets flödes fil
@@ -34,7 +34,7 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 Filen har autentisering med GitHub-åtgärder två avsnitt:
 
-|Section  |Uppgifter  |
+|Avsnitt  |Aktiviteter  |
 |---------|---------|
 |**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. <br /> 3. Lägg till en roll tilldelning. |
 |**Key Vault** | 1. Lägg till nyckel valvs åtgärden. <br /> 2. referens Key Vault Secret. |

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786647"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Vad är Azure Data Box Gateway?
 
@@ -89,7 +89,7 @@ Data Box Gateway-lösningen består av Data Box Gateway-resurs, virtuell Data Bo
 
 Data Box Gateway fysisk enhet, Azure-resurs och mål lagrings konto som du överför data till, behöver inte alla finnas i samma region.
 
-- **Resurs tillgänglighet** – en lista över alla regioner där Azure Data Box gateways resursen är tillgänglig finns i [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway kan också distribueras i Azure Government molnet. Mer information finns i [Vad är Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Resurs tillgänglighet** – en lista över alla regioner där Azure Data Box gateways resursen är tillgänglig finns i [Azure-produkter tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway kan också distribueras i Azure Government molnet. Mer information finns i [Vad är Azure Government?](../azure-government/documentation-government-welcome.md).
 
 - **Destinationslagringskonton** – de lagringskonton som lagrar data som är tillgängliga i alla Azure-regioner.
 
@@ -101,4 +101,3 @@ Data Box Gateway fysisk enhet, Azure-resurs och mål lagrings konto som du över
 - Se [systemkraven för Data Box Gateway](data-box-gateway-system-requirements.md).
 - Förstå [begränsningarna för Data Box Gateway](data-box-gateway-limits.md).
 - Distribuera [Azure Data Box Gateway](data-box-gateway-deploy-prep.md) i Azure-portalen.
-

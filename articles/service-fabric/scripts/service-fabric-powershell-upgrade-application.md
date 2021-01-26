@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 1b04a0c4d2865cf72d9fbccb51f0f083872ea799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b55dc6a400f936ac23b233e4c84a6b1aebf45cb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87037890"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784704"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Uppgradera ett Service Fabric-program
 
@@ -35,20 +35,20 @@ Installera, om så behövs, Service Fabric PowerShell-modulen installeras med [S
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
-| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) | Hämtar alla program i Service Fabric-klustret eller ett särskilt program.  |
-| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) | Hämtar status för en Service Fabric program uppgradering. |
-| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) | Hämtar de Service Fabric program typer som är registrerade i Service Fabric klustret. |
-| [Avregistrera-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | Avregistrerar en Service Fabric program typ.  |
-| [Kopiera – ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopierar ett Service Fabric-programpaket till avbildnings arkivet.  |
-| [Registrera – ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) | Registrerar en Service Fabric program typ. |
-| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) | Uppgraderar ett Service Fabric program till den angivna program typ versionen. |
-| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Tar bort ett Service Fabric-programpaket från avbildnings arkivet.|
+| [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) | Hämtar alla program i Service Fabric-klustret eller ett särskilt program.  |
+| [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) | Hämtar status för en Service Fabric program uppgradering. |
+| [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype) | Hämtar de Service Fabric program typer som är registrerade i Service Fabric klustret. |
+| [Avregistrera-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | Avregistrerar en Service Fabric program typ.  |
+| [Kopiera – ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) | Kopierar ett Service Fabric-programpaket till avbildnings arkivet.  |
+| [Registrera – ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) | Registrerar en Service Fabric program typ. |
+| [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) | Uppgraderar ett Service Fabric program till den angivna program typ versionen. |
+| [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage) | Tar bort ett Service Fabric-programpaket från avbildnings arkivet.|
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Service Fabric PowerShell-modulen finns i [Azure PowerShell dokumentation](/powershell/azure/service-fabric/overview?view=azureservicefabricps).
+Mer information om Service Fabric PowerShell-modulen finns i [Azure PowerShell dokumentation](/powershell/azure/service-fabric/overview).
 
 Ytterligare Powershell-exempel för Azure Service Fabric finns i [Azure PowerShell-exemplen](../service-fabric-powershell-samples.md).

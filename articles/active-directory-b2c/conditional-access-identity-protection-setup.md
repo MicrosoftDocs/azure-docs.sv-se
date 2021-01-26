@@ -1,5 +1,5 @@
 ---
-title: Konfigurera identitets skydd och villkorlig åtkomst i Azure AD B2C
+title: Konfigurera identitetsskydd och villkorsstyrd åtkomst i Azure AD B2C
 description: Lär dig hur du konfigurerar identitets skydd och villkorlig åtkomst för dig Azure AD B2C klient organisationen för att Visa riskfyllda inloggningar och andra risk händelser och skapa principer baserat på risk identifieringar.
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949776"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785489"
 ---
-# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Konfigurera identitets skydd och villkorlig åtkomst i Azure AD B2C
+# <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Konfigurera identitetsskydd och villkorsstyrd åtkomst i Azure AD B2C
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -94,9 +94,7 @@ Om du vill lägga till en princip för villkorlig åtkomst baserat på identifie
 
 1. Under **säkerhet** väljer du **villkorlig åtkomst (för hands version)**. Sidan **principer för villkorlig åtkomst** öppnas. 
 
-1. Välj **ny princip** och följ dokumentationen för villkorlig åtkomst för Azure AD för att skapa en ny princip. Följande är ett exempel:
-
-   - [Inloggnings risk baserad villkorlig åtkomst: Aktivera med princip för villkorlig åtkomst](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. Välj **ny princip** och följ dokumentationen för villkorlig åtkomst för Azure AD för att skapa en ny princip. För riskfyllda principer måste du konfigurera separata principer baserat på [användar risk](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy) eller [inloggnings risker](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy) beroende på vilken typ av risk du vill använda som ett villkor. Vi rekommenderar inte att du använder båda risk typerna i en enda princip.
 
    > [!IMPORTANT]
    > När du väljer de användare som du vill tillämpa principen på, ska du inte välja enbart **alla användare** eller så kan du förhindra att du loggar in.

@@ -4,12 +4,12 @@ description: 'Använd FabricClient-API: er för att distribuera och ta bort prog
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009309"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785557"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Distribuera och ta bort program med FabricClient
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="upload-the-application-package"></a>Ladda upp programpaketet
 Anta att du skapar och paketerar ett program med namnet mina *program* i Visual Studio. Som standard är program typs namnet som anges i ApplicationManifest.xml "MyApplicationType".  Programpaketet som innehåller det nödvändiga applikations manifestet, tjänst manifesten och kod/config/data paket finns i *C:\Users \& lt; username &gt; \Documents\Visual Studio 2019 \ Projects\MyApplication\MyApplication\pkg\Debug*.
 
-När du överför programpaketet placeras det på en plats som är tillgänglig för de interna Service Fabric-komponenterna. Service Fabric verifierar programpaketet under registreringen av programpaketet. Men om du vill verifiera programpaketet lokalt (dvs innan du laddar upp) använder du cmdleten [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
+När du överför programpaketet placeras det på en plats som är tillgänglig för de interna Service Fabric-komponenterna. Service Fabric verifierar programpaketet under registreringen av programpaketet. Men om du vill verifiera programpaketet lokalt (dvs innan du laddar upp) använder du cmdleten [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) .
 
 [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage) API överför programpaketet till klustrets avbildnings arkiv. 
 
@@ -92,7 +92,7 @@ När en viss version av en program typ inte längre behövs bör du avregistrera
 
 ## <a name="troubleshooting"></a>Felsökning
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage ber om en ImageStoreConnectionString
-Den Service Fabric SDK-miljön bör redan ha rätt standardinställningar. Men om det behövs ska ImageStoreConnectionString för alla kommandon matcha det värde som Service Fabric-klustret använder. Du hittar ImageStoreConnectionString i kluster manifestet som hämtats med hjälp av kommandona [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) och Get-ImageStoreConnectionStringFromClusterManifest:
+Den Service Fabric SDK-miljön bör redan ha rätt standardinställningar. Men om det behövs ska ImageStoreConnectionString för alla kommandon matcha det värde som Service Fabric-klustret använder. Du hittar ImageStoreConnectionString i kluster manifestet som hämtats med hjälp av kommandona [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) och Get-ImageStoreConnectionStringFromClusterManifest:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)

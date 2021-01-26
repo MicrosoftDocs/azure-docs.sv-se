@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7423f8d8f2a566801048457ad5f5c44f3c1097ec
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920052"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784316"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schema referens guide för utlösare och åtgärds typer i Azure Logic Apps
 
@@ -340,8 +340,8 @@ För att fungera bra med din Logi Kap par måste slut punkten följa ett särski
 | Egenskap | Krävs | Beskrivning |
 |----------|----------|-------------|
 | Statuskod | Ja | Status koden "200 OK" startar en körning. All annan status kod startar inte en körning. |
-| Nytt försök-efter-rubrik | Inga | Antalet sekunder tills din Logic-app avsöker slut punkten igen |
-| Plats rubrik | Inga | Den URL som ska anropas vid nästa avsöknings intervall. Om inget anges används den ursprungliga URL: en. |
+| Nytt försök-efter-rubrik | Nej | Antalet sekunder tills din Logic-app avsöker slut punkten igen |
+| Plats rubrik | Nej | Den URL som ska anropas vid nästa avsöknings intervall. Om inget anges används den ursprungliga URL: en. |
 |||| 
 
 *Exempel beteenden för olika begär Anden*
@@ -805,7 +805,7 @@ Här följer några vanliga åtgärds typer:
 
   * [**Funktion**](#function-action) för att anropa Azure Functions
 
-  * Data åtgärds åtgärder som [**Join**](#join-action)att ansluta [**, skapa,**](#compose-action) [**tabell**](#table-action), [**välja**](#select-action)och andra som skapar eller transformerar data från olika indata
+  * Data åtgärds åtgärder som [](#join-action)att ansluta [**, skapa,**](#compose-action) [**tabell**](#table-action), [**välja**](#select-action)och andra som skapar eller transformerar data från olika indata
 
   * [**Arbets flöde**](#workflow-action) för att anropa ett annat Logic app-arbetsflöde
 
@@ -821,16 +821,16 @@ Här följer några vanliga åtgärds typer:
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Skapar ett enstaka utdata från indata, vilket kan ha olika typer. | 
 | [**Kör JavaScript-kod**](#run-javascript-code) | Kör kods tycken med JavaScript-kod som passar inom vissa villkor. Kod krav och mer information finns i [lägga till och köra kodfragment med infogad kod](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**Funktion**](#function-action) | Anropar en Azure-funktion. | 
+| [**Funktioner**](#function-action) | Anropar en Azure-funktion. | 
 | [**HTTP**](#http-action) | Anropar en HTTP-slutpunkt. | 
 | [**Ansluta**](#join-action) | Skapar en sträng från alla objekt i en matris och avgränsar objekten med ett angivet avgränsnings tecken. | 
 | [**Parsa JSON**](#parse-json-action) | Skapar användarvänliga tokens från egenskaper i JSON-innehåll. Du kan sedan referera till dessa egenskaper genom att inkludera tokens i din Logic app. | 
 | [**Söka i data**](#query-action) | Skapar en matris från objekt i en annan matris baserat på ett villkor eller filter. | 
 | [**Svarsåtgärder**](#response-action) | Skapar ett svar på ett inkommande samtal eller en begäran. | 
 | [**Välj**](#select-action) | Skapar en matris med JSON-objekt genom att transformera objekt från en annan matris baserat på den angivna kartan. | 
-| [**Tabeller**](#table-action) | Skapar en CSV-eller HTML-tabell från en matris. | 
+| [**Tabell**](#table-action) | Skapar en CSV-eller HTML-tabell från en matris. | 
 | [**Terminate**](#terminate-action) | Stoppar ett aktivt arbets flöde som körs. | 
-| [**Vänta**](#wait-action) | Pausar arbets flödet under en angiven varaktighet eller till angivet datum och tid. | 
+| [**Wait**](#wait-action) | Pausar arbets flödet under en angiven varaktighet eller till angivet datum och tid. | 
 | [**Arbetsflöde**](#workflow-action) | Kapslar in ett arbets flöde i ett annat arbets flöde. | 
 ||| 
 
@@ -1126,7 +1126,7 @@ Koden extraherar e-postadresserna från utlösarens `Body` egenskap och returner
 
 ### <a name="function-action"></a>Funktions åtgärd
 
-Den här åtgärden anropar en [Azure-funktion](../azure-functions/functions-create-first-azure-function.md)som skapats tidigare.
+Den här åtgärden anropar en [Azure-funktion](../azure-functions/functions-get-started.md)som skapats tidigare.
 
 ```json
 "<Azure-function-name>": {

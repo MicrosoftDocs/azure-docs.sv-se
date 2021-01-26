@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6912124ce8d1741731d625dccfea445417b2488d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148822"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785024"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Ansluta MXChip IoT DevKit till Azure IoT Remote Monitor Solution Accelerator
 
@@ -66,7 +66,7 @@ En aktiv Azure-prenumeration. Om du inte har någon kan du registrera dig via n�
   
    ![Skapa enhet med ID](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
-8. Anteckna **IoT Hub värdnamn**och klicka på **Slutför**.
+8. Anteckna **IoT Hub värdnamn** och klicka på **Slutför**.
 
 ## <a name="open-the-remotemonitoring-sample"></a>Öppna exemplet RemoteMonitoring
 
@@ -79,10 +79,10 @@ En aktiv Azure-prenumeration. Om du inte har någon kan du registrera dig via n�
    * Introduktions sidan för DevKit.
    * Arduino-exempel: praktiska exempel för att komma igång med DevKit.
 
-4. Expandera exempel avsnittet för vänster **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > AzureIoT**och välj **RemoteMonitoring**. Den öppnar ett nytt VS Code-fönster med en projektmapp i det.
+4. Expandera exempel avsnittet för vänster **ARDUINO** , bläddra till **exempel för MXCHIP AZ3166 > AzureIoT** och välj **RemoteMonitoring**. Den öppnar ett nytt VS Code-fönster med en projektmapp i det.
 
    > [!NOTE]
-   > Om du råkar stänga fönstret kan du öppna det igen. Använd `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino**och leta upp och välj **Arduino: exempel**.
+   > Om du råkar stänga fönstret kan du öppna det igen. Använd `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) för att öppna kommando-paletten, Skriv **Arduino** och leta upp och välj **Arduino: exempel**.
 
 ## <a name="provision-required-azure-services"></a>Tillhandahåll nödvändiga Azure-tjänster
 
@@ -120,7 +120,7 @@ När exempel appen körs skickar DevKit sensor data via WiFi till din Azure IoT-
 
 ## <a name="change-device-id"></a>Ändra enhets-ID
 
-Om du vill ändra hårdkodad- **AZ3166** till ett anpassat enhets-ID i koden ändrar du den kodrad som visas i exemplet för [fjärrövervakning](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md).
+Om du vill ändra hårdkodad- **AZ3166** till ett anpassat enhets-ID i koden ändrar du den kodrad som visas i exemplet för [fjärrövervakning](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2).
 
 ## <a name="problems-and-feedback"></a>Problem och feedback
 

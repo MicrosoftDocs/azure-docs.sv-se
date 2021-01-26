@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752234"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784956"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -39,6 +39,7 @@ Uppdateringar i januari inkluderar:
 - [Sårbarhets bedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
 - [Säkra Poäng för hanterings grupper finns nu i förhands granskning](#secure-score-for-management-groups-is-now-available-in-preview)
 - [Secure score-API har släppts för allmän tillgänglighet (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [Dangling DNS-skydd som har lagts till i Azure Defender för App Service](#dangling-dns-protections-added-to-azure-defender-for-app-service)
 - [Flera moln anslutningar släpps för allmän tillgänglighet (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
 - [Undanta hela rekommendationer från dina säkra Poäng för prenumerationer och hanterings grupper](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
 - [Användarna kan nu begära en synlighet för hela organisationen från sin globala administratör](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
@@ -107,13 +108,28 @@ Exempel på externa verktyg som möjliggörs med Secure score-API: et finns i av
 Läs mer om [säkra poäng-och säkerhets kontroller i Azure Security Center](secure-score-security-controls.md).
 
 
+### <a name="dangling-dns-protections-added-to-azure-defender-for-app-service"></a>Dangling DNS-skydd som har lagts till i Azure Defender för App Service
+
+Under domänens övertag Ande är ett vanligt hot mot hög allvarlighets grad för organisationer. En under domän överköps kan uppstå när du har en DNS-post som pekar på en avetablerad webbplats. Sådana DNS-poster kallas även "Dangling DNS"-poster. CNAME-poster är särskilt sårbara för det här hotet. 
+
+Under domäner överlåter hot aktörer att omdirigera trafik som är avsedd för en organisations domän till en plats som utför skadlig aktivitet.
+
+Azure Defender för App Service identifierar nu Dangling DNS-poster när en App Service webbplats tas ur bruk. Detta är den tidpunkt då DNS-posten pekar på en resurs som inte finns och din webbplats är sårbar för en under domän överköps. Dessa skydd är tillgängliga oavsett om dina domäner hanteras med Azure DNS eller en extern domän registrator och gäller för både App Service på Windows och App Service i Linux.
+
+Läs mer:
+
+- [App Service varnings referens tabell](alerts-reference.md#alerts-azureappserv) – innehåller två nya Azure Defender-aviseringar som utlöses när en Dangling DNS-post identifieras
+- [Förhindra Dangling DNS-poster och Undvik under domän övertag](../security/fundamentals/subdomain-takeover.md) ande – Läs mer om hotet om att under domäner överdrives och Dangling DNS-aspekt
+- [Introduktion till Azure Defender för App Service](defender-for-app-service-introduction.md)
+
+
 ### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>Flera moln anslutningar släpps för allmän tillgänglighet (GA)
 
 Med moln arbets belastningar som ofta spänner över flera moln plattformar måste moln säkerhets tjänster göra samma sak.
 
 Azure Security Center skyddar arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
 
-Genom att ansluta dina AWS-eller GCP-konton integreras deras inbyggda säkerhets verktyg som AWS Security Hub och GCP Security Command Centre i Azure Security Center.
+Genom att ansluta dina AWS-eller GCP-konton integreras deras inbyggda säkerhets verktyg som AWS Security Hub och GCP Security Command Center i Azure Security Center.
 
 Den här funktionen innebär att Security Center ger insyn och skydd i alla större moln miljöer. Några av fördelarna med den här integrationen:
 
@@ -153,7 +169,7 @@ Läs mer i [undanta resurser och rekommendationer från dina säkra Poäng](exem
 
 ### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Användarna kan nu begära en synlighet för hela organisationen från sin globala administratör
 
-Om en användare inte har behörighet att se Security Center data visas nu en länk begär ande behörigheter från organisationens globala administratör. Begäran omfattar den roll de vill och motiveringen för varför det är nödvändigt.
+Om en användare inte har behörighet att se Security Center data, ser de nu en länk för att begära behörigheter från organisationens globala administratör. Begäran omfattar den roll de vill och motiveringen för varför det är nödvändigt.
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banderoll som informerar användaren om att de kan begära behörigheter för hela klienten.":::
 
@@ -389,7 +405,7 @@ Uppdateringarna i november omfattar:
 - [Listan rekommendationer innehåller nu filter](#recommendations-list-now-includes-filters)
 - [Förbättrad och utökad automatisk etablerings upplevelse](#auto-provisioning-experience-improved-and-expanded)
 - [Säkra poäng är nu tillgängligt i löpande export (förhands granskning)](#secure-score-is-now-available-in-continuous-export-preview)
-- [Rekommendationen "system uppdateringar bör installeras på dina datorer" innehåller nu under rekommendationer](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- ["System uppdateringar bör installeras på dina datorer"-rekommendationen innehåller nu underrekommendationer](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
 - [Sidan princip hantering i Azure Portal visar nu status för standard princip tilldelningar](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 Preview-rekommendationer har lagts till för att öka täckningen av Azures säkerhets benchmark
@@ -468,9 +484,9 @@ Med kontinuerlig export av säkra Poäng kan du strömma ändringar i resultatet
 Läs mer om hur du [exporterar Security Center data kontinuerligt](continuous-export.md).
 
 
-### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>Rekommendationen "system uppdateringar bör installeras på dina datorer" innehåller nu under rekommendationer
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>"System uppdateringar bör installeras på dina datorer"-rekommendationen innehåller nu underrekommendationer
 
-**System uppdateringarna bör installeras på** dator rekommendationerna har förbättrats. Den nya versionen innehåller under rekommendationer för varje saknad uppdatering och ger följande förbättringar:
+**System uppdateringarna bör installeras på** dator rekommendationerna har förbättrats. Den nya versionen innehåller underrekommendationer för varje saknad uppdatering och ger följande förbättringar:
 
 - En omdesignad upplevelse på Azure Security Center sidor i Azure Portal. Rekommendations informations sidan för **System uppdateringar bör installeras på dina datorer** och innehåller en lista över de resultat som visas nedan. När du väljer en enskild sökning öppnas informations fönstret med en länk till reparations informationen och en lista över resurser som påverkas.
 
@@ -716,7 +732,7 @@ Läs mer i [Azure Defender för Key Vault](defender-for-key-vault-introduction.m
 
 Support för [Azure Files](../storage/files/storage-files-introduction.md) och [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) är nu allmänt tillgänglig.
 
-Från 1 oktober 2020 börjar vi debitera för att skydda resurser på dessa tjänster.
+Från 1 oktober 2020 börjar vi debitera för att skydda resurser på de här tjänsterna.
 
 Läs mer i [Azure Defender för lagring](defender-for-storage-introduction.md).
 
@@ -826,7 +842,7 @@ Följande säkerhets rekommendationer relaterade till nätverks säkerhets grupp
 
 Förhands gransknings rekommendationen "Pod Security Policies" måste definieras i Kubernetes Services ", vilket beskrivs i dokumentationen för [Azure Kubernetes-tjänsten](../aks/use-pod-security-policies.md) .
 
-Funktionen Pod Security Policy (för hands version) är inställd för utfasning och kommer inte längre att vara tillgänglig efter den 15 oktober 2020 i Azure Policy för AKS.
+Funktionen Pod Security Policy (för hands version) är inställd för utfasning och kommer inte längre att vara tillgänglig efter den 15 oktober 2020 med Azure Policy för AKS.
 
 När Pod säkerhets princip (förhands granskning) är föråldrad måste du inaktivera funktionen på alla befintliga kluster med hjälp av den föråldrade funktionen för att utföra framtida kluster uppgraderingar och hålla koll på Azure-supporten.
 

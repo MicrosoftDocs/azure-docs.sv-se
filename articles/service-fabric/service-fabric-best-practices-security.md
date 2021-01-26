@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257597"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784671"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-säkerhet 
 
@@ -56,7 +56,7 @@ Om du vill distribuera certifikat från ett Samplacerat nyckel valv till en skal
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Använda en Access Control lista (ACL) för ditt certifikat för ditt Service Fabric-kluster
 
-[Tillägg för skalnings uppsättning för virtuella datorer](/cli/azure/vmss/extension?view=azure-cli-latest) Publisher Microsoft. Azure. ServiceFabric används för att konfigurera nodernas säkerhet.
+[Tillägg för skalnings uppsättning för virtuella datorer](/cli/azure/vmss/extension) Publisher Microsoft. Azure. ServiceFabric används för att konfigurera nodernas säkerhet.
 Använd följande egenskaper för Resource Manager-mall för att tillämpa en ACL för dina certifikat för dina Service Fabric kluster processer:
 
 ```json

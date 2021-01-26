@@ -13,18 +13,18 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a0a17e3f352c9e39f118baec7e045521289f5ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 675f6b9ac3ebb05539432b5febc279275f9de7f6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502417"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785776"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>skapa ett säkert Service Fabric Linux-kluster i Azure
 
 Med det här kommandot skapar du ett självsignerat certifikat, lägger till det i ett nyckelvalv och hämtar certifikatet lokalt.  Det nya certifikatet används för att skydda klustret när distribueras.  Du kan också använda ett befintligt certifikat i stället för att skapa ett nytt.  Oavsett hur du gör måste certifikatets ämnesnamn överensstämma med den domän du använder för att få åtkomst till Service Fabric-klustret. Den här matchningen krävs för att tillhandahålla TLS för klustrets slut punkter för HTTPS-hantering och Service Fabric Explorer. Det går inte att hämta ett TLS/SSL-certifikat från en certifikat utfärdare för `.cloudapp.azure.com` domänen. Du måste skaffa ett anpassat domännamn för ditt kluster. När du begär ett certifikat från en certifikatutfärdare måste certifikatets ämnesnamn matcha det anpassade domännamn du använder för klustret.
 
-Installera vid behov [Azure CLI](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+Installera vid behov [Azure CLI](/en-us/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -43,9 +43,9 @@ az group delete --name $ResourceGroupName
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
-| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | Skapar ett nytt Service Fabric-kluster.  |
+| [az sf cluster create](/cli/azure/sf/cluster) | Skapar ett nytt Service Fabric-kluster.  |
 
 ## <a name="next-steps"></a>Nästa steg
 

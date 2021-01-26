@@ -3,12 +3,12 @@ title: Transaktioner och lås lägen i Reliable Collections
 description: Azure Service Fabric Reliable State Manager och Reliable Collections-transaktioner och-låsning.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576731"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784350"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transaktioner och lås lägen i Azure Service Fabric Reliable Collections
 
@@ -18,7 +18,7 @@ En transaktion är en sekvens med åtgärder som utförs som en enda logisk arbe
 
 * **Atomicer**: en transaktion måste vara en atomisk arbets enhet. Med andra ord utförs antingen alla data ändringar eller ingen av dem.
 * **Konsekvens**: när det är slutfört måste en transaktion lämna alla data i ett konsekvent tillstånd. Alla interna data strukturer måste vara korrekta i slutet av transaktionen.
-* **Isolering**: ändringar gjorda av samtidiga transaktioner måste isoleras från ändringar som gjorts av andra samtidiga transaktioner. Isolerings nivån som används för en åtgärd i en [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) bestäms av [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) som utför åtgärden.
+* **Isolering**: ändringar gjorda av samtidiga transaktioner måste isoleras från ändringar som gjorts av andra samtidiga transaktioner. Isolerings nivån som används för en åtgärd i en [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) bestäms av [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) som utför åtgärden.
 * **Hållbarhet**: när en transaktion har slutförts, är dess effekter permanent på plats i systemet. Ändringarna är kvar även om ett systemfel inträffar.
 
 ### <a name="isolation-levels"></a>Isoleringsnivåer
@@ -84,4 +84,4 @@ I det här fallet har en eller båda åtgärderna nått sin tids gräns. I det h
 * [Reliable Services meddelanden](service-fabric-reliable-services-notifications.md)
 * [Reliable Services säkerhets kopiering och återställning (haveri beredskap)](service-fabric-reliable-services-backup-restore.md)
 * [Tillförlitlig tillstånds hanterarens konfiguration](service-fabric-reliable-services-configuration.md)
-* [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

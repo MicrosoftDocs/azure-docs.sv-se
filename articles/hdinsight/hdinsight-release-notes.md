@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883358"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786359"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Viktig information om Azure HDInsight
 
@@ -48,7 +48,7 @@ Från och med november 16 2020 kommer HDInsight att blockera nya kunder som skap
 
 ## <a name="behavior-changes"></a>Beteende ändringar
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Lägg till regel kontroll för NSG före skalning
-HDInsight lade till nätverks säkerhets grupper (NSG: er) och UDR-kontroll (User-Defined routing) med skalnings åtgärd. Samma verifiering görs för kluster skalning förutom att klustret skapas. Den här verifieringen förhindrar oförutsägbara fel. Om verifieringen inte godkänns Miss lyckas skalningen. Läs mer om hur du konfigurerar NSG: er och UDR korrekt, se [IP-adresser för HDInsight-hantering](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+HDInsight lade till nätverks säkerhets grupper (NSG: er) och UDR-kontroll (User-Defined routing) med skalnings åtgärd. Samma verifiering görs för kluster skalning förutom att klustret skapas. Den här verifieringen förhindrar oförutsägbara fel. Om verifieringen inte godkänns Miss lyckas skalningen. Läs mer om hur du konfigurerar NSG: er och UDR korrekt, se [IP-adresser för HDInsight-hantering](./hdinsight-management-ip-addresses.md).
 
 ## <a name="upcoming-changes"></a>Kommande ändringar
 Följande ändringar sker i kommande versioner.
@@ -72,7 +72,7 @@ HDInsight fortsätter att göra kluster tillförlitlighet och prestanda förbät
 Ingen komponent versions ändring för den här versionen. Du hittar de aktuella komponent versionerna för HDInsight 4,0 och HDInsight 3,6 i [det här dokumentet](./hdinsight-component-versioning.md).
 
 ## <a name="known-issues"></a>Kända problem
-### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Förhindra att HDInsight-kluster virtuella datorer startar om regelbundet
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Förhindra att virtuella datorer i HDInsight-kluster startar om med jämna mellanrum
 
 Från och med mitten november 2020 kan du ha lagt märke till att virtuella datorer i HDInsight-klustret startar om regelbundet. Detta kan bero på att:
 
@@ -84,4 +84,3 @@ HDInsight distribuerar korrigeringar och tillämpar korrigering för alla aktiva
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

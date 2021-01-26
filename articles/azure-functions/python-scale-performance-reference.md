@@ -4,12 +4,12 @@ description: Lär dig hur du utvecklar Azure Functions appar med python som är 
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935877"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786114"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Förbättra data flödes prestanda för python-appar i Azure Functions
 
@@ -22,10 +22,10 @@ Som standard övervakar Azure Functions automatiskt belastningen på ditt progra
 
 Standardkonfigurationerna passar för de flesta Azure Functions-program. Du kan dock förbättra prestandan för dina programs data flöde genom att använda konfigurationer baserade på din arbets belastnings profil. Det första steget är att förstå vilken typ av arbets belastning som körs.
 
-|| I/O-Bound-arbetsbelastning | PROCESSOR-bindande arbets belastning |
-|--| -- | -- |
-|Egenskaper för Function-appen| <ul><li>Appen måste hantera många samtidiga anrop.</li> <li> App bearbetar ett stort antal I/O-händelser, t. ex. nätverks anrop och disk läsning/skrivning.</li> </ul>| <ul><li>I appen körs tids krävande beräkningar, till exempel bild storleks ändring.</li> <li>Data omvandlingen används av appen.</li> </ul> |
-|Exempel| <ul><li>Webb-API:er</li><ul> | <ul><li>Databearbetning</li><li> Maskin inlärnings störningar</li><ul>|
+| Arbets belastnings typ | Egenskaper för Function-appen       | Exempel                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **I/O-Bound**     | • Appen måste hantera många samtidiga anrop.<br>• Appen bearbetar ett stort antal I/O-händelser, t. ex. nätverks samtal och läsning/skrivning till disk. | • Webb-API: er                                          |
+| **PROCESSOR gränser**     | • Appen gör tids krävande beräkningar, till exempel bild storleks ändring.<br>• Appen utför data omvandling.                                                | • Data bearbetning<br>• Maskin inlärnings störningar<br> |
 
  
 Eftersom verkliga arbets belastningar i världen vanligt vis är en blandning av I/O och processor gränser bör du profilera appen under realistiska produktions belastningar.

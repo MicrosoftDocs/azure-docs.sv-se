@@ -3,12 +3,12 @@ title: Rikt linjer för pålitliga samlingar
 description: Rikt linjer och rekommendationer för att använda Service Fabric pålitliga samlingar i ett Azure Service Fabric-program.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260917"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784333"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Rikt linjer och rekommendationer för tillförlitliga samlingar i Azure Service Fabric
 Det här avsnittet innehåller rikt linjer för att använda pålitliga tillstånds hanteraren och pålitliga samlingar. Målet är att hjälpa användarna att undvika vanliga fall GRO par.
@@ -58,10 +58,10 @@ När du bestämmer dig för att använda volatile Reliable Collections bör du t
 * [Arbeta med Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Transaktioner och lås](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Hantera data
-  * [Säkerhets kopiering och återställning](service-fabric-reliable-services-backup-restore.md)
+  * [Säkerhetskopiera och återställ](service-fabric-reliable-services-backup-restore.md)
   * [Aviseringar](service-fabric-reliable-services-notifications.md)
   * [Serialisering och uppgradering](service-fabric-application-upgrade-data-serialization.md)
   * [Tillförlitlig tillstånds hanterarens konfiguration](service-fabric-reliable-services-configuration.md)
 * Andra
   * [Reliable Services snabb start](service-fabric-reliable-services-quick-start.md)
-  * [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Referens för utvecklare för tillförlitliga samlingar](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
