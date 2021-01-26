@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8cd6f6a32071dc7bbd4aaccb92168cda009933a6
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689790"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98798622"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -224,7 +224,7 @@ Ja. En Internet anslutning och en fysisk enhet som stöder IPsec, helst från v�
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hur gör jag för att aktivera standard väg (0.0.0.0/0) i en anslutning (VPN, ExpressRoute eller Virtual Network)?
 
-En virtuell hubb kan sprida en inlärd standard väg till en VPN-/ExpressRoute-anslutning för virtuella nätverk/plats-till-plats om flaggan är aktive rad på anslutningen. Den här flaggan visas när användaren redigerar en virtuell nätverks anslutning, en VPN-anslutning eller en ExpressRoute-anslutning. Som standard inaktive ras den här flaggan när en plats eller en ExpressRoute-krets är ansluten till en hubb. Den aktive ras som standard när en virtuell nätverks anslutning läggs till för att ansluta ett VNet till en virtuell hubb. Standard vägen kommer inte från den virtuella WAN-hubben. standard vägen sprids om den redan har belärts av den virtuella WAN-hubben som ett resultat av distributionen av en brand vägg i hubben, eller om en annan ansluten plats har Tvingad tunnel trafik aktive rad.
+En virtuell hubb kan sprida en inlärd standard väg till en VPN-/ExpressRoute-anslutning för virtuella nätverk/plats-till-plats om flaggan är aktive rad på anslutningen. Den här flaggan visas när användaren redigerar en virtuell nätverks anslutning, en VPN-anslutning eller en ExpressRoute-anslutning. Som standard inaktive ras den här flaggan när en plats eller en ExpressRoute-krets är ansluten till en hubb. Den aktive ras som standard när en virtuell nätverks anslutning läggs till för att ansluta ett VNet till en virtuell hubb. Standard vägen kommer inte från den virtuella WAN-hubben. standard vägen sprids om den redan har belärts av den virtuella WAN-hubben som ett resultat av distributionen av en brand vägg i hubben, eller om en annan ansluten plats har Tvingad tunnel trafik aktive rad. En standard väg sprids inte mellan hubbar (mellan hub).
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hur kan den virtuella hubben i ett virtuellt WAN-nätverk välja den bästa vägen för en väg från flera hubbar
 

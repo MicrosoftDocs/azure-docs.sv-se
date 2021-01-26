@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: Konfigurera en haveriberedskapsplan
       href: disaster-recovery.md
+    - name: Konfigurera KDC-proxyn
+      href: key-distribution-center-proxy.md
+    - name: Konfigurera RD Gateway-rollen
+      href: rd-gateway-role.md
 - name: Begrepp
   items:
     - name: Inbyggda roller
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: Dataplatser
       href: data-locations.md
+    - name: Säkerhet
+      items:
+        - name: Säkerhetsbaslinje
+          href: security-baseline.md
 - name: Felsöka
   items:
     - name: 'Översikt, feedback och support för felsökning'

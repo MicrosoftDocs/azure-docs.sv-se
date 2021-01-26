@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994986"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797775"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Bädda in Video Indexer widgetar i dina appar
 
@@ -70,7 +70,7 @@ Du kan använda Editor-widgeten för att skapa nya projekt och hantera video ins
 
 I det här avsnittet beskrivs hur du bäddar in offentligt och privat innehåll i appar.
 
-`location`Parametern måste inkluderas i de inbäddade länkarna, se [hur du hämtar namnet på din region](regions.md). Om ditt konto är i för hands version `trial` ska det användas för plats-värdet. `trial` är standardvärdet för `location` parametern. Till exempel: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+`location`Parametern måste inkluderas i de inbäddade länkarna, se [hur du hämtar namnet på din region](regions.md). Om ditt konto är i för hands version `trial` ska det användas för plats-värdet. `trial` är standardvärdet för `location` parametern. Exempel: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Om du delar en länk för **Player** -eller **Insights** -widgeten ingår åtkomsttoken och beviljar Läs behörighet till ditt konto.
@@ -208,7 +208,7 @@ Om du använder en annan Videos pelare än Azure Media Player måste du manuellt
     ```
 
 2. Bädda in insiktswidgeten.
-3. Implementera kommunikation för spelaren genom att lyssna på ”message”-händelsen. Exempel:
+3. Implementera kommunikation för spelaren genom att lyssna på ”message”-händelsen. Ett exempel:
 
     ```javascript
     <script>
@@ -271,7 +271,7 @@ Observera att det här alternativet endast är relevant i fall när du behöver 
 
 Om du bäddar in Video Indexer-spelaren kan du välja storlek för spelaren genom att ange storlek på iframe-fönstret.
 
-Exempel:
+Ett exempel:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -303,6 +303,10 @@ Se de [kod exempel](https://github.com/Azure-Samples/media-services-video-indexe
 | `embed-both-widgets`              | Bädda in VI och insikter och kommunicera mellan dem.                      |
 | `url-generator`                   | Genererar anpassad inbäddnings-URL för widget baserat på användardefinierade alternativ.             |
 | `html5-player`                    | Bädda in VI insikter med en standard HTML5 Videos pelare.                           |
+
+## <a name="supported-browsers"></a>Webbläsare som stöds
+
+Mer information finns i [webbläsare som stöds](video-indexer-overview.md#supported-browsers).
 
 ## <a name="next-steps"></a>Nästa steg
 

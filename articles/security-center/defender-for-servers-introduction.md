@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275253"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797724"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Introduktion till Azure Defender för servrar
 
@@ -97,4 +97,4 @@ Information om relaterade material finns i följande artiklar:
 - Om en avisering genereras av Security Center eller tas emot av Security Center från en annan säkerhets produkt, kan du exportera den. Om du vill exportera aviseringar till Azure Sentinel, SIEM eller andra externa verktyg, följer du anvisningarna i [Exportera aviseringar till en Siem](continuous-export.md).
 
 - > [!div class="nextstepaction"]
-    > [Aktivera Azure Defender](security-center-pricing.md)
+    > [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)

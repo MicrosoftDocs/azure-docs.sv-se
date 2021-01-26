@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8928f9d52fd8e721ac770dda8f0cbf0162a0f61
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95982729"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797916"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Ansluta en Azure SSIS-integreringskörning till ett virtuellt nätverk
 
@@ -73,7 +73,10 @@ Om SSIS-paketen har åtkomst till Azure-resurser som har stöd för [tjänst slu
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>Åtkomst till data källor som skyddas av regel för IP-brandvägg
 
-Om dina SSIS-paket har åtkomst till data lager/resurser som endast tillåter specifika statiska offentliga IP-adresser och du vill skydda åtkomsten till dessa resurser från Azure-SSIS IR, kan du ta med dina egna [offentliga IP-adresser](../virtual-network/virtual-network-public-ip-address.md) för Azure-SSIS IR samtidigt som du ansluter till ett virtuellt nätverk och sedan lägga till en IP-brandväggsregel till de relevanta resurserna för att tillåta åtkomst från dessa IP-adresser.
+Om dina SSIS-paket har åtkomst till data lager/resurser som endast tillåter vissa statiska offentliga IP-adresser och du vill skydda åtkomsten till dessa resurser från Azure-SSIS IR, kan du associera [offentliga IP-adresser](../virtual-network/virtual-network-public-ip-address.md) med Azure-SSIS IR när du ansluter till den till ett virtuellt nätverk och sedan lägga till en IP-brandväggsregel till de relevanta resurserna för att tillåta åtkomst från dessa IP-adresser. Det finns två alternativa sätt att göra detta: 
+
+- När du skapar Azure-SSIS IR kan du ta med dina egna offentliga IP-adresser och ange dem via [Data Factory användar gränssnitt eller SDK](#join-the-azure-ssis-ir-to-a-virtual-network). Endast den utgående Internet anslutningen för Azure-SSIS IR använder dina tillhandahållna offentliga IP-adresser och andra enheter i under nätet kommer inte att använda dem.
+- Du kan också konfigurera [Virtual Network NAT](../virtual-network/nat-overview.md) för det undernät som Azure-SSIS IR ansluter till och all utgående anslutning i det här under nätet kommer att använda dina angivna offentliga IP-adresser.
 
 I samtliga fall kan det virtuella nätverket bara distribueras via Azure Resource Manager distributions modell.
 

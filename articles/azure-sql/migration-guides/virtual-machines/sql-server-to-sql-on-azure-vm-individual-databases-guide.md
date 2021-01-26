@@ -3,19 +3,19 @@ title: SQL Server SQL Server på virtuella Azure-datorer (migreringsguiden)
 description: Följ den här guiden för att migrera dina enskilda SQL Server-databaser till SQL Server på Azure-Virtual Machines (VM).
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325933"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797875"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Guide för migrering: SQL Server till SQL Server på virtuella Azure-datorer 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]

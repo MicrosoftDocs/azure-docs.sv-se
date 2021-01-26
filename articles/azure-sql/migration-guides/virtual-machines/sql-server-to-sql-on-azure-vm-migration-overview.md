@@ -3,19 +3,19 @@ title: SQL Server SQL Server på Azure VM (översikt över migrering)
 description: Lär dig mer om de olika migrerings strategierna när du vill migrera dina SQL Server till SQL Server på virtuella Azure-datorer.
 ms.custom: ''
 ms.service: virtual-machines-sql
-ms.subservice: ''
+ms.subservice: migration-guide
 ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746583"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797851"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Översikt över migrering: SQL Server till SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -24,7 +24,7 @@ Lär dig mer om de olika migrerings strategierna för att migrera SQL Server til
 
 Du kan migrera SQL Server som körs lokalt eller på:
 
-- SQL Server på Virtual Machines  
+- SQL Server på virtuella datorer  
 - Amazon Web Services (AWS) EC2 
 - Amazon Relations databas tjänst (AWS RDS) 
 - Beräknings motor (Google Cloud Platform-GCP)
@@ -38,7 +38,7 @@ Migrera till [SQL Server på Azure Virtual Machines (VM)](../../virtual-machines
 Spara pengar genom att ta med din egen licens med [Azure Hybrid-förmån licens modell](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md) eller utöka stödet för SQL Server 2008 och SQL Server 2008 R2 genom att få [kostnads fria säkerhets uppdateringar](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md). 
 
 
-## <a name="choosing-appropriate-target"></a>Välja lämpligt mål
+## <a name="choose-appropriate-target"></a>Välj lämpligt mål
 
 Azure Virtual Machines köras i många olika regioner i Azure och erbjuder också en mängd olika [maskin storlekar](../../../virtual-machines/sizes.md) och [lagrings alternativ](../../../virtual-machines/disks-types.md). När du fastställer rätt storlek för virtuell dator och lagring för din SQL Server arbets belastning, se [rikt linjer för prestanda för SQL Server på Azure Virtual Machines.](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance) För att fastställa storleken på den virtuella datorn och lagrings kraven för din arbets belastning. Vi rekommenderar att du har en sådan storlek genom en Performance-Based [Azure Migrate utvärdering](../../../migrate/concepts-assessment-calculation.md#types-of-assessments). Om detta inte är ett tillgängligt alternativ kan du läsa följande artikel om hur du skapar en egen [bas linje för prestanda](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
@@ -131,7 +131,7 @@ När du förbereder för migrering av SQL Server databaser till SQL Server på v
 
 Mer hjälp finns i följande resurser som har utvecklats för Real World migration-projekt.
 
-|Tillgång  |Beskrivning  |
+|Tillgång  |Description  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
 |[Automatisering av data insamling i perfmon med logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Ett verktyg som samlar in data för att förstå de grundläggande prestanda som bidrar till rekommendationen för migrering. Det här verktyget använder logman.exe för att skapa kommandot som skapar, startar, stoppar och tar bort prestanda räknare som anges på en fjärran sluten SQL Server.|

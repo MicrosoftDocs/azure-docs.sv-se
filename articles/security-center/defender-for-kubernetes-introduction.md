@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04427a1eb2760e44086003a06ed4eb0d5cb473bf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 76b83a608c7178b42b762d5fd5bb94d14a6ee41b
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673332"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797765"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Introduktion till Azure Defender för Kubernetes
 
@@ -31,7 +31,7 @@ Hot identifiering på värdnivå för dina Linux AKS-noder är tillgängligt om 
 |Versions tillstånd:|Allmänt tillgänglig (GA)|
 |Priset|**Azure Defender for Kubernetes** faktureras så som det visas på [sidan med priser](security-center-pricing.md)|
 |Nödvändiga roller och behörigheter:|**Säkerhets administratören** kan stänga aviseringar.<br>**Säkerhets läsaren** kan visa resultat.|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Vilka är fördelarna med Azure Defender för Kubernetes?
@@ -113,6 +113,6 @@ I den här artikeln har du lärt dig om Security Center Kubernetes Protection, i
 
 Information om relaterade material finns i följande artiklar: 
 
-- [Aktivera Azure Defender](security-center-pricing.md)
+- [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender)
 - [Strömma aviseringar till en SIEM, SOAR eller IT Service Management-lösning](export-to-siem.md)
 - [Referens tabell för aviseringar](alerts-reference.md)
