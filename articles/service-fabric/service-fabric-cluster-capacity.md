@@ -4,12 +4,12 @@ description: Nodtyper, hållbarhet, tillförlitlighet och andra saker att tänka
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576340"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790706"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Överväganden vid planering av Service Fabric kluster kapacitet
 
@@ -146,7 +146,7 @@ Här är en rekommendation om att välja Tillförlitlighets nivå. Antalet start
 | 7 eller 8 | Guld |
 | 9 och uppåt | Platina |
 
-När du ökar eller minskar storleken på klustret (summan av virtuella dator instanser i alla nodtyper) bör du överväga att uppdatera tillförlitligheten för klustret från en nivå till en annan. Detta utlöser de kluster uppgraderingar som krävs för att ändra antalet replik uppsättningar för system tjänster. Vänta tills den pågående uppgraderingen har slutförts innan du gör några andra ändringar i klustret, t. ex. att lägga till noder.  Du kan övervaka förloppet för uppgraderingen på Service Fabric Explorer eller genom att köra [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
+När du ökar eller minskar storleken på klustret (summan av virtuella dator instanser i alla nodtyper) bör du överväga att uppdatera tillförlitligheten för klustret från en nivå till en annan. Detta utlöser de kluster uppgraderingar som krävs för att ändra antalet replik uppsättningar för system tjänster. Vänta tills den pågående uppgraderingen har slutförts innan du gör några andra ändringar i klustret, t. ex. att lägga till noder.  Du kan övervaka förloppet för uppgraderingen på Service Fabric Explorer eller genom att köra [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade)
 
 ### <a name="capacity-planning-for-reliability"></a>Kapacitets planering för tillförlitlighet
 

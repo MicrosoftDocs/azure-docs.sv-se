@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245933"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791769"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostik-och prestanda övervakning för Reliable service Remoting
-Den Reliable ServiceRemoting-körningen genererar  [prestanda räknare](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Dessa ger insikter om hur ServiceRemoting fungerar och hjälper till med fel sökning och prestanda övervakning.
+Den Reliable ServiceRemoting-körningen genererar  [prestanda räknare](/dotnet/api/system.diagnostics.performancecounter). Dessa ger insikter om hur ServiceRemoting fungerar och hjälper till med fel sökning och prestanda övervakning.
 
 
 ## <a name="performance-counters"></a>Prestandaräknare
@@ -36,7 +36,7 @@ För kategorin `Service Fabric Service` är räknar instans namnen i följande f
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
+*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
 
 *ServiceReplicaOrInstanceId* är sträng representationen av Service Fabric replik/instans-ID som prestanda räknar instansen är associerad med.
 
@@ -57,7 +57,7 @@ För kategorin `Service Fabric Service Method` är räknar instans namnen i föl
 
 *ServiceRuntimeMethodId* är en sträng representation av ett 32-bitars heltal som genereras av Fabric service runtime för intern användning. Detta ingår i prestanda räknarens instans namn för att säkerställa dess unika värde och undvika konflikter med andra instans namn för prestanda räknaren. Användare bör inte försöka tolka den här delen av prestanda räknarens instans namn.
 
-*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
+*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
 
 *ServiceReplicaOrInstanceId* är sträng representationen av Service Fabric replik/instans-ID som prestanda räknar instansen är associerad med.
 
@@ -91,5 +91,5 @@ När en klient anropar en metod via ett proxyobjekt, resulterar det i att ett be
 | Service Fabric tjänst |Genomsnittligt antal millisekunder för svars serialisering |Åtgången tid (i millisekunder) för att serialisera tjänst svars meddelandet i tjänsten innan svaret skickas till klienten |
 
 ## <a name="next-steps"></a>Nästa steg
-* [Exempelkod](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
+* [Exempel kod](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [EventSource-providers i PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab15af07c5f63d375d8fdb4fc38e0853e207a0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667290"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789810"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Självstudie: Lägg till en fasett-navigering med .NET SDK
 
@@ -45,7 +45,7 @@ Den här självstudien har uppdaterats med [Azure.Search.Documents-paketet (vers
 
 För att en modell egenskap ska finnas i en aspekt-sökning måste den märkas med **IsFacetable**.
 
-1. Granska **hotell** klassen. **Kategori** och **taggar**är till exempel Taggade som **IsFacetable**, men **HotelName** och **Description** är inte. 
+1. Granska **hotell** klassen. **Kategori** och **taggar** är till exempel Taggade som **IsFacetable**, men **HotelName** och **Description** är inte. 
 
     ```cs
     public partial class Hotel
@@ -111,7 +111,7 @@ Det är kontrollantens jobb att skicka listor över ansikte till vyn. Om du vill
 
 ### <a name="add-the-facet-action-method"></a>Lägg till åtgärds metoden aspekt
 
-Hem styrenheten behöver en ny åtgärd, **aspekt**och uppdateringar av dess befintliga **index** -och **sid** åtgärder och till **RunQueryAsync** -metoden.
+Hem styrenheten behöver en ny åtgärd, **aspekt** och uppdateringar av dess befintliga **index** -och **sid** åtgärder och till **RunQueryAsync** -metoden.
 
 <!-- 1. Open the home controller file, and add the **using** statement, to enable the **List&lt;string&gt;** construct.
 
@@ -234,7 +234,7 @@ Hem styrenheten behöver en ny åtgärd, **aspekt**och uppdateringar av dess bef
 
 ### <a name="set-up-the-search-filter"></a>Konfigurera Sök filtret
 
-När en användare väljer en viss aspekt, till exempel, klickar på kategorin **anläggning och Spa** , kommer bara hotell som anges som den här kategorin att returneras i resultaten. Vi måste skapa ett _filter_för att begränsa en sökning på det här sättet.
+När en användare väljer en viss aspekt, till exempel, klickar på kategorin **anläggning och Spa** , kommer bara hotell som anges som den här kategorin att returneras i resultaten. Vi måste skapa ett _filter_ för att begränsa en sökning på det här sättet.
 
 1. Ersätt **RunQueryAsync** -metoden med följande kod. Främst tar det en kategori filter sträng och en Amenity filter sträng, och anger **filter** parametern för **SearchOptions**.
 

@@ -7,19 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901223"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791415"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Felsöka problem med åtkomst principer för Azure Key Vault
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
 ### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>Jag kan inte Visa eller hämta hemligheter/nycklar/certifikat. Jag ser "något gick fel." Fels.
-Om du har problem med att lista/Hämta/skapa eller komma åt hemlighet måste du kontrol lera att du har definierat åtkomst princip för att utföra åtgärden: [Key Vault åtkomst principer](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
+Om du har problem med att lista/Hämta/skapa eller komma åt hemlighet måste du kontrol lera att du har definierat åtkomst princip för att utföra åtgärden: [Key Vault åtkomst principer](./assign-access-policy-cli.md)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Hur gör jag för att identifiera hur och när nyckel valv används?
 
@@ -69,6 +69,6 @@ Ett annat alternativ som kan hjälpa till med det här scenariot är att använd
 ### <a name="what-are-the-best-practices-i-should-implement-when-key-vault-is-getting-throttled"></a>Vilka är de bästa metoderna jag bör implementera när Key Vault får en begränsning?
 Följ de bästa metoderna, dokumenterade [här](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du felsöker Key Vault-autentiseringsfel: [Key Vault fel söknings guide](rest-error-codes.md).

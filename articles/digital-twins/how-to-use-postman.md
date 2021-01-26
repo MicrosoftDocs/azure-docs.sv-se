@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 96872a067d2414254aec3f212542dadabdf2bd6f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763731"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791749"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Så här använder du Postman för att skicka förfrågningar till Azure Digitals dubbla API: er
 
@@ -25,7 +25,7 @@ Den här artikeln beskriver hur du konfigurerar [Postman rest-klienten](https://
 1. Konfigurera en Postman-samling och konfigurera Postman REST-klienten så att den använder din Bearer-token för att autentisera.
 1. Använd den konfigurerade Postman för att skapa och skicka en begäran till Azure Digitals dubbla API: er.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill fortsätta med att använda Postman för att komma åt Azures digitala dubbla API: er måste du konfigurera en digital Azure-instans och hämta Postman. Resten av det här avsnittet vägleder dig genom de här stegen.
 
@@ -52,7 +52,7 @@ Annars kan du öppna ett [Azure Cloud Shell](https://shell.azure.com) -fönster 
     az login
     ```
 
-1. Sedan använder du kommandot [AZ Account get-Access-token](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_get_access_token) för att hämta en Bearer-token med åtkomst till tjänsten Azure Digitals dubbla.
+1. Sedan använder du kommandot [AZ Account get-Access-token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) för att hämta en Bearer-token med åtkomst till tjänsten Azure Digitals dubbla.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

@@ -15,16 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93efaedbb0596382b0601a17098311e075618b7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077865"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791988"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Ansluta virtuella nätverk med peering för virtuella nätverk med hjälp av PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Du kan ansluta virtuella nätverk till varandra med peerkoppling. När virtuella nätverk har peerkopplats kan resurser i båda virtuella nätverken kommunicera med varandra, med samma svarstid och bandbredd som om resurserna fanns i samma virtuella nätverk. I den här artikeln kan du se hur du:
 
@@ -172,7 +170,7 @@ Använd följande kommando för att skapa en fjärrskrivbordssession med den vir
 mstsc /v:<publicIpAddress>
 ```
 
-En Remote Desktop Protocol-fil (. RDP) skapas, hämtas till datorn och öppnas. Ange användar namn och lösen ord (du kan behöva välja **fler alternativ**och sedan **använda ett annat konto**för att ange de autentiseringsuppgifter som du angav när du skapade den virtuella datorn) och klicka sedan på **OK**. Du kan få en certifikatvarning under inloggningen. Klicka på **Ja** eller **Fortsätt** för att fortsätta med anslutningen.
+En Remote Desktop Protocol-fil (. RDP) skapas, hämtas till datorn och öppnas. Ange användar namn och lösen ord (du kan behöva välja **fler alternativ** och sedan **använda ett annat konto** för att ange de autentiseringsuppgifter som du angav när du skapade den virtuella datorn) och klicka sedan på **OK**. Du kan få en certifikatvarning under inloggningen. Klicka på **Ja** eller **Fortsätt** för att fortsätta med anslutningen.
 
 På den virtuella datorn *myVm1* aktiverar du Internet Control Message Protocol (ICMP) via Windows-brandväggen så att du kan pinga den här virtuella datorn från *myVm2* i ett senare steg med PowerShell:
 
@@ -188,7 +186,7 @@ Du ansluter till den virtuella datorn *myVm2* genom att ange följande kommando 
 mstsc /v:10.1.0.4
 ```
 
-Eftersom du har aktiverat ping på *myVm1*kan du nu pinga det via IP-adress från en kommando tolk på den virtuella datorn *myVm2* :
+Eftersom du har aktiverat ping på *myVm1* kan du nu pinga det via IP-adress från en kommando tolk på den virtuella datorn *myVm2* :
 
 ```
 ping 10.0.0.4

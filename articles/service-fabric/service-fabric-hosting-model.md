@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9932c11332a616928d59c213d4f4806feb81cfe2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708704"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791653"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Värd modell för Azure Service Fabric
 Den här artikeln innehåller en översikt över program värd modeller som tillhandahålls av Azure Service Fabric och beskriver skillnaderna mellan den **delade processen** och **exklusiva process** modeller. Den beskriver hur ett distribuerat program ser ut på en Service Fabric-nod och förhållandet mellan repliker (eller instanser) av tjänsten och Service-Host-processen.
@@ -22,12 +22,12 @@ Innan du fortsätter bör du se till att du förstår de olika begreppen och fö
 > I den här artikeln, om inget annat anges som betyder något annat:
 >
 > - *Repliken* refererar både till en replik av en tillstånds känslig tjänst och en instans av en tillstånds lös tjänst.
-> - *CodePackage* behandlas som likvärdigt med en *ServiceHost* -process som registrerar en *ServiceType*och är värd för repliker av tjänster för denna *ServiceType*.
+> - *CodePackage* behandlas som likvärdigt med en *ServiceHost* -process som registrerar en *ServiceType* och är värd för repliker av tjänster för denna *ServiceType*.
 >
 
 För att förstå värd modellen ska vi gå igenom ett exempel. Anta att vi har en *ApplicationType* ' MyAppType ', som har en *ServiceType* ' MyServiceType '. "MyServiceType" tillhandahålls av *servicepack* ",", som har *CodePackage* "MyCodePackage". "MyCodePackage" registrerar *ServiceType* "MyServiceType" när den körs.
 
-Anta att vi har ett kluster med tre noder och vi skapar en *program* **infrastruktur:/APP1** av typen ' MyAppType '. I den här program **infrastrukturen:/APP1**skapar vi en service **Fabric:/APP1/servicer** av typen ' MyServiceType '. Den här tjänsten har två partitioner (till exempel **P1** och **P2**) och tre repliker per partition. Följande diagram visar vyn över det här programmet när det slutar att distribueras på en nod.
+Anta att vi har ett kluster med tre noder och vi skapar en *program* **infrastruktur:/APP1** av typen ' MyAppType '. I den här program **infrastrukturen:/APP1** skapar vi en service **Fabric:/APP1/servicer** av typen ' MyServiceType '. Den här tjänsten har två partitioner (till exempel **P1** och **P2**) och tre repliker per partition. Följande diagram visar vyn över det här programmet när det slutar att distribueras på en nod.
 
 
 ![Diagram som visar visningen av det här programmet när den slutar att distribueras på en nod.][node-view-one]
@@ -91,7 +91,7 @@ Nu ska vi skapa en annan tjänst, **Fabric:/APP1/ServiceC**, i Application **Fab
 ![Diagram över vyn Node för det distribuerade programmet][node-view-four]
 
 
-Som du kan se Service Fabric aktiverade två nya kopior av "P6" (ett för varje replik från partition **P6** och **P7**). Service Fabric placera varje replik i sin dedikerade kopia av *CodePackage*. När du använder den exklusiva process modellen för ett angivet program kan flera kopior av en specifik *servicepack* vara aktiva på en nod. I föregående exempel är tre kopior av "min ServicePack" aktiva för **Fabric:/APP1**. Var och en av dessa aktiva kopior av "ServicePackageActivationId" har en associerad **ServicePackageActivationId** . Detta ID identifierar kopian i Application **Fabric:/APP1**.
+Som du kan se Service Fabric aktiverade två nya kopior av "P6" (ett för varje replik från partition  och **P7**). Service Fabric placera varje replik i sin dedikerade kopia av *CodePackage*. När du använder den exklusiva process modellen för ett angivet program kan flera kopior av en specifik *servicepack* vara aktiva på en nod. I föregående exempel är tre kopior av "min ServicePack" aktiva för **Fabric:/APP1**. Var och en av dessa aktiva kopior av "ServicePackageActivationId" har en associerad  . Detta ID identifierar kopian i Application **Fabric:/APP1**.
 
 När du bara använder den delade process modellen för ett program finns det bara en aktiv kopia av *servicepack* på en nod. **ServicePackageActivationId** för den här aktiveringen av *servicepack* är en tom sträng. Detta är fallet, till exempel med **Fabric:/APP2**.
 
@@ -110,13 +110,13 @@ En aktiv kopia av ett *servicepack* på en nod kallas för ett [distribuerat tj�
 Du kan ta reda på **ServicePackageActivationId** för ett distribuerat tjänst paket genom att fråga listan över [distribuerade tjänst paket][p3] på en nod. När du frågar efter [distribuerade tjänst typer][p6], [distribuerade repliker][p7]och [distribuerade kod paket][p8] på en nod innehåller frågeresultatet även **ServicePackageActivationId** för det överordnade distribuerade tjänst paketet.
 
 > [!NOTE]
->- Under den delade processens värd modell, på en specifik nod, för ett givet program, aktive ras endast en kopia av *servicepack* . Det har en **ServicePackageActivationId** som är lika med *tom sträng*och behöver inte anges när du utför åtgärder som är relaterade till det distribuerade tjänst paketet. 
+>- Under den delade processens värd modell, på en specifik nod, för ett givet program, aktive ras endast en kopia av *servicepack* . Det har en **ServicePackageActivationId** som är lika med *tom sträng* och behöver inte anges när du utför åtgärder som är relaterade till det distribuerade tjänst paketet. 
 >
-> - Under exklusivt process värd modell, på en specifik nod, för ett givet program, kan en eller flera kopior av en *servicepack* vara aktiva. Varje aktivering har en *icke-tom* **ServicePackageActivationId**som anges när du utför åtgärder som är relaterade till det distribuerade tjänst paketet. 
+> - Under exklusivt process värd modell, på en specifik nod, för ett givet program, kan en eller flera kopior av en *servicepack* vara aktiva. Varje aktivering har en *icke-tom* **ServicePackageActivationId** som anges när du utför åtgärder som är relaterade till det distribuerade tjänst paketet. 
 >
-> - Om **ServicePackageActivationId** utelämnas används en *tom sträng*som standard. Om ett distribuerat tjänst paket som har Aktiver ATS under den delade process modellen finns, utförs åtgärden på den. Annars misslyckas åtgärden.
+> - Om **ServicePackageActivationId** utelämnas används en *tom sträng* som standard. Om ett distribuerat tjänst paket som har Aktiver ATS under den delade process modellen finns, utförs åtgärden på den. Annars misslyckas åtgärden.
 >
-> - Fråga inte en gång och cachelagra **ServicePackageActivationId**. ID: t genereras dynamiskt och kan ändras av olika orsaker. Innan du utför en åtgärd som kräver **ServicePackageActivationId**bör du först fråga listan över [distribuerade tjänst paket][p3] på en nod. Använd sedan **ServicePackageActivationId** från frågeresultatet för att utföra den ursprungliga åtgärden.
+> - Fråga inte en gång och cachelagra **ServicePackageActivationId**. ID: t genereras dynamiskt och kan ändras av olika orsaker. Innan du utför en åtgärd som kräver **ServicePackageActivationId** bör du först fråga listan över [distribuerade tjänst paket][p3] på en nod. Använd sedan **ServicePackageActivationId** från frågeresultatet för att utföra den ursprungliga åtgärden.
 >
 >
 
@@ -149,7 +149,7 @@ Den exklusiva process värd modellen är inte konsekvent med en program modell s
 - ' MyCodePackageA ', som registrerar *ServiceType* ' MyServiceTypeA '.
 - ' MyCodePackageB ', som registrerar *ServiceType* ' MyServiceTypeB '.
 
-Nu ska vi säga att vi skapar ett program, **Fabric:/SpecialApp**. I **Fabric:/SpecialApp**skapar vi följande två tjänster med den exklusiva process modellen:
+Nu ska vi säga att vi skapar ett program, **Fabric:/SpecialApp**. I **Fabric:/SpecialApp** skapar vi följande två tjänster med den exklusiva process modellen:
 
 - Service **Fabric:/SpecialApp/service** av typ ' MyServiceTypeA ', med två partitioner (till exempel **P1** och **P2**) och tre repliker per partition.
 - Service **Fabric:/SpecialApp/ServiceB** av typen ' MyServiceTypeB ', med två partitioner (**P3** och **P4**) och tre repliker per partition.
@@ -172,7 +172,7 @@ I föregående exempel kan du tänka på att om "MyCodePackageA" registrerar bå
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Under processer för Reliable Services och aktörs förgreningar
 
-Service Fabric har inte stöd för pålitliga tjänster och därmed pålitliga aktörer som delar under processer. Ett exempel på varför det inte finns stöd för [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) kan inte användas för att registrera en under process som inte stöds och avbrutna token skickas endast till registrerade processer. Detta resulterar i alla typer av problem, till exempel uppgraderings fel, när det inte går att stänga under processer när den överordnade processen har tagit emot en token för uppsägning.
+Service Fabric har inte stöd för pålitliga tjänster och därmed pålitliga aktörer som delar under processer. Ett exempel på varför det inte finns stöd för [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) kan inte användas för att registrera en under process som inte stöds och avbrutna token skickas endast till registrerade processer. Detta resulterar i alla typer av problem, till exempel uppgraderings fel, när det inte går att stänga under processer när den överordnade processen har tagit emot en token för uppsägning.
 
 ## <a name="next-steps"></a>Nästa steg
 [Paketera ett program][a4] och Förbered det för distribution.

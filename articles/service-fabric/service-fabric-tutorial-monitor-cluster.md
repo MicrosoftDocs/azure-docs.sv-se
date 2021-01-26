@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331999"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791785"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Självstudie: övervaka ett Service Fabric kluster i Azure
 
@@ -227,9 +227,9 @@ Om du vill konfigurera mer detaljerade händelser för tillförlitliga aktörer 
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>Visa prestanda räknare med Azure Monitor loggar
 Om du vill visa prestanda räknare går du till [Azure Portal](https://portal.azure.com) och resurs gruppen där du skapade Service Fabric-analys-lösningen. 
 
-Välj resurs- **ServiceFabric (mysfomsworkspace)**, sedan **Log Analytics arbets yta**och sedan **Avancerade inställningar**.
+Välj resurs- **ServiceFabric (mysfomsworkspace)**, sedan **Log Analytics arbets yta** och sedan **Avancerade inställningar**.
 
-Klicka på **data**och sedan på **Windows prestanda räknare**. Det finns en lista med standard räknare som du kan välja att aktivera och du kan ange intervallet för samling. Du kan också lägga till [ytterligare prestanda räknare](service-fabric-diagnostics-event-generation-perf.md) som ska samlas in. Rätt format refereras till i den här [artikeln](/windows/desktop/PerfCtrs/specifying-a-counter-path). Klicka på **Spara**och sedan på **OK**.
+Klicka på **data** och sedan på **Windows prestanda räknare**. Det finns en lista med standard räknare som du kan välja att aktivera och du kan ange intervallet för samling. Du kan också lägga till [ytterligare prestanda räknare](service-fabric-diagnostics-event-generation-perf.md) som ska samlas in. Rätt format refereras till i den här [artikeln](/windows/desktop/PerfCtrs/specifying-a-counter-path). Klicka på **Spara** och sedan på **OK**.
 
 Stäng bladet avancerade inställningar och välj **Sammanfattning för arbets yta** under rubriken **Allmänt** . För var och en av de lösningar som har Aktiver ATS finns det en grafisk panel, inklusive en för Service Fabric. Fortsätt till Service Fabric-analys-lösningen genom att klicka på **Service Fabric** graf.
 
@@ -240,7 +240,7 @@ Välj diagrammet **container mått** om du vill visa mer information. Du kan ock
 ## <a name="query-the-eventstore-service"></a>Fråga EventStore-tjänsten
 [EventStore-tjänsten](service-fabric-diagnostics-eventstore.md) är ett sätt att förstå tillstånd för ditt kluster eller arbets belastningar vid en viss tidpunkt. EventStore är en tillstånds känslig Service Fabric tjänst som upprätthåller händelser från klustret. Händelserna exponeras via [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), rest och API: er. EventStore frågar klustret direkt för att hämta diagnostikdata för valfri entitet i klustret för att se en fullständig lista över händelser som är tillgängliga i EventStore, se [Service Fabric händelser](service-fabric-diagnostics-event-generation-operational.md).
 
-EventStore-API: er kan frågas program mässigt med hjälp av [Service Fabric klient biblioteket](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library).
+EventStore-API: er kan frågas program mässigt med hjälp av [Service Fabric klient biblioteket](/dotnet/api/overview/azure/service-fabric#client-library).
 
 Här är en exempel förfrågan för alla kluster händelser mellan 2018-04-03T18:00:00Z och 2018-04-04T18:00:00Z, via GetClusterEventListAsync-funktionen.
 
@@ -299,10 +299,10 @@ Service Fabric introducerar en [hälso modell](service-fabric-health-introductio
 
 Klustret fylls i automatiskt med hälso rapporter som skickas av system komponenterna. Felsök genom att läsa mer i [använda system hälso rapporter](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-Service Fabric exponerar hälso frågor för var och en av de [typer av enheter](service-fabric-health-introduction.md#health-entities-and-hierarchy)som stöds. De kan nås via API: et med metoder på [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), PowerShell-cmdletar och rest. Dessa frågor returnerar fullständig hälso information om entiteten: det sammanställda hälso tillståndet, hälso tillstånds händelser för enheter, underordnade hälso tillstånd (i förekommande fall), felaktiga utvärderingar (om enheten inte är felfri) och hälso statistik för barn (i förekommande fall).
+Service Fabric exponerar hälso frågor för var och en av de [typer av enheter](service-fabric-health-introduction.md#health-entities-and-hierarchy)som stöds. De kan nås via API: et med metoder på [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager), PowerShell-cmdletar och rest. Dessa frågor returnerar fullständig hälso information om entiteten: det sammanställda hälso tillståndet, hälso tillstånds händelser för enheter, underordnade hälso tillstånd (i förekommande fall), felaktiga utvärderingar (om enheten inte är felfri) och hälso statistik för barn (i förekommande fall).
 
 ### <a name="get-cluster-health"></a>Hämta kluster hälsa
-[Cmdleten Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) returnerar hälso tillståndet för entiteten kluster och innehåller hälso tillståndet för program och noder (underordnade kluster).  Anslut först till klustret med hjälp av [cmdleten Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps).
+[Cmdleten Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) returnerar hälso tillståndet för entiteten kluster och innehåller hälso tillståndet för program och noder (underordnade kluster).  Anslut först till klustret med hjälp av [cmdleten Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster).
 
 Klustrets tillstånd är 11 noder, system programmet och infrastruktur resursen:/röstning som kon figurer ATS enligt beskrivningen.
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>Hämta nods hälsa
-Cmdlet: en [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) returnerar hälsan för en nod-entitet och innehåller de hälso händelser som rapporter ATS på noden. Anslut först till klustret med hjälp av [cmdleten Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps). I följande exempel hämtas hälsan för en speciell nod med hjälp av standard hälso principer:
+Cmdlet: en [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) returnerar hälsan för en nod-entitet och innehåller de hälso händelser som rapporter ATS på noden. Anslut först till klustret med hjälp av [cmdleten Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster). I följande exempel hämtas hälsan för en speciell nod med hjälp av standard hälso principer:
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

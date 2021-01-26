@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ed1fe2885b1be28a03251bcfcecd08bdbd35adcf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629603"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790080"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Konfigurera loggning för att övervaka Logic Apps i Azure Security Center
 
@@ -24,7 +24,7 @@ När du övervakar Logic Apps resurser i [Microsoft Azure Security Center](../se
 
 * En Azure-prenumeration. Om du inte har någon prenumeration kan du [skapa ett kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * Befintliga Logi Kap par med [diagnostisk loggning aktive rad](#enable-diagnostic-logging).
-* En Log Analytics arbets yta, vilket krävs för att aktivera loggning för din Logic app. Om du inte har en arbets yta måste du först [skapa din arbets yta](/azure/azure-monitor/learn/quick-create-workspace).
+* En Log Analytics arbets yta, vilket krävs för att aktivera loggning för din Logic app. Om du inte har en arbets yta måste du först [skapa din arbets yta](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="enable-diagnostic-logging"></a>Aktivera diagnostisk loggning
 
@@ -69,7 +69,7 @@ Om du använder Log Analytics eller Event Hubs som mål för Logic Apps diagnost
 1. Kontrol lera att du har aktiverat diagnostikloggar genom att kontrol lera att `logs.enabled` fältet diagnostikinställningar är inställt på `true` . 
 1. För att bekräfta att du inte har angett ett lagrings konto som mål i stället, kontrollerar du att `storageAccountId` fältet är inställt på `false` .
 
-Exempel:
+Ett exempel:
 
 ```json
 "allOf": [

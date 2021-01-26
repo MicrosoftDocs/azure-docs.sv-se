@@ -3,12 +3,12 @@ title: Konfigurera användnings inställningar i labb för Azure Lab Services
 description: Lär dig hur du konfigurerar antalet studenter för ett labb, gör dem registrerade med labbet, styr antalet timmar som de kan använda den virtuella datorn och mer.
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602639"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791971"
 ---
 # <a name="add-and-manage-lab-users"></a>Lägg till och hantera labbanvändare
 
@@ -24,7 +24,7 @@ Den här artikeln visar hur du lägger till användare i ett labb.
 
 Nu kan du synkronisera en labb användar lista med en befintlig Azure Active Directory (Azure AD)-grupp så att du inte behöver lägga till eller ta bort användare manuellt. 
 
-En Azure AD-grupp kan skapas i din organisations Azure Active Directory för att hantera åtkomst till organisations resurser och molnbaserade appar. Mer information finns i [Azure AD-grupper](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Om din organisation använder Microsoft Office 365 eller Azure-tjänster, kommer din organisation redan ha administratörer som hanterar din Azure Active Directory. 
+En Azure AD-grupp kan skapas i din organisations Azure Active Directory för att hantera åtkomst till organisations resurser och molnbaserade appar. Mer information finns i [Azure AD-grupper](../active-directory/fundamentals/active-directory-manage-groups.md). Om din organisation använder Microsoft Office 365 eller Azure-tjänster, kommer din organisation redan ha administratörer som hanterar din Azure Active Directory. 
 
 ### <a name="sync-users-with-azure-ad-group"></a>Synkronisera användare med Azure AD-grupp
 

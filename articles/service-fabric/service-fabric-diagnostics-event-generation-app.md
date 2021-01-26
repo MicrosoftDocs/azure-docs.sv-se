@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1df5d033701195f4fe5f6b7174f3883b84393ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247667"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791281"
 ---
 # <a name="application-logging"></a>Programloggning
 
@@ -22,7 +22,7 @@ Exempel på hur du använder dessa förslag finns i [lägga till loggning i Serv
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-Application Insights har en omfattande integrering med Service Fabric. Användare kan lägga till AI-Service Fabric NuGet-paket och ta emot data och loggar som skapats och samlats in i Azure Portal. Dessutom uppmanas användarna att lägga till sin egen telemetri för att kunna diagnostisera och felsöka sina program och spåra vilka tjänster och delar av programmet som används mest. [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) -klassen i SDK erbjuder många olika sätt att spåra telemetri i dina program. Kolla in ett exempel på hur du kan Instrumenta och lägga till Application Insights i ditt program i vår självstudie för att [övervaka och diagnostisera ett .NET-program](service-fabric-tutorial-monitoring-aspnet.md)
+Application Insights har en omfattande integrering med Service Fabric. Användare kan lägga till AI-Service Fabric NuGet-paket och ta emot data och loggar som skapats och samlats in i Azure Portal. Dessutom uppmanas användarna att lägga till sin egen telemetri för att kunna diagnostisera och felsöka sina program och spåra vilka tjänster och delar av programmet som används mest. [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient) -klassen i SDK erbjuder många olika sätt att spåra telemetri i dina program. Kolla in ett exempel på hur du kan Instrumenta och lägga till Application Insights i ditt program i vår självstudie för att [övervaka och diagnostisera ett .NET-program](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="eventsource"></a>EventSource
 

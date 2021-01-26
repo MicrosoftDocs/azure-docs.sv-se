@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572348"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790485"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-till-tal (REST API)
 
@@ -60,11 +60,9 @@ Med `voices/list` slut punkten kan du få en fullständig lista över röster f�
 | Sydkorea, centrala | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, norra centrala | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, norra | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Sydafrika, norra | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, södra centrala | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Sydostasien | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Storbritannien, södra | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA, västra centrala | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, västra | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, västra | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, västra 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -279,5 +277,5 @@ Om HTTP-statusen är `200 OK` , innehåller bröd texten i svaret en ljudfil i d
 ## <a name="next-steps"></a>Nästa steg
 
 - [Skapa ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynkron syntes för lång Forms ljud](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynkron syntes för lång Forms ljud](./long-audio-api.md)
 - [Komma igång med Custom Voice](how-to-custom-voice.md)

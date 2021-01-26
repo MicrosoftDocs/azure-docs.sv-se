@@ -3,12 +3,12 @@ title: Ta bort åtkomst till en delegering
 description: Lär dig hur du tar bort åtkomst till resurser som har delegerats till en tjänst leverantör för Azure Lighthouse.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608460"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791364"
 ---
 # <a name="remove-access-to-a-delegation"></a>Ta bort åtkomst till en delegering
 
@@ -41,7 +41,7 @@ Exemplet nedan visar en tilldelning som beviljar **borttagnings rollen för hant
     ] 
 ```
 
-Den här rollen kan också väljas i en **auktorisering** när du [skapar ett hanterat tjänst erbjudande](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) för att publicera på Azure Marketplace.
+Den här rollen kan också väljas i en **auktorisering** när du [skapar ett hanterat tjänst erbjudande](../../marketplace/plan-managed-service-offer.md) för att publicera på Azure Marketplace.
 
 En användare med den här behörigheten kan ta bort en delegering på något av följande sätt.
 

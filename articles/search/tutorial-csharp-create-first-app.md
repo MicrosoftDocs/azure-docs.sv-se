@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939730"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791685"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Självstudie: skapa din första Sökapp med hjälp av .NET SDK
 
@@ -57,7 +57,7 @@ En färdig version av koden i den här självstudien finns i följande projekt:
 
 Den här självstudien har uppdaterats med Azure.Search.Documents-paketet (version 11). En tidigare version av .NET SDK finns i [kod exemplet Microsoft. Azure. search (version 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Eftersom du använder ett offentligt exempel söknings index som Microsoft är värd för, behöver du inte någon Sök tjänst eller ett Azure-konto för den här självstudien.
 
@@ -71,13 +71,13 @@ Om du vill gå vidare till en fungerande app följer du stegen nedan för att la
 
 1. Leta upp exemplet på GitHub: [skapa första app](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11).
 
-1. I [rotmappen](https://github.com/Azure-Samples/azure-search-dotnet-samples)väljer du **kod**följt av **kloning** eller **Ladda ned ZIP** för att göra din privata lokala kopia av projektet.
+1. I [rotmappen](https://github.com/Azure-Samples/azure-search-dotnet-samples)väljer du **kod** följt av **kloning** eller **Ladda ned ZIP** för att göra din privata lokala kopia av projektet.
 
 1. Använd Visual Studio, gå till och öppna lösningen för den grundläggande Sök sidan ("1-Basic-search-Page") och välj **starta utan fel sökning** (eller tryck på F5) för att skapa och köra programmet.
 
 1. Detta är ett hotell index, så skriv in några ord som du kan använda för att söka efter hotell (till exempel "WiFi", "View", "bar", "parkering") och granska resultaten.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Söker efter * pool *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Söker efter * WiFi *" border="true":::
 
 Förhoppnings vis kommer det här projektet att köras smidigt och du har en webbapp igång. Många av de viktigaste komponenterna för mer avancerade sökningar ingår i den här appen, så det är en bra idé att gå igenom den och återskapa den steg för steg. Följande avsnitt beskriver de här stegen.
 
@@ -85,19 +85,19 @@ Förhoppnings vis kommer det här projektet att köras smidigt och du har en web
 
 Börja med ett Visual Studio-projekt för att skapa projektet från grunden och på så sätt förbättra koncepten i Azure Kognitiv sökning i åtanke.
 
-1. I Visual Studio väljer du **nytt**  >  **projekt**och **ASP.net Core webb program**.
+1. I Visual Studio väljer du **nytt**  >  **projekt** och **ASP.net Core webb program**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Söker efter * pool *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Skapa ett moln projekt" border="true":::
 
 1. Ge projektet ett namn, till exempel "FirstSearchApp" och ange platsen. Välj **Skapa**.
 
 1. Välj projekt mal len **webb program (modell-View-Controller)** .
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Söker efter * pool *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Skapa ett MVC-projekt" border="true":::
 
 1. Installera klient biblioteket. I **verktyg**  >  **NuGet Package Manager**  >  **Hantera NuGet-paket för lösning...**, Välj **Bläddra** och Sök efter "azure.search.documents". Installera **Azure.Search.Documents** (version 11 eller senare) och godkänn licens avtalet och beroenden.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Söker efter * pool *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Använda NuGet för att lägga till Azure-bibliotek" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Initiera Azure-Kognitiv sökning
 
@@ -114,7 +114,7 @@ För det här exemplet använder du offentligt tillgängliga hotell data. Dessa 
 
 1. I Solution Explorer väljer du filen och i egenskaper ändrar du inställningen **Kopiera till utdata-katalog** till **Kopiera om nyare**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Söker efter * pool *" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Kopiera appens inställningar till utdata" border="true":::
 
 ## <a name="model-data-structures"></a>Modell data strukturer
 
@@ -126,7 +126,7 @@ Uppsättningen **hotell**-, **adress**-och **rums** klasser kallas [*komplexa ty
 
 1. I Solution Explorer högerklickar du på **modeller**  >  **Lägg till**  >  **nytt objekt**.
 
-1. Välj**klass** och namnge objektet Hotel.cs. Ersätt allt innehåll i Hotel.cs med följande kod. Lägg märke till klassens **adress** och **rums** medlemmar, dessa fält är klasser själva så att du även behöver modeller för dem.
+1. Välj **klass** och namnge objektet Hotel.cs. Ersätt allt innehåll i Hotel.cs med följande kod. Lägg märke till klassens **adress** och **rums** medlemmar, dessa fält är klasser själva så att du även behöver modeller för dem.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -243,7 +243,7 @@ Uppsättningen **hotell**-, **adress**-och **rums** klasser kallas [*komplexa ty
     }
     ```
 
-1. Den sista modellen som du skapar i den här självstudien är en klass med namnet **SearchData** och den representerar användarens indata (**searchText**) och sökningens utdata (**resultList**). Typen av utdata är kritisk, **SearchResults &lt; hotellet &gt; **, eftersom den här typen exakt matchar resultatet från sökningen och du måste skicka den här referensen till vyn. Ersätt standard mal len med följande kod.
+1. Den sista modellen som du skapar i den här självstudien är en klass med namnet **SearchData** och den representerar användarens indata (**searchText**) och sökningens utdata (**resultList**). Typen av utdata är kritisk, **SearchResults &lt; hotellet &gt;**, eftersom den här typen exakt matchar resultatet från sökningen och du måste skicka den här referensen till vyn. Ersätt standard mal len med följande kod.
 
     ```csharp
     using Azure.Search.Documents.Models;
@@ -534,11 +534,11 @@ Nu kontrollerar vi om appen fungerar som den ska.
 
 1. Välj **fel sökning**  >  **starta utan fel sökning** eller tryck på **F5**. Om appen körs som förväntat ska du hämta den inledande index vyn.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Söker efter * pool *" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Öppnar appen" border="true":::
 
 1. Ange en frågesträng, till exempel "strand" (eller någon text som kommer till åtanke) och klicka på Sök ikonen för att skicka begäran.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Söker efter * pool *" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Söker efter * strand *" border="true":::
 
 1. Försök att ange "fem stjärnor". Observera att frågan inte returnerar några resultat. En mer avancerad sökning skulle behandla "fem stjärnor" som synonymer för "lyxen" och returnera resultaten. Stöd för [synonymer](search-synonyms.md) är tillgängligt i Azure kognitiv sökning, men omfattas inte av den här själv studie serien.
 
@@ -554,7 +554,7 @@ Det är viktigt att kontrol lera att våra fel hanterings funktioner fungerar so
 
 2. Kör appen, ange "bar" som söktext och klicka på Sök ikonen. Undantaget bör resultera i vyn fel.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Söker efter * pool *" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Framtvinga ett fel" border="true":::
 
     > [!Important]
     > Det betraktas som en säkerhets risk för att returnera interna fel nummer på felsidor. Om din app är avsedd för allmän användning kan du utföra en undersökning i säkra och bästa metoder för vad som ska returneras när ett fel uppstår.

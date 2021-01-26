@@ -2,13 +2,13 @@
 title: Länka mallar för distribution
 description: 'Beskriver hur du använder länkade mallar i en Azure Resource Manager-mall (ARM-mall) för att skapa en modulär mall-lösning. Visar hur du skickar parameter värden, anger en parameter fil och dynamiskt skapade URL: er.'
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/25/2021
+ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624866"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790943"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Använda länkade och nästlade mallar vid distribution av Azure-resurser
 
@@ -111,6 +111,10 @@ Du ställer in omfånget via `expressionEvaluationOptions` egenskapen. Som stand
   },
   ...
 ```
+
+> [!NOTE]
+>
+> När omfånget är inställt på `outer` , kan du inte använda `reference` funktionen i avsnittet utdata i en kapslad mall för en resurs som du har distribuerat i den kapslade mallen. Om du vill returnera värdena för en distribuerad resurs i en kapslad mall, kan du antingen använda `inner` omfång eller konvertera den kapslade mallen till en länkad mall.
 
 Följande mall visar hur mall uttryck matchas enligt omfånget. Den innehåller en variabel med namnet `exampleVar` som definieras i både den överordnade mallen och den kapslade mallen. Den returnerar variabelns värde.
 
@@ -399,10 +403,6 @@ Följande utdrag visar vilka värden som är säkra och som inte är säkra.
   ]
 }
 ```
-
-> [!NOTE]
->
-> När omfånget är inställt på `outer` , kan du inte använda `reference` funktionen i avsnittet utdata i en kapslad mall för en resurs som du har distribuerat i den kapslade mallen. Om du vill returnera värdena för en distribuerad resurs i en kapslad mall, kan du antingen använda `inner` omfång eller konvertera den kapslade mallen till en länkad mall.
 
 ## <a name="linked-template"></a>Länkad mall
 
@@ -797,7 +797,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 I följande exempel visas vanliga användnings områden för länkade mallar.
 
-|Huvud mal len  |Länkad mall |Description  |
+|Huvud mal len  |Länkad mall |Beskrivning  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[länkad mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Returnerar en sträng från den länkade mallen. |
 |[Load Balancer med offentlig IP-adress](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[länkad mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Returnerar den offentliga IP-adressen från den länkade mallen och anger värdet i belastningsutjämnaren. |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005919"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791112"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Omvänd proxy i Azure Service Fabric
 Omvänd proxy inbyggd i Azure Service Fabric hjälper mikrotjänster som körs i ett Service Fabric kluster att identifiera och kommunicera med andra tjänster som har http-slutpunkter.
@@ -118,7 +118,7 @@ Service Fabric reverse proxy försöker matcha en tjänst adress igen och förs�
 
 Repliker eller tjänst instanser kan dock dela en värd process och kan också dela en port som finns på en http.sys-baserad webb server, inklusive:
 
-* [System .net. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
+* [System .net. HttpListener](/dotnet/api/system.net.httplistener)
 * [ASP.NET Core weblyssnare](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 

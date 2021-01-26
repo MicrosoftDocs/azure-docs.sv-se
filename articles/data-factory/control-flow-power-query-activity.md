@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 3314053e5b81c597d6d29015a5ebda6e171731d1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c0ad769ceba4fc3fa7f602d70188ea1942ca73aa
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634410"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791702"
 ---
 # <a name="power-query-activity-in-data-factory"></a>Power Query-aktivitet i Data Factory
 
@@ -22,6 +22,8 @@ Med Power Query-aktiviteten kan du bygga och köra Power Query kombinera-UPS fö
 ![Skärm bild som visar Power Query i fönstret fabriks resurser.](media/data-flow/power-query-wrangling.png)
 
 Tidigare skrevs data datatransformering i Azure Data Factory från meny alternativet data flöde. Detta har ändrats till redigering från en ny Power Query-aktivitet. Du kan arbeta direkt i Power Query kombinera-redigeraren för att utföra interaktiva data utforskningar och sedan spara ditt arbete. När du är klar kan du ta din Power Query-aktivitet och lägga till den i en pipeline. Azure Data Factory skalar automatiskt ut det och operationalisera dina data datatransformering med hjälp av Azure Data Factorys data flöde Spark-miljö.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4MFYn]
 
 ## <a name="translation-to-data-flow-script"></a>Översättning till data flödes skript
 

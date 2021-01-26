@@ -3,12 +3,12 @@ title: Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 description: Lär dig hur du publicerar ett hanterat tjänst erbjudande som integrerar kunder i Azure Lighthouse.
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f6bd504185fab3fc698019a3eb8c530ba93f8abc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673162"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791381"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 
@@ -18,7 +18,7 @@ I den här artikeln får du lära dig hur du publicerar ett offentligt eller pri
 
 Du måste ha ett giltigt [konto i Partner Center](../../marketplace/partner-center-portal/create-account.md) för att kunna skapa och publicera erbjudanden. Om du inte redan har ett konto kommer [registrerings processen](https://aka.ms/joinmarketplace) att leda dig genom stegen för att skapa ett konto i Partner Center och registrera dig i programmet för kommersiella marknads platser.
 
-Enligt [certifierings kraven för den hanterade tjänstens erbjudande](/legal/marketplace/certification-policies#7004-business-requirements)måste du ha en [silver eller guld plattforms plattforms nivå](/partner-center/learn-about-competencies) eller vara en [Azure expert-MSP](https://partner.microsoft.com/membership/azure-expert-msp) för att kunna publicera ett hanterat tjänst erbjudande. Du måste också [Ange ett lead-mål som ska skapa en post i ditt CRM-system](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) varje gång en kund distribuerar ditt erbjudande.
+Enligt [certifierings kraven för den hanterade tjänstens erbjudande](/legal/marketplace/certification-policies#7004-business-requirements)måste du ha en [silver eller guld plattforms plattforms nivå](/partner-center/learn-about-competencies) eller vara en [Azure expert-MSP](https://partner.microsoft.com/membership/azure-expert-msp) för att kunna publicera ett hanterat tjänst erbjudande. Du måste också [Ange ett lead-mål som ska skapa en post i ditt CRM-system](../../marketplace/plan-managed-service-offer.md#customer-leads) varje gång en kund distribuerar ditt erbjudande.
 
 Ditt Microsoft Partner Network (MPN) ID kommer [automatiskt att associeras](../../cost-management-billing/manage/link-partner-id.md) med de erbjudanden du publicerar för att spåra din påverkan på kund engagemang.
 
@@ -31,14 +31,14 @@ Följande tabell kan hjälpa dig att avgöra om du ska publicera kunder genom at
 |Kräver [partner Center-konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nej        |
 |Kräver [plattforms-eller guld plattforms kompetens nivå](/partner-center/learn-about-competencies) eller [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nej         |
 |Tillgängligt för nya kunder via Azure Marketplace     |Ja     |Nej       |
-|Kan begränsa erbjudandet till vissa kunder     |Ja (endast med privata erbjudanden som inte kan användas med prenumerationer som upprättats via en åter försäljare av leverantören av moln lösningar (CSP))         |Yes         |
+|Kan begränsa erbjudandet till vissa kunder     |Ja (endast med privata erbjudanden som inte kan användas med prenumerationer som upprättats via en åter försäljare av leverantören av moln lösningar (CSP))         |Ja         |
 |Kräver kund godkännande i Azure Portal     |Ja     |Nej   |
 |Kan använda Automation för att publicera flera prenumerationer, resurs grupper eller kunder |Nej     |Ja    |
-|Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Yes         |
+|Omedelbar åtkomst till nya inbyggda roller och funktioner i Azure Lighthouse     |Inte alltid (allmänt tillgänglig efter en fördröjning)         |Ja         |
 
 ## <a name="create-your-offer"></a>Skapa ditt erbjudande
 
-Detaljerade anvisningar om hur du skapar ett erbjudande, inklusive all information och till gångar som du behöver ange, finns i [skapa ett hanterat tjänst erbjudande](../../marketplace/partner-center-portal/create-new-managed-service-offer.md).
+Detaljerade anvisningar om hur du skapar ett erbjudande, inklusive all information och till gångar som du behöver ange, finns i [skapa ett hanterat tjänst erbjudande](../../marketplace/plan-managed-service-offer.md).
 
 Mer information om den allmänna publicerings processen finns i [publicerings guiden för Azure Marketplace och AppSource](../../marketplace/overview.md). Du bör också gå igenom de [kommersiella Marketplace-certifierings principerna](/legal/marketplace/certification-policies), särskilt avsnittet [hanterade tjänster](/legal/marketplace/certification-policies#700-managed-services) .
 
@@ -49,7 +49,7 @@ När en kund lägger till erbjudandet kan han eller hon delegera en eller flera 
 
 ## <a name="publish-your-offer"></a>Publicera ditt erbjudande
 
-När du har slutfört alla avsnitt är nästa steg att publicera erbjudandet på Azure Marketplace. Välj knappen **publicera** för att påbörja processen med att göra erbjudandet Live. Mer information om den här processen finns [här](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish). 
+När du har slutfört alla avsnitt är nästa steg att publicera erbjudandet på Azure Marketplace. Välj knappen **publicera** för att påbörja processen med att göra erbjudandet Live. Mer information om den här processen finns [här](../../marketplace/plan-managed-service-offer.md). 
 
 Du kan när som helst [publicera en uppdaterad version av erbjudandet](../..//marketplace/partner-center-portal/update-existing-offer.md) . Du kanske till exempel vill lägga till en ny roll definition till ett tidigare publicerat erbjudande. När du gör det, kommer kunder som redan har lagt till erbjudandet att se en ikon på sidan [**tjänst leverantörer**](view-manage-service-providers.md) i Azure Portal som gör att de kan se att en uppdatering är tillgänglig. Varje kund kan [granska ändringarna](view-manage-service-providers.md#update-service-provider-offers) och bestämma om de vill uppdatera till den nya versionen. 
 

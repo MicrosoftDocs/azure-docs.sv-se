@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12bcb54f4bfdf17209324febeba380ff7789fc0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998993"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790807"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Självstudie: publicera, prenumerera på händelser i molnet
 
@@ -21,7 +21,7 @@ Den här artikeln vägleder dig igenom alla steg som behövs för att publicera 
 
 Se [Event Grid-koncept](concepts.md) för att förstå vad ett ämne i Event Grid och prenumerationen är innan du fortsätter.
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav 
 För att kunna slutföra den här självstudien behöver du:
 
 * **Azure-prenumeration** – skapa ett [kostnads fritt konto](https://azure.microsoft.com/free) om du inte redan har ett. 
@@ -31,7 +31,7 @@ För att kunna slutföra den här självstudien behöver du:
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>Skapa en Azure-funktion i Azure Portal
 
-Följ stegen som beskrivs i [självstudien](../../azure-functions/functions-create-first-azure-function.md) för att skapa en Azure-funktion. 
+Följ stegen som beskrivs i [självstudien](../../azure-functions/functions-get-started.md) för att skapa en Azure-funktion. 
 
 Ersätt kodfragmentet med följande kod:
 

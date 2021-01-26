@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1d433c7db36a3f4fe5f528b7fbd17549bc08e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016241"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791501"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Expandera virtuella hård diskar på en virtuell Linux-dator med Azure CLI
 
 Den här artikeln beskriver hur du expanderar hanterade diskar för en virtuell Linux-dator (VM) med Azure CLI. Du kan [lägga till data diskar](add-disk.md) för att tillhandahålla ytterligare lagrings utrymme, och du kan också expandera en befintlig data disk. Standard storleken på virtuella hård diskar för operativ systemet (OS) är vanligt vis 30 GB på en virtuell Linux-dator i Azure. 
 
 > [!WARNING]
-> Se alltid till att fil systemet är i felfritt tillstånd, att tabell typen för diskpartitionen stöder den nya storleken och se till att dina data säkerhets kopie ras innan du utför åtgärder för storleks ändring av disken. Mer information finns i [säkerhetskopiera virtuella Linux-datorer i Azure](tutorial-backup-vms.md). 
+> Se alltid till att fil systemet är i felfritt tillstånd, att tabell typen för diskpartitionen stöder den nya storleken och se till att dina data säkerhets kopie ras innan du utför åtgärder för storleks ändring av disken. Mer information finns i [snabb start för Azure Backup](../../backup/quick-backup-vm-portal.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Expandera en Azure-hanterad disk
 Kontrol lera att du har den senaste versionen av [Azure CLI](/cli/azure/install-az-cli2) och är inloggad på ett Azure-konto genom att använda [AZ-inloggning](/cli/azure/reference-index#az-login).

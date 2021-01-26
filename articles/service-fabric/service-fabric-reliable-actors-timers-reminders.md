@@ -4,12 +4,12 @@ description: Introduktion till timers och påminnelser för Service Fabric Relia
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77eb29c9146fe66d5d2b6073c33e30fbab649c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016554"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791802"
 ---
 # <a name="actor-timers-and-reminders"></a>Timers för aktör och påminnelser
 Aktörer kan schemalägga periodiska arbeten genom att registrera antingen timers eller påminnelser. Den här artikeln visar hur du använder timers och påminnelser och förklarar skillnaderna mellan dem.
@@ -131,7 +131,7 @@ Påminnelser är en mekanism för att utlösa beständiga återanrop på en akt�
 > [!NOTE]
 > Tillförlitligheten för påminnelser är knuten till de tillstånds Tillförlitlighets garantier som tillhandahålls av aktörens tillstånds leverantör. Det innebär att för aktörer vars beständighet har angetts till *ingen*, aktive ras påminnelser inte efter en redundansväxling.
 
-För att registrera en påminnelse anropar en aktör [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) metoden som anges i Bask Lassen, som du ser i följande exempel:
+För att registrera en påminnelse anropar en aktör [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync#remarks) metoden som anges i Bask Lassen, som du ser i följande exempel:
 
 ```csharp
 protected override async Task OnActivateAsync()

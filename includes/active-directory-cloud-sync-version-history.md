@@ -1,14 +1,42 @@
 ---
-ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 35cb7ba4523cfbc88daf958fd972b127519385ce
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97700587"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792441"
 ---
 Den här artikeln innehåller versioner och funktioner i Azure Active Directory Connect etablerings agent som har släppts. Azure AD-teamet uppdaterar regelbundet etablerings agenten med nya funktioner och funktioner. Etablerings agenten uppdateras automatiskt när en ny version släpps. 
 
 Microsoft tillhandahåller direkt support för den senaste agent versionen och en version.
+
+## <a name="113540"></a>1.1.354.0
+
+20 januari 2021: släpps för hämtning
+
+### <a name="new-features-and-improvements"></a>Nya funktioner och förbättringar
+- Förbättringar av GMSA-upplevelsen, inklusive stöd för fördefinierat anpassat GMSA-konto
+- [PowerShell-cmdletar](../articles/active-directory/cloud-sync/how-to-gmsa-cmdlets.md) stöd för installation av gMSA
+- [CLI-stöd](../articles/active-directory/cloud-sync/how-to-install-pshell.md) för agent installation (tyst installation)
+- Ytterligare diagnostik för problem med agent käll karantän
+- Fel korrigeringar som omfattar minskad minnes användning av OU-scope-filter, som kör PHS endast för användare i omfång, hantering av kapslade objekt i ORGANISATIONSENHETen med hjälp av OU-omfånget osv. 
+
+
+### <a name="fixed-issues"></a>Åtgärdade problem
+-    Förhindra karantän när omfångs grupp ligger utanför omfånget
+-   När omfångs filter har kon figurer ATS – PHS-jobbet fungerar nu bara för användare i omfång
+-   Agenten skulle vid en stund att låsa sig under uppgraderingen
+-   Inledande synkronisering för objekt i kapslad organisationsenhet när du använder OU-scope
+-   Gör Repair-AADCloudSyncToolsAccount mer robust
+-   Minska den stora minnes användningen av OU-omfångs filter
+-   Administratörs Rolls kontrollen Miss lyckas om roll medlemmarna innehåller en säkerhets grupp
+-   Åtgärda problemet med GMSA-mappen som förhindrar förnyelse av agent certifikat
+
+
+
+
+
+
 
 ## <a name="112810"></a>1.1.281.0
 
@@ -18,18 +46,18 @@ Microsoft tillhandahåller direkt support för den senaste agent versionen och e
 
 ### <a name="new-features-and-improvements"></a>Nya funktioner och förbättringar
 
-* Stöd för [gMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts)
+* Stöd för [gMSA](../articles/active-directory/cloud-sync/how-to-prerequisites.md#group-managed-service-accounts)
 * Stöd för grupper upp till en storlek som är mindre än 1500 medlemmar under stegvis eller delta-synkronisering. Detta gäller när du använder grupp definitions filter
 * Stöd för stora grupper med medlems storlek upp till 15 000
 * Förbättringar av inledande synkronisering
 * Avancerad utförlig loggning
-* Introduktion av [AADCloudSyncTools PowerShell-modulen](../articles/active-directory/cloud-provisioning/reference-powershell.md)
+* Introduktion av [AADCloudSyncTools PowerShell-modulen](../articles/active-directory/cloud-sync/reference-powershell.md)
 * Fasta begränsningar för att tillåta att agenten installeras på en icke-engelsk server
 * Stöd för PHS-filtrering för objekt inom omfånget (ursprungligen synkroniserade vi lösen ords hashar för alla objekt)
 * Åtgärdat problem med minnes läckor i agenten
 * Förbättrade etablerings loggar
-* Stöd för konfigurering av [LDAP-anslutningstimeout](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
-* Stöd för att konfigurera [referens jaga](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) 
+* Stöd för konfigurering av [LDAP-anslutningstimeout](../articles/active-directory/cloud-sync/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
+* Stöd för att konfigurera [referens jaga](../articles/active-directory/cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) 
 
 
 ## <a name="11960"></a>1.1.96.0
@@ -40,7 +68,7 @@ Microsoft tillhandahåller direkt support för den senaste agent versionen och e
 
 ### <a name="new-features-and-improvements"></a>Nya funktioner och förbättringar
 
-* Innehåller stöd för [Azure AD Connect moln etablering](../articles/active-directory/cloud-provisioning/what-is-cloud-provisioning.md) för att synkronisera användare, kontakt och grupp data från lokala Active Directory till Azure AD
+* Innehåller stöd för [Azure AD Connect molnbaserad synkronisering](../articles/active-directory/cloud-sync/what-is-cloud-sync.md) för att synkronisera användare, kontakt och gruppera data från lokala Active Directory till Azure AD
 
 
 ## <a name="11670"></a>1.1.67.0

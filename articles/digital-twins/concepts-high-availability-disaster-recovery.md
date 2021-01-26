@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938554"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790824"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digitals dubblare hög tillgänglighet och haveri beredskap
 
@@ -41,7 +41,7 @@ Det kan finnas sällsynta situationer när ett Data Center upplever utökade avb
 
 ## <a name="monitor-service-health"></a>Övervaka tjänstens hälsa
 
-Eftersom Azure Digitals dubbla instanser har redundansväxlats och återställts kan du övervaka processen med hjälp av [Azure Service Health](https://docs.microsoft.com/azure/service-health/service-health-overview) -verktyget. Service Health spårar hälso tillståndet för dina Azure-tjänster i olika regioner och prenumerationer och delar service – påverkar kommunikationen med avbrott och drift stopp.
+Eftersom Azure Digitals dubbla instanser har redundansväxlats och återställts kan du övervaka processen med hjälp av [Azure Service Health](../service-health/service-health-overview.md) -verktyget. Service Health spårar hälso tillståndet för dina Azure-tjänster i olika regioner och prenumerationer och delar service – påverkar kommunikationen med avbrott och drift stopp.
 
 Under en redundansväxling kan Service Health ange när tjänsten är avstängd och när den är säkerhets kopia.
 

@@ -3,12 +3,12 @@ title: Uppdatera en delegering
 description: Lär dig hur du uppdaterar en delegering för en kund som tidigare har publicerats till Azure-Lighthouse.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093425"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791347"
 ---
 # <a name="update-a-delegation"></a>Uppdatera en delegering
 
@@ -58,9 +58,9 @@ När distributionen har slutförts [kontrollerar du att den lyckades](onboard-cu
 
 ## <a name="updating-managed-service-offers"></a>Uppdaterar hanterade tjänst erbjudanden
 
-Om du har publicerat din kund via ett hanterat tjänst erbjudande publicerat på Azure Marketplace och du vill uppdatera auktoriseringar kan du uppdatera delegeringen genom att [publicera en ny version av ditt erbjudande](../../marketplace/partner-center-portal/update-existing-offer.md) med de [auktoriseringar](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) som du vill använda i planen för kunden. Kunden kommer sedan att kunna uppdatera till den senaste versionen i Azure Portal.
+Om du har publicerat din kund via ett hanterat tjänst erbjudande publicerat på Azure Marketplace och du vill uppdatera auktoriseringar kan du uppdatera delegeringen genom att [publicera en ny version av ditt erbjudande](../../marketplace/partner-center-portal/update-existing-offer.md) med de [auktoriseringar](../../marketplace/plan-managed-service-offer.md) som du vill använda i planen för kunden. Kunden kommer sedan att kunna uppdatera till den senaste versionen i Azure Portal.
 
-Om du vill ändra hanterings klienten måste du [skapa och publicera ett nytt erbjudande för en hanterad tjänst](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) för kunden att godkänna.
+Om du vill ändra hanterings klienten måste du [skapa och publicera ett nytt erbjudande för en hanterad tjänst](../../marketplace/plan-managed-service-offer.md) för kunden att godkänna.
 
 > [!TIP]
 > Som tidigare nämnts rekommenderar vi att du inte använder flera olika erbjudanden mellan samma kund och hanterar klient organisationen. Om du publicerar ett nytt erbjudande för samma kund som använder samma hanterings klient måste du se till att det tidigare erbjudandet tas bort innan kunden accepterar det nya erbjudandet.

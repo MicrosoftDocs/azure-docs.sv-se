@@ -3,12 +3,12 @@ title: Skydda ett kluster i Windows med hjälp av certifikat
 description: Säker kommunikation i ett fristående eller lokalt kluster i Azure Service Fabric, samt mellan klienter och klustret.
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686131"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791045"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Skydda ett fristående kluster i Windows med hjälp av X. 509-certifikat
 Den här artikeln beskriver hur du skyddar kommunikationen mellan de olika noderna i det fristående Windows-klustret. Det beskriver också hur du autentiserar klienter som ansluter till det här klustret med hjälp av X. 509-certifikat. Autentisering garanterar att endast behöriga användare kan komma åt klustret och distribuerade program och utföra hanterings uppgifter. Certifikat säkerhet ska vara aktiverat på klustret när klustret skapas.  
@@ -348,14 +348,14 @@ När du har konfigurerat säkerhets avsnittet i ClusterConfig.X509.MultiMachine.
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-När du har konfigurerat det fristående fristående Windows-klustret och har konfigurerat de autentiserade klienterna för att ansluta till den, följer du stegen i avsnittet [Anslut till ett kluster med hjälp av PowerShell](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) för att ansluta till den. Exempel:
+När du har konfigurerat det fristående fristående Windows-klustret och har konfigurerat de autentiserade klienterna för att ansluta till den, följer du stegen i avsnittet [Anslut till ett kluster med hjälp av PowerShell](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) för att ansluta till den. Ett exempel:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Du kan sedan köra andra PowerShell-kommandon för att arbeta med det här klustret. Du kan till exempel köra [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) för att visa en lista över noder i det här säkra klustret.
+Du kan sedan köra andra PowerShell-kommandon för att arbeta med det här klustret. Du kan till exempel köra [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) för att visa en lista över noder i det här säkra klustret.
 
 
 Om du vill ta bort klustret ansluter du till noden i klustret där du laddade ned Service Fabric-paketet, öppnar en kommando rad och går till mappen Package. Kör nu följande kommando:

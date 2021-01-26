@@ -3,12 +3,12 @@ title: Skapa ett Azure Service Fabric-kluster
 description: Lär dig hur du konfigurerar ett säkert Service Fabric kluster i Azure med Azure Resource Manager.  Du kan skapa ett kluster med hjälp av en standardmall eller med hjälp av en egen kluster mall.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008675"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791819"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Skapa ett Service Fabric kluster med Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Om du skapar ett produktions kluster för att köra produktions arbets belastnin
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav 
 I den här artikeln använder du modulerna Service Fabric RM PowerShell eller Azure CLI för att distribuera ett kluster:
 
 * [Azure PowerShell 4,1 och uppåt][azure-powershell]
@@ -34,7 +34,7 @@ I den här artikeln använder du modulerna Service Fabric RM PowerShell eller Az
 
 Referens dokumentationen för Service Fabric moduler finns här:
 * [Az.ServiceFabric](/powershell/module/az.servicefabric)
-* [AZ SF CLI-modul](/cli/azure/sf?view=azure-cli-latest)
+* [AZ SF CLI-modul](/cli/azure/sf)
 
 ### <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -285,6 +285,6 @@ En mall för JSON-syntax och egenskaper för att använda en mall finns i [refer
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

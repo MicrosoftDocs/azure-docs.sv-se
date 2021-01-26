@@ -3,12 +3,12 @@ title: Översikt över funktioner – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om funktioner och terminologi i Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195797"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791954"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funktioner och terminologi i Azure Event Hubs
 
@@ -56,7 +56,7 @@ Publicerade händelser tas bort från en Händelsehubben baserat på en konfigur
 >
 > [Event Hubs avbildningen](event-hubs-capture-overview.md) integreras direkt med Azure Blob Storage och Azure Data Lake Storage och, med denna integrering, aktiverar även [flödes händelser direkt till Azure-Synapse](store-captured-data-data-warehouse.md).
 >
-> Om du vill använda mönstret för [händelse källor](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) för ditt program bör du justera din ögonblicks bilds strategi med lagrings gränserna för Event Hubs. Du behöver inte skapa om materialiserade vyer från obehandlade händelser som börjar vid början av tiden. Surely kommer att behöva ångra en sådan strategi när ditt program är i produktion för ett tag och är väl använt och din projektion Builder måste omsättningen genom flera ändrings händelser samtidigt som du försöker fånga upp till de senaste och pågående ändringarna. 
+> Om du vill använda mönstret för [händelse källor](/azure/architecture/patterns/event-sourcing) för ditt program bör du justera din ögonblicks bilds strategi med lagrings gränserna för Event Hubs. Du behöver inte skapa om materialiserade vyer från obehandlade händelser som börjar vid början av tiden. Surely kommer att behöva ångra en sådan strategi när ditt program är i produktion för ett tag och är väl använt och din projektion Builder måste omsättningen genom flera ändrings händelser samtidigt som du försöker fånga upp till de senaste och pågående ändringarna. 
 
 
 ### <a name="publisher-policy"></a>Utgivarprincip

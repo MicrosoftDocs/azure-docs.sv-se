@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bf79fe8766d36fe59595be43250341d49b5460c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ba50def51bcea4f477bea5cecbe5b1ed0409b01a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555937"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98792437"
 ---
 Du kan välja att hantera kryptering på nivån för varje hanterad disk med dina egna nycklar. Kryptering på Server sidan för Managed disks med Kundhanterade nycklar ger en integrerad upplevelse med Azure Key Vault. Du kan antingen importera [dina RSA-nycklar](../articles/key-vault/keys/hsm-protected-keys.md) till Key Vault eller generera nya RSA-nycklar i Azure Key Vault. 
 
@@ -22,8 +22,6 @@ Azure Managed disks hanterar kryptering och dekryptering på ett helt transparen
 #### <a name="full-control-of-your-keys"></a>Fullständig kontroll över dina nycklar
 
 Du måste bevilja åtkomst till hanterade diskar i Key Vault för att kunna använda dina nycklar för att kryptera och dekryptera DEK. Detta gör att du får fullständig kontroll över dina data och nycklar. Du kan när som helst inaktivera dina nycklar eller återkalla åtkomsten till hanterade diskar. Du kan också granska krypterings nyckel användningen med Azure Key Vault övervakning så att endast hanterade diskar eller andra betrodda Azure-tjänster får åtkomst till dina nycklar.
-
-När du inaktiverar eller tar bort din nyckel stängs alla virtuella datorer med diskar som använder den nyckeln automatiskt. Efter detta kommer de virtuella datorerna inte att vara användbara om inte nyckeln är aktive rad igen eller om du tilldelar en ny nyckel.
 
 För Premium SSD, standard-SSD och standard-HDD: när du inaktiverar eller tar bort din nyckel stängs alla virtuella datorer med diskar som använder den nyckeln automatiskt. Efter detta kommer de virtuella datorerna inte att vara användbara om inte nyckeln är aktive rad igen eller om du tilldelar en ny nyckel.    
 

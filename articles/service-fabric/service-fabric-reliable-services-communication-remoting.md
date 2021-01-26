@@ -4,12 +4,12 @@ description: Med Service Fabric fjärr kommunikation kan klienter och tjänster 
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576663"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791585"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Tjänst-Remoting i C# med Reliable Services
 
@@ -160,7 +160,7 @@ De här stegen ändrar mallkod för att använda v2-stacken med hjälp av explic
    </Resources>
    ```
 
-2. Använd [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) från `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` namn området.
+2. Använd [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener) från `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` namn området.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ De här stegen ändrar mallkod för att använda v2-stacken med hjälp av explic
     }
    ```
 
-3. Använd [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) från `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` namn området för att skapa klienter.
+3. Använd [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) från `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` namn området för att skapa klienter.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ Följ dessa steg om du vill ändra till en V2_1 stack.
     }
    ```
 
-3. Lägg till ett [Assembly-attribut](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) för fjärr kommunikations gränssnitt.
+3. Lägg till ett [Assembly-attribut](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute) för fjärr kommunikations gränssnitt.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +267,7 @@ Skapa klient sammansättningen med gränssnitts sammansättningen för att se ti
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Använd explicita fjärr kommunikations klasser för att skapa en lyssnare/klient fabrik för v2-versionen (Interface Compatible)
 
-Gör så här:
+Följ de här stegen:
 
 1. Lägg till en slut punkts resurs med namnet "ServiceEndpointV2_1" i tjänst manifestet.
 
@@ -279,7 +279,7 @@ Gör så här:
    </Resources>
    ```
 
-2. Använd [Remoting v2-lyssnaren](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Standard resurs namnet för tjänst slut punkten är "ServiceEndpointV2_1". Den måste definieras i tjänst manifestet.
+2. Använd [Remoting v2-lyssnaren](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener). Standard resurs namnet för tjänst slut punkten är "ServiceEndpointV2_1". Den måste definieras i tjänst manifestet.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ Gör så här:
     }
    ```
 
-3. Använd v2- [klient fabriken](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
+3. Använd v2- [klient fabriken](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory).
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +356,7 @@ Det här steget ser till att tjänsten bara lyssnar på v2-lyssnaren.
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Använda anpassad serialisering med ett meddelande med figursatt meddelande hantering
 
 För ett meddelande om figursatt meddelande hantering skapar vi ett enda figursatt objekt med alla parametrar som ett fält i det.
-Gör så här:
+Följ de här stegen:
 
 1. Implementera `IServiceRemotingMessageSerializationProvider` gränssnittet för att tillhandahålla implementering för anpassad serialisering.
     Det här kodfragmentet visar hur implementeringen ser ut.

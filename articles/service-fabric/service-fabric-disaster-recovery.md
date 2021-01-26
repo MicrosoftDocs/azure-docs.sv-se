@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257515"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791163"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Haveri beredskap i Azure Service Fabric
 En viktig del av att leverera hög tillgänglighet säkerställer att tjänsterna kan överleva alla olika typer av problem. Detta är särskilt viktigt för problem som är oplanerade och utanför din kontroll. 
@@ -172,7 +172,7 @@ Följande åtgärder kan leda till data förlust. Kontrol lera innan du följer 
 >
 
 - Använd `Repair-ServiceFabricPartition -PartitionId` eller- `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API: et. Med det här API: et kan du ange partitionens ID för att ta bort förlorade kvorum och till potentiell data förlust.
-- Om ditt kluster stöter på frekventa fel som gör att tjänster kan hamna i ett kvorum med kvorum och risken för _data förlust är acceptabel_, kan tjänsten automatiskt återställas genom att ange ett lämpligt [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) -värde. Service Fabric väntar på det angivna `QuorumLossWaitDuration` värdet (Standardvärdet är oändligt) innan återställningen utförs. Vi rekommenderar *inte* den här metoden eftersom den kan orsaka oväntade data förluster.
+- Om ditt kluster stöter på frekventa fel som gör att tjänster kan hamna i ett kvorum med kvorum och risken för _data förlust är acceptabel_, kan tjänsten automatiskt återställas genom att ange ett lämpligt [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) -värde. Service Fabric väntar på det angivna `QuorumLossWaitDuration` värdet (Standardvärdet är oändligt) innan återställningen utförs. Vi rekommenderar *inte* den här metoden eftersom den kan orsaka oväntade data förluster.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric klustrets tillgänglighet
 I allmänhet är Service Fabric Cluster en mycket distribuerad miljö utan några enskilda fel punkter. Ett fel på en nod kan inte orsaka tillgänglighets-eller Tillförlitlighets problem för klustret, främst på grund av att Service Fabric system tjänster följer samma rikt linjer som tidigare. Det innebär att de alltid körs med tre eller fler repliker som standard, och system tjänster som är tillstånds lösa körs på alla noder. 

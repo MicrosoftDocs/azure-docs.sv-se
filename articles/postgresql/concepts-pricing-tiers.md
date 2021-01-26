@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123260"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791146"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prisnivåer i Azure Database for PostgreSQL – Enskild server
 
@@ -21,7 +21,7 @@ Du kan skapa en Azure Database for PostgreSQL-server på en av tre olika pris ni
 |:---|:----------|:--------------------|:---------------------|
 | Beräknings generation | Gen 4, gen 5 | Gen 4, gen 5 | Gen 5 |
 | Virtuella kärnor | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Minne per vCore | 2 GB | 5 GB | 10 GB |
+| Minne per vCore | 2 GB | 5 GB | 10 GB |
 | Lagrings storlek | 5 GB till 1 TB | 5 GB till 16 TB | 5 GB till 16 TB |
 | Kvarhållningsperiod för databas säkerhets kopior | 7 till 35 dagar | 7 till 35 dagar | 7 till 35 dagar |
 
@@ -29,7 +29,7 @@ Om du vill välja en pris nivå använder du följande tabell som utgångs punkt
 
 | Prisnivå | Målbelastningar |
 |:-------------|:-----------------|
-| Basic | Arbets belastningar som kräver ljus beräkning och I/O-prestanda. Exempel på detta är servrar som används för utveckling eller testning eller småskaliga program som inte används ofta. |
+| Grundläggande | Arbets belastningar som kräver ljus beräkning och I/O-prestanda. Exempel på detta är servrar som används för utveckling eller testning eller småskaliga program som inte används ofta. |
 | Generell användning | De flesta företags arbets belastningar som kräver balanserade beräkning och minne med skalbart I/O-genomflöde. Några exempel kan vara servrar som är värd för webb- och mobilappar och andra företagsprogram.|
 | Minnesoptimerad | Databas arbets belastningar med höga prestanda som kräver minnes prestanda för snabbare bearbetning av transaktioner och högre samtidighet. Exempel på det är servrar för att bearbeta realtidsdata och transaktionsappar eller analysappar med höga prestanda.|
 
@@ -47,11 +47,11 @@ Lagrings utrymmet du tillhandahåller är mängden lagrings kapacitet som är ti
 |:---|:----------|:--------------------|:---------------------|
 | Lagringstyp | Basic Storage | Generell användning lagring | Generell användning lagring |
 | Lagrings storlek | 5 GB till 1 TB | 5 GB till 16 TB | 5 GB till 16 TB |
-| Öknings storlek för lagring | 1 GB | 1 GB | 1 GB |
+| Öknings storlek för lagring | 1 GB | 1 GB | 1 GB |
 | IOPS | Variabel |3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20 000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20 000 IOPS |
 
 > [!NOTE]
-> Det finns stöd för lagring på upp till 16TB och 20 000 IOPS i följande regioner: östra USA, östra USA 2, södra Brasilien, centrala USA, västra USA, norra centrala USA, södra centrala USA, norra Europa, västra Europa, Storbritannien, södra, Storbritannien, västra, Sydostasien, Asien, östra, Östra Japan, västra Japan, västra USA 2, västra centrala USA, östra USA , Kanada, östra och Kanada, centrala.
+> Det finns stöd för lagring på upp till 16TB och 20 000 IOPS i följande regioner: östra Australien, sydöstra Australien, södra Brasilien, centrala Kanada, Östra Kanada, centrala USA, Kina, östra 2, Kina, norra 2, Asien, östra, östra USA, östra USA 1, östra USA 2, Östra Japan, västra USA, västra (USA), södra centrala USA, norra Europa, södra centrala USA Schweiz, norra Sydostasien. , Schweiz, västra, US Gov öst, US Gov SouthCentral, US Gov sydvästra, Storbritannien, södra, Storbritannien, västra, Västeuropa, västra centrala USA, västra USA och västra USA 2.
 >
 > Alla andra regioner stöder upp till 4 TB lagring och 6000 IOPS.
 >

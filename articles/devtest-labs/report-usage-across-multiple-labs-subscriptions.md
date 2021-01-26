@@ -3,12 +3,12 @@ title: Azure DevTest Labs användning över flera labb och prenumerationer
 description: Lär dig hur du rapporterar Azure DevTest Labs användning över flera labb och prenumerationer.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152198"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789946"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Rapportera Azure DevTest Labs användning över flera labb och prenumerationer
 
@@ -73,14 +73,14 @@ Använd ett data visualiserings verktyg som du väljer för att ansluta till lå
 
 Du kan använda [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) för att skapa, länka och hantera dina resurser inom ett enda plats gränssnitt. Om du behöver mer kontroll kan du skapa en enskild resurs i en enda resurs grupp och hanterad oberoende av den Data Factory tjänsten.  
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
-När systemet har kon figurer ATS och data flyttas till långsiktig lagring, är nästa steg att följa de frågor som data behöver för att besvara. Exempel: 
+När systemet har kon figurer ATS och data flyttas till långsiktig lagring, är nästa steg att följa de frågor som data behöver för att besvara. Ett exempel: 
 
 -   Vilken storlek används för virtuella datorer?
 
     Kan användarna välja höga prestanda (dyrare) VM-storlekar?
 -   Vilka Marketplace-avbildningar används?
 
-    Är anpassade avbildningar som är vanligast förekommande för virtuella datorer, om en gemensam avbildnings lagring skapas som [delad avbildnings Galleri](../virtual-machines/windows/shared-image-galleries.md) eller [avbildnings fabrik](image-factory-create.md).
+    Är anpassade avbildningar som är vanligast förekommande för virtuella datorer, om en gemensam avbildnings lagring skapas som [delad avbildnings Galleri](../virtual-machines/shared-image-galleries.md) eller [avbildnings fabrik](image-factory-create.md).
 -   Vilka anpassade bilder används eller inte används?

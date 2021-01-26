@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740665"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791568"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Självstudie: etablera Azure Data Box Gateway i Hyper-V
 
@@ -23,7 +23,7 @@ Den här självstudien beskriver hur du etablerar en Data Box Gateway i ett vär
 
 Du behöver ha administratörsbehörighet för att etablera och konfigurera en virtuell enhet. Etableringen och den inledande installationen kan ta ungefär 10 minuter att slutföra. 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -84,7 +84,7 @@ För att skapa en virtuell enhet behöver du följande:
 ## <a name="bitlocker-considerations"></a>BitLocker-överväganden
 
 * Vi rekommenderar att du aktiverar BitLocker på din Data Box Gateway virtuella dator. BitLocker är inte aktiverat som standard. Mer information finns i:
-  * [Inställningar för krypterings stöd i Hyper-V Manager](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [Inställningar för krypterings stöd i Hyper-V Manager](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [Stöd för BitLocker i en virtuell dator](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Etablera en virtuell enhet i hypervisor-program
@@ -122,7 +122,7 @@ Utför följande steg för att etablera en enhet i ditt hypervisor-program.
 11. Du behöver fyra virtuella processorer för att uppfylla minimi kraven. Om du vill lägga till fyra virtuella processorer väljer du ditt värd system i fönstret **Hyper-V Manager** . I den högra fönsterrutan går du till listan över **virtuella datorer** och letar upp den virtuella dator som du nyss skapade. Markera och högerklicka på datornamnet och välj **Inställningar**.
 
     ![Inställningar för virtuella datorer](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
-12. På sidan **Inställningar** går du till den vänstra fönsterruta och klickar på **Processor**. I den högra fönsterrutan ställer du in **antal virtuella processorer** på 4 (eller fler). Klicka på **Använd**.
+12. På sidan **Inställningar** går du till den vänstra fönsterruta och klickar på **Processor**. I den högra fönsterrutan ställer du in **antal virtuella processorer** på 4 (eller fler). Klicka på **Applicera**.
 
     ![Ange antal virtuella processorer på sidan Inställningar](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
 13. För att uppfylla minimi kraven måste du också lägga till en virtuell data disk på 2 TB. På sidan **Inställningar**:

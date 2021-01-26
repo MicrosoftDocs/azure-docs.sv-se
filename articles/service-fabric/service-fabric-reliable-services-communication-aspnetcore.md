@@ -4,12 +4,12 @@ description: Lär dig hur du använder ASP.NET Core i tillstånds lösa och till
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576799"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791602"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core i Azure Service Fabric Reliable Services
 
@@ -190,7 +190,7 @@ En dynamisk port som tilldelas av en `Endpoint` konfiguration tillhandahåller b
 ## <a name="kestrel-in-reliable-services"></a>Kestrel i Reliable Services
 Du kan använda Kestrel i Reliable Services genom att importera paketet **Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet. Det här paketet innehåller `KestrelCommunicationListener` en implementering av `ICommunicationListener` . `KestrelCommunicationListener` gör att du kan skapa en ASP.NET Core WebHost i en tillförlitlig tjänst genom att använda Kestrel som webb server.
 
-Kestrel är en plattforms oberoende webb server för ASP.NET Core. Till skillnad från HTTP.sys använder Kestrel inte en central slut punkts hanterare. Till skillnad från HTTP.sys stöder Kestrel inte port delning mellan flera processer. Varje instans av Kestrel måste använda en unik port. Mer information om Kestrel finns i [implementerings informationen](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
+Kestrel är en plattforms oberoende webb server för ASP.NET Core. Till skillnad från HTTP.sys använder Kestrel inte en central slut punkts hanterare. Till skillnad från HTTP.sys stöder Kestrel inte port delning mellan flera processer. Varje instans av Kestrel måste använda en unik port. Mer information om Kestrel finns i [implementerings informationen](/aspnet/core/fundamentals/servers/kestrel).
 
 ![Kestrel-diagram][4]
 
@@ -247,7 +247,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 I det här exemplet tillhandahålls en singleton-instans av `IReliableStateManager` till behållaren för webhost-beroende insprutning. Detta är inte absolut nödvändigt, men du kan använda `IReliableStateManager` och pålitliga samlingar i dina åtgärds metoder för MVC-styrenheten.
 
-Inget `Endpoint` konfigurations namn *not* har angetts för `KestrelCommunicationListener` i en tillstånds känslig tjänst. Detta beskrivs mer detaljerat i följande avsnitt.
+Inget `Endpoint` konfigurations namn  har angetts för `KestrelCommunicationListener` i en tillstånds känslig tjänst. Detta beskrivs mer detaljerat i följande avsnitt.
 
 ### <a name="configure-kestrel-to-use-https"></a>Konfigurera Kestrel för användning av HTTPS
 När du aktiverar HTTPS med Kestrel i din tjänst måste du ange flera lyssnings alternativ. Uppdatera `ServiceInstanceListener` för att använda en *EndpointHttps* -slutpunkt och lyssna på en speciell port (till exempel port 443). När du konfigurerar webb värden att använda Kestrel-webbservern måste du konfigurera Kestrel för att lyssna efter IPv6-adresser på alla nätverks gränssnitt: 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359854"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790435"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Distribuera exempeletikettverktyget
 
@@ -34,7 +34,7 @@ Det snabbaste sättet att starta märkning av data är att köra verktyget för 
 
 Innan vi börjar är det viktigt att Observera att det finns två sätt att distribuera exempel etikett verktyget till en Azure Container Instance (ACI). Båda alternativen används för att köra verktyget för etikettering med ACI: 
 
-* [Använda Azure-portalen](#azure-portal)
+* [Använda Azure Portal](#azure-portal)
 * [Använda Azure CLI](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -101,7 +101,7 @@ Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal:
 > När du skapar din webbapp kan du också konfigurera auktorisering/autentisering. Detta är inte nödvändigt för att komma igång. 
 
 > [!IMPORTANT]
-> Du kan behöva aktivera TLS för din webbapp för att kunna visa den på `https` adressen. Följ anvisningarna i [Aktivera en TLS-slutpunkt](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) för att konfigurera en sidvagn-behållare än aktiverar TLS/SSL för din webbapp.
+> Du kan behöva aktivera TLS för din webbapp för att kunna visa den på `https` adressen. Följ anvisningarna i [Aktivera en TLS-slutpunkt](../../container-instances/container-instances-container-group-ssl.md) för att konfigurera en sidvagn-behållare än aktiverar TLS/SSL för din webbapp.
 
 ### <a name="azure-cli"></a>Azure CLI
 

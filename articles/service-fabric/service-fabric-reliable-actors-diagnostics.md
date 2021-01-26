@@ -5,15 +5,15 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258463"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789624"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostik- och prestandaövervakning för Reliable Actors
-Reliable Actors körningen genererar [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -händelser och [prestanda räknare](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1). Dessa ger insikter om hur körningen fungerar och hjälper till med fel sökning och prestanda övervakning.
+Reliable Actors körningen genererar [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) -händelser och [prestanda räknare](/dotnet/api/system.diagnostics.performancecounter). Dessa ger insikter om hur körningen fungerar och hjälper till med fel sökning och prestanda övervakning.
 
 ## <a name="eventsource-events"></a>EventSource-händelser
 EventSource Provider-namnet för Reliable Actors runtime är "Microsoft-ServiceFabric-skådespelare". Händelser från den här händelse källan visas i fönstret [diagnostik-händelser](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) när aktörs programmet [felsöks i Visual Studio](service-fabric-debugging-your-application.md).
@@ -50,7 +50,7 @@ För kategorin `Service Fabric Actor` är räknar instans namnen i följande for
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
+*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
 
 *ActorRuntimeInternalID* är en sträng representation av ett 64-bitars heltal som genereras av Fabric-aktörernas kör tid för intern användning. Detta ingår i prestanda räknarens instans namn för att säkerställa dess unika värde och undvika konflikter med andra instans namn för prestanda räknaren. Användare bör inte försöka tolka den här delen av prestanda räknarens instans namn.
 
@@ -69,7 +69,7 @@ För kategorin `Service Fabric Actor Method` är räknar instans namnen i följa
 
 *ActorsRuntimeMethodId* är en sträng representation av ett 32-bitars heltal som genereras av Fabric-aktörernas kör tid för intern användning. Detta ingår i prestanda räknarens instans namn för att säkerställa dess unika värde och undvika konflikter med andra instans namn för prestanda räknaren. Användare bör inte försöka tolka den här delen av prestanda räknarens instans namn.
 
-*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
+*ServiceFabricPartitionID* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras genom [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) metoden med format specificeraren "D".
 
 *ActorRuntimeInternalID* är en sträng representation av ett 64-bitars heltal som genereras av Fabric-aktörernas kör tid för intern användning. Detta ingår i prestanda räknarens instans namn för att säkerställa dess unika värde och undvika konflikter med andra instans namn för prestanda räknaren. Användare bör inte försöka tolka den här delen av prestanda räknarens instans namn.
 
@@ -162,5 +162,5 @@ När en klient anropar en metod via ett aktörs objekt, resulterar det i ett med
 ## <a name="next-steps"></a>Nästa steg
 * [Hur Reliable Actors använder Service Fabrics plattformen](service-fabric-reliable-actors-platform.md)
 * [Dokumentation om aktörs-API-referens](/previous-versions/azure/dn971626(v=azure.100))
-* [Exempelkod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Exempel kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [EventSource-providers i PerfView](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

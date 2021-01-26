@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013120"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789659"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Inducera kontrollerade kaos i Service Fabric kluster
 Storskaliga distribuerade system som moln infrastrukturer är mycket otillförlitliga. Med Azure Service Fabric kan utvecklare skriva pålitliga distribuerade tjänster ovanpå en otillförlitlig infrastruktur. För att kunna skriva robusta distribuerade tjänster ovanpå en otillförlitlig infrastruktur måste utvecklare kunna testa stabiliteten hos sina tjänster medan den underliggande otillförlitliga infrastrukturen går igenom komplicerade tillstånds över gångar på grund av fel.
 
-[Fel inmatningen och kluster analys tjänsten](./service-fabric-testability-overview.md) (även kallat fel analys tjänsten) ger utvecklare möjlighet att inducera fel för att testa sina tjänster. De här riktade, simulerade felen, som att [starta om en partition](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), kan hjälpa de vanligaste tillstånds över gångarna. De riktade simulerade felen är dock fördelade efter definition och kan därför missa buggar som bara visar upp till en svår och komplicerad sekvens av tillstånds över gångar. För en systematisk testning kan du använda kaos.
+[Fel inmatningen och kluster analys tjänsten](./service-fabric-testability-overview.md) (även kallat fel analys tjänsten) ger utvecklare möjlighet att inducera fel för att testa sina tjänster. De här riktade, simulerade felen, som att [starta om en partition](/powershell/module/servicefabric/start-servicefabricpartitionrestart), kan hjälpa de vanligaste tillstånds över gångarna. De riktade simulerade felen är dock fördelade efter definition och kan därför missa buggar som bara visar upp till en svår och komplicerad sekvens av tillstånds över gångar. För en systematisk testning kan du använda kaos.
 
 Kaos simulerar periodiska, överlagrade fel (både korrekt och oäkta) i hela klustret under en längre tid. Ett korrekt fel består av en uppsättning Service Fabric-API-anrop, till exempel om ett fel uppstår vid omstart av repliker, eftersom det här är en nära följd av en öppen på en replik. Ta bort replikering, flytta den primära repliken och flytta sekundär replik är de andra fel som genomförs av kaos. Inaktiva fel är process avslutningar, t. ex. Starta om nod och starta om kod paket. 
 

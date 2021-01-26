@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: bb7708514de6a1d68ecad0c142d68c321293d728
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 41aa7f251bc12fd889a71f65da83c4730ebda9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219631"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789641"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric versioner
 
@@ -18,7 +18,7 @@ ms.locfileid: "98219631"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Ärende spårning</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Supportalternativ</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Versioner som stöds</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kodexempel</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod exempel</a>
 
 Den här artikeln innehåller mer information om de senaste versionerna och uppdateringarna av Service Fabric Runtime och SDK: er.
 
@@ -117,7 +117,7 @@ Vi uppdaterar även våra planerade versions datum för att ange att den här pr
 #### <a name="key-announcements"></a>Viktiga meddelanden
  - [**KeyVaultReference-stöd för program hemligheter (för hands version)**](./service-fabric-keyvault-references.md): Service Fabric program som har aktiverat [hanterade identiteter](./concepts-managed-identity.md) kan nu direkt referera till en Key Vault hemlig URL som en miljö variabel, program parameter eller autentiseringsuppgifter för containerns lagrings plats. Service Fabric kommer automatiskt att lösa hemligheten med hjälp av programmets hanterade identitet. 
      
-- **Förbättrad uppgraderings säkerhet för tillstånds lösa tjänster**: för att garantera tillgängligheten under en program uppgradering har vi introducerat nya konfigurationer för att definiera det [minsta antalet instanser för tillstånds lösa tjänster](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) som ska anses tillgängliga. Tidigare var det här värdet 1 för alla tjänster och kunde inte ändras. Med den nya säkerhets kontrollen per tjänst kan du se till att tjänsterna behåller ett minsta antal instanser under program uppgraderingar, kluster uppgraderingar och annat underhåll som förlitar sig på Service Fabric hälso-och säkerhets kontroller.
+- **Förbättrad uppgraderings säkerhet för tillstånds lösa tjänster**: för att garantera tillgängligheten under en program uppgradering har vi introducerat nya konfigurationer för att definiera det [minsta antalet instanser för tillstånds lösa tjänster](/dotnet/api/system.fabric.description.statelessservicedescription) som ska anses tillgängliga. Tidigare var det här värdet 1 för alla tjänster och kunde inte ändras. Med den nya säkerhets kontrollen per tjänst kan du se till att tjänsterna behåller ett minsta antal instanser under program uppgraderingar, kluster uppgraderingar och annat underhåll som förlitar sig på Service Fabric hälso-och säkerhets kontroller.
   
 - [**Resurs gränser för användar tjänster**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): användare kan konfigurera resurs gränser för användar tjänsterna på en nod för att förhindra scenarier som resurs utbelastning av Service Fabric system tjänster. 
   

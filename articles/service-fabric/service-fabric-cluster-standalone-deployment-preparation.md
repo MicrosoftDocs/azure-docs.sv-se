@@ -3,12 +3,12 @@ title: Förberedelse av fristående kluster distribution
 description: Dokumentation som rör förberedelse av miljön och skapandet av kluster konfigurationen som ska övervägas innan du distribuerar ett kluster som är avsett för hantering av produktions belastningar.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509180"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790960"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planera och förbereda din Service Fabric fristående kluster distribution
 
@@ -57,7 +57,7 @@ Här är rekommenderade specifikationer för datorer i ett Service Fabric kluste
 * Anslutning till ett säkert nätverk eller nätverk för alla datorer
 * Windows Server OS installerat (giltiga versioner: 2012 R2, 2016, 1709 eller 1803). Service Fabric version 6.4.654.9590 och senare stöder också Server 2019 och 1809.
 * [.NET Framework 4.5.1 eller senare](https://www.microsoft.com/download/details.aspx?id=40773), fullständig installation
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * [RemoteRegistry-tjänsten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) ska köras på alla datorer
 * **Service Fabric installations enhet måste vara NTFS-filsystem**
 * **Prestanda loggar för Windows-tjänster *&-aviseringar* och *Windows-händelseloggen* måste [vara aktiverade](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))**.

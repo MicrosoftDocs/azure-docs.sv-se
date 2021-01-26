@@ -3,12 +3,12 @@ title: Azures säkerhets bas linje för Azure DevTest Labs
 description: Azures säkerhets bas linje för Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202019"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789912"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azures säkerhets bas linje för Azure DevTest Labs
 
@@ -619,7 +619,7 @@ Dessutom hanteras och underhålls avbildningar av virtuella Azure Marketplace-da
 
 - [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Översikt över Azure Automation tillstånds konfiguration](../automation/automation-dsc-overview.md)
-- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [Så här skapar du en avbildnings fabrik i DevTest Labs](image-factory-create.md)
 
 **Azure Security Center övervakning:** Ja

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655089"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791467"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall Threat Intelligence-baserad filtrering
 
@@ -27,7 +27,7 @@ Du kan välja att bara logga en avisering när en regel utlöses, eller så kan 
 
 Som standard är Hot information-baserad filtrering aktive rad i varnings läge. Du kan inte stänga av den här funktionen eller ändra läget tills Portal gränssnittet blir tillgängligt i din region.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Hot information för brand vägg":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Gränssnitt för Threat Intelligence-baserad filtrerings Portal":::
 
 ## <a name="logs"></a>Loggar
 
@@ -53,6 +53,6 @@ Följande logg utdrag visar en utlöst regel:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Se [exempel för Azure Firewall-Log Analytics](log-analytics-samples.md)
+- Se [exempel för Azure Firewall-Log Analytics](./firewall-workbook.md)
 - Lär dig hur du [distribuerar och konfigurerar en Azure-brandvägg](tutorial-firewall-deploy-portal.md)
 - Granska [Microsoft Security Intelligence-rapporten](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

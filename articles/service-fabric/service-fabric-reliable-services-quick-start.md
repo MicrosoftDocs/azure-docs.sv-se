@@ -4,12 +4,12 @@ description: Introduktion till att skapa ett Microsoft Azure Service Fabric-prog
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
-ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012746"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791535"
 ---
 # <a name="get-started-with-reliable-services"></a>Kom igång med Reliable Services
 
@@ -169,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) är en ordboks implementering som du kan använda för att lagra tillstånd i tjänsten på ett tillförlitligt sätt. Med Service Fabric och pålitliga samlingar kan du lagra data direkt i tjänsten utan att ha behov av ett externt beständigt arkiv. Tillförlitliga samlingar gör dina data hög tillgängliga. Service Fabric uppnår detta genom att skapa och hantera flera *repliker* av tjänsten åt dig. Det innehåller också ett API som sammanfattar komplexiteten vid hantering av dessa repliker och deras tillstånds över gångar.
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2) är en ordboks implementering som du kan använda för att lagra tillstånd i tjänsten på ett tillförlitligt sätt. Med Service Fabric och pålitliga samlingar kan du lagra data direkt i tjänsten utan att ha behov av ett externt beständigt arkiv. Tillförlitliga samlingar gör dina data hög tillgängliga. Service Fabric uppnår detta genom att skapa och hantera flera *repliker* av tjänsten åt dig. Det innehåller också ett API som sammanfattar komplexiteten vid hantering av dessa repliker och deras tillstånds över gångar.
 
 Tillförlitliga samlingar kan lagra alla .NET-typer, inklusive anpassade typer, med ett par varningar:
 
-* Service Fabric gör ditt tillstånd hög tillgängligt genom att *Replikera* tillstånd mellan noder, och tillförlitliga samlingar lagrar dina data till en lokal disk på varje replik. Det innebär att allt som lagras i pålitliga samlingar måste kunna *serialiseras*. Som standard använder pålitliga samlingar [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) för serialisering, så det är viktigt att se till att dina typer [stöds av data kontrakts serialiseringen](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) när du använder standard-serialiseraren.
+* Service Fabric gör ditt tillstånd hög tillgängligt genom att *Replikera* tillstånd mellan noder, och tillförlitliga samlingar lagrar dina data till en lokal disk på varje replik. Det innebär att allt som lagras i pålitliga samlingar måste kunna *serialiseras*. Som standard använder pålitliga samlingar [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute) för serialisering, så det är viktigt att se till att dina typer [stöds av data kontrakts serialiseringen](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) när du använder standard-serialiseraren.
 * Objekt replikeras för hög tillgänglighet när du genomför transaktioner på pålitliga samlingar. Objekt som lagras i Reliable Collections lagras i lokalt minne i tjänsten. Det innebär att du har en lokal referens till objektet.
   
    Det är viktigt att du inte följer lokala instanser av dessa objekt utan att utföra en uppdaterings åtgärd för den tillförlitliga samlingen i en transaktion. Detta beror på att ändringar av lokala instanser av objekt inte replikeras automatiskt. Du måste infoga objektet i ord listan igen eller använda en av *uppdaterings* metoderna i ord listan.
@@ -198,7 +198,7 @@ Reliable Collections har många av samma åtgärder som deras `System.Collection
 Tillförlitliga samlings åtgärder är *transaktionella*, så att du kan hålla tillstånd konsekvent över flera pålitliga samlingar och åtgärder. Du kan till exempel ta bort en arbets uppgift från en tillförlitlig kö, utföra en åtgärd och spara resultatet i en tillförlitlig ord lista i en enda transaktion. Detta behandlas som en atomisk åtgärd och garanterar att hela åtgärden kommer att lyckas eller att hela åtgärden kommer att återställas. Om ett fel inträffar när du har avplacerat objektet, men innan du sparar resultatet, återställs hela transaktionen och objektet behålls i kön för bearbetning.
 
 ## <a name="run-the-application"></a>Kör programmet
-Nu återgår vi till programmet *HelloWorld* . Nu kan du bygga och distribuera dina tjänster. När du trycker på **F5**skapas och distribueras ditt program till det lokala klustret.
+Nu återgår vi till programmet *HelloWorld* . Nu kan du bygga och distribuera dina tjänster. När du trycker på **F5** skapas och distribueras ditt program till det lokala klustret.
 
 När tjänsterna har startats kan du Visa de genererade ETW (Event Tracing for Windows)-händelserna (ETW) i ett fönster med **diagnostiska händelser** . Observera att de händelser som visas kommer från både den tillstånds lösa tjänsten och den tillstånds känsliga tjänsten i programmet. Du kan pausa strömmen genom att klicka på **paus** knappen. Du kan sedan granska informationen i ett meddelande genom att expandera meddelandet.
 

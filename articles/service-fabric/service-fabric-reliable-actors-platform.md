@@ -4,12 +4,12 @@ description: Beskriver hur Reliable Actors skiktas på Reliable Services och anv
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e204b47b7fa9f528341507c315c926159d524e13
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575626"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789590"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hur Reliable Actors använder Service Fabrics plattformen
 I den här artikeln förklaras hur Reliable Actors fungerar på Azure Service Fabric-plattformen. Reliable Actors köras i ett ramverk som är värd för en implementering av en tillstånds känslig tillförlitlig tjänst som kallas *aktörs tjänst*. Aktörs tjänsten innehåller alla komponenter som krävs för att hantera livs cykeln och meddelande sändning för dina aktörer:
@@ -89,7 +89,7 @@ När du använder GUID/UUID: er och strängar, hashas värdena till en Int64. Me
 ## <a name="next-steps"></a>Nästa steg
 * [Hantering av aktörs tillstånd](service-fabric-reliable-actors-state-management.md)
 * [Aktörs livs cykel och skräp insamling](service-fabric-reliable-actors-lifecycle.md)
-* [Dokumentation om aktörers API-referens](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
+* [Dokumentation om aktörers API-referens](/dotnet/api/microsoft.servicefabric.actors)
 * [.NET-exempel kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-exempel kod](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

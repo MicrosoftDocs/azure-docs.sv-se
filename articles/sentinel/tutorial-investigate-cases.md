@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511737"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790994"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Självstudie: undersöka incidenter med Azure Sentinel
 
 > [!IMPORTANT]
-> Undersöknings diagrammet är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
-
+> Undersöknings diagrammet är nu **allmänt tillgänglig**. 
 
 Den här självstudien hjälper dig att undersöka incidenter med Azure Sentinel. När du har anslutit dina data källor till Azure Sentinel vill du bli meddelad när något misstänkt inträffar. För att du ska kunna göra detta kan du med Azure Sentinel skapa avancerade aviserings regler som genererar incidenter som du kan tilldela och undersöka.
 
@@ -114,9 +113,9 @@ Så här använder du undersöknings diagrammet:
 När du har löst en viss incident (till exempel när undersökningen har nått slutet) bör du ställa in incidentens status på **stängd**. När du gör det blir du ombedd att klassificera incidenten genom att ange orsaken till att du stänger den. Det här steget är obligatoriskt. Klicka på **Välj klassificering** och välj något av följande i list rutan:
 
 - Sann positiv – misstänkt aktivitet
-- Oskadlig positiv, misstänkt men förväntad
-- Falsk positiv – felaktig aviserings logik
-- Falsk positiv-felaktiga data
+- Godartad positiv – misstänkt men förväntad
+- Falsk positiv – felaktig aviseringslogik
+- Falsk positiv – felaktiga data
 - Obestämd
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Skärm bild som visar de klassificeringar som är tillgängliga i listan Välj klassificering.":::

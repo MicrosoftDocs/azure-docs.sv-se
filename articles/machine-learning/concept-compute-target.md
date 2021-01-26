@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1d3a7be429f730dd4dbd71bade1e3e51ea73c10f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188657"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791180"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Vad är beräkningsmål i Azure Machine Learning?
 
@@ -76,7 +76,7 @@ Du kan skapa Azure Machine Learning beräknings instanser eller beräknings klus
 När du skapar den här typen av beräknings resurser ingår dessa automatiskt i din arbets yta, till skillnad från andra typer av beräknings mål.
 
 
-|Kapacitet  |Beräkningskluster  |Beräkninsinstans  |
+|Funktion  |Beräkningskluster  |Beräkninsinstans  |
 |---------|---------|---------|
 |Kluster med en eller flera noder     |    **&check;**       |         |
 |Autoskalar varje gången du skickar en körning     |     **&check;**      |         |
@@ -123,7 +123,7 @@ I följande tabell finns mer information om vilka serier och begränsningar som 
 > [!NOTE]
 > Azure Machine Learning stöder inte alla VM-storlekar som stöds av Azure Compute. Använd någon av följande metoder för att visa en lista över tillgängliga VM-storlekar:
 > * [REST-API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>Beräknings isolering

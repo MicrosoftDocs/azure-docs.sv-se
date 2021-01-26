@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708203"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790401"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Hantera data exfiltrering för att Azure Storage konton med tjänst slut punkts principer för virtuella nätverk med hjälp av Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Med tjänst slut punkts principer för virtuella nätverk kan du tillämpa åtkomst kontroll på Azure Storage-konton inifrån ett virtuellt nätverk över tjänst slut punkter. Det här är en nyckel för att skydda dina arbets belastningar, hantera vilka lagrings konton som tillåts och var data exfiltrering tillåts.
 I den här artikeln kan du se hur du:
@@ -38,6 +36,8 @@ I den här artikeln kan du se hur du:
 * Distribuera en virtuell dator (VM) till under nätet.
 * Bekräfta åtkomst till det tillåtna lagrings kontot från under nätet.
 * Bekräfta åtkomst nekas till det icke-tillåtna lagrings kontot från under nätet.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 

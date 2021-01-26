@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539268"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790875"
 ---
 # <a name="what-is-language-understanding-luis"></a>Vad är Language Understanding Intelligent Service (LUIS)?
 
@@ -33,7 +33,7 @@ När Azure LUIS-appen har publicerats skickar ett klient program yttranden (text
 
 ![Konceptuell bilder av LUIS fungerar med chatt-roboten för att förutsäga användar text med naturligt språk förståelse (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Konceptuell bilder av LUIS fungerar med chatt-roboten för att förutsäga användar text med naturligt språk förståelse (NLP")
 
-|Steg|Åtgärd|
+|Steg|Action|
 |:--|:--|
 |1|Klientprogrammet skickar användarens _yttrande_ (text med användarens egna ord), "I want to call my HR rep." (”Jag vill ringa HR-personalen.”) till LUIS-slutpunkten som en HTTP-begäran.|
 |2|Med LUIS kan du utforma dina anpassade språk modeller för att lägga till information i ditt program. Datorns förkonfigurerade språk modeller tar användarens ostrukturerade indata och returnerar ett JSON-formaterat svar, med en topp avsikt `HRContact` . Det minsta JSON-slutpunktssvaret innehåller frågeyttrandet och avsikten med högsta poäng. Det kan också extrahera data, till exempel entiteten _kontakt typ_ .|
@@ -66,7 +66,7 @@ Utforma din modell med kategorier av **[användar avsikter som kallas](luis-conc
 |`When does your store open?`|StoreHoursAndLocation (Butikens öppettider och plats)|open (öppen)|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting (Boka möte)|1pm, Bob (kl. 13, Bob)|
 
-Skapa modellen med [redigerings](https://go.microsoft.com/fwlink/?linkid=2092087 "redigering") -API: erna, eller med **[Luis-portalen](https://www.luis.ai "LUIS-portalen")** eller båda. Lär dig mer om hur du skapar med [portalen](get-started-portal-build-app.md "portal") och [SDK-klient biblioteken](azure-sdk-quickstart.md "Bibliotek för SDK-klient").
+Skapa modellen med [redigerings](https://go.microsoft.com/fwlink/?linkid=2092087 "redigering") -API: erna, eller med **[Luis-portalen](https://www.luis.ai "LUIS-portalen")** eller båda. Lär dig mer om hur du skapar med [portalen](get-started-portal-build-app.md "portal") och [SDK-klient biblioteken](./client-libraries-rest-api.md?pivots=rest-api "Bibliotek för SDK-klient").
 
 ## <a name="step-2-get-the-query-prediction"></a>Steg 2: Hämta frågan förutsägelse
 
@@ -128,7 +128,7 @@ LUIS tillhandahåller funktioner från Textanalys som en del av dina befintliga 
 
 ## <a name="learn-with-the-quickstarts"></a>Lär dig med snabb starter
 
-Lär dig mer om LUIS med praktiska snabb starter med hjälp av [portalen](get-started-portal-build-app.md "portal") och [klient biblioteken för SDK](azure-sdk-quickstart.md "Bibliotek för SDK-klient").
+Lär dig mer om LUIS med praktiska snabb starter med hjälp av [portalen](get-started-portal-build-app.md "portal") och [klient biblioteken för SDK](./client-libraries-rest-api.md?pivots=rest-api "Bibliotek för SDK-klient").
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Distribuera lokalt med Docker-behållare

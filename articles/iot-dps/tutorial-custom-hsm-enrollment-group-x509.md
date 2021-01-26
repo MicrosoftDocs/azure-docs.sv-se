@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005315"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791937"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Självstudie: etablera flera X. 509-enheter med hjälp av registrerings grupper
 
@@ -42,11 +42,11 @@ I den här självstudien ska du slutföra följande mål:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande förutsättningar gäller för en Windows-utvecklings miljö. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 med arbets belastningen ["Skriv bords utveckling med C++"](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) aktiverat. Visual Studio 2015 och Visual Studio 2017 stöds också.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 med arbets belastningen ["Skriv bords utveckling med C++"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) aktiverat. Visual Studio 2015 och Visual Studio 2017 stöds också.
 
 * Senaste versionen av [Git](https://git-scm.com/download/) installerad.
 
@@ -56,7 +56,7 @@ I det här avsnittet förbereder du en utvecklingsmiljö som används för att s
 
 1. Ladda ned [cmake build-systemet](https://cmake.org/download/).
 
-    Det är viktigt att Visual Studio-förutsättningarna ([Visual Studio](https://visualstudio.microsoft.com/vs/) och arbets belastningen [Skriv bords utveckling med C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ) är installerade på datorn **innan** du påbörjar `CMake` installationen. När förutsättningarna är uppfyllda och nedladdningen har verifierats installerar du CMake-byggesystemet.
+    Det är viktigt att Visual Studio-förutsättningarna ([Visual Studio](https://visualstudio.microsoft.com/vs/) och arbets belastningen [Skriv bords utveckling med C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ) är installerade på datorn **innan** du påbörjar `CMake` installationen. När förutsättningarna är uppfyllda och nedladdningen har verifierats installerar du CMake-byggesystemet.
 
 2. Hitta taggnamnet för den [senaste versionen](https://github.com/Azure/azure-iot-sdk-c/releases/latest) av Azure IoT C SDK.
 
@@ -87,7 +87,7 @@ I det här avsnittet förbereder du en utvecklingsmiljö som används för att s
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    Om `cmake` inte hittar din C++-kompilerare kan du få kompileringsfel när du kör kommandot ovan. Om det händer ska du försöka köra det här kommandot i [kommandotolken i Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Om `cmake` inte hittar din C++-kompilerare kan du få kompileringsfel när du kör kommandot ovan. Om det händer ska du försöka köra det här kommandot i [kommandotolken i Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     När bygget lyckas genereras en Visual Studio-lösning i din `cmake` katalog. De senaste utmatnings raderna ser ut ungefär så här:
 
@@ -351,7 +351,7 @@ Så här uppdaterar du den anpassade HSM stub-koden för den här självstudien:
 
 På icke-Windows-enheter kan du skicka certifikat kedjan från koden som certifikat arkiv.
 
-På Windows-baserade enheter måste du lägga till signerings certifikaten (rot och mellanliggande) till ett Windows- [certifikat Arkiv](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores). Annars transporteras signerings certifikaten inte till DPS genom en säker kanal med Transport Layer Security (TLS).
+På Windows-baserade enheter måste du lägga till signerings certifikaten (rot och mellanliggande) till ett Windows- [certifikat Arkiv](/windows/win32/secauthn/certificate-stores). Annars transporteras signerings certifikaten inte till DPS genom en säker kanal med Transport Layer Security (TLS).
 
 Lägga till signerings certifikaten i certifikat arkivet i Windows-baserade enheter:
 

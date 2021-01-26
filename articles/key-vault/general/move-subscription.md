@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724773"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790299"
 ---
-# <a name="moving-an-azure-key-vault-to-another-subscription"></a>Flytta en Azure Key Vault till en annan prenumeration
+# <a name="moving-an-azure-key-vault-to-another-subscription"></a>Flytta en Azure Key Vault-instans till en annan prenumeration
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "97724773"
 > Se till att du förstår effekten av den här ändringen och följ anvisningarna i den här artikeln noggrant innan du bestämmer dig för att flytta nyckel valvet till en ny prenumeration.
 > Om du använder hanterade tjänst identiteter (MSI) läser du anvisningarna efter flytten i slutet av dokumentet. 
 
-[Azure Key Vault](overview.md) är automatiskt knutet till standard [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) klient-ID: t för den prenumeration som den skapas i. Du hittar klient-ID: t som är associerat med din prenumeration genom att följa den här [hand boken](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant). Alla åtkomst princip poster och roll tilldelningar är också kopplade till detta klient-ID.  Om du flyttar din Azure-prenumeration från klient A till klient B, blir dina befintliga nyckel valv otillgängliga för tjänstens huvud namn (användare och program) i klient B. För att åtgärda det här problemet måste du:
+[Azure Key Vault](overview.md) är automatiskt knutet till standard [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) klient-ID: t för den prenumeration som den skapas i. Du hittar klient-ID: t som är associerat med din prenumeration genom att följa den här [hand boken](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md). Alla åtkomst princip poster och roll tilldelningar är också kopplade till detta klient-ID.  Om du flyttar din Azure-prenumeration från klient A till klient B, blir dina befintliga nyckel valv otillgängliga för tjänstens huvud namn (användare och program) i klient B. För att åtgärda det här problemet måste du:
 
 * Ändra det klient-ID som är associerat med alla befintliga nyckel valv i prenumerationen till klient B.
 * Ta bort alla åtkomstprincipposter.
@@ -37,8 +37,8 @@ ms.locfileid: "97724773"
 
 Mer information om Azure Key Vault och Azure Active Directory finns i
 - [Om Azure Key Vault](overview.md)
-- [Vad är Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-- [Så här hittar du klient-ID:n](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
+- [Vad är Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)
+- [Så här hittar du klient-ID:n](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -47,13 +47,13 @@ Mer information om Azure Key Vault och Azure Active Directory finns i
 
 Vissa tjänst huvud namn (användare och program) är kopplade till en viss klient. Om du flyttar nyckel valvet till en prenumeration i en annan klient, finns det en risk att du inte kan återställa åtkomsten till ett särskilt tjänst huvud namn. Kontrol lera att alla viktiga tjänst huvud namn finns i klient organisationen där du flyttar nyckel valvet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-* [Deltagar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nivå åtkomst eller högre till den aktuella prenumerationen där nyckel valvet finns. Du kan tilldela rollen med hjälp av [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)eller [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
-* [Deltagar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) nivå åtkomst eller högre till den prenumeration där du vill flytta nyckel valvet. Du kan tilldela rollen med hjälp av [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)eller [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
-* En resurs grupp i den nya prenumerationen. Du kan skapa en med hjälp av [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), [POWERSHELL](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)eller [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli).
+* [Deltagar](../../role-based-access-control/built-in-roles.md#contributor) nivå åtkomst eller högre till den aktuella prenumerationen där nyckel valvet finns. Du kan tilldela rollen med hjälp av [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+* [Deltagar](../../role-based-access-control/built-in-roles.md#contributor) nivå åtkomst eller högre till den prenumeration där du vill flytta nyckel valvet. Du kan tilldela rollen med hjälp av [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+* En resurs grupp i den nya prenumerationen. Du kan skapa en med hjälp av [Azure Portal](../../azure-resource-manager/management/manage-resource-groups-portal.md), [POWERSHELL](../../azure-resource-manager/management/manage-resource-groups-powershell.md)eller [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md).
 
-Du kan kontrol lera befintliga roller med hjälp av [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal), [POWERSHELL](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)eller [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest).
+Du kan kontrol lera befintliga roller med hjälp av [Azure Portal](../../role-based-access-control/role-assignments-list-portal.md), [POWERSHELL](../../role-based-access-control/role-assignments-list-powershell.md), [Azure CLI](../../role-based-access-control/role-assignments-list-cli.md)eller [REST API](../../role-based-access-control/role-assignments-list-rest.md).
 
 
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>Flytta ett nyckel valv till en ny prenumeration
@@ -96,7 +96,7 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 ### <a name="update-access-policies-and-role-assignments"></a>Uppdatera åtkomst principer och roll tilldelningar
 
 > [!NOTE]
-> Om Key Vault använder [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) -behörighets modell. Du måste också ta bort roll tilldelningar för nyckel valvet. Du kan ta bort roll tilldelningar med hjälp av [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)eller [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell). 
+> Om Key Vault använder [Azure RBAC](../../role-based-access-control/overview.md) -behörighets modell. Du måste också ta bort roll tilldelningar för nyckel valvet. Du kan ta bort roll tilldelningar med hjälp av [Azure Portal](../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell](../../role-based-access-control/role-assignments-powershell.md). 
 
 Nu när valvet är associerat med rätt klient-ID och gamla åtkomst princip poster eller roll tilldelningar tas bort, anger du nya åtkomst princip poster eller roll tilldelningar.
 
@@ -106,9 +106,9 @@ Information om hur du tilldelar principer finns i:
 - [Tilldela en åtkomst princip med hjälp av PowerShell](assign-access-policy-powershell.md)
 
 Information om hur du lägger till roll tilldelningar finns i:
-- [Lägg till roll tilldelning med hjälp av portalen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Lägg till roll tilldelning med Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [Lägg till roll tilldelning med PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+- [Lägg till roll tilldelning med hjälp av portalen](../../role-based-access-control/role-assignments-portal.md)
+- [Lägg till roll tilldelning med Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+- [Lägg till roll tilldelning med PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>Uppdatera hanterade identiteter

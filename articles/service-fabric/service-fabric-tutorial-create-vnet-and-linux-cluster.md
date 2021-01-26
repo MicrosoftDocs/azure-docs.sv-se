@@ -4,12 +4,12 @@ description: Lär dig att distribuera ett Linux Service Fabric-kluster till ett 
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77cc49c1b79e5c24e78a67a69493aa0b0059d565
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738958"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791079"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Distribuera ett Service Fabric-kluster i Linux till ett virtuellt Azure-nätverk
 
@@ -75,7 +75,7 @@ I resursen **Microsoft.Network/loadBalancers** har en lastbalanserare konfigurer
 
 ### <a name="virtual-network-and-subnet"></a>Virtuellt nätverk och undernät
 
-Namnen på det virtuella nätverket och undernätet deklareras också i mallparametrarna.  Adressutrymmen i det virtuella nätverket och undernätet deklareras också i mallparametrarna och konfigureras i resursen **Microsoft.Network/virtualNetworks** :
+Namnen på det virtuella nätverket och undernätet deklareras också i mallparametrarna.  Adressutrymmen i det virtuella nätverket och undernätet deklareras också i mallparametrarna och konfigureras i resursen **Microsoft.Network/virtualNetworks**:
 
 * det virtuella nätverkets adressutrymme: 10.0.0.0/16
 * Service Fabric-undernätsadressutrymme: 10.0.2.0/24
@@ -106,7 +106,7 @@ Mallen i den här artikeln distribuerar ett kluster som använder certifikatets 
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Skapa ett kluster med ett befintligt certifikat
 
-Följande skript använder kommandot [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) och mallen för att distribuera ett nytt kluster som skyddas med ett befintligt certifikat. Kommandot skapar även ett nytt nyckelvalv i Azure och laddar upp certifikatet.
+Följande skript använder kommandot [az sf cluster create](/cli/azure/sf/cluster) och mallen för att distribuera ett nytt kluster som skyddas med ett befintligt certifikat. Kommandot skapar även ett nytt nyckelvalv i Azure och laddar upp certifikatet.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -132,7 +132,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Skapa ett kluster med ett nytt, självsignerat certifikat
 
-Följande skript använder kommandot [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) och en mall för att distribuera ett nytt kluster i Azure. Kommandot skapar även ett nytt nyckelvalv i Azure, lägger till ett nytt självsignerat certifikat i nyckelvalvet och laddar ned certifikatfilen lokalt.
+Följande skript använder kommandot [az sf cluster create](/cli/azure/sf/cluster) och en mall för att distribuera ett nytt kluster i Azure. Kommandot skapar även ett nytt nyckelvalv i Azure, lägger till ett nytt självsignerat certifikat i nyckelvalvet och laddar ned certifikatfilen lokalt.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

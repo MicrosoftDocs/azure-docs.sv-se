@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033650"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790621"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API för tal-till-text
 
 Tal till text har två olika REST-API: er. Varje API hanterar sitt särskilda syfte och använder olika uppsättningar av slut punkter.
 
 REST-API: er från tal till text är:
-- [Tal-till-text REST API v 3.0](#speech-to-text-rest-api-v30) används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). v 3.0 är en [efterföljande aktivitet för v 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- [Tal-till-text REST API v 3.0](#speech-to-text-rest-api-v30) används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). v 3.0 är en [efterföljande aktivitet för v 2.0](./migrate-v2-to-v3.md).
 - [Tal-till-text-REST API för kort ljud](#speech-to-text-rest-api-for-short-audio) används för att avskrifta online som ett alternativ till [tal-SDK](speech-sdk.md). Begär Anden som använder detta API kan bara skicka upp till 60 sekunders ljud per begäran. 
 
 ## <a name="speech-to-text-rest-api-v30"></a>Tal till text REST API v 3.0
@@ -45,7 +45,7 @@ REST API v 3.0 innehåller sådana funktioner som:
 
 Se exempel på hur du använder REST API v 3.0 med batch-avskriften i [den här artikeln](batch-transcription.md).
 
-Om du använder tal-till-text REST API v 2.0, se hur du kan migrera till v 3.0 i [den här guiden](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+Om du använder tal-till-text REST API v 2.0, se hur du kan migrera till v 3.0 i [den här guiden](./migrate-v2-to-v3.md).
 
 Se den fullständiga referensen för tal-till-text REST API v 3.0 [här](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
 
@@ -86,7 +86,7 @@ Dessa parametrar kan ingå i frågesträngen för REST-begäran.
 
 | Parameter | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `language` | Identifierar det talade språk som identifieras. Se [vilka språk som stöds](language-support.md#speech-to-text). | Krävs |
+| `language` | Identifierar det talade språk som identifieras. Se [vilka språk som stöds](language-support.md#speech-to-text). | Obligatorisk |
 | `format` | Anger resultat formatet. Godkända värden är `simple` och `detailed` . Enkla resultat inkluderar `RecognitionStatus` , `DisplayText` , `Offset` och `Duration` . Detaljerade svar innehåller fyra olika representationer av visnings text. Standardinställningen är `simple`. | Valfritt |
 | `profanity` | Anger hur du hanterar svordomar i igenkännings resultat. Godkända värden är `masked` , som ersätter svordomar med asterisker, `removed` som tar bort alla svordomar från resultatet, eller `raw` som innehåller svordomarna i resultatet. Standardinställningen är `masked`. | Valfritt |
 | `cid` | När du använder [Custom Speech Portal](./custom-speech-overview.md) för att skapa anpassade modeller kan du använda anpassade modeller via deras **slut punkts-ID** som finns på **distributions** sidan. Använd **slut punkts-ID** som argument för `cid` parametern frågesträng. | Valfritt |
@@ -100,7 +100,7 @@ I den här tabellen listas obligatoriska och valfria sidhuvuden för begäran om
 | `Ocp-Apim-Subscription-Key` | Din prenumerations nyckel för röst tjänst. | Antingen den här rubriken eller `Authorization` krävs. |
 | `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Antingen den här rubriken eller `Ocp-Apim-Subscription-Key` krävs. |
 | `Pronunciation-Assessment` | Anger parametrar för visning av uttal i igenkännings resultat, som utvärderar uttal av tal ingångar, med indikatorer på precision, Fluency, fullständighet osv. Den här parametern är en Base64-kodad JSON som innehåller flera detaljerade parametrar. Se [uttal av bedömnings parametrar](#pronunciation-assessment-parameters) för hur du skapar den här rubriken. | Valfritt |
-| `Content-type` | Beskriver formatet och codecen för de angivna ljud data. Godkända värden är `audio/wav; codecs=audio/pcm; samplerate=16000` och `audio/ogg; codecs=opus` . | Krävs |
+| `Content-type` | Beskriver formatet och codecen för de angivna ljud data. Godkända värden är `audio/wav; codecs=audio/pcm; samplerate=16000` och `audio/ogg; codecs=opus` . | Obligatorisk |
 | `Transfer-Encoding` | Anger att segmenterade ljud data ska skickas i stället för en enda fil. Använd endast den här rubriken om du segmenterar ljuddata. | Valfritt |
 | `Expect` | Skicka om du använder segmenterad överföring `Expect: 100-continue` . Tal tjänsten bekräftar den första begäran och väntar på ytterligare data.| Krävs om du skickar segmenterade ljud data. |
 | `Accept` | Om det anges måste det vara `application/json` . Tal tjänsten ger resultat i JSON. Vissa ramverk för begäran tillhandahåller ett inkompatibelt standardvärde. Det är en bra idé att alltid inkludera `Accept` . | Valfritt, men rekommenderas. |
@@ -123,7 +123,7 @@ I den här tabellen listas obligatoriska och valfria parametrar för uttal-utvä
 
 | Parameter | Beskrivning | Obligatoriskt? |
 |-----------|-------------|---------------------|
-| ReferenceText | Texten som uttalet kommer att utvärderas mot. | Krävs |
+| ReferenceText | Texten som uttalet kommer att utvärderas mot. | Obligatorisk |
 | GradingSystem | Punkt systemet för resultat kalibrering. `FivePoint`Systemet ger ett flytt ALS värde på 0-5 och `HundredMark` ger en 0-100 flytt ALS poäng. Standard: `FivePoint`. | Valfritt |
 | Precision | Utvärderings precisionen. Godkända värden är `Phoneme` , som visar poängen på den fullständiga text-, Word-och fonem-nivån, `Word` som visar poängen på den fullständiga text-och ord nivån, `FullText` som bara visar poängen på hela text nivån. Standardinställningen är `Phoneme`. | Valfritt |
 | Dimension | Definierar kriterierna för utdata. Godkända värden är `Basic` , som bara visar noggrannhets poängen, `Comprehensive` visar poängen på fler dimensioner (t. ex. Fluency Poäng och total poäng på nivån full text nivå, fel typ på ord nivå). Kontrol lera [svars parametrar](#response-parameters) för att se definitioner av olika Poäng dimensioner och ord fel typer. Standardinställningen är `Basic`. | Valfritt |

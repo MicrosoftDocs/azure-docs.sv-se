@@ -4,12 +4,12 @@ description: Lär dig mer om att paketera ett Azure Service Fabric-program och h
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021069"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789710"
 ---
 # <a name="package-an-application"></a>Paketera ett program
 
@@ -44,7 +44,7 @@ Mapparna heter för att matcha **namnattribut** för varje motsvarande element. 
 
 ## <a name="use-setupentrypoint"></a>Använd SetupEntryPoint
 
-Vanliga scenarier för att använda **SetupEntryPoint** är när du behöver köra en körbar fil innan tjänsten startar eller så måste du utföra en åtgärd med utökade privilegier. Exempel:
+Vanliga scenarier för att använda **SetupEntryPoint** är när du behöver köra en körbar fil innan tjänsten startar eller så måste du utföra en åtgärd med utökade privilegier. Ett exempel:
 
 * Konfigurera och initiera miljövariabler som tjänstens körbara fil behöver. Den är inte begränsad till enbart körbara filer som skrivits via Service Fabric programmerings modeller. npm.exe behöver till exempel vissa miljövariabler som har kon figurer ATS för att distribuera ett node.js-program.
 * Konfigurera åtkomst kontroll genom att installera säkerhets certifikat.
@@ -75,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 
 ## <a name="test-the-package"></a>Testa paketet
 
-Du kan verifiera paket strukturen lokalt via PowerShell med kommandot [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) .
+Du kan verifiera paket strukturen lokalt via PowerShell med kommandot [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) .
 Det här kommandot söker efter manifest tolknings problem och kontrollerar alla referenser. Detta kommando verifierar endast strukturernas struktur rätt för katalogerna och filerna i paketet.
 Den verifierar inte någon kod eller ett data pakets innehåll utöver att kontrol lera att alla nödvändiga filer är tillgängliga.
 
@@ -121,7 +121,7 @@ Test-ServiceFabricApplicationPackage .\MyApplicationType
 True
 ```
 
-Om programmet har definierade [program parametrar](service-fabric-manage-multiple-environment-app-configuration.md) kan du skicka dem i [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) för korrekt verifiering.
+Om programmet har definierade [program parametrar](service-fabric-manage-multiple-environment-app-configuration.md) kan du skicka dem i [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) för korrekt verifiering.
 
 Om du känner till klustret där programmet ska distribueras rekommenderar vi att du skickar den till- `ImageStoreConnectionString` parametern. I det här fallet verifieras även paketet mot tidigare versioner av programmet som redan körs i klustret. Till exempel kan verifieringen identifiera om ett paket med samma version, men ett annat innehåll redan har distribuerats.  
 
@@ -135,9 +135,9 @@ För ett komprimerat programpaket kan det ta längre tid att [Ladda upp programp
 Distributions mekanismen är densamma för komprimerade och okomprimerade paket. Om paketet är komprimerat lagras det som ett sådant i klustrets avbildnings Arkiv och komprimeras inte på noden innan programmet körs.
 Komprimeringen ersätter det giltiga Service Fabric-paketet med den komprimerade versionen. Mappen måste tillåta Skriv behörighet. Att köra komprimering på redan komprimerade paket ger inga ändringar.
 
-Du kan komprimera ett paket genom att köra PowerShell [-kommandot Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) med `CompressPackage` switch. Du kan expandera paketet med samma kommando, med hjälp av `UncompressPackage` switch.
+Du kan komprimera ett paket genom att köra PowerShell [-kommandot Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) med `CompressPackage` switch. Du kan expandera paketet med samma kommando, med hjälp av `UncompressPackage` switch.
 
-Följande kommando komprimerar paketet utan att kopiera det till avbildnings arkivet. Du kan kopiera ett komprimerat paket till ett eller flera Service Fabric kluster, efter behov, med hjälp av [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) utan `SkipCopy` flaggan.
+Följande kommando komprimerar paketet utan att kopiera det till avbildnings arkivet. Du kan kopiera ett komprimerat paket till ett eller flera Service Fabric kluster, efter behov, med hjälp av [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) utan `SkipCopy` flaggan.
 Paketet innehåller nu zippade filer för `code` `config` paketen, och `data` . Program manifestet och tjänst manifesten är inte zippade eftersom de behövs för många interna åtgärder. Till exempel, paket delning, program typs namn och versions extrahering för vissa valideringar behöver du åtkomst till manifesten. Genom att zippa upp manifesten skulle dessa åtgärder bli ineffektiva.
 
 ```
@@ -179,7 +179,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-Du kan också komprimera och kopiera paketet med [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) i ett enda steg.
+Du kan också komprimera och kopiera paketet med [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) i ett enda steg.
 Om paketet är stort, anger du en hög tillräckligt lång tids gräns för att tillåta tiden för både paket komprimering och uppladdning till klustret.
 
 ```powershell
@@ -212,7 +212,7 @@ Med det här alternativet behöver programpaketet inte kopieras till avbildnings
 `sfpkg`Filen är ett zip som innehåller det första programpaketet och har tillägget ". sfpkg".
 I zip-paketet kan programpaketet komprimeras eller expanderas. Komprimeringen av programpaketet i zip-paketet görs vid kod-, konfigurations-och data paket nivåer, som [tidigare nämnts](service-fabric-package-apps.md#compress-a-package).
 
-För att skapa en `sfpkg` , börjar du med en mapp som innehåller det ursprungliga programpaketet, komprimerat eller inte. Använd sedan valfritt verktyg för att zippa mappen med tillägget ". sfpkg". Använd till exempel [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
+För att skapa en `sfpkg` , börjar du med en mapp som innehåller det ursprungliga programpaketet, komprimerat eller inte. Använd sedan valfritt verktyg för att zippa mappen med tillägget ". sfpkg". Använd till exempel [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

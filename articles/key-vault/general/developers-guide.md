@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e92b17a5743e983ca3e77ad18c0973b9f056dfbd
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 40ce5f55b4109fee0099110c17f02b33c3eff808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611176"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791432"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Utvecklarguide för Azure Key Vault
 
@@ -74,7 +74,7 @@ Mer information om Azure Identity client-Libarary finns i:
 |[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](/java/api/overview/azure/identity-readme)|[JavaScript-skript för Azure Identity SDK](/javascript/api/overview/azure/identity-readme)|     
 
 >[!Note]
-> [Bibliotek för app-autentisering](https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication) som rekommenderas för Key Vault .NET SDK version 3, som för närvarande är depracated. Följ [AppAuthentication till Azure. vägledning för identitets migrering](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration) för att migrera till Key Vault .NET SDK version 4.
+> [Bibliotek för app-autentisering](/dotnet/api/overview/azure/service-to-service-authentication) som rekommenderas för Key Vault .NET SDK version 3, som för närvarande är depracated. Följ [AppAuthentication till Azure. vägledning för identitets migrering](/dotnet/api/overview/azure/app-auth-migration) för att migrera till Key Vault .NET SDK version 4.
 
 Självstudier om hur du autentiserar till Key Vault i program finns i:
 - [Autentisera till Key Vault i program som finns i en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
@@ -89,7 +89,7 @@ Självstudier om hur du autentiserar till Key Vault i program finns i:
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Referens](/cli/azure/keyvault/key)<br>[Snabbstart](../keys/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault/)<br>[Snabbstart](../keys/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#key-operations)|[Referens](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)<br>[Snabbstart](../keys/quick-create-template.md)|[Referens](/dotnet/api/azure.security.keyvault.keys)<br>[Snabbstart](../keys/quick-create-net.md)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Snabbstart](../keys/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Snabbstart](../keys/quick-create-java.md)|[Referens](/javascript/api/@azure/keyvault-keys/)<br>[Snabbstart](../keys/quick-create-node.md)|
+|[Referens](/cli/azure/keyvault/key)<br>[Snabbstart](../keys/quick-create-cli.md)|[Referens](/powershell/module/az.keyvault/)<br>[Snabbstart](../keys/quick-create-powershell.md)|[Referens](/rest/api/keyvault/#key-operations)|[Referens](/azure/templates/microsoft.keyvault/vaults/keys)<br>[Snabbstart](../keys/quick-create-template.md)|[Referens](/dotnet/api/azure.security.keyvault.keys)<br>[Snabbstart](../keys/quick-create-net.md)|[Referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Snabbstart](../keys/quick-create-python.md)|[Referens](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Snabbstart](../keys/quick-create-java.md)|[Referens](/javascript/api/@azure/keyvault-keys/)<br>[Snabbstart](../keys/quick-create-node.md)|
 
 **API: er och SDK: er för certifikat**
 
