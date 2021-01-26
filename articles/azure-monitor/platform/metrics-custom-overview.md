@@ -1,18 +1,18 @@
 ---
 title: Anpassade mått i Azure Monitor (förhands granskning)
 description: Lär dig mer om anpassade mått i Azure Monitor och hur de modelleras.
-author: ancav
+author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce081896292ec92c41dabc735df828ed167d86e7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639910"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788510"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Anpassade mått i Azure Monitor (förhands granskning)
 
@@ -75,7 +75,7 @@ Varje data punkt som skickas till Azure Monitor måste markeras med en tidsstäm
 ### <a name="namespace"></a>Namnområde
 Namn områden är ett sätt att kategorisera eller gruppera likartade mått tillsammans. Genom att använda namn rymder kan du isolera olika grupper av mått som kan samla in olika insikter eller prestanda indikatorer. Du kan till exempel ha ett namn område med namnet **contosomemorymetrics** som spårar minnes användnings mått som innehåller en profil för din app. Ett annat namn område med namnet **contosoapptransaction** kan spåra alla mått för användar transaktioner i programmet.
 
-### <a name="name"></a>Namn
+### <a name="name"></a>Name
 **Namn** är namnet på det mått som rapporteras. Vanligt vis är namnet tillräckligt beskrivande för att hjälpa dig att identifiera vad som mäts. Ett exempel är ett mått som mäter antalet minnes byte som används på en specifik virtuell dator. Det kan ha ett Metric-namn som **minnes byte som används**.
 
 ### <a name="dimension-keys"></a>Dimensions nycklar
@@ -97,7 +97,7 @@ Azure Monitor lagrar alla mått med en minuts precisions intervall. Vi förstår
 
 * **Min**: det lägsta observerade värdet från alla exempel och mätningar under minuten.
 * **Max**: det högsta observerade värdet från alla exempel och mätningar under minuten.
-* **Sum: summan**av alla observerade värden från alla exempel och mätningar under minuten.
+* **Sum: summan** av alla observerade värden från alla exempel och mätningar under minuten.
 * **Count**: antalet prover och mätningar som tagits under minuten.
 
 Om det exempelvis fanns fyra inloggnings transaktioner till din app under en angiven minut, kan de resulterande fördröjningarna för var och en av dem vara följande:
@@ -105,7 +105,6 @@ Om det exempelvis fanns fyra inloggnings transaktioner till din app under en ang
 |Transaktion 1|Transaktion 2|Transaktion 3|Transaktion 4|
 |---|---|---|---|
 |7 MS|4 MS|13 MS|16 MS|
-|
 
 Sedan skulle den resulterande mått publikationen till Azure Monitor vara följande:
 * Min: 4
@@ -134,7 +133,8 @@ I följande exempel skapar du ett anpassat mått som kallas **minnes byte som an
         "metric": "Memory Bytes in Use",
         "namespace": "Memory Profile",
         "dimNames": [
-          "Process"        ],
+          "Process"
+        ],
         "series": [
           {
             "dimValues": [
@@ -174,7 +174,7 @@ Det finns inget behov av att fördefiniera ett anpassat mått i Azure Monitor in
 När anpassade mått har skickats till Azure Monitor kan du bläddra igenom dem via Azure Portal och fråga dem via Azure Monitor REST-API: er. Du kan också skapa aviseringar på dem för att meddela dig när vissa villkor uppfylls.
 
 > [!NOTE]
-> Du måste vara en läsare eller deltagar roll för att visa anpassade mått.
+> Du måste vara en läsare eller deltagar roll för att visa anpassade mått. Se [Monitoring Reader](../../role-based-access-control/built-in-roles.md#monitoring-reader). 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Bläddra bland dina anpassade mått via Azure Portal
 1.    Gå till [Azure-portalen](https://portal.azure.com).
@@ -184,34 +184,19 @@ När anpassade mått har skickats till Azure Monitor kan du bläddra igenom dem 
 5.    Välj namn området mått för ditt anpassade mått.
 6.    Välj det anpassade måttet.
 
+> [!NOTE]
+> I [komma igång med Azure Metrics Explorer](./metrics-getting-started.md) finns mer information om hur du visar mått i Azure Portal.
+
 ## <a name="supported-regions"></a>Regioner som stöds
-Under den offentliga för hands versionen är möjligheten att publicera anpassade mått bara tillgänglig i en delmängd av Azure-regioner. Den här begränsningen innebär att mått endast kan publiceras för resurser i någon av de regioner som stöds. I följande tabell visas en lista över Azure-regioner som stöds för anpassade mått. Den listar även motsvarande slut punkter som Mät värden för resurser i dessa regioner ska publiceras på:
+Under den offentliga för hands versionen är möjligheten att publicera anpassade mått bara tillgänglig i en delmängd av Azure-regioner. Den här begränsningen innebär att mått endast kan publiceras för resurser i någon av de regioner som stöds. Mer information om Azure-regioner finns i avsnittet om [Azure-geografiska](https://azure.microsoft.com/global-infrastructure/geographies/) områden. Den Azure-regions kod som används i nedanstående slut punkter är bara namnet på regionen med blank steg borttaget i följande tabell visas en lista över Azure-regioner som stöds för anpassade mått. Den listar även motsvarande slut punkter som Mät värden för resurser i dessa regioner ska publiceras på:
 
 |Azure-region |Regionalt slut punkts prefix|
 |---|---|
-| **USA och Kanada** | |
-|USA, västra centrala | https: \/ /westcentralus.Monitoring.Azure.com |
-|USA, västra 2       | https: \/ /westus2.Monitoring.Azure.com |
-|USA, norra centrala | https: \/ /northcentralus.Monitoring.Azure.com
-|USA, södra centrala| https: \/ /southcentralus.Monitoring.Azure.com |
-|Central US      | https: \/ /centralus.Monitoring.Azure.com |
-|Kanada, centrala | https: \/ /canadacentral.Monitoring.Azure.com |
-|East US| https: \/ /eastus.Monitoring.Azure.com |
-|USA, östra 2 | https: \/ /eastus2.Monitoring.Azure.com |
-| **Europa** | |
-|Norra Europa    | https: \/ /northeurope.Monitoring.Azure.com |
-|Europa, västra     | https: \/ /westeurope.Monitoring.Azure.com |
-|Storbritannien, södra | https: \/ /uksouth.Monitoring.Azure.com
-|Frankrike, centrala | https: \/ /francecentral.Monitoring.Azure.com |
-| **Afrika** | |
-|Sydafrika, norra | https: \/ /southafricanorth.Monitoring.Azure.com |
-| **Asien** | |
-|Indien, centrala | https: \/ /centralindia.Monitoring.Azure.com |
-|Australien, östra | https: \/ /australiaeast.Monitoring.Azure.com |
-|Japan, östra | https: \/ /japaneast.Monitoring.Azure.com |
-|Sydostasien  | https: \/ /southeastasia.Monitoring.Azure.com |
-|Asien, östra | https: \/ /EastAsia.Monitoring.Azure.com |
-|Sydkorea, centrala   | https: \/ /koreacentral.Monitoring.Azure.com |
+| Alla offentliga moln regioner | https://<azure_region_code>. monitoring.azure.com |
+| **Azure Government** | |
+| US Gov, Arizona | https: \/ /usgovarizona.Monitoring.Azure.us |
+| **Kina** | |
+| Kina, östra 2 | https: \/ /chinaeast2.Monitoring.Azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>Svars tid och lagrings kvarhållning
 

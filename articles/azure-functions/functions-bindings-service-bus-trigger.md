@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605047"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788561"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus utlösare för Azure Functions
 
@@ -83,91 +83,6 @@ public static void Run(string myQueueItem,
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-I följande exempel visas en Service Bus trigger-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen läser [meddelandets metadata](#message-metadata) och loggar ett Service Bus Queue-meddelande. 
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-Här är skript koden för Java Script:
-
-```javascript
-module.exports = function(context, myQueueItem) {
-    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
-    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
-    context.log('DeliveryCount =', context.bindingData.deliveryCount);
-    context.log('MessageId =', context.bindingData.messageId);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Följande exempel visar hur du läser ett Service Bus Queue-meddelande via en utlösare.
-
-En Service Bus bindning definieras i *function.jspå* WHERE- *typ* har angetts till `serviceBusTrigger` .
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "serviceBusTrigger",
-      "direction": "in",
-      "queueName": "inputqueue",
-      "connection": "AzureServiceBusConnectionString"
-    }
-  ]
-}
-```
-
-Koden i * _ \_ init_ \_ . py* deklarerar en parameter som `func.ServiceBusMessage` , vilket gör att du kan läsa meddelandet i kön i din funktion.
-
-```python
-import azure.functions as func
-
-import logging
-import json
-
-def main(msg: func.ServiceBusMessage):
-    logging.info('Python ServiceBus queue trigger processed message.')
-
-    result = json.dumps({
-        'message_id': msg.message_id,
-        'body': msg.get_body().decode('utf-8'),
-        'content_type': msg.content_type,
-        'expiration_time': msg.expiration_time,
-        'label': msg.label,
-        'partition_key': msg.partition_key,
-        'reply_to': msg.reply_to,
-        'reply_to_session_id': msg.reply_to_session_id,
-        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
-        'session_id': msg.session_id,
-        'time_to_live': msg.time_to_live,
-        'to': msg.to,
-        'user_properties': msg.user_properties,
-        'metadata' : msg.metadata
-    })
-
-    logging.info(result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Följande Java-funktion använder `@ServiceBusQueueTrigger` anteckningen från Java Functions [runtime-biblioteket](/java/api/overview/azure/functions/runtime) för att beskriva konfigurationen för en Service Bus Queue-utlösare. Funktionen tar bort meddelandet som placerats i kön och lägger till det i loggarna.
@@ -199,6 +114,120 @@ Java-funktioner kan också aktive ras när ett meddelande läggs till i ett Serv
     ) {
         context.getLogger().info(message);
     }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+I följande exempel visas en Service Bus trigger-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen läser [meddelandets metadata](#message-metadata) och loggar ett Service Bus Queue-meddelande.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+"bindings": [
+    {
+    "queueName": "testqueue",
+    "connection": "MyServiceBusConnection",
+    "name": "myQueueItem",
+    "type": "serviceBusTrigger",
+    "direction": "in"
+    }
+],
+"disabled": false
+}
+```
+
+Här är skript koden för Java Script:
+
+```javascript
+module.exports = function(context, myQueueItem) {
+    context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+I följande exempel visas en Service Bus trigger-bindning i en *function.jsi* filen och en [PowerShell-funktion](functions-reference-powershell.md) som använder bindningen. 
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "topicName": "mytopic",
+      "subscriptionName": "mysubscription",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+Här är en funktion som körs när ett Service Bus meddelande skickas.
+
+```powershell
+param([string] $mySbMsg, $TriggerMetadata)
+
+Write-Host "PowerShell ServiceBus queue trigger function processed message: $mySbMsg"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Följande exempel visar hur du läser ett Service Bus Queue-meddelande via en utlösare.
+
+En Service Bus bindning definieras i *function.jspå* WHERE- *typ* har angetts till `serviceBusTrigger` .
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+Koden i *_\_ init_ \_ . py* deklarerar en parameter som `func.ServiceBusMessage` , vilket gör att du kan läsa meddelandet i kön i din funktion.
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+        'metadata' : msg.metadata
+    })
+
+    logging.info(result)
 ```
 
 ---
@@ -268,14 +297,6 @@ Service Bus kontot som ska användas fastställs i följande ordning:
 
 Attribut stöds inte av C#-skript.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Attribut stöds inte av Java Script.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Attribut stöds inte av python.
-
 # <a name="java"></a>[Java](#tab/java)
 
 Med `ServiceBusQueueTrigger` anteckningen kan du skapa en funktion som körs när ett Service Bus Queue-meddelande skapas. Tillgängliga konfigurations alternativ inkluderar könamn och namn på anslutnings sträng.
@@ -283,6 +304,18 @@ Med `ServiceBusQueueTrigger` anteckningen kan du skapa en funktion som körs nä
 Med `ServiceBusTopicTrigger` anteckningen kan du ange ett ämne och en prenumeration för att rikta in dig på vilka data som utlöser funktionen.
 
 Se utlösnings [exemplet](#example) för mer information.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Attribut stöds inte av Java Script.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Attribut stöds inte av python.
 
 ---
 
@@ -292,9 +325,9 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 |function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
-|**bastyp** | Saknas | Måste vara inställd på "serviceBusTrigger". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
-|**position** | Saknas | Måste vara inställt på "in". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
-|**Namn** | Saknas | Namnet på variabeln som representerar kön eller ämnes meddelandet i funktions koden. |
+|**bastyp** | saknas | Måste vara inställd på "serviceBusTrigger". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
+|**position** | saknas | Måste vara inställt på "in". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
+|**Namn** | saknas | Namnet på variabeln som representerar kön eller ämnes meddelandet i funktions koden. |
 |**queueName**|**QueueName**|Namnet på kön som ska övervakas.  Ange endast om övervakning av en kö, inte för ett ämne.
 |**topicName**|**TopicName**|Namn på det ämne som ska övervakas. Ange endast om du övervakar ett ämne, inte för en kö.|
 |**subscriptionName**|**SubscriptionName**|Namnet på den prenumeration som ska övervakas. Ange endast om du övervakar ett ämne, inte för en kö.|
@@ -313,8 +346,8 @@ Följande parameter typer är tillgängliga för kön eller ämnes meddelandet:
 * `string` – Om meddelandet är text.
 * `byte[]` – Användbart för binära data.
 * En anpassad typ – om meddelandet innehåller JSON Azure Functions försöker deserialisera JSON-data.
-* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) – Används för att ta emot och bekräfta meddelanden från meddelande behållaren (krävs när [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) har angetts till `false` )
+* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) .
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) – Används för att ta emot och bekräfta meddelanden från meddelande behållaren (krävs när [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) har angetts till `false` )
 
 Dessa parameter typer är för Azure Functions version 1. x. för 2. x och högre använder du [`Message`](/dotnet/api/microsoft.azure.servicebus.message) i stället för `BrokeredMessage` .
 
@@ -325,23 +358,27 @@ Följande parameter typer är tillgängliga för kön eller ämnes meddelandet:
 * `string` – Om meddelandet är text.
 * `byte[]` – Användbart för binära data.
 * En anpassad typ – om meddelandet innehåller JSON Azure Functions försöker deserialisera JSON-data.
-* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* `BrokeredMessage` – Ger dig det deserialiserade meddelandet med metoden [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) .
 
 Dessa parametrar är för Azure Functions version 1. x. för 2. x och högre använder du [`Message`](/dotnet/api/microsoft.azure.servicebus.message) i stället för `BrokeredMessage` .
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Få åtkomst till kön eller ämnes meddelandet med hjälp av `context.bindings.<name from function.json>` . Service Bus meddelandet skickas till funktionen som antingen en sträng eller ett JSON-objekt.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Queue-meddelandet är tillgängligt för funktionen via en parameter som har angetts som `func.ServiceBusMessage` . Service Bus meddelandet skickas till funktionen som antingen en sträng eller ett JSON-objekt.
 
 # <a name="java"></a>[Java](#tab/java)
 
 Det inkommande Service Buss meddelandet är tillgängligt via en- `ServiceBusQueueMessage` eller- `ServiceBusTopicMessage` parameter.
 
 [Se exemplet för mer information](#example).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Få åtkomst till kön eller ämnes meddelandet med hjälp av `context.bindings.<name from function.json>` . Service Bus meddelandet skickas till funktionen som antingen en sträng eller ett JSON-objekt.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Service Bus-instansen är tillgänglig via den parameter som kon figurer ATS i egenskapen *function.jsi* filens namn.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Queue-meddelandet är tillgängligt för funktionen via en parameter som har angetts som `func.ServiceBusMessage` . Service Bus meddelandet skickas till funktionen som antingen en sträng eller ett JSON-objekt.
 
 ---
 
@@ -351,13 +388,13 @@ Hantering av skadligt meddelande kan inte styras eller konfigureras i Azure Func
 
 ## <a name="peeklock-behavior"></a>PeekLock beteende
 
-Functions-körningen tar emot ett meddelande i [PeekLock-läge](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Det anropar `Complete` meddelandet om funktionen har slutförts eller anropas `Abandon` om funktionen Miss lyckas. Om funktionen körs längre än `PeekLock` tids gränsen förnyas låset automatiskt så länge funktionen körs. 
+Functions-körningen tar emot ett meddelande i [PeekLock-läge](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Det anropar `Complete` meddelandet om funktionen har slutförts eller anropas `Abandon` om funktionen Miss lyckas. Om funktionen körs längre än `PeekLock` tids gränsen förnyas låset automatiskt så länge funktionen körs.
 
-`maxAutoRenewDuration`Kan konfigureras i *host.jspå*, som mappar till [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet). Det högsta tillåtna värdet för den här inställningen är 5 minuter enligt Service Bus-dokumentationen, men du kan öka tids gränsen för funktioner från standardvärdet 5 minuter till 10 minuter. För Service Bus funktioner vill du inte göra det eftersom du skulle överskrida den Service Bus förnyelse gränsen.
+`maxAutoRenewDuration`Kan konfigureras i *host.jspå*, som mappar till [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true). Det högsta tillåtna värdet för den här inställningen är 5 minuter enligt Service Bus-dokumentationen, men du kan öka tids gränsen för funktioner från standardvärdet 5 minuter till 10 minuter. För Service Bus funktioner vill du inte göra det eftersom du skulle överskrida den Service Bus förnyelse gränsen.
 
 ## <a name="message-metadata"></a>Metadata för meddelande
 
-Service Bus utlösaren innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. De här egenskaperna är medlemmar i [meddelande](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) klassen.
+Service Bus utlösaren innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. De här egenskaperna är medlemmar i [meddelande](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true) klassen.
 
 |Egenskap|Typ|Beskrivning|
 |--------|----|-----------|

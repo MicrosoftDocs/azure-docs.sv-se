@@ -3,12 +3,12 @@ title: Hantera appar för flera miljöer
 description: Azure Service Fabric-program kan köras på kluster som har ett storleks intervall från en dator till tusentals datorer. I vissa fall vill du konfigurera ditt program på olika sätt för de varierande miljöerna. Den här artikeln beskriver hur du definierar olika program parametrar per miljö.
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.openlocfilehash: 51bc77abca8ce2b3878df1c1859203618d3e2e27
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574453"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787985"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Hantera program för flera miljöer
 
@@ -38,7 +38,7 @@ Konfigurationen du anger kan delas upp i två kategorier:
 
 När du skapar en namngiven program instans i Service Fabric kan du välja att skicka parametrarna. Hur du gör det beror på hur du skapar program instansen.
 
-  - I PowerShell [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) använder cmdleten program parametrarna som en hash-modul.
+  - I PowerShell [`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication) använder cmdleten program parametrarna som en hash-modul.
   - Med hjälp av sfctl [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) tar kommandot parametrar som en JSON-sträng. Install.sh-skriptet använder sfctl.
   - Med Visual Studio får du en uppsättning parameter-filer i mappen parametrar i programprojektet. Dessa parameter-filer används vid publicering från Visual Studio med hjälp av Azure DevOps Services eller Azure DevOps Server. I Visual Studio skickas parametervärdena till Deploy-FabricApplication.ps1-skriptet.
 

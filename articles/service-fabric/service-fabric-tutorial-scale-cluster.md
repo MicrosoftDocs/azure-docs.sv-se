@@ -4,18 +4,18 @@ description: I den här självstudien får du lära dig hur du skalar ett Servic
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702182"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788035"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Självstudie: Skala ut ett Service Fabric-kluster i Azure
 
 Den här självstudien är del tre i en serie och visar hur du skalar ditt befintliga kluster och i. När du är klar kommer du att veta hur du skalar ditt kluster och hur du rensar överblivna resurser.  Mer information om hur du skalar ett kluster som körs i Azure finns i [skalnings Service Fabric kluster](service-fabric-cluster-scaling.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Lägga till och ta bort noder (skala ut och skala in)
@@ -33,7 +33,7 @@ I den här självstudieserien får du lära du dig att:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du börjar den här självstudien:
 
@@ -809,7 +809,7 @@ När du har skapat ett Service Fabric-kluster kan du skala ett kluster vågrätt
 > [!WARNING]
 > Att använda Remove-AzServiceFabricNodeType för att ta bort en nodtyp från ett produktions kluster bör inte användas regelbundet. Det är ett farligt kommando eftersom det tar bort den virtuella datorns skalnings uppsättnings resurs bakom nodtypen. 
 
-Om du vill ta bort nodtypen kör du cmdleten [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Nodtypen måste vara silver eller guld [hållbarhets nivå][durability]  cmdleten tar bort den skalnings uppsättning som är associerad med nodtypen och tar lite tid att slutföra.  Kör sedan cmdleten [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) på var och en av noderna som ska tas bort, vilket tar bort nodens tillstånd och tar bort noderna från klustret. Om det finns tjänster på noderna flyttas tjänsterna först till en annan nod. Om kluster hanteraren inte kan hitta en nod för repliken/tjänsten är åtgärden försenad/blockerad.
+Om du vill ta bort nodtypen kör du cmdleten [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) .  Nodtypen måste vara silver eller guld [hållbarhets nivå][durability]  cmdleten tar bort den skalnings uppsättning som är associerad med nodtypen och tar lite tid att slutföra.  Kör sedan cmdleten [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) på var och en av noderna som ska tas bort, vilket tar bort nodens tillstånd och tar bort noderna från klustret. Om det finns tjänster på noderna flyttas tjänsterna först till en annan nod. Om kluster hanteraren inte kan hitta en nod för repliken/tjänsten är åtgärden försenad/blockerad.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

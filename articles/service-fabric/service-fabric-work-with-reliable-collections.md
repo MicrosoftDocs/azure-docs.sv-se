@@ -3,12 +3,12 @@ title: Arbeta med Reliable Collections
 description: Lär dig metod tips för att arbeta med pålitliga samlingar i ett Azure Service Fabric-program.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2d027dc432d1a0a20888bfca4f59bc41866e358d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651914"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787883"
 ---
 # <a name="working-with-reliable-collections"></a>Arbeta med Reliable Collections
 Service Fabric erbjuder en tillstånds känslig programmerings modell som är tillgänglig för .NET-utvecklare via pålitliga samlingar. Mer specifikt Service Fabric tillhandahåller tillförlitliga ord listor och Reliable Queue-klasser. När du använder dessa klasser partitioneras ditt tillstånd (för skalbarhet), replikeras (för tillgänglighet) och överförs inom en partition (för sur semantik). Nu ska vi titta på en typisk användning av ett tillförlitligt Dictionary-objekt och se vad det faktiskt gör.
@@ -226,4 +226,4 @@ För att lära dig metod tips om versions data kontrakt, se [data kontrakt versi
 
 Information om hur du implementerar versions tolerans data kontrakt finns i [versions tolerans återanrop för serialisering](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-Information om hur du tillhandahåller en data struktur som kan samverka över flera versioner finns i [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)
+Information om hur du tillhandahåller en data struktur som kan samverka över flera versioner finns i [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject)

@@ -3,15 +3,15 @@ title: Azure Service Fabric tillstånds känslig Reliable Services-diagnostik
 description: Diagnostiska funktioner för tillstånds känsliga Reliable Services i Azure Service Fabric
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840769"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789338"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostisk funktionalitet för tillståndskänsliga Reliable Services
-Azure Service Fabric tillstånds känslig Reliable Services StatefulServiceBase-klassen genererar [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -händelser som kan användas för att felsöka tjänsten, ge insikter om hur körningen fungerar och hjälp med fel sökning.
+Azure Service Fabric tillstånds känslig Reliable Services StatefulServiceBase-klassen genererar [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) -händelser som kan användas för att felsöka tjänsten, ge insikter om hur körningen fungerar och hjälp med fel sökning.
 
 ## <a name="eventsource-events"></a>EventSource-händelser
 EventSource namn för den tillstånds känsliga Reliable Services StatefulServiceBase-klassen är "Microsoft-ServiceFabric-Services". Händelser från den här händelse källan visas i fönstret [diagnostik-händelser](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) när tjänsten [felsöks i Visual Studio](service-fabric-debugging-your-application.md).
@@ -58,7 +58,7 @@ För kategorin `Service Fabric Transactional Replicator` är räknar instans nam
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras via [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) med format specificeraren "D".
+*ServiceFabricPartitionId* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras via [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) med format specificeraren "D".
 
 *ServiceFabricReplicaId* är det ID som är kopplat till en specifik replik av en tillförlitlig tjänst. Replik-ID: t ingår i prestanda räknarens instans namn för att säkerställa dess unika värde och undvika konflikter med andra prestanda räknar instanser som genereras av samma partition. Mer information om repliker och deras roll i pålitliga tjänster finns [här](service-fabric-concepts-replica-lifecycle.md).
 
@@ -73,7 +73,7 @@ För kategorin `Service Fabric TStore` är räknar instans namnen i följande fo
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras via [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) med format specificeraren "D".
+*ServiceFabricPartitionId* är sträng representationen av Service Fabric partitions-ID: t som prestanda räknar instansen är associerad med. Partitions-ID: t är ett GUID och dess sträng representation genereras via [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) med format specificeraren "D".
 
 *ServiceFabricReplicaId* är det ID som är kopplat till en specifik replik av en tillförlitlig tjänst. Replik-ID: t ingår i prestanda räknarens instans namn för att säkerställa dess unika värde och undvika konflikter med andra prestanda räknar instanser som genereras av samma partition. Mer information om repliker och deras roll i pålitliga tjänster finns [här](service-fabric-concepts-replica-lifecycle.md).
 

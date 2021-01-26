@@ -6,12 +6,12 @@ ms.author: nidutta
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
-ms.openlocfilehash: 4b95e4f164eb2c1d0a881cf9ab14696c3cbed4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122673"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788137"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>Uppdatera .NET för Apache Spark till version v 1.0 i HDInsight
 
@@ -42,9 +42,9 @@ Om du inte vill ändra den aktuella versionen av .NET för Apache Spark i ditt p
 
 2. Ladda ned [install-Worker.sh](https://github.com/dotnet/spark/blob/master/deployment/install-worker.sh) -skript för att installera de isolerade binärfilerna i steg 1 till alla arbetsnoder i ditt HDI-kluster.  
 
-3. Överför ovanstående filer till det Azure Storage konto som ditt kluster har åtkomst till. Mer information finns i [artikeln om .net för Apache Spark HDI-distribution](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) .
+3. Överför ovanstående filer till det Azure Storage konto som ditt kluster har åtkomst till. Mer information finns i [artikeln om .net för Apache Spark HDI-distribution](/dotnet/spark/tutorials/hdinsight-deployment#upload-files-to-azure) .
 
-4. Kör `install-worker.sh` skriptet på alla arbetsnoder i klustret med hjälp av skript åtgärder. Mer information hittar du i [artikeln om .net för Apache Spark HDI-distribution](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) .
+4. Kör `install-worker.sh` skriptet på alla arbetsnoder i klustret med hjälp av skript åtgärder. Mer information hittar du i [artikeln om .net för Apache Spark HDI-distribution](/dotnet/spark/tutorials/hdinsight-deployment#run-the-hdinsight-script-action) .
 
 ### <a name="update-your-application-to-use-specific-version"></a>Uppdatera programmet till att använda en specifik version
 
@@ -58,4 +58,4 @@ Befintliga HDI-kluster fortsätter att ha samma tidigare version av .NET för Ap
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Distribuera ditt .NET för Apache Spark-program i HDInsight](https://docs.microsoft.com/dotnet/spark/tutorials/hdinsight-deployment)
+[Distribuera ditt .NET för Apache Spark-program i HDInsight](/dotnet/spark/tutorials/hdinsight-deployment)

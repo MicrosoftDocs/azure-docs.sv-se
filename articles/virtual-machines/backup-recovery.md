@@ -1,19 +1,19 @@
 ---
-title: Översikt alternativ för säkerhets kopiering för virtuella Linux-datorer
-description: Översikt alternativ för säkerhets kopiering för virtuella Linux Azure-datorer.
+title: Översikt alternativ för säkerhets kopiering för virtuella datorer
+description: Översikt över alternativ för säkerhets kopiering för virtuella Azure-datorer.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972364"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787815"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Alternativ för säkerhets kopiering och återställning av virtuella Linux-datorer i Azure
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Alternativ för säkerhets kopiering och återställning av virtuella datorer i Azure
 
 Du kan skydda dina data genom att säkerhetskopiera med jämna mellanrum. Det finns flera tillgängliga säkerhets kopierings alternativ för virtuella datorer, beroende på dina användnings fall.
 
@@ -21,7 +21,7 @@ Du kan skydda dina data genom att säkerhetskopiera med jämna mellanrum. Det fi
 
 Använd Azure Backup för att säkerhetskopiera virtuella Azure-datorer som kör produktions arbets belastningar. Azure Backup stöder programkonsekventa säkerhets kopieringar för virtuella Windows-och Linux-datorer. Med Azure Backup skapas återställningspunkter som lagras i geo-redundanta återställningsvalv. När du återställer från en återställningspunkt kan du återställa hela den virtuella datorn eller bara specifika filer. 
 
-En enkel, praktisk introduktion till Azure Backup för virtuella Azure-datorer finns i själv studie kursen säkerhetskopiera virtuella Azure-datorer för [Linux](./linux/tutorial-backup-vms.md) eller [Windows](./windows/tutorial-backup-vms.md).
+En enkel, praktisk introduktion till Azure Backup för virtuella Azure-datorer finns i snabb starten för [Azure Backup](../backup/quick-backup-vm-portal.md).
 
 Mer information om hur Azure Backup fungerar finns i [Planera infrastrukturen för säkerhets kopiering av virtuella datorer i Azure](../backup/backup-azure-vms-introduction.md)
 
@@ -46,4 +46,4 @@ Mer information om hur du skapar ögonblicks bilder finns i:
 
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan prova Azure Backup genom att följa själv studie kursen säkerhetskopiera virtuella Windows-datorer för [Linux](./linux/tutorial-backup-vms.md) eller [Windows](./windows/tutorial-backup-vms.md).
+Du kan prova Azure Backup genom att följa snabb starten för [Azure Backup](../backup/quick-backup-vm-portal.md).

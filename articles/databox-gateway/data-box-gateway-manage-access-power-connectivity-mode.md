@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582476"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786816"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Hantera åtkomst, energi och anslutnings läge för din Azure Data Box Gateway
 
@@ -68,7 +68,7 @@ När du genererar aktiverings nyckeln för enheten eller utför alla åtgärder 
 
 Du bör ha `User` åtkomst till Active Directory klient organisation så att du kan `Read all directory objects` . En gäst användare har inte behörighet till `Read all directory objects` . Om du är gäst kan du utföra åtgärder som att generera en aktiverings nyckel, skapa en resurs på enheten och skapa en användare.
 
-Mer information om hur du ger åtkomst till användare till Microsoft Graph API finns i [referens för Microsoft Graph behörigheter](https://docs.microsoft.com/graph/permissions-reference).
+Mer information om hur du ger åtkomst till användare till Microsoft Graph API finns i [referens för Microsoft Graph behörigheter](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Registrera resurs leverantörer
 
@@ -95,7 +95,7 @@ För en Data Box Gateway enhet `Microsoft.DataBoxEdge` ska registreras. För att
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Mer information om hur du registrerar en resurs leverantör finns i [lösa fel för registrering av resurs leverantör](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Mer information om hur du registrerar en resurs leverantör finns i [lösa fel för registrering av resurs leverantör](../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="manage-connectivity-mode"></a>Hantera anslutnings läge
 

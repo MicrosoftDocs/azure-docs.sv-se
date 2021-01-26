@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704346"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789203"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Självstudie: skapa en export ordning för Azure Data Box
 
@@ -179,7 +179,7 @@ Utför följande steg på Azure-portalen för att beställa en enhet.
 
 15. Välj en användar identitet som du ska använda för att hantera åtkomst till den här resursen. Välj **Välj en användar identitet**. I panelen till höger väljer du prenumerationen och den hanterade identiteten som ska användas. Välj sedan **Välj**.
 
-    En användare som tilldelats en hanterad identitet är en fristående Azure-resurs som kan användas för att hantera flera resurser. Mer information finns i [hanterade identitets typer](/azure/active-directory/managed-identities-azure-resources/overview).  
+    En användare som tilldelats en hanterad identitet är en fristående Azure-resurs som kan användas för att hantera flera resurser. Mer information finns i [hanterade identitets typer](../active-directory/managed-identities-azure-resources/overview.md).  
 
     Om du behöver skapa en ny hanterad identitet följer du rikt linjerna i [skapa, lista, ta bort eller tilldela en roll till en användardefinierad hanterad identitet med hjälp av Azure Portal](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
     

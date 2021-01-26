@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561230"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788459"
 ---
 # <a name="testing-for-luis-devops"></a>Testa för LUIS-DevOps
 
@@ -28,7 +28,7 @@ Det finns två olika typer av testning för en LUIS-app som du måste utföra i 
 Den här typen av testning liknar [interaktiv testning](./luis-concept-test.md) som du kan göra i Luis- [portalen](https://www.luis.ai/).
 
 - **Batch-test** – batch-testning är ett omfattande test på din aktuella tränade modell för att mäta dess prestanda. Till skillnad från enhets test är batch-testningen inte klar | det går inte att testa. Förväntat med batch-testning är att varje test returnerar den förväntade avsikten och förväntade entiteter. I stället kan du använda ett batch-test för att Visa precisionen för varje avsikt och enhet i din app och hjälpa dig att jämföra med tiden när du gör förbättringar.  
-Den här typen av testning är samma som [batch-testningen](./luis-concept-batch-test.md) som du kan utföra interaktivt i Luis-portalen.
+Den här typen av testning är samma som [batch-testningen](./luis-how-to-batch-test.md) som du kan utföra interaktivt i Luis-portalen.
 
 Du kan använda enhets testning från början av ditt projekt. Batch-testning är bara faktiskt av värde när du har utvecklat schemat för din LUIS-app och du arbetar med att förbättra dess noggrannhet.
 
@@ -42,7 +42,7 @@ När du skriver en uppsättning tester måste du för varje test definiera:
 * Förväntad avsikt
 * Förväntade entiteter.
 
-Använd LUIS [batch File-syntax](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) för att definiera en grupp av tester i en JSON-formaterad fil. Till exempel:
+Använd LUIS [batch File-syntax](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) för att definiera en grupp av tester i en JSON-formaterad fil. Ett exempel:
 
 ```JSON
 [
@@ -85,7 +85,7 @@ I enhets test är det en bra idé att testa att dina nyckel enheter har returner
 
 #### <a name="designing-batch-tests"></a>Utforma batch-tester
 
-Batch-testuppsättningar ska innehålla ett stort antal testfall som är utformade för att testa alla syften och alla entiteter i din LUIS-app. Information om hur du definierar en batch-testuppsättning finns [i batch-testning i Luis-portalen](./luis-concept-batch-test.md) .
+Batch-testuppsättningar ska innehålla ett stort antal testfall som är utformade för att testa alla syften och alla entiteter i din LUIS-app. Information om hur du definierar en batch-testuppsättning finns [i batch-testning i Luis-portalen](./luis-how-to-batch-test.md) .
 
 ### <a name="running-tests"></a>Köra tester
 
@@ -93,7 +93,7 @@ LUIS-portalen erbjuder funktioner som hjälper dig med interaktiv testning:
 
 * Med [**interaktiv testning**](./luis-concept-test.md) kan du skicka in ett exempel på uttryck och få svar på Luis-identifierade avsikter och entiteter. Du verifierar att testet har genomförts genom visuell inspektion.
 
-* [**Batch-testning**](./luis-concept-batch-test.md) använder en batch-testfil som indata för att verifiera din aktiva utbildade version för att mäta dess förutsägelse noggrannhet. Ett batch-test hjälper dig att Visa precisionen för varje avsikt och entitet i din aktiva version, vilket visar resultat med ett diagram.
+* [**Batch-testning**](./luis-how-to-batch-test.md) använder en batch-testfil som indata för att verifiera din aktiva utbildade version för att mäta dess förutsägelse noggrannhet. Ett batch-test hjälper dig att Visa precisionen för varje avsikt och entitet i din aktiva version, vilket visar resultat med ett diagram.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Köra tester i ett automatiserat Bygg arbets flöde
 

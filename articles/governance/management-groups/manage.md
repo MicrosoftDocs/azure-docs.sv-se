@@ -1,14 +1,14 @@
 ---
 title: Arbeta med hanterings grupper – Azure-styrning
 description: Lär dig att visa, underhålla, uppdatera och ta bort en hierarki för hanterings grupper.
-ms.date: 10/14/2020
+ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 33c7da1d7484056eb1bb2fd4b00d892137ed2b64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058105"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787376"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Hantera dina resurser med hanterings grupper
 
@@ -41,7 +41,7 @@ Du kan ändra namnet på hanterings gruppen med hjälp av portalen, PowerShell e
 
 1. När menyn öppnas anger du det nya namn som du vill ska visas.
 
-   :::image type="content" source="./media/rename_context.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="Skärm bild av fönstret Byt namn på grupp och alternativ för att byta namn på en hanterings grupp." border="false":::
 
 1. Välj **Spara**.
 
@@ -80,16 +80,16 @@ Om du vill ta bort en hanterings grupp måste följande krav uppfyllas:
 
 1. Välj **information**.
 
-1. Välj **ta bort**
+1. Välj **Ta bort**
 
-   :::image type="content" source="./media/delete.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="Skärm bild av hanterings grupp sidan med knappen Ta bort markerad." border="false":::
 
    > [!TIP]
    > Om ikonen är inaktive rad och Hovra med mus väljaren över ikonen visas orsaken.
 
 1. Det finns ett fönster som öppnas som bekräftar att du vill ta bort hanterings gruppen.
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Skärm bild av bekräftelse dialog rutan ta bort grupp för borttagning av en hanterings grupp." border="false":::
 
 1. Välj **Ja**.
 
@@ -123,7 +123,7 @@ Du kan visa en hanterings grupp som du har en direkt eller ärvd Azure-roll på.
 
 1. Om du vill se information om hanterings gruppen väljer du länken **(information)** bredvid rubriken för hanterings gruppen. Om den här länken inte är tillgänglig har du inte behörighet att visa den hanterings gruppen.
 
-   :::image type="content" source="./media/main.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Skärm bild av sidan hanterings grupper som visar underordnade hanterings grupper och prenumerationer." border="false":::
 
 ### <a name="view-in-powershell"></a>Visa i PowerShell
 
@@ -225,11 +225,11 @@ Om du vill se vilka behörigheter du har i Azure Portal väljer du hanterings gr
 
 1. Välj den hanterings grupp som du planerar att vara överordnad.
 
-1. Välj **Lägg till prenumeration**längst upp på sidan.
+1. Välj **Lägg till prenumeration** längst upp på sidan.
 
 1. Välj prenumerationen i listan med rätt ID.
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Skärm bild av alternativen för att lägga till prenumeration för att välja en befintlig prenumeration att lägga till i en hanterings grupp." border="false":::
 
 1. Välj "Spara".
 
@@ -243,13 +243,13 @@ Om du vill se vilka behörigheter du har i Azure Portal väljer du hanterings gr
 
 1. Välj ellipsen i slutet av raden för prenumerationen i listan som du vill flytta.
 
-   :::image type="content" source="./media/move_small.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="Skärm bild av den alternativa menyn för en prenumeration för att välja alternativet flytta." border="false":::
 
 1. Välj **Flytta**.
 
 1. På menyn som öppnas väljer du den **överordnade hanterings gruppen**.
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="Skärm bild av fönstret flytta och alternativ för att flytta en prenumeration till en annan hanterings grupp." border="false":::
 
 1. Välj **Spara**.
 
@@ -281,6 +281,42 @@ Om du vill ta bort prenumerationen från hanterings gruppen använder du kommand
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
+### <a name="move-subscriptions-in-arm-template"></a>Flytta prenumerationer i ARM-mallen
+
+Om du vill flytta en prenumeration i en Azure Resource Manager-mall (ARM-mall) använder du följande mall.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMgId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the management group that you want to move the subscription to."
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the existing subscription to move."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
+            "properties": {
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="move-management-groups"></a>Flytta hanterings grupper 
 
 ### <a name="move-management-groups-in-the-portal"></a>Flytta hanterings grupper i portalen
@@ -298,7 +334,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - Om du väljer ny skapas en ny hanterings grupp.
    - Om du väljer en befintlig visas en listruta över alla hanterings grupper som du kan flytta till den här hanterings gruppen.  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Skärm bild av alternativen Lägg till hanterings grupp för att skapa en ny hanterings grupp." border="false":::
 
 1. Välj **Spara**.
 
@@ -323,7 +359,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 Hanteringsgrupper kan användas i [Azure-aktivitetsloggar](../../azure-monitor/platform/platform-logs-overview.md). Du kan fråga alla händelser som sker i en hanterings grupp på samma centrala plats som andra Azure-resurser. Du kan till exempel se alla ändringar för rolltilldelningar eller principtilldelningar som gjorts i en viss hanteringsgrupp.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Skärm bild av åtgärds fältet och knappen &quot;Byt namn på grupp&quot; på sidan hanterings grupp." border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Skärm bild av aktivitets loggar och åtgärder relaterade till den valda hanterings gruppen." border="false":::
 
 När du vill fråga hanteringsgrupper utanför Microsoft Azure-portalen är målområdet för hanteringsgrupper: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 

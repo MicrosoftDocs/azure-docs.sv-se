@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059661"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789034"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Skapa och slå samman en CSR i Key Vault
 
@@ -104,7 +104,7 @@ Certifikatbegäran har nu slagits samman.
 ## <a name="add-more-information-to-the-csr"></a>Lägg till mer information i CSR
 
 Om du vill lägga till mer information när du skapar CSR, definierar du den i **SubjectName**. Du kanske vill lägga till information som:
-- Land
+- Country
 - Stad/plats
 - Region/provins
 - Organisation
@@ -123,7 +123,7 @@ Exempel
 
 - Hur gör jag för att övervaka eller hantera min CSR?
 
-     Se [övervaka och hantera certifikat skapande](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
+     Se [övervaka och hantera certifikat skapande](./create-certificate-scenarios.md).
 
 - Vad händer om jag ser **fel typ "den offentliga nyckeln för certifikatet för slutanvändare i det angivna X. 509-certifikatets innehåll stämmer inte överens med den offentliga delen av den angivna privata nyckeln. Kontrol lera om certifikatet är giltigt**?
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449421"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787459"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivera Azure Arc på Kubernetes-kluster på din Azure Stack Edge Pro GPU-enhet
 
@@ -22,7 +22,7 @@ Den här artikeln visar hur du aktiverar Azure Arc på ett befintligt Kubernetes
 Den här proceduren är avsedd för de som har granskat [Kubernetes-arbetsbelastningar på Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-kubernetes-workload-management.md) och som är bekanta med begreppen [Vad är Azure Arc Enabled Kubernetes (för hands version)?](../azure-arc/kubernetes/overview.md).
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du kan aktivera Azure Arc på Kubernetes-kluster måste du kontrol lera att du har slutfört följande krav för din Azure Stack Edge Pro-enhet och klienten som du ska använda för att få åtkomst till enheten:
 
@@ -39,7 +39,7 @@ Innan du kan aktivera Azure Arc på Kubernetes-kluster måste du kontrol lera at
 
 1. Du har ett Windows-klientsystem som ska användas för att få åtkomst till Azure Stack Edge Pro-enheten.
   
-    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows).
+    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows).
     
     - Du kan också ha andra klienter med ett [operativ system som stöds](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Den här artikeln beskriver proceduren när du använder en Windows-klient. 
     

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040934"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788578"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus utgående bindning för Azure Functions
 
@@ -87,6 +87,41 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+I följande exempel visas en Java-funktion som skickar ett meddelande till en Service Bus `myqueue` -kö när den utlöses av en HTTP-begäran.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@QueueOutput` anteckningen för funktions parametrar vars värde skrivs till en Service Bus kö.  Parameter typen bör vara `OutputBinding<T>` , där T är en ursprunglig Java-typ för en POJO.
+
+Java-funktioner kan också skriva till ett Service Bus ämne. I följande exempel används `@ServiceBusTopicOutput` anteckningen för att beskriva konfigurationen för utgående bindning. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 I följande exempel visas en Service Bus utgående bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen. Funktionen använder en timer-utlösare för att skicka ett köat meddelande var 15: e sekund.
@@ -139,6 +174,39 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+I följande exempel visas en Service Bus utgående bindning i en *function.jsi* filen och en [PowerShell-funktion](functions-reference-powershell.md) som använder bindningen. 
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+Här är PowerShell som skapar ett meddelande som funktionens utdata.
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Följande exempel visar hur du skriver ut till en Service Bus kö i python.
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-I följande exempel visas en Java-funktion som skickar ett meddelande till en Service Bus `myqueue` -kö när den utlöses av en HTTP-begäran.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `@QueueOutput` anteckningen för funktions parametrar vars värde skrivs till en Service Bus kö.  Parameter typen bör vara `OutputBinding<T>` , där T är en ursprunglig Java-typ för en POJO.
-
-Java-funktioner kan också skriva till ett Service Bus ämne. I följande exempel används `@ServiceBusTopicOutput` anteckningen för att beskriva konfigurationen för utgående bindning. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribut och anteckningar
@@ -262,17 +295,21 @@ Du kan använda `ServiceBusAccount` attributet för att ange Service Bus konto s
 
 Attribut stöds inte av C#-skript.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput` `ServiceBusTopicOutput` Anteckningarna och är tillgängliga för att skriva ett meddelande som ett funktions resultat. Parametern dekorerade dessa anteckningar måste deklareras som en `OutputBinding<T>` WHERE `T` är den typ som motsvarar meddelandets typ.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribut stöds inte av Java Script.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribut stöds inte av python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`ServiceBusQueueOutput` `ServiceBusTopicOutput` Anteckningarna och är tillgängliga för att skriva ett meddelande som ett funktions resultat. Parametern dekorerade dessa anteckningar måste deklareras som en `OutputBinding<T>` WHERE `T` är den typ som motsvarar meddelandets typ.
 
 ---
 
@@ -280,11 +317,11 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `ServiceBus` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
-|**bastyp** | Saknas | Måste vara inställd på "Service Bus". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
-|**position** | Saknas | Måste anges till "out". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
-|**Namn** | Saknas | Namnet på variabeln som representerar kön eller ämnes meddelandet i funktions koden. Ange till "$return" för att referera till funktionens retur värde. |
+|**bastyp** | saknas | Måste vara inställd på "Service Bus". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
+|**position** | saknas | Måste anges till "out". Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
+|**Namn** | saknas | Namnet på variabeln som representerar kön eller ämnes meddelandet i funktions koden. Ange till "$return" för att referera till funktionens retur värde. |
 |**queueName**|**QueueName**|Köns namn.  Ange endast om köa meddelanden ska skickas, inte för ett ämne.
 |**topicName**|**TopicName**|Namn på ämnet. Ange endast om meddelande ämnen skickas, inte för en kö.|
 |**anslutningen**|**Anslutning**|Namnet på en app-inställning som innehåller den Service Bus anslutnings sträng som ska användas för den här bindningen. Om appens inställnings namn börjar med "AzureWebJobs" kan du bara ange resten av namnet. Om du till exempel anger `connection` "MyServiceBus" söker Functions-körningen efter en app-inställning med namnet "AzureWebJobsMyServiceBus". Om du lämnar `connection` tomt använder Functions-körningen standard Service Bus anslutnings strängen i appens inställning med namnet "AzureWebJobsServiceBus".<br><br>Om du vill hämta en anslutnings sträng följer du stegen som visas i [Hämta autentiseringsuppgifter för hantering](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Anslutnings strängen måste vara för ett Service Bus-namnområde, inte begränsat till en viss kö eller ett ämne.|
@@ -330,15 +367,19 @@ När du arbetar med C#-funktioner:
 
 * För att få åtkomst till sessions-ID: t binder du till en [`Message`](/dotnet/api/microsoft.azure.servicebus.message) typ och använder `sessionId` egenskapen.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Använd [Azure Service Bus SDK](../service-bus-messaging/index.yml) i stället för den inbyggda utgående bindningen.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Få åtkomst till kön eller ämnet med hjälp av `context.bindings.<name from function.json>` . Du kan tilldela en sträng, en byte mat ris eller ett JavaScript-objekt (avserialiserat till JSON) till `context.binding.<name>` .
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Utdata till Service Bus är tillgängligt via `Push-OutputBinding` cmdleten där du skickar argument som matchar namnet som anges av bindningens namn parameter i *function.jsi* filen.
+
 # <a name="python"></a>[Python](#tab/python)
-
-Använd [Azure Service Bus SDK](../service-bus-messaging/index.yml) i stället för den inbyggda utgående bindningen.
-
-# <a name="java"></a>[Java](#tab/java)
 
 Använd [Azure Service Bus SDK](../service-bus-messaging/index.yml) i stället för den inbyggda utgående bindningen.
 
@@ -384,11 +425,11 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 
 Om du har `isSessionsEnabled` ställt in till `true` , `sessionHandlerOptions` kommer att användas.  Om du har `isSessionsEnabled` ställt in till `false` , `messageHandlerOptions` kommer att användas.
 
-|Egenskap  |Default | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
 |prefetchCount|0|Hämtar eller anger antalet meddelanden som meddelande mottagaren samtidigt kan begära.|
 |maxAutoRenewDuration|00:05:00|Den längsta tid som meddelande låset ska förnyas automatiskt.|
-|Automatisk|true|Anger om utlösaren ska anropa Complete efter bearbetning eller om funktions koden ska anropas manuellt.<br><br>Inställningen till `false` stöds bara i C#.<br><br>Om detta är inställt på `true` , slutför utlösaren meddelandet automatiskt om funktions körningen slutförs utan problem, och överger meddelandet annars.<br><br>När det är inställt på `false` , ansvarar du för att anropa [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) -metoder för att slutföra, överge eller obeställbara meddelanden kön meddelandet. Om ett undantag genereras (och ingen av `MessageReceiver` metoderna anropas), kommer låset att fortsätta. När låset har gått ut placeras meddelandet i kö igen `DeliveryCount` och låset förnyas automatiskt.<br><br>I icke-C #-funktioner resulterar undantag i funktionen i körnings anropen `abandonAsync` i bakgrunden. Om inget undantag inträffar, `completeAsync` anropas sedan i bakgrunden. |
+|Automatisk|true|Anger om utlösaren ska anropa Complete efter bearbetning eller om funktions koden ska anropas manuellt.<br><br>Inställningen till `false` stöds bara i C#.<br><br>Om detta är inställt på `true` , slutför utlösaren meddelandet automatiskt om funktions körningen slutförs utan problem, och överger meddelandet annars.<br><br>När det är inställt på `false` , ansvarar du för att anropa [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) -metoder för att slutföra, överge eller obeställbara meddelanden kön meddelandet. Om ett undantag genereras (och ingen av `MessageReceiver` metoderna anropas), kommer låset att fortsätta. När låset har gått ut placeras meddelandet i kö igen `DeliveryCount` och låset förnyas automatiskt.<br><br>I icke-C #-funktioner resulterar undantag i funktionen i körnings anropen `abandonAsync` i bakgrunden. Om inget undantag inträffar, `completeAsync` anropas sedan i bakgrunden. |
 |maxConcurrentCalls|16|Det maximala antalet samtidiga anrop till motringningen som meddelande pumpen ska initiera per skalad instans. Som standard bearbetar Functions-körningen flera meddelanden samtidigt.|
 |maxConcurrentSessions|2000|Maximalt antal sessioner som kan hanteras samtidigt per skalad instans.|
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/22/2021
+ms.openlocfilehash: 3aff700493fbdc0c2b8a9a3dcb4dbbafe9b10761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533503"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788781"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Självstudie: använda Apache HBase i Azure HDInsight
 
@@ -28,7 +28,7 @@ I den här guiden får du lära dig att:
 > * Använd HBase REST API:er med Curl
 > * Kontrollera klusterstatus
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * En SSH-klient. Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -48,16 +48,16 @@ I följande procedur används en Azure Resource Manager-mall för att skapa ett 
     |---|---|
     |Prenumeration|Välj din Azure-prenumeration som används för att skapa klustret.|
     |Resursgrupp|Skapa en Azure-resurs hanterings grupp eller Använd en befintlig.|
-    |Plats|Ange platsen för resurs gruppen. |
+    |Location|Ange platsen för resurs gruppen. |
     |ClusterName|Ange ett namn för HBase-klustret.|
-    |Inloggningsnamn och lösenord för klustret|Standard inloggnings namnet är **admin** .|
-    |SSH-användarnamn och lösenord|Standardanvändarnamnet är **sshuser** .|
+    |Inloggningsnamn och lösenord för klustret|Standard inloggnings namnet är **admin**.|
+    |SSH-användarnamn och lösenord|Standardanvändarnamnet är **sshuser**.|
 
     Andra parametrar är valfria.  
 
     Varje kluster är beroende av ett Azure Storage-konto. När du har tagit bort ett kluster finns data kvar i lagrings kontot. Klustrets lagringskonto av standardtyp har det klusternamn som omfattar tillägget ”store”. Det är hårdkodad i avsnittet mallens variabler.
 
-3. Välj **Jag godkänner villkoren som anges ovan** och välj sedan **Köp** . Det tar cirka 20 minuter att skapa ett kluster.
+3. Välj **Jag godkänner villkoren som anges ovan** och välj sedan **Köp**. Det tar cirka 20 minuter att skapa ett kluster.
 
 När ett HBase-kluster har tagits bort kan du skapa ett annat HBase-kluster med hjälp av samma standard-blob-container. Det nya klustret hämtar de HBase-tabeller som du skapade i det ursprungliga klustret. Om du vill undvika inkonsekvenser rekommenderar vi att du inaktiverar HBase-tabellerna innan du tar bort klustret.
 
@@ -332,7 +332,7 @@ HBase i HDInsight levereras med ett webbgränssnitt för övervakning av kluster
 
 1. Välj **HBase** på menyn till vänster.
 
-1. Välj **snabb länkar** överst på sidan, peka på länken aktiva Zookeeper och välj sedan **HBase Master användar gränssnitt** .  Gränssnittet har öppnats i en annan webbläsarflik:
+1. Välj **snabb länkar** överst på sidan, peka på länken aktiva Zookeeper och välj sedan **HBase Master användar gränssnitt**.  Gränssnittet har öppnats i en annan webbläsarflik:
 
    ![HDInsight Apache HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -344,15 +344,21 @@ HBase i HDInsight levereras med ett webbgränssnitt för övervakning av kluster
    - uppgifter
    - attribut för programvara
 
+## <a name="cluster-recreation"></a>Kluster fritid
+
+När ett HBase-kluster har tagits bort kan du skapa ett annat HBase-kluster med hjälp av samma standard-blob-container. Det nya klustret hämtar de HBase-tabeller som du skapade i det ursprungliga klustret. För att undvika inkonsekvenser rekommenderar vi dock att du inaktiverar HBase-tabellerna innan du tar bort klustret. 
+
+Du kan använda kommandot HBase `disable 'Contacts'` . 
+
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill undvika inkonsekvenser rekommenderar vi att du inaktiverar HBase-tabellerna innan du tar bort klustret. Du kan använda kommandot HBase `disable 'Contacts'` . Om du inte planerar att fortsätta använda det här programmet tar du bort det HBase-kluster som du skapade med följande steg:
+Om du inte planerar att fortsätta använda det här programmet tar du bort det HBase-kluster som du skapade med följande steg:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-1. I rutan **Sök** längst upp skriver du **HDInsight** .
-1. Välj **HDInsight-kluster** under **Tjänster** .
+1. I rutan **Sök** längst upp skriver du **HDInsight**.
+1. Välj **HDInsight-kluster** under **Tjänster**.
 1. I listan över HDInsight-kluster som visas klickar du på **...** intill det kluster som du skapade för den här självstudien.
-1. Klicka på **Ta bort** . Klicka på **Ja** .
+1. Klicka på **Ta bort**. Klicka på **Ja**.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 52c6ef9edfc42bf1ad3b3279e0fa4e19b4cf502c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358855"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788272"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Övervaka Azure Firewall-loggar och mått
 
@@ -24,7 +24,7 @@ Du kan komma åt vissa av de här loggarna via portalen. Loggar kan skickas till
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du börjar bör du läsa [Azure Firewall-loggar och-mått](logs-and-metrics.md) för en översikt över de diagnostikloggar och mät värden som är tillgängliga för Azure-brandväggen.
 
@@ -43,9 +43,9 @@ Det kan ta några minuter innan data visas i loggarna när du har aktiverat diag
    * AzureFirewallDnsProxy
 
 
-3. Välj **Lägg till diagnostisk inställning**. På sidan **Diagnostikinställningar** kan du göra inställningar för diagnostikloggarna.
+3. Välj **Lägg till diagnostikinställning**. På sidan **Diagnostikinställningar** kan du göra inställningar för diagnostikloggarna.
 5. I det här exemplet lagras loggarna av Azure Monitor-loggar, så använd **Firewall log analytics** som namn.
-6. Under **logg** väljer du **AzureFirewallApplicationRule** , **AzureFirewallNetworkRule** , **AzureFirewallThreatIntelLog** och **AzureFirewallDnsProxy** för att samla in loggarna.
+6. Under **logg** väljer du **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog** och **AzureFirewallDnsProxy** för att samla in loggarna.
 7. Konfigurera din arbets yta genom att välja **Skicka till Log Analytics** .
 8. Välj din prenumeration.
 9. Välj **Spara**.
@@ -104,15 +104,15 @@ Använd följande steg för att aktivera diagnostisk loggning med Azure CLI:
 
 Du kan visa och analysera aktivitetsloggdata med någon av följande metoder:
 
-* **Azure-verktyg** : Hämta information från aktivitetsloggen via Azure PowerShell, Azure-CLI:t, Azure REST-API:t eller Azure Portal. Det finns stegvisa instruktioner för respektive metod i artikeln [Aktivitetsåtgärder med Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
-* **Power BI** : Om du inte redan har ett [Power BI](https://powerbi.microsoft.com/pricing)-konto kan du prova ett utan kostnad. Med [innehållspaketet Azure aktivitetsloggar för Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) kan du analysera dina data på förkonfigurerade instrumentpaneler, som du både kan anpassa och använda i befintligt skick.
-* **Azure Sentinel** : du kan ansluta Azure Firewall-loggar till Azure Sentinel, så att du kan visa loggdata i arbets böcker, använda den för att skapa anpassade aviseringar och införliva den för att förbättra din undersökning. Azure Firewall data Connector i Azure Sentinel är för närvarande en offentlig för hands version. Mer information finns i [ansluta data från Azure-brandväggen](../sentinel/connect-azure-firewall.md).
+* **Azure-verktyg**: Hämta information från aktivitetsloggen via Azure PowerShell, Azure-CLI:t, Azure REST-API:t eller Azure Portal. Det finns stegvisa instruktioner för respektive metod i artikeln [Aktivitetsåtgärder med Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+* **Power BI**: Om du inte redan har ett [Power BI](https://powerbi.microsoft.com/pricing)-konto kan du prova ett utan kostnad. Med [innehållspaketet Azure aktivitetsloggar för Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) kan du analysera dina data på förkonfigurerade instrumentpaneler, som du både kan anpassa och använda i befintligt skick.
+* **Azure Sentinel**: du kan ansluta Azure Firewall-loggar till Azure Sentinel, så att du kan visa loggdata i arbets böcker, använda den för att skapa anpassade aviseringar och införliva den för att förbättra din undersökning. Azure Firewall data Connector i Azure Sentinel är för närvarande en offentlig för hands version. Mer information finns i [ansluta data från Azure-brandväggen](../sentinel/connect-azure-firewall.md).
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Visa och analysera loggar för nätverk och programregler
 
 [Azure Monitor-loggar](../azure-monitor/insights/azure-networking-analytics.md) samlar in data från räknaren och händelseloggfilerna. Där finns visualiseringar och kraftfulla sökfunktioner när du ska analysera dina loggar.
 
-Log Analytics-exempelfrågor för Azure Firewall finns i [Log Analytics-exempel för Azure Firewall](log-analytics-samples.md).
+Log Analytics-exempelfrågor för Azure Firewall finns i [Log Analytics-exempel för Azure Firewall](./firewall-workbook.md).
 
 [Azure Firewall-arbetsboken](firewall-workbook.md) innehåller en flexibel arbets yta för analys av Azure Firewall-data. Du kan använda den för att skapa omfattande visuella rapporter i Azure Portal. Du kan trycka på flera brand väggar som distribueras i Azure och kombinera dem till enhetliga interaktiva upplevelser.
 

@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar en värdbaserad kryptering i ett Azure
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762042"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787832"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Värdbaserad kryptering på Azure Kubernetes service (AKS) (för hands version)
 
@@ -28,7 +28,7 @@ Den här funktionen kan bara ställas in när klustret skapas eller när en nod 
 - Se till att du har `aks-preview` CLI-tillägget v 0.4.55 eller senare installerat
 - Se till att du har `EnableEncryptionAtHostPreview` funktions flaggan under `Microsoft.ContainerService` aktive rad.
 
-För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft.com med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer.
+För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft . com med dina prenumerations-ID: n för att få funktionen aktive rad för dina prenumerationer.
 
 ### <a name="register-encryptionathost--preview-features"></a>Registrera för `EncryptionAtHost`  hands versions funktioner
 

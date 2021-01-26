@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763748"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789018"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrera nyckelvalv med DigiCert-certifikatutfärdare
 
@@ -42,7 +42,7 @@ För att slutföra den här guiden måste du ha följande resurser.
 
 Se till att du har följande information som är praktisk från ditt DigiCert CertCentral-konto:
 -   Konto-ID för CertCentral
--   Organisations-ID
+-   Organisations-id
 -   API-nyckel
 
 ## <a name="adding-certificate-authority-in-key-vault"></a>Lägger till certifikat utfärdare i Key Vault 
@@ -129,7 +129,7 @@ Om certifikatet som utfärdats är inaktiverat i Azure Portal kan du fortsätta 
  ![Certifikat åtgärd](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Fel meddelande: utför en sammanslagning för att slutföra den här certifikatbegäran.
-Du måste slå samman CSR-filen som signerats av certifikat utfärdaren för att slutföra den här begäran. Lär dig mer [här](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request)
+Du måste slå samman CSR-filen som signerats av certifikat utfärdaren för att slutföra den här begäran. Läs mer [här](./create-certificate-signing-request.md)
 
 Mer information finns i [certifikat åtgärderna i Key Vault REST API referens](/rest/api/keyvault). Information om hur du etablerar behörigheter finns i [valv – skapa eller uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – uppdatera åtkomst princip](/rest/api/keyvault/vaults/updateaccesspolicy).
 

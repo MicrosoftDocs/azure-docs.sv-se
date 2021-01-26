@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196135"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786850"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>Använda tal tjänster via en privat slut punkt
 
@@ -293,7 +293,7 @@ Tal tjänster har REST-API: er för [tal till text](rest-speech-to-text.md) och 
 Tal till text har två REST-API: er. Varje API fungerar på ett annat sätt, använder olika slut punkter och kräver en annan metod när du använder den i scenariot för privat slut punkts aktiverat.
 
 REST-API: er från tal till text är:
-- [Tal-till-Text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), som används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). v 3.0 är en [efterföljande till v 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- [Tal-till-Text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30), som används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). v 3.0 är en [efterföljande till v 2.0](./migrate-v2-to-v3.md)
 - [Tal-till-text-REST API för kort ljud](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio), som används för online-avskrift 
 
 Användning av tal-till-text-REST API för kort ljud och text till tal-REST API i det privata slut punkts scenariot är detsamma. Det motsvarar det [tal SDK-fall](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) som beskrivs längre fram i den här artikeln. 

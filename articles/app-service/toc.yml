@@ -259,6 +259,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Hämta resurshändelser
           href: get-resource-events.md
+        - name: Hälsokontroll
+          href: monitor-instances-health-check.md
         - name: Öppna SSH-session till Linux-container
           href: configure-linux-open-ssh-session.md
     - name: Hantera app

@@ -3,51 +3,51 @@ title: Lägg till ett tillägg för skalnings uppsättning för virtuell dator t
 description: Så här lägger du till ett tillägg för skalnings uppsättning för virtuella datorer Service Fabric hanterad kluster nodtyp
 ms.topic: article
 ms.date: 09/28/2020
-ms.openlocfilehash: be51a03494c90ba91cddb383b62b2477fabc8fc3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 64df4b82795f382e176d66dc61470296447b9e29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309281"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788086"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Lägg till ett tillägg för skalnings uppsättning för virtuell dator till en Service Fabric hanterad kluster nodtyp (för hands version)
 
 Varje nodtyp i ett Service Fabric hanterat kluster backas upp av en skalnings uppsättning för virtuella datorer. På så sätt kan du lägga till [tillägg för skalnings uppsättningar för virtuella datorer](../virtual-machines/extensions/overview.md) i Service Fabric hanterade klusternoder.
 
-Du kan lägga till ett tillägg för skalnings uppsättning för virtuell dator till en nodtyp med PowerShell [-kommandot Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?preserve-view=true&view=azps-4.7.0) .
+Du kan lägga till ett tillägg för skalnings uppsättning för virtuell dator till en nodtyp med PowerShell [-kommandot Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) .
 
 Alternativt kan du använda ett tillägg för skalnings uppsättning för virtuella datorer på en Service Fabric hanterad klusternod i din Azure Resource Manager-mall, till exempel:
 
 ```json
 {
-    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "apiVersion": "[variables('sfApiVersion')]",
-    "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
-    "dependsOn": [
-        "[concat('Microsoft.ServiceFabric/managedclusters/', parameters('clusterName'))]"
-    ],
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "isPrimary": true,
-        "vmInstanceCount": 3,
-        "dataDiskSizeGB": 100,
-        "vmSize": "Standard_D2",
-        "vmImagePublisher": "MicrosoftWindowsServer",
-        "vmImageOffer": "WindowsServer",
-        "vmImageSku": "2019-Datacenter",
-        "vmImageVersion": "latest",
-        "vmExtensions": [{
-            "name": "ExtensionA",
-            "properties": {
-                "publisher": "ExtensionA.Publisher",
-                "type": "KeyVaultForWindows",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                }
-            }
-        }]
-    }
+    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+    "apiVersion": "[variables('sfApiVersion')]",
+    "name": "[concat(parameters('clusterName'), '/', parameters('nodeTypeName'))]",
+    "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/managedclusters/', parameters('clusterName'))]"
+    ],
+    "location": "[resourceGroup().location]",
+    "properties": {
+        "isPrimary": true,
+        "vmInstanceCount": 3,
+        "dataDiskSizeGB": 100,
+        "vmSize": "Standard_D2",
+        "vmImagePublisher": "MicrosoftWindowsServer",
+        "vmImageOffer": "WindowsServer",
+        "vmImageSku": "2019-Datacenter",
+        "vmImageVersion": "latest",
+        "vmExtensions": [{
+            "name": "ExtensionA",
+            "properties": {
+                "publisher": "ExtensionA.Publisher",
+                "type": "KeyVaultForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                }
+            }
+        }]
+    }
 }
 ```
 

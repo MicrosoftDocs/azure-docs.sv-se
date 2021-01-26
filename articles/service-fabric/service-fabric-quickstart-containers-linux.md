@@ -4,12 +4,12 @@ description: I den här snabbstarten skapar du en Docker-avbildning med din app,
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741917"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788170"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Snabbstart: Distribuera Linux-containrar till Service Fabric
 
@@ -19,13 +19,13 @@ Den här snabbstarten visar hur du distribuerar Linux-containrar till ett Servic
 
 ![Webbsida för röstningsappen][quickstartpic]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här snabbstarten behöver du:
 
 1. Om du inte har någon prenumeration kan du skapa ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 
-2. Installera [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. Installera [Azure CLI](/cli/azure/install-azure-cli-apt)
 
 3. Installera [Service Fabric SDK och CLI](service-fabric-get-started-linux.md#installation-methods)
 
@@ -89,7 +89,7 @@ I Service Fabric finns flera verktyg för att hantera kluster och dess program:
 
 I den här snabbstarten använder du Service Fabric CLI och Service Fabric Explorer (ett webbaserat verktyg). Om du vill använda Service Fabric Explorer måste du importera certifikatets PFX-fil till webbläsaren. PFX-filen har inget lösenord som standard.
 
-Mozilla Firefox är standardwebbläsaren i Ubuntu 16.04. Klicka på menyknappen i det övre högra hörnet i webbläsaren om du vill importera certifikatet till Firefox. Klicka sedan på **Alternativ** . På sidan **Inställningar** söker du efter ”certifikat” i sökrutan. Klicka på **Visa certifikat** och välj fliken **Dina certifikat** . Klicka på **Importera** och följ anvisningarna för att importera certifikatet.
+Mozilla Firefox är standardwebbläsaren i Ubuntu 16.04. Klicka på menyknappen i det övre högra hörnet i webbläsaren om du vill importera certifikatet till Firefox. Klicka sedan på **Alternativ**. På sidan **Inställningar** söker du efter ”certifikat” i sökrutan. Klicka på **Visa certifikat** och välj fliken **Dina certifikat**. Klicka på **Importera** och följ anvisningarna för att importera certifikatet.
 
    ![Installera certifikat på Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -101,13 +101,13 @@ Mozilla Firefox är standardwebbläsaren i Ubuntu 16.04. Klicka på menyknappen 
     sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. Använd installationsskriptet till att kopiera röstningsprogrammets definition till klustret, registrera programtypen och skapa en instans av programmet.  PEM-certifikatfilen måste finnas i samma katalog som *install.sh* -filen.
+2. Använd installationsskriptet till att kopiera röstningsprogrammets definition till klustret, registrera programtypen och skapa en instans av programmet.  PEM-certifikatfilen måste finnas i samma katalog som *install.sh*-filen.
 
     ```bash
     ./install.sh
     ```
 
-3. Öppna en webbläsare och gå till Service Fabric Explorer-slutpunkten för klustret. Slut punkten har följande format:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer** ; till exempel `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Öppna en webbläsare och gå till Service Fabric Explorer-slutpunkten för klustret. Slut punkten har följande format:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; till exempel `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Expandera noden **Program** för att se att det nu finns en post för röstningsprogramtypen och instansen som du skapade.
 
@@ -143,7 +143,7 @@ Service Fabric-tjänster kan enkelt skalas över ett kluster beroende på belast
 Gör så här om du vill skala frontwebbtjänsten:
 
 1. Öppna Service Fabric Explorer i klustret, till exempel`https://containertestcluster.eastus.cloudapp.azure.com:19080`.
-2. Klicka på ellipsen (tre punkter) bredvid noden **fabric:/Voting/azurevotefront** i trädvyn och välj alternativet för att **skala tjänsten** .
+2. Klicka på ellipsen (tre punkter) bredvid noden **fabric:/Voting/azurevotefront** i trädvyn och välj alternativet för att **skala tjänsten**.
 
     ![Skalningstjänsten i Service Fabric Explorer startas][containersquickstartscale]
 
@@ -168,7 +168,7 @@ Använd avinstallationsskriptet (uninstall.sh) som medföljer mallen för att ta
 
 Det enklaste sättet att ta bort klustret och alla de resurser det använder är att ta bort resursgruppen.
 
-Logga in på Azure och välj det prenumerations-ID som du vill ta bort klustret med. Du hittar ditt prenumerations-ID när du loggar in på Azure-portalen. Ta bort resursgruppen och alla klusterresurser med [kommandot az group delete](/cli/azure/group?view=azure-cli-latest).
+Logga in på Azure och välj det prenumerations-ID som du vill ta bort klustret med. Du hittar ditt prenumerations-ID när du loggar in på Azure-portalen. Ta bort resursgruppen och alla klusterresurser med [kommandot az group delete](/cli/azure/group).
 
 ```azurecli
 az login
@@ -177,7 +177,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Om du är färdig med ditt kluster kan du ta bort certifikatet från certifikatarkivet. Exempel:
+Om du är färdig med ditt kluster kan du ta bort certifikatet från certifikatarkivet. Ett exempel:
 - I Windows: Använd [MMC-snapin-modulen Certifikat](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Välj **Mitt användarkonto** när du lägger till snapin-modulen. Gå till `Certificates - Current User\Personal\Certificates` och ta bort certifikatet.
 - I Mac: Använd nyckelringsappen.
 - I Ubuntu: Följ stegen som du använde för att visa certifikat och ta bort certifikatet.

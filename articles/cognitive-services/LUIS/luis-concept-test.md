@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535856"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787561"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testa exempel yttranden i LUIS
 
@@ -33,7 +33,7 @@ Se [förutsägelse Poäng](luis-concept-prediction-score.md) för att lära dig 
 Interaktiv testning görs från **test** panelen i Luis-portalen. Du kan ange en uttryck för att se hur avsikter och entiteter identifieras och visas. Om LUIS inte förutsäger de intentor och entiteter som du förväntar dig på en uttryck på test panelen, kopierar du den till sidan **avsikt** som en ny uttryck. Märk sedan delarna i den uttryck för entiteter och träna LUIS. 
 
 ## <a name="batch-testing"></a>Batch-testning
-Se [batch-testning](luis-concept-batch-test.md) om du testar mer än en uttryck i taget.
+Se [batch-testning](./luis-how-to-batch-test.md) om du testar mer än en uttryck i taget.
 
 ## <a name="endpoint-testing"></a>Slut punkts testning
 Du kan testa att använda [slut punkten](luis-glossary.md#endpoint) med högst två versioner av appen. Med din huvud-eller Live-version av din app inställd som **produktions** slut punkt lägger du till en andra version till **mellanlagringsplatsen** . Den här metoden ger dig tre versioner av en uttryck: den aktuella modellen i test fönstret på [Luis](luis-reference-regions.md) -webbplatsen och de två versionerna på de två olika slut punkterna. 

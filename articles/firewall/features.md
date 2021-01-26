@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652152"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788238"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-funktioner
 
@@ -29,7 +29,7 @@ Azure-brandväggen innehåller följande funktioner:
 - [Regler för filtrering av nätverkstrafik](#network-traffic-filtering-rules)
 - [FQDN-taggar](#fqdn-tags)
 - [Tjänsttaggar](#service-tags)
-- [Hotinformation](#threat-intelligence)
+- [Hot information](#threat-intelligence)
 - [Stöd för utgående SNAT](#outbound-snat-support)
 - [Stöd för inkommande DNAT](#inbound-dnat-support)
 - [Flera offentliga IP-adresser](#multiple-public-ip-addresses)
@@ -101,7 +101,7 @@ Detta möjliggör följande scenarier:
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-loggning
 
-Alla händelser är integrerade med Azure Monitor, vilket gör att du kan arkivera loggar till ett lagringskonto, strömma händelser till din händelsehubb eller skicka dem till Azure Monitor-loggar. Azure Monitor log-exempel finns i [Azure Monitor loggar för Azure-brandväggen](log-analytics-samples.md).
+Alla händelser är integrerade med Azure Monitor, vilket gör att du kan arkivera loggar till ett lagringskonto, strömma händelser till din händelsehubb eller skicka dem till Azure Monitor-loggar. Azure Monitor log-exempel finns i [Azure Monitor loggar för Azure-brandväggen](./firewall-workbook.md).
 
 Mer information finns i [Självstudier: övervaka Azure Firewall-loggar och-mått](./firewall-diagnostics.md). 
 

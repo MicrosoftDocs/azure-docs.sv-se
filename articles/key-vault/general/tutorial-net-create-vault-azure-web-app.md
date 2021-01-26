@@ -10,25 +10,25 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733064"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788746"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Självstudie: Använd en hanterad identitet för att ansluta Key Vault till en Azure-webbapp i .NET
 
 [Azure Key Vault](./overview.md) är ett sätt att lagra autentiseringsuppgifter och andra hemligheter med ökad säkerhet. Men din kod måste autentiseras för att Key Vault ska kunna hämta dem. [Hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md) hjälper till att lösa det här problemet genom att ge Azure-tjänster en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Du kan använda den här identiteten för att autentisera till en tjänst som stöder Azure AD-autentisering, inklusive Key Vault, utan att behöva Visa autentiseringsuppgifter i din kod.
 
-I den här självstudien får du skapa och Distribuera Azure-webbprogram till [Azure App Service](https://docs.microsoft.com/azure/app-service/overview). Du använder en hanterad identitet för att autentisera din Azure-webbapp med ett Azure Key Vault med hjälp av [Azure Key Vault hemliga klient biblioteket för .net](/dotnet/api/overview/azure/key-vault) och [Azure CLI](/cli/azure/get-started-with-azure-cli). Samma grundläggande principer gäller när du använder det utvecklings språk du väljer, Azure PowerShell och/eller Azure Portal.
+I den här självstudien får du skapa och Distribuera Azure-webbprogram till [Azure App Service](../../app-service/overview.md). Du använder en hanterad identitet för att autentisera din Azure-webbapp med ett Azure Key Vault med hjälp av [Azure Key Vault hemliga klient biblioteket för .net](/dotnet/api/overview/azure/key-vault) och [Azure CLI](/cli/azure/get-started-with-azure-cli). Samma grundläggande principer gäller när du använder det utvecklings språk du väljer, Azure PowerShell och/eller Azure Portal.
 
 Mer information om Azure App tjänst webb program och distribution som presenteras i den här självstudien finns i:
-- [Översikt över App Service](https://docs.microsoft.com/azure/app-service/overview)
-- [Skapa en webbASP.NET Core-webbapp i Azure App Service](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
-- [Lokal Git-distribution till Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+- [Översikt över App Service](../../app-service/overview.md)
+- [Skapa en webbASP.NET Core-webbapp i Azure App Service](../../app-service/quickstart-dotnetcore.md)
+- [Lokal Git-distribution till Azure App Service](../../app-service/deploy-local-git.md)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här kursen behöver du:
 
@@ -67,7 +67,7 @@ I en webbläsare går du till appen på `http://localhost:5000` .
 
 Du ser då meddelandet ”Hello World!” meddelande från den exempel app som visas på sidan.
 
-Mer information om hur du skapar webb program för Azure finns [i skapa ett ASP.net Core-webbprogram i Azure App Service](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+Mer information om hur du skapar webb program för Azure finns [i skapa ett ASP.net Core-webbprogram i Azure App Service](../../app-service/quickstart-dotnetcore.md)
 
 ## <a name="deploy-the-app-to-azure"></a>distribuera appen till Azure
 
@@ -228,7 +228,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 Du ser då meddelandet ”Hello World!” meddelande som du såg tidigare när du besökte `http://localhost:5000` .
 
-Mer information om hur du distribuerar webb program med git finns i [lokal Git-distribution till Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+Mer information om hur du distribuerar webb program med git finns i [lokal Git-distribution till Azure App Service](../../app-service/deploy-local-git.md)
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Konfigurera webb programmet för att ansluta till Key Vault
 
@@ -264,7 +264,7 @@ Du kan också tilldela åtkomst principer med hjälp av [Azure Portal](./assign-
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Ändra appen för åtkomst till ditt nyckel valv
 
-I den här självstudien använder du [Azure Key Vault hemliga klient biblioteket](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme) i demonstrations syfte. Du kan också använda [Azure Key Vault klient bibliotek för certifikat](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)eller [Azure Key Vault nyckel klient bibliotek](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme).
+I den här självstudien använder du [Azure Key Vault hemliga klient biblioteket](/dotnet/api/overview/azure/security.keyvault.secrets-readme) i demonstrations syfte. Du kan också använda [Azure Key Vault klient bibliotek för certifikat](/dotnet/api/overview/azure/security.keyvault.certificates-readme)eller [Azure Key Vault nyckel klient bibliotek](/dotnet/api/overview/azure/security.keyvault.keys-readme).
 
 #### <a name="install-the-packages"></a>Installera paketen
 
@@ -338,4 +338,4 @@ Där innan du såg "Hello World!" bör du nu se värdet för din hemlighet som v
 - [Använda Azure Key Vault med program som distribueras till en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
 - Lär dig mer om [hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md)
 - Visa [Guide för utvecklare](./developers-guide.md)
-- [Säker åtkomst till ett nyckel valv](./secure-your-key-vault.md)
+- [Säker åtkomst till ett nyckelvalv](./secure-your-key-vault.md)

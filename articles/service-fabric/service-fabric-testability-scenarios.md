@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17f0af8c041042ddceccc1f8701e44ab8522840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13e22633008a4a5df25d84920386a22696648c9a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022130"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789321"
 ---
 # <a name="testability-scenarios"></a>Testnings scenarier
 Stora distribuerade system som moln infrastrukturer är mycket otillförlitliga. Azure Service Fabric ger utvecklare möjlighet att skriva tjänster som kan köras ovanpå otillförlitliga infrastrukturer. För att kunna skriva tjänster med hög kvalitet måste utvecklare kunna inducera sådan tillförlitlig infrastruktur för att testa stabiliteten hos sina tjänster.
@@ -125,7 +125,7 @@ class Test
 
 PowerShell
 
-Service Fabric PowerShell-modulen innehåller två sätt att starta ett kaos-scenario. `Invoke-ServiceFabricChaosTestScenario` är klientbaserade, och om klient datorn stängs mitt genom testet, kommer inga ytterligare fel att införas. Det finns också en uppsättning kommandon som är avsedda att hålla testet igång i händelse av att datorn stängs av. `Start-ServiceFabricChaos` använder en tillstånds känslig och tillförlitlig system tjänst med namnet FaultAnalysisService, vilket säkerställer att fel fortsätter att införas tills TimeToRun är igång. `Stop-ServiceFabricChaos` kan användas för att stoppa scenariot manuellt och `Get-ServiceFabricChaosReport` Hämta en rapport. Mer information finns i [Azure Service Fabric PowerShell-referensen](/powershell/module/servicefabric/?view=azureservicefabricps) och [inducing kontrollerade kaos i Service Fabric-kluster](service-fabric-controlled-chaos.md).
+Service Fabric PowerShell-modulen innehåller två sätt att starta ett kaos-scenario. `Invoke-ServiceFabricChaosTestScenario` är klientbaserade, och om klient datorn stängs mitt genom testet, kommer inga ytterligare fel att införas. Det finns också en uppsättning kommandon som är avsedda att hålla testet igång i händelse av att datorn stängs av. `Start-ServiceFabricChaos` använder en tillstånds känslig och tillförlitlig system tjänst med namnet FaultAnalysisService, vilket säkerställer att fel fortsätter att införas tills TimeToRun är igång. `Stop-ServiceFabricChaos` kan användas för att stoppa scenariot manuellt och `Get-ServiceFabricChaosReport` Hämta en rapport. Mer information finns i [Azure Service Fabric PowerShell-referensen](/powershell/module/servicefabric/) och [inducing kontrollerade kaos i Service Fabric-kluster](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"

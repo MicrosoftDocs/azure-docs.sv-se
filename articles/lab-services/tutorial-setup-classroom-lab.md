@@ -3,12 +3,12 @@ title: Konfigurera ett klassrumslabb med Azure Lab Services | Microsoft Docs
 description: I den här självstudien använder du Azure Lab Services för att skapa ett klass rums labb med virtuella datorer som används av studenter i din klass.
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602522"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787425"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Självstudie: Konfigurera ett klassrumslabb 
 I självstudien konfigurerar du ett klassrumslabb med virtuella datorer som används av eleverna i klassrummet.  
@@ -21,7 +21,7 @@ I den här självstudien gör du följande:
 > * Ange schema för labbet
 > * Skicka inbjudan via e-post till studenter
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 I den här självstudien skapar du ett labb med virtuella datorer för din klass. Om du vill konfigurera ett klass rums labb i ett labb konto måste du vara medlem i någon av dessa roller i labb kontot: ägare, labb skapare eller deltagare. Det konto som du använde för att skapa ett labbkonto läggs automatiskt till i ägarrollen. Så du kan använda det användar konto som du använde för att skapa ett labb konto för att skapa ett klass rums labb. 
 
 Här är det vanligaste arbets flödet när du använder Azure Lab Services:
@@ -127,7 +127,7 @@ När du lägger till användare är som standard alternativet **begränsa åtkom
 
 Du kan synkronisera en labb användar lista med en befintlig Azure Active Directory (Azure AD)-grupp så att du inte behöver lägga till eller ta bort användare manuellt. 
 
-En Azure AD-grupp kan skapas i din organisations Azure Active Directory för att hantera åtkomst till organisations resurser och molnbaserade appar. Mer information finns i [Azure AD-grupper](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Om din organisation använder Microsoft Office 365 eller Azure-tjänster, kommer din organisation redan ha administratörer som hanterar din Azure Active Directory. 
+En Azure AD-grupp kan skapas i din organisations Azure Active Directory för att hantera åtkomst till organisations resurser och molnbaserade appar. Mer information finns i [Azure AD-grupper](../active-directory/fundamentals/active-directory-manage-groups.md). Om din organisation använder Microsoft Office 365 eller Azure-tjänster, kommer din organisation redan ha administratörer som hanterar din Azure Active Directory. 
 
 > [!IMPORTANT]
 > Se till att användar listan är tom. Om det finns befintliga användare i ett labb som du har lagt till manuellt eller genom att importera en CSV-fil, visas inte alternativet för att synkronisera labbet med en befintlig grupp. 
@@ -204,4 +204,3 @@ I den här självstudien har du skapat ett labb för din klass i Azure. Om du vi
 
 > [!div class="nextstepaction"]
 > [Ansluta till en virtuell dator i klassrumslabbet](tutorial-connect-virtual-machine-classroom-lab.md)
-

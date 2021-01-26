@@ -3,18 +3,18 @@ title: Hantera migreringsjobb i skala med Azure Migrate
 description: Lär dig hur du effektivt använder Azure Migrate på delegerade kund resurser.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095397"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788951"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Hantera migreringsjobb i skala med Azure Migrate
 
 Som tjänst leverantör kan du ha registrerat flera kund klienter i [Azure-Lighthouse](../overview.md). Med Azure Lighthouse kan tjänst leverantörer utföra åtgärder i skala över flera Azure Active Directory (Azure AD)-klienter samtidigt, och göra hanterings uppgifter mer effektiva.
 
-[Azure Migrate](../../migrate/migrate-services-overview.md) tillhandahåller en central hubb för att utvärdera och migrera till lokala Azure-servrar, infrastruktur, program och data. Vanligt vis måste partner som utför utvärderingar och migrering i skala för flera kunder komma åt varje kund prenumeration individuellt med hjälp av [prenumerations modellen för CSP (Cloud Solution Provider)](/partner-center/customers-revoke-admin-privileges) eller genom att [skapa en gäst användare i kund klienten](/azure/active-directory/external-identities/what-is-b2b).
+[Azure Migrate](../../migrate/migrate-services-overview.md) tillhandahåller en central hubb för att utvärdera och migrera till lokala Azure-servrar, infrastruktur, program och data. Vanligt vis måste partner som utför utvärderingar och migrering i skala för flera kunder komma åt varje kund prenumeration individuellt med hjälp av [prenumerations modellen för CSP (Cloud Solution Provider)](/partner-center/customers-revoke-admin-privileges) eller genom att [skapa en gäst användare i kund klienten](../../active-directory/external-identities/what-is-b2b.md).
 
 Azure Lighthouse-integrering med Azure Migrate låter tjänst leverantörer upptäcka, utvärdera och migrera arbets belastningar för olika kunder i stor skala, samtidigt som kunderna får fullständig insyn och kontroll över sina miljöer. Via Azures delegerad resurs hantering har tjänst leverantörer en enda vy över alla Azure Migrate-projekt som de hanterar över flera kund klienter.
 
@@ -39,7 +39,7 @@ Den här metoden minimerar kontext byten för tjänst leverantörer som arbetar 
 Arbets flödet för den här modellen ser ut ungefär så här:
 
 1. Kunden registreras [i Azure-Lighthouse](onboard-customer.md). Den inbyggda rollen deltagare krävs för den identitet som ska användas med Azure Migrate. Se exempel mal len [delegerad-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) för ett exempel som använder den här rollen.
-1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](/azure/migrate/create-manage-projects)och väljer lämplig delegerad kund prenumeration.
+1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](../../migrate/create-manage-projects.md)och väljer lämplig delegerad kund prenumeration.
 1. Användaren utför sedan [steg för identifiering och utvärdering](../../migrate/tutorial-discover-vmware.md).
 
    Innan du konfigurerar installations programmet för virtuella VMware-datorer kan du begränsa identifieringen till vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda virtuella datorer. Om du vill ange omfånget tilldelar du behörighet för det konto som enheten använder för att få åtkomst till vCenter Server. Detta är användbart om flera kunders virtuella datorer finns på hypervisorn. Du kan inte begränsa identifierings omfånget för Hyper-V.
@@ -61,7 +61,7 @@ Den här metoden gör det möjligt för tjänste leverantörer att starta identi
 Arbets flödet för den här modellen ser ut ungefär så här:
 
 1. Kunden registreras [i Azure-Lighthouse](onboard-customer.md). Den inbyggda rollen deltagare krävs för den identitet som ska användas med Azure Migrate. Se exempel mal len [delegerad-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) för ett exempel som använder den här rollen.
-1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](/azure/migrate/create-manage-projects) i en prenumeration som tillhör hanterings klienten.
+1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](../../migrate/create-manage-projects.md) i en prenumeration som tillhör hanterings klienten.
 1. Användaren utför sedan [steg för identifiering och utvärdering](../../migrate/tutorial-discover-vmware.md). Lokala virtuella datorer identifieras och utvärderas i det migreringsjobb som skapats i hanterings klienten, sedan migreras därifrån.
 
    Om du hanterar flera kunder på samma Hyper-V-värd kan du identifiera alla arbets belastningar samtidigt. Kundspecifika virtuella datorer kan väljas i samma grupp, en utvärdering kan skapas och migrering kan utföras genom att välja rätt kund prenumeration som mål destination. Du behöver inte begränsa identifierings omfånget och du kan ha en fullständig översikt över alla kund arbets belastningar i ett enda migreringsjobb.
@@ -80,4 +80,3 @@ Mer information finns i [Länka ditt partner-ID för att se hur du påverkar del
 
 - Läs mer om [Azure Migrate](../../migrate/migrate-services-overview.md).
 - Lär dig mer om [hanterings upplevelser mellan flera innehavare](../concepts/cross-tenant-management-experience.md).
-

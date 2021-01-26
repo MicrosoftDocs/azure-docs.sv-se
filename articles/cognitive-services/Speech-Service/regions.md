@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854867"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786800"
 ---
 # <a name="speech-service-supported-regions"></a>Regioner som stöds av tal tjänster
 
@@ -55,7 +55,7 @@ Tillgängliga regioner för **avsikts igenkänning** via tal-SDK: n är följand
 | Asien          | Asien, östra        | `eastasia`           |
 | Asien          | Sydostasien   | `southeastasia`      |
 | Australien     | Australien, östra   | `australiaeast`      |
-| Europa        | Norra Europa     | `northeurope`        |
+| Europa        | Europa, norra     | `northeurope`        |
 | Europa        | Europa, västra      | `westeurope`         |
 | Nordamerika | East US          | `eastus`             |
 | Nordamerika | USA, östra 2        | `eastus2`            |
@@ -69,7 +69,7 @@ Det här är en delmängd av de publicerings regioner som stöds av [language Un
 
 ### <a name="voice-assistants"></a>Röstassistenter
 
-[Tal-SDK: n](speech-sdk.md) stöder **röst assistents** funktioner via [direkt radnumrering](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) i följande regioner:
+[Tal-SDK: n](speech-sdk.md) stöder **röst assistents** funktioner via [direkt radnumrering](./direct-line-speech.md) i följande regioner:
 
 | Global region | Region           | Regions-ID    |
 | ------------- | ---------------- | -------------------- |
@@ -80,7 +80,7 @@ Det här är en delmängd av de publicerings regioner som stöds av [language Un
 | Nordamerika | USA, västra centrala  | `westcentralus`      |
 | Nordamerika | USA, södra centrala | `southcentralus`     |
 | Europa        | Europa, västra      | `westeurope`         |
-| Europa        | Norra Europa     | `northeurope`        |
+| Europa        | Europa, norra     | `northeurope`        |
 | Asien          | Asien, östra        | `eastasia`           |
 | Asien          | Sydostasien   | `southeastasia`      |
 | Indien         | Indien, centrala    | `centralindia`       |

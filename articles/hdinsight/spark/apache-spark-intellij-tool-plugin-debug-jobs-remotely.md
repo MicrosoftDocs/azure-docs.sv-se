@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822360"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789471"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Använd Azure Toolkit for IntelliJ för att felsöka Apache Spark program via fjärr anslutning i HDInsight via VPN
 
@@ -27,7 +27,7 @@ Den här artikeln innehåller stegvisa instruktioner om hur du använder HDInsig
 1. Skapa ett Scala-program i IntelliJ-idén och konfigurera det för fjärrfelsökning.
 1. Kör och Felsök programmet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * **En Azure-prenumeration**. Mer information finns i [få en kostnads fri utvärderings version av Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Ett Apache Spark kluster i HDInsight**. Anvisningar finns i [Skapa Apache Spark-kluster i Azure HDInsight](apache-spark-jupyter-spark-sql.md).
@@ -41,7 +41,7 @@ Den här artikeln innehåller stegvisa instruktioner om hur du använder HDInsig
 
 Följ instruktionerna från följande länkar för att skapa ett virtuellt Azure-nätverk och kontrol lera anslutningen mellan din station ära dator och det virtuella nätverket:
 
-* [Skapa ett VNet med en VPN-anslutning från plats till plats med hjälp av Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Skapa ett VNet med en VPN-anslutning från plats till plats med hjälp av Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Skapa ett VNet med en plats-till-plats-VPN-anslutning med PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Konfigurera en punkt-till-plats-anslutning till ett virtuellt nätverk med PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

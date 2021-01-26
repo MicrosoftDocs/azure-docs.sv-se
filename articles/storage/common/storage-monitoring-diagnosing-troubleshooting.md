@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763276"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787968"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Övervaka, diagnostisera och felsök Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -69,7 +69,7 @@ För att kunna hantera sådana program kan du övervaka dem proaktivt och först
   * [Bilaga 4: använda Excel för att visa mått och logg data]
   * [Bilaga 5: övervakning med Application Insights för Azure-DevOps]
 
-## <a name="introduction"></a><a name="introduction"></a>Introduktion
+## <a name="introduction"></a><a name="introduction"></a>Insättning
 Den här guiden visar hur du använder funktioner som Azure-lagringsanalys, loggning på klient sidan i Azure Storage klient bibliotek och andra verktyg från tredje part för att identifiera, diagnostisera och felsöka Azure Storage relaterade problem.
 
 ![Diagram som visar flödet av information mellan klient program och Azure Storage-tjänster.][1]
@@ -566,7 +566,7 @@ Om klient programmet försöker använda en SAS-nyckel som inte innehåller de n
 
 I följande tabell visas ett exempel på Server sidans logg meddelande från logg filen för lagrings loggning:
 
-| Namn | Värde |
+| Name | Värde |
 | --- | --- |
 | Start tid för begäran | 2014-05-30T06:17:48.4473697 Z |
 | Åtgärdstyp     | GetBlobProperties            |

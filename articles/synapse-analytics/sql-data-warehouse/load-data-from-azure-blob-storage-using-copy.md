@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 398cbd49f79cbeb5f486e3f8ca33987d5357add6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683415"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789454"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Självstudie: Läs in New York Taxidata-datauppsättningen
 
-I den här självstudien används [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att läsa in New York taxidata data uppsättning från ett Azure Blob Storage-konto. I självstudierna används [Azure-portalen](https://portal.azure.com) och [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att:
+I den här självstudien används [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att läsa in New York taxidata data uppsättning från ett Azure Blob Storage-konto I självstudierna används [Azure-portalen](https://portal.azure.com) och [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att:
 
 > [!div class="checklist"]
 >
@@ -90,7 +90,7 @@ Första steget mot att läsa in data är att logga in som LoaderRC20.
 
 ## <a name="create-tables-for-the-sample-data"></a>Skapa tabeller för exempel data
 
-Du är redo att börja läsa in data till ditt nya informationslager. Den här delen av självstudien visar hur du använder COPY-instruktionen för att läsa in New York City Cab-datauppsättningen från en Azure Storage-blob. Information om hur du hämtar dina data till Azure Blob Storage eller läser in dem direkt från din källa finns i [Översikt över inläsning](design-elt-data-loading.md).
+Du är redo att börja läsa in data till ditt nya informationslager. Den här delen av självstudien visar hur du använder COPY-instruktionen för att läsa in New York City Cab-datauppsättningen från en Azure Storage-blob. Information om hur du hämtar dina data till Azure Blob Storage eller läser in den direkt från din källa finns i [Översikt över inläsning](design-elt-data-loading.md).
 
 Kör följande SQL-skript och ange information om de data du vill läsa in. Informationen omfattar var informationen finns, formatet för innehållet i aktuella data och tabelldefinitionen för dessa data.
 

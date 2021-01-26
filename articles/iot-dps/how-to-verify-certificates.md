@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530870"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789068"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Så här gör du ett certifikat för X. 509 CA-certifikat med enhets etablerings tjänsten
 
@@ -40,7 +40,7 @@ Följ dessa steg om du vill registrera ett CA-certifikat med din etablerings tj�
 
 5. Klicka på det certifikat som du lade till i föregående steg.
 
-6. I **certifikat information**klickar du på **generera verifierings kod**.
+6. I **certifikat information** klickar du på **generera verifierings kod**.
 
 7. Etablerings tjänsten skapar en **verifierings kod** som du kan använda för att validera certifikatets ägarskap. Kopiera koden till Urklipp. 
 
@@ -58,7 +58,7 @@ Microsoft tillhandahåller verktyg och exempel som kan hjälpa dig att skapa ett
 > [!IMPORTANT]
 > Förutom att du behöver göra det kan du använda PowerShell-och bash-skripten tidigare, så att du även kan skapa rot certifikat, mellanliggande certifikat och löv certifikat som kan användas för att autentisera och etablera enheter. Dessa certifikat bör endast användas för utveckling. De bör aldrig användas i en produktions miljö. 
 
-PowerShell-och bash-skripten som anges i dokumentationen och SDK: er förlitar sig på [openssl](https://www.openssl.org/). Du kan också använda OpenSSL eller andra verktyg från tredje part för att hjälpa dig att göra ditt eget bruk. Mer information om verktyg som medföljer SDK: er finns i [använda verktyg som finns i SDK: erna](how-to-use-sdk-tools.md). 
+PowerShell-och bash-skripten som anges i dokumentationen och SDK: er förlitar sig på [openssl](https://www.openssl.org/). Du kan också använda OpenSSL eller andra verktyg från tredje part för att hjälpa dig att göra ditt eget bruk. Ett exempel på hur du använder verktyg som medföljer SDK: er finns i [skapa en X. 509-certifikat kedja](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain). 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>Ladda upp det signerade verifierings certifikatet

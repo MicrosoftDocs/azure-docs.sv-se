@@ -3,27 +3,27 @@ title: Konfigurera ett delat avbildnings galleri i Azure DevTest Labs | Microsof
 description: Lär dig hur du konfigurerar ett delat avbildnings galleri i Azure DevTest Labs, vilket ger användare åtkomst till bilder från en delad plats när du skapar labb resurser.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328002"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788429"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurera ett delat bildgalleri i Azure DevTest Labs
-DevTest Labs stöder nu funktionen för [delad bild galleri](../virtual-machines/windows/shared-image-galleries.md) . Det gör det möjligt för labb användare att komma åt bilder från en delad plats när du skapar labb resurser. Det hjälper dig också att bygga struktur och organisation runt dina anpassade avbildningar av virtuella datorer. Funktionen för delad bild galleri stöder:
+DevTest Labs stöder nu funktionen för [delad bild galleri](../virtual-machines/shared-image-galleries.md) . Det gör det möjligt för labb användare att komma åt bilder från en delad plats när du skapar labb resurser. Det hjälper dig också att bygga struktur och organisation runt dina anpassade avbildningar av virtuella datorer. Funktionen för delad bild galleri stöder:
 
 - Hanterad global replikering av avbildningar
 - Versions hantering och gruppering av avbildningar för enklare hantering
 - Gör dina avbildningar med hög tillgänglighet med ZRS-konton (Zone redundant Storage) i regioner som har stöd för tillgänglighets zoner. ZRS erbjuder bättre återhämtning mot zonindelade-problem.
 - Dela över prenumerationer och till och med mellan klienter, med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 
-Mer information finns i [dokumentationen för Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md). 
+Mer information finns i [dokumentationen för Shared Image Gallery](../virtual-machines/shared-image-galleries.md). 
  
 Om du har ett stort antal hanterade avbildningar som du behöver underhålla och vill göra dem tillgängliga i hela företaget, kan du använda ett delat avbildnings galleri som en lagrings plats som gör det enkelt att uppdatera och dela dina avbildningar. Som labb ägare kan du koppla ett befintligt delat avbildnings galleri till labbet. När det här galleriet är bifogat kan Lab-användare skapa datorer från dessa senaste avbildningar. En stor fördel med den här funktionen är att DevTest Labs nu kan dra nytta av att dela bilder i labb, i olika prenumerationer och i olika regioner. 
 
 > [!NOTE]
-> Mer information om kostnader som är associerade med tjänsten för delad avbildning finns i [fakturering för delade avbildnings Galleri](../virtual-machines/windows/shared-image-galleries.md#billing).
+> Mer information om kostnader som är associerade med tjänsten för delad avbildning finns i [fakturering för delade avbildnings Galleri](../virtual-machines/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Överväganden
 - Du kan bara koppla ett delat bild galleri till ett labb i taget. Om du vill koppla ett annat galleri måste du koppla från det befintliga ett och koppla ett annat. 

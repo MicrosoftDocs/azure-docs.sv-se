@@ -9,18 +9,18 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85665dbda2ed11ffa04b71e4317f2b34b83d317f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cefb0105a0a95d26aadea2a98fc4d3cec68ccc03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349375"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787359"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Snabbstart: Köra ett arbetsflöde genom Microsoft Genomics-tjänsten
 
 I den här snabb starten laddar du upp indata till ett Azure Blob Storage-konto och kör ett arbets flöde via Microsoft Genomics tjänsten med hjälp av python-klienten för python. Microsoft Genomics är en skalbar, säker tjänst för sekundär analys som snabbt kan bearbeta ett genom, från råläsningar till produktion av anpassade läsningar och variantanrop. 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), med `pip` installerat och `python` i din system Sök väg. Den Microsoft Genomics klienten är inte kompatibel med python 3. 
@@ -38,7 +38,7 @@ Skapa ditt Genomics-konto med följande information (se föregående bild):
  |Prenumeration         | Ditt prenumerationsnamn|Detta är faktureringsenheten för dina Azure-tjänster – mer information om din prenumeration finns under [Prenumerationer](https://account.azure.com/Subscriptions) |      
  |Resursgrupp       | MinResursgrupp       |  Resursgrupper gör att du kan gruppera flera Azure-resurser (lagringskonto, Genomics-konto, o.s.v.) i en enda grupp för enkel hantering. Mer information finns i [Resursgrupper](../azure-resource-manager/management/overview.md#resource-groups). Information om giltiga resursgruppnamn finns under [Namngivningsregler](/azure/architecture/best-practices/resource-naming) |
  |Kontonamn         | MittGenomicsKonto     |Välj ett unikt konto-ID. Se [Namngivningsregler](/azure/architecture/best-practices/resource-naming) för giltiga namn |
- |Plats                   | USA, västra 2                    |    Tjänsten är tillgänglig i USA, västra 2, Europa, västra och Sydostasien |
+ |Location                   | USA, västra 2                    |    Tjänsten är tillgänglig i USA, västra 2, Europa, västra och Sydostasien |
 
 Du kan välja **meddelanden** i det övre meny fältet för att övervaka distributions processen.
 
@@ -96,8 +96,8 @@ Konfigurera ditt lagrings konto med följande information, som du ser i föregå
  |:-------------------------       |:-------------         |:----------            |
  |Prenumeration         | Din Azure-prenumeration |Mer information om din prenumeration finns i [Prenumerationer](https://account.azure.com/Subscriptions) |      
  |Resursgrupp       | MinResursgrupp       |  Du kan välja samma resurs grupp som ditt genomik-konto. För giltiga resurs grupps namn, se [namngivnings regler](/azure/architecture/best-practices/resource-naming) |
- |Namn på lagringskonto         | MittLagringskonto     |Välj ett unikt konto-ID. För giltiga namn, se [namngivnings regler](/azure/architecture/best-practices/resource-naming) |
- |Plats                  | USA, västra 2                  | Använd samma plats som platsen för ditt genomik-konto, för att minska utgående kostnader och minska svars tiden.  | 
+ |Lagringskontonamn         | MittLagringskonto     |Välj ett unikt konto-ID. För giltiga namn, se [namngivnings regler](/azure/architecture/best-practices/resource-naming) |
+ |Location                  | USA, västra 2                  | Använd samma plats som platsen för ditt genomik-konto, för att minska utgående kostnader och minska svars tiden.  | 
  |Prestanda                  | Standard                   | Standardinställningen är Standard. Mer information om standard-och Premium lagrings konton finns i [Introduktion till Microsoft Azure Storage](../storage/common/storage-introduction.md)    |
  |Typ av konto       | BlobStorage       |  Blob-lagring kan vara 2–5 gånger snabbare än lagring generell användning för ned- och uppladdningar. |
  |Replikering                  | Lokalt redundant lagring                  | Med lokalt redundant lagring replikeras dina data i datacentret i den region där du har skapat ditt lagringskonto. Mer information finns i [Azure Storage replikering](../storage/common/storage-redundancy.md)    |
@@ -144,4 +144,4 @@ När arbets flödet har slutförts kan du Visa utdatafilerna i ditt Azure Storag
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du laddat upp exempel indata till Azure Storage och skickat ett arbets flöde till Microsoft Genomics tjänsten via `msgen` python-klienten. Mer information om andra typer av indatafiler som kan användas med Microsoft Genomics-tjänsten finns på följande sidor: [parad fastq](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)  |  [Multiple fastq eller BAM](quickstart-input-multiple.md). Du kan också utforska den här självstudien med vårt [Azure Notebooks exempel](https://aka.ms/genomicsnotebook) genom att hämta filen "robots. ipynb" och använda en Notebook-läsare som [Jupyter](../notebooks/tutorial-create-run-jupyter-notebook.md) för att öppna filen och köra den.
+I den här artikeln har du laddat upp exempel indata till Azure Storage och skickat ett arbets flöde till Microsoft Genomics tjänsten via `msgen` python-klienten. Mer information om andra typer av indatafiler som kan användas med Microsoft Genomics-tjänsten finns på följande sidor: [parad fastq](quickstart-input-pair-FASTQ.md)  |  [BAM](quickstart-input-BAM.md)  |  [Multiple fastq eller BAM](quickstart-input-multiple.md). Du kan också utforska den här självstudien med vårt [Azure Notebooks exempel](https://aka.ms/genomicsnotebook) genom att hämta filen "robots. ipynb" och använda en Notebook-läsare som [Jupyter](https://notebooks.azure.com) för att öppna filen och köra den.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151983"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786952"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Ord lista för språk förståelse för vanliga ord listor och koncept
 Ord listan Language Understanding (LUIS) förklarar termer som du kan stöta på när du arbetar med LUIS-tjänsten.
@@ -50,12 +50,13 @@ Redigerings resursen har en Azure-typ av `LUIS-Authoring` .
 
 ## <a name="batch-test"></a>Batch-test
 
-Batch-testning är möjligheten att verifiera en aktuell LUIS-Apps modeller med en konsekvent och känd test uppsättning av användar-yttranden. Batch-testet definieras i en [JSON-formaterad fil](luis-concept-batch-test.md#batch-file-format).
+Batch-testning är möjligheten att verifiera en aktuell LUIS-Apps modeller med en konsekvent och känd test uppsättning av användar-yttranden. Batch-testet definieras i en [JSON-formaterad fil](./luis-how-to-batch-test.md#batch-test-file).
+
 
 Se även:
-* [Begrepp](luis-concept-batch-test.md)
+* [Begrepp](./luis-how-to-batch-test.md)
 * [Så här kör du](luis-how-to-batch-test.md) ett batch-test
-* [Självstudie](luis-tutorial-batch-testing.md) – skapa och köra ett batch-test
+* [Självstudie](./luis-how-to-batch-test.md) – skapa och köra ett batch-test
 
 ### <a name="f-measure"></a>F-mått
 
@@ -109,7 +110,7 @@ Se även:
 
 En beskrivning är den term som tidigare användes för en Machine Learning- [funktion](#features).
 
-## <a name="domain"></a>Domän
+## <a name="domain"></a>Domain
 
 I LUIS-kontexten är en domän ett kunskaps området. Din domän är speciell för ditt scenario. Olika domäner använder specifika språk och termer som har betydelse i domänens kontext. Om du t. ex. skapar ett program för att spela musik, skulle ditt program ha villkor och språk som är specifika för musik – ord som "sång, spår, album, sång texter," på sidan ", artist". Exempel på domäner finns i [fördefinierade domäner](#prebuilt-domain).
 
@@ -305,7 +306,7 @@ Se [ändra tidszon för en fördefinierad datetimeV2-entitet](luis-concept-data-
 ## <a name="token"></a>Token
 En [token](luis-language-support.md#tokenization) är den minsta text enheten som Luis kan identifiera. Detta skiljer sig något mellan olika språk.
 
-För **engelska**är en token ett kontinuerligt intervall (inga blank steg eller skiljetecken) av bokstäver och siffror. Ett blank steg är inte en token.
+För **engelska** är en token ett kontinuerligt intervall (inga blank steg eller skiljetecken) av bokstäver och siffror. Ett blank steg är inte en token.
 
 |Fras|Antal token|Förklaring|
 |--|--|--|

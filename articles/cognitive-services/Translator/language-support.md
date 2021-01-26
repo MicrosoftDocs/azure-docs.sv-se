@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703130"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789287"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Språk-och region stöd för text-och tal Översättning
 
@@ -91,7 +91,7 @@ Translator stöder följande språk för text översättning av text.
 | Afghanska | `ps` |
 | Persiska | `fa` |
 | Polska | `pl` |
-| Portugisiska (Brasilien) | `pt-br` |
+| Portugisiska (Brasilien) | `pt` |
 | Portugisiska (Portugal) | `pt-pt` |
 | Punjabi | `pa` |
 | Queretaro Otomi | `otq` |
@@ -343,7 +343,7 @@ Följande språk är tillgängliga för anpassning till eller från engelska med
 | Norska      | `nb`          |
 | Persiska      | `fa`          |
 | Polska      | `pl`          |
-| Portugisiska (Brasilien) | `pt-br` |
+| Portugisiska (Brasilien) | `pt` |
 | Punjabi|`pa`|
 | Rumänska      | `ro`          |
 | Ryska      | `ru`          |

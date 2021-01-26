@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0de08c166aba7609210892a32836bee9b07d5394
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203056"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787272"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azures säkerhets bas linje för Azure Stack Edge
 
@@ -22,7 +22,7 @@ Om du vill se hur Azure Stack Edge är fullständigt mappad till Azures säkerhe
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
-*Mer information finns i [Azure Security Benchmark: Nätverkssäkerhet](/azure/security/benchmarks/security-controls-v2-network-security).*
+*Mer information finns i [Azure Security Benchmark: Nätverkssäkerhet](../security/benchmarks/security-controls-v2-network-security.md).*
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: implementera säkerhet för intern trafik
 
@@ -104,7 +104,7 @@ Azure Stack Edge-enheten använder sina egna intrångs identifierings funktioner
 
 ## <a name="identity-management"></a>Identitetshantering
 
-*Mer information finns i [Azure Security Benchmark: Identitetshantering](/azure/security/benchmarks/security-controls-v2-identity-management).*
+*Mer information finns i [Azure Security Benchmark: Identitetshantering](../security/benchmarks/security-controls-v2-identity-management.md).*
 
 ### <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: Hantera appidentiteter säkert och automatiskt
 
@@ -181,7 +181,7 @@ Rotera och synkronisera dina lagrings konto nycklar regelbundet för att hjälpa
 
 ## <a name="privileged-access"></a>Privilegierad åtkomst
 
-*Mer information finns i [Azure Security Benchmark: Privilegierad åtkomst](/azure/security/benchmarks/security-controls-v2-privileged-access).*
+*Mer information finns i [Azure Security Benchmark: Privilegierad åtkomst](../security/benchmarks/security-controls-v2-privileged-access.md).*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Begränsa administrativ åtkomst till affärskritiska system
 
@@ -236,7 +236,7 @@ Skyddade arbetsstationer kan hanteras centralt för att upprätthålla en säker
 
 - [Förstå arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
-- [Distribuera en arbetsstation med privilegierad åtkomst](/azure/active-directory/devices/howto-azure-managed-workstation)
+- [Distribuera en arbetsstation med privilegierad åtkomst](/security/compass/privileged-access-deployment)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -244,7 +244,7 @@ Skyddade arbetsstationer kan hanteras centralt för att upprätthålla en säker
 
 ## <a name="data-protection"></a>Dataskydd
 
-*Mer information finns i [Azure Security Benchmark: Dataskydd](/azure/security/benchmarks/security-controls-v2-data-protection).*
+*Mer information finns i [Azure Security Benchmark: Dataskydd](../security/benchmarks/security-controls-v2-data-protection.md).*
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2: Skydda känsliga data
 
@@ -274,7 +274,7 @@ Det bästa sättet är att konfigurera webbläsaren att använda TLS 1,2. Använ
 
 ## <a name="asset-management"></a>Tillgångshantering
 
-*Mer information finns i [Azure Security Benchmark: Tillgångshantering](/azure/security/benchmarks/security-controls-v2-asset-management).*
+*Mer information finns i [Azure Security Benchmark: Tillgångshantering](../security/benchmarks/security-controls-v2-asset-management.md).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Se till att säkerhetsteamet har insyn i risker för tillgångar
 
@@ -308,7 +308,7 @@ Observera att ytterligare behörigheter kan krävas för att få insyn i arbets 
 
 **Vägledning**: du kan ta med dina egna program att köra på alla lokalt skapade virtuella datorer. Använd PowerShell-skript för att skapa lokala virtuella Compute-datorer på din stack Edge-enhet. Vi rekommenderar starkt att du endast använder betrodda program för att köra på de lokala virtuella datorerna. 
 
-- [Så här styr du körning av PowerShell-skript i Windows-miljön](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.1&amp;viewFallbackFrom=powershell-6&amp;preserve-view=true)
+- [Så här styr du körning av PowerShell-skript i Windows-miljön](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -316,7 +316,7 @@ Observera att ytterligare behörigheter kan krävas för att få insyn i arbets 
 
 ## <a name="logging-and-threat-detection"></a>Loggning och hotidentifiering
 
-*Mer information finns i [Azure Security Benchmark: Loggning och hotidentifiering](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
+*Mer information finns i [Azure Security Benchmark: Loggning och hotidentifiering](../security/benchmarks/security-controls-v2-logging-threat-detection.md).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hot identifiering för Azure-resurser
 
@@ -380,7 +380,7 @@ Observera att ytterligare behörigheter kan krävas för att få insyn i arbets 
 
 ## <a name="incident-response"></a>Incidenthantering
 
-*Mer information finns i [Azure Security Benchmark: Incidentsvar](/azure/security/benchmarks/security-controls-v2-incident-response).*
+*Mer information finns i [Azure Security Benchmark: Incidentsvar](../security/benchmarks/security-controls-v2-incident-response.md).*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Förberedelse – uppdatera processen för svar på incidenter i Azure
 
@@ -466,7 +466,7 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 - [Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Använda taggar för att organisera dina Azure-resurser](/azure/azure-resource-manager/resource-group-using-tags)
+- [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -488,7 +488,7 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 ## <a name="posture-and-vulnerability-management"></a>Hantering av säkerhetsposition och säkerhetsrisker
 
-*Mer information finns i [Azure Security Benchmark: Hantering av säkerhetsposition och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
+*Mer information finns i [Azure Security Benchmark: Hantering av säkerhetsposition och säkerhetsrisker](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: upprätta säkra konfigurationer för beräknings resurser
 
@@ -547,7 +547,7 @@ Se till att följa reglerna för intrångstester i Microsoft Cloud så att dina 
 
 ## <a name="endpoint-security"></a>Slut punkts säkerhet
 
-*Mer information finns i [säkerhets principen för Azure-säkerhet: slut punkts säkerhet](/azure/security/benchmarks/security-controls-v2-endpoint-security).*
+*Mer information finns i [säkerhets principen för Azure-säkerhet: slut punkts säkerhet](../security/benchmarks/security-controls-v2-endpoint-security.md).*
 
 ### <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: Använd slut punkts identifiering och-svar (EDR)
 
@@ -569,7 +569,7 @@ Se till att följa reglerna för intrångstester i Microsoft Cloud så att dina 
 
 ## <a name="backup-and-recovery"></a>Säkerhetskopiering och återställning
 
-*Mer information finns i [Azure Security Benchmark: Säkerhetskopiering och återställning](/azure/security/benchmarks/security-controls-v2-backup-recovery).*
+*Mer information finns i [Azure Security Benchmark: Säkerhetskopiering och återställning](../security/benchmarks/security-controls-v2-backup-recovery.md).*
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Säkerställ vanliga automatiserade säkerhets kopieringar
 
@@ -623,7 +623,7 @@ Ytterligare information finns på de länkar som refereras till.
 
 ## <a name="governance-and-strategy"></a>Styrning och strategi
 
-*Mer information finns i [Azure Security Benchmark: Styrning och strategi](/azure/security/benchmarks/security-controls-v2-governance-strategy).*
+*Mer information finns i [Azure Security Benchmark: Styrning och strategi](../security/benchmarks/security-controls-v2-governance-strategy.md).*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Definiera en strategi för tillgångshantering och dataskydd 
 
@@ -648,15 +648,15 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 -   Lämpliga kryptografiska standarder
 
 Läs mer i följande referenser:
-- [Rekommendationer för en säkerhetsarkitektur i Azure – lagring, data och kryptering](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Rekommendationer för en säkerhetsarkitektur i Azure – lagring, data och kryptering](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Grundläggande Azure-säkerhet – säkerhet, kryptering och lagring av data i Azure](../security/fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework – regelverk kring datasäkerhet och kryptering i Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [Cloud Adoption Framework – regelverk kring datasäkerhet och kryptering i Azure](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure Security Benchmark – hantering av tillgångar](/azure/security/benchmarks/security-controls-v2-asset-management)
+- [Azure Security Benchmark – hantering av tillgångar](../security/benchmarks/security-controls-v2-asset-management.md)
 
-- [Azure Security Benchmark – dataskydd](/azure/security/benchmarks/security-controls-v2-data-protection)
+- [Azure Security Benchmark – dataskydd](../security/benchmarks/security-controls-v2-data-protection.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -684,7 +684,7 @@ Se till att segmenteringsstrategin implementeras konsekvent för olika kontrollt
 
 **Vägledning**: Mät och minimera risker gällande enskilda tillgångar och miljöerna där de finns regelbundet. Prioritera värdefulla tillgångar och attackytor med stor exponering, som publicerade appar, in- och utgångar i nätverket och slutpunkter för användare och administratörer.
 
-- [Azure Security Benchmark – hantering av säkerhetspositionen och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
+- [Azure Security Benchmark – hantering av säkerhetspositionen och säkerhetsrisker](../security/benchmarks/security-controls-v2-posture-vulnerability-management.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -725,7 +725,7 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 Läs mer i följande referenser:
 - [Regelverk för Azure-säkerhet 11 – arkitektur. En enhetlig säkerhetsstrategi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – nätverkssäkerhet](/azure/security/benchmarks/)
+- [Azure Security Benchmark – nätverkssäkerhet](../security/benchmarks/index.yml)
 
 - [Översikt över nätverkssäkerhet i Azure](../security/fundamentals/network-overview.md)
 
@@ -753,9 +753,9 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 Läs mer i följande referenser:
 
-- [Azure Security Benchmark – hantering av identiteter](/azure/security/benchmarks/security-controls-v2-identity-management)
+- [Azure Security Benchmark – hantering av identiteter](../security/benchmarks/security-controls-v2-identity-management.md)
 
-- [Azure Security Benchmark – privilegierad åtkomst](/azure/security/benchmarks/security-controls-v2-privileged-access)
+- [Azure Security Benchmark – privilegierad åtkomst](../security/benchmarks/security-controls-v2-privileged-access.md)
 
 - [Regelverk för Azure-säkerhet 11 – arkitektur. En enhetlig säkerhetsstrategi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -787,9 +787,9 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 Läs mer i följande referenser:
 
-- [Azure Security Benchmark – loggning och hotidentifiering](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
+- [Azure Security Benchmark – loggning och hotidentifiering](../security/benchmarks/security-controls-v2-logging-threat-detection.md)
 
-- [Azure Security Benchmark – svar på incidenter](/azure/security/benchmarks/security-controls-v2-incident-response)
+- [Azure Security Benchmark – svar på incidenter](../security/benchmarks/security-controls-v2-incident-response.md)
 
 - [Regelverk för Azure-säkerhet 4 – process: uppdatera processer kring incidentsvar för molnet](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 
@@ -801,5 +801,5 @@ Läs mer i följande referenser:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
-- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)
+- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
+- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)

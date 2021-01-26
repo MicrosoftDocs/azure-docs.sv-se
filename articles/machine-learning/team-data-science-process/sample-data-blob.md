@@ -1,6 +1,6 @@
 ---
 title: Exempel data i Azure Blob Storage – team data science process
-description: Samplings data som lagras i Azure Blob Storage genom att ladda ned dem program mässigt och sedan sampla dem med hjälp av procedurer skrivna i python.
+description: Samplings data lagrade i Azure Blob Storage genom att ladda ned den program mässigt och sedan sampla den med hjälp av procedurer skrivna i python.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321906"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788849"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Exempeldata i Azure Blob Storage
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Exempel data i Azure Blob Storage
 
 Den här artikeln beskriver samplings data som lagras i Azure Blob Storage genom att ladda ned dem program mässigt och sedan sampla dem med hjälp av procedurer skrivna i python.
 

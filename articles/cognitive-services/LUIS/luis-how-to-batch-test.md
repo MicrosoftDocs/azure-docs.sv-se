@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955220"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787020"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-testning med en uppsättning exempel yttranden
 
@@ -99,7 +99,7 @@ JSON-exemplet innehåller en uttryck med en etikettad entitet som illustrerar va
 
 Om du vill granska resultaten för batch-testet väljer du **se resultat**. Test resultaten visar grafiskt hur test yttranden förutsägdes mot den aktiva versionen.
 
-I batch-diagrammet visas fyra kvadranter av resultat. Till höger om diagrammet är ett filter. Filtret innehåller avsikter och entiteter. När du väljer en [del av diagrammet](luis-concept-batch-test.md#batch-test-results) eller en punkt i diagrammet visas tillhör ande uttryck under diagrammet.
+I batch-diagrammet visas fyra kvadranter av resultat. Till höger om diagrammet är ett filter. Filtret innehåller avsikter och entiteter. När du väljer en [del av diagrammet](#review-batch-results-for-intents) eller en punkt i diagrammet visas tillhör ande uttryck under diagrammet.
 
 Vid hovring över diagrammet kan ett mushjul förstora eller minska visningen i diagrammet. Detta är användbart när det finns många punkter i diagrammet grupperade nära varandra.
 
@@ -166,7 +166,7 @@ De två avsnitten i diagrammet i grönt matchade förväntade förutsägelse.
 
 ## <a name="batch-testing-using-the-rest-api"></a>Batch-testning med hjälp av REST API 
 
-Med LUIS kan du köra batch-test med LUIS-portalen och REST API. Slut punkterna för REST API visas nedan. Information om batch-testning med LUIS-portalen finns i [Självstudier: batch-testdata uppsättningar](luis-tutorial-batch-testing.md). Använd de fullständiga URL: erna nedan och ersätt plats hållarnas värden med din egen LUIS-förutsägelse nyckel och slut punkt. 
+Med LUIS kan du köra batch-test med LUIS-portalen och REST API. Slut punkterna för REST API visas nedan. Information om batch-testning med LUIS-portalen finns i [Självstudier: batch-testdata uppsättningar](). Använd de fullständiga URL: erna nedan och ersätt plats hållarnas värden med din egen LUIS-förutsägelse nyckel och slut punkt. 
 
 Kom ihåg att lägga till din LUIS `Ocp-Apim-Subscription-Key` -nyckel i rubriken och ange `Content-Type` till `application/json` .
 
@@ -265,5 +265,3 @@ Om testningen visar att LUIS-appen inte känner igen rätt avsikter och entitete
 
 * [Märk föreslagna yttranden med LUIS](luis-how-to-review-endpoint-utterances.md)
 * [Använd funktioner för att förbättra LUIS-appens prestanda](luis-how-to-add-features.md)
-* [Förstå batch-testning med den här självstudien](luis-tutorial-batch-testing.md)
-* [Lär dig att testa koncept](luis-concept-batch-test.md).

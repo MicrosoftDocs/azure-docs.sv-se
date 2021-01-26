@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: deb5f07340f44e7ae4da3372fd17e484d500e6ab
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573266"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789355"
 ---
 # <a name="expressroute-faq"></a>Vanliga frågor och svar för ExpressRoute
 
@@ -256,7 +256,7 @@ Om du annonserar standard vägar tvingar vi trafik till tjänster som erbjuds vi
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Kan virtuella nätverk som är länkade till samma ExpressRoute-krets prata med varandra?
 
-Ja. Virtuella datorer som distribueras i virtuella nätverk som är anslutna till samma ExpressRoute-krets kan kommunicera med varandra. Vi rekommenderar att du konfigurerar [peering för virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) för att under lätta kommunikationen.
+Ja. Virtuella datorer som distribueras i virtuella nätverk som är anslutna till samma ExpressRoute-krets kan kommunicera med varandra. Vi rekommenderar att du konfigurerar [peering för virtuella nätverk](../virtual-network/virtual-network-peering-overview.md) för att under lätta kommunikationen.
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Kan jag använda plats-till-plats-anslutning för virtuella nätverk tillsammans med ExpressRoute?
 

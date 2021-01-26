@@ -9,16 +9,45 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746738"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788883"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
+
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK för python v-1.21.0
++ **Fel korrigeringar och förbättringar**
+  + **Azure-CLI-ml**
+    + Hjälp text för fast CLI när du använder AmlCompute med UserAssigned-identitet
+  + **azureml-contrib-automl-DNN-vision**
+    + Distributions-och nedladdnings knapparna blir synliga för AutoML visioner och modeller kan distribueras eller hämtas på liknande sätt som andra AutoML-körningar. Det finns två nya filer (scoring_file_v_1_0_0. py och conda_env_v_1_0_0. yml) som innehåller ett skript för att köra inferencing och en YML-fil för att återskapa Conda-miljön. Filen Model. PTH har också bytt namn till att använda tillägget ". PT".
+  + **azureml-core**
+    + MSI-stöd för Azure-CLI-ml
+    + Användare tilldelade hanterad identitets support.
+    + Med den här ändringen ska kunderna kunna ange en tilldelad identitet som kan användas för att hämta nyckeln från kund nyckel valvet för kryptering i vila.
+    +  korrigera row_count = 0 för profilen av mycket stora filer – korrigera fel i dubbel konvertering för avgränsade värden med blank stegs utfyllnad
+    + Ta bort experimentell flagga för utdata-datauppsättning GA
+    + Uppdaterings dokumentation om hur du hämtar en speciell version av en modell
+    + Tillåt uppdatering av arbets yta för blandat läge åtkomst i händelse av privat länk
+    + Korrigera för att ta bort ytterligare registrering av data lager för funktionen återuppta körning
+    + Stöd för CLI/SDK har lagts till för att uppdatera primär användares tilldelade identitet för arbets ytan
+  + **azureml-interpret**
+    + Uppdaterad azureml-tolkning till tolkning – community-0.16.0
+    + minnes optimering för förklarings klient i azureml-tolka
+  + **azureml-train-automl-runtime**
+    + Aktive rad strömning för ADB-körningar
+  + **azureml-train-core**
+    + Korrigera för att ta bort ytterligare registrering av data lager för funktionen återuppta körning
+  + **azureml-widgets**
+    + Kunderna bör inte se ändringar i den befintliga data visualiseringen för körning med hjälp av widgeten och har nu stöd om de använder villkorsstyrda disponeringsparametrarna.
+    + Widgeten användar körning innehåller nu en detaljerad förklaring av varför en körning är i kö-tillstånd.
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -118,7 +147,7 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio Notebooks-upplevelse (november Update)
 + **Nya funktioner**
-   + Intern Terminal. Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den [integrerade terminalen.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)
+   + Intern Terminal. Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den [integrerade terminalen.](./how-to-run-jupyter-notebooks.md#terminal)
   + Duplicera mapp 
   + Kostnads redovisning för Compute-listruta 
   + Pylance för offline-beräkning 

@@ -7,21 +7,26 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13abe333bcf3f67ea1a1ba823c693deaa60bc723
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296254"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788815"
 ---
 # <a name="azure-media-player-full-setup"></a>Fullständig installation av Azure Media Player #
 
 Azure Media Player är enkelt att konfigurera. Det tar bara en liten stund att få en grundläggande uppspelning av medie innehåll direkt från ditt Azure Media Services-konto. [Exempel](https://github.com/Azure-Samples/azure-media-player-samples) finns också i katalogen samples i versionen.
 
+<!--//aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest-->
+
+Här är ett exempel på en AMS-video.
+
+> [!VIDEO https://aka.ms/ampembed?url=https%3A%2F%2Fxpouyatdemo-euwe.streaming.media.azure.net%2Fc9b6ac82-c187-4882-a3d3-1a67204ac58e%2Fconnect2017-v3.ism%2Fmanifest]
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Steg 1: inkludera JavaScript-och CSS-filerna i sidhuvudet på din sida ##
 
-Med Azure Media Player kan du komma åt skripten från den värdbaserade CDN-versionen. Vi rekommenderar ofta att du lägger till java script före taggen end Body `<body>` i stället för `<head>` , men Azure Media Player innehåller en HTML5-Shiv, som måste finnas i huvudet för äldre IE-versioner för att det ska gå att följa video tag gen som ett giltigt element.
+Med Azure Media Player kan du komma åt skripten från den värdbaserade CDN-versionen. Vi rekommenderar ofta att du lägger till java script före taggen end Body `<body>` i stället för `<head>` , men Azure Meia Player innehåller en HTML5-Shiv, som måste finnas i huvudet för äldre IE-versioner för att det ska gå att följa video tag gen som ett giltigt element.
 
 > [!NOTE]
 > Om du redan använder en HTML5-Shiv som [Modernizr](https://modernizr.com/) kan du ta med Azure Media Player Java Script var som helst. Se dock till att din version av Modernizr innehåller Shiv för video.

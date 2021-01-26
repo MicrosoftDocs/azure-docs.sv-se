@@ -3,12 +3,12 @@ title: Azure Lab Services Ladda upp en anpassad avbildning till ett delat avbild
 description: Beskriver hur du överför en anpassad avbildning till ett delat avbildnings Galleri. Vår IT-avdelning för universitet söker efter att importera bilder särskilt fördelaktiga.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e2f38b0cab87eab27181ddef79d0c02bd8c9bdb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654651"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787171"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>Ladda upp en anpassad bild till Shared Image Gallery
 
@@ -46,7 +46,7 @@ Det finns många alternativ för att skapa en virtuell hård disk från en fysis
     Genom att följa stegen skapas en specialiserad avbildning. Om du skapar en generaliserad avbildning måste du också köra [Sysprep](../virtual-machines/windows/prepare-for-upload-vhd-image.md#determine-when-to-use-sysprep). <br/>
         Du bör skapa en specialiserad avbildning om du vill underhålla användar katalogen (som kan innehålla filer, användar konto information osv.) som krävs av program varan som ingår i avbildningen.
 1. Eftersom **Hyper-V** skapar en **VHDX** -fil som standard måste du konvertera den till en VHD-fil.
-    1. Navigera till **Hyper-V Manager**  ->  **åtgärden**  ->  **Redigera disk** för Hyper-V Manager.
+    1. Navigera till   ->  **åtgärden**  ->  **Redigera disk** för Hyper-V Manager.
     1. Här kan du välja att **konvertera** disken från en VHDX till en virtuell hård disk
     1. Se till att inte överstiga 128 GB när du försöker expandera disk storleken.        
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="Välj åtgärd":::   
@@ -66,5 +66,5 @@ Det finns många alternativ för att skapa en virtuell hård disk från en fysis
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Översikt över delade avbildnings Galleri](../virtual-machines/windows/shared-image-galleries.md)
+* [Översikt över delade avbildnings Galleri](../virtual-machines/shared-image-galleries.md)
 * [Använda delade avbildnings Galleri](how-to-use-shared-image-gallery.md)
