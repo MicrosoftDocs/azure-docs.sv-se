@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345676"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896468"
 ---
 # <a name="service-configuration"></a>Tjänstkonfiguration
 
@@ -34,6 +34,7 @@ Du kan ange en enskild inställning antingen via listan program inställningar e
 |UserAppInsightsAppId|Chat-logg och telemetri|
 |UserAppInsightsKey|Chat-logg och telemetri|
 |UserAppInsightsName|Chat-logg och telemetri|
+|QNAMAKER_EXTENSION_VERSION|Ange alltid till _senaste_. Den här inställningen initierar QnAMaker-webbplats tillägget i App Service.|
 
 Du måste **starta om** tjänsten från sidan **Översikt** i Azure Portal när du är klar med ändringarna.
 

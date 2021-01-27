@@ -3,19 +3,19 @@ title: Översättnings metod för Translator
 titleSuffix: Azure Cognitive Services
 description: Förstå parametrarna för parametrar, sidhuvud och brödtext för översättnings metoden för Azure Cognitive Services Translator för att översätta text.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016555"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895449"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: Översätt
 
@@ -37,7 +37,7 @@ Parametrarna för begäran som skickades till frågesträngen är:
 
 <table width="100%">
   <th width="20%">Frågeparameter</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>api-version</td>
     <td><em>Obligatorisk parameter</em>.<br/>Den version av API: t som klienten begär. Värdet måste vara <code>3.0</code> .</td>
@@ -52,7 +52,7 @@ Parametrarna för begäran som skickades till frågesträngen är:
 
 <table width="100%">
   <th width="20%">Frågeparameter</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>Från</td>
     <td><em>Valfri parameter</em>.<br/>Anger språket för inmatad text. Hitta vilka språk som kan omvandlas från genom att leta upp <a href="./v3-0-languages.md">språk som stöds</a> med hjälp av <code>translation</code> omfånget. Om <code>from</code> parametern inte anges används automatisk språk identifiering för att fastställa käll språket. <br/><br/>Du måste använda- <code>from</code> parametern i stället för automatisk identifiering när du använder funktionen för <a href="/azure/cognitive-services/translator/dynamic-dictionary">dynamiskt ord listor</a> .</td>
@@ -391,7 +391,7 @@ För <code>ProfanityMarker=Tag</code> , kommer svordomar att ord omges av XML-ta
   </tr>
 </table> 
 
-Ett exempel:
+Exempel:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

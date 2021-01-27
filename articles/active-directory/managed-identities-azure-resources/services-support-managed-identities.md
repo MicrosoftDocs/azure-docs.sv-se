@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7ebe56b95b0c4b938c31c0ece04d27fd1b234b05
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1861a4e75f34cfd7fe386c094cce3a638b3e1a1e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729920"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880801"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
 
@@ -159,8 +159,6 @@ I följande lista kan du konfigurera hanterad identitet för Azure Data Factory 
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [GRÄNSSNITTET](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
-
-
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
 Hanterad identitets typ |Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
@@ -168,13 +166,12 @@ Hanterad identitets typ |Alla allmänt tillgängliga<br>Globala Azure-regioner |
 | Systemtilldelad | Förhandsgranskning | Förhandsgranskning | Inte tillgängligt | Förhandsgranskning |
 | Användartilldelad | Inte tillgänglig | Inte tillgänglig  | Inte tillgänglig  | Inte tillgänglig |
 
+### <a name="azure-firewall-policy"></a>Princip för Azure-brandvägg
 
-
-
-
-
-
-
+Hanterad identitets typ |Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systemtilldelad | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
+| Användartilldelad | Förhandsgranskning | Inte tillgänglig  | Inte tillgänglig  | Inte tillgänglig |
 
 ### <a name="azure-functions"></a>Azure Functions
 

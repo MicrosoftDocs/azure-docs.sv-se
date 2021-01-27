@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: a88f9fab2b10271aa7856a6d0b5ee114f46cfb49
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634331"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896671"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Omvandlings funktioner i Power Query för data datatransformering
 
@@ -24,7 +24,7 @@ Med data Datatransformering i Azure Data Factory kan du göra kod fria smidiga d
 
 För närvarande stöds inte alla Power Query M-funktioner för data datatransformering trots att de är tillgängliga under redigeringen. När du skapar din kombinera, uppmanas du att ange följande fel meddelande om en funktion inte stöds:
 
-`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
+`UserQuery : Expression.Error: The transformation logic is not supported as it requires dynamic access to rows of data, which cannot be scaled out.`
 
 Nedan visas en lista över Power Query M-funktioner som stöds.
 
@@ -96,7 +96,7 @@ Behåll och ta bort överkant, Behåll intervallet (motsvarande M-funktioner, en
 | Table.Distinct | Det finns inte stöd för att ta bort dubbla rader. |
 | Table.RemoveLastN | Ta bort de nedersta raderna stöds inte. |
 | Table.RowCount | Stöds inte, men kan uppnås genom att lägga till en anpassad kolumn som innehåller värdet 1, och sedan aggregera den kolumnen med list. sum. Table. Group stöds. | 
-| Fel hantering på radnivå | Fel hantering på radnivå stöds inte för närvarande. Om du till exempel vill filtrera ut icke-numeriska värden från en kolumn, skulle en metod vara att omvandla text kolumnen till ett tal. Varje cell som inte kan transformera är i fel tillstånd och måste filtreras. Det här scenariot är inte möjligt i datatransformering Data Flow. |
+| Fel hantering på radnivå | Fel hantering på radnivå stöds inte för närvarande. Om du till exempel vill filtrera ut icke-numeriska värden från en kolumn, skulle en metod vara att omvandla text kolumnen till ett tal. Varje cell som inte kan transformera är i fel tillstånd och måste filtreras. Det här scenariot går inte att skala ut M. |
 | Table.Transpose | Stöds inte |
 | Table.Pivot | Stöds inte |
 

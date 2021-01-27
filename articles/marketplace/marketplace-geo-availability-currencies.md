@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 12/07/2020
-ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853755"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879772"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Geografisk tillgänglighet och valuta support för den kommersiella marknaden
 
@@ -195,13 +195,13 @@ Enskilda priser (som, beroende på hur de har ställts in, kan ha påverkats av 
 Mer information om hur du anger priser för vissa erbjudande typer finns i följande artiklar:
 
 - [Skapa ett erbjudande för Azure-program](create-new-azure-apps-offer.md)
-- [Skapa ett erbjudande för Azure Container](partner-center-portal/create-azure-container-offer.md)
+- [Skapa ett erbjudande för Azure Container](./create-azure-container-offer.md)
 - [Skapa ett erbjudande för virtuella datorer i Azure](azure-vm-create.md)
 - [Skapa ett konsulttjänsterbjudande](./create-consulting-service-offer.md)
 - [Skapa ett erbjudande för Dynamics 365 for Customer Engagement & PowerApps](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Skapa ett erbjudande för Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
 - [Skapa ett erbjudande för Dynamics 365 for Business Central](partner-center-portal/create-new-business-central-offer.md)
 - [Skapa ett IoT Edge-modulerbjudande](partner-center-portal/azure-iot-edge-module-creation.md)
-- [Skapa ett erbjudande för hanterad tjänst](partner-center-portal/create-new-managed-service-offer.md)
+- [Skapa ett erbjudande för hanterad tjänst](./plan-managed-service-offer.md)
 - [Skapa en Power BI-app](partner-center-portal/create-power-bi-app-offer.md)
 - [Skapa ett SaaS-erbjudande](./create-new-saas-offer.md)

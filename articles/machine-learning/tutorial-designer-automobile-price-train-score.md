@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796116"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879804"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Självstudie: Förutsäg ett bilpris med designern
 
@@ -103,7 +103,7 @@ Det finns flera exempel data uppsättningar som ingår i designern som du kan ex
 
 Du kan visualisera data för att förstå den data uppsättning som du kommer att använda.
 
-1. Högerklicka på **bil pris data (RAW)** och välj **visualisera**.
+1. Högerklicka på **bil pris data (RAW)** och välj utdata för **visualisera**  >  **data uppsättning**.
 
 1. Välj olika kolumner i data fönstret om du vill visa information om var och en.
 
@@ -284,7 +284,7 @@ Nu när din pipeline är all konfiguration kan du skicka en pipeline-körning f�
 
 När körningen är klar kan du visa resultatet av pipeline-körningen. Börja med att titta på förutsägelserna som genereras av Regressions modellen.
 
-1. Högerklicka på modulen **Poäng modell** och välj **visualisera** för att visa dess utdata.
+1. Högerklicka på modulen **Poäng modell** och välj **visualisera**  >  **Poäng data uppsättning** för att visa dess utdata.
 
     Här kan du se de förutsagda priser och de faktiska priserna från test data.
 
@@ -294,7 +294,7 @@ När körningen är klar kan du visa resultatet av pipeline-körningen. Börja m
 
 Använd **utvärdera modell** för att se hur väl den tränade modellen utförts på test data uppsättningen.
 
-1. Högerklicka på modulen **utvärdera modell** och välj **visualisera** för att visa dess utdata.
+1. Högerklicka på modulen **utvärdera modell** och välj **visualisera**  >  **utvärderings resultat** för att visa dess utdata.
 
 Följande statistik visas för din modell:
 

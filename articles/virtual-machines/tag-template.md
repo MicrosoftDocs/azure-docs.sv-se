@@ -7,15 +7,14 @@ ms.workload: infrastructure-services
 ms.author: cynthn
 author: cynthn
 ms.date: 10/26/2018
-ms.openlocfilehash: d1acbe82a086574a102e7897bbd3b99683c1185e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e7dd75a025b76773a0bf1e3b4f752b5a77db6786
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595040"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897382"
 ---
 # <a name="tagging-a-vm-using-a-template"></a>Tagga en virtuell dator med en mall
-
 
 Den här artikeln beskriver hur du taggar en virtuell dator i Azure med hjälp av en Resource Manager-mall. Taggar är användardefinierade nyckel/värde-par som kan placeras direkt på en resurs eller en resurs grupp. Azure har för närvarande stöd för upp till 50 Taggar per resurs och resurs grupp. Taggar kan placeras på en resurs vid tidpunkten för skapandet eller läggs till i en befintlig resurs.
 
@@ -25,7 +24,7 @@ Klicka på knappen **distribuera till Azure** från [länken mall](https://githu
 
 ![Enkel distribution med Taggar](./media/tag/deploy-to-azure-tags.png)
 
-Den här mallen innehåller följande Taggar: *avdelning* , *program* och *skapade av*. Du kan lägga till/redigera taggarna direkt i mallen om du vill ha olika taggnamn.
+Den här mallen innehåller följande Taggar: *avdelning*, *program* och *skapade av*. Du kan lägga till/redigera taggarna direkt i mallen om du vill ha olika taggnamn.
 
 ![Azure-Taggar i en mall](./media/tag/azure-tags-in-a-template.png)
 
@@ -46,8 +45,7 @@ Sedan kan du fylla i värdena för taggarna i avsnittet **Redigera parametrar** 
 
 Klicka på **skapa** för att distribuera den här mallen med dina märkes värden.
 
-
-**Nästa steg**
+### <a name="next-steps"></a>Nästa steg
 
 - Läs mer om att tagga dina Azure-resurser i [Azure Resource Manager översikt](../azure-resource-manager/management/overview.md) och [använda taggar för att ordna dina Azure-resurser](../azure-resource-manager/management/tag-resources.md).
-- För att se hur taggar kan hjälpa dig att hantera din användning av Azure-resurser, se [förstå din Azure-faktura](../cost-management-billing/understand/review-individual-bill.md) och [få insikter om din Microsoft Azure resursförbrukning](../cost-management-billing/manage/usage-rate-card-overview.md).
+- Information om hur taggar kan hjälpa dig att hantera din användning av Azure-resurser finns i [förstå din Azure-faktura](../cost-management-billing/understand/review-individual-bill.md).

@@ -1,26 +1,11 @@
 ---
-title: Media Services mått och diagnostiska loggar med Azure Monitor
-titleSuffix: Azure Media Services
-description: Lär dig hur du övervakar Azure Media Services mått och diagnostikloggar via Azure Monitor.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 11/02/2020
-ms.author: inhenkel
-ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685196"
+rubrik: Media Services mått och diagnostiska loggar med Azure Monitor: Azure Media Services Beskrivning: Lär dig hur du övervakar Azure Media Servicess mått och diagnostikloggar via Azure Monitor.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: konceptuell MS. Date: 11/02/2020 MS. author: inhenkel
+
 ---
+
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Övervaka Media Servicess statistik och diagnostiska loggar med Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -44,7 +29,7 @@ Media Services stöder övervaknings mått för följande resurser:
 
 Du kan övervaka följande konto mått.
 
-|Måttnamn|Visningsnamn|Beskrivning|
+|Måttnamn|Visningsnamn|Description|
 |---|---|---|
 |AssetCount|Antal till gångar|Till gångar i ditt konto.|
 |AssetQuota|Till gångs kvot|Till gångs kvot i ditt konto.|
@@ -62,7 +47,7 @@ Du bör också granska [konto kvoter och begränsningar](limits-quotas-constrain
 
 Följande Media Services [slut punkter för direkt uppspelnings](/rest/api/media/streamingendpoints) mått stöds:
 
-|Måttnamn|Visningsnamn|Beskrivning|
+|Måttnamn|Visningsnamn|Description|
 |---|---|---|
 |Begäranden|Begäranden|Visar det totala antalet HTTP-begäranden som hanteras av slut punkten för direkt uppspelning.|
 |Utgående|Utgående|Utgående byte totalt per minut per slut punkt för direkt uppspelning.|
@@ -98,7 +83,7 @@ Media Services stöder följande diagnostikloggar:
 
 ### <a name="key-delivery"></a>Nyckel leverans
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |Begäran om nyckel leverans tjänst|Loggar som visar information om viktiga leverans tjänst begär Anden. Mer information finns i [scheman](media-services-diagnostic-logs-schema.md).|
 

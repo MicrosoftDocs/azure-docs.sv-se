@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394609"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879502"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Hämta konfigurations skript för VPN-enheter för S2S VPN-anslutningar
 
@@ -34,7 +34,7 @@ En VPN-anslutning mellan olika platser består av en Azure VPN-gateway, en lokal
 3. Skapa och konfigurera en Azure VPN-anslutning mellan Azure VPN-gatewayen och den lokala Nätverksgatewayen
 4. Konfigurera den lokala VPN-enheten som representeras av den lokala Nätverksgatewayen för att upprätta den faktiska S2S VPN-tunneln med Azure VPN-gatewayen
 
-Du kan slutföra steg 1 till 3 med hjälp av Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)eller [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Det sista steget omfattar att konfigurera lokala VPN-enheter utanför Azure. Med den här funktionen kan du ladda ned ett konfigurations skript för din VPN-enhet med motsvarande värden för din Azure VPN-gateway, virtuella nätverk och lokala nätverks adressprefix och egenskaper för VPN-anslutning osv. redan ifyllda. Du kan använda skriptet som en start punkt eller tillämpa skriptet direkt på dina lokala VPN-enheter via konfigurations konsolen.
+Du kan slutföra steg 1 till 3 med hjälp av Azure [Portal](./tutorial-site-to-site-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)eller [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md). Det sista steget omfattar att konfigurera lokala VPN-enheter utanför Azure. Med den här funktionen kan du ladda ned ett konfigurations skript för din VPN-enhet med motsvarande värden för din Azure VPN-gateway, virtuella nätverk och lokala nätverks adressprefix och egenskaper för VPN-anslutning osv. redan ifyllda. Du kan använda skriptet som en start punkt eller tillämpa skriptet direkt på dina lokala VPN-enheter via konfigurations konsolen.
 
 > [!IMPORTANT]
 > * Syntaxen för varje konfigurations skript för VPN-enheter skiljer sig, och är kraftigt beroende av modeller och versioner av inbyggd program vara. Ägna särskild uppmärksamhet åt din enhets modell och versions information mot tillgängliga mallar.
@@ -49,7 +49,7 @@ Du kan slutföra steg 1 till 3 med hjälp av Azure [Portal](vpn-gateway-howto-si
 
 Skapa en Azure VPN-gateway, lokal nätverksgateway och en anslutnings resurs som ansluter de två. Följande sida vägleder dig genom stegen:
 
-* [Skapa en plats-till-plats-anslutning på Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Skapa en plats-till-plats-anslutning på Azure Portal](./tutorial-site-to-site-portal.md)
 
 När anslutnings resursen har skapats följer du anvisningarna nedan för att ladda ned VPN-enhetens konfigurations skript:
 
@@ -99,4 +99,4 @@ När du har laddat ned och verifierat konfigurations skriptet är nästa steg at
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fortsätt att konfigurera din [plats-till-plats-anslutning](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Fortsätt att konfigurera din [plats-till-plats-anslutning](./tutorial-site-to-site-portal.md).

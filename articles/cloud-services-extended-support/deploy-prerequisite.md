@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f112d0e96c6ff0caf3c5e3762304158f70963f14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 42416b1fc06ff59a68a6f5044b8bcca5dc7f035f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787037"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880194"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
@@ -88,7 +88,7 @@ Följande storlekar är föråldrade i Azure Resource Manager. Men om du vill fo
 |---|---|
 | ExtraSmall | Standard_A0 | 
 | Liten | Standard_A1 |
-| Medium | Standard_A2 | 
+| Medel | Standard_A2 | 
 | Stor | Standard_A3 | 
 | ExtraLarge | Standard_A4 | 
 | A5 | Standard_A5 | 
@@ -126,3 +126,4 @@ Key Vault används för att lagra certifikat som är kopplade till Cloud Service
 - Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).
 - Distribuera en moln tjänst (utökad support) med hjälp av [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [mall](deploy-template.md) eller [Visual Studio](deploy-visual-studio.md).
 - Läs igenom [vanliga frågor och svar](faq.md) om Cloud Services (utökad support).
+- Besök den [Cloud Services (utökad support) exempel lagrings plats](https://github.com/Azure-Samples/cloud-services-extended-support)

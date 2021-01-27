@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897866"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881052"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurera, optimera och felsöka AzCopy
 
@@ -22,7 +22,7 @@ AzCopy är ett kommandoradsverktyg som du kan använda för att kopiera blobar e
 > [!NOTE]
 > Om du letar efter innehåll som hjälper dig att komma igång med AzCopy kan du läsa följande artiklar:
 > - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
-> - [Överföra data med AzCopy och Blob Storage](storage-use-azcopy-blobs.md)
+> - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 > - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
 > - [Överföra data med AzCopy och Amazon S3-buckets](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ Tillgängliga logg nivåer är: `NONE` ,,,,, `DEBUG` `INFO` `WARNING` `ERROR` `P
 Om du vill ta bort alla plan-och loggfiler från den lokala datorn för att spara disk utrymme, använder du `azcopy jobs clean` kommandot.
 
 Om du vill ta bort plan-och loggfilerna som är associerade med endast ett jobb använder du `azcopy jobs rm <job-id>` . Ersätt `<job-id>` plats hållaren i det här exemplet med jobb-ID: t för jobbet.
-
-

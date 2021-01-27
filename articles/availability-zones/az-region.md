@@ -4,15 +4,15 @@ description: Om du vill skapa hög tillgängliga och elastiska program i Azure k
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/26/2021
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5883dc8b34cd1aa00ba1c5de25a09a017a130c0a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874616"
+ms.locfileid: "98896892"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
@@ -58,7 +58,7 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 | USA, västra 2        |                |                      |                     |                |
 
 
-Kontakta din Microsoft-säljare eller kund representant om du vill veta mer om hur du Tillgänglighetszoner och tjänster som är tillgängliga i dessa regioner. För kommande regioner som har stöd för Tillgänglighetszoner, se [Azure-geografiska](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)områden.
+\* Kontakta din Microsoft-säljare eller kund representant om du vill veta mer om hur du Tillgänglighetszoner och tjänster som är tillgängliga i dessa regioner. För kommande regioner som har stöd för Tillgänglighetszoner, se [Azure-geografiska](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)områden.
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner

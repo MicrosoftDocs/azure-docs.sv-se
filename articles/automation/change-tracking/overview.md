@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Ändringsspårning och inventering
 description: I den här artikeln beskrivs funktionen Ändringsspårning och inventering, som hjälper dig att identifiera program-och Microsoft-tjänsteändringar i din miljö.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445429"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896637"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Översikt över Ändringsspårning och inventering
 
@@ -32,7 +32,7 @@ I den här artikeln beskrivs hur du Ändringsspårning och inventering i Azure A
 - Microsoft-tjänster
 - Linux-daemon
 
-Att aktivera alla funktioner som ingår i Ändringsspårning och inventering kan orsaka ytterligare kostnader. Läs igenom [priserna för automatisering](https://azure.microsoft.com/pricing/details/automation/) och [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/)innan du fortsätter. 
+Att aktivera alla funktioner som ingår i Ändringsspårning och inventering kan orsaka ytterligare kostnader. Läs igenom [priserna för automatisering](https://azure.microsoft.com/pricing/details/automation/) och [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/)innan du fortsätter.
 
 Ändringsspårning och lagret vidarebefordrar data till Azure Monitor loggar och dessa insamlade data lagras i en Log Analytics arbets yta. FIM-funktionen (File Integrity Monitoring) är bara tillgänglig när **Azure Defender för-servrar** har Aktiver ATS. Mer information finns i Azure Security Center [prissättning](../../security-center/security-center-pricing.md) . FIM överför data till samma Log Analytics-arbetsyta som den som skapades för att lagra data från Ändringsspårning och inventering. Vi rekommenderar att du övervakar den länkade Log Analytics arbets ytan för att hålla reda på din exakta användning. Mer information om hur du analyserar Azure Monitor loggar data användning finns i [Hantera användning och kostnad](../../azure-monitor/platform/manage-cost-storage.md).
 
@@ -74,16 +74,7 @@ Den körbara filen python2 måste ha ett alias till *python*.
 
 ## <a name="network-requirements"></a>Nätverkskrav
 
-Följande adresser krävs specifikt för Ändringsspårning och inventering. Kommunikationen med de här adresserna sker via port 443.
-
-|Azure, offentlig  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
-
-När du skapar säkerhets regler för nätverks grupper eller konfigurerar Azure-brandväggen för att tillåta trafik till Automation-tjänsten och Log Analytics arbets ytan, använder du [service tag-](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** och **AzureMonitor**. Detta fören klar den löpande hanteringen av dina nätverks säkerhets regler. Om du vill ansluta till Automation-tjänsten från dina virtuella Azure-datorer på ett säkert och privat sätt kan du läsa [Använd Azure privat länk](../how-to/private-link-security.md). För att hämta den aktuella service tag-koden och intervall informationen som ska ingå som en del av dina lokala brand Väggs konfigurationer, se [nedladdnings bara JSON-filer](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Kontrol lera [Azure Automation nätverks konfiguration](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory) för detaljerad information om portarna, URL: erna och andra nätverks uppgifter som krävs för ändringsspårning och inventering.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivera Ändringsspårning och inventering
 
@@ -129,7 +120,7 @@ Med Ändringsspårning och inventering kan du visa innehållet i en Windows-elle
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Övervakar 32-bitars driv rutiner som är kopplade till wavemapper, wave1 och Wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 och vidc. Liknar avsnittet [drivers] i **system.ini** -filen.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Övervakar 32-bitars driv rutiner som är kopplade till wavemapper, wave1 och Wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 och vidc för 32-bitars program som körs på 64-bitars datorer. Liknar avsnittet [drivers] i **system.ini** -filen.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Övervakar listan över kända eller ofta använda system-DLL-filer. Övervakning förhindrar att personer utnyttjar svaga program katalog behörigheter genom att släppa i trojanska hästar versioner av system-DLL: er.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Övervakar listan över paket som kan ta emot händelse meddelanden från **winlogon.exe** , den interaktiva stöd modellen för inloggning för Windows.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Övervakar listan över paket som kan ta emot händelse meddelanden från **winlogon.exe**, den interaktiva stöd modellen för inloggning för Windows.
 
 ## <a name="recursion-support"></a>Rekursion-support
 
@@ -159,7 +150,7 @@ I nästa tabell visas data insamlings frekvensen för de typer av ändringar som
 
 I följande tabell visas gränserna för spårade objekt per dator för Ändringsspårning och inventering.
 
-| **Resurs** | **Gräns** |
+| **Resurs** | **Gränserna** |
 |---|---|---|
 |Fil|500|
 |Register|250|
@@ -185,7 +176,7 @@ För att optimera prestanda spårar Log Analytics-agenten bara ändringar. Om du
 
 En viktig funktion i Ändringsspårning och inventering är aviseringar om ändringar i konfigurations läget för din hybrid miljö. Många användbara åtgärder är tillgängliga för utlösare som svar på aviseringar. Till exempel åtgärder på Azure Functions, Automation-runbooks, Webhooks och liknande. Aviseringar om ändringar i **c:\Windows\System32\drivers\etc\hosts** -filen för en dator är en lämplig applikation av aviseringar för ändringsspårning-och inventerings data. Det finns många fler scenarier för aviseringar, inklusive de fråge scenarier som definierats i nästa tabell.
 
-|Söka i data  |Beskrivning  |
+|Söka i data  |Description  |
 |---------|---------|
 |ConfigurationChange <br>&#124; där ConfigChangeType = = "Files" och FileSystemPath innehåller "c: \\ Windows \\ system32- \\ drivrutiner \\ "|Användbart för att spåra ändringar i systemkritiska filer.|
 |ConfigurationChange <br>&#124; där FieldsChanged innehåller "FileContentChecksum" och FileSystemPath = = "c: \\ Windows \\ system32- \\ drivrutiner \\ osv \\ "|Användbart för att spåra ändringar i nyckel konfigurationsfiler.|

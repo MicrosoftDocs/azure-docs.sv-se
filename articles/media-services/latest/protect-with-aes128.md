@@ -1,25 +1,9 @@
 ---
-title: Kryptera video med AES-128
-titleSuffix: Azure Media Services
-description: Lär dig hur du krypterar video med AES 128-bitars kryptering och hur du använder Key Delivery Service i Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289354"
+title: kryptera video med AES-128: Azure Media Services Beskrivning: Lär dig hur du krypterar video med AES 128-bitars kryptering och hur du använder Key Delivery Service i Azure Media Services.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: självstudie MS. Date: 08/31/2020 MS. author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Självstudie: kryptera video med AES-128 och Använd Key Delivery Service
 
@@ -53,7 +37,7 @@ I den här självstudiekursen lär du dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande krävs för att kunna genomföra självstudien.
 
@@ -145,7 +129,7 @@ ContentKeyIdentifierClaim används i **innehålls nyckel principen**, vilket inn
 
 ## <a name="build-a-dash-streaming-url"></a>Skapa en DASH-uppspelningsadress
 
-Nu när du har skapat [streaming-adressen](/rest/api/media/streaminglocators) kan du hämta de strömmande URL: erna. Om du vill bygga en URL måste du sammanfoga [StreamingEndpoint](/rest/api/media/streamingendpoints) -värdnamnet och sökvägen för **strömmande lokalisering** . I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du skapar ett Media Service-konto första gången kommer detta *standardvärde för * **StreamingEndpoint** vara i ett stoppat tillstånd, så du måste anropa **Starta**.
+Nu när du har skapat [streaming-adressen](/rest/api/media/streaminglocators) kan du hämta de strömmande URL: erna. Om du vill bygga en URL måste du sammanfoga [StreamingEndpoint](/rest/api/media/streamingendpoints) -värdnamnet och sökvägen för **strömmande lokalisering** . I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du skapar ett Media Service-konto första gången kommer detta *standardvärde för* **StreamingEndpoint** vara i ett stoppat tillstånd, så du måste anropa **Starta**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 

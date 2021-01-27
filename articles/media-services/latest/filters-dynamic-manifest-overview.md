@@ -1,6 +1,5 @@
 ---
 title: Filtrera dina manifest med hjälp av dynamisk Paketeraren
-titleSuffix: Azure Media Services
 description: Lär dig hur du skapar filter med dynamisk Paketeraren för att filtrera och selektivt strömma dina manifest.
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299039"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897670"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrera dina manifest med hjälp av dynamisk Paketeraren
 
@@ -141,7 +140,7 @@ Mer information finns i [det här blogginlägget](https://azure.microsoft.com/bl
 
 ## <a name="considerations-and-limitations"></a>Överväganden och begränsningar
 
-- Värdena för **forceEndTimestamp**, **presentationWindowDuration**och **liveBackoffDuration** bör inte anges för ett VOD-filter. De används bara för direkt filter scenarier.
+- Värdena för **forceEndTimestamp**, **presentationWindowDuration** och **liveBackoffDuration** bör inte anges för ett VOD-filter. De används bara för direkt filter scenarier.
 - Ett dynamiskt manifest fungerar i GOP-gränser (nyckel ramar), så trimning har GOP precision.
 - Du kan använda samma filter namn för konto-och till gångs filter. Till gångs filter har högre prioritet och kommer att åsidosätta konto filter.
 - Om du uppdaterar ett filter kan det ta upp till 2 minuter för strömnings slut punkten att uppdatera reglerna. Om du använde filter för att hantera innehållet (och du cachelagrade innehållet i proxyservrar och CDN-cacheminnen), kan uppdatering av dessa filter leda till spelarens problem. Vi rekommenderar att du rensar cachen när du har uppdaterat filtret. Om det här alternativet inte är möjligt bör du överväga att använda ett annat filter.

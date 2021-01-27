@@ -1,5 +1,5 @@
 ---
-title: Terminologi och enhets ändringar mellan Azure Media Services v2 och v3 | Microsoft Docs
+title: Terminologi och enhets ändringar mellan Azure Media Services v2 och v3
 description: I den här artikeln beskrivs skillnaderna mellan Azure Media Services v2 och v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f657b853298cf0065da931835ea56ef2e0e0fe7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b53fbcb62004a8af9b2470c76f64f1ace845c1a8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690598"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898400"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminologi och enhets ändringar mellan Media Services v2 och v3
 
@@ -56,7 +56,7 @@ Granska de namngivnings konventioner som tillämpas på Media Services v3-resurs
 | `Job`<!-- row --> | `Job` | Skapa en `Transform` innan du skapar en `Job` . | Nej | Nej |
 | `JobTemplate`<!-- row --> | `Transform` | Använd en `Transform` i stället. En transformering är en separat entitet från ett jobb och kan återanvändas. | Nej | Nej |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Ja | Nej |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | I stället för att söka efter `MediaProcessor` namn använder du önskad för inställning när du definierar en transformering. Den för inställning som används avgör vilken Media processor som används av jobb systemet. Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (ReadOnly i v2) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | I stället för att söka efter `MediaProcessor` namn använder du önskad för inställning när du definierar en transformering. Den för inställning som används avgör vilken Media processor som används av jobb systemet. Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Nej | NA (ReadOnly i v2) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | Meddelanden i v3 hanteras via Azure Event Grid. `NotificationEndpoint`Ersätts av event Grid prenumerations registrering som också kapslar in konfigurationen för de typer av meddelanden som ska tas emot (som i v2 hanterades av `JobNotificationSubscription` jobbet, `TaskNotificationSubscription` för aktiviteten och telemetri `ComponentMonitoringSetting` ). Den 2: a telemetri delas mellan Azure Event Grid och Azure Monitor för att passa in i förbättringarna av det större Azure-eko systemet. | Nej | Nej |
 | `Program`<!-- row --> | `LiveOutput` | Live-utdata ersätter nu program i v3-API: et.  | Nej | Nej |
 | `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Slut punkter för direkt uppspelning förblir i huvudsak samma. De används för dynamisk paketering, kryptering och leverans av HLS-och tank streck för både Live och on-demand streaming, antingen direkt från ursprung eller via CDN. Nya funktioner är stöd för bättre Azure Monitor integrering och diagramering. |  Ja | Ja |

@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cc63a9787a3611f28e6466564735d029bf65b757
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0340ab0a13d7c639d5e5bba49b3cdd445bad5a83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968406"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879889"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrera data med hjälp av Azure Data Lake Storage fråga om acceleration
 
@@ -22,7 +22,7 @@ Den här artikeln visar hur du använder Query acceleration för att hämta en d
 
 Med hjälp av frågekörning kan program och analys ramverk dramatiskt optimera data bearbetningen genom att bara hämta de data som de behöver för att utföra en specifik åtgärd. Mer information finns i [Azure Data Lake Storage fråga om acceleration](data-lake-storage-query-acceleration.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du behöver en Azure-prenumeration för att få åtkomst till Azure Storage. Om du inte redan har en prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-I det här exemplet skickas frågan till API för frågans acceleration och strömmar sedan tillbaka resultatet. `blob`Objektet som har skickats till `queryHemingway` Hjälp funktionen är av typen [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient). Mer information om hur du hämtar ett [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) -objekt finns i [snabb start: hantera blobbar med Java Script v12 SDK i Node.js](storage-quickstart-blobs-nodejs.md).
+I det här exemplet skickas frågan till API för frågans acceleration och strömmar sedan tillbaka resultatet. `blob`Objektet som har skickats till `queryHemingway` Hjälp funktionen är av typen [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient). Mer information om hur du hämtar ett [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) -objekt finns i [snabb start: hantera blobbar med Java Script v12 SDK i Node.js](storage-quickstart-blobs-nodejs.md).
 
 ```javascript
 async function queryHemingway(blob)

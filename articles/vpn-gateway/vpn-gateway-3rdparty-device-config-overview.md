@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400168"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880160"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Översikt över konfigurationer för VPN-enheter för partner
 Den här artikeln innehåller en översikt över hur du konfigurerar lokala VPN-enheter för anslutning till Azure VPN-gatewayer. Ett Azure-exempel för virtuella Azure-nätverk och VPN-gateway används för att visa hur du ansluter till olika lokala VPN-enheters konfigurationer med samma parametrar.
@@ -27,7 +27,7 @@ Den första konfigurationen i exemplet består av en enda S2S VPN-tunnel mellan 
 
 ![Diagram över en enskild S2S VPN-tunnel](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Steg-för-steg-instruktioner för att konfigurera en enda VPN-tunnel finns i [Konfigurera en plats-till-plats-anslutning](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Följande avsnitt anger anslutnings parametrarna för exempel konfigurationen och ger ett PowerShell-skript som hjälper dig att komma igång.
+Steg-för-steg-instruktioner för att konfigurera en enda VPN-tunnel finns i [Konfigurera en plats-till-plats-anslutning](./tutorial-site-to-site-portal.md). Följande avsnitt anger anslutnings parametrarna för exempel konfigurationen och ger ett PowerShell-skript som hjälper dig att komma igång.
 
 ### <a name="connection-parameters"></a>Anslutningsparametrar
 I det här avsnittet visas parametrarna för de exempel som beskrivs i föregående avsnitt.
@@ -150,4 +150,3 @@ När du skapar en S2S VPN-anslutning kan du välja att använda [BGP för VPN-ga
 
 ## <a name="next-steps"></a>Nästa steg
 Stegvisa instruktioner för att konfigurera aktiva och aktiva VPN-gatewayer finns i [Konfigurera aktiva, aktiva VPN-gatewayer för anslutningar mellan lokala nätverk och VNET-till-VNet](vpn-gateway-activeactive-rm-powershell.md).
-

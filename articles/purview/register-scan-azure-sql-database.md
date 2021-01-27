@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555958"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879738"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrera och skanna en Azure SQL Database
 
@@ -39,7 +39,7 @@ Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational
 
 ### <a name="set-up-authentication-for-a-scan"></a>Konfigurera autentisering för en sökning
 
-Autentisering för att genomsöka Azure SQL Database. Om du behöver skapa en ny autentisering måste du [godkänna databas åtkomst till SQL Database](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage). Det finns tre autentiseringsmetoder som avdelningens kontroll stöder idag:
+Autentisering för att genomsöka Azure SQL Database. Om du behöver skapa en ny autentisering måste du [godkänna databas åtkomst till SQL Database](../azure-sql/database/logins-create-manage.md). Det finns tre autentiseringsmetoder som avdelningens kontroll stöder idag:
 
 - SQL-autentisering
 - Tjänstens huvudnamn
@@ -88,8 +88,8 @@ Om du vill använda ett huvud namn för tjänsten kan du använda ett befintligt
 
 Tjänstens huvud namn eller hanterade identitet måste ha behörighet att hämta metadata för databasen, scheman och tabeller. Det måste också kunna fråga tabellerna för klassificering.
 
-- [Konfigurera och hantera Azure AD-autentisering med Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Om du använder hanterad identitet har ditt avdelningens kontroll-konto sin egen hanterade identitet som i princip är ditt avdelningens kontroll-namn när du skapade det. Du måste skapa en Azure AD-användare i Azure SQL Database med den exakta avdelningens kontroll-hanterade identiteten eller ditt eget tjänst huvud namn genom att följa de här självstudierna för [att skapa tjänstens huvud namn användare i Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). Du måste tilldela rätt behörighet (t. ex. `db_owner` eller `db_datareader` ) till identiteten. Exempel på SQL-syntax för att skapa användare och bevilja behörighet:
+- [Konfigurera och hantera Azure AD-autentisering med Azure SQL](../azure-sql/database/authentication-aad-configure.md)
+- Om du använder hanterad identitet har ditt avdelningens kontroll-konto sin egen hanterade identitet som i princip är ditt avdelningens kontroll-namn när du skapade det. Du måste skapa en Azure AD-användare i Azure SQL Database med den exakta avdelningens kontroll-hanterade identiteten eller ditt eget tjänst huvud namn genom att följa de här självstudierna för [att skapa tjänstens huvud namn användare i Azure SQL Database](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database). Du måste tilldela rätt behörighet (t. ex. `db_owner` eller `db_datareader` ) till identiteten. Exempel på SQL-syntax för att skapa användare och bevilja behörighet:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER

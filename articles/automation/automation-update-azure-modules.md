@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185780"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894855"
 ---
 # <a name="update-azure-powershell-modules"></a>Uppdatera Azure PowerShell-moduler
 
@@ -38,7 +38,7 @@ Om du vill uppdatera Azure-modulerna i ditt Automation-konto måste du använda 
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Använda Update Run Book Code som ett vanligt PowerShell-skript
 
-Du kan använda Runbook-koden som ett vanligt PowerShell-skript i stället för en Runbook. Det gör du genom att logga in på Azure med cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) först och sedan skicka `-Login $false` till skriptet.
+Du kan använda Runbook-koden som ett vanligt PowerShell-skript i stället för en Runbook. Det gör du genom att logga in på Azure med cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) först och sedan skicka `-Login $false` till skriptet.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>Använd uppdaterings-Runbook på suveräna moln
 

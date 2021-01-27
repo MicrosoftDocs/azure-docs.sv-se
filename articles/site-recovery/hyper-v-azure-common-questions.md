@@ -3,12 +3,12 @@ title: Vanliga frågor om haveri beredskap för Hyper-V med Azure Site Recovery
 description: I den här artikeln sammanfattas vanliga frågor om hur du konfigurerar haveri beredskap för lokala virtuella Hyper-V-datorer till Azure med hjälp av Azure Site Recovery-platsen.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754359"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879452"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Vanliga frågor – Haveriberedskap för Hyper-V till Azure
 
@@ -167,7 +167,7 @@ Virtuella Hyper-V-datorer kan replikeras var 30: e sekund (med undantag för Pre
 
 ### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>Kan Azure Site Recovery och Hyper-V-replikering konfigureras tillsammans på en Hyper-V-dator?
 
-Ja, både Azure Site Recovery-och Hyper-V-replikering kan konfigureras tillsammans för en dator. Men datorn måste skyddas som en fysisk dator och kommer att replikeras till Azure med hjälp av en konfiguration/Processerver. Lär dig mer om att skydda fysiska datorer [här](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture).
+Ja, både Azure Site Recovery-och Hyper-V-replikering kan konfigureras tillsammans för en dator. Men datorn måste skyddas som en fysisk dator och kommer att replikeras till Azure med hjälp av en konfiguration/Processerver. Lär dig mer om att skydda fysiska datorer [här](./physical-azure-architecture.md).
 
 ### <a name="can-i-extend-replication"></a>Kan jag utöka replikeringen?
 Utökad eller länkad replikering stöds inte. Begär den här funktionen i [feedback-forumet](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

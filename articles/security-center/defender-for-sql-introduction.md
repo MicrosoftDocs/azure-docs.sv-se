@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755998"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881375"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Introduktion till Azure Defender för SQL
 
@@ -27,7 +27,7 @@ Azure Defender för SQL innehåller två Azure Defender-planer som utökar Azure
 |----|:----|
 |Versions tillstånd:|**Azure Defender för Azure SQL Database-servrar** – allmänt tillgängliga (ga)<br>**Azure Defender för SQL-servrar på datorer** – allmänt tillgängliga (ga) |
 |Priset|De två planer som utgör **Azure Defender för SQL** debiteras enligt [pris sidan](security-center-pricing.md)|
-|Skyddade SQL-versioner:|[SQL på virtuella Azure-datorer](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc-aktiverade SQL-servrar](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Lokala SQL-servrar på Windows-datorer utan Azure Arc<br>Enkla Azure SQL- [databaser](../azure-sql/database/single-database-overview.md) och [elastiska pooler](../azure-sql/database/elastic-pool-overview.md)<br>[Hanterad Azure SQL-instans](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (tidigare SQL DW) dedikerad SQL-pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Skyddade SQL-versioner:|[SQL på virtuella Azure-datorer](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc-aktiverade SQL-servrar](/sql/sql-server/azure-arc/overview)<br>Lokala SQL-servrar på Windows-datorer utan Azure Arc<br>Enkla Azure SQL- [databaser](../azure-sql/database/single-database-overview.md) och [elastiska pooler](../azure-sql/database/elastic-pool-overview.md)<br>[Hanterad Azure SQL-instans](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (tidigare SQL DW) dedikerad SQL-pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Moln|![Ja ](./media/icons/yes-icon.png) kommersiella moln<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Ja ](./media/icons/yes-icon.png) Kina gov (**partiell**: delmängd av aviseringar och sårbarhets bedömning för SQL-servrar. Beteendet hot skydd är inte tillgängligt.)|
 |||
 
@@ -41,9 +41,9 @@ Azure Defender för SQL innehåller två Azure Defender-planer som utökar Azure
     - [Dedikerad SQL-pool i Azure Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 - **Azure Defender för SQL-servrar på datorer** utökar skydds inställningarna för dina Azure-inhemska SQL-servrar för att fullständigt stödja hybrid miljöer och skydda SQL-servrar (all version som stöds) som finns i Azure, andra moln miljöer och till och med lokala datorer:
-    - [SQL Server på Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
+    - [SQL Server på virtuella datorer](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Lokala SQL-servrar:
-        - [Azure Arc-aktiverad SQL Server (förhandsversion)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc-aktiverad SQL Server (förhandsversion)](/sql/sql-server/azure-arc/overview)
         - [SQL Server som körs på Windows-datorer utan Azure Arc](../azure-monitor/platform/agent-windows.md)
 
 

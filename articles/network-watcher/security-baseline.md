@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 598f925d939694ea47605b0e8ea2e63872db7811
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3f16589765752a2a635ccd055e7d55de8b9ce330
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201254"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880024"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>Azures säkerhets bas linje för Network Watcher
 
@@ -429,7 +429,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 * [IPSec-parametrar som stöds för Azure VPN Gateway](./network-watcher-diagnose-on-premises-connectivity.md)
 
-* [Konfigurera en plats-till-plats-anslutning i Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Konfigurera en plats-till-plats-anslutning i Azure Portal](../vpn-gateway/tutorial-site-to-site-portal.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 

@@ -2,13 +2,13 @@
 title: Länka mallar för distribution
 description: 'Beskriver hur du använder länkade mallar i en Azure Resource Manager-mall (ARM-mall) för att skapa en modulär mall-lösning. Visar hur du skickar parameter värden, anger en parameter fil och dynamiskt skapade URL: er.'
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/26/2021
+ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790943"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880448"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Använda länkade och nästlade mallar vid distribution av Azure-resurser
 
@@ -496,6 +496,91 @@ Om du vill skicka parameter värden infogat använder du `parameters` egenskapen
 
 Du kan inte använda både infogade parametrar och en länk till en parameter fil. Distributionen Miss lyckas med ett fel när både `parametersLink` och `parameters` har angetts.
 
+### <a name="use-relative-path-for-linked-templates"></a>Använd relativ sökväg för länkade mallar
+
+`relativePath`Egenskapen i `Microsoft.Resources/deployments` gör det enklare att redigera länkade mallar. Den här egenskapen kan användas för att distribuera en fjärran sluten länkad mall på en plats i förhållande till den överordnade platsen. Den här funktionen kräver att alla mallfiler är mellanlagrade och tillgängliga på en fjärr-URI, till exempel GitHub eller Azure Storage-konto. När huvud mal len anropas med hjälp av en URI från Azure PowerShell eller Azure CLI, är den underordnade distributions-URI: n en kombination av den överordnade och relativePath.
+
+> [!NOTE]
+> När du skapar en templateSpec paketeras alla mallar som egenskapen refererar till `relativePath` i templateSpec-resursen av Azure PowerShell eller Azure CLI. Det kräver inte att filerna mellanlagras. Mer information finns i [skapa en mall-specifikation med länkade mallar](./template-specs.md#create-a-template-spec-with-linked-templates).
+
+Anta en mappstruktur så här:
+
+![relativ sökväg till kopplad mall i Resource Manager](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
+
+I följande mall visas hur *mainTemplate.jspå* distribuerar *nestedChild.jspå* bilden ovan.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+I följande distribution är URI: n för den länkade mallen i föregående mall **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** .
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+Om du vill distribuera länkade mallar med relativa sökvägar lagrade i ett Azure Storage-konto, använder du `QueryString` / `query-string` parametern för att ange den SAS-token som ska användas med parametern TemplateUri. Den här parametern stöds endast av Azure CLI version 2,18 eller senare och Azure PowerShell version 5,4 eller senare.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+Se till att det inte finns något inledande "?" i QueryString. Distributionen lägger till en när du monterar URI: n för distributionerna.
+
 ## <a name="template-specs"></a>Mallspecifikationer
 
 I stället för att underhålla de länkade mallarna på en tillgänglig slut punkt kan du skapa en [mall-specifikation](template-specs.md) som paketerar huvud mal len och dess länkade mallar i en enda enhet som du kan distribuera. Mallens specifikation är en resurs i din Azure-prenumeration. Det gör det enkelt att på ett säkert sätt dela mallen med användare i din organisation. Du använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att ge åtkomst till mallen specifikation. Den här funktionen är för närvarande en för hands version.
@@ -797,7 +882,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 I följande exempel visas vanliga användnings områden för länkade mallar.
 
-|Huvud mal len  |Länkad mall |Beskrivning  |
+|Huvud mal len  |Länkad mall |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[länkad mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Returnerar en sträng från den länkade mallen. |
 |[Load Balancer med offentlig IP-adress](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[länkad mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Returnerar den offentliga IP-adressen från den länkade mallen och anger värdet i belastningsutjämnaren. |

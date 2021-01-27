@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: cb6a63e4ead45d7751d1d3442793478cfdcd71c0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 55f0d2e8df36cc11f26c5ff6259ebe2215aaffc6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676348"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880550"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Snabb start: ansluta ett Azure avdelningens kontroll-konto till en Synapse-arbetsyta 
 
@@ -36,7 +36,7 @@ Gå till  [https://web.azuresynapse.net](https://web.azuresynapse.net) och log
 
 ## <a name="permissions-for-connecting-an-azure-purview-account"></a>Behörigheter för att ansluta ett Azure avdelningens kontroll-konto 
 
-- Om du vill ansluta ett Azure avdelningens kontroll-konto till en Synapse-arbetsyta behöver du en **deltagar** roll i Synapse-arbetsytan från Azure Portal IAM och du behöver åtkomst till det Azure avdelningens kontroll-kontot.
+- Om du vill ansluta ett Azure avdelningens kontroll-konto till en Synapse-arbetsyta behöver du en **deltagar** roll i Synapse-arbetsytan från Azure Portal IAM och du behöver åtkomst till det Azure avdelningens kontroll-kontot. Mer information finns i [Azure avdelningens kontroll-behörigheter](../../purview/catalog-permissions.md).
 
 ## <a name="connect-an-azure-purview-account"></a>Ansluta ett Azure Purview-konto  
 

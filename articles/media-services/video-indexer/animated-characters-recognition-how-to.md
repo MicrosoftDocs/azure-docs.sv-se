@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763395"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880935"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Använda animerad Character Detection (för hands version) med Portal och API 
 
@@ -35,7 +35,7 @@ Om du äger ett Video Indexer betalt konto måste du först ansluta ett Custom V
 > [!NOTE]
 > Båda kontona måste finnas i samma region. Custom Vision-integration stöds för närvarande inte i regionen Japan.
 
-Betalda konton som har åtkomst till sitt Custom Vision konto kan se modeller och taggade bilder där. Lär dig mer om [att förbättra din klassificerare i Custom vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). 
+Betalda konton som har åtkomst till sitt Custom Vision konto kan se modeller och taggade bilder där. Lär dig mer om [att förbättra din klassificerare i Custom vision](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). 
 
 Observera att inlärningen av modellen endast bör göras via Video Indexer och inte via Custom Vision webbplats. 
 
@@ -108,7 +108,7 @@ Innan du taggar och tränar modellen med varandra får alla animerade tecken nam
 1. Endast betalda konton: granska grupperna i Custom Vision 
 
     > [!NOTE]
-    > Betalda konton som har åtkomst till sitt Custom Vision konto kan se modeller och taggade bilder där. Lär dig mer om [att förbättra din klassificerare i Custom vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). Det är viktigt att notera att inlärningen av modellen endast bör göras via Video Indexer (enligt beskrivningen i den här topid) och inte via webbplatsen Custom Vision. 
+    > Betalda konton som har åtkomst till sitt Custom Vision konto kan se modeller och taggade bilder där. Lär dig mer om [att förbättra din klassificerare i Custom vision](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). Det är viktigt att notera att inlärningen av modellen endast bör göras via Video Indexer (enligt beskrivningen i den här topid) och inte via webbplatsen Custom Vision. 
 
     1. Gå till sidan **anpassade modeller** i video Indexer och välj fliken **animerade tecken** . 
     1. Klicka på knappen Redigera för den modell du arbetar med för att hantera den i Custom Vision. 

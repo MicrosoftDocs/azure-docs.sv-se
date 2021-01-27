@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cbbbf4ddc651c535cb1266257990f149c80b4742
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: caa0390dfd3a98e6537a7a60a2895461e2efd52a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562505"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879872"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-tjänster som stöder Azure Data Lake Storage Gen2
 
@@ -39,12 +39,12 @@ I den här tabellen visas de Azure-tjänster som du kan använda med Azure Data 
 |HDInsight |Allmänt tillgänglig|Ja|Ja|[Använda Azure Data Lake Storage Gen2 med Azure HDInsight-kluster](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Använda HDFS CLI med Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Självstudie: extrahera, transformera och läsa in data med Apache Hive på Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |Allmänt tillgänglig|Ja|Ja|[Använd IoT Hub meddelanderoutning för att skicka meddelanden från enheten till molnet till olika slut punkter](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Allmänt tillgänglig|Ja|Ja|[Analysera data i Data Lake Storage Gen2 med Power BI](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (tidigare SQL Data Warehouse)|Allmänt tillgänglig|Ja|Ja|[Analysera data i ett lagrings konto](/azure/synapse-analytics/get-started-analyze-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (tidigare SQL Data Warehouse)|Allmänt tillgänglig|Ja|Ja|[Analysera data i ett lagrings konto](../../synapse-analytics/get-started-analyze-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |SQL Server Integration Services (SSIS)|Allmänt tillgänglig|Ja|Ja|[Azure Storage anslutnings hanteraren](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure-datautforskaren|Allmänt tillgänglig|Ja|Ja|[Fråga efter data i Azure Data Lake med Azure Datautforskaren](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|Förhandsgranskning|Ja|Ja|[Index och Sök Azure Data Lake Storage Gen2 dokument (förhands granskning)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|Stöds inte ännu|Inte tillämpligt|Inte tillämpligt|[Index och Sök Azure Data Lake Storage Gen2 dokument (förhands granskning)](../../cdn/cdn-overview.md)|
-|Azure SQL Database|Stöds inte ännu|Inte tillämpligt|Inte tillämpligt|[Vad är Azure SQL Database?](/azure/azure-sql/database/sql-database-paas-overview)|
+|Azure SQL Database|Stöds inte ännu|Inte tillämpligt|Inte tillämpligt|[Vad är Azure SQL Database?](../../azure-sql/database/sql-database-paas-overview.md)|
 
 ## <a name="see-also"></a>Se även
 

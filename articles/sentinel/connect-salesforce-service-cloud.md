@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: d323af2695a41e685e722c98603cf5df09866a15
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 152fee2e4e72cee6a7bc1c768c0a8ca7b031ec39
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98568005"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878926"
 ---
 # <a name="connect-your-salesforce-service-cloud-to-azure-sentinel"></a>Anslut ditt Salesforce-tjänst moln till Azure Sentinel
 
@@ -31,13 +31,13 @@ Den här artikeln förklarar hur du ansluter din moln lösning för Salesforce-t
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
 - Du måste ha Läs behörighet till delade nycklar för arbets ytan. [Läs mer om nycklar för arbets ytor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-- Du måste ha läs-och Skriv behörighet till Azure Functions för att kunna skapa en Funktionsapp. [Läs mer om Azure Functions](/azure/azure-functions/).
+- Du måste ha läs-och Skriv behörighet till Azure Functions för att kunna skapa en Funktionsapp. [Läs mer om Azure Functions](../azure-functions/index.yml).
 
 - Du måste ha följande Salesforce-REST API autentiseringsuppgifter: **Salesforce API-användarnamn**, **Salesforce API-lösenord**, Salesforce- **säkerhetstoken**, **Salesforce-konsument nyckel**, **Salesforce-konsument hemlighet**. [Läs mer om Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart.htm).
 

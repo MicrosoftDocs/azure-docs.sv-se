@@ -2,19 +2,19 @@
 title: Vad är en ord lista? – Anpassad översättare
 titleSuffix: Azure Cognitive Services
 description: En ord lista är ett justerat dokument som anger en lista med fraser eller meningar (och deras översättningar) som du alltid vill att Microsoft Translator ska översätta på samma sätt. Ord listor kallas ibland även Glossaries-eller term Bases.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 160aa372cec2d018d5a3558f99e079624d965098
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368992"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895568"
 ---
 # <a name="what-is-a-dictionary"></a>Vad är en ord lista?
 

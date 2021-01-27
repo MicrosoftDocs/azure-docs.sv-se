@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services LiveEvent-typer | Microsoft Docs
+title: Azure Media Services LiveEvent-typer
 description: I Azure Media Services kan en Live-händelse ställas in på antingen en *direkt-* eller *direktsänd kodning*. Den här artikeln innehåller en detaljerad tabell som jämför aktiva händelse typer.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c79d45cfac22f41f05071b619c444e7b7ab7956a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3126cbf4f9d87e9baa7267e309210b751a47069d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397312"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897806"
 ---
 # <a name="live-event-types-comparison"></a>Jämförelse av händelse typer i real tid
 
@@ -42,7 +42,7 @@ I följande tabell jämförs funktionerna i de olika typerna av Live-händelser.
 | Maximal video upplösning för bidrags flöden |4K (4096x2160 vid 60 bild rutor/SEK) |1080p (1920x1088 vid 30 bild rutor/SEK)|
 | Rekommenderade högsta skikt i bidrags flödet|Upp till 12|Ett ljud|
 | Maximalt antal lager i utdata| Samma som indatamängden|Upp till 6 (se system för inställningar nedan)|
-| Maximal sammanställd bandbredd för bidrags flödet|60 Mbit/s|E.t.|
+| Maximal sammanställd bandbredd för bidrags flödet|60 Mbit/s|Ej tillämpligt|
 | Högsta bit hastighet för ett enskilt lager i bidraget |20 Mbit/s|20 Mbit/s|
 | Stöd för flera språk ljud spår|Ja|Inga|
 | Codecs för inkompatibla video |H. 264/AVC och H. 265/HEVC|H. 264/AVC|
@@ -78,12 +78,12 @@ Om bidrags flödet är av 720p eller högre, kodas **Default720p** för för ins
 
 | Hastigheten | Bredd | Höjd | MaxFPS | Profil |
 | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Hög |
-| 2200 |960 |540 |30 |Hög |
-| 1350 |704 |396 |30 |Hög |
-| 850 |512 |288 |30 |Hög |
-| 550 |384 |216 |30 |Hög |
-| 200 |340 |192 |30 |Hög |
+| 3500 |1280 |720 |30 |Högt |
+| 2200 |960 |540 |30 |Högt |
+| 1350 |704 |396 |30 |Högt |
+| 850 |512 |288 |30 |Högt |
+| 550 |384 |216 |30 |Högt |
+| 200 |340 |192 |30 |Högt |
 
 > [!NOTE]
 > Om du behöver anpassa för hands kodning av direktsänd kodning öppnar du ett support ärende via Azure Portal. Du bör ange önskad tabell med video upplösning och bit hastigheter. Anpassning av bit hastighet för ljud kodning stöds inte. Kontrollera att det bara finns ett lager vid 720p och högst 6 lager. Ange också att du begär en för inställning.
@@ -94,12 +94,12 @@ Om bidrags flödet är av 1080p-upplösning kommer **Default1080p** -förvalet a
 
 | Hastigheten | Bredd | Höjd | MaxFPS | Profil |
 | --- | --- | --- | --- | --- |
-| 5500 |1920 |1080 |30 |Hög |
-| 3000 |1280 |720 |30 |Hög |
-| 1600 |960 |540 |30 |Hög |
-| 800 |640 |360 |30 |Hög |
-| 400 |480 |270 |30 |Hög |
-| 200 |320 |180 |30 |Hög |
+| 5500 |1920 |1080 |30 |Högt |
+| 3000 |1280 |720 |30 |Högt |
+| 1600 |960 |540 |30 |Högt |
+| 800 |640 |360 |30 |Högt |
+| 400 |480 |270 |30 |Högt |
+| 200 |320 |180 |30 |Högt |
 
 > [!NOTE]
 > Om du behöver anpassa för hands kodning av direktsänd kodning öppnar du ett support ärende via Azure Portal. Du bör ange den önskade tabellen med upplösning och bithastigheter. Kontrol lera att det bara finns ett lager i 1080p och högst 6 lager. Ange också att du begär en för inställning för en Premium1080p Live-kodare. De exakta värdena för bit hastigheterna och lösningarna kan justeras med tiden.

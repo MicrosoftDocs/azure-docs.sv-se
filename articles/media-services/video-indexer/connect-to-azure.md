@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702629"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897164"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>Skapa ett Video Indexer-konto som är anslutet till Azure
+# <a name="create-a-video-indexer-account"></a>Skapa ett Video Indexer konto
 
 När du skapar ett Video Indexer-konto kan du välja ett kostnadsfritt utvärderingskonto (där du får ett visst antal kostnadsfria indexeringsminuter) eller ett betalalternativ (där du inte begränsas av kvoten). Med den kostnadsfria utvärderingen ger Video Indexer upp till 600 minuter kostnadsfri indexering för webbplatsanvändare och upp till 2 400 minuter kostnadsfri indexering för API-användare. Med alternativet betald kan du skapa ett Video Indexer-konto som är anslutet till din Azure-prenumeration. Du betalar för minuter indexerat, mer information finns i [Media Services prissättning](https://azure.microsoft.com/pricing/details/media-services/).
 
@@ -25,7 +25,9 @@ Den här artikeln visar hur du skapar ett Video Indexer-konto som är länkat ti
 
 Om du flyttar från en *utvärdering* till *betald* video Indexer konto kan du välja att kopiera alla videor och modell anpassningar till det nya kontot, enligt beskrivningen i avsnittet [Importera ditt innehåll från utvärderings kontot](#import-your-content-from-the-trial-account) .
 
-## <a name="prerequisites"></a>Förutsättningar
+Artikeln beskriver också hur [du länkar ett video Indexer konto till Azure Government](#video-indexer-in-azure-government).
+
+## <a name="prerequisites-for-connecting-to-azure"></a>Krav för att ansluta till Azure
 
 * En Azure-prenumeration.
 
@@ -37,7 +39,7 @@ Om du flyttar från en *utvärdering* till *betald* video Indexer konto kan du v
 
     Den här användaren bör vara en Azure AD-användare med ett arbets-eller skol konto. Använd inte ett personligt konto, till exempel outlook.com, live.com eller hotmail.com.
 
-    ![alla AAD-användare](./media/create-account/all-aad-users.png)
+    ![alla Azure AD-användare](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>Ytterligare krav för automatisk flöde
 
@@ -59,7 +61,7 @@ Om du flyttar från en *utvärdering* till *betald* video Indexer konto kan du v
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>Skapa ett nytt konto
+## <a name="create-a-new-account-on-azure"></a>Skapa ett nytt konto på Azure 
 
 > [!NOTE]
 > Om din Azure-prenumeration använder certifikatbaserad Multi-Factor Authentication är det viktigt att du utför följande steg på en enhet som har de certifikat som krävs installerade.
@@ -155,7 +157,7 @@ Ange följande information i dialog rutan:
 |Program-ID|Azure AD-programmets ID (med behörigheter för det angivna Media Services kontot) som du skapade i föregående avsnitt.|
 |Program nyckel|Den Azure AD-programnyckel som du skapade i föregående avsnitt. |
 
-## <a name="import-your-content-from-the-trial-account"></a>Importera ditt innehåll från *utvärderings* kontot
+### <a name="import-your-content-from-the-trial-account"></a>Importera ditt innehåll från *utvärderings* kontot
 
 När du skapar ett nytt konto har du ett alternativ för att importera innehållet från *utvärderings* kontot till det nya kontot. Om du markerar alternativet *Importera* i dialog rutan **skapa ett nytt konto i en Azure-prenumeration** kopieras alla anpassningar av medie-och innehålls modeller från *utvärderings* kontot till det nya kontot.
 
@@ -163,16 +165,10 @@ Möjligheten att importera innehållet är giltig för både automatiserade och 
 
 > [!NOTE]
 > Innehållet kan bara importeras en gång från varje konto.
+>
+> *Utvärderings* kontot är inte availagle på Azure Government molnet.
 
-## <a name="delete-the-account"></a>Ta bort kontot
-
-Om du senare vill ta bort kontot kan du ta bort kontot från Video Indexer webbplats. Du måste vara ägare om du vill ta bort kontot.
-
-Välj konto-> **Inställningar**  ->  **ta bort det här kontot**. 
-
-Kontot tas bort permanent om 90 dagar.
-
-## <a name="considerations"></a>Överväganden
+## <a name="azure-media-services-considerations"></a>Azure Media Services överväganden
 
 Följande Azure Media Services relaterade överväganden gäller:
 
@@ -201,9 +197,52 @@ Att automatisera skapandet av kontot är en process i två steg:
     Se ett exempel på mallen för att [skapa Media Services-konton](https://github.com/Azure-Samples/media-services-v3-arm-templates).
 1. Anropa [create-Account med Media Services-och Azure AD-programmet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
+## <a name="video-indexer-in-azure-government"></a>Video Indexer i Azure Government
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>Krav för att ansluta till Azure Government
+
+-   En Azure-prenumeration i [Azure Government](https://docs.microsoft.com/azure/azure-government/).
+- Ett Azure AD-konto i Azure Government.
+- Alla före krav på behörigheter och resurser enligt beskrivningen ovan i [krav för att ansluta till Azure](#prerequisites-for-connecting-to-azure).
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>Skapa ett nytt konto via Azure Government portalen
+
+> [!NOTE]
+> Azure Government molnet innehåller ingen *utvärderings* upplevelse av video Indexer.
+
+Så här skapar du ett betalt konto via Video Indexer-portalen:
+
+1. Gå till https://videoindexer.ai.azure.us 
+1. Logga in med ditt Azure Government Azure AD-konto.
+1.  Om du inte har några Video Indexer konton i Azure Government att du är ägare eller deltagare i får du en tom upplevelse som du kan använda för att börja skapa ditt konto. 
+
+    Resten av flödet är så som beskrivs i ovan. endast de regioner som du väljer från är myndigheter där video Indexer är tillgängliga 
+
+    Om du redan är deltagare eller administratör för ett befintligt konto i en eller flera Video Indexer i Azure Government, kommer du att gå till det kontot och därifrån kan du börja följa stegen för att skapa ett ytterligare konto vid behov, enligt beskrivningen ovan.
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>Skapa ett nytt konto via API: et på Azure Government
+
+Om du vill skapa ett betalt konto i Azure Government följer du instruktionerna i [skapa-betalt-Account](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account). Den här API-slutpunkten inkluderar endast myndigheter i molnet.
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>Begränsningar för Video Indexer på Azure Government
+
+*   Ingen manuell innehålls moderator är tillgänglig i myndighets molnet. 
+
+    I det offentliga molnet när innehållet bedöms vara stötande baserat på en innehålls kontroll kan kunden be om en mänsklig att titta på innehållet och eventuellt återställa beslutet.  
+*   Inga utvärderings konton. 
+* Bing-beskrivning – i gov-molnet kommer vi inte att presentera en beskrivning av kändisar och namngivna entiteter som identifieras. Detta är endast en GRÄNSSNITTs funktion. 
+
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När du är färdig med den här självstudien tar du bort resurser som du inte planerar att använda.
+
+### <a name="delete-a-video-indexer-account"></a>Ta bort ett Video Indexer konto
+
+Om du vill ta bort ett Video Indexer konto kan du ta bort kontot från Video Indexer webbplats. Du måste vara ägare om du vill ta bort kontot.
+
+Välj konto-> **Inställningar**  ->  **ta bort det här kontot**. 
+
+Kontot tas bort permanent om 90 dagar.
 
 ## <a name="next-steps"></a>Nästa steg
 

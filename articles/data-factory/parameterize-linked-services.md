@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232071"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895398"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parameterisera länkade tjänster i Azure Data Factory
 
@@ -27,6 +27,9 @@ Du kan använda Data Factory gränssnittet i Azure Portal eller ett programmerin
 
 > [!TIP]
 > Vi rekommenderar att du inte Parameterisera lösen ord eller hemligheter. Lagra alla anslutnings strängar i Azure Key Vault i stället och Parameterisera det *hemliga namnet*.
+
+> [!Note]
+> Det finns öppen bugg för användning av "-" i parameter namn, vi rekommenderar att du använder namn utan "-" förrän felet har åtgärd ATS.
 
 En introduktion till sju minuter och demonstration av den här funktionen finns på följande video:
 

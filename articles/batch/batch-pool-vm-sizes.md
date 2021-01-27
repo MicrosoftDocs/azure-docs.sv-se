@@ -4,12 +4,12 @@ description: Hur du väljer mellan tillgängliga VM-storlekar och OS-versioner f
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895238"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897501"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Välj en VM-storlek och avbildning för Compute-noder i en Azure Batch pool
 
@@ -35,40 +35,38 @@ Batch-pooler i den virtuella dator konfigurationen stöder nästan alla [VM-stor
 | DC | Stöds inte |
 | Dv2, DSv2 | Alla storlekar |
 | Dv3, Dsv3 | Alla storlekar |
-| Dav4<sup>1</sup> | Alla storlekar |
-| Dasv4<sup>1</sup> | Alla storlekar |
+| Dav4 | Alla storlekar |
+| Dasv4 | Alla storlekar |
 | Ddv4, Ddsv4 |  Alla storlekar |
 | Dv4, Dsv4 | Stöds inte |
 | Ev3, Esv3 | Alla storlekar, förutom E64is_v3 |
-| Eav4<sup>1</sup> | Alla storlekar |
-| Easv4<sup>1</sup> | Alla storlekar |
+| Eav4 | Alla storlekar |
+| Easv4 | Alla storlekar |
 | Edv4, Edsv4 |  Alla storlekar |
 | Ev4, Esv4 | Stöds inte |
 | F, FS | Alla storlekar |
 | Fsv2 | Alla storlekar |
 | G, GS | Alla storlekar |
 | H | Alla storlekar |
-| HB<sup>1</sup> | Alla storlekar |
-| HBv2<sup>1</sup> | Alla storlekar |
-| HC<sup>1</sup> | Alla storlekar |
+| HB | Alla storlekar |
+| HBv2 | Alla storlekar |
+| HC | Alla storlekar |
 | Ls | Alla storlekar |
-| Lsv2<sup>1</sup> | Alla storlekar |
-| M<sup>1</sup> | Alla storlekar |
-| Mv2<sup>1, 2</sup> | Alla storlekar |
+| Lsv2 | Alla storlekar |
+| M | Alla storlekar |
+| Mv2<sup>1</sup> | Alla storlekar |
 | NC | Alla storlekar |
-| NCv2<sup>1</sup> | Alla storlekar |
-| NCv3<sup>1</sup> | Alla storlekar |
+| NCv2 | Alla storlekar |
+| NCv3 | Alla storlekar |
 | NCasT4_v3 | Ingen – ännu inte tillgänglig |
-| ND<sup>1</sup> | Alla storlekar |
-| NDv2<sup>1</sup> | Ingen – ännu inte tillgänglig |
+| ND | Alla storlekar |
+| NDv2 | Ingen – ännu inte tillgänglig |
 | NV | Alla storlekar |
-| NVv3<sup>1</sup> | Alla storlekar |
-| NVv4<sup>1</sup> | Alla storlekar |
+| NVv3 | Alla storlekar |
+| NVv4 | Alla storlekar |
 | SAP HANA | Stöds inte |
 
-<sup>1</sup> dessa VM-serier kan allokeras i batch-pooler i konfigurationen av den virtuella datorn, men du måste skapa ett nytt batch-konto och begära en bestämd [kvot ökning](batch-quota-limit.md#increase-a-quota). Den här begränsningen tas bort när vCPU-kvoten per VM-serien har fullt stöd för batch-konton.
-
-<sup>2</sup> dessa VM-serier kan bara användas med virtuella datorer i generation 2.
+<sup>1</sup> dessa VM-serien kan bara användas med virtuella datorer i generation 2.
 
 ### <a name="using-generation-2-vm-images"></a>Använda virtuella dator avbildningar i generation 2
 

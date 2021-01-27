@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/2/2020
-ms.openlocfilehash: 3693ff8ea213d0823237956c532e65d5094bf1ce
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746326"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880295"
 ---
 # <a name="co-sell-partner-engagement"></a>Deltagande i partnersäljsamarbete
 
@@ -49,7 +49,7 @@ I den här tabellen listas de steg och krav som krävs för att hämta ditt utbu
 ||Dynamics|<ul><li>Du har en aktiv registrering i ISV Connect Premium-nivån.</li></ul>|Business Applications Co-Sälj motiverade|
 |||
 
-Mer information om kraven för erbjudanden för medförsäljnings lösningar finns i [krav för medförsäljnings status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+Mer information om kraven för erbjudanden för medförsäljnings lösningar finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Så här skickar du Co-försäljnings material i Partner Center
 

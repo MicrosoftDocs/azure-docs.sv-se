@@ -1,5 +1,5 @@
 ---
-title: Viktig information om Azure Media Services v3 | Microsoft Docs
+title: Viktig information om Azure Media Services v3
 description: Den här artikeln innehåller de senaste uppdateringarna för Azure Media Services v3 för att hålla dig uppdaterad med den senaste utvecklingen.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 37e90eeaef9cb8c8e0bd927dd4d733a737c0c47f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 2254762ec2cc9d99946afaef12f452fdfbfea9e2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693883"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898247"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 

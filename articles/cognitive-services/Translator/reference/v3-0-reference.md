@@ -3,19 +3,19 @@ title: Translator V 3.0-referens
 titleSuffix: Azure Cognitive Services
 description: Referens dokumentation för Translator V 3.0. Version 3 av Translator tillhandahåller ett modernt JSON-baserat webb-API.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024508"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895466"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
 
@@ -39,9 +39,9 @@ Microsoft Translator hanteras av flera data Center platser. De finns för närva
 
 Begär anden till Microsoft Translator hanteras i de flesta fall av data centret som är närmast den plats där begäran kommer. Om ett Data Center haveri skulle Miss lyckas kan begäran dirigeras utanför Azure-geografien.
 
-Om du vill tvinga begäran att hanteras av ett visst Azure-geografi ändrar du den globala slut punkten i API-begäran till önskad regional slut punkt:
+Om du vill tvinga begäran att hanteras av ett visst Azure-geografi ändrar du den globala slut punkten i API-begäran till önskad geografisk slut punkt:
 
-|Description|Azure geografi|Grundläggande URL|
+|Description|Azure geografi|Bas-URL (geografisk slut punkt)|
 |:--|:--|:--|
 |Azure|Global (icke-regional)|   api.cognitive.microsofttranslator.com|
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|

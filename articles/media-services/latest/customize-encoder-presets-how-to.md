@@ -1,5 +1,5 @@
 ---
-title: Koda anpassad transformering med Media Services v3 .NET – Azure | Microsoft Docs
+title: Koda anpassad transformering med Media Services v3 .NET – Azure
 description: Det här avsnittet visar hur du använder Azure Media Services v3 för att koda en anpassad transformering med hjälp av .NET.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b5bb505df3cad7856e0b08f04949c2e56ccec1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 035afd43b49c05f51149ad568a0eb16991dbaf85
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295622"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897181"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Koda med en anpassad transformering – .NET
 

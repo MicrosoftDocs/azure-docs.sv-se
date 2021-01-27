@@ -2,19 +2,15 @@
 title: Felsöka Azure Automation Hybrid Runbook Worker problem
 description: Den här artikeln beskriver hur du felsöker och löser problem som uppstår med Azure Automation hybrid Runbook Worker.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428390"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896502"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Felsöka problem med Hybrid Runbook Worker
 
@@ -46,7 +42,7 @@ Följande är möjliga orsaker:
 
 #### <a name="resolution"></a>Lösning
 
-Kontrol lera att datorn har utgående åtkomst till ** \* . Azure-Automation.net** på port 443.
+Kontrol lera att datorn har utgående åtkomst till **\* . Azure-Automation.net** på port 443.
 
 Datorer som kör Hybrid Runbook Worker bör uppfylla minimi kraven för maskin vara innan arbets tagaren har kon figurer ATS för att vara värd för den här funktionen. Runbooks och bakgrunds processen som de använder kan orsaka att systemet överanvänds och orsakar fördröjningar eller tids gränser för Runbook-jobbet.
 
@@ -58,7 +54,7 @@ Kontrol lera händelse loggen för **Microsoft-SMA** för en motsvarande händel
 
 #### <a name="issue"></a>Problem
 
-Hybrid Runbook Worker tar emot händelse 15011, vilket indikerar att ett frågeresultat inte är giltigt. Följande fel visas när arbets tagaren försöker öppna en anslutning med [signal servern](/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
+Hybrid Runbook Worker tar emot händelse 15011, vilket indikerar att ett frågeresultat inte är giltigt. Följande fel visas när arbets tagaren försöker öppna en anslutning med [signal servern](/aspnet/core/signalr/introduction).
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -194,7 +190,7 @@ Om agenten inte körs kör du följande kommando för att starta tjänsten: `sud
 
 ### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Scenario: den angivna klassen finns inte
 
-Om du ser fel meddelandet `The specified class does not exist..` i **/var/opt/microsoft/omsconfig/omsconfig.log**måste Log Analytics-agenten för Linux uppdateras. Kör följande kommando för att installera om agenten.
+Om du ser fel meddelandet `The specified class does not exist..` i **/var/opt/microsoft/omsconfig/omsconfig.log** måste Log Analytics-agenten för Linux uppdateras. Kör följande kommando för att installera om agenten.
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -226,7 +222,7 @@ I händelse loggen **program-och tjänst loggar \ Operations Manager** visas hä
 
 #### <a name="cause"></a>Orsak
 
-Det här problemet kan bero på att proxyn eller nätverks brand väggen blockerar kommunikationen till Microsoft Azure. Kontrol lera att datorn har utgående åtkomst till ** \* . Azure-Automation.net** på port 443.
+Det här problemet kan bero på att proxyn eller nätverks brand väggen blockerar kommunikationen till Microsoft Azure. Kontrol lera att datorn har utgående åtkomst till **\* . Azure-Automation.net** på port 443.
 
 #### <a name="resolution"></a>Lösning
 
@@ -238,7 +234,7 @@ Hybrid Worker skickar [Runbook-utdata och meddelanden](../automation-runbook-out
 
 #### <a name="issue"></a>Problem
 
-Ett skript som körs på en Windows-Hybrid Runbook Worker kan inte ansluta som förväntat Microsoft 365 på ett Orchestrator-sandbox. Skriptet använder [Connect-MSOLService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) för anslutning. 
+Ett skript som körs på en Windows-Hybrid Runbook Worker kan inte ansluta som förväntat Microsoft 365 på ett Orchestrator-sandbox. Skriptet använder [Connect-MSOLService](/powershell/module/msonline/connect-msolservice) för anslutning. 
 
 Om du justerar **Orchestrator.Sandbox.exe.config** för att ställa in proxyn och bypass-listan, ansluts inte sand lådan ändå korrekt. En **Powershell_ise.exe.config** -fil med samma inställningar för proxy och kringgå lista verkar fungera som förväntat. Service Management Automation (SMA) loggar och PowerShell-loggar tillhandahåller inte någon information om proxyn.
 
@@ -250,7 +246,7 @@ Anslutningen till Active Directory Federation Services (AD FS) (AD FS) på serve
 
 Du kan lösa problemet för Orchestrator sandbox genom att migrera skriptet så att det använder Azure Active Directory moduler i stället för MSOnline-modulen för PowerShell-cmdletar. Mer information finns i [Migrera från Orchestrator till Azure Automation (beta)](../automation-orchestrator-migration.md).
 
-Om du vill fortsätta att använda MSOnline-modulens cmdlets ändrar du skriptet för att använda [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7). Ange värden för `ComputerName` parametrarna och `Credential` . 
+Om du vill fortsätta att använda MSOnline-modulens cmdlets ändrar du skriptet för att använda [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command). Ange värden för `ComputerName` parametrarna och `Credential` . 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

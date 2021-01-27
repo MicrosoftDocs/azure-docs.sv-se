@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610479"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880583"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -387,6 +387,6 @@ Om du föredrar att använda en lokal lösning för säkerhets kopiering ska sä
 ## <a name="next-steps"></a>Nästa steg
 * [Överväg inställningar för brand vägg och proxy](storage-sync-files-firewall-and-proxy.md)
 * [Planera för en Azure Files-distribution](storage-files-planning.md)
-* [Distribuera Azure Files](storage-files-deployment-guide.md)
+* [Distribuera Azure Files](./storage-how-to-create-file-share.md)
 * [Distribuera Azure File Sync](storage-sync-files-deployment-guide.md)
 * [Övervaka Azure File Sync](storage-sync-files-monitoring.md)

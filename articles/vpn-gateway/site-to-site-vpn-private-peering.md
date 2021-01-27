@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657898"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880533"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Konfigurera en plats-till-plats-VPN-anslutning via privat ExpressRoute-peering
 
@@ -32,7 +32,7 @@ För att slutföra den här konfigurationen kontrollerar du att du uppfyller fö
 
 * Du kan komma åt resurser över RFC1918 (privat) IP i VNet över ExpressRoute-kretsen.
 
-## <a name="routing"></a><a name="routing"></a>Operationsföljdslänkar
+## <a name="routing"></a><a name="routing"></a>Routning
 
 **Bild 1** visar ett exempel på en VPN-anslutning via privat ExpressRoute-peering. I det här exemplet visas ett nätverk i det lokala nätverket som är anslutet till Azure Hub VPN-gateway över ExpressRoute-privat peering. En viktig aspekt av den här konfigurationen är routningen mellan de lokala nätverken och Azure över både ExpressRoute-och VPN-sökvägar.
 
@@ -72,7 +72,7 @@ I båda dessa exempel skickar Azure trafik till 10.0.1.0/24 via VPN-anslutningen
 
 ## <a name="portal-steps"></a><a name="portal"></a>Portal steg
 
-1. Konfigurera en plats-till-plats-anslutning. Anvisningar finns i artikeln [plats-till-plats-konfiguration](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Se till att välja en zon – redundant Gateway-SKU för gatewayen. 
+1. Konfigurera en plats-till-plats-anslutning. Anvisningar finns i artikeln [plats-till-plats-konfiguration](./tutorial-site-to-site-portal.md) . Se till att välja en zon – redundant Gateway-SKU för gatewayen. 
 
    Zoner – redundanta SKU: er har "AZ" i slutet av SKU: n. Till exempel **VpnGw1AZ**. Zon-redundanta gatewayer är bara tillgängliga i regioner där tillgänglighets zon tjänsten är tillgänglig. Information om de regioner där vi stöder tillgänglighets zoner finns i [regioner som har stöd för tillgänglighets zoner](../availability-zones/az-region.md).
 
@@ -80,7 +80,7 @@ I båda dessa exempel skickar Azure trafik till 10.0.1.0/24 via VPN-anslutningen
 1. Aktivera privata IP-adresser på gatewayen. Välj **konfiguration** och ställ sedan in **Gateway privata IP-adresser** till **aktive rad**. Välj **Spara** för att spara ändringarna.
 1. På sidan **Översikt** väljer du **Visa mer** om du vill visa den privata IP-adressen. Anteckna informationen och Använd den senare i konfigurations stegen.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Översikts sida" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Översiktssidan" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. Om du vill aktivera **Använd Azures privata IP-adress** på anslutningen väljer du  **konfiguration**. Ange **Använd Azures privata IP-adress** till **aktive rad** och välj sedan **Spara**.
 
    :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Gateway privat IP-aktive rad":::
@@ -89,7 +89,7 @@ I båda dessa exempel skickar Azure trafik till 10.0.1.0/24 via VPN-anslutningen
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell-steg
 
-1. Konfigurera en plats-till-plats-anslutning. Anvisningar finns i artikeln [Konfigurera en plats-till-plats-VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md) . Se till att välja en zon – redundant Gateway-SKU för gatewayen. Zoner – redundanta SKU: er har "AZ" i slutet av SKU: n. Till exempel VpnGw1AZ.
+1. Konfigurera en plats-till-plats-anslutning. Anvisningar finns i artikeln [Konfigurera en plats-till-plats-VPN](./tutorial-site-to-site-portal.md) . Se till att välja en zon – redundant Gateway-SKU för gatewayen. Zoner – redundanta SKU: er har "AZ" i slutet av SKU: n. Till exempel VpnGw1AZ.
 1. Ange att flaggan ska använda den privata IP-adressen på gatewayen med hjälp av följande PowerShell-kommandon:
 
    ```azurepowershell-interactive

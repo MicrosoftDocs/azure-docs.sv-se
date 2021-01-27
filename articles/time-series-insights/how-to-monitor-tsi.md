@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: cff0c54cf5aa8854273be9502f5cf6df4e0a055b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632937"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879552"
 ---
 # <a name="monitoring-time-series-insights"></a>Övervaknings Time Series Insights
 
@@ -27,9 +27,9 @@ På sidan **Översikt** i Azure Portal för varje Time Series Insights-miljö fi
 
 ## <a name="what-is-azure-monitor"></a>Vad är Azure Monitor
 
-Time Series Insights skapar övervaknings data med [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), som är en fullständig stack övervaknings tjänst i Azure som innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser, förutom resurser i andra moln och lokalt.
+Time Series Insights skapar övervaknings data med [Azure Monitor](../azure-monitor/overview.md), som är en fullständig stack övervaknings tjänst i Azure som innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser, förutom resurser i andra moln och lokalt.
 
-Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource), vilket beskriver följande begrepp:
+Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md), vilket beskriver följande begrepp:
 
 - Vad är Azure Monitor?
 - Kostnader för övervakning
@@ -63,7 +63,7 @@ Du kan samla in loggar från följande kategorier för Azure Time Series Insight
 
 ## <a name="analyzing-metrics"></a>Analyserar mått
 
-Du kan analysera mått för Azure Time Series Insights, tillsammans med mått från andra Azure-tjänster, genom att öppna mått från Azure Monitor-menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) .
+Du kan analysera mått för Azure Time Series Insights, tillsammans med mått från andra Azure-tjänster, genom att öppna mått från Azure Monitor-menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) .
 
 En lista över de plattforms mått som samlas in finns i [övervaknings Azure Time Series Insights data referens](how-to-monitor-tsi-reference.md#metrics)
 
@@ -88,7 +88,7 @@ Azure Time Series Insights lagrar data i följande tabeller.
 |:---|:---|
 | TSIIngress | Tabellen som lagrar data från ingångs kategorin. Kategorin Ingressn spårar fel som inträffar i ingångs pipeline. Den här kategorin innehåller fel som uppstår när händelser tas emot (till exempel fel vid anslutning till en händelse källa) och bearbetning av händelser (till exempel fel vid parsning av en händelse nytto Last).
 
-Om du vill dirigera data till Azure Monitor loggar måste du skapa en diagnostisk inställning för att skicka resurs loggar eller plattforms mått till en Log Analytics arbets yta. Mer information finns i [insamling och routning](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing).
+Om du vill dirigera data till Azure Monitor loggar måste du skapa en diagnostisk inställning för att skicka resurs loggar eller plattforms mått till en Log Analytics arbets yta. Mer information finns i [insamling och routning](../iot-hub/monitor-iot-hub.md#collection-and-routing).
 
 ## <a name="sample-queries"></a>Exempel frågor
 
@@ -115,7 +115,7 @@ Följande är frågor som du kan använda för att övervaka din Azure Time Seri
 
 ## <a name="alerts"></a>Aviseringar
 
-Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem i systemet innan kunderna märker dem. Du kan ställa in aviseringar för [mått](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview), [loggar](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)och [aktivitets loggen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-alerts). Olika typer av aviseringar har fördelar och nack delar.
+Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem i systemet innan kunderna märker dem. Du kan ställa in aviseringar för [mått](../azure-monitor/platform/alerts-metric-overview.md), [loggar](../azure-monitor/platform/alerts-unified-log.md)och [aktivitets loggen](../azure-monitor/platform/activity-log-alerts.md). Olika typer av aviseringar har fördelar och nack delar.
 
 När du skapar en varnings regel baserat på plattforms mått bör du vara medveten om att för Time Series Insights plattforms mått som samlas in i antal enheter, kan vissa agg regeringar inte vara tillgängliga eller användbara.
 

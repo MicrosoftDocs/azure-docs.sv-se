@@ -2,16 +2,16 @@
 title: Felsöka Azure Automation Runbook-problem
 description: Den här artikeln beskriver hur du felsöker och löser problem med Azure Automation runbooks.
 services: automation
+ms.subservice: ''
 ms.date: 11/03/2020
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 116677354009c538eece02184d801cfda11574a0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368091"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896316"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Felsöka runbook-problem
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600393"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880750"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transact-funktioner för kommersiella Marketplace
 
@@ -90,7 +90,7 @@ Det här alternativet tillåter högre eller lägre priser än det offentligt ti
 
 Vi debiterar en 20% standard avgift för Store-tjänster när kunderna köper ditt Transact-erbjudande från den kommersiella marknads platsen. Mer information om den här avgiften finns i avsnitt 5c i [Microsoft Publisher-avtalet](https://go.microsoft.com/fwlink/?LinkID=699560).
 
-För vissa Transact-erbjudanden som du publicerar till den kommersiella marknads platsen kan du kvalificera dig för en minskad lagrings avgift på 10%. För att ett erbjudande ska kvalificeras måste det ha utsetts av Microsoft som Azure IP Co-Sälj-motiverade. Berättigande måste uppfyllas minst fem arbets dagar före slutet av varje kalender månad för att ta emot den minskade service avgiften för Marketplace. När behörigheten är upprättad tilldelas den minskade tjänste avgiften till alla transaktioner som gäller från den första dagen i följande månad till dess att Azure IP-motiverade status går förlorad. Information om IP-samförsäljnings behörighet finns i [krav för medförsäljnings status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+För vissa Transact-erbjudanden som du publicerar till den kommersiella marknads platsen kan du kvalificera dig för en minskad lagrings avgift på 10%. För att ett erbjudande ska kvalificeras måste det ha utsetts av Microsoft som Azure IP Co-Sälj-motiverade. Berättigande måste uppfyllas minst fem arbets dagar före slutet av varje kalender månad för att ta emot den minskade service avgiften för Marketplace. När behörigheten är upprättad tilldelas den minskade tjänste avgiften till alla transaktioner som gäller från den första dagen i följande månad till dess att Azure IP-motiverade status går förlorad. Information om IP-samförsäljnings behörighet finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 
 Den minskade service avgiften för Marketplace gäller för Azure IP Co-Sälj motiverade SaaS, VM, hanterade appar och andra kvalificerade IaaS-lösningar som görs tillgängliga via den kommersiella Marketplace. Betalda SaaS-erbjudanden som är kopplade till en Microsoft Teams-app eller minst två Microsoft 365-tillägg (Excel, PowerPoint, Word, Outlook och SharePoint) och som publiceras till Microsoft AppSource också få rabatten.
 

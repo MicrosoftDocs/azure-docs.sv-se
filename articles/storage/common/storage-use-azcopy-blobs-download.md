@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630045"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880126"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Ladda ned blobbar från Azure Blob Storage med hjälp av AzCopy v10
 
@@ -28,7 +28,7 @@ Se artikeln [Kom igång med AZCopy](storage-use-azcopy-v10.md) för att ladda ne
 > [!NOTE] 
 > I exemplen i den här artikeln förutsätter vi att du har angett autentiseringsuppgifter för auktorisering genom att använda Azure Active Directory (Azure AD).
 >
-> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Till exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="download-a-blob"></a>Ladda ned en blob
 
@@ -143,7 +143,7 @@ Använd sedan kommandot [AzCopy Copy](storage-ref-azcopy-copy.md) med `--list-of
 
 #### <a name="download-a-blob-snapshot"></a>Ladda ned en BLOB-ögonblicksbild
 
-Du kan ladda ned en [BLOB-ögonblicksbild](/azure/storage/blobs/snapshots-overview) genom att referera till **datetime** -värdet för en BLOB-ögonblicksbild. 
+Du kan ladda ned en [BLOB-ögonblicksbild](../blobs/snapshots-overview.md) genom att referera till **datetime** -värdet för en BLOB-ögonblicksbild. 
 
 |    |     |
 |--------|-----------|
@@ -152,7 +152,7 @@ Du kan ladda ned en [BLOB-ögonblicksbild](/azure/storage/blobs/snapshots-overvi
 | **Exempel** (hierarkiskt namn område) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
 > [!NOTE]
-> Om du använder en SAS-token för att auktorisera åtkomst till BLOB-data ska du lägga till **datetime-datum** efter SAS-token. Till exempel: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
+> Om du använder en SAS-token för att auktorisera åtkomst till BLOB-data ska du lägga till **datetime-datum** efter SAS-token. Exempel: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
 
 ## <a name="download-with-optional-flags"></a>Hämta med valfria flaggor
 

@@ -1,5 +1,5 @@
 ---
-title: Strömma videofiler med Azure Media Services – .NET | Microsoft Docs
+title: Strömma videofiler med Azure Media Services-.NET
 description: Följ stegen i den här självstudien för att använda .NET för att skapa ett nytt Azure Media Services konto, koda en fil och strömma den till Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268697"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898196"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Självstudie: koda en fjärrfil baserat på URL och strömma videon – .NET
 
@@ -33,7 +33,7 @@ I slutet av självstudien kommer du att kunna strömma en video.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte har Visual Studio installerat kan du hämta [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Skapa ett Media Services-konto](./create-account-howto.md).<br/>Se till att komma ihåg de värden som du använde för resursgruppens namn och namnet på Media Services-kontot.
@@ -54,7 +54,7 @@ Exemplet finns i mappen [EncodeAndStreamFiles](https://github.com/Azure-Samples/
 Exemplet utför följande åtgärder:
 
 1. Skapar en **transformering** (kontrollerar först om den angivna transformeringen finns). 
-2. Skapar en utgående **till gång** som används som kodnings **jobbets**utdata.
+2. Skapar en utgående **till gång** som används som kodnings **jobbets** utdata.
 3. Skapar **jobbets** indata som baseras på en HTTPS-URL.
 4. Skickar **kodningsjobbet** med de indata och utdata som skapades tidigare.
 5. Kontrollerar jobbets status.

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6b786ffaf309e147de27e8cd8be314a3d8a5fb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186358"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896994"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Redigera text-Runbooks i Azure Automation
 
@@ -29,7 +29,7 @@ Den här artikeln innehåller detaljerade anvisningar för hur du utför olika f
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>Redigera en Runbook med Azure Portal
 
 1. I Azure Portal väljer du ditt Automation-konto.
-2. Under **process automatisering**väljer du **Runbooks** för att öppna listan över Runbooks.
+2. Under **process automatisering** väljer du **Runbooks** för att öppna listan över Runbooks.
 3. Välj den Runbook som du vill redigera och klicka sedan på **Redigera**.
 4. Redigera runbooken.
 5. Klicka på **Spara** när du har redigerat klart.
@@ -101,4 +101,4 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Inloggningsuppgifter](./shared-resources/credentials.md).
 * [Scheman](./shared-resources/schedules.md).
 * [Variabler](./shared-resources/variables.md).
-* [Referens för PowerShell-cmdlet](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [Referens för PowerShell-cmdlet](/powershell/module/az.automation).

@@ -3,19 +3,19 @@ title: Translator-metod
 titleSuffix: Azure Cognitive Services
 description: Omvandla text på ett språk från ett skript till ett annat skript med hjälp av Translator-metoden Translator.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 4b985d7b2eb07ca8bbd3556a237fbcaba5392fe5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016486"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895432"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3,0: translittererad
 
@@ -35,7 +35,7 @@ Parametrarna för begäran som skickades till frågesträngen är:
 
 <table width="100%">
   <th width="20%">Frågeparameter</th>
-  <th>Description</th>
+  <th>Beskrivning</th>
   <tr>
     <td>api-version</td>
     <td>*Obligatorisk parameter*.<br/>Den version av API: t som klienten begär. Värdet måste vara `3.0` .</td>

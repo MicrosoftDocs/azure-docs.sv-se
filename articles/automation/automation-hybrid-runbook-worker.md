@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Hybrid Runbook Worker
 description: Den här artikeln innehåller en översikt över Hybrid Runbook Worker som du kan använda för att köra Runbooks på datorer i ditt lokala data Center eller en moln leverantör.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072147"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896960"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Översikt över Hybrid Runbook Worker
 
@@ -20,7 +20,7 @@ Runbooks i Azure Automation kanske inte har åtkomst till resurser i andra moln 
 
 Det finns två typer av Runbook-arbetare – system och användare. I följande tabell beskrivs skillnaden mellan dem.
 
-|Typ | Beskrivning |
+|Typ | Description |
 |-----|-------------|
 |**System** |Stöder en uppsättning dolda Runbooks som används av Uppdateringshantering-funktionen som är utformad för att installera användardefinierade uppdateringar på Windows-och Linux-datorer.<br> Den här typen av Hybrid Runbook Worker är inte medlem i en Hybrid Runbook Worker grupp och kör därför inte Runbooks som är riktade till en Runbook Worker-grupp. |
 |**Användare** |Stöder användardefinierade Runbooks som är avsedda att köras direkt på den Windows-och Linux-dator som är medlemmar i en eller flera Runbook Worker-grupper. |
@@ -54,16 +54,7 @@ Den rekommenderade installations metoden för en Windows-dator är att använda 
 
 ## <a name="network-planning"></a><a name="network-planning"></a>Planera för nätverk
 
-För att både en system-och användar Hybrid Runbook Worker ska kunna ansluta till och registrera med Azure Automation måste den ha åtkomst till port numret och webb adresserna som beskrivs i det här avsnittet. Arbets tagaren måste också ha åtkomst till de [portar och URL: er som krävs för att Log Analytics agenten](../azure-monitor/platform/agent-windows.md) ska kunna ansluta till Azure Monitor Log Analytics-arbetsytan.
-
-Följande port och URL-adresser krävs för Hybrid Runbook Worker:
-
-* Port: endast TCP 443 krävs för utgående Internet åtkomst
-* Global URL: `*.azure-automation.net`
-* Global URL för US Gov, Virginia: `*.azure-automation.us`
-* Agent tjänst: `https://<workspaceId>.agentsvc.azure-automation.net`
-
-Om du har ett Automation-konto som har definierats för en viss region kan du begränsa Hybrid Runbook Worker kommunikation till det regionala data centret. Granska [DNS-posterna som används av Azure Automation](how-to/automation-region-dns-records.md) för de DNS-poster som krävs.
+Kontrol lera [Azure Automation nätverks konfiguration](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker) för detaljerad information om portarna, URL: erna och andra nätverks uppgifter som krävs för Hybrid Runbook Worker.
 
 ### <a name="proxy-server-use"></a>Använd proxyserver
 
@@ -94,7 +85,7 @@ Azure Automation Hybrid Runbook Worker kan användas i Azure Government för att
 * [Dedikerade Azure-värdar](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host), som tillhandahåller fysiska servrar som kan vara värdar för en eller flera virtuella datorer, dedikerade till en Azure-prenumeration.
 
 >[!NOTE]
->Beräknings isolering med Hybrid Runbook Worker-rollen är tillgänglig för moln för kommersiella och amerikanska myndigheter i Azure. 
+>Beräknings isolering med Hybrid Runbook Worker-rollen är tillgänglig för moln för kommersiella och amerikanska myndigheter i Azure.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Uppdateringshantering adresser för Hybrid Runbook Worker
 

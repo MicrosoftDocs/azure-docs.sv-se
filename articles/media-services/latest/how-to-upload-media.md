@@ -1,24 +1,10 @@
 ---
-title: Ladda upp media
-titleSuffix: Azure Media Services
-description: Lär dig hur du laddar upp media för strömning eller kodning.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015863"
+rubrik: upload media: Azure Media Services Beskrivning: Lär dig hur du laddar upp media för strömning eller kodning.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: MS. topic: instruktionen MS. Date: 08/31/2020 MS. author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>Ladda upp media för strömning eller kodning
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

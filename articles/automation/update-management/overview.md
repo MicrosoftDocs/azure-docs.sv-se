@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Uppdateringshantering
 description: Den här artikeln innehåller en översikt över den Uppdateringshantering funktionen som implementerar uppdateringar för dina Windows-och Linux-datorer.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185622"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896909"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -169,9 +169,9 @@ I följande tabell beskrivs de anslutna källor som Uppdateringshantering stöde
 
 | Ansluten källa | Stöds | Description |
 | --- | --- | --- |
-| Windows-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
-| Linux-agenter |Yes |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
-| Operations Manager-hanteringsgrupp |Yes |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
+| Windows-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Windows-agenter och startar sedan installationen av nödvändiga uppdateringar. |
+| Linux-agenter |Ja |Uppdateringshantering samlar in information om system uppdateringar från Linux-agenter och startar sedan installationen av nödvändiga uppdateringar på distributioner som stöds. |
+| Operations Manager-hanteringsgrupp |Ja |Uppdateringshantering samlar in information om system uppdateringar från agenter i en ansluten hanterings grupp.<br/><br/>En direkt anslutning från Operations Manager agent till Azure Monitor loggar krävs inte. Data vidarebefordras från hanterings gruppen till Log Analytics-arbetsytan. |
 
 ### <a name="collection-frequency"></a>Insamlingsfrekvens
 
@@ -185,16 +185,7 @@ Den genomsnittliga data användningen per Azure Monitor loggar för en dator som
 
 ## <a name="network-planning"></a><a name="ports"></a>Planera för nätverk
 
-Följande adresser krävs specifikt för Uppdateringshantering. Kommunikationen med de här adresserna sker via port 443.
-
-|Azure, offentlig  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-När du skapar säkerhets regler för nätverks grupper eller konfigurerar Azure-brandväggen för att tillåta trafik till Automation-tjänsten och Log Analytics arbets ytan, använder du [service tag-](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** och **AzureMonitor**. Detta fören klar den löpande hanteringen av dina nätverks säkerhets regler. Om du vill ansluta till Automation-tjänsten från dina virtuella Azure-datorer på ett säkert och privat sätt kan du läsa [Använd Azure privat länk](../how-to/private-link-security.md). För att hämta den aktuella service tag-koden och intervall informationen som ska ingå som en del av dina lokala brand Väggs konfigurationer, se [nedladdnings bara JSON-filer](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Kontrol lera [Azure Automation nätverks konfiguration](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) för detaljerad information om portarna, URL: erna och andra nätverks uppgifter som krävs för uppdateringshantering.
 
 För Windows-datorer måste du också tillåta trafik till alla slut punkter som krävs av Windows Update. Du hittar en uppdaterad lista med nödvändiga slut punkter i [problem som rör http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Om du har en lokal [Windows Update-Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)måste du också tillåta trafik till servern som anges i [WSUS-nyckeln](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
 
@@ -227,11 +218,14 @@ Nästa tabell definierar de klassificeringar som stöds för Linux-uppdateringar
 |Övriga uppdateringar     | Alla andra uppdateringar som inte är kritiska eller som inte är av säkerhets uppdateringar.        |
 
 >[!NOTE]
->Uppdaterings klassificering för Linux-datorer är bara tillgänglig när de används i de Azures offentliga moln regioner som stöds. När du använder Uppdateringshantering i följande nationella moln regioner:
+>Uppdaterings klassificering för Linux-datorer är bara tillgänglig när den används i Azures offentliga moln regioner. Det finns ingen klassificering av Linux-uppdateringar när du använder Uppdateringshantering i följande nationella moln regioner:
+>
 >* Azure US Government
 >* 21Vianet i Kina
 >
-> Det finns ingen klassificering av Linux-uppdateringar och rapporteras i kategorin **andra uppdateringar** . Uppdateringshantering använder data som publicerats av de distributioner som stöds, särskilt deras publicerade [oval](https://oval.mitre.org/) (öppna sårbarhets-och utvärderings språk) filer. Eftersom Internet åtkomst är begränsat från dessa nationella moln kan Uppdateringshantering inte komma åt och använda filerna.
+> I stället för att klassificeras rapporteras uppdateringar under kategorin **andra uppdateringar** .
+>
+> Uppdateringshantering använder data som publicerats av de distributioner som stöds, särskilt deras publicerade [oval](https://oval.mitre.org/) (öppna sårbarhets-och utvärderings språk) filer. Eftersom Internet åtkomst är begränsat från dessa nationella moln kan Uppdateringshantering inte komma åt filerna.
 
 För Linux kan Uppdateringshantering skilja mellan kritiska uppdateringar och säkerhets uppdateringar i molnet under klassificerings **säkerhet** och **andra**, samtidigt som du visar utvärderings data på grund av data berikning i molnet. Vid uppdatering Uppdateringshantering förlitar sig på klassificerings data som är tillgängliga på datorn. Till skillnad från andra distributioner har CentOS inte den här informationen tillgänglig i RTM-versionen. Om du har CentOS-datorer som har kon figurer ATS för att returnera säkerhets data för följande kommando kan Uppdateringshantering korrigeras baserat på klassificeringar.
 

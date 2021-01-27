@@ -2,19 +2,19 @@
 title: Menings länkning och justering – anpassad översättare
 titleSuffix: Azure Cognitive Services
 description: Under övnings körningen är meningar som finns i parallella dokument kopplade eller justerade. Anpassad översättare lär sig översättning av en mening i taget, genom att läsa en mening, översättning av denna mening. Sedan justeras ord och fraser i de här två meningarna till varandra.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0c33d766bfd3dff47ddb151e8ce4ea7b25c37548
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724314"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897959"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Menings koppling och justering i parallella dokument
 
