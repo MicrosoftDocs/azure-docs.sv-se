@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 67d8f633fc49d0e116aa519b0480242b67781f5c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 34ebc126ba4a1ae725325f8d888899af2dd72a59
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201373"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875676"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Förbereda en Oracle Linux virtuell dator för Azure
 
@@ -24,7 +24,7 @@ Den här artikeln förutsätter att du redan har installerat ett Oracle Linux op
 * Oracle-UEK2 stöds inte på Hyper-V och Azure eftersom den inte omfattar de nödvändiga driv rutinerna.
 * VHDX-formatet stöds inte i Azure, endast **fast virtuell hård disk**.  Du kan konvertera disken till VHD-format med hjälp av Hyper-V Manager eller cmdleten Convert-VHD.
 * **Kernel-stöd för att montera UDF-filsystem krävs.** Vid första starten av Azure skickas etablerings konfigurationen till den virtuella Linux-datorn via UDF-formaterade medier som är kopplade till gästen. Azure Linux-agenten måste kunna montera UDF-filsystemet för att läsa konfigurationen och etablera den virtuella datorn.
-* När du installerar Linux-systemet rekommenderar vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan virtuell dator för fel sökning. [LVM](configure-lvm.md) eller [RAID](configure-raid.md) kan användas på data diskar om det är lämpligt.
+* När du installerar Linux-systemet rekommenderar vi att du använder standardpartitioner snarare än LVM (vanligt vis som standard för många installationer). På så sätt undviker du LVM namn konflikter med klonade virtuella datorer, särskilt om en OS-disk någonsin måste kopplas till en annan virtuell dator för fel sökning. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) eller [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) kan användas på data diskar om det är lämpligt.
 * Tidigare versioner av Linux-kärnan än 2.6.37 stöder inte NUMA på Hyper-V med större VM-storlekar. Det här problemet påverkar främst äldre distributioner med den överordnade Red Hat 2.6.32-kärnan och har åtgärd ATS i Oracle Linux 6,6 och senare
 * Konfigurera inte en swap-partition på OS-disken. Mer information om detta finns i stegen nedan.
 * Alla virtuella hård diskar på Azure måste ha en virtuell storlek som är justerad till 1 MB. När du konverterar från en RAW-disk till VHD måste du se till att den råa disk storleken är en multipel av 1 MB före konverteringen. Mer information finns i [installations information för Linux](create-upload-generic.md#general-linux-installation-notes) .

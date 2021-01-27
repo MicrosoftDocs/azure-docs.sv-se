@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814507"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873968"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azures säkerhets bas linje för Azure DDoS Protection standard
 
@@ -38,7 +38,7 @@ Den här säkerhets linjen använder vägledning från [Azures säkerhets benchm
 
 Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure-cachen för Redis-instanser på kontroll planet nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, posta och ta bort) som utförs på kontroll Plans nivån för dina Azure DDoS Protection-instanser.
 
-- [Visa och konfigurera DDoS-diagnostisk loggning](../../ddos-protection/diagnostic-logging.md)
+- [Visa och konfigurera diagnostisk loggning för DDoS-skydd](../../ddos-protection/diagnostic-logging.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/platform/activity-log.md)
 
@@ -164,7 +164,7 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 **Vägledning**: Använd en säker, Azure-hanterad arbets station med azure AD Multi-Factor Authentication (MFA) aktiverat för att logga in på och konfigurera Azure Customer lockbox-begäranden.
 
-- [Distribuera en säker, Azure-hanterad arbets Station](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Distribuera en säker, Azure-hanterad arbets Station](/security/compass/privileged-access-deployment)
 
 - [Planera en molnbaserad distribution av Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)
 

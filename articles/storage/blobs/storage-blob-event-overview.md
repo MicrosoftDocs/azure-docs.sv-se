@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 00a7a081f29458ae81d8d8ea4dd8f7abef42f78f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 31b2d562d4d0c53b23e8e3f454057b4e26e41ba9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519016"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875254"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagera på Blob Storage-händelser
 
@@ -96,7 +96,7 @@ Program som hanterar Blob Storage-händelser bör följa några rekommenderade m
 > [!div class="checklist"]
 > * Eftersom flera prenumerationer kan konfigureras för att dirigera händelser till samma händelse hanterare, är det viktigt att inte anta att händelser kommer från en viss källa, men för att kontrol lera ämnet i meddelandet för att säkerställa att det kommer från det lagrings konto som du förväntar dig.
 > * På samma sätt kan du kontrol lera att eventType är att du är för beredd att bearbeta och inte förutsätter att alla händelser som du tar emot är de typer som du förväntar dig.
-> * När meddelanden kan komma efter en viss fördröjning använder du etag-fälten för att ta reda på om din information om objekt fortfarande är uppdaterad. Information om hur du använder etag-fältet finns i [Hantera samtidighet i Blob Storage](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
+> * När meddelanden kan komma efter en viss fördröjning använder du etag-fälten för att ta reda på om din information om objekt fortfarande är uppdaterad. Information om hur du använder etag-fältet finns i [Hantera samtidighet i Blob Storage](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
 > * När meddelanden kan komma in i turordning använder du fälten sekvenser för att förstå händelse ordningen för ett visst objekt. Fältet Sequencer är ett sträng värde som representerar den logiska sekvensen av händelser för ett visst BLOB-namn. Du kan använda standard sträng jämförelse för att förstå den relativa sekvensen av två händelser på samma BLOB-namn.
 > * Lagrings händelser garanterar minst en leverans till prenumeranter, vilket säkerställer att alla meddelanden är i kö. Men på grund av återförsök eller tillgänglighet för prenumerationer kan det ibland hända att duplicerade meddelanden inträffar. Läs mer om meddelande leverans och försök igen i [Event Grid meddelande leverans och försök igen](../../event-grid/delivery-and-retry.md).
 > * Använd fältet blobType för att förstå vilken typ av åtgärder som tillåts i blobben och vilka klient biblioteks typer som du ska använda för att få åtkomst till bloben. Giltiga värden är antingen `BlockBlob` eller `PageBlob` . 

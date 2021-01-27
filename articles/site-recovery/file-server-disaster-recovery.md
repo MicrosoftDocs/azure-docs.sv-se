@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: 1c88a7e78d37556f0f1f89e16154dc1808f24323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cef163c1b53360222ca32a827552fa361e9dd40
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425525"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874255"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Skydda en filserver med hjälp av Azure Site Recovery 
 
@@ -77,7 +77,7 @@ Eftersom Site Recovery-replikering är programoberoende förväntas dessa rekomm
 
 
 
-**Plats-till plats-anslutning**: En direktanslutning mellan den lokala platsen och Azure-nätverket måste upprättas för att tillåta kommunikation mellan servrar. Använd en säker VPN-anslutning för plats till plats till ett virtuellt Azure-nätverk som används som haveriberedskapsplats. Mer information finns i den här artikeln om att [upprätta en VPN-anslutning för plats-till-plats mellan en lokal plats och ett virtuellt Azure-nätverk](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+**Plats-till plats-anslutning**: En direktanslutning mellan den lokala platsen och Azure-nätverket måste upprättas för att tillåta kommunikation mellan servrar. Använd en säker VPN-anslutning för plats till plats till ett virtuellt Azure-nätverk som används som haveriberedskapsplats. Mer information finns i den här artikeln om att [upprätta en VPN-anslutning för plats-till-plats mellan en lokal plats och ett virtuellt Azure-nätverk](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 **Active Directory**: DFSR är beroende av Active Directory. Det innebär att Active Directory-skogen med lokala domänkontrollanter utökas till haveriberedskapsplatsen i Azure. Även om du inte använder DFSR måste du, om de avsedda användarna måste beviljas åtkomst eller verifieras för åtkomst, vidta dessa åtgärder. Mer information finns i [Utöka lokal Active Directory till Azure](./site-recovery-active-directory.md).
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610258"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874150"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Förbereda ett program för distribution i Azure våren Cloud
 
@@ -151,7 +151,7 @@ Start version för våren | Våren Cloud-version
 2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> Vi har identifierat ett problem med vår 2.4.0 på TLS-autentisering mellan dina appar och Eureka, Använd 2.4.1 eller senare. Läs våra [vanliga frågor och svar](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) om du insistera med 2.4.0.
+> Vi har identifierat ett problem med vår 2.4.0 på TLS-autentisering mellan dina appar och Eureka, Använd 2.4.1 eller senare. Läs våra [vanliga frågor och svar](./spring-cloud-faq.md?pivots=programming-language-java#development) om du insistera med 2.4.0.
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Beroenden för våren Boot version 2.2/2.3
 

@@ -7,20 +7,18 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: c63ea4f9cdb961ca492d5dcf22a89627864236cd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2a2e4ac57eec866d9857f564d6c76ad4a775d223
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733208"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874616"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
-Tillgänglighetszoner är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En lista över befintliga och kommande regioner som stöder Tillgänglighetszoner finns i [regioner och Tillgänglighetszoner i Azure](az-overview.md).  
+Microsoft Azure global infrastruktur är utformad och konstruerad på varje lager för att leverera de högsta nivåerna av redundans och återhämtning till sina kunder. Azure-infrastrukturen består av geografiska områden, regioner och Tillgänglighetszoner, vilket begränsar den förstärkta radien vid ett haveri och därmed begränsar potentiell påverkan på kund program och data. Azure-tillgänglighetszoner konstruktion utvecklades för att tillhandahålla en program-och nätverks lösning som skyddar mot data Center problem och ger ökad hög tillgänglighet till våra kunder.
 
-I det här avsnittet visas de Azure-tjänster som stöder Tillgänglighetszoner. 
-
-Tjänster som är tillgängliga i varje region, tillsammans med den kommande översikten över tillgänglighet, finns på [produkter tillgängliga efter region](https://azure.microsoft.com/global-infrastructure/services/).
+Tillgänglighetszoner är unika fysiska platser inom en Azure-region. Varje zon består av ett eller flera data Center med oberoende strömförsörjning, kylning och nätverk. Den fysiska avgränsningen av Tillgänglighetszoner inom en region begränsar påverkan på program och data från zon fel, till exempel storskalig översvämning, större storm-och SuperStorm och andra händelser som kan störa åtkomsten till platsen, säkra passager, utökade verktyg, drift tid och resursernas tillgänglighet. Tillgänglighetszoner och deras associerade data Center är utformade så att om en zon komprometteras, stöds tjänsterna, kapaciteten och tillgängligheten av de andra Tillgänglighetszoner i regionen.
 
 Alla Azures hanterings tjänster är utformad för att vara elastiska från problem på regions nivå. I spektrumet av problem har en eller flera tillgänglighets zon problem inom en region en mindre felradie jämfört med ett hela regions haveri. Azure kan återställas från fel i hanterings tjänster på zon nivå inom en region. Azure utför kritiska underhåll en zon i taget inom en region, för att förhindra att eventuella problem påverkar kund resurser som distribueras i Tillgänglighetszoner inom en region.
 
@@ -34,165 +32,143 @@ Azure-tjänster som stöder Tillgänglighetszoner delas in i tre kategorier: **z
 
 - **Zoner – redundanta tjänster** – Azure-plattformen replikerar resursen och data mellan zoner.  Microsoft hanterar leverans av hög tillgänglighet eftersom Azure automatiskt replikerar och distribuerar instanser inom regionen.  ZRS replikerar exempelvis data över tre zoner så att ett zon haveri inte påverkar datans data. 
 
-- **Icke-regionala tjänster** – tjänster som inte är beroende av en speciell Azure-region, vilket gör dem elastiska till globala drifts avbrott samt verksamhets-och drift avbrott.
+- **Icke-regionala tjänster** – tjänster är alltid tillgängliga från Azures geografiska områden och är elastiska för hela Zone-avbrott samt verksamhets-och drift avbrott. 
 
 
 För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program arkitektur genom att kombinera Tillgänglighetszoner med Azures region par. Du kan synkront replikera dina program och data med hjälp av Tillgänglighetszoner inom en Azure-region för hög tillgänglighet och asynkront replikera över Azure-regioner för haveri beredskaps skydd. Läs mer i [skapa lösningar för hög tillgänglighet med hjälp av Tillgänglighetszoner](/azure/architecture/high-availability/building-solutions-for-high-availability). 
 
+## <a name="azure-services-supporting-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner
 
-### <a name="azure-services-supporting-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner
+ - De äldre generationens virtuella datorer visas inte i listan. Mer information finns i [tidigare generationer av virtuella dator storlekar](../virtual-machines/sizes-previous-gen.md).
+ - Som nämnts i [regionerna och Tillgänglighetszoner i Azure](az-overview.md)är vissa tjänster icke-regionala. De här tjänsterna är inte beroende av en speciell Azure-region, eftersom de är elastiska för globala drifts avbrott och drift avbrott i hela regionen.  Du hittar en lista över icke-regionala tjänster på [produkter som är tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/).
+
+
+## <a name="azure-regions-with-availability-zones"></a>Azure-regioner med Tillgänglighetszoner
+
+
+| Nord- och Sydamerika           | Europa         | Tyskland              | Afrika              | Asien och stillahavsområdet   |
+|--------------------|----------------|----------------------|---------------------|----------------|
+|                    |                |                      |                     |                |
+| Kanada, centrala     | Frankrike, centrala | Tyskland, västra centrala | Södra Afrika, norra * | Japan, östra     |
+| Central US         | Norra Europa   |                      |                     | Sydostasien |
+| East US            | Storbritannien, södra       |                      |                     | Australien, östra |
+| USA, östra 2          | Europa, västra    |                      |                     |                |
+| Södra centrala USA |                |                      |                     |                |
+| US Gov, Virginia * |                |                      |                     |                |
+| USA, västra 2        |                |                      |                     |                |
+
+
+Kontakta din Microsoft-säljare eller kund representant om du vill veta mer om hur du Tillgänglighetszoner och tjänster som är tillgängliga i dessa regioner. För kommande regioner som har stöd för Tillgänglighetszoner, se [Azure-geografiska](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)områden.
+
+
+## <a name="azure-services-supporting-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner
 
 - Äldre generationens virtuella datorer visas inte nedan. Mer information finns i [tidigare generationer av virtuella dator storlekar](../virtual-machines/sizes-previous-gen.md).
 
 - Vissa tjänster är icke-regionala, se [regioner och Tillgänglighetszoner i Azure](az-overview.md) för mer information. Tjänsterna är inte beroende av en speciell Azure-region, vilket gör att de är elastiska för globala drift avbrott och drift avbrott i hela regionen.  Du hittar en lista över icke-regionala tjänster på [produkter som är tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/).
 
 
+### <a name="zone-resilient-services"></a>Zon elastiska tjänster 
 
-## <a name="americas"></a>Nord- och Sydamerika
+: globe_with_meridians: icke-regionala tjänster – tjänster är alltid tillgängliga från Azures geografiska områden och är elastiska för hela Zone-avbrott samt för regioner.
 
-| **Produkter** | **USA, centrala** | **East US** | **USA, östra 2** | **USA, västra 2** | **Kanada, centrala** |
-|--|--|--|--|--|--|
-| **Beräkning** |  |  |  |  |  |
-| [App Service miljöer (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines skalnings uppsättningar](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| **Containrar** |  |  |  |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Container Registry](../container-registry/zone-redundancy.md) |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  | 
-| **Storage** |  |  |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium Files-lagring](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Managed Disks](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Nätverk** |  |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express-väg](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standard-IP-adress](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Databaser** |  |  |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure-datautforskaren](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL-flexibel Server](../mysql/flexible-server/concepts-high-availability.md) | röntgen | röntgen | :heavy_check_mark: | :heavy_check_mark: | röntgen |
-| [Azure Database for PostgreSQL-flexibel Server](../postgresql/flexible-server/overview.md) | röntgen | röntgen | :heavy_check_mark: | :heavy_check_mark: | röntgen |
-| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | röntgen | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) | röntgen |
-| [Azure SQL Database (Premium & Affärskritisk nivåer)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analys** |  |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integrering** |  |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Hantering och styrning** |  |  |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | röntgen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | röntgen |
-| **Säkerhet** |  |  |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+: large_blue_diamond: elastiska i hela zonens drift avbrott 
 
-## <a name="europe"></a>Europa
+**Grundläggande tjänster**
 
-| **Produkter** | **Frankrike, centrala** | **Europa, norra** | **Storbritannien, södra** | **Europa, västra** |
-|--|--|--|--|--|
-| **Beräkning** |  |  |  |  |
-| [App Service miljöer (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines skalnings uppsättningar](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Storage** |  |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium Files-lagring](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Managed Disks](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Nätverk** |  |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express-väg](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standard-IP-adress](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Databaser** |  |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure-datautforskaren](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL-flexibel Server](../mysql/flexible-server/concepts-high-availability.md) | röntgen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for PostgreSQL-flexibel Server](../postgresql/flexible-server/overview.md) | röntgen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) | röntgen | : heavy_check_mark: (förhands granskning) |
-| [Azure SQL Database (Premium & Affärskritisk nivåer)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analys** |  |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integrering** |  |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Hantering och styrning** |  |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | :heavy_check_mark: | röntgen | :heavy_check_mark: |
-| **Säkerhet** |  |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-
-## <a name="asia-pacific"></a>Asien och stillahavsområdet
+|     Produkter                                                    | Återhämtning             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Lagrings konto                                           | : large_blue_diamond:  |
+|     Application Gateway (v2)                                  | : large_blue_diamond:  |
+|     Azure Backup                                                | : large_blue_diamond:  |
+|     Azure Cosmos DB                                           | : large_blue_diamond:  |
+|     Azure Data Lake Storage gen 2                             | : large_blue_diamond:  |
+|     Azure Express-väg                                       | : large_blue_diamond:  |
+|     Offentlig Azure-IP                                           | : large_blue_diamond:  |
+|     Azure SQL Database (Generell användning nivå)                 | : large_blue_diamond:  |
+|     Azure SQL Database (Premium & Affärskritisk-nivå)     | : large_blue_diamond:  |
+|     Disklagring                                                | : large_blue_diamond:  |
+|     Event Hubs                                                  | : large_blue_diamond:  |
+|     Key Vault                                                   | : large_blue_diamond:  |
+|     Load Balancer                                               | : large_blue_diamond:  |
+|     Service Bus                                                 | : large_blue_diamond:  |
+|     Service Fabric                                            | : large_blue_diamond:  |
+|     Lagring: frekvent/låg frekvent Blob Storage-nivåer                      | : large_blue_diamond:  |
+|     Lagring: Managed Disks                                    | : large_blue_diamond:  |
+|     Virtual Machines skalnings uppsättningar                               | : large_blue_diamond:  |
+|     Virtual Machines                                          | : large_blue_diamond:  |
+|     Virtual Machines: Av2-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Bs-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: DSv2-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: DSv3-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: Dv2-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Dv3-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: ESv3-Series                             | : large_blue_diamond:  |
+|     Virtual Machines: Ev3-Series                              | : large_blue_diamond:  |
+|     Virtual Network                                           | : large_blue_diamond:  |
+|     VPN Gateway                                                 | : large_blue_diamond:  |
 
 
+**Vanliga tjänster**
 
-| **Produkter** | **Japan, östra** | **Sydostasien** | **Australien, östra** |
-|--|--|--|--|
-| **Beräkning** |  |  |  |
-| [App Service miljöer (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines skalnings uppsättningar](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Storage** |  |  |  |
-| [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Premium Files-lagring](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Blob Storage](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Managed Disks](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Nätverk** |  |  |  |
-| [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Express-väg](../expressroute/designing-for-high-availability-with-expressroute.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Firewall](../firewall/deploy-availability-zone-powershell.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Standard-IP-adress](../virtual-network/public-ip-addresses.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md#concepts) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network](../vpn-gateway/create-zone-redundant-vnet-gateway.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Network NAT](../virtual-network/nat-gateway-resource.md#availability-zones) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual WAN](../virtual-wan/virtual-wan-faq.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [VPN Gateway](../vpn-gateway/about-zone-redundant-vnet-gateways.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Databaser** |  |  |  |
-| [Azure Cache for Redis](../azure-cache-for-redis/cache-overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure-datautforskaren](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for MySQL-flexibel Server](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Database for PostgreSQL-flexibel Server](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (Generell användning nivå)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) | : heavy_check_mark: (förhands granskning) |
-| [Azure SQL Database (Premium & Affärskritisk nivåer)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Analys** |  |  |  |
-| [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Integrering** |  |  |  |
-| [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Hantering och styrning** |  |  |  |
-| [Network Watcher](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | röntgen | röntgen |
-| **Säkerhet** |  |  |  |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: |  |
+| Produkter                                        | Återhämtning |
+|-------------------------------------------------|:------------:|
+| Apptjänstmiljöer                        |      : large_blue_diamond:  |
+| Azure Active Directory Domain Services          |      : large_blue_diamond:  |
+| Azure Bastion                                   |      : large_blue_diamond:  |
+| Azure Cache for Redis                           |      : large_blue_diamond:  |
+| Azure Cognitive Services: Textanalys        |      : large_blue_diamond:  |
+| Azure-datautforskaren                             |      : large_blue_diamond:  |
+| Azure Database for MySQL – flexibel Server      |      : large_blue_diamond:  |
+| Azure Database for PostgreSQL – flexibel Server |      : large_blue_diamond:  |
+| Azure DDoS Protection                           |      : large_blue_diamond:  |
+| Azure Firewall                                  |      : large_blue_diamond:  |
+| Azure Firewall Manager                          |      : large_blue_diamond:  |
+| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
+| Azure Private Link                              |      : large_blue_diamond:  |
+| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
+| Azure Site Recovery                             |      : large_blue_diamond:  |
+| Container Registry                              |      : large_blue_diamond:  |
+| Event Grid                                      |      : large_blue_diamond:  |
+| Network Watcher                                 |      : large_blue_diamond:  |
+| Power BI Embedded                               |      : large_blue_diamond:  |
+| Premium-Blob Storage                            |      : large_blue_diamond:  |
+| Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
+| Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Dv4-Series                    |      : large_blue_diamond:  |
+| Virtual Machines: Edsv4-Series                  |      : large_blue_diamond:  |
+| Virtual Machines: Edv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Esv4-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
+| Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
+| Virtual Machines: M-serien                      |      : large_blue_diamond:  |
+| Virtuellt WAN                                     |      : large_blue_diamond:  |
 
 
-## <a name="upcoming-availability-zones"></a>Kommande Tillgänglighetszoner 
+**Icke-regional**
 
-Azure erbjuder Tillgänglighetszoner support i följande regioner:
-- US Gov, Virginia
-- Sydafrika, norra
-- USA, södra centrala
-- Tyskland, västra centrala
-
-Listan över befintliga och kommande regioner som har stöd för Tillgänglighetszoner finns [här](https://azure.microsoft.com/global-infrastructure/geographies/).    
-
-Om du vill veta mer om Tillgänglighetszoner support i dessa regioner kontaktar du din Microsoft-säljare eller kund representant.
+|     Produkter                                  |     Återhämtning    |
+|-----------------------------------------------|:-------------------:|
+|     Azure DNS                                 |     : globe_with_meridians:             |
+|     Azure Active Directory                  |     : globe_with_meridians:             |
+|     Azure Advisor                             |     : globe_with_meridians:             |
+|     Azure Bot Services                        |     : globe_with_meridians:             |
+|     Azure Defender för IoT                  |     : globe_with_meridians:             |
+|     Azure Information Protection            |     : globe_with_meridians:             |
+|     Azure-Lighthouse                        |     : globe_with_meridians:             |
+|     Azure Managed Applications              |     : globe_with_meridians:             |
+|     Azure Maps                                |     : globe_with_meridians:             |
+|     Azure Policy                              |     : globe_with_meridians:             |
+|     Azure-resurs diagram                    |     : globe_with_meridians:             |
+|     Azure Stack                               |     : globe_with_meridians:             |
+|     Azure Stack Edge                        |     : globe_with_meridians:             |
+|     Cloud Shell                               |     : globe_with_meridians:             |
+|     Customer Lockbox för Microsoft Azure    |     : globe_with_meridians:             |
+|     Microsoft Azure peering-tjänsten         |     : globe_with_meridians:             |
+|     Microsoft Azure-portalen                  |     : globe_with_meridians:             |
+|     Security Center                         |     : globe_with_meridians:             |
+|     Traffic Manager                         |     : globe_with_meridians:             |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Priser för virtuella datorer i Tillgänglighetszoner

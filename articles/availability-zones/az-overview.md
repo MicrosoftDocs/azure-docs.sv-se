@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: b19f5c3ae0666a0b0e9b0255f848f5924d9d3910
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678545"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874747"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regioner och Tillgänglighetszoner i Azure
 
@@ -22,7 +22,7 @@ Microsoft Azure-tjänster är tillgängliga globalt för att driva moln åtgärd
 
 För att bättre förstå regioner och Tillgänglighetszoner i Azure, hjälper det till att förstå viktiga termer eller begrepp.
 
-| Term eller begrepp | Beskrivning |
+| Term eller begrepp | Description |
 | --- | --- |
 | region | En uppsättning data Center som distribueras inom en latens-definierad perimeter och är anslutna via ett dedikerat regionalt nätverk med låg latens. |
 | geography | Ett område i världen som innehåller minst en Azure-region. Geografiska områden definierar en diskret marknad som bevarar data placering och kontroll gränser. Geografiska områden hjälper kunder med specifika behov kring dataplacering och regelefterlevnad att hålla sina data och program nära. De geografiska områdena är feltoleranta för att motstå ett fullständigt fel i regionen via anslutningen till vår dedikerade nätverks infrastruktur med hög kapacitet. |
@@ -79,109 +79,81 @@ Om ett tjänst erbjudande inte är tillgängligt i en speciell region kan du del
 | Regions typ | Icke-regional | Grundläggande | Konventionell | Specialiserade | Tillgänglighetszoner | Dataplacering |
 | --- | --- | --- | --- | --- | --- | --- |
 | Rekommenderas | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | :heavy_check_mark: | :heavy_check_mark: |
-| Alternativa | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | Demand-driven | Saknas | :heavy_check_mark: |
+| Alternativa | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | Demand-driven | Ej tillämpligt | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Tjänster efter kategori
 
 Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundläggande, traditionell och specialiserad. Tjänste kategorier tilldelas allmänt tillgängliga. Ofta startar tjänster deras livs cykel som en specialiserad tjänst och när efter frågan och användnings ökningar kan befordras till vanlig eller grundläggande. I följande tabell visas kategorin för tjänster som grundläggande, traditionell eller specialiserad. Tänk på följande om tabellen:
 
 - Vissa tjänster är icke-regionala. Information och en lista över icke-regionala tjänster finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/).
-- Äldre generationens virtuella datorer visas inte i listan. Mer information finns i dokumentationen [för tidigare generationer av virtuella dator storlekar](../virtual-machines/sizes-previous-gen.md).
+- Äldre generationens virtuella datorer visas inte i listan. Mer information finns i dokumentationen [för tidigare generationer av virtuella dator storlekar](../virtual-machines/sizes-previous-gen.md)
+- . Tjänster har inte tilldelats någon kategori förrän allmän tillgänglighet (GA). Information och en lista över förhands gransknings tjänster finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
-> | Grundläggande | Konventionell | Specialiserade |
-> | --- | --- | --- |
-> | Konto lagring | API Management | Azure API för FHIR |
-> | Application Gateway | App Configuration | Azure Analysis Services |
-> | Azure Backup | App Service | Azure Blockchain Service |
-> | Azure Cosmos DB | Automation | Azure Blueprint |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure-databas för MariaDB |
-> | Azure ExpressRoute | Azure Bastion | Dedikerad HSM i Azure |
-> | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
-> | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
-> | Cloud Services: Av2-Series | Azure-datautforskaren | Azure Lab Services |
-> | Cloud Services: Dv2-Series | Azure Data Share | Azure NetApp Files |
-> | Cloud Services: Dv3-Series | Azure Database for MySQL | Azure Quantum |
-> | Cloud Services: Ev3-Series | Azure Database for PostgreSQL | Azure våren Cloud service |
-> | Cloud Services: IP-adresser på instans nivå | Azure Database Migration Service | Azure Time Series Insights |
-> | Cloud Services: Reserverad IP | Azure Databricks | Azure VMware Solution by CloudSimple |
-> | Disklagring | Azure DDoS Protection | Cloud Services: G-serien |
-> | Event Hubs | Azure DevTest Labs | Cloud Services: H-serien |
-> | Key Vault | Azure Firewall | Cognitive Services: Custom Vision |
-> | Lastbalanserare | Azure Firewall Manager | Cognitive Services: Talarigenkänning |
-> | Service Bus | Azure Functions | Data Box – tung |
-> | Service Fabric | Azure HPC Cache | Data Catalog |
-> | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Virtual Machines: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klassisk)|
-> | Virtual Machines: Bs-Series | Azure Private Link | Microsoft Genomics |
-> | Virtual Machines: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
-> | Virtual Machines: DSv3-Series | Azure SignalR Service | Spatial Anchors |
-> | Virtual Machines: Dv2-Series | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3-Series | Azure Stack Hub | Video Indexer |
-> | Virtual Machines: ESv3-Series | Azure Stream Analytics | Virtual Machines: DASv4-Series |
-> | Virtual Machines: Ev3-Series | Azure Synapse Analytics | Virtual Machines: DAv4-Series |
-> | Virtual Machines: F-serien | Batch | Virtual Machines: DCsv2-serien |
-> | Virtual Machines: FS-Series | Cloud Services: M-serien | Virtual Machines: EASv4-Series |
-> | Virtual Machines: IP-adresser på instans nivå | Cognitive Services | Virtual Machines: EAv4-Series |
-> | Virtual Machines: Reserverad IP | Cognitive Services: Visuellt innehåll | Virtual Machines: G-serien |
-> | Virtual Network | Cognitive Services: Content Moderator | Virtual Machines: GS-Series |
-> | VPN Gateway | Cognitive Services: ansikte | Virtual Machines: HBv1-Series |
-> |  | Cognitive Services: formulär igenkänning | Virtual Machines: HBv2-Series |
-> |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1-Series |
-> |  | Cognitive Services: QnA Maker | Virtual Machines: H-serien |
-> |  | Cognitive Services: tal tjänster | Virtual Machines: LS-Series |
-> |  | Container Instances | Virtual Machines: LSv2-Series |
-> |  | Container Registry | Virtual Machines: Mv2-Series |
-> |  | Data Factory | Virtual Machines: NC-Series |
-> |  | Event Grid | Virtual Machines: NCv2-Series |
-> |  | HDInsight | Virtual Machines: NCv3-Series |
-> |  | Logic Apps | Virtual Machines: NDs-Series |
-> |  | Media Services | Virtual Machines: NDv2-Series |
-> |  | Network Watcher | Virtual Machines: NV-Series |
-> |  | Notification Hubs | Virtual Machines: NVv3-Series |
-> |  | Power BI Embedded | Virtual Machines: NVv4-Series |
-> |  | Premium-Blob Storage | Virtual Machines: SAP HANA på stora Azure-instanser |
-> |  | Premium Files-lagring | Visual Studio App Center |
-> |  | Lagring: Arkivlagring |  |
-> |  | Ultra Disklagring |  |
-> |  | Virtual Machines: Ddsv4-Series |  |
-> |  | Virtual Machines: Ddv4-Series |  |
-> |  | Virtual Machines: Dsv4-Series |  |
-> |  | Virtual Machines: Dv4-Series |  |
-> |  | Virtual Machines: Edsv4-Series |  |
-> |  | Virtual Machines: Edv4-Series |  |
-> |  | Virtual Machines: Esv4-Series |  |
-> |  | Virtual Machines: Ev4-Series |  |
-> |  | Virtual Machines: Fsv2-Series |  |
-> |  | Virtual Machines: M-serien |  |
-> |  | Virtual WAN |  |
+> | Grundläggande                          | Konventionell                                        | Specialiserade                                          |
+> |---------------------------------------|---------------------------------------------------|------------------------------------------------------|
+> | Lagringskonton                      | API Management                                    | Azure API för FHIR                                   |
+> | Application Gateway                   | App Configuration                                 | Azure Analysis Services                              |
+> | Azure Backup                          | App Service                                       | Azure Cognitive Services: avvikelse detektor           |
+> | Azure Cosmos DB                       | Automation                                        | Azure-Cognitive Services: Custom Vision              |
+> | Azure Data Lake Storage Gen2          | Azure Active Directory Domain Services            | Azure Cognitive Services: formulär igenkänning            |
+> | Azure ExpressRoute                    | Azure Bastion                                     | Azure Cognitive Services: Personanpassare               |
+> | Azure Public IP                       | Azure Cache for Redis                             | Azure-Cognitive Services: QnA Maker                  |
+> | Azure SQL Database                    | Azure Cognitive Search                            | Azure-databas för MariaDB                           |
+> | Azure SQL: hanterad instans          | Azure Cognitive Services                          | Azure Database Migration Service                     |
+> | Cloud Services                        | Azure Cognitive Services: Visuellt innehåll         | Dedikerad HSM i Azure                                  |
+> | Cloud Services: Av2-Series            | Azure-Cognitive Services: Content Moderator       | Azure Digital Twins                                  |
+> | Cloud Services: Dv2-Series            | Azure Cognitive Services: ansikte                    | Azure Health-robot                                     |
+> | Cloud Services: Dv3-Series            | Azure Cognitive Services: avancerad läsare        | Azure HPC Cache                                      |
+> | Cloud Services: Ev3-Series            | Azure-Cognitive Services: Language Understanding  | Azure Lab Services                                   |
+> | Cloud Services: IP-adresser på instans nivå    | Azure Cognitive Services: tal tjänster         | Azure NetApp Files                                   |
+> | Cloud Services: Reserverad IP           | Azure Cognitive Services: Textanalys          | Azure SignalR Service                                |
+> | Disklagring                          | Azure Cognitive Services: Translator              | Azure våren Cloud service                           |
+> | Event Hubs                            | Azure-datautforskaren                               | Azure Time Series Insights                           |
+> | Key Vault                             | Azure Data Share                                  | Azure VMware Solution                                |
+> | Lastbalanserare                         | Azure Database for MySQL                          | Azure VMware Solution by CloudSimple                 |
+> | Service Bus                           | Azure Database for PostgreSQL                     | Cloud Services: H-serien                             |
+> | Service Fabric                        | Azure Databricks                                  | Data Catalog                                         |
+> | Lagring: frekvent/låg frekvent Blob Storage-nivåer  | Azure DDoS Protection                             | Data Lake Analytics                                  |
+> | Lagring: Managed Disks                | Azure DevTest Labs                                | Azure Machine Learning Studio (klassisk)              |
+> | Virtual Machine Scale Sets            | Azure Firewall                                    | Spatial Anchors                                      |
+> | Virtual Machines                      | Azure Firewall Manager                            | Lagring: Arkivlagring                             |
+> | Virtual Machines: Av2-Series          | Azure Functions                                   | StorSimple                                           |
+> | Virtual Machines: Bs-Series           | Azure IoT Hub                                     | Ultra Disklagring                                   |
+> | Virtual Machines: DSv2-Series         | Azure Kubernetes Service (AKS)                    | Video Indexer                                        |
+> | Virtual Machines: DSv3-Series         | Azure Machine Learning                            | Virtual Machines: DASv4-Series                       |
+> | Virtual Machines: Dv2-Series          | Azure Monitor: Application Insights               | Virtual Machines: DAv4-Series                        |
+> | Virtual Machines: Dv3-Series          | Azure Monitor: Log Analytics                      | Virtual Machines: DCsv2-serien                       |
+> | Virtual Machines: ESv3-Series         | Azure Private Link                                | Virtual Machines: EASv4-Series                       |
+> | Virtual Machines: Ev3-Series          | Azure Red Hat OpenShift                           | Virtual Machines: EAv4-Series                        |
+> | Virtual Machines: IP-adresser på instans nivå  | Azure Site Recovery                               | Virtual Machines: HBv1-Series                        |
+> | Virtual Machines: Reserverad IP         | Azure Stream Analytics                            | Virtual Machines: HBv2-Series                        |
+> | Virtual Network                       | Azure Synapse Analytics                           | Virtual Machines: HCv1-Series                        |
+> | VPN Gateway                           | Batch                                             | Virtual Machines: H-serien                           |
+> |                                       | Cloud Services: M-serien                          | Virtual Machines: LSv2-Series                        |
+> |                                       | Container Instances                               | Virtual Machines: Mv2-Series                         |
+> |                                       | Container Registry                                | Virtual Machines: NCv3-Series                        |
+> |                                       | Data Factory                                      | Virtual Machines: NDv2-Series                        |
+> |                                       | Event Grid                                        | Virtual Machines: NVv3-Series                        |
+> |                                       | HDInsight                                         | Virtual Machines: NVv4-Series                        |> 
+> |                                       | Logic Apps                                        | Virtual Machines: SAP HANA på stora Azure-instanser  |
+> |                                       | Media Services                                    |                                                      |
+> |                                       | Network Watcher                                   |                                                      |
+> |                                       | Notification Hubs                                 |                                                      |
+> |                                       | Premium-Blob Storage                              |                                                      |
+> |                                       | Premium Files-lagring                             |                                                      |
+> |                                       | Virtual Machines: Ddsv4-Series                    |                                                      |
+> |                                       | Virtual Machines: Ddv4-Series                     |                                                      |
+> |                                       | Virtual Machines: Dsv4-Series                     |                                                      |
+> |                                       | Virtual Machines: Dv4-Series                      |                                                      |
+> |                                       | Virtual Machines: Edsv4-Series                    |                                                      |
+> |                                       | Virtual Machines: Edv4-Series                     |                                                      |
+> |                                       | Virtual Machines: Esv4-Series                     |                                                      |
+> |                                       | Virtual Machines: Ev4-Series                      |                                                      |
+> |                                       | Virtual Machines: Fsv2-Series                     |                                                      |
+> |                                       | Virtual Machines: M-serien                        |                                                      |
+> |                                       | Virtuellt WAN                                       |                                                      |
 
-###  <a name="services-resiliency"></a>Tjänste återhämtning
-
-Alla Azures hanterings tjänster är utformad för att vara elastiska från problem på regions nivå. I spektrumet av problem har en eller flera tillgänglighets zon problem inom en region en mindre felradie jämfört med ett hela regions haveri. Azure kan återställas från ett fel i hanterings tjänster på zon nivå i regionen eller från en annan Azure-region. Azure utför kritiska underhåll en zon i taget inom en region, för att förhindra att eventuella problem påverkar kund resurser som distribueras i Tillgänglighetszoner inom en region.
-
-### <a name="pricing-for-vms-in-availability-zones"></a>Priser för virtuella datorer i Tillgänglighetszoner
-
-Det kostar ingen ytterligare kostnad för virtuella datorer som distribueras i en tillgänglighets zon. service nivå avtal för 99,99% VM-drift tid erbjuds när två eller flera virtuella datorer distribueras över två eller fler Tillgänglighetszoner inom en Azure-region. Det kommer att finnas ytterligare avgifter för VM-till-VM-dataöverföringar mellan olika tillgänglighets zoner. Mer information finns på [prissättnings](https://azure.microsoft.com/pricing/details/bandwidth/) sidan för bandbredd.
-
-### <a name="get-started-with-availability-zones"></a>Kom igång med Tillgänglighetszoner
-
-- [Skapa en virtuell dator](../virtual-machines/windows/create-portal-availability-zone.md)
-- [Lägga till en hanterad disk med PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [Skapa en virtuell dators skalnings uppsättning för redundant virtuell dator](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Belastningsutjämna virtuella datorer över zoner med hjälp av en Standard Load Balancer med en zon redundant klient del](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Belastningsutjämna virtuella datorer inom en zon med hjälp av en Standard Load Balancer med en zonindelade-frontend](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [Zonredundant lagring](../storage/common/storage-redundancy.md)
-- [SQL Database generell användnings nivå](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
-- [Geohaveriberedskap för Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
-- [Geohaveriberedskap för Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
-- [Skapa en zonredundant virtuell nätverksgateway](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Lägg till redundant region i zonen för Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
-- [Komma igång Azure cache för Redis Tillgänglighetszoner](https://aka.ms/redis/az/getstarted)
-- [Skapa en Azure Active Directory Domain Services-instans](../active-directory-domain-services/tutorial-create-instance.md)
-- [Skapa ett Azure Kubernetes service-kluster (AKS) som använder Tillgänglighetszoner](../aks/availability-zones.md)
-- [Aktivera zon-redundans i Azure Container Registry](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

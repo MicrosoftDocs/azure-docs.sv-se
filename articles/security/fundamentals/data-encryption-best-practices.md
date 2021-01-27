@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 414445f90c3be4c55166f6a0ecead25074d6ed74
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196086"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874121"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Metodtips för datasäkerhet och kryptering i Azure
 Den här artikeln beskriver metod tips för data säkerhet och kryptering.
@@ -102,7 +102,7 @@ Du bör använda lämpliga skydd som HTTPS eller VPN för data som flyttas mella
 Följande är metod tips som är speciella för att använda Azure VPN Gateway, SSL/TLS och HTTPS.
 
 **Bästa praxis**: säker åtkomst från flera arbets stationer som finns lokalt till ett virtuellt Azure-nätverk.   
-**Information**: Använd [plats-till-plats-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+**Information**: Använd [plats-till-plats-VPN](../../vpn-gateway/tutorial-site-to-site-portal.md).
 
 **Bästa praxis**: säker åtkomst från en enskild arbets station som finns lokalt i ett virtuellt Azure-nätverk.   
 **Information**: Använd [punkt-till-plats-VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900662"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875744"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Felsökningsguide för Azure Storage Explorer
 
@@ -70,13 +70,13 @@ För andra resurs typer har vi för närvarande ingen Azure RBAC-relaterad lösn
 ### <a name="recommended-azure-built-in-roles"></a>Rekommenderade inbyggda Azure-roller
 
 Det finns flera inbyggda Azure-roller som kan ge de behörigheter som krävs för att använda Storage Explorer. Några av dessa roller är:
-- [Ägare](/azure/role-based-access-control/built-in-roles#owner): hantera allt, inklusive åtkomst till resurser.
-- [Deltagare](/azure/role-based-access-control/built-in-roles#contributor): hantera allt, förutom åtkomst till resurser.
-- [Läsare](/azure/role-based-access-control/built-in-roles#reader): läsa och lista resurser.
-- [Lagrings konto deltagare](/azure/role-based-access-control/built-in-roles#storage-account-contributor): fullständig hantering av lagrings konton.
-- [Storage BLOB data-ägare](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): fullständig åtkomst till Azure Storage BLOB-behållare och data.
-- [Storage BLOB data-deltagare](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): läsa, skriva och ta bort Azure Storage behållare och blobbar.
-- [Storage BLOB data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): läsa och lista Azure Storage behållare och blobbar.
+- [Ägare](../../role-based-access-control/built-in-roles.md#owner): hantera allt, inklusive åtkomst till resurser.
+- [Deltagare](../../role-based-access-control/built-in-roles.md#contributor): hantera allt, förutom åtkomst till resurser.
+- [Läsare](../../role-based-access-control/built-in-roles.md#reader): läsa och lista resurser.
+- [Lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor): fullständig hantering av lagrings konton.
+- [Storage BLOB data-ägare](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): fullständig åtkomst till Azure Storage BLOB-behållare och data.
+- [Storage BLOB data-deltagare](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): läsa, skriva och ta bort Azure Storage behållare och blobbar.
+- [Storage BLOB data Reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): läsa och lista Azure Storage behållare och blobbar.
 
 > [!NOTE]
 > Rollerna ägare, deltagare och lagrings konto deltagare ger åtkomst till konto nycklar.

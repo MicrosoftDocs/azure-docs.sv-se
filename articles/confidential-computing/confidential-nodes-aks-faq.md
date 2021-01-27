@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90997905"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874492"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Vanliga frågor och svar om konfidentiella databeräkningar i Azure Kubernetes service (AKS)
 
@@ -24,6 +24,10 @@ Service avtal tillhandahålls inte under för hands versionen av produkten enlig
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>Vad är attestering och hur kan vi göra attestering av appar som körs i enclaves? 
 
 Attestering är en process för att demonstrera och kontrol lera att en program varu enhet är korrekt instansierad på den specifika maskin varu plattformen. Det garanterar också att dess bevis är verifierbara för att tillhandahålla garantier att den körs på en säker plattform och inte har manipulerats. [Läs mer](attestation.md) om hur attestering sker för enklaven-appar.
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>Kan jag aktivera accelererat nätverk med Azures AKS-kluster med konfidentiella data behandling? 
+
+Nej. Accelererat nätverk stöds inte på datakonfidentialitets datorer på AKS. Se till att det accelererade nätverket är inaktiverat i distributionen. 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>Kan jag använda mina befintliga program i behållare och köra det på AKS med Azures konfidentiella data behandling? 
 

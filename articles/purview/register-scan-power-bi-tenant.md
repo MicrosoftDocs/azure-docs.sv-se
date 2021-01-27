@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539695"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874914"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
 
@@ -26,7 +26,7 @@ Den här artikeln visar hur du använder Azure avdelningens kontroll-portalen f�
 Om du vill konfigurera autentisering skapar du en säkerhets grupp och lägger till katalogens hanterade identitet i den.
 
 1. Sök efter **Azure Active Directory** i [Azure Portal](https://portal.azure.com).
-1. Skapa en ny säkerhets grupp i Azure Active Directory genom att följa [skapa en grundläggande grupp och lägga till medlemmar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+1. Skapa en ny säkerhets grupp i Azure Active Directory genom att följa [skapa en grundläggande grupp och lägga till medlemmar med Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     > [!Tip]
     > Du kan hoppa över det här steget om du redan har en säkerhets grupp som du vill använda.

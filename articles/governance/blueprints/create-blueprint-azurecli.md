@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en skiss med Azure CLI'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter med hjälp av Azure CLI.
-ms.date: 10/14/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
-ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875219"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Snabb start: definiera och tilldela en Azure Blueprint med Azure CLI
 
@@ -16,7 +16,8 @@ Genom att lära dig hur du skapar och tilldelar ritningar kan du definiera vanli
 
 ## <a name="prerequisites"></a>Krav
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free) innan du börjar.
+- Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free) innan du börjar.
+- Om du inte har använt Azure-modeller tidigare registrerar du resurs leverantören via Azure CLI med `az provider register --namespace Microsoft.Blueprint` .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -51,7 +52,7 @@ Det första steget när du definierar ett standardmönster för efterlevnad är 
 > [!NOTE]
 > När du använder Azure CLI skapas _skiss_ -objektet först. För varje _artefakt_ som ska läggas till som har parametrar, måste parametrarna definieras i förväg i den första _skissen_.
 
-1. Skapa det första _skissobjektet_. Parametern **parameters** Parameters tar en JSON-fil som innehåller alla parametrar för skiss nivå. Parametrarna anges vid tilldelning och används av artefakterna som lagts till i senare steg.
+1. Skapa det första _skissobjektet_. Parametern  Parameters tar en JSON-fil som innehåller alla parametrar för skiss nivå. Parametrarna anges vid tilldelning och används av artefakterna som lagts till i senare steg.
 
    - JSON-fil – blueprintparms.jspå
 

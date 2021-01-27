@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598483"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875457"
 ---
 # <a name="manage-your-function-app"></a>Hantera din Function-app 
 
@@ -37,6 +37,8 @@ Program inställningar kan hanteras från [Azure Portal](functions-how-to-use-az
 De här inställningarna lagras krypterade. Mer information finns i [program inställningar säkerhet](security-concepts.md#application-settings).
 
 # <a name="portal"></a>[Portal](#tab/portal)
+
+Information om hur du hittar program inställningarna finns i [Kom igång i Azure Portal](#get-started-in-the-azure-portal). 
 
 Fliken **program inställningar** innehåller inställningar som används av din Function-app. Du måste välja **Visa värden** om du vill se värdena i portalen. Om du vill lägga till en inställning i portalen väljer du **ny program inställning** och lägger till det nya nyckel/värde-paret.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b29cdda66186587c43471d6d6e819dfbde658e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dacf34d7098472e98c7f68f7f60fa9bac1a4e5ec
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075028"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875779"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Ansluta och logga in på en virtuell Azure-dator som kör Windows
 Du använder knappen **Anslut** på Azure Portal för att starta en fjärrskrivbordssession (RDP) från ett Windows-skrivbord. Först ansluter du till den virtuella datorn och sedan loggar du in.
@@ -24,7 +24,7 @@ Om du vill ansluta till en virtuell Windows-dator från en Mac måste du install
 1. Gå till [Azure Portal](https://portal.azure.com/) för att ansluta till en virtuell dator. Sök efter och välj **virtuella datorer**.
 2. Välj den virtuella datorn i listan.
 3. I början av sidan virtuell dator väljer du **Anslut**.
-4. På sidan **Anslut till virtuell dator** väljer du **RDP**och väljer sedan lämplig **IP-adress** och **port nummer**. I de flesta fall ska standard-IP-adressen och porten användas. Välj **Hämta RDP-fil**. Om den virtuella datorn har en princip uppsättning för just-in-Time måste du först välja knappen **begär åtkomst** för att begära åtkomst innan du kan ladda ned RDP-filen. Mer information om just-in-time-principen finns i [Hantera åtkomst till virtuella datorer med just-in-time-principen](../../security-center/security-center-just-in-time.md).
+4. På sidan **Anslut till virtuell dator** väljer du **RDP** och väljer sedan lämplig **IP-adress** och **port nummer**. I de flesta fall ska standard-IP-adressen och porten användas. Välj **Hämta RDP-fil**. Om den virtuella datorn har en princip uppsättning för just-in-Time måste du först välja knappen **begär åtkomst** för att begära åtkomst innan du kan ladda ned RDP-filen. Mer information om just-in-time-principen finns i [Hantera åtkomst till virtuella datorer med just-in-time-principen](../../security-center/security-center-just-in-time.md).
 5. Öppna den nedladdade RDP-filen och välj **Anslut** när du tillfrågas. Du får en varning om att `.rdp` filen kommer från en okänd utgivare. Detta är förväntat. I fönstret **anslutning till fjärrskrivbord** väljer du **Anslut** för att fortsätta.
    
     ![Skärmbild med ett varning som meddelar att utgivaren är okänd.](./media/connect-logon/rdp-warn.png)
@@ -34,14 +34,14 @@ Om du vill ansluta till en virtuell Windows-dator från en Mac måste du install
    
     Domänansluten **virtuell dator**: om den virtuella datorn tillhör en domän anger du användar namnet i formatet *domän*&#92;*användar namn*. Kontot måste också antingen vara i gruppen administratörer eller ha beviljats behörighet för fjärråtkomst för den virtuella datorn.
    
-    **Domänkontrollant: om**den virtuella datorn är en domänkontrollant anger du användar namn och lösen ord för ett domän administratörs konto för domänen.
+    **Domänkontrollant: om** den virtuella datorn är en domänkontrollant anger du användar namn och lösen ord för ett domän administratörs konto för domänen.
 4. Välj **Ja** för att verifiera identiteten för den virtuella datorn och slutför inloggningen.
    
    ![Skärmbild som visar ett meddelande om verifieringen av den virtuella datorns identitet.](./media/connect-logon/cert-warning.png)
 
 
    > [!TIP]
-   > Om knappen **Anslut** på portalen är nedtonad och du inte är ansluten till Azure via en [Express Route](../../expressroute/expressroute-introduction.md) eller en VPN-anslutning från [plats till plats](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) måste du skapa och tilldela en offentlig IP-adress för din virtuella dator innan du kan använda RDP. Mer information finns i [offentliga IP-adresser i Azure](../../virtual-network/public-ip-addresses.md).
+   > Om knappen **Anslut** på portalen är nedtonad och du inte är ansluten till Azure via en [Express Route](../../expressroute/expressroute-introduction.md) eller en VPN-anslutning från [plats till plats](../../vpn-gateway/tutorial-site-to-site-portal.md) måste du skapa och tilldela en offentlig IP-adress för din virtuella dator innan du kan använda RDP. Mer information finns i [offentliga IP-adresser i Azure](../../virtual-network/public-ip-addresses.md).
    > 
    > 
 
@@ -64,4 +64,4 @@ Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Om du har problem med att ansluta kan du läsa [Felsöka anslutningar till fjärr skrivbord](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
+Om du har problem med att ansluta kan du läsa [Felsöka anslutningar till fjärr skrivbord](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json).

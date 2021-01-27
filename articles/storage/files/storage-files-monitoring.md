@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2af4f5467cb0f604f16d1faf841618a14d292806
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cc1e4bf44827f82b3ca592e41fc3e6640f36e1bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875152"
 ---
 # <a name="monitoring-azure-files"></a>Övervaknings Azure Files
 
@@ -677,6 +677,6 @@ I följande tabell visas några exempel scenarier som du kan använda för att �
 - [Övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Migrering av Azure Storage mått](../common/storage-metrics-migration.md)
 - [Planera för en Azure Files-distribution](./storage-files-planning.md)
-- [Så här distribuerar du Azure Files](./storage-files-deployment-guide.md)
+- [Så här distribuerar du Azure Files](./storage-how-to-create-file-share.md)
 - [Felsöka Azure Files på Windows](./storage-troubleshoot-windows-file-connection-problems.md)
 - [Felsöka Azure Files på Linux](./storage-troubleshoot-linux-file-connection-problems.md)
