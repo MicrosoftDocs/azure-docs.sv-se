@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757550"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917840"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -30,9 +30,6 @@ Kundhanterad nyckel levereras på [dedikerade kluster](../log-query/logs-dedicat
 Data som matats in under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Dessa data förblir krypterade med Microsoft-nycklar oavsett kundhanterad nyckel konfiguration, men kontrollen över SSD-data följer [nyckel återkallning](#key-revocation). Vi arbetar med att ha SSD-data krypterade med kundhanterad nyckel under första hälften av 2021.
 
 Log Analytics dedikerade kluster använder en kapacitets reservation [pris modell](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) som börjar med 1000 GB/dag.
-
-> [!IMPORTANT]
-> På grund av tillfälliga kapacitets begränsningar kräver vi att du förregistrerar dig innan du skapar ett kluster. Använd dina kontakter i Microsoft eller öppna support förfrågan för att registrera dina prenumerations-ID: n.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Hur kundhanterad nyckel fungerar i Azure Monitor
 
@@ -68,7 +65,6 @@ Följande regler gäller:
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Steg för Customer-Managed nyckel etablering
 
-1. Registrera din prenumeration så att klustret kan skapas
 1. Skapa Azure Key Vault och lagra nyckel
 1. Kluster skapas
 1. Bevilja behörighet till din Key Vault
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>Tillåter prenumeration
-
-Använd dina kontakter i Microsoft eller öppna support förfrågan i Log Analytics för att tillhandahålla dina prenumerations-ID: n.
 
 ## <a name="storing-encryption-key-kek"></a>Lagra krypterings nyckel (KEK)
 

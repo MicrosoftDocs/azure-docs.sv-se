@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en skiss med REST API'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter med hjälp av REST API.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: aa25a65b20b295045b52a49c8c47fb8849c3cba3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056999"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915649"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snabb start: definiera och tilldela en Azure Blueprint med REST API
 
@@ -391,7 +391,7 @@ I varje REST API-URI finns det variabler som används och som du måste ersätta
    - Användartilldelad hanterad identitet
 
      En skisstilldelning kan även använda en [användartilldelad hanterad identitet](../../active-directory/managed-identities-azure-resources/overview.md).
-     I det här fallet ändras **identitets**delen av begärandetexten på följande sätt. Ersätt `{yourRG}` och `{userIdentity}` med ditt resursgruppnamn och namnet på din användartilldelade hanterade identitet.
+     I det här fallet ändras **identitets** delen av begärandetexten på följande sätt. Ersätt `{yourRG}` och `{userIdentity}` med ditt resursgruppnamn och namnet på din användartilldelade hanterade identitet.
 
      ```json
      "identity": {

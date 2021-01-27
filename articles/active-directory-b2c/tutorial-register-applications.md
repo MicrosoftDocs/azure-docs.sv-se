@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953057"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918219"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Självstudie: registrera ett webb program i Azure Active Directory B2C
 
@@ -98,6 +98,14 @@ För ett webb program måste du skapa en program hemlighet. Den här hemligheten
 1. Välj **Spara** för att Visa nyckeln. Anteckna **appnyckel**-värdet. Du använder det här värdet som program hemlighet i programmets kod.
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>Aktivera ID-token implicit beviljande
+
+Den implicita tilldelningens definitions egenskaper är att tokens, till exempel ID och åtkomsttoken, returneras direkt från Azure AD B2C till programmet. För webbappar, till exempel ASP.NET Core webbappar och [https://jwt.ms](https://jwt.ms) , som begär en ID-token direkt från slut punkten för auktorisering, aktiverar du det implicita tilldelnings flödet i appens registrering.
+
+1. På den vänstra menyn, under **Hantera**, väljer du **autentisering**.
+1. Under implicit beviljande väljer du kryss rutorna för **åtkomst-tokens** och **ID-token** .
+1. Välj **Spara**.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar Azure CNI (avancerat) nätverk i Azure
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a6ea45156477c0d0e95b9d345cffe1a75c773b6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000580"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917815"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurera Azure CNI Networking i Azure Kubernetes service (AKS)
 
@@ -63,7 +63,7 @@ Det maximala antalet poddar per nod i ett AKS-kluster är 250. *Standardvärdet*
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ja (upp till 250) |
 | Resource Manager-mall | 110 | 30 | Ja (upp till 250) |
-| Portalen | 110 | 30 | No |
+| Portalen | 110 | 30 | Inga |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurera högsta – nya kluster
 
@@ -96,6 +96,8 @@ När du skapar ett AKS-kluster kan följande parametrar konfigureras för Azure 
 **Virtuellt nätverk**: det virtuella nätverk som du vill distribuera Kubernetes-klustret till. Om du vill skapa ett nytt virtuellt nätverk för klustret väljer du *Skapa nytt* och följer stegen i avsnittet *Skapa virtuellt nätverk* . Information om gränser och kvoter för ett virtuellt Azure-nätverk finns i [Azure-prenumerationer, tjänst gränser, kvoter och begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
 **Undernät**: under nätet i det virtuella nätverket där du vill distribuera klustret. Om du vill skapa ett nytt undernät i det virtuella nätverket för klustret väljer du *Skapa nytt* och följer stegen i avsnittet *skapa undernät* . För Hybrid anslutning bör adress intervallet inte överlappa några andra virtuella nätverk i din miljö.
+
+**Azure-nätverks-plugin**: när Azure Network-plugin används, går det inte att komma åt den interna Loadbalancer-tjänsten med "ExternalTrafficPolicy = Local" från virtuella datorer med en IP-adress i clusterCIDR som inte hör till AKS-klustret.
 
 **Kubernetes-tjänstens adress intervall**: Detta är den uppsättning virtuella IP-adresser som Kubernetes tilldelar interna [tjänster][services] i klustret. Du kan använda ett privat adress intervall som uppfyller följande krav:
 

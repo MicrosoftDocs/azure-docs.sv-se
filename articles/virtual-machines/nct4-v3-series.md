@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 41ab057bdbf31667e45a73b2c5ded4993e716a66
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5f31148a811ac1a7789cb81d744b46b847105d5c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917411"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-serien 
 
@@ -27,7 +27,7 @@ De virtuella datorerna i NCasT4_v3 serien drivs av [NVIDIA Tesla T4](https://www
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
-Accelererat nätverk: stöds<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 NVIDIA NVLink-Interconnect: stöds inte<br>
 <br>
 

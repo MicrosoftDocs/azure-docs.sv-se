@@ -1,14 +1,14 @@
 ---
 title: Översikt över HIPAA HITRUST 9,2 skissing-exempel
 description: Översikt över skiss exemplet HIPAA HITRUST 9,2. Det här skiss exemplet hjälper kunderna att bedöma vissa HIPAA HITRUST 9,2-kontroller.
-ms.date: 09/04/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 4df6f05019976b3de1172cc5127c27ac00fe3c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd65b6113f291457096bacc02bdbcfd92d6e0f84
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89493705"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915555"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>Skiss exempel för HIPAA HITRUST 9,2
 
@@ -60,7 +60,7 @@ Din kopia av skissexemplet har nu skapats i din miljö. Den skapas i läget **Ut
 
 ### <a name="assign-the-sample-copy"></a>Tilldela exempelkopian
 
-När kopieringen av skiss exemplet har **publicerats**kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
+När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
 
 1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 

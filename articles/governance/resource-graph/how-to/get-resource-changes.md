@@ -1,14 +1,14 @@
 ---
 title: Hämta resursändringar
 description: Lär dig hur du hittar när en resurs har ändrats, hämta en lista över de egenskaper som har ändrats och utvärdera differenserna.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203474"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917430"
 ---
 # <a name="get-resource-changes"></a>Hämta resursändringar
 
@@ -40,7 +40,7 @@ Det första steget i att se vad som har ändrats på en resurs är att hitta än
 **ResourceChanges** -slutpunkten accepterar följande parametrar i begär ande texten:
 
 - **resourceId** \[ krävs \] : Azure-resursen för att leta efter ändringar på.
-- **intervall** \[ krävs \] : en egenskap med _Start_ - _end_ och slutdatum för när du ska söka efter en ändrings händelse med **Zulu Time Zone (Z)**.
+- **intervall** \[ krävs \] : en egenskap med _Start_ -  och slutdatum för när du ska söka efter en ändrings händelse med **Zulu Time Zone (Z)**.
 - **fetchPropertyChanges** (valfritt): en boolesk egenskap som anger om Response-objektet innehåller egenskaps ändringar.
 
 Exempel på begär ande text:
@@ -144,12 +144,12 @@ Varje identifierad ändrings händelse för **resourceId** har följande egenska
 - **changeId** – det här värdet är unikt för den resursen. **ChangeId** -strängen kan ibland innehålla andra egenskaper, men den garanterar bara att vara unik.
 - **beforeSnapshot** – innehåller **snapshotId** och **tidsstämpel** för den resurs ögonblicks bild som togs innan en ändring upptäcktes.
 - **afterSnapshot** – innehåller **snapshotId** och **tidsstämpel** för den resurs ögonblicks bild som togs efter en ändring upptäcktes.
-- **ändrings typs** – beskriver vilken typ av ändring som har identifierats för hela ändrings posten mellan **beforeSnapshot** och **afterSnapshot**. Värdena är: _skapa_, _Uppdatera_och _ta bort_. **PropertyChanges** egenskaps mat ris ingår endast när **ändrings typs** är _Update_.
+- **ändrings typs** – beskriver vilken typ av ändring som har identifierats för hela ändrings posten mellan **beforeSnapshot** och **afterSnapshot**. Värdena är: _skapa_, _Uppdatera_ och _ta bort_. **PropertyChanges** egenskaps mat ris ingår endast när **ändrings typs** är _Update_.
 - **propertyChanges** – denna egenskaps mat ris innehåller information om alla resurs egenskaper som har uppdaterats mellan **beforeSnapshot** och **afterSnapshot**:
   - **PropertyName** -namnet på den resurs egenskap som har ändrats.
   - **changeCategory** – beskriver vad som gjorde ändringen. Värdena är: _system_ och _användare_.
   - **ändrings typs** – beskriver vilken typ av ändring som har identifierats för den enskilda resurs egenskapen.
-    Värden är: _Infoga_, _Uppdatera_och _ta bort_.
+    Värden är: _Infoga_, _Uppdatera_ och _ta bort_.
   - **beforeValue** – värdet för resurs egenskapen i **beforeSnapshot**. Visas inte när **ändrings typs** är _insert_.
   - **afterValue** – värdet för resurs egenskapen i **afterSnapshot**. Visas inte när **ändrings typs** är _Remove_.
 

@@ -1,27 +1,22 @@
 ---
-title: Bygg en SCIM-slutpunkt för användar etablering till appar från Azure AD
-description: System för SCIM (Cross-Domain Identity Management) standardiserar automatisk användar etablering. Lär dig att utveckla en SCIM-slutpunkt, integrera ditt SCIM-API med Azure Active Directory och börja automatisera etableringen av användare och grupper i dina moln program.
+title: Bygg en SCIM-slutpunkt för användar etablering till appar från Azure Active Directory
+description: System för SCIM (Cross-Domain Identity Management) standardiserar automatisk användar etablering. Lär dig att utveckla en SCIM-slutpunkt, integrera ditt SCIM-API med Azure Active Directory och börja automatisera etableringen av användare och grupper i dina moln program med Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2020
-ms.author: mimart
+ms.date: 01/27/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae36af981b113d44ac1b8fd45a1d084760b0294
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 34fa76197c4e08cffd1d8c66d6877b3e427e9fd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900247"
+ms.locfileid: "98918152"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Självstudie: utveckla en exempel SCIM-slutpunkt
 
@@ -30,68 +25,8 @@ Ingen vill skapa en ny slut punkt från grunden, så vi har skapat en [referens 
 I den här självstudiekursen får du lära du dig att:
 
 > [!div class="checklist"]
-> * Hämta referens koden
 > * Distribuera din SCIM-slutpunkt i Azure
 > * Testa din SCIM-slutpunkt
-
-Slut punkts funktionerna som ingår:
-
-|Slutpunkt|Beskrivning|
-|---|---|
-|`/User`|Utföra CRUD-åtgärder på en användar resurs: **skapa**, **Uppdatera**, **ta bort**, **Hämta**, **lista**, **filtrera**|
-|`/Group`|Utföra CRUD-åtgärder på en grupp resurs: **skapa**, **Uppdatera**, **ta bort**, **Hämta**, **lista**, **filtrera**|
-|`/Schemas`|Hämta ett eller flera scheman som stöds.<br/><br/>En uppsättning attribut för en resurs som stöds av varje tjänst leverantör kan variera, t. ex. om service providern har stöd för "namn", "title" och "e-post" medan Service Provider B stöder "namn", "title" och "phoneNumbers" för användare.|
-|`/ResourceTypes`|Hämta resurs typer som stöds.<br/><br/>Antalet och typerna av resurser som stöds av varje tjänst leverantör kan variera, t. ex. att tjänst leverantören har stöd för användare medan Service Provider B stöder användare och grupper.|
-|`/ServiceProviderConfig`|Hämta tjänst leverantörens SCIM-konfiguration<br/><br/>De SCIM-funktioner som stöds av varje tjänst leverantör kan variera, t. ex. Service Provider A stöder korrigerings åtgärder medan Service Provider B stöder korrigerings åtgärder och schema identifiering.|
-
-## <a name="download-the-reference-code"></a>Hämta referens koden
-
-Den [referens kod](https://github.com/AzureAD/SCIMReferenceCode) som ska hämtas omfattar följande projekt:
-
-- **Microsoft.SystemForCrossDomainIdentityManagement**, .net Core MVC Web API för att bygga och etablera ett scim-API
-- **Microsoft. scim. WebHostSample**, ett arbets exempel för en scim-slutpunkt
-
-Projekten innehåller följande mappar och filer:
-
-|Fil/mapp|Description|
-|-|-|
-|Mappen **scheman**| Modellerna för **användare** och **grupp** resurser tillsammans med några abstrakta klasser som schematiserade för delade funktioner.<br/><br/> En mapp för **attribut** som innehåller klass definitionerna för komplexa attribut för **användare** och **grupper** , t. ex. adresser.|
-|**Tjänstmall** | Innehåller logik för åtgärder som rör hur resurser efter frågas och uppdateras.<br/><br/> Referens koden innehåller tjänster för att returnera användare och grupper.<br/><br/>Mappen **kontrollanter** innehåller olika scim-slutpunkter. Resurs kontroller innehåller HTTP-verb för att utföra CRUD-åtgärder på resursen (**Get**, post **,** **Box**, **patch**, **Delete**). Kontrollanter förlitar sig på tjänster för att utföra åtgärderna.|
-|**Protokoll** -mapp|Innehåller logik för åtgärder som rör hur resurser returneras enligt SCIM RFC, till exempel:<br/><ul><li>Returnerar flera resurser som en lista.</li><li>Returnerar endast vissa resurser baserat på ett filter.</li><li>Omvandla en fråga till en lista över länkade listor över enskilda filter.</li><li>Att omvandla en PATCH-begäran till en åtgärd med attribut som hör till värde Sök vägen.</li><li>Definiera den typ av åtgärd som kan användas för att tillämpa ändringar på resurs objekt.</li></ul>|
-|`Microsoft.SystemForCrossDomainIdentityManagement`| Exempel käll kod.|
-|`Microsoft.SCIM.WebHostSample`| Exempel på implementering av SCIM-biblioteket.|
-|*.gitignore*|Definiera vad som ska ignoreras vid genomförande tillfället.|
-|*CHANGELOG.md*|Lista över ändringar i exemplet.|
-|*CONTRIBUTING.md*|Rikt linjer för att bidra till exemplet.|
-|*README.md*|Den här **README** -filen.|
-|*LICENSAVTALET*|Licens för exemplet.|
-
-> [!NOTE]
-> Den här koden är avsedd att hjälpa till att börja skapa en SCIM-slutpunkt och tillhandahålls **i befintligt skick**. De referenser som ingår har ingen garanti för aktiva Maintainence eller support.
->
-> Det här projektet använder sig av [Microsofts uppförandekod för öppen källkod](https://opensource.microsoft.com/codeofconduct/). Eftersom sådana [bidrag](https://github.com/AzureAD/SCIMReferenceCode/wiki/Contributing-Overview) från communityn är välkommen att hjälpa till att bygga och underhålla lagrings platsen, liksom andra bidrag med öppen källkod, kommer du att godkänna ett licens avtal för bidrag (CLA). Detta avtal förklarar att du har och beviljar behörighet att använda ditt bidrag, mer information finns i [Microsoft öppen källkod](https://cla.opensource.microsoft.com).
->
-> Du hittar mer information i [Vanliga frågor om uppförandekod](https://opensource.microsoft.com/codeofconduct/faq/) eller kontakta [opencode@microsoft.com](mailto:opencode@microsoft.com) för ytterligare frågor eller kommentarer.
-
-###  <a name="use-multiple-environments"></a>Använda flera miljöer
-
-Den inkluderade SCIM-koden använder en ASP.NET Core miljö för att kontrol lera att den är auktoriserad för användning i utveckling och efter distributionen, se [använda flera miljöer i ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments?view=aspnetcore-3.1).
-
-```csharp
-private readonly IWebHostEnvironment _env;
-...
-
-public void ConfigureServices(IServiceCollection services)
-{
-    if (_env.IsDevelopment())
-    {
-        ...
-    }
-    else
-    {
-        ...
-    }
-```
 
 ## <a name="deploy-your-scim-endpoint-in-azure"></a>Distribuera din SCIM-slutpunkt i Azure
 

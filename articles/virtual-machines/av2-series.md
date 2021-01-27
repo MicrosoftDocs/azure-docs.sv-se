@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3419b54fa18058583d81909f7fca0f20dc4b0dd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650756"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917141"
 ---
 # <a name="av2-series"></a>Av2-serien
 
@@ -24,6 +24,7 @@ De virtuella datorerna i AV2-serien kan distribueras på olika typer av maskin v
 [Direktmigrering](maintenance-and-updates.md): stöds <br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds <br>
 [Stöd för VM-generering](generation-2.md): generation 1 <br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
 <br>
 
 | Storlek | V-kärna | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt data flöde för temporär lagring: IOPS/Read Mbit/s/Write Mbit/s | Maximalt antal data diskar/data flöde: IOPS | Maximalt antal nätverkskort | Förväntad nätverks bandbredd (Mbit/s)

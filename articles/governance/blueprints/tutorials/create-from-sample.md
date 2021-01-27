@@ -1,14 +1,14 @@
 ---
 title: 'Självstudie: skiss exempel till ny miljö'
 description: I den här självstudien använder du ett skiss exempel för att skapa en skiss definition som konfigurerar två resurs grupper och konfigurerar en roll tilldelning för var och en.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 891240dcafe0cbfbfab4ff1fd415cba4abf682a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea3760128221d42e092e4ca45200874d54da54a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048740"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915564"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Självstudie: skapa en miljö från ett skiss exempel
 
@@ -23,7 +23,7 @@ I följande självstudie används **resurs grupper med RBAC** -skisser för att 
 > - Granska distribuerade resurser för tilldelningen
 > - Ta bort tilldelningen för att ta bort låsen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här självstudien krävs en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
@@ -68,7 +68,7 @@ När du **har slutfört ett Portal meddelande om publicerings skissen** visas g�
 
 ## <a name="assign-the-sample-copy"></a>Tilldela exempelkopian
 
-När kopieringen av skiss exemplet har **publicerats**kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
+När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
 
 1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 
@@ -101,10 +101,10 @@ När kopieringen av skiss exemplet har **publicerats**kan den tilldelas en prenu
      |Artefaktnamn|Artefakttyp|Parameternamn|Värde|Beskrivning|
      |-|-|-|-|-|
      |Resurs grupp för ProdRG|Resursgrupp|Name|ProductionRG|Definierar namnet på den första resurs gruppen.|
-     |Resurs grupp för ProdRG|Resursgrupp|Location|USA, västra 2|Anger platsen för den första resurs gruppen.|
+     |Resurs grupp för ProdRG|Resursgrupp|Plats|USA, västra 2|Anger platsen för den första resurs gruppen.|
      |Deltagare|Rolltilldelning|Användare eller grupp|{Ditt ID}|Definierar vilken användare eller grupp som ska bevilja _deltagar_ roll tilldelningen i den första resurs gruppen.|
      |Resurs grupp för PreProdRG|Resursgrupp|Name|PreProductionRG|Definierar namnet på den andra resurs gruppen.|
-     |Resurs grupp för PreProdRG|Resursgrupp|Location|USA, västra|Anger platsen för den andra resurs gruppen.|
+     |Resurs grupp för PreProdRG|Resursgrupp|Plats|USA, västra|Anger platsen för den andra resurs gruppen.|
      |Ägare|Rolltilldelning|Användare eller grupp|{Ditt ID}|Definierar vilken användare eller grupp som ska bevilja _ägar_ roll tilldelningen i den andra resurs gruppen.|
      |Läsare|Rolltilldelning|Användare eller grupp|{Ditt ID}|Definierar vilken användare eller grupp som ska ge roll tilldelningen _läsare_ i den andra resurs gruppen.|
 
@@ -126,17 +126,17 @@ Skiss tilldelningen skapar och spårar de artefakter som definieras i skiss defi
 
 1. Välj resurs gruppen **ProductionRG** .
 
-   Vi ser att namnet på resurs gruppen är **ProductionRG** och inte _ProdRG_för artefakt visnings namnet. Det här namnet matchar värdet som anges under skiss tilldelningen.
+   Vi ser att namnet på resurs gruppen är **ProductionRG** och inte _ProdRG_ för artefakt visnings namnet. Det här namnet matchar värdet som anges under skiss tilldelningen.
 
 1. Välj sidan **åtkomst kontroll (IAM)** till vänster och sedan fliken **roll tilldelningar** .
 
-   Här ser vi att ditt konto har beviljats _deltagar_ rollen för _resursens_omfattning. Skiss tilldelningen _tilldelning – två-RGS-med-roll tilldelningar_ har _ägar_ rollen som den användes för att skapa resurs gruppen. Dessa behörigheter används också för att hantera resurser med konfigurerade skiss lås.
+   Här ser vi att ditt konto har beviljats _deltagar_ rollen för _resursens_ omfattning. Skiss tilldelningen _tilldelning – två-RGS-med-roll tilldelningar_ har _ägar_ rollen som den användes för att skapa resurs gruppen. Dessa behörigheter används också för att hantera resurser med konfigurerade skiss lås.
 
 1. Från Azure Portal dynamiska objekt väljer du **tilldelning-två-RGS – med-roll tilldelningar** för att gå tillbaka en sida och sedan välja resurs gruppen **PreProductionRG** .
 
 1. Välj sidan **åtkomst kontroll (IAM)** till vänster och sedan fliken **roll tilldelningar** .
 
-   Här ser vi att ditt konto har beviljats både _ägar_ -och _läsar_ rollerna, både i den _här resursens_omfattning. Skiss tilldelningen har också _ägar_ rollen som den första resurs gruppen.
+   Här ser vi att ditt konto har beviljats både _ägar_ -och _läsar_ rollerna, både i den _här resursens_ omfattning. Skiss tilldelningen har också _ägar_ rollen som den första resurs gruppen.
 
 1. Välj fliken **neka tilldelningar** .
 
@@ -144,7 +144,7 @@ Skiss tilldelningen skapar och spårar de artefakter som definieras i skiss defi
 
 1. Välj neka tilldelning och välj sedan sidan **nekade behörigheter** till vänster.
 
-   Neka-tilldelningen förhindrar alla åtgärder med **\*** - **Åtgärds** konfigurationen, men tillåter Läs åtkomst genom att exkludera ** \* /Read** via **NotActions**.
+   Neka-tilldelningen förhindrar alla åtgärder med **\* Åtgärds konfigurationen *_ och _*** , men tillåter Läs åtkomst genom att exkludera **\* /Read** via **NotActions**.
 
 1. Från Azure Portal dynamiska länkar väljer du **PreProductionRG-Access Control (IAM)**. Välj sedan sidan **Översikt** till vänster och sedan knappen **ta bort resurs grupp** . Ange namnet _PreProductionRG_ för att bekräfta borttagningen och välj **ta bort** längst ned i fönstret.
 

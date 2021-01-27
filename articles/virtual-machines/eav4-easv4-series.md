@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 80cacdcda39d3a7c443c1c94a797e69ba9a52bfd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 41290952350111464bb8137568d158a76585f25c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065464"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917966"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- och Easv4-serien
 
@@ -26,6 +26,7 @@ Eav4-serien och Easv4-serien använder AMD: s 2.35 GHz EPYC<sup>TM</sup> 7452-pr
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 Eav4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processorn som kan uppnå en högre högsta frekvens på 3.35 GHz. Eav4-seriens storlek är idealiska för minnes intensiva företags program. Datadisklagring faktureras separat från virtuella datorer. Om du vill använda Premium SSD använder du Easv4-seriens storlekar. Pris-och debiterings mätare för Easv4-storlekar är samma som för Eav3-serien.
@@ -50,6 +51,7 @@ Eav4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 Easv4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processorn som kan uppnå en högre högsta frekvens på 3.35 GHz och använder Premium SSD. Easv4-seriens storlek är idealiska för minnes intensiva företags program.

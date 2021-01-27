@@ -4,14 +4,13 @@ description: Den här artikeln beskriver hur du använder Uppdateringshantering 
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223041"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915990"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>Hantera uppdateringar och korrigeringar för dina virtuella datorer
 
@@ -35,11 +34,13 @@ Uppdateringshantering använder en omfattnings konfiguration i arbets ytan för 
 
 Innan du distribuerar program uppdateringar till datorerna granskar du resultatet av uppdateringen av utvärderings kraven för aktiverade datorer. För varje program uppdatering registreras dess kompatibilitetstillstånd och när utvärderingen är klar samlas den in och vidarebefordras i bulk till Azure Monitor loggar.
 
-På en Windows-dator körs kompatibilitetskontroll var 12: e timme som standard. Förutom den schemalagda genomsökningen initieras genomsökningen av kompatibiliteten inom 15 minuter från den Log Analytics agenten för Windows som startas om, innan uppdateringen installeras, och efter installationen av uppdateringen. Det är också viktigt att granska våra rekommendationer om hur du [konfigurerar den Windows Update klienten](configure-wuagent.md) med uppdateringshantering för att undvika eventuella problem som gör att den inte hanteras korrekt.
+På en Windows-dator körs kompatibilitetskontroll var 12: e timme som standard och initieras inom 15 minuter från Log Analytics agenten för Windows startas om. Utvärderings data vidarebefordras sedan till arbets ytan och uppdaterar tabellen **updates** . Före och efter installationen av uppdateringen utförs en sökning efter uppdateringar för att identifiera saknade uppdateringar, men resultaten används inte för att uppdatera utvärderings data i tabellen.
+
+Det är viktigt att du läser våra rekommendationer om hur du [konfigurerar den Windows Update klienten](configure-wuagent.md) med uppdateringshantering för att undvika eventuella problem som gör att den inte hanteras korrekt.
 
 För en Linux-dator utförs genomsökningen varje timme som standard. Om Log Analytics-agenten för Linux startas om initieras en kompatibilitetskontroll inom 15 minuter.
 
-Resultatet av efterlevnaden presenteras i Uppdateringshantering för varje dator som utvärderas. För en ny dator som är aktive rad för hantering kan det ta upp till 30 minuter för instrument panelen att Visa uppdaterade data från den.
+Resultatet av efterlevnaden presenteras i Uppdateringshantering för varje dator som utvärderas. Det kan ta upp till 30 minuter för instrument panelen att Visa uppdaterade data från en ny dator som är aktive rad för hantering.
 
 Granska [övervaknings program uppdateringar](view-update-assessments.md) och lär dig hur du kan visa resultatet av efterlevnaden.
 

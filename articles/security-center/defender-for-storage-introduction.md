@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 675751433657a7d630d0c42482716702f520ff82
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881392"
+ms.locfileid: "98916429"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Introduktion till Azure Defender för Storage
 
@@ -25,10 +25,10 @@ Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. Dessa 
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|**Azure Defender för lagring** faktureras så som visas på [sidan med priser](security-center-pricing.md)|
 |Skyddade lagrings typer:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
 
 

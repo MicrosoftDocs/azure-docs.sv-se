@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 845ff6f0905b232b9ec68dbe127ef7f47a6ad898
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832717"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916799"
 ---
 # <a name="continuously-export-security-center-data"></a>Exportera Security Center data kontinuerligt
 
@@ -25,6 +25,8 @@ Med **kontinuerlig export** kan du helt anpassa *vad* som ska exporteras och *va
 - Alla aviseringar om medelhög eller högre allvarlighets grad från sårbarhets bedömning av dina SQL-servrar skickas till en speciell Log Analytics-arbetsyta
 - Vissa rekommendationer levereras till en Event Hub-eller Log Analytics-arbetsyta när de genereras 
 - De säkra poängen för en prenumeration skickas till en Log Analytics arbets yta när poängen för en kontroll ändras med 0,01 eller mer 
+
+Även om funktionen kallas *kontinuerlig*, finns det också ett alternativ för att exportera vecko Visa ögonblicks bilder av säkra poäng-eller reglerande data.
 
 Den här artikeln beskriver hur du konfigurerar kontinuerlig export till Log Analytics arbets ytor eller Azure Event Hubs.
 
@@ -39,7 +41,7 @@ Den här artikeln beskriver hur du konfigurerar kontinuerlig export till Log Ana
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|<ul><li>**Säkerhets administratör** eller **ägare** av resurs gruppen</li><li>Skriv behörigheter för mål resursen</li><li>Om du använder Azure Policy "DeployIfNotExist"-principer som beskrivs nedan måste du också ha behörighet för att tilldela principer</li></ul>|
 |Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, annan gov<br>![Ja](./media/icons/yes-icon.png) Kina, gov (till Event Hub)|
@@ -78,6 +80,10 @@ Stegen nedan är nödvändiga om du konfigurerar en kontinuerlig export till Log
     Här ser du export alternativen. Det finns en flik för varje tillgängligt export mål. 
 
 1. Välj den datatyp som du vill exportera och välj bland filtren för varje typ (till exempel endast exportera aviseringar med hög allvarlighets grad).
+1. Välj lämplig export frekvens:
+    - **Strömning** – utvärderingar skickas i real tid när en resurs hälso tillstånd uppdateras (om inga uppdateringar inträffar skickas inga data).
+    - **Ögonblicks bilder** – en ögonblicks bild av det aktuella läget för alla utvärderingar av efterlevnad kommer att skickas varje vecka (detta är en förhands gransknings funktion för varje veckas ögonblicks bilder av säkra poäng och information om regelefterlevnad).
+
 1. Om ditt val till exempel innehåller någon av dessa rekommendationer, kan du inkludera resultaten av sårbarhets utvärderingen tillsammans med dem:
     - Avgöranden för sårbarhets bedömning på SQL-databaser bör åtgärdas
     - Utvärderings resultat av säkerhets risker på dina SQL-servrar på datorer bör åtgärdas (för hands version)
@@ -131,7 +137,7 @@ Om du vill distribuera dina kontinuerliga export konfigurationer i organisatione
 
 1. I tabellen nedan väljer du den princip som du vill använda:
 
-    |Mål  |Princip  |Princip-ID  |
+    |Mål  |Policy  |Princip-ID  |
     |---------|---------|---------|
     |Kontinuerlig export till händelsehubben|[Distribuera export till händelsehubben för aviseringar och rekommendationer i Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
     |Löpande export till Log Analytics arbets yta|[Distribuera export till Log Analytics-arbetsytan för aviseringar och rekommendationer i Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|

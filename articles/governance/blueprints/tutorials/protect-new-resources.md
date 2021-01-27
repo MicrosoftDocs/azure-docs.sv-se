@@ -1,14 +1,14 @@
 ---
 title: 'Självstudie: skydda nya resurser med lås'
 description: I den här självstudien använder du alternativen för resurs lås för Azure-ritningar skrivskyddade och tar inte bort för att skydda nyligen distribuerade resurser.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048578"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915414"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Självstudie: skydda nya resurser med resurs lås för Azure-ritningar
 
@@ -54,7 +54,7 @@ Börja med att skapa skiss definitionen.
 
 1. Lägg till en mall under resurs gruppen:
    1. Välj raden **Lägg till artefakt** under posten **RGtoLock** .
-   1. Välj **Azure Resource Manager mall** under **artefakt typ**, ange **artefakt visnings namnet** till **StorageAccount**och lämna **beskrivningen** tom.
+   1. Välj **Azure Resource Manager mall** under **artefakt typ**, ange **artefakt visnings namnet** till **StorageAccount** och lämna **beskrivningen** tom.
    1. På fliken **mall** klistrar du in följande arm-mall i redigerings rutan. När du har klistrat in mallen väljer du **Lägg till** för att lägga till artefakten i skissen.
 
    ```json
@@ -154,7 +154,7 @@ När skiss definitionen har publicerats kan du tilldela den till en prenumeratio
      |Artefaktnamn|Artefakttyp|Parameternamn|Värde|Beskrivning|
      |-|-|-|-|-|
      |Resurs grupp för RGtoLock|Resursgrupp|Name|TestingBPLocks|Definierar namnet på den nya resurs grupp som skissen ska användas på.|
-     |Resurs grupp för RGtoLock|Resursgrupp|Location|USA, västra 2|Definierar platsen för den nya resurs gruppen som skissen ska användas i.|
+     |Resurs grupp för RGtoLock|Resursgrupp|Plats|USA, västra 2|Definierar platsen för den nya resurs gruppen som skissen ska användas i.|
      |StorageAccount|Resource Manager-mall|storageAccountType (StorageAccount)|Standard_GRS|SKU för lagring. Standardvärdet är _Standard_LRS_.|
 
 1. När du har angett alla parametrar väljer du **tilldela** längst ned på sidan.
@@ -187,7 +187,7 @@ Tilldelningen skapar resurs gruppen _TestingBPLocks_ och det lagrings konto som 
 
 1. Välj neka tilldelning och välj sedan sidan **nekade behörigheter** till vänster.
 
-   Neka-tilldelningen förhindrar alla åtgärder med **\*** - **Åtgärds** konfigurationen, men den tillåter Läs åtkomst genom att exkludera ** \* /Read** via **NotActions**.
+   Neka-tilldelningen förhindrar alla åtgärder med **\* Åtgärds konfigurationen *_ och _*** , men den tillåter Läs åtkomst genom att exkludera **\* /Read** via **NotActions**.
 
 1. I Azure Portal dynamiska länkar väljer du **TestingBPLocks-Access Control (IAM)**. Välj sedan sidan **Översikt** till vänster och sedan knappen **ta bort resurs grupp** . Ange namnet **TestingBPLocks** för att bekräfta borttagningen och välj sedan **ta bort** längst ned i fönstret.
 

@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445638"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916158"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>Skydda dina hanteringsportar med just-in-time-åtkomst
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>Skydda dina hanterings portar med just-in-Time-åtkomst
 
 Lås inkommande trafik till din Azure-Virtual Machines med Azure Security Centers funktioner för virtuell dator med JIT (just-in-Time) (VM). Detta minskar risken för attacker och ger enkel åtkomst när du behöver ansluta till en virtuell dator.
 
@@ -33,11 +33,11 @@ Den här sidan lär dig hur du inkluderar JIT i ditt säkerhets program. Du lär
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)|
 |Virtuella datorer som stöds:|![Ja ](./media/icons/yes-icon.png) distribuerade virtuella datorer via Azure Resource Manager.<br>![Inga ](./media/icons/no-icon.png) virtuella datorer har distribuerats med klassiska distributions modeller. [Läs mer om de här distributions modellerna](../azure-resource-manager/management/deployment-models.md).<br>![Inga ](./media/icons/no-icon.png) virtuella datorer skyddas av Azure-brandväggar som styrs av [Azure Firewall Manager](../firewall-manager/overview.md)|
 |Nödvändiga roller och behörigheter:|**Reader** -och **SecurityReader** -roller kan båda Visa JIT-status och parametrar.<br>Om du vill skapa anpassade roller som kan fungera med JIT, se [vilka behörigheter som krävs för att konfigurera och använda JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Om du vill skapa en roll med minst privilegier för användare som behöver begära JIT-åtkomst till en virtuell dator och inte utföra några andra JIT-åtgärder, använder du [set-JitLeastPrivilegedRole-skriptet](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) från community-sidorna för Security Center GitHub.|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 
@@ -209,7 +209,7 @@ Följande PowerShell-kommandon skapar den här JIT-konfigurationen:
     Använd parametern-name för att ange en virtuell dator. Om du till exempel vill upprätta JIT-konfigurationen för två olika virtuella datorer, VM1 och VM2, använder du: ```Set-AzJitNetworkAccessPolicy -Name VM1``` och ```Set-AzJitNetworkAccessPolicy -Name VM2``` .
 
 
-### <a name="rest-api"></a>[**REST-API**](#tab/jit-config-api)
+### <a name="rest-api"></a>[**REST API**](#tab/jit-config-api)
 
 ### <a name="enable-jit-on-your-vms-using-the-rest-api"></a>Aktivera JIT på dina virtuella datorer med hjälp av REST API
 
@@ -323,7 +323,7 @@ Läs mer i [PowerShell-cmdlet-dokumentationen](/powershell/scripting/developer/c
 
 
 
-### <a name="rest-api"></a>[**REST-API**](#tab/jit-request-api)
+### <a name="rest-api"></a>[**REST API**](#tab/jit-request-api)
 
 ### <a name="request-access-to-a-jit-enabled-vms-using-the-rest-api"></a>Begär åtkomst till en JIT-aktiverad virtuell dator med hjälp av REST API
 

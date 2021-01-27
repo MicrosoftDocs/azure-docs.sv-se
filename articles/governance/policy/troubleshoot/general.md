@@ -1,14 +1,14 @@
 ---
 title: Felsöka vanliga fel
 description: 'Lär dig hur du felsöker problem med att skapa princip definitioner, de olika SDK: erna och tillägget för Kubernetes.'
-ms.date: 12/01/2020
+ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f31f6e6f8d24f83f44dc14112f1bdc90c8af859
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897079"
+ms.locfileid: "98917751"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Felsöka fel med hjälp av Azure Policy
 
@@ -36,13 +36,14 @@ Ett felaktigt eller obefintligt alias används i en princip definition.
 
 #### <a name="resolution"></a>Lösning
 
-Kontrol lera först att Resource Manager-egenskapen har ett alias. Om du vill leta upp tillgängliga alias går du till [Azure policy tillägg för Visual Studio Code](../how-to/extension-for-vscode.md) eller SDK. Om alias för en Resource Manager-egenskap inte finns skapar du ett support ärende.
+Kontrol lera först att Resource Manager-egenskapen har ett alias. Om du vill leta upp tillgängliga alias går du till [Azure policy tillägg för Visual Studio Code](../how-to/extension-for-vscode.md) eller SDK.
+Om alias för en Resource Manager-egenskap inte finns skapar du ett support ärende.
 
 ### <a name="scenario-evaluation-details-arent-up-to-date"></a>Scenario: utvärderings informationen är inte aktuell
 
 #### <a name="issue"></a>Problem
 
-En resurs är i ett tillstånd där det *inte har startats* eller så är kompatibilitetsinformation inte aktuella.
+En resurs är i ett tillstånd där det _inte har startats_ eller så är kompatibilitetsinformation inte aktuella.
 
 #### <a name="cause"></a>Orsak
 
@@ -90,7 +91,8 @@ En resurs som du förväntar dig Azure Policy att agera på är inte igång och 
 
 #### <a name="cause"></a>Orsak
 
-Princip tilldelningen har kon figurer ATS för en [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) -inställning som är _inaktive rad_. När **enforcementMode** är inaktive rad tillämpas inte princip påverkan och det finns ingen post i aktivitets loggen.
+Princip tilldelningen har kon figurer ATS för en [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) -inställning som är _inaktive rad_.
+När **enforcementMode** är inaktive rad tillämpas inte princip påverkan och det finns ingen post i aktivitets loggen.
 
 #### <a name="resolution"></a>Lösning
 
@@ -186,7 +188,7 @@ Princip definitionerna som tidigare användes i DeployIfNotExists-definitioner f
 
 #### <a name="resolution"></a>Lösning
 
-Definitionerna som tidigare orsakade det här problemet visas som *[inaktuella]* och de ersätts av princip definitioner som hanterar förutsättningar utan att ta bort användarspecifika hanterade identiteter. En manuell åtgärd krävs. Ta bort eventuella befintliga princip tilldelningar som har marker ATS som *[inaktuella]* och ersätt dem med det uppdaterade nödvändiga princip initiativet och princip definitionerna som har samma namn som originalet.
+Definitionerna som tidigare orsakade det här problemet visas som _\[ föråldrade \]_ och de ersätts av princip definitioner som hanterar krav utan att användarens tilldelade hanterade identiteter tas bort. En manuell åtgärd krävs. Ta bort eventuella befintliga princip tilldelningar som är markerade som _\[ föråldrade \]_ och ersätt dem med det uppdaterade nödvändiga princip-initiativ och princip definitioner som har samma namn som originalet.
 
 En detaljerad beskrivning finns i blogg inlägget [viktig ändring som har publicerats för gransknings principer för gäst konfiguration](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
 
@@ -226,11 +228,11 @@ Tillägget kan inte komma åt Azure Policy tjänstens slut punkt och returnerar 
 Felet uppstår när _Add-Pod-Identity_ är installerat i klustret och _Kube-_ poddar inte är exkluderat i _AAD-Pod-Identity_.
 
 _AAD-Pod-Identity_ -nodens hanterade identitet (NMI) poddar ändra noderna program varan iptables för att avlyssna anrop till Azure instance metadata-slutpunkten. Den här inställningen innebär att alla begär Anden som görs till metadata-slutpunkten fångas upp av NMI, även om Pod inte använder _AAD-Pod-Identity_.
-*AzurePodIdentityException* -CUSTOMRESOURCEDEFINITION (CRD) kan konfigureras för att informera _AAD-Pod-identiteten_ att förfrågningar till en slut punkt för metadata som kommer från en pod som matchar etiketterna som definierats i CRD ska vara proxy utan bearbetning i NMI.
+_AzurePodIdentityException_ -CUSTOMRESOURCEDEFINITION (CRD) kan konfigureras för att informera _AAD-Pod-identiteten_ att förfrågningar till en slut punkt för metadata som kommer från en pod som matchar etiketterna som definierats i CRD ska vara proxy utan bearbetning i NMI.
 
 #### <a name="resolution"></a>Lösning
 
-Undanta system-poddar som har `kubernetes.azure.com/managedby: aks` etiketten i _Kube-systemets_ namnrymd i _AAD-Pod-Identity_ genom att konfigurera *AzurePodIdentityException* CRD.
+Undanta system-poddar som har `kubernetes.azure.com/managedby: aks` etiketten i _Kube-systemets_ namnrymd i _AAD-Pod-Identity_ genom att konfigurera _AzurePodIdentityException_ CRD.
 
 Mer information finns i [inaktivera Azure Active Directory (Azure AD) Pod-identitet för en specifik Pod/tillämpning](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 
@@ -264,11 +266,11 @@ spec:
 Tillägget kan komma åt Azure Policy tjänstens slut punkt, men tilläggs loggarna visar något av följande fel:
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
-https://aka.ms/policy-register-subscription for how to register subscriptions.`
+  https://aka.ms/policy-register-subscription for how to register subscriptions.`
 
 - `policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
-StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
-Code="InternalServerError" Message="Encountered an internal server error.`
+  StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+  Code="InternalServerError" Message="Encountered an internal server error.`
 
 #### <a name="cause"></a>Orsak
 

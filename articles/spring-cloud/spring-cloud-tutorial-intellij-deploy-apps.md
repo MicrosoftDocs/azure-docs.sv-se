@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 91edbbda43365b17b8276572804ba788dbee9f13
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a808e37c0f0aae2816eb536dc43485c125354b81
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426731"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916208"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Använda IntelliJ för att distribuera Azure Spring Cloud-program
 
@@ -22,9 +22,7 @@ IntelliJ-plugin-programmet för Azure våren Cloud stöder program distribution 
 
 Innan du kör det här exemplet kan du prova den [grundläggande snabb](spring-cloud-quickstart.md)starten.
 
-## <a name="prerequisites"></a>Krav
-* [JDK 8 Azul Zulu](/java/azure/jdk/java-jdk-install?preserve-view=true&view=azure-java-stable)
-* [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
+## <a name="prerequisites"></a>Förutsättningar
 * [IntelliJ idé, community/Ultimate-utgåva, version 2020.1/2020.2](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Installera plugin-programmet
@@ -69,7 +67,7 @@ För att kunna distribuera till Azure måste du logga in med ditt Azure-konto oc
 
     ![Distribuera till Azure 2](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
-1. Ange **ett namn på appen**och klicka sedan på **OK**.
+1. Ange **ett namn på appen** och klicka sedan på **OK**.
 
     ![Distribuera till Azure OK](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
 
@@ -89,7 +87,7 @@ För att kunna distribuera till Azure måste du logga in med ditt Azure-konto oc
 
 ## <a name="show-streaming-logs"></a>Visa strömmande loggar
 Hämta loggarna:
-1. Välj **Azure Explorer**och sedan **våren Cloud**.
+1. Välj **Azure Explorer** och sedan **våren Cloud**.
 1. Högerklicka på appen som körs.
 1. Välj **strömmande loggar** från den nedrullningsbara listan.
 

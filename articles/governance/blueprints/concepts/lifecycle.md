@@ -1,14 +1,14 @@
 ---
 title: Förstå en skisss livs cykel
 description: Lär dig mer om livs cykeln som en skiss definition går igenom och information om varje steg, inklusive uppdatering och borttagning av skiss uppgifter.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721a198b5732af01c6712e86bc0c8e8ef543b404
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049714"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918525"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Förstå livs cykeln för en Azure Blueprint
 
@@ -34,7 +34,7 @@ Skapa och redigera en skiss med [Azure Portal](../create-blueprint-portal.md#cre
 
 ## <a name="publishing-a-blueprint"></a>Publicera en skiss
 
-När alla planerade ändringar har gjorts i en skiss i **utkast** läge kan den **publiceras** och göras tillgänglig för tilldelning. Den **publicerade** versionen av skissen kan inte ändras. När du har **publicerat**ritningen visas den med en annan ikon än **utkast** ritningar och det angivna versions numret visas i den **senaste versions** kolumnen.
+När alla planerade ändringar har gjorts i en skiss i **utkast** läge kan den **publiceras** och göras tillgänglig för tilldelning. Den **publicerade** versionen av skissen kan inte ändras. När du har **publicerat** ritningen visas den med en annan ikon än **utkast** ritningar och det angivna versions numret visas i den **senaste versions** kolumnen.
 
 Publicera en skiss med [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) eller [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
@@ -46,16 +46,16 @@ Redigera en skiss med [Azure Portal](../create-blueprint-portal.md#edit-a-bluepr
 
 ## <a name="publishing-a-new-version-of-the-blueprint"></a>Publicera en ny version av skissen
 
-Varje redige rad version av en skiss måste **publiceras** innan den kan tilldelas. När **opublicerade ändringar** har gjorts i en skiss men inte **publicerat**, är knappen **publicera skiss** tillgänglig på sidan Redigera skiss. Om knappen inte visas har skissen redan **publicerats** och inga **opublicerade ändringar**har gjorts.
+Varje redige rad version av en skiss måste **publiceras** innan den kan tilldelas. När **opublicerade ändringar** har gjorts i en skiss men inte **publicerat**, är knappen **publicera skiss** tillgänglig på sidan Redigera skiss. Om knappen inte visas har skissen redan **publicerats** och inga **opublicerade ändringar** har gjorts.
 
 > [!NOTE]
 > En enda skiss kan ha flera **publicerade** versioner som var och en kan tilldelas till prenumerationer.
 
-Om du vill publicera en skiss med **opublicerade ändringar**använder du samma steg för att publicera en ny skiss.
+Om du vill publicera en skiss med **opublicerade ändringar** använder du samma steg för att publicera en ny skiss.
 
 ## <a name="deleting-a-specific-version-of-the-blueprint"></a>Ta bort en enskild version av skissen
 
-Varje version av en skiss är ett unikt objekt och kan **publiceras**separat. Därför kan varje version av en skiss också tas bort. Att ta bort en version av en skiss påverkar inte andra versioner av den ritningen.
+Varje version av en skiss är ett unikt objekt och kan **publiceras** separat. Därför kan varje version av en skiss också tas bort. Att ta bort en version av en skiss påverkar inte andra versioner av den ritningen.
 
 > [!NOTE]
 > Det går inte att ta bort en skiss som har aktiva tilldelningar. Ta bort tilldelningarna först och ta sedan bort den version som du vill ta bort.

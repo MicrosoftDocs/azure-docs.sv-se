@@ -1,15 +1,15 @@
 ---
 title: Arbeta med stora datamängder
 description: Lär dig hur du hämtar, formaterar, visar och hoppar över poster i stora data mängder när du arbetar med Azures resurs diagram.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59f69738bf9fe25cb739539b7a1f93e4499d781a
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 1eaabfdd78712966f3b21d869259a312db31b7bc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826024"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917698"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeta med stora Azure-resurs data uppsättningar
 
@@ -65,7 +65,7 @@ I [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/re
 ## <a name="paging-results"></a>Växla resultat
 
 När det är nödvändigt att dela upp en resultat uppsättning i mindre mängder poster för bearbetning eller eftersom en resultat uppsättning skulle överskrida det högsta tillåtna värdet för _1000_ returnerade poster, använder du sid indelning. [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
- **QueryResponse** innehåller värden för att indikera en resultat uppsättning har delats upp: **resultTruncated** och **$skipToken**. **resultTruncated** är ett booleskt värde som informerar konsumenten om det finns ytterligare poster som inte returneras i svaret. Det här villkoret kan också identifieras när **Count** -egenskapen är mindre än egenskapen **totalRecords** . **totalRecords** definierar hur många poster som matchar frågan.
+ **QueryResponse** innehåller värden för att indikera en resultat uppsättning har delats upp: **resultTruncated** och **$skipToken**. **resultTruncated** är ett booleskt värde som informerar konsumenten om det finns fler poster som inte returneras i svaret. Det här villkoret kan också identifieras när **Count** -egenskapen är mindre än egenskapen **totalRecords** . **totalRecords** definierar hur många poster som matchar frågan.
 
  **resultTruncated** är **Sant** när växlingen är inaktive rad eller inte möjlig eftersom ingen `id` kolumn eller om det finns mindre resurser som är tillgängliga än en fråga begär. När **resultTruncated** är **True** anges inte egenskapen **$skipToken** .
 
@@ -136,7 +136,7 @@ Här är ett exempel på ett frågeresultat med _tabellformatering_ :
 
 _ObjectArray_ -formatet returnerar också resultat i JSON-format. Den här designen motsvarar dock den nyckel/värde-par-relation som är gemensam i JSON där kolumnen och raddata matchas i mat ris grupper.
 
-Här är ett exempel på ett frågeresultat med _ObjectArray_ formatering:
+Här är ett exempel på ett frågeresultat med _ObjectArray_ -formatering:
 
 ```json
 {

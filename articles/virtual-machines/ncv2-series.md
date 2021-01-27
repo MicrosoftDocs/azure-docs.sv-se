@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 97fa5148d7de7cac67a69c8d9c21721cb57951d3
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2b37b69390c75b30575377dddf7ffb1d2cf5b9cf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585401"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917369"
 ---
 # <a name="ncv2-series"></a>NCv2-serien
 
@@ -25,6 +25,7 @@ NC24rs v2-konfigurationen ger ett nätverks gränssnitt med låg fördröjning o
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
 NVIDIA NVLink-Interconnect: stöds inte
 
 > [!IMPORTANT]

@@ -1,15 +1,15 @@
 ---
 title: Vägledning för begränsade begäranden
 description: Lär dig att gruppera, sprida, ta sid brytning och fråga parallellt för att undvika att förfrågningar begränsas av Azure Resource Graph.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a8ba991d13b9be221e67f2ff1e393fb01f8a2d4
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917715"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Vägledning för begränsade begär anden i Azure Resource Graph
 
@@ -233,7 +233,7 @@ Eftersom Azure Resource Graph returnerar högst 1000 poster i ett enda fråge sv
 
 Om du får en begränsning efter ovanstående rekommendationer kan du kontakta teamet på [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
-Ange följande information:
+Lämna dessa uppgifter:
 
 - Din specifika användnings fall och affärs driv rutin behöver en högre begränsnings gräns.
 - Hur många resurser har du åtkomst till? Hur många av returneras från en enda fråga?

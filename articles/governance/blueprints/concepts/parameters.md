@@ -1,14 +1,14 @@
 ---
 title: Använda parametrar för att skapa dynamiska modeller
 description: Lär dig mer om statiska och dynamiska parametrar och hur du använder dem för att skapa säkra och dynamiska ritningar.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: b6cefe7ec75ec622cb341d8f12edfd9c0cfa66e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dbf7ec02e89eac791ec3e17202a5ab13a04b81d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651955"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918542"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Skapa dynamiska modeller via parametrar
 
@@ -34,9 +34,9 @@ Med hjälp av REST API kan parametrar skapas i själva skissen. Parametrarna ski
 - Key Vault hemligt namn
 - Key Vault hemlig version
 
-Om en **tilldelad hanterad identitet**används för skiss tilldelningen _måste_ den refererade Key Vault finnas i samma prenumeration som skiss definitionen är tilldelad.
+Om en **tilldelad hanterad identitet** används för skiss tilldelningen _måste_ den refererade Key Vault finnas i samma prenumeration som skiss definitionen är tilldelad.
 
-Om en **användardefinierad hanterad identitet**används för skiss tilldelningen _kan_ det finnas referenser till Key Vault i en centraliserad prenumeration. Den hanterade identiteten måste beviljas lämpliga rättigheter på Key Vault innan skiss tilldelningen.
+Om en **användardefinierad hanterad identitet** används för skiss tilldelningen _kan_ det finnas referenser till Key Vault i en centraliserad prenumeration. Den hanterade identiteten måste beviljas lämpliga rättigheter på Key Vault innan skiss tilldelningen.
 
 > [!IMPORTANT]
 > I båda fallen måste Key Vault ha **åtkomst till Azure Resource Manager för att mallar ska kunna distribueras** på sidan **åtkomst principer** . Instruktioner för hur du aktiverar den här funktionen finns i [Key Vault-aktivera mall distribution](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
@@ -65,7 +65,7 @@ Ett parameter värde som definieras i definitionen av en skiss kallas en **stati
 
 1. Sidan **Redigera artefakt** visar värde alternativ som är lämpliga för den valda artefakten. Varje parameter i artefakten har en rubrik, ett värde-ruta och en kryss ruta. Ange att rutan ska avmarkeras för att göra den till en **statisk parameter**. I exemplet nedan är endast _plats_ en **statisk parameter** eftersom den är omarkerad och _resurs gruppens namn_ är markerat.
 
-   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Skärm bild av en skiss definition och X av Y-parametrarna som har fyllts i markerat." border="false":::
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Skärm bild av statiska parametrar i en skiss artefakt." border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Ange statiska parametrar från REST API
 
@@ -176,11 +176,11 @@ Motsatsen till en statisk parameter är en **dynamisk parameter**. Den här para
 
 1. På sidan **tilldela skiss** hittar du avsnittet **artefakt parametrar** . Varje artefakt med minst en **dynamisk parameter** visar artefakten och konfigurations alternativen. Ange de värden som krävs för parametrarna innan du tilldelar skissen. I exemplet nedan är _namn_ en **dynamisk parameter** som måste definieras för fullständig skiss tilldelning.
 
-   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Skärm bild av en skiss definition och X av Y-parametrarna som har fyllts i markerat." border="false":::
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Skärm bild av inställning av dynamiska parametrar under skiss tilldelningen." border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Ange dynamiska parametrar från REST API
 
-Att ange **dynamiska parametrar** under tilldelningen görs genom att ange värdet direkt. I stället för att använda en funktion, t. ex. [parametrar ()](../reference/blueprint-functions.md#parameters), är det angivna värdet en lämplig sträng. Artefakter för en resurs grupp definieras med egenskaperna "Mallnamn", **namn**och **plats** . Alla andra parametrar för den inkluderade artefakten definieras under **parametrar** med **\<name\>** nyckel paret och. **value** Om skissen har kon figurer ATS för en dynamisk parameter som inte anges under tilldelningen kommer tilldelningen att Miss förväntas.
+Att ange **dynamiska parametrar** under tilldelningen görs genom att ange värdet direkt. I stället för att använda en funktion, t. ex. [parametrar ()](../reference/blueprint-functions.md#parameters), är det angivna värdet en lämplig sträng. Artefakter för en resurs grupp definieras med egenskaperna "Mallnamn", **namn** och **plats** . Alla andra parametrar för den inkluderade artefakten definieras under **parametrar** med **\<name\>** nyckel paret och.  Om skissen har kon figurer ATS för en dynamisk parameter som inte anges under tilldelningen kommer tilldelningen att Miss förväntas.
 
 - REST API-URI
 

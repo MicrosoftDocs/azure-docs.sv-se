@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 96a72dbc0e45ebd50a49000ae66e3713cb28aa9a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654667"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916938"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrera ett SAML-program i Azure AD B2C
 
@@ -41,7 +41,7 @@ Sammanfatta de två icke-exklusiva huvud scenarierna med SAML:
 | Mitt program förväntar sig en SAML-kontroll för att slutföra en autentisering. | **Azure AD B2C fungerar som identitets leverantör (IdP)**<br />Azure AD B2C fungerar som en SAML-IdP i programmen. | Den här artikeln. |
 | Mina användare behöver en enkel inloggning med en SAML-kompatibel identitets leverantör som ADFS, Salesforce eller Shibboleth.  | **Azure AD B2C fungerar som tjänst leverantör (SP)**<br />Azure AD B2C fungerar som en tjänst leverantör vid anslutning till SAML Identity Provider. Det är en Federations-proxy mellan ditt program och SAML Identity Provider.  | <ul><li>[Konfigurera inloggning med ADFS som ett SAML-IdP med anpassade principer](identity-provider-adfs.md)</li><li>[Konfigurera inloggning med en Salesforce-SAML-Provider med anpassade principer](identity-provider-salesforce-saml.md)</li></ul> |
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför stegen i [Kom igång med anpassade principer i Azure AD B2C](custom-policy-get-started.md). Du behöver den anpassade principen *SocialAndLocalAccounts* från start paketet för anpassad princip som beskrivs i artikeln.
 * Grundläggande förståelse för Security Assertion Markup Language-protokollet (SAML).
@@ -71,28 +71,9 @@ Om du vill skapa en förtroende relation mellan din tjänst leverantör och Azur
 
 Du kan använda ett certifikat utfärdat av en offentlig certifikat utfärdare eller, för den här självstudien, ett självsignerat certifikat.
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1,1 förbereda ett självsignerat certifikat
+### <a name="11-create-a-self-signed-certificate"></a>1,1 Skapa ett självsignerat certifikat
 
-Om du inte redan har ett certifikat kan du använda ett självsignerat certifikat för den här självstudien. I Windows kan du använda PowerShell: s [New-SelfSignedCertificate-](/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet för att skapa ett certifikat.
-
-1. Kör PowerShell-kommandot för att generera ett självsignerat certifikat. Ändra `-Subject` argumentet efter behov för ditt program och Azure AD B2C klient namn. Du kan också justera `-NotAfter` datumet för att ange ett annat förfallo datum för certifikatet.
-
-    ```PowerShell
-    New-SelfSignedCertificate `
-        -KeyExportPolicy Exportable `
-        -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
-        -KeyAlgorithm RSA `
-        -KeyLength 2048 `
-        -KeyUsage DigitalSignature `
-        -NotAfter (Get-Date).AddMonths(12) `
-        -CertStoreLocation "Cert:\CurrentUser\My"
-    ```
-
-1. Öppna **hantera användar certifikat**  >  **aktuella användare**  >  **personliga**  >  **certifikat**  >  *yourappname.yourtenant.onmicrosoft.com*
-1. Välj åtgärden för certifikat > **åtgärden**  >  **alla aktiviteter**  >  **Exportera**
-1. Välj **Ja**  >  **Nästa**  >  **Ja, exportera den privata nyckeln**  >  **Nästa**
-1. Acceptera standardinställningarna för **export fil format**
-1. Ange ett lösen ord för certifikatet
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ### <a name="12-upload-the-certificate"></a>1,2 Ladda upp certifikatet
 
@@ -443,7 +424,7 @@ Följande scenarier för SAML-förlitande part (RP) stöds via din egen metadata
 
 En SAML-token är en säkerhetstoken som utfärdas av Azure AD B2C efter en lyckad inloggning. Den innehåller information om användaren, tjänst leverantören som token är avsedd för, signatur och giltighets tid. I följande tabell visas de anspråk och egenskaper som du kan förväntar dig i en SAML-token som utfärdats av Azure AD B2C.
 
-|Element  |Egenskap  |Obs!  |
+|Element  |Egenskap  |Kommentarer  |
 |---------|---------|---------|
 |`<Response>`| `ID` | En automatiskt genererad unik identifierare för svaret. | 
 |`<Response>`| `InResponseTo` | ID: t för SAML-begäran som detta meddelande är svar på. | 

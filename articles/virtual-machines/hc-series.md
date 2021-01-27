@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 254e8591892fe08e8f05c49ed47a4cb00da16e78
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 86fd90a5979a876313694583709a64e74c116154
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930194"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917042"
 ---
 # <a name="hc-series"></a>HC-serien
 
@@ -27,6 +27,7 @@ Virtuella datorer i HC-serien 100 GB/SEK Mellanox EDR InfiniBand. De här virtue
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Processor | Minne (GiB) | Minnes bandbredd GB/s | Bas processor frekvens (GHz) | Frekvens för alla kärnor (GHz, högsta) | Frekvens för enkla kärnor (GHz, hög) | RDMA-prestanda (GB/s) | MPI-stöd | Temp-lagring (GiB) | Maximalt antal datadiskar | Högsta Ethernet-virtuella nätverkskort |

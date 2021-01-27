@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 76b83a608c7178b42b762d5fd5bb94d14a6ee41b
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: a19e90a15991cdc03999bf43d5bece63325aab05
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797765"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916583"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Introduktion till Azure Defender för Kubernetes
 
@@ -28,7 +28,7 @@ Hot identifiering på värdnivå för dina Linux AKS-noder är tillgängligt om 
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|**Azure Defender for Kubernetes** faktureras så som det visas på [sidan med priser](security-center-pricing.md)|
 |Nödvändiga roller och behörigheter:|**Säkerhets administratören** kan stänga aviseringar.<br>**Säkerhets läsaren** kan visa resultat.|
 |Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|

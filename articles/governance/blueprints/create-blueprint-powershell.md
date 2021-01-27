@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en skiss med PowerShell'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter med hjälp av PowerShell.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051533"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918287"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Snabb start: definiera och tilldela en Azure Blueprint med PowerShell
 
@@ -16,9 +16,9 @@ Genom att lära dig hur du skapar och tilldelar ritningar kan du definiera vanli
 
 ## <a name="prerequisites"></a>Krav
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free) innan du börjar.
-
-Om den inte redan är installerad följer du anvisningarna i [Lägg till modulen AZ. skiss](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) för att installera och validera modulen **AZ. skiss** från PowerShell-galleriet.
+- Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free) innan du börjar.
+- Om den inte redan är installerad följer du anvisningarna i [Lägg till modulen AZ. skiss](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) för att installera och validera modulen **AZ. skiss** från PowerShell-galleriet.
+- Om du inte har använt Azure-modeller tidigare registrerar du resurs leverantören genom att Azure PowerShell med `Register-AzResourceProvider -ProviderNamespace Microsoft.Blueprint` .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -104,7 +104,7 @@ Det första steget när du definierar ett standardmönster för efterlevnad är 
      > Använd fil namnet _blueprint.js_ när du skapar dina skiss definitioner program mässigt.
      > Det här fil namnet används när du anropar [import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
 
-     Skiss-objektet skapas som standard i standard prenumerationen. Använd parametern **ManagementGroupId**för att ange hanterings gruppen. Om du vill ange prenumerationen använder du parameter **SubscriptionId**.
+     Skiss-objektet skapas som standard i standard prenumerationen. Använd parametern **ManagementGroupId** för att ange hanterings gruppen. Om du vill ange prenumerationen använder du parameter **SubscriptionId**.
 
 1. Lägg till rolltilldelningen för prenumerationen. **ArtifactFile** definierar _typen_ av artefakt. egenskaperna justeras till roll Definitions-ID: t och huvudidentiteterna skickas som en matris med värden. I exemplet nedan konfigureras huvudidentiteterna som beviljas den angivna rollen till en parameter som anges under skisstilldelningen. I det här exemplet används den inbyggda rollen _Deltagare_ med ett GUID på `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 

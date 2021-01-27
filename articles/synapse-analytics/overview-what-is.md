@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bff15cbc8827f4a0eb09a243e01b2cdb95ba5f2f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681361"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917101"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Vad är Azure Synapse Analytics?
 
@@ -26,8 +26,7 @@ Enterprise Analytics måste arbeta i massiv skala på alla typer av data, oavset
 
 ### <a name="industry-leading-sql"></a>Branschledande SQL
 
-* **SYNAPSE SQL** är ett distribuerat Query-system som gör det möjligt för företag att implementera data lager-och data Virtualization-scenarier med hjälp av vanliga och välkända T-SQL-upplevelser. Den utökar också funktionerna i SQL för att adressera strömnings-och maskin inlärnings scenarier.
-
+* **SYNAPSE SQL** är ett distribuerat Query-system för t-SQL som möjliggör data lager-och data visualiserings scenarier och utökar T-SQL för att hantera strömning och maskin inlärnings scenarier.
 * Synapse SQL erbjuder både **Server** lös och **dedikerade** resurs modeller, och erbjuder användnings-och fakturerings alternativ som passar dina behov. För förutsägbara prestanda och kostnader skapar du dedikerade SQL-pooler för att reservera beräknings för data som lagras i SQL-tabeller. För oplanerade eller burst-arbetsbelastningar använder du den alltid tillgängliga, Server lös SQL-slutpunkten.
 * Använd inbyggda **strömnings** funktioner för att landa data från moln data källor till SQL-tabeller
 * Integrera AI med SQL genom att använda **maskin inlärnings** modeller för att räkna data med hjälp av [funktionen T-SQL predict](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)

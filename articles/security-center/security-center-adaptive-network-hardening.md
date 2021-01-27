@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341761"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916192"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Anpassad nätverks härdning i Azure Security Center
 Lär dig hur du konfigurerar anpassad nätverks härdning i Security Center.
@@ -26,10 +26,10 @@ Lär dig hur du konfigurerar anpassad nätverks härdning i Security Center.
 ## <a name="availability"></a>Tillgänglighet
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)|
 |Nödvändiga roller och behörigheter:|Skriv behörighet för datorns NSG: er|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Vad är anpassad nätverks härdning?
@@ -56,11 +56,11 @@ Anta till exempel att den befintliga NSG-regeln är att tillåta trafik från 14
    * **Felaktiga resurser**: virtuella datorer som för närvarande har rekommendationer och aviseringar som har utlösts genom att köra algoritmen för anpassad nätverks härdning. 
    * **Felfria resurser**: virtuella datorer utan aviseringar och rekommendationer.
    * Ej **genomsökta resurser**: virtuella datorer som den anpassningsbara algoritmen för nätverks härdning inte kan köras på på grund av någon av följande orsaker:
-      * **Virtuella datorer är klassiska virtuella**datorer: endast Azure Resource Manager virtuella datorer stöds.
+      * **Virtuella datorer är klassiska virtuella** datorer: endast Azure Resource Manager virtuella datorer stöds.
       * Det finns **inte tillräckligt med data**: för att skapa korrekta rekommendationer för trafik härdning måste Security Center minst 30 dagars trafik data.
       * Den **virtuella datorn skyddas inte av Azure Defender**: endast virtuella datorer som skyddas med [Azure Defender för servrar](defender-for-servers-introduction.md) är berättigade till den här funktionen.
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Åtkomst till verktyg för anpassad nätverks härdning":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Informations sidan i rekommendationen för anpassningsbara nätverks härdning bör tillämpas på virtuella datorer som är riktade mot Internet":::
 
 1. På fliken **felaktiga resurser** väljer du en virtuell dator för att visa aviseringar och de rekommenderade regler för härdning som ska tillämpas.
 
@@ -71,19 +71,19 @@ Anta till exempel att den befintliga NSG-regeln är att tillåta trafik från 14
 
     - [Ändra en regel](#modify-rule)
     - [Ta bort en regel](#delete-rule) 
-    - [Lägga till en regel](#add-rule)
+    - [Lägg till en regel](#add-rule)
 
 3. Välj de regler som du vill tillämpa på NSG och klicka på **tillämpa**.
 
     > [!TIP]
     > Om de tillåtna käll-IP-intervallen visas som none, innebär det att den rekommenderade regeln är en regel för *neka* , annars är det en *Tillåt* -regel.
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Åtkomst till verktyg för anpassad nätverks härdning":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Hantera regler för regler för anpassad nätverks härdning":::
 
       > [!NOTE]
       > De tvingade reglerna läggs till i NSG (s) som skyddar den virtuella datorn. (En virtuell dator kan skyddas av en NSG som är kopplad till dess nätverkskort, eller under nätet där den virtuella datorn finns, eller båda)
 
-### <a name="modify-a-rule"></a>Ändra en regel <a name ="modify-rule"> </a>
+### <a name="modify-a-rule"></a>Ändra en regel <a name ="modify-rule"></a>
 
 Du kanske vill ändra parametrarna för en regel som har rekommenderats. Till exempel kanske du vill ändra de rekommenderade IP-intervallen.
 
@@ -108,7 +108,7 @@ Några viktiga rikt linjer för att ändra en regel för anpassad nätverks här
 1. I fönstret **Redigera regel** uppdaterar du informationen som du vill ändra och klickar på **Spara**.
 
    > [!NOTE]
-   > När du har klickat på **Spara**har du ändrat regeln. *Men du har inte tillämpat den på NSG.* Om du vill tillämpa det måste du välja regeln i listan och välja **Använd** (som förklaras i nästa steg).
+   > När du har klickat på **Spara** har du ändrat regeln. *Men du har inte tillämpat den på NSG.* Om du vill tillämpa det måste du välja regeln i listan och välja **Använd** (som förklaras i nästa steg).
 
    ![Välja Spara](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
@@ -116,7 +116,7 @@ Några viktiga rikt linjer för att ändra en regel för anpassad nätverks här
 
     ![tillämpa regel](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### <a name="add-a-new-rule"></a>Lägg till en ny <a name ="add-rule"> </a> regel
+### <a name="add-a-new-rule"></a>Lägg till en ny <a name ="add-rule"></a> regel
 
 Du kan lägga till en regel för "Tillåt" som inte rekommenderades av Security Center.
 
@@ -132,14 +132,14 @@ Du kan lägga till en regel för "Tillåt" som inte rekommenderades av Security 
 1. I fönstret **ny regel** anger du informationen och klickar på **Lägg till**.
 
    > [!NOTE]
-   > När du har klickat på **Lägg till**har du lagt till regeln och den visas med de andra rekommenderade reglerna. Men du har inte använt den på NSG. Om du vill aktivera det måste du välja regeln i listan och klicka på **tillämpa** (som förklaras i nästa steg).
+   > När du har klickat på **Lägg till** har du lagt till regeln och den visas med de andra rekommenderade reglerna. Men du har inte använt den på NSG. Om du vill aktivera det måste du välja regeln i listan och klicka på **tillämpa** (som förklaras i nästa steg).
 
 3. Om du vill använda den nya regeln väljer du den nya regeln i listan och klickar på **Använd**.
 
     ![tillämpa regel](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### <a name="delete-a-rule"></a>Ta bort en <a name ="delete-rule"> </a> regel
+### <a name="delete-a-rule"></a>Ta bort en <a name ="delete-rule"></a> regel
 
 Vid behov kan du ta bort en rekommenderad regel för den aktuella sessionen. Du kan till exempel bestämma att tillämpa en föreslagen regel kan blockera legitim trafik.
 

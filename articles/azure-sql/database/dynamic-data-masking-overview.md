@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787696"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918118"
 ---
 # <a name="dynamic-data-masking"></a>Dynamisk datamaskning 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL Database, Azure SQL-hanterad instans och Azure Synapse Analytics stöd
 
 Dynamisk datamaskning förhindrar obehörig åtkomst till känsliga data genom att låta kunder ange hur mycket av känsliga data som avslöja med minimal påverkan på programnivån. Det är en principbaserad säkerhetsfunktion som fungerar genom att dölja känslig data i resultatuppsättningen för en fråga över angivna databasfält, medan data i databasen förblir oförändrad.
 
-En tjänst representant i ett Call Center kan till exempel identifiera anropare med flera siffror i sin e-postadress, men dessa data objekt bör inte vara helt exponerade för tjänst representanten. En masknings regel kan definieras som maskerar alla e-postadresser i resultat uppsättningen för en fråga. Ett annat exempel är att en lämplig datamask kan definieras för att skydda personliga data, så att en utvecklare kan fråga produktions miljöer i fel söknings syfte utan att överskrida reglerna för efterlevnad.
+En tjänst representant i ett Call Center kan till exempel identifiera en anropare genom att bekräfta flera tecken i sin e-postadress, men den fullständiga e-postadressen bör inte visas för tjänst representanten. En masknings regel kan definieras som maskerar alla e-postadresser i resultat uppsättningen för en fråga. Ett annat exempel är att en lämplig datamask kan definieras för att skydda personliga data, så att en utvecklare kan fråga produktions miljöer i fel söknings syfte utan att överskrida reglerna för efterlevnad.
 
 ## <a name="dynamic-data-masking-basics"></a>Grunder för dynamisk data maskering
 

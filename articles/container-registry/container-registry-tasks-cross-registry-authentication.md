@@ -3,12 +3,12 @@ title: Autentisering mellan register från ACR-aktivitet
 description: Konfigurera en Azure Container Registry aktivitet (ACR Task) för att få åtkomst till ett annat privat Azure Container Registry med hjälp av en hanterad identitet för Azure-resurser
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 0e8e2690113167ad68ef1fc0bbef322491997c76
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 789d2c141f8b7c3f2eb8daa31d99090e3d028a43
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251156"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915836"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Autentisering mellan register i en ACR-aktivitet med hjälp av en Azure-hanterad identitet 
 
@@ -55,7 +55,7 @@ Stegen för det här exemplet för [flera steg](container-registry-tasks-multi-s
 version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git#main -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
   - push: ["$Registry/hello-world:$ID"]
 ```
 

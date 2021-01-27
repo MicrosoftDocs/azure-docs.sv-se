@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071614"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916141"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
 
@@ -50,7 +50,7 @@ Genom att definiera listor över kända säkra program och generera aviseringar 
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)|
 |Datorer som stöds:|![Ja ](./media/icons/yes-icon.png) Azure-och icke-Azure-datorer som kör Windows och Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure båg](../azure-arc/index.yml) -datorer|
 |Nödvändiga roller och behörigheter:|**Säkerhets läsare** och **läsar** roller kan båda Visa grupper och listor över kända säkra program<br>Rollerna **deltagare** och **säkerhets administratör** kan både redigera grupper och listor över kända säkra program|
@@ -209,7 +209,7 @@ När du flyttar en dator från en grupp till en annan så ändras den program ko
 
 1. Välj mål gruppen och välj **Flytta dator**.
 
-1. Välj **Spara** om du vill spara ändringarna.
+1. Välj **Spara** för att spara ändringarna.
 
 
 

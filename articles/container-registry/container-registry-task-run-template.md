@@ -3,12 +3,12 @@ title: Snabb körning av uppgift med mall
 description: Köa en ACR-uppgift köra för att skapa en avbildning med hjälp av en Azure Resource Manager mall
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927776"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916073"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Köra ACR-uppgifter med Resource Manager-mallar
 
@@ -26,7 +26,7 @@ En Resource Manager-mall för att köa en uppgifts körning är användbar i aut
 * Du måste ange en fjärran sluten kontext, till exempel en GitHub-lagrings platsen som [käll plats](container-registry-tasks-overview.md#context-locations) för aktivitets körningen. Du kan inte använda en lokal käll kontext.
 * För uppgifter som körs med hjälp av en hanterad identitet tillåts endast en hanterad identitet som *tilldelats av användare* .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **GitHub-konto** – skapa ett konto på https://github.com om du inte redan har ett. 
 * **Exempel databas för förgrening** – för de uppgifts exempel som visas här använder du GITHUB-gränssnittet för att förgrena följande exempel lager till ditt GitHub-konto: https://github.com/Azure-Samples/acr-build-helloworld-node . Den här lagrings platsen innehåller exempel-Dockerfiles och käll kod för att bygga små behållar avbildningar.
@@ -42,7 +42,7 @@ I det här exemplet anger du värden för följande mallparametrar:
 |Parameter  |Värde  |
 |---------|---------|
 |registryName     |Unikt namn på register som skapas         |
-|lagrings platsen     |Mål databas för bygg uppgift        |
+|repository     |Mål databas för bygg uppgift        |
 |taskRunName     |Namnet på uppgifts körningen, som anger en bildtagg |
 |sourceLocation     |Fjärrkontext för build-uppgiften, till exempel https://github.com/Azure-Samples/acr-build-helloworld-node . Dockerfile i lagrings platsen-roten skapar en behållar avbildning för en liten Node.js-webbapp. Om du vill kan du använda din förgrening av lagrings platsen som bygg kontext.         |
 
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 Föregående kommando skickar parametrarna på kommando raden. Om du vill kan du skicka dem i en [parameter fil](../azure-resource-manager/templates/parameter-files.md).
@@ -112,7 +112,7 @@ Utdata visar loggen för aktivitets körning.
 Du kan också Visa aktivitets körnings loggen i Azure Portal. 
 
 1. Navigera till behållar registret
-2. Under **tjänster**väljer du **aktiviteter**  >  **körs**.
+2. Under **tjänster** väljer du **aktiviteter**  >  **körs**.
 3. Välj körnings-ID, i det här fallet *CA1*. 
 
 Portalen visar körnings loggen för aktiviteten.
@@ -182,12 +182,12 @@ I det här exemplet anger du värden för följande mallparametrar:
 |Parameter  |Värde  |
 |---------|---------|
 |registryName     |Namn på registret där avbildningen skapas  |
-|lagrings platsen     |Mål databas för bygg uppgift        |
+|repository     |Mål databas för bygg uppgift        |
 |taskRunName     |Namnet på uppgifts körningen, som anger en bildtagg |
 |userAssignedIdentity |Resurs-ID för användardefinierad identitet som har Aktiver ATS i uppgiften|
 |customRegistryIdentity | Klient-ID för användardefinierad identitet som är aktive rad i uppgiften och som används för att autentisera med anpassat register |
 |customRegistry |Inloggnings Server namnet för det anpassade registret som används i uppgiften, till exempel *mybaseregistry.azurecr.io*|
-|sourceLocation     |Fjärran sluten kontext för build-uppgiften, till exempel * https://github.com/ \<your-GitHub-ID\> /ACR-build-HelloWorld-Node.* |
+|sourceLocation     |Fjärran sluten kontext för build-uppgiften, till exempel *https://github.com/ \<your-GitHub-ID\> /ACR-build-HelloWorld-Node.* |
 |dockerFilePath | Sökväg till Dockerfile i fjärrkontexten som används för att bygga avbildningen. |
 
 ### <a name="deploy-the-template"></a>Distribuera mallen
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```

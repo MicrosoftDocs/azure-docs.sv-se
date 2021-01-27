@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 01/27/2021
 ms.author: memildin
-ms.openlocfilehash: ee9a20d3e5bb6974676d6d7a8285a56247756f64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916480"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -46,6 +46,7 @@ Uppdateringar i januari inkluderar:
 - [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [CSV-export av filtrerad lista över rekommendationer](#csv-export-of-filtered-list-of-recommendations)
 - ["Ej tillämpligt" resurser rapporteras nu som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
+- [Exportera vecko Visa ögonblicks bilder av säkra data om Poäng och regelefterlevnad med kontinuerlig export (för hands version)](#export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview)
 
 
 ### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure Security Benchmark är nu standard princip initiativet för Azure Security Center
@@ -224,6 +225,18 @@ Tidigare fanns resurser som utvärderades för en rekommendation och som **inte 
 Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Det kommer inte att påverka dina säkra poäng i Azure Security Center.
 
 
+### <a name="export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview"></a>Exportera vecko Visa ögonblicks bilder av säkra data om Poäng och regelefterlevnad med kontinuerlig export (för hands version)
+
+Vi har lagt till en ny förhands gransknings funktion i de [löpande export](continuous-export.md) verktygen för att exportera vecko Visa ögonblicks bilder av säkra poäng och regelefterlevnad.
+
+När du definierar en löpande export anger du export frekvensen:
+
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="Välja frekvens för din kontinuerliga export":::
+
+- **Strömning** – utvärderingar skickas i real tid när en resurs hälso tillstånd uppdateras (om inga uppdateringar inträffar skickas inga data).
+- **Ögonblicks bilder** – en ögonblicks bild av det aktuella läget för alla utvärderingar av efterlevnad kommer att skickas varje vecka (detta är en förhands gransknings funktion för varje veckas ögonblicks bilder av säkra poäng och information om regelefterlevnad).
+
+Lär dig mer om de fullständiga funktionerna i den här funktionen för att [kontinuerligt exportera Security Center data](continuous-export.md)
 
 ## <a name="december-2020"></a>December 2020
 
@@ -571,7 +584,7 @@ Läs mer i [ta bort en standard från din instrument panel](update-regulatory-co
 
 Azure Resource Graph är en tjänst i Azure som är utformad för att tillhandahålla effektiv resurs utforskning med möjlighet att fråga i skala över en specifik uppsättning prenumerationer så att du effektivt kan styra din miljö. 
 
-För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Ett exempel:
+För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Exempel:
 
 - Till gångs lager använder (ARG)
 - Vi har dokumenterat en exempel-ARG-fråga för att [identifiera konton utan Multi-Factor Authentication (MFA) aktiverat](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)

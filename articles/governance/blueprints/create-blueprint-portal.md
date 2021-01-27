@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en skiss i portalen'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter via Azure Portal.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022538"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918338"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Snabb start: definiera och tilldela en skiss i portalen
 
@@ -206,7 +206,7 @@ När en skiss har publicerats kan den tilldelas en prenumeration. Tilldela skiss
 
 1. På sidan **tilldela skiss** i list rutan **prenumeration** väljer du de prenumerationer som du vill distribuera den här skissen till.
 
-   Om det finns Enterprise-erbjudanden som stöds tillgängliga från [Azure-fakturering](../../cost-management-billing/index.yml) aktiveras länken **Skapa nytt** under rutan **Prenumeration**. Gör så här:
+   Om det finns Enterprise-erbjudanden som stöds tillgängliga från [Azure-fakturering](../../cost-management-billing/index.yml) aktiveras länken **Skapa nytt** under rutan **Prenumeration**. Följ de här stegen:
 
    1. Välj länken **Skapa nytt** för att skapa en ny prenumeration i stället för att välja befintliga.
 
@@ -240,7 +240,7 @@ När en skiss har publicerats kan den tilldelas en prenumeration. Tilldela skiss
 
 1. För prenumerationsnivåns rolltilldelning **[Användargrupp eller programnamn]: Deltagare**, så sök efter och välj en användare, en app eller grupp.
 
-1. För princip tilldelningen på prenumerations nivå anger du **taggnamnet** till **CostCenter** och **Tag Value** **ContosoIT**.
+1. För princip tilldelningen på prenumerations nivå anger du **taggnamnet** till **CostCenter** och  **ContosoIT**.
 
 1. För **ResourceGroup** anger du **namnet** på **STORAGEACCOUNT** och en **plats** för **USA, östra 2** i list rutan.
 

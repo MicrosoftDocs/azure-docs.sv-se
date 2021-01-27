@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 2876339d1c11802bf47e5f1bd660fe5d07568410
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 06440c49971c1347e2bad11fcc186220b21e0145
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065379"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917477"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4- och Dasv4-serien
 
@@ -26,6 +26,7 @@ Dav4-serien och Dasv4-serien är nya storlekar som använder AMD: s 2.35 GHz EPY
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 Dav4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processorn som kan uppnå en högre högsta frekvens på 3.35 GHz. Storlekarna i Dav4-serien erbjuder en kombination av vCPU, minne och tillfällig lagring för de flesta produktions arbets belastningar. Datadisklagring faktureras separat från virtuella datorer. Om du vill använda Premium SSD använder du Dasv4-storlekarna. Pris-och debiterings mätare för Dasv4-storlekar är samma som för Dav4-serien.
@@ -49,6 +50,7 @@ Dav4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 Dasv4-seriens storlekar baseras på 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processorn som kan uppnå en högre högsta frekvens på 3.35 GHz och använder Premium SSD. Storlekarna i Dasv4-serien erbjuder en kombination av vCPU, minne och tillfällig lagring för de flesta produktions arbets belastningar.

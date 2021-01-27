@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: c9d11f1ddc3e1dd2239bdfce9c41f58fe9e20497
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d741aad2e97b211e42dc6c8b6176f102703acc5b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539954"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916497"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender för SQL-servrar på datorer 
 
@@ -30,10 +30,10 @@ Du ser aviseringar när det finns misstänkta databas aktiviteter, potentiella s
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|**Azure Defender för SQL-servrar på datorer** faktureras enligt [pris sidan](security-center-pricing.md)|
 |Skyddade SQL-versioner:|Azure SQL Server (alla versioner som omfattas av Microsofts support)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Konfigurera Azure Defender för SQL-servrar på datorer

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203396"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917259"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Storlekar för virtuella datorer i B-serien
 
@@ -27,8 +27,12 @@ B-serien levereras i följande VM-storlekar:
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds * *<br>
+
+* Virtuella datorer i B-serien är burst-baserade och därför kan ACU nummer variera beroende på arbets belastningar och kärn användning.<br>
+* * Accelererat nätverk stöds bara för *Standard_B12ms*, *Standard_B16ms* och *Standard_B20ms*.
 <br>
-* Virtuella datorer i B-serien är burst-baserade och därför kan ACU nummer variera beroende på arbets belastningar och kärn användning.
+<br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Bas processor prestanda för virtuell dator | Högsta CPU-prestanda för virtuell dator | Inledande krediter | Krediter i bank/timme | Högsta antal krediter | Maximalt antal datadiskar | Maximalt cacheminne för cachelagrad och temporär lagring: IOPS/Mbit/s | Maximalt antal cachelagrade diskar: IOPS/MBps | Maximalt antal nätverkskort |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: din första PowerShell-fråga'
 description: I den här snabb starten följer du stegen för att aktivera modulen resurs diagram för Azure PowerShell och köra din första fråga.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b810f4af319d3a5212d35e3387ab35b9fa40aafa
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 131bed4fe60035682a317e186f11561bc005b298
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057441"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917681"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Snabb start: kör din första resurs diagram fråga med hjälp av Azure PowerShell
 

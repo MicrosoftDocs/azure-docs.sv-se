@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: din första Azure CLI-fråga'
 description: I den här snabb starten följer du stegen för att aktivera resurs diagram tillägget för Azure CLI och kör din första fråga.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 216972fb3c64efa22dc4d344e5021a3c2da74266
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5111f59eb760afda4e206837ca5bdf8bcc201338
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056778"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917849"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Snabb start: kör din första resurs diagram fråga med Azure CLI
 

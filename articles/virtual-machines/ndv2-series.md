@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dcfbacb788225d936b236c901e9477a9bbb23b94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ecbccf2ba9f49699b89782cfb687f5790841eb9e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585300"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918321"
 ---
 # <a name="updated-ndv2-series"></a>Uppdaterad NDv2-serien
 
@@ -38,6 +38,7 @@ I stor skala är NDv2 byggd för både beräknings intensiva data (med 8 GPU-pro
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 InfiniBand: stöds<br>
 NVIDIA NVLink-Interconnect: stöds<br>
 <br>

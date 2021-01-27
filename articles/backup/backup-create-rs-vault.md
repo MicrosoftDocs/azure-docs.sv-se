@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig hur du skapar och konfigurera
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915734"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Skapa och konfigurera ett Recovery Services valv
 
@@ -46,9 +46,9 @@ Med alternativet återställnings alternativ **över regions återställning (CR
 
 Den har stöd för följande data Källor:
 
-- Virtuella Azure-datorer
-- SQL-databaser som finns på virtuella Azure-datorer
-- SAP HANA databaser som finns på virtuella Azure-datorer
+- Virtuella Azure-datorer (allmän tillgänglighet)
+- SQL-databaser som finns på virtuella Azure-datorer (för hands version)
+- SAP HANA databaser som finns på virtuella Azure-datorer (för hands version)
 
 Genom att använda återställning mellan regioner kan du:
 
@@ -65,11 +65,12 @@ Eftersom den här processen är på lagrings nivå finns det [pris effekter](htt
 >Innan du börjar:
 >
 >- Granska [support matrisen](backup-support-matrix.md#cross-region-restore) för en lista över hanterade typer och regioner som stöds.
->- Funktionen för återställning av kors region (CRR) har nu förvisats i alla offentliga Azure-regioner.
+>- Funktionen för återställning av kors region (CRR) för virtuella Azure-datorer är nu allmänt tillgänglig i alla offentliga Azure-regioner.
+>- Återställning mellan regioner för SQL-och SAP HANA-databaser är i för hands version i alla offentliga Azure-regioner.
 >- CRR är ett alternativ för att välja en valv nivå för alla GRS-valv (inaktiverat som standard).
 >- Efter väljer kan det ta upp till 48 timmar innan säkerhets kopierings objekten är tillgängliga i sekundära regioner.
 >- För närvarande stöds endast CRR för virtuella Azure-datorer i Azure Resource Manager virtuella Azure-datorer. Klassiska virtuella Azure-datorer stöds inte.  När ytterligare hanterings typer stöder CRR registreras de **automatiskt** .
->- Återställning mellan regioner kan för närvarande inte återställas till GRS eller LRS när skyddet initieras för första gången.
+>- Återställning mellan regioner **kan för närvarande inte återställas** till GRS eller LRS när skyddet initieras för första gången.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurera återställning mellan regioner
 
