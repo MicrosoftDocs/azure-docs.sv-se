@@ -1,14 +1,14 @@
 ---
 title: Översikt över Azure Resource Graph
 description: Förstå hur Azure Resource Graph-tjänsten möjliggör komplexa frågor om resurser i stor skala över prenumerationer och klienter.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 8e61dadc44a2b07066f7bac761c366c746cef1f1
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b5df124d07b8ecfb20f5dec08830d8156e8df2cd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057781"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919149"
 ---
 # <a name="what-is-azure-resource-graph"></a>Vad är Azure Resource Graph?
 

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: d21c75218fdd43ffcf977a1d70bc325ce5154919
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 53b4b09a95d99bc0fb84f495d1105653f61010c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96606947"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920366"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- och Edsv4-serien
 
@@ -30,6 +30,7 @@ Edv4-seriens storlekar körs på Intel &reg; Xeon &reg; platina 8272CL-processor
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | <sup>**</sup> Maximalt cacheminne för cachelagrad och temporär lagring: IOPS/Mbit/s | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |
@@ -56,6 +57,7 @@ Edsv4-seriens storlekar körs på Intel &reg; Xeon &reg; platina 8272CL-processo
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | <sup>**</sup> Högsta cachelagrade data flöde för cache och temporär lagring: IOPS/Mbit/s (cachestorlek i GiB) | Maximalt antal cachelagrade diskar: IOPS/MBps | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |

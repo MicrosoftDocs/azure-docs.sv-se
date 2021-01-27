@@ -1,14 +1,14 @@
 ---
 title: Översikt över Azure Blueprint
 description: Förstå hur tjänsten Azure-ritningar ger dig möjlighet att skapa, definiera och distribuera artefakter i din Azure-miljö.
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.topic: overview
-ms.openlocfilehash: 0dbf5ab54b694399c9d15cce84e8eca34a5d924e
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892735"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919350"
 ---
 # <a name="what-is-azure-blueprints"></a>Vad är Azure Blueprint?
 
@@ -31,7 +31,7 @@ Nästan allt som du vill inkludera för distribution i Azure-ritningar kan utfö
 
 Med Azure-ritningar bevaras relationen mellan skiss definitionen (vad _ska_ distribueras) och skiss tilldelningen (vad _som distribuerades_ ). Den här anslutningen har stöd för förbättrad spårning och granskning av distributioner. Azure-ritningar kan också uppgradera flera prenumerationer samtidigt som styrs av samma skiss.
 
-Du behöver inte välja mellan en ARM-mall och en skiss. Varje skiss kan bestå av noll eller fler _artefakter_för ARM-mallar. Det här stödet innebär att tidigare ansträngningar för att utveckla och underhålla ett bibliotek med ARM-mallar kan återanvändas i Azure-ritningar.
+Du behöver inte välja mellan en ARM-mall och en skiss. Varje skiss kan bestå av noll eller fler _artefakter_ för ARM-mallar. Det här stödet innebär att tidigare ansträngningar för att utveckla och underhålla ett bibliotek med ARM-mallar kan återanvändas i Azure-ritningar.
 
 ## <a name="how-its-different-from-azure-policy"></a>Skillnaden mot Azure Policy
 
@@ -47,7 +47,7 @@ En princip kan inkluderas som en av många _artefakter_ i en skiss definition. M
 
 En skiss består av _artefakter_. Azure-ritningar stöder för närvarande följande resurser som artefakter:
 
-|Resurs  | Hierarkialternativ| Beskrivning  |
+|Resurs  | Hierarkialternativ| Description  |
 |---------|---------|---------|
 |Resursgrupper | Prenumeration | Skapa en ny resursgrupp för användning av andra artefakter i skissen.  Dessa resurs grupper för plats hållare gör det möjligt att organisera resurser exakt som du vill att de ska vara strukturerade och ger en omfattnings gräns för inkluderade principer och roll tilldelnings artefakter och ARM-mallar. |
 |ARM-mall | Prenumeration, resursgrupp | Mallar, inklusive kapslade och länkade mallar, används för att skapa komplexa miljöer. Exempelmiljöer: en SharePoint-servergrupp, Azure Automation State Configuration eller en Log Analytics-arbetsyta. |
@@ -108,7 +108,7 @@ Om du vill tilldela eller ta bort tilldelningar av skisser måste ditt konto ha 
 
 Följande inbyggda roller är tillgängliga:
 
-|Azure-roll | Beskrivning |
+|Azure-roll | Description |
 |-|-|
 |[Ägare](../../role-based-access-control/built-in-roles.md#owner) | Förutom andra behörigheter innehåller alla Azure Blueprint-relaterade behörigheter. |
 |[Deltagare](../../role-based-access-control/built-in-roles.md#contributor) | Förutom andra behörigheter kan skapa och ta bort skiss definitioner, men har inte behörighet för skiss tilldelning. |
@@ -124,12 +124,12 @@ Om dessa inbyggda roller inte motsvarar dina behov kan du skapa en [anpassad rol
 
 Följande begränsningar finns för vissa fält:
 
-|Objekt|Field|Tillåtna tecken|Max. Längd|
+|Objekt|Fält|Tillåtna tecken|Max. Längd|
 |-|-|-|-|
-|Skiss|Namn|bokstäver, siffror, bindestreck och punkter|48|
+|Skiss|Name|bokstäver, siffror, bindestreck och punkter|48|
 |Skiss|Version|bokstäver, siffror, bindestreck och punkter|20|
-|Skisstilldelning|Namn|bokstäver, siffror, bindestreck och punkter|90|
-|Skiss artefakt|Namn|bokstäver, siffror, bindestreck och punkter|48|
+|Skisstilldelning|Name|bokstäver, siffror, bindestreck och punkter|90|
+|Skiss artefakt|Name|bokstäver, siffror, bindestreck och punkter|48|
 
 ## <a name="video-overview"></a>Videoöversikt
 

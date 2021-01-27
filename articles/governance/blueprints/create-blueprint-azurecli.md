@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en skiss med Azure CLI'
 description: I den här snabb starten använder du Azure-ritningar för att skapa, definiera och distribuera artefakter med hjälp av Azure CLI.
-ms.date: 01/26/2021
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875219"
+ms.locfileid: "98920248"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Snabb start: definiera och tilldela en Azure Blueprint med Azure CLI
 
@@ -167,6 +167,9 @@ Det första steget när du definierar ett standardmönster för efterlevnad är 
         --parameters artifacts\policyTags.json
      ```
 
+     > [!NOTE]
+     > När `az blueprint` du använder på en Mac ersätter `\` `/` du med för parameter värden som innehåller sökvägen. I det här fallet blir värdet för **parametrar** `artifacts/policyTags.json` .
+
 1. Lägg till en till principtilldelning för lagringstaggen (genom att återanvända parametern _storageAccountType_) för prenumerationen. Den här ytterligare principtilldelningsartefakten visar att en parameter som definierats för skissen kan användas av mer än en artefakt. I exemplet används **storageAccountType** för att ange en tagg på resursgruppen. Det här värdet anger information om lagringskontot som skapas i nästa steg. I det här exemplet används den inbyggda principen _Lägg till tagg och standardvärdet i resursgrupper_ med ett GUID på `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - JSON-fil – artifacts\policyStorageTags.jspå
@@ -193,6 +196,9 @@ Det första steget när du definierar ett standardmönster för efterlevnad är 
         --description 'Apply storage tag and the parameter also used by the template to resource groups' \
         --parameters artifacts\policyStorageTags.json
      ```
+
+     > [!NOTE]
+     > När `az blueprint` du använder på en Mac ersätter `\` `/` du med för parameter värden som innehåller sökvägen. I det här fallet blir värdet för **parametrar** `artifacts/policyStorageTags.json` .
 
 1. Lägg till en mall under resursgruppen. Parametern **Template** för en arm-mall innehåller de normala JSON-komponenterna i mallen. Mallen återanvänder även skissparametrarna **storageAccountType**, **tagName** och **tagValue** genom att dem till mallen. Skiss parametrarna är tillgängliga för mallen genom att använda parameter **parametrar** och inuti mall-JSON som nyckel/värde-par används för att mata in värdet. Namn på skiss och mall kan vara identiska.
 
@@ -276,6 +282,9 @@ Det första steget när du definierar ett standardmönster för efterlevnad är 
         --parameters artifacts\templateStorageParams.json \
         --resource-group-art 'storageRG'
      ```
+
+     > [!NOTE]
+     > När `az blueprint` du använder på en Mac ersätter `\` `/` du med för parameter värden som innehåller sökvägen. I det här fallet blir värdet för **mallen** `artifacts/templateStorage.json` och **parametrar** blir `artifacts/templateStorageParams.json` .
 
 1. Lägg till rolltilldelning under resursgruppen. På liknande sätt som i föregående rolltilldelningspost använder exemplet nedan definitionsidentifieraren för rollen **Ägare** och tilldelar den en annan parameter från skissen. I det här exemplet används den inbyggda rollen _Ägare_ med ett GUID på `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
 

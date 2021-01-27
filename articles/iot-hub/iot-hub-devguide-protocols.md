@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016016"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919033"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referens – Välj ett kommunikations protokoll
 
@@ -42,7 +42,7 @@ I följande tabell finns rekommendationer på hög nivå för ditt val av protok
 
 Tänk på följande när du väljer protokoll för kommunikation på enhets sidan:
 
-* **Mönster för moln till enhet**. HTTPS har inget effektivt sätt att implementera Server-push. När du använder HTTPS avsöker enhets IoT Hub efter meddelanden från molnet till enheten. Den här metoden är ineffektiv för både enhets-och IoT Hub. Under aktuella HTTPS-rikt linjer ska varje enhet söka efter meddelanden var 25: e minut eller mer. MQTT och AMQP har stöd för Server-push när du tar emot meddelanden från molnet till enheten. De aktiverar direkt push-meddelanden från IoT Hub till enheten. Om leverans fördröjning är ett problem är MQTT eller AMQP de bästa protokollen som ska användas. För sällan anslutna enheter fungerar HTTPS också.
+* **Mönster för moln till enhet**. HTTPS har inget effektivt sätt att implementera Server-push. När du använder HTTPS avsöker enhets IoT Hub efter meddelanden från molnet till enheten. Den här metoden är ineffektiv för både enhets-och IoT Hub. Under aktuella HTTPS-rikt linjer ska varje enhet söka efter meddelanden var 25: e minut eller mer. Om du skickar mer HTTPS får du resultat i IoT Hub begränsning av begär Anden. MQTT och AMQP har stöd för Server-push när du tar emot meddelanden från molnet till enheten. De aktiverar direkt push-meddelanden från IoT Hub till enheten. Om leverans fördröjning är ett problem är MQTT eller AMQP de bästa protokollen som ska användas. För sällan anslutna enheter fungerar HTTPS också.
 
 * **Fält-gatewayer**. MQTT och HTTPS stöder endast en enhets identitet (enhets-ID plus autentiseringsuppgifter) per TLS-anslutning. Därför stöds inte dessa protokoll för fält-Gateway- [scenarier](iot-hub-devguide-endpoints.md#field-gateways) som kräver multiplexering av meddelanden med hjälp av flera enhets identiteter i en enda eller pool av överordnade anslutningar till IoT Hub. Sådana gatewayer kan använda ett protokoll som stöder flera enhets identiteter per anslutning, till exempel AMQP, för den överordnade trafiken.
 

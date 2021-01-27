@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927421"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920298"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Mönster för Azure Functions bindnings uttryck
 
-En av de mest kraftfulla funktionerna i [utlösare och bindningar](./functions-triggers-bindings.md) är *bindnings uttryck* . I *function.jspå* fil och i funktions parametrar och kod kan du använda uttryck som matchar värden från olika källor.
+En av de mest kraftfulla funktionerna i [utlösare och bindningar](./functions-triggers-bindings.md) är *bindnings uttryck*. I *function.jspå* fil och i funktions parametrar och kod kan du använda uttryck som matchar värden från olika källor.
 
 De flesta uttryck kan identifieras genom att de omsluts av klammerparenteser. I en kö utlösnings funktion `{queueTrigger}` matchas exempelvis meddelande texten i kön. Om `path` egenskapen för en BLOB-utgående bindning är `container/{queueTrigger}` och funktionen utlöses av ett Queue `HelloWorld` -meddelande, skapas en blob med namnet `HelloWorld` .
 
@@ -164,6 +164,7 @@ En Azure Queue Storage-utlösare stöder till exempel följande egenskaper:
 Dessa metadata-värden är tillgängliga i *function.jspå* fil egenskaper. Anta till exempel att du använder en utlösare för kön och att Queue-meddelandet innehåller namnet på en blob som du vill läsa. I *function.js* -filen kan du använda `queueTrigger` metadata-egenskapen i BLOB `path` -egenskapen, som du ser i följande exempel:
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ Dessa metadata-värden är tillgängliga i *function.jspå* fil egenskaper. Anta
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 Information om metadata-egenskaper för varje utlösare beskrivs i motsvarande referens artikel. Ett exempel finns i [kö-utlösarens metadata](functions-bindings-storage-queue-trigger.md#message-metadata). Dokumentation finns också på fliken **integrera** i portalen i avsnittet **dokumentation** under området för bindnings konfiguration.  
@@ -292,7 +294,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>Skapa GUID
 
-`{rand-guid}`Bindnings uttrycket skapar ett GUID. Följande BLOB-sökväg i en `function.json` fil skapar en blob med ett namn som *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* .
+`{rand-guid}`Bindnings uttrycket skapar ett GUID. Följande BLOB-sökväg i en `function.json` fil skapar en blob med ett namn som *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
 
 ```json
 {
@@ -305,7 +307,7 @@ public class BlobName
 
 ## <a name="current-time"></a>Aktuell tid
 
-Bindnings uttrycket `DateTime` matchar `DateTime.UtcNow` . Följande BLOB-sökväg i en `function.json` fil skapar en blob med ett namn som *2018-02-16T17-59-55Z.txt* .
+Bindnings uttrycket `DateTime` matchar `DateTime.UtcNow` . Följande BLOB-sökväg i en `function.json` fil skapar en blob med ett namn som *2018-02-16T17-59-55Z.txt*.
 
 ```json
 {

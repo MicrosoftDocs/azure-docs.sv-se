@@ -1,14 +1,14 @@
 ---
 title: Hantera tilldelningar med PowerShell
 description: Lär dig hur du hanterar skiss tilldelningar med den officiella Azure-ritningen PowerShell-modul, AZ. skiss.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051414"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919384"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Hantera tilldelningar med PowerShell
 
@@ -49,7 +49,7 @@ Azure-modulen Azure-modeller för PowerShell är **AZ. skissa**.
 ## <a name="get-blueprint-definitions"></a>Hämta skiss definitioner
 
 Det första steget för att arbeta med en tilldelning får ofta en referens till en skiss definition.
-`Get-AzBlueprint`Cmdleten hämtar en eller flera skiss definitioner. Cmdleten kan hämta skiss definitioner från en hanterings grupp med `-ManagementGroupId {mgId}` eller en prenumeration med `-SubscriptionId {subId}` . Parametern **Name** hämtar en skiss definition, men den måste användas med **ManagementGroupId** eller **SubscriptionId**. **Version** kan användas med **ett namn** för att vara mer utförlig om vilken skiss definition som returneras. I stället för **version**tar växeln `-LatestPublished` den senast publicerade versionen.
+`Get-AzBlueprint`Cmdleten hämtar en eller flera skiss definitioner. Cmdleten kan hämta skiss definitioner från en hanterings grupp med `-ManagementGroupId {mgId}` eller en prenumeration med `-SubscriptionId {subId}` . Parametern **Name** hämtar en skiss definition, men den måste användas med **ManagementGroupId** eller **SubscriptionId**. **Version** kan användas med **ett namn** för att vara mer utförlig om vilken skiss definition som returneras. I stället för **version** tar växeln `-LatestPublished` den senast publicerade versionen.
 
 I följande exempel används `Get-AzBlueprint` för att hämta alla versioner av en skiss definition med namnet "101-skisser-definition-Subscription" från en speciell prenumeration som visas som `{subId}` :
 
@@ -164,11 +164,11 @@ Om skiss tilldelningen inte finns ännu kan du skapa den med `New-AzBlueprintAss
   - Om ingen resurs grupps parameter har angetts och saknar **DefaultValue**, är resurs grupps parametern inte valfri
 - **AssignmentFile** (valfritt)
   - Sökvägen till en JSON-fil representation av en skiss tilldelning
-  - Den här parametern är en del av en PowerShell-parameter uppsättning som bara innehåller **namn**, **skiss**och **SubscriptionId**, plus de gemensamma parametrarna.
+  - Den här parametern är en del av en PowerShell-parameter uppsättning som bara innehåller **namn**, **skiss** och **SubscriptionId**, plus de gemensamma parametrarna.
 
 ### <a name="example-1-provide-parameters"></a>Exempel 1: Ange parametrar
 
-I följande exempel skapas en ny tilldelning av version 1,1 av skiss definitionen My-skiss som hämtats med `Get-AzBlueprint` , anger den hanterade identitets-och tilldelnings objekt platsen till ' westus2 ', låser resurserna med _AllResourcesReadOnly_och anger hash-tabeller för både **parameter** -och **ResourceGroupParameter** för en speciell prenumeration som representeras som `{subId}` :
+I följande exempel skapas en ny tilldelning av version 1,1 av skiss definitionen My-skiss som hämtats med `Get-AzBlueprint` , anger den hanterade identitets-och tilldelnings objekt platsen till ' westus2 ', låser resurserna med _AllResourcesReadOnly_ och anger hash-tabeller för både **parameter** -och **ResourceGroupParameter** för en speciell prenumeration som representeras som `{subId}` :
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -250,7 +250,7 @@ Ett exempel på en JSON-tilldelnings definitions fil för en användardefinierad
 
 ## <a name="update-blueprint-assignments"></a>Uppdatera skiss tilldelningar
 
-Ibland är det nödvändigt att uppdatera en skiss tilldelning som redan har skapats. `Set-AzBlueprintAssignment`Cmdleten hanterar den här åtgärden. Cmdlet: en tar de flesta av samma parametrar som `New-AzBlueprintAssignment` cmdleten gör, vilket gör att det går att uppdatera allt som har angetts för tilldelningen. Undantagen är _namn_, _skiss_och _SubscriptionId_. Endast de angivna värdena uppdateras.
+Ibland är det nödvändigt att uppdatera en skiss tilldelning som redan har skapats. `Set-AzBlueprintAssignment`Cmdleten hanterar den här åtgärden. Cmdlet: en tar de flesta av samma parametrar som `New-AzBlueprintAssignment` cmdleten gör, vilket gör att det går att uppdatera allt som har angetts för tilldelningen. Undantagen är _namn_, _skiss_ och _SubscriptionId_. Endast de angivna värdena uppdateras.
 
 Information om vad som händer när du uppdaterar en skiss tilldelning finns i [regler för uppdatering av tilldelningar](./update-existing-assignments.md#rules-for-updating-assignments).
 

@@ -225,7 +225,7 @@
           href: livestream.md
     - name: Ta bort Azure Sentinel
       href: offboard.md
-- name: Referens (ny!)
+- name: Referens
   items:
     - name: Azure RBAC-roller
       items:
@@ -241,10 +241,20 @@
           href: hunting-with-rest-api.md
         - name: Hantera watchlists med REST-API
           href: watchlist-with-rest-api.md
+    - name: Azure Monitor data referens
+      href: /azure/azure-monitor/reference/
     - name: Logic Apps-anslutningsappen i Azure Sentinel
       href: /connectors/azuresentinel/
     - name: Schema för nätverksnormalisering
       href: normalization-schema.md
+    - name: Schema referens för data Källa
+      href: data-source-schema-reference.md
+    - name: Kusto-frågespråk
+      items:
+        - name: Översikt över Kusto-frågor
+          href: /azure/data-explorer/kusto/query/
+        - name: Snabb referens för Kusto Query Language
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA-berikande
       href: ueba-enrichments.md
 - name: Resurser

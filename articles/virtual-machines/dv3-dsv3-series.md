@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 3d0735b99de3e0c68b48747d69e4720a9cbb3416
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d38b395ec4e4a3e9f3550e6a891ad4785dae8597
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500707"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919756"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- och Dsv3-serien
 
@@ -34,6 +34,7 @@ Virtuella datorer i dv3-serien Intel® Hyper-Threading-teknik.
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Maximalt data flöde för temporär lagring: IOPS/Read Mbit/s/Write Mbit/s | Högsta antal nätverkskort/nätverks bandbredd |
@@ -58,6 +59,7 @@ Virtuella datorer i Dsv3-serien Intel® Hyper-Threading-teknik.
 [Direktmigrering](maintenance-and-updates.md): stöds<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Högsta cachelagrade data flöde för cache och temporär lagring: IOPS/Mbit/s (cachestorlek i GiB) | Maximalt burst-cachelagrat och temporärt lagrings utrymme: IOPS/MBps<sup>1</sup> | Maximalt antal cachelagrade diskar: IOPS/MBps | Högsta burst-överförda disk data flöde: IOPS/Mbit/s<sup>1</sup> | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) |

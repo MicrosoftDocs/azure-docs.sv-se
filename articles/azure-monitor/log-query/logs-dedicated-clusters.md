@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609952"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920231"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -25,9 +25,6 @@ De funktioner som kräver dedikerade kluster är:
 - **[Flera arbets ytor](../log-query/cross-workspace-query.md)** – om en kund använder mer än en arbets yta för produktion kan det vara bra att använda dedicerat kluster. Frågor över flera arbets ytor kommer att köras snabbare om alla arbets ytor finns i samma kluster. Det kan också vara mer kostnads effektivt att använda dedicerat kluster som tilldelade kapacitets nivåer för kapacitet, ta hänsyn till all kluster inmatning och gäller alla dess arbets ytor, även om några av dem är små och inte berättigade till kapacitets reservations rabatt.
 
 Dedikerade kluster kräver att kunderna genomför med en kapacitet på minst 1 TB data inmatning per dag. Det är enkelt att migrera till ett dedikerat kluster. Ingen data förlust eller tjänst avbrott. 
-
-> [!IMPORTANT]
-> Dedikerade kluster godkänns och stöds fullt ut för produktions distributioner. Men på grund av tillfälliga kapacitets begränsningar kräver vi att ditt för registrering ska använda funktionen. Använd dina kontakter i Microsoft för att tillhandahålla dina prenumerations-ID: n.
 
 ## <a name="management"></a>Hantering 
 

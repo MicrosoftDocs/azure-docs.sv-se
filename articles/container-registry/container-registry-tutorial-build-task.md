@@ -4,12 +4,12 @@ description: I självstudien får du lära dig att konfigurera en Azure Containe
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 7f2e6d7f304977d3e6d92a778dba5bf026343707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 139acf60ba20fd613b2dd2b190881d6bd574c21f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562913"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919509"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Självstudier: Automatisera containeravbildningar i molnet när du checkar in källkod
 
@@ -52,7 +52,7 @@ az acr task create \
     --registry $ACR_NAME \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -82,7 +82,7 @@ Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande
   "step": {
     "arguments": [],
     "baseImageDependencies": null,
-    "contextPath": "https://github.com/gituser/acr-build-helloworld-node",
+    "contextPath": "https://github.com/gituser/acr-build-helloworld-node#main",
     "dockerFilePath": "Dockerfile",
     "imageNames": [
       "helloworld:{{.Run.ID}}"
@@ -104,7 +104,7 @@ Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
           "branch": "main",
-          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
+          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node#main",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
         },

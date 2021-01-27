@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b0ebb75530858a589c3166e21261e2f737fff50d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223643"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919977"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Skapa en virtuell Windows-dator med accelererat nätverk med Azure PowerShell
 
@@ -61,11 +61,9 @@ Följande distributioner stöds direkt från Azure-galleriet:
 
 ### <a name="supported-vm-instances"></a>Virtuella dator instanser som stöds
 
-Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimerade instans storlekar med två eller flera virtuella processorer (virtuella processorer).  Dessa serier som stöds är: Dv2/DSv2 och F/FS.
+Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimerade instans storlekar med 2 eller fler virtuella processorer. På instanser som stöder hyperthreading stöds accelererat nätverk på VM-instanser med 4 eller fler virtuella processorer. 
 
-På instanser som stöder hyperthreading stöds accelererat nätverk på VM-instanser med fyra eller fler virtuella processorer. Serien som stöds är: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS och MS/Mmsv2.
-
-Mer information om VM-instanser finns i [storlekar för virtuella Windows-datorer i Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Stöd för accelererat nätverk finns i den enskilda dokumentationen för [virtuella dator storlekar](../virtual-machines/sizes.md) . 
 
 ### <a name="custom-images"></a>Anpassade avbildningar
 

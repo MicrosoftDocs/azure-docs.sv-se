@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: din första ruby-fråga'
 description: I den här snabb starten följer du stegen för att aktivera resurs diagram symbolen för ruby och kör din första fråga.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 4ffd7f33fb83b7a1f247f687b77dd2ef9c8e5bc9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057322"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920048"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>Snabb start: kör din första resurs diagram fråga med ruby
 

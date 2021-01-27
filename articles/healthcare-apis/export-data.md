@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737616"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920265"
 ---
 # <a name="how-to-export-fhir-data"></a>Så här exporterar du FHIR-data
 
@@ -46,13 +46,14 @@ Det finns två obligatoriska huvud parametrar som måste anges för $export-jobb
 
 ### <a name="query-parameters"></a>Frågeparametrar
 Azure API för FHIR stöder följande frågeparametrar. Alla dessa parametrar är valfria:
-|Frågeparameter        | Definieras av FHIR-specifikationen?    |  Beskrivning|
+
+|Frågeparameter        | Definieras av FHIR-specifikationen?    |  Description|
 |------------------------|---|------------|
 | \_outputFormat | Ja | Stöder för närvarande tre värden för att justeras till FHIR-specifikationen: Application/FHIR + ndjson, Application/ndjson eller bara ndjson. Alla export jobb kommer att returneras `ndjson` och det skickade värdet påverkar inte kod beteendet. |
 | \_Starta | Ja | Gör att du endast kan exportera resurser som har ändrats sedan den angivna tiden |
 | \_bastyp | Ja | Gör att du kan ange vilka typer av resurser som ska tas med. Skriv till exempel \_ = patient returnerar endast patient resurser|
 | \_typefilter | Ja | Om du vill begära detaljerad filtrering kan du använda \_ typeFilter tillsammans med \_ typ parametern. Värdet för parametern _typeFilter är en kommaavgränsad lista över FHIR-frågor som ytterligare begränsar resultaten |
-| \_fönster | Nej |  Anger behållaren i det konfigurerade lagrings kontot där data ska exporteras. Om en behållare anges exporteras data till den behållaren i en ny mapp med namnet. Om behållaren inte anges exporteras den till en ny behållare med hjälp av timestamp och jobb-ID. |
+| \_fönster | Inga |  Anger behållaren i det konfigurerade lagrings kontot där data ska exporteras. Om en behållare anges exporteras data till den behållaren i en ny mapp med namnet. Om behållaren inte anges exporteras den till en ny behållare med hjälp av timestamp och jobb-ID. |
 
 
 ## <a name="next-steps"></a>Nästa steg

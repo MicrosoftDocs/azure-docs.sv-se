@@ -2,13 +2,13 @@
 title: Självstudie – lokala peer-miljöer i ett privat moln
 description: Lär dig hur du skapar ExpressRoute Global Reach peering till ett privat moln i en Azure VMware-lösning.
 ms.topic: tutorial
-ms.date: 1/5/2021
-ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/27/2021
+ms.openlocfilehash: e7b1e349f67fe63f63183c0ff6d1522498c65f8c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913166"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918728"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Självstudie: peer-lokala miljöer till ett privat moln
 
@@ -28,12 +28,12 @@ I den här guiden får du lära dig att:
 Innan du aktiverar anslutning mellan två ExpressRoute-kretsar med ExpressRoute Global Reach bör du läsa dokumentationen om hur du [aktiverar anslutningar i olika Azure-prenumerationer](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions).  
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Upprättad anslutning till och från ett privat moln i Azure VMware-lösningen med sin ExpressRoute-krets med en ExpressRoute-gateway i ett virtuellt Azure-nätverk (VNet), som är _krets 2_ från peering-procedurer.  
 - En separat, fungerande ExpressRoute-krets som används för att ansluta lokala miljöer till Azure, som är _krets 1_ från peering-procedurens perspektiv.
 - Ett/29 icke-överlappande [nätverks adress block](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) för ExpressRoute Global Reach-peering.
-- Se till att alla routrar som inkluderar ExpressRoute-leverantörens tjänst stöder autonomt system nummer (ASN) med 4 byte. Azure VMware-lösningen använder en ASN: er på 4 byte för att annonsera vägar.
+- Se till att alla gatewayer, inklusive ExpressRoute-leverantörens tjänst, har stöd för ett autonomt system nummer (ASN) med 4 byte. Azure VMware-lösningen använder 4 bytes offentliga ASN: er för annonserings vägar.
 
 > [!TIP]
 > I samband med dessa förutsättningar är din lokala ExpressRoute-krets _krets 1_, och din privata moln ExpressRoute-krets är i en annan prenumeration och har märkt _krets 2_. 

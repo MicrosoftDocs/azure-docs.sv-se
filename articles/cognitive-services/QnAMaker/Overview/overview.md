@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QNA Maker, robotar med låg kod, flera konversationer
-ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700736"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919569"
 ---
 # <a name="what-is-qna-maker"></a>Vad är QnA Maker?
 
@@ -22,14 +22,14 @@ QnA Maker används ofta för att bygga konversations klient program, bland annat
 
 ## <a name="when-to-use-qna-maker"></a>När du ska använda QnA Maker
 
-* **När du har statisk information** – Använd QNA Maker när du har statisk information i kunskaps basen med svar. Den här kunskaps basen är anpassad efter dina behov, som du har skapat med dokument som [PDF-filer och URL: er](../index.yml).
+* **När du har statisk information** – Använd QNA Maker när du har statisk information i kunskaps basen med svar. Den här kunskaps basen är anpassad efter dina behov, som du har skapat med dokument som [PDF-filer och URL: er](../Concepts/data-sources-and-content.md).
 * **När du vill ge samma svar på en begäran, fråga eller kommando** – när olika användare skickar samma fråga returneras samma svar.
 * **När du vill filtrera statisk information baserat på meta-information** – Lägg till [metadata](../how-to/metadata-generateanswer-usage.md) -taggar för att tillhandahålla ytterligare filtrerings alternativ som är relevanta för klient programmets användare och information. Common metadata-information inkluderar [CHI2TEST](../how-to/chit-chat-knowledge-base.md), innehålls typ, format, innehålls syfte och innehållets aktualitet.
 * **När du vill hantera en robot konversation som innehåller statisk information** – din kunskaps bas tar en användares konversations text eller kommando och svarar på den. Om svaret är en del av ett fördefinierat konversations flöde, som representeras i din kunskaps bas med [multi-turn-kontext](../how-to/multiturn-conversation.md), kan roboten enkelt tillhandahålla det här flödet.
 
 ## <a name="what-is-a-knowledge-base"></a>Vad är en kunskaps bas?
 
-QnA Maker [importerar ditt innehåll](../index.yml) till en kunskaps bas för fråga-och svars par. Import processen extraherar information om relationen mellan delarna i det strukturerade och det delvis strukturerade innehållet för att innebära relationer mellan frågan och svars paren. Du kan redigera de här frågorna och svars paren eller lägga till nya par.
+QnA Maker [importerar ditt innehåll](../Concepts/plan.md) till en kunskaps bas för fråga-och svars par. Import processen extraherar information om relationen mellan delarna i det strukturerade och det delvis strukturerade innehållet för att innebära relationer mellan frågan och svars paren. Du kan redigera de här frågorna och svars paren eller lägga till nya par.
 
 Innehållet i frågan och svars paret innehåller:
 * Alla alternativa formulär för frågan

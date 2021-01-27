@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ab173f47ed09dbe77c12cad844d8a1f3654f4a9b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 90f0cd913a191f345afd8acc3f3449b87e4cbfaf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734767"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918614"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Övervakning av fil integritet i Azure Security Center
 Lär dig hur du konfigurerar FIM (File Integrity Monitoring) i Azure Security Center att använda den här genom gången.
@@ -28,7 +28,7 @@ Lär dig hur du konfigurerar FIM (File Integrity Monitoring) i Azure Security Ce
 
 |Aspekt|Information|
 |----|:----|
-|Versions tillstånd:|Allmänt tillgänglig (GA)|
+|Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md).<br>FIM överför data till Log Analytics-arbetsytan. Data avgifterna gäller baserat på mängden data som du överför. Mer information finns i [Log Analytics prissättning](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Nödvändiga roller och behörigheter:|**Arbets ytans ägare** kan aktivera/inaktivera FIM (mer information finns i [Azure roles for Log Analytics](/services-hub/health/azure-roles#azure-roles)).<br>**Läsaren** kan visa resultat.|
 |Moln|![Ja ](./media/icons/yes-icon.png) kommersiella moln<br>![Ja ](./media/icons/yes-icon.png) National/suverän (US gov, Kina gov, övrigt gov)<br>Stöds bara i regioner där Azure Automation lösning för ändrings spårning är tillgänglig.<br>Se [regioner som stöds för länkad Log Analytics-arbetsyta](../automation/how-to/region-mappings.md).<br>[Läs mer om ändrings spårning](../automation/change-tracking/overview.md).|

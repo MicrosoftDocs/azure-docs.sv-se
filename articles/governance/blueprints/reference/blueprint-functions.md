@@ -1,14 +1,14 @@
 ---
 title: Azure-ritningar fungerar
 description: Beskriver de funktioner som är tillgängliga för användning med skiss artefakter i definitioner och tilldelningar av Azure-modeller.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: reference
-ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050768"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919282"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktioner för användning med Azure-ritningar
 
@@ -34,7 +34,7 @@ Returnerar ett objekt med egenskaper som har fyllts med den skiss artefaktens ut
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | artifactName |Ja |sträng |Namnet på skiss artefakten. |
 
@@ -123,7 +123,7 @@ Kombinerar flera sträng värden och returnerar den sammanfogade strängen.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | sträng1 |Ja |sträng |Det första värdet för sammanfogning. |
 | ytterligare argument |Inga |sträng |Ytterligare värden i sekventiell ordning för sammanfogning |
@@ -148,7 +148,7 @@ Returnerar ett skiss parameter värde. Det angivna parameter namnet måste defin
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |sträng |Namnet på den parameter som ska returneras. |
 
@@ -269,7 +269,7 @@ Returnerar ett objekt som representerar den angivna resurs grupps artefakten. Ti
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | placeholderName |Ja |sträng |Plats hållarens namn för den resurs grupps artefakt som ska returneras. |
 

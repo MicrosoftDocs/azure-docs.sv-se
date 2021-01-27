@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919080"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Självstudie: skapa en VPN-anslutning för användare med Azure Virtual WAN
 
@@ -24,6 +24,7 @@ I den här guiden får du lära dig att:
 > * Skapa ett virtuellt WAN
 > * Skapa en P2S-konfiguration
 > * Skapa en virtuell hubb
+> * Välj klient adress grupper
 > * Ange DNS-servrar
 > * Generera konfigurations paket för VPN-klient profil
 > * Konfigurera VPN-klienter
@@ -49,9 +50,14 @@ En punkt-till-plats-konfiguration (P2S) definierar parametrar för att ansluta f
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a> Välj P2S-klient adress grupper
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
+
 ## <a name="specify-dns-server"></a><a name="dns"></a>Ange DNS-Server
 
-Du kan konfigurera den här inställningen när du skapar hubben, eller ändra den vid ett senare tillfälle. Du ändrar genom att leta upp den virtuella hubben. Under **användar-VPN (peka på plats)** , väljer du **Konfigurera** och anger DNS-serverns IP-adress (er) i den **anpassade DNS-** serverns text ruta (er). Du kan ange upp till fem DNS-servrar.
+Du kan konfigurera den här inställningen när du skapar hubben, eller ändra den vid ett senare tillfälle. Du ändrar genom att leta upp den virtuella hubben. Under **användar-VPN (peka på plats)**, väljer du **Konfigurera** och anger DNS-serverns IP-adress (er) i den **anpassade DNS-** serverns text ruta (er). Du kan ange upp till fem DNS-servrar.
 
    :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="anpassad DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
@@ -73,6 +79,8 @@ När du har konfigurerat klienten kan du ansluta.
 1. Navigera till det virtuella WAN-nätverket.
 1. På sidan **Översikt** representerar varje punkt på kartan ett nav.
 1. I avsnittet **hubbar och anslutningar** kan du Visa nav status, plats, region, status för VPN-anslutning och byte in och ut.
+
+
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Rensa resurser
 

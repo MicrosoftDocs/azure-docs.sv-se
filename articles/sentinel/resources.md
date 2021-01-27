@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660652"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920028"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Användbara resurser för att arbeta med Azure Sentinel
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660652"
 
 Den här artikeln innehåller resurser som kan hjälpa dig att få mer information om hur du arbetar med Azure Sentinel.
 
-Azure Logic Apps kopplingar: <https://docs.microsoft.com/connectors/>
+- **Azure Logic Apps kopplingar**: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Granskning och rapportering
@@ -78,7 +78,7 @@ Du kan visa dessa data genom att strömma den från Azures aktivitets logg till 
 
 ## <a name="vendor-documentation"></a>Leverantörs dokumentation
 
-| **Leverantör**  | **Använd incident i Azure Sentinel** | **Operationsföljdslänkkod**|
+| **Leverantör**  | **Använd incident i Azure Sentinel** | **Länk**|
 |----|----|----|
 | GitHub| Används för att få åtkomst till community-Sidan| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| Konfigurera CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
@@ -86,10 +86,25 @@ Du kan visa dessa data genom att strömma den från Azures aktivitets logg till 
 
 ## <a name="blogs-and-forums"></a>Bloggar och forum
 
-Publicera dina frågor på [TechCommunity-utrymmet](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) för Azure Sentinel.
+Vi älskar att höra från våra användare!
 
-Visa blogg inlägg från Azure Sentinel från [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) och [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/).
+- **Publicera dina frågor** på [TechCommunity-utrymmet](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel) för Azure Sentinel. 
+
+- **Skicka förslag på förbättringar** via vårt [User Voice](https://feedback.azure.com/forums/920458-azure-sentinel) -program.
+
+- **Visa och kommentera** våra blogg inlägg i Azure Sentinel:
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+Mer information om säkerhet och efterlevnad i Azure finns i [bloggen för Microsoft Azure säkerhet och efterlevnad](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance).
 
 
 ## <a name="next-steps"></a>Nästa steg
-I det här dokumentet fick du en lista över resurser som är användbara när du arbetar med Azure Sentinel. Du hittar mer information om Azure-säkerhet och efterlevnad på [bloggen för Microsoft Azure säkerhet och efterlevnad](/archive/blogs/azuresecurity/).
+
+> [!div class="nextstepaction"]
+> [Bli certifierad!](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [Läsa berättelser om kund användnings fall](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

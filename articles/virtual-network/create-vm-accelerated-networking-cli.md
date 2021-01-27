@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222963"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919960"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Skapa en virtuell Linux-dator med accelererat nätverk med Azure CLI
 
@@ -56,11 +56,9 @@ Följande distributioner stöds i rutan från Azure-galleriet:
 ## <a name="limitations-and-constraints"></a>Begränsningar och begränsningar
 
 ### <a name="supported-vm-instances"></a>Virtuella dator instanser som stöds
-Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimerade instans storlekar med 2 eller fler virtuella processorer.  Dessa serier som stöds är: D/DSv2 och F/FS
+Accelererat nätverk stöds i de flesta generella syftes-och beräknings optimerade instans storlekar med 2 eller fler virtuella processorer. På instanser som stöder hyperthreading stöds accelererat nätverk på VM-instanser med 4 eller fler virtuella processorer. 
 
-På instanser som stöder hyperthreading stöds accelererat nätverk på VM-instanser med 4 eller fler virtuella processorer. Serien som stöds är: D/Dsv3, D/Dsv4, DD/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS och MS/Mmsv2.
-
-Mer information om VM-instanser finns i [storlekar för virtuella Linux-datorer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Stöd för accelererat nätverk finns i den enskilda dokumentationen för [virtuella dator storlekar](../virtual-machines/sizes.md) . 
 
 ### <a name="custom-images"></a>Anpassade avbildningar
 Om du använder en anpassad avbildning, och din avbildning har stöd för accelererat nätverk, måste du se till att de nödvändiga driv rutinerna fungerar med Mellanox ConnectX-3-och ConnectX-4 LX-nätverkskort på Azure.

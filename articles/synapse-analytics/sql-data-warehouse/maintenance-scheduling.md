@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210991"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920383"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Använd underhålls scheman för att hantera uppdateringar och underhåll av tjänster
 
@@ -38,7 +38,7 @@ Genom att integrera med Service Health-meddelanden och Resource Health kontroll 
 Ett meddelande om 24-timmarsformat föregås av alla underhålls händelser som inte är för DWC400c och lägre nivåer.
 
 > [!NOTE]
-> I händelse av att vi krävs för att distribuera en tidpunkts kritisk uppdatering kan avancerade aviserings tider minska avsevärt.
+> I händelse av att vi krävs för att distribuera en tidpunkts kritisk uppdatering kan avancerade aviserings tider minska avsevärt. Detta kan inträffa utanför ett identifierat underhålls fönster på grund av uppdateringens kritiska natur.
 
 Om du fick ett meddelande om att underhåll pågår, men underhållet inte kan utföras under tids perioden i meddelandet, får du ett meddelande om uppsägning. Underhåll kommer sedan att återupptas under nästa schemalagda underhålls period.
 
@@ -84,7 +84,7 @@ Under för hands versionen kanske vissa regioner ännu inte har stöd för den f
 4. Välj önskat primärt och sekundärt underhålls fönster med hjälp av list rutorna:
    - **Dag**: prioriterad dag för att utföra underhåll under den valda perioden.
    - **Start tid**: önskad start tid för underhålls perioden.
-   - **Tids**period: önskad varaktighet för din tidsperiod.
+   - **Tids** period: önskad varaktighet för din tidsperiod.
 
    Platsen för **schema Sammanfattning** längst ned på bladet uppdateras baserat på de värden som du har valt.
   

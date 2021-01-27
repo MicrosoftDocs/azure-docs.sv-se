@@ -1,15 +1,15 @@
 ---
 title: Kortkommandon i Azure Portal för Azure Resource Graph Explorer
 description: Azure Resource Graph Explorer i Azure Portal stöder kortkommandon som hjälper dig att utföra åtgärder och navigera.
-ms.date: 10/21/2020
+ms.date: 01/27/2021
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 70777db630a654dc61aad697561583a02c0ccc25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340129"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919099"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Kortkommandon för Azure Resource Graph Explorer
 
@@ -17,7 +17,7 @@ Den här artikeln innehåller kortkommandon som fungerar på Azure Resource Grap
 
 ## <a name="keyboard-shortcuts-for-editing-queries"></a>Kortkommandon för att redigera frågor
 
-| Åtgärd | Windows-genväg | Mac-genväg |
+| Action | Windows-genväg | Mac-genväg |
 |---|---|---|
 |Kommentera/ta bort kommentar |<kbd>NEDTRYCKT</kbd>+<kbd>/</kbd> | <kbd>Kommandot</kbd>+<kbd>/</kbd> |
 |Minska indrag |<kbd>CTRL</kbd> + <kbd>[</kbd> |<kbd>Cmd</kbd> + <kbd>[</kbd> |
@@ -37,7 +37,7 @@ Den här artikeln innehåller kortkommandon som fungerar på Azure Resource Grap
 
 ## <a name="keyboard-shortcuts-for-the-query-editor"></a>Kortkommandon för Frågeredigeraren
 
-| Åtgärd | Windows-genväg | Mac-genväg |
+| Action | Windows-genväg | Mac-genväg |
 |---|---|---|
 |Kör fråga som marker ATS |<kbd>Shift</kbd> + <kbd>Ange</kbd> | <kbd>Shift</kbd> + <kbd>Ange</kbd> |
 |Avbryt körning av fråga |<kbd>Esc</kbd> | <kbd>Esc</kbd> |
@@ -52,7 +52,7 @@ Den här artikeln innehåller kortkommandon som fungerar på Azure Resource Grap
 
 ## <a name="keyboard-shortcuts-for-the-results-pane"></a>Kortkommandon för resultat fönstret
 
-| Åtgärd | Windows-genväg | Mac-genväg |
+| Action | Windows-genväg | Mac-genväg |
 |---|---|---|
 |Växla till fliken "kom igång"  |<kbd>CTRL</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | <kbd>Cmd</kbd> + <kbd>Alternativ</kbd> + <kbd>S</kbd> |
 |Växla till fliken resultat  |<kbd>CTRL</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> | <kbd>Cmd</kbd> + <kbd>Alternativ</kbd> + <kbd>R</kbd> |

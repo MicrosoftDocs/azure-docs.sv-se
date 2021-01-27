@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 3adbf34e4c19a76c2b5b2b1968c7821f37965929
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965637"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919892"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurera omvänd DNS för tjänster som finns i Azure
 
@@ -33,7 +33,7 @@ Innan du läser den här artikeln bör du känna till den här [översikten öve
 I Azure DNS exponeras beräknings resurser (till exempel virtuella datorer, skalnings uppsättningar för virtuella datorer eller Service Fabric kluster) via en PublicIpAddress-resurs. Omvänd DNS-sökning konfigureras med egenskapen "ReverseFqdn" för PublicIpAddress.
 
 
-Omvänd DNS stöds inte för närvarande för Azure App Service.
+Omvänd DNS stöds för närvarande inte för Azure App Service och Application Gateway.
 
 ## <a name="validation-of-reverse-dns-records"></a>Validering av omvända DNS-poster
 
@@ -211,7 +211,7 @@ Så här tar du bort en omvänd DNS-egenskap från en befintlig moln tjänst:
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>Hur mycket kostar det att omvända DNS-poster?
 

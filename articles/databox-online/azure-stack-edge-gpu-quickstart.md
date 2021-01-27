@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 09/17/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 200e7f191cb19588fa79ba685c91a75dabd0156a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91349119"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919821"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Snabb start: kom igång med Azure Stack Edge Pro med GPU 
 
@@ -45,7 +45,7 @@ Kontrol lera att följande krav är uppfyllda innan du distribuerar:
 
 2. **Anslut**: Konfigurera IPv4-inställningarna på Ethernet-kortet på datorn med en statisk IP-adress för **192.168.100.5** och undernät **255.255.255.0**. Öppna din webbläsare och Anslut till det lokala webb gränssnittet för enheten på https://192.168.100.10 . Det kan ta några minuter. Fortsätt till webb sidan när du ser säkerhets certifikats varningen.
 
-3. **Logga**in: Logga in på enheten med standard lösen ordet *Password1*. Ändra enhetens administratörs lösen ord. Lösen ordet måste innehålla mellan 8 och 16 tecken och 3 av tecknen versaler, gemener, siffror och specialtecken.
+3. **Logga** in: Logga in på enheten med standard lösen ordet *Password1*. Ändra enhetens administratörs lösen ord. Lösen ordet måste innehålla mellan 8 och 16 tecken och 3 av tecknen versaler, gemener, siffror och specialtecken.
 
 4. **Konfigurera nätverk**: Godkänn standard-DHCP-konfigurationen för den anslutna data porten om du har en DHCP-server i nätverket. Om inte, anger du en IP-, DNS-server och standard-gateway. Se mer information om [nätverks inställningar](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md#configure-network).
 
@@ -71,7 +71,7 @@ Kontrol lera att följande krav är uppfyllda innan du distribuerar:
     1. I Azure Portal går du till **Azure Stack Edge-resurs > översikt > enhets installation > aktivera > generera nyckel**. Kopiera nyckeln. 
     1. I det lokala webb gränssnittet går du till **Kom igång > aktiverar** och anger aktiverings nyckeln. När nyckeln appliceras tar det några minuter innan enheten aktive ras. Ladda ned `<device-serial-number>` . JSON-filen när du uppmanas att lagra enhets nycklar som behövs för en framtida återställning på ett säkert sätt. 
 
-12. **Konfigurera beräkning**: gå till **Översikt > enheten**i Azure Portal. Kontrol lera att enheten är **online**. I den vänstra rutan går du till **Edge compute > kom igång > konfigurera Edge compute > Compute**. Ange en befintlig eller ny IoT Hub-tjänst och vänta i ungefär 20 minuter innan beräkningen har kon figurer ATS. Se mer information om [självstudie: Konfigurera Compute på Azure Stack Edge Pro GPU-enhet](azure-stack-edge-gpu-deploy-configure-compute.md)
+12. **Konfigurera beräkning**: gå till **Översikt > enheten** i Azure Portal. Kontrol lera att enheten är **online**. I den vänstra rutan går du till **Edge compute > kom igång > konfigurera Edge compute > Compute**. Ange en befintlig eller ny IoT Hub-tjänst och vänta i ungefär 20 minuter innan beräkningen har kon figurer ATS. Se mer information om [självstudie: Konfigurera Compute på Azure Stack Edge Pro GPU-enhet](azure-stack-edge-gpu-deploy-configure-compute.md)
 
 Du är redo att distribuera beräknings arbets belastningar på enheten [via IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md), [via `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) eller [via Azure Arc-aktiverad Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)! Om du får problem under installationen går du till [Felsöka enhets problem](), [beställnings problem](azure-stack-edge-gpu-troubleshoot.md), [certifikat problem](azure-stack-edge-j-series-certificate-troubleshooting.md)eller Kubernetes problem. 
 

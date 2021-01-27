@@ -3,12 +3,12 @@ title: Ändra kluster inställningar för Azure Service Fabric
 description: I den här artikeln beskrivs de infrastruktur inställningar och de uppgraderings principer för infrastruktur resurser som du kan anpassa.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095278"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919790"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassa Service Fabric-klusterinställningar
 I den här artikeln beskrivs de olika infrastruktur inställningarna för ditt Service Fabric-kluster som du kan anpassa. För kluster som finns i Azure kan du anpassa inställningarna via [Azure Portal](https://portal.azure.com) eller genom att använda en Azure Resource Manager mall. Mer information finns i [Uppgradera konfigurationen av ett Azure-kluster](service-fabric-cluster-config-upgrade-azure.md). För fristående kluster anpassar du inställningarna genom att uppdatera *ClusterConfig.jspå* filen och utföra en konfigurations uppgradering i klustret. Mer information finns i [Uppgradera konfigurationen av ett fristående kluster](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -521,7 +521,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |AutoDetectAvailableResources|bool, standard är sant|Statisk|Den här konfigurationen utlöser automatisk identifiering av tillgängliga resurser på noden (processor och minne) när den här konfigurationen är inställd på Sant – vi kommer att läsa verkliga kapaciteter och korrigera dem om användaren har angett felaktig funktions kapacitet eller inte definierar dem alls om den här konfigurationen är inställd på falskt – vi kommer att spåra en varning om att användaren har angett Felaktiga noder. men vi kommer inte att åtgärda dem. Det innebär att användaren vill ha den kapacitet som anges som > än vad som är i själva verket eller om kapaciteten är odefinierad. Det kommer att anta obegränsad kapacitet |
 |BalancingDelayAfterNewNode | Tid i sekunder, standard är 120 |Dynamisk|Ange TimeSpan i sekunder. Starta inte balansering av aktiviteter inom den här perioden efter att du har lagt till en ny nod. |
 |BalancingDelayAfterNodeDown | Tid i sekunder, standard är 120 |Dynamisk|Ange TimeSpan i sekunder. Starta inte balansering av aktiviteter inom den här perioden efter en nod ned-händelse. |
-|BlockNodeInUpgradeConstraintPriority | Int, standardvärdet är 0 |Dynamisk|Anger prioriteten för kapacitets begränsning: 0: hårt; 1: mjuk; negativt: ignorera  |
+|BlockNodeInUpgradeConstraintPriority | Int, standard är-1 |Dynamisk|Anger prioriteten för kapacitets begränsning: 0: hårt; 1: mjuk; negativt: ignorera  |
 |CapacityConstraintPriority | Int, standardvärdet är 0 | Dynamisk|Anger prioriteten för kapacitets begränsning: 0: hårt; 1: mjuk; negativt: ignorera. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, standard är 20 | Dynamisk|Definierar antalet gånger i rad som ResourceBalancer-utfärdade rörelser tas bort innan diagnostiken utförs och hälso varningar genereras. Negativt: inga varningar har spridits i det här tillståndet. |
 |ConstraintFixPartialDelayAfterNewNode | Tid i sekunder, standard är 120 |Dynamisk| Ange TimeSpan i sekunder. DDo inte Faulydomain och UpgradeDomain begränsnings överträdelser inom den här perioden efter att en ny nod har lagts till. |

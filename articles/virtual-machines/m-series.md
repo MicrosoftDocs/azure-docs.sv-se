@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972eaf3aa20324bc68ce24d2b7c0db041bb8baa4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653663"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918644"
 ---
 # <a name="m-series"></a>M-serien
 
@@ -27,6 +27,7 @@ Virtuella datorer i M-serien Intel &reg; Hyper-Threading-teknik.
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Skrivningsaccelerator](./how-to-enable-write-accelerator.md): stöds<br>
+[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Högsta cachelagrade data flöde för cache och temporär lagring: IOPS/Mbit/s (cachestorlek i GiB) | Maximalt antal cachelagrade diskar: IOPS/MBps | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |
@@ -46,7 +47,7 @@ Virtuella datorer i M-serien Intel &reg; Hyper-Threading-teknik.
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> över 64 vCPU kräver en av följande gäst operativ system: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 och Red Hat Enterprise Linux, CentOS 7,3 eller Oracle Linux 7,3 med Lis 4.2.1.
+<sup>1</sup> över 64 vCPU kräver en av dessa gäst versioner: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 och Red Hat Enterprise Linux, CentOS 7,3 eller Oracle Linux 7,3 med Lis 4.2.1.
 
 <sup>2</sup> -instansen är isolerad till maskin vara som är dedikerad till en enda kund.
 

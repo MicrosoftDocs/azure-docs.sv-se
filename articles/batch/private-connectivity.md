@@ -4,12 +4,12 @@ description: Lär dig hur du ansluter privat till ett Azure Batch-konto med hjä
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 38d92d787a8d01dd3f87e1cdcacd336982c8c910
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579563"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920011"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Använd privata slutpunkter med Azure Batch-konton
 
@@ -20,11 +20,11 @@ Med hjälp av en [privat Azure-länk](../private-link/private-link-overview.md)k
 Med privat länk kan användare komma åt ett Azure Batch konto inifrån det virtuella nätverket eller från ett peer-kopplat virtuellt nätverk. Resurser som är mappade till privat länk är också tillgängliga lokalt via privat peering via VPN eller [Azure ExpressRoute](../expressroute/expressroute-introduction.md). Du kan ansluta till ett Azure Batch-konto som kon figurer ATS med privat länk genom att använda [metoden automatisk eller manuell godkännande](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
 > [!IMPORTANT]
-> Stöd för privat anslutning i Azure Batch är för närvarande tillgängligt för alla offentliga regioner utom Tyskland, centrala och Tyskland nordöstra.
+> Stöd för privat anslutning i Azure Batch är för närvarande tillgängligt för alla regioner förutom Tyskland Central, Tyskland nordöstra, Kina, östra, Kina, östra 2, Kina, norra och Kina, norra 2.
 
 I den här artikeln beskrivs stegen för att skapa ett privat batch-konto och komma åt det med en privat slut punkt.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portalen
 
 Använd följande steg för att skapa ett privat batch-konto med hjälp av Azure Portal:
 
@@ -37,10 +37,10 @@ Använd följande steg för att skapa ett privat batch-konto med hjälp av Azure
 6. I fönstret **resurs** anger du **resurs typen** till **Microsoft.BatCH/batchAccounts**. Välj det privata batch-konto som du vill få åtkomst till och välj sedan **Nästa: konfiguration**.
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Skapa en privat slut punkt – resurs fönster":::
 7. I rutan **konfiguration** anger eller väljer du den här informationen:
-   - **Virtuellt nätverk** : Välj det virtuella nätverket.
-   - **Undernät** : Välj ditt undernät.
-   - **Integrera med privat DNS-zon** : Välj **Ja**. För att kunna ansluta privat med din privata slut punkt behöver du en DNS-post. Vi rekommenderar att du integrerar din privata slut punkt med en privat DNS-zon. Du kan också använda dina egna DNS-servrar eller skapa DNS-poster med hjälp av värd filerna på dina virtuella datorer.
-   - **Privat DNS zon** : Välj privatelink. \<region\> . batch.azure.com. Den privata DNS-zonen fastställs automatiskt. Du kan inte ändra den med hjälp av Azure Portal.
+   - **Virtuellt nätverk**: Välj det virtuella nätverket.
+   - **Undernät**: Välj ditt undernät.
+   - **Integrera med privat DNS-zon**: Välj **Ja**. För att kunna ansluta privat med din privata slut punkt behöver du en DNS-post. Vi rekommenderar att du integrerar din privata slut punkt med en privat DNS-zon. Du kan också använda dina egna DNS-servrar eller skapa DNS-poster med hjälp av värd filerna på dina virtuella datorer.
+   - **Privat DNS zon**: Välj privatelink. \<region\> . batch.azure.com. Den privata DNS-zonen fastställs automatiskt. Du kan inte ändra den med hjälp av Azure Portal.
 8. Välj **Granska + skapa** och vänta sedan på att Azure ska verifiera konfigurationen.
 9. När du ser ett meddelande som anger att **valideringen har slutförts** klickar du på **Skapa**.
 

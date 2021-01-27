@@ -3,12 +3,12 @@ title: Begränsningar och kvoter för Azure-prenumeration
 description: Innehåller en lista över vanliga gränser, kvoter och begränsningar för Azure-prenumerationer och tjänster. Den här artikeln innehåller information om hur du ökar gränserna tillsammans med högsta värden.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802902"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920482"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-prenumeration och tjänstbegränsningar, kvoter och krav
 
@@ -175,6 +175,10 @@ Du hittar de senaste värdena för Azure Machine Learning Compute-kvoter på sid
 ## <a name="azure-policy-limits"></a>Azure Policy gränser
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
+
+## <a name="azure-quantum-limits"></a>Azure-Quantum-gränser
+
+[!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
 ## <a name="azure-role-based-access-control-limits"></a>Azure rollbaserad åtkomst kontroll gränser
 

@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du konfigurerar en A
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: be5c8c4012267dc7ce6362502c806a9f238732b7
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562896"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920281"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Självstudie: köra ett arbets flöde för flera steg i molnet när du genomför käll koden
 
@@ -78,7 +78,7 @@ Skapa nu uppgiften genom att köra följande [AZ ACR uppgift Create][az-acr-task
 az acr task create \
     --registry $ACR_NAME \
     --name example1 \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file taskmulti.yaml \
     --git-access-token $GIT_PAT
 ```
@@ -108,7 +108,7 @@ Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande
   "step": {
     "baseImageDependencies": null,
     "contextAccessToken": null,
-    "contextPath": "https://github.com/gituser/acr-build-helloworld-node.git",
+    "contextPath": "https://github.com/gituser/acr-build-helloworld-node.git#main",
     "taskFilePath": "taskmulti.yaml",
     "type": "FileTask",
     "values": [],
@@ -127,7 +127,7 @@ Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
           "branch": "main",
-          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
+          "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git#main",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
         },
@@ -311,7 +311,7 @@ Använd de variabler som definierats ovan för att skapa uppgiften genom att kö
 az acr task create \
     --registry $ACR_NAME \
     --name example2 \
-    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
+    --context https://github.com/$GIT_USER/acr-build-helloworld-node.git#main \
     --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.io

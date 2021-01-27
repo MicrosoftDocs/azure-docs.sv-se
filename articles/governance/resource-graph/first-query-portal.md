@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: din första portal fråga'
 description: I den här snabb starten följer du stegen för att köra din första fråga från Azure Portal med Azure Resource Graph Explorer.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057390"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920108"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Snabb start: kör din första resurs diagram fråga med Azure Resource Graph Explorer
 
@@ -94,7 +94,7 @@ Prova följande exempel på instrument paneler för att tillhandahålla exempel 
 
 - [Resurs diagram Utforskare – exempel på instrument panel #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Exempel bild för instrument panelens exempel #1" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Exempel bild för instrument panelens exempel #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > Antal och diagram i exempel skärmarna ovan, beror på din Azure-miljö.
@@ -103,7 +103,7 @@ Prova följande exempel på instrument paneler för att tillhandahålla exempel 
 
 1. I Azure Portal väljer du **instrument panel** i det vänstra fönstret.
 
-1. Välj **överför**och leta upp och välj den instrument panels fil som har hämtats. Välj sedan **Öppna**.
+1. Välj **överför** och leta upp och välj den instrument panels fil som har hämtats. Välj sedan **Öppna**.
 
 Den importerade instrument panelen visas automatiskt. Eftersom det nu finns i Azure Portal kan du utforska och göra ändringar efter behov eller skapa nya instrument paneler från exemplet för att dela med dina team. Mer information om hur du arbetar med instrument paneler finns [i skapa och dela instrument paneler i Azure Portal](../../azure-portal/azure-portal-dashboards.md).
 

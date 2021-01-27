@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895766"
+ms.locfileid: "98919248"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Så här använder du anpassade allokeringsprinciper
 
@@ -78,8 +78,11 @@ I det här avsnittet använder du Azure Cloud Shell för att skapa en etablering
 
 3. Använd Azure Cloud Shell för att skapa **Contosos indelning** IoT Hub med kommandot [AZ IoT Hub Create](/cli/azure/iot/hub#az-iot-hub-create) . IoT Hub kommer att läggas till i *contoso-US-Resource-Group*.
 
-    I följande exempel skapas en IoT-hubb med namnet *contoso-popups – Hub-1098* på platsen för *väst* . Du måste använda ett unikt namn på hubben. Skapa ditt eget suffix i hubben i stället för **1098**. Exempel koden för den anpassade allokeringsregeln kräver `-toasters-` i hubbens namn.
+    I följande exempel skapas en IoT-hubb med namnet *contoso-popups – Hub-1098* på platsen för *väst* . Du måste använda ett unikt namn på hubben. Skapa ditt eget suffix i hubben i stället för **1098**. 
 
+    > [!CAUTION]
+    > Azure Function-koden för den anpassade allokeringsregeln kräver under strängen `-toasters-` i hubbens namn. Se till att använda ett namn som innehåller de nödvändiga popup-understrängarna.
+    
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
     ```
@@ -88,7 +91,10 @@ I det här avsnittet använder du Azure Cloud Shell för att skapa en etablering
 
 4. Använd Azure Cloud Shell för att skapa **Contosos** IoT Hub-hubb med [AZ IoT Hub](/cli/azure/iot/hub#az-iot-hub-create) . Den här IoT-hubben läggs också till i *contoso-US-Resource-Group*.
 
-    I följande exempel skapas en IoT-hubb med namnet *contoso-heatpumps-Hub-1098* på platsen för *västkusten* . Du måste använda ett unikt namn på hubben. Skapa ditt eget suffix i hubben i stället för **1098**. Exempel koden för den anpassade allokeringsregeln kräver `-heatpumps-` i hubbens namn.
+    I följande exempel skapas en IoT-hubb med namnet *contoso-heatpumps-Hub-1098* på platsen för *västkusten* . Du måste använda ett unikt namn på hubben. Skapa ditt eget suffix i hubben i stället för **1098**. 
+
+    > [!CAUTION]
+    > Azure Function-koden för den anpassade allokeringsregeln kräver under strängen `-heatpumps-` i hubbens namn. Se till att använda ett namn som innehåller den nödvändiga heatpumps-understrängen.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -98,14 +104,14 @@ I det här avsnittet använder du Azure Cloud Shell för att skapa en etablering
 
 5. IoT-hubbarna måste vara länkade till DPS-resursen. 
 
-    Kör följande två kommandon för att hämta anslutnings strängarna för de nav du nyss skapade:
+    Kör följande två kommandon för att hämta anslutnings strängarna för de nav som du nyss skapade. Ersätt hubbens resurs namn med de namn du valde i varje kommando:
 
     ```azurecli-interactive 
     hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
     hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
     ```
 
-    Kör följande kommandon för att länka hubbarna till DPS-resursen:
+    Kör följande kommandon för att länka hubbarna till DPS-resursen. Ersätt DPS-resursens namn med det namn som du valde i varje kommando:
 
     ```azurecli-interactive 
     az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
@@ -346,56 +352,59 @@ I exemplet i den här artikeln använder du följande två enhets registrerings-
 * **breakroom499 – contoso-tstrsd-007**
 * **mainbuilding167 – contoso-hpsd-088**
 
-### <a name="linux-workstations"></a>Linux-arbetsstationer
 
-Om du använder en Linux-arbetsstation kan du använda OpenSSL för att generera dina härledda enhets nycklar på det sätt som visas i följande exempel.
-
-1. Ersätt värdet för **Key** med den **primära nyckel** du noterade tidigare.
-
-    ```bash
-    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
-
-    REG_ID1=breakroom499-contoso-tstrsd-007
-    REG_ID2=mainbuilding167-contoso-hpsd-088
-
-    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-
-    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-    ```
-
-    ```bash
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
-
-### <a name="windows-based-workstations"></a>Windows-baserade arbets stationer
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Om du använder en Windows-baserad arbets Station kan du använda PowerShell för att generera en härledd enhets nyckel som visas i följande exempel.
 
-1. Ersätt värdet för **Key** med den **primära nyckel** du noterade tidigare.
+Ersätt värdet för **Key** med den **primära nyckel** du noterade tidigare.
 
-    ```powershell
-    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+```powershell
+$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-    $REG_ID1='breakroom499-contoso-tstrsd-007'
-    $REG_ID2='mainbuilding167-contoso-hpsd-088'
+$REG_ID1='breakroom499-contoso-tstrsd-007'
+$REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($KEY)
-    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-    $derivedkey1 = [Convert]::ToBase64String($sig1)
-    $derivedkey2 = [Convert]::ToBase64String($sig2)
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+$derivedkey1 = [Convert]::ToBase64String($sig1)
+$derivedkey2 = [Convert]::ToBase64String($sig2)
 
-    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-    ```
+echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+```
 
-    ```powershell
-    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-    ```
+```powershell
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+Om du använder en Linux-arbetsstation kan du använda OpenSSL för att generera dina härledda enhets nycklar på det sätt som visas i följande exempel.
+
+Ersätt värdet för **Key** med den **primära nyckel** du noterade tidigare.
+
+```bash
+KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+
+REG_ID1=breakroom499-contoso-tstrsd-007
+REG_ID2=mainbuilding167-contoso-hpsd-088
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+
+echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+```
+
+```bash
+breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+```
+
+---
 
 De simulerade enheterna kommer att använda de härledda enhets nycklarna med varje registrerings-ID för att utföra symmetrisk nyckel attestering.
 

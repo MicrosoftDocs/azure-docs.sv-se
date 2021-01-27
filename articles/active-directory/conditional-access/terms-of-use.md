@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232785"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919637"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory användnings villkor
 
@@ -26,11 +26,11 @@ Användnings principer för Azure AD ger en enkel metod som organisationer kan a
 
 ## <a name="overview-videos"></a>Översikts videor
 
-Följande videoklipp ger en snabb översikt över användnings villkor.
+Följande videoklipp ger en snabb översikt över ToU-principer.
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
-För ytterligare videor, se:
+Mer information finns i:
 - [Så här distribuerar du en princip för användnings villkor i Azure Active Directory](https://www.youtube.com/embed/N4vgqHO2tgY)
 - [Så här distribuerar du en princip för användnings villkor i Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY)
 
@@ -117,7 +117,7 @@ När du har slutfört användar villkoren använder du följande procedur för a
 
     ![Listruta för villkorlig åtkomst för att välja en principmall](./media/terms-of-use/conditional-access-templates.png)
 
-   | Mall | Beskrivning |
+   | Mall | Description |
    | --- | --- |
    | **Åtkomst till molnappar för alla gäster** | En princip för villkorlig åtkomst skapas för alla gäster och molnappar. Den här principen påverkar Azure Portal. När detta har skapats kan du behöva logga ut och logga in. |
    | **Åtkomst till molnappar för alla användare** | En princip för villkorlig åtkomst skapas för alla användare och alla molnappar. Den här principen påverkar Azure Portal. När det har skapats måste du logga ut och logga in. |
@@ -183,7 +183,7 @@ Använd följande procedur för att komma igång med Azure AD audit-loggar:
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Vilka användnings villkor ser ut för användarna
 
-När en princip för användnings villkor har skapats och tillämpats, kommer användare, som finns inom området, att se följande skärm under inloggningen.
+När en ToU-princip har skapats och tillämpats, kommer användare, som finns inom området, att se följande skärm under inloggningen.
 
 ![Exempel användnings villkor som visas när en användare loggar in](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ Användare kan visa användnings villkoren och, om det behövs, använda knappar
 
 ![Vy över användnings villkor med zoomnings knappar](./media/terms-of-use/zoom-buttons.png)
 
-Följande skärm bild visar hur villkor för användnings principer ser ut på mobila enheter.
+Följande skärm bild visar hur en ToU-princip ser ut på mobila enheter.
 
 ![Exempel användnings villkor som visas när en användare loggar in på en mobil enhet](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Du kan redigera viss information om användnings principer, men du kan inte änd
     - Förhandsgranskningsvyn Du kan **Uppdatera ett befintligt dokument med användnings villkor**
     - Du kan lägga till ett språk i en befintlig ToU
 
-   Om det finns andra inställningar som du vill ändra, till exempel PDF-dokument, kräver att användare godkänner varje enhet, upphör att gälla, varaktighet före godkännande eller princip för villkorlig åtkomst måste du skapa en ny användnings princip.
+   Om det finns andra inställningar som du vill ändra, till exempel PDF-dokument, kräver att användare godkänner varje enhet, upphör att gälla, varaktighet före godkännande eller princip för villkorlig åtkomst måste du skapa en ny ToU-princip.
 
     ![Redigera visar olika språk alternativ ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Du kan redigera viss information om användnings principer, men du kan inte änd
 7.  När du har laddat upp den nya PDF-filen och valt att godkänna, klickar du på Lägg till längst ned i fönstret.
 8.  Du ser nu den senaste versionen under kolumnen Document.
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>Visa tidigare versioner av användnings villkor
+## <a name="view-previous-versions-of-a-tou"></a>Visa tidigare versioner av en ToU
 
 1.  Logga in på Azure och gå till **Användningsvillkoren** på https://aka.ms/catou.
 2.  Välj de användnings villkor som du vill visa en versions historik för.
@@ -269,9 +269,9 @@ Du kan redigera viss information om användnings principer, men du kan inte änd
 5.  Alternativt kan du välja en annan version i list rutan **version**  för att se vem som har accepterat den aktuella versionen.
 
 
-## <a name="add-a-terms-of-use-language"></a>Lägg till ett språk för användnings villkor
+## <a name="add-a-tou-language"></a>Lägg till ett ToU-språk
 
-Följande procedur beskriver hur du lägger till ett språk för användnings villkor.
+Följande procedur beskriver hur du lägger till ett ToU-språk.
 
 1. Logga in på Azure och gå till **Användningsvillkoren** på [https://aka.ms/catou](https://aka.ms/catou).
 1. Välj de användnings villkor som du vill redigera.
@@ -344,9 +344,13 @@ Du kan ta bort gamla villkor för användning med hjälp av följande procedur.
 
    Du bör inte längre se dina användnings principer.
 
-## <a name="deleted-users-and-active-terms-of-use"></a>Borttagna användare och aktiva användnings villkor
+## <a name="user-acceptance-record-deletion"></a>Borttagning av användar godkännande post
 
-Som standard är en borttagen användare i borttagen status i Azure AD i 30 dagar. Under den här perioden kan användaren återställas av en administratör om det behövs. Efter 30 dagar tas användaren bort permanent. Med hjälp av Azure Active Directory Portal kan en global administratör dessutom uttryckligen [ta bort en nyligen borttagen användare](../fundamentals/active-directory-users-restore.md) innan tids perioden uppnås. En användare har tagits bort permanent, efterföljande data om användaren kommer att tas bort från den aktiva användnings principen. Granskningsinformation om borttagna användare finns kvar i spårningsloggen.
+Poster för användar godkännande tas bort:
+
+- När administratören tar bort ToU explicit. När detta händer tas alla godkännande poster som är kopplade till den aktuella ToU också bort.
+- När klienten förlorar sin Azure Active Directory Premium-licens.
+- När klienten tas bort.
 
 ## <a name="policy-changes"></a>Principändringar
 

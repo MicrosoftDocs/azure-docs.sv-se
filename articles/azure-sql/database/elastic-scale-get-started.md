@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786725"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919552"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Kom igång med Elastic Database verktyg
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,13 +85,15 @@ Följ dessa steg om du vill hämta och köra exemplet:
 
 1. Hämta de [elastiska DB-verktygen för Azure SQL-komma igång-exemplet](https://github.com/Azure/elastic-db-tools). Packa upp exemplet på en plats som du väljer.
 
-2. Om du vill skapa ett projekt öppnar du lösningen *ElasticScaleStarterKit. SLN* från *C#* -katalogen.
+2. Om du vill skapa ett projekt öppnar du lösningen *ElasticDatabaseTools. SLN* från den *elastiska-DB-tools-Master* -katalogen. 
 
-3. Öppna *app.config* -filen i lösningen för exempelprojektet. Följ sedan anvisningarna i filen för att lägga till Server namnet och inloggnings informationen (användar namn och lösen ord).
+3. Ange *ElasticScaleStarterKit* -projektet som start projekt.
 
-4. Skapa och kör programmet. När du uppmanas till det aktiverar du Visual Studio för att återställa NuGet-paketen för lösningen. Den här åtgärden hämtar den senaste versionen av klient biblioteket för Elastic Database från NuGet.
+4. I *ElasticScaleStarterKit* -projektet öppnar du *App.config* -filen. Följ sedan anvisningarna i filen för att lägga till Server namnet och inloggnings informationen (användar namn och lösen ord).
 
-5. Om du vill veta mer om klient biblioteks funktionerna kan du experimentera med de olika alternativen. Observera de steg som programmet tar i konsolens utdata och Känn dig kostnads fritt för att utforska koden bakom kulisserna.
+5. Skapa och kör programmet. När du uppmanas till det aktiverar du Visual Studio för att återställa NuGet-paketen för lösningen. Den här åtgärden hämtar den senaste versionen av klient biblioteket för Elastic Database från NuGet.
+
+6. Om du vill veta mer om klient biblioteks funktionerna kan du experimentera med de olika alternativen. Observera de steg som programmet tar i konsolens utdata och Känn dig kostnads fritt för att utforska koden bakom kulisserna.
 
    ![Förlopp][4]
 
@@ -102,21 +104,21 @@ Grattis! Du har skapat och kört ditt första shardade-program genom att använd
 
 ## <a name="key-pieces-of-the-code-sample"></a>Huvud delar av kod exemplet
 
-* **Hantera Shards-och Shard Maps** : koden visar hur du arbetar med Shards, intervall och mappningar i *ShardManagementUtils.cs* -filen. Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).  
+* **Hantera Shards-och Shard Maps**: koden visar hur du arbetar med Shards, intervall och mappningar i *ShardManagementUtils.cs* -filen. Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).  
 
-* **Data beroende routning** : routning av transaktioner till rätt Shard visas i *DataDependentRoutingSample.cs* -filen. Mer information finns i [data beroende routning](https://go.microsoft.com/?linkid=9862596).
+* **Data beroende routning**: routning av transaktioner till rätt Shard visas i *DataDependentRoutingSample.cs* -filen. Mer information finns i [data beroende routning](https://go.microsoft.com/?linkid=9862596).
 
-* **Fråga över flera Shards** : frågor över Shards illustreras i *MultiShardQuerySample.cs* -filen. Mer information finns i [multi-Shard-frågor](https://go.microsoft.com/?linkid=9862597).
+* **Fråga över flera Shards**: frågor över Shards illustreras i *MultiShardQuerySample.cs* -filen. Mer information finns i [multi-Shard-frågor](https://go.microsoft.com/?linkid=9862597).
 
-* **Lägger till Tom Shards** : upprepnings tillägg av ny tom Shards utförs av koden i *CreateShardSample.cs* -filen. Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).
+* **Lägger till Tom Shards**: upprepnings tillägg av ny tom Shards utförs av koden i *CreateShardSample.cs* -filen. Mer information finns i [skala ut databaser med Shard Map Manager](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Andra elastiska skalnings åtgärder
 
-* Dela **en befintlig Shard** : funktionen för att dela Shards tillhandahålls av verktyget Dela och slå samman. Mer information finns i [Flytta data mellan utskalade moln databaser](elastic-scale-overview-split-and-merge.md).
+* Dela **en befintlig Shard**: funktionen för att dela Shards tillhandahålls av verktyget Dela och slå samman. Mer information finns i [Flytta data mellan utskalade moln databaser](elastic-scale-overview-split-and-merge.md).
 
-* **Sammanfogar befintliga Shards** : Shard-sammanslagningar utförs också med hjälp av verktyget för att dela och slå samman. Mer information finns i [Flytta data mellan utskalade moln databaser](elastic-scale-overview-split-and-merge.md).
+* **Sammanfogar befintliga Shards**: Shard-sammanslagningar utförs också med hjälp av verktyget för att dela och slå samman. Mer information finns i [Flytta data mellan utskalade moln databaser](elastic-scale-overview-split-and-merge.md).
 
-## <a name="cost"></a>Kostnad
+## <a name="cost"></a>Cost
 
 Elastic Database tools-biblioteket är kostnads fritt. När du använder Elastic Database verktyg debiteras du inga ytterligare avgifter utöver kostnaden för din Azure-användning.
 

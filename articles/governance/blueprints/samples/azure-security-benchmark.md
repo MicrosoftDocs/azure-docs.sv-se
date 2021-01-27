@@ -1,18 +1,18 @@
 ---
 title: Översikt över Azure Security Benchmark-skissexempel
 description: Översikt över Azure Security Benchmark-skissexempel. Det här skissexemplet hjälper kunderna att utvärdera specifika kontroller.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057594"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919246"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Exempel på Azure Security benchmark-skiss
 
-Azure Security Benchmark-skissexemplet tillhandahåller styrningsriktlinjer som använder [Azure Policy](../../policy/overview.md) och som hjälper dig att utvärdera specifika [Azure Security Benchmark](../../../security/benchmarks/overview.md)-kontroller. Den här skissen hjälper kunder att distribuera en central uppsättning principer för en Azure-distribuerad arkitektur där de planerar att implementera Azures Security Benchmark-kontroller.
+Exempel på Azure Security benchmark-skissen ger styrnings skydd-räler som använder [Azure policy](../../policy/overview.md) som hjälper dig att utvärdera vissa [Azures säkerhets benchmark v1](../../../security/benchmarks/overview.md) -kontroller. Den här skissen hjälper kunder att distribuera en central uppsättning principer för en Azure-distribuerad arkitektur där de planerar att implementera Azures Security Benchmark-kontroller.
 
 ## <a name="control-mapping"></a>Kontrollmappning
 
@@ -37,7 +37,7 @@ Börja först med att implementera skissexemplet genom att skapa en ny skiss i d
 
 1. På sidan **Komma igång** till vänster väljer du knappen **Skapa** under _Skapa en skiss_.
 
-1. Leta upp utkastet för **Azure Security benchmark** -exempel under _andra exempel_ och välj namnet för att välja det här exemplet.
+1. Leta upp exempel på **Azure Security benchmark v1** -skissen under _andra exempel_ och välj namnet för att välja det här exemplet.
 
 1. Ange _Grundinställningar_ för skissexemplet:
 
@@ -60,7 +60,7 @@ Din kopia av skissexemplet har nu skapats i din miljö. Den skapas i läget **Ut
 
 ### <a name="assign-the-sample-copy"></a>Tilldela exempelkopian
 
-När kopieringen av skiss exemplet har **publicerats**kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
+När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en prenumeration i hanterings gruppen som den sparades till. I det här steget anges parametrar för att göra varje distribution av skissexemplets kopia unik.
 
 1. Välj **Alla tjänster** i den vänstra rutan. Sök efter och välj **Skisser**.
 

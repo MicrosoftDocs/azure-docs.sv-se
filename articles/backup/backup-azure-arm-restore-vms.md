@@ -4,12 +4,12 @@ description: Återställa en virtuell Azure-dator från en återställnings punk
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a82e8031f118f48f7c19cfc283c1be13d5d6f89d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56bd41aaa607a3bc0f319f46ce5d0c3f8c78d27a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757601"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919617"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Så här återställer du Azure VM-data i Azure Portal
 
@@ -25,6 +25,7 @@ Azure Backup erbjuder ett antal olika sätt att återställa en virtuell dator.
 **Återställ disk** | Återställer en virtuell datordisk, som sedan kan användas för att skapa en ny virtuell dator.<br/><br/> Azure Backup tillhandahåller en mall som hjälper dig att anpassa och skapa en virtuell dator. <br/><br> Återställnings jobbet genererar en mall som du kan hämta och använda för att ange anpassade VM-inställningar och skapa en virtuell dator.<br/><br/> Diskarna kopieras till den resursgrupp som du anger.<br/><br/> Alternativt kan du koppla disken till en befintlig virtuell dator eller skapa en ny virtuell dator med hjälp av PowerShell.<br/><br/> Det här alternativet är användbart om du vill anpassa den virtuella datorn, lägga till konfigurationsinställningar som inte fanns vid tidpunkten för säkerhetskopieringen eller lägga till inställningar som måste konfigureras med hjälp av mallen eller PowerShell.
 **Ersätt befintlig** | Du kan återställa en disk och använda den för att ersätta en disk på den befintliga virtuella datorn.<br/><br/> Den aktuella virtuella datorn måste finnas. Om den har tagits bort kan det här alternativet inte användas.<br/><br/> Azure Backup tar en ögonblicks bild av den befintliga virtuella datorn innan disken ersätts och lagrar den på den mellanlagringsplats som du anger. Befintliga diskar som är anslutna till den virtuella datorn ersätts med den valda återställningspunkten.<br/><br/> Ögonblicks bilden kopieras till valvet och bevaras i enlighet med bevarande principen. <br/><br/> Efter åtgärden Ersätt disk behålls den ursprungliga disken i resurs gruppen. Du kan välja att manuellt ta bort de ursprungliga diskarna om de inte behövs. <br/><br/>Ersätt befintlig stöds för okrypterade hanterade virtuella datorer, inklusive virtuella datorer som [skapats med anpassade avbildningar](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/). Det finns inte stöd för klassiska virtuella datorer.<br/><br/> Om återställnings punkten har fler eller färre diskar än den aktuella virtuella datorn kommer antalet diskar i återställnings punkten bara att avspegla konfigurationen för den virtuella datorn.<br><br> Ersätt befintlig stöds också för virtuella datorer med länkade resurser, t. ex. [användardefinierad hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) eller [Key Vault](../key-vault/general/overview.md).
 **Mellan regioner (sekundär region)** | Återställning mellan regioner kan användas för att återställa virtuella Azure-datorer i den sekundära regionen, som är en [Azure-kopplad region](../best-practices-availability-paired-regions.md#what-are-paired-regions).<br><br> Du kan återställa alla virtuella Azure-datorer för den valda återställnings punkten om säkerhets kopian görs i den sekundära regionen.<br><br> Under säkerhets kopieringen replikeras ögonblicks bilder inte till den sekundära regionen. Endast data som lagras i valvet replikeras. Sekundär region återställningar är bara återställningar av [valv nivåer](about-azure-vm-restore.md#concepts) . Återställnings tiden för den sekundära regionen kommer att vara nästan samma som återställnings tiden för valv nivån för den primära regionen.  <br><br> Den här funktionen är tillgänglig för alternativen nedan:<br> <li> [Skapa en virtuell dator](#create-a-vm) <br> <li> [Återställ diskar](#restore-disks) <br><br> Vi stöder för närvarande inte alternativet [Ersätt befintliga diskar](#replace-existing-disks) .<br><br> Behörigheter<br> Återställnings åtgärden i den sekundära regionen kan utföras av säkerhets kopierings administratörer och app-administratörer.
+**Återställning mellan zonindelade** | Återställningen mellan zonindelade kan användas för att återställa [virtuella Azure-zoner som har fasta virtuella datorer](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) i alla [tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview) i samma region. <br> <br> Du kan återställa alla virtuella Azure-zoner som har fästs på den valda återställnings punkten för den valda återställnings punkten efter att den här funktionen släpptes till valfri zon. Som standard återställs den i samma zon som den säkerhetskopierades. <br> <br> Detta kan användas vid haveri beredskap om den virtuella datorns fasta zon blir otillgänglig.
 
 > [!NOTE]
 > Du kan också återställa vissa filer och mappar på en virtuell Azure-dator. [Läs mer](backup-azure-restore-files-from-vm.md).
@@ -138,7 +139,7 @@ Som en av [återställnings alternativen](#restore-options)kan du ersätta en be
 
 Som en av [återställnings alternativen](#restore-options)kan du med återställningen mellan regioner (CRR) återställa virtuella Azure-datorer i en sekundär region, som är en Azure-kopplad region.
 
-Om du vill publicera till funktionen under för hands versionen läser du [avsnittet innan du börjar](./backup-create-rs-vault.md#set-cross-region-restore).
+Om du vill börja använda funktionen läser du [avsnittet innan du börjar](./backup-create-rs-vault.md#set-cross-region-restore).
 
 Om du vill se om CRR har Aktiver ATS följer du anvisningarna i [Konfigurera återställning mellan regioner](backup-create-rs-vault.md#configure-cross-region-restore).
 
@@ -160,6 +161,8 @@ Om CRR har Aktiver ATS kan du Visa säkerhets kopierings objekt i den sekundära
 
 Användar upplevelsen för sekundär regions återställning liknar den primära regionen återställa användar upplevelsen. När du konfigurerar information i fönstret Återställ konfiguration för att konfigurera återställningen uppmanas du bara att ange parametrar för sekundär region.
 
+För närvarande är sekundär region återställningen upp till 12 timmar från den [primära regionen,](azure-backup-glossary.md#rpo-recovery-point-objective) även om [GRS-replikering (Read-Access Geo-redundant lagring)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) är 15 minuter.
+
 ![Välj den virtuella dator som ska återställas](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
 ![Välj återställnings punkt](./media/backup-azure-arm-restore-vms/sec-rp.png)
@@ -176,6 +179,14 @@ Användar upplevelsen för sekundär regions återställning liknar den primära
 >- Återställnings jobbet kan inte avbrytas när återställningen har utlösts och i data överförings fasen.
 >- Funktionen för återställning av kors region återställer CMK (Kundhanterade nycklar) aktiverade virtuella Azure-datorer, som inte säkerhets kopie ras i en CMK som är aktive rad Recovery Services valvet som icke-CMK aktiverade virtuella datorer i den sekundära regionen.
 >- De Azure-roller som krävs för att återställa i den sekundära regionen är desamma som de i den primära regionen.
+
+## <a name="cross-zonal-restore"></a>Återställning mellan zonindelade
+
+Återställningen mellan zonindelade kan användas för att återställa [virtuella Azure-zoner som har fasta virtuella datorer](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) i alla [tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview) i samma region.
+
+I återställnings processen visas alternativ **tillgänglighets zon.** Du ser din standard zon först. Om du vill välja en annan zon väljer du önskat värde för valfri zon. Välj en annan zon om standard tillgänglighets zonen inte är tillgänglig på grund av ett avbrott eller av någon annan orsak som du väljer att återställa i en annan zon.
+
+![Välj tillgänglighets zon](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Övervaka återställnings jobb för sekundär region
 

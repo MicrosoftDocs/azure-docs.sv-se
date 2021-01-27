@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: din första python-fråga'
 description: I den här snabb starten följer du stegen för att aktivera resurs biblioteks biblioteket för python och kör din första fråga.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 01e0fd5bfbc5f353474c8305eefc044390c3586a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-python
+ms.openlocfilehash: 6fc7b8f6a6fa7cde8d10dec6a4b2b834d41325e6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845126"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920133"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Snabb start: kör din första resurs diagram fråga med python
 
