@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 63bd44140ea5c355c3bb1a891a21e6c2e73ab041
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679508"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892581"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Självstudie – Bygg en SCIM-slutpunkt och konfigurera användar etablering med Azure AD
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
 Som programutvecklare kan du använda systemet för användar hanterings-API: et för SCIM (Cross-Domain Identity Management) för att aktivera automatisk etablering av användare och grupper mellan ditt program och Azure AD. Den här artikeln beskriver hur du skapar en SCIM-slutpunkt och integrerar med Azure AD Provisioning-tjänsten. SCIM-specifikationen innehåller ett gemensamt användar schema för etablering. När det används tillsammans med Federations standarder som SAML eller OpenID Connect ger SCIM administratörer en heltäckande lösning för åtkomst hantering från slut punkt till slut punkt.
 
-SCIM är en standardiserad definition av två slut punkter: en/users-slutpunkt och en/Groups-slutpunkt. Den använder vanliga REST-verb för att skapa, uppdatera och ta bort objekt och ett fördefinierat schema för vanliga attribut, t. ex. grupp namn, användar namn, förnamn, efter namn och e-post. Appar som erbjuder en SCIM 2,0-REST API kan minska eller eliminera den smärta som fungerar med ett eget användar hanterings-API. Till exempel vet alla kompatibla SCIM-klienter hur du gör en HTTP POST av ett JSON-objekt till/Users-slutpunkten för att skapa en ny användar post. I stället för att behöva ett något annorlunda API för samma grundläggande åtgärder kan appar som uppfyller SCIM-standarden omedelbart dra nytta av befintliga klienter, verktyg och kod. 
+SCIM är en standardiserad definition av två slut punkter: en `/Users` slut punkt och en `/Groups` slut punkt. Den använder vanliga REST-verb för att skapa, uppdatera och ta bort objekt och ett fördefinierat schema för vanliga attribut, t. ex. grupp namn, användar namn, förnamn, efter namn och e-post. Appar som erbjuder en SCIM 2,0-REST API kan minska eller eliminera den smärta som fungerar med ett eget användar hanterings-API. Till exempel vet alla kompatibla SCIM-klienter hur du gör en HTTP POST av ett JSON-objekt till `/Users` slut punkten för att skapa en ny användar post. I stället för att behöva ett något annorlunda API för samma grundläggande åtgärder kan appar som uppfyller SCIM-standarden omedelbart dra nytta av befintliga klienter, verktyg och kod. 
 
 ![Etablering från Azure AD till en app med SCIM](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -748,7 +749,9 @@ Azure AD Provisioning-tjänsten fungerar för närvarande under IP-intervallen f
 
 Nu när du har utformat schemat och förstått Azure AD SCIM-implementeringen kan du komma igång med att utveckla din SCIM-slutpunkt. I stället för att börja från början och skapa implementeringen helt och hållet, kan du lita på ett antal SCIM-bibliotek med öppen källkod som publicerats av SCIM-communityn.
 
-Den öppna käll-och [referens koden](https://aka.ms/SCIMReferenceCode) för .net Core som publicerats av Azure AD Provisioning-teamet är en sådan resurs som kan leda till att du börjar utveckla. När du har skapat din SCIM-slutpunkt ska du testa den. Du kan använda samlingen med [Postman-tester](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) som ingår i referens koden eller köra genom exempel begär Anden/svar som anges [ovan](#user-operations).  
+Information om hur du skapar en SCIM-slutpunkt inklusive exempel finns i [utveckla ett exempel på en scim-slutpunkt](use-scim-to-build-users-and-groups-endpoints.md).
+
+Exempel på .NET Core- [referensen](https://aka.ms/SCIMReferenceCode) med öppen källkod som publicerats av Azure AD Provisioning-teamet är en sådan resurs som kan leda till att du börjar utveckla. När du har skapat din SCIM-slutpunkt ska du testa den. Du kan använda samlingen med [Postman-tester](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) som ingår i referens koden eller köra genom exempel begär Anden/svar som anges [ovan](#user-operations).  
 
    > [!Note]
    > Referens koden är avsedd att hjälpa dig att komma igång med att skapa din SCIM-slutpunkt och tillhandahålls "i befintligt skick". Bidrag från communityn är välkommen att hjälpa till att bygga och underhålla koden.
@@ -1127,11 +1130,17 @@ Program som stöder SCIM-profilen som beskrivs i den här artikeln kan anslutas 
 
 1. Logga in på [Azure Active Directory Portal](https://aad.portal.azure.com). Observera att du kan få åtkomst till en kostnads fri utvärderings version av Azure Active Directory med P2-licenser genom att registrera dig för [programmet för utvecklare](https://developer.microsoft.com/office/dev-program)
 2. Välj **företags program** i det vänstra fönstret. En lista över alla konfigurerade appar visas, inklusive appar som har lagts till från galleriet.
-3. Välj **+ ny app**  >  **alla**  >  **program som inte är Galleri**.
-4. Ange ett namn för ditt program och välj **Lägg till** för att skapa ett app-objekt. Den nya appen läggs till i listan över företags program och öppnas på sidan för hantering av appar.
+3. Välj **+ nytt program**  >  **+ skapa ditt eget program**.
+4. Ange ett namn för ditt program, Välj alternativet "*integrera andra program som du inte hittar i galleriet*" och välj **Lägg till** för att skapa ett app-objekt. Den nya appen läggs till i listan över företags program och öppnas på sidan för hantering av appar.
 
-   ![Skärm bild som visar Azure AD-programgalleriet](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
-   *Program Galleri för Azure AD*
+   ![Skärm bild som visar Azure AD Application Gallery ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+    *Azure AD-programgalleriet*
+
+   > [!NOTE]
+   > Om du använder den gamla App Gallery-upplevelsen följer du skärm guiden nedan.
+   
+   ![Skärm bild som visar Azure ADs gamla App Gallery Experience ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+    *Azure AD-upplevelse*
 
 5. På skärmen hantering av appar väljer du **etablering** i den vänstra panelen.
 6. I menyn **etablerings läge** väljer du **Automatisk**.
@@ -1235,6 +1244,7 @@ För att hjälpa till att öka medvetenheten och behovet av vår gemensamma inte
 
 ## <a name="related-articles"></a>Relaterade artiklar
 
+* [Utveckla en exempel SCIM-slutpunkt](use-scim-to-build-users-and-groups-endpoints.md)
 * [Automatisera användar etablering och avetablering för SaaS-appar](user-provisioning.md)
 * [Anpassa mappningar av attribut för användar etablering](customize-application-attributes.md)
 * [Skriver uttryck för mappningar av attribut](functions-for-customizing-application-data.md)

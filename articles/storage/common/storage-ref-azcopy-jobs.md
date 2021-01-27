@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 25e5ac7fc0a76f0686eeb874542a84224de4c40f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5793855ea07e8f3d424d04ec365b40aa1bd80c1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281913"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878400"
 ---
 # <a name="azcopy-jobs"></a>azcopy jobb
 
@@ -22,7 +22,7 @@ Under kommandon som är relaterade till hantering av jobb.
 ## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
 
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
-- [Överföra data med AzCopy och Blob Storage](storage-use-azcopy-blobs.md)
+- [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
 - [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
@@ -48,7 +48,7 @@ azcopy jobs show [jobID]
 
 ## <a name="see-also"></a>Se även
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)
 - [azcopy jobblista](storage-ref-azcopy-jobs-list.md)
 - [azcopy jobb-CV](storage-ref-azcopy-jobs-resume.md)
 - [azcopy jobbvisning](storage-ref-azcopy-jobs-show.md)

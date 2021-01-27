@@ -1,6 +1,5 @@
 ---
-title: Media Services arkitekturer
-titleSuffix: Azure Media Services
+title: Media Services-arkitekturer
 description: I den här artikeln beskrivs arkitekturer för Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,14 +11,14 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ad464eb1c0b6dec694c7c40868a0f95fcfeaf6e8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534003"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891496"
 ---
-# <a name="media-services-architectures"></a>Media Services arkitekturer
+# <a name="media-services-architectures"></a>Media Services-arkitekturer
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -29,7 +28,7 @@ Med en live streaming-lösning kan du samla in video i real tid och skicka den t
 
 Den här lösningen bygger på de Azure-hanterade tjänsterna: Media Services och Content Delivery Network. De här tjänsterna körs i en miljö med hög tillgänglighet, korrigeras och stöds, så att du kan fokusera på din lösning i stället för den miljö som de körs i.
 
-Se [direkt uppspelning av digitala media](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) i Azure Architecture Center.
+Se [direkt uppspelning av digitala media](/azure/architecture/solution-ideas/articles/digital-media-live-stream) i Azure Architecture Center.
 
 ## <a name="video-on-demand-digital-media"></a>Video på begäran i digitala media
 
@@ -37,13 +36,13 @@ En grundläggande lösning för video på begäran som ger dig möjlighet att st
 
 Den här lösningen bygger på de Azure-hanterade tjänsterna: Blob Storage, Content Delivery Network och Azure Media Player. De här tjänsterna körs i en miljö med hög tillgänglighet, korrigeras och stöds, så att du kan fokusera på din lösning i stället för den miljö som de körs i.
 
-Se [digitala media på begäran](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video) i Azure Architecture Center.
+Se [digitala media på begäran](/azure/architecture/solution-ideas/articles/digital-media-video) i Azure Architecture Center.
 
 ## <a name="gridwich-media-processing-system"></a>Gridwich-mediabearbetningssystem
 
 Gridwich system återspeglar metod tips för att bearbeta och leverera medie till gångar på Azure. Även om Gridwich-systemet är mediefel, kan meddelande bearbetnings-och händelse ramverket tillämpas på alla tillstånds lösa arbets flöden för händelse bearbetning.
 
-Se [Gridwich Media Processing System](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture) i Azure Architecture Center.
+Se [Gridwich Media Processing System](/azure/architecture/reference-architectures/media-services/gridwich-architecture) i Azure Architecture Center.
 
 ## <a name="next-steps"></a>Nästa steg
 

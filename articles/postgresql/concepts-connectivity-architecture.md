@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d5476bf1bfe2e222e115146c13f46e776d4bb497
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 23847c164ba59a8c46c2fdd5fb954b76ea251148
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657200"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877687"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Anslutnings arkitektur i Azure Database for PostgreSQL
 Den här artikeln förklarar Azure Database for PostgreSQL anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for PostgreSQL databas instans från klienter både inom och utanför Azure.
@@ -28,7 +28,7 @@ När klienten ansluter till databasen matchas anslutnings strängen till-servern
 
 Gateway-tjänsten finns i en grupp av tillstånds lösa Compute-noder som ligger bakom en IP-adress, som klienten skulle uppnå först vid försök att ansluta till en Azure Database for PostgreSQL-Server. 
 
-Som en del av det löpande underhållet av tjänsten kommer vi regelbundet att uppdatera beräknings maskin varan som är värd för gatewayerna för att säkerställa att vi tillhandahåller den säkraste och bästa upplevelsen. När Gateway-maskinvaran uppdateras, skapas en ny instans av Compute-noderna först. Den här nya ringen hanterar trafiken för alla nyskapade Azure Database for PostgreSQL-servrar och den har en annan IP-adress än äldre Gateway-ringar i samma region för att särskilja trafiken. När den nya ringen är helt funktionell, planeras den äldre Gateway-maskinvaran som betjänar befintliga servrar för inaktive ring. Innan kunder som kör sina servrar och ansluter till äldre Gateway-ringar inaktive ras, meddelas du via e-post och i Azure Portal tre månader innan inaktive ring. Inaktive ring av gatewayer kan påverka anslutningen till dina servrar om 
+Som en del av det löpande underhållet av tjänster kommer vi regelbundet att uppdatera beräknings maskin varan som är värd för gatewayerna för att säkerställa att vi tillhandahåller den säkraste och effektiva anslutnings upplevelsen. När Gateway-maskinvaran uppdateras, skapas en ny instans av Compute-noderna först. Den här nya ringen hanterar trafiken för alla nyskapade Azure Database for PostgreSQL-servrar och den har en annan IP-adress än äldre Gateway-ringar i samma region för att särskilja trafiken. Den äldre Gateway-maskinvaran fortsätter att betjäna befintliga servrar, men planeras för inaktive ring i framtiden. Innan kunder som kör sina servrar och ansluter till äldre Gateway-ringar inaktive ras, meddelas du via e-post och i Azure Portal tre månader innan inaktive ring. Inaktive ring av gatewayer kan påverka anslutningen till dina servrar om 
 
 * Du hårdkodar IP-adresser för gatewayen i anslutnings strängen för ditt program. Vi **rekommenderar inte** detta. Du bör använda ett fullständigt kvalificerat domän namn (FQDN) på servern i formatet <servername> . postgres.Database.Azure.com i anslutnings strängen för ditt program. 
 * Du uppdaterar inte de nyare Gateway-IP-adresserna i brand väggen på klient sidan så att utgående trafik kan komma åt våra nya gateway-ringar.
@@ -69,7 +69,7 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Post
 | Sydkorea, centrala | 52.231.32.42   | | |
 | Sydkorea, södra | 52.231.200.86    | | |
 | USA, norra centrala | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    | | |
-| Norra Europa | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
+| Europa, norra | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
 | Sydafrika, norra  | 102.133.152.0    | | |
 | Sydafrika, västra | 102.133.24.0   | | |
 | USA, södra centrala |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740198"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878467"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Självstudie: skydda en webb server på en virtuell Linux-dator i Azure med TLS/SSL-certifikat som lagras i Key Vault
 För att skydda webb servrar, en Transport Layer Security (TLS), som tidigare kallades Secure Sockets Layer (SSL), kan du använda certifikat för att kryptera webb trafik. Dessa TLS/SSL-certifikat kan lagras i Azure Key Vault och tillåta säker distribution av certifikat till virtuella Linux-datorer (VM: ar) i Azure. I den här guiden får du lära du dig hur man:
@@ -42,7 +42,7 @@ Istället för att använda en anpassad VM-avbildning med inbyggda certifikat ma
 
 
 ## <a name="create-an-azure-key-vault"></a>Skapa ett Azure Key Vault
-Innan du kan skapa ett Key Vault och certifikat skapar du en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resursgrupp med namnet *myResourceGroupSecureWeb* på platsen *eastus* :
+Innan du kan skapa ett Key Vault och certifikat skapar du en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resursgrupp med namnet *myResourceGroupSecureWeb* på platsen *eastus*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus
@@ -82,7 +82,7 @@ vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Skapa en cloud-init-konfiguration för att skydda NGINX
 [Cloud-init](https://cloudinit.readthedocs.io) är ett vanligt sätt att anpassa en virtuell Linux-dator när den startas för första gången. Du kan använda cloud-init till att installera paket och skriva filer eller för att konfigurera användare och säkerhet. Eftersom cloud-init körs under hela den ursprungliga startprocessen finns det inga fler steg eller obligatoriska agenter att tillämpa för konfigurationen.
 
-När du skapar en virtuella dator lagras certifikat och nycklar i den skyddade katalogen */var/lib/waagent/* . Om du vill automatisera tillägg av certifikat till den virtuella datorn och konfigurera webbservern använder du cloud-init. I det här exemplet installerar och konfigurerar du NGINX-webbservern. Du kan använda samma process för att installera och konfigurera Apache. 
+När du skapar en virtuella dator lagras certifikat och nycklar i den skyddade katalogen */var/lib/waagent/*. Om du vill automatisera tillägg av certifikat till den virtuella datorn och konfigurera webbservern använder du cloud-init. I det här exemplet installerar och konfigurerar du NGINX-webbservern. Du kan använda samma process för att installera och konfigurera Apache. 
 
 Skapa en fil med namnet *cloud-init-web-server.txt* och klistra in följande konfiguration:
 
@@ -157,4 +157,4 @@ I den här självstudien har du skyddat en NGINX-webbserver med ett TLS/SSL-cert
 Klicka på den här länken om du vill se inbyggda skriptexempel för virtuella datorer.
 
 > [!div class="nextstepaction"]
-> [Skriptexempel för virtuella Linux-datorer](./cli-samples.md)
+> [Skriptexempel för virtuella Linux-datorer](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: c0269464352fa333c6447834a56c25348ecb71a3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327781"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895262"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Kom igång för Azure IT-operatörer
 
@@ -140,7 +140,7 @@ Azure är en global moln plattform som är allmänt tillgänglig i många region
 
 En av fördelarna med att använda Azure är att du kan distribuera dina program till olika data center runtom i världen. Den region du väljer kan påverka programmets prestanda. Det är bäst att välja en region som är närmare för de flesta kunder, för att minska svars tiden i nätverks förfrågningar. Du kan också välja en region för att uppfylla de juridiska kraven för att distribuera din app i vissa länder/regioner.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portalen
 
 Azure Portal är ett webbaserat program som kan användas för att skapa, hantera och ta bort Azure-resurser och-tjänster. Azure Portal finns på [Portal.Azure.com](https://portal.azure.com). Den innehåller en anpassningsbar instrument panel och verktyg för att hantera Azure-resurser. Den innehåller även information om fakturering och prenumerationer. Mer information finns i [Microsoft Azure-portalen översikt](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) och [Hantera Azure-resurser via portalen](../../azure-resource-manager/management/manage-resources-portal.md).
 
@@ -192,7 +192,7 @@ Om du överskrider kredit beloppet inaktive ras tjänsten tills nästa månad b�
 
 **BizSpark-konton**: Microsoft BizSpark-programmet har många fördelar med att starta. En av dessa förmåner är till gång till alla Microsoft-program för utvecklings-och test miljöer för upp till fem MSDN-konton. Du får $150 i Azure-kredit för vart och ett av dessa fem MSDN-konton och du betalar lägre priser för flera av Azure-tjänsterna, till exempel Virtual Machines.
 
-**Betala per**användning: med den här prenumerationen betalar du för det du använder genom att koppla ett kredit kort eller betalkort till kontot. Om du är en organisation kan du också godkänna för fakturering.
+**Betala per** användning: med den här prenumerationen betalar du för det du använder genom att koppla ett kredit kort eller betalkort till kontot. Om du är en organisation kan du också godkänna för fakturering.
 
 **Enterprise-avtal**: med ett Enterprise-avtal kan du använda ett visst antal tjänster i Azure under nästa år, och du betalar beloppet i förväg. Det åtagande du gör används under året. Om du överskrider åtagande beloppet kan du betala överförbrukningen i förskott. Beroende på åtagandets belopp får du en rabatt på tjänsterna i Azure.
 
@@ -214,9 +214,7 @@ Förutom att Visa faktureringen i portalen kan du komma åt fakturerings informa
 
 - Du kan använda Azures användnings-API för att hämta dina användnings data. Du kan finjustera fakturerings användnings informationen genom att tagga relaterade Azure-resurser. Du kan till exempel tagga var och en av resurserna i en resurs grupp med ett avdelnings namn eller projekt namn och sedan spåra kostnaderna specifikt för den en taggen.
 
-- Du kan använda Azure Rate Card API för att visa en lista över alla tillgängliga resurser, tillsammans med metadata och pris information om var och en av dessa resurser.
-
-Mer information finns i [Få insikter om din resursförbrukning i Microsoft Azure](../../cost-management-billing/manage/usage-rate-card-overview.md).
+- Du kan använda [översikten över Azures förbruknings-API](../../cost-management-billing/manage/consumption-api-overview.md) för att visa en lista över alla tillgängliga resurser, tillsammans med metadata. Mer information om priser finns i [Översikt över Azures åter försäljnings priser](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognos kostnad med pris kalkylatorn
 
@@ -292,7 +290,7 @@ Du kan bevilja drift åtkomst till användar konton vid en angiven omfattning: p
 
 Om du vill bevilja åtkomst tilldelar du en roll till användaren eller användar gruppen. Det finns många fördefinierade roller. Du kan också definiera egna anpassade roller.
 
-Här följer några exempel [på inbyggda roller i Azure](../../role-based-access-control/built-in-roles.md):
+Här följer några exempel på [inbyggda roller i Azure](../../role-based-access-control/built-in-roles.md):
 
 - **Ägare**: en användare med den här rollen kan hantera allt, inklusive åtkomst.
 
@@ -372,7 +370,7 @@ Ordet *BLOB* är en akronym för *Binary Large Object*. Blobbar är ostrukturera
 
 Azure Storage stöder tre typer av blobar:
 
-- **Block-blobbar** används för att lagra vanliga filer upp till 195 GB i storlek (4 MB × 50 000 block). I första hand används blockblobar för lagring av filer som läses från början till slut, som mediefiler eller bildfiler för webbplatser. De är namngivna block blobbar eftersom filer som är större än 64 MB måste laddas upp som små block. Dessa block sammanställs sedan (eller allokeras) till den slutliga blobben.
+- **Block-blobbar** används för att lagra vanliga filer upp till 195 GB i storlek (4 MB × 50 000 block). I första hand används blockblobar för lagring av filer som läses från början till slut, som mediefiler eller bildfiler för webbplatser. De är namngivna block blobbar eftersom filer som är större än 64 MB måste laddas upp som små block. Dessa block sammanställs sedan (eller skickas) till den slutliga blobben.
 
 - **Page blobbar** används för att hålla slumpmässiga åtkomst till filer på upp till 1 TB. Page blobbar används främst som lagring för de virtuella hård diskar som tillhandahåller varaktiga diskar för Azure Virtual Machines, IaaS Compute service i Azure. De kallas för sidblobar eftersom de erbjuder slumpmässig läs-/skrivåtkomst till sidor på 512 bytes.
 

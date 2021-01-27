@@ -4,19 +4,19 @@ description: Den här artikeln visar hur du lägger till en hanterad identitet t
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878434"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Lägg till en hanterad identitet till en Service Fabric hanterad kluster nodtyp (för hands version)
 
-Varje nodtyp i ett Service Fabric hanterat kluster backas upp av en skalnings uppsättning för virtuella datorer. För att tillåta att hanterade identiteter används med en hanterad klusternod, har en egenskap `vmManagedIdentity` lagts till i definitioner av nodtyper som innehåller en lista över identiteter som kan användas `userAssignedIdentities` . Funktionen speglar hur hanterade identiteter kan användas i icke-hanterade kluster, till exempel att använda en hanterad identitet med [Azure Key Vault tillägg för skalnings uppsättning för virtuella datorer](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+Varje nodtyp i ett Service Fabric hanterat kluster backas upp av en skalnings uppsättning för virtuella datorer. För att tillåta att hanterade identiteter används med en hanterad klusternod, har en egenskap `vmManagedIdentity` lagts till i definitioner av nodtyper som innehåller en lista över identiteter som kan användas `userAssignedIdentities` . Funktionen speglar hur hanterade identiteter kan användas i icke-hanterade kluster, till exempel att använda en hanterad identitet med [Azure Key Vault tillägg för skalnings uppsättning för virtuella datorer](../virtual-machines/extensions/key-vault-windows.md).
 
 
-Ett exempel på en Service Fabric hanterad kluster distribution som använder hanterad identitet på en Node-typ finns i [den här mallen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). En lista över regioner som stöds finns i [vanliga frågor och svar om hanterade kluster](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview).
+Ett exempel på en Service Fabric hanterad kluster distribution som använder hanterad identitet på en Node-typ finns i [den här mallen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). En lista över regioner som stöds finns i [vanliga frågor och svar om hanterade kluster](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview).
 
 > [!NOTE]
 > Det finns för närvarande stöd för användare tilldelade identiteter för den här funktionen.
@@ -26,7 +26,7 @@ Ett exempel på en Service Fabric hanterad kluster distribution som använder ha
 Innan du börjar:
 
 * Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
-* Om du planerar att använda PowerShell [installerar](https://docs.microsoft.com/cli/azure/install-azure-cli) du Azure CLI för att köra CLI-referens kommandon.
+* Om du planerar att använda PowerShell [installerar](/cli/azure/install-azure-cli) du Azure CLI för att köra CLI-referens kommandon.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Skapa en användartilldelad hanterad identitet 
 
@@ -54,7 +54,7 @@ Lägg till en roll tilldelning till den hanterade identiteten med Service Fabric
 
 Följande värden måste användas där tillämpligt:
 
-|Namn|Motsvarande Service Fabric resurs leverantörs värde|
+|Name|Motsvarande Service Fabric resurs leverantörs värde|
 |----|-------------------------------------|
 |Program-ID|74cb6831-0dbb-4be1-8206-fd4df301cdc2|
 |Objekt-ID|fbc587f2-66f5-4459-a027-bcd908b9d278|
@@ -131,4 +131,4 @@ Om det inte går att lägga till en roll tilldelning korrekt uppfylls följande 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Distribuera en app till ett Service Fabric hanterat kluster](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [Distribuera en app till ett Service Fabric hanterat kluster](./tutorial-managed-cluster-deploy-app.md)

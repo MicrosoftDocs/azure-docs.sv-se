@@ -1,24 +1,9 @@
 ---
-title: Strömma innehåll med CDN-integrering
-titleSuffix: Azure Media Services
-description: Lär dig mer om strömnings innehåll med CDN-integrering samt för hämtning och Origin-Assist CDN-prefetch.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 6bdf6015ca5633c77280111a55055a7394cee5bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001379"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Obligatoriska fält. Läs mer på aka.ms/skyeye/meta.
+title: strömma innehåll med CDN-integrering: Azure Media Services Beskrivning: Lär dig mer om strömnings innehåll med CDN-integrering samt för hämtning och Origin-Assist CDN-prefetch.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 08/31/2020 MS. author: inhenkel
 ---
+
 # <a name="stream-content-with-cdn-integration"></a>Strömma innehåll med CDN-integrering
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

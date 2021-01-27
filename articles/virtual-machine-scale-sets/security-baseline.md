@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 68dc7c36159523bcc46e93a4784e9d038037a919
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b5ce8e3d6482c13a8ba02065f2a97074610c25bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201220"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877722"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azures säkerhets bas linje för Virtual Machine Scale Sets
 
@@ -848,7 +848,7 @@ För närvarande är anpassningsbara program kontroller inte tillgängliga för 
 
 * [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Information om hur du hämtar mallen för virtuella datorer](../virtual-machines/windows/download-template.md)
+* [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -892,7 +892,7 @@ För närvarande är anpassningsbara program kontroller inte tillgängliga för 
 
 I de flesta fall kan de virtuella bas-VM-mallarna tillsammans med Azure Automation önskad tillstånds konfiguration hjälpa till att möta och upprätthålla säkerhets kraven.
 
-* [Information om hur du hämtar mallen för virtuella datorer](../virtual-machines/windows/download-template.md)
+* [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Information om hur du skapar ARM-mallar](../virtual-machines/windows/ps-template.md)
 

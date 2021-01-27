@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cab7bc7f79cccb1704d7046f79a2000028ffb729
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233261"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878196"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Upptäck, utvärdera och migrera virtuella AWS-datorer (Amazon Web Services) till Azure
 
@@ -80,7 +80,7 @@ Förbered Azure för migrering med Azure Migrate: Migreringsverktyg för Server.
 
 **Uppgift** | **Information**
 --- | ---
-**Skapa ett Azure Migrate-projekt** | Ditt Azure-konto behöver deltagar-eller ägar behörighet för att [skapa ett nytt projekt](https://docs.microsoft.com/azure/migrate/create-manage-projects).
+**Skapa ett Azure Migrate-projekt** | Ditt Azure-konto behöver deltagar-eller ägar behörighet för att [skapa ett nytt projekt](./create-manage-projects.md).
 **Verifiera behörigheter för ditt Azure-konto** | Ditt Azure-konto måste ha behörighet att skapa en virtuell dator och skriva till en Azure-hanterad disk.
 
 ### <a name="assign-permissions-to-create-project"></a>Tilldela behörigheter för att skapa projekt
@@ -256,7 +256,7 @@ En mobilitets tjänst agent måste vara installerad på de virtuella AWS-datorer
     - Double Encryption med plattforms hanterade och Kundhanterade nycklar
 
    > [!NOTE]
-   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](https://go.microsoft.com/fwlink/?linkid=2151800) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
+   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
   
 12. I **Azure Hybrid-förmån**:
 

@@ -1,5 +1,5 @@
 ---
-title: Strömma videofiler med Azure Media Services-Node.js | Microsoft Docs
+title: Strömma videofiler med Azure Media Services-Node.js
 description: Följ stegen i den här självstudien för att skapa ett nytt Azure Media Services konto, koda en fil och strömma den till Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 38207ac47d2e58c689f1933a6ade6d5c86cd44ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711db5135345fd9b69da9aaea5bc4dbb929d27c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268680"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895143"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>Självstudie: koda en fjärrfil baserat på URL och strömma video-Node.js
 
@@ -34,7 +34,7 @@ I slutet av självstudien kommer du att kunna strömma en video.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Installera [Node.js](https://nodejs.org/en/download/)
 - [Skapa ett Media Services-konto](./create-account-howto.md).<br/>Se till att komma ihåg de värden som du använde för resursgruppens namn och namnet på Media Services-kontot.
@@ -55,7 +55,7 @@ Exemplet finns i mappen [StreamFilesSample](https://github.com/Azure-Samples/med
 Exemplet utför följande åtgärder:
 
 1. Skapar en **transformering** (kontrollerar först om den angivna transformeringen finns). 
-2. Skapar en utgående **till gång** som används som kodnings **jobbets**utdata.
+2. Skapar en utgående **till gång** som används som kodnings **jobbets** utdata.
 3. Skapar **jobbets** indata som baseras på en HTTPS-URL.
 4. Skickar **kodningsjobbet** med de indata och utdata som skapades tidigare.
 5. Kontrollerar jobbets status.

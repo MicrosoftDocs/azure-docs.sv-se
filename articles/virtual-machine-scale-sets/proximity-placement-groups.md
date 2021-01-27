@@ -9,16 +9,16 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3a7b50c82b3deffa7526bfcfe799972c3b02762
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87011064"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877874"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>För hands version: skapa och använda närhets placerings grupper med PowerShell
 
-För att få virtuella datorer så nära som möjligt, vilket ger lägsta möjliga fördröjning, bör du distribuera din skalnings uppsättning inom en [närhets placerings grupp](co-location.md#preview-proximity-placement-groups).
+För att få virtuella datorer så nära som möjligt, vilket ger lägsta möjliga fördröjning, bör du distribuera din skalnings uppsättning inom en [närhets placerings grupp](../virtual-machines/co-location.md#proximity-placement-groups).
 
 En närhets placerings grupp är en logisk gruppering som används för att se till att Azure Compute-resurser är fysiskt placerade nära varandra. Placerings grupper för närhet är användbara för arbets belastningar där låg latens är ett krav.
 

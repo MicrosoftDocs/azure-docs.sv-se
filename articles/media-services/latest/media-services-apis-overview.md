@@ -1,25 +1,11 @@
 ---
-title: 'Utveckla med v3-API: er'
-titleSuffix: Azure Media Services
-description: 'Lär dig mer om regler som gäller för entiteter och API: er när du utvecklar med Media Services v3.'
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 10/23/2020
-ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 416fb9fc4ce0622a710f2c119942edc4986ddd06
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790584"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Obligatoriska fält. Läs mer på aka.ms/skyeye/meta.
+rubrik: utveckla med v3-API: er: Azure Media Services Beskrivning: Lär dig mer om regler som gäller för entiteter och API: er när du utvecklar med Media Services v3. tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 10/23/2020 MS. author: inhenkel MS. Custom: seodec18
+
 ---
+
 # <a name="develop-with-media-services-v3-apis"></a>Utveckla med API:er för Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -32,10 +18,10 @@ Den här artikeln beskriver regler som gäller för entiteter och API: er när d
 
 Du måste autentiseras innan du kan få åtkomst till Media Services-resurser och Media Services-API:et. Media Services stöder [Azure Active Directory-baserad (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) autentisering. Två vanliga autentiseringsalternativ:
  
-* **Autentisering av tjänstens huvudnamn** : Används för att autentisera en tjänst (till exempel webbappar, funktionsappar, logikappar, API:er och mikrotjänster). Program som ofta använder den här autentiseringsmetoden är appar som kör daemon-tjänster, tjänster på mellan nivå eller schemalagda jobb. För Web Apps bör till exempel alltid vara en mellan nivå som ansluter till Media Services med ett huvud namn för tjänsten.
-* **Användarautentisering** : Används för att autentisera en person som använder appen för att interagera med Media Services-resurser. Den interaktiva appen bör först fråga efter användarens autentiseringsuppgifter. Ett exempel är en hanteringskonsolapp som används av behöriga användare för att övervaka kodningsjobb eller liveuppspelning.
+* **Autentisering av tjänstens huvudnamn**: Används för att autentisera en tjänst (till exempel webbappar, funktionsappar, logikappar, API:er och mikrotjänster). Program som ofta använder den här autentiseringsmetoden är appar som kör daemon-tjänster, tjänster på mellan nivå eller schemalagda jobb. För Web Apps bör till exempel alltid vara en mellan nivå som ansluter till Media Services med ett huvud namn för tjänsten.
+* **Användarautentisering**: Används för att autentisera en person som använder appen för att interagera med Media Services-resurser. Den interaktiva appen bör först fråga efter användarens autentiseringsuppgifter. Ett exempel är en hanteringskonsolapp som används av behöriga användare för att övervaka kodningsjobb eller liveuppspelning.
 
-Media Services-API:et kräver att användaren eller appen skickar REST API-begäranden för att få åtkomst till Media Services-kontoresursen och att rollen **Deltagare** eller **Ägare** används. Det går att komma åt API:et med rollen **Läsare** men då är endast åtgärderna **Get** eller **List** tillgängliga. Mer information finns i [rollbaserad åtkomst kontroll i Azure (Azure RBAC) för Media Services-konton](rbac-overview.md).
+Media Services-API:et kräver att användaren eller appen skickar REST API-begäranden för att få åtkomst till Media Services-kontoresursen och att rollen **Deltagare** eller **Ägare** används. Det går att komma åt API:et med rollen **Läsare** men då är endast åtgärderna **Get** eller **List** tillgängliga.Mer information finns i [rollbaserad åtkomst kontroll i Azure (Azure RBAC) för Media Services-konton](rbac-overview.md).
 
 I stället för att skapa tjänstens huvudnamn kan du överväga att använda hanterade identiteter för Azure-resurser så att du kan komma åt Media Services-API:et via Azure Resource Manager. Mer information om hanterade identiteter för Azure-resurser finns i [Vad är hanterade identiteter för Azure-resurser?](../../active-directory/managed-identities-azure-resources/overview.md).
 

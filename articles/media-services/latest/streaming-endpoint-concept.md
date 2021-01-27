@@ -1,24 +1,10 @@
 ---
-title: Slut punkter för direkt uppspelning (ursprung)
-titleSuffix: Azure Media Services
-description: Lär dig mer om strömnings slut punkter (ursprung), en dynamisk paketerings-och strömnings tjänst som levererar innehåll direkt till en app i klient programmet eller till en Content Delivery Network (CDN).
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 02/13/2020
-ms.author: inhenkel
-ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882882"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Obligatoriska fält. Läs mer på aka.ms/skyeye/meta.
+title: direkt uppspelnings slut punkter (ursprung): Azure Media Services Beskrivning: Lär dig mer om strömnings slut punkter (ursprung), en dynamisk paketering och strömmande tjänst som levererar innehåll direkt till en app i klient spelaren eller till en Content Delivery Network (CDN). tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 02/13/2020 MS. author: inhenkel
 ---
+
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Slut punkter för direkt uppspelning (ursprung) i Azure Media Services
 
 I Microsoft Azure Media Services representerar en [strömmande slut punkt](/rest/api/media/streamingendpoints) en dynamisk (just-in-Time)-paketering och ursprungs tjänst som kan leverera Live och innehåll på begäran direkt till en app i klient spelaren med ett av de vanliga protokollen för strömnings mediet (HLS eller tank streck). Dessutom tillhandahåller **direkt uppspelnings slut punkten** dynamisk kryptering (just-in-Time) för att branschledande DRM: er. 

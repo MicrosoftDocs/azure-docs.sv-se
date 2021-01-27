@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032923"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878230"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Använda SNAT för utgående anslutningar
 
@@ -22,7 +22,7 @@ Klient delens IP-adresser för en offentlig belastningsutjämnare i Azure kan an
 SNAT aktiverar **IP-maskerande** av Server dels instansen. Den här maskerade tjänsten förhindrar att externa källor har en direkt adress till Server dels instanserna. Att dela en IP-adress mellan server dels instanser minskar kostnaden för statiska offentliga IP-adresser och har stöd för scenarier som fören klar IP-listor med trafik från kända offentliga IP-adresser. 
 
 >[!Note]
-> För program med som kräver ett stort antal utgående anslutningar eller företags kunder som kräver att en enda uppsättning IP-adresser används från ett visst virtuellt nätverk, [Virtual Network NAT](../virtual-network/nat-overview.md) är den rekommenderade lösningen. Den dynamiska allokeringen tillåter enkel konfiguration och > den mest effektiva användningen av SNAT-portar från varje IP-adress. Det innebär också att alla resurser i det virtuella nätverket kan dela en uppsättning IP-adresser utan att behöva dela > en belastningsutjämnare.
+> För program som kräver ett stort antal utgående anslutningar eller företags kunder som kräver att en enda uppsättning IP-adresser används från ett visst virtuellt nätverk, [Virtual Network NAT](../virtual-network/nat-overview.md) är den rekommenderade lösningen. Den dynamiska allokeringen tillåter enkel konfiguration och > den mest effektiva användningen av SNAT-portar från varje IP-adress. Det innebär också att alla resurser i det virtuella nätverket kan dela en uppsättning IP-adresser utan att behöva dela > en belastningsutjämnare.
 
 >[!Important]
 > Även om inga utgående SNAT har kon figurer ATS kommer Azure Storage-konton inom samma region fortfarande vara tillgängliga och Server dels resurser kommer fortfarande att ha åtkomst till Microsoft-tjänster, till exempel Windows-uppdateringar.
@@ -109,7 +109,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
 
  | Typer | Metod | IP-protokoll |
  | ------------ | ------ | ------------ |
- |Ingen </br> Basic Load Balancer | [SNAT](#snat) med dynamisk IP-adress på instans nivå| TCP </br> UDP | 
+ |Inget </br> Basic Load Balancer | [SNAT](#snat) med dynamisk IP-adress på instans nivå| TCP </br> UDP | 
 
  #### <a name="description"></a>Description
 

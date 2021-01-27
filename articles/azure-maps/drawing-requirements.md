@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044789"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895279"
 ---
 # <a name="drawing-package-requirements"></a>Krav för ritningspaket
 
@@ -106,7 +106,7 @@ Oavsett hur många enhets ritningar finns i det yttre lagret innehåller den [re
 * Yttre måste ritas som polygon, PolyLine (stängd), cirkel eller ellips (stängd).
 * Yttre kan överlappa varandra, men löses upp i en geometri.
 * Den resulterande nivå funktionen måste vara minst 4 kvadratmeter.
-* Den resulterande nivå funktionen får inte vara större än 400 kvadratmeter.
+* Den resulterande nivå funktionen får inte vara större än 400 000 kvadratmeter.
 
 Om lagret innehåller flera överlappande polystreck, löses polystrecken in i en enda nivå funktion. Alternativt, om lagret innehåller flera icke-överlappande polylinjes, har funktionen för den resulterande nivån en flera polygoner-representation.
 
@@ -198,7 +198,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `directoryInfo`
 
-| Egenskap  | Typ | Krävs | Beskrivning |
+| Egenskap  | Typ | Obligatorisk | Description |
 |-----------|------|----------|-------------|
 | `name`      | sträng | true   |  Namn på byggnaden. |
 | `streetAddress`|    sträng |    falskt    | Byggnadens adress. |
@@ -219,7 +219,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `buildingLevels`Objektet innehåller en JSON-matris med byggnader-nivåer.
 
-| Egenskap  | Typ | Krävs | Beskrivning |
+| Egenskap  | Typ | Obligatorisk | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |sträng    |true |    Namn på beskrivande nivå. Till exempel: våning 1, lobbyn, blå parkering eller Basement.|
 |`ordinal` | heltal |    true | Anger den lodräta ordningen för nivåer. Varje funktion måste ha en nivå med ordnings tal 0. |
@@ -229,7 +229,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `georeference`
 
-| Egenskap  | Typ | Krävs | Beskrivning |
+| Egenskap  | Typ | Obligatorisk | Beskrivning |
 |-----------|------|----------|-------------|
 |`lat`    | numeric |    true |    Decimal representation av grader latitud vid ritningens ursprung. Ursprungets koordinater måste vara i WGS84 Web Mercator ( `EPSG:3857` ).|
 |`lon`    |numeric|    true|    Decimal representation av grader longitud vid ritningens ursprung. Ursprungets koordinater måste vara i WGS84 Web Mercator ( `EPSG:3857` ). |
@@ -237,7 +237,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 ### `dwgLayers`
 
-| Egenskap  | Typ | Krävs | Beskrivning |
+| Egenskap  | Typ | Obligatorisk | Beskrivning |
 |-----------|------|----------|-------------|
 |`exterior`    |matris med strängar|    true|    Namnen på de lager som definierar den yttre skapande profilen.|
 |`unit`|    matris med strängar|    true|    Namnen på de lager som definierar enheter.|
@@ -251,7 +251,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `unitProperties`Objektet innehåller en JSON-matris med enhets egenskaper.
 
-| Egenskap  | Typ | Krävs | Beskrivning |
+| Egenskap  | Typ | Obligatorisk | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |sträng    |true    |Namnet på den enhet som ska associeras med den här `unitProperty` posten. Posten är endast giltig när en etikett matchning finns `unitName` i `unitLabel` skikten. |
 |`categoryName`|    sträng|    falskt    |Kategori namn. En fullständig lista över kategorier finns i [Kategorier](https://aka.ms/pa-indoor-spacecategories). |
@@ -271,7 +271,7 @@ Nästa avsnitt innehåller information om kraven för varje objekt.
 
 `zoneProperties`Objektet innehåller en JSON-matris med zon egenskaper.
 
-| Egenskap  | Typ | Krävs | Beskrivning |
+| Egenskap  | Typ | Obligatorisk | Beskrivning |
 |-----------|------|----------|-------------|
 |Zonnamn        |sträng    |true    |Namnet på zonen som ska associeras med `zoneProperty` posten. Posten är endast giltig när en etikett matchning `zoneName` hittas i `zoneLabel` zonens skikt.  |
 |categoryName|    sträng|    falskt    |Kategori namn. En fullständig lista över kategorier finns i [Kategorier](https://aka.ms/pa-indoor-spacecategories). |

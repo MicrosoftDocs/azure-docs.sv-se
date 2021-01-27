@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916464"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878501"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Felsöka fil resurser i Azure NFS
 
@@ -25,7 +25,7 @@ Den här artikeln innehåller några vanliga problem som rör Azure NFS-filresur
 Azure Files tillåter inte alfanumeriskt UID/GID. Så idmapping måste vara inaktiverat. 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Orsak 2: idmapping har inaktiverats, men aktive ras igen efter att felaktigt fil-/katalog namn har påträffats
-Även om idmapping har inaktiverats korrekt, åsidosätts inställningarna för att inaktivera idmapping i vissa fall. När Azure Files till exempel påträffar ett felaktigt fil namn skickar den tillbaka ett fel. När du ser den här felkoden väljer NFS v 4,1 Linux-klienten att återaktivera idmapping och framtida begär Anden skickas igen med alfanumeriskt UID/GID. En lista med tecken som inte stöds på Azure Files finns i den här [artikeln](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length). Kolon är ett tecken som inte stöds. 
+Även om idmapping har inaktiverats korrekt, åsidosätts inställningarna för att inaktivera idmapping i vissa fall. När Azure Files till exempel påträffar ett felaktigt fil namn skickar den tillbaka ett fel. När du ser den här felkoden väljer NFS v 4,1 Linux-klienten att återaktivera idmapping och framtida begär Anden skickas igen med alfanumeriskt UID/GID. En lista med tecken som inte stöds på Azure Files finns i den här [artikeln](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata). Kolon är ett tecken som inte stöds. 
 
 ### <a name="workaround"></a>Lösning
 Kontrol lera att idmapping har inaktiverats och att inget återaktiverar det och gör sedan följande:
@@ -68,7 +68,7 @@ NFS är endast tillgängligt på lagrings konton med följande konfiguration:
 - Nivå – Premium
 - Konto Natura-FileStorage
 - Redundans – LRS
-- Regioner – [lista över regioner som stöds](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- Regioner – [lista över regioner som stöds](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Lösning
 

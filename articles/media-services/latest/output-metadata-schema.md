@@ -1,5 +1,5 @@
 ---
-title: Schema för Azure Media Services utdata-metadata | Microsoft Docs
+title: Schema för Azure Media Services utdata-metadata
 description: Den här artikeln ger en översikt över Azure Media Services v3-schemat för utdata för metadata.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa6d4edc4348fa850eeb7e8d91ce0791ee4c7170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336419"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895211"
 ---
 # <a name="output-metadata"></a>Utgående metadata
 
@@ -36,45 +36,45 @@ Du hittar den fullständiga schema koden och JSON-exemplet i slutet av den här 
 
 Samling av AssetFile-poster för kodnings jobbet.  
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
 | **Källor** |Samling med indatafiler/källfiler, som bearbetades för att skapa den här AssetFile.<br />Exempel: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Varje fysisk AssetFile kan innehålla i noll eller flera videor spårar överlagrad i ett lämpligt behållar format. <br />Se [VideoTracks](#videotracks). |
 | **AudioTracks**|Varje fysisk AssetFile kan innehålla i noll eller flera ljud spår som är överlagrade i ett lämpligt behållar format. Detta är samlingen av alla dessa ljud spår.<br /> Mer information finns i [AudioTracks](#audiotracks). |
-| **Namn**<br />Krävs |Medie till gångens fil namn. <br /><br />Exempel: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
-| **Storlek**<br />Krävs |Storlek på till gångs filen i byte. <br /><br />Exempel: `"Size": 32414631`|
-| **Varaktighet**<br />Krävs |Innehållets uppspelnings varaktighet. Mer information finns i [iso8601](https://www.iso.org/iso-8601-date-and-time-format.html) -format. <br /><br />Exempel: `"Duration": "PT1M10.315S"`|
+| **Namn**<br />Obligatorisk |Medie till gångens fil namn. <br /><br />Exempel: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Storlek**<br />Obligatorisk |Storlek på till gångs filen i byte. <br /><br />Exempel: `"Size": 32414631`|
+| **Varaktighet**<br />Obligatorisk |Innehållets uppspelnings varaktighet. Mer information finns i [iso8601](https://www.iso.org/iso-8601-date-and-time-format.html) -format. <br /><br />Exempel: `"Duration": "PT1M10.315S"`|
 
 ## <a name="videotracks"></a>VideoTracks 
 
 Varje fysisk AssetFile kan innehålla i noll eller flera videor spårar överlagrad i ett lämpligt behållar format. Elementet **VideoTracks** representerar en samling med alla video spår.  
 
-| Namn | Beskrivning |
+| Name | Beskrivning |
 | --- | --- |
-| **Identitet**<br /> Krävs |Noll-baserat index för det här video spåret. **Obs:**  Detta **ID** är inte nödvändigt vis det TrackID som används i en MP4-fil. <br /><br />Exempel: `"Id": 1`|
-| **FourCC**<br />Krävs | Video-codec FourCC-kod som rapporteras av ffmpeg.  <br /><br />Exempel: `"FourCC": "avc1"`|
+| **Identitet**<br /> Obligatorisk |Noll-baserat index för det här video spåret. **Obs:**  Detta **ID** är inte nödvändigt vis det TrackID som används i en MP4-fil. <br /><br />Exempel: `"Id": 1`|
+| **FourCC**<br />Obligatorisk | Video-codec FourCC-kod som rapporteras av ffmpeg.  <br /><br />Exempel: `"FourCC": "avc1"`|
 | **Profil** |H264,-profil (gäller endast H264,-codec).  <br /><br />Exempel: `"Profile": "High"` |
 | **Nivå** |H264,-nivå (gäller endast H264,-codec).  <br /><br />Exempel: `"Level": "3.2"`|
-| **LED**<br />Krävs |Kodad video bredd i bild punkter.  <br /><br />Exempel: `"Width": "1280"`|
-| **Våghöjd**<br />Krävs |Kodad video höjd i bild punkter.  <br /><br />Exempel: `"Height": "720"`|
-| **DisplayAspectRatioNumerator**<br />Krävs|Täljare för bild förhållande i bild förhållande.  <br /><br />Exempel: `"DisplayAspectRatioNumerator": 16.0`|
-| **DisplayAspectRatioDenominator**<br />Krävs |Nämnare för bild förhållande i bild.  <br /><br />Exempel: `"DisplayAspectRatioDenominator": 9.0`|
-| **Bildfrekvens**<br />Krävs |Uppmätt video bild Rute frekvens i. 3F-format.  <br /><br />Exempel: `"Framerate": 29.970`|
-| **Hastigheten**<br />Krävs |Genomsnittlig video bit hastighet i bitar per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna.  <br /><br />Exempel: `"Bitrate": 3551567`|
-| **TargetBitrate**<br />Krävs |Genomsnittlig bit hastighet för mål för det här video spåret enligt begäran via kodnings inställningen i bitar per sekund. <br /><br />Exempel: `"TargetBitrate": 3520000` |
+| **Bredd**<br />Obligatorisk |Kodad video bredd i bild punkter.  <br /><br />Exempel: `"Width": "1280"`|
+| **Höjd**<br />Obligatorisk |Kodad video höjd i bild punkter.  <br /><br />Exempel: `"Height": "720"`|
+| **DisplayAspectRatioNumerator**<br />Obligatorisk|Täljare för bild förhållande i bild förhållande.  <br /><br />Exempel: `"DisplayAspectRatioNumerator": 16.0`|
+| **DisplayAspectRatioDenominator**<br />Obligatorisk |Nämnare för bild förhållande i bild.  <br /><br />Exempel: `"DisplayAspectRatioDenominator": 9.0`|
+| **Bildfrekvens**<br />Obligatorisk |Uppmätt video bild Rute frekvens i. 3F-format.  <br /><br />Exempel: `"Framerate": 29.970`|
+| **Hastigheten**<br />Obligatorisk |Genomsnittlig video bit hastighet i bitar per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna.  <br /><br />Exempel: `"Bitrate": 3551567`|
+| **TargetBitrate**<br />Obligatorisk |Genomsnittlig bit hastighet för mål för det här video spåret enligt begäran via kodnings inställningen i bitar per sekund. <br /><br />Exempel: `"TargetBitrate": 3520000` |
 
 ## <a name="audiotracks"></a>AudioTracks 
 
 Varje fysisk AssetFile kan innehålla i noll eller flera ljud spår som är överlagrade i ett lämpligt behållar format. **AudioTracks** -elementet representerar en samling med alla dessa ljud spår.  
 
-| Namn  | Beskrivning |
+| Name  | Beskrivning |
 | --- | --- |
-| **Identitet**<br />Krävs  |Noll-baserat index för det här ljud spåret. **Obs:**  Detta är inte nödvändigt vis TrackID som används i en MP4-fil.  <br /><br />Exempel: `"Id": 2`|
+| **Identitet**<br />Obligatorisk  |Noll-baserat index för det här ljud spåret. **Obs:**  Detta är inte nödvändigt vis TrackID som används i en MP4-fil.  <br /><br />Exempel: `"Id": 2`|
 | **ADPCM**  |Ljud spårets codec-sträng.  <br /><br />Exempel: `"Codec": "aac"`|
 | **Språk**|Exempel: `"Language": "eng"`|
-| **Kanaler**<br />Krävs|Antal ljud kanaler.  <br /><br />Exempel: `"Channels": 2`|
-| **SamplingRate**<br />Krävs |Ljud samplings frekvens i sampel/SEK eller Hz.  <br /><br />Exempel: `"SamplingRate": 48000`|
-| **Hastigheten**<br />Krävs |Genomsnittlig ljud bit hastighet i bitar per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna.  <br /><br />Exempel: `"Bitrate": 128041`|
+| **Kanaler**<br />Obligatorisk|Antal ljud kanaler.  <br /><br />Exempel: `"Channels": 2`|
+| **SamplingRate**<br />Obligatorisk |Ljud samplings frekvens i sampel/SEK eller Hz.  <br /><br />Exempel: `"SamplingRate": 48000`|
+| **Hastigheten**<br />Obligatorisk |Genomsnittlig ljud bit hastighet i bitar per sekund, beräknat från AssetFile. Räknar endast den grundläggande nytto lasten i data strömmen och omfattar inte förpacknings omkostnaderna.  <br /><br />Exempel: `"Bitrate": 128041`|
 
 ## <a name="json-schema-example"></a>Exempel på JSON-schema
 

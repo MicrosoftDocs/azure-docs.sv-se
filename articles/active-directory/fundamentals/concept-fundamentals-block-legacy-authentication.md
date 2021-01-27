@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973719"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895296"
 ---
 # <a name="blocking-legacy-authentication"></a>Blockerar äldre autentisering
  
@@ -37,6 +37,7 @@ Innan du kan blockera äldre autentisering i din katalog måste du först först
 1. Filtrera efter **klient program** > Markera alla bakåtkompatibla alternativ för **klientautentisering** som visas.
 1. Filtrering efter **status**  >  **lyckades**. 
 1. Expandera datum intervallet om det behövs med **datum** filtret.
+1. Om du har aktiverat [förhands granskningen av rapportens nya inloggnings aktiviteter](../reports-monitoring/concept-all-sign-ins.md)upprepar du ovanstående steg även på fliken **användar inloggning (icke-interaktiv)** .
 
 Vid filtrering visas endast lyckade inloggnings försök som gjorts av de valda äldre autentiseringsprotokollen. Om du klickar på varje enskilt inloggnings försök visas ytterligare information. I kolumnen klient program eller fältet klient app under fliken grundläggande information när du har valt en enskild rad med data visas vilket äldre autentiseringsprotokoll som användes. I dessa loggar anges vilka användare som fortfarande är beroende av tidigare autentisering och vilka program som använder äldre protokoll för att göra autentiseringsbegäranden. För användare som inte visas i dessa loggar och som bekräftas att inte använda äldre autentisering, implementera en princip för villkorlig åtkomst eller aktivera bas linje principen: blockera äldre autentisering enbart för dessa användare.
 

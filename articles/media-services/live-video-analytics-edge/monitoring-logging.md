@@ -3,12 +3,12 @@ title: Övervakning och loggning – Azure
 description: Den här artikeln innehåller en översikt över övervakning och loggning i real tids analys av IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900883"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878112"
 ---
 # <a name="monitoring-and-logging"></a>Övervakning och loggning
 
@@ -208,7 +208,7 @@ Händelse typer tilldelas till ett namn område enligt schemat:
 
 #### <a name="event-classes"></a>Händelseklasser
 
-|Klassnamn|Beskrivning|
+|Klassnamn|Description|
 |---|---|
 |Analys  |Händelser som genereras som en del av innehålls analysen.|
 |Diagnostik    |Händelser som hjälper dig att diagnostisera problem och prestanda.|
@@ -222,7 +222,7 @@ Exempel:
 * `Microsoft.Media.Graph.Diagnostics.AuthorizationError`
 * `Microsoft.Media.Graph.Operational.GraphInstanceStarted`
 
-### <a name="event-time"></a>Tid för händelsen
+### <a name="event-time"></a>Händelsetid
 
 Händelse tiden är formaterad i en ISO 8601-sträng. Den representerar den tidpunkt då händelsen inträffade.
 
@@ -230,7 +230,7 @@ Händelse tiden är formaterad i en ISO 8601-sträng. Den representerar den tidp
 
 Dessa mått rapporteras från live video analys i IoT Edge modul:  
 
-|Måttnamn|Typ|Etikett|Beskrivning|
+|Måttnamn|Typ|Etikett|Description|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Mätare|iothub, edge_device, module_name, graph_topology|Totalt antal aktiva diagram per topologi.|
 |lva_received_bytes_total|Räknare|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Totalt antal byte som tagits emot av en nod. Stöds endast för RTSP-källor.|
@@ -269,7 +269,7 @@ Följ dessa steg om du vill aktivera insamling av mått från Live Video Analyti
 
 1. Använd Docker CLI-kommandon för att bygga Docker-filen och publicera avbildningen i Azure Container Registry.
     
-   Mer information om hur du använder Docker CLI för att skicka till ett behållar register finns i [push-och pull-avbildningar](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). Mer information om Azure Container Registry finns i [dokumentationen](https://docs.microsoft.com/azure/container-registry/).
+   Mer information om hur du använder Docker CLI för att skicka till ett behållar register finns i [push-och pull-avbildningar](../../container-registry/container-registry-get-started-docker-cli.md). Mer information om Azure Container Registry finns i [dokumentationen](../../container-registry/index.yml).
 
 
 1. När push-installationen till Azure Container Registry är klar lägger du till följande nod i distributions manifest filen:
@@ -355,7 +355,7 @@ I vissa fall kan du behöva skapa mer detaljerade loggar än de som beskrivs ova
 
 Modulen kommer nu att skriva fel söknings loggar i binärformat till enhetens lagrings Sök väg `/var/local/mediaservices/debuglogs/` . Du kan dela dessa loggar med Azure-support.
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 Om du har frågor kan du läsa [vanliga frågor och svar om övervakning och mått](faq.md#monitoring-and-metrics).
 

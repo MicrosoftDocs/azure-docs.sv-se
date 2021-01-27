@@ -1,26 +1,9 @@
 ---
-title: Azure Media Services DRM-kryptering och licens leverans tjänst
-titleSuffix: Azure Media Services
-description: Lär dig hur du använder DRM Dynamic Encryption och licens leverans tjänsten för att leverera strömmar som är krypterade med Microsoft PlayReady-, Google Widevine-eller Apple FairPlay-licenser.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289383"
+rubrik: Azure Media Services DRM-kryptering och licens leverans tjänst: Azure Media Services Beskrivning: Lär dig hur du använder DRM Dynamic Encryption och licens leverans tjänsten för att leverera strömmar krypterade med Microsoft PlayReady-, Google Widevine-eller Apple FairPlay-licenser.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: självstudie MS. Date: 08/31/2020 MS. author: inhenkel MS. Custom: seodec18
+
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Självstudie: använda DRM dynamisk kryptering och licens leverans tjänst
 
@@ -50,7 +33,7 @@ I den här självstudiekursen lär du dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande krävs för att kunna genomföra vägledningen:
 
@@ -104,7 +87,7 @@ I den här självstudien skapar vi jobbets indata baserat på en fil som matas i
 
 ## <a name="wait-for-the-job-to-complete"></a>Vänta tills jobbet är klart
 
-Det tar lite tid att slutföra jobbet. När du gör det, vill du bli meddelad. Kod exemplet nedan visar hur du avsöker tjänsten för **jobbets**status. Avsökningen är inte en rekommenderad metod för produktion av appar på grund av potentiell latens. Avsökningen kan begränsas om den överanvänds på ett konto. Utvecklare bör i stället använda Event Grid. Se [Dirigera händelser till en anpassad webbslutpunkt](job-state-events-cli-how-to.md).
+Det tar lite tid att slutföra jobbet. När du gör det, vill du bli meddelad. Kod exemplet nedan visar hur du avsöker tjänsten för **jobbets** status. Avsökningen är inte en rekommenderad metod för produktion av appar på grund av potentiell latens. Avsökningen kan begränsas om den överanvänds på ett konto. Utvecklare bör i stället använda Event Grid. Se [Dirigera händelser till en anpassad webbslutpunkt](job-state-events-cli-how-to.md).
 
 **Jobb** har vanligtvis följande tillstånd: **Schemalagd**, **I kö**, **Bearbetas**, **Slutförd** (slutlig status). Om jobbet har kommit över ett fel visas **fel** tillstånd. Om jobbet håller på att avbrytas **avbryts du och** **annulleras** när det är färdigt.
 
@@ -137,7 +120,7 @@ När kodningen är klar och innehållsnyckelprincipen är inställd är nästa s
 
 Processen för att skapa **streaming Locator** kallas publicering. Som standard är **streaming Locator** giltig omedelbart efter att du har gjort API-anropen. Det varar tills det tas bort, om du inte konfigurerar de valfria start-och slut tiderna.
 
-När du skapar en **strömmande positionerare**måste du ange önskad `StreamingPolicyName` . I den här självstudien använder vi en av de fördefinierade strömmande principerna, som visar Azure Media Services hur du publicerar innehållet för strömning. I det här exemplet ställer vi in StreamingLocator.StreamingPolicyName för principen ”Predefined_MultiDrmCencStreaming”. PlayReady-och Widevine-krypteringarna används och nyckeln levereras till uppspelnings klienten baserat på de konfigurerade DRM-licenserna. Om du dessutom vill kryptera strömmen med CBCS (FairPlay) använder du ”Predefined_MultiDrmStreaming”.
+När du skapar en **strömmande positionerare** måste du ange önskad `StreamingPolicyName` . I den här självstudien använder vi en av de fördefinierade strömmande principerna, som visar Azure Media Services hur du publicerar innehållet för strömning. I det här exemplet ställer vi in StreamingLocator.StreamingPolicyName för principen ”Predefined_MultiDrmCencStreaming”. PlayReady-och Widevine-krypteringarna används och nyckeln levereras till uppspelnings klienten baserat på de konfigurerade DRM-licenserna. Om du dessutom vill kryptera strömmen med CBCS (FairPlay) använder du ”Predefined_MultiDrmStreaming”.
 
 > [!IMPORTANT]
 > Om du använder en anpassad [strömningsprincip](streaming-policy-concept.md) bör du skapa en begränsad uppsättning av sådana principer för ditt Media Service-konto, och återanvända dem för dina StreamingLocators när samma krypterings- och protokollalternativ krävs. Media Service-kontot har en kvot för antalet StreamingPolicy-poster. Du bör inte skapa en ny StreamingPolicy för varje StreamingLocator.
@@ -154,7 +137,7 @@ ContentKeyIdentifierClaim används i ContentKeyPolicy, vilket innebär att den t
 
 ## <a name="build-a-streaming-url"></a>Bygg en strömmande URL
 
-Nu när [StreamingLocator](/rest/api/media/streaminglocators) har skapats kan du hämta direktuppspelningswebbadresserna. Om du vill bygga en URL måste du sammanfoga [StreamingEndpoint](/rest/api/media/streamingendpoints) -värdnamnet och sökvägen för **strömmande lokalisering** . I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du skapar ett Media Service-konto första gången kommer detta *standardvärde för * **StreamingEndpoint** vara i ett stoppat tillstånd, så du måste anropa **Starta**.
+Nu när [StreamingLocator](/rest/api/media/streaminglocators) har skapats kan du hämta direktuppspelningswebbadresserna. Om du vill bygga en URL måste du sammanfoga [StreamingEndpoint](/rest/api/media/streamingendpoints) -värdnamnet och sökvägen för **strömmande lokalisering** . I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du skapar ett Media Service-konto första gången kommer detta *standardvärde för* **StreamingEndpoint** vara i ett stoppat tillstånd, så du måste anropa **Starta**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 

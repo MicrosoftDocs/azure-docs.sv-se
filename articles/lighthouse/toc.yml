@@ -45,6 +45,14 @@
           href: security-baseline.md
 - name: Anvisningar
   items:
+    - name: Kundåtgärder
+      items:
+        - name: Visa och hantera tjänstleverantörer
+          displayName: 'customer, update, visibility, control'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Visa tjänstleverantörsaktivitet
+          displayName: 'monitor, log, customer, visibility, transparency, control'
+          href: ./how-to/view-service-provider-activity.md
     - name: Registrera en kund i Azure Lighthouse
       displayName: resource management
       href: ./how-to/onboard-customer.md
@@ -87,14 +95,6 @@
           href: ./how-to/deploy-policy-remediation.md
     - name: Azure Sentinel-integrering
       href: ./how-to/manage-sentinel-workspaces.md
-    - name: Kundåtgärder
-      items:
-        - name: Visa och hantera tjänstleverantörer
-          displayName: 'customer, update'
-          href: ./how-to/view-manage-service-providers.md
-        - name: Visa tjänstleverantörsaktivitet
-          displayName: 'monitor, log'
-          href: ./how-to/view-service-provider-activity.md
 - name: Referens
   items:
     - name: Azure CLI

@@ -9,12 +9,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 48fe0c737cf7005676a5c803107b4402c7039141
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752761"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878180"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrera virtuella Hyper-V-datorer till Azure 
 
@@ -46,7 +46,7 @@ Innan du börjar de här självstudierna bör du:
 2. [Granska](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Krav för Hyper-V-värden för migrering och de Azure-URL: er som Hyper-V-värdar och-kluster behöver åtkomst för VM-migrering.
 3. [Granska](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) kraven för virtuella Hyper-V-datorer som du vill migrera till Azure.
 4. Vi rekommenderar att du  [bedömer virtuella Hyper-V-datorer](tutorial-assess-hyper-v.md) innan du migrerar dem till Azure, men du behöver inte.
-5. Gå till det redan skapade projektet eller [skapa ett nytt projekt](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+5. Gå till det redan skapade projektet eller [skapa ett nytt projekt](./create-manage-projects.md)
 6. Verifiera behörigheter för ditt Azure-konto – ditt Azure-konto måste ha behörighet att skapa en virtuell dator och skriva till en Azure-hanterad disk.
 
 ## <a name="download-and-install-the-provider"></a>Hämta och installera providern
@@ -108,7 +108,7 @@ När identifieringen är klar kan du påbörja replikering av virtuella Hyper-V-
     - Inget alternativ för infrastrukturs redundans krävs om du inte behöver någon av dessa tillgänglighets konfigurationer för de migrerade datorerna.
 10. I **Azure Hybrid-förmån**:
 
-    - Välj **Nej** om du inte vill använda Azure Hybrid-förmånen. Klicka sedan på **Nästa**.
+    - Välj **Nej** om du inte vill använda Azure Hybrid-förmånen. Klicka sedan på **Nästa.**
     - Välj **Ja** om du har Windows Server-datorer som omfattas av aktiva Software Assurance- eller Windows Server-prenumerationer och du vill tillämpa förmånen på de datorer som du migrerar. Klicka på **Nästa**.
 
     ![Mål inställningar](./media/tutorial-migrate-hyper-v/target-settings.png)
@@ -168,7 +168,7 @@ När delta-replikering börjar kan du köra en testmigrering för de virtuella d
 Gör en testmigrering enligt följande:
 
 
-1. I Server för **migrerings mål**  >  **Servers**  >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
+1. I Server för **migrerings mål**  >    >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
 
      ![Testmigrerade servrar](./media/tutorial-migrate-hyper-v/test-migrated-servers.png)
 

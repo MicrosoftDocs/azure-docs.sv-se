@@ -1,5 +1,5 @@
 ---
-title: Koda videor med standard-kodare i Media Services-Azure | Microsoft Docs
+title: Koda videor med standard-kodare i Media Services
 description: Det här avsnittet visar hur du använder standard-kodaren i Media Services för att koda en indataport med en automatiskt genererad bit hastighets steg, baserat på inlösningen för inläsning och bit hastighet.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 05accd69f1868b8b0e0f6dbd4fb5c21ee843ec5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b973d17e10f3dbb75f5208d9003b4f8118b37c7
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297733"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891411"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Koda med en automatiskt genererad bit hastighets steg
 
@@ -31,7 +31,7 @@ I den här artikeln förklaras hur du använder standard-kodaren i Media Service
 
 ### <a name="encoding-for-streaming"></a>Kodning för strömning
 
-När du använder **AdaptiveStreaming** -förinställningen i **Transform**får du en utmatning som passar för leverans via strömmande protokoll som HLS och tank streck. När du använder den här för inställningen bestämmer tjänsten intelligent hur många video lager som ska genereras och med vilken bit hastighet och upplösning. Utdata-innehållet innehåller MP4-filer där AAC-kodad ljud-och H. 264-kodad video inte är överlagrad.
+När du använder **AdaptiveStreaming** -förinställningen i **Transform** får du en utmatning som passar för leverans via strömmande protokoll som HLS och tank streck. När du använder den här för inställningen bestämmer tjänsten intelligent hur många video lager som ska genereras och med vilken bit hastighet och upplösning. Utdata-innehållet innehåller MP4-filer där AAC-kodad ljud-och H. 264-kodad video inte är överlagrad.
 
 Om du vill se ett exempel på hur denna för inställning används, se [strömma en fil](stream-files-dotnet-quickstart.md).
 

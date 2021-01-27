@@ -3,12 +3,12 @@ title: Visa månads vis uppskattad labb kostnads trend i Azure DevTest Labs
 description: Den här artikeln innehåller information om hur du spårar kostnaden för ditt labb (månatligt uppskattat kostnads trend) i Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283834"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892345"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Spåra kostnader som är associerade med ett labb i Azure DevTest Labs
 Den här artikeln innehåller information om hur du spårar kostnaden för ditt labb. Det visar dig hur du visar den uppskattade kostnads trenden för den aktuella kalender månaden för labbet. Artikeln visar också hur du visar månads-till-datum-kostnader per resurs i labbet.
@@ -19,7 +19,7 @@ I det här avsnittet får du lära dig hur du använder diagrammet **månatlig u
 Följ de här stegen om du vill visa ett uppskattat månatligt kostnads trend diagram: 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du ditt labb.  
 4. Välj **konfiguration och principer** på den vänstra menyn.  
 4. Välj **kostnads trend** i avsnittet **kostnads uppföljning** på den vänstra menyn. Följande skärm bild visar ett exempel på ett kostnads diagram. 
@@ -38,7 +38,7 @@ Följ de här stegen om du vill visa ett uppskattat månatligt kostnads trend di
 
      Följande kostnader ingår *inte* i kostnads beräkningen:
 
-   * CSP-och DreamSpark-prenumerationer stöds inte för närvarande eftersom Azure DevTest Labs använder [Azures fakturerings-API: er](../cost-management-billing/manage/usage-rate-card-overview.md) för att beräkna labb kostnaden, som inte stöder CSP-eller DreamSpark-prenumerationer.
+   * CSP-och DreamSpark-prenumerationer stöds inte för närvarande eftersom Azure DevTest Labs använder Azures fakturerings-API: er för att beräkna labb kostnaden, som inte stöder CSP-eller DreamSpark-prenumerationer.
    * Dina erbjudande priser. För närvarande kan du inte använda erbjudandet (visas under din prenumeration) som du har förhandlat med Microsoft eller Microsoft-partner. Endast betala per användning-pris används.
    * Dina skatter
    * Dina rabatter
@@ -65,7 +65,7 @@ Med DevTest Labs kan du bättre hantera kostnaderna i labbet genom att ange ett 
 
        ![Konfigurera meddelande fönstret](./media/devtest-lab-configure-cost-management/configure-notification-new.png)
 
-     - Om du anger **meddela**måste du definiera en webhook-URL.
+     - Om du anger **meddela** måste du definiera en webhook-URL.
      - Om du definierar en webhook-URL måste du ange ett **meddelande** **till i** fönstret kostnads tröskel.
      - Du måste skapa en webhook innan du anger den här.  
 
@@ -75,7 +75,7 @@ Med DevTest Labs kan du bättre hantera kostnaderna i labbet genom att ange ett 
 Med funktionen för månatlig kostnads trend i labbet kan du se hur mycket du har spenderat under den aktuella kalender månaden. Den visar även projektionen av utgifterna fram till slutet av månaden, baserat på dina utgifter under de senaste sju dagarna. För att hjälpa dig att förstå varför utgifterna i labbet uppfyller tröskelvärdena tidigt i, kan du använda funktionen **kostnad per resurs** som visar den månads aktuella kostnaden **per resurs** i en tabell.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du önskat labb.  
 4. Välj **konfiguration och principer** på den vänstra menyn.
 5. Välj **kostnad per resurs** i avsnittet **kostnads uppföljning** på den vänstra menyn. Du ser de kostnader som är kopplade till varje resurs som är associerad med ett labb. 

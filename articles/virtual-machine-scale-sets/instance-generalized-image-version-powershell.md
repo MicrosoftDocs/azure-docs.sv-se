@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9edade1aa54d6f4f8160a107f84e6da2e6cf316e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331530"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878027"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Skapa en skalnings uppsättning från en generaliserad avbildning med hjälp av PowerShell 
 
-Skapa en virtuell dator från en generaliserad avbildnings version som lagras i ett [delat avbildnings Galleri](shared-image-galleries.md). Om du vill skapa en skalnings uppsättning med hjälp av en specialiserad avbildning, se [skapa skalnings uppsättnings instanser från en specialiserad avbildning](instance-specialized-image-version-powershell.md).
+Skapa en virtuell dator från en generaliserad avbildnings version som lagras i ett [delat avbildnings Galleri](../virtual-machines/shared-image-galleries.md). Om du vill skapa en skalnings uppsättning med hjälp av en specialiserad avbildning, se [skapa skalnings uppsättnings instanser från en specialiserad avbildning](instance-specialized-image-version-powershell.md).
 
 När du har en generaliserad avbildning kan du skapa en skalnings uppsättning för virtuella datorer med cmdleten [New-AzVmss](/powershell/module/az.compute/new-azvmss) . 
 
@@ -27,7 +27,7 @@ I det här exemplet använder vi bild Definitions-ID: t för att se till att den
 Tänk på att om du använder en angiven avbildnings version kan Automation inte köras om den angivna avbildnings versionen inte är tillgänglig eftersom den har tagits bort eller tagits bort från regionen. Vi rekommenderar att du använder bild Definitions-ID: t för att skapa din nya virtuella dator, om inte en speciell avbildnings version krävs.
 
 
-I följande exempel skapas en skalnings uppsättning med namnet *myScaleSet*i resurs gruppen *myVMSSRG* på *usasödracentrala* -platsen. Skalnings uppsättningen kommer att skapas från *myImageDefinition* -avbildningen i galleriet för *Galleri* avbildningar i *myGalleryRG* -resurs gruppen. När du uppmanas anger du dina egna administrativa autentiseringsuppgifter för VM-instanserna i skalnings uppsättningen.
+I följande exempel skapas en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen *myVMSSRG* på *usasödracentrala* -platsen. Skalnings uppsättningen kommer att skapas från *myImageDefinition* -avbildningen i galleriet för *Galleri* avbildningar i *myGalleryRG* -resurs gruppen. När du uppmanas anger du dina egna administrativa autentiseringsuppgifter för VM-instanserna i skalnings uppsättningen.
 
 
 ## <a name="simplified-parameter-set"></a>Förenklad parameter uppsättning
@@ -173,7 +173,7 @@ New-AzVmss `
 Det tar några minuter att skapa och konfigurera alla skalningsuppsättningsresurser och virtuella datorer.
 
 ## <a name="next-steps"></a>Nästa steg
-[Azure Image Builder (för hands version)](../virtual-machines/linux/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (för hands version)](../virtual-machines/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
 
 Du kan också skapa en delad resurs för avbildnings galleriet med hjälp av mallar. Det finns flera tillgängliga Azure snabb starts mallar: 
 
@@ -181,4 +181,4 @@ Du kan också skapa en delad resurs för avbildnings galleriet med hjälp av mal
 - [Skapa en avbildningsdefinition i ett Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Skapa en avbildningsversion i ett Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Mer information om delade avbildnings gallerier finns i [översikten](shared-image-galleries.md). Om du stöter på problem, se [Felsöka delade avbildnings gallerier](../virtual-machines/troubleshooting-shared-images.md).
+Mer information om delade avbildnings gallerier finns i [översikten](../virtual-machines/shared-image-galleries.md). Om du stöter på problem, se [Felsöka delade avbildnings gallerier](../virtual-machines/troubleshooting-shared-images.md).

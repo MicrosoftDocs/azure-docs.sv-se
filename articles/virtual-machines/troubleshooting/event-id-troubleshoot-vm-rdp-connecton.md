@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088605"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878451"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Felsöka Azure VM RDP-anslutningsfel efter händelse-ID 
 
@@ -156,19 +156,19 @@ Start-Service -Name "SessionEnv"
 
 Om du inte kan förnya certifikatet följer du dessa steg för att försöka ta bort certifikatet:
 
-1. Öppna rutan **Kör** på en annan virtuell dator i samma VNet, Skriv **MMC**och tryck sedan på **OK**. 
+1. Öppna rutan **Kör** på en annan virtuell dator i samma VNet, Skriv **MMC** och tryck sedan på **OK**. 
 
 2. På **Arkiv** -menyn väljer du **Lägg till/ta bort snapin-modul**.
 
-3. I listan **Tillgängliga snapin-moduler** väljer du **certifikat**och väljer sedan **Lägg till**.
+3. I listan **Tillgängliga snapin-moduler** väljer du **certifikat** och väljer sedan **Lägg till**.
 
-4. Välj **dator konto**och välj sedan **Nästa**.
+4. Välj **dator konto** och välj sedan **Nästa**.
 
-5. Välj **en annan dator**och Lägg sedan till IP-adressen för den virtuella dator som har problem.
+5. Välj **en annan dator** och Lägg sedan till IP-adressen för den virtuella dator som har problem.
    >[!Note]
    >Försök att använda det interna nätverket för att undvika att använda en virtuell IP-adress.
 
-6. Välj **Slutför**och välj sedan **OK**.
+6. Välj **Slutför** och välj sedan **OK**.
 
    ![Välj dator](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
@@ -235,7 +235,7 @@ Det här problemet orsakas av säkerhets principer. När äldre versioner av TLS
 
 RDP använder TLS 1,0 som standard protokoll. Protokollet kan dock ändras till TLS 1,1, som är den nya standarden.
 
-Information om hur du felsöker det här problemet finns i [Felsöka autentiseringsfel när du använder RDP för att ansluta till den virtuella Azure-datorn](troubleshoot-authentication-error-rdp-vm.md#tls-version).
+Information om hur du felsöker det här problemet finns i [Felsöka autentiseringsfel när du använder RDP för att ansluta till den virtuella Azure-datorn](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version).
 
 ## <a name="scenario-3"></a>Scenario 3
 
