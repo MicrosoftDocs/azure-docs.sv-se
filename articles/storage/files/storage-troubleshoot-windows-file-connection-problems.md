@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962456"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878518"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Felsöka Azure Files problem i Windows (SMB)
 
@@ -263,7 +263,7 @@ Du kan se långsamma prestanda när du försöker överföra filer till Azure Fi
 -   Om du känner till den slutliga storleken på en fil som du utökar med skrivningar, och program varan inte har kompatibilitetsproblem när den skrivna filen i filen innehåller nollor, ställer du in fil storleken i förväg i förväg i stället för att göra varje Skriv en utökad skrivning.
 -   Använd rätt kopierings metod:
     -   Använd [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) för överföring mellan två fil resurser.
-    -   Använd [Robocopy](./storage-files-deployment-guide.md#robocopy) mellan fil resurser på en lokal dator.
+    -   Använd [Robocopy](./storage-how-to-create-file-share.md) mellan fil resurser på en lokal dator.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Överväganden för Windows 8,1 eller Windows Server 2012 R2
 
@@ -406,8 +406,8 @@ Cmdleten utför dessa kontroller nedan i följd och ger vägledning för felen:
 5. CheckSidHasAadUser: kontrol lera att den inloggade AD-användaren är synkroniserad med Azure AD. Om du vill se om en särskild AD-användare är synkroniserad med Azure AD kan du ange parametern-UserName och-Domain i indataparametrarna. 
 6. CheckGetKerberosTicket: försöker hämta en Kerberos-biljett för att ansluta till lagrings kontot. Om det inte finns någon giltig Kerberos-token kör du cmdleten Klist get CIFS/Storage-Account-name. File. Core. Windows. net. kontrol lera felkoden för att rot orsaka att biljett hämtningen Miss lyckas.
 7. CheckStorageAccountDomainJoined: kontrol lera om AD-autentisering har Aktiver ATS och att kontots AD-egenskaper är ifyllda. Om inte, referera till den [här](./storage-files-identity-ad-ds-enable.md) instruktionen för att aktivera AD DS-autentisering på Azure Files. 
-8. CheckUserRbacAssignment: kontrol lera om AD-användaren har rätt RBAC-roll tilldelning för att ge åtkomst till Azure Files på resurs nivå. Om inte, referera till den [här](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) instruktionen för att konfigurera behörigheten på resurs nivå. (Stöds på AzFilesHybrid v 0.2.3 + version)
-9. CheckUserFileAccess: kontrol lera om AD-användaren har rätt katalog-/fil behörighet (Windows ACL: er) för att få åtkomst till Azure Files. Om inte, referera till den [här](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) instruktionen för att konfigurera behörigheten katalog/filnivå. (Stöds på AzFilesHybrid v 0.2.3 + version)
+8. CheckUserRbacAssignment: kontrol lera om AD-användaren har rätt RBAC-roll tilldelning för att ge åtkomst till Azure Files på resurs nivå. Om inte, referera till den [här](./storage-files-identity-ad-ds-assign-permissions.md) instruktionen för att konfigurera behörigheten på resurs nivå. (Stöds på AzFilesHybrid v 0.2.3 + version)
+9. CheckUserFileAccess: kontrol lera om AD-användaren har rätt katalog-/fil behörighet (Windows ACL: er) för att få åtkomst till Azure Files. Om inte, referera till den [här](./storage-files-identity-ad-ds-configure-permissions.md) instruktionen för att konfigurera behörigheten katalog/filnivå. (Stöds på AzFilesHybrid v 0.2.3 + version)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Det gick inte att konfigurera katalog-/fil nivå behörigheter (Windows ACL: er) med Utforskaren i Windows
 

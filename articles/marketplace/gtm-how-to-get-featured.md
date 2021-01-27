@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
-ms.openlocfilehash: 4a3d0ef3c112da87e73f83c6c87de8f3fce1fea0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621373"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878722"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Så här kommer du igång i AppSource och Azure Marketplace
 
@@ -30,7 +30,7 @@ Du kan vidta följande åtgärder för att förbättra dina poäng:
 1. *Kontrol lera att din app eller tjänst är korrekt kategoriserad*: Välj tre kategorier som representerar appen eller tjänstens funktioner.
 2. *Azure Marketplace-appar: öka din användnings månad i Azure.* Om du kan uppnå 1 000 timmars Azure-användning per månad ökar du kraftigt.
 3. *AppSource-appar: öka de förvärv som kommer till ditt erbjudande.* Om du kan uppnå 10 anskaffningar per månad ökar du kraftigt.
-4. *Få Co-Sell klar status*: Slutför [kraven för medförsäljnings klar](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+4. *Få Co-Sell klar status*: Slutför [kraven för medförsäljnings klar](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 5. *Förbättra kvaliteten på ditt erbjudande*: information om hur du ändrar ditt erbjudande finns i [rikt linjer för innehålls registrering](marketplace-criteria-content-validation.md)
 6. Publicera flera erbjudanden på Marketplace: är alla dina viktigaste appar och tjänster angivna? Har du en utvärderings version?
 7. Uppmuntra kunderna att skriva recensioner.

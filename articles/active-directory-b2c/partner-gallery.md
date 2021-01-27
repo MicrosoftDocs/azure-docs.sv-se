@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5012e90aae316897454ffc7933efc88d83afdf6e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703215"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893395"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partner
 
@@ -74,6 +74,7 @@ Microsoft samarbetar med följande ISV: er för säkerhet.
 | ISV-partner | Beskrivning och integrations genom gångar |
 |:-------------------------|:--------------|
 | ![Skärm bild av en Arkose Lab-logotyp](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) är en provider för bedrägeri förebyggande lösningar som hjälper organisationer att skydda mot bot-attacker, konto upptagnings attacker och bedrägligt konto öppningar. |
+| ![Skärm bild av en ping-logotyp](./media/partner-gallery/ping-logo.png) | [Ping identitet](./partner-ping-identity.md) möjliggör säker hybrid åtkomst till lokala äldre program över flera moln. |
 | ![Skärm bild av en Strata-logotyp](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) ger säker hybrid åtkomst till lokala program genom att tvinga konsekventa åtkomst principer, hålla identiteter synkroniserade och göra det enkelt att överföra program från äldre identitets system till standardbaserad autentisering och åtkomst kontroll som tillhandahålls av Azure AD B2C. |
 | ![Skärm bild av en Zscaler-logotyp](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) ger principbaserad, säker åtkomst till privata program och till gångar utan kostnad, krångel eller säkerhets risker för en VPN-anslutning. |
 

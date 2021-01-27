@@ -10,8 +10,10 @@
 - name: Självstudier
   expanded: true
   items:
-    - name: Skapa en SCIM-slutpunkt och konfigurera etablering
+    - name: Planera etablering för en SCIM-slutpunkt
       href: use-scim-to-provision-users-and-groups.md
+    - name: Utveckla en exempel SCIM-slutpunkt
+      href: use-scim-to-build-users-and-groups-endpoints.md
     - name: Anpassa attributmappningar
       href: customize-application-attributes.md
     - name: Självstudier om appspecifik etablering

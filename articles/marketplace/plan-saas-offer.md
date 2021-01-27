@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913947"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879266"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planera ett SaaS-erbjudande för den kommersiella marknaden
 
@@ -150,7 +150,7 @@ När du [skapar ett nytt SaaS-erbjudande](create-new-saas-offer.md) i Partner Ce
 6. Sekretesspolicy
 7. Erbjudandets namn
 8. Sammanfattning
-9. Beskrivning
+9. Description
 10. Skärm bilder/videor
 11. Dokument
 
@@ -202,7 +202,7 @@ För att hjälpa till att skapa ett erbjudande enklare kan du förbereda några 
   - . png-fil
   - Måste innehålla en beskrivning
 - **Media-videor** (valfritt): du kan lägga till upp till fyra videor med följande krav som demonstrerar ditt erbjudande:
-  - Namn
+  - Name
   - URL: måste vara värd för YouTube eller Vimeo.
   - Miniatyr: 1280 x 720. png-fil
 
@@ -250,7 +250,7 @@ I följande exempel visas ett exempel på en uppdelning av kostnader och utbetal
 | Microsoft betalar 80% av din licens kostnad<br>`*` För kvalificerade SaaS-appar betalar Microsoft 90% av din licens kostnad| $80,00 per månad<br>``*`` $90,00 per månad |
 |||
 
-**`*` Minskad service avgift för Marketplace** – för vissa SaaS-erbjudanden som du har publicerat på den kommersiella marknaden kommer Microsoft att minska sin service avgift för Marketplace från 20% (enligt beskrivningen i Microsoft Publisher Agreement) till 10%. För dina erbjudanden som ska kvalificeras måste ditt erbjudande ha utsetts av Microsoft som Azure IP Co-Sälj-motiverade. Berättigande måste uppfyllas minst fem (5) arbets dagar före slutet av varje kalender månad för att ta emot den minskade service avgiften för Marketplace. När rätten är uppfylld tilldelas den minskade tjänste avgiften till alla transaktioner som gäller den första dagen i följande månad och fortsätter att gälla tills Azure IP-motiverade status går förlorad. Information om IP-samförsäljnings behörighet finns i [krav för medförsäljnings status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Den minskade service avgiften för Marketplace gäller även för Azure IP Co-Sälj motiverade VM: ar, hanterade appar och andra kvalificerade IaaS-erbjudanden som görs tillgängliga via den kommersiella marknads platsen.
+**`*` Minskad service avgift för Marketplace** – för vissa SaaS-erbjudanden som du har publicerat på den kommersiella marknaden kommer Microsoft att minska sin service avgift för Marketplace från 20% (enligt beskrivningen i Microsoft Publisher Agreement) till 10%. För dina erbjudanden som ska kvalificeras måste ditt erbjudande ha utsetts av Microsoft som Azure IP Co-Sälj-motiverade. Berättigande måste uppfyllas minst fem (5) arbets dagar före slutet av varje kalender månad för att ta emot den minskade service avgiften för Marketplace. När rätten är uppfylld tilldelas den minskade tjänste avgiften till alla transaktioner som gäller den första dagen i följande månad och fortsätter att gälla tills Azure IP-motiverade status går förlorad. Information om IP-samförsäljnings behörighet finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Den minskade service avgiften för Marketplace gäller även för Azure IP Co-Sälj motiverade VM: ar, hanterade appar och andra kvalificerade IaaS-erbjudanden som görs tillgängliga via den kommersiella marknads platsen.
 
 ## <a name="additional-sales-opportunities"></a>Ytterligare försäljnings möjligheter
 
@@ -258,7 +258,7 @@ Du kan välja att välja mellan marknadsförings-och försäljnings kanaler som 
 
 - Att **sälja via CSP**: Använd det här alternativet om du vill att CSP-partner (Microsoft Cloud solution providers) ska kunna sälja din lösning som en del av ett sammanslaget erbjudande. Mer information om det här programmet finns i [program för Cloud Solution Provider](cloud-solution-providers.md).
 
-- **Samförsäljning med Microsoft: med** det här alternativet kan Microsofts försäljnings team överväga din IP-samkunds kvalificerade lösning vid utvärdering av kundernas behov. Information om samförsäljnings behörighet finns i [krav för medförsäljnings status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Detaljerad information om hur du förbereder erbjudandet för utvärdering finns i [samförsäljnings alternativ i Partner Center](commercial-marketplace-co-sell.md).
+- **Samförsäljning med Microsoft: med** det här alternativet kan Microsofts försäljnings team överväga din IP-samkunds kvalificerade lösning vid utvärdering av kundernas behov. Information om samförsäljnings behörighet finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Detaljerad information om hur du förbereder erbjudandet för utvärdering finns i [samförsäljnings alternativ i Partner Center](commercial-marketplace-co-sell.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

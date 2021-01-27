@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935208"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901227"
 ---
 Azure Functions möjliggör skapande av konfigurations aktiviteter som är Lean-baserade på en fördefinierad start punkt. De [konfigurations exemplen för replikering för Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) illustrerar hur du kan använda [färdiga hjälp program](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) i din egen kod eller undvika att hantera kod helt och bara använda konfigurationen.
 
@@ -218,13 +218,12 @@ I följande tabell får du korrekta värden för kombinationer av källor och m�
 
 ### <a name="retry-policy"></a>Återförsöksprincip
 
-Läs Azure Functions- [dokumentationen om försök](/azure/azure-functions/functions-bindings-error-pages) att konfigurera principen för återförsök. Princip inställningarna som väljs i alla projekt i den här lagrings platsen konfigurerar en exponentiell backoff-strategi med återförsöksintervall mellan 5 sekunder och 5 minuter med oändliga återförsök för att undvika data förlust.
+Läs Azure Functions- [dokumentationen om försök](../articles/azure-functions/functions-bindings-error-pages.md) att konfigurera principen för återförsök. Princip inställningarna som väljs i alla projekt i den här lagrings platsen konfigurerar en exponentiell backoff-strategi med återförsöksintervall mellan 5 sekunder och 5 minuter med oändliga återförsök för att undvika data förlust.
 
-För Service Bus kan du läsa avsnittet ["använda stöd för återförsök ovanpå utlösnings återhämtning"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) för att förstå interaktionen mellan utlösare och det maximala antalet leveranser som definierats för kön.
+För Service Bus kan du läsa avsnittet ["använda stöd för återförsök ovanpå utlösnings återhämtning"](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) för att förstå interaktionen mellan utlösare och det maximala antalet leveranser som definierats för kön.
 
 ### <a name="build-deploy-and-configure"></a>Bygg, distribuera och konfigurera
 
 Medan du fokuserar på konfigurationen behöver aktiviteterna fortfarande skapa ett distributions bara program och konfigurera Azure Functions-värdar så att den har all information som krävs för att ansluta till de specifika slut punkterna. 
 
 Detta illustreras tillsammans med återanvändbara skript i [exemplen för konfigurations-baserade replikeringar för Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config).
-

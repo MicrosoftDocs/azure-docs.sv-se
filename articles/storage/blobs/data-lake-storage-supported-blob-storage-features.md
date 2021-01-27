@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545843"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879317"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob Storage-funktioner som är tillgängliga i Azure Data Lake Storage Gen2
 
@@ -35,17 +35,17 @@ Följande tabell visar hur varje Blob Storage-funktion stöds med Data Lake Stor
 |PowerShell-kommandon för Blob Storage|Allmänt tillgänglig|Allmänt tillgänglig|[Snabb start: Ladda upp, ladda ned och lista blobar med PowerShell](storage-quickstart-blobs-powershell.md)|
 |Blob Storage Azure CLI-kommandon|Allmänt tillgänglig|Allmänt tillgänglig|[Snabb start: skapa, ladda ned och lista blobar med Azure CLI](storage-quickstart-blobs-cli.md)|
 |API: er för Blob Storage|Allmänt tillgänglig|Allmänt tillgänglig|[Snabbstart: Azure Blob Storage-klientbiblioteket v12 för .NET](storage-quickstart-blobs-dotnet.md)<br>[Snabb start: hantera blobbar med Java V12 SDK](storage-quickstart-blobs-java.md)<br>[Snabb start: hantera blobbar med python V12 SDK](storage-quickstart-blobs-python.md)<br>[Snabb start: hantera blobbar med Java Script V12 SDK i Node.js](storage-quickstart-blobs-nodejs.md)|
-|Diagnostikloggar|Allmänt tillgänglig|Förhandsgranskning |[Loggning med Azure-lagringsanalys](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Diagnostikloggar|Allmänt tillgänglig|Förhandsgranskning |[Analysloggning i Azure Storage](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Arkiv åtkomst nivå|Allmänt tillgänglig|Stöds inte|[Azure Blob Storage: nivåer för frekvent åtkomst, lågfrekvent åtkomst och arkivlagring](storage-blob-storage-tiers.md)|
 |Policyer för livs cykel hantering (skiktning)|Allmänt tillgänglig|Stöds inte ännu|[Hantera Azure Blob Storage-livscykeln](storage-lifecycle-management-concepts.md)|
 |Principer för livs cykel hantering (ta bort BLOB)|Allmänt tillgänglig|Allmänt tillgänglig|[Hantera Azure Blob Storage-livscykeln](storage-lifecycle-management-concepts.md)|
 |Logga in Azure Monitor|Förhandsgranskning |Förhandsgranskning|[Övervaknings Azure Storage](./monitor-blob-storage.md)|
 |Ögonblicksbilder|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[BLOB-ögonblicksbilder](snapshots-overview.md)|
 |Statiska webbplatser|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Hantering av statisk webbplats i Azure Storage](storage-blob-static-website.md)|
-|Oåterkalleligt lagrings utrymme|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Lagra affärs kritiska BLOB-data med oföränderlig lagring](storage-blob-immutable-storage.md)|
+|Oåterkalleligt lagrings utrymme|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Lagra affärskritiska blobdata med oföränderlig lagring](storage-blob-immutable-storage.md)|
 |Mjuk borttagning av behållare|Förhandsgranskning|Förhandsgranskning|[Mjuk borttagning för behållare (förhands granskning)](soft-delete-container-overview.md)|
 |Azure Storage inventering|Förhandsgranskning|Förhandsgranskning|[Använd Azure Storage inventering för att hantera BLOB-data (för hands version)](blob-inventory.md)|
-|BLOB-mjuk borttagning|Stöds inte ännu|Stöds inte ännu|[Mjuk borttagning för blobar](storage-blob-soft-delete.md)|
+|BLOB-mjuk borttagning|Stöds inte ännu|Stöds inte ännu|[Mjuk borttagning för blobar](./soft-delete-blob-overview.md)|
 |Blobfuse|Allmänt tillgänglig|Allmänt tillgänglig|[Montera Blob Storage som ett fil system med blobfuse](storage-how-to-mount-container-linux.md)|
 |Anonym offentlig åtkomst |Allmänt tillgänglig|Allmänt tillgänglig| Se [Konfigurera anonym offentlig Läs behörighet för behållare och blobbar](anonymous-read-access-configure.md).|
 |Redundansväxling av kund hanterat konto|Stöds inte ännu|Stöds inte ännu|[Haveri beredskap och redundansväxling av konto](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

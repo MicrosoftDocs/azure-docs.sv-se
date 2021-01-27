@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629188"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878960"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Hantera och öka kvoter för resurser med Azure Machine Learning
 
@@ -82,7 +82,7 @@ Tillgängliga resurser:
 + **Kluster per region** har en standard gräns på 200. De delas mellan ett utbildnings kluster och en beräknings instans. (En beräknings instans betraktas som ett kluster med en nod i kvot syfte.)
 
 > [!TIP]
-> Om du vill veta mer om vilken VM-familj som ska begära en kvot ökning för kontrollerar du [storleken på virtuella datorer i Azure](https://docs.microsoft.com/azure/virtual-machines/sizes). För instanser av GPU-VM börjar du med ett "N" i sitt familje namn (t. ex. NCv3-serien)
+> Om du vill veta mer om vilken VM-familj som ska begära en kvot ökning för kontrollerar du [storleken på virtuella datorer i Azure](../virtual-machines/sizes.md). För instanser av GPU-VM börjar du med ett "N" i sitt familje namn (t. ex. NCv3-serien)
 
 I följande tabell visas ytterligare gränser i plattformen. Kontakta AzureML produkt team **genom ett support** ärende för att begära ett undantag.
 

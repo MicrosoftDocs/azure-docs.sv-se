@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: eda920640667abc6620c5c90ee7d04a44789353e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90996754"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878552"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>Konfigurera IPsec/IKE-princip för S2S VPN-anslutningar och VNet-till-VNet-anslutningar: Azure Portal
 
@@ -28,10 +28,8 @@ Den här artikeln innehåller anvisningar för att skapa och konfigurera en IPse
 ### <a name="considerations"></a>Överväganden
 
 * IPsec/IKE-principen fungerar bara på följande Gateway-SKU: er:
-  * ***VpnGw1 ~ 5 och VpnGw1AZ ~ 5AZ***
-  * ***Standard*** och ***HighPerformance***
-* Du kan bara ange ***en*** principkombination för en viss anslutning.
-* Du måste ange alla algoritmer och parametrar för både IKE (huvud läge) och IPsec (snabb läge). Partiell principspecifikationen tillåts inte.
+  * ***VpnGw1 ~ 5 och VpnGw1AZ ~ 5AZ** _ _ ***standard** _ och _*_HighPerformance_*_ _ Det går bara att ange ***en** _ princip kombination för en specifik anslutning.
+  _ Du måste ange alla algoritmer och parametrar för både IKE (huvud läge) och IPsec (snabb läge). Partiell principspecifikationen tillåts inte.
 * Kontakta din VPN-enhets specifikationer för att se till att principen stöds på dina lokala VPN-enheter. S2S-eller VNet-till-VNet-anslutningar kan inte upprätta om principerna är inkompatibla.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Arbetsflöde
@@ -116,27 +114,27 @@ Se [RFC3526](https://tools.ietf.org/html/rfc3526) och [RFC5114](https://tools.ie
 
 Det här avsnittet vägleder dig genom stegen för att skapa en VPN-anslutning från plats till plats med en IPsec/IKE-princip. Följande steg skapar anslutningen som visas i följande diagram:
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="IPsec/IKE-princip diagram" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="Plats-till-plats-princip" border="false":::
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>Steg 1 – skapa det virtuella nätverket, VPN-gatewayen och den lokala Nätverksgatewayen
 
-Skapa följande resurser, som du ser i skärm bilderna nedan. Anvisningar finns i [skapa en plats-till-plats-VPN-anslutning](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Skapa följande resurser, som du ser i skärm bilderna nedan. Anvisningar finns i [skapa en plats-till-plats-VPN-anslutning](./tutorial-site-to-site-portal.md).
 
 * **Virtuellt nätverk:**  TestVNet1
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="VNet":::
 
 * **VPN-Gateway:** VNet1GW
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="Gateway":::
 
 * **Lokal nätverksgateway:** Site6
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="Webbplats":::
 
 * **Anslutning:** VNet1 till Site6
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="IPsec/IKE-princip diagram":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Anslutning":::
 
 ### <a name="step-2---configure-ipsecike-policy-on-the-s2s-vpn-connection"></a><a name="s2sconnection"></a>Steg 2 – konfigurera IPsec/IKE-princip på S2S VPN-anslutningen
 
@@ -145,17 +143,17 @@ I det här avsnittet konfigurerar du en IPsec/IKE-princip med följande algoritm
 * IKE: AES256, SHA384, DHGroup24, DPD timeout 45 sekunder
 * IPsec: AES256, SHA256, PFS none, SA livstid 30000 sekunder och 102400000KB
 
-1. Navigera till anslutnings resursen **VNet1toSite6**i Azure Portal. Välj **konfigurations** sida och välj **anpassad** IPSec/IKE-princip för att visa alla konfigurations alternativ. Skärm bilden nedan visar konfigurationen enligt listan:
+1. Navigera till anslutnings resursen **VNet1toSite6** i Azure Portal. Välj **konfigurations** sida och välj **anpassad** IPSec/IKE-princip för att visa alla konfigurations alternativ. Skärm bilden nedan visar konfigurationen enligt listan:
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="IPsec/IKE-princip diagram":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="Plats 6":::
 
 1. Om du använder GCMAES för IPsec måste du använda samma GCMAES-algoritm och nyckel längd för både IPsec-kryptering och integritet. Skärm bilden nedan anger till exempel GCMAES128 för både IPsec-kryptering och IPsec-integritet:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="GCMAES för IPsec":::
 
 1. Du kan också välja **Aktivera** för alternativet **Använd principbaserade trafik väljare** för att aktivera Azure VPN-gateway för att ansluta till principbaserade VPN-enheter lokalt, enligt beskrivningen ovan.
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="Princip beroende trafik väljare":::
 
 1. När alla alternativ är markerade väljer du **Spara** för att genomföra ändringarna i anslutnings resursen. Principen kommer att verkställas om en minut.
 
@@ -170,13 +168,13 @@ I det här avsnittet konfigurerar du en IPsec/IKE-princip med följande algoritm
 
 Stegen för att skapa en VNet-till-VNet-anslutning med en IPsec/IKE-princip liknar den för en S2S VPN-anslutning.
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="IPsec/IKE-princip diagram" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="Princip diagram för VNet-till-VNet" border="false":::
 
 1. Använd stegen i artikeln [skapa en VNet-till-VNET-anslutning](vpn-gateway-vnet-vnet-rm-ps.md) för att skapa en VNet-till-VNET-anslutning.
 
 2. När du har slutfört stegen visas två VNet-till-VNet-anslutningar som visas i skärm bilden nedan från VNet2GW-resursen:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="Anslutningar mellan virtuella nätverk":::
 
 3. Navigera till anslutnings resursen och gå till sidan **konfiguration** i portalen. Välj **anpassad** på **IPSec/IKE-principen** för att visa alternativ för anpassad princip. Välj de kryptografiska algoritmerna med motsvarande nyckel längd.
 
@@ -184,7 +182,7 @@ Stegen för att skapa en VNet-till-VNet-anslutning med en IPsec/IKE-princip likn
    * IKE: AES128, SHA1, DHGroup14, DPD timeout 45 sekunder
    * IPsec: GCMAES128, GCMAES128, PFS14, SA-livstid 14400 sekunder & 102400000KB
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="Anslutnings princip":::
 
 4. Välj **Spara** för att tillämpa princip ändringarna på anslutnings resursen.
 
@@ -203,7 +201,7 @@ Stegen för att skapa en VNet-till-VNet-anslutning med en IPsec/IKE-princip likn
 
 2. Välj **standard** på alternativet **IPSec/IKE-princip** . Detta tar bort alla anpassade principer som tidigare angavs i anslutningen och återställer standard-IPsec/IKE-inställningarna för den här anslutningen:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="IPsec/IKE-princip diagram":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="Ta bort princip":::
 
 3. Välj **Spara** för att ta bort den anpassade principen och återställa standard-IPSec/IKE-inställningarna på anslutningen.
 

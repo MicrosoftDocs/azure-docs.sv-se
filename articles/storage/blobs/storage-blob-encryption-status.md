@@ -9,12 +9,12 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee54357250e3f31ef9db633d933d897fff362f48
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809094"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878569"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Kontrol lera krypterings statusen för en BLOB
 
@@ -26,7 +26,7 @@ Den här artikeln visar hur du avgör om en specifik BLOB har krypterats.
 
 Använd Azure Portal, PowerShell eller Azure CLI för att avgöra om en BLOB är krypterad utan kod.
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
 Följ dessa steg om du vill använda Azure Portal för att kontrol lera om en BLOB har krypterats:
 
@@ -94,7 +94,7 @@ Example:
 azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sample-container/blob1.txt'
 ```
 
-Mer information om hur du använder AzCopy för att kopiera BLOB-data finns i [överföra data med AzCopy och Blob Storage](../common/storage-use-azcopy-blobs.md).
+Mer information om hur du använder AzCopy för att kopiera BLOB-data finns i [överföra data med AzCopy och Blob Storage](../common/storage-use-azcopy-v10.md#transfer-data).
 
 ## <a name="next-steps"></a>Nästa steg
 

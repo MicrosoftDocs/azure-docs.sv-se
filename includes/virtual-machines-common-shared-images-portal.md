@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016009"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878838"
 ---
 ## <a name="create-an-image-gallery"></a>Skapa ett bild galleri
 
@@ -35,7 +35,7 @@ I följande exempel skapas ett galleri med namnet min *Galleri* i resurs gruppen
 
 ## <a name="create-an-image-definition"></a>Skapa en avbildnings definition 
 
-Bild definitioner skapa en logisk gruppering för avbildningar. De används för att hantera information om de avbildnings versioner som skapas i dem. Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions).
+Bild definitioner skapa en logisk gruppering för avbildningar. De används för att hantera information om de avbildnings versioner som skapas i dem. Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
 
 Skapa Galleri avbildnings definitionen i galleriet. I det här exemplet heter Galleri bilden *myImageDefinition*.
 
@@ -44,7 +44,7 @@ Skapa Galleri avbildnings definitionen i galleriet. I det här exemplet heter Ga
 1. För **bild definitions namn** skriver du *myImageDefinition*.
 1. För **operativ system** väljer du rätt alternativ baserat på den virtuella käll datorn.  
 1. För **generering av virtuella datorer** väljer du alternativet baserat på den virtuella käll datorn. I de flesta fall kommer detta att vara *gen 1*. Mer information finns i [stöd för virtuella datorer i generation 2](../articles/virtual-machines/generation-2.md).
-1. För **operativ systemets tillstånd** väljer du alternativet baserat på den virtuella käll datorn. Mer information finns i [generaliserad och specialiserad](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. För **operativ systemets tillstånd** väljer du alternativet baserat på den virtuella käll datorn. Mer information finns i [generaliserad och specialiserad](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images).
 1. För **utgivare** skriver du in *unpublisher*. 
 1. För **erbjudande**, skriver du *erbjudandet*.
 1. För **SKU** skriver du *mySKU*.

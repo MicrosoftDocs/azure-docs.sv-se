@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: f52d684d1e6ef63fdf4287c610608061f30395f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90996873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878892"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Så här konfigurerar du BGP på Azure VPN-gatewayer
 
@@ -45,19 +45,19 @@ I det här avsnittet kan du skapa och konfigurera ett virtuellt nätverk, skapa 
 
 **Diagram 2**
 
-:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Diagram över nätverks arkitektur och inställningar" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-gateway.png" alt-text="Diagram som visar inställningar för virtuell nätverksgateway" border="false":::
 
 ### <a name="1-create-and-configure-testvnet1"></a>1. skapa och konfigurera TestVNet1
 
-I det här steget skapar och konfigurerar du TestVNet1. Använd stegen i [självstudien skapa en gateway](vpn-gateway-tutorial-create-gateway-powershell.md) för att skapa och konfigurera ditt virtuella Azure-nätverk och VPN-gateway. Använd referens inställningarna i skärm bilderna nedan.
+I det här steget skapar och konfigurerar du TestVNet1. Använd stegen i [självstudien skapa en gateway](./tutorial-create-gateway-portal.md) för att skapa och konfigurera ditt virtuella Azure-nätverk och VPN-gateway. Använd referens inställningarna i skärm bilderna nedan.
 
 * Virtuellt nätverk:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1.png" alt-text="TestVNet1 med motsvarande adressprefix":::
 
 * Undernät:
 
-   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+   :::image type="content" source="./media/bgp-howto/testvnet-1-subnets.png" alt-text="TestVNet1-undernät":::
 
 ### <a name="2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>2. Skapa VPN-gatewayen för TestVNet1 med BGP-parametrar
 
@@ -67,11 +67,11 @@ I det här steget skapar du en VPN-gateway med motsvarande BGP-parametrar.
 
 1. Fyll i de parametrar som visas nedan:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1.png" alt-text="Skapa VNG1":::
 
 1. Konfigurera följande inställningar i avsnittet markerat **Configure BGP** på sidan:
 
-   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+   :::image type="content" source="./media/bgp-howto/create-gateway-1-bgp.png" alt-text="Konfigurera BGP":::
 
    * Välj **Configure BGP**  -  **Enabled** för att Visa BGP-konfigurations avsnittet.
 
@@ -96,7 +96,7 @@ När gatewayen har skapats kan du hämta IP-adresser för BGP-peer på Azure VPN
 
 1. Navigera till resursen för den virtuella Nätverksgatewayen och välj **konfigurations** sidan för att Visa BGP-konfigurationsinformation som visas på följande skärm bild. På den här sidan kan du Visa all konfigurations information för BGP på din Azure VPN-Gateway: ASN, offentlig IP-adress och motsvarande BGP-peer-IP-adresser på Azure-sidan (standard och APIPA).
 
-   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+   :::image type="content" source="./media/bgp-howto/vnet-1-gw-bgp.png" alt-text="BGP-Gateway":::
 
 1. På sidan **konfiguration** kan du göra följande konfigurations ändringar:
 
@@ -107,17 +107,17 @@ När gatewayen har skapats kan du hämta IP-adresser för BGP-peer på Azure VPN
 
 ## <a name="part-2-configure-bgp-on-cross-premises-s2s-connections"></a><a name ="crosspremises"></a>Del 2: Konfigurera BGP i S2S-anslutningar mellan platser
 
-Om du vill upprätta en anslutning mellan olika platser måste du skapa en *lokal nätverksgateway* som representerar din lokala VPN-enhet och en *anslutning* för att ansluta VPN-gatewayen till den lokala Nätverksgatewayen enligt beskrivningen i [skapa plats-till-plats-anslutning](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Den här artikeln innehåller ytterligare egenskaper som krävs för att ange BGP-konfigurationsparametrar.
+Om du vill upprätta en anslutning mellan olika platser måste du skapa en *lokal nätverksgateway* som representerar din lokala VPN-enhet och en *anslutning* för att ansluta VPN-gatewayen till den lokala Nätverksgatewayen enligt beskrivningen i [skapa plats-till-plats-anslutning](./tutorial-site-to-site-portal.md). Den här artikeln innehåller ytterligare egenskaper som krävs för att ange BGP-konfigurationsparametrar.
 
 **Diagram 3**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Diagram över nätverks arkitektur och inställningar" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises.png" alt-text="Diagram över IPsec" border="false":::
 
 ### <a name="1-configure-bgp-on-the-local-network-gateway"></a>1. Konfigurera BGP på den lokala Nätverksgatewayen
 
 I det här steget konfigurerar du BGP på den lokala Nätverksgatewayen. Använd följande skärm bild som exempel. Skärm bilden visar lokal nätverksgateway (site5) med de parametrar som anges i diagram 3.
 
-:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+:::image type="content" source="./media/bgp-howto/create-local-bgp.png" alt-text="Konfigurera BGP för den lokala Nätverksgatewayen":::
 
 #### <a name="important-configuration-considerations"></a>Viktiga konfigurations överväganden
 
@@ -130,7 +130,7 @@ I det här steget konfigurerar du BGP på den lokala Nätverksgatewayen. Använd
 
 I det här exemplet används en APIPA-adress (169.254.100.1) som lokal IP-adress för BGP-peer:
 
-:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+:::image type="content" source="./media/bgp-howto/local-apipa.png" alt-text="Lokal nätverksgateway APIPA och BGP":::
 
 ### <a name="2-configure-a-s2s-connection-with-bgp-enabled"></a>2. Konfigurera en S2S-anslutning med BGP aktiverat
 
@@ -140,13 +140,13 @@ I det här steget skapar du en ny anslutning med BGP aktiverat. Om du redan har 
 
 Om du vill skapa en ny anslutning med BGP aktiverat, fyller du i värdena på sidan **Lägg till anslutning** och kontrollerar sedan alternativet **Aktivera BGP** för att aktivera BGP för den här anslutningen. Välj **OK** för att skapa anslutningen.
 
-:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+:::image type="content" source="./media/bgp-howto/ipsec-connection-bgp.png" alt-text="IPsec-anslutning mellan platser med BGP":::
 
 #### <a name="to-update-an-existing-connection"></a><a name ="update"></a>Så här uppdaterar du en befintlig anslutning
 
 Om du vill ändra BGP-alternativet för en anslutning navigerar du till sidan **konfiguration** i anslutnings resursen och växlar sedan **BGP** -alternativet som marker ATS i följande exempel. Välj **Spara** för att spara ändringarna.
 
-:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Diagram över nätverks arkitektur och inställningar":::
+:::image type="content" source="./media/bgp-howto/update-bgp.png" alt-text="Uppdatera BGP för en anslutning":::
 
 ## <a name="part-3-configure-bgp-on-vnet-to-vnet-connections"></a><a name ="v2v"></a>Del 3: Konfigurera BGP på VNet-till-VNet-anslutningar
 
@@ -160,7 +160,7 @@ För sammanhang som hänvisar till **diagram 4**, om BGP skulle inaktive ras mel
 
 **Diagram 4**
 
-:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Diagram över nätverks arkitektur och inställningar" border="false":::
+:::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Diagram över hela nätverket" border="false":::
 
 ## <a name="next-steps"></a>Nästa steg
 

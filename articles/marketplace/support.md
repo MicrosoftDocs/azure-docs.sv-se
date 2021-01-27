@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602562"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879249"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Stöd för programmet för kommersiella marknads platser i Partner Center
 
 Microsoft tillhandahåller stöd för en mängd olika produkter och tjänster. Att hitta rätt support team är viktigt för att säkerställa en lämplig och korrekt svars tid. Överväg följande scenarier, som kan hjälpa dig att dirigera din fråga till lämpligt team:
 
 - Om du är utgivare och har en fråga från en kund ber du kunden att be om support med hjälp av support länkarna i [Azure Portal](https://portal.azure.com/).
-- Om du är utgivare och har identifierat ett säkerhets problem med ett program som körs på Azure, se [så här loggar du in ett support ärende för en säkerhets händelse](/azure/security/fundamentals/event-support-ticket). Utgivare måste rapportera misstänkta säkerhets händelser, inklusive säkerhets incidenter och säkerhets risker för sina Azure Marketplace-program och tjänst erbjudanden, så snart som möjligt.
+- Om du är utgivare och har identifierat ett säkerhets problem med ett program som körs på Azure, se [så här loggar du in ett support ärende för en säkerhets händelse](../security/fundamentals/event-support-ticket.md). Utgivare måste rapportera misstänkta säkerhets händelser, inklusive säkerhets incidenter och säkerhets risker för sina Azure Marketplace-program och tjänst erbjudanden, så snart som möjligt.
 - Om du är utgivare och har en fråga som rör din app eller tjänst kan du läsa följande support alternativ.
 
 ## <a name="get-help-or-open-a-support-ticket"></a>Få hjälp eller öppna ett support ärende

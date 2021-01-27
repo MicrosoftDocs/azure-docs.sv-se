@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120248"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878535"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Introduktion till Microsoft Spark-verktyg
 
@@ -39,7 +39,11 @@ Du kan komma åt data på ADLS Gen2 med Synapse Spark via följande URL:
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage 
+<!-- ### Configure access to Azure Blob Storage  -->
+
+:::zone pivot = "programming-language-python"
+
+### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage  
 
 Synapse utnyttjar **signaturen för delad åtkomst (SAS)** för att få åtkomst till Azure Blob Storage. För att undvika att exponera SAS-nycklar i koden rekommenderar vi att du skapar en ny länkad tjänst i Synapse-arbetsytan till det Azure Blob Storage-konto som du vill ha åtkomst till.
 
@@ -58,9 +62,6 @@ Du kan komma åt data på Azure Blob Storage med Synapse Spark via följande URL
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 Här är ett kod exempel:
-
-
-:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -85,6 +86,26 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage  
+
+Synapse utnyttjar **signaturen för delad åtkomst (SAS)** för att få åtkomst till Azure Blob Storage. För att undvika att exponera SAS-nycklar i koden rekommenderar vi att du skapar en ny länkad tjänst i Synapse-arbetsytan till det Azure Blob Storage-konto som du vill ha åtkomst till.
+
+Följ dessa steg om du vill lägga till en ny länkad tjänst för ett Azure Blob Storage-konto:
+
+1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
+2. Välj **Hantera** i den vänstra panelen och välj **länkade tjänster** under de **externa anslutningarna**.
+3. Sök i **Azure Blob Storage** i den **nya länkade tjänst** panelen till höger.
+4. Välj **Fortsätt**.
+5. Välj Azure Blob Storage-kontot för att komma åt och konfigurera namnet på den länkade tjänsten. Föreslå Använd **konto nyckel** för **autentiseringsmetoden**.
+6. Kontrol lera att inställningarna är korrekta genom att välja **Testa anslutning** .
+7. Välj **skapa** först och klicka på **publicera alla** för att spara ändringarna. 
+
+Du kan komma åt data på Azure Blob Storage med Synapse Spark via följande URL:
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+Här är ett kod exempel:
+
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -101,13 +122,13 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
  
 ###  <a name="configure-access-to-azure-key-vault"></a>Konfigurera åtkomst till Azure Key Vault
 
@@ -621,11 +642,15 @@ Credentials.GetSecret("azure key vault name","secret name")
 
 ::: zone-end
 
+<!-- ### Put secret using workspace identity
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using workspace identity. Make sure you configure the access to [Azure Key Vault](#configure-access-to-azure-key-vault) appropriately. -->
+
+:::zone pivot = "programming-language-python"
+
 ### <a name="put-secret-using-workspace-identity"></a>Lägg till hemlighet med arbets ytans identitet
 
 Placerar Azure Key Vault hemlighet för ett angivet Azure Key Vault namn, hemligt namn och länkat tjänst namn med hjälp av arbets ytans identitet. Se till att du konfigurerar åtkomsten till [Azure Key Vault](#configure-access-to-azure-key-vault) på lämpligt sätt.
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value','linked service name')
@@ -634,26 +659,34 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-workspace-identity"></a>Lägg till hemlighet med arbets ytans identitet
+
+Placerar Azure Key Vault hemlighet för ett angivet Azure Key Vault namn, hemligt namn och länkat tjänst namn med hjälp av arbets ytans identitet. Se till att du konfigurerar åtkomsten till [Azure Key Vault](#configure-access-to-azure-key-vault) på lämpligt sätt.
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value","linked service name")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
+
+<!-- ### Put secret using user credentials
+
+Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and linked service name using user credentials.  -->
+
+:::zone pivot = "programming-language-python"
 
 ### <a name="put-secret-using-user-credentials"></a>Lägg till hemlighet med användarautentiseringsuppgifter
 
 Placerar Azure Key Vault hemlighet för ett angivet Azure Key Vault namn, hemligt namn och länkat tjänst namn med hjälp av användarautentiseringsuppgifter. 
-
-:::zone pivot = "programming-language-python"
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value')
@@ -662,19 +695,23 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 :::zone pivot = "programming-language-scala"
 
+### <a name="put-secret-using-user-credentials"></a>Lägg till hemlighet med användarautentiseringsuppgifter
+
+Placerar Azure Key Vault hemlighet för ett angivet Azure Key Vault namn, hemligt namn och länkat tjänst namn med hjälp av användarautentiseringsuppgifter. 
+
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value")
 ```
 
 ::: zone-end
 
-:::zone pivot = "programming-language-csharp"
+<!-- :::zone pivot = "programming-language-csharp"
 
 ```csharp
 
 ```
 
-::: zone-end
+::: zone-end -->
 
 
 ## <a name="environment-utilities"></a>Miljö verktyg 

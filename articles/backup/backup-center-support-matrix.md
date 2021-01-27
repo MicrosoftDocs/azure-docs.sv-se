@@ -3,12 +3,12 @@ title: Support mat ris för backup Center
 description: Den här artikeln sammanfattar scenarier som stöds av backup Center för varje arbets belastnings typ
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 40582ddc1187082230e2887edcd24b3716811be2
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 672f0e127f173260f25978497198fd7b554aa390
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173989"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893600"
 ---
 # <a name="support-matrix-for-backup-center"></a>Support mat ris för backup Center
 
@@ -16,21 +16,21 @@ Backup Center innehåller ett fönster med glas för företag som [styr, överva
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-| **Kategori** | **Scenario**  | **Arbetsbelastningar som stöds**  | **Begränsningar** |
+| **Kategori** | **Scenario**  | **Arbetsbelastningar som stöds**  | **Gränser** |
 | -------------| ------------- | ----------------------- |------------|
-| Övervakning   | Visa alla jobb | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | <li> 7 dagar tillgängligt jobb som är tillgängliga i kartongen. <br> <li> Varje filter/listruta stöder högst 1000 objekt. Så att backup Center kan användas för att övervaka högst 1000 prenumerationer och 1000-valv mellan klienter. |
-| Övervakning | Visa alla säkerhets kopierings instanser | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Samma som ovan |
-| Övervakning | Visa alla säkerhets kopierings principer | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Samma som ovan |
-| Övervakning | Visa alla valv | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Samma som ovan |
-| Åtgärder | Konfigurera säkerhetskopiering | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Åtgärder | Återställ säkerhets kopierings instans | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Åtgärder | Skapa valv | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Referera till support-matriser för [Recovery Services Vault](./backup-support-matrix.md#vault-support) |
-| Åtgärder | Skapa säkerhets kopierings princip | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Referera till support-matriser för [Recovery Services Vault](./backup-support-matrix.md#vault-support) |
-| Åtgärder | Kör säkerhets kopiering på begäran för en säkerhets kopierings instans | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
-| Åtgärder | Stoppa säkerhets kopiering för en säkerhets kopierings instans | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Övervakning   | Visa alla jobb | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure FileS | <li> 7 dagar tillgängligt jobb som är tillgängliga i kartongen. <br> <li> Varje filter/listruta stöder högst 1000 objekt. Så att backup Center kan användas för att övervaka högst 1000 prenumerationer och 1000-valv mellan klienter. |
+| Övervakning | Visa alla säkerhets kopierings instanser | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Samma som ovan |
+| Övervakning | Visa alla säkerhets kopierings principer | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Samma som ovan |
+| Övervakning | Visa alla valv | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Samma som ovan |
+| Åtgärder | Konfigurera säkerhetskopiering | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Åtgärder | Återställ säkerhets kopierings instans | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Åtgärder | Skapa valv | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Referera till support-matriser för [Recovery Services Vault](./backup-support-matrix.md#vault-support) |
+| Åtgärder | Skapa säkerhets kopierings princip | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Referera till support-matriser för [Recovery Services Vault](./backup-support-matrix.md#vault-support) |
+| Åtgärder | Kör säkerhets kopiering på begäran för en säkerhets kopierings instans | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
+| Åtgärder | Stoppa säkerhets kopiering för en säkerhets kopierings instans | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server <br><br> <li> SQL i virtuell Azure-dator <br><br> <li> SAP HANA i virtuell Azure-dator <br><br> <li> Azure Files | Referera till support-matriser för [Azure VM backup](./backup-support-matrix-iaas.md) och [Azure Database for PostgreSQL Server Backup](backup-azure-database-postgresql.md#support-matrix) |
 | Insikter | Visa säkerhets kopierings rapporter | <li> Virtuell Azure-dator <br><br> <li> SQL på virtuell Azure-dator <br><br> <li> SAP HANA på den virtuella Azure-datorn <br><br> <li> Azure Files <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure Backup Agent (MARS) <br><br> <li> Azure Backup Server (MABS) | Läs om [vilka scenarier som stöds för säkerhets kopierings rapporter](./configure-reports.md#supported-scenarios) |
 | Styrning | Visa och tilldela inbyggda och anpassade Azure-principer under kategorin säkerhets kopiering | Saknas | Saknas |
-| Styrning | Visa data källor som inte har kon figurer ATS för säkerhets kopiering | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Saknas |
+| Styrning | Visa data källor som inte har kon figurer ATS för säkerhets kopiering | <li> Virtuell Azure-dator <br><br> <li> Azure Database for PostgreSQL Server | Ej tillämpligt |
 
 ## <a name="unsupported-scenarios"></a>Scenarier som inte stöds
 

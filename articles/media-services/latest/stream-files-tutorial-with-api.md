@@ -1,25 +1,10 @@
 ---
-title: Ladda upp, koda och strömma med Media Services v3
-titleSuffix: Azure Media Services
-description: Självstudie som visar hur du laddar upp en fil, koda video och strömma innehåll med Azure Media Services v3.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256777"
+title: Ladda upp, koda och strömma med Media Services v3: Azure Media Services Beskrivning: självstudie som visar hur du laddar upp en fil, koda video och strömma innehåll med Azure Media Services v3.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: MS. topic: självstudie MS. Custom: MVC MS. Date: 08/31/2020 MS. author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Självstudie: Ladda upp, koda och strömma videor med Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -42,7 +27,7 @@ I den här självstudiekursen lär du dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte har Visual Studio installerat kan du hämta [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Skapa ett Media Services-konto](./create-account-howto.md).<br/>Se till att komma ihåg de värden som du använde för resursgruppens namn och namnet på Media Services-kontot.
@@ -67,7 +52,7 @@ Det här avsnittet går igenom funktionerna som definierats i filen [Program.cs]
 Exemplet utför följande åtgärder:
 
 1. Skapar en ny **transformering** (först kontrolleras om den angivna transformeringen finns).
-2. Skapar en utgående **till gång** som används som kodnings **jobbets**utdata.
+2. Skapar en utgående **till gång** som används som kodnings **jobbets** utdata.
 3. Skapa en **indatatillgång** och ladda upp den angivna lokala videofilen till den. TIllgången används som jobbets indata.
 4. Skickar kodningsjobbet med de indata och utdata som skapades.
 5. Kontrollerar jobbets status.
@@ -157,7 +142,7 @@ I följande kod förutsätter vi att du anropar funktionen med ett unikt locator
 
 ### <a name="get-streaming-urls"></a>Hämta strömnings-URL:er
 
-Nu när [positioneraren för direktuppspelning](/rest/api/media/streaminglocators) har skapats kan du hämta direktuppspelnings-URL:erna, som du ser i **GetStreamingURLs**. För att skapa en webbadress måste du sammanfoga [strömningsslutpunktens](/rest/api/media/streamingendpoints) värdnamn och sökvägen för **positioneraren för direktuppspelning**. I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du skapar ett Media Service-konto första gången kommer detta *standardvärde för * **StreamingEndpoint** vara i ett stoppat tillstånd, så du måste anropa **Starta**.
+Nu när [positioneraren för direktuppspelning](/rest/api/media/streaminglocators) har skapats kan du hämta direktuppspelnings-URL:erna, som du ser i **GetStreamingURLs**. För att skapa en webbadress måste du sammanfoga [strömningsslutpunktens](/rest/api/media/streamingendpoints) värdnamn och sökvägen för **positioneraren för direktuppspelning**. I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du skapar ett Media Service-konto första gången kommer detta *standardvärde för* **StreamingEndpoint** vara i ett stoppat tillstånd, så du måste anropa **Starta**.
 
 > [!NOTE]
 > I den här metoden behöver du det locatorName som användes när du skapade **positioneraren för direktuppspelning** för utdatatillgången.

@@ -1,24 +1,11 @@
 ---
-title: Transformeringar och jobb i Media Services
-titleSuffix: Azure Media Services
-description: Lär dig hur du skapar en transformering för att beskriva reglerna för att bearbeta dina videor i Azure Media Services.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426776"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>Obligatoriska fält. Läs mer på aka.ms/skyeye/meta.
+rubrik: transformeringar och jobb i Media Services: Azure Media Services Beskrivning: Lär dig hur du skapar en transformering för att beskriva reglerna för att bearbeta dina videor i Azure Media Services.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Date: 08/19/2019 MS. author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Transformeringar och jobb i Media Services
 
 Det här avsnittet innehåller information om [transformeringar](/rest/api/media/transforms) och [jobb](/rest/api/media/jobs) och förklarar förhållandet mellan dessa entiteter.

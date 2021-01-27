@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d3da63503c80652bc8737f2cb4894e25d8bc6fc0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861059"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893413"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Självstudie: Konfigurera Azure Active Directory Join-hybrid för hanterade domäner
 
@@ -42,7 +42,7 @@ I den här guiden får du lära dig att:
 > * Verifiera anslutna enheter
 > * Felsöka
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 eller senare)
 - Autentiseringsuppgifterna för en global administratör för din Azure AD-klient
@@ -90,23 +90,21 @@ Konfigurera en hybrid Azure AD-anslutning med hjälp av Azure AD Connect:
 
 1. Starta Azure AD Connect och välj sedan **Konfigurera**.
 
-   ![Välkommen](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
-
 1. Välj **Konfigurera enhets alternativ** i **Ytterligare aktiviteter** och välj sedan **Nästa**.
 
    ![Ytterligare uppgifter](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
 1. I **Översikt** väljer du **Nästa**.
 
-   ![Översikt](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
-
 1. I **Anslut till Azure AD** anger du autentiseringsuppgifterna för en global administratör för din Azure AD-klient.  
-
-   ![Anslut till Azure AD](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
 1. I **enhets alternativ** väljer du **Konfigurera hybrid Azure AD-anslutning** och väljer sedan **Nästa**.
 
    ![Enhetsalternativ](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
+
+1. I **enhetens operativ system** väljer du de operativ system som enheterna i din Active Directory miljö använder och väljer sedan **Nästa**.
+
+   ![Enhetsoperativsystem](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
 1. I **SCP-konfigurationen**, för varje skog där du vill Azure AD Connect konfigurera SCP, slutför du följande steg och väljer sedan **Nästa**.
 
@@ -116,17 +114,9 @@ Konfigurera en hybrid Azure AD-anslutning med hjälp av Azure AD Connect:
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. I **enhetens operativ system** väljer du de operativ system som enheterna i din Active Directory miljö använder och väljer sedan **Nästa**.
-
-   ![Enhetsoperativsystem](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
-
 1. I **redo att konfigurera** väljer du **Konfigurera**.
 
-   ![Klart att konfigurera](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
-
 1. I **konfigurationen har slutförts** väljer du **Avsluta**.
-
-   ![Konfigurationen är klar](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
 ## <a name="enable-windows-down-level-devices"></a>Aktivera äldre Windows-enheter
 
@@ -171,7 +161,7 @@ Här är tre sätt att hitta och kontrol lera enhets status:
 3. Kontrol lera att både **AzureAdJoined** och **DomainJoined** har angetts till **Ja**.
 4. Du kan använda **DeviceID** och jämföra statusen för tjänsten med hjälp av antingen Azure Portal eller PowerShell.
 
-### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 1. Gå till sidan enheter med en [direkt länk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
 2. Information om hur du hittar en enhet hittar [du i hantera enhets identiteter med hjälp av Azure Portal](./device-management-azure-portal.md).

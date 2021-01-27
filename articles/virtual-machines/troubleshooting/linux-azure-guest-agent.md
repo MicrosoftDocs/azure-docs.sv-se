@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586405"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878705"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>Felsöka Azure Linux-agenten
 
-[Azure Linux-agenten](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) gör det möjligt för en virtuell dator (VM) att kommunicera med infrastruktur styrenheten (den underliggande fysiska server som den virtuella datorn finns på) på IP-168.63.129.16.
+[Azure Linux-agenten](../extensions/agent-linux.md) gör det möjligt för en virtuell dator (VM) att kommunicera med infrastruktur styrenheten (den underliggande fysiska server som den virtuella datorn finns på) på IP-168.63.129.16.
 
 >[!NOTE]
 >Den här IP-adressen är en virtuell offentlig IP-adress som underlättar kommunikationen och inte ska blockeras. Mer information finns i [Vad är IP-168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Kontrol lera agentens status och version för att kontrol lera att den fortfarande stöds. Se [lägsta versions stöd för virtuella dator agenter i Azure](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) för att kontrol lera versions supporten eller se [vanliga frågor och svar om WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) för att hitta status och version.
+Kontrol lera agentens status och version för att kontrol lera att den fortfarande stöds. Se [lägsta versions stöd för virtuella dator agenter i Azure](/troubleshoot/azure/virtual-machines/support-extensions-agent-version) för att kontrol lera versions supporten eller se [vanliga frågor och svar om WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) för att hitta status och version.
 
 ## <a name="troubleshoot-a-not-ready-status"></a>Felsöka statusen inte klar
 
@@ -64,7 +64,7 @@ Kontrol lera agentens status och version för att kontrol lera att den fortfaran
    AutoUpdate.Enabled=y
    ```
 
-   Mer information om hur du uppdaterar Azure Linux-agenten finns i [så här uppdaterar du Azure Linux-agenten på en virtuell dator](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent).
+   Mer information om hur du uppdaterar Azure Linux-agenten finns i [så här uppdaterar du Azure Linux-agenten på en virtuell dator](../extensions/update-linux-agent.md).
 
 1. Kontrol lera att den virtuella datorn kan ansluta till infrastruktur styrenheten. Använd ett verktyg som sväng för att testa om den virtuella datorn kan ansluta till 168.63.129.16 på portarna 80, 443 och 32526. Om den virtuella datorn inte ansluter som förväntat kontrollerar du om utgående kommunikation över portarna 80, 443 och 32526 är öppen i din lokala brand vägg på den virtuella datorn. Om den här IP-adressen är blockerad kan den virtuella dator agenten Visa oväntad funktion.
 

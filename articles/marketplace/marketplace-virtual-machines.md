@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600413"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879334"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Planera ett erbjudande för virtuell dator
 
@@ -30,10 +30,10 @@ Processen för att utforma, skapa och testa erbjudanden tar tid och kräver expe
   - [Virtuella Windows-datorer](../virtual-machines/windows/tutorial-manage-vm.md)
 
 - Exempel
-  - [Azure CLI-exempel för virtuella Linux-datorer](../virtual-machines/linux/cli-samples.md)
-  - [Azure PowerShell för virtuella Linux-datorer](../virtual-machines/linux/powershell-samples.md)
-  - [Azure CLI-exempel för virtuella Windows-datorer](../virtual-machines/windows/cli-samples.md)
-  - [Azure PowerShell för virtuella Windows-datorer](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
+  - [Azure CLI-exempel för virtuella Linux-datorer](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)
+  - [Azure PowerShell för virtuella Linux-datorer](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)
+  - [Azure CLI-exempel för virtuella Windows-datorer](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)
+  - [Azure PowerShell för virtuella Windows-datorer](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ## <a name="technical-requirements"></a>Tekniska krav
 

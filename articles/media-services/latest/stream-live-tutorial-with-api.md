@@ -1,33 +1,17 @@
 ---
-title: Strömma live med Media Services v3
-titleSuffix: Azure Media Services
-description: Lär dig att strömma live med Azure Media Services v3.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 06/13/2019
-ms.author: inhenkel
-ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256573"
+title: Stream Live med Media Services v3: Azure Media Services Beskrivning: Lär dig att strömma live med Azure Media Services v3.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: självstudie MS. Custom: "MVC, DevX-Track-csharp" MS. Date: 06/13/2019 MS. author: inhenkel
+
 ---
+
 # <a name="tutorial-stream-live-with-media-services"></a>Självstudie: strömma live med Media Services
 
 > [!NOTE]
 > Även om självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -exempel är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
-I Azure Media Services ansvarar [livehändelser](/rest/api/media/liveevents) för bearbetning av liveströmmat innehåll. En livehändelse tillhandahåller en slutpunkt (infognings-URL) som du sedan vidarebefordrar till en livekodare. Livehändelsen tar emot live indataströmmar från livekodaren och gör den tillgänglig för strömning via en eller flera [slutpunkter för direktuppspelning](/rest/api/media/streamingendpoints). Livehändelser tillhandahåller också en slutpunkt för förhandsvisning (förhandsvisnings-URL) som du använder för att förhandsgranska och validera din ström inför vidare behandling och leverans. Den här självstudien visar hur du använder .NET Core för att skapa en **genomströmnings**typ av en livehändelse.
+I Azure Media Services ansvarar [livehändelser](/rest/api/media/liveevents) för bearbetning av liveströmmat innehåll. En livehändelse tillhandahåller en slutpunkt (infognings-URL) som du sedan vidarebefordrar till en livekodare. Livehändelsen tar emot live indataströmmar från livekodaren och gör den tillgänglig för strömning via en eller flera [slutpunkter för direktuppspelning](/rest/api/media/streamingendpoints). Livehändelser tillhandahåller också en slutpunkt för förhandsvisning (förhandsvisnings-URL) som du använder för att förhandsgranska och validera din ström inför vidare behandling och leverans. Den här självstudien visar hur du använder .NET Core för att skapa en **genomströmnings** typ av en livehändelse.
 
 Självstudien visar hur du:
 
@@ -39,7 +23,7 @@ Självstudien visar hur du:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande krävs för att kunna genomföra vägledningen:
 
@@ -65,7 +49,7 @@ Livesändningsexemplet finns i [Live](https://github.com/Azure-Samples/media-ser
 Öppna [appsettings.jspå](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) i det nedladdade projektet. Ersätt värdena med de autentiseringsuppgifter som du har fått från [att komma åt API: er](./access-api-howto.md).
 
 > [!IMPORTANT]
-> I det här exemplet används ett unikt suffix för varje resurs. Om du avbryter fel sökningen eller avslutar appen utan att köra den via, kommer du att få flera Live-händelser i ditt konto. <br/>Se till att stoppa de livehändelser som körs. Annars **faktureras**du!
+> I det här exemplet används ett unikt suffix för varje resurs. Om du avbryter fel sökningen eller avslutar appen utan att köra den via, kommer du att få flera Live-händelser i ditt konto. <br/>Se till att stoppa de livehändelser som körs. Annars **faktureras** du!
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Granska den kod som utför du liveuppspelningen
 
@@ -75,7 +59,7 @@ Exemplet skapar ett unikt suffix för varje resurs så att du inte har några na
 
 > [!IMPORTANT]
 > I det här exemplet används ett unikt suffix för varje resurs. Om du avbryter fel sökningen eller avslutar appen utan att köra den via, kommer du att få flera Live-händelser i ditt konto. <br/>
-> Se till att stoppa de livehändelser som körs. Annars **faktureras**du!
+> Se till att stoppa de livehändelser som körs. Annars **faktureras** du!
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Börja använda API:er för Media Services med .NET SDK
 

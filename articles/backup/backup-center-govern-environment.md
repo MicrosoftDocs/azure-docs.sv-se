@@ -3,14 +3,14 @@ title: Hantera ditt innehav av säkerhetskopior med Backup Center
 description: Lär dig hur du styr din Azure-miljö för att se till att alla resurser är kompatibla från ett säkerhets kopierings perspektiv med Backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893854"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>Hantera ditt innehav av säkerhetskopior med Backup Center
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>Styra reserv fastigheten med Backup Center (för hands version)
 
 Backup Center hjälper dig att styra din Azure-miljö och se till att alla resurser är kompatibla från ett säkerhets kopierings perspektiv. Nedan visas några av styrnings funktionerna i säkerhets kopierings Center:
 
@@ -43,6 +43,11 @@ Genom att klicka på meny alternativet kompatibilitet för säkerhets kopiering 
 Om du väljer meny alternativet **skydds bara data källor** kan du Visa alla dina data källor som inte har kon figurer ATS för säkerhets kopiering. Du kan filtrera listan efter DataSource-prenumeration, resurs grupp, plats, typ och taggar. När du har identifierat en data källa som behöver säkerhets kopie ras kan du högerklicka på motsvarande rutnäts objekt och välja **säkerhets kopiering** för att konfigurera säkerhets kopiering för resursen.
 
 ![Menyn skydds bara data källor](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> Om du väljer **SQL i Azure VM** som typ av data källa visar vyn **skydds bara data källor** listan över alla virtuella Galleri datorer som inte har några SQL-databaser som har kon figurer ATS för säkerhets kopiering.
+> Om du väljer **Azure Storage (Azure Files)** som typ av data källa visar vyn **skydds bara data källor** listan över alla lagrings konton (som stöder fil resurser) som inte har några fil resurser som har kon figurer ATS för säkerhets kopiering.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

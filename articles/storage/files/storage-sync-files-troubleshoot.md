@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539240"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878807"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -206,8 +206,8 @@ På den server som visas som "visas offline" i portalen tittar du på händelse-
     - Om servern finns bakom en proxyserver konfigurerar du de datorövergripande proxyinställningarna genom att följa anvisningarna i proxy- [dokumentationen](./storage-sync-files-firewall-and-proxy.md#proxy).
     - Använd Test-StorageSyncNetworkConnectivity-cmdlet för att kontrol lera nätverks anslutningen till tjänstens slut punkter. Läs mer i [testa nätverks anslutningen till tjänstens slut punkter](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
     - Om TLS cipher Suite-ordningen har kon figurer ATS på servern kan du använda grup princip eller TLS-cmdlet: ar för att lägga till chiffersviter:
-        - Information om hur du använder en grup princip finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av Grupprincip](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
-        - Information om hur du använder TLS-cmdlets finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av TLS PowerShell-cmdletar](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+        - Information om hur du använder en grup princip finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av Grupprincip](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - Information om hur du använder TLS-cmdlets finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av TLS PowerShell-cmdletar](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         Azure File Sync stöder för närvarande följande chiffersviter för TLS 1,2-protokollet:  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -931,7 +931,7 @@ Det här felet uppstår om katalogen som används som server slut punkts Sök v�
 Om katalogen har tagits bort utför du följande steg för att ta bort den befintliga Server slut punkten och skapa en ny server slut punkt med en ny sökväg:
 
 1. Ta bort Server slut punkten i Sync-gruppen genom att följa stegen som beskrivs i [ta bort en server slut punkt](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint).
-2. Skapa en ny server slut punkt i Sync-gruppen genom att följa stegen som beskrivs i [Lägg till en server slut punkt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint).
+2. Skapa en ny server slut punkt i Sync-gruppen genom att följa stegen som beskrivs i [Lägg till en server slut punkt](./storage-sync-files-server-endpoint.md#add-a-server-endpoint).
 
 ### <a name="common-troubleshooting-steps"></a>Vanliga fel söknings steg
 <a id="troubleshoot-storage-account"></a>**Kontrol lera att lagrings kontot finns.**  

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842625"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878790"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Skapa och skapa Linux-avbildningar i Azure
 
@@ -29,7 +29,7 @@ Med Azure kan du ta en virtuell hård disk till plattformen, använda den som en
 
 Azure Managed disks är enkla virtuella hård diskar. Du kan antingen ta en befintlig virtuell hård disk och skapa en hanterad disk från den eller skapa en tom hanterad disk från grunden. Du kan skapa virtuella datorer från hanterade diskar genom att koppla disken till den virtuella datorn, men du kan bara använda en virtuell hård disk med en virtuell dator. Du kan inte ändra några OS-egenskaper. Azure försöker bara aktivera den virtuella datorn och börja använda den disken. 
 
-Azure-avbildningar kan bestå av flera operativ system diskar och data diskar. När du använder en hanterad avbildning för att skapa en virtuell dator, gör plattformen en kopia av avbildningen och använder den för att skapa den virtuella datorn, så att hanterade avbildnings stöd återanvänder samma avbildning för flera virtuella datorer. Azure innehåller även avancerade hanterings funktioner för avbildningar, till exempel global replikering och versions hantering via [delade avbildnings galleriet](shared-image-galleries.md). 
+Azure-avbildningar kan bestå av flera operativ system diskar och data diskar. När du använder en hanterad avbildning för att skapa en virtuell dator, gör plattformen en kopia av avbildningen och använder den för att skapa den virtuella datorn, så att hanterade avbildnings stöd återanvänder samma avbildning för flera virtuella datorer. Azure innehåller även avancerade hanterings funktioner för avbildningar, till exempel global replikering och versions hantering via [delade avbildnings galleriet](../shared-image-galleries.md). 
 
 
 
@@ -65,7 +65,7 @@ Etablerings agenter krävs inte för de här avbildningarna men du kanske vill h
 När du har gjort Linux-avbildningen har du två alternativ:
 
 - Hanterade avbildningar för enkel skapande av virtuella datorer i en utvecklings-och test miljö.
-- [Delat avbildnings Galleri](shared-image-galleries.md) för att skapa och dela bilder i stor skala.
+- [Delat avbildnings Galleri](../shared-image-galleries.md) för att skapa och dela bilder i stor skala.
 
 
 ### <a name="managed-images"></a>Hanterade avbildningar
@@ -76,7 +76,7 @@ Hanterade avbildningar kan användas för utvecklings-och test miljöer där du 
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure-Galleri för delad avbildning (SIG)
 
-[Delade avbildnings gallerier](shared-image-galleries.md) rekommenderas för att skapa, hantera och dela bilder i stor skala. Delade avbildnings gallerier hjälper dig att bygga struktur och organisation runt dina avbildningar.  
+[Delade avbildnings gallerier](../shared-image-galleries.md) rekommenderas för att skapa, hantera och dela bilder i stor skala. Delade avbildnings gallerier hjälper dig att bygga struktur och organisation runt dina avbildningar.  
 
 - Stöd för både generaliserade och specialiserade avbildningar.
 - Stöd för avbildning av både generation 1 och 2 bilder.

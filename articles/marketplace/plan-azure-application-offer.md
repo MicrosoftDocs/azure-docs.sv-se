@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 45bc3aaf5217c626e2593b4eda861eaace2a8be2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620417"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879300"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planera ett Azure Application erbjudande för den kommersiella marknads platsen
 
@@ -64,7 +64,7 @@ Välj en eller båda av följande skript miljöer för att hantera ditt Azure-pr
 
 Vi rekommenderar att du lägger till följande verktyg i utvecklings miljön:
 
-- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+- [Azure Lagringsutforskaren](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) med följande fil namns tillägg:
     - Tillägg: [Azure Resource Manager verktyg](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - Tillägg: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -210,7 +210,7 @@ Den här konfigurationen krävs om du vill använda [händelsen för batch-anvä
 Du kan välja att välja mellan marknadsförings-och försäljnings kanaler som stöds av Microsoft. När du skapar erbjudandet i Partner Center visas två flikar i slutet av processen:
 
 - Att **sälja via CSP**: Använd det här alternativet om du vill att CSP-partner (Microsoft Cloud solution providers) ska kunna sälja din lösning som en del av ett sammanslaget erbjudande. Mer information finns i [Cloud Solution Provider-programmet](./cloud-solution-providers.md) .
-- **Samförsäljning med Microsoft: med** det här alternativet kan Microsofts försäljnings team överväga din IP-samkunds kvalificerade lösning vid utvärdering av kundernas behov. Detaljerad information om hur du förbereder erbjudandet för utvärdering finns i [alternativet samförsäljning på den kommersiella Marketplace](commercial-marketplace-co-sell.md). Information om krav för IP-samförsäljning finns i [krav för medförsäljnings status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Mer information om marknadsföring av ditt erbjudande via Microsoft CSP partner Channels finns i [moln lösnings leverantörer](cloud-solution-providers.md).
+- **Samförsäljning med Microsoft: med** det här alternativet kan Microsofts försäljnings team överväga din IP-samkunds kvalificerade lösning vid utvärdering av kundernas behov. Detaljerad information om hur du förbereder erbjudandet för utvärdering finns i [alternativet samförsäljning på den kommersiella Marketplace](commercial-marketplace-co-sell.md). Information om krav för IP-samförsäljning finns i [krav för medförsäljnings status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Mer information om marknadsföring av ditt erbjudande via Microsoft CSP partner Channels finns i [moln lösnings leverantörer](cloud-solution-providers.md).
 
 Mer information finns i [utveckla din moln verksamhet med Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 

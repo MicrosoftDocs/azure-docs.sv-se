@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f0ae4ac4cf50eb6e54d41ff25e1cc671e76819ee
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62030d1c208fc778476f49e5b3165e46e6aa0d66
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200812"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878858"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azures säkerhets bas linje för Virtuella Linux-datorer
 
@@ -852,7 +852,7 @@ Förutom att använda Ändringsspårning för övervakning av program vara kan a
 
 * [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Information om hur du hämtar mallen för virtuella datorer](../windows/download-template.md)
+* [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure Security Center övervakning**: inte tillgänglig
 
@@ -896,7 +896,7 @@ Förutom att använda Ändringsspårning för övervakning av program vara kan a
 
 I de flesta fall kan de virtuella bas-VM-mallarna tillsammans med Azure Automation önskad tillstånds konfiguration hjälpa till att möta och upprätthålla säkerhets kraven.
 
-* [Information om hur du hämtar mallen för virtuella datorer](../windows/download-template.md)
+* [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Information om hur du skapar ARM-mallar](../windows/ps-template.md)
 

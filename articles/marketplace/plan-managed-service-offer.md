@@ -8,12 +8,12 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: a504969d23fce8000119aadf9e45d599da0894f0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918309"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879283"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Planera ett hanterat tjänst erbjudande för Microsofts kommersiella marknads plats
 
@@ -25,7 +25,7 @@ Hanterade tjänster är Azure Marketplace-erbjudanden som möjliggör mellan-kli
 
 Om du vill publicera en hanterad tjänst måste du ha fått Microsoft-kompetensen guld eller silver i moln plattformen. Den här kompetensen visar dina expert kunskaper för kunderna. Mer information finns i [Microsoft Partner Network kompetenser](https://partner.microsoft.com/membership/competencies).
 
-Erbjudanden måste uppfylla alla tillämpliga [certifierings principer för kommersiella marknads platser](https://docs.microsoft.com/legal/marketplace/certification-policies) som ska publiceras på Azure Marketplace.
+Erbjudanden måste uppfylla alla tillämpliga [certifierings principer för kommersiella marknads platser](/legal/marketplace/certification-policies) som ska publiceras på Azure Marketplace.
 
 ## <a name="customer-leads"></a>Kund ledare
 
@@ -46,11 +46,11 @@ När du skapar ett hanterat tjänst erbjudande i Partner Center, anger du text, 
 **Beskrivningar av anrop**
 
 1. Logotyp
-1. Namn
+1. Name
 1. Kort beskrivning
 1. Kategorier
 1. Juridiska avtal och sekretess policy
-1. Beskrivning
+1. Description
 1. Skärm bilder/videor
 1. Användbara länkar
 
@@ -60,7 +60,7 @@ Här är ett exempel på hur erbjudande listan visas i Azure Portal:
 
 **Beskrivningar av anrop**
 
-1. Namn
+1. Name
 2. Beskrivning
 3. Användbara länkar
 4. Skärm bilder/videor
