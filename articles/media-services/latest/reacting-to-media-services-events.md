@@ -1,5 +1,5 @@
 ---
-title: Reagerar på Azure Media Services händelser | Microsoft Docs
+title: Reagerar på Azure Media Services händelser
 description: Den här artikeln beskriver hur du använder Azure Event Grid för att prenumerera på Media Services händelser.
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ef6a920e9334c6e98b18d1db1abf39136c6f4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d4479914ffee6cf667a5f6db2fd665baf2b857c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289162"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895653"
 ---
 # <a name="handling-event-grid-events"></a>Hantera Event Grid-händelser
 

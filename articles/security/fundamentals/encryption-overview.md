@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410223"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879722"
 ---
 # <a name="azure-encryption-overview"></a>Översikt över Azure-kryptering
 
@@ -45,11 +45,11 @@ Med kryptering på klient sidan har moln tjänst leverantörer inte åtkomst til
 
 De tre krypterings modellerna på Server sidan ger olika egenskaper för nyckel hantering, som du kan välja enligt dina krav:
 
-- **Tjänst nycklar som hanteras** : ger en kombination av kontroll och bekvämlighet med låg belastning.
+- **Tjänst nycklar som hanteras**: ger en kombination av kontroll och bekvämlighet med låg belastning.
 
-- **Kundhanterade nycklar** : ger dig kontroll över nycklar, inklusive att ta med egna nycklar (BYOK) support, eller så kan du skapa nya.
+- **Kundhanterade nycklar**: ger dig kontroll över nycklar, inklusive att ta med egna nycklar (BYOK) support, eller så kan du skapa nya.
 
-- **Hanterade nycklar i kundkontrollerad maskin vara** : gör att du kan hantera nycklar i din egen lagrings plats, utanför Microsoft-kontroll. Den här egenskapen kallas värd för din egen nyckel (HYOK). Konfigurationen är dock komplicerad och de flesta Azure-tjänster har inte stöd för den här modellen.
+- **Hanterade nycklar i kundkontrollerad maskin vara**: gör att du kan hantera nycklar i din egen lagrings plats, utanför Microsoft-kontroll. Den här egenskapen kallas värd för din egen nyckel (HYOK). Konfigurationen är dock komplicerad och de flesta Azure-tjänster har inte stöd för den här modellen.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -181,7 +181,7 @@ Du kan konfigurera en plats-till-plats-VPN-anslutning till ett virtuellt nätver
 
 Mer information finns i:
 
-[Skapa en plats-till-plats-anslutning i Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Skapa en plats-till-plats-anslutning i Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [Skapa en plats-till-plats-anslutning i PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
@@ -202,7 +202,7 @@ Med Key Vault slipper organisationer konfigurera, korrigera och underhålla mask
 ## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över Azure-säkerhet](./overview.md)
-- [Översikt över Azure Network Security](network-overview.md)
+- [Översikt över nätverkssäkerhet i Azure](network-overview.md)
 - [Översikt över Azure Database-säkerhet](../../azure-sql/database/security-overview.md)
 - [Säkerhets översikt för Azure Virtual Machines](virtual-machines-overview.md)
 - [Datakryptering i vila](encryption-atrest.md)

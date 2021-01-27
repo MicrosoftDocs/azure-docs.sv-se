@@ -4,12 +4,12 @@ description: Visar hur du använder taggar för att organisera Azure-resurser f�
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881756"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896231"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Använd taggar för att ordna dina Azure-resurser och-hanterings hierarki
 
@@ -697,7 +697,7 @@ Taggar som används för resurs gruppen eller prenumerationen ärvs inte av resu
 
 Du kan till exempel använda taggar för att gruppera faktureringsinformation. Om du till exempel har flera virtuella datorer för olika organisationer kan du använda taggar för att gruppera användningen efter kostnadsställe. Du kan också använda taggar för att kategorisera kostnader efter körningsmiljö, till exempel användningen (som faktureras) för virtuella datorer som körs i produktionsmiljö.
 
-Du kan hämta information om Taggar via [API: er för Azure-resursanvändning och Rate-kort](../../cost-management-billing/manage/usage-rate-card-overview.md) eller filen med kommaavgränsade värden (CSV). Du hämtar användnings filen från Azure Portal. Mer information finns i [Hämta eller Visa din fakturerings faktura för Azure och användnings data per dag](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). När du laddar ned användnings filen från Azure-kontocenter väljer du **version 2**. För tjänster som stöder taggar med fakturering visas taggarna i kolumnen **taggar** .
+Du kan hämta information om Taggar genom att hämta användnings filen, en fil med kommaavgränsade värden (CSV) som är tillgänglig från Azure Portal. Mer information finns i [Hämta eller Visa din fakturerings faktura för Azure och användnings data per dag](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). När du laddar ned användnings filen från Azure-kontocenter väljer du **version 2**. För tjänster som stöder taggar med fakturering visas taggarna i kolumnen **taggar** .
 
 REST API åtgärder finns i [referens för Azure-fakturerings REST API](/rest/api/billing/).
 

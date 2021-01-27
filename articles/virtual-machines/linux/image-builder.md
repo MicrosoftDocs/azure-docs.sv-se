@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 02ce065c9eecf4b4bf616e40913fc5abd319c5a8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4714d9e089094e8990ac71d94107a20e0b7be776
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442311"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876317"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>För hands version: skapa en Linux-avbildning och distribuera den till ett delat avbildnings galleri med hjälp av Azure CLI
 
-Den här artikeln visar hur du kan använda Azure Image Builder och Azure CLI för att skapa en avbildnings version i ett [delat avbildnings Galleri](../windows/shared-image-galleries.md)och sedan distribuera avbildningen globalt. Du kan också göra detta med hjälp av [Azure PowerShell](../windows/image-builder-gallery.md).
+Den här artikeln visar hur du kan använda Azure Image Builder och Azure CLI för att skapa en avbildnings version i ett [delat avbildnings Galleri](../shared-image-galleries.md)och sedan distribuera avbildningen globalt. Du kan också göra detta med hjälp av [Azure PowerShell](../windows/image-builder-gallery.md).
 
 
 Vi kommer att använda en Sample. JSON-mall för att konfigurera avbildningen. JSON-filen som vi använder är här: [helloImageTemplateforSIG.jspå](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
@@ -298,4 +298,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om [Azures delade bild gallerier](shared-image-galleries.md).
+Lär dig mer om [Azures delade bild gallerier](../shared-image-galleries.md).

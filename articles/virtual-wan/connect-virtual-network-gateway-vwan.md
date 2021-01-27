@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880380"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Anslut en VPN Gateway (virtuell nätverksgateway) till virtuellt WAN
 
@@ -91,7 +91,7 @@ I det här avsnittet laddar du ned VPN-konfigurationsfilen för var och en av de
 
 I det här avsnittet skapar du två Azure VPN Gateway lokala Nätverksgatewayen. Konfigurationsfilerna från föregående steg innehåller gatewayens konfigurations inställningar. Använd de här inställningarna för att skapa och konfigurera Azure VPN Gateway lokala Nätverksgatewayen.
 
-1. Skapa den lokala Nätverksgatewayen med de här inställningarna. Information om hur du skapar en VPN Gateway lokal nätverksgateway finns i VPN Gateway artikeln [skapa en lokal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)nätverksgateway.
+1. Skapa den lokala Nätverksgatewayen med de här inställningarna. Information om hur du skapar en VPN Gateway lokal nätverksgateway finns i VPN Gateway artikeln [skapa en lokal](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)nätverksgateway.
 
    * **IP-adress** – Använd Instance0 IP-adressen som visas för *gatewayconfiguration* från konfigurations filen.
    * **BGP** – om anslutningen är över BGP väljer du **Konfigurera BGP-inställningar** och anger ASN-65515. Ange IP-adressen för BGP-peer. Använd "Instance0 BgpPeeringAddresses" för *gatewayconfiguration* från konfigurations filen.
@@ -105,7 +105,7 @@ I det här avsnittet skapar du två Azure VPN Gateway lokala Nätverksgatewayen.
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. skapa anslutningar
 
-I det här avsnittet skapar du en anslutning mellan VPN Gateway lokala nätverksgateway och virtuell nätverksgateway. Anvisningar för hur du skapar en VPN Gateway-anslutning finns i [Konfigurera en anslutning](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
+I det här avsnittet skapar du en anslutning mellan VPN Gateway lokala nätverksgateway och virtuell nätverksgateway. Anvisningar för hur du skapar en VPN Gateway-anslutning finns i [Konfigurera en anslutning](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection).
 
 1. I portalen navigerar du till din virtuella nätverksgateway och klickar på **anslutningar**. Klicka på **+Lägg till** överst på sidan Anslutningar och öppna sidan **Lägg till anslutning**.
 2. På sidan **Lägg till anslutning** konfigurerar du följande värden för din anslutning:

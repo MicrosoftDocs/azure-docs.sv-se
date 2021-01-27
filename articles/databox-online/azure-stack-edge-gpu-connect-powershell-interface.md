@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ba3005b1ec36e4b2406084368a3aabd778c17716
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449435"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896197"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Hantera en Azure Stack Edge Pro GPU-enhet via Windows PowerShell
 
@@ -424,6 +424,116 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 [10.100.10.10]: PS>
 ```
+
+### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>Ändra minne, processor gränser för Kubernetes Worker-nod
+
+Gör så här om du vill ändra minnes-eller processor gränser för Kubernetes Worker-noden:
+
+1. [Anslut till enhetens PowerShell-gränssnitt](#connect-to-the-powershell-interface).
+1. Kör följande kommando för att hämta de aktuella resurserna för Worker-noden och roll alternativen:
+
+    `Get-AzureDataBoxEdgeRole`
+
+    Här är ett exempel på utdata. Anteckna värdena för `Name` och `Compute` under `Resources` avsnitt. `MemoryInBytes` och `ProcessorCount` anger de nuvarande tilldelade värdena minne och antal processorer för Kubernetes Worker-noden.  
+
+    ```powershell
+    [10.100.10.10]: PS>Get-AzureDataBoxEdgeRole
+    ImageDetail                : Name:mcr.microsoft.com/azureiotedge-agent
+                                 Tag:1.0
+                                 PlatformType:Linux
+    EdgeDeviceConnectionString :
+    IotDeviceConnectionString  :
+    HubHostName                : ase-srp-007.azure-devices.net
+    IotDeviceId                : srp-007-storagegateway
+    EdgeDeviceId               : srp-007-edge
+    Version                    :
+    Id                         : 6ebeff9f-84c5-49a7-890c-f5e05520a506
+    Name                       : IotRole
+    Type                       : IOT
+    Resources                  : Compute:
+                                 MemoryInBytes:34359738368
+                                 ProcessorCount:12
+                                 VMProfile:
+    
+                                 Storage:
+                                 EndpointMap:
+                                 EndpointId:c0721210-23c2-4d16-bca6-c80e171a0781
+                                 TargetPath:mysmbedgecloudshare1
+                                 Name:mysmbedgecloudshare1
+                                 Protocol:SMB
+    
+                                 EndpointId:6557c3b6-d3c5-4f94-aaa0-6b7313ab5c74
+                                 TargetPath:mysmbedgelocalshare
+                                 Name:mysmbedgelocalshare
+                                 Protocol:SMB
+                                 RootFileSystemStorageSizeInBytes:0
+    
+    HostPlatform               : KubernetesCluster
+    State                      : Created
+    PlatformType               : Linux
+    HostPlatformInstanceId     : 994632cb-853e-41c5-a9cd-05b36ddbb190
+    IsHostPlatformOwner        : True
+    IsCreated                  : True    
+    [10.100.10.10]: PS>
+    ```
+    
+1. Om du vill ändra värdena för minne och processorer för arbetsnoden kör du följande kommando:
+
+    Set-AzureDataBoxEdgeRoleCompute-namn <Name value from the output of Get-AzureDataBoxEdgeRole> -minne <Value in Bytes> -ProcessorCount <nej. av kärnor>
+
+    Här är ett exempel på utdata. 
+    
+    ```powershell
+    [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16
+    
+    ImageDetail                : Name:mcr.microsoft.com/azureiotedge-agent
+                                 Tag:1.0
+                                 PlatformType:Linux
+    
+    EdgeDeviceConnectionString :
+    IotDeviceConnectionString  :
+    HubHostName                : ase-srp-007.azure-devices.net
+    IotDeviceId                : srp-007-storagegateway
+    EdgeDeviceId               : srp-007-edge
+    Version                    :
+    Id                         : 6ebeff9f-84c5-49a7-890c-f5e05520a506
+    Name                       : IotRole
+    Type                       : IOT
+    Resources                  : Compute:
+                                 MemoryInBytes:34359738368
+                                 ProcessorCount:16
+                                 VMProfile:
+    
+                                 Storage:
+                                 EndpointMap:
+                                 EndpointId:c0721210-23c2-4d16-bca6-c80e171a0781
+                                 TargetPath:mysmbedgecloudshare1
+                                 Name:mysmbedgecloudshare1
+                                 Protocol:SMB
+    
+                                 EndpointId:6557c3b6-d3c5-4f94-aaa0-6b7313ab5c74
+                                 TargetPath:mysmbedgelocalshare
+                                 Name:mysmbedgelocalshare
+                                 Protocol:SMB
+    
+                                 RootFileSystemStorageSizeInBytes:0
+    
+    HostPlatform               : KubernetesCluster
+    State                      : Created
+    PlatformType               : Linux
+    HostPlatformInstanceId     : 994632cb-853e-41c5-a9cd-05b36ddbb190
+    IsHostPlatformOwner        : True
+    IsCreated                  : True
+    
+    [10.100.10.10]: PS>    
+    ```
+
+Följ dessa rikt linjer när du ändrar minnes-och processor användning.
+
+- Standard minnet är 25% av enhets specifikationen.
+- Standard antalet processorer är 30% av enhets specifikationen.
+- När du ändrar värdena för minne och antal processorer rekommenderar vi att du varierar värdena mellan 15% och 65% av enhets minnet och antalet processorer. 
+- Vi rekommenderar en övre gräns på 65% så att det finns tillräckligt med resurser för system komponenter. 
 
 ## <a name="connect-to-bmc"></a>Anslut till BMC
 

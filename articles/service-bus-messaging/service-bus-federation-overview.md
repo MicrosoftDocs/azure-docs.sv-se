@@ -3,12 +3,12 @@ title: Meddelanderoutning och över-region Federation-Azure Service Bus | Micros
 description: Den här artikeln innehåller en översikt över replikering av händelser och över flera regioner med Azure Service Bus.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803280"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880835"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>Meddelandereplikering och federation mellan regioner
 
@@ -150,7 +150,7 @@ Azure Functions kan köras under en [Azure-hanterad identitet](../active-directo
 
 Azure Functions också tillåta att aktiviteterna integreras direkt med virtuella Azure-nätverk och [tjänst slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) för alla Azure Messaging Services, och det är enkelt att integrera med [Azure Monitor](../azure-monitor/overview.md).
 
-Det viktigaste är att Azure Functions har färdiga, skalbara utlösare och utgående bindningar för [azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), [azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)och [Azure Queue Storage](/azure/azure-functions/functions-bindings-storage-queue), anpassade tillägg för [rabbitmq](https://github.com/azure/azure-functions-rabbitmq-extension)och [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension). De flesta utlösare kan anpassas dynamiskt efter data flödes behoven genom att skala antalet körnings instanser som körs samtidigt, baserat på dokumenterade mått. 
+Det viktigaste är att Azure Functions har färdiga, skalbara utlösare och utgående bindningar för [azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), [azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)och [Azure Queue Storage](../azure-functions/functions-bindings-storage-queue.md), anpassade tillägg för [rabbitmq](https://github.com/azure/azure-functions-rabbitmq-extension)och [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension). De flesta utlösare kan anpassas dynamiskt efter data flödes behoven genom att skala antalet körnings instanser som körs samtidigt, baserat på dokumenterade mått. 
 
 Med Azure Functions-förbruknings planen kan de förinställda utlösarna till och med skala ned till noll medan inga meddelanden är tillgängliga för replikering, vilket innebär att du inte får några kostnader för att hålla konfigurationen redo att skala upp. Den viktigaste nack delen med användningen av förbruknings planen är att svars tiden för replikerings aktiviteterna som aktive ras från det här läget är betydligt högre än med värd avtalen där infrastrukturen behålls.  
 
@@ -167,4 +167,4 @@ Härnäst kanske du vill läsa mer om hur du konfigurerar ett replikerande progr
 - [Dirigera händelser till Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
 - [Hämta händelser från Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
-[1]: ./media/service-bus-auto-forwarding/IC628632.gif 
+[1]: ./media/service-bus-auto-forwarding/IC628632.gif

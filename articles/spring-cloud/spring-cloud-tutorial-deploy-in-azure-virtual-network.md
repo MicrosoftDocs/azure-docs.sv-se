@@ -1,5 +1,5 @@
 ---
-title: Självstudie – Distribuera Azure våren Cloud i ett virtuellt nätverk
+title: Distribuera Azure våren Cloud i ett virtuellt nätverk
 description: Distribuera Azure våren Cloud i ett virtuellt nätverk (VNet-insprutning).
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587731"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880613"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Självstudie: Distribuera Azure våren Cloud i ett virtuellt nätverk
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Distribuera Azure våren Cloud i ett virtuellt nätverk
 
 **Den här artikeln gäller för:** ✔️ Java ✔️ C #
 
@@ -26,7 +26,10 @@ Distributionen gör det möjligt att:
 * Azure våren Cloud-interaktion med system i lokala data Center eller Azure-tjänster i andra virtuella nätverk.
 * Att kunderna ska kunna kontrol lera inkommande och utgående nätverkskommunikation för Azure våren Cloud.
 
-## <a name="prerequisites"></a>Krav
+> [!Note]
+> Du kan bara välja ditt virtuella Azure-nätverk när du skapar en ny Azure våren Cloud Service-instans. Du kan inte ändra till att använda ett annat virtuellt nätverk när Azure våren Cloud har skapats.
+
+## <a name="prerequisites"></a>Förutsättningar
 
 Registrera Azure våren Cloud Resource Provider **Microsoft. AppPlatform** och **Microsoft. container service** enligt instruktionerna i [Registrera resurs leverantör på Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) eller genom att köra följande Azure CLI-kommando:
 
@@ -59,12 +62,12 @@ Om du redan har ett virtuellt nätverk som värd för en Azure våren-moln insta
 
 1. I dialog rutan **Skapa virtuellt nätverk** anger eller väljer du följande information:
 
-    |Inställningen          |Värde                                             |
+    |Inställning          |Värde                                             |
     |-----------------|--------------------------------------------------|
     |Prenumeration     |Välj din prenumeration.                         |
     |Resursgrupp   |Välj en resurs grupp eller skapa en ny.  |
     |Name             |Ange **Azure-våren-Cloud-VNet**.                 |
-    |Plats         |Välj **USA, östra**.                               |
+    |Location         |Välj **USA, östra**.                               |
 
 1. Välj **Nästa: IP-adresser**.
 
@@ -77,6 +80,7 @@ Om du redan har ett virtuellt nätverk som värd för en Azure våren-moln insta
 1. Välj **Granska + skapa**. Lämna resten som standard och välj **skapa**.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Bevilja tjänst behörighet till det virtuella nätverket
+Azure våren Cloud kräver **ägar** behörighet till ditt virtuella nätverk för att kunna ge ett dedikerat och dynamiskt tjänst huvud namn i det virtuella nätverket för vidare distribution och underhåll.
 
 Välj det virtuella nätverket **Azure-våren-Cloud-VNet** som du skapade tidigare.
 
@@ -86,7 +90,7 @@ Välj det virtuella nätverket **Azure-våren-Cloud-VNet** som du skapade tidiga
 
 1. I dialog rutan **Lägg till roll tilldelning** anger eller väljer du följande information:
 
-    |Inställningen  |Värde                                             |
+    |Inställning  |Värde                                             |
     |---------|--------------------------------------------------|
     |Roll     |Välj **ägare**.                                 |
     |Välj   |Ange **Azure våren Cloud Resource Provider**.   |
@@ -128,7 +132,7 @@ Så här distribuerar du en Azure våren-moln instans i det virtuella nätverket
 
 1. Välj fliken **nätverk** och välj följande värden:
 
-    |Inställningen                                |Värde                                             |
+    |Inställning                                |Värde                                             |
     |---------------------------------------|--------------------------------------------------|
     |Distribuera i ditt eget virtuella nätverk     |Välj **Ja**.                                   |
     |Virtuellt nätverk                        |Välj **Azure-våren-Cloud-VNet**.               |
@@ -160,9 +164,9 @@ Nätverks resurserna är anslutna till ditt virtuella nätverk som du skapade i 
    > [!Important]
    > Resurs grupperna hanteras helt av moln tjänsten Azure våren. Ta *inte* bort eller ändra någon resurs i manuellt.
 
-## <a name="limitations"></a>Begränsningar
+## <a name="using-smaller-subnet-ranges"></a>Använda mindre under näts intervall
 
-Ett litet under näts intervall sparar IP-adresser, men det ger begränsningar för det maximala antalet App-instanser som Azure våren Cloud-instansen kan innehålla.
+Den här tabellen visar det maximala antalet App-instanser Azure våren Cloud stöder användning av mindre undernät.
 
 | App-undernät, CIDR | Totalt antal IP-adresser | Tillgängliga IP-adresser | Maximalt antal App-instanser                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |

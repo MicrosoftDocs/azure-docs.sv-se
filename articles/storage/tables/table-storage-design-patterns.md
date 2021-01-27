@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019233"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879603"
 ---
 # <a name="table-design-patterns"></a>Mönster för tabelldesign
 I den här artikeln beskrivs några mönster som lämpar sig för användning med Table service lösningar. Dessutom får du se hur du praktiskt taget kan åtgärda några av de problem och kompromisser som beskrivs i andra tabell lagrings design artiklar. Följande diagram sammanfattar relationerna mellan olika mönster:  
@@ -711,7 +711,7 @@ Undantag som har utlösts när lagrings klient biblioteket kör en EGT inkludera
 Du bör också fundera över hur din design påverkar hur ditt klient program hanterar samtidighets-och uppdaterings åtgärder.  
 
 ### <a name="managing-concurrency"></a>Hantera samtidighet
-Som standard implementerar tabell tjänsten optimistisk concurrency-kontroller på nivån för enskilda entiteter för **insert**-, **merge**-och **Delete** -åtgärder, även om det är möjligt för en klient att tvinga tabell tjänsten att kringgå kontrollerna. Mer information om hur tabell tjänsten hanterar samtidighet finns i  [Hantera samtidighet i Microsoft Azure Storage](../../storage/common/storage-concurrency.md).  
+Som standard implementerar tabell tjänsten optimistisk concurrency-kontroller på nivån för enskilda entiteter för **insert**-, **merge**-och **Delete** -åtgärder, även om det är möjligt för en klient att tvinga tabell tjänsten att kringgå kontrollerna. Mer information om hur tabell tjänsten hanterar samtidighet finns i  [Hantera samtidighet i Microsoft Azure Storage](../blobs/concurrency-manage.md).  
 
 ### <a name="merge-or-replace"></a>Sammanfoga eller Ersätt
 **Ersättnings** metoden i **TableOperation** -klassen ersätter alltid den fullständiga entiteten i Table service. Om du inte tar med en egenskap i begäran när egenskapen finns i den lagrade entiteten tar begäran bort egenskapen från den lagrade entiteten. Om du inte vill ta bort en egenskap uttryckligen från en lagrad entitet måste du inkludera varje egenskap i begäran.  

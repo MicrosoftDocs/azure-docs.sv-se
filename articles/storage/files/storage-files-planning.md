@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724241"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879855"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planera för distribution av Azure Files
 [Azure Files](storage-files-introduction.md) kan distribueras på två huvudsakliga sätt: genom att montera Server lös Azure-filresurser direkt eller genom att cachelagra Azure-filresurser lokalt med hjälp av Azure File Sync. Vilket distributions alternativ du väljer ändrar de saker du behöver tänka på när du planerar för distributionen. 
@@ -131,6 +131,6 @@ I [översikts artikeln om migreringen](storage-files-migration-overview.md) besk
 
 ## <a name="next-steps"></a>Nästa steg
 * [Planera för en Azure File Sync distribution](storage-sync-files-planning.md)
-* [Distribuera Azure Files](storage-files-deployment-guide.md)
+* [Distribuera Azure Files](./storage-how-to-create-file-share.md)
 * [Distribuera Azure File Sync](storage-sync-files-deployment-guide.md)
 * [Titta närmare på översikts artikeln om migrering för att hitta migreringsguiden för ditt scenario](storage-files-migration-overview.md)

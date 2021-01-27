@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186545"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896350"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilera DSC-konfigurationer i Azure Automation tillstånds konfiguration
 
@@ -278,6 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - Information om hur du kommer igång finns i [Kom igång med Azure Automation tillstånds konfiguration](automation-dsc-getting-started.md).
 - Mer information om hur du kompilerar DSC-konfigurationer så att du kan tilldela dem till mål noder finns i [kompilera DSC-konfigurationer i Azure Automation tillstånds konfiguration](automation-dsc-compile.md).
-- En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).
 - Pris information finns i pris information för [Azure Automation State Configuration](https://azure.microsoft.com/pricing/details/automation/).
 - Ett exempel på att använda tillstånds konfiguration i en pipeline för kontinuerlig distribution finns i [Konfigurera kontinuerlig distribution med choklad](automation-dsc-cd-chocolatey.md).

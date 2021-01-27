@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 35cb7ba4523cfbc88daf958fd972b127519385ce
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 69f0da2f1528ad1f45762a8f754cc2020b4cb880
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792441"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901215"
 ---
 Den här artikeln innehåller versioner och funktioner i Azure Active Directory Connect etablerings agent som har släppts. Azure AD-teamet uppdaterar regelbundet etablerings agenten med nya funktioner och funktioner. Etablerings agenten uppdateras automatiskt när en ny version släpps. 
 
@@ -99,5 +99,3 @@ Microsoft tillhandahåller direkt support för den senaste agent versionen och e
 * Förbättringar för etablerings agenten och anslutnings arkitekturen ger bättre prestanda, stabilitet och tillförlitlighet 
 * Förenklad konfiguration av konfigurations agenten med hjälp av UI-driven installations guide 
 * Stöd har lagts till för automatiska agent uppdateringar
-
-

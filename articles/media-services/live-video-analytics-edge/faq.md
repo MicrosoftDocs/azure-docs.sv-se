@@ -3,12 +3,12 @@ title: Live video analys på IoT Edge vanliga frågor och svar – Azure
 description: Den här artikeln besvarar vanliga frågor om real tids analys av IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: f9ef26b9b64bd8a0bad7c83960f2d235ed6461cb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762885"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880058"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Vanliga video analyser på IoT Edge vanliga frågor och svar
 
@@ -230,7 +230,7 @@ Ja. Du kan använda Prometheus mått och publicera dem i Event-rutnätet.
 
 **Kan jag använda Azure Monitor för att Visa hälso tillstånd, mått och prestanda för mina medie diagram i molnet eller på gränsen?**
 
-Ja, vi har stöd för den här metoden. Mer information finns i [Översikt över Azure Monitor mått](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Ja, vi har stöd för den här metoden. Mer information finns i [Översikt över Azure Monitor mått](../../azure-monitor/platform/data-platform-metrics.md).
 
 **Finns det några verktyg för att göra det enklare att övervaka modulen Media Services IoT Edge?**
 

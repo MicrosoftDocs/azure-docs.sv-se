@@ -2,13 +2,13 @@
 title: Konfigurera vRealize-åtgärder för Azure VMware-lösning
 description: Lär dig hur du konfigurerar vRealize-åtgärder för ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 25469089cf1fef076711bfaf1492fad43edbcf33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/26/2021
+ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371791"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880699"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Konfigurera vRealize-åtgärder för Azure VMware-lösning
 
@@ -27,8 +27,8 @@ Granska noga [innan du börjar](#before-you-begin) och [förutsättningarna](#pr
 * Du kan också gå igenom produkt dokumentationen för [Fjärrkontrollanten för vRealize](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) för den lokala vRealize driften hanterings alternativ för Azure VMware-lösningen. 
 
 
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
+* [vRealize-Operations Manager](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) installerad.
 * En VPN-eller Azure-ExpressRoute som kon figurer ATS mellan lokala och Azure VMware-lösningar SDDC.
 * Ett privat moln i Azure VMware-lösningen har distribuerats i Azure.
 
@@ -50,12 +50,13 @@ För att utöka vRealize-funktionerna till Azures privata moln för VMware-lösn
 
 Ett annat alternativ är att distribuera en instans av vRealize Operations Manager i ett vSphere-kluster i det privata molnet. 
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Lokala vRealize-åtgärder hantering av Azure VMware Solution Deployment" border="false":::
+>[!IMPORTANT]
+>Det här alternativet stöds inte för närvarande av VMware.
+
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="vRealize-åtgärder som körs på Azure VMware-lösning" border="false":::
 
 När instansen har distribuerats kan du konfigurera vRealize-åtgärder för att samla in data från vCenter, ESXi, NSX-T, virtuellt San och HCX. 
 
-> [!TIP]
-> I VMware- [dokumentationen](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) hittar du steg-för-steg-instruktioner för att installera vRealize Operations Manager.
 
 
 ## <a name="known-limitations"></a>Kända begränsningar
@@ -68,11 +69,11 @@ När instansen har distribuerats kan du konfigurera vRealize-åtgärder för att
 
 När du ansluter Azure VMware-lösningen vCenter till vRealize Operations Manager med ett vCenter Server moln konto visas en varning:
 
-:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Lokala vRealize-åtgärder hantering av Azure VMware Solution Deployment":::
+:::image type="content" source="./media/vrealize-operations-manager/warning-adapter-instance-creation-succeeded.png" alt-text="Varnings korts instansen har skapats":::
 
 Varningen beror på att **cloudadmin \@ vSphere. local** User i Azure VMware-lösningen inte har tillräcklig behörighet för att utföra alla vCenter Server åtgärder som krävs för registrering. Behörigheterna är dock tillräckliga för att kort instansen ska kunna utföra data insamling, som visas nedan:
 
-:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Lokala vRealize-åtgärder hantering av Azure VMware Solution Deployment":::
+:::image type="content" source="./media/vrealize-operations-manager/adapter-instance-to-perform-data-collection.png" alt-text="Kort instans för att utföra insamling av data":::
 
 Mer information finns i [behörigheter som krävs för att konfigurera en instans av vCenter-kort](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.core.doc/GUID-3BFFC92A-9902-4CF2-945E-EA453733B426.html).
 

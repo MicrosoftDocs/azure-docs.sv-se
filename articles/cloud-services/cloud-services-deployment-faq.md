@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd7b19a2c9e872b811c1aab6e504accb7de383b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742224"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896485"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Distributions problem för Azure Cloud Services (klassisk): vanliga frågor och svar
 
@@ -52,7 +52,7 @@ Distribution av en moln tjänst kan Miss lyckas om resurserna som måste alloker
 
 Du kan också spåra den aktuella användningen/kvoten för din prenumeration på portalen: Azure Portal => Subscriptions => \<appropriate subscription>   => "användning + kvot".
 
-Resursanvändning/förbrukning-relaterad information kan också hämtas via API:er för Azure-fakturering. Se [Azure Resource Usage API (för hands version)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Resursanvändning/förbrukning-relaterad information kan också hämtas via API:er för Azure-fakturering. Se [Översikt över Azure förbruknings-API](../cost-management-billing/manage/consumption-api-overview.md).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Hur kan jag ändra storleken på en distribuerad virtuell dator i moln tjänsten utan att distribuera om den?
 Du kan inte ändra den virtuella dator storleken för en distribuerad moln tjänst utan att distribuera om den. Storleken på den virtuella datorn är inbyggd i CSDEF, som bara kan uppdateras med en omdistribution.

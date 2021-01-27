@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 44b89aae2f446a13207c8e3b586892ad085bd790
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897124"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879418"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plattforms stöd för migrering av IaaS-resurser från klassisk till Azure Resource Manager i Linux
 
@@ -24,7 +24,7 @@ ms.locfileid: "97897124"
 
 Den här artikeln innehåller en översikt över Migreringsverktyg för plattform som stöds, hur du migrerar resurser från Azure Service Manager (ASM) aka Classic till Resource Manager (ARM) distributions modeller och information om hur du ansluter resurser från de två distributions modeller som finns i din prenumeration med hjälp av virtuella nätverks plats-till-plats-gatewayer. Du kan läsa mer om [Azure Resource Manager funktioner och förmåner](../azure-resource-manager/management/overview.md). 
 
-ASM stöder två olika beräknings produkter, Azure Virtual Machines (klassisk) aka IaaS VM & [Azure Cloud Services (klassisk)](https://docs.microsoft.com/azure/cloud-services/) aka PaaS-VM: ar eller Web/Worker-roller. Det här dokumentet pratar bara om migrering av Azure Virtual Machines (klassisk).
+ASM stöder två olika beräknings produkter, Azure Virtual Machines (klassisk) aka IaaS VM & [Azure Cloud Services (klassisk)](../cloud-services/index.yml) aka PaaS-VM: ar eller Web/Worker-roller. Det här dokumentet pratar bara om migrering av Azure Virtual Machines (klassisk).
 
 ## <a name="goal-for-migration"></a>Mål för migrering
 Med Resource Manager kan du distribuera komplexa program via mallar, konfigurera virtuella datorer med hjälp av VM-tillägg och införliva åtkomst hantering och taggning. Azure Resource Manager innehåller skalbar, parallell distribution för virtuella datorer i tillgänglighets uppsättningar. Den nya distributions modellen innehåller också livs cykel hantering av beräkning, nätverk och lagring oberoende av varandra. Slutligen är det en fokus på att aktivera säkerhet som standard med tvång av virtuella datorer i ett virtuellt nätverk.
@@ -39,7 +39,7 @@ Nästan alla funktioner från den klassiska distributions modellen stöds för b
 * Lagringskonton
 * Virtuella nätverk
 * VPN-gatewayer
-* [Express Route-gatewayer](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(endast i samma prenumeration som Virtual Network)_
+* [Express Route-gatewayer](../expressroute/expressroute-howto-move-arm.md) _(endast i samma prenumeration som Virtual Network)_
 * Nätverkssäkerhetsgrupper
 * Routningstabeller
 * Reserverade ip-adresser

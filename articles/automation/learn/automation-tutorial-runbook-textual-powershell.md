@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 896b4db433164471f41aa09791ede5d677028bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015008"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896620"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Självstudie: skapa en PowerShell-Runbook
 
@@ -23,9 +23,9 @@ Den här självstudien beskriver steg för steg hur du skapar en [PowerShell-run
 > * Kör och spåra statusen för Runbook-jobbet
 > * Uppdatera runbooken för att starta en virtuell Azure-dator med Runbook-parametrar
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-För att kunna genomföra den här kursen behöver du följande:
+För att göra den här självstudien behöver du följande:
 
 * En Azure-prenumeration. Om du inte redan har ett konto kan du [aktivera dina MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ett [Automation-konto för Azure](../automation-quickstart-create-account.md) som runbooken ska ligga under och som ska användas för autentisering mot Azure-resurser. Det här kontot måste ha behörighet att starta och stoppa den virtuella datorn.
@@ -71,7 +71,7 @@ Du kan antingen skriva kod direkt i runbooken eller välja cmdlets, runbooks och
 
 2. Spara runbooken genom att klicka på **Spara**.
 
-## <a name="step-3---test-the-runbook"></a><a name="step-3---test-the-runbook"> </a> Steg 3 – testa runbooken
+## <a name="step-3---test-the-runbook"></a><a name="step-3---test-the-runbook"></a> Steg 3 – testa runbooken
 
 Innan du publicerar runbooken för att göra den tillgänglig i produktion bör du testa den och kontrol lera att den fungerar som den ska. Om du testar en runbook körs dess utkast version och du kan visa dess utdata interaktivt.
 
@@ -103,7 +103,7 @@ Den Runbook som du har skapat är fortfarande i utkast läge. Den behöver publi
 
 4. Välj **Start** och sedan **Ja** när du uppmanas att starta runbooken. 
 
-5. Ett jobb fönster öppnas för det Runbook-jobb som har skapats. Även om du kan stänga det här fönstret, lämna det öppet just nu så att du kan se jobbets förlopp. Jobbets status visas i **jobb Sammanfattning**och möjliga statusar beskrivs för att testa runbooken.
+5. Ett jobb fönster öppnas för det Runbook-jobb som har skapats. Även om du kan stänga det här fönstret, lämna det öppet just nu så att du kan se jobbets förlopp. Jobbets status visas i **jobb Sammanfattning** och möjliga statusar beskrivs för att testa runbooken.
 
    ![Jobbsammanfattning](../media/automation-tutorial-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
@@ -121,7 +121,7 @@ Den Runbook som du har skapat är fortfarande i utkast läge. Den behöver publi
 
 9. Stäng fönstret strömmar och fönstret jobb för att återgå till MyFirstRunbook-PowerShell sidan.
 
-10. Klicka på **jobb** under **information**för att öppna sidan jobb för denna Runbook. Den här sidan visar alla jobb som har skapats av din Runbook. Du bör bara se ett jobb i listan eftersom du bara kör jobbet en gång.
+10. Klicka på **jobb** under **information** för att öppna sidan jobb för denna Runbook. Den här sidan visar alla jobb som har skapats av din Runbook. Du bör bara se ett jobb i listan eftersom du bara kör jobbet en gång.
 
    ![Jobblista](../media/automation-tutorial-runbook-textual-powershell/runbook-control-job-tile.png)
 
@@ -131,7 +131,7 @@ Den Runbook som du har skapat är fortfarande i utkast läge. Den behöver publi
 
 Du har testat och publicerat din runbook, men hittills gör den egentligen inget användbart. Du vill att den ska hantera Azure-resurser. För att göra detta måste runbooken kunna autentisera med kör som-kontot som skapades automatiskt när du skapade ditt Automation-konto.
 
-Som du ser i exemplet nedan görs kör som-anslutningen med cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) . Om du hanterar resurser över flera prenumerationer måste du använda `AzContext` parametern med [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0).
+Som du ser i exemplet nedan görs kör som-anslutningen med cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Om du hanterar resurser över flera prenumerationer måste du använda `AzContext` parametern med [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext).
 
 > [!NOTE]
 > För PowerShell-Runbooks `Add-AzAccount` och `Add-AzureRMAccount` är alias för `Connect-AzAccount` . Du kan använda dessa cmdletar, eller så kan du [Uppdatera dina moduler](../automation-update-azure-modules.md) i ditt Automation-konto till de senaste versionerna. Du kan behöva uppdatera dina moduler även om du precis har skapat ett nytt Automation-konto.
@@ -198,7 +198,7 @@ Som du ser i exemplet nedan görs kör som-anslutningen med cmdleten [Connect-Az
 
 Nu när din Runbook autentiseras till din Azure-prenumeration kan du hantera resurser. Nu ska vi lägga till ett kommando för att starta en virtuell dator. Du kan välja en virtuell dator i din Azure-prenumeration och bara hårdkoda det namnet i runbooken för tillfället.
 
-1. I Runbook-skriptet lägger du till cmdleten [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) för att starta den virtuella datorn. Som det visas nedan startar cmdleten en virtuell dator med namnet `VMName` och med en resurs grupp med namnet `ResourceGroupName` .
+1. I Runbook-skriptet lägger du till cmdleten [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) för att starta den virtuella datorn. Som det visas nedan startar cmdleten en virtuell dator med namnet `VMName` och med en resurs grupp med namnet `ResourceGroupName` .
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -275,7 +275,7 @@ Din Runbook startar för närvarande den virtuella datorn som du hårdkodade i r
 ## <a name="next-steps"></a>Nästa steg
 
 * Mer information om PowerShell, inklusive språk referens-och inlärnings moduler finns i [PowerShell-dokumenten](/powershell/scripting/overview).
-* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).
 * Information om hur du kommer igång med grafiska runbooks finns i [skapa en grafisk Runbook](automation-tutorial-runbook-graphical.md).
 * Information om hur du kommer igång med PowerShell Workflow-Runbooks finns i [skapa en PowerShell Workflow-Runbook](automation-tutorial-runbook-textual.md).
 * Om du vill veta mer om Runbook-typer och deras fördelar och begränsningar, se [Azure Automation Runbook-typer](../automation-runbook-types.md).

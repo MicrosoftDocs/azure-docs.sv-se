@@ -1,5 +1,5 @@
 ---
-title: Fel koder för Azure Media Services jobb (kodning och analys) | Microsoft Docs
+title: Fel koder för Azure Media Services jobb (kodning och analys)
 description: Den här artikeln länkar till avsnittet om referens för jobbfel och ger användbara länkar till närliggande ämnen.
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 272f32ebdba04009a67bf03d5e830ad8f9e649f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64d8d889d3b9b55d6e47bb96afc7f9badac9e2ee
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289570"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895381"
 ---
 # <a name="media-services-job-error-codes"></a>Fel koder för Media Services jobb
 

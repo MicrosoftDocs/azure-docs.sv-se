@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554023"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880211"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformera data i Azure Machine Learning designer
 
@@ -52,11 +52,7 @@ Använd följande steg för att importera exempel data uppsättningen.
 
 1. Dra och släpp den **binära klassificerings data uppsättningen för vuxen räknings inkomst** på arbets ytan.
 
-1. Välj den data uppsättnings modul för **vuxen räknings inkomst** .
-
-1. I informations fönstret som visas till höger om arbets ytan väljer du **utdata**.
-
-1. Välj ikonen visualisera ![visualisera ikon](media/how-to-designer-transform-data/visualize-icon.png).
+1. Högerklicka på den data uppsättnings modulen för **vuxen räknings** data och välj **visualisera**  >  **utdata för data uppsättning**
 
 1. Använd fönstret data förhands granskning för att utforska data uppsättningen. Titta på en särskild anteckning om kolumn värden för "ursprungligt land".
 
@@ -74,7 +70,7 @@ I det här avsnittet använder du [modulen dela data](algorithm-module-reference
 
 1. I informations fönstret för moduler till höger om arbets ytan anger du **delnings läge** till **reguljärt uttryck**.
 
-1. Ange det **reguljära uttrycket** : `\"native-country" United-States` .
+1. Ange det **reguljära uttrycket**: `\"native-country" United-States` .
 
     Det **reguljära uttrycks** läget testar en enskild kolumn för ett värde. Mer information om modulen dela data finns på [referens sidan relaterad algoritm](algorithm-module-reference/split-data.md).
 
@@ -103,13 +99,13 @@ Nu när din pipeline har kon figurer ATS för att dela data måste du ange var d
 
 1. I informations fönstret för moduler till höger om arbets ytan anger du följande alternativ:
     
-    **Data lager typ** : Azure Blob Storage
+    **Data lager typ**: Azure Blob Storage
 
-    **Data lager** : Välj ett befintligt data lager eller välj "nytt data lager" för att skapa ett nu.
+    **Data lager**: Välj ett befintligt data lager eller välj "nytt data lager" för att skapa ett nu.
 
-    **Sökväg** : `/data/us-income`
+    **Sökväg**: `/data/us-income`
 
-    **Fil format** : CSV
+    **Fil format**: CSV
 
     > [!NOTE]
     > Den här artikeln förutsätter att du har åtkomst till ett data lager som är registrerat på den aktuella Azure Machine Learning-arbetsytan. Instruktioner för hur du konfigurerar ett data lager finns i [Anslut till Azure Storage Services](how-to-connect-data-ui.md#create-datastores).
@@ -120,13 +116,13 @@ Nu när din pipeline har kon figurer ATS för att dela data måste du ange var d
 
 1. I informations fönstret för moduler till höger om arbets ytan anger du följande alternativ:
     
-    **Data lager typ** : Azure Blob Storage
+    **Data lager typ**: Azure Blob Storage
 
-    **Data lager** : Välj samma data lager som ovan
+    **Data lager**: Välj samma data lager som ovan
 
-    **Sökväg** : `/data/non-us-income`
+    **Sökväg**: `/data/non-us-income`
 
-    **Fil format** : CSV
+    **Fil format**: CSV
 
 1. Bekräfta att **export data** -modulen är ansluten till den vänstra porten för **delnings data** har **sökvägen** `/data/us-income` .
 

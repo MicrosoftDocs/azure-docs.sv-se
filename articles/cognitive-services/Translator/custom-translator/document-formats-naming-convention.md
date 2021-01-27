@@ -2,19 +2,19 @@
 title: Dokument format och namngivnings konventioner – anpassad översättare
 titleSuffix: Azure Cognitive Services
 description: Detta är en vägledning om dokument format och namngivnings konventioner i en anpassad översättare. Det här konceptet hjälper till att hantera dokument namn bättre och undvika namn konflikter.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88507254"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895857"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Vägledning för dokument format och namngivnings konvention
 
@@ -22,7 +22,7 @@ Alla filer som används för anpassad översättning måste vara minst **fyra** 
 
 Den här tabellen innehåller alla fil format som stöds och som du kan använda för att bygga ditt översättnings system:
 
-| Format            | Tillägg   | Beskrivning                                                                                                                                                                                                                                                                    |
+| Format            | Tillägg   | Description                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF, . XLIFF | Ett parallellt dokument format, export av översättnings minnes system. De språk som används definieras i filen.                                                                                                                                                              |
 | TMX               | . TMX         | Ett parallellt dokument format, export av översättnings minnes system. De språk som används definieras i filen.                                                                                                                                                              |

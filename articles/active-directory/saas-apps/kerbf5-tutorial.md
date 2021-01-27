@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 139366277feab0a04c47311b4f0210223b2bc8d9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933123"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med F5
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar F5 med Azure Active
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -493,3 +493,9 @@ När du klickar på F5-panelen i åtkomst panelen, bör du loggas in automatiskt
 - [Konfigurera F5 enkel inloggning för sidhuvud baserat program](headerf5-tutorial.md)
 
 - [Konfigurera enkel inloggning med F5 för avancerat Kerberos-program](advance-kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM och Azure AD-integrering för säker hybrid åtkomst](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [Självstudie för att distribuera F5 stor IP Virtual Edition VM i Azure IaaS för säker hybrid åtkomst](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [Självstudie för Azure Active Directory integration med enkel inloggning med F5 BIG-IP för lösen ords mindre VPN](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683490"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880952"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Träna modeller med Azure Machine Learning
 
@@ -76,7 +76,7 @@ Definiera iterationer, inställningar för funktionalisering och andra inställn
 Maskin inlärnings pipeliner kan använda de tidigare nämnda utbildnings metoderna. Pipelines är mer information om hur du skapar ett arbets flöde, så att de omfattar mer än bara inlärningen av modeller. I en pipeline kan du träna en modell med hjälp av automatisk maskin inlärning eller köra konfigurationer.
 
 * [Vad är ML-pipelines i Azure Machine Learning?](concept-ml-pipelines.md)
-* [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](how-to-create-your-first-pipeline.md)
+* [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)
 * [Självstudie: Använd Azure Machine Learning pipelines för batch-Poäng](tutorial-pipeline-batch-scoring-classification.md)
 * [Exempel: Jupyter Notebook exempel för maskin inlärnings pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Exempel: pipeline med automatiserad maskin inlärning](https://aka.ms/pl-automl)

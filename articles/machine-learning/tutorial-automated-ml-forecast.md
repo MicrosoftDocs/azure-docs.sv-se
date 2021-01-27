@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695428"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879367"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Självstudie: prognostisera efter frågan med automatiserad maskin inlärning
 
@@ -82,7 +82,7 @@ Innan du konfigurerar experimentet laddar du upp data filen till din arbets yta 
         Avgränsare|Ett eller flera tecken för att ange avgränsningen mellan &nbsp; separata, oberoende regioner i oformaterad text eller andra data strömmar. |Komma
         Kodning|Identifierar vilken bit till Character-schema tabell som ska användas för att läsa din data uppsättning.| UTF-8
         Kolumnrubriker| Anger hur data uppsättningens huvuden, om det finns, kommer att behandlas.| Använd huvuden från den första filen
-        Hoppa över rader | Anger hur många rader som ska hoppas över i data uppsättningen.| Ingen
+        Hoppa över rader | Anger hur många rader som ska hoppas över i data uppsättningen.| Inget
 
     1. Med hjälp av **schema** formuläret kan du ytterligare konfigurera dina data för det här experimentet. 
     
@@ -126,7 +126,7 @@ När du har läst in och konfigurerat dina data konfigurerar du ditt fjärrberä
             Namn på beräkning |  Ett unikt namn som identifierar din beräknings kontext. | cykel – beräkning
             Min/högsta antal noder| Du måste ange 1 eller fler noder för att kunna profilera data.|Minsta antal noder: 1<br>Max noder: 6
             Inaktiva sekunder innan skalning | Inaktivitetstid innan klustret skalas automatiskt ned till lägsta antal noder.|120 (standard)
-            Avancerade inställningar | Inställningar för att konfigurera och auktorisera ett virtuellt nätverk för experimentet.| Ingen 
+            Avancerade inställningar | Inställningar för att konfigurera och auktorisera ett virtuellt nätverk för experimentet.| Inget 
   
         1. Välj **skapa** för att hämta beräknings målet. 
 
@@ -148,7 +148,7 @@ Slutför installationen av ditt automatiserade ML-experiment genom att ange akti
 
 1. Välj **Visa ytterligare konfigurations inställningar** och fyll i fälten enligt följande. De här inställningarna är för att bättre styra utbildnings jobbet och ange inställningar för din prognos. Annars tillämpas standardvärdena utifrån experiment val och data.
 
-    Ytterligare &nbsp; konfigurationer|Beskrivning|Värde &nbsp; för &nbsp; självstudier
+    Ytterligare &nbsp; konfigurationer|Description|Värde &nbsp; för &nbsp; självstudier
     ------|---------|---
     Primärt mått| Bedömnings mått som ska mätas av Machine Learning-algoritmen.|Normaliserat rot genomsnitts fel
     Förklara bästa modell| Visar automatiskt förklaringar för den bästa modellen som skapats av automatisk ML.| Aktivera
@@ -240,7 +240,7 @@ I den här självstudien har du använt automatisk ML i Azure Machine Learning S
 I den här artikeln finns anvisningar om hur du skapar ett schema för Power BI som stöds för att under lätta användningen av den nyligen distribuerade webb tjänsten:
 
 > [!div class="nextstepaction"]
-> [Använda en webbtjänst](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Använda en webbtjänst](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + Lär dig mer om [Automatisk maskin inlärning](concept-automated-ml.md).
 + Mer information om klassificerings mått och diagram finns i artikeln [förstå automatiserade maskin inlärnings resultat](how-to-understand-automated-ml.md) .

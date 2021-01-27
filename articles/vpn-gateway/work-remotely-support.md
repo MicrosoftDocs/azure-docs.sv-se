@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440824"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880092"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Fjärran sluten arbete med Azure VPN Gateway punkt-till-plats
 
@@ -65,7 +65,7 @@ På hög nivå krävs följande steg för att göra det möjligt för användare
 4. Konfigurera den lokala enheten för att ansluta till Azures virtuella nätverksgateway.
 5. Hämta punkt-till-plats-profilen från Azure Portal och distribuera till klienter
 
-Information om hur du konfigurerar en plats-till-plats-VPN-tunnel finns i [den här länken](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Information om hur du konfigurerar en plats-till-plats-VPN-tunnel finns i [den här länken](./tutorial-site-to-site-portal.md).
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Vanliga frågor och svar om intern Azure-certifikatautentisering
 

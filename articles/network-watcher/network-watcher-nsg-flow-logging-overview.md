@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 987281bd13b7ac053f07a4ef1fb7605c85686d56
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898631"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878671"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödesloggning för nätverkssäkerhetsgrupper
 
@@ -362,13 +362,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Inkommande flöden som loggats från Internet-IP-adresser till virtuella datorer utan offentliga** IP-adresser: virtuella datorer som inte har en offentlig IP-adress som tilldelats via en offentlig IP-adress som är kopplad till nätverkskortet som en offentlig IP-adress på instans nivå eller som är en del av en grundläggande belastningsutjämnare, använder [standard SNAT](../load-balancer/load-balancer-outbound-connections.md) och har en IP-adress som tilldelats av Azure för att under lätta Därför kan du se flödes logg poster för flöden från Internet-IP-adresser, om flödet är avsett för en port i intervallet för de portar som tilldelats för SNAT. Även om Azure inte tillåter dessa flöden till den virtuella datorn, loggas försöket och visas i Network Watcher flödes loggen för NSG efter design. Vi rekommenderar att oönskad inkommande Internet trafik uttryckligen blockeras med NSG.
 
-**Problem med Application Gateway v2-UNDERNÄT NSG**: flödes loggning på undernät för Application Gateway v2-NSG [stöds inte](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) för närvarande. Det här problemet påverkar inte Application Gateway v1.
+**Problem med Application Gateway v2-UNDERNÄT NSG**: flödes loggning på undernät för Application Gateway v2-NSG [stöds inte](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) för närvarande. Det här problemet påverkar inte Application Gateway v1.
 
 **Inkompatibla tjänster**: på grund av aktuella plattforms begränsningar stöds inte en liten uppsättning Azure-tjänster av NSG Flow-loggar. Den aktuella listan över inkompatibla tjänster är
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
-## <a name="best-practices"></a>Bästa praxis
+## <a name="best-practices"></a>Rekommenderade metoder
 
 **Aktivera för kritiska virtuella nätverk/undernät**: flödes loggar ska aktive ras på alla kritiska virtuella nätverk/undernät i din prenumeration som bästa praxis för granskning och säkerhet. 
 
@@ -404,7 +404,7 @@ Ibland visas inte loggar om dina virtuella datorer inte är aktiva eller om det 
 
 Stöd för automatisering via ARM-mallar är för närvarande inte tillgängligt för NSG-flödesloggar. Mer information finns i [funktions meddelandet](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Vad gör NSG Flow-loggarna?**
 

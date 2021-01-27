@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621033"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879435"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Vad är Azure Web Application-brandvägg på Azure Application Gateway?
 
@@ -157,7 +157,7 @@ Application Gateway loggar är integrerade i [Azure Monitor](../../azure-monitor
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-introduction.md) hjälper dig att förhindra, identifiera och svara på hot. Det ger ökad insyn i och kontroll över säkerheten för dina Azure-resurser. Application Gateway är [integrerat med Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center söker igenom din miljö för att identifiera oskyddade webb program. Det kan rekommendera Application Gateway WAF för att skydda dessa sårbara resurser. Du skapar brand väggarna direkt från Security Center. Dessa WAF-instanser är integrerade med Security Center. De skickar aviseringar och hälso information till Security Center för rapportering.
+[Security Center](../../security-center/security-center-introduction.md) hjälper dig att förhindra, identifiera och svara på hot. Det ger ökad insyn i och kontroll över säkerheten för dina Azure-resurser. Application Gateway är [integrerat med Security Center](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions). Security Center söker igenom din miljö för att identifiera oskyddade webb program. Det kan rekommendera Application Gateway WAF för att skydda dessa sårbara resurser. Du skapar brand väggarna direkt från Security Center. Dessa WAF-instanser är integrerade med Security Center. De skickar aviseringar och hälso information till Security Center för rapportering.
 
 ![Fönstret Security Center översikt](../media/ag-overview/figure1.png)
 

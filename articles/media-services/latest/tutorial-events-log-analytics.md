@@ -1,24 +1,8 @@
 ---
-title: Lagra Azure Media Services händelser i Azure Log Analytics
-titleSuffix: Azure Media Services
-description: Lär dig hur du lagrar Azure Media Services händelser i Azure Log Analytics.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/24/2020
-ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017003"
+title: lagra Azure Media Services händelser i Azure Log Analytics: Azure Media Services Beskrivning: Lär dig hur du lagrar Azure Media Services händelser i Azure Log Analytics.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. service: Media-Services MS. arbets belastning: MS. topic: självstudie MS. Date: 08/24/2020 MS. author: inhenkel
 ---
+
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Självstudie: lagra Azure Media Services händelser i Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services händelser
@@ -148,7 +132,7 @@ Nu när du prenumererar på händelse (r) skapar du en åtgärd.
 
 Du kan testa hur det fungerar genom att skapa en direkt sändnings händelse i Azure Media Services. Skapa en RTMP Live-händelse och Använd ffmpeg för att skicka en "Live"-ström baserat på en. mp4-exempel fil. Hämta RTMP-inmatnings-URL: en när händelsen har skapats.
 
-1. Välj **Live streaming**från ditt Media Services-konto.
+1. Välj **Live streaming** från ditt Media Services-konto.
     > [!div class="mx-imgBorder"]
     > ![Skapa en Azure Media Services Live-händelse](media/tutorial-events-log-analytics/live-event.png)
 

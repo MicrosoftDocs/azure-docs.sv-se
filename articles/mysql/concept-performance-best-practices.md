@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355057"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880414"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Bästa praxis för optimala prestanda för din Azure Database for MySQL-enskild server
 
@@ -46,9 +46,9 @@ Att upprätta en ny anslutning är alltid en dyr och tids krävande uppgift. Nä
 
 Den bästa metoden för Azure Database for MySQL prestanda är att allokera tillräckligt med RAM-minne, så att du kan arbeta i nästan helt i minnet. 
 
-- Kontrol lera om minnes procent andelen som används för att nå [gränserna](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) med hjälp av [måtten för MySQL-servern](https://docs.microsoft.com/azure/mysql/concepts-monitoring). 
+- Kontrol lera om minnes procent andelen som används för att nå [gränserna](./concepts-pricing-tiers.md) med hjälp av [måtten för MySQL-servern](./concepts-monitoring.md). 
 - Ställ in aviseringar på sådana siffror för att säkerställa att när servrarna når gränser kan du vidta åtgärder för att åtgärda problemet. Baserat på de gränser som definieras kontrollerar du om du skalar upp databas-SKU: n, antingen till högre beräknings storlek eller till en bättre pris nivå som resulterar i en dramatisk ökning av prestandan. 
-- Skala upp tills prestanda numren inte längre sjunker efter en skalnings åtgärd. Information om hur du övervakar en DB-instanss mått finns i [MySQL db-mått](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics).
+- Skala upp tills prestanda numren inte längre sjunker efter en skalnings åtgärd. Information om hur du övervakar en DB-instanss mått finns i [MySQL db-mått](./concepts-monitoring.md#metrics).
 
 ## <a name="next-steps"></a>Nästa steg
 

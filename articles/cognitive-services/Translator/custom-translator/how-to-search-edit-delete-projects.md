@@ -2,19 +2,19 @@
 title: Söka, redigera och ta bort projekt – anpassad översättare
 titleSuffix: Azure Cognitive Services
 description: Anpassad översättare tillhandahåller olika sätt att hantera dina projekt på ett effektivt sätt. Du kan skapa flera projekt, söka baserat på dina kriterier, redigera dina projekt. Det går också att ta bort ett projekt i anpassad översättare.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 308ca25d35011c67ded7300177149cd590462952
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510384"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896451"
 ---
 # <a name="search-edit-and-delete-projects"></a>Sök, redigera och ta bort projekt
 

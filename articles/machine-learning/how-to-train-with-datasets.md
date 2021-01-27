@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539671"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881694"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Träna modeller med Azure Machine Learning data uppsättningar 
 
 I den här artikeln får du lära dig hur du arbetar med [Azure Machine Learning data uppsättningar](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) för att träna maskin inlärnings modeller.  Du kan använda data uppsättningar i det lokala eller fjärranslutna beräknings målet utan att behöva oroa dig om anslutnings strängar eller data Sök vägar. 
 
-Azure Machine Learning data uppsättningar ger en sömlös integrering med Azure Machine Learning inlärnings funktioner som [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) och [Azure Machine Learning pipelines](how-to-create-your-first-pipeline.md).
+Azure Machine Learning data uppsättningar ger en sömlös integrering med Azure Machine Learning inlärnings funktioner som [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) och [Azure Machine Learning pipelines](./how-to-create-machine-learning-pipelines.md).
 
 Om du inte är redo att göra dina data tillgängliga för modell utbildning, men vill läsa in data till din bärbara dator för data utforskning, se så här [utforskar du data i din data uppsättning](how-to-create-register-datasets.md#explore-data). 
 
@@ -263,7 +263,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="troubleshooting"></a>Felsökning
 
 * **Det gick inte att initiera data uppsättningen: väntar på att en tids gräns för monterings punkten skulle bli klar**: 
-  * Om du inte har några utgående regler för [nätverks säkerhets grupper](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) och använder `azureml-sdk>=1.12.0` , uppdatera `azureml-dataset-runtime` och dess beroenden som de senaste för den speciella del versionen, eller om du använder den i en körning, måste du återskapa din miljö så att den kan ha den senaste korrigeringen med korrigeringen. 
+  * Om du inte har några utgående regler för [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md) och använder `azureml-sdk>=1.12.0` , uppdatera `azureml-dataset-runtime` och dess beroenden som de senaste för den speciella del versionen, eller om du använder den i en körning, måste du återskapa din miljö så att den kan ha den senaste korrigeringen med korrigeringen. 
   * Om du använder `azureml-sdk<1.12.0` uppgraderar du till den senaste versionen.
   * Om du har utgående NSG-regler kontrollerar du att det finns en utgående regel som tillåter all trafik för tjänst tag gen `AzureResourceMonitor` .
 
@@ -293,4 +293,4 @@ Om du använder fil resurs för andra arbets belastningar, till exempel data öv
 
 * [Träna bild klassificerings modeller](https://aka.ms/filedataset-samplenotebook) med FileDatasets.
 
-* [Träna med data uppsättningar med pipelines](how-to-create-your-first-pipeline.md).
+* [Träna med data uppsättningar med pipelines](./how-to-create-machine-learning-pipelines.md).

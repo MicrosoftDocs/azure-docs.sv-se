@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 98f8554d6313147c03d4a0bec74e36043cdce342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4740870dd2d9748aad55150ce1946e3eb666619
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285279"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878366"
 ---
 # <a name="azcopy-login"></a>azcopy inloggning
 
@@ -37,7 +37,7 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
 
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
-- [Överföra data med AzCopy och Blob Storage](storage-use-azcopy-blobs.md)
+- [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
 - [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
@@ -129,4 +129,4 @@ Behandla `/path/to/my/cert` som en sökväg till en PEM-eller PKCS12-fil. AzCopy
 
 ## <a name="see-also"></a>Se även
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

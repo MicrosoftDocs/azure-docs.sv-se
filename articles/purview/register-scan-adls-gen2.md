@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694807"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882407"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrera och skanna Azure Data Lake Storage Gen2
 
@@ -48,7 +48,7 @@ När du väljer **hanterad identitet**, för att konfigurera anslutningen, måst
 1. Ange **rollen** som **Storage BLOB data Reader** och ange ditt Azure avdelningens kontroll-kontonamn under **Välj** inmatnings ruta. Välj sedan **Spara** för att ge roll tilldelningen till ditt avdelningens kontroll-konto.
 
 > [!Note]
-> Mer information finns i steg i [ge åtkomst till blobbar och köer med hjälp av Azure Active Directory](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
+> Mer information finns i steg i [ge åtkomst till blobbar och köer med hjälp av Azure Active Directory](../storage/common/storage-auth-aad.md)
 
 #### <a name="account-key"></a>Konto nyckel
 

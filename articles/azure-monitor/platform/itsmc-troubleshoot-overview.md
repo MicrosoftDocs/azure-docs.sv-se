@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fce20626d5e000c08b8a057671c06a3084534187
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761989"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896044"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
 
 Den här artikeln beskriver vanliga problem i ITSM-anslutningsprogram och hur du felsöker dem.
 
-Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem. Mer information om aviseringar finns i Översikt över aviseringar i Microsoft Azure.
+Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i dina övervaknings data. De gör att du kan identifiera och åtgärda problem innan användarna av systemet ser dem.
 Kunden kan välja hur de ska meddelas på aviseringen om det är av e-post, SMS, webhook eller till och med för att automatisera en lösning. Ett annat alternativ att meddelas är att använda ITSM.
 ITSM ger dig möjlighet att skicka aviseringar till externt biljett system, till exempel ServiceNow.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
-ms.openlocfilehash: 01a1ded570d20d175b5e8eadb3e6cc8556155a85
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554967"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896170"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Registrera och skanna Azure-Datautforskaren
 
@@ -22,7 +22,7 @@ Den här artikeln beskriver hur du registrerar ett Azure Datautforskaren-konto i
 
 Azure Datautforskaren stöder fullständiga och stegvisa genomsökningar för att avbilda metadata och scheman. Genomsökningar klassificerar även data automatiskt baserat på system-och anpassade klassificerings regler.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure avdelningens kontroll-konto innan du registrerar data källor. Mer information om hur du skapar ett avdelningens kontroll-konto finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 - Du måste vara en Azure avdelningens kontroll data source-administratör
@@ -89,7 +89,7 @@ Gör följande på skärmen **Registrera källor (Azure datautforskaren (Kusto))
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="alternativ för registrering av källor" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+[!INCLUDE [create and manage scans](includes/manage-scans-azure-data-explorer.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

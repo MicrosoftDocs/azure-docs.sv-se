@@ -1,25 +1,11 @@
 ---
-title: Media Services konto ARM-mall
-titleSuffix: Azure Media Services
-description: Den här artikeln visar hur du använder en ARM-mall för att skapa ett Media Services-konto.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879654"
+title: Media Services-konto ARM-mall: Azure Media Services Beskrivning: den här artikeln visar hur du använder en ARM-mall för att skapa ett Media Services-konto.
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
+
+MS. service: Media-Services MS. arbets belastning: MS. topic: snabb start MS. Date: 11/24/2020 MS. author: inhenkel MS. Custom: subject-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>Snabb start: Media Services konto ARM-mall
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

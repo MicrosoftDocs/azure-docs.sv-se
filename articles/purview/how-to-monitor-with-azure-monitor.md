@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 2c21f84b9a10db504afb8ead67ae479518a0afba
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603519"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879956"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure avdelningens kontroll-mått i Azure Monitor
 
@@ -64,10 +64,10 @@ Följande tabell innehåller en lista över mått som är tillgängliga för att
 
 | Måttnamn | Namnrymd för mått | Sammansättningstyp | Description |
 | ------------------- | ------------------- | ------------------- | ----------------- |
-| Skanningen avbröts | Automatiserad sökning | Summa <br> Antal | Sammanställ inläsningar av avbrutna data källor över tids period |
-| Sökningen är klar | Automatiserad sökning | Summa <br> Antal | Sammanställ slutförda data käll genomsökningar över en tids period |
-| Sökningen misslyckades | Automatiserad sökning | Summa <br> Antal | Sammanställ inläsningar av misslyckade data källor över tids period |
-| Tids åtgång för genomsökning | Automatiserad sökning | Min <br> Max <br> Summa <br> Genomsn. | Sammanställa den totala tiden det tar för genomsökningar över tids perioden |
+| Skanningen avbröts | Automatiserad sökning | Sum <br> Antal | Sammanställ inläsningar av avbrutna data källor över tids period |
+| Sökningen är klar | Automatiserad sökning | Sum <br> Antal | Sammanställ slutförda data käll genomsökningar över en tids period |
+| Sökningen misslyckades | Automatiserad sökning | Sum <br> Antal | Sammanställ inläsningar av misslyckade data källor över tids period |
+| Tids åtgång för genomsökning | Automatiserad sökning | Min <br> Max <br> Sum <br> Genomsnitt | Sammanställa den totala tiden det tar för genomsökningar över tids perioden |
 
 ## <a name="diagnostic-logs-to-azure-storage-account"></a>Diagnostikloggar till Azure Storage konto
 
@@ -79,11 +79,11 @@ Följ stegen för att skapa en diagnostisk inställning för ditt Azure avdelnin
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="Skärm bild som visar hur du skapar en diagnostisk logg." lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
-2. Logga händelserna till ett lagrings konto. Ett dedikerat lagrings konto rekommenderas för arkivering av diagnostikloggar. Följ den här artikeln för att [skapa ett lagrings konto](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+2. Logga händelserna till ett lagrings konto. Ett dedikerat lagrings konto rekommenderas för arkivering av diagnostikloggar. Följ den här artikeln för att [skapa ett lagrings konto](../storage/common/storage-account-create.md?tabs=azure-portal).
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="Skärm bild som visar tilldelning av lagrings konto för diagnostikloggar." lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-Låt upp till 15 minuter innan du börjar ta emot loggar i det nyligen skapade lagrings kontot. [Se data kvarhållning och schema för resurs loggar i Azure Storage konto](../azure-monitor/platform/resource-logs-collect-storage.md). När diagnostikloggar har kon figurer ATS, kommer händelserna att flöda till lagrings kontot.
+Låt upp till 15 minuter innan du börjar ta emot loggar i det nyligen skapade lagrings kontot. [Se data kvarhållning och schema för resurs loggar i Azure Storage konto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). När diagnostikloggar har kon figurer ATS, kommer händelserna att flöda till lagrings kontot.
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 22609465abfa0cbf30165bc9327d786b3244357e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 956e7c18deb597f6347dfd5dfdca99709a7052a0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844786"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880985"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Självstudie: Skapa en anpassad avbildning av en virtuell Azure-dator med Azure CLI
 
@@ -35,7 +35,7 @@ Om du väljer att installera och använda CLI lokalt kräver den här självstud
 
 ## <a name="overview"></a>Översikt
 
-Ett [delat bild galleri](shared-image-galleries.md) fören klar en anpassad bild delning i hela organisationen. Anpassade avbildningar liknar Marketplace-avbildningar, men du skapar dem själv. Anpassade avbildningar kan användas för startkonfigurationer, till exempel förinläsning av program, programkonfigurationer och andra OS-konfigurationer. 
+Ett [delat bild galleri](../shared-image-galleries.md) fören klar en anpassad bild delning i hela organisationen. Anpassade avbildningar liknar Marketplace-avbildningar, men du skapar dem själv. Anpassade avbildningar kan användas för startkonfigurationer, till exempel förinläsning av program, programkonfigurationer och andra OS-konfigurationer. 
 
 Med galleriet för delade avbildningar kan du dela dina anpassade VM-avbildningar med andra. Välj vilka bilder du vill dela, vilka regioner du vill göra tillgängliga i och vilka du vill dela dem med. 
 
@@ -90,11 +90,11 @@ Bild definitioner skapa en logisk gruppering för avbildningar. De används för
 
 Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. 
 
-Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./shared-image-galleries.md#image-definitions).
+Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](../shared-image-galleries.md#image-definitions).
 
 Skapa en bild definition i galleriet med hjälp av [AZ sig-bild-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create). 
 
-I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för en [SPECIALISERAd](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS-avbildning. 
+I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för en [SPECIALISERAd](../shared-image-galleries.md#generalized-and-specialized-images) Linux OS-avbildning. 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -180,7 +180,7 @@ Mer information om hur du delar resurser med hjälp av Azure RBAC finns i [lägg
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure erbjuder också en tjänst som bygger på Packer, [Azure VM Image Builder](./image-builder-overview.md). Du behöver bara beskriva dina anpassningar i en mall så att du kan hantera avbildnings skapandet. 
+Azure erbjuder också en tjänst som bygger på Packer, [Azure VM Image Builder](../image-builder-overview.md). Du behöver bara beskriva dina anpassningar i en mall så att du kan hantera avbildnings skapandet. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: ffc056a97d3c0fd14bab186614015a9352a34077
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 74e09e61a6132858d716686bdb6687bb670f0d33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015155"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879518"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Självstudie: köra Azure Functions från Azure Stream Analytics-jobb 
 
@@ -53,7 +53,7 @@ Följ anvisningarna i självstudien [Upptäck bedrägerier i realtid](stream-ana
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Skapa en funktion i Azure Functions som kan skriva data till Azure Cache for Redis
 
-1. Läs avsnittet [Skapa en funktionsapp](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) i dokumentationen till Functions. Det här avsnittet beskriver hur du skapar en Function-app och en [http-utlöst funktion i Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function)med hjälp av csharp-språket.  
+1. Läs avsnittet [Skapa en funktionsapp](../azure-functions/functions-get-started.md) i dokumentationen till Functions. Det här avsnittet beskriver hur du skapar en Function-app och en [http-utlöst funktion i Azure Functions](../azure-functions/functions-get-started.md)med hjälp av csharp-språket.  
 
 2. Gå till funktionen **run.csx**. Uppdatera den med nedanstående kod. Ersätt **" \<your Azure Cache for Redis connection string goes here\> "** med Azure cache för Redis primär anslutnings sträng som du hämtade i föregående avsnitt. 
 
@@ -145,7 +145,7 @@ Följ anvisningarna i självstudien [Upptäck bedrägerier i realtid](stream-ana
 
 2. Bläddra till din funktion och välj **Översikt**  >  **utdata**  >  **Lägg till**. Om du vill lägga till en ny utdatakanal väljer du **Azure-funktion** för kanalmottagaralternativet. Utdataadaptern för Functions har följande egenskaper:  
 
-   |**Egenskapsnamn**|**Beskrivning**|
+   |**Egenskaps namn**|**Beskrivning**|
    |---|---|
    |Utdataalias| Ett användarvänligt namn som du använder i jobbets fråga för att referera till utdata. |
    |Importalternativ| Du kan använda funktionen från den aktuella prenumerationen eller ange inställningarna manuellt om funktionen finns i en annan prenumeration. |

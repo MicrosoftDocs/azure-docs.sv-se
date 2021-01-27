@@ -3,14 +3,14 @@ title: Översikt över säkerhets kopierings Center
 description: Den här artikeln innehåller en översikt över backup Center för Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: b42fcc782eb50c061ab7617ea0ef1f3344fee4e9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893617"
 ---
-# <a name="overview-of-backup-center"></a>Översikt över säkerhets kopierings Center
+# <a name="overview-of-backup-center-preview"></a>Översikt över säkerhets kopierings Center (för hands version)
 
 Backup Center ger en **enhetlig hanterings upplevelse** i Azure för företag för att styra, övervaka, hantera och analysera säkerhets kopior i stor skala. Därför är det konsekvent med Azures inbyggda hanterings upplevelser.
 
@@ -22,7 +22,7 @@ Några av de viktigaste fördelarna med säkerhets kopierings Center är:
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-* Backup Center stöds för närvarande för säkerhets kopiering av virtuella Azure-datorer och Azure Database for PostgreSQL Server säkerhets kopiering.
+* Backup Center stöds för närvarande för säkerhets kopiering av virtuella Azure-datorer, SQL i Azure VM backup, SAP HANA i Azure VM backup, Azure Files säkerhets kopiering och Azure Database for PostgreSQL säkerhets kopiering av Server.
 * Se [support mat ris](backup-center-support-matrix.md) för en detaljerad lista över scenarier som stöds och som inte stöds.
 
 ## <a name="get-started"></a>Kom igång

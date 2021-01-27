@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95526127"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880716"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Prestandanivåer för blockbloblagring
 
@@ -65,7 +65,7 @@ Standard prestanda stöder olika [åtkomst nivåer](storage-blob-storage-tiers.m
 
 Du kan inte konvertera ett befintligt lagrings konto för standard prestanda till ett Block-Blob Storage-konto med förstklassig prestanda. Om du vill migrera till ett lagrings konto för Premium-prestanda måste du skapa ett BlockBlobStorage-konto och migrera data till det nya kontot. Mer information finns i [skapa ett BlockBlobStorage-konto](storage-blob-create-account-block-blob.md).
 
-Om du vill kopiera blobbar mellan lagrings konton kan du använda den senaste versionen av kommando rads verktyget [AzCopy](../common/storage-use-azcopy-blobs.md) . Andra verktyg, till exempel Azure Data Factory, är också tillgängliga för data förflyttning och omvandling.
+Om du vill kopiera blobbar mellan lagrings konton kan du använda den senaste versionen av kommando rads verktyget [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) . Andra verktyg, till exempel Azure Data Factory, är också tillgängliga för data förflyttning och omvandling.
 
 ## <a name="blob-lifecycle-management"></a>Hantering av BLOB-livscykel
 

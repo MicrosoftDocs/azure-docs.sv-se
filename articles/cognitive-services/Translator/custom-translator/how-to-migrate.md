@@ -2,19 +2,19 @@
 title: Vill du migrera Microsoft Translator Hub-arbetsytan och-projekt? – Anpassad översättare
 titleSuffix: Azure Cognitive Services
 description: Den här artikeln förklarar hur du migrerar din hubb och dina projekt till Azure Cognitive Services anpassad översättare.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368295"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895719"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrera Hub-arbetsytan och projekt till anpassad översättare
 

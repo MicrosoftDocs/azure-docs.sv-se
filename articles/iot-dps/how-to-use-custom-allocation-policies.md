@@ -3,17 +3,17 @@ title: Principer för anpassad allokering med Azure IoT Hub Device Provisioning 
 description: Så här använder du principer för anpassad allokering med Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2019
+ms.date: 01/26/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4931258af0dd50d091bec98824df5da0e91dbf53
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571648"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895766"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Så här använder du anpassade allokeringsprinciper
 
@@ -40,7 +40,7 @@ Du utför följande steg i den här artikeln:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande förutsättningar gäller för en Windows-utvecklings miljö. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
 
@@ -66,7 +66,7 @@ I det här avsnittet använder du Azure Cloud Shell för att skapa en etablering
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Använd Azure Cloud Shell för att skapa en enhets etablerings tjänst med kommandot [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . Etablerings tjänsten kommer att läggas till i *contoso-US-Resource-Group*.
+2. Använd Azure Cloud Shell för att skapa en enhets etablerings tjänst (DPS) med kommandot [AZ IoT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . Etablerings tjänsten kommer att läggas till i *contoso-US-Resource-Group*.
 
     I följande exempel skapas en etablerings tjänst med namnet *contoso-Provisioning-service-1098* på platsen för *västkusten* . Du måste använda ett unikt tjänst namn. Skapa ditt eget suffix i tjänst namnet i stället för **1098**.
 
@@ -96,6 +96,25 @@ I det här avsnittet använder du Azure Cloud Shell för att skapa en etablering
 
     Det kan ta några minuter att slutföra kommandot.
 
+5. IoT-hubbarna måste vara länkade till DPS-resursen. 
+
+    Kör följande två kommandon för att hämta anslutnings strängarna för de nav du nyss skapade:
+
+    ```azurecli-interactive 
+    hubToastersConnectionString=$(az iot hub connection-string show --hub-name contoso-toasters-hub-1098 --key primary --query connectionString -o tsv)
+    hubHeatpumpsConnectionString=$(az iot hub connection-string show --hub-name contoso-heatpumps-hub-1098 --key primary --query connectionString -o tsv)
+    ```
+
+    Kör följande kommandon för att länka hubbarna till DPS-resursen:
+
+    ```azurecli-interactive 
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubToastersConnectionString --location westus
+    az iot dps linked-hub create --dps-name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --connection-string $hubHeatpumpsConnectionString --location westus
+    ```
+
+
+
+
 ## <a name="create-the-custom-allocation-function"></a>Skapa en anpassad tilldelnings funktion
 
 I det här avsnittet skapar du en Azure-funktion som implementerar din anpassade resursallokeringsprincip. Den här funktionen bestämmer vilken avdelnings IoT-hubb en enhet ska registreras på baserat på om dess registrerings-ID innehåller strängen **-contoso-tstrsd-007** eller **-contoso-hpsd-088**. Den anger också den ursprungliga statusen för enheten, baserat på om enheten är en toaster eller en värme pump.
@@ -114,6 +133,8 @@ I det här avsnittet skapar du en Azure-funktion som implementerar din anpassade
 
     **Körnings stack**: Välj **.net Core** i list rutan.
 
+    **Version**: Välj **3,1** i list rutan.
+
     **Region**: Välj samma region som din resurs grupp. I det här exemplet används **västra USA**.
 
     > [!NOTE]
@@ -123,19 +144,15 @@ I det här avsnittet skapar du en Azure-funktion som implementerar din anpassade
 
 4. På sidan **Sammanfattning** väljer du **skapa** för att skapa Function-appen. Distributionen kan ta flera minuter. När den är klar väljer **du gå till resurs**.
 
-5. I det vänstra fönstret på **översikts** sidan funktionens app väljer du **+** bredvid **funktioner** för att lägga till en ny funktion.
+5. I det vänstra fönstret på **översikts** sidan funktionens app klickar du på **funktioner** och sedan **+ Lägg** till för att lägga till en ny funktion.
 
-    ![Lägg till en funktion i Funktionsapp](./media/how-to-use-custom-allocation-policies/create-function.png)
+6. På sidan **Lägg till funktion** klickar du på **http-utlösare** och sedan på knappen **Lägg till** .
 
-6. På sidan **Azure Functions för .net-komma igång** går du till steget **Välj en distributions miljö** , väljer panelen **i portalen** och väljer **Fortsätt**.
+7. Klicka på **kod + test** på nästa sida. På så sätt kan du redigera koden för funktionen med namnet **HttpTrigger1**. Kod filen **Run. CSX** ska vara öppen för redigering.
 
-    ![Välj portal utvecklings miljö](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
+8. Referens krävs NuGet-paket. För att skapa den första enheten, använder funktionen för anpassad allokering klasser som är definierade i två NuGet-paket som måste läsas in i värd miljön. Med Azure Functions refereras NuGet-paket med hjälp av en *Function. proj* -fil. I det här steget sparar och överför du en *Function. proj* -fil för de nödvändiga sammansättningarna.  Mer information finns i [använda NuGet-paket med Azure Functions](../azure-functions/functions-reference-csharp.md#using-nuget-packages).
 
-7. På nästa sida, för steget **skapa en funktion** , väljer du panel för **webhook + API** och väljer sedan **skapa**. En funktion med namnet **HttpTrigger1** skapas och portalen visar innehållet i filen **Run. CSX** .
-
-8. Referens krävs NuGet-paket. För att skapa den första enheten, använder funktionen för anpassad allokering klasser som är definierade i två NuGet-paket som måste läsas in i värd miljön. Med Azure Functions refereras NuGet-paket med hjälp av en *Function. Host* -fil. I det här steget sparar och överför du en *funktion. Host* -fil.
-
-    1. Kopiera följande rader till din favorit redigerare och spara filen på datorn som *funktion. Host*.
+    1. Kopiera följande rader till din favorit redigerare och spara filen på datorn som *Function. proj*.
 
         ```xml
         <Project Sdk="Microsoft.NET.Sdk">  
@@ -143,21 +160,15 @@ I det här avsnittet skapar du en Azure-funktion som implementerar din anpassade
                 <TargetFramework>netstandard2.0</TargetFramework>  
             </PropertyGroup>  
             <ItemGroup>  
-                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
-                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.27.0" />
             </ItemGroup>  
         </Project>
         ```
 
-    2. I **HttpTrigger1** -funktionen expanderar du fliken **Visa filer** till höger i fönstret.
+    2. Klicka på knappen **överför** som finns ovanför kod redigeraren för att ladda upp din *Function. proj* -fil. När du har laddat upp väljer du filen i kod redigeraren med hjälp av list rutan för att kontrol lera innehållet.
 
-        ![Öppna Visa filer](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
-
-    3. Välj **överför**, bläddra till filen **Function. proj** och välj **Öppna** för att ladda upp filen.
-
-        ![Välj Ladda upp fil](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
-
-9. Ersätt koden för **HttpTrigger1** -funktionen med följande kod och välj **Spara**:
+9. Se till att *Kör. CSX* för **HttpTrigger1** är markerat i kod redigeraren. Ersätt koden för **HttpTrigger1** -funktionen med följande kod och välj **Spara**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -314,29 +325,15 @@ I det här avsnittet ska du skapa en ny registrerings grupp som använder den an
 
     **Välj hur du vill tilldela enheter till hubbar**: Välj **Anpassad (Använd Azure Function)**.
 
+    **Prenumeration**: Välj den prenumeration där du skapade din Azure-funktion.
+
+    **Funktionsapp**: Välj din Function-app efter namn. **contoso-Function-app-1098** användes i det här exemplet.
+
+    **Funktion**: Välj funktionen **HttpTrigger1** .
+
     ![Lägg till anpassad grupp registrerings grupp för symmetrisk nyckel attestering](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. I **Lägg till registrerings grupp** väljer du **Länka en ny IoT-hubb** för att länka båda dina nya avdelnings IoT-hubbar.
-
-    Kör det här steget för båda dina avdelnings IoT-hubbar.
-
-    **Prenumeration**: om du har flera prenumerationer väljer du den prenumeration där du skapade avdelningens IoT-hubbar.
-
-    **IoT Hub**: Välj ett av de divisions nav som du har skapat.
-
-    **Åtkomst princip**: Välj **iothubowner**.
-
-    ![Länka avdelningens IoT-hubbar med etablerings tjänsten](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
-
-5. När båda avdelnings IoT-hubbarna har länkats i **Lägg till registrerings grupp** måste du välja dem som IoT Hub grupp för registrerings gruppen enligt nedan:
-
-    ![Skapa delnings nav gruppen för registreringen](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
-
-6. I **Lägg till registrerings grupp** bläddrar du ned till avsnittet **Välj Azure-funktion** , väljer den Function-app som du skapade i föregående avsnitt. Välj sedan den funktion som du skapade och välj Spara för att spara registrerings gruppen.
-
-    ![Välj funktionen och spara registrerings gruppen](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
-
-7. När du har sparat registreringen kan du öppna den igen och anteckna den **primära nyckeln**. Du måste spara registreringen innan du genererar nycklarna. Den här nyckeln kommer att användas för att generera unika enhets nycklar för simulerade enheter senare.
+4. När du har sparat registreringen kan du öppna den igen och anteckna den **primära nyckeln**. Du måste spara registreringen innan du genererar nycklarna. Den här nyckeln kommer att användas för att generera unika enhets nycklar för simulerade enheter senare.
 
 ## <a name="derive-unique-device-keys"></a>Härled unika enhets nycklar
 
@@ -386,7 +383,7 @@ Om du använder en Windows-baserad arbets Station kan du använda PowerShell fö
     $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
     $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $hmacsha256.key = [Convert]::FromBase64String($KEY)
     $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
     $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
     $derivedkey1 = [Convert]::ToBase64String($sig1)

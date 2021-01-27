@@ -5,20 +5,20 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c5166785ad8c82c114fb7193cd49716536b408
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187276"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896604"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Starta en runbook i Azure Automation
 
 I följande tabell får du hjälp att avgöra hur du ska starta en Runbook i Azure Automation som passar bäst för ditt specifika scenario. Den här artikeln innehåller information om hur du startar en Runbook med Azure Portal och med Windows PowerShell. Information om andra metoder finns i annan dokumentation som du kan komma åt från länkarna nedan.
 
-| **Metod** | **Kännetecken ** |
+| **Metod** | **Kännetecken** |
 | --- | --- |
-| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Enklaste metoden med Interactive User Interface.<br> <li>Form för att tillhandahålla enkla parameter värden.<br> <li>Spåra jobbets status enkelt.<br> <li>Åtkomst autentiserad med Azure-inloggning. |
+| [Azure-portalen](#start-a-runbook-with-the-azure-portal) |<li>Enklaste metoden med Interactive User Interface.<br> <li>Form för att tillhandahålla enkla parameter värden.<br> <li>Spåra jobbets status enkelt.<br> <li>Åtkomst autentiserad med Azure-inloggning. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Anropa från kommando raden med Windows PowerShell-cmdletar.<br> <li>Kan inkluderas i automatiserad funktion med flera steg.<br> <li>Begäran autentiseras med certifikat eller användar huvud/tjänstens huvud namn för OAuth-användare.<br> <li>Ange enkla och komplexa parameter värden.<br> <li>Spåra jobb status.<br> <li>Klienten krävde för att stödja PowerShell-cmdletar. |
 | [Azure Automation-API](/rest/api/automation/) |<li>Den mest flexibla metoden, men även mest komplex.<br> <li>Anropa från en anpassad kod som kan göra HTTP-förfrågningar.<br> <li>Begäran autentiserad med certifikat eller användar huvud för OAuth/tjänstens huvud namn.<br> <li>Ange enkla och komplexa parameter värden. *Om du anropar en python-Runbook med API: t måste JSON-nyttolasten serialiseras.*<br> <li>Spåra jobb status. |
 | [Webhooks](automation-webhooks.md) |<li>Starta Runbook från en enskild HTTP-begäran.<br> <li>Autentiserad med säkerhetstoken i URL.<br> <li>Klienten kan inte åsidosätta parameter värden som anges när webhooken skapades. En Runbook kan definiera en enda parameter som är ifylld med HTTP-begärans information.<br> <li>Det går inte att spåra jobb status via webhook-URL. |
@@ -145,13 +145,13 @@ jsmith
 
 ## <a name="start-a-runbook-with-powershell"></a>Starta en Runbook med PowerShell
 
-Du kan använda [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) för att starta en Runbook med Windows PowerShell. Följande exempel kod startar en Runbook med namnet **test-Runbook**.
+Du kan använda [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) för att starta en Runbook med Windows PowerShell. Följande exempel kod startar en Runbook med namnet **test-Runbook**.
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook` Returnerar ett jobb objekt som du kan använda för att spåra status när runbooken har startats. Du kan sedan använda detta jobb objekt med [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) för att bestämma status för jobbet och [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) för att hämta dess utdata. I följande exempel startas en Runbook med namnet **test-Runbook**, väntar tills den har slutförts och visar sedan dess utdata.
+`Start-AzAutomationRunbook` Returnerar ett jobb objekt som du kan använda för att spåra status när runbooken har startats. Du kan sedan använda detta jobb objekt med [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) för att bestämma status för jobbet och [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) för att hämta dess utdata. I följande exempel startas en Runbook med namnet **test-Runbook**, väntar tills den har slutförts och visar sedan dess utdata.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"

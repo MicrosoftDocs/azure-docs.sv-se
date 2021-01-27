@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621356"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880278"
 ---
 # <a name="publish-an-integrated-solution"></a>Publicera en integrerad lösning
 
@@ -32,16 +32,16 @@ En översikt över integrerade lösnings program finns i [översikts videon för
 ## <a name="eligibility-criteria"></a>Behörighetskrav
 
 * Deltagande partners måste ha ett MPN-ID.
-* Deltagande tjänste leverantörer ska vara [samförsäljnings klara](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
-* Deltagande program leverantörer bör vara [färdiga IP-adresser](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+* Deltagande tjänste leverantörer ska vara [samförsäljnings klara](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
+* Deltagande program leverantörer bör vara [färdiga IP-adresser](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 * Minst en deltagande partner måste ha guld kompetens i något av följande områden:
     - Apputveckling
     - Programintegrering
     - Hantering av programlivscykel
-    - Moln plattform
+    - Molnplattform
     - Dataanalys
     - Datacenter
-    - Data plattform
+    - Dataplattform
     - DevOps
 
 * Lösningen måste innehålla minst två partner organisationer, som sammanför IP och tjänster för en komplett kund lösning och erfarenhet.
@@ -55,7 +55,7 @@ Partner som vill delta i programmet ska identifiera andra partner som de vill ar
 
 ## <a name="develop-an-integrated-solution"></a>Utveckla en integrerad lösning
 
-När din utnämning har godkänts använder du de länkade program resurserna för att utveckla din integrerade lösning. Gör så här:
+När din utnämning har godkänts använder du de länkade program resurserna för att utveckla din integrerade lösning. Följ de här stegen:
 
 1. Slutför viktiga affärs-och teknik diskussioner i ett workshop-format för att definiera lösningen och integrerings metoden.
 
@@ -73,7 +73,7 @@ När din utnämning har godkänts använder du de länkade program resurserna f�
 
     Din diskussion om integrerings metoden bör omfatta följande punkter:
     * Integrations platser
-    * Lösningsarkitekturen
+    * Lösningsarkitektur
     * Autentisering
     * Användargränssnitt
     * Övervakning

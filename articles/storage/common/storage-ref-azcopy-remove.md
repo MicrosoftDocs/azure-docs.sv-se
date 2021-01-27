@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078228"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879011"
 ---
 # <a name="azcopy-remove"></a>azcopy ta bort
 
@@ -28,7 +28,7 @@ azcopy remove [resourceURL] [flags]
 ## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
 
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
-- [Överföra data med AzCopy och Blob Storage](storage-use-azcopy-blobs.md)
+- [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
 - [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
@@ -99,7 +99,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--include-Path-** sträng innehåller bara dessa sökvägar när de tas bort. Det här alternativet stöder inte jokertecken (*). Kontrollerar prefix för relativ sökväg. Exempelvis: `myFolder;myFolder/subDirName/file.pdf`
 
-**--Inkludera-mönster** sträng inkludera bara filer där namnet matchar mönster listan. Exempel: * `.jpg` ;* `.pdf` ;`exactName`
+**--Inkludera-mönster** sträng inkludera bara filer där namnet matchar mönster listan. Exempel: *`.jpg` ;* `.pdf` ;`exactName`
 
 **--** en sträng som anger en fil som innehåller en lista över filer och kataloger som ska tas bort. De relativa Sök vägarna ska avgränsas med rad brytningar och Sök vägarna får inte vara URL-kodade. 
 
@@ -119,4 +119,4 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="see-also"></a>Se även
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 7e59c8ecc0d7af341ddc1ea79aa42460e00fa444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419783"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880109"
 ---
 # <a name="vpn-gateway-faq"></a>Vanliga frågor och svar om VPN Gateway
 
@@ -38,7 +38,7 @@ Nej.
 
 Följande anslutningar mellan flera platser stöds:
 
-* Plats-till-plats – VPN-anslutning via IPsec (IKE v1 och IKE v2). Den här typen av anslutning kräver en VPN-enhet eller RRAS. Mer information finns i [Plats-till-plats](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+* Plats-till-plats – VPN-anslutning via IPsec (IKE v1 och IKE v2). Den här typen av anslutning kräver en VPN-enhet eller RRAS. Mer information finns i [Plats-till-plats](./tutorial-site-to-site-portal.md).
 * Punkt-till-plats – VPN-anslutning över SSTP (Secure Socket Tunneling Protocol) eller IKE v2. Den här anslutningen kräver inte någon VPN-enhet. Mer information finns i [Punkt-till-plats](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * VNet-till-VNet – Den här typen av anslutning är samma som en plats-till-plats-konfiguration. VNet-till-VNet är en VPN-anslutning via IPsec (IKE v1 och IKE v2). Den kräver inte någon VPN-enhet. Mer information finns i [VNet-till-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 * Flera platser – Det här är en variant av en plats-till-plats-konfiguration som gör att du kan ansluta flera lokala platser till ett virtuellt nätverk. Mer information finns i [Flera platser](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md).
@@ -70,13 +70,13 @@ Routningsbaserade gateways implementerar routningsbaserade VPN:er. Routningsbase
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan jag uppdatera min principbaserade VPN-gateway till routing-based?
 
-Nej.En Azure Vnet-gatewaytyp kan inte ändras från principbaserad till routningsbaserad eller tvärtom. Gatewayen måste tas bort och återskapas, en process som tar cirka 60 minuter. IP-adressen till gatewayen bevaras inte och inte heller den i förväg delade nyckeln (PSK).
+Nej. En Azure Vnet-gatewaytyp kan inte ändras från principbaserad till routningsbaserad eller tvärtom. Gatewayen måste tas bort och återskapas, en process som tar cirka 60 minuter. IP-adressen till gatewayen bevaras inte och inte heller den i förväg delade nyckeln (PSK).
 1. Ta bort alla anslutningar som är associerade med gatewayen som ska tas bort.
 1. Ta bort gatewayen:
    - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell-klassisk](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Skapa en ny Gateway av den typ som du vill ha och slutför VPN-installationen](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
+1. [Skapa en ny Gateway av den typ som du vill ha och slutför VPN-installationen](./tutorial-site-to-site-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Behöver jag ett gatewayundernät?
 

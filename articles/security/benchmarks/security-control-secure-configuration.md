@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409033"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880177"
 ---
 # <a name="security-control-secure-configuration"></a>Säkerhets kontroll: säker konfiguration
 
@@ -88,9 +88,9 @@ Observera också att avbildningar av virtuella Azure Marketplace-datorer som pub
 
 - [Skapa en virtuell Windows-dator i Azure Portal](../../virtual-machines/windows/quick-create-portal.md)
 
-- [Information om hur du hämtar mallen för virtuella datorer](../../virtual-machines/windows/download-template.md)
+- [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Spara konfigurationen av Azure-resurser på ett säkert sätt
 
@@ -118,7 +118,7 @@ Om du använder anpassade avbildningar använder du rollbaserad åtkomst kontrol
 
 - [Så här konfigurerar du Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Översikt över delade avbildnings Galleri](../../virtual-machines/windows/shared-image-galleries.md)
+- [Översikt över delade avbildnings Galleri](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: Distribuera konfigurations hanterings verktyg för Azure-resurser
 
@@ -128,7 +128,7 @@ Om du använder anpassade avbildningar använder du rollbaserad åtkomst kontrol
 
 Definiera och implementera standardinställda säkerhetskonfigurationer för Azure-resurser med hjälp av Azure Policy. Använd Azure Policy alias för att skapa anpassade principer för att granska eller tillämpa nätverks konfigurationen för dina Azure-resurser. Du kan också använda inbyggda princip definitioner som är relaterade till dina speciella resurser.  Dessutom kan du använda Azure Automation för att distribuera konfigurations ändringar.
 
-- [Så här konfigurerar och hanterar du Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
+- [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Använda alias](../../governance/policy/concepts/definition-structure.md#aliases)
 
@@ -194,7 +194,7 @@ Använd hanterade identiteter för att tillhandahålla Azure-tjänster med en au
 |--|--|--|
 | 7,13 | 18,1, 18,7 | Kund |
 
-Implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Den här skannern uppmuntrar också att flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault. 
+Implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault. 
 
 - [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 

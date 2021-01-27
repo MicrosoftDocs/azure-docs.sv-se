@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073537"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894770"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starta ett Runbook-flöde från en webhook
 
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klienten får en av följande retur koder från `POST` begäran.
 
-| Kod | Text | Beskrivning |
+| Kod | Text | Description |
 |:--- |:--- |:--- |
 | 202 |Har godkänts |Begäran accepterades och Runbook har placerats i kö. |
 | 400 |Felaktig begäran |Begäran godtogs inte av någon av följande orsaker: <ul> <li>Webhooken har upphört att gälla.</li> <li>Webhooken är inaktive rad.</li> <li>Token i URL: en är ogiltig.</li>  </ul> |
@@ -148,10 +148,10 @@ Du kan utöka en webhook som inte har nått sin förfallo tid. Så här utökar 
 
 ## <a name="sample-runbook"></a>Exempel-Runbook
 
-Följande exempel-Runbook accepterar webhook-data och startar de virtuella datorer som anges i begär ande texten. Om du vill testa denna Runbook klickar du på **skapa en Runbook**i Automation-kontot under **Runbooks**. Om du inte vet hur du skapar en Runbook, se [skapa en Runbook](automation-quickstart-create-runbook.md).
+Följande exempel-Runbook accepterar webhook-data och startar de virtuella datorer som anges i begär ande texten. Om du vill testa denna Runbook klickar du på **skapa en Runbook** i Automation-kontot under **Runbooks**. Om du inte vet hur du skapar en Runbook, se [skapa en Runbook](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> För icke-grafiska PowerShell-Runbooks `Add-AzAccount` och `Add-AzureRMAccount` är alias för [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Du kan använda dessa cmdletar, eller så kan du [Uppdatera dina moduler](automation-update-azure-modules.md) i ditt Automation-konto till de senaste versionerna. Du kan behöva uppdatera dina moduler även om du precis har skapat ett nytt Automation-konto.
+> För icke-grafiska PowerShell-Runbooks `Add-AzAccount` och `Add-AzureRMAccount` är alias för [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Du kan använda dessa cmdletar, eller så kan du [Uppdatera dina moduler](automation-update-azure-modules.md) i ditt Automation-konto till de senaste versionerna. Du kan behöva uppdatera dina moduler även om du precis har skapat ett nytt Automation-konto.
 
 ```powershell
 param

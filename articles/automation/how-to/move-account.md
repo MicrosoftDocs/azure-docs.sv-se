@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185559"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896654"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Flytta ditt Azure Automation-konto till en annan prenumeration
 
@@ -41,7 +41,7 @@ Om du vill ta bort länken till arbets ytan från ditt Automation-konto måste d
 
     ![Skärm bild som visar hur du tar bort funktions resurser från Azure Portal](../media/move-account/delete-solutions.png)
 
-Om du vill kan du ta bort resurserna med hjälp av cmdleten [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
+Om du vill kan du ta bort resurserna med hjälp av cmdleten [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource) :
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -80,7 +80,7 @@ För Starta/stoppa virtuella datorer när de inte används måste du också ta b
 
     ![Skärm bild av sidan åtgärds grupp](../media/move-account/delete-action-group.png)
 
-Om du vill kan du ta bort din åtgärds grupp med hjälp av cmdleten [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) :
+Om du vill kan du ta bort din åtgärds grupp med hjälp av cmdleten [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup) :
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -135,7 +135,7 @@ När du har återskapat kör som-kontona måste du återaktivera de funktioner s
 
     ![Skärm bild som visar hur du återaktiverar funktioner i det flyttade Automation-kontot](../media/move-account/reenable-solutions.png)
 
-3. Datorer som är aktiverade med dina funktioner visas när du har anslutit den befintliga Log Analytics-arbetsytan. Om du vill aktivera funktionen Starta/stoppa virtuella datorer när de inte används måste du aktivera den igen. Under **relaterade resurser**väljer du **Starta/stoppa virtuella datorer**  >  **Läs mer om och aktiverar lösningen**  >  **skapa** för att starta distributionen.
+3. Datorer som är aktiverade med dina funktioner visas när du har anslutit den befintliga Log Analytics-arbetsytan. Om du vill aktivera funktionen Starta/stoppa virtuella datorer när de inte används måste du aktivera den igen. Under **relaterade resurser** väljer du **Starta/stoppa virtuella datorer**  >  **Läs mer om och aktiverar lösningen**  >  **skapa** för att starta distributionen.
 
 4. På sidan Lägg till lösning väljer du Log Analytics arbets yta och Automation-konto.
 

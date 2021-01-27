@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa5c2a0070ea0c3a0963f97fc1a04670eeaa4827
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: efa951ce5a15460e3eacfd4c7abecfac17106b4e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701899"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880516"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Vad är Auto-Instrumentation eller kod fast kopplings Azure Monitor Application Insights?
 
@@ -23,17 +23,17 @@ Application Insights är integrerat med olika resurs leverantörer och fungerar 
 
 När vi lägger till fler och fler integreringar blir matrisen för automatiska instrument funktioner komplexa. I tabellen nedan visas det aktuella läget för frågan, i mån av stöd för olika resurs leverantörer, språk och miljöer.
 
-|Miljö/resurs-Provider          | .NET            | .NET Core       | Java            | Node.js         |
-|---------------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service i Windows           | GA, OnBD *       | GA, Anmäl dig      | Privat för hands version | Privat för hands version |
-|Azure App Service på Linux             | E.t.             | Stöds inte   | Privat för hands version | Offentlig för hands version  |
-|Azure App Service på AKS               | E.t.             | I design       | I design       | I design       |
-|Azure Functions-Basic                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
-|Azure Functions Windows-beroenden | Stöds inte   | Stöds inte   | Offentlig för hands version  | Stöds inte   |
-|Azure Kubernetes Service               | E.t.             | I design       | Via agent   | I design       |
-|Azure VM-fönster                      | Offentlig för hands version  | Stöds inte   | Stöds inte   | Stöds inte   |
-|Lokala virtuella dator fönster                | GA, Anmäl dig      | Stöds inte   | Via agent   | Stöds inte   |
-|Fristående agent – valfritt kuvert.            | Stöds inte   | Stöds inte   | Allmän tillgänglighet (GA)              | Stöds inte   |
+|Miljö/resurs-Provider          | .NET            | .NET Core       | Java            | Node.js         | Python          |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|Azure App Service i Windows           | GA, OnBD *       | GA, Anmäl dig      | Privat för hands version | Privat för hands version | Stöds inte   |
+|Azure App Service på Linux             | Ej tillämpligt             | Stöds inte   | Privat för hands version | Offentlig för hands version  | Stöds inte   |
+|Azure App Service på AKS               | Ej tillämpligt             | I design       | I design       | I design       | Stöds inte   |
+|Azure Functions-Basic                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
+|Azure Functions Windows-beroenden | Stöds inte   | Stöds inte   | Offentlig för hands version  | Stöds inte   | Stöds inte   |
+|Azure Kubernetes Service               | Ej tillämpligt             | I design       | Via agent   | I design       | Stöds inte   |
+|Azure VM-fönster                      | Offentlig för hands version  | Stöds inte   | Stöds inte   | Stöds inte   | Stöds inte   |
+|Lokala virtuella dator fönster                | GA, Anmäl dig      | Stöds inte   | Via agent   | Stöds inte   | Stöds inte   |
+|Fristående agent – valfritt kuvert.            | Stöds inte   | Stöds inte   | Allmän tillgänglighet (GA)              | Stöds inte   | Stöds inte   |
 
 * OnBD är kort för på som standard – Application Insights aktive ras automatiskt när du har distribuerat din app i miljöer som stöds. 
 

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060239"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878298"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Felsöka live video analys på IoT Edge
 
@@ -66,7 +66,7 @@ Du kan använda Azure Portal för att köra en diagnos av medie grafen med hjäl
     * 500 – ett fel uppstod i IoT Edge Runtime.
 
     > [!TIP]
-    > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** som en guide för fel sökning och diagnostik.
+    > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** som en guide för fel sökning och diagnostik.
 ### <a name="post-deployment-direct-method-error-code"></a>Efter distribution: direkt metod felkod
 1. Om du får en status `501 code` kontrollerar du att namnet på den direkta metoden är korrekt. Om metod namnet och nytto lasten för begäran är korrekta bör du få resultat tillsammans med lyckad kod = 200. 
 1. Om nytto lasten för begäran är felaktig får du en status `400 code` och en nytto last som visar felkoden och meddelandet som ska hjälpa till att diagnostisera problemet med ditt direkta metod anrop.
@@ -96,7 +96,7 @@ Live Video Analytics distribueras som en IoT Edge modul på IoT Edge enheten och
 * [IoT Edge modulen har distribuerats och försvinner sedan från enheten](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
     > [!TIP]
-    > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** som en guide för fel sökning och diagnostik.
+    > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** som en guide för fel sökning och diagnostik.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video analys fungerar med externa moduler
 
 Live video analys via medie graphs tilläggs processorer kan utöka medie grafen för att skicka och ta emot data från andra IoT Edge moduler genom att använda HTTP-eller gRPC-protokoll. Som ett [särskilt exempel](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)kan det här medie diagrammet skicka video bild rutor som bilder till en extern härlednings modul som Yolo v3 och ta emot JSON-baserade analys resultat med http-protokollet. I en sådan topologi är målet för händelserna främst IoT-hubben. I situationer där du inte ser uthärlednings händelser i hubben, kontrol lera följande:
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[Loggning och diagnostik i gRPC i .net](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) ger viss vägledning för att samla in vissa diagnostikloggar från en gRPC-Server. 
+[Loggning och diagnostik i gRPC i .net](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) ger viss vägledning för att samla in vissa diagnostikloggar från en gRPC-Server. 
 
 ### <a name="a-failed-grpc-connection"></a>En misslyckad gRPC-anslutning 
 
@@ -282,7 +282,7 @@ Om en graf är aktiv och strömmas från en kamera underhålls anslutningen av L
 
 Live Video Analytics övervakar eller tillhandahåller inte maskin varu resurs övervakning. Utvecklare måste använda övervaknings lösningarna för maskin varu tillverkare. Om du använder Kubernetes-behållare kan du dock övervaka enheten med hjälp av [Kubernetes-instrumentpanelen](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/). 
 
-gRPC i .NET Core-dokument delar också lite värdefull information om [prestanda metod tips](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) och [belastnings utjämning](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true).  
+gRPC i .NET Core-dokument delar också lite värdefull information om [prestanda metod tips](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1) och [belastnings utjämning](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing).  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>Felsöka en härlednings server när den inte får några ramar och du får ett "okänt" protokoll fel 
 
@@ -296,7 +296,7 @@ Det finns flera saker du kan göra för att få mer information om problemet.
    ```
 
    Om kommandot matar ut en kort sträng med jumbled text, lyckades Telnet kunna öppna en anslutning till din härlednings Server och öppna en binär gRPC-kanal. Om du inte ser det kommer Telnet att rapportera ett nätverks fel. 
-* Du kan aktivera ytterligare loggning i gRPC-biblioteket i din härlednings Server. Detta kan ge ytterligare information om själva gRPC-kanalen. Detta varierar beroende på språk, här är instruktioner för [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true). 
+* Du kan aktivera ytterligare loggning i gRPC-biblioteket i din härlednings Server. Detta kan ge ytterligare information om själva gRPC-kanalen. Detta varierar beroende på språk, här är instruktioner för [C#](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1). 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>Plocka fler bilder från bufferten för gRPC utan att skicka tillbaka resultatet för första bufferten
 

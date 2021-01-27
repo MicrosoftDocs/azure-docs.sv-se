@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011973"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880143"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Exempel: skapa en anpassad färdighet för formulär igenkänning
 
@@ -30,7 +30,7 @@ I det här Azure Kognitiv sökning färdigheter-exemplet får du lära dig hur d
 
 ## <a name="train-your-model"></a>Träna modellen
 
-Du måste träna en formulär igenkännings modell med dina ingångs formulär innan du använder den här kunskapen. Följ [snabb](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md) starten för att lära dig hur du tränar en modell. Du kan använda exempel formulären som tillhandahålls i snabb starten, eller så kan du använda dina egna data. När modellen har tränats kopierar du dess ID-värde till en säker plats.
+Du måste träna en formulär igenkännings modell med dina ingångs formulär innan du använder den här kunskapen. Följ [snabb](../cognitive-services/form-recognizer/quickstarts/client-library.md?pivots=programming-language-rest-api) starten för att lära dig hur du tränar en modell. Du kan använda exempel formulären som tillhandahålls i snabb starten, eller så kan du använda dina egna data. När modellen har tränats kopierar du dess ID-värde till en säker plats.
 
 ## <a name="set-up-the-custom-skill"></a>Konfigurera den anpassade kompetensen
 
