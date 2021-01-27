@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 33bd7c82568f836e498a05411d2b3cf1c6a950b9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201628"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878637"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Felsök fjärr skrivbords anslutningar till en virtuell Azure-dator
 Det kan finnas flera orsaker till att det uppstår problem med RDP-anslutningen till den Windows-baserade virtuella Azure-datorn så att du inte kan komma åt den virtuella datorn. Problemet kan röra fjärrskrivbordstjänsten på den virtuella datorn, nätverksanslutningen eller fjärrskrivbordsklienten på din värddator. Den här artikeln vägleder dig igenom några av de vanligaste sätten att lösa problem med RDP-anslutningen. 
@@ -46,7 +46,7 @@ Försök att ansluta till den virtuella datorn efter varje fel söknings steg:
 Fortsätt att läsa om du behöver mer detaljerade steg och förklaringar. Kontrol lera att lokal nätverks utrustning som routrar och brand väggar inte blockerar utgående TCP-port 3389, enligt beskrivningen i [detaljerade scenarier för RDP-felsökning](detailed-troubleshoot-rdp.md).
 
 > [!TIP]
-> Om knappen **Anslut** för den virtuella datorn är nedtonad i portalen och du inte är ansluten till Azure via en [Express väg](../../expressroute/expressroute-introduction.md) eller [VPN-anslutning från plats till plats](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) måste du skapa och tilldela en offentlig IP-adress för din virtuella dator innan du kan använda RDP. Du kan läsa mer om [offentliga IP-adresser i Azure](../../virtual-network/public-ip-addresses.md).
+> Om knappen **Anslut** för den virtuella datorn är nedtonad i portalen och du inte är ansluten till Azure via en [Express väg](../../expressroute/expressroute-introduction.md) eller [VPN-anslutning från plats till plats](../../vpn-gateway/tutorial-site-to-site-portal.md) måste du skapa och tilldela en offentlig IP-adress för din virtuella dator innan du kan använda RDP. Du kan läsa mer om [offentliga IP-adresser i Azure](../../virtual-network/public-ip-addresses.md).
 
 
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Sätt att felsöka RDP-problem

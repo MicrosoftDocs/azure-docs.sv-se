@@ -10,16 +10,16 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 478413132a09334c6b5fe6e4d7c4c31c988cd38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dedefcd18a2860bbcae9a0ac6b5b07550d9cbf3f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501056"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881948"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Skapa en virtuell dator med hjälp av en specialiserad avbildnings version med Azure CLI
 
-Skapa en virtuell dator från en [specialiserad avbildnings version](./linux/shared-image-galleries.md#generalized-and-specialized-images) som lagras i ett delat avbildnings Galleri. Om du vill skapa en virtuell dator med en generaliserad avbildnings version, se [skapa en virtuell dator från en generaliserad avbildnings version](vm-generalized-image-version-cli.md).
+Skapa en virtuell dator från en [specialiserad avbildnings version](./shared-image-galleries.md#generalized-and-specialized-images) som lagras i ett delat avbildnings Galleri. Om du vill skapa en virtuell dator med en generaliserad avbildnings version, se [skapa en virtuell dator från en generaliserad avbildnings version](vm-generalized-image-version-cli.md).
 
 Ersätt resurs namn efter behov i det här exemplet. 
 
@@ -51,7 +51,7 @@ az vm create --resource-group myResourceGroup \
 
 
 ## <a name="next-steps"></a>Nästa steg
-[Azure Image Builder (för hands version)](./linux/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
 
 Du kan också skapa en delad resurs för avbildnings galleriet med hjälp av mallar. Det finns flera tillgängliga Azure snabb starts mallar: 
 

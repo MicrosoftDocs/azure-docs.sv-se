@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115794"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880041"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal
 
@@ -25,7 +25,7 @@ I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* En egen [klientorganisation i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* En egen [klientorganisation i Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 * Ditt konto måste ha behörighet att skapa resurser i prenumerationen
 
@@ -35,7 +35,7 @@ I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
     > Du behöver inte följa det här steget om du inte har Azure Policy eller om en befintlig Azure Policy inte blockerar skapandet av **lagrings konto** och **EventHub-namnområde**.
 
     1. Navigera till Azure Portal och Sök efter **princip**
-    1. Följ [skapa en anpassad princip definition](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) eller ändra en befintlig princip om du vill lägga till två undantag med `not` operatorn och `resourceBypass` taggen:
+    1. Följ [skapa en anpassad princip definition](../governance/policy/tutorials/create-custom-policy-definition.md) eller ändra en befintlig princip om du vill lägga till två undantag med `not` operatorn och `resourceBypass` taggen:
 
         ```json
         {
@@ -83,7 +83,7 @@ I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="Skärm bild som visar hur du skapar en princip definition.":::
 
-    1. [Skapa en princip tilldelning](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) med den anpassade principen som skapats.
+    1. [Skapa en princip tilldelning](../governance/policy/assign-policy-portal.md) med den anpassade principen som skapats.
 
         [![Skärm bild som visar hur du skapar princip tilldelning](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ Om du klickar på Lägg till visas två val som visar både markerade (inaktiver
 
 1. Välj **Lägg till rolltilldelning**.
 
-1. För roll typen i **avdelningens kontroll data curator roll** eller **avdelningens kontroll rollen administratör för data källa** , beroende på vad säkerhets objekt ska användas för (se [katalog behörigheter](catalog-permissions.md) och [program-och tjänst huvud objekt i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) för mer information).
+1. För roll typen i **avdelningens kontroll data curator roll** eller **avdelningens kontroll rollen administratör för data källa** , beroende på vad säkerhets objekt ska användas för (se [katalog behörigheter](catalog-permissions.md) och [program-och tjänst huvud objekt i Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) för mer information).
 
 1. För **tilldela behörighet att** lämna kvar standard-, **användar-, grupp-eller tjänstens huvud namn**.
 

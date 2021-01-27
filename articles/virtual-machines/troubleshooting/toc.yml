@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Starta om, stänga av eller stoppa tjänster'
       href: boot-error-troubleshoot-windows.md
-    - name: Problem med en fullständig OS-disk på en virtuell Linux-dator
-      href: os-disk-full-linux.md
 - name: Oväntad omstart
   items:
     - name: Oväntade omstarter av virtuella datorer med anslutna virtuella hårddiskar
@@ -153,7 +151,7 @@
         - name: Felsöka ett generellt fel
           href: troubleshoot-rdp-general-error.md
         - name: Felsöka autentiseringsfel
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: Felsöka Azure VM RDP-anslutningsfel efter händelse-ID
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: Felsöka RDP-fel i virtuella datorer på grund av statisk IP-adress

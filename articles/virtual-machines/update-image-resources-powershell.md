@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c6bc4fea05f79c446f318eb4cbc86beb160ea108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d480d880d9b26666f393c179efa953b653c80c3e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82797011"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881999"
 ---
 # <a name="list-update-and-delete-image-resources-using-powershell"></a>Visa, uppdatera och ta bort avbildnings resurser med PowerShell 
 
@@ -26,4 +26,4 @@ Du kan hantera dina delade avbildnings Galleri resurser med Azure PowerShell.
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Azure Image Builder (för hands version)](./linux/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md).
+[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md).

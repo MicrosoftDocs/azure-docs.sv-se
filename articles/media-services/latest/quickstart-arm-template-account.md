@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 11/24/2020
 ms.author: inhenkel
 ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 541a4c17a3212f711be7e2cf096ce3a2d632ee64
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185054"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879654"
 ---
 # <a name="quickstart-media-services-account-arm-template"></a>Snabb start: Media Services konto ARM-mall
 
@@ -41,7 +41,7 @@ Läsare som har erfarenhet av ARM-mallar kan fortsätta till [distributions avsn
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-Om du aldrig har distribuerat en ARM-mall tidigare är det bra att läsa om [Azure arm-mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/) och gå igenom [självstudien](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell).
+Om du aldrig har distribuerat en ARM-mall tidigare är det bra att läsa om [Azure arm-mallar](../../azure-resource-manager/templates/index.yml) och gå igenom [självstudien](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell).
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -118,8 +118,8 @@ The syntax for the JSON code fence is:
 
 Tre resurs typer för Azure definieras i mallen:
 
-- [Microsoft. Media/Media Services](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices): skapa ett Media Services konto
-- [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): skapa ett lagrings konto
+- [Microsoft. Media/Media Services](/azure/templates/microsoft.media/mediaservices): skapa ett Media Services konto
+- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): skapa ett lagrings konto
 
 ## <a name="set-the-account"></a>Ange kontot
 
@@ -277,4 +277,4 @@ az group delete --name {name of the resource group}
 Om du vill veta mer om hur du använder en ARM-mall genom att följa processen för att skapa en mall med parametrar, variabler och mer, försök
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa och distribuera din första ARM-mall](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Självstudie: skapa och distribuera din första ARM-mall](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

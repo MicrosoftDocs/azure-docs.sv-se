@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728448"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871527"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-arbetsbelastningar på Azure: planering och distribution check lista
 
@@ -137,7 +137,7 @@ Vi rekommenderar att du ställer in och validerar en fullständig HADR-lösning 
         - Testa och utvärdera nätverks fördröjningen mellan SAP-programskiktets virtuella datorer och DBMS-VM: ar enligt SAP support Notes [#500235](https://launchpad.support.sap.com/#/notes/500235) och [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Utvärdera resultatet mot rikt linjerna för nätverks fördröjning i [SAP support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Nätverks fördröjningen ska vara i det måttliga eller bästa intervallet. Undantag gäller trafik mellan virtuella datorer och HANA stora instans enheter, enligt beskrivningen i [den här artikeln](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
         - Se till att ILB-distributioner har kon figurer ATS för att använda direkt Server RETUR. Den här inställningen minskar svars tiden när Azure-ILB används för konfigurationer med hög tillgänglighet i DBMS-skiktet.
         - Om du använder Azure Load Balancer tillsammans med Linux-gäst operativ system, kontrollerar du att parametern för Linux-nätverket **net.IPv4.tcp_timestamps** har angetts till **0**. Den här rekommendationen står i konflikt med rekommendationer i äldre versioner av [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). SAP-anteckningen har nu uppdaterats för att ange att den här parametern måste ställas in på **0** för att fungera med Azure Load Balancer.
-        - Överväg att använda [Azure närhets placerings grupper](../../linux/co-location.md) för att få optimal nätverks fördröjning. Mer information finns i [placerings grupper för Azure närhet för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
+        - Överväg att använda [Azure närhets placerings grupper](../../co-location.md) för att få optimal nätverks fördröjning. Mer information finns i [placerings grupper för Azure närhet för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
    4. Distributioner av hög tillgänglighet och haveri beredskap.
         - Om du distribuerar SAP-programlagret utan att definiera en specifik Azure-tillgänglighets zon, se till att alla virtuella datorer som kör SAP-dialogrutor eller mellan-instanser av ett enda SAP-system distribueras i en [tillgänglighets uppsättning](../../manage-availability.md).
         - Om du inte behöver hög tillgänglighet för SAP Central Services och DBMS kan du distribuera de virtuella datorerna till samma tillgänglighets uppsättning som SAP-program skiktet.
@@ -209,7 +209,7 @@ Under den här fasen distribuerar du vanligt vis utvecklings system, enhets test
 8.  Titta [på SAP-webbplatsen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) för nya Hana-certifierade SKU: er i Azure. Jämför priserna för nya SKU: er med de som du har planerat att använda. Till sist kan du göra nödvändiga ändringar för att använda de som har bästa pris/prestanda-förhållande.
 9.  Anpassa dina distributions skript för att använda nya VM-typer och inkludera nya Azure-funktioner som du vill använda.
 10. Efter distributionen av infrastrukturen kan du testa och utvärdera nätverks fördröjningen mellan SAP-program på virtuella datorer och DBMS-VM: ar, enligt SAP support Notes [#500235](https://launchpad.support.sap.com/#/notes/500235) och [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Utvärdera resultatet mot rikt linjerna för nätverks fördröjning i [SAP support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Nätverks fördröjningen ska vara i det måttliga eller bästa intervallet. Undantag gäller trafik mellan virtuella datorer och HANA stora instans enheter, enligt beskrivningen i [den här artikeln](./hana-network-architecture.md#networking-architecture-for-hana-large-instance). Se till att ingen av de begränsningar som anges i [överväganden för azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](./dbms_guide_general.md#azure-network-considerations) och [SAP HANA infrastruktur konfiguration och åtgärder på Azure](./hana-vm-operations.md) gäller för din distribution.
-11. Se till att dina virtuella datorer distribueras till rätt [placerings grupp för Azure närhet](../../linux/co-location.md)enligt beskrivningen i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
+11. Se till att dina virtuella datorer distribueras till rätt [placerings grupp för Azure närhet](../../co-location.md)enligt beskrivningen i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
 11. Utför alla andra kontroller som anges för koncept bevis fasen innan du tillämpar arbets belastningen.
 12. När arbets belastningen används registrerar du resurs förbrukningen för systemen i Azure. Jämför den här förbrukningen med poster från din gamla plattform. Justera storleken på den virtuella datorn för framtida distributioner om du ser att du har stora skillnader. Tänk på att när du downsize, lagring och nätverks bandbredder för virtuella datorer kommer också att minskas.
     - [Storlekar för virtuella Windows-datorer i Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ I den här fasen samlar du in vad du har lärt dig och lärt dig under dina dist
     - Inga [virtuella Azure-nätverk](https://azure.microsoft.com/solutions/network-appliances/) är i kommunikations vägen mellan SAP-programmet och DBMS-skiktet i SAP-system baserat på SAP NetWeaver, hybris eller S/4HANA.
     - Reglerna för program säkerhets grupp och nätverks säkerhets grupper tillåter kommunikation som önskad och planerad och blockerar kommunikation där det behövs.
     - Tids gräns inställningarna är rätt inställda, enligt beskrivningen ovan.
-    - Virtuella datorer distribueras till rätt [placerings grupp för Azure närhet](../../linux/co-location.md), enligt beskrivningen i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
+    - Virtuella datorer distribueras till rätt [placerings grupp för Azure närhet](../../co-location.md), enligt beskrivningen i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
     - Nätverks fördröjning mellan virtuella SAP-program på virtuella datorer och DBMS-VM: ar testas och verifieras enligt beskrivningen i SAP support Notes [#500235](https://launchpad.support.sap.com/#/notes/500235) och [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Utvärdera resultatet mot rikt linjerna för nätverks fördröjning i [SAP support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Nätverks fördröjningen ska vara i det måttliga eller bästa intervallet. Undantag gäller trafik mellan virtuella datorer och HANA stora instans enheter, enligt beskrivningen i [den här artikeln](./hana-network-architecture.md#networking-architecture-for-hana-large-instance).
     - Kryptering implementerades vid behov och med lämplig krypterings metod.
     - Gränssnitt och andra program kan ansluta den nyligen distribuerade infrastrukturen.

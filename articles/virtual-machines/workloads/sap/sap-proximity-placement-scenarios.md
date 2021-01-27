@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: ee28f25e766940eb51e92b61fd782b97fd888705
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827231"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879620"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program
 SAP-program som baseras på SAP NetWeaver-eller SAP S/4HANA-arkitekturen är känsliga för nätverks fördröjning mellan SAP-programnivån och SAP-databasnivå. Den här känsligheten är resultatet av det mesta av affärs logiken som körs i program skiktet. Eftersom SAP-programlagret kör affärs logiken, utfärdar den frågor till databas nivån med hög frekvens, med en hastighet av tusentals eller flera tusen tusen per sekund. I de flesta fall är arten av frågorna enkel. De kan ofta köras på databas nivå i 500 mikrosekunder eller mindre.
@@ -30,11 +30,11 @@ Den tid som ägnats åt nätverket att skicka en sådan fråga från program niv
 
 I många Azure-regioner har antalet Data Center växt. Samtidigt använder kunderna, särskilt för avancerade SAP-system, flera särskilda VM-SKU: er för M-eller Mv2-serien eller HANA-stora instanser. Dessa typer av virtuella Azure-datorer är inte alltid tillgängliga i alla data Center som kompletterar en Azure-region. Dessa fakta kan skapa möjligheter för att optimera nätverks fördröjningen mellan SAP-program skiktet och SAP-DBMS-skiktet.
 
-För att ge dig möjlighet att optimera nätverks fördröjningen erbjuder Azure [närhets placerings grupper](../../linux/co-location.md). Närhets placerings grupper kan användas för att tvinga gruppering av olika VM-typer till ett enda Azure-datacenter för att optimera nätverks fördröjningen mellan de olika typerna av virtuella datorer på bästa möjliga sätt. I processen för att distribuera den första virtuella datorn till en sådan närhets grupp, blir den virtuella datorn kopplad till ett särskilt data Center. I takt med att det här låter ljud visas, introducerar användningen av konstruktionen vissa begränsningar också:
+För att ge dig möjlighet att optimera nätverks fördröjningen erbjuder Azure [närhets placerings grupper](../../co-location.md). Närhets placerings grupper kan användas för att tvinga gruppering av olika VM-typer till ett enda Azure-datacenter för att optimera nätverks fördröjningen mellan de olika typerna av virtuella datorer på bästa möjliga sätt. I processen för att distribuera den första virtuella datorn till en sådan närhets grupp, blir den virtuella datorn kopplad till ett särskilt data Center. I takt med att det här låter ljud visas, introducerar användningen av konstruktionen vissa begränsningar också:
 
 - Du kan inte anta att alla typer av virtuella Azure-datorer är tillgängliga i alla och alla Azure-datacenter. Det innebär att kombinationen av olika typer av virtuella datorer inom en närhets placerings grupp kan begränsas. De här begränsningarna beror på att värd maskin varan som behövs för att köra en viss VM-typ kanske inte finns i data centret som placerings gruppen har distribuerats till
 - När du ändrar storlek på delar av de virtuella datorerna som finns inom en närhets placerings grupp, kan du inte automatiskt anta att den nya VM-typen är tillgänglig i samma data Center som de andra virtuella datorerna som ingår i närhets placerings gruppen
-- När Azure inaktiverar maskin varan kan den tvinga vissa virtuella datorer av en närhets placerings grupp till ett annat Azure-datacenter. Mer information om det här fallet finns i dokumentet [samplacera resurser för förbättrad svars tid](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
+- När Azure inaktiverar maskin varan kan den tvinga vissa virtuella datorer av en närhets placerings grupp till ett annat Azure-datacenter. Mer information om det här fallet finns i dokumentet [samplacera resurser för förbättrad svars tid](../../co-location.md#planned-maintenance-and-proximity-placement-groups)  
 
 > [!IMPORTANT]
 > Som ett resultat av de potentiella begränsningarna bör närhets placerings grupper användas:

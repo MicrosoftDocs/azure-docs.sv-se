@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/17/2021
-ms.openlocfilehash: aede7e3dec886d6a6213c64b386cacd725dd74f5
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 1b2e914057aa72934524cc4977e3d2292394d0b7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562802"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882109"
 ---
 # <a name="how-to-manually-fix-sync-problems"></a>Så här åtgärdar du synkroniseringsproblem manuellt
 
@@ -22,16 +22,16 @@ Använd följande synkroniseringsprocess för att återaktivera anslutningen och
 
 1. Sök efter lösningen i den översta sökbanderollen och välj sedan de relevanta lösningarna
 
-    ![Skärm bild som visar den översta sökbanderollen och var du väljer de relevanta lösningarna.](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![Skärm bild som visar den översta sökbanderollen och var du väljer de relevanta lösningarna.](media/itsmc-resync-servicenow/solution-search-8-bit.png)
 
 1. I lösnings skärmen väljer du "Markera alla" i prenumerations filtret och filtrerar sedan efter "ServiceDesk"
 
-    ![Skärm bild som visar var du väljer Markera alla och var du vill filtrera efter ServiceDesk.](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Skärm bild som visar var du väljer Markera alla och var du vill filtrera efter ServiceDesk.](media/itsmc-resync-servicenow/solutions-list-8-bit.png)
 
 1. Välj lösning för din ITSM-anslutning.
 1. Välj ITSM-anslutning i den vänstra banderollen.
 
-    ![Skärm bild som visar var du väljer ITSM-anslutningar.](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![Skärm bild som visar var du väljer ITSM-anslutningar.](media/itsmc-resync-servicenow/itsm-connector-8-bit.png)
 
 1. Välj varje koppling i listan. 
     1. Klicka på kopplingens namn för att konfigurera det
@@ -41,10 +41,10 @@ Använd följande synkroniseringsprocess för att återaktivera anslutningen och
 
     1. Klicka på synkronisera
 
-       ![Skärm bild som visar knappen Synkronisera.](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Skärm bild som visar knappen Synkronisera.](media/itsmc-resync-servicenow/resync-8-bit-2.png)
 
     1. Klicka på Spara
 
-        ![Ny anslutning](media/itsmc-resync-servicenow/save-8bit.png)
+        ![Ny anslutning](media/itsmc-resync-servicenow/save-8-bit.png)
 
 f.    Granska meddelandena för att se om processen har startats.

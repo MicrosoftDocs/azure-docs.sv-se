@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.openlocfilehash: 7db546ec9038403bd9e34f637e9d9de368277d52
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400310"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880007"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto med Azure PowerShell/Azure CLI
 
@@ -21,15 +21,15 @@ ms.locfileid: "97400310"
 
 I den här snabb starten skapar du ett Azure avdelningens kontroll-konto med hjälp av Azure PowerShell/Azure CLI.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Det användar konto som du använder för att logga in på Azure måste vara medlem i rollen deltagare eller ägare, eller en administratör för Azure-prenumerationen.
 
-* En egen [klientorganisation i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* En egen [klientorganisation i Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-* Installera antingen Azure PowerShell eller Azure CLI på klient datorn för att distribuera mallen: [distribution av kommando raden](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-cli#command-line-deployment)
+* Installera antingen Azure PowerShell eller Azure CLI på klient datorn för att distribuera mallen: [distribution av kommando raden](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 

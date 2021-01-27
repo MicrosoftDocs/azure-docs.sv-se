@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 289bca140392ec77fa453e594aface6be9befeca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c8f664c98d068e9772fd47717c07f44236db2e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446611"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881914"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Skapa en virtuell dator med hjälp av en specialiserad avbildning 
 
@@ -124,7 +124,7 @@ Add-AzVMDataDisk `
 
 
 ## <a name="next-steps"></a>Nästa steg
-[Azure Image Builder (för hands version)](./linux/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
 
 Du kan också skapa en delad resurs för avbildnings galleriet med hjälp av mallar. Det finns flera tillgängliga Azure snabb starts mallar: 
 
@@ -133,4 +133,4 @@ Du kan också skapa en delad resurs för avbildnings galleriet med hjälp av mal
 - [Skapa en avbildningsversion i ett Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Skapa en virtuell dator från avbildningsversion](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Mer information om delade avbildnings gallerier finns i [översikten](./windows/shared-image-galleries.md). Om du stöter på problem, se [Felsöka delade avbildnings gallerier](troubleshooting-shared-images.md).
+Mer information om delade avbildnings gallerier finns i [översikten](./shared-image-galleries.md). Om du stöter på problem, se [Felsöka delade avbildnings gallerier](troubleshooting-shared-images.md).

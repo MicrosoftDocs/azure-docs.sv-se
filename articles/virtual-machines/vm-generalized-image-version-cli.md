@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 090b041c605c2328add8b46a97b6f151bae268c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec589848625e1114dedd8c58b41f7ecbc991f311
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501090"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881982"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>Skapa en virtuell dator från en generaliserad avbildnings version med hjälp av CLI
 
-Skapa en virtuell dator från en [generaliserad avbildnings version](./linux/shared-image-galleries.md#generalized-and-specialized-images) som lagras i ett delat avbildnings Galleri. Om du vill skapa en virtuell dator med hjälp av en specialiserad avbildning, se [skapa en virtuell dator från en specialiserad avbildning](vm-specialized-image-version-powershell.md). 
+Skapa en virtuell dator från en [generaliserad avbildnings version](./shared-image-galleries.md#generalized-and-specialized-images) som lagras i ett delat avbildnings Galleri. Om du vill skapa en virtuell dator med hjälp av en specialiserad avbildning, se [skapa en virtuell dator från en specialiserad avbildning](vm-specialized-image-version-powershell.md). 
 
 
 ## <a name="get-the-image-id"></a>Hämta bild-ID
@@ -59,4 +59,4 @@ Du kan också använda en speciell version med hjälp av avbildningens versions-
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Azure Image Builder (för hands version)](./linux/image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md).
