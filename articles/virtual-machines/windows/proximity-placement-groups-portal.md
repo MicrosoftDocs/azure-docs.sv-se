@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45d7977dda4870be9a087b3277dd1db828c91178
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010732"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871442"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Skapa en närhetsplaceringsgrupp med hjälp av portalen
 
-För att få virtuella datorer så nära som möjligt, vilket ger lägsta möjliga fördröjning, bör du distribuera dem i en [närhets placerings grupp](co-location.md#proximity-placement-groups).
+För att få virtuella datorer så nära som möjligt, vilket ger lägsta möjliga fördröjning, bör du distribuera dem i en [närhets placerings grupp](../co-location.md#proximity-placement-groups).
 
 En närhets placerings grupp är en logisk gruppering som används för att se till att Azure Compute-resurser är fysiskt placerade nära varandra. Placerings grupper för närhet är användbara för arbets belastningar där låg latens är ett krav.
 
@@ -77,4 +77,3 @@ Om den virtuella datorn är en del av tillgänglighets uppsättningen måste du 
 ## <a name="next-steps"></a>Nästa steg
 
 Du kan också använda [Azure PowerShell](proximity-placement-groups.md) för att skapa närhets grupper.
-

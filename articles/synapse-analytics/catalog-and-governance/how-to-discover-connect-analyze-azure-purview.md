@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 817f9a88bd3536e9c0ec8a1057098e6b4a96716e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676365"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872677"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Upptäck, Anslut och utforska data i Synapse med Azure avdelningens kontroll 
 
@@ -32,6 +32,8 @@ Med Azure-avdelningens kontroll i Synapse måste du ha åtkomst till det avdelni
 ### <a name="data-discovery-search-datasets"></a>Data identifiering: Sök data uppsättningar 
 
 Om du vill identifiera data som registrerats och genomsökts av Azure avdelningens kontroll kan du använda Sök fältet längst upp i mitten av Synapse-arbetsytan. Se till att du väljer Azure-avdelningens kontroll för att söka efter alla organisations data. 
+
+[![Sök efter Azure avdelningens kontroll-tillgångar](./media/purview-access.png)](./media/purview-access.png#lightbox)
 
 ## <a name="azure-purview-actions"></a>Azure avdelningens kontroll-åtgärder 
 

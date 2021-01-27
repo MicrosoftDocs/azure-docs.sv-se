@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724722"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871103"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Så här använder du din arbetsyta med en anpassad DNS-server
 
@@ -116,4 +116,4 @@ Informationen som returneras från alla metoder är densamma. en lista över FQD
 
 Mer information om hur du använder Azure Machine Learning med ett virtuellt nätverk finns i [Översikt över virtuella nätverk](how-to-network-security-overview.md).
 
-Mer information om hur du integrerar privata slut punkter i din DNS-konfiguration finns i [Azures DNS-konfiguration för privat slut punkt](https://docs.microsoft.com/azure/private-link/private-endpoint-dns).
+Mer information om hur du integrerar privata slut punkter i din DNS-konfiguration finns i [Azures DNS-konfiguration för privat slut punkt](../private-link/private-endpoint-dns.md).

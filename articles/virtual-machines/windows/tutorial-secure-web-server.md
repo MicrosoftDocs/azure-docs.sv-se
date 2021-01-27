@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f2987e5b09bb3582b68a8165aa853b5e41a8c677
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4e5bbe179c43508033e0747bc2c03089f283b6e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736566"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873086"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Självstudie: skydda en webb server på en virtuell Windows-dator i Azure med TLS/SSL-certifikat som lagras i Key Vault
 
@@ -177,4 +177,4 @@ I den här självstudien har du skyddat en IIS-webbserver med ett TLS/SSL-certif
 Klicka på den här länken om du vill se inbyggda skriptexempel för virtuella datorer.
 
 > [!div class="nextstepaction"]
-> [Skriptexempel för virtuella Windows-datorer](./powershell-samples.md)
+> [Skriptexempel för virtuella Windows-datorer](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)

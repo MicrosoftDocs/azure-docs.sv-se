@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349477"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873577"
 ---
 # <a name="cognitive-services-development-options"></a>Utvecklingsalternativ för Cognitive Services
 
@@ -125,7 +125,7 @@ De verktyg som du ska använda för att träna och konfigurera modeller skiljer 
 | Grundpelare | Tjänst | Anpassnings gränssnitt | Snabbstart |
 |--------|---------|------------------|------------|
 | Visuellt innehåll | Custom Vision | https://www.customvision.ai/ | [Snabbstart](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| Visuellt innehåll | Formigenkänning | Exempel på etikett verktyg | [Snabbstart](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| Visuellt innehåll | Formigenkänning | [Exempel på etikett verktyg](https://fott-preview.azurewebsites.net/) | [Snabbstart](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
 | Beslut | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Snabbstart](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | Beslut | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Snabbstart](./metrics-advisor/quickstarts/web-portal.md) |
 | Beslut | Personanpassning | UI är tillgängligt i Azure Portal under din personanpassa resurs. | [Snabbstart](./personalizer/quickstart-personalizer-sdk.md) |

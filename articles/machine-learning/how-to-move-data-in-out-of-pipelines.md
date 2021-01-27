@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132961"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871544"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Flytta data till och mellan olika steg i ML-pipelinen (Python)
 
@@ -53,7 +53,7 @@ Du behöver:
 
 - Vissa redan befintliga data. Den här artikeln visar kortfattat användningen av en [Azure Blob-behållare](../storage/blobs/storage-blobs-overview.md).
 
-- Valfritt: en befintlig maskin inlärnings pipeline, till exempel den som beskrivs i [skapa och köra Machine Learning-pipeliner med Azure Machine Learning SDK](how-to-create-your-first-pipeline.md).
+- Valfritt: en befintlig maskin inlärnings pipeline, till exempel den som beskrivs i [skapa och köra Machine Learning-pipeliner med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md).
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>Använd `Dataset` objekt för tidigare befintliga data 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Använd `OutputFileDatasetConfig` för mellanliggande data
 
-`Dataset`Objekt som endast representerar beständiga data [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) kan användas för tillfälliga data utdata från pipeline-steg **och** beständiga utdata. `OutputFileDatasetConfig` har stöd för skrivning av data till Blob Storage, fileshare, adlsgen1 eller adlsgen2. Det stöder både monterings läge och överförings läge. I monterings läge lagras filer som skrivs till den monterade katalogen permanent när filen stängs. I överförings läge överförs filer som skrivs till utdatakatalogen i slutet av jobbet. Om jobbet Miss lyckas eller avbryts laddas inte utdata-katalogen.
+`Dataset`Objekt som endast representerar beständiga data [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) kan användas för tillfälliga data utdata från pipeline-steg **och** beständiga utdata. `OutputFileDatasetConfig` har stöd för skrivning av data till Blob Storage, fileshare, adlsgen1 eller adlsgen2. Det stöder både monterings läge och överförings läge. I monterings läge lagras filer som skrivs till den monterade katalogen permanent när filen stängs. I överförings läge överförs filer som skrivs till utdatakatalogen i slutet av jobbet. Om jobbet Miss lyckas eller avbryts laddas inte utdata-katalogen.
 
  `OutputFileDatasetConfig` objektets standard beteende är att skriva till arbets ytans standard data lager. Skicka dina `OutputFileDatasetConfig` objekt till `PythonScriptStep` med- `arguments` parametern.
 
@@ -184,7 +184,7 @@ OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(ove
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>Använd `OutputFileDatasetConfig` som utdata i ett utbildnings steg
 
-I din pipeline `PythonScriptStep` kan du hämta tillgängliga sökvägar med hjälp av programmets argument. Om det här steget är det första och kommer att initiera utdata måste du skapa katalogen på den angivna sökvägen. Du kan sedan skriva de filer som du vill ska ingå i `OutputFileDatasetConfig` .
+I `PythonScriptStep` i din pipeline kan du hämta tillgängliga sökvägar för utdata med hjälp av programmets argument. Om det här är det första steget och det initierar utdata måste du skapa katalogen vid den angivna sökvägen. Du kan sedan skriva de filer som du vill ska ingå i `OutputFileDatasetConfig` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>Nästa steg
 
 * [Skapa en Azure Machine Learning-datauppsättning](how-to-create-register-datasets.md)
-* [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](how-to-create-your-first-pipeline.md)
+* [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)

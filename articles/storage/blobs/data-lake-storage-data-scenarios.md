@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913631"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873254"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Använda Azure Data Lake Storage Gen2 för Big data-krav
 
@@ -141,5 +141,5 @@ Här är en lista med verktyg som du kan använda för att hämta data från Dat
 |---|--|
 |Azure Data Factory | [Kopieringsaktivitet i Azure Data Factory](../../data-factory/copy-activity-overview.md) |
 |Apache DistCp | [Använd DistCp för att kopiera data mellan Azure Storage blobbar och Azure Data Lake Storage Gen2](./data-lake-storage-use-distcp.md) |
-|Azure Lagringsutforskaren|[Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2](data-lake-storage-explorer.md)|
-|Verktyget AzCopy|[Överföra data med AzCopy och Blob Storage](../common/storage-use-azcopy-blobs.md)|
+|Azure Storage Explorer|[Använda Azure Storage Explorer till att hantera kataloger, filer och åtkomstkontrollistor i Azure Data Lake Storage Gen2](data-lake-storage-explorer.md)|
+|Verktyget AzCopy|[Överföra data med AzCopy och Blob Storage](../common/storage-use-azcopy-v10.md#transfer-data)|

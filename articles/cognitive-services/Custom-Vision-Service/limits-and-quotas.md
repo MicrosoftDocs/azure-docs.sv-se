@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3392cc5f3ee9daef1ae8397f6829f4ca7a42373a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913489"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871408"
 ---
 # <a name="limits-and-quotas"></a>Begränsningar och kvoter
 
@@ -42,6 +42,9 @@ Antalet utbildnings bilder per projekt och taggar per projekt förväntas öka m
 |Maximal bild höjd/bredd i bild punkter|10 240|10 240|
 |Maximal bild storlek (uppladdning av inlärnings avbildning) |6 MB|6 MB|
 |Maximal bild storlek (förutsägelse)|4 MB|4 MB|
-|Bild för högsta antal regioner per objekts avkänning|300|300|
-|Bild av Max Taggar per klassificering|100|100|
+|Maximalt antal regioner per avbildning (objekt identifiering)|300|300|
+|Maximalt antal Taggar per bild (klassificering)|100|100|
 
+> [!NOTE]
+> Bilder som är mindre än 256 bild punkter godkänns, men skalas upp.
+> Bild proportionerna får inte vara större än 25

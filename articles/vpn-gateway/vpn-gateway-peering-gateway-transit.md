@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2fc12385c78135269b6a73038fd0ad810ebaedd6
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576208"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872187"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurera VPN-gatewayöverföring för peer-kopplade virtuella nätverk
 
@@ -35,7 +35,7 @@ Det finns två scenarier i den här artikeln:
 > Om du gör en ändring i nätverkets topologi och har Windows VPN-klienter, måste VPN-klientprogrammet för Windows-klienter laddas ned och installeras igen för att ändringarna ska tillämpas på klienten.
 >
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du kontrol lera att du har följande virtuella nätverk och behörigheter:
 
@@ -43,9 +43,9 @@ Innan du börjar ska du kontrol lera att du har följande virtuella nätverk och
 
 |Virtuellt nätverk|Distributionsmodell| Virtuell nätverksgateway|
 |---|---|---|---|
-| Hub-RM| [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| [Ja](tutorial-create-gateway-portal.md)|
-| Eker-RM | [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| Nej |
-| Spoke-Classic | [Klassisk](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Nej |
+| Hub-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Ja](tutorial-create-gateway-portal.md)|
+| Eker-RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Nej |
+| Spoke-Classic | [Form](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Nej |
 
 ### <a name="permissions"></a><a name="permissions"></a>Behörigheter
 
@@ -54,7 +54,7 @@ De konton som du använder för att skapa peer-kopplade virtuella nätverk måst
 |Virtuellt nätverk|Distributionsmodell|Roll|Behörigheter|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klassisk|[Klassisk nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Saknas|
+| |Klassisk|[Klassisk nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Ej tillämpligt|
 |Spoke-Classic|Resource Manager|[Nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klassisk|[Klassisk nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 

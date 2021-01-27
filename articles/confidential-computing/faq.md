@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564114"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872340"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Vanliga frågor och svar om Azures konfidentiella data behandling
 
@@ -37,13 +37,21 @@ Nej. De virtuella datorerna kan bara distribueras på generation 2-operativsyste
 **DCsv2 virtuella datorer är nedtonade i portalen och jag kan inte välja en**
 
 Utifrån informations bubblan bredvid den virtuella datorn finns det olika åtgärder att vidta:
-   -    **UnsupportedGeneration** : ändra avbildningen av den virtuella dator avbildningen till "Gen2".
-   -    **NotAvailableForSubscription** : regionen är inte tillgänglig ännu för din prenumeration. Välj en tillgänglig region.
-   -    **InsufficientQuota** : [skapa en support förfrågan för att öka din kvot](../azure-portal/supportability/per-vm-quota-requests.md). De kostnads fria utvärderings prenumerationerna har ingen kvot för konfidentiella datorer. 
+   -    **UnsupportedGeneration**: ändra avbildningen av den virtuella dator avbildningen till "Gen2".
+   -    **NotAvailableForSubscription**: regionen är inte tillgänglig ännu för din prenumeration. Välj en tillgänglig region.
+   -    **InsufficientQuota**: [skapa en support förfrågan för att öka din kvot](../azure-portal/supportability/per-vm-quota-requests.md). De kostnads fria utvärderings prenumerationerna har ingen kvot för konfidentiella datorer. 
 
 **DCsv2 virtuella datorer visas inte när jag försöker söka efter dem i väljaren för Portal storlek**
 
 Kontrol lera att du har valt en [tillgänglig region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines). Kontrol lera också att du väljer "Rensa alla filter" i storleks väljaren. 
+
+**Kan jag aktivera accelererat nätverk med Azures konfidentiella data behandling?**
+
+ Nej. Accelererat nätverk stöds inte på DC-Series eller DCsv2-Series virtuella datorer. Det går inte att aktivera accelererat nätverk för en konfidentiell dator distribution eller Azure Kubernetes service Cluster-distribution som körs på konfidentiell dator användning.
+
+**Kan jag använda Azures dedikerade värd med de här datorerna?**
+
+Ja. Azure-dedikerad värd har stöd för virtuella datorer i DCsv2-serien. Den dedikerade Azure-värden tillhandahåller en fysisk server för enskild klient för att köra virtuella datorer på. Användarna använder vanligt vis Azure-dedikerad värd för att uppfylla kraven på efterlevnad av fysisk säkerhet, data integritet och övervakning. 
 
 **Jag får ett fel meddelande om distribution av Azure Resource Manager mallar: "åtgärden kunde inte slutföras eftersom den resulterar i att den godkända standard DcsV2 Family Core-kvoten överskrids"**
 

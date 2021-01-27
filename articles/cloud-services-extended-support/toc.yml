@@ -16,8 +16,10 @@
       href: deploy-powershell.md
     - name: Distribuera en moln tjänst – mall
       href: deploy-template.md
+    - name: Distribuera en moln tjänst – SDK
+      href: deploy-sdk.md
     - name: Distribuera en moln tjänst – Visual Studio
-      href: deploy-visual-studio.md
+      href: 'https://docs.microsoft.com/visualstudio/azure/cloud-services-extended-support?context=/azure/cloud-services-extended-support/context/context'
   expanded: true
 - name: Begrepp
   items:
@@ -26,11 +28,11 @@
     - name: Tillgängliga VM-storlekar
       href: available-sizes.md
     - name: Gästoperativsystemets korrigeringsfiler
-      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?context=/azure/cloud-services-extended-support/context/context
     - name: 'Gästoperativsystem, indragning'
-      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?context=/azure/cloud-services-extended-support/context/context
     - name: Versionsnyheter om gästoperativsystem
-      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?context=/azure/cloud-services-extended-support/context/context
     - name: XML-schema
       items:
         - name: Csdef XML-schema
@@ -65,6 +67,8 @@
       href: certificates-and-key-vault.md
 - name: Exempel
   items:
+    - name: Exempel på mallar
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Skapa en ny moln tjänst
       href: sample-create-cloud-service.md
     - name: Hämta information om moln tjänst
@@ -83,6 +87,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: .NET
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet-preview'
     - name: SDK
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: Resurser

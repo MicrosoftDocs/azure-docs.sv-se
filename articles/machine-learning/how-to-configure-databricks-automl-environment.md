@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7c5544ec5f89cfbf2451c19430a99b64825f90bc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740971"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872612"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Konfigurera en utvecklings miljö med Azure Databricks och AutoML i Azure Machine Learning 
 
@@ -119,7 +119,7 @@ Prova:
 + Importera de här exemplen direkt från din arbets yta. Se nedan: ![ Välj import ](./media/how-to-configure-environment/azure-db-screenshot.png)
  ![ import panel](./media/how-to-configure-environment/azure-db-import.png)
 
-+ Lär dig hur du [skapar en pipeline med Databricks som inlärnings beräkning](how-to-create-your-first-pipeline.md).
++ Lär dig hur du [skapar en pipeline med Databricks som inlärnings beräkning](./how-to-create-machine-learning-pipelines.md).
 
 ## <a name="troubleshooting"></a>Felsökning
 

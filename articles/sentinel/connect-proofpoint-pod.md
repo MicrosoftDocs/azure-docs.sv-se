@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0e256f2fe4b8d4275e331e0fe1fadd67e1d96655
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: bdc9cbf942b88af93befa34f73eb3a90469cfcef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567998"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873509"
 ---
 # <a name="connect-your-proofpoint-on-demand-email-security-pod-solution-to-azure-sentinel"></a>Anslut din Proofpoint på begäran e-postsäkerhet (POD) till Azure Sentinel
 
@@ -31,13 +31,13 @@ I den här artikeln förklaras hur du ansluter din Proofpoint för e-post på be
 > [!NOTE]
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
 
 - Du måste ha Läs behörighet till delade nycklar för arbets ytan. [Läs mer om nycklar för arbets ytor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-- Du måste ha läs-och Skriv behörighet till Azure Functions för att kunna skapa en Funktionsapp. [Läs mer om Azure Functions](/azure/azure-functions/).
+- Du måste ha läs-och Skriv behörighet till Azure Functions för att kunna skapa en Funktionsapp. [Läs mer om Azure Functions](../azure-functions/index.yml).
 
 - Du måste ha följande WebSocket API-autentiseringsuppgifter: ProofpointClusterID, ProofpointToken. [Läs mer om WebSocket-API: et](https://proofpointcommunities.force.com/community/s/article/Proofpoint-on-Demand-Pod-Log-API).
 

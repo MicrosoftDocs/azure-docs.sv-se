@@ -33,8 +33,6 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: Använda en hanterad identitet för att ansluta Key Vault till en Azure Spring Cloud-app
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Distribuera Azure Spring Cloud i virtuellt nätverk
-      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
     - name: Använda en hanterad identitet för anropa Azure Functions från en Azure Spring Cloud-app
       href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Begrepp
@@ -101,6 +99,18 @@
           href: spring-cloud-howto-application-insights.md
         - name: Mått för Resilience4J-kretsbrytare
           href: spring-cloud-howto-circuit-breaker-metrics.md
+    - name: Nätverk
+      items:
+        - name: Distribuera Azure våren Cloud i ett virtuellt nätverk
+          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+        - name: Få åtkomst till ditt program i ett privat nätverk
+          href: spring-cloud-access-app-virtual-network.md
+        - name: Exponera program på Internet
+          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+        - name: Kund ansvar som kör Azure våren Cloud i VNET
+          href: spring-cloud-vnet-customer-responsibilities.md
+        - name: Felsöka Azure våren Cloud i virtuella nätverk
+          href: spring-cloud-troubleshooting-vnet.md
     - name: Säkerhet
       items:
         - name: Aktivera systemtilldelad hanterad identitet
@@ -140,7 +150,7 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
 - name: DevOps-distribuering
   items:
     - name: CI/CD med Azure DevOps
