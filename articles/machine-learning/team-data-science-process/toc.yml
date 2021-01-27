@@ -144,7 +144,7 @@
               items:
                 - name: Översikt
                   href: sample-data.md
-                - name: Använda Blob Storage
+                - name: Använd Blob Storage
                   href: sample-data-blob.md
                 - name: Använda SQL Server
                   href: sample-data-sql-server.md

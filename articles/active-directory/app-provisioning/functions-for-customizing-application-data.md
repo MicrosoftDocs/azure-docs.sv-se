@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e87211789280c3439d71d8fa63da09416eaaf18e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012975"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805143"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referens för att skriva uttryck för mappningar av attribut i Azure AD
 
@@ -49,7 +49,7 @@ Syntaxen för-uttryck för attributmappning är reminiscent av Visual Basic for 
 
 **Komponentparametrar**
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Vanligt vis namnet på attributet från källobjektet. |
 | **huvudnamnssuffix** |Obligatorisk |Sträng |Strängen som du vill lägga till i slutet av source-värdet. |
@@ -67,7 +67,7 @@ Med andra ord returneras 0 i samtliga fall, förutom när motsvarande bitar i b�
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **value1** |Obligatorisk |num |Numeriskt värde som ska AND'ed med värde2|
 | **värde2** |Obligatorisk |num |Numeriskt värde som ska AND'ed med värde1|
@@ -87,7 +87,7 @@ Med andra ord returneras 0 i samtliga fall, förutom när motsvarande bitar i b�
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **expression** |Obligatorisk | uttryck | Ett giltigt uttryck |
 
@@ -103,7 +103,7 @@ Returnerar true om båda attributen har samma värde.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **source1 ... Källa** | Obligatorisk | Sträng |Obligatoriskt, variabel antal gånger. Vanligt vis namnet på attributet från källobjektet. |
 | **Standar** | Valfritt | Sträng | Standardvärdet som ska användas när alla käll värden är NULL. Kan vara en tom sträng ("").
@@ -116,7 +116,7 @@ Returnerar true om båda attributen har samma värde.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Sträng som ska konverteras till bas 64|
 
@@ -133,7 +133,7 @@ Returnerar "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Sträng som ska konverteras till UTF8 hex|
 
@@ -150,7 +150,7 @@ Returnerar 48656C6C6F20776F726C6421
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **basattributet** |Obligatorisk |attribut |Ett flervärdesattribut som innehåller element som räknas|
 
@@ -162,7 +162,7 @@ Returnerar 48656C6C6F20776F726C6421
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **värde** |Obligatorisk | numerisk, referens eller boolesk | Kan vara ett numeriskt värde, ett referens-eller Boolean-attribut. |
 
@@ -179,7 +179,7 @@ Returnerar "CN = Johan, DC = contoso, DC = com"
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **värde** |Obligatorisk | Datum | AD-datum som ska konverteras till DateTime-typ |
 
@@ -198,7 +198,7 @@ Returnerar en DateTime som representerar 1 januari 2012 vid 11:12:00.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Vanligt vis namnet på attributet från källobjektet. |
 | **inputFormat** |Obligatorisk |Sträng |Förväntat format för Source-värdet. För format som stöds, se [/dotNet/Standard/Base-types/Custom-date-and-Time-format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -218,7 +218,7 @@ Returnerar en DateTime som representerar 1 januari 2012 vid 11:12:00.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **moduletype** |Obligatorisk |Variabel eller uttryck |Ett värde eller uttryck som kan utvärderas till true eller false. |
 | **valueIfTrue** |Obligatorisk |Variabel eller sträng | Om villkoret utvärderas till sant returneras det returnerade värdet. |
@@ -235,7 +235,7 @@ Returnerar en DateTime som representerar 1 januari 2012 vid 11:12:00.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **value1** |Obligatorisk |Sträng |Sträng som ska genomsökas |
 | **värde2** |Obligatorisk |Sträng |Sträng som ska hittas |
@@ -259,7 +259,7 @@ Utvärderas till 7
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **expression** |Obligatorisk |uttryck |Uttryck som ska utvärderas |
 
@@ -277,7 +277,7 @@ Inversen till den här funktionen heter IsPresent.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **expression** |Obligatorisk |uttryck |Uttryck som ska utvärderas |
 
@@ -294,7 +294,7 @@ Returnerar true om attributet inte finns eller är en tom sträng.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **expression** |Obligatorisk |uttryck |Uttryck som ska utvärderas |
 
@@ -309,7 +309,7 @@ Returnerar true om attributet inte finns eller är en tom sträng.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **expression** |Obligatorisk |uttryck |Uttryck som ska utvärderas |
 
@@ -321,7 +321,7 @@ Returnerar true om attributet inte finns eller är en tom sträng.
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **basattributet** |Obligatorisk |Attribut |Multi-Value-attribut som ska genomsökas |
 | **Tabbindex** |Obligatorisk |Integer | Index till ett objekt i en multi-Value-sträng|
@@ -339,7 +339,7 @@ Om ett av käll värdena är ett flervärdesattribut, kopplas alla värden i det
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **brytning** |Obligatorisk |Sträng |Sträng som används för att avgränsa käll värden när de sammanfogas till en sträng. Kan vara "" om ingen avgränsare krävs. |
 | **source1 ... Källa** |Obligatoriskt, variabel antal gånger |Sträng |Sträng värden som ska sammanfogas tillsammans. |
@@ -355,7 +355,7 @@ Om strängen innehåller färre tecken än det tal som anges i numChars returner
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **Sträng** |Obligatorisk |Attribut | Strängen att returnera tecken från |
 | **NumChars** |Obligatorisk |Integer | Ett tal som identifierar antalet tecken som ska returneras från början (vänster) av sträng|
@@ -373,7 +373,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Vanligt vis namnet på attributet. |
 | **har** |Obligatorisk |heltal |Index i **käll** strängen där under strängen ska starta. Det första alfabetet i strängen kommer att ha indexet 1, andra tecken kommer att ha index 2 och så vidare. |
@@ -387,7 +387,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng | Vanligt vis attributet förnamn eller efter namn. |
 
@@ -399,7 +399,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Boolesk sträng |Förväntade **käll** värden är "true" eller "false". |
 
@@ -411,7 +411,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **värde** |Obligatorisk | Sträng | Datum/tid-sträng i formatet stöds. För format som stöds, se https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx . |
 
@@ -431,7 +431,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **basattributet** |Obligatorisk |Multi-Value-attribut |Multi-Value-attribut som ska ha dubbletter borttagna|
 
@@ -463,7 +463,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Vanligt vis namnet på attributet från **källobjektet** . |
 | **Gammalt** |Valfritt |Sträng |Värdet som ska ersättas i **källa** eller **mall**. |
@@ -483,12 +483,12 @@ Returnerar "Joh".
  - Detta är en funktion på den översta nivån, den kan inte kapslas.
  - Den här funktionen kan inte tillämpas på attribut som har en matchande prioritet.   
  - Den här funktionen är endast avsedd att användas för att skapa poster. När du använder det med ett-attribut ställer du in egenskapen **tillämpa mappning** på **endast när objekt skapas**.
- - Den här funktionen stöds för närvarande endast för "arbets dag för Active Directory användar etablering". Det kan inte användas med andra etablerings program. 
+ - Den här funktionen stöds för närvarande endast för "Workday Active Directory användar etablering" och "SuccessFactors to Active Directory User etablering". Det kan inte användas med andra etablerings program. 
 
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |Minst 2 krävs, ingen övre bindning |Sträng | Lista med regler för generering av unika värden som ska utvärderas. |
 
@@ -501,7 +501,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **AppRoleAssignments** |Obligatorisk |Sträng |**[appRoleAssignments]** -objekt. |
 
@@ -513,7 +513,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |**käll** värde att uppdatera. |
 | **avgränsare** |Obligatorisk |Sträng |Anger det tecken som ska användas för att dela strängen (exempel: ",") |
@@ -526,7 +526,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |**käll** värde att uppdatera. |
 
@@ -538,7 +538,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |**Käll** värde att uppdatera. |
 | **Standar** |Valfritt |Sträng |Standardvärdet som ska användas när källan inte matchar några nycklar. Kan vara en tom sträng (""). |
@@ -553,7 +553,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Vanligt vis namnet på attributet från källobjektet |
 | **substrat** |Valfritt |Sträng |Formatet för kultur namnet baserat på RFC 4646 är *languagecode2-land/regioncode2*, där *languagecode2* är språk koden för två bokstäver och *land/regioncode2* är under kultur koden med två bokstäver. Exempel är ja-JP för japanska (Japan) och en-US för engelska (USA). I de fall där en språkkod med två bokstäver inte är tillgänglig används en kod med tre bokstäver härledd från ISO 639-2.|
@@ -566,7 +566,7 @@ Returnerar "Joh".
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |Vanligt vis namnet på attributet från källobjektet. |
 | **substrat** |Valfritt |Sträng |Formatet för kultur namnet baserat på RFC 4646 är *languagecode2-land/regioncode2*, där *languagecode2* är språk koden för två bokstäver och *land/regioncode2* är under kultur koden med två bokstäver. Exempel är ja-JP för japanska (Japan) och en-US för engelska (USA). I de fall där en språkkod med två bokstäver inte är tillgänglig används en kod med tre bokstäver härledd från ISO 639-2.|
@@ -583,7 +583,7 @@ Om strängen innehåller färre än tal ord, eller om strängen inte innehåller
 
 **Komponentparametrar** 
 
-| Namn | Krävs/upprepas | Typ | Kommentarer |
+| Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
 | **Sträng** |Obligatorisk |Multi-Value-attribut |Sträng för att returnera ett ord från.|
 | **WordNumber** |Obligatorisk | Integer | Nummer som identifierar vilket ord nummer som ska returneras|

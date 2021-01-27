@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663272"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804951"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
 
 ## <a name="overview"></a>Översikt
-När data export har kon figurer ATS för Log Analytics arbets ytan exporteras alla nya data som skickas till de valda tabellerna i arbets ytan automatiskt till ditt lagrings konto varje timme eller till händelsehubben i nästan i real tid.
+När data export har kon figurer ATS för Log Analytics arbets ytan exporteras alla nya data som skickas till de valda tabellerna i arbets ytan automatiskt till ditt lagrings konto eller till händelsehubben i nära real tid.
 
 ![Översikt över data export](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Det finns för närvarande inga ytterligare avgifter för data export funktionen
 ## <a name="export-destinations"></a>Exportera mål
 
 ### <a name="storage-account"></a>Lagringskonto
-Data skickas till lagrings konton varje timme. Konfigurationen för data export skapar en behållare för varje tabell i lagrings kontot med namnet *am-* följt av namnet på tabellen. Tabellen *SecurityEvent* skulle till exempel skickas till en behållare med namnet *am-SecurityEvent*.
+Data skickas till lagrings konton nästan i real tid när de uppnår Azure Monitor. Konfigurationen för data export skapar en behållare för varje tabell i lagrings kontot med namnet *am-* följt av namnet på tabellen. Tabellen *SecurityEvent* skulle till exempel skickas till en behållare med namnet *am-SecurityEvent*.
 
 Lagrings kontots BLOB-sökväg är *WorkspaceResourceId =/Subscriptions/Subscription-ID/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.jspå*. Eftersom bifogade blobbar är begränsade till 50 000 skrivningar i lagringen kan antalet exporterade blobbar utökas om antalet tillägg är högt. Namngivnings mönstret för blobbar i sådana fall är PT1H_ #. JSON, där # är det stegvisa antalet blobar.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955560"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804862"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Distribuera anpassat skript tillägg på virtuella datorer som körs på din Azure Stack Edge Pro-enhet
 
@@ -60,15 +60,15 @@ If your script is on a local server, then you may still need additional firewall
 > [!NOTE]
 > Before you install the Custom Script extension, make sure that the port enabled for compute network on your device is connected to Internet and has access. -->
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-1. [Ladda ned filerna för VM-mallarna och-parametrarna](https://aka.ms/ase-vm-templates) till klient datorn. Zippa upp den till en katalog som du ska använda som arbets katalog.
+1. [Ladda ned filerna för VM-mallarna och-parametrarna](https://aka.ms/ase-vm-templates) till klient datorn. Packa upp nedladdningen till en katalog som du ska använda som arbets katalog.
 
-1. Du bör ha en virtuell dator som skapats och distribuerats på enheten. Om du vill skapa virtuella datorer följer du alla steg i den [distribuera virtuella datorn på Azure Stack Edge Pro med hjälp av mallar](azure-stack-edge-gpu-deploy-virtual-machine-templates.md).
+1. Du bör ha en virtuell dator som skapats och distribuerats på enheten. Om du vill skapa virtuella datorer följer du alla steg i [distribuera VM på Azure Stack Edge Pro med hjälp av mallar](azure-stack-edge-gpu-deploy-virtual-machine-templates.md).
 
-    Om du behöver hämta ett skript externt, till exempel från GitHub eller Azure Storage, när du konfigurerar beräknings nätverk, aktiverar du den port som är ansluten till Internet för data bearbetning. På så sätt kan du hämta skriptet.
+    Om du behöver hämta ett skript som till exempel från GitHub eller Azure Storage externt, medan du konfigurerar beräknings nätverk, aktiverar du den port som är ansluten till Internet för data bearbetning. På så sätt kan du hämta skriptet.
 
-    Här är ett exempel där port 2 var ansluten till Internet och användes för att aktivera beräknings nätverket. Om du har identifierat att Kubernetes inte behövs i det tidigare steget kan du hoppa över noden IP-adress för Kubernetes och extern tjänst.    
+    I följande exempel var port 2 ansluten till Internet och användes för att aktivera beräknings nätverket. Om du har identifierat att Kubernetes inte behövs i det tidigare steget kan du hoppa över IP-tilldelningen Kubernetes Node IP och external service.
 
     ![Aktivera beräknings inställningar på port ansluten till Internet](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ Filen `addCSExtWindowsVM.parameters.json` tar följande parametrar:
 ```
 Ange namn på virtuell dator, namn på tillägget och kommandot som du vill köra.
 
-Här är en exempel parameter fil som användes i den här artikeln. 
+Här är den exempel parameter fil som användes i den här artikeln.
 
 ```powershell
 {
@@ -158,7 +158,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > Tilläggs distributionen är ett långvarigt jobb och tar cirka 10 minuter att slutföra.
 
-Här är exempel på utdata:
+Här är ett exempel på utdata:
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json"
@@ -196,7 +196,7 @@ Kör följande kommando för att kontrol lera distributions statusen för tillä
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName <Name of resource group> -VMName <Name of VM> -Name <Name of the extension>
 ```
-Här är exempel på utdata:
+Här är ett exempel på utdata:
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -293,7 +293,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 > [!NOTE]
 > Tilläggs distributionen är ett långvarigt jobb och tar cirka 10 minuter att slutföra.
 
-Här är exempel på utdata:
+Här är ett exempel på utdata:
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json"
@@ -342,7 +342,7 @@ Malldistribution är ett jobb som körs länge. Öppna en annan PowerShell-sessi
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName <VM Name> -Name <Extension Name>
 ```
-Här är exempel på utdata: 
+Här är ett exempel på utdata: 
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -381,7 +381,7 @@ Om du vill ta bort det anpassade skript tillägget använder du följande komman
 
 `Remove-AzureRmVMExtension -ResourceGroupName <Resource group name> -VMName <VM name> -Name <Extension name>`
 
-Här är exempel på utdata:
+Här är ett exempel på utdata:
 
 ```powershell
 PS C:\WINDOWS\system32> Remove-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM6 -Name LinuxCustomScriptExtension
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Azure Resource Manager-cmdletar](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-cmdletar](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

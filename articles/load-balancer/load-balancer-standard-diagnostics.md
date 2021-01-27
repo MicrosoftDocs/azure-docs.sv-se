@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 90443a898ffdebf33a0c967719ba25a2ccc6f9a7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792107"
+ms.locfileid: "98806001"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Standard Load Balancer-diagnostik med mått, aviseringar och resurshälsa
 
@@ -26,7 +26,6 @@ Azure Standard Load Balancer visar följande diagnostiska funktioner:
 * **Flerdimensionella mått och aviseringar**: ger stöd för flera dimensionella diagnoser via [Azure Monitor](../azure-monitor/overview.md) för standard konfiguration av belastningsutjämnare. Du kan övervaka, hantera och felsöka standard belastnings Utjämnings resurserna.
 
 * **Resurs hälsa**: Resource Health status för Load Balancer finns på Resource Health sidan under övervakaren. Den här automatiska kontrollen informerar om din Load Balancer resurs aktuella tillgänglighet.
-
 Den här artikeln ger en snabb genom gång av de här funktionerna och ger dig möjlighet att använda dem för Standard Load Balancer. 
 
 ## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>Flerdimensionella mått
@@ -35,7 +34,7 @@ Azure Load Balancer tillhandahåller flerdimensionella mått via Azure-måtten i
 
 De olika Standard Load Balancer-konfigurationerna tillhandahåller följande mått:
 
-| Metric | Resurstyp | Beskrivning | Rekommenderad aggregering |
+| Metric | Resurstyp | Description | Rekommenderad aggregering |
 | --- | --- | --- | --- |
 | Tillgänglighet för databana | Offentlig och intern lastbalanserare | Standard Load Balancer använder kontinuerligt datasökvägen inifrån en region till lastbalanserarens klientdel, hela vägen till den SDN-stack som stöder den virtuella datorn. Så länge som felfria instanser är kvar, följer måtten samma sökväg som programmets belastningsutjämnade trafik. Den datasökväg som dina kunder använder verifieras också. Måttet är osynligt för ditt program och stör inte andra åtgärder.| Medel |
 | Status för hälsoavsökning | Offentlig och intern lastbalanserare | Standard Load Balancer använder en distribuerad hälso-/Bing-tjänst som övervakar din program slut punkts hälsa enligt dina konfigurations inställningar. Med det här måttet får du en sammanställd vy eller filtrerad vy per slutpunkt för varje instansslutpunkt i lastbalanserarens pool. Du kan visa hur Load Balancer ser hälsotillståndet för ditt program, som anges av din konfiguration för hälsoavsökningen. |  Medel |
@@ -73,7 +72,7 @@ Så här visar du måtten för dina Standard Load Balancer resurser:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Hämta flerdimensionella mått via programmerings gränssnitt
 
-API-vägledning för att hämta flerdimensionella mått definitioner och värden finns i [genom gång av Azure monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Dessa mått kan skrivas till ett lagrings konto via alternativet "alla mått". 
+API-vägledning för att hämta flerdimensionella mått definitioner och värden finns i [genom gång av Azure monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Dessa mått kan skrivas till ett lagrings konto genom att lägga till en [diagnostisk inställning](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) för kategorin "alla mått". 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Konfigurera aviseringar för flerdimensionella mått ###
 
@@ -85,9 +84,6 @@ Så här konfigurerar du varningar:
     1.  Konfigurera aviserings villkor
     1.  Valfritt Lägg till åtgärds grupp för automatisk reparation
     1.  Tilldela allvarlighets grad, namn och beskrivning för aviseringar som möjliggör intuitiv reaktion
-
-  >[!NOTE]
-  >I fönstret konfiguration av aviserings villkor visas tids serier för signal historik. Det finns ett alternativ för att filtrera den här tids serien efter dimensioner som backend-IP. Detta filtrerar tids serie diagrammet men **inte** själva aviseringen. Det går inte att konfigurera aviseringar för vissa IP-adresser för Server delen.
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Vanliga diagnostiska scenarier och rekommenderade vyer
 
@@ -147,7 +143,7 @@ En misslyckad anslutnings volym på större än noll anger antalet SNAT-portar. 
 
 För att hämta SNAT-anslutnings statistik:
 1. Välj Metric-typ för **SNAT-anslutningar** och **Sum** som agg regering. 
-2. Gruppera efter **anslutnings tillstånd** för lyckade och MISSLYCKAde SNAT-anslutnings räkningar som representeras av olika rader. 
+2. Gruppera efter **anslutnings tillstånd** för lyckade och MISSLYCKAde SNAT-anslutnings räkningar som ska representeras av olika rader. 
 
 ![SNAT-anslutning](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -186,7 +182,7 @@ Visa SNAT-port användning och allokering:
   <summary>Visa</summary>
 Måttet SYN paket beskriver volymen av TCP-SYN-paket, som har anlänt eller skickats (för [utgående flöden](./load-balancer-outbound-connections.md)) som är associerade med en speciell klient del. Du kan använda det här måttet för att förstå TCP-anslutnings försök till din tjänst.
 
-Använd **Total** som agg regering för de flesta scenarier.
+Använd **Sum** som agg regering för de flesta scenarier.
 
 ![SYN anslutning](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
@@ -199,10 +195,10 @@ Använd **Total** som agg regering för de flesta scenarier.
   <summary>Visa</summary>
 Måttet byte och paket räknare beskriver mängden byte och paket som skickas eller tas emot av din tjänst per klient del.
 
-Använd **Total** som agg regering för de flesta scenarier.
+Använd **Sum** som agg regering för de flesta scenarier.
 
 Så här hämtar du statistik för byte eller antal paket:
-1. Välj Metric-typen antal **byte** och/eller **antal paket** , med **AVG** as aggregation. 
+1. Välj Måttyp för **antal byte** och/eller **antal paket** , med **Sum** som agg regering. 
 2. Gör något av följande:
    * Använd ett filter på en speciell frontend IP-adress, frontend-port, backend-IP eller backend-port.
    * Hämta allmän statistik för belastnings Utjämnings resursen utan filtrering.
@@ -236,11 +232,11 @@ Med hjälp av diagrammet kan kunderna felsöka distributionen på egen hand utan
 
 Hälso status för de Standard Load Balancer resurserna exponeras via den befintliga **resurs hälsan** under **övervaka > service Health**. Den utvärderas varannan **minut** genom att mäta data Sök vägs tillgänglighet som avgör om slut punkterna för belastnings utjämning för klient delen är tillgängliga.
 
-| Resurs hälso status | Beskrivning |
+| Resurs hälso status | Description |
 | --- | --- |
 | Tillgänglig | Standard belastnings Utjämnings resursen är felfri och tillgänglig. |
-| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](./troubleshoot-rhc.md) för att avgöra om det finns händelser som initieras av användaren.
-| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](./troubleshoot-rhc.md) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
+| Degraderad | Din standard belastningsutjämnare har plattforms-eller användar initierade händelser som påverkar prestanda. Datasökvägens tillgänglighet har visat mindre än 90 % men högre än 25 % hälsa i minst två minuter. Du får medelhög prestanda påverkan. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns händelser som initieras av användaren.
+| Inte tillgänglig | Standard belastnings Utjämnings resursen är inte felfri. Datapath tillgänglighets mått har rapporterat färre 25% hälso tillstånd i minst två minuter. Du får betydande prestanda påverkan eller brist på tillgänglighet för inkommande anslutningar. Det kan finnas användare eller plattforms händelser som orsakar otillgänglighet. [Följ fel söknings guiden för RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) för att avgöra om det finns inloggade händelser som påverkar din tillgänglighet. |
 | Okänt | Resurs hälso status för din standard belastnings Utjämnings resurs har inte uppdaterats eller har inte tagit emot information om tillgänglighet för data Sök vägar under de senaste 10 minuterna. Det här tillståndet bör vara tillfälligt och återspegla rätt status så snart data tas emot. |
 
 Så här visar du hälso tillståndet för dina offentliga Standard Load Balancer-resurser:
@@ -267,6 +263,7 @@ Beskrivning av allmän resurs hälso status finns i [RHC-dokumentationen](../ser
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Lär dig mer om att använda [insikter](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) för att visa dessa mått som är förkonfigurerade för din Load Balancer
 - Mer information finns i [Standard Load Balancer](./load-balancer-overview.md).
 - Läs mer om den [utgående anslutningen till belastningsutjämnaren](./load-balancer-outbound-connections.md).
 - Läs mer om [Azure Monitor](../azure-monitor/overview.md).

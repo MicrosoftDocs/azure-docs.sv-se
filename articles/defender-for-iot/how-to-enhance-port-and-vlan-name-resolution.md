@@ -1,5 +1,5 @@
 ---
-title: Förbättra port-och VLAN-namnmatchning
+title: Förbättra port- och VLAN-namnmatchning
 description: Anpassa port-och VLAN-namn på sensorer för att utöka enhets matchningen.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842430"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803582"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>Förbättra port-och VLAN-namnmatchning
+# <a name="enhance-port-and-vlan-name-resolution"></a>Förbättra port- och VLAN-namnmatchning
 
 Du kan anpassa port-och VLAN-namn på sensorer för att utöka enhets matchningen.
 
@@ -84,7 +84,8 @@ Konfigurera virtuella lokala nätverk:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Visa utförlig enhets information i rapporterna för enhets inventering och data utvinning:
+Visa utförlig enhets information i olika rapporter:
 
-- [Undersök sensor identifieringar i en enhets inventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [Skapa rapporter](how-to-generate-reports.md)
+- [Undersök identifieringar av sensorer i en enhetsinventering](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [Sensor trender och statistik rapporter](how-to-create-trends-and-statistics-reports.md)
+- [Frågor om sensor Data utvinning](how-to-create-data-mining-queries.md)

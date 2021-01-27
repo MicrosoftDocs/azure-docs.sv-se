@@ -601,24 +601,24 @@
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
+    - name: Dekor Virtual Machines
+      displayName: 'pre-empt, preempt, spot'
+      items:
+        - name: Översikt
+          href: spot-vms.md
+        - name: CLI
+          href: ./linux/spot-cli.md
+        - name: Portalen
+          href: spot-portal.md
+        - name: PowerShell
+          href: ./windows/spot-powershell.md
+        - name: ARM-mall
+          displayName: template ARM
+          href: ./linux/spot-template.md
+        - name: Felkoder
+          href: error-codes-spot.md
     - name: Inköpsalternativ
       items:
-        - name: Virtuella Spot-datorer
-          displayName: 'pre-empt, preempt, spot'
-          items:
-            - name: Översikt
-              href: spot-vms.md
-            - name: CLI
-              href: ./linux/spot-cli.md
-            - name: Portalen
-              href: spot-portal.md
-            - name: PowerShell
-              href: ./windows/spot-powershell.md
-            - name: ARM-mall
-              displayName: template ARM
-              href: ./linux/spot-template.md
-            - name: Felkoder
-              href: error-codes-spot.md
         - name: Azure Hybrid-förmån
           items:
             - name: Linux
@@ -1340,7 +1340,7 @@
           items:
             - name: Azure CLI
               href: ./linux/add-disk.md
-            - name: Azure Portal
+            - name: Azure-portalen
               href: ./linux/attach-disk-portal.md
         - name: Windows
           items:
@@ -1747,7 +1747,7 @@
         - name: Prissättning
           href: ../backup/azure-backup-pricing.md
         - name: VANLIGA FRÅGOR OCH SVAR
-          href: ../backup/backup-azure-vm-backup-faq.md
+          href: ../backup/backup-azure-vm-backup-faq.yml
     - name: Haveriberedskap
       items:
         - name: Översikt

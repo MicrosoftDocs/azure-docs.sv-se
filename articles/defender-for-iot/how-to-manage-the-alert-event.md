@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 023b33732b80198c4ed187328e8d18314f385f94
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841863"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803505"
 ---
 # <a name="manage-alert-events"></a>Hantera aviserings händelser
 
@@ -38,7 +38,7 @@ Inlärda händelser kan vara inlärt. När sensorn tar reda på händelser åter
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>Om att bekräfta och bekräfta händelser
 
-I vissa situationer kanske du inte vill att en sensor ska lära sig en identifierad händelse, eller så kanske alternativet inte är tillgängligt. Incidenten kan i stället kräva en minskning. Exempel:
+I vissa situationer kanske du inte vill att en sensor ska lära sig en identifierad händelse, eller så kanske alternativet inte är tillgängligt. Incidenten kan i stället kräva en minskning. Ett exempel:
 
 - **Minimera en nätverks konfiguration eller enhet**: du får en avisering som anger att en ny enhet har identifierats i nätverket. När du undersöker upptäcker du att enheten är en oauktoriserad nätverks enhet. Du hanterar incidenten genom att koppla bort enheten från nätverket.
 - **Uppdatera en sensor konfiguration**: du får en avisering som anger att en server har initierat ett högt antal fjärr anslutningar. Den här aviseringen utlöstes på grund av att sensor avvikelse trösklar definierades för att utlösa aviseringar över ett visst antal sessioner inom en minut. Du hanterar incidenten genom att uppdatera tröskelvärdena.
@@ -57,7 +57,7 @@ Avbekräftelser aviseringar om ytterligare undersökning krävs.
 
 ## <a name="about-muting-and-unmuting-events"></a>Om avstängnings-och avstängnings händelser
 
-Under vissa omständigheter kanske du vill instruera sensorn att ignorera ett visst scenario i nätverket. Exempel:
+Under vissa omständigheter kanske du vill instruera sensorn att ignorera ett visst scenario i nätverket. Ett exempel:
 
   - **Avvikelse** motorn utlöser en varning vid en ökning i bandbredd mellan två enheter, men insamling är giltig för dessa enheter.
 
@@ -107,7 +107,5 @@ När en händelse är avstängd ignoreras den varje gång källan skickar ett HT
 2. Hovra över en avisering för att se om den är avstängd.  
 
 ## <a name="see-also"></a>Se även
-
-[Skapa rapporter](how-to-generate-reports.md)
 
 [Styr vilken trafik som övervakas](how-to-control-what-traffic-is-monitored.md)

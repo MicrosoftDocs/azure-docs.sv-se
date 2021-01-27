@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 54887f0e7c3d969948240605f73ed56cfec5d538
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5c07f7ee8f6da208fc09b8631e32906f7dec3943
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699493"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805523"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Tillåter inte privilegierade containrar i Kubernetes-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Den här principen tillåter inte skapande av privilegierade behållare i ett Kubernetes-kluster. Den här principen är allmänt tillgänglig för Kubernetes service (AKS) och för hands versionen av AKS Engine och Azure Arc Enabled Kubernetes. Instruktioner för hur du använder den här principen finns på [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |granska, neka, inaktive rad |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[Använder inkommande HTTPS i Kubernetes-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Den här principen tillämpar HTTPS-ingångar i ett Kubernetes-kluster. Den här principen är allmänt tillgänglig för Kubernetes service (AKS) och för hands versionen av AKS Engine och Azure Arc Enabled Kubernetes. Instruktioner för hur du använder den här principen finns på [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |granska, neka, inaktive rad |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |

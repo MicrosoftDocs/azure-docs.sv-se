@@ -4,12 +4,12 @@ description: I den här artikeln hittar du svar på vanliga frågor om Azure Bac
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: cf6929b9b926a6e6469f3fa789a19e60d5883d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2585009b531512e54ffa889a05ec50038dd619
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181501"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805863"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup övervaknings avisering – vanliga frågor och svar
 
@@ -70,5 +70,5 @@ Ja. I följande situationer skickas inte meddelanden:
 
 Läs andra vanliga frågor och svar:
 
-* [Vanliga frågor](backup-azure-vm-backup-faq.md) om säkerhetskopiering av virtuella Azure-datorer.
+* [Vanliga frågor](backup-azure-vm-backup-faq.yml) om säkerhetskopiering av virtuella Azure-datorer.
 * [Vanliga frågor](backup-azure-file-folder-backup-faq.md) om Azure Backup-agenten

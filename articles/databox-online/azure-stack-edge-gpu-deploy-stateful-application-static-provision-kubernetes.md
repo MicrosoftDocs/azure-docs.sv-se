@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449223"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804891"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Använda kubectl för att köra ett Kubernetes tillstånds känsligt program med en PersistentVolume på din Azure Stack Edge Pro-enhet
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro stöder också körning av Azure SQL Edge-behållare och de
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du kan distribuera det tillstånds känsliga programmet måste du kontrol lera att du har slutfört följande krav på enheten och klienten som du ska använda för att få åtkomst till enheten:
+Innan du kan distribuera det tillstånds känsliga programmet måste du uppfylla följande krav på enheten och klienten som du kommer att använda för att få åtkomst till enheten:
 
 ### <a name="for-device"></a>För enheten
 
@@ -37,7 +37,7 @@ Innan du kan distribuera det tillstånds känsliga programmet måste du kontrol 
 ### <a name="for-client-accessing-the-device"></a>För klient åtkomst till enheten
 
 - Du har ett Windows-klientsystem som ska användas för att få åtkomst till Azure Stack Edge Pro-enheten.
-    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
     
     - Du kan också ha andra klienter med ett [operativ system som stöds](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Den här artikeln beskriver proceduren när du använder en Windows-klient. 
     
@@ -50,7 +50,7 @@ Innan du kan distribuera det tillstånds känsliga programmet måste du kontrol 
     - Kontrol lera att `kubectl` klient versionen inte är mer än en version från den Kubernetes huvud version som körs på din Azure Stack Edge Pro-enhet. 
         - Används `kubectl version` för att kontrol lera vilken version av kubectl som körs på klienten. Anteckna den fullständiga versionen.
         - I det lokala användar gränssnittet för din Azure Stack Edge Pro-enhet går du till **Översikt** och noterar Kubernetes-program varu numret. 
-        - Kontrol lera att dessa två versioner är kompatibla med den mappning som finns i den Kubernetes-version som stöds <!-- insert link-->. 
+        - Kontrol lera att dessa två versioner är kompatibla med den mappning som finns i den Kubernetes-version som stöds.<!-- insert link--> 
 
 
 Du är redo att distribuera ett tillstånds känsligt program på din Azure Stack Edge Pro-enhet. 
@@ -341,9 +341,9 @@ Här är exempel på utdata från när du tar bort PVC.
 C:\Users\user>kubectl delete pvc mysql-pv-claim -n userns1
 persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
-```                                                                                         
+```
 
-NUVÄRDEt är inte längre kopplat till PVC: n eftersom den har tagits bort. När PV etablerades när resursen skapades måste du ta bort resursen. Gör så här:
+NUVÄRDEt är inte längre kopplat till PVC: n eftersom den har tagits bort. När PV etablerades när resursen skapades måste du ta bort resursen. Följ de här stegen:
 
 1. Demontera resursen. I Azure Portal går du till **Azure Stack Edge-resurs > resurser** och väljer och klickar på den resurs som du vill demontera. Välj **demontera** och bekräfta åtgärden. Vänta tills resursen har demonterats. Demonteringen frigör resursen (och därmed tillhör ande PersistentVolume) från Kubernetes-klustret. 
 

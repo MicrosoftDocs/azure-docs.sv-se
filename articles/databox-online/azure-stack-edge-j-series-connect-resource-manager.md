@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763225"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805804"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Anslut till Azure Resource Manager på din Azure Stack Edge Pro-enhet
 
@@ -138,9 +138,9 @@ Windows-klienten måste uppfylla följande krav:
 
     Jämför **huvud** versionen och se till att den är 5,0 eller senare.
 
-    Läs informationen om att [uppgradera befintliga Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) om du har en inaktuell version.
+    Läs informationen om att [uppgradera befintliga Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell) om du har en inaktuell version.
 
-    Om du inte \' har PowerShell 5,0 följer du [installationen av Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
+    Om du inte \' har PowerShell 5,0 följer du [installationen av Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true).
 
     Ett exempel på utdata visas nedan.
 
@@ -156,7 +156,7 @@ Windows-klienten måste uppfylla följande krav:
     
 2. Du kan komma åt PowerShell-galleriet.
 
-    Kör PowerShell som administratör. Kontrol lera om PSGallery har registrerats som en lagrings plats.
+    Kör PowerShell som administratör. Kontrol lera om `PSGallery` har registrerats som en lagrings plats.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Windows-klienten måste uppfylla följande krav:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Om din lagrings plats inte är betrodd eller om du behöver mer information, se [verifiera PowerShell-galleriet hjälpmedel](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+Om din lagrings plats inte är betrodd eller om du behöver mer information, se [verifiera PowerShell-galleriet hjälpmedel](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility).
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>Steg 4: Konfigurera Azure PowerShell på klienten 
 
@@ -327,7 +327,7 @@ Ange Azure Resource Managers miljö och kontrol lera att enheten för klient kom
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    Mer information finns på [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
+    Mer information finns på [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true).
 
     - Definiera miljö inlinjen för varje cmdlet som du kör. Detta säkerställer att alla API-anrop går igenom rätt miljö. Som standard går anropen via Azures offentliga, men du vill att de ska gå igenom den miljö som du har angett för Azure Stack Edge Pro-enhet.
 

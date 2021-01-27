@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763445"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805207"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Distribuera virtuella datorer på din Azure Stack Edge Pro GPU-enhet via mallar
 
@@ -29,7 +29,7 @@ Om du vill distribuera virtuella Azure Stack Edge Pro-datorer över många enhet
 
 Den övergripande översikten över arbets flödet för distribution med hjälp av mallar är följande:
 
-1. **Konfigurera krav** – det finns tre typer av krav; enhet, klient och för den virtuella datorn.
+1. **Konfigurera förutsättningar** – det finns tre typer av krav: enhet, klient och för den virtuella datorn.
 
     1. **Enhets krav**
 
@@ -47,7 +47,7 @@ Den övergripande översikten över arbets flödet för distribution med hjälp 
         1. Skapa en resurs grupp på enhets platsen som innehåller alla VM-resurser.
         1. Skapa ett lagrings konto för att överföra den virtuella hård disk som används för att skapa en VM-avbildning.
         1. Lägg till den lokala lagrings kontots URI i DNS-eller hosts-filen på klienten som har åtkomst till din enhet.
-        1. Installera Blob Storage-certifikatet på enheten samt på den lokala klienten som har åtkomst till din enhet. Du kan också installera Blob Storage-certifikatet på Storage Explorer.
+        1. Installera Blob Storage-certifikatet på enheten och på den lokala klienten som har åtkomst till din enhet. Du kan också installera Blob Storage-certifikatet på Storage Explorer.
         1. Skapa och ladda upp en virtuell hård disk till det lagrings konto som skapades tidigare.
 
 2. **Skapa virtuell dator från mallar**
@@ -71,7 +71,7 @@ Konfigurera de här förutsättningarna på klienten som ska användas för att 
 
 ## <a name="vm-prerequisites"></a>Krav för virtuell dator
 
-Konfigurera dessa krav för att skapa resurser som behövs för att skapa virtuella datorer. 
+Konfigurera de här förutsättningarna för att skapa de resurser som behövs för att skapa virtuella datorer. 
 
     
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
-Skapa ett nytt lagrings konto med hjälp av resurs gruppen som skapades i föregående steg. Det här är ett **lokalt lagrings konto** som ska användas för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
+Skapa ett nytt lagrings konto med hjälp av resurs gruppen som skapades i föregående steg. Det här kontot är ett **lokalt lagrings konto** som ska användas för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -195,7 +195,7 @@ Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala
 
 7. Granska **anslutnings sammanfattningen** och välj **Anslut**.
 
-8. Lagrings kontot visas i den vänstra rutan. Välj och expandera lagrings kontot. Välj **BLOB-behållare**, högerklicka och välj **skapa BLOB-behållare**. Ange ett namn för din BLOB-behållare.
+8. Lagrings kontot visas i den vänstra rutan. Välj och expandera lagrings kontot. Välj **BLOB-behållare**, högerklicka på och välj **skapa BLOB-behållare**. Ange ett namn för din BLOB-behållare.
 
 9. Välj den behållare som du nyss skapade och välj **Ladda upp > Ladda upp filer** i den högra rutan. 
 
@@ -209,7 +209,7 @@ Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala
 
     ![Ladda upp VHD-fil 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. Kopiera och spara **URI: n** eftersom du kommer att använda det i senare steg.
+12. Kopiera och spara **URI**, som du kommer att använda i senare steg.
 
     ![Kopiera URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ Filen `CreateImage.parameters.json` tar följande parametrar:
     }
 ```
 
-Redigera filen `CreateImage.parameters.json` och Lägg till följande för din Azure Stack Edge Pro-enhet:
+Redigera filen `CreateImage.parameters.json` och Lägg till följande värden för din Azure Stack Edge Pro-enhet:
 
 1. Ange vilken OS-typ som motsvarar den virtuella hård disk som du vill ladda upp. OS-typen kan vara Windows eller Linux.
 
@@ -250,16 +250,17 @@ Redigera filen `CreateImage.parameters.json` och Lägg till följande för din A
 
 2. Ändra avbildningens URI till URI: n för den avbildning som du laddade upp i det tidigare steget:
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    Om du använder *http* med Storage Explorer ändrar du detta till en *http-* URI.
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   Om du använder *http* med Storage Explorer ändrar du URI: n till en *http-* URI.
 
 3. Ange ett unikt avbildnings namn. Den här avbildningen används för att skapa en virtuell dator i senare steg. 
 
-    Här är ett exempel-JSON som används i den här artikeln.
+   Här är ett exempel-JSON som används i den här artikeln.
 
     ```json
     {
@@ -278,6 +279,7 @@ Redigera filen `CreateImage.parameters.json` och Lägg till följande för din A
       }
     }
     ```
+
 5. Spara parameter filen.
 
 
@@ -588,4 +590,4 @@ Följ dessa steg för att ansluta till en virtuell Linux-dator.
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Azure Resource Manager-cmdletar](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-cmdletar](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

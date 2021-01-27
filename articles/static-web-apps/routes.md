@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8abbe575e855347714c19c40155d890af484d5d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822331"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805942"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Vägar i för hands versionen av Azure statisk Web Apps
 
@@ -28,15 +28,15 @@ Routning i Azures statiska Web Apps definierar regler för Routning och auktoris
 
 Mer information finns i [exempel cirkulations filen](#example-route-file) .
 
-## <a name="location"></a>Plats
+## <a name="location"></a>Location
 
 _routes.js_ filen måste finnas i roten i appens version av programartefakt. Om din webbapp innehåller ett build-steg som kopierar skapade filer från en speciell mapp till din version av en artefakt, måste _routes.js_ filen finnas i den specifika mappen.
 
 I följande tabell visas en lista över lämpliga platser för att lägga _routes.jspå_ en fil för ett antal klient dels ramverk och bibliotek.
 
-|Ramverk/bibliotek | Plats  |
+|Ramverk/bibliotek | Location  |
 |---------|----------|
-| Angular | _till gångar_   |
+| Angular | _tillgångar_   |
 | React   | _public_  |
 | Svelte  | _public_   |
 | Vue     | _public_ |
@@ -48,12 +48,12 @@ Tabellen ovan är bara representativ för några ramverk och bibliotek som är k
 
 Vägar definieras i _routes.jspå_ filen som en matris med väg regler i `routes` egenskapen. Varje regel består av ett väg mönster, tillsammans med en eller flera av de valfria regel egenskaperna. Se [exempel på väg filen](#example-route-file) för användnings exempel.
 
-| Regel egenskap  | Krävs | Standardvärde | Kommentar                                                      |
+| Regel egenskap  | Obligatorisk | Standardvärde | Kommentar                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ja      | Saknas          | Det väg mönster som anroparen begärt.<ul><li>[Jokertecken](#wildcards) stöds i slutet av väg Sök vägar. Route _admin/ \* _ matchar till exempel alla vägar under _admin_ -sökvägen.<li>En vägs standard fil är _index.html_.</ul>|
-| `serve`        | Inga       | Saknas          | Definierar filen eller sökvägen som returneras från begäran. Fil Sök vägen och namnet kan inte vara samma som den begärda sökvägen. Om ett `serve` värde inte är definierat används den begärda sökvägen. QueryString-parametrar stöds inte. `serve` värdena måste peka på faktiska filer.  |
-| `allowedRoles` | Inga       | antal     | En matris med roll namn. <ul><li>Giltiga tecken är `a-z` , `A-Z` , `0-9` och `_` .<li>Den inbyggda rollen `anonymous` gäller för alla oautentiserade användare.<li>Den inbyggda rollen `authenticated` gäller för alla inloggade användare.<li>Användarna måste tillhöra minst en roll.<li>Roller matchas på en _eller_ -basis. Om en användare finns i någon av rollerna i listan beviljas åtkomst.<li>Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).</ul> |
-| `statusCode`   | Inga       | 200           | [Http-status kod](https://wikipedia.org/wiki/List_of_HTTP_status_codes) svaret för begäran. |
+| `route`        | Ja      | saknas          | Det väg mönster som anroparen begärt.<ul><li>[Jokertecken](#wildcards) stöds i slutet av väg Sök vägar. Route _admin/ \*_ matchar till exempel alla vägar under _admin_ -sökvägen.<li>En vägs standard fil är _index.html_.</ul>|
+| `serve`        | Nej       | saknas          | Definierar filen eller sökvägen som returneras från begäran. Fil Sök vägen och namnet kan inte vara samma som den begärda sökvägen. Om ett `serve` värde inte är definierat används den begärda sökvägen. QueryString-parametrar stöds inte. `serve` värdena måste peka på faktiska filer.  |
+| `allowedRoles` | Nej       | antal     | En matris med roll namn. <ul><li>Giltiga tecken är `a-z` , `A-Z` , `0-9` och `_` .<li>Den inbyggda rollen `anonymous` gäller för alla oautentiserade användare.<li>Den inbyggda rollen `authenticated` gäller för alla inloggade användare.<li>Användarna måste tillhöra minst en roll.<li>Roller matchas på en _eller_ -basis. Om en användare finns i någon av rollerna i listan beviljas åtkomst.<li>Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).</ul> |
+| `statusCode`   | Nej       | 200           | [Http-status kod](https://wikipedia.org/wiki/List_of_HTTP_status_codes) svaret för begäran. |
 
 ## <a name="securing-routes-with-roles"></a>Skydda vägar med roller
 
@@ -210,7 +210,7 @@ Genom att ange ett värde för ett sidhuvud läggs eller ändras rubriken. Om du
 }
 ```
 
-I exemplet ovan läggs en ny `content-security-policy` rubrik till, `cache-control` ändrar serverns standardvärde och `x-dns-prefectch-control` rubriken tas bort.
+I exemplet ovan läggs en ny `content-security-policy` rubrik till, `cache-control` ändrar serverns standardvärde och `x-dns-prefetch-control` rubriken tas bort.
 
 Följande överväganden är viktiga när du arbetar med huvuden:
 
@@ -218,7 +218,7 @@ Följande överväganden är viktiga när du arbetar med huvuden:
 - Null eller tomma värden tar bort en rubrik från bearbetningen.
 - Nycklar eller värden får inte överstiga 8 000 tecken.
 - Definierade sidhuvuden hanteras med alla begär Anden.
-- Sidhuvuden som definieras iroutes.jstillämpas endast _ på_ statiskt innehåll. Du kan anpassa svars rubriker för en API-slutpunkt i funktionens kod.
+- Sidhuvuden som definieras iroutes.jstillämpas endast _på_ statiskt innehåll. Du kan anpassa svars rubriker för en API-slutpunkt i funktionens kod.
 
 ## <a name="example-route-file"></a>Exempel på cirkulations fil
 
@@ -290,9 +290,9 @@ I följande exempel beskrivs vad som händer när en begäran matchar en regel.
 | Begär anden till... | Resultat i... |
 |--|--|--|
 | _/Profile_ | Autentiserade användare betjänar filen _/profile/index.html_ . Oautentiserade användare Omdirigerad till _/login_. |
-| _/admin/reports_ | Autentiserade användare i rollen _Administratörer_ betjänar filen _/admin/Reports/index.html_ . Autentiserade användare som inte tillhör rollen _Administratörer_ hanteras ett 401-fel<sup>2</sup>. Oautentiserade användare Omdirigerad till _/login_. |
+| _/admin/reports_ | Autentiserade användare i rollen _Administratörer_ betjänar filen _/admin/Reports/index.html_ . Autentiserade användare som inte tillhör rollen _Administratörer_ hanteras ett 401-fel <sup>2</sup>. Oautentiserade användare Omdirigerad till _/login_. |
 | _/api/admin_ | Begär Anden från autentiserade användare i rollen _Administratörer_ skickas till API: et. Autentiserade användare som inte tillhör rollen _Administratörer_ och oautentiserade användare hanteras ett 401-fel. |
-| _/customers/contoso_ | Autentiserade användare som tillhör antingen _Administratörer_ eller _kunder \_ contoso_ -roller behandlas som _/Customers/contoso/index.html_ -fil<sup>2</sup>. Autentiserade användare som inte tillhör _Administratörer_ eller _kunder \_ contoso_ -roller behandlas ett 401-fel. Oautentiserade användare Omdirigerad till _/login_. |
+| _/customers/contoso_ | Autentiserade användare som tillhör antingen _Administratörer_ eller _kunder \_ contoso_ -roller behandlas som _/Customers/contoso/index.html_ -fil <sup>2</sup>. Autentiserade användare som inte tillhör _Administratörer_ eller _kunder \_ contoso_ -roller behandlas ett 401-fel. Oautentiserade användare Omdirigerad till _/login_. |
 | _/login_ | Oautentiserade användare ifrågasätts att autentisera med GitHub. |
 | _/.auth/login/twitter_ | Auktorisering med Twitter har inaktiverats. Servern svarar med ett 404-fel. |
 | _/logout_ | Användare loggas ut från en autentiseringsprovider. |

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: d0b7f871b2ea62c810a6d20f6e20a5e8d3f6306e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791921"
+ms.locfileid: "98805186"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Viktig information om Azure Stack Edge 2101
 
@@ -46,9 +46,9 @@ Följande tabell innehåller en sammanfattning av kända problem i 2101-versione
 |**2.**|Kubernetes-instrumentpanel | *Https* -slutpunkten för Kubernetes-instrumentpanelen med SSL-certifikat stöds inte. | |
 |**3.**|Kubernetes |Edge container Registry fungerar inte när webbproxy är aktiverat.|Funktionen kommer att vara tillgänglig i framtida versioner. |
 |**4.**|Kubernetes |Edge container Registry fungerar inte med IoT Edge moduler.| |
-|**5.**|Kubernetes |Kubernetes stöder inte ":" i miljö variabel namn som används av .NET-program. Det krävs också för Event Grid IoT Edge-modulen för att fungera på Azure Stack Edge-enhet och andra program. Mer information finns i [ASP.net Core-dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersätt ":" med dubbel under streck. Mer information finns i [Kubernetes-problem](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**3-6.** |Azure-båg + Kubernetes-kluster |När en resurs `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |Du måste ställa in `--sync-garbage-collection` i Arc-OperatorParams för att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
-|**3,7.**|NFS |Program som använder NFS-resurser monteras på enheten för att skriva data ska använda exklusiv skrivning. Med exklusiv skrivning ser du till att skrivningarna skrivs till disken.| |
+|**5.**|Kubernetes |Kubernetes stöder inte ":" i miljö variabel namn som används av .NET-program. Detta krävs också för Event Grid IoT Edge-modulen för att fungera på Azure Stack Edge-enhet och andra program. Mer information finns i [ASP.net Core-dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersätt ":" med dubbel under streck. Mer information finns i [Kubernetes-problem](https://github.com/kubernetes/kubernetes/issues/53201)|
+|**3-6.** |Azure-båg + Kubernetes-kluster |När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |Du måste ställa in `--sync-garbage-collection`  i Arc-OperatorParams för att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**3,7.**|NFS |Program som använder NFS-resurser monteras på enheten för att skriva data ska använda exklusiv skrivning. Detta säkerställer att skrivningarna skrivs till disken.| |
 |**7,8.**|Beräknings konfiguration |Beräknings konfiguration Miss lyckas i nätverkskonfigurationer där gatewayer eller växlar eller routrar svarar på ARP-begäranden (Address Resolution Protocol) för system som inte finns i nätverket.| |
 |**1.9.**|Compute och Kubernetes |Om Kubernetes konfigureras först på din enhet anlitar den alla tillgängliga GPU: er. Därför är det inte möjligt att skapa Azure Resource Manager virtuella datorer med GPU: er när du har konfigurerat Kubernetes. |Om enheten har 2 GPU: er kan du skapa en virtuell dator som använder GPU: n och sedan konfigurera Kubernetes. I det här fallet kommer Kubernetes att använda de återstående tillgängliga 1 GPU: n. |
 

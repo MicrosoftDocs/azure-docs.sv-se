@@ -2,14 +2,14 @@
 title: Autentisera en hanterad identitet med Azure Active Directory
 description: Den här artikeln innehåller information om hur du autentiserar en hanterad identitet med Azure Active Directory för åtkomst till Azure Event Hubs-resurser
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993541"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805300"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Autentisera en hanterad identitet med Azure Active Directory för att få åtkomst till Event Hubs resurser
 Azure Event Hubs stöder Azure Active Directory (Azure AD)-autentisering med [hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md). Hanterade identiteter för Azure-resurser kan ge åtkomst till Event Hubs resurser med hjälp av Azure AD-autentiseringsuppgifter från program som körs i Azure Virtual Machines (VM), Function-appar, Virtual Machine Scale Sets och andra tjänster. Genom att använda hanterade identiteter för Azure-resurser tillsammans med Azure AD-autentisering kan du undvika att lagra autentiseringsuppgifter med dina program som körs i molnet.
@@ -41,11 +41,12 @@ Följ dessa steg när programmet har skapats:
 1. Välj den **status** som ska **användas.** 
 1. Spara inställningen genom att välja **Spara**. 
 
-    ![Hanterad identitet för en webbapp](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Hanterad identitet för en webbapp":::
+4. Välj **Ja** i informations meddelandet. 
 
-När du har aktiverat den här inställningen skapas en ny tjänst identitet i din Azure Active Directory (Azure AD) och konfigureras i App Service-värden.
+    När du har aktiverat den här inställningen skapas en ny tjänst identitet i din Azure Active Directory (Azure AD) och konfigureras i App Service-värden.
 
-Tilldela nu den här tjänst identiteten till en roll i det begärda omfånget i Event Hubs-resurser.
+    Tilldela nu den här tjänst identiteten till en roll i det begärda omfånget i Event Hubs-resurser.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Så här tilldelar du Azure-roller med hjälp av Azure Portal
 Om du vill tilldela en roll till Event Hubs resurser navigerar du till resursen i Azure Portal. Visa inställningarna för Access Control (IAM) för resursen och följ de här anvisningarna för att hantera roll tilldelningar:
@@ -56,15 +57,20 @@ Om du vill tilldela en roll till Event Hubs resurser navigerar du till resursen 
 1. I Azure Portal navigerar du till Event Hubs namn området och visar **översikten** för namn området. 
 1. Välj **Access Control (IAM)** på den vänstra menyn för att Visa inställningar för åtkomst kontroll för händelsehubben.
 1.  Välj fliken **roll tilldelningar** om du vill se en lista över roll tilldelningar.
-3.  Välj **Lägg** till för att lägga till en ny roll.
-4.  På sidan **Lägg till roll tilldelning** väljer du de Event Hubs roller som du vill tilldela. Sök sedan efter den tjänst identitet som du har registrerat för att tilldela rollen.
+3.  Välj **Lägg till** och välj sedan **Lägg till roll tilldelning** _.
+4.  På sidan _ *Lägg till roll tilldelning** följer du dessa steg:
+    1. För **roll** väljer du den Event Hubs roll som du vill tilldela. I det här exemplet är det **Azure Event Hubs data ägare**.
+    1. I fältet **tilldela åtkomst till väljer du** **App Service** under **systemtilldelad hanterad identitet**. 
+    1. Välj den **prenumeration** där den hanterade identiteten för webbappen skapades.
+    1. Välj den **hanterade identiteten** för den webbapp som du skapade. Standard namnet för identiteten är samma som namnet på webbappen. 
+    1. Välj sedan **Spara**. 
     
-    ![Sidan Lägg till roll tilldelning](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  Välj **Spara**. Identiteten som du har tilldelat rollen visas i listan under den rollen. Följande bild visar till exempel att tjänst identiteten har Event Hubs data ägare.
-    
-    ![Identitet som har tilldelats en roll](./media/authenticate-managed-identity/role-assigned.png)
+        ![Sidan Lägg till roll tilldelning](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-När du har tilldelat rollen får webb programmet åtkomst till Event Hubs resurser under det definierade omfånget. 
+    När du har tilldelat rollen får webb programmet åtkomst till Event Hubs resurser under det definierade omfånget. 
+
+    > [!NOTE]
+    > En lista över tjänster som stöder hanterade identiteter finns i [tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="test-the-web-application"></a>Testa webbprogrammet
 1. Skapa ett Event Hubs-namnområde och en Event Hub. 

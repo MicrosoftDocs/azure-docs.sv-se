@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447371"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804847"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Distribuera ett program med Kubernetes tillstånd via kubectl på din Azure Stack Edge Pro GPU-enhet
 
@@ -25,7 +25,7 @@ Innan du kan skapa ett Kubernetes-kluster och använda `kubectl` kommando rads v
 
 - Du har inloggnings uppgifter till en 1-nod Azure Stack Edge Pro-enhet.
 
-- Windows PowerShell 5,0 eller senare är installerat på ett Windows-klientsystem för att få åtkomst till Azure Stack Edge Pro-enheten. Du kan också ha andra klienter med ett operativ system som stöds. Den här artikeln beskriver proceduren när du använder en Windows-klient. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Windows PowerShell 5,0 eller senare är installerat på ett Windows-klientsystem för att få åtkomst till Azure Stack Edge Pro-enheten. Du kan också ha andra klienter med ett operativ system som stöds. Den här artikeln beskriver proceduren när du använder en Windows-klient. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
 
 - Compute är aktiverat på den Azure Stack Edge Pro-enheten. Om du vill aktivera beräkning går du till **beräknings** sidan i enhetens lokala användar gränssnitt. Välj sedan ett nätverks gränssnitt som du vill aktivera för beräkning. Välj **Aktivera**. Genom att aktivera beräknings resultatet skapas en virtuell växel på enheten i nätverks gränssnittet. Mer information finns i [Aktivera Compute Network på Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
@@ -55,7 +55,7 @@ För att kontrol lera versionen av `kubectl` :
    kubectl version
    ```
     
-   Här är ett exempel på utdata:
+   Ett exempel på utdata visas nedan:
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -71,7 +71,7 @@ För att kontrol lera versionen av `kubectl` :
    kubectl get pods -n <namespace-string>
    ```
     
-   Här är ett exempel på kommando användning:
+   Ett exempel på kommando användning visas nedan:
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -103,7 +103,7 @@ För att kontrol lera versionen av `kubectl` :
 
 ### <a name="create-a-stateless-application-using-a-deployment"></a>Skapa ett tillstånds lösa program med hjälp av en distribution
 
-Nu när du har kontrollerat att kommando rads versionen för kubectl är korrekt och har de nödvändiga konfigurationsfilerna kan du skapa en tillstånds lös program distribution.
+Nu när du har kontrollerat att kubectl kommando rads version är korrekt och du har de nödvändiga konfigurationsfilerna kan du skapa en tillstånds lös program distribution.
 
 En pod är den grundläggande körnings enheten för ett Kubernetes-program, den minsta och enklaste enheten i Kubernetes objekt modell som du skapar eller distribuerar. En POD kapslar också in lagrings resurser, en unik nätverks-IP och alternativ som styr hur behållarna ska köras.
 
@@ -123,7 +123,7 @@ Följ de här stegen för att skapa en nginx-distribution:
 
    I det här exemplet är sökvägen till program YAML-filen en extern källa.
 
-   Här är en exempel användning av kommandot och utdata:
+   Här är ett exempel på hur du kan använda kommandot och dess utdata:
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -131,7 +131,7 @@ Följ de här stegen för att skapa en nginx-distribution:
    deployment.apps/nginx-deployment created
    ```
 
-   Alternativt kan du spara följande markdown på din lokala dator och ersätta sökvägen och fil namnet i parametern *-f* . Till exempel "C:\Kubernetes\deployment.yaml". Här är konfigurationen för program distributionen:
+   Alternativt kan du spara följande markdown på din lokala dator och ersätta sökvägen och fil namnet i parametern *-f* . Till exempel "C:\Kubernetes\deployment.yaml". Konfigurationen för program distributionen skulle vara:
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -163,7 +163,7 @@ Följ de här stegen för att skapa en nginx-distribution:
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   Här är exempel på användning av kommandot och utdata:
+   Exempel på användning av kommandot, med utdata, visas nedan:
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -203,13 +203,13 @@ Följ de här stegen för att skapa en nginx-distribution:
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   Om du tittar närmare på *repliker* visas:
+   För *repliker* -inställningen visas:
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   Inställningen *repliker* visar att distributions specifikationen kräver två poddar, att de poddar var skapade och uppdaterade och att de är redo att användas.
+   Inställningen *repliker* visar att distributions specifikationen kräver två poddar och att dessa poddar har skapats och uppdaterats och är redo att användas.
 
    > [!NOTE]
    > En replik uppsättning ersätter poddar som tas bort eller avslutas av någon anledning, t. ex. om det skulle uppstå ett diskfel eller en avbrotts enhets uppgradering. Därför rekommenderar vi att du använder en replik uppsättning även om programmet bara kräver en enda pod.
@@ -220,7 +220,7 @@ Följ de här stegen för att skapa en nginx-distribution:
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   Här är exempel på användning av kommandot och utdata:
+   Exempel på användning av kommandot, med utdata, visas nedan:
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -238,7 +238,7 @@ Följ de här stegen för att skapa en nginx-distribution:
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   Här är exempel på användning av kommandot och utdata:
+  Exempel på användning av kommandot, med utdata, visas nedan:
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -295,14 +295,14 @@ Följ de här stegen för att skapa en nginx-distribution:
 
 ### <a name="rescale-the-application-deployment-by-increasing-the-replica-count"></a>Skala om program distributionen genom att öka antalet repliker
 
-Varje pod är avsedd att köra en enda instans av ett visst program. Om du vill skala programmet vågrätt för att köra flera instanser kan du öka antalet poddar, en för varje instans. I Kubernetes kallas detta för replikering.
+Varje pod är avsedd att köra en enda instans av ett visst program. Om du vill skala programmet vågrätt för att köra flera instanser kan du öka antalet poddar till ett för varje instans. I Kubernetes kallas detta för replikering.
 Du kan öka antalet poddar i program distributionen genom att använda en ny YAML-fil. YAML-filen ändrar repliker-inställningen till 4, vilket ökar antalet poddar i distributionen till fyra poddar. Så här ökar du antalet poddar från 2 till 4:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-Alternativt kan du spara följande markdown på din lokala dator och ersätta sökvägen och fil namnet för parametern *-f* för `kubectl apply` . Till exempel "C:\Kubernetes\deployment-scale.yaml". Här följer konfigurationen för skala för program distribution:
+Alternativt kan du spara följande markdown på din lokala dator och ersätta sökvägen och fil namnet för parametern *-f* för `kubectl apply` . Till exempel "C:\Kubernetes\deployment-scale.yaml". Konfigurationen för programmets distributions skala skulle vara:
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -332,7 +332,7 @@ Så här kontrollerar du att distributionen har fyra poddar:
 kubectl get pods -l app=nginx
 ```
 
-Här är exempel på utdata för en omskalning av distribution från två till fyra poddar:
+Exempel på utdata för en omskalning av distribution från två till fyra poddar visas nedan:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -l app=nginx
@@ -354,7 +354,7 @@ Om du vill ta bort distributionen, inklusive alla poddar, måste du köra `kubec
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-Här är ett exempel på kommando användning och utdata:
+Ett exempel på kommando användning, med utdata, visas nedan:
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"

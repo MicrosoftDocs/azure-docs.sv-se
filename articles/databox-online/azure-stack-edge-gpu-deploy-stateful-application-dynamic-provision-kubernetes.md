@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448873"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804922"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Använda kubectl för att köra ett Kubernetes tillstånds känsligt program med StorageClass på din Azure Stack Edge Pro GPU-enhet
 
@@ -24,7 +24,7 @@ Den här proceduren är avsedd för de som har granskat [Kubernetes-lagringen p�
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du kan distribuera det tillstånds känsliga programmet måste du kontrol lera att du har slutfört följande krav på enheten och klienten som du ska använda för att få åtkomst till enheten:
+Innan du kan distribuera det tillstånds känsliga programmet måste du uppfylla följande krav på enheten och klienten som du kommer att använda för att få åtkomst till enheten:
 
 ### <a name="for-device"></a>För enheten
 
@@ -35,7 +35,7 @@ Innan du kan distribuera det tillstånds känsliga programmet måste du kontrol 
 ### <a name="for-client-accessing-the-device"></a>För klient åtkomst till enheten
 
 - Du har ett Windows-klientsystem som ska användas för att få åtkomst till Azure Stack Edge Pro-enheten.
-    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
     
     - Du kan också ha andra klienter med ett [operativ system som stöds](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Den här artikeln beskriver proceduren när du använder en Windows-klient. 
     
@@ -157,7 +157,7 @@ Alla `kubectl` kommandon som du använder för att skapa och hantera tillstånds
     persistentvolumeclaim/mysql-pv-claim-sc created
     C:\Users\user>
     ```
-   Notera namnet på den PVC som skapats `mysql-pv-claim-sc` . Du kommer att använda det i ett senare steg. 
+   Notera namnet på den PVC som skapas – i det här exemplet `mysql-pv-claim-sc` . Du kommer att använda det i ett senare steg.
 
 4. Distribuera `mysql-deployment.yml` filens innehåll.
 

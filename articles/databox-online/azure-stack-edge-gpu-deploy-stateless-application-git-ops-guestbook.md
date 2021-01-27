@@ -1,31 +1,31 @@
 ---
-title: Distribuera PHP gäst program på Arc-aktiverade Kubernetes på Azure Stack Edge Pro GPU-enhet | Microsoft Docs
-description: Beskriver hur du distribuerar ett tillstånds lösa program i PHP-programmet med Redis med GitOps på ett Arc-aktiverat Kubernetes-kluster för din Azure Stack Edge Pro-enhet.
+title: Distribuera `PHP Guestbook` app on Arc Enabled Kubernetes på Azure Stack Edge Pro GPU-enhet | Microsoft Docs
+description: Beskriver hur du distribuerar ett program för PHP- `Guestbook` tillstånd med Redis med GitOps på ett Arc-aktiverat Kubernetes-kluster för din Azure Stack Edge Pro-enhet.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882967"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804885"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Distribuera ett tillstånds lösa program i PHP-programmet med Redis on Arc Enabled Kubernetes Cluster på Azure Stack Edge Pro GPU
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Distribuera ett `Guestbook` program med php-tillstånd utan Redis på Arc-aktiverade Kubernetes-kluster på Azure Stack Edge Pro GPU
 
 Den här artikeln visar hur du skapar och distribuerar ett enkelt webb program med flera nivåer med hjälp av Kubernetes och Azure Arc. Det här exemplet består av följande komponenter:
 
-- En Redis-hanterare med en instans för att lagra gäst boks poster
+- En Redis-Master med en instans som lagrar `guestbook` poster
 - Flera replikerade Redis-instanser för att betjäna läsningar
 - Flera webb klient dels instanser
 
 Distributionen görs med hjälp av GitOps på Kubernetes-klustret på din Azure Stack Edge Pro-enhet. 
 
-Den här proceduren är avsedd för de som har granskat [Kubernetes-arbetsbelastningarna på Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-kubernetes-workload-management.md) och som är bekanta med begreppen [Vad är Azure Arc Enabled Kubernetes (för hands version)](../azure-arc/kubernetes/overview.md).
+Den här proceduren är avsedd för personer som har granskat [Kubernetes-arbetsbelastningar på Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-kubernetes-workload-management.md) och som är bekanta med begreppen [Vad är Azure Arc Enabled Kubernetes (för hands version)](../azure-arc/kubernetes/overview.md).
 
 > [!NOTE]
 > Den här artikeln innehåller referenser till termen Slav, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
@@ -49,18 +49,18 @@ Innan du kan distribuera det tillstånds lösa programmet måste du kontrol lera
 
 1. Du har ett Windows-klientsystem som ska användas för att få åtkomst till Azure Stack Edge Pro-enheten.
   
-    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Klienten kör Windows PowerShell 5,0 eller senare. Om du vill hämta den senaste versionen av Windows PowerShell går du till [Installera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true).
     
     - Du kan också ha andra klienter med ett [operativ system som stöds](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) . Den här artikeln beskriver proceduren när du använder en Windows-klient. 
     
 1. Du har slutfört proceduren som beskrivs i [komma åt Kubernetes-klustret på Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-create-kubernetes-cluster.md). Du har:
     
-    - Installerad `kubectl` på klienten  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - Installerat `kubectl` på klienten. <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - Kontrol lera att `kubectl` klient versionen inte är mer än en version från den Kubernetes huvud version som körs på din Azure Stack Edge Pro-enhet. 
       - Används `kubectl version` för att kontrol lera vilken version av kubectl som körs på klienten. Anteckna den fullständiga versionen.
       - I det lokala användar gränssnittet för din Azure Stack Edge Pro-enhet går du till **Översikt** och noterar Kubernetes-program varu numret. 
-      - Kontrol lera att dessa två versioner är kompatibla med den mappning som finns i den Kubernetes-version som stöds <!--insert link-->.
+      - Kontrol lera att dessa två versioner är kompatibla med den mappning som finns i den Kubernetes-version som stöds. <!--insert link-->
 
 1. Du har en [GitOps-konfiguration som du kan använda för att köra en Azure Arc-distribution](https://github.com/kagoyal/dbehaikudemo). I det här exemplet ska du använda följande `yaml` filer för att distribuera på din Azure Stack Edge Pro-enhet.
 
@@ -86,18 +86,18 @@ Följ dessa steg om du vill konfigurera Azure Arc-resursen för att distribuera 
 
     ![Skärm bild som visar Azure-bågen aktiverat Kubernetes-kluster med Lägg till konfiguration valt.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. I **Lägg till konfiguration** anger du lämpliga värden för fälten och väljer **Använd**.
+1. I **Lägg till konfiguration** anger du lämpliga värden för fälten och väljer sedan **Använd**.
 
     |Parameter  |Beskrivning |
     |---------|---------|
     |Konfigurations namn     | Namn på konfigurations resursen.        |
     |Namn på operatörs instans     |Instans namn för operatorn för att identifiera en speciell konfiguration. Name är en sträng med högst 253 tecken som måste vara gemener, alfanumeriskt, bindestreck och punkt.         |
-    |Namn område för operatör     | Ange till **demotestguestbook** eftersom detta matchar det namn område som anges i distributionen `yaml` . <br> Fältet definierar namn området där operatorn är installerad. Name är en sträng med högst 253 tecken som måste vara gemener, alfanumeriskt, bindestreck och punkt.         |
+    |Namn område för operatör     | Ange till **demotestguestbook** för att matcha det namn område som anges i distributionen `yaml` . <br> Fältet definierar namn området där operatorn är installerad. Name är en sträng med högst 253 tecken som måste vara gemener, alfanumeriskt, bindestreck och punkt.         |
     |URL för databas     |<br>Sökväg till git-lagringsplatsen i `http://github.com/username/repo` eller `git://github.com/username/repo` format där din GitOps-konfiguration finns.         |
-    |Operator omfång     | Välj **namn område**. <br>Detta definierar omfattningen som operatorn är installerad på. Välj detta som namn område. Din operatör kommer att installeras i namn området som anges i yaml-filerna för distribution.       |
-    |Operatortyp     | Lämna kvar som standard. <br>Anger operatorns typ, som standard, anges som flöde.        |
-    |Operator parametrar     | Lämna tomt. <br>Det här fältet innehåller parametrar som ska skickas till flödes operatorn.        |
-    |Helm     | Ställ in på **inaktive rad**. <br>Aktivera det här alternativet om du ska göra diagrambaserade distributioner.        |
+    |Operator omfång     | Välj **namn område**. <br>Den här parametern definierar omfattningen där operatorn är installerad. Välj namn område för att installera operatören i namn området som anges i yaml-filerna för distribution.       |
+    |Operatortyp     | Lämna kvar som standard. <br>Den här parametern anger typen av operator – som standard, anges som flöde.        |
+    |Operator parametrar     | Lämna tomt. <br>Den här parametern innehåller parametrar som ska skickas till flödes operatorn.        |
+    |Helm     | Ange att den här parametern är **inaktive rad**. <br>Aktivera det här alternativet om du ska göra diagrambaserade distributioner.        |
 
 
     ![Lägga till konfiguration](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ Distributionen via GitOps-konfigurationen skapar ett `demotestguestbook` namn om
     [10.128.44.240]: PS>
     ```  
 
-1. I det här exemplet distribuerades klient dels tjänsten som typ: LoadBalancer. Du måste hitta IP-adressen för den här tjänsten för att kunna visa gäst boken. Kör följande kommando.
+1. I det här exemplet distribuerades klient dels tjänsten som typ: LoadBalancer. Du måste hitta IP-adressen för den här tjänsten för att kunna visa `guestbook` . Kör följande kommando.
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ Distributionen via GitOps-konfigurationen skapar ett `demotestguestbook` namn om
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. Klient dels tjänsten med `type:LoadBalancer` har en extern IP-adress. Den här IP-adressen är från det IP-adressintervall som du angav för externa tjänster när du konfigurerar inställningarna för beräknings nätverket på enheten. Använd den här IP-adressen för att Visa gäst boken på URL: `https://<external-IP-address>` .
+1. Klient dels tjänsten med `type:LoadBalancer` har en extern IP-adress. Den här IP-adressen är från det IP-adressintervall som du angav för externa tjänster när du konfigurerar inställningarna för beräknings nätverket på enheten. Använd den här IP-adressen för att visa `guestbook` på URL: en: `https://<external-IP-address>` .
 
     ![Visa gäst bok](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>Ta bort distribution
 
-Om du vill ta bort distributionen kan du ta bort konfigurationen från Azure Portal. Detta skulle ta bort de objekt som skapats, inklusive distributioner och tjänster.
+Om du vill ta bort distributionen kan du ta bort konfigurationen från Azure Portal. Om du tar bort konfigurationen raderas de objekt som har skapats, inklusive distributioner och tjänster.
 
 1. I Azure Portal går du till Azure Arc-resursens > konfigurationer. 
 1. Leta upp den konfiguration som du vill ta bort. Välj... anropa snabb menyn och välj **ta bort**.
