@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740772"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879569"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Visualisera data från Azure Time Series Insights i Power BI
 
@@ -112,10 +112,10 @@ Nu när du har importerat data till Power BI är det dags att bygga en rapport m
 När du har skapat rapporten kan du publicera den till Power BI repor ting Services och dela med andra i din organisation.
 
 ## <a name="advanced-editing"></a>Avancerad redigering
-Om du redan har läst in en data uppsättning i Power BI men vill ändra frågan (till exempel parametrarna för datum/tid eller miljö-ID), kan du göra detta via Avancerad redigerare-funktionerna i Power BI. Läs Power BI- [dokumentationen](https://docs.microsoft.com/power-bi/desktop-query-overview) om du vill veta mer om hur du gör ändringar med hjälp av **Power Query redigeraren**. 
+Om du redan har läst in en data uppsättning i Power BI men vill ändra frågan (till exempel parametrarna för datum/tid eller miljö-ID), kan du göra detta via Avancerad redigerare-funktionerna i Power BI. Läs Power BI- [dokumentationen](/power-bi/desktop-query-overview) om du vill veta mer om hur du gör ändringar med hjälp av **Power Query redigeraren**. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs mer om [Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-query-overview).
+* Läs mer om [Power BI Desktop](/power-bi/desktop-query-overview).
 
 * Lär dig mer om att [köra frågor mot data](concepts-query-overview.md) i Azure Time Series Insights Gen2.

@@ -4,19 +4,19 @@ description: Så här hittar du icke anslutna Azure-hanterade och ohanterade (VH
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542746"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898163"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Hitta och ta bort frånkopplade Azure-hanterade och ohanterade diskar – Azure Portal
 
-När du tar bort en virtuell dator (VM) i Azure tas som standard alla diskar som är kopplade till den virtuella datorn bort. Detta bidrar till att förhindra data förlust på grund av oavsiktlig borttagning av virtuella datorer. När en virtuell dator har tagits bort fortsätter du att betala för ej anslutna diskar. Den här artikeln visar hur du hittar och tar bort alla frånkopplade diskar med hjälp av Azure Portal och minskar onödiga kostnader.
+När du tar bort en virtuell dator (VM) i Azure tas som standard alla diskar som är kopplade till den virtuella datorn bort. Detta bidrar till att förhindra data förlust på grund av oavsiktlig borttagning av virtuella datorer. När en virtuell dator har tagits bort fortsätter du att betala för ej anslutna diskar. Den här artikeln visar hur du hittar och tar bort alla frånkopplade diskar med hjälp av Azure Portal och minskar onödiga kostnader. Borttagningar är permanenta. du kommer inte att kunna återställa data när du har tagit bort en disk.
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>Hanterade diskar: hitta och ta bort ej anslutna diskar
 
@@ -45,17 +45,17 @@ Om du har ohanterade diskar som inte är kopplade till en virtuell dator behöve
 
     En lista över alla ohanterade diskar visas. Alla diskar som har " **-** " i kolumnen **bifogad till** är en icke-ansluten disk.
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Skärm bild av bladet enskilda hanterade diskar. Det här bladet visar unattached i disk tillstånd om det inte är kopplat. Du kan ta bort disken om du inte behöver bevara dess data längre":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Skärm bild av bladet ej hanterade diskar. Diskar i det här bladet som är kopplade till kolumnen är inte kopplade.":::
 
 1. Välj den icke-anslutna disken som du vill ta bort. Då öppnas bladet disk.
 
 1. På diskens blad kan du bekräfta att det är frånkopplat, eftersom det fortfarande är **kopplat till** **-** .
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Skärm bild av bladet enskilda hanterade diskar. Det här bladet visar unattached i disk tillstånd om det inte är kopplat. Du kan ta bort disken om du inte behöver bevara dess data längre":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Skärm bild av ett enskilt ohanterat disk blad. Den har-som bifogad till-värde om den är frånkopplad. Om du inte längre behöver dessa disk data kan du ta bort den.":::
 
 1. Välj **Ta bort**.
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Skärm bild av bladet enskilda hanterade diskar. Det här bladet visar unattached i disk tillstånd om det inte är kopplat. Du kan ta bort disken om du inte behöver bevara dess data längre":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Skärm bild av ett enskilt ohanterat disk blad, markera ta bort.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

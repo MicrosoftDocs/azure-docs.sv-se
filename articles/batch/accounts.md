@@ -2,13 +2,13 @@
 title: Batch-konton och Azure Storage konton
 description: Lär dig mer om Azure Batch konton och hur de används av en utvecklings synpunkt.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/26/2021
+ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83791150"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896756"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch-konton och Azure Storage konton
 
@@ -20,9 +20,10 @@ All bearbetning och alla resurser är associerade med ett batch-konto. När ditt
 
 Du kan köra flera batch-arbetsbelastningar i ett enda batch-konto. Du kan också distribuera dina arbets belastningar mellan batch-konton som finns i samma prenumeration, men som finns i olika Azure-regioner.
 
+Du kan skapa ett batch-konto med hjälp av [Azure Portal](batch-account-create-portal.md) eller program mässigt, till exempel med [batch Management .net-biblioteket](batch-management-dotnet.md). När du skapar kontot kan du koppla ett Azure-lagringskonto för att lagra jobbrelaterade in- och utdata eller program.
+
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-Du kan skapa ett batch-konto med hjälp av [Azure Portal](batch-account-create-portal.md) eller program mässigt, till exempel med [batch Management .net-biblioteket](batch-management-dotnet.md). När du skapar kontot kan du koppla ett Azure-lagringskonto för att lagra jobbrelaterade in- och utdata eller program.
 
 ## <a name="azure-storage-accounts"></a>Azure Storage-konton
 
@@ -41,4 +42,5 @@ Du kan associera ett lagringskonto till Batch-kontot när du skapar Batch-kontot
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [noder och pooler](nodes-and-pools.md).
-- Lär dig hur du skapar ett batch-konto med hjälp av [Azure Portal](batch-account-create-portal.md).
+- Lär dig hur du skapar och hanterar batch-konton med hjälp av [Azure Portal](batch-account-create-portal.md) eller [batch Management .net](batch-management-dotnet.md).
+- Lär dig hur du använder [privata slut punkter](private-connectivity.md) med Azure Batch-konton.

@@ -4,12 +4,12 @@ description: Så här distribuerar och konfigurerar du ett huvud nätverk för e
 ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060324"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897266"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Distribuera en huvud boks infrastrukturs konsortium i Azure Kubernetes-tjänsten
 
@@ -317,7 +317,7 @@ CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
-# CC_PATH contains the path where your chaincode is placed.
+# CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
 # If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
@@ -334,7 +334,7 @@ Kör följande kommando för att installera chaincode på peer-organisationen.
 ```
 Kommandot installerar chaincode på alla peer-noder i peer-organisationen som anges i `ORGNAME` miljö variabeln. Om två eller flera peer-organisationer finns i din kanal och du vill installera chaincode på alla, kör du kommandot separat för varje peer-organisation.  
 
-Gör så här:  
+Följ de här stegen:  
 
 1.  Ange `ORGNAME` och `USER_IDENTITY` enligt `peerOrg1` och kör `./azhlf chaincode install` kommandot.  
 2.  Ange `ORGNAME` och `USER_IDENTITY` enligt `peerOrg2` och kör `./azhlf chaincode install` kommandot.  

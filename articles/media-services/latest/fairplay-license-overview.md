@@ -1,5 +1,5 @@
 ---
-title: Stöd för Media Services och Apple FairPlay-licens – Azure | Microsoft Docs
+title: Media Services-och Apple FairPlay-licens support – Azure
 description: Det här avsnittet ger en översikt över licens krav och konfiguration för Apple-FairPlay.
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f93567e2502612ebdf4bc6e67de0138b18657a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018740"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897602"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Licenskrav för och konfiguration av Apple FairPlay
 

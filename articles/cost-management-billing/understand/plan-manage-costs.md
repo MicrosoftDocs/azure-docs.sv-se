@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c640478170049bd06e11f7f89b1e213b7b305642
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032821"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898570"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Planera för hantering av Azure-kostnader
 
@@ -125,7 +125,7 @@ Gå igenom självstudien [Optimera kostnader från rekommendationer](../costs/tu
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrera med API:er för fakturering och förbrukning
 
-Du kan använda Azure-API:erna för [fakturering](/rest/api/billing/) och [förbrukning](/rest/api/consumption/) till att hämta fakturerings- och kostnadsdata programmatiskt. Använd RateCard-API:et och användnings-API:et tillsammans för att visa din fakturerade användning. Mer information finns i [Få insikter om din resursförbrukning i Microsoft Azure](../manage/usage-rate-card-overview.md).
+Du kan använda Azure-API:erna för [fakturering](/rest/api/billing/) och [förbrukning](/rest/api/consumption/) till att hämta fakturerings- och kostnadsdata programmatiskt. Använd RateCard-API:et och användnings-API:et tillsammans för att visa din fakturerade användning. Mer information finns i [Få insikter om din resursförbrukning i Microsoft Azure](../manage/consumption-api-overview.md#usage-details-api).
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Ytterligare resurser och särskilda fall
 

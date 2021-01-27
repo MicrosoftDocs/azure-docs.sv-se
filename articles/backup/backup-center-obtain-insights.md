@@ -3,16 +3,16 @@ title: Få insikter med Backup Center
 description: Lär dig att analysera historiska trender och få djupare insikter om dina säkerhets kopior med Backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c5f707ce3bc8d1172805ac14958a50bf59d1412d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173759"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893701"
 ---
-# <a name="obtain-insights-using-backup-center"></a>Få insikter med Backup Center
+# <a name="obtain-insights-using-backup-center-preview"></a>Få insikter med Backup Center (för hands version)
 
-För att analysera historiska trender och få djupare insikter om dina säkerhets kopior, tillhandahåller backup Center ett gränssnitt för [säkerhets kopiering av rapporter](configure-reports.md), som använder [Azure Monitor loggar](../azure-monitor/platform/data-platform-logs.md) och [Azure-arbetsböcker](../azure-monitor/platform/workbooks-overview.md). Säkerhets kopierings rapporter innehåller följande funktioner:
+För att analysera historiska trender och få djupare insikter om dina säkerhets kopior, tillhandahåller backup Center ett gränssnitt för att [säkerhetskopiera rapporter (för hands version)](configure-reports.md), som använder [Azure Monitor loggar](../azure-monitor/platform/data-platform-logs.md) och [Azure-arbetsböcker](../azure-monitor/platform/workbooks-overview.md). Säkerhets kopierings rapporter innehåller följande funktioner:
 
 - Allokering och Prognosticering av moln lagring förbrukat.
 
@@ -24,7 +24,7 @@ För att analysera historiska trender och få djupare insikter om dina säkerhet
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-- Säkerhets kopierings rapporter är för närvarande inte tillgängliga för Azure Database for PostgreSQL Server säkerhets kopiering.
+- Säkerhets kopierings rapporter (förhands granskning) är för närvarande inte tillgänglig för Azure Database for PostgreSQL Server säkerhets kopiering.
 
 - Se [support mat ris](backup-center-support-matrix.md) för en detaljerad lista över scenarier som stöds och som inte stöds.
 

@@ -1,5 +1,5 @@
 ---
-title: StorSimple 1200-migrering till Azure File Sync
+title: Migrering av StorSimple 1200 till Azure File Sync
 description: Lär dig hur du migrerar en virtuell StorSimple 1200-serie till Azure File Sync.
 author: fauhse
 ms.service: storage
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78c7953ef6432d37542a7a8b06f226a07f2b701f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630489"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882288"
 ---
-# <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200-migrering till Azure File Sync
+# <a name="storsimple-1200-migration-to-azure-file-sync"></a>Migrering av StorSimple 1200 till Azure File Sync
 
 StorSimple 1200-serien är en virtuell installation som körs i ett lokalt Data Center. Det är möjligt att migrera data från den här enheten till en Azure File Sync miljö. Azure File Sync är standard och strategisk Azure-tjänst som StorSimple-apparater kan migreras till.
 
@@ -210,7 +210,7 @@ Du har avslutat migreringen av en resurs/grupp av resurser till en gemensam rot 
 Du kan försöka att köra några av dessa kopior parallellt. Vi rekommenderar att du bearbetar omfånget för en Azure-filresurs i taget.
 
 > [!WARNING]
-> När du har flyttat alla data från dig StorSimple till Windows Server och migreringen är klar: gå tillbaka till * **alla** _ synkronisera grupper i Azure Portal och justera moln skiktet volym utrymme för ledigt utrymme i procent till något som passar bättre för användningen av cacheminnet, t. ex. 20%. 
+> När du har flyttat alla data från dig StorSimple till Windows Server och migreringen är klar: gå tillbaka till ***alla** _ synkronisera grupper i Azure Portal och justera moln skiktet volym utrymme för ledigt utrymme i procent till något som passar bättre för användningen av cacheminnet, t. ex. 20%. 
 
 Lagrings principen för ledigt utrymme i molnet fungerar på en volym nivå med eventuellt flera Server slut punkter som synkroniseras från den. Om du glömmer att justera det lediga utrymmet på en server slut punkt fortsätter synkroniseringen att tillämpa den mest restriktiva regeln och försöker behålla 99% ledigt disk utrymme, vilket gör att den lokala cachen inte fungerar som förväntat. Om det inte är målet att bara ha namn området för en volym som bara innehåller data som används sällan, arkiverade data.
 
@@ -234,5 +234,5 @@ Migrerings innehåll:
 Azure File Sync innehåll:
 
 * [AFS-översikt](./storage-sync-files-planning.md)
-* [Distributions guide för AFS](storage-files-deployment-guide.md)
+* [Distributions guide för AFS](./storage-how-to-create-file-share.md)
 * [AFS-felsökning](storage-sync-files-troubleshoot.md)

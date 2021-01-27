@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0e98078fe2799d1c524190c8ced36588f35498b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f5e92aa8aa211782bc238781c59b9ca0511173
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186443"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897249"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Kom igång med konfiguration av Azure Automation tillstånd
 
@@ -22,7 +22,7 @@ Den här artikeln innehåller en steg-för-steg-guide om hur du utför de vanlig
 
 Om du vill ha en exempel miljö som redan har kon figurer ATS utan att följa stegen som beskrivs i den här artikeln kan du använda [mallen Azure Automation hanterad nod](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Med den här mallen ställer du in en fullständig tillstånds konfiguration (DSC)-miljö, inklusive en virtuell Azure-dator som hanteras av State Configuration (DSC).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande krävs för att slutföra exemplen i den här artikeln:
 
@@ -100,7 +100,7 @@ Mer information om hur du kompilerar konfigurationer finns i [DSC-konfiguratione
 1. Klicka på **alla resurser** till vänster och sedan på namnet på ditt Automation-konto.
 1. På sidan Automation-konto klickar du på **tillstånds konfiguration (DSC)** under **konfigurations hantering**.
 1. På sidan tillstånds konfiguration (DSC) klickar du på fliken **konfigurationer** och sedan på **TestConfig**. Detta är namnet på den tidigare importerade konfigurationen.
-1. I konfigurations fönstret för TestConfig klickar du på **kompilera**och sedan på **Ja**. Detta startar ett kompilerings jobb.
+1. I konfigurations fönstret för TestConfig klickar du på **kompilera** och sedan på **Ja**. Detta startar ett kompilerings jobb.
 
    ![Skärm bild av knappen kompilera i TestConfig konfigurations sida](./media/automation-dsc-getting-started/CompileConfig.png)
 
@@ -115,7 +115,7 @@ När du har startat en kompilering kan du Visa den på panelen för att **kompil
 1. Klicka på **alla resurser** till vänster och sedan på namnet på ditt Automation-konto.
 1. På sidan Automation-konto klickar du på **tillstånds konfiguration (DSC)** under **konfigurations hantering**.
 1. På sidan tillstånds konfiguration (DSC) klickar du på fliken **konfigurationer** och sedan på **TestConfig**. Detta är namnet på den tidigare importerade konfigurationen.
-1. Under **Compilation Jobs**väljer du det Compilation-jobb som du vill visa. Ett fönster för kompilering öppnas med namnet med datumet då Compilation-jobbet startades.
+1. Under **Compilation Jobs** väljer du det Compilation-jobb som du vill visa. Ett fönster för kompilering öppnas med namnet med datumet då Compilation-jobbet startades.
 
    ![Skärm bild av sidan för att kompilera jobb](./media/automation-dsc-getting-started/CompilationJob.png)
 
@@ -151,7 +151,7 @@ Du kan använda tillstånds konfiguration för att hantera virtuella Azure-dator
 
 2. På sidan registrering väljer du namnet på den nod som ska användas för den virtuella datorn i fältet **konfigurations namn för nod** . Det är valfritt att ange ett namn i det här läget. Du kan ändra den tilldelade nodens konfiguration när du har aktiverat noden.
 
-3. Markera **noden omstart om det behövs**och klicka sedan på **OK**.
+3. Markera **noden omstart om det behövs** och klicka sedan på **OK**.
 
    ![Skärm bild av registrerings bladet](./media/automation-dsc-getting-started/RegisterVM.png)
 
@@ -210,7 +210,7 @@ Du kan tilldela en nod till att använda en annan nods konfiguration än den som
 1. På sidan Automation-konto klickar du på **tillstånds konfiguration (DSC)** under **konfigurations hantering**.
 1. På sidan State Configuration (DSC) klickar du på fliken **noder** .
 1. På fliken **noder** klickar du på namnet på den nod som du vill omtilldela.
-1. Klicka på **tilldela konfiguration av nod**på sidan för noden.
+1. Klicka på **tilldela konfiguration av nod** på sidan för noden.
 
     ![Skärm bild av sidan information om nod som markerar knappen tilldela nod-konfiguration](./media/automation-dsc-getting-started/AssignNode.png)
 
@@ -227,7 +227,7 @@ Om du inte längre vill att en nod ska hanteras av tillstånds konfigurationen k
 1. På sidan Automation-konto klickar du på **tillstånds konfiguration (DSC)** under **konfigurations hantering**.
 1. På sidan State Configuration (DSC) klickar du på fliken **noder** .
 1. På fliken **noder** klickar du på namnet på den nod som du vill avregistrera.
-1. Klicka på **avregistrera**i fönstret för den noden.
+1. Klicka på **avregistrera** i fönstret för den noden.
 
     ![Skärm bild av sidan information om noden som markerar knappen avregistrera](./media/automation-dsc-getting-started/UnregisterNode.png)
 
@@ -237,4 +237,4 @@ Om du inte längre vill att en nod ska hanteras av tillstånds konfigurationen k
 - Om du vill aktivera funktionen för virtuella datorer i din miljö, se [aktivera Azure Automation tillstånds konfiguration](automation-dsc-onboarding.md).
 - För att förstå PowerShell DSC, se [Översikt över önskad tillstånds konfiguration i Windows PowerShell](/powershell/scripting/dsc/overview/overview).
 - Pris information finns i pris information för [Azure Automation State Configuration](https://azure.microsoft.com/pricing/details/automation/).
-- En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).

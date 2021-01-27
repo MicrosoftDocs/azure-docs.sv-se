@@ -1,16 +1,16 @@
 ---
-author: hophanms
-ms.author: hophan
+author: amberz
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 1/20/2021
-ms.openlocfilehash: ac83f455d2af82c3f6970077fccb17f07e53cccc
+ms.author: amberz
+ms.openlocfilehash: bf872feae9c3a7ca94e5252872adee2b653f5524
 ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98901238"
+ms.locfileid: "98896173"
 ---
 ## <a name="creating-and-running-a-scan"></a>Skapa och köra en sökning
 
@@ -27,19 +27,19 @@ Om du vill skapa och köra en ny genomsökning gör du följande:
 
 1. Välj autentiseringsuppgifter för att ansluta till data källan. 
 
-   :::image type="content" source="media/manage-scans/set-up-scan.png" alt-text="Konfigurera genomsökning":::
+   :::image type="content" source="media/manage-scans/set-up-scan-data-explorer.png" alt-text="Konfigurera genomsökning":::
 
 1. Du kan begränsa sökningen till vissa delar av data källan, t. ex. mappar, samlingar eller scheman genom att kontrol lera lämpliga objekt i listan.
 
-   :::image type="content" source="media/manage-scans/scope-your-scan.png" alt-text="Sök omfång i sökningen":::
+   :::image type="content" source="media/manage-scans/scope-your-scan-data-explorer.png" alt-text="Sök omfång i sökningen":::
 
 1. Välj en skannings regel uppsättning som du vill skanna. Du kan välja mellan system standard, befintliga anpassade eller skapa en ny rad.
 
-   :::image type="content" source="media/manage-scans/scan-rule-set.png" alt-text="Sök regel uppsättning":::
+   :::image type="content" source="media/manage-scans/scan-rule-set-data-explorer.png" alt-text="Sök regel uppsättning":::
 
 1. Välj din genomsöknings utlösare. Du kan ställa in ett schema eller köra genomsökningen en gång.
 
-   :::image type="content" source="media/manage-scans/trigger-scan.png" alt-text="utlösare":::
+   :::image type="content" source="media/manage-scans/trigger-scan-data-explorer.png" alt-text="utlösare":::
 
 1. Granska genomsökningen och välj **Spara och kör**.
 

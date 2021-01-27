@@ -2,18 +2,15 @@
 title: Felsöka Azure Automation konto problem
 description: Den här artikeln beskriver hur du felsöker och löser problem med ett Azure-konto.
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/24/2020
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: 06c15136e9d2fabdf50031c8b4be455cf2f7bbca
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187293"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896587"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>Felsöka Azure Automation konto problem
 
@@ -39,9 +36,9 @@ Registrera automatiserings resurs leverantören genom att följa de här stegen 
 
 1. Gå till [Azure Portal](https://portal.azure.com)i webbläsaren.
 
-2. Gå till **prenumerationer**och välj din prenumeration.   
+2. Gå till **prenumerationer** och välj din prenumeration.   
 
-3. Under **Inställningar**väljer du **resurs leverantörer**.
+3. Under **Inställningar** väljer du **resurs leverantörer**.
 
 4. Kontrol lera att **Microsoft. Automation** Resource Provider är registrerad i listan över resurs leverantörer.
 

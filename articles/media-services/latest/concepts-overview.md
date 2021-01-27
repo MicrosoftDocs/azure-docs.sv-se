@@ -1,6 +1,5 @@
 ---
 title: Media Services terminologi och koncept
-titleSuffix: Azure Media Services
 description: Lär dig mer om terminologi och begrepp för Azure Media Services.
 services: media-servicesgit
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5564051ae11a1237cc924ee6bf557e3c85d8866a
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696421"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897925"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminologi och koncept
 
@@ -36,7 +35,7 @@ De grundläggande begreppen som beskrivs i dessa avsnitt bör granskas innan du 
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3-terminologi
 
-|Term|Beskrivning|
+|Period|Beskrivning|
 |---|---|
 |Live-händelse|En **Live-händelse** representerar en pipeline för inmatning, kodning (valfritt) och paketering av direktsända video-, ljud-och real tids metadata.<br/><br/>För kunder som migrerar från Media Services v2-API: er ersätter **Live-händelsen** **kanal** enheten i v2. Mer information finns i [Migrera från v2 till v3](migrate-v-2-v-3-migration-introduction.md).|
 |Slut punkt för direkt uppspelning/paketering/ursprung|En **slut punkt för direkt uppspelning** representerar en dynamisk (just-in-Time)-paketering och ursprungs tjänst som kan leverera Live och på begäran-innehåll direkt till ett klient Player-program. Den använder ett av de vanliga protokollen för strömmande media (HLS eller tank streck). Dessutom tillhandahåller streaming- **slutpunkten** dynamisk (just-in-Time) kryptering till branschledande Digital Rights Management system (DRM: er).<br/><br/>I medie direkt uppspelnings branschen kallas den här tjänsten ofta en **paketerare** eller ett **ursprung**.  Andra vanliga termer i branschen för den här funktionen är JITP (just-in-Time-packageer) eller JITE (just-in-Time-Encryption).

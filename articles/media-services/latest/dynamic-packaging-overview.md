@@ -1,6 +1,5 @@
 ---
 title: Dynamisk paketering i Azure Media Services v3
-titleSuffix: Azure Media Services
 description: Den här artikeln ger en översikt över dynamisk paketering i Azure Media Services.
 author: myoungerman
 manager: femila
@@ -14,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: ed2c5b4175745fa14864b2d360bcbf5e5237a495
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016833"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897653"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamisk paketering i Media Services v3
 
@@ -58,7 +57,7 @@ Den strömmande klienten kan ange följande HLS-format:
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
 
 > [!NOTE]
-> Tidigare rikt linjer från Apple rekommenderar att återställningen för nätverk med liten bandbredd var att tillhandahålla en ljud ström.  Vid tillfället genererar Media Services-kodaren automatiskt ett ljud spår.  Apple-rikt linjer ger nu dig tillstånd att ljud spåret *inte* ska tas med, särskilt för Apples TV-distribution.  Vi rekommenderar att du använder taggen "endast ljudonly = false" i URL: en för att förhindra uppspelning av ljudrendering i HLS eller bara använda HLS-v3. Exempelvis `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
+> Tidigare rikt linjer från Apple rekommenderar att återställningen för nätverk med liten bandbredd var att tillhandahålla en ljud ström.  Vid tillfället genererar Media Services-kodaren automatiskt ett ljud spår.  Apple-rikt linjer ger nu dig tillstånd att ljud spåret *inte* ska tas med, särskilt för Apples TV-distribution.  Vi rekommenderar att du använder taggen "endast ljudonly = false" i URL: en för att förhindra uppspelning av ljudrendering i HLS eller bara använda HLS-v3. Ett exempel är `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-streck-protokoll
 
@@ -177,7 +176,7 @@ Media Services dynamisk paketering stöder för närvarande inte filer som inneh
 
 ## <a name="manifests"></a>Manifest
 
-I Media Services *dynamisk paketering*genereras direkt uppspelnings klientens manifest för HLS, MPEG-streck och Smooth Streaming dynamiskt baserat på format väljaren i URL: en.  
+I Media Services *dynamisk paketering* genereras direkt uppspelnings klientens manifest för HLS, MPEG-streck och Smooth Streaming dynamiskt baserat på format väljaren i URL: en.  
 
 En manifest fil innehåller strömmande metadata som spår typ (ljud, video eller text), spår namn, start-och slut tid, bit hastighet (kvalitet), spåra språk, presentations fönster (glidande fönster med fast varaktighet) och video-codec (FourCC). Det instruerar också spelaren att hämta nästa fragment genom att ange information om nästa uppspelnings bara videofragment som är tillgängliga och var de befinner sig. Fragment (eller segment) är de faktiska "segmenten" av video innehåll.
 

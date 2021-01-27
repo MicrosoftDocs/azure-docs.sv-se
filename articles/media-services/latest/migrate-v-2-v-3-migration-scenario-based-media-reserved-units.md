@@ -1,5 +1,5 @@
 ---
-title: Vägledning för MRUs-scenario (Media reserverad) Microsoft Docs
+title: MRUs (Media reservered units) vägledning för att migrera
 description: Den här artikeln ger dig MRU-baserad vägledning som hjälper dig att migrera från Azure Media Services v2 till v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a6bcf5d75d5331875e38e473f115f32737e42a4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 375b4ecdc6153162b3a819b831af152ce390a5dc
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690479"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898332"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>MRUs (Media reservered units) vägledning för att migrera
 

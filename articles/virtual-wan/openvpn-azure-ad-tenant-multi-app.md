@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e25ef7f55492be4ee491b9ebbbef4aa1eb03c80b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043440"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898095"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Skapa en Azure Active Directory-klient (AD) för P2S OpenVPN-protokoll anslutningar
 
@@ -55,7 +55,7 @@ En P2S-konfiguration definierar parametrarna för att ansluta fjärrklienter.
 
     ![Skärm bild som visar redigera virtuell hubb som valts på menyn.](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
-3. Klicka på **Redigera virtuell hubb** .
+3. Klicka på **Redigera virtuell hubb**.
 
 4. Markera kryss rutan **Inkludera punkt-till-plats-Gateway** och välj den **enhet för gateway-skalning** som du vill använda.
 
@@ -63,7 +63,7 @@ En P2S-konfiguration definierar parametrarna för att ansluta fjärrklienter.
 
 5. Ange adresspoolen **från vilken** VPN-klienter ska tilldelas IP-adresser.
 
-6. Klicka på **Bekräfta** .
+6. Klicka på **Bekräfta**.
 
 7. Åtgärden kan ta upp till 30 minuter att slutföra.
 
@@ -71,7 +71,7 @@ En P2S-konfiguration definierar parametrarna för att ansluta fjärrklienter.
 
 Använd VPN-profilen för att konfigurera dina klienter.
 
-1. På sidan för ditt virtuella WAN-nätverk klickar du på **användare VPN-konfigurationer** .
+1. På sidan för ditt virtuella WAN-nätverk klickar du på **användare VPN-konfigurationer**.
 
 2. Klicka på **Hämta VPN-konfiguration för användare** längst upp på sidan.
 
@@ -99,15 +99,15 @@ Använd den här [länken](https://go.microsoft.com/fwlink/?linkid=2117554) för
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>Så här importerar du en klient profil
 
-1. På sidan väljer du **Importera** .
+1. På sidan väljer du **Importera**.
 
     ![Skärm bild som visar importera markerade från menyn plus.](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
-2. Bläddra till profil-XML-filen och markera den. När filen är vald väljer du **Öppna** .
+2. Bläddra till profil-XML-filen och markera den. När filen är vald väljer du **Öppna**.
 
     ![Skärm bild som visar en öppen dialog ruta där du kan välja en fil.](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
-3. Ange namnet på profilen och välj **Spara** .
+3. Ange namnet på profilen och välj **Spara**.
 
     ![Skärm bild som visar det tillagda anslutnings namnet och knappen Spara valt.](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
@@ -115,13 +115,13 @@ Använd den här [länken](https://go.microsoft.com/fwlink/?linkid=2117554) för
 
     ![Skärm bild som visar knappen Anslut för den anslutning som du nyss skapade.](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
-5. När du har anslutit ikonen blir den grön och säg **ansluten** .
+5. När du har anslutit ikonen blir den grön och säg **ansluten**.
 
     ![Skärm bild som visar anslutningen i en ansluten status med alternativet att koppla från.](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Ta bort en klient profil
 
-1. Välj ellipsen (...) bredvid den klient profil som du vill ta bort. Välj sedan **ta bort** .
+1. Välj ellipsen (...) bredvid den klient profil som du vill ta bort. Välj sedan **ta bort**.
 
     ![Skärm bild som visar ta bort valda från menyn.](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
@@ -131,11 +131,19 @@ Använd den här [länken](https://go.microsoft.com/fwlink/?linkid=2117554) för
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>Diagnostisera anslutnings problem
 
-1. För att diagnostisera anslutnings problem kan du använda verktyget **diagnostisera** . Välj ellipsen (...) bredvid den VPN-anslutning som du vill diagnostisera för att Visa menyn. Välj sedan **diagnostisera** .
+1. För att diagnostisera anslutnings problem kan du använda verktyget **diagnostisera** . Välj ellipsen (...) bredvid den VPN-anslutning som du vill diagnostisera för att Visa menyn. Välj sedan **diagnostisera**.
 
     ![Skärm bild som visar diagnostiserat valt i menyn.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
-2. På sidan **anslutnings egenskaper** väljer du **Kör diagnostik** .
+2. På sidan **anslutnings egenskaper** väljer du **Kör diagnostik**.
+
+    ![Skärm bild som visar knappen Kör diagnostik för en anslutning.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+
+3. Logga in med dina autentiseringsuppgifter.
+
+    ![diagnostisera 3](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+
+4. Visa diagnos resultatet.
 
     ![Skärm bild som visar knappen Kör diagnostik för en anslutning.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 

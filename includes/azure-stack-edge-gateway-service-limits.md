@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 1f1f4a97e3955c2cc7181eddbc50909b61dd092a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c4f479c190d9dd02a4340a64c09e7b5382deea2f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467605"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901223"
 ---
 - Lagrings kontot bör vara fysiskt närmast den region där enheten distribueras (kan skilja sig från var tjänsten distribueras).
-- Det går inte att flytta en Azure Stack Edge-resurs till en annan prenumeration eller resurs grupp. Mer information finns i [Flytta resurser till en ny resurs grupp eller prenumeration](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+- Det går inte att flytta en Azure Stack Edge-resurs till en annan prenumeration eller resurs grupp. Mer information finns i [Flytta resurser till en ny resurs grupp eller prenumeration](../articles/azure-resource-manager/management/move-resource-group-and-subscription.md).

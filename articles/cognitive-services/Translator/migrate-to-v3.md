@@ -3,19 +3,19 @@ title: Migrera till v3-Translator
 titleSuffix: Azure Cognitive Services
 description: Den här artikeln innehåller de steg som hjälper dig att migrera från v2 till v3 i Azure Cognitive Services Translator.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.author: lajanuar
+ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028241"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896841"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 till v3-migrering
 
@@ -116,8 +116,8 @@ Neurala-översättning med v3-text-API: t stöder inte användning av standard k
 
 | Version | Slutpunkt | Kompatibilitet för GDPR-processor | Använd Translator Hub | Använd anpassad översättare (förhands granskning) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Översättare, version 2|    api.microsofttranslator.com|    Nej    |Ja    |Nej|
-|Översättare, version 3|    api.cognitive.microsofttranslator.com|    Ja|    Nej|    Ja|
+|Översättare, version 2|    api.microsofttranslator.com|    Inga    |Ja    |Inga|
+|Översättare, version 3|    api.cognitive.microsofttranslator.com|    Ja|    Inga|    Ja|
 
 **Översättare, version 3**
 * Är allmänt tillgänglig och stöds fullt ut.

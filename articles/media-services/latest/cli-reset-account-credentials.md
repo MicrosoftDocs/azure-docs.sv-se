@@ -1,5 +1,5 @@
 ---
-title: Exempel på Azure CLI-skript – Återställa autentiseringsuppgifterna för ditt konto | Microsoft Docs
+title: Exempel på Azure CLI-skript – återställa autentiseringsuppgifter för ditt konto
 description: Använd Azure CLI-skriptet för att återställa autentiseringsuppgifterna för ditt konto och app.config-inställningarna.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: da997ec71655231876749d9f3aa65ba06fd3a1f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b9b95af79b8aac11f56fe576f860d719b5fb50e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295843"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897687"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-exempel: återställa kontoautentiseringsuppgifter
 
@@ -28,7 +28,7 @@ ms.locfileid: "89295843"
 
 Azure CLI-skriptet i den här artikeln visar hur du kan återställa autentiseringsuppgifterna för ditt konto och app.config-inställningarna.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [Skapa ett Media Services-konto](./create-account-howto.md).
 

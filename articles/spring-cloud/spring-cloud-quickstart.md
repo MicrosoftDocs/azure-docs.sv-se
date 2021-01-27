@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 416f997475e35f8e784679ca0826f7af38d756c7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750908"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880312"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Snabb start: Distribuera ditt första Azure våren Cloud-program
 
@@ -29,11 +29,11 @@ Genom att följa den här snabb starten får du lära dig att:
 > * Generera ett grundläggande Steeltoe .NET Core-projekt
 > * Etablera en Azure våren Cloud Service-instans
 > * Bygg och distribuera appen med en offentlig slut punkt
-> * Stream-loggar i real tid
+> * Strömma loggar i realtid
 
 Den program kod som används i den här snabb starten är en enkel app som skapats med en .NET Core Web API Project-mall. När du har slutfört det här exemplet är programmet tillgängligt online och kan hanteras via Azure Portal och Azure CLI.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Azure våren Cloud Service stöder .NET Core 3,1 och senare versioner.
@@ -112,7 +112,7 @@ I Visual Studio skapar du ett ASP.NET Core webb program med namnet "Hello-World"
    }
    ```
 
-1. Ändra också *appsettings.json* logg nivån för `Microsoft` kategorin från tillappsettings.jspå `Warning` `Information` . Den här ändringen säkerställer att loggar skapas när du visar strömmande loggar i ett senare steg.
+1. Ändra också logg nivån för `Microsoft` kategorin från tillappsettings.jspå `Warning` `Information` . Den här ändringen säkerställer att loggar skapas när du visar strömmande loggar i ett senare steg.
 
    *appsettings.jspå* filen ser nu ut ungefär som i följande exempel:
 
@@ -152,7 +152,7 @@ I Visual Studio skapar du ett ASP.NET Core webb program med namnet "Hello-World"
    </Target>
    ```
 
-   Paketen är för Steeltoe-tjänst identifiering och klient biblioteket för Azure våren Cloud. `Zip`Uppgiften är för distribution till Azure. När du kör `dotnet publish` kommandot genereras binärfilerna i *publicerings* mappen och den här uppgiften zips i en *. zip* - *publish* fil som du överför till Azure.
+   Paketen är för Steeltoe-tjänst identifiering och klient biblioteket för Azure våren Cloud. `Zip`Uppgiften är för distribution till Azure. När du kör `dotnet publish` kommandot genereras binärfilerna i *publicerings* mappen och den här uppgiften zips i en *. zip* -  fil som du överför till Azure.
 
 3. I *program.cs* -filen lägger du till ett `using` direktiv och kod som använder klient biblioteket för Azure våren Cloud:
 
@@ -216,7 +216,7 @@ Följande procedur skapar en instans av Azure våren Cloud med hjälp av Azure P
 
    ![ASC-ikon Lägg till](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-1. Fyll i formuläret på sidan Azure våren Cloud **create** .  Beakta följande rikt linjer:
+1. Fyll i formuläret på sidan Azure våren Cloud **create** .  Läs igenom följande riktlinjer:
 
    * **Prenumeration**: Välj den prenumeration som du vill fakturera för den här resursen.
    * **Resurs grupp**: skapa en ny resurs grupp. Det namn som du anger här kommer att användas i senare steg som **\<resource group name\>** .
@@ -269,7 +269,7 @@ Appen returnerar JSON-data som liknar följande exempel:
 [{"date":"2020-09-08T21:01:50.0198835+00:00","temperatureC":14,"temperatureF":57,"summary":"Bracing"},{"date":"2020-09-09T21:01:50.0200697+00:00","temperatureC":-14,"temperatureF":7,"summary":"Bracing"},{"date":"2020-09-10T21:01:50.0200715+00:00","temperatureC":27,"temperatureF":80,"summary":"Freezing"},{"date":"2020-09-11T21:01:50.0200717+00:00","temperatureC":18,"temperatureF":64,"summary":"Chilly"},{"date":"2020-09-12T21:01:50.0200719+00:00","temperatureC":16,"temperatureF":60,"summary":"Chilly"}]
 ```
 
-## <a name="stream-logs-in-real-time"></a>Stream-loggar i real tid
+## <a name="stream-logs-in-real-time"></a>Strömma loggar i realtid
 
 Använd följande kommando för att hämta real tids loggar från appen.
 
@@ -332,9 +332,9 @@ Den här snabb starten förklarar hur du:
 > * Generera ett grundläggande våren Cloud-projekt
 > * Etablera en tjänst instans
 > * Bygg och distribuera appen med en offentlig slut punkt
-> * Stream-loggar i real tid
+> * Strömma loggar i realtid
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
@@ -351,9 +351,6 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Sidan Initializr](media/spring-cloud-quickstart-java/initializr-page.png)
-
-> [!NOTE]
-> Vi har identifierat ett problem med våren boot 2,4 på TLS-autentisering mellan dina appar och Eureka och arbetar för närvarande med vår fjäder-community för att lösa problemet. Läs våra [vanliga frågor och svar](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) för att lösa problemet.
 
 1. Klicka på **generera** när alla beroenden har angetts. Ladda ned och packa upp paketet och skapa sedan en webb styrenhet för ett enkelt webb program genom att lägga till följande `src/main/java/com/example/hellospring/HelloController.java` :
 
@@ -389,7 +386,7 @@ Följande procedur skapar en instans av Azure våren Cloud med hjälp av Azure P
 
     ![ASC-ikon Lägg till](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Fyll i formuläret på sidan Azure våren Cloud **create** .  Beakta följande rikt linjer:
+5. Fyll i formuläret på sidan Azure våren Cloud **create** .  Läs igenom följande riktlinjer:
     - **Prenumeration**: Välj den prenumeration som du vill fakturera för den här resursen.
     - **Resurs grupp**: skapa nya resurs grupper för nya resurser är en bra metod. Detta kommer att användas i senare steg som **\<resource group name\>** .
     - **Tjänst information/namn**: ange **\<service instance name\>** .  Namnet måste vara mellan 4 och 32 tecken långt och får bara innehålla gemena bokstäver, siffror och bindestreck.  Det första tecknet i tjänst namnet måste vara en bokstav och det sista tecknet måste vara en bokstav eller en siffra.
@@ -517,7 +514,7 @@ I den här snabbstarten har du lärt dig att:
 > * Generera ett grundläggande Azure våren Cloud-projekt
 > * Etablera en tjänst instans
 > * Bygg och distribuera appen med en offentlig slut punkt
-> * Stream-loggar i real tid
+> * Strömma loggar i realtid
 
 Om du vill lära dig mer om hur du använder fler Azure våren-funktioner går du vidare till snabb starts serien som distribuerar ett exempel program till Azure våren Cloud:
 

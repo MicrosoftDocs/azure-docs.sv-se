@@ -10,12 +10,12 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 8bce95b65d9b944505d7f9153159b342e49427cd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: f5abeee3b1e1e44f5ce0423fc7f8170644d74508
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762920"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880482"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Använda GitHub-åtgärder med Azure Machine Learning
 
@@ -24,7 +24,7 @@ Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) för att 
 > [!NOTE]
 > GitHub-åtgärder för Azure Machine Learning tillhandahålls i befintligt skick och stöds inte fullt ut av Microsoft. Om du stöter på problem med en speciell åtgärd öppnar du ett ärende i databasen för åtgärden. Om du till exempel stöter på problem med åtgärden AML-Deploy rapporterar du problemet i [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) lagrings platsen.
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
@@ -228,4 +228,4 @@ När din resurs grupp och lagrings plats inte längre behövs rensar du de resur
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](how-to-create-your-first-pipeline.md)
+> [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)

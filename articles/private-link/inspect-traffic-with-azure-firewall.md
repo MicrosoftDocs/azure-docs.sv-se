@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7812d0f2e42dfed6cdd661244b77969297093a5d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017244"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879181"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Använd Azure-brandväggen för att kontrol lera trafik som är avsedd för en privat slut punkt
 
@@ -92,7 +92,7 @@ Det finns vissa begränsningar för implementeringen: det går inte att migrera 
 Den här arkitekturen kan implementeras om du har konfigurerat anslutningen till ditt lokala nätverk med hjälp av något av följande: 
 
 * [ExpressRoute](..\expressroute\expressroute-introduction.md)
-* [VPN för plats till plats](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md) 
+* [VPN för plats till plats](../vpn-gateway/tutorial-site-to-site-portal.md) 
 
 Om dina säkerhets krav kräver klient trafik till tjänster som exponeras via privata slut punkter som ska dirigeras via en säkerhetsinstallation, distribuera det här scenariot.
 
@@ -279,7 +279,7 @@ I det här avsnittet skapar du en privat SQL Database.
     | Inloggning för serveradministratör | Ange ett namn som du väljer. |
     | Lösenord    |    Ange ett valfritt lösenord.    |
     | Bekräfta lösenord | Ange lösenordet igen    |
-    | Plats    | Välj **(US) södra centrala USA**.    |
+    | Location    | Välj **(US) södra centrala USA**.    |
     | Vill använda elastisk SQL-pool    | Lämna standardvärdet **Nej**. |
     | Beräkning och lagring | Lämna standard **generell användning Gen5, 2 virtuella kärnor, 32 GB lagring**. |
     |||
@@ -458,7 +458,7 @@ Den här regeln tillåter kommunikation via brand väggen som vi skapade i före
     | ------- | ----- |
     | Namn | Ange **SQLPrivateEndpoint**. |
     | Prioritet | Ange **100**. |
-    | Åtgärd | Ange **Tillåt**. |
+    | Action | Ange **Tillåt**. |
     | **Regler** |  |
     | **FQDN-taggar** | |
     | Name  | Lämna tomt.  |

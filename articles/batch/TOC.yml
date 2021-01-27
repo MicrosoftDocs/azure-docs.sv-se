@@ -101,13 +101,11 @@
   items:
     - name: Hantera Batch-konton
       items:
-        - name: Hantera ditt konto
-          href: batch-manage-account-basics.md
-        - name: Hantera Batch-konton med portalen
+        - name: Hantera batch-konton i Azure Portal
           href: batch-account-create-portal.md
         - name: Hantera Batch-konton med Batch Management .NET
           href: batch-management-dotnet.md
-        - name: Kostnadsanalys och budget
+        - name: Hämta kostnads analys och ställa in budgetar
           href: budget.md
         - name: Använda privata slutpunkter med Batch-konton
           href: private-connectivity.md

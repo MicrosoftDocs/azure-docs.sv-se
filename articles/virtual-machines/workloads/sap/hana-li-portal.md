@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827520"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882492"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Kontroll av Azure HANA – stora instanser med Azure Portal
 
@@ -94,7 +94,7 @@ Ytterligare data på den högra nedre sidan är en revidering av den stora, HANA
 - Revision 4
 
 Revision 4 är den senaste arkitekturen som lanseras av HANA-stora instanser med större förbättringar av nätverks fördröjningen mellan virtuella Azure-datorer och HANA stora instans enheter som distribueras i revision 4-stämplar eller rader.
-En annan viktig information finns i det nedre högra hörnet i översikten med namnet på den Azure närhets placerings grupp som skapas automatiskt för varje distribuerad HANA-stor instans enhet. Den här närhets placerings gruppen måste refereras när du distribuerar de virtuella Azure-datorer som är värdar för SAP-Programskiktet. Genom att använda [Azures närhets placering](../../linux/co-location.md) som är associerad med den stora instans enheten i Hana, ser du till att de virtuella Azure-datorerna distribueras i nära närhet till den stora instans enheten i Hana. Hur närhets placerings grupper kan användas för att hitta SAP-program skiktet i samma Azure-datacenter som den revision 4 värdbaserade HANA-enheten beskrivs i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
+En annan viktig information finns i det nedre högra hörnet i översikten med namnet på den Azure närhets placerings grupp som skapas automatiskt för varje distribuerad HANA-stor instans enhet. Den här närhets placerings gruppen måste refereras när du distribuerar de virtuella Azure-datorer som är värdar för SAP-Programskiktet. Genom att använda [Azures närhets placering](../../co-location.md) som är associerad med den stora instans enheten i Hana, ser du till att de virtuella Azure-datorerna distribueras i nära närhet till den stora instans enheten i Hana. Hur närhets placerings grupper kan användas för att hitta SAP-program skiktet i samma Azure-datacenter som den revision 4 värdbaserade HANA-enheten beskrivs i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
 
 Ett extra fält i den högra kolumnen i rubriken informerar om energispar läget för den stora instans enheten i HANA.
 

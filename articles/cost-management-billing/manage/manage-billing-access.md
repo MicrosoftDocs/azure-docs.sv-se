@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: HT
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166224"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897433"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Hantera åtkomst till faktureringsinformation för Azure
 
@@ -38,7 +38,7 @@ Kontoadministratören kan ge andra åtkomst till faktureringsinformationen i Azu
 - Läsare
 - Faktureringsläsare
 
-Dessa roller har åtkomst till faktureringsinformation i [Azure-portalen](https://portal.azure.com/). Personer som har tilldelats dessa roller kan även använda [API:er för fakturering](usage-rate-card-overview.md) för att programmatiskt hämta fakturor och användningsinformation.
+Dessa roller har åtkomst till faktureringsinformation i [Azure-portalen](https://portal.azure.com/). Personer som har tilldelats dessa roller kan även använda [API:er för fakturering](consumption-api-overview.md#usage-details-api) för att programmatiskt hämta fakturor och användningsinformation.
 
 Information om tilldelning av roller finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../../role-based-access-control/role-assignments-portal.md).
 
@@ -51,15 +51,15 @@ När en kontoadministratör har tilldelat lämpliga roller till andra användare
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/) som kontoadministratör.
 
-1. Sök efter **Kostnadshantering och fakturering** .
+1. Sök efter **Kostnadshantering och fakturering**.
 
     ![Skärmbild som visar Cost Management + Billing under avsnittet Tjänster.](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Välj **Prenumerationer** i den vänstra rutan. Beroende på din åtkomst kan du behöva välja ett faktureringsomfång och sedan välja **Prenumerationer** .
+1. Välj **Prenumerationer** i den vänstra rutan. Beroende på din åtkomst kan du behöva välja ett faktureringsomfång och sedan välja **Prenumerationer**.
 
     ![Skärmbild som visar val av prenumerationer](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Välj **Fakturor** och sedan **Åtkomst till faktura** .
+1. Välj **Fakturor** och sedan **Åtkomst till faktura**.
 
     ![Skärmbild som visar hur du delegerar åtkomst till fakturor](./media/manage-billing-access/aa-optin01.png)
 
@@ -77,11 +77,11 @@ Funktionen Faktureringsläsare är i förhandsversion och har ännu inte stöd f
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/) som kontoadministratör.
 
-1. Sök efter **Kostnadshantering och fakturering** .
+1. Sök efter **Kostnadshantering och fakturering**.
 
     ![Skärmbild som visar en sökning i Azure-portalen](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Välj **Prenumerationer** i den vänstra rutan. Beroende på din åtkomst kan du behöva välja ett faktureringsomfång och sedan välja **Prenumerationer** .
+1. Välj **Prenumerationer** i den vänstra rutan. Beroende på din åtkomst kan du behöva välja ett faktureringsomfång och sedan välja **Prenumerationer**.
 
     ![Skärmbild som visar val av prenumerationer](./media/manage-billing-access/billing-select-subscriptions.png)
 
@@ -90,10 +90,10 @@ Funktionen Faktureringsläsare är i förhandsversion och har ännu inte stöd f
 
     ![Skärmbild som visar hur du klickar för att lägga till rolltilldelning](./media/manage-billing-access/billing-click-add-role-assignment.png)
 
-1. I listrutan **Roll** väljer du **Faktureringsläsare** .
+1. I listrutan **Roll** väljer du **Faktureringsläsare**.
 1. I rutan **Välj** skriver du namn eller e-postadress för den användare som du vill lägga till.
 1. Välj användaren.
-1. Välj **Spara** .
+1. Välj **Spara**.
     ![Skärmbild som visar knappen Spara.](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. Efter en liten stund tilldelas användaren rollen Faktureringsläsare för prenumerationen.

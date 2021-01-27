@@ -7,17 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 1efb512923caed97126bdb4ee6267c6a9b57f251
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bf13d5c0caeb0bf31a383cd23155a6856c81c53b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595034"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897399"
 ---
 # <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>Tagga en virtuell dator i Azure med hjälp av PowerShell
 
 Den här artikeln beskriver hur du taggar en virtuell dator i Azure med hjälp av PowerShell. Taggar är användardefinierade nyckel/värde-par som kan placeras direkt på en resurs eller en resurs grupp. Azure har för närvarande stöd för upp till 50 Taggar per resurs och resurs grupp. Taggar kan placeras på en resurs vid tidpunkten för skapandet eller läggs till i en befintlig resurs. Om du vill tagga en virtuell dator med hjälp av Azure CLI kan du läsa om [att tagga en virtuell dator i Azure med hjälp av Azure CLI](tag-cli.md).
-
 
 Använd `Get-AzVM` cmdleten för att visa den aktuella listan över taggar för den virtuella datorn.
 
@@ -84,8 +83,7 @@ Environment   Production
 Location      MyLocation
 ```
 
-
-**Nästa steg**
+### <a name="next-steps"></a>Nästa steg
 
 - Läs mer om att tagga dina Azure-resurser i [Azure Resource Manager översikt](../azure-resource-manager/management/overview.md) och [använda taggar för att ordna dina Azure-resurser](../azure-resource-manager/management/tag-resources.md).
-- För att se hur taggar kan hjälpa dig att hantera din användning av Azure-resurser, se [förstå din Azure-faktura](../cost-management-billing/understand/review-individual-bill.md) och [få insikter om din Microsoft Azure resursförbrukning](../cost-management-billing/manage/usage-rate-card-overview.md).
+- Information om hur taggar kan hjälpa dig att hantera din användning av Azure-resurser finns i [förstå din Azure-faktura](../cost-management-billing/understand/review-individual-bill.md).

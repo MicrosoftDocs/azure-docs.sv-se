@@ -7,12 +7,12 @@ author: cynthn
 ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 7c3e779c152a967452f86b55f06d38076102085c
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94595037"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897416"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>Tagga en virtuell dator med hjälp av portalen
 
@@ -28,9 +28,7 @@ Den här artikeln beskriver hur du lägger till taggar till en virtuell dator me
 
     :::image type="content" source="media/tag/key-value.png" alt-text="Skärm bild av sidan för att lägga till ett nyckel värde par som en tagg.":::
 
-
-
-**Nästa steg**
+### <a name="next-steps"></a>Nästa steg
 
 - Läs mer om att tagga dina Azure-resurser i [Azure Resource Manager översikt](../azure-resource-manager/management/overview.md) och [använda taggar för att ordna dina Azure-resurser](../azure-resource-manager/management/tag-resources.md).
-- För att se hur taggar kan hjälpa dig att hantera din användning av Azure-resurser, se [förstå din Azure-faktura](../cost-management-billing/understand/review-individual-bill.md) och [få insikter om din Microsoft Azure resursförbrukning](../cost-management-billing/manage/usage-rate-card-overview.md).
+- Information om hur taggar kan hjälpa dig att hantera din användning av Azure-resurser finns i [förstå din Azure-faktura](../cost-management-billing/understand/review-individual-bill.md).

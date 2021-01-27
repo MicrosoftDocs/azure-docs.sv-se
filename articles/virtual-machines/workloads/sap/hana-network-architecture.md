@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5ed932488551918bb0bfeb7dc9ffcb2f59b6d152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195746"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878909"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (stora instanser) nätverks arkitektur
 
@@ -76,7 +76,7 @@ Skillnaderna med SAP-distributioner i Azure är:
 
 Med revision 3 av HANA stor instans-stämplar kan nätverks fördröjningen mellan virtuella datorer och HANA stora instans enheter vara högre än en typisk fördröjning för VM-till-VM-nätverk. Värdena som är beroende av Azure-regionen kan överstiga 0,7-MS tur och retur-svars tiden som klassificeras som under genomsnitt i [SAP obs #1100926 – vanliga frågor och svar: nätverks prestanda](https://launchpad.support.sap.com/#/notes/1100926/E). Beroende av Azure-region och-verktyg för att mäta fördröjningar i nätverks fördröjningar mellan en virtuell Azure-dator och HANA stor instans enhet, kan den uppmätta svars tiden vara upp till och omkring 2 millisekunder. Kunder distribuerar dock SAP HANA-baserade produktion SAP-program på SAP HANA stor instans. Se till att testa dina affärs processer noggrant i Azure HANA stor instans. En ny funktion, som kallas ExpressRoute snabb sökväg, kan minska nätverks fördröjningen mellan HANA-stora instanser och virtuella program på virtuella datorer i Azure i huvudsak (se nedan). 
 
-Med revision 4 av HANA stor instans-stämplar, är nätverks fördröjningen mellan virtuella Azure-datorer som distribueras i närheten av den stora instans stämpeln i den stora instansen att uppfylla genomsnittet eller bättre än genomsnitts klassificeringen som dokumenteras i [SAP obs #1100926 – vanliga frågor och svar: nätverks prestanda](https://launchpad.support.sap.com/#/notes/1100926/E) om Azure ExpressRoute snabb sökväg har kon figurer ATS (se nedan). För att kunna distribuera virtuella Azure-datorer i nära närhet till HANA stora instans enheter av revision 4 måste du utnyttja [Azure närhets placerings grupper](../../linux/co-location.md). Hur närhets placerings grupper kan användas för att hitta SAP-program skiktet i samma Azure-datacenter som den revision 4 värdbaserade HANA-enheten beskrivs i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
+Med revision 4 av HANA stor instans-stämplar, är nätverks fördröjningen mellan virtuella Azure-datorer som distribueras i närheten av den stora instans stämpeln i den stora instansen att uppfylla genomsnittet eller bättre än genomsnitts klassificeringen som dokumenteras i [SAP obs #1100926 – vanliga frågor och svar: nätverks prestanda](https://launchpad.support.sap.com/#/notes/1100926/E) om Azure ExpressRoute snabb sökväg har kon figurer ATS (se nedan). För att kunna distribuera virtuella Azure-datorer i nära närhet till HANA stora instans enheter av revision 4 måste du utnyttja [Azure närhets placerings grupper](../../co-location.md). Hur närhets placerings grupper kan användas för att hitta SAP-program skiktet i samma Azure-datacenter som den revision 4 värdbaserade HANA-enheten beskrivs i [Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program](sap-proximity-placement-scenarios.md).
 
 För att tillhandahålla deterministisk nätverks fördröjning mellan virtuella datorer och HANA stor instans är valet av SKU för ExpressRoute-Gateway nödvändigt. Till skillnad från trafik mönster mellan lokala och virtuella datorer kan trafik mönstret mellan virtuella datorer och HANA stor instans utveckla små men höga burst-sändningar för begär Anden och data volymer som ska överföras. För att hantera sådana burst-fel rekommenderar vi starkt att du använder UltraPerformance Gateway-SKU: n. För typ II-klassen för HANA stor instans-SKU: er är det obligatoriskt att använda UltraPerformance Gateway-SKU: n som en ExpressRoute-Gateway.
 

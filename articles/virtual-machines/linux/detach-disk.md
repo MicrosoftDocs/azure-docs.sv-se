@@ -8,12 +8,12 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 96586be8be466acf09121518fb71ea1b8ba9d983
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e618475d7d0160bce5aee39c267bb191a3a9f0a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203209"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897147"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Så här kopplar du bort en datadisk från en virtuell Linux-dator
 
@@ -119,3 +119,4 @@ Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtu
 ## <a name="next-steps"></a>Nästa steg
 Om du vill återanvända data disken kan du bara [ansluta den till en annan virtuell dator](add-disk.md).
 
+Om du vill ta bort disken så att du inte längre debiteras lagrings kostnader, se [hitta och ta bort frånkopplade Azure-hanterade och ohanterade diskar – Azure Portal](../disks-find-unattached-portal.md).

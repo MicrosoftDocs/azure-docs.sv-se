@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796065"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879755"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Skapa, granska och distribuera automatiserade maskin inlärnings modeller med Azure Machine Learning
 
@@ -84,7 +84,7 @@ Annars visas en lista över dina senaste automatiserade maskin inlärnings exper
 
     1. **Schema** formuläret fylls i intelligent utifrån valen i formuläret **Inställningar och för hands version** . Konfigurera data typen för varje kolumn, granska kolumn namnen och välj vilka kolumner som **inte ska ingå** i experimentet. 
             
-        Välj **Nästa.**
+        Välj **Nästa**.
 
     1. Formuläret **bekräfta information** är en sammanfattning av den information som tidigare har fyllts i i **grundläggande information** och **Inställningar och för hands** formulär. Du kan också välja att skapa en data profil för din data uppsättning med en profilerings aktive rad beräkning. Läs mer om [data profilering](how-to-connect-data-ui.md#profile).
 
@@ -132,7 +132,7 @@ Annars visas en lista över dina senaste automatiserade maskin inlärnings exper
 
 1. Valfritt Visa ytterligare konfigurations inställningar: ytterligare inställningar som du kan använda för att styra utbildnings jobbet bättre. Annars tillämpas standardvärdena utifrån experiment val och data. 
 
-    Ytterligare konfigurationer|Beskrivning
+    Ytterligare konfigurationer|Description
     ------|------
     Primärt mått| Främsta mått som används för att värdera din modell. [Lär dig mer om modell mått](how-to-configure-auto-train.md#primary-metric).
     Förklara bästa modell | Välj om du vill aktivera eller inaktivera för att visa förklaringar för den rekommenderade bästa modellen. <br> Den här funktionen är för närvarande inte tillgänglig för [vissa algoritmer för Prognosticering](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -202,7 +202,7 @@ Automatiserad ML hjälper dig att distribuera modellen utan att skriva kod:
     Fält| Värde
     ----|----
     Namn| Ange ett unikt namn för din distribution.
-    Beskrivning| Ange en beskrivning för att bättre identifiera vad den här distributionen är för.
+    Description| Ange en beskrivning för att bättre identifiera vad den här distributionen är för.
     Typ av beräkning| Välj den typ av slut punkt som du vill distribuera: *Azure Kubernetes service (AKS)* eller *Azure Container Instance (ACI)*.
     Namn på beräkning| *Gäller endast för AKS:* Välj namnet på det AKS-kluster som du vill distribuera till.
     Aktivera autentisering | Välj för att tillåta tokenbaserad eller nyckelbaserad autentisering.
@@ -216,7 +216,7 @@ Automatiserad ML hjälper dig att distribuera modellen utan att skriva kod:
 1. Välj **Distribuera**. Det kan ta ungefär 20 minuter att slutföra distributionen.
     När distributionen börjar visas fliken **Modellsammanfattning**. Distributionsförloppet visas i avsnittet **Distributionsstatus**. 
 
-Nu har du ett fungerande webbtjänst för att generera förutsägelser! Du kan testa förutsägelserna genom att fråga tjänsten via [Power BI:s inbyggda Azure Machine Learning-stöd](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context).
+Nu har du ett fungerande webbtjänst för att generera förutsägelser! Du kan testa förutsägelserna genom att fråga tjänsten via [Power BI:s inbyggda Azure Machine Learning-stöd](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context).
 
 ## <a name="next-steps"></a>Nästa steg
 

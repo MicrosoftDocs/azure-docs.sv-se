@@ -1,29 +1,11 @@
 ---
-title: Översikt över Azure Media Services v3
-titleSuffix: Azure Media Services
-description: En översikt på hög nivå av Azure Media Services v3 med länkar till snabb starter, självstudier och kod exempel.
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: azure media services, strömma, sändning, live, offline
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308961"
+rubrik: Azure Media Services v3: Översikt: Azure Media Services Beskrivning: en översikt över Azure Media Services v3 med länkar till snabb starter, självstudier och kod exempel.
+tjänster: Media-Services documentationcenter: na author: IngridAtMicrosoft Manager: femila Editor: ' ' Taggar: ' ' Nyckelord: Azure Media Services, Stream, broadcast, Live, offline
+
+MS. service: Media-Services MS. devlang: flera MS. topic: översikt ms.tgt_pltfrm: flera MS. arbets belastning: Media MS. Date: 08/31/2020 MS. author: inhenkel MS. Custom: MVC
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Kund avsikt: som utvecklare eller en innehålls leverantör, jag vill koda, strömma (på begäran eller Live), analysera medie innehåll så att mina kunder kan: Visa innehållet i en mängd olika webbläsare och enheter och få värdefulla insikter från inspelat innehåll.
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Översikt över Azure Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

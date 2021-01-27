@@ -3,12 +3,12 @@ title: Support mat ris för VMware/fysisk haveri beredskap i Azure Site Recovery
 description: Sammanfattar stöd för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure med hjälp av Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 269c3058a890681d1d8a661a093ecb1cf3037a47
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 0a96d20d1b614f444ffa36cd6f8d83393c7c4f7a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761939"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897300"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure
 
@@ -103,21 +103,21 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Version som stöds** | **Mobilitets tjänst version** | **Kernelversion** |
 --- | --- | --- |
-14,04 LTS | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/), [9,40](https://support.microsoft.com/help/4602881/) | 3.13.0-24-genered to 3.13.0-170-Generic,<br/>3.16.0-25-genered to 3.16.0-77-Generic,<br/>3.19.0-18-genered till 3.19.0-80-genered,<br/>4.2.0-18-genered to 4.2.0-42-Generic,<br/>4.4.0-21-genered to 4.4.0-148-genered,<br/>4.15.0 – 1023 – Azure till 4.15.0 – 1045 – Azure |
+14,04 LTS | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/), [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 3.13.0-24-genered to 3.13.0-170-Generic,<br/>3.16.0-25-genered to 3.16.0-77-Generic,<br/>3.19.0-18-genered till 3.19.0-80-genered,<br/>4.2.0-18-genered to 4.2.0-42-Generic,<br/>4.4.0-21-genered to 4.4.0-148-genered,<br/>4.15.0 – 1023 – Azure till 4.15.0 – 1045 – Azure |
 |||
-16,04 LTS | [9,40](https://support.microsoft.com/help/4602881/) | 4.4.0 – 21-genered to 4.4.0-197-Generic,<br/>4.8.0-34-Generic to 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic,<br/>4.11.0-13-genered to 4.11.0-14-generic,<br/>4.13.0-16-genered to 4.13.0-45-genered,<br/>4.15.0-13-Generic to 4.15.0-128-genered<br/>4.11.0-1009 – Azure till 4.11.0-1016-Azure,<br/>4.13.0-1005 – Azure till 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure till 4.15.0-1102 – Azure |
+16,04 LTS | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.4.0 – 21-genered to 4.4.0-197-Generic,<br/>4.8.0-34-Generic to 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic,<br/>4.11.0-13-genered to 4.11.0-14-generic,<br/>4.13.0-16-genered to 4.13.0-45-genered,<br/>4.15.0-13-Generic to 4.15.0-128-genered<br/>4.11.0-1009 – Azure till 4.11.0-1016-Azure,<br/>4.13.0-1005 – Azure till 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure till 4.15.0-1102 – Azure |
 16,04 LTS | [9,39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-genered to 4.4.0-194-Generic,<br/>4.8.0-34-Generic to 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic,<br/>4.11.0-13-genered to 4.11.0-14-generic,<br/>4.13.0-16-genered to 4.13.0-45-genered,<br/>4.15.0-13-genered to 4.15.0-123-generic<br/>4.11.0-1009 – Azure till 4.11.0-1016-Azure,<br/>4.13.0-1005 – Azure till 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure till 4.15.0-1098 – Azure|
 16,04 LTS | [9,38](https://support.microsoft.com/help/4590304/) | 4.4.0-21-genered to 4.4.0-190-Generic,<br/>4.8.0-34-Generic to 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic,<br/>4.11.0-13-genered to 4.11.0-14-generic,<br/>4.13.0-16-genered to 4.13.0-45-genered,<br/>4.15.0-13-genered to 4.15.0-118-generic<br/>4.11.0-1009 – Azure till 4.11.0-1016-Azure,<br/>4.13.0-1005 – Azure till 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure till 4.15.0-1096 – Azure|
 16,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.4.0-21-genered to 4.4.0-189-Generic,<br/>4.8.0-34-Generic to 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic,<br/>4.11.0-13-genered to 4.11.0-14-generic,<br/>4.13.0-16-genered to 4.13.0-45-genered,<br/>4.15.0-13-genered to 4.15.0-115-generic<br/>4.11.0-1009 – Azure till 4.11.0-1016-Azure,<br/>4.13.0-1005 – Azure till 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure till 4.15.0-1093 – Azure |
 16,04 LTS | [9,36](https://support.microsoft.com/help/4578241/)| 4.4.0 – 21-genered to 4.4.0-186-Generic,<br/>4.8.0-34-Generic to 4.8.0-58-Generic,<br/>4.10.0-14-generic to 4.10.0-42-Generic,<br/>4.11.0-13-genered to 4.11.0-14-generic,<br/>4.13.0-16-genered to 4.13.0-45-genered,<br/>4.15.0-13-genered to 4.15.0-112-generic<br/>4.11.0-1009 – Azure till 4.11.0-1016-Azure,<br/>4.13.0-1005 – Azure till 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure till 4.15.0-1092 – Azure |
 |||
-18,04 LTS | [9,40](https://support.microsoft.com/help/4602881/) | 4.15.0-20-Generic to 4.15.0-129-generic </br> 4.18.0-13-Generic to 4.18.0-25-genered </br> 5.0.0-15-genered till 5.0.0-63-generic </br> 5.3.0-19-genered to 5.3.0-69-generic </br> 5.4.0 – 37-generisk till 5.4.0-59-generic</br> 4.15.0-1009 – Azure till 4.15.0-1103 – Azure </br> 4.18.0-1006 – Azure till 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure till 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure till 5.3.0-1035 – Azure </br> 5.4.0-1020 – Azure till 5.4.0-1035 – Azure|
+18,04 LTS | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.15.0-20-Generic to 4.15.0-129-generic </br> 4.18.0-13-Generic to 4.18.0-25-genered </br> 5.0.0-15-genered till 5.0.0-63-generic </br> 5.3.0-19-genered to 5.3.0-69-generic </br> 5.4.0 – 37-generisk till 5.4.0-59-generic</br> 4.15.0-1009 – Azure till 4.15.0-1103 – Azure </br> 4.18.0-1006 – Azure till 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure till 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure till 5.3.0-1035 – Azure </br> 5.4.0-1020 – Azure till 5.4.0-1035 – Azure|
 18,04 LTS | [9,39](https://support.microsoft.com/help/4597409/) | 4.15.0-20-Generic to 4.15.0-123-generic </br> 4.18.0-13-Generic to 4.18.0-25-genered </br> 5.0.0-15-genered till 5.0.0-63-generic </br> 5.3.0-19-genered to 5.3.0-69-generic </br> 5.4.0 – 37-generisk till 5.4.0-53-generic</br> 4.15.0-1009 – Azure till 4.15.0 – 1099 – Azure </br> 4.18.0-1006 – Azure till 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure till 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure till 5.3.0-1035 – Azure </br> 5.4.0-1020-Azure till 5.4.0-1031-Azure|
 18,04 LTS | [9,38](https://support.microsoft.com/help/4590304/) | 4.15.0-20-Generic to 4.15.0-118-generic </br> 4.18.0-13-Generic to 4.18.0-25-genered </br> 5.0.0-15-genered to 5.0.0-61-generic </br> 5.3.0-19-genered to 5.3.0-67-generic </br> 5.4.0 – 37-generisk till 5.4.0-48-genered</br> 4.15.0-1009 – Azure till 4.15.0-1096 – Azure </br> 4.18.0-1006 – Azure till 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure till 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure till 5.3.0-1035 – Azure </br> 5.4.0-1020-Azure till 5.4.0-tjänste – Azure|
 18,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.15.0-20-Generic to 4.15.0-115-generic </br> 4.18.0-13-Generic to 4.18.0-25-genered </br> 5.0.0-15-Generic to 5.0.0-60-generic </br> 5.3.0-19-genered to 5.3.0-66-generic </br> 5.4.0 – 37-generisk till 5.4.0-45-genered</br> 4.15.0-1009 – Azure till 4.15.0-1093 – Azure </br> 4.18.0-1006 – Azure till 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure till 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure till 5.3.0-1035 – Azure </br> 5.4.0-1020 – Azure till 5.4.0-1023 – Azure|
 18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-Generic to 4.15.0-112-generic </br> 4.18.0-13-Generic to 4.18.0-25-genered </br> 5.0.0-15-genered to 5.0.0-58-generic </br> 5.3.0-19-genered to 5.3.0-64-genered </br> 5.4.0 – 37-generisk till 5.4.0-42-generic</br> 4.15.0-1009 – Azure till 4.15.0-1092 – Azure </br> 4.18.0-1006 – Azure till 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure till 5.0.0-1036 – Azure </br> 5.3.0-1007-Azure till 5.3.0-1032 – Azure </br> 5.4.0-1020 – Azure till 5.4.0 – 1022 – Azure|
 |||
-20,04 LTS |[9,40](https://support.microsoft.com/help/4602881/)| 5.4.0 – 26-Generic to 5.4.0-59 </br> -Generic 5.4.0-1010 – Azure till 5.4.0-1035 – Azure </br> 5.8.0-29-Generic to 5.8.0-34-generic|
+20,04 LTS |[9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0 – 26-Generic to 5.4.0-59 </br> -Generic 5.4.0-1010 – Azure till 5.4.0-1035 – Azure </br> 5.8.0-29-Generic to 5.8.0-34-generic|
 20,04 LTS |[9,39](https://support.microsoft.com/help/4597409/) | 5.4.0 – 26-Generic to 5.4.0-53 </br> -Generic 5.4.0-1010-Azure till 5.4.0-1031-Azure
 20,04 LTS |[9,38](https://support.microsoft.com/help/4590304/) | 5.4.0 – 26-Generic to 5.4.0-48 </br> -Generic 5.4.0-1010-Azure till 5.4.0-tjänsteoch Azure
 20,04 LTS |[9,37](https://support.microsoft.com/help/4582666/) | 5.4.0 – 26-Generic to 5.4.0-45 </br> -Generic 5.4.0-1010 – Azure till 5.4.0-1023 – Azure
@@ -128,11 +128,11 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 
 **Version som stöds** | **Mobilitets tjänst version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/), [9,39](https://support.microsoft.com/help/4597409/), [9,40](https://support.microsoft.com/help/4602881/) | 3.2.0 – 4-amd64 till 3.2.0-6-amd64, 3.16.0 -0. bpo. 4-amd64 |
+Debian 7 | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/), [9,39](https://support.microsoft.com/help/4597409/), [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 3.2.0 – 4-amd64 till 3.2.0-6-amd64, 3.16.0 -0. bpo. 4-amd64 |
 |||
-Debian 8 | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/), [9,39](https://support.microsoft.com/help/4597409/), [9,40](https://support.microsoft.com/help/4602881/)  | 3.16.0 – 4-amd64 till 3.16.0-11-amd64, 4.9.0 -0. bpo. 4-amd64 till 4.9.0 -0. bpo. 11-amd64 |
+Debian 8 | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/), [9,38](https://support.microsoft.com/help/4590304/), [9,39](https://support.microsoft.com/help/4597409/), [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 3.16.0 – 4-amd64 till 3.16.0-11-amd64, 4.9.0 -0. bpo. 4-amd64 till 4.9.0 -0. bpo. 11-amd64 |
 |||
-Debian 9,1 | [9,40](https://support.microsoft.com/help/4602881/) | 4.9.0-1-amd64 till 4.9.0-14-amd64 </br> 4.19.0 -0. bpo. 1-amd64 till 4.19.0 -0. bpo. 13-amd64 </br> 4.19.0 -0. bpo. 1 – Cloud-amd64 till 4.19.0 -0. bpo. 13-Cloud-amd64 </br>
+Debian 9,1 | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.9.0-1-amd64 till 4.9.0-14-amd64 </br> 4.19.0 -0. bpo. 1-amd64 till 4.19.0 -0. bpo. 13-amd64 </br> 4.19.0 -0. bpo. 1 – Cloud-amd64 till 4.19.0 -0. bpo. 13-Cloud-amd64 </br>
 Debian 9,1 | [9,39](https://support.microsoft.com/help/4597409/) | 4.9.0-1-amd64 till 4.9.0-14-amd64 </br> 4.19.0 -0. bpo. 1-amd64 till 4.19.0 -0. bpo. 12-amd64 </br> 4.19.0 -0. bpo. 1 – Cloud-amd64 till 4.19.0 -0. bpo. 12-Cloud-amd64 </br> Debian 9,1 | [9,38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 till 4.9.0-13-amd64 </br> 4.19.0 -0. bpo. 1-amd64 till 4.19.0 -0. bpo. 11-amd64 </br> 4.19.0 -0. bpo. 1 – Cloud-amd64 till 4.19.0 -0. bpo. 11-Cloud-amd64 </br> 
 Debian 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 till 4.9.0-13-amd64, 4.19.0 -0. bpo. 6-amd64 till 4.19.0 -0. bpo. 10-amd64, 4.19.0 -0. bpo. 6 – Cloud-amd64 till 4.19.0 -0. bpo. 10 – Cloud-amd64
 
@@ -140,7 +140,7 @@ Debian 9,1 | [9,37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64
 
 **Frisläpp** | **Mobilitets tjänst version** | **Kernelversion** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,40](https://support.microsoft.com/help/4602881/) | Alla [aktie-och SUSE 12 SP1-, SP2-, SP3-och SP4-kärnor](https://www.suse.com/support/kb/doc/?id=000019587) stöds.</br></br> 4.4.138-4,7-Azure till 4.4.180-4.31 – Azure</br>4.12.14-6.3 – Azure till 4.12.14-6.43 – Azure </br> 4.12.14-16,7 – Azure till 4.12.14-16.38 – Azure|
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | Alla [aktie-och SUSE 12 SP1-, SP2-, SP3-och SP4-kärnor](https://www.suse.com/support/kb/doc/?id=000019587) stöds.</br></br> 4.4.138-4,7-Azure till 4.4.180-4.31 – Azure</br>4.12.14-6.3 – Azure till 4.12.14-6.43 – Azure </br> 4.12.14-16,7 – Azure till 4.12.14-16.38 – Azure|
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,39](https://support.microsoft.com/help/4597409/) | Alla [aktie-och SUSE 12 SP1-, SP2-, SP3-och SP4-kärnor](https://www.suse.com/support/kb/doc/?id=000019587) stöds.</br></br> 4.4.138-4,7-Azure till 4.4.180-4.31 – Azure</br>4.12.14-6.3 – Azure till 4.12.14-6.43 – Azure </br> 4.12.14-16,7 – Azure till 4.12.14-16.34 – Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,38](https://support.microsoft.com/help/4590304/) | Alla [aktie-och SUSE 12 SP1-, SP2-, SP3-och SP4-kärnor](https://www.suse.com/support/kb/doc/?id=000019587) stöds.</br></br> 4.4.138-4,7-Azure till 4.4.180-4.31 – Azure</br>4.12.14-6.3 – Azure till 4.12.14-6.43 – Azure </br> 4.12.14-16,7 – Azure till 4.12.14-16.28 – Azure |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/),  | Alla [aktie-och SUSE 12 SP1-, SP2-, SP3-och SP4-kärnor](https://www.suse.com/support/kb/doc/?id=000019587) stöds.</br></br> 4.4.138-4,7-Azure till 4.4.180-4.31 – Azure</br>4.12.14-6.3 – Azure till 4.12.14-6.43 – Azure </br> 4.12.14-16,7 – Azure till 4.12.14-16.22 – Azure  |
@@ -149,7 +149,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | [9,36](https://suppo
 
 **Frisläpp** | **Mobilitets tjänst version** | **Kernelversion** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15, SP1, SP2 | [9,40](https://support.microsoft.com/help/4602881/)  | Som standard stöds alla [börs-och 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14 – 5.5 – Azure till 4.12.14 – 5.47 – Azure </br></br> 4.12.14 – 8.5 – Azure till 4.12.14 – 8.55 – Azure </br> 5.3.18-16-Azure </br> 5.3.18-18.5 – Azure till 5.3.18-18.29 – Azure
+SUSE Linux Enterprise Server 15, SP1, SP2 | [9,40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | Som standard stöds alla [börs-och 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14 – 5.5 – Azure till 4.12.14 – 5.47 – Azure </br></br> 4.12.14 – 8.5 – Azure till 4.12.14 – 8.55 – Azure </br> 5.3.18-16-Azure </br> 5.3.18-18.5 – Azure till 5.3.18-18.29 – Azure
 SUSE Linux Enterprise Server 15, SP1, SP2 | [9,39](https://support.microsoft.com/help/4597409/)  | Som standard stöds alla [börs-och 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14 – 5.5 – Azure till 4.12.14 – 5.47 – Azure </br></br> 4.12.14 – 8.5 – Azure till 4.12.14 – 8.47 – Azure </br> 5.3.18-16-Azure </br> 5.3.18-18.5 – Azure till 5.3.18-18.21 – Azure
 SUSE Linux Enterprise Server 15, SP1, SP2 | [9,38](https://support.microsoft.com/help/4590304/)  | Som standard stöds alla [börs-och 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14 – 5.5 – Azure till 4.12.14 – 5.47 – Azure </br></br> 4.12.14 – 8.5 – Azure till 4.12.14 – 8.44 – Azure </br> 5.3.18-16-Azure </br> 5.3.18-18.5 – Azure till 5.3.18-18.18 – Azure
 SUSE Linux Enterprise Server 15 och 15 SP1 | [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/)  | Som standard stöds alla [börs-och 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14 – 5.5 – Azure till 4.12.14 – 5.47 – Azure </br></br> 4.12.14 – 8.5 – Azure till 4.12.14 – 8.38 – Azure
@@ -211,35 +211,35 @@ Reserverad IP adress | Ja
 IPv4 | Ja
 Behåll Källans IP-adress | Ja
 Tjänstslutpunkter för virtuellt nätverk i Azure<br/> | Ja
-Snabbare nätverk | Nej
+Snabbare nätverk | Inga
 
 ## <a name="storage"></a>Storage
 **Komponent** | **Stöds**
 --- | ---
 Dynamisk disk | OS-disken måste vara en standard disk. <br/><br/>Data diskar kan vara dynamiska diskar
-Konfiguration av Docker-disk | Nej
+Konfiguration av Docker-disk | Inga
 Värd-NFS | Ja för VMware<br/><br/> Nej för fysiska servrar
 Värd-SAN (iSCSI/FC) | Ja
 Värd virtuellt San | Ja för VMware<br/><br/> Ej tillämpligt för fysiska servrar
 Värd-multisökväg (MPIO) | Ja, testad med Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM för CLARiiON
 Virtuella värd volymer (VVols) | Ja för VMware<br/><br/> Ej tillämpligt för fysiska servrar
 Gäst/Server VMDK | Ja
-Gäst-/Server delad kluster disk | Nej
-Gäst/Server-krypterad disk | Nej
-Gäst-/Server-NFS | Nej
+Gäst-/Server delad kluster disk | Inga
+Gäst/Server-krypterad disk | Inga
+Gäst-/Server-NFS | Inga
 Gäst-/Server-iSCSI | För migrering – Ja<br/>Vid haveri beredskap – nej kommer iSCSI att återställas efter fel som en ansluten disk till den virtuella datorn
-Gäst/Server SMB 3,0 | Nej
+Gäst/Server SMB 3,0 | Inga
 Gäst/Server-RDM | Ja<br/><br/> Ej tillämpligt för fysiska servrar
 Gäst-/Server disk > 1 TB | Ja, disken måste vara större än 1024 MB<br/><br/>Upp till 8 192 GB vid replikering till hanterade diskar (9,26-version och senare)<br></br> Upp till 4 095 GB vid replikering till lagrings konton
-Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | Nej
-Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | Nej
+Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | Inga
+Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | Inga
 Gäst-/Server volym med Striped disk >4 TB | Ja
 Hantering av logiska volymer (LVM)| Tjocka etablering – Ja <br></br> Tunn allokering – nej
-Gäst/Server – lagrings utrymmen | Nej
-Gäst/Server-NVMe-gränssnitt | Nej
-Gäst/Server Hot Lägg till/ta bort disk | Nej
+Gäst/Server – lagrings utrymmen | Inga
+Gäst/Server-NVMe-gränssnitt | Inga
+Gäst/Server Hot Lägg till/ta bort disk | Inga
 Gäst/Server – exkludera disk | Ja
-Multisökväg för gäst/Server (MPIO) | Nej
+Multisökväg för gäst/Server (MPIO) | Inga
 GPT-partitioner för gäst/Server | Det finns stöd för fem partitioner från samlad [uppdatering 37](https://support.microsoft.com/help/4508614/) (version 9,25 av mobilitets tjänsten) och senare. Tidigare fyra stöddes.
 ReFS | Elastiskt fil system stöds med mobilitets tjänst version 9,23 eller senare
 Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativ system för Azure Marketplace](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) med Site Recovery Mobility agent version 9,30 och senare. <br/> -Start typen för säker UEFI stöds inte. [Läs mer.](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
@@ -248,9 +248,9 @@ Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativ system för Az
 
 |**Typ av replikering**   |**Stöds**  |
 |---------|---------|
-|Avlästa data överföringar (ODX)    |       Nej  |
-|Seeding offline        |   Nej      |
-| Azure Data Box | Nej
+|Avlästa data överföringar (ODX)    |       Inga  |
+|Seeding offline        |   Inga      |
+| Azure Data Box | Inga
 
 ## <a name="azure-storage"></a>Azure-lagring
 
@@ -259,15 +259,15 @@ Gäst/Server-EFI/UEFI-start | – Stöds för alla [UEFI-operativ system för Az
 Lokalt redundant lagring | Ja
 Geo-redundant lagring | Ja
 Geo-redundant lagring med läsbehörighet (RA-GRS) | Ja
-Cool Storage | Nej
-Frekvent lagring| Nej
-Blockblobar | Nej
+Cool Storage | Inga
+Frekvent lagring| Inga
+Blockblobar | Inga
 Kryptering vid vila (SSE)| Ja
 Kryptering vid vila (CMK)| Ja (via PowerShell AZ 3.3.0-modul och senare)
 Dubbel kryptering i vila | Ja (via PowerShell AZ 3.3.0-modul och senare). Läs mer om regioner som stöds för [Windows](../virtual-machines/disk-encryption.md) och [Linux](../virtual-machines/disk-encryption.md).
 Premium Storage | Ja
 Alternativ för säker överföring | Ja
-Import/export-tjänst | Nej
+Import/export-tjänst | Inga
 Azure Storage brand väggar för virtuella nätverk | Ja.<br/> Konfigurerat på mål lagring/cache lagrings konto (används för att lagra replikeringsdata).
 Allmänna-syfte v2-lagrings konton (frekventa och låg frekventa nivåer) | Ja (transaktions kostnader är betydligt högre för v2 jämfört med v1)
 
@@ -276,7 +276,7 @@ Allmänna-syfte v2-lagrings konton (frekventa och låg frekventa nivåer) | Ja (
 **Funktion** | **Stöds**
 --- | ---
 Tillgänglighetsuppsättningar | Ja
-Tillgänglighetszoner | Nej
+Tillgänglighetszoner | Inga
 ) | Ja
 Hanterade diskar | Ja
 
@@ -332,10 +332,10 @@ Maximal dataomsättning per dag som stöds av en processerver | 2 TB
 
 **Åtgärd** | **Stöds**
 --- | ---
-Flytta valv över resurs grupper | Nej
-Flytta valvet inom och över prenumerationer | Nej
-Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper | Nej
-Flytta lagring, nätverk, virtuella Azure-datorer inom och över prenumerationer. | Nej
+Flytta valv över resurs grupper | Inga
+Flytta valvet inom och över prenumerationer | Inga
+Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper | Inga
+Flytta lagring, nätverk, virtuella Azure-datorer inom och över prenumerationer. | Inga
 
 
 ## <a name="obtain-latest-components"></a>Hämta de senaste komponenterna

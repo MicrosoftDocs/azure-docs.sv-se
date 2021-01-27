@@ -6,14 +6,14 @@ ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/08/2020
+ms.date: 01/26/2021
 ms.author: cynthn
-ms.openlocfilehash: cae75c88b4803912565e010f744a7757a3b98f04
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 95f6ce2fefacd20102abe9bbe818f228139ca33d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201560"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898519"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Så här kopplar du bort en datadisk från en virtuell Windows-dator
 
@@ -60,4 +60,6 @@ Disken finns kvar i lagrings utrymmet men är inte längre kopplad till en virtu
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill återanvända data disken kan du bara [ansluta den till en annan virtuell dator](attach-managed-disk-portal.md)
+Om du vill återanvända data disken kan du bara [ansluta den till en annan virtuell dator](attach-managed-disk-portal.md).
+
+Om du vill ta bort disken så att du inte längre debiteras lagrings kostnader, se [hitta och ta bort frånkopplade Azure-hanterade och ohanterade diskar – Azure Portal](../disks-find-unattached-portal.md).

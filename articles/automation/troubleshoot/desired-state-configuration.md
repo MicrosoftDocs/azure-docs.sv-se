@@ -2,19 +2,15 @@
 title: Felsöka konfigurations problem med Azure Automation tillstånd
 description: Den här artikeln beskriver hur du felsöker och löser konfigurations problem med Azure Automation tillstånd.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/16/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8043369ebfef23ed84ccff8e7428fbd2048e10b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187225"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896536"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Felsöka konfigurations problem med Azure Automation tillstånd
 
@@ -42,9 +38,9 @@ Om konfigurationen kompileras korrekt, men inte fungerar när den används på e
 
 Du kan installera `xDscDiagnostics` modulen på den lokala datorn genom att följa anvisningarna i [installera modulen stabil version](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-`xDscDiagnostics`Använd [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)för att installera modulen på din Azure-dator. Du kan också använda alternativet **Kör kommando** i Azure Portal genom att följa stegen i [köra PowerShell-skript i din virtuella Windows-dator med kommandot kör](../../virtual-machines/windows/run-command.md).
+`xDscDiagnostics`Använd [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand)för att installera modulen på din Azure-dator. Du kan också använda alternativet **Kör kommando** i Azure Portal genom att följa stegen i [köra PowerShell-skript i din virtuella Windows-dator med kommandot kör](../../virtual-machines/windows/run-command.md).
 
-Information om hur du använder **xDscDiagnostics**finns i [använda xDscDiagnostics för att analysera DSC-loggar](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Se även [xDscDiagnostics-cmdletar](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+Information om hur du använder **xDscDiagnostics** finns i [använda xDscDiagnostics för att analysera DSC-loggar](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Se även [xDscDiagnostics-cmdletar](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. kontrol lera att noderna och automation-arbetsytan har nödvändiga moduler
 
@@ -66,13 +62,13 @@ Det här felet är ett tillfälligt problem som har planer ATS att lösas.
 
 ### <a name="resolution"></a>Lösning
 
-Använd cmdleten [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0) för att ta bort konfigurationen.
+Använd cmdleten [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration) för att ta bort konfigurationen.
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Scenario: det gick inte att registrera DSC-agenten
 
 ### <a name="issue"></a>Problem
 
-När [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) eller en annan DSC-cmdlet visas följande fel:
+När [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) eller en annan DSC-cmdlet visas följande fel:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -111,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Det här problemet orsakas av ett felaktigt eller utgånget certifikat. Se [Omregistrera en nod](../automation-dsc-onboarding.md#re-register-a-node).
 
-Det här problemet kan även bero på att en proxykonfiguration inte tillåter åtkomst till ***. Azure-Automation.net**. Mer information finns i [konfiguration av privata nätverk](../automation-dsc-overview.md#network-planning). 
+Det här problemet kan även bero på att en proxykonfiguration inte tillåter åtkomst till **_. Azure-Automation.net_*. Mer information finns i [konfiguration av privata nätverk](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Lösning
 
@@ -120,12 +116,12 @@ Använd följande steg för att omregistrera den felande DSC-noden.
 #### <a name="step-1-unregister-the-node"></a>Steg 1: avregistrera noden
 
 1. I Azure Portal går du till **Start**  >  **Automation-konton** > (ditt Automation-konto) > **tillstånds konfiguration (DSC)**.
-1. Välj **noder**och välj noden som har problem.
+1. Välj **noder** och välj noden som har problem.
 1. Välj **avregistrera** för att avregistrera noden.
 
 #### <a name="step-2-uninstall-the-dsc-extension-from-the-node"></a>Steg 2: Avinstallera DSC-tillägget från noden
 
-1. I Azure Portal går du till **Start sidan**för  >  **virtuella datorer** > (misslyckad nod) > **tillägg**.
+1. I Azure Portal går du till **Start sidan** för  >  **virtuella datorer** > (misslyckad nod) > **tillägg**.
 1. Välj **Microsoft. PowerShell. DSC**, PowerShell DSC-tillägget.
 1. Välj **Avinstallera** för att avinstallera tillägget.
 
@@ -155,7 +151,7 @@ If (($certs.Count) -gt 0)
 1. Välj **noder**.
 1. Välj **Lägg till**.
 1. Välj noden som misslyckats.
-1. Välj **Anslut**och välj önskade alternativ.
+1. Välj **Anslut** och välj önskade alternativ.
 
 ## <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>Scenario: noden har statusen misslyckades med fel meddelandet "hittades inte"
 
@@ -177,7 +173,7 @@ Det här felet uppstår vanligt vis när noden tilldelas till ett konfigurations
 * Du kan tilldela en nods konfiguration till en nod med hjälp av Azure Portal eller med en PowerShell-cmdlet.
 
   * I Azure Portal går du till **Start**  >  **Automation-konton** > (ditt Automation-konto) > **tillstånds konfiguration (DSC)**. Välj sedan en nod och välj **tilldela konfiguration av nod**.
-  * Använd cmdleten [set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) .
+  * Använd cmdleten [set-AzAutomationDscNode](/powershell/module/Az.Automation/Set-AzAutomationDscNode) .
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Scenario: inga nodkonfigurationer (MOF-filer) skapades när en konfiguration kompilerades
 
@@ -259,7 +255,7 @@ Det här felet uppstår vanligt vis när noden tilldelas ett konfigurations namn
 
 ### <a name="issue"></a>Problem
 
-När du registrerar en nod genom att använda [register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) eller [Registrera-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)får du följande fel meddelande:
+När du registrerar en nod genom att använda [register-AzAutomationDSCNode](/powershell/module/az.automation/register-azautomationdscnode) eller [Registrera-AzureRMAutomationDSCNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)får du följande fel meddelande:
 
 ```error
 One or more errors occurred.
@@ -338,7 +334,7 @@ DSC-konfigurationer som tar lång tid att kompilera kan orsaka det här felet.
 
 ### <a name="resolution"></a>Lösning
 
-Du kan göra så att dina DSC-konfigurationer kan parsas snabbare genom att uttryckligen inkludera `ModuleName` parametern för eventuella [import-dscresource Keyword Supports-](/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) anrop.
+Du kan göra så att dina DSC-konfigurationer kan parsas snabbare genom att uttryckligen inkludera `ModuleName` parametern för eventuella [import-dscresource Keyword Supports-](/powershell/scripting/dsc/configurations/import-dscresource) anrop.
 
 ## <a name="next-steps"></a>Nästa steg
 

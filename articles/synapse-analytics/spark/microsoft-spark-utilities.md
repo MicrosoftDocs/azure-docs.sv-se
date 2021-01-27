@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878535"
+ms.locfileid: "98890537"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Introduktion till Microsoft Spark-verktyg
 
@@ -122,13 +122,45 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-<!-- :::zone pivot = "programming-language-csharp"
+:::zone pivot = "programming-language-csharp"
+
+
+### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage  
+
+Synapse utnyttjar **signaturen för delad åtkomst (SAS)** för att få åtkomst till Azure Blob Storage. För att undvika att exponera SAS-nycklar i koden rekommenderar vi att du skapar en ny länkad tjänst i Synapse-arbetsytan till det Azure Blob Storage-konto som du vill ha åtkomst till.
+
+Följ dessa steg om du vill lägga till en ny länkad tjänst för ett Azure Blob Storage-konto:
+
+1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
+2. Välj **Hantera** i den vänstra panelen och välj **länkade tjänster** under de **externa anslutningarna**.
+3. Sök i **Azure Blob Storage** i den **nya länkade tjänst** panelen till höger.
+4. Välj **Fortsätt**.
+5. Välj Azure Blob Storage-kontot för att komma åt och konfigurera namnet på den länkade tjänsten. Föreslå Använd **konto nyckel** för **autentiseringsmetoden**.
+6. Kontrol lera att inställningarna är korrekta genom att välja **Testa anslutning** .
+7. Välj **skapa** först och klicka på **publicera alla** för att spara ändringarna. 
+
+Du kan komma åt data på Azure Blob Storage med Synapse Spark via följande URL:
+
+<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+
+Här är ett kod exempel:
 
 ```csharp
+var blob_account_name = "";  // replace with your blob name
+var blob_container_name = "";     // replace with your container name
+var blob_relative_path = "";  // replace with your relative folder path
+var linked_service_name = "";    // replace with your linked service name
+var blob_sas_token = Credentials.GetConnectionStringOrCreds(linked_service_name);
+
+spark.SparkContext.GetConf().Set($"fs.azure.sas.{blob_container_name}.{blob_account_name}.blob.core.windows.net", blob_sas_token);
+
+var wasbs_path = $"wasbs://{blob_container_name}@{blob_account_name}.blob.core.windows.net/{blob_relative_path}";
+
+Console.WriteLine(wasbs_path);
 
 ```
 
-::: zone-end -->
+::: zone-end 
  
 ###  <a name="configure-access-to-azure-key-vault"></a>Konfigurera åtkomst till Azure Key Vault
 

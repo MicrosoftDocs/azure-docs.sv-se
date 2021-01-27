@@ -1,26 +1,9 @@
 ---
-title: Live transkription
-titleSuffix: Azure Media Services
-description: Lär dig mer om Azure Media Services Live-avskrift.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291423"
+rubrik: direkt avskrift: Azure Media Services Beskrivning: Lär dig mer om Azure Media Services Live-avskrift.  
+tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: Ne MS. topic: instruktionen MS. Date: 08/31/2020 MS. author: inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>Direkt avskrift (för hands version)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -37,7 +20,7 @@ Direkt avskrift är tillgängligt i följande regioner:
 
 - Sydostasien
 - Europa, västra
-- Norra Europa
+- Europa, norra
 - East US
 - Central US
 - USA, södra centrala

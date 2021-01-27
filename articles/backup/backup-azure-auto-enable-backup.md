@@ -3,50 +3,67 @@ title: Aktivera automatisk säkerhetskopiering av skapande av virtuell dator med
 description: En artikel som beskriver hur du använder Azure Policy för att automatiskt aktivera säkerhets kopiering för alla virtuella datorer som skapats inom ett angivet omfång
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 78fe0ccdbf6f1cc3498d14530d7492a86e8bf730
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174074"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896875"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Aktivera automatisk säkerhetskopiering av skapande av virtuell dator med Azure Policy
 
 En av de viktigaste ansvars områdena för en säkerhets kopierings-eller efterlevnadsprincip i en organisation är att se till att alla affärs kritiska datorer säkerhets kopie ras med lämplig kvarhållning.
 
-Idag tillhandahåller Azure Backup en inbyggd princip (med Azure Policy) som kan tilldelas till **alla virtuella Azure-datorer på en angiven plats i en prenumeration eller resurs grupp**. När den här principen tilldelas ett angivet omfång konfigureras alla nya virtuella datorer i det omfånget automatiskt för säkerhets kopiering till ett **befintligt valv på samma plats och i en prenumeration**. Användaren kan ange valvet och den bevarande princip som de säkerhetskopierade virtuella datorerna ska associeras med.
+I dag är Azure Backup en rad inbyggda principer (med [Azure policy](https://docs.microsoft.com/azure/governance/policy/overview)) som hjälper dig att automatiskt se till att dina virtuella Azure-datorer har kon figurer ATS för säkerhets kopiering. Beroende på hur dina säkerhets kopierings team och resurser organiseras, kan du använda någon av följande principer:
+
+## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>Princip 1 – Konfigurera säkerhets kopiering på virtuella datorer utan en tilldelad tagg till ett befintligt Recovery Services-valv på samma plats
+
+Om din organisation har en central säkerhets kopierings grupp som hanterar säkerhets kopieringar över program team kan du använda den här principen för att konfigurera säkerhets kopiering till ett befintligt centralt Recovery Services valv i samma prenumeration och plats som de virtuella datorer som regleras. Du kan välja att **undanta** virtuella datorer som innehåller en viss tagg, från den här principens omfattning.
+
+## <a name="policy-2---preview-configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>Princip 2-[Preview] Konfigurera säkerhets kopiering på virtuella datorer med en specifik tagg till ett befintligt Recovery Services-valv på samma plats
+Den här principen fungerar på samma sätt som princip 1 ovan, men den enda skillnaden är att du kan använda den här principen för att **ta** med virtuella datorer som innehåller en viss tagg i omfånget för den här principen. 
+
+## <a name="policy-3---preview-configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Princip 3-[för hands version] Konfigurera säkerhets kopiering på virtuella datorer utan en särskild tagg till ett nytt Recovery Services-valv med en standard princip
+Om du ordnar program i dedikerade resurs grupper och vill att de ska säkerhets kopie ras av samma valv, kan du använda den här principen för att automatiskt hantera den här åtgärden. Du kan välja att **undanta** virtuella datorer som innehåller en viss tagg, från den här principens omfattning.
+
+## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>Princip 4-[för hands version] Konfigurera säkerhets kopiering på virtuella datorer med en specifik tagg till ett nytt Recovery Services-valv med en standard princip
+Den här principen fungerar på samma sätt som princip 3 ovan, men den enda skillnaden är att du kan använda den här principen för att **ta** med virtuella datorer som innehåller en viss tagg i omfånget för den här principen. 
+
+Förutom ovan visas Azure Backup även en princip för [endast granskning](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit) – **Azure Backup ska vara aktive rad för Virtual Machines**. Den här principen identifierar vilka virtuella datorer som inte har säkerhets kopior aktiverade, men som inte automatiskt konfigurerar säkerhets kopior för dessa virtuella datorer. Detta är användbart när du bara vill utvärdera den övergripande kompatibiliteten för de virtuella datorerna, men inte att du behöver vidta några åtgärder direkt.
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
 * Den inbyggda principen stöds för närvarande endast för virtuella Azure-datorer. Användarna måste noga se till att den bevarande princip som anges under tilldelningen är en bevarande princip för virtuella datorer. Se [det här](./backup-azure-policy-supported-skus.md) dokumentet för att se alla VM-SKU: er som stöds av den här principen.
 
-* Principen kan tilldelas till en enda plats och en prenumeration i taget. Om du vill aktivera säkerhets kopiering för virtuella datorer över platser och prenumerationer måste flera instanser av princip tilldelningen skapas, en för varje kombination av plats och prenumeration.
+* Princip 1 och 2 kan tilldelas till en enda plats och en prenumeration i taget. Om du vill aktivera säkerhets kopiering för virtuella datorer över platser och prenumerationer måste flera instanser av princip tilldelningen skapas, en för varje kombination av plats och prenumeration.
 
-* Det angivna valvet och de virtuella datorer som har kon figurer ATS för säkerhets kopiering kan ligga under olika resurs grupper.
+* Hanterings gruppens omfattning stöds för närvarande inte för principer 1 och 2.
 
-* Hanterings gruppens omfång stöds inte för tillfället.
+* För princip 1 och 2 kan det angivna valvet och de virtuella datorer som kon figurer ATS för säkerhets kopiering vara under olika resurs grupper.
 
-* Den inbyggda principen är för närvarande inte tillgänglig i nationella moln.
+* Principer 1, 2, 3 och 4 är för närvarande inte tillgängliga i nationella moln.
+
+* Principer 3 och 4 kan tilldelas till en enda prenumeration i taget (eller en resurs grupp inom en prenumeration).
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
-## <a name="using-the-built-in-policy"></a>Använda den inbyggda principen
+## <a name="using-the-built-in-policies"></a>Använda de inbyggda principerna
 
-Följ stegen nedan om du vill tilldela principen till det begärda omfånget:
+Stegen nedan beskriver processen från slut punkt till slut punkt för att tilldela princip 1: **Konfigurera säkerhets kopiering på virtuella datorer utan en särskild tagg till ett befintligt Recovery Services-valv på samma plats** i ett visst omfång. Liknande instruktioner gäller för de andra principerna. När den har tilldelats konfigureras alla nya virtuella datorer som skapats i omfånget automatiskt för säkerhets kopiering.
 
 1. Logga in på Azure Portal och gå till instrument panelen för **principer** .
-1. Välj **definitioner** på den vänstra menyn för att få en lista över alla inbyggda principer i Azure-resurser.
-1. Filtrera listan för **kategori = säkerhets kopiering**. Du ser listan filtrerad nedåt till en enda princip med namnet "Konfigurera säkerhets kopiering på virtuella datorer för en plats till ett befintligt centralt valv på samma plats".
+2. Välj **definitioner** på den vänstra menyn för att få en lista över alla inbyggda principer i Azure-resurser.
+3. Filtrera listan för **kategori = säkerhets kopiering** och välj principen med namnet "Konfigurera säkerhets kopiering på virtuella datorer för en plats till ett befintligt centralt valv på samma plats".
 ![Princip instrument panel](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-1. Välj namnet på principen. Du omdirigeras till den detaljerade definitionen för den här principen.
+4. Välj namnet på principen. Du omdirigeras till den detaljerade definitionen för den här principen.
 ![Fönstret princip definition](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-1. Välj knappen **tilldela** högst upp i fönstret. Detta omdirigerar dig till fönstret **tilldela princip** .
-1. Under **grunderna**väljer du de tre punkterna bredvid fältet **omfång** . Det här öppnar ett höger kontext fönster där du kan välja prenumerationen för den princip som ska tillämpas på. Du kan också välja en resurs grupp, så att principen endast tillämpas för virtuella datorer i en viss resurs grupp.
+5. Välj knappen **tilldela** högst upp i fönstret. Detta omdirigerar dig till fönstret **tilldela princip** .
+6. Under **grunderna** väljer du de tre punkterna bredvid fältet **omfång** . Det här öppnar ett höger kontext fönster där du kan välja prenumerationen för den princip som ska tillämpas på. Du kan också välja en resurs grupp, så att principen endast tillämpas för virtuella datorer i en viss resurs grupp.
 ![Grundläggande princip tilldelning](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-1. På fliken **parametrar** väljer du en plats i list rutan och väljer det valv och den säkerhets kopierings princip som de virtuella datorerna i omfånget måste vara associerade till.
+7. På fliken **parametrar** väljer du en plats i list rutan och väljer det valv och den säkerhets kopierings princip som de virtuella datorerna i omfånget måste vara associerade till. Du kan också välja att ange ett taggnamn och en matris med märkes värden. En virtuell dator som innehåller något av de angivna värdena för den givna taggen kommer att uteslutas från omfånget för princip tilldelningen.
 ![Parametrar för princip tilldelning](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-1. Se till att **inställningen är inställd** på deployIfNotExists.
-1. Gå till **Granska + skapa** och välj **skapa**.
+8. Se till att **inställningen är inställd** på deployIfNotExists.
+9. Gå till **Granska + skapa** och välj **skapa**.
 
 > [!NOTE]
 >
@@ -56,6 +73,6 @@ Följ stegen nedan om du vill tilldela principen till det begärda omfånget:
 >
 > Vi rekommenderar att den här principen inte tilldelas till fler än 200 virtuella datorer i taget. Om principen är tilldelad till fler än 200 virtuella datorer kan det leda till att säkerhets kopieringen utlöses några timmar senare än vad som anges i schemat.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 [Läs mer om Azure Policy](../governance/policy/overview.md)

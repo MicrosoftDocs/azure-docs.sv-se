@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566926"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897517"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Självstudie: identifiera virtuella Hyper-V-datorer med Server utvärdering
 
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure identifierar du din lokala inventering och 
 
 I den här självstudien lär du dig att identifiera lokala virtuella Hyper-V-datorer med verktyget Azure Migrate: Server bedömning med hjälp av en förenklad Azure Migrate-apparat. Du distribuerar installationen som en virtuell Hyper-V-dator för att kontinuerligt identifiera metadata för dator och prestanda.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera ett Azure-konto
@@ -83,7 +83,7 @@ Du kan förbereda Hyper-V-värdar manuellt eller använda ett skript. Förberede
 
 **Steg** | **Över** | **Manuell**
 --- | --- | ---
-Kontrol lera värd kraven | Kontrollerar att värden kör en version av Hyper-V som stöds och Hyper-V-rollen.<br/><br/>Aktiverar WinRM-tjänsten och öppnar portarna 5985 (HTTP) och 5986 (HTTPS) på värden (krävs för metadata-insamling). | Värden måste köra Windows Server 2019, Windows Server 2016 eller Windows Server 2012 R2.<br/><br/> Kontrol lera att inkommande anslutningar är tillåtna på WinRM-port 5985 (HTTP), så att enheten kan ansluta till att hämta VM-metadata och prestanda data med hjälp av en Common Information Model-session (CIM).
+Kontrol lera värd kraven | Kontrollerar att värden kör en version av Hyper-V som stöds och Hyper-V-rollen.<br/><br/>Aktiverar WinRM-tjänsten och öppnar portarna 5985 (HTTP) och 5986 (HTTPS) på värden (krävs för metadata-insamling). | Värden måste köra Windows Server 2019, Windows Server 2016 eller Windows Server 2012 R2.<br/><br/> Kontrol lera att inkommande anslutningar är tillåtna på WinRM-port 5985 (HTTP), så att enheten kan ansluta till att hämta VM-metadata och prestanda data med hjälp av en Common Information Model-session (CIM).<br/><br/> Skriptet stöds för närvarande inte på värdar med ett annat språk än engelska.  
 Verifiera PowerShell-version | Kontrollerar att du kör skriptet på en PowerShell-version som stöds. | Kontrol lera att du kör PowerShell version 4,0 eller senare på Hyper-V-värden.
 Skapa ett konto | Kontrollerar att du har rätt behörigheter på Hyper-V-värden.<br/><br/> Gör att du kan skapa ett lokalt användar konto med rätt behörighet. | Alternativ 1: Förbered ett konto med administratörs åtkomst till Hyper-V-värddatorn.<br/><br/> Alternativ 2: Förbered ett lokalt administratörs konto eller ett domän administratörs konto och Lägg till kontot i dessa grupper: fjärrhanterings användare, Hyper-V-administratörer och användare av prestanda övervakning.
 Aktivera PowerShell-fjärrkommunikation | Aktiverar PowerShell-fjärrkommunikation på värden, så att Azure Migrate-installationen kan köra PowerShell-kommandon på värden via en WinRM-anslutning. | Om du vill konfigurera, öppnar du en PowerShell-konsol som administratör på varje värd och kör det här kommandot: ``` powershell Enable-PSRemoting -force ```

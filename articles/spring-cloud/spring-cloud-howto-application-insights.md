@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fb1c6f2b541e537bcb52c55fcfd87bbebe37b8e5
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: c4871c3de8028eec1b6184c1d03ac2180b50f57d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881358"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process agent i Azure våren Cloud (för hands version)
 
@@ -83,7 +83,7 @@ I det vänstra navigerings fönstret klickar du på **Application Insights** fö
 
   [![IPA 8](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* I det vänstra navigerings fönstret klickar du på **tillgänglighet** för att övervaka tillgänglighet och svars tider för webbappar genom att skapa [tillgänglighets test i Application Insights](/azure/azure-monitor/app/monitor-web-app-availability).
+* I det vänstra navigerings fönstret klickar du på **tillgänglighet** för att övervaka tillgänglighet och svars tider för webbappar genom att skapa [tillgänglighets test i Application Insights](../azure-monitor/app/monitor-web-app-availability.md).
 
   [![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
@@ -143,4 +143,4 @@ az spring-cloud app-insights update --disable –name "assignedName" –resource
 ## <a name="see-also"></a>Se även
 * [Använd distribuerad spårning med Azure våren Cloud](spring-cloud-tutorial-distributed-tracing.md)
 * [Analysera loggar och mått](diagnostic-services.md)
-* [Stream-loggar i real tid](spring-cloud-howto-log-streaming.md)
+* [Strömma loggar i realtid](spring-cloud-howto-log-streaming.md)

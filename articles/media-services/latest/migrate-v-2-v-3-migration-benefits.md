@@ -1,5 +1,5 @@
 ---
-title: Steg 1 – förstå fördelarna med att migrera till Media Services API v3 | Microsoft Docs
+title: Steg 1 – förstå fördelarna med att migrera till Media Services API v3
 description: Den här artikeln innehåller fördelarna med att migrera från Media Services v2 till v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1e3fae35ff249b4435cf2fdcd2bf691bc393d56
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5980da900cd1394d5d9a9ddf99063662cad3c88b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690675"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898383"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>Steg 1 – förstå fördelarna med att migrera till Media Services API v3
 

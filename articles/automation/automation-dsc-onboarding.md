@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0dc68bd7dacf0cd7f4be9732d45831e2dbb712c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186409"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897011"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Aktivera konfiguration av Azure Automation tillstånd
 
@@ -38,9 +38,9 @@ Så här aktiverar du en virtuell Azure-dator för tillstånds konfiguration via
 
 3. Välj en virtuell dator som ska aktive ras.
 
-4. Klicka på **Anslut**om datorn inte har önskat PowerShell-tillägg för önskat tillstånd installerat och energi läget körs.
+4. Klicka på **Anslut** om datorn inte har önskat PowerShell-tillägg för önskat tillstånd installerat och energi läget körs.
 
-5. Under **registrering**anger du de [lokala PowerShell DSC-Configuration Manager värden](/powershell/scripting/dsc/managing-nodes/metaConfig) som krävs för ditt användnings fall. Alternativt kan du ange en konfiguration för noden som ska tilldelas den virtuella datorn.
+5. Under **registrering** anger du de [lokala PowerShell DSC-Configuration Manager värden](/powershell/scripting/dsc/managing-nodes/metaConfig) som krävs för ditt användnings fall. Alternativt kan du ange en konfiguration för noden som ska tilldelas den virtuella datorn.
 
 ![aktiverar virtuell dator](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -73,7 +73,7 @@ Du kan aktivera Windows-servrar som körs lokalt eller i andra moln miljöer (in
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Om du inte kan använda PowerShell DSC-metaconfigurations via fjärr anslutning kopierar du mappen **metaconfigurations** till de datorer som du aktiverar. Lägg sedan till kod för att anropa [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) lokalt på datorerna.
+1. Om du inte kan använda PowerShell DSC-metaconfigurations via fjärr anslutning kopierar du mappen **metaconfigurations** till de datorer som du aktiverar. Lägg sedan till kod för att anropa [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) lokalt på datorerna.
 1. Med hjälp av Azure Portal-eller cmdlets kontrollerar du att datorerna visas som noder för tillstånds konfiguration som registrerats i ditt Azure Automation-konto.
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>Aktivera fysiska/virtuella Linux-datorer
@@ -123,7 +123,7 @@ Om du vill aktivera en dator för tillstånds konfiguration kan du generera en [
 > [!NOTE]
 > DSC-metaconfigurations innehåller de hemligheter som krävs för att aktivera en dator i ett Automation-konto för hantering. Se till att skydda alla DSC-metaconfigurations som du skapar eller ta bort dem efter användning.
 
-Proxy-stöd för metaconfigurations styrs av den [lokala Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7), som är Windows PowerShell DSC-motorn. LCM körs på alla målnoden och ansvarar för att anropa konfigurations resurserna som ingår i ett DSC metaconfiguration-skript. Du kan inkludera stöd för proxy i en metaconfiguration genom att inkludera definitioner av `ProxyURL` och `ProxyCredential` egenskaper efter behov i `ConfigurationRepositoryWeb` -, `ResourceRepositoryWeb` -och- `ReportServerWeb` block. Ett exempel på URL-inställningen är `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Egenskapen anges till ett `PSCredential` objekt, enligt beskrivningen i [hantera autentiseringsuppgifter i Azure Automation](shared-resources/credentials.md). 
+Proxy-stöd för metaconfigurations styrs av den [lokala Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig), som är Windows PowerShell DSC-motorn. LCM körs på alla målnoden och ansvarar för att anropa konfigurations resurserna som ingår i ett DSC metaconfiguration-skript. Du kan inkludera stöd för proxy i en metaconfiguration genom att inkludera definitioner av `ProxyURL` och `ProxyCredential` egenskaper efter behov i `ConfigurationRepositoryWeb` -, `ResourceRepositoryWeb` -och- `ReportServerWeb` block. Ett exempel på URL-inställningen är `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Egenskapen anges till ett `PSCredential` objekt, enligt beskrivningen i [hantera autentiseringsuppgifter i Azure Automation](shared-resources/credentials.md). 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>Generera DSC-metaconfigurations med en DSC-konfiguration
 
@@ -260,7 +260,7 @@ Proxy-stöd för metaconfigurations styrs av den [lokala Configuration Manager](
 Om PowerShell DSC LCM-standardvärden matchar ditt användnings fall och du vill att datorer ska kunna hämta från och rapportera till Azure Automation tillstånds konfiguration kan du generera den nödvändiga DSC-metaconfigurations mer enkelt genom att använda Azure Automation-cmdlet: ar.
 
 1. Öppna PowerShell-konsolen eller VSCode som administratör på en dator i din lokala miljö.
-2. Anslut till Azure Resource Manager med [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
+2. Anslut till Azure Resource Manager med [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount).
 3. Ladda ned PowerShell DSC-metaconfigurations för de datorer som du vill aktivera från det Automation-konto som du ställer in noder i.
 
    ```powershell
@@ -319,13 +319,13 @@ Så här visar du status för det önskade tillägget för Azure VM-tillstånd:
 1. I Azure Portal navigerar du till den virtuella dator som är aktive rad.
 2. Klicka på **tillägg** under **Inställningar**. 
 3. Välj **DSC** eller **DSCForLinux**, beroende på vilket operativ system du har. 
-4. Du kan klicka på **Visa detaljerad status**om du vill ha mer information.
+4. Du kan klicka på **Visa detaljerad status** om du vill ha mer information.
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Information om hur du kommer igång finns i [Kom igång med Azure Automation tillstånds konfiguration](automation-dsc-getting-started.md).
 - Mer information om hur du kompilerar DSC-konfigurationer så att du kan tilldela dem till mål noder finns i [kompilera DSC-konfigurationer i Azure Automation tillstånds konfiguration](automation-dsc-compile.md).
-- En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).
 - Pris information finns i pris information för [Azure Automation State Configuration](https://azure.microsoft.com/pricing/details/automation/).
 - Ett exempel på hur du använder Azure Automation tillstånds konfiguration i en pipeline för kontinuerlig distribution finns i [Konfigurera kontinuerlig distribution med choklad](automation-dsc-cd-chocolatey.md).
 - Information om fel sökning finns i [felsöka Azure Automation tillstånds konfiguration](./troubleshoot/desired-state-configuration.md).

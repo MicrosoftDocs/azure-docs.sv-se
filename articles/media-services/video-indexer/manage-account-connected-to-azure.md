@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/16/2019
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25025efe5254442c4862563ce329cfae69e7d033
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79499661"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898451"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Hantera ett Video Indexer-konto som är kopplat till Azure
 
@@ -24,11 +24,11 @@ Den här artikeln visar hur du hanterar ett Video Indexer-konto som är kopplat 
 > [!NOTE]
 > Du måste vara ägare till Video Indexer konto för att göra ändringar i konto konfigurationen som beskrivs i det här avsnittet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Anslut ditt Video Indexer-konto till Azure enligt beskrivningen i [ansluta till Azure](connect-to-azure.md).
 
-Se till att följa [krav](connect-to-azure.md#prerequisites) och [överväganden](connect-to-azure.md#considerations) vid granskning i artikeln.
+Se till att följa [krav](connect-to-azure.md#prerequisites-for-connecting-to-azure) och [överväganden](connect-to-azure.md#azure-media-services-considerations) vid granskning i artikeln.
 
 ## <a name="examine-account-settings"></a>Granska konto inställningar
 
@@ -54,7 +54,7 @@ Om ditt konto behöver vissa justeringar visas relevanta fel och varningar om ko
 
 I dialog rutan **Uppdatera anslutning till Azure Media Services** på din [video Indexer](https://www.videoindexer.ai/) sida uppmanas du att ange värden för följande inställningar:
 
-|Inställningen|Beskrivning|
+|Inställning|Beskrivning|
 |---|---|
 |ID för Azure-prenumeration|Prenumerations-ID kan hämtas från Azure Portal. Klicka på **alla tjänster** i den vänstra panelen och Sök efter "prenumerationer". Välj **prenumerationer** och välj önskat ID i listan med dina prenumerationer.|
 |Namn på Azure Media Services resurs grupp|Namnet på resurs gruppen där du skapade Media Services-kontot.|
@@ -63,7 +63,7 @@ I dialog rutan **Uppdatera anslutning till Azure Media Services** på din [video
 
 ## <a name="autoscale-reserved-units"></a>Autoskala reserverade enheter
 
-På sidan **Inställningar** kan du ställa in automatisk skalning av reserverade enheter (ru). Om alternativet är **aktiverat**kan du allokera maximalt antal ru: er och se till att video Indexer stoppar/startar ru: er automatiskt. Med det här alternativet betalar du inte extra pengar för inaktiv tid, men du behöver inte heller vänta på att indexerings jobben ska slutföras under en längre tid när indexerings belastningen är hög.
+På sidan **Inställningar** kan du ställa in automatisk skalning av reserverade enheter (ru). Om alternativet är **aktiverat** kan du allokera maximalt antal ru: er och se till att video Indexer stoppar/startar ru: er automatiskt. Med det här alternativet betalar du inte extra pengar för inaktiv tid, men du behöver inte heller vänta på att indexerings jobben ska slutföras under en längre tid när indexerings belastningen är hög.
 
 Autoskalning skalar inte under 1 RU eller över standard gränsen för det Media Services kontot. Om du vill öka gränsen skapar du en tjänstbegäran. Information om kvoter och begränsningar och hur du öppnar ett support ärende finns i [kvoter och begränsningar](../../media-services/previous/media-services-quotas-and-limitations.md).
 

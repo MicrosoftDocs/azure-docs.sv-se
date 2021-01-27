@@ -1,5 +1,5 @@
 ---
-title: Live händelse tillstånd och fakturering i Azure Media Services | Microsoft Docs
+title: Live händelse tillstånd och fakturering i Azure Media Services
 description: Det här avsnittet ger en översikt över Azure Media Services Live händelse tillstånd och fakturering.
 services: media-services
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2d3d3f5c56bd42aeb148c19fefebc0e7d364cd1c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c9fa12e1ee3778d0865c75662064bd4067e56d89
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782373"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897823"
 ---
 # <a name="live-event-states-and-billing"></a>Live händelse tillstånd och fakturering
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-I Azure Media Services börjar en Live-händelse att fakturera så fort dess tillstånd övergår till **körning** eller **vänte läge** . Du debiteras även om det inte finns någon video som går igenom tjänsten. Om du vill stoppa direkt sändningen från fakturering måste du stoppa Live-händelsen. Direkt avskrift debiteras på samma sätt som direkt sändningen.
+I Azure Media Services börjar en Live-händelse att fakturera så fort dess tillstånd övergår till **körning** eller **vänte läge**. Du debiteras även om det inte finns någon video som går igenom tjänsten. Om du vill stoppa direkt sändningen från fakturering måste du stoppa Live-händelsen. Direkt avskrift debiteras på samma sätt som direkt sändningen.
 
 När **LiveEventEncodingType** på din [Live-händelse](/rest/api/media/liveevents) är inställt på Standard eller Premium1080p stänger Media Services automatiskt av alla aktiva händelser som fortfarande är i **körnings** tillstånd 12 timmar efter att inmatnings flödet förloras och det inte finns någon **Live-utdata** som körs. Men du kommer fortfarande att faktureras för den tidpunkt då Live-händelsen var i **körnings** tillstånd.
 

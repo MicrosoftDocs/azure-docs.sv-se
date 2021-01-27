@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746806"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878943"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Monitor
 
@@ -380,6 +380,12 @@ Använd en enda resurs för alla komponenter eller roller i ett enda företags s
 * Om det inte finns något skript på klient sidan kan du [Ange cookies på servern](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/).
 * Om en riktig användare använder din webbplats i olika webbläsare, eller använder privat/Incognito-surfning eller olika datorer, kommer de att räknas mer än en gång.
 * Om du vill identifiera en inloggad användare på datorer och webbläsare lägger du till ett anrop till [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Hur skapar Application Insights enhets information (webbläsare, operativ system, språk, modell)?
+
+Webbläsaren skickar användar agent strängen i HTTP-huvudet för begäran och Application Insights-inmatnings tjänsten använder [UA-parser](https://github.com/ua-parser/uap-core) för att generera fält som visas i data tabeller och upplevelser. Det innebär att Application Insights användare inte kan ändra dessa fält.
+
+Ibland kan dessa data saknas eller vara felaktiga om användaren eller företaget inaktiverar sändning av användar agent i webb läsar inställningar. Dessutom kan [UA parser-regexna](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml) inte innehålla all enhets information eller Application Insights kanske inte har antagit de senaste uppdateringarna.
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Har jag aktiverat allt i Application Insights?
 | Vad du bör se | Så här hämtar du det | Varför du vill ha den |

@@ -2,18 +2,15 @@
 title: Felsöka Azure Automation problem med delade resurser
 description: Den här artikeln beskriver hur du felsöker och löser problem med Azure Automation delade resurser.
 services: automation
-author: mgoedtel
-ms.author: magoedte
+ms.subservice: ''
 ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: troubleshooting
+ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187174"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896299"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Felsöka problem med delade resurser
 
@@ -33,7 +30,7 @@ Eftersom importen av PowerShell-moduler är en komplex process i flera steg kans
 
 #### <a name="resolution"></a>Lösning
 
-För att lösa det här problemet måste du ta bort modulen som fastnat med cmdleten [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Sedan kan du försöka importera modulen igen.
+För att lösa det här problemet måste du ta bort modulen som fastnat med cmdleten [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) . Sedan kan du försöka importera modulen igen.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Några vanliga orsaker till att en modul inte kan importeras till Azure Automati
 * Strukturen matchar inte den struktur som Automation behöver.
 * Modulen är beroende av en annan modul som inte har distribuerats till ditt Automation-konto.
 * Dess beroenden saknas i mappen.
-* Cmdleten [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) används för att ladda upp modulen och du har inte angett den fullständiga lagrings Sök vägen eller inte har läst in modulen genom att använda en offentligt tillgänglig URL.
+* Cmdleten [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) används för att ladda upp modulen och du har inte angett den fullständiga lagrings Sök vägen eller inte har läst in modulen genom att använda en offentligt tillgänglig URL.
 
 #### <a name="resolution"></a>Lösning
 

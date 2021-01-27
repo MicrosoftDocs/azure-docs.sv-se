@@ -1,5 +1,5 @@
 ---
-title: LiveEvent inställningar för låg latens i Azure Media Services | Microsoft Docs
+title: LiveEvent inställningar för låg latens i Azure Media Services
 description: Det här avsnittet ger en översikt över inställningar för LiveEvent med låg latens och visar hur du ställer in låg latens.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023b0f4d7f0367882e0a5bb2be89c485c18bc03c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291525"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897840"
 ---
 # <a name="live-event-low-latency-settings"></a>Inställningar för låg latens för live event
 

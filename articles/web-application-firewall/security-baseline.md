@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202665"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878129"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azures säkerhets bas linje för Azure Web Application-brandvägg
 
@@ -406,7 +406,7 @@ Följ Security Center rekommendationer för kryptering i vila och kryptering und
 
 Azure-WAF, i förebyggande läge, blockerar intrång och attacker som identifieras av reglerna. Angriparen får ett undantag för "403 obehörig åtkomst" och anslutningen stängs. I skydds läget registreras sådana attacker i WAF-loggarna.
 
-- [Översikt över integrering mellan Application Gateway och Azure Security Center](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [Översikt över integrering mellan Application Gateway och Azure Security Center](../security-center/security-center-partner-integration.md)
 
 - [WAF-lägen på Application Gateway](ag/ag-overview.md#waf-modes)
 

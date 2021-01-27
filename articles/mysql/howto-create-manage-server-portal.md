@@ -1,21 +1,25 @@
 ---
 title: Hantera Server-Azure Portal-Azure Database for MySQL
 description: Lär dig hur du hanterar en Azure Database for MySQL-server från Azure Portal.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 3/18/2020
-ms.openlocfilehash: e29e823834ec813a8389cea220cffc7633aa7103
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541461"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897993"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Hantera en Azure Database for MySQL-server med hjälp av Azure Portal
 
 Den här artikeln visar hur du hanterar dina Azure Database for MySQL-servrar. Hanterings uppgifter omfattar skalning av beräknings-och lagrings utrymme, återställning av administratörs lösen ord och visning av Server information.
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
+>
 
 ## <a name="sign-in"></a>Logga in
 
@@ -33,9 +37,9 @@ När servern har skapats kan du skala mellan Generell användning-och Minnesopti
 
 Du kan skala från Generell användning till Minnesoptimerade och tvärtom. Det går inte att byta till och från Basic-nivån efter att servern har skapats.
 
-1. Välj din server i Azure Portal. Välj **pris nivå** , som finns i avsnittet **Inställningar** .
+1. Välj din server i Azure Portal. Välj **pris nivå**, som finns i avsnittet **Inställningar** .
 
-2. Välj **generell användning** eller **minne som är optimerat** , beroende på vad du skalar till.
+2. Välj **generell användning** eller **minne som är optimerat**, beroende på vad du skalar till.
 
    :::image type="content" source="./media/howto-create-manage-server-portal/change-pricing-tier.png" alt-text="Skärm bild av Azure Portal för att välja Basic, Generell användning eller minnesoptimerade nivå i Azure Database for MySQL":::
 
@@ -46,7 +50,7 @@ Du kan skala från Generell användning till Minnesoptimerade och tvärtom. Det 
 
 ### <a name="scale-vcores-up-or-down"></a>Skala virtuella kärnor uppåt eller nedåt
 
-1. Välj din server i Azure Portal. Välj **pris nivå** , som finns i avsnittet **Inställningar** .
+1. Välj din server i Azure Portal. Välj **pris nivå**, som finns i avsnittet **Inställningar** .
 
 2. Ändra **vCore** -inställningen genom att flytta skjutreglaget till önskat värde.
 
@@ -59,7 +63,7 @@ Du kan skala från Generell användning till Minnesoptimerade och tvärtom. Det 
 
 ### <a name="scale-storage-up"></a>Skala upp lagring
 
-1. Välj din server i Azure Portal. Välj **pris nivå** , som finns i avsnittet **Inställningar** .
+1. Välj din server i Azure Portal. Välj **pris nivå**, som finns i avsnittet **Inställningar** .
 
 2. Ändra **lagrings** inställningen genom att flytta skjutreglaget uppåt till önskat värde.
 
@@ -83,6 +87,13 @@ Du kan ändra administratörs rollens lösen ord med hjälp av Azure Portal.
    :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Skärm bild av Azure Portal för att återställa ditt lösen ord och spara i Azure Database for MySQL":::
 
 3. Välj **OK** för att spara det nya lösen ordet.
+ 
+
+> [!IMPORTANT]
+> Återställning av Server administratörs lösen ord återställer automatiskt Server administratörs behörighet till standard. Överväg att återställa lösen ordet för Server administratören om du råkat återkalla en eller flera av Server administratörs behörigheterna.
+   
+> [!NOTE]
+> Server administratörs användaren har följande behörigheter som standard: Välj, infoga, uppdatera, ta bort, skapa, ta bort, läsa in, bearbeta, REFERERA, INDEXERA, ändra, Visa databaser, skapa TEMPORÄRa tabeller, Lås tabeller, köra, replikering slav, REPLIKERINGSPARTNER, skapa, Visa, Visa, skapa rutin, ändra rutin, skapa användare, händelse, utlösare
 
 ## <a name="delete-a-server"></a>Ta bort en server
 

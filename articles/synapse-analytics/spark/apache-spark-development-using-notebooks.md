@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120962"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898502"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Skapa, utveckla och underhålla Synapse Studio-anteckningsböcker i Azure Synapse Analytics
 
@@ -152,7 +152,7 @@ IntelliSense-funktionerna finns på olika förfallo nivåer för olika språk. A
 |PySpark (Python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (Scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET för Spark (C#)|Yes|-|-|-|-|-|-|-|
+|.NET för Spark (C#)|Ja|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formatera en text cell med knappar i verktygsfältet
 
@@ -303,6 +303,8 @@ Stöds inte.
 # <a name="preview-notebook"></a>[För hands version av Notebook](#tab/preview)
 
 Du kan använda ```%run <notebook path>``` kommandot Magic för att referera till en annan antecknings bok i den aktuella Notebook-kontexten. Alla variabler som definieras i referens antecknings boken är tillgängliga i den aktuella antecknings boken. ```%run``` kommandot Magic stöder kapslade anrop men har inte stöd för rekursiva anrop. Du får ett undantag om utdrags djupet är större än fem. ```%run``` kommandot har för närvarande endast stöd för att skicka en Notebook-sökväg som parameter. 
+
+Exempel: ``` %run /path/notebookA ```.
 
 ---
 

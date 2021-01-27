@@ -1,5 +1,5 @@
 ---
-title: Strömmande positionerare i Azure Media Services | Microsoft Docs
+title: Strömmande positionerare i Azure Media Services
 description: Den här artikeln innehåller en förklaring av vad som finns i strömmande positionerare och hur de används av Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297968"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898146"
 ---
 # <a name="streaming-locators"></a>Positionerare för direktuppspelning
 
@@ -25,7 +25,7 @@ För att skapa videor i utdatatillgångar som klienter ska kunna spela upp måst
 
 Processen att skapa en **positionerare för direktuppspelning** kallas för publicering. Som standard kan din **positionerare för direktuppspelning** användas omedelbart efter API-anropen. Den fungerar tills den tas bort, såvida du inte konfigurerar valfria start- och sluttider. 
 
-När du skapar en **strömmande positionerare**måste du ange ett **till gångs** namn och ett namn för en **strömmande princip** . Mer information finns i följande avsnitt:
+När du skapar en **strömmande positionerare** måste du ange ett **till gångs** namn och ett namn för en **strömmande princip** . Mer information finns i följande avsnitt:
 
 * [Tillgångar](assets-concept.md)
 * [Strömmande principer](streaming-policy-concept.md)
