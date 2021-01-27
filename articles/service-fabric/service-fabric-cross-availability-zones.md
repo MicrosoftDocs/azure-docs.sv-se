@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250986"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876219"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -345,7 +345,7 @@ Om du vill aktivera zoner i en skalnings uppsättning för virtuella datorer må
 
 * Det första värdet är egenskapen **zoner** , som anger Tillgänglighetszoner som finns i skalnings uppsättningen för den virtuella datorn.
 * Det andra värdet är egenskapen "singlePlacementGroup", som måste vara inställd på True. **Skalnings uppsättningen som sträcker sig över 3 AZ kan skala upp till 300 virtuella datorer även med "singlePlacementGroup = true".**
-* Det tredje värdet är "zoneBalance", vilket garanterar strikt zon utjämning om värdet är true. Vi rekommenderar att du anger detta till true för att undvika obalanserad distribution av virtuella datorer mellan zoner. Läs om [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* Det tredje värdet är "zoneBalance", vilket garanterar strikt zon utjämning om värdet är true. Vi rekommenderar att du anger detta till true för att undvika obalanserad distribution av virtuella datorer mellan zoner. Läs om [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * Åsidosättningar av Faulydomain och UpgradeDomain måste inte konfigureras.
 
 ```json
@@ -416,9 +416,9 @@ Service Fabric nodeType måste vara aktive rad för att stödja flera tillgängl
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrering till nodtypen med flera Tillgänglighetszoner
 För alla migreringsåtgärder måste en ny nodeType läggas till som har stöd för flera tillgänglighets zoner. Det går inte att migrera en befintlig nodeType för att stödja flera zoner.
-Artikeln [här](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) samlar in detaljerade anvisningar om hur du lägger till en ny NodeType och lägger även till de andra resurser som krävs för den nya NodeType som IP-och lb-resurserna. Samma artikel beskriver också nu för att dra tillbaka den befintliga nodeType efter att nodeType med flera tillgänglighets zoner har lagts till i klustret.
+Artikeln [här](./service-fabric-scale-up-primary-node-type.md) samlar in detaljerade anvisningar om hur du lägger till en ny NodeType och lägger även till de andra resurser som krävs för den nya NodeType som IP-och lb-resurserna. Samma artikel beskriver också nu för att dra tillbaka den befintliga nodeType efter att nodeType med flera tillgänglighets zoner har lagts till i klustret.
 
-* Migrering från en nodeType som använder Basic LB-och IP-resurser: Detta är redan beskrivet [här för lösningen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) med en nodtyp per AZ. 
+* Migrering från en nodeType som använder Basic LB-och IP-resurser: Detta är redan beskrivet [här för lösningen](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) med en nodtyp per AZ. 
     För den nya nodtypen är den enda skillnaden att det bara finns en skalnings uppsättning för virtuella datorer och 1 NodeType för alla AZ i stället för 1 varje per AZ.
 * Migrering från en nodeType som använder standard-SKU: er och IP-resurser med NSG: Följ samma procedur som beskrivs ovan med undantaget att det inte behövs att lägga till nya LB-, IP-och NSG-resurser och samma resurser kan återanvändas i den nya nodeType.
 

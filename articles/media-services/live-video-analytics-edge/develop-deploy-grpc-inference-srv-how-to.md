@@ -3,12 +3,12 @@ title: Utveckla och distribuera en gRPC-härlednings Server – Azure
 description: Den här artikeln innehåller rikt linjer för hur du utvecklar och distribuerar en gRPC-härlednings Server.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97426032"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881660"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Instruktions guide – utveckla och distribuera en gRPC-härlednings Server
 
@@ -24,11 +24,11 @@ Den här artikeln visar hur du kan figursätta AI-modeller som du väljer inom e
 * [Introduktion till gRPC](https://www.grpc.io/docs/what-is-grpc/introduction/)
 * [Språk guide för proto3](https://developers.google.com/protocol-buffers/docs/proto3)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-* En x86-64-eller ARM64-enhet som kör ett av de [Linux-operativsystem som stöds](https://docs.microsoft.com/azure/iot-edge/support#operating-systems) eller en Windows-dator.
+* En x86-64-eller ARM64-enhet som kör ett av de [Linux-operativsystem som stöds](../../iot-edge/support.md#operating-systems) eller en Windows-dator.
 * [Installera Docker](https://docs.docker.com/desktop/#download-and-install) på datorn.
-* Installera [IoT Edge runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux).
+* Installera [IoT Edge runtime](../../iot-edge/how-to-install-iot-edge.md?tabs=linux).
 
 ## <a name="grpc-implementation-steps"></a>gRPC implementerings steg
 
@@ -197,7 +197,7 @@ Nu när vi har konfigurerat och initierat portarna för gRPC-servern, ska vi tit
         1. Konvertera avbildningen i en byte mat ris för bearbetning. Se metod: `GetBytes(Bitmap image)`
         
             Exempel processorn som vi använder stöder bara JPG-kodad bild ram och ingen som bild punkts format. Om din anpassade processor har stöd för en annan kodning och/eller format uppdaterar du `IsMediaFormatSupported` metoden för processor klassen.
-        1. Konvertera bilden till grå skala med hjälp av [klassen ColorMatrix](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true). Se metod: `ToGrayScale(Image source)` .
+        1. Konvertera bilden till grå skala med hjälp av [klassen ColorMatrix](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1). Se metod: `ToGrayScale(Image source)` .
         1. När vi får den grå skalnings bilden beräknar vi sedan medelvärdet av de grå skalans byte.
         1. Om det genomsnittliga värdet < 127, klassificeras bilden som "mörk", annars klassificeras de som "Light" med konfidens värdet 1,0. Se metod: `ProcessImage(List<Image> images)` .
 
@@ -213,7 +213,7 @@ Nu när vi har konfigurerat och initierat portarna för gRPC-servern, ska vi tit
 
 Nu när du har skapat din gRPC-utöknings modul kommer vi nu att skapa och distribuera medie diagram sto pol Ogin.
 
-1. Använd Visual Studio Code och följ [anvisningarna](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) för att logga in på Docker.
+1. Använd Visual Studio Code och följ [anvisningarna](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) för att logga in på Docker.
 1. I Visual Studio Code går du till src/Edge. Du ser din. kuvert-fil och några mallar för distributionsmall.
 
     Distributions mal len refererar till distributions manifestet för gräns enheten. Den innehåller några värden för plats hållare. . Miljö filen innehåller värdena för variablerna.
@@ -309,4 +309,3 @@ I det här skedet har distributionen av Edge-moduler till din IoT Edges enhet st
 ## <a name="next-steps"></a>Nästa steg
 
 Följ anvisningarna i **förbereda för övervakning av händelser** som nämns i snabb starten av [din modell](use-your-model-quickstart.md) för att köra exemplet och tolka resultatet. Kolla också våra exempel gRPC-topologier: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension och [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
-

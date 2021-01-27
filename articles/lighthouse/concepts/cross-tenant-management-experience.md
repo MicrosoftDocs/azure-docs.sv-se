@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 01/20/2021
+ms.date: 01/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e380b49f122e63113e790f4e866fed40aa9beac
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9af90e10d889c3d30375e001891ce0dc70767ab4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662720"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881409"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -97,7 +97,7 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 
 - Visa aviseringar för delegerade prenumerationer med möjlighet att visa och uppdatera aviseringar över alla prenumerationer
 - Visa aktivitets logg information för delegerade prenumerationer
-- Log Analytics: fråga efter data från fjärrarbetsyta i flera klienter (Observera att Automation-konton som används för att komma åt data från arbets ytor i kund klienter måste skapas i samma klient organisation)
+- [Log Analytics](../../azure-monitor/platform/service-providers.md): fråga efter data från fjärrarbetsyta i flera klienter (Observera att Automation-konton som används för att komma åt data från arbets ytor i kund klienter måste skapas i samma klient organisation)
 - Skapa aviseringar i kund klienter som utlöser automatisering, till exempel Azure Automation runbooks eller Azure Functions, i hantera klient organisationen via Webhooks
 - Skapa [diagnostiska inställningar](../..//azure-monitor/platform/diagnostic-settings.md) i kund klienter för att skicka resurs loggar till arbets ytor i hanterings klienten
 - För SAP-arbetsbelastningar [övervakar du SAP Solutions-mått med en sammanställd vy över kund klienter](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

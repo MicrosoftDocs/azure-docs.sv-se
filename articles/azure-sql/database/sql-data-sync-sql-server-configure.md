@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: f5192176a6a0e174d5878c51defce70d949c1eb1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922372"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882237"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Självstudie: Konfigurera SQL Data Sync mellan databaser i Azure SQL Database och SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,7 +57,7 @@ PowerShell-exempel på hur du konfigurerar SQL Data Sync finns i [så här synkr
 
    | Inställning                        | Beskrivning |
    | ------------------------------ | ------------------------------------------------- |
-   | **Sync-gruppens namn** | Ange ett namn för den nya Sync-gruppen. Namnet skiljer sig från namnet på själva databasen. |
+   | **Synkroniseringsgruppens namn** | Ange ett namn för den nya Sync-gruppen. Namnet skiljer sig från namnet på själva databasen. |
    | **Synka metadata-databas** | Välj att skapa en databas (rekommenderas) eller Använd en befintlig databas.<br/><br/>Om du väljer **ny databas** väljer du **Skapa ny databas.** På sidan **SQL Database** namnger och konfigurerar du den nya databasen och väljer **OK**.<br/><br/>Om du väljer **Använd befintlig databas** väljer du databasen i listan. |
    | **Automatisk synkronisering** | Välj **på** eller **av**.<br/><br/>Om du väljer **på** anger du ett nummer och väljer **sekunder**, **minuter**, **timmar** eller **dagar** i avsnittet **Synkroniseringsfrekvens** .<br/> Den första synkroniseringen börjar efter den valda intervall perioden från den tidpunkt då konfigurationen sparades.|
    | **Konflikt lösning** | Välj **hubben Win** eller **member Win**.<br/><br/>**Hubben Win** innebär att data i Hub-databasen skriver över motstridiga data i medlems databasen när konflikter uppstår.<br/><br/>**Medlemmen Win** innebär att om konflikter uppstår skriver data i medlems databasen över motstridiga data i Hubbs databasen. |
@@ -177,11 +177,7 @@ När de nya medlemmarna i Sync-gruppen har skapats och distribuerats, är **Konf
 
     ![Manuell synkronisering](./media/sql-data-sync-sql-server-configure/datasync-sync.png)
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
-
-**Hur ofta kan datasynkronisering synkronisera mina data?**
-
-Den minsta varaktigheten mellan synkroniseringar är fem minuter.
+## <a name="faq"></a>Vanliga frågor
 
 **Skapar SQL Data Sync tabeller helt?**
 

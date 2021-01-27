@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729000"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881931"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -131,7 +131,7 @@ Anger lagrings platsen eller providern som ska användas för nyckel lagring. F�
 
 |Nyckel|Exempelvärde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Files|
+|AzureWebJobsSecretStorageType|Filer|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -239,7 +239,7 @@ Används endast när du distribuerar till användnings-eller Premium-planer som 
 
 ## <a name="website_contentovervnet"></a>WEBBPLATS \_ CONTENTOVERVNET
 
-Endast för Premium-planer. Värdet `1` gör att din Function-app kan skalas när ditt lagrings konto är begränsat till ett virtuellt nätverk. Du bör aktivera den här inställningen när du begränsar ditt lagrings konto till ett virtuellt nätverk. Mer information finns i [begränsa ditt lagrings konto till ett virtuellt nätverk](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+Endast för Premium-planer. Värdet `1` gör att din Function-app kan skalas när ditt lagrings konto är begränsat till ett virtuellt nätverk. Du bör aktivera den här inställningen när du begränsar ditt lagrings konto till ett virtuellt nätverk. Mer information finns i [begränsa ditt lagrings konto till ett virtuellt nätverk](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
 
 |Nyckel|Exempelvärde|
 |---|------------|

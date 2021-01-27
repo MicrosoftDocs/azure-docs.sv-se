@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201968"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882390"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-lagring: design för hög prestanda
 
@@ -35,8 +35,8 @@ Vi har tillhandahållit dessa rikt linjer specifikt för Premium Storage efterso
 >
 > Om du vill mäta din disk kan du läsa våra artiklar om att mäta en disk:
 >
-> * För Linux: [benchmarka ditt program på Azure-disklagring](linux/disks-benchmarks.md)
-> * För Windows: [benchmarking a disk](windows/disks-benchmarks.md).
+> * För Linux: [benchmarka ditt program på Azure-disklagring](./disks-benchmarks.md)
+> * För Windows: [benchmarking a disk](./disks-benchmarks.md).
 >
 > Om din virtuella dator har stöd för accelererat nätverk bör du kontrol lera att den är aktive rad. Om den inte är aktive rad kan du aktivera den på redan distribuerade virtuella datorer på både [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) och [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
@@ -279,7 +279,7 @@ Följande är de rekommenderade diskens cacheinställningar för data diskar,
 
 | **Inställning av diskcachelagring** | **rekommendation när du ska använda den här inställningen** |
 | --- | --- |
-| Ingen |Konfigurera värd-cachen som ingen för skrivbara och skrivbara diskar. |
+| Inget |Konfigurera värd-cachen som ingen för skrivbara och skrivbara diskar. |
 | ReadOnly |Konfigurera Host-cache som skrivskyddat för skrivskyddade och Läs-och skriv diskar. |
 | ReadWrite |Konfigurera Host-cache enbart som ReadWrite om ditt program hanterar skrivningen av cachelagrade data korrekt till beständiga diskar vid behov. |
 
@@ -380,8 +380,8 @@ Azure Premium Storage etablerar det angivna antalet IOPS och data flöden beroen
 
 Om du vill mäta din disk kan du läsa våra artiklar om att mäta en disk:
 
-* För Linux: [benchmarka ditt program på Azure-disklagring](linux/disks-benchmarks.md)
-* För Windows: [benchmarking a disk](windows/disks-benchmarks.md).
+* För Linux: [benchmarka ditt program på Azure-disklagring](./disks-benchmarks.md)
+* För Windows: [benchmarking a disk](./disks-benchmarks.md).
 
 Läs mer om tillgängliga disk typer:
 

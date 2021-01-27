@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 52801d0d7b02bb3637b5edb03072bde04a023de9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737412"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881796"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Felsöka Azure Image Builder-tjänsten
 
@@ -209,7 +209,7 @@ Anpassningen. log innehåller följande steg:
     ```
 5. Avetablerings steg. Azure Image Builder lägger till en dold anpassning. Det här avetablerings steget ansvarar för att förbereda den virtuella datorn för inetablering. Den kör Windows Sysprep (med c:\DeprovisioningScript.ps1) eller i Linux waagent deetablering (med/tmp/DeprovisioningScript.sh). 
 
-    Ett exempel:
+    Exempel:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +247,7 @@ Anpassnings problem.
 
 Granska loggen för att hitta de anpassade felen. Sök efter *(telemetri)*. 
 
-Ett exempel:
+Exempel:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -674,4 +674,4 @@ Support Subtopic: Azure Image Builder
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information finns i [Översikt över Azure Image Builder](image-builder-overview.md).
+Mer information finns i [Översikt över Azure Image Builder](../image-builder-overview.md).

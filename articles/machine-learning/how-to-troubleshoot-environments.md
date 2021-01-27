@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7ddd5dec87a122a0b36fee17b5434c8a49dcf434
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572178"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881643"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Felsöka versioner av miljö avbildningar
 
@@ -153,12 +153,12 @@ Se följande scenarier för att felsöka möjliga fel på Server sidan.
 
 Möjliga problem:
 - Sökvägen till behållar registret kanske inte kan lösas på rätt sätt. Kontrol lera att avbildnings namnen använder dubbla snedstreck och riktningen för snedstreck i Linux-och Windows-värdar är korrekt.
-- Om ett behållar register bakom ett virtuellt nätverk använder en privat slut punkt i [en region som inte stöds](https://docs.microsoft.com/azure/private-link/private-link-overview#availability), konfigurerar du behållar registret med hjälp av tjänstens slut punkt (offentlig åtkomst) från portalen och försöker igen.
-- När du har beställt behållar registret bakom ett virtuellt nätverk kör du [Azure Resource Manager-mallen](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) så att arbets ytan kan kommunicera med behållar register instansen.
+- Om ett behållar register bakom ett virtuellt nätverk använder en privat slut punkt i [en region som inte stöds](/azure/private-link/private-link-overview#availability), konfigurerar du behållar registret med hjälp av tjänstens slut punkt (offentlig åtkomst) från portalen och försöker igen.
+- När du har beställt behållar registret bakom ett virtuellt nätverk kör du [Azure Resource Manager-mallen](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) så att arbets ytan kan kommunicera med behållar register instansen.
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Du får ett 401-fel från arbets ytans behållares register
 
-Omsynkronisera lagrings nycklar med hjälp av [ws.sync_keys ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--).
+Omsynkronisera lagrings nycklar med hjälp av [ws.sync_keys ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--).
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>Miljön behåller en "väntar på att andra Conda-åtgärder ska slutföras..." Fels
 
@@ -166,7 +166,7 @@ När en avbildning skapas kontinuerligt låses Conda av SDK-klienten. Om process
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Den anpassade Docker-avbildningen finns inte i registret
 
-Kontrol lera om [rätt tagg](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment) används och `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` inaktiverar Conda och använder användarens installerade paket.
+Kontrol lera om [rätt tagg](/azure/machine-learning/how-to-use-environments#create-an-environment) används och `user_managed_dependencies = True` . `Environment.python.user_managed_dependencies = True` inaktiverar Conda och använder användarens installerade paket.
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Du får ett av följande vanliga problem med virtuella nätverk
 
@@ -184,9 +184,9 @@ Kontrol lera om [rätt tagg](https://docs.microsoft.com/azure/machine-learning/h
 
 ### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Du kan inte köra experiment när nätverks säkerheten är aktive rad i lagring
 
-Om du använder standard Docker-avbildningar och aktiverar användar hanterade beroenden använder du MicrosoftContainerRegistry-och AzureFrontDoor. FirstParty [-tjänstetaggarna](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) för att tillåten Azure Container Registry och dess beroenden.
+Om du använder standard Docker-avbildningar och aktiverar användar hanterade beroenden använder du MicrosoftContainerRegistry-och AzureFrontDoor. FirstParty [-tjänstetaggarna](/azure/machine-learning/how-to-enable-virtual-network) för att tillåten Azure Container Registry och dess beroenden.
 
- Mer information finns i [Aktivera virtuella nätverk](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+ Mer information finns i [Aktivera virtuella nätverk](/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
 
 ### <a name="you-need-to-create-an-icm"></a>Du måste skapa en ICM
 

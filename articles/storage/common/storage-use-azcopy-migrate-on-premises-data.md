@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498174"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881035"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Självstudie: migrera lokala data till moln lagring med AzCopy
 
@@ -108,7 +108,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 * Ersätt `<container-name>` plats hållaren med namnet på den behållare som du skapade.
 
-Mer information om `sync` kommandot finns i [Synkronisera filer](storage-use-azcopy-blobs.md#synchronize-files).
+Mer information om `sync` kommandot finns i [Synkronisera filer](./storage-use-azcopy-v10.md#transfer-data).
 
 ## <a name="create-a-scheduled-task"></a>Skapa en schemalagd uppgift
 
@@ -182,7 +182,7 @@ Mer information om AzCopy finns i följande artiklar:
 
 * [Kom igång med AzCopy](storage-use-azcopy-v10.md)
 
-* [Överföra data med AzCopy och Blob Storage](storage-use-azcopy-blobs.md)
+* [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 
 * [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
 

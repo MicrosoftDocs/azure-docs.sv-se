@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916328"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882254"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-konton
 
@@ -47,7 +47,7 @@ I Media Services v3 används lagrings-API: er för att ladda upp filer till till
 
 För att skydda dina till gångar i vila bör till gångarna krypteras med kryptering på lagrings sidan. Följande tabell visar hur lagrings sidans kryptering fungerar i Media Services v3:
 
-|Krypterings alternativ|Beskrivning|Media Services v3|
+|Krypterings alternativ|Description|Media Services v3|
 |---|---|---|
 |Media Services lagrings kryptering| AES-256-kryptering, nyckel som hanteras av Media Services. |Stöds inte. <sup>(1)</sup>|
 |[Lagrings tjänst kryptering för vilande data](../../storage/common/storage-service-encryption.md)|Kryptering på Server sidan som erbjuds av Azure Storage, nyckel som hanteras av Azure eller av kunden.|Stöds.|
@@ -56,7 +56,7 @@ För att skydda dina till gångar i vila bör till gångarna krypteras med krypt
 <sup>1</sup> i Media Services v3 stöds inte lagrings kryptering (AES-256-kryptering) för bakåtkompatibilitet när dina till gångar skapades med Media Services v2, vilket innebär att v3 fungerar med befintliga lagrings krypterade till gångar men inte tillåter att nya skapas.
 
 ## <a name="double-encryption"></a>Dubbel kryptering
-Media Services stöder Double Encryption.  Mer information om Double Encryption finns i [Azure Double Encryption](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
+Media Services stöder Double Encryption.  Mer information om Double Encryption finns i [Azure Double Encryption](../../security/fundamentals/double-encryption.md).
 
 ## <a name="storage-account-errors"></a>Fel vid lagrings konto
 

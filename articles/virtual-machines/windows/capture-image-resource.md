@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d06dc03a016f057a9a3407a82a114f8df6757599
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9b63ec5b8a5d0684a0e144de7dfe4114af9777e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200693"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881897"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Skapa en hanterad avbildning av en generaliserad virtuell dator i Azure
 
 Du kan skapa en hanterad avbildningsresurs från en generaliserad virtuell dator (VM) som lagras antingen som en hanterad disk eller en ohanterad disk i ett lagringskonto. Avbildningen kan sedan användas till att skapa flera virtuella datorer. Information om hur hanterade avbildningar faktureras finns i [Managed disks prissättning](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-En hanterad avbildning har stöd för upp till 20 samtidiga distributioner. Om du försöker skapa fler än 20 virtuella datorer samtidigt, från samma hanterade avbildning, kan timeout uppstå för etablerings tids gränsen på grund av lagrings prestanda begränsningarna för en enda virtuell hård disk. Om du vill skapa fler än 20 virtuella datorer samtidigt använder du en avbildning av [delade avbildnings gallerier](shared-image-galleries.md) som kon figurer ATS med 1 replik för varje 20 samtidiga VM-distributioner.
+En hanterad avbildning har stöd för upp till 20 samtidiga distributioner. Om du försöker skapa fler än 20 virtuella datorer samtidigt, från samma hanterade avbildning, kan timeout uppstå för etablerings tids gränsen på grund av lagrings prestanda begränsningarna för en enda virtuell hård disk. Om du vill skapa fler än 20 virtuella datorer samtidigt använder du en avbildning av [delade avbildnings gallerier](../shared-image-galleries.md) som kon figurer ATS med 1 replik för varje 20 samtidiga VM-distributioner.
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisera den virtuella Windows-datorn med hjälp av Sysprep
 

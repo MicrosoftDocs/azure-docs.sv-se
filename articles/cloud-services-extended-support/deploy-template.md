@@ -1,6 +1,6 @@
 ---
-title: Skapa en Azure Cloud Service (utökad support) – Mallar
-description: Skapa en Azure Cloud Service (utökad support) med hjälp av ARM-mallar
+title: Distribuera en Azure Cloud Service (utökad support) – Mallar
+description: Distribuera en Azure Cloud Service (utökad support) med hjälp av ARM-mallar
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,14 +8,14 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3b28bc96703fa48e598bfb6f9622237e769119f2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881829"
 ---
-# <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>Skapa en moln tjänst (utökad support) med ARM-mallar
+# <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
 I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support) distribution med [arm-mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
 
@@ -39,7 +39,7 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
     - Den associerade Key Vault för måste vara aktive rad, så att Cloud Services (utökad support) resurs kan hämta certifikat från Key Vault. Mer information finns i [certifikat och Key Vault](certificates-and-key-vault.md)
     - Nyckel valvet måste refereras i OsProfile-avsnittet i ARM-mallen som visas i stegen nedan.
 
-## <a name="create-a-cloud-service-extended-support"></a>Skapa en moln tjänst (utökad support) 
+## <a name="deploy-a-cloud-service-extended-support"></a>Distribuera en moln tjänst (utökad support) 
 1. Skapa virtuellt nätverk. Namnet på det virtuella nätverket måste matcha referenserna i tjänst konfigurations filen (. cscfg). Om du använder ett befintligt virtuellt nätverk utelämnar du det här avsnittet från ARM-mallen.
 
     ```json
@@ -454,3 +454,4 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
 ## <a name="next-steps"></a>Nästa steg 
 - Läs igenom [vanliga frågor och svar](faq.md) om Cloud Services (utökad support).
 - Distribuera en moln tjänst (utökad support) med hjälp av [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [mall](deploy-template.md) eller [Visual Studio](deploy-visual-studio.md).
+- Besök den [Cloud Services (utökad support) exempel lagrings plats](https://github.com/Azure-Samples/cloud-services-extended-support)

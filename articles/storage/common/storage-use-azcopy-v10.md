@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 87cc8af9206daa1f1e959b8abd8beb3e7f8ff2f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108156"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881002"
 ---
 # <a name="get-started-with-azcopy"></a>Kom igång med AzCopy
 
@@ -79,7 +79,7 @@ Använd den här tabellen som en guide:
 Det här alternativet är endast tillgängligt för Blob Storage. Med hjälp av Azure Active Directory kan du ange autentiseringsuppgifter en gång i stället för att behöva lägga till en SAS-token i varje kommando.  
 
 > [!NOTE]
-> Om du planerar att kopiera blobbar mellan lagrings konton i den aktuella versionen måste du lägga till en SAS-token till varje käll-URL. Du kan bara utelämna SAS-token från mål-URL: en. Exempel finns i [Kopiera blobbar mellan lagrings konton](storage-use-azcopy-blobs.md).
+> Om du planerar att kopiera blobbar mellan lagrings konton i den aktuella versionen måste du lägga till en SAS-token till varje käll-URL. Du kan bara utelämna SAS-token från mål-URL: en. Exempel finns i [Kopiera blobbar mellan lagrings konton](#transfer-data).
 
 Information om hur du auktoriserar åtkomst med hjälp av Azure AD finns i [bevilja åtkomst till blobbar med AzCopy och Azure Active Directory (Azure AD)](storage-use-azcopy-authorize-azure-active-directory.md).
 

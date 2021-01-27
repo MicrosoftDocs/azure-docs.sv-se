@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: d45ab771f90c0174f24d5f0d39921f93f72be850
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b875936e13edfe0eff12f253836b093796951308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451067"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876334"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Använd Virtual Network tjänst slut punkter och regler för Azure Database for PostgreSQL-enskild server
 
@@ -32,9 +32,9 @@ Du kan också överväga att använda [privat länk](concepts-data-access-and-se
 
 **Virtuellt nätverk:** Du kan ha virtuella nätverk kopplade till din Azure-prenumeration.
 
-**Undernät:** Ett virtuellt nätverk innehåller **undernät**. Alla virtuella datorer i Azure (VM) som du har tilldelats till undernät. Ett undernät kan innehålla flera virtuella datorer eller andra Compute-noder. Compute-noder utanför det virtuella nätverket kan inte komma åt ditt virtuella nätverk om du inte konfigurerar din säkerhet att tillåta åtkomst.
+**Undernät:** Ett virtuellt nätverk innehåller **undernät**. Alla virtuella Azure-datorer (VM) i det virtuella nätverket tilldelas till ett undernät. Ett undernät kan innehålla flera virtuella datorer och/eller andra Compute-noder. Compute-noder utanför det virtuella nätverket kan inte komma åt ditt virtuella nätverk om du inte konfigurerar din säkerhet att tillåta åtkomst.
 
-**Virtual Network tjänst slut punkt:** En [Virtual Network tjänst slut punkt][vm-virtual-network-service-endpoints-overview-649d] är ett undernät vars egenskaps värden innehåller ett eller flera formella namn för Azure-tjänst typ. I den här artikeln är vi intresserade av typ namnet **Microsoft. SQL**, som refererar till Azure-tjänsten med namnet SQL Database. Den här tjänst tag gen gäller även för Azure Database for PostgreSQL-och MySQL-tjänster. Det är viktigt att du noterar när du använder service tag-koden för **Microsoft. SQL** på en slut punkt för VNet-tjänsten som konfigurerar tjänst slut punkts trafik för alla Azure SQL Database, Azure Database for PostgreSQL och Azure Database for MySQL servrar i under nätet. 
+**Virtual Network tjänst slut punkt:** En [Virtual Network tjänst slut punkt][vm-virtual-network-service-endpoints-overview-649d] är ett undernät vars egenskaps värden innehåller ett eller flera formella namn för Azure-tjänst typ. I den här artikeln är vi intresserade av typ namnet **Microsoft. SQL**, som refererar till Azure-tjänsten med namnet SQL Database. Den här tjänst tag gen gäller även för Azure Database for PostgreSQL-och MySQL-tjänster. Det är viktigt att du noterar när du använder service tag-koden för **Microsoft. SQL** på en slut punkt för VNet-tjänsten som konfigurerar tjänst slut punkts trafik för Azure Database Services: SQL Database, Azure Synapse Analytics, Azure Database for PostgreSQL och Azure Database for MySQL servrar i under nätet. 
 
 **Regel för virtuellt nätverk:** En regel för virtuella nätverk för din Azure Database for PostgreSQL-Server är ett undernät som listas i åtkomst kontrol listan (ACL) för din Azure Database for PostgreSQL-Server. För att finnas i ACL: en för din Azure Database for PostgreSQL-Server måste under nätet innehålla namnet **Microsoft. SQL** -typ.
 
@@ -46,11 +46,11 @@ En regel för virtuella nätverk instruerar Azure Database for PostgreSQL server
 
 De virtuella datorerna i under näten kan inte kommunicera med din Azure Database for PostgreSQL-Server förrän du vidtar åtgärder. En åtgärd som upprättar kommunikationen är att skapa en regel för virtuella nätverk. Anledningen till att du väljer regel metoden för VNet kräver en jämförelse-och-kontrast-diskussion som involverar de konkurrerande säkerhets alternativ som erbjuds av brand väggen.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Tillåta åtkomst till Azure-tjänster
+### <a name="allow-access-to-azure-services"></a>Tillåt åtkomst till Azure-tjänster
 
 Fönstret anslutnings säkerhet har en **på/av-** knapp med etiketten **Tillåt åtkomst till Azure-tjänster**. Inställningen **on** tillåter kommunikation från alla Azure IP-adresser och alla Azure-undernät. Dessa Azure IP-adresser eller undernät kanske inte ägs av dig. Den **här** inställningen är förmodligen mer öppen än du vill att din Azure Database for PostgreSQL-databas ska vara. Funktionen för regel för virtuella nätverk ger en mycket noggrannare detaljerad kontroll.
 
-### <a name="b-ip-rules"></a>B. IP-regler
+### <a name="ip-rules"></a>IP-regler
 
 Med Azure Database for PostgreSQL brand väggen kan du ange IP-adressintervall från vilka kommunikationen godkänns i Azure Database for PostgreSQL-databasen. Den här metoden är bra för stabila IP-adresser som ligger utanför Azures privata nätverk. Men många noder i det privata Azure-nätverket har kon figurer ATS med *dynamiska* IP-adresser. Dynamiska IP-adresser kan ändras, till exempel när den virtuella datorn startas om. Det skulle vara Folly att ange en dynamisk IP-adress i en brand Väggs regel i en produktions miljö.
 

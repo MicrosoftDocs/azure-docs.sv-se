@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
-ms.openlocfilehash: fc3f78131518b4d8740c25ab37c48d4444deef10
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563151"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881711"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Vad är Azure Spring Cloud?
 
@@ -27,7 +27,7 @@ Distribution av program till Azure våren Cloud har många fördelar.  Du kan:
 * Utveckla och distribuera snabbt utan skapa behållare-beroenden.
 * Övervaka produktions arbets belastningar effektivt och smidigt.
 
-Azure våren Cloud stöder både Java [våren start](https://spring.io/projects/spring-boot) och ASP.net Core [Steeltoe](https://steeltoe.io/) -appar. Steeltoe-stöd erbjuds för närvarande som en offentlig för hands version. Med den offentliga för hands versionen kan du experimentera med nya funktioner före den officiella versionen. Funktioner och tjänster för offentliga för hands versioner är inte avsedda för användning i produktion. Mer information finns i [vanliga frågor och svar](https://azure.microsoft.com/support/faq/) om fil [supportbegäran](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Azure våren Cloud stöder både Java [våren start](https://spring.io/projects/spring-boot) och ASP.net Core [Steeltoe](https://steeltoe.io/) -appar. Steeltoe-stöd erbjuds för närvarande som en offentlig för hands version. Med den offentliga för hands versionen kan du experimentera med nya funktioner före den officiella versionen. Funktioner och tjänster för offentliga för hands versioner är inte avsedda för användning i produktion. Mer information finns i [vanliga frågor och svar](https://azure.microsoft.com/support/faq/) om fil [supportbegäran](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="service-overview"></a>Tjänstöversikt
 
@@ -64,7 +64,7 @@ Den här dokumentationen innehåller avsnitt som förklarar hur du kommer igång
     * [Integrering med andra Azure-tjänster](spring-cloud-tutorial-bind-cosmos.md): i stället för att manuellt konfigurera dina våren Boot-program kan du automatiskt binda valda Azure-tjänster till dina program, till exempel att binda ditt program till en Azure Cosmos DB databas.
     * [Automatisera](spring-cloud-howto-cicd.md): kontinuerlig integrering och kontinuerliga leverans verktyg gör att du snabbt kan distribuera uppdateringar till befintliga program med minimal ansträngning och risk. Azure DevOps hjälper dig att ordna och kontrol lera dessa viktiga uppgifter. 
     * [Felsök](spring-cloud-howto-self-diagnose-solve.md): Azure våren Cloud Diagnostics ger en interaktiv upplevelse som hjälper dig att felsöka appar. Ingen konfiguration krävs. När du hittar problem identifierar Azure våren Cloud Diagnostics problem och vägleder dig till information som hjälper dig att felsöka och lösa problem.
-    * [Migrera](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): hur du migrerar ett befintligt moln program eller våren Boot-program som ska köras i Azure våren Cloud.
+    * [Migrera](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): hur du migrerar ett befintligt moln program eller våren Boot-program som ska köras i Azure våren Cloud.
 
 ## <a name="next-steps"></a>Nästa steg
 

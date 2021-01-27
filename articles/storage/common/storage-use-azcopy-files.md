@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 050e6b5007b9fbaedc412d8062430f1c2c1691fd
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7bca683ea075710aa6fc677fcf457ceb2e0e5098
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923954"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881019"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Överföra data med AzCopy och fillagring 
 
@@ -236,7 +236,7 @@ Mer detaljerad information finns i referens dokument för [AzCopy-kopiering](sto
 
 #### <a name="download-from-a-share-snapshot"></a>Ladda ned från en resurs ögonblicks bild
 
-Du kan hämta en speciell version av en fil eller katalog genom att referera till **datetime** -värdet för en resurs ögonblicks bild. Mer information om hur du delar ögonblicks bilder finns i [Översikt över resurs ögonblicks bilder för Azure Files](/azure/storage/files/storage-snapshots-files). 
+Du kan hämta en speciell version av en fil eller katalog genom att referera till **datetime** -värdet för en resurs ögonblicks bild. Mer information om hur du delar ögonblicks bilder finns i [Översikt över resurs ögonblicks bilder för Azure Files](../files/storage-snapshots-files.md). 
 
 |    |     |
 |--------|-----------|
@@ -251,7 +251,7 @@ Du kan använda AzCopy för att kopiera filer till andra lagrings konton. Kopier
 
 AzCopy använder [Server-till-Server-](/rest/api/storageservices/put-block-from-url) [API: er](/rest/api/storageservices/put-page-from-url), så data kopieras direkt mellan lagrings servrar. Dessa kopierings åtgärder använder inte datorns nätverks bandbredd. Du kan öka data flödet för dessa åtgärder genom att ange värdet för `AZCOPY_CONCURRENCY_VALUE` miljövariabeln. Mer information finns i [optimera data flöde](storage-use-azcopy-configure.md#optimize-throughput).
 
-Du kan också kopiera vissa versioner av en fil genom att referera till **datetime** -värdet för en resurs ögonblicks bild. Mer information om hur du delar ögonblicks bilder finns i [Översikt över resurs ögonblicks bilder för Azure Files](/azure/storage/files/storage-snapshots-files). 
+Du kan också kopiera vissa versioner av en fil genom att referera till **datetime** -värdet för en resurs ögonblicks bild. Mer information om hur du delar ögonblicks bilder finns i [Översikt över resurs ögonblicks bilder för Azure Files](../files/storage-snapshots-files.md). 
 
 Det här avsnittet innehåller följande exempel:
 

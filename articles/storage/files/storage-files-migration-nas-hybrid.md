@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629214"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882271"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrera från nätverksansluten lagring (NAS) till en hybrid moln distribution med Azure File Sync
 
@@ -208,7 +208,7 @@ Du har avslutat migreringen av en resurs/grupp av resurser till en gemensam rot 
 Du kan försöka att köra några av dessa kopior parallellt. Vi rekommenderar att du bearbetar omfånget för en Azure-filresurs i taget.
 
 > [!WARNING]
-> När du har flyttat alla data från NAS till Windows Server, och migreringen är slutförd: återgå till * **alla** _ synkronisera grupper i Azure Portal och justera moln skiktet volym utrymme för ledigt utrymme i procent till något som passar bättre för användningen av cacheminnet, t. ex. 20%. 
+> När du har flyttat alla data från NAS till Windows Server, och migreringen är slutförd: återgå till ***alla** _ synkronisera grupper i Azure Portal och justera moln skiktet volym utrymme för ledigt utrymme i procent till något som passar bättre för användningen av cacheminnet, t. ex. 20%. 
 
 Lagrings principen för ledigt utrymme i molnet fungerar på en volym nivå med eventuellt flera Server slut punkter som synkroniseras från den. Om du glömmer att justera det lediga utrymmet på en server slut punkt fortsätter synkroniseringen att tillämpa den mest restriktiva regeln och försöker behålla 99% ledigt disk utrymme, vilket gör att den lokala cachen inte fungerar som förväntat. Om det inte är målet att bara ha namn området för en volym som bara innehåller data som används sällan, och du reserverar resten av lagrings utrymmet för ett annat scenario.
 
@@ -227,5 +227,5 @@ Kontrol lera länken i följande avsnitt för att felsöka Azure File Sync probl
 Det finns mer att identifiera om Azure-filresurser och Azure File Sync. Följande artiklar hjälper till att förstå avancerade alternativ, bästa praxis och att även innehålla fel söknings hjälp. De här artiklarna länkar till [dokumentationen för Azure-filresursen](storage-files-introduction.md) efter behov.
 
 * [AFS-översikt](./storage-sync-files-planning.md)
-* [Distributions guide för AFS](storage-files-deployment-guide.md)
+* [Distributions guide för AFS](./storage-how-to-create-file-share.md)
 * [AFS-felsökning](storage-sync-files-troubleshoot.md)

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685182"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881813"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights händelse källor för Gen2
 
@@ -59,7 +59,7 @@ Utöver de bästa metoderna ovan rekommenderar vi att du implementerar följande
 
 - Öka din IoT Hub-eller Event Hub-datakvarhållning till maximalt 7 dagar.
 
-- Skapa miljö varningar i Azure Portal. Med aviseringar som baseras på plattforms [mått](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) kan du validera pipeline-beteendet från slut punkt till slut punkt. Anvisningar för att skapa och hantera aviseringar finns [här](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts). Föreslagna aviserings villkor:
+- Skapa miljö varningar i Azure Portal. Med aviseringar som baseras på plattforms [mått](./how-to-monitor-tsi-reference.md#metrics) kan du validera pipeline-beteendet från slut punkt till slut punkt. Anvisningar för att skapa och hantera aviseringar finns [här](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts). Föreslagna aviserings villkor:
 
   - IngressReceivedMessagesTimeLag är större än 5 minuter
   - IngressReceivedBytes är 0

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202648"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881324"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azures säkerhets bas linje för Azure Machine Learning
 
@@ -879,9 +879,9 @@ Observera att avbildningar av virtuella Azure Marketplace-datorer som publiceras
 
 - [Skapa en virtuell Windows-dator i Azure Portal ](../virtual-machines/windows/quick-create-portal.md)
 
-- [Information om hur du hämtar mallen för virtuella datorer](../virtual-machines/windows/download-template.md)
+- [Information om hur du hämtar mallen för virtuella datorer](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Exempelskript för att överföra en virtuell hårddisk till Azure och skapa en ny virtuell dator](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 **Azure Security Center övervakning**: inte tillämpligt
 
@@ -911,7 +911,7 @@ Azure Machine Learning har fullt stöd för git-lagringsplatser för att spåra 
 
 - [Så här konfigurerar du Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Översikt över delade avbildnings Galleri](../virtual-machines/windows/shared-image-galleries.md)
+- [Översikt över delade avbildnings Galleri](../virtual-machines/shared-image-galleries.md)
 
 - [Använd Azure RBAC för Kubernetes-auktorisering](../aks/manage-azure-rbac.md)
 

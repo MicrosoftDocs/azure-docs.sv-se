@@ -3,12 +3,12 @@ title: Hanterade identiteter för Azure-resurser med Service Bus
 description: Den här artikeln beskriver hur du använder hanterade identiteter för att få åtkomst till Azure Service Bus entiteter (köer, ämnen och prenumerationer).
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: 22be57a0108b6a8511a64165ad365675d006fb8f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: dac12820adf863a7e51457d34f9180543089fc7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808252"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881575"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Autentisera en hanterad identitet med Azure Active Directory för att få åtkomst till Azure Service Bus resurser
 [Hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) är en funktion i Azure som gör att du kan skapa en säker identitet som är kopplad till den distribution som program koden körs under. Du kan sedan associera identiteten med åtkomst kontroll roller som ger anpassade behörigheter för åtkomst till specifika Azure-resurser som ditt program behöver.
@@ -137,7 +137,7 @@ Om du vill skicka eller ta emot meddelanden anger du namnet på namn området oc
 
 
 > [!NOTE]
-> - Den hanterade identiteten fungerar bara i Azure-miljön, på App Services, i virtuella Azure-datorer och i skalnings uppsättningar. För .NET-program ger Microsoft. Azure. Services. AppAuthentication-biblioteket, som används av Service Bus NuGet-paketet, en abstraktion över det här protokollet och har stöd för en lokal utvecklings miljö. Med det här biblioteket kan du också testa din kod lokalt på din utvecklings dator med ditt användar konto från Visual Studio, Azure CLI 2,0 eller Active Directory integrerad autentisering. Mer information om lokala utvecklings alternativ med det här biblioteket finns i [tjänst-till-tjänst-autentisering för att Azure Key Vault med .net](../key-vault/general/service-to-service-authentication.md).  
+> - Den hanterade identiteten fungerar bara i Azure-miljön, på App Services, i virtuella Azure-datorer och i skalnings uppsättningar. För .NET-program ger Microsoft. Azure. Services. AppAuthentication-biblioteket, som används av Service Bus NuGet-paketet, en abstraktion över det här protokollet och har stöd för en lokal utvecklings miljö. Med det här biblioteket kan du också testa din kod lokalt på din utvecklings dator med ditt användar konto från Visual Studio, Azure CLI 2,0 eller Active Directory integrerad autentisering. Mer information om lokala utvecklings alternativ med det här biblioteket finns i [tjänst-till-tjänst-autentisering för att Azure Key Vault med .net](/dotnet/api/overview/azure/service-to-service-authentication).  
 > 
 > - För närvarande fungerar inte hanterade identiteter med App Service distributions fack.
 

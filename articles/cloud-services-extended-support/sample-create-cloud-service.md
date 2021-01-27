@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1c501bcd716a8d5b1deabf345192ced65ab2d5ca
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 61c8924b5dba37e3fc61da4710b9bcdad34ebeca
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745129"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881541"
 ---
 # <a name="create-a-new-azure-cloud-service-extended-support"></a>Skapa en ny Azure Cloud Service (utökad support)
 Dessa exempel beskriver olika sätt att skapa en ny distribution av Azure Cloud Service (utökad support).
@@ -189,5 +189,5 @@ $cloudService = New-AzCloudService                                              
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure Cloud Services (utökad support) finns i [Översikt över Azure Cloud Services (utökad support)](overview.md).
-
+- Mer information om Azure Cloud Services (utökad support) finns i [Översikt över Azure Cloud Services (utökad support)](overview.md).
+- Besök den [Cloud Services (utökad support) exempel lagrings plats](https://github.com/Azure-Samples/cloud-services-extended-support)

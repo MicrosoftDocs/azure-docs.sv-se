@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 77a32872726e3c67f0d3c542ca699271846a193b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e44e7c5d04695d5bd65d2eedc5474889a707c8bd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680678"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882152"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Samla in våren Cloud Resilience4J krets separator mått (för hands version)
 
@@ -22,9 +22,9 @@ Vi använder lösningen [våren-Cloud-krets-Break-demo](https://github.com/sprin
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Aktivera Java In-Process agent från [Java-In-Process agent för Application Insights guide](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights#enable-java-in-process-agent-for-application-insights). 
+* Aktivera Java In-Process agent från [Java-In-Process agent för Application Insights guide](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights). 
 
-* Aktivera dimensions insamling för resilience4j-mått från [Application Insightss guiden](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation).
+* Aktivera dimensions insamling för resilience4j-mått från [Application Insightss guiden](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
 * Installera git, Maven och Java, om det inte redan används av utvecklings datorn.
 
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>Se även
 
-* [Application Insights](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights)
+* [Application Insights](./spring-cloud-howto-application-insights.md)
 * [Distribuerad spårning](spring-cloud-tutorial-distributed-tracing.md)
 * [Krets brytarens instrument panel](spring-cloud-tutorial-circuit-breaker.md)

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2be1c7f76055cad1cf8b51938a65c7bbe6b2917e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251513"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881086"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -32,12 +32,6 @@ Microsoft Authenticator-appen ersatte Azure Authenticator-appen och det är den 
 **F**: registreras en enhet som kan ge företaget eller tjänst åtkomst till min enhet?
 
 S **: när** du registrerar en enhet får enheten åtkomst till din organisations tjänster och ger inte din organisation åtkomst till din enhet.
-
-### <a name="too-many-app-permissions"></a>För många app-behörigheter
-
-**F**: Varför begär appen så många behörigheter?
-
-**A**: här är en fullständig lista över behörigheter som kan tillfrågas och hur de används av appen. Vilka behörigheter som visas beror på vilken typ av telefon du har. Ibland vill din organisation veta din **plats** innan du får åtkomst till vissa resurser. Appen kommer att begära den här behörigheten endast om din organisation har en princip som kräver plats.
 
 ### <a name="error-adding-account"></a>Fel vid tillägg av konto
 
@@ -144,7 +138,7 @@ S **: Tryck** på konto panelen för det konto som du vill ta bort från appen f
 
 **F**: Varför begär appen så många behörigheter?
 
-**A**: här är en fullständig lista över behörigheter som kan tillfrågas och hur de används av appen. Vilka behörigheter som visas beror på vilken typ av telefon du har.<ul><li>**Använd bio metrisk maskin vara.** Vissa arbets-och skol konton kräver ytterligare en PIN-kod när du verifierar din identitet. Appen kräver ditt medgivande för att använda Bio metrisk eller ansikts igenkänning i stället för att ange PIN-koden.</li><li>**Digitalkameror.** Används för att skanna QR-koder när du lägger till en arbets plats, skola eller icke-Microsoft-konto.</li><li>**Kontakter och telefon.** Appen kräver den här behörigheten för att kunna söka efter arbets-eller skol Microsoft-konton på din telefon och lägga till dem i appen åt dig.</li><li>**Statusmeddelanden.** Används för att se till att ditt telefonnummer matchar numret på posten när du loggar in med din personliga Microsoft-konto för första gången. Vi skickar ett SMS till den telefon där du installerade appen som innehåller en 6-8-siffrig verifierings kod. Du behöver inte hitta den här koden och ange den eftersom autentiseraren hittar den automatiskt i SMS-meddelandet.</li><li>**Rita över andra appar.** Det meddelande du får som verifierar din identitet visas också i alla andra appar som körs.</li><li>**Ta emot data från Internet.** Den här behörigheten krävs för att skicka meddelanden.</li><li>**Förhindra att telefonen är i ström spar läge.** Om du registrerar din enhet i din organisation kan din organisation ändra den här principen på din telefon.</li><li>**Kontrol lera vibrationer.** Du kan välja om du vill ha en vibration när du får ett meddelande om att verifiera din identitet.</li><li>**Använd finger avtrycks maskin vara.** Vissa arbets-och skol konton kräver ytterligare en PIN-kod när du verifierar din identitet. För att göra processen enklare kan du använda ditt finger avtryck i stället för att ange PIN-koden.</li><li> **Visa nätverks anslutningar.** När du lägger till en Microsoft-konto kräver appen nätverks-/Internet anslutning.</li><li>**Läs innehållet i lagringen**. Den här behörigheten används bara när du rapporterar ett tekniskt problem via appens inställningar. Viss information från din lagring samlas in för att diagnostisera problemet.</li><li>**Fullständig nätverks åtkomst.** Den här behörigheten krävs för att skicka meddelanden för att verifiera din identitet.</li><li>**Körs vid start.** Om du startar om din telefon säkerställer den här behörigheten att du fortsätter att få meddelanden om att verifiera din identitet.</li></ul>
+**A**: här är en fullständig lista över behörigheter som kan tillfrågas och hur de används av appen. Vilka behörigheter som visas beror på vilken typ av telefon du har.<ul><li>**Plats**. Ibland vill din organisation veta din plats innan du får åtkomst till vissa resurser. Appen kommer att begära den här behörigheten endast om din organisation har en princip som kräver plats.</li><li>**Använd bio metrisk maskin vara.** Vissa arbets-och skol konton kräver ytterligare en PIN-kod när du verifierar din identitet. Appen kräver ditt medgivande för att använda Bio metrisk eller ansikts igenkänning i stället för att ange PIN-koden.</li><li>**Digitalkameror.** Används för att skanna QR-koder när du lägger till en arbets plats, skola eller icke-Microsoft-konto.</li><li>**Kontakter och telefon.** Appen kräver den här behörigheten för att kunna söka efter arbets-eller skol Microsoft-konton på din telefon och lägga till dem i appen åt dig.</li><li>**Statusmeddelanden.** Används för att se till att ditt telefonnummer matchar numret på posten när du loggar in med din personliga Microsoft-konto för första gången. Vi skickar ett SMS till den telefon där du installerade appen som innehåller en 6-8-siffrig verifierings kod. Du behöver inte hitta den här koden och ange den eftersom autentiseraren hittar den automatiskt i SMS-meddelandet.</li><li>**Rita över andra appar.** Det meddelande du får som verifierar din identitet visas också i alla andra appar som körs.</li><li>**Ta emot data från Internet.** Den här behörigheten krävs för att skicka meddelanden.</li><li>**Förhindra att telefonen är i ström spar läge.** Om du registrerar din enhet i din organisation kan din organisation ändra den här principen på din telefon.</li><li>**Kontrol lera vibrationer.** Du kan välja om du vill ha en vibration när du får ett meddelande om att verifiera din identitet.</li><li>**Använd finger avtrycks maskin vara.** Vissa arbets-och skol konton kräver ytterligare en PIN-kod när du verifierar din identitet. För att göra processen enklare kan du använda ditt finger avtryck i stället för att ange PIN-koden.</li><li> **Visa nätverks anslutningar.** När du lägger till en Microsoft-konto kräver appen nätverks-/Internet anslutning.</li><li>**Läs innehållet i lagringen**. Den här behörigheten används bara när du rapporterar ett tekniskt problem via appens inställningar. Viss information från din lagring samlas in för att diagnostisera problemet.</li><li>**Fullständig nätverks åtkomst.** Den här behörigheten krävs för att skicka meddelanden för att verifiera din identitet.</li><li>**Körs vid start.** Om du startar om din telefon säkerställer den här behörigheten att du fortsätter att få meddelanden om att verifiera din identitet.</li></ul>
 
 ### <a name="approve-requests-without-unlocking"></a>Godkänn begär Anden utan att låsa upp
 

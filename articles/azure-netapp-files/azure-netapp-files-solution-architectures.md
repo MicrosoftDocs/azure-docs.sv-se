@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 41e0f996bcd75ba1663bb8eb3880d550bed01f94
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703444"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881460"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -96,7 +96,7 @@ Det här avsnittet innehåller referenser till SAP på Azure-lösningar.
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware-lösningar
 
-* [Azure NetApp Files med Azure VMware-lösning – montering av gäst operativ system](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
+* [Azure NetApp Files med Azure VMware-lösning – montering av gäst operativ system](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>Infrastruktur lösningar för virtuella datorer
 

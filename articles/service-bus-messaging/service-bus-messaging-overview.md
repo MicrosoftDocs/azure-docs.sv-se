@@ -3,12 +3,12 @@ title: Översikt över Azure Service Bus-meddelanden | Microsoft Docs
 description: Den här artikeln innehåller en översikt över Azure Service Bus, en fullständigt hanterad meddelande Broker för företags integrering.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632875"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881609"
 ---
 # <a name="what-is-azure-service-bus"></a>Vad är Azure Service Bus?
 Microsoft Azure Service Bus är en fullständigt hanterad meddelande tjänst för företags meddelanden med meddelande köer och publicera prenumerations ämnen. Service Bus används för att frikoppla program och tjänster från varandra, vilket ger följande fördelar:
@@ -32,7 +32,7 @@ Några vanliga scenarier för meddelanden är:
     2. Publicera resultat från bearbetning till en eller flera olika köer.
     3. Flytta Indataporten från den ursprungliga kön. 
     
-    Resultatet blir bara synligt för underordnade konsumenter när det lyckas, inklusive den framgångna indatamängden, vilket gör det möjligt att bearbeta semantiken en gång. Den här transaktions modellen är en robust grund för mönstret för [kompenserande transaktioner](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) i den större lösnings kontexten. 
+    Resultatet blir bara synligt för underordnade konsumenter när det lyckas, inklusive den framgångna indatamängden, vilket gör det möjligt att bearbeta semantiken en gång. Den här transaktions modellen är en robust grund för mönstret för [kompenserande transaktioner](/azure/architecture/patterns/compensating-transaction) i den större lösnings kontexten. 
 * *Message-sessioner*. Implementera storskalig samordning av arbets flöden och multiplex-överföringar som kräver strikt meddelande ordning eller meddelande uppskjutande.
 
 Om du är van vid andra meddelande utjämnare som Apache ActiveMQ, liknar Service Bus koncept det du känner till. Eftersom Service Bus är ett PaaS-erbjudande (Platform-as-a-Service) är en viktig skillnad att du inte behöver oroa dig för följande åtgärder. Azure tar hand om dessa sysslor åt dig. 

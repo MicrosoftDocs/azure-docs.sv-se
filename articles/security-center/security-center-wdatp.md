@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 4b8141d99d654705450a14767b04ae6265766af9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807086"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876401"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -62,7 +62,7 @@ Microsoft Defender för slut punkt innehåller:
 
 Genom att integrera Defender för slut punkt med Security Center kan du dra nytta av följande ytterligare funktioner:
 
-- **Automatiserad onboarding**. Security Center aktiverar automatiskt Microsoft Defender för slut punkts sensor för alla Windows-servrar som övervakas av Security Center. Förutom för de som kör Windows Server 2019, som måste registreras via lokalt skript, grupprincip objekt (GPO) eller [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (tidigare SCCM).
+- **Automatiserad onboarding**. Security Center aktiverar automatiskt Microsoft Defender för slut punkts sensor för alla Windows-servrar som övervakas av Security Center. Förutom för de som kör Windows Server 2019, som måste registreras via lokalt skript, grupprincip objekt (GPO) eller [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (tidigare SCCM).
 
 - **En ruta i glaset**. I Security Center-konsolen visas Microsoft Defender för slut punkts varningar. Om du vill undersöka ytterligare använder du Microsoft Defender för slut punktens egna Portal sidor där du kan se ytterligare information som varnings process trädet och incident diagrammet. Du kan också se en detaljerad dator tids linje som visar varje beteende för en historisk period på upp till sex månader.
 

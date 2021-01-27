@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044381"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882460"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Konfigurera en digital Azure-instans och autentisering (portal)
 
@@ -71,13 +71,13 @@ Nu har du en Azure Digital-instansen som är redo att sätta igång. Sedan ger d
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Öppna först sidan för din Azure Digital-instansen i Azure Portal. Från instansens meny väljer du *åtkomst kontroll (IAM)*. Välj knappen  *Lägg till* under *Lägg till en roll tilldelning*.
+Öppna först sidan för din Azure Digital-instansen i Azure Portal. Från instansens meny väljer du *åtkomst kontroll (IAM)*. Lägg till en ny roll tilldelning genom att klicka på knappen  **+ Lägg till** .
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Välja att lägga till en roll tilldelning från sidan åtkomst kontroll (IAM)":::
 
 På följande sida för *Lägg till roll tilldelning* fyller du i värdena (måste slutföras av en användare med [tillräckliga behörigheter](#prerequisites-permission-requirements) i Azure-prenumerationen):
 * **Roll**: Välj *Azure Digitals sammanflätade data ägare* från List menyn
-* **Tilldela åtkomst till**: Välj *Azure AD-användare, grupp eller tjänstens huvud namn* i list menyn
+* **Tilldela åtkomst till**: Använd *användare, grupp eller tjänstens huvud namn*
 * **Välj**: Sök efter namnet eller e-postadressen för den användare som ska tilldelas. När du väljer resultatet visas användaren i avsnittet *markerade medlemmar* .
 
 :::row:::

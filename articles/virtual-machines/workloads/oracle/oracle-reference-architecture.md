@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737820"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882305"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referens arkitekturer för Oracle Database Enterprise Edition på Azure
 
@@ -216,7 +216,7 @@ Korrigering av den virtuella datorns operativ system kan automatiseras med hjäl
 - Använd tillgänglighets zoner för att uppnå hög tillgänglighet i regionen.
 - Överväg att använda Ultra disks (när det är tillgängligt) eller Premium diskar för Oracle-databasen.
 - Överväg att konfigurera en Oracle-databas för vänte läge i en annan Azure-region med Oracle data Guard.
-- Överväg att använda [närhets placerings grupper](../../../virtual-machines/linux/co-location.md#proximity-placement-groups) för att minska svars tiden mellan programmet och databas nivån.
+- Överväg att använda [närhets placerings grupper](../../co-location.md#proximity-placement-groups) för att minska svars tiden mellan programmet och databas nivån.
 - Konfigurera [Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) för hantering, övervakning och loggning.
 - Överväg att använda hantering av Oracle automatisk lagring (ASM) för strömlinjeformad lagrings hantering för din databas.
 - Använd [Azure-pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) för att hantera korrigeringar och uppdateringar av databasen utan drift avbrott.

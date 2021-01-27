@@ -3,12 +3,12 @@ title: Uppgradera Azure Service Fabric Cluster-versionen
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: c9a29a97238164b9f6daf9dda66a1f314a7673ce
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: cd9c4be285c68e5482f7276429dd5514c72ae135
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804244"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881558"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Uppgradera Azure Service Fabric Cluster-versionen
 
@@ -55,7 +55,7 @@ Uppgradera till en Service Fabric-version som stöds för att förhindra drift a
 
 ### <a name="upgrade-alert-for-versions-later-than-63"></a>Uppgradera aviseringen för versioner senare än 6,3
 
-Azure-infrastrukturen har gjort en ändring som kan påverka Service Fabric kunder för att förbättra säkerheten och tillgängligheten. Den här ändringen påverkar alla Service Fabric kluster som använder [öppet nätverks läge för behållare](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) och kör versioner 6,3 till 7,0 eller inkompatibla versioner som stöds senare än 7,0. En uppdatering av Service Fabric runtime är tillgänglig för alla Service Fabric-versioner som stöds i alla regioner.
+Azure-infrastrukturen har gjort en ändring som kan påverka Service Fabric kunder för att förbättra säkerheten och tillgängligheten. Den här ändringen påverkar alla Service Fabric kluster som använder [öppet nätverks läge för behållare](./service-fabric-networking-modes.md#set-up-open-networking-mode) och kör versioner 6,3 till 7,0 eller inkompatibla versioner som stöds senare än 7,0. En uppdatering av Service Fabric runtime är tillgänglig för alla Service Fabric-versioner som stöds i alla regioner.
 
 #### <a name="if-you-dont-upgrade-to-a-supported-version"></a>Om du inte uppgraderar till en version som stöds
 

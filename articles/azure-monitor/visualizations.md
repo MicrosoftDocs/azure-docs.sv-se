@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522676"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881239"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisera data från Azure Monitor
 Den här artikeln innehåller en översikt över tillgängliga metoder för att visualisera logg-och mått data som lagras i Azure Monitor.
@@ -46,9 +46,9 @@ Här är en video genom gång av hur du skapar instrument paneler.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Fördelar
-- Djupgående integrering i Azure. Visualiseringar kan fästas på instrument paneler från flera Azure-sidor, inklusive Metrics Explorer, Log Analytics och Application Insights.
+- Djupgående integrering i Azure. Visualiseringar kan fästas på instrument paneler från flera Azure-sidor, inklusive [Metrics Explorer](platform/metrics-charts.md), [Log Analytics](log-query/log-analytics-overview.md)och [Application Insights](app/app-insights-overview.md).
 - Stöder både mått och loggar.
-- Kombinera data från flera källor, inklusive utdata från [mått Utforskaren](platform/metrics-charts.md), [logg frågor](log-query/log-query-overview.md)och [kartor](app/app-map.md) och tillgänglighet i Application Insights.
+- Kombinera data från flera källor, inklusive utdata från [Metrics Explorer](platform/metrics-charts.md), [logg frågor](log-query/log-query-overview.md)och [kartor](app/app-map.md) och tillgänglighet i [Application Insights](app/app-insights-overview.md).
 - Alternativ för personliga eller delade instrument paneler. Integrerad med [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md).
 - Automatisk uppdatering. Mått uppdateringen är beroende av tidsintervallet med minst fem minuter. Loggar uppdateras varje timme med ett manuellt uppdaterings alternativ på begäran genom att klicka på ikonen "uppdatera" i en specifik visualisering, eller genom att uppdatera hela instrument panelen.
 - Parametrized Mät instrument paneler med tidsstämpel och anpassade parametrar.
@@ -57,7 +57,7 @@ Här är en video genom gång av hur du skapar instrument paneler.
 
 
 ### <a name="limitations"></a>Begränsningar
-- Begränsad kontroll över logg visualiseringar utan stöd för data tabeller. Det totala antalet data serier är begränsat till 10 med ytterligare data serier grupperade under en _annan_ Bucket.
+- Begränsad kontroll över logg visualiseringar utan stöd för data tabeller. Det totala antalet data serier är begränsat till 50 med ytterligare data serier grupperade under en _annan_ Bucket.
 - Inga anpassade parameter stöd för logg diagram.
 - Logg diagram är begränsade till de senaste 30 dagarna.
 - Det går bara att fästa logg diagram på delade instrument paneler.
@@ -140,8 +140,9 @@ Med [vyer i Azure Monitor](platform/view-designer.md) kan du skapa anpassade vis
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig mer om [data som samlas in av Azure Monitor](platform/data-platform.md).
 - Lär dig om [Azure-instrumentpaneler](../azure-portal/azure-portal-dashboards.md).
-- Lär dig mer om [vyer i Azure Monitor](platform/view-designer.md).
+- Läs mer om [Metrics Explorer](platform/metrics-getting-started.md)
 - Lär dig mer om [arbets böcker](./platform/workbooks-overview.md).
 - Lär dig mer om att [Importera loggdata till Power BI](./platform/powerbi.md).
 - Lär dig mer om [Grafana-Azure Monitor data källans plugin-program](./platform/grafana-plugin.md).
+- Lär dig mer om [vyer i Azure Monitor](platform/view-designer.md).
 

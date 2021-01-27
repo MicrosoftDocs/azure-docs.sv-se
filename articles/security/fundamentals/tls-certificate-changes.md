@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029701"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881256"
 ---
 # <a name="azure-tls-certificate-changes"></a>Ändringar i Azure TLS-certifikat  
 
@@ -30,7 +30,7 @@ Tjänstspecifik information:
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) och [DPS](../../iot-dps/index.yml) finns kvar på Baltimore CyberTrust-rot certifikat utfärdare men deras mellanliggande certifikat utfärdare kommer att ändras. [Klicka här om du vill ha mer information](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 - [Azure Storage](../../storage/index.yml) kommer att finnas kvar på Baltimore CyberTrust rot certifikat utfärdare, men deras mellanliggande certifikat utfärdare ändras. [Klicka här om du vill ha mer information](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 - [Azure cache för Redis](../../azure-cache-for-redis/index.yml) är kvar på Baltimore CyberTrust rot certifikat utfärdare, men deras mellanliggande certifikat utfärdare kommer att ändras. [Klicka här om du vill ha mer information](../../azure-cache-for-redis/cache-whats-new.md).
-- Azure Instance Metadata Service finns kvar på Baltimore CyberTrust rot certifikat utfärdare men deras mellanliggande certifikat utfärdare kommer att ändras. [Klicka här om du vill ha mer information](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html).
+- Azure Instance Metadata Service finns kvar på Baltimore CyberTrust rot certifikat utfärdare men deras mellanliggande certifikat utfärdare kommer att ändras. [Klicka här om du vill ha mer information](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html).
 
 > [!IMPORTANT]
 > Kunder kan behöva uppdatera sina program efter den här ändringen för att förhindra anslutnings problem vid försök att ansluta till Azure-tjänster.

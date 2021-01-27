@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625355"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881192"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -49,36 +49,66 @@ Se den [automatiskt insamlade loggnings konfigurationen](./java-standalone-confi
 
 ## <a name="import-ssl-certificates"></a>Importera SSL-certifikat
 
-Om du använder standard-Java-standardarkivet kommer det redan att ha alla certifikat utfärdarens rot certifikat. Du behöver inte importera fler SSL-certifikat.
+Det här avsnittet hjälper dig att felsöka och eventuellt åtgärda undantag som rör SSL-certifikat när du använder Java-agenten.
 
-Om du använder en anpassad Java-nyckel lagring kan du behöva importera Application Insights slut punkt SSL-certifikat till den.
+Det finns två olika sökvägar för att felsöka problemet.
 
-### <a name="key-terminology"></a>Nyckel terminologi
-Ett nyckel *lager* är en lagrings plats för certifikat, offentliga nycklar och privata nycklar. Normalt har Java Development Kit-distributioner en körbar fil för att hantera dem: `keytool` .
+### <a name="if-using-a-default-java-keystore"></a>Om du använder en standard-Java-nyckel lagring:
 
-Följande exempel är ett enkelt kommando för att importera ett SSL-certifikat till nyckel arkivet:
+Normalt har Java-standardarkivet redan alla certifikat utfärdarens rot certifikat. Det kan dock finnas vissa undantag, till exempel om inmatnings slut punkt certifikatet kan vara signerat av ett annat rot certifikat. Vi rekommenderar därför följande tre steg för att lösa problemet:
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  Kontrol lera att rot certifikatet som användes för att signera Application Insights-slutpunkten redan finns i standard arkivet. Certifikaten för betrodda certifikat utfärdare lagras som standard i `$JAVA_HOME/jre/lib/security/cacerts` . Om du vill visa en lista över certifikat i ett Java-nyckel Arkiv använder du följande kommando:
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    Du kan omdirigera utdata till en temporär fil som detta (kommer att vara lätt att söka senare)
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>Steg för att hämta och lägga till ett SSL-certifikat
+2. När du har listan över certifikat, följer du de här [stegen](#steps-to-download-ssl-certificate) för att ladda ned rot certifikatet som användes för att signera Application Insights-slutpunkten.
+
+    När du har hämtat certifikatet genererar du en SHA-1-hash på certifikatet med kommandot nedan:
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    Kopiera SHA-1-värdet och kontrol lera om det här värdet finns i filen "temp.txt" som du sparade tidigare.  Om du inte kan hitta SHA-1-värdet i den temporära filen anger det att det nedladdade rot certifikatet saknas i standard-Java-auktoriseringsarkivet.
+
+
+3. Importera rot certifikatet till standard-Java-auktoriseringsarkivet med följande kommando:
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    I det här fallet kommer det att
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>Om du använder ett anpassat Java-nyckel Arkiv:
+
+Om du använder en anpassad Java-nyckel lagring kan du behöva importera Application Insights slut punkt (er) rot-SSL-certifikat till den.
+Vi rekommenderar följande två steg för att lösa det här problemet:
+1. Följ de här [stegen](#steps-to-download-ssl-certificate) för att ladda ned rot certifikatet från Application Insights slut punkten.
+2. Använd följande kommando för att importera rot-SSL-certifikatet till det anpassade Java-nyckel arkivet:
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>Steg för att hämta SSL-certifikat
 
 1.  Öppna din favorit webbläsare och gå till `IngestionEndpoint` URL: en som finns i anslutnings strängen som används för att instrumentera ditt program.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Skärm bild som visar en Application Insights anslutnings sträng.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="Skärm bild som visar en Application Insights anslutnings sträng." lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  Välj ikonen **Visa plats information** (lås) i webbläsaren och välj sedan alternativet **certifikat** .
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Skärm bild av alternativet certifikat i plats information.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Skärm bild av alternativet certifikat i plats information." lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  Gå till fliken **information** och välj **Kopiera till fil**.
-4.  Välj **Nästa** -knappen, Välj **Base-64-kodad X. 509 (. CER-** format och välj sedan **Nästa** igen.
+3.  I stället för att hämta ' löv ' certifikatet bör du ladda ned rot certifikatet som det visas nedan. Senare måste du klicka på "certifikat Sök väg" – > väljer rot certifikatet – > Klicka på Visa certifikat. Då öppnas en ny certifikat-meny och du kan hämta certifikatet från den nya menyn.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Skärm bild av guiden Exportera certifikat med ett format valt.":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="Skärm bild av hur du väljer rot certifikatet." lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  Ange den fil där du vill spara SSL-certifikatet. Välj sedan **Nästa**  >  **Slutför**. Du bör se meddelandet "exporten lyckades".
-6.  När du har certifikatet är det dags att importera certifikatet till ett Java-nyckel arkiv. Använd [föregående kommando](#key-terminology) för att importera certifikat.
+4.  Gå till fliken **information** och välj **Kopiera till fil**.
+5.  Välj **Nästa** -knappen, Välj **Base-64-kodad X. 509 (. CER-** format och välj sedan **Nästa** igen.
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Skärm bild av guiden Exportera certifikat med ett format valt." lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  Ange den fil där du vill spara SSL-certifikatet. Välj sedan **Nästa**  >  **Slutför**. Du bör se meddelandet "exporten lyckades".
 
 > [!WARNING]
 > Du måste upprepa de här stegen för att få det nya certifikatet innan det aktuella certifikatet upphör att gälla. Du kan hitta information om förfallo datum på fliken **information** i dialog rutan **certifikat** .
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Skärm bild som visar information om SSL-certifikat.":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Skärm bild som visar information om SSL-certifikat." lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

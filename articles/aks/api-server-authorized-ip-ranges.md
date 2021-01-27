@@ -4,12 +4,12 @@ description: Lär dig hur du skyddar klustret med hjälp av ett IP-adressinterva
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682510"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890652"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Säker åtkomst till API-servern med behöriga IP-adressintervall i Azure Kubernetes service (AKS)
 
@@ -130,11 +130,28 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>Hitta befintliga auktoriserade IP-intervall
+
+Om du vill hitta IP-intervall som har auktoriserats använder du [AZ AKS show][az-aks-show] och anger klustrets namn och resurs grupp. Exempel:
+
+```azurecli-interactive
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Uppdatera, inaktivera och hitta auktoriserade IP-intervall med hjälp av Azure Portal
+
+Ovanstående åtgärder för att lägga till, uppdatera, söka efter och inaktivera auktoriserade IP-intervall kan också utföras i Azure Portal. För att få åtkomst navigerar du till **nätverk** under **Inställningar** på Meny bladet i kluster resursen.
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="I en webbläsare visar kluster resursens nätverks inställningar Azure Portal sidan. Alternativen &quot;Ange angivet IP-adressintervall&quot; och &quot;angivna IP-intervall&quot; är markerade.":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hur hittar jag min IP-adress som ingår i `--api-server-authorized-ip-ranges` ?
 
 Du måste lägga till utvecklings datorer, verktygs-eller Automation-IP-adresser i AKS-kluster listan över godkända IP-intervall för att få åtkomst till API-servern därifrån. 
 
-Ett annat alternativ är att konfigurera en hoppsida med nödvändiga verktyg i ett separat undernät i brand väggens virtuella nätverk. Detta förutsätter att din miljö har en brand vägg med respektive nätverk, och att du har lagt till brand Väggs-IP: er i tillåtna intervall. På samma sätt kan det vara bra om du har tvingat fram tunnel trafik från AKS-undernätet till brand Väggs under nätet.
+Ett annat alternativ är att konfigurera en hoppsida med nödvändiga verktyg i ett separat undernät i brand väggens virtuella nätverk. Detta förutsätter att din miljö har en brand vägg med respektive nätverk, och att du har lagt till brand Väggs-IP: er i tillåtna intervall. På samma sätt, om du har Tvingad tunnel trafik från AKS-undernätet till brand Väggs under nätet, är det också fint att gå till under nätet i klustret.
 
 Lägg till en annan IP-adress till de godkända intervallen med följande kommando.
 
@@ -170,6 +187,7 @@ Mer information finns i [säkerhets begrepp för program och kluster i AKS][conc
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md

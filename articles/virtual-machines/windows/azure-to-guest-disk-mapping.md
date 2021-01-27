@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523677"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881880"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Så här mappar du Azure-diskar till gäst diskar i Windows-datorer
 
@@ -29,11 +29,11 @@ För vår övning behöver du bara använda LUN.
 
 ## <a name="finding-the-lun"></a>Hitta LUN
 
-Det finns två sätt att hitta det LUN som du väljer beror på om du använder [lagrings utrymmen](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview) eller inte.
+Det finns två sätt att hitta det LUN som du väljer beror på om du använder [lagrings utrymmen](/windows-server/storage/storage-spaces/overview) eller inte.
 
 ### <a name="disk-management"></a>Diskhantering
 
-Om du inte använder lagringspooler kan du använda [disk hantering](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) för att hitta LUN.
+Om du inte använder lagringspooler kan du använda [disk hantering](/windows-server/storage/disk-management/overview-of-disk-management) för att hitta LUN.
 
 1. Anslut till den virtuella datorn och öppna disk hantering a. Högerklicka på Start-knappen och välj "disk hantering" a. Du kan också skriva `diskmgmt.msc` i rutan Starta sökning
 1. Högerklicka på någon av diskarna i det nedre fönstret och välj egenskaper

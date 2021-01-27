@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e4d0513808cdc44fc71e182a07fa6b050d182ee
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aab856b1e1d2d991cc4964d061a990dbedbeddb7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452515"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876519"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Planera en lösnings mall för ett erbjudande för Azure-program
 
@@ -28,7 +28,7 @@ Plan typen för lösnings mal len kräver en [Azure Resource Manager mall (arm-m
 | Fakturering och mätning | Lösningar för lösnings mal len är inte transactable, men de kan användas för att distribuera betalda VM-erbjudanden som debiteras via Microsofts kommersiella marknads plats. De resurser som lösningens ARM-mall distribuerar konfigureras i kundens Azure-prenumeration. Virtuella datorer som du betalar per användning samverkar med kunden via Microsoft och faktureras via kundens Azure-prenumeration. <br><br> För att få en BYOL-fakturering, även om Microsoft fakturerar infrastruktur kostnader som uppstår i kund prenumerationen, kan du använda licens avgifterna för program varan med kunden direkt. |
 | Azure-kompatibel virtuell hård disk (VHD) | Virtuella datorer måste byggas på Windows eller Linux. Mer information finns i:<ul><li>[Skapa en teknisk till gång för Azure VM](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (för Windows-VHD: er)</li><li>[Linux-distributioner](../virtual-machines/linux/endorsed-distros.md) som har godkänts på Azure (för Linux-VHD: er).</li></ul> |
 | Spårning av kundanvändning | Aktivering av kund användnings behörighet krävs för alla Solution-mallar som publicerats på Azure Marketplace. Mer information om kund användnings behörighet och hur du aktiverar det finns i [Azure-partner kund användnings behörighet](azure-partner-customer-usage-attribution.md). |
-| Använd Managed disks | [Managed disks](../virtual-machines/managed-disks-overview.md) är standard alternativet för bestående diskar av infrastruktur som en tjänst (IaaS) virtuella datorer i Azure. Du måste använda Managed disks i Solution templates.<ul><li>Om du vill uppdatera dina Solution templates följer du rikt linjerna i [använda hanterade diskar i Azure Resource Manager mallar](../virtual-machines/using-managed-disks-template-deployments.md)och använder de angivna [exemplen](https://github.com/Azure/azure-quickstart-templates).</li><li>Om du vill publicera den virtuella hård disken som en avbildning på Azure Marketplace importerar du den underliggande virtuella hård disken för de hanterade diskarna till ett lagrings konto med hjälp av antingen [Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) eller [Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md)</ul> |
+| Använd Managed disks | [Managed disks](../virtual-machines/managed-disks-overview.md) är standard alternativet för bestående diskar av infrastruktur som en tjänst (IaaS) virtuella datorer i Azure. Du måste använda Managed disks i Solution templates.<ul><li>Om du vill uppdatera dina Solution templates följer du rikt linjerna i [använda hanterade diskar i Azure Resource Manager mallar](../virtual-machines/using-managed-disks-template-deployments.md)och använder de angivna [exemplen](https://github.com/Azure/azure-quickstart-templates).</li><li>Om du vill publicera den virtuella hård disken som en avbildning på Azure Marketplace importerar du den underliggande virtuella hård disken för de hanterade diskarna till ett lagrings konto med hjälp av antingen [Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) eller [Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)</ul> |
 | Distributions paket | Du behöver ett distributions paket som gör det möjligt för kunderna att distribuera planen. Om du skapar flera planer som kräver samma tekniska konfiguration kan du använda samma plan paket. Mer information finns i nästa avsnitt: distributions paket. |
 |||
 
