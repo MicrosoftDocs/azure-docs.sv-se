@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 977213480bfd5dfa85acd34df30071cc486e5c63
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d9e348d456d517cd20e899648b9e92b3cd802ffb
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98727808"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806311"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Självstudie: integrera Bynder med Azure Active Directory
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Bynder med Azure Ac
 * Gör det möjligt för användarna att logga in automatiskt till Bynder med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -81,7 +81,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     
     För en standard domän:  `https://<company name>.getbynder.com`
     
-    För en anpassad domän:  `https;//<subdomain>.<domain>.com`
+    För en anpassad domän:  `https://<subdomain>.<domain>.com`
 
     b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
     

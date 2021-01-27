@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995411"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808051"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Felsök problem med distribution av StorSimple-enheter
 ## <a name="overview"></a>Översikt
@@ -47,7 +47,7 @@ I följande avsnitt får du hjälp att lösa problem som du stöter på när du 
 I följande steg sammanfattas processen för installations guiden. Detaljerad installations information finns i [distribuera din lokala StorSimple-enhet](storsimple-8000-deployment-walkthrough-u2.md).
 
 1. Kör cmdleten [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) för att starta installations guiden som hjälper dig att utföra de återstående stegen. 
-2. Konfigurera nätverket: med installations guiden kan du konfigurera nätverks inställningar för nätverks gränssnittet DATA 0 på din StorSimple-enhet. Inställningarna omfattar följande:
+2. Konfigurera nätverket: med installations guiden kan du konfigurera nätverks inställningar för nätverks gränssnittet DATA 0 på din StorSimple-enhet. Följande inställningar ingår:
    * Virtuell IP-adress (VIP), nätmask och gateway – cmdleten [set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) körs i bakgrunden. Den konfigurerar IP-adressen, nät masken och gatewayen för nätverks gränssnittet DATA 0 på din StorSimple-enhet.
    * Primär DNS-Server – cmdleten [set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) körs i bakgrunden. Den konfigurerar DNS-inställningarna för din StorSimple-lösning.
    * NTP-server – cmdleten [set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) körs i bakgrunden. Den konfigurerar NTP-serverinställningar för din StorSimple-lösning.
@@ -58,10 +58,10 @@ I följande steg sammanfattas processen för installations guiden. Detaljerad in
      > [!IMPORTANT]
      > Lösen ord samlas in före registreringen, men tillämpas först när enheten har registrerats. Om det uppstår ett problem med att använda ett lösen ord uppmanas du att ange lösen ordet igen tills lösen orden som krävs (som uppfyller komplexitets kraven) samlas in.
      
-4. Registrera enheten: det sista steget är att registrera enheten med StorSimple Enhetshanteraren-tjänsten som körs i Microsoft Azure. Registreringen kräver att du [hämtar tjänst registrerings nyckeln](storsimple-8000-manage-service.md#get-the-service-registration-key) från Azure Portal och anger den i installations guiden. **När enheten har registrerats får du en krypterings nyckel för tjänst data. Se till att behålla krypterings nyckeln på en säker plats eftersom det krävs för att registrera alla efterföljande enheter med tjänsten.**
+4. Registrera enheten: det sista steget är att registrera enheten med StorSimple Enhetshanteraren-tjänsten som körs i Microsoft Azure. Registreringen kräver att du [hämtar tjänst registrerings nyckeln](storsimple-8000-manage-service.md#get-the-service-registration-key) från Azure Portal och anger den i installations guiden. **När enheten har registrerats får du en krypterings nyckel för tjänst data. Se till att behålla krypterings nyckeln på en säker plats eftersom det krävs för att registrera alla framtida enheter med tjänsten.**
 
 ## <a name="common-errors-during-device-deployment"></a>Vanliga fel vid enhets distribution
-I följande tabeller visas de vanliga fel som du kan stöta på när du:
+Följande tabell visar vanliga fel som du kan stöta på när du:
 
 * Konfigurera de nätverks inställningar som krävs.
 * Konfigurera de valfria webbproxy-inställningarna.
@@ -94,7 +94,7 @@ Standard lösen ordet för enhets administratören är **Password1**. Lösen ord
 Kontrol lera att lösen orden uppfyller följande krav:
 
 * Enhetens administratörs lösen ord ska vara mellan 8 och 15 tecken långt.
-* Lösen orden måste innehålla 3 av följande 4 tecken typer: gemener, versaler, siffror och Special. 
+* Lösen ord ska innehålla tre av följande tecken typer: gemener, versaler, siffror och Special. 
 * Ditt lösen ord får inte vara detsamma som de senaste 24 lösen orden.
 
 Tänk också på att lösen ord upphör att gälla varje år och bara kan ändras efter att enheten har registrerats. Om registreringen Miss lyckas av någon anledning ändras inte lösen orden.
@@ -139,10 +139,10 @@ Du kan använda tjänsten StorSimple Enhetshanteraren som körs i Microsoft Azur
 | 9 |Varning: det gick inte att aktivera enheten. Enhets administratören och StorSimple Snapshot Manager lösen ord har inte ändrats. |Om registreringen Miss lyckas ändras inte enhets administratörs-och StorSimple Snapshot Manager lösen ord. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Verktyg för felsökning av StorSimple-distributioner
-StorSimple innehåller flera verktyg som du kan använda för att felsöka din StorSimple-lösning. Dessa omfattar:
+StorSimple innehåller flera verktyg som du kan använda för att felsöka din StorSimple-lösning. Dessa verktyg innefattar:
 
 * Support paket och enhets loggar.
-* Cmdletar som är särskilt utformade för fel sökning.
+* -Cmdletar utformade för fel sökning.
 
 ## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Support paket och enhets loggar som är tillgängliga för fel sökning
 Ett support paket innehåller alla relevanta loggar som kan hjälpa Microsoft Supports teamet med fel sökning av enhets problem. Du kan använda Windows PowerShell för StorSimple för att generera ett krypterat support paket som du sedan kan dela med support personal.
@@ -153,7 +153,7 @@ Ett support paket innehåller alla relevanta loggar som kan hjälpa Microsoft Su
 3. Använd den här [steg-för-steg-proceduren](storsimple-8000-create-manage-support-package.md#edit-a-support-package) för att öppna och dekryptera support paketet.
 4. De dekrypterade support paket loggarna är i ETW/etvx-format. Du kan utföra följande steg för att visa de här filerna i Windows Loggboken:
    
-   1. Kör kommandot **eventvwr** på din Windows-klient. Det här startar Loggboken.
+   1. Kör kommandot **eventvwr** på Windows-klienten för att starta Loggboken.
    2. I rutan **åtgärder** klickar du på **Öppna Sparad logg** och pekar på loggfilerna i etvx/ETW-format (support paketet). Nu kan du Visa filen. När du har öppnat filen kan du högerklicka på den och spara filen som text.
       
       > [!IMPORTANT]
@@ -189,7 +189,7 @@ När du konfigurerar nätverks gränssnitt för en första enhets distribution �
    * Om gränssnittet är felfritt men inte aktiverat visas **ifIndex** status som **NotPresent**.
    * Om gränssnittet inte finns visas det inte i listan. Användar gränssnittet för StorSimple Enhetshanteraren-tjänsten kommer fortfarande att visa det här gränssnittet i ett felaktigt tillstånd.
 
-Mer information om hur du använder den här cmdleten finns i [Get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps) i Windows PowerShell-cmdlet-referensen.
+Mer information om hur du använder den här cmdleten finns i [Get-netadapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) i Windows PowerShell-cmdlet-referensen.
 
 I följande avsnitt visas exempel på utdata från `Get-NetAdapter` cmdleten.
 
@@ -206,7 +206,7 @@ Kontroll enhet 1 var den aktiva kontrollanten och konfigurerades enligt följand
 
 **Exempel utdata – kontrollant 0**
 
-Följande är utdata från Controller 0 (den passiva styrenheten). DATA 1, DATA 2 och DATA 3 är inte anslutna. DATA 4 och DATA 5 visas inte eftersom de inte finns på enheten.
+Följande exempel data är utdata från Controller 0 (den passiva styrenheten). DATA 1, DATA 2 och DATA 3 är inte anslutna. DATA 4 och DATA 5 visas inte eftersom de inte finns på enheten.
 
 ```output
 Controller0>Get-NetAdapter
@@ -222,7 +222,7 @@ DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 **Exempel utdata – kontrollant 1**
 
-Följande är utdata från styrenhet 1 (den aktiva styrenheten). Endast nätverks gränssnittet för DATA 0 på enheten är konfigurerat och fungerar.
+Följande exempel data är utdata från styrenhet 1 (den aktiva styrenheten). Endast nätverks gränssnittet för DATA 0 på enheten är konfigurerat och fungerar.
 
 ```output
 Controller1>Get-NetAdapter
@@ -241,7 +241,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Felsöka med Test-Connection cmdlet
 Du kan använda `Test-Connection` cmdleten för att avgöra om din StorSimple-enhet kan ansluta till nätverket utanför nätverket. Om alla nätverks parametrar, inklusive DNS, är korrekt konfigurerade i installations guiden, kan du använda `Test-Connection` cmdleten för att pinga en känd adress utanför nätverket, till exempel Outlook.com.
 
-Du bör aktivera ping för att felsöka anslutnings problem med den här cmdleten om ping är inaktiverat.
+Om ping-cmdleten är inaktive rad bör du aktivera ping för användning vid fel sökning av anslutnings problem.
 
 Se följande exempel på utdata från `Test-Connection` cmdleten.
 
@@ -250,7 +250,7 @@ Se följande exempel på utdata från `Test-Connection` cmdleten.
 
 **Exempel på utdata – felaktig DNS**
 
-I följande exempel finns inga utdata för IPV4-och IPV6-adresser, vilket indikerar att DNS inte är löst. Det innebär att det inte finns någon anslutning till nätverket utanför nätverket och att rätt DNS måste anges.
+Följande exempel innehåller inte några utdata för IPV4-och IPV6-adresser, vilket indikerar att DNS inte är löst. Det finns ingen anslutning till det externa nätverket och en korrekt DNS måste anges.
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -263,7 +263,7 @@ HCSNODE0      outlook.com
 
 **Exempel på utdata – rätt DNS**
 
-I följande exempel returnerar DNS IPV4-adressen som anger att DNS är korrekt konfigurerat. Detta bekräftar att det finns en anslutning till nätverket utanför nätverket.
+I följande exempel returnerar DNS IPV4-adressen som anger att DNS är korrekt konfigurerat. Utdata bekräftar att det finns en anslutning till nätverket utanför nätverket.
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -281,29 +281,29 @@ Använd `Test-HcsmConnection` cmdleten för en enhet som redan är ansluten till
 1. Kontrol lera att enheten är registrerad.
 2. Kontrol lera enhetens status. Om enheten är inaktive rad, i underhålls läge eller offline kan du se något av följande fel:
    
-   * ErrorCode. CiSDeviceDecommissioned – Detta anger att enheten är inaktive rad.
-   * ErrorCode. DeviceNotReady – Detta anger att enheten är i underhålls läge.
-   * ErrorCode. DeviceNotReady – det betyder att enheten inte är online.
+   * Felkod. CiSDeviceDecommissioned: visar att enheten är inaktive rad.
+   * Felkod. DeviceNotReady: indikerar att enheten är i underhålls läge.
+   * Felkod. DeviceNotReady: indikerar att enheten inte är online.
 3. Verifiera att tjänsten StorSimple Enhetshanteraren körs (Använd cmdleten [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) ). Om tjänsten inte körs kan du se följande fel:
    
    * ErrorCode. CiSApplianceAgentNotOnline
-   * ErrorCode. CisPowershellScriptHcsError – detta tyder på att det uppstod ett undantag när du körde Get-ClusterResource.
+   * ErrorCode. CisPowershellScriptHcsError: indikerar att ett undantag inträffade när du körde Get-ClusterResource.
 4. Kontrol lera Access Control Service (ACS)-token. Om det ger upphov till ett webb undantag kan det bero på ett Gateway-problem, att en proxy-autentisering saknas, att en felaktig DNS eller ett autentiseringsfel uppstår. Följande fel kan visas:
    
-   * ErrorCode. CiSApplianceGateway – Detta anger ett HttpStatusCode. BadGateway-undantag: tjänsten namn matchning kunde inte matcha värd namnet.
-   * ErrorCode. CiSApplianceProxy – Detta anger ett HttpStatusCode. ProxyAuthenticationRequired-undantag (HTTP-status kod 407): klienten kunde inte autentiseras med proxyservern.
-   * ErrorCode. CiSApplianceDNSError – Detta anger ett WebExceptionStatus. NameResolutionFailure-undantag: tjänsten namn matchning kunde inte matcha värd namnet.
-   * ErrorCode. CiSApplianceACSError – det betyder att tjänsten returnerade ett autentiseringsfel, men det finns en anslutning.
+   * ErrorCode. CiSApplianceGateway: anger ett HttpStatusCode. BadGateway-undantag: tjänsten för namn matchning kunde inte matcha värd namnet.
+   * ErrorCode. CiSApplianceProxy: anger ett HttpStatusCode. ProxyAuthenticationRequired-undantag (HTTP-status kod 407): klienten kunde inte autentiseras med proxyservern.
+   * ErrorCode. CiSApplianceDNSError: anger ett WebExceptionStatus. NameResolutionFailure-undantag: tjänsten för namn matchning kunde inte matcha värd namnet.
+   * Felkod. CiSApplianceACSError: indikerar att tjänsten returnerade ett autentiseringsfel, men det finns en anslutning.
      
-     Om den inte genererar ett webb undantag söker du efter ErrorCode. CiSApplianceFailure. Detta indikerar att installationen misslyckades.
+     Om den inte genererar ett webb undantag söker du efter ErrorCode. CiSApplianceFailure, vilket tyder på att installationen misslyckades.
 5. Kontrol lera anslutningen till moln tjänsten. Om tjänsten genererar ett webb undantag kan följande fel meddelande visas:
    
-   * ErrorCode. CiSApplianceGateway – Detta anger ett HttpStatusCode. BadGateway-undantag: en mellanliggande proxyserver tog emot en felaktig begäran från en annan proxy eller från den ursprungliga servern.
-   * ErrorCode. CiSApplianceProxy – Detta anger ett HttpStatusCode. ProxyAuthenticationRequired-undantag (HTTP-status kod 407): klienten kunde inte autentiseras med proxyservern.
-   * ErrorCode. CiSApplianceDNSError – Detta anger ett WebExceptionStatus. NameResolutionFailure-undantag: tjänsten namn matchning kunde inte matcha värd namnet.
-   * ErrorCode. CiSApplianceACSError – det betyder att tjänsten returnerade ett autentiseringsfel, men det finns en anslutning.
+   * ErrorCode. CiSApplianceGateway: anger ett HttpStatusCode. BadGateway-undantag: en mellanliggande proxyserver tog emot en felaktig begäran från en annan proxy eller från den ursprungliga servern.
+   * ErrorCode. CiSApplianceProxy: anger ett HttpStatusCode. ProxyAuthenticationRequired-undantag (HTTP-status kod 407): klienten kunde inte autentiseras med proxyservern.
+   * ErrorCode. CiSApplianceDNSError: anger ett WebExceptionStatus. NameResolutionFailure-undantag: tjänsten för namn matchning kunde inte matcha värd namnet.
+   * Felkod. CiSApplianceACSError: indikerar att tjänsten returnerade ett autentiseringsfel, men det finns en anslutning.
      
-     Om den inte genererar ett webb undantag söker du efter ErrorCode. CiSApplianceSaasServiceError. Detta indikerar ett problem med tjänsten StorSimple Enhetshanteraren.
+     Om den inte genererar ett webb undantag söker du efter ErrorCode. CiSApplianceSaasServiceError, vilket tyder på ett problem med tjänsten StorSimple Enhetshanteraren.
 6. Kontrol lera Azure Service Bus anslutningen. ErrorCode. CiSApplianceServiceBusError anger att enheten inte kan ansluta till Service Bus.
 
 Loggfilerna CiSCommandletLog0Curr. errlog och CiSAgentsvc0Curr. errlog innehåller mer information, till exempel information om undantag.
@@ -357,7 +357,7 @@ Device is registered successfully
 Checking connectivity from device to SaaS.. Failure
 ```
 
-Enheten kunde inte ansluta med den aktuella webbproxy-konfigurationen. Detta kan vara ett problem med webbproxy-konfigurationen eller ett problem med nätverks anslutningen. I det här fallet bör du kontrol lera att webbproxyinställningarna är korrekta och att webbproxyservrarna är online och går att komma åt.
+Enheten kunde inte ansluta med den aktuella webbproxy-konfigurationen. Det kan finnas ett problem med webbproxy-konfigurationen eller ett problem med nätverks anslutningen. I det här fallet bör du kontrol lera att webbproxyinställningarna är korrekta och att webbproxyservrarna är online och går att komma åt.
 
 ## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Felsöka med Sync-HcsTime cmdlet
 Använd den här cmdleten för att Visa enhets tiden. Om enhetens tid har en förskjutning med NTP-servern kan du använda denna cmdlet för att tvinga fram en synkronisering av tiden med NTP-servern.
@@ -419,11 +419,11 @@ Trace complete.
 ## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Felsöka med Get-HcsRoutingTable cmdlet
 Använd den här cmdleten för att Visa routningstabellen för din StorSimple-enhet. En routningstabell är en uppsättning regler som kan hjälpa dig att avgöra var data paket som reser över ett Internet Protocol (IP) nätverk kommer att dirigeras om.
 
-Routningstabellen visar gränssnitten och gatewayen som dirigerar data till de angivna nätverken. Det ger också ett flödes mått som är besluts fattare för den sökväg som används för att uppnå ett visst mål. Ju lägre vägens mått, desto högre prioritet.
+Routningstabellen visar gränssnitten och gatewayen som dirigerar data till de angivna nätverken. Det ger även vägens mått, som är besluts fattaren för den sökväg som används för att uppnå ett visst mål. Ju lägre vägens mått, desto högre prioritet.
 
-Om du till exempel har två nätverks gränssnitt, DATA 2 och DATA 3, anslutna till Internet. Om routing-måtten för DATA 2 och DATA 3 är 15 respektive 261 är DATA 2 med det lägre måttet routning det önskade gränssnittet som används för att ansluta till Internet.
+Anta till exempel att du har två nätverks gränssnitt, DATA 2 och DATA 3, anslutna till Internet. Om routing-måtten för DATA 2 och DATA 3 är 15 respektive 261 är DATA 2, med det lägre måttet routning, det önskade gränssnittet som används för att komma åt Internet.
 
-Om du kör uppdatering 1 på din StorSimple-enhet har nätverks gränssnittet för DATA 0 högsta prioritet för moln trafiken. Det innebär att även om det finns andra molnbaserade gränssnitt dirigeras moln trafiken genom DATA 0.
+Om du kör uppdatering 1 på din StorSimple-enhet har nätverks gränssnittet för DATA 0 högsta prioritet för moln trafiken. Med den här konfigurationen, även om det finns andra molnbaserade gränssnitt, dirigeras merparten av moln trafiken genom DATA 0.<!--This implies that even if there are other cloud-enabled interfaces, the cloud traffic would be routed through DATA 0. - Preceding sentence replaces this one. Use of "This implies" is a bit murky. DATA 0 will be the preferred network interface? Is my translation OK?-->
 
 Om du kör `Get-HcsRoutingTable` cmdleten utan att ange några parametrar (som följande exempel visar), kommer cmdleten att mata in både IPv4-och IPv6-vägvals tabeller. Du kan också ange `Get-HcsRoutingTable -IPv4` eller `Get-HcsRoutingTable -IPv6`  för att hämta en relevant routningstabell.
 
@@ -504,7 +504,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 ```
 
-Felet kan bero på något av följande:
+Felet kan bero på något av följande problem:
 
 * Felaktig maskin varu installation
 * Fel nätverks gränssnitt (n)
@@ -526,9 +526,10 @@ Felet kan bero på något av följande:
 3. Verifiera nätverks gränssnittets hälso tillstånd:
    
    * Använd Get-NetAdapter-cmdlet för att identifiera hälso tillståndet för nätverks gränssnitten för DATA 0. 
-   * Om länken inte fungerar indikerar **IfIndex** -status att gränssnittet är nere. Du måste sedan kontrol lera nätverks anslutningen till porten och till-växeln. Du kommer också att behöva utesluta Felaktiga kablar. 
-   * Om du misstänker att porten DATA 0 på den aktiva styrenheten har misslyckats kan du bekräfta detta genom att ansluta till DATA 0-porten på styrenhet 1. Du kan bekräfta detta genom att koppla bort nätverks kabeln från enhetens bak enhet från styrenheten 0, ansluta kabeln till styrenhet 1 och sedan köra cmdleten Get-NetAdapter igen.
-     Om porten DATA 0 på en styrenhet inte fungerar [kontaktar du Microsoft Support](storsimple-8000-contact-microsoft-support.md) för nästa steg. Du kan behöva ersätta kontroll enheten i systemet.
+   * Om länken inte fungerar `ifindex` indikerar statusen att gränssnittet är nere. Du måste sedan kontrol lera nätverks anslutningen till porten och till-växeln. Du kommer också att behöva utesluta Felaktiga kablar. 
+   * Om du misstänker att DATA 0-porten på den aktiva styrenheten har misslyckats, kan du bekräfta att genom att ansluta till DATA 0-porten på styrenhet 1. Koppla bort nätverks kabeln från enhetens bak enhet från styrenhet 0, Anslut kabeln till styrenhet 1 och kör sedan Get-NetAdapter cmdlet igen.
+   
+     [Kontakta Microsoft Support](storsimple-8000-contact-microsoft-support.md) för nästa steg om data 0-porten på en styrenhet Miss lyckas. Du kan behöva ersätta kontroll enheten i systemet.
 4. Kontrol lera anslutningen till växeln:
    
    * Kontrol lera att DATA 0 nätverks gränssnitt på styrenhet 0 och styrenhet 1 i den primära inne slutningen finns i samma undernät. 
@@ -544,7 +545,7 @@ Felet kan bero på något av följande:
      > 
      > 
 6. Använd Test-Connection-cmdlet för att kontrol lera att du har anslutning till nätverket utanför nätverket. Mer information finns i [Felsöka med cmdleten Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
-7. Kontrol lera brand Väggs störningar. Om du har verifierat att den virtuella IP-adressen (VIP), undernät, gateway och DNS-inställningar är korrekta och du fortfarande ser anslutnings problem, så är det möjligt att brand väggen blockerar kommunikationen mellan enheten och det externa nätverket. Du måste se till att portarna 80 och 443 är tillgängliga på din StorSimple-enhet för utgående kommunikation. Mer information finns i [nätverks krav för din StorSimple-enhet](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
+7. Kontrol lera brand Väggs störningar. Om du har verifierat att den virtuella IP-adressen (VIP), undernät, gateway och DNS-inställningar är korrekta och du fortfarande ser anslutnings problem, är det möjligt att brand väggen blockerar kommunikationen mellan enheten och det externa nätverket. Se till att portarna 80 och 443 är tillgängliga på din StorSimple-enhet för utgående kommunikation. Mer information finns i [nätverks krav för din StorSimple-enhet](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
 8. Titta på loggarna. Gå till [support paket och enhets loggar som är tillgängliga för fel sökning](#support-packages-and-device-logs-available-for-troubleshooting).
 9. Om föregående steg inte löser problemet kan du [kontakta Microsoft Support](storsimple-8000-contact-microsoft-support.md) för att få hjälp.
 

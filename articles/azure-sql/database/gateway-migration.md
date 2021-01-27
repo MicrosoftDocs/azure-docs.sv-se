@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165866"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808013"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database trafikmigrering till nyare gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Kunderna får ett meddelande via e-post och i Azure Portal väl i förväg om ev
 ## <a name="status-updates"></a>Status uppdateringar
 
 # <a name="in-progress"></a>[Pågår](#tab/in-progress-ip)
+## <a name="february-2021"></a>Februari 2021
+Nya SQL-gatewayer läggs till i följande regioner:
+
+- Centrala USA: 13.89.169.20
+
+Dessa SQL-gatewayer ska börja acceptera kund trafik den 28 februari 2021.
+
 ## <a name="january-2021"></a>Januari 2021
 Nya SQL-gatewayer läggs till i följande regioner:
 
@@ -41,7 +48,7 @@ Nya SQL-gatewayer läggs till i följande regioner:
 - Korea, centrala: 52.231.17.22, 52.231.17.23
 - Indien, väst: 104.211.144.4
 
-Dessa SQL-gatewayer ska börja acceptera kund trafik den 31 januari 2021
+Dessa SQL-gatewayer ska börja acceptera kund trafik den 31 januari 2021.
 
 # <a name="completed"></a>[Slutfört](#tab/completed-ip)
 Följande Gateway-migreringar har slutförts: 

@@ -1,17 +1,17 @@
 ---
 title: Inbyggda princip definitioner för Azure Managed Applications
 description: Visar Azure Policy inbyggda princip definitioner för Azure Managed Applications. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b68846d4ddea3c37268f6a38d5625e77bd065ec9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 13dba9c7842b075eb2fb4bc3d595e158223af7aa
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703843"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807921"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-managed-applications"></a>Azure Policy inbyggda definitioner för Azure Managed Applications
 

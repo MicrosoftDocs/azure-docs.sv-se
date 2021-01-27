@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5bfe077a99a3e89efe5fe4257a646484fb3810da
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 4bfac9be5041fdf4ebfe7ea56f064b8b85806703
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96536911"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859769"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Distributioner och drivrutiner som stöds
 
@@ -33,7 +33,7 @@ RUTNÄTs driv rutinerna som distribueras med Azure fungerar inte på virtuella d
 
 |Distribution|Drivrutinen|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,6 till 7,8, 8,0, 8,1<br/><br/>CentOS-baserad 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA-rutnät 11,2, driv rutins gren [R450](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,7 till 7,9, 8,0, 8,1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA-rutnät 12,0, driv rutins gren [R460](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
 
 Besök [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json) för en fullständig lista över alla tidigare NVIDIA Grid-drivrutins länkar.
 

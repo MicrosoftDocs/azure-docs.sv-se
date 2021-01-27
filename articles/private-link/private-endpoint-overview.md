@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 88d44f4f8cedbad604eb59cde91f4eed79918c0f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928519"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806655"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Vad är en privat Azure-slutpunkt?
 
@@ -78,7 +78,7 @@ En privat länk resurs är mål målet för en specifik privat slut punkt. Följ
 |**Azure Event Grid** | Microsoft. EventGrid/ämnen    | ämne |
 |**Azure Event Grid** | Microsoft. EventGrid/Domains    | domän |
 |**Azure App Service** | Microsoft. Web/Sites    | webbplatser |
-|**Azure Machine Learning** | Microsoft. MachineLearningServices/arbets ytor    | arbetsyta |
+|**Azure Machine Learning** | Microsoft. MachineLearningServices/arbets ytor    | amlworkspace |
 |**SignalR** | Microsoft. SignalRService/SignalR    | signalR |
 |**Azure Monitor** | Microsoft. Insights/privateLinkScopes    | azuremonitor |
 |**Cognitive Services** | (Microsoft. CognitiveServices/konton    | konto |

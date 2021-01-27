@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig mer om säkerhets kopiering och åt
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127727"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806376"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektiv säkerhets kopiering och återställning av diskar för virtuella Azure-datorer
 
@@ -258,7 +258,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreOnlyOSDisk
 ```
 
-## <a name="using-the-azure-portal"></a>Använda Azure-portalen
+## <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
@@ -337,4 +337,4 @@ Funktionen selektiv disk säkerhets kopiering är en funktion som finns ovanpå 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Stödmatris för säkerhetskopiering av virtuella Azure-datorer](backup-support-matrix-iaas.md)
-- [Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer](backup-azure-vm-backup-faq.md)
+- [Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer](backup-azure-vm-backup-faq.yml)

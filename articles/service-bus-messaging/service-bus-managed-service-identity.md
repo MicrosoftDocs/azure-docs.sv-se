@@ -2,13 +2,13 @@
 title: Hanterade identiteter för Azure-resurser med Service Bus
 description: Den här artikeln beskriver hur du använder hanterade identiteter för att få åtkomst till Azure Service Bus entiteter (köer, ämnen och prenumerationer).
 ms.topic: article
-ms.date: 10/21/2020
-ms.openlocfilehash: 1efcd3c48e7e4a431a0c72c4b3b84531b44e973e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 01/21/2021
+ms.openlocfilehash: 22be57a0108b6a8511a64165ad365675d006fb8f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425525"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808252"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Autentisera en hanterad identitet med Azure Active Directory för att få åtkomst till Azure Service Bus resurser
 [Hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) är en funktion i Azure som gör att du kan skapa en säker identitet som är kopplad till den distribution som program koden körs under. Du kan sedan associera identiteten med åtkomst kontroll roller som ger anpassade behörigheter för åtkomst till specifika Azure-resurser som ditt program behöver.
@@ -45,7 +45,7 @@ Innan du tilldelar en Azure-roll till ett säkerhets objekt bör du bestämma om
 
 I följande lista beskrivs de nivåer där du kan begränsa åtkomsten till Service Bus resurser, från och med det smala omfång:
 
-- **Kö**, **ämne**eller **prenumeration**: roll tilldelningen gäller för den angivna Service Bus entiteten. För närvarande har Azure Portal inte stöd för att tilldela användare/grupper/hanterade identiteter till Service Bus Azure-roller på prenumerations nivån. Här är ett exempel på hur du använder Azure CLI-kommandot: [AZ-Role-Assignment-Create](/cli/azure/role/assignment?#az-role-assignment-create) för att tilldela en identitet till en Service Bus Azure-roll: 
+- **Kö**, **ämne** eller **prenumeration**: roll tilldelningen gäller för den angivna Service Bus entiteten. För närvarande har Azure Portal inte stöd för att tilldela användare/grupper/hanterade identiteter till Service Bus Azure-roller på prenumerations nivån. Här är ett exempel på hur du använder Azure CLI-kommandot: [AZ-Role-Assignment-Create](/cli/azure/role/assignment?#az-role-assignment-create) för att tilldela en identitet till en Service Bus Azure-roll: 
 
     ```azurecli
     az role assignment create \
@@ -107,18 +107,20 @@ Om du vill tilldela en roll till en Service Bus-namnrymd navigerar du till namn 
 1. I Azure Portal navigerar du till Service Bus namn området och visar **översikten** för namn området. 
 1. Välj **Access Control (IAM)** på den vänstra menyn för att Visa inställningar för åtkomst kontroll för Service Bus namn området.
 1.  Välj fliken **roll tilldelningar** om du vill se en lista över roll tilldelningar.
-3.  Välj **Lägg** till för att lägga till en ny roll.
-4.  På sidan **Lägg till roll tilldelning** väljer du de Azure Service Bus roller som du vill tilldela. Sök sedan efter den tjänst identitet som du har registrerat för att tilldela rollen.
-    
-    ![Sidan Lägg till roll tilldelning](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Välj **Spara**. Identiteten som du har tilldelat rollen visas i listan under den rollen. Följande bild visar till exempel att tjänst identiteten har Azure Service Bus data ägare.
-    
-    ![Identitet som har tilldelats en roll](./media/service-bus-managed-service-identity/role-assigned.png)
+3.  Välj **Lägg till** och välj sedan **Lägg till roll tilldelning**.
+4.  På sidan **Lägg till roll tilldelning** följer du dessa steg:
+    1. För **roll** väljer du den Service Bus roll som du vill tilldela. I det här exemplet är det **Azure Service Bus data ägare**.
+    1. I fältet **tilldela åtkomst till väljer du** **App Service** under **systemtilldelad hanterad identitet**. 
+    1. Välj den **prenumeration** där den hanterade identiteten för webbappen skapades.
+    1. Välj den **hanterade identiteten** för den webbapp som du skapade. Standard namnet för identiteten är samma som namnet på webbappen. 
+    1. Välj sedan **Spara**.
+        
+        ![Sidan Lägg till roll tilldelning](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
 
-När du har tilldelat rollen får webb programmet åtkomst till Service Bus entiteter under det definierade omfånget. 
+    När du har tilldelat rollen får webb programmet åtkomst till Service Bus entiteter under det definierade omfånget. 
 
-
-
+    > [!NOTE]
+    > En lista över tjänster som stöder hanterade identiteter finns i [tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="run-the-app"></a>Kör appen
 Ändra nu standard sidan för det ASP.NET-program som du skapade. Du kan använda webb program koden från [den här GitHub-lagringsplatsen](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet).  

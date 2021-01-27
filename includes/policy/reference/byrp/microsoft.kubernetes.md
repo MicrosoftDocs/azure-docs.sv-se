@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d61924fc1b4a4072d71d932faf54b6b003701327
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 6e2d33ec3239233a7896e78c1201cfd09d152cf6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703314"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808320"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Distribuera GitOps till Kubernetes-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Den här principen distribuerar en ' sourceControlConfiguration ' till Kubernetes-kluster för att säkerställa att klustren får sin källa till sanningen från den definierade git-lagrings platsen. Instruktioner för hur du använder den här principen finns på [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy) . |DeployIfNotExists |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |
 |[Tillåter inte privilegierade containrar i Kubernetes-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Den här principen tillåter inte skapande av privilegierade behållare i ett Kubernetes-kluster. Den här principen är allmänt tillgänglig för Kubernetes service (AKS) och för hands versionen av AKS Engine och Azure Arc Enabled Kubernetes. Instruktioner för hur du använder den här principen finns på [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |granska, neka, inaktive rad |[5.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |

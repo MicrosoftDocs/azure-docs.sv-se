@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757313"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806187"
 ---
 # <a name="what-is-azure-security-center"></a>Vad är Azure Security Center?
 
@@ -105,9 +105,8 @@ Security Centers hotskydd innehåller fusionsattackkedjeanalys, som automatiskt 
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrering med Microsoft Defender för slut punkt
 
-Security Center innehåller automatisk, inbyggd integrering med Microsoft Defender för slut punkt. Det innebär att Windows-och Linux-datorerna är helt integrerade med Security Center rekommendationer och utvärderingar utan någon konfiguration.
+Azure Defender för-servrar innehåller automatisk, inbyggd integrering med Microsoft Defender för slut punkt. Läs mer och [skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt](security-center-wdatp.md)
 
-I kan Security Center du dessutom automatisera programkontrollsprinciper för servermiljöer. De anpassningsbara program kontrollerna i Security Center aktivera program godkännande från slut punkt till slut punkt på dina Windows-servrar. Du behöver varken skapa reglerna eller kontrollera överträdelser. Allt görs automatiskt.
 
 ### <a name="protect-paas"></a>Skydda PaaS
 

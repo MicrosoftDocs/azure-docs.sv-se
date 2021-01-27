@@ -6,24 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: fd55110bbfaed72051bfc388692421cd8209609d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763871"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806684"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Skapa anpassade VM-avbildningar för din Azure Stack Edge Pro-enhet
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-För att distribuera virtuella datorer på din Azure Stack Edge Pro-enhet måste du kunna skapa anpassade VM-avbildningar som du kan använda för att skapa virtuella datorer. Den här artikeln beskriver de steg som krävs för att skapa anpassade virtuella Windows-avbildningar för Linux eller Windows som du kan använda för att distribuera virtuella datorer på din Azure Stack Edge Pro-enhet.
+För att distribuera virtuella datorer på din Azure Stack Edge Pro-enhet måste du kunna skapa anpassade VM-avbildningar som du kan använda för att skapa virtuella datorer. I den här artikeln beskrivs de steg som krävs för att skapa anpassade Linux-eller Windows VM-avbildningar som du kan använda för att distribuera virtuella datorer på din Azure Stack Edge Pro-enhet.
 
 ## <a name="vm-image-workflow"></a>Arbets flöde för VM-avbildning
 
-Arbets flödet kräver att du skapar en virtuell dator i Azure, anpassar den virtuella datorn, generaliserar och sedan laddar ned den virtuella hård disken som motsvarar den virtuella datorn. Den här generaliserade virtuella hård disken överförs till Azure Stack Edge Pro, den hanterade disken skapas från den virtuella hård disken, avbildningen skapas från den hanterade disken och slutligen skapas virtuella datorer från avbildningen.   
+Arbets flödet kräver att du skapar en virtuell dator i Azure, anpassar den virtuella datorn, generaliserar och sedan laddar ned den virtuella hård disken som motsvarar den virtuella datorn. Denna generaliserade virtuella hård disk överförs till Azure Stack Edge Pro. En hanterad disk skapas från den virtuella hård disken. En avbildning skapas från den hanterade disken. Slutligen skapas virtuella datorer från avbildningen.
 
 Mer information finns i [distribuera en virtuell dator på din Azure Stack Edge Pro-enhet med Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).
 
@@ -71,12 +71,12 @@ Utför följande steg för att skapa en virtuell Linux-avbildning.
 
 Använd den här virtuella hård disken för att skapa och distribuera en virtuell dator på din Azure Stack Edge Pro-enhet. Du kan använda följande två Azure Marketplace-avbildningar för att skapa anpassade Linux-avbildningar:
 
-|Objekt namn  |Beskrivning  |Publisher  |
+|Objekt namn  |Description  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu-servern är världens mest populära Linux för moln miljöer.|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux är en av de mest populära Linux-distributionerna.     |credativ|
 
-En fullständig lista över Azure Marketplace-avbildningar som kan fungera (för närvarande inte testas) finns på [Azure Marketplace-objekt som är tillgängliga för Azure Stack Hub](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
+En fullständig lista över Azure Marketplace-avbildningar som kan fungera (för närvarande inte testas) finns på [Azure Marketplace-objekt som är tillgängliga för Azure Stack Hub](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true).
 
 
 ## <a name="next-steps"></a>Nästa steg

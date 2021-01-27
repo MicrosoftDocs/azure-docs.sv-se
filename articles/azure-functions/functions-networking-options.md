@@ -1,16 +1,16 @@
 ---
 title: Nätverksalternativ för Azure Functions
 description: En översikt över alla nätverks alternativ som är tillgängliga i Azure Functions.
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936877"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806987"
 ---
 # <a name="azure-functions-networking-options"></a>Nätverksalternativ för Azure Functions
 
@@ -85,12 +85,9 @@ För att ge en högre säkerhets nivå kan du begränsa ett antal Azure-tjänste
 
 Mer information finns i [tjänst slut punkter för virtuella nätverk](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Begränsa ditt lagrings konto till ett virtuellt nätverk (för hands version)
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Begränsa ditt lagrings konto till ett virtuellt nätverk 
 
-När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring.  Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt.  Den här förhands gransknings funktionen fungerar för närvarande bara med Windows Premium-planer i Västeuropa.  Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
-
-> [!NOTE]
-> Begränsning av lagrings kontot fungerar för närvarande bara för Premium funktioner med hjälp av Windows i Västeuropa
+När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring.  Du kan ersätta det här lagrings kontot med ett som skyddas av tjänst slut punkter eller privat slut punkt.  Den här funktionen fungerar för närvarande bara med Windows Premium-planer.  Så här konfigurerar du en funktion med ett lagrings konto som är begränsat till ett privat nätverk:
 
 1. Skapa en funktion med ett lagrings konto där tjänstens slut punkter inte är aktiverade.
 1. Konfigurera funktionen för att ansluta till ditt virtuella nätverk.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: da04e7704274336f7f92237c1d7c30459caa7bc8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936489"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806173"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Distributionsguide för SAP BusinessObjects BI-plattform för Linux i Azure
 
@@ -37,7 +37,7 @@ I det här exemplet används under produkt version och fil systemets layout
 - Azure Database for MySQL (version: 8.0.15)
 - MySQL C API-koppling – libmysqlclient (version: 6.1.11)
 
-| Filsystem        | Beskrivning                                                                                                               | Storlek (GB)             | Ägare  | Grupp  | Storage                    |
+| Filsystem        | Description                                                                                                               | Storlek (GB)             | Ägare  | Group  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Fil systemet för installation av SAP BOBI-instans, standard webb program för Tomcat och databas driv rutiner (om det behövs) | Rikt linjer för SAP-storlek | bl1adm | sapsys | Hanterad Premium disk – SSD |
 | /usr/sap/frsinput  | Monterings katalogen är för delade filer över alla BOBI-värdar som ska användas som indatafilens lagrings katalog  | Affärs behov         | bl1adm | sapsys | Azure NetApp Files         |
@@ -555,7 +555,7 @@ I följande avsnitt beskrivs hur du implementerar säkerhets kopierings-och åte
 
 I Azure är det enklaste sättet att säkerhetskopiera program servrar och alla anslutna diskar genom att använda [Azure Backup](../../../backup/backup-overview.md) -tjänsten. Den tillhandahåller oberoende och isolerade säkerhets kopior för att skydda oavsiktligt förstöring av data på dina virtuella datorer. Säkerhetskopior lagras i ett Recovery Services-valv med inbyggd hantering av återställningspunkter. Konfiguration och skalning är enkla, säkerhets kopieringar optimeras och kan enkelt återställas vid behov.
 
-Som en del av säkerhets kopieringen tas ögonblicks bilden och data överförs till Recovery Service-valvet utan påverkan på produktions arbets belastningar. Ögonblicks bilden ger olika konsekvens nivåer enligt beskrivningen i artikeln om [ögonblicks bilder](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) . Du kan också välja att säkerhetskopiera en delmängd av data diskarna i VM med hjälp av selektiva diskar säkerhets kopierings-och återställnings funktioner. Mer information finns i dokumentet om [säkerhets kopiering av virtuella Azure-datorer](../../../backup/backup-azure-vms-introduction.md) och [FAQ – säkerhetskopiera virtuella Azure-datorer](../../../backup/backup-azure-vm-backup-faq.md).
+Som en del av säkerhets kopieringen tas ögonblicks bilden och data överförs till Recovery Service-valvet utan påverkan på produktions arbets belastningar. Ögonblicks bilden ger olika konsekvens nivåer enligt beskrivningen i artikeln om [ögonblicks bilder](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) . Du kan också välja att säkerhetskopiera en delmängd av data diskarna i VM med hjälp av selektiva diskar säkerhets kopierings-och återställnings funktioner. Mer information finns i dokumentet om [säkerhets kopiering av virtuella Azure-datorer](../../../backup/backup-azure-vms-introduction.md) och [FAQ – säkerhetskopiera virtuella Azure-datorer](../../../backup/backup-azure-vm-backup-faq.yml).
 
 #### <a name="backup--restore-for-file-repository-server"></a>Säkerhets kopiering & återställning för fil lagrings Server
 

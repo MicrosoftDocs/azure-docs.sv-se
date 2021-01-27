@@ -4,12 +4,12 @@ description: Lär dig hur du utvecklar Azure Functions med C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936931"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806329"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referens för Azure Functions C#-utvecklare
 
@@ -31,7 +31,7 @@ Versioner av Functions runtime fungerar med vissa versioner av .NET. I följande
 
 | Functions runtime-version | Högsta .NET-version |
 | ---- | ---- |
-| Functions 3. x | .NET Core 3,1 |
+| Functions 3. x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
 | Functions 1.x | .NET Framework 4,7 |
 

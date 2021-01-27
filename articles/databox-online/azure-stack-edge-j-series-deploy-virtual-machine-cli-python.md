@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 54a4a938be18d39993652cecb87b3604e268fcef
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678961"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808061"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet med hjälp av Azure CLI och python
 
@@ -29,7 +29,7 @@ Arbets flödet för distributionen illustreras i följande diagram.
 
 ![Arbets flöde för distribution av virtuell dator](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
-Översikt över arbets flödet för distribution är följande:
+Översikten över distributions arbets flödet på hög nivå är följande:
 
 1. Anslut till Azure Resource Manager
 2. Skapa en resursgrupp
@@ -70,9 +70,9 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
 3. Du har skapat och installerat alla certifikat på din Azure Stack Edge Pro-enhet och i det betrodda arkivet för din klient. Följ proceduren som beskrivs i [steg 2: skapa och installera certifikat](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates).
 
-4. Du har skapat ett Base-64-kodat *. cer* -certifikat (PEM format) för din Azure Stack Edge Pro-enhet. Detta överförs redan som en signerings kedja på enheten och installeras i det betrodda rot arkivet på klienten. Det här certifikatet krävs också i *PEM* -format för att python ska fungera på den här klienten.
+4. Du har skapat ett Base-64-kodat *. cer* -certifikat (PEM format) för din Azure Stack Edge Pro-enhet. Certifikatet laddas redan upp som en signerings kedja på enheten och installeras i det betrodda rot arkivet på klienten. Det här certifikatet krävs också i *PEM* -format för att python ska fungera på den här klienten.
 
-    Konvertera certifikatet till PEM-format med hjälp av `certutil` kommandot. Du måste köra det här kommandot i katalogen som innehåller ditt certifikat.
+    Konvertera det här certifikatet till `pem` format med hjälp av `certutil` kommandot. Du måste köra det här kommandot i katalogen som innehåller ditt certifikat.
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    Du kommer även att lägga till den här PEM i python-butiken senare.
+    Du kommer även att lägga till detta `pem` i python-butiken senare.
 
-5. Du har tilldelat enhetens IP-adress på sidan **nätverk** i det lokala webb gränssnittet för enheten. Du måste lägga till följande IP-adress för att:
+5. Du har tilldelat enhetens IP-adress på sidan **nätverk** i det lokala webb gränssnittet för enheten. Lägg till följande IP-adress i:
 
     - Värd filen på klienten eller,
     - DNS-serverkonfigurationen
@@ -117,11 +117,11 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Verifiera profil och installera Azure CLI
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. Installera Azure CLI på klienten. I det här exemplet har Azure CLI-2.0.80 installerats. Kör kommandot för att kontrol lera versionen av Azure CLI `az --version` .
 
-    Följande är ett exempel på utdata av kommandot ovan:
+    Följande är exempel på utdata från ovanstående kommando:
 
     ```output
     PS C:\windows\system32> az --version
@@ -149,7 +149,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
     Om du inte har Azure CLI laddar du ned och [installerar Azure CLI i Windows](/cli/azure/install-azure-cli-windows). Du kan köra Azure CLI med kommando tolken i Windows eller via Windows PowerShell.
 
-2. Anteckna CLI: s python-plats. Du behöver detta för att bestämma platsen för betrodda rot certifikat Arkiv för Azure CLI.
+2. Anteckna CLI: s python-plats. Du behöver python-platsen för att fastställa platsen för betrodda rot certifikat Arkiv för Azure CLI.
 
 3. Om du vill köra det exempel skript som används i den här artikeln behöver du följande python-biblioteks versioner:
 
@@ -203,7 +203,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
 
 1. Hitta certifikat platsen på din dator. Platsen kan variera beroende på var du har installerat `az cli` . Kör Windows PowerShell som administratör. Växla till sökvägen där `az cli` installerat python: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe` .
 
-    Hämta certifikat platsen genom att skriva följande kommando:
+    Ange följande kommando för att hämta certifikat platsen:
 
     ```powershell
     .\python -c "import certifi; print(certifi.where())"
@@ -266,7 +266,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Ange miljövariabler för skriptet för Azure Resource Manager slut punkt, plats där resurserna skapas och sökvägen till den plats där den virtuella käll hård disken finns. Platsen för resurserna är fast i alla Azure Stack Edge Pro-enheter och är inställd på `dbelocal` . Du måste också ange adressprefix och en privat IP-adress. Alla följande miljövariabler är värden baserade på dina värden med undantag av `AZURE_RESOURCE_LOCATION` , som ska hårdkodad till `"dbelocal"` .
+2. Ange miljövariabler för skriptet för Azure Resource Manager slut punkt, plats där resurserna skapas och sökvägen till den plats där den virtuella käll hård disken finns. Platsen för resurserna är fast i alla Azure Stack Edge Pro-enheter och är inställd på `dbelocal` . Du måste också ange adressprefix och en privat IP-adress. Alla följande miljövariabler är värden baserade på dina värden, förutom för `AZURE_RESOURCE_LOCATION` , som ska hårdkodad till `"dbelocal"` .
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -321,7 +321,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     ```
    När du har använt inloggnings kommandot uppmanas du att ange ett lösen ord. Ange Azure Resource Manager lösen ordet.
 
-   I följande exempel visas utdata för ett lyckat inloggnings försök efter att du har angett lösen ordet:  
+   I följande exempel visas utdata för lyckad inloggning efter att du har angett lösen ordet:  
    
    ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
@@ -342,7 +342,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-   Anteckna `id` `tenantId` värdena och så som de motsvarar ditt Azure Resource Manager PRENUMERATIONS-id och Azure Resource Manager klient-ID och kommer att användas i senare steg.
+   Anteckna `id` `tenantId` värdena och som dessa värden motsvarar ditt Azure Resource Manager PRENUMERATIONS-id och Azure Resource Manager klient-ID och kommer att användas i senare steg.
        
    Följande miljövariabler måste anges för att fungera som *tjänstens huvud namn*:
 
