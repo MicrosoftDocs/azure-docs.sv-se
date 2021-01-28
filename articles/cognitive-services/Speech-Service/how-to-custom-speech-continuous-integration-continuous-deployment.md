@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f7f11ef097d3abee2b4c18c32a1cb215d9fe8ce8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020612"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939889"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD för Custom Speech
 
@@ -73,7 +73,7 @@ De flesta team kräver en manuell gransknings-och godkännande process för dist
 
 Använd följande verktyg för automatiserings arbets flöden för CI/CD för Custom Speech:
 
-- [Azure CLI](/cli/azure/?view=azure-cli-latest) för att skapa en Azure-tjänstens huvud namns autentisering, fråga Azure-prenumerationer och lagra test resultat i Azure blob.
+- [Azure CLI](/cli/azure/) för att skapa en Azure-tjänstens huvud namns autentisering, fråga Azure-prenumerationer och lagra test resultat i Azure blob.
 - [Azure tal CLI](spx-overview.md) för att interagera med tal tjänsten från kommando raden eller ett automatiserat arbets flöde.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>DevOps-lösning för Custom Speech med GitHub-åtgärder

@@ -1,18 +1,15 @@
 ---
 title: Apache Spark prestanda – Azure HDInsight IO-cache (för hands version)
 description: Lär dig mer om Azure HDInsight IO-cache och hur du använder den för att förbättra Apache Spark prestanda.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 3e724e6336163a092c9b4385324b1aa037295bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940127"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Förbättra prestanda för Apache Spark arbets belastningar med Azure HDInsight IO-cache
 
@@ -67,7 +64,7 @@ Du kan få disk utrymmes fel som kör Spark-jobb när du har aktiverat IO-cache.
 
 1. Välj **Spara** längst upp till höger.
 
-1. Välj **Starta**om  >  **omstart alla påverkade**.
+1. Välj **Starta** om  >  **omstart alla påverkade**.
 
     ![Apache Ambari startar om alla berörda](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Starta om alla berörda")
 

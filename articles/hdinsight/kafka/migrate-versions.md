@@ -1,18 +1,15 @@
 ---
 title: Migrera Apache Kafka-arbetsbelastningar till Azure HDInsight 4,0
 description: Lär dig hur du migrerar Apache Kafka-arbetsbelastningar i HDInsight 3,6 till HDInsight 4,0.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3967a5d96c35e4bac88dcd9a6c1fa95b78a6b2b1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80437004"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939112"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Migrera Apache Kafka-arbetsbelastningar till Azure HDInsight 4,0
 

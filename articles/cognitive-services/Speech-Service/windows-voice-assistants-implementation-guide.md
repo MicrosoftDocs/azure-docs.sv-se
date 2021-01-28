@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024780"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939855"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementera röst assistenter i Windows
 
@@ -30,7 +30,7 @@ När du har konfigurerat [din miljö](how-to-windows-voice-assistants-get-starte
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Se till att mikrofonen är tillgänglig och tillgänglig, och övervaka sedan dess tillstånd
 
-MVA kräver att en mikrofon är tillgänglig och kan användas för att identifiera en röst aktivering. Använd klasserna [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)och [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) för att kontrol lera om det finns någon åtkomst till mikrofonen, enhetens närvaro och enhets status (t. ex. volym och ljud av).
+MVA kräver att en mikrofon är tillgänglig och kan användas för att identifiera en röst aktivering. Använd klasserna [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher)och [MediaCapture](/uwp/api/windows.media.capture.mediacapture) för att kontrol lera om det finns någon åtkomst till mikrofonen, enhetens närvaro och enhets status (t. ex. volym och ljud av).
 
 ### <a name="register-the-application-with-the-background-service"></a>Registrera programmet med bakgrunds tjänsten
 
@@ -38,7 +38,7 @@ För att MVA ska kunna starta programmet i bakgrunden måste programmet registre
 
 ### <a name="unlock-the-limited-access-feature"></a>Lås upp funktionen för begränsad åtkomst
 
-Använd din Microsoft-begränsade åtkomst funktions nyckel för att låsa upp funktionen röst assistent. Använd klassen [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) från Windows SDK för att göra detta.
+Använd din Microsoft-begränsade åtkomst funktions nyckel för att låsa upp funktionen röst assistent. Använd klassen [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) från Windows SDK för att göra detta.
 
 ### <a name="register-the-keyword-for-the-application"></a>Registrera nyckelordet för programmet
 
@@ -86,7 +86,7 @@ När ett Voice agent-program har Aktiver ATS av Voice är nästa steg att kontro
 
 ### <a name="retrieve-activation-audio"></a>Hämta aktiverings ljud
 
-Skapa en [AudioGraph](/uwp/api/windows.media.audio.audiograph) och skicka den till `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Det här läser in grafens ljudbuffert med ljudet som *börjar cirka 3 sekunder innan nyckelordet identifierades*. Detta extra ledande ljud ingår för att hantera en mängd olika nyckelords längder och högtalar hastigheter. Sedan hanterar du händelsen [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) från ljud diagrammet för att hämta ljuddata.
+Skapa en [AudioGraph](/uwp/api/windows.media.audio.audiograph) och skicka den till `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Det här läser in grafens ljudbuffert med ljudet som *börjar cirka 3 sekunder innan nyckelordet identifierades*. Detta extra ledande ljud ingår för att hantera en mängd olika nyckelords längder och högtalar hastigheter. Sedan hanterar du händelsen [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted) från ljud diagrammet för att hämta ljuddata.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 122e76e4bde96823ff18207bc24df4a8e91afb1c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8e51d7d00120f6facb0fb53a8e379d157ae79ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517976"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938576"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>Scenario: dirigera trafik genom NVA med anpassade inställningar
 
@@ -32,7 +32,7 @@ I följande tabell sammanfattas de anslutningar som stöds i det här scenariot:
 | Från          | Om du vill|Spokes (ekrar)|Service VNet|Grenar|Internet|
 |---|---|:---:|:---:|:---:|:---:|:---:|
 | **Spokes (ekrar)**| ->| rakt |rakt | via tjänstens VNet |via perimeter-VNet |
-| **Service VNet**| ->| rakt |Saknas| rakt | |
+| **Service VNet**| ->| rakt |saknas| rakt | |
 | **Grenar** | ->| via tjänstens VNet |rakt| rakt |  |
 
 Var och en av cellerna i anslutnings matrisen beskriver om anslutningen flödar direkt över ett virtuellt WAN eller över ett av de virtuella nätverken med en NVA. 
@@ -58,16 +58,19 @@ Det finns tre separata anslutnings mönster, som översätts till tre väg tabel
   * Associerad routningstabell: **standard**
   * Sprider till routningstabeller: **RT_SHARED** och **standard**
 
+> [!NOTE] 
+> Kontrol lera att eker-virtuella nätverk inte sprids till standard etiketten. Detta säkerställer trafik från grenar till ekrar som virtuella nätverk kommer att vidarebefordras till NVA.
+
 Dessa statiska vägar säkerställer att trafik till och från det virtuella nätverket och grenen går genom NVA i tjänstens VNet (VNet 4):
 
-| Beskrivning | Routningstabell | Statisk väg              |
+| Description | Routningstabell | Statisk väg              |
 | ----------- | ----------- | ------------------------- |
 | Grenar    | RT_V2B      | 10.2.0.0/16-> vnet4conn  |
-| NVA pinnar  | Standard     | 10.1.0.0/16-> vnet4conn  |
+| NVA pinnar  | Standardvärde     | 10.1.0.0/16-> vnet4conn  |
 
 Nu kan du använda Virtual WAN för att välja rätt anslutning för att skicka paketen till. Du måste också använda Virtual WAN för att välja rätt åtgärd som ska vidtas när du tar emot dessa paket. Du använder tabellerna för anslutnings väg för detta, enligt följande:
 
-| Beskrivning | Anslutning | Statisk väg            |
+| Description | Anslutning | Statisk väg            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16-> 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16-> 10.4.0.5 |
@@ -120,7 +123,7 @@ Om du vill konfigurera routning via NVA följer du stegen nedan:
 
    * **Spridningen från:** Se till att alternativet för grenar (VPN/ER/P2S) är markerat, och se till att lokala anslutningar sprider vägar till standard väg tabellen.
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Diagram över nätverks arkitektur." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Diagram över arbets flöde." lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 

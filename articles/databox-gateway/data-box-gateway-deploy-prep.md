@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f1b00273314c845a36c7efdb9cf9f4de9d5cdd46
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583673"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937345"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Självstudie: förbereda för att distribuera Azure Data Box Gateway
 
@@ -42,7 +42,7 @@ Gå igenom följande självstudier i angiven ordning när du ska distribuera Dat
 
 Nu kan du börja konfigurera Azure-portalen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Här hittar du konfigurationskraven för Data Box Gateway-resursen, Data Box Gateway-enheten och datacenternätverket.
 
@@ -50,11 +50,11 @@ Här hittar du konfigurationskraven för Data Box Gateway-resursen, Data Box Gat
 
 Innan du börjar ska du kontrollera att:
 
-* Din Microsoft Azure-prenumeration är aktiverad för en Azure Stack Edge-resurs. Se till att du har använt en prenumeration som stöds, till exempel [Microsoft Enterprise-avtal (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)eller [Microsoft Azure-sponsring](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Din Microsoft Azure-prenumeration är aktiverad för en Azure Stack Edge-resurs. Se till att du har använt en prenumeration som stöds, till exempel [Microsoft Enterprise-avtal (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)eller [Microsoft Azure-sponsring](https://azure.microsoft.com/offers/ms-azr-0036p/).
 * Du har ägar-eller deltagar åtkomst på resurs grupps nivå för Azure Stack Edge/Data Box Gateway, IoT Hub och Azure Storage resurser.
     - Om du vill skapa en Azure Stack gräns-/Data Box Gateway-resurs, bör du ha behörighet som deltagare (eller högre) som är begränsade till resurs grupps nivå. Du måste också kontrol lera att `Microsoft.DataBoxEdge` providern är registrerad. Information om hur du registrerar den finns i [Registrera resursprovider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
     - Om du vill skapa en lagrings konto resurs måste du igen med deltagar-eller högre åtkomst omfång på resurs grupps nivå. Azure Storage är som standard en registrerad resurs leverantör.
-- Du har administratörs-eller användar åtkomst till Microsoft Graph API. Mer information finns i [referens för Microsoft Graph-behörigheter](https://docs.microsoft.com/graph/permissions-reference).
+- Du har administratörs-eller användar åtkomst till Microsoft Graph API. Mer information finns i [referens för Microsoft Graph-behörigheter](/graph/permissions-reference).
 - Du har ditt Microsoft Azure lagringskonto med autentiseringsuppgifter.
 
 ### <a name="for-the-data-box-gateway-device"></a>För Data Box Gateway-enheten
@@ -90,7 +90,7 @@ För att skapa en Data Box Gateway resurs, utför följande steg i Azure Portal.
 1. Använd dina Microsoft Azure autentiseringsuppgifter för att logga in på någon av dessa portaler:
 
     - Azure Portal på denna URL: [https://portal.azure.com](https://portal.azure.com) .
-    - Azure Government Portal på denna URL: [https://portal.azure.us](https://portal.azure.us) . Mer information finns i [ansluta till Azure Government med hjälp av portalen](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+    - Azure Government Portal på denna URL: [https://portal.azure.us](https://portal.azure.us) . Mer information finns i [ansluta till Azure Government med hjälp av portalen](../azure-government/documentation-government-get-started-connect-with-portal.md).
     
 2. Välj **+ Skapa en resurs**.
 
@@ -193,5 +193,3 @@ ELLER
 
 > [!div class="nextstepaction"]
 > [Etablera en Data Box Gateway i VMware](./data-box-gateway-deploy-provision-vmware.md)
-
-

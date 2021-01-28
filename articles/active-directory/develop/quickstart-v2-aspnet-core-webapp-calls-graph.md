@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754492"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938240"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Snabb start: ASP.NET Core-webbapp som loggar in användare och anropar Microsoft Graph för deras räkning
 
@@ -26,7 +26,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur en
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Krav
+> ## <a name="prerequisites"></a>Förutsättningar
 >
 > * [Visual studio 2019](https://visualstudio.microsoft.com/vs/) eller [Visual Studio Code](https://code.visualstudio.com/)
 > * [.NET Core SDK 3.1 +](https://dotnet.microsoft.com/download)
@@ -55,7 +55,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > 1. Ange en **omdirigerings-URI** för `https://localhost:44321/signin-oidc` .
 > 1. Välj **Register** (Registrera).
 > 1. Under **Hantera** väljer du **autentisering**.
-> 1. Ange en **utloggnings-URL** för `https://localhost:44321/signout-oidc` .
+> 1. Ange en **webb adress för utloggning på klient sidan** för `https://localhost:44321/signout-oidc` .
 > 1. Välj **Spara**.
 > 1. Under **Hantera** väljer du **certifikat & hemligheter**  >  **ny klient hemlighet**.
 > 1. Ange en **Beskrivning**, till exempel `clientsecret1` .
@@ -64,7 +64,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
-> För att kod exemplet för den här snabb starten ska fungera måste du lägga till svars-URL: er som `https://localhost:44321/signin-oidc` , lägga till URL: en för utloggning som `https://localhost:44321/signout-oidc` .
+> I den här snabb startens exempel kod krävs en **omdirigerings-URI** för `https://localhost:44321/signin-oidc` och **klient-URL:** en `https://localhost:44321/signout-oidc` i appens registrering.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör den här ändringen åt mig]()
 >
@@ -168,7 +168,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApp` lägger till Microsoft Identity Platform-autentisering till ditt program. Detta tillhandahålls av [Microsoft. Identity. Web](microsoft-identity-web.md). Den konfigureras sedan att logga in med Microsoft Identity Platform baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |

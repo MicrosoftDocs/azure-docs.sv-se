@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e50b9e5dc683eb30452dbb96d82c9f66de93763
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408013"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937631"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Smidig enkel inloggning i Azure Active Directory
 
@@ -35,8 +35,13 @@ Sömlös SSO kan kombineras med antingen [lösen ordets hash-synkronisering](how
 
 ![Sömlös enkel Sign-On](./media/how-to-connect-sso/sso1.png)
 
->[!IMPORTANT]
->Sömlös SSO behöver användarens **enhet enbart vara domänansluten,** men den används inte på [Azure AD-anslutna](../devices/concept-azure-ad-join.md) eller [hybrid Azure AD-anslutna](../devices/concept-azure-ad-join-hybrid.md) enheter. SSO på Azure AD-ansluten, hybrid Azure AD-ansluten och registrerade Azure AD-enheter fungerar baserat på den [primära uppdateringstoken](../devices/concept-primary-refresh-token.md).
+## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>SSO via primär uppdateringstoken jämfört med sömlös SSO
+
+För Windows 10 rekommenderar vi att du använder SSO via Primary Refresh token (PRT). För Windows 7 och 8,1 rekommenderar vi att du använder sömlös SSO.
+Sömlös SSO måste användarens enhet vara domänansluten, men den används inte på Windows 10 [Azure AD-anslutna enheter](../devices/concept-azure-ad-join.md) eller [hybrid Azure AD-anslutna enheter](../devices/concept-azure-ad-join-hybrid.md). SSO på Azure AD-ansluten, hybrid Azure AD-ansluten och registrerade Azure AD-enheter fungerar baserat på den [primära uppdateringstoken (PRT)](../devices/concept-primary-refresh-token.md)
+
+SSO via PRT fungerar när enheter har registrerats med Azure AD för Hybrid Azure AD-anslutna, Azure AD-anslutna eller personliga registrerade enheter via Lägg till arbets-eller skol konto. Mer information om hur SSO fungerar med Windows 10 med hjälp av PRT finns i: [primär uppdateringstoken (PRT) och Azure AD](../devices/concept-primary-refresh-token.md)
+
 
 ## <a name="key-benefits"></a>Viktiga fördelar
 
@@ -63,11 +68,11 @@ Sömlös SSO kan kombineras med antingen [lösen ordets hash-synkronisering](how
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|Saknas
-|Windows 8,1|Yes\*|Ja\*\*\*|Yes|Ja\*\*\*|Saknas
-|Windows 8|Yes\*|Saknas|Ja|Ja\*\*\*|Saknas
-|Windows 7|Yes\*|Saknas|Ja|Ja\*\*\*|Saknas
-|Windows Server 2012 R2 eller senare|Ja\*\*|Saknas|Ja|Ja\*\*\*|Saknas
+|Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|Ej tillämpligt
+|Windows 8,1|Ja\*|Ja\*\*\*|Ja|Ja\*\*\*|Ej tillämpligt
+|Windows 8|Ja\*|Saknas|Ja|Ja\*\*\*|Ej tillämpligt
+|Windows 7|Ja\*|Saknas|Ja|Ja\*\*\*|Ej tillämpligt
+|Windows Server 2012 R2 eller senare|Ja\*\*|Saknas|Ja|Ja\*\*\*|Ej tillämpligt
 |Mac OS X|Saknas|Saknas|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
 
@@ -78,9 +83,6 @@ Sömlös SSO kan kombineras med antingen [lösen ordets hash-synkronisering](how
 \*\*\*Kräver [ytterligare konfiguration](how-to-connect-sso-quick-start.md#browser-considerations).
 
 \*\*\*\*Kräver Microsoft Edge version 77 eller senare.
-
->[!NOTE]
->För Windows 10 rekommenderar vi att du använder [Azure AD Join](../devices/concept-azure-ad-join.md) för att få en optimal enkel inloggning med Azure AD.
 
 ## <a name="next-steps"></a>Nästa steg
 

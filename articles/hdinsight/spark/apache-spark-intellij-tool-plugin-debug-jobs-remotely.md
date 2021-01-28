@@ -1,19 +1,16 @@
 ---
 title: 'Azure Toolkit: Felsöka Apache Spark appar via fjärr anslutning – Azure HDInsight'
 description: Lär dig hur du använder HDInsight-verktyg i Azure Toolkit for IntelliJ för att fjärrfelsöka Spark-program som körs på HDInsight-kluster via VPN.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789471"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940345"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Använd Azure Toolkit for IntelliJ för att felsöka Apache Spark program via fjärr anslutning i HDInsight via VPN
 
@@ -27,7 +24,7 @@ Den här artikeln innehåller stegvisa instruktioner om hur du använder HDInsig
 1. Skapa ett Scala-program i IntelliJ-idén och konfigurera det för fjärrfelsökning.
 1. Kör och Felsök programmet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **En Azure-prenumeration**. Mer information finns i [få en kostnads fri utvärderings version av Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Ett Apache Spark kluster i HDInsight**. Anvisningar finns i [Skapa Apache Spark-kluster i Azure HDInsight](apache-spark-jupyter-spark-sql.md).

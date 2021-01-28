@@ -1,19 +1,16 @@
 ---
 title: Operationalisera en pipeline för data analys – Azure
 description: Konfigurera och kör en exempel data pipeline som utlöses av nya data och ger kortfattade resultat.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504426"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939516"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisera en pipeline för dataanalys
 
@@ -39,7 +36,7 @@ Följande diagram illustrerar exempel pipelinen.
 
 Den här pipelinen använder Apache Oozie som körs på ett HDInsight Hadoop-kluster.
 
-Oozie beskriver sina pipeliner vad gäller *åtgärder*, *arbets flöden*och *koordinatorer*. Åtgärder fastställer det faktiska arbetet som ska utföras, till exempel köra en Hive-fråga. Arbets flöden definierar ordningen på åtgärder. Koordinatorer definierar schemat för när arbets flödet ska köras. Koordinatorer kan också vänta på tillgängligheten för nya data innan du startar en instans av arbets flödet.
+Oozie beskriver sina pipeliner vad gäller *åtgärder*, *arbets flöden* och *koordinatorer*. Åtgärder fastställer det faktiska arbetet som ska utföras, till exempel köra en Hive-fråga. Arbets flöden definierar ordningen på åtgärder. Koordinatorer definierar schemat för när arbets flödet ska köras. Koordinatorer kan också vänta på tillgängligheten för nya data innan du startar en instans av arbets flödet.
 
 Följande diagram visar den övergripande designen av det här exemplet Oozie pipeline.
 
@@ -53,7 +50,7 @@ Den här pipelinen kräver ett Azure SQL Database och ett HDInsight Hadoop-klust
 
 1. Skapa en Azure SQL Database. Se [skapa ett Azure SQL Database i Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. För att se till att ditt HDInsight-kluster har åtkomst till den anslutna Azure SQL Database konfigurerar du Azure SQL Database brand Väggs regler för att tillåta Azure-tjänster och-resurser åtkomst till servern. Du kan aktivera det här alternativet i Azure Portal genom att välja **Ange server brand vägg**och välja **på** under **Tillåt Azure-tjänster och-resurser för att få åtkomst till den här servern** för Azure SQL Database. Mer information finns i [skapa och hantera IP-brandväggens regler](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+1. För att se till att ditt HDInsight-kluster har åtkomst till den anslutna Azure SQL Database konfigurerar du Azure SQL Database brand Väggs regler för att tillåta Azure-tjänster och-resurser åtkomst till servern. Du kan aktivera det här alternativet i Azure Portal genom att välja **Ange server brand vägg** och välja **på** under **Tillåt Azure-tjänster och-resurser för att få åtkomst till den här servern** för Azure SQL Database. Mer information finns i [skapa och hantera IP-brandväggens regler](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
 1. Använd [Frågeredigeraren](../azure-sql/database/single-database-create-quickstart.md#query-the-database) för att köra följande SQL-uttryck för att skapa den `dailyflights` tabell som ska lagra de sammanfattade data från varje körning av pipelinen.
 
@@ -416,11 +413,11 @@ Använd SCP från bash-sessionen för att distribuera Oozie-arbetsflödet ( `wor
     oozie job -config job.properties -run
     ```
 
-1. Observera statusen med hjälp av webb konsolen för Oozie. I Ambari väljer du **Oozie**, **snabb länkar**och **Oozie webb konsol**. Under fliken **arbets flödes jobb** väljer du **alla jobb**.
+1. Observera statusen med hjälp av webb konsolen för Oozie. I Ambari väljer du **Oozie**, **snabb länkar** och **Oozie webb konsol**. Under fliken **arbets flödes jobb** väljer du **alla jobb**.
 
     ![HDI Oozie webb konsol arbets flöden](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. När statusen är klar frågar du SQL Database-tabellen om du vill visa de infogade raderna. Använd Azure Portal, navigera till fönstret för din SQL Database, Välj **verktyg**och öppna **Frågeredigeraren**.
+1. När statusen är klar frågar du SQL Database-tabellen om du vill visa de infogade raderna. Använd Azure Portal, navigera till fönstret för din SQL Database, Välj **verktyg** och öppna **Frågeredigeraren**.
 
     ```sql
     SELECT * FROM dailyflights

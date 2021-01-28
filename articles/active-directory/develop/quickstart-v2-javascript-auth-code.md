@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f9c9cb3b1891383d4c1f0d579cf5990eee9f7826
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 98110723063ee2a2c9deb75fc931655e18e5bc95
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754177"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938063"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett Java Script SPA med auth Code Flow
 
@@ -27,7 +27,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 I den här snabb starten används MSAL.js 2,0 med Authorization Code Flow. En liknande snabb start som använder MSAL.js 1,0 med det implicita flödet finns i [snabb start: Logga in användare i Java Script-appar med en sida](./quickstart-v2-javascript.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en Azure-prenumeration kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -63,7 +63,7 @@ I den här snabb starten används MSAL.js 2,0 med Authorization Code Flow. En li
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
-> Om du vill att kod exemplet i den här snabb starten ska fungera måste du lägga till ett `redirectUri` som `http://localhost:3000/` .
+> Den här snabb startens exempel kod kräver en **omdirigerings-URI** för `http://localhost:3000/` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör ändringarna åt mig]()
 >

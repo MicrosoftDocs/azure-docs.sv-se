@@ -1,19 +1,16 @@
 ---
 title: Flera HDInsight-kluster & ett Azure Data Lake Storage konto
 description: Lär dig hur du använder mer än ett HDInsight-kluster med ett enda Data Lake Storage konto
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6e220592f53103320c3bdb586fcbd0106219bfed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533095"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939535"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Använd flera HDInsight-kluster med ett Azure Data Lake Storage konto
 
@@ -28,7 +25,7 @@ Resten av den här artikeln förutsätter att du har en korrekt kunskap om ACL: 
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Data Lake Storage-inställningar för flera HDInsight-kluster
 
-Låt oss ta en mapphierarki i två nivåer för att förklara rekommendationerna för att använda flera HDInsight-kluster med ett Data Lake Storage-konto. Se till att du har ett Data Lake Storage-konto med mappstrukturen **/Clusters/Finance** . Med den här strukturen kan alla kluster som krävs av ekonomi organisationen använda/Clusters/Finance som lagrings plats. I framtiden, om en annan organisation, till exempel marknadsföring, vill skapa HDInsight-kluster med samma Data Lake Storage konto kan de skapa/Clusters/Marketing. Nu ska vi bara använda **/Clusters/Finance** .
+Låt oss ta en mapphierarki i två nivåer för att förklara rekommendationerna för att använda flera HDInsight-kluster med ett Data Lake Storage-konto. Se till att du har ett Data Lake Storage-konto med mappstrukturen **/Clusters/Finance**. Med den här strukturen kan alla kluster som krävs av ekonomi organisationen använda/Clusters/Finance som lagrings plats. I framtiden, om en annan organisation, till exempel marknadsföring, vill skapa HDInsight-kluster med samma Data Lake Storage konto kan de skapa/Clusters/Marketing. Nu ska vi bara använda **/Clusters/Finance**.
 
 Om du vill att den här mappstrukturen ska användas effektivt av HDInsight-kluster måste Data Lake Storage administratören tilldela lämpliga behörigheter enligt beskrivningen i tabellen. Behörigheterna som visas i tabellen motsvarar åtkomst-ACL: er och inte standard-ACL: er.
 
@@ -48,10 +45,10 @@ Instruktioner för hur du skapar ett AAD-program (som också skapar ett huvud na
 
 Några viktiga saker att tänka på.
 
-- Mappstrukturen på den två nivån ( **/Clusters/Finance/** ) måste skapas och tillhandahållas med lämpliga behörigheter av data Lake Storage admin **innan** du använder lagrings kontot för kluster. Den här strukturen skapas inte automatiskt när du skapar kluster.
+- Mappstrukturen på den två nivån (**/Clusters/Finance/**) måste skapas och tillhandahållas med lämpliga behörigheter av data Lake Storage admin **innan** du använder lagrings kontot för kluster. Den här strukturen skapas inte automatiskt när du skapar kluster.
 - Exemplet ovan rekommenderar att du anger den ägande gruppen **/Clusters/Finance** som **FINGRP** och tillåter **r-x-** åtkomst till FINGRP till hela mapphierarkin med början från roten. Detta säkerställer att medlemmarna i FINGRP kan navigera i mappstrukturen från roten.
-- Om olika AAD-tjänstens huvud namn kan skapa kluster under **/Clusters/Finance** , ser den tröga biten (när den har angetts i **ekonomi** -mappen) till att mappar som skapats av ett huvud namn för tjänsten inte kan tas bort av det andra.
-- När mappstrukturen och behörigheterna är på plats skapar HDInsight-klustret en kluster bestämd lagrings plats under **/Clusters/Finance/** . Till exempel kan lagringen för ett kluster med namnet fincluster01 vara **/Clusters/Finance/fincluster01** . Ägarskapet och behörigheterna för de mappar som skapats av HDInsight-klustret visas i tabellen här.
+- Om olika AAD-tjänstens huvud namn kan skapa kluster under **/Clusters/Finance**, ser den tröga biten (när den har angetts i **ekonomi** -mappen) till att mappar som skapats av ett huvud namn för tjänsten inte kan tas bort av det andra.
+- När mappstrukturen och behörigheterna är på plats skapar HDInsight-klustret en kluster bestämd lagrings plats under **/Clusters/Finance/**. Till exempel kan lagringen för ett kluster med namnet fincluster01 vara **/Clusters/Finance/fincluster01**. Ägarskapet och behörigheterna för de mappar som skapats av HDInsight-klustret visas i tabellen här.
 
     |Mapp  |Behörigheter  |Ägande användare  |Ägande grupp  | Namngiven användare | Namngivna användar behörigheter | Namngiven grupp | Namngivna grupp behörigheter |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -59,7 +56,7 @@ Några viktiga saker att tänka på.
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>Rekommendationer för indata och utdata för jobb
 
-Vi rekommenderar att indata till ett jobb och utdata från ett jobb lagras i en mapp utanför **/Clusters** . Detta säkerställer att även om den klustrade mappen tas bort för att frigöra lagrings utrymme är jobbets indata och utdata fortfarande tillgängliga för framtida bruk. I sådana fall måste du se till att mapphierarkin för lagring av jobbets indata och utdata tillåter lämplig åtkomst nivå för tjänstens huvud namn.
+Vi rekommenderar att indata till ett jobb och utdata från ett jobb lagras i en mapp utanför **/Clusters**. Detta säkerställer att även om den klustrade mappen tas bort för att frigöra lagrings utrymme är jobbets indata och utdata fortfarande tillgängliga för framtida bruk. I sådana fall måste du se till att mapphierarkin för lagring av jobbets indata och utdata tillåter lämplig åtkomst nivå för tjänstens huvud namn.
 
 ## <a name="limit-on-clusters-sharing-a-single-storage-account"></a>Gräns för kluster som delar ett enda lagrings konto
 

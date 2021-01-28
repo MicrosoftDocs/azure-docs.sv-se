@@ -1,19 +1,17 @@
 ---
 title: 'Säkerhet: migrera lokala Apache Hadoop till Azure HDInsight'
 description: Lär dig mer om säkerhets-och DevOps för att migrera lokala Hadoop-kluster till Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545267"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939747"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight – säkerhets-och DevOps metod tips
 

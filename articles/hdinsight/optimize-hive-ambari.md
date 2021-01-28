@@ -1,18 +1,15 @@
 ---
 title: Optimera Apache Hive med Apache Ambari i Azure HDInsight
 description: Använd webb gränssnittet Apache Ambari för att konfigurera och optimera Apache Hive.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084366"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939251"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Optimera Apache Hive med Apache Ambari i Azure HDInsight
 
@@ -100,7 +97,7 @@ Hive bearbetar data rad för rad. Vectorization dirigerar Hive för att bearbeta
 
 Som standard följer Hive en uppsättning regler för att hitta en optimal plan för frågekörningen. Kostnads baserad optimering (CBO) utvärderar flera planer för att köra en fråga. Och tilldelar varje plan en kostnad och bestämmer sedan billigaste-planen för att köra en fråga.
 
-Om du vill aktivera CBO navigerar du till inställningar för **Hive**-  >  **konfiguration**  >  **Settings** och letar reda på **Aktivera kostnads baserad optimering**och byter sedan växlings knappen till **på**.
+Om du vill aktivera CBO navigerar du till inställningar för **Hive**-  >  **konfiguration**  >   och letar reda på **Aktivera kostnads baserad optimering** och byter sedan växlings knappen till **på**.
 
 ![Kostnads baserad, HDInsight-baserad optimering](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
 
@@ -137,7 +134,7 @@ De tillgängliga komprimerings typerna är:
 | Gzip | Gzip | DEFLATE | `.gz` | Inga |
 | Bzip2 | Bzip2 | Bzip2 |`.bz2` | Ja |
 | LZO | `Lzop` | LZO | `.lzo` | Ja, om det är indexerat |
-| Snappy | E.t. | Snappy | Snappy | Inga |
+| Snappy | Ej tillämpligt | Snappy | Snappy | Inga |
 
 Som en allmän regel är det viktigt att det går att dela upp komprimerings metoden, annars får några av mapparna skapats. Om indata är text, `bzip2` är det bästa alternativet. För ORC-format är fästfunktionen det snabbaste komprimerings alternativet.
 
@@ -233,7 +230,7 @@ Standard kopplings typen i Hive är en *blandad koppling*. I Hive läser särski
 
 Ytterligare rekommendationer för att optimera Hive-körnings motorn:
 
-| Inställningen | Rekommenderas | HDInsight-standard |
+| Inställning | Rekommenderas | HDInsight-standard |
 | --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | Sant = säkrare, långsammare; falskt = snabbare | falskt |
 | `tez.am.resource.memory.mb` | 4 GB övre gränser för de flesta | Automatiskt justerad |

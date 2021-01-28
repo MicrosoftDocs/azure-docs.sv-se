@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 01/27/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 38978982baea41d23958a857b19a1edf2e454f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844020"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938729"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändra hur ett lagringskonto replikeras
 
@@ -39,16 +39,17 @@ Följande tabell innehåller en översikt över hur du växlar från varje typ a
 
 | Växla | ... till LRS | ... till GRS/RA-GRS | ... till ZRS | ... till GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... från LRS</b> | E.t. | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna<sup>1</sup> | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Begär en Direktmigrering | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Växla till GRS/RA-GRS först och begär sedan en Direktmigrering<sup>1</sup> |
-| <b>... från GRS/RA-GRS</b> | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna | E.t. | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Växla till LRS först och begär sedan en Direktmigrering | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Begär en Direktmigrering |
-| <b>... från ZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | E.t. | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna<sup>1, 2</sup> |
-| <b>... från GZRS/RA-GZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna | E.t. |
+| <b>... från LRS</b> | Ej tillämpligt | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna<sup>1, 2</sup> | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Begär en Direktmigrering | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Växla till GRS/RA-GRS först och begär sedan en Direktmigrering<sup>1</sup> |
+| <b>... från GRS/RA-GRS</b> | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna | Ej tillämpligt | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Växla till LRS först och begär sedan en Direktmigrering | Utföra en manuell migrering <br /><br /> ELLER <br /><br /> Begär en Direktmigrering |
+| <b>... från ZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | Ej tillämpligt | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna<sup>1, 3</sup> |
+| <b>... från GZRS/RA-GZRS</b> | Utföra en manuell migrering | Utföra en manuell migrering | Använd Azure Portal, PowerShell eller CLI för att ändra replikeringsinställningarna | Ej tillämpligt |
 
 <sup>1</sup> ådrar sig en engångs avgift.<br />
-<sup>2</sup> konvertering från ZRS till GZRS/ra-GZRS eller vice versa stöds inte i följande regioner: USA, östra 2, östra USA, västra Europa.
+<sup>2</sup> det går inte att MIGRERA från LRS till GRS om lagrings kontot innehåller blobar på Arkiv nivån.<br />
+<sup>3</sup> konvertering från ZRS till GZRS/ra-GZRS eller vice versa stöds inte i följande regioner: USA, östra 2, östra USA, västra Europa.
 
 > [!CAUTION]
-> Om du har utfört en [konto redundansväxling](storage-disaster-recovery-guidance.md) för ditt (RA-) GRS-eller (RA-) GZRS-konto är kontot Lokalt Redundant i den nya primära regionen efter redundansväxlingen. Direktmigrering till ZRS eller GZRS för ett LRS-konto som orsakas av en redundansväxling stöds inte. Detta gäller även i händelse av så kallade failback-åtgärder. Om du till exempel utför ett konto redundansväxling från RA-GZRS till LRS i den sekundära regionen och sedan konfigurerar det igen till RA-GRS och utför ett annat konto redundansväxling till den ursprungliga primära regionen, kan du inte kontakta supporten för den ursprungliga Direktmigrering till RA-GZRS i den primära regionen. I stället måste du utföra en manuell migrering till ZRS eller GZRS.
+> Om du utförde ett [konto för redundans](storage-disaster-recovery-guidance.md) för ditt (RA-) GRS-eller (RA-) GZRS-konto är kontot lokalt REDUNDANT (LRS) i den nya primära regionen efter redundansväxlingen. Direktmigrering till ZRS eller GZRS för ett LRS-konto som orsakas av en redundansväxling stöds inte. Detta gäller även i händelse av så kallade failback-åtgärder. Om du till exempel utför ett konto redundansväxling från RA-GZRS till LRS i den sekundära regionen och sedan konfigurerar det igen till RA-GRS och utför ett annat konto redundansväxling till den ursprungliga primära regionen, kan du inte kontakta supporten för den ursprungliga Direktmigrering till RA-GZRS i den primära regionen. I stället måste du utföra en manuell migrering till ZRS eller GZRS.
 
 ## <a name="change-the-replication-setting"></a>Ändra replikeringsstatus
 

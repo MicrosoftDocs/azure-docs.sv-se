@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 914581e6610e027d9440495f56f4facfb1fb9a9a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 29eafcae9442215e23e80b946fc35314e23100d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349443"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937240"
 ---
 # <a name="teams-interoperability"></a>Samverkan mellan team
 
@@ -40,7 +40,7 @@ När en kommunikations tjänst användare ansluter till Teams mötet, visas det 
 Kommunikations tjänst användare kan ansluta till schemalagda team möten så länge anonyma kopplingar är aktiverade i [Mötes inställningarna](/microsoftteams/meeting-settings-in-teams).
 
 ## <a name="teams-in-government-clouds-gcc"></a>Team i offentliga moln (GCC)
-Samverkan med Azure Communication Services tillåts inte för team distributioner med hjälp av [Microsoft 365 myndigheter (GCC)](https://docs.microsoft.com/MicrosoftTeams/plan-for-government-gcc) för tillfället. 
+Samverkan med Azure Communication Services tillåts inte för team distributioner med hjälp av [Microsoft 365 myndigheter (GCC)](/MicrosoftTeams/plan-for-government-gcc) för tillfället. 
 
 ## <a name="next-steps"></a>Nästa steg
 

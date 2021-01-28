@@ -1,19 +1,16 @@
 ---
 title: MapReduce och SSH-anslutning med Apache Hadoop – Azure HDInsight
 description: Lär dig hur du använder SSH för att köra MapReduce-jobb med Apache Hadoop på HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
-ms.openlocfilehash: 2736d0cfe514252e36ba6d7e0d71efe09da15aae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 991b91d1feee185d17bbf01266e0392f347e1a66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076308"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939646"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Använda MapReduce med Apache Hadoop på HDInsight med SSH
 
@@ -24,7 +21,7 @@ Lär dig hur du skickar MapReduce-jobb från en SSH-anslutning (Secure Shell) ti
 > [!NOTE]
 > Om du redan är bekant med att använda Linux-baserade Apache Hadoop-servrar, men du är nybörjare på HDInsight, se [Linux-baserade HDInsight-tips](../hdinsight-hadoop-linux-information.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Ett Apache Hadoop kluster i HDInsight. Se [skapa Apache Hadoop kluster med hjälp av Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
