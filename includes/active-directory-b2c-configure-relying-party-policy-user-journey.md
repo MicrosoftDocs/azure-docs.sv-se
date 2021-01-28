@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/18/2021
+ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: f94076f06fb13bae2a26e8ab6003d7574a2dacfd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98674248"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98951550"
 ---
 ## <a name="configure-the-relying-party-policy"></a>Konfigurera principen för förlitande part
 
@@ -33,11 +33,5 @@ I följande exempel för `CustomSignUpOrSignIn` användar resan är **ReferenceI
 1. Under **principer** väljer du **Identity Experience Framework**.
 1. Välj **Ladda upp anpassad princip** och överför sedan de två principfiler som du ändrade, i följande ordning: tilläggs principen, till exempel `TrustFrameworkExtensions.xml` , sedan den förlitande part principen, till exempel `SignUpSignIn.xml` .
 
-## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
-1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin`
-1. För **program** väljer du ett webb program som du har registrerat tidigare. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Välj knappen **Kör nu** .
-
-Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 

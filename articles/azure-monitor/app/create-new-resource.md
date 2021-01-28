@@ -3,12 +3,12 @@ title: Skapa en ny Azure Application Insights-resurs | Microsoft Docs
 description: Konfigurera Application Insights övervakning manuellt för ett nytt Live-program.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 2924ccbbf591020d7872d3e9cca62a9c271db7c0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: adc40db493c701a21fd30d10a4452edee1b87ab9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944596"
+ms.locfileid: "98951282"
 ---
 # <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 
@@ -36,6 +36,7 @@ Logga in på [Azure Portal](https://portal.azure.com)och skapa en Application In
 
 Ange lämpliga värden i de obligatoriska fälten och välj sedan **Granska + skapa**.
 
+[!div class="mx-imgBorder"]
 ![Ange värden i obligatoriska fält och välj sedan "granska + skapa".](./media/create-new-resource/review-create.png)
 
 När din app har skapats öppnas ett nytt fönster. I det här fönstret visas prestanda-och användnings data om det övervakade programmet. 

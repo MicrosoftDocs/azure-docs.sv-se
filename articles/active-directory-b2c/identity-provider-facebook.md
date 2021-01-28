@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598884"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952682"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Facebook-konto med hjälp av Azure Active Directory B2C
 
@@ -84,6 +84,21 @@ Om du vill aktivera inloggning för användare med ett Facebook-konto i Azure Ac
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>Skapa en princip nyckel
+
+Du måste lagra appens hemlighet som du tidigare har spelat in i Azure AD B2C-klienten.
+
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
+2. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C-klient. Välj **katalog + prenumerations** filter på den översta menyn och välj den katalog som innehåller din klient.
+3. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
+4. På sidan Översikt väljer du **ID för identitets miljö**.
+5. Välj **princip nycklar** och välj sedan **Lägg till**.
+6. För **alternativ** väljer du `Manual` .
+7. Ange ett **namn** för princip nyckeln. Ett exempel är `FacebookSecret`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+8. I **hemlighet** anger du appens hemlighet som du tidigare har spelat in.
+9. För **nyckel användning** väljer du `Signature` .
+10. Klicka på **Skapa**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurera ett Facebook-konto som en identitets leverantör
 

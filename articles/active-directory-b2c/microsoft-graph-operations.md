@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938488"
+ms.locfileid: "98952246"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Hantera Azure AD B2C med Microsoft Graph
 
@@ -45,9 +45,13 @@ Ett telefonnummer som kan användas av en användare för att logga in med [SMS 
 - [Uppdatera](/graph/api/phoneauthenticationmethod-update)
 - [Ta bort](/graph/api/phoneauthenticationmethod-delete)
 
+Obs! [list](/graph/api/authentication-list-phonemethods) åtgärden returnerar bara aktiverade telefonnummer. Följande telefonnummer måste vara aktiverat för att kunna användas med list åtgärderna. 
+
+![Aktivera telefonin loggning](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
 ## <a name="self-service-password-reset-email-address-beta"></a>E-postadress för lösen ords återställning via självbetjäning (beta)
 
-En e-postadress som kan användas av en användare för att vila på lösen ordet för [inloggnings konto för användar namn](identity-provider-local.md#username-sign-in). Mer information finns i [Azure AD Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
+En e-postadress som kan användas av ett [inloggnings konto för användar namn](identity-provider-local.md#username-sign-in) för att återställa lösen ordet. Mer information finns i [Azure AD Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
 
 - [Lägg till](/graph/api/emailauthenticationmethod-post)
 - [Lista](/graph/api/emailauthenticationmethod-list)

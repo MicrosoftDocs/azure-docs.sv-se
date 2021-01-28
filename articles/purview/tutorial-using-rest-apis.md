@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202954"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951250"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Självstudie: använda REST-API: er
 
 I den här självstudien får du lära dig hur du använder REST-API: er för Azure avdelningens kontroll. Alla som vill skicka data till en Azure avdelningens kontroll-katalog, inkludera katalogen som en del av en automatiserad process eller skapa en egen användar upplevelse i katalogen kan använda REST-API: er för att göra det.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -92,7 +92,7 @@ Så här konfigurerar du Azure-avdelningens kontroll att lita på ditt nya huvud
 
 1. För **tilldela behörighet att** lämna kvar standard-, **användar-, grupp-eller tjänstens huvud namn**
 
-1. För **väljer** du ange namnet på användaren, Azure Active Directory grupp eller tjänstens huvud namn som du vill tilldela och klickar sedan på namnet i resultat fönstret.
+1. För **väljer** du ange namnet på Previosly som skapade tjänstens huvud namn som du vill tilldela och klickar sedan på namnet i resultat fönstret.
 
 1. Klicka på **Spara**
 

@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 12e6aa85f7d8c2c4aebe80efc92f771917e6a1d5
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4983e4b7f76c627cb3cb3081bc12e27111b2b521
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746020"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951469"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för data insamlings regler i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](../platform/log-analytics-agent.md) och [diagnostiskt tillägg](../platform/diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
@@ -80,7 +80,7 @@ I följande exempel installeras Azure Monitor-agenten på en virtuell Windows Az
 }
 ```
 
-## <a name="create-association-ith-azure-arc"></a>Skapa koppling, i:te Azure-båge
+## <a name="create-association-with-azure-arc"></a>Skapa en Association med Azure Arc
 
 I följande exempel installeras Azure Monitor-agenten på en virtuell Windows Azure-dator. En Association skapas mellan en Azure Arc-aktiverad server maskin och en data insamlings regel.
 

@@ -1,5 +1,5 @@
 ---
-title: Terminologi och enhets ändringar mellan Azure Media Services v2 och v3
+title: Media Services v3-terminologi och enhets ändringar
 description: I den här artikeln beskrivs skillnaderna mellan Azure Media Services v2 och v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: b53fbcb62004a8af9b2470c76f64f1ace845c1a8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a2348e0578b60c59fd7205037bd42d7bb1e84fae
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898400"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953707"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminologi och enhets ändringar mellan Media Services v2 och v3
 
@@ -42,28 +42,28 @@ Granska de namngivnings konventioner som tillämpas på Media Services v3-resurs
 ## <a name="entity-changes"></a>Ändra enhet
 | **V2-entitet**<!-- row --> | **V3-entitet** | **Vägledning** | **Tillgängligt för v3** | **Uppdaterat av v3** |
 |--|--|--|--|--|
-| `AccessPolicy`<!-- row --> | <!-- empty --> |  Entiteten `AccessPolicies` finns inte i v3. | Nej | Nej |
+| `AccessPolicy`<!-- row --> | <!-- empty --> |  Entiteten `AccessPolicies` finns inte i v3. | Inga | Inga |
 | `Asset`<!-- row --> | `Asset` | <!-- empty --> | Ja | Ja |
-| `AssetDeliveryPolicy`<!-- row --> | `StreamingPolicy` | <!-- empty --> | Ja | Nej |
-| `AssetFile`<!-- row --> | <!-- empty --> |Entiteten `AssetFiles` finns inte i v3. Även om filer (Storage blobbar) som du laddar upp är fortfarande filer som betraktas som filer.<br/><br/> Använd Azure Storage-API: er för att räkna upp blobarna i en behållare i stället. Det finns två sätt att tillämpa en omvandling till filerna med ett jobb:<br/><br/>Filer som redan har överförts till lagring: URI: n innehåller till gångs-ID för jobb som ska göras på till gångar i ett lagrings konto.<br/><br/>Filer som ska överföras under transformeringen och jobb processen: till gången skapas i lagring, en SAS-URL returneras, filer laddas upp till lagring och sedan tillämpas transformeringen på filerna. | Nej | Nej |
-| `Channel`<!-- row --> | `LiveEvent` | Live-händelser ersätter kanaler från v2-API: et. De innehåller de flesta funktioner och har fler nya funktioner som direkt avskrifter, stand-by-läge och stöd för RTMP-inmatning. <br/><br/>Se [Live event i scenario baserat Live streaming](migrate-v-2-v-3-migration-scenario-based-live-streaming.md) | Nej | Nej |
-| `ContentKey`<!-- row --> | <!-- empty --> | `ContentKeys` är inte längre en entitet, nu är det en egenskap för en strömmande positionerare.<br/><br/>  I v3 är innehålls nyckel data antingen associerade med `StreamingLocator` (för utgående kryptering) eller själva till gången (för lagrings kryptering på klient sidan). | Ja | Nej |
-| `ContentKeyAuthorizationPolicy`<!-- row --> | `ContentKeyPolicy` | <!-- empty --> | Ja | Nej |
-| `ContentKeyAuthorizationPolicyOption` <!-- row --> | <!-- empty --> |  `ContentKeyPolicyOptions` ingår i `ContentKeyPolicy` . | Ja | Nej |
-| `IngestManifest`<!-- row --> | <!-- empty --> | Entiteten `IngestManifests` finns inte i v3. Överföring av filer i v3 omfattar API för Azure Storage. Till gångar skapas först och sedan överförs filerna till den tillhör ande lagrings behållaren. Det finns många sätt att hämta data till en Azure Storage behållare som kan användas i stället. `JobInputHttp` är också ett sätt att ladda ned jobb inmatade från en viss URL om du vill. | Nej | Nej |
-| `IngestManifestAsset`<!-- row --> | <!-- empty --> | Det finns många sätt att hämta data till en Azure Storage behållare som kan användas i stället. `JobInputHttp` är också ett sätt att ladda ned jobb inmatade från en viss URL om du vill. | Nej | Nej |
-| `IngestManifestFile`<!-- row --> | <!-- empty --> | Det finns många sätt att hämta data till en Azure Storage behållare som kan användas i stället. `JobInputHttp` är också ett sätt att ladda ned jobb inmatade från en viss URL om du vill. | Nej | Nej |
-| `Job`<!-- row --> | `Job` | Skapa en `Transform` innan du skapar en `Job` . | Nej | Nej |
-| `JobTemplate`<!-- row --> | `Transform` | Använd en `Transform` i stället. En transformering är en separat entitet från ett jobb och kan återanvändas. | Nej | Nej |
-| `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Ja | Nej |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | I stället för att söka efter `MediaProcessor` namn använder du önskad för inställning när du definierar en transformering. Den för inställning som används avgör vilken Media processor som används av jobb systemet. Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Nej | NA (ReadOnly i v2) |
-| `NotificationEndPoint`<!-- row --> | <!--empty --> | Meddelanden i v3 hanteras via Azure Event Grid. `NotificationEndpoint`Ersätts av event Grid prenumerations registrering som också kapslar in konfigurationen för de typer av meddelanden som ska tas emot (som i v2 hanterades av `JobNotificationSubscription` jobbet, `TaskNotificationSubscription` för aktiviteten och telemetri `ComponentMonitoringSetting` ). Den 2: a telemetri delas mellan Azure Event Grid och Azure Monitor för att passa in i förbättringarna av det större Azure-eko systemet. | Nej | Nej |
-| `Program`<!-- row --> | `LiveOutput` | Live-utdata ersätter nu program i v3-API: et.  | Nej | Nej |
+| `AssetDeliveryPolicy`<!-- row --> | `StreamingPolicy` | <!-- empty --> | Ja | Inga |
+| `AssetFile`<!-- row --> | <!-- empty --> |Entiteten `AssetFiles` finns inte i v3. Även om filer (Storage blobbar) som du laddar upp är fortfarande filer som betraktas som filer.<br/><br/> Använd Azure Storage-API: er för att räkna upp blobarna i en behållare i stället. Det finns två sätt att tillämpa en omvandling till filerna med ett jobb:<br/><br/>Filer som redan har överförts till lagring: URI: n innehåller till gångs-ID för jobb som ska göras på till gångar i ett lagrings konto.<br/><br/>Filer som ska överföras under transformeringen och jobb processen: till gången skapas i lagring, en SAS-URL returneras, filer laddas upp till lagring och sedan tillämpas transformeringen på filerna. | Inga | Inga |
+| `Channel`<!-- row --> | `LiveEvent` | Live-händelser ersätter kanaler från v2-API: et. De innehåller de flesta funktioner och har fler nya funktioner som direkt avskrifter, stand-by-läge och stöd för RTMP-inmatning. <br/><br/>Se [Live event i scenario baserat Live streaming](migrate-v-2-v-3-migration-scenario-based-live-streaming.md) | Inga | Inga |
+| `ContentKey`<!-- row --> | <!-- empty --> | `ContentKeys` är inte längre en entitet, nu är det en egenskap för en strömmande positionerare.<br/><br/>  I v3 är innehålls nyckel data antingen associerade med `StreamingLocator` (för utgående kryptering) eller själva till gången (för lagrings kryptering på klient sidan). | Ja | Inga |
+| `ContentKeyAuthorizationPolicy`<!-- row --> | `ContentKeyPolicy` | <!-- empty --> | Ja | Inga |
+| `ContentKeyAuthorizationPolicyOption` <!-- row --> | <!-- empty --> |  `ContentKeyPolicyOptions` ingår i `ContentKeyPolicy` . | Ja | Inga |
+| `IngestManifest`<!-- row --> | <!-- empty --> | Entiteten `IngestManifests` finns inte i v3. Överföring av filer i v3 omfattar API för Azure Storage. Till gångar skapas först och sedan överförs filerna till den tillhör ande lagrings behållaren. Det finns många sätt att hämta data till en Azure Storage behållare som kan användas i stället. `JobInputHttp` är också ett sätt att ladda ned jobb inmatade från en viss URL om du vill. | Inga | Inga |
+| `IngestManifestAsset`<!-- row --> | <!-- empty --> | Det finns många sätt att hämta data till en Azure Storage behållare som kan användas i stället. `JobInputHttp` är också ett sätt att ladda ned jobb inmatade från en viss URL om du vill. | Inga | Inga |
+| `IngestManifestFile`<!-- row --> | <!-- empty --> | Det finns många sätt att hämta data till en Azure Storage behållare som kan användas i stället. `JobInputHttp` är också ett sätt att ladda ned jobb inmatade från en viss URL om du vill. | Inga | Inga |
+| `Job`<!-- row --> | `Job` | Skapa en `Transform` innan du skapar en `Job` . | Inga | Inga |
+| `JobTemplate`<!-- row --> | `Transform` | Använd en `Transform` i stället. En transformering är en separat entitet från ett jobb och kan återanvändas. | Inga | Inga |
+| `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Ja | Inga |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | I stället för att söka efter `MediaProcessor` namn använder du önskad för inställning när du definierar en transformering. Den för inställning som används avgör vilken Media processor som används av jobb systemet. Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Inga | NA (ReadOnly i v2) |
+| `NotificationEndPoint`<!-- row --> | <!--empty --> | Meddelanden i v3 hanteras via Azure Event Grid. `NotificationEndpoint`Ersätts av event Grid prenumerations registrering som också kapslar in konfigurationen för de typer av meddelanden som ska tas emot (som i v2 hanterades av `JobNotificationSubscription` jobbet, `TaskNotificationSubscription` för aktiviteten och telemetri `ComponentMonitoringSetting` ). Den 2: a telemetri delas mellan Azure Event Grid och Azure Monitor för att passa in i förbättringarna av det större Azure-eko systemet. | Inga | Inga |
+| `Program`<!-- row --> | `LiveOutput` | Live-utdata ersätter nu program i v3-API: et.  | Inga | Inga |
 | `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | Slut punkter för direkt uppspelning förblir i huvudsak samma. De används för dynamisk paketering, kryptering och leverans av HLS-och tank streck för både Live och on-demand streaming, antingen direkt från ursprung eller via CDN. Nya funktioner är stöd för bättre Azure Monitor integrering och diagramering. |  Ja | Ja |
-| `Task`<!-- row --> | `JobOutput` | Ersatt av `JobOutput` (som inte längre är en separat entitet i API: et).  Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nej | Nej |
-| `TaskTemplate`<!-- row --> | `TransformOutput` | Ersatt av `TransformOutput` (som inte längre är en separat entitet i API: et). Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nej | Nej |
-| `Inputs`<!-- row --> | `Inputs` | Indata och utdata finns nu på jobb nivå. Se kodnings ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Nej | Nej |
-| `Outputs`<!-- row --> | `Outputs` | Indata och utdata finns nu på jobb nivå.  I v3 har metadata-formatet ändrats från XML till JSON.  Liveutdata startar när de skapas och avbryts när de tas bort. Se kodnings ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Nej | Nej |
+| `Task`<!-- row --> | `JobOutput` | Ersatt av `JobOutput` (som inte längre är en separat entitet i API: et).  Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Inga | Inga |
+| `TaskTemplate`<!-- row --> | `TransformOutput` | Ersatt av `TransformOutput` (som inte längre är en separat entitet i API: et). Se encoding-ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Inga | Inga |
+| `Inputs`<!-- row --> | `Inputs` | Indata och utdata finns nu på jobb nivå. Se kodnings ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Inga | Inga |
+| `Outputs`<!-- row --> | `Outputs` | Indata och utdata finns nu på jobb nivå.  I v3 har metadata-formatet ändrats från XML till JSON.  Liveutdata startar när de skapas och avbryts när de tas bort. Se kodnings ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Inga | Inga |
 
 
 | **Andra ändringar** | **2**  | **V3** |

@@ -1,17 +1,17 @@
 ---
 title: Server parametrar – Azure Database for MySQL
 description: Det här avsnittet innehåller rikt linjer för hur du konfigurerar Server parametrar i Azure Database for MySQL.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534916"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951318"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parametrar i Azure Database for MySQL
 
@@ -108,7 +108,7 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 MySQL lagrar tabellen InnoDB i olika tabell utrymmen baserat på den konfiguration du angav när tabellen skapades. [Systemets tabell utrymme](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) är lagrings utrymmet för data ord listan InnoDB. Ett tabell namn för en [fil per tabell](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) innehåller data och index för en enskild InnoDB-tabell och lagras i fil systemet i en egen datafil. Detta beteende styrs av `innodb_file_per_table` Server parametern. Inställningen `innodb_file_per_table` `OFF` gör att InnoDB skapar tabeller i System register utrymmet. Annars skapar InnoDB tabeller i tabell utrymmen per tabell.
 
-Azure Database for MySQL stöder största, **4 TB** , i en enda data fil. Om databas storleken är större än 4 TB bör du skapa tabellen i [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabell utrymme. Om du har en enskild tabell storlek som är större än 4 TB bör du använda partitionstabellen.
+Azure Database for MySQL stöder största, **4 TB**, i en enda data fil. Om databas storleken är större än 4 TB bör du skapa tabellen i [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabell utrymme. Om du har en enskild tabell storlek som är större än 4 TB bör du använda partitionstabellen.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -261,6 +261,18 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 |Minnesoptimerad|8|16777216|1024|536870912|
 |Minnesoptimerad|16|16777216|1024|1073741824|
 |Minnesoptimerad|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>Uppvärmnings för InnoDB-buffert
+När du har startat om Azure Database for MySQL-servern laddas de data sidor som finns på disken som tabeller efter frågas. Detta leder till ökad latens och långsammare prestanda vid den första körningen av frågorna. Detta är kanske inte acceptabelt för svars känsliga arbets belastningar. Användningen av InnoDB buffer uppvärmnings förkortar uppvärmningss perioden genom att läsa in disk sidor som fanns i bufferten innan omstarten, i stället för att vänta på DML-eller SELECT-åtgärder för att få åtkomst till motsvarande rader.
+
+Du kan minska uppvärmnings-perioden efter att du startat om din Azure Database for MySQL-server som representerar en prestanda förmån genom att konfigurera [InnoDB-parametrarna för buffertpooltillägget](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html). InnoDB sparar en procent andel av de senast använda sidorna för varje resurspool när servern stängs av och återställer sidorna vid Server start.
+
+Det är också viktigt att Observera att förbättrad prestanda kommer till kostnaden för längre start tid för servern. När den här parametern är aktive rad förväntas start-och start tid för servern för att öka beroende på den IOPS som har allokerats på servern. Vi rekommenderar att testa och övervaka omstarts tiden för att säkerställa att prestandan för start/omstart är acceptabel eftersom servern inte är tillgänglig under den tiden. Du bör inte använda den här parametern när IOPS som har allokerats är mindre än 1000 IOPS (eller med andra ord när lagrings utrymmet är mindre än 335GB.
+
+För att spara statusen för bufferten vid Server avstängnings inställning Server parametern `innodb_buffer_pool_dump_at_shutdown` till `ON` . På samma sätt anger du Server parametern `innodb_buffer_pool_load_at_startup` till `ON` för att återställa buffertens tillstånd vid Server start. Du kan styra påverkan på Starta/starta om genom att sänka och finjustera Värdet på Server parametern `innodb_buffer_pool_dump_pct` , som standard är den här parametern inställd på `25` .
+
+> [!Note]
+> Uppvärmnings-parametrarna för InnoDB buffer stöds bara i generella lagrings servrar med upp till 16 TB lagrings utrymme. Läs mer om [Azure Database for MySQL lagrings alternativ här](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 
 ### <a name="time_zone"></a>time_zone
 

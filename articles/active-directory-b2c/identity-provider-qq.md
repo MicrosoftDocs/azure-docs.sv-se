@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5b7c6a229cfee5b543d1169b30be336cc97ba7ed
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8bc2cddf4d0380e5dc22e8250b6ee26f4d005b8a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538096"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98952435"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett QQ-konto med hjälp av Azure Active Directory B2C
 
@@ -66,6 +66,16 @@ Om du vill aktivera inloggning för användare med ett QQ-konto i Azure Active D
 1. Ange den APP-nyckel som du har spelat in för **klient hemligheten**.
 1. Välj **Spara**.
 
+## <a name="add-qq-identity-provider-to-a-user-flow"></a>Lägg till QQ Identity Provider i ett användar flöde 
+
+1. Välj **användar flöden** i Azure AD B2C klient.
+1. Klicka på det användar flöde som du vill lägga till QQ Identity Provider.
+1. Under **leverantörer av sociala identitet** väljer du **QQ**.
+1. Välj **Spara**.
+1. Om du vill testa principen väljer du **Kör användar flöde**.
+1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Klicka på **Kör användar flöde**
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -85,9 +95,9 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
 
-## <a name="add-a-claims-provider"></a>Lägg till en anspråks leverantör
+## <a name="configure-qq-as-an-identity-provider"></a>Konfigurera QQ som identitets leverantör
 
-Om du vill att användarna ska logga in med ett QQ-konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
+Om du vill att användarna ska kunna logga in med ett QQ-konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
 
 Du kan definiera ett QQ-konto som en anspråks leverantör genom att lägga till det i **ClaimsProviders** -elementet i principens tilläggs fil.
 
@@ -100,7 +110,7 @@ Du kan definiera ett QQ-konto som en anspråks leverantör genom att lägga till
       <Domain>qq.com</Domain>
       <DisplayName>QQ (Preview)</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="QQ-OAUTH">
+        <TechnicalProfile Id="QQ-OAuth2">
           <DisplayName>QQ</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -138,79 +148,28 @@ Du kan definiera ett QQ-konto som en anspråks leverantör genom att lägga till
 4. Ange **client_id** till program-ID: t från program registreringen.
 5. Spara filen.
 
-### <a name="upload-the-extension-file-for-verification"></a>Ladda upp tilläggs filen för verifiering
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Nu har du konfigurerat principen så att Azure AD B2C vet hur de kan kommunicera med ditt QQ-konto. Försök att ladda upp tilläggs filen för principen för att bekräfta att den inte har några problem hittills.
 
-1. På sidan **anpassade principer** i Azure AD B2C klienten väljer du **Ladda upp princip**.
-2. Aktivera **Skriv över principen om den finns** och bläddra sedan till och välj *TrustFrameworkExtensions.xml* -filen.
-3. Klicka på **Överför**.
-
-## <a name="register-the-claims-provider"></a>Registrera anspråks leverantören
-
-Nu har identitets leverantören kon figurer ATS, men den är inte tillgänglig på någon av inloggnings-och inloggnings skärmarna. För att göra det tillgängligt, skapar du en dubblett av en befintlig användar resa för användare och ändrar den så att den även har QQ-identitets leverantören.
-
-1. Öppna *TrustFrameworkBase.xml* -filen från start paketet.
-2. Sök efter och kopiera hela innehållet i **UserJourney** -elementet som innehåller `Id="SignUpOrSignIn"` .
-3. Öppna *TrustFrameworkExtensions.xml* och hitta **UserJourneys** -elementet. Om elementet inte finns lägger du till ett.
-4. Klistra in hela innehållet i **UserJourney** -elementet som du kopierade som ett underordnat objekt till **UserJourneys** -elementet.
-5. Byt namn på användar resans ID. Ett exempel är `SignUpSignInQQ`.
-
-### <a name="display-the-button"></a>Visa knappen
-
-**ClaimsProviderSelection** -elementet är detsamma som en identitetsprovider på en registrerings-och inloggnings skärm. Om du lägger till ett **ClaimsProviderSelection** -element för ett QQ-konto visas en ny knapp när en användare hamnar på sidan.
-
-1. Hitta **OrchestrationStep** -elementet som innehåller `Order="1"` i användar resan som du skapade.
-2. Lägg till följande-element under **ClaimsProviderSelects**. Ange värdet för **TargetClaimsExchangeId** till ett lämpligt värde, till exempel `QQExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="QQExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Länka knappen till en åtgärd
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="QQExchange" TechnicalProfileReferenceId="QQ-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgärden, i det här fallet, är att Azure AD B2C att kommunicera med ett QQ-konto för att ta emot en token.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Hitta **OrchestrationStep** som ingår `Order="2"` i användar resan.
-2. Lägg till följande **ClaimsExchange** -element och kontrol lera att du använder samma värde för ID som du använde för **TargetClaimsExchangeId**:
-
-    ```xml
-    <ClaimsExchange Id="QQExchange" TechnicalProfileReferenceId="QQ-OAuth" />
-    ```
-
-    Uppdatera värdet för **TechnicalProfileReferenceId** till ID: t för den tekniska profil som du skapade tidigare. Ett exempel är `QQ-OAuth`.
-
-3. Spara *TrustFrameworkExtensions.xml* -filen och ladda upp den igen för verifiering.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-qq-identity-provider-to-a-user-flow"></a>Lägg till QQ Identity Provider i ett användar flöde 
-
-1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill lägga till QQ Identity Provider.
-1. Under **leverantörer av sociala identitet** väljer du **QQ**.
-1. Välj **Spara**.
-1. Om du vill testa principen väljer du **Kör användar flöde**.
-1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>Uppdatera och testa den förlitande part filen
-
-Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
-
-1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInQQ.xml*.
-1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInQQ`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_QQ`
-1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignQQ).
-1. Spara ändringarna, ladda upp filen.
-1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.
-1. För **Välj program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Välj **Kör nu** och välj QQ för att logga in med QQ och testa den anpassade principen.
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end

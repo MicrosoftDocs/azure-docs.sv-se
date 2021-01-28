@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 0981687b03344daf7a447cc4d9e50f0923341340
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538046"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98952299"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Salesforce-konto med hjälp av Azure Active Directory B2C
 
@@ -59,7 +59,7 @@ Om du vill aktivera inloggning för användare med ett Salesforce-konto i Azure 
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-salesforce-account-as-an-identity-provider"></a>Konfigurera ett Salesforce-konto som identitets leverantör
+## <a name="configure-salesforce-as-an-identity-provider"></a>Konfigurera Salesforce som identitets leverantör
 
 1. Kontrol lera att du använder den katalog som innehåller Azure AD B2C klient. Välj **katalog + prenumerations** filter på den översta menyn och välj den katalog som innehåller Azure AD B2C klienten.
 1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
@@ -85,6 +85,17 @@ Om du vill aktivera inloggning för användare med ett Salesforce-konto i Azure 
     - **E-post**: *e-post*
 
 1. Välj **Spara**.
+
+## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Lägg till Salesforce-identitetsprovider i ett användar flöde 
+
+1. Välj **användar flöden** i Azure AD B2C klient.
+1. Klicka på det användar flöde som du vill lägga till Salesforce Identity Provider.
+1. Under **leverantörer av sociala identitet** väljer du **Salesforce**.
+1. Välj **Spara**.
+1. Om du vill testa principen väljer du **Kör användar flöde**.
+1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Klicka på **Kör användar flöde**
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -104,9 +115,9 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
 
-## <a name="add-a-claims-provider"></a>Lägg till en anspråks leverantör
+## <a name="configure-salesforce-as-an-identity-provider"></a>Konfigurera Salesforce som identitets leverantör
 
-Om du vill att användarna ska logga in med ett Salesforce-konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
+Om du vill att användarna ska kunna logga in med ett Salesforce-konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
 
 Du kan definiera ett Salesforce-konto som en anspråks leverantör genom att lägga till det i **ClaimsProviders** -elementet i principens tilläggs fil.
 
@@ -119,7 +130,7 @@ Du kan definiera ett Salesforce-konto som en anspråks leverantör genom att lä
       <Domain>salesforce.com</Domain>
       <DisplayName>Salesforce</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Salesforce-OIDC">
+        <TechnicalProfile Id="Salesforce-OpenIdConnect">
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
@@ -159,80 +170,29 @@ Du kan definiera ett Salesforce-konto som en anspråks leverantör genom att lä
 5. Ange **client_id** till program-ID: t från program registreringen.
 6. Spara filen.
 
-### <a name="upload-the-extension-file-for-verification"></a>Ladda upp tilläggs filen för verifiering
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Nu har du konfigurerat principen så att Azure AD B2C vet hur de kan kommunicera med ditt Salesforce-konto. Försök att ladda upp tilläggs filen för principen för att bekräfta att den inte har några problem hittills.
 
-1. På sidan **anpassade principer** i Azure AD B2C klienten väljer du **Ladda upp princip**.
-2. Aktivera **Skriv över principen om den finns** och bläddra sedan till och välj *TrustFrameworkExtensions.xml* -filen.
-3. Klicka på **Överför**.
-
-## <a name="register-the-claims-provider"></a>Registrera anspråks leverantören
-
-Nu har identitets leverantören kon figurer ATS, men den är inte tillgänglig på någon av inloggnings-och inloggnings skärmarna. För att göra det tillgängligt, skapar du en dubblett av en befintlig användar resa och ändrar den så att den även har Salesforce-identitetsprovider.
-
-1. Öppna *TrustFrameworkBase.xml* -filen från start paketet.
-2. Sök efter och kopiera hela innehållet i **UserJourney** -elementet som innehåller `Id="SignUpOrSignIn"` .
-3. Öppna *TrustFrameworkExtensions.xml* och hitta **UserJourneys** -elementet. Om elementet inte finns lägger du till ett.
-4. Klistra in hela innehållet i **UserJourney** -elementet som du kopierade som ett underordnat objekt till **UserJourneys** -elementet.
-5. Byt namn på användar resans ID. Ett exempel är `SignUpSignInSalesforce`.
-
-### <a name="display-the-button"></a>Visa knappen
-
-**ClaimsProviderSelection** -elementet är detsamma som en identitetsprovider på en registrerings-och inloggnings skärm. Om du lägger till ett **ClaimsProviderSelection** -element för ett Salesforce-konto visas en ny knapp när en användare hamnar på sidan.
-
-1. Hitta **OrchestrationStep** -elementet som innehåller `Order="1"` i användar resan som du skapade.
-2. Lägg till följande-element under **ClaimsProviderSelects**. Ange värdet för **TargetClaimsExchangeId** till ett lämpligt värde, till exempel `SalesforceExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="SalesforceExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Länka knappen till en åtgärd
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="Salesforce-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgärden, i det här fallet, är att Azure AD B2C kommunicera med ett Salesforce-konto för att ta emot en token.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Hitta **OrchestrationStep** som ingår `Order="2"` i användar resan.
-2. Lägg till följande **ClaimsExchange** -element och kontrol lera att du använder samma värde för ID som du använde för **TargetClaimsExchangeId**:
-
-    ```xml
-    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="Salesforce-OIDC" />
-    ```
-
-    Uppdatera värdet för **TechnicalProfileReferenceId** till ID: t för den tekniska profil som du skapade tidigare. Ett exempel är `Salesforce-OIDC`.
-
-3. Spara *TrustFrameworkExtensions.xml* -filen och ladda upp den igen för verifiering.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Lägg till Salesforce-identitetsprovider i ett användar flöde 
-
-1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill lägga till Salesforce Identity Provider.
-1. Under **leverantörer av sociala identitet** väljer du **Salesforce**.
-1. Välj **Spara**.
-1. Om du vill testa principen väljer du **Kör användar flöde**.
-1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>Uppdatera och testa den förlitande part filen
-
-Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
-
-1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInSalesforce.xml*.
-1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInSalesforce`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_Salesforce`
-1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignSalesforce).
-1. Spara ändringarna, ladda upp filen.
-1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.
-1. För **Välj program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Välj **Kör nu** och välj Salesforce för att logga in med Salesforce och testa den anpassade principen.
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end
 

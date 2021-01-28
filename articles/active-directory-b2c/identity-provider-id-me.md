@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: baf02c6da2b3c54b5a459ec6a5dbcb5dd939f2af
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537943"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98952604"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett ID.me-konto med hjälp av Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Om du vill aktivera inloggning för användare med ett ID.me-konto i Azure Activ
 1. Välj **Visa mina program** och välj sedan **Fortsätt**.
 1. Välj **Skapa ny**
     1. Ange ett **namn** och **visnings namn**.
-    1. I **omdirigerings-URI** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient. 
+    1. I **omdirigerings-URI: n** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient. 
 1. Klicka på **Fortsätt**.
 1. Kopiera värdena för **klient-ID** och **klient hemlighet**. Du behöver båda för att lägga till identitets leverantören i din klient organisation.
 
@@ -64,9 +64,9 @@ Du måste lagra klient hemligheten som du tidigare registrerade i Azure AD B2C-k
 9. För **nyckel användning** väljer du `Signature` .
 10. Klicka på **Skapa**.
 
-## <a name="add-a-claims-provider"></a>Lägg till en anspråks leverantör
+## <a name="configure-idme-as-an-identity-provider"></a>Konfigurera ID.me som identitets leverantör
 
-Om du vill att användarna ska logga in med ett ID.me-konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
+Om du vill att användarna ska kunna logga in med ett ID.me-konto måste du definiera kontot som en anspråks leverantör som Azure AD B2C kan kommunicera med via en slut punkt. Slut punkten innehåller en uppsättning anspråk som används av Azure AD B2C för att verifiera att en speciell användare har autentiserats.
 
 Du kan definiera ett ID.me-konto som en anspråks leverantör genom att lägga till det i **ClaimsProviders** -elementet i principens tilläggs fil.
 
@@ -79,7 +79,7 @@ Du kan definiera ett ID.me-konto som en anspråks leverantör genom att lägga t
       <Domain>id.me</Domain>
       <DisplayName>ID.me</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="IdMe-OAUTH2">
+        <TechnicalProfile Id="IdMe-OAuth2">
           <DisplayName>IdMe</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -141,61 +141,29 @@ Sedan behöver du en anspråks omvandling för att skapa ett displayName-ansprå
 </ClaimsTransformations>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>Ladda upp tilläggs filen för verifiering
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Nu har du konfigurerat principen så att Azure AD B2C vet hur de kan kommunicera med ditt ID.me-konto. Försök att ladda upp tilläggs filen för principen för att bekräfta att den inte har några problem hittills.
 
-1. På sidan **anpassade principer** i Azure AD B2C klienten väljer du **Ladda upp princip**.
-2. Aktivera **Skriv över principen om den finns** och bläddra sedan till och välj *TrustFrameworkExtensions.xml* -filen.
-3. Klicka på **Överför**.
-
-## <a name="register-the-claims-provider"></a>Registrera anspråks leverantören
-
-Nu har identitets leverantören kon figurer ATS, men den är inte tillgänglig på någon av inloggnings-och inloggnings skärmarna. För att göra det tillgängligt, skapar du en dubblett av en befintlig användar resa för användare och ändrar den så att den även har ID.me-identitets leverantören.
-
-1. Öppna *TrustFrameworkBase.xml* -filen från start paketet.
-2. Sök efter och kopiera hela innehållet i **UserJourney** -elementet som innehåller `Id="SignUpOrSignIn"` .
-3. Öppna *TrustFrameworkExtensions.xml* och hitta **UserJourneys** -elementet. Om elementet inte finns lägger du till ett.
-4. Klistra in hela innehållet i **UserJourney** -elementet som du kopierade som ett underordnat objekt till **UserJourneys** -elementet.
-5. Byt namn på användar resans ID. Ett exempel är `SignUpSignInIdMe`.
-
-### <a name="display-the-button"></a>Visa knappen
-
-**ClaimsProviderSelection** -elementet är detsamma som en identitetsprovider på en registrerings-och inloggnings skärm. Om du lägger till ett **ClaimsProviderSelection** -element för ett ID.me-konto visas en ny knapp när en användare hamnar på sidan.
-
-1. Hitta **OrchestrationStep** -elementet som innehåller `Order="1"` i användar resan som du skapade.
-2. Lägg till följande-element under **ClaimsProviderSelects**. Ange värdet för **TargetClaimsExchangeId** till ett lämpligt värde, till exempel `IdMeExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="IdMeExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Länka knappen till en åtgärd
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="IdMeExchange" TechnicalProfileReferenceId="IdMe-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgärden, i det här fallet, är att Azure AD B2C att kommunicera med ett ID.me-konto för att ta emot en token.
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. Hitta **OrchestrationStep** som ingår `Order="2"` i användar resan.
-2. Lägg till följande **ClaimsExchange** -element och kontrol lera att du använder samma värde för ID som du använde för **TargetClaimsExchangeId**:
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
-    ```xml
-    <ClaimsExchange Id="IdMeExchange" TechnicalProfileReferenceId="IdMe-OAUTH2" />
-    ```
-
-    Uppdatera värdet för **TechnicalProfileReferenceId** till ID: t för den tekniska profil som du skapade tidigare. Ett exempel är `IdMe-OAUTH2`.
-
-3. Spara *TrustFrameworkExtensions.xml* -filen och ladda upp den igen för verifiering.
-
-## <a name="update-and-test-the-relying-party-file"></a>Uppdatera och testa den förlitande part filen
-
-Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
-
-1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInIdMe.xml*.
-1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignIdMe`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_IdMe`
-1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignIdMe).
-1. Spara ändringarna, ladda upp filen.
-1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.
-1. För **Välj program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Välj **Kör nu** och välj ID.me för att logga in med ID.me och testa den anpassade principen.
 
 ::: zone-end
