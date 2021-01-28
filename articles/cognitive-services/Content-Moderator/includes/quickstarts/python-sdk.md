@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 324f89d2de56666242ed4f6231eff0855ec561b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1058b93a304dbf6f08d9a3e8f995e123a6dc6631
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356485"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948281"
 ---
 Kom igång med Azure Content Moderator-klient biblioteket för python. Följ dessa steg om du vill installera PiPy-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -30,7 +30,7 @@ Använd Content Moderator klient bibliotek för python för att:
 * Använd en anpassad avbildnings lista
 * Skapa en granskning
 
-[Referens dokumentation](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Referens dokumentation](/python/api/overview/azure/cognitiveservices/contentmoderator)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -75,10 +75,10 @@ Följande klasser hanterar några av de viktigaste funktionerna i Content Modera
 
 |Name|Beskrivning|
 |---|---|
-|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
-|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|
-|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Den här klassen innehåller funktioner för att analysera text för språk, svordomar, fel och personlig information.|
-[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Den här klassen innehåller funktionerna i gransknings-API: erna, inklusive metoder för att skapa jobb, anpassade arbets flöden och mänsklig granskning.|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
+|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations)|Den här klassen innehåller funktioner för att analysera text för språk, svordomar, fel och personlig information.|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations)|Den här klassen innehåller funktionerna i gransknings-API: erna, inklusive metoder för att skapa jobb, anpassade arbets flöden och mänsklig granskning.|
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -93,7 +93,7 @@ De här kodfragmenten visar hur du utför följande uppgifter med Content Modera
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera en klient med din slut punkt och nyckel. Skapa ett [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -objekt med din nyckel och Använd den med slut punkten för att skapa ett [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) -objekt.
+Instansiera en klient med din slut punkt och nyckel. Skapa ett [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials) -objekt med din nyckel och Använd den med slut punkten för att skapa ett [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient) -objekt.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Lägg sedan till följande kod i python-skriptet.
 
 ## <a name="use-a-custom-terms-list"></a>Använda en anpassad villkors lista
 
-Följande kod visar hur du hanterar en lista med anpassade villkor för text redigering. Du kan använda klassen [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) för att skapa en villkors lista, hantera enskilda villkor och Visa andra text texter mot den.
+Följande kod visar hur du hanterar en lista med anpassade villkor för text redigering. Du kan använda klassen [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations) för att skapa en villkors lista, hantera enskilda villkor och Visa andra text texter mot den.
 
 ### <a name="get-sample-text"></a>Hämta exempel text
 
@@ -186,7 +186,7 @@ Använd följande kod för att ta bort en anpassad villkors lista.
 
 ## <a name="moderate-images"></a>Måttliga bilder
 
-I följande kod används en Content Moderator-klient, tillsammans med ett [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) -objekt, för att analysera bilder för vuxen och vågat innehåll.
+I följande kod används en Content Moderator-klient, tillsammans med ett [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations) -objekt, för att analysera bilder för vuxen och vågat innehåll.
 
 ### <a name="get-sample-images"></a>Hämta exempel bilder
 
@@ -218,7 +218,7 @@ Följande kod kontrollerar bilden för mänskliga ansikten och skriver ut result
 
 ## <a name="use-a-custom-image-list"></a>Använd en anpassad avbildnings lista
 
-Följande kod visar hur du hanterar en anpassad lista över avbildningar för bild moderator. Den här funktionen är användbar om din plattform ofta tar emot instanser av samma uppsättning avbildningar som du vill ta ut. Genom att underhålla en lista över dessa avbildningar kan du förbättra prestandan. Med klassen [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) kan du skapa en avbildnings lista, hantera enskilda bilder i listan och jämföra andra bilder mot den.
+Följande kod visar hur du hanterar en anpassad lista över avbildningar för bild moderator. Den här funktionen är användbar om din plattform ofta tar emot instanser av samma uppsättning avbildningar som du vill ta ut. Genom att underhålla en lista över dessa avbildningar kan du förbättra prestandan. Med klassen [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations) kan du skapa en avbildnings lista, hantera enskilda bilder i listan och jämföra andra bilder mot den.
 
 Skapa följande textvariabler för att lagra de bild-URL: er som du kommer att använda i det här scenariot.
 
@@ -296,7 +296,7 @@ Använd följande kod för att ta bort en avbildnings lista.
 
 Du kan använda Content Moderator python-klient biblioteket för att mata in innehåll i [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com) så att de mänskliga moderatorerna kan granska det. Mer information om gransknings verktyget finns i [konceptuell guide för gransknings verktyget](../../review-tool-user-guide/human-in-the-loop.md).
 
-Följande kod använder klassen [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) för att skapa en granskning, hämta dess ID och kontrol lera informationen efter att ha tagit emot mänsklig indata via gransknings verktygets webb Portal.
+Följande kod använder klassen [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations) för att skapa en granskning, hämta dess ID och kontrol lera informationen efter att ha tagit emot mänsklig indata via gransknings verktygets webb Portal.
 
 ### <a name="get-review-credentials"></a>Hämta granska autentiseringsuppgifter
 

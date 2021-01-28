@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: b45873da5e34c77d3eae706975619df948d84874
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 147985ce5aff54f3784363720a576b7e46d6e647
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698033"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948190"
 ---
 Kom igång med Azures Content Moderator klient bibliotek för Java. Följ dessa steg om du vill installera maven-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -27,7 +27,7 @@ Använd Content Moderator klient bibliotek för Java för att:
 * Måttlig text
 * Måttliga bilder
 
-[Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Artefakt (maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Exempel](/samples/browse/?products=azure&term=content-moderator)
+[Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Artefakt (maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Exempel](/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -116,10 +116,10 @@ Följande klasser hanterar några av de viktigaste funktionerna i Content Modera
 
 |Name|Beskrivning|
 |---|---|
-|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
-|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|
-|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations?view=azure-java-stable)|Den här klassen innehåller funktioner för att analysera text för språk, svordomar, fel och personlig information.|
-|[Omdömen](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews?view=azure-java-stable)|Den här klassen innehåller funktionerna i gransknings-API: erna, inklusive metoder för att skapa jobb, anpassade arbets flöden och mänsklig granskning.|
+|[ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
+|[ImageModeration](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|
+|[TextModerations](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.textmoderations)|Den här klassen innehåller funktioner för att analysera text för språk, svordomar, fel och personlig information.|
+|[Omdömen](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.reviews)|Den här klassen innehåller funktionerna i gransknings-API: erna, inklusive metoder för att skapa jobb, anpassade arbets flöden och mänsklig granskning.|
 
 
 ## <a name="code-examples"></a>Kodexempel
@@ -133,7 +133,7 @@ De här kodfragmenten visar hur du gör följande uppgifter med Content Moderato
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-I programmets `main` metod skapar du ett [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) -objekt med hjälp av prenumerationens slut punkts värde och prenumerations nyckel.
+I programmets `main` metod skapar du ett [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient) -objekt med hjälp av prenumerationens slut punkts värde och prenumerations nyckel.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
@@ -168,7 +168,7 @@ Avsluta- `try` `catch` instruktionen och slutför-metoden.
 
 ### <a name="set-up-sample-image"></a>Konfigurera exempel avbildning
 
-Skapa ett **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** -objekt med en viss URL-sträng som pekar på en bild i en ny metod.
+Skapa ett **[BodyModelModel](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel)** -objekt med en viss URL-sträng som pekar på en bild i en ny metod.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
 

@@ -6,12 +6,12 @@ ms.service: azure-quantum
 ms.topic: include
 ms.date: 01/08/2021
 ms.author: dasto
-ms.openlocfilehash: c312ee63f9f00e4eef726924fc01f2862ba2884f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2106a48a583f120f8b4dde4eb32a30f1a1b1d85b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920485"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948663"
 ---
 ### <a name="provider-limits--quota"></a>Provider begränsar & kvot
 
@@ -32,11 +32,11 @@ Om du använder lära dig & utveckla SKU: n **kan du inte** begära en ökning a
 
 #### <a name="performance-at-scale-sku"></a>Prestanda i Scale-SKU
 
-| Resurs | Gräns |
-| --- | --- |
-| CPU-baserade samtidiga jobb | upp till 100 samtidiga jobb |
-| FPGA samtidiga jobb | upp till 10 samtidiga jobb |
-| Problemlösa rens timmar | 50 000 timmar per månad  |
+| Resurs | Standardgräns | Övre gräns |
+| --- | --- | --- |
+| CPU-baserade samtidiga jobb | upp till 100 samtidiga jobb | samma som standard gräns |
+| FPGA samtidiga jobb | upp till 10 samtidiga jobb | samma som standard gräns |
+| Problemlösa rens timmar | 1 000 timmar per månad  | upp till 50 000 timmar per månad |
 
 Kontakta Azure-supporten om du behöver göra en gräns ökning. 
 

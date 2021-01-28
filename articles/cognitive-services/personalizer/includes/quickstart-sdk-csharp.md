@@ -8,14 +8,14 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/25/2020
-ms.openlocfilehash: ffe7988dbdcf685ec98b42ea3b8272cd0a004aa5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c43bd1cbea65d9d6a651488500a85760a441acd2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371671"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947134"
 ---
-[Referens dokumentation](/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
+[Referens dokumentation](/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -78,11 +78,11 @@ using System.Linq;
 
 ## <a name="object-model"></a>Objekt modell
 
-Personanpassa klienten är ett [PersonalizerClient](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclient?view=azure-dotnet) -objekt som autentiserar till Azure med hjälp av Microsoft. rest. ServiceClientCredentials, som innehåller din nyckel.
+Personanpassa klienten är ett [PersonalizerClient](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclient) -objekt som autentiserar till Azure med hjälp av Microsoft. rest. ServiceClientCredentials, som innehåller din nyckel.
 
-Om du vill be om det enda bästa objektet i innehållet skapar du en [RankRequest](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest?view=azure-dotnet-preview)och skickar det sedan till [klienten. Rangordnings](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank?view=azure-dotnet-preview) metod. Rangordnings metoden returnerar en RankResponse.
+Om du vill be om det enda bästa objektet i innehållet skapar du en [RankRequest](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rankrequest)och skickar det sedan till [klienten. Rangordnings](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.rank) metod. Rangordnings metoden returnerar en RankResponse.
 
-Om du vill skicka en belönings poäng till Personanpassaren skapar du en [RewardRequest](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)och skickar den till [klienten. Belönings](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) metod.
+Om du vill skicka en belönings poäng till Personanpassaren skapar du en [RewardRequest](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest)och skickar den till [klienten. Belönings](/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward) metod.
 
 Att fastställa belönings poängen i den här snabb starten är trivial. I ett produktions system kan du bestämma vad som påverkar [belönings poängen](../concept-rewards.md) och hur mycket som kan vara en komplicerad process som du kan välja att ändra med tiden. Det här design beslutet bör vara ett av de viktigaste besluten i din personanpassa arkitektur.
 

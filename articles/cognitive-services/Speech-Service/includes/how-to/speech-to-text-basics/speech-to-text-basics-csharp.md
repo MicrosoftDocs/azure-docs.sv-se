@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c44bd27108714b4c2623de49540fe1f5723ccd6a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9d75bde0d733e20b5062ad15b2feb7c545c06d09
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912290"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947409"
 ---
 En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna igen mänskligt tal (kallas ofta tal till text). I den här snabb starten får du lära dig hur du använder tal-SDK i dina appar och produkter för att utföra högkvalitativt tal-till-text-konvertering.
 
@@ -18,7 +18,7 @@ En av de viktigaste funktionerna i tal tjänsten är möjligheten att känna ige
 
 Om du vill hoppa över direkt till exempel kod, se [snabb starts exemplen för C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet) på GitHub.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln förutsätter att du har ett Azure-konto och en röst tjänst prenumeration. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](../../../overview.md#try-the-speech-service-for-free).
 
@@ -36,7 +36,7 @@ Information om plattformsspecifika installations anvisningar finns i följande l
 
 ## <a name="create-a-speech-configuration"></a>Skapa en tal konfiguration
 
-Om du vill anropa tal tjänsten med hjälp av tal-SDK måste du skapa en [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) . Den här klassen innehåller information om din prenumeration, till exempel din nyckel och tillhör ande region, slut punkt, värd eller token för auktorisering. Skapa en [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) med hjälp av din nyckel och region. På sidan [Sök efter nycklar och region](../../../overview.md#find-keys-and-region) hittar du ett nyckel områdes par.
+Om du vill anropa tal tjänsten med hjälp av tal-SDK måste du skapa en [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) . Den här klassen innehåller information om din prenumeration, till exempel din nyckel och tillhör ande region, slut punkt, värd eller token för auktorisering. Skapa en [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) med hjälp av din nyckel och region. På sidan [Sök efter nycklar och region](../../../overview.md#find-keys-and-region) hittar du ett nyckel områdes par.
 
 ```csharp
 using System;
@@ -54,7 +54,7 @@ class Program
 }
 ```
 
-Det finns några andra sätt som du kan initiera [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) :
+Det finns några andra sätt som du kan initiera [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) :
 
 * Med en slut punkt: skicka i en röst tjänst slut punkt. En nyckel eller autentiseringstoken är valfri.
 * Med en värd: skicka in en värd adress. En nyckel eller autentiseringstoken är valfri.
@@ -65,7 +65,7 @@ Det finns några andra sätt som du kan initiera [`SpeechConfig`](/dotnet/api/mi
 
 ## <a name="recognize-from-microphone"></a>Identifiera från mikrofonen
 
-Skapa en med hjälp av om du vill känna igen tal med din enhets mikrofon `AudioConfig` `FromDefaultMicrophoneInput()` . Initiera sedan en [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) , och skicka in `audioConfig` och `speechConfig` .
+Skapa en med hjälp av om du vill känna igen tal med din enhets mikrofon `AudioConfig` `FromDefaultMicrophoneInput()` . Initiera sedan en [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer) , och skicka in `audioConfig` och `speechConfig` .
 
 ```csharp
 using System;
@@ -98,7 +98,7 @@ Om du vill använda en *speciell* enhet för ljud inspelning måste du ange enhe
 
 ## <a name="recognize-from-file"></a>Identifiera från fil
 
-Om du vill känna igen tal från en ljudfil i stället för en mikrofon måste du ändå skapa en `AudioConfig` . Men när du skapar i [`AudioConfig`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-dotnet) stället för att anropa anropar `FromDefaultMicrophoneInput()` du `FromWavFileInput()` och överför fil Sök vägen.
+Om du vill känna igen tal från en ljudfil i stället för en mikrofon måste du ändå skapa en `AudioConfig` . Men när du skapar i [`AudioConfig`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig) stället för att anropa anropar `FromDefaultMicrophoneInput()` du `FromWavFileInput()` och överför fil Sök vägen.
 
 ```csharp
 using System;
@@ -128,11 +128,11 @@ class Program
 
 ## <a name="recognize-from-in-memory-stream"></a>Identifiera från minnes intern ström
 
-För många användnings fall är det troligt att ljud data kommer från Blob Storage eller att det på annat sätt redan finns i minnet som en `byte[]` eller liknande rå data struktur. I följande exempel används en [`PushAudioInputStream`](/dotnet/api/microsoft.cognitiveservices.speech.audio.pushaudioinputstream?view=azure-dotnet) för att känna igen tal, som i princip är en abstrakt minnes ström. Exempel koden gör följande:
+För många användnings fall är det troligt att ljud data kommer från Blob Storage eller att det på annat sätt redan finns i minnet som en `byte[]` eller liknande rå data struktur. I följande exempel används en [`PushAudioInputStream`](/dotnet/api/microsoft.cognitiveservices.speech.audio.pushaudioinputstream) för att känna igen tal, som i princip är en abstrakt minnes ström. Exempel koden gör följande:
 
 * Skriver rå ljuddata (PCM) till `PushAudioInputStream` `Write()` funktionen using, som accepterar en `byte[]` .
 * Läser en `.wav` fil med hjälp av ett `FileReader` i demonstrations syfte, men om du redan har ljuddata i en `byte[]` kan du hoppa direkt till att skriva innehållet till indataströmmen.
-* Standardvärdet är 16 bitar, 16khz mono PCM. Om du vill anpassa formatet kan du skicka ett [`AudioStreamFormat`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audiostreamformat?view=azure-dotnet) objekt till `CreatePushStream()` med hjälp av den statiska funktionen `AudioStreamFormat.GetWaveFormatPCM(sampleRate, (byte)bitRate, (byte)channels)` .
+* Standardvärdet är 16 bitar, 16khz mono PCM. Om du vill anpassa formatet kan du skicka ett [`AudioStreamFormat`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audiostreamformat) objekt till `CreatePushStream()` med hjälp av den statiska funktionen `AudioStreamFormat.GetWaveFormatPCM(sampleRate, (byte)bitRate, (byte)channels)` .
 
 ```csharp
 using System;
@@ -174,7 +174,7 @@ API fungerar fortfarande i vissa fall om huvudet inte har hoppats över, men fö
 
 ## <a name="error-handling"></a>Felhantering
 
-I föregående exempel får du bara den tolkade texten från `result.text` , men för att hantera fel och andra svar måste du skriva kod för att hantera resultatet. Följande kod utvärderar [`result.Reason`](/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?preserve-view=true&view=azure-dotnet) egenskapen och:
+I föregående exempel får du bara den tolkade texten från `result.text` , men för att hantera fel och andra svar måste du skriva kod för att hantera resultatet. Följande kod utvärderar [`result.Reason`](/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason) egenskapen och:
 
 * Skriver ut resultatet för igenkänning: `ResultReason.RecognizedSpeech`
 * Om det inte finns någon igenkännings matchning, informera användaren: `ResultReason.NoMatch`
@@ -207,9 +207,9 @@ switch (result.Reason)
 
 I de föregående exemplen används ett enda bilds igenkännings läge, som identifierar en enda uttryck. Slutet på en enskild uttryck bestäms genom att lyssna efter tystnad i slutet eller tills maximalt 15 sekunders ljud bearbetas.
 
-Kontinuerlig igenkänning används däremot när du vill **styra** när du vill sluta identifiera. Det kräver att du prenumererar på `Recognizing` -, `Recognized` -och- `Canceled` händelserna för att få igenkännings resultatet. Om du vill stoppa igenkänningen måste du anropa [`StopContinuousRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?preserve-view=true&view=azure-dotnet) . Här är ett exempel på hur kontinuerlig igenkänning utförs på en inspelnings fil.
+Kontinuerlig igenkänning används däremot när du vill **styra** när du vill sluta identifiera. Det kräver att du prenumererar på `Recognizing` -, `Recognized` -och- `Canceled` händelserna för att få igenkännings resultatet. Om du vill stoppa igenkänningen måste du anropa [`StopContinuousRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) . Här är ett exempel på hur kontinuerlig igenkänning utförs på en inspelnings fil.
 
-Börja med att definiera indatamängden och initiera en [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-dotnet) :
+Börja med att definiera indatamängden och initiera en [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer) :
 
 ```csharp
 using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
@@ -222,12 +222,12 @@ Skapa sedan en `TaskCompletionSource<int>` för att hantera läget för tal igen
 var stopRecognition = new TaskCompletionSource<int>();
 ```
 
-Prenumerera sedan på de händelser som skickas från [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) .
+Prenumerera sedan på de händelser som skickas från [`SpeechRecognizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer) .
 
-* [`Recognizing`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing?preserve-view=true&view=azure-dotnet): Signal för händelser som innehåller mellanliggande igenkännings resultat.
-* [`Recognized`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized?preserve-view=true&view=azure-dotnet): Signal för händelser som innehåller slutgiltiga igenkännings resultat (indikerar ett lyckat igenkännings försök).
-* [`SessionStopped`](/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped?preserve-view=true&view=azure-dotnet): Signal för händelser som indikerar att en avläsnings session avslutas (åtgärd).
-* [`Canceled`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled?preserve-view=true&view=azure-dotnet): Signal för händelser som innehåller avbrutna igenkännings resultat (vilket indikerar ett igenkännings försök som avbrutits som ett resultat eller en direkt uppsägnings förfrågan eller, alternativt, ett transport-eller protokoll haveri).
+* [`Recognizing`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizing): Signal för händelser som innehåller mellanliggande igenkännings resultat.
+* [`Recognized`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognized): Signal för händelser som innehåller slutgiltiga igenkännings resultat (indikerar ett lyckat igenkännings försök).
+* [`SessionStopped`](/dotnet/api/microsoft.cognitiveservices.speech.recognizer.sessionstopped): Signal för händelser som indikerar att en avläsnings session avslutas (åtgärd).
+* [`Canceled`](/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.canceled): Signal för händelser som innehåller avbrutna igenkännings resultat (vilket indikerar ett igenkännings försök som avbrutits som ett resultat eller en direkt uppsägnings förfrågan eller, alternativt, ett transport-eller protokoll haveri).
 
 ```csharp
 recognizer.Recognizing += (s, e) =>
@@ -284,7 +284,7 @@ Task.WaitAny(new[] { stopRecognition.Task });
 
 När du använder kontinuerlig igenkänning kan du aktivera dikterings bearbetning genom att använda motsvarande "Aktivera diktering"-funktion. Det här läget kommer att göra att tal konfigurations instansen tolkar ord beskrivningar av menings strukturer som interpunktion. Till exempel skulle uttryck "är du bor i stadens frågetecken" tolkas som texten "är du bor i staden?".
 
-Om du vill aktivera dikteringsläget använder du [`EnableDictation`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?preserve-view=true&view=azure-dotnet) metoden på din [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) .
+Om du vill aktivera dikteringsläget använder du [`EnableDictation`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation) metoden på din [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) .
 
 ```csharp
 speechConfig.EnableDictation();
@@ -292,13 +292,13 @@ speechConfig.EnableDictation();
 
 ## <a name="change-source-language"></a>Ändra käll språk
 
-En vanlig uppgift för tal igenkänning anger språk för indata (eller källa). Låt oss ta en titt på hur du ändrar indatamängds språk till italienska. Leta upp din kod i koden [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) och Lägg sedan till den här raden direkt under den.
+En vanlig uppgift för tal igenkänning anger språk för indata (eller källa). Låt oss ta en titt på hur du ändrar indatamängds språk till italienska. Leta upp din kod i koden [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) och Lägg sedan till den här raden direkt under den.
 
 ```csharp
 speechConfig.SpeechRecognitionLanguage = "it-IT";
 ```
 
-[`SpeechRecognitionLanguage`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?preserve-view=true&view=azure-dotnet)Egenskapen förväntar sig en språk språks format sträng. Du kan ange valfritt värde i kolumnen **språk** i listan [över språk som stöds.](../../../language-support.md)
+[`SpeechRecognitionLanguage`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage)Egenskapen förväntar sig en språk språks format sträng. Du kan ange valfritt värde i kolumnen **språk** i listan [över språk som stöds.](../../../language-support.md)
 
 ## <a name="improve-recognition-accuracy"></a>Förbättra igenkännings precisionen
 
@@ -311,9 +311,9 @@ Enstaka ord eller fullständiga fraser kan läggas till i en fras lista. Under i
 > [!IMPORTANT]
 > Fras List funktionen är tillgänglig på följande språk: en-US, de-DE, en-AU, en-CA, en-GB, es-ES, ES-MX, fr-CA, fr-FR, IT-IT, ja-JP, ko-KR, pt-BR, zh-CN
 
-Om du vill använda en fras lista måste du först skapa ett [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) objekt och sedan lägga till vissa ord och fraser med [`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?preserve-view=true&view=azure-dotnet) .
+Om du vill använda en fras lista måste du först skapa ett [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar) objekt och sedan lägga till vissa ord och fraser med [`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase) .
 
-Eventuella ändringar [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-dotnet) börjar gälla nästa igenkänning eller efter en åter anslutning till tal-tjänsten.
+Eventuella ändringar [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar) börjar gälla nästa igenkänning eller efter en åter anslutning till tal-tjänsten.
 
 ```csharp
 var phraseList = PhraseListGrammar.FromRecognizer(recognizer);

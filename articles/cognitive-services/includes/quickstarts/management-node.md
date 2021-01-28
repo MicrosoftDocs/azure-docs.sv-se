@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 97b8f889bf625ac36917debe2cc2848cb1a97e37
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: cc1d375de9f45369f6d2902b106a1740f316ad8d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956596"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947549"
 ---
-[Referens dokumentation](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
+[Referens dokumentation](/javascript/api/@azure/arm-cognitiveservices/)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
 ## <a name="javascript-prerequisites"></a>JavaScript-krav
 
@@ -116,7 +116,7 @@ node index.js
 
 ## <a name="see-also"></a>Se även
 
-* [Dokumentation om Azure Management SDK-referens](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
+* [Dokumentation om Azure Management SDK-referens](/javascript/api/@azure/arm-cognitiveservices/)
 * [Vad är Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Autentisera begär anden till Azure Cognitive Services](../../authentication.md)
 * [Skapa en ny resurs med Azure Portal](../../cognitive-services-apis-create-account.md)

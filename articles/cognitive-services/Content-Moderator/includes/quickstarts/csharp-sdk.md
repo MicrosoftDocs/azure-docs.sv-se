@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ed9d7aee5f677a5c278a985c3f8102364e94ab7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561502"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948562"
 ---
 Kom igång med Azure Content Moderator-klient biblioteket för .NET. Följ dessa steg om du vill installera NuGet-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -28,7 +28,7 @@ Använd Content Moderator klient bibliotek för .NET för att:
 * Måttliga bilder
 * Skapa en granskning
 
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Exempel](../../samples-dotnet.md)
+[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Exempel](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -118,10 +118,10 @@ Följande klasser hanterar några av de viktigaste funktionerna i Content Modera
 
 |Name|Beskrivning|
 |---|---|
-|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
-|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|
-|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|Den här klassen innehåller funktioner för att analysera text för språk, svordomar, fel och personlig information.|
-|[Omdömen](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|Den här klassen innehåller funktionerna i gransknings-API: erna, inklusive metoder för att skapa jobb, anpassade arbets flöden och mänsklig granskning.|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient)|Den här klassen krävs för alla Content Moderator-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
+|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation)|Den här klassen innehåller funktioner för att analysera bilder för innehåll som är olämpligt för barn, personlig information eller mänskliga ansikten.|
+|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation)|Den här klassen innehåller funktioner för att analysera text för språk, svordomar, fel och personlig information.|
+|[Omdömen](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews)|Den här klassen innehåller funktionerna i gransknings-API: erna, inklusive metoder för att skapa jobb, anpassade arbets flöden och mänsklig granskning.|
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -158,10 +158,10 @@ Definiera sedan text redigerings metoden någonstans i **program** klassen:
 
 ## <a name="moderate-images"></a>Måttliga bilder
 
-I följande kod används en Content Moderator-klient, tillsammans med ett [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) -objekt, för att analysera fjärravbildningar för vuxen och vågat innehåll.
+I följande kod används en Content Moderator-klient, tillsammans med ett [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation) -objekt, för att analysera fjärravbildningar för vuxen och vågat innehåll.
 
 > [!NOTE]
-> Du kan också analysera innehållet i en lokal avbildning. Se [referens dokumentationen](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) för metoder och åtgärder som fungerar med lokala avbildningar.
+> Du kan också analysera innehållet i en lokal avbildning. Se [referens dokumentationen](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) för metoder och åtgärder som fungerar med lokala avbildningar.
 
 ### <a name="get-sample-images"></a>Hämta exempel bilder
 
@@ -204,7 +204,7 @@ Mer information om bildattributen som Content Moderator skärmar för finns i ha
 
 Du kan använda Content Moderator .NET-klient biblioteket för att mata in innehåll i [gransknings verktyget](https://contentmoderator.cognitive.microsoft.com) så att de mänskliga moderatorerna kan granska det. Mer information om gransknings verktyget finns i [konceptuell guide för gransknings verktyget](../../review-tool-user-guide/human-in-the-loop.md).
 
-Metoden i det här avsnittet använder klassen [granskningar](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) för att skapa en granskning, hämta dess ID och kontrol lera informationen efter att ha tagit emot mänsklig indata via gransknings verktygets webb Portal. Den loggar all den här informationen i en textfil med utdata. 
+Metoden i det här avsnittet använder klassen [granskningar](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews) för att skapa en granskning, hämta dess ID och kontrol lera informationen efter att ha tagit emot mänsklig indata via gransknings verktygets webb Portal. Den loggar all den här informationen i en textfil med utdata. 
 
 ### <a name="get-sample-images"></a>Hämta exempel bilder
 
@@ -268,7 +268,7 @@ Om du har använt en callback-slutpunkt i det här scenariot, ska den ta emot en
  'type': 'Image'}
 ```
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 

@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 01ac7c01d449cfe794fcdb6c26a8162d3cffd695
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 3923f3d0a65412c23d5fc32d7a4cea8648686df4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948405"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
 
-[Referens dokumentation](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Paket (maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Referens dokumentation](/java/api/overview/azure/ai-formrecognizer-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Paket (maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -209,7 +209,7 @@ Om du vill identifiera innehållet i en fil på en viss URL använder du metoden
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
 > [!TIP]
-> Du kan också hämta innehåll från en lokal fil. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeContent**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också hämta innehåll från en lokal fil. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeContent**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling **FormPage** -objekt: en för varje sida i det dokument som skickas. Följande kod itererar igenom dessa objekt och skriver ut de extraherade nyckel-och värdeparen och tabell data.
 
@@ -242,7 +242,7 @@ Om du vill känna igen kvitton från en URI använder du metoden **beginRecogniz
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling **RecognizedReceipt** -objekt: en för varje sida i det dokument som skickas. Nästa kodblock upprepas genom kvittona och skriver ut information till-konsolen.
 
@@ -285,7 +285,7 @@ Använd metoden för att identifiera visitkort från en URL `beginRecognizeBusin
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> Du kan också identifiera lokala visitkorts avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också identifiera lokala visitkorts avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varje kort i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 
@@ -309,7 +309,7 @@ Använd metoden för att identifiera visitkort från en URL `beginRecognizeInvoi
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> Du kan också identifiera lokala fakturor. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också identifiera lokala fakturor. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varje faktura i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 
@@ -406,7 +406,7 @@ Du använder metoden **beginRecognizeCustomFormsFromUrl** .
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
 > [!TIP]
-> Du kan också analysera en lokal fil. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeCustomForms**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera en lokal fil. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeCustomForms**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling **RecognizedForm** -objekt: en för varje sida i det dokument som skickas. Följande kod skriver ut analys resultaten till-konsolen. Det skriver ut varje identifierat fält och motsvarande värde, tillsammans med en förtroende poäng.
 

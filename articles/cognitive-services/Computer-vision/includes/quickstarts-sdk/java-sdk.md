@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 7057644207fae866e7fe789f951d2279b1c8e3eb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6eec9cf199068db6b87e69dd97dd0e105f629a14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697931"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948568"
 ---
 <a name="HOLTop"></a>
 
@@ -24,9 +24,9 @@ Använd Visuellt innehåll klient bibliotek för att:
 * Analysera en bild för taggar, text beskrivning, ansikten, vuxen innehåll med mera.
 * Skriv ut och handskriven text med Read API.
 
-[Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision)  | [Artefakt (maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)  |  [Exempel](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/computervision)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision)  | [Artefakt (maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)  |  [Exempel](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * Den aktuella versionen av [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -113,9 +113,9 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 
 |Name|Beskrivning|
 |---|---|
-| [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Den här klassen krävs för alla Visuellt innehåll-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
-|[ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Den här klassen kommer från klient objekt och hanterar direkt alla avbildnings åtgärder, till exempel bild analys, text identifiering och generering av miniatyrer.|
-|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Den här uppräkningen definierar de olika typerna av bild analys som kan göras i en standard analys åtgärd. Du anger en uppsättning VisualFeatureTypes-värden beroende på dina behov. |
+| [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Den här klassen krävs för alla Visuellt innehåll-funktioner. Du instansierar det med din prenumerations information och använder den för att skapa instanser av andra klasser.|
+|[ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision)| Den här klassen kommer från klient objekt och hanterar direkt alla avbildnings åtgärder, till exempel bild analys, text identifiering och generering av miniatyrer.|
+|[VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes)| Den här uppräkningen definierar de olika typerna av bild analys som kan göras i en standard analys åtgärd. Du anger en uppsättning VisualFeatureTypes-värden beroende på dina behov. |
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -127,7 +127,7 @@ De här kodfragmenten visar hur du gör följande uppgifter med Visuellt innehå
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-I en ny metod instansierar du ett [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) -objekt med din slut punkt och nyckel.
+I en ny metod instansierar du ett [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) -objekt med din slut punkt och nyckel.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
@@ -139,7 +139,7 @@ I en ny metod instansierar du ett [ComputerVisionClient](/java/api/com.microsoft
 Följande kod definierar en metod, `AnalyzeLocalImage` som använder klient objekt för att analysera en lokal avbildning och skriva ut resultaten. Metoden returnerar en text beskrivning, kategorisering, lista med taggar, identifierade ansikten, olämpliga innehålls flaggor, huvud färger och bildtyp.
 
 > [!TIP]
-> Du kan också analysera en fjärran sluten avbildning med hjälp av dess URL. Se [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) -metoderna, till exempel **AnalyzeImage**. Eller, se exempel koden på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) för scenarier som rör fjärranslutna avbildningar.
+> Du kan också analysera en fjärran sluten avbildning med hjälp av dess URL. Se [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) -metoderna, till exempel **AnalyzeImage**. Eller, se exempel koden på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) för scenarier som rör fjärranslutna avbildningar.
 
 ### <a name="set-up-test-image"></a>Konfigurera test avbildning
 
@@ -149,7 +149,7 @@ Börja med att skapa en **resurs/** mapp i ditt projekts **src/main/-** mapp och
 
 ### <a name="specify-visual-features"></a>Ange visuella funktioner
 
-Ange sedan vilka visuella funktioner du vill extrahera i analysen. Se [VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) -uppräkningen för en fullständig lista.
+Ange sedan vilka visuella funktioner du vill extrahera i analysen. Se [VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes) -uppräkningen för en fullständig lista.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
@@ -222,7 +222,7 @@ Följande kod skriver ut information om typen av bild &mdash; oavsett om den är
 Visuellt innehåll kan läsa synlig text i en bild och konvertera den till en tecken ström. I det här avsnittet definieras en metod, `ReadFromFile` som tar en lokal fil Sök väg och skriver ut bildens text till-konsolen.
 
 > [!TIP]
-> Du kan också läsa text i en fjärravbildning som refereras till av URL. Se [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) -metoderna, t. ex. **läsa**. Eller, se exempel koden på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) för scenarier som rör fjärranslutna avbildningar.
+> Du kan också läsa text i en fjärravbildning som refereras till av URL. Se [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) -metoderna, t. ex. **läsa**. Eller, se exempel koden på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) för scenarier som rör fjärranslutna avbildningar.
 
 ### <a name="set-up-test-image"></a>Konfigurera test avbildning
 
@@ -295,7 +295,7 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 I den här snabb starten har du lärt dig hur du använder Visuellt innehåll Java-biblioteket för att utföra grundläggande uppgifter. Sedan kan du utforska referens dokumentationen och läsa mer om biblioteket.
 
 > [!div class="nextstepaction"]
->[Visuellt innehåll referens (Java)](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+>[Visuellt innehåll referens (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
 
 
 * [Vad är visuellt innehåll?](../../overview.md)

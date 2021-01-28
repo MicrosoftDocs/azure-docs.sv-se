@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8ca42367db5607faedb4497f0a0fb0ca160464bc
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98698075"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947110"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
@@ -134,7 +134,7 @@ Du kan använda formulär igenkänning för att identifiera tabeller, rader och 
 
 
 > [!TIP]
-> Du kan också hämta innehåll från en lokal fil. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) -metoderna, till exempel **beginRecognizeContent**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också hämta innehåll från en lokal fil. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) -metoderna, till exempel **beginRecognizeContent**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
 
 ### <a name="output"></a>Utdata
 
@@ -161,7 +161,7 @@ Om du vill känna igen kvitton från en URI använder du- `beginRecognizeReceipt
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
 > [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
 
 ### <a name="output"></a>Utdata
 
@@ -281,7 +281,7 @@ Du använder- `beginRecognizeCustomFormsFromUrl` metoden. Det returnerade värde
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
 
 > [!TIP]
-> Du kan också analysera lokala filer. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) -metoderna, till exempel **beginRecognizeCustomForms**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala filer. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) -metoderna, till exempel **beginRecognizeCustomForms**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
 
 
 ### <a name="output"></a>Utdata

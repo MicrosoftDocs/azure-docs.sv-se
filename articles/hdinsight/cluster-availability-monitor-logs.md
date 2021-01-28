@@ -1,18 +1,15 @@
 ---
 title: Övervaka kluster tillgänglighet med Azure Monitor loggar i HDInsight
 description: Lär dig hur du använder Azure Monitor loggar för att övervaka kluster hälsa och tillgänglighet.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542547"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946949"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Övervaka kluster tillgänglighet med Azure Monitor loggar i HDInsight
 
@@ -34,13 +31,13 @@ Som standard installeras OMS-agenten på alla klusternoder utom för Edge-noder.
 
 ## <a name="query-metrics-and-logs-tables"></a>Fråga mått och logga tabeller
 
-När Azure Monitor logg integrering har Aktiver ATS (det här kan ta några minuter) navigerar du till din **Log Analytics arbets ytans** resurs och väljer **loggar** .
+När Azure Monitor logg integrering har Aktiver ATS (det här kan ta några minuter) navigerar du till din **Log Analytics arbets ytans** resurs och väljer **loggar**.
 
 ![Log Analytics arbets ytans loggar](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
 
 Loggar visar ett antal exempel frågor, till exempel:
 
-| Frågenamn                      | Beskrivning                                                               |
+| Frågenamn                      | Description                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Tillgänglighet för datorer idag    | Rita ett diagram över antalet datorer som skickar loggar, varje timme                     |
 | Visa pulsslag                 | Visa en lista över alla dator pulsslag från den senaste timmen                           |
@@ -74,7 +71,7 @@ Klicka på **villkors rubriken** som visas nedan för att slutföra konfiguratio
 
 ![Portal varning Skapa regel villkor](media/cluster-availability-monitor-logs/portal-condition-title.png)
 
-Då öppnas **Konfigurera signal logik** .
+Då öppnas **Konfigurera signal logik**.
 
 Ange **aviserings logik** avsnittet enligt följande:
 
@@ -94,16 +91,16 @@ Om du inte redan har en befintlig åtgärds grupp klickar du på **Skapa ny** un
 
 ![Varnings regeln skapar en ny åtgärds grupp](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
 
-Då öppnas **Lägg till åtgärds grupp** . Välj ett **Åtgärds grupp namn** , **kort namn** , **prenumeration** och **resurs grupp.** Under avsnittet **åtgärder** väljer du ett **Åtgärds namn** och väljer **e-post/SMS/push/röst** som **Åtgärds typ.**
+Då öppnas **Lägg till åtgärds grupp**. Välj ett **Åtgärds grupp namn**, **kort namn**, **prenumeration** och **resurs grupp.** Under avsnittet **åtgärder** väljer du ett **Åtgärds namn** och väljer **e-post/SMS/push/röst** som **Åtgärds typ.**
 
 > [!NOTE]
 > Det finns flera andra åtgärder som en avisering kan utlösa förutom e-post/SMS/push/Voice, till exempel en Azure Function-, LogicApp-, webhook-, ITSM-och Automation-Runbook. [Lära sig mer.](../azure-monitor/platform/action-groups.md#action-specific-information)
 
-Då öppnas **e-post/SMS/push/röst** . Välj ett **namn** för mottagaren, **Markera** rutan **e-** postadress och skriv en e-postadress som du vill att aviseringen ska skickas till. Välj **OK** i  **e-post/SMS/push/Voice** , sedan i **Lägg till åtgärds grupp** för att slutföra konfigurationen av åtgärds gruppen.
+Då öppnas **e-post/SMS/push/röst**. Välj ett **namn** för mottagaren, **Markera** rutan **e-** postadress och skriv en e-postadress som du vill att aviseringen ska skickas till. Välj **OK** i  **e-post/SMS/push/Voice**, sedan i **Lägg till åtgärds grupp** för att slutföra konfigurationen av åtgärds gruppen.
 
 ![Varnings regeln skapar Lägg till åtgärds grupp](media/cluster-availability-monitor-logs/portal-add-action-group.png)
 
-När bladen stängs bör du se din åtgärds grupp i avsnittet **Åtgärds grupper** . Slutligen fyller du i avsnittet **aviserings information** genom att ange ett namn och en **Beskrivning** för **varnings regeln** och välja en **allvarlighets grad** . Klicka på **skapa aviserings regel** för att slutföra.
+När bladen stängs bör du se din åtgärds grupp i avsnittet **Åtgärds grupper** . Slutligen fyller du i avsnittet **aviserings information** genom att ange ett namn och en **Beskrivning** för **varnings regeln** och välja en **allvarlighets grad**. Klicka på **skapa aviserings regel** för att slutföra.
 
 ![Portalen skapar varnings regeln slutförd](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
 
@@ -114,7 +111,7 @@ När villkoret för den här aviseringen uppfylls, utlöses aviseringen och du f
 
 ![Exempel på Azure Monitor aviserings meddelande](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
 
-Du kan också Visa alla aviseringar som har utlösts, grupperade efter allvarlighets grad, genom att gå till **aviseringar** i **arbets ytan Log Analytics** .
+Du kan också Visa alla aviseringar som har utlösts, grupperade efter allvarlighets grad, genom att gå till **aviseringar** i **arbets ytan Log Analytics**.
 
 ![Aviseringar för Log Analytics arbets ytan](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
 

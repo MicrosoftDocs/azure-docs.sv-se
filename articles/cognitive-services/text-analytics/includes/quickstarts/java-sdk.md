@@ -10,22 +10,22 @@ ms.date: 12/11/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: e68a46070f03154092d148552fffbb99ae82bcfd
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 33d5989103911d6299806b16979d1caeba286a76
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612623"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947505"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
 
-[Referens dokumentation](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referens dokumentation](/java/api/overview/azure/ai-textanalytics-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
-[Referens dokumentation](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referens dokumentation](/java/api/overview/azure/ai-textanalytics-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-21"></a>[Version 2,1](#tab/version-2)
 
@@ -33,7 +33,7 @@ Den här artikeln beskriver endast version 3. x av API: et.
 
 ---
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) med version 8 eller senare
@@ -153,10 +153,10 @@ Textanalys-klienten är ett `TextAnalyticsClient` objekt som autentiserar till A
 * [Autentisera klienten](#authenticate-the-client)
 * [Attitydanalys](#sentiment-analysis) 
 * [Åsikts utvinning](#opinion-mining)
-* [Språkidentifiering](#language-detection)
+* [Språk identifiering](#language-detection)
 * [Igenkänning av namngiven entitet](#named-entity-recognition-ner)
 * [Länkning av entitet](#entity-linking)
-* [Extrahering av nyckelfraser](#key-phrase-extraction)
+* [Extrahering av nyckel fraser](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 

@@ -2,19 +2,16 @@
 title: Konfigurera kluster för Azure Active Directory-integrering
 titleSuffix: Azure HDInsight
 description: Lär dig hur du konfigurerar och konfigurerar ett HDInsight-kluster som är integrerat med Active Directory med hjälp av Azure Active Directory Domain Services och funktionen Enterprise Security Package.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631558"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946927"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Konfigurera HDInsight-kluster för Azure Active Directory integrering med Enterprise Security Package
 

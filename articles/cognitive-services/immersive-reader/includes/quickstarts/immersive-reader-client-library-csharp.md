@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371785"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947467"
 ---
 [Avancerad läsare](https://www.onenote.com/learningtools) är ett särskilt utformat verktyg som implementerar beprövade tekniker för att förbättra Läs förståelse för nya läsare, språkutbildningar och personer med inlärnings skillnader som Dyslexia. Du kan använda avancerad läsare i dina program för att isolera text för att förbättra fokus, Visa bilder för vanliga ord, markera delar av tal, läsa den markerade texten, översätta ord och fraser i real tid och mycket mer.
 
@@ -42,7 +42,7 @@ Skapa ett nytt projekt i Visual Studio med hjälp av mallen ASP.NET Core Web App
 
 ### <a name="configure-authentication-values"></a>Konfigurera värden för autentisering
 
-Högerklicka på projektet i _Solution Explorer_ och välj **hantera användar hemligheter**. Då öppnas en fil med namnet _secrets.jspå_. Den här filen är inte markerad i käll kontrollen. Läs mer [här](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1). Ersätt innehållet i _secrets.jspå_ med följande, och ange de värden som anges när du skapade din fördjupade läsare-resurs.
+Högerklicka på projektet i _Solution Explorer_ och välj **hantera användar hemligheter**. Då öppnas en fil med namnet _secrets.jspå_. Den här filen är inte markerad i käll kontrollen. Läs mer [här](/aspnet/core/security/app-secrets?tabs=windows). Ersätt innehållet i _secrets.jspå_ med följande, och ange de värden som anges när du skapade din fördjupade läsare-resurs.
 
 ```json
 {
@@ -220,7 +220,7 @@ Observera att all text har ett **lang** -attribut som beskriver språk i texten.
 
 Biblioteket för avancerad läsare innehåller funktioner som att starta den fördjupade läsaren och återge knappar för avancerad läsare. Läs mer [här](../../reference.md).
 
-Lägg till följande kod längst ned i _Views\Home\Index.cshtml_ :
+Lägg till följande kod längst ned i _Views\Home\Index.cshtml_:
 
 ```html
 @section Scripts
