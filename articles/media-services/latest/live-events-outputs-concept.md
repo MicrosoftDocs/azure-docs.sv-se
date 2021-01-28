@@ -1,9 +1,24 @@
 ---
-title: Live-händelser och Live-utdata koncept i Azure Media Services v3: Azure Media Services Beskrivning: det här avsnittet innehåller en översikt över direktsända händelser och direktsända utdata i Azure Media Services v3.
-tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: Ne MS. topic: konceptuell MS. Date: 10/23/2020 MS. author: inhenkel
-
+title: Koncept för Live-händelser och Live-utdata
+description: Det här avsnittet innehåller en översikt över direktsända händelser och direktsända utdata i Azure Media Services v3.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: ne
+ms.topic: conceptual
+ms.date: 10/23/2020
+ms.author: inhenkel
+ms.openlocfilehash: 0b223fcedfdead991f7ce374f7f7814749388f90
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955961"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-händelser och Live-utdata i Media Services
 

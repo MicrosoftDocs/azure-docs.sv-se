@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84697698"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954791"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimera säkerheten och tillförlitligheten för Azure Functions
 
@@ -112,7 +112,7 @@ För C#-funktioner kan du ändra typen till en starkt angiven matris.  I ställe
 
 `host.json`Filen i Function-appen möjliggör konfiguration av värd körning och utlösnings beteenden.  Förutom batching-beteenden kan du hantera samtidighet för ett antal utlösare. Att justera värdena i dessa alternativ kan ofta hjälpa varje instans skala på lämpligt sätt för kraven hos de anropade funktionerna.
 
-Inställningarna i host.jspå filen gäller för alla funktioner i appen, inom en *enda instans* av funktionen. Om du till exempel har en Function-app med två HTTP-funktioner och [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) begär Anden som har angetts till 25, räknas en begäran till HTTP-utlösaren mot de delade 25 samtidiga förfrågningarna.  När den här funktionen är skalad till 10 instanser, tillåter de två funktionerna att 250 samtidiga begär Anden på ett effektivt sätt (10 instanser * 25 samtidiga begär Anden per instans). 
+Inställningarna i host.jspå filen gäller för alla funktioner i appen, inom en *enda instans* av funktionen. Om du till exempel har en Function-app med två HTTP-funktioner och [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) begär Anden som har angetts till 25, räknas en begäran till HTTP-utlösaren mot de delade 25 samtidiga förfrågningarna.  När den här funktionen är skalad till 10 instanser kan de tio funktionerna effektivt tillåta 250 samtidiga begär Anden (10 instanser * 25 samtidiga begär Anden per instans). 
 
 Andra värd konfigurations alternativ finns i [ artikelnhost.jsi konfigurations artikeln](functions-host-json.md).
 

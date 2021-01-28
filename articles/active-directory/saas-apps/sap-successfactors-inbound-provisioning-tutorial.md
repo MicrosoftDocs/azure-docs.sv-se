@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570124"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953809"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Självstudie: konfigurera SAP-SuccessFactors för att Active Directory användar etablering 
 Syftet med den här självstudien är att visa de steg som du måste utföra för att etablera användare från SuccessFactors personal Central till Active Directory (AD) och Azure AD, med valfri Skriv åtgärd e-postadress till SuccessFactors. 
@@ -186,7 +186,7 @@ Det här avsnittet innehåller steg för användar konto etablering från Succes
 
 För att etablera till Active Directory lokalt måste etablerings agenten installeras på en domänansluten server som har nätverks åtkomst till önskad Active Directory domän (er).
 
-Överför den hämtade Agent installationen till Server värden och följ stegen [i avsnittet Installera agent](../cloud-provisioning/how-to-install.md) för att slutföra Agent konfigurationen.
+Överför den hämtade Agent installationen till Server värden och följ stegen [i avsnittet Installera agent](../cloud-sync/how-to-install.md) för att slutföra Agent konfigurationen.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Del 3: Konfigurera anslutning till SuccessFactors i etablerings appen och Active Directory
 I det här steget upprättar vi anslutningen till SuccessFactors och Active Directory i Azure Portal. 
@@ -209,12 +209,12 @@ I det här steget upprättar vi anslutningen till SuccessFactors och Active Dire
         > Den här inställningen kommer bara att spelas upp för att skapa användar konton om attributet *parentDistinguishedName* inte har kon figurer ATS i mappningarna för attribut. Den här inställningen används inte för användar Sök-eller uppdaterings åtgärder. Hela domänens under träd omfattas av Sök åtgärdens omfång.
 
    * **E-postavisering –** Ange din e-postadress och markera kryss rutan "skicka e-post om fel inträffar".
-    > [!NOTE]
-    > Azure AD Provisioning-tjänsten skickar e-postavisering om etablerings jobbet hamnar i [karantän](../app-provisioning/application-provisioning-quarantine-status.md) .
+     > [!NOTE]
+     > Azure AD Provisioning-tjänsten skickar e-postavisering om etablerings jobbet hamnar i [karantän](../app-provisioning/application-provisioning-quarantine-status.md) .
 
    * Klicka på knappen **Testa anslutning** . Om anslutnings testet lyckas, klickar du på knappen **Spara** längst upp. Om det Miss lyckas, kontrol lera att SuccessFactors-autentiseringsuppgifterna och de AD-autentiseringsuppgifter som kon figurer ATS på Agent installationen är giltiga.
-    >[!div class="mx-imgBorder"]
-    >![Azure-portalen](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+     >[!div class="mx-imgBorder"]
+     >![Azure-portalen](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * När autentiseringsuppgifterna har sparats visas standard mappningen **Synkronisera SuccessFactors användare till lokalt Active Directory** i avsnittet **mappningar** .
 
@@ -250,9 +250,8 @@ I det här avsnittet ska du konfigurera hur användar data flödar från Success
 
 1. I avsnittet **mappningar för attribut** kan du definiera hur enskilda SuccessFactors-attribut ska mappas till Active Directory attribut.
 
-  >[!NOTE]
-  >En fullständig lista över SuccessFactors-attribut som stöds av programmet finns i referens för [SuccessFactors-attribut](../app-provisioning/sap-successfactors-attribute-reference.md)
-
+     >[!NOTE]
+     >En fullständig lista över SuccessFactors-attribut som stöds av programmet finns i referens för [SuccessFactors-attribut](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 1. Klicka på en befintlig attributmappning för att uppdatera den, eller klicka på **Lägg till ny mappning** längst ned på skärmen för att lägga till nya mappningar. En mappning för enskilda attribut stöder följande egenskaper:
 

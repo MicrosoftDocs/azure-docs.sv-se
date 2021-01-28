@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf73640c1a4014b61809f407e1873686c229273f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635916"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954639"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Ansluta till och hantera ett Kubernetes-kluster via kubectl på din Azure Stack Edge Pro GPU-enhet
 
@@ -165,9 +165,9 @@ Nu kan du distribuera dina program i namn området och sedan Visa dessa program 
 
 ## <a name="remove-kubernetes-cluster"></a>Ta bort Kubernetes-kluster
 
-Om du vill ta bort Kubernetes-klustret måste du ta bort beräknings konfigurationen.
+Om du vill ta bort Kubernetes-klustret måste du ta bort IoT Edge-konfigurationen.
 
-Detaljerade anvisningar finns i [ta bort beräknings konfiguration](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration).
+Detaljerade anvisningar finns i [ta bort IoT Edge konfiguration](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service).
    
 
 ## <a name="next-steps"></a>Nästa steg

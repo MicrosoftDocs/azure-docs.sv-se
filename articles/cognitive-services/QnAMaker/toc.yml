@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: Visningsformat
       href: reference-markdown-format.md
+    - name: Privata länkar
+      href: reference-private-endpoint.md
     - name: Batch-testningsformat
       href: reference-tsv-format-batch-testing.md
     - name: Kryptering

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954875"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Självstudie: etablera flera X. 509-enheter med hjälp av registrerings grupper
 
@@ -42,7 +42,7 @@ I den här självstudien ska du slutföra följande mål:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande förutsättningar gäller för en Windows-utvecklings miljö. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
 
@@ -352,6 +352,9 @@ Så här uppdaterar du den anpassade HSM stub-koden för den här självstudien:
 På icke-Windows-enheter kan du skicka certifikat kedjan från koden som certifikat arkiv.
 
 På Windows-baserade enheter måste du lägga till signerings certifikaten (rot och mellanliggande) till ett Windows- [certifikat Arkiv](/windows/win32/secauthn/certificate-stores). Annars transporteras signerings certifikaten inte till DPS genom en säker kanal med Transport Layer Security (TLS).
+
+> [!TIP]
+> Det går också att använda OpenSSL i stället för säker kanal (Schannel) med C SDK. Mer information om hur du använder OpenSSL finns i [använda openssl i SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#using-openssl-in-the-sdk).
 
 Lägga till signerings certifikaten i certifikat arkivet i Windows-baserade enheter:
 

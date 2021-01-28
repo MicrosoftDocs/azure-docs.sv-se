@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/27/2021
+ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534678"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954689"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Beräknings-och lagrings alternativ i Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -70,6 +70,9 @@ De detaljerade specifikationerna för de tillgängliga Server typerna är följa
 | Standard_E64ds_v4    | 64     | 504               |
 
 För att få mer information om beräknings serien tillgänglig, se Azure VM-dokumentation för [Burstable (B-serien)](../../virtual-machines/sizes-b-series-burstable.md), [generell användning (Ddsv4-serien)](../../virtual-machines/ddv4-ddsv4-series.md)och [minnesoptimerade (Edsv4-serien)](../../virtual-machines/edv4-edsv4-series.md).
+
+>[!NOTE]
+>Den ackumulerade krediten kan gå förlorad om du använder en data behandlings nivå [(B-serien)](../../virtual-machines/sizes-b-series-burstable.md) när servern startas om av någon anledning, t. ex. användare som initieras, planerat eller oplanerat underhåll. Orsaken är att den ackumulerade krediten kommer att behållas när Azure Database for MySQL startar om den på samma nod. När Azure Database for MySQL servern startar på nytt på en ny nod får den en inledande kredit. Mer information finns i [vanliga frågor och svar om att läsa burst (B-serien)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Storage
 
@@ -132,7 +135,7 @@ Om du vill veta mer om högsta antalet effektiva IOPS per beräknings storlek, k
 
 Högsta effektiva IOPS är beroende av Max antalet tillgängliga IOPS per beräknings storlek. Se formeln nedan och referera till *maximalt antal cachelagrade diskar i kolumnen: IOPS/Mbps* i dokumentationen för [B-serien](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-serien](../../virtual-machines/ddv4-ddsv4-series.md)och [Edsv4-serien](../../virtual-machines/edv4-edsv4-series.md) .
 
-**Högsta effektiva IOPS** = minimum ( *"Max ej cachelagrad disk data flöde: IOPS/Mbit/s"* av beräknings storlek, lagring etablerad i GIB * 3)
+**Högsta effektiva IOPS** = minimum (*"Max ej cachelagrad disk data flöde: IOPS/Mbit/s"* av beräknings storlek, lagring etablerad i GIB * 3)
 
 Du kan övervaka i/O-förbrukningen i Azure Portal (med Azure Monitor) med [IO-procentens](./concepts-monitoring.md) mått. Om du behöver mer IOPS måste du förstå om du begränsas av beräknings storleken eller det tillhandahållna lagrings utrymmet. Skala serverns beräkning eller lagrings utrymme enligt detta.
 
@@ -153,7 +156,7 @@ Skalning av lagring och ändring av kvarhållning av säkerhets kopior är onlin
 
 ## <a name="pricing"></a>Prissättning
 
-Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/MySQL/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) månads kostnaden på fliken **beräkning + lagring** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer **du Lägg till objekt** , expanderar kategorin **databaser** , väljer **Azure Database for MySQL** och **flexibel Server** som distributions typ för att anpassa alternativen.
+Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/MySQL/)information för tjänsten. Om du vill se kostnaden för den konfiguration du vill ha, visar [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) månads kostnaden på fliken **beräkning + lagring** baserat på de alternativ du väljer. Om du inte har någon Azure-prenumeration kan du använda pris Kalkylatorn för Azure för att få ett uppskattat pris. På webbplatsen för [Azures pris kalkylator](https://azure.microsoft.com/pricing/calculator/) väljer **du Lägg till objekt**, expanderar kategorin **databaser** , väljer **Azure Database for MySQL** och **flexibel Server** som distributions typ för att anpassa alternativen.
 
 Om du vill optimera Server kostnaden kan du överväga följande tips:
 

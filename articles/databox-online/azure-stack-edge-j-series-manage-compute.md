@@ -6,26 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743683"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955549"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Hantera beräkning på Azure Stack Edge Pro GPU
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Den här artikeln beskriver hur du hanterar beräkningar på Azure Stack Edge Pro. Du kan hantera beräkningen via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att hantera moduler, utlösare och beräknings konfiguration och det lokala webb gränssnittet för att hantera beräknings inställningar.
+I den här artikeln beskrivs hur du hanterar Compute via IoT Edge-tjänsten på din Azure Stack Edge Pro GPU-enhet. Du kan hantera beräkningen via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att hantera moduler, utlösare och IoT Edge konfiguration och det lokala webb gränssnittet för att hantera beräknings nätverks inställningar.
 
 I den här artikeln kan du se hur du:
 
 > [!div class="checklist"]
 > * Hantera utlösare
-> * Hantera beräknings konfiguration
+> * Hantera IoT Edge konfiguration
 
 
 ## <a name="manage-triggers"></a>Hantera utlösare
@@ -40,7 +40,7 @@ Händelser är saker som sker i din molnmiljö eller på din enhet som du kanske
 
 Utför följande steg i Azure Portal för att skapa en utlösare.
 
-1. Gå till Azure Stack Edge-resursen i Azure Portal och gå sedan till **Edge compute > trigger**. Välj **+ Lägg till utlösare** i kommando fältet.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **IoT Edge**. Gå till **utlösare** och välj **+ Lägg till utlösare** i kommando fältet.
 
     ![Välj Lägg till utlösare](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
 
@@ -82,32 +82,32 @@ Utför följande steg i Azure Portal för att ta bort en utlösare.
 
 Listan över utlösare uppdateras för att återspegla borttagningen.
 
-## <a name="manage-compute-configuration"></a>Hantera beräknings konfiguration
+## <a name="manage-iot-edge-configuration"></a>Hantera IoT Edge konfiguration
 
 Använd Azure Portal för att Visa beräknings konfigurationen, ta bort en befintlig beräknings konfiguration eller uppdatera beräknings konfigurationen för att synkronisera åtkomst nycklar för IoT-enheten och IoT Edge enheten för din Azure Stack Edge Pro.
 
-### <a name="view-compute-configuration"></a>Visa beräknings konfiguration
+### <a name="view-iot-edge-configuration"></a>Visa IoT Edge konfiguration
 
-Utför följande steg i Azure Portal för att Visa beräknings konfigurationen för enheten.
+Utför följande steg i Azure Portal för att Visa IoT Edge konfigurationen för enheten.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Edge compute >-moduler**. Välj **Visa beräkning** i kommando fältet.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **IoT Edge**. När IoT Edge tjänsten är aktive rad på din enhet anger sidan Översikt att IoT Edges tjänsten fungerar bra.
 
     ![Välj Visa beräkning](media/azure-stack-edge-j-series-manage-compute/view-compute-1.png)
 
-2. Anteckna beräknings konfigurationen på enheten. När du har konfigurerat Compute skapade du en IoT Hub-resurs. Under den IoT Hub resursen konfigureras en IoT-enhet och en IoT Edge enhet. Endast Linux-moduler stöds för att köras på den IoT Edge enheten.
+2. Gå till **Egenskaper** för att Visa IoT Edge-konfigurationen på enheten. När du har konfigurerat Compute skapade du en IoT Hub-resurs. Under den IoT Hub resursen konfigureras en IoT-enhet och en IoT Edge enhet. Endast Linux-moduler stöds för att köras på den IoT Edge enheten.
 
     ![Visa konfiguration](media/azure-stack-edge-j-series-manage-compute/view-compute-2.png)
 
 
-### <a name="remove-compute-configuration"></a>Ta bort beräknings konfiguration
+### <a name="remove-iot-edge-service"></a>Ta bort IoT Edge tjänst
 
-Utför följande steg i Azure Portal för att ta bort den befintliga Edge Compute-konfigurationen för enheten.
+Utför följande steg i Azure Portal för att ta bort den befintliga IoT Edges konfigurationen för enheten.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Edge compute > kom igång**. Välj **ta bort beräkning** i kommando fältet.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **IoT Edge**. Gå till **Översikt** och välj **ta bort** i kommando fältet.
 
     ![Välj Ta bort beräkning](media/azure-stack-edge-j-series-manage-compute/remove-compute-1.png)
 
-2. Om du tar bort beräknings konfigurationen måste du konfigurera om enheten om du behöver använda Compute igen. Välj **Ja**när du uppmanas att bekräfta.
+2. Om du tar bort tjänsten IoT Edge går det inte att ångra åtgärden. De moduler och utlösare som du har skapat tas också bort. Du måste konfigurera om enheten om du behöver använda IoT Edge igen. När du uppmanas att bekräfta, väljer du **OK**.
 
     ![Välj Ta bort beräkning 2](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
@@ -121,7 +121,7 @@ Om din IoT-enhet och IoT Edge enhets nycklar har roterats måste du uppdatera ko
 
 Utför följande steg i Azure Portal för att synkronisera åtkomst nycklarna för enheten.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Edge compute > kom igång**. Välj **Uppdatera konfiguration** i kommando fältet.
+1. I Azure Portal går du till Azure Stack Edge-resursen och går sedan till **IoT Edge Compute**. Gå till **Översikt** och välj **Uppdatera konfiguration** i kommando fältet.
 
     ![Välj Uppdatera konfiguration](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-1.png)
 

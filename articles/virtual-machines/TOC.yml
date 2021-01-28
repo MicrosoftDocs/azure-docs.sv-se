@@ -1741,7 +1741,7 @@
         - name: Säkerhetskopiera flera virtuella datorer
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Återställningsalternativ
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Stödmatris
           href: ../backup/backup-support-matrix-iaas.md
         - name: Prissättning

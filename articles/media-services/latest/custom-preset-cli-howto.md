@@ -1,5 +1,5 @@
 ---
-title: Koda anpassad transformering med Media Services v3 Azure CLI
+title: Koda en anpassad Transformation CLI
 description: Det här avsnittet visar hur du använder Azure Media Services v3 för att koda en anpassad transformering med Azure CLI.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9758ed7403e11ca30732377a65bbde1944368cb2
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 91ee605035dbc81c2302aa0350763e68dc73ecb3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897198"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956114"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Koda med en anpassad transformering – Azure CLI
 

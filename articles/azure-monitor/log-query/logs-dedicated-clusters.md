@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: adcc894db630bba11e84e2f277705d2f31caf7dc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920231"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954757"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -81,10 +81,12 @@ Följande egenskaper måste anges:
 
 När du har skapat en *kluster* resurs kan du redigera ytterligare egenskaper som *SKU*, * keyVaultProperties eller *billingType*. Se mer information nedan.
 
+Du kan ha upp till 2 aktiva kluster per prenumeration per region. Om klustret tas bort är det fortfarande reserverat i 14 dagar. Du kan ha upp till 4 reserverade kluster per prenumeration per region (aktiv eller nyligen borttagen).
+
 > [!WARNING]
 > Skapande av kluster utlöser resursallokering och etablering. Den här åtgärden kan ta upp till en timme att slutföra. Vi rekommenderar att du kör det asynkront.
 
-Användar kontot som skapar klustren måste ha standard behörighet för Azure-resurser: `Microsoft.Resources/deployments/*` och kluster Skriv behörighet `(Microsoft.OperationalInsights/clusters/write)` .
+Användar kontot som skapar klustren måste ha standard behörigheten för Azure-resurser: `Microsoft.Resources/deployments/*` och kluster Skriv behörighet `Microsoft.OperationalInsights/clusters/write` genom att ha i deras roll tilldelningar den här åtgärden eller `Microsoft.OperationalInsights/*` eller `*/write` .
 
 ### <a name="create"></a>Skapa 
 
@@ -503,7 +505,9 @@ Använd följande REST-anrop för att ta bort ett kluster:
 
 ## <a name="limits-and-constraints"></a>Begränsningar och begränsningar
 
-- Det högsta antalet kluster per region och prenumeration är 2
+- Det högsta antalet aktiva kluster per region och prenumeration är 2
+
+- Det maximala antalet reserverade kluster (aktiva eller nyligen borttagna) per region och prenumeration är 4 
 
 - Det maximala antalet länkade arbets ytor till klustret är 1000
 

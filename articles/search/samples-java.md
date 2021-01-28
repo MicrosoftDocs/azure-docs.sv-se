@@ -7,31 +7,30 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 10dff18f7b9db7273fcd6ec92bcca5970bb83b08
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 01/27/2021
+ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510377"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955045"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Exempel på Java-kod för Azure Kognitiv sökning
 
-Lär dig mer om Java-kod exemplen som demonstrerar funktionerna i Azure Kognitiv sökning. De primära databaserna är följande:
+Lär dig mer om Java-kod exemplen som demonstrerar funktionerna och arbets flödet för en Azure Kognitiv sökning-lösning. De här exemplen använder [**azure kognitiv sökning-klient biblioteket**](/java/api/overview/azure/search-documents-readme) för [**Azure SDK för Java**](/azure/developer/java/sdk), som du kan utforska genom följande länkar.
 
-| Lagringsplats | Beskrivning |
-|------------|-------------|
-| [Azure-SDK-för-Java/tree/master/SDK/search/Azure-Search-Documents/src/samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) | Exempel som producerats av Azure SDK-teamet som levereras med Azure.Search.Documents-klient biblioteket i SDK: n. Du kan också granska [enhets testerna](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/test) för klient biblioteket för att se hur olika API: er anropas. |
-| [Azure-samples/Azure-Search-Java-samples](https://github.com/Azure-Samples/azure-search-java-samples) | Kod exempel som medföljer instruktions artiklar. **Exempel i den här lagrings platsen har ännu inte uppdaterats till Använd Azure SDK för Java**. För närvarande anropar dessa exempel REST-API: er i Java Code.|
+| Mål | Länk |
+|--------|------|
+| Hämtning av paket | [search.maven.org/artifact/com.azure/azure-search-documents](https://search.maven.org/artifact/com.azure/azure-search-documents) |
+| API-referens | [com.azure.search.documents](/java/api/com.azure.search.documents)  |
+| API-testfall | [github.com/Azure/azure-sdk-for-java/tree/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/test](https://github.com/Azure/azure-sdk-for-java/tree/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/test) |
+| Källkod | [github.com/Azure/azure-sdk-for-java/tree/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src](https://github.com/Azure/azure-sdk-for-java/tree/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src)  |
 
-> [!Tip]
-> Prova [exempel webbläsaren](/samples/browse/?languages=java&products=azure-cognitive-search) för att söka efter Microsofts kod exempel i GitHub, filtrerat efter produkt, tjänst och språk.
+## <a name="sdk-samples"></a>SDK-exempel
 
-## <a name="java-sdk-samples"></a>Java SDK-exempel
+Kod exempel från Azure SDK Development Team demonstrerar API-användning. Du hittar dessa exempel i [**Azure/Azure-SDK-för-Java/tree/master/SDK/search/Azure-Search-Documents/src/samples**](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) på GitHub.
 
-Azure SDK för Java innehåller flera exempel och en [komma igång-sida](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) som täcker paket installationen. Sidan innehåller också en mängd olika exempel. Det finns flera av de vanligaste åtgärderna i listan nedan för din bekvämlighet.
-
-| Exempel | Beskrivning |
+| Exempel | Description |
 |---------|-------------|
 | [Skapa Sök index](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) | Visar hur du skapar [Sök index](search-what-is-an-index.md). |
 | [Skapa synonym](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SynonymMapsCreateExample.java) | Visar hur du skapar [synonym Maps](search-synonyms.md).  |
@@ -41,11 +40,22 @@ Azure SDK för Java innehåller flera exempel och en [komma igång-sida](https:/
 | [Läsa in dokument](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/IndexContentManagementExample.java) | Visar hur du överför eller sammanfogar dokument till ett index i en [data import](search-what-is-data-import.md) åtgärd. |
 | [Frågesyntax](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SearchAsyncWithFullyTypedDocumentsExample.java) | Visar hur du ställer in en [grundläggande fråga](search-query-overview.md). |
 
-## <a name="documentation-samples"></a>Dokumentationsexempel
+## <a name="doc-samples"></a>Doc-exempel
 
-Följande exempel har en associerad artikel i [Azure kognitiv sökning-dokumentationen](./index.yml).
+Kod exempel från Kognitiv sökning team demonstrerar funktioner och arbets flöden. Många av dessa exempel refereras till självstudier, snabb starter och instruktions artiklar. Du kan hitta dessa exempel i [**Azure-samples/Azure-Search-Java-samples**](https://github.com/Azure-Samples/azure-search-java-samples) på GitHub.
 
-| Exempel | Beskrivning | 
+| Exempel | Artikel | 
 |---------|-------------|
-| [Start](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | Källkod för [snabb start: skapa ett sökindex i Java](search-get-started-java.md). Det här exemplet anropar REST-API: erna. |
-| [Sök-Java-indexerare – demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | Visar en Azure Cosmos DB-indexerare i Java. Det här exemplet anropar REST-API: erna. |
+| [Start](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/quickstart) | Källkod för [snabb start: skapa ett sökindex i Java och rest](search-get-started-java.md). Det här exemplet har inte uppdaterats för Java SDK. Den anropar REST-API: erna. |
+
+> [!Tip]
+> Prova [exempel webbläsaren](/samples/browse/?languages=java&products=azure-cognitive-search) för att söka efter Microsofts kod exempel i GitHub, filtrerat efter produkt, tjänst och språk.
+
+## <a name="other-samples"></a>Andra exempel
+
+Följande exempel publiceras också av Kognitiv sökning-teamet, men det finns inga referenser till dokumentationen. Tillhör ande README-filer innehåller användnings instruktioner.
+
+| Exempel | Description |
+|---------|-------------|
+| [Sök-Java-kom igång](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-getting-started) | Använder klient biblioteket Java SDK för att skapa, läsa in och fråga ett sökindex. Det här exemplet är för fristående. |
+| [Sök-Java-indexerare – demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/search-java-indexer-demo) | Visar en Azure Cosmos DB-indexerare i Java. Det här exemplet har inte uppdaterats för Java SDK. Den anropar REST-API: erna.|

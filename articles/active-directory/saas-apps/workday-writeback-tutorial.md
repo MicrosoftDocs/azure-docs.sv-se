@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359739"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954012"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Självstudie: Konfigurera tillbakaskrivning av attribut från Azure AD till Workday
 Syftet med den här självstudien är att visa de steg du behöver utföra för att göra om attribut från Azure AD till Workday. Tillbakaskrivning av tillbakaskrivning-appen för Workday stöder tilldelning av värden till följande Workday-attribut:
@@ -172,6 +172,7 @@ När du har slutfört konfigurationen av appar för arbets dag etablering kan du
 
 ## <a name="next-steps"></a>Nästa steg
 
+* [Läs mer om Azure AD-och arbets plats integrerings scenarier och webb tjänst anrop](../app-provisioning/workday-integration-reference.md)
 * [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)
 * [Lär dig hur du konfigurerar enkel inloggning mellan arbets dagar och Azure Active Directory](workday-tutorial.md)
 * [Lär dig hur du integrerar andra SaaS-program med Azure Active Directory](tutorial-list.md)

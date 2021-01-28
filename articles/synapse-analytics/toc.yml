@@ -96,6 +96,8 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Säkerhet
           items:
+            - name: Säkerhets kontroller per Azure Policy
+              href: ./security-controls-policy.md
             - name: Kryptering
               href: ./security/workspaces-encryption.md
             - name: Nätverkssäkerhet

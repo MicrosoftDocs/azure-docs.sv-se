@@ -6,19 +6,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440492"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955283"
 ---
 # <a name="scenario-any-to-any"></a>Scenario: alla-till-alla
 
-När du arbetar med virtuell WAN-routning för virtuella WAN finns det några tillgängliga scenarier. I ett valfritt scenario kan alla ekrar komma åt en annan eker. När det finns flera hubbar är hubb-till-hubb-routning (även kallat mellan hubb) aktiverat som standard i standard Virtual WAN. Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-virtual-hub-routing.md).
+När du arbetar med virtuell WAN-routning för virtuella WAN finns det några tillgängliga scenarier. I ett valfritt scenario kan alla ekrar komma åt en annan eker. När det finns flera hubbar är hubb-till-hubb-routning (även kallat mellan hubb) aktiverat som standard i standard Virtual WAN. Du kan skapa den här konfigurationen med en mängd olika metoder, till exempel Azure Portal eller en [Azure snabb starts mall](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/). Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Design
 
@@ -44,7 +44,7 @@ Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-vi
 
 ## <a name="architecture"></a><a name="architecture"></a>Arkitektur
 
-I **bild 1**kan alla virtuella nätverk och grenar (VPN, EXPRESSROUTE, P2s) komma åt varandra. I en virtuell hubb fungerar anslutningarna på följande sätt:
+I **bild 1** kan alla virtuella nätverk och grenar (VPN, EXPRESSROUTE, P2s) komma åt varandra. I en virtuell hubb fungerar anslutningarna på följande sätt:
 
 * En VPN-anslutning ansluter en VPN-plats till en VPN-gateway.
 * En virtuell nätverks anslutning ansluter ett virtuellt nätverk till en virtuell hubb. Den virtuella hubbens router tillhandahåller överförings funktionerna mellan virtuella nätverk.
@@ -58,7 +58,7 @@ Dessa anslutningar (som standard när de skapas) är kopplade till standard väg
 
 ## <a name="workflow"></a><a name="workflow"></a>Arbetsflöde
 
-Det här scenariot är aktiverat som standard för virtuellt WAN-nätverk. Om inställningen för gren-till-gren är inaktive rad i WAN-konfigurationen kommer det inte att tillåta anslutningar mellan Branch ekrar. VPN/ExpressRoute/User VPN betraktas som Branch ekrar i virtuellt WAN
+Det här scenariot är aktiverat som standard för virtuellt WAN-nätverk. Om inställningarna för gren-till-gren är inaktiverade i WAN-konfigurationen, så tillåter inte anslutning mellan Branch ekrar. VPN/ExpressRoute/User VPN betraktas som Branch ekrar i virtuellt WAN
 
 ## <a name="next-steps"></a>Nästa steg
 

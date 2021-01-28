@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 915146cd17b90272daea4ce57f5243baf1d49cb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8ecd1a99d41dc1391e6dba129d50eb53a67843d1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578798"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955383"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Ange Azure Resource Manager lösen ord på Azure Stack Edge Pro GPU-enhet
 
@@ -21,53 +21,55 @@ ms.locfileid: "94578798"
 
 I den här artikeln beskrivs hur du ställer in Azure Resource Manager lösen ordet. Du måste ange det här lösen ordet när du ansluter till lokala enhets-API: er via Azure Resource Manager.
 
-Hur du ställer in lösenordet kan variera beroende på om du använder Azure-portalen eller PowerShell-cmdletar. Var och en av dessa procedurer beskrivs i följande avsnitt.
+<!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Återställ lösen ord via Azure Portal
 
-1. Gå till den Azure Stack Edge-resurs som du skapade för att hantera enheten i Azure Portal. Gå till **Edge compute > kom igång**.
-
-2. Välj **Återställ Edge ARM-lösenord** från kommandoraden i den högra rutan. 
+1. Gå till den Azure Stack Edge-resurs som du skapade för att hantera enheten i Azure Portal. Gå till **Edge services > Cloud Storage Gateway**.
 
     ![Återställ EdgeARM User Password 1](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-1.png)
 
-3. I bladet **Återställ EdgeArm användar lösen** ord anger du ett lösen ord för att ansluta till dina lokala API: er för lokala enheter via Azure Resource Manager. Bekräfta lösen ordet och välj **Återställ**.
+2. Välj **Återställ Edge ARM-lösenord** från kommandoraden i den högra rutan. 
 
     ![Återställ EdgeARM User Password 2](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-2.png)
 
+3. I bladet **Återställ EdgeArm användar lösen** ord anger du ett lösen ord för att ansluta till dina lokala API: er för lokala enheter via Azure Resource Manager. Bekräfta lösen ordet och välj **Återställ**.
+
+    ![Återställ EdgeARM User Password 3](media/azure-stack-edge-j-series-set-azure-resource-manager-password/set-edgearm-password-3.png)
 
 
-## <a name="reset-password-via-powershell"></a>Återställ lösen ord via PowerShell
 
-1. I Azure Portal går du till den Azure Stack Edge-resurs som du skapade för att hantera enheten. Anteckna följande parametrar på sidan **Översikt** .
+<!--## Reset password via PowerShell
 
-    - Resurs namn för Azure Stack Edge
-    - Prenumerations-ID:t
+1. In the Azure Portal, go to the Azure Stack Edge resource you created to manage your device. Make a note of the following parameters in the **Overview** page.
 
-2. Gå till **inställningar > egenskaper**. Anteckna följande parametrar på sidan **Egenskaper** .
+    - Azure Stack Edge resource name
+    - Subscription ID
 
-    - Resursgrupp
-    - CIK krypterings nyckel: Välj Visa och kopiera sedan **krypterings nyckeln**.
+2. Go to **Settings > Properties**. Make a note of the following parameters in the **Properties** page.
 
-    ![Hämta krypterings nyckel för CIK](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
+    - Resource group
+    - CIK encryption key: Select view and then copy the **Encryption Key**.
+
+    ![Get CIK encryption key](media/azure-stack-edge-j-series-set-azure-resource-manager-password/get-cik-portal.png)
  
-3. Identifiera ett lösen ord som du ska använda för att ansluta till Azure Resource Manager.
+3. Identify a password that you will use to connect to Azure Resource Manager.
 
-4. Starta Cloud Shell. Välj på ikonen i det övre högra hörnet:
+4. Start the cloud shell. Select on the icon in the top right corner:
 
-    ![Starta Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
+    ![Start cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/start-cloud-shell.png) 
 
-    När Cloud Shell har startats kan du behöva växla till PowerShell.
+    Once the cloud shell has started, you may need to switch to PowerShell.
 
-    ![Cloud Shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
+    ![Cloud shell](media/azure-stack-edge-j-series-set-azure-resource-manager-password/cloud-shell.png)   
 
 
-5. Ange kontext. Ange:
+5. Set context. Type:
 
     `Set-AzContext -SubscriptionId <Subscription ID>`
 
-    Här är exempel på utdata:
+    Here is a sample output:
 
     
     ```azurepowershell
@@ -80,11 +82,11 @@ Hur du ställer in lösenordet kan variera beroende på om du använder Azure-po
         PS Azure:/
     ```
     
-5.  Om du har gamla PS-moduler måste du installera dem.
+5.  If you have any old PS modules, you need to install those.
 
     `Remove-Module  Az.DataBoxEdge -force`
 
-    Här är ett exempel på utdata. I det här exemplet fanns det inga gamla moduler att installera.
+    Here is a sample output. In this example, there were no old modules to be installed.
 
     
     ```azurepowershell
@@ -99,7 +101,7 @@ Hur du ställer in lösenordet kan variera beroende på om du använder Azure-po
         PS Azure:\
     ```
 
-6. Nästa uppsättning kommandon kommer att hämta och köra ett skript för att installera PowerShell-moduler.
+6. Next set of commands will download and run a script to install PowerShell modules.
     
     ```azurepowershell
         cd ~/clouddrive
@@ -108,7 +110,7 @@ Hur du ställer in lösenordet kan variera beroende på om du använder Azure-po
         Import-Module ~/clouddrive/Az.DataBoxEdge/Az.DataBoxEdge.psd1 -Force
     ```
 
-7. I nästa uppsättning kommandon måste du ange resurs namn, resurs grupps namn, krypterings nyckel och lösen ord som du identifierade i föregående steg.
+7. In the next set of commands, you'll need to provide the resource name, resource group name, encryption key, and the password you identified in the previous step.
 
     ```azurepowershell
     $devicename = "<Azure Stack Edge resource name>"
@@ -116,18 +118,18 @@ Hur du ställer in lösenordet kan variera beroende på om du använder Azure-po
     $cik = "<Encryption key>"
     $password = "<Password>"
     ```
-    Parametrarna för lösen ords-och krypterings nycklar måste skickas som säkra strängar. Använd följande cmdlets för att konvertera lösen ordet och krypterings nyckeln för att skydda strängarna.
+    The password and encryption key parameters must be passed as secure strings. Use the following cmdlets to convert the password and encryption key to secure strings.
 
     ```azurepowershell
     $pass = ConvertTo-SecureString $password -AsPlainText -Force
     $key = ConvertTo-SecureString $cik -AsPlainText -Force
     ```
-    Använd de skyddade strängarna ovan genererade som parametrar i Set-AzDataBoxEdgeUser cmdlet för att återställa lösen ordet. Använd samma resurs grupp som du använde när du skapade Azure Stack Edge Pro/Data Box Gateway-resursen.
+    Use the above generated secure strings as parameters in the Set-AzDataBoxEdgeUser cmdlet to reset the password. Use the same resource group that you used when creating the Azure Stack Edge Pro/Data Box Gateway resource.
 
     ```azurepowershell
     Set-AzDataBoxEdgeUser -ResourceGroupName $resourceGroup -DeviceName $devicename -Name EdgeARMUser  -Password $pass -EncryptionKey $key
     ```
-    Här är exempel på utdata.
+    Here is the sample output.
     
     ```azurepowershell
     PS /home/aseuser/clouddrive> $devicename = "myaseresource"
@@ -144,7 +146,7 @@ Hur du ställer in lösenordet kan variera beroende på om du använder Azure-po
     
         PS /home/aseuser/clouddrive>
     ```
-Använd det nya lösen ordet för att ansluta till Azure Resource Manager.
+Use the new password to connect to Azure Resource Manager.-->
 
 ## <a name="next-steps"></a>Nästa steg
 

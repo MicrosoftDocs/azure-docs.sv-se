@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878298"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954420"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Felsöka live video analys på IoT Edge
 
@@ -97,6 +97,17 @@ Live Video Analytics distribueras som en IoT Edge modul på IoT Edge enheten och
 
     > [!TIP]
     > Om du får problem med att köra Azure IoT Edge moduler i din miljö använder du **[Azure IoT Edge standard diagnostiska steg](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** som en guide för fel sökning och diagnostik.
+
+Du kan också stöta på problem när du kör **[installations skriptet för Live Video Analytics-resurser](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)**. Några vanliga problem är:
+
+* Använd en prenumeration där du inte har ägar behörighet. Detta gör att skriptet Miss fungerar med ett **ForbiddenError** eller ett **AuthorizationFailed** -fel.
+    * Du kommer förbi det här problemet genom att se till att du har **ägar** behörighet till den prenumeration som du planerar att använda. Om du inte kan göra det själv kan du kontakta prenumerations administratören för att ge rätt behörighet.
+* **Mallen kunde inte distribueras på grund av en princip överträdelse.**
+    * Undvik det här problemet genom att kontakta IT-administratören för att se till att anropen för att skapa en virtuell dator för att kringgå blockering av SSH-autentisering. Detta behövs inte eftersom vi använder ett säkert skydds-nätverk som kräver ett användar namn och lösen ord för att kommunicera med Azure-resurserna. Autentiseringsuppgifterna lagras i filen **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** i Cloud Shell, när den virtuella datorn har skapats, distribuerats och anslutits till IoT Hub.
+* Installations skriptet kan inte skapa tjänstens huvud namn och/eller Azure-resurser.
+    * För att komma förbi det här problemet bör du kontrol lera att din prenumeration och Azure-klienten inte har nått sin maximala tjänst gräns. Lär dig mer om [Azure AD-tjänstens gränser och begränsningar](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) samt [Azure-prenumerationer, tjänst begränsningar, kvoter och begränsningar.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+
+
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video analys fungerar med externa moduler
 
 Live video analys via medie graphs tilläggs processorer kan utöka medie grafen för att skicka och ta emot data från andra IoT Edge moduler genom att använda HTTP-eller gRPC-protokoll. Som ett [särskilt exempel](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)kan det här medie diagrammet skicka video bild rutor som bilder till en extern härlednings modul som Yolo v3 och ta emot JSON-baserade analys resultat med http-protokollet. I en sådan topologi är målet för händelserna främst IoT-hubben. I situationer där du inte ser uthärlednings händelser i hubben, kontrol lera följande:

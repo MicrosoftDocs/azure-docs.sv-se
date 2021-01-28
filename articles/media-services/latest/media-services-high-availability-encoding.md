@@ -1,5 +1,5 @@
 ---
-title: Hög tillgänglighet med Media Services och video på begäran (VOD)
+title: Hög tillgänglighet med Media Services video på begäran
 description: Den här artikeln är en översikt över de Azure-tjänster som du kan använda för att under lätta hög tillgänglighet för VOD-programmet.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494961"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955859"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Hög tillgänglighet med Media Services och video på begäran (VOD)
 
@@ -55,7 +55,7 @@ Det här diagrammet på hög nivå visar arkitekturen för det exempel som tillh
 
 [![Video på begäran (VOD) arkitektur diagram ](media/media-services-high-availability-encoding/high-availability-architecture.svg) på hög nivå](media/media-services-high-availability-encoding/high-availability-architecture.svg#lightbox)
 
-## <a name="best-practices"></a>Bästa praxis
+## <a name="best-practices"></a>Rekommenderade metoder
 
 ### <a name="regions"></a>Regioner
 

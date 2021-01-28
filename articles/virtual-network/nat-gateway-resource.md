@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c1f52fda2edfa0a03caa72fcd7fa8dc02d0a607
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223388"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954672"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Utforma virtuella nätverk med NAT-gateway-resurser
 
@@ -92,7 +92,7 @@ Mer information om Azure Resource Manager-mallen som används i det här exemple
 
 Läs det här avsnittet för att bekanta dig med att tänka på när du utformar virtuella nätverk med NAT.  
 
-1. [Kostnads optimering](#cost-optimization)
+1. [Kostnadsoptimering](#cost-optimization)
 1. [Samexistens av inkommande och utgående](#coexistence-of-inbound-and-outbound)
 2. [Hantera grundläggande resurser](#managing-basic-resources)
 3. [Tillgänglighetszoner](#availability-zones)
@@ -339,6 +339,7 @@ En SNAT-port är tillgänglig för åter användning till samma mål-IP-adress o
 - NAT är kompatibelt med standard-SKU offentlig IP, offentliga IP-prefix och belastnings Utjämnings resurser.   Grundläggande resurser (till exempel grundläggande belastningsutjämnare) och alla produkter som härletts från dem är inte kompatibla med NAT.  Grundläggande resurser måste placeras i ett undernät som inte har kon figurer ATS med NAT.
 - IPv4-adress familjen stöds.  NAT interagerar inte med IPv6-adress familjen.  Det går inte att distribuera NAT i ett undernät med ett IPv6-prefix.
 - NAT kan inte omfatta flera virtuella nätverk.
+- IP-fragmentering stöds inte.
 
 ## <a name="suggestions"></a>Förslag
 

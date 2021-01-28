@@ -91,7 +91,7 @@
     - name: Python-exempel
       href: samples-python.md
     - name: REST-exempel
-      href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
+      href: samples-rest.md
 - name: Begrepp
   items:
     - name: Fulltextsökning

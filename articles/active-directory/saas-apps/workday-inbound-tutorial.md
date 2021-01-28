@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569613"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954232"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Självstudie: Konfigurera arbets dag för automatisk användar etablering
 
@@ -157,7 +157,7 @@ I det här steget beviljar du princip behörigheter för domän säkerhet för W
 
 1. Sök och välj säkerhets gruppen som skapades i föregående steg. 
    >[!div class="mx-imgBorder"]
-   >![Välj säkerhets grupp](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![Välj säkerhets grupp](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. Klicka på ellipsen (...) bredvid grupp namnet och på menyn väljer du **säkerhets grupp > underhålla domän behörigheter för säkerhets grupp**
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ I det här steget ska du bevilja princip behörigheter för affärs processer f�
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>Krav för etablering av agent installation
 
-Granska [installations kraven för etablerings agenten](../cloud-provisioning/how-to-prerequisites.md) innan du fortsätter till nästa avsnitt. 
+Granska [installations kraven för etablerings agenten](../cloud-sync/how-to-prerequisites.md) innan du fortsätter till nästa avsnitt. 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfigurera användar etablering från arbets dagar till Active Directory
 
@@ -267,7 +267,7 @@ Det här avsnittet innehåller steg för etablering av användar konton från ar
 
 För att etablera till Active Directory lokalt måste etablerings agenten installeras på en domänansluten server som har nätverks åtkomst till önskad Active Directory domän (er).
 
-Överför den hämtade Agent installationen till Server värden och följ stegen [i avsnittet **Installera agent**](../cloud-provisioning/how-to-install.md) för att slutföra Agent konfigurationen.
+Överför den hämtade Agent installationen till Server värden och följ stegen [i avsnittet **Installera agent**](../cloud-sync/how-to-install.md) för att slutföra Agent konfigurationen.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Del 3: Konfigurera anslutning till arbets dagar och Active Directory i etablerings appen
 I det här steget upprättar vi anslutningen till arbets dagar och Active Directory i Azure Portal. 
@@ -336,7 +336,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från arbets 
       * Operator: är inte NULL
 
    > [!TIP]
-   > När du konfigurerar etablerings appen för första gången måste du testa och verifiera dina mappningar och uttryck för att kontrol lera att det ger önskat resultat. Microsoft rekommenderar att du använder omfångs filter under **käll objekt omfånget** för att testa dina mappningar med några test användare från Workday. När du har kontrollerat att mappningarna fungerar kan du antingen ta bort filtret eller gradvis expandera det så att det innehåller fler användare.
+   > När du konfigurerar etablerings appen för första gången måste du testa och verifiera dina mappningar och uttryck för att kontrol lera att det ger önskat resultat. Microsoft rekommenderar att du använder [omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) under **käll objekt omfång** och [etablering på begäran](../app-provisioning/provision-on-demand.md) för att testa dina mappningar med några test användare från Workday. När du har kontrollerat att mappningarna fungerar kan du antingen ta bort filtret eller gradvis expandera det så att det innehåller fler användare.
 
    > [!CAUTION] 
    > Standard beteendet för etablerings motorn är att inaktivera/ta bort användare som omfattas av omfånget. Detta kanske inte är önskvärt i din arbets dag till AD-integrering. Om du vill åsidosätta det här standard beteendet läser du artikeln [hoppa över borttagning av användar konton som omfattas av omfånget](../app-provisioning/skip-out-of-scope-deletions.md)
@@ -1065,7 +1065,8 @@ I samband med datakvarhållning genererar inte Azure AD Provisioning-tjänsten r
 
 ## <a name="next-steps"></a>Nästa steg
 
+* [Läs mer om Azure AD-och arbets plats integrerings scenarier och webb tjänst anrop](../app-provisioning/workday-integration-reference.md)
 * [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)
 * [Lär dig hur du konfigurerar enkel inloggning mellan arbets dagar och Azure Active Directory](workday-tutorial.md)
-* [Lär dig hur du integrerar andra SaaS-program med Azure Active Directory](tutorial-list.md)
+* [Lär dig hur du konfigurerar tillbakaskrivning av arbets dagar](workday-writeback-tutorial.md)
 * [Lär dig hur du använder Microsoft Graph API: er för att hantera etablerings konfiguration](/graph/api/resources/synchronization-overview)

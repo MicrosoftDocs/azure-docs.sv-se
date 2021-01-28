@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 262177d8cde3a5eee2721f2af8a0511c205da9b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890537"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954301"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Introduktion till Microsoft Spark-verktyg
 
@@ -39,10 +39,6 @@ Du kan komma åt data på ADLS Gen2 med Synapse Spark via följande URL:
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-<!-- ### Configure access to Azure Blob Storage  -->
-
-:::zone pivot = "programming-language-python"
-
 ### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage  
 
 Synapse utnyttjar **signaturen för delad åtkomst (SAS)** för att få åtkomst till Azure Blob Storage. För att undvika att exponera SAS-nycklar i koden rekommenderar vi att du skapar en ny länkad tjänst i Synapse-arbetsytan till det Azure Blob Storage-konto som du vill ha åtkomst till.
@@ -62,6 +58,8 @@ Du kan komma åt data på Azure Blob Storage med Synapse Spark via följande URL
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 Här är ett kod exempel:
+
+:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -86,26 +84,6 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
-### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage  
-
-Synapse utnyttjar **signaturen för delad åtkomst (SAS)** för att få åtkomst till Azure Blob Storage. För att undvika att exponera SAS-nycklar i koden rekommenderar vi att du skapar en ny länkad tjänst i Synapse-arbetsytan till det Azure Blob Storage-konto som du vill ha åtkomst till.
-
-Följ dessa steg om du vill lägga till en ny länkad tjänst för ett Azure Blob Storage-konto:
-
-1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
-2. Välj **Hantera** i den vänstra panelen och välj **länkade tjänster** under de **externa anslutningarna**.
-3. Sök i **Azure Blob Storage** i den **nya länkade tjänst** panelen till höger.
-4. Välj **Fortsätt**.
-5. Välj Azure Blob Storage-kontot för att komma åt och konfigurera namnet på den länkade tjänsten. Föreslå Använd **konto nyckel** för **autentiseringsmetoden**.
-6. Kontrol lera att inställningarna är korrekta genom att välja **Testa anslutning** .
-7. Välj **skapa** först och klicka på **publicera alla** för att spara ändringarna. 
-
-Du kan komma åt data på Azure Blob Storage med Synapse Spark via följande URL:
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-Här är ett kod exempel:
-
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -123,27 +101,6 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 ::: zone-end
 
 :::zone pivot = "programming-language-csharp"
-
-
-### <a name="configure-access-to-azure-blob-storage"></a>Konfigurera åtkomst till Azure Blob Storage  
-
-Synapse utnyttjar **signaturen för delad åtkomst (SAS)** för att få åtkomst till Azure Blob Storage. För att undvika att exponera SAS-nycklar i koden rekommenderar vi att du skapar en ny länkad tjänst i Synapse-arbetsytan till det Azure Blob Storage-konto som du vill ha åtkomst till.
-
-Följ dessa steg om du vill lägga till en ny länkad tjänst för ett Azure Blob Storage-konto:
-
-1. Öppna [Azure Synapse Studio](https://web.azuresynapse.net/).
-2. Välj **Hantera** i den vänstra panelen och välj **länkade tjänster** under de **externa anslutningarna**.
-3. Sök i **Azure Blob Storage** i den **nya länkade tjänst** panelen till höger.
-4. Välj **Fortsätt**.
-5. Välj Azure Blob Storage-kontot för att komma åt och konfigurera namnet på den länkade tjänsten. Föreslå Använd **konto nyckel** för **autentiseringsmetoden**.
-6. Kontrol lera att inställningarna är korrekta genom att välja **Testa anslutning** .
-7. Välj **skapa** först och klicka på **publicera alla** för att spara ändringarna. 
-
-Du kan komma åt data på Azure Blob Storage med Synapse Spark via följande URL:
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-Här är ett kod exempel:
 
 ```csharp
 var blob_account_name = "";  // replace with your blob name

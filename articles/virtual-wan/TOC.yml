@@ -41,22 +41,22 @@
       items:
         - name: Om routning av virtuell hubb
           href: about-virtual-hub-routing.md
-        - name: Routningsscenarier
-          items:
-            - name: Alla-till-alla
-              href: scenario-any-to-any.md
-            - name: Isolera virtuella nätverk
-              href: scenario-isolate-vnets.md
-            - name: Isolera virtuella nätverk – anpassat
-              href: scenario-isolate-vnets-custom.md
-            - name: Virtuella nätverk för delade tjänster
-              href: scenario-shared-services-vnet.md
-            - name: Dirigera via en NVA
-              href: scenario-route-through-nva.md
-            - name: Dirigera via en NVA – anpassat
-              href: scenario-route-through-nvas-custom.md
-            - name: Azure Firewall – anpassad
-              href: scenario-route-between-vnets-firewall.md
+    - name: Routningsscenarier
+      items:
+        - name: Alla-till-alla
+          href: scenario-any-to-any.md
+        - name: Isolera virtuella nätverk
+          href: scenario-isolate-vnets.md
+        - name: Isolera virtuella nätverk – anpassat
+          href: scenario-isolate-vnets-custom.md
+        - name: Virtuella nätverk för delade tjänster
+          href: scenario-shared-services-vnet.md
+        - name: Dirigera via en NVA
+          href: scenario-route-through-nva.md
+        - name: Dirigera via en NVA – anpassat
+          href: scenario-route-through-nvas-custom.md
+        - name: Azure Firewall – anpassad
+          href: scenario-route-between-vnets-firewall.md
     - name: Övervakning
       items:
         - name: Om Azure Monitor-insikter för Virtual WAN

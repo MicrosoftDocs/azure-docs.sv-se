@@ -15,7 +15,7 @@
       items:
         - name: Skapa en Service Bus-kö
           items:
-            - name: Azure Portal
+            - name: Azure-portalen
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -210,14 +210,20 @@
               href: service-bus-auto-forwarding.md
             - name: Transaktionsbearbetning
               href: service-bus-transactions.md
-        - name: Slutpunkt till slutpunkt – spårning och diagnostik
-          href: service-bus-end-to-end-tracing.md
         - name: Skapa en Service Bus-flernivåapp
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
     - name: Migrera
       items:
         - name: Migrera från ActiveMQ till Azure Service Bus
           href: migrate-jms-activemq-to-servicebus.md
+    - name: Monitor
+      items:
+        - name: Slutpunkt till slutpunkt – spårning och diagnostik
+          href: service-bus-end-to-end-tracing.md
+        - name: Diagnostikloggar
+          href: service-bus-diagnostic-logs.md
+        - name: Azure Monitor mått
+          href: service-bus-metrics-azure-monitor.md
     - name: Integrera
       items:
         - name: Integrera med RabbitMQ
@@ -228,12 +234,8 @@
           href: automate-update-messaging-units.md
         - name: Etablera entiteter med Azure PowerShell
           href: service-bus-manage-with-ps.md
-        - name: Övervaka Service Bus med Azure Monitor
-          href: service-bus-metrics-azure-monitor.md
         - name: Service Bus-hanteringsbibliotek
           href: service-bus-management-libraries.md
-        - name: Resursloggar
-          href: service-bus-diagnostic-logs.md
         - name: Skjut upp och återaktivera meddelandeentiteter
           href: entity-suspend.md
         - name: Använda Service Bus Explorer för att utföra dataåtgärder med Service Bus

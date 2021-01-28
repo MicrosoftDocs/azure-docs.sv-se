@@ -1,5 +1,5 @@
 ---
-title: Exempel på Azure CLI-skript – återställa autentiseringsuppgifter för ditt konto
+title: Återställa autentiseringsuppgifterna för ditt konto – CLI
 description: Använd Azure CLI-skriptet för att återställa autentiseringsuppgifterna för ditt konto och app.config-inställningarna.
 services: media-services
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b9b95af79b8aac11f56fe576f860d719b5fb50e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6fe958c9300d6a6feeb6926f84dbecf565dfafc1
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897687"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954352"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-exempel: återställa kontoautentiseringsuppgifter
 

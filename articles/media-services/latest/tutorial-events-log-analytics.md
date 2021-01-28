@@ -1,8 +1,23 @@
 ---
-title: lagra Azure Media Services händelser i Azure Log Analytics: Azure Media Services Beskrivning: Lär dig hur du lagrar Azure Media Services händelser i Azure Log Analytics.
-tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' ' MS. service: Media-Services MS. arbets belastning: MS. topic: självstudie MS. Date: 08/24/2020 MS. author: inhenkel
+title: Lagra Media Services händelser i Azure Log Analytics
+description: Lär dig hur du lagrar Azure Media Services händelser i Azure Log Analytics.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: tutorial
+ms.date: 08/24/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954537"
 ---
-
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Självstudie: lagra Azure Media Services händelser i Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services händelser

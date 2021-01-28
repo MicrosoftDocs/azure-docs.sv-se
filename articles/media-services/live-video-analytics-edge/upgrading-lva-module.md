@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119466"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955657"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Uppgradera video analys i real tid på IoT Edge från 1,0 till 2,0
 
@@ -37,7 +37,7 @@ I distributions mal len söker du efter din live video analys på IoT Edge modul
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-Om du inte har ändrat namnet på video analysen i IoT Edge-modulen tittar du `lvaEdge` under noden modul.
+> Om du inte har ändrat namnet på video analysen i IoT Edge-modulen tittar du `lvaEdge` under noden modul.
 
 ### <a name="topology-file-changes"></a>Ändringar i Topology-filen
 Kontrol lera att **`apiVersion`** är inställt på 2,0 i dina Topology-filer
@@ -58,9 +58,9 @@ Kontrol lera att **`apiVersion`** är inställt på 2,0 i dina Topology-filer
 >**`outputSelectors`** Är en valfri egenskap. Om detta inte används skickar Media grafen ljudet (om det är aktiverat) och video från RTSP-kameran. 
 
 * I `MediaGraphHttpExtension` och `MediaGraphGrpcExtension` -processorer noterar du följande ändringar:  
-    * **Bild egenskaper**
-        * `MediaGraphImageFormatEncoded` stöds inte längre. 
-        * Använd i stället **`MediaGraphImageFormatBmp`** eller **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** . Exempel:
+    #### <a name="image-properties"></a>Bild egenskaper
+    * `MediaGraphImageFormatEncoded` stöds inte längre. 
+      * Använd i stället **`MediaGraphImageFormatBmp`** eller **`MediaGraphImageFormatJpeg`** **`MediaGraphImageFormatPng`** . Exempel:
         ```
         "image": {
                 "scale": 
@@ -94,14 +94,14 @@ Kontrol lera att **`apiVersion`** är inställt på 2,0 i dina Topology-filer
         >[!NOTE]
         > Möjliga värden för pixelFormat är:,,,,,,,,, `yuv420p` `rgb565be` `rgb565le` `rgb555be` `rgb555le` `rgb24` `bgr24` `argb` `rgba` `abgr``bgra`  
 
-    * **extensionConfiguration för Grpc Extension-processor**  
-        * I `MediaGraphGrpcExtension` processor är en ny egenskap som heter **`extensionConfiguration`** tillgänglig, som är en valfri sträng som kan användas som en del av gRPC-kontraktet. Det här fältet kan användas för att skicka data till en härlednings Server och du kan definiera hur den här informationen ska användas i servern.  
-        Ett användnings fall av den här egenskapen är när du har flera AI-modeller som paketeras i en enda härlednings Server. Med den här egenskapen behöver du inte exponera en nod för varje AI-modell. I stället, för en diagram förekomst, som förlängnings leverantör, kan du definiera hur du vill att de olika AI-modellerna ska **`extensionConfiguration`** användas med egenskapen och under körningen, och lva skickar strängen till inferencing-servern, som kan använda den för att anropa den önskade AI-modellen.  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>extensionConfiguration för Grpc Extension-processor  
+    * I `MediaGraphGrpcExtension` processor är en ny egenskap som heter **`extensionConfiguration`** tillgänglig, som är en valfri sträng som kan användas som en del av gRPC-kontraktet. Det här fältet kan användas för att skicka data till en härlednings Server och du kan definiera hur den här informationen ska användas i servern.  
+    Ett användnings fall av den här egenskapen är när du har flera AI-modeller som paketeras i en enda härlednings Server. Med den här egenskapen behöver du inte exponera en nod för varje AI-modell. I stället, för en diagram förekomst, som förlängnings leverantör, kan du definiera hur du vill att de olika AI-modellerna ska **`extensionConfiguration`** användas med egenskapen och under körningen, och lva skickar strängen till inferencing-servern, som kan använda den för att anropa den önskade AI-modellen.  
 
-    * **AI-sammansättning**
-        * Live video analys 2,0 har nu stöd för användning av fler än en Media Graph-förlängningskabel i en topologi. Du kan skicka medie bild rutorna från RTSP-kameran till olika AI-modeller antingen i tur och ordning, parallellt eller i en kombination av båda. Se en exempel-topologi som visar två AI-modeller som används sekventiellt.
+    #### <a name="ai-composition"></a>AI-sammansättning
+    * Live video analys 2,0 har nu stöd för användning av fler än en Media Graph-förlängningskabel i en topologi. Du kan skicka medie bild rutorna från RTSP-kameran till olika AI-modeller antingen i tur och ordning, parallellt eller i en kombination av båda. Se en exempel-topologi som visar två AI-modeller som används sekventiellt.
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>Disk utrymmes hantering med Sink-noder
 * I noden **fil mottagare** kan du nu ange hur mycket disk utrymme som video analysen i real tid på IoT Edge modul kan använda för att lagra de bearbetade bilderna. Det gör du genom att lägga till **`maximumSizeMiB`** fältet i FileSink-noden. En exempel på en fil mottagare är följande:
     ```
     "sinks": [
@@ -154,6 +154,7 @@ Kontrol lera att **`apiVersion`** är inställt på 2,0 i dina Topology-filer
     >[!NOTE]
     >  **Filens mottagar** Sök väg är uppdelad i sökvägen till bas katalogen och fil namnet, medan sökvägen **till till gångs mottagare** inkluderar sökvägen till bas katalogen.  
 
+### <a name="frame-rate-management"></a>Hantering av bild Rute frekvens
 * **`MediaGraphFrameRateFilterProcessor`** är föråldrad i **Real video analys i IoT Edge 2,0** -modulen.
     * Om du vill testa den inkommande videon för bearbetning lägger du till **`samplingOptions`** egenskapen i MediaGraph-tilläggs processorerna ( `MediaGraphHttpExtension` eller `MediaGraphGrpcExtension` )  
      ```
@@ -169,7 +170,7 @@ I den här versionen kan du använda netympkvistar för att skicka mått till Az
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Händelsetaxonomi":::
 
-Du kan skapa en teleympkvistar-avbildning med en anpassad konfiguration som enkelt använder Docker. Läs mer om det här på sidan [övervakning och loggning](monitoring-logging.md#azure-monitor-collection-via-telegraf) .
+Du kan skapa en teleympkvistar-avbildning med en anpassad konfiguration som enkelt använder Docker. Läs mer på sidan [övervakning och loggning](monitoring-logging.md#azure-monitor-collection-via-telegraf) .
 
 ## <a name="next-steps"></a>Nästa steg
 

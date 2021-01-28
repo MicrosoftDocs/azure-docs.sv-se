@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 2d1bd7d2a4f066311ea01046a8d71e6ecb52c3f5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919821"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953945"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Snabb start: kom igång med Azure Stack Edge Pro med GPU 
 
@@ -28,7 +28,7 @@ Den totala proceduren bör ungefär ta 1,5 timmar att slutföra. Detaljerade ste
 Kontrol lera att följande krav är uppfyllda innan du distribuerar:
 
 1. Azure Stack Edge Pro GPU-enhet levereras till din plats, [packas upp](azure-stack-edge-gpu-deploy-install.md#unpack-the-device) och [rack monteras](azure-stack-edge-gpu-deploy-install.md#rack-the-device). 
-1. Konfigurera nätverket så att enheten kan komma åt de [URL: er och portar som visas i listan](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements). 
+1. Konfigurera nätverket så att enheten kan komma åt URL- [mönstren och portarna i listan](azure-stack-edge-gpu-system-requirements.md#networking-port-requirements). 
 1. Du har ägar-eller deltagar åtkomst till Azure-prenumerationen.
 1. I Azure Portal går du till **start > prenumerationer > dina prenumerations > resurs leverantörer**. Sök efter `Microsoft.DataBoxEdge` och registrera resurs leverantören. Upprepa för att registrera `Microsoft.Devices` om du ska skapa en IoT Hub resurs för att distribuera beräknings arbets belastningar.
 1. Se till att du har minst två kostnads fria, statiska, sammanhängande IP-adresser för Kubernetes-noder och minst 1 statisk IP-adress för IoT Edge-tjänsten. För varje modul eller extern tjänst distribuerar du ytterligare 1 IP-adress.

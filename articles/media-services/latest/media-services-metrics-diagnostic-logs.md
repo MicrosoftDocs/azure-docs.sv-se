@@ -1,11 +1,25 @@
 ---
-rubrik: Media Services mått och diagnostiska loggar med Azure Monitor: Azure Media Services Beskrivning: Lär dig hur du övervakar Azure Media Servicess mått och diagnostikloggar via Azure Monitor.
-tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: konceptuell MS. Date: 11/02/2020 MS. author: inhenkel
-
+title: Mått och diagnostiska loggar med Azure Monitor
+description: Lär dig hur du övervakar Azure Media Services mått och diagnostikloggar via Azure Monitor.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 11/02/2020
+ms.author: inhenkel
+ms.openlocfilehash: 35b0d9c2937024341be6183ac1438b7c4500d6ef
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954994"
 ---
-
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Övervaka Media Servicess statistik och diagnostiska loggar med Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

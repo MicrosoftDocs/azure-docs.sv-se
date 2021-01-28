@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723888"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954198"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -69,12 +69,22 @@ Följ stegen nedan för att ansluta ett befintligt Data Factory-konto till din a
 >[!Note]
 >Vi har nu stöd för att lägga till fler än 10 data fabriker samtidigt. Om du vill lägga till fler än 10 data fabriker samtidigt kan du skicka en support biljett.
 
+### <a name="how-does-the-authentication-work"></a>Hur fungerar autentiseringen?
+
+När en avdelningens kontroll-användare registrerar en Data Factory som de har åtkomst till, sker följande i Server delen:
+
+1. **Data Factory MSI** läggs till i avdelningens kontroll RBAC-rollen: **avdelningens kontroll data curator**.
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Skärm bild som visar Azure Data Factory MSI." lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. Data Factory pipelinen måste köras igen så att härkomst-metadata kan flyttas tillbaka till avdelningens kontroll.
+3. Efter körning Data Factory metadata skickas till avdelningens kontroll.
 
 ### <a name="remove-data-factory-connections"></a>Ta bort data Factory-anslutningar
 Gör så här om du vill ta bort en data fabriks anslutning:
 
 1. På sidan **Data Factory anslutning** väljer du knappen **ta bort** bredvid en eller flera data fabriks anslutningar.
-1. Välj **Bekräfta** i popup-fönstret för att ta bort de valda data fabriks anslutningarna.
+2. Välj **Bekräfta** i popup-fönstret för att ta bort de valda data fabriks anslutningarna.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Skärm bild som visar hur du väljer data fabriker för att ta bort anslutningen." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 

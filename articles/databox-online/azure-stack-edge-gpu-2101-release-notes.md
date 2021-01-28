@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 8158868a39bf8a1fe03a620f37e4dcb1c9adc14e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805186"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954622"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Viktig information om Azure Stack Edge 2101
 
@@ -77,8 +77,7 @@ Följande tabell innehåller en sammanfattning av kända problem som överförs 
 |**16.**|Certifikat |I vissa fall kan det ta flera sekunder att uppdatera certifikat tillstånd i det lokala användar gränssnittet. |Följande scenarier i det lokala användar gränssnittet kan påverkas.<ul><li>**Status** kolumn på sidan **certifikat** .</li><li>**Säkerhets** panel på sidan **Kom igång** .</li><li>**Konfigurations** panelen på **översikts** sidan.</li></ul>  |
 |**43.**|IoT Edge |Moduler som distribueras via IoT Edge kan inte använda värd nätverk. | |
 |**arton.**|Compute + Kubernetes |Compute/Kubernetes stöder inte NTLM-webbproxy. ||
-|**19.3.**|Compute + Web Proxy + uppdatera |Om du har en beräkning som kon figurer ATS med webbproxy kan det hända att Compute-uppdateringen Miss lyckas. |Vi rekommenderar att du inaktiverar Compute innan uppdateringen. |
-|**tjugo.**|Kubernetes + uppdatera |Tidigare program versioner som 2008-versioner har ett problem med en problem uppdatering som gör att uppdateringen Miss känner till ClusterConnectionException. |Att använda nya versioner bör hjälpa dig att undvika det här problemet. Om du fortfarande ser det här problemet är lösningen att försöka uppgradera igen och bör fungera.|
+|**19.3.**|Kubernetes + uppdatera |Tidigare program versioner som 2008-versioner har ett problem med en problem uppdatering som gör att uppdateringen Miss känner till ClusterConnectionException. |Att använda nya versioner bör hjälpa dig att undvika det här problemet. Om du fortfarande ser det här problemet är lösningen att försöka uppgradera igen och bör fungera.|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->

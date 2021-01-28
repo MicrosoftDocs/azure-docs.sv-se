@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av support inställningar och begrän
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 08d2ac8451e88dd8d40ed5faee0368ff7739cd16
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757482"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954706"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Support mat ris för Azure disk Backup (för hands version)
 
@@ -65,6 +65,8 @@ Fler regioner kommer att meddelas när de blir tillgängliga.
 - Managed disks tillåter att prestanda nivån ändras vid distribution eller efteråt utan att storleken på disken ändras. Lösningen för säkerhets kopiering av Azure-disk stöder prestanda nivå ändringar till käll disken som säkerhets kopie ras. Under återställningen är prestanda nivån för den återställda disken densamma som käll disken vid säkerhets kopieringen. Följ dokumentationen [här](../virtual-machines/disks-performance-tiers-portal.md) för att ändra diskens prestanda nivå efter återställnings åtgärden.
 
 - Med stöd för [privata länkar](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) för hanterade diskar kan du begränsa exporten och importen av hanterade diskar så att det bara sker i det virtuella Azure-nätverket. Säkerhets kopiering av Azure-diskar har stöd för säkerhets kopiering av diskar som har privata slut punkter aktiverade. Detta inkluderar inte säkerhets kopierings data eller ögonblicks bilder som kan nås via den privata slut punkten.
+
+- Under för hands versionen kan du inte inaktivera säkerhets kopieringen, så alternativet **stoppa säkerhets kopiering och behåll säkerhets kopierings data** stöds inte. Du kan ta bort en säkerhets kopierings instans, som inte bara stoppar säkerhets kopian utan även ta bort alla säkerhetskopierade data.
 
 ## <a name="next-steps"></a>Nästa steg
 

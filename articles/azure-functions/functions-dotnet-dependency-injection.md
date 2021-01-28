@@ -4,15 +4,15 @@ description: Lär dig hur du använder beroende inmatning för att registrera oc
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706940"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955096"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Använda beroendeinmatning i .NET Azure Functions
 
@@ -190,7 +190,7 @@ Mer information om loggnings nivåer finns i [Konfigurera logg nivåer](configur
 
 Funktions värden registrerar många tjänster. Följande tjänster är säkra att ta med i ditt program:
 
-|Typ av tjänst|Giltighet|Beskrivning|
+|Typ av tjänst|Giltighet|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Körnings konfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Ansvarar för att tillhandahålla ID för värd instansen|
@@ -256,6 +256,24 @@ public class HttpTrigger
 ```
 
 Mer information om hur du arbetar med alternativ finns [i alternativ mönster i ASP.net Core](/aspnet/core/fundamentals/configuration/options) .
+
+## <a name="using-aspnet-core-user-secrets"></a>Använda ASP.NET Core användar hemligheter
+
+När du utvecklar lokalt ASP.NET Core tillhandahålla ett [verktyg för hemliga hanterare](/aspnet/core/security/app-secrets#secret-manager) som gör att du kan lagra hemlig information utanför projekt roten. Det gör det mindre troligt att hemligheterna oavsiktligt allokeras till käll kontrollen. Azure Functions Core Tools (version 3.0.3233 eller senare) läser automatiskt hemligheter som skapats av ASP.NET Core Secret Manager.
+
+Om du vill konfigurera ett .NET Azure Functions-projekt att använda användar hemligheter kör du följande kommando i projekt roten.
+
+```bash
+dotnet user-secrets init
+```
+
+Använd sedan `dotnet user-secrets set` kommandot för att skapa eller uppdatera hemligheter.
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+Använd eller för att få åtkomst till användar hemligheter i appens kod för Function `IConfiguration` `IOptions` .
 
 ## <a name="customizing-configuration-sources"></a>Anpassa konfigurations källor
 

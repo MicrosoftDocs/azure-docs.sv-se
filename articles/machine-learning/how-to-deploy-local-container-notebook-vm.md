@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527317"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954554"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Distribuera en modell för att Azure Machine Learning beräknings instanser
 
@@ -38,13 +38,14 @@ Lär dig hur du använder Azure Machine Learning för att distribuera en modell 
 
 En exempel-anteckningsbok som visar lokala distributioner ingår i din beräknings instans. Använd följande steg för att läsa in den bärbara datorn och distribuera modellen som en webb tjänst på den virtuella datorn:
 
-1. Välj dina Azure Machine Learning beräknings instanser från [Azure Machine Learning Studio](https://ml.azure.com).
+1. Välj "Notebooks" från [Azure Machine Learning Studio](https://ml.azure.com)och välj sedan How-to-use-azureml/Deployment/Deploy-to-Local/register-Model-Deploy-Local. ipynb under "exempel på bärbara datorer". Klona den här antecknings boken till din användar-mapp.
 
-1. Öppna under `samples-*` katalogen och öppna sedan `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` . Kör antecknings boken när den är öppen.
+1. Leta upp den bärbara datorn som klonades i steg 1, Välj eller skapa en beräknings instans för att köra antecknings boken.
 
     ![Skärm bild av den lokala tjänsten som körs på antecknings boken](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. Antecknings boken visar den URL och port som tjänsten körs på. Exempelvis `https://localhost:6789`. Du kan också köra cellen som innehåller `print('Local service port: {}'.format(local_service.port))` för att Visa porten.
+
+1. Antecknings boken visar den URL och port som tjänsten körs på. Ett exempel är `https://localhost:6789`. Du kan också köra cellen som innehåller `print('Local service port: {}'.format(local_service.port))` för att Visa porten.
 
     ![Skärm bild av den aktiva porten för den lokala tjänsten](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 

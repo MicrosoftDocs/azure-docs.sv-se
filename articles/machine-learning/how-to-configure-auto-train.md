@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600072"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954723"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -203,15 +203,53 @@ Klassificering | Regression | Prognostisering för tidsserier
 ### <a name="primary-metric"></a>Primärt mått
 `primary metric`Parametern bestämmer det mått som ska användas vid modell träning för optimering. Tillgängliga mått som du kan välja bestäms av den aktivitets typ som du väljer och följande tabell visar giltiga primära mått för varje aktivitets typ.
 
+Att välja ett primärt mått för automatisk maskin inlärning för att optimera beror på många faktorer. Vi rekommenderar att du väljer ett mått som bäst motsvarar dina affärs behov. Överväg sedan om måttet är lämpligt för din data uppsättnings profil (data storlek, intervall, klass distribution osv.).
+
 Lär dig mer om de olika definitionerna av dessa mått i [förstå automatiserade maskin inlärnings resultat](how-to-understand-automated-ml.md).
 
 |Klassificering | Regression | Prognostisering för tidsserier
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>Primära mått för klassificerings scenarier 
+
+Publicera tröskel mått, som,, `accuracy` `average_precision_score_weighted` `norm_macro_recall` och `precision_score_weighted` kanske inte optimerar även för data uppsättningar som är mycket små, har mycket stor klass skevning (klass obalans) eller när det förväntade mått svärdet är mycket nära 0,0 eller 1,0. I dessa fall `AUC_weighted` kan du välja ett bättre alternativ för det primära måttet. När den automatiska maskin inlärningen är klar kan du välja den vinnande modellen baserat på det mått som passar bäst för dina affärs behov.
+
+| Metric | Exempel på användnings fall |
+| ------ | ------- |
+| `accuracy` | Bild klassificering, sentiment analys, omsättnings förutsägelse |
+| `AUC_weighted` | Bedrägeri identifiering, bild klassificering, avvikelse identifiering/skräp identifiering |
+| `average_precision_score_weighted` | Attitydanalys |
+| `norm_macro_recall` | Omsättnings förutsägelse |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>Primära mått för Regressions scenarier
+
+Mått som `r2_score` och `spearman_correlation` kan bättre representera modellens kvalitet när skalan för värdet-till-predict täcker många storleksordningar. För till exempel löne uppskattning, där många människor har en lön på $20 000 till $100 000, men skalan är mycket hög med några löner i $100 miljoner-intervallet. 
+
+`normalized_mean_absolute_error``normalized_root_mean_squared_error`i det här fallet behandlar ett $20 000-förutsägelser på samma sätt för en anställd med en $30 000-lön som en anställd som gör $20 miljoner. I verkligheten är det mycket enkelt att förutsäga $20 000 från en $20 miljoner-lön (en liten 0,1% relativ skillnad), medan $20 000 från $30 000 inte stängs (en stor 67% relativ skillnad). `normalized_mean_absolute_error` och `normalized_root_mean_squared_error` är användbara när värdena som ska förutsäga är i liknande skala.
+
+| Metric | Exempel på användnings fall |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Pris förutsägelse (hus/produkt/tips) granska Poäng förutsägelsen |
+| `r2_score` | Flyg fördröjning, löne uppskattning, fel lösnings tid |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>Primära mått för tids serie prognos scenarier
+
+Se Regressions anteckningar ovan.
+
+| Metric | Exempel på användnings fall |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | Pris förutsägelse (Prognosticering), inventerings optimering, efter frågan på prognoser |
+| `r2_score` | Pris förutsägelse (Prognosticering), inventerings optimering, efter frågan på prognoser |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>Data funktionalisering
 
@@ -219,7 +257,7 @@ I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt
 
 När du konfigurerar experiment i `AutoMLConfig` objektet kan du aktivera/inaktivera inställningen `featurization` . I följande tabell visas de accepterade inställningarna för funktionalisering i [AutoMLConfig-objektet](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Funktionalisering-konfiguration | Beskrivning |
+|Funktionalisering-konfiguration | Description |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att [data guardrails och funktionalisering-steg](how-to-configure-auto-features.md#featurization) utförs automatiskt när en del av förbearbetningen. **Standardinställning**.|
 |`"featurization": 'off'`| Anger att funktionalisering-steget inte ska göras automatiskt.|

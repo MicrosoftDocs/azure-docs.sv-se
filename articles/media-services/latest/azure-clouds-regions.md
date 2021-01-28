@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3-moln och regioner tillgänglighet
+title: Tillgänglighet för Azure Media Services v3-regioner
 description: Den här artikeln pratar om Azure-moln och regioner där Azure Media Services v3 är tillgängligt.
 services: media-services
 author: IngridAtMicrosoft
@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 20c025cfabf6ed3cedd838f8be964bec06ad595e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 91df515703b4b6b368b07482fad1aa8b781281f6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242720"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954454"
 ---
 # <a name="azure-media-services-v3-clouds-and-regions-availability"></a>Azure Media Services v3-moln och regioner tillgänglighet
 
@@ -66,7 +66,7 @@ Använd navigeringen till höger för att hitta den region som du är intresse r
 ## <a name="see-also"></a>Se även
 
 * [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Regionala kod namn och slut punkter](azure-regions-code-names.md)
+* [Regionala kodnamn och slutpunkter](azure-regions-code-names.md)
 * [Geografiska områden i Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure-platser](https://azure.microsoft.com/global-infrastructure/locations/)
 

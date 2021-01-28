@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 729839c8e881f507e103c4644c012d8dffc5c8c6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060623"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956375"
 ---
 I den här självstudien krävs följande Azure-resurser:
 
@@ -26,7 +26,20 @@ I den här snabb starten rekommenderar vi att du använder [installations skript
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    När skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration.
+    När skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration. Totalt 12 resurser kommer att konfigureras med skriptet:
+    1. **Slut punkt för direkt uppspelning** – det här hjälper dig att spela upp den registrerade AMS-till gången.
+    1. **Virtuell dator** – det här är en virtuell dator som fungerar som din gräns enhet.
+    1. **Disk** – det här är en lagrings disk som är ansluten till den virtuella datorn för att lagra medier och artefakter.
+    1. **Nätverks säkerhets grupp** – detta används för att filtrera nätverks trafik till och från Azure-resurser i ett virtuellt Azure-nätverk.
+    1. **Nätverks gränssnitt** – detta gör att en virtuell Azure-dator kan kommunicera med Internet, Azure och andra resurser.
+    1. **Skydds-anslutning** – med det här alternativet kan du ansluta till din virtuella dator med webbläsaren och Azure Portal.
+    1. **Offentlig IP-adress** – detta gör att Azure-resurser kan kommunicera med Internet och offentliga Azure-tjänster
+    1. **Virtuellt nätverk** – Detta möjliggör många typer av Azure-resurser, till exempel den virtuella datorn, för att kommunicera på ett säkert sätt med varandra, Internet och lokala nätverk. Läs mer om [virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **IoT Hub** – detta fungerar som en central meddelande hubb för dubbelriktad kommunikation mellan IoT-programmet, IoT Edge moduler och de enheter som hanteras.
+    1. **Media Service-konto** – detta hjälper till att hantera och strömma medie innehåll i Azure.
+    1. **Lagrings konto** – du måste ha ett primärt lagrings konto och du kan ha valfritt antal sekundära lagrings konton som är kopplade till ditt Media Services-konto. Mer information finns i [Azure Storage konton med Azure Media Services-konton](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Behållar register** – det hjälper till att lagra och hantera dina privata Docker-behållar avbildningar och relaterade artefakter.
+
 1. När skriptet har körts väljer du klammerparenteserna för att exponera mappstrukturen. Du ser några filer i katalogen *~/clouddrive/lva-Sample* . Intressanthet i den här snabb starten är:
 
      * ***~/clouddrive/lva-Sample/Edge-Deployment/.env** _ – den här filen innehåller egenskaper som Visual Studio Code använder för att distribuera moduler till en Edge-enhet.

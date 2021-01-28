@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ef4381f305292b366348aa3729209dc3f5e8c87b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358600"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954097"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Självstudie: Konfigurera arbets dag till användar etablering i Azure AD
 Syftet med den här självstudien är att visa de steg som du måste utföra för att etablera arbetarnas data från arbets dagar till Azure Active Directory. 
@@ -47,7 +47,7 @@ Den här arbets dagen för att Azure Active Directory användar etablerings lös
 
 * Organisationer som använder Microsoft 365 för e-post
 
-## <a name="solution-architecture"></a>Lösningsarkitekturen
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 I det här avsnittet beskrivs slut punkt till slut punkt för användar etablerings lösnings arkitekturen för endast molnbaserade användare. Det finns två relaterade flöden:
 
@@ -208,11 +208,11 @@ När du har slutfört konfigurationen av appar för arbets dag etablering kan du
 
 ## <a name="next-steps"></a>Nästa steg
 
+* [Läs mer om Azure AD-och arbets plats integrerings scenarier och webb tjänst anrop](../app-provisioning/workday-integration-reference.md)
 * [Läs mer om de Workday-attribut som stöds för inkommande etablering](../app-provisioning/workday-attribute-reference.md)
 * [Lär dig hur du konfigurerar tillbakaskrivning av arbets dagar](workday-writeback-tutorial.md)
 * [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)
 * [Lär dig hur du konfigurerar enkel inloggning mellan arbets dagar och Azure Active Directory](workday-tutorial.md)
-* [Lär dig hur du integrerar andra SaaS-program med Azure Active Directory](tutorial-list.md)
 * [Lär dig hur du exporterar och importerar dina etablerings konfigurationer](../app-provisioning/export-import-provisioning-configuration.md)
 
 

@@ -1,5 +1,5 @@
 ---
-title: Ett innehålls skydds system med flera DRM-Azure Media Services v3
+title: Ett innehålls skydds system med flera DRM
 description: Den här artikeln innehåller en detaljerad beskrivning av hur du utformar ett innehålls skydds system med flera DRM med Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0104dd2761f74fbd84486aebbf8c3c4e128eb08
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89298206"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954909"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll
 
@@ -141,7 +141,7 @@ I följande tabell visas mappningen.
 | **Arbets flöde för DRM-skydd** |Azure Media Services dynamiskt skydd |
 | **DRM-licensleverans** |* Media Services licens leverans (PlayReady, Widevine, FairPlay) <br/>* Axinom licens Server <br/>* Anpassad PlayReady-licensserver |
 | **Kommer** |Slut punkt för Azure Media Services strömning |
-| **Nyckelhantering** |Krävs inte för referens implementering |
+| **Nyckel hantering** |Krävs inte för referens implementering |
 | **Innehållshantering** |Ett C#-konsol program |
 
 Med andra ord tillhandahålls både IDP och STS av Azure AD. [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) : t används för spelaren. Både Azure Media Services och Azure Media Player stöd för CENC över streck, FairPlay över HLS, PlayReady över smidig strömning och AES-128-kryptering för streck, HLS och smidighet.

@@ -1,9 +1,25 @@
 ---
-rubrik: Azure Media Services DRM-kryptering och licens leverans tjänst: Azure Media Services Beskrivning: Lär dig hur du använder DRM Dynamic Encryption och licens leverans tjänsten för att leverera strömmar krypterade med Microsoft PlayReady-, Google Widevine-eller Apple FairPlay-licenser.
-tjänster: Media-Services documentationcenter: ' ' author: IngridAtMicrosoft Manager: femila Editor: ' '
-
-MS. service: Media-Services MS. arbets belastning: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: självstudie MS. Date: 08/31/2020 MS. author: inhenkel MS. Custom: seodec18
-
+title: Media Services DRM-kryptering och licens leverans
+description: Lär dig hur du använder DRM Dynamic Encryption och licens leverans tjänsten för att leverera strömmar som är krypterade med Microsoft PlayReady-, Google Widevine-eller Apple FairPlay-licenser.
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: tutorial
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955197"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Självstudie: använda DRM dynamisk kryptering och licens leverans tjänst
 

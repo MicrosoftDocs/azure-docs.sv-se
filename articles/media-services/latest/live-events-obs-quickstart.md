@@ -1,5 +1,5 @@
 ---
-title: Skapa en Azure Media Services Live Stream med ONLINEBANKSYSTEM Studio
+title: Skapa en Live-ström med ONLINEBANKSYSTEM Studio
 description: Lär dig hur du skapar en Azure Media Services Live Stream med hjälp av portalen och ONLINEBANKSYSTEM Studio
 services: media-services
 ms.service: media-services
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
-ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89265515"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956080"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Skapa en Azure Media Services Live Stream med ONLINEBANKSYSTEM
 
@@ -67,7 +67,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
    ![Alternativ för moln kodning](media/live-events-obs-quickstart/cloud-encoding.png)
 1. Välj alternativet **RTMP** .
-1. Se till att alternativet **Nej** är markerat för att **starta direkt sändningen**för att undvika att faktureras för direkt sändningen innan det är klart. (Faktureringen påbörjas när Live-händelsen startas.)
+1. Se till att alternativet **Nej** är markerat för att **starta direkt sändningen** för att undvika att faktureras för direkt sändningen innan det är klart. (Faktureringen påbörjas när Live-händelsen startas.)
 
    ![Alternativet Starta Live-händelse](media/live-events-obs-quickstart/start-live-event-no.png)
 1. Granska inställningarna genom att klicka på knappen **Granska + skapa** .

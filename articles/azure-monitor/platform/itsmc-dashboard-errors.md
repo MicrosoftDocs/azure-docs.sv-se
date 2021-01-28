@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762755"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955691"
 ---
 # <a name="errors-in-the-connector-status-section"></a>Fel i avsnittet anslutnings status
 
@@ -66,6 +66,10 @@ I det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings 
 
 * **Fel**: "något gick fel. Det gick inte att hämta anslutnings information. " Det här felet presenteras när kunden definierar ITSM-åtgärds gruppen.
 
-    **Orsak**: nyligen skapade ITSM-anslutningsprogram har ännu slutfört den inledande synkroniseringen.
+    **Orsak**: det här felet visas när:
+    * Nyligen skapade ITSM-anslutningsprogram har ännu slutfört den inledande synkroniseringen.
+    * Kopplingen har inte definierats korrekt
 
-    **Lösning**: när en ny ITSM-anslutning skapas börjar ITSM-anslutningsprogram synkronisera information från ITSM-systemet, till exempel mallar för arbets objekt och arbets objekt. Synkronisera ITSM-anslutningsprogram för att generera en ny uppdateringstoken enligt beskrivningen [här](./itsmc-resync-servicenow.md).
+    **Lösning**: 
+    * När en ny ITSM-anslutning skapas börjar ITSM-anslutningsprogram synkronisera information från ITSM-systemet, till exempel mallar för arbets objekt och arbets objekt. Synkronisera ITSM-anslutningsprogram för att generera en ny uppdateringstoken enligt beskrivningen [här](./itsmc-resync-servicenow.md).
+    * Granska anslutnings informationen i ITSM-anslutaren enligt beskrivningen [här](./itsmc-connections-servicenow.md#create-a-connection) och kontrol lera att din ITSM-anslutning kan [synkroniseras](./itsmc-resync-servicenow.md)korrekt.

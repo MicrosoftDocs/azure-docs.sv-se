@@ -3,12 +3,12 @@ title: Kom igång med live video analys på IoT Edge – Azure
 description: Den här snabb starten visar hur du kommer igång med live video analys på IoT Edge. Lär dig hur du identifierar rörelser i en video ström i real tid.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631944"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955774"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Snabb start: kom igång – direktsända video analyser på IoT Edge
 
@@ -59,7 +59,21 @@ I den här snabb starten rekommenderar vi att du använder [installations skript
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-När skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration. I skriptets utdata visar en resurs tabell namnet på IoT Hub. Sök efter resurs typen **`Microsoft.Devices/IotHubs`** och Anteckna namnet. Du behöver det här namnet i nästa steg.  
+    När skriptet har slutförts bör du se alla nödvändiga resurser i din prenumeration. Totalt 12 resurser kommer att konfigureras med skriptet:
+    1. **Slut punkt för direkt uppspelning** – det här hjälper dig att spela upp den registrerade AMS-till gången.
+    1. **Virtuell dator** – det här är en virtuell dator som fungerar som din gräns enhet.
+    1. **Disk** – det här är en lagrings disk som är ansluten till den virtuella datorn för att lagra medier och artefakter.
+    1. **Nätverks säkerhets grupp** – detta används för att filtrera nätverks trafik till och från Azure-resurser i ett virtuellt Azure-nätverk.
+    1. **Nätverks gränssnitt** – detta gör att en virtuell Azure-dator kan kommunicera med Internet, Azure och andra resurser.
+    1. **Skydds-anslutning** – med det här alternativet kan du ansluta till din virtuella dator med webbläsaren och Azure Portal.
+    1. **Offentlig IP-adress** – detta gör att Azure-resurser kan kommunicera med Internet och offentliga Azure-tjänster
+    1. **Virtuellt nätverk** – Detta möjliggör många typer av Azure-resurser, till exempel den virtuella datorn, för att kommunicera på ett säkert sätt med varandra, Internet och lokala nätverk. Läs mer om [virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **IoT Hub** – detta fungerar som en central meddelande hubb för dubbelriktad kommunikation mellan IoT-programmet, IoT Edge moduler och de enheter som hanteras.
+    1. **Media Service-konto** – detta hjälper till att hantera och strömma medie innehåll i Azure.
+    1. **Lagrings konto** – du måste ha ett primärt lagrings konto och du kan ha valfritt antal sekundära lagrings konton som är kopplade till ditt Media Services-konto. Mer information finns i [Azure Storage konton med Azure Media Services-konton](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
+    1. **Behållar register** – det hjälper till att lagra och hantera dina privata Docker-behållar avbildningar och relaterade artefakter.
+
+I skriptets utdata visar en resurs tabell namnet på IoT Hub. Sök efter resurs typen **`Microsoft.Devices/IotHubs`** och Anteckna namnet. Du behöver det här namnet i nästa steg.  
 
 > [!NOTE]
 > Skriptet genererar också några konfigurationsfiler i katalogen **_~/clouddrive/lva-Sample/_* _. Du behöver dessa filer senare i snabb starten.
@@ -101,6 +115,12 @@ Följ dessa anvisningar för att ansluta till din IoT Hub med hjälp av tillägg
 1. I det nedre vänstra hörnet på fliken **Utforskaren** väljer du **Azure IoT Hub**.
 1. Välj ikonen **fler alternativ** om du vill se snabb menyn. Välj sedan **ange IoT Hub anslutnings sträng**.
 1. När en inmatad ruta visas anger du IoT Hub anslutnings strängen. I Cloud Shell kan du hämta anslutnings strängen från *~/clouddrive/lva-sample/appsettings.jspå*.
+
+> [!NOTE]
+> Du kan bli ombedd att ange information om inbyggd slut punkt för IoT Hub. Om du vill hämta den informationen går du till IoT Hub i Azure Portal och letar efter **inbyggda slut punkts** alternativ i det vänstra navigerings fönstret. Klicka där och leta efter den **Event Hub-kompatibla slut punkten** under avsnittet **händelsehubben-kompatibel slut punkt** . Kopiera och Använd texten i rutan. Slut punkten kommer att se ut ungefär så här:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
 
 Om anslutningen lyckas visas listan över gräns enheter. Du bör se minst en enhet med namnet **lva-Sample-Device**. Nu kan du hantera dina IoT Edge enheter och interagera med Azure IoT Hub via snabb menyn. Om du vill visa de moduler som har distribuerats på gräns enheten expanderar du noden **moduler** under **lva-Sample-Device**.
 

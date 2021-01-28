@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 01/18/2021
 ms.author: chmutali
-ms.openlocfilehash: 251e1d4249373ec52afb3d7edaa2325c992b66f1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 38a93d5db6f8331da6e7afdef3e91b2764537459
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570169"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954029"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Hur Azure Active Directory etablering integreras med Workday
 
@@ -43,7 +43,7 @@ För att ytterligare skydda anslutningen mellan Azure AD Provisioning-tjänsten 
 1. Kopiera alla IP-adressintervall som anges i elementets *addressPrefixes* och Använd intervallet för att bygga IP-adress listan.
 1. Logga in på arbets dag administrations portalen. 
 1. Öppna aktiviteten **Underhåll IP-intervall** för att skapa ett nytt IP-intervall för Azure-datacenter. Ange IP-intervall (med CIDR-notering) som en kommaavgränsad lista.  
-1. Skapa en ny autentiseringsprincip genom att öppna aktiviteten **Hantera autentiseringsprinciper** . I autentiseringsprincip använder du **Authentication vitlista** för att ange IP-intervallet för Azure AD och säkerhets gruppen som kommer att få åtkomst från det här IP-intervallet. Spara ändringarna. 
+1. Skapa en ny autentiseringsprincip genom att öppna aktiviteten **Hantera autentiseringsprinciper** . I autentiseringsprincip använder du listan över tillåtna autentiseringar för att ange IP-intervallet för Azure AD och säkerhets gruppen som kommer att få åtkomst från det här IP-intervallet. Spara ändringarna. 
 1. Öppna aktiviteten **Aktivera alla väntande autentiserings principer ändringar** för att bekräfta ändringar.
 
 ### <a name="limiting-access-to-worker-data-in-workday-using-constrained-security-groups"></a>Begränsa åtkomsten till arbetarnas data i arbets dagen med begränsade säkerhets grupper
@@ -348,7 +348,7 @@ Om någon av ovanstående frågor returnerar en kommande anställnings anställd
 </Get_Workers_Request>
 ```
 
-### <a name="retrieving-worker-data-attributes"></a>Hämtar dataattribut för arbets data
+## <a name="retrieving-worker-data-attributes"></a>Hämtar dataattribut för arbets data
 
 *Get_Workers* -API: et kan returnera olika data uppsättningar som är associerade med en arbetare. Beroende på vilka [XPath API-uttryck](workday-attribute-reference.md) som kon figurer ATS i etablerings schemat, avgör Azure AD Provisioning-tjänsten vilka data uppsättningar som hämtas från arbets dagen. Därför anges *Response_Group* flaggor i *Get_Workers* begäran. 
 
@@ -402,6 +402,9 @@ Tabellen nedan innehåller vägledning om hur du mappar konfigurationen som ska 
 | 44 | Personal utvärderings data               | Inga                  | WD: Worker \_ -data/WD: personal \_ utvärderings \_ data                                   |
 | 45 | Användar konto data                    | Inga                  | WD: Worker \_ -data/WD: användar \_ konto \_ data                                        |
 | 46 | Dokument data för arbetare                 | Inga                  | WD: Worker \_ -data/WD: arbetar- \_ dokument \_ data                                     |
+
+>[!NOTE]
+>Varje Workday-enhet som anges i tabellen skyddas av en **säkerhets princip** för en domän i Workday. Om du inte kan hämta några attribut som är kopplade till entiteten efter att ha angett rätt XPATH, kontrollerar du med din Workday-administratör för att säkerställa att rätt domän säkerhets princip har kon figurer ATS för den integrations system användare som är associerad med etablerings appen. För att till exempel hämta *kunskaps data* *krävs åtkomst till* arbets dag för domän *Worker-data: kunskaper och erfarenhet*. 
 
 Här följer några exempel på hur du kan utöka Workday-integreringen för att uppfylla särskilda krav. 
 
