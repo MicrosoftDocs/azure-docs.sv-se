@@ -3,16 +3,13 @@ title: Apache Spark strömmande program stoppas efter 24 dagar i Azure HDInsight
 description: Ett Apache Spark streaming-program stoppas efter att det har körts i 24 dagar och det finns inga fel i loggfilerna.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 83bdb4a9913ae817204fb37320f5bdb8174d5baf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b702cbf915e4991df4c202564677ea7e0a02f9c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288032"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929466"
 ---
 # <a name="scenario-apache-spark-streaming-application-stops-after-executing-for-24-days-in-azure-hdinsight"></a>Scenario: Apache Spark strömnings program stoppas efter att ha körts i 24 dagar i Azure HDInsight
 

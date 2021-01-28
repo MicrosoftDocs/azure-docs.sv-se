@@ -1,19 +1,16 @@
 ---
 title: Vad är Apache Storm – Azure HDInsight
 description: Med Apache Storm kan du bearbeta dataströmmar i realtid. Med Azure HDInsight kan du enkelt skapa Storm-kluster på Azure-molnet. Med Visual Studio kan du skapa Storm-lösningar med hjälp av C# och sedan distribuera dem till dina HDInsight Storm-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 97b1466e6ac1f2c2dfb931655b64b0f9937ba21d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82183270"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928902"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Vad är Apache Storm på Azure HDInsight?
 
@@ -63,7 +60,7 @@ Standardkonfigurationen för Apache Storm är att bara ha en Nimbus-nod. Storm p
 
 ## <a name="ease-of-use"></a>Enkel att använda
 
-|Användning |Beskrivning |
+|Användning |Description |
 |---|---|
 |Secure Shell (SSH)-anslutning|Du kan komma åt huvudnoderna i ditt Storm-kluster via Internet med hjälp av SSH. Du kan köra kommandon direkt i klustret med hjälp av SSH. Mer information finns i [använda SSH med HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Webb anslutning|Alla HDInsight-kluster tillhandahåller Ambari-webbgränssnittet. Du kan enkelt övervaka, konfigurera och hantera tjänster i klustret med hjälp av Ambari-webbanvändargränssnittet. Storm-kluster ger också Storm-användargränssnitt. Du kan övervaka och hantera Storm-topologier som körs från din webbläsare med hjälp av Storm-användargränssnittet. Mer information finns i [Hantera HDInsight med hjälp av Apache Ambari-WEBBgränssnittet](../hdinsight-hadoop-manage-ambari.md) och [övervaka och hantera med hjälp av Apache Storm UI](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) -dokument.|
@@ -91,7 +88,7 @@ Nedan följer några vanliga scenarier där du kan använda Storm i HDInsight:
 * Sociala analyser
 * Extrahering, transformering och inläsning (ETL)
 * Nätverksövervakning
-* Search
+* Sök
 * Mobile engagement
 
 Information om verkliga scenarier finns i [hur företag använder Apache Storm](https://storm.apache.org/Powered-By.html) -dokument.

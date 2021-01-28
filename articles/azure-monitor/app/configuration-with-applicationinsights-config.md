@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: 7c0759e78b1adc1704acb602daa12cf9cabbe153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d05503c2a22c476d9ab08e8aeb058ca1b9826778
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934811"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928678"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurera Application Insights SDK:n med ApplicationInsights.config eller .xml
 Application Insights .NET SDK består av ett antal NuGet-paket. [Kärn paketet](https://www.nuget.org/packages/Microsoft.ApplicationInsights) innehåller API: et för att skicka telemetri till Application Insights. [Ytterligare paket](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) tillhandahåller telemetri- *moduler* och *initierare* för automatisk spårning av telemetri från ditt program och dess kontext. Genom att justera konfigurations filen kan du aktivera eller inaktivera moduler för telemetri och initierare och ange parametrar för några av dem.
 
-Konfigurations filen heter `ApplicationInsights.config` eller `ApplicationInsights.xml` , beroende på typen av program. Den läggs automatiskt till i projektet när du [installerar de flesta versioner av SDK][start]. När du använder den automatiserade upplevelsen från Visual Studio Template-projekt som har stöd för **Lägg till > Application Insights Telemetry**skapas ApplicationInsights.config filen i rotmappen för projektet och när den är uppfylld kopieras till bin-mappen. Den läggs också till i en webbapp genom att [statusövervakare på en IIS-server][redfield]. Konfigurations filen ignoreras om [tillägget för Azure-webbplatsen](azure-web-apps.md) eller [tillägget för Azure VM och skalnings uppsättningen för virtuella datorer](azure-vm-vmss-apps.md) används.
+Konfigurations filen heter `ApplicationInsights.config` eller `ApplicationInsights.xml` , beroende på typen av program. Den läggs automatiskt till i projektet när du [installerar de flesta versioner av SDK][start]. När du använder den automatiserade upplevelsen från Visual Studio Template-projekt som har stöd för **Lägg till > Application Insights Telemetry** skapas ApplicationInsights.config filen i rotmappen för projektet och när den är uppfylld kopieras till bin-mappen. Den läggs också till i en webbapp genom att [statusövervakare på en IIS-server][redfield]. Konfigurations filen ignoreras om [tillägget för Azure-webbplatsen](azure-web-apps.md) eller [tillägget för Azure VM och skalnings uppsättningen för virtuella datorer](azure-vm-vmss-apps.md) används.
 
 Det finns ingen motsvarande fil för att kontrol lera [SDK: n på en webb sida][client].
 
@@ -87,7 +87,7 @@ Rapporterar [svars tid och resultat kod](../../azure-monitor/app/asp-net.md) fö
 * [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft. ApplicationInsights
-Microsoft. ApplicationInsights-paketet innehåller [kärn-API: t](/dotnet/api/microsoft.applicationinsights?view=azure-dotnet) för SDK: n. De andra modulerna för telemetri använder detta, och du kan också [använda det för att definiera din egen telemetri](./api-custom-events-metrics.md).
+Microsoft. ApplicationInsights-paketet innehåller [kärn-API: t](/dotnet/api/microsoft.applicationinsights) för SDK: n. De andra modulerna för telemetri använder detta, och du kan också [använda det för att definiera din egen telemetri](./api-custom-events-metrics.md).
 
 * Ingen post i ApplicationInsights.config.
 * [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet-paket. Om du bara installerar den här NuGet genereras ingen. config-fil.

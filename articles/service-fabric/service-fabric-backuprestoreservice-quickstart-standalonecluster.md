@@ -3,12 +3,12 @@ title: Regelbunden säkerhets kopiering/återställning i fristående Azure-Serv
 description: Använd en fristående Service Fabric regelbunden säkerhets kopierings-och återställnings funktion för att aktivera regelbunden säkerhets kopiering av program data.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4abf1cd4561a40aaafa5c01865eb12882884422
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538593"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927953"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Periodisk säkerhets kopiering och återställning i en fristående Service Fabric
 > [!div class="op_single_selector"]
@@ -47,11 +47,16 @@ Service Fabric innehåller en uppsättning API: er för att uppnå följande fun
 * X. 509-certifikat för kryptering av hemligheter som behövs för att ansluta till lagring för att lagra säkerhets kopior. Se [artikeln](service-fabric-windows-cluster-x509-security.md) för att lära dig hur du hämtar eller skapar ett självsignerat X. 509-certifikat.
 
 * Service Fabric tillförlitligt tillstånds känsligt program som skapats med Service Fabric SDK version 3,0 eller senare. För program som är riktade till .NET Core 2,0 bör programmet skapas med hjälp av Service Fabric SDK version 3,1 eller senare.
-* Installera Microsoft. ServiceFabric. PowerShell. http-modulen [i för hands versionen] för att göra konfigurations anrop.
+* Installera Microsoft. ServiceFabric. PowerShell. http-modulen (för hands version) för att göra konfigurations anrop.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Om din PowerShellGet-version är mindre än 1.6.0 måste du uppdatera för att lägga till stöd för flaggan *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * Kontrol lera att klustret är anslutet med `Connect-SFCluster` kommandot innan du gör någon konfigurations förfrågan med hjälp av Microsoft. ServiceFabric. PowerShell. http-modulen.
 

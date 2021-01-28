@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 570fd7f356969bbd37ef6b661334501a062c36df
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165696"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928801"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Åtkomst nivåer för Azure Blob Storage – frekvent, låg frekvent och Arkiv lag ring
 
@@ -86,7 +86,7 @@ Exempel på användnings scenarier för Arkiv åtkomst nivån är:
 - Efterlevnads-och arkiverings data som behöver lagras under en längre tid och som inte har kunnat nås
 
 > [!NOTE]
-> Arkiv nivån stöds inte för ZRS-, GZRS-eller RA-GZRS-konton.
+> Arkiv nivån stöds inte för ZRS-, GZRS-eller RA-GZRS-konton. Migrering från LRS till GRS stöds inte om lagrings kontot innehåller blobar på Arkiv nivån.
 
 ## <a name="account-level-tiering"></a>Skiktning på konto nivå
 
@@ -146,7 +146,7 @@ I följande tabell visas en jämförelse av Premium Performance Block Blob Stora
 |                                           | **Förstklassig prestanda**   | **Frekvent nivå** | **Låg frekvent nivå**       | **Arkiv lag ring**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Tillgänglighet**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
-| **Tillgänglighet** <br> **(RA-GRS-läsningar)**  | Saknas                       | 99,99 %       | 99,9 %               | Offline           |
+| **Tillgänglighet** <br> **(RA-GRS-läsningar)**  | Ej tillämpligt                       | 99,99 %       | 99,9 %               | Offline           |
 | **Användnings kostnader**                         | Högre kostnader för lagring, lägre åtkomst och kostnad för transaktioner | Högre kostnader för lagring, lägre åtkomst och transaktionskostnader | Lägre kostnader för lagring, högre åtkomst och transaktionskostnader | Lägsta kostnader för lagring, högsta åtkomst och transaktionskostnader |
 | **Minsta lagringstid**              | Saknas                       | Saknas          | 30 dagar<sup>1</sup> | 180 dagar
 | **Svarstid** <br> **(Tid till första byte)** | Ensiffriga millisekunder | millisekunder | millisekunder        | timmar<sup>2</sup> |

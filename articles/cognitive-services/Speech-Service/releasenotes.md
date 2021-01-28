@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 050c16670ea0c6df53345216d8dd450c159792ea
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401159"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927456"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
 
@@ -86,9 +86,9 @@ Gå till [verktyget för att skapa ljud innehåll](https://speech.microsoft.com/
 - **Python/mål-C**: stöd har lagts till för `KeywordRecognizer` API: et. Dokumentationen kommer att vara [här](./custom-keyword-basics.md).
 - **C++/Java/C #**: stöd har lagts till för att ange `HttpHeader` nyckel/värde via `ServicePropertyChannel::HttpHeader` .
 - **Java Script**: stöd har lagts till för `ConversationTranscriber` API: et. Läs dokumentationen [här](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript). 
-- **C++/c #**: ny metod har lagts till `AudioDataStream FromWavFileInput` (läses. WAV-filer) [här (C++)](/cpp/cognitive-services/speech/audiodatastream) och [här (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
--  **C++/c #/Java/python/Objective-C/Swift**: en metod har lagts `stopSpeakingAsync()` till för att stoppa text till tal-Sammanfattning. Läs referens dokumentationen [här (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [här (C#](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)), här ( [Java)](/java/api/com.microsoft.cognitiveservices.speech), här [(](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)) och [här (mål-C/SWIFT)](/objectivec/cognitive-services/speech/).
-- **C#, C++, Java**: en funktion har lagts `FromDialogServiceConnector()` till i `Connection` klassen som kan användas för att övervaka anslutnings-och från kopplings händelser för `DialogServiceConnector` . Läs referens dokumentationen [här (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [här (C++)](/cpp/cognitive-services/speech/connection)och [här (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
+- **C++/c #**: ny metod har lagts till `AudioDataStream FromWavFileInput` (läses. WAV-filer) [här (C++)](/cpp/cognitive-services/speech/audiodatastream) och [här (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream).
+-  **C++/c #/Java/python/Objective-C/Swift**: en metod har lagts `stopSpeakingAsync()` till för att stoppa text till tal-Sammanfattning. Läs referens dokumentationen [här (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [här (C#](/dotnet/api/microsoft.cognitiveservices.speech)), här ( [Java)](/java/api/com.microsoft.cognitiveservices.speech), här [(](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech)) och [här (mål-C/SWIFT)](/objectivec/cognitive-services/speech/).
+- **C#, C++, Java**: en funktion har lagts `FromDialogServiceConnector()` till i `Connection` klassen som kan användas för att övervaka anslutnings-och från kopplings händelser för `DialogServiceConnector` . Läs referens dokumentationen [här (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection), [här (C++)](/cpp/cognitive-services/speech/connection)och [här (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
 - **C++/c #/Java/python/Objective-C/Swift**: stöd har lagts till för uttal av uttal, vilket utvärderar tal uttal och ger talare feedback om precisionen och Fluency av talade ljud. Läs dokumentationen [här](how-to-pronunciation-assessment.md).
 
 **Bryta ändring**
@@ -387,18 +387,18 @@ Håll dig frisk!
 **Nya funktioner**
 - Linux: stöd har lagts till för Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 med [instruktioner](./how-to-configure-rhel-centos-7.md) för hur du konfigurerar systemet för tal-SDK.
 - Linux: stöd för .NET Core C# på Linux ARM32 och ARM64 har lagts till. Läs mer [här](./speech-sdk.md?tabs=linux). 
-- C#, C++: lades till `UtteranceId` i `ConversationTranscriptionResult` , ett konsekvent ID för alla resultat från mellanliggande och slutlig tal igenkänning. Information för [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?preserve-view=true&view=azure-dotnet), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
+- C#, C++: lades till `UtteranceId` i `ConversationTranscriptionResult` , ett konsekvent ID för alla resultat från mellanliggande och slutlig tal igenkänning. Information för [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult), [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
 - Python: stöd har lagts till för `Language ID` . Se speech_sample. py i [GitHub lagrings platsen](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console).
 - Windows: stödet för komprimerad ljud inspelning har lagts till i Windows-plattformen för alla Win32-konsol program. Information [här](./how-to-use-codec-compressed-audio-input-streams.md). 
 - Java Script: stöd för tal syntes (text till tal) i NodeJS. Läs mer [här](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
 - Java Script: Lägg till nya API: er för att aktivera inspektion av alla meddelanden som skickas och tagits emot. Läs mer [här](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
         
 **Fel korrigeringar**
-- C#, C++: åtgärdat ett problem `SendMessageAsync` skickar nu binärt meddelande som binär typ. Information för [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection).
-- C#, C++: ett problem där händelse används `Connection MessageReceived` kan orsaka krasch om `Recognizer` tas bort före `Connection` objektet. Information för [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?preserve-view=true&view=azure-dotnet), [C++](/cpp/cognitive-services/speech/connection#messagereceived).
+- C#, C++: åtgärdat ett problem `SendMessageAsync` skickar nu binärt meddelande som binär typ. Information för [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](/cpp/cognitive-services/speech/connection).
+- C#, C++: ett problem där händelse används `Connection MessageReceived` kan orsaka krasch om `Recognizer` tas bort före `Connection` objektet. Information för [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived), [C++](/cpp/cognitive-services/speech/connection#messagereceived).
 - Android: ljudbuffertens storlek från mikrofonen minskade från 800ms till 100 ms för att förbättra svars tiden.
 - Android: Åtgärdade ett [problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) med x86 Android-emulator i Android Studio.
-- Java Script: stöd har lagts till för regioner i Kina med `fromSubscription` API: et. Information [här](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest#fromsubscription-string--string-). 
+- Java Script: stöd har lagts till för regioner i Kina med `fromSubscription` API: et. Information [här](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#fromsubscription-string--string-). 
 - Java Script: Lägg till mer fel information för anslutnings fel från NodeJS.
         
 **Exempel**

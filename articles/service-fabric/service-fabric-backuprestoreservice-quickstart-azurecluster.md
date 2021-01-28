@@ -3,12 +3,12 @@ title: Regelbunden säkerhetskopiering och återställning i Azure Service Fabri
 description: Använd Service Fabric periodiska säkerhets kopierings-och återställnings funktionen för att aktivera regelbunden data säkerhets kopiering av program data.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538678"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927991"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodisk säkerhets kopiering och återställning i ett Azure Service Fabric-kluster
 > [!div class="op_single_selector"]
@@ -48,11 +48,16 @@ Service Fabric innehåller en uppsättning API: er för att uppnå följande fun
 * X. 509-certifikat för kryptering av hemligheter som behövs för att ansluta till lagring för att lagra säkerhets kopior. Se [artikeln](service-fabric-cluster-creation-via-arm.md) för att lära dig hur du hämtar eller skapar ett X. 509-certifikat.
 * Service Fabric tillförlitligt tillstånds känsligt program som skapats med Service Fabric SDK version 3,0 eller senare. För program som är riktade till .NET Core 2,0 ska programmet skapas med hjälp av Service Fabric SDK version 3,1 eller senare.
 * Skapa Azure Storage-konto för att lagra säkerhets kopior av program.
-* Installera Microsoft. ServiceFabric. PowerShell. http-modulen [i för hands versionen] för att göra konfigurations anrop.
+* Installera Microsoft. ServiceFabric. PowerShell. http-modulen (för hands version) för att göra konfigurations anrop.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Om din PowerShellGet-version är mindre än 1.6.0 måste du uppdatera för att lägga till stöd för flaggan *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * Kontrol lera att klustret är anslutet med `Connect-SFCluster` kommandot innan du gör någon konfigurations förfrågan med hjälp av Microsoft. ServiceFabric. PowerShell. http-modulen.
 

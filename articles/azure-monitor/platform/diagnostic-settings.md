@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 29e50a5c9b306d0e4491852fd08ecdf73026ebc2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882253"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927739"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser
 [Plattforms loggar](platform-logs-overview.md) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. [Plattforms mått](data-platform-metrics.md) samlas in som standard och lagras vanligt vis i Azure Monitor Metrics-databasen. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål.
@@ -149,7 +149,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Skapa med Azure CLI
 
-Använd kommandot [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) för att skapa en diagnostisk inställning med [Azure CLI](/cli/azure/monitor?view=azure-cli-latest). I dokumentationen för det här kommandot finns beskrivningar av parametrarna.
+Använd kommandot [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) för att skapa en diagnostisk inställning med [Azure CLI](/cli/azure/monitor). I dokumentationen för det här kommandot finns beskrivningar av parametrarna.
 
 > [!IMPORTANT]
 > Du kan inte använda den här metoden för Azures aktivitets logg. Använd i stället [skapa diagnostisk inställning i Azure monitor att använda en Resource Manager-mall](../samples/resource-manager-diagnostic-settings.md) för att skapa en Resource Manager-mall och distribuera den med cli.

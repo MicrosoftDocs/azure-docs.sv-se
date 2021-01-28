@@ -1,19 +1,16 @@
 ---
 title: Distribuera och hantera Apache Storm topologier på Azure HDInsight
 description: Lär dig hur du distribuerar, övervakar och hanterar Apache Storm-topologier med storm-instrumentpanelen på Linux-baserade HDInsight. Använd Hadoop-verktyg för Visual Studio.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 417819cad3bc2ee258381426dfcee7c800b69d42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995598"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929179"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Distribuera och hantera Apache Storm topologier på Azure HDInsight
 
@@ -172,7 +169,7 @@ Storm-ANVÄNDARGRÄNSSNITTET tillhandahåller ett webb gränssnitt för att arbe
 
 Huvud sidan i storm-ANVÄNDARGRÄNSSNITTET innehåller följande information:
 
-| Section | Description |
+| Avsnitt | Description |
 | --- | --- |
 | Klustersammanfattning| Grundläggande information om Storm-klustret. |
 | Sammanfattning av Nimbus | En lista med grundläggande Nimbus-information. |
@@ -188,7 +185,7 @@ Huvud sidan för Storm-gränssnittet liknar den här webb sidan:
 
 Om du väljer en länk från avsnittet **topologi Sammanfattning** visas följande information om topologin:
 
-| Section | Description |
+| Avsnitt | Description |
 | --- | --- |
 | Översikt över topologi | Grundläggande information om topologin. |
 | Åtgärder för topologi| Hanterings åtgärder som du kan utföra för topologin. De tillgängliga åtgärderna beskrivs senare i det här avsnittet. |
@@ -219,7 +216,7 @@ I avsnittet **topologi åtgärder** kan du välja följande knappar för att utf
 
 Om du väljer en kanalen i avsnittet **kanaler** eller **bultar** visas följande information om det valda objektet:
 
-| Section | Description |
+| Avsnitt | Description |
 | --- | --- |
 | Sammanfattning av komponent | Grundläggande information om kanalen eller bult. |
 | Komponent åtgärder | **Felsök** och **stoppa fel söknings** knapparna. |

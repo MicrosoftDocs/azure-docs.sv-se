@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/20/2020
-ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 5bb072d0ea710e35b4f741836aed143e962a326e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706889"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927705"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Ta bort och återställa Azure Log Analytics-arbetsytan
 
@@ -41,9 +41,9 @@ Borttagnings åtgärden för arbets ytan tar bort resurs hanterarens Resource Ma
 > [!NOTE] 
 > Installerade lösningar och länkade tjänster som ditt Azure Automation-konto tas bort permanent från arbets ytan vid borttagnings tillfället och kan inte återställas. Dessa bör konfigureras om efter återställnings åtgärden för att flytta arbets ytan till det tidigare konfigurerade läget.
 
-Du kan ta bort en arbets yta med [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true), [REST API](/rest/api/loganalytics/workspaces/delete)eller i [Azure Portal](https://portal.azure.com).
+Du kan ta bort en arbets yta med [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace), [REST API](/rest/api/loganalytics/workspaces/delete)eller i [Azure Portal](https://portal.azure.com).
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). 
 2. Välj **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Log Analytics**. När du börjar skriva filtreras listan baserat på det du skriver. Välj **Log Analytics arbets ytor**.
@@ -86,7 +86,7 @@ Du kan återställa arbets ytan under den mjuka borttagnings perioden, inklusive
 > [!IMPORTANT]
 > Om din arbets yta har tagits bort som en del av åtgärden ta bort resurs grupp måste du först återskapa resurs gruppen.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). 
 2. Välj **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Log Analytics**. När du börjar skriva filtreras listan baserat på det du skriver. Välj **Log Analytics arbets ytor**. Du ser listan över arbets ytor som du har i det valda omfånget.

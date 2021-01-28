@@ -1,25 +1,22 @@
 ---
 title: Exempel Apache Storm topologier i Azure HDInsight
 description: En lista över exempel på Storm-topologier som skapats och testats med Apache Storm på HDInsight, inklusive Basic C#-och Java-topologier, och arbetar med Event Hubs.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: cfc68b144eac16681f162b3574a82351397ed37c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dabfec18cb904fa72518428220991b817b53529
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086865"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928915"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Exempel Apache Storm topologier och komponenter för Apache Storm i HDInsight
 
 Följande är en lista över exempel som skapats och underhålls av Microsoft för användning med [Apache Storm](https://storm.apache.org/) i HDInsight. De här exemplen innehåller flera olika ämnen, från att skapa Basic C#-och Java-topologier för att arbeta med Azure-tjänster som Event Hubs, Cosmos DB, SQL Database, [Apache HBase](https://hbase.apache.org/) på HDInsight och Azure Storage. Några exempel visar hur du arbetar med icke-Azure, eller till och med icke-Microsoft-tekniker, till exempel SignalR och Socket.IO.
 
-| Beskrivning | Demonstrationer | Språk/ramverk |
+| Description | Demonstrationer | Språk/ramverk |
 |:--- |:--- |:--- |
 | [Skriv till Azure Data Lake Storage från Apache Storm](apache-storm-write-data-lake-store.md) |Skriver till Azure Data Lake Storage |Java |
 | [Event Hub-kanalen och bult-källa](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Källa för Event Hub-kanalen och bult |Java |

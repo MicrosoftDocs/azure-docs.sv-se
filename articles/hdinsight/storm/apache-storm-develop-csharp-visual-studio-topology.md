@@ -2,19 +2,16 @@
 title: Apache Storm topologier med Visual Studio och C# – Azure HDInsight
 description: Lär dig hur du skapar Storm-topologier i C#. Skapa en topologi för ord räkning i Visual Studio med hjälp av Hadoop-verktygen för Visual Studio.
 ROBOTS: NOINDEX
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000200"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929165"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Utveckla C#-topologier för Apache Storm med hjälp av Data Lake verktyg för Visual Studio
 
@@ -59,30 +56,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -127,7 +124,7 @@ Så här skapar du ett C#-Topology-projekt i Visual Studio:
 
 1. I fönstret **Starta** väljer du **skapa ett nytt projekt**.
 
-1. I fönstret **skapa ett nytt projekt** rullar du till och väljer **Storm-program**och väljer sedan **Nästa**.
+1. I fönstret **skapa ett nytt projekt** rullar du till och väljer **Storm-program** och väljer sedan **Nästa**.
 
 1. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** för *WORDCOUNT*, går till eller skapar en **plats** katalog Sök väg för projektet och väljer sedan **skapa**.
 
@@ -221,7 +218,7 @@ Nu ska du skapa två Storm-bultar i det här exemplet:
 
 1. Ta bort den befintliga *Bolt.cs* -filen från projektet.
 
-2. I **Solution Explorer**högerklickar du på projektet och väljer **Lägg till**  >  **nytt objekt**. I listan väljer du **Storm bult**och anger *splitter.cs* som namn. I den nya filens kod ändrar du namn områdets namn till `WordCount` . Upprepa sedan processen för att skapa en andra bult med namnet *Counter.cs*.
+2. I **Solution Explorer** högerklickar du på projektet och väljer **Lägg till**  >  **nytt objekt**. I listan väljer du **Storm bult** och anger *splitter.cs* som namn. I den nya filens kod ändrar du namn områdets namn till `WordCount` . Upprepa sedan processen för att skapa en andra bult med namnet *Counter.cs*.
 
    * *Splitter.cs*: implementerar en bult som delar upp meningar i enskilda ord och avger en ny data ström.
 
@@ -278,7 +275,7 @@ Nu ska du skapa två Storm-bultar i det här exemplet:
     }
     ```
 
-5. Öppna *Counter.cs*och ersätt klass innehållet med följande kod:
+5. Öppna *Counter.cs* och ersätt klass innehållet med följande kod:
 
     ```csharp
     private Context ctx;
@@ -342,7 +339,7 @@ Kanalen avger meningar som distribueras till förekomster av delnings blixten. D
 
 Eftersom räknar instansen innehåller ord antalet lokalt, vill du se till att vissa ord flödar till samma Counter bult-instans. Varje instans håller reda på vissa ord. Eftersom delnings blixten inte har något tillstånd spelar det ingen roll vilken instans av delnings listen som tar emot vilken mening.
 
-Öppna *program.cs*. Den viktiga metoden är `GetTopologyBuilder` , som används för att definiera topologin som skickas till storm. Ersätt innehållet i `GetTopologyBuilder` med följande kod för att implementera topologin som beskrivs ovan:
+Öppna *Program.cs*. Den viktiga metoden är `GetTopologyBuilder` , som används för att definiera topologin som skickas till storm. Ersätt innehållet i `GetTopologyBuilder` med följande kod för att implementera topologin som beskrivs ovan:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -410,7 +407,7 @@ Du är nu redo att skicka topologin till ditt HDInsight-kluster.
 
 1. Högerklicka på **Azure**, Välj **Anslut till Microsoft Azure prenumeration...** och slutför inloggnings processen.
 
-1. I **Solution Explorer**högerklickar du på projektet och väljer **Skicka till storm på HDInsight**.
+1. I **Solution Explorer** högerklickar du på projektet och väljer **Skicka till storm på HDInsight**.
 
 1. I dialog rutan **sändning Topology** , under List rutan **Storm-kluster** väljer du storm på HDInsight-kluster och väljer sedan **Skicka**. Du kan kontrol lera om överföringen lyckas genom att visa fönstret **utdata** .
 
@@ -533,7 +530,7 @@ De senaste versionerna av SCP.NET-uppgraderingen av support paketet via NuGet. N
 
 1. Högerklicka på projektet i **Solution Explorer** och välj **Hantera NuGet-paket**.
 
-2. Välj **uppdateringar**från paket hanteraren. Om det finns en uppdatering för SCP.NET-stödpaketet visas det i listan. Välj **Uppdatera** för paketet och välj sedan **OK** i dialog rutan för hands versioner av **ändringar** .
+2. Välj **uppdateringar** från paket hanteraren. Om det finns en uppdatering för SCP.NET-stödpaketet visas det i listan. Välj **Uppdatera** för paketet och välj sedan **OK** i dialog rutan för hands versioner av **ändringar** .
 
 > [!IMPORTANT]  
 > Om projektet har skapats med en tidigare version av SCP.NET som inte använde NuGet, måste du utföra följande steg för att uppdatera till en nyare version:
@@ -568,16 +565,16 @@ För Linux-baserade HDInsight-kluster ser du till att ditt projekt använder bin
 > [!WARNING]  
 > Lokal testning fungerar bara för topologier med endast C#. Du kan inte använda lokal testning för Hybrid topologier eller topologier som använder flera strömmar.
 
-1. I **Solution Explorer**högerklickar du på projektet och väljer **Egenskaper**. I projekt egenskaperna. Ändra sedan **utdatatypen** till **konsol programmet**.
+1. I **Solution Explorer** högerklickar du på projektet och väljer **Egenskaper**. I projekt egenskaperna. Ändra sedan **utdatatypen** till **konsol programmet**.
 
    ![HDInsight Storm-program, projekt egenskaper, Utdatatyp](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > Kom ihåg att ändra **utdatatypen tillbaka till** **klass biblioteket** innan du distribuerar topologin till ett kluster.
 
-1. I **Solution Explorer**högerklickar du på projektet och väljer sedan **Lägg till**  >  **nytt objekt**. Välj **klass**och ange *LocalTest.cs* som klass namn. Välj slutligen **Lägg till**.
+1. I **Solution Explorer** högerklickar du på projektet och väljer sedan **Lägg till**  >  **nytt objekt**. Välj **klass** och ange *LocalTest.cs* som klass namn. Välj slutligen **Lägg till**.
 
-1. Öppna *LocalTest.cs*och Lägg till följande- `using` instruktion högst upp:
+1. Öppna *LocalTest.cs* och Lägg till följande- `using` instruktion högst upp:
 
     ```csharp
     using Microsoft.SCP;
@@ -664,7 +661,7 @@ För Linux-baserade HDInsight-kluster ser du till att ditt projekt använder bin
 
     Ta en stund att läsa igenom kod kommentarerna. Den här koden används `LocalContext` för att köra komponenterna i utvecklings miljön. Den behåller data strömmen mellan komponenter till textfiler på den lokala enheten.
 
-1. Öppna *program.cs*och Lägg till följande kod i- `Main` metoden:
+1. Öppna *program.cs* och Lägg till följande kod i- `Main` metoden:
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -687,7 +684,7 @@ För Linux-baserade HDInsight-kluster ser du till att ditt projekt använder bin
 
 1. Spara ändringarna och välj sedan **F5** eller Välj **Felsök**  >  **Starta fel sökning** för att starta projektet. Ett konsol fönster bör visas och logg status visas som test förlopp. När `Tests finished` visas väljer du en tangent för att stänga fönstret.
 
-1. Använd **Utforskaren** för att hitta den katalog som innehåller ditt projekt. (Till exempel: *C: \\ användare \\ \<your_user_name> \\ Source \\ databaser \\ WORDCOUNT \\ WORDCOUNT*.) I den här katalogen öppnar du sedan *bin*och väljer sedan *Felsök*. Du bör se de textfiler som skapades när testerna kördes: *sentences.txt*, *counter.txt*och *splitter.txt*. Öppna varje textfil och granska data.
+1. Använd **Utforskaren** för att hitta den katalog som innehåller ditt projekt. (Till exempel: *C: \\ användare \\ \<your_user_name> \\ Source \\ databaser \\ WORDCOUNT \\ WORDCOUNT*.) I den här katalogen öppnar du sedan *bin* och väljer sedan *Felsök*. Du bör se de textfiler som skapades när testerna kördes: *sentences.txt*, *counter.txt* och *splitter.txt*. Öppna varje textfil och granska data.
 
    > [!NOTE]  
    > Sträng data sparas som en matris med decimal värden i de här filerna. `[[97,103,111]]`I **splitter.txt** -filen representerar till exempel ordet *sedan*.
@@ -710,9 +707,9 @@ Loggad information kan visas från **Hadoop-Tjänsteloggen**, som finns i **Serv
 
 Använd följande steg för att visa fel som har inträffat i en topologi som körs:
 
-1. Från **Server Explorer**högerklickar du på HDInsight-klustret och väljer **Visa Storm-topologier**.
+1. Från **Server Explorer** högerklickar du på HDInsight-klustret och väljer **Visa Storm-topologier**.
 
-   I **kanalen** och **bultarna**innehåller den **senaste fel** kolumnen information om det senaste felet.
+   I **kanalen** och **bultarna** innehåller den **senaste fel** kolumnen information om det senaste felet.
 
 2. Välj **kanalen-ID** eller **bult-ID** för komponenten som innehåller ett fel som visas. Sidan information visar ytterligare fel information i avsnittet **fel** längst ned på sidan.
 

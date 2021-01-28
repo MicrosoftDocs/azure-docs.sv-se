@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: skapa/hantera Apache Storm topologi – Azure HDInsight'
 description: I snabb starten lär du dig hur du skapar och övervakar en Apache Storm topologi i Azure HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86045033"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928852"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Snabb start: skapa och övervaka en Apache Storm topologi i Azure HDInsight
 
@@ -49,7 +46,7 @@ Genomför följande för att övervaka topologin med hjälp av Storm-användargr
 
 1. Visa Storm-användargränssnittet genom att öppna en webbläsare på `https://CLUSTERNAME.azurehdinsight.net/stormui`. Ersätt `CLUSTERNAME` med namnet på klustret.
 
-2. Under **topologins Sammanfattning**väljer du posten **WORDCOUNT** i kolumnen **namn** . Detta visar information om topologin.
+2. Under **topologins Sammanfattning** väljer du posten **WORDCOUNT** i kolumnen **namn** . Detta visar information om topologin.
 
     ![Storm Dashboard med storm-starter, topologisk information om WordCount.](./media/apache-storm-quickstart/hdi-topology-summary.png)
 

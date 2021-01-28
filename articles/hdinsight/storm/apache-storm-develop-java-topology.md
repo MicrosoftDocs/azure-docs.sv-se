@@ -1,19 +1,16 @@
 ---
 title: Apache Storm exempel på Java-topologi – Azure HDInsight
 description: Lär dig hur du skapar Apache Storm-topologier i Java genom att skapa ett exempel på ord räknings topologi.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545505"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929130"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Skapa en Apache Storm-topologi i Java
 
@@ -43,7 +40,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Skapa ett Maven-projekt
 
-Ange följande kommando för att skapa ett Maven-projekt med namnet **WORDCOUNT** :
+Ange följande kommando för att skapa ett Maven-projekt med namnet **WORDCOUNT**:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -151,7 +148,7 @@ Vid kompileringen använder maven den här informationen för att leta upp `stor
 > [!NOTE]  
 > Lägg märke till `<scope>provided</scope>` raden i det här avsnittet. Den här inställningen anger att maven ska utesluta **Storm-Core** från alla jar-filer som skapas, eftersom det tillhandahålls av systemet.
 
-## <a name="build-configuration"></a>Bygg konfiguration
+## <a name="build-configuration"></a>Skapa konfiguration
 
 Med maven-plugin-program kan du anpassa projektets Bygg steg. Till exempel hur projektet kompileras eller hur det paketeras i en JAR-fil. I `pom.xml` lägger du till följande text direkt ovanför `</project>` raden.
 
@@ -199,9 +196,9 @@ Det här avsnittet används för att lägga till plugin-program, resurser och an
 
     Ett annat användbart plugin-program är [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) , som används för att ändra Compilation-alternativ. Ändra den Java-version som maven använder för källan och målet för ditt program.
 
-  * För HDInsight __3,4 eller tidigare__ anger du käll-och mål-Java-versionen till __1,7__ .
+  * För HDInsight __3,4 eller tidigare__ anger du käll-och mål-Java-versionen till __1,7__.
 
-  * För HDInsight __3,5__ anger du käll-och mål-Java-versionen till __1,8__ .
+  * För HDInsight __3,5__ anger du käll-och mål-Java-versionen till __1,8__.
 
   Lägg till följande text i `<plugins>` avsnittet i `pom.xml` filen för att inkludera Apache maven compiler-plugin-programmet. Det här exemplet anger 1,8, så målets HDInsight-version är 3,5.
 
@@ -237,11 +234,11 @@ Det här exemplet lägger till resurs katalogen i projekt roten ( `${basedir}` )
 
 En Java-baserad Apache Storm-topologi består av tre komponenter som du måste redigera (eller referens) som ett beroende.
 
-* **Kanaler** : läser data från externa källor och utvärderar data strömmar i topologin.
+* **Kanaler**: läser data från externa källor och utvärderar data strömmar i topologin.
 
-* **Bultar** : bearbetar data strömmar som har avsänts av kanaler eller andra bultar och avger en eller flera strömmar.
+* **Bultar**: bearbetar data strömmar som har avsänts av kanaler eller andra bultar och avger en eller flera strömmar.
 
-* **Topologi** : definierar hur kanaler och bultarna är ordnade och tillhandahåller start punkten för topologin.
+* **Topologi**: definierar hur kanaler och bultarna är ordnade och tillhandahåller start punkten för topologin.
 
 ### <a name="create-the-spout"></a>Skapa kanalen
 
@@ -327,9 +324,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Bultar hanterar data bearbetningen. Bultar kan göra vad som helst, t. ex. beräkning, persistence eller pratar med externa komponenter. Den här topologin använder två bultar:
 
-* **SplitSentence** : delar upp meningarna som avsänts av **RandomSentenceSpout** i enskilda ord.
+* **SplitSentence**: delar upp meningarna som avsänts av **RandomSentenceSpout** i enskilda ord.
 
-* **WORDCOUNT** : räknar hur många gånger varje ord har inträffat.
+* **WORDCOUNT**: räknar hur många gånger varje ord har inträffat.
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -826,7 +823,7 @@ Det går att skapa Trident-program med Maven-projekt. Du använder samma grundl�
 
 Mer information om Trident finns i [Översikt över Trident API](https://storm.apache.org/releases/current/Trident-API-Overview.html).
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Du har lärt dig hur du skapar en Apache Storm topologi med Java. Lär dig nu att:
 

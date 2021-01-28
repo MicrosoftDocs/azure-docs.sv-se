@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006635"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927780"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Skicka loggdata till Azure Monitor med API: t för HTTP-datainsamling (offentlig för hands version)
 Den här artikeln visar hur du använder API: t för HTTP-datainsamling för att skicka logg data till Azure Monitor från en REST API-klient.  Här beskrivs hur du formaterar data som samlats in av ditt skript eller program, inkluderar dem i en begäran och har den begäran som auktoriserats av Azure Monitor.  Exempel finns för PowerShell, C# och python.
@@ -66,7 +66,7 @@ Här är formatet för Authorization-huvudet:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* är den unika identifieraren för Log Analytics arbets ytan. *Signaturen* är en [Hash-baserad Message Authentication Code (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) som är konstruerad från begäran och sedan beräknas med hjälp av [SHA256-algoritmen](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1). Sedan kodar du den med base64-kodning.
+*WorkspaceID* är den unika identifieraren för Log Analytics arbets ytan. *Signaturen* är en [Hash-baserad Message Authentication Code (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256) som är konstruerad från begäran och sedan beräknas med hjälp av [SHA256-algoritmen](/dotnet/api/system.security.cryptography.sha256). Sedan kodar du den med base64-kodning.
 
 Använd det här formatet för att koda signatur strängen **SharedKey** :
 
@@ -651,7 +651,7 @@ public class ApiExample {
 |---|---|---|
 | [Anpassade händelser](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): inbyggd SDK-baserad inmatning i Application Insights | Application Insights, vanligt vis genom ett SDK i ditt program, ger dig möjlighet att skicka anpassade data via anpassade händelser. | <ul><li> Data som genereras i programmet, men som inte hämtats av SDK via någon av standard data typerna (begär Anden, beroenden, undantag och så vidare).</li><li> Data som ofta korreleras med andra program data i Application Insights </li></ul> |
 | API för data insamling i Azure Monitor loggar | API för data insamling i Azure Monitor loggar är ett helt öppet sätt att mata in data. Alla data som är formaterade i ett JSON-objekt kan skickas hit. När den har skickats bearbetas den och är tillgänglig i loggarna för att korreleras med andra data i loggarna eller mot andra Application Insights data. <br/><br/> Det är ganska enkelt att överföra data som filer till en Azure blob-blob, från var de här filerna ska bearbetas och överföras till Log Analytics. I [den här](./create-pipeline-datacollector-api.md) artikeln hittar du en exempel implementering av en sådan pipeline. | <ul><li> Data som inte nödvändigt vis genereras inom ett program som är instrumenterade i Application Insights.</li><li> Exempel är lookup-och fakta tabeller, referens data, församlad statistik och så vidare. </li><li> Avsedd för data som ska refereras till i andra Azure Monitor data (Application Insights, andra loggar data typer, Security Center, Azure Monitor för behållare/VM: ar). </li></ul> |
-| [Azure-datautforskaren](/azure/data-explorer/ingest-data-overview) | Azure Datautforskaren (ADX) är den data plattform som ger Application Insights analys-och Azure Monitors loggar. Nu är det allmänt tillgängligt ("GA"), med hjälp av data plattformen i sin RAW-form, och ger dig fullständig flexibilitet (men kräver hanterings belastning) över klustret (Kubernetes RBAC, bevarande frekvens, schema och så vidare). ADX tillhandahåller många [ingestion options](/azure/data-explorer/ingest-data-overview#ingestion-methods) inmatnings alternativ [, till exempel CSV-, TSV-och JSON-](/azure/kusto/management/mappings?branch=master) filer. | <ul><li> Data som inte kommer att korreleras till andra data under Application Insights eller loggar. </li><li> Data som kräver avancerade inmatnings-eller bearbetnings funktioner som inte redan finns i Azure Monitor loggar. </li></ul> |
+| [Azure-datautforskaren](/azure/data-explorer/ingest-data-overview) | Azure Datautforskaren (ADX) är den data plattform som ger Application Insights analys-och Azure Monitors loggar. Nu är det allmänt tillgängligt ("GA"), med hjälp av data plattformen i sin RAW-form, och ger dig fullständig flexibilitet (men kräver hanterings belastning) över klustret (Kubernetes RBAC, bevarande frekvens, schema och så vidare). ADX tillhandahåller många [](/azure/data-explorer/ingest-data-overview#ingestion-methods) inmatnings alternativ [, till exempel CSV-, TSV-och JSON-](/azure/kusto/management/mappings?branch=master) filer. | <ul><li> Data som inte kommer att korreleras till andra data under Application Insights eller loggar. </li><li> Data som kräver avancerade inmatnings-eller bearbetnings funktioner som inte redan finns i Azure Monitor loggar. </li></ul> |
 
 
 ## <a name="next-steps"></a>Nästa steg

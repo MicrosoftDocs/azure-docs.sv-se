@@ -5,27 +5,32 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247905"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928037"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Säkerhets kopiering på begäran i Azure Service Fabric
 
 Du kan säkerhetskopiera data för pålitliga tillstånds känsliga tjänster och Reliable Actors för att lösa haveri-eller data förlust scenarier.
 
-Azure Service Fabric har funktioner för [regelbunden säkerhets kopiering av data](service-fabric-backuprestoreservice-quickstart-azurecluster.md) och säkerhets kopiering av data baserat på behov. Säkerhets kopiering på begäran är användbart eftersom det skyddar mot _data förlust av data_på / _data corruption_ grund av planerade ändringar i den underliggande tjänsten eller dess miljö.
+Azure Service Fabric har funktioner för [regelbunden säkerhets kopiering av data](service-fabric-backuprestoreservice-quickstart-azurecluster.md) och säkerhets kopiering av data baserat på behov. Säkerhets kopiering på begäran är användbart eftersom det skyddar mot _data förlust av data_ på /  grund av planerade ändringar i den underliggande tjänsten eller dess miljö.
 
 Funktionerna för säkerhets kopiering på begäran är användbara för att fånga tjänsternas status innan du aktiverar en tjänst-eller service miljö-åtgärd manuellt. Om du till exempel gör en ändring i binärfilerna för tjänsten när du uppgraderar eller nedgraderar tjänsten. I sådana fall kan säkerhets kopiering på begäran hjälpa till att skydda data mot skador genom program kod fel.
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-- Installera Microsoft. ServiceFabric. PowerShell. http-modulen [i för hands versionen] för att göra konfigurations anrop.
+- Installera Microsoft. ServiceFabric. PowerShell. http-modulen (för hands version) för att göra konfigurations anrop.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Om din PowerShellGet-version är mindre än 1.6.0 måste du uppdatera för att lägga till stöd för flaggan *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - Kontrol lera att klustret är anslutet med `Connect-SFCluster` kommandot innan du gör någon konfigurations förfrågan med hjälp av Microsoft. ServiceFabric. PowerShell. http-modulen.
 
@@ -149,7 +154,7 @@ Säkerhets kopierings begär Anden på begäran kan ha följande tillstånd:
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **Lyckad**, **misslyckad**eller **tids gräns**: en begärd säkerhets kopiering på begäran kan utföras i något av följande tillstånd:
+- **Lyckad**, **misslyckad** eller **tids gräns**: en begärd säkerhets kopiering på begäran kan utföras i något av följande tillstånd:
   - **Lyckades**: ett _lyckat_ säkerhets kopierings tillstånd indikerar att partitionens tillstånd har säkerhetskopierats. Svaret innehåller _BackupEpoch_ och _BackupLSN_ för partitionen tillsammans med tiden i UTC.
     ```
     BackupState             : Success

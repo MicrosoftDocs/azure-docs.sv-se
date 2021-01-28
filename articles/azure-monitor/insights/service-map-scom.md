@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288e3f0c048bddb3f3378226889dc519de27764b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441502"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927897"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrera System Center Operations Manager med Azure Monitor for VMs kart funktion
 
@@ -38,7 +38,7 @@ Du aktiverar integrationen mellan Operations Manager och Map-funktionen genom at
 
 ## <a name="configure-integration"></a>Konfigurera integrering
 
-När du har installerat Tjänstkarta hanterings paketet visas en ny nod **tjänstkarta**under **Operations Management Suite** i rutan **Administration** i Operations Manager drift konsolen.
+När du har installerat Tjänstkarta hanterings paketet visas en ny nod **tjänstkarta** under **Operations Management Suite** i rutan **Administration** i Operations Manager drift konsolen.
 
 >[!NOTE]
 >[Operations Management Suite var en samling tjänster](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) som innehöll Log Analytics, är nu en del av [Azure Monitor](../overview.md).
@@ -57,7 +57,7 @@ Gör så här för att konfigurera Azure Monitor for VMs Map-integrering:
 
     ![Arbets ytan Operations Manager konfiguration](media/service-map-scom/scom-config-workspace.png)
 
-4. I fönstret **Val av dator grupp** väljer du vilka tjänstkarta dator grupper som du vill synkronisera till Operations Manager. Klicka på **Lägg till/ta bort dator grupper**, Välj grupper i listan över **tillgängliga dator grupper**och klicka på **Lägg till**.  När du är klar med att välja grupper klickar du på **OK** för att avsluta.
+4. I fönstret **Val av dator grupp** väljer du vilka tjänstkarta dator grupper som du vill synkronisera till Operations Manager. Klicka på **Lägg till/ta bort dator grupper**, Välj grupper i listan över **tillgängliga dator grupper** och klicka på **Lägg till**.  När du är klar med att välja grupper klickar du på **OK** för att avsluta.
 
     ![Dator grupper för Operations Manager konfiguration](media/service-map-scom/scom-config-machine-groups.png)
 
@@ -139,7 +139,7 @@ I den aktuella designen presenteras följande problem och begränsningar:
 Officiella Azure-dokumentation om hur du skapar ett huvud namn för tjänsten finns i:
 
 * [Skapa ett huvud namn för tjänsten med hjälp av PowerShell](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Skapa ett huvud namn för tjänsten med hjälp av Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Skapa ett huvud namn för tjänsten med hjälp av Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)
 * [Skapa ett huvud namn för tjänsten med hjälp av Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>Förslag

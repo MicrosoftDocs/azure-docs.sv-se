@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842115"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928654"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Snabb start: skapa en Cognitive Services resurs med en ARM-mall
 
@@ -75,7 +75,7 @@ En Azure-resurs har definierats i mallen:
 > [!NOTE]
 > `az deployment group` Create kräver Azure CLI version 2,6 eller senare. För att Visa versions typen `az --version` . Mer information finns i [dokumentationen](/cli/azure/deployment/group).
 
-Kör följande skript med hjälp av Azure Command Line Interface (CLI) [på den lokala datorn](/cli/azure/install-azure-cli?view=azure-cli-latest)eller i en webbläsare med knappen **prova** . Ange ett namn och en plats (till exempel `centralus` ) för en ny resurs grupp och arm-mallen kommer att användas för att distribuera en Cognitive Services resurs i den. Kom ihåg det namn som du använder. Du kommer att använda den senare för att verifiera distributionen.
+Kör följande skript med hjälp av Azure Command Line Interface (CLI) [på den lokala datorn](/cli/azure/install-azure-cli)eller i en webbläsare med knappen **prova** . Ange ett namn och en plats (till exempel `centralus` ) för en ny resurs grupp och arm-mallen kommer att användas för att distribuera en Cognitive Services resurs i den. Kom ihåg det namn som du använder. Du kommer att använda den senare för att verifiera distributionen.
 
 
 ```azurecli-interactive

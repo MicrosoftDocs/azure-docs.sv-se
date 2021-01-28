@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8566d82ef0d91caff47ff17a9cb12fcdc8241884
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207401"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928022"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Återställa säkerhets kopia i Azure Service Fabric
 
@@ -28,11 +28,16 @@ Du kan till exempel konfigurera en tjänst för att säkerhetskopiera data för 
 - För att utlösa en återställning måste _fel analys tjänsten (fas)_ vara aktive rad för klustret.
 - Säkerhets _kopieringen av BRS (Backup Restore service)_ skapade säkerhets kopian.
 - Återställningen kan bara utlösas på en partition.
-- Installera Microsoft. ServiceFabric. PowerShell. http-modulen [i för hands versionen] för att göra konfigurations anrop.
+- Installera Microsoft. ServiceFabric. PowerShell. http-modulen (för hands version) för att göra konfigurations anrop.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> Om din PowerShellGet-version är mindre än 1.6.0 måste du uppdatera för att lägga till stöd för flaggan *-AllowPrerelease* :
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - Kontrol lera att klustret är anslutet med `Connect-SFCluster` kommandot innan du gör någon konfigurations förfrågan med hjälp av Microsoft. ServiceFabric. PowerShell. http-modulen.
 
@@ -154,7 +159,7 @@ Du måste också välja en måldisk i det alternativa klustret som beskrivs i [p
 
 Om partitions-ID: t i det alternativa klustret är `1c42c47f-439e-4e09-98b9-88b8f60800c6` , kan du mappa det till det ursprungliga partitions-ID: t `974bd92a-b395-4631-8a7f-53bd4ae9cf22` genom att jämföra hög nyckel och låg nyckel för _intervall partitionering (UniformInt64Partition)_.
 
-För _namngiven partitionering_jämförs name-värdet med att identifiera partitionen i ett alternativt kluster.
+För _namngiven partitionering_ jämförs name-värdet med att identifiera partitionen i ett alternativt kluster.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell med hjälp av modulen Microsoft. ServiceFabric. PowerShell. http
 
@@ -205,15 +210,15 @@ Du kan utlösa en återställning från Service Fabric Explorer. Kontrol lera at
 
     ![Utlös partition för återställning av partition][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>Data återställning för _data corruption_data / _förlust_ av data skada
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Data återställning för data / _förlust_ av data skada
 
-För _data förlust_ eller _skadade data_kan säkerhetskopierade partitioner för tillförlitliga tillstånds känsliga tjänster och Reliable Actors partitioner återställas till någon av de valda säkerhets kopiorna.
+För _data förlust_ eller _skadade data_ kan säkerhetskopierade partitioner för tillförlitliga tillstånds känsliga tjänster och Reliable Actors partitioner återställas till någon av de valda säkerhets kopiorna.
 
 Följande exempel är en fortsättning av [aktivering av regelbunden säkerhets kopiering för tillförlitliga tillstånds känsliga tjänster och Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). I det här exemplet är en säkerhets kopierings princip aktive rad för partitionen och tjänsten gör säkerhets kopior enligt önskad frekvens i Azure Storage.
 
 Välj en säkerhets kopia från utdata från  [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). I det här scenariot genereras säkerhets kopieringen från samma kluster som tidigare.
 
-Om du vill utlösa återställningen väljer du en säkerhets kopia i listan. _data loss_ / Välj följande säkerhets kopia för skadade data förlust_data_:
+Om du vill utlösa återställningen väljer du en säkerhets kopia i listan.  / Välj följande säkerhets kopia för skadade data förlust _data_:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -297,7 +302,7 @@ $restoreResponse | Format-List
     RestoredLsn   : 3552
     ```
     
-3. **Lyckad**, **misslyckad**eller **tids gräns**: en begärd återställning kan utföras i något av följande tillstånd. Varje tillstånd har följande betydelse-och svars information:
+3. **Lyckad**, **misslyckad** eller **tids gräns**: en begärd återställning kan utföras i något av följande tillstånd. Varje tillstånd har följande betydelse-och svars information:
     - **Lyckades**: ett återställnings läge med återställnings tillstånd indikerar att ett reaktivt partitionsschema har _gjorts_ . Partitionen rapporterar _RestoredEpoch_ -och _RestoredLSN_ -tillstånd tillsammans med tiden i UTC.
 
         ```

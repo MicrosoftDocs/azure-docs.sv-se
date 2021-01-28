@@ -3,17 +3,17 @@ title: Snabb start – skapa en Azure-IoT Hub Device Provisioning Service (DPS) 
 description: Azure snabb start – lär dig hur du skapar en Azure-IoT Hub Device Provisioning Service (DPS) med Azure Resource Manager-mall (ARM-mall).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/03/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 73beed4e4262d911f68c2b4b33bc0c1ee24164f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746221"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928935"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Snabb start: Konfigurera IoT Hub Device Provisioning Service (DPS) med en ARM-mall
 
@@ -35,6 +35,9 @@ Om din miljö uppfyller förutsättningarna och du redan är bekant med att anv�
 ## <a name="review-the-template"></a>Granska mallen
 
 Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/).
+
+> [!NOTE]
+> För närvarande finns det inget stöd för ARM-mallar för att skapa registreringar med nya DPS-resurser. Detta är en gemensam och tolkad begäran som beaktas för implementering.
 
 :::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
 
