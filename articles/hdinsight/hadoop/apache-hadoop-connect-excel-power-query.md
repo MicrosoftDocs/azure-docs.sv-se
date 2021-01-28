@@ -1,19 +1,16 @@
 ---
 title: Ansluta Excel till Apache Hadoop med Power Query – Azure HDInsight
 description: Lär dig hur du utnyttjar Business Intelligence-komponenter och använder Power Query för Excel för att komma åt data som lagras i Hadoop på HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397121"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946699"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Ansluta Excel till Apache Hadoop med hjälp av Power Query
 
@@ -53,13 +50,13 @@ Med Power Query-tillägget för Excel kan du enkelt importera data från HDInsig
 
        ![HDI. PowerQuery. SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
 
-       **Obs:** Om du inte ser **Power Query** menyn går du till **fil**  >  **alternativ**  >  **tillägg**och väljer **com-tillägg** i list rutan **Hantera** längst ned på sidan. Välj knappen **gå...** och kontrol lera att rutan för tillägget Power Query för Excel har marker ATS.
+       **Obs:** Om du inte ser **Power Query** menyn går du till **fil**  >  **alternativ**  >  **tillägg** och väljer **com-tillägg** i list rutan **Hantera** längst ned på sidan. Välj knappen **gå...** och kontrol lera att rutan för tillägget Power Query för Excel har marker ATS.
 
        **Obs:** Med Power Query kan du också importera data från HDFS genom att välja **från andra källor**.
 
 1. I text rutan **konto namn eller URL** i dialog rutan för **Azure HDInsight (HDFS)** anger du namnet på det Azure Blob Storage-konto som är associerat med klustret. Välj sedan **OK**. Det här kontot kan vara standard lagrings kontot eller ett länkat lagrings konto.  Formatet är `https://StorageAccountName.blob.core.windows.net/`.
 
-1. För **konto nyckel**anger du nyckeln för Blob Storage-kontot och väljer sedan **Anslut**. (Du behöver bara ange konto informationen första gången du öppnar det här arkivet.)
+1. För **konto nyckel** anger du nyckeln för Blob Storage-kontot och väljer sedan **Anslut**. (Du behöver bara ange konto informationen första gången du öppnar det här arkivet.)
 
 1. I **navigerings** fönstret till vänster i Frågeredigeraren dubbelklickar du på den behållare för Blob Storage-behållare som är kopplad till klustret. Behållarens namn är som standard samma namn som kluster namnet.
 

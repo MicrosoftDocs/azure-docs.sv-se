@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61b396cbcc8c91c75c961f702de7ed6a33e676e4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882460"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947028"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Konfigurera en digital Azure-instans och autentisering (portal)
 
@@ -40,7 +40,7 @@ Sök efter *Azure Digital-dubbla* i sökrutan och välj tjänsten **Azure Digita
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Välj &quot;skapa&quot; från sidan Azure Digitals dubblare tjänst":::
 
-Fyll i värdena som visas nedan på sidan *skapa resurs* :
+Fyll i värdena som visas nedan på sidan **skapa resurs** :
 * **Prenumeration**: den Azure-prenumeration du använder
   - **Resurs grupp**: en resurs grupp där instansen ska distribueras. Om du inte redan har en befintlig resurs grupp i åtanke kan du skapa en här genom att välja länken *Skapa ny* och ange ett namn för en ny resurs grupp
 * **Plats**: en Azure Digital-aktiverad region för distributionen. Mer information om regional support finns i [*Azure-produkter som är tillgängliga per region (Azure Digitals)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
@@ -48,11 +48,21 @@ Fyll i värdena som visas nedan på sidan *skapa resurs* :
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Fylla i de beskrivna värdena för att skapa en Azure Digital-resurs med dubbla resurser":::
 
-När du är färdig väljer du _Granska + skapa_. Då kommer du till en sammanfattnings sida där du kan granska instans informationen som du har angett och trycka på _skapa_. 
+När du är klar kan du välja **Granska + skapa** om du inte vill konfigurera fler inställningar för instansen. Det tar dig till en sammanfattnings sida där du kan granska instans informationen som du har angett och slutför med **skapa**. 
+
+Om du vill konfigurera mer information för din instans beskriver nästa avsnitt de återstående konfigurations flikarna.
+
+### <a name="additional-setup-options"></a>Ytterligare installations alternativ
+
+Här följer ytterligare alternativ som du kan konfigurera under installationen med hjälp av de andra flikarna i processen **skapa resurs** .
+
+* **Nätverk**: på den här fliken kan du aktivera privata slut punkter med [Azures privata länk](../private-link/private-link-overview.md) för att eliminera den offentliga nätverks exponeringen för din instans. Instruktioner finns i [*instruktion: aktivera privat åtkomst med privat länk*](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation).
+* **Avancerat**: på den här fliken kan du aktivera en [Systemhanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) för din instans som kan användas för att vidarebefordra händelser till [slut punkter](concepts-route-events.md). Instruktioner finns i [*så här gör du för att aktivera hanterade identiteter för routning av händelser*](how-to-enable-managed-identities.md).
+* **Taggar**: i den här fliken kan du lägga till taggar till din instans så att du kan organisera dem bland dina Azure-resurser. Mer information om Azure Resource-taggar finns i [*tagga resurser, resurs grupper och prenumerationer för logisk organisation*](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Verifiera lyckade och samla in viktiga värden
 
-När du har överfört *skapa* kan du visa statusen för din instanss distribution i dina Azure-meddelanden i portalens ikon fält. Meddelandet anger när distributionen har slutförts och du kommer att kunna välja knappen _gå till resurs_ för att visa din skapade instans.
+När du har slutfört instansen av instansen genom att välja **skapa** kan du visa statusen för din instanss distribution i dina Azure-meddelanden i portalens ikon fält. Meddelandet anger när distributionen har slutförts och du kommer att kunna välja knappen _gå till resurs_ för att visa din skapade instans.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Vy över Azure-meddelanden som visar en lyckad distribution och markerar knappen gå till resurs":::
 

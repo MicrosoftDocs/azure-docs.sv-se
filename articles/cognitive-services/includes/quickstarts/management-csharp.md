@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 95492a9301095ce4a07a3caad1d9f070b572fece
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 7da10fbdff0b6771fcffb6cc303d5ab183df190a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956514"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948096"
 ---
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
+[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/management)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
 ## <a name="c-prerequisites"></a>C#-krav
 
@@ -122,7 +122,7 @@ dotnet run
 
 ## <a name="see-also"></a>Se även
 
-* [Dokumentation om Azure Management SDK-referens](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)
+* [Dokumentation om Azure Management SDK-referens](/dotnet/api/overview/azure/cognitiveservices/management)
 * [Vad är Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Autentisera begär anden till Azure Cognitive Services](../../authentication.md)
 * [Skapa en ny resurs med Azure Portal](../../cognitive-services-apis-create-account.md)

@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5bfe28a8111128ba7d8072c27d8647e6137620cd
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: f3599a804549a19c3a633cfacf1a97b5ee232a32
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97844712"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947650"
 ---
 Kom igång med Automatiska förslag i Bing klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter.
 
 Använd Automatiska förslag i Bing klient bibliotek för .NET för att få Sök förslag baserat på partiella frågesträngar.
 
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme?view=azure-dotnet)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/)  |  [Exempel kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
+[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingAutoSuggest)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.AutoSuggest/)  |  [Exempel kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/BingAutoSuggest/Program.cs)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -151,7 +151,7 @@ De här kodfragmenten visar hur du gör följande uppgifter med Automatiska för
 > Den här snabb starten förutsätter att du har [skapat en miljö variabel](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) för din automatiska förslag i Bing nyckel, med namnet `AUTOSUGGEST_SUBSCRIPTION_KEY` och en för din slut punkt, med namnet `AUTOSUGGEST_ENDPOINT` .
 
 
-I en ny asynkron metod instansierar du en klient med din slut punkt och nyckel. Skapa ett [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials?view=azure-dotnet) -objekt med din nyckel och Använd den med slut punkten för att skapa ett [AutosuggestClient](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient?view=azure-dotnet) -objekt.
+I en ny asynkron metod instansierar du en klient med din slut punkt och nyckel. Skapa ett [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.apikeyserviceclientcredentials) -objekt med din nyckel och Använd den med slut punkten för att skapa ett [AutosuggestClient](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclient) -objekt.
 
 ```csharp
 async static Task RunQuickstart()
@@ -167,7 +167,7 @@ async static Task RunQuickstart()
 
 ### <a name="send-an-autosuggest-request"></a>Skicka en begäran om autoföreslå
 
-I samma metod använder du klientens [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) -Metod för att skicka en fråga till Bing. Iterera sedan över [förslags](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) svaret och skriv ut det första förslaget.
+I samma metod använder du klientens [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) -Metod för att skicka en fråga till Bing. Iterera sedan över [förslags](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions) svaret och skriv ut det första förslaget.
 
 ```csharp
 var result = await client.AutoSuggestMethodAsync("xb");
@@ -216,4 +216,4 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 ## <a name="see-also"></a>Se även
 
 - [Vad är Automatiska förslag i Bing?](../../get-suggested-search-terms.md)
-- [Automatiska förslag i Bing dotNet-referens](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme?view=azure-dotnet)
+- [Automatiska förslag i Bing dotNet-referens](/dotnet/api/overview/azure/cognitiveservices/bing-autosuggest-readme)

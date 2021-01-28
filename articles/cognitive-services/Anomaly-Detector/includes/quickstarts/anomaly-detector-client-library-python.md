@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: ccfb6f767a977ed9af1019d736aa23c5f8e9950c
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: f6206ad2f88983396fa7d0be323daad327e4d235
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356184"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948126"
 ---
 Kom igång med klient biblioteket för avvikelse detektor för python. Följ de här stegen för att installera paket starten med hjälp av algoritmerna som tillhandahålls av tjänsten. Med tjänsten avvikelse detektor kan du hitta avvikelser i dina Time Series-data genom att automatiskt använda de bästa passnings modellerna, oavsett bransch, scenario eller data volym.
 
@@ -52,7 +52,7 @@ from azure.core.credentials import AzureKeyCredential
 import pandas as pd
 ```
 
-Skapa variabler för din nyckel som en miljö variabel, sökvägen till en tids serie data fil och Azure-platsen för din prenumeration. Exempelvis `westus2`.
+Skapa variabler för din nyckel som en miljö variabel, sökvägen till en tids serie data fil och Azure-platsen för din prenumeration. Ett exempel är `westus2`.
 
 ```python
 SUBSCRIPTION_KEY = os.environ["ANOMALY_DETECTOR_KEY"]
@@ -74,7 +74,7 @@ Klienten för avvikelse detektor är ett [AnomalyDetectorClient](https://github.
 
 Time Series-data skickas som en serie av [TimeSeriesPoints](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L370) -objekt. `DetectRequest`Objektet innehåller egenskaper för att beskriva data till `TimeGranularity` exempel och parametrar för avvikelse identifiering.
 
-Avvikelse detektorns svar är ett [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python)-, [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python)-eller [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) -objekt beroende på vilken metod som används.
+Avvikelse detektorns svar är ett [LastDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse)-, [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse)-eller [ChangePointDetectResponse](https://github.com/Azure/azure-sdk-for-python/blob/bf9d44f2a50aea46a59c4cb83ccfccaff5e2b218/sdk/anomalydetector/azure-ai-anomalydetector/azure/ai/anomalydetector/models/_models_py3.py#L107) -objekt beroende på vilken metod som används.
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -112,7 +112,7 @@ for index, row in data_file.iterrows():
     series.append(TimeSeriesPoint(timestamp=row[0], value=row[1]))
 ```
 
-Skapa ett `DetectRequest` objekt med din tids serie och `TimeGranularity` (eller periodicitet) för dess data punkter. Exempelvis `TimeGranularity.daily`.
+Skapa ett `DetectRequest` objekt med din tids serie och `TimeGranularity` (eller periodicitet) för dess data punkter. Ett exempel är `TimeGranularity.daily`.
 
 ```python
 request = DetectRequest(series=series, granularity=TimeGranularity.daily)
@@ -120,7 +120,7 @@ request = DetectRequest(series=series, granularity=TimeGranularity.daily)
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Identifiera avvikelser i hela data uppsättningen
 
-Anropa API: et för att identifiera avvikelser genom hela tids serie data med hjälp av klientens `detect_entire_series` metod. Lagra det returnerade [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) -objektet. Upprepa i svars `is_anomaly` listan och skriv ut indexet för alla `true` värden. Dessa värden motsvarar indexet för avvikande data punkter, om sådana hittades.
+Anropa API: et för att identifiera avvikelser genom hela tids serie data med hjälp av klientens `detect_entire_series` metod. Lagra det returnerade [EntireDetectResponse](/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse) -objektet. Upprepa i svars `is_anomaly` listan och skriv ut indexet för alla `true` värden. Dessa värden motsvarar indexet för avvikande data punkter, om sådana hittades.
 
 ```python
 print('Detecting anomalies in the entire time series.')

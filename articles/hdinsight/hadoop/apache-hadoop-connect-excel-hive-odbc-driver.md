@@ -1,19 +1,16 @@
 ---
 title: ODBC-drivrutin (Excel & Apache Hadoop med Open Database Connectivity) – Azure HDInsight
 description: Lär dig hur du konfigurerar och använder Microsoft Hive ODBC-drivrutin för Excel för att fråga efter data i HDInsight-kluster från Microsoft Excel.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: e9b74cc3bff23848bf63859e7e38bb06599956a3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540779"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946797"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Ansluta Excel till Apache Hadoop i Azure HDInsight med Microsoft Hives ODBC-drivrutin
 
@@ -38,7 +35,7 @@ Hämta och installera [Microsoft HIVE ODBC-drivrutin](https://www.microsoft.com/
 
 Följande steg visar hur du skapar en ODBC-datakälla för Hive.
 
-1. Från Windows navigerar du till **Start > administrations verktyg för windows > ODBC-datakällor (32-bitars)/(64-bitars)** .  Den här åtgärden öppnar **Administratörs fönstret för ODBC-datakälla** .
+1. Från Windows navigerar du till **Start > administrations verktyg för windows > ODBC-datakällor (32-bitars)/(64-bitars)**.  Den här åtgärden öppnar **Administratörs fönstret för ODBC-datakälla** .
 
     ![OBDC data källans administratör](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Konfigurera en data källa med hjälp av administratör för ODBC-datakälla")
 
@@ -51,12 +48,12 @@ Följande steg visar hur du skapar en ODBC-datakälla för Hive.
    | Egenskap | Beskrivning |
    | --- | --- |
    |  Namn på datakälla |Namnge din datakälla |
-   |  Värd (er) |Ange `HDInsightClusterName.azurehdinsight.net`. Till exempel `myHDICluster.azurehdinsight.net`. Obs!: `HDInsightClusterName-int.azurehdinsight.net` stöds så länge den virtuella datorn är peer-kopplad till samma virtuella nätverk. |
-   |  Port |Använd **443** . (Den här porten har ändrats från 563 till 443.) |
-   |  Databas |Använd **standard** . |
+   |  Värd (er) |Ange `HDInsightClusterName.azurehdinsight.net`. Ett exempel är `myHDICluster.azurehdinsight.net`. Obs!: `HDInsightClusterName-int.azurehdinsight.net` stöds så länge den virtuella datorn är peer-kopplad till samma virtuella nätverk. |
+   |  Port |Använd **443**. (Den här porten har ändrats från 563 till 443.) |
+   |  Databas |Använd **standard**. |
    |  Mekanism |Välj **Windows Azure HDInsight-tjänst** |
-   |  Användarnamn |Ange HDInsight-kluster HTTP användar namn användar namn. Standardanvändarnamnet är **admin** . |
-   |  Lösenord |Ange användar lösen ord för HDInsight-kluster. Markera kryss rutan **Spara lösen ord (krypterad)** .|
+   |  Användarnamn |Ange HDInsight-kluster HTTP användar namn användar namn. Standardanvändarnamnet är **admin**. |
+   |  Lösenord |Ange användar lösen ord för HDInsight-kluster. Markera kryss rutan **Spara lösen ord (krypterad)**.|
 
 1. Valfritt: Välj **Avancerade alternativ...**  
 
@@ -86,11 +83,11 @@ Följande steg beskriver hur du importerar data från en Hive-tabell till en Exc
 
     ![Öppna guiden data anslutning för Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Öppna guiden data anslutning för Excel")
 
-3. I list rutan väljer du namnet på den data källa som du skapade i det sista avsnittet och väljer sedan **OK** .
+3. I list rutan väljer du namnet på den data källa som du skapade i det sista avsnittet och väljer sedan **OK**.
 
 4. För den första användningen öppnas en **ODBC-drivrutins** dialog ruta. Välj **fönster** på den vänstra menyn. Välj **Anslut** för att öppna fönstret **navigatör** .
 
-5. Från **Navigator** navigerar du till **HIVE**  >  **standard**  >  **hivesampletable** och väljer sedan **load** . Det tar en stund innan data importeras till Excel.
+5. Från **Navigator** navigerar du till **HIVE**  >  **standard**  >  **hivesampletable** och väljer sedan **load**. Det tar en stund innan data importeras till Excel.
 
     ![Excel Hive ODBC-navigatör för HDInsight](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Excel Hive ODBC-navigatör för HDInsight")
 

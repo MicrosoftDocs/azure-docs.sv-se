@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: b5884a7b1f271a88653779e46c461c29a85ab2ed
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6c5c0a7b1c2b94ba637f0204d603f15d1214607d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256339"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947725"
 ---
 Kom igång med Custom Vision klient bibliotek för Java för att skapa en bild klassificerings modell. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
@@ -25,7 +25,7 @@ Använd Custom Vision klient bibliotek för Java för att:
 * Publicera den aktuella iterationen
 * Testa förutsägelse slut punkten
 
-[Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| Artefakt (maven) [(utbildning)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(förutsägelse)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar)  | 
+[Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/customvision) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| Artefakt (maven) [(utbildning)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(förutsägelse)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar)  | 
  [exempel](/samples/browse/?products=azure&terms=custom%20vision)
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -111,11 +111,11 @@ I programmets **main** -metod lägger du till anrop för de metoder som används
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Custom Vision Java-klient biblioteket.
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
-|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-java-stable) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
-|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-java-stable)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
-|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-java-stable)| Den här klassen definierar en enstaka förutsägelse för en enda avbildning. Den innehåller egenskaper för objekt-ID och namn och en förtroende poäng.|
+|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
+|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
+|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction)| Den här klassen definierar en enstaka förutsägelse för en enda avbildning. Den innehåller egenskaper för objekt-ID och namn och en förtroende poäng.|
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -140,7 +140,7 @@ I **huvud** metoden instansierar du inlärnings-och förutsägelse klienter med 
 
 T # # skapa ett nytt Custom Vision-projekt
 
-Nästa metod skapar ett bild klassificerings projekt. Det skapade projektet visas på den [Custom Vision-webbplats](https://customvision.ai/) som du besökte tidigare. Se [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) -metoden för att ange andra alternativ när du skapar ditt projekt (förklaras i guiden [skapa en identifierings](../../get-started-build-detector.md) webb Portal).
+Nästa metod skapar ett bild klassificerings projekt. Det skapade projektet visas på den [Custom Vision-webbplats](https://customvision.ai/) som du besökte tidigare. Se [CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) -metoden för att ange andra alternativ när du skapar ditt projekt (förklaras i guiden [skapa en identifierings](../../get-started-build-detector.md) webb Portal).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create)]
 

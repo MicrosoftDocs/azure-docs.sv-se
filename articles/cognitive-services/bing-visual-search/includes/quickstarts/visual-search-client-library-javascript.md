@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a87a5f7208e4966b6afba0b939be42726ca20365
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: bd4f806013d92dee98bc16c67739748823804bbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371845"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948175"
 ---
 Använd den här snabb starten för att börja hämta bild insikter från den Visuell sökning i Bing tjänsten med hjälp av JavaScript-klientcertifikatet. Även om Visuell sökning i Bing har en REST API som är kompatibel med de flesta programmeringsspråk, är klient biblioteket ett enkelt sätt att integrera tjänsten i dina program. Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 
-[Referens dokumentation](/javascript/api/@azure/cognitiveservices-visualsearch/?preserve-view=true&view=azure-node-latest)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Referens dokumentation](/javascript/api/@azure/cognitiveservices-visualsearch/)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Förutsättningar
 

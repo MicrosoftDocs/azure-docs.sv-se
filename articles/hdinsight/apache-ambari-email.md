@@ -1,18 +1,15 @@
 ---
 title: 'Självstudie: Konfigurera Apache Ambari-e-postmeddelanden i Azure HDInsight'
 description: Den här artikeln beskriver hur du använder SendGrid med Apache Ambari för e-postaviseringar.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946976"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Självstudie: Konfigurera Apache Ambari-e-postmeddelanden i Azure HDInsight
 
@@ -38,11 +35,11 @@ I den här guiden får du lära dig att:
 
     ![Översikt över SendGrid i Azure Portal](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
-1. I den vänstra menyn navigerar du till ditt konto namn och sedan **konto information** .
+1. I den vänstra menyn navigerar du till ditt konto namn och sedan **konto information**.
 
     ![SendGrid instrument panels navigering](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
 
-1. På sidan **konto information** registrerar du **användar namnet** .
+1. På sidan **konto information** registrerar du **användar namnet**.
 
     ![SendGrid-konto information](./media/apache-ambari-email/sendgrid-account-details.png)
 
@@ -50,7 +47,7 @@ I den här guiden får du lära dig att:
 
 1. I en webbläsare går du till `https://CLUSTERNAME.azurehdinsight.net/#/main/alerts` , där `CLUSTERNAME` är namnet på klustret.
 
-1. I list rutan **åtgärder** väljer du **Hantera meddelanden** .
+1. I list rutan **åtgärder** väljer du **Hantera meddelanden**.
 
 1. Välj ikonen i fönstret **Hantera aviserings meddelanden** **+** .
 
@@ -60,16 +57,16 @@ I den här guiden får du lära dig att:
 
     |Egenskap |Beskrivning |
     |---|---|
-    |Namn|Ange ett namn för meddelandet.|
+    |Name|Ange ett namn för meddelandet.|
     |Grupper|Konfigurera efter behov.|
     |Allvarlighetsgrad|Konfigurera efter behov.|
-    |Beskrivning|Valfritt.|
-    |Metod|Lämna kvar **via e-post** .|
+    |Description|Valfritt.|
+    |Metod|Lämna kvar **via e-post**.|
     |E-postmeddelande till|Ange e-postmeddelanden som ska ta emot meddelanden, avgränsade med kommatecken.|
     |SMTP-Server|`smtp.sendgrid.net`|
     |SMTP-port|25 eller 587 (för okrypterade/TLS-anslutningar).|
     |E-post från|Ange en e-postadress. Adressen behöver inte vara äkta.|
-    |Använd autentisering|Markera den här kryss rutan.|
+    |Använd autentisering|Markera kryssrutan.|
     |Användarnamn|Ange SendGrid användar namn.|
     |Lösenord|Ange det lösen ord som du använde när du skapade SendGrid-resursen i Azure.|
     |Bekräfta lösen ord|Ange lösenordet igen.|
@@ -77,9 +74,9 @@ I den här guiden får du lära dig att:
 
     ![Skärm bild som visar dialog rutan skapa aviserings meddelande.](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
-    Välj **Spara** . Du kommer tillbaka till fönstret **Hantera aviserings meddelanden** .
+    Välj **Spara**. Du kommer tillbaka till fönstret **Hantera aviserings meddelanden** .
 
-1. I fönstret **Hantera aviserings meddelanden** väljer du **Stäng** .
+1. I fönstret **Hantera aviserings meddelanden** väljer du **Stäng**.
 
 ## <a name="next-steps"></a>Nästa steg
 

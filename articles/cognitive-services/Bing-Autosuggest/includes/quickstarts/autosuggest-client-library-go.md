@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 8c0715b3570bf60205c83390ab93b272e49e8733
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1c3ed6cc97c6fc77083baa915fac2f5530922eac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371746"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947707"
 ---
 Kom igång med Automatiska förslag i Bing klient biblioteket för go. Följ de här stegen för att installera biblioteket och prova våra exempel för grundläggande uppgifter.
 
@@ -76,9 +76,9 @@ När du har lagt till miljövariabeln så kör `source .bash_profile` från kons
 
 I ett konsol fönster (cmd, PowerShell, Terminal, bash) skapar du en ny arbets yta för ditt go-projekt och navigerar till den. Arbets ytan kommer att innehålla tre mappar:
 
-* **src** : den här katalogen innehåller käll kod och paket. Alla paket som installeras med `go get` kommandot kommer att finnas här.
-* **pkg** : den här katalogen innehåller de kompilerade go-paket-objekten. De här filerna har ett `.a` fil namns tillägg.
-* **bin** : den här katalogen innehåller de körbara filer för körbara filer som skapas när du kör `go install` .
+* **src**: den här katalogen innehåller käll kod och paket. Alla paket som installeras med `go get` kommandot kommer att finnas här.
+* **pkg**: den här katalogen innehåller de kompilerade go-paket-objekten. De här filerna har ett `.a` fil namns tillägg.
+* **bin**: den här katalogen innehåller de körbara filer för körbara filer som skapas när du kör `go install` .
 
 > [!TIP]
 > Lär dig mer om strukturen för en [Go-arbetsyta](https://golang.org/doc/code.html#Workspaces). Den här guiden innehåller information om hur du ställer in `$GOPATH` och `$GOROOT` .
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>Skicka en API-begäran
 
-I samma metod använder du klientens [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) -Metod för att skicka en fråga till Bing. Iterera sedan över [förslags](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) svaret och skriv ut det första förslaget.
+I samma metod använder du klientens [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) -Metod för att skicka en fråga till Bing. Iterera sedan över [förslags](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions) svaret och skriv ut det första förslaget.
 
 ```Go
 // This should return the query suggestion "xbox."

@@ -3,18 +3,18 @@ title: Kom igång med Azure Cost Management för partner
 description: I den här artikeln förklaras hur partner använder Azure Cost Management-funktioner och hur de ger Cost Management-åtkomst för sina kunder.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602174"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946983"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Kom igång med Azure Cost Management för partner
 
@@ -22,7 +22,7 @@ Azure Cost Management är internt tillgängligt för direkta partner som har upp
 
 För direkta partner och indirekta leverantörer kan globala administratörer och administratörsagenter komma åt Cost Management i partnerns klientorganisation och hantera kostnader enligt fakturerade priser.
 
-Återförsäljare och kunder kan komma åt Cost Management i kundens klientorganisation och visa kostnader för prenumerationerna. Kostnaderna beräknas och visas enligt återförsäljarpris. De måste dock ha Azure RBAC-åtkomst till prenumerationen i kundens klientorganisation för att kunna visa kostnader. Providern måste ha aktiverat principen för kostnadssynlighet för kundens klientorganisation.
+Åter försäljare och kunder kan komma åt Cost Management i kund klienten och se förbruknings kostnaderna för prenumerationerna, där kostnaderna beräknas och visas enligt åter försäljnings takten. De måste dock ha Azure RBAC-åtkomst till prenumerationen i kundens klientorganisation för att kunna visa kostnader. Providern måste ha aktiverat principen för kostnadssynlighet för kundens klientorganisation.
 
 Kunder kan använda Cost Management-funktioner när de har aktiverats av sin CSP-partner.
 
@@ -56,6 +56,8 @@ Azure Cost Management kräver läsbehörighet till ditt faktureringskonto eller 
 Mer information om hur du aktiverar och tilldelar åtkomst till Azure Cost Management för ett faktureringskonto finns i [Tilldela användarroller och behörigheter](/partner-center/permissions-overview). Rollerna **Global administratör** och **Administratörsrepresentant** kan hantera kostnader för ett faktureringskonto.
 
 För att få åtkomst till Azure Cost Management i prenumerationsomfånget kan alla användare med Azure RBAC-åtkomst till en prenumeration visa kostnader som återförsäljarpris (betala per användning). Principen för [kostnadssynlighet för kundens klientorganisation](#enable-the-policy-to-view-azure-usage-charges) måste dock vara aktiverad. Om du vill se hela listan med kontotyper som stöds kan du läsa [Förstå Cost Management-data](understand-cost-mgt-data.md).
+
+När du överför befintliga fakturerings avtal till en ny partner är kostnads hanterings funktionerna bara tillgängliga för den aktuella fakturerings relationen med partnern. Historiska kostnader innan överföringen till den nya partnern flyttas inte till det nya fakturerings kontot. Men kostnads historiken kvarstår i det ursprungliga associerade fakturerings kontot.
 
 ## <a name="how-cost-management-uses-scopes"></a>Hur Cost Management använder omfång
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: c84c45605911b74fd2c03a0987341257cae3623e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: bf28d0abbd20cb170fa7adb6f13aefba8d2238c1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97731963"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948595"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -152,7 +152,7 @@ I följande avsnitt visas hur du anpassar attribut för ljud uppspelning, inklus
 * Samplings frekvens
 * Bitdjup
 
-Om du vill ändra ljud formatet använder du `setSpeechSynthesisOutputFormat()` funktionen på `SpeechConfig` objektet. Den här funktionen förväntar sig en `enum` typ [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) som du kan använda för att välja utdataformatet. Se referens dokumenten för en [lista över tillgängliga ljud format](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet) .
+Om du vill ändra ljud formatet använder du `setSpeechSynthesisOutputFormat()` funktionen på `SpeechConfig` objektet. Den här funktionen förväntar sig en `enum` typ [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) som du kan använda för att välja utdataformatet. Se referens dokumenten för en [lista över tillgängliga ljud format](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat) .
 
 Det finns olika alternativ för olika filtyper beroende på dina krav. Observera att RAW-format, t `Raw24Khz16BitMonoPcm` . ex., inte innehåller ljud rubriker enligt definitionen. Använd RAW-format endast när du vet att den underordnade implementeringen kan avkoda en RAW-Bitstream, eller om du planerar att skapa rubriker manuellt baserat på bitdjup, samplings frekvens, antal kanaler osv.
 

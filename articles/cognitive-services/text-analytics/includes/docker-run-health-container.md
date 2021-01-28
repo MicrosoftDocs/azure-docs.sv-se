@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689896"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948505"
 ---
 ## <a name="install-the-container"></a>Installera behållaren
 
@@ -62,7 +62,7 @@ Det här kommandot:
 > [!NOTE]
 > Demonstrationen är endast tillgänglig med Textanalys för hälso container.
 
-Containern innehåller REST-baserade slutpunkts-API:er för frågeförutsägelse.  Vi har också tillhandahållit ett visualiserings verktyg i behållaren som kan nås genom att lägga `/demo` till i slut punkten för behållaren. Till exempel:
+Containern innehåller REST-baserade slutpunkts-API:er för frågeförutsägelse.  Vi har också tillhandahållit ett visualiserings verktyg i behållaren som kan nås genom att lägga `/demo` till i slut punkten för behållaren. Exempel:
 
 ```
 http://<serverURL>:5000/demo
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Du kan också använda en Azure Container Instance (ACI) för att förenkla distributionen. ACI är en resurs som gör att du kan köra Docker-behållare på begäran i en hanterad, Server lös Azure-miljö. 
 
-Se [hur du använder Azure Container instances](../how-tos/text-analytics-how-to-use-container-instances.md) för steg som beskriver hur du distribuerar en ACI-resurs med hjälp av Azure Portal. Du kan också använda PowerShell-skriptet nedan med hjälp av Azure CLI, som skapar en ACI i din prenumeration med hjälp av behållar avbildningen.  Vänta tills skriptet har slutförts (cirka 25-30 minuter) innan du skickar den första begäran.  På grund av gränsen för maximalt antal processorer per ACI-resurs väljer du inte det här alternativet om du förväntar dig att skicka fler än 5 stora dokument (cirka 5000 tecken var) per begäran.
+Se [hur du använder Azure Container instances](../../containers/azure-container-instance-recipe.md) för steg som beskriver hur du distribuerar en ACI-resurs med hjälp av Azure Portal. Du kan också använda PowerShell-skriptet nedan med hjälp av Azure CLI, som skapar en ACI i din prenumeration med hjälp av behållar avbildningen.  Vänta tills skriptet har slutförts (cirka 25-30 minuter) innan du skickar den första begäran.  På grund av gränsen för maximalt antal processorer per ACI-resurs väljer du inte det här alternativet om du förväntar dig att skicka fler än 5 stora dokument (cirka 5000 tecken var) per begäran.
 Se [ACI regional support](../../../container-instances/container-instances-region-availability.md) artikel för tillgänglighets information. 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 Mer information finns i NGINX-dokumentationen om [nginx SSL-avslutning](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/).
-

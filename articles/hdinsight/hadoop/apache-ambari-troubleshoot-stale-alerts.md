@@ -1,18 +1,15 @@
 ---
 title: Apache Ambari inaktuella aviseringar i Azure HDInsight
 description: Diskussion och analys av möjliga orsaker och lösningar för inaktiva Apache Ambari-aviseringar i HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533843"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946719"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scenario: Apache Ambari inaktuella aviseringar i Azure HDInsight
 
@@ -46,17 +43,17 @@ Du kan öka värdet för ett enskilt aviserings intervall baserat på klustrets 
 
 1. I Apache Ambari-ANVÄNDARGRÄNSSNITTET väljer du fliken **aviseringar** .
 1. Välj det namn på aviserings definitionen som du vill använda.
-1. Från definitionen väljer du **Redigera** .
-1. Öka värdet för **kontroll intervall** och välj sedan **Spara** .
+1. Från definitionen väljer du **Redigera**.
+1. Öka värdet för **kontroll intervall** och välj sedan **Spara**.
 
 ### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Öka aviserings intervall tiden för Ambari Server-aviseringar
 
 1. I Apache Ambari-ANVÄNDARGRÄNSSNITTET väljer du fliken **aviseringar** .
-1. I list rutan **grupper** väljer du **AMBARI default** .
+1. I list rutan **grupper** väljer du **AMBARI default**.
 1. Välj aviseringen **Ambari Server aviseringar** .
-1. Från definitionen väljer du **Redigera** .
+1. Från definitionen väljer du **Redigera**.
 1. Öka värdet för **kontroll intervallet** .
-1. Öka värdet för **intervall multiplikatorn** och välj sedan **Spara** .
+1. Öka värdet för **intervall multiplikatorn** och välj sedan **Spara**.
 
 ### <a name="disable-and-reenable-the-alert"></a>Inaktivera och återaktivera aviseringen
 
@@ -65,7 +62,7 @@ Om du vill ta bort en inaktuell avisering inaktiverar du den och aktiverar den i
 1. I Apache Ambari-ANVÄNDARGRÄNSSNITTET väljer du fliken **aviseringar** .
 1. Välj det namn på aviserings definitionen som du vill använda.
 1. Från definitionen väljer du **aktive rad** längst till höger i användar gränssnittet.
-1. I popup-fönstret **bekräftelse** väljer du **Bekräfta inaktive ring** .
+1. I popup-fönstret **bekräftelse** väljer du **Bekräfta inaktive ring**.
 1. Vänta några sekunder för alla aviseringar "instanser" som visas på sidan som ska rensas.
 1. Från definitionen väljer du **inaktive rad** längst till höger i användar gränssnittet.
 1. Välj **Bekräfta aktivering** i popup-fönstret **bekräftelse** .
@@ -84,6 +81,6 @@ Om problemet inte nämns här, eller om du inte kan lösa det, kan du gå till n
 
 * Anslut till [@AzureSupport](https://twitter.com/azuresupport) på Twitter. Detta är det officiella Microsoft Azure kontot för att förbättra kund upplevelsen. Den ansluter Azure-communityn till rätt resurser: svar, support och experter.
 
-* Om du behöver mer hjälp kan du skicka en support förfrågan från [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Välj hjälp ( **?** ) på Portal menyn eller öppna **Hjälp + Support** -fönstret för att komma dit. Mer information finns i [så här skapar du en support förfrågan för Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
+* Om du behöver mer hjälp kan du skicka en support förfrågan från [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Välj hjälp (**?**) på Portal menyn eller öppna **Hjälp + Support** -fönstret för att komma dit. Mer information finns i [så här skapar du en support förfrågan för Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Support för prenumerations hantering och fakturering ingår i Microsoft Azure prenumerationen. Teknisk support är tillgänglig via support avtalen för [Azure](https://azure.microsoft.com/support/plans/).
