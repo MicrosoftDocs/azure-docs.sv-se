@@ -3,16 +3,13 @@ title: Övervaknings fel i övervaknings enheten fel vid mjuk låsning från Azu
 description: Övervaknings-CPU fel för mjuk låsning visas i kernel-syslogs från Azure HDInsight-kluster
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: 33990e40507f088962fd8d8efd241de5d2fcc63b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5d9d7b0fc21660dd22ff92bbe2de38c759c440ec
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289064"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944346"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scenario: "övervaknings enhet: fel: mjuk låsning – CPU" fel från ett Azure HDInsight-kluster
 
@@ -42,7 +39,7 @@ Tillämpa kernel-korrigering. Skriptet nedan uppgraderar Linux-kärnan och start
     | Name |Korrigering för problem med tyst kernel-lås |
     | Bash-skript-URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Node-typ (er) |Arbetare, Zookeeper |
-    | Parametrar |E.t. |
+    | Parametrar |Ej tillämpligt |
 
     Välj **Spara den här skript åtgärden...** om du vill köra skriptet när nya noder läggs till.
 

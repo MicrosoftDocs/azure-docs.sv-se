@@ -1,5 +1,5 @@
 ---
-title: Så här genererar du miniatyrer med Azure Media Services Encoder Standard med REST
+title: Hämta en signerings nyckel från en princip med hjälp av Azure Media Services v3 .NET
 description: Den här artikeln visar hur du använder REST för att koda en till gång och skapa miniatyrer samtidigt med hjälp av Media Encoder Standard.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec2782297f2659341c9fa7e87ce15d3dbceb022c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 75b8fd53836cce02816413afaeb656c3ac3f8796
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019570"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935393"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>Så här genererar du miniatyr bilder med hjälp av Encoder-standarden med REST
 

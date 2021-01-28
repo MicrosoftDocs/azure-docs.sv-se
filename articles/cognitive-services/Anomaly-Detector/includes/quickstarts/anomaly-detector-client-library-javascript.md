@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: b970b099d87148d169b2be3b7e72d32c159f5046
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 36b8a6952a8dc0b34df7bf32a708c71547bf5b33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371900"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947423"
 ---
 Kom igång med klient biblioteket för avvikelse detektor för Java Script. Följ de här stegen för att installera paket starten med hjälp av algoritmerna som tillhandahålls av tjänsten. Med tjänsten avvikelse detektor kan du hitta avvikelser i dina Time Series-data genom att automatiskt använda de bästa passnings modellerna, oavsett bransch, scenario eller data volym.
 
@@ -72,11 +72,11 @@ Appens `package.json` fil kommer att uppdateras med beroenden.
 
 ## <a name="object-model"></a>Objekt modell
 
-Klienten för avvikelse detektor är ett [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) -objekt som autentiserar till Azure med hjälp av din nyckel. Klienten kan utföra avvikelse identifiering på en hel data uppsättning med hjälp av [entireDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--)eller den senaste data punkten med [LastDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-). Metoden [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) identifierar punkter som markerar ändringar i en trend. 
+Klienten för avvikelse detektor är ett [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient) -objekt som autentiserar till Azure med hjälp av din nyckel. Klienten kan utföra avvikelse identifiering på en hel data uppsättning med hjälp av [entireDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#entiredetect-request--servicecallback-entiredetectresponse--)eller den senaste data punkten med [LastDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#lastdetect-request--msrest-requestoptionsbase-). Metoden [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) identifierar punkter som markerar ändringar i en trend. 
 
-Time Series-data skickas som en serie med [punkter](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) i ett [Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) -objekt. `Request`Objektet innehåller egenskaper för att beskriva data (till exempel[granularitet](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity) ) och parametrar för avvikelse identifiering. 
+Time Series-data skickas som en serie med [punkter](/javascript/api/@azure/cognitiveservices-anomalydetector/point) i ett [Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request) -objekt. `Request`Objektet innehåller egenskaper för att beskriva data (till exempel[granularitet](/javascript/api/@azure/cognitiveservices-anomalydetector/request#granularity) ) och parametrar för avvikelse identifiering. 
 
-Avvikelse detektorns svar är ett [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)-, [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)-eller [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) -objekt beroende på vilken metod som används. 
+Avvikelse detektorns svar är ett [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse)-, [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse)-eller [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) -objekt beroende på vilken metod som används. 
 
 ## <a name="code-examples"></a>Kodexempel 
 
@@ -90,7 +90,7 @@ De här kodfragmenten visar hur du gör följande med klient biblioteket för av
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera ett [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) -objekt med din slut punkt och dina autentiseringsuppgifter.
+Instansiera ett [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient) -objekt med din slut punkt och dina autentiseringsuppgifter.
 
 [!code-javascript[Authentication](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=authentication)]
 
@@ -103,19 +103,19 @@ Hämta exempel data för den här snabb starten från [GitHub](https://github.co
 
 Denna tids serie data formateras som en. csv-fil och skickas till API: t för avvikelse identifiering.
 
-Läs data filen med CSV-parsing-bibliotekets `readFileSync()` metod och parsa filen med `parse()` . För varje rad push-överför du ett [punkt](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) objekt som innehåller tidsstämpeln och det numeriska värdet.
+Läs data filen med CSV-parsing-bibliotekets `readFileSync()` metod och parsa filen med `parse()` . För varje rad push-överför du ett [punkt](/javascript/api/@azure/cognitiveservices-anomalydetector/point) objekt som innehåller tidsstämpeln och det numeriska värdet.
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Identifiera avvikelser i hela data uppsättningen 
 
-Anropa API: et för att identifiera avvikelser genom hela tids serien som en batch med klientens [entireDetect ()-](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) metod. Lagra det returnerade [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) -objektet. Upprepa i svars `isAnomaly` listan och skriv ut indexet för alla `true` värden. Dessa värden motsvarar indexet för avvikande data punkter, om sådana hittades.
+Anropa API: et för att identifiera avvikelser genom hela tids serien som en batch med klientens [entireDetect ()-](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#entiredetect-request--msrest-requestoptionsbase-) metod. Lagra det returnerade [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse) -objektet. Upprepa i svars `isAnomaly` listan och skriv ut indexet för alla `true` värden. Dessa värden motsvarar indexet för avvikande data punkter, om sådana hittades.
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Identifiera avvikelse statusen för den senaste data punkten
 
-Anropa API: t för avvikelse detektor för att avgöra om den senaste data punkten är en avvikelse med klientens [lastDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) -Metod och lagra det returnerade [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) -objektet. Svarets `isAnomaly` värde är ett booleskt värde som anger den punktens avvikelse status.  
+Anropa API: t för avvikelse detektor för att avgöra om den senaste data punkten är en avvikelse med klientens [lastDetect ()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#lastdetect-request--msrest-requestoptionsbase-) -Metod och lagra det returnerade [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse) -objektet. Svarets `isAnomaly` värde är ett booleskt värde som anger den punktens avvikelse status.  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 

@@ -1,19 +1,16 @@
 ---
 title: Förstå och lösa WebHCat-fel i HDInsight – Azure
 description: Lär dig mer om vanliga fel som returneras av WebHCat i HDInsight och hur du löser dem.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285681"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945455"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Förstå och lösa fel som tas emot från WebHCat på HDInsight
 
@@ -31,7 +28,7 @@ Flera av de fel som anges i det här dokumentet inträffar eftersom ett konfigur
 
 Om följande standardvärden överskrids kan det försämra WebHCat prestanda eller orsaka fel:
 
-| Inställningen | Vad läget gör | Standardvärde |
+| Inställning | Vad läget gör | Standardvärde |
 | --- | --- | --- |
 | [garn. Scheduler. Capacity. maximum-Applications][maximum-applications] |Maximalt antal jobb som kan vara aktiva samtidigt (väntar eller körs) |10 000 |
 | [templeton.exec. Max-procs][max-procs] |Maximalt antal begär Anden som kan betjänas samtidigt |20 |
@@ -39,7 +36,7 @@ Om följande standardvärden överskrids kan det försämra WebHCat prestanda el
 
 ## <a name="too-many-requests"></a>För många begär Anden
 
-**Http-status kod** : 429
+**Http-status kod**: 429
 
 | Orsak | Lösning |
 | --- | --- |
@@ -47,7 +44,7 @@ Om följande standardvärden överskrids kan det försämra WebHCat prestanda el
 
 ## <a name="server-unavailable"></a>Servern är inte tillgänglig
 
-**Http-status kod** : 503
+**Http-status kod**: 503
 
 | Orsak | Lösning |
 | --- | --- |
@@ -55,7 +52,7 @@ Om följande standardvärden överskrids kan det försämra WebHCat prestanda el
 
 ## <a name="bad-request-content-could-not-find-job"></a>Felaktigt innehåll i begäran: det gick inte att hitta jobbet
 
-**Http-status kod** : 400
+**Http-status kod**: 400
 
 | Orsak | Lösning |
 | --- | --- |
@@ -65,7 +62,7 @@ Om följande standardvärden överskrids kan det försämra WebHCat prestanda el
 
 ## <a name="bad-gateway"></a>Felaktig gateway
 
-**Http-status kod** : 502
+**Http-status kod**: 502
 
 | Orsak | Lösning |
 | --- | --- |

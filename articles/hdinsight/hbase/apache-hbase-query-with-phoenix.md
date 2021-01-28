@@ -1,25 +1,22 @@
 ---
 title: 'Snabb start: Apache HBase & Apache Phoenix – Azure HDInsight'
 description: I den här snabb starten får du lära dig hur du använder Apache Phoenix i HDInsight. Lär dig också hur du installerar och konfigurerar SQLLine på datorn för att ansluta till ett HBase-kluster i HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b9196d9ad5cf07cd210726bc1af7121c08094a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79370329"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935982"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Snabb start: fråga Apache HBase i Azure HDInsight med Apache Phoenix
 
 I den här snabb starten får du lära dig hur du använder Apache Phoenix för att köra HBase-frågor i Azure HDInsight. Apache Phoenix är en SQL-frågemotor för Apache HBase. Den används som en JDBC-drivrutin, och gör att du kan ställa frågor och hantera HBase-tabeller med SQL. [SQLLine](http://sqlline.sourceforge.net/) är ett kommando rads verktyg för att köra SQL.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

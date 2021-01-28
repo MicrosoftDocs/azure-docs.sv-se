@@ -1,18 +1,15 @@
 ---
 title: Apache Spark rikt linjer på Azure HDInsight
 description: Lär dig rikt linjer för att använda Apache Spark i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545573"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938817"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark rikt linjer
 
@@ -56,7 +53,7 @@ Den här artikeln innehåller olika rikt linjer för att använda Apache Spark p
 | Apache Hive på HDInsight | [Integrera Apache Spark och Apache Hive med Hive-lagrets koppling](../interactive-query/apache-hive-warehouse-connector.md) |
 | Apache HBase på HDInsight | [Använda Apache Spark för att läsa och skriva Apache HBase-data](../hdinsight-using-spark-query-hbase.md) |
 | Apache Kafka på HDInsight | [Självstudie: Använda Apache Spark Structured Streaming med Apache Kafka i HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Azure Synapse-länk för Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
+| Azure Cosmos DB | [Azure Synapse Link för Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>Vad är mina lagrings alternativ?
 

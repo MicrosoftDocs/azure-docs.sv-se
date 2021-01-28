@@ -1,19 +1,16 @@
 ---
 title: Fallstudie av hög tillgänglighet för Azure HDInsight-lösning
 description: Den här artikeln är en fiktiv fallstudie av en möjlig lösnings arkitektur med hög tillgänglighet i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop hög tillgänglighet
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855046"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945366"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Fallstudie av hög tillgänglighet för Azure HDInsight-lösning
 
@@ -68,7 +65,7 @@ Det är viktigt att fastställa de minimala affärs funktioner du behöver om de
 
 Följande bild visar Contosos åter betalnings arkitektur för hög tillgänglighets återställning.
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso återförsäljarversion-arkitektur":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso-lösning":::
 
 **Kafka** använder [aktiv – passiv](hdinsight-business-continuity-architecture.md#apache-kafka) replikering för att spegla Kafka-ämnen från den primära regionen till den sekundära regionen. Ett alternativ till Kafka-replikering kan vara att producera till Kafka i båda regionerna.
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221773"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946291"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Begränsa nätverks åtkomsten till PaaS-resurser med tjänst slut punkter för virtuella nätverk med hjälp av Azure CLI
 
@@ -158,7 +158,7 @@ az network nsg rule create \
 
 De steg som behövs för att begränsa nätverksåtkomsten till resurser som har skapats via Azure-tjänster som är aktiverade för tjänstslutpunkter varierar från tjänst till tjänst. Läs dokumentationen för enskilda tjänster för specifika åtgärder för varje tjänst. Resten av den här artikeln innehåller steg för att begränsa nätverks åtkomsten för ett Azure Storage konto, som ett exempel.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Skapa ett Azure Storage-konto med [AZ lagrings konto skapa](/cli/azure/storage/account). Ersätt `<replace-with-your-unique-storage-account-name>` med ett namn som är unikt för alla Azure-platser, mellan 3-24 tecken långt, med enbart siffror och gemener.
 
@@ -326,7 +326,7 @@ sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-sh
 
 Avsluta SSH-sessionen till den virtuella *myVmPublic* -datorn.
 
-Från datorn försöker du Visa resurserna i ditt lagrings konto med [AZ Storage Share List](/cli/azure/storage/share?view=azure-cli-latest). Ersätt `<account-name>` och `<account-key>` med lagrings kontots namn och nyckel från [skapa ett lagrings konto](#create-a-storage-account):
+Från datorn försöker du Visa resurserna i ditt lagrings konto med [AZ Storage Share List](/cli/azure/storage/share). Ersätt `<account-name>` och `<account-key>` med lagrings kontots namn och nyckel från [skapa ett lagrings konto](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

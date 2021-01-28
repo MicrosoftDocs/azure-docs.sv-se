@@ -1,19 +1,16 @@
 ---
 title: Felsöka kluster skapande fel med Azure HDInsight
 description: Lär dig hur du felsöker problem med skapande av Apache-kluster för Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856304"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944435"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Felsöka kluster skapande fel med Azure HDInsight
 
@@ -53,10 +50,10 @@ Tillåt trafik från IP-adresserna i tabellen nedan.
 
 | Källans IP-adress | Mål | Riktning |
 |---|---|---|
-| 168.61.49.99 | *: 443 | Inbound (Inkommande) |
-| 23.99.5.239 | *: 443 | Inbound (Inkommande) |
-| 168.61.48.131 | *: 443 | Inbound (Inkommande) |
-| 138.91.141.162 | *: 443 | Inbound (Inkommande) |
+| 168.61.49.99 | *: 443 | Inkommande |
+| 23.99.5.239 | *: 443 | Inkommande |
+| 168.61.48.131 | *: 443 | Inkommande |
+| 138.91.141.162 | *: 443 | Inkommande |
 
 Lägg också till de IP-adresser som är speciella för den region där klustret skapas. Se [hanterings-IP-adresser för HDInsight](../hdinsight-management-ip-addresses.md) för en lista över adresser för varje Azure-region.
 

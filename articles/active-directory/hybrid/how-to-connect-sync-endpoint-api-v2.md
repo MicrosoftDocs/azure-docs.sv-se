@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567633"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937611"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Slutpunkts-API för Azure AD Connect-synkronisering v2 
 Microsoft har distribuerat en ny slut punkt (API) för Azure AD Connect som förbättrar prestandan för synkroniseringstjänsten i Azure Active Directory. Genom att använda den nya v2-slutpunkten får du märkbara prestanda vinster vid export och import till Azure AD. Den här nya slut punkten stöder följande:
@@ -28,7 +28,7 @@ Microsoft har distribuerat en ny slut punkt (API) för Azure AD Connect som för
 > [!NOTE]
 > För närvarande har den nya slut punkten ingen konfigurerad grupp storleks gräns för Microsoft 365 grupper som skrivs tillbaka. Detta kan påverka din Active Directory och fördröjning av synkronisering. Vi rekommenderar att du ökar grupp storlekarna stegvis.  
 
-## <a name="prerequisites"></a>Krav  
+## <a name="prerequisites"></a>Förutsättningar  
 För att du ska kunna använda den nya v2-slutpunkten måste du använda [Azure AD Connect version 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) eller senare och följa distributions stegen nedan för att aktivera v2-slutpunkten för din Azure AD Connect-Server.   
 
 ## <a name="deployment-guidance"></a>Vägledning för distribution 
@@ -176,7 +176,7 @@ Om du har aktiverat v2-slutpunkten och behöver återställa, följer du dessa s
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar  
  
 **När kommer den nya slut punkten att bli standard för uppgraderingar och nya installationer?**  
-</br>Vi planerar en ny version av AADConnect som ska publiceras för hämtning i januari 2021. Den här versionen använder slut punkten v2 som standard och aktiverar synkronisering av grupper som är större än 50 000 utan ytterligare konfiguration. Den här versionen kommer senare att publiceras för automatisk uppgradering till berättigade servrar.
+</br>Vi planerar en ny version av AADConnect som ska publiceras för hämtning i februari 2021. Den här versionen använder slut punkten v2 som standard och aktiverar synkronisering av grupper som är större än 50 000 utan ytterligare konfiguration. Den här versionen kommer senare att publiceras för automatisk uppgradering till berättigade servrar.
  
 ## <a name="next-steps"></a>Nästa steg
 

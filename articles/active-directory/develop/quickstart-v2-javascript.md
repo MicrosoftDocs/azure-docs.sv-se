@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 131cb325e3581a135be7a88f26c59637d35bc5f3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754151"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937958"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett Java Script SPA
 
@@ -25,7 +25,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/)
@@ -61,7 +61,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
-> Om du vill att kod exemplet i den här snabb starten ska fungera måste du lägga till en `redirectUri` as- `http://localhost:3000/` och enable **implicit-beviljande**.
+> Den här snabb startens exempel kod kräver en **omdirigerings-URI** `http://localhost:3000/` och möjliggör **implicit beviljande**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör ändringarna åt mig]()
 >
@@ -202,7 +202,7 @@ Snabb starts koden visar också hur du initierar MSAL-biblioteket:
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Var  | Beskrivning |
+> |Var  | Description |
 > |---------|---------|
 > |`clientId`     | Program-ID för programmet som är registrerat i Azure Portal.|
 > |`authority`    | Valfritt Auktoritets-URL: en som stöder konto typer, enligt beskrivningen ovan i avsnittet konfiguration. Standard auktoriteten är `https://login.microsoftonline.com/common` . |
@@ -230,7 +230,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Var  | Beskrivning |
+> |Var  | Description |
 > |---------|---------|
 > | `scopes`   | Valfritt Innehåller omfattningar som begärs för användar medgivande vid inloggnings tillfället. Till exempel `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er (det vill säga `api://<Application ID>/access_as_user` ). |
 
@@ -260,13 +260,13 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Var  | Beskrivning |
+> |Var  | Description |
 > |---------|---------|
 > | `scopes`   | Innehåller omfång som begärs att returneras i åtkomsttoken för API. Till exempel `[ "mail.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er (det vill säga `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Det finns situationer där du behöver tvinga användare att interagera med Microsoft Identity Platform. Ett exempel:
+Det finns situationer där du behöver tvinga användare att interagera med Microsoft Identity Platform. Exempel:
 * Användare kan behöva ange sina autentiseringsuppgifter på grund av att deras lösen ord har upphört att gälla.
 * Ditt program begär åtkomst till ytterligare resurs omfattningar som användaren behöver godkänna.
 * Tvåfaktorautentisering krävs.

@@ -1,19 +1,16 @@
 ---
 title: Använda Data Lake Storage Gen1 med Hadoop i Azure HDInsight
 description: Lär dig hur du frågar efter data från Azure Data Lake Storage Gen1 och lagrar resultatet av din analys.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539844"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945404"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Använda Data Lake Storage Gen1 med Azure HDInsight-kluster
 
@@ -42,12 +39,12 @@ För närvarande stöds endast vissa av HDInsight-kluster typerna/-versionerna m
 
 | Typ av HDInsight-kluster | Data Lake Storage Gen1 som standard lagring | Data Lake Storage Gen1 som ytterligare lagrings utrymme| Kommentarer |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight version 4,0 | Nej | Nej |ADLS Gen1 stöds inte med HDInsight 4,0 |
+| HDInsight version 4,0 | Inga | Inga |ADLS Gen1 stöds inte med HDInsight 4,0 |
 | HDInsight version 3.6 | Ja | Ja | Förutom HBase|
 | HDInsight version 3.5 | Ja | Ja | Förutom HBase|
-| HDInsight version 3.4 | Nej | Ja | |
-| HDInsight version 3.3 | Nej | Nej | |
-| HDInsight version 3.2 | Nej | Ja | |
+| HDInsight version 3.4 | Inga | Ja | |
+| HDInsight version 3.3 | Inga | Inga | |
+| HDInsight version 3.2 | Inga | Ja | |
 | Storm | | |Du kan använda Data Lake Storage Gen1 för att skriva data från en Storm-topologi. Du kan också använda Data Lake Storage Gen1 för referens data som sedan kan läsas av en Storm-topologi.|
 
 > [!WARNING]  
@@ -62,7 +59,7 @@ När HDInsight distribueras med Data Lake Storage Gen1 som standard lagring, lag
 * Cluster1 kan använda sökvägen `adl://mydatalakestore/cluster1storage`
 * Cluster2 kan använda sökvägen `adl://mydatalakestore/cluster2storage`
 
-Observera att båda klustren använder samma Data Lake Storage Gen1-konto **mydatalakestore** . Varje kluster har åtkomst till ett eget rot fil system i Data Lake Storage. I den Azure Portal distributions miljön uppmanas du att använda ett mappnamn, till exempel **/Clusters/ \<clustername>** för rot Sök vägen.
+Observera att båda klustren använder samma Data Lake Storage Gen1-konto **mydatalakestore**. Varje kluster har åtkomst till ett eget rot fil system i Data Lake Storage. I den Azure Portal distributions miljön uppmanas du att använda ett mappnamn, till exempel **/Clusters/ \<clustername>** för rot Sök vägen.
 
 Om du vill använda Data Lake Storage Gen1 som standard lagring måste du ge tjänstens huvud namn åtkomst till följande sökvägar:
 
@@ -137,19 +134,19 @@ Mer information om åtkomst kontroll modellen finns i [åtkomst kontroll i Azure
 
 Det finns flera sätt som du kan använda för att komma åt filerna i Data Lake Storage från ett HDInsight-kluster.
 
-* **Via det fullständiga namnet** . Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
+* **Via det fullständiga namnet**. Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **Via det förkortade sökvägsformatet** . Med den här metoden ersätter du sökvägen upp till kluster roten med:
+* **Via det förkortade sökvägsformatet**. Med den här metoden ersätter du sökvägen upp till kluster roten med:
 
     ```
     adl:///<file path>
     ```
 
-* **Med den relativa sökvägen** . Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna.
+* **Med den relativa sökvägen**. Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna.
 
     ```
     /<file.path>/
@@ -214,7 +211,7 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Identifiera lagrings Sök väg från Ambari
 
-Om du vill identifiera den fullständiga sökvägen till det konfigurerade standard arkivet navigerar du till **HDFS** -  >  **konfiguration** och anger `fs.defaultFS` i rutan filtrera Indatatyp.
+Om du vill identifiera den fullständiga sökvägen till det konfigurerade standard arkivet navigerar du till **HDFS**-  >  **konfiguration** och anger `fs.defaultFS` i rutan filtrera Indatatyp.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Skapa HDInsight-kluster med åtkomst till Data Lake Storage Gen1
 

@@ -3,12 +3,12 @@ title: Konfigurera hybrid Kubernetes-kluster med Azure Monitor för behållare |
 description: I den här artikeln beskrivs hur du kan konfigurera Azure Monitor för behållare för att övervaka Kubernetes-kluster som finns på Azure Stack eller annan miljö.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890470"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936407"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurera hybrid Kubernetes-kluster med Azure Monitor för behållare
 
@@ -21,7 +21,7 @@ Följande konfigurationer stöds officiellt med Azure Monitor för behållare. O
 - Utrymmen
 
     - Kubernetes lokalt
-    - AKS-motorn på Azure och Azure Stack. Mer information finns i [AKS-motorn på Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
+    - AKS-motorn på Azure och Azure Stack. Mer information finns i [AKS-motorn på Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) , version 4 och högre, lokalt eller i andra moln miljöer.
 
 - Versioner av Kubernetes och support policy är samma som versioner av [AKS som stöds](../../aks/supported-kubernetes-versions.md).
@@ -108,7 +108,7 @@ För att först identifiera det fullständiga resurs-ID: t för din Log Analytic
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-    Kopiera värdet för **SubscriptionId** .
+    Kopiera värdet för **SubscriptionId**.
 
 2. Växla till den prenumeration som är värd för Log Analytics arbets ytan med hjälp av följande kommando:
 
@@ -122,7 +122,7 @@ För att först identifiera det fullständiga resurs-ID: t för din Log Analytic
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    I utdata letar du reda på arbets ytans namn och kopierar sedan det fullständiga resurs-ID: t för den Log Analytics arbets ytan under fält **-ID: t** .
+    I utdata letar du reda på arbets ytans namn och kopierar sedan det fullständiga resurs-ID: t för den Log Analytics arbets ytan under fält **-ID: t**.
 
 4. Kopiera och klistra in följande JSON-syntax i filen:
 
@@ -202,7 +202,7 @@ För att först identifiera det fullständiga resurs-ID: t för din Log Analytic
     }
     ```
 
-7. Redigera värdena för **workspaceResourceId** med värdet som du kopierade i steg 3 **och kopiera sedan** värdet **region** efter att du kört kommandot AZ i Azure CLI för att [övervaka logg analys arbets ytan Visa](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true).
+7. Redigera värdena för **workspaceResourceId** med värdet som du kopierade i steg 3 **och kopiera sedan** värdet **region** efter att du kört kommandot AZ i Azure CLI för att [övervaka logg analys arbets ytan Visa](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true).
 
 8. Spara den här filen som containerSolutionParams.jspå en lokal mapp.
 
@@ -258,7 +258,7 @@ I det här avsnittet installerar du behållarens agent för Azure Monitor för b
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    I utdata letar du reda på arbets ytans namn under fält **namnet** och kopierar sedan arbetsyte-ID: t för den Log Analytics arbets ytan under fältet **Kundnr** .
+    I utdata letar du reda på arbets ytans namn under fält **namnet** och kopierar sedan arbetsyte-ID: t för den Log Analytics arbets ytan under fältet **Kundnr**.
 
 2. Kör följande kommando för att identifiera den primära nyckeln för arbets ytan:
 
@@ -303,7 +303,7 @@ I det här avsnittet installerar du behållarens agent för Azure Monitor för b
 
 Du kan ange ett tillägg i JSON-filen för AKS-motorns kluster specifikation, även kallat API-modellen. I det här tillägget anger du den base64-kodade versionen av `WorkspaceGUID` och `WorkspaceKey` på arbets ytan Log Analytics där de insamlade övervaknings data lagras. Du kan hitta `WorkspaceGUID` och `WorkspaceKey` använda steg 1 och 2 i föregående avsnitt.
 
-API-definitioner som stöds för Azure Stack Hub-klustret finns i det här exemplet – [kubernetes-container-monitoring_existing_workspace_id_and_key.jspå](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Mer specifikt hittar du egenskapen **addons** i **kubernetesConfig** :
+API-definitioner som stöds för Azure Stack Hub-klustret finns i det här exemplet – [kubernetes-container-monitoring_existing_workspace_id_and_key.jspå](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Mer specifikt hittar du egenskapen **addons** i **kubernetesConfig**:
 
 ```json
 "orchestratorType": "Kubernetes",

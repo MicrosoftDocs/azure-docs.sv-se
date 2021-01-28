@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753007"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937846"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webbapp som loggar in användare: inloggning och utloggning
 
@@ -222,19 +222,19 @@ Mer information finns i avsnittet [skicka en utloggnings förfrågan](v2-protoco
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Under program registreringen registrerar du en URI för efter utloggning. I den här självstudien har du registrerat `https://localhost:44321/signout-oidc` i fältet **Logga in URL** i avsnittet **Avancerade inställningar** på sidan **autentisering** . Mer information finns i [ Registrera webApp-appen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
+Under program registreringen registrerar du en utloggnings-URL för frontend-kanal. I vår själv studie kurs registrerade du `https://localhost:44321/signout-oidc` i fältet Start **-och utloggnings-URL** på sidan **autentisering** . Mer information finns i [Registrera webApp-appen](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Under program registreringen registrerar du en URI för efter utloggning. I den här självstudien har du registrerat `https://localhost:44308/Account/EndSession` i fältet **Logga in URL** i avsnittet **Avancerade inställningar** på sidan **autentisering** . Mer information finns i [Registrera webApp-appen](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
+Under program registreringen behöver du inte registrera en extra start-URL för klient delen. Appen kommer att anropas igen på huvud-URL: en. 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Under program registreringen registrerar du en URI för efter utloggning. I den här självstudien har du registrerat `http://localhost:8080/msal4jsample/sign_out` i fältet **Logga in URL** i avsnittet **Avancerade inställningar** på sidan **autentisering** .
+Ingen loggnings-URL för klient sidan krävs i program registreringen.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Under program registreringen behöver du inte registrera en extra utloggnings-URL. Appen kommer att anropas igen på huvud-URL: en.
+Under program registreringen behöver du inte registrera en extra start-URL för klient delen. Appen kommer att anropas igen på huvud-URL: en.
 
 ---
 
@@ -336,7 +336,7 @@ I tidigare versioner av ASP.NET Core-mallarna `Account` har kontrollanten bädda
 - Anrop `Signout()` , som låter OpenID ansluta mellanprogram kontakta Microsoft Identity Platform- `logout` slutpunkten. Slut punkten sedan:
 
   - Tar bort sessions-cookien från webbläsaren.
-  - Anropar utloggnings-URL: en. Som standard visar utloggnings-URL: en [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)på sidan för inloggad vy. Den här sidan tillhandahålls också som en del av MIcrosoft. Identity. Web.
+  - Anropar omdirigerings-URI för efter utloggning. Som standard visar omdirigerings-URI: n för den inloggade [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)på sidan. Den här sidan tillhandahålls också som en del av Microsoft. Identity. Web.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

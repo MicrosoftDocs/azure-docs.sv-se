@@ -3,16 +3,13 @@ title: Apache Phoenix anslutnings problem i Azure HDInsight
 description: Anslutnings problem mellan Apache HBase och Apache Phoenix i Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: ed12c9629506fa8defb23b987fe672bb3b384418
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2cc6556f681ece170bdfe02b985f56274c0faa1e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540099"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936971"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scenario: Apache Phoenix anslutnings problem i Azure HDInsight
 
@@ -28,7 +25,7 @@ Felaktig IP för aktiv Zookeeper-nod.
 
 ### <a name="resolution"></a>Lösning
 
-IP-adressen för den aktiva Zookeeper-noden kan identifieras från Ambari-användargränssnittet genom att följa länkar till **HBase**  >  **snabb länkar**  >  **ZK (aktiv)**  >  **Zookeeper-information** . Korrigera IP-adressen efter behov.
+IP-adressen för den aktiva Zookeeper-noden kan identifieras från Ambari-användargränssnittet genom att följa länkar till **HBase**  >  **snabb länkar**  >  **ZK (aktiv)**  >  **Zookeeper-information**. Korrigera IP-adressen efter behov.
 
 ---
 
@@ -50,7 +47,7 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 I Apache Ambari-ANVÄNDARGRÄNSSNITTET utför du följande steg för att starta om HMaster-tjänsten på alla ZooKeeper-noder:
 
-1. Gå till **Summary** **HBase**  >  **Active HBase Master** i avsnittet Sammanfattning i HBase.
+1. Gå till  **HBase**  >  **Active HBase Master** i avsnittet Sammanfattning i HBase.
 
 1. I avsnittet **komponenter** startar du om HBase master tjänsten.
 

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: aaa75988e1177590a0ff6f4ca2e00f92de68789f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583730"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937212"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Självstudie: överföra data med Azure Data Box Gateway
 
@@ -31,7 +31,7 @@ I den här guiden får du lära dig att:
 > * Lägga till en resurs
 > * Ansluta till resurs
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrollera följande innan du lägger till resurser till din Data Box Gateway:
 
@@ -57,7 +57,7 @@ Gör så här om du vill skapa en resurs:
 
     3. Ange ett lagringskonto där resursen ska placeras. En container skapas på lagringskontot med det nyligen skapade resursnamnet om det inte redan finns en. Om containern redan finns används den befintliga containern.
        > [!IMPORTANT]
-       > Kontrol lera att Azure Storage-kontot som du använder inte har oföränderlighets-principer inställda på det om du använder det med en Data Box Gateway-enhet. Mer information finns i [Ange och hantera oföränderlighets-principer för Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Kontrol lera att Azure Storage-kontot som du använder inte har oföränderlighets-principer inställda på det om du använder det med en Data Box Gateway-enhet. Mer information finns i [Ange och hantera oföränderlighets-principer för Blob Storage](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
     4. Välj **lagringstjänst** – blockblob, sidblob eller filer. Vilken typ av tjänst som väljs beror på vilket format du vill använda för data som lagras i Azure. I det här fallet vill vi till exempel att data ska lagras som blob-block i Azure, därför väljer vi Blockblob. Om du väljer Sidblob måste du kontrollera att dina data är justerade för 512 byte. Till exempel är en VHDX alltid justerad för 512 byte.
    

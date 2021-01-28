@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 12074b6dc5d27c0d28ceea5ab6d266d1f02ecbe2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754557"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938180"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Ta bort ett program som är registrerat med Microsoft Identity Platform
 
@@ -29,7 +29,7 @@ I följande avsnitt får du lära dig att:
 * Ta bort ett program som skapats av dig eller din organisation
 * Ta bort ett program som skapats av en annan organisation
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett [program som är registrerat i din Azure AD-klient](quickstart-register-app.md)
 
@@ -37,7 +37,7 @@ I följande avsnitt får du lära dig att:
 
 Program som du eller din organisation har registrerat representeras av både ett programobjekt och ett tjänsthuvudnamnsobjekt i din klientorganisation. Mer information finns i [Programobjekt och tjänsthuvudnamnsobjekt](./app-objects-and-service-principals.md).
 
-Om du vill ta bort ett program måste vara angiven som ägare av programmet eller ha administratörsbehörighet.
+Om du vill ta bort ett program ska du listas som ägare till programmet eller ha administratörs behörighet.
 
 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.

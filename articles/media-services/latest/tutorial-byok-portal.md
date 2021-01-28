@@ -1,17 +1,17 @@
 ---
-title: Använd Azure Portal för att använda Kundhanterade nycklar eller BYOK med Media Services
+title: Använda Kundhanterade nycklar eller BYOK i Azure Portal
 description: I den här självstudien använder du Azure Portal för att aktivera Kundhanterade nycklar eller ta med din egen nyckel (BYOK) med ett Azure Media Services lagrings konto.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 003b8e066a6161baedbc70e9becbca23566813ef
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 61df4b3424a4d73eca7a946c6bd8e5160fd6c529
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96013261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935383"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>Självstudie: Använd Azure Portal för att använda Kundhanterade nycklar eller BYOK med Media Services
 

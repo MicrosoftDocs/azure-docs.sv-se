@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a1a32e4ddad3b0dca84bf2dd6016eb5a218cc2f3
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7aa4ba8a29df762ee61fa426f3e60f0956c2956f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256354"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947524"
 ---
 Kom igång med Custom Vision klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
@@ -25,7 +25,7 @@ Använd Custom Vision klient bibliotek för .NET för att:
 * Publicera den aktuella iterationen
 * Testa förutsägelse slut punkten
 
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Paket (NuGet) [(utbildning)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(förutsägelse)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [exempel](/samples/browse/?products=azure&term=vision&terms=vision)
+[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/customvision) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Paket (NuGet) [(utbildning)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(förutsägelse)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [exempel](/samples/browse/?products=azure&term=vision&terms=vision)
 
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -106,11 +106,11 @@ I programmets **main** -metod lägger du till anrop för de metoder som används
 
 ## <a name="object-model"></a>Objekt modell
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
-|[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-dotnet) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
-|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-dotnet-preview)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
-|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel?view=azure-dotnet-preview)| Den här klassen definierar en enstaka förutsägelse för en enda avbildning. Den innehåller egenskaper för objekt-ID och namn och en förtroende poäng.|
+|[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
+|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
+|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel)| Den här klassen definierar en enstaka förutsägelse för en enda avbildning. Den innehåller egenskaper för objekt-ID och namn och en förtroende poäng.|
 
 ## <a name="code-examples"></a>Kodexempel
 
@@ -133,7 +133,7 @@ I en ny metod instansierar du inlärnings-och förutsägelse klienter med hjälp
 
 ## <a name="create-a-new-custom-vision-project"></a>Skapa ett nytt Custom Vision-projekt
 
-I nästa kod skapas ett bild klassificerings projekt. Det skapade projektet visas på [Custom vision webbplats](https://customvision.ai/). Se [CreateProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) -metoden för att ange andra alternativ när du skapar ditt projekt (förklaras i guiden [skapa en klassificerings](../../getting-started-build-a-classifier.md) webb Portal).  
+I nästa kod skapas ett bild klassificerings projekt. Det skapade projektet visas på [Custom vision webbplats](https://customvision.ai/). Se [CreateProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) -metoden för att ange andra alternativ när du skapar ditt projekt (förklaras i guiden [skapa en klassificerings](../../getting-started-build-a-classifier.md) webb Portal).  
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
 
@@ -169,7 +169,7 @@ Den här metoden skapar den första inlärningen iteration i projektet. Tjänste
 > [!TIP]
 > Träna med valda Taggar
 >
-> Du kan välja att bara träna på en delmängd av dina använda taggar. Du kanske vill göra detta om du inte har använt tillräckligt med vissa Taggar ännu, men du har tillräckligt med andra. I [TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) -anropet använder du parametern *trainingParameters* . Skapa en [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters?preserve-view=true&view=azure-dotnet) och ange dess **SelectedTags** -egenskap till en lista med ID: n för de taggar som du vill använda. Modellen kommer att träna att bara identifiera taggarna i listan.
+> Du kan välja att bara träna på en delmängd av dina använda taggar. Du kanske vill göra detta om du inte har använt tillräckligt med vissa Taggar ännu, men du har tillräckligt med andra. I [TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) -anropet använder du parametern *trainingParameters* . Skapa en [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters) och ange dess **SelectedTags** -egenskap till en lista med ID: n för de taggar som du vill använda. Modellen kommer att träna att bara identifiera taggarna i listan.
 
 ## <a name="publish-the-current-iteration"></a>Publicera den aktuella iterationen
 
@@ -229,4 +229,4 @@ Nu har du gjort varje steg i processen för bild klassificering i kod. Det här 
 
 * [Vad är Custom Vision?](../../overview.md)
 * Du hittar käll koden för det här exemplet på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)
-* [Referensdokumentation för SDK](/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)
+* [Referensdokumentation för SDK](/dotnet/api/overview/azure/cognitiveservices/client/customvision)

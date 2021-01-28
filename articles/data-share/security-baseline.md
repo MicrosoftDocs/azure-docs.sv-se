@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 22654d49d02809460adc4013c2c92ac857805cf7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199809"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937170"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azures säkerhets bas linje för Azure Data Share
 
@@ -108,7 +108,7 @@ Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM fr�
 
 **Vägledning**: Azure Data Share stöder SSO-autentisering med Azure Active Directory. Minska antalet identiteter och autentiseringsuppgifter som användarna måste hantera genom att aktivera SSO för tjänsten med din organisations befintliga identiteter.
 
-- [Förstå SSO med Azure AD](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

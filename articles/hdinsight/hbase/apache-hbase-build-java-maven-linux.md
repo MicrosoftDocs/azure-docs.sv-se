@@ -1,19 +1,16 @@
 ---
 title: Använd Apache Maven för att bygga en Java HBase-klient för Azure HDInsight
 description: Lär dig hur du använder Apache Maven för att bygga ett Java-baserat Apache HBase-program och sedan distribuera det till HBase på Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547919"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942968"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Utveckla Java-program för Apache HBase
 
@@ -48,7 +45,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Skapa ett Maven-projekt
 
-1. Ange följande kommando för att skapa ett Maven-projekt med namnet **hbaseapp** :
+1. Ange följande kommando för att skapa ett Maven-projekt med namnet **hbaseapp**:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -107,7 +104,7 @@ Det här avsnittet anger att projektet behöver **HBase-client-** och **Phoenix-
 
 Mer information om HDInsight-versioner och-komponenter finns i [Vad är de olika Apache Hadoops komponenter som är tillgängliga med HDInsight](../hdinsight-component-versioning.md).
 
-### <a name="build-configuration"></a>Bygg konfiguration
+### <a name="build-configuration"></a>Skapa konfiguration
 
 Med maven-plugin-program kan du anpassa projektets Bygg steg. Det här avsnittet används för att lägga till plugin-program, resurser och andra Bygg konfigurations alternativ.
 

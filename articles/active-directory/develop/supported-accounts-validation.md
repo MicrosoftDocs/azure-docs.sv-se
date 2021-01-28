@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eea2e587a075d774a25f479ec61575a002b57f75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752963"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937814"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Validerings skillnader per konto typer som stöds (signInAudience)
 
@@ -24,9 +24,9 @@ När du registrerar ett program med Microsoft Identity Platform för utvecklare 
 
 Alternativen omfattar följande:
 
-- *AzureADMyOrg*: endast konton i den organisations katalog där appen är registrerad (en enskild klient)
-- *AzureADMultipleOrgs*: konton i valfri organisations katalog (flera innehavare)
-- *AzureADandPersonalMicrosoftAccount*: konton i valfri organisations katalog (flera innehavare) och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com)
+- **AzureADMyOrg**: endast konton i den organisations katalog där appen är registrerad (en enda klient).
+- **AzureADMultipleOrgs**: konton i valfri organisations katalog (flera innehavare).
+- **AzureADandPersonalMicrosoftAccount**: konton i valfri organisations katalog (flera innehavare) och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com).
 
 För registrerade program kan du hitta värdet för konto typer som stöds i avsnittet **autentisering** i ett program. Du kan också hitta den under `signInAudience` egenskapen i **manifestet**.
 
@@ -44,11 +44,11 @@ I följande tabell visas validerings skillnader för olika egenskaper för olika
 | Omfattningar som definieras av detta API ( `oauth2Permissions` ) | Maximal omfattnings namn längd på 120 tecken <br><br> Ingen gräns * för antalet definierade omfattningar | Maximal omfattnings namn längd på 120 tecken <br><br> Ingen gräns * för antalet definierade omfattningar |  Maximal omfattnings namn längd på 40 tecken <br><br> Högst 100 omfattningar har definierats | 
 | Auktoriserade klient program ( `preAuthorizedApplications` ) | Ingen gräns * | Ingen gräns * | Totalt Max 500 <br><br> Högst 100 klient program har definierats <br><br> Högst 30 scope som definierats per klient | 
 | appRoles | Stöds <br> Ingen gräns * | Stöds <br> Ingen gräns * | Stöds inte | 
-| Utloggnings-URL | http://localhost tillåts <br><br> Maximal längd på 255 tecken | http://localhost tillåts <br><br> Maximal längd på 255 tecken | <br><br> https://localhost tillåts, http://localhost Miss lyckas för MSA <br><br> Maximal längd på 255 tecken <br><br> HTTP-schemat är inte tillåtet <br><br> Jokertecken stöds inte | 
+| Utloggnings-URL för frontend-kanal | https://localhost tillåts <br><br> `http` schemat tillåts inte <br><br> Maximal längd på 255 tecken | https://localhost tillåts <br><br> `http` schemat tillåts inte <br><br> Maximal längd på 255 tecken | <br><br> https://localhost tillåts, http://localhost Miss lyckas för MSA <br><br> Maximal längd på 255 tecken <br><br> `http` schemat tillåts inte <br><br> Jokertecken stöds inte | 
 
-* Det finns en global gräns på cirka 1000 objekt över alla samlings egenskaper på App-objektet
+* Det finns en global gräns på cirka 1000 objekt över alla samlings egenskaper på App-objektet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [program registrering](app-objects-and-service-principals.md)
-- Läs mer om [applikations manifestet](reference-app-manifest.md)
+- Läs mer om [program registrering](app-objects-and-service-principals.md).
+- Läs mer om [applikations manifestet](reference-app-manifest.md).

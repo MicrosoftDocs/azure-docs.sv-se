@@ -3,16 +3,16 @@ title: Azure Image Builder-DevOps uppgift
 description: Azure DevOps-uppgift för att mata in Bygg artefakter i en avbildning för virtuella datorer så att du kan installera och konfigurera ditt program och ditt operativ system.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684550"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934262"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder-DevOps uppgift
 
@@ -69,7 +69,7 @@ Välj i den nedrullningsbara menyn vilken prenumeration du vill att bild verktyg
 
 Använd resurs gruppen där den tillfälliga avbildnings mal len artefakt ska lagras. När du skapar en mall för en mall skapas ytterligare en tillfällig Image Builder-resurs grupp `IT_<DestinationResourceGroup>_<TemplateName>_guid` . Den tillfälliga resurs gruppen lagrar metadata för avbildningen, till exempel skript. I slutet av uppgiften tas avbildnings mallens artefakt och resurs grupp för tillfällig avbildnings byggare bort.
  
-### <a name="location"></a>Plats
+### <a name="location"></a>Location
 
 Platsen är den region där Image Builder ska köras. Endast ett angivet antal [regioner](../image-builder-overview.md#regions) stöds. Käll avbildningarna måste finnas på den här platsen. Om du till exempel använder delade avbildnings Galleri måste det finnas en replik i den regionen.
 
@@ -154,7 +154,13 @@ I följande exempel förklaras hur det fungerar:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux-på Linux-system placeras Bygg artefakterna i `/tmp` katalogen. Men på många Linux-OSs i en omstart tas katalogen/tmp-katalogens innehåll bort. Om du vill att artefakterna ska finnas i avbildningen måste du skapa en annan katalog och kopiera dem.  Till exempel:
+   Du kan referera till flera skript eller lägga till fler kommandon, till exempel:
+
+       ```PowerShell
+       & 'c:\buildArtifacts\webapp\webconfig.ps1'
+       & 'c:\buildArtifacts\webapp\installAgent.ps1'
+       ```
+* Linux-på Linux-system placeras Bygg artefakterna i `/tmp` katalogen. Men på många Linux-OSs i en omstart tas katalogen/tmp-katalogens innehåll bort. Om du vill att artefakterna ska finnas i avbildningen måste du skapa en annan katalog och kopiera dem.  Exempel:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +182,7 @@ I följande exempel förklaras hur det fungerar:
 > Avbildnings verktyget tar inte bort Bygg artefakterna automatiskt, men vi rekommenderar starkt att du alltid har kod för att ta bort Bygg artefakterna.
 > 
 
-* Windows-Image Builder distribuerar filer till `c:\buildArtifacts` katalogen. Katalogen är beständig. du måste ta bort katalogen. Du kan ta bort den i skriptet som du kör. Till exempel:
+* Windows-Image Builder distribuerar filer till `c:\buildArtifacts` katalogen. Katalogen är beständig. du måste ta bort katalogen. Du kan ta bort den i skriptet som du kör. Exempel:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +192,7 @@ I följande exempel förklaras hur det fungerar:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux – build-artefakterna placeras i `/tmp` katalogen. Men på många Linux-OSs på en omstart `/tmp` raderas katalog innehållet. Vi rekommenderar att du har kod för att ta bort innehållet och inte förlitar dig på operativ systemet för att ta bort innehållet. Till exempel:
+* Linux – build-artefakterna placeras i `/tmp` katalogen. Men på många Linux-OSs på en omstart `/tmp` raderas katalog innehållet. Vi rekommenderar att du har kod för att ta bort innehållet och inte förlitar dig på operativ systemet för att ta bort innehållet. Exempel:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -298,7 +304,7 @@ Pub/erbjudande/SKU/version av käll Marketplace-avbildningen:
 Avbildnings-URI – ResourceID för den distribuerade avbildningen:
 * $ (imageUri)
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 ### <a name="can-i-use-an-existing-image-template-i-have-already-created-outside-of-devops"></a>Kan jag använda en befintlig avbildnings mall som jag redan har skapat, utanför DevOps?
 
@@ -312,7 +318,7 @@ Nej. Ett unikt Mallnamn används och tas sedan bort.
 
 Om ett build-problem uppstår tar DevOps-aktiviteten inte bort den mellanlagrings resurs gruppen. Du kan komma åt den mellanlagrings resurs grupp som innehåller anpassnings loggen för build.
 
-Du kommer att se ett fel i DevOps-loggen för aktiviteten VM Image Builder och se platsen anpassning. log. Till exempel:
+Du kommer att se ett fel i DevOps-loggen för aktiviteten VM Image Builder och se platsen anpassning. log. Exempel:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Exempel på DevOps-aktivitets fel som visar ett fel.":::
 

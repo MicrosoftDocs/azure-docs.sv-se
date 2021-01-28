@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/16/2020
+ms.date: 01/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, azuread-video-2020
-ms.openlocfilehash: 9c5f7684083ec533c8100785787572ebe4456bcc
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7b43cf23b3f01e64c0be31ed013aa990ff80d3db
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030254"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938332"
 ---
 # <a name="what-is-conditional-access"></a>Vad är villkorsstyrd åtkomst?
 
 Modern säkerhetsperimeter sträcker sig nu utanför en organisations nätverk för att inkludera användar-och enhets identitet. Organisationer kan använda dessa identitets signaler som en del av besluten om åtkomst kontroll. 
 
-> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-AD-Conditional-Access/player]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4MwZs]
 
 Villkorlig åtkomst är det verktyg som används av Azure Active Directory för att ta fram signaler, fatta beslut och tillämpa organisations principer. Villkorlig åtkomst är kärnan i det nya identitets drivna kontroll planet.
 

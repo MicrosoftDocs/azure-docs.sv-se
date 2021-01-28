@@ -1,19 +1,16 @@
 ---
 title: 'Självstudie: Apache Spark streaming & Apache Kafka – Azure HDInsight'
 description: Lär dig använda Apache Spark-strömning till att hämta data till eller från Apache Kafka. I den här självstudien strömmar du data med hjälp av en Jupyter Notebook från Spark på HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d352fc86f4451f60951b84929ad5d9450c1003d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821136"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942792"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Självstudie: Använda Apache Spark Structured Streaming med Apache Kafka i HDInsight
 
@@ -21,7 +18,7 @@ Den här självstudien visar hur du använder [Apache Spark Structured Streaming
 
 Spark-strukturerad strömning är en data Ströms bearbetnings motor som bygger på Spark SQL. Med den kan du uttrycka strömmande beräkningar på samma sätt som batchberäkningar av statiska data.  
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Använd en Azure Resource Manager mall för att skapa kluster
@@ -144,7 +141,7 @@ Om du vill skapa ett Azure Virtual Network och sedan skapa Kafka- och Spark-klus
     | --- | --- |
     | Prenumeration | Din Azure-prenumeration |
     | Resursgrupp | Resursgruppen som innehåller resurserna. |
-    | Plats | Azure-regionen som resurserna skapas i. |
+    | Location | Azure-regionen som resurserna skapas i. |
     | Apache Spark-klusternamn | Namnet på Apache Spark-klustret. De första sex tecknen får inte vara samma som Kafka-klusternamnet. |
     | Kafka-klusternamn | Namnet på Kafka-klustret. De första sex tecknen får inte vara samma som Spark-klusternamnet. |
     | Användarnamn för klusterinloggning | Ett administratörsanvändarnamn för klustren. |

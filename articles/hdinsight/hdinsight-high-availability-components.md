@@ -1,25 +1,22 @@
 ---
 title: Komponenter med hög tillgänglighet i Azure HDInsight
 description: Översikt över de olika komponenter med hög tillgänglighet som används av HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539725"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945314"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Tjänster med hög tillgänglighet som stöds av Azure HDInsight
 
 För att ge dig optimala tillgänglighets nivåer för dina analys komponenter utvecklades HDInsight med en unik arkitektur för att säkerställa hög tillgänglighet för kritiska tjänster. Vissa komponenter i den här arkitekturen har utvecklats av Microsoft för att tillhandahålla automatisk redundans. Andra komponenter är standard Apache-komponenter som distribueras för att stödja vissa tjänster. I den här artikeln beskrivs arkitekturen hos HA-tjänst modellen i HDInsight, hur HDInsight stöder redundans för HA-tjänster och bästa praxis för att återställa från andra tjänst avbrott.
 
 > [!NOTE]
-> Den här artikeln innehåller referenser till termen *slav* , en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
+> Den här artikeln innehåller referenser till termen *slav*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ## <a name="high-availability-infrastructure"></a>Infrastruktur med hög tillgänglighet
 
@@ -49,7 +46,7 @@ I följande avsnitt får du mer information om hur dessa tjänster fungerar till
 
 ## <a name="hdinsight-high-availability-services"></a>Tjänster för hög tillgänglighet för HDInsight
 
-Microsoft tillhandahåller support för de fyra Apache-tjänsterna i följande tabell i HDInsight-kluster. För att skilja dem från tjänster med hög tillgänglighet som stöds av komponenter från Apache kallas de för *HDInsight ha-tjänster* .
+Microsoft tillhandahåller support för de fyra Apache-tjänsterna i följande tabell i HDInsight-kluster. För att skilja dem från tjänster med hög tillgänglighet som stöds av komponenter från Apache kallas de för *HDInsight ha-tjänster*.
 
 | Tjänst | Klusternoder | Kluster typer | Syfte |
 |---|---|---|---|
@@ -65,7 +62,7 @@ Microsoft tillhandahåller support för de fyra Apache-tjänsterna i följande t
 
 Varje HDInsight-kluster har två huvudnoderna i aktiva och vänte läge. HDInsight HA-tjänsterna körs endast på huvudnoderna. Dessa tjänster bör alltid köras på den aktiva huvudnoden och stoppas och placeras i underhålls läge på huvudnoden vänte läge.
 
-För att upprätthålla rätt tillstånd för HA-tjänster och tillhandahålla snabb redundans, använder HDInsight Apache ZooKeeper, som är en koordinerings tjänst för distribuerade program, för att genomföra aktiv huvudnoden val. HDInsight tillhandahåller också några Java-processer i bakgrunden som koordinerar redundansväxlingen för HDInsight-tjänster. Dessa tjänster är följande: huvud fel kontroll panelen, den sekundära redundansväxlingen, *tjänsten master-ha* och den *slav-ha-tjänsten* .
+För att upprätthålla rätt tillstånd för HA-tjänster och tillhandahålla snabb redundans, använder HDInsight Apache ZooKeeper, som är en koordinerings tjänst för distribuerade program, för att genomföra aktiv huvudnoden val. HDInsight tillhandahåller också några Java-processer i bakgrunden som koordinerar redundansväxlingen för HDInsight-tjänster. Dessa tjänster är följande: huvud fel kontroll panelen, den sekundära redundansväxlingen, *tjänsten master-ha* och den *slav-ha-tjänsten*.
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 

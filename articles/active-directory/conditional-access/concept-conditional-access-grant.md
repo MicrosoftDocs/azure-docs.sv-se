@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219954"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938380"
 ---
 # <a name="conditional-access-grant"></a>Villkorlig åtkomst: bevilja
 
@@ -121,7 +121,9 @@ I din princip för villkorlig åtkomst kan du kräva att en [Intune App Protecti
 
 För att kunna utnyttja denna beviljande kontroll, kräver villkorlig åtkomst att enheten registreras i Azure Active Directory som kräver att en Service Broker-app används. Koordinatorappen kan antingen vara Microsoft Authenticator för iOS eller Microsofts företagsportal för Android-enheter. Om en Service Broker-app inte är installerad på enheten när användaren försöker autentisera, omdirigeras användaren till App Store för att installera Service Broker-appen.
 
-Den här inställningen gäller för följande klient program:
+Det krävs program för att **Intune SDK: n** ska **vara implementerad** och uppfylla vissa andra krav för att stödja den här inställningen. Utvecklare som implementerar program med Intune SDK hittar mer information i SDK-dokumentationen om dessa krav.
+
+Följande klient program har bekräftats för att stödja den här inställningen:
 
 - Microsoft Cortana
 - Microsoft Edge

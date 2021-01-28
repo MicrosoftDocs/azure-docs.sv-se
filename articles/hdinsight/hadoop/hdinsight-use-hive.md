@@ -1,19 +1,16 @@
 ---
 title: Vad är Apache Hive och HiveQL – Azure HDInsight
 description: Apache Hive är ett informations lager system för Apache Hadoop. Du kan fråga data som lagras i Hive med HiveQL, som liknar Transact-SQL. I det här dokumentet får du lära dig hur du använder Hive och HiveQL med Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540405"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944298"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Vad är Apache Hive och HiveQL på Azure HDInsight?
 
@@ -23,7 +20,7 @@ Med Hive kan du projicera strukturen på mycket ostrukturerade data. När du har
 
 HDInsight tillhandahåller flera kluster typer, som är anpassade för vissa arbets belastningar. Följande kluster typer används oftast för Hive-frågor:
 
-|Kluster typ |Beskrivning|
+|Kluster typ |Description|
 |---|---|
 |Interaktiv fråga|Ett Hadoop-kluster som tillhandahåller [LLAP-funktioner (Low latens Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) för att förbättra svars tiderna för interaktiva frågor. Mer information finns i dokumentet [starta med interaktiv fråga i HDInsight](../interactive-query/apache-interactive-query-get-started.md) .|
 |Hadoop|Ett Hadoop-kluster som är anpassat för arbets belastningar för batch-bearbetning. Mer information finns i dokumentet [starta med Apache Hadoop i HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .|
@@ -72,14 +69,14 @@ Mer information om fil format som stöds av Hive finns i [språk hand boken ( ht
 
 Det finns två typer av tabeller som du kan skapa med Hive:
 
-* __Internt__ : data lagras i data lagret för Hive. Informations lagret finns `/hive/warehouse/` på standard lagrings utrymmet för klustret.
+* __Internt__: data lagras i data lagret för Hive. Informations lagret finns `/hive/warehouse/` på standard lagrings utrymmet för klustret.
 
     Använd interna tabeller när något av följande villkor gäller:
 
     * Data är temporära.
     * Du vill att Hive ska hantera livs cykeln för tabellen och data.
 
-* __Externt__ : data lagras utanför data lagret. Data kan lagras på alla lagrings enheter som är tillgängliga för klustret.
+* __Externt__: data lagras utanför data lagret. Data kan lagras på alla lagrings enheter som är tillgängliga för klustret.
 
     Använd externa tabeller när något av följande villkor gäller:
 
@@ -92,7 +89,7 @@ Mer information finns i blogg inlägget om [interna och externa tabeller i Hive]
 
 ## <a name="user-defined-functions-udf"></a>Användardefinierade funktioner (UDF)
 
-Hive kan också utökas genom **användardefinierade funktioner (UDF)** . Med en UDF kan du implementera funktioner eller logik som inte är lätt att modellera i HiveQL. Ett exempel på hur du använder UDF: er med Hive finns i följande dokument:
+Hive kan också utökas genom **användardefinierade funktioner (UDF)**. Med en UDF kan du implementera funktioner eller logik som inte är lätt att modellera i HiveQL. Ett exempel på hur du använder UDF: er med Hive finns i följande dokument:
 
 * [Använd en användardefinierad Java-funktion med Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -137,7 +134,7 @@ I föregående exempel utför HiveQL-instruktionerna följande åtgärder:
 |SKAPA EXTERN TABELL|Skapar en ny **extern** tabell i Hive. Externa tabeller lagrar bara tabell definitionen i Hive. Data placeras kvar på den ursprungliga platsen och i det ursprungliga formatet.|
 |RAD FORMAT|Anger Hive hur data formateras. I det här fallet separeras fälten i varje logg med ett blank steg.|
 |LAGRAD SOM TEXTFILE-PLATS|Anger Hive var data lagras ( `example/data` katalogen) och lagras som text. Data kan finnas i en fil eller spridas över flera filer i katalogen.|
-|SELECT|Väljer ett antal rader där kolumnen **T4** innehåller värdet **[Error]** . Den här instruktionen returnerar värdet **3** eftersom det finns tre rader som innehåller det här värdet.|
+|SELECT|Väljer ett antal rader där kolumnen **T4** innehåller värdet **[Error]**. Den här instruktionen returnerar värdet **3** eftersom det finns tre rader som innehåller det här värdet.|
 |INPUT__FILE__NAME som%. log|Hive försöker tillämpa schemat på alla filer i katalogen. I det här fallet innehåller katalogen filer som inte matchar schemat. För att förhindra skräp data i resultaten anger den här instruktionen Hive att vi bara ska returnera data från filer som slutar med. log.|
 
 > [!NOTE]  

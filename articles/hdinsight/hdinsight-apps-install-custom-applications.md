@@ -1,19 +1,16 @@
 ---
 title: Installera dina anpassade Apache Hadoop-program i Azure HDInsight
 description: Lär dig hur du installerar HDInsight-program för Apache Hadoop kluster i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: dca248d217f4fb90d41c0a98a42b5eda4783913f
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825210"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942698"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Installera anpassade Apache Hadoop-program i Azure HDInsight
 
@@ -75,7 +72,7 @@ Du kan validera programinstallationen genom att kontrollera statusen för progra
 
 För **nyans** kan du använda följande steg:
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj det kluster där du installerade programmet.
@@ -123,7 +120,7 @@ Om en programinstallation Miss lyckas kan du se fel meddelandena och felsökning
 
 ## <a name="remove-hdinsight-applications"></a>Ta bort HDInsight-program
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj det kluster där du installerade programmet.

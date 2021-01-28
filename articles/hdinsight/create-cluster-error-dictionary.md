@@ -3,17 +3,16 @@ title: Azure HDInsight skapa ett kluster-fel ord lista
 description: Lär dig hur du felsöker fel som uppstår när du skapar Azure HDInsight-kluster
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543108"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943333"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fel vid skapande av kluster
 
@@ -24,7 +23,7 @@ I den här artikeln beskrivs lösningar på fel som du kan stöta på när du sk
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Felkod: DeploymentDocument ' CsmDocument_2_0 ' misslyckades med verifieringen
 
-**Fel** : "det går inte att komma åt URI för skript åtgärd: \<SCRIPT ACTION URL\> "
+**Fel**: "det går inte att komma åt URI för skript åtgärd: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>Fel meddelande 1
 
@@ -161,7 +160,7 @@ Du har inte angett de behörigheter som krävs för att hantera identiteten. Den
 
 1. Öppna Azure-portalen.
 1. Gå till ditt lagringskonto.
-1. Titta under **Access Control (IAM)** .
+1. Titta under **Access Control (IAM)**.
 1. Se till att användaren har rollen Storage BLOB data Contributor eller rollen som ägare till lagrings-BLOB-data.
 
 Mer information finns i [Konfigurera behörigheter för den hanterade identiteten på data Lake Storage Gen2-kontot](hdinsight-hadoop-use-data-lake-storage-gen2.md).

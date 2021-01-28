@@ -1,19 +1,16 @@
 ---
 title: Självstudie – Använd Apache HBase i Azure HDInsight
 description: Följ den här Apache HBase-självstudien för att börja använda Hadoop på HDInsight. Skapa tabeller från HBase-gränssnittet och ställ frågor för dem med Hive.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 3aff700493fbdc0c2b8a9a3dcb4dbbafe9b10761
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788781"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936055"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Självstudie: använda Apache HBase i Azure HDInsight
 
@@ -28,7 +25,7 @@ I den här guiden får du lära dig att:
 > * Använd HBase REST API:er med Curl
 > * Kontrollera klusterstatus
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En SSH-klient. Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

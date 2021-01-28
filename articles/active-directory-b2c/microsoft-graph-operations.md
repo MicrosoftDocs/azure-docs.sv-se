@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 50042b749c917752d08198c31ada3c73a5ef540b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805240"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938488"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Hantera Azure AD B2C med Microsoft Graph
 
@@ -35,18 +35,29 @@ Om du vill använda MS Graph API och interagera med resurser i din Azure AD B2C 
 - [Uppdatera en användare](/graph/api/user-update)
 - [Ta bort en användare](/graph/api/user-delete)
 
-## <a name="user-phone-number-management"></a>Hantering av användar telefonnummer
+## <a name="user-phone-number-management-beta"></a>Hantering av användar telefonnummer (beta)
+
+Ett telefonnummer som kan användas av en användare för att logga in med [SMS eller röst samtal](identity-provider-local.md#phone-sign-in-preview)eller [Multi-Factor Authentication](multi-factor-authentication.md). Mer information finns i [Azure AD Authentication Methods API](/graph/api/resources/phoneauthenticationmethod).
 
 - [Lägg till](/graph/api/authentication-post-phonemethods)
-- [Hämta](/graph/api/b2cauthenticationmethodspolicy-get)
-- [Uppdatera](/graph/api/b2cauthenticationmethodspolicy-update)
+- [Lista](/graph/api/authentication-list-phonemethods)
+- [Hämta](/graph/api/phoneauthenticationmethod-get)
+- [Uppdatera](/graph/api/phoneauthenticationmethod-update)
 - [Ta bort](/graph/api/phoneauthenticationmethod-delete)
 
-Mer information om hur du hanterar användares inloggnings telefonnummer finns i [B2C-autentiseringsmetoder](/graph/api/resources/b2cauthenticationmethodspolicy).
+## <a name="self-service-password-reset-email-address-beta"></a>E-postadress för lösen ords återställning via självbetjäning (beta)
 
-## <a name="identity-providers-user-flow"></a>Identitets leverantörer (användar flöde)
+En e-postadress som kan användas av en användare för att vila på lösen ordet för [inloggnings konto för användar namn](identity-provider-local.md#username-sign-in). Mer information finns i [Azure AD Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
 
-Hantera de identitets leverantörer som är tillgängliga för dina användar flöden i Azure AD B2C-klienten.
+- [Lägg till](/graph/api/emailauthenticationmethod-post)
+- [Lista](/graph/api/emailauthenticationmethod-list)
+- [Hämta](/graph/api/emailauthenticationmethod-get)
+- [Uppdatera](/graph/api/emailauthenticationmethod-update)
+- [Ta bort](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>Identitetsprovidrar
+
+Hantera de [identitets leverantörer](add-identity-provider.md) som är tillgängliga för dina användar flöden i Azure AD B2C-klienten.
 
 - [Visa lista med identitets leverantörer som registrerats i Azure AD B2C klient organisationen](/graph/api/identityprovider-list)
 - [Skapa en identitets leverantör](/graph/api/identityprovider-post-identityproviders)
@@ -62,6 +73,13 @@ Konfigurera fördefinierade principer för registrering, inloggning, kombinerad 
 - [Skapa ett användarflöde](/graph/api/identitycontainer-post-b2cuserflows)
 - [Hämta ett användar flöde](/graph/api/b2cidentityuserflow-get)
 - [Ta bort ett användar flöde](/graph/api/b2cidentityuserflow-delete)
+
+## <a name="user-flow-authentication-methods-beta"></a>Autentiseringsmetoder för användar flöde (beta)
+
+Välj en mekanism för att låta användare registrera sig via lokala konton. Lokala konton är de konton där Azure AD gör identitets kontrollen. Mer information finns i [resurs typen b2cAuthenticationMethodsPolicy](/graph/api/resources/b2cauthenticationmethodspolicy).
+
+- [Hämta](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Uppdatera](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>Anpassade principer
 

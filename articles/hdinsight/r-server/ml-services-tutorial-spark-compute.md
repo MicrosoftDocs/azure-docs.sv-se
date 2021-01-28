@@ -1,19 +1,16 @@
 ---
 title: 'Självstudie: använda R i en spark Compute-kontext i Azure HDInsight'
 description: Självstudie – kom igång med R och Spark på ett Azure HDInsight Machine Learning Services-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545913"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935673"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Självstudie: använda R i en spark Compute-kontext i Azure HDInsight
 
@@ -33,7 +30,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure HDInsight Machine Learning Services-kluster. Gå till [skapa Apache Hadoop kluster med hjälp av Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) och välj **ml-tjänster** för **kluster typ** .
+* Ett Azure HDInsight Machine Learning Services-kluster. Gå till [skapa Apache Hadoop kluster med hjälp av Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) och välj **ml-tjänster** för **kluster typ**.
 
 ## <a name="connect-to-rstudio-server"></a>Anslut till RStudio Server
 
@@ -43,7 +40,7 @@ RStudio-servern körs på klustrets Edge-nod. Gå till följande plats (där *kl
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Första gången du loggar in autentiseras du två gånger. Vid den första autentiseringen anger du användar namn och lösen ord för kluster administratören (Standardvärdet är *admin* ). Vid den andra autentiseringen anger du SSH-användarnamn och-lösen ord (Standardvärdet är *sshuser* ). Efterföljande inloggningar kräver bara SSH-autentiseringsuppgifter.
+Första gången du loggar in autentiseras du två gånger. Vid den första autentiseringen anger du användar namn och lösen ord för kluster administratören (Standardvärdet är *admin*). Vid den andra autentiseringen anger du SSH-användarnamn och-lösen ord (Standardvärdet är *sshuser*). Efterföljande inloggningar kräver bara SSH-autentiseringsuppgifter.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>Ladda ned exempel data till lokal lagring
 
@@ -57,7 +54,7 @@ Första gången du loggar in autentiseras du två gånger. Vid den första auten
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-1. I den högra rutan väljer du fliken **miljö** . Variablerna visas under **värden** .
+1. I den högra rutan väljer du fliken **miljö** . Variablerna visas under **värden**.
 
     ![Webb konsol för HDInsight R Studio](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 

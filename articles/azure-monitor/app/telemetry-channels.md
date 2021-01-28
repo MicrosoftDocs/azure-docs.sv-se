@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564023"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937356"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetri kanaler i Application Insights
 
@@ -18,7 +18,7 @@ Telemetri kanaler är en integrerad del av [Azure Application Insights SDK](./ap
 
 ## <a name="what-are-telemetry-channels"></a>Vad är kanaler för telemetri?
 
-Telemetri kanaler är ansvariga för att buffra telemetri-objekt och skicka dem till den Application Insights tjänsten där de lagras för frågor och analyser. En telemetri kanal är en klass som implementerar [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) gränssnittet.
+Telemetri kanaler är ansvariga för att buffra telemetri-objekt och skicka dem till den Application Insights tjänsten där de lagras för frågor och analyser. En telemetri kanal är en klass som implementerar [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) gränssnittet.
 
 `Send(ITelemetry item)`Metoden för en telemetri-kanal anropas efter att alla telemetri-och telemetri-processorer har anropats. Det innebär att alla objekt som släppts av en telemetri-processor inte når kanalen. `Send()` skickar vanligt vis inte objekten till Server delen direkt. Normalt buffrar den dem i minnet och skickar dem i batchar för effektiv överföring.
 

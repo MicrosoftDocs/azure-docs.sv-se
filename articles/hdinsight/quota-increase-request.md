@@ -1,19 +1,16 @@
 ---
 title: CPU Core-kvot, öka förfrågan – Azure HDInsight
 description: Lär dig processen att begära en ökning av de processor kärnor som allokerats till din prenumeration.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539419"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935843"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Begäran om kvot ökar för Azure HDInsight
 
@@ -30,7 +27,7 @@ Om du har fått ett fel som indikerar att du har nått en kvot gräns kan du anv
 
     1. Logga in på [Azure-portalen](https://portal.azure.com/).
     1. Gå till **översikts** sidan för HDInsight-klustret.
-    1. På den vänstra menyn väljer du **kvot gränser** . Sidan visar det antal kärnor som används, antalet tillgängliga kärnor samt totalt antal kärnor.
+    1. På den vänstra menyn väljer du **kvot gränser**. Sidan visar det antal kärnor som används, antalet tillgängliga kärnor samt totalt antal kärnor.
 
 Utför följande steg för att begära en kvot ökning:
 
@@ -39,16 +36,16 @@ Utför följande steg för att begära en kvot ökning:
 
     ![hjälp och support-knappen](./media/quota-increase-request/help-support-button.png)
 
-1. Välj **Ny supportbegäran** .
+1. Välj **Ny supportbegäran**.
 1. På sidan **Ny supportbegäran** går du till fliken **Grunder** och väljer följande alternativ:
 
-   - **Typ av problem** : **begränsningar för tjänsten och prenumerationen (kvoter)**
-   - **Prenumeration** : den prenumeration du vill ändra
-   - **Typ av kvot** : **HDInsight**
+   - **Typ av problem**: **begränsningar för tjänsten och prenumerationen (kvoter)**
+   - **Prenumeration**: den prenumeration du vill ändra
+   - **Typ av kvot**: **HDInsight**
 
      ![Skapa en support förfrågan för att öka HDInsight Core-kvoten](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. Välj **Nästa: lösningar >>** .
+1. Välj **Nästa: lösningar >>**.
 1. På sidan **information** anger du en beskrivning av problemet, väljer allvarlighets graden för problemet, önskad kontakt metod och andra obligatoriska fält. Använd mallen som anges nedan för att säkerställa att du anger nödvändig information. Kvot öknings begär Anden utvärderas av Azures kapacitets team och inte av produkt teamet för HDInsight. Den mer fullständiga informationen som du anger, desto mer sannolik kommer din begäran att godkännas.
 
     ```
@@ -61,8 +58,8 @@ Utför följande steg för att begära en kvot ökning:
 
     ![problem information](./media/quota-increase-request/problem-details.png)
 
-1. Välj **Nästa: granska + skapa >>** .
-1. På fliken **Granska och skapa** väljer du **skapa** .
+1. Välj **Nästa: granska + skapa >>**.
+1. På fliken **Granska och skapa** väljer du **skapa**.
 
 > [!NOTE]  
 > Om du behöver öka HDInsight Core-kvoten i en privat region [skickar du en godkänd list förfrågan](https://aka.ms/canaryintwhitelist).

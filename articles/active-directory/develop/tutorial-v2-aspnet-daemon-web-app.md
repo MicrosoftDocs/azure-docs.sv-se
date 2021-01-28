@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756133"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937827"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -33,7 +33,7 @@ I de här självstudierna har du
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [Visual Studio 2017 eller 2019](https://visualstudio.microsoft.com/downloads/).
 - En Azure AD-klientorganisation. Mer information finns i [så här hämtar du en Azure AD-klient](quickstart-create-new-tenant.md).
@@ -109,7 +109,7 @@ Om du inte vill använda Automation följer du stegen i följande avsnitt.
 1. Välj **Registrera** för att skapa programmet.
 1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och spelar in det för senare användning. Du behöver den för att konfigurera Visual Studio-konfigurationsfilen för projektet.
 1. Under **Hantera** väljer du **autentisering**.
-1. Ange **utloggnings-URL** till `https://localhost:44316/Account/EndSession` .
+1. Ange **URL: en för en klients utloggning** till `https://localhost:44316/Account/EndSession` .
 1. I avsnittet **implicit beviljande** väljer du **åtkomsttoken** och **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren och anropa ett API.
 1. Välj **Spara**.
 1. Välj **Certifikat och hemligheter** under **Hantera**.
@@ -227,7 +227,7 @@ Visual Studio kommer att publicera projektet och automatiskt öppna en webbläsa
 1. Gå tillbaka till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. I den vänstra rutan väljer du tjänsten **Azure Active Directory** och väljer sedan **Appregistreringar**.
 1. Välj programmet **dotNet-Web-daemon-v2** .
-1. På sidan **autentisering** för ditt program uppdaterar du URL-fälten för **utloggning** med adressen för din tjänst. Använd till exempel `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
+1. På sidan **autentisering** för ditt program uppdaterar du **URL-fälten för klient delens utloggnings-URL** med adressen till din tjänst. Använd till exempel `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`.
 1. Från **anpassnings** menyn uppdaterar du **Start sidans URL** till adressen till din tjänst. Använd till exempel `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
 1. Spara konfigurationen.
 1. Lägg till samma URL i listan med värden i menyn för   >  **omdirigering** av autentisering. Om du har flera omdirigerings-URL: er, se till att det finns en ny post som använder App Service-URI: n för varje omdirigerings-URL.

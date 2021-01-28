@@ -1,18 +1,15 @@
 ---
 title: Kontot som används har inte stöd för HTTP-fel i Azure HDInsight
 description: Den här artikeln beskriver fel söknings steg och möjliga lösningar för problem med att interagera med Azure HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
-ms.openlocfilehash: b7f3a3b76169b99389fe8222177ddcb713c27713
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 46063d5f2d9ff4b85914ad7c4cd74a2400298db0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546593"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943088"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>Kontot som används har inte stöd för HTTP-fel i Azure HDInsight
 
@@ -32,7 +29,7 @@ Det finns flera orsaker till varför fel meddelandet tas emot:
 
 * Lagrings kontot har [säker överföring](../../storage/common/storage-require-secure-transfer.md) aktiverat och felaktigt [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) används.
 
-* Ett kluster har skapats med ett lagrings konto som hade säker överföring *inaktiverat* . Därefter aktiverades säker överföring på lagrings kontot.
+* Ett kluster har skapats med ett lagrings konto som hade säker överföring *inaktiverat*. Därefter aktiverades säker överföring på lagrings kontot.
 
 ## <a name="resolution"></a>Lösning
 

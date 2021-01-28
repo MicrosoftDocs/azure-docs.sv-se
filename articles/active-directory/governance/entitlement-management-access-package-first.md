@@ -3,7 +3,7 @@ title: Självstudie – Skapa åtkomst paket – hantering av Azure AD-berättig
 description: Stegvis själv studie kurs om hur du skapar ditt första Access-paket i Azure Active Directory hantering av rättigheter.
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631299"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937894"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Självstudie: skapa ditt första Access-paket i Azure AD-hantering av rättigheter
 
@@ -67,10 +67,10 @@ En resurs katalog har en eller flera resurser att dela. I det här steget skapar
 
 1. Skapa eller konfigurera följande två användare. Du kan använda dessa namn eller olika namn. **Admin1** kan vara den användare som du för närvarande är inloggad som.
 
-    | Namn | Katalogroll |
+    | Name | Katalogroll |
     | --- | --- |
     | **Admin1** | Global administratör<br/>\- eller -<br/>Användaradministratör |
-    | **Requestor1** | Användare |
+    | **Requestor1** | User |
 
 1. Skapa en Azure AD-säkerhetsgrupp med namnet **marknadsförings resurser** med en **tilldelad** medlemskaps typ.
 
@@ -119,7 +119,7 @@ Ett *Access-paket* är ett paket med resurser som ett team eller projekt behöve
     ![Nytt Access-paket – fliken resurs roller](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >De roll tilldelnings grupper som läggs till i ett Access-paket anges med hjälp av den under typ **som kan tilldelas roller**. Se [skapa en roll tilldelnings bara grupp](../roles/groups-create-eligible.md) i Azure Active Directory för mer information om grupper som kan tilldelas till Azure AD-roller. Om du inte ser en roll tilldelnings bara grupp som du vill lägga till, eller om du inte kan lägga till den, kontrollerar du att du har den nödvändiga rollen för Azure AD-rollen och rättighets hanterings rollen för att utföra den här åtgärden. Du kan behöva be någon med de roller som krävs lägga till resursen i katalogen. Mer information finns i de [roller som krävs för att lägga till resurser i en katalog](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >De roll tilldelnings grupper som läggs till i ett Access-paket anges med hjälp av den under typ **som kan tilldelas roller**. Se [skapa en roll tilldelnings bara grupp](../roles/groups-create-eligible.md) i Azure Active Directory för mer information om grupper som kan tilldelas till Azure AD-roller. Tänk på att när en grupp som kan tilldelas roll finns i en åtkomst paket katalog, kan administrativa användare som kan hantera hantering av rättigheter, inklusive globala administratörer, användar administratörer och katalog ägare i katalogen, kontrol lera åtkomst paketen i katalogen, så att de kan välja vem som kan läggas till i dessa grupper. Om du inte ser en roll tilldelnings bara grupp som du vill lägga till, eller om du inte kan lägga till den, kontrollerar du att du har den nödvändiga rollen för Azure AD-rollen och rättighets hanterings rollen för att utföra den här åtgärden. Du kan behöva be någon med de roller som krävs lägga till resursen i katalogen. Mer information finns i de [roller som krävs för att lägga till resurser i en katalog](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > När du använder [dynamiska grupper](../enterprise-users/groups-create-rule.md) kan du inte se andra roller som är tillgängliga förutom ägare. Det här är avsiktligt.

@@ -1,19 +1,16 @@
 ---
 title: Översikt över Azure Storage i HDInsight
 description: Översikt över Azure Storage i HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f171ab9619f2bcb8ecf15c4bfb3b17146ab5a0ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539470"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938942"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>Översikt över Azure Storage i HDInsight
 
@@ -21,7 +18,7 @@ Azure Storage är en robust lagrings lösning för allmänna ändamål som integ
 
 Vi rekommenderar att du använder separata lagrings behållare för standard kluster lagringen och dina affärs data. Separationen är att isolera HDInsight-loggar och temporära filer från dina egna affärs data. Vi rekommenderar också att du tar bort standard-BLOB-behållaren, som innehåller program-och system loggar, efter varje användning för att minska lagrings kostnaderna. Se till att hämta loggarna innan du tar bort containern.
 
-Om du väljer att skydda ditt lagrings konto med **brand väggar och begränsningar för virtuella nätverk** på **valda nätverk** måste du aktivera undantaget **Tillåt betrodda Microsoft-tjänster...** . Undantaget är så att HDInsight kan komma åt ditt lagrings konto.
+Om du väljer att skydda ditt lagrings konto med **brand väggar och begränsningar för virtuella nätverk** på **valda nätverk** måste du aktivera undantaget **Tillåt betrodda Microsoft-tjänster...**. Undantaget är så att HDInsight kan komma åt ditt lagrings konto.
 
 ## <a name="hdinsight-storage-architecture"></a>Lagringsarkitekturen i HDInsight
 

@@ -1,19 +1,16 @@
 ---
 title: Apache Spark strömning med Apache Kafka – Azure HDInsight
 description: Lär dig hur du använder Apache Spark för att strömma data till eller från Apache Kafka med hjälp av DStreams. I det här exemplet strömmar du data med hjälp av en Jupyter Notebook från Spark på HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821187"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942762"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream)-exempel med Apache Kafka på HDInsight
 
@@ -54,7 +51,7 @@ Apache Kafka i HDInsight ger inte åtkomst till Kafka-utjämnare via det offentl
     |Egenskap |Värde |
     |---|---|
     |Resursgrupp|Skapa en grupp eller Välj en befintlig.|
-    |Plats|Välj en plats geografiskt nära dig.|
+    |Location|Välj en plats geografiskt nära dig.|
     |Bas kluster namn|Det här värdet används som grund namn för Spark-och Kafka-klustren. Om du till exempel anger **hdistreaming** skapas ett Spark-kluster med namnet __Spark-Hdistreaming__ och ett Kafka-kluster med namnet **Kafka-hdistreaming**.|
     |Användarnamn för klusterinloggning|Administratörs användar namnet för Spark-och Kafka-klustren.|
     |Lösenord för klusterinloggning|Administratörs användarens lösen ord för Spark-och Kafka-kluster.|

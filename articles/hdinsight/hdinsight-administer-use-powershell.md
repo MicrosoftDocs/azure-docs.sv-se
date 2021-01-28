@@ -1,19 +1,16 @@
 ---
 title: Hantera Apache Hadoop kluster med PowerShell – Azure HDInsight
 description: Lär dig hur du utför administrativa uppgifter för Apache Hadoop kluster i HDInsight med Azure PowerShell.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 0b4a31b88c9a6fa8c2c6170fce38760c1a361f2e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8581c2288eacb47fb9475a3b0a584434c8604f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533435"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942808"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Hantera Apache Hadoop kluster i HDInsight med Azure PowerShell
 
@@ -21,7 +18,7 @@ ms.locfileid: "92533435"
 
 Azure PowerShell kan användas för att styra och automatisera distributionen och hanteringen av dina arbets belastningar i Azure. I den här artikeln får du lära dig hur du hanterar [Apache Hadoop](https://hadoop.apache.org/) kluster i Azure HDInsight med hjälp av modulen Azure PowerShell AZ. En lista med PowerShell-cmdletar för HDInsight finns i [referens för AZ. HDInsight](/powershell/module/az.hdinsight).
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

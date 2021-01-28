@@ -1,19 +1,16 @@
 ---
 title: Använda Azure Data Lake Storage Gen2 med Azure HDInsight-kluster
 description: Lär dig hur du använder Azure Data Lake Storage Gen2 med Azure HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744581"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945371"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Använda Azure Data Lake Storage Gen2 med Azure HDInsight-kluster
 
@@ -66,19 +63,19 @@ Om du vill ange behörigheter för användare för att fråga data använder du 
 
 Det finns flera sätt som du kan använda för att komma åt filerna i Data Lake Storage Gen2 från ett HDInsight-kluster.
 
-* **Via det fullständiga namnet** . Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
+* **Via det fullständiga namnet**. Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **Via det förkortade sökvägsformatet** . Med den här metoden ersätter du sökvägen upp till kluster roten med:
+* **Via det förkortade sökvägsformatet**. Med den här metoden ersätter du sökvägen upp till kluster roten med:
 
     ```
     abfs:///<file.path>/
     ```
 
-* **Med den relativa sökvägen** . Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna.
+* **Med den relativa sökvägen**. Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna.
 
     ```
     /<file.path>/

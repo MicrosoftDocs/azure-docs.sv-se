@@ -1,19 +1,16 @@
 ---
 title: Köra Apache Hadoop MapReduce-exempel i HDInsight – Azure
 description: Kom igång med MapReduce-exempel i JAR-filer som ingår i HDInsight. Använd SSH för att ansluta till klustret och Använd sedan Hadoop-kommandot för att köra exempel jobb.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207842"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943213"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Kör MapReduce-exemplen som ingår i HDInsight
 
@@ -21,7 +18,7 @@ ms.locfileid: "86207842"
 
 Lär dig hur du kör MapReduce-exemplen som ingår i Apache Hadoop på HDInsight.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Apache Hadoop kluster i HDInsight. Se [Kom igång med HDInsight på Linux](./apache-hadoop-linux-tutorial-get-started.md).
 

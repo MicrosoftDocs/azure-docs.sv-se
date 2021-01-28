@@ -3,16 +3,13 @@ title: Apache HBase REST svarar inte på förfrågningar i Azure HDInsight
 description: Lös problem med Apache HBase REST svarar inte på begär anden i Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/01/2019
-ms.openlocfilehash: c4a0ef82b951fa43eb4c58050d3148fd2d695026
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b42a37d752f245eb66f3952b56ee4e36ae954874
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936947"
 ---
 # <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Scenario: Apache HBase REST svarar inte på förfrågningar i Azure HDInsight
 

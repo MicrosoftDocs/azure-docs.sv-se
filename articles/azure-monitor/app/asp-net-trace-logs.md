@@ -4,12 +4,12 @@ description: Sök efter loggar som genereras av trace, NLog eller Log4Net.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920337"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937555"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Utforska loggarna .NET/.NET Core och python i Application Insights
 
@@ -85,7 +85,7 @@ Om du föredrar log4net eller NLog använder du:
 ```
 
 ## <a name="use-eventsource-events"></a>Använda EventSource-händelser
-Du kan konfigurera [system. Diagnostics. tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -händelser som ska skickas till Application Insights som spår. Installera först NuGet- `Microsoft.ApplicationInsights.EventSourceListener` paketet. Redigera sedan `TelemetryModules` avsnittet i [ApplicationInsights.configs ](./configuration-with-applicationinsights-config.md) filen.
+Du kan konfigurera [system. Diagnostics. tracing. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) -händelser som ska skickas till Application Insights som spår. Installera först NuGet- `Microsoft.ApplicationInsights.EventSourceListener` paketet. Redigera sedan `TelemetryModules` avsnittet i [ApplicationInsights.configs ](./configuration-with-applicationinsights-config.md) filen.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -203,7 +203,7 @@ Om du använder Java SDK använder du [Java log-nätverkskorten](./java-trace-lo
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Det finns inget logg korts alternativ i konfigurations verktyget
 * Installera loggnings ramverket först.
-* Om du använder system. Diagnostics. trace kontrollerar du att du har [konfigurerat den i *web.config*](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
+* Om du använder system. Diagnostics. trace kontrollerar du att du har [konfigurerat den i *web.config*](/dotnet/api/system.diagnostics.eventlogtracelistener).
 * Kontrol lera att du har den senaste versionen av Application Insights. I Visual Studio går du till **verktyg**  >  **tillägg och uppdateringar** och öppnar fliken **uppdateringar** . Om **Developer Analytics tools** finns där väljer du det för att uppdatera det.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Jag får fel meddelandet "Instrumentation-nyckeln kan inte vara tom"

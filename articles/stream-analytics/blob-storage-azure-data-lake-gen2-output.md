@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882169"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935152"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Blob Storage och Azure Data Lake Gen2-utdata från Azure Stream Analytics
 
@@ -44,7 +44,7 @@ I följande tabell visas egenskaps namn och beskrivningar för att skapa en BLOB
 När du använder Blob Storage som utdata skapas en ny fil i blobben i följande fall:
 
 * Om filen överskrider det maximala antalet tillåtna block (för närvarande 50 000). Du kan nå maximalt antal tillåtna block utan att nå maximalt tillåten BLOB-storlek. Om utgångs hastigheten till exempel är hög kan du se fler byte per block och fil storleken är större. Om utmatnings hastigheten är låg, har varje block färre data och fil storleken är mindre.
-* Om det finns en schema ändring i utdata och utdataformatet kräver fast schema (CSV och Avro).
+* Om det finns en schema ändring i utdata och utdataformatet kräver fast schema (CSV, Avro, Parquet).
 * Om ett jobb startas om, antingen externt av en användare som stoppar det och startar det eller internt för system underhåll eller fel återställning.
 * Om frågan är helt partitionerad och en ny fil skapas för varje utdata-partition.
 * Om användaren tar bort en fil eller en behållare för lagrings kontot.

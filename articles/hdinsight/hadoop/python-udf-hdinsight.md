@@ -1,19 +1,16 @@
 ---
 title: Python UDF med Apache Hive och Apache gris – Azure HDInsight
 description: Lär dig hur du använder python-användardefinierade funktioner (UDF) från Apache Hive och Apache gris i HDInsight, Apache Hadoop Technology stack på Azure.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 593b809813f949cd1d0bcc17e1d1b7255ea19130
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023082"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944275"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Använda python-användardefinierade funktioner (UDF) med Apache Hive och Apache-gris i HDInsight
 
@@ -100,7 +97,7 @@ Det här skriptet utför följande åtgärder:
 1. Läser en rad med data från STDIN.
 2. Det avslutande rad matnings tecknet tas bort med hjälp av `string.strip(line, "\n ")` .
 3. Vid data bearbetning innehåller en enskild rad alla värden med ett tabbtecken mellan varje värde. `string.split(line, "\t")`Du kan använda den för att dela upp inmatade värden på varje flik och bara returnera fälten.
-4. När bearbetningen är klar måste utdata skrivas till STDOUT som en enskild linje, med en flik mellan varje fält. Exempelvis `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
+4. När bearbetningen är klar måste utdata skrivas till STDOUT som en enskild linje, med en flik mellan varje fält. Ett exempel är `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
 5. `while`Loopen upprepas tills ingen `line` läses.
 
 Skriptets utdata är en sammanfogning av indatavärdena för `devicemake` och `devicemodel` , och en hash av det sammanfogade värdet.

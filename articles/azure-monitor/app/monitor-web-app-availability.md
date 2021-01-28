@@ -4,12 +4,12 @@ description: Konfigurera webbtester i Application Insights. Få aviseringar om e
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198670"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937421"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 
@@ -23,12 +23,12 @@ Det finns tre typer av tillgänglighets test:
 
 * [URL-pingtest](#create-a-url-ping-test): Ett enkelt test som du kan skapa på Azure-portalen.
 * [Webb test för flera steg](availability-multistep.md): en inspelning av en sekvens med webb förfrågningar, som kan spelas upp för att testa mer komplexa scenarier. Webbtester med flera steg skapas i Visual Studio Enterprise och överförs till portalen för körning.
-* [Tillgänglighets test för anpassad spårning](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): om du väljer att skapa ett anpassat program för att köra tillgänglighets test, `TrackAvailability()` kan metoden användas för att skicka resultaten till Application Insights.
+* [Tillgänglighets test för anpassad spårning](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability): om du väljer att skapa ett anpassat program för att köra tillgänglighets test, `TrackAvailability()` kan metoden användas för att skicka resultaten till Application Insights.
 
 **Du kan skapa upp till 100 tillgänglighets test per Application Insights resurs.**
 
 > [!IMPORTANT]
-> Både [URL-ping-test](#create-a-url-ping-test) och [webbtest för flera steg](availability-multistep.md) förlitar sig på den offentliga Internet-DNS-infrastrukturen för att lösa domän namnen för de testade slut punkterna. Det innebär att om du använder Privat DNS måste du antingen se till att varje domän namn för ditt test också kan matchas av de offentliga domän namn servrarna eller, om det inte är möjligt, du kan använda [anpassade tester för spårnings tillgänglighet](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) i stället.
+> Både [URL-ping-test](#create-a-url-ping-test) och [webbtest för flera steg](availability-multistep.md) förlitar sig på den offentliga Internet-DNS-infrastrukturen för att lösa domän namnen för de testade slut punkterna. Det innebär att om du använder Privat DNS måste du antingen se till att varje domän namn för ditt test också kan matchas av de offentliga domän namn servrarna eller, om det inte är möjligt, du kan använda [anpassade tester för spårnings tillgänglighet](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) i stället.
 
 ## <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 

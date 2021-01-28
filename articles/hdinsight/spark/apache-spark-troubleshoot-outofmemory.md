@@ -3,16 +3,13 @@ title: OutOfMemoryError-undantag för Apache Spark i Azure HDInsight
 description: Olika OutOfMemoryError-undantag för Apache Spark kluster i Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 156d3ce4b7f8b6eaa297f2cddd0d5a93f382f78e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547290"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946342"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-undantag för Apache Spark i Azure HDInsight
 
@@ -60,7 +57,7 @@ Den mest sannolika orsaken till det här undantaget är att inte tillräckligt m
 
 1. Avgör maximal storlek för de data som Spark-programmet ska hantera. Gör en uppskattning av storleken baserat på den maximala storleken på indata, och de mellanliggande data som skapas genom att transformera indata och utdata som genererats ytterligare, omvandlas till mellanliggande data. Om den inledande uppskattningen inte räcker kan du öka storleken något och iterera fram till under sidan minnes fel.
 
-1. Se till att HDInsight-klustret som ska användas har tillräckligt med resurser när det gäller minne och tillräckligt med kärnor för Spark-programmet. Detta kan bestämmas genom att visa avsnittet kluster mått i garn gränssnittet för klustret för värden för **använt minne** jämfört med **minne totalt** och **virtuella kärnor som används** jämfört med **virtuella kärnor totalt** .
+1. Se till att HDInsight-klustret som ska användas har tillräckligt med resurser när det gäller minne och tillräckligt med kärnor för Spark-programmet. Detta kan bestämmas genom att visa avsnittet kluster mått i garn gränssnittet för klustret för värden för **använt minne** jämfört med **minne totalt** och **virtuella kärnor som används** jämfört med **virtuella kärnor totalt**.
 
     ![kärn minnes visning för garn](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 

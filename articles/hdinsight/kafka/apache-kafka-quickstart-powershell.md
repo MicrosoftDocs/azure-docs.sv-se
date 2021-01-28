@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: skapa Apache Kafka med Azure PowerShell-HDInsight'
 description: I den här snabbstarten lär du dig hur du skapar ett Apache Kafka-kluster på Azure HDInsight med hjälp av Azure PowerShell. Du lär dig också om Kafka-ämnen, -prenumeranter och -konsumenter.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74fa512711dfb9226fcc88d949f5ddfeb0f9812b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533010"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942631"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Snabb start: skapa Apache Kafka kluster i Azure HDInsight med hjälp av PowerShell
 
@@ -25,7 +22,7 @@ I den här snabbstarten lär du dig hur du skapar ett [Apache Kafka](https://kaf
 
 Kafka-API:et kan endast användas av resurser i samma virtuella nätverk. I den här snabbstarten har du direkt åtkomst till klustret med SSH. Om du vill ansluta andra tjänster, nätverk eller virtuella datorer till Kafka måste du först skapa ett virtuellt nätverk och sedan skapa resurser i nätverket. Mer information finns i dokumentet [Anslut till Apache Kafka via ett virtuellt nätverk](apache-kafka-connect-vpn-gateway.md).
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -62,7 +59,7 @@ $location = Read-Host -Prompt "Enter the Azure region to use"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Medan Kafka på HDInsight använder Azure-hanterade diskar för att lagra Kafka-data så använder klustret även Azure Storage för att lagra information, t.ex. loggar. Använd [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) för att skapa ett nytt lagrings konto.
 
@@ -176,7 +173,7 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Hämta information om värden i Apache Zookeeper och Broker
 
-När du arbetar med Kafka måste du känna till *Apache Zookeeper* - och *Broker* -värdarna. Dessa värdar används med Kafka-API och många av de verktyg som levereras med Kafka.
+När du arbetar med Kafka måste du känna till *Apache Zookeeper*- och *Broker*-värdarna. Dessa värdar används med Kafka-API och många av de verktyg som levereras med Kafka.
 
 I det här avsnittet hämtar du värdinformation från om värden från Apache Ambari REST API på klustret.
 
@@ -232,7 +229,7 @@ I det här avsnittet hämtar du värdinformation från om värden från Apache A
 
 ## <a name="manage-apache-kafka-topics"></a>Hantera Apache Kafka-ämnen
 
-Kafka lagrar dataströmmar i kategorier som kallas *ämnen* . Du kan hantera ämnena med verktyget `kafka-topics.sh`.
+Kafka lagrar dataströmmar i kategorier som kallas *ämnen*. Du kan hantera ämnena med verktyget `kafka-topics.sh`.
 
 * **Du skapar ett ämne** med följande kommando i SSH-anslutningen:
 
@@ -240,7 +237,7 @@ Kafka lagrar dataströmmar i kategorier som kallas *ämnen* . Du kan hantera äm
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`. Det skapar sedan ett Kafka-ämne med namnet **test** . 
+    Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`. Det skapar sedan ett Kafka-ämne med namnet **test**. 
 
     * Data som lagras i det här ämnet partitioneras över åtta partitioner.
 
@@ -289,7 +286,7 @@ Om du vill ha mer information om vilka kommandon som är tillgängliga med verkt
 
 ## <a name="produce-and-consume-records"></a>Skapa och använda poster
 
-Kafka lagrar *poster* i ämnen. Poster produceras av *producenter* , och används av *konsumenter* . Producenter och konsumenter kommunicerar med *Kafka-koordinator* tjänsten. Varje arbetsnod i HDInsight-klustret är en Kafka-koordinatorvärd.
+Kafka lagrar *poster* i ämnen. Poster produceras av *producenter*, och används av *konsumenter*. Producenter och konsumenter kommunicerar med *Kafka-koordinator* tjänsten. Varje arbetsnod i HDInsight-klustret är en Kafka-koordinatorvärd.
 
 Använd följande steg för att lagra poster i det testämne som du skapade tidigare och sedan läsa dem med en konsument:
 

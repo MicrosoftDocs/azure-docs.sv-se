@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b6240f88d309cbf4f26375c5f961d716b472755d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756268"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937886"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Webbapp som loggar in användare: app-registrering
 
-I den här artikeln förklaras registrerings information för appar i en webbapp som loggar in användare.
+Den här artikeln förklarar appens registrerings steg för en webbapp som loggar in användare.
 
 Du kan registrera ditt program genom att använda:
 
-- [Snabb start för webb program](#register-an-app-by-using-the-quickstarts). Förutom att vara en bra första upplevelse med att skapa ett program, innehåller snabb starter i Azure Portal en knapp som heter **gör den här ändringen åt mig**. Du kan använda den här knappen för att ange de egenskaper du behöver, även för en befintlig app. Du måste anpassa värdena för dessa egenskaper till ditt eget fall. I synnerhet kommer URL: en för webb-API: t för din app förmodligen att skilja sig från det föreslagna standardvärdet, vilket även påverkar utloggnings-URI: n.
+- [Snabb start för webb program](#register-an-app-by-using-the-quickstarts). Förutom att vara en bra första upplevelse med att skapa ett program, innehåller snabb starter i Azure Portal en knapp som heter **gör den här ändringen åt mig**. Du kan använda den här knappen för att ange de egenskaper du behöver, även för en befintlig app. Anpassa värdena för dessa egenskaper till ditt eget fall. I synnerhet kommer URL: en för webb-API: t för din app förmodligen att skilja sig från det föreslagna standardvärdet, vilket även påverkar utloggnings-URI: n.
 - Azure Portal att [Registrera programmet manuellt](#register-an-app-by-using-the-azure-portal).
 - PowerShell och kommando rads verktyg.
 
@@ -56,8 +56,8 @@ Du kan använda dessa länkar för att starta skapandet av ditt webb program:
    1. Välj **Register** (Registrera).
 1. Under **Hantera** väljer du **autentisering** och lägger sedan till följande information:
    1. I avsnittet **Web** lägger du till `https://localhost:44321/signin-oidc` som en **omdirigerings-URI**.
-   1. Lägg till `https://localhost:44321/signout-oidc` som en **utloggnings-URL**.
-   1. Under **Implicit beviljande** väljer du **ID-token**.
+   1. I **klientens utloggnings-URL** anger du `https://localhost:44321/signout-oidc` .
+   1. Under **implicit beviljande och hybrid flöden** väljer du **ID-token**.
    1. Välj **Spara**.
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -65,10 +65,10 @@ Du kan använda dessa länkar för att starta skapandet av ditt webb program:
 1. När **sidan Registrera ett program** visas anger du programmets registrerings information:
    1. Ange ett **namn** för programmet, till exempel `MailApp-openidconnect-v2` . Användare av appen kan se det här namnet och du kan ändra det senare.
    1. Välj de konto typer som stöds för programmet. (Se [konto typer som stöds](./v2-supported-account-types.md).)
-   1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger följande omdirigerings-URI: **https://localhost:44326/** .
+   1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger en **omdirigerings-URI** för `https://localhost:44326/` .
    1. Välj **Registrera** för att skapa programmet.
 1. Under **Hantera** väljer du **autentisering**.
-1. I avsnittet **implicit beviljande** väljer du **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren.
+1. I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren.
 1. Välj **Spara**.
 
 # <a name="java"></a>[Java](#tab/java)
@@ -81,10 +81,10 @@ Du kan använda dessa länkar för att starta skapandet av ditt webb program:
 1. Välj **webb**.
 1. För **omdirigerings-URI** anger du samma värd och port nummer, följt av `/msal4jsample/secure/aad` inloggnings sidan. 
 1. Välj **Konfigurera**.
-1. I **webb** avsnittet använder du värden och port numret följt av **/msal4jsample/Graph/me** som en **omdirigerings-URI** för sidan användar information.
+1. I **webb** avsnittet använder du värden och port numret följt av `/msal4jsample/graph/me` som en **omdirigerings-URI** för sidan användar information.
 Som standard använder exemplet:
-   - **http://localhost:8080/msal4jsample/secure/aad**
-   - **http://localhost:8080/msal4jsample/graph/me**
+   - `http://localhost:8080/msal4jsample/secure/aad`
+   - `http://localhost:8080/msal4jsample/graph/me`
 
 1. Välj **Spara**.
 1. Välj **Certifikat och hemligheter** under **Hantera**.
@@ -100,7 +100,7 @@ Som standard använder exemplet:
 1. När **sidan Registrera ett program** visas anger du programmets registrerings information:
    1. Ange ett **namn** för programmet, till exempel `python-webapp` . Användare av appen kan se det här namnet och du kan ändra det senare.
    1. Ändra **konto typer som stöds** till **konton i alla organisations kataloger och personliga Microsoft-konton (t. ex. Skype, Xbox, Outlook.com)**.
-   1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger följande omdirigerings-URI: **http://localhost:5000/getAToken** .
+   1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger följande omdirigerings-URI: `http://localhost:5000/getAToken` .
    1. Välj **Registrera** för att skapa programmet.
 1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och registrerar det för senare. Du behöver den för att konfigurera Visual Studio-konfigurationsfilen för projektet.
 1. Välj **Certifikat och hemligheter** under **Hantera**.

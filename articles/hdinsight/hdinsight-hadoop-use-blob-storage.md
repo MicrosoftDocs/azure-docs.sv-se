@@ -1,19 +1,16 @@
 ---
 title: Fråga efter data i HDFS-kompatibelt Azure-lagringsutrymme – Azure HDInsight
 description: Lär dig hur du frågar efter data från Azure Storage och Azure Data Lake Storage att lagra resultatet av din analys.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547443"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945425"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Använda Azure-lagring med Azure HDInsight-kluster
 
@@ -32,7 +29,7 @@ I den här artikeln får du lära dig hur Azure Storage fungerar med HDInsight-k
 | Typ av lagrings konto | Tjänster som stöds | Prestanda nivåer som stöds |Prestanda nivåer stöds inte| Åtkomst nivåer som stöds |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (generell användning v2)  | Blob     | Standard                    |Premium| Frekvent, låg frekvent, Arkiv\*   |
-| Lagring (generell användning v1)   | Blob     | Standard                    |Premium| E.t.                    |
+| Lagring (generell användning v1)   | Blob     | Standard                    |Premium| Ej tillämpligt                    |
 | BlobStorage                    | Blob     | Standard                    |Premium| Frekvent, låg frekvent, Arkiv\*   |
 
 Vi rekommenderar inte att du använder standard-BLOB-behållaren för lagring av affärs data. Ta bort standardcontainern efter varje användning för att minska lagringskostnaden. Standard behållaren innehåller program-och system loggar. Se till att hämta loggarna innan du tar bort containern.
@@ -44,23 +41,23 @@ Delning av en BLOB-behållare som standard fil system för flera kluster stöds 
 
 ## <a name="access-files-from-within-cluster"></a>Komma åt filer inifrån klustret
 
-Det finns flera sätt som du kan använda för att komma åt filerna i Data Lake Storage från ett HDInsight-kluster. URI-schemat ger okrypterad åtkomst (med *wasb:* prefixet) och TLS-krypterad åtkomst (med *wasbs* ). Vi rekommenderar att du använder *wasbs* när det är möjligt, även för åtkomst till data som finns i samma region i Azure.
+Det finns flera sätt som du kan använda för att komma åt filerna i Data Lake Storage från ett HDInsight-kluster. URI-schemat ger okrypterad åtkomst (med *wasb:* prefixet) och TLS-krypterad åtkomst (med *wasbs*). Vi rekommenderar att du använder *wasbs* när det är möjligt, även för åtkomst till data som finns i samma region i Azure.
 
-* **Via det fullständiga namnet** . Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
+* **Via det fullständiga namnet**. Med den här metoden kan du ange den fullständiga sökvägen till filen som du vill öppna.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **Via det förkortade sökvägsformatet** . Med den här metoden ersätter du sökvägen upp till kluster roten med:
+* **Via det förkortade sökvägsformatet**. Med den här metoden ersätter du sökvägen upp till kluster roten med:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **Med den relativa sökvägen** . Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna.
+* **Med den relativa sökvägen**. Med den här metoden anger du bara den relativa sökvägen till den fil som du vill öppna.
 
     ```
     /<file.path>/

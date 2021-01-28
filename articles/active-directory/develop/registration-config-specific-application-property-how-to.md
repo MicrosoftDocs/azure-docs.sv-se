@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064308"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937865"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registreringsfält för Azure-portalen för egenutvecklade appar
 
@@ -37,7 +37,7 @@ Den här artikeln innehåller en kort beskrivning av alla tillgängliga fält i 
 
 | Fält            | Beskrivning                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Namn             | Namnet på programmet. Det får innehålla minst fyra tecken.                |
+| Name             | Namnet på programmet. Det får innehålla minst fyra tecken.                |
 | Kontotyper som stöds| Välj vilka konton som du vill att ditt program ska stödja: konton i den här organisations katalogen, konton i valfri organisations katalog eller konton i alla organisations kataloger och personliga Microsoft-konton.  |
 | Omdirigerings-URI (valfritt) | Välj den typ av app som du skapar, **webb** eller **offentlig klient (mobilt & Desktop)** och ange omdirigerings-URI (eller svars-URL) för ditt program. För webbappar anger du grundläggande URL för appen. Till exempel kan http://localhost:31544 vara URL för en webbapp som körs på din lokala dator. Användare skulle då använda den här URL:en för att logga in till ett webbklientprogram. För offentliga klientprogram anger du den URI som används av Azure AD för att returnera tokensvar. Ange ett värde som är specifik för ditt program, till exempel myapp://auth. Om du vill se specifika exempel för webb program eller interna program kan du titta på våra [snabb starter](./index.yml).|
 
@@ -61,7 +61,7 @@ När du har fyllt i fälten ovan registreras programmet i Azure Portal och du om
 
 | Fält           | Beskrivning        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Utloggnings-URL      | Detta är URL: en för enkel utloggning. Azure AD skickar en utloggnings förfrågan till denna URL när användaren tar bort sin session med Azure AD med hjälp av något annat registrerat program.|
+| Utloggnings-URL för frontend-kanal      | Detta är URL: en för enkel utloggning. Azure AD skickar en utloggnings förfrågan till denna URL när användaren tar bort sin session med Azure AD med hjälp av något annat registrerat program.|
 | Kontotyper som stöds  | Den här växeln anger om programmet kan användas av flera klienter. Det innebär vanligt vis att externa organisationer kan använda ditt program genom att registrera det i klienten och bevilja åtkomst till organisationens data.|
 | Omdirigerings-URL:er      | URL: erna för omdirigering eller svar är de slut punkter där Azure AD returnerar alla tokens som programmet begär. För interna program är det här som användaren skickas efter en lyckad auktorisering. Azure AD kontrollerar att den omdirigerings-URI som ditt program tillhandahåller i OAuth 2,0-begäran matchar ett av de registrerade värdena i portalen.|
 
