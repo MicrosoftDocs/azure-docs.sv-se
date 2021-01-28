@@ -1,19 +1,16 @@
 ---
 title: Använd tomma Edge-noder på Apache Hadoop kluster i Azure HDInsight
 description: Så här lägger du till en tom Edge-nod i ett HDInsight-kluster. Används som en klient och testa eller vara värd för dina HDInsight-program.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010120"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942672"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Använd tomma Edge-noder på Apache Hadoop kluster i HDInsight
 
@@ -83,7 +80,7 @@ I det här avsnittet använder du en Resource Manager-mall för att lägga till 
     |---|---|
     |Prenumeration|Välj en Azure-prenumeration som används för att skapa klustret.|
     |Resursgrupp|Välj den resurs grupp som används för det befintliga HDInsight-klustret.|
-    |Plats|Välj platsen för det befintliga HDInsight-klustret.|
+    |Location|Välj platsen för det befintliga HDInsight-klustret.|
     |Klusternamn|Ange namnet på ett befintligt HDInsight-kluster.|
 
 1. Kontrol lera **att jag godkänner de allmänna villkoren som anges ovan** och välj sedan  **köp** för att skapa Edge-noden.
@@ -107,7 +104,7 @@ I det här avsnittet använder du en Resource Manager-mall för att skapa HDInsi
     |---|---|
     |Prenumeration|Välj en Azure-prenumeration som används för att skapa klustret.|
     |Resursgrupp|Skapa en ny resurs grupp som används för klustret.|
-    |Plats|Välj en plats för resursgruppen.|
+    |Location|Välj en plats för resursgruppen.|
     |Klusternamn|Ange ett namn för det nya klustret som ska skapas.|
     |Användarnamn för klusterinloggning|Ange användar namnet för Hadoop HTTP.  Standardnamnet är **admin**.|
     |Lösenord för klusterinloggning|Ange användarens lösen ord för Hadoop HTTP.|

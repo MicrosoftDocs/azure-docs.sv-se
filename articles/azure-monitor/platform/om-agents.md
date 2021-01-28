@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 571dcd41da9be578e69d9a8ad40ed05784ae26a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975589"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941974"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Anslut Operations Manager till Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Om du vill behålla din befintliga investering i [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) och använda utökade funktioner med Azure Monitor kan du integrera Operations Manager med din Log Analytics-arbetsyta. På så sätt kan du utnyttja affärs möjligheterna för loggar i Azure Monitor samtidigt som du fortsätter att använda Operations Manager för att:
+Om du vill behålla din befintliga investering i [System Center Operations Manager](/system-center/scom/key-concepts) och använda utökade funktioner med Azure Monitor kan du integrera Operations Manager med din Log Analytics-arbetsyta. På så sätt kan du utnyttja affärs möjligheterna för loggar i Azure Monitor samtidigt som du fortsätter att använda Operations Manager för att:
 
 * Övervaka hälsotillståndet för dina IT-tjänster med Operations Manager
 * Underhålla integrationen med dina ITSM-lösningar med stöd för hantering av incidenter och problem
@@ -71,16 +71,16 @@ Informationen nedan visar den konfigurations information för proxy och brand v�
 
 |Resurs | Portnummer| Kringgå HTTPS-kontroll|  
 |---------|------|-----------------------|  
-|**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|**Gent**|||  
+|\*.ods.opinsights.azure.com| 443 |Ja|  
+|\*.oms.opinsights.azure.com| 443|Ja|  
+|\*.blob.core.windows.net| 443|Ja|  
+|\*.azure-automation.net| 443|Ja|  
 |**Hanteringsserver**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Ja|  
+|\*.ods.opinsights.azure.com| 443| Ja|  
+|*.azure-automation.net | 443| Ja|  
 |**Operations Manager-konsolen för att Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  

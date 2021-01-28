@@ -1,19 +1,16 @@
 ---
 title: Migrera ett HBase-kluster till en ny version – Azure HDInsight
 description: Så här migrerar du Apache HBase-kluster till en nyare version i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 8ce25780e197c26e0e5b102670e093031e1a2582
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697670"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942985"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrera ett Apache HBase-kluster till en ny version
 
@@ -32,17 +29,17 @@ Här är ett exempel på en versions mat ris. Y indikerar kompatibilitet och N a
 
 | Typ av kompatibilitet | Högre version| Delversion | Patch |
 | --- | --- | --- | --- |
-| Client-Server Wire Compatibility | N | J | J |
-| Server-Server kompatibilitet | N | J | J |
-| Kompatibilitet för fil format | N | J | J |
-| Kompatibilitet för klient-API | N | J | J |
-| Klient-binär kompatibilitet | N | N | J |
+| Client-Server Wire Compatibility | N | Y | Y |
+| Server-Server kompatibilitet | N | Y | Y |
+| Kompatibilitet för fil format | N | Y | Y |
+| Kompatibilitet för klient-API | N | Y | Y |
+| Klient-binär kompatibilitet | N | N | Y |
 | **Begränsad API-kompatibilitet på Server Sidan** |  |  |  |
-| Stable | N | J | J |
-| Utvecklas | N | N | J |
+| Stable | N | Y | Y |
+| Utvecklas | N | N | Y |
 | Instabil | N | N | N |
-| Beroende kompatibilitet | N | J | J |
-| Operationell kompatibilitet | N | N | J |
+| Beroende kompatibilitet | N | Y | Y |
+| Operationell kompatibilitet | N | N | Y |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Uppgradera med samma Apache HBase huvud version
 

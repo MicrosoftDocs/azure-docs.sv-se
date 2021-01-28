@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118718"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942332"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Självstudie: träna en modell i python med automatisk maskin inlärning
 
@@ -24,13 +24,13 @@ I den här självstudien använder du [Automatisk maskin inlärning](../../machi
 
 I den här guiden får du lära dig att:
 - Hämta data med hjälp av Apache Spark och öppna data uppsättningar i Azure.
-- Transformera och rensa data med Apache Spark dataframes.
-- Träna en automatisk maskin inlärnings Regressions modell.
+- Transformera och rensa data med Apache Spark DataFrames.
+- Träna en Regressions modell i automatiserad maskin inlärning.
 - Beräkna modell noggrannhet.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-- Skapa en server lös Apache Spark pool genom att följa snabb starten för att [skapa en server lös Apache Spark pool](../quickstart-create-apache-spark-pool-studio.md).
+- Skapa en server lös Apache Spark pool genom att följa snabb starten för att [skapa en server lös Apache Spark pool](../quickstart-create-apache-spark-pool-studio.md) .
 - Slutför [installations guiden för Azure Machine Learning arbets yta](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) om du inte har en befintlig Azure Machine Learning arbets yta. 
 
 ## <a name="understand-regression-models"></a>Förstå Regressions modeller
@@ -39,7 +39,7 @@ I den här guiden får du lära dig att:
 
 ### <a name="example-based-on-new-york-city-taxi-data"></a>Exempel baserat på New York taxi-data för Göteborg
 
-I det här exemplet använder du Spark för att utföra en del analys av information om taxi resan från New York City (NYC). Data är tillgängliga via [Azure Open data uppsättningar](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Den här del mängden av data uppsättningen innehåller information om gula taxi resor, inklusive information om varje resa, start-och slut tid samt platser och kostnad.
+I det här exemplet ska du använda Spark för att utföra en del analys av information om taxi resor från New York City (NYC). Data är tillgängliga via [Azure Open data uppsättningar](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Den här del mängden av data uppsättningen innehåller information om gula taxi resor, inklusive information om varje resa, start-och slut tid samt platser och kostnad.
 
 > [!IMPORTANT]
 > Det kan finnas ytterligare avgifter för att hämta dessa data från dess lagrings plats. I följande steg utvecklar du en modell för att förutsäga priserna för NYC Taxi pris. 
@@ -53,7 +53,7 @@ Gör så här:
     > [!Note]
     > På grund av PySpark-kärnan behöver du inte skapa några kontexter explicit. Spark-kontexten skapas automatiskt åt dig när du kör den första kod cellen.
   
-2. Eftersom rå data är i ett Parquet-format kan du använda Spark-kontexten för att hämta filen direkt till minnet som en dataframe. Skapa en spark-dataframe genom att hämta data via Open data uppsättnings-API: et. Här använder du egenskaper för Spark-dataframe `schema on read` för att härleda data typerna och schemat. 
+2. Eftersom rå data är i ett Parquet-format kan du använda Spark-kontexten för att hämta filen direkt till minnet som en DataFrame. Skapa en spark-DataFrame genom att hämta data via Open data uppsättnings-API: et. Här använder du egenskaper för Spark-DataFrame `schema on read` för att härleda data typerna och schemat. 
    
     ```python
     blob_account_name = "azureopendatastorage"
@@ -61,16 +61,16 @@ Gör så här:
     blob_relative_path = "yellow"
     blob_sas_token = r""
 
-    # Allow Spark to read from Blob remotely
+    # Allow Spark to read from the blob remotely
     wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
     spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
 
-    # Spark read parquet, note that it won't load any data yet by now
+    # Spark read parquet; note that it won't load any data yet
     df = spark.read.parquet(wasbs_path)
 
     ```
 
-3. Beroende på storleken på din spark-pool kan rå data vara för stora eller ta för lång tid att arbeta med. Du kan filtrera data nedåt till något mindre genom att använda- ```start_date``` och- ```end_date``` filtren. Detta använder ett filter som returnerar en månad med data. När du har filtrerat dataframe kör du även ```describe()``` funktionen på den nya dataframe för att se sammanfattnings statistik för varje fält. 
+3. Beroende på storleken på din spark-pool kan rå data vara för stora eller ta för lång tid att arbeta med. Du kan filtrera data nedåt till något mindre, till exempel en månad med data, med hjälp av- ```start_date``` och- ```end_date``` filtren. När du har filtrerat en DataFrame kör du även ```describe()``` funktionen på den nya DataFrame för att se sammanfattnings statistik för varje fält. 
 
    Utifrån sammanfattnings statistik kan du se att det finns några felaktigheter i data. Statistiken visar till exempel att minsta rese avstånd är mindre än 0. Du måste filtrera bort dessa oregelbundna data punkter.
    
@@ -84,13 +84,13 @@ Gör så här:
    filtered_df.describe().show()
    ```
 
-4. Sedan genererar du funktioner från data uppsättningen genom att välja en uppsättning kolumner och skapa olika tidsbaserade funktioner från fältet upphämtnings tid. Filtrera bort extrem värden som identifierades från föregående steg och ta sedan bort de senaste kolumnerna eftersom de inte behövs för utbildning.
+4. Generera funktioner från data uppsättningen genom att välja en uppsättning kolumner och skapa olika tidsbaserade funktioner från upphämtnings `datetime` fältet. Filtrera bort extrem värden som identifierades från det tidigare steget och ta sedan bort de senaste kolumnerna eftersom de inte behövs för utbildning.
    
    ```python
    from datetime import datetime
    from pyspark.sql.functions import *
 
-   # To make development easier, faster and less expensive down sample for now
+   # To make development easier, faster, and less expensive, downsample for now
    sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
 
    taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
@@ -110,16 +110,16 @@ Gör så här:
    taxi_df.show(10)
    ```
    
-   Som du kan se skapas en ny dataframe med ytterligare kolumner för dagen i månaden, hämtnings tid, veckodag och total fördröjning. 
+   Som du kan se skapas en ny DataFrame med ytterligare kolumner för dagen i månaden, hämtnings tid, veckodag och total fördröjning. 
 
-   ![Bild av taxi-dataframe.](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
+   ![Bild av taxi-DataFrame.](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
 
 ## <a name="generate-test-and-validation-datasets"></a>Generera data uppsättningar för test och validering
 
-När du har den slutliga data uppsättningen kan du dela upp data i utbildnings-och test uppsättningar genom att använda ```random_ split ``` funktionen i Spark. Med hjälp av de angivna vikterna delar den här funktionen slumpvis data i data uppsättningen för modell utbildning och validerings data uppsättning för testning.
+När du har den slutliga data uppsättningen kan du dela upp data i utbildnings-och test uppsättningar genom att använda ```random_ split ``` funktionen i Spark. Genom att använda de angivna vikterna delar den här funktionen slumpvis data i data uppsättningen för modell utbildning och validerings data uppsättning för testning.
 
 ```python
-# Random split dataset using Spark, convert Spark to Pandas
+# Random split dataset using Spark; convert Spark to pandas
 training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 
 ```
@@ -143,20 +143,20 @@ ws = Workspace(workspace_name = workspace_name,
 
 ```
 
-## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertera en dataframe till en Azure Machine Learning data uppsättning
-Om du vill skicka ett fjärrexperiment konverterar du data uppsättningen till en Azure Machine Learning ```TabularDatset``` . En [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) representerar data i tabell format genom att parsa de angivna filerna.
+## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertera en DataFrame till en Azure Machine Learning data uppsättning
+Om du vill skicka ett fjärrexperiment konverterar du data uppsättningen till en Azure Machine Learning- ```TabularDatset``` instans. [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) representerar data i tabell format genom att parsa de angivna filerna.
 
-Följande kod hämtar den befintliga arbets ytan och förvalda Azure Machine Learning standard data lager. Den skickar sedan data lagret och fil Sök vägarna till parametern Path för att skapa en ny ```TabularDataset``` . 
+Följande kod hämtar den befintliga arbets ytan och standard Azure Machine Learning data lagret. Den skickar sedan data lagret och fil Sök vägarna till parametern Path för att skapa en ny ```TabularDataset``` instans. 
 
 ```python
 import pandas 
 from azureml.core import Dataset
 
-# Get the Azure Machine Learning Default Datastore
+# Get the Azure Machine Learning default datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into Azure Machine Learning Tabular Dataset
+# Convert into an Azure Machine Learning tabular dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -215,12 +215,12 @@ local_run = experiment.submit(automl_config, show_output=True, tags = tags)
 # Use the get_details function to retrieve the detailed output for the run.
 run_details = local_run.get_details()
 ```
-När experimentet har slutförts returnerar utdata information om slutförda iterationer. För varje iteration ser du modelltypen, körningens varaktighet samt träningens noggrannhet. Det **bästa** fältet används för att spåra bästa möjliga inlärnings poäng baserat på mått typen.
+När experimentet har slutförts returnerar utdata information om slutförda iterationer. För varje iteration ser du modelltypen, körningens varaktighet samt träningens noggrannhet. `BEST`Fältet spårar det bästa inlärnings resultatet baserat på mått typen.
 
 ![Skärm bild av modellens utdata.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> När du har skickat in det automatiserade experimentet för maskin inlärning körs olika iterationer och modell typer. Den här körningen tar vanligt vis 60-90 minuter. 
+> När du har skickat in det automatiserade experimentet för maskin inlärning körs olika iterationer och modell typer. Den här körningen tar vanligt vis 60 till 90 minuter. 
 
 ### <a name="retrieve-the-best-model"></a>Hämta den bästa modellen
 Om du vill välja den bästa modellen från dina iterationer använder du ```get_output``` funktionen för att returnera den bästa körningen och den monterade modellen. Följande kod hämtar den bästa körnings-och den monterade modellen för alla inloggade mått eller en viss iteration.
@@ -231,7 +231,7 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 ### <a name="test-model-accuracy"></a>Test modellens precision
-1. Testa modell precisionen genom att använda den bästa modellen för att köra taxi pris förutsägelser på test data uppsättningen. ```predict```Funktionen använder den bästa modellen och förutsäger värdena för y (pris belopp) från verifierings data uppsättningen. 
+1. Testa modell precisionen genom att använda den bästa modellen för att köra taxi pris förutsägelser på test data uppsättningen. ```predict```Funktionen använder den bästa modellen och förutsäger värdena för `y` (pris belopp) från verifierings data uppsättningen. 
 
    ```python
    # Test best model accuracy
@@ -240,15 +240,15 @@ best_run, fitted_model = local_run.get_output()
    y_predict = fitted_model.predict(validation_data_pd)
    ```
 
-1. Roten – medelvärde-kvadratiskt fel är ett ofta använda mått på skillnaderna mellan exempel värden som förutsägs av en modell och de värden som observeras. Du beräknar det bakomliggande medelvärdet för resultatet genom `y_test` att jämföra dataframe med de värden som förväntas av modellen. 
+1. Roten – medelvärde-kvadratiskt fel är ett ofta använda mått på skillnaderna mellan exempel värden som förutsägs av en modell och de värden som observeras. Du beräknar det bakomliggande medelvärdet för resultatet genom `y_test` att jämföra DataFrame med de värden som förväntas av modellen. 
 
-   Funktionen ```mean_squared_error``` använder två matriser och beräknar det genomsnittliga kvadratvärdet för ett fel mellan dem. Sedan tar du kvadratroten ur resultatet. Det här måttet anger ungefär hur långt priset för taxi avgiften är från de faktiska biljett priserna.
+   Funktionen ```mean_squared_error``` använder två matriser och beräknar det genomsnittliga kvadratvärdet för ett fel mellan dem. Sedan tar du kvadratroten ur resultatet. Det här måttet anger ungefär hur långt priset för taxi avgiften är från de faktiska biljett värdena.
 
    ```python
    from sklearn.metrics import mean_squared_error
    from math import sqrt
 
-   # Calculate Root Mean Square Error
+   # Calculate root-mean-square error
    y_actual = y_test.values.flatten().tolist()
    rmse = sqrt(mean_squared_error(y_actual, y_predict))
 
@@ -265,7 +265,7 @@ best_run, fitted_model = local_run.get_output()
 1. Kör följande kod för att beräkna medelvärdes-absoluta-procent-felet. Mät värdet uttrycker noggrannhet som en procent andel av felet. Detta görs genom att beräkna en absolut skillnad mellan varje förutsägande och faktiskt värde och sedan summera alla skillnader. Sedan uttrycker den summan som en procent andel av summan av de faktiska värdena.
 
    ```python
-   # Calculate MAPE and Model Accuracy 
+   # Calculate mean-absolute-percent error and model accuracy 
    sum_actuals = sum_errors = 0
 
    for actual_val, predict_val in zip(y_actual, y_predict):
@@ -301,26 +301,26 @@ best_run, fitted_model = local_run.get_output()
    import numpy as np
    from sklearn.metrics import mean_squared_error, r2_score
 
-   # Calculate the R2 score using the predicted and actual fare prices
+   # Calculate the R2 score by using the predicted and actual fare prices
    y_test_actual = y_test["fareAmount"]
    r2 = r2_score(y_test_actual, y_predict)
 
-   # Plot the Actual vs Predicted Fare Amount Values
+   # Plot the actual versus predicted fare amount values
    plt.style.use('ggplot')
    plt.figure(figsize=(10, 7))
    plt.scatter(y_test_actual,y_predict)
    plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
    plt.xlabel("Actual Fare Amount")
    plt.ylabel("Predicted Fare Amount")
-   plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
+   plt.title("Actual vs Predicted Fare Amount R^2={}".format(r2))
    plt.show()
 
    ```
-   ![Skärm bild av Regressions kurva.](./media/azure-machine-learning-spark-notebook/fare-amount.png)
+   ![Skärm bild av en Regressions kurva.](./media/azure-machine-learning-spark-notebook/fare-amount.png)
 
-   Från resultaten kan du se att R-kvadratvärde-måttets konton i 95 procent av avvikelsen. Detta val IDE ras också av det faktiska området jämfört med observations området. Den mer varians som utgörs av Regressions modellen, desto närmare är att data punkterna faller på den monterade Regressions linjen.  
+   Från resultaten kan du se att R-kvadratvärde-måttets konton i 95 procent av avvikelsen. Detta val IDE ras också av det faktiska området jämfört med observations området. Den mer varians som Regressions modell kontona är för, desto närmare data punkterna kommer att falla till den monterade Regressions linjen.  
 
-## <a name="register-model-to-azure-machine-learning"></a>Registrera modell för Azure Machine Learning
+## <a name="register-the-model-to-azure-machine-learning"></a>Registrera modellen på Azure Machine Learning
 När du har verifierat din bästa modell kan du registrera den till Azure Machine Learning. Sedan kan du hämta eller distribuera den registrerade modellen och ta emot alla filer som du har registrerat.
 
 ```python
@@ -333,9 +333,9 @@ print(model.name, model.version)
 NYCGreenTaxiModel 1
 ```
 ## <a name="view-results-in-azure-machine-learning"></a>Visa resultat i Azure Machine Learning
-Du kan också få åtkomst till resultatet av iterationerna genom att gå till experimentet i Azure Machine Learning arbets ytan. Här kan du gå vidare till ytterligare information om status för dina körningar, försök modeller och andra modell mått. 
+Du kan också få åtkomst till resultatet av iterationerna genom att gå till experimentet i Azure Machine Learning arbets ytan. Här kan du få mer information om status för dina körningar, försöks modeller och andra modell mått. 
 
-![Skärm bild av Azure Machine Learning-arbetsyta.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Skärm bild av en Azure Machine Learning-arbetsyta.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Nästa steg
 - [Azure Synapse Analytics](../index.yml)

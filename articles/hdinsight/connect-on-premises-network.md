@@ -1,19 +1,16 @@
 ---
 title: Anslut Azure HDInsight till ditt lokala nätverk
 description: Lär dig hur du skapar ett HDInsight-kluster i en Azure-Virtual Network och sedan ansluter det till ditt lokala nätverk. Lär dig hur du konfigurerar namn matchning mellan HDInsight och ditt lokala nätverk med hjälp av en anpassad DNS-server.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 2a7b686bb0aae0b35b25cdd724925bab3c0a2e10
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786528"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943399"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Ansluta HDInsight till det lokala nätverket
 
@@ -42,7 +39,7 @@ I följande diagram är gröna rader begär Anden om resurser som slutar med DNS
 
 ![Diagram över hur DNS-begäranden löses i konfigurationen](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En SSH-klient. Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * Om du använder PowerShell behöver du AZ- [modulen](/powershell/azure/).

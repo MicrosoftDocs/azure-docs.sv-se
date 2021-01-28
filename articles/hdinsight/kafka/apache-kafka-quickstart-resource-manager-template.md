@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: Apache Kafka att använda Azure Resource Manager-HDInsight'
 description: I den här snabb starten får du lära dig hur du skapar ett Apache Kafka kluster på Azure HDInsight med Azure Resource Manager-mall. Du lär dig också om Kafka-ämnen, -prenumeranter och -konsumenter.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 12988feeb26bc5821e8f08db3e688a2e1c429e19
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1bd4a3bfc2ba208371ed71720cc8c89a796ad9a2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532636"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940814"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Snabb start: skapa Apache Kafka kluster i Azure HDInsight med ARM-mall
 
@@ -23,7 +20,7 @@ I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) 
 
 Kafka-API:et kan endast användas av resurser i samma virtuella nätverk. I den här snabbstarten har du direkt åtkomst till klustret med SSH. Om du vill ansluta andra tjänster, nätverk eller virtuella datorer till Kafka måste du först skapa ett virtuellt nätverk och sedan skapa resurser i nätverket. Mer information finns i dokumentet [Anslut till Apache Kafka via ett virtuellt nätverk](apache-kafka-connect-vpn-gateway.md).
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
@@ -53,17 +50,17 @@ Två Azure-resurser definieras i mallen:
     |Egenskap |Beskrivning |
     |---|---|
     |Prenumeration|I list rutan väljer du den Azure-prenumeration som används för klustret.|
-    |Resursgrupp|Välj din befintliga resurs grupp i list rutan eller Välj **Skapa ny** .|
-    |Plats|Värdet fylls i automatiskt med den plats som används för resurs gruppen.|
+    |Resursgrupp|Välj din befintliga resurs grupp i list rutan eller Välj **Skapa ny**.|
+    |Location|Värdet fylls i automatiskt med den plats som används för resurs gruppen.|
     |Klusternamn|Ange ett globalt unikt namn. Använd bara gemena bokstäver och siffror för den här mallen.|
-    |Användarnamn för klusterinloggning|Ange användar namnet, standard är **administratör** .|
+    |Användarnamn för klusterinloggning|Ange användar namnet, standard är **administratör**.|
     |Lösenord för klusterinloggning|Ange ett lösen ord. Lösen ordet måste bestå av minst 10 tecken och måste innehålla minst en siffra, en versal och en gemen bokstav, ett icke-alfanumeriskt tecken (förutom tecknen "" "). |
     |Användar namn för SSH|Ange användar namnet, standard är **sshuser**|
     |SSH-lösenord|Ange lösen ordet.|
 
     ![En skärmbild av mallegenskaperna](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-1. Granska de **allmänna** villkoren. Välj sedan **Jag accepterar villkoren som anges ovan** och **köp** . Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
+1. Granska de **allmänna** villkoren. Välj sedan **Jag accepterar villkoren som anges ovan** och **köp**. Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
@@ -71,7 +68,7 @@ När klustret har skapats får du ett meddelande om att **distributionen har slu
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a>Hämta information om värden i Apache Zookeeper och Broker
 
-När du arbetar med Kafka måste du känna till *Apache Zookeeper* - och *Broker* -värdarna. Dessa värdar används med Kafka-API och många av de verktyg som levereras med Kafka.
+När du arbetar med Kafka måste du känna till *Apache Zookeeper*- och *Broker*-värdarna. Dessa värdar används med Kafka-API och många av de verktyg som levereras med Kafka.
 
 I det här avsnittet hämtas information om värden från klustrets Ambari REST API.
 
@@ -133,7 +130,7 @@ I det här avsnittet hämtas information om värden från klustrets Ambari REST 
 
 ## <a name="manage-apache-kafka-topics"></a>Hantera Apache Kafka-ämnen
 
-Kafka lagrar dataströmmar i kategorier som kallas *ämnen* . Du kan hantera ämnena med verktyget `kafka-topics.sh`.
+Kafka lagrar dataströmmar i kategorier som kallas *ämnen*. Du kan hantera ämnena med verktyget `kafka-topics.sh`.
 
 * **Du skapar ett ämne** med följande kommando i SSH-anslutningen:
 
@@ -141,7 +138,7 @@ Kafka lagrar dataströmmar i kategorier som kallas *ämnen* . Du kan hantera äm
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`. Det skapar sedan ett Kafka-ämne med namnet **test** .
+    Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`. Det skapar sedan ett Kafka-ämne med namnet **test**.
 
     * Data som lagras i det här ämnet partitioneras över åtta partitioner.
 
@@ -190,7 +187,7 @@ Om du vill ha mer information om vilka kommandon som är tillgängliga med verkt
 
 ## <a name="produce-and-consume-records"></a>Skapa och använda poster
 
-Kafka lagrar *poster* i ämnen. Poster produceras av *producenter* , och används av *konsumenter* . Producenter och konsumenter kommunicerar med *Kafka-koordinator* tjänsten. Varje arbetsnod i HDInsight-klustret är en Kafka-koordinatorvärd.
+Kafka lagrar *poster* i ämnen. Poster produceras av *producenter*, och används av *konsumenter*. Producenter och konsumenter kommunicerar med *Kafka-koordinator* tjänsten. Varje arbetsnod i HDInsight-klustret är en Kafka-koordinatorvärd.
 
 Använd följande steg för att lagra poster i det testämne som du skapade tidigare och sedan läsa dem med en konsument:
 
@@ -222,11 +219,11 @@ Du kan också programmässigt skapa producenter och konsumenter. Ett exempel på
 
 När du har slutfört snabb starten kanske du vill ta bort klustret. Med HDInsight lagras dina data i Azure Storage, så att du på ett säkert sätt kan ta bort ett kluster när det inte används. Du debiteras också för ett HDInsight-kluster, även när det inte används. Eftersom avgifterna för klustret är flera gånger mer än avgifterna för lagring, är det ekonomiskt klokt att ta bort kluster när de inte används.
 
-Från Azure Portal, navigera till klustret och välj **ta bort** .
+Från Azure Portal, navigera till klustret och välj **ta bort**.
 
 ![HBase för Resource Manager-mall](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
 
-Du kan också välja resursgruppnamnet för att öppna resursgruppsidan. Välj sedan **Ta bort resursgrupp** . Genom att ta bort resurs gruppen tar du bort både HDInsight-klustret och standard lagrings kontot.
+Du kan också välja resursgruppnamnet för att öppna resursgruppsidan. Välj sedan **Ta bort resursgrupp**. Genom att ta bort resurs gruppen tar du bort både HDInsight-klustret och standard lagrings kontot.
 
 ## <a name="next-steps"></a>Nästa steg
 

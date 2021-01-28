@@ -2,25 +2,22 @@
 title: 'Snabb start: fråga Apache HBase i Azure HDInsight – HBase Shell'
 description: I den här snabb starten får du lära dig hur du använder Apache HBase-gränssnittet för att köra apache HBase-frågor.
 keywords: HDInsight, Hadoop, HBase
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79371077"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942925"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Snabb start: fråga Apache HBase i Azure HDInsight med HBase Shell
 
 I den här snabb starten får du lära dig hur du använder Apache HBase Shell för att skapa en HBase-tabell, infogar data och sedan frågar tabellen.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

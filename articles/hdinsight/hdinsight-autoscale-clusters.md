@@ -1,19 +1,16 @@
 ---
 title: Skala Azure HDInsight-kluster automatiskt
 description: Använd funktionen för automatisk skalning för att automatiskt skala Azure HDInsight-kluster baserat på ett schema eller prestanda mått.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629263"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942642"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Skala Azure HDInsight-kluster automatiskt
 
@@ -38,7 +35,7 @@ Tänk på följande faktorer när du väljer en skalnings typ:
 
 Autoskalning övervakar kontinuerligt klustret och samlar in följande mått:
 
-|Mått|Beskrivning|
+|Metric|Beskrivning|
 |---|---|
 |Total väntande processor|Det totala antalet kärnor som krävs för att starta körningen av alla väntande behållare.|
 |Totalt väntande minne|Det totala minne (i MB) som krävs för att starta körningen av alla väntande behållare.|
@@ -73,10 +70,10 @@ I följande tabell beskrivs de kluster typer och versioner som är kompatibla me
 
 | Version | Spark | Hive | Interaktiv fråga | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 utan ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
-| HDInsight 4,0 utan ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
-| HDInsight 3,6 med ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
-| HDInsight 4,0 med ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
+| HDInsight 3,6 utan ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
+| HDInsight 4,0 utan ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
+| HDInsight 3,6 med ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
+| HDInsight 4,0 med ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
 
 \* HBase-kluster kan bara konfigureras för schemabaserade skalning, inte för inläsning.
 
@@ -224,7 +221,7 @@ Kluster statusen som visas i Azure Portal kan hjälpa dig att övervaka automati
 
 Alla de kluster status meddelanden som du kan se förklaras i listan nedan.
 
-| Klusterstatus | Beskrivning |
+| Klusterstatus | Description |
 |---|---|
 | Körs | Klustret fungerar normalt. Alla tidigare autoskalning-aktiviteter har slutförts. |
 | Uppdatera  | Konfigurationen för automatisk skalning av klustret uppdateras.  |
@@ -242,7 +239,7 @@ Välj **mått** under **övervakning**. Välj sedan **Lägg till mått** och **A
 
 ![Aktivera schema baserat på arbetsnodens mått för autoskalning](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
-## <a name="best-practices"></a>Bästa praxis
+## <a name="best-practices"></a>Rekommenderade metoder
 
 ### <a name="consider-the-latency-of-scale-up-and-scale-down-operations"></a>Beakta svars tiden för skalning upp-och nedskalning
 

@@ -1,19 +1,16 @@
 ---
 title: Spegla Apache Kafka ämnen – Azure HDInsight
 description: Lär dig hur du använder Apache Kafkas speglings funktion för att underhålla en replik av en Kafka på HDInsight-kluster genom att spegla ämnen till ett sekundärt kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428240"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940839"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Använd MirrorMaker för att replikera Apache Kafka-ämnen med Kafka i HDInsight
 
@@ -108,7 +105,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
 1. Skriv en anteckning på sidan **Spara konfiguration** och klicka på **Spara**.
 1. Om du uppmanas att konfigurera en konfigurations varning klickar du på **Fortsätt ändå**.
 1. Välj **OK** i **ändringarna Spara konfigurationen**.
-1. Välj **Starta**om  >  **omstart allt påverkat** i meddelandet **omstart krävs** . Välj **Bekräfta omstart av alla**.
+1. Välj **Starta** om  >  **omstart allt påverkat** i meddelandet **omstart krävs** . Välj **Bekräfta omstart av alla**.
 
     ![Apache Ambari-omstart alla påverkade](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
@@ -116,7 +113,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
     
 1. Stanna kvar på fliken **configs** under **Services**  >  **Kafka**. I **Kafka Broker** -avsnittet anger du egenskapen **Listeners** till `PLAINTEXT://0.0.0.0:9092` .
 1. Välj **Spara**.
-1. Välj **starta om**och **Bekräfta omstart av alla**.
+1. Välj **starta om** och **Bekräfta omstart av alla**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Post Broker IP-adresser och Zookeeper-adresser för det primära klustret.
 
@@ -201,7 +198,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
 
     Den här filen beskriver den konsument information som ska användas vid läsning från det primära Kafka-klustret. Mer information konsument konfiguration finns i [konsument konfigurationerna](https://kafka.apache.org/documentation#consumerconfigs) på Kafka.apache.org.
 
-    Om du vill spara filen använder du **CTRL + X**, **Y**och **anger**sedan.
+    Om du vill spara filen använder du **CTRL + X**, **Y** och **anger** sedan.
 
 1. Innan du konfigurerar producenten som kommunicerar med det sekundära klustret konfigurerar du en variabel för Service Broker-IP-adresserna för det **sekundära** klustret. Använd följande kommandon för att skapa den här variabeln:
 
@@ -257,7 +254,7 @@ Konfigurera IP-annonsering om du vill att en klient ska kunna ansluta med IP-adr
         1. Klicka på **Services**  >  **Kafka**. Klicka på fliken **konfigurationer** .
         1. Ange ett värde i fältet __filter__ `auto.create` . Detta filtrerar listan över egenskaper och visar `auto.create.topics.enable` inställningen.
         1. Ändra värdet `auto.create.topics.enable` till sant och välj sedan __Spara__. Lägg till en anteckning och välj sedan __Spara__ igen.
-        1. Välj __Kafka__ -tjänsten, Välj __starta om__och välj sedan __starta om alla berörda__. När du uppmanas väljer du __Bekräfta omstart av alla__.
+        1. Välj __Kafka__ -tjänsten, Välj __starta om__ och välj sedan __starta om alla berörda__. När du uppmanas väljer du __Bekräfta omstart av alla__.
 
         ![Kafka aktivera automatisk skapande av ämnen](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 

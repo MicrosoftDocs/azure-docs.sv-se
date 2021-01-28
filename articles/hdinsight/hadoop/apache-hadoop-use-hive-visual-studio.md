@@ -1,25 +1,22 @@
 ---
 title: Apache Hive & Data Lake verktyg för Visual Studio – Azure HDInsight
 description: Lär dig hur du använder Data Lake verktyg för Visual Studio för att köra Apache Hive frågor med Apache Hadoop på Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076461"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943172"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Köra Apache Hive-frågor med hjälp av Data Lake Tools för Visual Studio
 
 Lär dig hur du använder Data Lake verktyg för Visual Studio för att fråga Apache Hive. Med Data Lake-verktygen kan du enkelt skapa, skicka och övervaka Hive-frågor till Apache Hadoop på Azure HDInsight.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Apache Hadoop kluster i HDInsight. Information om hur du skapar det här objektet finns i [skapa Apache Hadoop kluster i Azure HDInsight med Resource Manager-mall](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -40,7 +37,7 @@ Ad hoc-frågor kan köras i antingen **batch** -eller **interaktivt** läge.
 
 1. Starta **Visual Studio** och välj **Fortsätt utan kod**.
 
-2. Från **Server Explorer**högerklickar du på **Azure**, väljer **Anslut till Microsoft Azure prenumeration...** och slutför inloggnings processen.
+2. Från **Server Explorer** högerklickar du på **Azure**, väljer **Anslut till Microsoft Azure prenumeration...** och slutför inloggnings processen.
 
 3. Expandera **HDInsight**, högerklicka på det kluster där du vill köra frågan och välj sedan **Skriv en Hive-fråga**.
 
@@ -60,9 +57,9 @@ Ad hoc-frågor kan köras i antingen **batch** -eller **interaktivt** läge.
 
     Hive-redigeraren stöder IntelliSense. Data Lake Tools för Visual Studio stöder inläsning av fjärrmetadata när du redigerar Hive-skript. Om du till exempel skriver visas `SELECT * FROM` alla föreslagna tabell namn i IntelliSense. När du anger ett tabellnamn visar IntelliSense en lista över kolumnnamnen. Verktygen stöder de flesta Hive DML-instruktioner, underfrågor och inbyggda UDF. IntelliSense föreslår endast metadata för kluster som valts i verktygsfältet för HDInsight.
 
-7. I verktygsfältet fråga (avsnittet under fliken fråga och ovanför frågetexten) väljer du **Skicka**eller väljer PULLDOWN-pilen bredvid **Skicka** och välj **Avancerat** i listan PULLDOWN. Om du väljer det senare alternativet
+7. I verktygsfältet fråga (avsnittet under fliken fråga och ovanför frågetexten) väljer du **Skicka** eller väljer PULLDOWN-pilen bredvid **Skicka** och välj **Avancerat** i listan PULLDOWN. Om du väljer det senare alternativet
 
-8. Om du har valt alternativet Avancerad överföring konfigurerar du **jobbnamn**, **argument**, **ytterligare konfigurationer**och **status katalog** i dialog rutan **Skicka skript** . Välj sedan **Skicka**.
+8. Om du har valt alternativet Avancerad överföring konfigurerar du **jobbnamn**, **argument**, **ytterligare konfigurationer** och **status katalog** i dialog rutan **Skicka skript** . Välj sedan **Skicka**.
 
     ![Dialog rutan Skicka skript, HDInsight Hadoop Hive-fråga](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png)
 
@@ -74,7 +71,7 @@ Följ dessa steg om du vill köra en Hive-fråga genom att skapa ett Hive-progra
 
 2. I fönstret **Starta** väljer du **skapa ett nytt projekt**.
 
-3. Skriv *Hive*i rutan **Sök efter mallar** i fönstret **skapa ett nytt projekt** . Välj sedan **Hive-program** och välj **Nästa**.
+3. Skriv *Hive* i rutan **Sök efter mallar** i fönstret **skapa ett nytt projekt** . Välj sedan **Hive-program** och välj **Nästa**.
 
 4. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn**, väljer eller skapar en **plats** för det nya projektet och väljer sedan **skapa**.
 
@@ -120,7 +117,7 @@ Följ dessa steg om du vill köra en Hive-fråga genom att skapa ett Hive-progra
 
 I följande exempel förlitar `log4jLogs` sig den tabell som du skapade i föregående procedur, [skapar du ett Hive-program](#create-a-hive-application).
 
-1. Från **Server Explorer**högerklickar du på klustret och väljer **Skriv en Hive-fråga**.
+1. Från **Server Explorer** högerklickar du på klustret och väljer **Skriv en Hive-fråga**.
 
 2. Ange följande Hive-fråga:
 
@@ -143,7 +140,7 @@ I följande exempel förlitar `log4jLogs` sig den tabell som du skapade i föreg
 
 3. Ändra **interaktiv** till **batch** vid behov och välj sedan **Skicka**.
 
-4. Kontrol lera att jobbet har skapats för tabellen genom att gå till **Server Explorer** och expandera **Azure**  >  **HDInsight**. Expandera ditt HDInsight-kluster och expandera sedan **Hive-databaser**som  >  **standard**. Tabellen **errorLogs** och tabellen **log4jLogs** visas.
+4. Kontrol lera att jobbet har skapats för tabellen genom att gå till **Server Explorer** och expandera **Azure**  >  **HDInsight**. Expandera ditt HDInsight-kluster och expandera sedan **Hive-databaser** som  >  **standard**. Tabellen **errorLogs** och tabellen **log4jLogs** visas.
 
 ## <a name="next-steps"></a>Nästa steg
 

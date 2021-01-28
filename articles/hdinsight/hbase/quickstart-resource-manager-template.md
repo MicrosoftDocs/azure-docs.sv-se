@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: skapa Apache HBase-kluster med hjälp av mall – Azure HDInsight'
 description: Den här snabb starten visar hur du använder Resource Manager-mall för att skapa ett Apache HBase-kluster i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: ee69148f7dfe7a0ba39b4103a736ea09d3f57c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a6b55ee2d665ee38df9a0e0f58260e97f3b81f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91855794"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942943"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Snabb start: skapa Apache HBase-kluster i Azure HDInsight med ARM-mall
 
@@ -61,7 +58,7 @@ Två Azure-resurser definieras i mallen:
 
     ![Distribuera Resource Manager-mall HBase](./media/quickstart-resource-manager-template/resource-manager-template-hbase.png)
 
-1. Granska de **allmänna**villkoren. Välj sedan **Jag accepterar villkoren som anges ovan**och **köp**. Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
+1. Granska de **allmänna** villkoren. Välj sedan **Jag accepterar villkoren som anges ovan** och **köp**. Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
 
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser

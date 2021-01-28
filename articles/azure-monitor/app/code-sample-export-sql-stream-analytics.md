@@ -3,12 +3,12 @@ title: Exportera till SQL från Azure Application Insights | Microsoft Docs
 description: Exportera Application Insights data kontinuerligt till SQL med Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979452"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942418"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Genom gång: exportera till SQL från Application Insights med Stream Analytics
 Den här artikeln visar hur du flyttar dina telemetridata från [Azure Application Insights][start] till Azure SQL Database genom att använda [kontinuerlig export][export] och [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -64,7 +64,7 @@ Kontinuerlig export matar alltid ut data till ett Azure Storage-konto, så du m�
 1. Låt vissa data ackumuleras. Luta dig tillbaka och låt användarna använda programmet en stund. Telemetri kommer in och du ser statistik diagram i [Metric Explorer](../platform/metrics-charts.md) och enskilda händelser i [diagnostisk sökning](./diagnostic-search.md). 
    
     Informationen kommer också att exporteras till lagringen. 
-2. Granska exporterade data, antingen i portalen – Välj **Bläddra**, Välj ditt lagrings konto och sedan **behållare** – eller i Visual Studio. I Visual Studio väljer du **Visa/Cloud Explorer**och öppna Azure/Storage. (Om du inte har det här meny alternativet måste du installera Azure SDK: öppna dialog rutan nytt projekt och öppna Visual C#/Cloud/Get Microsoft Azure SDK för .NET.)
+2. Granska exporterade data, antingen i portalen – Välj **Bläddra**, Välj ditt lagrings konto och sedan **behållare** – eller i Visual Studio. I Visual Studio väljer du **Visa/Cloud Explorer** och öppna Azure/Storage. (Om du inte har det här meny alternativet måste du installera Azure SDK: öppna dialog rutan nytt projekt och öppna Visual C#/Cloud/Get Microsoft Azure SDK för .NET.)
    
     ![Öppna Server webbläsare, Azure, lagring i Visual Studio](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -82,7 +82,7 @@ Kontrol lera att servern tillåter åtkomst till Azure-tjänster:
 ![Bläddra, servrar, Server, inställningar, brand vägg, Tillåt åtkomst till Azure](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Skapa en tabell i Azure SQL Database
-Anslut till databasen som du skapade i föregående avsnitt med det önskade hanterings verktyget. I den här genom gången ska vi använda [hanteringsverktyg för SQL Server](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS).
+Anslut till databasen som du skapade i föregående avsnitt med det önskade hanterings verktyget. I den här genom gången ska vi använda [hanteringsverktyg för SQL Server](/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 ![Ansluta till Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 

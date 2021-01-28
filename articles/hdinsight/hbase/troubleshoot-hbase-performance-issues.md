@@ -1,18 +1,15 @@
 ---
 title: Felsöka problem med Apache HBase-prestanda Azure HDInsight
 description: Olika rikt linjer för prestanda justering av Apache HBase och tips för att få optimala prestanda i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 466fac524601e2d569bfa0ccf90179fe9419210d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547902"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942894"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Felsöka problem med Apache HBase-prestanda Azure HDInsight
 
@@ -73,7 +70,7 @@ Följande är några av de andra speciella parametrarna som vi har justerat, och
 
 - Öka `memstore` storleken från standard 128 MB till 256 MB. Normalt rekommenderas den här inställningen för tunga Skriv scenarier.
 
-- Öka antalet trådar som är dedikerade för komprimering, från standardinställningen **1** till **4** . Den här inställningen är relevant om vi iakttar frekventa smärre komprimeringar.
+- Öka antalet trådar som är dedikerade för komprimering, från standardinställningen **1** till **4**. Den här inställningen är relevant om vi iakttar frekventa smärre komprimeringar.
 
 - Undvik att blockera `memstore` tömning på grund av en lagrings gräns. Öka `Hbase.hstore.blockingStoreFiles` inställningen till **100** för att tillhandahålla den här bufferten.
 
@@ -104,13 +101,13 @@ Följande är några av de andra speciella parametrarna som vi har justerat, och
 - RPC-tidsgräns: **3 minuter**
 
    - RPC-timeout inkluderar HBase RPC-timeout, timeout för klient skanner och Phoenix-tidsgräns. 
-   - Kontrol lera att `hbase.client.scanner.caching` parametern har angetts till samma värde både på Server sidan och klienten slutar. Om de inte är samma, leder den här inställningen till klient slut fel som är relaterade till `OutOfOrderScannerException` . Den här inställningen ska vara inställd på ett lågt värde för stora genomsökningar. Vi anger värdet **100** .
+   - Kontrol lera att `hbase.client.scanner.caching` parametern har angetts till samma värde både på Server sidan och klienten slutar. Om de inte är samma, leder den här inställningen till klient slut fel som är relaterade till `OutOfOrderScannerException` . Den här inställningen ska vara inställd på ett lågt värde för stora genomsökningar. Vi anger värdet **100**.
 
 ## <a name="other-considerations"></a>Ytterligare överväganden
 
 Följande är ytterligare parametrar för att överväga fin justering:
 
-- `Hbase.rs.cacheblocksonwrite` – som standard på HDI är den här inställningen inställd på **True** .
+- `Hbase.rs.cacheblocksonwrite` – som standard på HDI är den här inställningen inställd på **True**.
 
 - Inställningar som gör det möjligt att skjuta upp mindre komprimering för senare.
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d5cfdca24193b899926bd30995063ed55b3dd3eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532065"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943457"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Övervaka Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Azure Cosmos DB samlar in samma typer av övervaknings data som andra Azure-resu
 
 På sidan **Översikt** i Azure Portal för varje Azure Cosmos-databas finns en kort vy över databas användningen, inklusive begäran och fakturerings användningen per timme. Detta är användbar information, men bara en liten mängd tillgängliga övervaknings data. En del av dessa data samlas in automatiskt och är tillgängliga för analys så fort du skapar databasen, medan du kan aktivera ytterligare data insamling med en viss konfiguration.
 
-:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Översikts sida":::
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Översiktssidan":::
 
 ## <a name="collection-and-routing"></a>Samling och routning
 
@@ -129,7 +129,7 @@ Data i Azure Monitor loggar lagras i tabeller som varje tabell har en egen upps�
 
 Alla resurs loggar i Azure Monitor har samma fält följt av tjänstespecific-fält. Det gemensamma schemat beskrivs i [Azure Monitor resurs logg schema](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema). En lista över typer av resurs loggar som samlas in för Azure Cosmos DB finns i [övervaknings Azure Cosmos db data referens](monitor-cosmos-db-reference.md#resource-logs).
 
-[Aktivitets loggen](/azure/azure-monitor/platform/activity-log) är en plattforms inloggning för Azure som ger inblick i händelser på prenumerations nivå. Du kan visa den oberoende av varandra eller dirigera den till Azure Monitor loggar, där du kan göra mycket mer komplexa frågor med Log Analytics.  
+[Aktivitets loggen](../azure-monitor/platform/activity-log.md) är en plattforms inloggning för Azure som ger inblick i händelser på prenumerations nivå. Du kan visa den oberoende av varandra eller dirigera den till Azure Monitor loggar, där du kan göra mycket mer komplexa frågor med Log Analytics.  
 
 Azure Cosmos DB lagrar data i följande tabeller.
 
@@ -176,7 +176,7 @@ Azure Monitor aviseringar proaktivt meddela dig när viktiga villkor finns i din
 
 I följande tabell visas till exempel några aviserings regler för dina resurser. Du hittar en detaljerad lista över varnings regler från Azure Portal. Mer information finns i [så här konfigurerar du aviserings](create-alerts.md) artikeln.  
 
-| Aviseringstyp | Villkor | Beskrivning  |
+| Aviseringstyp | Villkor | Description  |
 |:---|:---|:---|
 |Hastighets begränsning på enheter för programbegäran (mått varning) |Dimensions namn: StatusCode, operator: lika med, dimensions värden: 429  | Varningar om behållaren eller en databas har överskridit gränsen för allokerat data flöde. |
 |Regionen har redundansväxlats |Operator: större än, sammansättnings typ: antal, tröskel värde: 1 | När en enskild region har redundansväxlats. Den här aviseringen är användbar om du inte har aktiverat automatisk redundans. |

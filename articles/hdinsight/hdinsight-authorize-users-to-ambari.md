@@ -1,19 +1,16 @@
 ---
 title: Auktorisera användare för Ambari-vyer – Azure HDInsight
 description: Hantera Ambari-användare och grupp behörigheter för HDInsight-kluster med ESP aktiverat.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0b6d4dacf43d80f371a2a4d286af1972198c3be3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547936"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942705"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Auktorisera användare för Apache Ambari Views
 
@@ -32,7 +29,7 @@ Om du inte redan har gjort det följer du [de här anvisningarna](./domain-joine
 
 ![Hantera Apache Ambari-instrumentpanel](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
-## <a name="add-users"></a>Lägg till användare
+## <a name="add-users"></a>Lägga till användare
 
 ### <a name="add-users-through-the-portal"></a>Lägg till användare via portalen
 
@@ -40,9 +37,9 @@ Om du inte redan har gjort det följer du [de här anvisningarna](./domain-joine
 
     ![Apache Ambari-hanterings sidan användare](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. Välj **+ skapa lokal användare** .
+1. Välj **+ skapa lokal användare**.
 
-1. Ange **användar namn** och **lösen ord** . Välj **Spara** .
+1. Ange **användar namn** och **lösen ord**. Välj **Spara**.
 
 ### <a name="add-users-through-powershell"></a>Lägg till användare via PowerShell
 
@@ -167,7 +164,7 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Bevilja behörighet att Apache Hive vyer
 
-Ambari levereras med View-instanser för [Apache Hive](https://hive.apache.org/) och [Apache TEZ](https://tez.apache.org/), bland annat. Om du vill bevilja åtkomst till en eller flera instanser av Hive-vyn går du till **hanterings sidan för Ambari** .
+Ambari levereras med View-instanser för [Apache Hive](https://hive.apache.org/) och [Apache TEZ](https://tez.apache.org/), bland annat. Om du vill bevilja åtkomst till en eller flera instanser av Hive-vyn går du till **hanterings sidan för Ambari**.
 
 1. På sidan hantering väljer du länken **vyer** under **rubrik menyn till** vänster.
 

@@ -1,18 +1,15 @@
 ---
 title: Använda Apache Hive replikering i Azure HDInsight-kluster
 description: Lär dig hur du använder Hive-replikering i HDInsight-kluster för att replikera Hive-metaarkiv och Azure Data Lake Storage gen 2 data Lake.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857749"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941335"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Använda Apache Hive replikering i Azure HDInsight-kluster
 
@@ -140,7 +137,7 @@ Stegvis replikering följer samma process och kräver det sista replikerade hän
 
 Replikering konfigureras vanligt vis på ett enkelriktat sätt mellan den primära och den sekundära, där den primära består för läsnings-och skriv förfrågningar. Det sekundära klustret tillgodoser endast Läs begär Anden. Skrivningar tillåts på den sekundära om det finns en katastrof, men omvänd replikering måste konfigureras tillbaka till den primära.
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive-replikeringsschema":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Mönster för Hive-replikering":::
 
 Det finns många mönster som lämpar sig för Hive-replikering, inklusive primär – sekundär, hubb och eker och relä.
 

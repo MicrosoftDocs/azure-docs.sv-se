@@ -1,19 +1,16 @@
 ---
 title: Analysera program insikts loggar med Spark – Azure HDInsight
 description: Lär dig hur du exporterar program insikts loggar till Blob Storage och sedan analysera loggarna med Spark på HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078807"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940468"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analysera Application Insights telemetri loggar med Apache Spark på HDInsight
 
@@ -21,7 +18,7 @@ Lär dig hur du använder [Apache Spark](https://spark.apache.org/) på HDInsigh
 
 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) är en analys tjänst som övervakar dina webb program. Telemetri-data som genereras av Application Insights kan exporteras till Azure Storage. När data är i Azure Storage kan HDInsight användas för att analysera den.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett program som är konfigurerat för att använda Application Insights.
 
@@ -72,7 +69,7 @@ Om du vill lägga till Azure Storage kontot i ett befintligt kluster använder d
 
 1. I en webbläsare navigerar du till `https://CLUSTERNAME.azurehdinsight.net/jupyter` där kluster namn är namnet på klustret.
 
-2. I det övre högra hörnet på sidan Jupyter väljer du **nytt**och sedan **PySpark**. En ny flik i webbläsaren som innehåller en python-baserad Jupyter Notebook öppnas.
+2. I det övre högra hörnet på sidan Jupyter väljer du **nytt** och sedan **PySpark**. En ny flik i webbläsaren som innehåller en python-baserad Jupyter Notebook öppnas.
 
 3. I det första fältet (kallas en **cell**) på sidan anger du följande text:
 
@@ -223,7 +220,7 @@ Om du vill lägga till Azure Storage kontot i ett befintligt kluster använder d
 
 1. I en webbläsare navigerar du till `https://CLUSTERNAME.azurehdinsight.net/jupyter` där kluster namn är namnet på klustret.
 
-2. I det övre högra hörnet på sidan Jupyter väljer du **nytt**och sedan **Scala**. En ny flik i webbläsaren som innehåller en Scala-baserad Jupyter Notebook visas.
+2. I det övre högra hörnet på sidan Jupyter väljer du **nytt** och sedan **Scala**. En ny flik i webbläsaren som innehåller en Scala-baserad Jupyter Notebook visas.
 
 3. I det första fältet (kallas en **cell**) på sidan anger du följande text:
 

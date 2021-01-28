@@ -1,19 +1,16 @@
 ---
 title: Vad är en interaktiv fråga i Azure HDInsight?
 description: En introduktion till interaktiv fråga, även kallat Apache Hive LLAP, i Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2813554700e015c0ac34e47d632d16d97c948c4e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "78271959"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941088"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Vad är interaktiv fråga i Azure HDInsight?
 
@@ -40,7 +37,7 @@ Om du vill köra Hive-frågor kan du välja mellan följande alternativ:
 |---|---|
 |Microsoft Power BI|Se [visualisera interaktiva frågor Apache Hive data med Power BI i Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md)och [visualisera big data med Power BI i Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).|
 |Visual Studio|Se [ansluta till Azure HDInsight och köra apache Hive frågor med hjälp av data Lake verktyg för Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).|
-|Visual Studio-koden|Se [använda Visual Studio Code för Apache Hive, LLAP eller pySpark](../hdinsight-for-vscode.md).|
+|Visuell Studio-kod|Se [använda Visual Studio Code för Apache Hive, LLAP eller pySpark](../hdinsight-for-vscode.md).|
 |Apache Ambari Hive-vy|Se [använda Apache Hive vy med Apache Hadoop i Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md). Hive-vyn är inte tillgänglig för HDInsight 4,0.|
 |Apache Beeline|Se [använda Apache Hive med Apache Hadoop i HDInsight med Beeline](../hadoop/apache-hadoop-use-hive-beeline.md). Du kan använda Beeline antingen från Head-noden eller från en tom Edge-nod. Vi rekommenderar att du använder Beeline från en tom Edge-nod. Information om hur du skapar ett HDInsight-kluster med hjälp av en tom Edge-nod finns i [använda tomma Edge-noder i HDInsight](../hdinsight-apps-use-edge-node.md).|
 |Hive ODBC|Se [ansluta Excel till Apache Hadoop med Microsoft HIVE ODBC-drivrutin](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).|

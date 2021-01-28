@@ -2,19 +2,16 @@
 title: Fråga Apache Hive med ODBC-drivrutin & PowerShell – Azure HDInsight
 description: Använd Microsoft Hive ODBC-drivrutin och PowerShell för att fråga Apache Hive kluster på Azure HDInsight.
 keywords: Hive, Hive ODBC, PowerShell
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211b23db56b6deebb519b9eaac4164ea83edabac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078579"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941370"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Självstudie: fråga Apache Hive med ODBC och PowerShell
 
@@ -29,7 +26,7 @@ I den här självstudien ska du utföra följande uppgifter:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudiekursen behöver du följande:
 
@@ -49,7 +46,7 @@ Följande steg visar hur du skapar en ODBC-datakälla för Apache Hive.
 
 1. På fliken **användar-DSN** väljer du **Lägg till** för att öppna fönstret **Skapa ny data källa** .
 
-1. Välj **Microsoft HIVE ODBC-drivrutin**och välj sedan **Slutför** för att öppna **installations fönstret för Microsoft Hive ODBC-drivrutin** .
+1. Välj **Microsoft HIVE ODBC-drivrutin** och välj sedan **Slutför** för att öppna **installations fönstret för Microsoft Hive ODBC-drivrutin** .
 
 1. Ange eller välj följande värden:
 
@@ -61,7 +58,7 @@ Följande steg visar hur du skapar en ODBC-datakälla för Apache Hive.
    |  Databas |Använd **standard**. |
    |  Mekanism |Välj **Windows Azure HDInsight-tjänst** |
    |  Användarnamn |Ange HDInsight-kluster HTTP användar namn användar namn. Standardanvändarnamnet är **admin**. |
-   |  lösenordsinställning |Ange användar lösen ord för HDInsight-kluster. Markera kryss rutan **Spara lösen ord (krypterad)**.|
+   |  Lösenord |Ange användar lösen ord för HDInsight-kluster. Markera kryss rutan **Spara lösen ord (krypterad)**.|
 
 1. Valfritt: Välj **Avancerade alternativ**.  
 

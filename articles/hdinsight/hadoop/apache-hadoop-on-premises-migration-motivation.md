@@ -1,19 +1,17 @@
 ---
 title: 'Fördelar: migrera lokala Apache Hadoop till Azure HDInsight'
 description: Lär dig motivation och fördelarna med att migrera lokala Hadoop-kluster till Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 975d72df32027888e217d5da9171dba0ba61f257
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331659"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943256"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight – motivation och fördelar
 
@@ -183,7 +181,7 @@ Det här avsnittet innehåller fråge formulär för mallar som hjälper dig att
 |Antal AD-användare som ska synkroniseras?|          100||
 |OK för att synkronisera lösen ord till molnet?|    Ja||
 |Endast moln användare?|                 Ja||
-|MFA krävs?|                       Nej|| 
+|MFA krävs?|                       Inga|| 
 |Krav för data auktorisation?|  Ja||
 |Rollbaserad åtkomst kontroll?|        Ja||
 |Krävs granskning?|                  Ja||

@@ -116,10 +116,16 @@
       href: concepts-device-oem-security-practices.md
 - name: Anvisningar
   items:
-    - name: Ansluta MXChip IoT DevKit till IoT Hub
-      href: how-to-connect-mxchip-iot-devkit.md
-    - name: Etablera enheter med anpassade allokeringsprinciper
-      href: how-to-use-custom-allocation-policies.md
+    - name: Utveckling
+      items:
+        - name: Ansluta MXChip IoT DevKit till IoT Hub
+          href: how-to-connect-mxchip-iot-devkit.md
+        - name: Så här skickar du ytterligare data från enheter
+          href: how-to-send-additional-data.md
+        - name: Etablera enheter med anpassade allokeringsprinciper
+          href: how-to-use-custom-allocation-policies.md
+        - name: Kommunicera med din DPS med hjälp av MQTT-protokoll
+          href: iot-dps-mqtt-support.md
     - name: Hantera enhetsetableringstjänst
       items:
         - name: Hantera registreringar – portal
@@ -138,8 +144,6 @@
           href: how-to-control-access.md
         - name: Konfigurera IP-filtrering
           href: iot-dps-ip-filtering.md
-        - name: Konfigurera enhetsetableringstjänsten med hjälp av Azure CLI
-          href: how-to-manage-dps-with-cli.md
     - name: Etablera IoT Edge-enheter
       items:
         - name: Linux
@@ -148,12 +152,8 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Så här skickar du ytterligare data från enheter
-      href: how-to-send-additional-data.md
     - name: Felsökning
       href: how-to-troubleshoot-dps.md
-    - name: Kommunicera med din DPS med hjälp av MQTT-protokoll
-      href: iot-dps-mqtt-support.md
 - name: Referens
   items:
     - name: REST-API

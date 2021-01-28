@@ -2,13 +2,13 @@
 title: Mall funktioner – distribution
 description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att hämta distributions information.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920510"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943471"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Distributions funktioner för ARM-mallar
 
@@ -33,6 +33,7 @@ Returnerar information om den aktuella distributions åtgärden.
 
 Den här funktionen returnerar det objekt som skickas under distributionen. Egenskaperna i det returnerade objektet skiljer sig åt beroende på om du är:
 
+* distribuera en mall eller en mall-specifikation.
 * distribuera en mall som är en lokal fil eller distribuera en mall som är en fjärrstyrd fil som nås via en URI.
 * distribuera till en resurs grupp eller distribuera till något av de andra omfången ([Azure-prenumeration](deploy-to-subscription.md), [hanterings grupp](deploy-to-management-group.md)eller [klient organisation](deploy-to-tenant.md)).
 
@@ -66,6 +67,31 @@ När du distribuerar en fjärran sluten mall till en resurs grupp: funktionen re
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+När du distribuerar en mall specifikation till en resurs grupp: funktionen returnerar följande format:
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",
@@ -295,7 +321,7 @@ Returnerar ett parameter värde. Det angivna parameter namnet måste definieras 
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |sträng |Namnet på den parameter som ska returneras. |
 
@@ -444,7 +470,7 @@ Returnerar värdet för variabeln. Det angivna variabel namnet måste definieras
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |Sträng |Namnet på variabeln som ska returneras. |
 

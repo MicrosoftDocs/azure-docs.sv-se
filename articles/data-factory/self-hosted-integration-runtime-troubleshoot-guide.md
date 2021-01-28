@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757686"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942055"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Felsöka integration runtime med egen värd
 
@@ -118,14 +118,14 @@ När du hanterar ärenden som är relaterade till en SSL/TLS-handskakning kan du
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
         ```
 
-        Ett exempel:
+        Exempel:
 
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
     4. Sök efter fel i output TXT-filen. Du kan hitta fel sammanfattningen i slutet av TXT-filen.
 
-        Ett exempel: 
+        Exempel: 
 
         ![Skärm bild av en fel Sammanfattning i slutet av TXT-filen.](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
@@ -198,7 +198,7 @@ I följande fel kan du tydligt se att sammansättningen *system. ValueTuple* sak
  
 " \<LogProperties> \<ErrorInfo> [{" Code ": 0," meddelande ":" typ initieraren för "Npgsql. PoolManager" utlöste ett undantag. "," EventType ": 0," kategori ": 5," data ": {} ," MsgId ": null," undantag ":" system. TypeInitializationException "," källa ":" Npgsql "," stacktrace ":" "," InnerEventInfos ": [{" Code ": 0," meddelande ":" Det gick inte att läsa in filen eller sammansättningen system. ValueTuple, version = 4.0.2.0, Culture = neutral, PublicKeyToken = xxxxxxxxx eller något av dess beroenden. Det går inte att hitta den angivna filen. ", EventType": 0, "kategori": 5, "data": {} , "MsgId":null, "ExceptionType":"system. io. FileNotFoundException", "source": "Npgsql", "stacktrace": "", "InnerEventInfos": []}]}] \</ErrorInfo> \</LogProperties> "
  
-Mer information om GAC finns i [Global Assembly Cache](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+Mer information om GAC finns i [Global Assembly Cache](/dotnet/framework/app-domains/gac).
 
 
 ### <a name="self-hosted-integration-runtime-authentication-key-is-missing"></a>Autentisering med egen värd för integration runtime saknas

@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight-kluster med disk kryptering förlorar Key Vault åtkomst
 description: Fel söknings steg och möjliga lösningar för Key Vault åtkomst problem när du interagerar med Azure HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ce2929ca84746de1ab8b51882f3004c3699f17ca
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533418"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943122"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scenario: Azure HDInsight-kluster med disk kryptering förlorar Key Vault åtkomst
 
@@ -26,7 +23,7 @@ RHC-aviseringen (Resource Health Center) `The HDInsight cluster is unable to acc
 
 Aviseringen säkerställer att KV kan nås från klusternoderna, vilket säkerställer nätverks anslutningen, KV Health och åtkomst principen för användaren som tilldelats den hanterade identiteten. Den här aviseringen är bara en varning om den förestående avslutningen av koordinatorn vid efterföljande omstarter av noder, klustret fortsätter att fungera tills noderna startas om.
 
-Gå till Apache Ambari UI om du vill ha mer information om aviseringen från **disk kryptering Key Vault status** . Aviseringen innehåller information om orsaken till verifierings felet.
+Gå till Apache Ambari UI om du vill ha mer information om aviseringen från **disk kryptering Key Vault status**. Aviseringen innehåller information om orsaken till verifierings felet.
 
 ## <a name="resolution"></a>Lösning
 

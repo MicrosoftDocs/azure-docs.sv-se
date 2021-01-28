@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 01/27/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f5555662c6cb5f44be3959ec3d22d1cf1953674d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030101"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943684"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-överföringar
 
@@ -55,22 +55,22 @@ En registreringsöverföring är lämpligt när:
 - En registrering har status som förfallen/förlängd och ett nytt avtal förhandlas.
 - Du har flera registreringar och vill kombinera alla konton och faktureringen under en enda registrering.
 
-Det här avsnittet tillhandahålls endast i informationssyfte eftersom åtgärden inte kan utföras av en företagsadministratör. Det krävs en supportbegäran för att överföra en företagsregistrering till en ny.
+Det här avsnittet tillhandahålls endast i informationssyfte eftersom åtgärden inte kan utföras av en företagsadministratör. Det krävs en supportbegäran för att överföra en företags registrering till en ny, om inte registreringen är kvalificerad för [automatisk registrering](#auto-enrollment-transfer).
 
 När du begär att en hel företagsregistrering ska överföras till en ny registrering utförs följande åtgärder:
 
 - Alla tjänster, prenumerationer, konton, avdelningar och hela registreringsstrukturen, inklusive alla EA-avdelningsadministratörer, överförs till en ny målregistrering.
 - Registreringsstatus ställs in som _Överförd_. Den överförda registreringen är bara tillgänglig för rapporter om historisk användning.
-- Du kan inte lägga till roller eller prenumerationer i en överförd registrering. Statusen Överförd förhindrar ytterligare användning mot registreringen.
+- Du kan inte lägga till roller eller prenumerationer i en överförd registrering. Överförd status förhindrar mer användning mot registreringen.
 - Eventuellt återstående saldo för en Azure-förskottsbetalning i avtalet går förlorad, inklusive framtida perioder.
--    Om registreringen du överför från innehåller RI-köp blir inköpspriset för RI kvar källregistreringen, men alla RI-förmåner överförs för användning i den nya registreringen.
--    Engångsavgiften för köp på Marketplace och alla månatliga fasta avgifter som redan påförts på den gamla registreringen överförs inte till den nya registreringen. Förbrukningsbaserade Marketplace-debiteringar överförs.
+-    Om registreringen som du överför från har RI-inköp behålls inköps avgiften för RI i käll registreringen, men alla RI-förmåner överförs för användning i den nya registreringen.
+-    Inköps avgiften för Marketplace engångs kostnad och eventuella månatliga fasta avgifter som redan har påförts för den gamla registreringen överförs inte till den nya registreringen. Förbrukningsbaserade Marketplace-debiteringar överförs.
 
 ### <a name="effective-transfer-date"></a>Effektivt överföringsdatum
 
 Den effektiva överföringsdagen kan vara på eller efter startdatumet för målregistreringen.
 
-Användning i källregistreringen debiteras mot Azure-förskottsbetalningen eller som överförbrukning. Användning efter det effektiva överföringsdatumet överförs till den nya registreringen och debiteras där.
+Användning i källregistreringen debiteras mot Azure-förskottsbetalningen eller som överförbrukning. Användning som inträffar efter det effektiva överförings datumet överförs till den nya registreringen och debiteras.
 
 ### <a name="prerequisites"></a>Krav
 
@@ -78,13 +78,24 @@ När du begär överföring av en registrering ska du ange följande information
 
 - För källregistreringen, registreringsnumret.
 - För målregistreringen, registreringsnumret som överföringen ska göras till.
-- Det effektiva datumet för överföringen av registreringen kan vara målregistreringens startdatum eller något senare datum. Det valda datumet påverkar inte användningen i eventuella fakturor för överförbrukning som redan har utfärdats.
+- Det effektiva datumet för överföringen av registreringen kan vara målregistreringens startdatum eller något senare datum. Det valda datumet kan inte påverka användningen av eventuella överförbruknings fakturor som redan har utfärdats.
 
 Här är några andra saker du bör tänka på innan du överför en registrering:
 
 - Det krävs godkännande från EA-administratörer för både mål- och källregistrering.
 - Om överföring av en registrering inte uppfyller dina behov kan du överväga en kontoöverföring.
 - Källregistreringens status uppdateras till Överförd och är bara tillgänglig för rapportering av tidigare användning.
+
+### <a name="auto-enrollment-transfer"></a>Överföring av automatisk registrering
+
+Du kan se att en registrering har **överfört** tillstånd, även om du inte har skickat ett support ärende för att begära en registrerings överföring. Det **överförda** status resultatet från den automatiska registreringen av överförings processen. För att överförings processen för automatisk registrering ska ske under förnyelse frasen finns det några objekt som måste ingå i det nya avtalet:
+
+- Tidigare registrerings nummer (det måste finnas i EA-portalen)
+- Utgångs datumet för det tidigare registrerings numret är en dag innan det nya avtalets effektiva start datum
+- Det nya avtalet har ett fakturerat förskotts betalnings avtal för Azure som har ett aktuellt datum eller som har fått ett nytt datum
+- Den nya registreringen skapas i EA-portalen
+
+Om det inte finns några saknade användnings data i EA-portalen mellan den tidigare registreringen och den nya registreringen behöver du inte skapa ett överförings support ärende.
 
 ### <a name="azure-prepayment"></a>Azure-förskottsbetalning
 

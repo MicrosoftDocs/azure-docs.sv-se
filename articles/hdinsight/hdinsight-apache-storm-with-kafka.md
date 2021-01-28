@@ -1,19 +1,16 @@
 ---
 title: 'Självstudie: Apache Storm med Apache Kafka – Azure HDInsight'
 description: Lär dig att skapa en direktuppspelnings-pipeline med Apache Storm och Apache Kafka i HDInsight. I den här självstudien använder du KafkaBolt- och KafkaSpout-komponenter till att strömma data från Kafka.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85963537"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942722"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Självstudie: Använda Apache Storm med Apache Kafka i HDInsight
 
@@ -32,7 +29,7 @@ I den här guiden får du lära dig att:
 > * Stoppa topologierna
 > * Rensa resurser
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Om du vet hur man skapar Kafka-avsnitt. Mer information finns i dokumentet [Snabbstart för Kafka på HDInsight](./kafka/apache-kafka-get-started.md).
 
@@ -148,7 +145,7 @@ Mer information om flödes topologier finns i [https://storm.apache.org/releases
 
 ### <a name="kafka-writer"></a>Kafka-skrivare
 
-I topologin Kafka-skrivare tar Kafka-bulten två strängvärden som parametrar. Dessa parametrar anger vilka tuppelfält bulten skickar till Kafka som __nyckel__- och __meddelande__värden. Nyckeln används för att partitionera data i Kafka. Meddelandet är den data som lagras.
+I topologin Kafka-skrivare tar Kafka-bulten två strängvärden som parametrar. Dessa parametrar anger vilka tuppelfält bulten skickar till Kafka som __nyckel__- och __meddelande__ värden. Nyckeln används för att partitionera data i Kafka. Meddelandet är den data som lagras.
 
 I det här exemplet genererar `com.microsoft.example.SentenceSpout`-komponenten en tuppel som innehåller två fält, `key` och `message`. Kafka-bulten extraherar fälten och skickar datan i dem till Kafka.
 
@@ -366,7 +363,7 @@ streams:
 
 Projektet innehåller en fil med namnet `dev.properties` som används för att skicka parametrar som används av topologierna. Den definierar följande egenskaper:
 
-| Filen dev.properties | Beskrivning |
+| Filen dev.properties | Description |
 | --- | --- |
 | `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/)-värdarna för Kafka-klustret. |
 | `kafka.broker.hosts` | Värdar för Kafka-meddelandeköer (arbetarnoder). |
@@ -406,7 +403,7 @@ Om du vill skapa ett Azure Virtual Network och sedan skapa Kafka- och Storm-klus
 
    1. Använd följande information för att fylla i posterna i avsnittet **Anpassad mall**:
 
-      | Inställningen | Värde |
+      | Inställning | Värde |
       | --- | --- |
       | Prenumeration | Din Azure-prenumeration |
       | Resursgrupp | Resursgruppen som innehåller resurserna. |

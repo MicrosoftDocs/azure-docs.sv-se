@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7a740b1015bda80000f65180eda2c5e618670da
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 81a5f771e141639b2dcf33afe603fe53428bf88a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911247"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943609"
 ---
 # <a name="get-face-detection-data"></a>Hämta ansikts identifierings data
 
@@ -30,25 +30,25 @@ Den här guiden visar hur du:
 
 ## <a name="setup"></a>Installation
 
-Den här guiden förutsätter att du redan har skapat ett [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -objekt `faceClient` med namnet, med en ansikts prenumerations nyckel och en slut punkts-URL. Härifrån kan du använda funktionen för ansikts igenkänning genom att anropa antingen [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), som används i den här hand boken eller [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Instruktioner för hur du konfigurerar den här funktionen finns i en av snabb starterna.
+Den här guiden förutsätter att du redan har skapat ett [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) -objekt `faceClient` med namnet, med en ansikts prenumerations nyckel och en slut punkts-URL. Härifrån kan du använda funktionen för ansikts igenkänning genom att anropa antingen [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync), som används i den här hand boken eller [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync). Instruktioner för hur du konfigurerar den här funktionen finns i en av snabb starterna.
 
 Den här guiden fokuserar på de olika uppgifterna i identifierings anropet, till exempel vilka argument du kan skicka och vad du kan göra med returnerade data. Vi rekommenderar att du frågar efter enbart de funktioner du behöver. Varje åtgärd tar ytterligare tid att slutföra.
 
 ## <a name="get-basic-face-data"></a>Hämta grundläggande ansikts data
 
-Om du vill hitta ansikten och hämta sina platser i en bild anropar du metoden [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) eller [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) med parametern _returnFaceId_ inställd på **True** . Den här inställningen är standardinställningen.
+Om du vill hitta ansikten och hämta sina platser i en bild anropar du metoden [DetectWithUrlAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync) eller [DetectWithStreamAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync) med parametern _returnFaceId_ inställd på **True**. Den här inställningen är standardinställningen.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
-Du kan fråga de returnerade [DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objekten för sina unika ID: n och en rektangel som ger facets pixel koordinater.
+Du kan fråga de returnerade [DetectedFace](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface) -objekten för sina unika ID: n och en rektangel som ger facets pixel koordinater.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
-Information om hur du analyserar facets plats och dimensioner finns i [FaceRectangle](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Den här rektangeln innehåller vanligt vis ögonen, eyebrows, näsa och munnen. Huvud-, öron-och Chin är inte nödvändigt vis inkluderade. Om du vill använda ansikts rektangeln för att beskära en hel rubrik eller få ett mellanliggande porträtt, kanske för en bild av bild-ID-typ, kan du expandera rektangeln i varje riktning.
+Information om hur du analyserar facets plats och dimensioner finns i [FaceRectangle](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle). Den här rektangeln innehåller vanligt vis ögonen, eyebrows, näsa och munnen. Huvud-, öron-och Chin är inte nödvändigt vis inkluderade. Om du vill använda ansikts rektangeln för att beskära en hel rubrik eller få ett mellanliggande porträtt, kanske för en bild av bild-ID-typ, kan du expandera rektangeln i varje riktning.
 
 ## <a name="get-face-landmarks"></a>Hämta ansikts landmärken
 
-[Ansikts landmärken](../concepts/face-detection.md#face-landmarks) är en uppsättning enkla punkter på ett ansikte, till exempel elever eller spets. Om du vill hämta ansikts landmärkes data anger du parametern _detectionModel_ till **detectionModel. Detection01** och _returnFaceLandmarks_ -parametern till **True** .
+[Ansikts landmärken](../concepts/face-detection.md#face-landmarks) är en uppsättning enkla punkter på ett ansikte, till exempel elever eller spets. Om du vill hämta ansikts landmärkes data anger du parametern _detectionModel_ till **detectionModel. Detection01** och _returnFaceLandmarks_ -parametern till **True**.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
@@ -66,7 +66,7 @@ När du känner till ansikts riktningen kan du rotera den rektangulära ytan fö
 
 Förutom ansikts rektanglar och landmärken kan ansikts igenkännings-API: et analysera flera konceptuella attribut för en ansikte. En fullständig lista finns i avsnittet koncept för [ansikts attribut](../concepts/face-detection.md#attributes) .
 
-Om du vill analysera ansikts attribut anger du parametern _detectionModel_ till **detectionModel. Detection01** och _returnFaceAttributes_ -parametern till en lista med [FaceAttributeType Enum](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -värden.
+Om du vill analysera ansikts attribut anger du parametern _detectionModel_ till **detectionModel. Detection01** och _returnFaceAttributes_ -parametern till en lista med [FaceAttributeType Enum](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype) -värden.
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
@@ -85,4 +85,4 @@ I den här guiden har du lärt dig hur du använder olika funktioner för ansikt
 ## <a name="related-topics"></a>Relaterade ämnen
 
 - [Referens dokumentation (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [Referens dokumentation (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [Referens dokumentation (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)

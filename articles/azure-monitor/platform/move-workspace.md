@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 8d7fde6661a4a133f689016559f010767c662417
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4915fd69940450f22548ae326879b5729b687248
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699754"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942084"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Flytta en Log Analytics arbets yta till en annan prenumeration eller resurs grupp
 
@@ -66,7 +66,7 @@ Använd följande procedur för att ta bort lösningarna med hjälp av Azure Por
 
 ### <a name="delete-using-powershell"></a>Ta bort med PowerShell
 
-Om du vill ta bort lösningarna med PowerShell använder du cmdleten [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) som visas i följande exempel:
+Om du vill ta bort lösningarna med PowerShell använder du cmdleten [Remove-AzResource](/powershell/module/az.resources/remove-azresource) som visas i följande exempel:
 
 ``` PowerShell
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "ChangeTracking(<workspace-name>)" -ResourceGroupName <resource-group-name>
@@ -98,7 +98,7 @@ Använd följande procedur för att ta bort länken till Automation-kontot från
 
 ## <a name="move-your-workspace"></a>Flytta din arbets yta
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portalen
 Använd följande procedur för att flytta din arbets yta med Azure Portal:
 
 1. Öppna menyn **Log Analytics arbets ytor** och välj sedan din arbets yta.

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661805"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942097"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -107,7 +107,7 @@ Vid borttagning av en Azure-resurs tas inte associerade måttaviseringsregler bo
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Gör mått varningar varje gång mitt villkor är uppfyllt
 
-Mått varningar är tillstånds känsliga som standard och därför utlöses inte ytterligare aviseringar om det redan finns en utlöst avisering på en specifik tids serie. Om du vill göra en speciell varnings regel för tillstånds begränsning, och få aviseringar om varje utvärdering som varnings villkoret är uppfyllt, skapar du aviserings regeln program mässigt (till exempel via [Resource Manager](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1), [rest](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)) och ställer in egenskapen *automildra* till "false".
+Mått varningar är tillstånds känsliga som standard och därför utlöses inte ytterligare aviseringar om det redan finns en utlöst avisering på en specifik tids serie. Om du vill göra en speciell varnings regel för tillstånds begränsning, och få aviseringar om varje utvärdering som varnings villkoret är uppfyllt, skapar du aviserings regeln program mässigt (till exempel via [Resource Manager](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/), [rest](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert)) och ställer in egenskapen *automildra* till "false".
 
 > [!NOTE] 
 > Att göra en regel för att varna regler förhindrar att skickade aviseringar löses, så även när villkoret inte är uppfyllt, kommer de aktiverade aviseringarna att behållas i ett utlöst tillstånd fram till den 30 dagarnas kvarhållningsperiod.
@@ -175,9 +175,9 @@ Följ stegen nedan om du vill kontrol lera den aktuella användningen av mått v
 
 ### <a name="from-api"></a>Från API
 
-- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API – [Lista efter prenumeration](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Hantera aviserings regler med Resource Manager-mallar, REST API, PowerShell eller Azure CLI
 
@@ -188,7 +188,7 @@ Om du får problem med att skapa, uppdatera, hämta eller ta bort mått aviserin
 - Titta på listan över [vanliga Azure-distributionsfel](../../azure-resource-manager/templates/common-deployment-errors.md) och felsök
 - Se [mått varningar Azure Resource Manager mal exemplen](./alerts-metric-create-templates.md) för att se till att du skickar alla parametrar korrekt
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Granska [rest Apis guiden](/rest/api/monitor/metricalerts/) för att kontrol lera att du skickar alla parametrar korrekt
 
@@ -196,14 +196,14 @@ Granska [rest Apis guiden](/rest/api/monitor/metricalerts/) för att kontrol ler
 
 Kontrol lera att du använder rätt PowerShell-cmdlets för mått varningar:
 
-- PowerShell-cmdletar för måttaviseringar finns i modulen [AZ. Monitor](/powershell/module/az.monitor/?view=azps-3.6.1)
-- Se till att använda cmdletarna som slutar med "v2" för nya (icke-klassiska) mått varningar (till exempel [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
+- PowerShell-cmdletar för måttaviseringar finns i modulen [AZ. Monitor](/powershell/module/az.monitor/)
+- Se till att använda cmdletarna som slutar med "v2" för nya (icke-klassiska) mått varningar (till exempel [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2))
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Kontrol lera att du använder rätt CLI-kommandon för mått varningar:
 
-- CLI-kommandon för måttaviseringar börjar med `az monitor metrics alert`. Granska [Azure CLI-referensen](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) om du vill veta mer om syntaxen.
+- CLI-kommandon för måttaviseringar börjar med `az monitor metrics alert`. Granska [Azure CLI-referensen](/cli/azure/monitor/metrics/alert) om du vill veta mer om syntaxen.
 - Du kan se [det exempel som visar hur du använder CLI för måttaviseringar](./alerts-metric.md#with-azure-cli)
 - Om du vill varna för ett anpassat mått måste du ange prefixet till måttets namn med relevant mått för namnområde: NAMESPACE.METRIC
 
@@ -253,7 +253,7 @@ Tänk på följande begränsningar när du använder dimensioner i en varnings r
 - Du kan bara välja ett värde per dimension i varje villkor.
 - Du kan inte använda alternativet "Välj alla aktuella och framtida värden" (Välj \* ).
 - När mått som har kon figurer ATS på olika villkor stöder samma dimension måste ett konfigurerat dimensions värde uttryckligen anges på samma sätt för alla dessa mått (i de relevanta villkoren).
-Till exempel:
+Exempel:
     - Överväg en regel för mått varningar som definieras på ett lagrings konto och övervakar två villkor:
         * Totalt antal **transaktioner** > 5
         * Genomsnittlig **SuccessE2ELatency** > 250 MS
