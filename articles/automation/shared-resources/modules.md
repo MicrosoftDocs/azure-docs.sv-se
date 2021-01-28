@@ -3,14 +3,14 @@ title: Använda moduler i Azure Automation
 description: Den här artikeln beskriver hur du använder PowerShell-moduler för att aktivera cmdletar i Runbooks och DSC-resurser i DSC-konfigurationer.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/22/2020
+ms.date: 01/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c940ede63e2a467a29ae56308893d573925d0039
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458157"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936627"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Använda moduler i Azure Automation
 
@@ -25,10 +25,18 @@ Azure Automation använder ett antal PowerShell-moduler för att aktivera cmdlet
 
 När du skapar ett Automation-konto importerar Azure Automation vissa moduler som standard. Se [standardmoduler](#default-modules).
 
+## <a name="sandboxes"></a>Sandbox-miljöer
+
 När Automation kör Runbook-och DSC-kompileringar, läses modulerna in i sand lådor där Runbooks kan köras och DSC-konfigurationerna kan kompileras. Automation placerar även DSC-resurser i moduler på DSC-pull-servern automatiskt. Datorer kan hämta resurserna när de använder DSC-konfigurationer.
 
 >[!NOTE]
 >Se till att bara importera de moduler som dina runbooks och DSC-konfigurationer kräver. Vi rekommenderar inte att du importerar root AZ-modulen. Den innehåller många andra moduler som du kanske inte behöver, vilket kan orsaka prestanda problem. Importera enskilda moduler, till exempel AZ. Compute, i stället.
+
+Cloud sandbox stöder högst 48 system anrop och begränsar alla andra anrop av säkerhets skäl. Andra funktioner som hantering av autentiseringsuppgifter och vissa nätverk stöds inte i Cloud sandbox.
+
+På grund av antalet moduler och cmdletar som ingår är det svårt att veta i förväg vilken av cmdletarna kommer att göra anrop som inte stöds. I allmänhet har vi sett problem med cmdletar som kräver utökad åtkomst, kräver en autentiseringsuppgift som en parameter eller-cmdlet: ar som är relaterade till nätverk. Alla cmdletar som utför fullständiga stack nätverks åtgärder stöds inte i sandbox, inklusive [Connect-AipService](/powershell/module/aipservice/connect-aipservice) från AipService PowerShell-modulen och [matcha-DnsName](/powershell/module/dnsclient/resolve-dnsname) från DNSclient-modulen.
+
+Dessa är kända begränsningar i sand boxen. Den rekommenderade lösningen är att distribuera en [hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) eller använda [Azure Functions](../../azure-functions/functions-overview.md).
 
 ## <a name="default-modules"></a>Standardmoduler
 
@@ -62,7 +70,7 @@ Automation importerar inte root AZ-modulen automatiskt till nya eller befintliga
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |
-| xDSCDomainjoin | 1,1 |
+| xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
@@ -316,7 +324,7 @@ I det här avsnittet definieras flera sätt att importera en modul till ditt Aut
 Så här importerar du en modul i Azure Portal:
 
 1. Gå till ditt Automation-konto.
-2. Under **delade resurser**väljer du **moduler**.
+2. Under **delade resurser** väljer du **moduler**.
 3. Välj **Lägg till en modul**.
 4. Välj den **. zip** -fil som innehåller modulen.
 5. Välj **OK** för att börja importera processen.
@@ -344,15 +352,15 @@ Du kan importera [PowerShell-galleriet](https://www.powershellgallery.com) modul
 Så här importerar du en modul direkt från PowerShell-galleriet:
 
 1. Gå till https://www.powershellgallery.com och Sök efter den modul som ska importeras.
-2. Under **installations alternativ**på fliken **Azure Automation** väljer du **distribuera till Azure Automation**. Den här åtgärden öppnar Azure Portal. 
+2. Under **installations alternativ** på fliken **Azure Automation** väljer du **distribuera till Azure Automation**. Den här åtgärden öppnar Azure Portal. 
 3. På sidan Importera väljer du ditt Automation-konto och väljer **OK**.
 
 ![Skärm bild av modulen för PowerShell-galleriet import](../media/modules/powershell-gallery.png)
 
 Så här importerar du en PowerShell-galleriet-modul direkt från ditt Automation-konto:
 
-1. Under **delade resurser**väljer du **moduler**. 
-2. Välj **Browse Gallery**och Sök sedan i galleriet efter en modul. 
+1. Under **delade resurser** väljer du **moduler**. 
+2. Välj **Browse Gallery** och Sök sedan i galleriet efter en modul. 
 3. Välj den modul som ska importeras och välj **Importera**. 
 4. Välj **OK** för att starta import processen.
 
@@ -366,7 +374,7 @@ Om du har problem med en modul eller om du behöver återställa till en tidigar
 
 Så här tar du bort en modul i Azure Portal:
 
-1. Gå till ditt Automation-konto. Under **delade resurser**väljer du **moduler**.
+1. Gå till ditt Automation-konto. Under **delade resurser** väljer du **moduler**.
 2. Välj den modul som du vill ta bort.
 3. På sidan modul väljer du **ta bort**. Om den här modulen är en av [standardmodulerna](#default-modules)återställs den till den version som fanns när Automation-kontot skapades.
 

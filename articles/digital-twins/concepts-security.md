@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d62e7566038af6647cab2992b02184a4ea5ba30b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344155"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934547"
 ---
 # <a name="secure-azure-digital-twins"></a>Skydda digitala Azure-dubbla
 
@@ -49,7 +49,7 @@ Med hanterade identiteter hanterar Azure-plattformen den här körnings identite
 
 Azure tillhandahåller **två inbyggda Azure-roller** för att auktorisera åtkomst till [API: er](how-to-use-apis-sdks.md#overview-data-plane-apis)för Azure Digitals dubbla data plan. Du kan referera till rollerna antingen efter namn eller efter ID:
 
-| Inbyggd roll | Beskrivning | ID | 
+| Inbyggd roll | Description | ID | 
 | --- | --- | --- |
 | Azure Digitals sammanflätade data ägare | Ger fullständig åtkomst till resurser med Azure Digitals dubbla resurser | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure Digitals sammanflätade data läsare | Ger skrivskyddad åtkomst till Azure Digitals dubbla resurser | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
@@ -89,6 +89,39 @@ I följande lista beskrivs de nivåer där du kan begränsa åtkomsten till Azur
 
 Om en användare försöker utföra en åtgärd som inte tillåts av deras roll, kan de få ett fel meddelande från begäran om läsning av tjänst `403 (Forbidden)` . Mer information och fel söknings steg finns i [*fel sökning: Azure Digitals-begäran misslyckades med status: 403 (förbjuden)*](troubleshoot-error-403.md).
 
+## <a name="managed-identity-for-accessing-other-resources-preview"></a>Hanterad identitet för åtkomst till andra resurser (förhands granskning)
+
+Genom att konfigurera en [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) - **hanterad identitet** för en Azure Digital-instans kan du enkelt komma åt andra Azure AD-skyddade resurser, till exempel [Azure Key Vault](../key-vault/general/overview.md). Identiteten hanteras av Azure-plattformen och kräver inte att du etablerar eller roterar några hemligheter. Mer information om hanterade identiteter i Azure AD finns i  [*hanterade identiteter för Azure-resurser*](../active-directory/managed-identities-azure-resources/overview.md). 
+
+Azure stöder två typer av hanterade identiteter: systemtilldelade och tilldelade användare. Azure Digital-dubbla har för närvarande endast stöd för **systemtilldelade identiteter**. 
+
+Du kan använda en systemtilldelad hanterad identitet för Azure Digital-instansen för att autentisera till en [anpassad definierad slut punkt](concepts-route-events.md#create-an-endpoint). Azure Digitals dubbla nätverk stöder systemtilldelad identitets baserad autentisering till slut punkter för [Event Hub](../event-hubs/event-hubs-about.md) och [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)   destinationer och till en [Azure Storage container](../storage/blobs/storage-blobs-introduction.md)   slut punkt för [händelser med obeställbara meddelanden](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)   slut punkter stöds för närvarande inte för hanterade identiteter.
+
+Instruktioner för hur du aktiverar en Systemhanterad identitet för digitala Azure-användare och använder den för att dirigera händelser finns i [*så här aktiverar du en hanterad identitet för vägvals händelser (för hands version)*](how-to-enable-managed-identities.md).
+
+## <a name="private-network-access-with-azure-private-link-preview"></a>Åtkomst till privat nätverk med Azure Private Link (för hands version)
+
+[Azure Private Link](../private-link/private-link-overview.md) är en tjänst som ger dig åtkomst till Azure-resurser (t. ex. [azure Event Hubs](../event-hubs/event-hubs-about.md), [Azure Storage](../storage/common/storage-introduction.md)och [Azure Cosmos DB](../cosmos-db/introduction.md)) och Azure-värdbaserade kund-och partner tjänster via en privat slut punkt i din [Azure-Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md). 
+
+På samma sätt kan du använda privata slut punkter för Azure Digital-instansen för att tillåta klienter som finns i det virtuella nätverket att på ett säkert sätt komma åt instansen via privat länk. 
+
+Den privata slut punkten använder en IP-adress från ditt Azure VNet-adressutrymme. Nätverks trafik mellan en klient i ditt privata nätverk och Azure Digital-instansen passerar över VNet och en privat länk i Microsoft stamnät nätverket, vilket eliminerar exponeringen för det offentliga Internet. Här är en visuell representation av systemet:
+
+:::image type="content" source="media/concepts-security/private-link.png" alt-text="Ett diagram som visar ett nätverk för ett PowerGrid-företag som är ett skyddat VNET utan Internet/offentligt moln åtkomst, anslutning via privat länk till en digital Azure-instans med namnet CityOfTwins.":::
+
+Genom att konfigurera en privat slut punkt för Azure Digital-instansen kan du skydda Azure Digitals-instansen och eliminera offentlig exponering, samt undvika data exfiltrering från ditt VNet.
+
+Instruktioner för hur du konfigurerar en privat länk för digital Digitals i Azure finns i [*så här aktiverar du privat åtkomst med privat länk (för hands version)*](how-to-enable-private-link.md).
+
+### <a name="design-considerations"></a>Designöverväganden 
+
+När du arbetar med en privat länk för Azure Digitals, finns här några faktorer som du kanske vill tänka på:
+* **Priser**: information om priser finns i  [priser för privata Azure-länkar](https://azure.microsoft.com/pricing/details/private-link). 
+* **Regional tillgänglighet**: för Azure Digitals, finns den här funktionen tillgänglig i alla Azure-regioner där Azure Digitals, är tillgängligt. 
+* **Maximalt antal privata slut punkter per Azure Digitals dubbla instanser**: 10
+
+Information om gränserna för privat länk finns i dokumentationen för [Azure Private Link: begränsningar](../private-link/private-link-service-overview.md#limitations).
+
 ## <a name="service-tags"></a>Tjänsttaggar
 
 En **service-tagg** representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket minimerar komplexiteten vid frekventa uppdateringar av nätverks säkerhets regler. Mer information om service märken finns i  [*taggar för virtuella nätverk*](../virtual-network/service-tags-overview.md). 
@@ -97,7 +130,7 @@ Du kan använda service märken för att definiera nätverks åtkomst kontroller
 
 Nedan visas information om **AzureDigitalTwins** -tjänst tag gen.
 
-| Tagga | Syfte | Kan använda inkommande eller utgående? | Kan regionala? | Kan använda med Azure-brandväggen? |
+| Tagg | Syfte | Kan använda inkommande eller utgående? | Kan regionala? | Kan använda med Azure-brandväggen? |
 | --- | --- | --- | --- | --- |
 | AzureDigitalTwins | Azure Digital Twins<br>OBS! den här taggen eller de IP-adresser som omfattas av den här taggen kan användas för att begränsa åtkomsten till slut punkter som kon figurer ATS för [händelse vägar](concepts-route-events.md). | Inkommande | Inga | Ja |
 
@@ -113,7 +146,7 @@ Här följer stegen för att komma åt [händelse vägens](concepts-route-events
 
 4. Ange IP-filter för de externa resurserna med IP-intervallen från *steg 2*.  
 
-5. Uppdatera IP-intervallen regelbundet efter behov. Intervallen kan ändras med tiden, så det är en bra idé att kontrol lera dessa regelbundet och uppdatera dem när det behövs. Uppdaterings frekvensen kan variera, men det är en bra idé att kontrol lera dem en gång i veckan.
+5. Uppdatera IP-intervallen regelbundet efter behov. Intervallen kan ändras med tiden, så det är en bra idé att kontrol lera dem regelbundet och uppdatera dem när det behövs. Uppdaterings frekvensen kan variera, men det är en bra idé att kontrol lera dem en gång i veckan.
 
 ## <a name="encryption-of-data-at-rest"></a>Kryptering av data i vila
 

@@ -1,5 +1,5 @@
 ---
-title: Push-Data Factory härkomst data till Azure avdelningens kontroll
+title: Skicka Data Factory-ursprungsdata till Azure Purview
 description: Lär dig mer om att push-överföra Data Factory härkomst-data till Azure avdelningens kontroll
 services: data-factory
 ms.author: lle
@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 6b50c9440a958bc1398e79ddf3c5a0984816ec45
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e87a9d677fee94d410099db1da80a56b5539048c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603448"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935455"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Push-Data Factory härkomst data till Azure avdelningens kontroll (för hands version)
 
@@ -29,7 +29,7 @@ I den här självstudien använder du Data Factory användar gränssnitt för at
 ## <a name="prerequisites"></a>Förutsättningar
 * **Azure-prenumeration**. Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * **Azure Data Factory**. Om du inte har ett Azure Data Factory, se [skapa ett Azure Data Factory](./quickstart-create-data-factory-portal.md).
-* **Azure avdelningens kontroll-konto**. Avdelningens kontroll-kontot fångar alla härkomst-data som genereras av Data Factory. Om du inte har ett Azure avdelningens kontroll-konto kan du läsa [skapa en Azure-avdelningens kontroll](https://docs.microsoft.com/azure/purview/create-catalog-portal).
+* **Azure avdelningens kontroll-konto**. Avdelningens kontroll-kontot fångar alla härkomst-data som genereras av Data Factory. Om du inte har ett Azure avdelningens kontroll-konto kan du läsa [skapa en Azure-avdelningens kontroll](../purview/create-catalog-portal.md).
 
 
 ## <a name="run-data-factory-activities-and-push-lineage-data-to-azure-purview"></a>Köra Data Factory-aktiviteter och skicka härkomst-data till Azure avdelningens kontroll
@@ -76,6 +76,6 @@ Du kan också se härkomst-data för aktiviteten kör SSIS-paket.
 > För härkomst av aktiviteten kör SSIS-paket stöder vi bara källa och mål. Härkomst för omvandling stöds inte ännu.
 
 ## <a name="next-steps"></a>Nästa steg
-[Användar guide för katalog härkomst](https://docs.microsoft.com/azure/purview/catalog-lineage-user-guide)
+[Användar guide för katalog härkomst](../purview/catalog-lineage-user-guide.md)
 
 [Ansluta Data Factory till Azure-avdelningens kontroll](connect-data-factory-to-azure-purview.md)

@@ -10,21 +10,21 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 370883b90902dad5a6e222897e68e1d3e9dd2acf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738023"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936272"
 ---
 # <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Distribuera en avvikelse detektor modul till IoT Edge
 
 Lär dig hur du distribuerar modulen Cognitive Services [avvikelse detektor](../anomaly-detector-container-howto.md) till en IoT Edge enhet. När den har distribuerats till IoT Edge körs modulen i IoT Edge tillsammans med andra moduler som behållar instanser. Den exponerar exakt samma API: er som en instans av en avvikelse detektor behållare som körs i en standard Docker-behållar miljö. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Använd en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free) innan du börjar.
-* Installera [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Installera [Azure CLI](/cli/azure/install-azure-cli).
 * En [IoT Hub](../../../iot-hub/iot-hub-create-through-portal.md) och en [IoT Edge](../../../iot-edge/quickstart-linux.md) enhet.
 
 [!INCLUDE [Create a Cognitive Services Anomaly Detector resource](../includes/create-anomaly-detector-resource.md)]

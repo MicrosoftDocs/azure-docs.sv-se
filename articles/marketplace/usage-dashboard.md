@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462928"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934393"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Instrumentpanelen för användning i Commersial Marketplace-analys
 
 Den här artikeln innehåller information om användnings instrument panelen i Partner Center. Den här instrument panelen visar all virtuell dator (VM) med normaliserad användning, rå data användning och mätnings mått i tre separata flikar: virtuell dator normaliserad användning, VM RAW-användning och mätning av fakturerings användning.
 
-För att få åtkomst till instrument panelen för användning i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** användning under **kommersiell marknads** plats  >  **Usage**.
+För att få åtkomst till instrument panelen för användning i Partner Center väljer du **[analysera](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** användning under **kommersiell marknads** plats  >  .
 
 >[!NOTE]
 > Detaljerade definitioner av analys terminologi finns i terminologi för [kommersiella Marketplace-analyser och vanliga frågor](./analytics-faq.md).
@@ -122,12 +122,12 @@ _**Tabell 1: ord lista med data termer**_
 | Prenumerations-ID för Marketplace | Prenumerations-ID för Marketplace | Den unika identifierare som är kopplad till Azure-prenumerationen som kunden använde för att köpa ditt kommersiella Marketplace-erbjudande. ID var tidigare GUID för Azure-prenumerationen. |
 | MonthStartDate | Månadens start datum | Månadens start datum representerar månad för inköp. |
 | Erbjudandetyp | Erbjudandetyp | Typ av erbjudande för kommersiella marknads platser. |
-| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanalen. Möjliga värden är:<ui><li>Cloud Solution Provider</li><li>Enterprise</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
+| Typ av Azure-licens | Typ av Azure-licens | Den typ av licens avtal som kunder använder för att köpa Azure. Kallas även för kanalen. Möjliga värden är:<ui><li>Cloud Solution Provider</li><li>Stora företag</li><li>Företag via åter försäljare</li><li>Betala per användning</li></ul> |
 | Marketplace-licens typ | Marketplace-licens typ | Fakturerings metoden för det kommersiella Marketplace-erbjudandet. Möjliga värden är:<ul><li>Debiteras via Azure</li><li>Ta med din egen licens</li><li>Kostnadsfri</li><li>Microsoft as åter försäljare</li></ul> |
 | SKU | SKU | Planen som är associerad med erbjudandet. |
 | Kund land | Kund land/-region | Landets/regionens namn som tillhandahålls av kunden. Land/region kan vara annorlunda än landet/regionen i en kunds Azure-prenumeration. |
 | Är för hands version av SKU | Är för hands version av SKU | Värdet visar om du har taggat SKU som "Preview". Värdet är "Ja" om SKU: n har taggats enligt detta och bara Azure-prenumerationer som har auktoriserats av dig kan distribuera och använda den här avbildningen. Värdet är "nej" om SKU: n inte har identifierats som "för hands version". |
-| SKU-fakturerings typ | SKU-fakturerings typ | Fakturerings typen som är associerad med varje SKU i erbjudandet. Möjliga värden är:<ul><li>Kostnadsfri</li><li>Förutbetalt</li></ul> |
+| SKU-fakturerings typ | SKU-fakturerings typ | Fakturerings typen som är associerad med varje SKU i erbjudandet. Möjliga värden är:<ul><li>Kostnadsfri</li><li>Betald</li></ul> |
 | IsInternal | Inaktuell | Inaktuell |
 | Storlek på virtuell dator | Storlek på virtuell dator | För VM-baserade erbjudande typer anger den här entiteten storleken på den virtuella dator som är associerad med SKU: n för erbjudandet. |
 | Moln instans namn | Moln instans namn | Den Microsoft Cloud där en VM-distribution ägdes. |
@@ -135,7 +135,7 @@ _**Tabell 1: ord lista med data termer**_
 | Erbjudandets namn | Erbjudandets namn | Namnet på den kommersiella Marketplace-erbjudandet. |
 | DeploymentMethod | Inaktuell | Inaktuell (samma definition som erbjudande typen)
  |
-| Kund företags namn | Kund företags namn | Företags namnet som tillhandahålls av kunden. Namnet får inte vara detsamma som staden i en kunds Azure-prenumeration. |
+| Kund företags namn | Kund företags namn | Företags namnet som tillhandahålls av kunden. Namnet får inte vara detsamma som namnet i en kunds Azure-prenumeration. |
 | Datum för användning | Datum för användning | Datum för generering av användnings händelse för användnings till gångar. |
 | IsMultisolution | Är multilösning | Indikerar om erbjudandet är en typ av erbjudande för multilösning. |
 | Är ny kund | Inaktuell | Inaktuell |

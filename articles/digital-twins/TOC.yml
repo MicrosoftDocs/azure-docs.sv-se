@@ -53,6 +53,8 @@
               href: how-to-set-up-instance-powershell.md
             - name: Skriptad version
               href: how-to-set-up-instance-scripted.md
+        - name: Aktivera privat åtkomst med Private Link
+          href: how-to-enable-private-link.md
         - name: Skriva appautentiseringskod
           href: how-to-authenticate-client.md
         - name: Skapa en appregistrering
@@ -107,6 +109,8 @@
               href: how-to-manage-routes-apis-cli.md
             - name: Portalversion
               href: how-to-manage-routes-portal.md
+        - name: Aktivera en hanterad identitet för routning av händelser
+          href: how-to-enable-managed-identities.md
         - name: Integrera med Azure Maps
           href: how-to-integrate-maps.md
         - name: Integrera med Azure Time Series Insights
@@ -153,6 +157,18 @@
       href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
 - name: Resurser
   items:
+    - name: Digital Twins-tjänstbegränsningar
+      href: reference-service-limits.md
+    - name: Priser och tillgänglighet
+      items:
+        - name: Prissättning
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Regioner och tillgänglighet
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+    - name: Kunddataförfrågningar
+      href: resources-customer-data-requests.md
     - name: 'API:er och SDK:er'
       items:
         - name: Kontrollplan
@@ -243,22 +259,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: DTMI-specifikation
           href: 'https://github.com/Azure/digital-twin-model-identifier'
-    - name: Kunddataförfrågningar
-      href: resources-customer-data-requests.md
-    - name: Digital Twins-tjänstbegränsningar
-      href: reference-service-limits.md
-    - name: Priser och tillgänglighet
-      items:
-        - name: Prissättning
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: Regioner och tillgänglighet
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
-    - name: Kundberättelser
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Channel 9-video
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Kundberättelser
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
     - name: Azure-verktyg
       items:
         - name: Azure Cloud Shell
@@ -267,7 +271,5 @@
           href: /powershell/azure/
         - name: Azure Portal
           href: 'https://portal.azure.com'
-    - name: Dokumentation om Azure RBAC
-      href: ../role-based-access-control/overview.md
     - name: Alternativ för support och hjälp
       href: ../iot-fundamentals/iot-support-help.md

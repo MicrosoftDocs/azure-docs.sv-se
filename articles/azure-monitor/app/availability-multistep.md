@@ -3,12 +3,12 @@ title: Övervaka med webbtester med flera steg – Azure Application insikter
 description: Konfigurera webb program med flera steg för att övervaka dina webb program med Azure Application insikter
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024784"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934859"
 ---
 # <a name="multi-step-web-tests"></a>Webbtester med flera steg
 
@@ -25,7 +25,7 @@ Du kan övervaka en inspelad sekvens av webb adresser och interaktioner med en w
 * Visual Studio 2017 Enterprise eller senare.
 * Webb prestanda och belastnings test verktyg i Visual Studio.
 
-För att hitta de förberedande verktyg som krävs. Starta **Visual Studio Installer**  >  -fel sökning av**enskilda komponenter**  >  **och testa**  >  **verktyg för webb prestanda och belastnings testning**.
+För att hitta de förberedande verktyg som krävs. Starta **Visual Studio Installer**  >  -fel sökning av **enskilda komponenter**  >  **och testa**  >  **verktyg för webb prestanda och belastnings testning**.
 
 ![Skärm bild av Visual Studio Installer-gränssnittet med enskilda komponenter som marker ATS med en kryss ruta bredvid objektet för webb prestanda och belastnings test verktyg](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -37,7 +37,7 @@ För att hitta de förberedande verktyg som krävs. Starta **Visual Studio Insta
 > [!WARNING]
 > Vi rekommenderar inte att du använder flera stegs inspelningar. Inspelaren har utvecklats för statiska HTML-sidor med grundläggande interaktioner och ger ingen funktions upplevelse för moderna webb sidor.
 
-Vägledning om hur du skapar Visual Studio-webbtester finns i den [officiella Visual studio 2019-dokumentationen](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+Vägledning om hur du skapar Visual Studio-webbtester finns i den [officiella Visual studio 2019-dokumentationen](/visualstudio/test/how-to-create-a-web-service-test).
 
 ## <a name="upload-the-web-test"></a>Ladda upp webb testet
 
@@ -47,14 +47,14 @@ Vägledning om hur du skapar Visual Studio-webbtester finns i den [officiella Vi
 
 ### <a name="frequency--location"></a>Frekvens & plats
 
-|Inställningen| Förklaring
+|Inställning| Förklaring
 |----|----|----|
 |**Test frekvens**| Anger hur ofta testet körs från varje test plats. Med en standardfrekvens på fem minuter och fem testplatser testas din webbplats i genomsnitt varje minut.|
 |**Test platser**| Är platser där våra servrar skickar webb förfrågningar till din URL. Det **minsta antalet rekommenderade test platser är fem** för att försäkra dig om att du kan särskilja problem på din webbplats från nätverks problem. Du kan välja upp till 16 platser.
 
 ### <a name="success-criteria"></a>Lyckade kriterier
 
-|Inställningen| Förklaring
+|Inställning| Förklaring
 |----|----|----|
 | **Timeout för test** |Minska det här värdet om du vill få aviseringar om långsamma svar. Testet räknas som misslyckat om svaren från din webbplats inte har tagits emot inom denna period. Om du valde **Parsa beroende begäranden** måste alla bilder, formatfiler, skript och andra beroende resurser ha tagits emot inom denna period.|
 | **HTTP-svar** | Den returnerade status koden som räknas som lyckad. 200 är koden som anger att en normal webbsida har returnerats.|
@@ -62,10 +62,10 @@ Vägledning om hur du skapar Visual Studio-webbtester finns i den [officiella Vi
 
 ### <a name="alerts"></a>Aviseringar
 
-|Inställningen| Förklaring
+|Inställning| Förklaring
 |----|----|----|
 |**Nära real tid (för hands version)** | Vi rekommenderar att du använder aviseringar i nästan real tid. Konfigurationen av den här typen av avisering görs efter att ditt tillgänglighets test har skapats.  |
-|**Klassisk** | Vi rekommenderar inte längre att använda klassiska aviseringar för nya tillgänglighets test.|
+|**Form** | Vi rekommenderar inte längre att använda klassiska aviseringar för nya tillgänglighets test.|
 |**Tröskelvärde för aviserings plats**|Vi rekommenderar minst 3/5 platser. Den optimala relationen mellan aviserings platsens tröskelvärde och antalet test platser är **tröskelvärdet för aviserings platsens tröskel**  =  **antal test platser – 2, med minst fem test platser.**|
 
 ## <a name="configuration"></a>Konfiguration
@@ -106,7 +106,7 @@ I samtliga fall bör du skapa ett konto i ditt program som endast används för 
 
 **SAML-autentisering**
 
-|Egenskapsnamn| Beskrivning|
+|Egenskapsnamn| Description|
 |----|-----|
 | Målgrupps-URI | Målgrupps-URI för SAML-token.  Detta är URI: n för Access Control Service (ACS) – inklusive ACS-namnrymd och värd namn. |
 | Certifikat lösen ord | Lösen ordet för klient certifikatet som ger åtkomst till den inbäddade privata nyckeln. |

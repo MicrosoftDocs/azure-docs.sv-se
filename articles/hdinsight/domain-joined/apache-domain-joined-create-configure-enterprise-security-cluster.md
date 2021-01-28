@@ -3,17 +3,14 @@ title: Skapa, Konfigurera Enterprise Security Package kluster – Azure
 description: Lär dig hur du skapar och konfigurerar Enterprise Security Package kluster i Azure HDInsight
 services: hdinsight
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: 07bd92e17b827dfeede5958587cecbdc97694329
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 914acfab3935bc81e7d8382163ca9283c7f71a53
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003930"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934050"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Skapa och konfigurera Enterprise Security Package kluster i Azure HDInsight
 
@@ -47,7 +44,7 @@ I det här avsnittet ska du använda en distributions mall för Azure snabb star
     |---|---|
     |Prenumeration|Välj den prenumeration där du vill distribuera resurserna.|
     |Resursgrupp|Välj **Skapa ny** och ange namnet `OnPremADVRG`|
-    |Plats|Välj en plats.|
+    |Location|Välj en plats.|
     |Administratörens användar namn|`HDIFabrikamAdmin`|
     |Adminlösenord|Ange ett lösen ord.|
     |Domännamn|`HDIFabrikam.com`|
@@ -281,7 +278,7 @@ Använd följande steg för att konfigurera Azure AD DS Virtual Network (**HDIFa
 
 1. Leta upp IP-adresserna för dina anpassade DNS-servrar.
     1. Välj `HDIFabrikam.com` Azure AD DS-resurs.
-    1. Under **Hantera**, väljer du **Egenskaper**.
+    1. Välj **Egenskaper** under **Hantera**.
     1. Hitta IP-adresserna under **IP-adress i virtuellt nätverk**.
 
     ![Hitta anpassade DNS-IP-adresser för Azure AD DS](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)

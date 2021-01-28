@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246578"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937142"
 ---
 # <a name="identify-required-appliances"></a>Identifiera apparater som krävs
 
@@ -100,7 +100,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 | Processor | Intel Xeon silver 4215 R 3,2 GHz, 11 M cache, 8c/16T, 130 W |
 | 855 | Intel-C621 |
 | Minne | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
-| Lagring | 6 x 1,2 – TB SAS 12G Enterprise 10K SFF (2,5 in) i Hot-Plug hård disk-RAID 5 |
+| Storage | 6 x 1,2 – TB SAS 12G Enterprise 10K SFF (2,5 in) i Hot-Plug hård disk-RAID 5 |
 | Nätverks styrenhet | Fordonsbaserad: 2 x 1 GB Broadcom BCM5720<br>LOM på kort: iDRAC port Card 1 – GB Broadcom BCM5720<br><br>Externt: 1 x Intel Ethernet i350 QP 1 – GB serveradapter, låg profil |
 | Hantering | HPE iLO Advanced |
 | Enhets åtkomst | Två baktill USB 3,0<br>En första USB 2,0<br>En intern USB 3,0 |
@@ -109,7 +109,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Beskrivning | Antal |
+| PN | Description | Kvantitet |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO Server | 1 |
 | P19766-B21 | Europa – flerspråkig lokalisering | 1 |
@@ -136,7 +136,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 | Processor | Intel Xeon E-2234, 3,6 GHz, land/8T, 71 W |
 | 855 | Intel-C242 |
 | Minne | 2 x 16 GB x8-DDR4 med dubbla rang-2666 |
-| Lagring | 3 x 1 – TB SATA 6G mitt linje 7,2 K SFF (2,5 in) – RAID 5 med Smart Array P408i – en SR-styrenhet |
+| Storage | 3 x 1 – TB SATA 6G mitt linje 7,2 K SFF (2,5 in) – RAID 5 med Smart Array P408i – en SR-styrenhet |
 | Nätverks styrenhet | Fordonsbaserad: 2 x 1 GB <br>Fordonsbaserad: iLO-Port kort 1 GB <br>Externt: 1 x HPE Ethernet 1 – GB 4-Port 366FLR-kort |
 | Hantering | HPE iLO Advanced |
 | Enhets åtkomst | Framtill: 1 x USB 3,0, 1 x USB iLO-tjänsteport <br>Bak sidan: 2 x USB 3,0 <br>Internt: 1 x USB 3,0 |
@@ -145,7 +145,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Beskrivning: hög slut | Antal |
+| PN | Beskrivning: hög slut | Kvantitet |
 |--|--|--|
 | P06963-B21 | HPE DL20 Gen10 4SFF CTO Server | 1 |
 | P06963-B21 | HPE DL20 Gen10 4SFF CTO Server | 1 |
@@ -171,7 +171,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 | Processor | Intel Xeon E-2224, 3,4 GHz, östra, 71 W |
 | 855 | Intel-C242 |
 | Minne | 1 x 8 GB med dubbla Rank x8-DDR4 – 2666 |
-| Lagring | 2 x 1 – TB SATA 6G mitt linje 7,2 K SFF (2,5 in) – RAID 1 med Smart Array P208i-a |
+| Storage | 2 x 1 – TB SATA 6G mitt linje 7,2 K SFF (2,5 in) – RAID 1 med Smart Array P208i-a |
 | Nätverks styrenhet | Fordonsbaserad: 2 x 1 GB <br>Fordonsbaserad: iLO-Port kort 1 GB <br>Externt: 1 x HPE Ethernet 1 – GB 4-Port 366FLR-kort |
 | Hantering | HPE iLO Advanced |
 | Enhets åtkomst | Framtill: 1 x USB 3,0, 1 x USB iLO-tjänsteport <br>Bak sidan: 2 x USB 3,0 <br>Internt: 1 x USB 3,0 |
@@ -180,7 +180,7 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 
 ### <a name="appliance-bom"></a>Apparat struktur
 
-| PN | Beskrivning | Antal |
+| PN | Description | Kvantitet |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
@@ -203,16 +203,16 @@ I det här avsnittet beskrivs specifikationer för maskin vara för följande ut
 |--|--|--|--|
 | Virtuell processor | 32 | 8 | 4 |
 | Minne | 32 GB | 32 GB | 8 GB |
-| Lagring | 5,6 TB | 1,8 TB | 500 GB |
+| Storage | 5,6 TB | 1,8 TB | 500 GB |
 
 ### <a name="on-premises-management-console-appliance"></a>Lokal hanterings konsol installation
 
 | Typ | Stora företag |
 |--|--|
-| Beskrivning | Virtuell installation för företags distributions typer |
+| Description | Virtuell installation för företags distributions typer |
 | Virtuell processor | 8 |
 | Minne | 32 GB |
-| Lagring | 1,8 TB |
+| Storage | 1,8 TB |
 
 Hypervisorer som stöds: VMware ESXi version 5,0 och senare, Hyper-V
 
@@ -225,7 +225,7 @@ I det här avsnittet beskrivs ytterligare enheter som certifierats av Microsoft 
 | Bild | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="Företags distributions typ."::: |
 | Modell | Dell PowerEdge R340 XL |
 | Övervaka portar | Upp till nio RJ45 eller sex OPT |
-| Max bandbredd [1](#anchortext2)| 1G MB/SEK |
+| Max bandbredd [1](#anchortext2)| 1 GB/SEK |
 | Maximalt antal skyddade enheter | 10 000 |
 
 <a id="anchortext2">En</a> Bandbredds kapaciteten kan variera beroende på protokoll distribution.
@@ -244,7 +244,7 @@ När du har köpt installationen går du till **Defender för IoT**  >  **Networ
 | Processor | Intel Xeon E-2144G 3,6 GHz, 8 M cache, lands-8T, Turbo (71 W) |
 | 855 | Intel-C246 |
 | Minne | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
-| Lagring | 3 x 2 – TB 7,2 KB RPM SATA 6-Gbit/s 512n 3,5 – Hot-Plug hård disk-RAID 5 |
+| Storage | 3 x 2 – TB 7,2 KB RPM SATA 6-Gbit/s 512n 3,5 – Hot-Plug hård disk-RAID 5 |
 | Nätverks styrenhet | Fordonsbaserad: 2 x 1 GB Broadcom BCM5720<br>LOM på kort: iDRAC port Card 1 – GB Broadcom BCM5720 <br><br>Externt: 1 x Intel Ethernet i350 QP 1 – GB serveradapter, låg profil |
 | Hantering | iDRAC 9 Enterprise |
 | Enhets åtkomst | Två baktill USB 3,0 <br> En första USB 3,0 |

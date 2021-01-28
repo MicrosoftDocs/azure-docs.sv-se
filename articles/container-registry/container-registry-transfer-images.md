@@ -4,12 +4,12 @@ description: Överföra samlingar med avbildningar eller andra artefakter från 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932608"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935352"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Överföra artefakter till ett annat register
 
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>Överför BLOB (valfritt) 
 
-Använd AzCopy-verktyget eller andra metoder för att [överföra BLOB-data](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) från käll lagrings kontot till mål lagrings kontot.
+Använd AzCopy-verktyget eller andra metoder för att [överföra BLOB-data](../storage/common/storage-use-azcopy-v10.md#transfer-data) från käll lagrings kontot till mål lagrings kontot.
 
 Följande kommando kopierar t. ex. [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) BLOB från *överförings* containern i käll kontot till *överförings* containern i mål kontot. Om blobben finns i mål kontot skrivs den över. Autentisering använder SAS-token med lämpliga behörigheter för käll-och mål behållarna. (Steg för att skapa tokens visas inte.)
 
@@ -377,7 +377,7 @@ az acr repository list --name <target-registry-name>
 
 ## <a name="redeploy-pipelinerun-resource"></a>Distribuera om PipelineRun-resurs
 
-Om du omdistribuerar en PipelineRun-resurs med *identiska egenskaper*måste du utnyttja egenskapen **forceUpdateTag** . Den här egenskapen anger att PipelineRun-resursen ska återskapas även om konfigurationen inte har ändrats. Kontrol lera att forceUpdateTag är olika varje gången du distribuerar om PipelineRun-resursen. Exemplet nedan återskapar en PipelineRun för export. Aktuellt datetime används för att ange forceUpdateTag, vilket säkerställer att egenskapen alltid är unik.
+Om du omdistribuerar en PipelineRun-resurs med *identiska egenskaper* måste du utnyttja egenskapen **forceUpdateTag** . Den här egenskapen anger att PipelineRun-resursen ska återskapas även om konfigurationen inte har ändrats. Kontrol lera att forceUpdateTag är olika varje gången du distribuerar om PipelineRun-resursen. Exemplet nedan återskapar en PipelineRun för export. Aktuellt datetime används för att ange forceUpdateTag, vilket säkerställer att egenskapen alltid är unik.
 
 ```console
 CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`

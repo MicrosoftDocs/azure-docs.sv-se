@@ -4,12 +4,12 @@ description: Skapa en HTTP-utlöst, Server lös PowerShell-funktion för att aut
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349256"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935419"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Självstudie: Använd en HTTP-utlöst Azure-funktion för att skapa en behållar grupp
 
@@ -105,7 +105,7 @@ Ett meddelande visas när funktionsappen har skapats och distributionspaketet ha
 
 ## <a name="run-the-function-in-azure"></a>Kör funktionen i Azure
 
-När distributionen har slutförts hämtar du funktions-URL: en. Använd till exempel avsnittet **Azure: Functions** i Visual Studio Code för att kopiera **HttpTrigger** -funktionens URL eller hämta funktions webb adressen i [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+När distributionen har slutförts hämtar du funktions-URL: en. Använd till exempel avsnittet **Azure: Functions** i Visual Studio Code för att kopiera **HttpTrigger** -funktionens URL eller hämta funktions webb adressen i [Azure Portal](../azure-functions/functions-get-started.md).
 
 Funktions webb adressen har formatet:
 

@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400269"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934498"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Använda IP-anslutningsfilter för Azure IoT DPS
 
@@ -258,5 +258,5 @@ Sedan sparar du IP-filterreglernas nya ordning genom att klicka på **Spara**.
 Mer information om hur du hanterar DPS finns i:
 
 * [Förstå IP-adresser för IoT DPS](iot-dps-understand-ip-address.md)
-* [Konfigurera DPS med hjälp av Azure CLI](how-to-manage-dps-with-cli.md)
+* [Konfigurera DPS med Azure CLI](quick-setup-auto-provision-cli.md)
 * [Kontrollera åtkomsten till DPS](how-to-control-access.md)

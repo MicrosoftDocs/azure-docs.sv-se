@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702734"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936210"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Metod tips för att använda API: t för avvikelse detektor
 
@@ -52,7 +52,7 @@ Nedan finns samma data uppsättning med hjälp av batch-avvikelse identifiering.
 
 ## <a name="data-preparation"></a>Förberedelse av data
 
-API: t för avvikelse detektor accepterar Time Series-data som är formaterade i ett JSON-Request-objekt. En tids serie kan vara alla numeriska data som registreras över tid i nummerordning. Du kan skicka Windows av dina Time Series-data till API-slutpunkten för avvikelse detektorn för att förbättra prestandan för API: et. Det minsta antalet data punkter som du kan skicka är 12 och det maximala värdet är 8640 punkter. [Granularitet](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) definieras som den hastighet som data samplas på. 
+API: t för avvikelse detektor accepterar Time Series-data som är formaterade i ett JSON-Request-objekt. En tids serie kan vara alla numeriska data som registreras över tid i nummerordning. Du kan skicka Windows av dina Time Series-data till API-slutpunkten för avvikelse detektorn för att förbättra prestandan för API: et. Det minsta antalet data punkter som du kan skicka är 12 och det maximala värdet är 8640 punkter. [Granularitet](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity) definieras som den hastighet som data samplas på. 
 
 Data punkter som skickas till API: t för avvikelse detektor måste ha en giltig tidsstämpel för UTC-tid (Coordinated Universal Time) och ett numeriskt värde. 
 
