@@ -1,19 +1,16 @@
 ---
 title: Alternativ för beräknings kontext för ML-tjänster i HDInsight – Azure
 description: Lär dig mer om de olika beräknings kontext alternativen som är tillgängliga för användare med ML-tjänster i HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536342"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943963"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Alternativ för beräknings kontext för ML-tjänster i HDInsight
 
@@ -29,8 +26,8 @@ Edge-noden i ett kluster är en praktisk plats för att ansluta till klustret oc
 
 I allmänhet körs ett R-skript som körs i ML Services-kluster på Edge-noden i R-tolken på den noden. Undantagen är de steg som anropar en RevoScaleR-funktion. RevoScaleR-anropen körs i en beräknings miljö som bestäms av hur du ställer in beräknings kontexten för RevoScaleR.  När du kör R-skriptet från en Edge-nod, är möjliga värden för beräknings kontexten följande:
 
-- lokal ordning ( *lokal* )
-- lokal parallell ( *localpar* )
+- lokal ordning (*lokal*)
+- lokal parallell (*localpar*)
 - Reducera karta
 - Spark
 
@@ -59,12 +56,12 @@ Med hänsyn till dessa principer, erbjuder följande avsnitt några allmänna re
 
 ### <a name="local"></a>Lokal
 
-- Om mängden data som ska analyseras är liten och inte kräver upprepad analys kan du strömma den direkt till analys rutinen med hjälp av *lokala* eller *localpar* .
-- Om mängden data som ska analyseras är liten eller medels Tor och kräver upprepad analys, kopierar du den sedan till det lokala fil systemet, importerar den till XDF och analyserar den via *lokala* eller *localpar* .
+- Om mängden data som ska analyseras är liten och inte kräver upprepad analys kan du strömma den direkt till analys rutinen med hjälp av *lokala* eller *localpar*.
+- Om mängden data som ska analyseras är liten eller medels Tor och kräver upprepad analys, kopierar du den sedan till det lokala fil systemet, importerar den till XDF och analyserar den via *lokala* eller *localpar*.
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Om mängden data som ska analyseras är stor importerar du den till en spark-DataFrame med hjälp av **RxHiveData** eller **RxParquetData** , eller till XDF i HDFS (om det inte finns något problem med lagringen) och analyserar den med hjälp av Spark Compute-kontexten.
+- Om mängden data som ska analyseras är stor importerar du den till en spark-DataFrame med hjälp av **RxHiveData** eller **RxParquetData**, eller till XDF i HDFS (om det inte finns något problem med lagringen) och analyserar den med hjälp av Spark Compute-kontexten.
 
 ### <a name="apache-hadoop-map-reduce"></a>Minska Apache Hadoop karta
 

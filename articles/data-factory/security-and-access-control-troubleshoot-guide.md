@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968593"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944509"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Felsöka problem med Azure Data Factory säkerhet och åtkomst kontroll
 
@@ -49,13 +49,13 @@ Problemet orsakas vanligt vis av något av följande faktorer:
 
 * Om du använder en **IR med egen värd** kontrollerar du proxy-, brand Väggs-och nätverks inställningarna, eftersom det kan gå att ansluta till samma data lager om du använder en Azure IR. För att felsöka det här scenariot, se:
 
-   * [IR-portar och brand väggar med egen värd](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Azure Data Lake Storage koppling](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [IR-portar och brand väggar med egen värd](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Azure Data Lake Storage koppling](./connector-azure-data-lake-store.md)
   
 * Om du använder en **Azure IR** kan du försöka inaktivera brand Väggs inställningen för data lagret. Den här metoden kan lösa problemen i följande två situationer:
   
-   * [Azure IR IP-adresser](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) finns inte med i listan över tillåtna.
-   * Funktionen *Tillåt betrodda Microsoft-tjänster för att få åtkomst till det här lagrings kontot* är inaktive rad för [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) och [Azure Data Lake Storage gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
+   * [Azure IR IP-adresser](./azure-integration-runtime-ip-addresses.md) finns inte med i listan över tillåtna.
+   * Funktionen *Tillåt betrodda Microsoft-tjänster för att få åtkomst till det här lagrings kontot* är inaktive rad för [Azure Blob Storage](./connector-azure-blob-storage.md#supported-capabilities) och [Azure Data Lake Storage gen 2](./connector-azure-data-lake-storage.md#supported-capabilities).
    * Inställningen *Tillåt åtkomst till Azure-tjänster* är inte aktive rad för Azure Data Lake Storage gen1.
 
 Om ingen av föregående metoder fungerar kontaktar du Microsoft om du behöver hjälp.
@@ -88,7 +88,7 @@ Gör så här för att kontrol lera om Data Factory fullständiga domän namnet 
 #### <a name="resolution"></a>Lösning
 
 Lös problemet genom att göra följande:
-- Se den [privata Azure-länken för Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) artikeln. Instruktionen är att konfigurera den privata DNS-zonen eller-servern för att matcha Data Factory-FQDN till en privat IP-adress.
+- Se den [privata Azure-länken för Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) artikeln. Instruktionen är att konfigurera den privata DNS-zonen eller-servern för att matcha Data Factory-FQDN till en privat IP-adress.
 
 - Vi rekommenderar att du använder en anpassad DNS som långsiktig lösning. Men om du inte vill konfigurera den privata DNS-zonen eller-servern kan du prova med följande tillfälliga lösning:
 
@@ -120,7 +120,7 @@ Problemet kan orsakas av den virtuella dator som du försöker installera IR med
  
 Lös problemet genom att göra följande:
 
-1. Gå till sidan [fabriker – uppdatera](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) .
+1. Gå till sidan [fabriker – uppdatera](/rest/api/datafactory/Factories/Update) .
 
 1. I det övre högra hörnet väljer du knappen **prova** .
 1. Under **parametrar**, Fyll i den information som krävs. 
@@ -146,7 +146,7 @@ Lös problemet genom att göra följande:
 
 **Lösning 2**
 
-Lös problemet genom att gå till [Azures privata länk för Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link).
+Lös problemet genom att gå till [Azures privata länk för Azure Data Factory](./data-factory-private-link.md).
 
 Försök att aktivera offentlig nätverks åtkomst i användar gränssnittet, som visas på följande skärm bild:
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight-hantering IP-adresser
 description: Lär dig vilka IP-adresser du måste tillåta inkommande trafik från, för att kunna konfigurera nätverks säkerhets grupper och användardefinierade vägar för virtuella nätverk med Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 89d749a04c22967198be217350ff38751336fe67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549046"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944107"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP-adresser för HDInsight-hantering
 
@@ -67,7 +64,7 @@ Tillåt trafik från IP-adresserna som anges för Azure HDInsight-hälso-och han
 | &nbsp; | Kina, östra | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*: 443 | Inkommande |
 | &nbsp; | Kina, norra 2 | 40.73.37.141</br>40.73.38.172 | \*: 443 | Inkommande |
 | &nbsp; | Kina, östra 2 | 139.217.227.106</br>139.217.228.187 | \*: 443 | Inkommande |
-| Europa | Norra Europa | 52.164.210.96</br>13.74.153.132 | \*: 443 | Inkommande |
+| Europa | Europa, norra | 52.164.210.96</br>13.74.153.132 | \*: 443 | Inkommande |
 | &nbsp; | Europa, västra| 52.166.243.90</br>52.174.36.244 | \*: 443 | Inkommande |
 | Frankrike | Frankrike, centrala| 20.188.39.64</br>40.89.157.135 | \*: 443 | Inkommande |
 | Tyskland | Tyskland, centrala | 51.4.146.68</br>51.4.146.80 | \*: 443 | Inkommande |

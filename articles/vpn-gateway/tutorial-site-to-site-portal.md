@@ -7,12 +7,12 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
-ms.openlocfilehash: d078d4b106136c95d67eb467bc16e22e2bb91c5c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96747362"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945210"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>Självstudie: skapa en plats-till-plats-anslutning i Azure Portal
 
@@ -85,7 +85,7 @@ Skapa en VPN-gateway med följande värden:
 
 Du kan visa den offentliga Gateway-IP-adressen på **översikts** sidan för din gateway.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Översikts sida":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Översiktssidan":::
 
 Om du vill se mer information om objektet offentlig IP-adress klickar du på länken namn/IP-adress bredvid **offentlig IP-adress**.
 
@@ -153,7 +153,7 @@ Du kan behöva återställa en Azure VPN-gateway om VPN-anslutningen mellan fler
 
 [!INCLUDE [reset a gateway](../../includes/vpn-gateway-reset-gw-portal-include.md)]
 
-### <a name="additional-configuration-considerations"></a><a name="connectVM"></a>Ytterligare konfigurations överväganden
+### <a name="additional-configuration-considerations"></a><a name="additional"></a>Ytterligare konfigurations överväganden
 
 S2S-konfigurationer kan anpassas på flera olika sätt. Mer information finns i följande artiklar:
 

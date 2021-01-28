@@ -1,23 +1,20 @@
 ---
 title: Introduktion till ML-tjänster på Azure HDInsight
 description: Lär dig hur du använder ML-tjänster i HDInsight för att skapa program för stor data analys.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536155"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943924"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Vad är ML-tjänster i Azure HDInsight
 
-Microsoft Machine Learning Server är tillgängligt som ett distributions alternativ när du skapar HDInsight-kluster i Azure. Kluster typen som innehåller det här alternativet kallas **ml-tjänster** . Den här funktionen ger åtkomst på begäran till anpassningsbara, distribuerade analys metoder på HDInsight.
+Microsoft Machine Learning Server är tillgängligt som ett distributions alternativ när du skapar HDInsight-kluster i Azure. Kluster typen som innehåller det här alternativet kallas **ml-tjänster**. Den här funktionen ger åtkomst på begäran till anpassningsbara, distribuerade analys metoder på HDInsight.
 
 ML-tjänster i HDInsight tillhandahåller de senaste funktionerna för R-baserade analyser på data uppsättningar i praktiskt taget vilken storlek som helst. Data uppsättningarna kan läsas in till antingen Azure Blob eller Data Lake Storage. Dina R-baserade program kan använda R-paket med 8000 + öppen källkod. Rutinerna i scaler, Microsofts Big data Analytics-paket är också tillgängliga.
 
@@ -58,7 +55,7 @@ ML-tjänster i HDInsight ger följande fördelar:
 
 Följande funktioner ingår i ML-tjänster i HDInsight.
 
-| Funktions kategori | Beskrivning |
+| Funktions kategori | Description |
 |------------------|-------------|
 | R-aktiverad | [R-paket](/machine-learning-server/r-reference/introducing-r-server-r-package-reference) för lösningar som är skrivna i R, med en distribution med öppen källkod av R och körnings infrastruktur för skript körning. |
 | Python-aktiverat | [Python-moduler](/machine-learning-server/python-reference/introducing-python-package-reference) för lösningar som skrivits i python, med en distribution med öppen källkod av python och körnings infrastruktur för skript körning.
@@ -112,7 +109,7 @@ Du kan installera ytterligare paket med en skript åtgärd när du har skapat kl
 
 Tillgängligt minne till ML-tjänster kan ändras när ett MapReduce-jobb körs. Om du vill ändra ett kluster använder du Apache Ambari-ANVÄNDARGRÄNSSNITTET för klustret. Ambari UI-instruktioner finns i [Hantera HDInsight-kluster med hjälp av Ambari-WEBBgränssnittet](../hdinsight-hadoop-manage-ambari.md).
 
-Tillgängligt minne till ML-tjänster kan ändras med hjälp av Hadoop-växlar i anropet till **RxHadoopMR** :
+Tillgängligt minne till ML-tjänster kan ändras med hjälp av Hadoop-växlar i anropet till **RxHadoopMR**:
 
 ```r
 hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"

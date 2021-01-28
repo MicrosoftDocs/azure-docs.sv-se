@@ -1,19 +1,16 @@
 ---
 title: Hantera loggar för ett HDInsight-kluster – Azure HDInsight
 description: Bestäm typ, storlek och bevarande principer för HDInsight-aktivitets logg filen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546032"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945277"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Hantera loggar för ett HDInsight-kluster
 
@@ -77,11 +74,11 @@ Ett typiskt HDInsight-kluster använder flera tjänster och program varu paket m
 
 Apache Ambari fören klar hanteringen, konfigurationen och övervakningen av ett HDInsight-kluster genom att tillhandahålla ett webb gränssnitt och en REST API. Ambari ingår i Linux-baserade HDInsight-kluster. Välj rutan **kluster instrument panel** på sidan Azure Portal HDInsight för att öppna länk sidan **kluster instrument paneler** .  Välj sedan fönstret **instrument panel för HDInsight-kluster** för att öppna AMBARI-användargränssnittet.  Du uppmanas att ange dina autentiseringsuppgifter för ditt kluster inloggnings konto.
 
-Öppna en lista över tjänstevyer genom att välja fönstret **Ambari vyer** på sidan Azure Portal för HDInsight.  Den här listan varierar beroende på vilka bibliotek som du har installerat.  Du kan till exempel se garn Queue Manager, Hive och Tez vy.  Välj en tjänst länk om du vill visa information om konfigurationen och tjänsten.  Sidan Ambari UI **stack och version** innehåller information om konfigurations historiken för kluster tjänster och tjänster. Om du vill navigera till det här avsnittet i Ambari-ANVÄNDARGRÄNSSNITTET väljer du **Administratörs** menyn och sedan **stackar och versioner** .  Välj fliken **versioner** för att se information om tjänst version.
+Öppna en lista över tjänstevyer genom att välja fönstret **Ambari vyer** på sidan Azure Portal för HDInsight.  Den här listan varierar beroende på vilka bibliotek som du har installerat.  Du kan till exempel se garn Queue Manager, Hive och Tez vy.  Välj en tjänst länk om du vill visa information om konfigurationen och tjänsten.  Sidan Ambari UI **stack och version** innehåller information om konfigurations historiken för kluster tjänster och tjänster. Om du vill navigera till det här avsnittet i Ambari-ANVÄNDARGRÄNSSNITTET väljer du **Administratörs** menyn och sedan **stackar och versioner**.  Välj fliken **versioner** för att se information om tjänst version.
 
 ![Apache Ambari admin stack och versioner](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Med hjälp av användar gränssnittet för Ambari kan du ladda ned konfigurationen för alla (eller alla) tjänster som körs på en viss värd (eller nod) i klustret.  Välj menyn **värdar** och sedan länken för värden av intresse. På värddatorns sida väljer du knappen **värd åtgärder** och **laddar ned klient konfigurationerna** .
+Med hjälp av användar gränssnittet för Ambari kan du ladda ned konfigurationen för alla (eller alla) tjänster som körs på en viss värd (eller nod) i klustret.  Välj menyn **värdar** och sedan länken för värden av intresse. På värddatorns sida väljer du knappen **värd åtgärder** och **laddar ned klient konfigurationerna**.
 
 ![Apache Ambari Ladda ned värd klient konfigurationerna](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -144,7 +141,7 @@ Användar gränssnittet för garn-ResourceManager körs på kluster huvud noden 
 
 1. Gå till `https://CLUSTERNAME.azurehdinsight.net` i en webbläsare. Ersätt KLUSTERNAMN med namnet på ditt HDInsight-kluster.
 2. I listan över tjänster till vänster väljer du garn.
-3. I list rutan snabb länkar väljer du en av klustrets huvud-noder och väljer sedan **ResourceManager-loggar** . En lista med länkar till garn loggar visas.
+3. I list rutan snabb länkar väljer du en av klustrets huvud-noder och väljer sedan **ResourceManager-loggar**. En lista med länkar till garn loggar visas.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Steg 4: beräkna logg volymens lagrings storlek och kostnader
 

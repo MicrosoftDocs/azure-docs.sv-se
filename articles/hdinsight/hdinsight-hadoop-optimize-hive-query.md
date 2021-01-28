@@ -1,19 +1,16 @@
 ---
 title: Optimera Hive-frågor i Azure HDInsight
 description: Den här artikeln beskriver hur du optimerar dina Apache Hive frågor i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910890"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945558"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimera Apache Hive-frågor i Azure HDInsight
 
@@ -53,11 +50,11 @@ Mer information om hur du skalar HDInsight finns i [skala HDInsight-kluster](hdi
 
 Tez är snabbare eftersom:
 
-* **Kör riktat acykliska diagram (dag) som ett enda jobb i MapReduce-motorn** . DAG kräver att varje uppsättning med mappningar ska följas av en uppsättning med reducerare. Detta krav gör att flera MapReduce-jobb kan läsas av för varje Hive-fråga. Tez har inte någon sådan begränsning och kan bearbeta komplexa DAG som ett jobb som minimerar jobbets start kostnader.
-* **Undviker onödiga skrivningar** . Flera jobb används för att bearbeta samma Hive-fråga i MapReduce-motorn. Utdata från varje MapReduce-jobb skrivs till HDFS för mellanliggande data. Eftersom Tez minimerar antalet jobb för varje Hive-fråga, kan det undvika onödiga skrivningar.
-* **Minimerar start fördröjningar** . Tez kan förbättra start fördröjningen genom att minska antalet mappningar som krävs för att starta och även förbättra optimeringen i hela.
-* **Återåteranvänd behållare** . När möjligt kan Tez återanvända behållare för att se till att svars tiden för att starta behållare minskas.
-* **Metoder för kontinuerlig optimering** . Traditionellt gjorda optimering skedde under kompilerings fasen. Det finns dock mer information om indata som möjliggör bättre optimering under körning. Tez använder kontinuerlig optimerings teknik som gör det möjligt att optimera planen ytterligare i körnings fasen.
+* **Kör riktat acykliska diagram (dag) som ett enda jobb i MapReduce-motorn**. DAG kräver att varje uppsättning med mappningar ska följas av en uppsättning med reducerare. Detta krav gör att flera MapReduce-jobb kan läsas av för varje Hive-fråga. Tez har inte någon sådan begränsning och kan bearbeta komplexa DAG som ett jobb som minimerar jobbets start kostnader.
+* **Undviker onödiga skrivningar**. Flera jobb används för att bearbeta samma Hive-fråga i MapReduce-motorn. Utdata från varje MapReduce-jobb skrivs till HDFS för mellanliggande data. Eftersom Tez minimerar antalet jobb för varje Hive-fråga, kan det undvika onödiga skrivningar.
+* **Minimerar start fördröjningar**. Tez kan förbättra start fördröjningen genom att minska antalet mappningar som krävs för att starta och även förbättra optimeringen i hela.
+* **Återåteranvänd behållare**. När möjligt kan Tez återanvända behållare för att se till att svars tiden för att starta behållare minskas.
+* **Metoder för kontinuerlig optimering**. Traditionellt gjorda optimering skedde under kompilerings fasen. Det finns dock mer information om indata som möjliggör bättre optimering under körning. Tez använder kontinuerlig optimerings teknik som gör det möjligt att optimera planen ytterligare i körnings fasen.
 
 Mer information om dessa begrepp finns i [Apache TEZ](https://tez.apache.org/).
 
@@ -71,7 +68,7 @@ set hive.execution.engine=tez;
 
 I/O-åtgärder är den stora prestanda Flask halsen för att köra Hive-frågor. Prestanda kan förbättras om mängden data som behöver läsas kan minskas. Hive-frågor söker som standard igenom hela Hive-tabeller. Men för frågor som bara behöver söka igenom en liten mängd data (till exempel frågor med filtrering), skapar det här beteendet onödig omkostnader. Hive-partitionering gör det möjligt för Hive-frågor att endast komma åt den nödvändiga mängden data i Hive-tabeller.
 
-Hive-partitionering implementeras genom att organisera om rå data i nya kataloger. Varje partition har en egen fil katalog. Partitioneringen definieras av användaren. Följande diagram illustrerar partitionering av en Hive-tabell efter kolumn *året* . En ny katalog skapas för varje år.
+Hive-partitionering implementeras genom att organisera om rå data i nya kataloger. Varje partition har en egen fil katalog. Partitioneringen definieras av användaren. Följande diagram illustrerar partitionering av en Hive-tabell efter kolumn *året*. En ny katalog skapas för varje år.
 
 ![HDInsight Apache Hive partitionering](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
@@ -130,11 +127,11 @@ Mer information finns i [partitionerade tabeller](https://cwiki.apache.org/confl
 
 ## <a name="use-the-orcfile-format"></a>Använd ORCFile-formatet
 
-Hive stöder olika fil format. Till exempel:
+Hive stöder olika fil format. Exempel:
 
-* **Text** : standard fil formatet och fungerar med de flesta scenarier.
-* **Avro** : fungerar bra för samverkans scenarier.
-* **Orc/Parquet** : passar bäst för prestanda.
+* **Text**: standard fil formatet och fungerar med de flesta scenarier.
+* **Avro**: fungerar bra för samverkans scenarier.
+* **Orc/Parquet**: passar bäst för prestanda.
 
 ORC-formatet (optimerad rad kolumn) är ett mycket effektivt sätt att lagra Hive-data på. Jämfört med andra format har ORC följande fördelar:
 
@@ -143,7 +140,7 @@ ORC-formatet (optimerad rad kolumn) är ett mycket effektivt sätt att lagra Hiv
 * indexerar varje 10 000 rader, vilket tillåter att rader hoppas över.
 * en betydande minskning av körningen av körnings tid.
 
-Om du vill aktivera ORC-formatet skapar du först en tabell med satsen *lagrad som Orc* :
+Om du vill aktivera ORC-formatet skapar du först en tabell med satsen *lagrad som Orc*:
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -156,7 +153,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Sedan infogar du data i tabellen ORC från mellanlagrings tabellen. Till exempel:
+Sedan infogar du data i tabellen ORC från mellanlagrings tabellen. Exempel:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -199,7 +196,7 @@ Det finns fler optimerings metoder som du kan överväga, till exempel:
 
 * **Hive-Bucket:** en teknik som gör det möjligt att klustra eller segmentera stora data uppsättningar för att optimera prestanda för frågor.
 * **Delta i optimering:** optimering av Hive-planering för att förbättra effektiviteten i kopplingar och minska behovet av användar tips. Mer information finns i [delta optimering](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
-* **Öka minskaren** .
+* **Öka minskaren**.
 
 ## <a name="next-steps"></a>Nästa steg
 

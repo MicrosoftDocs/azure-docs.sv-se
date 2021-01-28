@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d8944c9e49bde8c452a10a1886cae316a0f7a33f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348075"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945073"
 ---
 # <a name="create-luis-resources"></a>Skapa LUIS-resurser
 
@@ -51,7 +51,7 @@ Om du vill ändra ägarskap för en resurs kan du utföra någon av följande å
 * Överför prenumerationens [ägare](../../cost-management-billing/manage/billing-subscription-transfer.md) .
 * Exportera LUIS-appen som en fil och importera sedan appen på en annan prenumeration. Export är tillgängligt på sidan **Mina appar** i Luis-portalen.
 
-## <a name="resource-limits"></a>Resursbegränsningar
+## <a name="resource-limits"></a>Resursgränser
 
 ### <a name="authoring-key-creation-limits"></a>Redigerings gränser för att skapa nycklar
 
@@ -125,7 +125,7 @@ Det finns för närvarande ingen katalog över offentliga appar.
 
 Åtkomst för att skicka frågor till förutsägelse slut punkten styrs av en inställning på sidan **program information** i avsnittet **Hantera** .
 
-|[Privat slut punkt](#runtime-security-for-private-apps)|[Offentlig slutpunkt](#runtime-security-for-public-apps)|
+|[Privat slutpunkt](#runtime-security-for-private-apps)|[Offentlig slutpunkt](#runtime-security-for-public-apps)|
 |:--|:--|
 |Tillgängligt för ägare och deltagare|Tillgängligt för ägare, deltagare och någon annan som känner till app-ID|
 
@@ -173,7 +173,7 @@ Du kan styra vem som kan se slut punkts nyckeln för LUIS förutsägelse körnin
 
 ### <a name="create-resources-in-the-azure-cli"></a>Skapa resurser i Azure CLI
 
-Använd [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) för att skapa varje resurs individuellt.
+Använd [Azure CLI](/cli/azure/install-azure-cli) för att skapa varje resurs individuellt.
 
 Resurs `kind` :
 

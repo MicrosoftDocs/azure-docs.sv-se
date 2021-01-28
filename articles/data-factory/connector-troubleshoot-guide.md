@@ -9,12 +9,12 @@ ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 4b586b95232af2a154993523402f81ee88a22cda
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967131"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946161"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory-anslutningsprogram
 
@@ -121,7 +121,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - **Orsak**: problem med CosmosDbSqlApi-åtgärd.
 
-- **Rekommendation**: Mer information finns i fel meddelandet. Läs mer i [CosmosDb-hjälp dokument](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk). Kontakta CosmosDb-teamet om du behöver hjälp.
+- **Rekommendation**: Mer information finns i fel meddelandet. Läs mer i [CosmosDb-hjälp dokument](../cosmos-db/troubleshoot-dot-net-sdk.md). Kontakta CosmosDb-teamet om du behöver hjälp.
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -198,7 +198,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
     - Kontrol lera om det finns någon speciell nätverks inställning som ExpressRoute och se till att nätverket har tillräckligt med bandbredd. Vi rekommenderar att du sänker inställningen för IR-arbetsjobb med egen värd när den totala bandbredden är låg, genom vilken kan undvika nätverks resurs konkurrens mellan flera samtidiga jobb.
 
-    - Använd mindre block storlek för icke-binär kopia för att minimera tids gräns felet om fil storleken är måttlig eller liten. Referera till [Blob Storage spärra block](https://docs.microsoft.com/rest/api/storageservices/put-block).
+    - Använd mindre block storlek för icke-binär kopia för att minimera tids gräns felet om fil storleken är måttlig eller liten. Referera till [Blob Storage spärra block](/rest/api/storageservices/put-block).
 
        Om du vill ange den anpassade block storleken kan du redigera egenskapen i. JSON-redigeraren:
         ```
@@ -486,7 +486,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - **Lösning**: prova följande steg för att åtgärda problemet:
 
-    1. Använd [fel tolerans](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)för SQL-Sink, särskilt "redirectIncompatibleRowSettings" för att felsöka vilka rader som har problemet.
+    1. Använd [fel tolerans](./copy-activity-fault-tolerance.md)för SQL-Sink, särskilt "redirectIncompatibleRowSettings" för att felsöka vilka rader som har problemet.
 
         > [!NOTE]
         > Observera att fel toleransen kan medföra ytterligare körnings tid, vilket kan leda till högre kostnad.

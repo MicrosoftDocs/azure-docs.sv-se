@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358793"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944486"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Förbered dina logikappar och runbooks för migrering av klassiska aviseringsregler
 
@@ -29,8 +29,8 @@ Följande tabell är en referens till programmerings gränssnitten för både de
 
 | Typ av distributions skript | Klassiska aviseringar | Nya mått varningar |
 | ---------------------- | -------------- | ----------------- |
-|REST-API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [avisering om AZ-övervakaren](/cli/azure/monitor/alert?view=azure-cli-latest)        | [avisering om AZ Monitor-mått](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [avisering om AZ-övervakaren](/cli/azure/monitor/alert)        | [avisering om AZ Monitor-mått](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [Referens](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referens](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-mall | [För klassiska aviseringar](./alerts-enable-template.md)|[För nya mått varningar](./alerts-metric-create-templates.md)|
 

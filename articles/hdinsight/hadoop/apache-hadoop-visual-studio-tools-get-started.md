@@ -2,19 +2,16 @@
 title: Apache Hadoop & Visual Studio Data Lake-verktyg – Azure HDInsight
 description: Lär dig hur du installerar och använder Data Lake verktyg för Visual Studio. Använd verktyget för att ansluta till Apache Hadoop kluster i Azure HDInsight och kör sedan Hive-frågor.
 keywords: hadoop tools,hive query,visual studio,visual studio hadoop
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 56154f7e5ebd71e1b6580bec55ca57520eb126ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d8e9784ea21bf5f2b6902e3d93c5c09c1ec5670
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548021"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944564"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Använd Data Lake verktyg för Visual Studio för att ansluta till Azure HDInsight och köra Apache Hive frågor
 
@@ -42,7 +39,7 @@ Följ de anvisningar som krävs för att installera Data Lake verktyg för din v
 
     Under installationen av Visual Studio ser du till att du tar med arbets belastningen **Azure Development** eller arbets belastningen **data lagring och bearbetning** .  
 
-    För befintliga Visual Studio-installationer går du till IDE-meny raden och väljer **verktyg**  >  **Hämta verktyg och funktioner** för att öppna Visual Studio Installer. På fliken **arbets belastningar** väljer du minst **Azure Development** -arbetsbelastningen (under **webb & molnet** ). Eller Välj arbets belastningen **data lagring och bearbetning** (under **andra verktyg** ).
+    För befintliga Visual Studio-installationer går du till IDE-meny raden och väljer **verktyg**  >  **Hämta verktyg och funktioner** för att öppna Visual Studio Installer. På fliken **arbets belastningar** väljer du minst **Azure Development** -arbetsbelastningen (under **webb & molnet**). Eller Välj arbets belastningen **data lagring och bearbetning** (under **andra verktyg**).
 
   ![Val av arbets belastning, Visual Studio Installer](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
@@ -56,19 +53,19 @@ Se sedan till att du uppdaterar Data Lake-verktyg till den senaste versionen.
 
 1. Öppna Visual Studio.
 
-2. I fönstret **Starta** väljer du **Fortsätt utan kod** .
+2. I fönstret **Starta** väljer du **Fortsätt utan kod**.
 
-3. I meny raden i Visual Studio IDE väljer du **tillägg**  >  **Hantera tillägg** .
+3. I meny raden i Visual Studio IDE väljer du **tillägg**  >  **Hantera tillägg**.
 
 4. Expandera noden **uppdateringar** i dialog rutan **Hantera tillägg** .
 
-5. Om listan med tillgängliga uppdateringar innehåller **Azure Data Lake och Stream analys verktyg** , väljer du det. Välj sedan knappen **Uppdatera** . När dialog rutan **Hämta och installera** visas och försvinner, lägger Visual Studio till tillägget **Azure Data Lake och Stream analys verktyg** till uppdaterings schemat.
+5. Om listan med tillgängliga uppdateringar innehåller **Azure Data Lake och Stream analys verktyg**, väljer du det. Välj sedan knappen **Uppdatera** . När dialog rutan **Hämta och installera** visas och försvinner, lägger Visual Studio till tillägget **Azure Data Lake och Stream analys verktyg** till uppdaterings schemat.
 
 6. Stäng alla Visual Studio-fönster. Dialog rutan **installations program för vsix** visas.
 
 7. Välj **licens** för att läsa licens villkoren och välj sedan **Stäng** för att återgå till dialog rutan **installations program för vsix** .
 
-8. Välj **ändra** . Installationen av tilläggs uppdateringen påbörjas. Efter en stund ändras dialog rutan så att den gör ändringar. Välj **Stäng** och starta sedan om Visual Studio för att slutföra installationen.
+8. Välj **ändra**. Installationen av tilläggs uppdateringen påbörjas. Efter en stund ändras dialog rutan så att den gör ändringar. Välj **Stäng** och starta sedan om Visual Studio för att slutföra installationen.
 
 > [!NOTE]  
 > Du kan endast använda Data Lake Tools i version 2.3.0.0 eller senare för att ansluta till interaktiva frågekluster och köra interaktiva Hive-frågor.
@@ -86,17 +83,17 @@ Så här ansluter du till din Azure-prenumeration:
 
 1. Öppna Visual Studio.
 
-2. I fönstret **Starta** väljer du **Fortsätt utan kod** .
+2. I fönstret **Starta** väljer du **Fortsätt utan kod**.
 
-3. I meny raden IDE väljer du **Visa**  >  **Server Explorer** .
+3. I meny raden IDE väljer du **Visa**  >  **Server Explorer**.
 
-4. I **Server Explorer** högerklickar du på **Azure** , väljer **Anslut till Microsoft Azure prenumeration** och slutför autentiseringsprocessen. Från **Server Explorer** expanderar du **Azure**  >  **HDInsight** för att visa en lista över befintliga HDInsight-kluster.
+4. I **Server Explorer** högerklickar du på **Azure**, väljer **Anslut till Microsoft Azure prenumeration** och slutför autentiseringsprocessen. Från **Server Explorer** expanderar du **Azure**  >  **HDInsight** för att visa en lista över befintliga HDInsight-kluster.
 
 5. Om du inte har några kluster kan du skapa ett med hjälp av Azure Portal, Azure PowerShell eller HDInsight SDK. Mer information finns i [Konfigurera kluster i HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
    ![HDInsight-kluster lista, Server Explorer, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png)
 
-6. Expandera ett HDInsight-kluster. Klustret innehåller noder för **Hive-databaser** . Ett standard lagrings konto, eventuella ytterligare länkade lagrings konton och **loggen för Hadoop-tjänsten** . Du kan expandera entiteterna ytterligare.
+6. Expandera ett HDInsight-kluster. Klustret innehåller noder för **Hive-databaser**. Ett standard lagrings konto, eventuella ytterligare länkade lagrings konton och **loggen för Hadoop-tjänsten**. Du kan expandera entiteterna ytterligare.
 
 När du har anslutit till din Azure-prenumeration kan du utföra följande uppgifter.
 
@@ -106,7 +103,7 @@ Så här ansluter du till Azure-portalen från Visual Studio:
 
 1. I **Server Explorer** expanderar du **Azure**  >  **HDInsight** och väljer ditt kluster.
 
-2. Högerklicka på ett HDInsight-kluster och välj **Hantera kluster i Azure Portal** .
+2. Högerklicka på ett HDInsight-kluster och välj **Hantera kluster i Azure Portal**.
 
 ### <a name="offer-questions-and-feedback-from-visual-studio"></a>Erbjud frågor och feedback från Visual Studio
 
@@ -125,13 +122,13 @@ Så här länkar du ett HDInsight-kluster:
 
 1. Högerklicka på **HDInsight** och välj **Länka ett HDInsight-kluster** för att Visa dialog rutan **Länka ett HDInsight-kluster** .
 
-2. Ange en **anslutnings-URL** i formuläret `https://CLUSTERNAME.azurehdinsight.net` . **Kluster namnet** fylls i automatiskt med kluster namns delen i URL: en när du går till ett annat fält. Ange sedan ett **användar namn** och **lösen ord** och välj **Nästa** .
+2. Ange en **anslutnings-URL** i formuläret `https://CLUSTERNAME.azurehdinsight.net` . **Kluster namnet** fylls i automatiskt med kluster namns delen i URL: en när du går till ett annat fält. Ange sedan ett **användar namn** och **lösen ord** och välj **Nästa**.
 
     ![Länka ett kluster, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. Välj **Slutför** . Om kluster länkningen lyckas visas klustret under noden **HDInsight** .
+3. Välj **Slutför**. Om kluster länkningen lyckas visas klustret under noden **HDInsight** .
 
-Om du vill uppdatera ett länkat kluster högerklickar du på klustret och väljer **Redigera** . Sedan kan du uppdatera kluster informationen.
+Om du vill uppdatera ett länkat kluster högerklickar du på klustret och väljer **Redigera**. Sedan kan du uppdatera kluster informationen.
 
 ![Redigera ett länkat kluster, HDInsight, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
@@ -141,7 +138,7 @@ Från Server Explorer kan du se standardkontot för lagring och eventuella länk
 
 ![Data Lake verktyg för länkade Visual Studio-resurser i Server Explorer](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png)
 
-Högerklicka på en behållare och välj **Visa behållare** för att Visa behållarens innehåll. När du har öppnat en behållare kan du använda verktygsfälts knapparna för att **Uppdatera** innehålls listan, **Ladda upp BLOB** , **ta bort valda blobbar** , **Öppna BLOB** och hämta ( **Spara som** ) valda blobbar.
+Högerklicka på en behållare och välj **Visa behållare** för att Visa behållarens innehåll. När du har öppnat en behållare kan du använda verktygsfälts knapparna för att **Uppdatera** innehålls listan, **Ladda upp BLOB**, **ta bort valda blobbar**, **Öppna BLOB** och hämta (**Spara som**) valda blobbar.
 
 ![Behållare lista och blob-åtgärder, HDInsight-kluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png)
 
@@ -156,33 +153,33 @@ Högerklicka på en behållare och välj **Visa behållare** för att Visa behå
 
 Du kan också använda Data Lake verktyg för Visual Studio för att se vad som finns i ett Hive-jobb. Data Lake Tools för Visual Studio samlar in och hämtar Yarn-loggarna för specifika Hive-jobb.
 
-Välj **Server Explorer** **Azure**  >  **HDInsight** från Server Explorer och välj ditt kluster.  Den här noden är start punkten i **Server Explorer** för de avsnitt som ska följas.
+Välj  **Azure**  >  **HDInsight** från Server Explorer och välj ditt kluster.  Den här noden är start punkten i **Server Explorer** för de avsnitt som ska följas.
 
 ### <a name="view-hivesampletable"></a>Visa hivesampletable
 
 Alla HDInsight-kluster har en standardformat Hive-tabell med namnet `hivesampletable` .  
 
-Från klustret väljer du **Hive-databaser**  >  **standard**  >  **hivesampletable** .
+Från klustret väljer du **Hive-databaser**  >  **standard**  >  **hivesampletable**.
 
 * Så här visar du `hivesampletable` schemat:
 
-    Expandera **hivesampletable** . Kolumnernas namn och data typer `hivesampletable` visas.
+    Expandera **hivesampletable**. Kolumnernas namn och data typer `hivesampletable` visas.
 
 * Så här visar du `hivesampletable` data:
 
-    Högerklicka på **hivesampletable** och välj **visa de översta 100 raderna** . Listan med 100-resultat visas i **Hive-tabellen: hivesampletable** -fönstret. Den här åtgärden motsvarar att köra följande Hive-fråga med hjälp av Hive ODBC-drivrutinen:
+    Högerklicka på **hivesampletable** och välj **visa de översta 100 raderna**. Listan med 100-resultat visas i **Hive-tabellen: hivesampletable** -fönstret. Den här åtgärden motsvarar att köra följande Hive-fråga med hjälp av Hive ODBC-drivrutinen:
 
     `SELECT * FROM hivesampletable LIMIT 100`
 
-    Du kan anpassa rad antalet genom att ändra **antalet rader** . Du kan välja 50, 100, 200 eller 1000 rader från den nedrullningsbara listan.
+    Du kan anpassa rad antalet genom att ändra **antalet rader**. Du kan välja 50, 100, 200 eller 1000 rader från den nedrullningsbara listan.
 
 ### <a name="create-hive-tables"></a>Skapa Hive-tabeller
 
 Du kan använda det grafiska användargränssnittet eller Hive-frågor för att skapa en Hive-tabell. Information om hur du använder Hive-frågor finns i [skapa och köra Hive-frågor](#create-and-run-hive-queries).
 
-1. Välj Hive-databaser som **Hive Databases**  >  **standard** från klustret.
+1. Välj Hive-databaser som   >  **standard** från klustret.
 
-2. Högerklicka på **standard** och välj **Skapa tabell** .
+2. Högerklicka på **standard** och välj **Skapa tabell**.
 
 3. Konfigurera tabellen.
 
@@ -201,7 +198,7 @@ Det finns två sätt att skapa och köra Hive-frågor:
 
 Skapa och köra en ad hoc-fråga:
 
-1. Högerklicka på det kluster där du vill köra frågan och välj **Skriv en Hive-fråga** .  
+1. Högerklicka på det kluster där du vill köra frågan och välj **Skriv en Hive-fråga**.  
 
 2. Ange en Hive-fråga.
 
@@ -225,19 +222,19 @@ Skapa och köra en ad hoc-fråga:
 
 3. Välj körnings läge:
 
-    * **Ej**  
+    * **Interaktiv**  
 
-        Välj **interaktiv** i den första List rutan och välj sedan **Kör** .
+        Välj **interaktiv** i den första List rutan och välj sedan **Kör**.
 
         ![Interaktivt läge, Hive ad-hoc-fråga, HDInsight-kluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
-        Välj **batch** i den första List rutan och välj sedan **Skicka** . Eller Välj den nedrullningsbara ikonen bredvid **Skicka** och välj **Avancerat** .
+        Välj **batch** i den första List rutan och välj sedan **Skicka**. Eller Välj den nedrullningsbara ikonen bredvid **Skicka** och välj **Avancerat**.
 
         ![Batch-läge, Hive ad-hoc-fråga, HDInsight-kluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)
 
-        Om du väljer alternativet Avancerad överföring visas dialog rutan **Skicka skript** . Konfigurera **jobb namn** , **argument** , **ytterligare konfigurationer** och **status katalog** för skriptet.
+        Om du väljer alternativet Avancerad överföring visas dialog rutan **Skicka skript** . Konfigurera **jobb namn**, **argument**, **ytterligare konfigurationer** och **status katalog** för skriptet.
 
         ![Dialog rutan Skicka skript, Hive ad-hoc-fråga, HDInsight-kluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png)
 
@@ -250,9 +247,9 @@ Så här skapar och kör du en Hive-lösning:
 
 1. Välj **Arkiv**  >  **nytt**  >  **projekt** på Meny raden.
 
-2. I fönstret **skapa ett nytt projekt** markerar du rutan Sök och skriver **Hive** . Välj sedan **Hive-program** och välj **Nästa** .
+2. I fönstret **skapa ett nytt projekt** markerar du rutan Sök och skriver **Hive**. Välj sedan **Hive-program** och välj **Nästa**.
 
-3. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** , väljer eller skapar projekt **platsen** och väljer sedan **skapa** .
+3. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn**, väljer eller skapar projekt **platsen** och väljer sedan **skapa**.
 
     ![Nytt Hive-program, konfigurera ditt nya projekt fönster, HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png)
 
@@ -264,9 +261,9 @@ Jobb sammanfattningen varierar något mellan **batch** -och **interaktivt** läg
 
 ![Sammanfattning av Hive-jobb, fönster, batch och interaktivt läge, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png)
 
-Använd **uppdaterings** ikonen för att uppdatera statusen tills jobbets status ändras till **avslutad** .  
+Använd **uppdaterings** ikonen för att uppdatera statusen tills jobbets status ändras till **avslutad**.  
 
-* För jobb information från **batch** -läge väljer du länkarna längst ned för att se **jobb frågan** , **jobbets utdata** eller **jobb loggen** eller för att **Visa garn loggar** .
+* För jobb information från **batch** -läge väljer du länkarna längst ned för att se **jobb frågan**, **jobbets utdata** eller **jobb loggen** eller för att **Visa garn loggar**.
 
 * För jobb information från **interaktivt** läge, se fönstret **utdata** -och **HiveServer2** .
 
@@ -296,7 +293,7 @@ I den senaste versionen av verktygen kan du se vad som finns i dina Hive-jobb ge
 
 Så här visar du Hive-jobb:
 
-1. Högerklicka på ett HDInsight-kluster och välj **Visa jobb** .
+1. Högerklicka på ett HDInsight-kluster och välj **Visa jobb**.
 
     ![Visa jobb, Apache Hive, HDInsight-kluster, Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png)
 
@@ -312,9 +309,9 @@ Så här visar du Hive-jobb:
 
 1. Välj **Arkiv**  >  **nytt**  >  **projekt** på Meny raden.
 
-2. I fönstret **Starta** väljer du sökrutan och anger **gris** . Välj sedan **programmet gris** och välj **Nästa** .
+2. I fönstret **Starta** väljer du sökrutan och anger **gris**. Välj sedan **programmet gris** och välj **Nästa**.
 
-3. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** och väljer eller skapar en **plats** för projektet. Välj sedan **Skapa** .
+3. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** och väljer eller skapar en **plats** för projektet. Välj sedan **Skapa**.
 
 4. I fönstret IDE- **Solution Explorer** dubbelklickar du på **skript. gris** för att öppna skriptet.
 

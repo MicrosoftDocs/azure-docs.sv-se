@@ -3,12 +3,12 @@ title: Konfigurera Azure Red Hat OpenShift v3. x med Azure Monitor för behålla
 description: Den här artikeln beskriver hur du konfigurerar övervakning av ett Kubernetes-kluster med Azure Monitor som finns i Azure Red Hat OpenShift version 3 och senare.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695677"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944545"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurera Azure Red Hat OpenShift v3 med Azure Monitor för behållare
 
@@ -30,7 +30,7 @@ Azure Monitor for containers innehåller omfattande övervaknings funktioner fö
 Azure Monitor för behållare kan aktive ras för nya eller en eller flera befintliga distributioner av Azure Red Hat OpenShift med följande metoder som stöds:
 
 - För ett befintligt kluster från Azure Portal eller med hjälp av Azure Resource Manager-mall.
-- För ett nytt kluster med Azure Resource Manager mall, eller när du skapar ett nytt kluster med hjälp av [Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+- För ett nytt kluster med Azure Resource Manager mall, eller när du skapar ett nytt kluster med hjälp av [Azure CLI](/cli/azure/openshift#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Funktioner som stöds och som inte stöds
 

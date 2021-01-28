@@ -1,19 +1,16 @@
 ---
 title: Skapa Apache Hadoop kluster med PowerShell – Azure HDInsight
 description: Lär dig hur du skapar Apache Hadoop, Apache HBase, Apache Storm eller Apache Spark kluster på Linux för HDInsight med hjälp av Azure PowerShell.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 23ce0f83e4233837d56ba9045a9a356ebd1cc33f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 86622bf96d4b59537a2946073fdc638e51c3852d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541822"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945829"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Skapa Linux-baserade kluster i HDInsight med hjälp av Azure PowerShell
 
@@ -21,7 +18,7 @@ ms.locfileid: "92541822"
 
 Azure PowerShell är en kraftfull skript miljö som du kan använda för att styra och automatisera distributionen och hanteringen av dina arbets belastningar i Microsoft Azure. Det här dokumentet innehåller information om hur du skapar ett Linux-baserat HDInsight-kluster med hjälp av Azure PowerShell. Det innehåller också ett exempel skript.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -1,19 +1,16 @@
 ---
 title: 'Självstudie: använda Azure Automation runbooks för att skapa kluster – Azure HDInsight'
 description: Lär dig hur du skapar och tar bort Azure HDInsight-kluster med skript som körs i molnet med hjälp av Azure Automation runbooks.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75553515"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944039"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Självstudie: Skapa Azure HDInsight-kluster med Azure Automation
 
@@ -28,7 +25,7 @@ I den här guiden får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett befintligt [Azure Automation-konto](../automation/automation-quickstart-create-account.md).
 * Ett befintligt [Azure Storage-konto](../storage/common/storage-account-create.md)som kommer att användas som kluster lagring.
@@ -54,7 +51,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 
 ## <a name="create-credentials"></a>Skapa autentiseringsuppgifter
 
-1. Under **delade resurser**väljer du **autentiseringsuppgifter**.
+1. Under **delade resurser** väljer du **autentiseringsuppgifter**.
 1. Välj **Lägg till en autentiseringsuppgift**.
 1. Ange den information som krävs på panelen **ny autentiseringsuppgift** . Den här autentiseringsuppgiften är att lagra kluster lösen ordet, vilket gör att du kan logga in på Ambari.
 
@@ -62,7 +59,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
     | --- | --- |
     | Namn | `cluster-password` |
     | Användarnamn | `admin` |
-    | lösenordsinställning | `SECURE_PASSWORD` |
+    | Lösenord | `SECURE_PASSWORD` |
     | Bekräfta lösenordet | `SECURE_PASSWORD` |
 
 1. Välj **Skapa**.

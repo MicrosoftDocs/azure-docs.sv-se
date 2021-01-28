@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bffff099e8df2b944cbef50a074ef625267ed238
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121831"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944634"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Så här ansluter du enheter med X. 509-certifikat med hjälp av Node.js Device SDK för IoT Central program
 
@@ -199,7 +199,7 @@ Enheten har nu tillhandahållits med X. 509-certifikat.
 
 1. Kopiera filen _mytestselfcertprimary_key. pem_ och _mytestselfcertprimary_cert. pem_ till mappen _Azure-IoT-SDK-Node/Device/samples/PnP_ som innehåller **simple_thermostat.js** programmet. Du använde det här programmet när du har slutfört [guiden Anslut en enhet (Java Script)](./tutorial-connect-device.md).
 
-1. Ändra de miljövariabler som du använde i på följande sätt:
+1. Ändra de miljövariabler som du använde i exemplet ovan enligt följande:
 
     ```cmd/sh
     set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary

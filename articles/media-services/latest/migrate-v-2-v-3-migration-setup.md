@@ -1,6 +1,6 @@
 ---
-title: Check lista för Media Services v2 till v3-migrering
-description: Den här artikeln är en check lista som hjälper dig att få minsta migrering från Azure Media Services v2 till v3.
+title: Installation av Media Services v2 till v3-migrering
+description: Den här artikeln hjälper dig att konfigurera din miljö för migrering från Azure Media Services v2 till v3.
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: bd1488a1e89bb7d5c8a3a2dedda60bd5a226e02e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1f9e0816a3533008a01f26ca7c0e712abfa23e8e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898264"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946240"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Steg 3 – Konfigurera för att migrera till v3-REST API eller klient-SDK
 

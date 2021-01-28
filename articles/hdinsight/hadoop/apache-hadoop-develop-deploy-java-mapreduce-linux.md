@@ -1,19 +1,16 @@
 ---
 title: Skapa Java-MapReduce för Apache Hadoop – Azure HDInsight
 description: Lär dig hur du använder Apache Maven för att skapa ett Java-baserat MapReduce-program och sedan köra det med Hadoop på Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996040"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946656"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Utveckla Java MapReduce-program för Apache Hadoop i HDInsight
 
@@ -98,7 +95,7 @@ Talar om för `<scope>provided</scope>` maven att dessa beroenden inte ska paket
 > [!IMPORTANT]
 > Den version som används måste matcha den version av Hadoop som finns på klustret. Mer information om versioner finns i [versions](../hdinsight-component-versioning.md) dokumentet för HDInsight-komponenten.
 
-### <a name="build-configuration"></a>Bygg konfiguration
+### <a name="build-configuration"></a>Skapa konfiguration
 
 Med maven-plugin-program kan du anpassa projektets Bygg steg. Det här avsnittet används för att lägga till plugin-program, resurser och andra Bygg konfigurations alternativ.
 

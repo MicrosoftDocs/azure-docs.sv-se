@@ -1,17 +1,17 @@
 ---
-title: IP-adresser som används av Application Insights och Log Analytics | Microsoft Docs
+title: IP-adresser som används av Azure Monitor
 description: Undantag för Server brand väggen krävs av Application Insights
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: eb0739cb44b9f67258069a574ed0bedb95eac5a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/27/2020
+ms.openlocfilehash: 5a6cc190f84b74cc8a1d4ff24d10cbfa07f3c2fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625190"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945047"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adresser som används av Application Insights och Log Analytics
-Tjänsten [Azure Application Insights](./app-insights-overview.md) använder ett antal IP-adresser. Du kan behöva känna till de här adresserna om appen som du övervakar ligger bakom en brand vägg.
+# <a name="ip-addresses-used-by-azure-monitor"></a>IP-adresser som används av Azure Monitor
+[Azure Monitor](../overview.md) använder ett antal IP-adresser. Azure Monitor består av kärn plattforms statistik och loggar förutom Log Analytics och Application Insights. Du kan behöva känna till dessa adresser om appen eller infrastrukturen som du övervakar ligger bakom en brand vägg.
 
 > [!NOTE]
 > Även om dessa adresser är statiska, är det möjligt att vi behöver ändra dem från tid till tid. All Application Insights trafik representerar utgående trafik med undantag för tillgänglighets övervakning och webhookar som kräver inkommande brand Väggs regler.

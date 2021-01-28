@@ -1,19 +1,16 @@
 ---
 title: Anpassa Azure HDInsight-kluster med hjälp av skript åtgärder
 description: Lägg till anpassade komponenter i HDInsight-kluster med hjälp av skript åtgärder. Skript åtgärder är Bash-skript som kan användas för att anpassa kluster konfigurationen. Eller Lägg till ytterligare tjänster och verktyg som nyans, solr eller R.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 46be3349490f04660d4fc8b69e4cdc295d8ecc1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945809"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassa Azure HDInsight-kluster med hjälp av skript åtgärder
 
@@ -121,14 +118,14 @@ Status            : Succeeded
 
 Skript åtgärds skript kan användas via följande verktyg:
 
-* Azure Portal
+* Azure-portalen
 * Azure PowerShell
 * Azure CLI
 * HDInsight .NET SDK
 
 HDInsight innehåller skript för att installera följande komponenter i HDInsight-kluster:
 
-| Namn | Skript |
+| Name | Skript |
 | --- | --- |
 | Lägg till ett Azure Storage konto |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Se [lägga till ytterligare lagrings konton i HDInsight](hdinsight-hadoop-add-storage.md). |
 | Installera nyans |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Se [Installera och använda nyans på HDInsight Hadoop-kluster](hdinsight-hadoop-hue-linux.md). |
@@ -153,7 +150,7 @@ I det här avsnittet beskrivs de olika sätten att använda skript åtgärder n�
     | Egenskap | Värde |
     | --- | --- |
     | Välj ett skript | Välj __anpassad__ om du vill använda ett eget skript. Annars väljer du något av de angivna skripten. |
-    | Namn |Ange ett namn för skript åtgärden. |
+    | Name |Ange ett namn för skript åtgärden. |
     | Bash-skript-URI |Ange URI: n för skriptet. |
     | Head/Worker/ZooKeeper |Ange noderna som skriptet körs på: **Head**, **Work** eller **ZooKeeper**. |
     | Parametrar |Ange parametrarna, om det krävs av skriptet. |
@@ -226,7 +223,7 @@ I det här avsnittet beskrivs hur du tillämpar skript åtgärder på ett kluste
     | Egenskap | Värde |
     | --- | --- |
     | Välj ett skript | Välj __anpassad__ om du vill använda ett eget skript. Annars väljer du ett tillhandahållet skript. |
-    | Namn |Ange ett namn för skript åtgärden. |
+    | Name |Ange ett namn för skript åtgärden. |
     | Bash-skript-URI |Ange URI: n för skriptet. |
     | Head/Worker/Zookeeper |Ange noderna som skriptet körs på: **Head**, **Work** eller **ZooKeeper**. |
     | Parametrar |Ange parametrarna, om det krävs av skriptet. |

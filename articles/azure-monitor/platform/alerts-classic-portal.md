@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b0d3acda56c3f45128d1cc7cefcc4eb938281a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013113"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943785"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Skapa, Visa och hantera klassiska mått varningar med Azure Monitor
 
@@ -56,7 +56,7 @@ När du har skapat en avisering kan du välja den och utföra en av följande up
 
 ## <a name="with-azure-cli"></a>Med Azure CLI
 
-I föregående avsnitt beskrivs hur du skapar, visar och hanterar mått varnings regler med hjälp av Azure Portal. Det här avsnittet beskriver hur du gör på samma sätt som med plattforms oberoende [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Det snabbaste sättet att börja använda Azure CLI är genom [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest).
+I föregående avsnitt beskrivs hur du skapar, visar och hanterar mått varnings regler med hjälp av Azure Portal. Det här avsnittet beskriver hur du gör på samma sätt som med plattforms oberoende [Azure CLI](/cli/azure/get-started-with-azure-cli). Det snabbaste sättet att börja använda Azure CLI är genom [Azure Cloud Shell](../../cloud-shell/overview.md).
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Hämta alla klassiska mått för varnings regler i en resurs grupp
 

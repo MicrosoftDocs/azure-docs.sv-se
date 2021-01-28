@@ -1,19 +1,16 @@
 ---
 title: Kör Apache grundläggande frågor i Azure HDInsight med Apache Phoenix
 description: Lär dig hur du använder Apache Zeppelin för att köra apache Base-frågor med Phoenix.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542802"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944769"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Använda Apache Zeppelin för att köra Apache Phoenix frågor över Apache HBase i Azure HDInsight
 
@@ -40,13 +37,13 @@ Ett Apache HBase-kluster i HDInsight. Se [Kom igång med Apache HBase](./apache-
     - Kommentars namn: Ange ett namn för anteckningen.
     - Standard tolk: Välj **JDBC** i list rutan.
 
-    Välj sedan **Skapa anteckning** .
+    Välj sedan **Skapa anteckning**.
 
 1. Se till att antecknings bokens huvud visar en ansluten status. Den betecknas av en grön prick i det övre högra hörnet.
 
     ![Status för Zeppelin Notebook](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Status för Zeppelin Notebook")
 
-1. Skapa en HBase-tabell. Ange följande kommando och tryck sedan på **SKIFT + RETUR** :
+1. Skapa en HBase-tabell. Ange följande kommando och tryck sedan på **SKIFT + RETUR**:
 
     ```sql
     %jdbc(phoenix)

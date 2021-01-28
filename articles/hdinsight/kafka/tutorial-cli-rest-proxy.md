@@ -1,19 +1,16 @@
 ---
 title: 'Självstudie: skapa ett Apache Kafka REST proxy-aktiverat kluster i HDInsight med Azure CLI'
 description: Lär dig hur du utför Apache Kafka åtgärder med en Kafka REST-proxy på Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539487"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944020"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Självstudie: skapa ett Apache Kafka REST proxy-aktiverat kluster i HDInsight med Azure CLI
 
@@ -27,7 +24,7 @@ I den här självstudien får du lära dig:
 > * Krav för Kafka REST proxy
 > * Skapa ett Apache Kafka-kluster med Azure CLI
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -56,8 +53,8 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
     |location|Ersätt plats med en region där klustret ska skapas. Om du vill ha en lista över giltiga platser använder du `az account list-locations` kommandot|
     |clusterName|Ersätt kluster namn med ett globalt unikt namn för det nya klustret.|
     |storageAccount|Ersätt STORAGEACCOUNTNAME med ett namn för ditt nya lagrings konto.|
-    |httpPassword|Ersätt lösen ordet med ett lösen ord för kluster inloggningen, **admin** .|
-    |sshPassword|Ersätt PASSWORD med ett lösen ord för Secure Shell-användarnamnet, **sshuser** .|
+    |httpPassword|Ersätt lösen ordet med ett lösen ord för kluster inloggningen, **admin**.|
+    |sshPassword|Ersätt PASSWORD med ett lösen ord för Secure Shell-användarnamnet, **sshuser**.|
     |securityGroupName|Ersätt SECURITYGROUPNAME med klientens AAD-säkerhetsgrupp namn för Kafka rest proxy. Variabeln skickas till- `--kafka-client-group-name` parametern för `az-hdinsight-create` .|
     |securityGroupID|Ersätt SECURITYGROUPID med klientens AAD-säkerhetsgrupp-ID för Kafka rest proxy. Variabeln skickas till- `--kafka-client-group-id` parametern för `az-hdinsight-create` .|
     |storageContainer|Lagrings behållare som klustret ska använda, lämna det som är i den här självstudien. Den här variabeln kommer att anges med namnet på klustret.|
@@ -130,18 +127,18 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
         |Parameter | Beskrivning|
         |---|---|
-        |--typ|Värdet måste vara **Kafka** .|
-        |--workernode-data-disks-per nod|Det antal data diskar som ska användas per arbets nod. HDInsight-Kafka stöds bara med data diskar. I den här självstudien används värdet **2** .|
+        |--typ|Värdet måste vara **Kafka**.|
+        |--workernode-data-disks-per nod|Det antal data diskar som ska användas per arbets nod. HDInsight-Kafka stöds bara med data diskar. I den här självstudien används värdet **2**.|
 
     1. Obligatoriska parametrar för Kafka REST proxy:
 
         |Parameter | Beskrivning|
         |---|---|
-        |--Kafka-Management-Node-size|Nodens storlek. I den här självstudien används värdet **Standard_D4_v2** .|
-        |--Kafka-client-Group-ID|Klientens AAD säkerhets grupp-ID för Kafka rest proxy. Värdet skickas från variabeln **$securityGroupID** .|
-        |--Kafka-client-Group-name|Klientens AAD säkerhets grupp namn för Kafka rest proxy. Värdet skickas från variabeln **$securityGroupName** .|
-        |--version|HDInsight-klustrets version måste vara minst 4,0. Värdet skickas från variabeln **$clusterVersion** .|
-        |--komponent-version|Kafka-versionen måste vara minst 2,1. Värdet skickas från variabeln **$componentVersion** .|
+        |--Kafka-Management-Node-size|Nodens storlek. I den här självstudien används värdet **Standard_D4_v2**.|
+        |--Kafka-client-Group-ID|Klientens AAD säkerhets grupp-ID för Kafka rest proxy. Värdet skickas från variabeln **$securityGroupID**.|
+        |--Kafka-client-Group-name|Klientens AAD säkerhets grupp namn för Kafka rest proxy. Värdet skickas från variabeln **$securityGroupName**.|
+        |--version|HDInsight-klustrets version måste vara minst 4,0. Värdet skickas från variabeln **$clusterVersion**.|
+        |--komponent-version|Kafka-versionen måste vara minst 2,1. Värdet skickas från variabeln **$componentVersion**.|
     
         Om du vill skapa klustret utan REST proxy, eliminera `--kafka-management-node-size` , `--kafka-client-group-id` och `--kafka-client-group-name` från `az hdinsight create` kommandot.
 

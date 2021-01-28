@@ -2,25 +2,22 @@
 title: Använda Apache Pig
 titleSuffix: Azure HDInsight
 description: Lär dig hur du använder gris med Apache Hadoop i HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 9474a1845898e3fda0c810314f41f6f4deabc96b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538739"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944622"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Använda Apache gris med Apache Hadoop på HDInsight
 
 Lär dig hur du använder [Apache gris](https://pig.apache.org/) med HDInsight.
 
-Apache gris är en plattform för att skapa program för Apache Hadoop med hjälp av ett procedur språk som kallas *gris Latin* . Gris är ett alternativ till Java för att skapa *MapReduce* -lösningar och det ingår i Azure HDInsight. Använd följande tabell för att identifiera de olika sätt som gris kan användas med HDInsight:
+Apache gris är en plattform för att skapa program för Apache Hadoop med hjälp av ett procedur språk som kallas *gris Latin*. Gris är ett alternativ till Java för att skapa *MapReduce* -lösningar och det ingår i Azure HDInsight. Använd följande tabell för att identifiera de olika sätt som gris kan användas med HDInsight:
 
 ## <a name="why-use-apache-pig"></a><a id="why"></a>Varför ska man använda Apache gris
 
@@ -30,11 +27,11 @@ Med hjälp av gris kan du definiera bearbetning som en serie med omvandlingar so
 
 Med det latinska språket för svin kan du beskriva data flödet från rå data, via en eller flera transformeringar, för att skapa önskade utdata. De latinska programmen i gris följer detta allmänna mönster:
 
-* **Load** : Läs data som ska hanteras från fil systemet.
+* **Load**: Läs data som ska hanteras från fil systemet.
 
-* **Transform** : manipulera data.
+* **Transform**: manipulera data.
 
-* **Dumpa eller lagra** : mata ut data till skärmen eller lagra den för bearbetning.
+* **Dumpa eller lagra**: mata ut data till skärmen eller lagra den för bearbetning.
 
 ### <a name="user-defined-functions"></a>Användardefinierade funktioner
 

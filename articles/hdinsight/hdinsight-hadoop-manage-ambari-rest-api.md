@@ -1,19 +1,16 @@
 ---
 title: Övervaka och hantera Hadoop med Ambari REST API – Azure HDInsight
 description: Lär dig hur du använder Ambari för att övervaka och hantera Hadoop-kluster i Azure HDInsight. I det här dokumentet får du lära dig hur du använder Ambari-REST API som ingår i HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546083"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945582"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Hantera HDInsight-kluster med hjälp av Apache Ambari REST API
 
@@ -37,11 +34,11 @@ Apache Ambari fören klar hanteringen och övervakningen av Hadoop-kluster genom
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Bas Uniform Resource Identifier för REST-API för Ambari
 
- Bas Uniform Resource Identifier (URI) för Ambari REST API på HDInsight är `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , där `CLUSTERNAME` är namnet på klustret.  Kluster namn i URI: er är Skift läges **känsliga** .  Kluster namnet i det fullständigt kvalificerade domän namnet (FQDN) i URI: n () är Skift läges okänsligt `CLUSTERNAME.azurehdinsight.net` , men andra förekomster i URI: n är Skift läges känsliga.
+ Bas Uniform Resource Identifier (URI) för Ambari REST API på HDInsight är `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , där `CLUSTERNAME` är namnet på klustret.  Kluster namn i URI: er är Skift läges **känsliga**.  Kluster namnet i det fullständigt kvalificerade domän namnet (FQDN) i URI: n () är Skift läges okänsligt `CLUSTERNAME.azurehdinsight.net` , men andra förekomster i URI: n är Skift läges känsliga.
 
 ## <a name="authentication"></a>Autentisering
 
-För att ansluta till Ambari i HDInsight krävs HTTPS. Använd administratörs konto namnet (standard är **administratör** ) och lösen ord som du angav när du skapade klustret.
+För att ansluta till Ambari i HDInsight krävs HTTPS. Använd administratörs konto namnet (standard är **administratör**) och lösen ord som du angav när du skapade klustret.
 
 För Enterprise Security Package kluster, i stället för `admin` , använder du ett fullständigt kvalificerat användar namn som `username@domain.onmicrosoft.com` .
 

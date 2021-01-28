@@ -1,19 +1,16 @@
 ---
 title: Skapa HBase-kluster i en Virtual Network – Azure
 description: Kom igång med HBase i Azure HDInsight. Lär dig hur du skapar HDInsight HBase-kluster på Azure Virtual Network.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087749"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946122"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Skapa Apache HBase-kluster på HDInsight i Azure Virtual Network
 
@@ -49,7 +46,7 @@ I det här avsnittet skapar du ett Linux-baserat Apache HBase-kluster med det be
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-1. Välj **Redigera mall**i dialog rutan **Anpassad distribution** .
+1. Välj **Redigera mall** i dialog rutan **Anpassad distribution** .
 
 1. Ändra värde till på rad 165 `Standard_A3` `Standard_A4_V2` . Välj sedan **Spara**.
 
@@ -58,7 +55,7 @@ I det här avsnittet skapar du ett Linux-baserat Apache HBase-kluster med det be
     |Egenskap |Värde |
     |---|---|
     |Prenumeration|Välj en Azure-prenumeration som används för att skapa HDInsight-klustret, det beroende lagrings kontot och det virtuella Azure-nätverket.|
-    Resursgrupp|Välj **Skapa ny**och ange ett nytt resurs grupp namn.|
+    Resursgrupp|Välj **Skapa ny** och ange ett nytt resurs grupp namn.|
     |Location|Välj en plats för resursgruppen.|
     |Klusternamn|Ange ett namn för det Hadoop-kluster som ska skapas.|
     |Användar namn och lösen ord för kluster inloggning|Standard användar namnet är **admin**. Ange ett lösen ord.|
@@ -111,7 +108,7 @@ Leta upp posten "host_name" i de JavaScript Object Notation (JSON) som returnera
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
-Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Exempelvis `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Ett exempel är `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 <!--
 3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
@@ -130,7 +127,7 @@ Den del av domän namnet som börjar med kluster namnet är DNS-suffixet. Exempe
 
 ### <a name="verify-communication-inside-virtual-network"></a>Verifiera kommunikation i virtuellt nätverk
 
-Du kan kontrol lera att den virtuella datorn kan kommunicera med HBase-klustret genom att använda kommandot `ping headnode0.<dns suffix>` från den virtuella datorn. Exempelvis `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
+Du kan kontrol lera att den virtuella datorn kan kommunicera med HBase-klustret genom att använda kommandot `ping headnode0.<dns suffix>` från den virtuella datorn. Ett exempel är `ping hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net`.
 
 Om du vill använda den här informationen i ett Java-program kan du följa stegen i [använda Apache Maven för att skapa Java-program som använder Apache HBase med HDInsight (Hadoop)](./apache-hbase-build-java-maven-linux.md) för att skapa ett program. Om du vill att programmet ska ansluta till en fjärran sluten HBase-Server ändrar du **hbase-site.xml** filen i det här exemplet för att använda det fullständiga domän namnet för Zookeeper. Exempel:
 

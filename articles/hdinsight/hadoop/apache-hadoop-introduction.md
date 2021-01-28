@@ -1,19 +1,16 @@
 ---
 title: Vad är Apache Hadoop och MapReduce – Azure HDInsight
 description: En introduktion till HDInsight och Apache Hadoop Technology stack och komponenter.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: ef1914499765beff9913f9735cf55736135f9d96
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e3fc23dd220a8d9764a64c453e9fb856307ac47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899628"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946520"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Vad är Apache Hadoop i Azure HDInsight?
 
@@ -27,7 +24,7 @@ Mer information om tillgängliga stackkomponenter med Hadoop-teknik i HDInsight 
 
 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) är ett ramverk för program vara som används för att skriva jobb som bearbetar stora mängder data. Indata delas upp i oberoende segment. Varje segment bearbetas parallellt över noderna i klustret. Ett MapReduce-jobb består av två funktioner:
 
-* **Mapper** : använder indata, analyserar dem (vanligt vis med filter-och sorterings åtgärder) och genererar tupler (nyckel/värde-par)
+* **Mapper**: använder indata, analyserar dem (vanligt vis med filter-och sorterings åtgärder) och genererar tupler (nyckel/värde-par)
 
 * **Minsknings** funktion: använder tupler som genereras av mappningen och utför en sammanfattnings åtgärd som skapar ett mindre kombinerat resultat från Mapper-data
 
@@ -44,7 +41,7 @@ MapReduce kan implementeras på olika språk. Java är den vanligaste implemente
 
 ## <a name="development-languages"></a>Utvecklings språk
 
-Språk eller ramverk som baseras på Java och Java Virtual Machine kan köras direkt som ett [MapReduce-jobb](..//hadoop/submit-apache-hadoop-jobs-programmatically.md). Exemplet som används i det här dokumentet är ett Java MapReduce-program. Icke-java-språk, t. ex. C#, python eller fristående körbara filer, måste använda **Hadoop-direktuppspelning** .
+Språk eller ramverk som baseras på Java och Java Virtual Machine kan köras direkt som ett [MapReduce-jobb](..//hadoop/submit-apache-hadoop-jobs-programmatically.md). Exemplet som används i det här dokumentet är ett Java MapReduce-program. Icke-java-språk, t. ex. C#, python eller fristående körbara filer, måste använda **Hadoop-direktuppspelning**.
 
 Hadoop-direktuppspelning kommunicerar med mapper och minskar för STDIN och STDOUT. Mapper och dereducerar Läs data en rad i taget från STDIN och skriver utdata till STDOUT. Varje rad som läses eller genereras av mapper och-minskningen måste vara i formatet för ett nyckel/värde-par, avgränsade med ett tabbtecken:
 

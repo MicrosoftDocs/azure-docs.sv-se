@@ -2,19 +2,19 @@
 title: Självstudie – Spark & Hive-verktyg för VSCode (Spark-program)
 description: Självstudie – Använd Spark & Hive-verktyg för VSCode för att utveckla Spark-program som är skrivna i python och skicka dem till en server lös Apache Spark-pool.
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: eb4a4c2c8d1d52690a07b784640d20d96ff2d600
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445672"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943766"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Självstudie: skapa ett Apache Spark program med VSCode med hjälp av en Synapse-arbetsyta
 

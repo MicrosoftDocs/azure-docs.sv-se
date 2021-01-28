@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505490"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944162"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Så här uppdaterar du aviserings regler eller åtgärds regler när deras mål resurs flyttas till en annan Azure-region
 
@@ -76,7 +76,7 @@ Om **bara några** av resurserna i omfånget har flyttats måste du ta bort de f
 ### <a name="change-scope-of-a-rule-from-the-azure-portal"></a>Ändra en regels omfång från Azure Portal
 
 1. Öppna regeln som du identifierade i föregående steg genom att klicka på den.
-2. Under **resurs**klickar du på **Redigera** och justerar omfånget efter behov.
+2. Under **resurs** klickar du på **Redigera** och justerar omfånget efter behov.
 3. Justera andra egenskaper för regeln efter behov.
 4. Klicka på **Spara**.
 
@@ -88,7 +88,7 @@ Om **bara några** av resurserna i omfånget har flyttats måste du ta bort de f
    1. Gå till avsnittet resurs grupper i portalen och öppna den resurs grupp som innehåller regeln.
    2. I avsnittet Översikt markerar du kryss rutan **Visa dold typ** och filtrerar efter relevant typ av regel.
    3. Välj den relevanta regeln om du vill visa information om den.
-   4. Under **Inställningar**väljer du **Exportera mall**.
+   4. Under **Inställningar** väljer du **Exportera mall**.
 2. Ändra mallen. Om det behövs kan du dela upp i två regler (relevanta för vissa fall av mått aviseringar, som anges ovan).
 3. Distribuera om mallen.
 
@@ -106,7 +106,7 @@ Om **bara några** av resurserna i omfånget har flyttats måste du ta bort de f
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Ändra omfånget för en regel med hjälp av Azure CLI
 
-1.  Hämta den befintliga regeln ([mått aviseringar](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [aktivitets logg aviseringar](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+1.  Hämta den befintliga regeln ([mått aviseringar](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [aktivitets logg aviseringar](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  Uppdatera regel omfånget direkt ([mått aviseringar](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [aktivitets logg aviseringar](/cli/azure/monitor/activity-log/alert/scope))
 3.  Om det behövs kan du dela upp i två regler (relevanta för vissa fall av mått aviseringar, som anges ovan).
 

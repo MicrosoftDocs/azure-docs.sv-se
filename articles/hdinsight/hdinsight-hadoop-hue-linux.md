@@ -1,19 +1,16 @@
 ---
 title: Nyans med Hadoop på HDInsight Linux-baserade kluster – Azure
 description: Lär dig hur du installerar nyans i HDInsight-kluster och använder tunnlar för att dirigera begär anden till nyans. Använd nyans för att bläddra i lagring och köra Hive eller gris.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546202"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945688"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Installera och använda nyans på HDInsight Hadoop-kluster
 
@@ -45,7 +42,7 @@ Använd informationen i tabellen nedan för skript åtgärden. Se [Anpassa HDIns
 |Egenskap |Värde |
 |---|---|
 |Skript typ:|– Anpassad|
-|Namn|Installera nyans|
+|Name|Installera nyans|
 |Bash-skript-URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Node-typ (er):|Head|
 
@@ -91,7 +88,7 @@ Du kan bara ha ett användar konto med nyans i vanliga kluster. Aktivera [Enterp
 
     ![HDInsight nyans-portalen använder Hive-redigeraren](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Använd Hive")
 
-2. På fliken **Assist** , under **databas** , bör du se **hivesampletable** . Det här är en exempel tabell som levereras med alla Hadoop-kluster i HDInsight. Ange en exempel fråga i den högra rutan och se utdata på fliken **resultat** i fönstret nedan, som visas i skärmdumpen.
+2. På fliken **Assist** , under **databas**, bör du se **hivesampletable**. Det här är en exempel tabell som levereras med alla Hadoop-kluster i HDInsight. Ange en exempel fråga i den högra rutan och se utdata på fliken **resultat** i fönstret nedan, som visas i skärmdumpen.
 
     ![HDInsight nyans-portalens Hive-fråga](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Kör Hive-fråga")
 
@@ -125,7 +122,7 @@ Du kan bara ha ett användar konto med nyans i vanliga kluster. Aktivera [Enterp
 
    Detta beror på ett känt problem. Som en lösning kan du ändra Ambari så att den aktiva Resource Manager också körs på den primära huvudnoden.
 
-1. Nyansen förstår WebHDFS medan HDInsight-kluster använder Azure Storage med hjälp av `wasbs://` . Det anpassade skriptet som används med skript åtgärd installerar därför WebWasb, som är en WebHDFS-kompatibel tjänst för att kommunicera med WASB. Så även om nyans portalen säger HDFS på platser (t. ex. När du flyttar musen över **fil läsaren** ) ska den tolkas som WASB.
+1. Nyansen förstår WebHDFS medan HDInsight-kluster använder Azure Storage med hjälp av `wasbs://` . Det anpassade skriptet som används med skript åtgärd installerar därför WebWasb, som är en WebHDFS-kompatibel tjänst för att kommunicera med WASB. Så även om nyans portalen säger HDFS på platser (t. ex. När du flyttar musen över **fil läsaren**) ska den tolkas som WASB.
 
 ## <a name="next-steps"></a>Nästa steg
 

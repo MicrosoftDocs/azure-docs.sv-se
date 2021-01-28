@@ -4,12 +4,12 @@ description: Den här artikeln beskriver hur du konfigurerar real tids visningen
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050790"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943858"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Så här ställer du in funktionen Live data (för hands version)
 
@@ -19,7 +19,7 @@ Den här funktionen stöder följande metoder för att kontrol lera åtkomsten t
 
 - AKS utan Kubernetes RBAC-auktorisering aktiverat
 - AKS aktive rad med Kubernetes RBAC-auktorisering
-    - AKS som kon figurer ATS med kluster rollen binding **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)**
+    - AKS som kon figurer ATS med kluster rollen binding **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials)**
 - AKS aktiverat med Azure Active Directory (AD) SAML-baserad enkel inloggning
 
 Dessa instruktioner kräver både administrativ åtkomst till ditt Kubernetes-kluster och om du konfigurerar att använda Azure Active Directory (AD) för användarautentisering, administrativ åtkomst till Azure AD.

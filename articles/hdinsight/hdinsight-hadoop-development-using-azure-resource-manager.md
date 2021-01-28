@@ -1,26 +1,23 @@
 ---
 title: Migrera till Azure Resource Manager verktyg för HDInsight
 description: Så här migrerar du till Azure Resource Manager utvecklingsverktyg för HDInsight-kluster
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629484"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945761"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrera till Azure Resource Manager-baserade utvecklingsverktyg för HDInsight-kluster
 
 HDInsight är inaktuellt Azure Service Manager-baserade (ASM) verktyg för HDInsight. Om du har använt Azure PowerShell, Azure klassisk CLI eller HDInsight .NET SDK för att arbeta med HDInsight-kluster, rekommenderar vi att du använder Azure Resource Manager versioner av PowerShell, CLI och .NET SDK. Den här artikeln innehåller länkar till hur du migrerar till den nya Resource Manager-baserade metoden. I tillämpliga fall visar det här dokumentet skillnaderna mellan ASM-och Resource Manager-metoderna för HDInsight.
 
 > [!IMPORTANT]  
-> Stödet för ASM-baserade PowerShell-, CLI-och .NET SDK upphör att fungera den **1 januari 2017** .
+> Stödet för ASM-baserade PowerShell-, CLI-och .NET SDK upphör att fungera den **1 januari 2017**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -83,7 +80,7 @@ Information om andra sätt att köra Apache Hadoop MapReduce, Apache Hive och Ap
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrerar Azure PowerShell till Azure Resource Manager
 Allmän information om Azure PowerShell i Azure Resource Manager läge finns i [använda Azure PowerShell med Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
-Azure PowerShell Resource Manager-cmdletar kan installeras sida vid sida med ASM-cmdletar. Cmdletarna från de två lägena kan särskiljas med deras namn.  Resource Manager-läget har *AzHDInsight* i cmdlet-namnen som jämförs med *AzureHDInsight* i det äldre Azure Service Management-läget.  Till exempel *New-AzHDInsightCluster* eller *New-AzureHDInsightCluster* . Parametrar och växlar kan ha namn på diskussions grupper och det finns många nya parametrar som är tillgängliga när du använder Resource Manager.  Till exempel kräver flera cmdlets en ny växel som heter *-ResourceGroupName* .
+Azure PowerShell Resource Manager-cmdletar kan installeras sida vid sida med ASM-cmdletar. Cmdletarna från de två lägena kan särskiljas med deras namn.  Resource Manager-läget har *AzHDInsight* i cmdlet-namnen som jämförs med *AzureHDInsight* i det äldre Azure Service Management-läget.  Till exempel *New-AzHDInsightCluster* eller *New-AzureHDInsightCluster*. Parametrar och växlar kan ha namn på diskussions grupper och det finns många nya parametrar som är tillgängliga när du använder Resource Manager.  Till exempel kräver flera cmdlets en ny växel som heter *-ResourceGroupName*.
 
 Innan du kan använda HDInsight-cmdlets måste du ansluta till ditt Azure-konto och skapa en ny resurs grupp:
 
@@ -134,17 +131,17 @@ Följande är de nya cmdletar som endast är tillgängliga i Resource Manager-l�
 
 **Skript åtgärd-relaterade cmdletar:**
 
-* **Get-AzHDInsightPersistedScriptAction** : hämtar de bestående skript åtgärderna för ett kluster och listar dem i kronologisk ordning, eller hämtar information om en angiven beständiga skript åtgärd. 
-* **Get-AzHDInsightScriptActionHistory** : hämtar skript åtgärds historiken för ett kluster och listar det i omvänd kronologisk ordning, eller hämtar information om en tidigare körd skript åtgärd. 
-* **Remove-AzHDInsightPersistedScriptAction** : tar bort en bestående skript åtgärd från ett HDInsight-kluster.
-* **Set-AzHDInsightPersistedScriptAction** : anger en tidigare utförd skript åtgärd som en bestående skript åtgärd.
-* **Submit-AzHDInsightScriptAction** : skickar en ny skript åtgärd till ett Azure HDInsight-kluster. 
+* **Get-AzHDInsightPersistedScriptAction**: hämtar de bestående skript åtgärderna för ett kluster och listar dem i kronologisk ordning, eller hämtar information om en angiven beständiga skript åtgärd. 
+* **Get-AzHDInsightScriptActionHistory**: hämtar skript åtgärds historiken för ett kluster och listar det i omvänd kronologisk ordning, eller hämtar information om en tidigare körd skript åtgärd. 
+* **Remove-AzHDInsightPersistedScriptAction**: tar bort en bestående skript åtgärd från ett HDInsight-kluster.
+* **Set-AzHDInsightPersistedScriptAction**: anger en tidigare utförd skript åtgärd som en bestående skript åtgärd.
+* **Submit-AzHDInsightScriptAction**: skickar en ny skript åtgärd till ett Azure HDInsight-kluster. 
 
 Mer information om användning finns i [Anpassa Linux-baserade HDInsight-kluster med skript åtgärder](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Kluster identitet-relaterade cmdlet: ar:**
 
-* **Add-AzHDInsightClusterIdentity** : lägger till en kluster identitet till ett kluster konfigurations objekt så att HDInsight-klustret kan komma åt Azure Data Lake Storage. Se [skapa ett HDInsight-kluster med data Lake Storage med hjälp av Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Add-AzHDInsightClusterIdentity**: lägger till en kluster identitet till ett kluster konfigurations objekt så att HDInsight-klustret kan komma åt Azure Data Lake Storage. Se [skapa ett HDInsight-kluster med data Lake Storage med hjälp av Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Exempel
 **Skapa kluster**

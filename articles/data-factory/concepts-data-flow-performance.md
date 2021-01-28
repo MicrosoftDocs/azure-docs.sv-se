@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858594"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944991"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestanda-och justerings guiden för att mappa data flöden
 
@@ -115,7 +115,7 @@ Data flöden distribuerar data bearbetningen över olika noder i ett Spark-klust
 
 Standard kluster storleken är fyra driv rutins noder och fyra arbetsnoder.  När du bearbetar mer data rekommenderas större kluster. Nedan visas möjliga alternativ för storleks ändring:
 
-| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Obs! |
+| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Kommentarer |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Inte tillgängligt för beräknings optimering |
 | 8 | 8 | 16 | |
@@ -161,7 +161,7 @@ Azure SQL Database har ett unikt partitionerings alternativ som kallas källa pa
 
 #### <a name="isolation-level"></a>Isolerings nivå
 
-Isolerings nivån för läsningen på ett Azure SQL-källdokument påverkar prestandan. Om du väljer Läs ej allokerat får du snabbast prestanda och förhindrar alla databas lås. Om du vill veta mer om isolerings nivåer för SQL kan du se [förstå isolerings nivåer](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels).
+Isolerings nivån för läsningen på ett Azure SQL-källdokument påverkar prestandan. Om du väljer Läs ej allokerat får du snabbast prestanda och förhindrar alla databas lås. Om du vill veta mer om isolerings nivåer för SQL kan du se [förstå isolerings nivåer](/sql/connect/jdbc/understanding-isolation-levels).
 
 #### <a name="read-using-query"></a>Läsa med fråga
 
@@ -208,7 +208,7 @@ De kan båda göras inbyggda med pre-och post-SQL-skript i en Azure SQL DB-eller
 ![Inaktivera index](media/data-flow/disable-indexes-sql.png "Inaktivera index")
 
 > [!WARNING]
-> Vid inaktive ring av index tar data flödet effektiv kontroll över en databas och frågor är sannolikt inte att lyckas för tillfället. Därför utlöses många ETL-jobb mitt i natten för att undvika den här konflikten. Mer information finns i [begränsningarna vid inaktive ring av index](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints)
+> Vid inaktive ring av index tar data flödet effektiv kontroll över en databas och frågor är sannolikt inte att lyckas för tillfället. Därför utlöses många ETL-jobb mitt i natten för att undvika den här konflikten. Mer information finns i [begränsningarna vid inaktive ring av index](/sql/relational-databases/indexes/disable-indexes-and-constraints)
 
 #### <a name="scaling-up-your-database"></a>Skala upp databasen
 
@@ -216,7 +216,7 @@ Schemalägg en storleks ändring för din källa och mottagar Azure SQL DB och D
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics-mottagare
 
-När du skriver till Azure Synapse Analytics ska du kontrol lera att **Aktivera mellanlagring** är inställt på sant. Detta gör att ADF kan skriva med [kommandot SQL Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) som effektivt läser in data i bulk. Du måste referera till ett Azure Data Lake Storage Gen2-eller Azure Blob Storage-konto för att kunna mellanlagra data när du använder mellanlagring.
+När du skriver till Azure Synapse Analytics ska du kontrol lera att **Aktivera mellanlagring** är inställt på sant. Detta gör att ADF kan skriva med [kommandot SQL Copy](/sql/t-sql/statements/copy-into-transact-sql) som effektivt läser in data i bulk. Du måste referera till ett Azure Data Lake Storage Gen2-eller Azure Blob Storage-konto för att kunna mellanlagra data när du använder mellanlagring.
 
 Förutom mellanlagring gäller samma rekommenderade metoder för Azure Synapse Analytics som Azure SQL Database.
 

@@ -1,19 +1,16 @@
 ---
 title: HBase kluster replikering i virtuella nätverk – Azure HDInsight
 description: Lär dig hur du konfigurerar HBase-replikering från en HDInsight-version till en annan för belastnings utjämning, hög tillgänglighet, migrering av noll-nedtid och uppdateringar samt haveri beredskap.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021800"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946419"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurera Apache HBase Cluster Replication i Azure Virtual Networks
 
@@ -68,7 +65,7 @@ Några hårdkodade värden i mallen:
 
 | Egenskap | Värde |
 |----------|-------|
-| Plats | USA, västra |
+| Location | USA, västra |
 | VNet-namn | &lt;ClusterNamePrevix>-vnet1 |
 | Prefix för adress utrymme | 10.1.0.0/16 |
 | Namn på undernät | undernät 1 |

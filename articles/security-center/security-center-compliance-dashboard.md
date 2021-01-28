@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: b0baa532e8ca986e76cfb938a198d8a8697bd4dd
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757702"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944245"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Självstudie: Förbättra regelefterlevnaden
 
@@ -38,7 +38,7 @@ I den här kursen får du lära du dig att:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att gå igenom de funktioner som beskrivs i den här självstudien:
 

@@ -1,18 +1,15 @@
 ---
 title: Migrera Azure HDInsight 3,6 Apache Storm till HDInsight 4,0 Apache Spark
 description: Skillnader och migreringsjobb för migrering av Apache Storm arbets belastningar till Spark streaming eller Spark-strukturerad strömning.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081204"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944785"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrera Azure HDInsight 3,6 Apache Storm till HDInsight 4,0 Apache Spark
 
@@ -67,7 +64,7 @@ Storm-topologier består av flera komponenter som är ordnade i en riktad acykli
 
 Storm består av följande tre daemonar som håller Storm-klustret fungerande.
 
-|Program |Beskrivning |
+|Program |Description |
 |---|---|
 |Nimbus|I likhet med Hadoop JobTracker ansvarar det att distribuera kod runt klustret och tilldela uppgifter till datorer och övervakning av fel.|
 |Zookeeper|Används för kluster samordning.|
@@ -104,7 +101,7 @@ Spark-strukturerad strömning representerar en data ström som en tabell som är
 
 I strukturerad strömning tas data emot i systemet och matas direkt in i en inmatnings tabell. Du skriver frågor (med hjälp av DataFrame och data uppsättnings-API: er) som utför åtgärder mot den här indata-tabellen.
 
-Frågeresultatet ger till gång till en *resultat tabell*som innehåller resultatet från frågan. Du kan rita data från resultat tabellen för ett externt data lager, till exempel en Relations databas.
+Frågeresultatet ger till gång till en *resultat tabell* som innehåller resultatet från frågan. Du kan rita data från resultat tabellen för ett externt data lager, till exempel en Relations databas.
 
 Tiden för när data bearbetas från inmatnings tabellen styrs av utlösarens intervall. Som standard är utlösnings intervallet noll, så att strukturerad strömning försöker bearbeta data så fort de anländer. I praktiken innebär det att så fort Structured streaming utförs bearbetningen av den föregående frågans körning, startas en annan bearbetnings körning mot eventuella nyligen mottagna data. Du kan konfigurera utlösaren att köras med ett intervall, så att strömmande data bearbetas i tidsbaserade batchar.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223031"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945156"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Associera en offentlig IP-adress till en virtuell dator
 
@@ -26,7 +26,7 @@ I den här artikeln får du lära dig hur du associerar en offentlig IP-adress t
 
 Du kan använda [Azure Portal](#azure-portal), Azures [kommando rads gränssnitt](#azure-cli) (CLI) eller [PowerShell](#powershell) för att associera en offentlig IP-adress till en virtuell dator.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Bläddra till eller Sök efter den virtuella dator som du vill lägga till den offentliga IP-adressen till och välj sedan den.
@@ -65,7 +65,7 @@ Du kan använda [Azure Portal](#azure-portal), Azures [kommando rads gränssnitt
 Installera [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)eller Använd Azure Cloud Shell. Azure Cloud Shell är ett kostnadsfritt Bash-gränssnitt som du kan köra direkt i Azure-portalen. Den har Azure CLI förinstallerat och har konfigurerats för användning med ditt konto. Välj knappen **prova** i CLI-kommandona som följer. Om du väljer **försök** anropas ett Cloud Shell som du kan logga in på ditt Azure-konto med.
 
 1. Om du använder CLI lokalt i bash loggar du in på Azure med `az login` .
-2. En offentlig IP-adress är kopplad till en IP-konfiguration för ett nätverks gränssnitt som är kopplat till en virtuell dator. Använd kommandot [AZ Network NIC-IP-config Update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) för att associera en offentlig IP-adress med en IP-konfiguration. I följande exempel associeras en befintlig offentlig IP-adress med namnet *myVMPublicIP* till IP-konfigurationen med namnet *ipconfigmyVM* för ett befintligt nätverks gränssnitt med namnet *myVMVMNic* som finns i en resurs grupp med namnet *myResourceGroup*.
+2. En offentlig IP-adress är kopplad till en IP-konfiguration för ett nätverks gränssnitt som är kopplat till en virtuell dator. Använd kommandot [AZ Network NIC-IP-config Update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) för att associera en offentlig IP-adress med en IP-konfiguration. I följande exempel associeras en befintlig offentlig IP-adress med namnet *myVMPublicIP* till IP-konfigurationen med namnet *ipconfigmyVM* för ett befintligt nätverks gränssnitt med namnet *myVMVMNic* som finns i en resurs grupp med namnet *myResourceGroup*.
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ Installera [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-netwo
      --public-ip-address myVMPublicIP
    ```
 
-   - Om du inte har en befintlig offentlig IP-adress använder du kommandot [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) för att skapa ett. Följande kommando skapar till exempel en offentlig IP-adress med namnet *myVMPublicIP* i en resurs grupp med namnet *myResourceGroup*.
+   - Om du inte har en befintlig offentlig IP-adress använder du kommandot [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa ett. Följande kommando skapar till exempel en offentlig IP-adress med namnet *myVMPublicIP* i en resurs grupp med namnet *myResourceGroup*.
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +84,7 @@ Installera [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-netwo
      > [!NOTE]
      > Föregående kommando skapar en offentlig IP-adress med standardvärden för flera inställningar som du kanske vill anpassa. Mer information om inställningar för offentliga IP-adresser finns i [skapa en offentlig IP-adress](virtual-network-public-ip-address.md#create-a-public-ip-address). Adressen tilldelas från en pool med offentliga IP-adresser som används för varje Azure-region. Om du vill se en lista över adresspooler som används i varje region, se [Microsoft Azure Data Center IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653).
 
-   - Om du inte känner till namnet på ett nätverks gränssnitt som är kopplat till den virtuella datorn använder du kommandot [AZ VM NIC List](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) för att visa dem. Följande kommando visar till exempel namnen på de nätverks gränssnitt som är kopplade till en virtuell dator med namnet *myVM* i en resurs grupp med namnet *myResourceGroup*:
+   - Om du inte känner till namnet på ett nätverks gränssnitt som är kopplat till den virtuella datorn använder du kommandot [AZ VM NIC List](/cli/azure/vm/nic#az-vm-nic-list) för att visa dem. Följande kommando visar till exempel namnen på de nätverks gränssnitt som är kopplade till en virtuell dator med namnet *myVM* i en resurs grupp med namnet *myResourceGroup*:
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +98,13 @@ Installera [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-netwo
 
      I det tidigare exemplet är *myVMVMNic* namnet på nätverks gränssnittet.
 
-   - Om du inte känner till namnet på en IP-konfiguration för ett nätverks gränssnitt använder du kommandot [AZ Network NIC IP-config List](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) för att hämta dem. Följande kommando visar till exempel namnen på IP-konfigurationerna för ett nätverks gränssnitt med namnet *myVMVMNic* i en resurs grupp med namnet *myResourceGroup*:
+   - Om du inte känner till namnet på en IP-konfiguration för ett nätverks gränssnitt använder du kommandot [AZ Network NIC IP-config List](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) för att hämta dem. Följande kommando visar till exempel namnen på IP-konfigurationerna för ett nätverks gränssnitt med namnet *myVMVMNic* i en resurs grupp med namnet *myResourceGroup*:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. Visa den offentliga IP-adress som tilldelats IP-konfigurationen med kommandot [AZ VM List-IP-addresss](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) . I följande exempel visas de IP-adresser som har tilldelats till en befintlig virtuell dator med namnet *myVM* i en resurs grupp med namnet *myResourceGroup*.
+3. Visa den offentliga IP-adress som tilldelats IP-konfigurationen med kommandot [AZ VM List-IP-addresss](/cli/azure/vm#az-vm-list-ip-addresses) . I följande exempel visas de IP-adresser som har tilldelats till en befintlig virtuell dator med namnet *myVM* i en resurs grupp med namnet *myResourceGroup*.
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table

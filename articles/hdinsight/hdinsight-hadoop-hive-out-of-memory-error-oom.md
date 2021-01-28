@@ -2,19 +2,16 @@
 title: Åtgärda fel i en Hive-minnes fel i Azure HDInsight
 description: Åtgärda fel i en Hive-minnes fel i HDInsight. Kund scenariot är en fråga över många stora tabeller.
 keywords: slut på minnes fel, OOM, Hive-inställningar
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546185"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945718"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Åtgärda ett Apache Hive slut på minnes fel i Azure HDInsight
 
@@ -91,7 +88,7 @@ Våra support-och teknik team hittade ett av de problem som orsakade att minnet 
 
 "När Hive. Auto. convert. Join. noconditionaltask = True vi kontrollerar noconditionaltask. size och om summan av tabell storlekarna i kart kopplingen är mindre än noconditionaltask. storleken på planen genererar en kart koppling, problemet med detta är att beräkningen inte tar hänsyn till den overhead som introduceras av en annan hash-implementation som resultat om summan av indatatyperna är mindre än noconditionaltask storlek med en liten marginal fråga kommer att lanseras OOM."
 
-**Hive. Auto. convert. Join. noconditionaltask** i hive-site.xml-filen har angetts till **True** :
+**Hive. Auto. convert. Join. noconditionaltask** i hive-site.xml-filen har angetts till **True**:
 
 ```xml
 <property>
@@ -109,10 +106,10 @@ Det är troligt att kopplings koppling var orsaken till minnes felet i Java-heap
 
 ![Minnes diagram för Tez container: Hive-slut på minnes fel](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-I blogg inlägget föreslår följande två minnes inställningar att behållar minnet för heap: **Hive. Tez. container. size** och **Hive. Tez. java. |. väljer** . Från vår erfarenhet innebär det inte att behållarens storlek är för litet. Det innebär att Java-heap-storleken (Hive. Tez. java. önskad) är för liten. Så när du ser slut på minne kan du försöka öka **Hive. Tez. java.** Välj. Om det behövs kan du behöva öka **Hive. Tez. container. size** . Inställningen **Java.** den ska vara runt 80% av **container. size** .
+I blogg inlägget föreslår följande två minnes inställningar att behållar minnet för heap: **Hive. Tez. container. size** och **Hive. Tez. java. |. väljer**. Från vår erfarenhet innebär det inte att behållarens storlek är för litet. Det innebär att Java-heap-storleken (Hive. Tez. java. önskad) är för liten. Så när du ser slut på minne kan du försöka öka **Hive. Tez. java.** Välj. Om det behövs kan du behöva öka **Hive. Tez. container. size**. Inställningen **Java.** den ska vara runt 80% av **container. size**.
 
 > [!NOTE]  
-> Inställningen **Hive. Tez. java.** Välj måste alltid vara mindre än **Hive. Tez. container. size** .
+> Inställningen **Hive. Tez. java.** Välj måste alltid vara mindre än **Hive. Tez. container. size**.
 
 Eftersom en D12-dator har 28 GB minne valde vi att använda en behållar storlek på 10 GB (10240 MB) och tilldela 80% till Java. väljer du:
 

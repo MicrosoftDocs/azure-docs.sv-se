@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f37d0779f245301b3750329658a580dc3f9e42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328878"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946210"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installera och konfigurera Windows Azure Diagnostics-tillägget (WAD)
 [Tillägget Azure Diagnostics](diagnostics-extension-overview.md) är en agent i Azure Monitor som samlar in övervaknings data från gäst operativ systemet och arbets belastningar på virtuella Azure-datorer och andra beräknings resurser. Den här artikeln innehåller information om hur du installerar och konfigurerar Windows Diagnostics-tillägget och en beskrivning av hur data lagras i och Azure Storage konto.
@@ -57,7 +57,7 @@ Du kan installera och Konfigurera diagnostik-tillägget på en enskild virtuell 
 
    ![Kraschdumpar](media/diagnostics-extension-windows-install/crash-dumps.png)
 
-8. På fliken **mottagare** anger du om du vill skicka data till andra platser än Azure Storage. Om du väljer **Azure Monitor**skickas gäst prestanda data till Azure Monitor mått. Du kan inte konfigurera händelse Hubbs mottagaren med hjälp av Azure Portal.
+8. På fliken **mottagare** anger du om du vill skicka data till andra platser än Azure Storage. Om du väljer **Azure Monitor** skickas gäst prestanda data till Azure Monitor mått. Du kan inte konfigurera händelse Hubbs mottagaren med hjälp av Azure Portal.
 
    ![Skärm bild som visar fliken mottagare med alternativet Skicka diagnostikdata till Azure Monitor aktiverat.](media/diagnostics-extension-windows-install/sinks.png)
    
@@ -65,7 +65,7 @@ Du kan installera och Konfigurera diagnostik-tillägget på en enskild virtuell 
    
    ![Hanterad entitet](media/diagnostics-extension-windows-install/managed-entity.png)
 
-9. I **agenten**kan du ändra lagrings kontot, ange disk kvoten och ange om du vill samla in diagnostiska infrastruktur loggar.  
+9. I **agenten** kan du ändra lagrings kontot, ange disk kvoten och ange om du vill samla in diagnostiska infrastruktur loggar.  
 
    ![Skärm bild som visar fliken agent med alternativet att ange lagrings kontot.](media/diagnostics-extension-windows-install/agent.png)
 
@@ -78,7 +78,7 @@ Du kan installera och Konfigurera diagnostik-tillägget på en enskild virtuell 
 Se [använda övervakning och diagnostik med en virtuell Windows-dator och Azure Resource Manager mallar](../../virtual-machines/extensions/diagnostics-template.md) för distribution av diagnostikprogrammet med Azure Resource Manager mallar. 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-distribution
-Azure CLI kan användas för att distribuera Azure-diagnostik-tillägget till en befintlig virtuell dator som använder [AZ VM-tillägg](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) som i följande exempel. 
+Azure CLI kan användas för att distribuera Azure-diagnostik-tillägget till en befintlig virtuell dator som använder [AZ VM-tillägg](/cli/azure/vm/extension#az-vm-extension-set) som i följande exempel. 
 
 ```azurecli
 az vm extension set \
@@ -192,7 +192,7 @@ Se även [använda PowerShell för att aktivera Azure-diagnostik på en virtuell
 I följande tabell visas olika typer av data som har samlats in från diagnostikprogrammet och om de lagras som en tabell eller en blob. Data som lagras i tabeller kan också lagras i blobbar beroende på [inställningen StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) i din offentliga konfiguration.
 
 
-| Data | Lagringstyp | Beskrivning |
+| Data | Lagringstyp | Description |
 |:---|:---|:---|
 | WADDiagnosticInfrastructureLogsTable | Tabell | Diagnostisk övervakning och konfigurations ändringar. |
 | WADDirectoriesTable | Tabell | Kataloger som diagnostiken övervakar.  Detta inkluderar IIS-loggar, IIS misslyckade begär Anden och anpassade kataloger.  Platsen för blobb logg filen anges i fältet container och namnet på blobben är i fältet RelativePath.  Fältet AbsolutePath anger platsen och namnet på filen som den fanns på den virtuella Azure-datorn. |

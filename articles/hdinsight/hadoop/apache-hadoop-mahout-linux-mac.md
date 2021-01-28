@@ -1,19 +1,16 @@
 ---
 title: Skapa rekommendationer med Apache Mahout i Azure HDInsight
 description: Lär dig hur du använder Apache Mahout Machine Learning-biblioteket för att skapa film rekommendationer med HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: a4e4a45519526dd0eeb938a3b83e737d82589c1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207671"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946502"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Skapa rekommendationer med Apache Mahout i Azure HDInsight
 
@@ -23,7 +20,7 @@ Mahout är ett [maskin inlärnings](https://en.wikipedia.org/wiki/Machine_learni
 
 Mer information om versionen av Mahout i HDInsight finns i HDInsight- [versioner och Apache Hadoop-komponenter](../hdinsight-component-versioning.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Ett Apache Hadoop kluster i HDInsight. Se [Kom igång med HDInsight på Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -33,11 +30,11 @@ En av de funktioner som tillhandahålls av Mahout är en rekommendations motor. 
 
 Följande arbets flöde är ett förenklat exempel som använder film data:
 
-* **Co-förekomst**: Johan, Alice och Bob all gillade *krig*, Empire går *tillbaka*och *returnerar Jedi*. Mahout avgör att användare som gillar någon av dessa filmer också är de andra två.
+* **Co-förekomst**: Johan, Alice och Bob all gillade *krig*, Empire går *tillbaka* och *returnerar Jedi*. Mahout avgör att användare som gillar någon av dessa filmer också är de andra två.
 
-* **Co-förekomst**: Bob och Alice gillade även *den fiktiva Menace*, *angrepp av kloner*och *Revenge för Sith*. Mahout avgör att användare som gillade de föregående tre filmerna även liknar dessa tre filmer.
+* **Co-förekomst**: Bob och Alice gillade även *den fiktiva Menace*, *angrepp av kloner* och *Revenge för Sith*. Mahout avgör att användare som gillade de föregående tre filmerna även liknar dessa tre filmer.
 
-* **Rekommendation för likhet**: eftersom Johan gillade de tre första filmerna, tittar Mahout på filmer som andra med liknande inställningar gillade, men Joe har inte tittat på (gilla/klassificerat). I det här fallet rekommenderar Mahout *den fiktiva Menace*, *angrepp av kloner*och *Revenge i Sith*.
+* **Rekommendation för likhet**: eftersom Johan gillade de tre första filmerna, tittar Mahout på filmer som andra med liknande inställningar gillade, men Joe har inte tittat på (gilla/klassificerat). I det här fallet rekommenderar Mahout *den fiktiva Menace*, *angrepp av kloner* och *Revenge i Sith*.
 
 ### <a name="understanding-the-data"></a>Förstå data
 
@@ -160,7 +157,7 @@ De data som finns i `user-ratings.txt` har en struktur av `userID` , `movieID` ,
    print "------------------------"
    ```
 
-    Tryck på **CTRL-X**, **Y**och slutligen **RETUR** för att spara data.
+    Tryck på **CTRL-X**, **Y** och slutligen **RETUR** för att spara data.
 
 4. Kör python-skriptet. Följande kommando förutsätter att du är i katalogen där alla filer hämtades:
 

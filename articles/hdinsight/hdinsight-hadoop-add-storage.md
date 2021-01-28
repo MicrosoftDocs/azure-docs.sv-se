@@ -1,19 +1,16 @@
 ---
 title: Lägg till ytterligare Azure Storage konton i HDInsight
 description: Lär dig hur du lägger till ytterligare Azure Storage konton i ett befintligt HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 51977c00dc8c9932def89d54ec1b6ec34afad652
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542003"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945938"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Lägg till ytterligare lagrings konton i HDInsight
 
@@ -97,7 +94,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. I en webbläsare går du till `https://CLUSTERNAME.azurehdinsight.net` , där `CLUSTERNAME` är namnet på klustret.
 
-1. Navigera till **HDFS**  >  **configs**  >  **Advanced**  >  **anpassad Core-site** .
+1. Navigera till **HDFS**  >  **configs**  >  **Advanced**  >  **anpassad Core-site**.
 
 1. Observera de nycklar som börjar med `fs.azure.account.key` . Konto namnet kommer att ingå i den nyckel som visas i den här exempel bilden:
 
@@ -107,7 +104,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. I en webbläsare går du till `https://CLUSTERNAME.azurehdinsight.net` , där `CLUSTERNAME` är namnet på klustret.
 
-1. Navigera till **HDFS**  >  **configs**  >  **Advanced**  >  **anpassad Core-site** .
+1. Navigera till **HDFS**  >  **configs**  >  **Advanced**  >  **anpassad Core-site**.
 
 1. Ta bort följande nycklar:
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`

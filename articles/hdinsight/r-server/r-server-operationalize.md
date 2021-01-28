@@ -1,19 +1,16 @@
 ---
 title: Operationalisera ML-tjänster i HDInsight – Azure
 description: Lär dig hur du operationalisera din data modell för att göra förutsägelser med ML-tjänster i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536274"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944015"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisera ML Services-kluster på Azure HDInsight
 
@@ -21,7 +18,7 @@ När du har använt ML Services-kluster i HDInsight för att slutföra din data 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett ML Services-kluster i HDInsight. Se [skapa Apache Hadoop kluster med Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) och välj ml- **tjänster** för **kluster typ** .
+* Ett ML Services-kluster i HDInsight. Se [skapa Apache Hadoop kluster med Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) och välj ml- **tjänster** för **kluster typ**.
 
 * En SSH-klient (Secure Shell): En SSH-klient används för att fjärransluta till HDInsight-klustret och köra kommandon direkt på klustret. Mer information finns i [använda SSH med HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -54,11 +51,11 @@ När du har använt ML Services-kluster i HDInsight för att slutföra din data 
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. Du visas med alternativen för att välja bland. Välj det första alternativet, som du ser i följande skärm bild, för att **konfigurera ml Server för driftsättning** .
+1. Du visas med alternativen för att välja bland. Välj det första alternativet, som du ser i följande skärm bild, för att **konfigurera ml Server för driftsättning**.
 
     ![Verktyget R Server Administration Välj](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. Du visas nu med alternativet att välja hur du vill operationalisera ML Server. Från de visade alternativen väljer du det första genom att ange **en** .
+1. Du visas nu med alternativet att välja hur du vill operationalisera ML Server. Från de visade alternativen väljer du det första genom att ange **en**.
 
     ![R Server administrations verktyg operationalisera](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -86,7 +83,7 @@ När du har använt ML Services-kluster i HDInsight för att slutföra din data 
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Långa fördröjningar när webb tjänsten förbrukas på Apache Spark
 
-Om du stöter på långa fördröjningar när du försöker använda en webb tjänst som skapats med mrsdeploy-funktioner i en Apache Spark beräknings kontext kan du behöva lägga till några saknade mappar. Spark-programmet tillhör en användare som kallas ' *rserve2* ' när den anropas från en webbtjänst med hjälp av mrsdeploy-funktioner. Så här kan du lösa problemet:
+Om du stöter på långa fördröjningar när du försöker använda en webb tjänst som skapats med mrsdeploy-funktioner i en Apache Spark beräknings kontext kan du behöva lägga till några saknade mappar. Spark-programmet tillhör en användare som kallas '*rserve2*' när den anropas från en webbtjänst med hjälp av mrsdeploy-funktioner. Så här kan du lösa problemet:
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -155,17 +152,17 @@ Följ dessa steg om du vill inaktivera arbetsnoder:
 
 1. Välj Worker-noder (som ska inaktive RAS).
 
-1. Klicka på **åtgärder**  >  **markerade värdar**  >  **värdar**  >  **Aktivera underhålls läge** . I bilden nedan har vi till exempel valt att inaktivera wn3 och wn4.  
+1. Klicka på **åtgärder**  >  **markerade värdar**  >  **värdar**  >  **Aktivera underhålls läge**. I bilden nedan har vi till exempel valt att inaktivera wn3 och wn4.  
 
    ![Apache Ambari aktivera underhålls läge](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Välj **åtgärder**  >  **valda värdar**  >  **DataNodes** > Klicka på **inaktivera** .
-* Välj **åtgärder**  >  **valda värdar**  >  **) nodemanagers** > Klicka på **inaktivera** .
-* Välj **åtgärder**  >  **valda värdar**  >  **DataNodes** > Klicka på **stoppa** .
-* Välj **åtgärder**  >  **valda värdar**  >  **) nodemanagers** > Klicka på **stoppa** .
-* Välj **åtgärder** som är  >  **markerade värdar**  >  **värdar** > Klicka på **stoppa alla komponenter** .
+* Välj **åtgärder**  >  **valda värdar**  >  **DataNodes** > Klicka på **inaktivera**.
+* Välj **åtgärder**  >  **valda värdar**  >  **) nodemanagers** > Klicka på **inaktivera**.
+* Välj **åtgärder**  >  **valda värdar**  >  **DataNodes** > Klicka på **stoppa**.
+* Välj **åtgärder**  >  **valda värdar**  >  **) nodemanagers** > Klicka på **stoppa**.
+* Välj **åtgärder** som är  >  **markerade värdar**  >  **värdar** > Klicka på **stoppa alla komponenter**.
 * Avmarkera arbetsnoderna och markera huvudnoderna.
-* Välj **åtgärder**  >  **valda värdar** > " **värdar**  >  **starta om alla komponenter** .
+* Välj **åtgärder**  >  **valda värdar** > "**värdar**  >  **starta om alla komponenter**.
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Steg 2: Konfigurera Compute-noder på varje inaktive rad arbetsnoder
 
@@ -177,7 +174,7 @@ Följ dessa steg om du vill inaktivera arbetsnoder:
     dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
     ```
 
-1. Ange **1** om du vill välja alternativ **Konfigurera ml Server för driftsättning** .
+1. Ange **1** om du vill välja alternativ **Konfigurera ml Server för driftsättning**.
 
 1. Välj alternativet **C** för att välja `C. Compute node` . Då konfigureras beräkningsnoden på arbetsnoden.
 

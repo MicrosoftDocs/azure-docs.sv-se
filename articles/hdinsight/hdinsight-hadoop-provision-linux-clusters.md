@@ -1,19 +1,16 @@
 ---
 title: Konfigurera kluster i HDInsight med Apache Hadoop, Apache Spark, Apache Kafka med mera
 description: Konfigurera Hadoop-, Kafka-, Spark-, HBase-, R Server-eller Storm-kluster för HDInsight från en webbläsare, den klassiska Azure CLI, Azure PowerShell, REST eller SDK.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546134"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945545"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurera kluster i HDInsight med Apache Hadoop, Apache Spark, Apache Kafka med mera
 
@@ -32,18 +29,18 @@ Om du använder flera kluster tillsammans, vill du skapa ett virtuellt nätverk 
 
 I följande tabell visas de olika metoder som du kan använda för att skapa ett HDInsight-kluster.
 
-| Kluster som skapats med | Webbläsare | Kommandorad | REST-API | SDK |
+| Kluster som skapats med | Webbläsare | Kommandorad | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure-portalen](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
+| [Klammerparentes](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager-mallar](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Den här artikeln vägleder dig genom installationen i [Azure Portal](https://portal.azure.com), där du kan skapa ett HDInsight-kluster.
 
-## <a name="basics"></a>Grundläggande inställningar
+## <a name="basics"></a>Grunder
 
 ![snabb alternativ för HDInsight-skapande](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -92,7 +89,7 @@ Välj HDInsight-versionen för det här klustret. Mer information finns i [HDIns
 
 Med HDInsight-kluster kan du konfigurera två användar konton när klustret skapas:
 
-* Användar namn för kluster inloggning: standard användar namnet är *admin* . Den grundläggande konfigurationen används på Azure Portal. Ibland kallas det "" kluster användare "eller" HTTP-användare ".
+* Användar namn för kluster inloggning: standard användar namnet är *admin*. Den grundläggande konfigurationen används på Azure Portal. Ibland kallas det "" kluster användare "eller" HTTP-användare ".
 * Secure Shell (SSH)-användar namn: används för att ansluta till klustret via SSH. Mer information finns i [använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 HTTP-användarnamnet har följande begränsningar:
@@ -120,7 +117,7 @@ HDInsight-kluster kan använda följande lagrings alternativ:
 * Azure Data Lake Storage Gen1
 * Azure Storage Generell användning v2
 * Azure Storage Generell användning v1
-* Azure Storage Block-Blob ( **stöds endast som sekundär lagring** )
+* Azure Storage Block-Blob (**stöds endast som sekundär lagring**)
 
 Mer information om lagrings alternativ med HDInsight finns i [jämföra lagrings alternativ för användning med Azure HDInsight-kluster](hdinsight-hadoop-compare-storage-options.md).
 
@@ -153,7 +150,7 @@ Använd en anpassad metaarkiv om du vill behålla Hive-tabellerna när du har ta
 An-HDInsight metaarkiv som skapas för en HDInsight-kluster version kan inte delas mellan olika HDInsight-kluster versioner. En lista över HDInsight-versioner finns i [HDInsight-versioner som stöds](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 > [!IMPORTANT]
-> Standard-metaarkiv tillhandahåller en Azure SQL Database med en **grundläggande nivå 5-DTU-gräns (inte uppgraderings bara)** ! Lämpligt för grundläggande testnings ändamål. För stora eller produktions arbets belastningar rekommenderar vi att du migrerar till en extern metaarkiv.
+> Standard-metaarkiv tillhandahåller en Azure SQL Database med en **grundläggande nivå 5-DTU-gräns (inte uppgraderings bara)**! Lämpligt för grundläggande testnings ändamål. För stora eller produktions arbets belastningar rekommenderar vi att du migrerar till en extern metaarkiv.
 
 #### <a name="sql-database-for-oozie"></a>SQL Database för Oozie
 
@@ -172,7 +169,7 @@ Ambari används för att övervaka HDInsight-kluster, göra konfigurations ändr
 
 ### <a name="enterprise-security-package"></a>Säkerhets paket för företag
 
-För Hadoop-, Spark-, HBase-, Kafka-och interaktiv fråga-kluster typer kan du välja att aktivera **Enterprise Security Package** . Det här paketet ger möjlighet att ha en säkrare kluster konfiguration genom att använda Apache Ranger och integrera med Azure Active Directory. Mer information finns i [Översikt över företags säkerhet i Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
+För Hadoop-, Spark-, HBase-, Kafka-och interaktiv fråga-kluster typer kan du välja att aktivera **Enterprise Security Package**. Det här paketet ger möjlighet att ha en säkrare kluster konfiguration genom att använda Apache Ranger och integrera med Azure Active Directory. Mer information finns i [Översikt över företags säkerhet i Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
 
 Med säkerhets paketet för företag kan du integrera HDInsight med Active Directory och Apache Ranger. Flera användare kan skapas med hjälp av Enterprise Security-paketet.
 
@@ -261,7 +258,7 @@ De flesta av HDInsight-programmen installeras på en tom Edge-nod.  En tom Edge-
 
 ### <a name="script-actions"></a>Skript åtgärder
 
-Du kan installera ytterligare komponenter eller anpassa kluster konfigurationen genom att använda skript när du skapar. Sådana skript anropas via **skript åtgärd** , vilket är ett konfigurations alternativ som kan användas från Azure Portal, HDInsight Windows PowerShell-cmdletar eller HDInsight .NET SDK. Mer information finns i [Anpassa HDInsight-kluster med skript åtgärd](hdinsight-hadoop-customize-cluster-linux.md).
+Du kan installera ytterligare komponenter eller anpassa kluster konfigurationen genom att använda skript när du skapar. Sådana skript anropas via **skript åtgärd**, vilket är ett konfigurations alternativ som kan användas från Azure Portal, HDInsight Windows PowerShell-cmdletar eller HDInsight .NET SDK. Mer information finns i [Anpassa HDInsight-kluster med skript åtgärd](hdinsight-hadoop-customize-cluster-linux.md).
 
 Vissa inbyggda Java-komponenter, t. ex. apache Mahout och överlappande, kan köras på klustret som filer för Java-arkiv (JAR). Dessa JAR-filer kan distribueras till Azure Storage och skickas till HDInsight-kluster med insändnings metoder för Hadoop-jobb. Mer information finns i [skicka Apache Hadoop jobb program mässigt](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

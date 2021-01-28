@@ -1,18 +1,15 @@
 ---
 title: Utveckla skript åtgärder för att anpassa Azure HDInsight-kluster
 description: Lär dig hur du använder Bash-skript för att anpassa HDInsight-kluster. Med skript åtgärder kan du köra skript under eller efter att klustret har skapats för att ändra kluster konfigurations inställningar eller installera ytterligare program vara.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629450"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945474"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Utveckling av skript åtgärder med HDInsight
 
@@ -26,7 +23,7 @@ Skript åtgärder kan tillämpas på följande sätt:
 
 | Använd den här metoden om du vill använda ett skript... | När klustret skapas... | På ett kluster som körs... |
 | --- |:---:|:---:|
-| Azure Portal |✓ |✓ |
+| Azure-portalen |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Klassisk Azure CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -235,7 +232,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Följande hjälpprogram som är tillgängliga för användning i skriptet:
 
-| Hjälp användning | Beskrivning |
+| Hjälp användning | Description |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Laddar ned en fil från käll-URI: n till angiven fil Sök väg. Som standard skriver den inte över en befintlig fil. |
 | `untar_file TARFILE DESTDIR` |Extraherar en tar-fil (med `-xf` ) till mål katalogen. |
@@ -290,7 +287,7 @@ Skript som används för att anpassa ett kluster måste lagras på någon av fö
 
 * Ett __ytterligare lagrings konto__ som är kopplat till klustret.
 
-* En __offentligt LÄSBAR URI__ . Till exempel en URL till data som lagras i OneDrive, Dropbox eller annan fil värd tjänst.
+* En __offentligt LÄSBAR URI__. Till exempel en URL till data som lagras i OneDrive, Dropbox eller annan fil värd tjänst.
 
 * Ett __Azure Data Lake Storage konto__ som är associerat med HDInsight-klustret. Mer information om hur du använder Azure Data Lake Storage med HDInsight finns i [snabb start: Konfigurera kluster i HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -317,7 +314,7 @@ Här följer stegen när du förbereder distributionen av ett skript:
 
 Du kan använda skript åtgärder för att anpassa HDInsight-kluster med hjälp av följande metoder:
 
-* Azure Portal
+* Azure-portalen
 * Azure PowerShell
 * Azure Resource Manager-mallar
 * HDInsight .NET SDK.
@@ -332,13 +329,13 @@ Microsoft tillhandahåller exempel skript för att installera komponenter i ett 
 
 Följande fel kan uppstå i samband med att du använder skript som du har utvecklat:
 
-**Fel** : `$'\r': command not found` . Ibland följt av `syntax error: unexpected end of file` .
+**Fel**: `$'\r': command not found` . Ibland följt av `syntax error: unexpected end of file` .
 
-*Orsak* : det här felet orsakas när raderna i ett skript slutar med CRLF. UNIX-system förväntar sig bara LF när linjen slutar.
+*Orsak*: det här felet orsakas när raderna i ett skript slutar med CRLF. UNIX-system förväntar sig bara LF när linjen slutar.
 
 Det här problemet uppstår oftast när skriptet har skapats i en Windows-miljö, eftersom CRLF är en gemensam rad som slutar för många text redigerare i Windows.
 
-*Lösning* : om det är ett alternativ i text redigeraren väljer du UNIX-format eller LF för rad slutet. Du kan också använda följande kommandon i ett UNIX-system för att ändra CRLF till en LF:
+*Lösning*: om det är ett alternativ i text redigeraren väljer du UNIX-format eller LF för rad slutet. Du kan också använda följande kommandon i ett UNIX-system för att ändra CRLF till en LF:
 
 > [!NOTE]  
 > Följande kommandon är ungefär likvärdiga i att de ska ändra CRLF-linjen till LF. Välj en baserad på de verktyg som är tillgängliga i systemet.
@@ -350,11 +347,11 @@ Det här problemet uppstår oftast när skriptet har skapats i en Windows-miljö
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Ändrar filen direkt |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |Utdatafilen innehåller en version med endast LF-ändelser. |
 
-**Fel** : `line 1: #!/usr/bin/env: No such file or directory` .
+**Fel**: `line 1: #!/usr/bin/env: No such file or directory` .
 
-*Orsak* : det här felet uppstår när skriptet sparades som UTF-8 med en byte ordnings markering (BOM).
+*Orsak*: det här felet uppstår när skriptet sparades som UTF-8 med en byte ordnings markering (BOM).
 
-*Lösning* : Spara filen antingen som ASCII eller som UTF-8 utan en struktur. Du kan också använda följande kommando i ett Linux-eller UNIX-system för att skapa en fil utan struktur listan:
+*Lösning*: Spara filen antingen som ASCII eller som UTF-8 utan en struktur. Du kan också använda följande kommando i ett Linux-eller UNIX-system för att skapa en fil utan struktur listan:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE

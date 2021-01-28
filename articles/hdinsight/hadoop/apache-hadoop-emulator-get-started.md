@@ -2,19 +2,16 @@
 title: Lär dig hur du använder en Apache Hadoop sandbox, emulator – Azure HDInsight
 description: 'Om du vill börja lära dig att använda Apache Hadoop eko systemet kan du konfigurera en Hadoop-sandbox från Hortonworks på en virtuell Azure-dator. '
 keywords: Hadoop-emulator, Hadoop sandbox
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547970"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946620"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Kom igång med en Apache Hadoop sandbox, en emulator på en virtuell dator
 
@@ -34,13 +31,13 @@ Lär dig hur du installerar Apache Hadoop sandbox från Hortonworks på en virtu
 
 Instruktioner för hur du konfigurerar sandbox finns i [sandbox distribution och installations guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-Om du vill ladda ned en äldre version sandbox av HDP, se länkarna under **äldre versioner** .
+Om du vill ladda ned en äldre version sandbox av HDP, se länkarna under **äldre versioner**.
 
 ## <a name="start-the-virtual-machine"></a>Starta den virtuella datorn
 
 1. Öppna Oracle VM-VirtualBox.
 1. I menyn **Arkiv** klickar du på **Importera** installation och anger sedan Hortonworks sandbox-avbildningen.
-1. Välj sandbox-Hortonworks, klicka på **Start** och sedan på **Normal start** . När den virtuella datorn har avslutat start processen visas inloggnings anvisningar.
+1. Välj sandbox-Hortonworks, klicka på **Start** och sedan på **Normal start**. När den virtuella datorn har avslutat start processen visas inloggnings anvisningar.
 
     ![VirtualBox Manager normal start](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
@@ -48,7 +45,7 @@ Om du vill ladda ned en äldre version sandbox av HDP, se länkarna under **äld
 
 ## <a name="set-sandbox-passwords"></a>Ange lösen ord för sandbox
 
-1. Från steget **Kom igång** på sidan för Hortonworks-sandbox väljer du **Visa avancerade alternativ** . Använd informationen på den här sidan för att logga in på sand boxen med SSH. Använd det namn och lösen ord som angetts.
+1. Från steget **Kom igång** på sidan för Hortonworks-sandbox väljer du **Visa avancerade alternativ**. Använd informationen på den här sidan för att logga in på sand boxen med SSH. Använd det namn och lösen ord som angetts.
 
    > [!NOTE]
    > Om du inte har en SSH-klient installerad kan du använda den webbaserade SSH som tillhandahölls av den virtuella datorn på **http://localhost:4200/** .

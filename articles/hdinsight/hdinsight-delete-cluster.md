@@ -1,19 +1,16 @@
 ---
 title: Så här tar du bort ett HDInsight-kluster – Azure
 description: Information om de olika sätt som du kan ta bort ett Azure HDInsight-kluster på
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
-ms.openlocfilehash: 49a43f821a159af6944abb9509c24a8dd081be43
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 55c19ee9b23d43b0f9988363405d76fa16949ec9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748801"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946045"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Ta bort ett HDInsight-kluster med hjälp av webbläsaren, PowerShell eller Azure CLI
 
@@ -22,7 +19,7 @@ Debiteringen för HDInsight-klustret börjar när ett kluster skapas och stoppas
 > [!IMPORTANT]  
 > Om du tar bort ett HDInsight-kluster tas inte Azure Storage-konton eller Data Lake Storage som är associerade med klustret bort. Du kan återanvända data som lagras i dessa tjänster i framtiden.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portalen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 

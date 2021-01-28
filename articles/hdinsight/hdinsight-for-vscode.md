@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight för Visual Studio Code
 description: Lär dig hur du använder Spark & Hive-verktyg (Azure HDInsight) för Visual Studio Code. Använd verktygen för att skapa och skicka frågor och skript.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610989"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946142"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
 

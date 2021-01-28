@@ -1,19 +1,16 @@
 ---
 title: Använd Azure Monitor loggar för att övervaka Azure HDInsight-kluster
 description: Lär dig hur du använder Azure Monitor loggar för att övervaka jobb som körs i ett HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 775e2fad573832dd29fc45985c6d6bd0a50fdf3c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f849248021de3c17b69517d214f6f3fd6e4ee3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546100"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945637"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Använda Azure Monitor-loggar för att övervaka HDInsight-kluster
 
@@ -53,13 +50,13 @@ I det här avsnittet konfigurerar du ett befintligt HDInsight Hadoop-kluster fö
 
 1. Välj ditt kluster från [Azure Portal](https://portal.azure.com/). Klustret öppnas på en ny Portal sida.
 
-1. Gå till vänster och välj **Azure Monitor** under **övervakning** .
+1. Gå till vänster och välj **Azure Monitor** under **övervakning**.
 
-1. I huvudvyn väljer du **Aktivera** under **Azure Monitor-integration** .
+1. I huvudvyn väljer du **Aktivera** under **Azure Monitor-integration**.
 
 1. I list rutan **Välj en arbets yta** väljer du en befintlig Log Analytics-arbetsyta.
 
-1. Välj **Spara** .  Det tar en stund att spara inställningen.
+1. Välj **Spara**.  Det tar en stund att spara inställningen.
 
     ![Aktivera övervakning för HDInsight-kluster](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Aktivera övervakning för HDInsight-kluster")
 
@@ -139,7 +136,7 @@ Tillgängliga HDInsight-lösningar:
 * HDInsight Spark-övervakning
 * HDInsight Storm-övervakning
 
-Anvisningar för hanterings lösningen finns [i hanterings lösningar i Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Du kan experimentera genom att installera en HDInsight Hadoop-övervaknings lösning. När den är färdig visas en **HDInsightHadoop** -panel under **Sammanfattning** . Välj panelen **HDInsightHadoop** . HDInsightHadoop-lösningen ser ut så här:
+Anvisningar för hanterings lösningen finns [i hanterings lösningar i Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Du kan experimentera genom att installera en HDInsight Hadoop-övervaknings lösning. När den är färdig visas en **HDInsightHadoop** -panel under **Sammanfattning**. Välj panelen **HDInsightHadoop** . HDInsightHadoop-lösningen ser ut så här:
 
 ![HDInsight övervaknings lösnings vy](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 

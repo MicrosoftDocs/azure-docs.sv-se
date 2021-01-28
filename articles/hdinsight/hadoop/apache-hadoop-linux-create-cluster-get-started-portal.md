@@ -2,19 +2,16 @@
 title: 'Snabb start: Apache Hadoop, Apache Hive & Azure HDInsight-portalen'
 description: I den här snabb starten använder du Azure Portal för att skapa ett HDInsight Hadoop-kluster
 keywords: hadoop komma igång, hadoop linux, hadoop Snabbstart, komma igång, hive hive-Snabbstart
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
-ms.openlocfilehash: 02990ce287aa423481c1bfe8ec5e2a8a4cfdb555
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858497"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946595"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Snabb start: skapa Apache Hadoop kluster i Azure HDInsight med Azure Portal
 
@@ -32,7 +29,7 @@ I det här avsnittet skapar du ett Hadoop-kluster i HDInsight med hjälp av Azur
 
 1. Logga in på [Azure Portal](https://portal.azure.com).
 
-1. Välj **+ skapa en resurs**på den översta menyn.
+1. Välj **+ skapa en resurs** på den översta menyn.
 
     ![Skapa ett resurs-HDInsight-kluster](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "Skapa ett resurs-HDInsight-kluster")
 
@@ -47,7 +44,7 @@ I det här avsnittet skapar du ett Hadoop-kluster i HDInsight med hjälp av Azur
     |Klusternamn   | Ange ett globalt unikt namn. Namnet kan bestå av upp till 59 tecken, inklusive bokstäver, siffror och bindestreck. Det första och sista tecknet i namnet får inte vara bindestreck. |
     |Region    | Välj en region där klustret skapas i list rutan.  Välj en plats närmare så får du bättre prestanda. |
     |Kluster typ| Välj **Välj kluster typ**. Välj sedan **Hadoop** som kluster typ.|
-    |Version|Välj en **version**i list rutan. Använd standard versionen om du inte vet vad du ska välja.|
+    |Version|Välj en **version** i list rutan. Använd standard versionen om du inte vet vad du ska välja.|
     |Användarnamn och lösenord för klusterinloggning    | Standard inloggnings namnet är **admin**. Lösen ordet måste bestå av minst 10 tecken och måste innehålla minst en siffra, en versal och en gemen bokstav, ett icke-alfanumeriskt tecken (förutom tecknen "" " \) . Se till att du **inte anger** vanliga lösenord som Pass@word1.|
     |Secure Shell (SSH)-användarnamn | Standardanvändarnamnet är **sshuser**.  Du kan ange ett annat namn som SSH-användarnamn. |
     |Använd lösen ord för kluster inloggning för SSH| Markera den här kryss rutan om du vill använda samma lösen ord för SSH-användare som det du angav för kluster inloggnings användaren.|

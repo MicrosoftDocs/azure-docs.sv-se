@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: skapa ett interaktivt Query-kluster med mall – Azure HDInsight'
 description: Den här snabb starten visar hur du använder Resource Manager-mall för att skapa ett interaktivt Query-kluster i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 969aadbe342dbfd345930082d56e0af93eea37d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4872dd29442a1503e04672a7c42fd7b49a0c506c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854383"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945234"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Snabb start: skapa ett interaktivt fråge kluster i Azure HDInsight med ARM-mall
 
@@ -61,7 +58,7 @@ Två Azure-resurser definieras i mallen:
 
     ![Distribuera Resource Manager-mall HBase](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
-1. Granska de **allmänna**villkoren. Välj sedan **Jag accepterar villkoren som anges ovan**och **köp**. Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
+1. Granska de **allmänna** villkoren. Välj sedan **Jag accepterar villkoren som anges ovan** och **köp**. Du får ett meddelande om att distributionen pågår. Det tar cirka 20 minuter att skapa ett kluster.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 

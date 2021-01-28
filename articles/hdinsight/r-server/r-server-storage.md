@@ -2,18 +2,15 @@
 title: Azure Storage-lösningar för ML-tjänster i HDInsight – Azure
 description: Lär dig mer om de olika lagrings alternativ som är tillgängliga med ML-tjänster i HDInsight
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855301"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943911"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-lösningar för ML-tjänster på Azure HDInsight
 
@@ -32,7 +29,7 @@ När du skapar ett Apache Hadoop kluster i HDInsight, anger du antingen ett **Az
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Använd Azure Blob Storage-konton med ML Services-kluster
 
-Om du har angett fler än ett lagrings konto när du skapar ditt ML Services-kluster förklarar du följande instruktioner för att använda ett sekundärt konto för data åtkomst och åtgärder i ett ML Services-kluster. Antag följande lagrings konton och behållare: **storage1** och en standard behållare som heter **container1**och **storage2** med **container2**.
+Om du har angett fler än ett lagrings konto när du skapar ditt ML Services-kluster förklarar du följande instruktioner för att använda ett sekundärt konto för data åtkomst och åtgärder i ett ML Services-kluster. Antag följande lagrings konton och behållare: **storage1** och en standard behållare som heter **container1** och **storage2** med **container2**.
 
 > [!WARNING]  
 > I prestanda syfte skapas HDInsight-klustret i samma data Center som det primära lagrings konto som du anger. Det finns inte stöd för att använda ett lagrings konto på en annan plats än HDInsight-klustret.
@@ -120,7 +117,7 @@ Du får åtkomst till Data Lake Storage Gen1 med hjälp av ett Azure Active Dire
 
 1. När du skapar ett HDInsight-kluster väljer du **kluster-Azure AD-identitet** på fliken **data källa** .
 
-2. I dialog rutan **kluster-Azure AD-identitet** under **Välj AD-tjänstens huvud namn**väljer du **Skapa ny**.
+2. I dialog rutan **kluster-Azure AD-identitet** under **Välj AD-tjänstens huvud namn** väljer du **Skapa ny**.
 
 När du har angett ett namn för tjänsten och skapar ett lösen ord för det klickar du på **Hantera ADLS åtkomst** för att associera tjänstens huvud namn med din data Lake Storage.
 

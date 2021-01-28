@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 8f795a7c0d8a2bac09c588924b0fd87e62258da3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246646"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946198"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Använd Visuellt innehåll container med Kubernetes och Helm
 
@@ -176,11 +176,11 @@ I mappen samma *mallar* kopierar du och klistrar in följande hjälp funktioner 
 {{- end -}}
 
 {{- define "redis.connStr" -}}
-{{- $hostMaster := printf "%s-redis-master:6379" .Release.Name }}
-{{- $hostSlave := printf "%s-redis-slave:6379" .Release.Name -}}
+{{- $hostMain := printf "%s-redis-master:6379" .Release.Name }}
+{{- $hostReplica := printf "%s-redis-slave:6379" .Release.Name -}}
 {{- $passWord := printf "password=%s" .Values.read.image.args.redis.password -}}
 {{- $connTail := "ssl=False,abortConnect=False" -}}
-{{- printf "%s,%s,%s,%s" $hostMaster $hostSlave $passWord $connTail -}}
+{{- printf "%s,%s,%s,%s" $hostMain $hostReplica $passWord $connTail -}}
 {{- end -}}
 ```
 Mallen anger en belastnings Utjämnings tjänst och distributionen av din behållare/avbildning för läsning.

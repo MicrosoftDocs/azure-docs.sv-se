@@ -1,19 +1,16 @@
 ---
 title: Tips för att använda Hadoop på Linux-baserade HDInsight – Azure
 description: Få implementerings tips för att använda Linux-baserade HDInsight-kluster (Hadoop) i en välbekant Linux-miljö som körs i Azure-molnet.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546117"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945654"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Information om hur du använder HDInsight på Linux
 
@@ -24,9 +21,9 @@ Azure HDInsight-kluster ger Apache Hadoop på en välbekant Linux-miljö, som k�
 Många av stegen i det här dokumentet använder följande verktyg, som kan behöva installeras i systemet.
 
 * [sväng](https://curl.haxx.se/) -används för att kommunicera med webbaserade tjänster.
-* **JQ** , en JSON-processor med kommando rad.  Se [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* **JQ**, en JSON-processor med kommando rad.  Se [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 * [Azure CLI](/cli/azure/install-azure-cli) – används för att fjärrhantera Azure-tjänster.
-* **En SSH-klient** . Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **En SSH-klient**. Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Användare
 
@@ -52,7 +49,7 @@ Om du behöver hitta namnet på noden för en speciell tjänst kan du fråga Amb
 curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 ```
 
-Det här kommandot returnerar ett JSON-dokument som beskriver tjänsten och hämtar [jq](https://stedolan.github.io/jq/) sedan bara `host_name` värdet för värdarna JQ.
+Det här kommandot returnerar ett JSON-dokument som beskriver tjänsten och hämtar [](https://stedolan.github.io/jq/) sedan bara `host_name` värdet för värdarna JQ.
 
 ## <a name="remote-access-to-services"></a>Fjärråtkomst till tjänster
 
@@ -92,8 +89,8 @@ Mer information finns i [portarna som används av Apache Hadoop Services i HDIns
 
 Hadoop-relaterade filer hittar du på klusternoderna på `/usr/hdp` . Den här katalogen innehåller följande under kataloger:
 
-* **2.6.5.3009 – 43** : Katalog namnet är den version av Hadoop-plattformen som används av HDInsight. Antalet på klustret kan vara ett annat än det som anges här.
-* **aktuell** : den här katalogen innehåller länkar till under kataloger i **2.6.5.3009-43-** katalogen. Katalogen finns så att du inte behöver komma ihåg versions numret.
+* **2.6.5.3009 – 43**: Katalog namnet är den version av Hadoop-plattformen som används av HDInsight. Antalet på klustret kan vara ett annat än det som anges här.
+* **aktuell**: den här katalogen innehåller länkar till under kataloger i **2.6.5.3009-43-** katalogen. Katalogen finns så att du inte behöver komma ihåg versions numret.
 
 Du hittar exempel data och JAR-filer på Hadoop Distributed File System på `/example` och `/HdiSamples` .
 
@@ -183,7 +180,7 @@ Du kan också hitta lagrings informationen med hjälp av Azure Portal med hjälp
 
 1. Välj ditt HDInsight-kluster från [Azure Portal](https://portal.azure.com/).
 
-2. I avsnittet **Egenskaper** väljer du **lagrings konton** . Lagrings informationen för klustret visas.
+2. I avsnittet **Egenskaper** väljer du **lagrings konton**. Lagrings informationen för klustret visas.
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Hur gör jag för att komma åt filer från externa HDInsight
 
@@ -203,7 +200,7 @@ Om du använder __Azure Blob Storage__ kan du läsa följande länkar för hur d
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Lagring REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-Om du använder __Azure Data Lake Storage gen1__ , se följande länkar för hur du kan komma åt dina data:
+Om du använder __Azure Data Lake Storage gen1__, se följande länkar för hur du kan komma åt dina data:
 
 * [Webbläsare](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

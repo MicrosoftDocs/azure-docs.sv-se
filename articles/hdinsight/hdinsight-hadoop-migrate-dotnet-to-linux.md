@@ -1,19 +1,16 @@
 ---
 title: Använda .NET med Hadoop MapReduce på Linux-baserat HDInsight – Azure
 description: Lär dig hur du använder .NET-program för strömning av MapReduce på Linux-baserade HDInsight.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.author: hrasheed
-ms.openlocfilehash: a6e9bea5d600771a7754142a4df4c0af503ccf5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075492"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945597"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrera .NET-lösningar för Windows-baserade HDInsight till Linux-baserade HDInsight
 
@@ -34,7 +31,7 @@ Mer information om kompatibilitet mellan mono och .NET finns i [mono-kompatibili
 
 1. Installera [.net-portbaserad analys](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). Under installationen väljer du den version av Visual Studio som ska användas.
 
-2. Från Visual Studio 2015 väljer du __analysera__  >  __Inställningar för portabilitet__och kontrollerar att __4,5__ är markerat i __mono__ -avsnittet.
+2. Från Visual Studio 2015 väljer du __analysera__  >  __Inställningar för portabilitet__ och kontrollerar att __4,5__ är markerat i __mono__ -avsnittet.
 
     ![4,5 kontrollerade i mono-sektionen för analys inställningarna](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
@@ -42,7 +39,7 @@ Mer information om kompatibilitet mellan mono och .NET finns i [mono-kompatibili
 
 3. Välj __analysera__  >  __sammansättnings portabilitet__. Välj den sammansättning som innehåller din lösning och välj sedan __Öppna__ för att börja analysera.
 
-4. När analysen är klar väljer du __analysera__  >  __Visa analys rapporter__. I __analys resultat för portabilitet__väljer du __Öppna rapport__ för att öppna en rapport.
+4. När analysen är klar väljer du __analysera__  >  __Visa analys rapporter__. I __analys resultat för portabilitet__ väljer du __Öppna rapport__ för att öppna en rapport.
 
     ![Dialog rutan resultat för portabilitet-analys](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 

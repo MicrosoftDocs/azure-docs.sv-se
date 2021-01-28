@@ -1,19 +1,16 @@
 ---
 title: Övervaka kluster prestanda – Azure HDInsight
 description: Övervaka hälso tillstånd och prestanda för Apache Hadoop kluster i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014252"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945345"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Övervaka kluster prestanda i Azure HDInsight
 
@@ -27,9 +24,9 @@ Hadoop-kluster kan ge optimala prestanda när belastningen på klustret är jäm
 
 För att få en överblick på noderna i klustret och deras inläsningar loggar du in på [Ambari-WEBBgränssnittet](hdinsight-hadoop-manage-ambari.md)och väljer sedan fliken **värdar** . Dina värdar visas i listan med sina fullständigt kvalificerade domän namn. Varje värds drift status visas med en färgad hälso indikator:
 
-| Color (Färg) | Description |
+| Färg | Description |
 | --- | --- |
-| Röd | Minst en huvud komponent på värden är inte tillgänglig. Hovra för att se en knapp beskrivning som visar påverkade komponenter. |
+| Red | Minst en huvud komponent på värden är inte tillgänglig. Hovra för att se en knapp beskrivning som visar påverkade komponenter. |
 | Orange | Minst en sekundär komponent på värden är avstängd. Hovra för att se en knapp beskrivning som visar påverkade komponenter. |
 | Gul | Ambari-servern har inte tagit emot något pulsslag från värden i mer än 3 minuter. |
 | Green | Normalt kör tillstånd. |

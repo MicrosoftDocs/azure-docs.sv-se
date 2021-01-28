@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop-arkitektur – Azure HDInsight
 description: Beskriver Apache Hadoop lagring och bearbetning i Azure HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541952"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945898"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-arkitektur i HDInsight
 
@@ -37,7 +34,7 @@ När ett MapReduce-program körs i ett kluster, tillhandahåller ResourceManager
 
 ResourceManager kör också en webb Server process som tillhandahåller ett webb användar gränssnitt för att övervaka program status.
 
-När en användare skickar ett MapReduce-program för att köras i klustret skickas programmet till ResourceManager. I sin tur allokerar ResourceManager en behållare på tillgängliga NodeManager-noder. NodeManager-noderna är där programmet faktiskt körs. Den första behållaren som tilldelas kör ett särskilt program som kallas ApplicationMaster. Den här ApplicationMaster ansvarar för att förvärva resurser i form av efterföljande behållare som behövs för att köra programmet som skickas. ApplicationMaster undersöker programmets stadier, till exempel kart steget och minskar fasen, samt faktorer i hur mycket data som behöver bearbetas. ApplicationMaster begär sedan ( *förhandlar* ) resurserna från ResourceManager för programmets räkning. Resurs hanteraren i ger sin tur till gång till resurser från) Nodemanagers i klustret till ApplicationMaster som används för att köra programmet.
+När en användare skickar ett MapReduce-program för att köras i klustret skickas programmet till ResourceManager. I sin tur allokerar ResourceManager en behållare på tillgängliga NodeManager-noder. NodeManager-noderna är där programmet faktiskt körs. Den första behållaren som tilldelas kör ett särskilt program som kallas ApplicationMaster. Den här ApplicationMaster ansvarar för att förvärva resurser i form av efterföljande behållare som behövs för att köra programmet som skickas. ApplicationMaster undersöker programmets stadier, till exempel kart steget och minskar fasen, samt faktorer i hur mycket data som behöver bearbetas. ApplicationMaster begär sedan (*förhandlar*) resurserna från ResourceManager för programmets räkning. Resurs hanteraren i ger sin tur till gång till resurser från) Nodemanagers i klustret till ApplicationMaster som används för att köra programmet.
 
 ) Nodemanagers kör de uppgifter som utgör programmet och rapporterar sedan deras förlopp och status tillbaka till ApplicationMaster. ApplicationMaster i sin tur rapporterar status för programmet tillbaka till ResourceManager. ResourceManager returnerar alla resultat till klienten.
 

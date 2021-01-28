@@ -1,19 +1,17 @@
 ---
 title: 'Lagring: migrera lokala Apache Hadoop till Azure HDInsight'
 description: Lär dig metod tips för lagring för migrering av lokala Hadoop-kluster till Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0594774533f306421f6f3d1260d074bd92b9c919
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544876"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944860"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight
 
@@ -33,7 +31,7 @@ Azure Storage kan vara geo-replikerad. Även om geo-replikering ger geografisk �
 
 Ett av följande format kan användas för att komma åt data som lagras i Azure Storage:
 
-|Data åtkomst format |Beskrivning |
+|Data åtkomst format |Description |
 |---|---|
 |`wasb:///`|Få åtkomst till standard lagring med okrypterad kommunikation.|
 |`wasbs:///`|Få åtkomst till standard lagring med krypterad kommunikation.|
@@ -98,15 +96,15 @@ En grundläggande funktion i Data Lake Storage Gen2 är att lägga till ett [hie
 
 Tidigare var molnbaserad analys en kompromiss i områden med prestanda, hantering och säkerhet. De viktigaste funktionerna i Azure Data Lake Storage (ADLS) Gen2 är följande:
 
-- **Hadoop-kompatibel åtkomst** : Azure Data Lake Storage Gen2 gör att du kan hantera och komma åt data precis som med en [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Den nya [ABFS-drivrutinen](../../storage/blobs/data-lake-storage-abfs-driver.md) är tillgänglig i alla Apache Hadoop miljöer som ingår i [Azure HDInsight](../index.yml). Med den här driv rutinen kan du komma åt data som lagras i Data Lake Storage Gen2.
+- **Hadoop-kompatibel åtkomst**: Azure Data Lake Storage Gen2 gör att du kan hantera och komma åt data precis som med en [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Den nya [ABFS-drivrutinen](../../storage/blobs/data-lake-storage-abfs-driver.md) är tillgänglig i alla Apache Hadoop miljöer som ingår i [Azure HDInsight](../index.yml). Med den här driv rutinen kan du komma åt data som lagras i Data Lake Storage Gen2.
 
-- **En supermängd av POSIX-behörigheter** : säkerhets modellen för data Lake Gen2 har fullt stöd för ACL-och POSIX-behörigheter tillsammans med viss detaljerad kornig het för data Lake Storage Gen2. Inställningarna kan konfigureras via administrations verktyg eller ramverk som Hive och Spark.
+- **En supermängd av POSIX-behörigheter**: säkerhets modellen för data Lake Gen2 har fullt stöd för ACL-och POSIX-behörigheter tillsammans med viss detaljerad kornig het för data Lake Storage Gen2. Inställningarna kan konfigureras via administrations verktyg eller ramverk som Hive och Spark.
 
-- **Kostnads effektiv** : data Lake Storage Gen2 funktioner för lagrings kapacitet och transaktioner med låg kostnad. Som data över gångar via hela livs cykeln ändras fakturerings taxan till minimerade kostnader via inbyggda funktioner, till exempel [Azure Blob Storage livs cykel](../../storage/blobs/storage-lifecycle-management-concepts.md).
+- **Kostnads effektiv**: data Lake Storage Gen2 funktioner för lagrings kapacitet och transaktioner med låg kostnad. Som data över gångar via hela livs cykeln ändras fakturerings taxan till minimerade kostnader via inbyggda funktioner, till exempel [Azure Blob Storage livs cykel](../../storage/blobs/storage-lifecycle-management-concepts.md).
 
-- **Fungerar med Blob Storage-verktyg, ramverk och appar** : data Lake Storage Gen2 fortsätter att fungera med en bred uppsättning verktyg, ramverk och program som finns idag för Blob Storage.
+- **Fungerar med Blob Storage-verktyg, ramverk och appar**: data Lake Storage Gen2 fortsätter att fungera med en bred uppsättning verktyg, ramverk och program som finns idag för Blob Storage.
 
-- **Optimerad driv rutin** : Azure Blob filesystem-drivrutinen (ABFS) är [optimerad](../../storage/blobs/data-lake-storage-abfs-driver.md) för stor data analys. Motsvarande REST-API: er är anslutna via DFS-slutpunkten dfs.core.windows.net.
+- **Optimerad driv rutin**: Azure Blob filesystem-drivrutinen (ABFS) är [optimerad](../../storage/blobs/data-lake-storage-abfs-driver.md) för stor data analys. Motsvarande REST-API: er är anslutna via DFS-slutpunkten dfs.core.windows.net.
 
 Ett av följande format kan användas för att komma åt data som lagras i ADLS Gen2:
 - `abfs:///`: Åtkomst till standard Data Lake Storage för klustret.
@@ -155,7 +153,7 @@ HDInsight har som standard fullständig åtkomst till data i de Azure Storage ko
 
 1. Öppna filen  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) och ändra följande värden:
 
-    |Egenskap för token|Beskrivning|
+    |Egenskap för token|Description|
     |---|---|
     |policy_name|Namnet som ska användas för den lagrade principen som ska skapas.|
     |storage_account_name|Namnet på ditt lagringskonto.|
@@ -173,11 +171,11 @@ HDInsight har som standard fullständig åtkomst till data i de Azure Storage ko
 
 6. Använd följande värden för fälten **nyckel** och **värde** :
 
-    **Nyckel** : `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **värde** : den SAS-nyckel som returnerades av python-programmet från steg 4 ovan.
+    **Nyckel**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **värde**: den SAS-nyckel som returnerades av python-programmet från steg 4 ovan.
 
-7. Klicka på knappen **Lägg** till för att spara den här nyckeln och värdet och klicka sedan på knappen **Spara** för att spara konfigurations ändringarna. När du uppmanas till det, lägger du till en beskrivning av ändringen ("lägga till SAS-lagringsenhet" till exempel) och klickar sedan på **Spara** .
+7. Klicka på knappen **Lägg** till för att spara den här nyckeln och värdet och klicka sedan på knappen **Spara** för att spara konfigurations ändringarna. När du uppmanas till det, lägger du till en beskrivning av ändringen ("lägga till SAS-lagringsenhet" till exempel) och klickar sedan på **Spara**.
 
-8. I Ambari-webbgränssnittet väljer du HDFS i listan till vänster och väljer sedan **starta om alla som påverkas** från List rutan service åtgärder till höger. När du uppmanas väljer du **Bekräfta omstart av alla** .
+8. I Ambari-webbgränssnittet väljer du HDFS i listan till vänster och väljer sedan **starta om alla som påverkas** från List rutan service åtgärder till höger. När du uppmanas väljer du **Bekräfta omstart av alla**.
 
 9. Upprepa den här processen för MapReduce2 och garn.
 

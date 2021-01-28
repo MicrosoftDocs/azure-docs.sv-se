@@ -3,12 +3,12 @@ title: Konfigurera Azure Red Hat OpenShift v4. x med Azure Monitor för behålla
 description: Den här artikeln beskriver hur du konfigurerar övervakning för ett Kubernetes-kluster med Azure Monitor som finns i Azure Red Hat OpenShift version 4 eller senare.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e9f31d1b71122c53a67dc40af31d33255e2e98d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8cd551a028f2fc67c26f8e32d59c0e0650aa1e54
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994551"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944531"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Konfigurera Azure Red Hat OpenShift v4. x med Azure Monitor för behållare
 
@@ -20,7 +20,7 @@ Azure Monitor för behållare ger en omfattande övervaknings upplevelse för Az
 
 Du kan aktivera Azure Monitor för behållare för en eller flera befintliga distributioner av Azure Red Hat OpenShift v4. x med de metoder som beskrivs i den här artikeln.
 
-För ett befintligt kluster kör du det här [bash-skriptet i Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true).
+För ett befintligt kluster kör du det här [bash-skriptet i Azure CLI](/cli/azure/openshift#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Funktioner som stöds och som inte stöds
 
@@ -133,7 +133,7 @@ I det här avsnittet aktiverar du övervakning för ditt Azure Red Hat OpenShift
 
 I det här exemplet är du inte tvungen att skapa eller ange en befintlig arbets yta. Det här kommandot fören klar processen åt dig genom att skapa en standard arbets yta i kluster prenumerationens standard resurs grupp, om det inte redan finns en sådan i regionen.
 
-Standard arbets ytan som skapas har formatet *DefaultWorkspace- \<GUID> - \<Region> *.  
+Standard arbets ytan som skapas har formatet *DefaultWorkspace- \<GUID> - \<Region>*.  
 
 Ersätt värdena för `azureAroV4ClusterResourceId` `kubeContext` parametrarna och.
 
@@ -142,7 +142,7 @@ export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGrou
 export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
-Till exempel:
+Exempel:
 
 `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
 
@@ -162,7 +162,7 @@ Vyn multi-cluster i Azure Monitor för behållare visar dina Azure Red Hat OpenS
 
 1. I listan över icke-övervakade kluster väljer du klustret och väljer sedan **Aktivera**.
 
-    Du kan identifiera resultaten i listan genom att leta efter värdet **Aro** i kolumnen **kluster typ** . När du har valt **Aktivera**omdirigeras du till den här artikeln.
+    Du kan identifiera resultaten i listan genom att leta efter värdet **Aro** i kolumnen **kluster typ** . När du har valt **Aktivera** omdirigeras du till den här artikeln.
 
 ## <a name="next-steps"></a>Nästa steg
 

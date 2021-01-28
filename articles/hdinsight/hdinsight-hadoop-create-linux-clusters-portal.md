@@ -1,19 +1,16 @@
 ---
 title: Skapa Apache Hadoop-kluster med hjälp av webbläsare, Azure HDInsight
 description: Lär dig att skapa Apache Hadoop, Apache HBase, Apache Storm eller Apache Spark kluster i HDInsight. Använd webbläsare och Azure Portal.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541714"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945825"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Skapa Linux-baserade kluster i HDInsight med hjälp av Azure Portal
 
@@ -39,7 +36,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 1. Välj **Analytics**  >  **Azure HDInsight** för att gå till sidan **skapa HDInsight-kluster** .
 
-## <a name="basics"></a>Grundläggande inställningar
+## <a name="basics"></a>Grunder
 
 ![Grunderna för HDInsight skapa kluster](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Skapa ett nytt kluster i Azure Portal")
 
@@ -48,12 +45,12 @@ På fliken **grundläggande** anger du följande information:
 |Egenskap |Beskrivning |
 |---|---|
 |Prenumeration|I list rutan väljer du den Azure-prenumeration som används för klustret.|
-|Resursgrupp|Välj din befintliga resurs grupp i list rutan eller Välj **Skapa ny** .|
+|Resursgrupp|Välj din befintliga resurs grupp i list rutan eller Välj **Skapa ny**.|
 |Klusternamn|Ange ett globalt unikt namn.|
 |Region|Välj en region där klustret skapas i list rutan.|
 |Kluster typ|Klicka på **Välj kluster typ** för att öppna en lista. Välj önskad kluster typ i listan. HDInsight-kluster ingår i olika typer. De motsvarar den arbets belastning eller teknik som klustret är anpassat för. Det finns ingen metod som stöds för att skapa ett kluster som kombinerar flera typer.|
 |Version|Välj en **version** i list rutan. Använd standard versionen om du inte vet vad du ska välja. Mer information finns i [HDInsight-klusterversioner](hdinsight-component-versioning.md).|
-|Användarnamn för klusterinloggning|Ange användar namnet, standard är **administratör** .|
+|Användarnamn för klusterinloggning|Ange användar namnet, standard är **administratör**.|
 |Lösenord för klusterinloggning|Ange lösen ordet.|
 |Bekräfta lösen ord för kluster inloggning|Ange lösen ordet igen|
 |Secure Shell (SSH)-användarnamn|Ange användar namnet, standard är **sshuser**|
@@ -70,11 +67,11 @@ Välj **Nästa: lagrings >>** för att gå vidare till nästa flik.
 
 ### <a name="primary-storage"></a>Primär lagring
 
-Välj din standard lagrings typ i list rutan för **primär lagrings typ** . De senare fälten som ska slutföras varierar beroende på ditt val. För **Azure Storage** :
+Välj din standard lagrings typ i list rutan för **primär lagrings typ**. De senare fälten som ska slutföras varierar beroende på ditt val. För **Azure Storage**:
 
-1. För **urvals metod** väljer du antingen **Välj från listan** eller **Använd åtkomst nyckel** .
-    * I **listan Välj från** väljer du ditt **primära lagrings konto** i list rutan eller väljer **Skapa nytt** .
-    * Ange ditt **lagrings konto namn** för **Använd åtkomst nyckel** . Ange sedan **åtkomst nyckeln** .
+1. För **urvals metod** väljer du antingen **Välj från listan** eller **Använd åtkomst nyckel**.
+    * I **listan Välj från** väljer du ditt **primära lagrings konto** i list rutan eller väljer **Skapa nytt**.
+    * Ange ditt **lagrings konto namn** för **Använd åtkomst nyckel**. Ange sedan **åtkomst nyckeln**.
 
 1. Acceptera standardvärdet för **container** eller ange ett nytt.
 
@@ -87,7 +84,7 @@ Valfritt: Välj **Lägg till Azure Storage** för ytterligare kluster lagring. D
 Valfritt: Ange en befintlig SQL Database för att spara Apache Hive, Apache Oozie och eller Apache Ambari-metadata utanför klustret. Azure SQL Database som används för metaarkiv måste tillåta anslutning till andra Azure-tjänster, inklusive Azure HDInsight. När du skapar en metaarkiv ska du inte namnge en databas med bindestreck eller bindestreck. Dessa tecken kan orsaka att klustrets skapande process kraschar.
 
 > [!IMPORTANT]
-> För kluster former som stöder metastores tillhandahåller standardvärdet metaarkiv en Azure SQL Database med en **grundläggande nivå på nivå 5 för nivå 5 (inte uppgraderings bara)** ! Lämpligt för grundläggande testnings ändamål. För stora eller produktions arbets belastningar rekommenderar vi att du migrerar till en extern metaarkiv.
+> För kluster former som stöder metastores tillhandahåller standardvärdet metaarkiv en Azure SQL Database med en **grundläggande nivå på nivå 5 för nivå 5 (inte uppgraderings bara)**! Lämpligt för grundläggande testnings ändamål. För stora eller produktions arbets belastningar rekommenderar vi att du migrerar till en extern metaarkiv.
 
 Välj **Nästa: Security + network >>** för att gå vidare till nästa flik.
 
@@ -99,7 +96,7 @@ På fliken **säkerhet + nätverk** anger du följande information:
 
 |Egenskap |Beskrivning |
 |---|---|
-|Säkerhets paket för företag|Valfritt: Markera kryss rutan om du vill använda **Enterprise Security Package** . Mer information finns i [Konfigurera ett HDInsight-kluster med Enterprise Security Package med Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
+|Säkerhets paket för företag|Valfritt: Markera kryss rutan om du vill använda **Enterprise Security Package**. Mer information finns i [Konfigurera ett HDInsight-kluster med Enterprise Security Package med Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
 |TLS|Valfritt: Välj en TLS-version i list rutan. Mer information finns i [Transport Layer Security](./transport-layer-security.md).|
 |Virtuellt nätverk|Valfritt: Välj ett befintligt virtuellt nätverk och undernät i den nedrullningsbara listan. Mer information finns i [Planera en virtuell nätverks distribution för Azure HDInsight-kluster](hdinsight-plan-virtual-network-deployment.md). Artikeln innehåller särskilda konfigurations krav för det virtuella nätverket.|
 |Disk krypterings inställningar|Valfritt: Markera kryss rutan om du vill använda kryptering. Mer information finns i [kund hanterad nyckel disk kryptering](./disk-encryption.md).|

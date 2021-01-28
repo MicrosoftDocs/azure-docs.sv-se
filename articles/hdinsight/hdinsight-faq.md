@@ -4,17 +4,16 @@ description: Vanliga frågor och svar om HDInsight
 keywords: Vanliga frågor och svar om vanliga frågor och svar
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 13282962886d8682b6056d10f8f0cc5a7f626d60
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882406"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946016"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Vanliga frågor och svar
 
@@ -213,7 +212,7 @@ LLAP har Aktiver ATS av säkerhets skäl (Apache Ranger), inte prestanda. Använ
 Det finns två sätt att uppnå det här målet: 1 – du kan återskapa klustret och lägga till ytterligare grupper när klustret skapas. Om du använder omfångs synkronisering i AAD-DS ser du till att grupp B ingår i den omfångs synkroniseringen.
 2 – Lägg till gruppen som en kapslad under grupp för den tidigare gruppen som användes för att skapa ESP-klustret. Om du till exempel har skapat ett ESP-kluster med en grupp `A` kan du senare använda Lägg till grupp `B` som en kapslad under grupp av `A` och efter ungefär en timme kommer det att synkroniseras och vara tillgängligt i klustret automatiskt. 
 
-## <a name="storage"></a>Lagring
+## <a name="storage"></a>Storage
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Kan jag lägga till en Azure Data Lake Storage Gen2 till ett befintligt HDInsight-kluster som ett ytterligare lagrings konto?
 
@@ -278,7 +277,7 @@ När du har skapat en Edge-nod kan du ansluta till den med hjälp av SSH på por
 
 Du använder sparade skript för att anpassa nya arbetsnoder som läggs till i klustret genom skalnings åtgärder. Bestående skript gäller inte för Edge-noder.
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Vad är REST API anrop för att hämta en Tez från klustret?
 

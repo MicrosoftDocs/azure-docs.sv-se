@@ -1,19 +1,16 @@
 ---
 title: Använda SSH-tunnlar för att få åtkomst till Azure HDInsight
 description: Lär dig hur du använder en SSH-tunnel för att på ett säkert sätt bläddra bland webb resurser som finns på dina Linux-baserade HDInsight-noder.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075560"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945286"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Använd SSH-tunnlar för att komma åt Apache Ambari Web UI, JobHistory, NameNode, Apache Oozie och andra UIs
 
@@ -40,7 +37,7 @@ Tjänster som installeras med skript åtgärder som exponerar en webb tjänst kr
 
 [SSH-tunnlar (Secure Shell)](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) ansluter en port på den lokala datorn till en head-nod i HDInsight. Trafik som skickas till den lokala porten dirigeras via en SSH-anslutning till Head-noden. Begäran löses som om den kommer från Head-noden. Svaret dirigeras sedan tillbaka via tunneln till din arbets Station.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En SSH-klient. Mer information finns i [Ansluta till HDInsight (Apache Hadoop) med hjälp av SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -97,7 +94,7 @@ När kommandot har slutförts dirigeras trafik som skickas till port 9876 på de
 
     ![HDInsight skapa SparaTillFil-session](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-1. I avsnittet **kategori** till vänster om dialog rutan expanderar du **anslutning**, expanderar **SSH**och väljer sedan **tunnlar**.
+1. I avsnittet **kategori** till vänster om dialog rutan expanderar du **anslutning**, expanderar **SSH** och väljer sedan **tunnlar**.
 
 1. Ange följande information om alternativen för att **kontrol lera vidarebefordring av SSH-portar** :
 
@@ -145,7 +142,7 @@ När klustret har upprättats kan du använda följande steg för att kontrol le
     ![Bild med snabb menyers menyn utökad](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
 
     > [!NOTE]  
-    > När du väljer __snabb länkar__kan du få en väntande indikator. Det här tillståndet kan inträffa om du har en långsam Internet anslutning. Vänta en minut eller två innan data tas emot från servern och försök sedan igen.
+    > När du väljer __snabb länkar__ kan du få en väntande indikator. Det här tillståndet kan inträffa om du har en långsam Internet anslutning. Vänta en minut eller två innan data tas emot från servern och försök sedan igen.
     >
     > Vissa poster i menyn **snabb länkar** kan vara avhuggna av höger sida av skärmen. I så fall, expanderar du menyn med musen och använder högerpilen för att rulla skärmen till höger för att se resten av menyn.
 

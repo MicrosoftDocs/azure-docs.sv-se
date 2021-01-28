@@ -3,12 +3,12 @@ title: Aktivera Azure Monitor för behållare | Microsoft Docs
 description: I den här artikeln beskrivs hur du aktiverar och konfigurerar Azure Monitor för behållare så att du kan förstå hur din behållare presterar och vilka prestandarelaterade problem som har identifierats.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994067"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943820"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Aktivera Azure Monitor för behållare
 
@@ -21,11 +21,11 @@ Den här artikeln innehåller en översikt över de alternativ som är tillgäng
 
 Du kan också övervaka prestanda för arbets belastningar som distribueras till självhanterade Kubernetes-kluster som finns på:
 - Azure med hjälp av [AKS-motorn](https://github.com/Azure/aks-engine)
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) eller lokalt, genom att använda AKS-motorn.
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) eller lokalt, genom att använda AKS-motorn.
 
 Du kan aktivera Azure Monitor för behållare för en ny distribution eller för en eller flera befintliga distributioner av Kubernetes med någon av följande metoder som stöds:
 
-- Azure-portalen
+- Azure Portal
 - Azure PowerShell
 - Azure CLI
 - [Terraform och AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
@@ -51,7 +51,7 @@ Innan du börjar kontrollerar du att du uppfyller följande krav:
 
 - Du är medlem i gruppen *Log Analytics deltagare* för att aktivera övervakning av behållare. Mer information om hur du styr åtkomsten till en Log Analytics arbets yta finns i [hantera arbets ytor](../platform/manage-access.md).
 
-- Du är medlem i [gruppen *ägare* ](../../role-based-access-control/built-in-roles.md#owner) på kluster resursen AKS.
+- Du är medlem i [gruppen *ägare*](../../role-based-access-control/built-in-roles.md#owner) på kluster resursen AKS.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -63,7 +63,7 @@ Innan du börjar kontrollerar du att du uppfyller följande krav:
 
 Azure Monitor för behållare som officiellt stöder följande konfigurationer:
 
-- Miljöer: Azure Red Hat OpenShift, Kubernetes lokalt och AKS-motorn på Azure och Azure Stack. Mer information finns i [AKS-motorn på Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+- Miljöer: Azure Red Hat OpenShift, Kubernetes lokalt och AKS-motorn på Azure och Azure Stack. Mer information finns i [AKS-motorn på Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
 - Versionerna av Kubernetes och support policy är desamma som de som [stöds i Azure Kubernetes service (AKS)](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Krav för nätverks brand vägg
@@ -80,7 +80,7 @@ I följande tabell visas den konfigurations information för proxy och brand vä
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure Kina 21Vianet:
 
-|Agentresurs|Port |Beskrivning | 
+|Agentresurs|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -88,7 +88,7 @@ I följande tabell visas konfigurations information för proxy och brand vägg f
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure amerikanska myndigheter:
 
-|Agentresurs|Port |Beskrivning | 
+|Agentresurs|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |
@@ -117,7 +117,7 @@ Om du vill aktivera Azure Monitor för behållare använder du en av de metoder 
 | Nytt Kubernetes-kluster | [Skapa ett AKS-kluster med hjälp av Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Du kan aktivera övervakning för ett nytt AKS-kluster som du skapar med hjälp av Azure CLI. |
 | | [Skapa ett AKS-kluster med terraform](container-insights-enable-new-cluster.md#enable-using-terraform)| Du kan aktivera övervakning för ett nytt AKS-kluster som du skapar med hjälp av terraform med öppen källkod. |
 | | [Skapa ett OpenShift-kluster med hjälp av en Azure Resource Manager mall](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | Du kan aktivera övervakning för ett nytt OpenShift-kluster som du skapar med hjälp av en förkonfigurerad Azure Resource Manager mall. |
-| | [Skapa ett OpenShift-kluster med hjälp av Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Du kan aktivera övervakning när du distribuerar ett nytt OpenShift-kluster med hjälp av Azure CLI. |
+| | [Skapa ett OpenShift-kluster med hjälp av Azure CLI](/cli/azure/openshift#az-openshift-create) | Du kan aktivera övervakning när du distribuerar ett nytt OpenShift-kluster med hjälp av Azure CLI. |
 | Befintligt Kubernetes-kluster | [Aktivera övervakning av ett AKS-kluster med hjälp av Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Du kan aktivera övervakning av ett AKS-kluster som redan har distribuerats med hjälp av Azure CLI. |
 | |[Aktivera för AKS-kluster med terraform](container-insights-enable-existing-clusters.md#enable-using-terraform) | Du kan aktivera övervakning av ett AKS-kluster som redan har distribuerats med hjälp av terraform med öppen källkod. |
 | | [Aktivera för AKS-kluster från Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Du kan aktivera övervakning av ett eller flera AKS-kluster som redan har distribuerats från sidan med flera kluster i Azure Monitor. |

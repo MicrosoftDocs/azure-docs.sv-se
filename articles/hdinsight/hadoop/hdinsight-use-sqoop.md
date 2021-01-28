@@ -1,18 +1,15 @@
 ---
 title: Köra apache Sqoop-jobb med Azure HDInsight (Apache Hadoop)
 description: Lär dig hur du använder Azure PowerShell från en arbets station för att köra Sqoop import och export mellan ett Hadoop-kluster och en Azure SQL-databas.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545233"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946431"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Använda Apache Sqoop med Hadoop i HDInsight
 
@@ -82,7 +79,7 @@ Klustret, SQL-databasen och andra objekt skapas via Azure Portal med hjälp av e
     |---|---|
     |Prenumeration |Välj din Azure-prenumeration i list rutan.|
     |Resursgrupp |Välj din resurs grupp i den nedrullningsbara listan eller skapa en ny|
-    |Plats |Välj en region i den nedrullningsbara listan.|
+    |Location |Välj en region i den nedrullningsbara listan.|
     |Klusternamn |Ange ett namn för Hadoop-klustret. Använd bara gemena bokstäver.|
     |Användarnamn för klusterinloggning |Behåll värdet i förväg `admin` .|
     |Lösenord för klusterinloggning |Ange ett lösen ord.|
@@ -93,13 +90,13 @@ Klustret, SQL-databasen och andra objekt skapas via Azure Portal med hjälp av e
     |_artifacts plats | Använd standardvärdet om du inte vill använda din egen BACPAC-fil på en annan plats.|
     |SAS-token för _artifacts plats |Lämna tomt.|
     |BACPAC fil namn |Använd standardvärdet om du inte vill använda din egen BACPAC-fil.|
-    |Plats |Använd standardvärdet.|
+    |Location |Använd standardvärdet.|
 
     Namnet på den [logiska SQL-servern](../../azure-sql/database/logical-servers.md) är  `<ClusterName>dbserver` . Databas namnet kommer att vara `<ClusterName>db` . Standard namnet för lagrings kontot är `e6qhezrh2pdqu` .
 
-3. Välj **Jag accepterar de villkor som anges ovan** .
+3. Välj **Jag accepterar de villkor som anges ovan**.
 
-4. Välj **Köp** . Du ser en ny panel med rubriken skicka distribution för Malldistribution. Det tar cirka 20 minuter att skapa klustret och SQL Database.
+4. Välj **Köp**. Du ser en ny panel med rubriken skicka distribution för Malldistribution. Det tar cirka 20 minuter att skapa klustret och SQL Database.
 
 ## <a name="run-sqoop-jobs"></a>Kör Sqoop-jobb
 

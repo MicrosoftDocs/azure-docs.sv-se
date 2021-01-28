@@ -1,19 +1,16 @@
 ---
 title: Anpassa Azure HDInsight-klusterkonfigurationer med start
 description: Lär dig hur du anpassar konfiguration av HDInsight-kluster program mässigt med hjälp av .NET, PowerShell och Resource Manager-mallar.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547494"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945754"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Anpassa HDInsight-kluster med hjälp av bootstrap
 
@@ -86,9 +83,9 @@ Du hittar ett fullständigt fungerande PowerShell-skript i [bilagan](#appendix-p
 **Så här kontrollerar du ändringen:**
 
 1. Navigera till `https://CLUSTERNAME.azurehdinsight.net/` där `CLUSTERNAME` är namnet på klustret.
-1. I den vänstra menyn navigerar du till **Hive** -  >  **konfigurationer**  >  **Avancerat** .
-1. Expandera **Avancerad Hive-plats** .
-1. Leta upp **Hive. metaarkiv. client. socket. timeout** och bekräfta att värdet är **90s** .
+1. I den vänstra menyn navigerar du till **Hive**-  >  **konfigurationer**  >  **Avancerat**.
+1. Expandera **Avancerad Hive-plats**.
+1. Leta upp **Hive. metaarkiv. client. socket. timeout** och bekräfta att värdet är **90s**.
 
 Några fler exempel på hur du anpassar andra konfigurationsfiler:
 

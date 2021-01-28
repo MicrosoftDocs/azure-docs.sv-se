@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220277"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944898"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Felsöka dirigering av pipelines och utlösare i Azure Data Factory
 
@@ -60,7 +60,7 @@ Felmeddelande:
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**Orsak**: du har nått kapacitets gränsen för integration Runtime. Du kanske kör en stor mängd data flöde genom att använda samma integration runtime på samma gång. Se [Azure-prenumeration och tjänst begränsningar, kvoter och begränsningar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) för mer information.
+**Orsak**: du har nått kapacitets gränsen för integration Runtime. Du kanske kör en stor mängd data flöde genom att använda samma integration runtime på samma gång. Se [Azure-prenumeration och tjänst begränsningar, kvoter och begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2) för mer information.
 
 **Lösning**:
  
@@ -76,13 +76,13 @@ Azure Data Factory utvärderar resultatet av alla aktiviteter på lövnivå. Pip
 **Lösning**
 
 1. Implementera kontroller på aktivitets nivå genom [att följa hur du hanterar pipelines fel och fel](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459).
-1. Använd Azure Logic Apps för att övervaka pipeliner med jämna mellanrum efter [fråga efter fabrik](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
+1. Använd Azure Logic Apps för att övervaka pipeliner med jämna mellanrum efter [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory).
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Övervaka pipeline-problem med jämna mellanrum
 
 Du kan behöva övervaka misslyckade Data Factory pipeliner i intervall, på 5 minuter. Du kan fråga efter och filtrera pipelinen som körs från en data fabrik med hjälp av slut punkten. 
 
-Konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut, enligt beskrivningen i [fråga efter fabrik](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory). Sedan kan du rapportera incidenter till vårt biljett system.
+Konfigurera en Azure Logic-app för att fråga alla misslyckade pipeliner var femte minut, enligt beskrivningen i [fråga efter fabrik](/rest/api/datafactory/pipelineruns/querybyfactory). Sedan kan du rapportera incidenter till vårt biljett system.
 
 Mer information finns i [skicka meddelanden från Data Factory, del 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/).
 

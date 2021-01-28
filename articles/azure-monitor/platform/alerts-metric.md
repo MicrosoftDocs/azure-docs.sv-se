@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6919040308dcd3a80c3c0b05ec729744099b6d8f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071042"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944502"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Skapa, visa och hantera måttaviseringar med Azure Monitor
 
@@ -91,7 +91,7 @@ Du kan visa och hantera mått varnings regler med hjälp av bladet hantera regle
 
 ## <a name="with-azure-cli"></a>Med Azure CLI
 
-I föregående avsnitt beskrivs hur du skapar, visar och hanterar aviserings regler för mått med hjälp av Azure Portal. Det här avsnittet beskriver hur du gör på samma sätt som med plattforms oberoende [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Det snabbaste sättet att börja använda Azure CLI är genom [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest). I den här artikeln ska vi använda Cloud Shell.
+I föregående avsnitt beskrivs hur du skapar, visar och hanterar aviserings regler för mått med hjälp av Azure Portal. Det här avsnittet beskriver hur du gör på samma sätt som med plattforms oberoende [Azure CLI](/cli/azure/get-started-with-azure-cli). Det snabbaste sättet att börja använda Azure CLI är genom [Azure Cloud Shell](../../cloud-shell/overview.md). I den här artikeln ska vi använda Cloud Shell.
 
 1. Gå till Azure Portal och klicka på **Cloud Shell**.
 

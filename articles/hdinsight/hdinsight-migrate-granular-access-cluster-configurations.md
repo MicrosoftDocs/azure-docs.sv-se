@@ -3,16 +3,15 @@ title: Detaljerad rollbaserad åtkomst till Azure HDInsight-klusterkonfiguration
 description: Lär dig mer om de ändringar som krävs som en del av migreringen till detaljerad rollbaserad åtkomst för HDInsight-klusterkonfigurationer.
 author: tylerfox
 ms.author: tyfox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533316"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944087"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrera till detaljerad rollbaserad åtkomst för klusterkonfigurationer
 
@@ -29,7 +28,7 @@ Vi introducerar också en ny roll för [HDInsight-kluster](../role-based-access-
 | Roll                                  | Tidigare                                                                                       | Gå framåt       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Läsare                                | – Läs behörighet, inklusive hemligheter.                                                                   | -Läs behörighet, **förutom** hemligheter |           |   |   |
-| HDInsight-kluster operator<br>(Ny roll) | E.t.                                                                                              | -Läs-/Skriv behörighet, inklusive hemligheter         |   |   |
+| HDInsight-kluster operator<br>(Ny roll) | Ej tillämpligt                                                                                              | -Läs-/Skriv behörighet, inklusive hemligheter         |   |   |
 | Deltagare                           | – Läs-/skriv åtkomst, inklusive hemligheter.<br>– Skapa och hantera alla typer av Azure-resurser.<br>-Kör skript åtgärder.     | Ingen ändring |
 | Ägare                                 | – Läs-/skriv åtkomst inklusive hemligheter.<br>-Fullständig åtkomst till alla resurser<br>– Delegera åtkomst till andra.<br>-Kör skript åtgärder. | Ingen ändring |
 
@@ -181,7 +180,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 az role assignment create --role "HDInsight Cluster Operator" --assignee user@domain.com
 ```
 
-### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 Du kan också använda Azure Portal för att lägga till roll tilldelningen HDInsight-kluster för en användare. Se dokumentationen, [Lägg till eller ta bort roll tilldelningar i Azure med hjälp av Azure Portal – Lägg till en roll tilldelning](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment).
 

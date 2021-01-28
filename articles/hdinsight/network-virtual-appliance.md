@@ -1,18 +1,15 @@
 ---
 title: Konfigurera virtuell nätverks installation i Azure HDInsight
 description: Lär dig hur du konfigurerar ett antal ytterligare funktioner för din virtuella nätverks installation i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 557f0a6a37747d3a461ced8de16fd1fcf0d1abab
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7fe266c3c7b75762133fca4645e0675845c28972
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524121"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943974"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurera virtuell nätverks installation i Azure HDInsight
 
@@ -39,7 +36,7 @@ Du kan välja att aktivera en eller flera av följande tjänst slut punkter, vil
 
 ### <a name="ip-address-dependencies"></a>IP-adress beroenden
 
-| **Slutpunkt** | **Detaljer** |
+| **Slutpunkt** | **Information** |
 |---|---|
 | IP-adresser publicerade [här](hdinsight-management-ip-addresses.md) | De här IP-adresserna är för HDInsight-resurs leverantör och bör ingå i UDR för att undvika asymmetrisk routning. Den här regeln behövs bara om ResourceProviderConnection är inställt på *inkommande*. Om ResourceProviderConnection är inställt på *utgående* behövs inte dessa IP-adresser i UDR.  |
 | AAD – DS privata IP-adresser | Krävs endast för ESP-kluster, om virtuella nätverk inte är peer-datorer.|

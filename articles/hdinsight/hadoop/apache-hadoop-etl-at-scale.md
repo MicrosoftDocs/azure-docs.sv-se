@@ -1,19 +1,16 @@
 ---
 title: Extrahera, transformera och läsa in (ETL) i skala – Azure HDInsight
 description: Lär dig hur extrahering, transformering och inläsning används i HDInsight med Apache Hadoop.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704160"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946575"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrahera, transformera och läsa in (ETL) i skala
 
@@ -27,7 +24,7 @@ I följande avsnitt lär du dig var och en av de olika ETL-faserna och deras ass
 
 ## <a name="orchestration"></a>Orkestrering
 
-Dirigering sträcker sig över alla faser i ETL-pipeline. ETL-jobb i HDInsight omfattar ofta flera olika produkter som arbetar tillsammans med varandra. Ett exempel:
+Dirigering sträcker sig över alla faser i ETL-pipeline. ETL-jobb i HDInsight omfattar ofta flera olika produkter som arbetar tillsammans med varandra. Exempel:
 
 - Du kan använda Apache Hive för att rensa en del av data och Apache gris för att rensa en annan del.
 - Du kan använda Azure Data Factory för att läsa in data i Azure SQL Database från Azure Data Lake Store.
