@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017895"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932433"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Distribuera en Textanalys-behållare till Azure Kubernetes-tjänsten
 
@@ -25,9 +25,9 @@ Lär dig hur du distribuerar Azure Cognitive Services [textanalys](./text-analyt
 
 Den här proceduren kräver flera verktyg som måste installeras och köras lokalt. Använd inte Azure Cloud Shell. Du behöver följande:
 
-* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services) innan du börjar.
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services) innan du börjar.
 * En text redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/download).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) installerat.
+* [Azure CLI](/cli/azure/install-azure-cli) installerat.
 * [KUBERNETES CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) har installerats.
 * En Azure-resurs med rätt pris nivå. Alla pris nivåer fungerar inte med den här behållaren:
     * Endast **Azure textanalys** -resurser med F0 eller standard pris nivåer.

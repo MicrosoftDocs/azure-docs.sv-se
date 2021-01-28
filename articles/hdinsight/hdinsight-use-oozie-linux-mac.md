@@ -3,17 +3,16 @@ title: Använda Hadoop Oozie-arbetsflöden i Linux-baserade Azure HDInsight
 description: Använda Hadoop-Oozie i Linux-baserade HDInsight. Lär dig hur du definierar ett Oozie-arbetsflöde och skickar ett Oozie-jobb.
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 7b0d3ac4775ca057856c28ab42197bb734f149d6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 41c42009252169c141bec5d3dc2ea5c6308d6812
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534948"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931294"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Använda Apache Oozie med Apache Hadoop för att definiera och köra ett arbetsflöde på Azure HDInsight som körs på Linux
 
@@ -31,11 +30,11 @@ Du kan också använda Oozie för att schemalägga jobb som är speciella för e
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* **Ett Hadoop-kluster i HDInsight** . Se [Kom igång med HDInsight på Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Ett Hadoop-kluster i HDInsight**. Se [Kom igång med HDInsight på Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **En SSH-klient** . Se [ansluta till HDInsight (Apache Hadoop) med SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **En SSH-klient**. Se [ansluta till HDInsight (Apache Hadoop) med SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **En Azure SQL Database** .  Se [skapa en databas i Azure SQL Database i Azure Portal](../azure-sql/database/single-database-create-quickstart.md).  I den här artikeln används en databas med namnet **oozietest** .
+* **En Azure SQL Database**.  Se [skapa en databas i Azure SQL Database i Azure Portal](../azure-sql/database/single-database-create-quickstart.md).  I den här artikeln används en databas med namnet **oozietest**.
 
 * URI-schemat för klustrets primära lagring. `wasb://` för Azure Storage för `abfs://` Azure Data Lake Storage Gen2 eller `adl://` för Azure Data Lake Storage gen1. Om säker överföring har Aktiver ATS för Azure Storage är URI: n `wasbs://` . Se även [säker överföring](../storage/common/storage-require-secure-transfer.md).
 
@@ -64,7 +63,7 @@ Arbets flödet som används i det här dokumentet innehåller två åtgärder. �
 
 ## <a name="create-the-working-directory"></a>Skapa arbets katalogen
 
-Oozie förväntar dig att lagra alla resurser som krävs för ett jobb i samma katalog. I det här exemplet används `wasbs:///tutorials/useoozie` . Utför följande steg för att skapa den här katalogen:
+Oozie förväntar dig att lagra alla resurser som krävs för ett jobb i samma katalog. I det här exemplet används `wasbs:///tutorials/useoozie`. Utför följande steg för att skapa den här katalogen:
 
 1. Redigera koden nedan `sshuser` och Ersätt med SSH-användarnamnet för klustret och Ersätt `CLUSTERNAME` med namnet på klustret.  Ange sedan koden för att ansluta till HDInsight-klustret med [hjälp av SSH](hdinsight-hadoop-linux-use-ssh-unix.md).  
 
@@ -130,7 +129,7 @@ Använd följande steg för att skapa ett HiveQL-skript (Hive Query Language) so
 
      Arbets flödes definitions filen workflow.xml i den här artikeln skickar dessa värden till det här HiveQL-skriptet vid körning.
 
-1. Om du vill spara filen väljer du **CTRL + X** , anger **Y** och väljer sedan **RETUR** .  
+1. Om du vill spara filen väljer du **CTRL + X**, anger **Y** och väljer sedan **RETUR**.  
 
 1. Använd följande kommando för att kopiera `useooziewf.hql` till `wasbs:///tutorials/useoozie/useooziewf.hql` :
 
@@ -215,7 +214,7 @@ Oozie för arbets flödes definitioner skrivs i hPDL (Hadoop process Definition 
 
      Observera också `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` posten i avsnittet Sqoop. Den här posten instruerar Oozie att göra det här arkivet tillgängligt för Sqoop när den här åtgärden körs.
 
-3. Om du vill spara filen väljer du **CTRL + X** , anger **Y** och väljer sedan **RETUR** .  
+3. Om du vill spara filen väljer du **CTRL + X**, anger **Y** och väljer sedan **RETUR**.  
 
 4. Använd följande kommando för att kopiera `workflow.xml` filen till `/tutorials/useoozie/workflow.xml` :
 
@@ -382,7 +381,7 @@ Jobb definitionen beskriver var du hittar workflow.xml. Den beskriver också var
 
 4. När nano-redigeraren öppnas klistrar du in den redigerade XML-filen som innehållet i filen.
 
-5. Om du vill spara filen väljer du **CTRL + X** , anger **Y** och väljer sedan **RETUR** .
+5. Om du vill spara filen väljer du **CTRL + X**, anger **Y** och väljer sedan **RETUR**.
 
 ## <a name="submit-and-manage-the-job"></a>Skicka och hantera jobbet
 
@@ -489,9 +488,9 @@ Mer information om Oozie-kommandot finns i [kommando rads verktyget Apache Oozie
 
 Med Oozie-REST API kan du bygga egna verktyg som fungerar med Oozie. Följande HDInsight-speciell information om användningen av Oozie-REST API:
 
-* **URI** : du kan komma åt REST API utanför klustret på `https://CLUSTERNAME.azurehdinsight.net/oozie` .
+* **URI**: du kan komma åt REST API utanför klustret på `https://CLUSTERNAME.azurehdinsight.net/oozie` .
 
-* **Autentisering** : Använd API: t för klustrets kluster-http-konto (admin) och lösen ord för att autentisera. Exempel:
+* **Autentisering**: Använd API: t för klustrets kluster-http-konto (admin) och lösen ord för att autentisera. Exempel:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -517,11 +516,11 @@ Utför följande steg för att få åtkomst till Oozie-webbgränssnittet:
 
 2. När du har skapat en tunnel öppnar du Ambari-webbgränssnittet i webbläsaren med hjälp av URI `http://headnodehost:8080` .
 
-3. Från vänster sida av sidan väljer du **Oozie**  >  **Quick Links**  >  **Oozie Web UI** .
+3. Från vänster sida av sidan väljer du **Oozie**  >  **Quick Links**  >  **Oozie Web UI**.
 
     ![Apache Ambari Oozie Web UI-steg](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
-4. Oozie webb GRÄNSSNITTets standardinställningar visar de arbets flödes jobb som körs. Om du vill se alla arbets flödes jobb väljer du **alla jobb** .
+4. Oozie webb GRÄNSSNITTets standardinställningar visar de arbets flödes jobb som körs. Om du vill se alla arbets flödes jobb väljer du **alla jobb**.
 
     ![Arbets flödes jobb för Oozie webb konsol](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
@@ -529,13 +528,13 @@ Utför följande steg för att få åtkomst till Oozie-webbgränssnittet:
 
     ![HDInsight Apache Oozie-jobb information](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
-6. På fliken **jobb information** kan du se grundläggande jobb information och enskilda åtgärder i jobbet. Du kan använda flikarna längst upp för att visa **jobb definitionen** , **jobb konfigurationen** , komma åt **jobb loggen** eller visa ett dirigerat acykliska diagram (DAG) för jobbet under **jobb dag** .
+6. På fliken **jobb information** kan du se grundläggande jobb information och enskilda åtgärder i jobbet. Du kan använda flikarna längst upp för att visa **jobb definitionen**, **jobb konfigurationen**, komma åt **jobb loggen** eller visa ett dirigerat acykliska diagram (DAG) för jobbet under **jobb dag**.
 
-   * **Jobb logg** : Välj knappen **Hämta loggar** för att hämta alla loggar för jobbet eller Använd fältet **Ange Sök filter** för att filtrera loggarna.
+   * **Jobb logg**: Välj knappen **Hämta loggar** för att hämta alla loggar för jobbet eller Använd fältet **Ange Sök filter** för att filtrera loggarna.
 
        ![HDInsight Apache Oozie-jobb logg](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
-   * **Jobb dag** : dag är en grafisk översikt över data Sök vägar som tas genom arbets flödet.
+   * **Jobb dag**: dag är en grafisk översikt över data Sök vägar som tas genom arbets flödet.
 
        !["HDInsight Apache Oozie Job dag"](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
@@ -549,7 +548,7 @@ Utför följande steg för att få åtkomst till Oozie-webbgränssnittet:
 
 Du kan använda koordinatorn för att ange en start, en slut punkt och förekomst frekvens för jobb. Utför följande steg för att definiera ett schema för arbets flödet:
 
-1. Använd följande kommando för att skapa en fil med namnet **coordinator.xml** :
+1. Använd följande kommando för att skapa en fil med namnet **coordinator.xml**:
 
     ```bash
     nano coordinator.xml
@@ -576,7 +575,7 @@ Du kan använda koordinatorn för att ange en start, en slut punkt och förekoms
     > * `${coordTimezone}`: Koordinator jobb finns i en fast tidszon utan sommar tid, vanligt vis representeras med hjälp av UTC. Den här tids zonen kallas för den *Oozie bearbetnings tids zonen.*
     > * `${wfPath}`: Sökvägen till workflow.xml.
 
-2. Om du vill spara filen väljer du **CTRL + X** , anger **Y** och väljer sedan **RETUR** .
+2. Om du vill spara filen väljer du **CTRL + X**, anger **Y** och väljer sedan **RETUR**.
 
 3. Om du vill kopiera filen till arbets katalogen för det här jobbet använder du följande kommando:
 
@@ -631,7 +630,7 @@ Du kan använda koordinatorn för att ange en start, en slut punkt och förekoms
 
        Dessa värden anger start tiden till 12:00 PM den 10 maj 2018 och slut tiden till 12 maj 2018. Intervallet för att köra det här jobbet är inställt på varje dag. Frekvensen är i minuter, så 24 timmar x 60 minuter = 1440 minuter. Slutligen är tids zonen inställd på UTC.
 
-5. Om du vill spara filen väljer du **CTRL + X** , anger **Y** och väljer sedan **RETUR** .
+5. Om du vill spara filen väljer du **CTRL + X**, anger **Y** och väljer sedan **RETUR**.
 
 6. Om du vill skicka och starta jobbet använder du följande kommando:
 

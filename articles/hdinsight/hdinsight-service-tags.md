@@ -1,18 +1,16 @@
 ---
 title: Service tag gen för nätverks säkerhets gruppen (NSG) för Azure HDInsight
 description: 'Använd HDInsight-tjänstens taggar för att tillåta inkommande trafik till ditt kluster från noden hälso-och hanterings tjänster, utan att lägga till IP-adresser till din NSG: er.'
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022759"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931772"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG service-taggar för Azure HDInsight
 
@@ -105,7 +103,7 @@ Om klustret till exempel har skapats i `East US 2` regionen måste du lägga til
 | &nbsp; | East US | HDInsight. öst |
 | &nbsp; | USA, västra | HDInsight. väst |
 | Japan | Japan, östra | HDInsight. Japanöstra |
-| Europa | Norra Europa | HDInsight. Europanorra |
+| Europa | Europa, norra | HDInsight. Europanorra |
 | &nbsp; | Europa, västra| HDInsight. WestEurope |
 | Asien | Asien, östra | HDInsight. Asienöstra |
 | &nbsp; | Sydostasien | HDInsight. Sydostasien |

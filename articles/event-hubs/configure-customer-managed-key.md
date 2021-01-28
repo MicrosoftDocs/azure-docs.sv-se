@@ -3,20 +3,15 @@ title: Konfigurera din egen nyckel för kryptering av Azure Event Hubs-data i vi
 description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för kryptering av Azure Event Hubs data rest.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 00e33bc3464aed1829968b7957e48455eaa04447
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625389"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933789"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurera Kundhanterade nycklar för kryptering av Azure Event Hubs-data i vila med hjälp av Azure Portal
-Azure Event Hubs tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Event Hubs förlitar sig på Azure Storage för att lagra data och som standard krypteras alla data som lagras med Azure Storage med hjälp av Microsoft-hanterade nycklar. 
-
-## <a name="overview"></a>Översikt
-Azure Event Hubs stöder nu möjligheten att kryptera data i vila med antingen Microsoft-hanterade nycklar eller Kundhanterade nycklar (Bring Your Own Key – BYOK). Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till de Kundhanterade nycklar som används för att kryptera Azure Event Hubs data i vila.
-
-Att aktivera funktionen BYOK är en tids inställnings process i namn området.
+Azure Event Hubs tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Tjänsten Event Hubs använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med hjälp av Microsoft-hanterade nycklar. Om du använder din egen nyckel (kallas även Bring Your Own Key (BYOK) eller kundhanterad nyckel) krypteras data fortfarande med hjälp av den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den Kundhanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till Kundhanterade nycklar som används för kryptering av Microsoft-hanterade nycklar. Att aktivera funktionen BYOK är en tids inställnings process i namn området.
 
 > [!NOTE]
 > BYOK-funktionen stöds av [Event Hubs dedikerade kluster med en enda klient](event-hubs-dedicated-overview.md) . Det går inte att aktivera den för standard Event Hubs-namnområden.
@@ -62,7 +57,7 @@ När du har aktiverat Kundhanterade nycklar måste du associera kundens hanterad
     1. Nu kan du välja den här nyckeln för att associera med Event Hubs namn området för kryptering i list rutan. 
 
         ![Välj nyckel från Key Vault](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. Fyll i informationen om nyckeln och klicka på **Välj**. Detta möjliggör kryptering av data i vila i namn området med en kundhanterad nyckel. 
+    1. Fyll i informationen om nyckeln och klicka på **Välj**. Detta möjliggör kryptering av den Microsoft-hanterade nyckeln med din nyckel (kundhanterad nyckel). 
 
 
 ## <a name="rotate-your-encryption-keys"></a>Rotera dina krypterings nycklar
@@ -74,7 +69,7 @@ Om du återkallar åtkomst till krypterings nycklarna rensas inte data från Eve
 När krypterings nyckeln har återkallats går Event Hubss tjänsten på det krypterade namn området inte att fungera. Om åtkomsten till nyckeln är aktive rad eller om borttagnings nyckeln återställs, kommer Event Hubs-tjänsten att välja nyckeln så att du kan komma åt data från namn området krypterad Event Hubs.
 
 ## <a name="set-up-diagnostic-logs"></a>Konfigurera diagnostikloggar 
-Genom att ställa in diagnostikloggar för BYOK-aktiverade namn rymder får du nödvändig information om åtgärder när ett namn område krypteras med Kundhanterade nycklar. Dessa loggar kan aktive ras och senare strömmas till en Event Hub eller analyseras via Log Analytics eller strömmas till lagring för att utföra anpassad analys. Mer information om diagnostiska loggar finns i [Översikt över Azure Diagnostic-loggar](../azure-monitor/platform/platform-logs-overview.md).
+Att ställa in diagnostikloggar för BYOK-aktiverade namn områden ger dig den information som krävs för åtgärderna. Dessa loggar kan aktive ras och senare strömmas till en Event Hub eller analyseras via Log Analytics eller strömmas till lagring för att utföra anpassad analys. Mer information om diagnostiska loggar finns i [Översikt över Azure Diagnostic-loggar](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="enable-user-logs"></a>Aktivera användar loggar
 Följ dessa steg om du vill aktivera loggar för Kundhanterade nycklar.

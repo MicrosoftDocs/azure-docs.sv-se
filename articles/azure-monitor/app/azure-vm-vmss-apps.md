@@ -3,12 +3,12 @@ title: Övervaka prestanda på virtuella Azure-datorer – Azure Application ins
 description: Övervakning av program prestanda för virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer. Diagrammets inläsnings-och svars tid, beroende information och ange aviseringar för prestanda.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677951"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933908"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Distribuera Azure Monitor Application Insights-agenten på virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer
 
@@ -49,7 +49,7 @@ Det finns två sätt att aktivera program övervakning för virtuella Azure-dato
 > Innan du installerar Application Insights agent behöver du en anslutnings sträng. [Skapa en ny Application Insights resurs](./create-new-resource.md) eller kopiera anslutnings strängen från en befintlig Application Insights-resurs.
 
 > [!NOTE]
-> Ny till PowerShell? Kolla in [guiden kom igång](/powershell/azure/get-started-azureps?view=azps-2.5.0).
+> Ny till PowerShell? Kolla in [guiden kom igång](/powershell/azure/get-started-azureps).
 
 Installera eller uppdatera Application Insights agenten som ett tillägg för virtuella Azure-datorer
 ```powershell

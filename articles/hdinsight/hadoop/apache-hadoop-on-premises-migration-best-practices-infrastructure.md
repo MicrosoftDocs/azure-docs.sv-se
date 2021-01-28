@@ -1,19 +1,16 @@
 ---
 title: 'Infrastruktur: lokal Apache Hadoop till Azure HDInsight'
 description: Lär dig metod tips för infrastruktur för migrering av lokala Hadoop-kluster till Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542309"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932146"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrera lokala Apache Hadoop-kluster till Azure HDInsight – metod tips för infrastruktur
 
@@ -68,7 +65,7 @@ Program eller komponenter som var tillgängliga i lokala kluster, men som inte i
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|SÄKERHETS|IaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW ett alternativ i Azure)
 |Tableau|IaaS 
 |Linje|HDInsight Edge-nod
@@ -80,7 +77,7 @@ Mer information finns i artikeln Apache Hadoop- [komponenter som är tillgängli
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Anpassa HDInsight-kluster med skript åtgärder
 
-HDInsight tillhandahåller en metod för kluster konfiguration som kallas en **skript åtgärd** . En skript åtgärd är Bash-skript som körs på noderna i ett HDInsight-kluster och som kan användas för att installera ytterligare komponenter och ändra konfigurations inställningar.
+HDInsight tillhandahåller en metod för kluster konfiguration som kallas en **skript åtgärd**. En skript åtgärd är Bash-skript som körs på noderna i ett HDInsight-kluster och som kan användas för att installera ytterligare komponenter och ändra konfigurations inställningar.
 
 Skript åtgärder måste lagras på en URI som är tillgänglig från HDInsight-klustret. De kan användas under eller efter att klustret har skapats och kan också begränsas till att endast köras på vissa nodtyper.
 

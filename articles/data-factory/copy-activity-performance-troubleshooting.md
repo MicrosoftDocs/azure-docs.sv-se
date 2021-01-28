@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968899"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933921"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Felsöka prestanda för kopierings aktivitet
 
@@ -53,7 +53,7 @@ Som en referens ger för närvarande prestanda justerings tips förslag på föl
 
 Körnings informationen och varaktigheterna längst ned i vyn kopierings aktivitets övervakning beskriver de viktiga steg som din kopierings aktivitet går igenom (se exemplet i början av den här artikeln), vilket är särskilt användbart för att felsöka kopierings prestanda. Flask halsen för din kopierings körning är den som har den längsta varaktigheten. Se följande tabell i varje Stadiums definition och lär dig hur du [felsöker kopierings aktivitet på Azure IR](#troubleshoot-copy-activity-on-azure-ir) och [felsöker kopierings aktivitet på egen värd-IR](#troubleshoot-copy-activity-on-self-hosted-ir) med sådan information.
 
-| Fas           | Beskrivning                                                  |
+| Fas           | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Kö           | Den tid som förflutit tills kopierings aktiviteten faktiskt börjar på integration Runtime. |
 | Skript före kopiering | Tiden mellan kopierings aktiviteten som startar på IR-och kopierings aktiviteten som kör skriptet för att kopiera i mottagar data lagret. Använd när du konfigurerar skriptet för att kopiera för databas handfat, t. ex. När du skriver data i Azure SQL Database rensa innan du kopierar nya data. |
@@ -142,7 +142,7 @@ Om kopierings prestandan inte motsvarar förväntad fel sökning av en enskild k
 
   - Kontrol lera den självbetjänings-och minnes användnings trenden i Azure Portal > din Data Factory-> översikts sida. Överväg att [skala upp/ut IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability) om processor användningen är hög eller tillgängligt minne är lågt.
 
-  - Använd bästa praxis för anslutnings data inläsning om detta gäller. Ett exempel:
+  - Använd bästa praxis för anslutnings data inläsning om detta gäller. Exempel:
 
     - När du kopierar data från [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source)och [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) aktiverar du alternativ för datapartitioner för att kopiera data parallellt.
 
@@ -194,7 +194,7 @@ Aktivitetens körnings tid varierar när data uppsättningen baseras på olika I
 
     - Azure SQL Database nivån är inte tillräckligt hög.
 
-    - Azure SQL Database DTU-användningen är nära 100%. Du kan [övervaka prestanda](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) och överväga att uppgradera Azure SQL Database nivån.
+    - Azure SQL Database DTU-användningen är nära 100%. Du kan [övervaka prestanda](../azure-sql/database/monitor-tune-overview.md) och överväga att uppgradera Azure SQL Database nivån.
 
     - Indexen har inte angetts korrekt. Ta bort alla index innan data inläsningen och återskapa dem när belastningen är klar.
 
@@ -202,7 +202,6 @@ Aktivitetens körnings tid varierar när data uppsättningen baseras på olika I
 
     - I stället för Mass indrag används den lagrade proceduren, vilket förväntas ha sämre prestanda. 
 
-- **Lösning**: se [fel sökning av prestanda för kopierings aktivitet](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting).
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Tids gräns eller dåliga prestanda vid parsning av stor Excel-fil
 

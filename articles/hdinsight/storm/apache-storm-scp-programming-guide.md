@@ -1,19 +1,16 @@
 ---
 title: Programmerings guide för SCP.NET för storm i Azure HDInsight
 description: Lär dig hur du använder SCP.NET för att skapa. NET-baserade Storm-topologier för användning med storm som körs i Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000149"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932636"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Programmerings guide för SCP för Apache Storm i Azure HDInsight
 
@@ -95,7 +92,7 @@ public interface ISCPSpout : ISCPPlugin
 
 När **NextTuple** anropas kan C#-koden avge en eller flera tupler. Om det inte finns något att skicka, bör den här metoden returnera utan att skicka något.
 
-Metoderna **NextTuple**, **ack**och **failover** anropas i en tätt slinga i en enda tråd i C#-processen. Om det inte finns några tupleer att generera, har du **NextTuple** vilo läge för en kort tids period, till exempel 10 millisekunder. Detta vilo läge hjälper till att undvika CPU-tillgänglighet.
+Metoderna **NextTuple**, **ack** och **failover** anropas i en tätt slinga i en enda tråd i C#-processen. Om det inte finns några tupleer att generera, har du **NextTuple** vilo läge för en kort tids period, till exempel 10 millisekunder. Detta vilo läge hjälper till att undvika CPU-tillgänglighet.
 
 Metoderna **ack** och **failover** anropas bara när en Specifikations fil aktiverar bekräftelse metoden. Parametern *seqId* identifierar den tupel som har bekräftats eller misslyckats. Om bekräftelse är aktiverat i en inaktive rad topologi, ska följande **genereringsområden** användas i en kanalen:
 
@@ -133,7 +130,7 @@ public interface ISCPTxSpout : ISCPPlugin
 }
 ```
 
-Precis som deras icke-transaktionella motsvarigheter, **NextTx**, **ack**och **misslyckanden** , anropas i en tätt slinga i en enda tråd i C#-processen. Om det inte finns några tupleer att generera, har du **NextTx** vilo läge för en kort tids period, till exempel 10 millisekunder. Detta vilo läge hjälper till att undvika CPU-tillgänglighet.
+Precis som deras icke-transaktionella motsvarigheter, **NextTx**, **ack** och **misslyckanden** , anropas i en tätt slinga i en enda tråd i C#-processen. Om det inte finns några tupleer att generera, har du **NextTx** vilo läge för en kort tids period, till exempel 10 millisekunder. Detta vilo läge hjälper till att undvika CPU-tillgänglighet.
 
 När **NextTx** anropas för att starta en ny transaktion identifierar *seqId* output-parametern transaktionen. Transaktionen används också i **ack** och **misslyckad**. **NextTx** -metoden kan generera data till Java-sidan. Data lagras i ZooKeeper för att ge stöd för uppspelning. Eftersom ZooKeeper har begränsad kapacitet ska din kod endast generera metadata och inte Mass data i en transaktions kanalen.
 
@@ -161,11 +158,11 @@ SCP.NET skapar ett nytt **ISCPBatchBolt** -objekt för att bearbeta varje **Stor
 
 ## <a name="object-model"></a>Objekt modell
 
-SCP.NET innehåller också en enkel uppsättning viktiga objekt som utvecklare kan använda för att program mera. Objekten är **context**, **StateStore**och **SCPRuntime**. De beskrivs i det här avsnittet.
+SCP.NET innehåller också en enkel uppsättning viktiga objekt som utvecklare kan använda för att program mera. Objekten är **context**, **StateStore** och **SCPRuntime**. De beskrivs i det här avsnittet.
 
 ### <a name="context"></a>Kontext
 
-**Kontext** objekt är en miljö som körs i ett program. Varje **ISCPPlugin** -instans av **ISCPSpout**, **ISCPBolt**, **ISCPTxSpout**eller **ISCPBatchBolt** har en motsvarande **kontext** instans. De funktioner som tillhandahålls av **kontexten** är indelade i följande två delar:
+**Kontext** objekt är en miljö som körs i ett program. Varje **ISCPPlugin** -instans av **ISCPSpout**, **ISCPBolt**, **ISCPTxSpout** eller **ISCPBatchBolt** har en motsvarande **kontext** instans. De funktioner som tillhandahålls av **kontexten** är indelade i följande två delar:
 
 * Den statiska delen, som är tillgänglig i hela C#-processen
 * Den dynamiska delen som bara är tillgänglig för den speciella **kontext** instansen
@@ -379,7 +376,7 @@ Indataparametern för **LaunchPlugin** är ett ombud. Metoden kan returnera ett 
 public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary<string, Object> parms);
 ```
 
-För **ISCPBatchBolt**kan du hämta ett **StormTxAttempt** -objekt från parametern *parametrar* och använda det för att bedöma om försöket är ett omspelat försök. Det görs ofta en kontroll av att ett omuppspelnings försök görs i commit-blixten. HelloWorldTx-exemplet längre fram i den här artikeln visar den här kontrollen.
+För **ISCPBatchBolt** kan du hämta ett **StormTxAttempt** -objekt från parametern *parametrar* och använda det för att bedöma om försöket är ett omspelat försök. Det görs ofta en kontroll av att ett omuppspelnings försök görs i commit-blixten. HelloWorldTx-exemplet längre fram i den här artikeln visar den här kontrollen.
 
 SCP-plugin-program kan vanligt vis köras i två lägen: lokalt test läge och normalt läge.
 
@@ -434,19 +431,19 @@ Du kan skicka Topology-specifikationer direkt till ett Storm-kluster för körni
 
 SCP.NET har lagt till följande funktioner för att definiera transaktionella topologier:
 
-| Ny funktion | Parametrar | Beskrivning |
+| Ny funktion | Parametrar | Description |
 | --- | --- | --- |
 | **TX-topolopy** |*topologi-namn*<br />*kanalen – mappa*<br />*bult-karta* |Definierar en transaktionell topologi med topologins namn, kanaler definitions karta och bult. |
 | **SCP-TX-kanalen** |*exec-namn*<br />*args*<br />*fält* |Definierar en transaktionell kanalen. Funktionen kör programmet som anges av *exec-Name* och använder *argument*.<br /><br />*Fält* parametern anger utmatnings fälten för kanalen. |
 | **SCP-TX-batch-bult** |*exec-namn*<br />*args*<br />*fält* |Definierar en transaktionell batch-bult. Funktionen kör programmet som anges av *exec-Name* och använder *argument.*<br /><br />Parametern *Fields* anger utmatnings fälten för bulten. |
 | **SCP-TX-commit-bult** |*exec-namn*<br />*args*<br />*fält* |Definierar en transaktionell commit-bult. Funktionen kör programmet som anges av *exec-Name* och använder *argument*.<br /><br />Parametern *Fields* anger utmatnings fälten för bulten. |
 | **nontx-topologi** |*topologi-namn*<br />*kanalen – mappa*<br />*bult-karta* |Definierar en transaktionell topologi med topologins namn, kanaler definitions karta och bult. |
-| **SCP – kanalen** |*exec-namn*<br />*args*<br />*fält*<br />*komponentparametrar* |Definierar en kanalen som inte är en transaktion. Funktionen kör programmet som anges av *exec-Name* och använder *argument*.<br /><br />*Fält* parametern anger utmatnings fälten för kanalen.<br /><br />Parametern *parameters* Parameters är valfri. Använd den för att ange parametrar som "inte transaktions-ack. enabled". |
-| **SCP-bult** |*exec-namn*<br />*args*<br />*fält*<br />*komponentparametrar* |Definierar en inte transaktions bult. Funktionen kör programmet som anges av *exec-Name* och använder *argument*.<br /><br />*Fält* parametern anger utmatnings fälten för bulten<br /><br />Parametern *parameters* Parameters är valfri. Använd den för att ange parametrar som "inte transaktions-ack. enabled". |
+| **SCP – kanalen** |*exec-namn*<br />*args*<br />*fält*<br />*komponentparametrar* |Definierar en kanalen som inte är en transaktion. Funktionen kör programmet som anges av *exec-Name* och använder *argument*.<br /><br />*Fält* parametern anger utmatnings fälten för kanalen.<br /><br />Parametern  Parameters är valfri. Använd den för att ange parametrar som "inte transaktions-ack. enabled". |
+| **SCP-bult** |*exec-namn*<br />*args*<br />*fält*<br />*komponentparametrar* |Definierar en inte transaktions bult. Funktionen kör programmet som anges av *exec-Name* och använder *argument*.<br /><br />*Fält* parametern anger utmatnings fälten för bulten<br /><br />Parametern  Parameters är valfri. Använd den för att ange parametrar som "inte transaktions-ack. enabled". |
 
 SCP.NET definierar följande nyckelord:
 
-| Följt | Beskrivning |
+| Följt | Description |
 | --- | --- |
 | **: namn** |Topology-namn |
 | **: topologi** |Topologin med hjälp av funktionerna i föregående tabell och inbyggda funktioner |
@@ -728,7 +725,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-Följande HelloWorldTx-exempel visar hur du implementerar en transaktionell topologi. Exemplet har en kanalen som kallas **Generator**, en batch-bult som kallas för **partiellt antal**och en commit bult som heter **Count-sum**. Exemplet innehåller också tre befintliga textfiler: DataSource0.txt, DataSource1.txt och DataSource2.txt.
+Följande HelloWorldTx-exempel visar hur du implementerar en transaktionell topologi. Exemplet har en kanalen som kallas **Generator**, en batch-bult som kallas för **partiellt antal** och en commit bult som heter **Count-sum**. Exemplet innehåller också tre befintliga textfiler: DataSource0.txt, DataSource1.txt och DataSource2.txt.
 
 I varje transaktion väljer **Generator** -kanalen slumpmässigt två filer från de befintliga tre filerna och genererar de två fil namnen till en **avdelare** bult. Den **partiella Count-** bult:
 

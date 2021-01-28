@@ -1,7 +1,7 @@
 ---
 title: Konversation med flera enheter (för hands version) – tal service
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Med en konversation med flera enheter är det enkelt att skapa en röst-eller textkonversation mellan flera klienter och koordinera meddelanden som skickas mellan dem.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025182"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932416"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Vad är en konversation med flera enheter (för hands version)?
 
@@ -37,7 +37,7 @@ Du kan bygga en funktion eller lösning som fungerar över en matris med enheter
 ## <a name="key-features"></a>Huvudfunktioner
 
 - **Real tids avskrift** – alla får en avskrift av konversationen så att de kan följa efter texten i real tid eller spara den för senare.
-- **Real tids översättning** – med fler än 60 [språk som stöds](language-support.md#text-languages) för text översättning kan användare översätta konversationen till deras önskade språk.
+- **Real tids översättning** – med fler än 70 [språk som stöds](language-support.md#text-languages) för text översättning kan användare översätta konversationen till deras önskade språk.
 - **Läsbara avskrifter** – avskriften och översättningen är enkla att följa, med skiljetecken och menings brytningar.
 - **Röst-eller text inmatning** – varje användare kan tala eller skriva på sin egen enhet, beroende på vilka språk stöd som har Aktiver ATS för deltagarens valda språk. Se [språk stöd](language-support.md#speech-to-text).
 - **Meddelande relä** – konversations tjänsten för flera enheter distribuerar meddelanden som skickas av en klient till alla andra på de språk som du väljer.
@@ -58,9 +58,6 @@ Real tids avskrift och översättning kan hjälpa till att göra konversationer 
 ### <a name="presentations"></a>Presentationer
 
 Du kan också ange bild texter för presentationer och föreläsningar både på skärmen och på mål grupps medlemmarnas egna enheter. När mål gruppen har anslutits till en konversations kod kan de se avskriften på deras önskade språk på sin egen enhet.
-
-> [!NOTE]
-> Om du vill se ett exempel kan du titta på [presentations översättare](https://www.microsoft.com/translator/apps/presentation-translator/), ett PowerPoint-tillägg som använder konversations tjänsten för flera enheter. Du kan ladda ned den [här](https://download.cnet.com/s/powerpoint-add-in/).
 
 ## <a name="how-it-works"></a>Så här fungerar det
 

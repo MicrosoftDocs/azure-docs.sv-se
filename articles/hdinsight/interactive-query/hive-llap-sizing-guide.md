@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 626b061cc237f7238d47863a3e1ed88961d2f742
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680514"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931108"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Storleks guide för Azure HDInsight-interaktiv fråga kluster (Hive LLAP)
 
@@ -29,7 +29,7 @@ Det här dokumentet beskriver storleken på det interaktiva LLAP-klustret för H
 **_Obs! alla rekommenderade konfigurationer baseras på D14 v2-typ Worker Node_* _  
 
 ### <a name="_configuration"></a>_ *Konfiguration:**    
-| Konfigurationsnyckel      | Rekommenderat värde  | Beskrivning |
+| Konfigurationsnyckel      | Rekommenderat värde  | Description |
 | :---        |    :----:   | :---     |
 | garn. nodemanager. Resource. Memory-MB | 102400 (MB) | Totalt minne angivet i MB för alla garn behållare på en nod | 
 | garn. Scheduler. maximum-Allocation-MB | 102400 (MB) | Maximal allokering för varje container förfrågan i RM, i MB. Minnes förfrågningar som är högre än det här värdet börjar gälla |
@@ -216,7 +216,7 @@ Till exempel: total kluster kapacitet = 100 GB minne, uppdelat mellan LLAP, hant
  - Kapacitet för arbets belastnings hanterings köer = 20 GB
  - Standard kapacitet för kö = 10 GB
 
-Med 20 GB i kapaciteten för hantering av arbets belastnings hantering kan en resurs plan ange `QUERY_PARALLELISM` värde som fem, vilket innebär att arbets belastnings hanteringen kan starta fem Tez-AMS med 4 GB behållarens storlek. Om `QUERY_PARALLELISM` är högre än kapaciteten kan du se att vissa Tez-AMS har stannat i `ACCEPTED` status. Hiveserver2 interaktiva kan inte skicka frågefiler till Tez-AMs som inte är i ett `RUNNING` tillstånd.
+Med 20 GB i kapaciteten för hantering av arbets belastnings hantering kan en resurs plan ange `QUERY_PARALLELISM` värde som fem, vilket innebär att arbets belastnings hanteringen kan starta fem Tez-AMS med 4 GB behållarens storlek. Om `QUERY_PARALLELISM` är högre än kapaciteten kan du se att vissa Tez-AMS slutar att svara i `ACCEPTED` status. Hiveserver2 interaktiva kan inte skicka frågefiler till Tez-AMs som inte är i ett `RUNNING` tillstånd.
 
 
 #### <a name="next-steps"></a>**Nästa steg**

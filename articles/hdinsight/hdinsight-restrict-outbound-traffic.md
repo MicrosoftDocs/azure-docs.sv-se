@@ -1,19 +1,16 @@
 ---
 title: Konfigurera begränsning av utgående nätverks trafik – Azure HDInsight
 description: Lär dig hur du konfigurerar begränsning av utgående nätverks trafik för Azure HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 79e3349f009f71c5cd387a7c7265ad4904f2a40d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048682"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932127"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurera utgående nätverks trafik för Azure HDInsight-kluster med hjälp av brand vägg
 
@@ -69,13 +66,13 @@ Skapa en program regel samling som gör det möjligt för klustret att skicka oc
 
     **Avsnittet FQDN-Taggar**
 
-    | Namn | Käll adress | FQDN-tagg | Anteckningar |
+    | Name | Käll adress | FQDN-tagg | Kommentarer |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate och HDInsight | Krävs för HDI-tjänster |
 
     **Avsnittet mål-FQDN**
 
-    | Namn | Käll adresser | Protokoll:Port | Mål-FQDN | Anteckningar |
+    | Name | Käll adresser | Protokoll:Port | Mål-FQDN | Kommentarer |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Tillåt Windows inloggnings aktivitet |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Tillåt Windows inloggnings aktivitet |
@@ -103,7 +100,7 @@ Skapa nätverks reglerna för att konfigurera HDInsight-klustret på rätt sätt
 
     **Avsnittet service Tags**
 
-    | Namn | Protokoll | Källadresser | Tjänsttaggar | Mål portar | Anteckningar |
+    | Name | Protokoll | Källadresser | Tjänsttaggar | Mål portar | Kommentarer |
     | --- | --- | --- | --- | --- | --- |
     | Rule_5 | TCP | * | SQL | 1433 | Om du använder standard-SQL-servrarna som tillhandahålls av HDInsight konfigurerar du en nätverks regel i avsnittet service Tags för SQL som gör att du kan logga och granska SQL-trafik. Om du inte har konfigurerat tjänst slut punkter för SQL Server i HDInsight-undernätet, vilket kringgår brand väggen. Om du använder anpassad SQL Server för Ambari, Oozie, ranger och Hive metastores behöver du bara tillåta trafiken till dina egna anpassade SQL-servrar.|
     | Rule_6 | TCP | * | Azure Monitor | * | valfritt Kunder som planerar att använda funktionen för automatisk skalning bör lägga till den här regeln. |

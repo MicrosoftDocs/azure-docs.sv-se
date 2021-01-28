@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561315"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932544"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Kontinuerlig integrering och kontinuerliga leverans arbets flöden för LUIS-DevOps
 
@@ -41,7 +41,7 @@ Använd följande verktyg för att skapa Automation-arbetsflöden för LUIS:
 
 * [Bot Framework tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) för att fungera med Luis-appar och-versioner, träna, testa och publicera dem i Luis-tjänsten.
 
-* [Azure CLI](/cli/azure/?view=azure-cli-latest) för att fråga Azure-prenumerationer, Hämta Luis-redigerings-och förutsägelse nycklar och för att skapa ett Azure [-tjänstens huvud namn](/cli/azure/ad/sp?view=azure-cli-latest) som används för Automation-autentisering.
+* [Azure CLI](/cli/azure/) för att fråga Azure-prenumerationer, Hämta Luis-redigerings-och förutsägelse nycklar och för att skapa ett Azure [-tjänstens huvud namn](/cli/azure/ad/sp) som används för Automation-autentisering.
 
 * [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) -verktyg för att [testa en Luis-app](luis-concept-devops-testing.md) och analysera test resultaten.
 

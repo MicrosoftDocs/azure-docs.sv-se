@@ -2,18 +2,15 @@
 title: 'Självstudie: HDInsight Apache Storm till lagring – Azure/Data Lake'
 description: Självstudie – lär dig hur du använder Apache Storm för att skriva till den HDFS-kompatibla lagringen för Azure HDInsight.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545454"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932557"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Självstudie: skriva till Apache Hadoop HDFS från Apache Storm på Azure HDInsight
 
@@ -160,7 +157,7 @@ Information om hur du använder det här skriptet med klustret finns i avsnittet
     hdfs.url: wasbs:///
     ```
 
-    Om du vill spara filen använder du __CTRL + X__ , sedan __Y__ och slutligen __RETUR__ . Värdena i den här filen anger lagrings-URL: en och katalog namnet som data skrivs till.
+    Om du vill spara filen använder du __CTRL + X__, sedan __Y__ och slutligen __RETUR__. Värdena i den här filen anger lagrings-URL: en och katalog namnet som data skrivs till.
 
 1. Använd följande kommando för att starta topologin:
 

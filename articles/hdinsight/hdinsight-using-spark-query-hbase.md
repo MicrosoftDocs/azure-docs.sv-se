@@ -1,19 +1,16 @@
 ---
 title: Använda Spark för att läsa och skriva HBase-data – Azure HDInsight
 description: Använd Spark HBase-anslutningen för att läsa och skriva data från ett Spark-kluster till ett HBase-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308426"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931217"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Använda Apache Spark för att läsa och skriva Apache HBase-data
 
@@ -163,7 +160,7 @@ I följande tabell listas exempelvis två versioner och motsvarande kommandon so
     |Spark-version| HDI HBase-version  | SHC-version    |  Kommando  |
     | :-----------:| :----------: | :-----------: |:----------- |
     |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2,4    | HDI 4,0 (HBase 2,0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
 2. Behåll den här Spark Shell-instansen öppen och fortsätt att [definiera en katalog och fråga](#define-a-catalog-and-query). Om du inte hittar den jar v7 som motsvarar dina versioner i SHC Core-lagringsplatsen fortsätter du att läsa. 
 

@@ -1,18 +1,15 @@
 ---
 title: HDInsight 4,0 – översikt – Azure
 description: Jämför HDInsight 3.6 med HDInsight 4.0 när det gäller funktioner, begränsningar och uppgraderingsrekommendationer.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 0d732fd484e9ca4788204d726286503296bec8ab
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 694acc0005e90d8299d46528f83ba68ea3fcf1c0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822105"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931195"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Översikt över Azure HDInsight 4,0
 

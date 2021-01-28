@@ -1,19 +1,16 @@
 ---
 title: Metod tips för kluster hantering – Azure HDInsight
 description: Lär dig metod tips för att hantera HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 27f390c3634887dd616c62dbbd4ad85209efde46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659496"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933710"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Metod tips för HDInsight-kluster hantering
 
@@ -27,7 +24,7 @@ Lär dig metod tips för att hantera HDInsight-kluster.
 | Anpassad Resource Manager-mall | [Skapa Apache Hadoop kluster i HDInsight med hjälp av Resource Manager-mallar](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Snabbstartsmallar | [HDInsight snabb starts mallar](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
 | Azure-exempel | [HDInsight Azure-exempel](/samples/browse/?products=azure-hdinsight) |
-| Azure Portal | [Skapa Linux-baserade kluster i HDInsight med hjälp av Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
+| Azure-portalen | [Skapa Linux-baserade kluster i HDInsight med hjälp av Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Skapa HDInsight-kluster med Azure CLI](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Skapa Linux-baserade kluster i HDInsight med hjälp av Azure PowerShell](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Skapa Apache Hadoop kluster med Azure-REST API](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |

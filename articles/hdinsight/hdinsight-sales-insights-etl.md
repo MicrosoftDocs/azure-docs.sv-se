@@ -1,19 +1,16 @@
 ---
 title: 'Självstudie: skapa en ETL-pipeline från slut punkt till slut punkt för att härleda Sälj insikter i Azure HDInsight'
 description: Lär dig hur du använder skapa ETL-pipelines med Azure HDInsight för att härleda insikter från försäljnings data med Spark-kluster på begäran och Power BI.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7d026d93ebe6f6a0bd9afbd277294d58d7a2a69b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746480"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932044"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Självstudie: skapa en pipeline för data från slut punkt till slut punkt för att härleda Sälj insikter i Azure HDInsight
 
@@ -110,7 +107,7 @@ Standard lösen ordet för SSH-åtkomst till klustren är `Thisisapassword1` . O
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Verifiera distribution och samla in resursinformation
 
-1. Om du vill kontrol lera statusen för din distribution går du till resurs gruppen på Azure Portal. Under **Inställningar** väljer du **distributioner** , sedan din distribution. Här kan du se vilka resurser som har distribuerats och vilka resurser som fortfarande pågår.
+1. Om du vill kontrol lera statusen för din distribution går du till resurs gruppen på Azure Portal. Under **Inställningar** väljer du **distributioner**, sedan din distribution. Här kan du se vilka resurser som har distribuerats och vilka resurser som fortfarande pågår.
 
 1. Ange följande kommando för att visa namnen på klustren:
 
@@ -214,7 +211,7 @@ Om du vill utlösa pipelinen kan du antingen:
 
     Eller
 
-* Öppna data fabriken och välj **redigera & övervakare** . Utlös `IngestAndTransform` pipelinen från portalen. Information om hur du aktiverar pipelines via portalen finns i [skapa Apache Hadoop kluster på begäran i HDInsight med Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
+* Öppna data fabriken och välj **redigera & övervakare**. Utlös `IngestAndTransform` pipelinen från portalen. Information om hur du aktiverar pipelines via portalen finns i [skapa Apache Hadoop kluster på begäran i HDInsight med Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
 För att verifiera att pipelinen har körts kan du göra något av följande:
 
@@ -252,19 +249,19 @@ Andra sätt att transformera data med hjälp av HDInsight finns i [den här arti
 
 1. Öppna Power BI Desktop.
 
-1. Från menyn navigerar du till **Hämta data**  >  **mer...**  >  **Azure**  >  **Interaktiv HDInsight-fråga** .
+1. Från menyn navigerar du till **Hämta data**  >  **mer...**  >  **Azure**  >  **Interaktiv HDInsight-fråga**.
 
-1. Välj **Anslut** .
+1. Välj **Anslut**.
 
 1. Från dialog rutan **HDInsight-interaktiv fråga** :
     1. I text rutan **Server** anger du namnet på ditt LLAP-kluster i formatet `https://LLAPCLUSTERNAME.azurehdinsight.net` .
     1. I text rutan **databas** anger du `default` .
-    1. Välj **OK** .
+    1. Välj **OK**.
 
 1. I dialog rutan **AzureHive** :
     1. I text rutan **användar namn** anger du `admin` .
     1. I text rutan **lösen ord** anger du `Thisisapassword1` .
-    1. Välj **Anslut** .
+    1. Välj **Anslut**.
 
 1. Från **Navigator** väljer du `sales` och/eller `sales_raw` för att förhandsgranska data. När data har lästs in kan du experimentera med den instrument panel som du vill skapa. Se följande länkar för att komma igång med Power BI-instrumentpaneler:
 

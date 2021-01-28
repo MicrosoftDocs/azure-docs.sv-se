@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0c41771af81989ff965098a762338216db54fd27
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 780ef2bbb7851d8bef5fc52a51421a7938043ecb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578147"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932311"
 ---
 ## <a name="join-the-meeting-chat"></a>Delta i Mötes chatten 
 
@@ -21,7 +21,7 @@ När team samverkan är aktiverat kan en kommunikations tjänst användare anslu
 Först instansierar `ChatThreadClient` du en för mötets chatt-tråd. Parsa Mötes länken eller Använd Graph API: er med mötes-ID: t för att hämta tråd-ID: t. 
 
 - Länken Teams möte ser ut så här: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` . Tråd-ID `meeting_chat_thread_id` är i den länken. 
-- Om du har mötes-ID: t kan du använda [Graph API](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) för att hämta tråd-ID: t. [Get API](https://docs.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-beta&tabs=http%22%20%5C) -svaret kommer att ha ett- `chatInfo` objekt som innehåller `threadID` . 
+- Om du har mötes-ID: t kan du använda [Graph API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) för att hämta tråd-ID: t. [Get API](/graph/api/onlinemeeting-get?tabs=http%22+%5c&view=graph-rest-beta) -svaret kommer att ha ett- `chatInfo` objekt som innehåller `threadID` . 
 
 När du har ett chatt-ID kan du hämta en chatt-klient med hjälp av Java Script Chat klient bibliotek: 
 
@@ -44,4 +44,3 @@ Mer information om meddelande typer finns [här](../../../concepts/chat/concepts
 
 **Obs!** för närvarande går det bara att skicka och ta emot meddelanden för samverkan scenarier med team. Andra funktioner som att skriva indikatorer och kommunikations tjänster användare som lägger till eller tar bort andra användare från Team-mötet stöds inte ännu.  
 
- 

@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight Virtual Network-arkitektur
 description: Lär dig mer om de resurser som är tillgängliga när du skapar ett HDInsight-kluster i en Azure-Virtual Network.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81390206"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931150"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight Virtual Network-arkitektur
 
@@ -22,7 +19,7 @@ I den här artikeln förklaras de resurser som finns när du distribuerar ett HD
 
 Azure HDInsight-kluster har olika typer av virtuella datorer eller noder. Varje nodtyp spelar en roll i systemets funktion. I följande tabell sammanfattas de olika nodtyper och deras roller i klustret.
 
-| Typ | Beskrivning |
+| Typ | Description |
 | --- | --- |
 | Huvudnod |  För alla kluster typer förutom Apache Storm är huvudnoderna värdar för de processer som hanterar körningen av det distribuerade programmet. Head-noden är också den nod som du kan använda SSH i och köra program som sedan koordineras för att köras över kluster resurserna. Antalet huvudnoder är fast på två för alla kluster typer. |
 | ZooKeeper-nod | Zookeeper samordnar aktiviteter mellan noderna som utför data bearbetning. Det påverkar också Head-noden och håller reda på vilken Head-nod som kör en speciell huvud tjänst. Antalet ZooKeeper-noder är fasta på tre. |
@@ -38,7 +35,7 @@ Använd fullständigt kvalificerade domän namn (FQDN) vid adressering av noder 
 
 Dessa FQDN kommer att ha formen `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` .
 
-`<node-type-prefix>`Kommer att vara *HN* för huvudnoderna, *wn* till och med för arbetsnoder och *Zn* för Zookeeper-noder.
+`<node-type-prefix>`Kommer att vara *HN* för huvudnoderna,  till och med för arbetsnoder och *Zn* för Zookeeper-noder.
 
 Om du bara behöver värd namnet använder du bara den första delen av FQDN: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 

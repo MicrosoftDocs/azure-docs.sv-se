@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790892"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932527"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-metoder för LUIS
 
@@ -18,7 +18,7 @@ Program varu tekniker som utvecklar en Language Understanding-app (LUIS) kan til
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>Källkontroll och förgreningsstrategier för LUIS
 
-En av de viktigaste faktorer som DevOps är beroende av är [käll kontroll](/azure/devops/user-guide/source-control?view=azure-devops). Ett käll kontroll system gör det möjligt för utvecklare att samar beta med kod och spåra ändringar. Med hjälp av grenar kan utvecklare växla mellan olika versioner av kodbasen och arbeta oberoende av andra medlemmar i teamet. När utvecklare höjer en [pull-begäran](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) för att föreslå uppdateringar från en gren till en annan, eller när ändringar slås samman, kan det vara utlösaren för [automatiserade versioner](luis-concept-devops-automation.md) för att bygga och kontinuerligt testa kod.
+En av de viktigaste faktorer som DevOps är beroende av är [käll kontroll](/azure/devops/user-guide/source-control). Ett käll kontroll system gör det möjligt för utvecklare att samar beta med kod och spåra ändringar. Med hjälp av grenar kan utvecklare växla mellan olika versioner av kodbasen och arbeta oberoende av andra medlemmar i teamet. När utvecklare höjer en [pull-begäran](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) för att föreslå uppdateringar från en gren till en annan, eller när ändringar slås samman, kan det vara utlösaren för [automatiserade versioner](luis-concept-devops-automation.md) för att bygga och kontinuerligt testa kod.
 
 Genom att använda koncepten och vägledningen som beskrivs i det här dokumentet kan du utveckla en LUIS-app när du spårar ändringar i ett käll kontroll system och följer dessa metod tips för program varu teknik:
 
@@ -42,7 +42,7 @@ Genom att använda koncepten och vägledningen som beskrivs i det här dokumente
 
 ## <a name="source-control"></a>Källkontroll
 
-Om du vill underhålla [appens schema definition](./app-schema-definition.md) för en Luis-app i ett käll kods hanterings system använder du [LUDown format ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  åter givning av appen. `.lu` formatet är det bästa `.json` formatet eftersom det är läsligt, vilket gör det enklare att göra och granska ändringar i pull.
+Om du vill underhålla [appens schema definition](./app-schema-definition.md) för en Luis-app i ett käll kods hanterings system använder du [LUDown format ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format)  åter givning av appen. `.lu` formatet är det bästa `.json` formatet eftersom det är läsligt, vilket gör det enklare att göra och granska ändringar i pull.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Spara en LUIS-app med LUDown-formatet
 
@@ -81,7 +81,7 @@ Ta inte med prenumerations nycklar eller liknande konfidentiella värden i filer
 - LUIS-redigerings-och förutsägelse nycklar
 - LUIS-redigering och förutsägelse slut punkter
 - Prenumerations nycklar för Azure
-- Åtkomsttoken, till exempel token för ett Azure [-tjänstens huvud namn](/cli/azure/ad/sp?view=azure-cli-latest) som används för Automation-autentisering
+- Åtkomsttoken, till exempel token för ett Azure [-tjänstens huvud namn](/cli/azure/ad/sp) som används för Automation-autentisering
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Strategier för säker hantering av hemligheter
 
@@ -183,7 +183,7 @@ En LUIS-app i LUDown-format är läslig, som har stöd för kommunikation av än
 
 ## <a name="versioning"></a>Versionshantering
 
-Ett program består av flera komponenter som kan omfatta sådant som en robot som körs i [Azure bot service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QNA Maker](https://www.qnamaker.ai/), [röst tjänsten för Azure](../speech-service/overview.md)med mera. För att uppnå målet med löst kopplade program, använder du [versions kontroll](/azure/devops/learn/git/what-is-version-control) så att varje komponent i ett program har versions hantering oberoende, så att utvecklare kan identifiera ändringar eller uppdateringar genom att titta på versions numret. Det är enklare att version av LUIS-appen oberoende av andra komponenter om du underhåller den i sin egen lagrings platsen.
+Ett program består av flera komponenter som kan omfatta sådant som en robot som körs i [Azure bot service](/azure/bot-service/bot-service-overview-introduction), [QNA Maker](https://www.qnamaker.ai/), [röst tjänsten för Azure](../speech-service/overview.md)med mera. För att uppnå målet med löst kopplade program, använder du [versions kontroll](/azure/devops/learn/git/what-is-version-control) så att varje komponent i ett program har versions hantering oberoende, så att utvecklare kan identifiera ändringar eller uppdateringar genom att titta på versions numret. Det är enklare att version av LUIS-appen oberoende av andra komponenter om du underhåller den i sin egen lagrings platsen.
 
 LUIS-appen för huvud grenen bör ha ett versions schema som tillämpas. När du sammanfogar uppdateringar till `.lu` en Luis-app i huvud gruppen, kommer du att importera den uppdaterade källan till en ny version i Luis-appen för huvud grenen.
 
