@@ -3,17 +3,14 @@ title: Felsöka Hive med Azure HDInsight
 description: Få svar på vanliga frågor om att arbeta med Apache Hive och Azure HDInsight.
 keywords: Azure HDInsight, Hive, vanliga frågor, fel söknings guide, vanliga frågor
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288970"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931449"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Felsöka Apache Hive med Azure HDInsight
 
@@ -120,17 +117,17 @@ Koden i lösnings stegen förutsätter att data Sök vägar på det nya klustret
    Du måste ange ett exempel program som det första argumentet.
 
    Giltiga program namn är:
-    - **ContainerReuseAnalyzer** : åter användnings information för utskrifts behållare på dag
-    - **CriticalPath** : hitta den kritiska sökvägen för en dag
-    - **LocalityAnalyzer** : skriva ut information om den lokala datorn på en dag
-    - **ShuffleTimeAnalyzer** : analysera informationen om den blandade tiden på en dag
-    - **SkewAnalyzer** : analysera skevningen-informationen på en dag
-    - **SlowNodeAnalyzer** : skriva ut Node-information på en dag
-    - **SlowTaskIdentifier** : skriva ut information om långsamma uppgifter på en dag
-    - **SlowestVertexAnalyzer** : skriva ut långsammast hörn Detaljer på en dag
-    - **SpillAnalyzer** : information om att skriva ut spill på en dag
-    - **TaskConcurrencyAnalyzer** : Skriv ut aktivitetens samtidighets information på en dag
-    - **VertexLevelCriticalPathAnalyzer** : hitta den kritiska vägen vid hörn nivå på en dag
+    - **ContainerReuseAnalyzer**: åter användnings information för utskrifts behållare på dag
+    - **CriticalPath**: hitta den kritiska sökvägen för en dag
+    - **LocalityAnalyzer**: skriva ut information om den lokala datorn på en dag
+    - **ShuffleTimeAnalyzer**: analysera informationen om den blandade tiden på en dag
+    - **SkewAnalyzer**: analysera skevningen-informationen på en dag
+    - **SlowNodeAnalyzer**: skriva ut Node-information på en dag
+    - **SlowTaskIdentifier**: skriva ut information om långsamma uppgifter på en dag
+    - **SlowestVertexAnalyzer**: skriva ut långsammast hörn Detaljer på en dag
+    - **SpillAnalyzer**: information om att skriva ut spill på en dag
+    - **TaskConcurrencyAnalyzer**: Skriv ut aktivitetens samtidighets information på en dag
+    - **VertexLevelCriticalPathAnalyzer**: hitta den kritiska vägen vid hörn nivå på en dag
 
 ### <a name="additional-reading"></a>Mer att läsa
 

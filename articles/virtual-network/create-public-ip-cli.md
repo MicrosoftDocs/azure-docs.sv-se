@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4d2f339f5a1339b5f249172170fed54c91f1dc24
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223558"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927186"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure CLI
 
@@ -30,7 +30,7 @@ Den här artikeln visar hur du skapar en offentlig IP-adressresurs med Azure CLI
 
 En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-Skapa en resurs grupp med [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) med namnet **myResourceGroup** på **eastus2** -platsen.
+Skapa en resurs grupp med [AZ Group Create](/cli/azure/group#az-group-create) med namnet **myResourceGroup** på **eastus2** -platsen.
 
 ```azurecli-interactive
   az group create \
@@ -46,7 +46,7 @@ Skapa en resurs grupp med [AZ Group Create](/cli/azure/group?view=azure-cli-late
 >[!NOTE]
 >Följande kommando fungerar för API version 2020-08-01 eller senare.  Mer information om den API-version som används för närvarande finns i [resurs leverantörer och typer](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) för att skapa en standard zon som REDUNDANT offentlig IP-adress med namnet **myStandardZRPublicIP** i **myResourceGroup**.
+Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en standard zon som REDUNDANT offentlig IP-adress med namnet **myStandardZRPublicIP** i **myResourceGroup**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -76,7 +76,7 @@ Observera att ovanstående alternativ för zoner endast är giltiga val i region
 >[!NOTE]
 >Följande kommando fungerar för API version 2020-08-01 eller senare.  Mer information om den API-version som används för närvarande finns i [resurs leverantörer och typer](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) för att skapa en offentlig standard-IP-adress som en icke-zonindelade resurs med namnet **myStandardPublicIP** i **myResourceGroup**.
+Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en offentlig standard-IP-adress som en icke-zonindelade resurs med namnet **myStandardPublicIP** i **myResourceGroup**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Det här valet är giltigt i alla regioner och är standard valet för offentlig
 
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-create-public-ip-basic)
 
-Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) för att skapa en grundläggande statisk offentlig IP-adress med namnet **myBasicPublicIP** i **myResourceGroup**.  Grundläggande offentliga IP-adresser har inte konceptet tillgänglighets zoner.
+Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en grundläggande statisk offentlig IP-adress med namnet **myBasicPublicIP** i **myResourceGroup**.  Grundläggande offentliga IP-adresser har inte konceptet tillgänglighets zoner.
 
 ```azurecli-interactive
   az network public-ip create \

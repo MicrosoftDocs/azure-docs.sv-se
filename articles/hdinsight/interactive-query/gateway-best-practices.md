@@ -1,18 +1,15 @@
 ---
 title: Gateway-djupgående och bästa praxis för Apache Hive i Azure HDInsight
 description: Lär dig hur du navigerar till bästa praxis för att köra Hive-frågor via Azure HDInsight-gatewayen
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011497"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933118"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Gateway-djupgående och bästa praxis för Apache Hive i Azure HDInsight
 
@@ -34,7 +31,7 @@ För tjänst identifiering är fördelen med Gateway att varje komponent i klust
 
 För autentisering gör det möjligt för användare att autentisera med hjälp av ett `username:password` Credential-par. För ESP-aktiverade kluster skulle den här autentiseringsuppgiften vara användarens domän användar namn och lösen ord. Autentisering till HDInsight-kluster via gatewayen kräver inte att klienten skaffar en Kerberos-biljett. Eftersom gatewayen accepterar `username:password` autentiseringsuppgifter och hämtar användarens Kerberos-biljett för användarens räkning, kan säkra anslutningar göras till gatewayen från valfri klient värd, inklusive klienter som är anslutna till olika AA-DDS-domäner än (ESP)-klustret.
 
-## <a name="best-practices"></a>Bästa praxis
+## <a name="best-practices"></a>Rekommenderade metoder
 
 Gatewayen är en enskild tjänst (belastning bal anse rad över två värdar) som ansvarar för vidarebefordran av förfrågningar och autentisering. Gatewayen kan bli en Flask hals för Hive-frågor som överskrider en viss storlek. Prestanda försämring av frågor kan observeras när mycket stora **urvals** frågor körs på gatewayen via ODBC eller JDBC. "Mycket stor" innebär frågor som utgör mer än 5 GB data över rader eller kolumner. Den här frågan kan innehålla en lång lista med rader och eller ett brett kolumn antal.
 

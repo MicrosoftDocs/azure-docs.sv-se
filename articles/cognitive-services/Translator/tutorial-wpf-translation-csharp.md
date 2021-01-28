@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ebcbadbc8b502121b25393c7761794bcd3f07e8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897113"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927475"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Självstudie: skapa en översättnings app med WPF
 
-I den här självstudien skapar du en [WPF-app (Windows Presentation Foundation)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) som använder Azure Cognitive Service för textöversättning, språkidentifiering och stavningskontroll med en enda prenumerationsnyckel. Mer specifikt kommer din app att anropa API: er från Translator och [stavningskontroll i Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/).
+I den här självstudien skapar du en [WPF-app (Windows Presentation Foundation)](/visualstudio/designers/getting-started-with-wpf) som använder Azure Cognitive Service för textöversättning, språkidentifiering och stavningskontroll med en enda prenumerationsnyckel. Mer specifikt kommer din app att anropa API: er från Translator och [stavningskontroll i Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
 Vad är WPF? Det är ett användargränssnittsramverk som skapar appar för skrivbordsklienter. WPF-utvecklingsplattformen har stöd för många olika funktioner för apputveckling, däribland en appmodell, resurser, kontroller, grafik, layout, databindning, dokument och säkerhet. Det är en delmängd av .NET Framework, så om du tidigare har skapat appar med .NET Framework med hjälp av ASP.NET eller Windows Forms bör programmeringen kännas bekant. WPF använder XAML (Extensible Application Markup Language) för att tillhandahålla en deklarativ modell för programmering av appar, vilket vi går igenom i kommande avsnitt.
 
@@ -90,7 +90,7 @@ Vi lägger till sammansättningar i projektet för att serialisera och deseriali
 1. När du har lagt till dessa referenser i projektet kan du klicka på **OK** för att stänga **Reference Manager**.
 
 > [!NOTE]
-> Om du vill lära dig mer om sammansättnings referenser, se [så här gör du: Lägg till eller ta bort referens med referens hanteraren](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Om du vill lära dig mer om sammansättnings referenser, se [så här gör du: Lägg till eller ta bort referens med referens hanteraren](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager).
 
 ### <a name="install-newtonsoftjson"></a>Installera NewtonSoft.Json
 

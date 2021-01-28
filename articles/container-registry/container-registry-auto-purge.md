@@ -2,19 +2,19 @@
 title: Ta bort taggar och manifest
 description: Använd ett rensnings kommando om du vill ta bort flera taggar och manifest från ett Azure Container Registry baserat på ålder och ett tag filter och eventuellt schemalägga rensnings åtgärder.
 ms.topic: article
-ms.date: 11/10/2020
-ms.openlocfilehash: 406a1f231af57407e9475a8888b68aad9d88dcb3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 01/27/2021
+ms.openlocfilehash: ab1a925092784effd07431d75e4ec1535c53ed33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445123"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927268"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Rensa avbildningar automatiskt från ett Azure Container Registry
 
 När du använder ett Azure Container Registry som en del av ett arbets flöde för utveckling kan registret snabbt fylla i med bilder eller andra artefakter som inte behövs efter en kort period. Du kanske vill ta bort alla Taggar som är äldre än en viss varaktighet eller matcha ett angivet namn filter. Om du vill ta bort flera artefakter snabbt, introducerar den här artikeln `acr purge` kommandot som du kan köra som en aktivitet på begäran eller [schemalagd](container-registry-tasks-scheduled.md) ACR. 
 
-`acr purge`Kommandot är för närvarande distribuerat i en offentlig behållar avbildning ( `mcr.microsoft.com/acr/acr-cli:0.3` ) som byggts från käll koden i [ACR-CLI-](https://github.com/Azure/acr-cli) lagrings platsen i GitHub.
+`acr purge`Kommandot är för närvarande distribuerat i en offentlig behållar avbildning ( `mcr.microsoft.com/acr/acr-cli:0.4` ) som byggts från käll koden i [ACR-CLI-](https://github.com/Azure/acr-cli) lagrings platsen i GitHub.
 
 Du kan använda Azure Cloud Shell eller en lokal installation av Azure CLI för att köra ACR-uppgifts exemplen i den här artikeln. Om du vill använda det lokalt, krävs version 2.0.76 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli-install]. 
 
@@ -42,9 +42,10 @@ Ange minst följande när du kör `acr purge` :
 
 `acr purge` stöder flera valfria parametrar. Följande två används i exempel i den här artikeln:
 
-* `--untagged` -Anger att manifest som inte har tillhör ande Taggar ( *otaggade manifest* ) tas bort.
+* `--untagged` -Anger att manifest som inte har tillhör ande Taggar (*otaggade manifest*) tas bort.
 * `--dry-run` -Anger att inga data tas bort, men utdata är desamma som om kommandot körs utan den här flaggan. Den här parametern är användbar för att testa ett rensnings kommando för att kontrol lera att den inte oavsiktligt tar bort data som du tänker behålla.
 * `--keep` -Anger att det senaste x-antalet för borttagna Taggar behålls.
+* `--concurrency` -Anger att x-rensnings aktiviteter bearbetas samtidigt. Ett standardvärde kommer att användas om den här parametern inte anges.
 
 Kör om du vill ha fler parametrar `acr purge --help` . 
 

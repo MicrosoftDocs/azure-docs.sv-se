@@ -1,18 +1,15 @@
 ---
 title: Autentiseringsfel i Azure HDInsight
 description: Autentiseringsfel i Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: 9f10597023314aed8640ee5a7499a77f952c3694
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a0ca7cb8797b90d8cf933733c48be299e79be8aa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284424"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933621"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Autentiseringsfel i Azure HDInsight
 

@@ -1,19 +1,16 @@
 ---
 title: Använda Azure Kubernetes-tjänsten med Kafka på HDInsight
 description: Lär dig hur du använder Kafka på HDInsight från behållar avbildningar som finns i Azure Kubernetes service (AKS).
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485689"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933021"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Använda Azure Kubernetes-tjänsten med Apache Kafka på HDInsight
 
@@ -69,7 +66,7 @@ Om du inte redan har ett AKS-kluster kan du använda något av följande dokumen
 
 2. Välj den __virtuella nätverks__ resursen i resurs gruppen. Spara namnet för senare användning.
 
-3. Under **Inställningar**väljer du __adress utrymme__. Observera adress utrymmet i listan.
+3. Gå till **Inställningar** och välj __Adressutrymme__. Observera adress utrymmet i listan.
 
 ### <a name="create-virtual-network"></a>Skapa det virtuella nätverket
 
@@ -80,7 +77,7 @@ Om du inte redan har ett AKS-kluster kan du använda något av följande dokumen
     |Egenskap | Värde |
     |---|---|
     |Adressutrymme|Du måste använda ett adress utrymme som inte överlappar det som används av AKS-kluster nätverket.|
-    |Plats|Använd samma __plats__ för det virtuella nätverk som du använde för AKS-klustret.|
+    |Location|Använd samma __plats__ för det virtuella nätverk som du använde för AKS-klustret.|
 
 1. Vänta tills det virtuella nätverket har skapats innan du går vidare till nästa steg.
 

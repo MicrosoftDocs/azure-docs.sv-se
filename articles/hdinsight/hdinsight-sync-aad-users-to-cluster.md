@@ -1,19 +1,17 @@
 ---
 title: Synkronisera Azure Active Directory användare till HDInsight-kluster
 description: Synkronisera autentiserade användare från Azure Active Directory till ett HDInsight-kluster.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535186"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931623"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synkronisera Azure Active Directory-användare med ett HDInsight-kluster
 
@@ -29,7 +27,7 @@ Om du vill visa dina värdar öppnar du Ambari-webbgränssnittet. Varje nod komm
 
 1. Från [Azure Portal](https://portal.azure.com)navigerar du till den Azure AD-katalog som är kopplad till ditt ESP-kluster.
 
-2. Välj **alla användare** på menyn till vänster och välj sedan **ny användare** .
+2. Välj **alla användare** på menyn till vänster och välj sedan **ny användare**.
 
     ![Azure Portal användare och grupper alla](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
@@ -37,7 +35,7 @@ Om du vill visa dina värdar öppnar du Ambari-webbgränssnittet. Varje nod komm
 
     ![Välj grupper i fönstret Azure Portal användare](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. Välj **Skapa** .
+4. Välj **Skapa**.
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Använd Apache Ambari-REST API för att synkronisera användare
 
@@ -120,7 +118,7 @@ Följande metod använder POST med Ambari-REST API. Mer information finns i [Han
     }
     ```
 
-1. Det här resultatet visar att statusen är **slutförd** , att en ny användare skapades och att användaren tilldelades ett medlemskap. I det här exemplet tilldelas användaren till den synkroniserade LDAP-gruppen "HiveUsers", eftersom användaren lades till i samma grupp i Azure AD.
+1. Det här resultatet visar att statusen är **slutförd**, att en ny användare skapades och att användaren tilldelades ett medlemskap. I det här exemplet tilldelas användaren till den synkroniserade LDAP-gruppen "HiveUsers", eftersom användaren lades till i samma grupp i Azure AD.
 
     > [!NOTE]  
     > Den föregående metoden synkroniserar bara de Azure AD-grupper som anges i egenskapen **åtkomst användar grupp** för domän inställningarna när klustret skapas. Mer information finns i  [skapa ett HDInsight-kluster](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).

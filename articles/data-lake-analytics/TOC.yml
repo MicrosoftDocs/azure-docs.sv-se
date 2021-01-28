@@ -68,7 +68,7 @@
             - name: Grundläggande inställningar
               href: data-lake-analytics-u-sql-get-started.md
             - name: Språkreferens
-              href: 'https://docs.microsoft.com/u-sql'
+              href: /u-sql
             - name: Katalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: Användardefinierade operatörer

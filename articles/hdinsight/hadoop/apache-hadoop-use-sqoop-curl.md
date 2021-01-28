@@ -1,18 +1,15 @@
 ---
 title: Använda sväng för att exportera data med Apache Sqoop i Azure HDInsight
 description: Lär dig hur du skickar Sqoop-jobb från Apache till Azure HDInsight med hjälp av sväng.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076274"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928362"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Köra apache Sqoop-jobb i HDInsight med sväng
 
@@ -22,7 +19,7 @@ Lär dig hur du använder en sväng för att köra apache Sqoop-jobb på ett Apa
 
 Sväng används för att demonstrera hur du kan interagera med HDInsight genom att använda RAW HTTP-begäranden för att köra, övervaka och hämta resultatet av Sqoop-jobb. Detta fungerar med hjälp av WebHCat-REST API (tidigare kallat Templeton) som tillhandahålls av ditt HDInsight-kluster.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför [konfiguration av test miljö](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) från att [använda Apache Sqoop med Hadoop i HDInsight](./hdinsight-use-sqoop.md).
 
@@ -104,7 +101,7 @@ REST API skyddas via [grundläggande autentisering](https://en.wikipedia.org/wik
    > [!NOTE]  
    > Denna förfrågan returnerar ett JavaScript Object Notation (JSON)-dokument med information om jobbet. JQ används för att hämta endast State-värdet.
 
-1. När jobbets tillstånd har ändrats till **lyckades**kan du hämta resultatet från Azure Blob Storage. Den `statusdir` parameter som skickades med frågan innehåller platsen för utdatafilen, i det här fallet `wasb:///example/data/sqoop/curl` . Den här adressen lagrar utdata från jobbet i `example/data/sqoop/curl` katalogen på den standard lagrings behållare som används av ditt HDInsight-kluster.
+1. När jobbets tillstånd har ändrats till **lyckades** kan du hämta resultatet från Azure Blob Storage. Den `statusdir` parameter som skickades med frågan innehåller platsen för utdatafilen, i det här fallet `wasb:///example/data/sqoop/curl` . Den här adressen lagrar utdata från jobbet i `example/data/sqoop/curl` katalogen på den standard lagrings behållare som används av ditt HDInsight-kluster.
 
     Du kan använda Azure Portal för att komma åt stderr-och stdout-blobbar.
 

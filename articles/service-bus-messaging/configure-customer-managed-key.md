@@ -2,26 +2,20 @@
 title: Konfigurera din egen nyckel för att kryptera Azure Service Bus data i vila
 description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för att kryptera Azure Service Bus data rest.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3e8f3a599ee5fe40c85a93dd58d36e6cd611c9ea
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 01/26/2021
+ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928091"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurera Kundhanterade nycklar för att kryptera Azure Service Bus data i vila med hjälp av Azure Portal
-Azure Service Bus Premium tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Service Bus Premium är beroende av Azure Storage för att lagra data och som standard krypteras alla data som lagras med Azure Storage med hjälp av Microsoft-hanterade nycklar. 
+Azure Service Bus Premium tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Service Bus Premium använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med hjälp av Microsoft-hanterade nycklar. Om du använder din egen nyckel (kallas även Bring Your Own Key (BYOK) eller kundhanterad nyckel) krypteras data fortfarande med hjälp av den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den Kundhanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till Kundhanterade nycklar som används för kryptering av Microsoft-hanterade nycklar. Att aktivera funktionen BYOK är en tids inställnings process i namn området.
 
-## <a name="overview"></a>Översikt
-Azure Service Bus stöder nu möjligheten att kryptera data i vila med antingen Microsoft-hanterade nycklar eller Kundhanterade nycklar (Bring Your Own Key-BYOK). med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till de Kundhanterade nycklar som används för att kryptera Azure Service Bus i vila.
-
-Att aktivera funktionen BYOK är en tids inställnings process i namn området.
-
-> [!NOTE]
-> Det finns vissa varningar om kundens hanterade nyckel för kryptering på tjänst sidan. 
->   * Den här funktionen stöds av [Azure Service Bus Premium](service-bus-premium-messaging.md) -nivån. Det går inte att aktivera den för standard nivå Service Bus namn områden.
->   * Kryptering kan bara aktive ras för nya eller tomma namn områden. Om namn området innehåller några köer eller ämnen kommer krypterings åtgärden att Miss sen.
+Det finns vissa varningar om kundens hanterade nyckel för kryptering på tjänst sidan. 
+- Den här funktionen stöds av [Azure Service Bus Premium](service-bus-premium-messaging.md) -nivån. Det går inte att aktivera den för standard nivå Service Bus namn områden.
+- Kryptering kan bara aktive ras för nya eller tomma namn områden. Om namn området innehåller några köer eller ämnen kommer krypterings åtgärden att Miss sen.
 
 Du kan använda Azure Key Vault för att hantera dina nycklar och granska din nyckel användning. Du kan antingen skapa egna nycklar och lagra dem i ett nyckel valv, eller så kan du använda Azure Key Vault API: er för att generera nycklar. Mer information om Azure Key Vault finns i [Vad är Azure Key Vault?](../key-vault/general/overview.md)
 
@@ -70,13 +64,13 @@ När du har aktiverat Kundhanterade nycklar måste du associera kundens hanterad
         > [!NOTE]
         > Du kan lägga till upp till tre nycklar för redundans. Om en av nycklarna har upphört att gälla eller inte går att komma åt, används de andra nycklarna för kryptering.
         
-    1. Fyll i informationen om nyckeln och klicka på **Välj**. Detta möjliggör kryptering av data i vila i namn området med en kundhanterad nyckel. 
+    1. Fyll i informationen om nyckeln och klicka på **Välj**. Detta möjliggör kryptering av den Microsoft-hanterade nyckeln med din nyckel (kundhanterad nyckel). 
 
 
     > [!IMPORTANT]
-    > Om du vill använda kundhanterad nyckel tillsammans med geo haveri beredskap, granskar du nedan – 
+    > Om du vill använda kundhanterad nyckel tillsammans med geo haveri beredskap går du igenom det här avsnittet. 
     >
-    > Om du vill aktivera kryptering i vila med kundhanterad nyckel, konfigureras en [åtkomst princip](../key-vault/general/secure-your-key-vault.md) för den Service Bus hanterade identiteten på det angivna Azure-valvet. Detta säkerställer kontrollerad åtkomst till Azure-valvet från Azure Service Bus namn området.
+    > Om du vill aktivera kryptering av Microsoft-hanterad nyckel med en kundhanterad nyckel, konfigureras en [åtkomst princip](../key-vault/general/secure-your-key-vault.md) för den Service Bus hanterade identiteten på det angivna Azure-valvet. Detta säkerställer kontrollerad åtkomst till Azure-valvet från Azure Service Bus namn området.
     >
     > På grund av detta:
     > 

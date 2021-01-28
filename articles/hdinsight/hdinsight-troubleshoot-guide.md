@@ -1,18 +1,15 @@
 ---
 title: Fel söknings guider för Azure HDInsight
 description: Felsök Azure HDInsight. Steg för steg-dokumentationen visar hur du använder HDInsight för att lösa vanliga problem med Apache Hive, Apache Spark, Apache-garn, Apache HBase, HDFS och Apache Storm.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 828dc99c6eb01d7cdbfdbdc9eec8a96eeef52d88
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 901ed34e6b4498f2a50a6dfaf389e60b97dedc0d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821634"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931477"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Felsöka Azure HDInsight
 

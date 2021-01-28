@@ -1,19 +1,16 @@
 ---
 title: Affärs kontinuitet i Azure HDInsight
 description: Den här artikeln ger en översikt över bästa praxis, tillgänglighet för enskild region och optimerings alternativ för Azure HDInsight-planering för affärs kontinuitet.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop hög tillgänglighet
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546950"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933317"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Affärs kontinuitet i Azure HDInsight
 
@@ -53,7 +50,7 @@ Ett grundläggande HDInsight-system har följande komponenter. Alla komponenter 
 
 Det finns andra valfria tjänster som kan användas, till exempel Azure Key Vault och Azure Data Factory.
 
-:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="data omvandling och data som betjänar lager":::
+:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="HDInsight-komponenter":::
 
 ### <a name="azure-hdinsight-cluster-compute"></a>Azure HDInsight-kluster (Compute)
 
@@ -122,7 +119,7 @@ Att förbättra affärs kontinuiteten med hjälp av haveri beredskap för hög t
 |Läs skriv mönster |Kräver både primär och sekundär för läsning och skrivning aktiverat |Designa den sekundära för att vara skrivskyddad|
 |Noll & RTO |Kräver noll data förlust (utfört = 0) och noll avbrotts tid (RTO = 0) |Skapa återställnings-och RTO på olika sätt för att minska antalet komponenter som behöver redundansväxlas.|
 |Affärs funktioner |Kräver fullständiga affärs funktioner för primär i sekundär |Utvärdera om du kan köra med minimalt minsta kritiska del av affärs funktionerna i sekundär.|
-|Anslutningsmöjlighet |Kräver alla överordnade och underordnade system från primär plats för att ansluta till den sekundära också|Begränsa den sekundära anslutningen till en minimal, minimal mängd.|
+|Anslutning |Kräver alla överordnade och underordnade system från primär plats för att ansluta till den sekundära också|Begränsa den sekundära anslutningen till en minimal, minimal mängd.|
 
 ## <a name="next-steps"></a>Nästa steg
 

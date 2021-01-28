@@ -1,19 +1,16 @@
 ---
 title: Kernels för Jupyter Notebook i Spark-kluster i Azure HDInsight
 description: Lär dig mer om PySpark-, PySpark3-och Spark-kernelerna för Jupyter Notebook tillgängliga med Spark-kluster på Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822241"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930387"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels för Jupyter Notebook på Apache Spark kluster i Azure HDInsight
 
@@ -70,7 +67,7 @@ Här är några av fördelarna med att använda nya kärnor med Jupyter Notebook
 
     I följande tabell visas de olika Magic-alternativen som är tillgängliga via kernelerna.
 
-   | Magic | Exempel | Beskrivning |
+   | Magic | Exempel | Description |
    | --- | --- | --- |
    | Hjälp |`%%help` |Genererar en tabell med alla tillgängliga MAGICS med exempel och beskrivning |
    | information |`%%info` |Visar sessionsinformation för den aktuella livy-slutpunkten |
@@ -78,7 +75,7 @@ Här är några av fördelarna med att använda nya kärnor med Jupyter Notebook
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Kör en Hive-fråga mot sqlContext. Om `-o` parametern skickas sparas resultatet av frågan i den lokala python-kontexten%% som en [Pandas](https://pandas.pydata.org/) -dataframe. |
    | lokalt |`%%local`<br>`a=1` |All kod i senare rader körs lokalt. Koden måste vara en giltig Python2-kod oavsett vilken kernel du använder. Det innebär att även om du har valt **PySpark3** eller **Spark** -kernel när du skapar antecknings boken, om du använder `%%local` Magic i en cell, måste cellen bara ha en giltig Python2-kod. |
    | loggar |`%%logs` |Matar ut loggarna för den aktuella livy-sessionen. |
-   | delete |`%%delete -f -s <session number>` |Tar bort en speciell session av den aktuella livy-slutpunkten. Du kan inte ta bort sessionen som har startats för själva kerneln. |
+   | ta bort |`%%delete -f -s <session number>` |Tar bort en speciell session av den aktuella livy-slutpunkten. Du kan inte ta bort sessionen som har startats för själva kerneln. |
    | cleanup |`%%cleanup -f` |Tar bort alla sessioner för den aktuella livy-slutpunkten, inklusive den här Notebook-sessionen. Force-flaggan-f är obligatorisk. |
 
    > [!NOTE]  
@@ -90,7 +87,7 @@ Här är några av fördelarna med att använda nya kärnor med Jupyter Notebook
 
 `%%sql`Magic stöder olika parametrar som du kan använda för att styra vilken typ av utdata du får när du kör frågor. I följande tabell visas utdata.
 
-| Parameter | Exempel | Beskrivning |
+| Parameter | Exempel | Description |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Använd den här parametern om du vill behålla resultatet av frågan i den lokala python-kontexten%% som en [Pandas](https://pandas.pydata.org/) -dataframe. Namnet på dataframe-variabeln är det variabel namn som du anger. |
 | -q |`-q` |Använd den här parametern om du vill stänga av visualiseringar för cellen. Om du inte vill att autovisualisera innehållet i en cell och bara vill avbilda det som en dataframe använder du `-q -o <VARIABLE>` . Om du vill inaktivera visualiseringar utan att samla in resultaten (till exempel för att köra en SQL-fråga, t. ex. en `CREATE TABLE` instruktion), använder du `-q` utan att ange ett `-o` argument. |

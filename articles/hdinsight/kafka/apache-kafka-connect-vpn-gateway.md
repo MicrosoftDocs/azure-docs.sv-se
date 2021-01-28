@@ -1,19 +1,16 @@
 ---
 title: Ansluta till Kafka med virtuella nätverk – Azure HDInsight
 description: Lär dig hur du ansluter direkt till Kafka i HDInsight via en Azure-Virtual Network. Lär dig hur du ansluter till Kafka från utvecklings klienter med en VPN-gateway eller från klienter i ditt lokala nätverk med hjälp av en VPN gateway-enhet.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
-ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad802b2bdf08a8e43179beece5f52d869513aff3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873474"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933038"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Ansluta till Apache Kafka på HDInsight via Azure Virtual Network
 
@@ -339,9 +336,9 @@ Om du vill verifiera anslutningen till Kafka kan du använda följande steg för
 
     Ersätt `'kafka_broker'` posterna med adresserna som returneras från steg 1 i det här avsnittet:
 
-   * Om du använder en __Software VPN-klient__ersätter du `kafka_broker` posterna med IP-adressen för dina arbetsnoder.
+   * Om du använder en __Software VPN-klient__ ersätter du `kafka_broker` posterna med IP-adressen för dina arbetsnoder.
 
-   * Om du har __aktiverat namn matchning via en anpassad DNS-Server__ersätter du `kafka_broker` posterna med det fullständiga domän namnet för arbetsnoderna.
+   * Om du har __aktiverat namn matchning via en anpassad DNS-Server__ ersätter du `kafka_broker` posterna med det fullständiga domän namnet för arbetsnoderna.
 
      > [!NOTE]
      > Den här koden skickar strängen `test message` till ämnet `testtopic` . Standard konfigurationen för Kafka i HDInsight är att skapa ämnet om det inte finns.
@@ -362,9 +359,9 @@ Om du vill verifiera anslutningen till Kafka kan du använda följande steg för
 
     Ersätt `'kafka_broker'` posterna med adresserna som returneras från steg 1 i det här avsnittet:
 
-    * Om du använder en __Software VPN-klient__ersätter du `kafka_broker` posterna med IP-adressen för dina arbetsnoder.
+    * Om du använder en __Software VPN-klient__ ersätter du `kafka_broker` posterna med IP-adressen för dina arbetsnoder.
 
-    * Om du har __aktiverat namn matchning via en anpassad DNS-Server__ersätter du `kafka_broker` posterna med det fullständiga domän namnet för arbetsnoderna.
+    * Om du har __aktiverat namn matchning via en anpassad DNS-Server__ ersätter du `kafka_broker` posterna med det fullständiga domän namnet för arbetsnoderna.
 
 ## <a name="next-steps"></a>Nästa steg
 

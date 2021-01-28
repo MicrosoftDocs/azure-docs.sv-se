@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4d9845fad8c9013bd20499c45a8d1714e30e9dbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345737"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927408"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Använd systemtilldelade hanterade identiteter för att få åtkomst till Azure Cosmos DB data
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,7 @@ I det här steget tilldelar du en systemtilldelad hanterad identitet till din Fu
 
 1. Öppna **Azure Function** -fönstret i [Azure Portal](https://portal.azure.com/)och gå till din Function-app. 
 
-1. Öppna fliken identitet för **plattforms funktioner**  >  **Identity** : 
+1. Öppna fliken identitet för **plattforms funktioner**  >   : 
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Skärm bild som visar plattforms funktioner och identitets alternativ för Function-appen.":::
 
@@ -43,7 +43,7 @@ I det här steget tilldelar du en systemtilldelad hanterad identitet till din Fu
 
 I det här steget ska du tilldela en roll till funktionens programs systemtilldelade hanterade identitet. Azure Cosmos DB har flera inbyggda roller som du kan tilldela till den hanterade identiteten. I den här lösningen använder du följande två roller:
 
-|Inbyggd roll  |Beskrivning  |
+|Inbyggd roll  |Description  |
 |---------|---------|
 |[DocumentDB-konto deltagare](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan hantera Azure Cosmos DB-konton. Tillåter hämtning av Läs-/skriv nycklar. |
 |[Cosmos DB konto läsar roll](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan läsa Azure Cosmos DB konto data. Tillåter hämtning av Läs nycklar. |
@@ -130,7 +130,7 @@ namespace Monitor
 }
 ```
 
-Du använder biblioteket [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) för att hämta den systemtilldelade hanterade identitets-token. Information om andra sätt att hämta token och få mer information om `Microsoft.Azure.Service.AppAuthentication` biblioteket finns i artikeln [tjänst-till-tjänst-autentisering](../key-vault/general/service-to-service-authentication.md) .
+Du använder biblioteket [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) för att hämta den systemtilldelade hanterade identitets-token. Information om andra sätt att hämta token och få mer information om `Microsoft.Azure.Service.AppAuthentication` biblioteket finns i artikeln [tjänst-till-tjänst-autentisering](/dotnet/api/overview/azure/service-to-service-authentication) .
 
 
 ```csharp

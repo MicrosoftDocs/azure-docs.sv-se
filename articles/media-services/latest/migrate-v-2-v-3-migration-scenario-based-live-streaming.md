@@ -1,5 +1,5 @@
 ---
-title: Media Services v2 till v3-guide för migrerings scenario för Live Streaming
+title: Media Services v2 till v3 migrations vägledning för Live Streaming
 description: Den här artikeln ger dig till gång till Live-scenarier med direkt uppspelning som hjälper dig att migrera från Azure Media Services v2 till v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 65b1c8906463002e144ee520855121ce18693e03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 02ae0f7e8723e9c4543a4ef681e3a1164b183a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898281"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927126"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Vägledning för Live streaming-scenario-baserad migrering
 

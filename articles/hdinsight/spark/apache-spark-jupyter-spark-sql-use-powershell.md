@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: skapa Apache Spark kluster på Azure HDInsight med Azure PowerShell'
 description: Den här snabbstarten visar hur du använder Azure PowerShell för att skapa ett Apache Spark-kluster i Azure HDInsight och köra en enkel Spark SQL-fråga.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 14b6dd8f8db00469be49c2f57e12d3c15302f8a6
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 7a04d65d5032e37433fb61c73e5f64fe89bb2d2c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822224"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930502"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Snabb start: skapa Apache Spark kluster i Azure HDInsight med hjälp av PowerShell
 
@@ -48,7 +45,7 @@ När du kör PowerShell-skriptet uppmanas du att ange följande värden:
 |Parameter|Värde|
 |------|------|
 |Azure-resursgruppsnamn | Ange ett unikt namn för resursgruppen.|
-|Plats| Ange Azure-regionen, t.ex. USA, centrala. |
+|Location| Ange Azure-regionen, t.ex. USA, centrala. |
 |Namn på standardlagringskonto | Ange ett unikt namn för lagringskontot. |
 |Klusternamn | Ange ett unikt namn för HDInsight-klustret.|
 |Autentiseringsuppgifter för klusterinloggning | Du kan använda det här kontot för att ansluta till klusterinstrumentpanelen senare i snabbstarten.|

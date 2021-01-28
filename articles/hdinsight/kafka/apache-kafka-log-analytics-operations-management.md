@@ -1,19 +1,16 @@
 ---
 title: Azure Monitor loggar för Apache Kafka – Azure HDInsight
 description: Lär dig hur du använder Azure Monitor loggar för att analysera loggar från Apache Kafka-kluster på Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534455"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932773"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysera loggar för Apache Kafka i HDInsight
 
@@ -25,7 +22,7 @@ Lär dig hur du använder Azure Monitor loggar för att analysera loggar som gen
 
 Apache Kafka loggar i klustret finns på `/var/log/kafka` . Kafka-loggar sparas eller bevaras inte över klustrets livs cykel, oavsett om hanterade diskar används. I följande tabell visas de tillgängliga loggarna.
 
-|Loggas |Beskrivning |
+|Loggas |Description |
 |---|---|
 |Kafka. ut|STDOUT och stderr för Kafka-processen. Du hittar Kafka start-och avslutnings loggar i den här filen.|
 |Server. log|Huvud server loggen för Kafka. Alla Kafka Broker-loggar slutförs här.|
@@ -50,7 +47,7 @@ Stegen för att aktivera Azure Monitor loggar för HDInsight är desamma för al
 
 1. Välj arbets ytan Log Analytics från [Azure Portal](https://portal.azure.com).
 
-2. I den vänstra menyn under **Allmänt** väljer du **loggar** . Härifrån kan du söka i data som samlas in från Kafka. Ange en fråga i frågefönstret och välj sedan **Kör** . Följande är några exempel på sökningar:
+2. I den vänstra menyn under **Allmänt** väljer du **loggar**. Härifrån kan du söka i data som samlas in från Kafka. Ange en fråga i frågefönstret och välj sedan **Kör**. Följande är några exempel på sökningar:
 
 * Disk användning:
 
@@ -94,7 +91,7 @@ Stegen för att aktivera Azure Monitor loggar för HDInsight är desamma för al
 
     Du kan också ange `*` om du vill söka efter alla typer som loggas. För närvarande finns följande loggar för frågor:
 
-    | Loggtyp | Beskrivning |
+    | Loggtyp | Description |
     | ---- | ---- |
     | Logga \_ kafkaserver \_ cl | Kafka Broker-Server. log |
     | Logga \_ kafkacontroller \_ cl | Kafka Broker-styrenhet. log |

@@ -1,5 +1,5 @@
 ---
-title: Vägledning om paketering och leverans scenario-baserad migrering
+title: Vägledning för att migrera paketering och leverans
 description: Den här artikeln ger dig en scenario baserad vägledning för paketering och leverans som hjälper dig att migrera från Azure Media Services v2 till v3.
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 78f3e6ee53d5158096882f5554054c3ff06a32b4
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 90dfc2fd6f6258ec5bfdea38423489c72ee06e03
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895245"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928194"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Vägledning om paketering och leverans scenario-baserad migrering
 

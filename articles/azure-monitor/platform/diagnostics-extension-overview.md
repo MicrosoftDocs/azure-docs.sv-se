@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d424a22a26119dcb3ef6a0e5c4f3dc0c13b1aa4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008004"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927576"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Översikt över Azure Diagnostics-tillägg
 Azure-diagnostik tillägget är en [agent i Azure Monitor](agents-overview.md) som samlar in övervaknings data från gäst operativ systemet i Azure Compute-resurser, inklusive virtuella datorer. Den här artikeln innehåller en översikt över Azure-diagnostik-tillägget, inklusive de funktioner som stöds och alternativ för installation och konfiguration. 
@@ -44,13 +44,13 @@ I följande tabeller visas de data som kan samlas in av tillägget Windows och L
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Diagnostics-tillägg (WAD)
 
-| Datakälla | Beskrivning |
+| Datakälla | Description |
 | --- | --- |
 | Händelse loggar i Windows   | Händelser från händelse loggen i Windows. |
 | Prestandaräknare | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
 | IIS-loggar             | Användnings information för IIS-webbplatser som körs på gäst operativ systemet. |
 | Program loggar     | Spåra meddelanden som skrivits av ditt program. |
-| .NET EventSource-loggar |Kod skrivnings händelser med hjälp av .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -klassen |
+| .NET EventSource-loggar |Kod skrivnings händelser med hjälp av .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) -klassen |
 | [Manifestbaserade ETW-loggar](/windows/desktop/etw/about-event-tracing) |ETW (Event Tracing for Windows) händelser som genererats av en process. |
 | Krasch dum par (loggar)   | Information om processens tillstånd om ett program kraschar. |
 | Filbaserade loggar    | Loggar som skapats av ditt program eller din tjänst. |
@@ -59,7 +59,7 @@ I följande tabeller visas de data som kan samlas in av tillägget Windows och L
 
 ### <a name="linux-diagnostics-extension-lad"></a>LAD (Linux Diagnostics Extension)
 
-| Datakälla | Beskrivning |
+| Datakälla | Description |
 | --- | --- |
 | Syslog | Händelser som skickas till Linux Event Logging-systemet.   |
 | Prestandaräknare  | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
@@ -72,9 +72,9 @@ Konfigurera en eller flera *data mottagare* för att skicka data till andra ytte
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows Diagnostics-tillägg (WAD)
 
-| Mål | Beskrivning |
+| Mål | Description |
 |:---|:---|
-| Azure Monitor mått | Samla in prestanda data till Azure Monitor mått. Se [Skicka gäst operativ system mått till Azure Monitor Metric-databasen](collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Azure Monitor-statistik | Samla in prestanda data till Azure Monitor mått. Se [Skicka gäst operativ system mått till Azure Monitor Metric-databasen](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Händelsehubbar | Använd Azure Event Hubs för att skicka data utanför Azure. Se [strömmande Azure-diagnostik data till Event Hubs](diagnostics-extension-stream-event-hubs.md) |
 | Azure Storage blobbar | Skriv till data till blobbar i Azure Storage förutom tabeller. |
 | Application Insights | Samla in data från program som körs i den virtuella datorn till Application Insights integrera med andra program övervakning. Se [Skicka diagnostikdata till Application Insights](diagnostics-extension-to-application-insights.md). |
@@ -85,11 +85,11 @@ Du kan också samla in WAD-data från lagring till en Log Analytics arbets yta f
 ### <a name="linux-diagnostics-extension-lad"></a>LAD (Linux Diagnostics Extension)
 LAD skriver data till tabeller i Azure Storage. Det stöder sinkarna i följande tabell.
 
-| Mål | Beskrivning |
+| Mål | Description |
 |:---|:---|
 | Händelsehubbar | Använd Azure Event Hubs för att skicka data utanför Azure. |
 | Azure Storage blobbar | Skriv till data till blobbar i Azure Storage förutom tabeller. |
-| Azure Monitor mått | Installera teleympkvistar-agenten förutom LAD. Se [samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar](collect-custom-metrics-linux-telegraf.md).
+| Azure Monitor-statistik | Installera teleympkvistar-agenten förutom LAD. Se [samla in anpassade mått för en virtuell Linux-dator med InfluxData-agenten för teleympkvistar](collect-custom-metrics-linux-telegraf.md).
 
 
 ## <a name="installation-and-configuration"></a>Installation och konfiguration

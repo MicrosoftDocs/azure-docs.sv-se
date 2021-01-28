@@ -1,19 +1,17 @@
 ---
 title: Aktivera automatisk generering av ämnen i Apache Kafka – Azure HDInsight
 description: Lär dig hur du konfigurerar Apache Kafka på HDInsight för att automatiskt skapa ämnen. Du kan konfigurera Kafka genom att ställa in `auto.create.topics.enable` på Sant via Ambari. Eller när klustret skapas via PowerShell eller Resource Manager-mallar.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 829f91452725615af4d444426e25ffad62d6ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087519"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933215"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Så här konfigurerar du Apache Kafka på HDInsight för att automatiskt skapa ämnen
 
@@ -25,7 +23,7 @@ Gör så här om du vill aktivera automatisk generering av ämnen i ett befintli
 
 1. Välj ditt Kafka-kluster från [Azure Portal](https://portal.azure.com).
 
-1. Välj **Ambari start**från **kluster instrument paneler**.
+1. Välj **Ambari start** från **kluster instrument paneler**.
 
     ![Bild av portalen med valt kluster instrument panel](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
@@ -49,7 +47,7 @@ Gör så här om du vill aktivera automatisk generering av ämnen i ett befintli
 
     ![Bild av filen Auto. Create. topics. enable Entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-1. Välj Kafka-tjänsten, Välj __starta om__och välj sedan __starta om alla berörda__. När du uppmanas väljer du __Bekräfta omstart av alla__.
+1. Välj Kafka-tjänsten, Välj __starta om__ och välj sedan __starta om alla berörda__. När du uppmanas väljer du __Bekräfta omstart av alla__.
 
     !["Apache Ambari restart all berörs"](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 

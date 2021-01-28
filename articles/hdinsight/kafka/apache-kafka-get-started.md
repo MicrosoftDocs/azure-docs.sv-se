@@ -1,19 +1,16 @@
 ---
 title: 'Snabb start: Konfigurera Apache Kafka på HDInsight med Azure Portal'
 description: I den här snabbstarten lär du dig hur du skapar ett Apache Kafka-kluster på Azure HDInsight med hjälp av Azure Portal. Du lär dig också om Kafka-ämnen, -prenumeranter och -konsumenter.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534608"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932910"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Snabb start: skapa Apache Kafka kluster i Azure HDInsight med Azure Portal
 
@@ -25,7 +22,7 @@ I den här snabb starten får du lära dig hur du skapar ett Apache Kafka kluste
 
 Apache Kafka-API:et kan endast användas av resurser i samma virtuella nätverk. I den här snabb starten får du åtkomst till klustret direkt med SSH. Om du vill ansluta andra tjänster, nätverk eller virtuella datorer till Apache Kafka måste du först skapa ett virtuellt nätverk och sedan skapa resurser i nätverket. Mer information finns i dokumentet [Anslut till Apache Kafka via ett virtuellt nätverk](apache-kafka-connect-vpn-gateway.md). Mer allmän information om hur du planerar virtuella nätverk för HDInsight finns i [planera ett virtuellt nätverk för Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md).
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -53,15 +50,15 @@ Använd följande steg för att skapa ett Apache Kafka kluster i HDInsight:
     |Region    | Välj en region där klustret skapas i list rutan.  Välj en region närmare för bättre prestanda. |
     |Kluster typ| Välj **Välj kluster typ** för att öppna en lista. Välj **Kafka** som kluster typ i listan.|
     |Version|Standard versionen för kluster typen anges. Välj i list rutan om du vill ange en annan version.|
-    |Användarnamn och lösenord för klusterinloggning    | Standard inloggnings namnet är **admin** . Lösen ordet måste bestå av minst 10 tecken och måste innehålla minst en siffra, en versal och en gemen bokstav, ett icke-alfanumeriskt tecken (förutom tecknen "" " \) . Se till att du **inte anger** vanliga lösenord som Pass@word1.|
-    |Secure Shell (SSH)-användarnamn | Standardanvändarnamnet är **sshuser** .  Du kan ange ett annat namn som SSH-användarnamn. |
+    |Användarnamn och lösenord för klusterinloggning    | Standard inloggnings namnet är **admin**. Lösen ordet måste bestå av minst 10 tecken och måste innehålla minst en siffra, en versal och en gemen bokstav, ett icke-alfanumeriskt tecken (förutom tecknen "" " \) . Se till att du **inte anger** vanliga lösenord som Pass@word1.|
+    |Secure Shell (SSH)-användarnamn | Standardanvändarnamnet är **sshuser**.  Du kan ange ett annat namn som SSH-användarnamn. |
     |Använd lösen ord för kluster inloggning för SSH| Markera den här kryss rutan om du vill använda samma lösen ord för SSH-användare som det du angav för kluster inloggnings användaren.|
 
    ![Azure Portal skapa grundläggande kluster](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
-    Varje Azure-region (plats) har _feldomäner_ . En feldomän är en logisk gruppering av underliggande maskinvara i ett Azure-datacenter. Varje feldomän delar en gemensam strömkälla och nätverksbrytare. De virtuella datorer och hanterade diskar som implementerar noderna i ett HDInsight-kluster är fördelade mellan dessa feldomäner. Den här arkitekturen begränsar de potentiella problemen vid fysiska maskinvarufel.
+    Varje Azure-region (plats) har _feldomäner_. En feldomän är en logisk gruppering av underliggande maskinvara i ett Azure-datacenter. Varje feldomän delar en gemensam strömkälla och nätverksbrytare. De virtuella datorer och hanterade diskar som implementerar noderna i ett HDInsight-kluster är fördelade mellan dessa feldomäner. Den här arkitekturen begränsar de potentiella problemen vid fysiska maskinvarufel.
 
-    För hög datatillgänglighet, välj en plats (region) som innehåller __tre feldomäner__ . Om du vill ha information om antalet feldomäner i en region läser du dokumentet [Availability of Linux virtual machines](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) (Tillgänglighet för virtuella Linux-datorer).
+    För hög datatillgänglighet, välj en plats (region) som innehåller __tre feldomäner__. Om du vill ha information om antalet feldomäner i en region läser du dokumentet [Availability of Linux virtual machines](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) (Tillgänglighet för virtuella Linux-datorer).
 
     Välj **Nästa: storage >>** -fliken för att gå vidare till lagrings inställningarna.
 
@@ -69,9 +66,9 @@ Använd följande steg för att skapa ett Apache Kafka kluster i HDInsight:
 
     |Egenskap  |Beskrivning  |
     |---------|---------|
-    |Primär lagringstyp|Använd standardvärdet **Azure Storage** .|
-    |Urvalsmetod|Använd standardvärdet **Select i list** .|
-    |Primärt lagringskonto|Använd List rutan för att välja ett befintligt lagrings konto eller Välj **Skapa nytt** . Om du skapar ett nytt konto måste namnet vara mellan 3 och 24 tecken långt och får bara innehålla siffror och gemener|
+    |Primär lagringstyp|Använd standardvärdet **Azure Storage**.|
+    |Urvalsmetod|Använd standardvärdet **Select i list**.|
+    |Primärt lagringskonto|Använd List rutan för att välja ett befintligt lagrings konto eller Välj **Skapa nytt**. Om du skapar ett nytt konto måste namnet vara mellan 3 och 24 tecken långt och får bara innehålla siffror och gemener|
     |Container|Använd det automatiskt ifyllda värdet.|
 
     ![HDInsight Linux kom igång ger kluster lagrings värden](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Ange lagrings värden för att skapa ett HDInsight-kluster")
@@ -80,7 +77,7 @@ Använd följande steg för att skapa ett Apache Kafka kluster i HDInsight:
 
 1. Lämna standard säkerhets inställningarna för den här snabb starten. Du kan läsa mer om Enterprise Security-paketet i [Konfigurera ett HDInsight-kluster med Enterprise Security-paket med hjälp av Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md). Information om hur du använder din egen nyckel för Apache Kafka disk kryptering finns i [kund hanterad nyckel disk kryptering](../disk-encryption.md)
 
-   Om du vill ansluta ditt kluster till ett virtuellt nätverk väljer du ett virtuellt nätverk i listrutan **Virtuellt nätverk** .
+   Om du vill ansluta ditt kluster till ett virtuellt nätverk väljer du ett virtuellt nätverk i listrutan **Virtuellt nätverk**.
 
    ![Lägga till kluster i ett virtuellt nätverk](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
@@ -134,7 +131,7 @@ Använd följande steg för att skapa ett Apache Kafka kluster i HDInsight:
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Hämta information om värden i Apache Zookeeper och Broker
 
-När du arbetar med Kafka måste du känna till *Apache Zookeeper* - och *Broker* -värdarna. Dessa värdar används med Apache Kafka-API och många av de verktyg som levereras med Kafka.
+När du arbetar med Kafka måste du känna till *Apache Zookeeper*- och *Broker*-värdarna. Dessa värdar används med Apache Kafka-API och många av de verktyg som levereras med Kafka.
 
 I det här avsnittet hämtar du värdinformation från om värden från Apache Ambari REST API på klustret.
 
@@ -200,7 +197,7 @@ I det här avsnittet hämtar du värdinformation från om värden från Apache A
 
 ## <a name="manage-apache-kafka-topics"></a>Hantera Apache Kafka-ämnen
 
-Kafka lagrar dataströmmar i kategorier som kallas *ämnen* . Du kan hantera ämnena med verktyget `kafka-topics.sh`.
+Kafka lagrar dataströmmar i kategorier som kallas *ämnen*. Du kan hantera ämnena med verktyget `kafka-topics.sh`.
 
 * **Du skapar ett ämne** med följande kommando i SSH-anslutningen:
 
@@ -208,7 +205,7 @@ Kafka lagrar dataströmmar i kategorier som kallas *ämnen* . Du kan hantera äm
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`. Det skapar ett Apache Kafka-ämne med namnet **test** .
+    Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`. Det skapar ett Apache Kafka-ämne med namnet **test**.
 
     * Data som lagras i det här ämnet partitioneras över åtta partitioner.
 
@@ -257,7 +254,7 @@ Om du vill ha mer information om vilka kommandon som är tillgängliga med verkt
 
 ## <a name="produce-and-consume-records"></a>Skapa och använda poster
 
-Kafka lagrar *poster* i ämnen. Poster produceras av *producenter* , och används av *konsumenter* . Producenter och konsumenter kommunicerar med *Kafka-koordinator* tjänsten. Varje arbetsnod i HDInsight-klustret är en Apache Kafka-brokervärd.
+Kafka lagrar *poster* i ämnen. Poster produceras av *producenter*, och används av *konsumenter*. Producenter och konsumenter kommunicerar med *Kafka-koordinator* tjänsten. Varje arbetsnod i HDInsight-klustret är en Apache Kafka-brokervärd.
 
 Använd följande steg för att lagra poster i det testämne som du skapade tidigare och sedan läsa dem med en konsument:
 
