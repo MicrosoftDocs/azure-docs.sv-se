@@ -3,12 +3,12 @@ title: Förbereda DPM-servern för säkerhets kopiering av arbets belastningar
 description: I den här artikeln lär du dig att förbereda för säkerhets kopiering av System Center Data Protection Manager (DPM) till Azure med hjälp av tjänsten Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002875"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985639"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Förbereda säkerhets kopiering av arbets belastningar till Azure med System Center DPM
 
@@ -48,7 +48,7 @@ Filtyper som stöds | De här fil typerna kan säkerhets kopie ras med Azure Bac
 Filtyper som inte stöds | <li>Servrar på SKIFT läges känsliga fil system<li> hårda länkar (hoppades över)<li> referens punkter (överhoppad)<li> krypterad och komprimerad (överhoppad)<li> krypterad och sparse (överhoppad)<li> Komprimerad ström<li> parsa data ström
 Lokal lagring | Alla datorer som du vill säkerhetskopiera måste ha lokalt ledigt lagrings utrymme som är minst 5% av storleken på de data som säkerhets kopie ras. Till exempel krävs minst 5 GB ledigt utrymme på arbets platsen för att säkerhetskopiera 100 GB data.
 Valv lagring | Det finns ingen gräns för mängden data som du kan säkerhetskopiera till ett Azure Backup-valv, men storleken på en data källa (till exempel en virtuell dator eller databas) får inte överstiga 54 400 GB.
-Azure ExpressRoute | Du kan säkerhetskopiera dina data via Azure ExpressRoute med offentlig peering (tillgänglig för gamla kretsar) och Microsoft-peering. Säkerhets kopiering över privat peering stöds inte.<br/><br/> **Med offentlig peering**: säkerställa åtkomst till följande domäner/adresser:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Med Microsoft-peering** väljer du följande tjänster/regioner och relevanta community-värden:<br/><br/>– Azure Active Directory (12076:5060)<br/><br/>– Microsoft Azure region (enligt platsen för ditt Recovery Services-valv)<br/><br/>-Azure Storage (enligt platsen för ditt Recovery Services-valv)<br/><br/>Mer information finns i [krav för ExpressRoute-routning](../expressroute/expressroute-routing.md).<br/><br/>**Obs**: offentlig peering är inaktuell för nya kretsar.
+Azure ExpressRoute | Du kan säkerhetskopiera dina data via Azure ExpressRoute med offentlig peering (tillgänglig för gamla kretsar) och Microsoft-peering. Säkerhets kopiering över privat peering stöds inte.<br/><br/> **Med offentlig peering**: säkerställa åtkomst till följande domäner/adresser:<br/><br/> Er<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP-adresser<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>**Med Microsoft-peering** väljer du följande tjänster/regioner och relevanta community-värden:<br/><br/>– Azure Active Directory (12076:5060)<br/><br/>– Microsoft Azure region (enligt platsen för ditt Recovery Services-valv)<br/><br/>-Azure Storage (enligt platsen för ditt Recovery Services-valv)<br/><br/>Mer information finns i [krav för ExpressRoute-routning](../expressroute/expressroute-routing.md).<br/><br/>**Obs**: offentlig peering är inaktuell för nya kretsar.
 Azure Backup-agent | Om DPM körs i System Center 2012 SP1 installerar du Rollup 2 eller senare för DPM SP1. Detta krävs för agent installation.<br/><br/> Den här artikeln beskriver hur du distribuerar den senaste versionen av Azure Backup Agent, även kallat MARS-agenten (Microsoft Azure Recovery Service). Om du har en tidigare distribuerad version uppdaterar du till den senaste versionen för att se till att säkerhets kopieringen fungerar som förväntat.
 
 Innan du börjar behöver du ett Azure-konto med Azure Backup funktionen aktive rad. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Läs om [priser för Azure Backup](https://azure.microsoft.com/pricing/details/backup/).

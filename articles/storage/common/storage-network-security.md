@@ -5,20 +5,20 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
-ms.author: tamram
+ms.date: 01/27/2021
+ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 9032576f3705c360ebf53d8fdb4d6c15f77f450e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 5a1ad898b745bbb49421c1bc0b5a9b2e5c8ec0f6
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703512"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986012"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
-Azure Storage tillhandahåller en säkerhetsmodell i flera lager. Med den här modellen kan du skydda och kontrollera den nivå av åtkomst till dina lagringskonton som behövs för dina appar och företagsmiljöer, beroende på vilken typ och delmängd av nätverk som används. När nätverks regler har kon figurer ATS kan endast program som begär data i den angivna uppsättningen nätverk komma åt ett lagrings konto. Du kan begränsa åtkomsten till ditt lagrings konto till begär Anden som kommer från angivna IP-adresser, IP-intervall eller från en lista över undernät i ett Azure-Virtual Network (VNet).
+Azure Storage tillhandahåller en skiktbaserad säkerhetsmodell. Med den här modellen kan du skydda och kontrol lera åtkomst nivån till dina lagrings konton som dina program och företags miljöer kräver, baserat på typen och delmängd av de nätverk eller resurser som används. När nätverks regler har kon figurer ATS kan endast program som begär data i den angivna uppsättningen nätverk eller via den angivna uppsättningen Azure-resurser komma åt ett lagrings konto. Du kan begränsa åtkomsten till ditt lagrings konto till begär Anden som kommer från angivna IP-adresser, IP-adressintervall, undernät i ett Azure-Virtual Network (VNet) eller resurs instanser av vissa Azure-tjänster.
 
 Lagrings konton har en offentlig slut punkt som kan nås via Internet. Du kan också skapa [privata slut punkter för ditt lagrings konto](storage-private-endpoints.md), som tilldelar en privat IP-adress från ditt VNet till lagrings kontot och skyddar all trafik mellan ditt VNet och lagrings kontot över en privat länk. Azure Storage-brandväggen ger åtkomst kontroll för den offentliga slut punkten för ditt lagrings konto. Du kan också använda brand väggen för att blockera all åtkomst via den offentliga slut punkten när du använder privata slut punkter. Konfigurationen av lagrings brand väggen aktiverar även de betrodda Azure Platform-tjänsterna för att få åtkomst till lagrings kontot på ett säkert sätt.
 
@@ -27,7 +27,7 @@ Ett program som har åtkomst till ett lagrings konto när nätverks regler till�
 > [!IMPORTANT]
 > Att aktivera brand Väggs regler för ditt lagrings konto blockerar inkommande begär Anden om data som standard, om inte begär Anden kommer från en tjänst som körs i ett Azure-Virtual Network (VNet) eller från tillåtna offentliga IP-adresser. Begär Anden som blockeras inkluderar de från andra Azure-tjänster, från Azure Portal, från loggnings-och mått tjänster och så vidare.
 >
-> Du kan bevilja åtkomst till Azure-tjänster som fungerar inifrån ett VNet genom att tillåta trafik från det undernät som är värd för tjänst instansen. Du kan också aktivera ett begränsat antal scenarier med hjälp av [undantags](#exceptions) mekanismen som beskrivs nedan. Om du vill komma åt data från lagrings kontot via Azure Portal måste du vara på en dator inom den betrodda gränser (antingen IP eller VNet) som du konfigurerar.
+> Du kan bevilja åtkomst till Azure-tjänster som fungerar inifrån ett VNet genom att tillåta trafik från det undernät som är värd för tjänst instansen. Du kan också aktivera ett begränsat antal scenarier med hjälp av undantags mekanismen som beskrivs nedan. Om du vill komma åt data från lagrings kontot via Azure Portal måste du vara på en dator inom den betrodda gränser (antingen IP eller VNet) som du konfigurerar.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Disk trafik på den virtuella datorn (inklusive åtgärder för montering och de
 
 Klassiska lagrings konton stöder inte brand väggar och virtuella nätverk.
 
-Du kan använda ohanterade diskar i lagrings konton med nätverks regler som används för att säkerhetskopiera och återställa virtuella datorer genom att skapa ett undantag. Den här processen dokumenteras i avsnittet [undantag](#exceptions) i den här artikeln. Brand Väggs undantag gäller inte för hanterade diskar eftersom de redan hanteras av Azure.
+Du kan använda ohanterade diskar i lagrings konton med nätverks regler som används för att säkerhetskopiera och återställa virtuella datorer genom att skapa ett undantag. Den här processen dokumenteras i avsnittet [Hantera undantag](#manage-exceptions) i den här artikeln. Brand Väggs undantag gäller inte för hanterade diskar eftersom de redan hanteras av Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Ändra standardåtkomstregeln för nätverk
 
@@ -60,59 +60,62 @@ Som standard godkänner lagringskonton anslutningar från klienter i alla nätve
 
 Du kan hantera standard regler för nätverks åtkomst för lagrings konton via Azure Portal, PowerShell eller CLIv2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar som kallas **nätverk**.
+2. Välj på menyn Inställningar som kallas **nätverk**.
 
-1. Om du vill neka åtkomst som standard väljer du att tillåta åtkomst från **valda nätverk**. Om du vill tillåta trafik från alla nätverk väljer du att tillåta åtkomst från **Alla nätverk**.
+3. Om du vill neka åtkomst som standard väljer du att tillåta åtkomst från **valda nätverk**. Om du vill tillåta trafik från alla nätverk väljer du att tillåta åtkomst från **Alla nätverk**.
 
-1. Klicka på **Spara** för att tillämpa dina ändringar.
+4. Klicka på **Spara** för att tillämpa dina ändringar.
 
-#### <a name="powershell"></a>PowerShell
+<a id="powershell"></a>
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Installera [Azure PowerShell](/powershell/azure/install-Az-ps) och [Logga](/powershell/azure/authenticate-azureps)in.
 
-1. Visa status för standard regeln för lagrings kontot.
+2. Visa status för standard regeln för lagrings kontot.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
     ```
 
-1. Ange standard regeln för att neka nätverks åtkomst som standard.
+3. Ange standard regeln för att neka nätverks åtkomst som standard.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
-1. Ange standard regeln för att tillåta nätverks åtkomst som standard.
+4. Ange standard regeln för att tillåta nätverks åtkomst som standard.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
     ```
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Installera [Azure CLI](/cli/azure/install-azure-cli) och [Logga](/cli/azure/authenticate-azure-cli)in.
 
-1. Visa status för standard regeln för lagrings kontot.
+2. Visa status för standard regeln för lagrings kontot.
 
     ```azurecli
     az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
     ```
 
-1. Ange standard regeln för att neka nätverks åtkomst som standard.
+3. Ange standard regeln för att neka nätverks åtkomst som standard.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Deny
     ```
 
-1. Ange standard regeln för att tillåta nätverks åtkomst som standard.
+4. Ange standard regeln för att tillåta nätverks åtkomst som standard.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
     ```
+---
 
 ## <a name="grant-access-from-a-virtual-network"></a>Bevilja åtkomst från ett virtuellt nätverk
 
@@ -144,42 +147,42 @@ Lagrings kontot och de virtuella nätverk som beviljats åtkomst kan finnas i ol
 
 Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal, PowerShell eller CLIv2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar som kallas **nätverk**.
+2. Välj på menyn Inställningar som kallas **nätverk**.
 
-1. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
+3. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
 
-1. Om du vill bevilja åtkomst till ett virtuellt nätverk med en ny nätverks regel klickar du på **Lägg till befintligt virtuellt nätverk** under **virtuella nätverk**, väljer alternativ för **virtuella nätverk** och **undernät** och klickar sedan på **Lägg till**. Om du vill skapa ett nytt virtuellt nätverk och bevilja det åtkomst klickar du på **Lägg till nytt virtuellt nätverk**. Ange den information som krävs för att skapa det nya virtuella nätverket och klicka sedan på **skapa**.
+4. Om du vill bevilja åtkomst till ett virtuellt nätverk med en ny nätverks regel väljer du **Lägg till befintligt virtuellt nätverk** under **virtuella nätverk**, väljer alternativ för **virtuella** nätverk och **undernät** och väljer sedan **Lägg till**. Om du vill skapa ett nytt virtuellt nätverk och bevilja det åtkomst väljer du **Lägg till nytt virtuellt nätverk**. Ange den information som krävs för att skapa det nya virtuella nätverket och välj sedan **skapa**.
 
     > [!NOTE]
     > Om en tjänst slut punkt för Azure Storage inte tidigare har kon figurer ATS för det valda virtuella nätverket och under nätet, kan du konfigurera den som en del av den här åtgärden.
     >
     > För närvarande visas endast virtuella nätverk som hör till samma Azure Active Directory klient organisation för val av skapande av regel. Om du vill bevilja åtkomst till ett undernät i ett virtuellt nätverk som tillhör en annan klient organisation använder du PowerShell-, CLI-eller REST-API: er.
 
-1. Om du vill ta bort ett virtuellt nätverk eller en under näts regel klickar du på **...** för att öppna snabb menyn för det virtuella nätverket eller under nätet och klicka på **ta bort**.
+5. Om du vill ta bort ett virtuellt nätverk eller en under näts regel väljer du **...** för att öppna snabb menyn för det virtuella nätverket eller under nätet och välj **ta bort**.
 
-1. Klicka på **Spara** för att tillämpa dina ändringar.
+6. Välj **Spara** för att tillämpa ändringarna.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Installera [Azure PowerShell](/powershell/azure/install-Az-ps) och [Logga](/powershell/azure/authenticate-azureps)in.
 
-1. Lista över virtuella nätverks regler.
+2. Lista över virtuella nätverks regler.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
     ```
 
-1. Aktivera tjänstens slut punkt för Azure Storage på ett befintligt virtuellt nätverk och undernät.
+3. Aktivera tjänstens slut punkt för Azure Storage på ett befintligt virtuellt nätverk och undernät.
 
     ```powershell
     Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
-1. Lägg till en nätverks regel för ett virtuellt nätverk och undernät.
+4. Lägg till en nätverks regel för ett virtuellt nätverk och undernät.
 
     ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
@@ -189,7 +192,7 @@ Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal,
     > [!TIP]
     > Om du vill lägga till en nätverks regel för ett undernät i ett virtuellt nätverk som tillhör en annan Azure AD-klient använder du en fullständigt kvalificerad **VirtualNetworkResourceId** -parameter i formatet "/Subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-Name/subnets/Subnet-Name".
 
-1. Ta bort en nätverks regel för ett virtuellt nätverk och undernät.
+5. Ta bort en nätverks regel för ett virtuellt nätverk och undernät.
 
     ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
@@ -199,23 +202,23 @@ Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal,
 > [!IMPORTANT]
 > Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Installera [Azure CLI](/cli/azure/install-azure-cli) och [Logga](/cli/azure/authenticate-azure-cli)in.
 
-1. Lista över virtuella nätverks regler.
+2. Lista över virtuella nätverks regler.
 
     ```azurecli
     az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
     ```
 
-1. Aktivera tjänstens slut punkt för Azure Storage på ett befintligt virtuellt nätverk och undernät.
+3. Aktivera tjänstens slut punkt för Azure Storage på ett befintligt virtuellt nätverk och undernät.
 
     ```azurecli
     az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
     ```
 
-1. Lägg till en nätverks regel för ett virtuellt nätverk och undernät.
+4. Lägg till en nätverks regel för ett virtuellt nätverk och undernät.
 
     ```azurecli
     subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
@@ -227,7 +230,7 @@ Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal,
     >
     > Du kan använda parametern **Subscription** för att hämta Undernäts-ID: t för ett VNet som tillhör en annan Azure AD-klient.
 
-1. Ta bort en nätverks regel för ett virtuellt nätverk och undernät.
+5. Ta bort en nätverks regel för ett virtuellt nätverk och undernät.
 
     ```azurecli
     subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
@@ -236,6 +239,8 @@ Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal,
 
 > [!IMPORTANT]
 > Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
+
+---
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Bevilja åtkomst från ett IP-intervall på internet
 
@@ -268,49 +273,49 @@ Om du använder [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 Du kan hantera IP-nätverks regler för lagrings konton via Azure Portal, PowerShell eller CLIv2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar som kallas **nätverk**.
+2. Välj på menyn Inställningar som kallas **nätverk**.
 
-1. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
+3. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
 
-1. Om du vill bevilja åtkomst till ett Internet-IP-intervall anger du IP-adressen eller adress intervallet (i CIDR-format) under **brand Väggs**  >  **adress intervall**.
+4. Om du vill bevilja åtkomst till ett Internet-IP-intervall anger du IP-adressen eller adress intervallet (i CIDR-format) under **brand Väggs**  >  **adress intervall**.
 
-1. Om du vill ta bort en IP-nätverks regel klickar du på pappers korgs ikonen bredvid adress intervallet.
+5. Om du vill ta bort en IP-nätverks regel väljer du pappers korgs ikonen bredvid adress intervallet.
 
-1. Klicka på **Spara** för att tillämpa dina ändringar.
+6. Klicka på **Spara** för att tillämpa dina ändringar.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Installera [Azure PowerShell](/powershell/azure/install-Az-ps) och [Logga](/powershell/azure/authenticate-azureps)in.
 
-1. Lista IP-nätverksnummer.
+2. Lista IP-nätverksnummer.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
     ```
 
-1. Lägg till en nätverks regel för en enskild IP-adress.
+3. Lägg till en nätverks regel för en enskild IP-adress.
 
     ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
-1. Lägg till en nätverks regel för ett IP-adressintervall.
+4. Lägg till en nätverks regel för ett IP-adressintervall.
 
     ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
-1. Ta bort en nätverks regel för en enskild IP-adress.
+5. Ta bort en nätverks regel för en enskild IP-adress.
 
     ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
-1. Ta bort en nätverks regel för ett IP-adressintervall.
+6. Ta bort en nätverks regel för ett IP-adressintervall.
 
     ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
@@ -319,7 +324,7 @@ Du kan hantera IP-nätverks regler för lagrings konton via Azure Portal, PowerS
 > [!IMPORTANT]
 > Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Installera [Azure CLI](/cli/azure/install-azure-cli) och [Logga](/cli/azure/authenticate-azure-cli)in.
 
@@ -329,25 +334,25 @@ Du kan hantera IP-nätverks regler för lagrings konton via Azure Portal, PowerS
     az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
     ```
 
-1. Lägg till en nätverks regel för en enskild IP-adress.
+2. Lägg till en nätverks regel för en enskild IP-adress.
 
     ```azurecli
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
     ```
 
-1. Lägg till en nätverks regel för ett IP-adressintervall.
+3. Lägg till en nätverks regel för ett IP-adressintervall.
 
     ```azurecli
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
     ```
 
-1. Ta bort en nätverks regel för en enskild IP-adress.
+4. Ta bort en nätverks regel för en enskild IP-adress.
 
     ```azurecli
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.19"
     ```
 
-1. Ta bort en nätverks regel för ett IP-adressintervall.
+5. Ta bort en nätverks regel för ett IP-adressintervall.
 
     ```azurecli
     az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --ip-address "16.17.18.0/24"
@@ -356,19 +361,199 @@ Du kan hantera IP-nätverks regler för lagrings konton via Azure Portal, PowerS
 > [!IMPORTANT]
 > Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
 
-## <a name="exceptions"></a>Undantag
+---
 
-Nätverks regler hjälper till att skapa en säker miljö för anslutningar mellan dina program och dina data för de flesta scenarier. Vissa program är dock beroende av Azure-tjänster som inte kan isoleras unikt genom virtuella nätverks-eller IP-adress regler. Men sådana tjänster måste beviljas till lagring för att möjliggöra fullständig program funktion. I sådana fall kan du använda **_Tillåt betrodda Microsoft-tjänster..._* _ inställning för att aktivera sådana tjänster för att få åtkomst till dina data, loggar eller analyser.
+<a id="grant-access-specific-instances"></a>
 
-### <a name="trusted-microsoft-services"></a>Betrodda Microsoft-tjänster
+## <a name="grant-access-from-azure-resource-instances-preview"></a>Bevilja åtkomst från Azure Resource instances (för hands version)
 
-Vissa Microsoft-tjänster körs från nätverk som inte kan ingå i dina nätverks regler. Du kan ge en delmängd av dessa betrodda Microsoft-tjänster åtkomst till lagrings kontot, samtidigt som nätverks reglerna för andra appar upprätthålls. Dessa betrodda tjänster kommer sedan att använda stark autentisering för att ansluta till ditt lagrings konto på ett säkert sätt. Vi har aktiverat två lägen för betrodd åtkomst för Microsoft-tjänster.
+I vissa fall kan ett program vara beroende av Azure-resurser som inte kan isoleras via ett virtuellt nätverk eller en IP-adress regel. Du vill dock fortfarande skydda och begränsa åtkomsten till lagrings kontot till endast ditt programs Azure-resurser. Du kan konfigurera lagrings konton för att tillåta åtkomst till vissa resurs instanser av vissa Azure-tjänster genom att skapa en resurs instans regel. 
 
-- Resurser för vissa tjänster, _ * när de har registrerats i din prenumeration * *, kan komma åt ditt lagrings konto **i samma prenumeration** för Select-åtgärder, till exempel skriva loggar eller säkerhets kopiering.
-- Resurser i vissa tjänster kan beviljas uttrycklig åtkomst till ditt lagrings konto genom att **tilldela en Azure-roll** till sin systemtilldelade hanterade identitet.
+De typer av åtgärder som en resurs instans kan utföra på lagrings konto data bestäms av resurs instansens [Azure-roll tilldelningar](storage-auth-aad.md#assign-azure-roles-for-access-rights) . Resurs instanser måste vara från samma klient organisation som ditt lagrings konto, men de kan tillhöra alla prenumerationer i klienten.
 
+Listan med Azure-tjänster som stöds visas i avsnittet [betrodd åtkomst baserat på en hanterad identitet som tilldelats av systemet](#trusted-access-system-assigned-managed-identity) i den här artikeln.
 
-När du aktiverar inställningen **Tillåt betrodda Microsoft-tjänster...** , beviljas resurser för följande tjänster som är registrerade i samma prenumeration som ditt lagrings konto åtkomst för en begränsad uppsättning åtgärder enligt beskrivningen:
+> [!NOTE]
+> Den här funktionen finns i en offentlig för hands version och är tillgänglig i alla offentliga moln regioner. 
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Du kan lägga till eller ta bort nätverks regler för resurser i Azure Portal.
+
+1. Kom igång genom att logga in på [Azure-portalen](https://portal.azure.com/).
+
+2. Leta upp ditt lagringskonto och visa kontoöversikten.
+
+3. Välj **nätverk** om du vill visa konfigurations sidan för nätverk.
+
+4. I list rutan **resurs typ** väljer du resurs typen för resurs instansen. 
+
+5. I list rutan **instans namn** väljer du resurs instansen. Du kan också välja att inkludera alla resurs instanser i den aktiva klienten, prenumerationen eller resurs gruppen.
+
+6. Klicka på **Spara** för att tillämpa dina ändringar. Resurs instansen visas i avsnittet **resurs instanser** på sidan Nätverks inställningar. 
+
+Om du vill ta bort resurs instansen väljer du borttagnings ikonen ( :::image type="icon" source="media/storage-network-security/delete-icon.png"::: ) bredvid resurs instansen.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Du kan använda PowerShell-kommandon för att lägga till eller ta bort resurs nätverks regler.
+
+> [!IMPORTANT]
+> Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
+
+#### <a name="install-the-preview-module"></a>Installera Preview-modulen
+
+Installera den senaste versionen av PowershellGet-modulen. Stäng sedan och öppna PowerShell-konsolen igen.
+
+```powershell
+install-Module PowerShellGet –Repository PSGallery –Force  
+```
+
+Installera **AZ. Storage** Preview module.
+
+```powershell
+Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.0.1-preview -AllowClobber -AllowPrerelease -Force 
+```
+
+Mer information om hur du installerar PowerShell-moduler finns i [installera modulen Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
+
+#### <a name="grant-access"></a>Bevilja åtkomst
+
+Lägg till en nätverks regel som beviljar åtkomst från en resurs instans.
+
+```powershell
+$resourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory"
+$tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+
+```
+
+Ange flera resurs instanser samtidigt genom att ändra nätverks regel uppsättningen.
+
+```powershell
+$resourceId1 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory"
+$resourceId2 = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/mySQLServer"
+$tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName -ResourceAccessRule (@{ResourceId=$resourceId1;TenantId=$tenantId},@{ResourceId=$resourceId2;TenantId=$tenantId}) 
+```
+
+#### <a name="remove-access"></a>Ta bort åtkomst
+
+Ta bort en nätverks regel som beviljar åtkomst från en resurs instans.
+
+```powershell
+$resourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory"
+$tenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Remove-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId  
+```
+
+Ta bort alla nätverks regler som beviljar åtkomst från resurs instanser.
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+Update-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName -ResourceAccessRule @()  
+```
+
+#### <a name="view-a-list-of-allowed-resource-instances"></a>Visa en lista över tillåtna resurs instanser
+
+Visa en fullständig lista över resurs instanser som har beviljats åtkomst till lagrings kontot.
+
+```powershell
+$resourceGroupName = "myResourceGroup"
+$accountName = "mystorageaccount"
+
+$rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+$rule.ResourceAccessRules 
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Du kan använda Azure CLI-kommandon för att lägga till eller ta bort resurs nätverks regler.
+
+#### <a name="install-the-preview-extension"></a>Installera för hands versions tillägget
+
+1. Öppna [Azure Cloud Shell](../../cloud-shell/overview.md), eller om du har [installerat](/cli/azure/install-azure-cli) Azure CLI lokalt öppnar du ett kommando konsol program, till exempel Windows PowerShell.
+
+2. Kontrol lera sedan att den version av Azure CLI som du har installerat är `2.13.0` eller högre genom att använda följande kommando.
+
+   ```azurecli
+   az --version
+   ```
+
+   Om din version av Azure CLI är lägre än `2.13.0` kan du installera en senare version. Se [Installera Azure CLI](/cli/azure/install-azure-cli).
+
+3. Skriv följande kommando för att installera förhands gransknings tillägget.
+
+   ```azurecli
+   az extension add -n storage-preview
+   ```
+
+#### <a name="grant-access"></a>Bevilja åtkomst
+
+Lägg till en nätverks regel som beviljar åtkomst från en resurs instans.
+
+```azurecli
+az storage account network-rule add \
+    --resource-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Synapse/workspaces/testworkspace \
+    --tenant-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    -g myResourceGroup \
+    --account-name mystorageaccount
+```
+
+#### <a name="remove-access"></a>Ta bort åtkomst
+
+Ta bort en nätverks regel som beviljar åtkomst från en resurs instans.
+
+```azurecli
+az storage account network-rule remove \
+    --resource-id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Synapse/workspaces/testworkspace \
+    --tenant-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    -g myResourceGroup \
+    --account-name mystorageaccount
+```
+
+#### <a name="view-a-list-of-allowed-resource-instances"></a>Visa en lista över tillåtna resurs instanser
+
+Visa en fullständig lista över resurs instanser som har beviljats åtkomst till lagrings kontot.
+
+```azurecli
+az storage account network-rule list \
+    -g myResourceGroup \
+    --account-name mystorageaccount
+```
+
+---
+
+<a id="exceptions"></a>
+<a id="trusted-microsoft-services"></a>
+
+## <a name="grant-access-to-azure-services"></a>Bevilja åtkomst till Azure-tjänster 
+
+Vissa Azure-tjänster körs från nätverk som inte kan ingå i dina nätverks regler. Du kan bevilja en delmängd av dessa betrodda Azure-tjänster åtkomst till lagrings kontot, samtidigt som nätverks reglerna för andra appar upprätthålls. Dessa betrodda tjänster använder sedan stark autentisering för att på ett säkert sätt ansluta till ditt lagrings konto. 
+
+Du kan bevilja åtkomst till betrodda Azure-tjänster genom att skapa en nätverks regel undantag. Steg-för-steg-anvisningar finns i avsnittet [Hantera undantag](#manage-exceptions) i den här artikeln. 
+
+När du beviljar åtkomst till betrodda Azure-tjänster ger du följande typer av åtkomst:
+
+- Betrodd åtkomst för urvals åtgärder till resurser som har registrerats i din prenumeration.
+- Betrodd åtkomst till resurser baserat på systemtilldelad hanterad identitet.
+
+<a id="trusted-access-resources-in-subscription"></a>
+
+### <a name="trusted-access-for-resources-registered-in-your-subscription"></a>Betrodd åtkomst för resurser som är registrerade i din prenumeration
+
+Resurser för vissa tjänster, **när de registreras i din prenumeration**, kan komma åt ditt lagrings konto **i samma prenumeration** för Select-åtgärder, till exempel skriva loggar eller säkerhets kopiering.  I följande tabell beskrivs varje tjänst och de åtgärder som tillåts. 
 
 | Tjänst                  | Namn på resurs leverantör     | Tillåtna åtgärder                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
@@ -384,7 +569,15 @@ När du aktiverar inställningen **Tillåt betrodda Microsoft-tjänster...** , b
 | Azure-nätverk         | Microsoft.Network          | Lagra och analysera nätverks trafik loggar, inklusive via Network Watcher-och Trafikanalys-tjänsterna. [Läs mer](../../network-watcher/network-watcher-nsg-flow-logging-overview.md). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Aktivera replikering för haveri beredskap för virtuella Azure IaaS-datorer när du använder brand Väggs-aktiverade cache-, käll-eller mål lagrings konton.  [Läs mer](../../site-recovery/azure-to-azure-tutorial-enable-replication.md). |
 
-Inställningen **Tillåt betrodda Microsoft-tjänster...** tillåter också att en viss instans av nedanstående tjänster får åtkomst till lagrings kontot, om du uttryckligen [tilldelar en Azure-roll](storage-auth-aad.md#assign-azure-roles-for-access-rights) till den [systemtilldelade hanterade identiteten](../../active-directory/managed-identities-azure-resources/overview.md) för den resurs instansen. I det här fallet motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
+<a id="trusted-access-system-assigned-managed-identity"></a>
+
+### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>Betrodd åtkomst baserat på systemtilldelad hanterad identitet
+
+I följande tabell visas tjänster som kan ha åtkomst till dina lagrings konto data om resurs instanserna för dessa tjänster får rätt behörighet. Om du vill bevilja behörighet måste du uttryckligen [tilldela en Azure-roll](storage-auth-aad.md#assign-azure-roles-for-access-rights) till den [systemtilldelade hanterade identiteten](../../active-directory/managed-identities-azure-resources/overview.md) för varje resurs instans. I det här fallet motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten. 
+
+> [!TIP]
+> Det rekommenderade sättet att bevilja åtkomst till vissa resurser är att använda resurs instans regler. Information om hur du beviljar åtkomst till vissa resurs instanser finns i avsnittet [bevilja åtkomst från Azure Resource instances (för hands version)](#grant-access-specific-instances) i den här artikeln.
+
 
 | Tjänst                        | Namn på resurs leverantör                 | Syfte            |
 | :----------------------------- | :------------------------------------- | :----------------- |
@@ -402,44 +595,45 @@ Inställningen **Tillåt betrodda Microsoft-tjänster...** tillåter också att 
 | Azure Stream Analytics         | Microsoft. StreamAnalytics             | Tillåter att data från ett strömmande jobb skrivs till Blob Storage. [Läs mer](../../stream-analytics/blob-output-managed-identity.md). |
 | Azure Synapse Analytics        | Microsoft. Synapse/arbets ytor          | Ger åtkomst till data i Azure Storage från Azure Synapse Analytics. |
 
+## <a name="grant-access-to-storage-analytics"></a>Bevilja åtkomst till lagrings analys
 
-### <a name="storage-analytics-data-access"></a>Åtkomst till Storage Analytics-data
+I vissa fall krävs åtkomst till läsa resurs loggar och mät värden utanför nätverks gränserna. När du konfigurerar betrodda tjänster till lagrings kontot kan du tillåta Läs åtkomst för loggfiler, mått tabeller eller både och genom att skapa en nätverks regel undantag. Steg-för-steg-anvisningar finns i avsnittet **Hantera undantag** nedan. Mer information om hur du arbetar med Storage Analytics finns i [använda Azure Storage Analytics för att samla in loggar och statistik data](./storage-analytics.md). 
 
-I vissa fall krävs åtkomst till läsa resurs loggar och mät värden utanför nätverks gränserna. När du konfigurerar betrodda tjänster till lagrings kontot kan du tillåta Läs åtkomst för loggfiler, mått tabeller eller både och. [Lär dig mer om hur du arbetar med lagrings analys.](./storage-analytics.md)
+<a id="manage-exceptions"></a>
 
-### <a name="managing-exceptions"></a>Hantera undantag
+## <a name="manage-exceptions"></a>Hantera undantag
 
 Du kan hantera nätverks regel undantag via Azure Portal, PowerShell eller Azure CLI v2.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar som kallas **nätverk**.
+2. Välj på menyn Inställningar som kallas **nätverk**.
 
-1. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
+3. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
 
-1. Under **undantag** väljer du de undantag som du vill bevilja.
+4. Under **undantag** väljer du de undantag som du vill bevilja.
 
-1. Klicka på **Spara** för att tillämpa dina ändringar.
+5. Klicka på **Spara** för att tillämpa dina ändringar.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Installera [Azure PowerShell](/powershell/azure/install-Az-ps) och [Logga](/powershell/azure/authenticate-azureps)in.
 
-1. Visa undantagen för lagrings kontots nätverks regler.
+2. Visa undantagen för lagrings kontots nätverks regler.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
     ```
 
-1. Konfigurera undantagen för lagrings kontots nätverks regler.
+3. Konfigurera undantagen för lagrings kontots nätverks regler.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
     ```
 
-1. Ta bort undantagen till lagrings kontots nätverks regler.
+4. Ta bort undantagen till lagrings kontots nätverks regler.
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
@@ -448,23 +642,23 @@ Du kan hantera nätverks regel undantag via Azure Portal, PowerShell eller Azure
 > [!IMPORTANT]
 > Se till att [Ange standard regeln](#change-the-default-network-access-rule) som **neka** eller ta bort undantag har ingen påverkan.
 
-#### <a name="cliv2"></a>CLIv2
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Installera [Azure CLI](/cli/azure/install-azure-cli) och [Logga](/cli/azure/authenticate-azure-cli)in.
 
-1. Visa undantagen för lagrings kontots nätverks regler.
+2. Visa undantagen för lagrings kontots nätverks regler.
 
     ```azurecli
     az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
     ```
 
-1. Konfigurera undantagen för lagrings kontots nätverks regler.
+3. Konfigurera undantagen för lagrings kontots nätverks regler.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass Logging Metrics AzureServices
     ```
 
-1. Ta bort undantagen till lagrings kontots nätverks regler.
+4. Ta bort undantagen till lagrings kontots nätverks regler.
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --bypass None
@@ -472,6 +666,8 @@ Du kan hantera nätverks regel undantag via Azure Portal, PowerShell eller Azure
 
 > [!IMPORTANT]
 > Se till att [Ange standard regeln](#change-the-default-network-access-rule) som **neka** eller ta bort undantag har ingen påverkan.
+
+---
 
 ## <a name="next-steps"></a>Nästa steg
 

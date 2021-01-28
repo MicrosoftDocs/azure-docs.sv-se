@@ -3,12 +3,12 @@ title: Felsöka Azure Backup Agent
 description: I den här artikeln får du lära dig hur du felsöker installationen och registreringen av den Azure Backup agenten.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 4ae4142652d9d38d5bf384e5a10d6eeb7e3cc608
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c08a146d91a128dc48fa4c379055b8c0efc1df0c
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993847"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986657"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Felsöka Microsoft Azure Recovery Services (MARS)-agenten
 
@@ -42,7 +42,7 @@ Vi rekommenderar att du kontrollerar följande innan du börjar felsöka Microso
 | Orsak | Rekommenderade åtgärder |
 | ---     | ---    |
 | **Autentiseringsuppgifterna för valvet är ogiltiga** <br/> <br/> Valvets autentiseringsuppgifter kan vara skadade, kan ha upphört att gälla eller också har de ett annat fil namns tillägg än *. vaultCredentials*. (Till exempel kan de ha hämtats mer än 48 timmar före registrerings tiden.)| [Hämta nya autentiseringsuppgifter](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) från Recovery Services valvet på Azure Portal. Utför sedan dessa steg efter behov: <ul><li> Om du redan har installerat och registrerat MARS öppnar du MMC-konsolen för Microsoft Azure Backup agenten. Välj sedan **Registrera Server** i **Åtgärds** fönstret för att slutföra registreringen med de nya autentiseringsuppgifterna. <br/> <li> Om den nya installationen Miss lyckas kan du försöka med att installera om med de nya autentiseringsuppgifterna.</ul> **Obs!** om filer med flera valv har hämtats är det bara den senaste filen som är giltig för de kommande 48 timmarna. Vi rekommenderar att du hämtar en ny fil med autentiseringsuppgifter för valvet.
-| **Proxyservern eller brand väggen blockerar registreringen** <br/>eller <br/>**Ingen Internet anslutning** <br/><br/> Om din dator eller proxyserver har begränsad Internet anslutning och du inte ser till att du har åtkomst till de nödvändiga URL: erna, Miss söker registreringen.| Gör så här:<br/> <ul><li> Arbeta med IT-teamet för att säkerställa att systemet är ansluten till Internet.<li> Om du inte har en proxyserver, se till att alternativet proxy inte är markerat när du registrerar agenten. [Kontrol lera proxyinställningarna](#verifying-proxy-settings-for-windows).<li> Om du har en brand vägg/proxyserver arbetar du med nätverks teamet för att se till att dessa URL: er och IP-adresser har åtkomst:<br/> <br> **Er**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-adresser**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Försök att registrera igen när du har slutfört föregående fel söknings steg.<br></br> Om din anslutning är via Azure ExpressRoute kontrollerar du att inställningarna är konfigurerade enligt beskrivningen i [Azure ExpressRoute-supporten](backup-support-matrix-mars-agent.md#azure-expressroute-support).
+| **Proxyservern eller brand väggen blockerar registreringen** <br/>eller <br/>**Ingen Internet anslutning** <br/><br/> Om din dator eller proxyserver har begränsad Internet anslutning och du inte ser till att du har åtkomst till de nödvändiga URL: erna, Miss söker registreringen.| Gör så här:<br/> <ul><li> Arbeta med IT-teamet för att säkerställa att systemet är ansluten till Internet.<li> Om du inte har en proxyserver, se till att alternativet proxy inte är markerat när du registrerar agenten. [Kontrol lera proxyinställningarna](#verifying-proxy-settings-for-windows).<li> Om du har en brand vägg/proxyserver arbetar du med nätverks teamet för att se till att dessa URL: er och IP-adresser har åtkomst:<br/> <br> **Webbadresser**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP-adresser**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>Försök att registrera igen när du har slutfört föregående fel söknings steg.<br></br> Om din anslutning är via Azure ExpressRoute kontrollerar du att inställningarna är konfigurerade enligt beskrivningen i [Azure ExpressRoute-supporten](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Antivirus programmet blockerar registreringen** | Om du har installerat antivirus program på servern lägger du till nödvändiga undantags regler i Antivirus genomsökningen för dessa filer och mappar: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Mappen scratch. Standard platsen är C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> Bin-mappen i C:\Program\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Ytterligare rekommendationer
@@ -173,7 +173,7 @@ Den aktuella åtgärden kunde inte utföras på grund av ett internt tjänst fel
 
 ## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>Det gick inte att starta jobbet eftersom ett annat jobb pågår
 
-Om du ser ett varnings meddelande om **MARS console** att det  >  inte gick att starta jobbet eftersom ett annat jobb pågår i mars-konsolens **jobb historik**, kan det bero på en dubblett av jobbet som utlösts av Schemaläggaren.
+Om du ser ett varnings meddelande om att det  >  inte gick att starta jobbet eftersom ett annat jobb pågår i mars-konsolens **jobb historik**, kan det bero på en dubblett av jobbet som utlösts av Schemaläggaren.
 
 ![Det gick inte att starta jobbet eftersom ett annat jobb pågår](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 

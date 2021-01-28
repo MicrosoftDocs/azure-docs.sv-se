@@ -3,12 +3,12 @@ title: Kom igång med live video analys på IoT Edge – Azure
 description: Den här snabb starten visar hur du kommer igång med live video analys på IoT Edge. Lär dig hur du identifierar rörelser i en video ström i real tid.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ae8292375c0b85cc4c771c1fe7d853c5fcd3afd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955774"
+ms.locfileid: "98986555"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Snabb start: kom igång – direktsända video analyser på IoT Edge
 
@@ -31,7 +31,7 @@ Du kan visa följande video med detaljerade anvisningar om hur du kommer igång 
   > Du behöver en Azure-prenumeration med behörigheter för att skapa tjänstens huvud namn (**ägar rollen** ger detta). Om du inte har rätt behörighet kan du kontakta konto administratören för att ge dig rätt behörigheter.  
 
 * [Visual Studio Code](https://code.visualstudio.com/) på din utvecklings dator. Kontrol lera att du har [tillägget Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Kontrol lera att nätverket som utvecklings datorn är anslutet till tillåter avancerat protokoll för meddelandekö (AMQP) via port 5671. Med den här inställningen kan Azure IoT-verktyg kommunicera med Azure IoT Hub.
+* Kontrol lera att nätverket som utvecklings datorn är anslutet till tillåter avancerat protokoll för meddelandekö (AMQP) via port 5671 för utgående trafik. Med den här inställningen kan Azure IoT-verktyg kommunicera med Azure IoT Hub.
 
 > [!TIP]
 > Du kan uppmanas att installera Docker när du installerar tillägget Azure IoT-verktyg. Du kan ignorera prompten.
@@ -67,7 +67,7 @@ I den här snabb starten rekommenderar vi att du använder [installations skript
     1. **Nätverks gränssnitt** – detta gör att en virtuell Azure-dator kan kommunicera med Internet, Azure och andra resurser.
     1. **Skydds-anslutning** – med det här alternativet kan du ansluta till din virtuella dator med webbläsaren och Azure Portal.
     1. **Offentlig IP-adress** – detta gör att Azure-resurser kan kommunicera med Internet och offentliga Azure-tjänster
-    1. **Virtuellt nätverk** – Detta möjliggör många typer av Azure-resurser, till exempel den virtuella datorn, för att kommunicera på ett säkert sätt med varandra, Internet och lokala nätverk. Läs mer om [virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+    1. **Virtuellt nätverk** – Detta möjliggör många typer av Azure-resurser, till exempel den virtuella datorn, för att kommunicera på ett säkert sätt med varandra, Internet och lokala nätverk. Läs mer om [virtuella nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
     1. **IoT Hub** – detta fungerar som en central meddelande hubb för dubbelriktad kommunikation mellan IoT-programmet, IoT Edge moduler och de enheter som hanteras.
     1. **Media Service-konto** – detta hjälper till att hantera och strömma medie innehåll i Azure.
     1. **Lagrings konto** – du måste ha ett primärt lagrings konto och du kan ha valfritt antal sekundära lagrings konton som är kopplade till ditt Media Services-konto. Mer information finns i [Azure Storage konton med Azure Media Services-konton](https://docs.microsoft.com/azure/media-services/latest/storage-account-concept).
@@ -165,7 +165,7 @@ Räkna upp alla [grafer-topologier](media-graph-concept.md#media-graph-topologie
 
 ### <a name="invoke-graphtopologyset"></a>Anropa GraphTopologySet
 
-Genom att följa stegen för att anropa `GraphTopologyList` kan du anropa `GraphTopologySet` för att ange en [diagram sto pol Ogin](media-graph-concept.md#media-graph-topologies-and-instances). Använd följande JSON som nytto lasten.
+Precis som vi gjorde tidigare, kan du nu anropa `GraphTopologySet` för att ange en [diagram sto pol Ogin](media-graph-concept.md#media-graph-topologies-and-instances). Använd följande JSON som nytto lasten.
 
 ```
 {

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 63fbac0919e06b29377afacaaa5708d195c6b319
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5ecf9e49887eb584269f724d5199cbfb014351e0
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887311"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986861"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kund ansvar för att köra Azure våren Cloud i VNET
 Det här dokumentet innehåller specifikationer för användning av Azure våren Cloud i ett virtuellt nätverk.
@@ -57,6 +57,9 @@ Azure-brandväggen tillhandahåller en fullständigt kvalificerad domän namns k
   | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory autentisering. |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft-paketets lagrings plats. |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Lagrings plats som krävs för att installera nödvändiga binärfiler som Kubernetes och Azure CNI. |
+  | *mscrl.microsoft.com* | HTTPS: 80 | Obligatoriska sökvägar för Microsoft-certifikat kedjan. |
+  | *crl.microsoft.com* | HTTPS: 80 | Obligatoriska sökvägar för Microsoft-certifikat kedjan. |
+  | *crl3.digicert.com* | HTTPS: 80 | Sök vägar för SSL-certifikat från tredje part. |
 
 ## <a name="see-also"></a>Se även
 * [Få åtkomst till ditt program i ett privat nätverk](spring-cloud-access-app-virtual-network.md)

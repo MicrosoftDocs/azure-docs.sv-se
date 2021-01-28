@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201060"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986047"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurera övervakare av nätverksprestanda för ExpressRoute
 
@@ -59,7 +59,7 @@ Skapa en arbets yta i prenumerationen som har virtuella nätverk-länken till Ex
 
    ![portal](./media/how-to-npm/3.png)<br><br>
 2. Längst ned på huvud **övervakare av nätverksprestanda** sidan klickar du på **skapa** för att öppna sidan **övervakare av nätverksprestanda skapa ny lösning** . Klicka på **Log Analytics arbets yta – Välj en arbets yta** för att öppna sidan arbets ytor. Klicka på **+ Skapa ny arbets yta** för att öppna sidan arbets yta.
-3. På sidan **Log Analytics arbets yta** väljer du **Skapa ny**och konfigurerar sedan följande inställningar:
+3. På sidan **Log Analytics arbets yta** väljer du **Skapa ny** och konfigurerar sedan följande inställningar:
 
    * Log Analytics arbets yta – ange ett namn för din arbets yta.
    * Prenumeration – om du har flera prenumerationer väljer du den som du vill associera med den nya arbets ytan.
@@ -101,13 +101,13 @@ Vi rekommenderar att du installerar minst två agenter på varje sida av Express
 4. På sidan **målmapp** , ändra eller Behåll standardmappen för installationen och klicka sedan på **Nästa**.
 5. På sidan **installations alternativ för agent** kan du välja att ansluta agenten till Azure Monitor loggar eller Operations Manager. Eller så kan du lämna alternativen tomma om du vill konfigurera agenten senare. När du har gjort dina val klickar du på **Nästa**.
 
-   * Om du väljer att ansluta till **Azure Log Analytics**klistrar du in **arbets ytans ID** och den **arbets ytans nyckel** (primär nyckel) som du kopierade i anteckningar i föregående avsnitt. Klicka sedan på **Nästa**.
+   * Om du väljer att ansluta till **Azure Log Analytics** klistrar du in **arbets ytans ID** och den **arbets ytans nyckel** (primär nyckel) som du kopierade i anteckningar i föregående avsnitt. Klicka sedan på **Nästa.**
 
      ![ID och nyckel](./media/how-to-npm/8.png)
-   * Om du väljer att ansluta till **Operations Manager**, på sidan **konfiguration av hanterings grupp** , anger du **hanterings gruppens namn**, **hanterings servern**och **hanterings Server porten**. Klicka sedan på **Nästa**.
+   * Om du väljer att ansluta till **Operations Manager**, på sidan **konfiguration av hanterings grupp** , anger du **hanterings gruppens namn**, **hanterings servern** och **hanterings Server porten**. Klicka sedan på **Nästa.**
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * På sidan **agent åtgärds konto** väljer du antingen **lokalt system** konto eller  **domän konto eller lokalt dator konto**. Klicka sedan på **Nästa**.
+   * På sidan **agent åtgärds konto** väljer du antingen **lokalt system** konto eller  **domän konto eller lokalt dator konto**. Klicka sedan på **Nästa.**
 
      ![Konto](./media/how-to-npm/10.png)
 6. På sidan **klar att installera** granskar du dina val och klickar sedan på **Installera**.
@@ -133,7 +133,7 @@ Konfigurera proxyinställningar för Microsoft Monitoring Agent med hjälp av ko
 
 Du kan enkelt kontrol lera om dina agenter kommunicerar.
 
-1. Öppna **kontroll panelen**på en server med övervaknings agenten.
+1. Öppna **kontroll panelen** på en server med övervaknings agenten.
 2. Öppna **Microsoft Monitoring Agent**.
 3. Klicka på fliken **Azure-Log Analytics** .
 4. I kolumnen **status** bör du se att agenten har anslutits till Azure Monitor loggar.
@@ -169,7 +169,7 @@ Mer information om NSG finns i [nätverks säkerhets grupper](../virtual-network
 
 ## <a name="step-4-discover-peering-connections"></a><a name="setupmonitor"></a>Steg 4: identifiera peering-anslutningar
 
-1. Gå till panelen för Övervakare av nätverksprestanda översikt genom att gå till sidan **alla resurser** och klicka sedan på arbets ytan vit listas NPM.
+1. Gå till panelen för Övervakare av nätverksprestanda översikt genom att gå till sidan **alla resurser** och klicka sedan på arbets ytan allowlisted NPM.
 
    ![NPM-arbetsyta](./media/how-to-npm/npm.png)
 2. Klicka på panelen för **övervakare av nätverksprestanda** översikt för att öppna instrument panelen. Instrument panelen innehåller en ExpressRoute-sida som visar att ExpressRoute är i ett "unconfigureed State". Klicka på **funktions inställningar** för att öppna sidan övervakare av nätverksprestanda konfiguration.
@@ -184,7 +184,7 @@ Mer information om NSG finns i [nätverks säkerhets grupper](../virtual-network
             
 ## <a name="step-5-configure-monitors"></a><a name="configmonitor"></a>Steg 5: Konfigurera övervakare
 
-I det här avsnittet konfigurerar du övervakarna. Följ stegen för den typ av peering som du vill övervaka: **privat peering**eller **Microsoft-peering**.
+I det här avsnittet konfigurerar du övervakarna. Följ stegen för den typ av peering som du vill övervaka: **privat peering** eller **Microsoft-peering**.
 
 ### <a name="private-peering"></a>Privat peering
 

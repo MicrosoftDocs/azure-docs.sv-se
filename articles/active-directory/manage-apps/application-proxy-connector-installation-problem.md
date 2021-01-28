@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 04c26609b046f7525c513796622be74633a20e91
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657337"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986776"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem med att installera anslutningsappen för programproxyagenten
 
@@ -24,7 +24,7 @@ Microsoft Azure Active Directory Application Proxy Connector är en intern domä
 
 ## <a name="general-problem-areas-with-connector-installation"></a>Allmänna problemområden med anslutnings installation
 
-När installationen av en anslutning Miss lyckas är rotor saken vanligt vis något av följande områden:
+När installationen av en anslutning Miss lyckas är rotor saken vanligt vis något av följande områden. **Se till att du startar om anslutningen som en markör för eventuell fel sökning.**
 
 1.  **Anslutning** – för att slutföra installationen måste den nya anslutningen registrera och upprätta framtida förtroende egenskaper. Detta görs genom att ansluta till Azure Active Directory-programproxy moln tjänsten.
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 10f21067f48155a394ac20337d77e3e82aae64d8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607515"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985945"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Vad är Azure Arc aktiverat PostgreSQL-skalning?
 
@@ -26,7 +26,7 @@ Azure Arc Enabled PostgreSQL-skalning är en av databas tjänsterna som är till
 - Stöd för frånkopplat scenario
 
 Mer information finns på:
-- [Vad är Azure Arc-aktiverade datatjänster](overview.md)
+- [Vad är Azure Arc-aktiverade data tjänster](overview.md)
 - [Anslutningslägen och krav](connectivity.md)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -48,13 +48,13 @@ Detta är den storskaliga form faktorn för postgres-databasmotorn som är tillg
 Detta är den storskaliga form faktorn för postgres-databasmotorn som är tillgänglig med Azure Arc-aktiverade data tjänster. Den drivs också av citus-tillägget som möjliggör skalnings upplevelsen. I den här formulärs faktorn tillhandahåller våra kunder den infrastruktur som är värd för systemen och använder dem.
 
 ## <a name="next-steps"></a>Nästa steg
-- **Skapa**
-   > **Vill du bara testa saker? Har du inte något Kubernetes-kluster tillgängligt? Vi ger dig ett begränsat läge:**  
-   > Kom igång snabbt med [Azure Arc-rivstart med](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator.
+- **Prova.** Kom igång snabbt med [Azure Arc-rivstart med](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator. 
 
-   - **Fram**
-      - [Installera klient verktyg](install-client-tools.md)
-      - [Skapa data styrenheten för Azure-bågen](create-data-controller.md) (kräver att klient verktygen installeras först)
-      - [Skapa en Azure Database for PostgreSQL storskalig Server grupp på Azure-bågen](create-postgresql-hyperscale-server-group.md) (du måste först skapa en Azure Arc-datakontrollant.)
-- [**Läs mer om Azure Arc-aktiverade data tjänster**](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
-- [**Läs om Azure-bågen**](https://aka.ms/azurearc)
+- **Skapa en egen.** Följ de här stegen för att skapa på ditt eget Kubernetes-kluster: 
+   1. [Installera klient verktyg](install-client-tools.md)
+   2. [Skapa data styrenheten för Azure-bågen](create-data-controller.md)
+   3. [Skapa en Azure Database for PostgreSQL storskalig Server grupp på Azure Arc](create-postgresql-hyperscale-server-group.md) 
+
+- **Learn**
+   - [Läs mer om Azure Arc-aktiverade data tjänster](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
+   - [Läs om Azure-bågen](https://aka.ms/azurearc)

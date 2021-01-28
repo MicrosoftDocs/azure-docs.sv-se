@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756686"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986634"
 ---
 # <a name="manage-security-policies"></a>Hantera säkerhetsprinciper
 
@@ -54,7 +54,7 @@ Visa dina säkerhetsprinciper i Security Center:
 
 1. Sidan säkerhets princip för den prenumerationen eller hanterings gruppen visas. Den visar de tillgängliga och tilldelade principerna.
 
-   ![princip sida](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Sidan säkerhets princip för Security Center" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > Om det finns en etikett "MG ärvd" tillsammans med standard principen, innebär det att principen har tilldelats till en hanterings grupp och ärvts av den prenumeration som du visar.
@@ -102,7 +102,7 @@ Mer information om rekommendationer finns i [hantera säkerhets rekommendationer
 
 1. I Security Center går du till avsnittet **princip & efterlevnad** och väljer **säkerhets princip**.
 
-   ![princip hantering](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Starta princip hanterings processen i Azure Security Center":::
 
 2. Välj den prenumeration eller hanterings grupp som du vill inaktivera rekommendationen för.
 
@@ -111,7 +111,7 @@ Mer information om rekommendationer finns i [hantera säkerhets rekommendationer
 
 1. Välj **Visa gällande princip**.
 
-   ![Visa princip](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="Så här öppnar du den gällande principen som har tilldelats din prenumeration":::
 
 1. Välj den tilldelade principen.
 
@@ -126,10 +126,8 @@ Mer information om rekommendationer finns i [hantera säkerhets rekommendationer
    > [!NOTE]
    > Det kan ta upp till 12 timmar innan ändringar av principen inaktive ras.
 
-
-
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln förklaras säkerhets principer. Relaterad information finns i följande artiklar:
+Den här sidan förklaras säkerhets principer. Relaterad information finns på följande sidor:
 
 - [Lär dig hur du ställer in principer med PowerShell](../governance/policy/assign-policy-powershell.md) - 
 - [Lär dig hur du redigerar en säkerhets princip i Azure Policy](../governance/policy/tutorials/create-and-manage.md) - 

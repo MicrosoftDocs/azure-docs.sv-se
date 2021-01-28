@@ -4,12 +4,12 @@ description: Den här artikeln visar hur du autentiserar åtkomst till Event Hub
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510098"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986503"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Autentisera åtkomst till Event Hubs resurser med signaturer för delad åtkomst (SAS)
 Signaturen för delad åtkomst (SAS) ger dig detaljerad kontroll över vilken typ av åtkomst du beviljar till de klienter som har signaturen för delad åtkomst. Här följer några av de kontroller som du kan ange i en SAS: 
@@ -203,7 +203,7 @@ Om du till exempel vill definiera auktoriseringsregler som är begränsade till 
 
 
 > [!NOTE]
-> Även om det inte rekommenderas, är det möjligt att utrusta enheter med token som beviljar åtkomst till en Event Hub eller ett namn område. Alla enheter som innehåller denna token kan skicka meddelanden direkt till den händelsehubben. Dessutom kan enheten inte ställas in från att skickas till den händelsehubben.
+> Även om det inte rekommenderas, är det möjligt att utrusta enheter med token som beviljar åtkomst till en Event Hub eller ett namn område. Alla enheter som innehåller denna token kan skicka meddelanden direkt till den händelsehubben. Dessutom kan enheten inte blocklisted från att skickas till den händelsehubben.
 > 
 > Vi rekommenderar alltid att du ger vissa och detaljerade omfång.
 

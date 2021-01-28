@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 523b081b59bd2f4c45c1ceeb9f39c58f4e3b02b1
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944245"
+ms.locfileid: "98986911"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Självstudie: Förbättra regelefterlevnaden
 
@@ -55,7 +55,7 @@ Använd instrument panelen för kontroll av efterlevnad för att fokusera på de
 
     Längst upp på skärmen finns en instrument panel med en översikt över din kompatibilitetsstatus med en uppsättning regler för efterlevnad av stöd. Du kan se din övergripande kompatibilitetspoäng och antalet godkända och icke godkända utvärderingar som är associerade med varje standard.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Instrument panel för regler för efterlevnad":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Instrument panel för regler för efterlevnad" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. Välj en flik för en efterlevnadsprincip som är relevant för dig (1). Du ser vilka prenumerationer som standarden tillämpas på (2) och listan över alla kontroller för den standarden (3). För tillämpliga kontroller kan du Visa information om att skicka och stoppa utvärderingar som är associerade med kontrollen (4) samt antalet resurser som påverkas (5). Vissa kontroller är nedtonade. De här kontrollerna har inga associerade Security Center-utvärderingar. Kontrol lera kraven för dessa och utvärdera dem i din miljö på egen hand. Vissa av dessa kan vara processbaserade och inte tekniska.
 

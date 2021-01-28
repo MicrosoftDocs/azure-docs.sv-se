@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985894"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Skapa en Azure-Arc-aktiverad PostgreSQL Hyperskala-servergrupp
 
@@ -78,9 +78,16 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 #azdata arc postgres server create -n postgres01 --workers 2
 ```
 
+> [!IMPORTANT]
+> - Lagrings klassen som används för säkerhets kopieringar (_--Storage-Class-backup-SCB_) är standardvärdet för datakontrollantens data lagrings klass om den inte anges.
+> - Om du vill återställa en Server grupp till en separat Server grupp (t. ex. återställnings punkt) måste du konfigurera server gruppen så att den använder PVC: er med ReadWriteMany åtkomst läge. Det krävs för att göra det när du skapar Server gruppen. Den kan inte ändras när du har skapat den. Mer information finns i:
+>    - [Det här avsnittet om säkerhets kopiering och återställning](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Det här avsnittet om begränsningarna för Azure Arc Enabled PostgreSQL-skalning](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+
+
 > [!NOTE]
 > - **Det finns andra tillgängliga kommando rads parametrar.  Se den fullständiga listan med alternativ genom att köra `azdata arc postgres server create --help` .**
-> - Lagrings klassen som används för säkerhets kopieringar (_--Storage-Class-backup-SCB_) är standardvärdet för datakontrollantens data lagrings klass om den inte anges.
+
 > - Enheten som godkändes av parametrarna--Volume-* är en Kubernetes Resource Quantity (ett heltal följt av något av dessa SI-värde (T. ex. G, M, m) eller deras effekt av två motsvarigheter (TI, GI, mi, KI)).
 > - Namn måste bestå av högst 12 tecken och överensstämmer med DNS-namn konventioner.
 > - Du uppmanas att ange lösen ordet för den administrativa _postgres_ -standard användaren.  Du kan hoppa över den interaktiva prompten genom att ställa in `AZDATA_PASSWORD` sessionens miljö variabel innan du kör kommandot CREATE.

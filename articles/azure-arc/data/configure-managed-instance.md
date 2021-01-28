@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 37ba4f10365fca4292171c3bd2d9a3e7d00045bb
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311131"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985877"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Konfigurera Azure Arc-aktiverad SQL-hanterad instans
 
@@ -60,13 +60,13 @@ Följ dessa steg om du vill ändra någon av dessa inställningar:
    traceflag0 = 1204
    ```
 
-1. Kopiera `mssql-custom.conf` filen till `/var/opt/mssql` i `mssql-miaa` behållaren i `master-0` pod. Ersätt `<namespaceName>` med det Big data kluster namnet.
+1. Kopiera `mssql-custom.conf` filen till `/var/opt/mssql` i `arc-sqlmi` behållaren i `master-0` pod. Ersätt `<namespaceName>` med det namn område som den här instansen distribueras i.
 
    ```bash
    kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
    ```
 
-1. Starta om SQL Server instans.  Ersätt `<namespaceName>` med det Big data kluster namnet.
+1. Starta om SQL-hanterad instans.  Ersätt `<namespaceName>` med det namn område som den här instansen distribueras i.
 
    ```bash
    kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash

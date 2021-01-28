@@ -96,6 +96,8 @@
       items:
         - name: Vad är Azure Arc-aktiverad PostgreSQL-hyperskala
           href: what-is-azure-arc-enabled-postgres-hyperscale.md
+        - name: Begränsningar
+          href: limitations-postgresql-hyperscale.md
     - name: Snabbstarter
       items:
         - name: Versioner som stöds

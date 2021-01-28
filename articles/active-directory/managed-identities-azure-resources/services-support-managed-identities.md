@@ -4,19 +4,19 @@ description: Lista över tjänster som stöder hanterade identiteter för Azure-
 services: active-directory
 author: barclayn
 ms.author: barclayn
-ms.date: 10/07/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 1861a4e75f34cfd7fe386c094cce3a638b3e1a1e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0f7c97e5d84b3ee2d40c714625d0158fe60f2c95
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880801"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986081"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
 
@@ -113,6 +113,14 @@ Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner 
 | Användartilldelad | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
 
 
+### <a name="azure-communication-services"></a>Azure Communication Services
+
+Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systemtilldelad | ![Tillgänglig][check] | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
+| Användartilldelad | ![Tillgänglig][check] | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
+
+
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
 Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
@@ -158,6 +166,17 @@ I följande lista kan du konfigurera hanterad identitet för Azure Data Factory 
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [GRÄNSSNITTET](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+
+### <a name="azure-digital-twins"></a>Azure Digital Twins
+
+Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systemtilldelad | ![Tillgänglig][check] | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
+| Användartilldelad | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig | Inte tillgänglig |
+
+Se följande lista för att konfigurera hanterad identitet för digitala Digital-ID: t (i regioner där det finns tillgängligt):
+
+- [Azure-portalen](~/articles/digital-twins/how-to-enable-managed-identities.md)
 
 ### <a name="azure-event-grid"></a>Azure Event Grid
 

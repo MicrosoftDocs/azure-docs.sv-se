@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e3fe0f8c14fdcfa9b3e97a02331d777abca2600
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e884ceab652136c505ce7032f0e78588fb20be89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954267"
+ms.locfileid: "98986962"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -102,9 +102,10 @@ För åtkomst till lagring som skyddas med brand väggen via användar identitet
 Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och lägga till ett undantag för Synapse-arbetsytan.
 
 1. Öppna PowerShell eller [Installera PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. Installera den uppdaterade AZ. Storage-modul: 
+2. Installera modulen AZ. Storage 3.0.1 och AZ. Synapse 0.7.0: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
     > Kontrol lera att du använder **version 3.0.1**. Du kan kontrol lera din AZ. Storage-version genom att köra det här kommandot:  
@@ -121,16 +122,23 @@ Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och
     - Resurs grupp namn – du hittar det här i Azure Portal i Översikt över Synapse-arbetsytan.
     - Konto namn – namnet på det lagrings konto som skyddas av brand Väggs regler.
     - Klient-ID – du kan hitta det här i Azure Portal i Azure Active Directory i klient information.
-    - Resurs-ID – du hittar det här i Azure Portal i Översikt över Synapse-arbetsytan.
+    - Arbets ytans namn – namnet på Synapse-arbetsytan.
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > Kontrol lera att resurs-ID matchar den här mallen.
+    > Kontrol lera att resurs-ID matchar den här mallen i utskriften av resourceId-variabeln.
     >
     > Det är viktigt att skriva **ResourceGroups** i gemener.
     > Exempel på ett resurs-ID: 
@@ -145,7 +153,14 @@ Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och
 6. Kontrol lera att regeln har tillämpats på ditt lagrings konto: 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>Hanterad identitet

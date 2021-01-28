@@ -3,12 +3,12 @@ title: MABS & System Center DPM support Matrix
 description: I den här artikeln sammanfattas Azure Backup support när du använder Microsoft Azure Backup Server (MABS) eller System Center DPM för att säkerhetskopiera lokala och virtuella Azure-resurser.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276958"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986064"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Support mat ris för säkerhets kopiering med Microsoft Azure Backup Server eller System Center DPM
 
@@ -50,7 +50,7 @@ Mer information:
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-**Scenario** | **Agent** | **Plats**
+**Scenario** | **Gent** | **Plats**
 --- | --- | ---
 **Säkerhetskopiera lokala datorer/arbets belastningar** | DPM/MABS Protection Agent körs på de datorer som du vill säkerhetskopiera.<br/><br/> MARS-agenten på DPM/MABS-servern.<br/> Den lägsta versionen av Microsoft Azure Recovery Services agenten eller Azure Backup Agent som krävs för att aktivera den här funktionen är 2.0.8719.0.  | DPM/MABS måste köras lokalt.
 
@@ -58,7 +58,7 @@ Mer information:
 
 DPM/MABS kan distribueras som sammanfattas i följande tabell.
 
-**Distribution** | **Support** | **Detaljer**
+**Distribution** | **Support** | **Information**
 --- | --- | ---
 **Distribuerad lokalt** | Fysisk server<br/><br/>Hyper-V VM<br/><br/> Virtuell VMware-dator | Mer information finns i [skydds matrisen](backup-mabs-protection-matrix.md) . 
 **Distribuerad som en Azure Stack VM** | Endast MABS | DPM kan inte användas för att säkerhetskopiera Azure Stack virtuella datorer.
@@ -80,7 +80,7 @@ Azure Backup kan säkerhetskopiera DPM/MABS-instanser som kör något av följan
 
 ## <a name="management-support"></a>Hanterings support
 
-**Problem** | **Detaljer**
+**Ge** | **Information**
 --- | ---
 **Installation** | Installera DPM/MABS på en dator med ett enda syfte.<br/><br/> Installera inte DPM/MABS på en domänkontrollant på en dator med rollen som program server roll på en dator som kör Microsoft Exchange Server eller System Center Operations Manager eller på en klusternod.<br/><br/> [Granska alla system krav för DPM](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Domän** | DPM/MABS ska vara ansluten till en domän. Installera först och Anslut sedan till DPM/MABS till en domän. Det finns inte stöd för att flytta DPM/MABS till en ny domän efter distribution.
@@ -92,7 +92,7 @@ Azure Backup kan säkerhetskopiera DPM/MABS-instanser som kör något av följan
 
 Du kan distribuera MABS på en Azure Stack VM så att du kan hantera säkerhets kopiering av Azure Stack virtuella datorer och arbets belastningar från en enda plats.
 
-**Komponent** | **Detaljer**
+**Komponent** | **Information**
 --- | ---
 **MABS på Azure Stack VM** | Minst storlek a2. Vi rekommenderar att du börjar med en Windows Server 2012 R2-eller Windows Server 2016-avbildning från Azure Marketplace.<br/><br/> Installera inte något annat på den virtuella datorn MABS.
 **MABS-lagring** | Använd ett separat lagrings konto för den virtuella MABS-datorn. MARS-agenten som körs på MABS behöver tillfällig lagring för en cache-plats och för att lagra data som återställs från molnet.
@@ -111,13 +111,18 @@ Du kan distribuera MABS på en Azure Stack VM så att du kan hantera säkerhets 
 
 ### <a name="url-access"></a>URL-åtkomst
 
-DPM-serverns/MABS behöver åtkomst till följande URL: er:
+DPM-servern/MABS-servern behöver åtkomst till dessa URL: er och IP-adresser:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `*.Microsoft.com`
-- `*.WindowsAzure.com`
-- `*.microsoftonline.com`
-- `*.windows.net`
+* Webbadresser
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-adresser
+  * 20.190.128.0/18
+  * 40.126.0.0/18:
 
 ### <a name="azure-expressroute-support"></a>Stöd för Azure ExpressRoute
 
@@ -125,11 +130,16 @@ Du kan säkerhetskopiera dina data via Azure ExpressRoute med offentlig peering 
 
 Med offentlig peering: säkerställa åtkomst till följande domäner/adresser:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- `microsoft.com`
-- `.WindowsAzure.com`
-- `.microsoftonline.com`
-- `.windows.net`
+* Webbadresser
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-adresser
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Med Microsoft-peering väljer du följande tjänster/regioner och relevanta community-värden:
 
@@ -146,7 +156,7 @@ Mer information finns i krav för [ExpressRoute-routning](../expressroute/expres
 
 Anslutning till Azure Backups tjänsten krävs för att säkerhets kopieringarna ska fungera korrekt och Azure-prenumerationen ska vara aktiv. I följande tabell visas beteendet om dessa två saker inte inträffar.
 
-**MABS till Azure** | **Prenumeration** | **Säkerhetskopiering/återställning**
+**MABS till Azure** | **Prenumeration** | **Säkerhets kopiering/återställning**
 --- | --- | ---
 Ansluten | Aktiv | Säkerhetskopiera till DPM/MABS disk.<br/><br/> Säkerhetskopiera till Azure.<br/><br/> Återställ från disk.<br/><br/> Återställ från Azure.
 Ansluten | Upphört/avetablerats | Ingen säkerhets kopiering till disk eller Azure.<br/><br/> Om prenumerationen har upphört att gälla kan du återställa från disk eller Azure.<br/><br/> Om prenumerationen är inaktive rad kan du inte återställa från disk eller Azure. Azures återställnings punkter tas bort.
@@ -157,14 +167,14 @@ Ingen anslutning under mer än 15 dagar | Upphört/avetablerats | Ingen säkerhe
 
 |Krav |Information |
 |---------|---------|
-|Domän    | DPM/MABS-servern måste vara i en Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012-domän.        |
+|Domain    | DPM/MABS-servern måste vara i en Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012-domän.        |
 |Domänförtroende   |  DPM/MABS har stöd för data skydd mellan skogar, förutsatt att du etablerar ett dubbelriktat förtroende på skogs nivå mellan separata skogar.   <BR><BR>   DPM/MABS kan skydda servrar och arbets stationer mellan domäner inom en skog som har en dubbelriktad förtroende relation med DPM/MABS-Server domänen. Information om hur du skyddar datorer i arbets grupper eller ej betrodda domäner finns i [säkerhetskopiera och återställa arbets belastningar i arbets grupper och obetrodda domäner.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
 
 ## <a name="dpmmabs-storage-support"></a>Stöd för DPM/MABS-lagring
 
 Data som säkerhets kopie ras till DPM/MABS lagras på den lokala disk lagringen.
 
-**Storage** | **Detaljer**
+**Storage** | **Information**
 --- | ---
 **MB** | Modern backup Storage (MB) stöds från DPM 2016/MABS v2 och senare. Den är inte tillgänglig för MABS v1.
 **MABS-lagring på virtuell Azure-dator** | Data lagras på Azure-diskar som är anslutna till den virtuella DPM-MABS och som hanteras i DPM/MABS. Antalet diskar som kan användas för DPM/MABS-lagringspoolen begränsas av storleken på den virtuella datorn.<br/><br/> A2 VM: 4 diskar; A3 VM: 8 diskar; A4 VM: 16 diskar, med en maximal storlek på 1 TB för varje disk. Detta avgör den totala tillgängliga lagringspoolen för säkerhets kopiering.<br/><br/> Mängden data som du kan säkerhetskopiera beror på antalet och storleken på de anslutna diskarna.

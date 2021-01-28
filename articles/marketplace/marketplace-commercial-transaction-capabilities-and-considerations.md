@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880750"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986470"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transact-funktioner för kommersiella Marketplace
 
@@ -84,7 +84,7 @@ För scenario publicerings scenarier kan du göra en program varu licens kostnad
 
 Förutom att använda erbjudande typer och fakturerings modeller för att betala ett erbjudande kan du använda Transact ett privat erbjudande, komplett med förhandlad, detaljerad prissättning eller anpassade konfigurationer. Privata erbjudanden stöds av alla tre alternativ för Transact-publicering.
 
-Det här alternativet tillåter högre eller lägre priser än det offentligt tillgängliga erbjudandet. Du kan använda privata erbjudanden för rabatt eller lägga till en Premium till ett erbjudande. Du kan göra privata erbjudanden tillgängliga för en eller flera kunder genom att teckna en Azure-prenumeration på erbjudande nivån.
+Det här alternativet tillåter högre eller lägre priser än det offentligt tillgängliga erbjudandet. Du kan använda privata erbjudanden för rabatt eller lägga till en Premium till ett erbjudande. Du kan göra privata erbjudanden tillgängliga för en eller flera kunder genom att allowlisting sin Azure-prenumeration på erbjudande nivån.
 
 ### <a name="commercial-marketplace-service-fees"></a>Service avgifter för handels platser
 

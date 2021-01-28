@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 06614fc33910eda44bf6bf8369c4ad4b3c0b25fe
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445196"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986030"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Använd en Azure Resource Manager mall för att skapa en arbets yta för Azure Machine Learning
 
@@ -73,7 +73,7 @@ Exempel mal len har två **obligatoriska** parametrar:
 > [!TIP]
 > Även om mallen som är associerad med det här dokumentet skapar en ny Azure Container Registry, kan du också skapa en ny arbets yta utan att skapa ett behållar register. En kommer att skapas när du utför en åtgärd som kräver ett behållar register. Till exempel utbildning eller distribution av en modell.
 >
-> Du kan också referera till ett befintligt behållar register eller lagrings konto i Azure Resource Manager mall, i stället för att skapa ett nytt. Det behållar register som du använder måste dock ha __Administratörs kontot__ aktiverat. Information om hur du aktiverar administratörs kontot finns i [administratörs konto](../container-registry/container-registry-authentication.md#admin-account).
+> Du kan också referera till ett befintligt behållar register eller lagrings konto i Azure Resource Manager mall, i stället för att skapa ett nytt. När du gör detta måste du antingen [använda en hanterad identitet](how-to-use-managed-identities.md) (förhands granskning) eller [Aktivera administratörs kontot](../container-registry/container-registry-authentication.md#admin-account) för behållar registret.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

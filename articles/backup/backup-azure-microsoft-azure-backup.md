@@ -3,12 +3,12 @@ title: Använda Azure Backup Server för att säkerhetskopiera arbets belastning
 description: I den här artikeln lär du dig hur du förbereder din miljö för att skydda och säkerhetskopiera arbets belastningar med hjälp av Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056709"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987030"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installera och uppgradera Azure Backup Server
 
@@ -72,7 +72,7 @@ Du kan deduplicera DPM-lagringen med Windows Server-deduplicering. Lär dig mer 
 >
 > Installation av Azure Backup Server stöds inte på Windows Server Core eller Microsoft Hyper-V server.
 
-Anslut alltid Azure Backup Server till en domän. Om du planerar att flytta servern till en annan domän installerar du Azure Backup Server först och ansluter sedan servern till den nya domänen. Det finns *inte stöd*för att flytta en befintlig Azure Backup Server-dator till en ny domän efter distribution.
+Anslut alltid Azure Backup Server till en domän. Om du planerar att flytta servern till en annan domän installerar du Azure Backup Server först och ansluter sedan servern till den nya domänen. Det finns *inte stöd* för att flytta en befintlig Azure Backup Server-dator till en ny domän efter distribution.
 
 Oavsett om du skickar säkerhets kopierings data till Azure eller om du behåller dem lokalt måste Azure Backup Server registreras med ett Recovery Services-valv.
 
@@ -96,10 +96,10 @@ Så här redigerar du inställningen för lagringsreplikering:
 ### <a name="downloading-the-software-package"></a>Laddar ned programpaketet
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Om du redan har ett Recovery Services-valv öppet, Fortsätt till steg 3. Om du inte har ett Recovery Services-valv öppet, men är i Azure Portal väljer du **Bläddra**i huvud menyn.
+2. Om du redan har ett Recovery Services-valv öppet, Fortsätt till steg 3. Om du inte har ett Recovery Services-valv öppet, men är i Azure Portal väljer du **Bläddra** i huvud menyn.
 
    * I listan över resurser skriver du **Recovery Services**.
-   * När du börjar skriva filtreras listan baserat på det du skriver. När du ser **Recovery Services valv**väljer du det.
+   * När du börjar skriva filtreras listan baserat på det du skriver. När du ser **Recovery Services valv** väljer du det.
 
      ![Skapa Recovery Services Vault steg 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -303,13 +303,18 @@ När du känner till statusen för Azure-anslutningen och Azure-prenumerationen 
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Återställning från förlust av anslutning
 
-Om du har en brand vägg eller en proxy som förhindrar åtkomst till Azure måste du tillåta följande domän adresser i brand väggens/proxy-profilen:
+Om datorn har begränsad Internet åtkomst kontrollerar du att brand Väggs inställningarna på datorn eller proxyservern tillåter följande URL: er och IP-adresser:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* Webbadresser
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-adresser
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Om du använder ExpressRoute Microsoft-peering väljer du följande tjänster/regioner:
 
@@ -325,7 +330,7 @@ När anslutningen till Azure har återställts till den Azure Backup Server dato
 
 Det går att ta en Azure-prenumeration från ett *utgånget* eller *avetablerat* tillstånd till det *aktiva* tillståndet. Detta har dock vissa följder av produkt beteendet när statusen inte är *aktiv*:
 
-* En *avetablerad* prenumeration förlorar funktioner under den period som den avetablerats. När den *aktive*ras är produkt funktionerna i Backup/Restore återupplivat. Du kan också hämta säkerhets kopierings data på den lokala disken om den behålls med en tillräckligt stor kvarhållningsperiod. Säkerhets kopierings data i Azure är dock irretrievably förlorade när prenumerationen övergår till *avetablerat* tillstånd.
+* En *avetablerad* prenumeration förlorar funktioner under den period som den avetablerats. När den *aktive* ras är produkt funktionerna i Backup/Restore återupplivat. Du kan också hämta säkerhets kopierings data på den lokala disken om den behålls med en tillräckligt stor kvarhållningsperiod. Säkerhets kopierings data i Azure är dock irretrievably förlorade när prenumerationen övergår till *avetablerat* tillstånd.
 * En *utgången* prenumeration förlorar bara funktioner för tills den har gjorts *aktiv* igen. Eventuella säkerhets kopieringar som har schemalagts för den period då prenumerationen gick *ut* kommer inte att köras.
 
 ## <a name="upgrade-mabs"></a>Uppgradera MABS

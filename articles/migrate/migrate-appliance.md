@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 17ac10fd4e48043b79db5448fad2f29c5eb3f2a3
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754138"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986827"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-installation
 
@@ -45,7 +45,7 @@ I följande tabell sammanfattas kraven för Azure Migrate-installationen för VM
 
 **Krav** | **VMware** 
 --- | ---
-**Behörigheter** | Om du vill få åtkomst till en webbapp lokalt eller via fjärr anslutning måste du vara domän administratör eller lokal administratör på maskin varan.
+**Behörigheter** | Om du vill få åtkomst till appens webbapp lokalt eller via fjärr anslutning måste du ha ett lokalt eller domän användar konto med administratörs behörighet på installations servern.
 **Utrustnings komponenter** | Enheten har följande komponenter:<br/><br/> - **Hanterings app**: det här är en webbapp för användarindata under installationen av produkten. Används vid utvärdering av datorer för migrering till Azure.<br/> - **Identifierings agent**: agenten samlar in dator konfigurations data. Används vid utvärdering av datorer för migrering till Azure.<br/>- **Insamlings agent**: agenten samlar in prestanda data. Används vid utvärdering av datorer för migrering till Azure.<br/>- **Tjänsten automatisk uppdatering**: uppdaterar komponenter för komponenter (körs var 24: e timme).<br/>- **Dra-agent**: dirigerar VM-replikering och samordnar kommunikationen mellan replikerade datorer och Azure. Används endast när du replikerar virtuella VMware-datorer till Azure med hjälp av en agent lös migrering.<br/>- **Gateway**: skickar replikerade data till Azure. Används endast när du replikerar virtuella VMware-datorer till Azure med hjälp av en agent lös migrering.
 **Distribution som stöds** | Distribuera som virtuell VMware-dator med hjälp av en ägg mall.<br/><br/> Distribuera som en virtuell VMware-dator eller fysisk dator med hjälp av installations skriptet för PowerShell.
 **Projekt support** |  En apparat kan associeras med ett enda projekt. <br/> Valfritt antal enheter kan associeras med ett enda projekt.<br/> 
@@ -65,7 +65,7 @@ I följande tabell sammanfattas kraven för Azure Migrate-installationen för VM
 
 **Krav** | **Hyper-V** 
 --- | ---
-**Behörigheter** | Om du vill få åtkomst till en webbapp lokalt eller via fjärr anslutning måste du vara domän administratör eller lokal administratör på maskin varan.
+**Behörigheter** | Om du vill få åtkomst till appens webbapp lokalt eller via fjärr anslutning måste du ha ett lokalt eller domän användar konto med administratörs behörighet på installations servern.
 **Utrustnings komponenter** | Enheten har följande komponenter:<br/><br/>- **Hanterings app**: det här är en webbapp för användarindata under installationen av produkten. Används vid utvärdering av datorer för migrering till Azure.<br/> - **Identifierings agent**: agenten samlar in dator konfigurations data. Används vid utvärdering av datorer för migrering till Azure.<br/>- **Insamlings agent**: agenten samlar in prestanda data. Används vid utvärdering av datorer för migrering till Azure.<br/>- **Tjänsten automatisk uppdatering**: uppdaterar komponenter för komponenter (körs var 24: e timme).
 **Distribution som stöds** | Distribuera som virtuell Hyper-V-dator med en VHD-mall.<br/><br/> Distribuera som en virtuell Hyper-V-dator eller fysisk dator med ett PowerShell-installations skript.
 **Projekt support** |  En apparat kan associeras med ett enda projekt. <br/> Valfritt antal enheter kan associeras med ett enda projekt.<br/> 
@@ -82,7 +82,7 @@ _ *Hyper-V-krav** | Om du distribuerar installationen med VHD-mallen, är den vi
 
 **Krav** | **Fysisk** 
 --- | ---
-**Behörigheter** | Om du vill få åtkomst till en webbapp lokalt eller via fjärr anslutning måste du vara domän administratör eller lokal administratör på maskin varan.
+**Behörigheter** | Om du vill få åtkomst till appens webbapp lokalt eller via fjärr anslutning måste du ha ett lokalt eller domän användar konto med administratörs behörighet på installations servern.
 **Utrustnings komponenter** | Enheten har följande komponenter: <br/><br/> - **Hanterings app**: det här är en webbapp för användarindata under installationen av produkten. Används vid utvärdering av datorer för migrering till Azure.<br/> - **Identifierings agent**: agenten samlar in dator konfigurations data. Används vid utvärdering av datorer för migrering till Azure.<br/>- **Insamlings agent**: agenten samlar in prestanda data. Används vid utvärdering av datorer för migrering till Azure.<br/>- **Tjänsten automatisk uppdatering**: uppdaterar komponenter för komponenter (körs var 24: e timme).
 **Distribution som stöds** | Distribuera som dedikerad fysisk dator eller en virtuell dator med hjälp av ett PowerShell-installations skript. Skriptet är tillgängligt för hämtning från portalen.
 **Projekt support** |  En apparat kan associeras med ett enda projekt. <br/> Valfritt antal enheter kan associeras med ett enda projekt.<br/> 
@@ -183,7 +183,7 @@ IPv6-adresser | vm.Guest.Net
 Läs data flöde (MB per sekund) | net. Received. Average
 Skriv data flöde (MB per sekund) | net. överföring. genomsnitt
 **Information om lager Sök väg** | 
-Namn | fönster. GetType (). Namn
+Name | fönster. GetType (). Namn
 Typ av underordnat objekt | fönster. ChildType
 Referens information | fönster. MoRef
 Överordnad information | Container. parent
@@ -198,7 +198,7 @@ Värd information per virtuell dator | ((HostSystem) container). DATORN
 
 Här är de prestanda data för VMware VM som enheten samlar in och skickar till Azure.
 
-**Data** | **Medelvärde** | **Utvärderings påverkan**
+**Data** | **Räknare** | **Utvärderings påverkan**
 --- | --- | ---
 CPU-användning | processor. Usage. genomsnitt | Rekommenderad storlek/kostnad för virtuell dator
 Minnes användning | minnes användning. genomsnitt | Rekommenderad storlek/kostnad för virtuell dator
@@ -230,7 +230,7 @@ Här är de funktions data som installationen samlar in från varje virtuell dat
 
 **Data**  | **PowerShell-cmdlet** | **Egenskap**
 --- | --- | ---
-Namn  | Get-WindowsFeature  | Namn
+Name  | Get-WindowsFeature  | Name
 Funktions typ | Get-WindowsFeature  | FeatureType
 Överordnad  | Get-WindowsFeature  | Överordnad
 
@@ -240,7 +240,7 @@ Här är SQL Server-metadata som enheten samlar in från virtuella datorer som k
 
 **Data**  | **Registerplats**  | **Nyckel**
 --- | --- | ---
-Namn  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Utgåva  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Utgåva 
 Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Version  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Version 
@@ -251,7 +251,7 @@ Här är de operativ Systems data som installations programmet samlar in varje v
 
 Data  | WMI-klass  | Egenskap för WMI-klass
 --- | --- | ---
-Namn  | Win32_operatingsystem  | Caption
+Name  | Win32_operatingsystem  | Caption
 Version  | Win32_operatingsystem  | Version
 Arkitektur  | Win32_operatingsystem  | OSArchitecture
 
@@ -261,7 +261,7 @@ Här är de installerade program data som installationen samlar in från varje v
 
 Data  | Kommando
 --- | --- 
-Namn | RPM, dpkg-fråga, fäst
+Name | RPM, dpkg-fråga, fäst
 Version | RPM, dpkg-fråga, fäst
 Leverantör | RPM, dpkg-fråga, fäst
 
@@ -271,7 +271,7 @@ Här är de operativ Systems data som installations programmet samlar in varje v
 
 **Data**  | **Kommando** 
 --- | --- | ---
-Namn <br/> version | Samlas in från en eller flera av följande filer:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> version | Samlas in från en eller flera av följande filer:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Arkitektur | uname
 
 
@@ -359,7 +359,7 @@ MAC-ID för nätverkskort (äldre nätverkskort) | MsvmEmulatedEthernetPortSetti
 
 Här är de prestanda data för virtuella Hyper-datorer som enheten samlar in och skickar till Azure.
 
-**Prestanda räknar klass** | **Medelvärde** | **Utvärderings påverkan**
+**Prestanda räknar klass** | **Räknare** | **Utvärderings påverkan**
 --- | --- | ---
 Virtuell Hyper-V hypervisor-processor | % Kör tid för gäst | Rekommenderad storlek/kostnad för virtuell dator
 VIRTUELL Hyper-V-dynamiskt minne | Aktuellt tryck (%)<br/> Fysiskt synligt fysiskt minne (MB) | Rekommenderad storlek/kostnad för virtuell dator
@@ -488,7 +488,7 @@ Om du vill aktivera från installations Configuration Manager efter att identifi
 Du kan kontrol lera versionen av versions tjänsterna med någon av följande metoder:
 
 - I Konfigurations hanteraren för utrustning går du till **Konfigurera krav** panelen.
-- I **Control Panel**  >  **program och funktioner** på kontroll panelen på datorn.
+- I   >  **program och funktioner** på kontroll panelen på datorn.
 
 För att kontrol lera installations hanteraren för installationen:
 
@@ -499,7 +499,7 @@ För att kontrol lera installations hanteraren för installationen:
 
 Så här kontrollerar du i kontroll panelen:
 
-1. Klicka på **Starta**  >  **Control Panel**  >  **program och funktioner** på kontroll panelen på enheten
+1. Klicka på **Starta**  >    >  **program och funktioner** på kontroll panelen på enheten
 2. Kontrol lera versions service versionerna i listan.
 
     ![Kontrol lera version på kontroll panelen](./media/migrate-appliance/programs-features.png)

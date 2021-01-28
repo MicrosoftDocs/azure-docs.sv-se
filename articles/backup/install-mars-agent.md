@@ -3,12 +3,12 @@ title: Installera Microsoft Azure Recovery Services (MARS)-agenten
 description: Lär dig hur du installerar Microsoft Azure Recovery Services-agenten (MARS) för att säkerhetskopiera Windows-datorer.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975307"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986878"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installera Azure Backup MARS-agenten
 
@@ -51,7 +51,7 @@ Så här ändrar du typen av lagrings replikering:
 
 1. I det nya valvet väljer du **Egenskaper** under avsnittet **Inställningar** .
 
-1. På sidan **Egenskaper** under **säkerhets kopierings konfiguration**väljer du **Uppdatera**.
+1. På sidan **Egenskaper** under **säkerhets kopierings konfiguration** väljer du **Uppdatera**.
 
 1. Välj typ av lagrings replikering och välj **Spara**.
 
@@ -88,6 +88,9 @@ Om du vill använda offentlig peering bör du först se till att du har åtkomst
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
 * `.windows.net`
+* IP-adresser
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Om du vill använda Microsoft-peering väljer du följande tjänster, regioner och relevanta community-värden:
 
@@ -121,13 +124,13 @@ Om du redan har installerat agenten på alla datorer kontrollerar du att du kör
 
     ![Konfigurera filer och mappar](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-1. Hämta MARS-agenten under **installera Recovery Services agent**för att **förbereda infrastrukturen**.
+1. Hämta MARS-agenten under **installera Recovery Services agent** för att **förbereda infrastrukturen**.
 
     ![Förbered infrastrukturen](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
 1. I menyn Hämta väljer du **Spara**. Som standard sparas filen *MARSagentinstaller.exe* i mappen för nedladdningar.
 
-1. Välj **redan hämta eller Använd den senaste Recovery Services agenten**och hämta sedan autentiseringsuppgifterna för valvet.
+1. Välj **redan hämta eller Använd den senaste Recovery Services agenten** och hämta sedan autentiseringsuppgifterna för valvet.
 
     ![Ladda ned autentiseringsuppgifter för valvet](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
@@ -136,13 +139,13 @@ Om du redan har installerat agenten på alla datorer kontrollerar du att du kör
 ## <a name="install-and-register-the-agent"></a>Installera och registrera agenten
 
 1. Kör *MARSagentinstaller.exe* -filen på de datorer som du vill säkerhetskopiera.
-1. I installations guiden för MARS agent väljer du **installations inställningar**. Där kan du välja var du vill installera agenten och välja en plats för cachen. Välj **Nästa**.
+1. I installations guiden för MARS agent väljer du **installations inställningar**. Där kan du välja var du vill installera agenten och välja en plats för cachen. Välj sedan **Nästa**.
    * Azure Backup använder cacheminnet för att lagra ögonblicks bilder av data innan de skickas till Azure.
    * Cacheplatsen måste ha ett ledigt utrymme som motsvarar minst 5 procent av storleken på de data som du säkerhetskopierar.
 
     ![Välj installations inställningar i installations guiden för MARS-agenten](./media/backup-configure-vault/mars1.png)
 
-1. För **proxykonfiguration**anger du hur agenten som körs på Windows-datorn ska ansluta till Internet. Välj **Nästa**.
+1. För **proxykonfiguration** anger du hur agenten som körs på Windows-datorn ska ansluta till Internet. Välj sedan **Nästa**.
 
    * Om du använder en anpassad proxy anger du eventuella nödvändiga proxyinställningar och autentiseringsuppgifter.
    * Kom ihåg att agenten behöver åtkomst till [vissa URL: er](#before-you-start).
@@ -151,7 +154,7 @@ Om du redan har installerat agenten på alla datorer kontrollerar du att du kör
 
 1. För **installation**, granska kraven och välj **Installera**.
 1. När agenten har installerats väljer **du Fortsätt till registrering**.
-1. I Guide identifiering för valv i **guiden Registrera Server**  >  **Vault Identification**bläddrar du till och väljer den inloggnings fil som du laddade ned. Välj **Nästa**.
+1. I Guide identifiering för valv i **guiden Registrera Server**  >  bläddrar du till och väljer den inloggnings fil som du laddade ned. Välj sedan **Nästa**.
 
     ![Lägg till autentiseringsuppgifter för valvet med guiden Registrera Server](./media/backup-configure-vault/register1.png)
 

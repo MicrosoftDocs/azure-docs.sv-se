@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 76482266f0bbb1f80c1699c736048c705b90b4dc
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "92792998"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986928"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Flytta ett Azure Storage-konto till en annan region
 
@@ -31,11 +31,11 @@ I den här artikeln får du lära dig att:
 > * Flytta data till det nya lagrings kontot.
 > * Ta bort resurserna i käll regionen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Kontrollera att tjänsterna och funktionerna som kontot använder stöds i målregionen.
 
-- För förhandsgranskningsfunktioner ska du kontrollera att din prenumeration är vitlistad för målregionen.
+- För för hands versions funktioner ser du till att din prenumeration är allowlisted för mål regionen.
 
 <a id="prepare"></a>
 
@@ -51,11 +51,11 @@ Den här mallen innehåller inställningar som beskriver ditt lagringskonto.
 
 Så här exporterar du en mall med Azure-portalen:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 2. Välj **alla resurser** och välj sedan ditt lagrings konto.
 
-3. Välj **Settings**  >  **Exportera mall** för > inställningar.
+3. Välj   >  **Exportera mall** för > inställningar.
 
 4. Välj **Hämta** på bladet **Exportera mall** .
 

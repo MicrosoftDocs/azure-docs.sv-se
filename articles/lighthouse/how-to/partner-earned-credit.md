@@ -1,18 +1,18 @@
 ---
 title: Länka ditt partner-ID för att spåra påverkan på delegerade resurser
 description: Lär dig hur du associerar ditt partner-ID för att få partner intjänad kredit (PEC) för kund resurser som du hanterar via Azure Lighthouse.
-ms.date: 10/30/2020
+ms.date: 01/28/2021
 ms.topic: how-to
-ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080285"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985979"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Länka ditt partner-ID för att spåra påverkan på delegerade resurser 
 
-Om du är medlem i [Microsoft Partner Network](https://partner.microsoft.com/)kan du länka ditt partner-ID med de autentiseringsuppgifter som används för att hantera delegerade kund resurser. Partner admin-länken (PAL) gör det möjligt för Microsoft att identifiera och identifiera partner som driver Azures kund framgång. Med den här länken kan du också använda CSP-partner [(Cloud Solution Provider)](/partner-center/csp-overview) för att få [partner intjänade kredit för hanterade tjänster (PEC)](/partner-center/partner-earned-credit) för kunder som har [undertecknat Microsofts kund avtal (MCA)](/partner-center/confirm-customer-agreement) och som följer [Azure-prenumerationen](/partner-center/azure-plan-get-started).
+Om du är medlem i [Microsoft Partner Network](https://partner.microsoft.com/)kan du länka ditt partner-ID med de autentiseringsuppgifter som används för att hantera delegerade kund resurser, så att Microsoft kan identifiera och identifiera partner som driver Azure-kund. Med den här länken kan du också använda CSP-partner [(Cloud Solution Provider)](/partner-center/csp-overview) för att få [partner intjänade kredit för hanterade tjänster (PEC)](/partner-center/partner-earned-credit) för kunder som har [undertecknat Microsofts kund avtal (MCA)](/partner-center/confirm-customer-agreement) och som följer [Azure-prenumerationen](/partner-center/azure-plan-get-started).
 
 Om du registrerar [kunder med hanterade tjänst erbjudanden i Azure Marketplace](publish-managed-services-offers.md)sker länkning automatiskt med MPN-ID: t som är kopplat till det Partner Center-konto som används för att publicera erbjudandena. Ingen ytterligare åtgärd krävs för att kunna spåra dina konsekvenser för de här kunderna.
 
@@ -30,7 +30,7 @@ För enkelhetens skull rekommenderar vi att du skapar ett tjänst huvud namns ko
 
 Genom att följa dessa steg associeras alla kund innehavare som du hanterar med ditt partner-ID. Providerns Automation-konto behöver inte autentisera eller utföra några åtgärder i kundens klient organisation.
 
-:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Diagram över PAL-processen med Azure Lighthouse.":::
+:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Diagram som visar länk processen partner-ID med Azure Lighthouse.":::
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>Lägg till ditt partner-ID till tidigare registrerade kunder
 

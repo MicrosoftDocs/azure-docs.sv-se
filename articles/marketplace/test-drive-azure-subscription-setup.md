@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/09/2020
-ms.openlocfilehash: 6f74f3b1f5aad153903ba5d290a290973203a875
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489394"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986132"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Konfigurera en Azure Marketplace-prenumeration för värdbaserade test enheter
 
@@ -65,12 +65,12 @@ Den här artikeln förklarar hur du konfigurerar en Azure Marketplace-prenumerat
     15. Så här skapar du en hemlighet för Azure AD App:
         1. Välj **certifikat och hemligheter** från **hantera program**.
         2. Under klient hemligheter väljer du **ny klient hemlighet**.
-        3. Ange en beskrivning, till exempel *Testkör* , och välj lämplig varaktighet. Test enheten avbryts när den här nyckeln går ut, då du måste generera och ange AppSource en ny nyckel.
+        3. Ange en beskrivning, till exempel *Testkör*, och välj lämplig varaktighet. Test enheten avbryts när den här nyckeln går ut, då du måste generera och ange AppSource en ny nyckel.
         4. Välj **Lägg till** för att generera Azure-appens hemlighet. Kopiera det här värdet eftersom det kommer att döljas så snart du lave det här bladet. Du behöver det här värdet senare när du konfigurerar test enheten.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Lägga till en klient hemlighet.":::
 
-5. Ibland tar det längre tid än förväntat att synkronisera en användare från Azure AD till en CRM-instans. För att hjälpa med detta lade vi till en process för att tvinga fram synkronisering av användare, men den kräver att Azure AD-programmet vit listas av Partner Center. Information om hur du gör detta finns i [användar synkronisering till kund Engagement-instansen](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md).
+5. Ibland tar det längre tid än förväntat att synkronisera en användare från Azure AD till en CRM-instans. För att hjälpa med detta lade vi till en process för att tvinga fram synkronisering av användare, men den kräver att Azure AD-programmet allowlisted av Partner Center. Information om hur du gör detta finns i [användar synkronisering till kund Engagement-instansen](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md).
 6. Lägg till rollen tjänstens huvud namn i programmet så att Azure AD-appen kan ta bort användare från din Azure-klient.
     1. Öppna en PowerShell-kommandotolk på administratörs nivå.
     2. Install-Module MSOnline (kör detta kommando om MSOnline inte är installerat).
@@ -135,7 +135,7 @@ Den här artikeln förklarar hur du konfigurerar en Azure Marketplace-prenumerat
     14. Så här skapar du en hemlighet för Azure AD App:
         1. Välj **certifikat och hemligheter** från **hantera program**.
         2. Under klient hemligheter väljer du **ny klient hemlighet**.
-        3. Ange en beskrivning, till exempel *Testkör* , och välj lämplig varaktighet. Test enheten avbryts när den här nyckeln går ut, då du måste generera och ange AppSource en ny nyckel.
+        3. Ange en beskrivning, till exempel *Testkör*, och välj lämplig varaktighet. Test enheten avbryts när den här nyckeln går ut, då du måste generera och ange AppSource en ny nyckel.
         4. Välj **Lägg till** för att generera Azure-appens hemlighet. Kopiera det här värdet eftersom det kommer att döljas så snart du lave det här bladet. Du behöver det här värdet senare när du konfigurerar test enheten.
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Lägga till en klient hemlighet.":::

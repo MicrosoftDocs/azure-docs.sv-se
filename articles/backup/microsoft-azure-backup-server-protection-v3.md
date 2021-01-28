@@ -3,12 +3,12 @@ title: Vad Azure Backup Server v3 RTM kan säkerhetskopiera
 description: Den här artikeln innehåller en skydds mat ris som visar alla arbets belastningar, data typer och installationer som Azure Backup som hanterar v3 RTM-skydd.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: c1a1a876a9249a32c87c50d7f320a62b9c478caf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752387"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986895"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM-skydds mat ris
 
@@ -86,11 +86,16 @@ Du kan säkerhetskopiera dina data via Azure ExpressRoute med offentlig peering 
 
 Med offentlig peering: säkerställa åtkomst till följande domäner/adresser:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+* Webbadresser
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-adresser
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Med Microsoft-peering väljer du följande tjänster/regioner och relevanta community-värden:
 
