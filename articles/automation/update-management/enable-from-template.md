@@ -1,18 +1,16 @@
 ---
-title: Aktivera Uppdateringshantering med Azure Resource Manager-mall | Microsoft Docs
+title: Aktivera Uppdateringshantering via en Azure Resource Manager-mall
 description: Den här artikeln beskriver hur du använder en Azure Resource Manager-mall för att aktivera Uppdateringshantering.
-ms.service: automation
+services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: e2ebdd3d0f4a4461521ee5f412d5b4c4f872b8a0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 47c982bff45838617b9a55f9129d4dc55d58b0d2
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183242"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050339"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Aktivera Uppdateringshantering via en Azure Resource Manager-mall
 
@@ -29,7 +27,7 @@ Mallen aktiverar inte Uppdateringshantering på en eller flera virtuella Azure-e
 Om du redan har en Log Analytics arbets yta och ett Automation-konto som har distribuerats i en region som stöds i din prenumeration är de inte länkade. Med den här mallen skapas länken och distribuerar Uppdateringshantering.
 
 >[!NOTE]
->Det går inte att skapa Automation-kör som-kontot när du använder en ARM-mall. Information om hur du skapar ett Kör som-konto manuellt från portalen eller med PowerShell finns i [Hantera kör som-konton](../manage-runas-account.md).
+>Det går inte att skapa Automation-kör som-kontot när du använder en ARM-mall. Om du vill skapa ett Kör som-konto manuellt från portalen eller med PowerShell, se [skapa kör som-konto](../create-run-as-account.md).
 
 När du har slutfört de här stegen måste du [Konfigurera diagnostikinställningar](../automation-manage-send-joblogs-log-analytics.md) för ditt Automation-konto så att Runbook-jobbets status och jobb strömmar skickas till den länkade Log Analytics-arbetsytan.
 

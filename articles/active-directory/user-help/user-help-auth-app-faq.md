@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 2be1c7f76055cad1cf8b51938a65c7bbe6b2917e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881086"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053968"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -67,7 +67,11 @@ S **: när** du registrerar en enhet får enheten åtkomst till din organisation
 
 **F**: vilken data autentiserar autentiseraren för mig och hur kan jag ta bort det?
 
-**A**: Authenticator-appen samlar in tre typer av information:<ul><li>Konto information som du anger när du lägger till ditt konto. Du kan ta bort dessa data genom att ta bort ditt konto.</li><li>Diagnostiska loggdata som bara finns i appen tills du väljer **skicka loggar** appens **Hjälp** meny för att skicka loggar till Microsoft. Dessa loggar kan innehålla personliga data, till exempel e-postadresser, Server adresser eller IP-adresser. De kan också innehålla enhets data, till exempel enhets namn och operativ system version. Alla personliga data som samlas in är begränsade till information som behövs för att felsöka problem med appar. Du kan när som helst bläddra bland loggfilerna i appen för att se information som samlas in. Om du skickar dina loggfiler använder Authentication app-tekniker bara dem för att felsöka problem som rapporter ATS av kunden.</li><li>Icke-personligt identifierbara användnings data, t. ex. "starta Lägg till konto flöde/lade till konto", "eller" meddelandet har godkänts. " Dessa data är en viktig del av våra tekniska beslut. Användningen hjälper oss att avgöra var vi kan förbättra apparna på ett sätt som är viktigt för dig. Du ser ett meddelande om den här data insamlingen när du använder appen för första gången. Det informerar dig om att det kan inaktive ras på appens **inställnings** sida. Du kan aktivera eller inaktivera den här inställningen när du vill.</li></ul>
+**A**: Authenticator-appen samlar in tre typer av information:
+
+- Konto information som du anger när du lägger till ditt konto. Du kan ta bort dessa data genom att ta bort ditt konto.
+- Diagnostiska loggdata som bara finns i appen tills du **skickar kommentarer** i appens översta meny för att skicka loggar till Microsoft. Dessa loggar kan innehålla personliga data, till exempel e-postadresser, Server adresser eller IP-adresser. De kan också innehålla enhets data, till exempel enhets namn och operativ system version. Alla personliga data som samlas in är begränsade till information som behövs för att felsöka problem med appar. Du kan när som helst bläddra bland loggfilerna i appen för att se information som samlas in. Om du skickar dina loggfiler använder Authentication app-tekniker bara dem för att felsöka problem som rapporter ATS av kunden.
+- Icke-personligt identifierbara användnings data, t. ex. "starta Lägg till konto flöde/lade till konto", "eller" meddelandet har godkänts. " Dessa data är en viktig del av våra tekniska beslut. Användningen hjälper oss att avgöra var vi kan förbättra apparna på ett sätt som är viktigt för dig. Du ser ett meddelande om den här data insamlingen när du använder appen för första gången. Det informerar dig om att det kan inaktive ras på appens **inställnings**   sida. Du kan aktivera eller inaktivera den här inställningen när du vill.
 
 ### <a name="codes-in-the-app"></a>Koder i appen
 
@@ -102,7 +106,7 @@ S **: det** kan hända att du ser en 30-sekunds uppräknings intervall bredvid d
 
 **F**: Varför får jag bara meddelanden när appen är öppen? När appen är stängd får jag inga meddelanden.
 
-**A**: om du får meddelanden, men inte en avisering, även om du har ringt på, bör du kontrol lera inställningarna för appen. Kontrol lera att appen är aktive rad för att använda ljud eller för att vibrera meddelanden. Om du inte får meddelanden alls bör du kontrol lera följande villkor:<ul><li>Är din telefon i stör inte eller tyst läge? Dessa lägen kan förhindra att appar skickar meddelanden.</li><li>Kan du få meddelanden från andra appar? Om inte, kan det vara problem med nätverks anslutningarna på din telefon, eller meddelande kanalen från Android eller Apple. Du kan försöka lösa dina nätverks anslutningar via dina telefon inställningar. Du kan behöva prata med din tjänst leverantör för att hjälpa till med Android-eller Apple Notifications-kanalen.</li><li>Kan du få aviseringar för vissa konton i appen, men inte andra? Om ja, ta bort det problematiska kontot från appen, Lägg till det igen och se om det löser problemet.</li></ul>Om du har provat alla dessa steg och fortfarande har problem, rekommenderar vi att du skickar dina loggfiler för diagnostik. Öppna appen, gå till **Hjälp** och välj sedan **skicka loggar**. Därefter går du till [Microsoft Authenticator app-forumet](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) och meddelar oss det problem du ser och de steg du har provat.
+**A**: om du får meddelanden, men inte en avisering, även om du har ringt på, bör du kontrol lera inställningarna för appen. Kontrol lera att appen är aktive rad för att använda ljud eller för att vibrera meddelanden. Om du inte får meddelanden alls bör du kontrol lera följande villkor:<ul><li>Är din telefon i stör inte eller tyst läge? Dessa lägen kan förhindra att appar skickar meddelanden.</li><li>Kan du få meddelanden från andra appar? Om inte, kan det vara problem med nätverks anslutningarna på din telefon, eller meddelande kanalen från Android eller Apple. Du kan försöka lösa dina nätverks anslutningar via dina telefon inställningar. Du kan behöva prata med din tjänst leverantör för att hjälpa till med Android-eller Apple Notifications-kanalen.</li><li>Kan du få aviseringar för vissa konton i appen, men inte andra? Om ja, ta bort det problematiska kontot från appen, Lägg till det igen och se om det löser problemet.</li></ul>Om du har provat alla dessa steg och fortfarande har problem, rekommenderar vi att du skickar dina loggfiler för diagnostik. Öppna appen, gå till appens översta meny och välj sedan **Skicka feedback**. Därefter går du till [Microsoft Authenticator app-forumet](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) och ber dig att se vad du har för problem med Microsoft.
 
 ### <a name="switch-to-push-notifications"></a>Växla till push-meddelanden
 
@@ -204,13 +208,13 @@ S **: Tryck** på konto panelen för det konto som du vill ta bort från appen f
 
 **F**: min Apple Watch Companion-app kraschade. Kan jag skicka mina krasch loggar så att du kan undersöka?
 
-S **: du** måste först se till att du har valt att dela din analys med oss. Om du är en TestFlight-användare är du redan registrerad. Annars kan du gå till **inställningar > sekretess > analys** och välja båda alternativen **dela iPhone-& se analys** och **dela med Apps** .<br>När du har registrerat dig kan du försöka återskapa din krasch så att dina krasch loggar skickas automatiskt till oss för att undersöka detta. Men om du inte kan återskapa din krasch kan du manuellt kopiera dina loggfiler och skicka dem till oss.<ol><li>Öppna appen titta på din telefon, gå till **inställningar > allmänt** och klicka sedan på **Kopiera bevaknings analys**.</li><li>Hitta motsvarande krasch under **inställningar > sekretess > analys > analys data** och kopiera sedan hela texten manuellt.</li><li>Öppna autentiseraren på din telefon och klistra in den kopierade texten i text rutan **dela med app-utvecklare** på sidan **skicka loggar** .</li></ol>
+S **: du** måste först se till att du har valt att dela din analys med oss. Om du är en TestFlight-användare är du redan registrerad. Annars kan du gå till **inställningar > sekretess > analys** och välja båda alternativen **dela iPhone-& se analys** och **dela med Apps** .<br>När du har registrerat dig kan du försöka återskapa din krasch så att dina krasch loggar skickas automatiskt till oss för att undersöka detta. Men om du inte kan återskapa din krasch kan du manuellt kopiera dina loggfiler och skicka dem till oss.<ol><li>Öppna appen titta på din telefon, gå till **inställningar > allmänt** och klicka sedan på **Kopiera bevaknings analys**.</li><li>Hitta motsvarande krasch under **inställningar > sekretess > analys > analys data** och kopiera sedan hela texten manuellt.</li><li>Vill du öppna autentiseraren på din telefon och klistra in den kopierade texten i rutan  **Beskriv problemet som du står inför** under **har du problem?** på sidan  **Skicka feedback** . </li></ol>
 
-## <a name="autofill-for-consumers"></a>Autofyll för konsumenter
+## <a name="autofill-with-authenticator"></a>Autofyll med autentiserare
 
-**F**: Vad är Autofyll i autentiseraren?
+**F**: Vad är Autofyll med autentiseraren?
 
-**A**: Authentication-appen lagrar och fyller på lösen ord på ett säkert sätt för appar och webbplatser som du besöker på din telefon. Du kan använda Autofyll för att synkronisera och Autofyll dina lösen ord på dina iOS-och Android-enheter. När du har konfigurerat Authenticator-appen som en Autofyll-Provider på din telefon, kan du spara dina lösen ord när du anger dem på en webbplats eller i appens inloggnings sida. Lösen orden sparas som en del av [din Microsoft-konto](https://account.microsoft.com/account) och är också tillgängliga när du loggar in på Microsoft Edge med ditt Microsoft-konto.
+**A**: Authentication-appen lagrar och fyller på lösen ord på ett säkert sätt för appar och webbplatser som du besöker på din telefon. Du kan använda Autofyll för att synkronisera och Autofyll dina lösen ord på dina iOS-och Android-enheter. När du har konfigurerat Authenticator-appen som en Autofyll-Provider på din telefon, kan du spara dina lösen ord när du anger dem på en plats eller på en inloggnings sida för appen. Lösen orden sparas som en del av [din personliga Microsoft-konto](https://account.microsoft.com/account) och är också tillgängliga när du loggar in på Microsoft Edge med din personliga Microsoft-konto.
 
 **F**: vilken information kan autoautentiseras för mig?
 
@@ -221,23 +225,22 @@ S **: du** måste först se till att du har valt att dela din analys med oss. Om
 **A**: Följ dessa steg:
 
 1. Öppna Authenticator-appen.
-1. I **Inställningar** under **beta** aktiverar du **Autofyll**.
 1. På fliken **lösen ord** i autentiserare väljer du **Logga in med Microsoft** och loggar in med [ditt Microsoft-konto](https://account.microsoft.com/account). Den här funktionen har för närvarande endast stöd för Microsoft-konton och har ännu inte stöd för arbets-eller skol konton.
 
 **F**: Hur gör jag för att göra autentiseraren till standardprovidern för Autofyll på min telefon?
 
 **A**: Följ dessa steg:
 
-1. Öppna verifierings **Inställningar** och aktivera **Autofyll** under **beta** .
-1. Logga in med [ditt Microsoft-konto](https://account.microsoft.com/account)på fliken **lösen ord** i appen.
+1. Öppna Authenticator-appen.
+1. På fliken **lösen ord** i appen väljer du **Logga in med Microsoft** och loggar in med [ditt Microsoft-konto](https://account.microsoft.com/account).
 1. Gör något av följande:
 
    - Under **Inställningar** på iOS väljer du **hur du vill aktivera Autofyll** i avsnittet Inställningar för Autofyll för att lära dig hur du ställer in Authenticator som standardprovider för Autofyll.
-   - På Android, under **Inställningar**, väljer du **Ange som Autofyll Provider** i avsnittet Inställningar för Autofyll för att ange autentiserare som standard-Autofyll-Provider.
+   - På Android under **Inställningar** väljer du **Ange som Autofyll Provider** i avsnittet Inställningar för Autofyll.
 
-**F**: Vad händer om **Autofyll** -växeln är nedtonad för mig i inställningar?
+**F**: Vad händer om **Autofyll** -växeln inte är tillgänglig för mig i inställningar?
 
-**A**: Autofyll är för närvarande i beta version och har ännu inte Aktiver ATS för alla organisationer eller konto typer. Om växeln **Autofyll** i **Inställningar** är nedtonad för dig, är det troligt att du använder Authenticator-appen med ditt arbets konto. Du kan använda den här funktionen på en enhet där ditt arbets konto inte har lagts till. Om din organisation arbetar med Microsoft aktive ras växeln **Autofyll** även om ett arbets konto läggs till i autentiseraren.
+**A**: om Autofyll inte är tillgängligt för dig i autentiseraren kan det bero på att Autofyll ännu inte har tillåtits för din organisation eller konto typ. Du kan använda den här funktionen på en enhet där ditt arbets-eller skol konto inte har lagts till. Mer information om hur du tillåter Autofyll för din organisation finns i [Autofyll för IT-administratörer](#autofill-for-it-admins).
 
 **F**: Hur gör jag för att stoppa synkroniseringen av lösen ord?
 
@@ -247,28 +250,24 @@ S **: du** måste först se till att du har valt att dela din analys med oss. Om
 
 **A**: Authenticator-appen tillhandahåller redan en hög säkerhets nivå för Multi-Factor Authentication och konto hantering, och samma höga säkerhets fält utökas också för att hantera dina lösen ord.
 
-- **Stark autentisering krävs av Authenticator-appen**: inloggning till autentisering kräver en andra faktor. Det innebär att dina lösen ord i Authenticator-appen inte kan nås även om någon har Microsoft-konto lösen ord.
-- **Autofyll-data skyddas med biometrik och lösen ord**: innan du kan fylla i lösen ord på en app eller på en webbplats kräver autentiseraren bio metrisk eller enhets lösen ord. Detta säkerställer att även om någon annan har åtkomst till din enhet, kan de inte fylla eller se ditt lösen ord eftersom de inte skulle kunna tillhandahålla bio metrisk eller PIN-kod för enheten. Dessutom kan en användare inte öppna sidan lösen ord om de inte anger bio metrisk eller PIN-kod, även om de inaktiverar app lock i appinställningar.
-- **Krypterade lösen ord på enheten**: lösen ord på enheten är krypterade och krypterings-/dekrypterings nycklar lagras aldrig och genereras alltid i farten. Lösen ord dekrypteras endast när användaren vill, det vill säga under Autofyll eller när användaren vill se lösen ordet, som kräver bio metrisk eller PIN-kod.
-- **Moln-och nätverks säkerhet**: dina lösen ord i molnet krypteras och dekrypteras bara när de når enheten. Lösen ord synkroniseras via en SSL-skyddad HTTPS-anslutning, som ser till att ingen angripare kan eavesdrop på känsliga data när den synkroniseras. Vi garanterar också att vi kontrollerar Sanity för data som synkroniseras över nätverket med hjälp av krypterade hash-funktioner (specifikt hash-baserad meddelande kod).
+- **Stark autentisering krävs av Authenticator-appen**: inloggning till autentisering kräver en andra faktor. Det innebär att dina lösen ord i Authenticator-appen skyddas även om någon har Microsoft-konto lösen ord.
+- **Autofyll-data skyddas med biometrik och lösen ord**: innan du kan fylla i lösen ord på en app eller på en webbplats kräver autentiseraren bio metrisk eller enhets lösen ord. På så sätt kan du lägga till extra säkerhet så att även om någon annan har åtkomst till din enhet, kan de inte fylla eller se ditt lösen ord eftersom de inte kan tillhandahålla bio metrisk eller PIN-kod för enheten. Dessutom kan en användare inte öppna sidan lösen ord om de inte anger bio metrisk eller PIN-kod, även om de inaktiverar app lock i appinställningar.
+- **Krypterade lösen ord på enheten**: lösen ord på enheten är krypterade och krypterings-/dekrypterings nycklar lagras aldrig och genereras alltid vid behov. Lösen ord dekrypteras endast när användaren vill, det vill säga under Autofyll eller när användaren vill se lösen ordet, som kräver bio metrisk eller PIN-kod.
+- **Moln-och nätverks säkerhet**: dina lösen ord i molnet krypteras och dekrypteras bara när de når enheten. Lösen orden synkroniseras via en SSL-skyddad HTTPS-anslutning, som hjälper till att förhindra att en angripare åsidosätter känsliga data när de synkroniseras. Vi garanterar också att vi kontrollerar Sanity för data som synkroniseras över nätverket med hjälp av krypterade hash-funktioner (specifikt hash-baserad meddelande kod).
 
 ## <a name="autofill-for-it-admins"></a>Autofyll för IT-administratörer
 
 **F**: kommer mina anställda eller studenter att få använda lösen ord Autofyll i Authenticator-appen?
 
-**A**: Nej. Funktionen Autofyll är för närvarande i beta version och har ännu inte Aktiver ATS för alla organisationer eller konto typer. Om din medarbetare eller student har lagt till sitt arbets-eller skol konto i Microsoft Authenticator-appen kan inte lösen ord fyllas i automatiskt. Ett undantag till den här begränsningen är när din medarbetare eller student lägger till sitt arbets-eller skol konto i Microsoft Cloud-baserad Multi-Factor Authentication som ett [externt konto eller ett konto från tredje part](user-help-auth-app-add-non-ms-account.md).
-
-**F**: kan jag göra Autofyll-funktionen tillgänglig för mina anställda (eller studenter)?
-
-**A**: Ja. Om du vill göra det möjligt för dina anställda eller studenter kan du lägga till ditt företag eller din skola i en lista över tillåtna. Kontakta supporten eller Microsoft-kontakten för att komma åt listan över tillåtna. Om du är IT-administratör för din organisation kan du också fylla i ett formulär för att uttrycka intresset i att gå med i [Tillåt-List Enterprise för Autofyll i autentiseraren](https://aka.ms/RequestAutofillInAuthenticator).
+**A**: Ja, Autofyll fungerar nu för de flesta företags användare även när ett arbets-eller skol konto läggs till i Authenticator-appen. Du kan fylla i ett formulär för att konfigurera (Tillåt eller neka) Autofyll för din organisation och [skicka det till Authenticator-teamet](https://aka.ms/ConfigureAutofillInAuthenticator).
 
 **F**: kommer mina användares lösen ord för arbets-eller skol kontot att synkroniseras automatiskt?
 
 **A**: Nej. Lösen ord för Autofyll synkroniserar inte lösen ord för arbets-eller skol konton för dina användare. När användare besöker en webbplats eller en app, erbjuder autentiseraren att spara lösen ordet för platsen eller appen, och lösen ordet sparas bara när användaren väljer.
   
-**F**: kan jag endast tillåta vissa användare av min organisation för Autofyll i listan?
+**F**: kan jag endast tillåten vissa användare av min organisation för Autofyll?
 
-**A**: Nej. Företag kan bara aktivera lösen ord Autofyll för alla eller ingen av sina anställda för tillfället. Dessa kontroller kommer att utvidgas gradvis.
+**A**: Nej. Företag kan bara aktivera lösen ord Autofyll för alla eller ingen av sina anställda för tillfället.
 
 **F**: Vad händer om min medarbetare eller student har flera arbets-eller skol konton? Min medarbetare har till exempel konton från flera företag eller skolor i sin Microsoft Authenticator.
 

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 01/26/2021
 ms.author: banders
-ms.openlocfilehash: 40eb6bbb952596e015be7c1ed29dbefb3fb6016d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 12c13b8a65296fb0ee74e0ee0449b604facf2f48
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897721"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051269"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automationsscenarier för fakturering och kostnadshantering
 
@@ -49,8 +49,8 @@ Du kan använda API:erna för fakturering och kostnadshantering i flera scenarie
 | Användningsinformation               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Faktureringsperioder             |             X             |         X        |           X          |         X        |                    |           |
 | Fakturor                    |             X             |         X        |           X          |         X        |                    |           |
-| RateCard                    |             X             |                  |           X          |         X        |          X         |           |
-| Oklassificerad användning               |             X             |                  |           X          |                  |          X         |           |
+| Åter försäljnings priser för Azure                    |             X             |                  |           X          |         X        |                    |           |
+
 
 > [!NOTE]
 > Scenario-till-API-mappningen omfattar inte Enterprise-förbruknings-API:er. Använd om möjligt de allmänna förbruknings-API:erna för nya utvecklingsscenarier.
@@ -74,9 +74,7 @@ Web Direct- och Enterprise-kunder kan använda alla följande API:er, förutom d
 
 -    [API för användningsinformation](/rest/api/consumption/usagedetails): Få information om kostnader och användning för alla Azure-resurser från Microsoft. Informationen visas i form av poster med användningsinformation och skickas för närvarande en gång per mätare och dag. Du kan använda informationen för att summera kostnaderna för alla resurser eller för att analysera kostnader/användning för specifika resurser.
 
--    [API för RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)): Hämta mätarpriser om du är Web Direct-kund. Du kan sedan använda den returnerade informationen med din information resursanvändning till att beräkna den förväntade fakturan manuellt.
-
--    [API för oklassificerad användning](/previous-versions/azure/reference/mt219003(v=azure.100)): Hämta rå användningsinformation innan Azure utför mätning/avgiftsberäkning.
+-    [Åter försäljnings priser för Azure](/rest/api/cost-management/retail-prices/azure-retail-prices): Hämta pris nivåer med priser för betala per användning. Du kan sedan använda den returnerade informationen med din information resursanvändning till att beräkna den förväntade fakturan manuellt.
 
 ### <a name="billing"></a>Fakturering
 -    [API för faktureringsperioder](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Fastställ en faktureringsperiod som ska analyseras, tillsammans med faktura-ID:n för den perioden. Du kan använda faktura-ID:n med API:et för fakturor.
@@ -107,16 +105,6 @@ Dessa API:er har en liknande uppsättning funktioner och kan besvara samma breda
 
 - Förbruknings-API:er är tillgängliga för alla kunder, med några undantag. Mer information finns i [Översikt över API för Azure Consumption](consumption-api-overview.md) och [referensen för förbruknings-API i Azure](/rest/api/consumption/). Vi rekommenderar de tillhandahållna API:erna som lösning för de senaste utvecklingsscenarierna.
 
-### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Vad är skillnaden mellan API:et för användningsinformation och API:et för användning?
-Dessa API:er erbjuder data som skiljer sig i grunden:
-
-- [API:et för användningsinformation](/rest/api/consumption/usagedetails) ger information om Azure-användning och kostnader per mätarinstans. Tillhandahållna data har redan passerat genom kostnadsmätningssystemet i Azure, och kostnader samt andra möjliga ändringar har tillämpats på dem:
-
-   - Ändringar av kontot för användning av förbetald Azure-förskottsbetalning
-   - Ändringar av kontot för användningsskillnader som identifieras av Azure
-
-- [API:er för användning](/previous-versions/azure/reference/mt219003(v=azure.100)) ger rå Azure-användningsinformation innan den går genom systemet för kostnadsberäkning i Azure. Dessa data har kanske inte någon korrelation med den användning eller det avgiftsbelopp som visas efter Azure-systemet för avgiftsberäkning.
-
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Vad är skillnaden mellan API:et för fakturering och API:et för användningsinformation?
 Dessa API:er ger olika vyer av samma data:
 
@@ -129,7 +117,7 @@ Dessa API:er tillhandahåller liknande datauppsättningar men har olika målgrup
 
 - [API:et för prisdokument](/rest/api/consumption/pricesheet) ger den anpassade prissättning som förhandlades för en Enterprise-kund.
 
-- [API:et för RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)) ger den offentliga prissättning som gäller för Web Direct-kunder.
+- [Azures API för åter försäljnings priser](/rest/api/cost-management/retail-prices/azure-retail-prices) tillhandahåller offentliga priser för betalning per användning som gäller för webb direkt kunder.
 
 ## <a name="next-steps"></a>Nästa steg
 

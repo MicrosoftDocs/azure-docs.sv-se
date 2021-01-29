@@ -2,15 +2,16 @@
 title: Aktivera Azure Automation Uppdateringshantering från en virtuell Azure-dator
 description: Den här artikeln beskriver hur du aktiverar Uppdateringshantering från en virtuell Azure-dator.
 services: automation
+ms.subservice: update-management
 ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 35feb136ca1fd7ea0be16a906f7d5193cf8570c7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 39b5b1f988a118e609015f19a086fda434797356
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183557"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050270"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Aktivera Uppdateringshantering från en virtuell Azure-dator
 
@@ -22,7 +23,7 @@ Den här artikeln beskriver hur du kan aktivera funktionen [uppdateringshanterin
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. Om du inte redan har ett konto kan du [aktivera dina MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-konto](../index.yml) för att hantera datorer.
+* [Automation-konto](../automation-security-overview.md) för att hantera datorer.
 * En [virtuell dator](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 119b00e67cf8337123028840ec6a7ecd29e97a05
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755473"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051608"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Förstå mått för Azure våren Cloud
 
@@ -121,6 +121,7 @@ I följande tabeller visas tillgängliga mått och information.
 >| Antal start0 GC  | gen-0-GC-Count | Antal        | Antal skräp insamlingar av generation 0 per sekund. |
 >| Antal för gen 1 GC  | gen-1-GC-antal | Antal        | Antalet skräp insamlingar av generation 1 per sekund. |
 >| Antal gen 2 GC  | gen-2-GC – antal | Antal        | Antal skräp insamlingar i generation 2 per sekund. |
+>| Tid i GC      | tidin-GC      | Procent      | Procent av tiden i skräp insamling sedan den senaste skräp insamlingen. |
 >| Heap-storlek för generation 0 | gen-0-storlek     | Byte        | Heap-storlek för generation 0. |
 >| Heap-storlek för generation 1 | gen-1-storlek     | Byte        | Heap-storlek för generation 1. |
 >| Heap-storlek för generation 2 | gen-2-storlek     | Byte        | Heap-storlek för generation 2. |

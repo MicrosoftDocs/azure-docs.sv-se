@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049294"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050523"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Dirigera händelser inom och utanför Azures digitala dubbla
 
@@ -50,12 +50,12 @@ Information om hur du konfigurerar en Azure-funktion för att bearbeta digitala 
 
 ## <a name="create-an-endpoint"></a>Skapa en slutpunkt
 
-För att definiera en händelse väg måste utvecklare först definiera slut punkter. En **slut punkt** är ett mål utanför Azures digitala dubbla, som har stöd för en väg anslutning. Destinationer som stöds är:
+För att kunna definiera en händelseväg måste utvecklarna först definiera slutpunkter. En **slut punkt** är ett mål utanför Azures digitala dubbla, som har stöd för en väg anslutning. Destinationer som stöds är:
 * Event Grid anpassade ämnen
 * Händelsehubb
 * Service Bus
 
-Om du vill skapa en slut punkt kan du använda Azure Digitals, dubblare [**kontroll Plans-API: er**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins), [**CLI-kommandon**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)eller [**Azure Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins). 
+Om du vill skapa en slut punkt kan du använda Azure Digitals [REST-API: er, CLI-kommandon](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)eller [Azure Portal](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins).
 
 När du definierar en slut punkt måste du ange:
 * Slut punktens namn
@@ -71,7 +71,7 @@ Slut punkts-API: erna som är tillgängliga i kontroll planet är:
 
 ## <a name="create-an-event-route"></a>Skapa en händelse väg
  
-Om du vill skapa en händelse väg kan du använda Azure Digitals dubbla [**data Plans-API: er**](how-to-manage-routes-apis-cli.md#create-an-event-route), [**CLI-kommandon**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)eller [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
+Om du vill skapa en händelse väg kan du använda Azure Digitals [REST-API: er, CLI-kommandon](how-to-manage-routes-apis-cli.md#create-an-event-route)eller [Azure Portal](how-to-manage-routes-portal.md#create-an-event-route).
 
 Här är ett exempel på hur du skapar en händelse väg i ett klient program med hjälp av `CreateOrReplaceEventRouteAsync` [.net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) anropet: 
 
@@ -85,8 +85,6 @@ Här är ett exempel på hur du skapar en händelse väg i ett klient program me
 
 > [!TIP]
 > Alla SDK-funktioner ingår i synkrona och asynkrona versioner.
-
-Vägar kan också skapas med hjälp av [Azure Digitals flätade CLI](how-to-use-cli.md).
 
 ## <a name="dead-letter-events"></a>Händelser för obeställbara meddelanden
 

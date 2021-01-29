@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5f207a0b5f829e952c92133a66313f49e9352f51
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658731"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053216"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planera en distribution för enkel inloggning
 
@@ -62,7 +62,7 @@ Det finns två huvudsakliga sätt som du kan använda för att göra det möjlig
 
 Att använda Azure AD för lösenordsbaserad SSO kräver att du distribuerar ett webb läsar tillägg som på ett säkert sätt hämtar autentiseringsuppgifterna och fyller i inloggnings formulären. Definiera en mekanism för att distribuera tillägget i skala med [webbläsare som stöds](../user-help/my-apps-portal-end-user-access.md). Alternativen är:
 
-- [grupprincip för Internet Explorer](./access-panel-deployment-plan.md)
+- [grupprincip för Internet Explorer](my-apps-deployment-plan.md)
 - [Configuration Manager för Internet Explorer](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Användar driven nedladdning och konfiguration för Chrome, Firefox, Microsoft Edge eller IE](../user-help/my-apps-portal-end-user-access.md)
 

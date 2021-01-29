@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b980624ebf55c3666bcc7dd1d60f681d788c95ae
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 866af8b992374492286f47357f108a01f35e560b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98987065"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051049"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Begränsningar och begränsningar för Azure Active Directory B2C tjänsten
 
@@ -40,17 +40,15 @@ I följande tabell visas gränserna för administrations konfiguration i Azure A
 |Kategori  |Gräns  |
 |---------|---------|
 |Antal program per Azure AD B2C klient   |250           |
-|Antal principer per Azure AD B2C klient       |200          |
-|Maximal princip fil storlek      |400 KB          |
 |Antal omfattningar per program        |1000          |
-|Antal anpassade attribut per användare <sup>1</sup>       |100         |
+|Antal [anpassade attribut](user-profile-attributes.md#extension-attributes)   per användare <sup>1</sup>       |100         |
 |Antal omdirigerings-URL: er per program       |100         |
 |Antal utloggnings-URL: er per program        |1          |
 |Sträng begränsning per attribut      |250 tecken          |
 |Antal B2C-klienter per prenumeration      |20         |
 |[Arvs](custom-policy-overview.md#inheritance-model) nivåer i anpassade principer     |10         |
-|Antal principer per Azure AD B2C klient      |200         |
-|Maximal princip fil storlek      |400 KB         |
+|Antal principer per Azure AD B2C klient      |200          |
+|Maximal princip fil storlek      |400 KB          |
 
 <sup>1</sup> Se även [Azure AD-tjänstens gränser och begränsningar](../active-directory/enterprise-users/directory-service-limits-restrictions.md).
 

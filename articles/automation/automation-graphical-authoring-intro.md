@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987327"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051589"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Redigera grafiska runbooks i Azure Automation
 
@@ -34,7 +34,7 @@ Med kontrollen arbets yta kan du utforma din Runbook. Du kan lägga till aktivit
 
 Med biblioteks kontrollen kan du välja vilka [aktiviteter](#use-activities) som ska läggas till i din Runbook. Du lägger till dem på arbets ytan, där du kan ansluta dem till andra aktiviteter. Biblioteks kontrollen inkluderar de avsnitt som definieras i följande tabell.
 
-| Section | Beskrivning |
+| Avsnitt | Description |
 |:--- |:--- |
 | Cmdletar |Alla cmdletar som kan användas i din Runbook. Cmdletar är ordnade efter modul. Alla moduler som du har installerat i ditt Automation-konto är tillgängliga. |
 | Runbooks |Runbooks i ditt Automation-konto. Du kan lägga till dessa Runbooks i arbets ytan som ska användas som underordnade Runbooks. Endast Runbooks av samma kärn typ som den Runbook som redige ras visas. För grafiska runbooks visas endast PowerShell-baserade Runbooks. För grafiska PowerShell Workflow-Runbooks visas bara PowerShell Workflow-baserade Runbooks. |
@@ -69,7 +69,7 @@ I följande exempel har cmdleten [Get-AzVM](/powershell/module/az.compute/get-az
 
 När du anger ett värde för en parameter väljer du en data källa för att avgöra hur värdet anges. De data källor som är tillgängliga för en viss parameter beror på giltiga värden för den parametern. Null är till exempel inte ett tillgängligt alternativ för en parameter som inte tillåter Null-värden.
 
-| Datakälla | Beskrivning |
+| Datakälla | Description |
 |:--- |:--- |
 | Konstant värde |Ange ett värde för parametern. Den här data källan är bara tillgänglig för följande data typer: Int32, Int64, String, Boolean, DateTime, switch. |
 | Aktivitetens utdata |Använd utdata från en aktivitet som föregår den aktuella aktiviteten i arbets flödet. Alla giltiga aktiviteter visas. Använd bara den aktivitet som genererar utdata för parametervärdet. Om aktiviteten matar ut ett objekt med flera egenskaper kan du ange namnet på en speciell egenskap när du har valt aktiviteten. |
@@ -95,7 +95,7 @@ När du aktiverar återförsök för en aktivitet kan du ange en fördröjning o
 
 Villkoret för återförsök är ett PowerShell-uttryck som utvärderas efter varje tid som aktiviteten körs. Om uttrycket matchar True körs aktiviteten igen. Om uttrycket matchar falskt körs inte aktiviteten igen och runbooken flyttas vidare till nästa aktivitet.
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Skärm bild av inställningarna för aktivera funktions försök.":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Skärm bild som visar återförsök tills det här villkoret är sant och exempel på PowerShell-uttryck som kan användas i villkoret för återförsök.":::
 
 Villkoret för återförsök kan använda en variabel med namnet `RetryData` som ger till gång till information om aktiviteternas återförsök. Den här variabeln har egenskaperna i följande tabell:
 
@@ -151,7 +151,7 @@ Du kan skapa en länk mellan två aktiviteter genom att välja käll aktivitet o
 
 Välj länken för att konfigurera dess egenskaper på bladet konfiguration. Egenskaperna inkluderar länk typen, som beskrivs i följande tabell.
 
-| Länktyp | Beskrivning |
+| Länktyp | Description |
 |:--- |:--- |
 | Pipeline |Mål aktiviteten körs en gång för varje objekts utdata från käll aktiviteten. Mål aktiviteten körs inte om käll aktiviteten resulterar i inga utdata. Utdata från käll aktiviteten är tillgängligt som ett objekt. |
 | Sequence |Mål aktiviteten körs bara en gång när den tar emot utdata från käll aktiviteten. Utdata från käll aktiviteten är tillgängligt som en matris med objekt. |
@@ -256,8 +256,8 @@ Varje indataparameter definieras av egenskaperna i följande tabell:
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| Namn | Krävs. Parameterns namn. Namnet måste vara unikt inom runbooken. Det måste börja med en bokstav och får bara innehålla bokstäver, siffror och under streck. Namnet får inte innehålla blank steg. |
-| Beskrivning |Valfritt. Beskrivning av syftet med indataparametern. |
+| Name | Krävs. Parameterns namn. Namnet måste vara unikt inom runbooken. Det måste börja med en bokstav och får bara innehålla bokstäver, siffror och under streck. Namnet får inte innehålla blank steg. |
+| Description |Valfritt. Beskrivning av syftet med indataparametern. |
 | Typ | Valfritt. Datatyp förväntas för parametervärdet. Azure Portal ger en lämplig kontroll för data typen för varje parameter när du uppmanas att ange indata. Parameter typer som stöds är sträng, Int32, Int64, decimal, Boolean, DateTime och Object. Om du inte väljer någon datatyp används strängen som standard.|
 | Obligatorisk | Valfritt. Inställning som anger om ett värde måste anges för parametern. Om du väljer `yes` måste du ange ett värde när Runbook startas. Om du väljer `no` krävs inget värde när runbooken startas och ett standardvärde kan användas. Det går inte att starta runbooken om du inte anger något värde för varje obligatorisk parameter som inte har något definierat standardvärde. |
 | Standardvärde | Valfritt. Det värde som används för en parameter om det inte skickas i när runbooken startas. Om du vill ange ett standardvärde väljer du `Custom` . Välj `None` om du inte vill ange något standardvärde. |
@@ -373,7 +373,7 @@ I följande exempel används utdata från en aktivitet `Get Twitter Connection` 
 
 ## <a name="authenticate-to-azure-resources"></a>Autentisera till Azure-resurser
 
-Runbooks i Azure Automation som hanterar Azure-resurser kräver autentisering till Azure. [Kör som-kontot](./manage-runas-account.md), som även kallas för tjänstens huvud namn, är standard mekanismen som en Automation-Runbook använder för att få åtkomst till Azure Resource Manager resurser i din prenumeration. Du kan lägga till den här funktionen i en grafisk Runbook genom att lägga till `AzureRunAsConnection` anslutnings till gången, som använder PowerShell-cmdleten [Get-AutomationConnection](/system-center/sma/manage-global-assets) till arbets ytan. Du kan också lägga till cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Det här scenariot illustreras i följande exempel.
+Runbooks i Azure Automation som hanterar Azure-resurser kräver autentisering till Azure. [Kör som-kontot](./automation-security-overview.md), som även kallas för tjänstens huvud namn, är standard mekanismen som en Automation-Runbook använder för att få åtkomst till Azure Resource Manager resurser i din prenumeration. Du kan lägga till den här funktionen i en grafisk Runbook genom att lägga till `AzureRunAsConnection` anslutnings till gången, som använder PowerShell-cmdleten [Get-AutomationConnection](/system-center/sma/manage-global-assets) till arbets ytan. Du kan också lägga till cmdleten [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Det här scenariot illustreras i följande exempel.
 
 ![Aktiviteter för kör som-autentisering](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -388,7 +388,7 @@ Nästa aktivitet, `Connect-AzAccount` , lägger till det autentiserade kör som-
 >[!NOTE]
 >För PowerShell-Runbooks `Add-AzAccount` och `Add-AzureRMAccount` är alias för `Connect-AzAccount` . Observera att dessa alias inte är tillgängliga för dina grafiska runbooks. En grafisk Runbook kan bara använda `Connect-AzAccount` sig själv.
 
-För parameter fälten **APPLICATIONID**, **CERTIFICATETHUMBPRINT**och **TENANTID**anger du namnet på egenskapen för fält Sök vägen, eftersom aktiviteten matar ut ett objekt med flera egenskaper. Annars Miss lyckas den vid försök att autentisera när runbooken körs. Det här är vad du behöver för att autentisera din Runbook med kör som-kontot.
+För parameter fälten **APPLICATIONID**, **CERTIFICATETHUMBPRINT** och **TENANTID** anger du namnet på egenskapen för fält Sök vägen, eftersom aktiviteten matar ut ett objekt med flera egenskaper. Annars Miss lyckas den vid försök att autentisera när runbooken körs. Det här är vad du behöver för att autentisera din Runbook med kör som-kontot.
 
 Vissa prenumeranter skapar ett Automation-konto med hjälp av ett [Azure AD-användarkonto](./shared-resources/credentials.md) för att hantera den klassiska Azure-distributionen eller för Azure Resource Manager resurser. För att upprätthålla bakåtkompatibilitet för de här prenumeranterna är autentiseringen som används i din Runbook en `Add-AzureAccount` cmdlet med en [referens till gång](./shared-resources/credentials.md). Till gången representerar en Active Directory användare med åtkomst till Azure-kontot.
 

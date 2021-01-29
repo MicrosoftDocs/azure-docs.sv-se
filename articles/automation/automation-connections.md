@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734002"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054271"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Hantera anslutningar i Azure Automation
 
@@ -35,7 +35,7 @@ Azure Automation gör följande inbyggda anslutnings typer tillgängliga:
 * `AzureServicePrincipal` – Representerar en anslutning som används av kör som-kontot i Azure.
 * `AzureClassicCertificate` – Representerar en anslutning som används av det klassiska kör som-kontot i Azure.
 
-I de flesta fall behöver du inte skapa en anslutnings resurs eftersom den skapas när du skapar ett [Kör som-konto](manage-runas-account.md).
+I de flesta fall behöver du inte skapa en anslutnings resurs eftersom den skapas när du skapar ett [Kör som-konto](automation-security-overview.md).
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>PowerShell-cmdletar för åtkomst till anslutningar
 
@@ -52,7 +52,7 @@ Cmdletarna i följande tabell skapar och hanterar Automation-anslutningar med Po
 
 Den interna cmdleten i följande tabell används för att få åtkomst till anslutningar i dina runbooks och DSC-konfigurationer. Denna cmdlet ingår i den globala modulen `Orchestrator.AssetManagement.Cmdlets` . Mer information finns i [interna cmdletar](shared-resources/modules.md#internal-cmdlets).
 
-|Intern cmdlet|Beskrivning|
+|Intern cmdlet|Description|
 |---|---|
 |`Get-AutomationConnection` | Hämtar värdena för de olika fälten i anslutningen och returnerar dem som en [hash](/powershell/module/microsoft.powershell.core/about/about_hash_tables)-tabellen. Du kan sedan använda den här hash-tabellen med lämpliga kommandon i Runbook-eller DSC-konfigurationen.|
 

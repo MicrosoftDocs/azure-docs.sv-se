@@ -1,5 +1,5 @@
 ---
-title: Referens för Azure Blob Storage
+title: Referens för Azure-Blob Storage
 description: Hitta Azure Blob Storage API-referens, README-filer och klient biblioteks paket.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 04eca391fd02e18d4faed5e4f435e44e5675c4bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70178a955fe4afcfc0c695d34e3c1466773d802d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912288"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054084"
 ---
-# <a name="azure-blob-storage-reference"></a>Referens för Azure Blob Storage
+# <a name="azure-blob-storage-reference"></a>Referens för Azure-Blob Storage
 
 Hitta Azure Blob Storage API-referens, biblioteks paket, viktigt-filer och komma igång-artiklar.
 
@@ -25,8 +25,8 @@ I följande tabell visas referens och exempel dokumentation för Azure Blob Stor
 
 |  Version  | Referens dokumentation | Paket | Snabbstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Blob Storage-klient bibliotek för .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Snabbstart: Azure Blob Storage-klientbiblioteket v12 för .NET](./storage-quickstart-blobs-dotnet.md) |
-| 11. x | [Microsoft. Azure. Storage. blob-namnrymd](/dotnet/api/microsoft.azure.storage.blob) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Snabb start: klient biblioteket för Azure Blob Storage-V11 för .NET](./storage-quickstart-blobs-dotnet-legacy.md) |
+| 12. x | [Azure Blob Storage-klient bibliotek för .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Snabb start: Azure Blob Storage V12 för klient bibliotek för .NET](./storage-quickstart-blobs-dotnet.md) |
+| 11. x | [Microsoft. Azure. Storage. blob-namnrymd](/dotnet/api/microsoft.azure.storage.blob) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Snabb start: Azure Blob Storage V11 för klient bibliotek för .NET](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>Lagringshantering
 
@@ -63,7 +63,7 @@ I följande tabell visas referens dokumentation för Azure Storage Management Ja
 
 ## <a name="python-client-libraries"></a>Python-klient bibliotek
 
-I följande tabell visas referens och exempel dokumentation för python-API: er för Azure Blob Storage.
+I följande tabell visas referens och exempel dokumentation för Azure Blob Storage python-API: er.
 
 |  Version  | Referens dokumentation | Paket | Snabbstart |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,7 +72,7 @@ I följande tabell visas referens och exempel dokumentation för python-API: er 
 
 ## <a name="javascript-client-libraries"></a>Java Script-klient bibliotek
 
-I följande tabell visas referens och exempel dokumentation för API: er för Azure Blob Storage.
+I följande tabell visas referens och exempel dokumentation för Azure Blob Storage JavaScript-API: er.
 
 |  Version  | Referens dokumentation | Paket | Snabbstart |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -81,7 +81,7 @@ I följande tabell visas referens och exempel dokumentation för API: er för Az
 
 ## <a name="rest-apis"></a>REST API:er
 
-I följande tabell visas referens och exempel dokumentation för REST-API: er för Azure Blob Storage.
+I följande tabell visas referens och exempel dokumentation för Azure Blob Storage REST-API: er.
 
 | Referens dokumentation | Översikt |
 | ----------------------- | -------- |

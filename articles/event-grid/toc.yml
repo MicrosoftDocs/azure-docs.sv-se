@@ -42,6 +42,8 @@
       href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Hantera Azure Communication Services-händelser
       href: ../communication-services/quickstarts/telephony-sms/handle-sms-events.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Azure cache för Redis-händelser
+      href: ../azure-cache-for-redis/cache-event-grid-quickstart-portal.md?toc=%2fazure%2fevent-grid%2ftoc.json
 - name: Självstudier
   items:
     - name: E-postmeddelande när en virtuell dator ändras
@@ -138,6 +140,8 @@
               href: event-schema-azure-signalr.md
             - name: Azure-prenumerationer
               href: event-schema-subscriptions.md
+            - name: Azure Cache for Redis
+              href: event-schema-azure-cache.md
     - name: Partnerhändelser
       items:
         - name: Översikt över partnerhändelser

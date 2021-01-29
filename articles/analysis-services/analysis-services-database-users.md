@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013601"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054101"
 ---
 # <a name="manage-database-roles-and-users"></a>Hantera databas roller och användare
 
@@ -30,11 +30,13 @@ När du skapar ett tabell modell projekt skapar du roller och lägger till anvä
 
 Använd om du vill lägga till en **säkerhets grupp** `obj:groupid@tenantid` .
 
+När du lägger till en **tjänst huvud namns** användning `app:appid@tenantid` .
+
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Lägga till eller hantera roller och användare i Visual Studio  
   
-1.  Högerklicka på **roller**i **tabell modell Utforskaren**.  
+1.  Högerklicka på **roller** i **tabell modell Utforskaren**.  
   
-2.  Klicka på **ny**i **roll hanteraren**.  
+2.  Klicka på **ny** i **roll hanteraren**.  
   
 3.  Ange ett namn för rollen.  
   
@@ -42,9 +44,9 @@ Använd om du vill lägga till en **säkerhets grupp** `obj:groupid@tenantid` .
   
 4.  Välj en av följande behörigheter:  
   
-    |Behörighet|Beskrivning|  
+    |Behörighet|Description|  
     |----------------|-----------------|  
-    |**Inga**|Medlemmar kan inte läsa eller ändra modell schemat och kan inte fråga efter data.|  
+    |**Ingen**|Medlemmar kan inte läsa eller ändra modell schemat och kan inte fråga efter data.|  
     |**Läs**|Medlemmar kan fråga data (baserat på rad filter) men inte ändra modell schema.|  
     |**Läsa och bearbeta**|Medlemmar kan fråga data (baserat på rad nivå filter) och köra process och bearbeta alla åtgärder, men kan inte ändra modell schemat.|  
     |**Process**|Medlemmar kan köra process och bearbeta alla åtgärder. Det går inte att läsa eller ändra modell schema och kan inte fråga efter data.|  
@@ -71,13 +73,13 @@ Om du vill lägga till roller och användare i en distribuerad modell databas m�
 
 3. Välj en behörighet.
 
-   |Behörighet|Beskrivning|  
+   |Behörighet|Description|  
    |----------------|-----------------|  
    |**Fullständig behörighet (administratör)**|Medlemmar kan ändra modell schema, bearbeta och kan fråga alla data.| 
    |**Behandla databas**|Medlemmar kan köra process och bearbeta alla åtgärder. Det går inte att ändra modell schema och kan inte fråga efter data.|  
    |**Läs**|Medlemmar kan fråga data (baserat på rad filter) men inte ändra modell schema.|  
   
-4. Klicka på **medlemskap**och ange sedan en användare eller grupp i din klient organisations Azure AD via e-postadress.
+4. Klicka på **medlemskap** och ange sedan en användare eller grupp i din klient organisations Azure AD via e-postadress.
 
      ![Lägg till användare](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 

@@ -1,18 +1,18 @@
 ---
 title: Konfigurera en utvecklings miljö i Azure våren Cloud | Microsoft Docs
 description: Lär dig hur du använder blå-grön-distribution med Azure våren Cloud
-author: bmitchell287
+author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 72cf5553bec5985ba0310b4a347b0d2c60da6924
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090717"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053117"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Konfigurera en utvecklings miljö i Azure våren Cloud
 
@@ -22,7 +22,8 @@ Den här artikeln beskriver hur du konfigurerar en mellanlagrings distribution m
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Den här artikeln förutsätter att du redan har distribuerat PiggyMetrics-programmet från vår [själv studie kurs om hur du startar ett Azure våren Cloud-program](./spring-cloud-quickstart.md). PiggyMetrics består av tre program: "Gateway", "Account-service" och "auth-service".  
+* Ett program som körs.  Se [snabb start: Distribuera ditt första Azure våren Cloud-program](spring-cloud-quickstart.md).
+* Tillägg för Azure CLI [ASC](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
 Om du vill använda ett annat program för det här exemplet måste du göra en enkel ändring i en offentlig del av programmet.  Den här ändringen särskiljer mellanlagrings distributionen från produktionen.
 
@@ -39,51 +40,84 @@ Installera Azure våren Cloud-tillägget för Azure CLI med hjälp av följande 
 az extension add --name spring-cloud
 ```
     
-## <a name="view-all-deployments"></a>Visa alla distributioner
+## <a name="view-apps-and-deployments"></a>Visa appar och distributioner
 
-Gå till tjänst instansen i Azure Portal och välj **Deployment Management** för att visa alla distributioner. Om du vill visa mer information kan du välja varje distribution.
+Visa distribuerade appar med följande procedurer.
+
+1. Gå till Azure våren Cloud-instansen i Azure Portal.
+
+1. Öppna **distributioner** i det vänstra navigerings fönstret.
+
+    [![Distribution-föråldrad](media/spring-cloud-blue-green-staging/deployments.png)](media/spring-cloud-blue-green-staging/deployments.png)
+
+1. Öppna bladet "appar" för att visa appar för din tjänst instans.
+
+    [![Appar – instrument panel](media/spring-cloud-blue-green-staging/app-dashboard.png)](media/spring-cloud-blue-green-staging/app-dashboard.png)
+
+1. Du kan klicka på en app och Visa information.
+
+    [![Appar – Översikt](media/spring-cloud-blue-green-staging/app-overview.png)](media/spring-cloud-blue-green-staging/app-overview.png)
+
+1. Öppna bladet **distributioner** om du vill se alla distributioner av appen. Distributions rutnätet visar om distributionen är produktion eller mellanlagring.
+
+    [![Distributions instrument panel](media/spring-cloud-blue-green-staging/deployments-dashboard.png)](media/spring-cloud-blue-green-staging/deployments-dashboard.png)
+
+1. Du kan klicka på namnet på distributionen för att Visa distributions översikten. I det här fallet heter den enda distributionen som *standard*.
+
+    [![Översikt över distributioner](media/spring-cloud-blue-green-staging/deployments-overview.png)](media/spring-cloud-blue-green-staging/deployments-overview.png)
+    
 
 ## <a name="create-a-staging-deployment"></a>Skapa en mellanlagrings distribution
 
-1. I din lokala utvecklings miljö gör du en liten ändring i PiggyMetrics Gateway-programmet. Du kan till exempel ändra färgen i filen *Gateway/src/main/Resources/static/CSS/start. CSS* . På så sätt kan du enkelt särskilja de två distributionerna. Skapa jar-paketet genom att köra följande kommando: 
+1. Gör en liten ändring i ditt program i din lokala utvecklings miljö. På så sätt kan du enkelt särskilja de två distributionerna. Skapa jar-paketet genom att köra följande kommando: 
 
     ```console
-    mvn clean package
+    mvn clean package -DskipTests
     ```
 
 1. Skapa en ny distribution i Azure CLI och ge den namnet "grön" för mellanlagrings distributionen.
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app gateway -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
     ```
 
-1. När distributionen har slutförts går du till sidan Gateway från **program instrument panelen**och visar alla dina instanser på fliken **program instanser** till vänster.
+1. När CLI-distributionen har slutförts öppnar du appens sida från **instrument panelen för program** och visar alla dina instanser på fliken **distributioner** till vänster.
+
+   [![Distributions instrument panel efter grön distribution](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)](media/spring-cloud-blue-green-staging/deployments-dashboard-2.png)
+
   
 > [!NOTE]
 > Identifierings statusen är *OUT_OF_SERVICE* så att trafiken inte dirigeras till den här distributionen innan verifieringen är klar.
 
 ## <a name="verify-the-staging-deployment"></a>Verifiera mellanlagrings distributionen
 
-1. Gå tillbaka till sidan **distributions hantering** och välj den nya distributionen. Distributions statusen *bör visas.* Knappen **tilldela/ta bort tilldelnings domän** ska vara nedtonad, eftersom miljön är en mellanlagrings miljö.
-
-1. I **översikts** fönstret bör du se en **test slut punkt**. Kopiera och klistra in den i ett nytt webbläsarfönster och den nya PiggyMetrics-sidan ska visas.
+För att kontrol lera att den gröna utvecklings utvecklingen fungerar:
+1. Gå till **distributioner** och klicka på `green` **mellanlagrings distributionen**.
+1. På sidan **Översikt** klickar du på **test slut punkten**.
+1. Då öppnas mellanlagrings versionen som visar dina ändringar.
 
 >[!TIP]
 > * Bekräfta att test slut punkten slutar med ett snedstreck (/) för att säkerställa att CSS-filen läses in på rätt sätt.  
 > * Om din webbläsare kräver att du anger inloggnings uppgifter för att visa sidan använder du [URL-avkodning](https://www.urldecoder.org/) för att avkoda test slut punkten. URL-avkodning returnerar en URL i formatet "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/Gateway/Green".  Använd det här formuläret för att få åtkomst till din slut punkt.
 
 >[!NOTE]    
-> Konfigurations Server inställningarna gäller både för din mellanlagrings miljö och produktion. Om du till exempel anger kontext Sök vägen ( `server.servlet.context-path` ) för din app gateway i config server som *somepath*ändras sökvägen till den gröna distributionen till "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/Gateway/Green/somepath/...".
+> Konfigurations Server inställningarna gäller både för din mellanlagrings miljö och produktion. Om du till exempel anger kontext Sök vägen ( `server.servlet.context-path` ) för din app gateway i config server som *somepath* ändras sökvägen till den gröna distributionen till "https:// \<username> : \<password> @ \<cluster-name> . test.azureapps.io/Gateway/Green/somepath/...".
  
  Om du besöker den offentliga app-gatewayen bör du se den gamla sidan utan din nya ändring.
     
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>Ange den gröna distributionen som produktions miljö
 
-1. När du har verifierat din ändring i din mellanlagrings miljö kan du skicka den till produktion. Gå tillbaka till **distributions hantering**och markera kryss rutan **Gateway** -program.
+1. När du har verifierat din ändring i din mellanlagrings miljö kan du skicka den till produktion. Gå tillbaka till **distributions hantering** och välj det program som finns för närvarande i `Production` .
 
-2. Välj **Ange distribution**.
-3. I listan **produktions distribution** väljer du **grönt**och väljer sedan **Använd**.
-4. Gå till **översikts** sidan för gateway-program. Om du redan har tilldelat en domän för ditt Gateway-program visas URL: en i fönstret **Översikt** . Om du vill visa den ändrade PiggyMetrics-sidan väljer du webb adressen och går till webbplatsen.
+1. Klicka på ellipserna efter **registrerings status** och Ställ in produktions versionen på `staging` .
+
+   [![Distributioner ange mellanlagrings distribution](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
+
+1. Gå tillbaka till sidan **distributions hantering** .  `green`Distributions distributionens status bör visas. Detta är nu den produktions version som körs.
+
+   [![Distributioner ange distributions resultat för mellanlagring](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
+
+1. Kopiera och klistra in webb adressen i ett nytt webbläsarfönster så visas sidan nytt program med dina ändringar.
 
 >[!NOTE]
 > När du har angett den gröna distributionen som produktions miljö blir den tidigare distributionen den mellanlagrings distributionen.
@@ -108,4 +142,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Snabb start: Distribuera ditt första Azure våren Cloud-program](spring-cloud-quickstart.md)
+* [CI/CD för Azure våren Cloud](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-cicd?branch=pr-en-us-142929&pivots=programming-language-java)

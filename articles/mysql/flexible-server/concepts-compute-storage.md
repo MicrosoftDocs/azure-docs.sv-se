@@ -1,17 +1,17 @@
 ---
 title: Beräknings-och lagrings alternativ – Azure Database for MySQL-flexibel Server
 description: I den här artikeln beskrivs beräknings-och lagrings alternativen i Azure Database for MySQL-flexibel Server.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 267b362c94b04b3be634f7e61c2b6d67604d7854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2021
+ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954689"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052354"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Beräknings-och lagrings alternativ i Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -72,7 +72,7 @@ De detaljerade specifikationerna för de tillgängliga Server typerna är följa
 För att få mer information om beräknings serien tillgänglig, se Azure VM-dokumentation för [Burstable (B-serien)](../../virtual-machines/sizes-b-series-burstable.md), [generell användning (Ddsv4-serien)](../../virtual-machines/ddv4-ddsv4-series.md)och [minnesoptimerade (Edsv4-serien)](../../virtual-machines/edv4-edsv4-series.md).
 
 >[!NOTE]
->Den ackumulerade krediten kan gå förlorad om du använder en data behandlings nivå [(B-serien)](../../virtual-machines/sizes-b-series-burstable.md) när servern startas om av någon anledning, t. ex. användare som initieras, planerat eller oplanerat underhåll. Orsaken är att den ackumulerade krediten kommer att behållas när Azure Database for MySQL startar om den på samma nod. När Azure Database for MySQL servern startar på nytt på en ny nod får den en inledande kredit. Mer information finns i [vanliga frågor och svar om att läsa burst (B-serien)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
+>Om den virtuella datorn har startats/stoppats eller startats om, kan krediterna gå förlorade för att kunna användas [(B-serien)](../../virtual-machines/sizes-b-series-burstable.md) . Mer information finns i [vanliga frågor och svar om Burst (B-serien)](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart).
 
 ## <a name="storage"></a>Storage
 

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842571"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054067"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Självstudie: skapa schemabaserade och återkommande automatiserings arbets flöden med Azure Logic Apps
 
@@ -32,7 +32,7 @@ När du är klar ser logikappen ut som det här arbetsflödet på en hög nivå:
 
 ![Skärm bild som visar översikt på hög nivå för ett exempel på ett Logic app-arbetsflöde.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto och prenumeration. Om du inte har någon prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/).
 
@@ -42,6 +42,8 @@ När du är klar ser logikappen ut som det här arbetsflödet på en hög nivå:
   > Om du vill använda Gmail Connector kan endast företags konton i G-Suite använda den här anslutningen utan begränsning i Logic Apps. Om du har ett Gmail-konto kan du använda den här anslutningen med endast vissa Google-godkända tjänster, eller så kan du [skapa en Google-klient som används för autentisering med din Gmail-anslutning](/connectors/gmail/#authentication-and-bring-your-own-application). Mer information finns i [principer för data säkerhet och sekretess för Google Connectors i Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * För att kunna hämta restiden för en resväg behöver du en åtkomstnyckel för Bing Maps-API:t. Hämta nyckeln genom att följa anvisningarna för [hur du hämtar en Bing Maps-nyckel](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key).
+
+* Om din Logi Kap par behöver kommunicera via en brand vägg som begränsar trafik till vissa IP-adresser, måste brand väggen tillåta åtkomst  för både [inkommande](logic-apps-limits-and-config.md#inbound) och [utgående](logic-apps-limits-and-config.md#outbound) ip-adresser som används av Logic Apps tjänst eller körning i den Azure-region där din Logic app finns. Om din Logic app även använder [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Office 365 Outlook Connector eller SQL-anslutning, eller använder [anpassade anslutningar](/connectors/custom-connectors/), måste brand väggen också tillåta åtkomst för *alla* [utgående IP-adresser för hanterad anslutning](logic-apps-limits-and-config.md#outbound) i din Logic app Azure-region.
 
 ## <a name="create-your-logic-app"></a>Skapa en logikapp
 
@@ -57,10 +59,10 @@ När du är klar ser logikappen ut som det här arbetsflödet på en hög nivå:
 
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
-   | **Prenumeration** | <*Azure-prenumeration-namn*> | Namnet på din Azure-prenumeration. I det här exemplet används `Pay-As-You-Go` . |
+   | **Prenumeration** | <*Azure-prenumeration-namn*> | Namnet på din Azure-prenumeration. I det här exemplet används `Pay-As-You-Go`. |
    | **Resursgrupp** | LA-TravelTime-RG | Namnet på Azure- [resurs gruppen](../azure-resource-manager/management/overview.md)som används för att organisera relaterade resurser. I det här exemplet skapas en ny resurs grupp med namnet `LA-TravelTime-RG` . |
-   | **Namn** | LA-TravelTime | Din Logic Apps namn, som endast får innehålla bokstäver, siffror, bindestreck ( `-` ), under streck ( `_` ), parenteser ( `(` , `)` ) och punkter ( `.` ). I det här exemplet används `LA-TravelTime` . |
-   | **Plats** | USA, västra | Den region där du vill lagra information om din Logic Apps. I det här exemplet används `West US` . |
+   | **Namn** | LA-TravelTime | Din Logic Apps namn, som endast får innehålla bokstäver, siffror, bindestreck ( `-` ), under streck ( `_` ), parenteser ( `(` , `)` ) och punkter ( `.` ). I det här exemplet används `LA-TravelTime`. |
+   | **Plats** | USA, västra | Den region där du vill lagra information om din Logic Apps. I det här exemplet används `West US`. |
    | **Log Analytics** | Av | Behåll inställningen **Av** för diagnostisk loggning. |
    ||||
 
@@ -129,9 +131,9 @@ Din Logi Kap par är nu Live i Azure Portal men gör inte något annat än utlö
 
 Nu när du har en utlösare lägger du till en [åtgärd](../logic-apps/logic-apps-overview.md#logic-app-concepts) som hämtar restiden mellan två platser. Logic Apps tillhandahåller en anslutningsapp för Bing Maps-API:t så att du lätt kan hämta den här informationen. Innan du börjar kontrollerar du att du har en Bing Maps API-nyckel (beskrivs i förutsättningarna för den här kursen).
 
-1. I Logic Apps designer väljer du **nytt steg**under upprepnings utlösaren.
+1. I Logic Apps designer väljer du **nytt steg** under upprepnings utlösaren.
 
-1. Under **Välj en åtgärd**väljer du **standard**. I rutan Sök anger du `bing maps` och väljer åtgärden **Hämta väg**.
+1. Under **Välj en åtgärd** väljer du **standard**. I rutan Sök anger du `bing maps` och väljer åtgärden **Hämta väg**.
 
    ![Skärm bild som visar listan "Välj en åtgärd" som filtrerats efter "Bing Maps"-åtgärder och åtgärden "Hämta väg" vald.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-get-route-action.png)
 
@@ -141,13 +143,13 @@ Nu när du har en utlösare lägger du till en [åtgärd](../logic-apps/logic-ap
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Anslutnings namn** | Ja | BingMapsConnection | Ange ett namn på anslutningen. I det här exemplet används `BingMapsConnection` . |
+   | **Anslutnings namn** | Ja | BingMapsConnection | Ange ett namn på anslutningen. I det här exemplet används `BingMapsConnection`. |
    | **API-nyckel** | Ja | <*Bing-Maps-API-nyckel*> | Ange Bing Maps-API-nyckeln som du har fått tidigare. Om du inte har en Bing Maps-nyckel tar du reda på [hur du hämtar en nyckel](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Byt namn på åtgärden med den här beskrivningen: `Get route and travel time with traffic` .
 
-1. Öppna **listan Lägg till ny parameter**i åtgärden och välj dessa egenskaper.
+1. Öppna **listan Lägg till ny parameter** i åtgärden och välj dessa egenskaper.
 
    * **Optimera**
    * **Avståndsenhet**
@@ -182,7 +184,7 @@ Som standard returnerar åtgärden **Hämta väg** den aktuella res tiden med tr
 
 1. I designern, under åtgärden **Hämta väg** , väljer du **nytt steg**.
 
-1. Under **Välj en åtgärd**väljer du **inbyggt**. I rutan Sök anger du `variables` och väljer åtgärden **initiera variabel**.
+1. Under **Välj en åtgärd** väljer du **inbyggt**. I rutan Sök anger du `variables` och väljer åtgärden **initiera variabel**.
 
    ![Skärm bild som visar åtgärden initiera variabel vald.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
@@ -192,12 +194,12 @@ Som standard returnerar åtgärden **Hämta väg** den aktuella res tiden med tr
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Namn** | Ja | travelTime | Namnet på variabeln. I det här exemplet används `travelTime` . |
-   | **Typ** | Ja | Heltal | Datatypen för variabeln |
+   | **Namn** | Ja | travelTime | Namnet på variabeln. I det här exemplet används `travelTime`. |
+   | **Typ** | Ja | Integer | Datatypen för variabeln |
    | **Värde** | Inga | Ett uttryck som konverterar den aktuella res tiden från sekunder till minuter (se stegen under den här tabellen). | Det inledande värdet för variabeln |
    |||||
 
-   1. Skapa uttrycket för egenskapen **Value** genom att klicka i rutan så att listan med dynamiskt innehåll visas. Om det behövs kan du bredda webbläsaren tills den dynamiska listan visas. I listan med dynamiskt innehåll väljer du **uttryck**som visar uttrycks redigeraren.
+   1. Skapa uttrycket för egenskapen **Value** genom att klicka i rutan så att listan med dynamiskt innehåll visas. Om det behövs kan du bredda webbläsaren tills den dynamiska listan visas. I listan med dynamiskt innehåll väljer du **uttryck** som visar uttrycks redigeraren.
 
       ![Skärm bild som visar åtgärden "initiera variabel" med markören i egenskapen "value", som öppnar listan med dynamiskt innehåll.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings.png)
 
@@ -231,7 +233,7 @@ Lägg sedan till ett villkor som kontrollerar om den aktuella restiden är stör
 
 1. Under åtgärden **skapa variabel för att lagra res tiden** väljer du **nytt steg**.
 
-1. Under **Välj en åtgärd**väljer du **inbyggt**. Skriv `condition` i sökrutan. och Välj åtgärden med namnet **villkor**i listan åtgärder.
+1. Under **Välj en åtgärd** väljer du **inbyggt**. Skriv `condition` i sökrutan. och Välj åtgärden med namnet **villkor** i listan åtgärder.
 
    ![Skärm bild som visar åtgärden "villkor" vald](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -241,7 +243,7 @@ Lägg sedan till ett villkor som kontrollerar om den aktuella restiden är stör
 
    1. Klicka i rutan **Välj ett värde** i villkoret till vänster.
 
-   1. Från listan med dynamiskt innehåll som visas under **variabler**väljer du egenskapen med namnet **travelTime**.
+   1. Från listan med dynamiskt innehåll som visas under **variabler** väljer du egenskapen med namnet **travelTime**.
 
       ![Skärm bild som visar rutan "Välj ett värde" på villkorets vänstra sida med den dynamiska innehålls listan öppen och egenskapen "travelTime" har marker ATS.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
@@ -263,7 +265,7 @@ Lägg nu till en åtgärd som skickar e-post när res tiden överskrider din gr�
 
 1. I villkorets **sanna** gren väljer du **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**väljer du **standard**. Skriv `send email` i sökrutan. Listan returnerar många resultat så att du kan filtrera listan genom att först välja den e-postkoppling som du vill använda.
+1. Under **Välj en åtgärd** väljer du **standard**. Skriv `send email` i sökrutan. Listan returnerar många resultat så att du kan filtrera listan genom att först välja den e-postkoppling som du vill använda.
 
    Om du till exempel har ett Outlook-e-postkonto väljer du anslutnings typen för din kontotyp:
 
@@ -303,7 +305,7 @@ Lägg nu till en åtgärd som skickar e-post när res tiden överskrider din gr�
 
    1. Ange texten `Add extra travel time (minutes):` med ett avslutande blanksteg. Behåll markören i **text** rutan så att listan över dynamiskt innehåll förblir öppen.
 
-   1. I listan med dynamiskt innehåll väljer du **uttryck**som visar uttrycks redigeraren.
+   1. I listan med dynamiskt innehåll väljer du **uttryck** som visar uttrycks redigeraren.
 
       ![Skärm bild som visar listan med dynamiskt innehåll med uttrycket "Expression" markerat.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings.png)
 
@@ -358,14 +360,14 @@ Om du vill skapa andra Logi Kap par som använder **upprepnings** utlösaren kan
 
 Din Logic app fortsätter att köras tills du inaktiverar eller tar bort appen. När du inte längre behöver appen exempel logik tar du bort resurs gruppen som innehåller din Logic app och relaterade resurser.
 
-1. I sökrutan Azure Portal anger du namnet på resurs gruppen som du skapade. Välj resurs gruppen under **resurs grupper**i resultaten.
+1. I sökrutan Azure Portal anger du namnet på resurs gruppen som du skapade. Välj resurs gruppen under **resurs grupper** i resultaten.
 
    I det här exemplet skapades resurs gruppen med namnet `LA-TravelTime-RG` .
 
    ![Skärm bild som visar Azure Search-rutan med "La-Travel-Time-RG" angiven och * * LA-TravelTime-RG * * valt.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
-   > Om Azures start sida visar resurs gruppen under de **senaste resurserna**kan du välja gruppen från start sidan.
+   > Om Azures start sida visar resurs gruppen under de **senaste resurserna** kan du välja gruppen från start sidan.
 
 1. På menyn resurs grupp kontrollerar du att **Översikt** är markerat. I verktygsfältet i **översikts** fönstret väljer du **ta bort resurs grupp**.
 

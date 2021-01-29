@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: f3c147b292ab21bd4e568f9e52acef07396acc28
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878230"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052830"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Använda SNAT för utgående anslutningar
 
@@ -80,7 +80,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
 
  | Typer | Metod | IP-protokoll |
  | ------------ | ------ | ------------ |
- | Offentlig lastbalanserare | Användning av IP-adresser för belastningsutjämnare för [SNAT](#snat).| TCP </br> UDP |
+ | Standard offentlig belastningsutjämnare | Användning av IP-adresser för belastningsutjämnare för [SNAT](#snat).| TCP </br> UDP |
 
 
  #### <a name="description"></a>Description
@@ -103,8 +103,18 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
 
  I det här sammanhanget kallas de tillfälliga portarna som används för SNAT som SNAT-portar. Vi rekommenderar starkt att en [utgående regel](./outbound-rules.md) konfigureras explicit. Om du använder standard SNAT via en belastnings Utjämnings regel är SNAT-portarna fördelade enligt beskrivningen i [standard tilldelnings tabellen för SNAT-portar](#snatporttable).
 
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>Scenario 3: virtuell dator utan offentlig IP-adress och bakom interna standard Load Balancer
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Scenario 3: virtuell dator utan offentlig IP och bakom Basic Load Balancer
+
+ | Typer | Metod | IP-protokoll |
+ | ------------ | ------ | ------------ |
+ | Standard intern belastningsutjämnare | Ingen Internet anslutning.| Inget |
+
+ #### <a name="description"></a>Description
+ 
+När du använder en intern belastningsutjämnare med standard typ finns det ingen användning av tillfälliga IP-adresser för SNAT. Detta är att stödja säkerhet som standard och se till att alla IP-adresser som används av resursen kan konfigureras och kan reserveras. För att få en utgående anslutning till Internet när du använder en standard intern belastningsutjämnare, konfigurerar du en offentlig IP-adress på instans nivå för att följa beteendet i (scenario 1) [#scenario1] eller lägger till Server dels instanserna till en offentlig standard belastningsutjämnare med en utgående regel som kon figurer ATS i additon till den interna belastningsutjämnaren för att följa beteendet i (scenario 2) [#scenario2]. 
+
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>Scenario 4: virtuell dator utan offentlig IP och bakom Basic Load Balancer
 
 
  | Typer | Metod | IP-protokoll |
@@ -126,7 +136,6 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
 
 
  Använd inte det här scenariot för att lägga till IP-adresser i en lista över tillåtna. Använd scenario 1 eller 2 där du explicit deklarerar utgående beteende. [SNAT](#snat) -portar är fördelade enligt beskrivningen i [standard tilldelnings tabellen för SNAT-portar](#snatporttable).
-
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Uttömda portar
 

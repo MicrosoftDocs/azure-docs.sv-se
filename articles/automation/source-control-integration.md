@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579461"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050778"
 ---
 # <a name="use-source-control-integration"></a>Använda källkontrollsintegrering
 
@@ -29,7 +29,7 @@ Azure Automation stöder tre typer av käll kontroll:
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Ett lagrings lager för käll kontroll (GitHub eller Azure databaser)
-* Ett [Kör som-konto](manage-runas-account.md)
+* Ett [Kör som-konto](automation-security-overview.md#run-as-accounts)
 * De [senaste Azure-modulerna](automation-update-azure-modules.md) i ditt Automation-konto, inklusive `Az.Accounts` modulen (AZ-modul motsvarande `AzureRM.Profile` )
 
 > [!NOTE]
@@ -62,14 +62,14 @@ Använd den här proceduren för att konfigurera käll kontroll med Azure Portal
     |Mappsökväg     | Mapp som innehåller Runbooks som ska synkroniseras, till exempel **/Runbooks**. Endast Runbooks i den angivna mappen synkroniseras. Rekursion stöds inte.        |
     |Automatisk synkronisering<sup>1</sup>     | Inställning som aktiverar eller inaktiverar automatisk synkronisering när ett genomförande görs i käll kontrollens lagrings plats.        |
     |Publicera Runbook     | Inställning av på om Runbooks publiceras automatiskt efter synkronisering från käll kontroll och av annat sätt.           |
-    |Beskrivning     | Text som anger ytterligare information om käll kontrollen.        |
+    |Description     | Text som anger ytterligare information om käll kontrollen.        |
 
     <sup>1</sup> om du vill aktivera automatisk synkronisering när du konfigurerar käll kontrolls integrering med Azure databaser måste du vara projekt administratör.
 
    ![Översikt över käll kontroll](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Inloggningen för käll kontrollens lagrings plats kan skilja sig från din inloggning för Azure Portal. Se till att du är inloggad med rätt konto för käll kontrollens lagrings plats när du konfigurerar käll kontroll. Om det finns en tvivel öppnar du en ny flik i webbläsaren, loggar ut från **dev.Azure.com** , **VisualStudio.com** eller **GitHub.com** och försöker återansluta till käll kontroll.
+> Inloggningen för käll kontrollens lagrings plats kan skilja sig från din inloggning för Azure Portal. Se till att du är inloggad med rätt konto för käll kontrollens lagrings plats när du konfigurerar käll kontroll. Om det finns en tvivel öppnar du en ny flik i webbläsaren, loggar ut från **dev.Azure.com**, **VisualStudio.com** eller **GitHub.com** och försöker återansluta till käll kontroll.
 
 ### <a name="configure-source-control-in-powershell"></a>Konfigurera käll kontroll i PowerShell
 
@@ -86,7 +86,7 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Skapa käll kontroll anslutning för Azure databaser (git)
 
 > [!NOTE]
-> Azure databaser (git) använder en URL som har åtkomst till **dev.Azure.com** i stället för **VisualStudio.com** , som används i tidigare format. Det äldre URL-formatet `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` är inaktuellt men stöds fortfarande. Det nya formatet rekommenderas.
+> Azure databaser (git) använder en URL som har åtkomst till **dev.Azure.com** i stället för **VisualStudio.com**, som används i tidigare format. Det äldre URL-formatet `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` är inaktuellt men stöds fortfarande. Det nya formatet rekommenderas.
 
 
 ```powershell-interactive
@@ -96,7 +96,7 @@ New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<a
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Skapa käll kontroll anslutning för Azure databaser (TFVC)
 
 > [!NOTE]
-> Azure-databaser (TFVC) använder en URL som har åtkomst till **dev.Azure.com** i stället för **VisualStudio.com** , som används i tidigare format. Det äldre URL-formatet `https://<accountname>.visualstudio.com/<projectname>/_versionControl` är inaktuellt men stöds fortfarande. Det nya formatet rekommenderas.
+> Azure-databaser (TFVC) använder en URL som har åtkomst till **dev.Azure.com** i stället för **VisualStudio.com**, som används i tidigare format. Det äldre URL-formatet `https://<accountname>.visualstudio.com/<projectname>/_versionControl` är inaktuellt men stöds fortfarande. Det nya formatet rekommenderas.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -209,4 +209,4 @@ För närvarande kan du inte använda Azure Portal för att uppdatera PAT i käl
 ## <a name="next-steps"></a>Nästa steg
 
 * För att integrera käll kontroll i Azure Automation, se [Azure Automation: käll kontroll integrering i Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/).  
-* Information om hur du integrerar Runbook-åtkomstkontroll med Visual Studio Online finns i [Azure Automation: integrera Runbook-källkod med Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).
+* Information om hur du integrerar Runbook-åtkomstkontroll med Visual Studio Codespaces finns i [Azure Automation: integrera Runbook-källkod med Visual Studio Codespaces](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).

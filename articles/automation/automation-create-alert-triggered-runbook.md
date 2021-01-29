@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 03f24bf4cf379504479e554b129f34d94ca423cd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896367"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054254"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Använda en avisering för att utlösa en Azure Automation Runbook
 
@@ -45,7 +45,7 @@ Enligt beskrivningen i föregående avsnitt har varje typ av avisering ett annat
 
 I det här exemplet används en avisering från en virtuell dator. Den hämtar VM-data från nytto lasten och använder sedan denna information för att stoppa den virtuella datorn. Anslutningen måste konfigureras i Automation-kontot där runbooken körs. När du använder aviseringar för att utlösa Runbooks, är det viktigt att kontrol lera aviserings statusen i den Runbook som utlöses. Runbooken utlöses varje tillfälle som aviseringen ändrar tillstånd. Aviseringar har flera tillstånd, med de två vanligaste som aktive ras och löses. Kontrol lera om det finns tillstånd i din Runbook-logik för att säkerställa att Runbook inte körs mer än en gång. Exemplet i den här artikeln visar hur du söker efter aviseringar med endast tillstånd aktiverat.
 
-Runbooken använder `AzureRunAsConnection` [Kör som-kontot](./manage-runas-account.md) för anslutnings till gång för att autentisera med Azure för att utföra hanterings åtgärden mot den virtuella datorn.
+Runbooken använder `AzureRunAsConnection` [Kör som-kontot](./automation-security-overview.md) för anslutnings till gång för att autentisera med Azure för att utföra hanterings åtgärden mot den virtuella datorn.
 
 Använd det här exemplet för att skapa en Runbook med namnet **Stop-AzureVmInResponsetoVMAlert**. Du kan ändra PowerShell-skriptet och använda det med många olika resurser.
 

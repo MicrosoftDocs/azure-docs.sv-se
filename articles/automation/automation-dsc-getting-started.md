@@ -2,19 +2,15 @@
 title: Kom igång med konfiguration av Azure Automation tillstånd
 description: Den här artikeln beskriver hur du utför de vanligaste uppgifterna i Azure Automation tillstånds konfiguration.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 25f5e92aa8aa211782bc238781c59b9ca0511173
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897249"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051506"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Kom igång med konfiguration av Azure Automation tillstånd
 
@@ -26,7 +22,7 @@ Om du vill ha en exempel miljö som redan har kon figurer ATS utan att följa st
 
 Följande krävs för att slutföra exemplen i den här artikeln:
 
-- Ett Azure Automation-konto. Instruktioner om hur du skapar ett Kör som-konto för Azure Automation finns i [Azure Kör som-konto](./manage-runas-account.md).
+- Ett Azure Automation-konto. Mer information om ett Automation-konto och dess krav finns i [Översikt över Automation-kontots autentisering](./automation-security-overview.md).
 - En Azure Resource Manager virtuell dator (inte klassisk) som kör ett [operativ system som stöds](automation-dsc-overview.md#operating-system-requirements). Instruktioner om hur du skapar en virtuell dator finns i [Skapa din första virtuella Windows-dator i Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="create-a-dsc-configuration"></a>Skapa en DSC-konfiguration

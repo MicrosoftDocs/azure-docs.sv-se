@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 86f2abb8bfb95d5b9e72936ca3e9464747c00b1c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049311"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050506"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Fråga enheter i digitala Azure-enheter 
 
@@ -45,4 +45,4 @@ Mer information om hur du frågar Azure Digital-dubbla finns på:
 * [*Anvisningar: fråga det dubbla diagrammet*](how-to-query-graph.md)
 * [Dokumentation om API-referens för frågor](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Du hittar frågor relaterade till Azures digitala dubbla gränser i [*referensen: tjänst begränsningar*](reference-service-limits.md).
+Du hittar frågor relaterade till Azure Digitals-relaterade gränser i [*Azure Digitals dubbla gränser-gränser*](reference-service-limits.md).

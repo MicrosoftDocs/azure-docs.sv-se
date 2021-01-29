@@ -2,62 +2,62 @@
 title: Händelse leverans, hanterad tjänst identitet och privat länk
 description: I den här artikeln beskrivs hur du aktiverar hanterad tjänst identitet för ett Azure Event Grid-ämne. Använd den för att vidarebefordra händelser till destinationer som stöds.
 ms.topic: how-to
-ms.date: 10/22/2020
-ms.openlocfilehash: edb3e5ac8257a29ecd3835e1dfd4c116c3cc7164
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 01/28/2021
+ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368621"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054425"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Händelse leverans med en hanterad identitet
-I den här artikeln beskrivs hur du aktiverar en [hanterad tjänst identitet](../active-directory/managed-identities-azure-resources/overview.md) för Azure Event Grid-ämnen eller-domäner. Använd den för att vidarebefordra händelser till stödda destinationer som Service Bus köer och ämnen, Event Hub och lagrings konton.
+I den här artikeln beskrivs hur du aktiverar en [hanterad tjänst identitet](../active-directory/managed-identities-azure-resources/overview.md) för anpassade ämnen eller domäner i Azure Event Grid. Använd den för att vidarebefordra händelser till stödda destinationer som Service Bus köer och ämnen, Event Hub och lagrings konton.
 
 Här följer de steg som beskrivs i detalj i den här artikeln:
-1. Skapa ett ämne eller en domän med en tilldelad identitet eller uppdatera ett befintligt ämne eller en befintlig domän för att aktivera identitet. 
+1. Skapa ett anpassat ämne eller en domän med en tilldelad identitet eller uppdatera ett befintligt anpassat ämne eller domän för att aktivera identitet. 
 1. Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö).
 1. När du skapar händelse prenumerationer kan du aktivera användningen av identiteten för att leverera händelser till målet. 
 
 > [!NOTE]
 > För närvarande går det inte att leverera händelser med [privata slut punkter](../private-link/private-endpoint-overview.md). Mer information finns i avsnittet [privata slut punkter](#private-endpoints) i slutet av den här artikeln. 
 
-## <a name="create-a-topic-or-domain-with-an-identity"></a>Skapa ett ämne eller en domän med en identitet
+## <a name="create-a-custom-topic-or-domain-with-an-identity"></a>Skapa ett anpassat ämne eller en domän med en identitet
 Först ska vi titta på hur du skapar ett ämne eller en domän med en Systemhanterad identitet.
 
 ### <a name="use-the-azure-portal"></a>Använda Azure-portalen
-Du kan aktivera systemtilldelad identitet för ett ämne eller en domän medan du skapar den i Azure Portal. Följande bild visar hur du aktiverar en Systemhanterad identitet för ett ämne. I princip väljer du alternativet **Aktivera en systemtilldelad identitet** på sidan **Avancerat** i guiden skapa ämne. Du ser det här alternativet på sidan **Avancerat** i guiden skapa domän också. 
+Du kan aktivera systemtilldelad identitet för ett anpassat ämne eller en domän medan du skapar den i Azure Portal. Följande bild visar hur du aktiverar en Systemhanterad identitet för ett anpassat ämne. I princip väljer du alternativet **Aktivera en systemtilldelad identitet** på sidan **Avancerat** i guiden skapa ämne. Du ser det här alternativet på sidan **Avancerat** i guiden skapa domän också. 
 
-![Aktivera identitet när du skapar ett ämne](./media/managed-service-identity/create-topic-identity.png)
+![Aktivera identitet när du skapar ett anpassat ämne](./media/managed-service-identity/create-topic-identity.png)
 
 ### <a name="use-the-azure-cli"></a>Använda Azure CLI
-Du kan också använda Azure CLI för att skapa ett ämne eller en domän med en tilldelad identitet. Använd `az eventgrid topic create` kommandot med `--identity` parametern inställt på `systemassigned` . Om du inte anger något värde för den här parametern används standardvärdet `noidentity` . 
+Du kan också använda Azure CLI för att skapa ett anpassat ämne eller en domän med en tilldelad identitet. Använd `az eventgrid topic create` kommandot med `--identity` parametern inställt på `systemassigned` . Om du inte anger något värde för den här parametern används standardvärdet `noidentity` . 
 
 ```azurecli-interactive
-# create a topic with a system-assigned identity
+# create a custom topic with a system-assigned identity
 az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCATION>  --identity systemassigned
 ```
 
 På samma sätt kan du använda `az eventgrid domain create` kommandot för att skapa en domän med en Systemhanterad identitet.
 
-## <a name="enable-an-identity-for-an-existing-topic-or-domain"></a>Aktivera en identitet för ett befintligt ämne eller en befintlig domän
-I föregående avsnitt har du lärt dig hur du aktiverar en Systemhanterad identitet när du skapade ett ämne eller en domän. I det här avsnittet får du lära dig hur du aktiverar en Systemhanterad identitet för ett befintligt ämne eller en befintlig domän. 
+## <a name="enable-an-identity-for-an-existing-custom-topic-or-domain"></a>Aktivera en identitet för ett befintligt anpassat ämne eller en befintlig domän
+I föregående avsnitt har du lärt dig hur du aktiverar en Systemhanterad identitet när du skapade ett anpassat ämne eller en domän. I det här avsnittet får du lära dig hur du aktiverar en Systemhanterad identitet för ett befintligt anpassat ämne eller en befintlig domän. 
 
 ### <a name="use-the-azure-portal"></a>Använda Azure-portalen
-Följande procedur visar hur du aktiverar Systemhanterad identitet för ett ämne. Stegen för att aktivera en identitet för en domän är liknande. 
+Följande procedur visar hur du aktiverar Systemhanterad identitet för ett anpassat ämne. Stegen för att aktivera en identitet för en domän är liknande. 
 
-1. Öppna [Azure-portalen](https://portal.azure.com).
+1. Gå till [Azure-portalen](https://portal.azure.com).
 2. Sök efter **händelse rutnäts ämnen** i Sök fältet högst upp.
-3. Välj det **avsnitt** som du vill aktivera den hanterade identiteten för. 
+3. Välj det **anpassade ämne** som du vill aktivera den hanterade identiteten för. 
 4. Växla till fliken **identitet** . 
 5. Aktivera **växeln** för att aktivera identiteten. 
 1. Spara inställningen genom att välja **Spara** i verktygsfältet. 
 
-    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Sidan identitet för ett ämne"::: 
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Sidan identitet för ett anpassat ämne"::: 
 
 Du kan använda liknande steg för att aktivera en identitet för en Event Grid-domän.
 
 ### <a name="use-the-azure-cli"></a>Använda Azure CLI
-Använd `az eventgrid topic update` kommandot med `--identity` inställningen för att `systemassigned` Aktivera systemtilldelad identitet för ett befintligt ämne. Ange som värde om du vill inaktivera identiteten `noidentity` . 
+Använd `az eventgrid topic update` kommandot med `--identity` set to `systemassigned` för att aktivera systemtilldelad identitet för ett befintligt anpassat ämne. Ange som värde om du vill inaktivera identiteten `noidentity` . 
 
 ```azurecli-interactive
 # Update the topic to assign a system-assigned identity. 
@@ -67,9 +67,9 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 Kommandot för att uppdatera en befintlig domän är liknande ( `az eventgrid domain update` ).
 
 ## <a name="supported-destinations-and-azure-roles"></a>Destinationer och Azure-roller som stöds
-När du har aktiverat identitet för ditt event Grid-ämne eller-domän skapas automatiskt en identitet i Azure Active Directory i Azure. Lägg till den här identiteten i lämpliga Azure-roller så att ämnet eller domänen kan vidarebefordra händelser till destinationer som stöds. Du kan till exempel lägga till identiteten i rollen **azure Event Hubs data avsändare** för ett Azure Event Hubs-namnområde så att avsnittet Event Grid kan vidarebefordra händelser till händelse nav i det namn området. 
+När du har aktiverat identitet för ditt anpassade ämne eller domän i Event Grid skapar Azure en identitet automatiskt i Azure Active Directory. Lägg till den här identiteten i lämpliga Azure-roller så att det anpassade ämnet eller domänen kan vidarebefordra händelser till destinationer som stöds. Du kan till exempel lägga till identiteten i rollen **azure Event Hubs data avsändare** för ett Azure Event Hubs-namnområde så att det anpassade avsnittet om Event Grid kan vidarebefordra händelser till händelse nav i det namn området. 
 
-För närvarande stöder Azure Event Grid ämnen eller domäner som kon figurer ATS med en systemtilldelad hanterad identitet för att vidarebefordra händelser till följande destinationer. I den här tabellen får du också de roller som identiteten ska vara i så att avsnittet kan vidarebefordra händelserna.
+För närvarande stöder Azure Event Grid anpassade ämnen eller domäner som kon figurer ATS med en systemtilldelad hanterad identitet för att vidarebefordra händelser till följande mål. I den här tabellen får du också de roller som identiteten ska vara i så att det anpassade ämnet kan vidarebefordra händelserna.
 
 | Mål | Azure-roll | 
 | ----------- | --------- | 
@@ -79,35 +79,35 @@ För närvarande stöder Azure Event Grid ämnen eller domäner som kon figurer 
 | Azure Queue Storage |[Avsändare av data meddelande i lagrings köer](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
 ## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Lägga till en identitet i Azure-roller på destinationer
-I det här avsnittet beskrivs hur du lägger till identiteten för ditt ämne eller din domän i en Azure-roll. 
+I det här avsnittet beskrivs hur du lägger till identiteten för ditt anpassade ämne eller din domän i en Azure-roll. 
 
 ### <a name="use-the-azure-portal"></a>Använda Azure-portalen
-Du kan använda Azure Portal för att tilldela ämnet eller domän identiteten till en lämplig roll så att ämnet eller domänen kan vidarebefordra händelser till målet. 
+Du kan använda Azure Portal för att tilldela det anpassade ämnet eller domän identiteten till en lämplig roll så att det anpassade ämnet eller domänen kan vidarebefordra händelser till målet. 
 
-I följande exempel läggs en hanterad identitet för ett event Grid-ämne med namnet **msitesttopic** till rollen **Azure Service Bus data avsändare** för ett Service Bus namn område som innehåller en kö eller ämnes resurs. När du lägger till rollen på namn områdes nivån kan ämnet vidarebefordra händelser till alla entiteter i namn området. 
+I följande exempel läggs en hanterad identitet för ett anpassat Event Grid-ämne med namnet **msitesttopic** till rollen **Azure Service Bus data avsändare** för ett Service Bus namn område som innehåller en kö eller ämnes resurs. När du lägger till rollen på namn områdes nivån kan det anpassade avsnittet för Event Grid vidarebefordra händelser till alla entiteter i namn området. 
 
 1. Gå till ditt **Service Bus namnrum** i [Azure Portal](https://portal.azure.com). 
 1. Välj **Access Control** i det vänstra fönstret. 
 1. Välj **Lägg till** i avsnittet **Lägg till en roll tilldelning** . 
 1. Utför följande steg på sidan **Lägg till en roll tilldelning** :
     1. Välj rollen. I det här fallet är det **Azure Service Bus data avsändaren**. 
-    1. Välj **identiteten** för ditt ämne eller din domän. 
+    1. Välj **identitet** för ditt event Grid-anpassade ämne eller domän. 
     1. Välj **Spara** för att spara konfigurationen.
 
 Stegen är liknande för att lägga till en identitet för andra roller som anges i tabellen. 
 
 ### <a name="use-the-azure-cli"></a>Använda Azure CLI
-Exemplet i det här avsnittet visar hur du använder Azure CLI för att lägga till en identitet i en Azure-roll. Exempel kommandona är för ämnen i Event Grid. Kommandona för events Grid-domäner liknar varandra. 
+Exemplet i det här avsnittet visar hur du använder Azure CLI för att lägga till en identitet i en Azure-roll. Exempel kommandona är för anpassade ämnen i Event Grid. Kommandona för events Grid-domäner liknar varandra. 
 
-#### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Hämta ägar-ID för ämnets system identitet 
-Börja med att hämta huvud-ID för ämnets systemhanterade identitet och tilldela identiteten till lämpliga roller.
+#### <a name="get-the-principal-id-for-the-custom-topics-system-identity"></a>Hämta ägar-ID för det anpassade ämnets system identitet 
+Först hämtar du huvud-ID för det anpassade ämnets systemhanterade identitet och tilldelar identiteten till lämpliga roller.
 
 ```azurecli-interactive
 topic_pid=$(az ad sp list --display-name "$<TOPIC NAME>" --query [].objectId -o tsv)
 ```
 
 #### <a name="create-a-role-assignment-for-event-hubs-at-various-scopes"></a>Skapa en roll tilldelning för händelse nav i olika omfång 
-Följande CLI-exempel visar hur du lägger till ett ämnes identitet till **Azure Event Hubs data Sender** -rollen på namn områdes nivån eller på händelsehubben. Om du skapar roll tilldelningen på namn områdes nivån kan avsnittet vidarebefordra händelser till alla händelse nav i namn området. Om du skapar en roll tilldelning på händelse Hub-nivån kan ämnet endast vidarebefordra händelser till just den aktuella händelsehubben. 
+Följande CLI-exempel visar hur du lägger till en anpassad ämnes identitet till **Azure Event Hubs data Sender** -rollen på namn områdes nivån eller på händelsehubben. Om du skapar roll tilldelningen på namn områdes nivån kan det anpassade avsnittet vidarebefordra händelser till alla händelse nav i namn området. Om du skapar en roll tilldelning på händelse Hub-nivån kan det anpassade avsnittet endast vidarebefordra händelser till just den aktuella händelsehubben. 
 
 
 ```azurecli-interactive
@@ -123,7 +123,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$event
 ```
 
 #### <a name="create-a-role-assignment-for-a-service-bus-topic-at-various-scopes"></a>Skapa en roll tilldelning för ett Service Bus ämne i olika omfång 
-Följande CLI-exempel visar hur du lägger till ett ämnes identitet i rollen **Azure Service Bus data avsändare** på namn områdes nivå eller på Service Bus ämnes nivå. Om du skapar roll tilldelningen på namn områdes nivån kan Event Grid-avsnittet vidarebefordra händelser till alla entiteter (Service Bus köer eller ämnen) inom det namn området. Om du skapar en roll tilldelning på Service Bus kö eller ämnes nivå kan händelse rutnäts avsnittet vidarebefordra händelser enbart till den aktuella Service Bus kön eller ämnet. 
+Följande CLI-exempel visar hur du lägger till en anpassad ämnes identitet i Event Grid i rollen **Azure Service Bus data avsändare** på namn områdes nivå eller på Service Bus ämnes nivå. Om du skapar roll tilldelningen på namn områdes nivån kan Event Grid-avsnittet vidarebefordra händelser till alla entiteter (Service Bus köer eller ämnen) inom det namn området. Om du skapar en roll tilldelning på Service Bus kö-eller ämnes nivå kan det anpassade avsnittet Event Grid vidarebefordra händelser enbart till den aktuella Service Bus kön eller ämnet. 
 
 ```azurecli-interactive
 role="Azure Service Bus Data Sender" 
@@ -138,7 +138,7 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ```
 
 ## <a name="create-event-subscriptions-that-use-an-identity"></a>Skapa händelse prenumerationer som använder en identitet
-När du har ett ämne eller en domän med en Systemhanterad identitet och lagt till identiteten i rätt roll på målet, är du redo att skapa prenumerationer som använder identiteten. 
+När du har ett anpassat Event Grid-ämne eller en domän med en Systemhanterad identitet och lagt till identiteten i lämplig roll på målet, är du redo att skapa prenumerationer som använder identiteten. 
 
 ### <a name="use-the-azure-portal"></a>Använda Azure-portalen
 När du skapar en händelse prenumeration visas ett alternativ för att aktivera användning av en tilldelad identitet för en slut punkt i avsnittet **information om slut punkt** . 
@@ -157,7 +157,7 @@ Börja med att ange värden för följande variabler som ska användas i CLI-kom
 
 ```azurecli-interactive
 subid="<AZURE SUBSCRIPTION ID>"
-rg = "<RESOURCE GROUP of EVENT GRID TOPIC>"
+rg = "<RESOURCE GROUP of EVENT GRID CUSTOM TOPIC>"
 topicname = "<EVENT GRID TOPIC NAME>"
 
 # get the service bus queue resource id
@@ -166,7 +166,7 @@ sb_esname = "<Specify a name for the event subscription>"
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Skapa en händelse prenumeration genom att använda en hanterad identitet för leverans 
-Det här exempel kommandot skapar en händelse prenumeration för ett event Grid-ämne med en slut punkts typ som har angetts till **Service Bus kö**. 
+Det här exempel kommandot skapar en händelse prenumeration för ett anpassat ämne i Event Grid med en slut punkts typ som har angetts till **Service Bus kö**. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -178,7 +178,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery-and-dead-lettering"></a>Skapa en händelse prenumeration genom att använda en hanterad identitet för leverans och obeställbara meddelanden
-Det här exempel kommandot skapar en händelse prenumeration för ett event Grid-ämne med en slut punkts typ som har angetts till **Service Bus kö**. Det anger också att den systemhanterade identiteten ska användas för obeställbara meddelanden. 
+Det här exempel kommandot skapar en händelse prenumeration för ett anpassat ämne i Event Grid med en slut punkts typ som har angetts till **Service Bus kö**. Det anger också att den systemhanterade identiteten ska användas för obeställbara meddelanden. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -200,15 +200,15 @@ I det här avsnittet får du lära dig hur du använder Azure CLI för att aktiv
 #### <a name="define-variables"></a>Definiera variabler
 ```azurecli-interactive
 subid="<AZURE SUBSCRIPTION ID>"
-rg = "<RESOURCE GROUP of EVENT GRID TOPIC>"
-topicname = "<EVENT GRID TOPIC NAME>"
+rg = "<RESOURCE GROUP of EVENT GRID CUSTOM TOPIC>"
+topicname = "<EVENT GRID CUSTOM TOPIC NAME>"
 
 hubid=$(az eventhubs eventhub show --name <EVENT HUB NAME> --namespace-name <NAMESPACE NAME> --resource-group <RESOURCE GROUP NAME> --query id --output tsv)
 eh_esname = "<SPECIFY EVENT SUBSCRIPTION NAME>" 
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery"></a>Skapa en händelse prenumeration genom att använda en hanterad identitet för leverans 
-Det här exempel kommandot skapar en händelse prenumeration för ett event Grid-ämne med en slut punkts typ inställd på **Event Hubs**. 
+Det här exempel kommandot skapar en händelse prenumeration för ett anpassat ämne i Event Grid med en slut punkts typ inställd på **Event Hubs**. 
 
 ```azurecli-interactive
 az eventgrid event-subscription create  
@@ -220,7 +220,7 @@ az eventgrid event-subscription create
 ```
 
 #### <a name="create-an-event-subscription-by-using-a-managed-identity-for-delivery--deadletter"></a>Skapa en händelse prenumeration genom att använda en hanterad identitet för leverans och obeställbara meddelanden kön 
-Det här exempel kommandot skapar en händelse prenumeration för ett event Grid-ämne med en slut punkts typ inställd på **Event Hubs**. Det anger också att den systemhanterade identiteten ska användas för obeställbara meddelanden. 
+Det här exempel kommandot skapar en händelse prenumeration för ett anpassat ämne i Event Grid med en slut punkts typ inställd på **Event Hubs**. Det anger också att den systemhanterade identiteten ska användas för obeställbara meddelanden. 
 
 ```azurecli-interactive
 storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
@@ -243,8 +243,8 @@ I det här avsnittet får du lära dig hur du använder Azure CLI för att aktiv
 
 ```azurecli-interactive
 subid="<AZURE SUBSCRIPTION ID>"
-rg = "<RESOURCE GROUP of EVENT GRID TOPIC>"
-topicname = "<EVENT GRID TOPIC NAME>"
+rg = "<RESOURCE GROUP of EVENT GRID CUSTOM TOPIC>"
+topicname = "<EVENT GRID CUSTOM TOPIC NAME>"
 
 # get the storage account resource id
 storageid=$(az storage account show --name <STORAGE ACCOUNT NAME> --resource-group <RESOURCE GROUP NAME> --query id --output tsv)
@@ -282,12 +282,12 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
-## <a name="private-endpoints"></a>Privata slut punkter
+## <a name="private-endpoints"></a>Privata slutpunkter
 För närvarande går det inte att leverera händelser med [privata slut punkter](../private-link/private-endpoint-overview.md). Det finns inget stöd om du har strikta krav på nätverks isolering där dina levererade händelse trafik inte får lämna det privata IP-utrymmet. 
 
-Men om dina krav kräver ett säkert sätt att skicka händelser med hjälp av en krypterad kanal och en känd identitet på avsändaren (i det här fallet Event Grid) med hjälp av offentligt IP-utrymme kan du leverera händelser till Event Hubs, Service Bus eller Azure Storage tjänsten med hjälp av ett Azure Event Grid-ämne eller en domän med Systemhanterad identitet som du ser i den här artikeln. Sedan kan du använda en privat länk som kon figurer ATS i Azure Functions eller webhooken som distribueras i det virtuella nätverket för att hämta händelser. Se exemplet: [Anslut till privata slut punkter med Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
+Men om dina krav kräver ett säkert sätt att skicka händelser med hjälp av en krypterad kanal och en känd identitet på avsändaren (i det här fallet Event Grid) med hjälp av offentligt IP-utrymme kan du leverera händelser till Event Hubs, Service Bus eller Azure Storage tjänst med ett anpassat ämne i Azure Event Grid eller en domän med Systemhanterad identitet som du ser i den här artikeln. Sedan kan du använda en privat länk som kon figurer ATS i Azure Functions eller webhooken som distribueras i det virtuella nätverket för att hämta händelser. Se exemplet: [Anslut till privata slut punkter med Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
-Observera att under den här konfigurationen går trafiken över den offentliga IP/Internet från Event Grid till Event Hubs, Service Bus eller Azure Storage, men kanalen kan krypteras och en hanterad identitet för Event Grid används. Om du konfigurerar Azure Functions eller webhook som har distribuerats till det virtuella nätverket för att använda en Event Hubs, Service Bus eller Azure Storage via privat länk kommer det att finnas kvar i Azure i den här delen av trafiken.
+Under den här konfigurationen går trafiken över den offentliga IP/Internet från Event Grid till Event Hubs, Service Bus eller Azure Storage, men kanalen kan krypteras och en hanterad identitet för Event Grid används. Om du konfigurerar Azure Functions eller webhook som har distribuerats till det virtuella nätverket för att använda en Event Hubs, Service Bus eller Azure Storage via privat länk kommer det att finnas kvar i Azure i den här delen av trafiken.
 
 
 ## <a name="next-steps"></a>Nästa steg

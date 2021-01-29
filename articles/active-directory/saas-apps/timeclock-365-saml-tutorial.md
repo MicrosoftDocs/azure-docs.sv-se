@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 329e0fbfdea43f3933333744f89ed1c03ef0ed13
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729338"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med timeclock 365 SAML
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera timeclock 365 SAML med 
 * Gör det möjligt för användarna att logga in automatiskt till timeclock 365 SAML med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -70,7 +70,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal på sidan **Timeclock 365 SAML** Application Integration letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -109,7 +109,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-timeclock-365-saml-sso"></a>Konfigurera timeclock 365 SAML SSO
 
-1. Öppna en ny flik i webbläsaren och logga in på din timeclock 365 SAML-företags webbplats som administratör.
+1. Om du vill automatisera konfigurationen inom timeclock 365 SAML måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren, klickar du på **Konfigurera Timeclock 365 SAML** dirigerar dig till SAML-programmet timeclock 365. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på timeclock 365 SAML. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-4.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera timeclock 365 SAML manuellt, i ett annat webbläsarfönster, loggar du in på din timeclock 365 SAML-företags plats som administratör.
 
 1. Utför nedanstående steg.
 

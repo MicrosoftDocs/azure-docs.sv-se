@@ -3,12 +3,12 @@ title: System avsnitt i Azure Event Grid
 description: Beskriver system avsnitt i Azure Event Grid.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297291"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052973"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>System avsnitt i Azure Event Grid
 Ett system avsnitt i Event Grid representerar en eller flera händelser som publicerats av Azure-tjänster som Azure Storage och Azure-Event Hubs. Ett system ämne kan till exempel representera **alla BLOB-händelser** eller bara **BLOB-skapade** och **borttagna BLOB** -händelser som har publicerats för ett **särskilt lagrings konto**. I det här exemplet, när en BLOB överförs till lagrings kontot, publicerar Azure Storages tjänsten en **BLOB-skapad** händelse i avsnittet system i Event Grid, som sedan vidarebefordrar händelsen till ämnes [prenumeranter](event-handlers.md) som tar emot och bearbetar händelsen. 
@@ -34,6 +34,7 @@ Här är den aktuella listan över Azure-tjänster som har stöd för att skapa 
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure-prenumerationer](event-schema-subscriptions.md)
+- [Azure Cache for Redis](event-schema-azure-cache.md)
 
 ## <a name="system-topics-as-azure-resources"></a>System ämnen som Azure-resurser
 Tidigare var ett system ämne implicit och visade sig inte för enkelhetens skull. System ämnen visas nu som Azure-resurser och tillhandahåller följande funktioner:
@@ -49,7 +50,7 @@ Du kan skapa ett system ämne på två sätt:
 - Skapa en [händelse prenumeration på en Azure-resurs som en tilläggs resurs](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)som automatiskt skapar ett system avsnitt med namnet i formatet: `<Azure resource name>-<GUID>` . System avsnittet som skapas på det här sättet tas automatiskt bort när den sista händelse prenumerationen för ämnet tas bort. 
 - Skapa ett system ämne för en Azure-resurs och skapa sedan en händelse prenumeration för det system ämnet. När du använder den här metoden kan du ange ett namn för system avsnittet. Avsnittet system tas inte bort automatiskt när den sista händelse prenumerationen tas bort. Du måste ta bort den manuellt. 
 
-    När du använder Azure Portal använder du alltid den här metoden. När du skapar en händelse prenumeration med hjälp av [sidan **händelser** i en Azure-resurs](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)skapas avsnittet system först och sedan skapas prenumerationen för ämnet. Du kan uttryckligen skapa ett system avsnitt först med hjälp av [sidan **Event Grid system ämnen** ](create-view-manage-system-topics.md#create-a-system-topic) och sedan skapa en prenumeration för ämnet. 
+    När du använder Azure Portal använder du alltid den här metoden. När du skapar en händelse prenumeration med hjälp av [sidan **händelser** i en Azure-resurs](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)skapas avsnittet system först och sedan skapas prenumerationen för ämnet. Du kan uttryckligen skapa ett system avsnitt först med hjälp av [sidan **Event Grid system ämnen**](create-view-manage-system-topics.md#create-a-system-topic) och sedan skapa en prenumeration för ämnet. 
 
 När du använder [CLI](create-view-manage-system-topics-cli.md), [rest](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate)eller [Azure Resource Manager mall](create-view-manage-system-topics-arm.md)kan du välja någon av metoderna ovan. Vi rekommenderar att du först skapar ett system ämne och sedan skapar en prenumeration på ämnet, eftersom det här är det senaste sättet att skapa system ämnen.
 

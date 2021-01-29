@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 7f9d29fee78c01dd3b1ee79d564297fa0cef14d3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2bb190ea01098e8e7b21a00f54fc37cd817f3743
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219886"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053287"
 ---
 # <a name="understand-password-based-single-sign-on"></a>Förstå lösenordsbaserad enkel inloggning
 
@@ -54,7 +54,7 @@ Att använda Azure AD som identitets leverantör (IdP) och konfigurera enkel inl
 I [snabb starts serien](view-applications-portal.md)har du lärt dig hur du lägger till en app till din klient, vilket gör att Azure AD vet att den används som identitets leverantör (IdP) för appen. Vissa appar är redan förkonfigurerade och de visas i Azure AD-galleriet. Andra appar finns inte i galleriet och du måste skapa en allmän app och konfigurera den manuellt. Beroende på appen kanske det lösen ordsbaserade SSO-alternativet inte är tillgängligt. Om du inte ser den lösenordsbaserade alternativ listan på sidan för enkel inloggning för appen, är den inte tillgänglig.
 
 > [!IMPORTANT]
-> Webb läsar tillägget My Apps krävs för lösenordsbaserad SSO. Mer information finns i [Planera distribution av mina appar](access-panel-deployment-plan.md).
+> Webb läsar tillägget My Apps krävs för lösenordsbaserad SSO. Mer information finns i [Planera distribution av mina appar](my-apps-deployment-plan.md).
 
 Konfigurations sidan för lösenordsbaserad enkel inloggning är enkel. Den innehåller bara webb adressen till inloggnings sidan som appen använder. Den här strängen måste vara sidan som innehåller fältet username.
 

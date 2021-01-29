@@ -3,23 +3,25 @@ title: Självstudie – etablera X. 509-enheter till Azure IoT Hub med en anpass
 description: I den här självstudien används registrerings grupper. I den här självstudien får du lära dig hur du etablerar X. 509-enheter med hjälp av en anpassad HSM (Hardware Security Module) och C-enhets-SDK för Azure IoT Hub Device Provisioning Service (DPS).
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/18/2020
+ms.date: 01/28/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 566563dde26d2dd36f4358bc8c6dcdcfb5ba8465
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954875"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052371"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Självstudie: etablera flera X. 509-enheter med hjälp av registrerings grupper
 
-I den här självstudien får du lära dig hur du etablerar grupper av IoT-enheter som använder X. 509-certifikat för autentisering. Exempel kod från [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) används för att etablera din utvecklings maskin som en IoT-enhet. 
+I den här självstudien får du lära dig hur du etablerar grupper av IoT-enheter som använder X. 509-certifikat för autentisering. Exempel på enhets kod från [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) kommer att köras på utvecklings datorn för att simulera etablering av X. 509-enheter. På riktiga enheter skulle enhets koden distribueras och köras från IoT-enheten.
 
-Azure IoT Device Provisioning Service stöder två typer av registreringar:
+Se till att du har minst slutfört stegen i [konfigurera IoT Hub Device Provisioning service med Azure Portal](quick-setup-auto-provision.md) innan du fortsätter med den här självstudien. Om du inte är bekant med processen för autoetablering kan du läsa igenom [etablerings](about-iot-dps.md#provisioning-process) översikten. 
+
+Azure IoT Device Provisioning-tjänsten har stöd för två typer av registreringar för etablering av enheter:
 
 * [Registreringsgrupper](concepts-service.md#enrollment-group): används för att registrera flera relaterade enheter.
 * [Enskilda registreringar](concepts-service.md#individual-enrollment): används för att registrera en enskild enhet.
@@ -27,8 +29,6 @@ Azure IoT Device Provisioning Service stöder två typer av registreringar:
 Den här självstudien liknar de tidigare självstudierna som demonstrerar hur du använder registrerings grupper för att etablera uppsättningar med enheter. Men X. 509-certifikat kommer att användas i den här självstudien i stället för symmetriska nycklar. Granska de föregående självstudierna i det här avsnittet för en enkel metod med hjälp av [symmetriska nycklar](./concepts-symmetric-key-attestation.md).
 
 I den här självstudien visas det [anpassade HSM-exemplet](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) som tillhandahåller en stub-implementering för samverkan med maskinvarubaserad säker lagring. En [modul för maskin varu säkerhet (HSM)](./concepts-service.md#hardware-security-module) används för säker, maskinvarubaserad lagring av enhets hemligheter. En HSM kan användas med symmetrisk nyckel, X. 509-certifikat eller TPM-attestering för att tillhandahålla säker lagring för hemligheter. Maskinvarubaserad lagring av enhets hemligheter krävs inte, men det är starkt rekommenderat att skydda känslig information som enhets certifikatets privata nyckel.
-
-Om du inte är bekant med processen för autoetablering, granskar du [etablerings](about-iot-dps.md#provisioning-process) översikten. Kontrol lera också att du har slutfört stegen i [konfigurera IoT Hub Device Provisioning service med Azure Portal](quick-setup-auto-provision.md) innan du fortsätter med den här självstudien. 
 
 
 I den här självstudien ska du slutföra följande mål:
@@ -44,9 +44,11 @@ I den här självstudien ska du slutföra följande mål:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Följande förutsättningar gäller för en Windows-utvecklings miljö. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
+Följande förutsättningar gäller för en Windows-utvecklings miljö som används för att simulera enheterna. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 med arbets belastningen ["Skriv bords utveckling med C++"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) aktiverat. Visual Studio 2015 och Visual Studio 2017 stöds också.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 med arbets belastningen ["Skriv bords utveckling med C++"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) aktiverat. Visual Studio 2015 och Visual Studio 2017 stöds också. 
+
+    Visual Studio används i den här artikeln för att bygga den exempel kod för enheten som skulle distribueras till IoT-enheter.  Detta innebär inte att Visual Studio krävs på själva enheten.
 
 * Senaste versionen av [Git](https://git-scm.com/download/) installerad.
 
@@ -106,7 +108,7 @@ I det här avsnittet förbereder du en utvecklingsmiljö som används för att s
 
 ## <a name="create-an-x509-certificate-chain"></a>Skapa en X. 509-certifikat kedja
 
-I det här avsnittet ska du skapa en X. 509-kedja av tre certifikat för testning med den här självstudien. Certifikaten kommer att ha följande hierarki.
+I det här avsnittet ska du skapa en X. 509-kedja av tre certifikat för att testa varje enhet med den här självstudien. Certifikaten kommer att ha följande hierarki.
 
 ![Självstudie för enhets certifikat kedja](./media/tutorial-custom-hsm-enrollment-group-x509/example-device-cert-chain.png#lightbox)
 
@@ -114,15 +116,17 @@ I det här avsnittet ska du skapa en X. 509-kedja av tre certifikat för testnin
 
 [Mellanliggande certifikat](concepts-x509-attestation.md#intermediate-certificate): det är vanligt att använda mellanliggande certifikat för att gruppera enheter logiskt av produkt linjer, företags divisioner eller andra kriterier. I den här självstudien används en certifikat kedja bestående av ett mellanliggande certifikat. Det mellanliggande certifikatet kommer att signeras av rot certifikatet. Det här certifikatet används också på registrerings gruppen som skapas i DPS för att logiskt gruppera en uppsättning enheter. Med den här konfigurationen kan du hantera en hel grupp av enheter som har enhets certifikat signerade av samma mellanliggande certifikat. Du kan skapa registrerings grupper för att aktivera eller inaktivera en grupp av enheter. Mer information om hur du inaktiverar en grupp av enheter finns i [Tillåt inte en mellanliggande X. 509-eller rotcertifikatutfärdarcertifikat med hjälp av en registrerings grupp](how-to-revoke-device-access-portal.md#disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group)
 
-[Enhets certifikat](concepts-x509-attestation.md#end-entity-leaf-certificate): enhets certifikatet (löv) kommer att signeras av det mellanliggande certifikatet och lagras på enheten tillsammans med dess privata nyckel. Enheten kommer att presentera det här certifikatet och den privata nyckeln, tillsammans med certifikat kedjan vid försök att tillhandahålla etableringen. 
+[Enhets certifikat](concepts-x509-attestation.md#end-entity-leaf-certificate): enhetens (löv) certifikat signeras av det mellanliggande certifikatet och lagras på enheten tillsammans med dess privata nyckel. Vi rekommenderar att dessa känsliga objekt lagras på ett säkert sätt med en HSM. Varje enhet visar sitt certifikat och den privata nyckeln, tillsammans med certifikat kedjan vid försök att tillhandahålla etableringen. 
 
-Så här skapar du certifikat kedjan:
+#### <a name="create-root-and-intermediate-certificates"></a>Skapa rot-och mellanliggande certifikat
+
+Så här skapar du rot-och mellanliggande delar av certifikat kedjan:
 
 1. Öppna en git-bash kommando tolk. Slutför steg 1 och 2 med hjälp av bash shell-instruktionerna som finns i [Hantera test CA-certifikat för exempel och självstudier](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials).
 
-    Det här steget skapar en arbets katalog för certifikat skripten och genererar exempel roten och mellanliggande certifikat för certifikat kedjan med OpenSSL. 
-
-    Observera i utdata som visar platsen för det självsignerade rot certifikatet. Det här certifikatet genomgår [bevis på innehav](how-to-verify-certificates.md) för att verifiera ägarskapet senare.
+    Detta skapar en arbets katalog för certifikat skripten och genererar exempel roten och mellanliggande certifikat för certifikat kedjan med OpenSSL. 
+    
+2. Observera i utdata som visar platsen för det självsignerade rot certifikatet. Det här certifikatet genomgår [bevis på innehav](how-to-verify-certificates.md) för att verifiera ägarskapet senare.
 
     ```output
     Creating the Root CA Certificate
@@ -142,8 +146,8 @@ Så här skapar du certifikat kedjan:
                 Not After : Nov 22 21:30:30 2020 GMT
             Subject: CN=Azure IoT Hub CA Cert Test Only
     ```        
-
-    Observera i utdata som visar platsen för det mellanliggande certifikatet som signeras/utfärdas av rot certifikatet. Certifikatet kommer att användas med registrerings gruppen som du skapar senare.
+    
+3. Observera i utdata som visar platsen för det mellanliggande certifikatet som signeras/utfärdas av rot certifikatet. Certifikatet kommer att användas med registrerings gruppen som du skapar senare.
 
     ```output
     Intermediate CA Certificate Generated At:
@@ -161,8 +165,12 @@ Så här skapar du certifikat kedjan:
                 Not After : Nov 22 21:30:33 2020 GMT
             Subject: CN=Azure IoT Hub Intermediate Cert Test Only
     ```    
+    
+#### <a name="create-device-certificates"></a>Skapa enhets certifikat
 
-2. Kör sedan följande kommando för att skapa ett nytt enhets-eller löv certifikat med ett ämnes namn som du anger som parameter. Använd det exempel på ämnes namnet som angavs för den här självstudien `custom-hsm-device-01` . Det här ämnes namnet är enhets-ID: t för din IoT-enhet. 
+Så här skapar du enhets certifikaten som signerats av mellanliggande certifikat i kedjan:
+
+1. Kör följande kommando för att skapa ett nytt enhets-eller löv certifikat med ett ämnes namn som du ger som parameter. Använd det exempel på ämnes namnet som angavs för den här självstudien `custom-hsm-device-01` . Det här ämnes namnet är enhets-ID: t för din IoT-enhet. 
 
     > [!WARNING]
     > Använd inte ett ämnes namn med blank steg. Det här ämnes namnet är enhets-ID: t för den IoT-enhet som tillhandahålls. Det måste följa reglerna för ett enhets-ID. Mer information finns i [Egenskaper för enhets identitet](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
@@ -192,13 +200,13 @@ Så här skapar du certifikat kedjan:
             Subject: CN=custom-hsm-device-01
     ```    
     
-3. Kör följande kommando för att skapa en fullständig certifikat kedja. PEM-fil som innehåller det nya enhets certifikatet.
+2. Kör följande kommando för att skapa en fullständig certifikat kedja. PEM-fil som innehåller det nya enhets certifikatet för `custom-hsm-device-01` .
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-01-full-chain.cert.pem && cd ..
     ```
 
-    Använd en text redigerare och öppna filen med certifikat kedjan, *./certs/New-Device-full-Chain.cert.pem*. Texten i certifikat kedjan innehåller en fullständig kedja av alla tre certifikaten. Du kommer att använda den här texten som certifikat kedja med den anpassade HSM-koden längre fram i den här självstudien.
+    Använd en text redigerare och öppna filen med certifikat kedjan, *./certs/New-Device-01-full-Chain.cert.pem*. Texten i certifikat kedjan innehåller en fullständig kedja av alla tre certifikaten. Du kommer att använda den här texten som certifikat kedja med i koden anpassad HSM-enhet senare i den här självstudien för `custom-hsm-device-01` .
 
     Den fullständiga kedje texten har följande format:
  
@@ -214,115 +222,25 @@ Så här skapar du certifikat kedjan:
     -----END CERTIFICATE-----
     ```
 
-5. Observera att den privata nyckeln för det nya enhets certifikatet skrivs till *./Private/New-Device.Key.pem*. Texten för den här nyckeln kommer att behövas av enheten under etableringen. Texten kommer att läggas till i det anpassade HSM-exemplet senare.
+3. Observera att den privata nyckeln för det nya enhets certifikatet skrivs till *./Private/New-Device.Key.pem*. Byt namn på den här nyckel filen *./Private/New-Device-01.Key.pem* för `custom-hsm-device-01` enheten. Texten för den här nyckeln kommer att behövas av enheten under etableringen. Texten kommer att läggas till i det anpassade HSM-exemplet senare.
+
+    ```bash
+    $ mv private/new-device.key.pem private/new-device-01.key.pem
+    ```
 
     > [!WARNING]
     > Texten för certifikaten innehåller endast information om offentliga nycklar. 
     >
     > Enheten måste dock också ha åtkomst till den privata nyckeln för enhets certifikatet. Detta är nödvändigt eftersom enheten måste utföra verifieringen med nyckeln vid körning vid försök att tillhandahålla etableringen. Den här nyckelns känslighet är en av de viktigaste orsakerna till att du bör använda maskinvarubaserad lagring i en riktig HSM för att skydda privata nycklar.
 
+4. Upprepa steg 1-3 för en andra enhet med enhets-ID `custom-hsm-device-02` . Använd följande värden för enheten:
 
-
-## <a name="configure-the-custom-hsm-stub-code"></a>Konfigurera anpassad HSM stub-kod
-
-De specifika värdena för att interagera med faktisk säker maskinvarubaserad lagring varierar beroende på maskin varan. Därför kommer den certifikat kedja som används av enheten i den här självstudien att hårdkodad i den anpassade HSM-stub-koden. I ett verkligt scenario lagras certifikat kedjan i den faktiska HSM-maskinvaran för att ge bättre säkerhet för känslig information. Metoder som liknar de stub-metoder som visas i det här exemplet implementeras sedan för att läsa hemligheter från den maskinbaserade lagringen. 
-
-Även om HSM-maskinvara inte krävs, rekommenderar vi inte att du har känslig information, t. ex. certifikatets privata nyckel, som är incheckad i käll koden. Detta visar nyckeln till alla som kan visa koden. Detta görs endast i den här artikeln för att hjälpa till med inlärning.
-
-Så här uppdaterar du den anpassade HSM stub-koden för den här självstudien:
-
-1. Starta Visual Studio och öppna den nya lösnings filen som skapades i den `cmake` katalog som du skapade i roten för Azure-IoT-SDK-c git-lagringsplatsen. Lösnings filen heter `azure_iot_sdks.sln` .
-
-2. I Solution Explorer för Visual Studio navigerar du till **Provisioning_Samples > custom_hsm_example > källfiler** och öppnar *custom_hsm_example. c*.
-
-3. Uppdatera strängvärdet för `COMMON_NAME` strängkonstant med det nätverks namn som du använde när du genererade enhets certifikatet.
-
-    ```c
-    static const char* const COMMON_NAME = "custom-hsm-device-01";
-    ```
-
-4. I samma fil måste du uppdatera strängvärdet för en `CERTIFICATE` konstant sträng med hjälp av din certifikat kedje text som du sparade i *./certs/New-Device-full-Chain.cert.pem* när du har genererat dina certifikat.
-
-    Syntaxen för certifikat texten måste följa mönstret nedan utan extra mellanslag eller parsning som gjorts av Visual Studio.
-
-    ```c
-    // <Device/leaf cert>
-    // <intermediates>
-    // <root>
-    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
-        ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----";        
-    ```
-
-    Om det här strängvärdet uppdateras korrekt i det här steget kan det vara väldigt omständligt och underkastas fel. Om du vill generera rätt syntax i din git bash-kommandotolk, kopierar du och klistrar in följande bash Shell-kommandon i git bash-Kommandotolken och trycker på **RETUR**. Dessa kommandon genererar syntaxen för det `CERTIFICATE` konstanta värdet för sträng.
-
-    ```Bash
-    input="./certs/new-device-full-chain.cert.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    Kopiera och klistra in utmatnings certifikat texten för det nya konstant svärdet. 
-
-
-5. I samma fil måste strängvärdet för `PRIVATE_KEY` konstanten också uppdateras med den privata nyckeln för enhets certifikatet.
-
-    Den privata nyckel textens syntax måste följa mönstret nedan utan extra blank steg eller parsning som gjorts av Visual Studio.
-
-    ```c
-    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
-        ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
-    "-----END RSA PRIVATE KEY-----";
-    ```
-
-    Om det här strängvärdet uppdateras korrekt i det här steget kan det också vara väldigt omständligt och underkastat fel. Om du vill generera rätt syntax i din git bash-prompt, kopierar du och klistrar in följande bash Shell-kommandon och trycker på **RETUR**. Dessa kommandon genererar syntaxen för det `PRIVATE_KEY` konstanta värdet för sträng.
-
-    ```Bash
-    input="./private/new-device.key.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    Kopiera och klistra in text för den privata nyckeln för det nya konstant svärdet. 
-
-6. Spara *custom_hsm_example. c*.
-
+    |   Description                 |  Värde  |
+    | :---------------------------- | :--------- |
+    | Ämnesnamn                  | `custom-hsm-device-02` |
+    | Fullständig certifikat kedje fil   | *./certs/new-device-02-full-chain.cert.pem* |
+    | Namn på privat nyckel          | *Private/New-Device-02. Key. pem* |
+    
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>Verifiera ägarskap för rot certifikatet
 
@@ -411,21 +329,23 @@ Dina signerings certifikat är nu betrodda på den Windows-baserade enheten och 
 
 ## <a name="configure-the-provisioning-device-code"></a>Konfigurera enhets koden för etablering
 
-I det här avsnittet uppdaterar du exempel koden för att etablera enheten med enhets etablerings tjänst instansen. Om enheten är autentiserad tilldelas den en IoT-hubb som är länkad till Device Provisioning service-instansen.
+I det här avsnittet uppdaterar du exempel koden med information om din enhets etablerings tjänst instans. Om en enhet autentiseras tilldelas den en IoT-hubb som är länkad till den enhets etablerings tjänst instans som kon figurer ATS i det här avsnittet.
 
 1. I Azure Portal väljer du fliken **Översikt** för enhets etablerings tjänsten och noterar värdet för **_ID-omfång_** .
 
     ![Extrahera information om enhetsetableringstjänstens slutpunkt från bladet på portalen](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. I Solution Explorer för Visual Studio navigerar du till **Provisioning_Samples > prov_dev_client_sample > källfiler** och öppnar *prov_dev_client_sample. c*.
+2. Starta Visual Studio och öppna den nya lösnings filen som skapades i den `cmake` katalog som du skapade i roten för Azure-IoT-SDK-c git-lagringsplatsen. Lösnings filen heter `azure_iot_sdks.sln` .
 
-3. Hitta konstanten `id_scope` och ersätt värdet med ditt värde för **ID-omfång** som du kopierade tidigare. 
+3. I Solution Explorer för Visual Studio navigerar du till **Provisioning_Samples > prov_dev_client_sample > källfiler** och öppnar *prov_dev_client_sample. c*.
+
+4. Hitta konstanten `id_scope` och ersätt värdet med ditt värde för **ID-omfång** som du kopierade tidigare. 
 
     ```c
     static const char* id_scope = "0ne00000A0A";
     ```
 
-4. Hitta definitionen för funktionen `main()` i samma fil. Se till att `hsm_type` variabeln är inställd på `SECURE_DEVICE_TYPE_X509` som visas nedan.
+5. Hitta definitionen för funktionen `main()` i samma fil. Se till att `hsm_type` variabeln är inställd på `SECURE_DEVICE_TYPE_X509` som visas nedan.
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -434,11 +354,110 @@ I det här avsnittet uppdaterar du exempel koden för att etablera enheten med e
     //hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-5. Högerklicka på projektet **prov\_dev\_client\_sample** och välj **Set as Startup Project** (Ange som startprojekt).
+6. Högerklicka på projektet **prov\_dev\_client\_sample** och välj **Set as Startup Project** (Ange som startprojekt).
+
+
+## <a name="configure-the-custom-hsm-stub-code"></a>Konfigurera anpassad HSM stub-kod
+
+De specifika värdena för att interagera med faktisk säker maskinvarubaserad lagring varierar beroende på maskin varan. Därför kommer de certifikat kedjor som används av de simulerade enheterna i den här självstudien att hårdkodad i den anpassade HSM stub-koden. I ett verkligt scenario lagras certifikat kedjan i den faktiska HSM-maskinvaran för att ge bättre säkerhet för känslig information. Metoder som liknar de stub-metoder som används i det här exemplet implementeras sedan för att läsa hemligheter från den maskinbaserade lagringen. 
+
+Även om HSM-maskinvara inte krävs, rekommenderas det att skydda känslig information, t. ex. certifikatets privata nyckel. Om en faktisk HSM anropades av exemplet skulle den privata nyckeln inte finnas i käll koden. Om du har nyckeln i käll koden visas nyckeln för alla som kan visa koden. Detta görs endast i den här artikeln för att hjälpa till med inlärning.
+
+Utför följande steg för att uppdatera den anpassade HSM stub-koden för att simulera identiteten för enheten med ID `custom-hsm-device-01` :
+
+1. I Solution Explorer för Visual Studio navigerar du till **Provisioning_Samples > custom_hsm_example > källfiler** och öppnar *custom_hsm_example. c*.
+
+2. Uppdatera strängvärdet för `COMMON_NAME` strängkonstant med det nätverks namn som du använde när du genererade enhets certifikatet.
+
+    ```c
+    static const char* const COMMON_NAME = "custom-hsm-device-01";
+    ```
+
+3. I samma fil måste du uppdatera strängvärdet för en `CERTIFICATE` konstant sträng med hjälp av din certifikat kedje text som du sparade i *./certs/New-Device-01-full-Chain.cert.pem* när du har genererat dina certifikat.
+
+    Syntaxen för certifikat texten måste följa mönstret nedan utan extra mellanslag eller parsning som gjorts av Visual Studio.
+
+    ```c
+    // <Device/leaf cert>
+    // <intermediates>
+    // <root>
+    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
+        ...
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
+    ```
+
+    Om det här strängvärdet uppdateras korrekt i det här steget kan det vara väldigt omständligt och underkastas fel. Om du vill generera rätt syntax i din git bash-kommandotolk, kopierar du och klistrar in följande bash Shell-kommandon i git bash-Kommandotolken och trycker på **RETUR**. Dessa kommandon genererar syntaxen för det `CERTIFICATE` konstanta värdet för sträng.
+
+    ```Bash
+    input="./certs/new-device-01-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Kopiera och klistra in utmatnings certifikat texten för det nya konstant svärdet. 
+
+
+4. I samma fil måste strängvärdet för `PRIVATE_KEY` konstanten också uppdateras med den privata nyckeln för enhets certifikatet.
+
+    Den privata nyckel textens syntax måste följa mönstret nedan utan extra blank steg eller parsning som gjorts av Visual Studio.
+
+    ```c
+    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
+        ...
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
+    ```
+
+    Om det här strängvärdet uppdateras korrekt i det här steget kan det också vara väldigt omständligt och underkastat fel. Om du vill generera rätt syntax i din git bash-prompt, kopierar du och klistrar in följande bash Shell-kommandon och trycker på **RETUR**. Dessa kommandon genererar syntaxen för det `PRIVATE_KEY` konstanta värdet för sträng.
+
+    ```Bash
+    input="./private/new-device-01.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Kopiera och klistra in text för den privata nyckeln för det nya konstant svärdet. 
+
+5. Spara *custom_hsm_example. c*.
 
 6. På Visual Studio-menyn väljer du **Felsök**  >  **Start utan fel sökning** för att köra lösningen. När du uppmanas att återskapa projektet väljer du **Ja** för att återskapa projektet innan det körs.
 
-    Följande utdata är ett exempel på etablerings enhetens klient exempel som har startats och ansluter till etablerings tjänsten. Enheten har tilldelats till en IoT-hubb och registrerad:
+    Följande utdata är ett exempel på en simulerad enhet som `custom-hsm-device-01` startar och ansluter till etablerings tjänsten. Enheten har tilldelats till en IoT-hubb och registrerad:
 
     ```cmd
     Provisioning API Version: 1.3.9
@@ -455,6 +474,29 @@ I det här avsnittet uppdaterar du exempel koden för att etablera enheten med e
 7. I portalen navigerar du till IoT-hubben som är länkad till etablerings tjänsten och väljer fliken **IoT-enheter** . Vid lyckad etablering av X. 509-enheten till hubben visas dess enhets-ID på bladet **IoT-enheter** med *status* **aktive rad**. Du kan behöva klicka på knappen **Uppdatera** längst upp. 
 
     ![Anpassad HSM-enhet har registrerats med IoT Hub](./media/tutorial-custom-hsm-enrollment-group-x509/hub-provisioned-custom-hsm-x509-device.png) 
+
+8. Upprepa steg 1-7 för en andra enhet med enhets-ID `custom-hsm-device-02` . Använd följande värden för enheten:
+
+    |   Description                 |  Värde  |
+    | :---------------------------- | :--------- |
+    | `COMMON_NAME`                 | `"custom-hsm-device-02"` |
+    | Fullständig certifikat kedja        | Generera texten med `input="./certs/new-device-02-full-chain.cert.pem"` |
+    | Privat nyckel                   | Generera texten med `input="./private/new-device-02.key.pem"` |
+
+    Följande utdata är ett exempel på en simulerad enhet som `custom-hsm-device-02` startar och ansluter till etablerings tjänsten. Enheten har tilldelats till en IoT-hubb och registrerad:
+
+    ```cmd
+    Provisioning API Version: 1.3.9
+    
+    Registering Device
+    
+    Provisioning Status: PROV_DEVICE_REG_STATUS_CONNECTED
+    Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
+    
+    Registration Information received from service: test-docs-hub.azure-devices.net, deviceId: custom-hsm-device-02
+    Press enter key to exit:
+    ```
+
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

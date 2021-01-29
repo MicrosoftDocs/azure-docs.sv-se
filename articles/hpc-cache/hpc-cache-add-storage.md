@@ -4,14 +4,14 @@ description: Definiera lagrings mål så att Azure HPC-cachen kan använda ditt 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 01/28/2021
 ms.author: v-erkel
-ms.openlocfilehash: b2497a49703ab675bde50c7845995c92de32f376
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657184"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054373"
 ---
 # <a name="add-storage-targets"></a>Lägga till lagringsmål
 
@@ -165,19 +165,21 @@ Ett NFS-lagrings mål har olika inställningar från ett Blob Storage-mål. Inst
 
 När du skapar ett lagrings mål som pekar på ett NFS-lagrings system måste du välja användnings modellen för det målet. Den här modellen avgör hur dina data cachelagras.
 
+Med de inbyggda användnings modellerna kan du välja hur du ska utjämna snabba svar med risken för att få inaktuella data. Om du vill optimera fil läsnings hastigheten kanske du inte bryr dig om filerna i cacheminnet kontrol leras mot backend-filerna. Å andra sidan, om du vill vara säker på att filerna alltid är uppdaterade med Fjärrlagring, väljer du en modell som söker ofta.
+
 Det finns tre alternativ:
 
 * **Läs tung, ovanliga skrivningar** – Använd det här alternativet om du vill påskynda Läs åtkomsten till filer som är statiska eller sällan ändrade.
 
-  Med det här alternativet cachelagras filer som klienter läser, men skickar omedelbart skrivningar till backend-lagringen. Filer som lagras i cacheminnet jämförs aldrig med filerna på NFS-lagrings volymen.
+  Med det här alternativet cachelagras filer som klienter läser, men skickar omedelbart skrivningar till backend-lagringen. Filer som lagras i cacheminnet jämförs inte automatiskt med filerna på NFS-lagrings volymen. (Läs kommentaren nedan om Server verifiering för mer information.)
 
-  Använd inte det här alternativet om det finns en risk att en fil kan ändras direkt på lagrings systemet utan att först skriva den till cacheminnet. Om detta händer kommer den cachelagrade versionen av filen aldrig att uppdateras med ändringar från Server delen och data uppsättningen kan bli inkonsekvent.
+  Använd inte det här alternativet om det finns en risk att en fil kan ändras direkt på lagrings systemet utan att först skriva den till cacheminnet. Om det händer kommer den cachelagrade versionen av filen inte att synkroniseras med backend-filen.
 
 * **Större än 15% skrivningar** – det här alternativet påskyndar både Läs-och skriv prestanda. När du använder det här alternativet måste alla klienter komma åt filer via Azure HPC-cachen i stället för att montera Server dels lagringen direkt. De cachelagrade filerna kommer att ha nya ändringar som inte lagras på Server delen.
 
-  I den här användnings modellen kontrol leras inte filer i cacheminnet mot filerna på backend-lagringen. Den cachelagrade versionen av filen antas vara mer aktuell. En ändrad fil i cachen skrivs till Server dels lagrings systemet när den har varit i cachen under en timme utan ytterligare ändringar.
+  I den här användnings modellen kontrol leras bara filer i cacheminnet mot filerna på backend-lagringsplatsen var åttonde timme. Den cachelagrade versionen av filen antas vara mer aktuell. En ändrad fil i cachen skrivs till Server dels lagrings systemet när den har varit i cachen under en timme utan ytterligare ändringar.
 
-* **Klienter skriver till NFS-målet, vilket kringgår cachen** – Välj det här alternativet om några klienter i arbets flödet skriver data direkt till lagrings systemet utan att först skriva till cachen. Filer som klienten begär cachelagras, men eventuella ändringar av filerna från klienten skickas tillbaka till lagrings systemet på Server sidan omedelbart.
+* **Klienter skriver till NFS-målet, vilket kringgår cachen** – Välj det här alternativet om några klienter i arbets flödet skriver data direkt till lagrings systemet utan att först skriva till cachen eller om du vill optimera data konsekvens. Filer som klienten begär cachelagras, men eventuella ändringar av filerna från klienten skickas tillbaka till lagrings systemet på Server sidan omedelbart.
 
   Med den här användnings modellen kontrol leras ofta filerna i cacheminnet mot backend-versionerna för uppdateringar. Den här verifieringen tillåter att filer ändras utanför cachen och samtidigt bibehåller sig data konsekvens.
 
@@ -186,8 +188,11 @@ I den här tabellen sammanfattas skillnaderna mellan användnings modeller:
 | Användnings modell                   | Cacheläge | Verifiering på Server Sidan | Maximal Skriv åtgärds fördröjning |
 |-------------------------------|--------------|-----------------------|--------------------------|
 | Läs tung, sällan skrivna skrivningar | Läs         | Aldrig                 | Inget                     |
-| Större än 15% skrivningar       | Läsning/skrivning   | Aldrig                 | 1 timme                   |
+| Större än 15% skrivningar       | Läsning/skrivning   | 8 timmar               | 1 timme                   |
 | Klienterna kringgår cachen      | Läs         | 30 sekunder            | Inget                     |
+
+> [!NOTE]
+> Verifiering svärdet på **Server** sidan visar när cachen automatiskt jämför sina filer med källfiler i Fjärrlagring. Du kan dock tvinga Azure HPC-cache att jämföra filer genom att utföra en katalog åtgärd som innehåller en readdirplus-begäran. Readdirplus är ett standard-NFS-API (kallas även utökad läsning) som returnerar katalogens metadata, vilket gör att cachen jämför och uppdaterar filer.
 
 ### <a name="create-an-nfs-storage-target"></a>Skapa ett NFS-lagrings mål
 

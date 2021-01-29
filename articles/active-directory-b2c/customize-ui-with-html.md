@@ -1,33 +1,33 @@
 ---
-title: Anpassa användargränssnittet
+title: Anpassa användar gränssnittet med HTML-mallar
 titleSuffix: Azure AD B2C
-description: Lär dig hur du anpassar användar gränssnittet för dina program som använder Azure Active Directory B2C.
+description: Lär dig hur du anpassar användar gränssnittet med HTML-mallar för dina program som använder Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058675"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050557"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassa användar gränssnittet i Azure Active Directory B2C
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Anpassa användar gränssnittet med HTML-mallar i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Anpassning och anpassning av användar gränssnittet som Azure Active Directory B2C (Azure AD B2C) visar för dina kunder och ger en smidig användar upplevelse i ditt program. Dessa upplevelser omfattar registrering, inloggning, profil redigering och återställning av lösen ord. I den här artikeln beskrivs metoder för anpassning av användar gränssnitt (UI). 
 
 > [!TIP]
-> Om du bara vill ändra banderollens logo typ, bakgrunds bild och bakgrunds färg för dina användar flödes sidor kan du prova funktionen för [företags anpassning](company-branding.md) .
+> Om du bara vill ändra banderollens logo typ, bakgrunds bild och bakgrunds färg för dina användar flödes sidor kan du prova funktionen för [företags anpassning](customize-ui.md) .
 
 ## <a name="custom-html-and-css-overview"></a>Översikt över anpassad HTML och CSS
 
@@ -59,7 +59,7 @@ I stället för att skapa ett anpassat sid innehåll från grunden kan du anpass
 
 I följande tabell visas standard sid innehållet som tillhandahålls av Azure AD B2C. Hämta filerna och Använd dem som utgångs punkt för att skapa egna anpassade sidor.
 
-| Standard sida | Beskrivning | ID för innehålls definition<br/>(endast anpassad princip) |
+| Standard sida | Description | ID för innehålls definition<br/>(endast anpassad princip) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Felsida**. Den här sidan visas när ett undantag eller ett fel påträffas. | *API. error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Själv kontrollerad sida**. Använd den här filen som ett anpassat sid innehåll för registrerings sidan för ett socialt konto, en registrerings sida för lokalt konto, en inloggnings sida för lokalt konto, lösen ords återställning med mera. Formuläret kan innehålla olika inmatnings kontroller, t. ex. en text inmatnings ruta, en ruta för lösen ords inmatning, en alternativ knapp, en listruta med flera val och kryss rutor med flera val. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -387,7 +387,15 @@ Så här använder du exemplet:
 1. Ändra principen genom att peka på HTML-filen som tidigare nämnts.
 1. Om du ser saknade teckensnitt, avbildningar eller CSS, kontrollerar du dina referenser i tillägg-principen och \* HTML-filerna.
 
+## <a name="use-company-branding-assets-in-custom-html"></a>Använda företags anpassnings till gångar i anpassad HTML
+
+Om du vill använda [företags anpassnings](customize-ui.md#configure-company-branding) resurser i en anpassad HTML-kod lägger du till följande Taggar utanför `<div id="api">` taggen. Bild källan ersätts med bakgrunds bildens och banderollens logo typ.
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du aktiverar [JavaScript-kod på klient sidan](javascript-and-page-layout.md).
-

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 763e1321556ade73778b82ea70926af21a83f7ec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896282"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053592"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Felsöka Starta/stoppa virtuella datorer när de inte används problem
 
@@ -109,7 +109,7 @@ Läs följande lista för möjliga lösningar:
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* Kontrol lera att ditt [Kör som-konto](../manage-runas-account.md) har rätt behörigheter till de virtuella datorer som du försöker starta eller stoppa. Information om hur du kontrollerar behörigheter för en resurs finns i [snabb start: Visa roller tilldelade till en användare med hjälp av Azure Portal](../../role-based-access-control/check-access.md). Du måste ange program-ID för tjänstens huvud namn som används av kör som-kontot. Du kan hämta det här värdet genom att gå till ditt Automation-konto i Azure Portal. Välj **Kör som-konton** under **konto inställningar** och välj lämpligt kör som-konto.
+* Kontrol lera att ditt [Kör som-konto](../automation-security-overview.md#run-as-accounts) har rätt behörigheter till de virtuella datorer som du försöker starta eller stoppa. Information om hur du kontrollerar behörigheter för en resurs finns i [snabb start: Visa roller tilldelade till en användare med hjälp av Azure Portal](../../role-based-access-control/check-access.md). Du måste ange program-ID för tjänstens huvud namn som används av kör som-kontot. Du kan hämta det här värdet genom att gå till ditt Automation-konto i Azure Portal. Välj **Kör som-konton** under **konto inställningar** och välj lämpligt kör som-konto.
 
 * Det är inte säkert att de virtuella datorerna startas eller stoppas om de uttryckligen utesluts. Undantagna virtuella datorer anges i `External_ExcludeVMNames` variabeln i Automation-kontot som funktionen har distribuerats till. I följande exempel visas hur du kan fråga det värdet med PowerShell.
 
@@ -201,7 +201,7 @@ Det här problemet kan orsakas av ett felaktigt konfigurerat eller utgånget kö
 
 Kontrol lera att kör som-kontot är korrekt konfigurerat genom att gå till ditt Automation-konto i Azure Portal och välja **Kör som-konton** under **konto inställningar**. Om ett Kör som-konto har kon figurer ATS felaktigt eller har upphört att gälla, visar status villkoret.
 
-Om ditt kör som-konto är felkonfigurerat kan du ta bort och återskapa kör som-kontot. Mer information finns i [hantera Azure Automation kör som-konton](../manage-runas-account.md).
+Om ditt kör som-konto är felkonfigurerat kan du ta bort och återskapa kör som-kontot. Mer information finns i [Azure Automation kör som-konton](../automation-security-overview.md#run-as-accounts).
 
 Om certifikatet har gått ut för ditt kör som-konto följer du stegen i [självsignerat certifikat förnyelse](../manage-runas-account.md#cert-renewal) för att förnya certifikatet.
 

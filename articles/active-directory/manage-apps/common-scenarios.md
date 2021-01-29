@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 882770fefbb48524ad5f11a56089132b319470aa
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835500"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053354"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Centralisera program hantering med Azure AD
 
@@ -43,7 +43,7 @@ Det går inte att hantera lösen ord. Få säker åtkomst till alla resurser du 
 |Funktion  | Beskrivning | Rekommendation |
 |---------|---------|---------|
 |Enkel inloggning|Standardbaserad federerad enkel inloggning med tillförlitliga bransch standarder.|Använd alltid [SAML/OIDC](../develop/v2-howto-app-gallery-listing.md) för att aktivera SSO när ditt program stöder det.|
-|Mina appar|Erbjud dina användare en enkel hubb för att upptäcka och komma åt alla sina program. Gör det möjligt för dem att bli mer produktiva med självbetjänings funktioner, t. ex. att begära åtkomst till appar och grupper eller att hantera åtkomst till resurser för andras räkning.| Distribuera [Mina appar](./access-panel-deployment-plan.md) i din organisation när du har integrerat dina appar med Azure AD för enkel inloggning.|
+|Mina appar|Erbjud dina användare en enkel hubb för att upptäcka och komma åt alla sina program. Gör det möjligt för dem att bli mer produktiva med självbetjänings funktioner, t. ex. att begära åtkomst till appar och grupper eller att hantera åtkomst till resurser för andras räkning.| Distribuera [Mina appar](my-apps-deployment-plan.md) i din organisation när du har integrerat dina appar med Azure AD för enkel inloggning.|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>Scenario 2: automatisera etablering och avetablering 
 

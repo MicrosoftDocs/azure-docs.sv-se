@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/28/2021
 ms.author: banders
-ms.openlocfilehash: 625c40ea17cf20449f1be241a1605a80bf6a73f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 464e129314a369c14dcc6bc6c16eadf5f8bcf01f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353008"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052997"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Programvarukostnader som inte ingår med Azure Reserved VM Instances
 
@@ -61,7 +61,7 @@ Rabatter för reserverad VM-instans och reserverad SQL-kapacitet tillämpas enda
 
 ## <a name="get-rates-for-azure-meters"></a>Få priser för Azure-mätare
 
-Du kan hämta kostnaden för var och en av dessa mätare via Azure RateCard-API:et. Information om hur du hämtar priserna för en Azure-mätare finns i avsnittet om att [hämta information om pris och metadata för resurser som används i en Azure-prenumeration](/previous-versions/azure/reference/mt219004(v=azure.100)).
+Du kan få kostnaden för var och en av mätarena med Azures API för åter försäljnings priser. Information om hur du hämtar priserna för en Azure-mätare finns i [Översikt över Azures åter försäljnings priser](/rest/api/cost-management/retail-prices/azure-retail-prices).
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information om reservationer för Azure finns i följande artiklar:

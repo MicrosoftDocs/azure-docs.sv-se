@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: Kör befintliga bash-skript
               href: ./linux/cloudinit-bash-script.md
-            - name: Förbered en befintlig virtuell dator för cloud-init
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: Skapa Linux-avbildningar utan en etablerings agent
           href: ./linux/no-agent.md
         - name: Inaktivera etablering av Linux-agent
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: Säkerhet
+          items:
+            - name: Säkerhetskontroller av Azure Policy
+              href: ./security-controls-policy-image-builder.md
         - name: Använda ett VNET
           items:
             - name: CLI
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH-anslutning
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP-anslutning
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: Använda åtkomstkontroller

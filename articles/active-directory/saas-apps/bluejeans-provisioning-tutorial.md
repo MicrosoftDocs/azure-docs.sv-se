@@ -11,77 +11,75 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e155a253910cc5ee3f4fc71cf9ea66ced5cb46f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d029f033a3c452587dbeeadf69c46cc99f604031
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742139"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053863"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Självstudie: Konfigurera BlueJeans för automatisk användar etablering
 
-Syftet med den här självstudien är att demonstrera de steg som ska utföras i BlueJeans och Azure Active Directory (Azure AD) för att konfigurera Azure AD att automatiskt etablera och avetablera användare och/eller grupper till BlueJeans.
+I den här självstudien beskrivs de steg du behöver utföra i både BlueJeans och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras, etablerar och avetablerar Azure AD automatiskt användare för [BlueJeans](https://www.bluejeans.com/pricing) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
-> [!NOTE]
-> I den här självstudien beskrivs en koppling som skapats ovanpå Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
+## <a name="capabilities-supported"></a>Funktioner som stöds
+> [!div class="checklist"]
+> * Skapa användare i BlueJeans
+> * Ta bort användare i BlueJeans när de inte behöver åtkomst längre
+> * Behåll användarattribut synkroniserade mellan Azure AD och BlueJeans
+> * [Enkel inloggning](https://docs.microsoft.com/azure/active-directory/saas-apps/bluejeans-tutorial) till BlueJeans (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande:
+Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
-* En Azure AD-klient
-* En BlueJeans-klient med [min företags](https://www.BlueJeans.com/pricing) plan eller bättre aktive rad
-* Ett användar konto i BlueJeans med administratörs behörighet
+* [En Azure AD-klientorganisation](../develop/quickstart-create-new-tenant.md).
+* Ett användar konto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etablering (till exempel program administratör, moln program administratör, program ägare eller global administratör). 
+* En BlueJeans-klient med [min företags](https://www.bluejeans.com/pricing) plan eller bättre aktive rad.
+* Ett användar konto i BlueJeans med administratörs behörighet.
+* SCIM-etablering har Aktiver ATS i BlueJeans Enterprise.
 
 > [!NOTE]
 > Integreringen med Azure AD provisioning är beroende av [BlueJeans-API: et](https://BlueJeans.github.io/developer), som är tillgängligt för BlueJeans-team i standard planen eller bättre.
 
-## <a name="adding-bluejeans-from-the-gallery"></a>Lägga till BlueJeans från galleriet
+## <a name="step-1-plan-your-provisioning-deployment"></a>Steg 1. Planera etablering av distributionen
+1. Lär dig mer om [hur etableringstjänsten fungerar](../app-provisioning/user-provisioning.md).
+2. Ta reda på vem som finns i [etableringsomfånget](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Ta reda på vilka data som ska [mappas mellan Azure AD och BlueJeans](../app-provisioning/customize-application-attributes.md).
 
-Innan du konfigurerar BlueJeans för automatisk användar etablering med Azure AD måste du lägga till BlueJeans från Azure AD-programgalleriet i listan över hanterade SaaS-program.
+## <a name="step-2-configure-bluejeans-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera BlueJeans för att ge stöd för etablering med Azure AD
 
-**Utför följande steg för att lägga till BlueJeans från Azure AD-programgalleriet:**
+1. Logga in på BlueJeans-administratörskonsolen. Gå till grupp inställningar > säkerhet.
+2. Välj **enkel inloggning** och **Konfigurera nu**.
 
-1. Välj **Azure Active Directory** i den vänstra navigerings panelen i **[Azure Portal](https://portal.azure.com)**.
+    ![nu](./media/bluejeans-provisioning-tutorial/configure.png)
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+3. I fönstret **etablera & integrering** väljer du **skapa och hantera användar konton via IDP** och klickar på **generera token**.
 
-2. Gå till **företags program** och välj sedan **alla program**.
+    ![generera](./media/bluejeans-provisioning-tutorial/token.png)
+    
+4. Kopiera och spara token. 
+5. BlueJeans-klientens URL är `https://api.bluejeans.com/v2/scim` . **Klient-URL:** en och den **hemliga token** från föregående steg kommer att anges på fliken etablering i BlueJeans-programmet i Azure Portal.
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+## <a name="step-3-add-bluejeans-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till BlueJeans från Azure AD-programgalleriet
 
-3. Om du vill lägga till ett nytt program väljer du knappen **nytt program** överst i fönstret.
+Lägg till BlueJeans från Azure AD-programgalleriet för att börja hantera etablering till BlueJeans. Om du tidigare har konfigurerat BlueJeans för SSO kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen i början. Lär dig mer om att lägga till ett program från galleriet [här](../manage-apps/add-application-portal.md).
 
-    ![Knappen Nytt program](common/add-new-app.png)
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Steg 4. Definiera vem som ska finnas i etableringsomfånget 
 
-4. I sökrutan anger du **BlueJeans**, väljer **BlueJeans** i panelen resultat och väljer sedan knappen **Lägg till** för att lägga till programmet.
+Med Azure AD Provisioning-tjänsten kan du definiera omfång som ska tillhandahållas baserat på tilldelning till programmet och eller baserat på användarens attribut. Om du väljer att omfånget som ska tillhandahållas till din app baserat på tilldelning kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare till programmet. Om du väljer att omfånget som endast ska tillhandahållas baserat på användarens attribut kan du använda ett omfångs filter enligt beskrivningen [här](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-    ![BlueJeans i resultatlistan](common/search-new-app.png)
+* När du tilldelar användare till BlueJeans måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](../develop/howto-add-app-roles-in-azure-ad-apps.md) och lägga till fler roller. 
 
-## <a name="assigning-users-to-bluejeans"></a>Tilldela användare till BlueJeans
+* Starta i liten skala. Testa med en liten uppsättning användare innan de distribueras till alla. När omfång för etablering har angetts till tilldelade användare kan du kontrol lera detta genom att tilldela en eller två användare till appen. När omfång är inställt på alla användare kan du ange ett [omfångs filter för attribut](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-Azure Active Directory använder ett begrepp som kallas "tilldelningar" för att avgöra vilka användare som ska få åtkomst till valda appar. I samband med automatisk användar etablering synkroniseras endast de användare och/eller grupper som har tilldelats till ett program i Azure AD.
+## <a name="step-5-configure-automatic-user-provisioning-to-bluejeans"></a>Steg 5. Konfigurera automatisk användar etablering till BlueJeans
 
-Innan du konfigurerar och aktiverar automatisk användar etablering bör du bestämma vilka användare och/eller grupper i Azure AD som behöver åtkomst till BlueJeans. När du har bestämt dig kan du tilldela dessa användare och/eller grupper till BlueJeans genom att följa anvisningarna här:
-
-* [Tilldela en användare eller grupp till en företags app](../manage-apps/assign-user-or-group-access-portal.md)
-
-### <a name="important-tips-for-assigning-users-to-bluejeans"></a>Viktiga tips för att tilldela användare till BlueJeans
-
-* Vi rekommenderar att en enda Azure AD-användare tilldelas BlueJeans för att testa den automatiska konfigurationen av användar etablering. Ytterligare användare och/eller grupper kan tilldelas senare.
-
-* När du tilldelar en användare till BlueJeans måste du välja en giltig programspecifik roll (om tillgängligt) i tilldelnings dialog rutan. Användare med **standard åtkomst** rollen undantas från etablering.
-
-## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>Konfigurera automatisk användar etablering till BlueJeans
-
-Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i BlueJeans baserat på användar-och/eller grupp tilldelningar i Azure AD.
-
-> [!TIP]
-> Du kan också välja att aktivera SAML-baserad enkel inloggning för BlueJeans genom att följa anvisningarna i [självstudien om enkel inloggning med BlueJeans](bluejeans-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, även om dessa två funktioner är gemensamt.
+Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare i TestApp baserat på användar tilldelningar i Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Konfigurera automatisk användar etablering för BlueJeans i Azure AD:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program**, Välj **alla program** och välj sedan **BlueJeans**.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Företagsprogram** och sedan **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -91,26 +89,26 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 3. Välj fliken **Etablering**.
 
-    ![Fliken Etablering](common/provisioning.png)
+    ![Skärm bild av alternativen för att hantera med etablerings alternativet.](common/provisioning.png)
 
 4. Ange **Etableringsläge** som **Automatiskt**.
 
     ![Fliken etablering automatiskt](common/provisioning-automatic.png)
 
-5. Under avsnittet **admin credentials** , skriver du in din BlueJeans-klient-URL och en hemlig token. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till BlueJeans. Om anslutningen Miss lyckas kontrollerar du att BlueJeans-kontot har administratörs behörighet och försöker igen.
+5. Under avsnittet **admin credentials** , skriver du in din BlueJeans-klient-URL och den hemliga token som hämtades i steg 2. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till BlueJeans. Om anslutningen Miss lyckas kontrollerar du att BlueJeans-kontot har administratörs behörighet och försöker igen.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
 
-6. I fältet **e-postavisering** anger du e-postadressen till den person eller grupp som ska få etablerings fel meddelanden och markerar kryss rutan – **Skicka ett e-postmeddelande när ett fel uppstår**.
+6. I fältet **e-** postadress för avisering anger du e-postadressen till den person som ska få etablerings fel meddelanden och markerar kryss rutan – **Skicka ett e-postmeddelande när ett fel uppstår**.
 
     ![E-postavisering](common/provisioning-notification-email.png)
 
-7. Klicka på **Spara**.
+7. Välj **Spara**.
 
 8. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory användare till BlueJeans**.
 
-9. Granska de användarattribut som synkroniseras från Azure AD till BlueJeans i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i BlueJeans för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
+9. Granska de användarattribut som synkroniseras från Azure AD till BlueJeans i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i BlueJeans för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](../app-provisioning/customize-application-attributes.md)måste du se till att BlueJeans-API: et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
 
 |Attribut|Typ|Stöds för filtrering|
 |---|---|---|
@@ -129,7 +127,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Etableringsstatus är på](common/provisioning-toggle-on.png)
 
-12. Definiera de användare och/eller grupper som du vill etablera till BlueJeans genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+12. Definiera de användare som du vill etablera till BlueJeans genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
 
     ![Etableringsomfång](common/provisioning-scope.png)
 
@@ -137,9 +135,14 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
 
-Den här åtgärden startar den första synkroniseringen av alla användare och/eller grupper som definierats i **området** i avsnittet **Inställningar** . Den inledande synkroniseringen tar längre tid att utföra än efterföljande synkroniseringar, vilket inträffar ungefär var 40: e minut så länge Azure AD Provisioning-tjänsten körs. Du kan använda avsnittet **synkroniseringsinformation** för att övervaka förloppet och följa länkar till etablerings aktivitets rapporten, som beskriver alla åtgärder som utförs av Azure AD Provisioning-tjänsten på BlueJeans.
+Den här åtgärden startar den första synkroniseringen av alla användare som definierats i **området** **Inställningar** . Den inledande synkroniseringen tar längre tid att utföra än efterföljande synkroniseringar, vilket inträffar ungefär var 40: e minut så länge Azure AD Provisioning-tjänsten körs. 
 
-Mer information om hur du läser etablerings loggarna i Azure AD finns i [rapportering om automatisk etablering av användar konton](../app-provisioning/check-status-user-account-provisioning.md).
+## <a name="step-6-monitor-your-deployment"></a>Steg 6. Övervaka distributionen
+När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:
+
+1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
+2. Kontrollera [förloppsindikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etableringscykeln och hur nära den är att slutföras
+3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="connector-limitations"></a>Kopplings begränsningar
 
@@ -153,9 +156,3 @@ Mer information om hur du läser etablerings loggarna i Azure AD finns i [rappor
 ## <a name="next-steps"></a>Nästa steg
 
 * [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)
-
-<!--Image references-->
-
-[1]: ./media/bluejeans-provisioning-tutorial/tutorial_general_01.png
-[2]: ./media/bluejeans-tutorial/tutorial_general_02.png
-[3]: ./media/bluejeans-tutorial/tutorial_general_03.png

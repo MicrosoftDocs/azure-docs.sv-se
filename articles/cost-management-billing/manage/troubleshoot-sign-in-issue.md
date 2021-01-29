@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132337"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050478"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Felsöka problem med inloggning för Azure-prenumeration
 
@@ -32,7 +32,7 @@ Om sidan i webbläsaren låser sig provar du vart och ett av följande steg till
 - Använd en annan webbläsare.
 - Använd privat surfläge för webbläsaren:
 
-   - **Edge:** Öppna **Inställningar** (de tre punkterna bredvid din profilbild), välj **Nytt InPrivate-fönster** och gå sedan till och logga in på [Azure-portalen](https://portal.azure.com/) eller [Azure-kontocenter](https://account.azure.com/Subscriptions). 
+   - **Gräns:** Öppna **Inställningar** (de tre punkterna efter profil bilden), Välj **nytt InPrivate-fönster** och bläddra sedan och logga in på [Azure Portal](https://portal.azure.com/). 
    - **Chrome:** Välj **Incognito**-läge.
    - **Safari:** Välj **Arkiv** och sedan **Nytt privat fönster**.
 
@@ -53,7 +53,7 @@ Försök att lösa problemet på något av följande sätt:
    - **Chrome:** Välj **Inställningar** och välj sedan **Rensa webbinformation** under **Sekretess och säkerhet**.
 - Återställ webbläsarinställningarna till standardinställningarna.
 - Använd privat surfläge för webbläsaren. 
-   - **Edge:** Öppna **Inställningar** (de tre punkterna bredvid din profilbild), välj **Nytt InPrivate-fönster** och gå sedan till och logga in på [Azure-portalen](https://portal.azure.com/) eller [Azure-kontocenter](https://account.azure.com/Subscriptions). 
+   - **Gräns:** Öppna **Inställningar** (de tre punkterna efter profil bilden), Välj **nytt InPrivate-fönster** och bläddra sedan och logga in på [Azure Portal](https://portal.azure.com/). 
    - **Chrome:** Välj **Incognito**-läge.
    - **Safari:** Välj **Arkiv** och sedan **Nytt privat fönster**.
 

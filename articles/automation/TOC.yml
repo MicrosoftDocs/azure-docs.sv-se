@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: Skapa ett Automation-konto med en Resource Manager-mall
           href: quickstart-create-automation-account-template.md
+        - name: Kör som-konto
+          items:
+            - name: Skapa Kör som-konto
+              href: create-run-as-account.md
+            - name: Ta bort Kör som-konto
+              href: delete-run-as-account.md
+            - name: Hantera kör som-konto
+              href: manage-runas-account.md
         - name: Konfigurera autentisering med Amazon Web Services
           href: automation-config-aws-account.md
         - name: Konfigurera autentisering med Azure AD
           href: automation-use-azure-ad.md
-        - name: Hantera DNS-post som används av Automation
+        - name: Hantera DNS-poster som används av Automation
           href: how-to/automation-region-dns-records.md
-        - name: Hantera ett Kör som-konto för Automation
-          href: manage-runas-account.md
         - name: Ansluta privat till ett Automation-konto
           href: how-to/private-link-security.md
         - name: Hantera rollbehörigheter och säkerhet

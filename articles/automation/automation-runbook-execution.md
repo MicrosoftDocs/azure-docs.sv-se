@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078841"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053915"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook-körning i Azure Automation
 
@@ -112,7 +112,7 @@ De loggar som är tillgängliga för Log Analytics-agenten och **nxautomation** 
 
 ## <a name="runbook-permissions"></a>Runbook-behörigheter
 
-En Runbook behöver behörighet för autentisering till Azure via autentiseringsuppgifter. Se [hantera Azure Automation kör som-konton](manage-runas-account.md).
+En Runbook behöver behörighet för autentisering till Azure via autentiseringsuppgifter. Se [Översikt över Azure Automation autentisering](automation-security-overview.md).
 
 ## <a name="modules"></a>Moduler
 
@@ -139,8 +139,9 @@ I följande tabell beskrivs de status värden som är möjliga för ett jobb. Du
 
 | Status | Beskrivning |
 |:--- |:--- |
+| Ring |Jobbet aktive ras. |
 | Slutförd |Jobbet har slutförts. |
-| Misslyckades |Det gick inte att kompilera en grafisk eller PowerShell-arbetsflöde Runbook. Det gick inte att starta PowerShell-runbooken eller så innehöll jobbet ett undantag. Se [Azure Automation Runbook-typer](automation-runbook-types.md).|
+| Misslyckad |Det gick inte att kompilera en grafisk eller PowerShell-arbetsflöde Runbook. Det gick inte att starta PowerShell-runbooken eller så innehöll jobbet ett undantag. Se [Azure Automation Runbook-typer](automation-runbook-types.md).|
 | Misslyckades, väntar på resurser |Jobbet misslyckades eftersom det nådde den [verkliga delnings](#fair-share) gränsen tre gånger och startade från samma kontroll punkt eller från början av runbooken varje gång. |
 | I kö |Jobbet väntar på att resurser i en automatiserings arbets uppgift ska bli tillgängliga så att de kan startas. |
 | Återupptar |Systemet återupptar jobbet när det har pausats. |

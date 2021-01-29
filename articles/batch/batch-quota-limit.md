@@ -2,14 +2,14 @@
 title: Kvoter och begränsningar för tjänsten
 description: Lär dig mer om standard Azure Batch kvoter, gränser och begränsningar samt hur du begär kvot ökningar
 ms.topic: conceptual
-ms.date: 12/29/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814643"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052388"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvoter och begränsningar för Batch-tjänsten
 
@@ -33,19 +33,7 @@ Observera också att kvoter inte är garanterade värden. Kvoter kan variera ber
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Kärn kvoter i batch service-läge
 
-Genomförandet av dedikerade kärn kvoter förbättras, med de ändringar som görs tillgängliga i faser och slutförda för alla batch-konton i slutet av januari 2021.
-
-Det finns kärn kvoter för varje VM-serie som stöds av batch och visas på sidan **kvoter** i portalen. Kvot gränser för VM-serien kan uppdateras med en support förfrågan enligt beskrivningen nedan.
-
-När den befintliga mekanismen har fasats ut, kontrol leras inte kvot gränserna för VM-serien, bara den totala kvot gränsen för kontot tillämpas. Det innebär att det kan vara möjligt att allokera fler kärnor för en VM-serie än vad som anges av kvoten för VM-serien, upp till den totala konto kvot gränsen.
-
-Den uppdaterade mekanismen upprätthåller kvoterna för VM-serien, utöver den totala konto kvoten. Som en del av över gången till den nya mekanismen, kan kvot värden för VM-serien uppdateras för att undvika allokeringsfel – alla VM-serier som används under de senaste månaderna får sin kvot för VM-serien uppdaterad för att matcha den totala konto kvoten. Den här ändringen kommer inte att aktivera användning av mer kapacitet än vad som redan är tillgängligt.
-
-Det är möjligt att avgöra om kvot tvång för VM-serien har Aktiver ATS för ett batch-konto genom att kontrol lera följande:
-
-* API-egenskapen för batch-kontot [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) .
-
-* Text på sidan för batch-konto- **kvoter** i portalen.
+Det finns kärn kvoter för varje VM-serie som stöds av batch och visas på sidan **kvoter** i portalen. Kvot gränser för VM-serien kan uppdateras med en support förfrågan enligt beskrivningen nedan. För dedikerade noder tillämpar batch en kärn kvot gräns för varje VM-serie samt en total kärn kvot gräns för hela batch-kontot. För noder med låg prioritet tvingar batch endast en total kärn kvot för batch-kontot utan någon skillnad mellan olika VM-serier.
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kärn kvoter i användar prenumerations läge
 

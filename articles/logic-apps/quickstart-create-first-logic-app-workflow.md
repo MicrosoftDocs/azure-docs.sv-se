@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455056"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052050"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Snabb start: skapa din första Logic Apps arbets flöde – Azure Portal
 
@@ -30,11 +30,14 @@ Om du vill lära dig hur du skapar och hanterar din första Logic-app via andra 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. Om du inte har någon kan du [Registrera dig för ett kostnads fritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ett Azure-konto och prenumeration. Om du inte har någon kan du [Registrera dig för ett kostnads fritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 * Ett e-postkonto från en tjänst som stöds av Logic Apps (till exempel Office 365 Outlook eller Outlook.com). [Granska anslutnings listan](/connectors/)för andra e-postleverantörer som stöds.
 
     > [!IMPORTANT]
     > Observera att endast G Suite-konton kan använda den här anslutningen utan begränsning i Logic Apps om du använder [Gmail-anslutningsprogrammet](/connectors/gmail/). Om du har ett kund Gmail-konto kan du bara använda den här anslutningen med vissa Google-godkända tjänster, om du inte [skapar en Google-app som ska användas för autentisering med din Gmail-anslutning](/connectors/gmail/#authentication-and-bring-your-own-application). Mer information finns i [principer för data säkerhet och sekretess för Google Connectors i Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* Om din Logi Kap par behöver kommunicera via en brand vägg som begränsar trafik till vissa IP-adresser, måste brand väggen tillåta åtkomst  för både [inkommande](logic-apps-limits-and-config.md#inbound) och [utgående](logic-apps-limits-and-config.md#outbound) ip-adresser som används av Logic Apps tjänst eller körning i den Azure-region där din Logic app finns. Om din Logic app även använder [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Office 365 Outlook Connector eller SQL-anslutning, eller använder [anpassade anslutningar](/connectors/custom-connectors/), måste brand väggen också tillåta åtkomst för *alla* [utgående IP-adresser för hanterad anslutning](logic-apps-limits-and-config.md#outbound) i din Logic app Azure-region.
 
 <a name="create-logic-app"></a>
 
@@ -51,7 +54,7 @@ Om du vill lära dig hur du skapar och hanterar din första Logic-app via andra 
    ![Skärm bild av sidan Logic Apps tjänst i Azure Portal, som visar Logic Apps-listan och markerad knapp, "Lägg till".](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. I fönstret **Logic app** anger du grundläggande information och inställningar för din Logic app. Skapa en ny [resurs grupp](../azure-resource-manager/management/overview.md#terminology) för syftet med den här exempel Logic-appen.
-    
+
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
    | **Namn** | <*Logic – App-Name*> | Din Logic Apps namn, som måste vara unikt i flera regioner. Namnet får bara innehålla bokstäver, siffror, bindestreck ( `-` ), under streck ( `_` ), parenteser ( `(` , `)` ) och punkter ( `.` ). I det här exemplet används "min-First-Logic-app". |

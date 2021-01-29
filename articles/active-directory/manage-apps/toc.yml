@@ -50,7 +50,7 @@
         - name: Planera för appar som inte finns med i galleriet
           href: non-gallery-apps.md
         - name: Planera distribution av mina appar
-          href: access-panel-deployment-plan.md
+          href: my-apps-deployment-plan.md
     - name: Enkel inloggning
       items:
         - name: Planera en distribution för enkel inloggning

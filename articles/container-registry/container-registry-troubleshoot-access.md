@@ -3,12 +3,12 @@ title: Felsöka nätverks problem med registret
 description: Symptom, orsaker och lösningar på vanliga problem vid åtkomst till ett Azure Container Registry i ett virtuellt nätverk eller bakom en brand vägg
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351801"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052169"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Felsöka nätverks problem med registret
 
@@ -40,6 +40,8 @@ Kan innehålla ett eller flera av följande:
 Kör kommandot [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) för att få mer information om hälso tillståndet för register miljön och eventuellt åtkomst till ett mål register. Diagnostisera till exempel vissa nätverks anslutningar eller konfigurations problem. 
 
 Se [kontrol lera hälso tillståndet för ett Azure Container Registry](container-registry-check-health.md) för kommando exempel. Om fel rapporteras läser du [fel referensen](container-registry-health-error-reference.md) och följande avsnitt för rekommenderade lösningar.
+
+Om du har problem med att använda registret wih Azure Kubernetes-tjänsten kör du kommandot [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) för att kontrol lera att registret är tillgängligt från AKS-klustret.
 
 > [!NOTE]
 > Vissa nätverks anslutnings problem kan också uppstå när det finns problem med autentisering eller auktorisering av registret. Se [Felsöka register inloggning](container-registry-troubleshoot-login.md).
@@ -136,7 +138,7 @@ Om du inte löser problemet här kan du läsa följande alternativ.
 
 * Andra fel söknings avsnitt för registret innehåller:
   * [Felsöka inloggning av registret](container-registry-troubleshoot-login.md) 
-  * [Felsöka registerprestanda](container-registry-troubleshoot-performance.md)
+  * [Felsöka register prestanda](container-registry-troubleshoot-performance.md)
 * Alternativ för [Community-support](https://azure.microsoft.com/support/community/)
 * [Microsoft Q&A](/answers/products/)
 * [Öppna en supportbegäran](https://azure.microsoft.com/support/create-ticket/)

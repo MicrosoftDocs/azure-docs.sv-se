@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d519193d55c9535dc71206d2d9f72661d7a40d71
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954420"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051303"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Felsöka live video analys på IoT Edge
 
@@ -107,7 +107,8 @@ Du kan också stöta på problem när du kör **[installations skriptet för Liv
 * Installations skriptet kan inte skapa tjänstens huvud namn och/eller Azure-resurser.
     * För att komma förbi det här problemet bör du kontrol lera att din prenumeration och Azure-klienten inte har nått sin maximala tjänst gräns. Lär dig mer om [Azure AD-tjänstens gränser och begränsningar](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions) samt [Azure-prenumerationer, tjänst begränsningar, kvoter och begränsningar.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
 
-
+> [!TIP]
+> Om det finns några ytterligare problem som du kan behöva hjälp med kan du **[samla in loggar och skicka in ett support ärende](#collect-logs-for-submitting-a-support-ticket)**. Du kan också kontakta oss genom att skicka oss ett e-postmeddelande till **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** .
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video analys fungerar med externa moduler
 
 Live video analys via medie graphs tilläggs processorer kan utöka medie grafen för att skicka och ta emot data från andra IoT Edge moduler genom att använda HTTP-eller gRPC-protokoll. Som ett [särskilt exempel](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)kan det här medie diagrammet skicka video bild rutor som bilder till en extern härlednings modul som Yolo v3 och ta emot JSON-baserade analys resultat med http-protokollet. I en sådan topologi är målet för händelserna främst IoT-hubben. I situationer där du inte ser uthärlednings händelser i hubben, kontrol lera följande:

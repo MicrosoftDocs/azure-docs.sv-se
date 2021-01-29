@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344495"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054169"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Felsöka problem när du registrerar ett nytt konto i Microsoft Azure-portalen eller Azure-kontocenter
 
@@ -139,19 +139,18 @@ Slutför avtalet.
 
 ## <a name="other-issues"></a>Andra problem
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Det går inte att aktivera Azure-förmånsplan såsom MSDN, BizSpark, BizSparkPlus eller MPN
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Det går inte att aktivera Azures förmåns plan som Visual Studio, BizSpark, BizSparkPlus eller MPN
 
 Kontrollera att du använder rätt inloggningsuppgifter. Kontrollera sedan förmånsprogrammet för att ta reda på om du är berättigad.
-- MSDN
-  - Kontrollera din berättigandestatus på din [MSDN-kontosida](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Om du inte kan verifiera din status kontaktar du [kundtjänstcentret för MSDN-prenumerationskunder](/previous-versions/mappoint/aa493452(v=msdn.10)).
+- Visual Studio
+  - Kontrol lera status för din status på [Visual Studio-kontots sida](https://my.visualstudio.com/Benefits).
+  - Kontakta [Visual Studio Subscription support](https://visualstudio.microsoft.com/subscriptions/support/)om du inte kan verifiera din status.
 - Microsoft for Startups
   - Logga in på [Microsoft for Startups-portalen](https://startups.microsoft.com/#start-two) för att kontrollera din berättigandestatus för Microsoft for Startups.
   - Om du inte kan verifiera statusen kan du få hjälp på [forumen för Microsoft for Startups](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN
   - Logga in på [MPN-portalen](https://mspartner.microsoft.com/Pages/Locale.aspx) för att verifiera din berättigandestatus. Om du har rätt [molnplattformskompetenser](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx) kan du vara berättigad till ytterligare förmåner.
   - Om du inte kan verifiera din status kontaktar du [MPN-supporten](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx).
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Det går inte att aktivera ny Azure In Open-prenumeration
 

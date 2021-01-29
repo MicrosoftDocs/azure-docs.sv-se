@@ -2,19 +2,15 @@
 title: Flytta ditt Azure Automation-konto till en annan prenumeration
 description: Den här artikeln beskriver hur du flyttar ditt Automation-konto till en annan prenumeration.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 8454c5a5bb5b44d2a60ae0095a9b82a19ed27c8d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896654"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051032"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Flytta ditt Azure Automation-konto till en annan prenumeration
 
@@ -108,7 +104,7 @@ Nu kan du flytta ditt Automation-konto och dess Runbooks.
 
 ## <a name="re-create-run-as-accounts"></a>Återskapa kör som-konton
 
-[Kör som-konton](../manage-runas-account.md) skapa ett huvud namn för tjänsten i Azure Active Directory för att autentisera med Azure-resurser. När du ändrar prenumerationer använder Automation-kontot inte längre det befintliga kör som-kontot. Skapa Kör som-konton på nytt:
+[Kör som-konton](../automation-security-overview.md#run-as-accounts) skapa ett huvud namn för tjänsten i Azure Active Directory för att autentisera med Azure-resurser. När du ändrar prenumerationer använder Automation-kontot inte längre det befintliga kör som-kontot. Skapa Kör som-konton på nytt:
 
 1. Gå till ditt Automation-konto i den nya prenumerationen och välj **Kör som-konton** under **konto inställningar**. Du ser att kör som-kontona visas som ofullständiga nu.
 
@@ -117,7 +113,7 @@ Nu kan du flytta ditt Automation-konto och dess Runbooks.
 2. Ta bort kör som-kontona, ett i taget, genom att välja **ta bort** på sidan **Egenskaper** . 
 
     > [!NOTE]
-    > Om du inte har behörighet att skapa eller Visa kör som-konton visas följande meddelande: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` Mer information finns i [behörigheter som krävs för att konfigurera kör som-konton](../manage-runas-account.md#permissions).
+    > Om du inte har behörighet att skapa eller Visa kör som-konton visas följande meddelande: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` Mer information finns i [behörigheter som krävs för att konfigurera kör som-konton](../automation-security-overview.md#permissions).
 
 3. När du har tagit bort kör som-kontona väljer du **skapa** under **Kör som-konto i Azure**. 
 

@@ -3,14 +3,14 @@ title: Skapa ett fristående Azure Automation-konto
 description: Den här artikeln beskriver hur du skapar ett fristående Azure Automation-konto och ett klassiskt kör som-konto.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/15/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714650"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051472"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Skapa ett fristående Azure Automation-konto
 
@@ -67,14 +67,14 @@ Utför följande steg för att skapa ett Azure Automation konto i Azure Portal:
     > Namn på Automation-konton är unika per region och resurs grupp. Namn för borttagna Automation-konton kanske inte är omedelbart tillgängliga.
 
 1. Om du har mer än en prenumeration använder du fältet **prenumeration** för att ange vilken prenumeration som ska användas för det nya kontot.
-1. För **resurs grupp**anger eller väljer du en ny eller befintlig resurs grupp.
-1. För **plats**väljer du en plats för Azure-datacenter.
+1. För **resurs grupp** anger eller väljer du en ny eller befintlig resurs grupp.
+1. För **plats** väljer du en plats för Azure-datacenter.
 1. För alternativet **Skapa Azure kör som-konto** kontrollerar du att **Ja** är markerat och klickar sedan på **skapa**.
 
    > [!NOTE]
-   > Om du väljer att inte skapa kör som-kontot genom att välja **Nej** för **skapa kör som-konto för Azure**visas ett meddelande i fönstret Lägg till Automation-konto. Även om kontot har skapats i Azure Portal, har kontot inte någon motsvarande Autentiseringsidentitet i den klassiska distributions modell prenumerationen eller i Azure Resource Manager prenumerations katalog tjänst. Automation-kontot har därför inte åtkomst till resurser i din prenumeration. Detta förhindrar att Runbooks som refererar till det här kontot kan autentisera och utföra åtgärder mot resurser i dessa distributions modeller.
+   > Om du väljer att inte skapa kör som-kontot genom att välja **Nej** för **skapa kör som-konto för Azure** visas ett meddelande i fönstret Lägg till Automation-konto. Även om kontot har skapats i Azure Portal, har kontot inte någon motsvarande Autentiseringsidentitet i den klassiska distributions modell prenumerationen eller i Azure Resource Manager prenumerations katalog tjänst. Automation-kontot har därför inte åtkomst till resurser i din prenumeration. Detta förhindrar att Runbooks som refererar till det här kontot kan autentisera och utföra åtgärder mot resurser i dessa distributions modeller.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Skärm bild av prompten du har inte behörighet att skapa ett Kör som-konto i Azure Active Directory.":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Skärm bild av prompt med meddelande &quot;du har valt att inte skapa ett Kör som-konto.&quot;":::
    >
    > När tjänstens huvud namn inte har skapats är deltagar rollen inte tilldelad.
    >
@@ -93,7 +93,7 @@ När Automation-kontot har skapats skapas flera resurser automatiskt. När du ha
 
 ## <a name="create-a-classic-run-as-account"></a>Skapa ett klassiskt kör som-konto
 
-Klassiska kör som-konton skapas inte längre som standard när du skapar ett Azure Automation-konto. Om du fortfarande behöver ett klassiskt kör som-konto:
+Klassiska kör som-konton skapas inte som standard när du skapar ett Azure Automation-konto. Utför följande steg om du behöver ett klassiskt kör som-konto för att hantera klassiska Azure-resurser:
 
 1. Från ditt Automation-konto väljer du **Kör som-konton** under **konto inställningar**.
 2. Välj **det klassiska kör som-kontot i Azure**.
@@ -104,5 +104,5 @@ Klassiska kör som-konton skapas inte längre som standard när du skapar ett Az
 * Mer information om grafisk redigering finns [i Redigera grafiska runbooks i Azure Automation](automation-graphical-authoring-intro.md).
 * Information om hur du kommer igång med PowerShell-Runbooks finns i [Självstudier: skapa en PowerShell-Runbook](learn/automation-tutorial-runbook-textual-powershell.md).
 * Information om hur du kommer igång med PowerShell Workflow-Runbooks finns i [självstudie: skapa en PowerShell Workflow-Runbook](learn/automation-tutorial-runbook-textual.md).
-* Information om hur du kommer igång med python 2-Runbooks finns i [Självstudier: skapa en python 2-Runbook](learn/automation-tutorial-runbook-textual-python2.md).
-* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation).
+* Information om hur du kommer igång med python 3-Runbooks finns i [Självstudier: skapa en python 3-Runbook](learn/automation-tutorial-runbook-textual-python-3.md).
+* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation&preserve-view=true#automation).

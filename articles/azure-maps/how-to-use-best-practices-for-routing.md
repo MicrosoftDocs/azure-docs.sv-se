@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895553"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051659"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Metod tips för Azure Maps Route service
 
@@ -59,10 +59,10 @@ Här är en jämförelse för att visa vissa funktioner i väg riktningarna och 
 
 | Azure Maps-API | Maximalt antal frågor i begäran | Undvik områden | Routning av Last bilar och elektriska fordon | Waypoints och Traveling Salesman-optimering | Stöd punkter |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Hämta väg riktningar | 1 | | X | X | |
-| Riktning efter väg | 1 | X | X | X | X |
-| Batch för post vägs riktningar | 700 | | X | X | |
-| Publicera väg mat ris | 700 | | X | | |
+| Hämta väg riktningar | 1 | | ✔ | ✔ | |
+| Riktning efter väg | 1 | ✔ | ✔ | ✔ | ✔ |
+| Batch för post vägs riktningar | 700 | | ✔ | ✔ | |
+| Publicera väg mat ris | 700 | | ✔ | | |
 
 Om du vill veta mer om routningsfunktioner för elektriska bilar, se vår självstudie om hur du [dirigerar elektriska fordon med hjälp av Azure Notebooks med python](tutorial-ev-routing.md).
 
@@ -113,7 +113,7 @@ I det andra exemplet nedan har vi en operationsföljd förfrågan i real tid, d�
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Svaret innehåller en sammanfattning som visas nedan. På grund av överbelastningar är **trafficDelaysInSeconds** -värdet större än noll. Det är också större än **historicTrafficTravelTimeInSeconds** .
+Svaret innehåller en sammanfattning som visas nedan. På grund av överbelastningar är **trafficDelaysInSeconds** -värdet större än noll. Det är också större än **historicTrafficTravelTimeInSeconds**.
 
 ```json
 "summary": {
@@ -214,7 +214,7 @@ Azure Maps tillhandahåller för närvarande två former av väg optimeringar:
 
 För multi-Stop-routning kan upp till 150 waypoints anges i en enda Route-begäran. Start-och slut koordinaterna kan vara desamma, som skulle vara fallet med en tur och retur. Men du måste ange minst en ytterligare waypoint för att utföra väg beräkningen. Waypoints kan läggas till i frågan i-mellan koordinaterna för ursprung och mål.
 
-Om du vill optimera den bästa ordningen för att besöka den aktuella waypoints måste du ange **computeBestOrder = True** . Det här scenariot kallas även för problem med att optimera säljman-optimering.
+Om du vill optimera den bästa ordningen för att besöka den aktuella waypoints måste du ange **computeBestOrder = True**. Det här scenariot kallas även för problem med att optimera säljman-optimering.
 
 ### <a name="sample-query"></a>Exempelfråga
 

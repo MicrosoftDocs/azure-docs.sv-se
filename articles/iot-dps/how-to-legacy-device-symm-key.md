@@ -3,17 +3,17 @@ title: Etablera enheter med hjälp av symmetriska nycklar – Azure IoT Hub Devi
 description: Använda symmetriska nycklar för att etablera enheter med enhets etablerings tjänst instansen (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/13/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: eliotga
-ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+manager: lizross
+ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967320"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051117"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Så här etablerar du enheter med hjälp av symmetrisk nyckel registrerings grupper
 
@@ -21,9 +21,7 @@ Den här artikeln visar hur du på ett säkert sätt kan etablera flera symmetri
 
 En del enheter kanske inte har något certifikat, TPM eller någon annan säkerhetsfunktion som kan användas för att identifiera enheten på ett säkert sätt. Enhets etablerings tjänsten innehåller [symmetrisk nyckel attestering](concepts-symmetric-key-attestation.md). Symmetrisk nyckel attestering kan användas för att identifiera en enhet baserat på unik information, t. ex. MAC-adressen eller ett serie nummer.
 
-Om du enkelt kan installera en [maskinvaru-säkerhetsmodul (HSM)](concepts-service.md#hardware-security-module) och ett certifikat kan det vara en bättre metod för att identifiera och etablera dina enheter. Eftersom den metoden kan göra det möjligt att kringgå uppdateringen av koden som distribuerats till alla dina enheter och du inte har en hemlig nyckel inbäddad i enhets avbildningen.
-
-Den här artikeln förutsätter att varken HSM eller ett certifikat är ett lämpligt alternativ. Det förutsätts dock att du har en del metod för att uppdatera enhets koden för att använda enhets etablerings tjänsten för att etablera enheterna. 
+Om du enkelt kan installera en [maskinvaru-säkerhetsmodul (HSM)](concepts-service.md#hardware-security-module) och ett certifikat kan det vara en bättre metod för att identifiera och etablera dina enheter. Med hjälp av en HSM kan du kringgå uppdateringen av koden som distribuerats till alla dina enheter och du inte har en hemlig nyckel inbäddad i dina enhets avbildningar. Den här artikeln förutsätter att varken HSM eller ett certifikat är ett lämpligt alternativ. Det förutsätts dock att du har en del metod för att uppdatera enhets koden för att använda enhets etablerings tjänsten för att etablera enheterna. 
 
 Den här artikeln förutsätter också att enhets uppdateringen äger rum i en säker miljö för att förhindra obehörig åtkomst till huvud grupp nyckeln eller den härledda enhets nyckeln.
 
@@ -43,7 +41,7 @@ Enhets koden som visas i den här artikeln följer samma mönster som [snabb sta
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Konfigurations IoT Hub Device Provisioning service har](./quick-setup-auto-provision.md) slutförts med snabb starten för Azure Portal.
 
@@ -142,39 +140,18 @@ I det här exemplet använder vi en kombination av en MAC-adress och ett serie n
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Skapa ett unikt registrerings-ID för din enhet. Giltiga tecken är alfanumeriska bokstäver och bindestreck (-).
+Skapa unika registrerings-ID för varje enhet. Giltiga tecken är alfanumeriska bokstäver och bindestreck (-).
 
 
 ## <a name="derive-a-device-key"></a>Härled en enhets nyckel 
 
-Generera enhets nyckeln genom att använda gruppens huvud nyckel för att beräkna en [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) av det unika registrerings-ID: t för enheten och konvertera resultatet till base64-format.
+Om du vill generera enhets nycklar använder du registrerings gruppens huvud nyckel för att beräkna en [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) av registrerings-ID: t för varje enhet. Resultatet konverteras sedan till base64-format för varje enhet.
 
 > [!WARNING]
-> Enhets koden ska bara innehålla den härledda enhets nyckeln för den enskilda enheten. Ta inte med din grupp huvud nyckel i enhets koden. En komprometterad huvud nyckel har möjlighet att kompromettera säkerheten för alla enheter som autentiseras med den.
+> Enhets koden för varje enhet ska bara innehålla motsvarande härledd enhets nyckel för enheten. Ta inte med din grupp huvud nyckel i enhets koden. En komprometterad huvud nyckel har möjlighet att kompromettera säkerheten för alla enheter som autentiseras med den.
 
 
-#### <a name="linux-workstations"></a>Linux-arbetsstationer
-
-Om du använder en Linux-arbetsstation kan du använda OpenSSL för att generera en härledd enhets nyckel som visas i följande exempel.
-
-Ersätt värdet för **Key** med den **primära nyckel** du noterade tidigare.
-
-Ersätt värdet för **REG_ID** med ditt registrerings-ID.
-
-```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
-```
-
-
-#### <a name="windows-based-workstations"></a>Windows-baserade arbets stationer
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Om du använder en Windows-baserad arbets Station kan du använda PowerShell för att generera en härledd enhets nyckel som visas i följande exempel.
 
@@ -197,8 +174,29 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
+# <a name="linux"></a>[Linux](#tab/linux)
 
-Enheten kommer att använda den härledda enhets nyckeln med ditt unika registrerings-ID för att utföra symmetrisk nyckel attestering med registrerings gruppen under etableringen.
+Om du använder en Linux-arbetsstation kan du använda OpenSSL för att generera en härledd enhets nyckel som visas i följande exempel.
+
+Ersätt värdet för **Key** med den **primära nyckel** du noterade tidigare.
+
+Ersätt värdet för **REG_ID** med ditt registrerings-ID.
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+---
+
+Varje enhet använder den härledda enhets nyckeln och ett unikt registrerings-ID för att utföra symmetrisk nyckel attestering med registrerings gruppen under etableringen.
 
 
 
@@ -206,7 +204,7 @@ Enheten kommer att använda den härledda enhets nyckeln med ditt unika registre
 
 I det här avsnittet ska du uppdatera ett etablerings exempel med namnet **\_ test dev \_ client- \_ exempel** som finns i Azure IoT C SDK som du har skapat tidigare. 
 
-Den här exempel koden simulerar en enhets startsekvens som skickar etablerings förfrågan till din enhets etablerings tjänst instans. Startsekvensen gör att enheten identifieras och tilldelas IoT-hubben som du konfigurerade i registrerings gruppen.
+Den här exempel koden simulerar en enhets startsekvens som skickar etablerings förfrågan till din enhets etablerings tjänst instans. Startsekvensen gör att enheten identifieras och tilldelas IoT-hubben som du konfigurerade i registrerings gruppen. Detta skulle slutföras för varje enhet som ska tillhandahållas med registrerings gruppen.
 
 1. I Azure-portalen väljer du fliken **Översikt** för enhetsetableringstjänsten och noterar värdet för **_ID-omfång_**.
 
@@ -280,10 +278,7 @@ Den här exempel koden simulerar en enhets startsekvens som skickar etablerings 
 
 ## <a name="security-concerns"></a>Säkerhets problem
 
-Tänk på att detta lämnar den härledda enhets nyckeln som ingår som en del av avbildningen, vilket inte är en rekommenderad säkerhets rutin. Detta är en orsak till att säkerhet och enkel användning är kompromisser. 
-
-
-
+Tänk på att detta lämnar den härledda enhets nyckeln som ingår som en del av avbildningen för varje enhet, vilket inte är en rekommenderad säkerhets rutin. Detta är en orsak till att säkerhet och enkel användning ofta är kompromisser. Du måste kontrol lera säkerheten på dina enheter fullständigt utifrån dina egna krav.
 
 
 ## <a name="next-steps"></a>Nästa steg

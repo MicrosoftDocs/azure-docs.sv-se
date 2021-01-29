@@ -4,17 +4,17 @@ description: Du använder funktioner i Azure Cost Management + Fakturering för 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/28/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34034a99641d75e44783cb5b87af8948b4db1628
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029948"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051101"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Vad är Azure Cost Management + Fakturering?
 
@@ -43,11 +43,11 @@ När du registrerar dig för att använda Azure skapas ett faktureringskonto. Du
 
 Azure-portalen stöder för närvarande följande typer av faktureringskonton:
 
-- **Microsoft Online Services-programmet**: Ett enskilt faktureringskonto för ett Microsoft Online Services-program skapas när du registrerar dig för Azure via Azure-webbplatsen. Det gäller till exempel när du registrerar dig för ett kostnadsfritt Azure-konto eller ett konto med Betala per användning-priser eller som Visual studio-prenumerant.
+- **Microsoft Online Services-programmet**: Ett enskilt faktureringskonto för ett Microsoft Online Services-program skapas när du registrerar dig för Azure via Azure-webbplatsen. Till exempel när du registrerar dig för ett [kostnads fritt Azure-konto](./manage/create-free-services.md)kan du använda ett konto med betala per användning eller som en Visual Studio-prenumerant.
 
 - **Enterprise-avtal**: Ett faktureringskonto för ett Enterprise-avtal skapas när din organisation tecknar ett Enterprise-avtal (EA) för att använda Azure.
 
-- **Microsoft-kundavtal**: Ett faktureringskonto för ett Microsoft-kundavtal skapas när din organisation arbetar med en Microsoft-representant för att teckna ett Microsoft-kundavtal. Vissa kunder i utvalda regioner som registrerar sig via Azure-webbplatsen för ett konto med Betala per användning-priser eller uppgraderar sitt kostnadsfria Azure-konto kan även ha ett faktureringskonto för ett Microsoft-kundavtal.
+- **Microsoft-kundavtal**: Ett faktureringskonto för ett Microsoft-kundavtal skapas när din organisation arbetar med en Microsoft-representant för att teckna ett Microsoft-kundavtal. Vissa kunder i utvalda regioner som registrerar sig via Azure-webbplatsen för ett konto med Betala per användning-priser eller uppgraderar sitt [kostnadsfria Azure-konto](./manage/create-free-services.md) kan även ha ett faktureringskonto för ett Microsoft-kundavtal.
 
 ### <a name="scopes-for-billing-accounts"></a>Omfång för faktureringskonton
 Ett omfång är en nod i ett faktureringskonto som du använder för att visa och hantera fakturering. Där hanterar du faktureringsdata, betalningar, fakturor och utför vanliga kontohanteringsuppgifter.

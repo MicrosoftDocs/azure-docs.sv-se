@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a998491729a1d3bd472ecc3de9722c142f8dc182
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953792"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050455"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Twitter-konto med hjälp av Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Om du vill aktivera inloggning för användare med ett Twitter-konto i Azure AD 
 1. Under **autentiseringsinställningar** väljer du **Redigera**
     1. Markera kryss rutan **Aktivera 3-ledade OAuth** .
     1. Kryss rutan Markera **begär e-postadress från användare** .
-    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Ett exempel är `b2c_1A_signup_signin_twitter`. Använd gemener när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
+    1. För **återanrops-URL: er** anger du `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Ersätt `your-tenant` med namnet på ditt klient namn och `your-user-flow-Id` med identifieraren för ditt användar flöde. Ett exempel är `b2c_1a_signup_signin_twitter`. Använd gemener när du anger ditt klient namn och ditt användar flödes-ID även om de definieras med versaler i Azure AD B2C.
     1. För **webbplats-URL: en** anger du `https://your-tenant.b2clogin.com` . Ersätt `your-tenant` med namnet på din klient. Ett exempel är `https://contosob2c.b2clogin.com`.
     1. Ange en URL för **tjänst villkoren**, till exempel `http://www.contoso.com/tos` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla villkor för ditt program.
     1. Ange en URL för **Sekretess policyn**, till exempel `http://www.contoso.com/privacy` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla sekretess information för ditt program.

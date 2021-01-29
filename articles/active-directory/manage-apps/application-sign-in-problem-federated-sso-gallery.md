@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b828a23805c6d3ab544dd2b9f78b45a3327cde
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586354"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053405"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning
 För att felsöka inloggnings problemen nedan rekommenderar vi följande för att bättre diagnostisera och automatisera lösnings stegen:
 
-- Installera [tillägget säker webbläsare för mina appar](./access-panel-deployment-plan.md) för att hjälpa Azure Active Directory (Azure AD) att ge bättre diagnoser och lösningar när du använder testmiljön i Azure Portal.
+- Installera [tillägget säker webbläsare för mina appar](my-apps-deployment-plan.md) för att hjälpa Azure Active Directory (Azure AD) att ge bättre diagnoser och lösningar när du använder testmiljön i Azure Portal.
 - Återskapa felet med hjälp av testfunktionen på appkonfigurationssidan i Azure Portal. Läs mer om [Debug SAML-baserade enkla inloggnings program](./debug-saml-sso-issues.md)
 
 Om du använder [test upplevelsen](./debug-saml-sso-issues.md) i Azure Portal med tillägget mina appars säkra webbläsare, behöver du inte manuellt följa stegen nedan för att öppna konfigurations sidan för SAML-baserad enkel inloggning.

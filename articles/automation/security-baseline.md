@@ -4,15 +4,15 @@ description: Azures säkerhets bas linje för Automation
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737260"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052761"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azures säkerhets bas linje för Automation
 
@@ -336,11 +336,11 @@ Men när du använder funktionen Hybrid Runbook Worker kan Azure Security Center
 
 **Vägledning**: Använd Azure Active Directory inbyggda administratörs roller som kan tilldelas explicit och som kan frågas. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper. När du använder kör som-konton för Automation-konton för dina runbooks, ser du till att dessa tjänst huvud namn också spåras i inventeringen eftersom de ofta har förhöjd behörighet. Ta bort eventuella oanvända kör som-konton för att minimera din exponerade attack yta.
 
-* [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./delete-run-as-account.md)
 
 * [Hantera ett Kör som-konto för Azure Automation](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 * [Läs mer om Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./delete-run-as-account.md)
 
 * [Hantera ett Kör som-konto för Azure Automation](./manage-runas-account.md)
 
@@ -454,7 +454,7 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 * [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
-* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./delete-run-as-account.md)
 
 * [Hantera ett Kör som-konto för Azure Automation](./manage-runas-account.md)
 
@@ -696,7 +696,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription)
 
 * [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -724,7 +724,7 @@ Om du använder hybrid Runbook Worker som backas upp av virtuella Azure-datorer 
 
 * [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
 
-* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto](./delete-run-as-account.md)
 
 * [Hantera ett Kör som-konto för Azure Automation](./manage-runas-account.md)
 
@@ -836,7 +836,7 @@ Anpassningsbar program kontroll är en intelligent, automatiserad lösning från
 
 **Vägledning**: när du använder hybrid Runbook Worker-funktionen, och beroende på typen av skript, kan du använda operativ systemets speciella konfigurationer eller resurser från tredje part för att begränsa användarnas möjlighet att köra skript i Azure Compute-resurser. Du kan också använda Azure Security Center adaptiva program kontroller för att säkerställa att endast auktoriserade program körs och all obehörig program vara blockeras från att köras på Azure Virtual Machines.
 
-* [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Så här styr du körning av PowerShell-skript i Windows-miljöer](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Använda Azure Security Center adaptiva program kontroller](../security-center/security-center-adaptive-application.md)
 
@@ -878,7 +878,7 @@ Azure Resource Manager har också möjlighet att exportera mallen i JavaScript O
 
 Du kan också använda rekommendationer från Azure Security Center som en säker konfigurations bas linje för dina Azure-resurser.
 
-* [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Självstudie: skapa och hantera principer för att genomdriva efterlevnad](../governance/policy/tutorials/create-and-manage.md)
 
@@ -942,7 +942,7 @@ I de flesta fall kan de virtuella Microsoft Base-mallarna tillsammans med Azure 
 
 * [Information om hur du skapar ARM-mallar](../virtual-machines/windows/ps-template.md)
 
-* [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Ladda upp en anpassad virtuell hård disk till Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -952,7 +952,7 @@ I de flesta fall kan de virtuella Microsoft Base-mallarna tillsammans med Azure 
 
 **Vägledning**: Använd Azure-DevOps för att lagra och hantera din kod på ett säkert sätt, till exempel anpassade Azure-principer, Azure Resource Manager mallar och önskade tillstånds konfigurations skript. För att få åtkomst till de resurser som du hanterar i Azure DevOps, kan du bevilja eller neka behörigheter till vissa användare, inbyggda säkerhets grupper eller grupper som definierats i Azure Active Directory om de är integrerade med Azure DevOps eller Active Directory om det är integrerat med TFS. Använd funktionen för käll kontrolls integrering för att hålla dina Runbooks i ditt Automation-konto uppdaterat med skript i lagrings platsen för käll kontroll.
 
-* [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 * [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -1134,7 +1134,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 * [Introduktion till Azure Automation](./automation-intro.md)
 
-* [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Användning av Kundhanterade nycklar för ett Automation-konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1160,7 +1160,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 * [Introduktion till Azure Automation](./automation-intro.md)
 
-* [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Användning av Kundhanterade nycklar för ett Automation-konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1176,7 +1176,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 * [Distribuera resurser med ARM-mallar och Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Återställa Key Vault-nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Återställa Key Vault-nycklar i Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Användning av Kundhanterade nycklar för ett Automation-konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1190,7 +1190,7 @@ Använd funktionen för käll kontrolls integrering för att hålla dina Runbook
 
 Använd funktionen för käll kontrolls integrering för att hålla dina Runbooks i ditt Automation-konto uppdaterat med skript i lagrings platsen för käll kontroll.
 
-* [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 * [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 

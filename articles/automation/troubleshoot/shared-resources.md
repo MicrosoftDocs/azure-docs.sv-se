@@ -3,14 +3,14 @@ title: Felsöka Azure Automation problem med delade resurser
 description: Den här artikeln beskriver hur du felsöker och löser problem med Azure Automation delade resurser.
 services: automation
 ms.subservice: ''
-ms.date: 03/12/2019
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c4ede0bffedc256f4af621d4945ebbbea0f8a4b6
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896299"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053628"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Felsöka problem med delade resurser
 
@@ -131,7 +131,7 @@ Du har inte de behörigheter som du behöver för att skapa eller uppdatera kör
 
 #### <a name="resolution"></a>Lösning
 
-Om du vill skapa eller uppdatera ett Kör som-konto måste du ha nödvändig [behörighet](../manage-runas-account.md#permissions) för de olika resurser som används av kör som-kontot. 
+Om du vill skapa eller uppdatera ett Kör som-konto måste du ha nödvändig [behörighet](../automation-security-overview.md#permissions) för de olika resurser som används av kör som-kontot.
 
 Om problemet beror på ett lås kontrollerar du att låset kan tas bort. Gå sedan till den resurs som är låst i Azure Portal, högerklicka på låset och välj **ta bort**.
 
@@ -147,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Orsak
 
-Det här felet beror sannolikt på ett felaktigt konfigurerat [Kör som-konto](../manage-runas-account.md).
+Det här felet beror sannolikt på ett felaktigt konfigurerat [Kör som-konto](../automation-security-overview.md).
 
 #### <a name="resolution"></a>Lösning
 
@@ -166,4 +166,3 @@ Om den här artikeln inte löser problemet kan du prova någon av följande kana
 * Få svar från Azure-experter via [Azure-forum](https://azure.microsoft.com/support/forums/).
 * Anslut till [@AzureSupport](https://twitter.com/azuresupport) . Detta är det officiella Microsoft Azure kontot för att ansluta Azure-communityn till rätt resurser: svar, support och experter.
 * Filen en support incident för Azure. Gå till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/)och välj **få support**.
-

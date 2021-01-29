@@ -3,12 +3,12 @@ title: Felsöka inloggning till registret
 description: Symptom, orsaker och lösningar på vanliga problem vid inloggning i ett Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379510"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052086"
 ---
 # <a name="troubleshoot-registry-login"></a>Felsöka inloggning av registret
 
@@ -39,6 +39,8 @@ Kan innehålla ett eller flera av följande:
 Kör kommandot [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) för att få mer information om hälso tillståndet för register miljön och eventuellt åtkomst till ett mål register. Du kan till exempel diagnostisera Docker-konfigurations fel eller Azure Active Directory inloggnings problem. 
 
 Se [kontrol lera hälso tillståndet för ett Azure Container Registry](container-registry-check-health.md) för kommando exempel. Om fel rapporteras läser du [fel referensen](container-registry-health-error-reference.md) och följande avsnitt för rekommenderade lösningar.
+
+Om du har problem med att använda registret wih Azure Kubernetes-tjänsten kör du kommandot [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) för att kontrol lera att registret är tillgängligt från AKS-klustret.
 
 > [!NOTE]
 > Vissa autentiserings-eller auktoriseringsfel kan också uppstå om det finns brand Väggs-eller nätverkskonfigurationer som förhindrar åtkomst till registret. Se [Felsöka nätverks problem med registret](container-registry-troubleshoot-access.md).
@@ -77,9 +79,9 @@ Relaterade länkar:
 Kontrol lera giltigheten för de autentiseringsuppgifter som du använder för ditt scenario, eller tillhandahölls av en register ägare. Möjliga problem:
 
 * Om du använder ett Active Directory tjänstens huvud namn kontrollerar du att du använder rätt autentiseringsuppgifter i Active Directory klient organisationen:
-  * Användar namn – program-ID för tjänstens huvud namn (kallas även *klient-ID* )
-  * Lösen ord för tjänstens huvud namn (kallas även *klient hemlighet* )
-* Om du använder en Azure-tjänst som Azure Kubernetes service eller Azure DevOps för att komma åt registret, bekräftar du register konfigurationen för din tjänst.
+  * Användar namn – program-ID för tjänstens huvud namn (kallas även *klient-ID*)
+  * Lösen ord för tjänstens huvud namn (kallas även *klient hemlighet*)
+* Om du använder en Azure-tjänst som Azure Kubernetes service eller Azure DevOps för att komma åt registret, bekräftar du register konfigurationen för din tjänst. 
 * Om du körde `az acr login` med `--expose-token` alternativet, som aktiverar register inloggning utan att använda Docker daemon, måste du se till att du autentiserar med användar namnet `00000000-0000-0000-0000-000000000000` .
 * Om registret är konfigurerat för [Anonym](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)åtkomst kan befintliga Docker-autentiseringsuppgifter som lagras från en tidigare Docker-inloggning förhindra anonym åtkomst. Kör `docker logout` innan du försöker utföra en anonym pull-åtgärd i registret.
 
@@ -143,7 +145,7 @@ Om du inte löser problemet här kan du läsa följande alternativ.
 
 * Andra fel söknings avsnitt för registret innehåller:
   * [Felsöka nätverks problem med registret](container-registry-troubleshoot-access.md)
-  * [Felsöka registerprestanda](container-registry-troubleshoot-performance.md)
+  * [Felsöka register prestanda](container-registry-troubleshoot-performance.md)
 * Alternativ för [Community-support](https://azure.microsoft.com/support/community/)
 * [Microsoft Q&A](/answers/products/)
 * [Öppna en support ärende](https://azure.microsoft.com/support/create-ticket/) baserad på information som du anger, en snabb diagnostik kan köras för autentiseringsfel i registret

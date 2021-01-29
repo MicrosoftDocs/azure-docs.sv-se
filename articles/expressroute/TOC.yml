@@ -130,8 +130,8 @@
           href: expressroute-howto-macsec.md
     - name: Konfigurera ExpressRoute Global Reach
       items:
-        - name: Azure Portal
-          href: expressroute-howto-set-global-reach.md
+        - name: Azure-portalen
+          href: expressroute-howto-set-global-reach-portal.md
         - name: Azure PowerShell
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
@@ -148,7 +148,7 @@
       items:
         - name: Aktivera och inaktivera peering-sessioner
           items:
-            - name: Azure Portal
+            - name: Azure-portalen
               href: expressroute-howto-reset-peering-portal.md
             - name: Azure PowerShell
               href: expressroute-howto-reset-peering.md

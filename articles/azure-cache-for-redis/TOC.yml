@@ -45,6 +45,14 @@
       items:
         - name: Använda Spring Boot-initiering
           href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Dirigera händelser med Azure Portal
+          href: cache-event-grid-quickstart-portal.md
+        - name: Dirigera händelser med Azure CLI
+          href: cache-event-grid-quickstart-cli.md
+        - name: Dirigera händelser med PowerShell
+          href: cache-event-grid-quickstart-powershell.md
     - name: Skapa rankningslistor
       href: cache-web-app-cache-aside-leaderboard.md
     - name: Distribuera en maskininlärningsmodell
@@ -128,6 +136,8 @@
           href: cache-administration.md#schedule-updates
         - name: Konfigurera åtkomst till redis-cli.exe
           href: cache-how-to-redis-cli-tool.md
+        - name: Publicera Azure cache för Redis-händelser
+          href: cache-event-grid.md
         - name: Ta bort TLS 1.0 och 1.1
           href: cache-remove-tls-10-11.md
         - name: Vanliga frågor och svar om hantering
