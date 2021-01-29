@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 413293cdefd39285c57b58d4555d3d703492ea96
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894855"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055356"
 ---
 # <a name="update-azure-powershell-modules"></a>Uppdatera Azure PowerShell-moduler
 
@@ -23,7 +23,7 @@ De vanligaste PowerShell-modulerna anges som standard i varje Automation-konto. 
 
 För att undvika att dina runbooks påverkas och de processer de automatiseras, måste du testa och kontrol lera när du gör uppdateringar. Om du inte har ett dedikerat Automation-konto som är avsett för detta ändamål kan du överväga att skapa ett så att du kan testa många olika scenarier när du utvecklar dina runbooks. Det här testet bör omfatta upprepnings ändringar, till exempel uppdatera PowerShell-modulerna.
 
-Kontrol lera att ditt Automation-konto har en [Azure kör som-konto-autentiseringsuppgift](manage-runas-account.md) har skapats.
+Kontrol lera att ditt Automation-konto har ett [Kör som-konto för Azure](automation-security-overview.md#run-as-accounts) skapat.
 
 Om du utvecklar dina skript lokalt rekommenderar vi att du har samma versioner av modulen lokalt som du har i ditt Automation-konto när du testar för att säkerställa att du får samma resultat. När resultaten har verifierats och du har tillämpat eventuella ändringar som krävs kan du flytta ändringarna till produktionen.
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132303"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054812"
 ---
 # <a name="understand-and-work-with-scopes"></a>Förstå och arbeta med omfång
 
@@ -114,7 +114,7 @@ Azure-prenumerationer som skapats från enskilda erbjudanden där man betalar pe
 
     Resurstyp: Inte tillämpligt
 
-Administratörer av enskilda Azure-prenumerationskonton kan se och hantera faktureringsdata, till exempel fakturor och betalningar, i [Azure-kontocenter](https://account.azure.com/subscriptions). De kan dock inte se kostnadsdata eller hantera resurser i Azure-portalen. Om du vill bevilja åtkomst till kontoadministratören använder du de Cost Management-roller som nämndes tidigare.
+Enskilda Azure-prenumerations konto administratörer kan visa och hantera fakturerings data, till exempel fakturor och betalningar, från [Azure Portal](https://portal.azure.com)  >  **prenumerationer** > välja en prenumeration.
 
 Till skillnad från EA kan administratörer av enskilda Azure-prenumerationskonton se sina fakturor i Azure-portalen. Tänk på att rollerna Cost Management-läsare och Cost Management-deltagare inte ger åtkomst till fakturor. Mer information finns i [Bevilja åtkomst till fakturor](../manage/manage-billing-access.md#give-read-only-access-to-billing).
 

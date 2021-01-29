@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451574"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054795"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Självstudie: automatisera uppgifter för att bearbeta e-postmeddelanden med hjälp av Azure Logic Apps, Azure Functions och Azure Storage
 
@@ -36,7 +36,7 @@ När du är klar ser logikappen ut som det här arbetsflödet på en hög nivå:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. Om du heller inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/).
+* Ett Azure-konto och prenumeration. Om du heller inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/).
 
 * Ett e-postkonto från en e-postleverantör som stöds av Logic Apps, som Office 365 Outlook, Outlook.com eller Gmail. För andra providrar [läser du listan med anslutningsappar här](/connectors/).
 
@@ -46,6 +46,8 @@ När du är klar ser logikappen ut som det här arbetsflödet på en hög nivå:
   > Om du vill använda Gmail Connector kan endast företags konton i G-Suite använda den här anslutningen utan begränsning i Logic Apps. Om du har ett Gmail-konto kan du använda den här anslutningen med endast vissa Google-godkända tjänster, eller så kan du [skapa en Google-klient som används för autentisering med din Gmail-anslutning](/connectors/gmail/#authentication-and-bring-your-own-application). Mer information finns i [principer för data säkerhet och sekretess för Google Connectors i Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Ladda ned och installera [kostnadsfria Microsoft Azure Storage Explorer](https://storageexplorer.com/). Med det här verktyget kan du kontrollera att din lagringscontainer är korrekt inställd.
+
+* Om din Logi Kap par behöver kommunicera via en brand vägg som begränsar trafik till vissa IP-adresser, måste brand väggen tillåta åtkomst  för både [inkommande](logic-apps-limits-and-config.md#inbound) och [utgående](logic-apps-limits-and-config.md#outbound) ip-adresser som används av Logic Apps tjänst eller körning i den Azure-region där din Logic app finns. Om din Logic app även använder [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Office 365 Outlook Connector eller SQL-anslutning, eller använder [anpassade anslutningar](/connectors/custom-connectors/), måste brand väggen också tillåta åtkomst för *alla* [utgående IP-adresser för hanterad anslutning](logic-apps-limits-and-config.md#outbound) i din Logic app Azure-region.
 
 ## <a name="set-up-storage-to-save-attachments"></a>Konfigurera lagring för att spara bifogade filer
 
@@ -86,7 +88,7 @@ Du kan spara inkommande e-postmeddelanden och blobar i en [Azure-lagringscontain
 
       ![Kopiera och spara lagringskontots namn och nyckel](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   När du hämtar lagringskontots åtkomstnyckel kan du också använda [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) och [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list).
+   När du hämtar lagringskontots åtkomstnyckel kan du också använda [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) och [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list).
 
 1. Skapa en bloblagringscontainer för e-postbilagor.
 
@@ -102,7 +104,7 @@ Du kan spara inkommande e-postmeddelanden och blobar i en [Azure-lagringscontain
 
       ![Klar lagringscontainer](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   Om du vill skapa en lagrings behållare kan du också använda [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) eller [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create).
+   Om du vill skapa en lagrings behållare kan du också använda [Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) eller [Azure CLI](/cli/azure/storage/container#az-storage-container-create).
 
 Anslut sedan Storage Explorer till ditt lagringskonto.
 
@@ -204,7 +206,7 @@ Använd nu kodfragmentet som tillhandahålls via de här stegen för att skapa e
    }
    ```
 
-1. När du är klar väljer du **Spara**. Om du vill testa funktionen väljer du test i redigerings programmets högra kant under pilen ( **<** )-ikonen. **Test**
+1. När du är klar väljer du **Spara**. Om du vill testa funktionen väljer du test i redigerings programmets högra kant under pilen ( **<** )-ikonen. 
 
    ![Öppna testfönstret](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
@@ -278,8 +280,8 @@ Lägg sedan till en [utlösare](../logic-apps/logic-apps-overview.md#logic-app-c
       | Inställning | Värde | Beskrivning |
       | ------- | ----- | ----------- |
       | **Mapp** | Inkorgen | E-postmappen som ska kontrolleras |
-      | **Has Attachment** (Innehåller bifogad fil) | Yes | Hämta endast e-postmeddelanden med bifogade filer. <p>**Obs!** Utlösaren tar inte bort e-post från ditt konto, kontrollerar endast nya meddelanden och bearbetar endast e-postmeddelanden som matchar filtrets ämne. |
-      | **Inkludera bifogade filer** | Yes | Hämta bilagorna som indata i arbetsflödet istället för att bara söka efter bilagor. |
+      | **Has Attachment** (Innehåller bifogad fil) | Ja | Hämta endast e-postmeddelanden med bifogade filer. <p>**Obs!** Utlösaren tar inte bort e-post från ditt konto, kontrollerar endast nya meddelanden och bearbetar endast e-postmeddelanden som matchar filtrets ämne. |
+      | **Inkludera bifogade filer** | Ja | Hämta bilagorna som indata i arbetsflödet istället för att bara söka efter bilagor. |
       | **Intervall** | 1 | Antalet intervaller som ska förflyta mellan kontrollerna |
       | **Frekvens** | Minut | Tidsenhet för varje intervall mellan kontroller |
       ||||
@@ -440,7 +442,7 @@ Lägg sedan till en åtgärd som skapar en blob i lagringscontainern så att du 
    | Inställning | Värde | Beskrivning |
    | ------- | ----- | ----------- |
    | **Anslutnings namn** | AttachmentStorageConnection | Ett beskrivande namn för anslutningen |
-   | **Lagrings konto** | attachmentstorageacct | Namnet på lagringskontot som du skapade tidigare för att spara bilagor |
+   | **Lagringskonto** | attachmentstorageacct | Namnet på lagringskontot som du skapade tidigare för att spara bilagor |
    ||||
 
 1. Byt namn på åtgärden **Skapa blob** med den här beskrivningen: `Create blob for email body`
@@ -601,8 +603,8 @@ Lägg sedan till en åtgärd så att logikappen skickar e-post för att granska 
 
    | Inställning | Värde | Obs! |
    | ------- | ----- | ----- |
-   | **Att** | <*mottagare-e-postadress*> | I testsyfte kan du använda din egen e-postadress. |
-   | **Ämne**  | ```ASAP - Review applicant for position:``` **Ämne** | E-postämnet du vill ha. Klicka i den här rutan, ange exempeltexten och välj fältet **Subject** (Ämne) under **When a new email arrives** (När ett nytt e-postmeddelande kommer). |
+   | **Till** | <*mottagare-e-postadress*> | I testsyfte kan du använda din egen e-postadress. |
+   | **Ämne**  | ```ASAP - Review applicant for position:```**Ämne** | E-postämnet du vill ha. Klicka i den här rutan, ange exempeltexten och välj fältet **Subject** (Ämne) under **When a new email arrives** (När ett nytt e-postmeddelande kommer). |
    | **Brödtext** | ```Please review new applicant:``` <p>```Applicant name:```**Från** <p>```Application file location:``` **Sökväg** <p>```Application email content:``` **Brödtext** | E-postmeddelandets brödtext. Klicka i den här rutan, ange exempeltext och välj de här fälten på den dynamiska innehållslistan: <p>- Fältet **Från** under **När ett nytt e-postmeddelande kommer** </br>- Fältet **Sökväg** under **Skapa blob för e-postmeddelandets brödtext** </br>- Fältet **Brödtext** under **Call RemoveHTMLFunction to clean email body** (Anropa RemoveHTMLFunction för att rensa e-postmeddelandets brödtext) |
    ||||
 

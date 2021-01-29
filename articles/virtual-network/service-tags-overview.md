@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 39645e8bd370dfd518d570c3088c56a22aa77748
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b353fad64b08f5fc50af2b8d31abab77cd797e25
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927034"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055050"
 ---
 # <a name="virtual-network-service-tags"></a>Tjänst taggar för virtuellt nätverk
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ Som standard återspeglar service märken intervallen för hela molnet. Vissa se
 | **AzureBotService** | Azure Bot Service. | Utgående | Inga | Inga |
 | **AzureCloud** | Alla [offentliga IP-adresser för data Center](https://www.microsoft.com/download/details.aspx?id=56519). | Utgående | Ja | Ja |
 | **AzureCognitiveSearch** | Azure-Kognitiv sökning. <br/><br/>Den här taggen eller de IP-adresser som omfattas av den här taggen kan användas för att ge indexerare säker åtkomst till data källor. Mer information finns i [anslutnings dokumentationen för indexeraren](../search/search-indexer-troubleshooting.md#connection-errors) . <br/><br/> *Obs!* IP-adressen för Sök tjänsten ingår inte i listan över IP-intervall för den här tjänst tag gen och **måste också läggas** till i IP-brandväggen för data källor. | Inkommande | Inga | Inga |
-| **AzureConnectors** | Azure Logic Apps anslutningar för avsökning/backend-anslutningar. | Inkommande | Ja | Ja |
+| **AzureConnectors** | Den här taggen representerar de IP-adresser som används för hanterade anslutningar som gör inkommande webhook-återanrop till den Azure Logic Apps tjänsten och utgående anrop till deras respektive tjänster, till exempel Azure Storage eller Azure-Event Hubs. | Inkommande/utgående | Ja | Ja |
 | **AzureContainerRegistry** | Azure Container Registry. | Utgående | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos DB. | Utgående | Ja | Ja |
 | **AzureDatabricks** | Azure Databricks. | Båda | Inga | Inga |

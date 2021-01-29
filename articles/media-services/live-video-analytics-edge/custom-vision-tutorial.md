@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Custom Vision för att bygga en beh
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060527"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055372"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Självstudie: analysera direktsänd video med real tids video analys på IoT Edge och Azure Custom Vision
 
@@ -51,7 +51,6 @@ Läs igenom följande artiklar innan du börjar:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
 ::: zone-end
@@ -59,6 +58,10 @@ Läs igenom följande artiklar innan du börjar:
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
 ::: zone-end
+
+> [!IMPORTANT]
+> Den här Custom Vision modulen har endast stöd för **Intel x86-och amd64** -arkitekturer. Kontrol lera din gräns enhets arkitektur innan du fortsätter.
+
 ## <a name="review-the-sample-video"></a>Granska exempel videon
 
 I den här självstudien används en video fil för [leksaks bilar](https://lvamedia.blob.core.windows.net/public/t2.mkv) för att simulera en Live-dataström. Du kan granska videon via ett program, till exempel [VLC Media Player](https://www.videolan.org/vlc/). Välj **CTRL + N** och klistra sedan in en länk till [videon för leksaks bilen](https://lvamedia.blob.core.windows.net/public/t2.mkv) för att starta uppspelningen. Observera att när du tittar på videon visas en leksaks Truck i videon vid den 36-andra markören. Den anpassade modellen har tränats för att identifiera denna speciella leksaks Truck. 
@@ -81,6 +84,9 @@ Noden HTTP-tillägg spelar rollen för en proxy.  Den samplar de inkommande vide
 Som namnet Custom Vision föreslår kan du använda det för att bygga en egen anpassad objekt detektor eller klassificerare i molnet. Det ger ett enkelt, lättanvänt och intuitivt gränssnitt för att bygga Custom Vision modeller som kan distribueras i molnet eller på gränsen via behållare.
 
 För att bygga en leksaks Last bils detektor följer du stegen i [snabb start: bygga en objekt detektor med Custom vision webbplats](../../cognitive-services/custom-vision-service/get-started-build-detector.md).
+
+> [!IMPORTANT]
+> Den här Custom Vision modulen stöder bara endast **Intel x86-och amd64** -arkitekturer. Kontrol lera din gräns enhets arkitektur innan du fortsätter.
 
 Ytterligare kommentarer:
  

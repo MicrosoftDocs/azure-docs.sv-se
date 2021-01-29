@@ -1,4 +1,4 @@
-- name: Dokumentation om användarhjälp
+- name: Användar hjälp dokumentation
   href: index.yml
 - name: Hjälp om tvåstegsverifiering
   items:
@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: Säkerhetskopiera och återställa konton
       href: user-help-auth-app-backup-recovery.md
+    - name: Importera lösen ord till Authenticator-appen
+      href: user-help-authenticator-app-import-passwords.md
     - name: VANLIGA FRÅGOR OCH SVAR
       href: user-help-auth-app-faq.md
 - name: Hjälp om portalen Mitt konto

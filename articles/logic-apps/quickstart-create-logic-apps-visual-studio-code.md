@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708999"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054694"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Snabbstart: Skapa och hantera arbetsflödesdefinitioner för logikappar med hjälp av Visual Studio Code
 
@@ -23,6 +23,8 @@ Med [Azure Logic Apps](../logic-apps/logic-apps-overview.md) och Visual Studio C
 I den här artikeln kan du skapa samma Logic-app från den här [snabb](../logic-apps/quickstart-create-first-logic-app-workflow.md)starten, vilket fokuserar på de grundläggande begreppen. Du kan också [lära dig att skapa exempel appen i Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)och [lära dig att skapa och hantera appar via Azure Command-Line Interface (Azure CLI)](quickstart-logic-apps-azure-cli.md). I Visual Studio Code ser den logiska appen ut som det här exemplet:
 
 ![Exempel på logik app Workflow-definition](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar bör du kontrollera att du har följande:
 
@@ -49,6 +51,8 @@ Innan du börjar bör du kontrollera att du har följande:
     ![Tillägget bekräfta är korrekt installerat](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
     Mer information finns i [tillägg Marketplace](https://code.visualstudio.com/docs/editor/extension-gallery). Om du vill bidra till den här tilläggets version av öppen källkod går du till [Azure Logic Apps tillägget för Visual Studio Code på GitHub](https://github.com/Microsoft/vscode-azurelogicapps).
+
+* Om din Logi Kap par behöver kommunicera via en brand vägg som begränsar trafik till vissa IP-adresser, måste brand väggen tillåta åtkomst  för både [inkommande](logic-apps-limits-and-config.md#inbound) och [utgående](logic-apps-limits-and-config.md#outbound) ip-adresser som används av Logic Apps tjänst eller körning i den Azure-region där din Logic app finns. Om din Logic app även använder [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Office 365 Outlook Connector eller SQL-anslutning, eller använder [anpassade anslutningar](/connectors/custom-connectors/), måste brand väggen också tillåta åtkomst för *alla* [utgående IP-adresser för hanterad anslutning](logic-apps-limits-and-config.md#outbound) i din Logic app Azure-region.
 
 <a name="access-azure"></a>
 

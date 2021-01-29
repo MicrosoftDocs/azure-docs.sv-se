@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683003"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055084"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Hantera e-post, kontakter och kalendrar i Office 365 Outlook med hjälp av Azure Logic Apps
 
@@ -24,7 +24,7 @@ Med [Azure Logic Apps](../logic-apps/logic-apps-overview.md) och [Office 365 Out
 
 Du kan använda en utlösare för att starta arbets flödet, till exempel när ett nytt e-postmeddelande tas emot, när ett Kalender objekt uppdateras eller när en händelse inträffar i en skillnads tjänst, till exempel Salesforce. Du kan använda åtgärder som svarar på utlösnings händelsen, till exempel skicka ett e-postmeddelande eller skapa en ny kalender händelse.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Outlook-konto där du loggar in med ett [arbets-eller skol konto](https://www.office.com/). Om du har ett @outlook.com @hotmail.com -eller-konto kan du använda [Outlook.com-anslutaren](../connectors/connectors-create-api-outlook.md) i stället. Om du vill ansluta till Outlook med ett annat användar konto, till exempel ett tjänst konto, se [Anslut med andra konton](#connect-using-other-accounts).
 
@@ -92,17 +92,19 @@ En [åtgärd](../logic-apps/logic-apps-overview.md#logic-app-concepts) är en å
 
 ## <a name="connect-using-other-accounts"></a>Anslut med andra konton
 
-Om du försöker ansluta till Outlook genom att använda ett annat konto än det som för närvarande är inloggat på Azure kan du få [enkel inloggning (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) -fel. Det här problemet uppstår när du loggar in på Azure Portal med ett konto, men använder ett annat konto för att skapa anslutningen. Logic App Designer förväntar sig att använda det konto som är inloggat på Azure. För att lösa det här problemet har du följande alternativ:
+Om du försöker ansluta till Outlook genom att använda ett annat konto än det som för närvarande är inloggat på Azure kan du få [enkel inloggning (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) -fel. Det här problemet uppstår när du loggar in på Azure Portal med ett konto, men använder ett annat konto för att skapa anslutningen. Designern förväntar dig att du använder kontot som är inloggat på Azure Portal. För att lösa det här problemet har du följande alternativ:
 
-* Konfigurera det andra kontot som **deltagare** i din Logic Apps resurs grupp.
+* Konfigurera det andra kontot med **deltagar** rollen i din Logic Apps resurs grupp.
 
-  1. Välj **åtkomst kontroll (IAM)** på din Logic Apps resurs grupps meny. Konfigurera det andra kontot med **deltagar** rollen. Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../role-based-access-control/role-assignments-portal.md).
+  1. Välj **åtkomst kontroll (IAM)** på din Logic Apps resurs grupps meny. Konfigurera det andra kontot med **deltagar** rollen. 
+  
+     Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med hjälp av Azure-portalen](../role-based-access-control/role-assignments-portal.md).
 
-  1. Om du är inloggad på Azure Portal med ditt arbets-eller skol konto loggar du ut och loggar in igen med ditt andra konto. Nu kan du skapa en anslutning till Outlook med hjälp av det andra kontot.
+  1. När du har konfigurerat den här rollen loggar du in på Azure Portal med kontot som har deltagar behörighet. Nu kan du använda det här kontot för att skapa anslutningen till Outlook.
 
 * Konfigurera det andra kontot så att ditt arbets-eller skol konto har behörigheten "Skicka som".
 
-   Om du har administratörs behörighet för tjänst kontots post låda konfigurerar du att du är ditt arbets-eller skol konto med antingen **Skicka som** eller **Skicka åt** behörigheter. Mer information finns i [ge Mailbox-behörigheter till en annan användar administratörs hjälp](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Du kan sedan skapa anslutningen med hjälp av ditt arbets-eller skol konto. Du kan nu använda tjänst kontots e-postadress i utlösare eller åtgärder där du kan ange avsändaren.
+   Om du har administratörs behörighet för tjänst kontots post låda konfigurerar du ditt arbets-eller skol konto med antingen **Skicka som** eller **Skicka åt** behörigheter. Mer information finns i [ge Mailbox-behörigheter till en annan användar administratörs hjälp](/microsoft-365/admin/add-users/give-mailbox-permissions-to-another-user). Du kan sedan skapa anslutningen med hjälp av ditt arbets-eller skol konto. Du kan nu använda tjänst kontots e-postadress i utlösare eller åtgärder där du kan ange avsändaren.
 
    Till exempel har åtgärden **Skicka ett e-postmeddelande** en valfri parameter **från (skicka som)** som du kan lägga till i åtgärden och använda tjänst kontots e-postadress som avsändare. Följ dessa steg om du vill lägga till den här parametern:
 

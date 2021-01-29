@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: Azure Blob Storage-bibliotek V12-Java'
-description: I den här snabb starten får du lära dig hur du använder Azure Blob Storage klient bibliotek version 12 för Java för att skapa en behållare och en BLOB i blob-lagring (objekt). Du får lära dig hur du hämtar bloben till din lokala dator och hur du visar alla blobar i en container.
+title: 'Snabb start: Azure Blob Storage Library V12-Java'
+description: I den här snabb starten får du lära dig hur du använder Azure-Blob Storage klient bibliotek version 12 för Java för att skapa en behållare och en BLOB i blob-lagring (objekt). Du får lära dig hur du hämtar bloben till din lokala dator och hur du visar alla blobar i en container.
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5c34cea5d8222a246462bfadde66fd8a5ddbec7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501132"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054711"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Snabb start: hantera blobbar med Java V12 SDK
 
@@ -163,7 +163,7 @@ public class App
 
 ## <a name="object-model"></a>Objekt modell
 
-Azure Blob Storage är optimerat för att lagra enorma mängder ostrukturerade data. Ostrukturerade data är data som inte följer en viss datamodell eller definition, till exempel text eller binära data. I blobblagringen finns tre typer av resurser:
+Azure Blob Storage optimeras för att lagra enorma mängder ostrukturerade data. Ostrukturerade data är data som inte följer en viss datamodell eller definition, till exempel text eller binära data. I blobblagringen finns tre typer av resurser:
 
 * Lagrings kontot
 * En container på lagringskontot
@@ -183,7 +183,7 @@ Använd följande Java-klasser för att interagera med dessa resurser:
 
 ## <a name="code-examples"></a>Kodexempel
 
-I de här exempel kods tycken visas hur du gör följande med klient biblioteket för Azure Blob Storage för java:
+I dessa exempel kods tycken visas hur du gör följande med Azure Blob Storage-klient biblioteket för java:
 
 * [Hämta anslutningssträngen](#get-the-connection-string)
 * [Skapa en container](#create-a-container)
@@ -199,7 +199,7 @@ Koden nedan hämtar anslutnings strängen för lagrings kontot från den miljö 
 Lägg till den här koden i- `Main` metoden:
 
 ```java
-System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
+System.out.println("Azure Blob Storage v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -342,7 +342,7 @@ mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonTh
 Utdata från appen liknar följande exempel:
 
 ```output
-Azure Blob storage v12 - Java quickstart sample
+Azure Blob Storage v12 - Java quickstart sample
 
 Uploading to Blob storage as blob:
         https://mystorageacct.blob.core.windows.net/quickstartblobsf9aa68a5-260e-47e6-bea2-2dcfcfa1fd9a/quickstarta9c3a53e-ae9d-4863-8b34-f3d807992d65.txt
@@ -371,7 +371,7 @@ I den här snabb starten har du lärt dig att ladda upp, ladda ned och lista blo
 Om du vill se exempel appar för Blob Storage fortsätter du till:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 Java-exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Java-exempel för Azure Blob Storage SDK V12](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * Läs mer i [Azure SDK för Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
 * För självstudier, exempel, snabb starter och annan dokumentation går du till [Azure för Java-moln utvecklare](/azure/developer/java/).

@@ -3,12 +3,12 @@ title: Privata slutpunkter
 description: Förstå processen med att skapa privata slut punkter för Azure Backup och scenarier där privata slut punkter används för att upprätthålla säkerheten för dina resurser.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b1412a79fa6137ce1f8c73d5875e52b6382048fa
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 0d9d77c139896f9067f73943dbb213fc655f00f6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986979"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054880"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privata slut punkter för Azure Backup
 
@@ -32,7 +32,7 @@ Den här artikeln hjälper dig att förstå processen med att skapa privata slut
 
 När privata slut punkter är aktiverade för valvet används de för säkerhets kopiering och återställning av SQL och SAP HANA arbets belastningar i en Azure VM-och MARS agent-säkerhetskopiering. Du kan också använda valvet för säkerhets kopiering av andra arbets belastningar även (de kräver inte privata slut punkter). Förutom säkerhets kopiering av SQL och SAP HANA arbets belastningar och säkerhets kopiering med MARS-agenten används även privata slut punkter för att utföra fil återställning för Azure VM-säkerhetskopiering. Mer information finns i följande tabell:
 
-| Säkerhets kopiering av arbets belastningar i Azure VM (SQL, SAP HANA), säkerhets kopiering med MARS-agenten | Användning av privata slut punkter rekommenderas för att tillåta säkerhets kopiering och återställning utan att tillåta-lista alla IP-adresser/FQDN: er för Azure Backup eller Azure Storage från dina virtuella nätverk. |
+| Säkerhets kopiering av arbets belastningar i Azure VM (SQL, SAP HANA), säkerhets kopiering med MARS-agenten | Användning av privata slut punkter rekommenderas för att tillåta säkerhets kopiering och återställning utan att behöva tillåten IP-adresser/FQDN för Azure Backup eller Azure Storage från dina virtuella nätverk. I det scenariot ser du till att virtuella datorer som är värdar för SQL-databaser kan komma åt Azure AD IP-adresser eller FQDN. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **VIRTUELL Azure-säkerhetskopiering**                                         | Säkerhets kopiering av virtuella datorer kräver inte att du tillåter åtkomst till några IP-adresser eller FQDN. Det kräver därför inte privata slut punkter för säkerhets kopiering och återställning av diskar.  <br><br>   Fil återställning från ett valv som innehåller privata slut punkter skulle dock begränsas till virtuella nätverk som innehåller en privat slut punkt för valvet. <br><br>    När du använder ACL'ed ohanterade diskar bör du se till att lagrings kontot som innehåller diskarna ger till gång till **betrodda Microsoft-tjänster** om det är ACL'ed. |
 | **Azure Files säkerhets kopiering**                                      | Azure Files säkerhets kopior lagras i det lokala lagrings kontot. Det kräver därför inte privata slut punkter för säkerhets kopiering och återställning. |
@@ -386,7 +386,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 #### <a name="create-dns-zones-for-custom-dns-servers"></a>Skapa DNS-zoner för anpassade DNS-servrar
 
-Du måste skapa tre privata DNS-zoner och länka dem till det virtuella nätverket.
+Du måste skapa tre privata DNS-zoner och länka dem till det virtuella nätverket. Tänk på att i motsats till blob och kö registreras inte offentliga URL: er för säkerhets kopierings tjänsten i Azures offentliga DNS för omdirigering till DNS-zonerna för privata länkar. 
 
 | **Zon**                                                     | **Tjänst** |
 | ------------------------------------------------------------ | ----------- |

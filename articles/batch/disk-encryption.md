@@ -3,21 +3,26 @@ title: Skapa en pool med diskkryptering aktiverat
 description: Lär dig hur du använder disk krypterings konfiguration för att kryptera noder med en plattforms-hanterad nyckel.
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 01/27/2021
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: a61e87c660bf2d2f0f4c8d02bd1699c58f8da667
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350678"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055322"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Skapa en pool med diskkryptering aktiverat
 
-När du skapar en Azure Batch pool med konfiguration av virtuell dator kan du kryptera datornoder i poolen med en plattforms hanterad nyckel genom att ange disk krypterings konfigurationen.
+När du skapar en Azure Batch pool med [konfiguration av virtuell dator](nodes-and-pools.md#virtual-machine-configuration)kan du kryptera datornoder i poolen med en plattforms hanterad nyckel genom att ange disk krypterings konfigurationen.
 
 Den här artikeln beskriver hur du skapar en batch-pool med disk kryptering aktiverat.
+
+> [!IMPORTANT]
+> Stöd för kryptering på värden med en plattforms hanterad nyckel i Azure Batch finns för närvarande i en offentlig för hands version för USA, västra USA, västra USA 2, södra centrala, US Gov, Virginia och US Gov, Arizona regioner.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Varför ska jag använda en pool med disk krypterings konfiguration?
 
@@ -29,14 +34,12 @@ Batch använder en av dessa disk krypterings tekniker på datornoderna, baserat 
 - [Kryptering på värden med en plattforms-hanterad nyckel](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
-> [!IMPORTANT]
-> Stöd för kryptering på värden med en plattforms hanterad nyckel i Azure Batch finns för närvarande i en offentlig för hands version för USA, västra USA, västra USA 2, södra centrala, US Gov, Virginia och US Gov, Arizona regioner.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Du kan inte ange vilken krypterings metod som ska användas för noderna i poolen. I stället anger du de mål diskar som du vill kryptera på deras noder, och batch kan välja lämplig krypterings metod, vilket säkerställer att de angivna diskarna krypteras på Compute-noden.
 
-## <a name="azure-portal"></a>Azure Portal
+> [!IMPORTANT]
+> Om du skapar en pool med en [anpassad avbildning](batch-sig-images.md)kan du bara aktivera disk kryptering om du använder virtuella Windows-datorer.
+
+## <a name="azure-portal"></a>Azure-portalen
 
 När du skapar en batch-pool i Azure Portal väljer du antingen **TemporaryDisk** eller **OsAndTemporaryDisk** under **disk krypterings konfiguration**.
 
@@ -61,11 +64,14 @@ pool.VirtualMachineConfiguration.DiskEncryptionConfiguration = new DiskEncryptio
 ### <a name="batch-rest-api"></a>Batch-REST API
 
 REST API-URL:
+
 ```
 POST {batchURL}/pools?api-version=2020-03-01.11.0
 client-request-id: 00000000-0000-0000-0000-000000000000
 ```
+
 Begärandetext:
+
 ```
 "pool": {
     "id": "pool2",

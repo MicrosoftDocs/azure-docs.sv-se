@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372165"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055389"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Översikt över Starta/stoppa virtuella datorer när de inte används
 
@@ -35,9 +35,9 @@ Följande är begränsningar med den aktuella funktionen:
 - Den hanterar virtuella datorer i vilken region som helst, men kan bara användas i samma prenumeration som ditt Azure Automation-konto.
 - Den är tillgänglig i Azure och Azure Government för alla regioner som stöder en Log Analytics arbets yta, ett Azure Automation-konto och aviseringar. Azure Government regioner stöder för närvarande inte e-postfunktioner.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-- Runbooks för funktionen starta/stoppa virtuella datorer under låg tid fungerar med ett [Kör som-konto i Azure](./manage-runas-account.md). Kör som-kontot är den föredragna autentiseringsmetoden eftersom den använder certifikatautentisering i stället för ett lösen ord som kan gå ut eller ändras ofta.
+- Runbooks för funktionen starta/stoppa virtuella datorer under låg tid fungerar med ett [Kör som-konto i Azure](./automation-security-overview.md#run-as-accounts). Kör som-kontot är den föredragna autentiseringsmetoden eftersom den använder certifikatautentisering i stället för ett lösen ord som kan gå ut eller ändras ofta.
 
 - Det länkade Automation-kontot och Log Analytics arbets ytan måste finnas i samma resurs grupp.
 
@@ -79,7 +79,7 @@ Om du vill aktivera virtuella datorer för Starta/stoppa virtuella datorer när 
 Du kan aktivera virtuella datorer för Starta/stoppa virtuella datorer när de inte används-funktionen med ett nytt Automation-konto och Log Analytics arbets yta. I det här fallet behöver du de behörigheter som definierats i föregående avsnitt samt de behörigheter som definierats i det här avsnittet. Du behöver också följande roller:
 
 - Co-Administrator prenumerationen. Den här rollen krävs för att skapa det klassiska kör som-kontot om du ska hantera klassiska virtuella datorer. [Klassiska kör som-konton](automation-create-standalone-account.md#create-a-classic-run-as-account) skapas inte längre som standard.
-- Medlemskap i rollen [Azure AD](../active-directory/roles/permissions-reference.md) Application Developer. Mer information om hur du konfigurerar kör som-konton finns i [behörighet att konfigurera kör som-konton](manage-runas-account.md#permissions).
+- Medlemskap i rollen [Azure AD](../active-directory/roles/permissions-reference.md) Application Developer. Mer information om hur du konfigurerar kör som-konton finns i [behörighet att konfigurera kör som-konton](automation-security-overview.md#permissions).
 - Deltagare i prenumerationen eller följande behörigheter.
 
 | Behörighet |Omfång|
@@ -106,7 +106,7 @@ I följande tabell visas de Runbooks som funktionen distribuerar till ditt Autom
 
 Alla överordnade Runbooks inkluderar `WhatIf` parametern. När värdet är true, stöder parametern information om det exakta beteende som Runbook tar när den körs utan parametern och kontrollerar att rätt virtuella datorer är riktade. En Runbook utför bara sina definierade åtgärder när `WhatIf` parametern har angetts till false.
 
-|Runbook | Parametrar | Beskrivning|
+|Runbook | Parametrar | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Anropas från den överordnade runbooken. Denna Runbook skapar aviseringar per resurs för det automatiska stopp scenariot.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true eller false  | Skapar eller uppdaterar Azures aviserings regler på virtuella datorer i mål prenumerationen eller resurs grupperna. <br> `VMList` är en kommaavgränsad lista över virtuella datorer (utan blank steg), till exempel `vm1,vm2,vm3` .<br> `WhatIf` aktiverar validering av Runbook-logik utan att köra.|
@@ -150,7 +150,7 @@ I följande tabell visas variablerna som skapas i ditt Automation-konto. Ändra 
 >[!NOTE]
 >`External_WaitTimeForVMRetryInSeconds`Standardvärdet har uppdaterats från 600 till 2100 för variabeln. 
 
-I alla scenarier, variablerna `External_Start_ResourceGroupNames` ,  `External_Stop_ResourceGroupNames` och `External_ExcludeVMNames` är nödvändiga för att rikta in virtuella datorer, förutom de kommaavgränsade VM-listorna för **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**och **ScheduledStartStop_Parent** Runbooks. Det innebär att de virtuella datorerna måste tillhöra mål resurs grupper för att start-och stopp åtgärder ska inträffa. Logiken fungerar ungefär som Azure Policy, i så att du kan rikta prenumerationen eller resurs gruppen och ha åtgärder som ärvts av nyskapade virtuella datorer. Den här metoden gör att du inte behöver ha ett separat schema för varje virtuell dator och hantera startar och stoppas i stor skala.
+I alla scenarier, variablerna `External_Start_ResourceGroupNames` ,  `External_Stop_ResourceGroupNames` och `External_ExcludeVMNames` är nödvändiga för att rikta in virtuella datorer, förutom de kommaavgränsade VM-listorna för **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** och **ScheduledStartStop_Parent** Runbooks. Det innebär att de virtuella datorerna måste tillhöra mål resurs grupper för att start-och stopp åtgärder ska inträffa. Logiken fungerar ungefär som Azure Policy, i så att du kan rikta prenumerationen eller resurs gruppen och ha åtgärder som ärvts av nyskapade virtuella datorer. Den här metoden gör att du inte behöver ha ett separat schema för varje virtuell dator och hantera startar och stoppas i stor skala.
 
 ### <a name="schedules"></a>Scheman
 
@@ -158,7 +158,7 @@ I följande tabell visas alla standard scheman som skapats i ditt Automation-kon
 
 Aktivera inte alla scheman, eftersom detta kan skapa överlappande schema åtgärder. Det är bäst att bestämma vilka optimeringar du vill göra och ändra dem på lämpligt sätt. I exempel scenarierna i översikts avsnittet finns ytterligare förklaring.
 
-|Schema namn | Frequency | Beskrivning|
+|Schema namn | Frekvens | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Var 8:e timme | Kör **AutoStop_CreateAlert_Parent** Runbook var 8: e timme, vilket i sin tur stoppar de VM-baserade värdena i `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` variablerna, och. Alternativt kan du ange en kommaavgränsad lista över virtuella datorer med hjälp av- `VMList` parametern.|
 |Scheduled_StopVM | Användardefinierad, daglig | Kör **ScheduledStopStart_Parent** Runbook med en parameter på `Stop` varje dag vid den angivna tiden. Stoppar automatiskt alla virtuella datorer som uppfyller reglerna som definierats av variabel till gångar. Aktivera det **schemalagda schemat för schemalagda StartVM**.|

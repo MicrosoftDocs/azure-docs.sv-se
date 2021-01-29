@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 37b9733c8c48f477efcd42571b2206405efdd5cb
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736977"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055101"
 ---
 # <a name="application-management-best-practices"></a>Metod tips för program hantering
 
@@ -34,7 +34,7 @@ Den här artikeln innehåller rekommendationer och metod tips för att hantera p
 | Använda federerad SAML-baserad SSO  | När ett program stöder det använder du federerad, SAML-baserad SSO med Azure AD i stället för lösenordsbaserad SSO och ADFS.  | 
 | Använd SHA-256 för certifikat signering  | Azure AD använder SHA-256-algoritmen som standard för att signera SAML-svaret. Använd SHA-256 om inte programmet kräver SHA-1 (se [alternativ för certifikat signering](certificate-signing-options.md) och [program inloggnings problem](application-sign-in-problem-application-error.md).)  | 
 | Kräv användar tilldelning  | Som standard kan användarna få åtkomst till dina företags program utan att de har tilldelats dem. Men om programmet visar roller, eller om du vill att programmet ska visas i användarens Mina appar, kräver du användar tilldelning.  | 
-| Distribuera Mina appar till dina användare | [Mina appar](end-user-experiences.md) på `https://myapps.microsoft.com` är en webbaserad portal som förser användare med en enda post punkt för sina tilldelade molnbaserade program. Som ytterligare funktioner, t. ex. grupp hantering och lösen ords återställning via självbetjäning, kan användarna hitta dem i Mina appar. Se [Planera distribution av mina appar](access-panel-deployment-plan.md).
+| Distribuera Mina appar till dina användare | [Mina appar](end-user-experiences.md) på `https://myapps.microsoft.com` är en webbaserad portal som förser användare med en enda post punkt för sina tilldelade molnbaserade program. Som ytterligare funktioner, t. ex. grupp hantering och lösen ords återställning via självbetjäning, kan användarna hitta dem i Mina appar. Se [Planera distribution av mina appar](my-apps-deployment-plan.md).
 | Använd grupp tilldelning  | Om den ingår i din prenumeration kan du tilldela grupper till ett program så att du kan delegera kontinuerlig åtkomst hantering till grupp ägaren.  | 
 | Upprätta en process för att hantera certifikat | Den maximala livs längden för ett signerings certifikat är tre år. För att förhindra eller minimera avbrott på grund av att ett certifikat upphör att gälla, använder du roller och e-postdistributionslistor för att se till att certifikat som rör ändrings aviseringar övervakas noga. |
 

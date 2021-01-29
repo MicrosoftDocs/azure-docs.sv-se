@@ -3,15 +3,15 @@ title: Skapa och hantera åtgärdsgrupper i Azure-portalen
 description: Lär dig hur du skapar och hanterar åtgärds grupper i Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 01/28/2021
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 08cf66edaa67ab1853a3b246afb9364b431445c6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735302"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055118"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Skapa och hantera åtgärdsgrupper i Azure-portalen
 En åtgärds grupp är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration. Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Olika aviseringar kan använda samma åtgärds grupp eller olika åtgärds grupper beroende på användarens krav. 
@@ -328,139 +328,8 @@ Webhooks bearbetas med följande regler
 - De andra och tredje försöken kommer att vänta i 30 sekunder för ett svar.
 - När tre försök att anropa webhooken Miss lyckas, kommer ingen åtgärds grupp att anropa slut punkten i 15 minuter.
 
-Käll-IP-adressintervall:
+Se [Åtgärds gruppens IP-adresser](../app/ip-addresses.md) för käll-IP-adressintervall.
 
- - 13.66.60.119/32
- - 13.66.143.220/30
- - 13.66.202.14/32
- - 13.66.248.225/32
- - 13.66.249.211/32
- - 13.67.10.124/30
- - 13.69.109.132/30
- - 13.71.199.112/30
- - 13.77.53.216/30
- - 13.77.172.102/32
- - 13.77.183.209/32
- - 13.78.109.156/30
- - 13.84.49.247/32
- - 13.84.51.172/32
- - 13.84.52.58/32
- - 13.86.221.220/30
- - 13.106.38.142/32
- - 13.106.38.148/32
- - 13.106.54.3/32
- - 13.106.54.19/32
- - 13.106.57.181/32
- - 13.106.57.196/31
- - 20.38.149.132/30
- - 20.42.64.36/30
- - 20.43.121.124/30
- - 20.44.17.220/30
- - 20.45.123.236/30
- - 20.72.27.152/30
- - 20.150.172.228/30
- - 20.192.238.124/30
- - 20.193.202.4/30
- - 40.68.195.137/32
- - 40.68.201.58/32
- - 40.68.201.65/32
- - 40.68.201.206/32
- - 40.68.201.211/32
- - 40.68.204.18/32
- - 40.115.37.106/32
- - 40.121.219.215/32
- - 40.121.221.62/32
- - 40.121.222.201/32
- - 40.121.223.186/32
- - 51.104.9.100/30
- - 52.183.20.244/32
- - 52.183.31.0/32
- - 52.183.94.59/32
- - 52.184.145.166/32
- - 191.233.50.4/30
- - 191.233.207.64/26
- - 2603:1000:4:402::178/125
- - 2603:1000:104:402::178/125
- - 2603:1010:6:402::178/125
- - 2603:1010:101:402::178/125
- - 2603:1010:304:402::178/125
- - 2603:1010:404:402::178/125
- - 2603:1020:5:402::178/125
- - 2603:1020:206:402::178/125
- - 2603:1020:305:402::178/125
- - 2603:1020:405:402::178/125
- - 2603:1020:605:402::178/125
- - 2603:1020:705:402::178/125
- - 2603:1020:805:402::178/125
- - 2603:1020:905:402::178/125
- - 2603:1020: A04:402:: 178/125
- - 2603:1020: B04:402:: 178/125
- - 2603:1020: C04:402:: 178/125
- - 2603:1020: D04:402:: 178/125
- - 2603:1020: E04:402:: 178/125
- - 2603:1020: F04:402:: 178/125
- - 2603:1020:1004:800:: F8/125
- - 2603:1020:1104:400::178/125
- - 2603:1030: f:400:: 978/125
- - 2603:1030:10:402::178/125
- - 2603:1030:104:402::178/125
- - 2603:1030:107:400:: f0/125
- - 2603:1030:210:402::178/125
- - 2603:1030:40b: 400:: 978/125
- - 2603:1030:40c: 402:: 178/125
- - 2603:1030:504:802:: F8/125
- - 2603:1030:608:402::178/125
- - 2603:1030:807:402::178/125
- - 2603:1030: A07:402:: 8f8/125
- - 2603:1030: B04:402:: 178/125
- - 2603:1030: C06:400:: 978/125
- - 2603:1030: F05:402:: 178/125
- - 2603:1030:1005:402::178/125
- - 2603:1040:5:402::178/125
- - 2603:1040:207:402::178/125
- - 2603:1040:407:402::178/125
- - 2603:1040:606:402::178/125
- - 2603:1040:806:402::178/125
- - 2603:1040:904:402::178/125
- - 2603:1040: A06:402:: 178/125
- - 2603:1040: B04:402:: 178/125
- - 2603:1040: C06:402:: 178/125
- - 2603:1040: D04:800:: F8/125
- - 2603:1040: F05:402:: 178/125
- - 2603:1040:1104:400::178/125
- - 2603:1050:6:402::178/125
- - 2603:1050:403:400:: 1f8/125
-
-Om du vill ta emot uppdateringar om ändringar av dessa IP-adresser rekommenderar vi att du konfigurerar en Service Health avisering, som övervakar informations meddelanden om tjänsten åtgärds grupper.
-
-Du kan ha ett begränsat antal webhook-åtgärder i en åtgärds grupp.
-
-Frekventa uppdateringar av käll-IP-adresser kan ta lång tid i webhook. Genom att använda **service tag** för *ActionGroup* kan du minimera komplexiteten vid frekventa uppdateringar av IP-adresser manuellt. IP-adresser för käll-IP-adress intervall som delas ovan hanteras automatiskt av Microsoft som omfattas av **service tag**.
-
-#### <a name="service-tag"></a>Service tag
-En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket minimerar komplexiteten vid frekventa uppdateringar av nätverks säkerhets regler för en ActionGroup.
-
-1. I Azure Portal under Azure-tjänster Sök efter *nätverks säkerhets grupp*.
-2. Klicka på **Lägg till** och skapa en nätverks säkerhets grupp.
-
-   1. Lägg till resurs gruppens namn och ange sedan *instans information*.
-   1. Klicka på **Granska + skapa** och klicka sedan på *skapa*.
-   
-   :::image type="content" source="media/action-groups/action-group-create-security-group.png" alt-text="Exempel på hur du skapar en nätverks säkerhets grupp."border="true":::
-
-3. Gå till resurs grupp och klicka sedan på *nätverks säkerhets grupp* som du har skapat.
-
-    1. Välj *inkommande säkerhets regler*.
-    1. Klicka på **Lägg till**.
-    
-    :::image type="content" source="media/action-groups/action-group-add-service-tag.png" alt-text="Exempel på hur du lägger till en service tag-kod."border="true":::
-
-4. Ett nytt fönster öppnas i det högra fönstret.
-    1.  Välj källa: **service tag**
-    1.  Käll tjänst tag gen: **ActionGroup**
-    1.  Klicka på **Lägg till**.
-    
-    :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Exempel på hur du lägger till service tag-koden."border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om [SMS-aviserings beteende](./alerts-sms-behavior.md).  

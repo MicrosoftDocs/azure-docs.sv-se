@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12f262347938720a9d5a95e070d792a83ac9188c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740813"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055254"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Skydda privilegierad åtkomst för hybrid- och molndistributioner i Azure AD
 
@@ -147,9 +147,10 @@ Om dina ursprungliga globala administratörer återanvänder sina befintliga Mic
 
 Personliga e-postkonton phished ofta av cyberhot-angripare, en risk som gör att privata e-postadresser inte är godtagbara för globala administratörs konton. Skapa dedikerade konton för varje användare med administratörs behörighet för att hjälpa till att skilja Internet risker från administrativa privilegier.
 
-* Se till att skapa separata konton för användare som ska kunna utföra globala administratörs uppgifter
-* Se till att dina globala administratörer inte oavsiktligt öppnar e-post eller kör program med deras administratörs konton
-* Kontrol lera att kontona i e-postmeddelandet skickas till en fungerande post låda
+* Se till att skapa separata konton för användare att utföra globala administratörs uppgifter.
+* Se till att dina globala administratörer inte oavsiktligt öppnar e-post eller kör program med deras administratörs konton.
+* Se till att dessa konton har e-postmeddelandet vidarebefordras till en fungerande post låda.
+* Konton för global administratör (och andra privilegierade grupper) bör vara molnbaserade konton utan bindningar till lokala Active Directory.
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Se till att lösen orden för administrativa konton nyligen har ändrats
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 11/25/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 214501c447632232dc00b61643ea21083bd0e4ac
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896502"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055339"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Felsöka problem med Hybrid Runbook Worker
 
@@ -106,7 +106,7 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>Orsak
 
-Felet uppstår när du försöker använda ett [Kör som-konto](../manage-runas-account.md) i en Runbook som körs på en hybrid Runbook Worker där certifikatet för kör som-kontot inte finns. Hybrid Runbook Worker har inte certifikat till gången lokalt som standard. Kör som-kontot kräver att den här till gången fungerar korrekt.
+Felet uppstår när du försöker använda ett [Kör som-konto](../automation-security-overview.md#run-as-accounts) i en Runbook som körs på en hybrid Runbook Worker där certifikatet för kör som-kontot inte finns. Hybrid Runbook Worker har inte certifikat till gången lokalt som standard. Kör som-kontot kräver att den här till gången fungerar korrekt.
 
 #### <a name="resolution"></a>Lösning
 

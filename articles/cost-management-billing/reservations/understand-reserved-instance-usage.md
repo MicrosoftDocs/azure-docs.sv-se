@@ -9,16 +9,16 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 522b67e62e7ad8560bb48e8d056ca6daeeb45251
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: f6aad15d70157dda110fce233fbdafb7f3d896ad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350916"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055067"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Förstå användning av Azure-reservationer för din enskilda prenumeration med Betala per användning-priser
 
-Använd ReservationId-värdet från sidan [Reservation](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) och användningsfilen från [Azure-kontoportalen](https://account.azure.com) till att utvärdera reservationsutnyttjandet.
+Använd sidan ReservationId från [reservation](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) och användnings filen från [Azure Portal](https://portal.azure.com) för att utvärdera reservations användningen.
 
 Om du är en kund med ett Enterprise-avtal kan du läsa i [Förstå reservationsanvändningen i din Enterprise-registrering](understand-reserved-instance-usage-ea.md).
 

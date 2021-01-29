@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e56968250c10bb46553e618fd278df7d642683f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9fd102bad45bf482cb9a9750bf05e862b9c91e8e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659088"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055220"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bevilja administratörsmedgivande för hela klientorganisationen till ett program
 
@@ -101,4 +101,4 @@ Som alltid bör du noga granska de behörigheter som ett program begär innan me
 
 [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
 
-[Azure AD på StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD på Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

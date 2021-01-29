@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348295"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054745"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -132,20 +132,22 @@ Tjänsten kör community-versionen av MySQL. Detta möjliggör fullständig prog
 
 En av fördelarna med att köra din arbets belastning i Azure är den globala räckvidden. Den flexibla servern för Azure Database for MySQL är tillgänglig idag i följande Azure-regioner:
 
-- Europa, västra
-- Norra Europa
-- Storbritannien, södra
-- USA, östra 2
-- USA, västra 2
-- Central US
-- East US
-- Kanada, centrala
-- Sydostasien
-- Sydkorea, centrala
-- Japan, östra
-- Australien, östra
+| Region | Hög tillgänglighet | 
+| --- | --- |
+| Europa, västra | :heavy_check_mark: | 
+| Europa, norra | :heavy_check_mark: | 
+| Storbritannien, södra | röntgen | 
+| USA, östra 2 | :heavy_check_mark: | 
+| USA, västra 2 | :heavy_check_mark: | 
+| Central US | röntgen | 
+| East US | :heavy_check_mark: | 
+| Kanada, centrala | röntgen | 
+| Sydostasien | :heavy_check_mark: | 
+| Sydkorea, centrala | röntgen | 
+| Japan, östra | röntgen | 
+| Australien, östra | :heavy_check_mark: |
 
-Vi arbetar snart med att lägga till nya servrar.
+Vi arbetar med att lägga till nya regioner snart.
 
 ## <a name="contacts"></a>Kontakter
 Om du har frågor eller förslag som du kan ha på Azure Database for MySQL flexibel Server kan du skicka ett e-postmeddelande till Azure Database for MySQL-teamet ([ @Ask Azure dB för MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Den här e-postadressen är inte ett alias för teknisk support.

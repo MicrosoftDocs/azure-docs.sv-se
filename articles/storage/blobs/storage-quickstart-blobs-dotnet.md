@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: Azure Blob Storage-bibliotek V12-.NET'
-description: I den här snabb starten får du lära dig hur du använder Azure Blob Storage klient bibliotek version 12 för .NET för att skapa en behållare och en BLOB i blob-lagring (objekt). Du får lära dig hur du hämtar bloben till din lokala dator och hur du visar alla blobar i en container.
+title: 'Snabb start: Azure Blob Storage Library V12 – .NET'
+description: I den här snabb starten får du lära dig hur du använder Azure-Blob Storage klient bibliotek version 12 för .NET för att skapa en behållare och en BLOB i blob-lagring (objekt). Du får lära dig hur du hämtar bloben till din lokala dator och hur du visar alla blobar i en container.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/24/2020
@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8cb8c193e09e841a8401cbb0a6ac78ce87afa01c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8f27743d8680f5e73e1f7bb7a3f7bd6ff2e0464
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021715"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054728"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Snabbstart: Azure Blob Storage-klientbiblioteket v12 för .NET
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Snabb start: Azure Blob Storage V12 för klient bibliotek för .NET
 
-Kom igång med Azure Blob Storage-V12 för .NET. Azure Blob Storage är Microsofts objektlagringslösning för molnet. Följ stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Blob Storage är optimerad för lagring av enorma mängder ostrukturerade data.
+Kom igång med Azure-Blob Storage klient bibliotek V12 för .NET. Azure Blob Storage är Microsofts objekt lagrings lösning för molnet. Följ stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Blob Storage är optimerad för lagring av enorma mängder ostrukturerade data.
 
-Använd Azure Blob Storage-V12 för .NET för att:
+Använd Azure Blob Storage-V12 för klient bibliotek för .NET för att:
 
 * Skapa en container
 * Ladda upp en blob till Azure Storage
@@ -44,7 +44,7 @@ Ytterligare resurser:
 
 ## <a name="setting-up"></a>Konfigurera
 
-Det här avsnittet beskriver hur du förbereder ett projekt så att det fungerar med Azure Blob Storage-V12 för .NET.
+Det här avsnittet beskriver hur du förbereder ett projekt för att arbeta med Azure Blob Storage-V12 för .NET.
 
 ### <a name="create-the-project"></a>Skapa projektet
 
@@ -70,7 +70,7 @@ Skapa ett .NET Core-program med namnet *BlobQuickstartV12*.
 
 ### <a name="install-the-package"></a>Installera paketet
 
-När du fortfarande är i program katalogen installerar du Azure Blob Storage-klient biblioteket för .NET-paketet med hjälp av `dotnet add package` kommandot.
+När du fortfarande är i program katalogen installerar du Azure-Blob Storage klient biblioteket för .NET-paketet med hjälp av `dotnet add package` kommandot.
 
 ```console
 dotnet add package Azure.Storage.Blobs
@@ -109,7 +109,7 @@ namespace BlobQuickstartV12
 
 ## <a name="object-model"></a>Objekt modell
 
-Azure Blob Storage är optimerat för att lagra enorma mängder ostrukturerade data. Ostrukturerade data är data som inte följer en viss datamodell eller definition, till exempel text eller binära data. I blobblagringen finns tre typer av resurser:
+Azure Blob Storage optimeras för att lagra enorma mängder ostrukturerade data. Ostrukturerade data är data som inte följer en viss datamodell eller definition, till exempel text eller binära data. I blobblagringen finns tre typer av resurser:
 
 * Lagrings kontot
 * En container på lagringskontot
@@ -128,7 +128,7 @@ Använd följande .NET-klasser för att interagera med dessa resurser:
 
 ## <a name="code-examples"></a>Kodexempel
 
-I de här exempel kods tycken visas hur du gör följande med klient biblioteket för Azure Blob Storage för .NET:
+I dessa exempel kods tycken visas hur du gör följande med Azure Blob Storage-klient biblioteket för .NET:
 
 * [Hämta anslutningssträngen](#get-the-connection-string)
 * [Skapa en container](#create-a-container)
@@ -144,7 +144,7 @@ Koden nedan hämtar anslutnings strängen för lagrings kontot från den miljö 
 Lägg till den här koden i- `Main` metoden:
 
 ```csharp
-Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Blob Storage v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -287,7 +287,7 @@ dotnet run
 Utdata från appen liknar följande exempel:
 
 ```output
-Azure Blob storage v12 - .NET quickstart sample
+Azure Blob Storage v12 - .NET quickstart sample
 
 Uploading to Blob storage as blob:
          https://mystorageacct.blob.core.windows.net/quickstartblobs60c70d78-8d93-43ae-954d-8322058cfd64/quickstart2fe6c5b4-7918-46cb-96f4-8c4c5cb2fd31.txt

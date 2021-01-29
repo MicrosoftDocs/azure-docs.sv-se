@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883120"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054863"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Felsöka utgående SMTP-anslutningsproblem i Azure
 
@@ -27,7 +27,7 @@ Den här förändringen gäller enbart för prenumerationer och distributioner s
 
 ## <a name="recommended-method-of-sending-email"></a>Rekommenderad metod för att skicka e-post
 
-Vi rekommenderar att du använder autentiserade SMTP Relay-tjänster för att skicka e-post från virtuella Azure-datorer eller från Azure App Service. (Dessa relä tjänster ansluter vanligt vis via TCP-port 587 eller 443, men de stöder andra portar.) Dessa tjänster används för att underhålla IP-eller domän rykte för att minimera risken att e-postleverantörer från tredje part kommer att avvisa meddelanden. [SendGrid](https://sendgrid.com/partners/azure/) är en sådan SMTP Relay-tjänst, men det finns andra. Du kan också ha en säker SMTP-Relay-tjänst som körs lokalt och som du kan använda.
+Vi rekommenderar att du använder autentiserade SMTP Relay-tjänster för att skicka e-post från virtuella Azure-datorer eller från Azure App Service. (Dessa relä tjänster ansluter vanligt vis via TCP-port 587, men de stöder andra portar.) Dessa tjänster används för att underhålla IP-eller domän rykte för att minimera risken att e-postleverantörer från tredje part kommer att avvisa meddelanden. [SendGrid](https://sendgrid.com/partners/azure/) är en sådan SMTP Relay-tjänst, men det finns andra. Du kan också ha en säker SMTP-Relay-tjänst som körs lokalt och som du kan använda.
 
 Att använda dessa e-postleverans tjänster är inte begränsat i Azure, oavsett prenumerations typ.
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d14e4808d5bec03dff9406f37e63ee4c76e601f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b318ed0d5cd97ca7c020097dff25516f0783c70e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033229"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055305"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurera grupp ägare medgivande till appar som har åtkomst till grupp data
 
@@ -124,4 +124,4 @@ Mer information:
 * [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
 
 För att få hjälp eller hitta svar på dina frågor:
-* [Azure AD på StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Azure AD på Microsoft Q&A ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

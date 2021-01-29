@@ -11,16 +11,18 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 330bd9b78c2f550ab40f1f4f3679b6c9788ddb64
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 62dae175b529bd54b2f139eece89bbde6f98cd38
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859402"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055016"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Hämta alla Application Proxy-appar och lista utökad information
 
-Detta exempel på PowerShell-skript visar information om alla Azure Active Directory (Azure AD) Application Proxy-program, inklusive program-ID (AppId), namn (DisplayName), extern URL (ExternalUrl), intern URL (InternalUrl) och autentiseringstyp (ExternalAuthenticationType).
+Det här PowerShell-skript exemplet visar information om alla Azure Active Directory (Azure AD) Application Proxy-program, inklusive program-ID (AppId), namn (DisplayName), extern URL (ExternalUrl), intern URL (InternalUrl), autentiseringstyp (ExternalAuthenticationType), SSO-läge och ytterligare inställningar.
+
+Genom att ändra värdet för variabeln $ssoMode kan du filtrera utdata efter SSO-läge. Mer information finns dokumenterad i skriptet.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +30,7 @@ Detta exempel på PowerShell-skript visar information om alla Azure Active Direc
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/azure/active-directory/install-adv2) (AzureAD) eller [AzureAD v2 PowerShell för för hands versionen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) av (AzureADPreview).
+Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/azure/active-directory/install-adv2) (AzureAD).
 
 ## <a name="sample-script"></a>Exempelskript
 

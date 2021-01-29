@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/22/2021
-ms.openlocfilehash: b16e95c231096b7b37175cda5233019696fba19c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 01/25/2021
+ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726523"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054762"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -380,27 +380,42 @@ När du inaktiverar en Logic app instansieras inga nya körningar. Alla pågåen
 När du tar bort en logikapp instantieras inga nya körningar. Alla pågående och väntande körningar avbryts. Om du har flera tusen körningar kan det ta relativt lång tid att avbryta dem.
 
 <a name="configuration"></a>
+<a name="firewall-ip-configuration"></a>
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Brand Väggs konfiguration: IP-adresser och service märken
 
-De IP-adresser som Azure Logic Apps använder för inkommande och utgående samtal beror på den region där din Logic app finns. *Alla* Logic Apps i samma region använder samma IP-adressintervall. Vissa [automatiserade](/power-automate/getting-started) kommunikationer, till exempel **http-** och **http + openapi** -begäranden, går direkt genom Azure Logic Apps tjänsten och kommer från de IP-adresser som visas här. Mer information om IP-adresser som används av Power automatisering finns i [gränser och konfiguration i energi spar läge](/flow/limits-and-config#ip-address-configuration).
+När din Logi Kap par behöver kommunicera via en brand vägg som begränsar trafik till vissa IP-adresser, måste brand väggen tillåta åtkomst  för både [inkommande](#inbound) och [utgående](#outbound) ip-adresser som används av Logic Apps tjänst eller körning i den Azure-region där din Logic app finns. *Alla* Logic Apps i samma region använder samma IP-adressintervall.
 
-> [!TIP]
-> För att minska komplexiteten när du skapar säkerhets regler kan du välja att använda [tjänst Taggar](../virtual-network/service-tags-overview.md)istället för att ange Logic Apps IP-adresser för varje region, som beskrivs senare i det här avsnittet.
-> Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig:
->
-> * **LogicAppsManagement**: representerar de inkommande IP-adressprefix för Logic Appss tjänsten.
-> * **LogicApps**: representerar de utgående IP-adressprefix för Logic Appss tjänsten.
+Om du till exempel vill stödja samtal som Logic Apps i regionen Västra USA skickar eller tar emot via inbyggda utlösare och åtgärder, till exempel [http-utlösare eller åtgärd](../connectors/connectors-native-http.md), måste brand väggen tillåta åtkomst för *alla* Logic Apps tjänstens inkommande IP-adresser *och* utgående IP-adresser som finns i regionen USA, västra.
 
-* För [Azure Kina 21Vianet](/azure/china/)är fasta eller reserverade IP-adresser inte tillgängliga för [anpassade anslutningar](../logic-apps/custom-connector-overview.md) och [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Azure Storage, SQL Server, Office 365 Outlook och så vidare.
+Om din Logic app även använder [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Office 365 Outlook Connector eller SQL-anslutning, eller använder [anpassade anslutningar](/connectors/custom-connectors/), måste brand väggen också tillåta åtkomst för *alla* [utgående IP-adresser för hanterad anslutning](#outbound) i din Logic app Azure-region. Om du använder anpassade anslutnings program som har åtkomst till lokala resurser via den [lokala datagateway-resursen i Azure](logic-apps-gateway-connection.md)måste du konfigurera gateway-installationen för att tillåta åtkomst för motsvarande *hanterade anslutningar [utgående IP-adresser](#outbound)*.
 
-* För att stödja anrop som dina Logi Kap par direkt gör med [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)och andra HTTP-förfrågningar, ställer du in brand väggen med alla [inkommande](#inbound) *och* [utgående](#outbound) IP-adresser som används av den Logic Apps tjänsten, baserat på de regioner där dina Logi Kap par finns. De här adresserna visas under de **inkommande** och **utgående** rubrikerna i det här avsnittet och sorteras efter region.
+Mer information om hur du konfigurerar kommunikations inställningar på gatewayen finns i följande avsnitt:
 
-* För att stödja anrop som [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors) gör konfigurerar du brand väggen med *alla* [utgående](#outbound) IP-adresser som används av dessa anslutningar, baserat på de regioner där dina Logi Kap par finns. De här adresserna visas under den **utgående** rubriken i det här avsnittet och sorteras efter region.
+* [Justera kommunikationsinställningar för den lokala datagatewayen](/data-integration/gateway/service-gateway-communication)
+* [Konfigurera proxyinställningar för den lokala datagatewayen](/data-integration/gateway/service-gateway-proxy)
 
-* Om du vill aktivera kommunikation för logi Kap par som körs i en integrerings tjänst miljö (ISE) ser du till att du [öppnar dessa portar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+<a name="ip-setup-considerations"></a>
 
-* Om dina Logi Kap par har problem med att komma åt Azure Storage-konton som använder [brand väggar och brand Väggs regler](../storage/common/storage-network-security.md), har du [flera alternativ för att aktivera åtkomst](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
+### <a name="firewall-ip-configuration-considerations"></a>Överväganden vid IP-konfiguration för brand vägg
+
+Innan du konfigurerar brand väggen med IP-adresser bör du gå igenom följande överväganden:
+
+* Om du använder [Power](/power-automate/getting-started)automate, går vissa åtgärder, till exempel **http** och **http + openapi**, direkt via Azure Logic Apps tjänsten och kommer från de IP-adresser som visas här. Mer information om de IP-adresser som används av Power automatisering finns i [gränser och konfiguration för energi automatisering](/flow/limits-and-config#ip-address-configuration).
+
+* För [Azure Kina 21Vianet](/azure/china/)är fasta eller reserverade IP-adresser inte tillgängliga för [anpassade anslutningar](../logic-apps/custom-connector-overview.md) och för [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), till exempel Azure Storage, SQL Server, Office 365 Outlook och så vidare.
+
+* Om dina Logi Kap par körs i en [integrerings tjänst miljö (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md)ser du till att du [även öppnar dessa portar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise).
+
+* För att hjälpa dig att förenkla de säkerhets regler som du vill skapa, kan du välja att använda [service märken](../virtual-network/service-tags-overview.md) istället för att ange IP-adressprefix för varje region. Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig:
+
+  * **LogicAppsManagement**: representerar de inkommande IP-adressprefix för Logic Appss tjänsten.
+
+  * **LogicApps**: representerar de utgående IP-adressprefix för Logic Appss tjänsten.
+
+  * **AzureConnectors**: representerar IP-adressprefix för hanterade anslutningar som gör inkommande webhook-återanrop till tjänsten Logic Apps och utgående anrop till deras respektive tjänster, till exempel Azure Storage eller Azure-Event Hubs.
+
+* Om dina Logi Kap par har problem med att komma åt Azure Storage-konton som använder [brand väggar och brand Väggs regler](../storage/common/storage-network-security.md), har du [olika alternativ för att aktivera åtkomst](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
   Logic Apps kan till exempel inte komma åt lagrings konton som använder brand Väggs regler och som finns i samma region. Men om du tillåter [utgående IP-adresser för hanterade anslutningar i din region](../logic-apps/logic-apps-limits-and-config.md#outbound), kan dina Logi Kap par komma åt lagrings konton som finns i en annan region, förutom när du använder Azure Table Storage-eller Azure Queue Storage-anslutningarna. Om du vill komma åt Table Storage eller Queue Storage kan du använda HTTP-utlösaren och åtgärderna i stället. Andra alternativ finns i [åtkomst till lagrings konton bakom brand väggar](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
@@ -411,9 +426,7 @@ De IP-adresser som Azure Logic Apps använder för inkommande och utgående samt
 I det här avsnittet visas endast inkommande IP-adresser för den Azure Logic Apps tjänsten. Om du har Azure Government, se [Azure Government-inkommande IP-adresser](#azure-government-inbound).
 
 > [!TIP]
-> För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicAppsManagement** i stället för att ange inkommande Logic Apps IP-adressprefix för varje region.
-> För hanterade anslutningar kan du välja att använda **AzureConnectors** service tag i stället för att ange inkommande IP-adressprefix för hanterade anslutningar för varje region.
-> Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig.
+> För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicAppsManagement** i stället för att ange inkommande Logic Apps IP-adressprefix för varje region. Alternativt kan du också använda **AzureConnectors** för hanterade anslutningar som gör inkommande webhook-återanrop till den Logic Apps tjänsten, i stället för att ange inkommande IP-adressprefix för hanterade anslutningar för varje region. Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig.
 
 <a name="multi-tenant-inbound"></a>
 
@@ -479,8 +492,7 @@ I det här avsnittet visas endast inkommande IP-adresser för den Azure Logic Ap
 I det här avsnittet visas de utgående IP-adresserna för Azure Logic Apps tjänsten och hanterade anslutningar. Om du har Azure Government, se [Azure Government utgående IP-adresser](#azure-government-outbound).
 
 > [!TIP]
-> För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicApps** i stället för att ange utgående Logic Apps IP-adressprefix för varje region.
-> Den här taggen fungerar i de regioner där Logic Appss tjänsten är tillgänglig. 
+> För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicApps** i stället för att ange utgående Logic Apps IP-adressprefix för varje region. Du kan också använda **AzureConnectors** service tag för hanterade anslutningar som gör utgående anrop till sina respektive tjänster, till exempel Azure Storage eller Azure Event Hubs, i stället för att ange utgående IP-adressprefix för hanterade anslutningar för varje region. Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig.
 
 <a name="multi-tenant-outbound"></a>
 

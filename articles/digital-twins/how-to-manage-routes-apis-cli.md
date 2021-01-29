@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682672"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054524"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (API: er och CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "98682672"
 
 I Azure Digitals dubbla, kan du dirigera [händelse meddelanden](how-to-interpret-event-data.md) till underordnade tjänster eller anslutna beräknings resurser. Det gör du genom att först konfigurera **slutpunkter** som kan ta emot händelserna. Du kan sedan skapa  [**händelse vägar**](concepts-route-events.md) som anger vilka händelser som genereras av digitala Digital-meddelanden i Azure som levereras till vilka slut punkter.
 
-Den här artikeln vägleder dig genom processen att skapa slut punkter och vägar med [API: er för händelse vägar](/rest/api/digital-twins/dataplane/eventroutes), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)och [Azure Digitals flätat CLI](how-to-use-cli.md).
+Den här artikeln vägleder dig genom processen för att skapa slut punkter och vägar med [REST-API: er](/rest/api/azure-digitaltwins/), [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)och [Azure Digitals flätat CLI](how-to-use-cli.md).
 
 Du kan också hantera slut punkter och vägar med [Azure Portal](https://portal.azure.com). En version av den här artikeln som använder portalen i stället finns i [*så här gör du: hantera slut punkter och vägar (portal)*](how-to-manage-routes-portal.md).
 
@@ -42,51 +42,31 @@ Detta är de typer av slut punkter som stöds som du kan skapa för din instans:
 
 Mer information om olika typer av slut punkter finns i [*Välj mellan Azure Messaging Services*](../event-grid/compare-messaging-services.md).
 
-Om du vill länka en slut punkt till Azure Digitals-band måste Event Grid-ämnet, händelsehubben eller Service Bus som du använder för slut punkten redan finnas. 
+I det här avsnittet beskrivs hur du skapar dessa slut punkter med hjälp av Azure CLI. Du kan också hantera slut punkter med [DigitalTwinsEndpoint Control plan-API: er](/rest/api/digital-twins/controlplane/endpoints).
 
-### <a name="create-an-event-grid-endpoint"></a>Skapa en Event Grid-slutpunkt
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-I följande exempel visas hur du skapar en slut punkt för Event Grid-typ med hjälp av Azure CLI.
+### <a name="create-the-endpoint"></a>Skapa slut punkten
 
-Börja med att skapa ett event Grid-ämne. Du kan använda följande kommando eller Visa stegen mer detaljerat genom [att gå till avsnittet *skapa ett anpassat ämne*](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) i snabb starten för Event Grid *anpassade händelser* .
+När du har skapat slut punkts resurserna kan du använda dem för en Azure digital-slutpunkt. I följande exempel visas hur du skapar slut punkter med hjälp av `az dt endpoint create` kommandot för [Azure Digitals flätat CLI](how-to-use-cli.md). Ersätt plats hållarna i kommandona med information om dina egna resurser.
 
-```azurecli-interactive
-az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
-```
-
-> [!TIP]
-> Om du vill skapa en lista med namn på Azure-regioner som kan skickas till kommandon i Azure CLI kör du följande kommando:
-> ```azurecli-interactive
-> az account list-locations -o table
-> ```
-
-När du har skapat ämnet kan du länka det till Azure Digitals dubbla med följande [Azure Digitals flätade CLI-kommando](how-to-use-cli.md):
+Så här skapar du en Event Grid slut punkt:
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Nu är event Grid-avsnittet tillgängligt som en slut punkt i Azure Digitals, under namnet som anges med `--endpoint-name` argumentet. Du använder vanligt vis det namnet som mål för en **händelse väg**, som du kommer att skapa [senare i den här artikeln](#create-an-event-route) med hjälp av Azure Digitals tjänst-API.
+Så här skapar du en Event Hubs slut punkt:
+```azurecli-interactive
+az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
+```
 
-### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Skapa en Event Hubs-eller Service Bus-slutpunkt
-
-Processen för att skapa Event Hubs-eller Service Bus-slutpunkter liknar Event Grid processen som visas ovan.
-
-Börja med att skapa de resurser som du ska använda som slut punkt. Här är vad som krävs:
-* Service Bus: _Service Bus namnrymd_, _Service Bus ämne_, _auktoriseringsregel_
-* Event Hubs: _Event Hubs namnrymd_, _händelsehubben_, _auktoriseringsregel_
-
-Använd sedan följande kommandon för att skapa slut punkterna i Azure Digitals flätas: 
-
-* Lägg till Service Bus avsnitts slut punkt (kräver en redan skapad Service Bus-resurs)
+Så här skapar du en slut punkt för Service Bus ämnet:
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-* Lägg till Event Hubs slut punkt (kräver i förväg skapade Event Hubs resurs)
-```azurecli-interactive
-az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
-```
+När du har kört de här kommandona är event Grid, Event Hub eller Service Bus ämnet tillgängligt som en slut punkt i Azure Digitals, under det namn som du angav med `--endpoint-name` argumentet. Du använder vanligt vis det namnet som mål för en **händelse väg**, som du skapar [senare i den här artikeln](#create-an-event-route).
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Skapa en slut punkt med obeställbara meddelanden
 
@@ -121,15 +101,15 @@ Följ stegen nedan för att konfigurera de här lagrings resurserna på ditt Azu
     
 #### <a name="configure-the-endpoint"></a>Konfigurera slut punkten
 
-Om du vill skapa en slut punkt som har aktive rad bokstav måste du skapa slut punkten med hjälp av Azure Resource Manager API: er. 
+Om du vill skapa en slut punkt som har aktive rad bokstav aktive rad kan du skapa slut punkten med hjälp av Azure Resource Manager API: er. 
 
 1. Använd först [Azure Resource Manager API-dokumentationen](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) för att ställa in en begäran om att skapa en slut punkt och fyll i de obligatoriska parametrarna för begäran. 
 
-1. Lägg sedan till ett `deadLetterSecret` fält i Properties-objektet i **bröd texten** i begäran. Ange det här värdet enligt mallen nedan, vilket är en URL från lagrings kontots namn, behållar namn och SAS-token som du samlade in i [föregående avsnitt](#set-up-storage-resources).
+2. Lägg sedan till ett `deadLetterSecret` fält i Properties-objektet i **bröd texten** i begäran. Ange det här värdet enligt mallen nedan, vilket är en URL från lagrings kontots namn, behållar namn och SAS-token som du samlade in i [föregående avsnitt](#set-up-storage-resources).
       
   :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
 
-1. Skicka begäran om att skapa slut punkten.
+3. Skicka begäran om att skapa slut punkten.
 
 Mer information om att strukturera den här begäran finns i Azure Digitals REST API-dokumentationen: [endpoints-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
@@ -169,10 +149,6 @@ Här är ett exempel på ett meddelande om obeställbara meddelanden för ett [d
 
 ## <a name="create-an-event-route"></a>Skapa en händelse väg
 
-Om du faktiskt vill skicka data från digitala Azure-sändningar till en slut punkt måste du definiera en **händelse väg**. Med Azure Digitals **EventRoutes-API: er** kan utvecklare skapa händelse flöde, i hela systemet och i underordnade tjänster. Läs mer om händelse vägar i [*begrepp: routing Azure Digitals, dubbla händelser*](concepts-route-events.md).
-
-I exemplen i det här avsnittet används [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
-
 **Förutsättning**: du måste skapa slut punkter enligt beskrivningen ovan i den här artikeln innan du kan gå vidare till skapa en väg. Du kan fortsätta att skapa en händelse väg när slut punkterna har koner ATS.
 
 > [!NOTE]
@@ -180,9 +156,7 @@ I exemplen i det här avsnittet används [.net (C#) SDK](/dotnet/api/overview/az
 >
 > Om du använder skript för det här flödet kanske du vill ta hänsyn till det genom att skapa i 2-3 minuter vänte tid för slut punkts tjänsten för att slutföra distributionen innan du går vidare till väg installationen.
 
-### <a name="creation-code-with-apis-and-the-c-sdk"></a>Skapa kod med API: er och C# SDK
-
-Händelse vägar definieras med hjälp av [data Plans-API: er](how-to-use-apis-sdks.md#overview-data-plane-apis). 
+Om du faktiskt vill skicka data från digitala Azure-sändningar till en slut punkt måste du definiera en **händelse väg**. Händelse vägar används för att ansluta händelse flödet i systemet och till underordnade tjänster.
 
 En flödes definition kan innehålla följande element:
 * Det väg namn som du vill använda
@@ -193,6 +167,12 @@ Om det inte finns något väg namn dirigeras inga meddelanden utanför Azures di
 
 En väg bör tillåta att flera meddelanden och händelse typer väljs. 
 
+Händelse vägar kan skapas med Azure Digitals dubbla [ **EventRoutes** data Plans-API: er](/rest/api/digital-twins/dataplane/eventroutes) eller [ **AZ DT Route** CLI-kommandon](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true). Resten av det här avsnittet beskriver hur du skapar processen.
+
+### <a name="create-routes-with-the-apis-and-c-sdk"></a>Skapa vägar med API: er och C# SDK
+
+Ett sätt att definiera händelse vägar är med [API: er för data planet](how-to-use-apis-sdks.md#overview-data-plane-apis). I exemplen i det här avsnittet används [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+
 `CreateOrReplaceEventRouteAsync` är SDK-anropet som används för att lägga till en händelse väg. Här är ett exempel på användningen:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
@@ -200,11 +180,17 @@ En väg bör tillåta att flera meddelanden och händelse typer väljs.
 > [!TIP]
 > Alla SDK-funktioner ingår i synkrona och asynkrona versioner.
 
-### <a name="event-route-sample-code"></a>Exempel kod för händelse väg
+#### <a name="event-route-sample-sdk-code"></a>SDK-kod för exempel på händelse väg
 
-Följande exempel metod visar hur du skapar, visar och tar bort en händelse väg:
+Följande exempel metod visar hur du skapar, visar och tar bort en händelse väg med C# SDK:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="FullEventRouteSample":::
+
+### <a name="create-routes-with-the-cli"></a>Skapa vägar med CLI
+
+Vägar kan också hanteras med [AZ DT Route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) -kommandon för Azure Digitals flätat-cli. 
+
+Mer information om hur du använder CLI och vilka kommandon som är tillgängliga finns i [*How-to: använda Azure Digitals flätade CLI*](how-to-use-cli.md).
 
 ## <a name="filter-events"></a>Filtrera händelser
 
@@ -222,10 +208,6 @@ Om du vill lägga till ett filter, kan du använda en skicka-begäran till *http
 Här följer de väg filter som stöds. Använd informationen i kolumnen *filtrera text schema* för att ersätta `<filter-text>` plats hållaren i begär ande texten ovan.
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
-
-## <a name="manage-endpoints-and-routes-with-cli"></a>Hantera slut punkter och vägar med CLI
-
-Slut punkter och vägar kan också hanteras med hjälp av Azure Digitals flätade CLI. Mer information om hur du använder CLI och vilka kommandon som är tillgängliga finns i [*How-to: använda Azure Digitals flätade CLI*](how-to-use-cli.md).
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 

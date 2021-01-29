@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: REST API för Azure Consumption
       href: /rest/api/consumption
-    - name: Resource Manager-mall
+    - name: Budget mal len förbruknings REST API ARM
       href: /azure/templates/microsoft.consumption/budgets
     - name: Exempel på REST-API för Cost Management
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: Cost Management – Azure PowerShell
+    - name: Azure PowerShell-cmdletar för Cost Management
       href: /powershell/module/Az.CostManagement
     - name: Scenarier för automatisering av fakturering
       href: manage/cost-management-automation-scenarios.md
-    - name: Översikt över API för Azure-fakturering
+    - name: Priser för åter försäljning i Azure REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: REST API för Azure-fakturering
       href: /rest/api/billing
@@ -400,25 +400,21 @@
       href: manage/consumption-api-overview.md
     - name: REST API för Azure Consumption
       href: /rest/api/consumption
-    - name: REST API för RateCard
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: REST API för användning
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: Översikt över Enterprise Reporting
+    - name: Översikt över företags rapportering REST API
       href: manage/enterprise-api.md
-    - name: REST API för Enterprise Reporting
+    - name: 'REST API: er för företags rapportering'
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Reservationer
       items:
         - name: REST-API för reservationer
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: Reservationer – Azure PowerShell
+        - name: Azure PowerShell-cmdletar för reservationer
           href: /powershell/module/azurerm.reservations
-        - name: Reservationer – CLI
+        - name: Azure CLI för reservationer
           href: /cli/azure/reservations/reservation
-        - name: Cost Management – REST-API för information om förbrukningsanvändning
+        - name: Information om användning REST API
           href: /rest/api/consumption/usagedetails
-        - name: Cost Management – REST-API för information om förbrukningsreservationer
+        - name: Information om reservationer REST API
           href: /rest/api/consumption/reservationsdetails
 - name: Resurser
   items:

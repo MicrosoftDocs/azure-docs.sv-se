@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322520"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054779"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installera lokal datagateway för Azure Logic Apps
 
@@ -91,7 +91,7 @@ Den här artikeln visar hur du hämtar, installerar och konfigurerar din lokala 
 
    ![Granska krav och godkänn användnings villkoren](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. När gatewayen har installerats, ange e-postadressen för ditt Azure-konto och välj sedan **Logga**in, till exempel:
+1. När gatewayen har installerats, ange e-postadressen för ditt Azure-konto och välj sedan **Logga** in, till exempel:
 
    ![Logga in med arbets-eller skol konto](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
@@ -138,9 +138,15 @@ Den här artikeln visar hur du hämtar, installerar och konfigurerar din lokala 
 
 1. [Skapa nu Azure-resursen för din gateway-installation](../logic-apps/logic-apps-gateway-connection.md).
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>Kontrol lera eller justera kommunikations inställningar
 
-Den lokala datagatewayen är beroende av [Azure Service Bus meddelanden](../service-bus-messaging/service-bus-messaging-overview.md) för moln anslutningar och upprättar motsvarande utgående anslutningar till gatewayens associerade Azure-region. Om din arbets miljö kräver att trafiken går via en proxy eller brand vägg för att få åtkomst till Internet, kan denna begränsning förhindra att den lokala datagatewayen ansluter till moln tjänsten för gateway och Azure Service Bus meddelande hantering. Gatewayen har flera kommunikations inställningar, som du kan justera. Mer information finns i de här ämnena:
+Den lokala datagatewayen är beroende av [Azure Service Bus meddelanden](../service-bus-messaging/service-bus-messaging-overview.md) för moln anslutningar och upprättar motsvarande utgående anslutningar till gatewayens associerade Azure-region. Om din arbets miljö kräver att trafiken går via en proxy eller brand vägg för att få åtkomst till Internet, kan denna begränsning förhindra att den lokala datagatewayen ansluter till moln tjänsten för gateway och Azure Service Bus meddelande hantering. Gatewayen har flera kommunikations inställningar, som du kan justera.
+
+Ett exempel scenario är hur du använder anpassade anslutningar som ansluter till lokala resurser med hjälp av den lokala datagateway-resursen i Azure. Om du också har en brand vägg som begränsar trafik till vissa IP-adresser, måste du konfigurera gateway-installationen så att den tillåter åtkomst för motsvarande *hanterade anslutningar [utgående IP-adresser](logic-apps-limits-and-config.md#outbound)*. *Alla* Logic Apps i samma region använder samma IP-adressintervall.
+
+Mer information finns i de här ämnena:
 
 * [Justera kommunikationsinställningar för den lokala datagatewayen](/data-integration/gateway/service-gateway-communication)
 * [Konfigurera proxyinställningar för den lokala datagatewayen](/data-integration/gateway/service-gateway-proxy)
@@ -155,7 +161,7 @@ För att undvika enskilda fel punkter för lokal data åtkomst kan du ha flera g
 
 * Din primära Gateway måste köra Gateway-uppdateringen från november 2017 eller senare.
 
-När du har konfigurerat din primära Gateway, väljer du **Lägg till i ett befintligt Gateway-kluster**när du går för att installera en annan gateway, väljer den primära gatewayen, som är den första gatewayen som du har installerat och anger återställnings nyckeln för den gatewayen. Mer information finns i [kluster med hög tillgänglighet för lokal datagateway](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+När du har konfigurerat din primära Gateway, väljer du **Lägg till i ett befintligt Gateway-kluster** när du går för att installera en annan gateway, väljer den primära gatewayen, som är den första gatewayen som du har installerat och anger återställnings nyckeln för den gatewayen. Mer information finns i [kluster med hög tillgänglighet för lokal datagateway](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
@@ -179,7 +185,7 @@ Om du måste ändra gatewayens plats, flytta Gateway-installationen till en ny d
 
    ![Välj Gateway och ange återställnings nyckel](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. Om du vill ändra region väljer du **ändra region**och sedan den nya regionen.
+1. Om du vill ändra region väljer du **ändra region** och sedan den nya regionen.
 
 1. När du är klar väljer du **Konfigurera** så att du kan slutföra uppgiften.
 
