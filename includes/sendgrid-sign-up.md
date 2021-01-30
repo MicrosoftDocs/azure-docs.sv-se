@@ -4,15 +4,13 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc00f4de95d22eec71f9b1b2504b00f506232dc
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015443"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213927"
 ---
-Azure-kunder kan låsa upp 25 000 kostnadsfria e-postmeddelanden varje månad. Med de här 25 000 kostnads fria e-postmeddelandena får du till gång till avancerad rapportering och analys och [alla API: er][all APIs] (webb, SMTP, evenemang, analys och annat). Information om ytterligare tjänster från SendGrid finns på sidan om [SendGrid-lösningar][SendGrid Solutions].
-
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Registrera ett SendGrid-konto
 1. Logga in på [Azure-portalen][Azure portal].
 2. På Azure Portal-menyn eller start sidan väljer du **skapa en resurs**.
@@ -30,7 +28,7 @@ Azure-kunder kan låsa upp 25 000 kostnadsfria e-postmeddelanden varje månad. M
 8. Skapa en ny **resursgrupp** eller välj en befintlig.
 9. I avsnittet **Prisnivå** väljer du den SendGrid-plan som du vill registrera dig för.
 
-    ![Skärm bild av dialog rutan skapa ett nytt SendGrid-konto med avsnittet Välj pris nivå öppnat och den kostnads fria pris nivån som valts.][sendgrid-pricing]
+    ![Skärm bild av dialog rutan skapa ett nytt SendGrid-konto med avsnittet Välj pris nivå öppnat][sendgrid-pricing]
 10. Ange en **kampanjkod** om du har en.
 11. Ange din **kontakt information**.
 12. Läs igenom och godkänn de **juridiska villkoren**.

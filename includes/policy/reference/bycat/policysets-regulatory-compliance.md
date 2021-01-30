@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 391d921cfe77e8efdfd93fa87f102652120786d4
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 934497f0d4debf8f21d5e12ba1e6addedd3c70f6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807108"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99214040"
 ---
 |Name |Beskrivning |Principer |Version |
 |---|---|---|---|
@@ -22,7 +22,7 @@ ms.locfileid: "98807108"
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av FedRAMP M-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |4.0.0 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av HITRUST/HIPAA-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |120 |5.0.0 |
 |[IRS1075 september 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som åtgärdar en delmängd av IRS1075 september 2016-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/irs1075-blueprint](https://aka.ms/irs1075-blueprint) . |62 |4.0.0 |
-|[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av ISO 27001:2013-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/iso27001-blueprint](https://aka.ms/iso27001-blueprint) . |53 |4.0.0 |
+|[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av ISO 27001:2013-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/iso27001-init](https://aka.ms/iso27001-init) . |53 |4.0.1 |
 |[MPAA (Motion Picture Association of America)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Det här initiativet inkluderar principer för granskning och distribution av virtuella datorer som hanterar en delmängd av MPAA-säkerhets-och rikt linje kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/mpaa-blueprint](https://aka.ms/mpaa-blueprint) . |36 |4.0.0 – för hands version |
 |[NIST SP 800-171 R2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST800-171_audit.json) |Det här initiativet innehåller principer för granskning och virtuell dator tillägg som hanterar en delmängd av NIST SP 800-171 R2-krav. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/nist800171r2-blueprint](https://aka.ms/nist800171r2-blueprint) . |77 |5.0.0 – för hands version |
 |[NIST SP 800-53 R4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/NIST80053_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av NIST SP 800-53 R4-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/nist80053-blueprint](https://aka.ms/nist80053-blueprint) . |790 |4.0.0 |

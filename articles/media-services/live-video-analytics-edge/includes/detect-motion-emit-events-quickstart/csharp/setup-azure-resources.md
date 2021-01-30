@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 729839c8e881f507e103c4644c012d8dffc5c8c6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 67d6155d35f366429bf0210f18f052d9b6187820
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956375"
+ms.locfileid: "99213783"
 ---
 I den här självstudien krävs följande Azure-resurser:
 
@@ -15,7 +15,7 @@ I den här självstudien krävs följande Azure-resurser:
 
 I den här snabb starten rekommenderar vi att du använder [installations skriptet Live Video Analytics-resurser](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) för att distribuera de nödvändiga resurserna i din Azure-prenumeration. Det gör du på följande sätt:
 
-1. Öppna [Azure Cloud Shell](https://shell.azure.com).
+1. Öppna [Azure Cloud Shell](https://ms.portal.azure.com/#cloudshell/).
 1. Om du använder Cloud Shell för första gången uppmanas du att välja en prenumeration för att skapa ett lagrings konto och en Microsoft Azure fil resurs. Välj **skapa lagring** för att skapa ett lagrings konto för din Cloud Shell sessionsinformation. Det här lagrings kontot är skilt från det konto som skriptet kommer att skapa för att använda med ditt Azure Media Services-konto.
 1. I den nedrullningsbara menyn på vänster sida av Cloud Shells fönstret väljer du **bash** som din miljö.
 

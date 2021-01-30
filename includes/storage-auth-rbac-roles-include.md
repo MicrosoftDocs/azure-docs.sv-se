@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a4a2034d44d98de9696b435c68c97a8a54a1c351
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f014ce55dc40723faf1b60f908814f9fa0428b8e
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027167"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213580"
 ---
 Azure tillhandahåller följande inbyggda Azure-roller för att auktorisera åtkomst till blob-och Queue-data med hjälp av Azure AD och OAuth:
 
@@ -31,4 +31,4 @@ Endast roller som uttryckligen definierats för data åtkomst tillåter ett säk
 Detaljerad information om inbyggda Azure-roller för Azure Storage för både data tjänsterna och hanterings tjänsten finns i avsnittet **lagring** i [inbyggda Azure-roller för Azure RBAC](../articles/role-based-access-control/built-in-roles.md#storage). Dessutom finns information om de olika typerna av roller som ger behörigheter i Azure i de klassiska rollerna för [prenumerationer, Azure-roller och Azure AD-roller](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 
 > [!IMPORTANT]
-> Det kan ta upp till fem minuter innan Azures roll tilldelningar sprids.
+> Det kan ta upp till 30 minuter innan Azure-roll tilldelningar sprids.
