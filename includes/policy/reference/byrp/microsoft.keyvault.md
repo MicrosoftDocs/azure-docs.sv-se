@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 50b47e5f1a5ba0b663b585b88156d596e5765b66
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bb1a4618fad4ef9ff852374aae74790258ba2a72
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806602"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097400"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98806602"
 |[Nycklar ska inte vara aktiva längre än det angivna antalet dagar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26e4b24-cf98-4c67-b48b-5a25c4c69eb9) |Ange antalet dagar som en nyckel ska vara aktiv. Nycklar som används under en längre tids period ökar sannolikheten för att en angripare kan kompromettera nyckeln. Som en bra säkerhets rutin kontrollerar du att dina nycklar inte har varit aktiva längre än två år. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ActivePeriod.json) |
 |[Nycklar som använder Elliptic Curve-kryptografi ska ha de angivna kurv namnen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fff25f3c8-b739-4538-9d07-3d6d25cfb255) |Nycklar som backas upp av Elliptic Curve-kryptografi kan ha olika kurv namn. Vissa program är bara kompatibla med vissa Elliptic kurv nycklar. Använd de typer av Elliptic som du kan skapa i din miljö. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_EC_AllowedCurveNames.json) |
 |[Nycklar som använder RSA-kryptografi måste ha en angiven minsta nyckel storlek](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82067dbb-e53b-4e06-b631-546d197452d9) |Ange den minsta tillåtna nyckel storleken för användning med dina nyckel valv. Användning av RSA-nycklar med små nyckel storlekar är inte en säker metod och uppfyller inte många krav för bransch certifiering. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_RSA_MinimumKeySize.json) |
-|[Den privata slut punkten måste konfigureras för Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |Via privat länk kan du ansluta Key Vault till dina Azure-resurser utan att skicka trafik via det offentliga Internet. Privat länk ger skydd mot djupgående skydd mot data exfiltrering. |Granskning, inaktive rad |[1.0.2 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
+|[Den privata slut punkten måste konfigureras för Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |Via privat länk kan du ansluta Key Vault till dina Azure-resurser utan att skicka trafik via det offentliga Internet. Privat länk ger skydd mot djupgående skydd mot data exfiltrering. |Granska, neka, inaktive rad |[1.1.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
 |[Hemligheter ska ha en innehålls typ uppsättning](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F75262d3e-ba4a-4f43-85f8-9f72c090e5e3) |En innehålls typs tagg hjälper till att identifiera om en hemlighet är ett lösen ord, en anslutnings sträng osv. Olika hemligheter har olika rotations krav. Taggen för innehålls typen ska anges för hemligheter. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ContentTypeSet.json) |
 |[Hemligheterna ska ha mer än det angivna antalet dagar före förfallo datum](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0eb591a-5e70-4534-a8bf-04b9c489584a) |Om en hemlighet är för nära förfallo datum kan en organisations fördröjning för att rotera hemligheten leda till ett avbrott. Hemligheter bör roteras vid ett visst antal dagar före förfallo datum för att ge tillräckligt med tid för att reagera på ett haveri. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_Expiry_ByDays.json) |
 |[Hemligheter ska ha den angivna maximala giltighets perioden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F342e8053-e12e-4c44-be01-c3c2f318400f) |Hantera organisationens krav på efterlevnad genom att ange den maximala tid i dagar som en hemlighet kan vara giltig i ditt nyckel valv. |Granska, neka, inaktive rad |[1.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ValidityPeriod.json) |

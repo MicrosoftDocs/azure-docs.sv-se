@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059848"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097547"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Skapa ett projekt med data etiketter och exportera etiketter 
 
@@ -24,7 +24,7 @@ Lär dig hur du skapar och kör data märknings projekt för att tagga data i Az
 ## <a name="data-labeling-capabilities"></a>Funktioner för data etiketter
 
 > [!Important]
-> Det finns för närvarande stöd för att märka projekt med bild klassificering och objekt identifiering. Dessutom måste data avbildningarna vara tillgängliga i ett Azure Blob-datalager. (Om du inte har ett befintligt data lager kan du ladda upp bilder när projektet skapas.)
+> Data avbildningar måste vara tillgängliga i ett Azure Blob-datalager. (Om du inte har ett befintligt data lager kan du ladda upp bilder när projektet skapas.)
 
 Azure Machine Learning data etiketter är en central plats där du kan skapa, hantera och övervaka projekt med etiketter:
  - Koordinera data, etiketter och team medlemmar för att effektivt hantera etikett uppgifter. 
@@ -53,6 +53,11 @@ Välj **Lägg till projekt** om du vill skapa ett projekt. Ge projektet ett läm
 * Välj **bild klassificering flera klasser** för projekt när du bara vill använda en *enda etikett* från en uppsättning etiketter till en bild.
 * Välj **bild klassificering med flera** etiketter för projekt om du vill tillämpa *en eller flera* etiketter från en uppsättning etiketter till en bild. Till exempel kan ett foto av en hund vara märkt med både *hund* och *dagtid*.
 * Välj **objekt identifiering (markerings ram)** för projekt när du vill tilldela en etikett och en avgränsnings ruta till varje objekt i en bild.
+* Välj **instans segmentering (Polygon) (för hands version)** för projekt när du vill tilldela en etikett och rita en polygon runt varje objekt i en bild.
+
+> [!IMPORTANT]
+> Instans segmentering (Polygon) finns i offentlig för hands version.
+> För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Välj **Nästa** när du är redo att fortsätta.
 
@@ -141,6 +146,7 @@ För avgränsnings rutor är viktiga frågor:
 
 På sidan **ml-stöd för etiketter** kan du utlösa automatiska maskin inlärnings modeller för att påskynda etiketten. I början av ditt projekt som du har märkt, sorteras bilderna i en slumpmässig ordning för att minska potentiell kompensation. Men eventuella förskjutningar som förekommer i data uppsättningen visas i den tränade modellen. Om till exempel 80% av dina avbildningar är av en enda klass kommer cirka 80% av de data som används för att träna modellen att vara av klassen. Den här utbildningen omfattar inte aktiv inlärning.
 
+
 Välj *Enable ml-etikettering* och ange en GPU för att aktivera assisterad märkning, som består av två faser:
 * Klustring
 * För markering
@@ -150,7 +156,7 @@ Det exakta antalet etiketterade bilder som krävs för att kunna starta assister
 Eftersom de slutliga etiketterna fortfarande är beroende av inmatade Labeler, kallas den här tekniken ibland *mänsklig i slingan* .
 
 > [!NOTE]
-> ML data märkning för att hjälpa dig stöder inte standard lagrings konton som skyddas bakom ett [virtuellt nätverk](how-to-network-security-overview.md). Du måste använda ett lagrings konto som inte är standard för data märkning med ML-stöd. Lagrings kontot som inte är standard kan skyddas bakom det virtuella nätverket. 
+> ML data märkning för att hjälpa dig stöder inte standard lagrings konton som skyddas bakom ett [virtuellt nätverk](how-to-network-security-overview.md). Du måste använda ett lagrings konto som inte är standard för data märkning med ML-stöd. Lagrings kontot som inte är standard kan skyddas bakom det virtuella nätverket.
 
 ### <a name="clustering"></a>Klustring
 
