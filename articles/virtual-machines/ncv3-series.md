@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: aae2c8b51fabf22419028a17f5bbce6c97530ed5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b8eeb06b75ba0e0bdaf19957699ad638c6937891
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917310"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094766"
 ---
 # <a name="ncv3-series"></a>NCv3-serien
 
@@ -24,6 +24,7 @@ Virtuella datorer i NCv3-serien drivs av NVIDIA Tesla V100-GPU: er. Dessa GPU: e
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 NVIDIA NVLink-Interconnect: stöds inte<br>
 
 > [!IMPORTANT]

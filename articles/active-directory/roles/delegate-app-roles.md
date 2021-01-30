@@ -14,18 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36a29048d97798c2e1621fbdc957bde51b5a383
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740609"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071279"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegera registrerings behörigheter för app i Azure Active Directory
 
 Den här artikeln beskriver hur du använder behörigheter som beviljats av anpassade roller i Azure Active Directory (Azure AD) för att hantera dina program hanterings behov. I Azure AD kan du delegera program skapande-och hanterings behörigheter på följande sätt:
 
-- [Begränsa vem som kan skapa program](#restrict-who-can-create-applications) och hantera de program som de skapar. Som standard i Azure AD kan alla användare registrera program registreringar och hantera alla aspekter av program som de skapar. Detta kan begränsas till att endast tillåta valda personer som har behörighet.
+- [Begränsa vem som kan skapa program](#restrict-who-can-create-applications) och hantera de program som de skapar. Som standard i Azure AD kan alla användare registrera program och hantera alla aspekter av program som de skapar. Detta kan begränsas till att endast tillåta valda personer som har behörighet.
 - [Tilldela en eller flera ägare till ett program](#assign-application-owners). Detta är ett enkelt sätt att ge någon möjlighet att hantera alla aspekter av Azure AD-konfigurationen för ett enskilt program.
 - [Tilldela en inbyggd administrativ roll](#assign-built-in-application-admin-roles) som beviljar åtkomst för att hantera konfiguration i Azure AD för alla program. Detta är det rekommenderade sättet att ge IT-experter åtkomst till att hantera omfattande program konfigurations behörigheter utan att bevilja åtkomst till att hantera andra delar av Azure AD som inte är relaterade till program konfigurationen.
 - [Skapa en anpassad roll](#create-and-assign-a-custom-role-preview) som definierar mycket specifika behörigheter och tilldela den till någon antingen till omfånget för ett enskilt program som en begränsad ägare, eller i katalogens omfattning (alla program) som en begränsad administratör.
@@ -34,7 +34,7 @@ Det är viktigt att överväga att bevilja åtkomst med hjälp av någon av ovan
 
 ## <a name="restrict-who-can-create-applications"></a>Begränsa vem som kan skapa program
 
-Som standard i Azure AD kan alla användare registrera program registreringar och hantera alla aspekter av program som de skapar. Alla har också möjlighet att samtycka till appar som har åtkomst till företags information för deras räkning. Du kan välja att selektivt bevilja dessa behörigheter genom att ställa in globala växlar till "nej" och lägga till de valda användarna i rollen Application Developer.
+Som standard i Azure AD kan alla användare registrera program och hantera alla aspekter av program som de skapar. Alla har också möjlighet att samtycka till appar som har åtkomst till företags information för deras räkning. Du kan välja att selektivt bevilja dessa behörigheter genom att ställa in globala växlar till "nej" och lägga till de valda användarna i rollen Application Developer.
 
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Så här inaktiverar du standard möjligheten att skapa program registreringar eller medgivande till program
 

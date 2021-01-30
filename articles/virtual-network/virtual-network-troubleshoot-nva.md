@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: fe4c17b74cd786d03bd19257dea190a21ecaa9f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219291"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095666"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problem med virtuella nätverks installationer i Azure
 
@@ -30,7 +30,7 @@ Det kan uppstå problem med virtuella datorer eller VPN-anslutningar och fel vid
 Teknisk support för NVA från tredje part och deras integrering med Azure-plattformen tillhandahålls av NVA-leverantören.
 
 > [!NOTE]
-> Om du har en anslutning eller ett problem med routning som omfattar en NVA bör du [kontakta leverantören av NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) direkt.
+> Om du har en anslutning eller ett problem med routning som omfattar en NVA bör du [kontakta leverantören av NVA](https://mskb.pkisolutions.com/kb/2984655) direkt.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -52,7 +52,7 @@ Teknisk support för NVA från tredje part och deras integrering med Azure-platt
 
 ## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Kontrol lera minimi kraven för konfiguration för NVA på Azure
 
-Varje NVA har grundläggande konfigurations krav för att fungera korrekt på Azure. Följande avsnitt innehåller anvisningar för att kontrol lera de grundläggande konfigurationerna. [Kontakta leverantören av NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)om du vill ha mer information.
+Varje NVA har grundläggande konfigurations krav för att fungera korrekt på Azure. Följande avsnitt innehåller anvisningar för att kontrol lera de grundläggande konfigurationerna. [Kontakta leverantören av NVA](https://mskb.pkisolutions.com/kb/2984655)om du vill ha mer information.
 
 **Kontrol lera om IP-vidarebefordring är aktiverat på NVA**
 
@@ -112,17 +112,17 @@ Använd PowerShell
     ```console
    netstat -an | grep -i listen
     ```
-2. Om du inte ser TCP-porten som används av NVA-programvaran som visas i resultatet måste du konfigurera programmet på NVA och den virtuella datorn för att lyssna och reagera på trafik som når dessa portar. [Kontakta NVA-leverantören om du behöver hjälp](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Om du inte ser TCP-porten som används av NVA-programvaran som visas i resultatet måste du konfigurera programmet på NVA och den virtuella datorn för att lyssna och reagera på trafik som når dessa portar. [Kontakta NVA-leverantören om du behöver hjälp](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="check-nva-performance"></a>Kontrol lera NVA-prestanda
 
 ### <a name="validate-vm-cpu"></a>Verifiera VM-CPU
 
-Om CPU-användningen går nära 100 procent kan det uppstå problem som påverkar nätverks paketets droppar. Din virtuella dator rapporterar Genomsnittlig CPU för ett särskilt tidsintervall i Azure Portal. Under en processor ökning bör du undersöka vilken process på den virtuella gäst datorn som orsakar den höga processorn och minimera den, om möjligt. Du kan också behöva ändra storlek på den virtuella datorn till en större SKU-storlek eller, om du använder skalnings uppsättning för virtuell dator, öka antalet instanser eller ange värdet Auto Scale för CPU-användning. För något av dessa problem kan [du kontakta NVA-leverantören om du behöver hjälp](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Om CPU-användningen går nära 100 procent kan det uppstå problem som påverkar nätverks paketets droppar. Din virtuella dator rapporterar Genomsnittlig CPU för ett särskilt tidsintervall i Azure Portal. Under en processor ökning bör du undersöka vilken process på den virtuella gäst datorn som orsakar den höga processorn och minimera den, om möjligt. Du kan också behöva ändra storlek på den virtuella datorn till en större SKU-storlek eller, om du använder skalnings uppsättning för virtuell dator, öka antalet instanser eller ange värdet Auto Scale för CPU-användning. För något av dessa problem kan [du kontakta NVA-leverantören om du behöver hjälp](https://mskb.pkisolutions.com/kb/2984655).
 
 ### <a name="validate-vm-network-statistics"></a>Verifiera statistik för virtuella dator nätverk
 
-Om det virtuella dator nätverket använder toppar eller visar perioder med hög användning, kan du också behöva öka SKU-storleken på den virtuella datorn för att få högre genomflöde-funktioner. Du kan också distribuera om den virtuella datorn med accelererat nätverk aktiverat. Om du vill kontrol lera om NVA stöder accelererad nätverksfunktioner [kontaktar du NVA-leverantören om](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)du behöver hjälp.
+Om det virtuella dator nätverket använder toppar eller visar perioder med hög användning, kan du också behöva öka SKU-storleken på den virtuella datorn för att få högre genomflöde-funktioner. Du kan också distribuera om den virtuella datorn med accelererat nätverk aktiverat. Om du vill kontrol lera om NVA stöder accelererad nätverksfunktioner [kontaktar du NVA-leverantören om](https://mskb.pkisolutions.com/kb/2984655)du behöver hjälp.
 
 ## <a name="advanced-network-administrator-troubleshooting"></a>Avancerad nätverks administratör fel sökning
 
@@ -146,4 +146,4 @@ Avbilda en samtidig nätverks spårning på den virtuella käll datorn, NVA och 
 
 Om du inte ser inkommande paket till spårningen på den virtuella datorn på den virtuella datorn, finns det troligen ett NSG-eller UDR som stör eller NVA vägvals tabeller är felaktiga.
 
-Om du ser att paket, men inget svar, kommer in kan du behöva åtgärda problem med ett program på den virtuella datorn eller med brandväggen. För något av dessa problem kan [du kontakta NVA-leverantören om du behöver hjälp](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Om du ser att paket, men inget svar, kommer in kan du behöva åtgärda problem med ett program på den virtuella datorn eller med brandväggen. För något av dessa problem kan [du kontakta NVA-leverantören om du behöver hjälp](https://mskb.pkisolutions.com/kb/2984655).

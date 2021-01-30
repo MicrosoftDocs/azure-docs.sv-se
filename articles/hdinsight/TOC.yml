@@ -278,6 +278,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager-mall
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Inbyggda Azure Policy-program
+          href: ./policy-reference.md
     - name: Resurser
       items:
         - name: Versioner

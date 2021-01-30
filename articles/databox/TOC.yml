@@ -76,6 +76,8 @@
               items:
                 - name: Säkerhetsbaslinje
                   href: security-baseline.md
+                - name: Säkerhetskontroller av Azure Policy
+                  href: ./security-controls-policy.md
                 - name: Granska säkerhet
                   href: data-box-security.md
             - name: 'Överföra ACL:er och metadata'

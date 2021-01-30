@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 534c355961bb87a816f5ba50a3cc2d397e544a15
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684193"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072362"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-hanterad Azure Active Directory-integrering
 
@@ -28,7 +28,7 @@ Läs mer om Azure AD-integrerings flödet i [dokumentationen för Azure Active D
 * icke-Kubernetes RBAC-aktiverade kluster stöds inte för AKS-hanterad Azure AD-integrering
 * Det finns inte stöd för att ändra Azure AD-klienten som är associerad med AKS-hanterad Azure AD-integrering
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure CLI-version 2.11.0 eller senare
 * Kubectl med en lägsta version av [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) eller [kubelogin](https://github.com/Azure/kubelogin)
@@ -46,7 +46,6 @@ kubelogin --version
 ```
 
 Använd [de här anvisningarna](https://kubernetes.io/docs/tasks/tools/install-kubectl/) för andra operativ system.
-
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -188,6 +187,50 @@ Följ stegen [nedan][access-cluster]om du vill ha åtkomst till klustret.
 
 Det finns vissa icke-interaktiva scenarier, t. ex. kontinuerliga integrerings pipeliner, som inte är tillgängliga med kubectl. Du kan använda [`kubelogin`](https://github.com/Azure/kubelogin) för att få åtkomst till klustret med icke-interaktiv inloggning för tjänstens huvud namn.
 
+## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Använda villkorlig åtkomst med Azure AD och AKS
+
+När du integrerar Azure AD med ditt AKS-kluster kan du också använda [villkorlig åtkomst][aad-conditional-access] för att kontrol lera åtkomsten till klustret.
+
+> [!NOTE]
+> Villkorlig åtkomst för Azure AD är en Azure AD Premium-funktion.
+
+Utför följande steg för att skapa en exempel princip för villkorlig åtkomst som ska användas med AKS:
+
+1. Sök efter och välj Azure Active Directory överst i Azure Portal.
+1. I menyn för Azure Active Directory på vänster sida väljer du *företags program*.
+1. Välj *villkorlig åtkomst* på menyn för företags program på vänster sida.
+1. I menyn för villkorlig åtkomst på den vänstra sidan väljer du *principer* och sedan *ny princip*.
+    :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="Lägga till en princip för villkorlig åtkomst":::
+1. Ange ett namn för principen, till exempel *AKS-policy*.
+1. Välj *användare och grupper* och välj sedan *Välj användare och grupper* under *Inkludera* . Välj de användare och grupper där du vill tillämpa principen. I det här exemplet väljer du samma Azure AD-grupp som har administrations åtkomst till klustret.
+    :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="Välja användare eller grupper för att tillämpa principen för villkorlig åtkomst":::
+1. Välj *molnappar eller åtgärder* och klicka sedan på *ta med* Välj *appar*. Sök efter *Azure Kubernetes-tjänsten* och välj *Azure Kubernetes service AAD-Server*.
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="Välja Azure Kubernetes service AD server för att tillämpa principen för villkorlig åtkomst":::
+1. Under *Åtkomstkontroller* väljer du *Bevilja*. Välj *bevilja åtkomst* och *Kräv att enheten ska markeras som kompatibel*.
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="Välja att bara tillåta kompatibla enheter för principen för villkorlig åtkomst":::
+1. Under *Aktivera princip* väljer du *på* sedan *skapa*.
+    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="Aktivera principen för villkorlig åtkomst":::
+
+Hämta användarautentiseringsuppgifter för att komma åt klustret, till exempel:
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+Följ anvisningarna för att logga in.
+
+Använd `kubectl get nodes` kommandot för att Visa noder i klustret:
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+Följ instruktionerna för att logga in igen. Observera att det finns ett fel meddelande om att du har loggat in, men administratören kräver att enheten som begär åtkomst hanteras av Azure AD för att få åtkomst till resursen.
+
+I Azure Portal navigerar du till Azure Active Directory, väljer *företags program* under *aktivitet* Välj *inloggningar*. Observera att en post överst med *statusen* *misslyckades* och en *villkorlig åtkomst* till *lyckades*. Markera posten och välj *villkorlig åtkomst* i *detalj*. Observera att den villkorliga åtkomst principen visas.
+
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Inloggnings posten misslyckades på grund av en princip för villkorlig åtkomst":::
+
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig mer om [Azure RBAC-integrering för Kubernetes-auktorisering][azure-rbac-integration]
@@ -202,6 +245,7 @@ Det finns vissa icke-interaktiva scenarier, t. ex. kontinuerliga integrerings pi
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

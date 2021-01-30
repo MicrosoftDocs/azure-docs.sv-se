@@ -11,18 +11,18 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: d480239c0eb99ed48c13ec2fdb5b052574acc318
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092507"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095366"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Använd tjänst slut punkter och regler för virtuella nätverk för servrar i Azure SQL Database
+# <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Använda tjänstslutpunkter för virtuellt nätverk och regler för servrar i Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Virtuella nätverks regler* är en brand Väggs säkerhetsfunktion som styr om servern för dina databaser och elastiska pooler i [Azure SQL Database](sql-database-paas-overview.md) eller för dina databaser i [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) accepterar kommunikation som skickas från vissa undernät i virtuella nätverk. I den här artikeln förklaras varför virtuella nätverks regler ibland det bästa alternativet för att på ett säkert sätt tillåta kommunikation till databasen i SQL Database och Azure Synapse Analytics.
+*Virtuella nätverks regler* är en brand Väggs säkerhetsfunktion som styr om servern för dina databaser och elastiska pooler i [Azure SQL Database](sql-database-paas-overview.md) eller för din dedikerade SQL-pool (tidigare SQL DW)-databaser i [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) godkänner kommunikation som skickas från vissa undernät i virtuella nätverk. I den här artikeln förklaras varför virtuella nätverks regler ibland det bästa alternativet för att på ett säkert sätt tillåta kommunikation till databasen i SQL Database och Azure Synapse Analytics.
 
 > [!NOTE]
 > Den här artikeln gäller för både SQL Database-och Azure Synapse-analys. För enkelhetens skull refererar termen *databas* till båda databaserna i SQL Database och Azure Synapse Analytics. På samma sätt refererar alla referenser till *servern* till den [logiska SQL-Server](logical-servers.md) som är värd för SQL Database och Azure Synapse Analytics.

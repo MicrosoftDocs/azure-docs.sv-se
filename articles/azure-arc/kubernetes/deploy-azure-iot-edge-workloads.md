@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Distribuera Azure IoT Edge-arbetsbelastningar
 keywords: Kubernetes, båge, Azure, K8s, behållare
-ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103984"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091655"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Distribuera Azure IoT Edge-arbetsbelastningar (för hands version)
 
@@ -29,7 +29,7 @@ Azure-bågen och Azure IoT Edge kompletterar var and s funktioner på ett bra s�
 
 * Använd [IoT Edge support för Kubernetes](https://aka.ms/edgek8sdoc) för att distribuera det via Azure Arcs flödes operator.
 
-* Hämta filen [**Values. yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) för IoT Edge Helm-diagrammet och Ersätt **deviceConnectionString** placeholder i slutet av filen med det som anges i steg 1. Du kan ange andra alternativ för diagram installationen som stöds efter behov. Skapa ett namn område för IoT Edge arbets belastningen och skapa en hemlighet i det:
+* Hämta filen [**Values. yaml**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) för IoT Edge Helm-diagrammet och Ersätt **deviceConnectionString** placeholder i slutet av filen med det som anges i steg 1. Du kan ange andra alternativ för diagram installationen som stöds efter behov. Skapa ett namn område för IoT Edge arbets belastningen och skapa en hemlighet i det:
 
     ```
     $ kubectl create ns iotedge

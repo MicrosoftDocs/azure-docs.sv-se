@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/05/2020
+ms.date: 01/29/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879485"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090866"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -222,14 +222,9 @@ Den här administratören hanterar federationen mellan Azure AD-organisationer o
 * Azure AD-organisationer för anställda och partner: tillägget av en Federation (t. ex. med Gmail) påverkar omedelbart alla gäst inbjudningar som ännu inte har lösts in. Se [lägga till Google som en identitets leverantör för B2B-gäst användare](../external-identities/google-federation.md).
 * Azure Active Directory B2C organisationer: att lägga till en Federation (till exempel med Facebook eller en annan Azure AD-organisation) påverkar inte omedelbart slut användar flöden förrän identitets leverantören läggs till som ett alternativ i ett användar flöde (även kallat en inbyggd princip). Se [Konfigurera en Microsoft-konto som en identitets leverantör](../../active-directory-b2c/identity-provider-microsoft-account.md) för ett exempel. Om du vill ändra användar flöden krävs den begränsade rollen "B2C User Flow Administrator".
 
-### <a name="global-administrator--company-administrator"></a>[Global administratör/företags administratör](#company-administrator-permissions)
+### <a name="global-administrator"></a>[Global administratör](#global-administrator-permissions)
 
-Användare med den här rollen har åtkomst till alla administrativa funktioner i Azure Active Directory, samt tjänster som använder Azure Active Directory identiteter som Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online och Skype för företag – online. Dessutom kan globala administratörer [öka sin åtkomst](../../role-based-access-control/elevate-access-global-admin.md) för att hantera alla Azure-prenumerationer och hanterings grupper. Detta gör att globala administratörer får fullständig åtkomst till alla Azure-resurser med respektive Azure AD-klient. Den person som registrerar sig för Azure AD-organisationen blir global administratör. Det kan finnas mer än en global administratör på ditt företag. Globala administratörer kan återställa lösenordet för alla användare och alla andra administratörer.
-
-> [!NOTE]
-> I Microsoft Graph API och Azure AD PowerShell identifieras rollen som "företags administratör". Det är "global administratör" i [Azure Portal](https://portal.azure.com).
->
->
+Användare med den här rollen har åtkomst till alla administrativa funktioner i Azure Active Directory, samt tjänster som använder Azure Active Directory identiteter som Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online och Skype för företag – online. Dessutom kan globala administratörer [öka sin åtkomst](../../role-based-access-control/elevate-access-global-admin.md) för att hantera alla Azure-prenumerationer och hanterings grupper. Detta gör det möjligt för globala administratörer att få fullständig åtkomst till alla Azure-resurser med respektive Azure AD-klient. Den person som registrerar sig för Azure AD-organisationen blir global administratör. Det kan finnas mer än en global administratör på ditt företag. Globala administratörer kan återställa lösen ordet för alla användare och alla andra administratörer.
 
 ### <a name="global-reader"></a>[Global läsare](#global-reader-permissions)
 
@@ -326,7 +321,7 @@ Användare med en modern Commerce-användargrupp har vanligt vis administratörs
 **När tilldelas den moderna Commerce användar rollen?**
 
 * **Självbetjänings köp i Microsoft 365 administrations Center** – självbetjänings köp ger användarna möjlighet att prova nya produkter genom att köpa eller registrera sig för dem på egen hand. Dessa produkter hanteras i administrations centret. Användare som gör ett självbetjänings köp tilldelas en roll i handels systemet och den ständiga Commerce användar rollen så att de kan hantera sina inköp i administrations centret. Administratörer kan blockera självbetjänings köp (för Power BI, Power Apps, energi automatisering) via [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Mer information finns i [Vanliga frågor och svar om självbetjäningsköp](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
-* **Köp från Microsofts kommersiella marknads platser**  – på liknande sätt som självbetjänings köp, när en användare köper en produkt eller tjänst från Microsoft AppSource eller Azure Marketplace, tilldelas den moderna Commerce-användar rollen om de inte har rollen som global administratör eller fakturerings administratör. I vissa fall kan användarna blockeras från att göra dessa inköp. Mer information finns på [Microsofts kommersiella marknads platser](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
+* **Köp från Microsofts kommersiella marknads platser**  – på liknande sätt som självbetjänings köp, när en användare köper en produkt eller tjänst från Microsoft AppSource eller Azure Marketplace, tilldelas den ständiga handels användar rollen om de inte har rollen som global administratör eller fakturerings administratör. I vissa fall kan användarna blockeras från att göra dessa inköp. Mer information finns på [Microsofts kommersiella marknads platser](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
 * **Förslag från Microsoft**  – ett förslag är ett formellt erbjudande från Microsoft för din organisation att köpa produkter och tjänster från Microsoft. När den person som accepterar förslaget inte har rollen som global administratör eller fakturerings administratör i Azure AD, tilldelas de både en handelsbestämd roll för att slutföra förslaget och den moderna Commerce-rollen för att få åtkomst till administrations centret. När de får åtkomst till administrations centret kan de endast använda funktioner som har godkänts av sin handelsbestämd roll.
 * **Handelsrelaterade roller** – vissa användare har tilldelats handelsrelaterade roller. Om en användare inte är en global administratör eller fakturerings administratör får de en modern Commerce-användar roll så att de kan komma åt administrations centret.  
 
@@ -747,9 +742,9 @@ Fullständig åtkomst till hantering av enheter i Azure AD.
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 
-### <a name="company-administrator-permissions"></a>Företags administratörs behörighet
+### <a name="global-administrator-permissions"></a>Globala administratörs behörigheter
 
-Kan hantera alla aspekter av Azure AD och Microsoft-tjänster som använder Azure AD-identiteter. Den här rollen kallas även global administratörs roll. 
+Kan hantera alla aspekter av Azure AD och Microsoft-tjänster som använder Azure AD-identiteter.
 
 > [!NOTE]
 > Den här rollen har ytterligare behörigheter utanför Azure Active Directory. Mer information finns i roll beskrivning ovan.
@@ -1749,10 +1744,12 @@ Skapar och hanterar säkerhets händelser.
 | Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Läsa och konfigurera Microsoft Cloud App Security. |
 | Microsoft. Directory/identityProtection/allProperties/Read | Läs alla resurser i Microsoft. AAD. identityProtection. |
 | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Läs alla resurser i Microsoft. AAD. privilegedIdentityManagement. |
+| Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 | Microsoft. Intune/upplånade/allTasks | Hantera alla aspekter av Intune. |
 | Microsoft. Office365. securityComplianceCenter/uplånar/allTasks | Läsa och konfigurera säkerhets & Compliance Center. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
 | Microsoft. Windows. defenderAdvancedThreatProtection/-upplånare/Läs | Läsa och konfigurera Windows Defender Avancerat skydd. |
+
 
 ### <a name="security-reader-permissions"></a>Behörigheter för säkerhets läsare
 

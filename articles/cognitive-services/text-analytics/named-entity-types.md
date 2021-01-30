@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 77b75b1134bbc8366478b1f9f4d14e86e9684f70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 883c5a20612f4dab44c0d06776ee287b27174ab9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709896"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097311"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Entitets kategorier som stöds i API för textanalys v3
 
-Använd den här artikeln för att hitta enhets kategorier som kan returneras av den [namngivna enhets igenkänningen](how-tos/text-analytics-how-to-entity-linking.md) (ner). En för hands version av NER v 3.1 är också tillgänglig, vilket innebär att du kan identifiera personlig `PII` information () och hälso tillstånd ( `PHI` ). Du kan också klicka på fliken **hälsa** för att se en lista över kategorier som stöds i textanalys för hälso tillstånd.
+Använd den här artikeln för att hitta enhets kategorier som kan returneras av den [namngivna enhets igenkänningen](how-tos/text-analytics-how-to-entity-linking.md) (ner). NER kör en förutsägelse modell för att identifiera och kategorisera namngivna entiteter från ett indatamängds dokument.
+
+En för hands version av NER v 3.1 är också tillgänglig, vilket innebär att du kan identifiera personlig `PII` information () och hälso tillstånd ( `PHI` ). Du kan också klicka på fliken **hälsa** för att se en lista över kategorier som stöds i textanalys för hälso tillstånd. 
+
+Du kan hitta en lista med typer som returneras av version 2,1 i [migreringsguiden](migration-guide.md?tabs=named-entity-recognition)
 
 ## <a name="entity-categories"></a>Enhets kategorier
 
@@ -35,8 +39,8 @@ Använd den här artikeln för att hitta enhets kategorier som kan returneras av
 
 [!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Använda namngiven enhets igenkänning i Textanalys](how-tos/text-analytics-how-to-entity-linking.md)
+_ [Hur du använder namngiven entitets igenkänning i textanalys](how-tos/text-analytics-how-to-entity-linking.md)

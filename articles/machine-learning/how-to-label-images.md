@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060375"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096973"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Tagga bilder i ett etikett projekt 
 
@@ -63,11 +63,7 @@ Azure aktiverar knappen **Skicka** när du har taggat alla bilder på sidan. Vä
 
 När du har skickat taggar för data till handen uppdaterar Azure sidan med en ny uppsättning avbildningar från arbets kön.
 
-### <a name="assisted-machine-learning-preview"></a>Assisterad maskin inlärning (för hands version) 
-
-> [!IMPORTANT]
-> Assisterad maskin inlärning är för närvarande en offentlig för hands version.
-> För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="assisted-machine-learning"></a>Assisterad maskin inlärning
 
 Machine Learning-algoritmer kan utlösas. Om dessa algoritmer är aktiverade i projektet kan du se följande:
 
@@ -76,6 +72,13 @@ Machine Learning-algoritmer kan utlösas. Om dessa algoritmer är aktiverade i p
 * Vid ett senare tillfälle kan du se uppgifter som är **förmärkta** bredvid projekt namnet.  Bilderna visas sedan med en föreslagen etikett som kommer från en maskin inlärnings klassificerings modell. Ingen Machine Learning-modell har 100% noggrannhet. Vi använder bara bilder för vilka modellen är säker, men dessa bilder kan fortfarande vara felaktigt märkta.  När du ser dessa etiketter korrigerar du eventuella fel etiketter innan du skickar in sidan.  
 
 * För objekt identifierings modeller kan du se avgränsnings rutor och etiketter som redan finns.  Korrigera eventuella fel innan du skickar in sidan.
+
+* För segment modeller kan du se polygoner och etiketter som redan finns.  Korrigera eventuella fel innan du skickar in sidan. 
+
+    > [!IMPORTANT]
+    > Funktioner som listas med (för hands version) finns i offentlig för hands version.   
+    > För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 I synnerhet i ett etikett projekt kan Machine Learning-modellen bara vara tillräckligt exakt för att förmärka en liten del av avbildningarna. När de här bilderna har märkts, kommer etiketts projektet att återgå till manuell etikettering för att samla in mer data för nästa runda av modell träning. Med tiden blir modellen mer säker på en högre andel av avbildningarna, vilket leder till fler förmärknings uppgifter senare i projektet.
 

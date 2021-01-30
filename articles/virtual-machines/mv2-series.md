@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 0c279916eb25c5ffe0b0b655818dd1a07849e582
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917479"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091722"
 ---
 # <a name="mv2-series"></a>Mv2-serien
 
@@ -27,6 +27,7 @@ Mv2 för virtuella datorer i-serien Intel® Hyper-Threading-teknik
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Skrivningsaccelerator](./how-to-enable-write-accelerator.md): stöds<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 |Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Maximalt genomflöde för cachelagring och temporär lagring: IOPS / Mbit/s (cachestorlek i GiB) | Maximalt icke cachelagrat diskgenomflöde: IOPS / Mbit/s | Maximalt antal nätverkskort | Förväntad nätverks bandbredd (Mbit/s) |

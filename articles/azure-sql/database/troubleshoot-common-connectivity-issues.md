@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791366"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093765"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Felsök tillfälliga anslutnings fel i SQL Database och SQL-hanterad instans
 
@@ -31,7 +31,7 @@ Den här artikeln beskriver hur du kan förhindra, felsöka, diagnostisera och m
 
 Ett tillfälligt fel, som även kallas ett tillfälligt fel, har en underliggande orsak som snart löser sig själv. En tillfällig orsak till tillfälliga fel är när Azure-systemet snabbt byter maskin varu resurser för att få bättre belastnings utjämning för olika arbets belastningar. De flesta av dessa omkonfigurations händelser slutförs på mindre än 60 sekunder. Under den här tids perioden för omkonfiguration kan du ha problem med att ansluta till databasen i SQL Database. Program som ansluter till din databas bör byggas för att förvänta sig dessa tillfälliga fel. Hantera dem genom att implementera logik för omprövning i koden i stället för att visa dem till användare som program fel.
 
-Om ditt klient program använder ADO.NET, meddelas ditt program om det tillfälliga felet genom Throw of **SqlException** .
+Om ditt klient program använder ADO.NET, meddelas ditt program om det tillfälliga felet genom Throw of **SqlException**.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -126,7 +126,7 @@ För att göra det här testet användbart identifierar programmet en körnings 
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>.NET SqlConnection-parametrar för anslutnings försök
 
-Om klient programmet ansluter till databasen i SQL Database med hjälp av .NET Framework Class **system. data. SqlClient. SQLConnection** , använder du .NET 4.6.1 eller senare (eller .net Core) så att du kan använda funktionen för att ansluta igen. Mer information om funktionen finns i [egenskapen SQLConnection. ConnectionString](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
+Om klient programmet ansluter till databasen i SQL Database med hjälp av .NET Framework Class **system. data. SqlClient. SQLConnection**, använder du .NET 4.6.1 eller senare (eller .net Core) så att du kan använda funktionen för att ansluta igen. Mer information om funktionen finns i [egenskapen SQLConnection. ConnectionString](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -134,9 +134,9 @@ Om klient programmet ansluter till databasen i SQL Database med hjälp av .NET F
 
 När du skapar [anslutnings strängen](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) för **SQLConnection** -objektet koordinerar du värdena bland följande parametrar:
 
-- **ConnectRetryCount** : &nbsp; &nbsp; standardvärdet är 1. Intervallet är 0 till 255.
-- **ConnectRetryInterval** : &nbsp; &nbsp; standardvärdet är 10 sekunder. Intervallet är 1 till 60.
-- **Tids gräns för anslutning** : &nbsp; &nbsp; standardvärdet är 15 sekunder. Intervallet är 0 till 2147483647.
+- **ConnectRetryCount**: &nbsp; &nbsp; standardvärdet är 1. Intervallet är 0 till 255.
+- **ConnectRetryInterval**: &nbsp; &nbsp; standardvärdet är 10 sekunder. Intervallet är 1 till 60.
+- **Tids gräns för anslutning**: &nbsp; &nbsp; standardvärdet är 15 sekunder. Intervallet är 0 till 2147483647.
 
 Mer specifikt bör dina valda värden göra följande likhets värde: anslutningstimeout = ConnectRetryCount * ConnectionRetryInterval
 
@@ -189,7 +189,7 @@ Normalt måste du se till att endast port 1433 är öppen för utgående kommuni
 Om ditt klient program till exempel finns på en Windows-dator kan du använda Windows-brandväggen på värden för att öppna port 1433.
 
 1. Öppna Kontrollpanelen.
-2. Markera **alla objekt på kontroll panelen**  >  **Windows-brandväggen**  >  **Avancerade inställningar**  >  **utgående regler**  >  **åtgärder**  >  **ny regel** .
+2. Markera **alla objekt på kontroll panelen**  >  **Windows-brandväggen**  >  **Avancerade inställningar**  >  **utgående regler**  >  **åtgärder**  >  **ny regel**.
 
 Om ditt klient program finns på en virtuell Azure-dator (VM) läser du [portarna utöver 1433 för ADO.NET 4,5 och SQL Database](adonet-v12-develop-direct-route-ports.md).
 
@@ -276,7 +276,7 @@ Enterprise Library 6 (EntLib60) erbjuder .NET-hanterade klasser som hjälp vid l
 
 Här följer några Transact-SQL SELECT-uttryck som frågar efter fel loggar och annan information.
 
-| Fråga efter logg | Beskrivning |
+| Fråga efter logg | Description |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |I [sys.event_logs](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) vyn finns information om enskilda händelser som innehåller vissa som kan orsaka tillfälliga fel eller anslutnings fel.<br/><br/>Vi rekommenderar att du korrelerar **start_time** -eller **end_times** värden med information om när ditt klient program fick problem.<br/><br/>Du måste ansluta till *huvud* databasen för att köra den här frågan. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |I [sys.database_connection_statss](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) vyn finns sammansatta antal händelse typer för ytterligare diagnostik.<br/><br/>Du måste ansluta till *huvud* databasen för att köra den här frågan. |
@@ -331,15 +331,15 @@ Enterprise Library 6 (EntLib60) är ett ramverk med .NET-klasser som hjälper di
 Omprövnings logik för hantering av tillfälliga fel är ett utrymme där EntLib60 kan hjälpa dig. Mer information finns i [4-perseverance, hemlighet för alla Triumphs: Använd program blocket för den tillfälliga fel hanteringen](/previous-versions/msp-n-p/dn440719(v=pandp.60)).
 
 > [!NOTE]
-> Käll koden för EntLib60 är tillgänglig för offentlig nedladdning från [Download Center](https://go.microsoft.com/fwlink/p/?LinkID=290898). Microsoft har inga planer på att göra ytterligare funktions uppdateringar eller underhålls uppdateringar av EntLib.
+> Käll koden för EntLib60 är tillgänglig för offentlig nedladdning från [Download Center](https://github.com/MicrosoftArchive/enterprise-library). Microsoft har inga planer på att göra ytterligare funktions uppdateringar eller underhålls uppdateringar av EntLib.
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>EntLib60-klasser för tillfälliga fel och försök igen
 
-Följande EntLib60-klasser är särskilt användbara för omprövnings logik. Alla dessa klasser finns i eller under namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling** .
+Följande EntLib60-klasser är särskilt användbara för omprövnings logik. Alla dessa klasser finns i eller under namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling**.
 
-I namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling** :
+I namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling**:
 
 - **RetryPolicy** -klass
   - **ExecuteAction** -Metod
@@ -348,7 +348,7 @@ I namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandlin
 - **ReliableSqlConnection** -klass
   - **ExecuteCommand** -Metod
 
-I namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling. TestSupport** :
+I namn området **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandling. TestSupport**:
 
 - **AlwaysTransientErrorDetectionStrategy** -klass
 - **NeverTransientErrorDetectionStrategy** -klass

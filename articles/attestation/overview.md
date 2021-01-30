@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610156"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093384"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (förhandsversion)
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
-Microsoft Azure attestering (för hands version) är en enhetlig lösning för att fjärrverifiera tillförlitlighet för en plattform och integritet för de binärfiler som körs inuti den. Tjänsten har stöd för attestering av de plattformar som stöds av Trusted Platform Module (TPM) tillsammans med möjligheten att intyga status för betrodda körnings miljöer (TEEs) som [Intel® Software Guard-tillägg](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves och [virtualiseringsbaserad säkerhet](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. 
+Microsoft Azure attestering är en enhetlig lösning för att fjärrverifiera tillförlitlighet för en plattform och integritet för de binärfiler som körs inuti den. Tjänsten har stöd för attestering av de plattformar som stöds av Trusted Platform Module (TPM) tillsammans med möjligheten att intyga status för betrodda körnings miljöer (TEEs) som [Intel® Software Guard-tillägg](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) Enclaves och [virtualiseringsbaserad säkerhet](/windows-hardware/design/device-experiences/oem-vbs) (VBS) enclaves. 
 
 Attestering är en process för att demonstrera att binärfiler för program vara korrekt instansierades på en betrodd plattform. Fjärranslutna förlitande parter kan sedan få förtroende för att endast sådan avsedd program vara körs på betrodd maskin vara. Azure-attestering är en enhetlig kund riktad tjänst och ramverk för attestering.
 

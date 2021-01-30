@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 210d5b06cfe417f581995ad5b356d62e1c35a6d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 995fe7bc81b0fae75ebf93338722c21bd12bde49
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972631"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095581"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>Självstudie: Migrera SQL Server till en Azure SQL-hanterad instans offline med DMS
 
@@ -25,7 +25,7 @@ Du kan använda Azure Database Migration Service för att migrera databaserna fr
 
 I den här självstudien migrerar du **Adventureworks2012** -databasen från en lokal instans av SQL Server till en SQL-hanterad instans med hjälp av Azure Database migration service.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 >
 > - Skapa en instans av Azure Database Migration Service.
@@ -66,7 +66,7 @@ För att slutföra den här kursen behöver du:
     >[!NOTE]
     >Som standard stöder Azure Database Migration Service bara migrering av SQL-inloggningar. Du kan dock aktivera möjligheten att migrera Windows-inloggningar genom att:
     >
-    >- Se till att den inloggade SQL-instansen har AAD-Läs behörighet, som kan konfigureras via Azure Portal av en användare med rollen **företags administratör** eller **Global administratör**.
+    >- Se till att den SQL-hanterade instansen för SQL har Läs behörighet för AAD, som kan konfigureras via Azure Portal av en användare med rollen **Global administratör** .
     >- Konfigurera Azure Database Migration Service-instansen för att aktivera migrering av Windows-användare/grupper, som har kon figurer ATS via Azure Portal, på sidan konfiguration. När du har aktiverat den här inställningen startar du om tjänsten för att ändringarna ska börja gälla.
     >
     > När tjänsten har startats om visas Windows användare/grupp-inloggningar i listan över inloggningar som är tillgängliga för migrering. För alla Windows-användare/grupp-inloggningar som du migrerar uppmanas du att ange det associerade domän namnet. Tjänst användar konton (konto med domän namns UTFÄRDAre) och virtuella användar konton (konto namn med domän namns tjänsten) stöds inte.

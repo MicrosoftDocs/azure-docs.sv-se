@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bb4ff3198764a35bebc124ee1ce99a93428693d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632575"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095963"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Felsöka problem med Azure Data Factory UX
 
@@ -28,7 +28,7 @@ Den här artikeln utforskar vanliga fel söknings metoder för Azure Data Factor
 
 ### <a name="third-party-cookies-blocked"></a>Cookies från tredje part blockeras
 
-ADF UX använder webbläsarens cookies för att spara användarsessionen och aktivera interaktiva utvecklings-och övervaknings upplevelser. Det är möjligt att webbläsaren blockerar cookies från tredje part eftersom du använder en Incognito-session eller har en ad-blockerare aktive rad. Om du blockerar cookies från tredje part kan det orsaka problem vid inläsning av portalen, till exempel att de ska omdirigeras till en tom sida https://adf.azure.com/accesstoken.html eller få ett varnings meddelande om att cookies från tredje part blockeras. Lös problemet genom att aktivera cookies-alternativ från tredje part i webbläsaren med följande steg:
+ADF UX använder webbläsarens cookies för att spara användarsessionen och aktivera interaktiva utvecklings-och övervaknings upplevelser. Det är möjligt att webbläsaren blockerar cookies från tredje part eftersom du använder en Incognito-session eller har en ad-blockerare aktive rad. Om du blockerar cookies från tredje part kan det orsaka problem vid inläsning av portalen, till exempel att de ska omdirigeras till en tom sida, https://adf.azure.com/accesstoken.html eller få ett varnings meddelande om att cookies från tredje part blockeras. Lös problemet genom att aktivera cookies-alternativ från tredje part i webbläsaren med följande steg:
 
 ### <a name="google-chrome"></a>Google Chrome
 
@@ -42,7 +42,7 @@ ADF UX använder webbläsarens cookies för att spara användarsessionen och akt
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Tillåt endast att ADF-UX använder cookies
 Om du inte vill tillåta alla cookies kan du välja att bara tillåta ADF-UX:
-1. Besök **Chrome://settings/cookies** .
+1. Besök **Chrome://settings/cookies**.
 1. Välj alternativet **Lägg till** under **platser som alltid kan använda cookies** 
 
     ![Lägg till ADF-UX till tillåtna platser i Chrome](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
@@ -63,7 +63,7 @@ Om du inte vill tillåta alla cookies kan du välja att bara tillåta ADF-UX:
 
 Om du inte vill tillåta alla cookies kan du välja att bara tillåta ADF-UX:
 
-1. Besök **Edge://Settings/Content/cookies** .
+1. Besök **Edge://Settings/Content/cookies**.
 1. Under avsnittet **Tillåt** väljer du **Lägg till** och Lägg till **ADF.Azure.com** -plats. 
 
     ![Lägg till ADF-UX till tillåtna platser i Edge](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ Om du inte vill tillåta alla cookies kan du välja att bara tillåta ADF-UX:
 
 ## <a name="connection-failed-on-adf-ux"></a>Anslutningen misslyckades på ADF-UX
 
-Ibland ser du "anslutningen misslyckades" fel på ADF-UX som liknar skärm bilden nedan efter att ha klickat på **Testa anslutning** , för **hands version** osv.
+Ibland ser du "anslutningen misslyckades" fel på ADF-UX som liknar skärm bilden nedan efter att ha klickat på **Testa anslutning**, för **hands version** osv.
 
 ![Anslutningen misslyckades](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 I så fall kan du först testa samma åtgärd med InPrivate-bläddringsläge i webbläsaren.
 
-Om det fortfarande inte fungerar går du till webbläsaren och trycker på F12 för att öppna **utvecklarverktyg** . Gå till fliken **nätverk** , markera **inaktivera cache** , försök utföra åtgärden igen och leta upp den misslyckade begäran (i rött).
+Om det fortfarande inte fungerar går du till webbläsaren och trycker på F12 för att öppna **utvecklarverktyg**. Gå till fliken **nätverk** , markera **inaktivera cache**, försök utföra åtgärden igen och leta upp den misslyckade begäran (i rött).
 
 ![Misslyckad begäran](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Leta sedan upp **värd namnet** (i det här fallet **Dpnortheurope.svc.DataFactory.Azure.com** ) från **begär ande-URL:** en för den misslyckade begäran.
+Leta sedan upp **värd namnet** (i det här fallet **Dpnortheurope.svc.DataFactory.Azure.com**) från **begär ande-URL:** en för den misslyckade begäran.
 
 Skriv **värd namnet** direkt i webbläsarens Adress fält. Om du ser 404 i webbläsaren innebär det vanligt vis att din klient sida är OK och att problemet är på sidan för ADF-tjänsten. File a Support Ticket med **aktivitets-ID: t** från fel meddelandet i ADF-UX.
 
@@ -91,7 +91,7 @@ Om inte, eller om du ser liknande fel nedan i webbläsaren, innebär detta vanli
 
 ![Fel på klient Sidan](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-Öppna **kommando tolken** och skriv **nslookup-dpnortheurope.svc.DataFactory.Azure.com** . Ett normalt svar bör se ut så här:
+Öppna **kommando tolken** och skriv **nslookup-dpnortheurope.svc.DataFactory.Azure.com**. Ett normalt svar bör se ut så här:
 
 ![Kommando svar 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 

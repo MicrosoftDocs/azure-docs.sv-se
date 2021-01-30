@@ -1,14 +1,14 @@
 ---
 title: Index för principexempel
 description: Index för inbyggda Azure Policy-program. Kategoritaggar, regelefterlevnad, Key Vault, Kubernetes, gästkonfiguration med mera.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
-ms.openlocfilehash: a7492f6b12e8adffc6ba28da750e51ecdeb1878f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ad608f594c544cc8de2d80f7cedaeeffdc2b83ea
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805576"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095748"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-exempel
 
@@ -42,6 +42,7 @@ Nedan följer inbyggda [regler för regelefterlevnad](../concepts/regulatory-com
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
 - [CMMC nivå 3](./cmmc-l3.md)
 - [HIPAA HITRUST 9.2](./hipaa-hitrust-9-2.md)
+- [ISO 27001:2013](./iso-27001.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 

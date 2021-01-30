@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836078"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092674"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect vanliga frågor och svar
 
@@ -162,8 +162,8 @@ Synkroniserade användare kan ha skapats eller hanterats lokalt. Om kontot är a
 **F: Varför matchar inte attributet userPrincipalName (UPN) i Azure AD det lokala UPN?**  
 Mer information finns i följande artiklar:
 
-* [Användar namn i Microsoft 365, Azure eller Intune matchar inte det lokala UPN eller alternativa inloggnings-ID](https://support.microsoft.com/kb/2523192)
-* [Ändringarna synkroniseras inte med Azure Active Directory Sync-verktyget när du har ändrat UPN för ett användar konto för att använda en annan federerad domän](https://support.microsoft.com/kb/2669550)
+* [Användar namn i Microsoft 365, Azure eller Intune matchar inte det lokala UPN eller alternativa inloggnings-ID](https://mskb.pkisolutions.com/kb/2523192)
+* [Ändringarna synkroniseras inte med Azure Active Directory Sync-verktyget när du har ändrat UPN för ett användar konto för att använda en annan federerad domän](https://mskb.pkisolutions.com/kb/2669550)
 
 Du kan också konfigurera Azure AD så att Synkroniseringsmotorn kan uppdatera UPN, enligt beskrivningen i [Azure AD Connect Sync service-funktioner](how-to-connect-syncservice-features.md).
 

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab2e037cc7593431a668a216fcc152c0511c410
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 4c191ac79b6cf483fcfae2ca4da74a59e78090bc
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965093"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093567"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Modell version i API för textanalys
 
-Med version 3 av API för textanalys kan du välja den modell version som används på dina data. Använd den valfria `model-version` parametern för att välja modell versionen i API-begärandena. Till exempel: `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`. Om den här parametern inte anges kommer API: et att standardvärdet vara den senaste stabila versionen. 
+Med version 3 av API för textanalys kan du välja den modell version som används på dina data. Använd den valfria `model-version` parametern för att välja modell versionen i API-begärandena. Exempel: `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`. Om den här parametern inte anges kommer API: et att standardvärdet vara den senaste stabila versionen. 
 
 ## <a name="available-versions"></a>Tillgängliga versioner
 
@@ -29,9 +29,9 @@ Använd tabellen nedan för att se vilka modell versioner som stöds av varje v�
 | Slutpunkt                        | Versioner som stöds                                     | Senaste version |
 |---------------------------------|--------------------------------------------------------|----------------|
 | `/sentiment`                    | `2019-10-01`, `2020-04-01`                             | `2020-04-01`   |
-| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`               | `2020-09-01`   |
+| `/languages`                    | `2019-10-01`, `2020-07-01`, `2020-09-01`, `2021-01-15` | `2021-01-15`   |
 | `/entities/linking`             | `2019-10-01`, `2020-02-01`                             | `2020-02-01`   |
-| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,              | `2020-04-01`   |
+| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2021-01-05`  | `2021-01-05`   |
 | `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2020-07-01`  | `2020-07-01`   |
 | `/entities/health`              | `2020-09-03`                           | `2020-09-03`   |
 | `/keyphrases`                   | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |
@@ -56,4 +56,4 @@ Du hittar information om uppdateringarna för de här modellerna i [Vad är nytt
 
 * [Översikt över Textanalys](../overview.md)
 * [Sentiment-analys](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Igenkänning av enhet](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Enhets igenkänning](../how-tos/text-analytics-how-to-entity-linking.md)

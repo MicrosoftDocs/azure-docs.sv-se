@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: bc7893746cbb98a2d4adc4dabb39e22d015ab2c8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d4f8ab190d0418fbb25dad2cd7af231eabfe0f02
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050404"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090262"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -45,7 +45,7 @@ Appen skapas som ett ASP.NET MVC-program. Den använder OWIN OpenID Connect-mell
 
 "Daemon"-komponenten i det här exemplet är en API-styrenhet `SyncController.cs` . När styrenheten anropas, hämtas en lista med användare i kundens Azure Active Directory-klient (Azure AD) från Microsoft Graph. `SyncController.cs` utlöses av ett AJAX-anrop i webb programmet. Det använder [Microsoft Authentication Library (MSAL) för .net](msal-overview.md) för att hämta en åtkomsttoken för Microsoft Graph.
 
-Eftersom appen är en app för flera klienter för Microsoft Business-kunder måste det vara ett sätt för kunderna att "registrera sig" eller "ansluta" programmet till företagets data. Under anslutnings flödet beviljar en företags administratör först *program behörigheter* direkt till appen så att den kan komma åt företagets data på ett icke-interaktivt sätt, utan förekomst av en inloggad användare. Majoriteten av logiken i det här exemplet visar hur du uppnår anslutnings flödet med hjälp av identitets Plattformens slut punkt för [Administratörs medgivande](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) .
+Eftersom appen är en app för flera klienter för Microsoft Business-kunder måste det vara ett sätt för kunderna att "registrera sig" eller "ansluta" programmet till företagets data. Under anslutnings flödet beviljar en global administratör först *program behörigheter* direkt till appen så att den kan komma åt företagets data på ett icke-interaktivt sätt, utan förekomst av en inloggad användare. Majoriteten av logiken i det här exemplet visar hur du uppnår anslutnings flödet med hjälp av identitets Plattformens slut punkt för [Administratörs medgivande](v2-permissions-and-consent.md#using-the-admin-consent-endpoint) .
 
 ![Diagrammet visar UserSync-appen med tre lokala objekt som ansluter till Azure, med start punkts-auth som hämtar en token interaktivt för att ansluta till Azure A D, AccountController får administratörs medgivande för att ansluta till Azure A D och SyncController läsa användare för att ansluta till Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 

@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a668fa9bf0ef4fd3b5451ff4c815b676fe237e51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410631"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092657"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Fel sökning av fel under synkronisering
 Fel kan uppstå när identitets data synkroniseras från Windows Server Active Directory (AD DS) till Azure Active Directory (Azure AD). Den här artikeln innehåller en översikt över olika typer av synkroniseringsfel, några möjliga scenarier som orsakar felen och potentiella sätt att åtgärda felen. Den här artikeln innehåller vanliga fel typer och kan inte omfatta alla möjliga fel.
@@ -34,7 +34,7 @@ Från den 1 september 2016 [Azure Active Directory duplicerat attribut återhäm
 Azure AD Connect utför tre typer av åtgärder från de kataloger som ska synkroniseras: import, synkronisering och export. Fel kan ske i alla åtgärder. Den här artikeln fokuserar främst på fel vid export till Azure AD.
 
 ## <a name="errors-during-export-to-azure-ad"></a>Fel under export till Azure AD
-I följande avsnitt beskrivs olika typer av synkroniseringsfel som kan inträffa under export åtgärden till Azure AD med hjälp av Azure AD-anslutningen. Den här kopplingen kan identifieras av namn formatet "contoso. *onmicrosoft.com* ".
+I följande avsnitt beskrivs olika typer av synkroniseringsfel som kan inträffa under export åtgärden till Azure AD med hjälp av Azure AD-anslutningen. Den här kopplingen kan identifieras av namn formatet "contoso. *onmicrosoft.com*".
 Fel under export till Azure AD indikerar att åtgärden \( Lägg till, uppdatera, ta bort osv. \) försökte utföras av Azure AD Connect \( Sync-motorn \) på Azure Active Directory misslyckades.
 
 ![Översikt över export fel](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
@@ -44,7 +44,7 @@ Fel under export till Azure AD indikerar att åtgärden \( Lägg till, uppdatera
 #### <a name="description"></a>Description
 * När Azure AD Connect \( Sync-motorn \) instruerar Azure Active Directory att lägga till eller uppdatera objekt, matchar Azure AD det inkommande objektet med attributet **SourceAnchor** till attributet **IMMUTABLEID** för objekt i Azure AD. Den här matchningen kallas för en **hård matchning**.
 * När Azure AD inte **hittar** något objekt som matchar attributet **immutableId** med **sourceAnchor** -attributet för det inkommande objektet, går det tillbaka till att använda proxyAddresses-och userPrincipalName-attributen för att hitta en matchning. Den här matchningen kallas för en **mjuk matchning**. Den mjuka matchningen är utformad för att matcha objekt som redan finns i Azure AD (som har en källa i Azure AD) med de nya objekt som läggs till/uppdateras under synkroniseringen och som representerar samma entitet (användare, grupper) lokalt.
-* **InvalidSoftMatch** -fel uppstår när hård matchningen inte hittar något matchande objekt **och** en mjuk matchning söker efter ett matchande objekt, men objektet har ett annat värde än *immutableId* än det inkommande objektets *SourceAnchor* , vilket tyder på att det matchande objektet har synkroniserats med ett annat objekt från lokalt Active Directory.
+* **InvalidSoftMatch** -fel uppstår när hård matchningen inte hittar något matchande objekt **och** en mjuk matchning söker efter ett matchande objekt, men objektet har ett annat värde än *immutableId* än det inkommande objektets *SourceAnchor*, vilket tyder på att det matchande objektet har synkroniserats med ett annat objekt från lokalt Active Directory.
 
 Med andra ord, för att den mjuka matchningen ska fungera, ska det objekt som ska vara Soft-matchat med inte ha något värde för *immutableId*. Om ett objekt med *immutableId* som har angetts med ett värde inte klarar hård matchning men som uppfyller kriterierna för mjuka matchningar skulle åtgärden resultera i ett InvalidSoftMatch-synkroniseringsfel.
 
@@ -78,7 +78,7 @@ Azure Active Directory schema tillåter inte att två eller flera objekt har sam
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
-5. En ny användare, **Bob Taylor** , läggs till i den lokala Active Directory.
+5. En ny användare, **Bob Taylor**, läggs till i den lokala Active Directory.
 6. Robert Taylors **userPrincipalName** anges som **bobt \@ contoso.com**.
 7. **"abcdefghijkl0123456789 = =" "** är **sourceAnchor** som beräknas av Azure AD Connect att använda Bob Taylors **objectGUID** från lokalt Active Directory. Bob Taylor-objektet har inte synkroniserats till Azure Active Directory än.
 8. Bob Taylor har följande värden för attributet proxyAddresses
@@ -148,7 +148,7 @@ Om Azure AD Connect försöker lägga till ett nytt objekt eller uppdatera ett b
    * SMTP bobs@contoso.com
    * SMTP bob.smith@contoso.com
    * **SMTP: Bob \@ contoso.com**
-4. En ny användare, **Bob Taylor** , läggs till i den lokala Active Directory.
+4. En ny användare, **Bob Taylor**, läggs till i den lokala Active Directory.
 5. Robert Taylors **userPrincipalName** anges som **bobt \@ contoso.com**.
 6. **Bob Taylor** har följande värden för attributet **proxyAddresses** i. SMTP: bobt@contoso.com II. SMTP bob.taylor@contoso.com
 7. Bob Taylor-objektet har synkroniserats med Azure AD.
@@ -195,13 +195,13 @@ För en synkroniserad användare ändrades UserPrincipalName-suffixet från en f
 4. Bobs userPrincipalName uppdateras inte och resulterar i ett "FederatedDomainChangeError"-synkroniseringsfel.
 
 #### <a name="how-to-fix"></a>Så här löser du
-Om en användares UserPrincipalName-suffix har uppdaterats från bob@ **contoso.com** till Bob \@ **fabrikam.com** , där både **contoso.com** och **fabrikam.com** är **federerade domäner** , följer du dessa steg för att åtgärda synkroniseringsfel
+Om en användares UserPrincipalName-suffix har uppdaterats från bob@**contoso.com** till Bob \@ **fabrikam.com**, där både **contoso.com** och **fabrikam.com** är **federerade domäner**, följer du dessa steg för att åtgärda synkroniseringsfel
 
 1. Uppdatera användarens UserPrincipalName i Azure AD från bob@contoso.com till bob@contoso.onmicrosoft.com . Du kan använda följande PowerShell-kommando med Azure AD PowerShell-modulen: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. Tillåt nästa synkronisering att försöka synkronisera. Den här tidssynkroniseringen kommer att lyckas och den kommer att uppdatera UserPrincipalName till Bob bob@fabrikam.com som förväntat.
 
 #### <a name="related-articles"></a>Relaterade artiklar
-* [Ändringarna synkroniseras inte med Azure Active Directory Sync-verktyget när du har ändrat UPN för ett användar konto för att använda en annan federerad domän](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [Ändringarna synkroniseras inte med Azure Active Directory Sync-verktyget när du har ändrat UPN för ett användar konto för att använda en annan federerad domän](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>Description

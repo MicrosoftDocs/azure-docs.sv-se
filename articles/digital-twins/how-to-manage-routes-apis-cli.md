@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e2623ebf929f6a24cfc977896acea514634ffb23
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054524"
+ms.locfileid: "99071706"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (API: er och CLI)
 
@@ -48,7 +48,7 @@ I det här avsnittet beskrivs hur du skapar dessa slut punkter med hjälp av Azu
 
 ### <a name="create-the-endpoint"></a>Skapa slut punkten
 
-När du har skapat slut punkts resurserna kan du använda dem för en Azure digital-slutpunkt. I följande exempel visas hur du skapar slut punkter med hjälp av `az dt endpoint create` kommandot för [Azure Digitals flätat CLI](how-to-use-cli.md). Ersätt plats hållarna i kommandona med information om dina egna resurser.
+När du har skapat slut punkts resurserna kan du använda dem för en Azure digital-slutpunkt. I följande exempel visas hur du skapar slut punkter med hjälp av kommandot [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) för [Azure Digitals flätat CLI](how-to-use-cli.md). Ersätt plats hållarna i kommandona med information om dina egna resurser.
 
 Så här skapar du en Event Grid slut punkt:
 
@@ -56,21 +56,39 @@ Så här skapar du en Event Grid slut punkt:
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Så här skapar du en Event Hubs slut punkt:
+Så här skapar du en Event Hubs slut punkt (nyckelbaserad autentisering):
 ```azurecli-interactive
 az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --eventhub-resource-group <Event-Hub-resource-group> --eventhub-namespace <Event-Hub-namespace> --eventhub <Event-Hub-name> --eventhub-policy <Event-Hub-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Så här skapar du en slut punkt för Service Bus ämnet:
+Så här skapar du en Service Bus avsnitts slut punkt (nyckelbaserad autentisering):
 ```azurecli-interactive 
 az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --servicebus-resource-group <Service-Bus-resource-group-name> --servicebus-namespace <Service-Bus-namespace> --servicebus-topic <Service-Bus-topic-name> --servicebus-policy <Service-Bus-topic-policy> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
 När du har kört de här kommandona är event Grid, Event Hub eller Service Bus ämnet tillgängligt som en slut punkt i Azure Digitals, under det namn som du angav med `--endpoint-name` argumentet. Du använder vanligt vis det namnet som mål för en **händelse väg**, som du skapar [senare i den här artikeln](#create-an-event-route).
 
+#### <a name="create-an-endpoint-with-identity-based-authentication"></a>Skapa en slut punkt med Identity-baserad autentisering
+
+Du kan också skapa en slut punkt med Identity-baserad autentisering om du vill använda slut punkten med en [hanterad identitet](concepts-security.md#managed-identity-for-accessing-other-resources-preview). Det här alternativet är endast tillgängligt för Event Hub-och Service Bus-typ slut punkter (det stöds inte för Event Grid).
+
+CLI-kommandot för att skapa den här typen av slut punkt är nedan. Du behöver följande värden för att ansluta till plats hållarna i kommandot:
+* Azure-resurs-ID för Azure Digital-instansen
+* ett slut punkts namn
+* en slut punkts typ
+* slut punkts resursens namnrymd
+* namnet på händelsehubben eller Service Bus ämnet
+* platsen för Azure Digitals dubbla instansen
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Skapa en slut punkt med obeställbara meddelanden
 
 När en slut punkt inte kan leverera en händelse inom en viss tids period eller när händelsen försöker leverera händelsen ett visst antal gånger, kan den skicka den ej levererade händelsen till ett lagrings konto. Den här processen kallas för **obeställbara meddelanden**.
+
+Slut punkter med aktivering med obeställbara meddelanden kan konfigureras med Azure Digitals flätade [CLI](how-to-use-cli.md) eller [kontroll Plans-API: er](how-to-use-apis-sdks.md#overview-control-plane-apis).
 
 Mer information om obeställbara meddelanden finns i [*begrepp: händelse vägar*](concepts-route-events.md#dead-letter-events). För instruktioner om hur du konfigurerar en slut punkt med obeställbara meddelanden fortsätter du genom resten av det här avsnittet.
 
@@ -78,7 +96,7 @@ Mer information om obeställbara meddelanden finns i [*begrepp: händelse vägar
 
 Innan du anger platsen för obeställbara meddelanden måste du ha ett [lagrings konto](../storage/common/storage-account-create.md?tabs=azure-portal) med en [behållare](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) konfigurerad i ditt Azure-konto. 
 
-Du anger URL: en för den här behållaren när du skapar slut punkten senare. Platsen för obeställbara meddelanden kommer att tillhandahållas till slut punkten som en container-URL med en [SAS-token](../storage/common/storage-sas-overview.md). Token behöver `write` behörighet för mål behållaren i lagrings kontot. Den fullständigt utformade URL: en kommer att ha formatet: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` .
+Du ska ange URI: n för den här behållaren när du skapar slut punkten senare. Platsen för obeställbara meddelanden kommer att anges till slut punkten som en container-URI med en [SAS-token](../storage/common/storage-sas-overview.md). Token behöver `write` behörighet för mål behållaren i lagrings kontot. Den fullständigt formaterade **SAS-URI: n för obeställbara meddelanden** är i formatet: `https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>` .
 
 Följ stegen nedan för att konfigurera de här lagrings resurserna på ditt Azure-konto för att förbereda för att konfigurera slut punkts anslutningen i nästa avsnitt.
 
@@ -99,25 +117,44 @@ Följ stegen nedan för att konfigurera de här lagrings resurserna på ditt Azu
 
     :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kopiera SAS-token som ska användas i hemligheten för obeställbara meddelanden." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
     
-#### <a name="configure-the-endpoint"></a>Konfigurera slut punkten
+#### <a name="create-the-dead-letter-endpoint"></a>Skapa slut punkten för obeställbara meddelanden
 
-Om du vill skapa en slut punkt som har aktive rad bokstav aktive rad kan du skapa slut punkten med hjälp av Azure Resource Manager API: er. 
+Om du vill skapa en slut punkt där obeställbara meddelanden har Aktiver ATS lägger du till följande död bokstavs parameter i kommandot [AZ DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) för [Azure Digitals CLI](how-to-use-cli.md).
 
-1. Använd först [Azure Resource Manager API-dokumentationen](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) för att ställa in en begäran om att skapa en slut punkt och fyll i de obligatoriska parametrarna för begäran. 
+Värdet för parametern är den SAS- **URI för obeställbara meddelanden** som skapats av det lagrings konto namn, behållare namn och SAS-token som du samlade in i [föregående avsnitt](#set-up-storage-resources). Den här parametern skapar slut punkten med nyckelbaserad autentisering.
 
-2. Lägg sedan till ett `deadLetterSecret` fält i Properties-objektet i **bröd texten** i begäran. Ange det här värdet enligt mallen nedan, vilket är en URL från lagrings kontots namn, behållar namn och SAS-token som du samlade in i [föregående avsnitt](#set-up-storage-resources).
-      
-  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+```azurecli
+--deadletter-sas-uri https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>
+```
 
-3. Skicka begäran om att skapa slut punkten.
+Lägg till den här parametern i slutet av kommandona för att skapa slut punkter från avsnittet [*skapa slut punkten*](#create-the-endpoint) tidigare för att skapa en slut punkt av önskad typ som har aktiverat obeställbara meddelanden.
 
-Mer information om att strukturera den här begäran finns i Azure Digitals REST API-dokumentationen: [endpoints-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Du kan också skapa slut punkter för obeställbara meddelanden med hjälp av [Azure Digitals kontroll Plans-API: er](how-to-use-apis-sdks.md#overview-control-plane-apis) i stället för cli. Det gör du genom att läsa [DigitalTwinsEndpoint-dokumentationen](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) för att se hur du strukturerar begäran och lägger till parametrarna för obeställbara meddelanden.
 
-### <a name="message-storage-schema"></a>Lagrings schema för meddelanden
+#### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>Skapa en slut punkt för obeställbara meddelanden med Identity-baserad autentisering
+
+Du kan också skapa en slut punkt för obeställbara meddelanden som har identitets-baserad autentisering för att använda slut punkten med en [hanterad identitet](concepts-security.md#managed-identity-for-accessing-other-resources-preview). Det här alternativet är endast tillgängligt för Event Hub-och Service Bus-typ slut punkter (det stöds inte för Event Grid).
+
+Om du vill skapa den här typen av slut punkt använder du samma CLI-kommando från tidigare för att [skapa en slut punkt med Identity-baserad autentisering](#create-an-endpoint-with-identity-based-authentication), med ett extra fält i JSON-nyttolasten för en `deadLetterUri` .
+
+Här är de värden du behöver för att ansluta till plats hållarna i kommandot:
+* Azure-resurs-ID för Azure Digital-instansen
+* ett slut punkts namn
+* en slut punkts typ
+* slut punkts resursens namnrymd
+* namnet på händelsehubben eller Service Bus ämnet
+* **SAS URI** -information för obeställbara meddelanden: lagrings konto namn, behållar namn
+* platsen för Azure Digitals dubbla instansen
+
+```azurecli-interactive
+az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoints/<endpoint-name> --properties '{\"properties\": { \"endpointType\": \"<endpoint-type>\", \"authenticationType\": \"IdentityBased\", \"endpointUri\": \"sb://<endpoint-namespace>.servicebus.windows.net\", \"entityPath\": \"<name-of-event-hub-or-Service-Bus-topic>\", \"deadLetterUri\": \"https://<storage-account-name>.blob.core.windows.net/<container-name>\"}, \"location\":\"<instance-location>\" }' --is-full-object
+```
+
+#### <a name="message-storage-schema"></a>Lagrings schema för meddelanden
 
 När slut punkten med obeställbara meddelanden har kon figurer ATS lagras meddelanden med obeställbara meddelanden i följande format i ditt lagrings konto:
 
-`{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
+`{container}/{endpoint-name}/{year}/{month}/{day}/{hour}/{event-ID}.json`
 
 Meddelanden med obeställbara meddelanden matchar schemat för den ursprungliga händelsen som var avsedd att levereras till den ursprungliga slut punkten.
 
@@ -128,7 +165,7 @@ Här är ett exempel på ett meddelande om obeställbara meddelanden för ett [d
   "specversion": "1.0",
   "id": "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "Microsoft.DigitalTwins.Twin.Create",
-  "source": "<yourInstance>.api.<yourregion>.da.azuredigitaltwins-test.net",
+  "source": "<your-instance>.api.<your-region>.da.azuredigitaltwins-test.net",
   "data": {
     "$dtId": "<yourInstance>xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "$etag": "W/\"xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxxxxx\"",

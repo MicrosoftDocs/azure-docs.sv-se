@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6428f3eafc9d19060fb065082ea3cbe06bb74d81
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 15a5b1d9659d33ee6eb56434bbdd4322d53c99c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917022"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094728"
 ---
 # <a name="nd-series"></a>ND-serien
 
@@ -24,6 +24,7 @@ De virtuella datorerna i ND-serien är ett nytt tillägg till GPU-familjen som �
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 NVIDIA NVLink-Interconnect: stöds inte<br>
 
 > [!IMPORTANT]

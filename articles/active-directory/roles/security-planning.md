@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e38ca27606ecf04b08bd29867894ba269148260c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055254"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090798"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Skydda privilegierad åtkomst för hybrid- och molndistributioner i Azure AD
 
@@ -40,7 +40,7 @@ För att skydda privilegie rad åtkomst krävs ändringar av:
 Skydda privilegie rad åtkomst på ett sätt som hanteras och rapporteras i de Microsoft-tjänster du bryr dig om. Om du har lokala administratörs konton kan du läsa mer i rikt linjerna för lokal och hybrid privilegie rad åtkomst i Active Directory för att [skydda privilegie rad åtkomst](/windows-server/identity/securing-privileged-access/securing-privileged-access).
 
 > [!NOTE]
-> Vägledningen i den här artikeln handlar främst om funktioner i Azure Active Directory som ingår i Azure Active Directory Premium planerna P1 och P2. Azure Active Directory Premium P2 ingår i EMS E5 Suite och Microsoft 365 E5 Suite. Den här vägledningen förutsätter att din organisation redan har Azure AD Premium P2-licenser som har köpts för dina användare. Om du inte har dessa licenser kanske en del av vägledningen inte gäller för din organisation. Den globala administratören (eller den globala administratören) i den här artikeln innebär också samma sak som "företags administratör" eller "innehavaradministratör".
+> Vägledningen i den här artikeln handlar främst om funktioner i Azure Active Directory som ingår i Azure Active Directory Premium planerna P1 och P2. Azure Active Directory Premium P2 ingår i EMS E5 Suite och Microsoft 365 E5 Suite. Den här vägledningen förutsätter att din organisation redan har Azure AD Premium P2-licenser som har köpts för dina användare. Om du inte har dessa licenser kanske en del av vägledningen inte gäller för din organisation. Den globala administratören i den här artikeln innebär också samma sak som "företags administratör" eller "innehavaradministratör".
 
 ## <a name="develop-a-roadmap"></a>Utveckla en översikt
 
@@ -147,7 +147,7 @@ Om dina ursprungliga globala administratörer återanvänder sina befintliga Mic
 
 Personliga e-postkonton phished ofta av cyberhot-angripare, en risk som gör att privata e-postadresser inte är godtagbara för globala administratörs konton. Skapa dedikerade konton för varje användare med administratörs behörighet för att hjälpa till att skilja Internet risker från administrativa privilegier.
 
-* Se till att skapa separata konton för användare att utföra globala administratörs uppgifter.
+* Se till att skapa separata konton för användare som ska utföra globala administratörs uppgifter.
 * Se till att dina globala administratörer inte oavsiktligt öppnar e-post eller kör program med deras administratörs konton.
 * Se till att dessa konton har e-postmeddelandet vidarebefordras till en fungerande post låda.
 * Konton för global administratör (och andra privilegierade grupper) bör vara molnbaserade konton utan bindningar till lokala Active Directory.

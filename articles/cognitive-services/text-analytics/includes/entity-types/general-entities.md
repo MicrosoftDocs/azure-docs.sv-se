@@ -7,53 +7,817 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 630f04bf2cc9e7de6331f9d25754a20fe2327d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779869"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097295"
 ---
-Följande enhets kategorier returneras när begär Anden skickas till `/entities/recognition/general` slut punkten.
+NER-funktionen för Textanalys returnerar följande allmänna (ej identifierade) entitets kategorier. till exempel när du skickar begär anden till `/entities/recognition/general` slut punkten.
 
-| Kategori   | Underkategori | Beskrivning                          | Startar modell version                                                    | Obs! |
+
+| Kategori | Beskrivning                          |
 |------------|-------------|--------------------------------------|-------------------------------------------------------------|--------------------------------------|
-| Person     | E.t.         | Namn på personer.  | `2019-10-01`  | Returneras även av NER v 2.1 |
-| PersonType | E.t.         | Jobb typer eller roller som innehas av en person. | `2020-02-01` | |
-|Plats    | E.t.         | Naturliga och mänskliga landmärkeer, strukturer, geografiska egenskaper och geografiskt politiska enheter     |  `2019-10-01` | Returneras även av NER v 2.1 |
-|Plats     | GPE (politisk entitet)        | Städer, länder/regioner, stater.      | `2020-02-01` | |
-|Plats     | Rörande                       | Konstgjorda-strukturer. | `2020-04-01` | |
-|Plats     | Skyddade       | Geografiska och naturliga funktioner som floder, hav och Deserts. |  `2020-04-01` | |
-|Organisation  | E.t. | Företag, politiska grupper, musik band, sport klubbar, myndighets organ och offentliga organisationer.  | `2019-10-01` | Nationella objekt och religions ingår inte i den här entitetstypen. Returneras även av NER v 2.1 |
-|Organisation | Sjukdom | Medicinska företag och grupper. | `2020-04-01` |  |
-|Organisation | Börs kurs | Fond börs grupper. | `2020-04-01` | |
-| Organisation | Sport | Idrotts relaterade organisationer. | `2020-04-01` |  |
-| Händelse  | E.t. | Historiska, sociala och naturligt förekommande händelser. | `2020-02-01` |  |
-| Händelse  | Kulturella | Kulturella händelser och helgdagar. | `2020-04-01` | |
-| Händelse  | Fysiska | Naturligt förekommande händelser. | `2020-04-01` |  |
-| Händelse  | Sport | Idrotts evenemang.  | `2020-04-01` | |
-| Produkt | E.t. | Fysiska objekt av olika kategorier. | `2020-02-01` | |
-| Produkt | Dator produkter | Dator produkter. |  `2020-02-01 ` | |
-| Kvalifikation | E.t. | En funktion, kunskap eller expertis. | `2020-02-01` |  |
-| Adress | E.t. | Fullständiga post adresser.  | `2020-04-01` |  |
-| PhoneNumber | E.t. | Telefonnummer (endast USA och EU-telefonnummer). | `2019-10-01` | Returneras även av NER v 2.1 |
-| E-post | E.t. | E-postadresser. | `2019-10-01` | Returneras även av NER v 2.1 |
-| URL | E.t. | URL: er till webbplatser. | `2019-10-01` | Returneras även av NER v 2.1  |
-| IP-adress | E.t. | Nätverks-IP-adresser. | `2019-10-01` | Returneras även av NER v 2.1 |
-| DateTime | E.t. | Datum och tidpunkter på dagen. | `2019-10-01` | Returneras även av NER v 2.1 | 
-| DateTime | Datum | Kalender datum. | `2019-10-01` | Returneras även av NER v 2.1 |
-| DateTime | Tid | Tider på dagen | `2019-10-01` | Returneras även av NER v 2.1 |
-| DateTime | DateRange | Datum intervall. | `2019-10-01` | Returneras även av NER v 2.1 |
-| DateTime | TimeRange | Tidsintervall. | `2019-10-01` | Returneras även av NER v 2.1 |
-| DateTime | Varaktighet | Varaktigheter. | `2019-10-01` | Returneras även av NER v 2.1 |
-| DateTime | Ange | Ange, upprepade gånger. |  `2019-10-01` | Returneras även av NER v 2.1 |
-| Kvantitet | E.t. | Siffror och numeriska kvantiteter. | `2019-10-01` | Returneras även av NER v 2.1  |
-| Quantity | Tal | Nummer. | `2019-10-01` | Returneras även av NER v 2.1 |
-| Quantity | Procentandel | Procenttal.| `2019-10-01` | Returneras även av NER v 2.1 |
-| Quantity | Ordningstal | Ordnings tal. | `2019-10-01` | Returneras även av NER v 2.1 |
-| Quantity | Ålder | Personer. | `2019-10-01` |  Returneras även av NER v 2.1 |
-| Quantity | Valuta | Valutor. | `2019-10-01` | Returneras även av NER v 2.1 |
-| Quantity | Dimension | Dimensioner och mått. | `2019-10-01` | Returneras även av NER v 2.1 |
-| Quantity | Temperatur | Temperaturer. | `2019-10-01` | Returneras även av NER v 2.1 |
+| [Person](#category-person)     | Namn på personer.  |
+| [PersonType](#category-persontype) | Jobb typer eller roller som innehas av en person. |
+| [Plats](#category-location)    | Naturliga och mänskliga landmärkeer, strukturer, geografiska egenskaper och geografiskt politiska enheter |
+| [Organisation](#category-organization)  | Företag, politiska grupper, musik band, sport klubbar, myndighets organ och offentliga organisationer.  |
+| [Händelse](#category-event)  | Historiska, sociala och naturligt förekommande händelser. |
+| [Produkt](#category-product) | Fysiska objekt av olika kategorier. |
+| [Kvalifikation](#category-skill) | En funktion, kunskap eller expertis.  |
+| [Adress](#category-address) | Fullständiga post adresser.  |
+| [Telefonnummer](#category-phonenumber) | Telefonnummer. |
+| [E-post](#category-email) | E-postadresser. |
+| [URL](#category-url) | URL: er till webbplatser. |
+| [IP-adress](#category-ip) | Nätverks-IP-adresser. |
+| [DateTime](#category-datetime) | Datum och tidpunkter på dagen. |
+
+
+### <a name="category-person"></a>Kategori: person
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Person
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Namn på personer.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `ar`, `cs`, `da`, `nl`, `en`, `fi`, `fr`, `de`, `he`, <br> `hu`, `it`, `ja`, `ko`, `no`, `pl`, `pt-br`, `pt`-`pt`, `ru`, `es`, `sv`, `tr`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-persontype"></a>Kategori: PersonType
+
+Den här kategorin innehåller följande entitet:
+
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        PersonType
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Jobb typer eller roller som innehas av en person
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-location"></a>Kategori: plats
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Location
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Naturliga och mänskliga landmärkeer, strukturer, geografiska egenskaper och geografiskt politiska enheter.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `ar`, `cs`, `da`, `nl`, `en`, `fi`, `fr`, `de`, `he`, `hu`, `it`, `ja`, `ko`, `no`, `pl`, `pt-br`, `pt-pt`, `ru`, `es`, `sv`, `tr`   
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>Under Kategorier
+
+Entiteten i den här kategorin kan ha följande under kategorier.
+
+:::row:::
+    :::column span="":::
+        **Underkategori för entitet**
+
+        GPE (politisk entitet)
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Städer, länder/regioner, stater.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Rörande
+
+    :::column-end:::
+    :::column span="2":::
+
+        Konstgjorda-strukturer. 
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Skyddade
+
+    :::column-end:::
+    :::column span="2":::
+
+        Geografiska och naturliga funktioner som floder, hav och Deserts.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-organization"></a>Kategori: organisation
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Organisation
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Företag, politiska grupper, musik band, sport klubbar, myndighets organ och offentliga organisationer. Nationella objekt och religions ingår inte i den här entitetstypen.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `ar`, `cs`, `da`, `nl`, `en`, `fi`, `fr`, `de`, `he`, `hu`, `it`, `ja`, `ko`, `no`, `pl`, `pt-br`, `pt-pt`, `ru`, `es`, `sv`, `tr`   
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>Under Kategorier
+
+Entiteten i den här kategorin kan ha följande under kategorier.
+
+:::row:::
+    :::column span="":::
+        **Underkategori för entitet**
+
+        Sjukdom
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Medicinska företag och grupper.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Börs kurs
+
+    :::column-end:::
+    :::column span="2":::
+
+        Fond börs grupper. 
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Sport
+
+    :::column-end:::
+    :::column span="2":::
+
+        Idrotts relaterade organisationer.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-event"></a>Kategori: händelse
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Händelse
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Historiska, sociala och naturligt förekommande händelser.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`,,,,,,, `es` `fr` `de` `it` `zh-hans` `ja` `ko` `pt-pt` och `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>Under Kategorier
+
+Entiteten i den här kategorin kan ha följande under kategorier.
+
+:::row:::
+    :::column span="":::
+        **Underkategori för entitet**
+
+        Kulturella
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Kulturella händelser och helgdagar.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Fysiska
+
+    :::column-end:::
+    :::column span="2":::
+
+        Naturligt förekommande händelser.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Sport
+
+    :::column-end:::
+    :::column span="2":::
+
+        Idrotts evenemang.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-product"></a>Kategori: produkt
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Produkt
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Fysiska objekt av olika kategorier.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+
+#### <a name="subcategories"></a>Under Kategorier
+
+Entiteten i den här kategorin kan ha följande under kategorier.
+
+:::row:::
+    :::column span="":::
+        **Underkategori för entitet**
+
+        Dator produkter
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Dator produkter.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`   
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-skill"></a>Kategori: kompetens
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Kvalifikation
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        En funktion, kunskap eller expertis.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`  
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-address"></a>Kategori: adress
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Adress
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Fullständig e-postadress.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-phonenumber"></a>Kategori: telefonnummer
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        PhoneNumber
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Telefonnummer (endast USA och EU-telefonnummer).
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt` `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-email"></a>Kategori: e-post
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        E-post
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        E-postadresser.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-url"></a>Kategori: URL
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        URL
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        URL: er till webbplatser. 
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-ip"></a>Kategori: IP
+
+Den här kategorin innehåller följande entitet:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        IP-adress
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        nätverks-IP-adresser. 
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-datetime"></a>Kategori: DateTime
+
+Den här kategorin innehåller följande entiteter:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        DateTime
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Datum och tidpunkter på dagen. 
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+Entiteter i den här kategorin kan ha följande under Kategorier
+
+#### <a name="subcategories"></a>Under Kategorier
+
+Entiteten i den här kategorin kan ha följande under kategorier.
+
+:::row:::
+    :::column span="":::
+        **Underkategori för entitet**
+
+        Datum
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Kalender datum.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Tid
+
+    :::column-end:::
+    :::column span="2":::
+
+        Tider på dagen.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        DateRange
+
+    :::column-end:::
+    :::column span="2":::
+
+        Datum intervall.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        TimeRange
+
+    :::column-end:::
+    :::column span="2":::
+
+        Tidsintervall.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Varaktighet
+
+    :::column-end:::
+    :::column span="2":::
+
+        Varaktigheter.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        Ange
+
+    :::column-end:::
+    :::column span="2":::
+
+        Ange, upprepade gånger.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+:::row-end:::
+
+### <a name="category-quantity"></a>Kategori: kvantitet
+
+Den här kategorin innehåller följande entiteter:
+
+:::row:::
+    :::column span="":::
+        **Entitet**
+
+        Kvantitet
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Siffror och numeriska kvantiteter.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
+:::row-end:::
+
+#### <a name="subcategories"></a>Under Kategorier
+
+Entiteten i den här kategorin kan ha följande under kategorier.
+
+:::row:::
+    :::column span="":::
+        **Underkategori för entitet**
+
+        Antal
+
+    :::column-end:::
+    :::column span="2":::
+        **Information**
+
+        Nummer.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Dokument språk som stöds**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Procent
+
+    :::column-end:::
+    :::column span="2":::
+
+        Procenttal
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Ordnings tal
+
+    :::column-end:::
+    :::column span="2":::
+
+        Ordnings tal.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Ålder
+
+    :::column-end:::
+    :::column span="2":::
+
+        Personer.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Valuta
+
+    :::column-end:::
+    :::column span="2":::
+
+        Valutor
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Dimensioner
+
+    :::column-end:::
+    :::column span="2":::
+
+        Dimensioner och mått.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+        Temperatur
+
+    :::column-end:::
+    :::column span="2":::
+
+        Temperaturer.
+      
+    :::column-end:::
+    :::column span="2":::
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
+:::row-end:::

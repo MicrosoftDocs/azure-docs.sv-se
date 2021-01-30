@@ -1,27 +1,27 @@
 ---
-title: Hantera migreringsjobb i skala med Azure Migrate
+title: Hantera Azure Migrate projekt i stor skala med Azure Lighthouse
 description: Lär dig hur du effektivt använder Azure Migrate på delegerade kund resurser.
-ms.date: 12/4/2020
+ms.date: 01/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8e8ba21881ea5dad36ae640632b6307cd9a22a73
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788951"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093616"
 ---
-# <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Hantera migreringsjobb i skala med Azure Migrate
+# <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Hantera Azure Migrate projekt i stor skala med Azure Lighthouse
 
-Som tjänst leverantör kan du ha registrerat flera kund klienter i [Azure-Lighthouse](../overview.md). Med Azure Lighthouse kan tjänst leverantörer utföra åtgärder i skala över flera Azure Active Directory (Azure AD)-klienter samtidigt, och göra hanterings uppgifter mer effektiva.
+Det här avsnittet innehåller en översikt över hur [Azure Lighthouse](../overview.md) kan hjälpa dig att använda [Azure Migrate](../../migrate/migrate-services-overview.md) på ett skalbart sätt över flera Azure Active Directory (Azure AD)-klient organisationer.
 
-[Azure Migrate](../../migrate/migrate-services-overview.md) tillhandahåller en central hubb för att utvärdera och migrera till lokala Azure-servrar, infrastruktur, program och data. Vanligt vis måste partner som utför utvärderingar och migrering i skala för flera kunder komma åt varje kund prenumeration individuellt med hjälp av [prenumerations modellen för CSP (Cloud Solution Provider)](/partner-center/customers-revoke-admin-privileges) eller genom att [skapa en gäst användare i kund klienten](../../active-directory/external-identities/what-is-b2b.md).
+Med Azure Lighthouse kan tjänst leverantörer utföra åtgärder i skala över flera klienter samtidigt, vilket gör hanterings uppgifter mer effektiva.
+
+Azure Migrate tillhandahåller en central hubb för att utvärdera och migrera till lokala Azure-servrar, infrastruktur, program och data. Vanligt vis måste partner som utför utvärderingar och migrering i skala för flera kunder komma åt varje kund prenumeration individuellt med hjälp av [prenumerations modellen för CSP (Cloud Solution Provider)](/partner-center/customers-revoke-admin-privileges) eller genom att [skapa en gäst användare i kund klienten](../../active-directory/external-identities/what-is-b2b.md).
 
 Azure Lighthouse-integrering med Azure Migrate låter tjänst leverantörer upptäcka, utvärdera och migrera arbets belastningar för olika kunder i stor skala, samtidigt som kunderna får fullständig insyn och kontroll över sina miljöer. Via Azures delegerad resurs hantering har tjänst leverantörer en enda vy över alla Azure Migrate-projekt som de hanterar över flera kund klienter.
 
 > [!NOTE]
 > Via Azure Lighthouse kan partners utföra identifiering, utvärdering och migrering för lokala virtuella VMware-datorer, virtuella Hyper-V-datorer, fysiska servrar och AWS/GCP-instanser. Det finns två alternativ för [migrering av virtuella VMware-datorer](../../migrate/server-migrate-overview.md). För närvarande kan endast den agentbaserade metoden för migrering användas när du arbetar med ett migreringsjobb i en delegerad kund prenumeration. migrering med hjälp av en agent lös replikering stöds för närvarande inte via delegerad åtkomst till kundens omfång.
-
-Det här avsnittet innehåller en översikt över hur du använder [Azure Migrate](../../migrate/migrate-services-overview.md) på ett skalbart sätt.
 
 > [!TIP]
 > Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet gäller den här vägledningen även för [företag som använder Azure-Lighthouse för att hantera flera klienter](../concepts/enterprise.md).
@@ -72,11 +72,11 @@ Obs: du måste ändra parameter filen för att avspegla din miljö innan du dist
 
 ## <a name="partner-recognition-for-customer-migrations"></a>Partner igenkänning för kundmigreringar
 
-Som medlem i [Microsoft Partner Network](https://partner.microsoft.com)kan du länka ditt partner-ID med de autentiseringsuppgifter som används för att hantera delegerade kund resurser. Med hjälp av partner admin-länken (PAL) kan Microsoft påverka och utnyttja intäkter från Azure till din organisation baserat på de uppgifter du utför för kunder, inklusive migreringsjobb.
+Som medlem i [Microsoft Partner Network](https://partner.microsoft.com)kan du länka ditt partner-ID med de autentiseringsuppgifter som används för att hantera delegerade kund resurser. Detta gör det möjligt för Microsoft att påverka och utnyttja intäkterna från Azure till din organisation baserat på de uppgifter du utför för kunder, inklusive migreringsjobb.
 
 Mer information finns i [Länka ditt partner-ID för att se hur du påverkar delegerade resurser](partner-earned-credit.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [Azure Migrate](../../migrate/migrate-services-overview.md).
-- Lär dig mer om [hanterings upplevelser mellan flera innehavare](../concepts/cross-tenant-management-experience.md).
+- Lär dig mer om andra [hanterings upplevelser för flera innehavare](../concepts/cross-tenant-management-experience.md) som stöds av Azure Lighthouse.

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005868"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096431"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Haveriberedskap och redundansväxling av enhet för StorSimple Virtual Array via Azure-portalen
 
@@ -156,7 +156,7 @@ Utför följande steg för att återställa enheten till en virtuell StorSimple-
     1. Markera och klicka på den StorSimple-enhet som användes som mål enheten för redundansväxlingen.
     2. Gå till **inställningar > hanterings > resurser** (eller **volymer** om iSCSI-servern). På bladet **resurser** kan du Visa alla resurser (volymer) från den gamla enheten.
         ![Skärm bild av bladet enheter. Mål enheten visas med statusen online.](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Du måste [skapa ett DNS-alias](https://support.microsoft.com/kb/168322) så att alla program som försöker ansluta kan omdirigeras till den nya enheten.
+14. Du måste [skapa ett DNS-alias](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322) så att alla program som försöker ansluta kan omdirigeras till den nya enheten.
 
 ## <a name="errors-during-dr"></a>Fel under DR
 

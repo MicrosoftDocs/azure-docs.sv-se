@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b750d4cc911dc72b60974171dd884b373921fad5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734604"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093973"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azures säkerhets bas linje för Azure SignalR service
 
@@ -220,7 +220,7 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 **Vägledning**: de mest kritiska inbyggda rollerna är Azure Active Directory (Azure AD) är global administratör och den privilegierade roll administratören när användare som tilldelats dessa två roller kan delegera administratörs roller:
 
-- Global administratör/företags administratör: användare med den här rollen har åtkomst till alla administrativa funktioner i Azure AD, samt tjänster som använder Azure AD-identiteter.
+- Global administratör: användare med den här rollen har åtkomst till alla administrativa funktioner i Azure AD, samt tjänster som använder Azure AD-identiteter.
 
 - Privilegie rad roll administratör: användare med den här rollen kan hantera roll tilldelningar i Azure Active Directory (Azure AD), samt inom Azure AD Privileged Identity Management (PIM). Dessutom tillåter den här rollen hantering av alla aspekter av PIM och administrativa enheter.
 

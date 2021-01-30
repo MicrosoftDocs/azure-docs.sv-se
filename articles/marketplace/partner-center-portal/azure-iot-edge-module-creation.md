@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 62cb8db094cf1bfd7d81b1da06dd7a1b743ec045
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347490"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096448"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Skapa ett IoT Edge-modulerbjudande
 
@@ -21,7 +21,7 @@ Den här artikeln beskriver hur du skapar och publicerar en Sakernas Internet (I
 ## <a name="create-a-new-offer"></a>Skapa ett nytt erbjudande
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
-2. På menyn till vänster-navigerings väljer du **kommersiell Marketplace** -  >  **Översikt**.
+2. På menyn till vänster-navigerings väljer du **kommersiell Marketplace**-  >  **Översikt**.
 3. På sidan Översikt väljer du **+ ny erbjudande**  >  **IoT Edge modul**.
 
     ![Visar menyn till vänster-navigering.](./media/new-offer-iot-edge.png)
@@ -34,7 +34,7 @@ Den här artikeln beskriver hur du skapar och publicerar en Sakernas Internet (I
 Ange ett **erbjudande-ID**. Detta är en unik identifierare för varje erbjudande i ditt konto.
 
 - Detta ID är synligt för kunder i webb adressen för Marketplace-erbjudandet och Azure Resource Manager mallar, om tillämpligt.
-- Använd bara gemena bokstäver och siffror. Det kan innehålla bindestreck och under streck, men inte blank steg, och är begränsat till 50 tecken. Om du till exempel anger **test-erbjudande-1** , är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- Använd bara gemena bokstäver och siffror. Det kan innehålla bindestreck och under streck, men inte blank steg, och är begränsat till 50 tecken. Om du till exempel anger **test-erbjudande-1**, är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Erbjudande-ID: t kan inte ändras när du har valt **skapa**.
 
 Ange ett **erbjudande alias**. Detta är det namn som används för erbjudandet i Partner Center.
@@ -78,7 +78,7 @@ När du publicerar ditt erbjudande till Marketplace med partner Center kan du oc
 
 Här följer några ytterligare resurser för ledar hantering:
 
-- [Kunden får ett erbjudande från ditt kommersiella Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Kundleads från ditt erbjudande på den kommersiella marknadsplatsen](commercial-marketplace-get-customer-leads.md)
 - [Vanliga frågor om ledar hantering](../lead-management-faq.md#common-questions-about-lead-management)
 - [Felsöka fel vid lead-konfiguration](../lead-management-faq.md#publishing-config-errors)
 - [Översikt över ledar hantering](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (se till att blockering av popup-fönster är inaktiverat).
@@ -149,7 +149,7 @@ Ange en kort beskrivning av erbjudandet. Detta kan vara upp till 100 tecken lån
 
 Ange en mer detaljerad beskrivning av ditt erbjudande. Detta kan vara upp till 256 tecken långt och används i Sök resultaten för Marketplace.
 
-### <a name="description"></a>Beskrivning
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -184,7 +184,7 @@ Du måste ange namn, e-postadress och telefonnummer för en **support kontakt** 
 
 I avsnittet **support kontakt** anger du webb adressen till **Support webbplatsen** där partner kan hitta support för ditt erbjudande baserat på om erbjudandet är tillgängligt i Global Azure, Azure Government eller båda.
 
-I avsnittet för **CSP** -programavsnittet anger du länken ( **CSP-programmet marknadsförings material** ) där CSP-partner kan hitta marknadsförings material för ditt erbjudande.
+I avsnittet för **CSP** -programavsnittet anger du länken (**CSP-programmet marknadsförings material**) där CSP-partner kan hitta marknadsförings material för ditt erbjudande.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ytterligare platser för Marketplace-lista
 
@@ -236,7 +236,7 @@ Här är ett exempel på hur information om erbjudandet visas på Azure Marketpl
 5. Sekretess policy adress (länk)
 6. Name
 7. Sammanfattning
-8. Beskrivning
+8. Description
 9. Användbara länkar
 10. Skärm bilder/videor
 
@@ -305,8 +305,8 @@ När du har skapat dina planer visas fliken **plan översikt** :
 
 Vilka åtgärder som är tillgängliga i plan översikten varierar beroende på planens aktuella status. De omfattar:
 
-- **Ta bort utkast** : om planens status är ett utkast.
-- **Stoppa Sälj plan** : om plan statusen publiceras Live.
+- **Ta bort utkast**: om planens status är ett utkast.
+- **Stoppa Sälj plan**: om plan statusen publiceras Live.
 
 ### <a name="create-new-plan"></a>Skapa ny plan
 
@@ -403,15 +403,15 @@ Du kan rikta flera plattformar och tillhandahålla flera versioner av modulens b
 
 Du kommer att ange följande information på fliken **avbildnings lagrings information** .
 
-**Välj avbildnings källa** : välj alternativet **Azure Container Registry** .
+**Välj avbildnings källa**: välj alternativet **Azure Container Registry** .
 
-**Azure-prenumerations-ID** : Ange det PRENUMERATIONS-ID där resursanvändningen rapporteras och tjänsterna debiteras för den Azure Container Registry som innehåller din behållar avbildning. Du hittar detta ID på [sidan prenumerationer](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i Azure Portal.
+**Azure-prenumerations-ID**: Ange det PRENUMERATIONS-ID där resursanvändningen rapporteras och tjänsterna debiteras för den Azure Container Registry som innehåller din behållar avbildning. Du hittar detta ID på [sidan prenumerationer](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i Azure Portal.
 
-**Namn på Azure-resurs grupp** : Ange det [resurs grupps](../../azure-resource-manager/management/manage-resource-groups-portal.md) namn som innehåller Azure Container Registry med din behållar avbildning. Resurs gruppen måste vara tillgänglig i prenumerations-ID (ovan). Du hittar namnet på sidan [resurs grupper](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) i Azure Portal.
+**Namn på Azure-resurs grupp**: Ange det [resurs grupps](../../azure-resource-manager/management/manage-resource-groups-portal.md) namn som innehåller Azure Container Registry med din behållar avbildning. Resurs gruppen måste vara tillgänglig i prenumerations-ID (ovan). Du hittar namnet på sidan [resurs grupper](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) i Azure Portal.
 
-**Azure Container Registry-namn** : Ange namnet på [Azure Container Registry](../../container-registry/container-registry-intro.md) som innehåller din behållar avbildning. Behållar registret måste finnas i den Azure-resurs grupp du angav tidigare. Ange bara register namnet, inte det fullständiga inloggnings Server namnet. Var noga med att utelämna **azurecr.io** från namnet. Du hittar register namnet på [sidan behållar register](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) i Azure Portal.
+**Azure Container Registry-namn**: Ange namnet på [Azure Container Registry](../../container-registry/container-registry-intro.md) som innehåller din behållar avbildning. Behållar registret måste finnas i den Azure-resurs grupp du angav tidigare. Ange bara register namnet, inte det fullständiga inloggnings Server namnet. Var noga med att utelämna **azurecr.io** från namnet. Du hittar register namnet på [sidan behållar register](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) i Azure Portal.
 
-**Administratörens användar namn för Azure Container Registry** : ange [administratörens användar namn](../../container-registry/container-registry-authentication.md#admin-account)) som är associerat med den Azure Container Registry som har behållar avbildningen. Användar namn och lösen ord krävs för att se till att ditt företag har åtkomst till registret. Om du vill hämta administratörens användar namn och lösen ord anger du egenskapen **admin-Enabled** till **True** med Azure Command-Line Interface (CLI). Du kan också ange att **Administratörs användare** ska kunna **Aktivera** i Azure Portal.
+**Administratörens användar namn för Azure Container Registry**: ange [administratörens användar namn](../../container-registry/container-registry-authentication.md#admin-account)) som är associerat med den Azure Container Registry som har behållar avbildningen. Användar namn och lösen ord krävs för att se till att ditt företag har åtkomst till registret. Om du vill hämta administratörens användar namn och lösen ord anger du egenskapen **admin-Enabled** till **True** med Azure Command-Line Interface (CLI). Du kan också ange att **Administratörs användare** ska kunna **Aktivera** i Azure Portal.
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Visar dialog rutan uppdatera container Registry.":::
 
@@ -419,7 +419,7 @@ Du kommer att ange följande information på fliken **avbildnings lagrings infor
 
 1. Administratörsanvändare
 
-<br>**Lösen ord för Azure Container Registry** : Ange lösen ordet för det administratörs användar namn som är associerat med Azure Container Registry och har behållar avbildningen. Användar namn och lösen ord krävs för att se till att ditt företag har åtkomst till registret. Du kan hämta lösen ordet från Azure Portal genom att gå till **container Registry**  >  **åtkomst nycklar** eller med Azure CLI med [Kommandot show.](/cli/azure/acr/credential#az-acr-credential-show)
+<br>**Lösen ord för Azure Container Registry**: Ange lösen ordet för det administratörs användar namn som är associerat med Azure Container Registry och har behållar avbildningen. Användar namn och lösen ord krävs för att se till att ditt företag har åtkomst till registret. Du kan hämta lösen ordet från Azure Portal genom att gå till **container Registry**  >  **åtkomst nycklar** eller med Azure CLI med [Kommandot show.](/cli/azure/acr/credential#az-acr-credential-show)
 
 :::image type="content" source="media/example-iot-access-keys.png" alt-text="Visar åtkomst nyckel skärmen i Azure Portal.":::
 
@@ -430,6 +430,9 @@ Du kommer att ange följande information på fliken **avbildnings lagrings infor
 3. Lösenord
 
 **Databas namn inom Azure Container Registry**. Ange namnet på Azure Container Registry lagrings platsen som innehåller din avbildning. Du anger namnet på lagrings platsen när du push-överför avbildningen till registret. Du kan hitta namnet på lagrings platsen genom att gå till sidan [container Registry](https://azure.microsoft.com/services/container-registry/)-  >  **databaser**. Mer information finns i [Visa behållare register Arkiv i Azure Portal](../../container-registry/container-registry-repositories.md). När du har angett namnet kan du inte ändra det. Använd ett unikt namn för varje erbjudande i ditt konto.
+
+> [!NOTE]
+> Vi stöder inte krypterad Azure Container Registry för certifiering av Edge-modul. Azure Container Registry ska skapas utan kryptering aktiverat.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Bildtaggar för nya versioner av ditt erbjudande
 
@@ -443,7 +446,7 @@ Definiera de vanligaste inställningarna för att distribuera IoT Edge-modulen. 
 
 **Standard vägar**. IoT Edge Hub hanterar kommunikation mellan moduler, IoT Hub och enheter. Du kan ange vägar för indata och utdata mellan moduler och IoT Hub, vilket ger dig flexibiliteten att skicka meddelanden där de behöver gå utan att ytterligare tjänster krävs för att bearbeta meddelanden eller skriva ytterligare kod. Vägar konstrueras med hjälp av namn/värde-par. Du kan definiera upp till fem standard väg namn, med upp till 512 tecken.
 
-Se till att du använder rätt [Route-syntax](../../iot-edge/module-composition.md#declare-routes)) i ditt väg värde (definieras vanligt vis från/meddelande/* i $upstream). Det innebär att alla meddelanden som skickas av moduler går till din IoT Hub. Om du vill referera till din modul använder du dess standardmodulnamn, som är **namnet på erbjudandet** , utan blank steg eller specialtecken. Om du vill referera till andra moduler som ännu inte är kända använder du <FROM_MODULE_NAME> konvention för att låta dina kunder veta att de behöver uppdatera den här informationen. Mer information om IoT Edge vägar finns i [deklarera vägar](../../iot-edge/module-composition.md#declare-routes).
+Se till att du använder rätt [Route-syntax](../../iot-edge/module-composition.md#declare-routes)) i ditt väg värde (definieras vanligt vis från/meddelande/* i $upstream). Det innebär att alla meddelanden som skickas av moduler går till din IoT Hub. Om du vill referera till din modul använder du dess standardmodulnamn, som är **namnet på erbjudandet**, utan blank steg eller specialtecken. Om du vill referera till andra moduler som ännu inte är kända använder du <FROM_MODULE_NAME> konvention för att låta dina kunder veta att de behöver uppdatera den här informationen. Mer information om IoT Edge vägar finns i [deklarera vägar](../../iot-edge/module-composition.md#declare-routes).
 
 Om modul ContosoModule till exempel lyssnar efter indata på ContosoInput och utdata från ContosoOutput, är det klokt att definiera följande två standard vägar:
 
