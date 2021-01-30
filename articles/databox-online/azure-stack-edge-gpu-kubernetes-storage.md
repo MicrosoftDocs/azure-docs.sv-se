@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448710"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063324"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes lagrings hantering på din Azure Stack Edge Pro GPU-enhet
 
@@ -79,11 +79,11 @@ Följande steg inträffar:
 
 På den Azure Stack Edge Pro-enheten skapas statiskt allokerat `PersistentVolumes` med enhetens lagrings funktioner. När du etablerar en resurs och **använder alternativet dela med Edge Compute** är aktiverat, skapar den här åtgärden en PV-resurs automatiskt i Kubernetes-klustret.
 
-![Skapa lokal delning i Azure Portal för statisk etablering](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![Skapa lokal delning i Azure Portal för statisk etablering](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 Om du vill använda moln nivåer kan du skapa en gräns moln resurs med hjälp av alternativet dela med Edge-beräkning aktiverat. Ett PV skapas igen automatiskt för den här resursen. Alla program data som du skriver till Edge-resursen på nivå av molnet. 
 
-![Skapa moln delning i Azure Portal för statisk etablering](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![Skapa moln delning i Azure Portal för statisk etablering](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 Du kan skapa både SMB-och NFS-resurser för att etablera PVs statiskt på Azure Stack Edge Pro-enhet. När PV har allokerats skickar du en PVC som gör det möjligt att kräva lagringen. Här är ett exempel på en PVC-distribution `yaml` som hävdar lagringen och använder resurserna som du etablerade.
 

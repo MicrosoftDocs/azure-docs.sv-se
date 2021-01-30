@@ -4,12 +4,12 @@ description: Lär dig mer om kryptering – resten av ditt Azure Container Regis
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620466"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062736"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Kryptera registret med en kundhanterad nyckel
 
@@ -564,23 +564,33 @@ För att få åtkomst till ett nyckel valv som kon figurer ATS med en Key Vault 
 
 När du har slutfört föregående steg roterar du nyckeln till en ny nyckel i nyckel valvet bakom en brand vägg. Anvisningar finns i [rotations nyckel](#rotate-key) i den här artikeln.
 
-## <a name="troubleshoot"></a>Felsök
+## <a name="troubleshoot"></a>Felsöka
 
-### <a name="removing-user-assigned-identity"></a>Tar bort användardefinierad identitet
+### <a name="removing-managed-identity"></a>Tar bort hanterad identitet
 
-Om du försöker ta bort en tilldelad identitet från ett register som används för kryptering kan du se ett fel meddelande som liknar:
+
+Om du försöker ta bort en användare som tilldelats eller tilldelats en hanterad identitet från ett register som används för att konfigurera kryptering, kan ett fel meddelande visas som liknar följande:
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-Du kan inte heller ändra krypterings nyckeln (rotera). Om det här problemet uppstår måste du först tilldela om identiteten med hjälp av det GUID som visas i fel meddelandet. Exempel:
+Du kan inte heller ändra krypterings nyckeln (rotera). Lösnings stegen beror på vilken typ av identitet som används för kryptering.
+
+**Användare tilldelad identitet**
+
+Om det här problemet uppstår med en användardefinierad identitet måste du först tilldela om identiteten med hjälp av det GUID som visas i fel meddelandet. Exempel:
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 ```
         
 När du har ändrat nyckeln och tilldelat en annan identitet kan du ta bort den ursprungliga användarens identitet.
+
+**Systemtilldelad identitet**
+
+Om det här problemet uppstår med en tilldelad identitet [skapar du ett support ärende för Azure](https://azure.microsoft.com/support/create-ticket/) för att få hjälp att återställa identiteten.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

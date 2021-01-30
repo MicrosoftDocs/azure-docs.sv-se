@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdc96df548a4a3df2b789759889b85835e1382a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1eacba47e68310dd45976bcd9ddff052fa193436
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860736"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090145"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Återställa en borttagen Microsoft 365 grupp i Azure Active Directory
 
@@ -29,11 +29,11 @@ När du tar bort en Microsoft 365 grupp i Azure Active Directory (Azure AD) beh�
 
 Behörigheterna som krävs för att återställa en grupp kan vara någon av följande:
 
-Role | Behörigheter
+Roll | Behörigheter
 --------- | ---------
 Global administratör, grupp administratör, partner – nivå 2-stöd och Intune-administratör | Kan återställa borttagna Microsoft 365s grupper
-Stöd för användar administratör och partner 1 | Kan återställa borttagna Microsoft 365s grupper förutom de grupper som tilldelats rollen företags administratör
-Användare | Kan återställa borttagna Microsoft 365s grupper som de äger
+Stöd för användar administratör och partner 1 | Kan återställa borttagna Microsoft 365s grupper förutom de grupper som har tilldelats rollen som global administratör
+User | Kan återställa borttagna Microsoft 365s grupper som de äger
 
 ## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>Visa och hantera de borttagna Microsoft 365 grupper som kan återställas
 

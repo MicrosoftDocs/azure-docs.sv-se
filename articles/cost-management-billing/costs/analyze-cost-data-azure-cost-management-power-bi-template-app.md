@@ -3,25 +3,25 @@ title: Analysera Azure-kostnader med Power BI-appen
 description: Den här artikeln beskriver hur du installerar och använder Azure Cost Management Power BI-appen.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2020
+ms.date: 1/29/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 1c5adf58f670f3cadcedbe710568551004b77b78
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: HT
+ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413249"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070165"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analysera kostnader med Azure Cost Management Power BI-appen för Enterprise-avtal (EA)
 
 Den här artikeln beskriver hur du installerar och använder Azure Cost Management Power BI-appen. Appen hjälper dig att analysera och hantera dina Azure-kostnader i Power BI. Du kan använda appen till att övervaka kostnader, användningstrender och identifiera alternativ för kostnadsoptimering för att minska dina utgifter.
 
-Du kan använda appen som den är, eller så kan du anpassa appen efter dina behov genom att utöka de filter, vyer och visualiseringar som ingår som standard. Sedan kan du koppla ytterligare data med appen och skapa anpassade rapporter så att du får en helhetsvy över den totala kostnaden.
+Azure Cost Management Power BI-appen har för närvarande endast stöd för kunder med en [Enterprise-avtal](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
-För närvarande kan endast kunder som har ett [Enterprise-avtal](https://azure.microsoft.com/pricing/enterprise-agreement/) använda Azure Cost Management Power BI-appen.
+Appen begränsar anpassningsbarhet. Om du vill ändra och utöka de standard filter, vyer och visualiseringar som ska anpassas efter dina behov använder du [Azure Cost Management Connector i Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management) i stället. Med Azure Cost Management Connector kan du koppla ytterligare data från andra källor för att skapa anpassade rapporter för att få en helhets vy över din totala företags kostnad. Anslutningen stöder även Microsofts kund avtal.
 
 > [!NOTE]
 > Power BI-mallappar stöder inte hämtning av PBIX-filen.
@@ -42,9 +42,9 @@ Så här installerar du appen:
 5. Om det behövs skapar du en arbetsyta och väljer **Fortsätt**.
 6. När installationen är klar visas ett meddelande om att din nya app är klar.
 7. Välj **Gå till app**.
-8. I **Kom igång med din nya app** , under **Anslut dina data** , väljer du **Anslut**.  
+8. I **Kom igång med din nya app**, under **Anslut dina data**, väljer du **Anslut**.  
   ![Kom igång med din nya app – Anslut](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. I dialogrutan som visas anger du ditt EA-registreringsnummer för **BillingProfileIdOrEnrollmentNumber**. Ange hur många månaders data som ska hämtas. Lämna **Omfång** -standardvärdet som **Registreringsnummer** och välj **Nästa**.  
+9. I dialogrutan som visas anger du ditt EA-registreringsnummer för **BillingProfileIdOrEnrollmentNumber**. Ange hur många månaders data som ska hämtas. Lämna **Omfång**-standardvärdet som **Registreringsnummer** och välj **Nästa**.  
   ![Ange EA-registreringsinformation](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. I nästa dialogruta görs en anslutning till Azure för att hämta de data som krävs för rekommendationer för reserverad instans. *Lämna standardvärdena som de är* och välj **Logga in**.  
   ![Skärmbild som visar dialogrutan Anslut till Azure Cost Management-appen med standardvärden.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  

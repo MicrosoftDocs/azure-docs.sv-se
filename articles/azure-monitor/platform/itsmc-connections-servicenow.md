@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 3cc38fad6f26bf6f382b4a275638c450c8333a04
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955740"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089266"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Anslut ServiceNow med Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -125,7 +125,7 @@ Använd följande procedur för att skapa en ServiceNow-anslutning.
    | **Server-URL**   | Ange URL: en för den ServiceNow-instans som du vill ansluta till ITSMC. URL: en måste peka på en SaaS-version som stöds med suffixet *. ServiceNow.com* (till exempel https://XXXXX.service-now.com/) .|
    | **Användarnamn**   | Ange det integrerings användar namn som du skapade i ServiceNow-appen för att stödja anslutningen till ITSMC.|
    | **Lösenord**   | Ange lösen ordet som är kopplat till det här användar namnet. **Obs!** användar namn och lösen ord används endast för att skapa autentiseringstoken. De lagras inte var som helst i ITSMC-tjänsten.  |
-   | **Klient-ID**   | Ange det klient-ID som du vill använda för OAuth2-autentisering, som du skapade tidigare. Mer information om hur du genererar ett klient-ID och en hemlighet finns i [Konfigurera OAuth](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
+   | **Klient-ID**   | Ange det klient-ID som du vill använda för OAuth2-autentisering, som du skapade tidigare. Mer information om hur du genererar ett klient-ID och en hemlighet finns i [Konfigurera OAuth](https://old.wiki/index.php/OAuth_Setup). |
    | **Klient hemlighet**   | Ange den klient hemlighet som genererats för detta ID.   |
    | **Omfång för data synkronisering (i dagar)** | Ange antalet senaste dagar som du vill att data ska visas. Gränsen är 120 dagar. |
    | **Arbets objekt som ska synkroniseras**   | Välj de ServiceNow arbets objekt som du vill synkronisera till Azure Log Analytics via ITSMC. De valda värdena importeras till Log Analytics. Alternativen är incidenter och ändrings begär Anden.|

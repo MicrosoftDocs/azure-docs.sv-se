@@ -3,19 +3,17 @@ title: Fältmappningar i indexerare
 titleSuffix: Azure Cognitive Search
 description: Konfigurera fält mappningar i en indexerare för att redovisa skillnader i fält namn och data representationer.
 manager: nitinme
-author: mattmsft
-ms.author: magottei
-ms.devlang: rest-api
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 579d0e334b4e60815b3a5efc877833ab75a3375d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.date: 01/28/2021
+ms.openlocfilehash: efee1e1cda7767620931ef81825708d94a1925c3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358940"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063187"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Fält mappningar och transformeringar med Azure Kognitiv sökning indexerare
 
@@ -28,7 +26,7 @@ Några situationer där fält mappningar är användbara:
 * Data källan har ett fält med namnet `_id` , men Azure kognitiv sökning tillåter inte fält namn som börjar med ett under streck. Med en fält mappning kan du effektivt byta namn på ett fält.
 * Du vill fylla i flera fält i indexet från samma data käll data. Du kanske till exempel vill använda olika analys verktyg för dessa fält.
 * Du vill fylla i ett index fält med data från fler än en data källa och data källorna använder olika fält namn.
-* Du måste base64 koda eller avkoda dina data. Fält mappningar har stöd för flera **mappnings funktioner** , inklusive funktioner för base64-kodning och avkodning.
+* Du måste base64 koda eller avkoda dina data. Fält mappningar har stöd för flera **mappnings funktioner**, inklusive funktioner för base64-kodning och avkodning.
 
 > [!NOTE]
 > Fält mappningar i indexerare är ett enkelt sätt att mappa data fält till index fält, med viss möjlighet till låg data konvertering. Mer komplexa data kan kräva för bearbetning för att forma om den till ett formulär som är till för indexering. Ett alternativ som du kan överväga är [Azure Data Factory](../data-factory/index.yml).
@@ -46,7 +44,7 @@ Fält mappningar läggs till i `fieldMappings` matrisen för index definition.
 > [!NOTE]
 > Om inga fält mappningar läggs till antar indexerarna att data käll fält ska mappas till index fält med samma namn. Om du lägger till en fält mappning tas dessa standard fält mappningar bort för fältet källa och mål. Vissa indexerare, till exempel [Blob Storage-indexeraren](search-howto-indexing-azure-blob-storage.md), lägger till standard fält mappningar för fältet index nyckel.
 
-## <a name="map-fields-using-the-rest-api"></a>Mappa fält med hjälp av REST API
+## <a name="map-fields-using-rest"></a>Mappa fält med REST
 
 Du kan lägga till fält mappningar när du skapar en ny indexerare med hjälp av API-förfrågan [skapa indexerare](/rest/api/searchservice/create-Indexer) . Du kan hantera fält mappningar för en befintlig indexerare med hjälp av API-begäran [Uppdatera indexerare](/rest/api/searchservice/update-indexer) .
 
@@ -77,9 +75,8 @@ Det går att referera till ett käll fält i flera fält mappningar. I följande
 > [!NOTE]
 > Azure Kognitiv sökning använder SKIFT läges okänslig jämförelse för att matcha fält-och funktions namn i fält mappningar. Detta är praktiskt (du behöver inte hämta alla Skift läges rättigheter), men det innebär att data källan eller indexet inte kan ha fält som bara skiljer sig från versaler.  
 >
->
 
-## <a name="map-fields-using-the-net-sdk"></a>Mappa fält med hjälp av .NET SDK
+## <a name="map-fields-using-net"></a>Mappa fält med hjälp av .NET
 
 Du definierar fält mappningar i .NET SDK med klassen [FieldMapping](/dotnet/api/azure.search.documents.indexes.models.fieldmapping) , som har egenskaperna `SourceFieldName` och `TargetFieldName` , och en valfri `MappingFunction` referens.
 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740354"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089232"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Förstå roller i Azure Active Directory
 
@@ -61,7 +61,7 @@ Följande tabell erbjuds som ett stöd för att förstå dessa roll kategorier. 
 Kategori | Roll
 ---- | ----
 Azure AD-särskilda roller | Programadministratör<br>Programutvecklare<br>Administratör för autentisering<br>B2C IEF Keys-administratör<br>B2C IEF-princip administratör<br>Molnprogramadministratör<br>Moln enhets administratör<br>Administratör för villkorsstyrd åtkomst<br>Enhetsadministratörer<br>Katalog läsare<br>Konton för katalog synkronisering<br>Katalog skrivare<br>Användar flödes administratör för externt ID<br>Administratör för externt ID-attribut för användar flöde<br>Administratör för extern identitetsprovider<br>Grupp administratör<br>Gäst deltagare<br>Support administratör<br>Hybrid identitets administratör<br>Licens administratör<br>Support för partner 1<br>Support för partner – nivå 2<br>Lösen ords administratör<br>Administratör för privilegie rad autentisering<br>Privilegie rad roll administratör<br>Rapportläsare<br>Administratör för användar konton
-Kors tjänst roller | Företagsadministratör<br>Efterlevnadsadministratör<br>Efterlevnadsdataadministratör<br>Global läsare<br>Säkerhetsadministratör<br>Säkerhetsoperatör<br>Säkerhetsläsare<br>Tjänst support administratör
+Kors tjänst roller | Global administratör<br>Efterlevnadsadministratör<br>Efterlevnadsdataadministratör<br>Global läsare<br>Säkerhetsadministratör<br>Säkerhetsoperatör<br>Säkerhetsläsare<br>Tjänst support administratör
 Tjänstspecifika roller | Azure DevOps-administratör<br>Azure Information Protection administratör<br>Faktureringsadministratör<br>Administratör för CRM-tjänsten<br>Åtkomst god kännare för kund lås<br>Administratör för Skriv bords analys<br>Exchange service-administratör<br>Insights-administratör<br>Affärs ledare för insikter<br>Intune Service-administratör<br>Kaizala-administratör<br>Administratör för Lync-tjänsten<br>Meddelande Center sekretess läsare<br>Meddelande Center läsare<br>Modern Commerce-användare<br>Nätverks administratör<br>Office Apps-administratör<br>Power BI-tjänstadministratör<br>Power Platform-administratör<br>Skrivar administratör<br>Skrivar tekniker<br>Sök administratör<br>Sök redigerare<br>SharePoint-tjänsteadministratör<br>Team kommunikations administratör<br>Support tekniker för Teams kommunikation<br>Support specialist för Teams kommunikation<br>Team enhets administratör<br>Team tjänst administratör
 
 ## <a name="next-steps"></a>Nästa steg

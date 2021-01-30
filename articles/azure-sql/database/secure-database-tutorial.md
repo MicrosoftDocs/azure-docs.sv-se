@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985866"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089299"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Självstudie: skydda en databas i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -124,7 +124,7 @@ Så här anger du Azure AD-administratör:
     ![Välj active directory](./media/secure-database-tutorial/admin-settings.png)  
 
     > [!IMPORTANT]
-    > Du måste vara antingen ”Företagsadministratör” eller ”Global administratör” för att utföra den här uppgiften.
+    > Du måste vara en global administratör för att kunna utföra den här uppgiften.
 
 1. På sidan **Lägg till administratör** söker du efter och väljer AD-användaren eller gruppen och därefter **Välj**. Alla medlemmar och grupper för din Active Directory visas, och nedtonade poster stöds inte som Azure AD-administratörer. Se avsnittet om [Azure AD-funktioner och begränsningar](authentication-aad-overview.md#azure-ad-features-and-limitations).
 

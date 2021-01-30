@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673638"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Självstudie: Azure Active Directory integrering med Bridge
 
@@ -30,7 +30,7 @@ Integreringen av Bridge med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att konfigurera Azure AD-integrering med Bridge:
 
@@ -106,7 +106,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Bridg
     b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<company name>.bridgeapp.com`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [kundsupporten för Bridge](https://community.bridgeapp.com/community/help) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [kundsupporten för Bridge](https://community.bridgeapp.com/hc/en-us/community/topics) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 5. På sidan **Konfigurera enkel inloggning med SAML**, i avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (RAW)** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -124,7 +124,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Bridg
 
 ### <a name="configure-bridge-single-sign-on"></a>Konfigurera enkel inloggning för Bridge
 
-För att konfigurera enkel inloggning på **Bridge**-sidan behöver du skicka det nedladdade **certifikatet (Base64)** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Bridge](https://community.bridgeapp.com/community/help). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+För att konfigurera enkel inloggning på **Bridge**-sidan behöver du skicka det nedladdade **certifikatet (Base64)** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Bridge](https://community.bridgeapp.com/hc/en-us/community/topics). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
@@ -179,7 +179,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-bridge-test-user"></a>Skapa Bridge-testanvändare
 
-I det här avsnittet skapar du en användare med namnet Britta Simon i Bridge. Arbeta med [Bridge support team](https://community.bridgeapp.com/community/help) för att lägga till användare i brygga plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Bridge. Arbeta med [Bridge support team](https://community.bridgeapp.com/hc/en-us/community/topics) för att lägga till användare i brygga plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

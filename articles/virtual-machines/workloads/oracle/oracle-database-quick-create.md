@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: d16153a7dc9a3164a5127b80a474bf9c398684ac
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945139"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063070"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Skapa en Oracle Database på en virtuell Azure-dator
 
-Den här guiden beskriver hur du använder Azure CLI för att distribuera en virtuell Azure-dator från [Galleri avbildningen för Oracle Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) för att skapa en Oracle 12C-databas. När servern har distribuerats ansluter du via SSH för att kunna konfigurera Oracle-databasen. 
+Den här guiden beskriver hur du använder Azure CLI för att distribuera en virtuell Azure-dator från [Galleri avbildningen för Oracle Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) för att skapa en Oracle 19c-databas. När servern har distribuerats ansluter du via SSH för att kunna konfigurera Oracle-databasen. 
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -27,26 +27,29 @@ Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI v
 
 Skapa en resursgrupp med kommandot [az group create](/cli/azure/group). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. 
 
-I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *eastus*.
+I följande exempel skapas en resurs grupp med namnet *RG-Oracle* på den *östra* platsen.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name rg-oracle --location eastus
 ```
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
 
 Använd kommandot [AZ VM Create](/cli/azure/vm) för att skapa en virtuell dator (VM). 
 
-Följande exempel skapar en virtuell dator med namnet `myVM`. Det skapar också SSH-nycklar, om de inte redan finns på en standard nyckel plats. Om du vill använda en specifik uppsättning nycklar använder du alternativet `--ssh-key-value`.  
+Följande exempel skapar en virtuell dator med namnet `vmoracle19c`. Det skapar också SSH-nycklar, om de inte redan finns på en standard nyckel plats. Om du vill använda en specifik uppsättning nycklar använder du alternativet `--ssh-key-value`.  
 
 ```azurecli-interactive 
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVM \
-    --image Oracle:Oracle-Database-Ee:12.1.0.2:latest \
-    --size Standard_DS2_v2 \
-    --admin-username azureuser \
-    --generate-ssh-keys
+az vm create ^
+    --resource-group rg-oracle ^
+    --name vmoracle19c ^
+    --image Oracle:oracle-database-19-3:oracle-database-19-0904:latest ^
+    --size Standard_DS2_v2 ^
+    --admin-username azureuser ^
+    --generate-ssh-keys ^
+    --public-ip-address-allocation static ^
+    --public-ip-address-dns-name vmoracle19c
+
 ```
 
 När du har skapat den virtuella datorn visar Azure CLI information som liknar följande exempel. Anteckna värdet för `publicIpAddress` . Du använder den här adressen för att få åtkomst till den virtuella datorn.
@@ -54,89 +57,231 @@ När du har skapat den virtuella datorn visar Azure CLI information som liknar f
 ```output
 {
   "fqdns": "",
-  "id": "/subscriptions/{snip}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
-  "location": "westus",
+  "id": "/subscriptions/{snip}/resourceGroups/rg-oracle/providers/Microsoft.Compute/virtualMachines/vmoracle19c",
+  "location": "eastus",
   "macAddress": "00-0D-3A-36-2F-56",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.4",
   "publicIpAddress": "13.64.104.241",
-  "resourceGroup": "myResourceGroup"
+  "resourceGroup": "rg-oracle"
 }
 ```
-
-## <a name="connect-to-the-vm"></a>Anslut till VM:en
-
-Använd följande kommando för att skapa en SSH-session med den virtuella datorn. Ersätt IP-adressen med `publicIpAddress` värdet för den virtuella datorn.
+## <a name="create-and-attach-a-new-disk-for-oracle-datafiles-and-fra"></a>Skapa och ansluta en ny disk för Oracle-datadatafiler och FRA
 
 ```bash
-ssh azureuser@<publicIpAddress>
+az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 128 --sku StandardSSD_LRS --vm-name vmoracle19c
 ```
+
+## <a name="open-ports-for-connectivity"></a>Öppna portar för anslutning
+I den här uppgiften måste du konfigurera vissa externa slut punkter för databas lyssnaren och EM Express som ska användas genom att konfigurera den Azure-nätverks säkerhets grupp som skyddar den virtuella datorn. 
+
+1. Om du vill öppna slut punkten som du använder för att fjärrans luta till Oracle-databasen, skapar du en regel för nätverks säkerhets grupper på följande sätt:
+   ```bash
+   az network nsg rule create ^
+       --resource-group rg-oracle ^
+       --nsg-name vmoracle19cNSG ^
+       --name allow-oracle ^
+       --protocol tcp ^
+       --priority 1001 ^
+       --destination-port-range 1521
+   ```
+2. Öppna slut punkten som du använder för att få åtkomst till Oracle EM Express genom att skapa en regel för nätverks säkerhets grupper med AZ Network NSG Rule Create enligt följande:
+   ```bash
+   az network nsg rule create ^
+       --resource-group rg-oracle ^
+       --nsg-name vmoracle19cNSG ^
+       --name allow-oracle-EM ^
+       --protocol tcp ^
+       --priority 1002 ^
+       --destination-port-range 5502
+   ```
+3. Om det behövs kan du hämta den offentliga IP-adressen för den virtuella datorn igen med AZ Network Public-IP Visa enligt följande:
+
+   ```bash
+   az network public-ip show ^
+       --resource-group rg-oracle ^
+       --name vmoracle19cPublicIP ^
+       --query [ipAddress] ^
+       --output tsv
+   ```
+
+## <a name="prepare-the-vm-environment"></a>Förbered VM-miljön
+
+1. Anslut till VM:en
+
+   Använd följande kommando för att skapa en SSH-session med den virtuella datorn. Ersätt IP-adressen med `publicIpAddress` värdet för den virtuella datorn.
+
+   ```bash
+   ssh azureuser@<publicIpAddress>
+   ```
+
+2. Växla till rot användaren
+
+   ```bash
+   sudo su -
+   ```
+
+3. Sök efter senast skapade disk enhet som vi ska formatera för användning av Oracle-datadelar
+
+   ```bash
+   ls -alt /dev/sd*|head -1
+   ```
+
+   Utdata ser ut ungefär så här:
+   ```output
+   brw-rw----. 1 root disk 8, 16 Dec  8 22:57 /dev/sdc
+   ```
+
+4. Formatera enheten. 
+   Som rot användare som körs delvis på enheten 
+   
+   Skapa först en disk etikett:
+   ```bash
+   parted /dev/sdc mklabel gpt
+   ```
+   Skapa sedan en primär partition som sträcker sig över hela disken:
+   ```bash
+   parted -a optimal /dev/sdc mkpart primary 0GB 64GB   
+   ```
+   Kontrol lera sedan enhets informationen genom att skriva ut dess metadata:
+   ```bash
+   parted /dev/sdc print
+   ```
+   Utdata bör se ut ungefär så här:
+   ```bash
+   # parted /dev/sdc print
+   Model: Msft Virtual Disk (scsi)
+   Disk /dev/sdc: 68.7GB
+   Sector size (logical/physical): 512B/4096B
+   Partition Table: gpt
+   Disk Flags:
+   Number  Start   End     Size    File system  Name     Flags
+    1      1049kB  64.0GB  64.0GB  ext4         primary
+   ```
+
+5. Skapa ett fil system på enhetens partition
+
+   ```bash
+   mkfs -t ext4 /dev/sdc1
+   ```
+
+6. Skapa en monterings punkt
+   ```bash
+   mkdir /u02
+   ```
+
+7. Montera disken
+
+   ```bash
+   mount /dev/sdc1 /u02
+   ```
+
+8. Ändra behörigheter för monterings punkten
+
+   ```bash
+   chmod 777 /u02
+   ```
+
+9. Lägg till monteringen i/etc/fstab-filen. 
+
+   ```bash
+   echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
+   ```
+   
+10. Uppdatera ***/etc/hosts** _-filen med den offentliga IP-adressen och värd namnet.
+
+    Ändra den _*_offentliga IP-adressen och VMName_*_ så att de motsvarar dina faktiska värden:
+  
+    ```bash
+    echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
+    ```
+11. Uppdatera hostname-filen
+    
+    Använd följande kommando för att lägga till domän namnet för den virtuella datorn i filen _ */etc/hostname**. Detta förutsätter att du har skapat en resurs grupp och en virtuell dator i regionen **östra** :
+    
+    ```bash
+    sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname
+    ```
+
+12. Öppna brand Väggs portar
+    
+    Eftersom SELinux är aktiverat som standard på Marketplace-avbildningen måste vi öppna brand väggen för trafik för databasens lyssnings port 1521 och Enterprise Manager Express-port 5502. Kör följande kommandon som rot användare:
+
+    ```bash
+    firewall-cmd --zone=public --add-port=1521/tcp --permanent
+    firewall-cmd --zone=public --add-port=5502/tcp --permanent
+    firewall-cmd --reload
+    ```
+   
 
 ## <a name="create-the-database"></a>Skapa databasen
 
 Oracle-programvaran är redan installerad på Marketplace-avbildningen. Skapa en exempel databas på följande sätt. 
 
-1.  Växla till *Oracle* -användaren och starta sedan Oracle-lyssnaren:
+1.  Växla till **Oracle** -användaren:
 
     ```bash
-    $ sudo -su oracle
-    $ lsnrctl start
+    $ sudo su - oracle
     ```
+2. Starta databas lyssnaren
 
-    De utdata som genereras liknar följande:
+   ```bash
+   $ lsnrctl start
+   ```
+   De utdata som genereras liknar följande:
+  
+   ```output
+   LSNRCTL for Linux: Version 19.0.0.0.0 - Production on 20-OCT-2020 01:58:18
 
-    ```output
-    Copyright (c) 1991, 2014, Oracle.  All rights reserved.
+   Copyright (c) 1991, 2019, Oracle.  All rights reserved.
 
-    Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
+   Starting /u01/app/oracle/product/19.0.0/dbhome_1/bin/tnslsnr: please wait...
 
-    TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
-    Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
+   TNSLSNR for Linux: Version 19.0.0.0.0 - Production
+   Log messages written to /u01/app/oracle/diag/tnslsnr/vmoracle19c/listener/alert/log.xml
+   Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
 
-    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of the LISTENER
-    ------------------------
-    Alias                     LISTENER
-    Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Start Date                23-MAR-2017 15:32:08
-    Uptime                    0 days 0 hr. 0 min. 0 sec
-    Trace Level               off
-    Security                  ON: Local OS Authentication
-    SNMP                      OFF
-    Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
-    Listening Endpoints Summary...
-    (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    The listener supports no services
-    The command completed successfully
-    ```
-2. Skapa en data katalog för Oracle-datafilerna
+   Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+   STATUS of the LISTENER
+   ------------------------
+   Alias                     LISTENER
+   Version                   TNSLSNR for Linux: Version 19.0.0.0.0 - Production
+   Start Date                20-OCT-2020 01:58:18
+   Uptime                    0 days 0 hr. 0 min. 0 sec
+   Trace Level               off
+   Security                  ON: Local OS Authentication
+   SNMP                      OFF
+   Listener Log File         /u01/app/oracle/diag/tnslsnr/vmoracle19c/listener/alert/log.xml
+   Listening Endpoints Summary...
+     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=vmoracle19c.eastus.cloudapp.azure.com)(PORT=1521)))
+   The listener supports no services
+   The command completed successfully
+   ```
+3. Skapa en data katalog för Oracle-datafilerna:
 
-    ```bash
-        mkdir /u01/app/oracle/oradata
-    ```
+   ```bash
+   mkdir /u02/oradata
+   ```
+    
 
-3.  Skapa databasen:
+3.  Kör skapande assistenten för databaser:
 
     ```bash
     dbca -silent \
-           -createDatabase \
-           -templateName General_Purpose.dbc \
-           -gdbname cdb1 \
-           -sid cdb1 \
-           -responseFile NO_VALUE \
-           -characterSet AL32UTF8 \
-           -sysPassword OraPasswd1 \
-           -systemPassword OraPasswd1 \
-           -createAsContainerDatabase true \
-           -numberOfPDBs 1 \
-           -pdbName pdb1 \
-           -pdbAdminPassword OraPasswd1 \
-           -databaseType MULTIPURPOSE \
-           -automaticMemoryManagement false \
-           -storageType FS \
-           -datafileDestination "/u01/app/oracle/oradata/" \
-           -ignorePreReqs
+       -createDatabase \
+       -templateName General_Purpose.dbc \
+       -gdbname test \
+       -sid test \
+       -responseFile NO_VALUE \
+       -characterSet AL32UTF8 \
+       -sysPassword OraPasswd1 \
+       -systemPassword OraPasswd1 \
+       -createAsContainerDatabase false \
+       -databaseType MULTIPURPOSE \
+       -automaticMemoryManagement false \
+       -storageType FS \
+       -datafileDestination "/u02/oradata/" \
+       -ignorePreReqs
     ```
 
     Det tar några minuter att skapa databasen.
@@ -144,48 +289,41 @@ Oracle-programvaran är redan installerad på Marketplace-avbildningen. Skapa en
     Du ser utdata som liknar följande:
 
     ```output
-        Copying database files
-        1% complete
-        2% complete
-        8% complete
-        13% complete
-        19% complete
-        27% complete
-        Creating and starting Oracle instance
-        29% complete
-        32% complete
-        33% complete
-        34% complete
-        38% complete
-        42% complete
-        43% complete
-        45% complete
-        Completing Database Creation
-        48% complete
-        51% complete
-        53% complete
-        62% complete
-        70% complete
-        72% complete
-        Creating Pluggable Databases
-        78% complete
-        100% complete
-        Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for further details.
+        Prepare for db operation
+       10% complete
+       Copying database files
+       40% complete
+       Creating and starting Oracle instance
+       42% complete
+       46% complete
+       50% complete
+       54% complete
+       60% complete
+       Completing Database Creation
+       66% complete
+       69% complete
+       70% complete
+       Executing Post Configuration Actions
+       100% complete
+       Database creation complete. For details check the logfiles at: /u01/app/oracle/cfgtoollogs/dbca/test.
+       Database Information:
+       Global Database Name:test
+       System Identifier(SID):test
+       Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/test/test.log" for further details.
     ```
 
 4. Ange Oracle-variabler
 
-    Innan du ansluter måste du ange två miljövariabler: *ORACLE_HOME* och *ORACLE_SID*.
+    Innan du ansluter måste du ange miljövariabeln *ORACLE_SID*:
 
     ```bash
-        ORACLE_SID=cdb1; export ORACLE_SID
+        export ORACLE_SID=test
     ```
 
-    Du kan också lägga till ORACLE_HOME och ORACLE_SID variabler i. bashrc-filen. Detta skulle spara miljövariablerna för framtida inloggningar. Bekräfta att följande instruktioner har lagts till i `~/.bashrc` filen med valfritt redigerings program.
+    Du bör också lägga till variabeln ORACLE_SID till `oracle` användar `.bashrc` filen för framtida inloggningar med hjälp av följande kommando:
 
     ```bash
-    # Add ORACLE_SID. 
-    export ORACLE_SID=cdb1 
+    echo "export ORACLE_SID=test" >> ~oracle/.bashrc
     ```
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM Express-anslutning
@@ -204,29 +342,15 @@ För ett GUI-verktyg som du kan använda för att utforska-databasen konfigurera
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Öppna behållaren PDB1 om den inte redan är öppen, men kontrol lera statusen:
+3.  Anslut EM Express från din webbläsare. Kontrol lera att webbläsaren är kompatibel med EM Express (Flash-installation krävs): 
 
-    ```bash
-    select con_id, name, open_mode from v$pdbs;
+    ```https
+    https://<VM ip address or hostname>:5502/em
     ```
 
-    De utdata som genereras liknar följande:
+    Du kan logga in med hjälp av **sys** -kontot och markera kryss rutan **som SYSDBA** . Använd det lösen ord **OraPasswd1** som du angav under installationen. 
 
-    ```output
-      CON_ID NAME                           OPEN_MODE 
-      ----------- ------------------------- ---------- 
-      2           PDB$SEED                  READ ONLY 
-      3           PDB1                      MOUNT
-    ```
-
-4. Om OPEN_MODE för `PDB1` inte är skrivskyddad, kör du följande kommandon för att öppna PDB1:
-
-   ```bash
-    alter session set container=pdb1;
-    alter database open;
-   ```
-
-Du måste ange `quit` för att avsluta SQLPlus-sessionen och skriva `exit` för att logga ut från Oracle-användaren.
+    ![Skärm bild av sidan för Oracle OEM Express-inloggning](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="automate-database-startup-and-shutdown"></a>Automatisera start och avstängning av databasen
 
@@ -238,10 +362,10 @@ Oracle-databasen startar som standard inte automatiskt när du startar om den vi
     sudo su -
     ```
 
-2.  Använd din favorit redigerare, redigera filen `/etc/oratab` och ändra standardinställningen `N` till `Y` :
+2.  Kör följande kommando för att ändra den automatiska start flaggan från `N` till `Y` i `/etc/oratab` filen:
 
     ```bash
-    cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
+    sed -i 's/:N/:Y/' /etc/oratab
     ```
 
 3.  Skapa en fil med namnet `/etc/init.d/dbora` och klistra in följande innehåll:
@@ -252,7 +376,7 @@ Oracle-databasen startar som standard inte automatiskt när du startar om den vi
     # Description: Oracle auto start-stop script.
     #
     # Set ORA_HOME to be equivalent to $ORACLE_HOME.
-    ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+    ORA_HOME=/u01/app/oracle/product/19.0.0/dbhome_1
     ORA_OWNER=oracle
 
     case "$1" in
@@ -296,54 +420,6 @@ Oracle-databasen startar som standard inte automatiskt när du startar om den vi
     reboot
     ```
 
-## <a name="open-ports-for-connectivity"></a>Öppna portar för anslutning
-
-Den sista aktiviteten är att konfigurera vissa externa slut punkter. Om du vill konfigurera den Azure-nätverks säkerhets grupp som skyddar den virtuella datorn måste du först avsluta SSH-sessionen på den virtuella datorn (bör ha startats av SSH vid omstart i föregående steg). 
-
-1.  Om du vill öppna slut punkten som du använder för att fjärrans luta till Oracle-databasen skapar du en regel för nätverks säkerhets grupper med [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule) enligt följande: 
-
-    ```azurecli-interactive
-    az network nsg rule create \
-        --resource-group myResourceGroup\
-        --nsg-name myVmNSG \
-        --name allow-oracle \
-        --protocol tcp \
-        --priority 1001 \
-        --destination-port-range 1521
-    ```
-
-2.  Öppna slut punkten som du använder för att få åtkomst till Oracle EM Express genom att skapa en regel för nätverks säkerhets grupper med [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule) enligt följande:
-
-    ```azurecli-interactive
-    az network nsg rule create \
-        --resource-group myResourceGroup \
-        --nsg-name myVmNSG \
-        --name allow-oracle-EM \
-        --protocol tcp \
-        --priority 1002 \
-        --destination-port-range 5502
-    ```
-
-3. Om det behövs kan du hämta den offentliga IP-adressen för den virtuella datorn igen med [AZ Network Public-IP Visa](/cli/azure/network/public-ip) enligt följande:
-
-    ```azurecli-interactive
-    az network public-ip show \
-        --resource-group myResourceGroup \
-        --name myVMPublicIP \
-        --query [ipAddress] \
-        --output tsv
-    ```
-
-4.  Anslut EM Express från din webbläsare. Kontrol lera att webbläsaren är kompatibel med EM Express (Flash-installation krävs): 
-
-    ```https
-    https://<VM ip address or hostname>:5502/em
-    ```
-
-Du kan logga in med hjälp av **sys** -kontot och markera kryss rutan **som SYSDBA** . Använd det lösen ord **OraPasswd1** som du angav under installationen. 
-
-![Skärm bild av sidan för Oracle OEM Express-inloggning](./media/oracle-quick-start/oracle_oem_express_login.png)
-
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När du är färdig med att utforska din första Oracle-databas på Azure och den virtuella datorn inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group) för att ta bort resurs gruppen, den virtuella datorn och alla relaterade resurser.
@@ -353,6 +429,8 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Nästa steg
+
+Lär dig hur du skyddar din databas i Azure med [strategier för Oracle-säkerhetskopiering](./oracle-database-backup-strategies.md)
 
 Lär dig mer om andra [Oracle-lösningar på Azure](./oracle-overview.md). 
 

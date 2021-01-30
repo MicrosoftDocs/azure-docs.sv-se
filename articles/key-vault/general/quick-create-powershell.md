@@ -3,19 +3,18 @@ title: Snabb start – skapa en Azure Key Vault med Azure PowerShell
 description: Snabb start visar hur du skapar en Azure Key Vault med hjälp av Azure PowerShell
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.date: 12/08/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e77493bc73bc2d6f590d9bdcf891171fbd71f74e
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936273"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070225"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Snabb start: skapa ett nyckel valv med PowerShell
 
@@ -33,44 +32,15 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en Azure-resursgrupp med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. 
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name 'myResourceGroup" -Location "EastUS"
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>Skapa ett nyckelvalv
 
-Skapa en Key Vault i resurs gruppen från föregående steg. Du måste ange en del information:
-
-- Nyckel valvets namn: en sträng på 3 till 24 tecken som bara får innehålla siffror (0-9), bokstäver (a-z, A-Z) och bindestreck (-)
-
-  > [!Important]
-  > Varje nyckel valv måste ha ett unikt namn. Ersätt <ditt-unika-nyckel-valv> med namnet på nyckel valvet i följande exempel.
-
-- Resurs grupp namn: **myResourceGroup**.
-- Platsen: **öster**.
-
-```azurepowershell-interactive
-New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
-```
-
-Utdata från denna cmdlet visar egenskaper för nyckelvalvet du precis skapade. Anteckna de två egenskaperna som visas nedan:
-
-- **Valv namn**: det namn du angav för parametern--name ovan.
-- **Valv-URI**: i exemplet är detta https://<ditt-Unique--namn>. Vault.Azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
-
-Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-De andra snabbstarterna och självstudierna i den här samlingen bygger på den här snabbstarten. Om du planerar att fortsätta med andra snabbstarter och självstudier kan du lämna kvar de här resurserna.
-
-När de inte längre behövs kan du använda kommandot Azure PowerShell [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resurs gruppen och alla relaterade resurser.
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

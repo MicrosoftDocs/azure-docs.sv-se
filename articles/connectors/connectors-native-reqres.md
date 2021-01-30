@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920815"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063020"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Ta emot och svara på inkommande HTTPS-begäranden i Azure Logic Apps
 
@@ -30,7 +30,7 @@ Den här artikeln visar hur du använder begäran om utlösare och åtgärder s�
 
 Mer information om säkerhet finns i auktorisering och kryptering för inkommande samtal till din Logi Kap par, till exempel [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), som tidigare kallades Secure SOCKETS Layer (SSL), [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), visar din Logic-app med Azure API Management eller begränsar IP-adresserna som har inkommande anrop, se [säker åtkomst och data åtkomst för inkommande anrop till begär ande-baserade utlösare](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto och prenumeration. Om du inte har någon prenumeration kan du [Registrera dig för ett kostnads fritt Azure-konto](https://azure.microsoft.com/free/).
 
@@ -216,7 +216,7 @@ När du använder begär ande utlösare för att hantera inkommande begär Anden
 > Om en svars åtgärd inkluderar dessa huvuden, tar Logic Apps bort huvudena från det genererade svarsmeddelandet utan att visa någon varning eller ett fel meddelande:
 >
 > * `Allow`
-> * `Content-*` med dessa undantag: `Content-Disposition` , `Content-Encoding` och `Content-Type`
+> * `Content-*` rubriker förutom `Content-Disposition` , `Content-Encoding` , och `Content-Type` när du använder post-och placerings åtgärder, men inte ingår i get-åtgärder
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`

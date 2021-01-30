@@ -1,22 +1,21 @@
 ---
-title: 'Snabb start: Ange & Visa Azure Key Vault certifikat – Azure CLI'
+title: Snabb start – ange & Visa Azure Key Vault certifikat med Azure CLI
 description: Snabb start visar hur du ställer in och hämtar ett certifikat från Azure Key Vault med Azure CLI
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
-ms.date: 09/03/2019
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 2bb718d038dd7b3f5aa6f3bac1ce1de572c8e829
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 56e51d74358bcda96a6859a481e53710a6f78ec3
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936370"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072429"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>Snabb start: Ange och hämta ett certifikat från Azure Key Vault med Azure CLI
 
@@ -30,30 +29,11 @@ I den här snabb starten skapar du ett nyckel valv i Azure Key Vault med Azure C
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. I följande exempel skapas en resursgrupp med namnet *ContosoResourceGroup* på platsen *eastus*.
+[!INCLUDE [Create a resource group](../../../includes/key-vault-cli-rg-creation.md)]
 
-```azurecli
-az group create --name "ContosoResourceGroup" --location eastus
-```
+## <a name="create-a-key-vault"></a>Skapa ett nyckelvalv
 
-## <a name="create-a-key-vault"></a>Skapa en Key Vault-lösning
-
-Därefter skapar du ett nyckelvalv i resursgruppen du skapade i föregående steg. Du måste ange en del information:
-
-- I den här snabbstarten använder vi **Contoso-vault2**. Du måste ange ett unikt namn när du testar funktionen.
-- Resursgruppnamnet **ContosoResourceGroup**.
-- Platsen är **USA, östra**.
-
-```azurecli
-az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
-```
-
-Utdata från denna cmdlet visar egenskaper för nyckelvalvet du precis skapade. Anteckna de två egenskaperna som visas nedan:
-
-- **Valvnamn**: I det här exemplet är namnet **Contoso-vault2**. Du kommer att använda det här namnet i andra Key Vault-kommandon.
-- **Valvets URI**: I det här exemplet är det https://contoso-vault2.vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
-
-Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-kv-creation.md)]
 
 ## <a name="add-a-certificate-to-key-vault"></a>Lägg till ett certifikat i Key Vault
 
@@ -62,33 +42,28 @@ Om du vill lägga till ett certifikat i valvet behöver du bara göra några ytt
 Skriv kommandona nedan för att skapa ett självsignerat certifikat med standard principen som kallas **ExampleCertificate** :
 
 ```azurecli
-az keyvault certificate create --vault-name "Contoso-Vault2" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
+az keyvault certificate create --vault-name "<your-unique-keyvault-name>" -n ExampleCertificate -p "$(az keyvault certificate get-default-policy)"
 ```
 
-Nu kan du referera till det här certifikatet som du lade till Azure Key Vault med hjälp av dess URI. Använd **för https://Contoso-Vault2.vault.azure.net/certificates/ExampleCertificate** att hämta den aktuella versionen. 
+Nu kan du referera till det här certifikatet som du lade till Azure Key Vault med hjälp av dess URI. Använd **"https://<ditt-Unique-nyckel-namn>. Vault.Azure.net/certificates/ExampleCertificate"** för att hämta den aktuella versionen. 
 
 Visa tidigare lagrat certifikat:
 
 ```azurecli
 
-az keyvault certificate show --name "ExampleCertificate" --vault-name "Contoso-Vault2"
+az keyvault certificate show --name "ExampleCertificate" --vault-name "<your-unique-keyvault-name>"
 ```
 
 Nu har du skapat en Key Vault, lagrat ett certifikat och hämtat det.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-De andra snabbstarterna och självstudierna i den här samlingen bygger på den här snabbstarten. Om du planerar att fortsätta med efterföljande snabbstarter och självstudier kan du lämna kvar de här resurserna.
-När du inte behöver resursgruppen längre kan du använda kommandot [az group delete](/cli/azure/group) till att ta bort resursgruppen och alla relaterade resurser. Så här tar du bort resurserna:
-
-```azurecli
-az group delete --name ContosoResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-delete-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
 I den här snabb starten skapade du ett Key Vault och lagrat ett certifikat i det. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
 
 - Läs en [Översikt över Azure Key Vault](../general/overview.md)
-- Se referensen för [kommandon för Azure CLI-AZ](/cli/azure/keyvault?view=azure-cli-latest)
+- Se referensen för [kommandon för Azure CLI-AZ](/cli/azure/keyvault)
 - Granska [Key Vault säkerhets översikt](../general/security-overview.md)

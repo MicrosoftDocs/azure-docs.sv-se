@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation om Azure Blob Storage
-summary: Azure Blob Storage är Microsofts objektlagringslösning för molnet. Blobblagring är optimerat för att lagra stora mängder ostrukturerade data.
+summary: Azure Blob Storage är Microsofts objekt lagrings lösning för molnet. Blob Storage är optimerad för lagring av enorma mängder ostrukturerade data.
 metadata:
   title: Dokumentation om Azure Blob Storage
-  description: Azure Blob Storage är Microsofts objektlagringslösning för molnet. Blobblagring är optimerat för att lagra stora mängder ostrukturerade data.
+  description: Azure Blob Storage är Microsofts objekt lagrings lösning för molnet. Blobblagring är optimerat för att lagra stora mängder ostrukturerade data.
   services: storage
   ms.service: storage
   ms.subservice: blobs
@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 38cf63766195c1e91662d725aeb1b21c06257ed9
-  ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-  ms.translationtype: HT
+  ms.openlocfilehash: d85631cd7ace8aa5b9b0725920f477e2447e78c0
+  ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/25/2020
-  ms.locfileid: "95912356"
+  ms.lasthandoff: 01/29/2021
+  ms.locfileid: "99072026"
 landingContent:
 - title: Om blobblagring
   linkLists:
@@ -91,15 +91,15 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure Blob Storage för .NET
+    - text: Azure-Blob Storage för .NET
       url: storage-quickstart-blobs-dotnet.md
     - text: Azure Blob Storage för Java
       url: storage-quickstart-blobs-java.md
-    - text: Azure Blob Storage för Python
+    - text: Azure Blob Storage för python
       url: storage-quickstart-blobs-python.md
-    - text: Azure Blob-lagring för JavaScript med Node.js
+    - text: Azure Blob Storage för Java Script med Node.js
       url: storage-quickstart-blobs-nodejs.md
-    - text: Azure Blob-lagring för JavaScript i en webbläsare
+    - text: Azure Blob Storage för Java Script i en webbläsare
       url: quickstart-blobs-javascript-browser.md
     - text: Dirigera händelser till en webbslutpunkt
       url: ../../event-grid/blob-event-quickstart-portal.md

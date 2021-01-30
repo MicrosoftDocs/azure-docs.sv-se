@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fd102bad45bf482cb9a9750bf05e862b9c91e8e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: eaf8f92ec2c7d9653595b3249521582620670aaf
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055220"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089962"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Bevilja administratörsmedgivande för hela klientorganisationen till ett program
 
@@ -27,7 +27,7 @@ Mer information om samtycker till program finns i [Azure Active Directory medgiv
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att bevilja administratörs tillåtelse för hela klienten måste du logga in som [Global administratör](../roles/permissions-reference.md#global-administrator--company-administrator), en [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
+För att bevilja administratörs tillåtelse för hela klienten måste du logga in som [Global administratör](../roles/permissions-reference.md#global-administrator), en [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
 
 > [!IMPORTANT]
 > När ett program har beviljats administratörs medgivande kan alla användare logga in på appen om den inte har kon figurer ATS för att kräva användar tilldelning. För att begränsa vilka användare som kan logga in i ett program, kräver användar tilldelning och tilldelar sedan användare eller grupper till programmet. Mer information finns i [metoder för att tilldela användare och grupper](./assign-user-or-group-access-portal.md).
@@ -47,7 +47,7 @@ Du kan bevilja klient organisationens godkännande genom *företags program* om 
 
 Så här beviljar du ett administrativt medgivande till en app som anges i **företags program**:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som [Global administratör](../roles/permissions-reference.md#global-administrator--company-administrator), [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
+1. Logga in på [Azure Portal](https://portal.azure.com) som [Global administratör](../roles/permissions-reference.md#global-administrator), [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
 2. Välj **Azure Active Directory** sedan **företags program**.
 3. Välj det program som du vill bevilja klient organisationens administratörs medgivande till.
 4. Välj **behörigheter** och klicka sedan på **bevilja administrativt medgivande**.
@@ -63,7 +63,7 @@ För program som din organisation har utvecklat, eller som har registrerats dire
 
 Så här tilldelar du administratörs medgivande från klient organisationen från **Appregistreringar**:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som [Global administratör](../roles/permissions-reference.md#global-administrator--company-administrator), [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
+1. Logga in på [Azure Portal](https://portal.azure.com) som [Global administratör](../roles/permissions-reference.md#global-administrator), [program administratör](../roles/permissions-reference.md#application-administrator)eller en [moln program administratör](../roles/permissions-reference.md#cloud-application-administrator).
 2. Välj **Azure Active Directory** sedan **Appregistreringar**.
 3. Välj det program som du vill bevilja klient organisationens administratörs medgivande till.
 4. Välj **API-behörigheter** och klicka sedan på **bevilja administrativt medgivande**.

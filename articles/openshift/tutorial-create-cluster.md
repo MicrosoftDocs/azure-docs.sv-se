@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 10/26/2020
-ms.openlocfilehash: 7b0aead6ada87ca259c838f3f56e68f1030302a2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e6be2b659223fb110d7e13b14d732561df9ad408
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675711"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072243"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Självstudie: skapa ett Azure Red Hat OpenShift 4-kluster
 
@@ -88,11 +88,11 @@ Om du anger en anpassad domän för klustret noterar du följande punkter:
 
 * OpenShift-konsolen är tillgänglig på en URL, till exempel `https://console-openshift-console.apps.example.com` , i stället för den inbyggda domänen `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 
-* Som standard använder OpenShift självsignerade certifikat för alla vägar som skapas på anpassade domäner `*.apps.example.com` .  Om du väljer att använda anpassad DNS när du har anslutit till klustret måste du följa den OpenShift-dokumentationen för att [Konfigurera en anpassad certifikat utfärdare för din](https://docs.openshift.com/aro/4/authentication/certificates/replacing-default-ingress-certificate.html) ingångs kontroll och en [anpassad ca för din API-Server](https://docs.openshift.com/aro/4/authentication/certificates/api-server.html).
+* Som standard använder OpenShift självsignerade certifikat för alla vägar som skapas på anpassade domäner `*.apps.example.com` .  Om du väljer att använda anpassad DNS när du har anslutit till klustret måste du följa den OpenShift-dokumentationen för att [Konfigurera en anpassad certifikat utfärdare för din](https://docs.openshift.com/container-platform/4.6/security/certificates/replacing-default-ingress-certificate.html) ingångs kontroll och en [anpassad ca för din API-Server](https://docs.openshift.com/container-platform/4.6/security/certificates/api-server.html).
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Skapa ett virtuellt nätverk som innehåller två tomma undernät
 
-Härnäst ska du skapa ett virtuellt nätverk som innehåller två tomma undernät.
+Härnäst ska du skapa ett virtuellt nätverk som innehåller två tomma undernät. Om du har ett befintligt virtuellt nätverk som uppfyller dina behov kan du hoppa över det här steget.
 
 1. **Ange följande variabler i den gränssnitts miljö där du ska köra `az` kommandona.**
 
@@ -131,7 +131,7 @@ Härnäst ska du skapa ett virtuellt nätverk som innehåller två tomma undern�
 
 2. **Skapa ett virtuellt nätverk.**
 
-   Azure Red Hat OpenShift-kluster som kör OpenShift 4 kräver ett virtuellt nätverk med två tomma undernät för Master-och Worker-noderna.
+   Azure Red Hat OpenShift-kluster som kör OpenShift 4 kräver ett virtuellt nätverk med två tomma undernät för Master-och Worker-noderna. Du kan antingen skapa ett nytt virtuellt nätverk för detta eller använda ett befintligt virtuellt nätverk.
 
    Skapa ett nytt virtuellt nätverk i samma resurs grupp som du skapade tidigare:
 

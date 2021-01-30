@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe34de0fa7847a23d9335dcdb0a38a33e006fdc
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355213"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090645"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Felsöka Azure Active Directory B2B-samarbete
 
@@ -92,7 +92,7 @@ En användare som har ett gäst konto kan inte logga in och får följande fel m
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 ```
 
-Användaren har ett Azure-användarkonto och är en viral-klient som har övergivits eller inte hanteras. Det finns dessutom inga globala administratörer eller företags administratörer i klient organisationen.
+Användaren har ett Azure-användarkonto och är en viral-klient som har övergivits eller inte hanteras. Det finns dessutom inga globala administratörer i klient organisationen.
 
 För att lösa det här problemet måste du ta över den övergivna klienten. Se  [ta över en ohanterad katalog som administratör i Azure Active Directory](../enterprise-users/domains-admin-takeover.md). Du måste också ha åtkomst till Internet-riktad DNS för domänsuffix i fråga för att kunna tillhandahålla direkt bevis som du styr av namn området. När klienten har returnerats till ett hanterat tillstånd kan du diskutera med kunden om du lämnar användarna och det verifierade domän namnet är det bästa alternativet för deras organisation.
 

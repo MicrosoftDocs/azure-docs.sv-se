@@ -126,20 +126,58 @@
           href: security-baseline.md
 - name: Anvisningar
   items:
-    - name: Skapa index och konstruktioner
+    - name: Planering
+      items:
+        - name: Välj en nivå
+          href: search-sku-tier.md
+        - name: Beräkna och hantera kapacitet
+          href: search-capacity-planning.md
+        - name: Uppskatta kostnader
+          href: search-sku-manage-costs.md
+        - name: Tjänstbegränsningar
+          href: search-limits-quotas-capacity.md
+        - name: Skala för prestanda
+          href: search-performance-optimization.md
+        - name: Arkitektur för flera innehavare
+          href: search-modeling-multitenant-saas-applications.md
+    - name: Utveckling
+      items:
+        - name: API-versioner
+          href: search-api-versions.md
+        - name: Förhandsgranskningsfunktioner
+          href: search-api-preview.md
+        - name: Utveckla i .NET
+          items:
+            - name: Använda Azure.Search.Documents
+              href: search-howto-dotnet-sdk.md
+            - name: Använda Microsoft.Azure.Search
+              href: search-howto-dotnet-sdk-v10.md
+            - name: Äldre snabbstart (Microsoft.Azure.Search)
+              href: search-get-started-dotnet-v10.md
+        - name: Uppgradera SDK
+          items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: 'Uppgradera REST-API:et'
+          href: search-api-migration.md
+    - name: Index
       items:
         - name: Skapa ett index
           href: search-what-is-an-index.md
         - name: Skapa ett index för flera språk
           href: search-language-support.md
-        - name: Analysverktyg
-          items:
-            - name: Lägga till analysverktyg
-              href: search-analyzers.md
-            - name: Lägga till ett språkanalysverktyg
-              href: index-add-language-analyzers.md
-            - name: Lägga till ett anpassat analysverktyg
-              href: index-add-custom-analyzers.md
         - name: Synonymer
           items:
             - name: Lägga till synonymer
@@ -150,7 +188,15 @@
           href: search-howto-complex-data-types.md
         - name: Modeller med relationsdata
           href: index-sql-relational-data.md
-    - name: Importera alla data
+    - name: Analysverktyg
+      items:
+        - name: Lägga till analysverktyg
+          href: search-analyzers.md
+        - name: Lägga till ett språkanalysverktyg
+          href: index-add-language-analyzers.md
+        - name: Lägga till ett anpassat analysverktyg
+          href: index-add-custom-analyzers.md
+    - name: Data
       items:
         - name: Översikt över dataimport
           href: search-what-is-data-import.md
@@ -162,16 +208,14 @@
           href: search-howto-large-index.md
         - name: Hantera samtidiga uppdateringar
           href: search-howto-concurrency.md
-    - name: Importera Azure-data (indexerare)
+    - name: Indexerare
       items:
-        - name: Arbeta med indexerare
-          items:
-            - name: Övervaka indexerare
-              href: search-howto-monitor-indexers.md
-            - name: Schema för indexerare
-              href: search-howto-schedule-indexers.md
-            - name: Mappa fält
-              href: search-indexer-field-mappings.md
+        - name: Skapa en indexerare
+          href: search-howto-create-indexers.md
+        - name: Schemalägga en indexerare
+          href: search-howto-schedule-indexers.md
+        - name: Definiera fält mappningar
+          href: search-indexer-field-mappings.md
         - name: Ansluta med hanterade identiteter
           items:
             - name: Översikt över hanterade identiteter
@@ -214,7 +258,7 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Virtuella Azure SQL Server-datorer
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-    - name: Använda färdigheter (AI)
+    - name: Kompetensuppsättningar
       items:
         - name: Bifoga en resurs för Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
@@ -254,7 +298,7 @@
               href: knowledge-store-connect-power-bi.md
             - name: Projektionsexempel
               href: knowledge-store-projections-examples.md
-    - name: Söka i data
+    - name: Frågor
       items:
         - name: Frågetyper och sammansättning
           href: search-query-overview.md
@@ -304,52 +348,6 @@
           href: index-add-scoring-profiles.md
         - name: Likhetsalgoritm
           href: index-ranking-similarity.md
-    - name: Planera
-      items:
-        - name: Välj en nivå
-          href: search-sku-tier.md
-        - name: Beräkna och hantera kapacitet
-          href: search-capacity-planning.md
-        - name: Uppskatta kostnader
-          href: search-sku-manage-costs.md
-        - name: Tjänstbegränsningar
-          href: search-limits-quotas-capacity.md
-        - name: Skala för prestanda
-          href: search-performance-optimization.md
-        - name: Arkitektur för flera innehavare
-          href: search-modeling-multitenant-saas-applications.md
-    - name: Utveckla
-      items:
-        - name: API-versioner
-          href: search-api-versions.md
-        - name: Lista över förhandsgranskningsfunktioner
-          href: search-api-preview.md
-        - name: Utveckla i .NET
-          items:
-            - name: Använda Azure.Search.Documents
-              href: search-howto-dotnet-sdk.md
-            - name: Använda Microsoft.Azure.Search
-              href: search-howto-dotnet-sdk-v10.md
-            - name: Äldre snabbstart (Microsoft.Azure.Search)
-              href: search-get-started-dotnet-v10.md
-        - name: Uppgradera SDK
-          items:
-            - name: .NET SDK 11.0
-              href: search-dotnet-sdk-migration-version-11.md
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Management SDK
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: 'Uppgradera REST-API:et'
-          href: search-api-migration.md
     - name: Säkerhet
       items:
         - name: Datakryptering
@@ -400,6 +398,8 @@
           href: search-monitor-logs-powerbi.md
         - name: Övervaka frågeaktivitet
           href: search-monitor-queries.md
+        - name: Övervaka indexerare
+          href: search-howto-monitor-indexers.md
         - name: Sök efter trafikanalys
           href: search-traffic-analytics.md
     - name: Felsöka

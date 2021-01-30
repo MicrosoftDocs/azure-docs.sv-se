@@ -3,12 +3,12 @@ title: Azure NetApp Files med Azure VMware-lösning
 description: Använd Azure NetApp Files med virtuella Azure VMware-lösningar för att migrera och synkronisera data mellan lokala servrar, virtuella Azure VMware-lösningar och moln infrastrukturer.
 ms.topic: how-to
 ms.date: 01/20/2021
-ms.openlocfilehash: 97a9172dfbed2722d4af0abbd6231a0367dc4e3c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b712b25130a8bed19bd784d2c45c18a55a582be6
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798495"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062986"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files med Azure VMware-lösning
 
@@ -102,7 +102,7 @@ Följande är bara några övertygande Azure NetApp Files användnings fall.
 - Fil resurser på Azure VMware-lösning
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [resurs gränser för Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
-- Se [rikt linjer för Azure NetApp Files nätverks planering](../azure-netapp-files/azure-netapp-files-network-topologies.md).
-- Lär dig mer om [replikering mellan regioner av Azure NetApp Files volymer](../azure-netapp-files/cross-region-replication-introduction.md). 
-- Se [vanliga frågor och svar om Azure NetApp Files](../azure-netapp-files/azure-netapp-files-faqs.md).
+- [Resursbegränsningar för Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
+- [Riktlinjer för Azure NetApp Files-nätverksplanering](../azure-netapp-files/azure-netapp-files-network-topologies.md)
+- [Replikering mellan regioner av Azure NetApp Files volymer](../azure-netapp-files/cross-region-replication-introduction.md) 
+- [Vanliga frågor och svar om Azure NetApp Files](../azure-netapp-files/azure-netapp-files-faqs.md)

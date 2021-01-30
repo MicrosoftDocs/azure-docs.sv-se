@@ -6,27 +6,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 69a7e63a5dcd892c1085367bd9747ffae9a835bf
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: adfe6282d4a7d2cc35b4f5c71ecb67e6cda641a8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366479"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090773"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
 
-[v3 referens dokumentation](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [v3-biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 referens dokumentation](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview)  |  [v3-biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
-[v3 referens dokumentation](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [v3-biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[v3 referens dokumentation](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-latest)  |  [v3-biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-21"></a>[Version 2,1](#tab/version-2)
@@ -151,11 +151,11 @@ Objektet Response är en lista som innehåller analys informationen för varje d
 * [Klientautentisering](#client-authentication)
 * [Attitydanalys](#sentiment-analysis) 
 * [Åsikts utvinning](#opinion-mining)
-* [Språkidentifiering](#language-detection)
+* [Språk identifiering](#language-detection)
 * [Igenkänning av namngiven entitet](#named-entity-recognition-ner)
 * [Länkning av entitet](#entity-linking)
 * Personligt identifierbar information
-* [Extrahering av nyckelfraser](#key-phrase-extraction)
+* [Extrahering av nyckel fraser](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Klientautentisering
 
@@ -893,7 +893,7 @@ Den här funktionen är inte tillgänglig i version 2,1.
 
 ---
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Kör programmet med `node` kommandot på snabb starts filen.
 

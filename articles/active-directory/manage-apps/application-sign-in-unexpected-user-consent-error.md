@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 25515c29ae3e5623b447232ed6f935a668a58c3a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658493"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090077"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Ett oväntat fel inträffade vid godkännande av ett program
 
@@ -35,7 +35,7 @@ Vissa villkor måste vara uppfyllda för att en användare ska kunna godkänna d
 * **AADSTS90093:** &lt; clientAppDisplayName &gt; begär en eller flera behörigheter som du inte har behörighet att bevilja. Kontakta en administratör, som kan godkänna det här programmet åt dig.
 * **AADSTS90094:** &lt; clientAppDisplayName &gt; måste ha behörighet för att få åtkomst till resurser i din organisation som bara en administratör kan bevilja. Be en administratör att bevilja behörighet till den här appen innan du använder den.
 
-Felet uppstår när en användare som inte är en företags administratör försöker använda ett program som begär behörigheter som bara en administratör kan bevilja. Det här felet kan lösas av en administratör som beviljar åtkomst till programmet för organisationens räkning.
+Felet uppstår när en användare som inte är en global administratör försöker använda ett program som begär behörigheter som bara en administratör kan bevilja. Det här felet kan lösas av en administratör som beviljar åtkomst till programmet för organisationens räkning.
 
 Det här felet kan också inträffa när en användare hindras från att komma åt ett program på grund av att det finns risk för behörighets förfrågan. I det här fallet loggas även en gransknings händelse med en kategori av typen "ApplicationManagement", aktivitets typen "medgivande till program" och status orsaken "riskfylld program upptäcktes".
 
@@ -44,7 +44,7 @@ Ett annat scenario där det här felet kan inträffa är när användar tilldeln
 ## <a name="policy-prevents-granting-permissions-error"></a>Princip förhindrar beviljande av behörighets fel
 * **AADSTS90093:** En administratör för &lt; tenantDisplayName &gt; har angett en princip som förhindrar att du beviljar &lt; namn på appen &gt; de behörigheter som begärs. Kontakta en administratör för &lt; tenantDisplayName &gt; , som kan ge behörighet till den här appen för din räkning.
 
-Det här felet uppstår när en företags administratör stänger av möjligheten för användare att samtycka till program, och en icke-administratör försöker använda ett program som kräver medgivande. Det här felet kan lösas av en administratör som beviljar åtkomst till programmet för organisationens räkning.
+Det här felet uppstår när en global administratör stänger av möjligheten för användare att samtycka till program, och en icke-administratör försöker använda ett program som kräver medgivande. Det här felet kan lösas av en administratör som beviljar åtkomst till programmet för organisationens räkning.
 
 ## <a name="intermittent-problem-error"></a>Tillfälligt problem fel
 * **AADSTS90090:** Det verkar som om inloggnings processen påträffade ett tillfälligt problem med att registrera de behörigheter som du försökte bevilja till &lt; clientAppDisplayName &gt; . försök igen senare.

@@ -6,16 +6,16 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 79b74c9dccd68ac3abfd9ae6cb2d0c345e45d4bf
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492428"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070618"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Konfigurera inbyggt containerregister för Azure Red Hat OpenShift 4
 
-Azure Red Hat OpenShift tillhandahåller ett integrerat behållar avbildnings register med namnet [OpenShift container Registry (OCR)](https://docs.openshift.com/aro/4/registry/architecture-component-imageregistry.html) som lägger till möjligheten att automatiskt etablera nya avbildnings databaser på begäran. Detta ger användare en inbyggd plats för deras program versioner för att skicka de resulterande avbildningarna.
+Azure Red Hat OpenShift tillhandahåller ett integrerat behållar avbildnings register med namnet [OpenShift container Registry (OCR)](https://docs.openshift.com/container-platform/4.6/registry/architecture-component-imageregistry.html) som lägger till möjligheten att automatiskt etablera nya avbildnings databaser på begäran. Detta ger användare en inbyggd plats för deras program versioner för att skicka de resulterande avbildningarna.
 
 I den här artikeln ska du konfigurera det inbyggda registret för behållar avbildningar för ett Azure Red Hat OpenShift-kluster (ARO) 4. Du lär dig följande:
 

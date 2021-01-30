@@ -3,12 +3,12 @@ title: Skapa en ny Azure Monitor Application Insights arbets ytans baserade resu
 description: Lär dig mer om de steg som krävs för att aktivera de nya Azure Monitor Application Insights arbets ytans baserade resurser.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: f1cc7db7eea4485ad40062a0e11a76dc14234b41
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956061"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063374"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Arbets yta-baserade Application Insights resurser
 
@@ -33,8 +33,8 @@ Med arbets ytans baserade Application Insights kan du dra nytta av de senaste fu
 
 Logga in på [Azure Portal](https://portal.azure.com)och skapa en Application Insights resurs:
 
-[!div class="mx-imgBorder"]
-![Arbets yta-baserad Application Insights resurs](./media/create-workspace-resource/create-workspace-based.png)
+> [!div class="mx-imgBorder"]
+> ![Arbets yta-baserad Application Insights resurs](./media/create-workspace-resource/create-workspace-based.png)
 
 Om du inte redan har en befintlig Log Analytics arbets yta kan du [läsa dokumentationen för att skapa Log Analytics arbets ytor](../learn/quick-create-workspace.md).
 

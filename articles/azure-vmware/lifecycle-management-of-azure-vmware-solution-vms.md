@@ -3,12 +3,12 @@ title: Livs cykel hantering av virtuella Azure VMware-lösningar
 description: Lär dig att hantera alla aspekter av livs cykeln för dina virtuella Azure VMware-lösningar med Microsoft Azure inbyggda verktyg.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326819"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062904"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Livs cykel hantering av virtuella Azure VMware-lösningar
 
@@ -81,13 +81,13 @@ Azure Security Center behöver inte distribueras. Mer information finns i en lis
 
 Azure-bågen utökar Azure-hanteringen till vilken infrastruktur som helst, inklusive Azure VMware-lösning, lokalt eller andra moln plattformar.
 
-- Se [ansluta hybrid datorer till Azure i stor skala](../azure-arc/servers/onboard-service-principal.md) för att aktivera Azure Arc-aktiverade servrar för flera virtuella Windows-eller Linux-datorer.
+- Information om hur du aktiverar Azure Arc-aktiverade servrar för flera virtuella Windows-eller Linux-datorer finns i [ansluta hybrid datorer till Azure i stor skala](../azure-arc/servers/onboard-service-principal.md).
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Publicera hybrid Kubernetes-kluster med ARC-aktiverad Kubernetes
 
 Du kan ansluta ett Kubernetes-kluster som finns i din Azure VMware-lösnings miljö med Azure Arc-aktiverad Kubernetes. 
 
-- Se [skapa en Azure Arc-aktiverad onboarding-tjänstens huvud namn](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+- Mer information finns i [skapa en Azure Arc-aktiverad onboarding-tjänstens huvud namn](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 
 ### <a name="deploy-the-log-analytics-agent"></a>Distribuera Log Analytics agent
 

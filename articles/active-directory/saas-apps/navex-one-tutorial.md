@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: e8a392f72af1ae5a3da8d8e3306f05cdec390591
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c6eac316a8d1849e193add2d74e81f8652c7a676
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735907"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090594"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-navex-one"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med NAVEX One
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera NAVEX en med Azure Acti
 * Gör det möjligt för användarna att logga in automatiskt för att NAVEX en med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -76,10 +76,32 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<CLIENT_KEY>.navexglobal.com`
+    a. I text rutan **inloggnings-URL** skriver du en URL med något av följande mönster:
+
+    | Inloggnings-URL |
+    |--------------|
+    | `https://<CLIENT_KEY>.navexglobal.com` |
+    | `https://<CLIENT_KEY>.navexglobal.eu` |
+    |
+
+    b. I text rutan **identifierare** skriver du en av följande URL: er:
+
+    | Identifierare |
+    |--------------|
+    | `https://doorman.navexglobal.com/Shibboleth` |
+    | `https://doorman.navexglobal.eu/Shibboleth` |
+    |
+
+    c. I text rutan **svars-URL** skriver du en av följande URL: er:
+
+    | Svars-URL |
+    |--------------|
+    | `https://doorman.navexglobal.com/Shibboleth.sso/SAML2/POST` |
+    | `https://doorman.navexglobal.eu/Shibboleth.sso/SAML2/POST` |
+    |
 
     > [!NOTE]
-    > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [NAVEX ett kund support team](mailto:ethicspoint@navexglobal.com) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Inloggnings-URL-värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [NAVEX ett kund support team](mailto:ethicspoint@navexglobal.com) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på Kopiera för att kopiera **URL: en för appens Federations-metadata** och spara den på din dator.
 

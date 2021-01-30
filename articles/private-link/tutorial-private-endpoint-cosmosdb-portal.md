@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631958"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063474"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Självstudie: ansluta till ett Azure Cosmos-konto med en privat Azure-slutpunkt
 
@@ -147,7 +147,7 @@ I det här avsnittet ska du skapa ett Cosmos DB-konto och konfigurera den privat
     | **Instansinformation** |  |
     | Kontonamn | Ange **mycosmosdb**. Om namnet inte är tillgängligt anger du ett unikt namn. |
     | API | Välj **Core (SQL)**. |
-    | Plats | Välj **USA, östra**. |
+    | Location | Välj **USA, östra**. |
     | Kapacitetsläge | Lämna det **tillhandahållna standard data flödet**. |
     | Tillämpa rabatt för kostnadsfri nivå | Lämna standardvärdet **Använd inte**. |
     | Geo-redundans | Låt standardvärdet vara **disable**. |
@@ -173,8 +173,8 @@ I det här avsnittet ska du skapa ett Cosmos DB-konto och konfigurera den privat
     |-----------------------|----------------------------------|
     | Prenumeration | Välj din Azure-prenumeration |
     | Resursgrupp | Välj **myResourceGroup** |
-    | Plats | Välj **USA, östra** |
-    | Namn | Ange **myPrivateEndpoint** |
+    | Location | Välj **USA, östra** |
+    | Name | Ange **myPrivateEndpoint** |
     | Mål under resurs | Lämna standard **kärnan (SQL)** |
     | **Nätverk** |  |
     | Virtuellt nätverk | Välj **myVNet** |
@@ -218,19 +218,19 @@ I det här avsnittet ska du använda den virtuella datorn som du skapade i före
 
 1. Välj **resurs grupper** i det vänstra navigerings fönstret.
 
-2. Välj **myResourceGroup**.
+1. Välj **myResourceGroup**.
 
-3. Välj **myVM**.
+1. Välj **myVM**.
 
-4. På sidan Översikt för **myVM** väljer du **Anslut** sedan **skydds**.
+1. På sidan Översikt för **myVM** väljer du **Anslut** sedan **skydds**.
 
-5. Välj knappen blå **användnings skydds** .
+1. Välj knappen blå **användnings skydds** .
 
-6. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
+1. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
 
-7. Öppna Windows PowerShell på servern när du har anslutit.
+1. Öppna Windows PowerShell på servern när du har anslutit.
 
-8. Ange `nslookup <cosmosdb-account-name>.documents.azure.com`. Ersätt **\<cosmosdb-account-name>** med namnet på Cosmos DB kontot som du skapade i föregående steg. 
+1. Ange `nslookup <cosmosdb-account-name>.documents.azure.com` och verifiera namn matchningen. Ersätt **\<cosmosdb-account-name>** med namnet på Cosmos DB kontot som du skapade i föregående steg. 
 
     ```powershell
     Server:  UnKnown
@@ -241,28 +241,31 @@ I det här avsnittet ska du använda den virtuella datorn som du skapade i före
     Address:  10.1.0.5
     Aliases:  mycosmosdb8675.documents.azure.com
     ```
-
     En privat IP-adress för **10.1.0.5** returneras för Cosmos DB kontots namn.  Adressen finns i under nätet för det virtuella nätverk som du skapade tidigare.
+    
+1. Hämta din Azure Cosmos DB primära anslutnings sträng från portalen. En giltig anslutnings sträng har formatet:
+   
+   För SQL API-konton: `https://<accountName>.documents.azure.com:443/;AccountKey=<accountKey>;` för Azure Cosmos DB API för MongoDB: `mongodb://<accountName>:<accountKey>@cdbmongo36.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false`
 
-9. Installera [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) på den virtuella datorn.
+1. Installera [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) på den virtuella datorn.
 
-10. Välj **Slutför** när **Microsoft Azure Storage Explorer** har installerats.  Låt rutan vara markerad om du vill öppna programmet.
+1. Välj **Slutför** när **Microsoft Azure Storage Explorer** har installerats.  Låt rutan vara markerad om du vill öppna programmet.
 
-11. I fönstret **Anslut till Azure Storage** väljer du **Avbryt**.
+1. I fönstret **Anslut till Azure Storage** väljer du **Avbryt**.
 
-12. I Storage Explorer väljer du den högra mus knappen på **Cosmos DB konton** och väljer **Anslut till Cosmos DB**.
+1. I Storage Explorer väljer du den högra mus knappen på **Cosmos DB konton** och väljer **Anslut till Cosmos DB**.
 
-13. Låt standardvärdet för **SQL** vara kvar under **Välj API**.
+1. Låt standardvärdet för **SQL** vara kvar under **Välj API**.
 
-14. I rutan under **anslutnings sträng** klistrar du in anslutnings strängen från det Cosmos DB konto som du kopierade i föregående steg.
+1. I rutan under **anslutnings sträng** klistrar du in anslutnings strängen från det Cosmos DB konto som du kopierade i föregående steg.
 
-15. Välj **Nästa**.
+1. Välj **Nästa**.
 
-16. Kontrol lera att inställningarna är korrekta i **anslutnings Sammanfattning**.  
+1. Kontrol lera att inställningarna är korrekta i **anslutnings Sammanfattning**.  
 
-17. Välj **Anslut**.
+1. Välj **Anslut**.
 
-18. Stäng anslutningen till **myVM**.
+1. Stäng anslutningen till **myVM**.
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser

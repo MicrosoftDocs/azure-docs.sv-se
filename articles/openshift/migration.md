@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migrering, Aro, OpenShift, Red Hat
-ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469753"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071043"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Migrera från Azure Red Hat OpenShift 3,11 till Azure Red Hat OpenShift 4
 
@@ -75,11 +75,11 @@ az aro create \
 
 För att användare ska kunna interagera med Azure Red Hat OpenShift måste de först autentisera till klustret. Authentication Layer identifierar den användare som är associerad med begär anden till API: t för Azure Red Hat OpenShift. Auktoriserings skiktet använder sedan information om den begär ande användaren för att avgöra om begäran är tillåten.
 
-När ett Azure Red Hat OpenShift 4-kluster skapas skapas en tillfällig administrativ användare. [Anslut till klustret](tutorial-connect-cluster.md), Lägg till användare och grupper och [Konfigurera de behörigheter som krävs](https://docs.openshift.com/aro/4/authentication/understanding-authentication.html) för båda.
+När ett Azure Red Hat OpenShift 4-kluster skapas skapas en tillfällig administrativ användare. [Anslut till klustret](tutorial-connect-cluster.md), Lägg till användare och grupper och [Konfigurera de behörigheter som krävs](https://docs.openshift.com/container-platform/4.6/authentication/understanding-authentication.html) för båda.
 
 ### <a name="networking"></a>Nätverk
 
-Azure Red Hat OpenShift 4 använder några olika operatorer för att konfigurera nätverket i klustret: [kluster nätverks operatör](https://docs.openshift.com/aro/4/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), [DNS-operatör](https://docs.openshift.com/aro/4/networking/dns-operator.html)och [inkommande operator](https://docs.openshift.com/aro/4/networking/ingress-operator.html). Mer information om hur du konfigurerar nätverk i ett Azure Red Hat OpenShift 4-kluster finns i [nätverks diagrammet](concepts-networking.md) och [förstå nätverk](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
+Azure Red Hat OpenShift 4 använder några olika operatorer för att konfigurera nätverket i klustret: [kluster nätverks operatör](https://docs.openshift.com/container-platform/4.6/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator), [DNS-operatör](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html)och [inkommande operator](https://docs.openshift.com/container-platform/4.6/networking/ingress-operator.html). Mer information om hur du konfigurerar nätverk i ett Azure Red Hat OpenShift 4-kluster finns i [nätverks diagrammet](concepts-networking.md) och [förstå nätverk](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html).
 
 ### <a name="storage"></a>Storage
 Azure Red Hat OpenShift 4 har stöd för följande PersistentVolume-plugin-program:
@@ -98,13 +98,13 @@ Information om hur du konfigurerar dessa lagrings typer finns i [Konfigurera bes
 
 ### <a name="registry"></a>Register
 
-Azure Red Hat OpenShift 4 kan bygga avbildningar från din käll kod, distribuera dem och hantera deras livs cykel. För att möjliggöra detta ger Azure Red Hat OpenShift 4 ett [internt, integrerat behållar avbildnings register](https://docs.openshift.com/aro/4/registry/registry-options.html) som kan distribueras i din Azure Red Hat OpenShift-miljö för att hantera avbildningar lokalt.
+Azure Red Hat OpenShift 4 kan bygga avbildningar från din käll kod, distribuera dem och hantera deras livs cykel. För att möjliggöra detta ger Azure Red Hat OpenShift 4 ett [internt, integrerat behållar avbildnings register](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html) som kan distribueras i din Azure Red Hat OpenShift-miljö för att hantera avbildningar lokalt.
 
-Om du använder externa register som [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)-register eller ett [inaktiverat Red Hat-register](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), följer du stegen för att ange autentiseringsuppgifter för klustret så att klustret får åtkomst till databaserna.
+Om du använder externa register som [Azure Container Registry](../container-registry/index.yml), [Red Hat Quay](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)-register eller ett [inaktiverat Red Hat-register](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options), följer du stegen för att ange autentiseringsuppgifter för klustret så att klustret får åtkomst till databaserna.
 
 ### <a name="monitoring"></a>Övervakning
 
-Azure Red Hat OpenShift innehåller en förkonfigurerad, förinstallerad och självuppdaterande övervaknings stack som baseras på Prometheus-projektet med öppen källkod och det större eko systemet. Den ger övervakning av kluster komponenter och innehåller en uppsättning aviseringar som omedelbart meddelar kluster administratören om eventuella problem och en uppsättning Grafana-instrumentpaneler. Kluster övervaknings stacken stöds bara för övervakning av Azure Red Hat OpenShift-kluster. Mer information finns i [kluster övervakning för Azure Red Hat OpenShift](https://docs.openshift.com/aro/4/monitoring/cluster_monitoring/about-cluster-monitoring.html).
+Azure Red Hat OpenShift innehåller en förkonfigurerad, förinstallerad och självuppdaterande övervaknings stack som baseras på Prometheus-projektet med öppen källkod och det större eko systemet. Den ger övervakning av kluster komponenter och innehåller en uppsättning aviseringar som omedelbart meddelar kluster administratören om eventuella problem och en uppsättning Grafana-instrumentpaneler. Kluster övervaknings stacken stöds bara för övervakning av Azure Red Hat OpenShift-kluster. Mer information finns i [kluster övervakning för Azure Red Hat OpenShift](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html).
 
 Om du har använt [Azure Monitor för behållare för Azure Red Hat OpenShift 3,11](../azure-monitor/insights/container-insights-azure-redhat-setup.md)kan du också aktivera Azure Monitor för behållare för [Azure Red Hat OpenShift 4-kluster](../azure-monitor/insights/container-insights-azure-redhat4-setup.md) och fortsätta använda samma Log Analytics-arbetsyta.
 
@@ -127,4 +127,4 @@ az openshift delete --name $CLUSTER_NAME
                     [--yes]
 ```
 ## <a name="next-steps"></a>Nästa steg
-Kolla in Azure Red Hat OpenShift-dokumentationen som tillhandahålls av Red Hat [här](https://docs.openshift.com/aro/4/welcome/index.html).
+Kolla in Red Hat OpenShift-dokumentationen [här](https://docs.openshift.com/container-platform/4.6/welcome/index.html).

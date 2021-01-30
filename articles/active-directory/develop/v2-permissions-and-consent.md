@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756061"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090195"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Behörigheter och medgivande i Microsoft Identity Platform
 
@@ -164,7 +164,7 @@ Om programmet begär program behörigheter och en administratör beviljar behör
 
 När du har använt admin medgivande-slutpunkten för att bevilja administratörs tillåtelse är du klar. Användarna behöver inte vidta några ytterligare åtgärder. När administratörs medgivande beviljas kan användarna få en åtkomsttoken via ett typiskt auth-flöde. Den resulterande åtkomsttoken har de behörigheter som har skickats.
 
-När en företags administratör använder ditt program och dirigeras till auktoriserad slut punkt identifierar Microsoft Identity Platform användarens roll. Den frågar om företags administratören vill samtycka åt hela klient organisationen för de behörigheter som du har begärt. Du kan istället använda en dedikerad administratörs medgivande slut punkt för att proaktivt begära en administratör att bevilja behörighet åt hela klient organisationen. Den här slut punkten krävs också för att begära program behörigheter. Det går inte att begära program behörigheter med hjälp av en auktoriserad slut punkt.
+När en global administratör använder ditt program och dirigeras till auktoriserad slut punkt identifierar Microsoft Identity Platform användarens roll. Den frågar om den globala administratören vill samtycka åt hela klient organisationen för de behörigheter som du har begärt. Du kan istället använda en dedikerad administratörs medgivande slut punkt för att proaktivt begära en administratör att bevilja behörighet åt hela klient organisationen. Den här slut punkten krävs också för att begära program behörigheter. Det går inte att begära program behörigheter med hjälp av en auktoriserad slut punkt.
 
 Om du följer de här stegen kan din app begära behörigheter för alla användare i en klient, inklusive administrations begränsade omfång. Den här åtgärden har hög behörighet. Använd bara åtgärden om det behövs för ditt scenario.
 

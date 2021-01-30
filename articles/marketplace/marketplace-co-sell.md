@@ -3,16 +3,16 @@ title: Samförsäljnings partner engagemang – Microsoft Commercial Marketplace
 description: Programmet Microsoft Partner Center Co-Sales för partner kan hjälpa dig att komma till en omfattande kund bas och skapa ny försäljning.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/2/2020
-ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/29/2021
+ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880295"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063087"
 ---
 # <a name="co-sell-partner-engagement"></a>Deltagande i partnersäljsamarbete
 
@@ -22,7 +22,7 @@ Programmet för samförsäljning är tillgängligt för **program vara som skapa
 
 - **Samförsäljnings färdiga** erbjudanden exponeras för Microsofts fält säljare. När du arbetar med Microsoft-säljare hjälper det samförsäljnings programmet att hjälpa dig att komma åt en omfattande community med Microsoft-hanterade kunder för att samar beta med affärs möjligheter som påskyndar företagets tillväxt.
 
-    ![Diagram över hur samförsäljning sker när Sälj leads delas, godkänns och tas emot mot Microsoft-hanterade kunder.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Diagram över hur samförsäljning sker när Sälj leads delas, godkänns och tas emot mot Microsoft-hanterade kunder.":::
 
 - **Co-Sälj motiverade** IP-erbjudanden kan tjäna på Microsofts fält säljare när de säljs i samarbete med Microsoft Sales Teams, utöver de Marketplace-förmåner som anges nedan.</li></ul>
 
@@ -63,7 +63,7 @@ Starta din co-försäljnings resa direkt i Partner Center genom att följa stege
 
 1. I menyn till vänster väljer du **Co-Sälj med Microsoft**.
 
-    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Den här bilden visar platsen för samförsäljnings platsen med Microsoft-fliken.":::
+    [![Den här bilden visar platsen för samförsäljnings platsen med Microsoft-fliken.](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
 1. Ange grundläggande registrerings information för att hjälpa Microsoft-säljare att snabbt sortera och identifiera ditt erbjudande i **list** avsnittet. (*Obligatoriskt: alla fält.*)
 
@@ -71,29 +71,20 @@ Starta din co-försäljnings resa direkt i Partner Center genom att följa stege
 
 1. Ange information om ditt erbjudande och din överföring av säkerhet i avsnittet **dokument** . Microsoft-säljarna kommer att använda den här informationen för att rekommendera och sälja ditt erbjudande. *(Krävs: lösning/erbjud en lösning för att hitta en lösning/ett erbjudande/erbjudande. Krävs för att nå Azure IP Co-Sälj motiverade status: referens arkitektur diagram.)*
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="I den här bilden visas avsnittet dokument på fliken Co-försäljning.":::
+    [![I den här bilden visas avsnittet dokument på fliken Co-försäljning.](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
 
 1. Överför Sälj kontakt information i avsnittet **kontakter** . Microsoft-säljare kan kontakta dessa kontakter för att begära ytterligare information om ditt erbjudande. (*Krävs: en kontakt för varje geografi där ditt erbjudande görs tillgängligt.*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="I den här bilden visas avsnittet kontakter på fliken Co-försäljning.":::
+    [![I den här bilden visas avsnittet kontakter på fliken Co-försäljning.](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
 
 1. Spara utkastet innan du fortsätter.
 1. När du har slutfört alla nödvändiga avsnitt i erbjudandet kan du skicka det till granskning och publicering. I det övre högra hörnet väljer du **Granska och publicera**. Granska erbjudande informationen och välj sedan **publicera**.
-1. När du har kontrollerat att du har uppfyllt [villkoren för den medförsäljnings status som du använder](#co-sell-publishing-steps-and-requirements)följer du rikt linjerna nedan för att utse erbjudandet för co-sälja:
-    1. **Om du har en Microsoft partner Manager (t. ex. PDM):** kontakta din partner Manager för att få hjälp. De vägleder dig genom utnämnings processen för klar ande status för medförsäljning och Azure IP Co-Sälj eller Business Applications Co-Sälj motiverade (om tillämpligt).
-
-    1. **Om du inte har någon Microsoft partner Manager (t. ex. PDM):** [självnominerad via Cloud Support Desk (CED)](https://aka.ms/cednominate). Välj "bli samförsäljnings klar" under List rutan "önskade CED-tjänster":
-
-        :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="I den här bilden visas List rutan CED för att begära en granskning med medförsäljning.":::
-
-    CED kommer att kontakta dig för att slutföra processen.
 
 ## <a name="see-your-offers-co-sell-status"></a>Se ditt erbjudandes status för co-försäljning
 
 För erbjudanden med [alternativet samförsäljning på den kommersiella marknads platsen](commercial-marketplace-co-sell.md)kan du se erbjudandet aktuella medförsäljnings status på sidan erbjudande översikt:
 
- :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Den här bilden visar den aktuella medförsäljnings statusen för erbjudanden.":::
-
+[![Den här bilden visar den aktuella medförsäljnings statusen för erbjudanden.](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
 
 ## <a name="next-steps"></a>Nästa steg
 

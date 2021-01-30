@@ -13,20 +13,41 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: d1a07a3733bddc1516a4d2e19f3cac31a7702954
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 36eac4c60e0d7fd54ec304f0f17c2ecb454f0629
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944940"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063450"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Ansluta Data Factory till Azure-avdelningens kontroll (för hands version)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Den här artikeln beskriver hur du ansluter Data Factory till Azure avdelningens kontroll och hur du rapporterar data härkomst för ADF-aktiviteter kopiera data, data flöde och kör SSIS-paket.
+Den här artikeln beskriver hur du ansluter Data Factory till Azure-avdelningens kontroll och hur du rapporterar data härkomst för Azure Data Factory aktiviteter kopiera data, data flöde och kör SSIS-paket.
 
-## <a name="connect-data-factory-to-azure-purview"></a>Anslut Data Factory till Azure-avdelningens kontroll
-Azure dataavdelningens kontrolls är en ny moln tjänst som används av data användare centralt för att hantera data styrning över sin datafastighet, som sträcker sig över moln-och lokal miljöer. Du kan ansluta din data fabrik till Azure-avdelningens kontroll och anslutningen gör att du kan använda Azure avdelningens kontroll för att fånga härkomst data från kopierings-, data flödes-och EXECUTE SSIS-paket. Information om hur du registrerar data Factory i Azure avdelningens kontroll finns i [så här ansluter du Azure Data Factory och Azure avdelningens kontroll](../purview/how-to-link-azure-data-factory.md). 
+
+## <a name="connect-data-factory-to-azure-purview"></a>Ansluta Data Factory till Azure-avdelningens kontroll
+Azure dataavdelningens kontrolls är en ny moln tjänst som används av data användare centralt för att hantera data styrning över sin datafastighet, som sträcker sig över moln-och lokal miljöer. Du kan ansluta dina Data Factory till Azure-avdelningens kontroll och anslutningen gör att du kan använda Azure avdelningens kontroll för att samla in härkomst data från kopierings-, data flödes-och EXECUTE SSIS-paket. Det finns två sätt att ansluta Data Factory till Azure avdelningens kontroll:
+### <a name="register-azure-purview-account-to-data-factory"></a>Registrera Azure avdelningens kontroll-konto till Data Factory
+1. I ADF-portalen går du till **Hantera**  ->  **Azure-avdelningens kontroll**. Välj **Anslut till ett avdelningens kontroll-konto**. 
+
+:::image type="content" source="./media/data-factory-purview/register-purview-account.png" alt-text="Skärm bild för att registrera ett avdelningens kontroll-konto.":::
+2. Du kan välja **från Azure-prenumerationen** eller **ange manuellt**. **Från Azure-prenumeration** kan du välja det konto som du har åtkomst till. 
+3. När du är ansluten bör du kunna se namnet på avdelningens kontroll-kontot på fliken **avdelningens kontroll-konto**. 
+4. Du kan använda Sök fältet längst upp i mitten av Azure Data Factory Portal för att söka efter data. 
+
+Om du ser varning i Azure Data Factor Portal när du har registrerat Azure avdelningens kontroll-konto för Data Factory, följer du stegen nedan för att åtgärda problemet:
+
+:::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Skärm bild för varning om att registrera ett avdelningens kontroll-konto.":::
+
+1. Gå till Azure Portal och hitta din data fabrik. Välj avsnittet Taggar och se om det finns en tagg med namnet **catalogUri**. Om inte, kopplar du från och återansluter Azure avdelningens kontroll-kontot på ADF-portalen.
+
+:::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Skärm bild för taggar för att registrera ett avdelningens kontroll-konto.":::
+
+2. Kontrol lera om behörigheten har beviljats för att registrera ett Azure avdelningens kontroll-konto till Data Factory. Se [hur du ansluter Azure Data Factory och Azure avdelningens kontroll](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)
+
+### <a name="register-data-factory-in-azure-purview"></a>Registrera Data Factory i Azure avdelningens kontroll
+Information om hur du registrerar Data Factory i Azure-avdelningens kontroll finns i [så här ansluter du Azure Data Factory och Azure avdelningens kontroll](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Rapportera härkomst-data till Azure avdelningens kontroll
 När kunder kör SSIS för att kopiera, data flöde eller köra-paket i Azure Data Factory kan kunder få beroende relationen och få en översikt över hela arbets flödes processen mellan data källor och mål.

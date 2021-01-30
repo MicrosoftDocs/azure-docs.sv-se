@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 0f705aa61f1fe627dc0c8227242538e01ffce1d5
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533794"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070856"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (portal)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-I Azure Digitals dubbla, kan du dirigera [händelse meddelanden](how-to-interpret-event-data.md) till underordnade tjänster eller anslutna beräknings resurser. Detta görs genom att först konfigurera **slut punkter** som kan ta emot händelserna. Du kan sedan skapa [**händelse vägar**](concepts-route-events.md) som anger vilka händelser som genereras av digitala Digital-meddelanden i Azure som levereras till vilka slut punkter.
+I Azure Digitals dubbla, kan du dirigera [händelse meddelanden](how-to-interpret-event-data.md) till underordnade tjänster eller anslutna beräknings resurser. Det gör du genom att först konfigurera **slutpunkter** som kan ta emot händelserna. Du kan sedan skapa [**händelse vägar**](concepts-route-events.md) som anger vilka händelser som genereras av digitala Digital-meddelanden i Azure som levereras till vilka slut punkter.
 
 Den här artikeln vägleder dig genom processen att skapa slut punkter och flöden med hjälp av [Azure Portal](https://portal.azure.com).
 
@@ -33,11 +33,11 @@ Du kan också hantera slut punkter och vägar med [händelse vägar API: er](/re
 
 Du hittar den här informationen i [Azure Portal](https://portal.azure.com) efter att du har konfigurerat instansen. Logga in på portalen och Sök efter namnet på din instans i portalens Sök fält.
  
-:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Skärm bild av Azure Portal Sök fältet.":::
+:::image type="content" source="media/how-to-manage-routes-portal/search-field-portal.png" alt-text="Skärm bild av Azure Portal Sök fältet." lightbox="media/how-to-manage-routes-portal/search-field-portal.png":::
 
-Välj din instans från resultaten om du vill visa informations sidan för din instans:
+Välj din instans från resultaten om du vill se informationen i översikten för din instans:
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Skärm bild av ADT instance-information." border="false":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Skärm bild av översikts sidan för en Azure Digitals-instans. Namnet och resurs gruppen är markerade.":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Skapa en slut punkt för Azure Digitals dubbla
 
@@ -48,89 +48,65 @@ Detta är de typer av slut punkter som stöds som du kan skapa för din instans:
 
 Mer information om olika typer av slut punkter finns i [*Välj mellan Azure Messaging Services*](../event-grid/compare-messaging-services.md).
 
-Om du vill länka en slut punkt till Azure Digitals-band måste Event Grid-ämnet, händelsehubben eller Service Bus som du använder för slut punkten redan finnas. 
+I det här avsnittet beskrivs hur du skapar en av dessa slut punkter i [Azure Portal](https://portal.azure.com).
 
-### <a name="create-an-event-grid-endpoint"></a>Skapa en Event Grid-slutpunkt
+[!INCLUDE [digital-twins-endpoint-resources.md](../../includes/digital-twins-endpoint-resources.md)]
 
-**Förutsättning** : skapa ett event Grid-ämne genom att följa stegen i [avsnittet *skapa ett anpassat ämne*](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) i snabb starten för Event Grid *anpassade händelser* .
+### <a name="create-the-endpoint"></a>Skapa slut punkten 
 
-När du har skapat ämnet kan du länka det till Azure Digitals-sidor från sidan med Azure Digitals dubbla instansen i [Azure Portal](https://portal.azure.com) (du kan hitta instansen genom att ange dess namn i portalens Sök fält).
+När du har skapat slut punkts resurserna kan du använda dem för en Azure digital-slutpunkt. Om du vill skapa en ny slut punkt går du till din instanss sida i [Azure Portal](https://portal.azure.com) (du kan hitta instansen genom att ange dess namn i portalens Sök fält).
 
-Från menyn instans väljer du _slut punkter_. Välj sedan *+ skapa en slut punkt* från sidan *slut punkter* som följer. 
+1. Från menyn instans väljer du _slut punkter_. Välj sedan *+ skapa en slut punkt* från sidan *slut punkter* som följer. Då öppnas sidan *skapa en slut punkt* där du kommer att fylla i fälten i följande steg.
 
-På sidan *skapa en slut punkt* som öppnas, kan du skapa en slut punkt av typen _Event Grid_ genom att välja motsvarande alternativ knapp. Slutför den andra informationen: Ange ett namn för din slut punkt i fältet _namn_ , välj din _prenumeration_ i list rutan och välj det  _Event Grid avsnittet_ som skapats i den tredje List rutan.
+    :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Skärm bild som visar hur du skapar en slut punkt av typen Event Grid." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-grid.png":::
 
-Skapa sedan slut punkten genom att trycka på _Spara_.
+1. Ange ett **namn** för din slut punkt och välj **typ av slut punkt**.
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-grid.png" alt-text="Skärm bild som visar hur du skapar en slut punkt av typen Event Grid.":::
+1. Fyll i de övriga uppgifter som krävs för din slut punkts typ, inklusive prenumerationen och slut punkts resurserna som beskrivs [ovan](#prerequisite-create-endpoint-resources).
+    1. För Event Hub-och Service Bus-slutpunkter måste du välja en **Autentiseringstyp**. Du kan använda nyckelbaserad autentisering med en regel som skapats i förväg, eller en identitets baserad autentisering om du använder slut punkten med en [hanterad identitet](concepts-security.md#managed-identity-for-accessing-other-resources-preview) för din Azure Digital-instansen. 
 
-Du kan kontrol lera att slut punkten har skapats genom att kontrol lera meddelande ikonen i översta Azure Portals fältet: 
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png" alt-text="Skärm bild som visar hur du skapar en slut punkt av typen Event Hub." lightbox="media/how-to-manage-routes-portal/create-endpoint-event-hub-authentication.png":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Skärm bild av meddelande för att verifiera att slut punkten skapas." border="false":::
+1. Slutför skapandet av slut punkten genom att välja _Spara_.
+
+>[!IMPORTANT]
+> För att kunna använda Identity-baserad autentisering för din slut punkt måste du skapa en hanterad identitet för din instans genom att följa stegen i [*instruktion: Aktivera en hanterad identitet för routning av händelser (för hands version)*](how-to-enable-managed-identities.md).
+
+När du har skapat slut punkten kan du kontrol lera att slut punkten har skapats genom att kontrol lera meddelande ikonen i det översta Azure Portals fältet: 
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="Skärm bild av meddelande för att verifiera att slut punkten skapas. Den Bell-ikon som visas på portalens översta fält är markerad, och det visas ett meddelande om att slut punkten ADT-händelsehubbnamnområde har skapats.":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+Om det inte går att skapa en slut punkt, Observera fel meddelandet och försök igen om några minuter.
 
 Du kan också Visa slut punkten som skapades på sidan *slut punkter* för din Azure Digital-instansen.
 
-Om det inte går att skapa en slut punkt, Observera fel meddelandet och försök igen om några minuter.
-
-Nu är event Grid-avsnittet tillgängligt som en slut punkt inuti Azure Digital-dubbla, under det namn som anges i fältet _namn_ . Du använder vanligt vis det namnet som mål för en **händelse väg** , som du kommer att skapa [senare i den här artikeln](#create-an-event-route).
-
-### <a name="create-an-event-hubs-endpoint"></a>Skapa en Event Hubs-slutpunkt
-
-**Krav** : 
-* Du behöver ett _Event Hubs-namnområde_ och en _Event Hub_. Skapa båda dessa genom att följa stegen i Event Hubs skapa en snabb start för [*Event Hub*](../event-hubs/event-hubs-create.md) .
-* Du behöver en _auktoriseringsregel_. Information om hur du skapar detta finns i artikeln Event Hubs [*auktorisering av åtkomst till Event Hubs resurser med hjälp av signaturer för delad åtkomst*](../event-hubs/authorize-access-shared-access-signature.md) .
-
-Gå till informations sidan för din Azure Digital-instansen i [Azure Portal](https://portal.azure.com) (du kan hitta den genom att ange dess namn i portalens Sök fält).
-
-Från menyn instans väljer du _slut punkter_. Välj sedan *+ skapa en slut punkt* från sidan *slut punkter* som följer. 
-
-På sidan *skapa en slut punkt* som öppnas, kan du skapa en slut punkt av typen _Event Hub_ genom att välja motsvarande alternativ knapp. Ange ett namn för din slut punkt i fältet _namn_ . Välj din _prenumeration_ och ditt förskapade _Event Hub-namnområde_ , _händelsehubben_ och _auktoriseringsregel_ från respektive listruta.
-
-Skapa sedan slut punkten genom att trycka på _Spara_.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-event-hub.png" alt-text="Skärm bild som visar hur du skapar en slut punkt av typen Event Hubs.":::
-
-Du kan kontrol lera att slut punkten har skapats genom att kontrol lera meddelande ikonen i det översta Azure Portal fältet. 
-
-Om det inte går att skapa en slut punkt, Observera fel meddelandet och försök igen om några minuter.
-
-Nu är Händelsehubben tillgänglig som en slut punkt inuti Azure Digital-dubbla, under det namn som anges i fältet _namn_ . Du använder vanligt vis det namnet som mål för en **händelse väg** , som du kommer att skapa [senare i den här artikeln](#create-an-event-route).
-
-### <a name="create-a-service-bus-endpoint"></a>Skapa en Service Bus-slutpunkt
-
-**Krav** : 
-* Du behöver ett _Service Bus-namnområde_ och ett _Service Bus ämne_. Skapa båda dessa genom att följa stegen i snabb starten för Service Bus [*skapa ämnen och prenumerationer*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md) . Du behöver inte slutföra avsnittet [*skapa prenumerationer på avsnittet*](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md#create-subscriptions-to-the-topic) .
-* Du behöver en _auktoriseringsregel_. Information om hur du skapar detta finns i artikeln Service Bus [*autentisering och auktorisering*](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature) .
-
-Gå till informations sidan för din Azure Digital-instansen i [Azure Portal](https://portal.azure.com) (du kan hitta den genom att ange dess namn i portalens Sök fält).
-
-Från menyn instans väljer du _slut punkter_. Välj sedan *+ skapa en slut punkt* från sidan *slut punkter* som följer. 
-
-På sidan *skapa en slut punkt* som öppnas, kan du skapa en slut punkt av typen _Service Bus_ genom att välja motsvarande alternativ knapp. Ange ett namn för din slut punkt i fältet _namn_ . Välj din _prenumeration_ och den _Service Bus namn rymden_ som du har skapat, _Service Bus ämnet_ och _auktoriseringsregeln_ från respektive listruta.
-
-Skapa sedan slut punkten genom att trycka på _Spara_.
-
-:::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-service-bus.png" alt-text="Skärm bild som visar hur du skapar en slut punkt av typen Service Bus.":::
-
-Du kan kontrol lera att slut punkten har skapats genom att kontrol lera meddelande ikonen i det översta Azure Portal fältet. 
-
-Om det inte går att skapa en slut punkt, Observera fel meddelandet och försök igen om några minuter.
-
-Nu är Service Bus avsnittet tillgängligt som en slut punkt inuti Azure Digital-dubbla, under det namn som anges i fältet _namn_ . Du använder vanligt vis det namnet som mål för en **händelse väg** , som du kommer att skapa [senare i den här artikeln](#create-an-event-route).
+Nu är event Grid-, Event Hub-eller Service Bus-ämnet tillgängligt som en slut punkt inuti Azure Digitals, under det namn som du har valt för slut punkten. Du använder vanligt vis det namnet som mål för en **händelse väg**, som du skapar [senare i den här artikeln](#create-an-event-route).
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Skapa en slut punkt med obeställbara meddelanden
 
 När en slut punkt inte kan leverera en händelse inom en viss tids period eller när händelsen försöker leverera händelsen ett visst antal gånger, kan den skicka den ej levererade händelsen till ett lagrings konto. Den här processen kallas för **obeställbara meddelanden**.
 
-Du måste använda [arm-API: erna](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) för att skapa en slut punkt, i stället för Azure Portal, för att kunna skapa en slut punkt där obeställbara meddelanden har Aktiver ATS.
+För att kunna skapa en slut punkt med aktive rad bokstav måste du använda CLI- [kommandona](how-to-use-cli.md) eller [kontroll Plans-API: erna](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) för att skapa din slut punkt i stället för Azure Portal.
 
-Instruktioner för hur du gör detta med API: erna finns i [*API: erna och CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) -versionen av den här artikeln.
+Instruktioner för hur du gör detta med dessa verktyg finns i [*API: erna och CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) -versionen av den här artikeln.
 
 ## <a name="create-an-event-route"></a>Skapa en händelse väg
 
 Om du faktiskt vill skicka data från digitala Azure-sändningar till en slut punkt måste du definiera en **händelse väg**. Med de här vägarna kan utvecklare skapa händelse flöden i systemet och till underordnade tjänster. Läs mer om händelse vägar i [*begrepp: routing Azure Digitals, dubbla händelser*](concepts-route-events.md).
 
-**Förutsättning** : du måste skapa slut punkter enligt beskrivningen ovan i den här artikeln innan du kan gå vidare till skapa en väg. Du kan fortsätta att skapa en händelse väg när slut punkterna har koner ATS.
+**Förutsättning**: du måste skapa slut punkter enligt beskrivningen ovan i den här artikeln innan du kan gå vidare till skapa en väg. Du kan fortsätta att skapa en händelse väg när slut punkterna har koner ATS.
 
 >[!NOTE]
 >Om du nyligen har distribuerat dina slut punkter kontrollerar du att de är klara med distributionen **innan** du försöker använda dem för en ny händelse väg. Om du inte kan konfigurera vägen eftersom slut punkterna inte är klara, väntar du några minuter och försöker igen.
@@ -140,7 +116,7 @@ Om du faktiskt vill skicka data från digitala Azure-sändningar till en slut pu
 En händelse flödes definition innehåller följande element:
 * Det väg namn som du vill använda
 * Namnet på den slut punkt som du vill använda
-* Ett filter som definierar vilka händelser som skickas till slut punkten
+* Ett filter som definierar vilka händelser som skickas till slutpunkten
     - Om du vill inaktivera vägen så att inga händelser skickas, använder du ett filter värde för `false`
     - Om du vill aktivera en väg som inte har någon speciell filtrering använder du ett filter värde för `true`
     - Mer information om någon annan typ av filter finns i avsnittet [*Filtrera händelser*](#filter-events) nedan.

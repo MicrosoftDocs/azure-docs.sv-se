@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435016"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063390"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Självstudie: åtkomst Microsoft Graph från en säker app som användare
 
@@ -62,7 +62,7 @@ Gå till [Azure Resource Explorer](https://resources.azure.com/) och Använd res
 
 Azure Resource Explorer öppnas nu med din webbapp vald i resurs trädet. Längst upp på sidan väljer du **Läs/skriv** för att aktivera redigering av dina Azure-resurser.
 
-Gå nedåt till **config** authsettings i den vänstra webbläsaren  >  **authsettings**.
+Gå nedåt till **config** authsettings i den vänstra webbläsaren  >  .
 
 I vyn **authsettings** väljer du **Redigera**. Ange ```additionalLoginParams``` till följande JSON-sträng med det klient-ID som du kopierade.
 
@@ -85,7 +85,7 @@ Om du vill se den här koden som en del av ett exempel program, se [exemplet på
 
 ### <a name="install-client-library-packages"></a>Installera klient biblioteks paket
 
-Installera [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) och [Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet-paket i ditt projekt med hjälp av kommando rads gränssnittet .net Core eller Package Manager-konsolen i Visual Studio.
+Installera NuGet-paketen [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) och [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) i projektet med hjälp av kommando rads gränssnittet .net Core eller Package Manager-konsolen i Visual Studio.
 
 # <a name="command-line"></a>[Kommandorad](#tab/command-line)
 
@@ -94,7 +94,7 @@ Installera [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.I
 Kör installations kommandona.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 
 dotnet add package Microsoft.Identity.Web
 ```
@@ -105,7 +105,7 @@ dotnet add package Microsoft.Identity.Web
 
 Kör installations kommandona.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```

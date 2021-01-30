@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 6d1fd873de3313678875a8c167b90fafb8ede7ae
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061656"
+ms.locfileid: "99072059"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Nätverks koncept för Azure Red Hat OpenShift (ARO)
 
-Den här guiden omfattar en översikt över nätverk i Azure Red Hat OpenShift på OpenShift 4-kluster, tillsammans med ett diagram och en lista över viktiga slut punkter. Mer information om kärn skiftets nätverks koncept finns i avsnittet om [nätverks dokumentation för Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
+Den här guiden omfattar en översikt över nätverk i Azure Red Hat OpenShift på OpenShift 4-kluster, tillsammans med ett diagram och en lista över viktiga slut punkter. Mer information om kärn skiftets nätverks koncept finns i avsnittet om [nätverks dokumentation för Azure Red Hat OpenShift 4](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html).
 
 ![Nätverks diagram för Azure Red Hat OpenShift 4](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,7 +64,7 @@ I följande lista beskrivs viktiga nätverks komponenter i ett kluster med OpenS
 
 ## <a name="networking-basics-in-openshift"></a>Grundläggande nätverk i OpenShift
 
-OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) används för att konfigurera ett överlägg nätverk med öppen VSwitch [(OVS)](https://www.openvswitch.org/), en OpenFlow-implementering baserad på cni-specifikationen (container Network Interface). SDN har stöd för olika plugin--nätverks principer är plugin-programmet som används i Azure Red Hat på OpenShift 4. All nätverkskommunikation hanteras av SDN, så inga extra vägar behövs i dina virtuella nätverk för att uppnå Pod för Pod kommunikation.
+OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) används för att konfigurera ett överlägg nätverk med öppen VSwitch [(OVS)](https://www.openvswitch.org/), en OpenFlow-implementering baserad på cni-specifikationen (container Network Interface). SDN har stöd för olika plugin--nätverks principer är plugin-programmet som används i Azure Red Hat på OpenShift 4. All nätverkskommunikation hanteras av SDN, så inga extra vägar behövs i dina virtuella nätverk för att uppnå Pod för Pod kommunikation.
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Nätverk för Azure Red Hat OpenShift
 
@@ -79,7 +79,7 @@ Följande nätverksfunktioner är bara för Azure Red Hat OpenShift:
 * Pod CIDR bör vara minst/18 i storlek. (Pod-nätverket är icke-dirigerbart IP-adresser och används bara inuti OpenShift-SDN.)
 * Varje nod tilldelas/23 under nätet (512 IP-adresser) för sin poddar. Värdet kan inte ändras.
 * Du kan inte koppla en POD till flera nätverk.
-* Du kan inte konfigurera utgående statisk IP. (Det här är en OpenShift-funktion. Mer information finns i [Konfigurera utgående IP-adresser](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).
+* Du kan inte konfigurera utgående statisk IP. (Det här är en OpenShift-funktion. Mer information finns i [Konfigurera utgående IP-adresser](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html).
 
 ## <a name="network-settings"></a>Nätverksinställningar
 
@@ -98,7 +98,7 @@ Nätverks säkerhets grupper skapas i nodens resurs grupp, som är låst för an
 Med en offentligt synlig API-Server kan du inte skapa nätverks säkerhets grupper och tilldela dem till nätverkskorten.
 
 ## <a name="domain-forwarding"></a>Domän vidarebefordring
-Azure Red Hat OpenShift använder CoreDNS. Domän vidarebefordran kan konfigureras. Du kan inte ta med din egen DNS till dina virtuella nätverk. Mer information finns i dokumentationen om hur du [använder DNS-vidarebefordring](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator).
+Azure Red Hat OpenShift använder CoreDNS. Domän vidarebefordran kan konfigureras. Du kan inte ta med din egen DNS till dina virtuella nätverk. Mer information finns i dokumentationen om hur du [använder DNS-vidarebefordring](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator).
 
 ## <a name="whats-new-in-openshift-45"></a>Vad är nytt i OpenShift 4,5
 

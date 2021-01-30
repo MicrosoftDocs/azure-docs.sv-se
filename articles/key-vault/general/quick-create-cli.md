@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.date: 07/20/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f7f6f5d82c5fda7101e80ddcb8b17dc6bdef6532
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936319"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070293"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Snabb start: skapa ett nyckel valv med Azure CLI
 
@@ -28,44 +28,15 @@ Azure Key Vault är en moln tjänst som tillhandahåller en säker lagring för 
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. I följande exempel skapas en resursgrupp med namnet *ContosoResourceGroup* på platsen *eastus*.
-
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-cli-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>Skapa ett nyckelvalv
 
-Skapa en Key Vault i resurs gruppen från föregående steg. Du måste ange en del information:
-
-- Nyckel valvets namn: en sträng på 3 till 24 tecken som bara får innehålla siffror (0-9), bokstäver (a-z, A-Z) och bindestreck (-)
-
-  > [!Important]
-  > Varje nyckel valv måste ha ett unikt namn. Ersätt <ditt-unika-nyckel-valv> med namnet på nyckel valvet i följande exempel.
-
-- Resurs grupp namn: **myResourceGroup**.
-- Platsen: **öster**.
-
-```azurecli
-az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "EastUS"
-```
-
-Utdata från denna cmdlet visar egenskaper för nyckelvalvet du precis skapade. Anteckna de två egenskaperna som visas nedan:
-
-- **Valv namn**: det namn du angav för parametern--name ovan.
-- **Valv-URI**: i exemplet är detta https:// &lt; ditt-Unique-Vault.Azure.net/-valv &gt; .. Program som använder ditt valv via dess REST-API måste använda denna URI.
-
-Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-kv-creation.md)]
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-De andra snabbstarterna och självstudierna i den här samlingen bygger på den här snabbstarten. Om du planerar att fortsätta med efterföljande snabbstarter och självstudier kan du lämna kvar de här resurserna.
-
-När det inte längre behövs kan du använda kommandot för Azure CLI- [AZ Group Delete](/cli/azure/group) för att ta bort resurs gruppen och alla relaterade resurser:
-
-```azurecli
-az group delete --name myResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-delete-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

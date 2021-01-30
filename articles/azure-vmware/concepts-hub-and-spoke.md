@@ -3,12 +3,12 @@ title: Koncept – integrera en Azure VMware-lösning distribution i en hubb och
 description: Lär dig mer om att integrera en Azure VMware-distribution i en hubb och eker-arkitektur på Azure.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901393"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062753"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrera Azure VMware-lösningen i en hubb och eker-arkitektur
 
@@ -76,7 +76,7 @@ Eftersom en ExpressRoute-Gateway inte tillhandahåller transitiv routning mellan
   :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware-lösning för hubb av virtuellt nätverks trafikflöde" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
-Du hittar mer information om nätverks-och anslutnings metoder för Azure VMware-lösningar i [produkt dokumentationen för Azure VMware-lösningen](./concepts-networking.md).
+Mer information om nätverks-och anslutnings koncept i Azure VMware-lösningar finns i [produkt dokumentationen för Azure VMware-lösningen](./concepts-networking.md).
 
 ### <a name="traffic-segmentation"></a>Trafik segmentering
 
@@ -103,7 +103,7 @@ En andra nivå av trafik segmentering som använder nätverks säkerhets grupper
 
 Azure Application Gateway v1 och v2 har testats med webbappar som körs på virtuella datorer i Azure VMware-lösningen som en backend-pool. Application Gateway är för närvarande den enda metoden som stöds för att exponera webbappar som körs på virtuella datorer i Azure VMware-lösningen till Internet. Det kan också exponera appar till interna användare på ett säkert sätt.
 
-Mer information och krav hittar du i artikeln om Azure VMware Solution-Special på [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) .
+Mer information finns i den Azure VMware Solution-/regionsspecifika artikeln på [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md).
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Sekundär nivå för trafik segmentering med nätverks säkerhets grupper" border="false":::
 

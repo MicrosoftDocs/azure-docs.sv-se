@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b1c0e91b08fff80c0308c0ead5fabce903421adc
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649576"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090128"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Säkerhets överväganden för att få åtkomst till appar via fjärr anslutning med Azure AD-programproxy
 
@@ -108,7 +108,7 @@ Anslutningen använder ett klient certifikat för att autentisera till Applicati
 När anslutningen först konfigureras sker följande flödes händelser:
 
 1. Anslutnings registreringen till tjänsten görs som en del av installationen av anslutnings programmet. Användarna uppmanas att ange sina autentiseringsuppgifter för Azure AD-administratören. Den token som har hämtats från den här autentiseringen visas sedan för Azure AD-programproxy-tjänsten.
-2. Application Proxy-tjänsten utvärderar token. Den kontrollerar om användaren är företags administratör i klienten. Om användaren inte är administratör avbryts processen.
+2. Application Proxy-tjänsten utvärderar token. Den kontrollerar om användaren är global administratör i klienten. Om användaren inte är administratör avbryts processen.
 3. Anslutningen genererar en begäran om klient certifikat och skickar den, tillsammans med token, till Application Proxy-tjänsten. Tjänsten i sin tur verifierar token och signerar begäran om klient certifikat.
 4. Anslutnings programmet använder klient certifikatet för framtida kommunikation med Application Proxy-tjänsten.
 5. Anslutningen utför en första hämtning av system konfigurations data från tjänsten med hjälp av dess klient certifikat och är nu redo att vidta begär Anden.

@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964719"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071060"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Vanliga frågor och svar om Azure Red Hat
 
@@ -81,7 +81,7 @@ Noderna startas om som en del av en uppgradering.
 
 ### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Kan jag använda Prometheus för att övervaka mina program?
 
-Prometheus levereras som förinstallerade och konfigurerade för Azure Red Hat OpenShift 4. x-kluster. Läs mer om [kluster övervakning](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html).
+Prometheus levereras som förinstallerade och konfigurerade för Azure Red Hat OpenShift 4. x-kluster. Läs mer om [kluster övervakning](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html).
 
 För Azure Red Hat OpenShift 3,11-kluster kan du distribuera Prometheus i ditt namn område och övervaka program i namn området. Mer information finns i [distribuera Prometheus-instans i Azure Red Hat OpenShift-kluster](howto-deploy-prometheus.md).
 
@@ -97,7 +97,7 @@ Loggar från de underliggande virtuella datorerna hanteras av den hanterade tjä
 
 ### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>Hur kan en kund få till gång till mått som processor/minne på nodnivå för att vidta åtgärder för skalning, fel söknings problem osv. Jag kan inte att köra kubectl överst i ett kluster med ett starkt Shift-kluster i Azure Red Hat.
 
-För Azure Red Hat OpenShift 4. x-kluster innehåller OpenShift-webbkonsolen alla mått på Node-nivån. Mer information finns i Red Hat-dokumentationen om [visning av kluster information](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html).
+För Azure Red Hat OpenShift 4. x-kluster innehåller OpenShift-webbkonsolen alla mått på Node-nivån. Mer information finns i Red Hat-dokumentationen om [visning av kluster information](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html).
 
 För Azure Red Hat OpenShift 3,11-kluster kan kunder komma åt CPU/minnes mått på nodnivå genom att använda kommandot `oc adm top nodes` eller `kubectl top nodes` med kluster rollen kund administratör. Kunder kan också komma åt CPU/minnes mått för `pods` med kommandot `oc adm top pods` eller `kubectl top pods` .
 
@@ -116,14 +116,14 @@ Varnings skydd måste användas när du använder vissa etiketter:
 - Värdnamn får inte användas. Värdnamn roteras ofta med uppgraderingar och uppdateringar och kan ändras.
 - Om kunden har en begäran om specifika etiketter eller en distributions strategi kan detta uppnås men skulle kräva tekniska åtgärder och stöds inte idag.
 
-Mer information finns i [kontrol lera Pod-placering](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html).
+Mer information finns i [kontrol lera Pod-placering](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html).
 
 ### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Är image-registret tillgängligt externt så att jag kan använda verktyg som Jenkins?
 
 För 4. x-kluster måste du exponera ett säkert register och konfigurera autentisering. Mer information finns i följande Red Hat-dokumentation:
 
-- [Exponerar ett register](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
-- [Åtkomst till registret](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+- [Exponerar ett register](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+- [Åtkomst till registret](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
 
 I 3,11-kluster är Docker-avbildnings registret tillgängligt. Docker-registret är tillgängligt från `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Du kan också använda Azure Container Registry.
 
@@ -181,24 +181,24 @@ oc adm policy \
 
 Mer information finns i OpenShift-dokumentationen om inaktive ring av själv etablering för kluster versionen:
 
-- [Inaktiverar själv etablering i 4,3-kluster](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [Inaktiverar själv etablering i 4,6-kluster](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
 - [Inaktiverar själv etablering i 3,11-kluster](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Vilka UNIX-rättigheter (i IaaS) är tillgängliga för Masters/infraröda/app-noder?
 
-För 4. x-kluster är Node Access tillgängligt via rollen kluster-admin. Mer information finns i [Översikt över KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+För 4. x-kluster är Node Access tillgängligt via rollen kluster-admin. Mer information finns i [Översikt över KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 Node Access tillåts inte för 3,11-kluster.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Vilka OCP-rättigheter har vi? Kluster-admin? Projekt-admin?
 
-För 4. x-kluster är rollen kluster administratör tillgänglig. Mer information finns i [Översikt över KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+För 4. x-kluster är rollen kluster administratör tillgänglig. Mer information finns i [Översikt över KUBERNETES RBAC](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html).
 
 Mer information om 3,11-kluster finns i [Översikt över kluster administration](https://docs.openshift.com/aro/admin_guide/index.html) .
 
 ### <a name="which-identity-providers-are-available"></a>Vilka identitets leverantörer är tillgängliga?
 
-För 4. x-kluster konfigurerar du din egen identitets leverantör. Mer information finns i Red Hat-dokumentationen om hur du [konfigurerar identiteter](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html).
+För 4. x-kluster konfigurerar du din egen identitets leverantör. Mer information finns i Red Hat-dokumentationen om hur du [konfigurerar identitets leverantörer](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html).
 
 För 3,11-kluster kan du använda Azure AD-integrering. 
 
@@ -210,13 +210,13 @@ Som standard krypteras data i vila. Azure Storages plattformen krypterar automat
 
 ### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>Är data lagrade i etcd krypterade i Azure Red Hat OpenShift?
 
-För Azure Red Hat OpenShift 4-kluster krypteras inte data som standard, men du kan välja att aktivera kryptering. Mer information finns i guiden om att [kryptera etcd](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html).
+För Azure Red Hat OpenShift 4-kluster krypteras inte data som standard, men du kan välja att aktivera kryptering. Mer information finns i guiden om att [kryptera etcd](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html).
 
 För 3,11-kluster krypteras inte data på etcd-nivån. Det finns för närvarande inte stöd för möjligheten att aktivera kryptering för tillfället. OpenShift stöder den här funktionen, men tekniska ansträngningar krävs för att göra det på väg kartan. Data krypteras på disk nivå. Mer information finns i [kryptera data i data lager lager](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) .
 
 ### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Kan vi välja vilken beständig lagrings lösning som helst, t. ex. OCS? 
 
-För 4. x-kluster konfigureras Azure disk (Premium_LRS) som standard lagrings klass. Ytterligare lagrings leverantörer och konfigurations information (inklusive Azure-fil) finns i Red Hat-dokumentationen om [beständig lagring](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
+För 4. x-kluster konfigureras Azure disk (Premium_LRS) som standard lagrings klass. Ytterligare lagrings leverantörer och konfigurations information (inklusive Azure-fil) finns i Red Hat-dokumentationen om [beständig lagring](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html).
 
 För 3,11-kluster tillhandahålls två lagrings klasser som standard: en för Azure-disk (Premium_LRS) och en för Azure-fil.
 

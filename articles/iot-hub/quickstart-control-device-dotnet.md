@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 88b818a25a0888cc74783a210cc7a1c0acb455ac
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 28d80a20c50f846146aed069028303e86426df27
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623272"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072093"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Snabbstart: Kontrollera en enhet ansluten till en IoT Hub (.NET)
 
@@ -99,7 +99,7 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
 Du behöver också anslutnings strängen för IoT Hub _-tjänsten_ för att aktivera tjänst programmet för att ansluta till hubben och hämta meddelandena. Följande kommando hämtar tjänstanslutningssträngen för din IoT-hubb:
 
 ```azurecli-interactive
-az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
 ```
 
 Anteckna tjänstanslutningssträngen. Den ser ut ungefär som:

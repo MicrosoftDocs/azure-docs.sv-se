@@ -209,7 +209,7 @@
           items:
             - name: Skapa en arbetsyta
               items:
-                - name: Azure Portal
+                - name: Azure-portalen
                   href: learn/quick-create-workspace.md
                 - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
@@ -586,10 +586,12 @@
                   href: platform/it-service-management-connector-secure-webhook-connections.md
                 - name: Säker export av Azure-konfiguration
                   href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
-                - name: BMC
-                  href: platform/itsmc-secure-webhook-connections-bmc.md
-                - name: ServiceNow
-                  href: platform/itsmc-secure-webhook-connections-servicenow.md
+                - name: Partnerkonfiguration för anslutningsprogram för hantering av IT-tjänster (ITSM)
+                  items:
+                    - name: BMC
+                      href: platform/itsmc-secure-webhook-connections-bmc.md
+                    - name: ServiceNow
+                      href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: Migrera klassiska aviseringsregler
           items:
             - name: Om klassiska aviseringar

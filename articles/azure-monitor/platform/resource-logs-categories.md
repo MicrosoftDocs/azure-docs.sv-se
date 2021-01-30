@@ -3,13 +3,13 @@ title: Azure Monitor resurs loggar som stöds tjänster och kategorier
 description: Referens för Azure Monitor förstå tjänster och händelse scheman som stöds för Azures resurs loggar.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 12/09/2020
-ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/29/2021
+ms.openlocfilehash: 02488e1a3ff26acf9ff318a2d5c09115aaba8df9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232256"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070754"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Kategorier som stöds för Azure-resurs loggar
 
@@ -23,7 +23,9 @@ En kombination av resurs typen (tillgänglig i `resourceId` egenskapen) och `cat
 
 ## <a name="costs"></a>Kostnader
 
-Det finns kostnader som är kopplade till att skicka och lagra data i Log Analytics Azure Storage och/eller Händelsehubben. Du kan betala för kostnaden för att hämta data till dessa platser och för att hålla dem där.  Resurs loggar är en typ av data som du kan skicka till dessa platser. Det finns ytterligare [kostnader för att exportera vissa kategorier av resurs loggar](https://azure.microsoft.com/pricing/details/monitor/) till dessa platser, medan andra är fria från export kostnader. Exportera kostnads information visas i tabellen nedan.
+Det finns kostnader som är kopplade till att skicka och lagra data i Log Analytics Azure Storage och/eller Händelsehubben. Du kan betala för kostnaden för att hämta data till dessa platser och för att hålla dem där.  Resurs loggar är en typ av data som du kan skicka till dessa platser. 
+
+Det finns ytterligare kostnader för att exportera vissa kategorier av resurs loggar till dessa platser. Loggarna med export kostnader visas i tabellen nedan. Mer information om den här prissättningen finns i avsnittet plattforms loggar på [sidan Azure Monitor priser](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="supported-log-categories-per-resource-type"></a>Logg kategorier som stöds per resurs typ
 
@@ -31,859 +33,950 @@ Följande är en lista över de typer av loggar som är tillgängliga för varje
 
 Vissa kategorier kan bara användas för vissa typer av resurser. Se den Resource-/regionsspecifika dokumentationen om du anser att du saknar en resurs. Till exempel är inte kategorierna Microsoft. SQL/Server/Databass tillgängliga för alla typer av databaser. Mer information finns i [information om SQL Database diagnostisk loggning](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
-Om du fortfarande saknar något kan du öppna en GitHub-kommentar längst ned i den här artikeln.
+Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den här artikeln.
+## <a name="microsoftaaddomainservices"></a>Microsoft. AAD/domainServices
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AccountLogon|AccountLogon|Inga|
+|AccountManagement|AccountManagement|Inga|
+|DetailTracking|DetailTracking|Inga|
+|DirectoryServiceAccess|DirectoryServiceAccess|Inga|
+|LogonLogoff|LogonLogoff|Inga|
+|ObjectAccess|ObjectAccess|Inga|
+|PolicyChange|PolicyChange|Inga|
+|PrivilegeUse|PrivilegeUse|Inga|
+|SystemSecurity|SystemSecurity|Inga|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Motor|Motor|
-|Tjänst|Tjänst|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Motor|Motor|Inga|
+|Tjänst|Tjänst|Inga|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|GatewayLogs|Loggar som rör API Management-Gateway|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|GatewayLogs|Loggar som rör API Management-Gateway|
+
+## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|HttpRequest|HTTP-begäranden|Ja|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/våren
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ApplicationConsole|Program konsol|Inga|
+|SystemLogs|System loggar|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|ApplicationConsole|Program konsol|
-|SystemLogs|System loggar|
+
+## <a name="microsoftattestationattestationproviders"></a>Microsoft. attestering/attestationProviders
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AuditEvent|AuditEvent meddelande logg kategori.|Inga|
+|FELET|Logg kategori för fel meddelande.|Inga|
+|INF|Informations meddelandets loggnings kategori.|Inga|
+|VARN|Logg kategori för varnings meddelande.|Inga|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|DscNodeStatus|DSC-nods status|
-|JobLogs|Jobb loggar|
-|JobStreams|Jobb strömmar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DscNodeStatus|DSC-nods status|Inga|
+|JobLogs|Jobb loggar|Inga|
+|JobStreams|Jobb strömmar|Inga|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|ServiceLog|Tjänst loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ServiceLog|Tjänst loggar|Inga|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/arbets ytor
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|BaiClusterEvent|BaiClusterEvent|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|
-|BaiJobEvent|BaiJobEvent|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|Inga|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|Inga|
+|BaiJobEvent|BaiJobEvent|Inga|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|BlockchainApplication|Blockchain-program|
-|FabricOrderer|Fabric-beställare|
-|FabricPeer|Infrastruktur resurs|
-|Proxy|Proxy|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BlockchainApplication|Blockchain-program|Inga|
+|FabricOrderer|Fabric-beställare|Inga|
+|FabricPeer|Infrastruktur resurs|Inga|
+|Proxy|Proxy|Inga|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. blockchain/cordaMembers
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BlockchainApplication|Blockchain-program|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|BlockchainApplication|Blockchain-program|
+
+## <a name="microsoftbotservicebotservices"></a>Microsoft. botservice/botservices
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BotRequest|Begär Anden från kanaler till bot|Inga|
+|DependencyRequest|Begär anden till beroenden|Inga|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|WebApplicationFirewallLogs|Brand Väggs loggar för webb program|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|WebApplicationFirewallLogs|Brand Väggs loggar för webb webbappen|Inga|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profiler
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AzureCdnAccessLog|Azure CDN Access-logg|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AzureCdnAccessLog|Azure CDN Access-logg|Inga|
+|FrontDoorAccessLog|Ytterdörr åtkomst logg|Ja|
+|FrontDoorHealthProbeLog|Ytterdörr hälso avsöknings logg|Ja|
+|FrontDoorWebApplicationFirewallLog|Ytterdörr WebApplicationFirewall-logg|Ja|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/profiler/slut punkter
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|CoreAnalytics|Hämtar Mät värdena för slut punkten, t. ex. bandbredd, utgående data osv.|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|CoreAnalytics|Hämtar Mät värdena för slut punkten, t. ex. bandbredd, utgående data osv.|Inga|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Regel flödes händelse för nätverks säkerhets grupp|Regel flödes händelse för nätverks säkerhets grupp|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Regel flödes händelse för nätverks säkerhets grupp|Regel flödes händelse för nätverks säkerhets grupp|Inga|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/konton
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granskningsloggar|Inga|
+|RequestResponse|Förfrågningar och svars loggar|Inga|
+|Spårning|Spårnings loggar|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|Granska|Granskningsloggar|
-|RequestResponse|Förfrågningar och svars loggar|
-|Spårning|Spårnings loggar|
+
+## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft. Communication/CommunicationServices
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ChatOperational|Fungerande chatt loggar|Inga|
+|SMSOperational|Operativa SMS-loggar|Inga|
+|Användning|Användnings poster|Inga|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/register
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|ContainerRegistryLoginEvents|Inloggnings händelser|
-|ContainerRegistryRepositoryEvents|RepositoryEvent-loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ContainerRegistryLoginEvents|Inloggnings händelser|Inga|
+|ContainerRegistryRepositoryEvents|RepositoryEvent-loggar|Inga|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. container service/managedClusters
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|kluster – autoskalning|Kubernetes-kluster autoskalning|
-|kube-apiserver|Kubernetes-API-Server|
-|Kube – granskning|Kubernetes granskning|
-|Kube-Controller-Manager|Kubernetes Controller Manager|
-|Kube – Scheduler|Kubernetes Scheduler|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|kluster – autoskalning|Kubernetes-kluster autoskalning|Inga|
+|skyddade|skyddade|Inga|
+|kube-apiserver|Kubernetes-API-Server|Inga|
+|Kube – granskning|Kubernetes granskning|Inga|
+|Kube-audit-admin|Kubernetes granska administratörs loggar|Inga|
+|Kube-Controller-Manager|Kubernetes Controller Manager|Inga|
+|Kube – Scheduler|Kubernetes Scheduler|Inga|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AuditLogs|Gransknings loggar för MiniRP-anrop|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|AuditLogs|Gransknings loggar för MiniRP-anrop|
+
+## <a name="microsoftd365customerinsightsinstances"></a>Microsoft. D365CustomerInsights/instances
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granska händelser|Inga|
+|Operativ|Drift händelser|Inga|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/arbets ytor
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|konton|Databricks-konton|Inga|
+|kluster|Databricks-kluster|Inga|
+|dBFS|Databricks-filsystem|Inga|
+|instancePools|Instans-pooler|Inga|
+|utskrifts|Databricks-jobb|Inga|
+|notebook-fil|Databricks-anteckningsbok|Inga|
+|secrets|Databricks hemligheter|Inga|
+|sqlPermissions|Databricks SQLPermissions|Inga|
+|SSH|Databricks SSH|Inga|
+|arbetsyta|Databricks-arbetsyta|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|konton|Databricks-konton|
-|kluster|Databricks-kluster|
-|dBFS|Databricks-filsystem|
-|instancePools|Instans-pooler|
-|utskrifts|Databricks-jobb|
-|notebook-fil|Databricks-anteckningsbok|
-|secrets|Databricks hemligheter|
-|sqlPermissions|Databricks SQLPermissions|
-|SSH|Databricks SSH|
-|arbetsyta|Databricks-arbetsyta|
+
+## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft. DataCollaboration/arbets ytor
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|CollaborationAudit|Granskning av samarbete|Ja|
+|DataAssets|Data till gångar|Inga|
+|Pipelines|Pipelines|Inga|
+|Förslag|Förslag|Inga|
+|Skript|Skript|Inga|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/fabriker
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ActivityRuns|Pipeline-aktivitet kör logg|Inga|
+|PipelineRuns|Pipeline kör logg|Inga|
+|SSISIntegrationRuntimeLogs|SSIS för integration runtime|Inga|
+|SSISPackageEventMessageContext|Händelse meddelande kontext för SSIS-paket|Inga|
+|SSISPackageEventMessages|Händelse meddelanden för SSIS-paket|Inga|
+|SSISPackageExecutableStatistics|SSIS-paketets körbara statistik|Inga|
+|SSISPackageExecutionComponentPhases|Steg för körnings komponent för SSIS-paket|Inga|
+|SSISPackageExecutionDataStatistics|SSIS-paket exeution data statistik|Inga|
+|TriggerRuns|Utlös körnings logg|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|ActivityRuns|Pipeline-aktivitet kör logg|
-|PipelineRuns|Pipeline kör logg|
-|TriggerRuns|Utlös körnings logg|
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/konton
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granskningsloggar|Inga|
+|Begäranden|Begär ande loggar|Inga|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/konton
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Granska|Granskningsloggar|
-|Begäranden|Begär ande loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granskningsloggar|Inga|
+|Begäranden|Begär ande loggar|Inga|
 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/konton
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|ReceivedShareSnapshots|Mottagna resurs ögonblicks bilder|
-|SentShareSnapshots|Ögonblicks bilder av skickade resurser|
-|Resurser|Resurser|
-|ShareSubscriptions|Dela prenumerationer|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ReceivedShareSnapshots|Mottagna resurs ögonblicks bilder|Inga|
+|SentShareSnapshots|Ögonblicks bilder av skickade resurser|Inga|
+|Resurser|Resurser|Inga|
+|ShareSubscriptions|Dela prenumerationer|Inga|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|MySqlAuditLogs|Gransknings loggar för MariaDB|
-|MySqlSlowLogs|MariaDB Server-loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|MySqlAuditLogs|Gransknings loggar för MariaDB|Inga|
+|MySqlSlowLogs|MariaDB Server-loggar|Inga|
 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. DBforMySQL/flexibleServers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|MySqlAuditLogs|MySQL gransknings loggar|
-|MySqlSlowLogs|Långsamma loggfiler för MySQL|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|MySqlAuditLogs|MySQL gransknings loggar|Inga|
+|MySqlSlowLogs|Långsamma loggfiler för MySQL|Inga|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|MySqlAuditLogs|MySQL gransknings loggar|
-|MySqlSlowLogs|MySQL server-loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|MySqlAuditLogs|MySQL gransknings loggar|Inga|
+|MySqlSlowLogs|MySQL server-loggar|Inga|
 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/flexibleServers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|PostgreSQLLogs|PostgreSQL Server-loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL Server-loggar|Inga|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servers
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|PostgreSQLLogs|PostgreSQL Server-loggar|
-|QueryStoreRuntimeStatistics|PostgreSQL för fråge lagrings körning|
-|QueryStoreWaitStatistics|Väntande statistik för PostgreSQL Query Store|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL Server-loggar|Inga|
+|QueryStoreRuntimeStatistics|PostgreSQL för fråge lagrings körning|Inga|
+|QueryStoreWaitStatistics|Väntande statistik för PostgreSQL Query Store|Inga|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|PostgreSQLLogs|PostgreSQL Server-loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL Server-loggar|Inga|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Checkpoint|Checkpoint|
-|Fel|Fel|
-|Hantering|Hantering|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Checkpoint|Checkpoint|Inga|
+|Fel|Fel|Inga|
+|Hantering|Hantering|Inga|
 
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Checkpoint|Checkpoint|
-|Anslutning|Anslutning|
-|Fel|Fel|
-|HostRegistration|HostRegistration|
-|Hantering|Hantering|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AgentHealthStatus|AgentHealthStatus|Inga|
+|Checkpoint|Checkpoint|Inga|
+|Anslutning|Anslutning|Inga|
+|Fel|Fel|Inga|
+|HostRegistration|HostRegistration|Inga|
+|Hantering|Hantering|Inga|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/arbets ytor
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Checkpoint|Checkpoint|Inga|
+|Fel|Fel|Inga|
+|Feed|Feed|Inga|
+|Hantering|Hantering|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|Checkpoint|Checkpoint|
-|Fel|Fel|
-|Feed|Feed|
-|Hantering|Hantering|
+
+## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft. Devices/ElasticPools/IotHubTenants
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|C2DCommands|C2D-kommandon|Inga|
+|C2DTwinOperations|C2D dubbla åtgärder|Inga|
+|Konfigurationer|Konfigurationer|Inga|
+|Anslutningar|Anslutningar|Inga|
+|D2CTwinOperations|D2CTwinOperations|Inga|
+|DeviceIdentityOperations|Enhets identitets åtgärder|Inga|
+|DeviceStreams|Enhets strömmar (förhands granskning)|Inga|
+|DeviceTelemetry|Enhetstelemetri|Inga|
+|DirectMethods|Direkta metoder|Inga|
+|DistributedTracing|Distribuerad spårning (för hands version)|Inga|
+|FileUploadOperations|Fil överförings åtgärder|Inga|
+|JobsOperations|Jobb åtgärder|Inga|
+|Vägar|Vägar|Inga|
+|TwinQueries|Dubbla frågor|Inga|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|C2DCommands|C2D-kommandon|
-|C2DTwinOperations|C2D dubbla åtgärder|
-|Konfigurationer|Konfigurationer|
-|Anslutningar|Anslutningar|
-|D2CTwinOperations|D2CTwinOperations|
-|DeviceIdentityOperations|Enhets identitets åtgärder|
-|DeviceStreams|Enhets strömmar (förhands granskning)|
-|DeviceTelemetry|Enhetstelemetri|
-|DirectMethods|Direkta metoder|
-|DistributedTracing|Distribuerad spårning (för hands version)|
-|FileUploadOperations|Fil överförings åtgärder|
-|JobsOperations|Jobb åtgärder|
-|Vägar|Vägar|
-|TwinQueries|Dubbla frågor|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|C2DCommands|C2D-kommandon|Inga|
+|C2DTwinOperations|C2D dubbla åtgärder|Inga|
+|Konfigurationer|Konfigurationer|Inga|
+|Anslutningar|Anslutningar|Inga|
+|D2CTwinOperations|D2CTwinOperations|Inga|
+|DeviceIdentityOperations|Enhets identitets åtgärder|Inga|
+|DeviceStreams|Enhets strömmar (förhands granskning)|Inga|
+|DeviceTelemetry|Enhetstelemetri|Inga|
+|DirectMethods|Direkta metoder|Inga|
+|DistributedTracing|Distribuerad spårning (för hands version)|Inga|
+|FileUploadOperations|Fil överförings åtgärder|Inga|
+|JobsOperations|Jobb åtgärder|Inga|
+|Vägar|Vägar|Inga|
+|TwinQueries|Dubbla frågor|Inga|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DeviceOperations|Enhets åtgärder|Inga|
+|ServiceOperations|Tjänst åtgärder|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|DeviceOperations|Enhets åtgärder|
-|ServiceOperations|Tjänst åtgärder|
+
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft. DigitalTwins/digitalTwinsInstances
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DigitalTwinsOperation|DigitalTwinsOperation|Inga|
+|EventRoutesOperation|EventRoutesOperation|Inga|
+|ModelsOperation|ModelsOperation|Inga|
+|QueryOperation|QueryOperation|Inga|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|CassandraRequests|CassandraRequests|
-|ControlPlaneRequests|ControlPlaneRequests|
-|DataPlaneRequests|DataPlaneRequests|
-|GremlinRequests|GremlinRequests|
-|MongoRequests|MongoRequests|
-|PartitionKeyRUConsumption|PartitionKeyRUConsumption|
-|PartitionKeyStatistics|PartitionKeyStatistics|
-|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|CassandraRequests|CassandraRequests|Inga|
+|ControlPlaneRequests|ControlPlaneRequests|Inga|
+|DataPlaneRequests|DataPlaneRequests|Inga|
+|GremlinRequests|GremlinRequests|Inga|
+|MongoRequests|MongoRequests|Inga|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|Inga|
+|PartitionKeyStatistics|PartitionKeyStatistics|Inga|
+|QueryRuntimeStatistics|QueryRuntimeStatistics|Inga|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DeliveryFailures|Loggar för leverans problem|Inga|
+|PublishFailures|Publicera Felaktiga loggar|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|DeliveryFailures|Loggar för leverans problem|
-|PublishFailures|Publicera Felaktiga loggar|
+
+## <a name="microsofteventgridpartnernamespaces"></a>Microsoft. EventGrid/partnerNamespaces
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DeliveryFailures|Loggar för leverans problem|Inga|
+|PublishFailures|Publicera Felaktiga loggar|Inga|
+
+
+## <a name="microsofteventgridpartnertopics"></a>Microsoft. EventGrid/partnerTopics
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DeliveryFailures|Loggar för leverans problem|Inga|
 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|DeliveryFailures|Loggar för leverans problem|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DeliveryFailures|Loggar för leverans problem|Inga|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/ämnen
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|DeliveryFailures|Loggar för leverans problem|
-|PublishFailures|Publicera Felaktiga loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DeliveryFailures|Loggar för leverans problem|Inga|
+|PublishFailures|Publicera Felaktiga loggar|Inga|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/Namespaces
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ArchiveLogs|Arkiv loggar|Inga|
+|AutoScaleLogs|Automatisk skalnings loggar|Inga|
+|CustomerManagedKeyUserLogs|Kund hanterade nyckel loggar|Inga|
+|EventHubVNetConnectionEvent|Anslutnings loggar för VNet/IP-filtrering|Inga|
+|KafkaCoordinatorLogs|Kafka koordinator loggar|Inga|
+|KafkaUserErrorLogs|Kafka användar fel loggar|Inga|
+|OperationalLogs|Drift loggar|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|ArchiveLogs|Arkiv loggar|
-|AutoScaleLogs|Automatisk skalnings loggar|
-|CustomerManagedKeyUserLogs|Kund hanterade nyckel loggar|
-|EventHubVNetConnectionEvent|Anslutnings loggar för VNet/IP-filtrering|
-|KafkaCoordinatorLogs|Kafka koordinator loggar|
-|KafkaUserErrorLogs|Kafka användar fel loggar|
-|OperationalLogs|Drift loggar|
+
+## <a name="microsoftexperimentationexperimentworkspaces"></a>Microsoft. experiment/experimentWorkspaces
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Förfrågan|Förfrågan|Inga|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. HealthcareApis/Services
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AuditLogs|Granskningsloggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AuditLogs|Granskningsloggar|Inga|
 
 
-## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
+## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/autoscalesettings
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AutoscaleEvaluations|Autoskala-utvärderingar|
-|AutoscaleScaleActions|Åtgärder för autoskalning av skala|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AutoscaleEvaluations|Autoskala-utvärderingar|Inga|
+|AutoscaleScaleActions|Åtgärder för autoskalning av skala|Inga|
 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/komponenter
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AppAvailabilityResults|Tillgänglighets resultat|Inga|
+|AppBrowserTimings|Tids inställningar för webbläsare|Inga|
+|AppDependencies|Beroenden|Inga|
+|AppEvents|Händelser|Inga|
+|AppExceptions|Undantag|Inga|
+|AppMetrics|Mått|Inga|
+|AppPageViews|Sid visningar|Inga|
+|AppPerformanceCounters|Prestandaräknare|Inga|
+|AppRequests|Begäranden|Inga|
+|AppSystemEvents|System händelser|Inga|
+|AppTraces|Spårningar|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|AppAvailabilityResults|Tillgänglighets resultat|
-|AppBrowserTimings|Tids inställningar för webbläsare|
-|AppDependencies|Beroenden|
-|AppEvents|Händelser|
-|AppExceptions|Undantag|
-|AppMetrics|Mått|
-|AppPageViews|Sid visningar|
-|AppPerformanceCounters|Prestandaräknare|
-|AppRequests|Begäranden|
-|AppSystemEvents|System händelser|
-|AppTraces|Spårningar|
+
+## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granska|Inga|
+|Utgående|Utgående|Inga|
+|Ingress|Ingress|Inga|
+|Operativ|Operativ|Inga|
+|Spårning|Spårning|Inga|
+|UserDefinedFunction|UserDefinedFunction|Inga|
+
+
+## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. nyckel valv/managedhsms
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AuditEvent|Granska händelse|Inga|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. nyckel valv/-valv
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AuditEvent|Granskningsloggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AuditEvent|Granskningsloggar|Inga|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/kluster
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Kommando|Kommando|
-|FailedIngestion|Misslyckade inmatnings åtgärder|
-|IngestionBatching|Inmatningsbatchning|
-|Söka i data|Söka i data|
-|SucceededIngestion|Framgångs åtgärder|
-|TableDetails|Tabell information|
-|TableUsageStatistics|Statistik över Tabell användning|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Kommando|Kommando|Inga|
+|FailedIngestion|Misslyckade inmatnings åtgärder|Inga|
+|IngestionBatching|Inmatningsbatchning|Inga|
+|Söka i data|Söka i data|Inga|
+|SucceededIngestion|Framgångs åtgärder|Inga|
+|TableDetails|Tabell information|Inga|
+|TableUsageStatistics|Statistik över Tabell användning|Inga|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/integrationAccounts
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|IntegrationAccountTrackingEvents|Spårnings händelser för integrations konto|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|IntegrationAccountTrackingEvents|Spårnings händelser för integrations konto|Inga|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/arbets flöden
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|WorkflowRuntime|Diagnostiska händelser för arbets flödes körning|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|WorkflowRuntime|Diagnostiska händelser för arbets flödes körning|Inga|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/arbets ytor
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AmlComputeClusterEvent|AmlComputeClusterEvent|
-|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
-|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|
-|AmlComputeJobEvent|AmlComputeJobEvent|
-|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AmlComputeClusterEvent|AmlComputeClusterEvent|Inga|
+|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|Inga|
+|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|Inga|
+|AmlComputeJobEvent|AmlComputeJobEvent|Inga|
+|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|Inga|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Media Services
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|KeyDeliveryRequests|Begär Anden om nyckel leverans|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|KeyDeliveryRequests|Begär Anden om nyckel leverans|Inga|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|ApplicationGatewayAccessLog|Application Gateway åtkomst logg|
-|ApplicationGatewayFirewallLog|Application Gateway brand Väggs logg|
-|ApplicationGatewayPerformanceLog|Application Gateway prestanda logg|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ApplicationGatewayAccessLog|Application Gateway åtkomst logg|Inga|
+|ApplicationGatewayFirewallLog|Application Gateway brand Väggs logg|Inga|
+|ApplicationGatewayPerformanceLog|Application Gateway prestanda logg|Inga|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AzureFirewallApplicationRule|Regel för Azure brand Väggs program|
-|AzureFirewallNetworkRule|Nätverks regel för Azure Firewall|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AzureFirewallApplicationRule|Regel för Azure brand Väggs program|Inga|
+|AzureFirewallDnsProxy|Azure Firewall DNS-proxy|Inga|
+|AzureFirewallNetworkRule|Nätverks regel för Azure Firewall|Inga|
 
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|BastionAuditLogs|Gransknings loggar för skydds|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BastionAuditLogs|Gransknings loggar för skydds|Inga|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|PeeringRouteLog|Tabell loggar för peering-routning|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|PeeringRouteLog|Tabell loggar för peering-routning|Inga|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|FrontdoorAccessLog|Ytterdörr åtkomst logg|
-|FrontdoorWebApplicationFirewallLog|Ytterdörr webb program brand Väggs logg|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|FrontdoorAccessLog|Ytterdörr åtkomst logg|Inga|
+|FrontdoorWebApplicationFirewallLog|Ytterdörr webb program brand Väggs logg|Inga|
 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/belastningsutjämnare
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|LoadBalancerAlertEvent|Load Balancer aviserings händelser|
-|LoadBalancerProbeHealthStatus|Load Balancer avsökningens hälso status|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|LoadBalancerAlertEvent|Load Balancer aviserings händelser|Inga|
+|LoadBalancerProbeHealthStatus|Load Balancer avsökningens hälso status|Inga|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|NetworkSecurityGroupEvent|Händelse för nätverks säkerhets grupp|Inga|
+|NetworkSecurityGroupFlowEvent|Regel flödes händelse för nätverks säkerhets grupp|Inga|
+|NetworkSecurityGroupRuleCounter|Regel räknare för nätverks säkerhets grupp|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|NetworkSecurityGroupEvent|Händelse för nätverks säkerhets grupp|
-|NetworkSecurityGroupFlowEvent|Regel flödes händelse för nätverks säkerhets grupp|
-|NetworkSecurityGroupRuleCounter|Regel räknare för nätverks säkerhets grupp|
+
+## <a name="microsoftnetworkp2svpngateways"></a>Microsoft. Network/p2sVpnGateways
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|GatewayDiagnosticLog|Gateway-diagnostikloggar|Inga|
+|IKEDiagnosticLog|IKE-diagnostikloggar|Inga|
+|P2SDiagnosticLog|P2S diagnostikloggar|Inga|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|DDoSMitigationFlowLogs|Flödes loggar för DDoSa beslut om minskning|
-|DDoSMitigationReports|Rapporter för DDoS-åtgärder|
-|DDoSProtectionNotifications|DDoS skydds meddelanden|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DDoSMitigationFlowLogs|Flödes loggar för DDoSa beslut om minskning|Inga|
+|DDoSMitigationReports|Rapporter för DDoS-åtgärder|Inga|
+|DDoSProtectionNotifications|DDoS skydds meddelanden|Inga|
 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|ProbeHealthStatusEvents|Traffic Manager händelse av hälso resultat för avsökning|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ProbeHealthStatusEvents|Traffic Manager händelse av hälso resultat för avsökning|Inga|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|GatewayDiagnosticLog|Gateway-diagnostikloggar|
-|IKEDiagnosticLog|IKE-diagnostikloggar|
-|P2SDiagnosticLog|P2S diagnostikloggar|
-|RouteDiagnosticLog|Vidarebefordra diagnostikloggar|
-|TunnelDiagnosticLog|Tunnel diagnostikloggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|GatewayDiagnosticLog|Gateway-diagnostikloggar|Inga|
+|IKEDiagnosticLog|IKE-diagnostikloggar|Inga|
+|P2SDiagnosticLog|P2S diagnostikloggar|Inga|
+|RouteDiagnosticLog|Vidarebefordra diagnostikloggar|Inga|
+|TunnelDiagnosticLog|Tunnel diagnostikloggar|Inga|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|VMProtectionAlerts|Aviseringar för VM-skydd|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|VMProtectionAlerts|Aviseringar för VM-skydd|
+
+## <a name="microsoftnetworkvpngateways"></a>Microsoft. Network/vpnGateways
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|GatewayDiagnosticLog|Gateway-diagnostikloggar|Inga|
+|IKEDiagnosticLog|IKE-diagnostikloggar|Inga|
+|RouteDiagnosticLog|Vidarebefordra diagnostikloggar|Inga|
+|TunnelDiagnosticLog|Tunnel diagnostikloggar|Inga|
+
+
+## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft. NotificationHubs/namnrymder
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|OperationalLogs|Drift loggar|Inga|
+
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/arbets ytor
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granskningsloggar|Inga|
+
+
+## <a name="microsoftpowerbitenants"></a>Microsoft. PowerBI/klient organisationer
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Motor|Motor|Inga|
+
+
+## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft. PowerBI/klient organisationer/arbets ytor
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Motor|Motor|Inga|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitet
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Motor|Motor|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|Motor|Motor|
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/konton
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|Inga|
+
+
+## <a name="microsoftpurviewaccounts"></a>Microsoft. avdelningens kontroll/konton
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|Inga|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/valv
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AddonAzureBackupAlerts|Aviserings data för addon Azure Backup|
-|AddonAzureBackupJobs|Jobb data för addon Azure Backup|
-|AddonAzureBackupPolicy|Princip data för addon Azure Backup|
-|AddonAzureBackupProtectedInstance|Addon Azure Backup skyddade instans data|
-|AddonAzureBackupStorage|Tillägg för Azure Backup lagrings data|
-|AzureBackupReport|Azure Backup rapporterings data|
-|AzureSiteRecoveryEvents|Azure Site Recovery händelser|
-|AzureSiteRecoveryJobs|Azure Site Recovery jobb|
-|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery skyddad disk data omsättning|
-|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery återställnings punkter|
-|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikerade objekt|
-|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery överförings hastighet för replikeringsdata|
-|AzureSiteRecoveryReplicationStats|Statistik för Azure Site Recovery-replikering|
-|CoreAzureBackup|Kärn Azure Backup data|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AddonAzureBackupAlerts|Aviserings data för addon Azure Backup|Inga|
+|AddonAzureBackupJobs|Jobb data för addon Azure Backup|Inga|
+|AddonAzureBackupPolicy|Princip data för addon Azure Backup|Inga|
+|AddonAzureBackupProtectedInstance|Addon Azure Backup skyddade instans data|Inga|
+|AddonAzureBackupStorage|Tillägg för Azure Backup lagrings data|Inga|
+|AzureBackupReport|Azure Backup rapporterings data|Inga|
+|AzureSiteRecoveryEvents|Azure Site Recovery händelser|Inga|
+|AzureSiteRecoveryJobs|Azure Site Recovery jobb|Inga|
+|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery skyddad disk data omsättning|Inga|
+|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery återställnings punkter|Inga|
+|AzureSiteRecoveryReplicatedItems|Azure Site Recovery replikerade objekt|Inga|
+|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery överförings hastighet för replikeringsdata|Inga|
+|AzureSiteRecoveryReplicationStats|Statistik för Azure Site Recovery-replikering|Inga|
+|CoreAzureBackup|Kärn Azure Backup data|Inga|
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/namnrymder
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|HybridConnectionsEvent|HybridConnections-händelser|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|HybridConnectionsEvent|HybridConnections-händelser|Inga|
+|HybridConnectionsLogs|HybridConnectionsLogs|Inga|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. search/searchServices
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|OperationLogs|Åtgärds loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|OperationLogs|Åtgärds loggar|Inga|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. Service Bus/namnrymder
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|OperationalLogs|Drift loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|OperationalLogs|Drift loggar|Inga|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/SignalR
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AllLogs|Azure SignalR service-loggar.|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AllLogs|Azure SignalR service-loggar.|Inga|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|DevOpsOperationsAudit|Gransknings loggar för DevOps-åtgärder|
-|ResourceUsageStats|Statistik för resursanvändning|
-|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DevOpsOperationsAudit|Gransknings loggar för DevOps-åtgärder|Inga|
+|ResourceUsageStats|Statistik för resursanvändning|Inga|
+|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|Inga|
 
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/managedInstances/-databaser
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Fel|Fel|
-|QueryStoreRuntimeStatistics|Körnings statistik för Query Store|
-|QueryStoreWaitStatistics|Väntande statistik för Query Store|
-|SQLInsights|SQL Insights|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Fel|Fel|Inga|
+|QueryStoreRuntimeStatistics|Körnings statistik för Query Store|Inga|
+|QueryStoreWaitStatistics|Väntande statistik för Query Store|Inga|
+|SQLInsights|SQL Insights|Inga|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/Servers/databaser
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AutomaticTuning|Automatisk inställning|
-|Delar|Delar|
-|DatabaseWaitStatistics|Väntande statistik över databasen|
-|Dödlägen|Dödlägen|
-|DevOpsOperationsAudit|Gransknings loggar för DevOps-åtgärder|
-|DmsWorkers|DMS-arbetare|
-|Fel|Fel|
-|ExecRequests|Exec-begäranden|
-|QueryStoreRuntimeStatistics|Körnings statistik för Query Store|
-|QueryStoreWaitStatistics|Väntande statistik för Query Store|
-|RequestSteps|Förfrågnings steg|
-|SQLInsights|SQL Insights|
-|SqlRequests|SQL-begäranden|
-|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|
-|Timeouter|Timeouter|
-|Väntar|Väntar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AutomaticTuning|Automatisk inställning|Inga|
+|Delar|Delar|Inga|
+|DatabaseWaitStatistics|Väntande statistik över databasen|Inga|
+|Dödlägen|Dödlägen|Inga|
+|DevOpsOperationsAudit|Gransknings loggar för DevOps-åtgärder|Inga|
+|DmsWorkers|DMS-arbetare|Inga|
+|Fel|Fel|Inga|
+|ExecRequests|Exec-begäranden|Inga|
+|QueryStoreRuntimeStatistics|Körnings statistik för Query Store|Inga|
+|QueryStoreWaitStatistics|Väntande statistik för Query Store|Inga|
+|RequestSteps|Förfrågnings steg|Inga|
+|SQLInsights|SQL Insights|Inga|
+|SqlRequests|SQL-begäranden|Inga|
+|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|Inga|
+|Timeouter|Timeouter|Inga|
+|Väntar|Väntar|Inga|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
- 
-|Kategori |Kategori visnings namn|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-Kostnad för export: betalad enligt beskrivningen i avsnittet plattforms loggar på [sidan Azure Monitor prissättning.](https://azure.microsoft.com/pricing/details/monitor/) 
- 
-|Kategori |Kategori visnings namn|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|Redigering|Redigering|
-|Körnings-|Körnings-|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Redigering|Redigering|Inga|
+|Körnings-|Körnings-|Inga|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. Synapse/arbets ytor
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|BuiltinSqlReqsEnded|De inbyggda SQL-pool-begärandena avslutas|
-|GatewayApiRequests|API-begäranden för Synapse Gateway|
-|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|
-|SynapseRbacOperations|Synapse RBAC-åtgärder|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BuiltinSqlReqsEnded|De inbyggda SQL-pool-begärandena avslutas|Inga|
+|GatewayApiRequests|API-begäranden för Synapse Gateway|Inga|
+|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|Inga|
+|SynapseRbacOperations|Synapse RBAC-åtgärder|Inga|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. Synapse/arbets ytor/bigDataPools
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|BigDataPoolAppsEnded|Big data pool program har slutförts|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|BigDataPoolAppsEnded|Big data pool program har slutförts|Inga|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. Synapse/arbets ytor/sqlPools
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|DmsWorkers|DMS-arbetare|Inga|
+|ExecRequests|Exec-begäranden|Inga|
+|RequestSteps|Förfrågnings steg|Inga|
+|SqlRequests|SQL-begäranden|Inga|
+|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|Inga|
+|Väntar|Väntar|Inga|
 
-|Kategori |Kategori visnings namn|
-|---|---|
-|DmsWorkers|DMS-arbetare|
-|ExecRequests|Exec-begäranden|
-|RequestSteps|Förfrågnings steg|
-|SqlRequests|SQL-begäranden|
-|SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|
-|Väntar|Väntar|
+
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/miljöer
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Ingress|Ingress|Inga|
+|Hantering|Hantering|Inga|
+
+
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/miljöer/eventsources
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Ingress|Ingress|Inga|
+|Hantering|Hantering|Inga|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-Kostnad för export: kostnads fritt 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AppServiceEnvironmentPlatformLogs|App Service-miljön plattforms loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AppServiceEnvironmentPlatformLogs|App Service-miljön plattforms loggar|Inga|
 
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/Sites
 
-Kostnad för export: kostnads fritt 
-
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AppServiceAppLogs|App Service program loggar|
-|AppServiceAuditLogs|Åtkomst gransknings loggar|
-|AppServiceConsoleLogs|App Service konsol loggar|
-|AppServiceFileAuditLogs|Gransknings loggar för ändring av webbplats innehåll|
-|AppServiceHTTPLogs|HTTP-loggar|
-|FunctionAppLogs|Funktions program loggar|
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|Rapportera Antivirus gransknings loggar|Inga|
+|AppServiceAppLogs|App Service program loggar|Inga|
+|AppServiceAuditLogs|Åtkomst gransknings loggar|Inga|
+|AppServiceConsoleLogs|App Service konsol loggar|Inga|
+|AppServiceFileAuditLogs|Gransknings loggar för ändring av webbplats innehåll|Inga|
+|AppServiceHTTPLogs|HTTP-loggar|Inga|
+|AppServiceIPSecAuditLogs|IPSecurity gransknings loggar|Inga|
+|AppServicePlatformLogs|App Service plattforms loggar|Inga|
+|FunctionAppLogs|Funktions program loggar|Inga|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/lotss
 
-Kostnad för export: kostnads fritt 
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|Rapportera Antivirus gransknings loggar|Inga|
+|AppServiceAppLogs|App Service program loggar|Inga|
+|AppServiceAuditLogs|Åtkomst gransknings loggar|Inga|
+|AppServiceConsoleLogs|App Service konsol loggar|Inga|
+|AppServiceFileAuditLogs|Gransknings loggar för ändring av webbplats innehåll|Inga|
+|AppServiceHTTPLogs|HTTP-loggar|Inga|
+|AppServiceIPSecAuditLogs|IPSecurity gransknings loggar|Inga|
+|AppServicePlatformLogs|App Service plattforms loggar|Inga|
+|FunctionAppLogs|Funktions program loggar|Inga|
 
-
-|Kategori |Kategori visnings namn|
-|---|---|
-|AppServiceAppLogs|App Service program loggar|
-|AppServiceAuditLogs|Åtkomst gransknings loggar|
-|AppServiceConsoleLogs|App Service konsol loggar|
-|AppServiceFileAuditLogs|Gransknings loggar för ändring av webbplats innehåll|
-|AppServiceHTTPLogs|HTTP-loggar|
-|FunctionAppLogs|Funktions program loggar|
 
 
 ## <a name="next-steps"></a>Nästa steg

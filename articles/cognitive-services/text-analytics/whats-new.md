@@ -8,19 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652859"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090679"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
 API för textanalys uppdateras regelbundet. Den här artikeln innehåller information om nya versioner och funktioner för att hålla dig uppdaterad med den senaste utvecklingen.
+
+## <a name="january-2021"></a>Januari 2021
+
+* `2021-01-15`Modell versionen för [namngiven entitets igenkänning](how-tos/text-analytics-how-to-entity-linking.md) v3. x, som ger 
+  * Expanderat språk stöd för [flera allmänna enhets kategorier](named-entity-types.md). 
+  * Förbättrad AI-kvalitet för allmänna enhets kategorier för alla v3-språk som stöds. 
+
+* `2021-01-05`Modell versionen för [språk identifiering](how-tos/text-analytics-how-to-language-detection.md), vilket ger ytterligare [språk stöd](language-support.md?tabs=language-detection).
 
 ## <a name="december-2020"></a>December 2020
 
@@ -66,7 +74,7 @@ API för textanalys uppdateras regelbundet. Den här artikeln innehåller inform
 ### <a name="text-analytics-for-health-container-updates"></a>Textanalys för uppdateringar av hälso container
 
 Följande uppdateringar gäller endast september-versionen av Textanalys för hälso container.
-* En ny behållar avbildning med tagg `1.1.013530001-amd64-preview` med den nya modell versionen `2020-09-03` har släppts till containerpreview-lagringsplatsen. 
+* En ny behållar avbildning med tagg `1.1.013530001-amd64-preview` med den nya modell versionen `2020-09-03` har lanserats till behållar förhands gransknings databasen. 
 * Den här modell versionen ger förbättringar av enhets igenkänning, förkortnings identifiering och tids fördröjnings förbättringar.
 
 > [!div class="nextstepaction"]
@@ -240,6 +248,6 @@ Det stöder engelska ( `en` ), japanska ( `ja` ), kinesiska (förenklad) `zh-Han
 * [Vad är API för textanalys?](overview.md)  
 * [Exempel på användarscenarier](text-analytics-user-scenarios.md)
 * [Sentiment-analys](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Språkidentifiering](how-tos/text-analytics-how-to-language-detection.md)
+* [Språk identifiering](how-tos/text-analytics-how-to-language-detection.md)
 * [Enhets igenkänning](how-tos/text-analytics-how-to-entity-linking.md)
-* [Extrahering av nyckelfraser](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Extrahering av nyckel fraser](how-tos/text-analytics-how-to-keyword-extraction.md)

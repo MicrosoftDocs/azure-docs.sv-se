@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292463"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063003"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Anropa tjänstslutpunkter via HTTP eller HTTPS från Azure Logic Apps
 
@@ -46,7 +46,7 @@ Den här inbyggda utlösaren gör ett HTTP-anrop till den angivna URL: en för e
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). Öppna din tomma Logic-app i Logic App Designer.
 
-1. Välj **inbyggd i**rutan Sök i designer. I rutan Sök anger `http` du som filter. Välj **http-** utlösare i listan **utlösare** .
+1. Välj **inbyggd i** rutan Sök i designer. I rutan Sök anger `http` du som filter. Välj **http-** utlösare i listan **utlösare** .
 
    ![Välj HTTP-utlösare](./media/connectors-native-http/select-http-trigger.png)
 
@@ -56,7 +56,7 @@ Den här inbyggda utlösaren gör ett HTTP-anrop till den angivna URL: en för e
 
    ![Ange parametrar för HTTP-utlösare](./media/connectors-native-http/http-trigger-parameters.png)
 
-   Om du väljer en annan autentiseringstyp än **ingen**är autentiseringsinställningarna annorlunda beroende på ditt val. Mer information om autentiseringstyper som är tillgängliga för HTTP finns i följande avsnitt:
+   Om du väljer en annan autentiseringstyp än **ingen** är autentiseringsinställningarna annorlunda beroende på ditt val. Mer information om autentiseringstyper som är tillgängliga för HTTP finns i följande avsnitt:
 
    * [Lägg till autentisering i utgående samtal](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
    * [Autentisera åtkomst till resurser med hanterade identiteter](../logic-apps/create-managed-service-identity.md)
@@ -81,7 +81,7 @@ Den här inbyggda åtgärden gör ett HTTP-anrop till den angivna URL: en för e
 
    Om du vill lägga till en åtgärd mellan stegen flyttar du pekaren över pilen mellan stegen. Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd**.
 
-1. Under **Välj en åtgärd**väljer du **inbyggt**. I rutan Sök anger `http` du som filter. Välj **http-** åtgärd i listan **åtgärder** .
+1. Under **Välj en åtgärd** väljer du **inbyggt**. I rutan Sök anger `http` du som filter. Välj **http-** åtgärd i listan **åtgärder** .
 
    ![Välj HTTP-åtgärd](./media/connectors-native-http/select-http-action.png)
 
@@ -91,7 +91,7 @@ Den här inbyggda åtgärden gör ett HTTP-anrop till den angivna URL: en för e
 
    ![Ange HTTP-åtgärds parametrar](./media/connectors-native-http/http-action-parameters.png)
 
-   Om du väljer en annan autentiseringstyp än **ingen**är autentiseringsinställningarna annorlunda beroende på ditt val. Mer information om autentiseringstyper som är tillgängliga för HTTP finns i följande avsnitt:
+   Om du väljer en annan autentiseringstyp än **ingen** är autentiseringsinställningarna annorlunda beroende på ditt val. Mer information om autentiseringstyper som är tillgängliga för HTTP finns i följande avsnitt:
 
    * [Lägg till autentisering i utgående samtal](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
    * [Autentisera åtkomst till resurser med hanterade identiteter](../logic-apps/create-managed-service-identity.md)
@@ -104,7 +104,7 @@ Den här inbyggda åtgärden gör ett HTTP-anrop till den angivna URL: en för e
 
 Här är mer information om utdata från en HTTP-utlösare eller åtgärd som returnerar denna information:
 
-| Egenskap | Typ | Beskrivning |
+| Egenskap | Typ | Description |
 |----------|------|-------------|
 | `headers` | JSON-objekt | Huvudena från begäran |
 | `body` | JSON-objekt | Objektet med bröd text innehållet från begäran |
@@ -249,7 +249,7 @@ Om en HTTP-utlösare eller åtgärd inkluderar dessa huvuden, tar Logic Apps bor
 
 * `Accept-*` huvuden utom för `Accept-version`
 * `Allow`
-* `Content-*` med dessa undantag: `Content-Disposition` , `Content-Encoding` och `Content-Type`
+* `Content-*` rubriker förutom `Content-Disposition` , `Content-Encoding` , och `Content-Type` när du använder post-och placerings åtgärder, men inte ingår i get-åtgärder
 * `Cookie`
 * `Expires`
 * `Host`
