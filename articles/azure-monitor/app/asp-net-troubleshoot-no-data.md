@@ -4,12 +4,12 @@ description: Ser du inte data i Azure Application Insights? Prova här.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904473"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092459"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Fel sökning av inga data Application Insights för .NET/.NET Core
 
@@ -188,7 +188,7 @@ Prestanda data (CPU, IO-taxa och så vidare) är tillgängliga för [Java-webbtj
 * Kontrol lera att du verkligen har kopierat alla Microsoft. ApplicationInsights-dll: er till-servern, tillsammans med Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * I brand väggen kan du behöva [öppna vissa TCP-portar](./ip-addresses.md).
 * Om du måste använda en proxyserver för att skicka ut företags nätverket anger du [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) i Web.config
-* Windows Server 2008: kontrol lera att du har installerat följande uppdateringar: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
+* Windows Server 2008: kontrol lera att du har installerat följande uppdateringar: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Jag har använt för att se data, men har stoppats
 * Har du nått din månads kvot för data punkter? Öppna inställningarna/kvoten och prissättningen för att ta reda på det. I så fall kan du uppgradera planen eller betala för ytterligare kapacitet. Se [pris Planen](https://azure.microsoft.com/pricing/details/application-insights/).

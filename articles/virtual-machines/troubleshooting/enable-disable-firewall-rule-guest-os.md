@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee27f429dbfd1e550a45bbc26413a1c259c4fbe
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058759"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092376"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Aktivera eller inaktivera en brandväggsregel i gästoperativsystemet på en virtuell Azure-dator
 
@@ -95,7 +95,7 @@ Om den virtuella datorn är online och kan nås på en annan virtuell dator i sa
 
 #### <a name="mitigation-4-remote-registry"></a>Minskning 4: fjär register
 
-Om den virtuella datorn är online och kan nås på en annan virtuell dator i samma virtuella nätverk, kan du använda [fjär registret](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) på den andra virtuella datorn.
+Om den virtuella datorn är online och kan nås på en annan virtuell dator i samma virtuella nätverk, kan du använda [fjär registret](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837) på den andra virtuella datorn.
 
 1.  Starta Registereditorn (regedit.exe) på den virtuella datorn för fel sökning och välj sedan **fil**  >  **Anslut nätverks register**.
 
@@ -142,7 +142,7 @@ Innan du följer dessa steg ska du ta en ögonblicks bild av system disken för 
 7.  Leta upp och öppna filen \windows\system32\config\SYSTEM. 
 
     > [!Note]
-    > Du uppmanas att ange ett namn. Ange **BROKENSYSTEM**och expandera sedan **HKEY_LOCAL_MACHINE**. Nu visas en ytterligare nyckel som heter **BROKENSYSTEM**. För den här fel sökningen monterar vi dessa problem strukturer som **BROKENSYSTEM**.
+    > Du uppmanas att ange ett namn. Ange **BROKENSYSTEM** och expandera sedan **HKEY_LOCAL_MACHINE**. Nu visas en ytterligare nyckel som heter **BROKENSYSTEM**. För den här fel sökningen monterar vi dessa problem strukturer som **BROKENSYSTEM**.
 
 8.  Gör följande ändringar på BROKENSYSTEM-grenen:
 
@@ -164,7 +164,7 @@ Innan du följer dessa steg ska du ta en ögonblicks bild av system disken för 
         
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
-9.  Markera **BROKENSYSTEM**och välj sedan **Arkiv**  >  **ta bort Hive** från menyn.
+9.  Markera **BROKENSYSTEM** och välj sedan **Arkiv**  >  **ta bort Hive** från menyn.
 
 10. [Koppla från system disken och skapa den virtuella datorn på nytt](troubleshoot-recovery-disks-portal-windows.md).
 
