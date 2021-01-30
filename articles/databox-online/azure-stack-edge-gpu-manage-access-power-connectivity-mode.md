@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448554"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061821"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Hantera åtkomst, energi och anslutnings läge för Azure Stack Edge Pro GPU
 
@@ -54,7 +54,7 @@ Följ de här stegen i det lokala användar gränssnittet för att ändra enhete
 
 1. I Azure Portal går du till **översikt > Återställ administratörs lösen ord**.
 
-    ![Skärm bild som visar enheten med återställt enhets lösen ord valt.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Skärm bild som visar enheten med återställt enhets lösen ord valt.](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Ange det nya lösen ordet och bekräfta det sedan. Det angivna lösen ordet måste innehålla mellan 8 och 16 tecken. Lösen ordet måste innehålla 3 av följande tecken: versaler, gemener, siffror och specialtecken. Välj **Återställ**.

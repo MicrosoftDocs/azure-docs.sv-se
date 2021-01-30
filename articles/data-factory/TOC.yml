@@ -698,10 +698,12 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Skapa ett beroende för utlösare för rullande fönster
           href: tumbling-window-trigger-dependency.md
-    - name: Ursprung
+    - name: Data Catalog och styrning
       items:
         - name: Ansluta en datafabrik till Azure Purview
           href: connect-data-factory-to-azure-purview.md
+        - name: Identifiera och utforska data i ADF med avdelningens kontroll
+          href: how-to-discover-explore-purview-data.md
     - name: Scenarier
       items:
         - name: Datamigrering för datasjöar och EDW
@@ -796,10 +798,6 @@
       href: /python/api/overview/azure/datafactory
 - name: Resurser
   items:
-    - name: Översikt över reserverade data flödes kapacitet
-      href: data-flow-reserved-capacity-overview.md
-    - name: Data flöde förstå reservations avgifter
-      href: data-flow-understand-reservation-charges.md
     - name: Faktablad
       href: whitepapers.md
     - name: VANLIGA FRÅGOR OCH SVAR

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 6fb460c65d37723b03c1dfd4fba2c353c19455bd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944586"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062196"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link för Azure Data Factory
 
@@ -48,7 +48,7 @@ Med stöd för privat länk för Azure Data Factory kan du:
 * Skapa en privat slut punkt i det virtuella nätverket.
 * Aktivera den privata anslutningen till en speciell Data Factory-instans. 
 
-Kommunikationen med att Azure Data Factory tjänsten går via en privat länk och ger säker privat anslutning. Du behöver inte konfigurera föregående domän och port i ett virtuellt nätverk eller i företags brand väggen för att kunna skydda dina resurser på ett säkrare sätt.  
+Kommunikationen med att Azure Data Factory tjänsten går via en privat länk och ger säker privat anslutning. 
 
 ![Diagram över privat länk för Azure Data Factory arkitektur.](./media/data-factory-private-link/private-link-architecture.png)
 
@@ -62,6 +62,9 @@ Att aktivera tjänsten för privata Länkar för var och en av de föregående k
 
    > [!NOTE]
    > För funktioner som inte stöds för närvarande måste du fortfarande konfigurera den tidigare nämnda domänen och porten i det virtuella nätverket eller företagets brand vägg. 
+
+   > [!NOTE]
+   > Anslutning till Azure Data Factory via privat slut punkt gäller endast för integration runtime med egen värd i Data Factory. Det stöds inte i Synapse.
 
 > [!WARNING]
 > När du skapar en länkad tjänst ser du till att dina autentiseringsuppgifter lagras i ett Azure Key Vault. Annars fungerar inte autentiseringsuppgifterna när du aktiverar privat länk i Azure Data Factory.

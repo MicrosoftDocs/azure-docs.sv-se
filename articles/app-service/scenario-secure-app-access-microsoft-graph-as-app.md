@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3d6e9d1d66425655f0db5751a28746b6a6a31c86
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631791"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062567"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Självstudie: åtkomst Microsoft Graph från en säker app som appen
 
@@ -125,9 +125,9 @@ I **Översikt** väljer du **behörigheter** och du ser de tillagda behörighete
 
 Om du vill se den här koden som en del av ett exempel program, se [exemplet på GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity).
 
-### <a name="install-the-microsoftgraph-client-library-package"></a>Installera klient biblioteks paketet Microsoft. Graph
+### <a name="install-the-microsoftidentitywebmicrosoftgraph-client-library-package"></a>Installera klient biblioteks paketet Microsoft. Identity. Web. MicrosoftGraph
 
-Installera [Microsoft. Graph NuGet-paketet](https://www.nuget.org/packages/Microsoft.Graph) i projektet med .net Core kommando rads gränssnitt eller Package Manager-konsolen i Visual Studio.
+Installera [Microsoft. Identity. Web. MicrosoftGraph NuGet-paketet](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) i ditt projekt med hjälp av kommando rads gränssnittet .net Core eller Package Manager-konsolen i Visual Studio.
 
 # <a name="command-line"></a>[Kommandorad](#tab/command-line)
 
@@ -136,7 +136,7 @@ Installera [Microsoft. Graph NuGet-paketet](https://www.nuget.org/packages/Micro
 Kör installations kommandona.
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 # <a name="package-manager"></a>[Paket hanterare](#tab/package-manager)
@@ -145,7 +145,7 @@ dotnet add package Microsoft.Graph
 
 Kör installations kommandona.
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 ---

@@ -3,12 +3,12 @@ title: Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Secur
 description: Lär dig hur du skyddar dina virtuella Azure VMware-lösningar med Azures inbyggda säkerhets verktyg från en enda instrument panel i Azure Security Center.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937346"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061472"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
 
@@ -45,7 +45,7 @@ Du kan konfigurera arbets ytan Log Analytics med Azure Sentinel för aviserings 
 
 ## <a name="create-a-log-analytics-workspace"></a>Skapa en Log Analytics-arbetsyta
 
-Du behöver en Log Analytics arbets yta för att samla in data från olika källor. Se stegen i [skapa en Log Analytics arbets yta från Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
+Du behöver en Log Analytics arbets yta för att samla in data från olika källor. Mer information finns i [skapa en Log Analytics arbets yta från Azure Portal](../azure-monitor/learn/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Distribuera Security Center och konfigurera virtuella datorer med Azure VMware-lösningen
 
@@ -176,8 +176,8 @@ När du har anslutit data källor till Azure Sentinel kan du skapa regler för a
     - Mappa entiteter
     - Fråga schemaläggning
     - Aviseringströskelvärde
-    - Händelse gruppering
-    - Under tryckning
+    - Händelsegruppering
+    - Undertryckning
 
     Välj **Nästa**.
 

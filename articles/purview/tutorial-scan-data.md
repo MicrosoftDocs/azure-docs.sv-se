@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e373556d189e9fffc0626d19250e79c09962a004
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249610"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062111"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Självstudie: Genomsök data med Azure avdelningens kontroll (för hands version)
 
@@ -32,7 +32,7 @@ I del 1 av den här själv studie serien kommer du att:
 
 * En Azure-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) innan du börjar.
 * Ett [Azure avdelningens kontroll-konto](create-catalog-portal.md).
-* [Det start paket](https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip) som ska användas för att distribuera data fastigheten.
+* [Det start paket](https://github.com/Azure/Purview-Samples/blob/master/PurviewStarterKitV4.zip) som ska användas för att distribuera data fastigheten.
 
 > [!NOTE]
 > Start paketet är bara tillgängligt för Windows.

@@ -157,6 +157,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: Identifiera vanliga problem
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: VANLIGA FRÅGOR OCH SVAR
               href: container-registry-faq.md
 - name: Aktiviteter

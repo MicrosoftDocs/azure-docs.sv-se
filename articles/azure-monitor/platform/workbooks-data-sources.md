@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927914"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061964"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor arbets böcker data källor
 
@@ -59,7 +59,7 @@ Om du vill göra en fråg-kontroll använder du den här data källan, använder
 
 ## <a name="azure-data-explorer"></a>Azure-datautforskaren
 
-Arbets böcker har nu stöd för frågor från [Azure datautforskaren](/azure/data-explorer/) -kluster med det kraftfulla [Kusto](/azure/kusto/query/index) -frågespråket.   
+Arbets böcker har nu stöd för frågor från [Azure datautforskaren](/azure/data-explorer/) -kluster med det kraftfulla [Kusto](/azure/kusto/query/index) -frågespråket.
 
 ![Skärm bild av Kusto Query-fönster](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Om du vill att en fråga ska använda den här data källan använder du List ru
 
 ![Skärm bild av aviserings frågan som visar hälso filter listor.](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>Ändrings analys (för hands version)
+
+Om du vill göra en fråg-kontroll med [program ändrings analys](../app/change-analysis.md) som data källa använder du List rutan *data källa* och väljer *ändra analys (för hands version)* och väljer en enskild resurs. Ändringar för upp till de senaste 14 dagarna kan visas. List rutan *nivå* kan användas för att filtrera mellan "viktigt", "normal" och "bruset"-ändringar, och den här List rutan stöder kalkyl blads parametrar av typen [list](workbooks-dropdowns.md).
+
+> [!div class="mx-imgBorder"]
+> ![En skärm bild av en arbets bok med ändrings analys](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>Sammanfoga data från olika källor
+
+Det är ofta nödvändigt att samla in data från olika källor som förbättrar insikter-upplevelsen. Ett exempel är att utöka aktiva aviserings information med relaterade mått data. Detta gör det möjligt för användarna att se inte bara effekterna (en aktiv avisering), men även potentiella orsaker (till exempel hög CPU-användning). Övervaknings domänen har flera sådana korrelerade data källor som ofta är kritiska för prioritering och diagnostisk arbets flöde.
+
+Arbets böcker tillåter inte bara frågor till olika data källor, men ger även enkla kontroller som gör att du kan sammanfoga eller koppla data för att ge omfattande insikter. `merge`Kontrollen är ett sätt att uppnå den.
+
+Exemplet nedan kombinerar aviserings data med prestanda data i Log Analytics VM för att få ett omfattande insikts rutnät.
+
+> [!div class="mx-imgBorder"]
+> ![En skärm bild av en arbets bok med en sammanfognings kontroll som kombinerar aviserings-och Log Analytics-data](./media/workbooks-data-sources/merge-control.png)
+
+Arbets böcker stöder flera olika sammanfogningar:
+
+* Inre unik koppling
+* Fullständig inre koppling
+* Fullständig yttre koppling
+* Vänster yttre koppling
+* Höger yttre koppling
+* Vänster halv koppling
+* Höger halv koppling
+* Vänster anti-koppling
+* Höger koppling
+* Union
+* Duplicera tabell
+
 ## <a name="json"></a>JSON
 
 Med JSON-providern kan du skapa ett frågeresultat från statiskt JSON-innehåll. Den används oftast i parametrar för att skapa List Rute parametrar med statiska värden. Enkla JSON-matriser eller objekt kommer automatiskt att konverteras till rutnäts rader och kolumner.  Om du vill ha mer information kan du använda fliken resultat och JSONPath inställningar för att konfigurera kolumner.
+
+Den här providern stöder [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="alerts-preview"></a>Aviseringar (förhandsversion)
 
@@ -94,18 +128,20 @@ Med JSON-providern kan du skapa ett frågeresultat från statiskt JSON-innehåll
 
 Med arbets böcker kan användare visualisera aktiva aviseringar relaterade till deras resurser. Begränsningar: aviserings data källan kräver Läs åtkomst till prenumerationen för att kunna söka efter resurser och kan inte Visa nya typer av aviseringar. 
 
-Om du vill göra en fråg-kontroll använder du den här data källan, använder list rutan _data källa_ för att välja _aviseringar (för hands version)_ och väljer de prenumerationer, resurs grupper eller resurser som ska användas som mål. Använd List rutorna för varnings filter för att välja en intressant del av aviseringarna för dina analys behov.
+För att kontrol lera att en fråga används för att använda den här data källan använder du List rutan _data källa_ för att välja _aviseringar (för hands version)_ och väljer de prenumerationer, resurs grupper eller resurser som ska användas som mål. Använd List rutorna för varnings filter för att välja en intressant del av aviseringarna för dina analys behov.
 
 ## <a name="custom-endpoint"></a>Anpassad slut punkt
 
 Arbets böcker har stöd för att hämta data från alla externa källor. Om dina data finns utanför Azure kan du använda dem i arbets böcker med den här typen av data källa.
 
-Om du vill göra en fråg-kontroll använder du den här data källan använder du List rutan _data källa_ för att välja _anpassad slut punkt_ . Ange lämpliga parametrar som,, `Http method` `url` `headers` `url parameters` och/eller `body` . Kontrol lera att data källan har stöd för [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) , annars Miss Miss förfrågan.
+Om du vill göra en fråg-kontroll använder du den här data källan använder du List rutan _data källa_ för att välja _anpassad slut punkt_. Ange lämpliga parametrar som,, `Http method` `url` `headers` `url parameters` och/eller `body` . Kontrol lera att data källan har stöd för [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) , annars Miss Miss förfrågan.
 
-För att undvika att anrop till obetrodda värdar när du använder mallar, måste användaren Markera de använda värdarna som betrodda. Du kan göra detta genom att antingen klicka på knappen _Lägg till som betrodd_ eller genom att lägga till den som en betrodd värd i arbets boks inställningarna. De här inställningarna kommer att sparas i webbläsare som stöder IndexDb med webb arbetare, mer information [här](https://caniuse.com/#feat=indexeddb).
+För att undvika att anrop till obetrodda värdar när du använder mallar, måste användaren Markera de använda värdarna som betrodda. Du kan göra detta genom att antingen klicka på knappen _Lägg till som betrodd_ eller genom att lägga till den som en betrodd värd i arbets boks inställningarna. De här inställningarna kommer att sparas i [webbläsare som stöder IndexDb med webb arbetare](https://caniuse.com/#feat=indexeddb).
 
 > [!NOTE]
 > Skriv inte några hemligheter i något av fälten (,, `headers` `parameters` `body` , `url` ) eftersom de visas för alla användare i arbets boken.
+
+Den här providern stöder [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

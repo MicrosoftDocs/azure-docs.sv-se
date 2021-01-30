@@ -68,6 +68,8 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konsolen (daemon)
           href: quickstart-v2-python-daemon.md
+        - name: Java-konsolens daemon
+          href: quickstart-v2-java-daemon.md
 - name: Självstudier
   items:
     - name: Ensidesapplikation (SPA)

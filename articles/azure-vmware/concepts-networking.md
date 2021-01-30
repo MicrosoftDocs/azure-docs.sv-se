@@ -3,12 +3,12 @@ title: Koncept – nätverks anslutning
 description: Lär dig mer om viktiga aspekter och användnings fall för nätverk och anslutningar i Azure VMware-lösningar.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: f8e9ed143d53afe2f7a24c832c69390c6ffcb36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9369c0fff31de4c6575d8e4903420cfa01461bf4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575766"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062128"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Nätverks-och samanslutnings koncept i Azure VMware-lösningen
 
@@ -53,11 +53,9 @@ I diagrammet nedan visas samanslutningen mellan lokala och privata moln, vilket 
 * Hett/kall över-vCenter-vMotion
 * Lokal åtkomst till Azure VMware-lösning hantering av privata moln
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Grundläggande virtuellt nätverk för anslutning till privat moln" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Virtuella nätverk och lokala anslutningar med fullständig privat moln" border="false":::
 
-För fullständig anslutning till ditt privata moln aktiverar du ExpressRoute Global Reach och begär sedan en auktoriseringspost och ett privat peering-ID för Global Reach i Azure Portal. Auktoriseringsregeln och peering-ID används för att etablera Global Reach mellan en ExpressRoute-krets i din prenumeration och ExpressRoute-kretsen för ditt nya privata moln. När de två ExpressRoute kretsarna dirigerar nätverks trafiken mellan dina lokala miljöer till ditt privata moln.  Se [självstudien för att skapa en ExpressRoute Global Reach peering till ett privat moln](tutorial-expressroute-global-reach-private-cloud.md) för procedurerna för att begära och använda auktoriseringsprincipen och PEERING-ID.
-
-
+För fullständig anslutning till ditt privata moln aktiverar du ExpressRoute Global Reach och begär sedan en auktoriseringspost och ett privat peering-ID för Global Reach i Azure Portal. Auktoriseringsregeln och peering-ID används för att etablera Global Reach mellan en ExpressRoute-krets i din prenumeration och ExpressRoute-kretsen för ditt nya privata moln. När de två ExpressRoute kretsarna dirigerar nätverks trafiken mellan dina lokala miljöer till ditt privata moln.  Mer information om procedurerna för att begära och använda auktoriseringsprincipen och peering-ID finns i [självstudien för att skapa en ExpressRoute Global Reach peering i ett privat moln](tutorial-expressroute-global-reach-private-cloud.md).
 
 ## <a name="next-steps"></a>Nästa steg 
 Lär dig mer om [lagrings koncept för privata moln](concepts-storage.md).

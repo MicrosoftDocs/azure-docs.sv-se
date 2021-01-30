@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 6d1fd873de3313678875a8c167b90fafb8ede7ae
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093527"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061656"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Nätverks koncept för Azure Red Hat OpenShift (ARO)
 
@@ -68,12 +68,15 @@ OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/contain
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Nätverk för Azure Red Hat OpenShift
 
-Följande nätverksfunktioner är bara för Azure Red Hat OpenShift:
+Följande nätverksfunktioner är bara för Azure Red Hat OpenShift:  
 * Användare kan skapa sitt ARO-kluster i ett befintligt virtuellt nätverk eller skapa ett virtuellt nätverk när de skapar sina ARO-kluster.
 * Pod-och service Network-CIDRs kan konfigureras.
 * Noder och hanterare finns i olika undernät.
 * Noder och huvud undernät för virtuella nätverk ska vara minst/27.
-* Pod CIDR bör vara minst/18 i storlek (Pod-nätverket är icke-dirigerbart IP-adresser och används bara inuti OpenShift-SDN).
+* Standard-Pod CIDR är 10.128.0.0/14.
+* Standard-CIDR för tjänst är 172.30.0.0/16.
+* Pod-och service Network-CIDR-data ska inte överlappa andra adress intervall som används i nätverket och får inte ligga inom det virtuella nätverkets IP-adressintervall för klustret.
+* Pod CIDR bör vara minst/18 i storlek. (Pod-nätverket är icke-dirigerbart IP-adresser och används bara inuti OpenShift-SDN.)
 * Varje nod tilldelas/23 under nätet (512 IP-adresser) för sin poddar. Värdet kan inte ändras.
 * Du kan inte koppla en POD till flera nätverk.
 * Du kan inte konfigurera utgående statisk IP. (Det här är en OpenShift-funktion. Mer information finns i [Konfigurera utgående IP-adresser](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).

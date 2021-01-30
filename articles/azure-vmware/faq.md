@@ -3,12 +3,12 @@ title: Vanliga frågor och svar
 description: Innehåller svar på några vanliga frågor om Azure VMware-lösningen.
 ms.topic: conceptual
 ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 090b29b1e013ffbceb9296250fed99a04d15a82c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218594"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062095"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Vanliga frågor och svar om Azure VMware-lösningen
 
@@ -171,7 +171,7 @@ Den privata moln program varu paketets uppgraderingar behåller program varan i 
 
 Program varan för det privata molnet uppgraderas enligt ett schema som spårar program varu paketets version från VMware. Det privata molnet kräver ingen stillestånds tid för uppgraderingar.
 
-## <a name="connectivity"></a>Anslutningar
+## <a name="connectivity"></a>Anslutning
 
 ### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Vilken nätverks-IP-adress planering krävs för att inkludera privata moln med lokala miljöer?
 
@@ -258,7 +258,7 @@ VMware HCX Enterprise är tillgängligt med Azure VMware-lösningen som en *för
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Hur gör jag för att begära en värd kvot ökning för Azure VMware-lösningen?
 
-För CSP-hanterade prenumerationer måste kunden skicka begäran till partnern. Partner teamet engagerar sedan med Microsoft för att få en större kvot för prenumerationen. Mer information finns i [Aktivera Azure VMware-lösningens resurs artikel](enable-azure-vmware-solution.md) . 
+För CSP-hanterade prenumerationer måste kunden skicka begäran till partnern. Partner teamet engagerar sedan med Microsoft för att få en större kvot för prenumerationen. Mer information finns i [så här aktiverar du Azure VMware-lösnings resurser](enable-azure-vmware-solution.md). 
 
 Använd följande procedur för EA-prenumerationer. Först behöver du:
 

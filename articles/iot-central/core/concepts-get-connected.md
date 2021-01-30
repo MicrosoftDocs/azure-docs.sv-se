@@ -1,8 +1,8 @@
 ---
 title: Enhets anslutning i Azure IoT Central | Microsoft Docs
 description: Den här artikeln beskriver viktiga begrepp som rör enhets anslutning i Azure IoT Central
-author: TheJasonAndrew
-ms.author: v-anjaso
+author: dominicbetts
+ms.author: dobett
 ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789778"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062686"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Ansluta till Azure IoT Central
 
@@ -215,7 +215,7 @@ När en riktig enhet ansluter till ditt IoT Central-program ändras enhetens sta
 
     Operatören kan koppla en enhet till en enhets mall från sidan **enheter** med knappen **migrera** .
 
-## <a name="best-practices"></a>Bästa praxis
+## <a name="best-practices"></a>Rekommenderade metoder
 
 Behåll eller cachelagra inte enhets anslutnings strängen som DPS returnerar när du först ansluter enheten. Om du vill återansluta en enhet går du igenom standard enhets registrerings flödet för att få rätt anslutnings sträng för enheten. Om enheten cachelagrar anslutnings strängen, körs enhetens program vara i risken att en inaktuell anslutnings sträng används. Om IoT Central uppdaterar den underliggande Azure IoT-hubben som används kan en enhet med en inaktuell anslutnings sträng inte ansluta.
 
@@ -234,11 +234,8 @@ Azure-enhetens SDK: er erbjuder det enklaste sättet för dig att implementera e
 All enhets kommunikation med IoT Hub använder följande IoT Hub anslutnings alternativ:
 
 - [Meddelanden från enhet till moln](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [Meddelanden från moln till enhet](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
+- [Meddelanden från moln till enhet](../../iot-hub/iot-hub-devguide-messages-c2d.md)
 - [Enhets dubbla](../../iot-hub/iot-hub-devguide-device-twins.md)
-
-> [!NOTE]
-> Azure stöder nu
 
 I följande tabell sammanfattas hur Azure IoT Central enhets funktioner mappas till IoT Hub funktioner:
 

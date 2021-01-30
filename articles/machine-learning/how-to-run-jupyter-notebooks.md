@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685586"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061842"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter Notebooks på arbetsytan
 
@@ -255,89 +255,6 @@ En indikator bredvid List rutan **kernel** visar dess status.
 |---------|---------|
 |  Green |Kernel-ansluten, inaktiv, upptagen|
 |  Mörkgrå |Kernel inte ansluten |
-
-## <a name="shortcut-keys"></a>Kortkommandon
-Azure Machine Learning Studio antecknings böcker liknar Jupyter-anteckningsböcker har ett spärrat användar gränssnitt. Tangent bordet skiljer sig åt beroende på vilket läge som Notebook-cellen finns i. Azure Machine Learning Studio Notebooks har stöd för följande två lägen för en specifik kod cell: kommando läge och redigerings läge.
-
-### <a name="command-mode-shortcuts"></a>Kortkommandon för kommando läge
-
-En cell är i kommando läge när ingen text markör visas som anger att du skriver. När en cell är i kommando läge kan du redigera antecknings boken som helhet men inte skriva in enskilda celler. Ange kommando läge genom att trycka `ESC` eller använda musen för att välja utanför cellens redigerings området.  Den vänstra kant linjen i den aktiva cellen är blå och heldragen och dess **körnings** knapp är blå.
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Notebook-cell i kommando läge ":::
-
-| Genvägar                      | Description                          |
-| ----------------------------- | ------------------------------------|
-| Ange                         | Växla till redigeringsläge             |        
-| Skift + Retur                 | Kör cell, Välj nedan         |     
-| Kontroll/kommando + retur       | Kör cell                            |
-| ALT + RETUR                   | Kör cell, Infoga tecken cell under    |
-| Kontroll/kommando + ALT + RETUR | Kör cell, infoga markdown cell under|
-| Alt + R                       | Kör alla      |                       
-| Y                             | Konvertera cell till kod    |                         
-| M                             | Konvertera cell till markdown  |                       
-| Upp/K                          | Markera cell ovanför    |               
-| Ned/J                        | Markera cell under    |               
-| A                             | Infoga tecken cell ovan  |            
-| B                             | Infoga kod cell under   |           
-| CTRL + Kommando + Skift + A   | Infoga markdown cell ovanför    |      
-| Kontroll/kommando + Skift + B   | Infoga markdown cell under   |       
-| X                             | Klipp ut markerad cell    |               
-| C                             | Kopiera markerad cell   |               
-| SHIFT + V                     | Klistra in markerad cell ovanför           |
-| V                             | Klistra in markerad cell under    |       
-| D D                           | Ta bort markerad cell|                
-| O                             | Växla utdata         |              
-| SKIFT + O                     | Växla utdata-rullning   |          
-| Jag                           | Avbryt kernel |                   
-| 0 0                           | Starta om kernel |                     
-| Skift + blank steg                 | Rulla uppåt  |                         
-| Space                         | Rulla nedåt|
-| Flik                           | Ändra fokus till nästa fokus objekt (när TABB-trap är inaktive rad)|
-| Kontroll/kommando + S           | Spara antecknings boken |                      
-| 1                             | Ändra till H1|                       
-| 2                             | Ändra till H2|                        
-| 3                             | Ändra till H3|                        
-| 4                             | Ändra till H4 |                       
-| 5                             | Ändra till H5 |                       
-| 6                             | Ändra till H6 |                       
-
-### <a name="edit-mode-shortcuts"></a>Genvägar för redigerings läge
-
-Redigerings läget anges av en text markör där du ombeds ange redigerings ytan. När en cell är i redigerings läge kan du skriva i cellen. Ange redigerings läge genom att trycka `Enter` eller använda musen för att välja en cells redigerings yta. Den vänstra kant linjen i den aktiva cellen är grön och streckad och dess **körnings** knapp är grön. Du ser också markör frågan i cellen i redigerings läge.
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Notebook-cell i redigerings läge":::
-
-Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Machine Learning antecknings böcker i redigerings läge.
-
-| Genvägar                      | Description|                                     
-| ----------------------------- | ----------------------------------------------- |
-| Escape                        | Ange kommando läge|  
-| Kontroll/kommando + blank steg       | Aktivera IntelliSense |
-| Skift + Retur                 | Kör cell, Välj nedan |                         
-| Kontroll/kommando + retur       | Kör cell  |                                      
-| ALT + RETUR                   | Kör cell, Infoga tecken cell under  |              
-| Kontroll/kommando + ALT + RETUR | Kör cell, infoga markdown cell under  |          
-| Alt + R                       | Kör alla celler     |                              
-| Upp                            | Flytta markören uppåt eller bakåt i cellen    |             
-| Ned                          | Flytta markören nedåt eller nästa cell |                  
-| Kontroll/kommando + S           | Spara antecknings boken   |                                
-| Kontroll/kommando + upp          | Gå till cell start   |                             
-| Kontroll/kommando + ned        | Gå till cell slut |                                 
-| Flik                           | Kod komplettering eller indrag (om TABB-trap är aktiverat) |
-| Kontroll/kommando + M           | Aktivera/inaktivera TABB-trap  |                       
-| Kontroll/kommando +]           | Uppgiften |                                         
-| Kontroll/kommando + [           | Dra ut  |                                        
-| Kontroll/kommando + A           | Välj alla|                                      
-| Kontroll/kommando + Z           | Ångra |                                           
-| CTRL + kommando + Shift + Z   | Gör om |                                           
-| Kontroll/kommando + Y           | Gör om |                                           
-| Kontroll/kommando + start        | Gå till cell start|                                
-| Kontroll/kommando + slut         | Gå till cell slut   |                               
-| Kontroll/kommando + vänster        | Gå ett ord till vänster |                               
-| Kontroll/kommando + höger       | Gå ett ord till höger |                              
-| Kontroll/kommando + Backsteg   | Ta bort ord före |                             
-| Kontroll/kommando + ta bort      | Ta bort ord efter |                              
-| Kontroll/kommando +/           | Växla kommentar vid CU
 
 ## <a name="find-compute-details"></a>Hitta beräknings information
 

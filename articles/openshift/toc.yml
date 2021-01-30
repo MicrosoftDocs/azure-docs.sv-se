@@ -14,8 +14,12 @@
       href: tutorial-connect-cluster.md
     - name: 3 – Ta bort ett ARO-kluster
       href: tutorial-delete-cluster.md
-- name: Instruktionsguider
+- name: Anvisningar
   items:
+    - name: Klusteråtgärder
+      items:
+        - name: Uppgradera ett ARO-kluster
+          href: howto-upgrade.md
     - name: Nätverk
       items:
         - name: Skapa ett privat ARO-kluster
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: Använda det inbyggda containerregistret
           href: built-in-container-registry.md
+        - name: Använd Azure Container Registry
+          href: howto-use-acr-with-aro.md
     - name: Säkerhet och autentisering
       items:
         - name: Konfigurera Azure Active Directory-autentisering (CLI)
