@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6784c69c049945f3bd4977ecd647d57ec59bf9f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa18959d0dc78dedf8b57dc120ab6744afa9051f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232640"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070601"
 ---
 # <a name="configure-dns-forwarding-on-an-azure-red-hat-openshift-4-cluster"></a>Konfigurera DNS-vidarebefordran i ett Azure Red Hat OpenShift 4-kluster
 
-Om du vill konfigurera DNS-vidarebefordran i ett Azure Red Hat OpenShift-kluster måste du ändra DNS-operatorn. Den här ändringen gör att ditt program poddar körs i klustret för att matcha namn som finns på en privat DNS-server utanför klustret. De här stegen är dokumenterade för OpenShift 4,3 [här](https://docs.openshift.com/container-platform/4.3/networking/dns-operator.html).
+Om du vill konfigurera DNS-vidarebefordran i ett Azure Red Hat OpenShift-kluster måste du ändra DNS-operatorn. Den här ändringen gör att ditt program poddar körs i klustret för att matcha namn som finns på en privat DNS-server utanför klustret. De här stegen är dokumenterade för OpenShift 4,6 [här](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html).
 
 Om du till exempel vill vidarebefordra alla DNS-begäranden för *. example.com för att lösas av en DNS-Server 192.168.100.10 kan du redigera operatörs konfigurationen genom att köra:
  
@@ -39,4 +39,4 @@ spec:
 Spara filen och avsluta redigeraren.
 
 ## <a name="next-steps"></a>Nästa steg
-Läs mer information om DNS-vidarebefordran för OpenShift 4,3 [här](https://docs.openshift.com/container-platform/4.3/networking/dns-operator.html).
+Läs mer information om DNS-vidarebefordran för OpenShift 4,6 [här](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html).

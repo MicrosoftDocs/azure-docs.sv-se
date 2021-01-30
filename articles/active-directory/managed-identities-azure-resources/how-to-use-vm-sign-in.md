@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266331"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090968"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Använda hanterade identiteter för Azure-resurser på en virtuell Azure-dator för inloggning 
 
@@ -90,12 +90,7 @@ Svar som följande kan tyda på att den virtuella datorns hanterade identitet f�
 - PowerShell: *Invoke-WebRequest: det går inte att ansluta till fjärrservern*
 - CLI: *MSI: det gick inte att hämta en token från `http://localhost:50342/oauth2/token` med felet ' HTTPConnectionPool (Host = ' localhost ', Port = 50342)* 
 
-Om du får ett av dessa fel kan du gå tillbaka till den virtuella Azure-datorn i [Azure Portal](https://portal.azure.com) och:
-
-- Gå till sidan **identitet** och se till att **tilldelat system** är inställt på "Ja".
-- Gå till sidan **tillägg** och se till att hanterade identiteter för Azures resurs tillägg **(planerat för utfasning i januari 2019)** har distribuerats.
-
-Om något är felaktigt kan du behöva distribuera hanterade identiteter för Azure-resurser på resursen igen eller felsöka distributions fel. Se [Konfigurera hanterade identiteter för Azure-resurser på en virtuell dator med hjälp av Azure Portal](qs-configure-portal-windows-vm.md) om du behöver hjälp med VM-konfigurationen.
+Om du får ett av dessa fel kan du gå tillbaka till den virtuella Azure-datorn i [Azure Portal](https://portal.azure.com) och gå till sidan **identitet** och se till att **tilldelat system** är inställt på "Ja".
 
 ## <a name="next-steps"></a>Nästa steg
 

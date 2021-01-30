@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b609d8389504eb10dd35a5ab74b0c198d3da57a6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197599"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090500"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Rekommenderade säkerhets metoder för Azure Identity Management och åtkomst kontroll
 
@@ -102,7 +102,7 @@ Organisationer som inte integrerar sin lokala identitet med sin moln identitet k
 > Du måste välja vilka kataloger kritiska konton ska finnas i och om den använda admin-arbetsstationen hanteras av nya moln tjänster eller befintliga processer. Att använda befintliga hanterings-och identitets etablerings processer kan minska riskerna, men kan också skapa risken för att en angripare kan skada ett lokalt konto och pivotera till molnet. Du kanske vill använda en annan strategi för olika roller (till exempel IT-administratörer eller affär senhets administratörer). Du har två alternativ. Det första alternativet är att skapa Azure AD-konton som inte är synkroniserade med din lokala Active Directory-instans. Anslut din administratörs arbets station till Azure AD, som du kan hantera och korrigera med hjälp av Microsoft Intune. Det andra alternativet är att använda befintliga administratörs konton genom att synkronisera till den lokala Active Directory-instansen. Använd befintliga arbets stationer i din Active Directory-domän för hantering och säkerhet.
 
 ## <a name="manage-connected-tenants"></a>Hantera anslutna klienter
-Din säkerhets organisation behöver synlig insyn för att bedöma risken och för att avgöra om principerna för din organisation och alla regler som krävs, följs. Du bör se till att din säkerhets organisation har insyn i alla prenumerationer som är anslutna till din produktions miljö och nätverket (via [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) eller [plats-till-plats-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). En [Global administratör/företags administratör](../../active-directory/roles/permissions-reference.md#company-administrator-permissions) i Azure AD kan öka sin åtkomst till [Administratörs rollen för användar åtkomst](../../role-based-access-control/built-in-roles.md#user-access-administrator) och se alla prenumerationer och hanterade grupper som är anslutna till din miljö.
+Din säkerhets organisation behöver synlig insyn för att bedöma risken och för att avgöra om principerna för din organisation och alla regler som krävs, följs. Du bör se till att din säkerhets organisation har insyn i alla prenumerationer som är anslutna till din produktions miljö och nätverket (via [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) eller [plats-till-plats-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). En [Global administratör](../../active-directory/roles/permissions-reference.md#global-administrator-permissions) i Azure AD kan öka sin åtkomst till [Administratörs rollen för användar åtkomst](../../role-based-access-control/built-in-roles.md#user-access-administrator) och se alla prenumerationer och hanterade grupper som är anslutna till din miljö.
 
 Se [öka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper](../../role-based-access-control/elevate-access-global-admin.md) för att se till att du och din säkerhets grupp kan visa alla prenumerationer eller hanterings grupper som är anslutna till din miljö. Du bör ta bort den här utökade åtkomsten när du har bedömt riskerna.
 

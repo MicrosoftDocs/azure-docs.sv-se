@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: d623d7b7ec25c096ebf54c030cf302e0a72e7fb2
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064259"
+ms.locfileid: "99072412"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Säkerhetskopiera och återställa en Oracle Database 19c-databas på en virtuell Azure Linux-dator med Azure Backup
 
@@ -21,7 +21,7 @@ Den här artikeln visar hur du använder Azure Backup för att ta ögonblicks bi
 
 > [!div class="checklist"]
 >
-> * Säkerhetskopiera databasen med konsekvent program säkerhets kopiering
+> * Säkerhetskopiera databasen med programkonsekvent säkerhets kopiering
 > * Återställa och återställa databasen från en återställnings punkt
 > * Återställa den virtuella datorn från en återställnings punkt
 
@@ -39,19 +39,19 @@ Slutför följande steg för att förbereda miljön:
 
 ### <a name="connect-to-the-vm"></a>Anslut till VM:en
 
-Använd följande kommando om du vill skapa en SSH-session (Secure Shell) med den virtuella datorn. Ersätt IP-adressen och värd namns kombinationen med `<publicIpAddress>` värdet för den virtuella datorn.
+1. Använd följande kommando om du vill skapa en SSH-session (Secure Shell) med den virtuella datorn. Ersätt IP-adressen och värd namns kombinationen med `<publicIpAddress>` värdet för den virtuella datorn.
     
    ```bash
    ssh azureuser@<publicIpAddress>
    ```
    
-Växla till *rot* användaren:
+1. Växla till *rot* användaren:
 
    ```bash
    sudo su -
    ```
     
-Lägg till Oracle-användaren till */etc/sudoers* -filen:
+1. Lägg till Oracle-användaren till */etc/sudoers* -filen:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
@@ -59,9 +59,9 @@ Lägg till Oracle-användaren till */etc/sudoers* -filen:
 
 ### <a name="prepare-the-database"></a>Förbered databasen
 
-1. Det här steget förutsätter att du har en Oracle-instans (*test*) som körs på en virtuell dator med namnet *vmoracle19c*.
+Det här steget förutsätter att du har en Oracle-instans (*test*) som körs på en virtuell dator med namnet *vmoracle19c*.
 
-   Växla användare till *Oracle* -användare:
+1. Växla användare till *Oracle* -användare:
  
    ```bash
     sudo su - oracle
@@ -156,7 +156,7 @@ Lägg till Oracle-användaren till */etc/sudoers* -filen:
     NOARCHIVELOG
     ```
 
-    Om i NOARCHIVELOG-läge kör du följande kommandon:
+    Om den är i NOARCHIVELOG-läge kör du följande kommandon:
 
     ```bash
     SQL> SHUTDOWN IMMEDIATE;
@@ -205,19 +205,19 @@ Azure Backup tillhandahåller enkla, säkra och kostnadseffektiva lösningar fö
 
 Azure Backup-tjänsten tillhandahåller ett [ramverk](../../../backup/backup-azure-linux-app-consistent.md) för att uppnå program konsekvens under säkerhets kopiering av virtuella Windows-och Linux-datorer för olika program som Oracle, MySQL, Mongo DB, SAP HANA och PostGreSQL. Detta innebär att du anropar ett för skript (för att ta bort programmen) innan du tar en ögonblicks bild av diskarna och anropar efter skript (kommandon för att låsa upp programmen) när ögonblicks bilden har slutförts, för att returnera programmen till normalt läge. Exempel på för-skript och post-skript finns på GitHub, och det är ditt ansvar att skapa och underhålla dessa skript. 
 
-Nu Azure Backup tillhandahålla ett förbättrat för skript och efter skript, där Azure Backups tjänsten tillhandahåller paketerade för-skript och post-skript för valda program. Azure Backup användare bara behöver ge programmet ett namn och sedan anropar Azure VM Backup automatiskt de relevanta för hands-och-post-skripten. Paketerade för-skript och post-skript kommer att behållas av Azure Backups teamet, så att användarna kan garantera support, ägarskap och giltighet för dessa skript. För närvarande är de program som stöds för det förbättrade ramverket ***Oracle och MySQL** _, med fler program typer som förväntas i framtiden.
+Nu Azure Backup tillhandahålla ett förbättrat för skript och efter skript, där Azure Backups tjänsten tillhandahåller paketerade för-skript och post-skript för valda program. Azure Backup användare bara behöver ge programmet ett namn och sedan anropar Azure VM Backup automatiskt de relevanta för hands-och-post-skripten. Paketerade för-skript och post-skript kommer att behållas av Azure Backups teamet, så att användarna kan garantera support, ägarskap och giltighet för dessa skript. För närvarande är de program som stöds för det förbättrade ramverket *Oracle* och *MySQL*.
 
-I det här avsnittet ska du använda Azure Backup Enhanced Framework för att ta programkonsekventa ögonblicks bilder av den virtuella datorn och Oracle-databasen. Databasen kommer att placeras i säkerhets kopierings läge så att en transaktions konsekvent säkerhets kopiering kan ske medan Azure Backup tar en ögonblicks bild av de virtuella dator diskarna. Ögonblicks bilden är en fullständig kopia av lagringen och inte en stegvis eller kopia vid skrivning av ögonblicks bilder, så det är ett effektivt medium att återställa databasen från. Fördelen med att använda Azure Backup konsekventa ögonblicks bilder är att de är mycket snabba att ta oavsett hur stor databasen är, och en ögonblicks bild kan användas för återställnings åtgärder så fort den tas, utan att behöva vänta på att den överförs till Recovery Services-valvet.
+I det här avsnittet ska du använda Azure Backup Enhanced Framework för att ta programkonsekventa ögonblicks bilder av den virtuella datorn och Oracle-databasen som körs. Databasen kommer att placeras i säkerhets kopierings läge så att en transaktions konsekvent säkerhets kopiering kan ske medan Azure Backup tar en ögonblicks bild av de virtuella dator diskarna. Ögonblicks bilden är en fullständig kopia av lagringen och inte en stegvis eller kopia vid skrivning av ögonblicks bilder, så det är ett effektivt medium att återställa databasen från. Fördelen med att använda Azure Backup programkonsekventa ögonblicks bilder är att de är mycket snabba att ta oavsett hur stor databasen är och en ögonblicks bild kan användas för återställnings åtgärder så fort den tas, utan att behöva vänta på att den överförs till Recovery Services-valvet.
 
 Slutför följande steg för att använda Azure Backup för att säkerhetskopiera databasen:
 
-1. Förbered miljön för programkonsekvent säkerhets kopiering.
-1. Konfigurera program konsekventa säkerhets kopieringar.
-1. Utlös programmets konsekvent säkerhets kopiering av den virtuella datorn
+1. Förbered miljön för en programkonsekvent säkerhets kopiering.
+1. Konfigurera programkonsekventa säkerhets kopieringar.
+1. Utlös en programkonsekvent säkerhets kopiering av den virtuella datorn.
 
-### <a name="prepare-the-environment-for-application-consistent-backup"></a>Förbereda miljön för programkonsekvent säkerhets kopiering
+### <a name="prepare-the-environment-for-an-application-consistent-backup"></a>Förbereda miljön för en programkonsekvent säkerhets kopiering
 
-1. Växla till _ *root** User:
+1. Växla till *rot* användaren:
 
    ```bash
    sudo su -
@@ -229,7 +229,7 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    useradd -G backupdba azbackup
    ```
    
-2. Konfigurera användar miljö för säkerhets kopiering:
+2. Konfigurera användar miljön för säkerhets kopiering:
 
    ```bash
    echo "export ORACLE_SID=test" >> ~azbackup/.bashrc
@@ -237,16 +237,15 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    echo export PATH='$ORACLE_HOME'/bin:'$PATH' >> ~azbackup/.bashrc
    ```
    
-3. Konfigurera extern autentisering för ny säkerhets kopierings användare. 
-   Säkerhets kopierings användaren måste kunna komma åt databasen med hjälp av extern autentisering, så att det inte går att använda ett lösen ord.
+3. Konfigurera extern autentisering för den nya säkerhets kopierings användaren. Säkerhets kopierings användaren måste kunna komma åt databasen med hjälp av extern autentisering, så att det inte går att använda ett lösen ord.
 
-   Växla först tillbaka till **Oracle** -användaren:
+   Växla först tillbaka till *Oracle* -användaren:
 
    ```bash
    su - oracle
    ```
 
-   Logga in på databasen med SQLPlus och kontrol lera standardinställningarna för extern autentisering
+   Logga in på databasen med SQLPlus och kontrol lera standardinställningarna för extern autentisering:
    
    ```bash
    sqlplus / as sysdba
@@ -254,7 +253,7 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    SQL> show parameter remote_os_authent
    ```
    
-   Utdata ska visas 
+   Utdata bör se ut som i det här exemplet: 
 
    ```output
    NAME                                 TYPE        VALUE
@@ -263,23 +262,30 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    remote_os_authent                    boolean     FALSE
    ```
 
-   Nu ska du skapa databas användare azbackup autentiserad externt och bevilja sysbackup-behörighet:
+   Nu ska du skapa en databas användares *azbackup* autentiserad externt och bevilja sysbackup-behörighet:
    
    ```bash
    SQL> CREATE USER ops$azbackup IDENTIFIED EXTERNALLY;
    SQL> GRANT CREATE SESSION, ALTER SESSION, SYSBACKUP TO ops$azbackup;
    ```
 
-   >[!IMPORTANT] 
-   >Om du får fel meddelandet "ORA-46953: lösen ords filen är inte i 12,2-formatet".  När du kör BIDRAGs satsen ovan följer du de här stegen för att migrera orapwd-filen till 12,2-format:
+   > [!IMPORTANT] 
+   > Om du får ett fel meddelande `ORA-46953: The password file is not in the 12.2 format.`  när du kör `GRANT` instruktionen följer du dessa steg för att migrera orapwd-filen till 12,2-format:
    >
-   >Avsluta SQLPlus, flytta lösen ords filen med gammalt format till ett nytt namn, migrera lösen ords filen och ta sedan bort den gamla filen. När du har kört kommandona nedan kör du tilldelnings åtgärden ovan i SQLPlus.
-   
-   ```bash
-   mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
-   orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
-   rm $ORACLE_HOME/dbs/orapwtest.tmp
-   ```
+   > 1. Avsluta SQLPlus.
+   > 1. Flytta lösen ords filen med det gamla formatet till ett nytt namn.
+   > 1. Migrera lösen ords filen.
+   > 1. Ta bort den gamla filen.
+   > 1. Kör följande kommando:
+   >
+   >    ```bash
+   >    mv $ORACLE_HOME/dbs/orapwtest $ORACLE_HOME/dbs/orapwtest.tmp
+   >    orapwd file=$ORACLE_HOME/dbs/orapwtest input_file=$ORACLE_HOME/dbs/orapwtest.tmp
+   >    rm $ORACLE_HOME/dbs/orapwtest.tmp
+   >    ```
+   >
+   > 1. Kör `GRANT` åtgärden på nytt i SQLPlus.
+   >
    
 4. Skapa en lagrad procedur för att logga säkerhets kopierings meddelanden i databasens varnings logg:
 
@@ -300,20 +306,24 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    SQL> QUIT
    ```
    
-### <a name="set-up-application-consistent-backups"></a>Konfigurera program konsekventa säkerhets kopieringar  
+### <a name="set-up-application-consistent-backups"></a>Konfigurera programkonsekventa säkerhets kopieringar  
 
-1. Växla till rot användaren 
+1. Växla till *rot* användaren:
+
    ```bash
    sudo su -
    ```
 
-2. Skapa programmets konsekventa säkerhets kopierings arbets katalog
+2. Skapa den programkonsekventa säkerhets kopierings arbets katalogen:
+
    ```bash
    if [ ! -d "/etc/azure" ]; then
       sudo mkdir /etc/azure
    fi
    ```
-3. Skapa en fil i/etc/Azure-katalogen med namnet **arbets belastning. conf** med följande innehåll, som måste börja med `[workload]` . Följande kommando skapar filen och fyller i innehållet:
+
+3. Skapa en fil i */etc/Azure* -katalogen med namnet *arbets belastning. conf* med följande innehåll, som måste börja med `[workload]` . Följande kommando skapar filen och fyller i innehållet:
+
    ```bash
    echo "[workload]
    workload_name = oracle
@@ -321,14 +331,16 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    timeout = 90
    linux_user = azbackup" > /etc/azure/workload.conf
    ```
-1. Hämta preOracleMaster. SQL-och postOracleMaster. SQL-skripten från [GitHub-lagringsplatsen](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) och kopiera dem till/etc/Azure-katalogen
 
-4. Ändra fil behörigheter
-   ```bash
+4. Hämta preOracleMaster. SQL-och postOracleMaster. SQL-skripten från [GitHub-lagringsplatsen](https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts) och kopiera dem till */etc/Azure* -katalogen.
+
+5. Ändra fil behörigheter
+
+```bash
    chmod 744 workload.conf preOracleMaster.sql postOracleMaster.sql 
    ```
 
-### <a name="trigger-application-consistent-backup-of-the-vm"></a>Utlös programmets konsekvent säkerhets kopiering av den virtuella datorn
+### <a name="trigger-an-application-consistent-backup-of-the-vm"></a>Utlös en programkonsekvent säkerhets kopiering av den virtuella datorn
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -375,7 +387,8 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
    ```azurecli
    az backup vault create --location eastus --name myVault --resource-group rg-oracle
    ```
-2. Aktivera säkerhets kopierings skydd för den virtuella datorn
+
+2. Aktivera säkerhets kopierings skydd för den virtuella datorn:
 
    ```azurecli
    az backup protection enable-for-vm \
@@ -384,7 +397,8 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
       --vm vmoracle19c \
       --policy-name DefaultPolicy
    ```
-3. Utlös en säkerhets kopiering för att köra nu i stället för att vänta på att säkerhets kopieringen ska utlösas enligt standard schemat (05:00 UTC). 
+
+3. Utlös en säkerhets kopiering för att köra nu i stället för att vänta på att säkerhets kopieringen ska utlösas enligt standardschemat (5 AM UTC): 
 
    ```azurecli
    az backup protection backup-now \
@@ -394,7 +408,8 @@ Slutför följande steg för att använda Azure Backup för att säkerhetskopier
       --container-name vmoracle19c \
       --item-name vmoracle19c 
    ```
-   Du kan övervaka förloppet för säkerhets kopierings jobbet med `az backup job list` och `az backup job show`
+
+   Du kan övervaka förloppet för säkerhets kopierings jobbet med hjälp av `az backup job list` och `az backup job show` .
 
 ---
 
@@ -433,15 +448,15 @@ Senare i den här artikeln får du lära dig hur du testar återställnings proc
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. I Azure Portal söker du efter objektet *valv* Recovery Services valv och klickar på det.
+1. I Azure Portal söker du efter objektet *valv* Recovery Services valv och markerar det.
 
     ![Säkerhets kopierings objekt för Recovery Services valv](./media/oracle-backup-recovery/recovery-service-06.png)
 
-2. På bladet **Översikt** väljer du **säkerhets kopierings objekt** och den valda **_virtuella Azure-datorn_* _, som ska ha Anon som antal säkerhets kopior i listan.
+2. På bladet **Översikt** väljer du **säkerhets kopierings objekt** och den valda **virtuella Azure-datorn**, som ska innehålla Anon-noll säkerhets kopierings objekt i listan.
 
     ![Recovery Services valv antal säkerhets kopierings objekt för virtuella Azure-datorer](./media/oracle-backup-recovery/recovery-service-07.png)
 
-3. På sidan säkerhets kopierings objekt (Azure Virtual Machines) visas den virtuella datorn _ *vmoracle19c**. Klicka på ellipsen till höger för att öppna menyn och välj **fil återställning**.
+3. På sidan säkerhets kopierings objekt (Azure Virtual Machines) visas din VM- **vmoracle19c** . Klicka på ellipsen till höger för att öppna menyn och välj **fil återställning**.
 
     ![Skärm bild av sidan Recovery Services valv fil återställning](./media/oracle-backup-recovery/recovery-service-08.png)
 
@@ -455,6 +470,7 @@ Senare i den här artikeln får du lära dig hur du testar återställnings proc
 
     > [!IMPORTANT]
     > I följande exempel ser du till att du uppdaterar IP-adress och mappegenskaper. Värdena måste mappas till den mapp där filen sparas.
+    >
 
     ```bash
     $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -500,6 +516,7 @@ I följande exempel visas hur du använder ett säkert kopierings kommando (SCP)
 
 > [!IMPORTANT]
 > I följande exempel ser du till att du uppdaterar IP-adress och mappegenskaper. Värdena måste mappas till den mapp där filen sparas.
+>
 
 ```bash
 $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
@@ -510,7 +527,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
 
 1. Skapa en återställnings monterings punkt och kopiera skriptet till den.
 
-    I följande exempel skapar du en **_/restore_* _-katalog för ögonblicks bilden att montera till, flyttar filen till katalogen och ändrar filen så att den ägs av rot användaren och den körbara filen.
+    I följande exempel skapar du en */restore* -katalog för ögonblicks bilden att montera till, flyttar filen till katalogen och ändrar filen så att den ägs av rot användaren och den körbara filen har gjorts.
 
     ```bash 
     ssh azureuser@<publicIpAddress>
@@ -528,7 +545,7 @@ $ scp vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py azureuser@<publicIpAddress>:/tmp
     ./vmoracle19c_xxxxxx_xxxxxx_xxxxxx.py
     ```
 
-    I följande exempel visas vad du bör se när du har kört föregående skript. När du uppmanas att fortsätta anger du _ * Y * *.
+    I följande exempel visas vad du bör se när du har kört föregående skript. När du uppmanas att fortsätta anger du **Y**.
 
     ```output
     Microsoft Azure VM Backup - File Recovery
@@ -676,30 +693,28 @@ Slutför följande steg för att återställa hela den virtuella datorn:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Skapa ett lagrings konto för mellanlagring:
-   
-   Konfigurera File Storage i Azure Portal
+1. Skapa ett lagrings konto för mellanlagring i Azure Portal.
 
-   I Azure Portal väljer du **_+ skapa en resurs_* _ och söker efter och väljer _*_lagrings konto_*_
+   1. I Azure Portal väljer du **+ skapa en resurs** och söker efter och väljer **lagrings konto**.
     
-   ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/storage-1.png)
+      ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/storage-1.png)
     
     
-   På sidan Skapa lagrings konto väljer du den befintliga resurs gruppen _*_RG-Oracle_*_, namnger ditt lagrings konto _*_Oracrestore_*_ och väljer _*_Storage v2 (generalpurpose v2)_*_ för konto typ. Ändra replikeringen till _*_Lokalt Redundant lagring (LRS)_*_ och Ställ in prestanda som _*_standard_*_. Kontrol lera att platsen har angetts till samma region som alla andra resurser i resurs gruppen. 
+   1. På sidan Skapa lagrings konto väljer du den befintliga resurs gruppen **RG-Oracle**, namnger ditt lagrings konto **Oracrestore** och väljer **Storage v2 (generalpurpose v2)** för konto typ. Ändra replikeringen till **Lokalt Redundant lagring (LRS)** och Ställ in prestanda som **standard**. Kontrol lera att platsen har angetts till samma region som alla andra resurser i resurs gruppen. 
     
-   ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/recovery-storage-1.png)
+      ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/recovery-storage-1.png)
    
-   Klicka på granska + skapa och klicka sedan på Skapa.
+   1. Klicka på granska + skapa och klicka sedan på Skapa.
 
-2. I Azure Portal söker du efter objektet _myVault * Recovery Services valv och klickar på det.
+2. I Azure Portal söker du efter objektet *valv* Recovery Services valv och klickar på det.
 
     ![Säkerhets kopierings objekt för Recovery Services valv](./media/oracle-backup-recovery/recovery-service-06.png)
     
-3.  På bladet **Översikt** väljer du **säkerhets kopierings objekt** och den valda **_virtuella Azure-datorn_* _, som ska ha Anon som antal säkerhets kopior i listan.
+3.  På bladet **Översikt** väljer du **säkerhets kopierings objekt** och den valda **virtuella Azure-datorn**, som ska innehålla Anon-noll säkerhets kopierings objekt i listan.
 
     ![Recovery Services valv antal säkerhets kopierings objekt för virtuella Azure-datorer](./media/oracle-backup-recovery/recovery-service-07.png)
 
-4.  På de säkerhets kopierings objekt (Azure Virtual Machines) visas den virtuella datorn _ *vmoracle19c**. Klicka på namnet på den virtuella datorn.
+4.  På sidan säkerhets kopierings objekt (Azure Virtual Machines) visas en lista över din VM- **vmoracle19c** . Klicka på namnet på den virtuella datorn.
 
     ![Sidan Återställ virtuell dator](./media/oracle-backup-recovery/recover-vm-02.png)
 
@@ -916,11 +931,11 @@ När den virtuella datorn har återställts bör du tilldela om den ursprungliga
 
 ### <a name="connect-to-the-vm"></a>Anslut till VM:en
 
-* Använd följande skript för att ansluta till den virtuella datorn:
+Använd följande skript för att ansluta till den virtuella datorn:
 
-    ```azurecli
-    ssh <publicIpAddress>
-    ```
+```azurecli
+ssh <publicIpAddress>
+```
 
 ### <a name="start-the-database-to-mount-stage-and-perform-recovery"></a>Starta databasen för att montera steget och utföra återställningen
 

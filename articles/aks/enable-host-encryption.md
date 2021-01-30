@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar en värdbaserad kryptering i ett Azure
 services: container-service
 ms.topic: article
 ms.date: 01/27/2021
-ms.openlocfilehash: 1d071305b457cddde56a11982e08c9331e1d5463
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919656"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071858"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Värdbaserad kryptering på Azure Kubernetes service (AKS) (för hands version)
 
@@ -25,37 +25,7 @@ Den här funktionen kan bara ställas in när klustret skapas eller när en nod 
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-- Se till att du har `aks-preview` CLI-tillägget v 0.4.73 eller senare installerat
-- Se till att du har `EnableEncryptionAtHostPreview` funktions flaggan under `Microsoft.ContainerService` aktive rad.
-
-För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka ett e-postmeddelande till encryptionAtHost@microsoft . com med dina prenumerations-ID: n för att få funktionen aktive rad för dina prenumerationer.
-
-### <a name="register-encryptionathost--preview-features"></a>Registrera för `EncryptionAtHost`  hands versions funktioner
-
-> [!IMPORTANT]
-> Du måste e-posta encryptionAtHost@microsoft . com med ditt prenumerations-ID för att få funktionen aktive rad för beräknings resurser. Du kan inte aktivera det själv för dessa resurser. Du kan aktivera det själv i behållar tjänsten.
-
-Om du vill skapa ett AKS-kluster som använder värdbaserad kryptering måste du aktivera `EncryptionAtHost` funktions flaggan i din prenumeration.
-
-Registrera `EncryptionAtHost` funktions flaggan med hjälp av kommandot [AZ Feature register][az-feature-register] som visas i följande exempel:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHost"
-```
-
-Det tar några minuter för statusen att visa *registrerad*. Du kan kontrol lera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHost')].{Name:name,State:properties.state}"
-```
-
-När du är klar uppdaterar du registreringen av- `Microsoft.ContainerService` och- `Microsoft.Compute` resurs leverantörerna med [AZ Provider register][az-provider-register] kommando:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+- Se till att du har `aks-preview` CLI-tillägget v 0.4.73 eller en senare version installerad.
 
 ### <a name="install-aks-preview-cli-extension"></a>Installera CLI-tillägget aks-preview
 
@@ -77,23 +47,23 @@ az extension update --name aks-preview
 
 ## <a name="use-host-based-encryption-on-new-clusters-preview"></a>Använd värdbaserad kryptering på nya kluster (förhands granskning)
 
-Konfigurera kluster agentens noder så att de använder värdbaserad kryptering när klustret skapas. Använd `--aks-custom-headers` flaggan för att ange `EnableEncryptionAtHost` sidhuvudet.
+Konfigurera kluster agentens noder så att de använder värdbaserad kryptering när klustret skapas. 
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-Om du vill skapa kluster utan värdbaserad kryptering kan du göra det genom att utesluta den anpassade `--aks-custom-headers` parametern.
+Om du vill skapa kluster utan värdbaserade kryptering kan du göra det genom att utelämna `--enable-encryption-at-host` parametern.
 
 ## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>Använd värdbaserad kryptering på befintliga kluster (förhands granskning)
 
-Du kan aktivera värdbaserad kryptering på befintliga kluster genom att lägga till en ny Node-pool i klustret. Konfigurera en ny Node-pool så att den använder värdbaserad kryptering med hjälp av `--aks-custom-headers` flaggan.
+Du kan aktivera värdbaserad kryptering på befintliga kluster genom att lägga till en ny Node-pool i klustret. Konfigurera en ny Node-pool så att den använder värdbaserad kryptering med hjälp av- `--enable-encryption-at-host` parametern.
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers --enable-encryption-at-host
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-Om du vill skapa nya resurspooler utan den värdbaserade krypterings funktionen kan du göra det genom att utesluta den anpassade `--aks-custom-headers` parametern.
+Om du vill skapa nya resurspooler utan den värdbaserade krypterings funktionen kan du göra det genom att utelämna `--enable-encryption-at-host` parametern.
 
 ## <a name="next-steps"></a>Nästa steg
 

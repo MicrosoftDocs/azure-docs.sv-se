@@ -9,22 +9,21 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c4e9f0cd6a7421f5be29200816bb00a56b141367
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937767"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071581"
 ---
-# <a name="azure-key-vault-security-overview"></a>Översikt över Azure Key Vault säkerhet
+# <a name="azure-key-vault-security"></a>Azure Key Vault-säkerhet
 
 Du använder Azure Key Vault för att skydda krypterings nycklar och hemligheter som certifikat, anslutnings strängar och lösen ord i molnet. När du lagrar känsliga och affärs kritiska data måste du vidta åtgärder för att maximera säkerheten för dina valv och de data som lagras i dem.
 
-Den här artikeln innehåller en översikt över säkerhetsfunktioner och metod tips för Azure Key Vault. En omfattande lista över rekommendationer, baserat på [Azures säkerhets benchmark](../../security/benchmarks/introduction.md), finns i [säkerhets bas linjen för Azure Key Vault](security-baseline.md).
+Den här artikeln innehåller en översikt över säkerhetsfunktioner och metod tips för Azure Key Vault. 
 
-## <a name="general-guidance"></a>Allmän vägledning
-
-Vår rekommendation är att använda ett valv per program per miljö (utveckling, för produktion och produktion). Detta hjälper dig att inte dela hemligheter mellan miljöer och minskar också risken för intrång.
+> [!NOTE]
+> En omfattande lista över Azure Key Vault säkerhets rekommendationer finns i [säkerhets bas linjen för Azure Key Vault](security-baseline.md).
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
@@ -66,7 +65,7 @@ Program får åtkomst till planen via slut punkter. Åtkomst kontrollerna för d
 
 I följande tabell visas slut punkterna för hanterings-och data planen.
 
-| Åtkomst &nbsp; plan | Slutpunkter för åtkomst | Åtgärder | Mekanism för åtkomst &nbsp; kontroll |
+| Åtkomst &nbsp; plan | Slutpunkter för åtkomst | Operations | Mekanism för åtkomst &nbsp; kontroll |
 | --- | --- | --- | --- |
 | Hanteringsplanet | **EAN**<br> management.azure.com:443<br><br> **Azure Kina 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure amerikanska myndigheter:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | Skapa, läsa, uppdatera och ta bort nyckel valv<br><br>Ange Key Vault åtkomst principer<br><br>Ange Key Vault Taggar | Azure RBAC |
 | Dataplanet | **EAN**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Kina 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure amerikanska myndigheter:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Nycklar: kryptera, dekryptera, wrapKey, unwrapKey, signera, verifiera, Hämta, lista, skapa, uppdatera, importera, ta bort, återställa, säkerhetskopiera, återställa, rensa<br><br> Certifikat: managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, Hämta, lista, skapa, importera, uppdatera, ta bort, återställa, säkerhetskopiera, återställa, rensa<br><br>  Hemligheter: Hämta, lista, ange, ta bort, återställa, säkerhetskopiera, Återställ, rensa | Key Vault åtkomst princip eller Azure RBAC (för hands version)|
@@ -109,20 +108,9 @@ Med Azure Key Vault mjuk borttagning och rensnings skydd kan du återställa bor
 
 Du bör också utföra regelbundna säkerhets kopieringar av ditt valv om att uppdatera/ta bort/skapa objekt i ett valv.  
 
-Azure PowerShell säkerhets kopierings kommandon:
+## <a name="next-steps"></a>Nästa steg
 
-* [Säkerhetskopiera certifikat](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [Säkerhets kopierings nyckel](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [Säkerhets kopierings hemlighet](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Kommandon för Azure CLI-säkerhetskopiering
-
-* [Säkerhetskopiera certifikat](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [Säkerhets kopierings nyckel](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [Säkerhets kopierings hemlighet](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
-
-
-## <a name="next-steps"></a>Efterföljande moment
-
-- [Tjänst slut punkter för virtuella nätverk för Azure Key Vault](overview-vnet-service-endpoints.md)
+- [Azure Key Vault säkerhets bas linje](security-baseline.md)
+- [Metod tips för Azure Key Vault](security-baseline.md)
+- [Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault](overview-vnet-service-endpoints.md)
 - [Azure RBAC: inbyggda roller](../../role-based-access-control/built-in-roles.md)

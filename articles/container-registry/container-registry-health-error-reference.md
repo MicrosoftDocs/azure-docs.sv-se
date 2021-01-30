@@ -2,17 +2,19 @@
 title: Fel referens för register hälso kontroller
 description: Felkoder och möjliga lösningar på problem som hittas genom att köra kommandot AZ ACR check-Health Diagnostic i Azure Container Registry
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565606"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061876"
 ---
 # <a name="health-check-error-reference"></a>Fel referens för hälso kontroll
 
 Nedan visas information om felkoder som returneras av kommandot [AZ ACR check-Health][az-acr-check-health] . För varje fel visas möjliga lösningar.
+
+Information om hur `az acr check-healh` du kör finns i [kontrol lera hälso tillståndet för ett Azure Container Registry](container-registry-check-health.md).
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -49,6 +51,12 @@ Det här felet innebär att Helm-klienten inte kunde hittas av CLI, vilket förh
 Det här felet innebär att CLI inte kunde fastställa Helm-versionen som är installerad. Detta kan inträffa om Azure CLI-versionen (eller om Helm-versionen) används är föråldrad.
 
 *Möjliga lösningar*: uppdatera till den senaste versionen av Azure CLI eller till den rekommenderade Helm-versionen; Kör kommandot manuellt och undersök fel meddelandet.
+
+## <a name="cmk_error"></a>CMK_ERROR
+
+Det här felet innebär att registret inte har åtkomst till den tilldelade användaren eller sysem hanterade identitet som används för att konfigurera register kryptering med en kundhanterad nyckel. Den hanterade identiteten kan ha tagits bort.  
+
+*Potentiell lösning*: Lös problemet och rotera nyckeln med en annan hanterad identitet, se steg för att felsöka [den tilldelade identiteten](container-registry-customer-managed-keys.md#troubleshoot).
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 

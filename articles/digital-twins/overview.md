@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664035"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071689"
 ---
 # <a name="what-is-azure-digital-twins"></a>Vad är Azure Digital Twins?
 
@@ -94,10 +94,10 @@ Följande diagram visar var Azure Digitals dubbla är i sammanhanget för en st�
 
 ## <a name="service-limits"></a>Tjänstbegränsningar
 
-En lista över gränser för digital Digitals dubbla gränser finns i [*referens: tjänst begränsningar*](reference-service-limits.md).
+En lista över gränserna för Azure Digitals dubbla gränser finns i [*gränser för Azure Digitals dubbla tjänster*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du har arbetat med den första för hands versionen av Azure Digitals (oktober 2018), lär du dig vad som har ändrats: [*Översikt: skillnader från den första versionen*](overview-differences.md).
+* Lär dig att arbeta med Azure Digitals dubbla i snabb starten: [*snabb start: utforska ett exempel scenario*](quickstart-adt-explorer.md).
 
-Du kan också gå vidare och lära dig att arbeta med Azure Digitals dubbla med snabb start: [*snabb start: utforska ett exempel scenario*](quickstart-adt-explorer.md).
+* Du kan också börja läsa om Azure Digitals dubbla koncept med [*koncept: anpassade modeller*](concepts-models.md).

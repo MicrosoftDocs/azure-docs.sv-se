@@ -1,32 +1,32 @@
 ---
 title: 'Snabb start: skapa ett Sök index i python'
 titleSuffix: Azure Cognitive Search
-description: Förklarar hur du skapar ett index, läser in data och kör frågor med python, Notebook och Azure.Documents. Sök bibliotek.
+description: Lär dig hur du skapar ett sökindex, läser in data och kör frågor med python, Jupyter Notebook och Azure.Documents. Sök efter python i klient biblioteket.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/19/2020
+ms.date: 01/29/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861875"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071638"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Snabb start: skapa ett Azure Kognitiv sökning-index i python med Jupyter-anteckningsböcker
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Snabb start: skapa ett Azure Kognitiv sökning-index i python med Jupyter Notebook
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
-> * [PowerShell (REST)](./search-get-started-powershell.md)
-> * [C#](./search-get-started-dotnet.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
 > * [REST](search-get-started-rest.md)
 > * [Portal](search-get-started-portal.md)
 >
 
-Skapa en Jupyter Notebook som skapar, läser in och skickar frågor till ett Azure Kognitiv sökning-index med python och [biblioteket Azure-Search-Documents](/python/api/overview/azure/search-documents-readme) i Azure SDK för python. Den här artikeln förklarar hur du skapar en antecknings bok steg för steg. Du kan också [Hämta och köra en färdig Jupyter python-anteckningsbok](https://github.com/Azure-Samples/azure-search-python-samples).
+Skapa en bärbar dator som skapar, läser in och skickar frågor till ett Azure Kognitiv sökning-index med python och [biblioteket Azure-Search-Documents](/python/api/overview/azure/search-documents-readme) i Azure SDK för python. Den här artikeln förklarar hur du skapar en antecknings bok steg för steg. Du kan också [Hämta och köra en färdig Jupyter python-anteckningsbok](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -38,7 +38,7 @@ Följande tjänster och verktyg krävs för den här snabb starten.
 
 * [Azure-Search-Documents-paket](https://pypi.org/project/azure-search-documents/)
 
-* [Skapa en Azure kognitiv sökning-tjänst](search-create-service-portal.md) eller [hitta en befintlig tjänst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under din aktuella prenumeration. Du kan använda den kostnads fria nivån för den här snabb starten. 
+* [Skapa en Sök tjänst](search-create-service-portal.md) eller [Sök efter en befintlig tjänst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under din aktuella prenumeration. Du kan använda den kostnads fria nivån för den här snabb starten. 
 
 ## <a name="copy-a-key-and-url"></a>Kopiera en nyckel och en URL
 
@@ -48,13 +48,13 @@ För att kunna göra REST-anrop behöver du tjänstens webbadress och en åtkoms
 
 1. I **Inställningar**  >  **nycklar**, hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
 
-![Hämta en HTTP-slutpunkt och åtkomst nyckel](media/search-get-started-rest/get-url-key.png "Hämta en HTTP-slutpunkt och åtkomst nyckel")
+   ![Hämta en HTTP-slutpunkt och åtkomst nyckel](media/search-get-started-rest/get-url-key.png "Hämta en HTTP-slutpunkt och åtkomst nyckel")
 
 Alla begär Anden kräver en API-nyckel på varje begäran som skickas till din tjänst. En giltig nyckel upprättar förtroende, i varje begäran, mellan programmet som skickar begäran och tjänsten som hanterar den.
 
 ## <a name="connect-to-azure-cognitive-search"></a>Ansluta till Azure Kognitiv sökning
 
-I den här uppgiften startar du en Jupyter Notebook och kontrollerar att du kan ansluta till Azure Kognitiv sökning. Du gör detta genom att begära en lista över index från din tjänst. I Windows med Anaconda3 kan du använda Anaconda-navigatören för att starta en bärbar dator.
+I den här uppgiften startar du Jupyter Notebook och kontrollerar att du kan ansluta till Azure Kognitiv sökning. Du gör detta genom att begära en lista över index från din tjänst. I Windows med Anaconda3 kan du använda Anaconda-navigatören för att starta en bärbar dator.
 
 1. Skapa en ny python3 Notebook.
 
@@ -63,7 +63,7 @@ I den här uppgiften startar du en Jupyter Notebook och kontrollerar att du kan 
    ```python
     !pip install azure-search-documents --pre
     !pip show azure-search-documents
-
+    
     import os
     from azure.core.credentials import AzureKeyCredential
     from azure.search.documents.indexes import SearchIndexClient 
@@ -82,17 +82,17 @@ I den här uppgiften startar du en Jupyter Notebook och kontrollerar att du kan 
 1. I den andra cellen skriver du in de begär ande element som ska vara konstanter på varje begäran. Ange namnet på din Sök tjänst, administrations-API-nyckel och API-nyckel för frågor, som kopieras i föregående steg. Den här cellen konfigurerar också de klienter som ska användas för vissa åtgärder: [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) för att skapa ett index och [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) för att fråga ett index.
 
    ```python
-    service_name = ["SEARCH_ENDPOINT - do not include search.windows.net"]
-    admin_key = ["Cognitive Search Admin API Key"]
-
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
     index_name = "hotels-quickstart"
-
+    
     # Create an SDK client
     endpoint = "https://{}.search.windows.net/".format(service_name)
     admin_client = SearchIndexClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
-
+    
     search_client = SearchClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
@@ -121,6 +121,7 @@ Det här indexet heter "Hotels-snabb start" och innehåller fält definitionerna
 1. I nästa cell klistrar du in följande exempel i en cell för att ange schemat.
 
     ```python
+    # Specify the index schema
     name = index_name
     fields = [
             SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
@@ -128,13 +129,13 @@ Det här indexet heter "Hotels-snabb start" och innehåller fält definitionerna
             SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
             SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
             SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
-
+        
             SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
-
+    
             SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
             SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
             SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
-
+    
             ComplexField(name="Address", fields=[
                 SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
                 SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
@@ -150,20 +151,20 @@ Det här indexet heter "Hotels-snabb start" och innehåller fält definitionerna
 
 1. Formulera begäran i en annan cell. Den här create_index begäran riktar in index samlingen för Sök tjänsten och skapar en [SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) baserat på det index schema som du angav i föregående cell.
 
-   ```python
+    ```python
     index = SearchIndex(
         name=name,
         fields=fields,
         scoring_profiles=scoring_profiles,
         suggesters = suggester,
         cors_options=cors_options)
-
+    
     try:
         result = admin_client.create_index(index)
         print ('Index', result.name, 'created')
     except Exception as ex:
         print (ex)
-   ```
+    ```
 
 1. Kör varje steg.
 
@@ -176,8 +177,7 @@ Om du vill läsa in dokument skapar du en dokument samling med hjälp av en [ind
 1. I en ny cell, ange fyra dokument som stämmer överens med index schemat. Ange en uppladdnings åtgärd för varje dokument.
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -255,98 +255,96 @@ Om du vill läsa in dokument skapar du en dokument samling med hjälp av en [ind
             }
         }
     ]
-    }
     ```  
 
 1. Formulera begäran i en annan cell. Den här upload_documents begäran riktar in dokument samlingen för hotell-snabb starts indexet och skickar dokumenten som tillhandahålls i föregående steg till Kognitiv sökning-indexet.
 
-
-   ```python
+    ```python
     try:
         result = search_client.upload_documents(documents=documents)
         print("Upload of new document succeeded: {}".format(result[0].succeeded))
     except Exception as ex:
         print (ex.message)
-   ```
+    ```
 
 1. Kör varje steg för att skicka dokumenten till ett index i din Sök tjänst.
 
 ## <a name="3---search-an-index"></a>3 – Söka i ett index
 
-Det här steget visar hur du frågar ett index med hjälp av [Sök dokument REST API](/rest/api/searchservice/search-documents).
+Det här steget visar hur du frågar ett index med hjälp av [Sök dokumenten (rest)](/rest/api/searchservice/search-documents).
 
 1. Använd search_client för den här åtgärden. Den här frågan kör en tom sökning ( `search=*` ) och returnerar en lista med en lista (Sök poäng = 1,0) av godtyckliga dokument. Eftersom det inte finns några kriterier inkluderas alla dokument i resultaten. Den här frågan skriver bara ut två av fälten i varje dokument. Den lägger också `include_total_count=True` till för att få ett antal dokument (4) i resultatet.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", include_total_count=True)
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. Nästa fråga lägger till hela villkor i Sök uttrycket ("WiFi"). Den här frågan anger att resultaten bara innehåller fälten i `select` instruktionen. Genom att begränsa de fält som kommer tillbaka minimeras mängden data som skickas tillbaka över kabeln och minskar Sök fördröjningen.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
-   ```
+    ```
 
 1. Använd sedan ett filter uttryck och bara returnera de hotellen med en klassificering som är större än 4, sorterade i fallande ordning.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
-
+    
     for result in results:
         print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
-   ```
+    ```
 
 1. Lägg till `search_fields` i omfattnings frågan som matchar ett enskilt fält.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
-
+    
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. FACET är etiketter som kan användas för att skapa fasett-navigerings struktur. Den här frågan returnerar fasetter och antal för kategorin.
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", facets=["Category"])
-
+    
     facets = results.get_facets()
-
+    
     for facet in facets["Category"]:
         print("    {}".format(facet))
-   ```
+    ```
 
 1. I det här exemplet ska du söka efter ett särskilt dokument baserat på dess nyckel. Du skulle normalt vilja returnera ett dokument när en användare klickar på ett dokument i ett Sök resultat.
 
-   ```python
+    ```python
     result = search_client.get_document(key="3")
-
+    
     print("Details for hotel '3' are:")
-    print("        Name: {}".format(result["HotelName"]))
-    print("      Rating: {}".format(result["Rating"]))
-    print("    Category: {}".format(result["Category"]))
-   ```
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
 1. I det här exemplet ska vi använda funktionen Autoavsluta. Detta används vanligt vis i en sökruta för att hjälpa till att automatiskt slutföra eventuella matchningar som användaren skriver i sökrutan.
 
    När indexet skapades skapades även en förslags ställare med namnet "TG" som en del av begäran. En förslags definition anger vilka fält som kan användas för att hitta möjliga matchningar till förslags begär Anden. I det här exemplet är dessa fält "Taggar", "adress/ort", "adress/land". Om du vill simulera automatisk komplettering måste du skicka bokstaven "sa" som en del av en sträng. Metoden för automatisk komplettering av [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) skickar tillbaka potentiella villkors matchningar.
 
-   ```python
+    ```python
     search_suggestion = 'sa'
     results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
-
+    
     print("Autocomplete for:", search_suggestion)
     for result in results:
         print (result['text'])
-   ```
+    ```
 
 ## <a name="clean-up"></a>Rensa
 

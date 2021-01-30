@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 0f7c97e5d84b3ee2d40c714625d0158fe60f2c95
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986081"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071621"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
 
@@ -402,6 +402,15 @@ Se följande lista för att konfigurera åtkomst till Azure Resource Manager:
 | Azure Government | `https://database.usgovcloudapi.net/` | ![Få][check] |
 | Azure Tyskland | `https://database.cloudapi.de/` | ![Få][check] |
 | Azure Kina 21Vianet | `https://database.chinacloudapi.cn/` | ![Få][check] |
+
+### <a name="azure-data-explorer"></a>Azure-datautforskaren
+
+| Moln | Resurs-ID | Status |
+|--------|------------|:-:|
+| Azure Global | `https://<account>.<region>.kusto.windows.net` | ![Få][check] |
+| Azure Government | `https://<account>.<region>.kusto.usgovcloudapi.net` | ![Få][check] |
+| Azure Tyskland | `https://<account>.<region>.kusto.cloudapi.de` | ![Få][check] |
+| Azure Kina 21Vianet | `https://<account>.<region>.kusto.chinacloudapi.cn` | ![Få][check] |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 

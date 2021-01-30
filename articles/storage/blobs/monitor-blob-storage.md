@@ -1,6 +1,6 @@
 ---
-title: Övervaka Azure Blob Storage | Microsoft Docs
-description: Lär dig hur du övervakar prestanda och tillgänglighet för Azure Blob Storage. Övervaka Azure Blob Storage-data, lär dig mer om konfiguration och analys av mått-och loggdata.
+title: Övervaka Azure-Blob Storage | Microsoft Docs
+description: Lär dig hur du övervakar prestanda och tillgänglighet för Azure Blob Storage. Övervaka Azure Blob Storage data, lär dig mer om konfiguration och analys av mått-och loggdata.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,14 +9,14 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 76f266ec915754b5746f06a340b21146b84fa711
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590774"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071672"
 ---
-# <a name="monitoring-azure-blob-storage"></a>Övervaka Azure Blob Storage
+# <a name="monitoring-azure-blob-storage"></a>Övervaka Azure-Blob Storage
 
 När du har viktiga program och affärs processer som förlitar sig på Azure-resurser, vill du övervaka resurserna för deras tillgänglighet, prestanda och drift. I den här artikeln beskrivs övervaknings data som genereras av Azure Blob Storage och hur du kan använda funktionerna i Azure Monitor för att analysera aviseringar för dessa data.
 
@@ -42,9 +42,9 @@ Följande avsnitt bygger på den här artikeln genom att beskriva de specifika d
 
 ## <a name="monitoring-data"></a>Övervaka data
 
-Azure Blob Storage samlar in samma typer av övervaknings data som andra Azure-resurser, som beskrivs i [övervaknings data från Azure-resurser](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
+Azure Blob Storage samlar in samma typer av övervaknings data som andra Azure-resurser, som beskrivs i [övervaka data från Azure-resurser](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
 
-Se [data referens för Azure Blob Storage-övervakning](monitor-blob-storage-reference.md) för detaljerad information om mått och loggar mått som skapats av Azure Blob Storage.
+Se [data referens för Azure Blob Storage övervakning](monitor-blob-storage-reference.md) för detaljerad information om mått och loggar mått som skapats av Azure Blob Storage.
 
 Mått och loggar i Azure Monitor endast stöd för Azure Resource Manager lagrings konton. Azure Monitor stöder inte klassiska lagrings konton. Om du vill använda mått eller loggar på ett klassiskt lagrings konto måste du migrera till ett Azure Resource Manager lagrings konto. Se [migrera till Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
@@ -279,7 +279,7 @@ För mått som stöder dimensioner kan du filtrera måttet med det önskade dime
 
 En fullständig lista över de dimensioner som Azure Storage stöder finns i [mått dimensioner](monitor-blob-storage-reference.md#metrics-dimensions).
 
-Mått för Azure Blob Storage finns i följande namn områden: 
+Mått för Azure Blob Storage finns i följande namnrymder: 
 
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/blobServices
@@ -593,7 +593,7 @@ Använd de här frågorna för att hjälpa dig att övervaka dina Azure Storage-
     | sort by count_ desc 
     | render piechart
     ```
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Stöder Azure Storage mått för Managed Disks eller ohanterade diskar?**
 
@@ -601,6 +601,6 @@ Nej. Azure Compute stöder mått på diskar. Mer information finns i [per disk m
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En referens för loggar och mått som skapats av Azure Blob Storage finns i [Azure Blob Storage övervaknings data Reference](monitor-blob-storage-reference.md).
+- En referens för loggar och mått som skapats av Azure Blob Storage finns i referens för [Azure Blob Storage övervaknings data](monitor-blob-storage-reference.md).
 - Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
 - Mer information om hur du migrerar mått finns i [Azure Storage metriska migreringar](../common/storage-metrics-migration.md).

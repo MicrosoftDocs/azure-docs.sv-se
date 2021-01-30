@@ -1,14 +1,14 @@
 ---
 title: Övervaka Delegerings ändringar i hanterings klienten
 description: Lär dig hur du övervakar Delegerings aktivitet från kund klienter till din hanterings klient.
-ms.date: 12/11/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936115"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089431"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka Delegerings ändringar i hanterings klienten
 
@@ -16,10 +16,12 @@ Som tjänst leverantör kanske du vill vara medveten om att kund prenumerationer
 
 I hanterings klienten spårar [Azure aktivitets loggen](../../azure-monitor/platform/platform-logs-overview.md) Delegerings aktivitet på klient nivå. Den här loggade aktiviteten innehåller alla tillagda eller borttagna delegeringar från alla kund klienter.
 
-I det här avsnittet beskrivs de behörigheter som krävs för att övervaka Delegerings aktivitet till din klient (i alla kunder) och bästa praxis för att göra detta. Det innehåller också ett exempel skript som visar en metod för att fråga och rapportera om dessa data.
+I det här avsnittet beskrivs de behörigheter som krävs för att övervaka Delegerings aktivitet till din klient (i alla dina kunder). Det innehåller också ett exempel skript som visar en metod för att fråga och rapportera om dessa data.
 
 > [!IMPORTANT]
 > Alla de här stegen måste utföras i hanterings klienten i stället för i alla kund klienter.
+>
+> Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](../concepts/enterprise.md) använda samma processer.
 
 ## <a name="enable-access-to-tenant-level-data"></a>Ge åtkomst till data på klient nivå
 
@@ -33,33 +35,21 @@ Detaljerade anvisningar om hur du lägger till och tar bort höjning finns i [ö
 
 När du har tilldelat åtkomsten har ditt konto rollen administratör för användar åtkomst i Azure i rot omfånget. Med den här roll tilldelningen kan du Visa alla resurser och tilldela åtkomst i alla prenumerationer eller hanterings grupper i katalogen, samt för att skapa roll tilldelningar i rot omfånget.
 
-### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Skapa ett nytt tjänst huvud konto för att få åtkomst till data på klient nivå
+### <a name="assign-the-monitoring-reader-role-at-root-scope"></a>Tilldela övervaknings läsar rollen i rot omfånget
 
 När du har förhöjd åtkomst kan du tilldela rätt behörigheter till ett konto så att det kan fråga efter aktivitets logg data på klient nivå. Det här kontot måste ha den inbyggda rollen för [övervaknings läsaren](../../role-based-access-control/built-in-roles.md#monitoring-reader) som är tilldelad till rot omfånget för hanterings klienten.
 
 > [!IMPORTANT]
-> Att bevilja en roll tilldelning i rot omfånget innebär att samma behörigheter gäller för alla resurser i klienten.
+> Att bevilja en roll tilldelning i rot omfånget innebär att samma behörigheter gäller för alla resurser i klienten. Eftersom det här är en bred åtkomst nivå kan du vilja [tilldela rollen till ett huvud konto för tjänsten och använda det kontot för att fråga efter data](#use-a-service-principal-account-to-query-the-activity-log). Du kan också tilldela övervaknings läsar rollen i rot omfånget till enskilda användare eller till användar grupper så att de kan [Visa Delegerings information direkt i Azure Portal](#view-delegation-changes-in-the-azure-portal). Om du gör det bör du vara medveten om att detta är en bred åtkomst nivå som bör begränsas till det minsta antalet användare som är möjliga.
 
-Eftersom detta är en bred åtkomst nivå rekommenderar vi att du tilldelar rollen till ett huvud konto för tjänsten i stället för till en enskild användare eller till en grupp.
-
- Dessutom rekommenderar vi följande bästa praxis:
-
-- [Skapa ett nytt tjänst huvud konto](../../active-directory/develop/howto-create-service-principal-portal.md) som endast ska användas för den här funktionen, i stället för att tilldela den här rollen till ett befintligt huvud namn för tjänsten som används för annan automatisering.
-- Se till att det här tjänstens huvud namn inte har åtkomst till några delegerade kund resurser.
-- [Använd ett certifikat för att autentisera](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) och [lagra det på ett säkert sätt i Azure Key Vault](../../key-vault/general/security-overview.md).
-- Begränsa de användare som har åtkomst till Act för tjänstens huvud namn.
-
-> [!NOTE]
-> Du kan också tilldela den inbyggda rollen för övervaknings läsaren i rot omfånget till enskilda användare eller till användar grupper. Detta kan vara användbart om du vill att en användare ska kunna [Visa Delegerings information direkt i Azure Portal](#view-delegation-changes-in-the-azure-portal). Om du gör det bör du vara medveten om att detta är en bred åtkomst nivå som bör begränsas till det minsta antalet användare som är möjliga.
-
-Använd någon av följande metoder för att göra rot omfångs tilldelningar.
+Använd någon av följande metoder för att göra tilldelningen av rot omfånget.
 
 #### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
-New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ApplicationId $servicePrincipal.ApplicationId 
+New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ObjectId <objectId> 
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
@@ -72,9 +62,32 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Ta bort utökad åtkomst för det globala administratörs kontot
 
-När du har skapat ditt tjänst huvud konto och tilldelat övervaknings läsaren rollen i rot omfånget, måste du [ta bort den utökade åtkomsten](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) för det globala administratörs kontot eftersom den här åtkomst nivån inte längre behövs.
+När du har tilldelat rollen som övervaknings läsare i rot omfånget till önskat konto måste du [ta bort den utökade åtkomsten](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) för det globala administratörs kontot eftersom den här åtkomst nivån inte längre behövs.
 
-## <a name="query-the-activity-log"></a>Fråga aktivitets loggen
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Visa Delegerings ändringar i Azure Portal
+
+Användare som har tilldelats rollen som övervaknings läsare i rot omfånget kan visa Delegerings ändringar direkt i Azure Portal.
+
+1. Gå till sidan **Mina kunder** och välj sedan **aktivitets logg** på den vänstra navigerings menyn.
+1. Se till att **katalog aktivitet** är markerad i filtret längst upp på skärmen.
+
+En lista över Delegerings ändringar kommer att visas. Du kan välja **Redigera kolumner** om du vill visa eller **dölja status**, **händelse kategori**, tid **, tidstämpel**, **prenumeration**, **händelse som initieras av**, **resurs grupp**, **resurs typ** och **resurs** värden. 
+
+:::image type="content" source="../media/delegation-activity-portal.jpg" alt-text="Skärm bild av Delegerings ändringar i Azure Portal.":::
+
+## <a name="use-a-service-principal-account-to-query-the-activity-log"></a>Använd ett huvud konto för tjänsten för att fråga aktivitets loggen
+
+Eftersom övervaknings läsar rollen i rot omfånget är en sådan bred åtkomst nivå, kanske du vill tilldela rollen till ett huvud konto för tjänsten och använda det kontot för att fråga efter data med hjälp av skriptet nedan.
+
+> [!IMPORTANT]
+> För närvarande kan klienter med en stor mängd Delegerings aktivitet stöta på fel vid frågor mot dessa data.
+
+När du använder ett huvud konto för tjänsten för att skicka frågor till aktivitets loggen rekommenderar vi följande metoder:
+
+- [Skapa ett nytt tjänst huvud konto](../../active-directory/develop/howto-create-service-principal-portal.md) som endast ska användas för den här funktionen, i stället för att tilldela den här rollen till ett befintligt huvud namn för tjänsten som används för annan automatisering.
+- Se till att det här tjänstens huvud namn inte har åtkomst till några delegerade kund resurser.
+- [Använd ett certifikat för att autentisera](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) och [lagra det på ett säkert sätt i Azure Key Vault](../../key-vault/general/security-overview.md).
+- Begränsa de användare som har åtkomst till Act för tjänstens huvud namn.
 
 När du har skapat ett nytt tjänst huvud konto med övervaknings läsaren åtkomst till rot omfånget för din hanterings klient kan du använda det för att fråga efter och rapportera om Delegerings aktivitet i din klient.
 
@@ -164,18 +177,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-> [!TIP]
-> Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](../concepts/enterprise.md) använda samma processer.
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Visa Delegerings ändringar i Azure Portal
-
-Användare som har tilldelats den inbyggda rollen övervakare Azure i rot omfånget kan visa Delegerings ändringar direkt i Azure Portal.
-
-1. Gå till sidan **Mina kunder** och välj sedan **aktivitets logg** på den vänstra navigerings menyn.
-1. Se till att **katalog aktivitet** är markerad i filtret längst upp på skärmen.
-
-En lista över Delegerings ändringar kommer att visas. Du kan välja **Redigera kolumner** om du vill visa eller **dölja status**, **händelse kategori**, tid **, tidstämpel**, **prenumeration**, **händelse som initieras av**, **resurs grupp**, **resurs typ** och **resurs** värden. 
 
 ## <a name="next-steps"></a>Nästa steg
 

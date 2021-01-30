@@ -3,12 +3,12 @@ title: Uppgradera klusternoder för att använda Azure Managed disks
 description: Så här uppgraderar du ett befintligt Service Fabric-kluster för att använda Azure Managed disks med liten eller ingen stillestånds tid för klustret.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c374c4536309a13abcf8c882b041a9c5357878e5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316148"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090662"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Uppgradera klusternoder för att använda Azure Managed disks
 
@@ -30,11 +30,11 @@ Den här artikeln beskriver steg för steg hur du uppgraderar den primära nodty
 > [!CAUTION]
 > Du får bara ett avbrott med den här proceduren om du har beroenden för kluster-DNS (till exempel vid åtkomst till [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). [Bästa praxis för klient dels tjänster](/azure/architecture/microservices/design/gateway) är att ha någon typ av belastningsutjämnare framför dina nodtyper för att göra det möjligt att växla [mellan](/azure/architecture/guide/technology-choices/load-balancing-overview) noder utan avbrott.
 
-Här följer [mallar och cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) för Azure Resource Manager som vi använder för att slutföra uppgraderings scenariot. Mal lin liga ändringar kommer att förklaras i [distribuera en uppgraderad skalnings uppsättning för den primära nodtypen](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  nedan.
+Här följer [mallar och cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) för Azure Resource Manager som vi använder för att slutföra uppgraderings scenariot. Mal lin liga ändringar kommer att förklaras i [distribuera en uppgraderad skalnings uppsättning för den primära nodtypen](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  nedan.
 
 ## <a name="set-up-the-test-cluster"></a>Konfigurera test klustret
 
-Vi konfigurerar det första Service Fabric test klustret. Börja med att [hämta](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) Azure Resource Manager exempel mallar som vi ska använda för att slutföra det här scenariot.
+Vi konfigurerar det första Service Fabric test klustret. Börja med att [hämta](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) Azure Resource Manager exempel mallar som vi ska använda för att slutföra det här scenariot.
 
 Logga sedan in på ditt Azure-konto.
 
@@ -269,7 +269,7 @@ Om du vill distribuera den uppdaterade konfigurationen måste du först få fler
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **Tumavtryck för ditt kluster certifikat.** (Du har förmodligen redan det här om du har [anslutit till det första klustret](#connect-to-the-new-cluster-and-check-health-status) för att kontrol lera hälso statusen.) Från bladet samma certifikat (**certifikat**  >  som*det önskade certifikatet*) i Azure Portal kopierar du **X. 509 SHA-1-tumavtryck (i hex)**:
+* **Tumavtryck för ditt kluster certifikat.** (Du har förmodligen redan det här om du har [anslutit till det första klustret](#connect-to-the-new-cluster-and-check-health-status) för att kontrol lera hälso statusen.) Från bladet samma certifikat (**certifikat**  >  som *det önskade certifikatet*) i Azure Portal kopierar du **X. 509 SHA-1-tumavtryck (i hex)**:
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
@@ -373,6 +373,6 @@ Lär dig att:
 
 Se även:
 
-* [Exempel: uppgradera klusternoder för att använda Azure Managed disks](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [Exempel: uppgradera klusternoder för att använda Azure Managed disks](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)
 
 * [Överväganden vid vertikal skalning](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

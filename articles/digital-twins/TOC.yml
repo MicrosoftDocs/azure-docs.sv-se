@@ -4,8 +4,6 @@
   items:
     - name: Om Azure Digital Twins
       href: overview.md
-    - name: Skillnader jämfört med den tidigare versionen
-      href: overview-differences.md
 - name: Snabbstarter
   expanded: true
   items:
@@ -169,6 +167,8 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
     - name: Kunddataförfrågningar
       href: resources-customer-data-requests.md
+    - name: Skillnader jämfört med den ursprungliga versionen
+      href: resources-compare-original-release.md
     - name: 'API:er och SDK:er'
       items:
         - name: Kontrollplan

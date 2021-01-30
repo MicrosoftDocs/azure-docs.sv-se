@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762896"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071655"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Utföra en tidpunkts återställning på block BLOB-data
 
@@ -185,6 +185,17 @@ az storage blob restore \
     --account-name <storage-account> \
     --time-to-restore 2021-01-14T06:31:22Z \
     --no-wait
+```
+
+Om du vill kontrol lera egenskaperna för en återställnings åtgärd, anropa [AZ Storage Account (Visa](/cli/azure/storage/account#az_storage_account_show) och expandera egenskapen **blobRestoreStatus** ). I följande exempel visas hur du kontrollerar egenskapen **status** .
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource_group> \ 
+    --expand blobRestoreStatus \
+    --query blobRestoreStatus.status \
+    --output tsv
 ```
 
 Om du vill köra kommandot **AZ Storage BLOB Restore** och blockera vid körning tills återställningen är klar utelämnar du `--no-wait` parametern.

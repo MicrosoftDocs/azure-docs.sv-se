@@ -43,9 +43,11 @@
   items:
     - name: Grundläggande begrepp
       href: basic-concepts.md
+    - name: Bästa praxis
+      href: best-practices.md
     - name: Säkerhet
       items:
-        - name: Säkerhetsöversikt
+        - name: Översikt
           href: security-overview.md
         - name: Säker åtkomst till ett nyckelvalv
           href: secure-your-key-vault.md

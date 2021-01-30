@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934602"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070669"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Övervakning och avisering för Azure Key Vault
 
@@ -203,12 +203,13 @@ Se följande konfigurations parametrar.
 
 7. Skapa aviseringen 
 
+### <a name="example-email-alert"></a>Exempel på e-postavisering 
+
+> [!div class="mx-imgBorder"]
+> ![Skärm bild som visar den information som behövs för att konfigurera en e-postavisering.](../media/alert-20.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
 Grattis, nu har du skapat en övervaknings instrument panel och konfigurerat aviseringar för nyckel valvet! När du har följt alla steg ovan bör du få e-postaviseringar när nyckel valvet uppfyller de aviserings villkor som du har konfigurerat. Ett exempel på detta visas nedan. Använd de verktyg som du har skapat i den här artikeln för att aktivt övervaka hälso tillståndet för ditt nyckel valv. 
 
-### <a name="example-email-alert"></a>Exempel på e-postavisering 
 
-> [!div class="mx-imgBorder"]
-> ![Skärm bild som visar den information som behövs för att konfigurera en e-postavisering.](../media/alert-20.png)

@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en princip för Azure Policy gäst konfigura
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 38579bb43f012cac2b373bbbbb6ad757604f4c07
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755879"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070697"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Skapa gästkonfigurationsprinciper för Linux
 
@@ -204,7 +204,17 @@ Cmdleten stöder även inmatade från PowerShell-pipeline. Skicka utdata från `
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-Nästa steg är att publicera filen till Azure Blob Storage.  Kommandot `Publish-GuestConfigurationPackage` kräver `Az.Storage` modulen.
+Nästa steg är att publicera filen till Azure Blob Storage. Kommandot `Publish-GuestConfigurationPackage` kräver `Az.Storage` modulen.
+
+Parametrar för `Publish-GuestConfigurationPackage` cmdleten:
+
+- **Sökväg**: platsen för det paket som ska publiceras
+- **ResourceGroupName**: namnet på den resurs grupp där lagrings kontot finns
+- **StorageAccountName**: namnet på det lagrings konto där paketet ska publiceras
+- **StorageContainerName**: (standard: *guestconfiguration*) namnet på lagrings behållaren i lagrings kontot
+- **Force**: Skriv över det befintliga paketet i lagrings kontot med samma namn
+
+Exemplet nedan publicerar paketet till ett lagrings behållar namn ' guestconfiguration '.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
