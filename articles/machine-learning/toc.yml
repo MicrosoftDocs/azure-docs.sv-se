@@ -172,6 +172,8 @@
           href: concept-enterprise-security.md
         - name: Säkerhetsbaslinje
           href: security-baseline.md
+        - name: Säkerhetskontroller av Azure Policy
+          href: ./security-controls-policy.md
     - name: Ansvarsfull ML
       items:
         - name: Översikt över ansvarsfull ML
@@ -609,6 +611,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Användarforum
       href: /answers/topics/azure-machine-learning.html
+    - name: Microsoft Learn
+      href: /learn/browse/?expanded=azure&products=azure-machine-learning
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Jämför våra ML-produkter

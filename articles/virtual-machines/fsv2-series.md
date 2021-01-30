@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: d633d631a8d905532601ec15700ff80eed644efe
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7071675d4573ebee297217fe216552482cb76406
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920164"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096889"
 ---
 # <a name="fsv2-series"></a>Fsv2-serien
 
@@ -27,6 +27,7 @@ Virtuella datorer i Fsv2-serien Intel® Hyper-Threading-teknik.
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 <br>
 
 | Storlek | vCPU | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Högsta cachelagrade data flöde för cache och temporär lagring: IOPS/Mbit/s (cachestorlek i GiB) | Maximalt antal cachelagrade diskar: IOPS/MBps | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |

@@ -127,6 +127,10 @@
           href: iot-data-flow.md
         - name: Azure IoT-anslutningsprogram för FHIR (förhandsversion) – mappningsmall
           href: iot-mapping-templates.md
+    - name: Säkerhet
+      items:
+        - name: Säkerhetskontroller av Azure Policy
+          href: ./security-controls-policy.md
 - name: Resurser
   items:
     - name: VANLIGA FRÅGOR OCH SVAR

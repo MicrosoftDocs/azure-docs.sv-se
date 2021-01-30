@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 15d01a8ac21264bf57ee7e65147e3989cd631b15
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011888"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095564"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Hantera och underhålla Log Analytics-agenten för Windows och Linux
 
@@ -243,7 +243,7 @@ Den hämtade filen för agenten är ett fristående installations paket som skap
 
 1. Logga in på datorn med ett konto som har administratörs behörighet.
 
-2. Om du vill extrahera installationsfilerna för agenten, kan du köra från en upphöjd kommando tolk `extract MMASetup-<platform>.exe` och uppmana dig att ange sökvägen för att extrahera filer till. Alternativt kan du ange sökvägen genom att skicka argumenten `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . Mer information om kommando rads växlar som stöds av IExpress finns i [kommando rads växlar för IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) och uppdatera sedan exemplet så att det passar dina behov.
+2. Om du vill extrahera installationsfilerna för agenten, kan du köra från en upphöjd kommando tolk `extract MMASetup-<platform>.exe` och uppmana dig att ange sökvägen för att extrahera filer till. Alternativt kan du ange sökvägen genom att skicka argumenten `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . Mer information om kommando rads växlar som stöds av IExpress finns i [kommando rads växlar för IExpress](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/197147) och uppdatera sedan exemplet så att det passar dina behov.
 
 3. Skriv i prompten `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` .
 

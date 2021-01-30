@@ -3,12 +3,12 @@ title: Använd Azure Service Bus Explorer för att utföra data åtgärder på S
 description: Den här artikeln innehåller information om hur du använder den portalbaserade Azure Service Bus Explorer för att få åtkomst till Azure Service Bus data.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684849"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092225"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Använd Service Bus Explorer för att utföra data åtgärder på Service Bus (förhands granskning)
 
@@ -37,9 +37,9 @@ Om du vill använda verktyget Service Bus Explorer måste du utföra följande u
     - [Snabb start – skapa köer](service-bus-quickstart-portal.md)
     - [Snabb start – skapa ämnen](service-bus-quickstart-topics-subscriptions-portal.md)
 - Se till att du är medlem i någon av följande roller i namn området: 
-    - [Service Bus data ägare](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
-    - [Deltagare](../role-based-access-control/built-in-roles.md#contributor) 
-    - [Ägare](/role-based-access-control/built-in-roles.md#owner)
+    - [Service Bus data ägare](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
+    - [Deltagare](/azure/role-based-access-control/built-in-roles#contributor) 
+    - [Ägare](/azure/role-based-access-control/built-in-roles#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Använda Service Bus Explorer

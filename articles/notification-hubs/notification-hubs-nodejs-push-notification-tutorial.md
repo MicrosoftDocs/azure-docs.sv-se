@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ef6ef85ea9d256303852e4b281071da455ebb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250427"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097681"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Skicka push-meddelanden med Azure Notification Hubs och Node.js
 
@@ -82,9 +82,9 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 Hämta anslutnings `connectionstring` värdet från [Azure portalen] genom att utföra följande steg:
 
-1. Klicka på **Bläddra**i det vänstra navigerings fönstret.
-2. Välj **Notification Hubs**och leta upp hubben som du vill använda för exemplet. Du kan referera till [Windows Store komma igång-kursen](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) om du behöver hjälp med att skapa en ny Notification Hub.
-3. Välj **Inställningar**.
+1. Klicka på **Bläddra** i det vänstra navigerings fönstret.
+2. Välj **Notification Hubs** och leta upp hubben som du vill använda för exemplet. Du kan referera till [Windows Store komma igång-kursen](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) om du behöver hjälp med att skapa en ny Notification Hub.
+3. Välj **inställningar**.
 4. Klicka på **åtkomst principer**. Du ser både delade och fullständiga åtkomst anslutnings strängar.
 
 ![Azure Portal-Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -109,7 +109,7 @@ Hämta anslutnings `connectionstring` värdet från [Azure portalen] genom att u
 - **Nytto Last** – meddelandets JSON eller rå data nytto Last.
 - **Motringning** – funktionen motringning.
 
-Mer information om nytto Last formatet finns i [nytto Last dokumentationen](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
+Mer information om nytto Last formatet finns i [nytto Last dokumentationen](https://payload.readthedocs.io/en/latest/).
 
 I följande kod används den `GcmService` instans som exponeras av `NotificationHubService` för att skicka ett push-meddelande till alla registrerade klienter.
 
@@ -155,7 +155,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Taggar** – tag-ID. Om ingen tagg anges skickas meddelandet till alla klienter.
 - **Nytto Last** – meddelandets XML-nytto Last.
-- **TargetName**  -  TargetName `toast` för popup-meddelanden. `token` för panel meddelanden.
+-   -  TargetName `toast` för popup-meddelanden. `token` för panel meddelanden.
 - **NotificationClass** – meddelandets prioritet. Se avsnittet **http-huvud element** i [push-meddelanden från ett Server](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41)) dokument för giltiga värden.
 - **Alternativ** – valfria begärandehuvuden.
 - **Motringning** – funktionen motringning.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 13fc9d3574243c2403f93489a398a461c5392de7
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e4dd4340ba1b7a933b79f9dad616cfdc396f03c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918762"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091119"
 ---
 # <a name="hbv2-series"></a>HBv2-serien
 
@@ -27,6 +27,7 @@ HBv2-serie VM-funktioner 200 GB/SEK Mellanox HDR InfiniBand. De här virtuella d
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 | Storlek | Virtuell processor | Processor | Minne (GiB) | Minnes bandbredd GB/s | Bas processor frekvens (GHz) | Frekvens för alla kärnor (GHz, högsta) | Frekvens för enkla kärnor (GHz, hög) | RDMA-prestanda (GB/s) | MPI-stöd | Temp-lagring (GiB) | Maximalt antal datadiskar | Högsta Ethernet-virtuella nätverkskort |

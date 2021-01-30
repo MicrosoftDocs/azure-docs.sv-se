@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 31a65cab7dfdd478560b7babba156cec7645cf33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 833d96b8ca252cff5384cde114390aba8c2f51c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917259"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097698"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Storlekar för virtuella datorer i B-serien
 
@@ -28,6 +28,7 @@ B-serien levereras i följande VM-storlekar:
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds * *<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 
 * Virtuella datorer i B-serien är burst-baserade och därför kan ACU nummer variera beroende på arbets belastningar och kärn användning.<br>
 * * Accelererat nätverk stöds bara för *Standard_B12ms*, *Standard_B16ms* och *Standard_B20ms*.

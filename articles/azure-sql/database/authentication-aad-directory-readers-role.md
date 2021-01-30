@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 2374b1fb7f355b336c713a8a3240eacc8b1f188c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675078"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094564"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Katalog läsar roll i Azure Active Directory för Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Den här funktionen i den här artikeln finns i **offentlig för hands version** .
+> Den här funktionen i den här artikeln finns i **offentlig för hands version**.
 
 Azure Active Directory (Azure AD) har introducerat [med moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)](../../active-directory/roles/groups-concept.md). Detta gör att Azure AD-roller kan tilldelas till grupper.
 
@@ -37,7 +37,7 @@ Rollen **katalog läsare** är nödvändig för att:
 
 ## <a name="assigning-the-directory-readers-role"></a>Tilldela rollen katalog läsare
 
-För att tilldela rollen [**katalog läsare**](../../active-directory/roles/permissions-reference.md#directory-readers) till en identitet krävs en användare med administratörs behörighet som [Global administratör](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) eller [privilegie rad roll](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) . Användare som ofta hanterar eller distribuerar SQL Database, SQL-hanterad instans eller Azure-Synapse kanske inte har åtkomst till dessa privilegierade roller. Detta kan ofta orsaka komplikationer för användare som skapar oplanerade Azure SQL-resurser, eller behöver hjälp från privilegierade roll medlemmar som ofta är otillgängliga i stora organisationer.
+För att tilldela rollen [**katalog läsare**](../../active-directory/roles/permissions-reference.md#directory-readers) till en identitet krävs en användare med administratörs behörighet som [Global administratör](../../active-directory/roles/permissions-reference.md#global-administrator) eller [privilegie rad roll](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) . Användare som ofta hanterar eller distribuerar SQL Database, SQL-hanterad instans eller Azure-Synapse kanske inte har åtkomst till dessa privilegierade roller. Detta kan ofta orsaka komplikationer för användare som skapar oplanerade Azure SQL-resurser, eller behöver hjälp från privilegierade roll medlemmar som ofta är otillgängliga i stora organisationer.
 
 För SQL-hanterad instans måste rollen **katalog läsare** tilldelas till en hanterad instans identitet innan du kan [Konfigurera en Azure AD-administratör för den hanterade instansen](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). 
 
@@ -45,7 +45,7 @@ Det krävs inte att tilldela rollen **katalog läsare** till Server identiteten 
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>Bevilja katalog läsare rollen till en Azure AD-grupp
 
-För närvarande kan du skapa en Azure AD-grupp och tilldela [**katalog läsar**](../../active-directory/roles/permissions-reference.md#directory-readers) behörighet till gruppen för närvarande [i en](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) **offentlig för hands version** . [Privileged Role Administrator](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) Detta ger åtkomst till Azure AD-Graph API för medlemmar i den här gruppen. Dessutom tillåts Azure AD-användare som är ägare av den här gruppen att tilldela nya medlemmar för den här gruppen, inklusive identiteter för logiska Azure SQL-servrar.
+För närvarande kan du skapa en Azure AD-grupp och tilldela [**katalog läsar**](../../active-directory/roles/permissions-reference.md#directory-readers) behörighet till gruppen för närvarande [i en](../../active-directory/roles/permissions-reference.md#global-administrator) **offentlig för hands version**. [](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) Detta ger åtkomst till Azure AD-Graph API för medlemmar i den här gruppen. Dessutom tillåts Azure AD-användare som är ägare av den här gruppen att tilldela nya medlemmar för den här gruppen, inklusive identiteter för logiska Azure SQL-servrar.
 
 Den här lösningen kräver fortfarande en användare med hög behörighet (global administratör eller privilegie rad roll administratör) för att skapa en grupp och tilldela användare en gång, men Azure AD-gruppägare kommer att kunna tilldela ytterligare medlemmar som går framåt. Detta eliminerar behovet av att involvera en användare med hög behörighet i framtiden för att konfigurera alla SQL-databaser, SQL-hanterade instanser eller Azure Synapse-servrar i sin Azure AD-klient.
 

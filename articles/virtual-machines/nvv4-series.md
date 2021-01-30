@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: bff754211cb1a8bf9336a9ada4db2c8189d13a21
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c751f67e9f442669ff3f6828de0a5b350d1706fa
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919688"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097715"
 ---
 # <a name="nvv4-series"></a>NVv4-serien 
 
@@ -28,6 +28,7 @@ De virtuella datorerna i NVv4-serien drivs av [AMD Radeon Instinct MI25](https:/
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | GPU | GPU-minne: GiB | Maximalt antal datadiskar | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) |

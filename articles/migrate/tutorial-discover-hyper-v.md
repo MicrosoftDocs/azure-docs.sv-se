@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8b46d08da87565d133962c23e8281b221544d9ca
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897517"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092524"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Självstudie: identifiera virtuella Hyper-V-datorer med Server utvärdering
 
@@ -87,7 +87,7 @@ Kontrol lera värd kraven | Kontrollerar att värden kör en version av Hyper-V 
 Verifiera PowerShell-version | Kontrollerar att du kör skriptet på en PowerShell-version som stöds. | Kontrol lera att du kör PowerShell version 4,0 eller senare på Hyper-V-värden.
 Skapa ett konto | Kontrollerar att du har rätt behörigheter på Hyper-V-värden.<br/><br/> Gör att du kan skapa ett lokalt användar konto med rätt behörighet. | Alternativ 1: Förbered ett konto med administratörs åtkomst till Hyper-V-värddatorn.<br/><br/> Alternativ 2: Förbered ett lokalt administratörs konto eller ett domän administratörs konto och Lägg till kontot i dessa grupper: fjärrhanterings användare, Hyper-V-administratörer och användare av prestanda övervakning.
 Aktivera PowerShell-fjärrkommunikation | Aktiverar PowerShell-fjärrkommunikation på värden, så att Azure Migrate-installationen kan köra PowerShell-kommandon på värden via en WinRM-anslutning. | Om du vill konfigurera, öppnar du en PowerShell-konsol som administratör på varje värd och kör det här kommandot: ``` powershell Enable-PSRemoting -force ```
-Konfigurera Hyper-V integrerings tjänster | Kontrollerar att integrerings tjänsterna för Hyper-V är aktiverade på alla virtuella datorer som hanteras av värden. | [Aktivera Hyper-V integrations tjänster](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) på varje virtuell dator.<br/><br/> Om du kör Windows Server 2003 följer du [dessa anvisningar](prepare-windows-server-2003-migration.md).
+Konfigurera Hyper-V integrerings tjänster | Kontrollerar att integrerings tjänsterna för Hyper-V är aktiverade på alla virtuella datorer som hanteras av värden. | [Aktivera Hyper-V integrations tjänster](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) på varje virtuell dator.<br/><br/> Om du kör Windows Server 2003 följer du [dessa anvisningar](prepare-windows-server-2003-migration.md).
 Delegera autentiseringsuppgifter om VM-diskar finns på fjärr-SMB-resurser | Delegerar autentiseringsuppgifter | Kör det här kommandot om du vill att CredSSP ska kunna delegera autentiseringsuppgifter på värdar som kör virtuella Hyper-V-datorer med diskar på SMB-resurser: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Du kan köra det här kommandot via fjärr anslutning på alla Hyper-V-värdar.<br/><br/> Om du lägger till nya noder i ett kluster läggs de automatiskt till för identifiering, men du måste aktivera CredSSP manuellt.<br/><br/> När du konfigurerar installationen slutför du installationen av CredSSP genom att [Aktivera den på enheten](#delegate-credentials-for-smb-vhds). 
 
 ### <a name="run-the-script"></a>Kör skriptet

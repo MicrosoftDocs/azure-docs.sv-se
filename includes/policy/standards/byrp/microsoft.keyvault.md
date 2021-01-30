@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d51f9b70a48bdd5adafeeeafc266b7142a7171a4
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: a83e3b44fae67975e853fb60d92ca7078c8c8b94
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98859761"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092191"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -21,8 +21,8 @@ Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tj
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
 |Nätverkssäkerhet |NS-1 |Implementera säkerhet för intern trafik |[Brand väggen måste vara aktive rad på Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490) |[1.0.2 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |
-|Nätverkssäkerhet |NS-2 |Ansluta privata nätverk tillsammans |[Den privata slut punkten måste konfigureras för Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |[1.0.2 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
-|Nätverkssäkerhet |NS-3 |Upprätta privat nätverks åtkomst till Azure-tjänster |[Den privata slut punkten måste konfigureras för Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |[1.0.2 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
+|Nätverkssäkerhet |NS-2 |Ansluta privata nätverk tillsammans |[Den privata slut punkten måste konfigureras för Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |[1.1.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
+|Nätverkssäkerhet |NS-3 |Upprätta privat nätverks åtkomst till Azure-tjänster |[Den privata slut punkten måste konfigureras för Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |[1.1.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
 |Nätverkssäkerhet |NS-4 |Skydda program och tjänster från externa nätverks attacker |[Brand väggen måste vara aktive rad på Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490) |[1.0.2 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |
 |Loggning och hotidentifiering |LT-4 |Aktivera loggning för Azure-resurser |[Diagnostikloggar i Key Vault ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |Säkerhetskopiering och återställning |BR-4 |Minska risken för förlorade nycklar |[Rensnings skydd måste vara aktiverat för nyckel valv](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |

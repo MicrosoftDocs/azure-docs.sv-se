@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 575486a89cd078325b76fa684ff9bd3d59a619c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844275"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092776"
 ---
 # <a name="azure-security-technical-capabilities"></a>Tekniska funktioner för Azure-säkerhet
 Den här artikeln innehåller en introduktion till säkerhets tjänster i Azure som hjälper dig att skydda dina data, resurser och program i molnet och uppfylla verksamhetens behov av säkerhet.
@@ -68,7 +68,7 @@ Följande är grundläggande funktioner för Azure Identity Management:
 
 - Enkel inloggning
 
-- Multi-Factor Authentication
+- Multifaktorautentisering
 
 - Säkerhetsövervakning, varningar och Machine Learning-baserade rapporter
 
@@ -78,7 +78,7 @@ Följande är grundläggande funktioner för Azure Identity Management:
 
 - Privileged Identity Management
 
-- Identitetsskydd
+- Identity Protection
 
 #### <a name="single-sign-on"></a>Enkel inloggning
 
@@ -90,7 +90,7 @@ Många organisationer förlitar sig på SaaS-program (program vara som en tjäns
 
 Användare behöver inte bara hantera flera uppsättningar användar namn och lösen ord, program åtkomsten kan automatiskt etableras eller avetableras baserat på organisations grupper och deras status som anställd. [Azure AD introducerar säkerhets-och åtkomst styrnings kontroller](../../active-directory/manage-apps/view-applications-portal.md) som gör att du centralt kan hantera användarnas åtkomst i SaaS-program.
 
-#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+#### <a name="multi-factor-authentication"></a>Multifaktorautentisering
 
 [Azure AD Multi-Factor Authentication (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) är en autentiseringsmetod som kräver användning av mer än en verifieringsmetod och lägger till ett kritiskt andra säkerhets skikt för användar inloggningar och transaktioner. [MFA hjälper](../../active-directory/authentication/concept-mfa-howitworks.md) till att skydda åtkomsten till data och program samtidigt som du kan möta användarnas behov av en enkel inloggnings process. Den ger stark autentisering via ett antal verifierings alternativ – telefonsamtal, textmeddelande eller meddelande från mobilapp eller verifierings kod och OAuth-token från tredje part.
 
@@ -140,7 +140,7 @@ Med Azure AD Privileged Identity Management kan du:
 
 - Få aviseringar om åtkomst till en privilegie rad roll
 
-#### <a name="identity-protection"></a>Identitetsskydd
+#### <a name="identity-protection"></a>Identity Protection
 
 [Azure AD Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md) är en säkerhets tjänst som tillhandahåller en samlad vy över risk identifieringar och potentiella sårbarheter som påverkar organisationens identiteter. Identitets skydd använder befintliga Azure Active Directorys avvikelse identifierings funktioner (tillgängliga via Azure ADs avvikande aktivitets rapporter) och introducerar nya risk identifierings typer som kan identifiera avvikelser i real tid.
 
@@ -181,7 +181,7 @@ För organisationer som behöver säker åtkomst från flera arbets stationer so
 
 För organisationer som behöver säker åtkomst från en arbets Station lokalt till Azure använder du [punkt-till-plats-VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-Större data uppsättningar kan flyttas över en dedikerad höghastighets-WAN-länk, till exempel [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Om du väljer att använda ExpressRoute kan du också kryptera data på program nivå med hjälp av [SSL/TLS](https://support.microsoft.com/kb/257591) eller andra protokoll för ytterligare skydd.
+Större data uppsättningar kan flyttas över en dedikerad höghastighets-WAN-länk, till exempel [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Om du väljer att använda ExpressRoute kan du också kryptera data på program nivå med hjälp av [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) eller andra protokoll för ytterligare skydd.
 
 Om du interagerar med Azure Storage via Azure Portal sker alla transaktioner via HTTPS. [Lagrings REST API](/rest/api/storageservices/) över https kan också användas för att interagera med [Azure Storage](https://azure.microsoft.com/services/storage/) och [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
 

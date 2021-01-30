@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cba7342409d309fceeb7cfe50c152f2548f29bec
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6c2ac4247945436f5c32d25fbae1c1fe9a9c0ceb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919739"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097732"
 ---
 # <a name="nv-series"></a>NV-serien
 
@@ -26,6 +26,7 @@ Varje GPU i NV-instanser levereras med en GRID-licens. Den här licensen ger dig
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | GPU | GPU-minne: GiB | Maximalt antal datadiskar | Maximalt antal nätverkskort | Virtuella arbets stationer | Virtuella program |

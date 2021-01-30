@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a08b5db19aab19402aa3c93cfa23ce7b39a0a838
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2416c0b4002f560e272393c95a86c543cb5f1009
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918696"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097850"
 ---
 # <a name="lsv2-series"></a>Lsv2-serien
 
@@ -33,6 +33,7 @@ Lsv2-serien har högt data flöde, låg latens, direkt mappad lokal NVMe-lagring
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 Bursting: stöds<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 | Storlek | Virtuell processor | Minne (GiB) | Temporär disk<sup>1</sup> (GIB) | NVMe-diskar<sup>2</sup> | NVMe-disk data flöde<sup>3</sup> (läsa IOPS/Mbit/s) | Data flöde för datadisk i cacheminnet (IOPs/Mbit/s)<sup>4</sup> | Högsta burst-genomflöde (IOPs/Mbit/s) för burst-överföring<sup>5</sup>| Maximalt antal data diskar | Maximalt antal nätverkskort | Förväntad nätverks bandbredd (Mbit/s) |

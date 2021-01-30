@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880733"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092058"
 ---
 # <a name="security-control-v2-privileged-access"></a>Säkerhets kontroll v2: privilegie rad åtkomst
 
@@ -26,7 +26,7 @@ Privilegie rad åtkomst täcker kontroller för att skydda privilegie rad åtkom
 
 Begränsa antalet starkt privilegierade användar konton och skydda dessa konton på en utökad nivå. De viktigaste inbyggda rollerna i Azure AD är global administratör och administratör för privilegierade roller, eftersom användare som tilldelats dessa två roller kan delegera administratörs roller. Med dessa privilegier kan användare direkt eller indirekt läsa och ändra alla resurser i din Azure-miljö:
 
-- Global administratör/företags administratör: användare med den här rollen har åtkomst till alla administrativa funktioner i Azure AD, samt tjänster som använder Azure AD-identiteter.
+- Global administratör: användare med den här rollen har åtkomst till alla administrativa funktioner i Azure AD, samt tjänster som använder Azure AD-identiteter.
 
 - Privilegie rad roll administratör: användare med den här rollen kan hantera roll tilldelningar i Azure AD, samt i Azure AD Privileged Identity Management (PIM). Dessutom tillåter den här rollen hantering av alla aspekter av PIM och administrativa enheter.
 

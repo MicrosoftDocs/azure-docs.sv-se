@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 594dd2fd154b37eed49c069cef1b539e13ca6876
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445650"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094249"
 ---
 # <a name="managed-hsm-role-management"></a>Hantering av Managed HSM-roller
 
@@ -28,7 +28,7 @@ Om du vill tillåta ett säkerhets objekt (till exempel en användare, ett huvud
 
 En lista över alla inbyggda roller för hanterad HSM och de åtgärder som de tillåter finns i [hanterade HSM-inbyggda roller](built-in-roles.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda Azure CLI-kommandona i den här artikeln måste du ha följande objekt:
 
@@ -81,6 +81,9 @@ Alla roll tilldelningar på HSM-nivå för en enskild användare **user1@contoso
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM --assignee user@contoso.com
 ```
+
+> [!NOTE]
+> När omfånget är/(eller/Keys) visar list kommandot endast alla roll tilldelningar på den översta nivån och visar inte roll tilldelningar på individuell nyckel nivå.
 
 Alla roll tilldelningar för en speciell användare **user2@contoso.com** för en speciell nyckel **myrsakey**.
 

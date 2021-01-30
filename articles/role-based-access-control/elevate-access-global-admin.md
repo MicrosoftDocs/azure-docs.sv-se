@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 6e57e495d34a265b5e0691106996206029656c5a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371128"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091671"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Utöka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper
 
@@ -33,7 +33,7 @@ Om du är global administratör kan det finnas tillfällen när du vill utföra 
 
 ## <a name="how-does-elevated-access-work"></a>Hur fungerar utökad åtkomst?
 
-Azure AD och Azure-resurser skyddas fristående från varandra. Det innebär att roll tilldelningar i Azure AD inte beviljar åtkomst till Azure-resurser, och Azure Role-tilldelningar ger inte åtkomst till Azure AD. Men om du är [Global administratör](../active-directory/roles/permissions-reference.md#company-administrator-permissions) i Azure AD kan du tilldela dig själv åtkomst till alla Azure-prenumerationer och hanterings grupper i din katalog. Använd den här funktionen om du inte har åtkomst till Azures prenumerations resurser, till exempel virtuella datorer eller lagrings konton, och du vill använda din globala administratörs behörighet för att få åtkomst till dessa resurser.
+Azure AD och Azure-resurser skyddas fristående från varandra. Det innebär att roll tilldelningar i Azure AD inte beviljar åtkomst till Azure-resurser, och Azure Role-tilldelningar ger inte åtkomst till Azure AD. Men om du är [Global administratör](../active-directory/roles/permissions-reference.md#global-administrator-permissions) i Azure AD kan du tilldela dig själv åtkomst till alla Azure-prenumerationer och hanterings grupper i din katalog. Använd den här funktionen om du inte har åtkomst till Azures prenumerations resurser, till exempel virtuella datorer eller lagrings konton, och du vill använda din globala administratörs behörighet för att få åtkomst till dessa resurser.
 
 När du höjer åtkomsten tilldelas du rollen [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) i Azure vid rot omfånget ( `/` ).På så sätt kan du Visa alla resurser och tilldela åtkomst i alla prenumerationer eller hanterings grupper i katalogen. Roll tilldelningar för administratör för användar åtkomst kan tas bort med hjälp av Azure PowerShell, Azure CLI eller REST API.
 
@@ -41,7 +41,7 @@ Du bör ta bort den här utökade åtkomsten när du har gjort ändringarna som 
 
 ![Upphöj åtkomst](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portalen
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
 
@@ -53,17 +53,17 @@ Följ de här stegen för att öka åtkomsten för en global administratör med 
 
 1. Öppna **Azure Active Directory**.
 
-1. Under **Hantera**, väljer du **Egenskaper**.
+1. Välj **Egenskaper** under **Hantera**.
 
    ![Välj Egenskaper för Azure Active Directory egenskaper-skärm bild](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
-1. Under **åtkomst hantering för Azure-resurser**ställer du in växla till **Ja**.
+1. Under **åtkomst hantering för Azure-resurser** ställer du in växla till **Ja**.
 
    ![Åtkomst hantering för Azure-resurser – skärm bild](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   När du ställer in växla till **Ja**tilldelas du rollen administratör för användar åtkomst i Azure RBAC vid rot omfånget (/). Detta ger dig behörighet att tilldela roller i alla Azure-prenumerationer och hanterings grupper som är kopplade till den här Azure AD-katalogen. Den här växlingen är bara tillgänglig för användare som har tilldelats rollen som global administratör i Azure AD.
+   När du ställer in växla till **Ja** tilldelas du rollen administratör för användar åtkomst i Azure RBAC vid rot omfånget (/). Detta ger dig behörighet att tilldela roller i alla Azure-prenumerationer och hanterings grupper som är kopplade till den här Azure AD-katalogen. Den här växlingen är bara tillgänglig för användare som har tilldelats rollen som global administratör i Azure AD.
 
-   När du ställer in växla till **Nej**tas rollen administratör för användar åtkomst i Azure RBAC bort från ditt användar konto. Du kan inte längre tilldela roller i alla Azure-prenumerationer och hanterings grupper som är associerade med den här Azure AD-katalogen. Du kan bara visa och hantera de Azure-prenumerationer och hanterings grupper som du har beviljats åtkomst till.
+   När du ställer in växla till **Nej** tas rollen administratör för användar åtkomst i Azure RBAC bort från ditt användar konto. Du kan inte längre tilldela roller i alla Azure-prenumerationer och hanterings grupper som är associerade med den här Azure AD-katalogen. Du kan bara visa och hantera de Azure-prenumerationer och hanterings grupper som du har beviljats åtkomst till.
 
     > [!NOTE]
     > Om du använder [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)ändrar inte din roll tilldelning **åtkomst hantering för Azure-resurser** växla till **Nej**. Om du vill behålla minst privilegie rad åtkomst rekommenderar vi att du ställer in den här växlingen på **Nej** innan du inaktiverar din roll tilldelning.
@@ -199,7 +199,7 @@ Följ dessa steg om du vill ta bort roll tilldelningen administratör för anvä
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
 

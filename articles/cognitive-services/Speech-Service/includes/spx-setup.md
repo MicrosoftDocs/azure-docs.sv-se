@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540472"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095198"
 ---
 ## <a name="download-and-install"></a>Hämta och installera
 
@@ -19,9 +19,15 @@ ms.locfileid: "98540472"
 Följ de här stegen för att installera tal-CLI i Windows:
 
 1. I Windows behöver du [Microsoft Visual C++ Redistributable för Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) för din plattform. Det kan krävas en omstart för att installera det första gången.
-2. Hämta [zip-arkivet](https://aka.ms/speech/spx-zips.zip)för tal CLI och extrahera det sedan.
-3. Gå till den katalog där du extraherade `spx-zips` . Den här mappen innehåller program filer för tal-CLI på olika plattformar. 
-4. Extrahera filerna för din plattform ( `spx-net471` för .NET Framework 4,7 eller `spx-netcore-win-x64` .net Core 3,0 på en x64-processor). Kom ihåg att du kör `spx` från den här katalogen.
+1. Installera [.net Core 3,1](/dotnet/core/install/linux.md).
+2. Installera tal-CLI med NuGet genom att ange följande kommando:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
+
+Skriv `spx` för att se hjälp för tal-cli.
+
+> [!NOTE]
+> Som ett alternativ till NuGet kan du ladda ned och extrahera [zip-arkivet](https://aka.ms/speech/spx-zips.zip)för tal-CLI, hitta och extrahera din plattform från `spx-zips` katalogen och lägga till `spx` sökvägen till din system **Sök vägs** variabel.
 
 ### <a name="run-the-speech-cli"></a>Kör tal-CLI
 
@@ -43,15 +49,16 @@ Om du skriver ut till en fil kan en text redigerare som anteckningar eller en we
 
 Följ de här stegen för att installera Speech CLI på Linux på en x64-processor:
 
-1. Installera [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
-2. Hämta [zip-arkivet](https://aka.ms/speech/spx-zips.zip)för tal CLI och extrahera det sedan.
-3. Gå till rot katalogen `spx-zips` som du extraherade från nedladdningen och extrahera `spx-netcore-30-linux-x64` till en ny `~/spx` katalog.
-4. I en Terminal skriver du följande kommandon:
-   1. `cd ~/spx`
-   2. `sudo chmod +r+x spx`
-   3. `PATH=~/spx:$PATH`
+1. Installera [.net Core 3,1](/dotnet/core/install/linux.md).
+2. Installera tal-CLI med NuGet genom att ange följande kommando:
+
+    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
 
 Skriv `spx` för att se hjälp för tal-cli.
+
+> [!NOTE]
+> Som ett alternativ till NuGet kan du hämta binärfilerna i zip- [arkivet](https://aka.ms/speech/spx-zips.zip), extrahera `spx-netcore-30-linux-x64` till en ny `~/spx` katalog, skriva `sudo chmod +r+x spx` på den binära och lägga till `~/spx` sökvägen till din PATH-systemvariabel.
+
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-installation (Windows, Linux, macOS)](#tab/dockerinstall)
 

@@ -2,18 +2,18 @@
 title: 'Självstudie: skapa en anpassad analys'
 titleSuffix: Azure Cognitive Search
 description: Lär dig hur du skapar en anpassad analys för att förbättra kvaliteten på Sök resultaten i Azure Kognitiv sökning.
-manager: liamca
+manager: luisca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: b83ed506c0aa6299e5308e9e0c7276a21b7d9abe
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/29/2021
+ms.openlocfilehash: f4bde98cfc772f5a80bb52c2e4bc2f5a9c28c78d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652355"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097664"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Självstudie: skapa en anpassad analys för telefonnummer
 
@@ -29,7 +29,7 @@ Den här självstudien använder [REST-API: er](/rest/api/searchservice/) för P
 > * Testa hur den anpassade Analyzer-tokenizes text
 > * Skapa separata analyser för indexering och sökning för att ytterligare förbättra resultaten
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följande tjänster och verktyg krävs för den här självstudien.
 
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 Vi är redo att börja söka med data i indexet.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Sök
 
 För att göra sökningen intuitiv är det bäst att inte förvänta användarna att formatera frågor på ett särskilt sätt. En användare kan söka efter `(425) 555-0100` i alla format som vi visade ovan och kommer fortfarande att vänta på att resultaten returneras. I det här steget ska vi testa några exempel frågor för att se hur de fungerar.
 

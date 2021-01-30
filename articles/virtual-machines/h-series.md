@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8ba3311a67098ac04cc62161935b067e465fed57
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4aa0e498736ac804ec3ce5593cfd86417d09c126
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920147"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096884"
 ---
 # <a name="h-series"></a>H-serien
 
@@ -26,6 +26,7 @@ Virtuella datorer i H-serien är optimerade för program som drivs av höga CPU-
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds inte<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 | Storlek | Virtuell processor | Processor | Minne (GiB) | Minnes bandbredd GB/s | Bas processor frekvens (GHz) | Frekvens för alla kärnor (GHz, högsta) | Frekvens för enkla kärnor (GHz, hög) | RDMA-prestanda (GB/s) | MPI-stöd | Temp-lagring (GiB) | Maximalt antal datadiskar | Maximalt diskgenomflöde: IOPS | Högsta Ethernet-virtuella nätverkskort |

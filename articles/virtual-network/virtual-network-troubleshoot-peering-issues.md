@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222895"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096397"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Felsöka problem med peering i virtuella nätverk
 
@@ -48,7 +48,7 @@ Använd metoderna i följande artiklar för att konfigurera peering för virtuel
 > * Skalnings uppsättningar för virtuella datorer (använder Basic ILB SKU)
 > * Azure Service Fabric-kluster (använder Basic ILB SKU)
 > * SQL Server Always On (använder Basic ILB SKU)
-> * Azure App Service-miljön för PowerApps (använder Basic ILB SKU)
+> * Azure App Service Environment för PowerApps (använder Basic ILB SKU)
 > * Azure API Management (använder Basic ILB SKU)
 > * Azure Active Directory Domain Services (Azure AD DS) (använder Basic ILB SKU)
 
@@ -87,7 +87,7 @@ Följ stegen i: [Konfigurera VPN gateway-överföring för virtuell nätverks-pe
 Mer information finns i [tjänst länkning](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
-> Om du behöver hjälp med att konfigurera en NVA [kontaktar du NVA-leverantören](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+> Om du behöver hjälp med att konfigurera en NVA [kontaktar du NVA-leverantören](https://mskb.pkisolutions.com/kb/2984655).
 
 Information om hur du felsöker NVA enhets konfiguration och routning finns i [problem med virtuella nätverks installationer i Azure](./virtual-network-troubleshoot-nva.md).
 
@@ -190,7 +190,7 @@ För punkt-till-plats-anslutningar:
 
 Ett hubb nätverk måste innehålla en NVA. Konfigurera UDR i ekrar som har en NVA angiven som nästa hopp och aktivera **Tillåt vidarebefordrad trafik** i det virtuella hubb nätverket.
 
-Mer information finns i [tjänst länkning](./virtual-network-peering-overview.md#service-chaining)och diskutera dessa krav med den [NVA-leverantör](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) som du väljer.
+Mer information finns i [tjänst länkning](./virtual-network-peering-overview.md#service-chaining)och diskutera dessa krav med den [NVA-leverantör](https://mskb.pkisolutions.com/kb/2984655) som du väljer.
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Felsöka ett problem med nätverks anslutningen mellan ekrar mellan ekrar och virtuella nätverk i olika regioner
 

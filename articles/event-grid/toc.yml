@@ -192,6 +192,8 @@
       items:
         - name: Säkerhetsbaslinje
           href: security-baseline.md
+        - name: Säkerhetskontroller av Azure Policy
+          href: ./security-controls-policy.md
         - name: Autentisera händelseleverans till händelsehanterare
           href: security-authentication.md
         - name: Autentisera publiceringsklienter

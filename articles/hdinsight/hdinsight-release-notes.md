@@ -5,12 +5,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 76bf9376d3eb33153584f74c9d0d9196706428ae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932098"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092242"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Viktig information om Azure HDInsight
 
@@ -50,6 +50,9 @@ HDInsight lade till nätverks säkerhets grupper (NSG: er) och UDR-kontroll (Use
 ## <a name="upcoming-changes"></a>Kommande ändringar
 Följande ändringar sker i kommande versioner.
 
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Överändrad ändring för .NET för Apache Spark 1.0.0
+HDInsight introducerar den första större officiella versionen av .NET för Apache Spark i nästa version. Den ger DataFrame API-slutförande för Spark 2.4. x och Spark 3.0. x tillsammans med andra funktioner. Det kommer att gå att överföra ändringar för den här huvud versionen, se [denna migrerings-GUID](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10) för att förstå de steg som krävs för att uppdatera din kod och dina pipeliner. Läs mer [här](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight).
+
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Standard storleken för virtuella kluster datorer ändras till Ev3-serien
 Från och med nästa version (i slutet av januari) ändras standard storleken för virtuella kluster datorer från D-familjen till Ev3-serien. Den här ändringen gäller för huvudnoder och arbetsnoder. Undvik den här ändringen genom att ange de VM-storlekar som du vill använda i ARM-mallen.
 
@@ -57,7 +60,7 @@ Från och med nästa version (i slutet av januari) ändras standard storleken f�
 Från och med 2021 februari kommer standard versionen av HDInsight-klustret att ändras från 3,6 till 4,0. Mer information om tillgängliga versioner finns i [tillgängliga versioner](./hdinsight-component-versioning.md#available-versions). Läs mer om vad som är nytt i [HDInsight 4,0](./hdinsight-version-release.md)
 
 ### <a name="os-version-upgrade"></a>Uppgradering av operativ system version
-HDInsight uppgraderar OS-versionen från 16,04 till 18,04. Uppgraderingen kommer att slutföras före april 2021.
+HDInsight uppgraderar OS-versionen från 16,04 till 18,04. Uppgraderingen kommer att slutföras före 2021 april.
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6-slut för support den 30 2021 juni
 HDInsight 3,6 är slut på support. Från och med juni 30 2021 kan kunder inte skapa nya HDInsight 3,6-kluster. Befintliga kluster kommer att köras i befintligt skick utan support från Microsoft. Överväg att flytta till HDInsight 4,0 för att undvika eventuellt system-och support avbrott.
@@ -71,7 +74,7 @@ Ingen komponent versions ändring för den här versionen. Du hittar de aktuella
 ## <a name="known-issues"></a>Kända problem
 ### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Förhindra att virtuella datorer i HDInsight-kluster startar om med jämna mellanrum
 
-Från och med mitten november 2020 kan du ha lagt märke till att virtuella datorer i HDInsight-klustret startar om regelbundet. Detta kan bero på att:
+Från och med mitten november 2020 kan du ha märkt att virtuella datorer i HDInsight-klustret får starta om regelbundet. Detta kan bero på att:
 
 1.  Clamav har Aktiver ATS i klustret. Det nya azsec-clamav-paketet förbrukar stora mängder minne som utlöser omstart av nod. 
 2.  Ett CRON-jobb schemaläggs dagligen som övervakar ändringar i listan över certifikat utfärdare (ca) som används av Azure-tjänster. När ett nytt CA-certifikat är tillgängligt lägger skriptet till certifikatet i JDK förtroende lager och schemalägger en omstart.

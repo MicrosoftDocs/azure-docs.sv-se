@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2f56fc285ed263b4b58985b5df620740a33cb3f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220320"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092359"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Hantera Azure Data Lake Analytics med hjälp av Azure PowerShell
 
@@ -240,7 +240,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 Använd `-Result` parametern för att identifiera om avslutade jobb har slutförts. Den har följande värden:
 
 * Avbrutet
-* Misslyckades
+* Misslyckad
 * Inget
 * Lyckades
 
@@ -298,7 +298,7 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ## <a name="analyzing-job-history"></a>Jobb historik analyseras
 
-Använd Azure PowerShell för att analysera historiken för jobb som har körts i Data Lake Analytics är en kraftfull teknik. Du kan använda den för att få insikter om användning och kostnader. Du kan lära dig mer genom att titta på [analys exemplet för jobb historik lagrings platsen](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
+Använd Azure PowerShell för att analysera historiken för jobb som har körts i Data Lake Analytics är en kraftfull teknik. Du kan använda den för att få insikter om användning och kostnader. Du kan lära dig mer genom att titta på [analys exemplet för jobb historik lagrings platsen](https://github.com/jpalbright31/data-lake-analytics-powershell-job-history-analysis)  
 
 ## <a name="list-job-pipelines-and-recurrences"></a>Lista jobb pipeliner och upprepningar
 

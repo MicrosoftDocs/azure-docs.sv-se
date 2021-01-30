@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 86841910e7fee1cebc2f081a7a9f2159c689437b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 964ed9b7d2631d4a545a53a0dc2d89d978406c49
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919841"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096840"
 ---
 # <a name="hb-series"></a>HB-serien
 
@@ -28,6 +28,7 @@ HB-serie VM-funktioner 100 GB/SEK Mellanox EDR InfiniBand. De här virtuella dat
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
 <br>
 
 | Storlek | Virtuell processor | Processor | Minne (GiB) | Minnes bandbredd GB/s | Bas processor frekvens (GHz) | Frekvens för alla kärnor (GHz, högsta) | Frekvens för enkla kärnor (GHz, hög) | RDMA-prestanda (GB/s) | MPI-stöd | Temp-lagring (GiB) | Maximalt antal datadiskar | Högsta Ethernet-virtuella nätverkskort |

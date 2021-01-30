@@ -1,17 +1,17 @@
 ---
 title: Översikt över zonens redundant hög tillgänglighet med Azure Database for MySQL flexibel Server
 description: Lär dig mer om begreppen redundanta zoner med hög tillgänglighet med Azure Database for MySQL flexibel Server
-author: mksuni
-ms.author: sumuth
+author: ambhatna
+ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 01/29/2021
+ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241192"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097125"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncept med hög tillgänglighet i Azure Database for MySQL flexibel Server (för hands version)
 
@@ -48,7 +48,7 @@ Här är några fördelar med att använda zon redundans HA-funktionen:
 -   Standby-repliken distribueras i en exakt VM-konfiguration som primär, till exempel virtuella kärnor, lagring, nätverks inställningar (VNET, brand vägg) osv.
 -   Möjlighet att ta bort standby-replikering genom att inaktivera hög tillgänglighet.
 -   Automatiska säkerhets kopieringar är ögonblicks bilder, som utförs från den primära databas servern och lagras i en zon redundant lagring.
--   Om det finns en redundansväxling, allokeras en ny växlings replik i den ursprungliga primära tillgänglighets zonen.
+-   I händelse av redundans redundansväxlas Azure Database for MySQL flexibla servern automatiskt till standby-repliken om hög tillgänglighet är aktive rad. Installations programmet för hög tillgänglighet övervakar den primära servern och tar den online igen.
 -   Klienterna ansluter alltid till den primära databas servern.
 -   Om det uppstår ett problem med databas krasch eller nod görs ett nytt försök att starta om på samma nod. Om detta Miss lyckas utlöses den automatiska redundansväxlingen.
 -   Möjlighet att starta om servern för att hämta eventuella ändringar av statiska Server parametrar.

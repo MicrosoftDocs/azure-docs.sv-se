@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 34aea2849289b8e33b4ec3d785363dc62cc70391
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 1606315b6b6cb4cff787a67e97e64baedc6c508e
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919883"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097108"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- och Ddsv4-serien
 
@@ -35,6 +35,7 @@ De nya Ddv4 VM-storlekarna omfattar snabb, större lokal SSD-lagring (upp till 2
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 <br> 
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | <sup>**</sup> Maximalt cacheminne för cachelagrad och temporär lagring: IOPS/Mbit/s | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |
@@ -65,6 +66,7 @@ De nya Ddsv4 VM-storlekarna omfattar snabb, större lokal SSD-lagring (upp till 
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
+[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds <br>
 <br> 
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | <sup>**</sup> Högsta cachelagrade data flöde för cache och temporär lagring: IOPS/Mbit/s (cachestorlek i GiB) | Maximalt antal cachelagrade diskar: IOPS/MBps | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |

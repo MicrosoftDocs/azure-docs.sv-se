@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015988"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094097"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitetsnivå för Azure Stream Analytics jobb
 
@@ -43,7 +43,7 @@ Så här uppdaterar du kompatibilitetsnivån för jobbet i Azure Portal:
 4. Välj det värde för kompatibilitetsnivå som du vill använda.
 5. Välj **Spara** längst ned på sidan.
 
-![Stream Analytics kompatibilitetsnivå i Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Stream Analytics kompatibilitetsnivå i Azure Portal](media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 När du uppdaterar kompatibilitetsnivån verifierar T-kompilatorn jobbet med den syntax som motsvarar den valda kompatibilitetsnivån.
 
@@ -121,7 +121,7 @@ Följande större ändringar introduceras i kompatibilitetsnivån 1,1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML-format
 
-**1,0-nivå:** Azure Stream Analytics använda DataContractSerializer, så att meddelande innehållet innehöll XML-taggar. Ett exempel:
+**1,0-nivå:** Azure Stream Analytics använda DataContractSerializer, så att meddelande innehållet innehöll XML-taggar. Exempel:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

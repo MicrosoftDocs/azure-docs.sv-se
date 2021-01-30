@@ -3,17 +3,17 @@ title: Vad är nytt i det virtuella Windows-skrivbordet? – Azure
 description: Nya funktioner och produkt uppdateringar för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/06/2021
+ms.date: 01/29/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 2f49ec0fef5aa79c602e561746eb0f6dba16cb33
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876605"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095914"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -25,6 +25,61 @@ Uppdateringar av virtuella Windows-datorer regelbundet. I den här artikeln får
 - Felkorrigeringar
 
 Den här artikeln uppdateras varje månad. Se till att kontrol lera igen ofta för att hålla dig uppdaterad med nya uppdateringar.
+
+## <a name="client-updates"></a>Klient uppdateringar
+
+Ta en titt på de här artiklarna om du vill veta mer om uppdateringar för våra klienter för virtuella Windows-datorer och Fjärrskrivbordstjänster:
+
+- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
+- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
+- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
+- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
+- [Webb](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="fslogix-updates"></a>FSLogix uppdateringar
+
+Undrar du över de senaste uppdateringarna för FSLogix? Kolla [vad som är nytt på FSLogix](/fslogix/whats-new.md).
+
+## <a name="january-2021"></a>Januari 2021
+
+Följande har ändrats i januari 2021:
+
+### <a name="new-windows-virtual-desktop-offer"></a>Nytt Windows Virtual Desktop-erbjudande
+
+Nya kunder sparar 30 procent på Windows-kostnader för virtuella Windows-datorer för virtuella datorer i D-serien och BS-serien i upp till 90 dagar med den ursprungliga Microsoft-lösningen. Du kan lösa in det här erbjudandet i Azure Portal före den 31 mars 2021. Läs mer på [sidan erbjudande för virtuella Windows-datorer](https://azure.microsoft.com/services/virtual-desktop/offer/).
+
+### <a name="networksecuritygrouprules-value-change"></a>ändring av networkSecurityGroupRules-värde 
+
+I den Azure Resource Manager kapslade mallen har vi ändrat standardvärdet för networkSecurityGroupRules från ett objekt till en matris. Detta förhindrar eventuella fel om du använder managedDisks-customimagevm.jspå utan att ange ett värde för networkSecurityGroupRules. Detta var inte en större ändring och är bakåtkompatibel.
+
+### <a name="fslogix-hotfix-update"></a>Uppdatering av FSLogix Hotfix
+
+Vi har lanserat FSLogix, version 2009 HF_01 (2.9.7654.46150) för att lösa problem i den tidigare versionen (2.9.7621.30127). Vi rekommenderar att du slutar använda den tidigare versionen och uppdaterar FSLogix så snart som möjligt.
+
+Mer information finns i versions anteckningar i [Nyheter i FSLogix](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150).
+
+### <a name="azure-portal-experience-improvements"></a>Förbättringar i Azure Portal Experience
+
+Vi har gjort följande förbättringar i Azure Portals upplevelsen:
+
+- Du kan nu lägga till autentiseringsuppgifter för lokal administratör för virtuella datorer direkt i stället för att behöva lägga till ett lokalt konto som skapats med inloggnings kontots autentiseringsuppgifter för den Active Directory domänen.
+- Användarna kan nu visa både enskilda och grupp tilldelningar på separata flikar för enskilda användare och grupper.
+- Versions numret för Windows Virtual Desktop-agenten visas nu i den virtuella datorns översikt över värdar för pooler.
+- Mass borttagning har lagts till för värdbaserade pooler och program grupper.
+- Nu kan du aktivera eller inaktivera dränerings läge för flera värdbaserade sessioner i en adresspool.
+- Tog bort fältet offentlig IP-adress från sidan information om virtuell dator.
+
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Fel sökning av Windows Virtual Desktop-agent
+
+Vi har nyligen konfigurerat [fel söknings guiden för Windows Virtual Desktop agent](troubleshoot-agent.md) för att hjälpa kunder som har påträffat vanliga problem.
+
+### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender för slut punkts integrering
+
+Microsoft Defender för slut punkts integrering är nu allmänt tillgänglig. Den här funktionen ger dina virtuella Windows-datorer samma gransknings upplevelse som en lokal Windows 10-dator. Om du använder Windows 10 Enterprise multi-session har Microsoft Defender för slut punkten stöd för upp till 50 samtidiga användar anslutningar, vilket ger dig kostnads besparingar för Windows 10 Enterprise multi-session och förtroendet för Microsoft Defender för slut punkt. Mer information finns i vårt [blogg inlägg](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
+
+### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azures säkerhets bas linje för Windows Virtual Desktop
+
+Vi har nyligen publicerat [en artikel om Azures säkerhets bas linje](security-baseline.md) för det virtuella Windows-skrivbord som vi skulle vilja kalla din uppmärksamhet för. Dessa rikt linjer innehåller information om hur du tillämpar Azures säkerhets benchmark, version 2,0 till Windows Virtual Desktop. I Azures säkerhets benchmark beskrivs de inställningar och metoder som vi rekommenderar att du använder för att skydda dina moln lösningar på Azure.
 
 ## <a name="december-2020"></a>December 2020
 
@@ -257,16 +312,6 @@ Vi har lagt till ett nytt Gateway-kluster i Sydafrika för att minska anslutning
 Vi har gjort några förbättringar av Microsoft Teams för Windows Virtual Desktop. Det viktigaste är att Windows Virtual Desktop har nu stöd för ljud-och visuell omdirigering för samtal. Omdirigering förbättrar svars tiden genom att skapa direkta sökvägar mellan användare när de anropar med hjälp av ljud eller video. Mindre avstånd innebär färre hopp, vilket gör att anropen ser ut och ljuden blir mjukare.
 
 Mer information finns i [vårt blogg inlägg](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/).
-
-## <a name="client-updates"></a>Klient uppdateringar
-
-Ta en titt på de här artiklarna om du vill veta mer om uppdateringar för våra klienter för virtuella Windows-datorer och Fjärrskrivbordstjänster:
-
-- [Windows](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)
-- [macOS](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)
-- [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
-- [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
-- [Webb](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
 
 ## <a name="next-steps"></a>Nästa steg
 

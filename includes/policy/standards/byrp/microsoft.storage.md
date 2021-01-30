@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fadbd35966e6154d680db036f286c0afaf5d3bc7
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 93a6bc56e1e94066a23e5d377a71e28496ca6963
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98860058"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094147"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -110,6 +110,18 @@ Mer information om den här standarden för efterlevnad finns i [HIPAA HITRUST 9
 |Nätverks kontroller |0866.09 m3Organizational. 1516-09. m |Organisationen beskriver grupper, roller och ansvars områden för den logiska hanteringen av nätverks komponenter och säkerställer samordning av och konsekvens i elementen i nätverks infrastrukturen. |[Lagrings konton bör begränsa nätverks åtkomsten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 |Nätverks kontroller |0867.09 m3Organizational. 17-09. m |Trådlösa åtkomst punkter placeras på säkra områden och stängs av när de inte används (t. ex. nätter, helger). |[Lagrings konton bör använda en tjänst slut punkt för virtuellt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F60d21c4f-21a3-4d94-85f4-b924e6aeeda4) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_StorageAccount_Audit.json) |
 |Online-transaktioner |0943.09 y1Organizational. 1-09. y |Data som ingår i de elektroniska Commerce-och online-transaktionerna kontrol leras för att avgöra om den innehåller information som omfattas. |[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för efterlevnad-ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+Mer information om den här standarden för efterlevnad finns i [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Åtkomstkontroll |9.1.2 |Åtkomst till nätverk och nätverks tjänster |[Lagrings konton ska migreras till nya Azure Resource Manager resurser](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json) |
+|Kryptografi |10.1.1 |Princip för användning av kryptografiska kontroller |[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
+|Kommunikations säkerhet |13.1.1 |Nätverkskontroller |[Lagrings konton bör begränsa nätverks åtkomsten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
+|Kommunikations säkerhet |13.2.1 |Information överförings principer och procedurer |[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

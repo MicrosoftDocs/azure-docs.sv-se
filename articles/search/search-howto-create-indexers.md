@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 0483030312493dde9a50ab9000fbe29f19bfaff4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064290"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097648"
 ---
 # <a name="create-a-search-indexer"></a>Skapa en Sök indexerare
 
-En Sök Indexer innehåller ett automatiserat arbets flöde för att överföra dokument och innehåll från en extern data källa till ett sökindex på din Sök tjänst. Som ursprungligen utformats extraheras text och metadata från Azure-datakällor, serialiserar dokument till JSON och överför de resulterande dokumenten till en sökmotor för indexering. Det har sedan utökats för att stödja [AI-anrikning](cognitive-search-concept-intro.md) för djup innehålls bearbetning. 
+En Sök Indexer innehåller ett automatiserat arbets flöde för att överföra dokument och innehåll från en extern data källa till ett sökindex på din Sök tjänst. Som ursprungligen har utformats extraherar text och metadata från en Azure-datakälla, serialiserar dokument till JSON och överför de resulterande dokumenten till en sökmotor för indexering. Det har sedan utökats för att stödja [AI-anrikning](cognitive-search-concept-intro.md) för djup innehålls bearbetning. 
 
-Användningen av indexerare minskar avsevärt mängden och komplexiteten i koden som du behöver skriva. Den här artikeln fokuserar på Mechanics och strukturen hos indexerare, och placerar en grund på plats innan du utforskar de verksamhetsspecifika indexerarna och [färdighetsuppsättningar](cognitive-search-working-with-skillsets.md).
+Användningen av indexerare minskar avsevärt mängden och komplexiteten i koden som du behöver skriva. Den här artikeln fokuserar på Mechanics för att skapa en indexerare som förberedelse för mer avancerade arbeten med verksamhetsspecifika indexerare och [färdighetsuppsättningar](cognitive-search-working-with-skillsets.md).
 
 ## <a name="whats-an-indexer-definition"></a>Vad är en indexerare-definition?
 
-Indexerare används för textbaserade index som hämtar text från käll fält till index fält eller AI-baserad bearbetning som analyserar en ej differentierad text för struktur eller analyserar bilder för text och information. Följande index definitioner är typiska för vad du kan skapa för båda scenarierna.
+Indexerare används för textbaserade index som hämtar alfanumeriskt innehåll från käll fält till index fält eller AI-baserad bearbetning som analyserar en ej differentierad text för struktur eller analyserar bilder för text och information, vilket även lägger till innehållet i ett index. Följande index definitioner är typiska för vad du kan skapa för båda scenarierna.
 
 ### <a name="indexers-for-text-content"></a>Indexerare för text innehåll
 
-Det ursprungliga syftet med en indexerare var att förenkla den komplexa processen med att läsa in ett index genom att tillhandahålla en mekanism för att ansluta till och läsa text och numeriskt innehåll från fält i en data källa, serialisera innehållet som JSON-dokument och lämna dokumenten till sökmotorn för indexering. Detta är fortfarande ett primärt användnings fall och för den här åtgärden måste du skapa en indexerare med de egenskaper som definierats i det här avsnittet.
+Det ursprungliga syftet med en indexerare var att förenkla den komplexa processen med att läsa in ett index genom att tillhandahålla en mekanism för att ansluta till och läsa text och numeriskt innehåll från fält i en data källa, serialisera innehållet som JSON-dokument och lämna dokumenten till sökmotorn för indexering. Detta är fortfarande ett primärt användnings fall och för den här åtgärden måste du skapa en indexerare med de egenskaper som definierats i följande exempel.
 
 ```json
 {
@@ -42,17 +42,18 @@ Det ursprungliga syftet med en indexerare var att förenkla den komplexa process
   "fieldMappings": [ optional unless there are field discrepancies that need resolution]
 }
 ```
-**`name`** Egenskaperna, **`dataSourceName`** och **`targetIndexName`** är obligatoriska, och beroende på hur du skapar indexeraren måste både data källan och indexet redan finnas innan du kan köra indexeraren. 
 
-**`parameters`** Egenskapen informerar kör tids beteenden, till exempel hur många fel som ska godkännas innan hela jobbet avbryts. Parametrar är också hur du anger verksamhetsspecifika beteenden. Om källan till exempel är Blob Storage kan du ange en parameter som filtrerar på fil namns tillägg: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+**`name`** Egenskaperna, **`dataSourceName`** och **`targetIndexName`** är obligatoriska, och beroende på hur du skapar indexeraren måste både data källan och indexet redan finnas på tjänsten innan du kan köra indexeraren. 
 
-**`field mappings`** Egenskapen används för att explicit mappa käll-till-mål-fält om dessa fält skiljer sig efter namn eller typ. Andra egenskaper (visas inte), används för att ange ett schema, skapa indexeraren i inaktiverat tillstånd eller ange en krypterings nyckel för kompletterande kryptering av data i vila.
+**`parameters`** Egenskapen ändrar körnings tids beteenden, till exempel hur många fel som ska accepteras innan hela jobbet avbryts. Parametrar är också hur du anger verksamhetsspecifika beteenden. Om källan till exempel är Blob Storage kan du ange en parameter som filtrerar på fil namns tillägg: `"parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }` .
+
+**`field mappings`** Egenskapen används för att explicit mappa käll-till-mål-fält om dessa fält skiljer sig efter namn eller typ. Andra egenskaper (visas inte), används för att [Ange ett schema](search-howto-schedule-indexers.md), skapa indexeraren i inaktiverat tillstånd eller ange en [krypterings nyckel](search-security-manage-encryption-keys.md) för kompletterande kryptering av data i vila.
 
 ### <a name="indexers-for-ai-indexing"></a>Indexerare för AI-indexering
 
-Eftersom indexerare är den mekanism som används av en Sök tjänst för att utföra utgående begär Anden, utökat indexerare för att stödja AI-anrikninger, lägga till steg och objekt som krävs för det här användnings fallet.
+Eftersom indexerare är den mekanism som används av en Sök tjänst för att utföra utgående begär Anden, utökat indexerare för att stödja AI-anrikninger, lägga till infrastruktur och objekt för att implementera det här användnings fallet.
 
-Alla ovanstående egenskaper och parametrar gäller för indexerare som utför AI-berikning, med tillägg av tre egenskaper som är speciella för AI-anrikning: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (för hands version och endast rest). 
+Alla ovanstående egenskaper och parametrar gäller för indexerare som utför AI-berikning. Följande egenskaper är speciella för AI-anrikning: **`skillSets`** , **`outputFieldMappings`** , **`cache`** (endast för hands version och endast rest). 
 
 ```json
 {
@@ -74,7 +75,7 @@ Alla ovanstående egenskaper och parametrar gäller för indexerare som utför A
 }
 ```
 
-AI-berikning ligger utanför den här artikelns omfattning. För mer information, börja med [färdighetsuppsättningar i Azure kognitiv sökning](cognitive-search-working-with-skillsets.md) eller [skapa färdigheter (rest)](/rest/api/searchservice/create-skillset).
+AI-berikning ligger utanför den här artikelns omfattning. För mer information, börja med dessa artiklar: [AI-anrikning](cognitive-search-concept-intro.md), [färdighetsuppsättningar i Azure kognitiv sökning](cognitive-search-working-with-skillsets.md)och [skapa färdigheter (rest)](/rest/api/searchservice/create-skillset).
 
 ## <a name="choose-an-indexer-client-and-create-the-indexer"></a>Välj en indexerare-klient och skapa indexeraren
 
@@ -90,7 +91,7 @@ Alla [tjänst nivåer begränsar](search-limits-quotas-capacity.md#indexer-limit
 
 ### <a name="use-azure-portal-to-create-an-indexer"></a>Använda Azure Portal för att skapa en indexerare
 
-Portalen innehåller två alternativ för att skapa en indexerare: [**Importera data**](search-import-data-portal.md) och en **ny indexerare** som innehåller fält för att ange en indexerare-definition. Guiden är unik i att den skapar alla nödvändiga element. Andra metoder kräver att du har fördefinierat en data källa och ett index.
+Portalen innehåller två alternativ för att skapa en indexerare: [**guiden Importera data**](search-import-data-portal.md) och en **ny indexerare** som innehåller fält för att ange en indexerare-definition. Guiden är unik i att den skapar alla nödvändiga element. Andra metoder kräver att du har fördefinierat en data källa och ett index.
 
 Följande skärm bild visar var du kan hitta de här funktionerna i portalen. 
 
@@ -120,11 +121,20 @@ För Kognitiv sökning implementerar Azure SDK: er allmänt tillgängliga funkti
 
 ## <a name="run-the-indexer"></a>Köra indexeraren
 
-En indexerare körs automatiskt när du skapar indexeraren på tjänsten. Det här är för tillfället en sanningen där du får reda på om det finns anslutnings fel för data källan, problem med fält mappning eller färdigheter problem. En interaktiv HTTP-begäran om att [skapa indexerare](/rest/api/searchservice/create-indexer) eller [Uppdatera indexerare](/rest/api/searchservice/update-indexer) kör en indexerare. Att köra ett program som anropar SearchIndexerClient-metoder kommer också att köra en indexerare.
+En indexerare körs automatiskt när du skapar indexeraren på tjänsten. Det här är för tillfället en sanningen där du får reda på om det finns anslutnings fel för data källan, problem med fält mappning eller färdigheter problem. 
 
-För att undvika att omedelbart köra en indexerare när den skapas, ta med **`disabled=true`** i index definition.
+Det finns flera sätt att köra en indexerare:
 
-När det finns en indexerare kan du köra den på begäran med hjälp av [Run Indexer (rest)](/rest/api/searchservice/run-indexer) eller en motsvarande SDK-metod. Du kan också lägga indexeraren [enligt ett schema](search-howto-schedule-indexers.md) för att anropa bearbetningen med jämna mellanrum. 
++ Skicka en HTTP-begäran för att [skapa indexerare](/rest/api/searchservice/create-indexer) eller [Uppdatera indexeraren](/rest/api/searchservice/update-indexer) för att lägga till eller ändra definitionen och köra indexeraren.
+
++ Skicka en HTTP-begäran för [körning av indexerare](/rest/api/searchservice/run-indexer) för att köra en indexerare utan ändringar i definitionen.
+
++ Kör ett program som anropar SearchIndexerClient-metoder för att skapa, uppdatera eller köra.
+
+> [!NOTE]
+> För att undvika att omedelbart köra en indexerare när den skapas, ta med **`disabled=true`** i index definition.
+
+Du kan också lägga indexeraren [enligt ett schema](search-howto-schedule-indexers.md) för att anropa bearbetningen med jämna mellanrum. 
 
 Schemalagd bearbetning sammanfaller vanligt vis med ett behov av stegvis indexering av ändrat innehåll. Ändra identifierings logik är en funktion som är inbyggd i käll plattformarna. Ändringar i en BLOB-behållare identifieras automatiskt av indexeraren. Vägledning om hur du använder ändrings identifiering i andra data källor finns i Indexer-dokumenten för vissa data Källor:
 
@@ -135,9 +145,9 @@ Schemalagd bearbetning sammanfaller vanligt vis med ett behov av stegvis indexer
 
 ## <a name="know-your-data"></a>Känna till dina data
 
-Indexerare förväntar sig en rad med tabell uppsättningar, där varje rad blir ett fullständigt eller delvis sökdokument i indexet. Det finns ofta en hel-till-en-korrespondens mellan en rad och det resulterande sökdokumentet där alla fält raderas. Men du kan använda indexerare för att generera bara en del av ett dokument, till exempel om du använder flera indexerare eller metoder för att bygga upp indexet. 
+Indexerare förväntar sig en rad med tabell uppsättningar, där varje rad blir ett fullständigt eller delvis sökdokument i indexet. Det finns ofta en en-till-en-korrespondens mellan en rad och det resulterande sökdokumentet, där alla fält i rad uppsättningen fyller hela dokumentet. Men du kan använda indexerare för att generera bara en del av ett dokument, till exempel om du använder flera indexerare eller metoder för att bygga upp indexet. 
 
-Om du vill förenkla Relations data till en rad uppsättning kan du behöva skapa en SQL-vy eller skapa en fråga som returnerar överordnade och underordnade poster på samma rad. Till exempel är den inbyggda exempel data uppsättningen för hotell en SQL-databas som har 50 poster (en för varje hotell), länkade till rums poster i en relaterad tabell. Frågan som fören klar samlad data till en rad uppsättning bäddar in all rums information i JSON-dokument i varje hotell post. Informationen om det inbäddade rummet genereras av en fråga som använder en **for JSON Auto** -sats. Du kan lära dig mer om den här tekniken i [definiera en fråga som returnerar inbäddad JSON](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Detta är bara ett exempel. Du kan hitta andra metoder som ger samma resultat.
+Om du vill förenkla Relations data till en rad uppsättning bör du skapa en SQL-vy eller skapa en fråga som returnerar överordnade och underordnade poster på samma rad. Till exempel är den inbyggda exempel data uppsättningen för hotell en SQL-databas som har 50 poster (en för varje hotell), länkade till rums poster i en relaterad tabell. Frågan som fören klar samlad data till en rad uppsättning bäddar in all rums information i JSON-dokument i varje hotell post. Informationen om det inbäddade rummet genereras av en fråga som använder en **for JSON Auto** -sats. Du kan lära dig mer om den här tekniken i [definiera en fråga som returnerar inbäddad JSON](index-sql-relational-data.md#define-a-query-that-returns-embedded-json). Detta är bara ett exempel. Du kan hitta andra metoder som ger samma resultat.
 
 Förutom förenklade data är det viktigt att bara hämta sökbara data. Sökbara data är alfanumeriska. Kognitiv sökning kan inte söka i binära data i något format, även om det kan extrahera och härleda text beskrivningar av bildfiler (se [AI-anrikning](cognitive-search-concept-intro.md)) för att skapa sökbart innehåll. På samma sätt kan en stor text analyseras av naturliga språk modeller för att hitta struktur eller relevant information, vilket genererar nytt innehåll som du kan lägga till i ett Sök dokument.
 
@@ -147,7 +157,7 @@ Med tanke på att indexerarna inte åtgärdar data problem kan andra former av r
 
 Kom ihåg att indexerarna skickar Sök dokumenten till sökmotorn för indexering. Precis som indexerare har egenskaper som bestämmer körnings beteendet, har ett index schema egenskaper som visar hur strängar indexeras (endast strängar analyseras och token). Beroende på Analyzer-tilldelningar kan indexerade strängar skilja sig från vad du skickade. Du kan utvärdera effekterna av analys verktyg med [analysera text (rest)](/rest/api/searchservice/test-analyzer). Mer information om analys verktyg finns i [analys verktyg för text bearbetning](search-analyzers.md).
 
-Indexerare kontrollerar bara fält namn och-typer. Det finns inget validerings steg som garanterar att inkommande innehåll är korrekt för motsvarande sökfält i indexet. Som ett verifierings steg kan du köra frågor på det ifyllda indexet som returnerar hela dokument eller markerade fält. Mer information om hur du frågar innehållet i ett index finns i [skapa en enkel fråga](search-query-create.md).
+I termer av hur indexerare interagerar med ett index, kontrollerar en indexerare endast fält namn och typer. Det finns inget validerings steg som garanterar att inkommande innehåll är korrekt för motsvarande sökfält i indexet. Som ett verifierings steg kan du köra frågor på det ifyllda indexet som returnerar hela dokument eller markerade fält. Mer information om hur du frågar innehållet i ett index finns i [skapa en enkel fråga](search-query-create.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

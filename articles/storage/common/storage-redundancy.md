@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573367"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094917"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -71,8 +71,8 @@ Följande tabell visar vilka typer av lagrings konton som stöder ZRS i vilka re
 | Typ av lagringskonto | Regioner som stöds | Tjänster som stöds |
 |--|--|--|
 | Allmänt-syfte v2<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br />  Västeuropa<br /> Frankrike, centrala<br /> Japan, östra<br /> Sydafrika, norra<br /> Storbritannien, södra<br /> USA, centrala<br /> USA, Östra<br /> USA, östra 2<br /> USA, västra 2 | Blockblobar<br /> Page blobbar<sup>2</sup><br /> Fil resurser (standard)<br /> Tabeller<br /> Köer<br /> |
-| BlockBlobStorage<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Japan, östra<br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2| Endast Premium block-blobbar |
-| FileStorage | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Japan, östra<br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2 | Premium-filer endast resurser |
+| BlockBlobStorage<sup>1</sup> | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Frankrike, centrala <br /> Japan, östra<br /> Storbritannien, södra <br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2| Endast Premium block-blobbar |
+| FileStorage | Sydostasien<br /> Australien, östra<br /> Nordeuropa<br /> Västeuropa<br /> Frankrike, centrala <br /> Japan, östra<br /> Storbritannien, södra <br /> USA, Östra <br /> USA, östra 2 <br /> USA, västra 2 | Premium-filer endast resurser |
 
 <sup>1</sup> Arkiv nivån stöds för närvarande inte för ZRS-konton.<br />
 <sup>2</sup> lagrings konton som innehåller Azure Managed disks för virtuella datorer använder alltid LRS. Azure-ohanterade diskar bör också använda LRS. Det går att skapa ett lagrings konto för Azure unmanaged disks som använder GRS, men det rekommenderas inte på grund av potentiella problem med konsekvens över asynkron geo-replikering. Varken hanterade eller ohanterade diskar har stöd för ZRS eller GZRS. Mer information om hanterade diskar finns i [prissättning för Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -180,9 +180,9 @@ Följande tabell visar om dina data är beständiga och tillgängliga i ett spec
 | Avbrott-scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
 | En nod i ett Data Center blir otillgänglig | Ja | Ja | Ja | Ja |
-| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Nej | Ja | Ja<sup>1</sup> | Ja |
-| Ett områdes omfattande avbrott uppstår i den primära regionen | Nej | Nej | Ja<sup>1</sup> | Ja<sup>1</sup> |
-| Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Nej | Nej | Ja (med RA-GRS) | Ja (med RA-GZRS) |
+| Ett helt data Center (zonindelade eller icke-zonindelade) blir otillgängligt | Inga | Ja | Ja<sup>1</sup> | Ja |
+| Ett områdes omfattande avbrott uppstår i den primära regionen | Inga | Inga | Ja<sup>1</sup> | Ja<sup>1</sup> |
+| Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Inga | Inga | Ja (med RA-GRS) | Ja (med RA-GZRS) |
 
 <sup>1</sup> växling vid fel krävs för att återställa Skriv tillgängligheten om den primära regionen blir otillgänglig. Mer information finns i [haveri beredskap och redundans för lagrings konton](storage-disaster-recovery-guidance.md).
 

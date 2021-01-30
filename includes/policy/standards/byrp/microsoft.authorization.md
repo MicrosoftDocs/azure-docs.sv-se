@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0ee2b820d8b471729c34a01a60a43ef068797bd4
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c8c62ec675bf7578ab4b88a6180dd0af86d5cbe0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98860147"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095943"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -62,6 +62,15 @@ Mer information om den här standarden för efterlevnad finns i [HIPAA HITRUST 9
 |Ansvars fördelning |1230.09 c2Organizational. 1 – 09. c |Ingen enskild person kan komma åt, ändra eller använda informations system utan auktorisering eller identifiering. |[Granska användningen av anpassade RBAC-regler](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
 |Ansvars fördelning |1276.09 c2Organizational. 2-09. c |Säkerhets gransknings aktiviteter är oberoende av varandra. |[Roller för anpassade prenumerationer får inte finnas](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F10ee2ea2-fb4d-45b8-a7e9-a2e770044cd9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/CustomSubscription_OwnerRole_Audit.json) |
 |Ansvars fördelning |1278.09 c2Organizational. 56-09. c |Organisationen identifierar de uppgifter som kräver separering och definierar de autentiseringsuppgifter som krävs för att stödja separering av uppgifter. och inkompatibla uppgifter åtskiljs över flera användare för att minimera möjligheten för missbruk eller bedrägerier. |[Roller för anpassade prenumerationer får inte finnas](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F10ee2ea2-fb4d-45b8-a7e9-a2e770044cd9) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/CustomSubscription_OwnerRole_Audit.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regler för efterlevnad-ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+Mer information om den här standarden för efterlevnad finns i [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Åtkomstkontroll |9.2.3 |Hantering av privilegierade behörigheter |[Granska användningen av anpassade RBAC-regler](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
 
 ## <a name="nist-sp-800-53-r4"></a>NIST SP 800-53 R4
 

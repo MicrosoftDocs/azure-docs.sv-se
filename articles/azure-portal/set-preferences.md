@@ -4,12 +4,12 @@ description: Du kan ändra Azure Portal standardinställningarna så att de pass
 keywords: inställningar, tids gräns, språk, regional
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745646"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094118"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Hantera dina inställningar i Microsoft Azure-portalen
 
@@ -91,7 +91,7 @@ Om din administratör har aktiverat en timeout-princip för inaktivitet kan du f
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Ändra timeout-inställningen för katalogen (admin)
 
-Administratörer i [rollen global administratör](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) kan genomdriva den längsta inaktiva tiden innan en session loggas ut. Inställningen för tids gräns för inaktivitet gäller på katalog nivå. Inställningen börjar gälla för nya sessioner. Den gäller inte omedelbart för användare som redan är inloggade. Mer information om kataloger finns i [Active Directory Domain Services översikt](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Administratörer i [rollen global administratör](../active-directory/roles/permissions-reference.md#global-administrator) kan genomdriva den längsta inaktiva tiden innan en session loggas ut. Inställningen för tids gräns för inaktivitet gäller på katalog nivå. Inställningen börjar gälla för nya sessioner. Den gäller inte omedelbart för användare som redan är inloggade. Mer information om kataloger finns i [Active Directory Domain Services översikt](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 Om du är global administratör och vill framtvinga en tids gräns för inaktivitet för alla användare av Azure Portal följer du dessa steg:
 

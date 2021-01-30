@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009772"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093203"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Inaktivera brandvägg för gästoperativsystem i en virtuell Azure-dator
 
@@ -47,7 +47,7 @@ Om du har en fungerande Azure-agent kan du använda [anpassat skript tillägg](.
 >   ```
 > * Om brand väggen är inställd via en Active Directory princip kan du använda Kör följande skript för tillfällig åtkomst. 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,7 +88,7 @@ Om du har en fungerande Azure-agent kan du använda [anpassat skript tillägg](.
 
 #### <a name="mitigation-4-remote-registry"></a>Minskning 4: fjär register 
 
-Följ dessa steg om du vill använda [fjär registret](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
+Följ dessa steg om du vill använda [fjär registret](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837).
 
 1.  Starta Registereditorn på den virtuella datorn för fel sökning och gå sedan till **fil**  >  **anslutning nätverks register**.
 
@@ -126,7 +126,7 @@ Om du har en situation där du inte kan komma åt den virtuella datorn med någo
 
 4.  Innan du gör några ändringar skapar du en kopia av mappen \Windows\System32\Config om du behöver återställa ändringarna.
 
-5.  Starta Registereditorn (regedit.exe) på den virtuella datorn för fel sökning. 
+5.  Starta Registereditorn (regedit.exe) på den virtuella datorn för fel sökning. 
 
 6.  I den här fel söknings proceduren monterar vi registreringsdatafiler som BROKENSYSTEM och BROKENSOFTWARE.
 
