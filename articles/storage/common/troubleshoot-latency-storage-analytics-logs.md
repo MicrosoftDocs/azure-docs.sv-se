@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785603"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221116"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Felsöka långa svarstider med hjälp av loggar i Lagringsanalys
 
@@ -27,7 +27,7 @@ Följande steg visar hur du kan identifiera och felsöka latens problem med hjä
 
 ## <a name="recommended-steps"></a>Rekommenderade åtgärder
 
-1. Ladda ned [Lagringsanalys loggar](./storage-analytics-logging.md#download-storage-logging-log-data).
+1. Ladda ned [Lagringsanalys loggar](./manage-storage-analytics-logs.md#download-storage-logging-log-data).
 
 2. Använd följande PowerShell-skript för att konvertera RAW-formatet loggar till tabell format:
 
@@ -99,10 +99,10 @@ Följande steg visar hur du kan identifiera och felsöka latens problem med hjä
 
    | Blob-typ |RequestStatus =<br>Klart|RequestStatus =<br>SÄKERHETS NetworkError|Rekommendation|
    |---|---|---|---|
-   |GetBlob|Ja|Nej|[**GetBlob-åtgärd:** RequestStatus = lyckades](#getblob-operation-requeststatus--success)|
-   |GetBlob|Nej|Ja|[**GetBlob-åtgärd:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Ja|Nej|[**Placerings åtgärd:** RequestStatus = lyckades](#put-operation-requeststatus--success)|
-   |PutBlob|Nej|Ja|[**Placerings åtgärd:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Ja|Inga|[**GetBlob-åtgärd:** RequestStatus = lyckades](#getblob-operation-requeststatus--success)|
+   |GetBlob|Inga|Ja|[**GetBlob-åtgärd:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Ja|Inga|[**Placerings åtgärd:** RequestStatus = lyckades](#put-operation-requeststatus--success)|
+   |PutBlob|Inga|Ja|[**Placerings åtgärd:** RequestStatus = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Status resultat
 
@@ -114,7 +114,7 @@ Kontrol lera följande värden som anges i steg 5 i avsnittet "rekommenderade st
 * Server-Latency
 * Client-Latency
 
-I en **GetBlob-åtgärd** med **RequestStatus = lyckades** , om den **maximala tiden** används i **klient svars** tiden, betyder det att Azure Storage kostar en stor mängd tid när data skrivs till klienten. Den här fördröjningen indikerar ett Client-Side problem.
+I en **GetBlob-åtgärd** med **RequestStatus = lyckades**, om den **maximala tiden** används i **klient svars** tiden, betyder det att Azure Storage kostar en stor mängd tid när data skrivs till klienten. Den här fördröjningen indikerar ett Client-Side problem.
 
 **Rekommenderade**
 
@@ -129,7 +129,7 @@ Kontrol lera följande värden som anges i steg 5 i avsnittet "rekommenderade st
 * Server-Latency
 * Client-Latency
 
-I en **GetBlob-åtgärd** med **REQUESTSTATUS = (SAS) NetworkError** , om den **maximala tiden** används i **klient svars** tiden, är det vanligaste problemet att klienten kopplas från innan en tids gräns går ut i lagrings tjänsten.
+I en **GetBlob-åtgärd** med **REQUESTSTATUS = (SAS) NetworkError**, om den **maximala tiden** används i **klient svars** tiden, är det vanligaste problemet att klienten kopplas från innan en tids gräns går ut i lagrings tjänsten.
 
 **Rekommenderade**
 
@@ -144,7 +144,7 @@ Kontrol lera följande värden som anges i steg 5 i avsnittet "rekommenderade st
 * Server-Latency
 * Client-Latency
 
-I en **Placera-åtgärd** med **RequestStatus = lyckades** , om den **maximala tiden** används i **klient svars** tiden, indikerar detta att klienten tar längre tid att skicka data till Azure Storage. Den här fördröjningen indikerar ett Client-Side problem.
+I en **Placera-åtgärd** med **RequestStatus = lyckades**, om den **maximala tiden** används i **klient svars** tiden, indikerar detta att klienten tar längre tid att skicka data till Azure Storage. Den här fördröjningen indikerar ett Client-Side problem.
 
 **Rekommenderade**
 
@@ -159,7 +159,7 @@ Kontrol lera följande värden som anges i steg 5 i avsnittet "rekommenderade st
 * Server-Latency
 * Client-Latency
 
-I en **PutBlob-åtgärd** med **REQUESTSTATUS = (SAS) NetworkError** , om den **maximala tiden** används i **klient svars** tiden, är det vanligaste problemet att klienten kopplas från innan en tids gräns går ut i lagrings tjänsten.
+I en **PutBlob-åtgärd** med **REQUESTSTATUS = (SAS) NetworkError**, om den **maximala tiden** används i **klient svars** tiden, är det vanligaste problemet att klienten kopplas från innan en tids gräns går ut i lagrings tjänsten.
 
 **Rekommenderade**
 

@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure Data Lake Storage Gen1
 description: Visar Azure Policy inbyggda princip definitioner för Azure Data Lake Storage Gen1. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 25db09f087d88e7d4171fe4335aef62ec338de1b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 18bd78fc115695483245ecdc385d5c2d7d37dbf8
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805776"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221133"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>Azure Policy inbyggda definitioner för Azure Data Lake Storage Gen1
 

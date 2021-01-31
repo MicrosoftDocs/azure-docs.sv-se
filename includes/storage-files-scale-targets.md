@@ -2,20 +2,20 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 01/27/2021
 ms.author: rogarana
-ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7da7c2fbb49a9dd936762b23f3c251d2142c52fd
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025607"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221795"
 ---
 | Resurs | Standard fil resurser\* | Premium fil resurser |
 |----------|---------------|------------------------------------------|
 | Minsta storlek på en fil resurs | Inget minimum; betala per användning | 100 GiB; etablerats |
 | Maximal storlek på en fil resurs | 100 TiB \* \* , 5 TIB | 100 TiB |
-| Maximal storlek på en fil i en fil resurs | 1 TiB | 4 TiB |
+| Maximal storlek på en fil i en fil resurs | 4 TiB | 4 TiB |
 | Maximalt antal filer i en fil resurs | Obegränsad | Obegränsad |
 | Maximalt antal IOPS per resurs | 10 000 IOPS \* \* , 1 000 IOPS-eller 100-begäranden i 100 MS | 100 000 IOPS |
 | Maximalt antal lagrade åtkomst principer per fil resurs | 5 | 5 |

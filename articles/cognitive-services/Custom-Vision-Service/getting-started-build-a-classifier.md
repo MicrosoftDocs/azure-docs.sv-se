@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bild igenkänning, app för bild igenkänning, anpassad vision
-ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131703"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221252"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Snabb start: utveckla en klassificerare med Custom Vision webbplats
 
@@ -71,7 +71,7 @@ Navigera till [Custom vision webb sida](https://customvision.ai) i webbläsaren 
 
 I det här avsnittet ska du ladda upp och tagga bilder manuellt för att träna klassificeraren. 
 
-1. Om du vill lägga till avbildningar klickar du på knappen __Lägg till avbildningar__ och väljer sedan __Bläddra bland lokala filer__. Välj __Öppna__ för att flytta till taggning. Valet av val kommer att gälla för hela gruppen med avbildningar som du har valt att ladda upp, så det är enklare att ladda upp bilder i separata grupper i enlighet med deras önskade taggar. Du kan också ändra taggarna för enskilda bilder när de har överförts.
+1. Om du vill lägga till avbildningar väljer du __Lägg till bilder__ och väljer sedan __Bläddra bland lokala filer__. Välj __Öppna__ för att flytta till taggning. Valet av val kommer att gälla för hela gruppen med avbildningar som du har valt att ladda upp, så det är enklare att ladda upp bilder i separata grupper enligt deras tillämpade taggar. Du kan också ändra taggarna för enskilda bilder när de har överförts.
 
     ![Kontrollen Lägg till bilder visas i det övre vänstra hörnet och som en knapp längst ned i mitten.](./media/getting-started-build-a-classifier/add-images01.png)
 

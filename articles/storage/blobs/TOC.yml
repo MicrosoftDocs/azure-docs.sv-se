@@ -483,8 +483,10 @@
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Övervakare (klassisk)
           items:
-            - name: Övervakare på Azure-portalen (klassisk)
-              href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Aktivera och hantera mått (klassisk)
+              href: ../common/manage-storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Aktivera och hantera loggar (klassisk)
+              href: ../common/manage-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Felsöka
           items:
             - name: Problem med svarstider

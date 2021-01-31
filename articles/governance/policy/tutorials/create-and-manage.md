@@ -1,14 +1,14 @@
 ---
 title: 'Självstudie: skapa principer för att genomdriva efterlevnad'
 description: I den här självstudien använder du principer för att genomdriva standarder, kontrol lera kostnader, upprätthålla säkerhet och införa företagets breda design principer.
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: tutorial
-ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005443"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221201"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Självstudie: skapa och hantera principer för att genomdriva efterlevnad
 
@@ -71,6 +71,10 @@ Det första steget för att tillämpa efterlevnad av Azure Policy är att tillde
 1. Lämna **skapa en reparations uppgift** avmarkerad. Med den här rutan kan du skapa en uppgift för att ändra befintliga resurser utöver nya eller uppdaterade resurser. Mer information finns i [åtgärda resurser](../how-to/remediate-resources.md).
 
 1. **Skapa en hanterad identitet** kontrol leras automatiskt eftersom den här princip definitionen använder [ändrings](../concepts/effects.md#modify) resultatet. **Behörigheter** anges till _Contributor_ automatiskt baserat på princip definitionen. Mer information finns i avsnitten om [hanterade identiteter](../../../active-directory/managed-identities-azure-resources/overview.md) och [hur reparationssäkerhet fungerar](../how-to/remediate-resources.md#how-remediation-security-works).
+
+1. Välj fliken **Ej kompatibla meddelanden** överst i guiden.
+
+1. Om du inte anger att det här **meddelandet är kompatibelt** med _den här resursen finns inte taggen som krävs_. Det här anpassade meddelandet visas när en resurs nekas eller för icke-kompatibla resurser under regelbunden utvärdering.
 
 1. Välj fliken **Granska + skapa** överst i guiden.
 

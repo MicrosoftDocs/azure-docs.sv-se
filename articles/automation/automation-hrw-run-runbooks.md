@@ -3,14 +3,14 @@ title: Köra Azure Automation runbooks på en Hybrid Runbook Worker
 description: Den här artikeln beskriver hur du kör Runbooks på datorer i ditt lokala data Center eller någon annan moln leverantör med Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a080505f780e724bfd2ab997f5c823e467c4bec
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8ea668ab2266a1deae108542687c89f3a221568e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896977"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220981"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Köra runbook-flöden på Hybrid Runbook Worker
 
@@ -94,6 +94,10 @@ Använd följande procedur för att ange ett Kör som-konto för en Hybrid Runbo
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Installera certifikat för kör som-konto
 
 Som en del av den automatiserade Bygg processen för att distribuera resurser i Azure kan du behöva åtkomst till lokala system för att stödja en uppgift eller en uppsättning steg i din distributions ordning. Om du vill tillhandahålla autentisering mot Azure med hjälp av kör som-kontot måste du installera certifikatet för kör som-kontot.
+
+>[!NOTE]
+>Denna PowerShell-runbook körs för närvarande inte på LInux-datorer. Den körs bara på Windows-datorer.
+>
 
 Följande PowerShell-Runbook, som kallas **export-RunAsCertificateToHybridWorker**, exporterar kör som-certifikatet från ditt Azure Automation-konto. Runbooken laddar ned och importerar certifikatet till den lokala datorns certifikat Arkiv på en Hybrid Runbook Worker som är ansluten till samma konto. När det här steget har slutförts verifierar Runbook att arbets tagaren kan autentisera till Azure med hjälp av kör som-kontot.
 

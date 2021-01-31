@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokument bearbetning
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845543"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221099"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter
 
@@ -202,7 +202,7 @@ Därefter skapar du taggar (etiketter) och tillämpar dem på de text element so
    1. Klicka **+** om du vill skapa en ny tagg.
    1. Ange namnet på taggen.
    1. Spara taggen genom att trycka på RETUR.
-1. Klicka i huvud redigeraren för att välja ord från de markerade text elementen. I för _hands versionen av v 2.1.2_ du kan också klicka för att välja _markerings märken_ som alternativ knappar och kryss rutor som nyckel värdes par. Formulär tolken identifierar om markerings markeringen är "markerad" eller "omarkerad" som värde.
+1. Klicka i huvud redigeraren för att välja ord från de markerade text elementen. I för _hands versionen av v 2.1_ , kan du också klicka för att välja _markerings märken_ som alternativ knappar och kryss rutor som nyckel värdes par. Formulär tolken identifierar om markerings markeringen är "markerad" eller "omarkerad" som värde.
 1. Klicka på den tagg som du vill använda, eller tryck på motsvarande tangent bords nyckel. Siffer nycklarna tilldelas som kortkommandon för de första 10 taggarna. Du kan ändra ordning på taggarna med hjälp av upp-och nedpilens ikoner i rutan kod redigeraren.
     > [!Tip]
     > Tänk på följande när du är etikett på formulären.

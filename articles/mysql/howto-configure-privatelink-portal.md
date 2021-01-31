@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998574"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221034"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Skapa och hantera en privat länk för Azure Database for MySQL med hjälp av portalen
 
 En privat slut punkt är det grundläggande Bygg blocket för privat länk i Azure. Den gör det möjligt för Azure-resurser, t. ex. Virtual Machines (VM), att kommunicera privat med privata länk resurser. I den här artikeln får du lära dig hur du använder Azure Portal för att skapa en virtuell dator i en Azure-Virtual Network och en Azure Database for MySQL-server med en privat Azure-slutpunkt.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 > [!NOTE]
 > Funktionen privat länk är bara tillgänglig för Azure Database for MySQL servrar i Generell användning eller Minnesoptimerade pris nivåer. Se till att databas servern är på någon av dessa pris nivåer.
@@ -41,7 +41,7 @@ I det här avsnittet ska du skapa en Virtual Network och under nätet som är v�
     | Adressutrymme | Ange *10.1.0.0/16*. |
     | Prenumeration | Välj din prenumeration.|
     | Resursgrupp | Välj **Skapa ny**, ange *myResourceGroup* och välj sedan **OK**. |
-    | Plats | Välj **Europa, västra**.|
+    | Location | Välj **Europa, västra**.|
     | Undernät – Namn | Ange *undernät*. |
     | Undernät – adressintervall | Ange *10.1.0.0/24*. |
     |||
@@ -112,7 +112,7 @@ I det här avsnittet ska du skapa en Azure Database for MySQL-server i Azure.
     |Servernamn  | Ange *Server*. Om det här namnet tas skapar du ett unikt namn.|
     | Användarnamn för administratör| Ange ett administratörs namn som du väljer. |
     | Lösenord | Ange ett valfritt lösenord. Lösen ordet måste vara minst 8 tecken långt och uppfylla de definierade kraven. |
-    | Plats | Välj en Azure-region där du vill att MySQL-servern ska finnas. |
+    | Location | Välj en Azure-region där du vill att MySQL-servern ska finnas. |
     |Version  | Välj den databas version av MySQL-servern som krävs.|
     | Compute + Storage| Välj den pris nivå som krävs för servern baserat på arbets belastningen. |
     |||
@@ -223,6 +223,8 @@ När du har skapat **myVm** ansluter du till den från Internet på följande s�
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
     ```
+    > [!NOTE]
+    > Om offentlig åtkomst är inaktive rad i brand Väggs inställningarna i Azure Database for MySQL-enskild server. Ping-och Telnet-testerna kommer att lyckas oavsett brand Väggs inställningarna. Dessa tester ser till att nätverks anslutningen fungerar.
 
 3. Testa anslutningen till den privata länken för MySQL-servern med valfri tillgänglig klient. I exemplet nedan har jag använt [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) för att utföra åtgärden.
 

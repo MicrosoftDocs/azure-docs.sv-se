@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: 0ae7bb9acde3cc8552a23db12d208a82ba0fb2f3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95800864"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221161"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrera till Read v3. x OCR-behållare
 
@@ -67,7 +67,7 @@ I v3. x i behållaren stöds inte RabbitMQ för närvarande. De implementeringar
 |---------|---------|-------|
 | I minnet (standard) | Inga körnings argument krävs. | Utveckling och testning |
 | Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Produktion |
-| RabbitMQ    | Ej tillgänglig | Produktion |
+| RabbitMQ    | Inte tillgänglig | Produktion |
 
 För tillagd redundans använder Read v3. x-behållaren en Synlighets-timer för att se till att begär Anden kan bearbetas i händelse av en krasch när de körs i en konfiguration med flera behållare. 
 

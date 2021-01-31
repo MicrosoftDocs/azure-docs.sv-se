@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913678"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220998"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Självstudie: måttlig Facebook-inlägg och-kommandon med Azure Content Moderator
 
@@ -44,7 +44,7 @@ Det här diagrammet illustrerar varje komponent i det här scenariot:
 
 ## <a name="create-a-review-team"></a>Skapa ett granskningsteam
 
-Mer information om hur du registrerar dig för [Content moderator gransknings verktyget](https://contentmoderator.cognitive.microsoft.com/) och hur du skapar en gransknings grupp finns i [försök Content moderator på webb](quick-start.md) snabb starten. Anteckna värdet för **team-ID:t** på sidan **Autentiseringsuppgifter** .
+Mer information om hur du registrerar dig för [Content moderator gransknings verktyget](https://contentmoderator.cognitive.microsoft.com/) och hur du skapar en gransknings grupp finns i [försök Content moderator på webb](quick-start.md) snabb starten. Anteckna värdet för **team-ID:t** på sidan **Autentiseringsuppgifter**.
 
 ## <a name="configure-image-moderation-workflow"></a>Konfigurera arbets flöde för avbildnings redigering
 
@@ -66,7 +66,7 @@ Logga in på [Azure Portal](https://portal.azure.com/) och följ de här stegen:
 
 1. Skapa en Azure-funktionsapp enligt beskrivningen på sidan [Azure Functions](../../azure-functions/functions-create-function-app-portal.md).
 1. Gå till den nyligen skapade Funktionsapp.
-1. I appen går du till fliken **plattforms funktioner** och väljer **konfiguration** . I avsnittet **program inställningar** på nästa sida väljer du **ny program inställning** för att lägga till följande nyckel/värde-par:
+1. I appen går du till fliken **plattforms funktioner** och väljer **konfiguration**. I avsnittet **program inställningar** på nästa sida väljer du **ny program inställning** för att lägga till följande nyckel/värde-par:
     
     | Namn på App-inställning | värde   | 
     | -------------------- |-------------|
@@ -85,14 +85,14 @@ Logga in på [Azure Portal](https://portal.azure.com/) och följ de här stegen:
 
     ![Azure Functions fönstret med knappen Lägg till funktion markerat.](images/new-function.png)
 
-    1. Klicka på panelen med texten **http-utlösare** .
-    1. Ange namnet **FBListener** . Fältet **Auktorisationsnivå** ska vara inställt på **Funktion** .
-    1. Klicka på **Skapa** .
+    1. Klicka på panelen med texten **http-utlösare**.
+    1. Ange namnet **FBListener**. Fältet **Auktorisationsnivå** ska vara inställt på **Funktion**.
+    1. Klicka på **Skapa**.
     1. Ersätt innehållet i filen **Run. CSX** med innehållet från **FbListener/Run. CSX**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
-1. Skapa en ny **http-utlösare** med namnet **CMListener** . Den här funktionen tar emot händelser från Content Moderator. Ersätt innehållet i filen **Run. CSX** med innehållet från **CMListener/Run. CSX**
+1. Skapa en ny **http-utlösare** med namnet **CMListener**. Den här funktionen tar emot händelser från Content Moderator. Ersätt innehållet i filen **Run. CSX** med innehållet från **CMListener/Run. CSX**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
@@ -105,13 +105,13 @@ Logga in på [Azure Portal](https://portal.azure.com/) och följ de här stegen:
     ![Sidan Facebook-utvecklare](images/facebook-developer-app.png)
 
     1. Gå till [Facebooks webbplats för utvecklare](https://developers.facebook.com/)
-    1. Klicka på **Mina appar** .
+    1. Gå till **Mina appar**.
     1. Lägg till en ny app.
-    1. ge den namnet något
+    1. Ange ett namn
     1. Välj **Webhooks – > konfigureras**
     1. Välj **sida** i list menyn och välj **Prenumerera på det här objektet**
     1. Ange **FBListener Url** som motringnings-URL och den **verifieringstoken** som du konfigurerade i **Funktionsappinställningar**
-    1. När prenumerationen är klar bläddrar du i flödet och väljer **prenumerera** .
+    1. När prenumerationen är klar bläddrar du i flödet och väljer **prenumerera**.
     1. Klicka på knappen **testa** på **feed** -raden för att skicka ett test meddelande till din FBListener Azure-funktion och tryck sedan på knappen **Skicka till min server** . Du bör se begäran som tas emot på din FBListener.
 
 1. Skapa en Facebook-sida.
@@ -119,21 +119,21 @@ Logga in på [Azure Portal](https://portal.azure.com/) och följ de här stegen:
     > [!IMPORTANT]
     > I 2018 implementerade Facebook en mer strikt först konsumentsajter av Facebook-appar. Du kommer inte att kunna köra avsnitt 2, 3 och 4 om din app inte har granskats och godkänts av Facebooks gransknings teamet.
 
-    1. Gå till [Facebook](https://www.facebook.com/bookmarks/pages) och skapa en **ny Facebook-sida** .
+    1. Gå till [Facebook](https://www.facebook.com/bookmarks/pages) och skapa en **ny Facebook-sida**.
     1. Ge Facebook-appen åtkomst till sidan genom att följa dessa steg:
         1. Gå till [Graph API Explorer](https://developers.facebook.com/tools/explorer/) (Graph API-utforskaren).
-        1. Välj **program** .
-        1. Välj **Page Access Token** (Åtkomsttoken för sida), skicka en **Get** -begäran.
-        1. Klicka på **Sid-ID** i svaret.
-        1. Lägg nu till **/subscribed_apps** i URL:en och skicka en **Get** -begäran (tomt svar).
-        1. Skicka en **Post** -begäran. Du får svaret **success: true** .
+        1. Välj **program**.
+        1. Välj **Page Access Token** (Åtkomsttoken för sida), skicka en **Get**-begäran.
+        1. Välj **sid-ID** i svaret.
+        1. Lägg nu till **/subscribed_apps** i URL:en och skicka en **Get**-begäran (tomt svar).
+        1. Skicka en **Post**-begäran. Du får svaret **success: true**.
 
 3. Skapa en åtkomsttoken för Graph API som inte upphör att gälla.
 
     1. Gå till [Graph API Explorer](https://developers.facebook.com/tools/explorer/) (Graph API-utforskaren).
-    2. Välj alternativet **Program** .
+    2. Välj alternativet **Program**.
     3. Välj alternativet **Get User Access Token** (Hämta åtkomsttoken för användare).
-    4. Under **Välj behörigheter** väljer du **manage_pages** och **publish_pages** .
+    4. Under **Välj behörigheter** väljer du **manage_pages** och **publish_pages**.
     5. Vi använder **åtkomsttoken** (kortlivad token) i nästa steg.
 
 4. Vi använder Postman för kommande steg.
@@ -150,16 +150,16 @@ Logga in på [Azure Portal](https://portal.azure.com/) och följ de här stegen:
         | appSecret | Infoga din Facebook-apphemlighet här | 
         | short_lived_token | Infoga den kortlivade åtkomsttoken som du skapade i föregående steg |
     4. Kör nu de 3 API:er som visas i samlingen: 
-        1. Välj **Generate Long-Lived Access Token** (Generera långlivad åtkomsttoken) och klicka på **Skicka** .
-        2. Välj **Hämta användar-ID** och klicka på **Skicka** .
-        3. Välj **Get Permanent Page Access Token** (Hämta permanent åtkomsttoken för sida) och klicka på **Skicka** .
-    5. Kopiera värdet **access_token** från svaret och tilldela det till appinställningen **fb:PageAccessToken** .
+        1. Välj **Generate Long-Lived Access Token** (Generera långlivad åtkomsttoken) och klicka på **Skicka**.
+        2. Välj **Hämta användar-ID** och klicka på **Skicka**.
+        3. Välj **Get Permanent Page Access Token** (Hämta permanent åtkomsttoken för sida) och klicka på **Skicka**.
+    5. Kopiera värdet **access_token** från svaret och tilldela det till appinställningen **fb:PageAccessToken**.
 
 Lösningen skickar alla bilder och texter som publiceras på din Facebook-sida till Content Moderator. Sedan anropas de arbets flöden som du konfigurerade tidigare. Innehållet som inte uppfyller dina kriterier som definierats i arbets flödena skickas till granskningar i gransknings verktyget. Resten av innehållet publiceras automatiskt.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien konfigurerar du ett program för att analysera produktbilder i syfte att tagga dem via produkttyp och låta ett granskningsteam fatta välgrundade beslut om innehållsmoderering. Härnäst får du mer information om bildmoderering.
+I den här självstudien ställer du in ett program för att analysera produkt bilder, tagga dem efter produkt typ och göra det möjligt för en gransknings grupp att fatta välgrundade beslut om innehålls moderator. Härnäst får du mer information om bildmoderering.
 
 > [!div class="nextstepaction"]
 > [Bildmoderering](./image-moderation-api.md)

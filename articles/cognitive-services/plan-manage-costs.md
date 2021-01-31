@@ -7,18 +7,18 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 61eb7d06773428074940d153b01d23b13468795d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788832"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221394"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Planera och hantera kostnader för Azure Cognitive Services
 
 Den här artikeln beskriver hur du planerar för och hanterar kostnader för Azure Cognitive Services. Först använder du pris Kalkylatorn för Azure för att planera för Cognitive Services kostnader innan du lägger till några resurser för tjänsten för att beräkna kostnaderna. När du lägger till Azure-resurser granskar du de uppskattade kostnaderna. När du har börjat använda Cognitive Services-resurser (till exempel tal, Visuellt innehåll, LUIS, Textanalys, Translator osv.) använder du Cost Management funktioner för att ställa in budgetar och övervaka kostnader. Du kan också granska prognostiserade kostnader och identifiera utgifts trender för att identifiera områden där du kanske vill handla. Kostnaderna för Cognitive Services är bara en del av månads kostnaderna på din Azure-faktura. Även om den här artikeln förklarar hur du planerar för och hanterar kostnader för Cognitive Services debiteras du för alla Azure-tjänster och-resurser som används i din Azure-prenumeration, inklusive tjänster från tredje part.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kostnads analys i Cost Management stöder de flesta typer av Azure-konton, men inte alla. Om du vill se hela listan med kontotyper som stöds kan du läsa [Förstå Cost Management-data](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Om du vill visa kostnads data måste du ha minst Läs behörighet för ett Azure-konto. Mer information om hur du får åtkomst till Azure Cost Management finns i [Tilldela åtkomst till data](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -64,6 +64,32 @@ När du har tagit bort QnA Maker-resurser kan följande resurser fortsätta att 
 
 Du kan betala för Cognitive Services avgifter med din Azure-förskotts betalning (tidigare kallat betalnings åtagande) kredit. Du kan dock inte använda Azures förskotts kredit för att betala för avgifter för produkter och tjänster från tredje part, inklusive de som finns på Azure Marketplace.
 
+## <a name="monitor-costs"></a>Övervaka kostnader
+
+<!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
+
+När du använder Azure-resurser med Cognitive Services debiteras du kostnader. Kostnaderna för Azure Resource Usage varierar med tidsintervall (sekunder, minuter, timmar och dagar) eller per enhets användning (byte, megabyte osv.). Så snart som användning av en kognitiv tjänst (eller Cognitive Services) börjar kostnader uppkommer kostnader och du kan se kostnaderna i [kostnads analysen](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+
+När du använder kostnads analys kan du Visa Cognitive Services kostnader i grafer och tabeller i olika tidsintervall. Några exempel är per dag, innevarande och föregående månad och år. Du ser också kostnader för budget och prognostiserade kostnader. Att växla till längre vyer över tid kan hjälpa dig att identifiera utgifts trender. Och du ser var överförbrukning kan ha inträffat. Om du har skapat budgetar kan du också enkelt se var de överskreds.
+
+Så här visar du Cognitive Services kostnader i kostnads analys:
+
+1. Logga in på Azure-portalen.
+2. Öppna omfånget i Azure Portal och välj **kostnads analys** i menyn. Gå till exempel till **prenumerationer**, Välj en prenumeration i listan och välj sedan  **kostnads analys** i menyn. Välj **omfång** för att växla till ett annat omfång i kostnads analys.
+3. Som standard visas kostnaden för tjänster i det första Ring diagrammet. Markera det områden i diagrammet som är märkt Cognitive Services.
+
+De faktiska månads kostnaderna visas när du först öppnar kostnads analys. Här är ett exempel som visar alla månatliga användnings kostnader.
+
+:::image type="content" source="./media/cost-management/all-costs.png" alt-text="Exempel som visar ackumulerade kostnader för en prenumeration":::
+
+- Om du vill begränsa kostnaderna för en enskild tjänst, till exempel Cognitive Services, väljer du **Lägg till filter** och väljer sedan **tjänst namn**. Välj sedan **Cognitive Services**.
+
+Här är ett exempel som visar kostnader för just Cognitive Services.
+
+:::image type="content" source="./media/cost-management/cognitive-services-costs.png" alt-text="Exempel som visar ackumulerade kostnader för Cognitive Services":::
+
+I föregående exempel visas den aktuella kostnaden för tjänsten. Kostnader per Azure-regioner (platser) och Cognitive Services kostnader per resurs grupp visas också. Härifrån kan du utforska kostnaderna på egen hand.
+
 ## <a name="create-budgets"></a>Skapa budgetar
 
 Du kan skapa [budgetar](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) för att hantera kostnader och skapa [aviseringar](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) som automatiskt meddelar mottagarna om kostnadsavvikelser och risker för överförbrukning. Aviseringar baseras på utgifter jämfört med budget- och kostnadströsklar. Budgetar och aviseringar skapas för Azure-prenumerationer och resurs grupper, så de är användbara som en del av en övergripande kostnads övervaknings strategi. 
@@ -73,13 +99,6 @@ Budgetar kan skapas med filter för vissa resurser eller tjänster i Azure om du
 ## <a name="export-cost-data"></a>Exportera kostnadsdata
 
 Du kan också [Exportera dina kostnads data](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) till ett lagrings konto. Detta är användbart när du behöver eller andra för att utföra ytterligare data analyser för kostnader. Ekonomi team kan till exempel analysera data med hjälp av Excel eller Power BI. Du kan exportera dina kostnader enligt ett dags-, vecko-eller månads schema och ange ett anpassat datum intervall. Att exportera kostnads data är det rekommenderade sättet att hämta kostnads data uppsättningar.
-
-<!--
-## Other ways to manage and reduce costs for Cognitive Services
-
-Work with Dean to complete this section in 2021.
-
--->
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 3628cb6dbb397b561ff91ba6b6747293a39fd602
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632790"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med GitHub AE
 
@@ -71,7 +71,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal går du till sidan **GITHUB AE** application integration och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -93,11 +93,19 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![image](common/default-attributes.png)
 
-1. Förutom ovan förväntar sig GitHub AE-program att få fler attribut att skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
-    
-    | Name |  Källattribut|
-    | ----------- | --------- |
-    | administratör | true |
+1. Redigera **användarattribut & anspråk**.
+
+1. Klicka på **Lägg till nytt anspråk** och ange namnet som **administratör** i text rutan.
+
+1. Expandera **anspråks villkor** och välj **medlemmar** från **användar typ**.
+
+1. Klicka på **Välj grupper** och Sök efter den **grupp** som du vill inkludera det här anspråket, där dess medlemmar ska vara administratörer för GHAE.
+
+1. Välj **attribut** för **källa** och ange **Sant** för **värdet**. 
+
+10. Klicka på **Spara**.
+
+    ![hantera anspråk](./media/github-ae-tutorial/administrator.png)
 
     > [!NOTE]
     > Följ [länken](https://docs.github.com/en/github-ae@latest/admin/authentication/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)om du vill veta mer om hur du lägger till ett anspråk.

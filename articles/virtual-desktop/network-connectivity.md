@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 4c0017a36d84973a4d99c49a5ea33faeb189b35f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: e4149864e16196b695d38a8c46ab5af835453412
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94639415"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221218"
 ---
 # <a name="understanding-windows-virtual-desktop-network-connectivity"></a>Förstå nätverks anslutningar för virtuella Windows-datorer
 
@@ -50,7 +50,7 @@ Den sekvens för klient anslutning som beskrivs nedan:
 
 ## <a name="connection-security"></a>Anslutningssäkerhet
 
-TLS 1,2 används för alla anslutningar som initieras från klienterna och värdarna i Windows infrastruktur komponenter för virtuella datorer.
+TLS 1,2 används för alla anslutningar som initieras från klienterna och värdarna i Windows infrastruktur komponenter för virtuella datorer. Windows Virtual Desktop använder samma TLS 1,2-chiffer som i [Azures front dörr](../frontdoor/front-door-faq.md#what-are-the-current-cipher-suites-supported-by-azure-front-door). Det är viktigt att se till att både klient datorer och sessioner kan använda dessa chiffer.
 För omvänd Connect-transport ansluter både klienten och sessionens värd till Windows Virtual Desktop-gatewayen. När TCP-anslutningen har upprättats verifierar klienten eller sessionen Windows Virtual Desktop Gateway-certifikatet.
 När du har upprättat bas transporten upprättar RDP en kapslad TLS-anslutning mellan klient-och sessionstoken med hjälp av sessionens värddators certifikat. Som standard genereras certifikatet som används för RDP-kryptering självt av operativ systemet under distributionen. Om du vill kan kunderna distribuera centralt hanterade certifikat som utfärdats av utfärdaren av företags certifikat utfärdaren. Mer information om hur du konfigurerar certifikat finns i [dokumentationen till Windows Server](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 

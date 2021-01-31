@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content moderator, innehålls moderator
-ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8ad9c135fea4e582e6ba47764d0401936f8c295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905221"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221184"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Snabb start: prova Content Moderator på webben
 
 I den här snabb starten använder du verktyget för Content Moderator granskning online för att testa de grundläggande funktionerna i Content Moderator utan att behöva skriva någon kod. Om du vill integrera den här tjänsten i din app för innehålls redigering snabbare, se de andra snabb starterna i avsnittet [Nästa steg](#next-steps) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En webbläsare
 
@@ -88,6 +88,6 @@ Eller Fortsätt med nästa steg för att komma igång med redigerings-API: er i 
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du använder redigerings-API: erna själva i din app.
-- Implementera avbildnings moderator. Använd [API-konsolen](try-image-api.md) eller Följ ett [klient bibliotek eller REST API snabb start](client-libraries.md) för att skanna bilder och identifiera potentiellt vuxna och vågat innehåll genom att använda taggar, konfidens resultat och annan extraherad information.
-- Implementera text moderator. Använd [API-konsolen](try-text-api.md) eller Följ ett [klient bibliotek eller REST API snabb start](client-libraries.md) för att söka efter potentiella svordomar i text innehåll, oönskad text klassificering (för hands version) och personliga data.
+- Implementera avbildnings moderator. Använd [API-konsolen](try-image-api.md) eller följ [snabb](client-libraries.md) starten för att skanna bilder och identifiera potentiellt vuxna och vågat innehåll genom att använda taggar, konfidens resultat och annan extraherad information.
+- Implementera text moderator. Använd [API-konsolen](try-text-api.md) eller följ en [snabb start](client-libraries.md) för att skanna text innehåll för potentiella svordomar, personliga data och annan oönskad text.
 - Implementera videoinspelning. Följ anvisningarna [för videoinspelnings guiden för C# för](video-moderation-api.md) att söka igenom videor och identifiera potentiellt vuxna och vågat innehåll. 
