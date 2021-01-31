@@ -3,19 +3,24 @@ title: Konfigurera Kerberos Key Distribution Center proxy Windows Virtual Deskto
 description: Konfigurera en Windows-pool för virtuella skriv bord för att använda en Kerberos Key Distribution Center proxy.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f123659941eaeb3b8ceeb6a999abf836eb9cf5ea
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 102ddc1c8937c66a92416ddb6d5f2d25f2a3c349
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798480"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219663"
 ---
-# <a name="configure-a-kerberos-key-distribution-center-proxy"></a>Konfigurera en Kerberos Key Distribution Center proxy
+# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurera en Kerberos Key Distribution Center proxy (förhands granskning)
 
-I den här artikeln visas hur du konfigurerar en KDC-proxy (Kerberos Key Distribiution Center) för din värddator. Den här proxyn gör det möjligt för organisationer att autentisera med Kerberos utanför deras företags gränser. Du kan till exempel använda KDC-proxyn för att aktivera SmartCard-autentisering för externa klienter.
+> [!IMPORTANT]
+> Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion.
+> Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Den här artikeln visar hur du konfigurerar en Key Distribution Center Kerberos-proxyserver (för hands version) för din värd pool. Den här proxyn gör det möjligt för organisationer att autentisera med Kerberos utanför deras företags gränser. Du kan till exempel använda KDC-proxyn för att aktivera SmartCard-autentisering för externa klienter.
 
 ## <a name="how-to-configure-the-kdc-proxy"></a>Så här konfigurerar du KDC-proxyn
 

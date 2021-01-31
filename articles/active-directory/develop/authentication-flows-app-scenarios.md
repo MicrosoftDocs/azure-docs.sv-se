@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755783"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220172"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Autentiserings flöden och program scenarier
 
@@ -42,8 +42,8 @@ I följande avsnitt beskrivs program kategorierna.
 
 Autentiserings scenarier omfattar två aktiviteter:
 
-- **Förvärva säkerhetstoken för ett skyddat webb-API**: Vi rekommenderar att du använder [Microsoft-klient bibliotek som stöds](reference-v2-libraries.md#microsoft-supported-client-libraries) för att hämta tokens. Vi rekommenderar särskilt Microsoft Authentication Library (MSAL)-serien.
-- **Skydda ett webb-API eller en webbapp**: en utmaning för att skydda dessa resurser är att verifiera säkerhetstoken. På vissa plattformar erbjuder Microsoft [bibliotek för mellanprogram](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
+- **Förvärva säkerhetstoken för ett skyddat webb-API**: Vi rekommenderar att du använder [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md), som har utvecklats och stöds av Microsoft.
+- **Skydda ett webb-API eller en webbapp**: en utmaning för att skydda dessa resurser är att verifiera säkerhetstoken. På vissa plattformar erbjuder Microsoft [bibliotek för mellanprogram](reference-v2-libraries.md).
 
 ### <a name="with-users-or-without-users"></a>Med användare eller utan användare
 
@@ -65,7 +65,7 @@ Du kan hämta säkerhetstoken med flera olika typer av program. Dessa program te
   - Skrivbordsappar som anropar webb-API: er åt inloggade användare
   - Mobilappar
   - Appar som körs på enheter som inte har någon webbläsare, som de som körs på IoT
-  
+
 - **Konfidentiella klient program**: appar i den här kategorin omfattar:
   - Webb program som anropar ett webb-API
   - Webb-API: er som anropar ett webb-API
@@ -95,7 +95,7 @@ Programmen använder olika autentiserings flöden för att logga in användare o
 
 Många moderna webbappar skapas som program på en enda sida på klient sidan. Dessa program använder Java Script eller ett ramverk som till exempel vinkel, Vue och reagera. Dessa program körs i en webbläsare.
 
-Program med en enda sida skiljer sig från traditionella webbappar på Server sidan med avseende på autentiserings-egenskaper. Med hjälp av Microsoft Identity Platform kan program med en enda sida logga in användare och hämta token för att få åtkomst till backend-tjänster eller webb-API: er. Microsoft Identity Platform erbjuder två typer av tilldelning för JavaScript-program: 
+Program med en enda sida skiljer sig från traditionella webbappar på Server sidan med avseende på autentiserings-egenskaper. Med hjälp av Microsoft Identity Platform kan program med en enda sida logga in användare och hämta token för att få åtkomst till backend-tjänster eller webb-API: er. Microsoft Identity Platform erbjuder två typer av tilldelning för JavaScript-program:
 
 | MSAL.js (2. x) | MSAL.js (1. x) |
 |---|---|
@@ -160,7 +160,7 @@ Mer information finns i [mobilapp som anropar webb-API: er](scenario-mobile-over
 
 ### <a name="protected-web-api"></a>Skyddat webb-API
 
-Du kan använda Microsoft Identity Platform för att skydda webb tjänster som appens RESTful-webb-API. Ett skyddat webb-API anropas via en åtkomsttoken. Token skyddar API: ns data och autentiserar inkommande begär Anden. Anroparen för ett webb-API lägger till en åtkomsttoken i Authorization-huvudet för en HTTP-begäran.
+Du kan använda Microsoft Identity Platform-slutpunkten för att skydda webb tjänster som appens RESTful-webb-API. Ett skyddat webb-API anropas via en åtkomsttoken. Token skyddar API: ns data och autentiserar inkommande begär Anden. Anroparen för ett webb-API lägger till en åtkomsttoken i Authorization-huvudet för en HTTP-begäran.
 
 Om du vill skydda ditt ASP.NET-eller ASP.NET Core-webb-API måste du verifiera åtkomst-token. För den här verifieringen använder du ASP.NET JWT mellanprogram. Verifieringen görs av IdentityModel- [tilläggen för .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) -biblioteket och inte av MSAL.net.
 
@@ -309,7 +309,7 @@ I Windows-kolumnen i följande tabell beskrivs varje tid av .NET Core .NET Frame
 | [Daemon-app](scenario-daemon-overview.md) <br/> [![Daemon-app](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
 | [Webb-API som anropar webb-API:er](scenario-web-api-call-api-overview.md) <br/><br/> [![Webb-API som anropar webb-API:er](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL python](media/sample-v2-code/small_logo_python.png)<br/>MSAL python
 
-Mer information finns i [Microsoft-bibliotek som stöds av OS/språk](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language).
+Mer information finns i [Microsoft Identity Platform Authentication libraries](reference-v2-libraries.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

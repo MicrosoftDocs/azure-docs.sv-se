@@ -1,19 +1,23 @@
 ---
 title: Huvud versions uppgradering i Azure Database for MySQL-enskild server
 description: Den här artikeln beskriver hur du kan uppgradera huvud versionen för Azure Database for MySQL-en server
-author: ambhatna
-ms.author: ambhatna
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 1/13/2021
-ms.openlocfilehash: b62f4ebc61ac27478788d8b2bae5e4145f87ac8b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 1/28/2021
+ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630208"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220844"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Huvud versions uppgradering i Azure Database for MySQL enskild server
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tas den bort från den här artikeln.
+>
 
 > [!IMPORTANT]
 > Huvud versions uppgradering för Azure Database för MySQL Single Server finns i en offentlig för hands version.
@@ -23,9 +27,8 @@ Den här artikeln beskriver hur du kan uppgradera din MySQL-huvudversion på pla
 Den här funktionen gör det möjligt för kunder att utföra uppgraderingar på plats av sina MySQL 5,6-servrar till MySQL 5,7 med ett klick på knappen utan någon data förflyttning eller behovet av eventuella anslutnings strängar för program.
 
 > [!Note]
-> * Huvud versions uppgradering är bara tillgänglig för uppgradering av högre version från MySQL 5,6 till MySQL 5,7<br>
-> * Det finns inte stöd för att uppgradera större versioner på replik servern ännu.
-> * Servern kommer inte att vara tillgänglig under uppgraderings åtgärden. Vi rekommenderar därför att du utför uppgraderingar under det planerade underhålls fönstret.
+> * Huvud versions uppgradering är bara tillgänglig för en större versions uppgradering från MySQL 5,6 till MySQL 5,7.
+> * Servern kommer inte att vara tillgänglig under uppgraderings åtgärden. Vi rekommenderar därför att du utför uppgraderingar under det planerade underhålls fönstret. Du kan överväga att [utföra minimal stillestånds tid för stor versions uppgradering från MySQL 5,6 till mysql 5,7 med hjälp av Läs replik.](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal"></a>Utför större versions uppgradering från MySQL 5,6 till MySQL 5,7 med Azure Portal
 
@@ -57,12 +60,58 @@ Följ de här stegen för att utföra större versions uppgradering för din Azu
    Den här uppgraderingen kräver version 2.16.0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. Kör az version om du vill hitta versionen och de beroende bibliotek som är installerade. Om du vill uppgradera till den senaste versionen kör du az upgrade.
 
 2. När du har loggat in kör du kommandot [AZ MySQL server Upgrade](https://docs.microsoft.com/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_upgrade&preserve-view=true) :
-    
+
    ```azurecli
    az mysql server upgrade --name testsvr --resource-group testgroup --subscription MySubscription --target-server-version 5.7"
    ```
    
    Kommando tolken visar meddelandet "-körs". När det här meddelandet inte längre visas är versions uppgraderingen slutförd.
+
+## <a name="perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal"></a>Utför större versions uppgradering från MySQL 5,6 till MySQL 5,7 på Read Replica med hjälp av Azure Portal
+
+1. I [Azure Portal](https://portal.azure.com/)väljer du din befintliga Azure Database for MySQL 5,6-läsa replik Server.
+
+2. På sidan **Översikt** klickar du på knappen **Uppgradera** i verktygsfältet.
+
+3. I avsnittet **Uppgradera** väljer du **OK** för att uppgradera Azure Database för MySQL 5,6-läsa replik server till 5,7 Server.
+
+   :::image type="content" source="./media/how-to-major-version-upgrade-portal/upgrade.png" alt-text="Azure Database for MySQL-översikt – uppgradering":::
+
+4. Ett meddelande bekräftar att uppgraderingen har slutförts.
+
+5. På sidan **Översikt** bekräftar du att Azure Database for MySQL-versionen av Server versionen är 5,7.
+
+6. Gå nu till den primära servern och [utför stor versions uppgradering](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-using-azure-portal) .
+
+## <a name="perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas"></a>Utför minimal stillestånds tid för stor versions uppgradering från MySQL 5,6 till MySQL 5,7 med hjälp av Läs repliker
+
+Du kan utföra minimal stillestånds tid för stor versions uppgradering från MySQL 5,6 till MySQL 5,7 genom att använda Läs repliker. Idén är att uppgradera den skrivskyddade repliken av servern till 5,7 först och sedan redundansväxla ditt program så att det pekar på Läs replik och gör det till en ny primär.
+
+1. I [Azure Portal](https://portal.azure.com/)väljer du din befintliga Azure Database for MySQL 5,6.
+
+2. Skapa en [Läs replik](https://docs.microsoft.com/azure/mysql/concepts-read-replicas#create-a-replica) från den primära servern.
+
+3. [Uppgradera din Läs replik](#perform-major-version-upgrade-from-mysql-56-to-mysql-57-on-read-replica-using-azure-portal) till version 5,7.
+
+4. När du har bekräftat att replik servern körs på version 5,7 stoppar du ditt program från att ansluta till den primära servern.
+ 
+5. Kontrol lera replikeringsstatus och se till att repliken har fångats upp med primärt, så att alla data synkroniseras och att inga nya åtgärder utförs i primär.
+
+   Anropa [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) kommandot på replik servern för att visa replikeringsstatus.
+
+   ```sql
+   SHOW SLAVE STATUS\G
+   ```
+
+   Om statusen `Slave_IO_Running` och `Slave_SQL_Running` är "Ja" och värdet för `Seconds_Behind_Master` är "0" fungerar replikeringen bra. `Seconds_Behind_Master` anger hur sen repliken är. Om värdet inte är "0" innebär det att repliken bearbetar uppdateringar. När du `Seconds_Behind_Master` har bekräftat är "0" det är säkert att stoppa replikeringen.
+
+6. Flytta upp din Läs replik till primär genom att [stoppa replikeringen](https://docs.microsoft.com/azure/mysql/howto-read-replicas-portal#stop-replication-to-a-replica-server).
+
+7. Peka ditt program till den nya primära (tidigare replik) som kör Server 5,7. Varje server har en unik anslutnings sträng. Uppdatera programmet så att det pekar på den (tidigare) repliken i stället för källan.
+
+> [!Note]
+> Det här scenariot kommer att ha drift stopp under steg 4, 5 och 6.
+
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

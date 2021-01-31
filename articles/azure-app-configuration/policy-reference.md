@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure App konfiguration
 description: Visar Azure Policy inbyggda princip definitioner för Azure App konfiguration. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 903a5d012d4a0ba35914e5fae6aea0b7f4eda884
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 9cd7e5274ec0d9ed839b3f66c01d1f13e73e9aac
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804981"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219035"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Azure Policy inbyggda definitioner för Azure App konfiguration
 

@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c8807f0200f96dc12a3b3d43fa50a91bec85ed38
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071191"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219917"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -538,11 +538,11 @@ az storage account network-rule list \
 <a id="exceptions"></a>
 <a id="trusted-microsoft-services"></a>
 
-## <a name="grant-access-to-azure-services"></a>Bevilja åtkomst till Azure-tjänster 
+## <a name="grant-access-to-trusted-azure-services"></a>Bevilja åtkomst till betrodda Azure-tjänster 
 
-Vissa Azure-tjänster körs från nätverk som inte kan ingå i dina nätverks regler. Du kan bevilja en delmängd av dessa betrodda Azure-tjänster åtkomst till lagrings kontot, samtidigt som nätverks reglerna för andra appar upprätthålls. Dessa betrodda tjänster använder sedan stark autentisering för att på ett säkert sätt ansluta till ditt lagrings konto. 
+Vissa Azure-tjänster körs från nätverk som inte kan ingå i dina nätverks regler. Du kan bevilja en delmängd av dessa betrodda Azure-tjänster åtkomst till lagrings kontot, samtidigt som nätverks reglerna för andra appar upprätthålls. Dessa betrodda tjänster använder sedan stark autentisering för att på ett säkert sätt ansluta till ditt lagrings konto.
 
-Du kan bevilja åtkomst till betrodda Azure-tjänster genom att skapa en nätverks regel undantag. Steg-för-steg-anvisningar finns i avsnittet [Hantera undantag](#manage-exceptions) i den här artikeln. 
+Du kan bevilja åtkomst till betrodda Azure-tjänster genom att skapa en nätverks regel undantag. Steg-för-steg-anvisningar finns i avsnittet [Hantera undantag](#manage-exceptions) i den här artikeln.
 
 När du beviljar åtkomst till betrodda Azure-tjänster ger du följande typer av åtkomst:
 
@@ -583,17 +583,23 @@ I följande tabell visas tjänster som kan ha åtkomst till dina lagrings konto 
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | Aktiverar API Management-tjänstens åtkomst till lagrings konton bakom brand väggen med hjälp av principer. [Läs mer](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Microsoft. search/searchServices        | Ger Kognitiv sökning-tjänster åtkomst till lagrings konton för indexering, bearbetning och frågor. |
-| Azure Cognitive Services       | Microsoft. CognitiveService             | Ger Cognitive Services åtkomst till lagrings konton. |
+| Azure Cognitive Services       | Microsoft. CognitiveService/konton    | Ger Cognitive Services åtkomst till lagrings konton. |
 | Azure Container Registry Tasks | Microsoft. ContainerRegistry/register | ACR-aktiviteter kan komma åt lagrings konton när du skapar behållar avbildningar. |
 | Azure Data Factory             | Microsoft. DataFactory/fabriker        | Ger åtkomst till lagrings konton via ADF-körningen. |
 | Azure Data Share               | Microsoft. DataShare/konton           | Ger åtkomst till lagrings konton via data resurs. |
+| Azure DevTest Labs             | Microsoft. DevTestLab/Labs              | Ger åtkomst till lagrings konton via DevTest Labs. |
 | Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Tillåter att data från en IoT-hubb skrivs till Blob Storage. [Läs mer](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/arbets flöden              | Gör att Logic Apps kan komma åt lagrings konton. [Läs mer](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning-tjänsten | Microsoft.MachineLearningServices      | Auktoriserade Azure Machine Learning arbets ytor skriver experiment, modeller och loggar till Blob Storage och läser data. [Läs mer](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). | 
-| Azure Synapse Analytics       | Microsoft.Sql                          | Tillåter import och export av data från särskilda SQL-databaser med hjälp av KOPIERINGs instruktionen eller polybasen (i en dedikerad pool) eller `openrowset` funktionen och externa tabeller i en pool utan server. [Läs mer](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
-| Azure SQL Database       | Microsoft.Sql                          | Tillåter att du [skriver](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) gransknings data till lagrings konton bakom brand väggen. |
-| Azure Stream Analytics         | Microsoft. StreamAnalytics             | Tillåter att data från ett strömmande jobb skrivs till Blob Storage. [Läs mer](../../stream-analytics/blob-output-managed-identity.md). |
-| Azure Synapse Analytics        | Microsoft. Synapse/arbets ytor          | Ger åtkomst till data i Azure Storage från Azure Synapse Analytics. |
+| Azure Machine Learning-tjänsten | Microsoft.MachineLearningServices      | Auktoriserade Azure Machine Learning arbets ytor skriver experiment, modeller och loggar till Blob Storage och läser data. [Läs mer](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources). |
+| Azure Media Services           | Microsoft. Media/Media Services          | Ger åtkomst till lagrings konton via Media Services. |
+| Azure Migrate                  | Microsoft. Migrate/migrateprojects      | Ger åtkomst till lagrings konton via Azure Migrate. |
+| Azure Purview                  | Microsoft. avdelningens kontroll/konton             | Tillåter avdelningens kontroll åtkomst till lagrings konton. |
+| Azure Remote Rendering         | Microsoft. MixedReality/remoteRenderingAccounts | Ger åtkomst till lagrings konton via fjärrrendering. |
+| Azure Site Recovery            | Microsoft. RecoveryServices/valv      | Ger åtkomst till lagrings konton via Site Recovery. |
+| Azure SQL Database             | Microsoft.Sql                          | Tillåter att du [skriver](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) gransknings data till lagrings konton bakom brand väggen. |
+| Azure Synapse Analytics        | Microsoft.Sql                          | Tillåter import och export av data från särskilda SQL-databaser med hjälp av KOPIERINGs instruktionen eller polybasen (i en dedikerad pool) eller `openrowset` funktionen och externa tabeller i en pool utan server. [Läs mer](../../azure-sql/database/vnet-service-endpoint-rule-overview.md). |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics              | Tillåter att data från ett strömmande jobb skrivs till Blob Storage. [Läs mer](../../stream-analytics/blob-output-managed-identity.md). |
+| Azure Synapse Analytics        | Microsoft. Synapse/arbets ytor           | Ger åtkomst till data i Azure Storage från Azure Synapse Analytics. |
 
 ## <a name="grant-access-to-storage-analytics"></a>Bevilja åtkomst till lagrings analys
 

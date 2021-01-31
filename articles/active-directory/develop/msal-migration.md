@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3280952636a915cca4bade40d3e56b795050c321
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f32c81d4d247eb6c819adf5015cf36c846f4e83b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053473"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218238"
 ---
 # <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Migrera program till Microsoft Authentication Library (MSAL)
 
@@ -73,7 +73,7 @@ __F: Hur fungerar MSAL med AD FS?__
 S: MSAL.NET stöder vissa scenarier för autentisering mot AD FS 2019. Om din app behöver hämta tokens direkt från en tidigare version av AD FS bör du vara kvar på ADAL. [Läs mer](msal-net-adfs-support.md).
 
 __F: Hur gör jag för att få hjälp med att migrera mitt program?__  
-A: se avsnittet om [migrations vägledning](#migration-guidance) i den här artikeln. Om du efter att ha läst guiden för appens plattform har fler frågor kan du publicera på Microsoft Q&A med taggen `[azure-ad-adal-deprecation]` eller öppna ett ärende i bibliotekets GitHub-lagringsplats. I avsnittet [språk och ramverk](msal-overview.md#languages-and-frameworks) i översikts artikeln om MSAL finns länkar till varje biblioteks lagrings platsen.
+A: se avsnittet om [migrations vägledning](#migration-guidance) i den här artikeln. Om du efter att ha läst guiden för appens plattform har fler frågor kan du publicera på [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html) med taggen `[azure-ad-adal-deprecation]` eller öppna ett ärende i bibliotekets GitHub-lagringsplats. I avsnittet [språk och ramverk](msal-overview.md#languages-and-frameworks) i översikts artikeln om MSAL finns länkar till varje biblioteks lagrings platsen.
 
 ## <a name="next-steps"></a>Nästa steg
 

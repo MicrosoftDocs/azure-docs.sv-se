@@ -1,14 +1,14 @@
 ---
 title: Information om princip tilldelnings strukturen
 description: Beskriver den princip tilldelnings definition som används av Azure Policy för att relatera princip definitioner och parametrar till resurser för utvärdering.
-ms.date: 09/22/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: e930e9ddcc04846a35c8db7784a349007c71580b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12acbe368c9ccd6fa5654d3394e0fecb286984bf
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904077"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219574"
 ---
 # <a name="azure-policy-assignment-structure"></a>Tilldelningsstruktur i Azure Policy
 
@@ -17,11 +17,12 @@ Princip tilldelningar används av Azure Policy för att definiera vilka resurser
 Du använder JSON för att skapa en princip tilldelning. Princip tilldelningen innehåller element för:
 
 - visningsnamn
-- description
+- beskrivning
 - metadata
 - tvingande läge
 - undantagna omfattningar
 - princip definition
+- meddelanden som inte uppfyller kraven
 - parametrar
 
 Följande JSON visar till exempel en princip tilldelning i _DoNotEnforce_ -läge med dynamiska parametrar:
@@ -37,6 +38,11 @@ Följande JSON visar till exempel en princip tilldelning i _DoNotEnforce_ -läge
         "enforcementMode": "DoNotEnforce",
         "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
+        "nonComplianceMessages": [
+            {
+                "message": "Resource names must start with 'DeptA' and end with '-LC'."
+            }
+        ],
         "parameters": {
             "prefix": {
                 "value": "DeptA"
@@ -61,9 +67,9 @@ Egenskapen **enforcementMode** ger kunderna möjlighet att testa resultatet av e
 
 Den här egenskapen har följande värden:
 
-|Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Beskrivning |
+|Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Description |
 |-|-|-|-|-|-|
-|Enabled |Default |sträng |Ja |Ja |Princip påverkan tillämpas när en resurs skapas eller uppdateras. |
+|Enabled |Standardvärde |sträng |Ja |Ja |Princip påverkan tillämpas när en resurs skapas eller uppdateras. |
 |Inaktiverad |DoNotEnforce |sträng |Ja |Inga | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
 
 Om **enforcementMode** inte anges i en princip eller initiativ definition används värdet _default_ . [Reparations uppgifter](../how-to/remediate-resources.md) kan startas för [deployIfNotExists](./effects.md#deployifnotexists) -principer, även när **enforcementMode** har angetts till _DoNotEnforce_.
@@ -79,6 +85,32 @@ Tilldelningens **omfattning** inkluderar alla underordnade resurs behållare och
 
 Det här fältet måste vara det fullständiga Sök vägs namnet för antingen en princip definition eller en initiativ definition.
 `policyDefinitionId` är en sträng och inte en matris. Vi rekommenderar att om flera principer ofta tilldelas tillsammans, så att du kan använda ett [initiativ](./initiative-definition-structure.md) i stället.
+
+## <a name="non-compliance-messages"></a>Meddelanden som inte uppfyller kraven
+
+Ange ett anpassat meddelande som beskriver varför en resurs inte är kompatibel med principen eller initiativ definitionen, som anges `nonComplianceMessages` i tilldelnings definitionen. Den här noden är en matris med `message` poster. Det anpassade meddelandet är förutom standard fel meddelandet för inkompatibilitet och är valfritt.
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    }
+]
+```
+
+Om tilldelningen är för ett initiativ kan olika meddelanden konfigureras för varje princip definition i initiativet. Meddelandena använder det `policyDefinitionReferenceId` värde som kon figurer ATS i initiativ definitionen. Mer information finns i [Egenskaper för egenskaps definitioner](./initiative-definition-structure.md#policy-definition-properties).
+
+```json
+"nonComplianceMessages": [
+    {
+        "message": "Default message"
+    },
+    {
+        "message": "Message for just this policy definition by reference ID",
+        "policyDefinitionReferenceId": "10420126870854049575"
+    }
+]
+```
 
 ## <a name="parameters"></a>Parametrar
 

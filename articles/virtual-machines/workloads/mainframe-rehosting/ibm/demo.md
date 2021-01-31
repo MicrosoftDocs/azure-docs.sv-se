@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968408"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219446"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Konfigurera en programutvecklare styrd distribution (ADCD) i IBM zD&T v1
 
@@ -57,7 +57,7 @@ Precis som zD&T är ADCDs bara tillgängliga för IBM-kunder och-partner och är
 
 4. Ange del beskrivningen eller del numret och klicka på **Finder**.
 
-5. Du kan också klicka på listan alfabetisk ordning om du vill visa och Visa theproduct efter namn.
+5. Du kan också klicka på listan alfabetisk ordning om du vill visa och Visa produkten efter namn.
 
 6. Välj **alla operativ system** i **fältet operativ system** och **alla språk** i **fältet språk**. Klicka sedan på **gå**.
 
@@ -190,7 +190,7 @@ Grattis! Nu kör du en IBM stordator miljö på Azure.
 ## <a name="learn-more"></a>Läs mer
 
 - [Stordator-migrering: myths och fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2-pureScale på Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2-pureScale på Azure](ibm-db2-purescale-azure.md)
 - [Felsökning](../../../troubleshooting/index.yml)
 - [Avmystifiera-stordator till Azure-migrering](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

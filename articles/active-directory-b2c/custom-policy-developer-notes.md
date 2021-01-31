@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516104"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218782"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Developer-kommentarer för anpassade principer i Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Utvecklare som använder den anpassade princip inställningen bör följa följa
 - Bekanta dig med konfigurations språket för anpassade principer och hantering av nyckel/hemligheter. Mer information finns i [TrustFrameworkPolicy](trustframeworkpolicy.md).
 - Bli ägare till scenarier och anpassade integreringar. Dokumentera ditt arbete och informera din Live site-organisation.
 - Utför metodiska scenario testning.
-- Följ program utvecklings-och mellanlagringsplatsen med bästa praxis med minst en utvecklings-och test miljö och en produktions miljö.
+- Följ program utveckling och metod tips för mellanlagring. Minst en utvecklings-och testnings miljö rekommenderas.
 - Håll dig informerad om ny utveckling från identitets leverantörer och tjänster som du integrerar med. Du kan till exempel hålla reda på ändringar i hemligheter och schemalagda och oplanerade ändringar i tjänsten.
 - Konfigurera aktiv övervakning och övervaka svars tiderna för produktions miljöer. Mer information om hur du integrerar med Application Insights finns i [Azure Active Directory B2C: samla in loggar](analytics-with-application-insights.md).
 - Behåll kontaktens e-postadresser som är aktuella i Azure-prenumerationen och håll dig uppdaterad med e-postmeddelandena från Microsoft Live-site.
@@ -58,7 +58,7 @@ Utvecklare som använder den anpassade princip inställningen bör följa följa
 
 ## <a name="features-by-stage-and-known-issues"></a>Funktioner efter steg och kända problem
 
-Funktioner för anpassad princip/identitets upplevelse Framework är under konstant och snabb utveckling. Följande tabell är ett index över funktioner och tillgänglighet för komponenter.
+Anpassade princip funktioner är under ständig utveckling. Följande tabell är ett index över funktioner och tillgänglighet för komponenter.
 
 
 ### <a name="protocols-and-authorization-flows"></a>Protokoll och auktoriseringsarkiv
@@ -144,7 +144,7 @@ Funktioner för anpassad princip/identitets upplevelse Framework är under konst
 | Azure Portal – IEF UX |  |  | X |  |
 | Princip uppladdning |  |  | X |  |
 | [Application Insights användar resa loggar](troubleshoot-with-application-insights.md) |  | X |  | Används för fel sökning under utveckling.  |
-| [Application Insights händelse loggar](application-insights-technical-profile.md) |  | X |  | Används för att övervaka användar flöden i produktionen. |
+| [Application Insights händelse loggar](analytics-with-application-insights.md) |  | X |  | Används för att övervaka användar flöden i produktionen. |
 
 
 ## <a name="next-steps"></a>Nästa steg

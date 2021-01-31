@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.custom: references_regions
+ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696099"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220912"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikering mellan regioner av Azure NetApp Files volymer
 
@@ -28,26 +29,31 @@ Den Azure NetApp Files replikeringsinställningarna ger data skydd genom replike
 > [!IMPORTANT]
 > Funktionen för replikering över flera regioner finns för närvarande i offentlig för hands version. Du måste skicka in en Waitlist-begäran för att få åtkomst till funktionen via [Azure NetApp Files över flera regioner Waitlist sändnings sida](https://aka.ms/anfcrrpreviewsignup). Vänta tills en officiell bekräftelse skickas från Azure NetApp Files-teamet innan du använder funktionen för replikering över flera regioner.
 
-## <a name="supported-region-pairs"></a>Region par som stöds
+## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Multiregion-replikeringskonflikter som stöds
 
-Azure NetApp Files Volume Replication är för närvarande tillgänglig i följande fasta regions par:  
+Azure NetApp Files Volume Replication stöds mellan olika [Azures regionala par](/azure/best-practices-availability-paired-regions#azure-regional-pairs) och icke-par. Azure NetApp Files Volume Replication är för närvarande tillgänglig mellan följande regioner:  
 
-* Västra USA och östra USA
-* USA, väst 2 och östra USA 
-* USA, Central syd och USA, Central 
-* Södra centrala USA och östra USA
-* Södra centrala USA och östra USA 2 
-* Östra USA och östra USA 2  
-* USA, östra 2 och USA, Central 
+### <a name="azure-regional-pairs"></a>Regionala Azure-par
+
+* USA, östra och västra USA
+* USA, östra 2 och centrala USA
 * Östra Australien och Australien, sydöstra
 * Kanada, centrala och Kanada, öst
-* Centrala Indien och södra Indien
+* Södra Indien och centrala Indien 
 * Tyskland, västra centrala och Tyskland, norra
 * Japan, östra och Japan, väst
 * Nord Europa och Västeuropa
-* Sydostasien och östra Australien
-* Storbritannien, södra och Tyskland, västra centrala
 * Storbritannien, södra och Storbritannien, västra
+
+### <a name="azure-regional-non-pairs"></a>Regionala icke-adresspar i Azure
+
+*   USA, västra 2 och östra USA
+*   Södra centrala USA och centrala USA
+*   Södra centrala USA och östra USA
+*   Södra centrala USA och östra USA 2
+*   USA, östra och USA, östra 2
+*   Östra Australien och Sydostasien 
+*   Tyskland, västra centrala och Storbritannien, södra
 
 ## <a name="service-level-objectives"></a>Mål på service nivå
 

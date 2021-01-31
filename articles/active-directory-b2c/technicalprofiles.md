@@ -11,28 +11,28 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861868"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219680"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-En teknisk profil innehåller ett ramverk med en inbyggd mekanism för att kommunicera med olika typer av parter med hjälp av en anpassad princip i Azure Active Directory B2C (Azure AD B2C). Tekniska profiler används för att kommunicera med din Azure AD B2C-klient, för att skapa en användare eller läsa en användar profil. En teknisk profil kan självkontrolleras för att aktivera interaktion med användaren. Du kan till exempel samla in användarens autentiseringsuppgifter för att logga in och sedan återge sidan för registrerings sidan eller lösen ords återställningen.
+En teknisk profil är ett ramverk med en inbyggd mekanism för att kommunicera med olika typer av parter. Tekniska profiler används för att kommunicera med din Azure AD B2C-klient, för att skapa en användare eller läsa en användar profil. En teknisk profil kan självkontrolleras för att aktivera interaktion med användaren. Du kan till exempel samla in användarens autentiseringsuppgifter för att logga in och sedan återge sidan för registrerings sidan eller lösen ords återställningen.
 
 ## <a name="type-of-technical-profiles"></a>Typ av tekniska profiler
 
 En teknisk profil möjliggör följande typer av scenarier:
 
-- [Application Insights](application-insights-technical-profile.md) att skicka händelse data till [Application Insights](../azure-monitor/app/app-insights-overview.md).
+- [Application Insights](analytics-with-application-insights.md) att skicka händelse data till [Application Insights](../azure-monitor/app/app-insights-overview.md).
 - [Azure Active Directory](active-directory-technical-profile.md) -ger stöd för Azure Active Directory B2C användar hantering.
 - [Azure ad Multi-Factor Authentication](multi-factor-auth-technical-profile.md) – ger stöd för att verifiera ett telefonnummer med hjälp av azure AD Multi-Factor Authentication (MFA). 
 - [Anspråks omvandling](claims-transformation-technical-profile.md) -anrop för anrop av utdata för att manipulera anspråks värden, validera anspråk eller ange standardvärden för en uppsättning utgående anspråk.
-- [ID-token](id-token-hint.md) – verifierar `id_token_hint` JWT-tokens signatur, utfärdarens namn och token-målgruppen och extraherar anspråket från den inkommande token.
+- [ID-token-tips](id-token-hint.md) – verifierar `id_token_hint` JWT-token, utfärdarens namn och token-målgruppen och extraherar anspråket från den inkommande token.
 - [JWT-token-utfärdare](jwt-issuer-technical-profile.md) – avger en JWT-token som returneras tillbaka till det förlitande part programmet.
 - [OAuth1](oauth1-technical-profile.md) -Federation med valfri OAuth 1,0-protokoll identitets leverantör.
 - [OAuth2](oauth2-technical-profile.md) -Federation med valfri OAuth 2,0-protokoll identitets leverantör.
@@ -47,7 +47,7 @@ En teknisk profil möjliggör följande typer av scenarier:
 
 ## <a name="technical-profile-flow"></a>Tekniskt profil flöde
 
-Alla typer av tekniska profiler delar samma koncept. Du kan skicka indata-anspråk, köra anspråk och kommunicera med den konfigurerade parten, till exempel en identitetsprovider, REST API eller Azure AD Directory-tjänster. När processen har slutförts returnerar den tekniska profilen utgående anspråk och kan köra transformering av utgående anspråk. Följande diagram visar hur omvandlingar och mappningar som refereras i den tekniska profilen bearbetas. Oavsett vilken part den tekniska profilen interagerar med, efter det att en anspråks omvandling har körts, lagras de utgående anspråken från den tekniska profilen omedelbart i anspråks säcken.
+Alla typer av tekniska profiler delar samma koncept. Börja med att läsa ingångs anspråken, kör anspråk omvandling. Kommunicera sedan med den konfigurerade parten, till exempel en identitetsprovider, REST API eller Azure AD Directory-tjänster. När processen har slutförts returnerar den tekniska profilen utgående anspråk och kan köra transformering av utgående anspråk. Följande diagram visar hur omvandlingar och mappningar som refereras i den tekniska profilen bearbetas. När anspråks omvandlingen har körts lagras de utgående anspråken omedelbart i anspråks säcken. Oavsett vilken part den tekniska profilen interagerar med.
 
 ![Diagram som illustrerar det tekniska profil flödet](./media/technical-profiles/technical-profile-flow.png)
 
@@ -64,7 +64,7 @@ Alla typer av tekniska profiler delar samma koncept. Du kan skicka indata-anspr�
 1. [Transformeringar](claimstransformations.md)av **utdata-anspråk** – när den tekniska profilen har slutförts körs omvandlingen av utgående anspråk i Azure AD B2C. 
 1. **Hantering av enkel inloggning (SSO)** – behåller teknisk profils data till sessionen med hjälp av [SSO-sessionshantering](custom-policy-reference-sso.md).
 
-Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler som stöds av anspråks leverantören. Varje anspråks leverantör måste ha en eller flera tekniska profiler som avgör slut punkterna och de protokoll som behövs för att kommunicera med anspråks leverantören. En anspråks leverantör kan ha flera tekniska profiler.
+Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler som stöds av anspråks leverantören. Varje anspråks leverantör måste ha minst en teknisk profil. Den tekniska profilen avgör slut punkterna och de protokoll som behövs för att kommunicera med anspråks leverantören. En anspråks leverantör kan ha flera tekniska profiler.
 
 ```xml
 <ClaimsProvider>
@@ -90,20 +90,20 @@ Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler
 
 **TechnicalProfile** innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | Domän namnet för den tekniska profilen. Om din tekniska profil exempelvis anger Facebook Identity Provider, är domän namnet Facebook.com. |
 | DisplayName | 1:1 | Visnings namnet för den tekniska profilen. |
-| Beskrivning | 0:1 | Beskrivningen av den tekniska profilen. |
+| Description | 0:1 | Beskrivningen av den tekniska profilen. |
 | Protokoll | 1:1 | Protokollet som används för kommunikation med den andra parten. |
-| Metadata | 0:1 | En samling nyckel/värde-par som används av protokollet för att kommunicera med slut punkten i en transaktions kurs. |
+| Metadata | 0:1 | En samling nyckel/värde som styr beteendet för den tekniska profilen. |
 | InputTokenFormat | 0:1 | Formatet för Indataporten. Möjliga värden: `JSON` , `JWT` , `SAML11` eller `SAML2` . `JWT`Värdet representerar ett JSON Web token enligt IETF-specifikationen. `SAML11`Värdet representerar en SAML 1,1-säkerhetstoken som per Oasis-specifikation.  `SAML2`Värdet representerar en SAML 2,0-säkerhetstoken som per Oasis-specifikation. |
 | OutputTokenFormat | 0:1 | Formatet för utdatabufferten. Möjliga värden: `JSON` , `JWT` , `SAML11` eller `SAML2` . |
 | CryptographicKeys | 0:1 | En lista över kryptografiska nycklar som används i den tekniska profilen. |
 | InputClaimsTransformations | 0:1 | En lista med tidigare definierade referenser till anspråks omvandlingar som ska utföras innan anspråk skickas till anspråks leverantören eller den förlitande parten. |
 | InputClaims | 0:1 | En lista med tidigare definierade referenser till anspråks typer som tas in i den tekniska profilen. |
-| PersistedClaims | 0:1 | En lista med tidigare definierade referenser till anspråks typer som är beständiga av anspråks leverantören som relaterar till den tekniska profilen. |
-| DisplayClaims | 0:1 | En lista med tidigare definierade referenser till anspråks typer som presenteras av anspråks leverantören som relaterar till den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md). Funktionen DisplayClaims är för närvarande en för **hands version**. |
+| PersistedClaims | 0:1 | En lista över tidigare definierade referenser till anspråks typer som kommer att behållas av den tekniska profilen. |
+| DisplayClaims | 0:1 | En lista över tidigare definierade referenser till anspråks typer som presenteras av den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md). Funktionen DisplayClaims är för närvarande en för **hands version**. |
 | OutputClaims | 0:1 | En lista med tidigare definierade referenser till anspråks typer som tas ut i den tekniska profilen. |
 | OutputClaimsTransformations | 0:1 | En lista med tidigare definierade referenser till anspråks omvandlingar som ska utföras när anspråken tas emot från anspråks leverantören. |
 | ValidationTechnicalProfiles | 0: n | En lista med referenser till andra tekniska profiler som den tekniska profilen använder i validerings syfte. Mer information finns i [verifiering teknisk profil](validation-technical-profile.md)|
@@ -120,16 +120,16 @@ Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Namn | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` eller `None` . |
-| Hanterare | Nej | När protokoll namnet är inställt på `Proprietary` anger du det fullständigt kvalificerade namnet för den sammansättning som används av Azure AD B2C för att fastställa protokoll hanteraren. |
+| Name | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` eller `None` . |
+| Hanterare | Inga | När protokoll namnet är inställt på `Proprietary` anger du namnet på den sammansättning som används av Azure AD B2C för att fastställa protokoll hanteraren. |
 
 ## <a name="metadata"></a>Metadata
 
 Elementet **metadata** innehåller relevanta konfigurations alternativ för ett speciellt protokoll. Listan över metadata som stöds finns dokumenterade i motsvarande [tekniska profil](#type-of-technical-profiles) specifikation. Ett **metadataelement** innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
-| Objekt | 0: n | Metadata som relaterar till den tekniska profilen. Varje typ av teknisk profil har en annan uppsättning metadata-objekt. Mer information finns i avsnittet tekniska profil typer. |
+| Objekt | 0: n | Metadata som relaterar till den tekniska profilen. Varje typ av teknisk profil har en annan uppsättning metadata-objekt. Mer information finns i avsnittet tekniska profil typer.  |
 
 ### <a name="item"></a>Objekt
 
@@ -173,7 +173,7 @@ I följande exempel illustreras användningen av metadata som är relevanta för
 
 ## <a name="cryptographic-keys"></a>Kryptografiska nycklar
 
-Azure AD B2C lagrar hemligheter och certifikat i form av [princip nycklar](policy-keys-overview.md) för att upprätta förtroende med de tjänster som den integrerar med. Under den tekniska profilen som körs hämtar Azure AD B2C de kryptografiska nycklarna från Azure AD B2Cs princip nycklar och använder sedan nycklarna för att upprätta förtroende, kryptera eller signera en token. Dessa förtroenden består av:
+För att upprätta förtroende med de tjänster som den integrerar med, Azure AD B2C lagra hemligheter och certifikat i form av [princip nycklar](policy-keys-overview.md). Under den tekniska profilen som körs hämtar Azure AD B2C de kryptografiska nycklarna från Azure AD B2C princip nycklar. Använder sedan nycklarna för att upprätta förtroende, kryptera eller signera en token. Dessa förtroenden består av:
 
 - Federation med [OAuth1](oauth1-technical-profile.md#cryptographic-keys), [OAuth2](oauth2-technical-profile.md#cryptographic-keys)och [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) Identity providers
 - Skydda anslutningen till [REST API Services](secure-rest-api.md)
@@ -181,7 +181,7 @@ Azure AD B2C lagrar hemligheter och certifikat i form av [princip nycklar](polic
 
 **CryptographicKeys** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | Nyckel | 1: n | En kryptografisk nyckel som används i den här tekniska profilen. |
 
@@ -191,18 +191,18 @@ Azure AD B2C lagrar hemligheter och certifikat i form av [princip nycklar](polic
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Id | Nej | En unik identifierare för ett visst nyckel par som refereras från andra element i princip filen. |
+| Id | Inga | En unik identifierare för ett visst nyckel par som refereras från andra element i princip filen. |
 | StorageReferenceId | Ja | En identifierare för lagrings nyckel behållare som refereras från andra element i princip filen. |
 
 ## <a name="input-claims-transformations"></a>Transformeringar av inmatade anspråk
 
 **InputClaimsTransformations** -elementet kan innehålla en samling med ingångs anspråk för omvandlings element som används för att ändra inloggade anspråk eller skapa nya. 
 
-De utgående anspråken för en tidigare anspråk-omvandling i insamlingen av anspråk kan vara indata-anspråk för en efterföljande omvandling av indata-anspråk, vilket gör att du kan ha en sekvens av anspråks omvandlingar beroende på varandra.
+De utgående anspråken för en tidigare anspråk-omvandling i omvandlings samlingen för anspråk kan vara indata-anspråk för en efterföljande omvandling av indata-anspråk så att du kan ha en sekvens av anspråks omvandlingar beroende på varandra.
 
 **InputClaimsTransformations** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Identifieraren för en anspråks omvandling som ska köras innan anspråk skickas till anspråksprovidern eller den förlitande parten. En anspråks omvandling kan användas för att ändra befintliga ClaimsSchema-anspråk eller skapa nya. |
 
@@ -241,7 +241,7 @@ Följande tekniska profiler hänvisar till omvandlingen av **CreateOtherMailsFro
 
 **InputClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | En förväntad typ av Indatatyp. |
 
@@ -251,13 +251,13 @@ Följande tekniska profiler hänvisar till omvandlingen av **CreateOtherMailsFro
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| Standar | Nej | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
-| PartnerClaimType | Nej | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
+| ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ. Anspråket har redan definierats i avsnittet anspråks schema i princip filen, eller överordnad princip fil. |
+| Standar | Inga | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
+| PartnerClaimType | Inga | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
 
 ## <a name="display-claims"></a>Visa anspråk
 
-**DisplayClaims** -elementet innehåller en lista över anspråk som har definierats av [självkontrollerad teknisk profil](self-asserted-technical-profile.md) som visas på skärmen för insamling av data från användaren. I visnings anspråks samlingen kan du inkludera en referens till en [anspråks typ](claimsschema.md)eller en visare [som du](display-controls.md) har skapat. 
+**DisplayClaims** -elementet innehåller en lista över anspråk som ska visas på skärmen för att samla in data från användaren. I visnings anspråks samlingen kan du inkludera en referens till en [anspråks typ](claimsschema.md)eller en visare [som du](display-controls.md) har skapat. 
 
 - En anspråks typ är en referens till ett anspråk som ska visas på skärmen. 
   - Om du vill tvinga användaren att ange ett värde för ett bestämt anspråk anger du det **obligatoriska** attributet för **DisplayClaim** -elementet till `true` .
@@ -269,7 +269,7 @@ Ordningen på elementen i **DisplayClaims** anger i vilken ordning som Azure AD 
 
 **DisplayClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | En förväntad typ av Indatatyp. |
 
@@ -279,9 +279,9 @@ Ordningen på elementen i **DisplayClaims** anger i vilken ordning som Azure AD 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Nej | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| DisplayControlReferenceId | Nej | Identifieraren för en [visnings kontroll](display-controls.md) som redan har definierats i ClaimsSchema-avsnittet i princip filen eller den överordnade princip filen. |
-| Obligatoriskt | Nej | Anger om visnings kravet krävs. |
+| ClaimTypeReferenceId | Inga | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
+| DisplayControlReferenceId | Inga | Identifieraren för en [visnings kontroll](display-controls.md) som redan har definierats i ClaimsSchema-avsnittet i princip filen eller den överordnade princip filen. |
+| Obligatorisk | Inga | Anger om visnings kravet krävs. |
 
 I följande exempel illustreras användningen av Visa anspråk och visa kontroller med i en självkontrollerad teknisk profil.
 
@@ -315,7 +315,7 @@ Namnet på anspråket är namnet på [Azure AD-attributet](user-profile-attribut
 
 **PersistedClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Anspråks typen som ska sparas. |
 
@@ -326,8 +326,8 @@ Namnet på anspråket är namnet på [Azure AD-attributet](user-profile-attribut
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| Standar | Nej | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
-| PartnerClaimType | Nej | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
+| Standar | Inga | Ett standardvärde som ska användas för att skapa ett anspråk om anspråket inte finns. |
+| PartnerClaimType | Inga | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
 
 I följande exempel är den tekniska profilen **AAD-UserWriteUsingLogonEmail** eller [Start paketet](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts)som skapar ett nytt lokalt konto kvar efter anspråk:
 
@@ -346,7 +346,7 @@ I följande exempel är den tekniska profilen **AAD-UserWriteUsingLogonEmail** e
 
 **OutputClaims** är en samling anspråk som returneras tillbaka till anspråks säcken när den tekniska profilen har slutförts. Du kan använda de här anspråken i nästa steg för att dirigera eller utföra anspråk på utdata. **OutputClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1: n | En förväntad typ av utgående anspråk. |
 
@@ -357,19 +357,19 @@ I följande exempel är den tekniska profilen **AAD-UserWriteUsingLogonEmail** e
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| Standar | Nej | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
-|AlwaysUseDefaultValue |Nej |Tvinga användningen av standardvärdet.  |
-| PartnerClaimType | Nej | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
+| Standar | Inga | Ett standardvärde som ska användas för att skapa ett anspråk om anspråket inte finns. |
+|AlwaysUseDefaultValue |Inga |Tvinga användningen av standardvärdet.  |
+| PartnerClaimType | Inga | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om typ attributet för partner anspråk inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
 
 ## <a name="output-claims-transformations"></a>Transformeringar av utgående anspråk
 
-**OutputClaimsTransformations** -elementet kan innehålla en samling av **OutputClaimsTransformation** -element som används för att ändra de utgående anspråken eller skapa nya. Efter körningen sätts de utgående anspråken tillbaka i anspråks säcken. Du kan använda dessa anspråk i nästa Orchestration-steg.
+**OutputClaimsTransformations** -elementet kan innehålla en samling av **OutputClaimsTransformation** -element. Transformeringarna av utgående anspråk används för att ändra de utgående anspråken eller skapa nya. Efter körningen sätts de utgående anspråken tillbaka i anspråks säcken. Du kan använda dessa anspråk i nästa Orchestration-steg.
 
 De utgående anspråken för en tidigare anspråk-omvandling i insamlingen av anspråk kan vara indata-anspråk för en efterföljande omvandling av indata-anspråk, vilket gör att du kan ha en sekvens av anspråks omvandlingar beroende på varandra.
 
 **OutputClaimsTransformations** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | Identifierare för anspråks omvandlingar som ska köras innan anspråk skickas till anspråksprovidern eller den förlitande parten. En anspråks omvandling kan användas för att ändra befintliga ClaimsSchema-anspråk eller skapa nya. |
 
@@ -404,7 +404,7 @@ Följande tekniska profil refererar till omvandlingen av AssertAccountEnabledIsT
 
 ## <a name="validation-technical-profiles"></a>Verifiera tekniska profiler
 
-En teknisk validerings profil används för att verifiera vissa eller alla utgående anspråk för referensen i en [självkontrollerad teknisk profil](self-asserted-technical-profile.md#validation-technical-profiles). En teknisk verifierings profil är en vanlig teknisk profil från alla protokoll, till exempel [Azure Active Directory](active-directory-technical-profile.md) eller en [REST API](restful-technical-profile.md). Den tekniska verifierings profilen returnerar utgående anspråk eller returnerar felkoden. Fel meddelandet återges för användaren på skärmen, så att användaren kan försöka igen.
+En teknisk validerings profil används för att verifiera utgående anspråk i en [egen kontrollerad teknisk profil](self-asserted-technical-profile.md#validation-technical-profiles). En teknisk verifierings profil är en vanlig teknisk profil från alla protokoll, till exempel [Azure Active Directory](active-directory-technical-profile.md) eller en [REST API](restful-technical-profile.md). Den tekniska verifierings profilen returnerar utgående anspråk eller returnerar felkoden. Fel meddelandet återges för användaren på skärmen, så att användaren kan försöka igen.
 
 Följande diagram illustrerar hur Azure AD B2C använder en teknisk validerings profil för att verifiera användarautentiseringsuppgifter
 
@@ -412,7 +412,7 @@ Följande diagram illustrerar hur Azure AD B2C använder en teknisk validerings 
 
 **ValidationTechnicalProfiles** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Identifierarna för de tekniska profiler som används validerar några eller alla utgående anspråk för den refererande tekniska profilen. Alla indata-anspråk för den refererade tekniska profilen måste visas i de utgående anspråken för den refererande tekniska profilen. |
 
@@ -434,7 +434,9 @@ Följande diagram illustrerar hur Azure AD B2C använder en teknisk validerings 
 
 ## <a name="include-technical-profile"></a>Ta med teknisk profil
 
-En teknisk profil kan innehålla en annan teknisk profil för att ändra inställningar eller lägga till nya funktioner. **IncludeTechnicalProfile** -elementet är en referens till den gemensamma tekniska profil som en teknisk profil härleds från. Använd inkludering när du har flera tekniska profiler som delar kärn elementen för att minska redundansen och komplexiteten hos dina princip element. Använd en vanlig teknisk profil med den gemensamma uppsättningen konfiguration, tillsammans med en speciell uppgift som innehåller de vanliga tekniska profilerna. Anta till exempel att du har en [REST API teknisk profil](restful-technical-profile.md) med en enda slut punkt där du måste skicka en annan uppsättning anspråk för olika scenarier. Skapa en gemensam teknisk profil med delade funktioner som REST API slut punkts-URI, metadata, autentiseringstyp och kryptografiska nycklar. Skapa sedan speciella tekniska profiler för aktiviteter som innehåller den vanliga tekniska profilen, Lägg till indata-anspråk, utgående anspråk eller Skriv över den REST API slut punkts-URI som är relevant för den här tekniska profilen.
+En teknisk profil kan innehålla en annan teknisk profil för att ändra inställningar eller lägga till nya funktioner. **IncludeTechnicalProfile** -elementet är en referens till den gemensamma tekniska profil som en teknisk profil härleds från. Använd inkludering när du har flera tekniska profiler som delar kärn elementen för att minska redundansen och komplexiteten hos dina princip element. Använd en vanlig teknisk profil med den gemensamma uppsättningen konfiguration, tillsammans med en speciell uppgift som innehåller de vanliga tekniska profilerna. 
+
+Anta att du har en [REST API teknisk profil](restful-technical-profile.md) med en enda slut punkt där du måste skicka en annan uppsättning anspråk för olika scenarier. Skapa en gemensam teknisk profil med delade funktioner, till exempel REST API slut punkts-URI, metadata, autentiseringstyp och kryptografiska nycklar. Skapa en speciell uppgift tekniska profiler som innehåller den vanliga tekniska profilen. Lägg sedan till indata-anspråk, utgående anspråk eller Skriv över den REST API slut punkts-URI som är relevant för den tekniska profilen.
 
 **IncludeTechnicalProfile** -elementet innehåller följande attribut:
 
@@ -561,7 +563,10 @@ Både **AAD-UserReadUsingAlternativeSecurityId-noerror** och  **AAD-UserReadUsin
 - **OnItemExistenceInStringCollectionClaim**, kör bara när ett objekt finns i ett anspråk för en sträng samling.
 - **OnItemAbsenceInStringCollectionClaim** körs bara när det inte finns något objekt i ett anspråks krav för en sträng samling.
 
-Om du använder **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** eller **OnItemAbsenceInStringCollectionClaim** måste du ange följande metadata: **ClaimTypeOnWhichToEnable** anger det anspråks typ som ska utvärderas, **ClaimValueOnWhichToEnable** anger det värde som ska jämföras.
+Om du använder **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** eller **OnItemAbsenceInStringCollectionClaim** måste du ange följande metadata: 
+
+- **ClaimTypeOnWhichToEnable** – anger det anspråks typ som ska utvärderas.
+- **ClaimValueOnWhichToEnable** – anger värdet som ska jämföras.
 
 Följande tekniska profil körs endast om **identityprovider** -sträng samlingen innehåller värdet för `facebook.com` :
 

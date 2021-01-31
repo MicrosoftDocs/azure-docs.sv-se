@@ -266,9 +266,6 @@
             - name: Principverifiering
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
-        - name: Användningsanalys
-          href: analytics-with-application-insights.md
-          displayName: 'application insights, app insights'
         - name: Referens
           items:
             - name: TrustFrameworkPolicy
@@ -321,8 +318,6 @@
                   items:
                     - name: Om tekniska profiler för validering
                       href: validation-technical-profile.md
-                    - name: Application Insights
-                      href: application-insights-technical-profile.md
                     - name: Azure Active Directory
                       href: active-directory-technical-profile.md
                     - name: Azure AD-multifaktorautentisering
@@ -422,9 +417,6 @@
           displayName: 'migrate, b2clogin, owin'
     - name: Automation
       items:
-        - name: Azure Monitor
-          href: azure-monitor.md
-          displayName: 'log, logs, logging, usage, events'
         - name: Microsoft Graph API
           href: microsoft-graph-operations.md
           displayName: 'account, accounts, msgraph, ms graph, graph'
@@ -434,14 +426,23 @@
         - name: Hantera principer med PowerShell
           href: manage-custom-policies-powershell.md
           displayName: 'scripting, scripts, psh, custom policy'
-    - name: Granskningsloggar
-      href: view-audit-logs.md
     - name: Hantera användare – Azure Portal
       href: manage-users-portal.md
       displayName: 'create users, add users, delete users'
     - name: Skydda API Management-API
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: Loggar och övervakning
+      items:
+        - name: Granskningsloggar
+          href: view-audit-logs.md
+          displayName: 'log, logs, logging, usage, events'
+        - name: Azure Monitor
+          href: azure-monitor.md
+          displayName: 'log, logs, logging, usage, events'
+        - name: Användningsanalys
+          href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
     - name: Efterlevnad
       items:
         - name: Användaråtkomst

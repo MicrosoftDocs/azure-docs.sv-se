@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968357"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220002"
 ---
 # <a name="ibm-workloads-on-azure"></a>IBM-arbetsbelastningar på Azure
 
 Många arbets belastningar i IBM-stordatorer som baseras på z/OS kan replikeras i Azure utan att några funktioner går förlorade och utan användare till och med märker ändringar i sina underliggande system. Att vara värd för program på Azure ger dig de stordatorer som du behöver samt elastiskhet, tillgänglighet och potentiella besparingar i molnet.
 
-Azure har stöd för integrering med befintliga IBM-stordatorer, så att du kan migrera Applicates som gör det bäst att köra hybrid lösningar vid behov och migrera över tid. Även om du kan skriva om befintliga stordatorbaserade program för Azure, är det vanligare att vara värd för dem. När du skriver om läggs kostnaderna, komplexiteten och tiden till för migreringen. Med omvärdering kan du:
+Azure har stöd för integrering med befintliga IBM-stordator miljöer, så att du kan migrera de program som passar bra, köra hybrid lösningar vid behov och migrera över tid. Även om du kan skriva om befintliga stordatorbaserade program för Azure, är det vanligare att vara värd för dem. När du skriver om läggs kostnaderna, komplexiteten och tiden till för migreringen. Med omvärdering kan du:
 
 - Flytta program till en molnbaserad emulator.
 
@@ -41,4 +41,4 @@ Det finns ett omfattande partner eko system som hjälper dig att migrera IBM-sto
 - [Stordator-migrering: myths och fakta](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Installera IBM zD&T dev/test-miljö på Azure](./install-ibm-z-environment.md)
 - [Konfigurera en programutvecklare styrd distribution (ADCD) i IBM zD&T v1](./demo.md)
-- [IBM DB2-pureScale på Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [IBM DB2-pureScale på Azure](ibm-db2-purescale-azure.md)

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755252"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219968"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Metod tips och rekommendationer för Microsoft Identity Platform
 
@@ -68,7 +68,7 @@ Använd följande check lista för att se till att programmet är effektivt inte
 
 ![kryss rutan ](./media/active-directory-integration-checklist/checkbox-two.svg) Använd moderna autentiserings lösningar (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) för att på ett säkert sätt logga in användare.
 
-![CheckBox är ](./media/active-directory-integration-checklist/checkbox-two.svg) inte ett program direkt mot protokoll som OAuth 2,0 och Open ID. Använd i stället [Microsoft Authentication Library (MSAL)](msal-overview.md). MSAL-biblioteken kan på ett säkert sätt figursätta säkerhets protokoll i ett lättanvänt bibliotek, och du får inbyggt stöd för [villkorliga åtkomst](../conditional-access/overview.md) scenarier, [enkel inloggning (SSO)](../manage-apps/what-is-single-sign-on.md)och inbyggt stöd för cachelagring av token. Mer information finns i listan över [klient](reference-v2-libraries.md#microsoft-supported-client-libraries) bibliotek i Microsoft som stöds och [mellan bibliotek](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) och listan över [kompatibla klient bibliotek från tredje part](reference-v2-libraries.md#compatible-client-libraries).<br/><br/>Om du behöver manuell kod för autentiseringsprotokollen bör du följa en metod som [Microsoft sdl](https://www.microsoft.com/sdl/default.aspx). Var noga med säkerhets aspekterna i specifikationerna för varje protokoll.
+![CheckBox är ](./media/active-directory-integration-checklist/checkbox-two.svg) inte ett program direkt mot protokoll som OAuth 2,0 och Open ID. Använd i stället [Microsoft Authentication Library (MSAL)](msal-overview.md). MSAL-biblioteken kan på ett säkert sätt figursätta säkerhets protokoll i ett lättanvänt bibliotek, och du får inbyggt stöd för [villkorliga åtkomst](../conditional-access/overview.md) scenarier, [enkel inloggning (SSO)](../manage-apps/what-is-single-sign-on.md)och inbyggt stöd för cachelagring av token. Mer information finns i listan över [klient bibliotek](reference-v2-libraries.md)som stöds av Microsoft. Om du behöver manuell kod för autentiseringsprotokollen bör du följa [Microsofts sdl](https://www.microsoft.com/sdl/default.aspx) eller liknande utvecklings metod. Var noga med säkerhets aspekterna i specifikationerna för varje protokoll.
 
 ![kryss rutan ](./media/active-directory-integration-checklist/checkbox-two.svg) migrera befintliga appar från [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) till [Microsoft Authentication Library](msal-overview.md). MSAL är Microsofts senaste identitets plattforms lösning och föredras som ADAL. Den är tillgänglig på .NET, Java Script, Android, iOS, macOS och finns även i offentlig för hands version för python och Java. Läs mer om att migrera [ADAL.net](msal-net-migration.md)-, [ADAL.js](msal-compare-msal-js-and-adal-js.md)-och [ADAL.net-och iOS Broker](msal-net-migration-ios-broker.md) -appar.
 

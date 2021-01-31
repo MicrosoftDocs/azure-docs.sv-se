@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835535"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220759"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Omvärdering av stordator på Azure Virtual Machines
 
@@ -70,7 +70,7 @@ Så här kommer du igång:
 
 IBM DB2 pureScale-miljön tillhandahåller ett databas kluster för Azure. Den är inte identisk med den ursprungliga miljön, men den ger liknande tillgänglighet och skalning som IBM DB2 för z/OS som körs i en parallell Sysplex-installation.
 
-För att komma igång, se [IBM DB2 pureScale på Azure](../../linux/ibm-db2-purescale-azure.md).
+För att komma igång, se [IBM DB2 pureScale på Azure](.//ibm/ibm-db2-purescale-azure.md).
 
 ## <a name="considerations"></a>Överväganden
 

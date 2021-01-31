@@ -1,21 +1,21 @@
 ---
 title: Metod tips för prestanda – Azure Database for MySQL
-description: I den här artikeln beskrivs de bästa metoderna för att övervaka och justera prestanda för Azure Database for MySQL.
-author: mksuni
-ms.author: sumuth
+description: I den här artikeln beskrivs några rekommendationer för att övervaka och justera prestanda för Azure Database for MySQL.
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/28/2021
+ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880414"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217762"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Bästa praxis för optimala prestanda för din Azure Database for MySQL-enskild server
 
-Lär dig mer om bästa praxis för att få bästa möjliga prestanda när du arbetar med din Azure Database for MySQL-enskild server. När vi lägger till nya funktioner till plattformen kommer vi att fortsätta att förfina de bästa metoderna som beskrivs i det här avsnittet.
+Lär dig hur du får bästa möjliga prestanda när du arbetar med Azure Database for MySQL-en server. När vi lägger till nya funktioner till plattformen fortsätter vi att förfina våra rekommendationer i det här avsnittet.
 
 ## <a name="physical-proximity"></a>Fysisk närhet
 
@@ -47,8 +47,25 @@ Att upprätta en ny anslutning är alltid en dyr och tids krävande uppgift. Nä
 Den bästa metoden för Azure Database for MySQL prestanda är att allokera tillräckligt med RAM-minne, så att du kan arbeta i nästan helt i minnet. 
 
 - Kontrol lera om minnes procent andelen som används för att nå [gränserna](./concepts-pricing-tiers.md) med hjälp av [måtten för MySQL-servern](./concepts-monitoring.md). 
-- Ställ in aviseringar på sådana siffror för att säkerställa att när servrarna når gränser kan du vidta åtgärder för att åtgärda problemet. Baserat på de gränser som definieras kontrollerar du om du skalar upp databas-SKU: n, antingen till högre beräknings storlek eller till en bättre pris nivå som resulterar i en dramatisk ökning av prestandan. 
+- Ställ in aviseringar på sådana siffror för att säkerställa att när servrarna når gränser kan du vidta åtgärder för att åtgärda problemet. Baserat på de gränser som definieras kontrollerar du om du skalar upp databas-SKU: n, antingen till högre beräknings storlek eller till en bättre pris nivå, vilket resulterar i en dramatisk ökning av prestandan. 
 - Skala upp tills prestanda numren inte längre sjunker efter en skalnings åtgärd. Information om hur du övervakar en DB-instanss mått finns i [MySQL db-mått](./concepts-monitoring.md#metrics).
+ 
+## <a name="use-innodb-buffer-pool-warmup"></a>Använd InnoDB buffer uppvärmnings
+
+När du har startat om Azure Database for MySQL-servern laddas data sidorna i lagret som tabeller efter frågas, vilket leder till ökad latens och sämre prestanda för den första körningen av frågorna. Detta är kanske inte acceptabelt för svars känsliga arbets belastningar. 
+
+Användningen av InnoDB buffer uppvärmnings förkortar uppvärmningss perioden genom att läsa in disk sidor som fanns i bufferten innan omstarten, i stället för att vänta på DML-eller SELECT-åtgärder för att få åtkomst till motsvarande rader.
+
+Du kan minska uppvärmnings-perioden efter att du startat om din Azure Database for MySQL-server, vilket motsvarar en prestanda förmån genom att konfigurera [InnoDB-parametrar för buffertpooltillägget](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html). InnoDB sparar en procent andel av de senast använda sidorna för varje resurspool när servern stängs av och återställer sidorna vid Server start.
+
+Det är också viktigt att Observera att förbättrad prestanda kommer till kostnaden för längre start tid för servern. När den här parametern är aktive rad förväntas start-och start tid för servern för att öka beroende på den IOPS som har allokerats på servern. 
+
+Vi rekommenderar att du testar och övervakar omstarts tiden för att säkerställa att prestandan för start/omstart är acceptabel eftersom servern inte är tillgänglig under den tiden. Vi rekommenderar inte att du använder den här parametern med mindre än 1000 etablerade IOPS (eller med andra ord när lagrings utrymmet är mindre än 335 GB).
+
+Ange server parametern till om du vill spara statusen för bufferten vid avstängning av `innodb_buffer_pool_dump_at_shutdown` servern `ON` . På samma sätt anger du Server parametern `innodb_buffer_pool_load_at_startup` till `ON` för att återställa buffertens tillstånd vid Server start. Du kan styra påverkan på Start-och återstarts tid genom att sänka och finjustera Värdet för Server parametern `innodb_buffer_pool_dump_pct` . Den här parametern är som standard inställd på `25` .
+
+> [!Note]
+> Uppvärmnings-parametrarna för InnoDB buffer stöds bara i generella lagrings servrar med upp till 16 TB lagrings utrymme. Läs mer om [Azure Database for MySQL lagrings alternativ här](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage).
 
 ## <a name="next-steps"></a>Nästa steg
 

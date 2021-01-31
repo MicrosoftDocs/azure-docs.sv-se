@@ -1,150 +1,140 @@
 ---
-title: Bibliotek för Microsoft Identity Platform-autentisering
-description: Kompatibla klient bibliotek och Server mellan bibliotek, tillsammans med relaterade bibliotek, käll-och exempel länkar för Microsoft Identity Platform.
+title: Bibliotek för Microsoft Identity Platform-autentisering | Azure
+description: Lista över klient bibliotek och mellanprogram som är kompatibla med Microsoft Identity Platform. Använd de här biblioteken för att lägga till stöd för användar inloggning (autentisering) och skyddat webb-API-åtkomst (auktorisering) till dina program.
 services: active-directory
-author: negoe
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/25/2019
-ms.author: negoe
+ms.date: 01/29/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9549ebab687400e32bbc68a2c76cf8efc8c106c8
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756658"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218304"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Bibliotek för Microsoft Identity Platform-autentisering
 
-[Microsoft Identity Platform](../azuread-dev/azure-ad-endpoint-comparison.md) stöder OAuth 2,0-och OpenID Connect 1,0-protokoll som är bransch standard. Microsoft Authentication Library (MSAL) är utformat för att fungera med Microsoft Identity Platform. Du kan också använda bibliotek med öppen källkod som har stöd för OAuth 2,0 och OpenID Connect 1,0.
+Följande tabeller visar stöd för Microsoft Authentication Library för flera program typer. De innehåller länkar till bibliotekets källkod, där paketet för appens projekt hämtas, och om biblioteket stöder användar inloggning (autentisering), åtkomst till skyddade webb-API: er (auktorisering) eller både och.
 
-Vi rekommenderar att du använder bibliotek som skrivits av protokoll domän experter som följer en SDL-metod (Security Development Lifecycle). Dessa metoder omfattar [det som Microsoft följer][Microsoft-SDL]. Om du får en kod för protokollen bör du följa en metod som Microsoft SDL. Var noga med säkerhets aspekterna i specifikationerna för varje protokoll.
+Microsoft Identity Platform har certifierats av OpenID Foundation som en [certifierad OpenID-Provider](https://openid.net/certification/). Om du föredrar att använda ett annat bibliotek än Microsoft Authentication Library (MSAL) eller ett annat bibliotek som stöds av Microsoft väljer du ett med en [certifierad OpenID Connect-implementering](https://openid.net/developers/certified/).
 
-> [!NOTE]
-> Letar du efter ADAL (Azure Active Directory Authentication Library)? Kolla in [biblioteks guiden för ADAL](../azuread-dev/active-directory-authentication-libraries.md).
+Om du väljer att manuellt koda din egen protokoll nivå implementering av [OAuth 2,0 eller OpenID Connect 1,0](active-directory-v2-protocols.md), bör du gå noga med säkerhets aspekterna i varje Standards specifikation och följa en sdl-metod (Software Development Lifecycle) som [Microsoft sdl][Microsoft-SDL].
 
-## <a name="types-of-libraries"></a>Typer av bibliotek
+## <a name="single-page-application-spa"></a>SPA (Single-Side Application)
 
-Microsoft Identity Platform fungerar med två typer av bibliotek:
+Ett program med en enda sida körs helt och hållet på webbläsarens yta och hämtar sid data (HTML, CSS och Java Script) dynamiskt eller vid programmets inläsnings tid. Den kan anropa webb-API: er för att interagera med Server dels data källor.
 
-* **Klient bibliotek**: interna klienter och servrar använder klient bibliotek för att hämta åtkomsttoken för att anropa en resurs, till exempel Microsoft Graph.
-* **Server mellan bibliotek**: webbappar använder serverprogram bibliotek för användar inloggning. Webb-API: er använder Server mellanprogram bibliotek för att verifiera token som skickas av interna klienter eller andra servrar.
+Eftersom en SPA-kod körs helt i webbläsaren, betraktas den som en *offentlig klient* som inte kan lagra hemligheter på ett säkert sätt.
 
-## <a name="library-support"></a>Biblioteks stöd
+| Språk/ramverk | Projekt på<br/>GitHub                                                                                                    | Paket                                                                      | Komma<br/>igång                             | Logga in användare                                         | Få åtkomst till webb-API: er                                                 | Allmänt tillgänglig (GA) *eller*<br/>Offentlig för hands version<sup>1</sup> |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|:-----------------------------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| Angular              | [MSAL-vinkel 2,0](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)         | [@azure/msal-angular](https://www.npmjs.com/package/@azure/msal-angular)     | —                                               | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Offentlig för hands version                                               |
+| Angular              | [MSAL-vinkel](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/msal-angular-v1/lib/msal-angular) | [@azure/msal-angular](https://www.npmjs.com/package/@azure/msal-angular)     | [Självstudie](tutorial-v2-angular.md)              | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| AngularJS            | [MSAL AngularJS](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs)         | [@azure/msal-angularjs](https://www.npmjs.com/package/@azure/msal-angularjs) | —                                               | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Offentlig för hands version                                               |
+| JavaScript           | [MSAL.js 2,0](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)              | [@azure/msal-browser](https://www.npmjs.com/package/@azure/msal-browser)     | [Självstudie](tutorial-v2-javascript-auth-code.md) | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| React                | [MSAL-reagera](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)                 | [@azure/msal-react](https://www.npmjs.com/package/@azure/msal-react)         | —                                               | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Offentlig för hands version                                               |
+<!--
+| Vue | [Vue MSAL]( https://github.com/mvertopoulos/vue-msal) | [vue-msal]( https://www.npmjs.com/package/vue-msal) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
 
-Biblioteken ingår i två support kategorier:
+<sup>1</sup> [kompletterande användnings villkor för Microsoft Azure för][preview-tos] hands versioner gäller för bibliotek i *offentlig för hands version*.
 
-* **Microsoft-Support**: Microsoft tillhandahåller korrigeringar för dessa bibliotek och har utfört sdl-noggrannhet på dessa bibliotek.
-* **Kompatibel**: Microsoft har testat dessa bibliotek i grundläggande scenarier och har bekräftat att de fungerar med Microsoft Identity Platform. Microsoft tillhandahåller inte några korrigeringar för dessa bibliotek och har inte genomfört en granskning av dessa bibliotek. Problem och funktions begär Anden ska dirigeras till bibliotekets projekt med öppen källkod.
+## <a name="web-application"></a>Webbprogram
 
-En lista över bibliotek som fungerar med Microsoft Identity Platform finns i följande avsnitt.
+Ett webb program kör kod på en server som genererar och skickar HTML, CSS och Java Script till en användares webbläsare som ska återges. Användarens identitet upprätthålls som en session mellan användarens webbläsare (klient delen) och webb servern (Server delen).
 
-## <a name="microsoft-supported-client-libraries"></a>Klient bibliotek som stöds av Microsoft
+Eftersom ett webb programs kod körs på webb servern betraktas det som en *konfidentiell klient* som kan lagra hemligheter på ett säkert sätt.
 
-Använd bibliotek för klientautentisering för att hämta en token för att anropa ett skyddat webb-API.
+| Språk/ramverk | Projekt på<br/>GitHub                                                                                     | Paket                                                                                                    | Komma<br/>igång                               | Logga in användare                                            | Få åtkomst till webb-API: er                                                    | Allmänt tillgänglig (GA) *eller*<br/>Offentlig för hands version<sup>1</sup> |
+|----------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|:-------------------------------------------------:|:--------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------------------------:|
+| .NET                 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)                        | [Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)                      | —                                                 | ![Bibliotek kan inte begära ID-token för användar inloggning.][n] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y]    | Allmän tillgänglighet (GA)                                                           |
+| ASP.NET Core         | [ASP.NET-säkerhet](/aspnet/core/security/)                                                                | [Microsoft. AspNetCore. Authentication](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication/) | —                                                 | ![Bibliotek kan begära ID-token för användar inloggning.][y]    | ![Bibliotek kan inte begära åtkomsttoken för skyddade webb-API: er.][n] | Allmän tillgänglighet (GA)                                                           |
+| ASP.NET Core         | [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web)                               | [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web)                            | —                                                 | ![Bibliotek kan begära ID-token för användar inloggning.][y]    | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y]    | Allmän tillgänglighet (GA)                                                           |
+| Java                 | [MSAL4J](https://github.com/AzureAD/microsoft-authentication-library-for-java)                            | [msal4j](https://search.maven.org/artifact/com.microsoft.azure/msal4j)                                     | [Snabbstart](quickstart-v2-java-webapp.md)        | ![Bibliotek kan begära ID-token för användar inloggning.][y]    | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y]    | Allmän tillgänglighet (GA)                                                           |
+| Node.js              | [MSAL Node.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node) | [msal-nod](https://www.npmjs.com/package/@azure/msal-node)                                                | [Snabbstart](quickstart-v2-nodejs-webapp-msal.md) | ![Bibliotek kan begära ID-token för användar inloggning.][y]    | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y]    | Offentlig för hands version                                               |
+| Node.js              | [Azure AD Passport](https://github.com/AzureAD/passport-azure-ad)                                         | [Passport – Azure-AD](https://www.npmjs.com/package/passport-azure-ad)                                       | [Snabbstart](quickstart-v2-nodejs-webapp.md)      | ![Bibliotek kan begära ID-token för användar inloggning.][y]    | ![Bibliotek kan inte begära åtkomsttoken för skyddade webb-API: er.][n] | Allmän tillgänglighet (GA)                                                           |
+| Python               | [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python)                     | [msal](https://pypi.org/project/msal)                                                                      | [Snabbstart](quickstart-v2-python-webapp.md)      | ![Bibliotek kan begära ID-token för användar inloggning.][y]    | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y]    | Allmän tillgänglighet (GA)                                                           |
+<!--
+| Java | [ScribeJava](https://github.com/scribejava/scribejava) | [ScribeJava 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | ![X indicating no.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+| Java | [Gluu oxAuth](https://github.com/GluuFederation/oxAuth) | [oxAuth 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+| Node.js | [openid-client](https://github.com/panva/node-openid-client/) | [openid-client 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+| PHP | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [oauth2-client 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | ![X indicating no.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+| Ruby | [OmniAuth](https://github.com/omniauth/omniauth) | [omniauth 1.3.1](https://github.com/omniauth/omniauth/releases/tag/v1.3.1)<br/>[omniauth-oauth2 1.4.0](https://github.com/intridea/omniauth-oauth2) | ![X indicating no.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+-->
 
-| Plattform | Bibliotek | Ladda ned | Källkod | Exempel | Referens | Konceptuellt dokument | Översikt |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Ensidesapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Konceptuella dokument](msal-overview.md)| [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-![Angular](media/sample-v2-code/logo_angular.png) | MSAL-vinkel | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Vinkel SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Konceptuella dokument](msal-overview.md) | [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Skrivbordsapp](/windows/apps/desktop/) | [MSAL.NET](/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview&preserve-view=true) |[Konceptuella dokument](msal-overview.md) | [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
-| ![.NET Core-ikon](media/sample-v2-code/logo_NETCore.png) | Microsoft Identity Web  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Web) |[GitHub](https://github.com/AzureAD/microsoft-identity-web) | [Exempel](https://aka.ms/ms-id-web/samples) | [Microsoft. Identity. Web](/dotnet/api/microsoft.identity.web?view=azure-dotnet-preview&preserve-view=true) |[Konceptuella dokument](https://aka.ms/ms-id-web/conceptual-doc) | [Översikt](https://github.com/AzureAD/microsoft-identity-web/wiki#roadmap)
-| ![Python](media/sample-v2-code/logo_python.png) | MSAL python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Exempel](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
-| ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://search.maven.org/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Exempel](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Referens](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
-| iOS och macOS | MSAL iOS och macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS-app](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [MacOS-app](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Referens](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Konceptuella dokument](msal-overview.md) | |
-|![Android/Java](media/sample-v2-code/logo_Android.png) | MSAL Android | [Central lagrings plats](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android-app](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Konceptuella dokument](msal-overview.md) |[Översikt](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
+<sup>1</sup> [kompletterande användnings villkor för Microsoft Azure för][preview-tos] hands versioner gäller för bibliotek i *offentlig för hands version*.
 
-## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft-servrar som stöds av mellanprogram
+## <a name="desktop-application"></a>Skriv bords program
 
-Använd mellanprogram bibliotek för att skydda webb program och webb-API: er. Webbappar eller webb-API: er skrivna med ASP.NET eller ASP.NET Core använda mellanprogram biblioteken.
+Ett Skriv bords program är vanligt vis binär (kompilerad) kod som utgör ett användar gränssnitt och är avsett att köras på en användares skriv bord.
 
-| Plattform | Bibliotek | Ladda ned | Källkod | Exempel | Referens
-| --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET-säkerhet |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC-app](quickstart-v2-aspnet-webapp.md) |[ASP.NET API-referens](/dotnet/api/?view=aspnetcore-2.0&preserve-view=true) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel-tillägg för .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-app](quickstart-v2-aspnet-webapp.md) |[Referens](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet&preserve-view=true) |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Webbapp](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+Eftersom ett Skriv bords program körs på användarens skriv bord, betraktas det som en *offentlig klient* som inte kan lagra hemligheter på ett säkert sätt.
 
-## <a name="microsoft-supported-libraries-by-os--language"></a>Microsoft-bibliotek som stöds av OS/språk
+| Språk/ramverk | Projekt på<br/>GitHub                                                                                     | Paket                                                                               | Komma<br/>igång                        | Logga in användare                                         | Få åtkomst till webb-API: er                                                 | Allmänt tillgänglig (GA) *eller*<br/>Offentlig för hands version<sup>1</sup> |
+|----------------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|:------------------------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| Electron             | [MSAL Node.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node) | [@azure/msal-node](https://www.npmjs.com/package/@azure/msal-node)                    | —                                          | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Offentlig för hands version                                               |
+| Java                 | [MSAL4J](https://github.com/AzureAD/microsoft-authentication-library-for-java)                            | [msal4j](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j)               | —                                          | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| macOS (SWIFT/OBJ-C)  | [MSAL för iOS och macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)            | [MSAL](https://cocoapods.org/pods/MSAL)                                               | [Självstudie](tutorial-v2-ios.md)             | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| UWP                  | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)                        | [Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client) | [Självstudie](tutorial-v2-windows-uwp.md)     | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| WPF                  | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)                        | [Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client) | [Självstudie](tutorial-v2-windows-desktop.md) | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+<!--
+| Java | Scribe | [Scribe Java](https://mvnrepository.com/artifact/org.scribe/scribe) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+| React Native | [React Native App Auth](https://github.com/FormidableLabs/react-native-app-auth/blob/main/docs/config-examples/azure-active-directory.md) | [react-native-app-auth](https://www.npmjs.com/package/react-native-app-auth) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
 
-Vid stöd för operativ system vs-språk, är mappningen följande:
+<sup>1</sup> [kompletterande användnings villkor för Microsoft Azure för][preview-tos] hands versioner gäller för bibliotek i *offentlig för hands version*.
 
-| Plattform    | Windows    | Linux      | macOS      | iOS | Android    |
-|-------------|------------|------------|------------|------------|------------|
-| ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
-| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Core, MSAL.Net (.NET VB, Core, UWP)| ASP.NET Core, MSAL.Net (.NET Core) | ASP.NET Core, MSAL.Net (macOS)       | MSAL.Net (Xamarin. iOS) | MSAL.Net (Xamarin. Android)|
-| Swift <br> Objective-C |            |            | [MSAL för iOS och macOS](msal-overview.md) | [MSAL för iOS och macOS](msal-overview.md) |            |
-| ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
-| ![Python](media/sample-v2-code/logo_python.png) Python | MSAL python | MSAL python | MSAL python |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) Node.js | Passport. Node | Passport. Node | Passport. Node |
+## <a name="mobile-application"></a>Mobilprogram
 
-Se även [scenarier av plattformar och språk som stöds](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
+Ett mobil program är vanligt vis binär (kompilerad) kod som utgör ett användar gränssnitt och är avsett att köras på en användares mobila enhet.
 
-## <a name="compatible-client-libraries"></a>Kompatibla klient bibliotek
+Eftersom ett mobil program körs på användarens mobila enhet anses det vara en *offentlig klient* som inte kan lagra hemligheter på ett säkert sätt.
 
-| Plattform | Biblioteksnamn | Testad version | Källkod | Exempel |
-|:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | Version 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
-|![Vue](media/sample-v2-code/logo_vue.png)|[Vue-MSAL](https://github.com/mvertopoulos/vue-msal) | Version 3.0.3 |[Vue – msal](https://github.com/mvertopoulos/vue-msal) | |
-| ![Java](media/sample-v2-code/logo_java.png) | [Java](https://github.com/scribejava/scribejava) | [Version 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
-| ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect-bibliotek](https://github.com/GluuFederation/oxAuth) | [Version 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect-bibliotek](https://github.com/GluuFederation/oxAuth) | |
-| ![Python](media/sample-v2-code/logo_python.png) | [Begär Anden – OAuthlib](https://github.com/requests/requests-oauthlib) | [Version 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Begär Anden – OAuthlib](https://github.com/requests/requests-oauthlib) | |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [OpenID-klient](https://github.com/panva/node-openid-client) | [Version 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [OpenID-klient](https://github.com/panva/node-openid-client) | |
-| ![PHP](media/sample-v2-code/logo_php.png) | [PHP-OAuth2 – klient](https://github.com/thephpleague/oauth2-client) | [Version 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [OAuth2-klient](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-OAuth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
-| iOS, macOS, & Android  | [Reagera på inbyggd app-autentisering](https://github.com/FormidableLabs/react-native-app-auth) | [Version 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Reagera på inbyggd app-autentisering](https://github.com/FormidableLabs/react-native-app-auth) | |
+| Plattform          | Projekt på<br/>GitHub                                                                          | Paket                                                                               | Komma<br/>igång                    | Logga in användare                                         | Få åtkomst till webb-API: er                                                 | Allmänt tillgänglig (GA) *eller*<br/>Offentlig för hands version<sup>1</sup> |
+|-------------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|:--------------------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| Android (Java)    | [MSAL Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)        | [MSAL](https://mvnrepository.com/artifact/com.microsoft.identity.client/msal)         | [Snabbstart](quickstart-v2-android.md) | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| Android (Kotlin)  | [MSAL Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)        | [MSAL](https://mvnrepository.com/artifact/com.microsoft.identity.client/msal)         | —                                      | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| iOS (SWIFT/OBJ-C) | [MSAL för iOS och macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [MSAL](https://cocoapods.org/pods/MSAL)                                               | [Självstudie](tutorial-v2-ios.md)         | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| Xamarin (.NET)    | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)             | [Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client) | —                                      | ![Bibliotek kan begära ID-token för användar inloggning.][y] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+<!--
+| React Native |[React Native App Auth](https://github.com/FormidableLabs/react-native-app-auth/blob/main/docs/config-examples/azure-active-directory.md) | [react-native-app-auth](https://www.npmjs.com/package/react-native-app-auth) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
 
-För alla standarder-kompatibla bibliotek kan du använda Microsoft Identity Platform. Det är viktigt att veta var du ska gå till supporten:
+<sup>1</sup> [kompletterande användnings villkor för Microsoft Azure för][preview-tos] hands versioner gäller för bibliotek i *offentlig för hands version*.
 
-* Kontakta bibliotekets ägare för problem och nya funktions begär anden i biblioteks kod.
-* Kontakta Microsoft om du vill ha problem och nya funktions begär anden i implementeringen på tjänst sidan.
-* [Fil en funktions förfrågan](https://feedback.azure.com/forums/169401-azure-active-directory) för ytterligare funktioner som du vill se i protokollet.
-* [Skapa en support förfrågan](../../azure-portal/supportability/how-to-create-azure-support-request.md) om du hittar ett problem där Microsoft Identity Platform inte är kompatibel med OAuth 2,0 eller OpenID Connect 1,0.
+## <a name="service--daemon"></a>Service/daemon
 
-## <a name="related-content"></a>Relaterat innehåll
+Tjänster och daemon används ofta för server-till-Server och annan obevakad kommunikation (kallas ibland för kommunikation *).* Eftersom det inte finns någon användare på tangent bordet för att ange autentiseringsuppgifter eller medgivande till resurs åtkomst, autentiseras dessa program som de ska, inte en användare, när de begär åtkomst till en webb-API-resurs.
 
-Mer information om Microsoft Identity Platform finns i [Översikt över Microsoft Identity Platform][AAD-App-Model-V2-Overview].
+En tjänst eller daemon som körs på en server betraktas som en *konfidentiell klient* som kan lagra sina hemligheter på ett säkert sätt.
+
+| Språk/ramverk | Projekt på<br/>GitHub                                                                 | Paket                                                                                | Komma<br/>igång                           | Logga in användare                                            | Få åtkomst till webb-API: er                                                 | Allmänt tillgänglig (GA) *eller*<br/>Offentlig för hands version<sup>1</sup> |
+|----------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|:---------------------------------------------:|:--------------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| .NET                 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)    | [Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client/) | [Snabbstart](quickstart-v2-netcore-daemon.md) | ![Bibliotek kan inte begära ID-token för användar inloggning.][n] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| Java                 | [MSAL4J](https://github.com/AzureAD/microsoft-authentication-library-for-java)        | [msal4j](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html)          | —                                             | ![Bibliotek kan inte begära ID-token för användar inloggning.][n] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+| Python               | [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [msal – python](https://github.com/AzureAD/microsoft-authentication-library-for-python)  | [Snabbstart](quickstart-v2-python-daemon.md)  | ![Bibliotek kan inte begära ID-token för användar inloggning.][n] | ![-Biblioteket kan begära åtkomsttoken för skyddade webb-API: er.][y] | Allmän tillgänglighet (GA)                                                           |
+<!--
+|PHP| [The PHP League oauth2-client](https://oauth2-client.thephpleague.com/usage/) | [League\OAuth2](https://oauth2-client.thephpleague.com/) | ![Green check mark.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+-->
+
+<sup>1</sup> [kompletterande användnings villkor för Microsoft Azure för][preview-tos] hands versioner gäller för bibliotek i *offentlig för hands version*.
+
+## <a name="next-steps"></a>Nästa steg
+
+Mer information om Microsoft Authentication Library finns i [Översikt över Microsoft Authentication Library (MSAL)](msal-overview.md).
 
 <!--Image references-->
+[y]: ./media/common/yes.png
+[n]: ./media/common/no.png
 
-<!--Reference style links -->
+<!--Reference-style links -->
 [AAD-App-Model-V2-Overview]: v2-overview.md
-[ClientLib-NET-Lib]: https://www.nuget.org/packages/Microsoft.Identity.Client
-[ClientLib-NET-Repo]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
-[ClientLib-NET-Sample]: ./tutorial-v2-windows-desktop.md
-[ClientLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
-[ClientLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad
-[ClientLib-Node-Sample]:/
-[ClientLib-Iosmac-Lib]:/
-[ClientLib-Iosmac-Repo]:/
-[ClientLib-Iosmac-Sample]:/
-[ClientLib-Android-Lib]:/
-[ClientLib-Android-Repo]:/
-[ClientLib-Android-Sample]:/
-[ClientLib-Js-Lib]:/
-[ClientLib-Js-Repo]:/
-[ClientLib-Js-Sample]:/
-
-[Microsoft-SDL]: https://www.microsoft.com/sdl/default.aspx
-[ServerLib-Net4-Owin-Oidc-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/
-[ServerLib-Net4-Owin-Oidc-Repo]: https://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oidc-Sample]: ./tutorial-v2-asp-webapp.md
-[ServerLib-Net4-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OAuth/
-[ServerLib-Net4-Owin-Oauth-Repo]: https://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oauth-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/
-[ServerLib-Net-Jwt-Lib]: https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt
-[ServerLib-Net-Jwt-Repo]: https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet
-[ServerLib-Net-Jwt-Sample]:/
-[ServerLib-NetCore-Owin-Oidc-Lib]: https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OpenIdConnect/
-[ServerLib-NetCore-Owin-Oidc-Repo]: https://github.com/aspnet/Security
-[ServerLib-NetCore-Owin-Oidc-Sample]: https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2
-[ServerLib-NetCore-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OAuth/
-[ServerLib-NetCore-Owin-Oauth-Repo]: https://github.com/aspnet/Security
-[ServerLib-NetCore-Owin-Oauth-Sample]:/
-[ServerLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
-[ServerLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad/
-[ServerLib-Node-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-node-web/
+[Microsoft-SDL]: https://www.microsoft.com/securityengineering/sdl/
+[preview-tos]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

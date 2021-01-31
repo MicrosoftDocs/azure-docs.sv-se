@@ -3,165 +3,209 @@ title: Snabb start – etablera en simulerad X. 509-enhet till Azure IoT Hub med
 description: Snabb start – skapa och etablera en simulerad X. 509-enhet med python-enhets-SDK för IoT Hub Device Provisioning Service (DPS). Den här snabbstarten använder enskilda registreringar.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 01/29/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 28a65e9e5f85d3c1102875a97ae122a00456c607
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c151f78c6164cc62aac618a141a26eb1da574e3c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001428"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218390"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en simulerad X. 509-enhet med python-enhets-SDK för IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-I den här snabb starten skapar du en simulerad X. 509-enhet på en Windows-dator. Du använder enhets exempel python-kod för att ansluta den här simulerade enheten med IoT-hubben med hjälp av en enskild registrering med enhets etablerings tjänsten (DPS).
+I den här snabb starten etablerar du en utvecklings dator som en python X. 509-enhet. Du kan använda exempel enhets kod från [Azure IoT python SDK](https://github.com/Azure/azure-iot-sdk-python) för att ansluta enheten till din IoT-hubb. En enskild registrering används med enhets etablerings tjänsten (DPS) i det här exemplet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Bekant med [etablerings](about-iot-dps.md#provisioning-process) koncept.
 - Slut för ande av [konfigurations IoT Hub Device Provisioning service med Azure Portal](./quick-setup-auto-provision.md).
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Visual Studio 2015 +](https://visualstudio.microsoft.com/vs/) med Skriv bords utveckling med C++.
-- [Cmake build-system](https://cmake.org/download/).
+- [Python-3.5.3 eller senare](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/download/).
 
-> [!IMPORTANT]
-> Den här artikeln gäller endast den inaktuella v1 python SDK. Enhets-och tjänst klienter för IoT Hub Device Provisioning-tjänsten är ännu inte tillgängliga i v2. Teamet är för närvarande hårt för att ge v2 till funktionens paritet.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>Förbereda miljön 
 
-1. Kontrol lera att du har installerat antingen [Visual studio](https://visualstudio.microsoft.com/vs/) 2015 eller senare, med arbets belastningen "Desktop Development with C++" som är aktive rad för Visual Studio-installationen.
+1. Kontrollera att `git` är installerat på datorn och har lagts till i de miljövariabler som är tillgängliga för kommandofönstret. Se [Git-klientverktyg för Software Freedom Conservancy](https://git-scm.com/download/) för att få den senaste versionen av `git`-verktyg att installera, vilket omfattar **Git Bash**, kommandoradsappen som du kan använda för att interagera med det lokala Git-lagret. 
 
-2. Hämta och installera [CMake-buildsystemet](https://cmake.org/download/).
-
-3. Kontrollera att `git` är installerat på datorn och har lagts till i de miljövariabler som är tillgängliga för kommandofönstret. Se [Git-klientverktyg för Software Freedom Conservancy](https://git-scm.com/download/) för att få den senaste versionen av `git`-verktyg att installera, vilket omfattar **Git Bash**, kommandoradsappen som du kan använda för att interagera med det lokala Git-lagret. 
-
-4. Öppna en kommandotolk eller Git Bash. Klona GitHub-lagringsplatsen för enhetssimuleringens kodexempel.
+2. Öppna en git bash-prompt. Klona GitHub-lagrings platsen för [Azure IoT python SDK](https://github.com/Azure/azure-iot-sdk-python).
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
 
-5. Skapa en mapp på den lokala kopian av denna GitHub-lagringsplats för CMake-buildprocessen. 
 
-    ```cmd/sh
-    cd azure-iot-sdk-python/c
-    mkdir cmake
-    cd cmake
-    ```
+## <a name="create-a-self-signed-x509-device-certificate"></a>Skapa ett självsignerat X.509-enhetscertifikat 
 
-6. Kör följande kommando för att skapa Visual Studio-lösningen för etableringsklienten.
-
-    ```cmd/sh
-    cmake -Duse_prov_client:BOOL=ON ..
-    ```
-
-
-## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Skapa ett självsignerat X.509-enhetscertifikat och en post för enskild registrering
-
-I det här avsnittet använder du ett självsignerat X.509-certifikat. Det är viktigt att tänka på följande punkter:
+I det här avsnittet ska du skapa ett självsignerat X. 509-certifikat. Det är viktigt att tänka på följande punkter:
 
 * Självsignerade certifikat är endast till för testning och ska inte användas i produktion.
 * Standardutgångsdatumet för ett självsignerat certifikat är ett år.
 
-Du kommer att använda exempelkoden från Azure IoT C SDK för att skapa det certifikat som ska användas med posten för enskild registrering för den simulerade enheten.
+Om du inte redan har enhets certifikat för att autentisera en enhet kan du skapa ett självsignerat certifikat med OpenSSL för testning med den här artikeln.  OpenSSL ingår i git-installationen. 
+
+1. Kör följande kommando i git-bash-prompten.
+
+    # <a name="windows"></a>[Windows](#tab/windows)
+    
+    ```bash
+    winpty openssl req -outform PEM -x509 -sha256 -newkey rsa:4096 -keyout ./python-device.key.pem -out ./python-device.pem -days 365 -extensions usr_cert -subj "//CN=Python-device-01"
+    ```
+
+    > [!IMPORTANT]
+    > Det extra snedstreck som anges för ämnes namnet ( `//CN=Python-device-01` ) krävs bara för att undanta strängen med git på Windows-plattformar. 
+
+    # <a name="linux"></a>[Linux](#tab/linux)
+    
+    ```bash
+    openssl req -outform PEM -x509 -sha256 -newkey rsa:4096 -keyout ./python-device.key.pem -out ./python-device.pem -days 365 -extensions usr_cert -subj "/CN=Python-device-01"
+    ```
+    
+    ---
+    
+2. När du uppmanas att **Ange PEM-pass frasen:** Använd pass frasen `1234` för testning med den här artikeln.    
+
+3. När du uppmanas **att bekräfta genom att ange PEM pass fras:** använder du pass frasen `1234` igen.    
+
+En test certifikat fil (*python-Device. pem*) och den privata nyckel filen (*python-Device. Key. pem*) skapas i katalogen där du körde `openssl` kommandot.
+
+
+## <a name="create-an-individual-enrollment-entry-in-dps"></a>Skapa en enskild registrerings post i DPS
+
 
 Azure IoT Device Provisioning Service stöder två typer av registreringar:
 
 - [Registreringsgrupper](concepts-service.md#enrollment-group): används för att registrera flera relaterade enheter.
 - [Enskilda registreringar](concepts-service.md#individual-enrollment): används för att registrera en enskild enhet.
 
-Den här artikeln visar enskilda registreringar.
+Den här artikeln visar en enskild registrering för en enskild enhet som ska tillhandahållas med en IoT-hubb.
 
-1. Öppna den lösning som har genererats i mappen *cmake* med namnet `azure_iot_sdks.sln`, och skapa den i Visual Studio.
+1. Logga in på Azure Portal, Välj knappen **alla resurser** i den vänstra menyn och öppna etablerings tjänsten.
 
-2. Högerklicka på projektet **dice\_device\_enrollment** i mappen **Provision\_Tools** och välj **Set as Startup Project** (Ange som startprojekt). Kör lösningen. 
+2. Från menyn enhets etablerings tjänst väljer du **Hantera registreringar**. Välj fliken **enskilda registreringar** och välj knappen **Lägg till individuell registrering** överst. 
 
-3. I utdatafönstret anger du `i` för individuell registrering när du blir uppmanad till det. I utdatafönstret visas ett lokalt genererat X.509-certifikat för din simulerade enhet. 
-    
-    ```output
-    Copy the first certificate to clipboard. Begin with the first occurrence of:
-    
-        -----BEGIN CERTIFICATE----- 
-        
-    End you copying after the first occurrence of:
-    
-        -----END CERTIFICATE-----
-        
-    Make sure to include both of those lines as well.
-    ``` 
-
-    ![Program för DICE-enhetsregistrering](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
- 
-4. Skapa en fil med namnet **_X509testcertificate.pem_** på din Windows-dator, öppna den i valfritt redigeringsprogram och kopiera urklippsinnehållet till filen. Spara filen. 
-
-5. Logga in på Azure Portal, Välj knappen **alla resurser** i den vänstra menyn och öppna etablerings tjänsten.
-
-6. Från menyn enhets etablerings tjänst väljer du **Hantera registreringar**. Välj fliken **enskilda registreringar** och välj knappen **Lägg till individuell registrering** överst. 
-
-7. Ange följande information på panelen **Lägg till registrering** :
+3. Ange följande information på panelen **Lägg till registrering** :
    - Välj **X.509** som identitet för bestyrkande *mekanism*.
-   - Under *filen Primary Certificate. pem eller. cer* väljer du *Välj en fil* för att välja certifikat filen **X509testcertificate. pem** som skapades i föregående steg.
+   - Under *filen Primary Certificate. pem eller. cer* väljer du *Välj en fil* för att välja certifikat filen **python-Device. pem** om du använder test certifikatet som skapades tidigare.
    - Du kan även ange följande information:
      - Välj en IoT hub som är länkad till din etableringstjänst.
-     - Ange ett unikt enhets-ID. Se till att undvika känsliga data när du namnger din enhet. 
      - Uppdatera **inledande enhetstvillingstatus** med önskad inledande konfiguration för enheten.
    - När du är klar trycker du på knappen **Spara** . 
 
      [![Lägg till enskild registrering för X. 509-attestering i portalen](./media/python-quick-create-simulated-device-x509/device-enrollment.png)](./media/python-quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
-   Om registreringen har lyckats visas din X.509-enhet som **riot-device-cert** under kolumnen *Registrerings-ID* på fliken *Enskilda registreringar*. 
+   Vid lyckad registrering visas din X. 509-enhet som **python-Device-01** under kolumnen *registrerings-ID* på fliken *enskilda registreringar* . Detta registrerings värde kommer från ämnes namnet för enhets certifikatet. 
 
 ## <a name="simulate-the-device"></a>Simulera enheten
 
-1. Från menyn enhets etablerings tjänst väljer du **Översikt**. Anteckna _ID-omfånget_ och den _globala tjänst slut punkten_.
+I python-etablerings exemplet [provision_x509. py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/provision_x509.py) finns i `azure-iot-sdk-python/azure-iot-device/samples/async-hub-scenarios` katalogen. I det här exemplet används sex miljövariabler för att autentisera och etablera en IoT-enhet med hjälp av DPS. Följande miljövariabler är:
+
+| Variabelnamn              | Description                                     |
+| :------------------------- | :---------------------------------------------- |
+| `PROVISIONING_HOST`        |  Det här värdet är den globala slut punkt som används för att ansluta till din DPS-resurs |    
+| `PROVISIONING_IDSCOPE`     |  Det här värdet är ID-omfånget för din DPS-resurs |    
+| `DPS_X509_REGISTRATION_ID` |  Det här värdet är ID: t för enheten. Det måste också matcha ämnes namnet för enhets certifikatet |    
+| `X509_CERT_FILE`           |  Enhetens certifikat fil namn |    
+| `X509_KEY_FILE`            |  Namnet på den privata nyckeln för ditt enhets certifikat |
+| `PASS_PHRASE`              |  Den pass fras som du använde för att kryptera certifikatet och filen med den privata nyckeln ( `1234` ). |    
+
+1. Från menyn enhets etablerings tjänst väljer du **Översikt**. Anteckna _ID-omfattning_ och _Global enhets slut punkt_.
 
     ![Tjänstinformation](./media/python-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
-2. Ladda ned och installera [Python 2.x eller 3.x](https://www.python.org/downloads/). Se till att använda en 32-bitars eller 64-bitars installation beroende på vad som krävs för din konfiguration. Se till att du lägger till Python i de plattformsspecifika miljövariablerna när du uppmanas att göra det under installationen. Om du använder Python 2.x kan du behöva [installera eller uppgradera *PIP* (pakethanteringssystemet för Python)](https://pip.pypa.io/en/stable/installing/).
+2. I din git bash-prompt använder du följande kommandon för att lägga till miljövariablerna för den globala enhetens slut punkt och ID-omfång.
+
+    ```bash
+    $export PROVISIONING_HOST=global.azure-devices-provisioning.net
+    $export PROVISIONING_IDSCOPE=<ID scope for your DPS resource>
+    ```
+
+3. Registrerings-ID: t för IoT-enheten måste matcha ämnes namnet i enhetens certifikat. Om du har genererat ett självsignerat test certifikat `Python-device-01` är enhetens ämnes namn och registrerings-ID. 
+
+    Om du redan har ett enhets certifikat kan du använda `certutil` för att verifiera ämnes namnet som används för enheten enligt nedan för ett självsignerat test certifikat:
+
+    ```bash
+    $ certutil python-device.pem
+    X509 Certificate:
+    Version: 3
+    Serial Number: fa33152fe1140dc8
+    Signature Algorithm:
+        Algorithm ObjectId: 1.2.840.113549.1.1.11 sha256RSA
+        Algorithm Parameters:
+        05 00
+    Issuer:
+        CN=Python-device-01
+      Name Hash(sha1): 1dd88de40e9501fb64892b698afe12d027011000
+      Name Hash(md5): a62c784820daa931b9d3977739b30d12
     
-    > [!NOTE] 
-    > Om du använder Windows ska du även installera [Visual C++ Redistributable för Visual Studio 2015](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads). Pip-paketen kräver Redistributable för att läsa in/köra C DLL-filer.
-
-3. Skapa Python-paketen med hjälp av [de här instruktionerna](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md).
-
-   > [!NOTE]
-   > Om du använder `pip` ska du även installera `azure-iot-provisioning-device-client`-paketet.
-
-4. Navigera till exempelmappen.
-
-    ```cmd/sh
-    cd azure-iot-sdk-python/provisioning_device_client/samples
+     NotBefore: 1/29/2021 7:05 PM
+     NotAfter: 1/29/2022 7:05 PM
+    
+    Subject:
+        ===> CN=Python-device-01 <===
+      Name Hash(sha1): 1dd88de40e9501fb64892b698afe12d027011000
+      Name Hash(md5): a62c784820daa931b9d3977739b30d12
     ```
 
-5. Med Python IDE redigerar du python-skriptet **provisioning\_device\_client\_sample.py**. Ändra variablerna _GLOBAL\_PROV\_URI_ och _ID\_SCOPE_ till de värden som angavs tidigare.
+    I git bash-prompten anger du miljövariabeln för registrerings-ID: t enligt följande:
 
-    ```python
-    GLOBAL_PROV_URI = "{globalServiceEndpoint}"
-    ID_SCOPE = "{idScope}"
-    SECURITY_DEVICE_TYPE = ProvisioningSecurityDeviceType.X509
-    PROTOCOL = ProvisioningTransportProvider.HTTP
+    ```bash
+    $export DPS_X509_REGISTRATION_ID=Python-device-01
     ```
 
-6. Kör exemplet. 
+4. I git bash-prompten anger du miljövariabler för certifikat filen, den privata nyckel filen och pass frasen.
 
-    ```cmd/sh
-    python provisioning_device_client_sample.py
+    ```bash
+    $export X509_CERT_FILE=./python-device.pem
+    $export X509_KEY_FILE=./python-device.key.pem
+    $export PASS_PHRASE=1234
     ```
 
-7. Programmet ansluts, registrerar enheten och visar ett meddelande om lyckad registrering.
+5. Granska koden för [provision_x509. py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/provision_x509.py) om du inte använder **python version 3,7** eller senare, gör du [kod ändringen som anges här](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios#advanced-iot-hub-scenario-samples-for-the-azure-iot-hub-device-sdk) för att ersätta `asyncio.run(main())` och spara ändringen. 
 
-    ![lyckad registrering](./media/python-quick-create-simulated-device-x509/enrollment-success.png)
+6. Kör exemplet. Exemplet ansluter, etablerar enheten till en hubb och skickar test meddelanden till hubben.
 
-8. I portalen går du till den IoT-hubb som är kopplad till din etableringstjänst och öppnar bladet **Device Explorer**. Vid lyckad etablering av den simulerade X.509-enheten till hubben visas dess enhets-ID på bladet **Device Explorer** med *STATUS***aktiverad**. Du kan behöva klicka på knappen **Uppdatera** längst upp om du redan har öppnat bladet innan du kör programmet för enhets exempel. 
+    ```bash
+    $ winpty python azure-iot-sdk-python/azure-iot-device/samples/async-hub-scenarios/provision_x509.py
+    RegistrationStage(RequestAndResponseOperation): Op will transition into polling after interval 2.  Setting timer.
+    The complete registration result is
+    Python-device-01
+    TestHub12345.azure-devices.net
+    initialAssignment
+    null
+    Will send telemetry from the provisioned device
+    sending message #4
+    sending message #7
+    sending message #2
+    sending message #8
+    sending message #5
+    sending message #9
+    sending message #1
+    sending message #6
+    sending message #10
+    sending message #3
+    done sending message #4
+    done sending message #7
+    done sending message #2
+    done sending message #8
+    done sending message #5
+    done sending message #9
+    done sending message #1
+    done sending message #6
+    done sending message #10
+    done sending message #3
+    ```
+
+7. I portalen navigerar du till IoT-hubben som är länkad till din etablerings tjänst och öppnar bladet **IoT-enheter** som finns under avsnittet **Explorer** på den vänstra menyn. Vid lyckad etablering av den simulerade X.509-enheten till hubben visas dess enhets-ID på bladet **Device Explorer** med *STATUS***aktiverad**. Du kan behöva klicka på knappen **Uppdatera** längst upp om du redan har öppnat bladet innan du kör programmet för enhets exempel. 
 
     ![Enheten är registrerad på IoT-hubben](./media/python-quick-create-simulated-device-x509/registration.png) 
 
@@ -179,7 +223,7 @@ Om du planerar att fortsätta att arbeta med och utforska enhets klient exemplet
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du skapat en simulerad X. 509-enhet på din Windows-dator och etablerade den till IoT-hubben med hjälp av Azure-IoT Hub Device Provisioning Service på portalen. Om du vill lära dig hur du registrerar X. 509-enheten program mässigt fortsätter du till snabb starten för program mässig registrering av X. 509-enheter. 
+I den här snabb starten har du skapat en simulerad X. 509-enhet på utvecklings datorn och etablerad den till IoT-hubben med hjälp av Azure-IoT Hub Device Provisioning Service på portalen. Om du vill lära dig hur du registrerar X. 509-enheten program mässigt fortsätter du till snabb starten för program mässig registrering av X. 509-enheter. 
 
 > [!div class="nextstepaction"]
 > [Azure snabb start – registrera X. 509-enheter till Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-python.md)

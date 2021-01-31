@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/29/2021
+ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706778"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219731"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Säkerhets kopiering och återställning i Azure Database for PostgreSQL-enskild server
 
@@ -82,6 +82,16 @@ Oberoende av ditt alternativ för säkerhets kopiering kan du utföra en återst
 
 Du kan behöva vänta tills nästa säkerhets kopiering av transaktions loggen tas innan du kan återställa till en tidpunkt under de senaste fem minuterna.
 
+Om du vill återställa en borttagen tabell 
+1. Återställa käll servern med hjälp av metoden för punkt-in-Time.
+2. Dumpa tabellen med `pg_dump` från den återställda servern.
+3. Byt namn på käll tabellen på den ursprungliga servern.
+4. Importera tabell med psql kommando rad på den ursprungliga servern.
+5. Du kan också ta bort den återställda servern.
+
+>[!Note]
+> Vi rekommenderar att du inte skapar flera återställningar för samma server på samma tid. 
+
 ### <a name="geo-restore"></a>Geo-återställning
 
 Du kan återställa en server till en annan Azure-region där tjänsten är tillgänglig om du har konfigurerat servern för geo-redundanta säkerhets kopieringar. Servrar som har stöd för upp till 4 TB lagrings utrymme kan återställas till den geo-kopplade regionen eller till en region som har stöd för upp till 16 TB lagring. För servrar som har stöd för upp till 16 TB lagrings utrymme kan geo-säkerhetskopieringar återställas i valfri region som har stöd för 16 TB-servrar. Granska [Azure Database for PostgreSQL pris nivåer](concepts-pricing-tiers.md) för listan över regioner som stöds.
@@ -97,7 +107,7 @@ Vid geo-återställning kan de serverkonfigurationer som kan ändras omfatta ber
 
 Efter en återställning från återställnings metoden bör du utföra följande uppgifter för att få dina användare och program att säkerhetskopiera och köra dem:
 
-- Om den nya servern är avsedd att ersätta den ursprungliga servern omdirigerar du klienter och klient program till den nya servern
+- Om den nya servern är avsedd att ersätta den ursprungliga servern omdirigerar du klienter och klient program till den nya servern. Ändra även användar namnet till `username@new-restored-server-name` .
 - Se till att det finns tillräckligt med brand Väggs-och VNet-regler på server nivå för att användarna ska kunna ansluta. De här reglerna kopieras inte från den ursprungliga servern.
 - Se till att lämpliga inloggningar och behörigheter på databas nivå är på plats
 - Konfigurera aviseringar efter behov

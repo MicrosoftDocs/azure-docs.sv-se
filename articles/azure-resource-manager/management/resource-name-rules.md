@@ -2,13 +2,13 @@
 title: Begränsningar för resurs namn
 description: Visar regler och begränsningar för namngivning av Azure-resurser.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.date: 01/27/2021
+ms.openlocfilehash: dbe19dae4509e1dd6aa95763e4d034c339bb0531
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806886"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220861"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Namngivningsregler och begränsningar för Azure-resurser
 
@@ -92,7 +92,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > [!div class="mx-tableFixed"]
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
-> | automationAccounts | Resursgrupp | 6-50 | Alfanumeriska tecken och bindestreck.<br><br>Börja med bokstav och sluta med alfanumeriska tecken. |
+> | automationAccounts | resurs grupp & region <br>(Se anmärkning nedan) | 6-50 | Alfanumeriska tecken och bindestreck.<br><br>Börja med bokstav och sluta med alfanumeriska tecken. |
 > | automationAccounts/certifikat | Automation-konto | 1-128 | Kan inte använda:<br> `<>*%&:\?.+/` <br><br>Kan inte sluta med blank steg.  |
 > | automationAccounts/anslutningar | Automation-konto | 1-128 | Kan inte använda:<br> `<>*%&:\?.+/` <br><br>Kan inte sluta med blank steg. |
 > | automationAccounts/autentiseringsuppgifter | Automation-konto | 1-128 | Kan inte använda:<br> `<>*%&:\?.+/` <br><br>Kan inte sluta med blank steg. |
@@ -101,6 +101,9 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | automationAccounts/variabler | Automation-konto | 1-128 | Kan inte använda:<br> `<>*%&:\?.+/` <br><br>Kan inte sluta med blank steg. |
 > | automationAccounts/Watcher | Automation-konto | 1–63 |  Alfanumeriska tecken, under streck och bindestreck.<br><br>Börja med en bokstav. |
 > | automationAccounts/Webhooks | Automation-konto | 1-128 | Kan inte använda:<br> `<>*%&:\?.+/` <br><br>Kan inte sluta med blank steg. |
+
+> [!NOTE]
+> Namn på Automation-konton är unika per region och resurs grupp. Namn för borttagna Automation-konton kanske inte är omedelbart tillgängliga.
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 

@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: ny princip tilldelning med REST API'
 description: I den här snabb starten använder du REST API för att skapa en Azure Policy tilldelning för att identifiera icke-kompatibla resurser.
-ms.date: 10/14/2020
+ms.date: 01/29/2021
 ms.topic: quickstart
-ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074013"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219985"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med REST API
 
@@ -47,6 +47,11 @@ Kör följande kommando för att skapa en ny principtilldelning:
          "displayName": "Audit VMs without managed disks Assignment",
          "description": "Shows all virtual machines not using managed disks",
          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+         "nonComplianceMessages": [
+             {
+                 "message": "Virtual machines should use a managed disk"
+             }
+         ]
        }
      }
      ```
@@ -56,7 +61,7 @@ Den föregående slut punkten och begär ande texten använder följande informa
 REST API-URI:
 - **Omfång** – Ett omfång avgör vilka resurser eller grupper med resurser som principtilldelningen används på. Det kan vara ett intervall från en hanterings grupp till en enskild resurs. Se till att ersätta `{scope}` med något av följande mönster:
   - Hanterings grupp: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Prenumerera `/subscriptions/{subscriptionId}`
+  - Prenumeration: `/subscriptions/{subscriptionId}`
   - Resursgrupp: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Klusterresursen `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
 - **Namn** – det faktiska namnet på tilldelningen. I det här exemplet användes _audit-vm-manageddisks_.
@@ -65,6 +70,7 @@ Brödtext i begäran:
 - **Visningsnamn** – Visningsnamn för principtilldelningen. I det här fallet använder du _granskning av virtuella datorer utan Managed disks tilldelning_.
 - **Beskrivning** – en djupare förklaring av vad principen gör eller varför den är tilldelad till det här omfånget.
 - **policyDefinitionId** – princip Definitions-ID: t, baserat på vilket du använder för att skapa tilldelningen. I det här fallet är det ID: t för granskning av princip definition för _virtuella datorer som inte använder hanterade diskar_.
+- **nonComplianceMessages** – ange det meddelande som visas när en resurs nekas på grund av inkompatibilitet eller inte har utvärderats vara inkompatibel. Mer information finns i [tilldelnings meddelanden som inte uppfyller kraven](./concepts/assignment-structure.md#non-compliance-messages).
 
 ## <a name="identify-non-compliant-resources"></a>Identifiera icke-kompatibla resurser
 

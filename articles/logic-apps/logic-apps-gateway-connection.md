@@ -3,19 +3,19 @@ title: Åtkomst till data källor lokalt
 description: Anslut till lokala data källor från Azure Logic Apps genom att skapa en data gateway-resurs i Azure
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, divswa, logicappspm
+ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 08/18/2020
-ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009271"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219002"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Ansluta till lokala datakällor från Azure Logic Apps
 
-När du har [installerat den lokala *datagatewayen* på en lokal dator](../logic-apps/logic-apps-gateway-install.md) och innan du kan komma åt data källor lokalt från dina Logi Kap par, måste du skapa en gateway-resurs i Azure för din gateway-installation. Du kan sedan välja denna gateway-resurs i de utlösare och åtgärder som du vill använda för [lokala anslutningar](../connectors/apis-list.md#on-premises-connectors) som är tillgängliga i Azure Logic Apps. Azure Logic Apps stöder Läs-och skriv åtgärder via datagatewayen. Dessa åtgärder har dock [gränser för deras nytto Last storlek](/data-integration/gateway/service-gateway-onprem#considerations).
+När du har [installerat den lokala *datagatewayen* på en lokal dator](../logic-apps/logic-apps-gateway-install.md) och innan du kan komma åt data källor lokalt från dina Logi Kap par måste du skapa en gateway-resurs i Azure för din gateway-installation. Du kan sedan välja denna gateway-resurs i de utlösare och åtgärder som du vill använda för [lokala anslutningar](../connectors/apis-list.md#on-premises-connectors) som är tillgängliga i Azure Logic Apps. Azure Logic Apps stöder Läs-och skriv åtgärder via datagatewayen. Dessa åtgärder har dock [gränser för deras nytto Last storlek](/data-integration/gateway/service-gateway-onprem#considerations).
 
 Den här artikeln visar hur du skapar en Azure gateway-resurs för en tidigare [installerad gateway på den lokala datorn](../logic-apps/logic-apps-gateway-install.md). Mer information om gatewayen finns i [så här fungerar gatewayen](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -48,7 +48,7 @@ I Azure Logic Apps stöder den lokala datagatewayen de [lokala](../connectors/ap
 * SQL Server
 * Teradata
 
-Du kan också skapa [anpassade anslutningar](../logic-apps/custom-connector-overview.md) som ansluter till data källor via http eller https med hjälp av rest eller SOAP. Även om själva gatewayen inte ådrar sig ytterligare kostnader, gäller [Logic Apps prissättnings modell](../logic-apps/logic-apps-pricing.md) för dessa anslutningar och andra åtgärder i Azure Logic Apps.
+Du kan också skapa [anpassade anslutningar](../logic-apps/custom-connector-overview.md) som ansluter till data källor via http eller https med hjälp av rest eller SOAP. Även om själva gatewayen inte ådrar sig extra kostnader gäller [Logic Apps prissättnings modell](../logic-apps/logic-apps-pricing.md) för dessa anslutningar och andra åtgärder i Azure Logic Apps.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -57,8 +57,11 @@ Du kan också skapa [anpassade anslutningar](../logic-apps/custom-connector-over
 * Du har [samma Azure-konto och prenumeration](../logic-apps/logic-apps-gateway-install.md#requirements) som du använde för din gateway-installation. Det här Azure-kontot måste tillhöra en enda [Azure Active Directory (Azure AD)-klient eller-katalog](../active-directory/fundamentals/active-directory-whatis.md#terminology). Du måste använda samma Azure-konto och-prenumeration för att skapa en gateway-resurs i Azure eftersom bara Gateway-administratören kan skapa Gateway-resursen i Azure. Tjänst huvud namn stöds inte för närvarande.
 
   * När du skapar en gateway-resurs i Azure väljer du en gateway-installation som länkar till din gateway-resurs och bara den gateway-resursen. Varje gateway-resurs kan bara länka till en gateway-installation. Du kan inte välja en gateway-installation som redan är kopplad till en annan gateway-resurs.
-  
-  * Din Logic app-och gateway-resurs behöver inte finnas i samma Azure-prenumeration. Förutsatt att du har åtkomst till prenumerationen, i utlösare och åtgärder som kan komma åt lokala data källor, kan du välja andra Azure-prenumerationer som har gateway-resurser.
+
+  * Din Logic app-och gateway-resurs behöver inte finnas i samma Azure-prenumeration. I utlösare och åtgärder där du kan använda Gateway-resursen kan du välja en annan Azure-prenumeration som har en gateway-resurs, men bara om den prenumerationen finns i samma Azure AD-klient eller katalog som din Logic app. Du måste också ha administratörs behörighet på gatewayen, vilken en annan administratör kan konfigurera åt dig. Mer information finns i [data Gateway: Automation med PowerShell-del 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) och [PowerShell: data Gateway-Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser).
+
+    > [!NOTE]
+    > För närvarande kan du inte dela en gateway-resurs eller-installation över flera prenumerationer. Om du vill skicka feedback om produkten, se [Microsoft Azure feedback forum](https://feedback.azure.com/forums/34192--general-feedback).
 
 <a name="create-gateway-resource"></a>
 
@@ -103,10 +106,10 @@ När du har skapat din gateway-resurs och associerat din Azure-prenumeration med
 
 1. Välj **Anslut via lokal datagateway**.
 
-1. Under **gatewayer** väljer du din Azure-prenumeration som har den gateway-resurs som du vill använda från listan **prenumerationer** .
+1. Under **Gateway** väljer du din Azure-prenumeration som har den gateway-resurs som du vill använda från listan **prenumeration** .
 
-   Förutsatt att du har åtkomst till prenumerationen kan du välja mellan olika Azure-prenumerationer som är associerade med en annan gateway-resurs. Din Logic app-och gateway-resurs behöver inte finnas i samma Azure-prenumeration.
-
+   Din Logic app-och gateway-resurs behöver inte finnas i samma Azure-prenumeration. Du kan välja från andra Azure-prenumerationer som var och en har en gateway-resurs, men bara om de här prenumerationerna finns i samma Azure AD-klient eller katalog som din Logic app, och du har administratörs behörighet på gatewayen, som en annan administratör kan konfigurera åt dig. Mer information finns i [data Gateway: Automation med PowerShell-del 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) och [PowerShell: data Gateway-Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser).
+  
 1. Välj den gateway-resurs som du vill använda från listan **anslutnings Gateway** , som visar tillgängliga gateway-resurser i den valda prenumerationen. Varje gateway-resurs är länkad till en enda Gateway-installation.
 
    > [!NOTE]

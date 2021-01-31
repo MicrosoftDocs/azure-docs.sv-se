@@ -4,16 +4,16 @@ description: Planera för en distribution med Azure File Sync, en tjänst som g�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 28b7419dfc889d1149765b884f1a5990a1e28f03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898112"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219484"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -302,48 +302,16 @@ Mer information om kryptering i överföring finns i [krav på säker överföri
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Tillgänglighet för Azure File Sync-regioner
-Azure File Sync är tillgängligt i följande regioner:
 
-| Azure-molnet | Geografisk region | Azure-region | Regions kod |
-|-------------|-------------------|--------------|-------------|
-| Offentliga | Asien | Asien, östra | `eastasia` |
-| Offentliga | Asien | Sydostasien | `southeastasia` |
-| Offentliga | Australien | Australien, östra | `australiaeast` |
-| Offentliga | Australien | Australien, sydöstra | `australiasoutheast` |
-| Offentliga | Brasilien | Brasilien, södra | `brazilsouth` |
-| Offentliga | Kanada | Kanada, centrala | `canadacentral` |
-| Offentliga | Kanada | Kanada, östra | `canadaeast` |
-| Offentliga | Europa | Europa, norra | `northeurope` |
-| Offentliga | Europa | Europa, västra | `westeurope` |
-| Offentliga | Frankrike | Frankrike, centrala | `francecentral` |
-| Offentliga | Frankrike | Frankrike, södra * | `francesouth` |
-| Offentliga | Indien | Indien, centrala | `centralindia` |
-| Offentliga | Indien | Indien, södra | `southindia` |
-| Offentliga | Japan | Japan, östra | `japaneast` |
-| Offentliga | Japan | Japan, västra | `japanwest` |
-| Offentliga | Korea | Sydkorea, centrala | `koreacentral` |
-| Offentliga | Korea | Sydkorea, södra | `koreasouth` |
-| Offentliga | Sydafrika | Sydafrika, norra | `southafricanorth` |
-| Offentliga | Sydafrika | Södra Afrika, västra * | `southafricawest` |
-| Offentliga | UAE | Förenade Arabemiraten Central * | `uaecentral` |
-| Offentliga | UAE | Förenade Arabemiraten, norra | `uaenorth` |
-| Offentliga | Storbritannien | Storbritannien, södra | `uksouth` |
-| Offentliga | Storbritannien | Storbritannien, västra | `ukwest` |
-| Offentliga | USA | Central US | `centralus` |
-| Offentliga | USA | East US | `eastus` |
-| Offentliga | USA | USA, östra 2 | `eastus2` |
-| Offentliga | USA | USA, norra centrala | `northcentralus` |
-| Offentliga | USA | USA, södra centrala | `southcentralus` |
-| Offentliga | USA | USA, västra centrala | `westcentralus` |
-| Offentliga | USA | USA, västra | `westus` |
-| Offentliga | USA | USA, västra 2 | `westus2` |
-| US Gov | USA | US Gov, Arizona | `usgovarizona` |
-| US Gov | USA | US Gov, Texas | `usgovtexas` |
-| US Gov | USA | US Gov, Virginia | `usgovvirginia` |
+Information om regionala tillgänglighet finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
-Azure File Sync stöder endast synkronisering med en Azure-filresurs som är i samma region som tjänsten för synkronisering av lagring.
+I följande regioner måste du begära åtkomst till Azure Storage innan du kan använda Azure File Sync med dem:
 
-För regionerna som har marker ATS med asterisker måste du kontakta Azure-supporten för att begära åtkomst till Azure Storage i dessa regioner. Processen beskrivs i [det här dokumentet](https://azure.microsoft.com/global-infrastructure/geographies/).
+- Frankrike, södra
+- Sydafrika, västra
+- Förenade Arabemiraten Central
+
+Följ processen i [det här dokumentet](https://azure.microsoft.com/global-infrastructure/geographies/)om du vill begära åtkomst för dessa regioner.
 
 ## <a name="redundancy"></a>Redundans
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 5567cf3bf606b08ce430f9189467d796498ae691
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953911"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218170"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Kod exempel för .NET (C#) för Azure Kognitiv sökning
 
@@ -69,3 +69,4 @@ Följande exempel publiceras också av Kognitiv sökning-teamet, men det finns i
 | [Lösningsaccelerator för kunskapsutvinning](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Innehåller mallar, stödfiler och analys rapporter som hjälper dig att prototypa en lösning för kunskaps utvinning från slut punkt till slut punkt.  |
 | [Covid-19 Sök i app-lagringsplatsen](https://github.com/liamca/covid19search) | Käll kods lagrings plats för den Kognitiv sökning baserade [Covid-19 Sökappen](https://covid19search.azurewebsites.net/) |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | Läs mer om [JFK-lösningen](https://www.microsoft.com/ai/ai-lab-jfk-files). |
+| [Sök + QnA Maker Accelerator](https://github.com/Azure-Samples/search-qna-maker-accelerator) | En [lösning](https://techcommunity.microsoft.com/t5/azure-ai/qna-with-azure-cognitive-search/ba-p/2081381) som kombinerar kraften hos Sök-och QNA Maker. Se live [demo-webbplatsen](https://aka.ms/qnaWithAzureSearchDemo). |

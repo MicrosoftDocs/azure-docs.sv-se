@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3f403308c77e5ee0dfc066ec3dc53100e520d274
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090679"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220708"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
@@ -29,6 +29,11 @@ API för textanalys uppdateras regelbundet. Den här artikeln innehåller inform
   * Förbättrad AI-kvalitet för allmänna enhets kategorier för alla v3-språk som stöds. 
 
 * `2021-01-05`Modell versionen för [språk identifiering](how-tos/text-analytics-how-to-language-detection.md), vilket ger ytterligare [språk stöd](language-support.md?tabs=language-detection).
+
+Dessa modell versioner är för närvarande inte tillgängliga i regionen USA, östra. 
+
+> [!div class="nextstepaction"]
+> [Lär dig mer om den nya NER-modellen](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)
 
 ## <a name="december-2020"></a>December 2020
 

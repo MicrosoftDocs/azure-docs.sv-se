@@ -3,19 +3,24 @@ title: Distribuera RD Gateway-roll Windows Virtual Desktop – Azure
 description: Distribuera RD Gateway-rollen i det virtuella Windows-skrivbordet.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca3c36f339d5cbca6d5b5990415fba180ae42a13
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798485"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220827"
 ---
-# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop"></a>Distribuera RD Gateway-rollen i Windows Virtual Desktop
+# <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>Distribuera RD Gateway-rollen i Windows Virtual Desktop (för hands version)
 
-I den här artikeln får du lära dig hur du distribuerar servrar för fjärrskrivbordsgateway i din miljö. Du kan installera Server rollerna på fysiska datorer eller virtuella datorer, beroende på om du skapar en lokal, molnbaserad eller hybrid miljö.
+> [!IMPORTANT]
+> Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion.
+> Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+I den här artikeln får du lära dig hur du använder RD Gateway-rollen (för hands version) för att distribuera servrar för fjärrskrivbordsgateway i din miljö. Du kan installera Server rollerna på fysiska datorer eller virtuella datorer beroende på om du skapar en lokal, molnbaserad eller hybrid miljö.
 
 ## <a name="install-the-rd-gateway-role"></a>Installera RD Gateway-rollen
 
