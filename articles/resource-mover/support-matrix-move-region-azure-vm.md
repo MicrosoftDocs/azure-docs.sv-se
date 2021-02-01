@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572195"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222806"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Stöd för att flytta virtuella Azure-datorer mellan Azure-regioner
 
@@ -154,7 +154,7 @@ Premium P20-, P30-, P40- eller P50-disk | minst 16 kB |20 MB/s | 1684 GB per di
 --- | --- | ---
 NIC | Stöds | Ange en befintlig resurs i mål regionen eller skapa en ny resurs under förberedelse processen. 
 Intern lastbalanserare | Stöds | Ange en befintlig resurs i mål regionen eller skapa en ny resurs under förberedelse processen.  
-Offentlig lastbalanserare | Stöds för närvarande inte | Ange en befintlig resurs i mål regionen eller skapa en ny resurs under förberedelse processen.  
+Offentlig lastbalanserare | Stöds | Ange en befintlig resurs i mål regionen eller skapa en ny resurs under förberedelse processen.  
 Offentlig IP-adress | Stöds | Ange en befintlig resurs i mål regionen eller skapa en ny resurs under förberedelse processen.<br/><br/> Den offentliga IP-adressen är landsspecifika och kommer inte att behållas i mål regionen efter flytten. Tänk på detta när du ändrar nätverks inställningar (inklusive belastnings Utjämnings regler) på mål platsen.
 Nätverkssäkerhetsgrupp | Stöds | Ange en befintlig resurs i mål regionen eller skapa en ny resurs under förberedelse processen.  
 Reserverad (statisk) IP-adress | Stöds | Du kan för närvarande inte konfigurera den här. Standardvärdet är källans värde. <br/><br/> Om NÄTVERKSKORTet på den virtuella käll datorn har en statisk IP-adress och mål under nätet har samma IP-adress, tilldelas den virtuella mål datorn.<br/><br/> Om mål under nätet inte har samma IP-adress kommer initieringen av den virtuella datorn att Miss förflyttningen.

@@ -3,12 +3,12 @@ title: Säkerhetskopiera och återställa krypterade virtuella Azure-datorer
 description: Beskriver hur du säkerhetskopierar och återställer krypterade virtuella Azure-datorer med tjänsten Azure Backup.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547159"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223465"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Säkerhetskopiera och återställa krypterade virtuella Azure-datorer
 
@@ -44,11 +44,11 @@ Azure Backup kan säkerhetskopiera och återställa virtuella Azure-datorer med 
 
 ### <a name="limitations"></a>Begränsningar
 
-- Du kan säkerhetskopiera och återställa krypterade virtuella datorer inom samma prenumeration och region.
+- Du kan säkerhetskopiera och återställa ADE-krypterade virtuella datorer inom samma prenumeration och region.
 - Azure Backup stöder virtuella datorer som har krypterats med fristående nycklar. Alla nycklar som ingår i ett certifikat som används för att kryptera en virtuell dator stöds inte för närvarande.
-- Du kan säkerhetskopiera och återställa krypterade virtuella datorer i samma prenumeration och region som Recovery Services säkerhets kopierings valv.
-- Det går inte att återställa krypterade virtuella datorer på nivån fil/mapp. Du måste återställa hela den virtuella datorn för att återställa filer och mappar.
-- När du återställer en virtuell dator kan du inte använda alternativet [Ersätt befintlig virtuell dator](backup-azure-arm-restore-vms.md#restore-options) för krypterade virtuella datorer. Det här alternativet stöds bara för okrypterade hanterade diskar.
+- Du kan säkerhetskopiera och återställa ADE-krypterade virtuella datorer inom samma prenumeration och region som Recovery Services säkerhets kopierings valv.
+- Det går inte att återställa ADE-krypterade virtuella datorer på nivån fil/mapp. Du måste återställa hela den virtuella datorn för att återställa filer och mappar.
+- När du återställer en virtuell dator kan du inte använda alternativet [Ersätt befintlig virtuell dator](backup-azure-arm-restore-vms.md#restore-options) för ade-krypterade virtuella datorer. Det här alternativet stöds bara för okrypterade hanterade diskar.
 
 ## <a name="before-you-start"></a>Innan du börjar
 
@@ -75,7 +75,7 @@ Dessutom finns det några saker som du kan behöva göra i vissa fall:
 
       ![Scenario fönster](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-1. Välj säkerhets kopierings princip i **säkerhets kopierings princip**  >  **Choose backup policy** och välj den princip som du vill associera med valvet. Välj sedan **OK**.
+1. Välj säkerhets kopierings princip i **säkerhets kopierings princip**  >  och välj den princip som du vill associera med valvet. Välj sedan **OK**.
     - En säkerhets kopierings princip anger när säkerhets kopieringar görs och hur länge de lagras.
     - Information om standardprincipen visas under den nedrullningsbara menyn.
 
@@ -125,6 +125,17 @@ Ange behörigheter:
 
 1. I Azure Portal väljer du **alla tjänster** och söker efter **nyckel valv**.
 1. Välj nyckel valvet som är associerat med den krypterade virtuella datorn som du säkerhetskopierar.
+
+    >[!TIP]
+    >Använd följande PowerShell-kommando för att identifiera ett associerat nyckel valv för en virtuell dator. Ersätt resurs gruppens namn och namnet på den virtuella datorn:
+    >
+    >`Get-AzVm -ResourceGroupName "MyResourceGroup001" -VMName "VM001" -Status`
+    >
+    > Leta efter nyckel valvs namnet på den här raden:
+    >
+    >`SecretUrl            : https://<keyVaultName>.vault.azure.net`
+    >
+
 1. Välj **åtkomst principer**  >  **Lägg till åtkomst princip**.
 
     ![Lägg till åtkomst princip](./media/backup-azure-vms-encryption/add-access-policy.png)

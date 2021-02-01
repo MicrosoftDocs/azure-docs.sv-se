@@ -3,18 +3,18 @@ title: Geo-haveri beredskap – Azure Event Hubs | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och utföra haveri beredskap i Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0e0a207630898eb7fe7613acb311364a64f9b38b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681691"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222890"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-geo-haveri beredskap 
 
 Återhämtning mot katastrofal-avbrott i data bearbetnings resurser är ett krav för många företag och i vissa fall även om bransch bestämmelser kräver det. 
 
-Azure Event Hubs sprider redan risken för oåterkalleliga fel på enskilda datorer eller till och med fullständiga rack i kluster som sträcker sig över flera fel domäner i ett Data Center och implementerar transparent fel identifiering och redundansväxling, så att tjänsten fortsätter att arbeta inom säkra tjänste nivåer och normalt utan märkbart avbrott i händelse av sådana fel. Om ett Event Hubs-namnområde har skapats med alternativet aktive rad för [tillgänglighets zoner](../availability-zones/az-overview.md), är risken att risken för avbrott är att sprida sig ytterligare över tre fysiskt åtskilda anläggningar, och tjänsten har tillräckligt med kapacitets reserver för att snabbt kunna hantera hela den kompletta driften. 
+Azure Event Hubs sprider redan risken för oåterkalleliga fel på enskilda datorer eller till och med fullständiga rack i kluster som sträcker sig över flera fel domäner i ett Data Center och implementerar transparent fel identifiering och redundansväxling, så att tjänsten fortsätter att arbeta inom säkra tjänste nivåer och normalt utan märkbart avbrott i händelse av sådana fel. Om ett Event Hubs-namnområde har skapats med det aktiverade alternativet för [tillgänglighets zoner](../availability-zones/az-overview.md), sprids risk risken ytterligare över tre fysiskt åtskilda anläggningar, och tjänsten har tillräckligt med kapacitets reserver för att snabbt kunna hantera hela den kompletta skadan. 
 
 Den alla aktiva Azure Event Hubs kluster modellen med support för tillgänglighets zon ger återhämtning mot grava maskin varu fel och till och med oåterkallelig förlust av hela Data Center anläggningar. Det kan fortfarande finnas grava situationer med omfattande fysisk förstörelse som även dessa åtgärder inte kan skydda sig mot. 
 
@@ -23,7 +23,7 @@ Event Hubs geo-Disaster Recovery-funktionen är utformad för att göra det enkl
 Med funktionen Geo-Disaster återställning ser du till att hela konfigurationen av ett namn område (Event Hubs, konsument grupper och inställningar) kontinuerligt replikeras från ett primärt namn område till ett sekundärt namn område vid länkning, och det gör att du kan initiera en gång som bara kan flyttas från den primära till den sekundära datorn när som helst. Flyttningen av redundansen pekar på nytt aliasnamn för namn området till det sekundära namn området och bryter sedan ihopparningen. Redundansväxlingen är nästan momentant när den har startats. 
 
 > [!IMPORTANT]
-> Funktionen möjliggör omedelbar kontinuitet i åtgärder med samma konfiguration, men **replikerar inte händelse data**. Om katastrofen orsakade förlust av alla zoner, bevaras händelse data i den primära händelsehubben efter att redundansväxlingen kommer att återställas och historiska händelser kan hämtas därifrån när åtkomsten återställs. För att replikera händelse data och hantera motsvarande namn områden i aktiva/aktiva konfigurationer för att hantera avbrott och haverier är det inte så Lean att återställa den här funktionen för geo-haveri beredskap, utan följer även i den här [guiden.](event-hubs-federation-overview.md)  
+> Funktionen möjliggör omedelbar kontinuitet i åtgärder med samma konfiguration, men **replikerar inte händelse data**. Om katastrofen orsakade förlust av alla zoner, kommer händelse data som bevaras i den primära händelsehubben efter redundansväxlingen att återställas och historiska händelser kan hämtas därifrån när åtkomsten återställs. För att replikera händelse data och hantera motsvarande namn områden i aktiva/aktiva konfigurationer för att hantera avbrott och haverier är det inte så Lean att återställa den här funktionen för geo-haveri beredskap, utan följer även i den här [guiden.](event-hubs-federation-overview.md)  
 
 ## <a name="outages-and-disasters"></a>Avbrott och katastrofer
 
@@ -56,10 +56,10 @@ Följande kombinationer av primära och sekundära namn rymder stöds:
 
 | Primär namnrymd | Sekundär namnrymd | Stöds | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Dedikerad | Yes | 
-| Dedikerad | Dedikerad | Yes | 
-| Dedikerad | Standard | No | 
+| Standard | Standard | Ja | 
+| Standard | Dedikerad | Ja | 
+| Dedikerad | Dedikerad | Ja | 
+| Dedikerad | Standard | Inga | 
 
 > [!NOTE]
 > Det går inte att para ihop namn områden som finns i samma dedicerade kluster. Du kan para ihop namn områden som finns i separata kluster. 

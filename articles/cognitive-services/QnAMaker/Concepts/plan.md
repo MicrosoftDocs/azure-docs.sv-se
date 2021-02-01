@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353178"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222873"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planera QnA Maker-appen
 
@@ -94,13 +94,13 @@ Du kan nu ha kunskaps banker på olika språk inom samma QnA Maker-resurs. När 
 
 ### <a name="ingest-data-sources"></a>Mata in data källor
 
-Du kan använda någon av följande inmatade [data källor](../index.yml) för att skapa en kunskaps bas:
+Du kan använda någon av följande inmatade [data källor](../Concepts/data-sources-and-content.md) för att skapa en kunskaps bas:
 
 * Offentlig URL
 * Privat SharePoint-URL
 * Fil
 
-Vid inmatnings processen konverteras [innehålls typer som stöds](../index.yml) till markdown. All ytterligare redigering av *svaret* görs med markdown. När du har skapat en kunskaps bas kan du redigera [QNA-par](question-answer-set.md) i QNA Maker Portal med RTF- [redigering](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
+Vid inmatnings processen konverteras [innehålls typer som stöds](../reference-document-format-guidelines.md) till markdown. All ytterligare redigering av *svaret* görs med markdown. När du har skapat en kunskaps bas kan du redigera [QNA-par](question-answer-set.md) i QNA Maker Portal med RTF- [redigering](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer).
 
 ### <a name="data-format-considerations"></a>Överväganden för data format
 
@@ -124,7 +124,7 @@ Du bör utforma ditt konversations flöde med en loop i åtanke så att en anvä
 
 Medarbetare kan vara andra utvecklare som delar den fullständiga utvecklings stacken i kunskaps bas programmet eller kan vara begränsade till att bara redigera kunskaps basen.
 
-Redigering av kunskaps bas har stöd för flera [rollbaserade åtkomst behörigheter](../index.yml) som du använder i Azure Portal för att begränsa omfattningen för en medarbetares förmågor.
+Redigering av kunskaps bas har stöd för flera [rollbaserade åtkomst behörigheter](../reference-role-based-access-control.md) som du använder i Azure Portal för att begränsa omfattningen för en medarbetares förmågor.
 
 ## <a name="integration-with-client-applications"></a>Integrering med klient program
 

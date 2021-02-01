@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 9b23beec5ab44b4e7802de7e4cadbfca1f505034
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8779381425d4180cc7320f251de9c2cfdd1f0510
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011500"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223431"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Hantera paket fångster med Azure Network Watcher med hjälp av PowerShell
 
@@ -128,7 +128,7 @@ När föregående steg har slutförts installeras paket insamlings agenten på d
 Nästa steg är att hämta Network Watcher-instansen. Den här variabeln skickas till `New-AzNetworkWatcherPacketCapture` cmdleten i steg 4.
 
 ```powershell
-$networkWatcher = Get-AzResource -ResourceType "Microsoft.Network/networkWatchers" | Where {$_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher  | Where {$_.Location -eq "westcentralus" }
 ```
 
 ### <a name="step-2"></a>Steg 2

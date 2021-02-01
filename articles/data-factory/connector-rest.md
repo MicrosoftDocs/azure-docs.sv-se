@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931318"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223110"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiera data från och till en REST-slutpunkt genom att använda Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,7 +26,7 @@ Den här artikeln beskriver hur du använder kopierings aktivitet i Azure Data F
 Skillnaden mellan den här REST-anslutningen, [http-kopplingen](connector-http.md)och [webb tabell anslutningen](connector-web-table.md) är:
 
 - **Rest Connector** stöder särskilt kopiering av data från RESTful-API: er; 
-- **Http-anslutningen** är generisk för att hämta data från alla http-slutpunkter, till exempel för att ladda ned filen. Innan den här REST-anslutningen blir tillgänglig kan du välja att använda HTTP-anslutning för att kopiera data från RESTful-API, som stöds men mindre funktions jämförelser till REST Connector.
+- **Http-anslutningen** är generisk för att hämta data från alla http-slutpunkter, till exempel för att ladda ned filen. Innan den här REST-anslutningen kan du använda HTTP-anslutning för att kopiera data från RESTful-API, som stöds men mindre funktions jämförelse med REST Connector.
 - **Webb tabells koppling** extraherar tabell innehåll från en HTML-webbsida.
 
 ## <a name="supported-capabilities"></a>Funktioner som stöds
@@ -43,7 +43,7 @@ Mer specifikt stöder den här generiska REST-anslutningen:
 > [!TIP]
 > Om du vill testa en begäran om data hämtning innan du konfigurerar REST-anslutningen i Data Factory kan du läsa om API-specifikationen för sidhuvuds-och text krav. Du kan använda verktyg som Postman eller webbläsare för att validera.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 

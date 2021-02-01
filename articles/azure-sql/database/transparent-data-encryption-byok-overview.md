@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 03/18/2020
-ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/01/2021
+ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325204"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223448"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent datakryptering i Azure SQL med kundhanterad nyckel
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -185,11 +185,9 @@ Ytterligare överväganden för loggfiler: säkerhetskopierade loggfiler förbli
 
 ## <a name="high-availability-with-customer-managed-tde"></a>Hög tillgänglighet med Kundhanterade TDE
 
-Även om det inte finns någon konfigurerad GEO-redundans för Server, rekommenderar vi starkt att du konfigurerar servern att använda två olika nyckel valv i två olika regioner med samma nyckel material. Du kan åstadkomma detta genom att skapa ett TDE-skydd med hjälp av primär nyckel valvet som finns i samma region som servern och klona nyckeln till ett nyckel valv i en annan Azure-region, så att servern har åtkomst till ett andra nyckel valv om det uppstår ett avbrott i primär nyckel valvet när databasen är igång.
+Även om det inte finns någon konfigurerad GEO-redundans för Server, rekommenderar vi starkt att du konfigurerar servern att använda två olika nyckel valv i två olika regioner med samma nyckel material. Nyckeln i det sekundära nyckel valvet i den andra regionen ska inte markeras som TDE-skydd och det är inte ens tillåtet. Om det uppstår ett avbrott som påverkar primär nyckel valvet kommer systemet automatiskt att växla till den andra länkade nyckeln med samma tumavtryck i det sekundära nyckel valvet, om det finns. Observera att växeln inte sker om TDE-skyddskomponenten inte kan nås på grund av återkallade åtkomst rättigheter, eller att nyckel-eller nyckel valvet har tagits bort, eftersom det kan indikera att kunden avsiktligt ville begränsa servern från att komma åt nyckeln. Att tillhandahålla samma nyckel material till två nyckel valv i olika regioner kan göras genom att skapa nyckeln utanför nyckel valvet och importera dem till båda nyckel valven. 
 
-Använd cmdleten Backup-AzKeyVaultKey för att hämta nyckeln i krypterat format från primär nyckel valvet och sedan använda Restore-AzKeyVaultKey-cmdleten och ange ett nyckel valv i den andra regionen för att klona nyckeln. Du kan också använda Azure Portal för att säkerhetskopiera och återställa nyckeln. Nyckeln i det sekundära nyckel valvet i den andra regionen ska inte markeras som TDE-skydd och det är inte ens tillåtet.
-
-Om det uppstår ett avbrott som påverkar primär nyckel valvet kommer systemet automatiskt att växla till den andra länkade nyckeln med samma tumavtryck i det sekundära nyckel valvet, om det finns. Observera att växeln inte sker om TDE-skyddskomponenten inte kan nås på grund av återkallade åtkomst rättigheter, eller att nyckel-eller nyckel valvet har tagits bort, eftersom det kan indikera att kunden avsiktligt ville begränsa servern från att komma åt nyckeln.
+Du kan också åstadkomma detta genom att generera nyckeln med hjälp av primär nyckel valvet som finns i samma region som servern och klona nyckeln till ett nyckel valv i en annan Azure-region. Använd cmdleten [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) för att hämta nyckeln i krypterat format från primär nyckel valvet och sedan använda cmdleten [restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) och ange ett nyckel valv i den andra regionen för att klona nyckeln. Du kan också använda Azure Portal för att säkerhetskopiera och återställa nyckeln. Nyckel säkerhets kopiering/återställning tillåts bara mellan nyckel valv i samma Azure-prenumeration och [Azure geografi](https://azure.microsoft.com/global-infrastructure/geographies/).  
 
 ![Single-Server HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/29/2020
+ms.openlocfilehash: 8071b0fb08f6456b4eb59a3dae875ab0c90ab64d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005477"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223514"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Läs in data i Azure Synapse Analytics med hjälp av Azure Data Factory
 
@@ -126,7 +126,7 @@ Den här artikeln visar hur du använder verktyget Data Factory Kopiera data fö
 
     b. På sidan **ny länkad tjänst** väljer du ditt lagrings konto och väljer **skapa** för att distribuera den länkade tjänsten.
 
-    c. I avsnittet **Avancerade inställningar** avmarkerar du alternativet **Använd typ standard** och väljer sedan **Nästa**.
+    c. Avmarkera alternativet **Använd typ standard** och välj sedan **Nästa**.
 
     ![Konfigurera PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

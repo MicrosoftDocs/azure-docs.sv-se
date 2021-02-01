@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 2537167783f3e68c52c665dafa9378193852acb4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.date: 02/01/2021
+ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930423"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223106"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Database for PostgreSQL med Azure Data Factory
 
@@ -175,8 +175,9 @@ För att kopiera data till Azure Database for PostgreSQL, stöds följande egens
 |:--- |:--- |:--- |
 | typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till **AzurePostgreSQLSink**. | Ja |
 | preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan du skriver data till Azure Database for PostgreSQL i varje körning. Du kan använda den här egenskapen för att rensa de förinstallerade data. | Inga |
-| writeBatchSize | Infogar data i Azure Database for PostgreSQL tabellen när buffertstorleken når writeBatchSize.<br>Tillåtet värde är ett heltal som representerar antalet rader. | Nej (standard är 10 000) |
-| writeBatchTimeout | Vänte tid för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes.<br>Tillåtna värden är TimeSpan-strängar. Ett exempel är 00:30:00 (30 minuter). | Nej (standard är 00:00:30) |
+| writeMethod | Den metod som används för att skriva data till Azure Database for PostgreSQL.<br>Tillåtna värden är: **CopyCommand** (för hands version, som är mer presterande), **BulkInsert** (standard). | Inga |
+| writeBatchSize | Antalet rader som lästs in i Azure Database for PostgreSQL per batch.<br>Tillåtet värde är ett heltal som representerar antalet rader. | Nej (standard är 1 000 000) |
+| writeBatchTimeout | Vänte tid för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes.<br>Tillåtna värden är TimeSpan-strängar. Ett exempel är 00:30:00 (30 minuter). | Nej (standard är 00:30:00) |
 
 **Exempel**:
 
@@ -204,7 +205,8 @@ För att kopiera data till Azure Database for PostgreSQL, stöds följande egens
             "sink": {
                 "type": "AzurePostgreSQLSink",
                 "preCopyScript": "<custom SQL script>",
-                "writeBatchSize": 100000
+                "writeMethod": "CopyCommand",
+                "writeBatchSize": 1000000
             }
         }
     }
@@ -221,7 +223,7 @@ I tabellen nedan visas de egenskaper som stöds av Azure Database for PostgreSQL
 
 | Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Tabeller | Om du väljer tabell som indata hämtar data flödet alla data från tabellen som anges i data uppsättningen. | Inga | - |*(endast för infogad data uppsättning)*<br>tableName |
+| Tabell | Om du väljer tabell som indata hämtar data flödet alla data från tabellen som anges i data uppsättningen. | Inga | - |*(endast för infogad data uppsättning)*<br>tableName |
 | Söka i data | Om du väljer fråga som indata anger du en SQL-fråga för att hämta data från källan, vilket åsidosätter alla tabeller som du anger i data uppsättningen. Att använda frågor är ett bra sätt att minska rader för testning eller sökning.<br><br>**Order by** -satsen stöds inte, men du kan ange en fullständig Select from-instruktion. Du kan också använda användardefinierade tabell funktioner. **Select * from udfGetData ()** är en UDF i SQL som returnerar en tabell som du kan använda i data flödet.<br>Exempel på frågor: `select * from mytable where customerId > 1000 and customerId < 2000` eller `select * from "MyTable"` . Observera i PostgreSQL behandlas enhets namnet som Skift läges okänsligt om det inte anges i citat tecken.| Inga | Sträng | DocumentDB |
 | Batchstorlek | Ange en batchstorlek för att segmentera stora data i batchar. | Inga | Integer | batchSize |
 | Isoleringsnivå | Välj någon av följande isolerings nivåer:<br>-Läs bekräftad<br>-Läs-undedikerat (standard)<br>– Upprepnings bar läsning<br>-Serialiserbar<br>-Ingen (ignorera isolerings nivå) | Inga | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALISERA<br/>ALTERNATIVET</small> |isolationLevel |

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: 68e5f937b8ad8367abf488598bda311a39d462c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600661"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222823"
 ---
 # <a name="common-questions"></a>Vanliga frågor
 
@@ -62,7 +62,7 @@ Ja, både under överföring och i vila.
 
 ### <a name="how-is-managed-identity-used-in-resource-mover"></a>Hur används den hanterade identiteten i resurs förflyttningen?
 
-[Hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) (tidigare kallat HANTERAD TJÄNSTIDENTITET (MIS)) tillhandahåller Azure-tjänster med en automatiskt hanterad identitet i Azure AD.
+[Hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) (tidigare kallad HANTERAD TJÄNSTIDENTITET (MSI)) tillhandahåller Azure-tjänster med en automatiskt hanterad identitet i Azure AD.
 - Resurs förflyttningen använder hanterad identitet så att den kan komma åt Azure-prenumerationer för att flytta resurser mellan regioner.
 - En flyttnings samling behöver en tilldelad identitet, med åtkomst till den prenumeration som innehåller de resurser som du flyttar.
 
@@ -74,7 +74,7 @@ Ja, både under överföring och i vila.
 En Azure Resource Mover-hanterad identitet måste ha minst följande behörigheter: 
 
 - Behörighet att skriva/skapa resurser i användar prenumeration, som är tillgängliga med *deltagar* rollen. 
-- Behörighet att skapa rolltilldelningar. Är vanligt vis tillgängligt med administratörs rollerna *ägare* eller *användar åtkomst* , eller med en anpassad roll som har tilldelats *behörigheten Microsoft. auktorisering/roll tilldelningar/Skriv* . Den här behörigheten behövs inte om data resurs resursens hanterade identitet redan har beviljats åtkomst till Azure Data Store. 
+- Behörighet att skapa rolltilldelningar. Är vanligt vis tillgängligt med administratörs rollerna *ägare* eller *användar åtkomst* , eller med en anpassad roll som har tilldelats *behörigheten Microsoft. auktorisering/roll tilldelningar/Skriv* . Den här behörigheten behövs inte om dataresursens hanterade identitet redan har beviljats åtkomst till Azure-datalagret. 
  
 När du lägger till resurser i Resource Mover-hubben på portalen hanteras behörigheter automatiskt så länge användaren har de behörigheter som beskrivs ovan. Om du lägger till resurser med PowerShell tilldelar du behörigheter manuellt.
 

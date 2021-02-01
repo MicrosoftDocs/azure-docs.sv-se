@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 02/01/2021
+ms.openlocfilehash: d11125ed00491f87844c7b0b344473825ad52a99
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638184"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223482"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiera data från och till Dynamics 365 (Common Data Service) eller Dynamics CRM genom att använda Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,10 +56,10 @@ För Dynamics 365 är det specifikt att följande program typer stöds:
 
 Den här anslutningen har inte stöd för andra program typer som finans, Operations och personal.
 
-Den här Dynamics Connector bygger på [Dynamics XRM-verktyg](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
-
 >[!TIP]
 >Om du vill kopiera data från ekonomi och åtgärder i Dynamics 365 kan du använda [Dynamics AX-anslutningen](connector-dynamics-ax.md).
+
+Den här Dynamics Connector bygger på [Dynamics XRM-verktyg](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -172,7 +172,7 @@ Följande egenskaper stöds för den länkade Dynamics-tjänsten.
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 och Dynamics CRM lokalt med IFD
 
-Ytterligare egenskaper som jämförs med Dynamics Online är **värdnamn** och **port** .
+Ytterligare egenskaper som jämförs med Dynamics Online är **värdnamn** och **port**.
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
@@ -326,7 +326,7 @@ För att kunna kopiera data till Dynamics stöder avsnittet Kopiera aktivitets *
 | writeBehavior | Åtgärdens Skriv funktion. Värdet måste vara "upsert". | Ja |
 | alternateKeyName | Det alternativa nyckel namnet som definierats i entiteten för att göra en upsert. | Nej. |
 | writeBatchSize | Rad antalet data som skrivs till Dynamics i varje batch. | Nej. Standardvärdet är 10. |
-| ignoreNullValues | Om null-värden ska ignoreras från indata förutom nyckel fält under en Skriv åtgärd.<br/><br/>Giltiga värden är **True** och **false** :<ul><li>**True** : lämna kvar data i målobjektet oförändrade när du gör en upsert-eller uppdaterings åtgärd. Infoga ett definierat standardvärde när du infogar en åtgärd.</li><li>**False** : uppdatera data i målobjektet till ett null-värde när du gör en upsert-eller uppdaterings åtgärd. Infoga ett null-värde när du gör en infognings åtgärd.</li></ul> | Nej. Standardvärdet är **false** . |
+| ignoreNullValues | Om null-värden ska ignoreras från indata förutom nyckel fält under en Skriv åtgärd.<br/><br/>Giltiga värden är **True** och **false**:<ul><li>**True**: lämna kvar data i målobjektet oförändrade när du gör en upsert-eller uppdaterings åtgärd. Infoga ett definierat standardvärde när du infogar en åtgärd.</li><li>**False**: uppdatera data i målobjektet till ett null-värde när du gör en upsert-eller uppdaterings åtgärd. Infoga ett null-värde när du gör en infognings åtgärd.</li></ul> | Nej. Standardvärdet är **false**. |
 
 >[!NOTE]
 >Standardvärdet för både Sink- **writeBatchSize** och kopierings aktiviteten **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** för Dynamics-Sink är 10. Därför skickas 100-poster samtidigt som standard till Dynamics.
@@ -397,7 +397,7 @@ Konfigurera motsvarande Data Factory data typ i en data uppsättnings struktur s
 | AttributeType. status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Det finns inte stöd för Dynamics data typerna **AttributeType. CalendarRules** , **AttributeType. MultiSelectPicklist** och **AttributeType. PartyList** .
+> Det finns inte stöd för Dynamics data typerna **AttributeType. CalendarRules**, **AttributeType. MultiSelectPicklist** och **AttributeType. PartyList** .
 
 ## <a name="writing-data-to-a-lookup-field"></a>Skriva data till ett uppslags fält
 
@@ -413,15 +413,15 @@ Om du vill skriva data i ett uppslags fält med flera mål som kund och ägare f
 
 Anta till exempel att källan har följande två kolumner:
 
-- **CustomerField** -kolumn av typen **GUID** , som är värdet för primär nyckel för målentiteten i Dynamics.
-- **Mål** kolumn av typen **sträng** , vilket är det logiska namnet på målentiteten.
+- **CustomerField** -kolumn av typen **GUID**, som är värdet för primär nyckel för målentiteten i Dynamics.
+- **Mål** kolumn av typen **sträng**, vilket är det logiska namnet på målentiteten.
 
-Anta också att du vill kopiera sådana data till fältet för enhets fältet för mottagar Dynamics **CustomerField** av typen **kund** .
+Anta också att du vill kopiera sådana data till fältet för enhets fältet för mottagar Dynamics **CustomerField** av typen **kund**.
 
 I kolumn mappningen för kopierings aktivitet mappar du de två kolumnerna enligt följande:
 
-- **CustomerField** till **CustomerField** . Den här mappningen är den normala fält mappningen.
-- **Rikta** till **CustomerField \@ EntityReference** . Kolumnen Sink är en virtuell kolumn som representerar enhets referensen. Ange sådana fält namn i en mappning, eftersom de inte visas genom att importera scheman.
+- **CustomerField** till **CustomerField**. Den här mappningen är den normala fält mappningen.
+- **Rikta** till **CustomerField \@ EntityReference**. Kolumnen Sink är en virtuell kolumn som representerar enhets referensen. Ange sådana fält namn i en mappning, eftersom de inte visas genom att importera scheman.
 
 ![Dynamics lookup-kolumn mappning](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

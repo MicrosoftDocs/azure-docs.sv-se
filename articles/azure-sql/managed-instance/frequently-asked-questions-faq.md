@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724024"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223414"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -363,7 +363,7 @@ Ja. Se [Konfigurera en anpassad DNS för Azure SQL-hanterad instans](./custom-dn
 
 **Kan jag göra DNS-uppdatering?**
 
-För närvarande tillhandahåller vi inte någon funktion för att uppdatera DNS-serverkonfigurationen för SQL-hanterad instans.
+Ja. Se [Synkronisera virtuella nätverk DNS-servrar på SQL-hanterad instans virtuellt kluster](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md).
 
 DNS-konfigurationen uppdateras slutligen:
 

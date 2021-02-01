@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1c9ac872587804adbd9e62a3dc3ef3daed9e0c25
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685078"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223059"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Skapa generaliserade avbildningar utan en etablerings agent
 
@@ -154,7 +154,7 @@ wireserver_conn.close()
 
 Om den virtuella datorn inte har python installerat eller tillgängligt kan du återge skriptet på ett program med ovanstående skript logik med följande steg:
 
-1. Hämta `ContainerId` och `InstanceId` genom att parsa svaret från WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://$168.63.129.16/machine?comp=goalstate` .
+1. Hämta `ContainerId` och `InstanceId` genom att parsa svaret från WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate` .
 
 2. Skapa följande XML-data, och injicera parsade `ContainerId` och `InstanceId` från ovanstående steg:
    ```xml

@@ -209,7 +209,7 @@
           items:
             - name: Skapa en arbetsyta
               items:
-                - name: Azure-portalen
+                - name: Azure Portal
                   href: learn/quick-create-workspace.md
                 - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
@@ -329,6 +329,8 @@
               href: platform/data-sources-linux-applications.md
             - name: IIS-loggar
               href: platform/data-sources-iis-logs.md
+            - name: ETW (Event Tracing for Windows) data
+              href: platform/data-sources-event-tracing-windows.md
             - name: Anpassade loggar
               href: platform/data-sources-custom-logs.md
             - name: Anpassade fält

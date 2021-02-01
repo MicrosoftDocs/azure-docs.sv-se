@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567426"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223292"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändra resurs roller för ett Access-paket i hantering av Azure AD-rättigheter
 
@@ -57,7 +57,7 @@ En resurs roll är en samling behörigheter som är kopplade till en resurs. Hur
 
 1. I den vänstra menyn klickar du på **åtkomst paket** och öppnar sedan Access-paketet.
 
-1. Klicka på **resurs roller**på den vänstra menyn.
+1. Klicka på **resurs roller** på den vänstra menyn.
 
 1. Klicka på **Lägg till resurs roller** för att öppna sidan Lägg till resurs roller för åtkomst till paket.
 
@@ -97,7 +97,7 @@ Mer information finns i [Jämför grupper](/office365/admin/create-groups/compar
     | Microsoft 365 | Microsoft 365 grupp som inte är team-aktiverad. Används för samarbete mellan användare, både inom och utanför företaget. |
     | Team | Microsoft 365 grupp som är team-aktiverade. Används för samarbete mellan användare, både inom och utanför företaget. |
 
-1. Välj **ägare** eller **medlem**i listan **roll** .
+1. Välj **ägare** eller **medlem** i listan **roll** .
 
     Vanligt vis väljer du medlems rollen. Om du väljer ägar rollen så att användarna kan lägga till eller ta bort andra medlemmar eller ägare.
 
@@ -144,7 +144,13 @@ Azure AD kan automatiskt tilldela användare åtkomst till en SharePoint Online-
 
 1. På sidan **Lägg till resurs roller att komma åt paket** klickar du på **SharePoint-webbplatser** för att öppna fönstret Välj SharePoint Online-webbplatser.
 
-1. Välj de SharePoint Online-webbplatser som du vill ta med i åtkomst paketet.
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="Åtkomst paket – Lägg till resurs roller – Välj SharePoint-webbplatser – Portal-vy":::
+
+1. Om du har aktiverat [multi-geo](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) för SharePoint väljer du den miljö som du vill välja platser från.
+    
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="Åtkomst paket – Lägg till resurs roller – Välj SharePoint multi-geo-platser":::
+
+1. Om multi-geo inte är aktiverat, behöver du inte välja en miljö. Välj de SharePoint Online-webbplatser som du vill ta med i åtkomst paketet.
 
     ![Åtkomst paket – Lägg till resurs roller – Välj SharePoint Online-webbplatser](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
@@ -166,7 +172,7 @@ Azure AD kan automatiskt tilldela användare åtkomst till en SharePoint Online-
 
 1. I den vänstra menyn klickar du på **åtkomst paket** och öppnar sedan Access-paketet.
 
-1. Klicka på **resurs roller**på den vänstra menyn.
+1. Klicka på **resurs roller** på den vänstra menyn.
 
 1. Leta upp den resurs roll som du vill ta bort i listan över resurs roller.
 

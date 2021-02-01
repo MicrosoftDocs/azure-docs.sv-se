@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 221678da819d32539d0078b72a87c61851ed3e8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089266"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223397"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Anslut ServiceNow med Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -29,10 +29,11 @@ Information om hur du installerar ITSMC finns i [Lägg till anslutningsprogram f
 
 ### <a name="oauth-setup"></a>OAuth-installation
 
-ServiceNow-versioner som stöds är Orlando, New York, Madrid, London, Kingston, Jakarta, Istanbul, Helsingfors och Genève.
+ServiceNow-versioner som stöds är Paris, Orlando, New York, Madrid, London, Kingston, Jakarta, Istanbul, Helsingfors och Genève.
 
 ServiceNow-administratörer måste generera ett klient-ID och klient hemlighet för sin ServiceNow-instans. Se följande information efter behov:
 
+- [Konfigurera OAuth för Paris](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Konfigurera OAuth för Orlando](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Konfigurera OAuth för New York](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [Konfigurera OAuth för Madrid](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

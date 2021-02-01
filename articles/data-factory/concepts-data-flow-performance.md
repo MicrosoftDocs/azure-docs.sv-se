@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 9706bee07f028c36b4d03311a7abbb969a1be685
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 01/29/2021
+ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944991"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222957"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestanda-och justerings guiden för att mappa data flöden
 
@@ -244,7 +244,7 @@ Om en kolumn motsvarar hur du vill att data ska matas ut, kan du välja **som da
 
 När du skriver till CosmosDB kan du förbättra prestanda genom att ändra genomflödet och batchstorleken under körningen av data flödet. Ändringarna börjar gälla under körningen av data flödes aktiviteten och återgår till de ursprungliga samlings inställningarna efter slut satsen. 
 
-**Batchstorlek:** Beräkna den grova rad storleken för dina data och se till att rad storleken * batchstorleken är mindre än 2 000 000. Om så är fallet ökar du batchstorleken för att få bättre data flöde
+**Batchstorlek:** Normalt räcker det att börja med standard storleken på batch. Om du vill justera det här värdet ytterligare beräknar du den stora objekt storleken för dina data och kontrollerar att objekt storleken * batchstorleken är mindre än 2 MB. Om så är fallet kan du öka batchstorleken för att få bättre data flöde.
 
 **Data flöde:** Ange en högre data flödes inställning här så att dokument kan skrivas snabbare till CosmosDB. Kom ihåg de högre RU-kostnaderna baserat på en hög data flödes inställning.
 
