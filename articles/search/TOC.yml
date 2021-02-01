@@ -230,7 +230,7 @@
           items:
             - name: Söka över blobar
               href: search-blob-storage-integration.md
-            - name: Förstå blobar med AI
+            - name: AI-anrikning över blobbar
               href: search-blob-ai-integration.md
             - name: Konfigurera en blobindexerare
               href: search-howto-indexing-azure-blob-storage.md

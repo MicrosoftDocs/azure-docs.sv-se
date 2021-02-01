@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131346"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222191"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Skydda dina Kubernetes-arbetsbelastningar
 
@@ -31,7 +31,7 @@ Security Center innehåller fler säkerhets funktioner för behållare om du akt
 
 
 
-## <a name="availability"></a>Tillgängligt
+## <a name="availability"></a>Tillgänglighet
 
 |Aspekt|Information|
 |----|:----|
@@ -39,7 +39,7 @@ Security Center innehåller fler säkerhets funktioner för behållare om du akt
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|**Ägare** eller **säkerhets administratör** för att redigera en tilldelning<br>**Läsare** för att Visa rekommendationerna|
 |Kluster som stöds:|Kubernetes v-1.14 (eller högre) krävs<br>Ingen PodSecurityPolicy-resurs (gammal PSP-modell) i klustren<br>Windows-noder stöds inte|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![No](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 
@@ -62,7 +62,7 @@ Konfigurera rekommendationerna genom att installera  **Azure policy-tillägget f
         > [!TIP]
         > Rekommendationen ingår i fem olika säkerhets kontroller och det spelar ingen roll vilket du väljer i nästa steg.
 
-    1. Från någon av säkerhets kontrollerna väljer du rekommendationen för att se vilka resurser som du kan installera tillägget på.
+    1. Från någon av säkerhets kontrollerna väljer du rekommendationen för att se vilka resurser du kan installera tillägget på.
     1. Välj lämpligt kluster och **åtgärda**.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Rekommendations informations sidan för * * Azure Policy tillägg för Kubernetes bör installeras och aktive ras i klustren * *":::
@@ -78,12 +78,12 @@ Konfigurera rekommendationerna genom att installera  **Azure policy-tillägget f
 
     | Rekommendations namn                                                         | Säkerhets kontroll                         | Konfiguration krävs |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | CPU-och minnes gränser för containern ska tillämpas                          | Skydda program mot DDoS-attacker | No                     |
-    | Privilegierade behållare bör undvikas                                     | Hantera åtkomst och behörigheter            | No                     |
-    | Oföränderligt (skrivskyddat) rot fil system ska tillämpas för behållare     | Hantera åtkomst och behörigheter            | No                     |
-    | Container med behörighets eskalering bör undvikas                       | Hantera åtkomst och behörigheter            | No                     |
-    | Att köra behållare som rot användare bör undvikas                           | Hantera åtkomst och behörigheter            | No                     |
-    | Behållare som delar känsliga värd namn områden bör undvikas              | Hantera åtkomst och behörigheter            | No                     |
+    | CPU-och minnes gränser för containern ska tillämpas                          | Skydda program mot DDoS-attacker | Inga                     |
+    | Privilegierade behållare bör undvikas                                     | Hantera åtkomst och behörigheter            | Inga                     |
+    | Oföränderligt (skrivskyddat) rot fil system ska tillämpas för behållare     | Hantera åtkomst och behörigheter            | Inga                     |
+    | Container med behörighets eskalering bör undvikas                       | Hantera åtkomst och behörigheter            | Inga                     |
+    | Att köra behållare som rot användare bör undvikas                           | Hantera åtkomst och behörigheter            | Inga                     |
+    | Behållare som delar känsliga värd namn områden bör undvikas              | Hantera åtkomst och behörigheter            | Inga                     |
     | Minst privilegierade Linux-funktioner bör tillämpas för behållare       | Hantera åtkomst och behörigheter            | **Ja**                |
     | Användningen av Pod HostPath-volym monteringar bör begränsas till en känd lista    | Hantera åtkomst och behörigheter            | **Ja**                |
     | Behållare ska bara lyssna på tillåtna portar                              | Begränsa obehörig nätverks åtkomst     | **Ja**                |

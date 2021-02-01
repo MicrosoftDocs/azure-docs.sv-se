@@ -6,14 +6,14 @@ author: amitbapat
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 3c727b75e0d1b1e05638617d6e460dade15fc3c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 444f279f8e96486bd6ad61a2ea2640a18b491c9c
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413487"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222242"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importera HSM-skyddade nycklar till hanterad HSM (BYOK)
 
@@ -69,6 +69,7 @@ Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure C
 |Cryptomathic|ISV (Enterprise Key Management System)|Flera HSM-varumärken och-modeller, inklusive<ul><li>Hjälp programmet nCipher</li><li>Thales</li><li>Utimaco</li></ul>Mer [information finns på Cryptomathic-webbplatsen](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK-verktyg och dokumentation](https://www.cryptomathic.com/azurebyok)|
 |Securosys SA|Tillverkare, HSM som en tjänst|Primus HSM-familjen, Securosys-moln HSM|[Primus BYOK-verktyg och dokumentation](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Flera HSM-varumärken och-modeller, inklusive<ul><li>Utimaco</li><li>Thales</li><li>Hjälp programmet nCipher</li></ul>Mer [information finns på StorMagic-webbplatsen](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS och Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
+|IBM|Tillverkare|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
 ||||
 
 
@@ -128,7 +129,7 @@ Se din HSM-leverantörs dokumentation för att ladda ned och installera BYOK-ver
 > [!NOTE] 
 > Det finns inte stöd för att importera RSA 1 024-bitars nycklar. Det finns för närvarande inte stöd för att importera en Elliptic Curve-nyckel (EC).
 >
-> **Känt problem** : det går bara att importera en RSA 4K-mål nyckel från Luna HSM: er med den inbyggda program varan 7.4.0 eller senare.
+> **Känt problem**: det går bara att importera en RSA 4K-mål nyckel från Luna HSM: er med den inbyggda program varan 7.4.0 eller senare.
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>Steg 4: överför din nyckel till hanterad HSM
 
