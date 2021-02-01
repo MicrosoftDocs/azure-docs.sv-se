@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ff8aa6688d8a838fa2e06d2eef546025cdd9213f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 762db9d165358f3347fc9b7f3aaaf39f0c762308
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340061"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063204"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Gör indexerare anslutningar via en privat slut punkt
 
@@ -47,14 +47,14 @@ I följande tabell visas Azure-resurser för vilka du kan skapa utgående privat
 
 Du kan också fråga de Azure-resurser för vilka utgående anslutningar för privata slut punkter stöds genom att använda [listan över API: er som stöds](/rest/api/searchmanagement/privatelinkresources/listsupported).
 
-I resten av den här artikeln används en blandning av [ARMClient](https://github.com/projectkudu/ARMClient) -och [Postman](https://www.postman.com/) -API: er för att demonstrera REST API-anrop.
+I resten av den här artikeln är en blandning av [Azure CLI](https://docs.microsoft.com/cli/azure/) (eller [ARMClient](https://github.com/projectkudu/ARMClient) om du föredrar) och [Postman](https://www.postman.com/) (eller någon annan http-klient som [vändning](https://curl.se/) om du föredrar) som används för att demonstrera REST API samtal.
 
 > [!NOTE]
 > Exemplen i den här artikeln baseras på följande antaganden:
 > * Namnet på Sök tjänsten är _contoso-search_, som finns i _contoso_ -resurs gruppen för en prenumeration med prenumerations-ID _00000000-0000-0000-0000-000000000000_. 
 > * Resurs-ID för den här Sök tjänsten är _/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.search/searchServices/contoso-search_.
 
-Resten av exemplen visar hur tjänsten _contoso-search_ kan konfigureras så att dess indexerare kan komma åt data från _/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-Storage_för säker lagrings konto.
+Resten av exemplen visar hur tjänsten _contoso-search_ kan konfigureras så att dess indexerare kan komma åt data från _/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-Storage_ för säker lagrings konto.
 
 ## <a name="secure-your-storage-account"></a>Skydda ditt lagrings konto
 
@@ -69,7 +69,11 @@ Konfigurera lagrings kontot så att [endast åtkomst från vissa undernät till�
 
 ### <a name="step-1-create-a-shared-private-link-resource-to-the-storage-account"></a>Steg 1: skapa en delad privat länk resurs till lagrings kontot
 
-Om du vill begära Azure Kognitiv sökning att skapa en utgående privat slut punkts anslutning till lagrings kontot, gör du följande API-anrop: 
+Om du vill begära Azure Kognitiv sökning att skapa en utgående privat slut punkts anslutning till lagrings kontot, gör du följande API-anrop, till exempel med [Azure CLI](https://docs.microsoft.com/cli/azure/): 
+
+`az rest --method put --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 --body @create-pe.json`
+
+Eller om du föredrar att använda [ARMClient](https://github.com/projectkudu/ARMClient):
 
 `armclient PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01 create-pe.json`
 
@@ -100,6 +104,10 @@ Som i alla asynkrona Azure-åtgärder `PUT` returnerar anropet ett `Azure-AsyncO
 
 Du kan söka i denna URI regelbundet för att hämta status för åtgärden. Innan du fortsätter rekommenderar vi att du väntar tills statusen för den delade privata länk resurs åtgärden har nått ett Terminal-tillstånd (det vill säga åtgärdens status har *slutförts*).
 
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01`
+
+Eller med ARMClient:
+
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe/operationStatuses/08586060559526078782?api-version=2020-08-01"`
 
 ```json
@@ -119,7 +127,7 @@ Du kan söka i denna URI regelbundet för att hämta status för åtgärden. Inn
 
    ![Skärm bild av Azure Portal som visar fönstret "anslutningar för privata slut punkter".](media\search-indexer-howto-secure-access\storage-privateendpoint-approval.png)
 
-1. Välj den privata slut punkt som Azure Kognitiv sökning skapat. I kolumnen **privat slut punkt** identifierar du den privata slut punkts anslutningen med namnet som har angetts i föregående API, väljer **Godkänn**och anger sedan ett lämpligt meddelande. Meddelande innehållet är inte signifikant. 
+1. Välj den privata slut punkt som Azure Kognitiv sökning skapat. I kolumnen **privat slut punkt** identifierar du den privata slut punkts anslutningen med namnet som har angetts i föregående API, väljer **Godkänn** och anger sedan ett lämpligt meddelande. Meddelande innehållet är inte signifikant. 
 
    Se till att den privata slut punkts anslutningen visas som visas på följande skärm bild. Det kan ta en till två minuter innan statusen uppdateras i portalen.
 
@@ -130,6 +138,10 @@ När den privata slut punkts anslutnings förfrågan har *godkänts kan trafiken
 ### <a name="step-2b-query-the-status-of-the-shared-private-link-resource"></a>Steg 2b: fråga efter status för den delade privata länk resursen
 
 Kontrol lera att den delade privata länk resursen har uppdaterats efter godkännande genom att hämta dess status med hjälp av [Get-API: et](/rest/api/searchmanagement/sharedprivatelinkresources/get).
+
+`az rest --method get --uri https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
+
+Eller med ARMClient:
 
 `armclient GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search/sharedPrivateLinkResources/blob-pe?api-version=2020-08-01`
 
@@ -173,7 +185,7 @@ Om `properties.provisioningState` resursen är `Succeeded` och `properties.statu
 ## <a name="troubleshooting"></a>Felsökning
 
 - Om det inte går att skapa indexeraren med ett fel meddelande som "autentiseringsuppgifter för data källa är ogiltiga" innebär det att antingen statusen för den privata slut punkts anslutningen inte har *godkänts* än eller att anslutningen inte fungerar. För att åtgärda problemet: 
-  * Hämta statusen för den delade privata länk resursen med hjälp av [Get-API: et](/rest/api/searchmanagement/sharedprivatelinkresources/get). Om statusen är *godkänd*kontrollerar du `properties.provisioningState` för resursen. Om statusen här är `Incomplete` innebär det att vissa underliggande beroenden för resursen inte kunde konfigureras. `PUT`Åtgärda problemet genom att utfärda begäran för att återskapa den delade privata länk resursen. Ett omgodkännande kan vara nödvändigt. Kontrol lera statusen för resursen på nytt för att kontrol lera att problemet är löst.
+  * Hämta statusen för den delade privata länk resursen med hjälp av [Get-API: et](/rest/api/searchmanagement/sharedprivatelinkresources/get). Om statusen är *godkänd* kontrollerar du `properties.provisioningState` för resursen. Om statusen här är `Incomplete` innebär det att vissa underliggande beroenden för resursen inte kunde konfigureras. `PUT`Åtgärda problemet genom att utfärda begäran för att återskapa den delade privata länk resursen. Ett omgodkännande kan vara nödvändigt. Kontrol lera statusen för resursen på nytt för att kontrol lera att problemet är löst.
 
 - Om du skapar indexeraren utan att ange dess `executionEnvironment` egenskap kan skapandet lyckas, men körnings historiken visar att indexeraren körs Miss lyckas. För att åtgärda problemet:
    * [Uppdatera indexeraren](/rest/api/searchservice/update-indexer) för att ange körnings miljön.
