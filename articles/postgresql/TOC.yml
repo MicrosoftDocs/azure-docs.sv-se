@@ -611,6 +611,8 @@
           items:
             - name: Övervaka och finjustera
               href: concepts-hyperscale-monitoring.md
+            - name: Granskningsloggar
+              href: concepts-hyperscale-audit.md
         - name: Konfigurationsalternativ
           href: concepts-hyperscale-configuration-options.md
         - name: Förskottsbetalning för reserverad kapacitet

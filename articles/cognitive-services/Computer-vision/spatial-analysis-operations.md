@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: fe54c4495e589459fe734f315138cafa8d7cd033
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934731"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226074"
 ---
 # <a name="spatial-analysis-operations"></a>Åtgärder för rums analys
 
@@ -23,7 +23,7 @@ Med rumslig analys kan du analysera strömningsvideo i realtid från kameraenhet
 
 Behållaren för rums analys implementerar följande åtgärder:
 
-| Åtgärds identifierare| Description|
+| Åtgärds identifierare| Beskrivning|
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount | Räknar personer i en angiven zon i kamerans visnings fält. Zonen måste vara helt täckt av en enda kamera för att PersonCount ska kunna registrera en korrekt total summa. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
@@ -32,7 +32,7 @@ Behållaren för rums analys implementerar följande åtgärder:
 
 Alla ovanstående åtgärder är också tillgängliga i `.debug` versionen, som har möjlighet att visualisera video bild rutorna när de bearbetas. Du måste köra `xhost +` på värddatorn för att aktivera visualiseringen av video bild rutor och händelser.
 
-| Åtgärds identifierare| Description|
+| Åtgärds identifierare| Beskrivning|
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount. debug | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline. debug | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
@@ -43,7 +43,7 @@ Rums analys kan också köras med [Live Video Analytics](../../media-services/li
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Åtgärds identifierare| Description|
+| Åtgärds identifierare| Beskrivning|
 |---------|---------|
 | cognitiveservices. vision. spatialanalysis-personcount. livevideoanalytics | Räknar personer i en angiven zon i kamerans visnings fält. <br> Utvärderar en inledande _personCountEvent_ -händelse och _personCountEvent_ händelser när antalet ändras.  |
 | cognitiveservices. vision. spatialanalysis-personcrossingline. livevideoanalytics | Spårar när en person korsar en angiven linje i kamerans visnings fält. <br>Avger en _personLineEvent_ -händelse när personen korsar linjen och ger riktad information. 
@@ -57,7 +57,7 @@ Live Video Analytics-åtgärder är också tillgängliga i `.debug` versionen (t
 
 Dessa är de parametrar som krävs för var och en av dessa åtgärder för att utföra den här typen av
 
-| Åtgärdsparametrar| Description|
+| Åtgärdsparametrar| Beskrivning|
 |---------|---------|
 | Åtgärds-ID | Åtgärds identifieraren från tabellen ovan.|
 | enabled | Boolean: true eller false|
@@ -122,7 +122,7 @@ Detta är ett exempel på DETECTOR_NODE_CONFIG parametrar för alla spatiala ana
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
@@ -130,7 +130,7 @@ Detta är ett exempel på DETECTOR_NODE_CONFIG parametrar för alla spatiala ana
 | `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. |
 | `type` | sträng| För **cognitiveservices. vision. spatialanalysis-personcount** ska detta vara `count` .|
 | `trigger` | sträng| Typ av utlösare för att skicka en händelse. Värden som stöds är `event` för att skicka händelser när antalet ändras eller `interval` för att skicka händelser med jämna mellanrum, oavsett om antalet har ändrats eller inte.
-| `interval` | sträng| En tid i sekunder som antalet personer ska aggregeras innan en händelse utlöses. Åtgärden fortsätter att analysera scenen med konstant hastighet och returnerar det vanligaste antalet under intervallet. Samlings intervallet gäller för både `event` och `interval` .|
+| `output_frequency` | int | Den hastighet med vilken händelser utgående. När `output_frequency` = x tas varje x-händelse ut, t. ex. `output_frequency` = 2 innebär att alla andra händelser är utdata. `output_frequency`Gäller både `event` och `interval` . |
 | `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Linje konfiguration för cognitiveservices. vision. spatialanalysis-personcrossingline
@@ -167,7 +167,7 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `lines` | lista| Lista med rader.|
 | `name` | sträng| Eget namn för den här raden.|
@@ -213,7 +213,7 @@ Detta är ett exempel på en JSON-ineffekt för den SPACEANALYTICS_CONFIG parame
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
@@ -247,7 +247,7 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
 }
 ```
 
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `zones` | lista| Lista över zoner. |
 | `name` | sträng| Eget namn för zonen.|
@@ -255,8 +255,7 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
 | `threshold` | flyt| Händelser utsätts när AI-modellernas tillförlitlighet är större eller lika med det här värdet. |
 | `type` | sträng| För **cognitiveservices. vision. spatialanalysis-persondistance** ska detta vara `people_distance` .|
 | `trigger` | sträng| Typ av utlösare för att skicka en händelse. Värden som stöds är `event` för att skicka händelser när antalet ändras eller `interval` för att skicka händelser med jämna mellanrum, oavsett om antalet har ändrats eller inte.
-| `interval` | sträng | En tid i sekunder som överträdelsen ska aggregeras innan en händelse utlöses. Samlings intervallet gäller för både `event` och `interval` .|
-| `output_frequency` | int | Den hastighet med vilken händelser utgående. När `output_frequency` = x tas varje x-händelse ut, t. ex. `output_frequency` = 2 innebär att alla andra händelser är utdata. Output_frequency gäller både `event` och `interval` .|
+| `output_frequency` | int | Den hastighet med vilken händelser utgående. När `output_frequency` = x tas varje x-händelse ut, t. ex. `output_frequency` = 2 innebär att alla andra händelser är utdata. `output_frequency`Gäller både `event` och `interval` .|
 | `minimum_distance_threshold` | flyt| Ett avstånd i fot som utlöser en "TooClose"-händelse när människor är mindre än avståndet mellan varandra.|
 | `maximum_distance_threshold` | flyt| Ett avstånd i fot som utlöser en "TooFar"-händelse när människor är större än det avståndet.|
 | `focus` | sträng| Punkt platsen inom personens markerings ruta som används för att beräkna händelser. Fokus värde kan vara `footprint` (personens personliga), (det `bottom_center` nedre mitten av personens markerings ram) `center` (centrum för personens avgränsnings ruta).|
@@ -964,7 +963,7 @@ För att få bästa möjliga prestanda och användning av GPU: er kan du distrib
       }
   }
   ```
-| Namn | Typ| Description|
+| Namn | Typ| Beskrivning|
 |---------|---------|---------|
 | `batch_size` | int | Anger antalet kameror som ska användas i åtgärden. |
 

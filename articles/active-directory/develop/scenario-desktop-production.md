@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ddd676a1e0b3d8f554b007974b62eb8c0c2ca9c1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756506"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226363"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Stationär app som anropar webb-API: er: flytta till produktion
 
@@ -39,7 +39,7 @@ Du kan till exempel ha två resurser som har två omfång:
 - `https://mytenant.onmicrosoft.com/customerapi` med omfattningar `customer.read` och `customer.write`
 - `https://mytenant.onmicrosoft.com/vendorapi` med omfattningar `vendor.read` och `vendor.write`
 
-I det här exemplet använder du `.WithAdditionalPromptToConsent` modifieraren som har `extraScopesToConsent` parametern.
+I det här exemplet använder du `.WithExtraScopesToConsent` modifieraren som har `extraScopesToConsent` parametern.
 
 Till exempel:
 
@@ -106,6 +106,11 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 För användare av Microsofts personliga konto uppmanas du att ange medgivande för varje intern klient (stationär eller mobilapp) anrop till auktoriseran. Intern klient identitet är insäker, vilket strider mot konfidentiell klient program identitet. Konfidentiella klient program utbyter en hemlighet med Microsofts identitets plattform för att bevisa sin identitet. Microsoft Identity Platform valde att minimera den här insäkerheten för konsument tjänster genom att användaren uppmanas att ange medgivande varje gången programmet auktoriseras.
 
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
 ## <a name="next-steps"></a>Nästa steg
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+Information om hur du provar ytterligare exempel finns i [Desktop och mobila offentliga klient program](sample-v2-code.md#desktop-and-mobile-public-client-apps).
+
+
+

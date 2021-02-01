@@ -338,6 +338,8 @@
         - name: Skapa app med MySQL
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
+        - name: Distribuera en öppen frihets-eller WebSphere-frihets app
+          href: howto-deploy-java-liberty-app.md
         - name: Använda Azure API Management
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true

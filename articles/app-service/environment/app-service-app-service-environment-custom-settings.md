@@ -1,18 +1,18 @@
 ---
 title: Konfigurera anpassade inställningar
 description: Konfigurera inställningar som gäller för hela Azure App Services miljön. Lär dig hur du gör det med Azure Resource Manager mallar.
-author: stefsch
+author: ccompy
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 10/03/2020
-ms.author: stefsch
+ms.date: 01/29/2021
+ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713279"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226396"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Anpassade konfigurationsinställningar för App Service-miljöer
 ## <a name="overview"></a>Översikt
@@ -61,7 +61,7 @@ Om en App Service-miljö exempelvis har fyra klientdelar tar det ungefär två t
 
 ## <a name="enable-internal-encryption"></a>Aktivera intern kryptering
 
-App Service-miljön fungerar som ett svart Box-system där du inte kan se interna komponenter eller kommunikationen i systemet. Om du vill aktivera högre data flöde är kryptering inte aktiverat som standard mellan interna komponenter. Systemet är säkert eftersom trafiken är helt otillgänglig för övervakning eller åtkomst. Om du har ett krav på efterlevnad, men som kräver fullständig kryptering av data Sök vägen från slut punkt till slut punkt, finns det ett sätt att aktivera detta med en clusterSetting.  
+App Service-miljön fungerar som ett svart Box-system där du inte kan se interna komponenter eller kommunikationen i systemet. Om du vill aktivera högre data flöde är kryptering inte aktiverat som standard mellan interna komponenter. Systemet är säkert eftersom trafiken inte är tillgänglig för övervakning eller åtkomst. Om du har ett krav på efterlevnad, men som kräver fullständig kryptering av data Sök vägen från slut punkt till slut punkt, finns det ett sätt att aktivera kryptering av den fullständiga data Sök vägen med en clusterSetting.  
 
 ```json
 "clusterSettings": [
@@ -71,7 +71,7 @@ App Service-miljön fungerar som ett svart Box-system där du inte kan se intern
     }
 ],
 ```
-Detta krypterar intern nätverks trafik i din ASE mellan klient delar och arbetare, krypterar växlings filen och krypterar även arbets diskarna. När InternalEncryption-clusterSetting har Aktiver ATS kan det påverka systemets prestanda. När du gör ändringen för att aktivera InternalEncryption, kommer ASE att vara i ett instabilt tillstånd tills ändringen har spridits helt. Det kan ta några timmar att slutföra spridningen av ändringen, beroende på hur många instanser du har i din ASE. Vi rekommenderar starkt att du inte aktiverar detta på en ASE medan den används. Om du behöver aktivera detta på en aktivt Använd ASE rekommenderar vi starkt att du avinstallerar trafik till en säkerhets kopierings miljö tills åtgärden har slutförts. 
+Genom att ange InternalEncryption till True krypteras intern nätverks trafik i din ASE mellan klient delar och arbetare, krypterar växlings filen och krypterar även arbets diskarna. När InternalEncryption-clusterSetting har Aktiver ATS kan det påverka systemets prestanda. När du gör ändringen för att aktivera InternalEncryption, kommer ASE att vara i ett instabilt tillstånd tills ändringen har spridits helt. Det kan ta några timmar att slutföra spridningen av ändringen, beroende på hur många instanser du har i din ASE. Vi rekommenderar starkt att du inte aktiverar InternalEncryption på en ASE medan den används. Om du behöver aktivera InternalEncryption på en aktivt Använd ASE, rekommenderar vi starkt att du avinstallerar trafik till en säkerhets kopierings miljö tills åtgärden har slutförts. 
 
 
 ## <a name="disable-tls-10-and-tls-11"></a>Inaktivera TLS 1.0 och TLS 1.1
@@ -92,13 +92,13 @@ Om du vill inaktivera all inkommande TLS 1.0- och TLS 1.1-trafik för alla appar
 Namnet på inställningen har värdet 1.0, men när den konfigureras inaktiverar den både TLS 1.0 och TLS 1.1.
 
 ## <a name="change-tls-cipher-suite-order"></a>Ändra ordning på TLS-chiffersvit
-En annan fråga från kunder är om de kan ändra listan över chiffer som förhandlas av servern. Det gör man genom att ändra **clusterSettings** enligt nedan. Listan över tillgängliga chiffersviter kan hämtas från [den här MSDN-artikeln](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
+ASE stöder ändring av cipher-sviten från standardvärdet. Standard uppsättningen med chiffer är samma uppsättning som används i tjänsten för flera innehavare. Att ändra chiffersviter påverkar en hel App Service distribution som gör detta endast möjligt i ASE för en klient. Det krävs två chiffersviter för en ASE-serie. TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 och TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256. Om du vill använda ASE med den starkaste och mest minimala uppsättningen chiffersviter, använder du bara de två nödvändiga chiffer. Om du vill konfigurera dina ASE så att de bara använder de chiffer som krävs ändrar du **clusterSettings** enligt nedan. 
 
 ```json
 "clusterSettings": [
     {
         "name": "FrontEndSSLCipherSuiteOrder",
-        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+        "value": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     }
 ],
 ```

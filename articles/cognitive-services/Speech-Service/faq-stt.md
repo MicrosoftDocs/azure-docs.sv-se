@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072181"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226564"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Vanliga frågor och svar om tal till text
 
@@ -83,7 +83,7 @@ Både bas modeller och anpassade modeller kommer att dras tillbaka efter en stun
 
 **F: loggas mina förfrågningar?**
 
-**A**: som standard loggas inte (varken ljud eller avskrifter). Om det behövs kan du välja *logg innehåll från det här slut punkts* alternativet när du [skapar en anpassad slut punkt](./how-to-custom-speech-train-model.md). Du kan också aktivera ljud loggning i [talet SDK](speech-sdk.md) för varje begäran utan att skapa en anpassad slut punkt. I båda fallen lagras ljud-och igenkännings resultat från begär anden i säkert lagrings utrymme. För prenumerationer som använder Microsoft-ägda lagrings enheter är de tillgängliga i 30 dagar.
+**A**: som standard loggas inte (varken ljud eller avskrifter). Om det behövs kan du välja *logg innehåll från det här slut punkts* alternativet när du [skapar en anpassad slut punkt](how-to-custom-speech-train-model.md#deploy-a-custom-model). Du kan också aktivera ljud loggning i [talet SDK](how-to-use-logging.md) för varje begäran utan att skapa en anpassad slut punkt. I båda fallen lagras ljud-och igenkännings resultat från begär anden i säkert lagrings utrymme. För prenumerationer som använder Microsoft-ägda lagrings enheter är de tillgängliga i 30 dagar.
 
 Du kan exportera de loggade filerna på sidan distribution i tal Studio om du använder en anpassad slut punkt med *logg innehåll från den här slut punkten* aktive rad. Om ljud loggning har Aktiver ATS via SDK anropar du [API: et](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) för att komma åt filerna.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 122262ff6d49174b19773800f2db8c7d29506bb9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938147"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225773"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snabb start: lägga till Microsoft Identity Platform-inloggning till en ASP.NET-webbapp
 
@@ -54,7 +54,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > 1. Ange ett **namn** för programmet, till exempel `ASPNET-Quickstart` . Användare av appen kan se det här namnet och du kan ändra det senare.
 > 1. Lägg till `https://localhost:44368/` i **omdirigerings-URI** och välj **Registrera**.
 > 1. Under **Hantera** väljer du **autentisering**.
-> 1. Under avsnittet **implicit beviljande** underavsnitt väljer du **ID-token**.
+> 1. I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-token**.
 > 1. Välj **Spara**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -166,7 +166,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Var  | Description |
+> |Var  | Beskrivning |
 > |---------|---------|
 > | `ClientId`     | Program-ID från appen som registrerats i Azure-portalen |
 > | `Authority`    | STS-slutpunkten för autentisering av användaren. Vanligtvis `https://login.microsoftonline.com/{tenant}/v2.0` för offentligt moln, där {tenant} är namnet på din klientorganisation, ditt klientorganisations-ID eller *gemensam* för en referens till den gemensamma slutpunkten (används för appar för en innehavare) |

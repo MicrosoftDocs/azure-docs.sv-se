@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680272"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226429"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Självstudie: Logga in användare och anropa ett skyddat API från en blixt WebAssembly-app
 
@@ -42,7 +42,7 @@ Varje app som använder Azure Active Directory (Azure AD) för autentisering må
 - För **konto typer som stöds** väljer du **konton endast i den här organisations katalogen**.
 - Lämna List rutan **omdirigerings-URI** inställd på **webben** och ange `https://localhost:5001/authentication/login-callback` . Standard porten för en app som körs på Kestrel är 5001. Om appen är tillgänglig på en annan port anger du Port numret i stället för `5001` .
 
-När du har registrerat, i **autentisering**  >  **implicit beviljande**, markerar du kryss  rutorna för åtkomsttoken och **ID-token** och väljer sedan knappen **Spara** .
+När du har registrerat, under **Hantera**, väljer du **autentisering**  >  **implicit beviljande och hybrid flöden**. Välj **åtkomsttoken** och **ID-token** och välj sedan **Spara**.
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>Skapa appen med hjälp av .NET Core CLI
 
@@ -80,7 +80,7 @@ Komponenterna i den här mallen som aktiverar inloggningar med Azure AD med hjä
 
 [Microsoft Graph](/graph/overview) innehåller API: er som ger åtkomst till Microsoft 365 data för dina användare och som har stöd för de token som utfärdats av Microsoft Identity Platform, vilket gör det till ett lämpligt skydds-API att använda som exempel. I det här avsnittet ska du lägga till kod för att anropa Microsoft Graph och Visa användarens e-postmeddelanden på sidan "Hämta data" på programmets sida.
 
-Det här avsnittet är skrivet med en gemensam metod för att anropa en skyddad API med hjälp av en namngiven klient. Samma metod kan användas för andra skyddade API: er som du vill anropa. Men om du planerar att anropa Microsoft Graph från ditt program kan du använda Graph SDK för att minska standard. .NET-dokumenten innehåller instruktioner om [hur du använder Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
+Det här avsnittet är skrivet med en gemensam metod för att anropa en skyddad API med hjälp av en namngiven klient. Samma metod kan användas för andra skyddade API: er som du vill anropa. Men om du planerar att anropa Microsoft Graph från ditt program kan du använda Graph SDK för att minska standard. .NET-dokumenten innehåller instruktioner om [hur du använder Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0&preserve-view=true).
 
 Innan du börjar kan du logga ut från din app eftersom du kommer att göra ändringar i de behörigheter som krävs, och din aktuella token fungerar inte. Om du inte redan har gjort det kör du appen igen och väljer **Logga ut** innan du uppdaterar koden nedan.
 

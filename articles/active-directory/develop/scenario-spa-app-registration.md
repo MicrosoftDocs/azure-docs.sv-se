@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756403"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226346"
 ---
 # <a name="single-page-application-app-registration"></a>Program med en sida: app-registrering
 
@@ -47,7 +47,7 @@ Följ dessa steg om du vill lägga till en omdirigerings-URI för en app som anv
 1. I Azure Portal väljer du den app-registrering som du skapade tidigare i [skapa appens registrering](#create-the-app-registration).
 1. Under **Hantera** väljer du **autentisering**  >  **Lägg till en plattform**.
 1. Under **webb program** väljer du den **enda sidans program** panel.
-1. Under **omdirigerings-URI** anger du en [omdirigerings-URI](reply-url.md). Markera **inte** någon av kryss rutorna under **implicit tilldelning**.
+1. Under **omdirigerings-URI** anger du en [omdirigerings-URI](reply-url.md). Markera **inte** någon av kryss rutorna under **implicit beviljande och hybrid flöden**.
 1. Välj **Konfigurera** för att slutföra tillägg av omdirigerings-URI.
 
 Du har nu slutfört registreringen av ett enda webb program (SPA) och konfigurerat en omdirigerings-URI som klienten ska omdirigeras till och eventuella säkerhetstoken kommer att skickas. Genom att konfigurera omdirigerings-URI: n med hjälp av program panelen på en **sida** i fönstret **Lägg till en plattform** konfigureras program registreringen för att stödja AUKTORISERINGSKOD med PKCE och CORS.
@@ -62,7 +62,7 @@ Följ dessa steg om du vill lägga till en omdirigerings-URI för en app med en 
 1. Under **Hantera** väljer du **autentisering**  >  **Lägg till en plattform**.
 1. Under **webb program** väljer du en fönster ruta med **en sida** .
 1. Under **omdirigerings-URI** anger du en [omdirigerings-URI](reply-url.md).
-1. Aktivera det **implicita flödet**:
+1. Aktivera **implicit beviljande och hybrid flöden**:
     - Om ditt program loggar in användare väljer du **ID-token**.
     - Om ditt program också behöver anropa ett skyddat webb-API väljer du **åtkomsttoken**. Mer information om dessa typer av token finns i [ID-token](id-tokens.md) och [åtkomsttoken](access-tokens.md).
 1. Välj **Konfigurera** för att slutföra tillägg av omdirigerings-URI.

@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f3598c6f072d09d7e427db66dcfbf8721b92a3a1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752745"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226496"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform och implicit beviljande flöde
 
@@ -44,7 +44,7 @@ Följande diagram visar hur hela det implicita inloggnings flödet ser ut och de
 För att först signera användaren till din app kan du skicka en [OpenID Connect](v2-protocols-oidc.md) -autentiseringsbegäran och hämta en `id_token` från Microsoft Identity Platform.
 
 > [!IMPORTANT]
-> För att kunna begära en ID-token och/eller en åtkomsttoken måste registrerings flödet på sidan [Azure Portal-Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) ha motsvarande implicit tilldelnings flöde aktiverat, genom att välja **ID-token** och. **eller åtkomsttoken** i avsnittet **implicit beviljande** . Om den inte är aktive rad `unsupported_response` returneras ett fel: **det angivna värdet för Indataparametern response_type tillåts inte för den här klienten. Förväntat värde är ' Code '**
+> För att kunna begära en ID-token och/eller en åtkomsttoken måste appens registrering på sidan [Azure Portal-Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) ha motsvarande implicit tilldelnings flöde aktiverat, genom att välja **ID-tokens** och **åtkomsttoken** i avsnittet **implicit beviljande och hybrid flöden** . Om den inte är aktive rad `unsupported_response` returneras ett fel: `The provided value for the input parameter 'response_type' is not allowed for this client. Expected value is 'code'`
 
 ```
 // Line breaks for legibility only

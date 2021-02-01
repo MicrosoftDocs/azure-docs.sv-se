@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757719"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226479"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -83,7 +83,7 @@ Läs mer om de här rekommendationerna på [referens sidan för säkerhets rekom
 
 **Beräknat datum för ändring:** K2 2021
 
-Den aktuella versionen av rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** och ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Därför:
+Den aktuella versionen av rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Därför:
 
 - Rekommendationen kommer inte längre att påverka dina säkra Poäng
 - Säkerhets kontrollen ("Använd data klassificering") kommer inte längre att påverka dina säkra Poäng

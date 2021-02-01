@@ -3,18 +3,18 @@ title: Hantera registrerings princip – Azure
 description: I det här avsnittet beskrivs hur du hanterar registrerings principer.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: d3a1be915dc1cc8714e49cc7b2fe68bbe9cad161
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87011489"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99224997"
 ---
 # <a name="manage-recording-policy"></a>Hantera inspelningsprincip
 
 Du kan använda video analys i real tid för IoT Edge för [kontinuerlig videoinspelning](continuous-video-recording-concept.md), där du kan spela in video i molnet för veckor eller månader. Du kan hantera längden (i dagar) för det moln arkivet genom att använda de [livs cykel hanterings verktyg](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal) som är inbyggda i Azure Storage.  
 
-Ditt medie tjänst konto är länkat till ett Azure Storage konto och när du spelar in video i molnet skrivs innehållet till en medie tjänst [till gång](../latest/assets-concept.md). Varje till gång mappas till en behållare i lagrings kontot. med livs cykel hantering kan du definiera en [princip](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy) för ett lagrings konto, där du kan ange en [regel](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules) som följande.
+Ditt medie tjänst konto är länkat till ett Azure Storage konto och när du spelar in video i molnet skrivs innehållet till en medie tjänst [till gång](../latest/assets-concept.md). Varje till gång mappas till en behållare i lagrings kontot. Med livs cykel hantering kan du definiera en [princip](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy) för ett lagrings konto, där du kan ange en [regel](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules) som följande.
 
 ```
 {
@@ -45,7 +45,7 @@ Regeln ovan:
 * Anger att när blobar åldras efter 30 dagar flyttas de från frekvent [åtkomst nivå till](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)låg frekvent.
 * Och när blobar åldras efter 90 dagar måste de tas bort.
 
-Eftersom live video analys arkiverar din video i angivna tidsenheter kommer din till gång att innehålla en serie blobbar, en BLOB per segment. När livs cykel hanterings principen använder och tar bort äldre blobbar fortsätter du att kunna komma åt och spela upp återstående blobbar via media service-API: er. Mer information finns i [uppspelnings inspelningar](playback-recordings-how-to.md). 
+När du använder live video analys för att registrera till en till gång, anger du en `segmentLength` egenskap som instruerar modulen att sammanställa en minimal video varaktighet (i sekunder) innan den skrivs till molnet. Din till gång kommer att innehålla en serie segment, var och en med en tidsstämpel som är `segmentLength` nyare än föregående. När livs cykel hanterings principen används tar den bort segment som är äldre än det angivna tröskelvärdet. Men du kommer fortfarande att kunna komma åt och spela upp de återstående segmenten via media service-API: er. Mer information finns i [spela upp inspelningar](playback-recordings-how-to.md). 
 
 ## <a name="limitations"></a>Begränsningar
 

@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178627"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225824"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Använda MSAL i en nationell moln miljö
 
@@ -34,7 +34,7 @@ Med det globala molnet distribueras Azure Active Directory (Azure AD) i följand
 
 Den här guiden visar hur du loggar in på arbets-och skol konton, hämtar en åtkomsttoken och anropar Microsoft Graph API i [Azure Government moln](https://azure.microsoft.com/global-infrastructure/government/) miljö.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du kontrol lera att du uppfyller dessa krav.
 
@@ -84,7 +84,7 @@ Så här aktiverar du MSAL.js program för suveräna moln:
 1. På sidan **Översikt** noterar du **programmets (klient) ID-** värde för senare användning.
     I den här självstudien krävs att du aktiverar det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). 
 1. Under **Hantera** väljer du **autentisering**.
-1. Under **implicit beviljande** väljer du **ID-token** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
+1. Under **implicit beviljande och hybrid flöden** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
 1. Välj **Spara**.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Steg 2: Konfigurera din webb server eller ditt projekt

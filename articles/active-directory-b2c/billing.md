@@ -7,23 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/01/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949793"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225216"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Fakturerings modell för Azure Active Directory B2C
 
 Azure Active Directory B2C (Azure AD B2C) Priset baseras på månatliga aktiva användare (MAU), vilket är antalet unika användare med autentiserings aktivitet inom en kalender månad. Den här fakturerings modellen gäller för både Azure AD B2C klienter och [Azure AD gäst användar samarbete (B2B)](../active-directory/external-identities/external-identities-pricing.md). MAU-faktureringen hjälper dig att minska kostnaderna genom att erbjuda en kostnads fri nivå och flexibel, förutsägbar prissättning. I den här artikeln får du lära dig om MAU-fakturering, länkar Azure AD B2C-klienter till en prenumeration och hur du ändrar pris nivån.
 
 > [!IMPORTANT]
-> Den här artikeln innehåller ingen pris information. Den senaste informationen om fakturering och prissättning för användning finns [Azure Active Directory B2C prissättning](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Den här artikeln innehåller ingen pris information. Den senaste informationen om fakturering och prissättning för användning finns [Azure Active Directory B2C prissättning](https://azure.microsoft.com/pricing/details/active-directory-b2c/). Se även [Azure AD B2C regions tillgänglighet och data placering](data-residency.md) för information om var Azure AD B2C tjänsten är tillgänglig och var användar data lagras.
 
 ## <a name="what-do-i-need-to-do"></a>Vad behöver jag göra?
 
@@ -49,7 +49,7 @@ Användnings kostnader för Azure Active Directory B2C (Azure AD B2C) faktureras
 
 En prenumeration som är länkad till en Azure AD B2C-klient kan användas för fakturering av Azure AD B2C användning eller andra Azure-resurser, inklusive ytterligare Azure AD B2C resurser. Det går inte att använda för att lägga till andra Azure licensbaserade tjänster eller Office 365-licenser inom Azure AD B2C klient organisationen.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 * [Azure-prenumeration](https://azure.microsoft.com/free/)
 * [Azure AD B2C klient](tutorial-create-tenant.md) som du vill länka till en prenumeration

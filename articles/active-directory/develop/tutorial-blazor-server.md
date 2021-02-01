@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569886"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226024"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Självstudie: skapa en snabb server app som använder Microsoft Identity Platform för autentisering
 
@@ -28,7 +28,7 @@ I de här självstudierna har du
 > * Hantera både autentisering och auktorisering med Microsoft. Identity. Web
 > * Hämta data från ett skyddat webb-API, Microsoft Graph
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - En Azure AD-klient där du kan registrera en app. Om du inte har åtkomst till en Azure AD-klient kan du skaffa en genom att registrera dig hos [Microsoft 365 Developer-programmet](https://developer.microsoft.com/microsoft-365/dev-program) eller genom att skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free).
@@ -40,7 +40,7 @@ Varje app som använder Azure Active Directory (Azure AD) för autentisering må
 - För **konto typer som stöds** väljer du **konton endast i den här organisations katalogen**.
 - Lämna List rutan **omdirigerings-URI** inställd på **webben** och ange `https://localhost:5001/signin-oidc` . Standard porten för en app som körs på Kestrel är 5001. Om appen är tillgänglig på en annan port anger du Port numret i stället för `5001` .
 
-Under **autentisering**  >  **implicit tilldelning** markerar du kryss rutorna för **åtkomsttoken** och **ID-token** och väljer sedan knappen **Spara** .
+Under **Hantera** väljer du **autentisering**  >  **implicit beviljande och hybrid flöden**. Välj **åtkomsttoken** och **ID-token** och välj sedan **Spara**.
 
 Slutligen, eftersom appen anropar ett skyddat API (i det här fallet Microsoft Graph), behöver den en klient hemlighet för att verifiera identiteten när den begär en åtkomsttoken för att anropa detta API.
 

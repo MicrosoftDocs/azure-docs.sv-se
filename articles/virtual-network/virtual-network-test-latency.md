@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219266"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226413"
 ---
 # <a name="test-vm-network-latency"></a>Testa svarstid för VM-nätverk
 
@@ -45,7 +45,7 @@ Du kan använda den här metoden för att mäta nätverks fördröjningen mellan
 ### <a name="tools-for-testing"></a>Verktyg för testning
 Du kan mäta svars tiden med två olika verktygs alternativ:
 
-* För Windows-baserade system: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* För Windows-baserade system: [latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
 * För Linux-baserade system: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 Genom att använda dessa verktyg kan du se till att endast leverans tider för TCP-eller UDP-nyttolasten mäts och inte ICMP (ping) eller andra paket typer som inte används av program och inte påverkar deras prestanda.

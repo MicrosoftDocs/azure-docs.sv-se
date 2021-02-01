@@ -12,18 +12,18 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5d656a27017f3c7ec97362efc6207917ffcd1a56
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111406"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225166"
 ---
-# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivera Multi-Factor Authentication i Azure Active Directory B2C
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivera multifaktorautentisering i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Azure Active Directory B2C (Azure AD B2C) integreras direkt med [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) så att du kan lägga till ett andra säkerhets lager för att registrera dig och logga in i dina program. Du aktiverar Multi-Factor Authentication utan att skriva en enda rad kod. Om du redan har skapat inloggnings-och inloggnings användar flöden kan du fortfarande aktivera Multi-Factor Authentication.
+Azure Active Directory B2C (Azure AD B2C) integreras direkt med [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) så att du kan lägga till ett andra säkerhets lager för att registrera dig och logga in i dina program. Du aktiverar multifaktorautentisering utan att skriva en enda rad kod. Om du redan har skapat inloggnings-och inloggnings användar flöden kan du fortfarande aktivera Multi-Factor Authentication.
 
 Den här funktionen hjälper program att hantera scenarier som:
 
@@ -40,7 +40,9 @@ Den här funktionen hjälper program att hantera scenarier som:
 1. Välj **användar flöden**.
 1. Välj det användar flöde som du vill aktivera MFA för. Till exempel *B2C_1_signinsignup*.
 1. Välj **Egenskaper**.
-1. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod** och under **MFA tvång** väljer du **Always on**, eller **[villkorlig](conditional-access-user-flow.md) (rekommenderas)**. För villkorligt, skapa en [princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md) och ange de appar som du vill att principen ska tillämpas på. 
+1. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod** och under **MFA tvång** väljer du **Always on**, eller **villkorlig (rekommenderas)**.
+  > [!NOTE]
+  > Om du väljer **villkorlig (rekommenderas)** måste du också [lägga till en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) och ange de appar som du vill att principen ska tillämpas på.
 1. Välj Spara MFA har nu Aktiver ATS för det här användar flödet.
 
 Du kan använda **Kör användar flöde** för att verifiera upplevelsen. Bekräfta följande scenario:

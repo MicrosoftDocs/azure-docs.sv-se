@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 0beaef9162f4bdb540764a100243c579b40d1324
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755946"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225487"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform-dokument: Nyheter
 
@@ -24,13 +24,25 @@ Välkommen till nyheter i dokumentationen för Microsoft Identity Platform. Den 
 
 ## <a name="january-2021"></a>Januari 2021
 
+### <a name="new-articles"></a>Nya artiklar
+
+- [Loggning i MSAL för Android](msal-logging-android.md)
+- [Loggning i MSAL.NET](msal-logging-dotnet.md)
+- [Loggning i MSAL för iOS/macOS](msal-logging-ios.md)
+- [Loggning i MSAL för Java](msal-logging-java.md)
+- [Loggning in MSAL.js](msal-logging-js.md)
+- [Loggning i MSAL för Python](msal-logging-python.md)
+
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 
+- [Felsöka verifiering av utgivare](troubleshoot-publisher-verification.md)
+- [Programmodell](application-model.md)
 - [Autentisering kontra auktorisering](authentication-vs-authorization.md)
 - [Så här: begränsa din Azure AD-App till en uppsättning användare i en Azure AD-klient](howto-restrict-your-app-to-a-set-of-users.md)
 - [Behörigheter och medgivande i slutpunkten för Microsoft Identity Platform](v2-permissions-and-consent.md)
 - [Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)](active-directory-configurable-token-lifetimes.md)
 - [Konfigurera livs längd principer för token (förhands granskning)](configure-token-lifetimes.md)
+- [Bibliotek för Microsoft Identity Platform-autentisering](reference-v2-libraries.md)
 - [Microsoft Identity Platform och OAuth 2,0 Authorization Code Flow](v2-oauth2-auth-code-flow.md)
 
 ## <a name="december-2020"></a>December 2020

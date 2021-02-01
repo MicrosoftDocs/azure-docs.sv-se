@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 1ffbb5579ea19d7d608dd9c9d600342cd89d371c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572804"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225082"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC-roller
 
@@ -39,7 +39,7 @@ I följande tabell beskrivs de inbyggda rollerna och de omfång där de kan anv�
 
 |Roll |Behörigheter|Omfattningar|
 |---|---|-----|
-|Synapse-administratör  |Fullständig Synapse åtkomst till SQL-pooler utan server, Apache Spark pooler och integrerings körningar.  Inkluderar skapa, läsa, uppdatera och ta bort åtkomst till alla publicerade kod artefakter.  Innehåller användar behörigheter för beräknings Operator, länkade Data Manager och autentiseringsuppgifter på arbets ytans system identitetens autentiseringsuppgifter.  Inkluderar tilldelning av Synapse RBAC-roller.  Azure-behörigheter krävs för att skapa, ta bort och hantera beräknings resurser. </br></br>_Kan läsa och skriva artefakter </br> kan utföra alla åtgärder på Spark-aktiviteter. </br> Kan visa Spark-poolens loggar </br> kan visa Sparad antecknings bok och pipeline-utdata </br> kan använda de hemligheter som lagras av länkade tjänster eller autentiseringsuppgifter </br> kan ansluta till SQL Server lös slut punkter med SQL `db_datareader` , `db_datawriter` , `connect` , och `grant` behörigheter </br> kan tilldela och återkalla Synapse RBAC-roller i aktuellt omfång_|Arbetsyta </br> Spark-pool<br/>Integration runtime </br>Länkad tjänst</br>Autentiseringsuppgift |
+|Synapse-administratör  |Fullständig Synapse åtkomst till SQL-pooler utan server, Apache Spark pooler och integrerings körningar.  Inkluderar skapa, läsa, uppdatera och ta bort åtkomst till alla publicerade kod artefakter.  Innehåller användar behörigheter för beräknings Operator, länkade Data Manager och autentiseringsuppgifter på arbets ytans system identitetens autentiseringsuppgifter.  Inkluderar tilldelning av Synapse RBAC-roller. Förutom Synapse-administratören kan Azure-ägare också tilldela Synapse RBAC-roller. Azure-behörigheter krävs för att skapa, ta bort och hantera beräknings resurser. </br></br>_Kan läsa och skriva artefakter </br> kan utföra alla åtgärder på Spark-aktiviteter. </br> Kan visa Spark-poolens loggar </br> kan visa Sparad antecknings bok och pipeline-utdata </br> kan använda de hemligheter som lagras av länkade tjänster eller autentiseringsuppgifter </br> kan ansluta till SQL Server lös slut punkter med SQL `db_datareader` , `db_datawriter` , `connect` , och `grant` behörigheter </br> kan tilldela och återkalla Synapse RBAC-roller i aktuellt omfång_|Arbetsyta </br> Spark-pool<br/>Integration runtime </br>Länkad tjänst</br>Autentiseringsuppgift |
 |Synapse Apache Spark administratör</br>|Fullständig Synapse åtkomst till Apache Spark pooler.  Skapa, läsa, uppdatera och ta bort åtkomst till publicerade Spark-jobb,-antecknings böcker och deras utdata och till bibliotek, länkade tjänster och autentiseringsuppgifter.  Innehåller Läs behörighet till alla andra publicerade kod artefakter. Innehåller inte behörighet att använda autentiseringsuppgifter och köra pipeliner. Inkluderar inte beviljad åtkomst. </br></br>_Kan utföra alla åtgärder på Spark-artefakter </br> kan utföra alla åtgärder på Spark-aktiviteter_|Arbetsyta</br>Spark-pool|
 |Synapse SQL-administratör|Fullständig Synapse åtkomst till serverbaserade SQL-pooler.  Skapa, läsa, uppdatera och ta bort åtkomst till publicerade SQL-skript, autentiseringsuppgifter och länkade tjänster.  Innehåller Läs behörighet till alla andra publicerade kod artefakter.  Innehåller inte behörighet att använda autentiseringsuppgifter och köra pipeliner. Inkluderar inte beviljad åtkomst. </br></br>*Kan utföra alla åtgärder på SQL <br/> -skript kan ansluta till SQL Server-felslutna slut punkter med SQL `db_datareader` , `db_datawriter` , `connect` och- `grant` behörigheter*|Arbetsyta|
 |Synapse-deltagare|Fullständig Synapse åtkomst till SQL-pooler utan server, Apache Spark pooler, integrerings körningar.  Inkluderar skapa, läsa, uppdatera och ta bort åtkomst till alla publicerade kod artefakter och deras utdata, inklusive autentiseringsuppgifter och länkade tjänster.  Innehåller behörigheter för beräknings operator. Innehåller inte behörighet att använda autentiseringsuppgifter och köra pipeliner. Inkluderar inte beviljad åtkomst. </br></br>_Kan läsa och skriva artefakter </br> kan visa sparade antecknings böcker och pipeline-utdata </br> kan göra att alla åtgärder på Spark-aktiviteter </br> kan visa Spark-poolens loggar_|Arbetsyta </br> Spark-pool<br/> Integration runtime|

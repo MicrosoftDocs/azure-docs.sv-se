@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 27cc55978582468c759603571bd8b0e69f29db5d
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221450"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226581"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Test av bandbredd/data flöde (NTTTCP)
 
@@ -52,9 +52,9 @@ Avsändar parametrar: ntttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>Hämta NTTTCP till de virtuella datorerna.
 
-Hämta den senaste versionen: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Hämta den senaste versionen: https://github.com/microsoft/ntttcp/releases/download/v5.35/NTttcp.exe
 
-Eller Sök efter den om den har flyttats: <https://www.bing.com/search?q=ntttcp+download> \< -
+Eller Visa GitHub-sidan på den översta nivån: <https://github.com/microsoft/ntttcp>\
 
 Överväg att placera NTTTCP i separata mappar, t. ex. c: \\ verktyg
 

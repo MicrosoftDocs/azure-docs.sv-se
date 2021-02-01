@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 05e14b5bdc2f603ffe802b12ed33b7b57be25b69
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938202"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225841"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snabb start: lägga till inloggning med Microsoft i ett ASP.NET Core-webbprogram
 
@@ -57,7 +57,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > 1. Under **Hantera** väljer du **autentisering**.
 > 1. Under **omdirigerings-URI: er** väljer du **Lägg till URI** och anger sedan `https://localhost:44321/signin-oidc` .
 > 1. Ange en **webb adress för utloggning på klient sidan** för `https://localhost:44321/signout-oidc` .
-> 1. Under **Implicit beviljande** väljer du **ID-token**.
+> 1. Under **implicit beviljande och hybrid flöden** väljer du **ID-token**.
 > 1. Välj **Spara**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -150,7 +150,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApp` lägger till Microsoft Identity Platform-autentisering till ditt program. Den konfigureras sedan att logga in med Microsoft Identity Platform baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |

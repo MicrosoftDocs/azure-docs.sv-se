@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8cae73e03fee0b59be0c7596f0783570ac14f6ee
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991a335207fc29cef7b243d7e520dd5f62ff691f
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053117"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226124"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Konfigurera en utvecklings miljö i Azure våren Cloud
 
@@ -22,6 +22,7 @@ Den här artikeln beskriver hur du konfigurerar en mellanlagrings distribution m
 
 ## <a name="prerequisites"></a>Förutsättningar
 
+* Azure våren Cloud-instansen med *standard* **pris nivån**.
 * Ett program som körs.  Se [snabb start: Distribuera ditt första Azure våren Cloud-program](spring-cloud-quickstart.md).
 * Tillägg för Azure CLI [ASC](https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview)
 
@@ -78,7 +79,7 @@ Visa distribuerade appar med följande procedurer.
 1. Skapa en ny distribution i Azure CLI och ge den namnet "grön" för mellanlagrings distributionen.
 
     ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app default -n green --jar-path gateway/target/gateway.jar
+    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app <appName> -n green --jar-path gateway/target/gateway.jar
     ```
 
 1. När CLI-distributionen har slutförts öppnar du appens sida från **instrument panelen för program** och visar alla dina instanser på fliken **distributioner** till vänster.
@@ -113,11 +114,11 @@ För att kontrol lera att den gröna utvecklings utvecklingen fungerar:
 
    [![Distributioner ange mellanlagrings distribution](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
 
-1. Gå tillbaka till sidan **distributions hantering** .  `green`Distributions distributionens status bör visas. Detta är nu den produktions version som körs.
+1. Gå tillbaka till sidan **distributions hantering** . Ange `green` distributionen till `production` . När inställningen är klar `green` bör distributionens status visas.  Detta är nu den produktions version som körs.
 
    [![Distributioner ange distributions resultat för mellanlagring](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)](media/spring-cloud-blue-green-staging/set-staging-deployment-result.png)
 
-1. Kopiera och klistra in webb adressen i ett nytt webbläsarfönster så visas sidan nytt program med dina ändringar.
+1. Appens URL ska visa dina ändringar.
 
 >[!NOTE]
 > När du har angett den gröna distributionen som produktions miljö blir den tidigare distributionen den mellanlagrings distributionen.

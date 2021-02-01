@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 369ec11050fa7dbc09159d88793685ad5fbdb3e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053968"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226530"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -238,7 +238,7 @@ S **: du** måste först se till att du har valt att dela din analys med oss. Om
    - Under **Inställningar** på iOS väljer du **hur du vill aktivera Autofyll** i avsnittet Inställningar för Autofyll för att lära dig hur du ställer in Authenticator som standardprovider för Autofyll.
    - På Android under **Inställningar** väljer du **Ange som Autofyll Provider** i avsnittet Inställningar för Autofyll.
 
-**F**: Vad händer om **Autofyll** -växeln inte är tillgänglig för mig i inställningar?
+**F**: Vad händer om **Autofyll** inte är tillgängligt för mig i inställningar?
 
 **A**: om Autofyll inte är tillgängligt för dig i autentiseraren kan det bero på att Autofyll ännu inte har tillåtits för din organisation eller konto typ. Du kan använda den här funktionen på en enhet där ditt arbets-eller skol konto inte har lagts till. Mer information om hur du tillåter Autofyll för din organisation finns i [Autofyll för IT-administratörer](#autofill-for-it-admins).
 

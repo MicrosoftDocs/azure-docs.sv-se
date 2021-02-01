@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d790b466f669ed067863b6643c8f59662eb628a7
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753063"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226445"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Java Script (Single-Side Application)
 
@@ -35,7 +35,7 @@ I de här självstudierna har du
 >[!TIP]
 > I den här självstudien används MSAL.js v1. x som är begränsad till att använda det implicita beviljande flödet för program med en enda sida. Vi rekommenderar att alla nya program använder i stället [MSAL.js 2. x och auktoriseringskod med stöd för PKCE och CORS](tutorial-v2-javascript-auth-code.md) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Node.js](https://nodejs.org/en/download/) för att köra en lokal webb server.
 * [Visual Studio Code](https://code.visualstudio.com/download) eller annan redigerare för att ändra projektfiler.
@@ -275,7 +275,7 @@ Registrera ditt program på **Azure Active Directory** innan du fortsätter med 
 1. Välj **Register** (Registrera).
 1. På sidan **Översikt över** appar noterar du **programmets (klient) ID-** värde för senare användning.
 1. Under **Hantera** väljer du **autentisering**.
-1. I avsnittet **implicit beviljande** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
+1. I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
 1. Välj **Spara**.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Ange en omdirigerings-URL för Node.js

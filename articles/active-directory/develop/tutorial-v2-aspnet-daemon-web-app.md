@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a85ae227d45c8de6c3d04e4a058ebf9715421ca2
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: a5f0a7d8221e970c8c1aa3c1ddffbfc56f2d5715
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222072"
+ms.locfileid: "99226193"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -110,7 +110,7 @@ Om du inte vill använda Automation följer du stegen i följande avsnitt.
 1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och spelar in det för senare användning. Du behöver den för att konfigurera Visual Studio-konfigurationsfilen för projektet.
 1. Under **Hantera** väljer du **autentisering**.
 1. Ange **URL: en för en klients utloggning** till `https://localhost:44316/Account/EndSession` .
-1. I avsnittet **implicit beviljande** väljer du **åtkomsttoken** och **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren och anropa ett API.
+1. I avsnittet **implicit beviljande och hybrid flöden** väljer du **åtkomsttoken** och **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren och anropa ett API.
 1. Välj **Spara**.
 1. Välj **Certifikat och hemligheter** under **Hantera**.
 1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet**. 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753106"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226312"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Självstudie: lägga till inloggning till Microsoft i en ASP.NET-webbapp
 
@@ -34,7 +34,7 @@ I de här självstudierna har du
 > * Registrera appen i Azure Portal
 > * Testa appen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) med arbets belastningen **ASP.net och webb utveckling** installerad
 
@@ -383,7 +383,7 @@ Du registrerar programmet och lägger till appens registreringsinformationen i l
 1. Lägg till SSL-URL: en som du kopierade från Visual Studio i steg 1 (till exempel `https://localhost:44368/` ) i **omdirigerings-URI**.
 1. Välj **Register** (Registrera).
 1. Under **Hantera** väljer du **autentisering**.
-1. I avsnittet **implicit beviljande** väljer du **ID-token** och väljer sedan **Spara**.
+1. I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-token** och väljer sedan **Spara**.
 1. Lägg till följande i web.config-filen, som finns i rotmappen i `configuration\appSettings` avsnittet:
 
     ```xml

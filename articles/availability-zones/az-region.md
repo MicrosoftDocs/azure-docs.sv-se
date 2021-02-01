@@ -8,12 +8,12 @@ ms.date: 01/26/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: e8e62d92afb70ec9d4df40f677de05583ef472b0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3916cd43a42ef273a45a9992b45d8b9f043c9364
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955791"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226632"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
@@ -47,16 +47,16 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 ## <a name="azure-regions-with-availability-zones"></a>Azure-regioner med Tillgänglighetszoner
 
 
-| Nord- och Sydamerika           | Europa         | Tyskland              | Afrika              | Asien och stillahavsområdet   |
-|--------------------|----------------|----------------------|---------------------|----------------|
-|                    |                |                      |                     |                |
-| Kanada, centrala     | Frankrike, centrala | Tyskland, västra centrala | Södra Afrika, norra * | Japan, östra     |
-| Central US         | Norra Europa   |                      |                     | Sydostasien |
-| East US            | Storbritannien, södra       |                      |                     | Australien, östra |
-| USA, östra 2          | Europa, västra    |                      |                     |                |
-| Södra centrala USA |                |                      |                     |                |
-| US Gov, Virginia * |                |                      |                     |                |
-| USA, västra 2        |                |                      |                     |                |
+| Nord- och Sydamerika           | Europa               | Afrika              | Asien och stillahavsområdet   |
+|--------------------|----------------------|---------------------|----------------|
+|                    |                      |                     |                |
+| Kanada, centrala     | Frankrike, centrala       | Södra Afrika, norra * | Japan, östra     |
+| Central US         | Tyskland, västra centrala |                     | Sydostasien |
+| East US            | Europa, norra         |                     | Australien, östra |
+| USA, östra 2          | Storbritannien, södra             |                     |                |
+| Södra centrala USA | Europa, västra          |                     |                |
+| US Gov, Virginia * |                      |                     |                |
+| USA, västra 2        |                      |                     |                |
 
 
 \* Kontakta din Microsoft-säljare eller kund representant om du vill veta mer om hur du Tillgänglighetszoner och tjänster som är tillgängliga i dessa regioner. För kommande regioner som har stöd för Tillgänglighetszoner, se [Azure-geografiska](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)områden.

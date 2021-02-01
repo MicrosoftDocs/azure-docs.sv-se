@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724916"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226598"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Öka återhämtningen av autentisering och auktorisering i klient program som du utvecklar
 
@@ -97,7 +97,7 @@ I allmänhet anropar ett program som använder modern autentisering en slut punk
 
 ### <a name="cache-tokens"></a>Cache-token
 
-Appar ska korrekt cachelagra token som tas emot från Microsoft Identity. När din app tar emot token innehåller det HTTP-svar som innehåller tokens även en "expires_in"-egenskap som talar om för programmet hur lång tid det tar att cachelagra och återanvända token. I det viktigt att programmen använder egenskapen "expires_in" för att fastställa livs längd för token. Programmet får aldrig försöka avkoda en API-åtkomsttoken.
+Appar ska korrekt cachelagra token som tas emot från Microsoft Identity. När din app tar emot token innehåller det HTTP-svar som innehåller tokens även en "expires_in"-egenskap som talar om för programmet hur lång tid det tar att cachelagra och återanvända token. Det är viktigt att programmen använder egenskapen "expires_in" för att fastställa livs längd för token. Programmet får aldrig försöka avkoda en API-åtkomsttoken.
 
 ![Ett program som gör ett anrop till Microsoft Identity, men anropet går via en token-cache på enheten som kör programmet](media/resilience-client-app/token-cache.png)
 

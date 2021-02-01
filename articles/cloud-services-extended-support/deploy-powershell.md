@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ef9a7704dfc67032a601b995d41ef24273711317
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880227"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225536"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Distribuera en moln tjänst (utökad support) med Azure PowerShell
 
@@ -88,7 +88,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Skapa ett nyckelvalv. Den här Key Vault kommer att användas för att lagra certifikat som är associerade med moln tjänsten (utökade stöd) roller. Key Vault måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
+9. Skapa ett nyckelvalv. Den här Key Vault kommer att användas för att lagra certifikat som är associerade med moln tjänsten (utökade stöd) roller. Se till att du har aktiverat "åtkomst principer" (i portalen) för åtkomst till "Azure Virtual Machines for Deployment" och "Azure Resource Manager for Template Deployment". Key Vault måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
@@ -138,6 +138,8 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     $expiration = (Get-Date).AddYears(1) 
     $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
 
+    $storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "contosostorageaccount"
+    $configFile = "<WAD configuration file path>"
     $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
     ```

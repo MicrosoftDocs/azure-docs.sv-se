@@ -4,20 +4,42 @@ description: Lär dig hur du tolkar fakturerings modellerna etablerade och betal
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632486"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226649"
 ---
-# <a name="understanding-azure-files-billing"></a>Förstå Azure Files fakturering
+# <a name="understand-azure-files-billing"></a>Förstå Azure Files fakturering
 Azure Files innehåller två olika fakturerings modeller: etablerade och betala per användning. Den etablerade modellen är bara tillgänglig för Premium-filresurser, vilket är fil resurser som distribueras i **FileStorage** -lagrings kontots typ. Modellen för att betala per användning är bara tillgänglig för standard fil resurser, vilket är fil resurser som distribueras i GPv2-lagrings konto typen **(General Purpose version 2)** . I den här artikeln beskrivs hur båda modellerna fungerar för att hjälpa dig att förstå din månatliga Azure Files faktura.
 
-Du hittar den aktuella prissättningen för Azure Files på [prissättnings sidan för Azure Files](https://azure.microsoft.com/pricing/details/storage/files/).
+Information om Azure Files pris information finns på [sidan med Azure Files prissättning](https://azure.microsoft.com/pricing/details/storage/files/).
+
+## <a name="storage-units"></a>Lagringsenheter    
+Azure Files använder bas mått enheter för att representera lagrings kapacitet: KiB, MiB, GiB och TiB. Operativ systemet kan eventuellt inte använda samma mått enhet eller inventerings system.
+
+### <a name="windows"></a>Windows
+
+Både Windows-operativsystemet och Azure Files mäter lagrings kapacitet med hjälp av bas-2-inventerings systemet, men det finns en skillnad när du märker enheter. Azure Files etikettens lagrings kapacitet med bas mått enheter, medan Windows namnger sin lagrings kapacitet i bas-10 mått enheter. När du rapporterar lagrings kapacitet konverterar Windows inte lagrings kapaciteten från bas-2 till bas-10.
+
+|Förkortning  |Definition  |Enhet  |Windows visas som  |
+|---------|---------|---------|---------|
+|KiB     |1 024 byte         |kibibyte         |KB (KB)         |
+|MiB     |1 024 KiB (1 048 576 byte)         |mebibyte         |MB (megabyte)         |
+|GiB     |1024 MiB (1 073 741 824 byte)         |gibibyte         |GB (gigabyte)         |
+|TiB     |1024 GiB (1 099 511 627 776 byte)         |tebibyte         |TB (terabyte)         |
+
+### <a name="macos"></a>macOS
+
+Se [hur iOS och MacOS rapporterar lagrings kapacitet](https://support.apple.com/HT201402) på Apples webbplats för att avgöra vilket inventerings system som används.
+
+### <a name="linux"></a>Linux
+
+Ett annat inventerings system kan användas av varje operativ system eller enskild program vara. Se deras dokumentation för att avgöra hur de rapporterar lagrings kapacitet.
 
 ## <a name="provisioned-model"></a>Etablerad modell
 Azure Files använder en etablerad modell för Premium-filresurser. I en etablerad affärs modell anger du proaktivt till den Azure Files tjänst som dina lagrings krav är, i stället för att faktureras baserat på vad du använder. Detta liknar att köpa maskin vara lokalt, i det här fallet när du etablerar en Azure-filresurs med en viss lagrings mängd, betalar du för lagringen oavsett om du använder den eller inte, precis som du inte börjar betala kostnaden för fysiska medier lokalt när du börjar använda utrymmet. Till skillnad från att köpa fysiska media lokalt kan etablerade fil resurser dynamiskt skalas upp eller ned beroende på dina egenskaper för lagring och IO-prestanda.
@@ -77,7 +99,7 @@ Om du använder en arbets belastning som inte används ofta i transaktions optim
 
 På samma sätt kommer du att betala mycket mer i transaktionskostnader, men om du lägger till en hög tillgänglig arbets belastning på låg frekvent nivå, kan du betala mer om kostnader för data lagring. Detta kan leda till en situation där ökade kostnader från transaktions priserna ökar uppväger besparingarna från det minskade priset för data lagring, vilket innebär att du betalar mer pengar på häftigt läge än vad du skulle ha på transaktionen optimerad. Det är möjligt att vissa användnings nivåer medan den frekventa nivån är den mest kostnads effektiva nivån. den låg frekventa nivån blir dyrare än transaktionen optimerad.
 
-Din arbets belastning och aktivitets nivå avgör den mest kostnads effektiva nivån för din standard fil resurs. I praktiken är det bästa sättet att välja den mest kostnads effektiva nivån att titta på den faktiska resurs förbrukningen för resursen (data som lagras, skriv transaktioner osv.).
+Din arbets belastning och aktivitets nivå avgör den mest kostnads effektiva nivån för din standard fil resurs. I praktiken innebär det bästa sättet att välja den mest kostnads effektiva nivån att titta på den faktiska resurs förbrukningen för resursen (data som lagras, skriv transaktioner osv.).
 
 ### <a name="what-are-transactions"></a>Vad är transaktioner?
 Transaktioner är åtgärder eller begär Anden mot Azure Files att ladda upp, ladda ned eller på annat sätt ändra innehållet i fil resursen. Varje åtgärd som utförs på en fil resurs översätts till en eller flera transaktioner, och på standard resurser som använder fakturerings modellen betala per användning, som översätts till transaktionskostnader.

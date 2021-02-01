@@ -14,21 +14,21 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d941bd9735149d08bfbd63ec97337dd7a3bac43b
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195457"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226666"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Vad är SAP HANA på stora Azure-instanser?
 
-SAP HANA på Azure (stora instanser) är en unik lösning till Azure. Förutom att tillhandahålla virtuella datorer för att distribuera och köra SAP HANA, erbjuder Azure dig möjligheten att köra och distribuera SAP HANA på Bare Metal-servrar som är dedikerade till dig. SAP HANA på Azure (stora instanser) lösning bygger på icke-delad maskin vara som är tilldelad värd/server utan operativ system. Server maskin varan är inbäddad i större stämplar som innehåller beräknings-/Server-, nätverks-och lagrings infrastruktur. En kombination är att den är HANA-certifierad (skräddarsyd Data Center integration). SAP HANA på Azure (stora instanser) erbjuder olika Server-SKU: er eller storlekar. Enheter kan ha 36 Intel CPU-kärnor och 768 GB minne och gå upp till enheter som har upp till 480 Intel CPU-kärnor och upp till 24 TB minne.
+SAP HANA på Azure (stora instanser) är en unik lösning till Azure. Förutom att tillhandahålla virtuella datorer för att distribuera och köra SAP HANA, erbjuder Azure dig möjligheten att köra och distribuera SAP HANA på Bare Metal-servrar som är dedikerade till dig. SAP HANA på Azure (stora instanser) lösning bygger på icke-delad maskin vara som är tilldelad värd/server utan operativ system. Server maskin varan är inbäddad i större stämplar som innehåller beräknings-/Server-, nätverks-och lagrings infrastruktur. SAP HANA på Azure (stora instanser) erbjuder olika Server-SKU: er eller storlekar. Enheter kan ha 36 Intel CPU-kärnor och 768 GB minne och gå upp till enheter som har upp till 480 Intel CPU-kärnor och upp till 24 TB minne.
 
 Kund isolering inom infrastrukturens stämpel utförs i klient organisationer, som ser ut så här:
 
 - **Nätverk**: isolering av kunder i infrastruktur stack via virtuella nätverk per kundtilldelad klient. En klient tilldelas till en enskild kund. En kund kan ha flera klienter. Nätverks isoleringen av klienter förbjuder nätverkskommunikation mellan klienter på infrastrukturens stampnivå, även om klienterna tillhör samma kund.
-- **Lagrings komponenter**: isolering genom virtuella lagrings datorer som har tilldelade lagrings volymer. Lagrings volymer kan endast tilldelas till en virtuell lagrings dator. En virtuell lagrings dator tilldelas exklusivt till en enda innehavare i stacken SAP HANA TDI-certifierad infrastruktur. Det innebär att lagrings volymer som tilldelas till en virtuell lagrings dator kan nås i en enda enskild och relaterad klient. De är inte synliga mellan de olika distribuerade klient organisationerna.
+- **Lagrings komponenter**: isolering genom virtuella lagrings datorer som har tilldelade lagrings volymer. Lagrings volymer kan endast tilldelas till en virtuell lagrings dator. En virtuell lagrings dator tilldelas exklusivt till en enda klient i infrastrukturs Tacken. Det innebär att lagrings volymer som tilldelas till en virtuell lagrings dator kan nås i en enda enskild och relaterad klient. De är inte synliga mellan de olika distribuerade klient organisationerna.
 - **Server eller värd**: en server eller en värd enhet delas inte mellan kunder eller klienter. En server eller värd som har distribuerats till en kund är en atomisk dator som är tilldelad en enda klient. *Ingen* maskinvarubaserad partitionering eller mjuk partitionering används som kan leda till att du delar en värd eller en server med en annan kund. Lagrings volymer som är kopplade till den virtuella lagrings datorn för den angivna klienten monteras på en sådan server. En klient kan ha en till många Server enheter med olika SKU: er som tilldelats exklusivt.
 - I en SAP HANA på en Azure-dator (stor instans) är många olika klienter distribuerade och isolerade mot varandra via klient koncepten för nätverk, lagring och beräknings nivåer. 
 

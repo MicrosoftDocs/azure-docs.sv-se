@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790822"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225351"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transaktionell replikering med Azure SQL-hanterad instans (för hands version)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,15 +39,15 @@ Du kan använda Transaktionsreplikering för att skicka ändringar som görs i e
 
 ### <a name="components"></a>Komponenter
 
-Nyckel komponenterna i Transaktionsreplikering är **utgivare** , **distributör** och **prenumerant** , som du ser i följande bild:  
+Nyckel komponenterna i Transaktionsreplikering är **utgivare**, **distributör** och **prenumerant**, som du ser i följande bild:  
 
 ![replikering med SQL Database](./media/replication-transactional-overview/replication-to-sql-database.png)
 
 | Roll | Azure SQL Database | Hanterad Azure SQL-instans |
 | :----| :------------- | :--------------- |
-| **Publisher** | Nej | Ja |
-| **Möjligheter** | Nej | Ja|
-| **Pull-prenumerant** | Nej | Ja|
+| **Utgivare** | Inga | Ja |
+| **Möjligheter** | Inga | Ja|
+| **Pull-prenumerant** | Inga | Ja|
 | **Push-prenumerant**| Ja | Ja|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -75,18 +75,18 @@ Det finns olika [typer av replikering](/sql/relational-databases/replication/typ
 | Replikering | Azure SQL Database | Hanterad Azure SQL-instans |
 | :----| :------------- | :--------------- |
 | [**Standard transaktion**](/sql/relational-databases/replication/transactional/transactional-replication) | Ja (endast som prenumerant) | Ja |
-| [**Ögonblicksbild**](/sql/relational-databases/replication/snapshot-replication) | Ja (endast som prenumerant) | Ja|
-| [**Sammanfoga replikering**](/sql/relational-databases/replication/merge/merge-replication) | Nej | Nej|
-| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nej | Nej|
-| [**Dubbelriktad**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nej | Ja|
-| [**Uppdaterings bara prenumerationer**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nej | Nej|
+| [**Ögonblicks bild**](/sql/relational-databases/replication/snapshot-replication) | Ja (endast som prenumerant) | Ja|
+| [**Sammanfoga replikering**](/sql/relational-databases/replication/merge/merge-replication) | Inga | Inga|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Inga | Inga|
+| [**Dubbelriktad**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Inga | Ja|
+| [**Uppdaterings bara prenumerationer**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Inga | Inga|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Support mat ris
 
   Matrisen för stöd för transaktionella replikering för Azure SQL Managed instance är samma som den för SQL Server.
   
-| **Publisher**   | **Möjligheter** | **Prenumerant** |
+| **Utgivare**   | **Möjligheter** | **Prenumerant** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
 | SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
@@ -109,7 +109,7 @@ Transaktionell replikering är användbart i följande scenarier:
 | Kategori | Datasynkronisering | Transaktionsreplikering |
 |---|---|---|
 | Fördelar | – Stöd för aktiv-aktiv<br/>– Dubbelriktad mellan lokala och Azure SQL Database | -Nedre latens<br/>– Transaktionell konsekvens<br/>-Återanvänd befintlig topologi efter migrering |
-| Nackdelar | – 5 min eller mer svars tid<br/>– Ingen transaktionell konsekvens<br/>-Högre prestanda påverkan | -Det går inte att publicera från Azure SQL Database <br/>– Kostnad för hög underhåll |
+| Nackdelar | – Ingen transaktionell konsekvens<br/>-Högre prestanda påverkan | -Det går inte att publicera från Azure SQL Database <br/>– Kostnad för hög underhåll |
 
 ## <a name="common-configurations"></a>Vanliga konfigurationer
 
@@ -197,7 +197,7 @@ Mer information om hur du konfigurerar Transaktionsreplikering finns i följande
 - [Konfigurera replikering mellan en SQL-hanterad instans utgivare och prenumerant](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Konfigurera replikering mellan en SQL-hanterad instans utgivare, SQL-hanterad instans distributör och SQL Server prenumerant](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Skapa en publikation](/sql/relational-databases/replication/publish/create-a-publication).
-- [Skapa en push-prenumeration](/sql/relational-databases/replication/create-a-push-subscription) med hjälp av Server namnet som prenumeranten (till exempel `N'azuresqldbdns.database.windows.net` och databasen i Azure SQL Database namn som mål databas (till exempel **AdventureWorks** . )
+- [Skapa en push-prenumeration](/sql/relational-databases/replication/create-a-push-subscription) med hjälp av Server namnet som prenumeranten (till exempel `N'azuresqldbdns.database.windows.net` och databasen i Azure SQL Database namn som mål databas (till exempel **AdventureWorks**. )
 
 ## <a name="see-also"></a>Se även  
 

@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 161b7fcf4660ddb9515f0b82887f416d83598bdc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754436"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225807"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
 
 I den här snabb starten laddar du ned och kör ett kod exempel som visar hur ett särskilt SPA-program (Single-Side Application) kan logga in användare och anropa Microsoft Graph. Kod exemplet visar hur du hämtar en åtkomsttoken för att anropa Microsoft Graph API eller något webb-API.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/).
@@ -49,11 +49,11 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 > 1. Om ditt konto har åtkomst till fler än en klient väljer du ditt konto längst upp till höger och ställer in din portal-session till den Azure AD-klient som du vill använda.
 > 1. Följ anvisningarna för att [Registrera ett program på en sida](./scenario-spa-app-registration.md) i Azure Portal.
 > 1. Lägg till en ny plattform i fönstret **verifiering** i appens registrering och registrera omdirigerings-URI: n: `http://localhost:4200/` .
-> 1. I den här snabb starten används det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). Välj de **implicita beviljande** inställningarna för **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen loggar in användare och anropar ett API.
+> 1. I den här snabb starten används det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen loggar in användare och anropar ett API.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Steg 1: konfigurera programmet i Azure Portal
-> För att kod exemplet för den här snabb starten ska fungera måste du lägga till en omdirigerings-URI som **http://localhost:4200/** och aktivera **implicit beviljande**.
+> För att kod exemplet för den här snabb starten ska fungera måste du lägga till en omdirigerings-URI som **http://localhost:4200/** och aktivera * * * * implicit beviljande * *.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör ändringarna åt mig]()
 >

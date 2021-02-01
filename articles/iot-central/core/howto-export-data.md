@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760898"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226072"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportera IoT-data till moln mål med hjälp av data export
 
@@ -32,7 +32,7 @@ Du kan till exempel:
 > [!Tip]
 > När du aktiverar data export får du bara data från dessa tidpunkter. För närvarande går det inte att hämta data under en tid då data exporten var avstängd. Aktivera data export tidigt om du vill behålla mer historiska data.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda data export funktioner måste du ha ett [v3-program](howto-get-app-info.md)och du måste ha behörighet för [data export](howto-manage-users-roles.md) .
 
@@ -166,7 +166,7 @@ Nu när du har ett mål för att exportera data till, konfigurerar du data expor
 
 1. När du är klar med konfigurationen av exporten väljer du **Spara**. Efter några minuter visas dina data i dina mål.
 
-## <a name="export-contents-and-format"></a>Exportera innehåll och format
+## <a name="destinations"></a>Mål
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage-mål
 
@@ -187,7 +187,7 @@ Meddelandets anteckningar eller systemets egenskaps uppsättning innehåller `io
 
 För Webhooks-mål exporteras även data i nära real tid. Informationen i meddelande texten är i samma format som för Event Hubs och Service Bus.
 
-### <a name="telemetry-format"></a>Telemetri-format
+## <a name="telemetry-format"></a>Telemetri-format
 
 Varje exporterat meddelande innehåller en normaliserad form av det fullständiga meddelande som enheten skickade i meddelande texten. Meddelandet är i JSON-format och kodat som UTF-8. Information i varje meddelande inkluderar:
 
@@ -231,6 +231,102 @@ I följande exempel visas ett exporterat telemetri-meddelande:
     "messageProperties": {
       "messageProp": "value"
     }
+}
+```
+
+### <a name="message-properties"></a>Meddelande egenskaper
+
+Telemetri-meddelanden har egenskaper för metadata förutom nytto lasten för telemetri. Föregående kodfragment visar exempel på system meddelanden som `deviceId` och `enqueuedTime` . Mer information om system meddelande egenskaperna finns i [system egenskaper för D2C IoT Hub-meddelanden](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages).
+
+Du kan lägga till egenskaper för telemetri-meddelanden om du behöver lägga till anpassade metadata i dina telemetri-meddelanden. Du måste till exempel lägga till en tidsstämpel när enheten skapar meddelandet.
+
+Följande kodfragment visar hur du lägger till `iothub-creation-time-utc` egenskapen i meddelandet när du skapar den på enheten:
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
+
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+Följande fragment visar den här egenskapen i meddelandet som exporter ATS till Blob Storage:
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
 }
 ```
 
