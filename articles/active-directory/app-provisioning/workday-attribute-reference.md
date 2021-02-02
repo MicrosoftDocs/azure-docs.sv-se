@@ -3,7 +3,7 @@ title: Workday-attributreferens
 description: Lär dig vilka attribut som du kan hämta från Workday med hjälp av XPATH-frågor.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266572"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255482"
 ---
 # <a name="workday-attribute-reference"></a>Workday-attributreferens
 
@@ -63,7 +63,7 @@ I tabellen nedan visas en lista över Workday-attribut och motsvarande XPATH-utt
 | 29 | LocationIdentifier                    | WD: Worker/WD: Worker- \_ data/WD: anställnings \_ data/WD: positions \_ data/WD: \_ \_ sammanfattnings data för företags webbplats \_ /WD: plats \_ referens/WD: ID \[ @wd:type = ' plats \_ -ID ' \] /text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker- \_ data/WD: hanterings \_ kedje \_ data/WD: data position för hanterings kedja för arbets \_ ledare \_ \_ \_ \[ \( \) = 1 \] /WD: hanterings \_ kedja \_ data \[ sista \( \) = position \( \) \] /WD: Manager \_ Reference/WD: ID \[ @wd:type = ' WID ' \] /text\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | WD: Worker/WD: Worker- \_ data/WD: personliga \_ data/WD: namn \_ data/WD: juridiska \_ namn \_ data/WD: namn \_ detalj \_ data/WD: mellan \_ namn/text\(\)                                                                                                                                                                                                                                                                                |
-| 32 | Mobil                                | WD: Worker/WD: Worker- \_ data/WD: personliga \_ data/WD: kontakt \_ data/WD: telefon \_ data \[ översättning \( sträng \( WD: telefon \_ enhets \_ typ \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' Mobile ' och Översätt \( sträng \( WD: användnings \_ data/WD: typ \_ data/WD: Type \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' arbets \] /@wd:Formatted \_ telefon    |
+| 32 | Mobilt                                | WD: Worker/WD: Worker- \_ data/WD: personliga \_ data/WD: kontakt \_ data/WD: telefon \_ data \[ översättning \( sträng \( WD: telefon \_ enhets \_ typ \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' Mobile ' och Översätt \( sträng \( WD: användnings \_ data/WD: typ \_ data/WD: Type \_ Reference/@wd:Descriptor \) , ' abcdefghijklmnopqrstuvwxyz ', ' abcdefghijklmnopqrstuvwxyz ' \) = ' arbets \] /@wd:Formatted \_ telefon    |
 | 33 | Kommuner                          | WD: Worker/WD: Worker- \_ data/WD: anställnings \_ data/WD: positions \_ data/WD: \_ \_ sammanfattnings data för företags webbplats \_ /WD: adress \_ data/WD: kommun/text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | WD: Worker/WD: Worker- \_ data/WD: anställnings \_ data/WD: positions \_ data/WD: positions \_ -ID/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker- \_ data/WD: anställnings \_ data/WD: positions \_ data/WD: positions \_ rubrik/text\(\)                                                                                                                                                                                                                                                                                                                  |
@@ -158,7 +158,7 @@ Information om hur du konfigurerar ytterligare XPATHs finns i avsnittet [Självs
 | 29 | LocationIdentifier                    | WD: Worker/WD: Worker \_ -data/WD: anställnings \_ data/WD: Worker \_ \_ -jobb data \[ @wd:Primary_Job = 1]/WD: positions \_ data/WD: affärs \_ plats \_ Sammanfattning \_ data/WD: plats \_ referens/WD: ID \[ @wd:type = ' plats \_ -ID ' \] /text\(\)                                                                                                                                                                           |
 | 30 | ManagerReference                      | WD: Worker/WD: Worker- \_ data/WD: hanterings \_ kedje \_ data/WD: data position för hanterings kedja för arbets \_ ledare \_ \_ \_ \[ \( \) = 1 \] /WD: hanterings \_ kedja \_ data \[ sista \( \) = position \( \) \] /WD: Manager \_ Reference/WD: ID \[ @wd:type = ' WID ' \] /text\(\)                                                                                                                                                      |
 | 31 | MiddleName                            | WD: Worker/WD: Worker- \_ data/WD: personliga \_ data/WD: namn \_ data/WD: juridiska \_ namn \_ data/WD: namn \_ detalj \_ data/WD: mellan \_ namn/text\(\)                                                                                                                                                                                                                                                          |
-| 32 | Mobil                                | WD: Worker/WD: Worker \_ -data/WD: personliga \_ data/WD: kontakt \_ data/WD: telefon \_ information \[ WD: användning \_ Data/@wd:Public = 1 och sträng \( WD: användnings \_ data/WD: typ \_ data/WD: typ \_ referens/WD: ID \[ @wd:type = ' kommunikations \_ \_ typ \_ -ID ' \] \) = ' arbete ' och sträng \( WD: telefon \_ enhets \_ typ \_ referens/WD: ID \[ @wd:type = ' telefon \_ enhets \_ typ \_ -ID ' \] \) = ' mobil '\]/@wd:Workday_Traditional_Formatted_Phone   |
+| 32 | Mobilt                                | WD: Worker/WD: Worker \_ -data/WD: personliga \_ data/WD: kontakt \_ data/WD: telefon \_ information \[ WD: användning \_ Data/@wd:Public = 1 och sträng \( WD: användnings \_ data/WD: typ \_ data/WD: typ \_ referens/WD: ID \[ @wd:type = ' kommunikations \_ \_ typ \_ -ID ' \] \) = ' arbete ' och sträng \( WD: telefon \_ enhets \_ typ \_ referens/WD: ID \[ @wd:type = ' telefon \_ enhets \_ typ \_ -ID ' \] \) = ' mobil '\]/@wd:Workday_Traditional_Formatted_Phone   |
 | 33 | Kommuner                          | WD: Worker/WD: Worker- \_ data/WD: anställnings \_ data/WD: Worker- \_ jobb \_ data \[ @wd:Primary_Job = 1]/WD: positions \_ data/WD: affärs \_ plats \_ Sammanfattning \_ data/WD: adress \_ data/WD: kommun/text\(\)                                                                                                                                                                                                  |
 | 34 | PositionID                            | WD: Worker/WD: Worker- \_ data/WD: anställnings \_ data/WD: Worker \_ \_ -jobb data \[ @wd:Primary_Job = 1]/WD: positions \_ data/WD: positions \_ -ID/text\(\)                                                                                                                                                                                                                                                    |
 | 35 | PositionTitle                         | WD: Worker/WD: Worker \_ -data/WD: anställnings \_ data/WD: Worker- \_ jobb \_ data \[ @wd:Primary_Job = 1]/WD: positions \_ data/WD: positions \_ rubrik/text\(\)                                                                                                                                                                                                                                                 |
@@ -235,7 +235,7 @@ Nedan visas en lista över de XPATH-funktioner som stöds av [Microsoft .net XPa
 * del sträng – efter
 * starts-with
 * sträng längd
-* contains
+* innehåller
 * translate
 * normalisering – utrymme
 * under sträng – före
@@ -243,7 +243,7 @@ Nedan visas en lista över de XPATH-funktioner som stöds av [Microsoft .net XPa
 * true
 * inte
 * falskt
-* nummer
+* antal
 * Fastställ
 * fordra
 * round

@@ -4,7 +4,7 @@ description: Använd samlingarna Mina appar för att anpassa mina apps-sidor fö
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,12 @@ ms.date: 02/10/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967ac34ddb736f58f66639181cdf10e4aaa8ffab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7743a1af54b01f848c4ac6f0cb1d4526d66f8132
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656793"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254990"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Skapa samlingar i portalen Mina appar
 
@@ -83,11 +83,11 @@ I gransknings loggarna registreras mina program samlingar, inklusive åtgärder 
 * Lägg till självbetjänings program (slutanvändare)
 * Borttagning av självbetjänings program (slutanvändare)
 
-Du kan komma åt gransknings loggar i [Azure Portal](https://portal.azure.com) genom att välja **Azure Active Directory**  >  **Enterprise Applications**  >  **gransknings loggar** för företags program i avsnittet aktivitet. För **tjänst** väljer du **Mina appar**.
+Du kan komma åt gransknings loggar i [Azure Portal](https://portal.azure.com) genom att välja **Azure Active Directory**  >    >  **gransknings loggar** för företags program i avsnittet aktivitet. För **tjänst** väljer du **Mina appar**.
 
 ## <a name="get-support-for-my-account-pages"></a>Få support för mina konto sidor
 
-På sidan Mina appar kan en användare välja mitt konto **My account**  >  **Visa mitt konto** för att öppna sina konto inställningar. På sidan Azure AD **mitt konto** kan användare hantera säkerhets information, enheter, lösen ord och mycket annat. De kan också komma åt sina konto inställningar för Office.
+På sidan Mina appar kan en användare välja mitt konto   >  **Visa mitt konto** för att öppna sina konto inställningar. På sidan Azure AD **mitt konto** kan användare hantera säkerhets information, enheter, lösen ord och mycket annat. De kan också komma åt sina konto inställningar för Office.
 
 Om du behöver skicka en support förfrågan om ett problem med sidan Azure AD-konto eller sidan Office-konto följer du dessa steg så att din begäran dirigeras korrekt: 
 

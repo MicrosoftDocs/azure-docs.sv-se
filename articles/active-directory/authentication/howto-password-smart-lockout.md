@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741736"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255381"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Skydda användar konton mot attacker med Azure Active Directory Smart utelåsning
 
@@ -89,6 +89,8 @@ Utför följande steg för att kontrol lera eller ändra de smarta utelåsnings 
 När tröskelvärdet för smart utelåsning utlöses, får du följande meddelande när kontot är låst:
 
 *Ditt konto är tillfälligt låst för att förhindra obehörig användning. Försök igen senare och kontakta administratören om du fortfarande har problem.*
+
+När du testar Smart utelåsning kan dina inloggnings begär Anden hanteras av olika data Center på grund av den geo-distribuerade och belastningsutjämnad typen av Azure AD-autentiseringstjänst. I det scenariot, eftersom varje Azure AD-datacenter spårar oberoende av varandra, kan det ta mer än ditt definierade utelåsnings tröskel antal försök att orsaka en utelåsning. En användare har (*threshold_limit * datacenter_count*) antal felaktiga försök om användaren träffar varje data Center innan en utelåsning sker.
 
 ## <a name="next-steps"></a>Nästa steg
 

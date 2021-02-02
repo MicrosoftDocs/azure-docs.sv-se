@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory Business-to-kund (B2C)
 description: Ny och uppdaterad dokumentation för Azure Active Directory B2C (Business-to-Customer).
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,53 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e58f54d991cd190aba6eeb851e6cf2aec78e695
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559735"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255177"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Vad är nytt
 
 Välkommen till nyheter i Azure Active Directory B2C-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med B2C-tjänsten finns i [Nyheter i Azure Active Directory](../active-directory/fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>Januari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Anpassa användar gränssnittet i Azure Active Directory B2C](customize-ui.md)
+- [Begränsningar och begränsningar för Azure Active Directory B2C tjänsten](service-limits.md)
+- [Konfigurera registrering och inloggning med ett Azure AD B2C konto från en annan Azure AD B2C klient](identity-provider-azure-ad-b2c.md)
+- [Konfigurera den lokala konto identitets leverantören](identity-provider-local.md)
+- [Konfigurera ett inloggnings flöde i Azure Active Directory B2C](add-sign-in-policy.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Spåra användar beteende i Azure Active Directory B2C att använda Application Insights](analytics-with-application-insights.md)
+- [TechnicalProfiles](technicalprofiles.md)
+- [Anpassa användar gränssnittet med HTML-mallar i Azure Active Directory B2C](customize-ui-with-html.md)
+- [Hantera Azure AD B2C med Microsoft Graph](microsoft-graph-operations.md)
+- [Lägg till AD FS som en SAML Identity-Provider med anpassade principer i Azure Active Directory B2C](identity-provider-adfs.md)
+- [Konfigurera inloggning med en Salesforce-SAML-Provider med hjälp av SAML-protokollet i Azure Active Directory B2C](identity-provider-salesforce-saml.md)
+- [Självstudie: registrera ett webb program i Azure Active Directory B2C](tutorial-register-applications.md)
+- [Konfigurera registrering och inloggning med ett Amazon-konto med hjälp av Azure Active Directory B2C](identity-provider-amazon.md)
+- [Konfigurera registrering och inloggning med ett Azure AD B2C konto från en annan Azure AD B2C klient](identity-provider-azure-ad-b2c.md)
+- [Konfigurera inloggning för Azure Active Directory för flera innehavare med anpassade principer i Azure Active Directory B2C](identity-provider-azure-ad-multi-tenant.md)
+- [Konfigurera inloggning för en speciell Azure Active Directory organisation i Azure Active Directory B2C](identity-provider-azure-ad-single-tenant.md)
+- [Konfigurera registrering och inloggning med ett Facebook-konto med hjälp av Azure Active Directory B2C](identity-provider-facebook.md)
+- [Konfigurera registrering och inloggning med ett GitHub-konto med hjälp av Azure Active Directory B2C](identity-provider-github.md)
+- [Konfigurera registrering och inloggning med ett Google-konto med hjälp av Azure Active Directory B2C](identity-provider-google.md)
+- [Konfigurera registrering och inloggning med ett ID.me-konto med hjälp av Azure Active Directory B2C](identity-provider-id-me.md)
+- [Konfigurera registrering och inloggning med ett LinkedIn-konto med hjälp av Azure Active Directory B2C](identity-provider-linkedin.md)
+- [Konfigurera registrering och inloggning med en Microsoft-konto med hjälp av Azure Active Directory B2C](identity-provider-microsoft-account.md)
+- [Konfigurera registrering och inloggning med ett QQ-konto med hjälp av Azure Active Directory B2C](identity-provider-qq.md)
+- [Konfigurera registrering och inloggning med ett Salesforce-konto med hjälp av Azure Active Directory B2C](identity-provider-salesforce.md)
+- [Konfigurera registrering och inloggning med ett Twitter-konto med hjälp av Azure Active Directory B2C](identity-provider-twitter.md)
+- [Konfigurera registrering och inloggning med ett WeChat-konto med hjälp av Azure Active Directory B2C](identity-provider-wechat.md)
+- [Konfigurera registrering och inloggning med ett Weibo-konto med hjälp av Azure Active Directory B2C](identity-provider-weibo.md)
+- [Översikt över Azure AD B2C anpassad princip](custom-policy-trust-frameworks.md)
+
 
 ## <a name="december-2020"></a>December 2020
 
