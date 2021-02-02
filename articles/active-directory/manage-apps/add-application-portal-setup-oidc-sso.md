@@ -3,19 +3,19 @@ title: 'Snabb start: Konfigurera OIDC-baserad enkel inloggning (SSO) för ett pr
 description: Den här snabb starten vägleder dig genom processen att konfigurera OIDC enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 2ff35a8d86534a99b8957a9272f9a1eb59fc27ab
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e5695d5ded92e9bb41d39a082790cfbb456dbc38
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399986"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258362"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Snabb start: Konfigurera OIDC-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient
 
@@ -23,7 +23,7 @@ Kom igång med förenklade användar inloggningar genom att konfigurera enkel in
 
 Mer information om OIDC-baserad SSO finns i [förstå OIDC-baserad enkel inloggning](configure-oidc-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera SSO för ett program som du har lagt till i din Azure AD-klient behöver du:
 

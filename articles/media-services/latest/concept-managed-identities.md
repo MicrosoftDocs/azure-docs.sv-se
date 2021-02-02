@@ -1,45 +1,40 @@
 ---
-title: Hanterade identiteter och betrodd lagring
-description: Media Services kan användas med hanterade identiteter för att aktivera betrodd lagring.
+title: Hanterade identiteter
+description: Media Services kan användas med Azure Managed identiteter.
+keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 291508a6beaa687b3a10f55df4591ce601ab51a0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956182"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258447"
 ---
-# <a name="managed-identities-and-trusted-storage-with-media-services"></a>Hanterade identiteter och betrodd lagring med Media Services
+# <a name="managed-identities"></a>Hanterade identiteter
 
-Media Services kan användas med [hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) för att aktivera betrodd lagring. När du skapar ett Media Services konto måste du associera det med ett lagrings konto. Media Services kan komma åt lagrings kontot med hjälp av systemautentisering. Media Services verifierar att Media Services kontot och lagrings kontot finns i samma prenumeration och verifierar att användaren som lägger till associationen har åtkomst till lagrings kontot med Azure Resource Manager RBAC.
+En vanlig utmaning för utvecklare är hanteringen av hemligheter och autentiseringsuppgifter för att skydda kommunikationen mellan olika tjänster. I Azure eliminerar Managed identiteter behovet av utvecklare som behöver hantera autentiseringsuppgifter genom att tillhandahålla en identitet för Azure-resursen i Azure AD och använda den för att hämta Azure Active Directory (Azure AD)-token.
 
-## <a name="trusted-storage"></a>Betrodd lagring
-
-Men om du vill använda en brand vägg för att skydda ditt lagrings konto måste du använda hanterad identitets autentisering. Den ger Media Services åtkomst till lagrings kontot som har kon figurer ATS med en brand vägg eller en VNet-begränsning via betrodd lagrings åtkomst.  Mer information om betrodda Microsoft-tjänster finns i [konfigurera Azure Storage brand väggar och virtuella nätverk](../../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-## <a name="media-services-managed-identity-scenarios"></a>Medie tjänster hanterade identitets scenarier
-
-Det finns för närvarande två scenarier där hanterad identitet kan användas med Media Services:
+Det finns för närvarande två scenarier där hanterade identiteter kan användas med Media Services:
 
 - Använd den hanterade identiteten för det Media Services kontot för att komma åt lagrings konton.
 
 - Använd den hanterade identiteten för Media Services kontot för att komma åt Key Vault för åtkomst till kund nycklar.
 
-I följande två avsnitt beskrivs skillnaderna i de två scenarierna.
+I följande två avsnitt beskrivs stegen i de två scenarierna.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Använd den hanterade identiteten för det Media Services kontot för att komma åt lagrings konton
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Använd den hanterade identiteten för det Media Services kontot för att komma åt lagrings konton
 
 1. Skapa ett Media Services-konto med en hanterad identitet.
 1. Bevilja den hanterade identitetens huvud åtkomst till ett lagrings konto som du äger.
 1. Media Services kan sedan komma åt lagrings kontot för din räkning med hjälp av den hanterade identiteten.
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Använd den hanterade identiteten för Media Services kontot för att komma åt Key Vault för åtkomst till kund nycklar
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Använd den hanterade identiteten för Media Services kontot för att komma åt Key Vault för åtkomst till kund nycklar
 
 1. Skapa ett Media Services-konto med en hanterad identitet.
 1. Bevilja den hanterade identitetens huvud åtkomst till en Key Vault som du äger.

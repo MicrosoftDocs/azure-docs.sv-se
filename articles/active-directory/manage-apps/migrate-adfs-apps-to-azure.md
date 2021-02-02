@@ -3,7 +3,7 @@ title: Flytta programautentisering från AD FS till Azure Active Directory
 description: Den här artikeln är avsedd att hjälpa organisationer att förstå hur de flyttar program till Azure AD, med fokus på federerade SaaS-program.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15009dd935d91971ce4212ff44b67a1ca6fa363
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: b27ccf5a861295ae83b5ddc021e77de75962de48
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745391"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258396"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory
 
@@ -198,13 +198,13 @@ I följande tabell beskrivs några av de vanligaste mappningen av inställningar
 
 | Konfigurationsuppsättning| AD FS| Konfigurera i Azure AD| SAML-token |
 | - | - | - | - |
-| **Inloggnings-URL för appen** <p>URL: en som användaren kan använda för att logga in på appen i ett SP-initierat SAML-flöde (Service Provider).| Saknas| Öppna en grundläggande SAML-konfiguration från SAML-baserad inloggning| Saknas |
+| **Inloggnings-URL för appen** <p>URL: en som användaren kan använda för att logga in på appen i ett SP-initierat SAML-flöde (Service Provider).| Ej tillämpligt| Öppna en grundläggande SAML-konfiguration från SAML-baserad inloggning| Ej tillämpligt |
 | **Appens svars-URL** <p>Appens URL från identitets leverantörens (IdP) perspektiv. IdP skickar användaren och token hit när användaren har loggat in på IdP.  Detta kallas även för **slut punkt för SAML Assertion-konsumenten**.| Välj fliken **slut punkter**| Öppna en grundläggande SAML-konfiguration från SAML-baserad inloggning| Mål element i SAML-token. Exempelvärde: `https://contoso.my.salesforce.com` |
-| **Appens webbadress för utloggning** <p>Det här är URL: en till vilken "utloggnings rensning"-begär Anden skickas när en användare loggar ut från en app. IdP skickar begäran om att logga ut användaren från alla andra appar också.| Välj fliken **slut punkter**| Öppna en grundläggande SAML-konfiguration från SAML-baserad inloggning| Saknas |
+| **Appens webbadress för utloggning** <p>Det här är URL: en till vilken "utloggnings rensning"-begär Anden skickas när en användare loggar ut från en app. IdP skickar begäran om att logga ut användaren från alla andra appar också.| Välj fliken **slut punkter**| Öppna en grundläggande SAML-konfiguration från SAML-baserad inloggning| Ej tillämpligt |
 | **Appidentifierare** <p>Detta är app-ID: n från IdP perspektiv. Inloggnings-URL-värdet används ofta för identifieraren (men inte alltid).  Ibland anropar appen detta "entitets-ID".| Välj fliken **identifierare**|Öppna en grundläggande SAML-konfiguration från SAML-baserad inloggning| Mappar till **Audience** -ELEMENTET i SAML-token. |
-| **Federationsmetadata för appen** <p>Det här är platsen för appens federationsmetadata. IdP:n använder den till att automatiskt uppdatera specifika konfigurationsinställningar, som t.ex. slutpunkter eller krypteringscertifikat.| Välj fliken **övervakning**| Ej tillämpligt. Azure AD stöder inte användning av program federationens metadata direkt. Du kan importera federationsmetadata manuellt.| Saknas |
+| **Federationsmetadata för appen** <p>Det här är platsen för appens federationsmetadata. IdP:n använder den till att automatiskt uppdatera specifika konfigurationsinställningar, som t.ex. slutpunkter eller krypteringscertifikat.| Välj fliken **övervakning**| Ej tillämpligt. Azure AD stöder inte användning av program federationens metadata direkt. Du kan importera federationsmetadata manuellt.| Ej tillämpligt |
 | **Användar identifierare/namn-ID** <p>Attribut som används för att unikt ange användarens identitet från Azure AD eller AD FS till din app.  Det här attributet är vanligt vis antingen UPN eller e-postadress för användaren.| Anspråks regler. I de flesta fall utfärdar anspråks regeln ett anspråk med en typ som slutar med NameIdentifier.| Du kan hitta identifieraren under rubriken **användarattribut och anspråk**. Som standard används UPN| Mappar till **NameID** -ELEMENTET i SAML-token. |
-| **Andra anspråk** <p>Exempel på annan anspråks information som ofta skickas från IdP till appen inkluderar förnamn, efter namn, e-postadress och grupp medlemskap.| I AD FS finns detta som övriga anspråksregler hos den förlitande parten.| Du kan hitta identifieraren under rubriken **användarattribut & anspråk**. Välj **Visa** och redigera alla andra användarattribut.| Saknas |
+| **Andra anspråk** <p>Exempel på annan anspråks information som ofta skickas från IdP till appen inkluderar förnamn, efter namn, e-postadress och grupp medlemskap.| I AD FS finns detta som övriga anspråksregler hos den förlitande parten.| Du kan hitta identifieraren under rubriken **användarattribut & anspråk**. Välj **Visa** och redigera alla andra användarattribut.| Ej tillämpligt |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>IdP-inställningar (Map Identity Provider)
@@ -236,11 +236,11 @@ SaaS-appar behöver veta vart du ska skicka autentiseringsbegäranden och hur du
 
 | Konfigurationsuppsättning| AD FS| Konfigurera i Azure AD |
 | - | - | - |
-| **IdP-inloggnings-URL** <p>Inloggnings-URL för IdP från appens perspektiv (där användaren omdirigeras för inloggning).| Den AD FS inloggnings-URL: en är AD FS Federations tjänstens namn följt av "/adfs/ls/." <p>Exempel: `https://fs.contoso.com/adfs/ls/`| Ersätt {Tenant-ID} med klient-ID: t. <p> För appar som använder SAML-P-protokollet: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>För appar som använder WS-Federation-protokollet: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP-utloggnings-URL**<p>Utloggnings-URL för IdP från appens perspektiv (där användaren omdirigeras när de väljer att logga ut från appen).| Den utloggnings-URL: en är antingen samma som inloggnings-URL: en, eller samma URL med "WA = wsignout 1.0". Exempel: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Ersätt {Tenant-ID} med klient-ID: t.<p>För appar som använder SAML-P-protokollet:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> För appar som använder WS-Federation-protokollet: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **IdP-inloggnings-URL** <p>Inloggnings-URL för IdP från appens perspektiv (där användaren omdirigeras för inloggning).| Den AD FS inloggnings-URL: en är AD FS Federations tjänstens namn följt av "/adfs/ls/." <p>Exempelvis: `https://fs.contoso.com/adfs/ls/`| Ersätt {Tenant-ID} med klient-ID: t. <p> För appar som använder SAML-P-protokollet: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>För appar som använder WS-Federation-protokollet: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP-utloggnings-URL**<p>Utloggnings-URL för IdP från appens perspektiv (där användaren omdirigeras när de väljer att logga ut från appen).| Den utloggnings-URL: en är antingen samma som inloggnings-URL: en, eller samma URL med "WA = wsignout 1.0". Exempelvis: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Ersätt {Tenant-ID} med klient-ID: t.<p>För appar som använder SAML-P-protokollet:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> För appar som använder WS-Federation-protokollet: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **Token signerings certifikat**<p>IdP använder certifikatets privata nyckel för att signera utfärdade token. Den kontrollerar att token kom från samma IdP som appen är konfigurerad att ha förtroende för.| AD FS-certifikatet för tokensignering finns i AD FS-hanteringen under **Certifikat**.| Hitta den i Azure Portal i programmets **Egenskaper för enkel inloggning** under rubriken **SAML-signeringscertifikat**. Därifrån kan du ladda ner certifikatet för uppladdning till appen.  <p>Om programmet har fler än ett certifikat kan du hitta alla certifikat i XML-filen för federationsmetadata. |
-| **Identifierare/"utfärdare"**<p>Identifierare för IdP från appens perspektiv (kallas ibland för "Issuer ID").<p>I SAML-token visas värdet som Issuer-element.| Identifieraren för AD FS är vanligt vis Federations tjänst identifieraren i AD FS hantering under **tjänst > redigera federationstjänst egenskaper**. Exempel: `http://fs.contoso.com/adfs/services/trust`| Ersätt {Tenant-ID} med klient-ID: t.<p>https: \/ /STS.Windows.net/{Tenant-ID}/ |
-| **IdP Federation-Metadata**<p>Platsen för IdP: s allmänt tillgängliga federationsmetadata. (Federationsmetadata används av vissa appar som ett alternativ för administratören och konfigurerar URL:er, identifierare och certifikat för tokensignering individuellt.)| Hitta URL: en för AD FS federationens metadata i AD FS hantering under **tjänst > slut punkter > metadata > typ: federationsmetadata**. Exempel: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Motsvarande värde för Azure AD följer mönstret [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Ersätt {TenantDomainName} med klient organisationens namn i formatet "contoso.onmicrosoft.com".   <p>Mer information finns i [Federationsmetadata](../azuread-dev/azure-ad-federation-metadata.md). |
+| **Identifierare/"utfärdare"**<p>Identifierare för IdP från appens perspektiv (kallas ibland för "Issuer ID").<p>I SAML-token visas värdet som Issuer-element.| Identifieraren för AD FS är vanligt vis Federations tjänst identifieraren i AD FS hantering under **tjänst > redigera federationstjänst egenskaper**. Exempelvis: `http://fs.contoso.com/adfs/services/trust`| Ersätt {Tenant-ID} med klient-ID: t.<p>https: \/ /STS.Windows.net/{Tenant-ID}/ |
+| **IdP Federation-Metadata**<p>Platsen för IdP: s allmänt tillgängliga federationsmetadata. (Federationsmetadata används av vissa appar som ett alternativ för administratören och konfigurerar URL:er, identifierare och certifikat för tokensignering individuellt.)| Hitta URL: en för AD FS federationens metadata i AD FS hantering under **tjänst > slut punkter > metadata > typ: federationsmetadata**. Exempelvis: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Motsvarande värde för Azure AD följer mönstret [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Ersätt {TenantDomainName} med klient organisationens namn i formatet "contoso.onmicrosoft.com".   <p>Mer information finns i [Federationsmetadata](../azuread-dev/azure-ad-federation-metadata.md). |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>Visa AD FS säkerhets principer i Azure AD
@@ -466,7 +466,7 @@ Beroende på hur du konfigurerar din app, kontrol lera att SSO fungerar korrekt.
 > [!NOTE]
 > Cookies från den gamla AD FSs miljön kommer fortfarande att vara permanenta på användarens datorer. Dessa cookies kan orsaka problem med migreringen eftersom användarna kan dirigeras till den gamla AD FS inloggnings miljön jämfört med den nya Azure AD-inloggningen. Du kan behöva rensa användarens cookies manuellt eller använda ett skript. Du kan också använda System Center Configuration Manager eller en liknande plattform.
 
-### <a name="troubleshoot"></a>Felsök
+### <a name="troubleshoot"></a>Felsöka
 
 Om det finns några fel från testet av de migrerade programmen kan fel sökningen vara det första steget innan du återgår till befintliga AD FS förlitande parter. Se [FELSÖKA SAML-baserad enkel inloggning till program i Azure Active Directory](./debug-saml-sso-issues.md).
 
