@@ -129,7 +129,7 @@
             - name: Förstå begränsningar
               href: storsimple-8000-limits.md
             - name: Bästa praxis
-              href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_BestPractices_V1.1.pdf'
         - name: Installera
           items:
             - name: Granska säkerhet
@@ -262,11 +262,7 @@
             - name: Automatisera filserver-DR till Azure
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: StorSimple med Express Route
-              href: 'https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content'
-            - name: StorSimple med VMware
-              href: 'https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463'
-            - name: StorSimple med Hyper-V
-              href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
             - name: Distribuerat globalt namnområde
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: Övervaka

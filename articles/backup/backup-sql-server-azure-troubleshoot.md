@@ -3,12 +3,12 @@ title: Felsöka SQL Server säkerhets kopiering av databasen
 description: Felsöknings information för att säkerhetskopiera SQL Server databaser som körs på virtuella Azure-datorer med Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733951"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429474"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Felsöka SQL Server säkerhets kopiering av databasen med Azure Backup
 
@@ -217,7 +217,7 @@ Kontrol lera om det finns ett eller flera av följande symptom innan du utlöser
 
   - Saknar behörighet att utföra säkerhetskopierade åtgärder på den virtuella datorn.
   - Stäng av den virtuella datorn så att säkerhets kopieringen inte kan genomföras.
-  - Nätverks problem.
+  - [Nätverks problem](#usererrorvminternetconnectivityissue)
 
    ![registrerar om virtuell dator](./media/backup-azure-sql-database/re-register-vm.png)
 

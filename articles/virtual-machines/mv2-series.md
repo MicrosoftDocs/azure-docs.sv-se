@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 7ef4a1542a050918249f602bbc63567cc8e13f2a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 962fb8cbd4c64aa2ef625b478afa587099234617
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091722"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427642"
 ---
 # <a name="mv2-series"></a>Mv2-serien
 
@@ -24,7 +24,7 @@ Mv2 för virtuella datorer i-serien Intel® Hyper-Threading-teknik
 [Premium Storage caching](premium-storage-performance.md): stöds<br>
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
-[Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+[Stöd för VM-generering](generation-2.md): generation 2<br>
 [Skrivningsaccelerator](./how-to-enable-write-accelerator.md): stöds<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>

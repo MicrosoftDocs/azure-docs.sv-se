@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 7e58daf72522071eb7d0031d4ea236a21c6d8bfb
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 27d357279a54d7abc351370e7afda3a7961bac33
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252329"
+ms.locfileid: "99428562"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Ta med din egen nyckel (Kundhanterade nycklar) med Media Services
 
@@ -39,9 +39,10 @@ Du kan ange ett nyckel namn och en nyckel version, eller bara ett nyckel namn. O
 
 ## <a name="double-encryption"></a>Dubbel kryptering
 
-Media Services stöder Double Encryption.  Mer information om Double Encryption finns i [Azure Double Encryption](../../security/fundamentals/double-encryption.md).
+Media Services stöder automatiskt Double Encryption. För data i vila använder det första krypterings lagret en kundhanterad nyckel eller en hanterad Microsoft-nyckel beroende på `AccountEncryption` inställningen för kontot.  Det andra lagret av kryptering för data i vila anges automatiskt med hjälp av en separat Microsoft-hanterad nyckel. Mer information om Double Encryption finns i [Azure Double Encryption](../../security/fundamentals/double-encryption.md).
 
-Dubbel kryptering aktive ras automatiskt på Media Services kontot. Du måste dock konfigurera kundens hanterade nyckel och dubbel kryptering på ditt lagrings konto separat.
+> [!NOTE]
+> Dubbel kryptering aktive ras automatiskt på Media Services kontot. Du måste dock konfigurera kundens hanterade nyckel och dubbel kryptering på ditt lagrings konto separat. Se [storege-kryptering](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
 ## <a name="tutorials"></a>Självstudier
 

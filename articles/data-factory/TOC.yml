@@ -223,6 +223,8 @@
           href: source-control.md
         - name: Kontinuerlig integrering och leverans
           href: continuous-integration-deployment.md
+        - name: Automatiserad publicering
+          href: continuous-integration-deployment-improvements.md
     - name: Anslutningar
       items:
         - name: Översikt över anslutningsprogram

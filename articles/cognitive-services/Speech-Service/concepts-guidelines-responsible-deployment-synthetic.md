@@ -10,21 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024984"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428427"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Rikt linjer för ansvarig distribution av syntetisk röst teknik
+
+## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>Allmänna överväganden som du bör tänka på när du implementerar AI-system 
+
+Den här artikeln handlar specifikt om syntetiskt tal och anpassat neurala-röst och viktiga överväganden för att använda den här tekniken ett ansvarsfullt sätt. I allmänhet finns det dock flera saker du behöver tänka på noggrant när du bestämmer hur du ska använda och implementera AI-drivna produkter och funktioner: 
+
+* Kommer den här produkten eller funktionen att fungera bra i mitt scenario? Innan du distribuerar AI i ditt scenario ska du testa hur det fungerar med data i real tid och se till att det kan leverera den precision du behöver. 
+* Är vi utrustade för att identifiera och reagera på fel? AI-drivna produkter och funktioner är inte alltid 100% korrekt, så fundera över hur du ska identifiera och svara på eventuella fel som kan uppstå. 
+
+## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Allmänna rikt linjer för att använda syntetisk röst teknik 
 Här följer Microsofts allmänna design rikt linjer för att använda syntetisk röst teknik. Dessa utvecklades i studier som Microsoft genomförde med röst personal, konsumenter, samt individer med tal sjukdomar för att vägleda utvecklingen av syntetisk röst.
 
-## <a name="general-considerations"></a>Generella saker att tänka på
 För distribution av syntetisk tal teknik gäller följande rikt linjer för de flesta scenarier.
 
 ### <a name="disclose-when-the-voice-is-synthetic"></a>Lämna ut när rösten är syntetisk
 Om du avmarkerar att en röst är en dator som genereras kan du inte bara minimera risken för skadliga resultat från bedrägeri, men det ökar också förtroendet i organisationen som levererar rösten. Lär dig mer om [att lämna](concepts-disclosure-guidelines.md)ut.
+
+Microsoft kräver att kunderna avslöjar den syntetiska typen av anpassad neurala-röst till sina användare. 
+* Se till att tillhandahålla tillräcklig information till mål grupperna, särskilt när rösten hos en välkänd person, som gör sitt beslut om information baserat på den person som levererar den, oavsett om de gör det eller inte.  Till exempel kan utlämnande delas av verb i början av sändningen. Mer information finns i [utlämnade mönster](concepts-disclosure-patterns.md).   
+* Överväg att lämna ut information till föräldrar eller andra parter med användnings fall som är utformade för minderåriga och barn – om ditt användnings fall är avsett för minderåriga eller underordnade, måste du se till att de föräldrarna eller de juridiska webbläsarna kan förstå inlämnandet av syntetiskt medium och fatta rätt beslut för de minderåriga eller barn som ska använda upplevelsen. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Välj lämpliga röst typer för ditt scenario
 Överväg noga användnings sammanhanget och de potentiella skadan som är associerade med att använda syntetisk röst. Till exempel är det inte säkert att de syntetiska rösterna med hög kvalitet är lämpliga i högrisk scenarier, t. ex. för personliga meddelanden, ekonomiska transaktioner eller komplexa situationer som kräver mänsklig anpassning eller empati. Användarna kan också ha olika förväntningar för röst typer. Till exempel, när du lyssnar på känsliga nyheter som läses av en syntetisk röst, föredrar vissa användare en mer empatisk och mänsklig läsning av nyheterna, medan andra föredrar en mer enkel färgs visning av rösten. Överväg att testa ditt program för att bättre förstå användar inställningarna.
@@ -39,8 +51,9 @@ I tvetydiga, transaktions scenarier (till exempel ett Call Support Center) kan a
 När du arbetar med röst personal, till exempel röst aktörer, för att skapa syntetiska röster, gäller rikt linjerna nedan.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Få ett meningsfullt godkännande från röst personal
-Röst personal förväntar sig att ha kontroll över deras röst teckensnitt (hur och var den ska användas) och ersätts när den används. System ägare bör därför få uttryckligt skriftligt tillstånd från röst personal och ha tydliga avtals krav för användnings fall, varaktigheten för användning, kompensation och så vidare. Vissa röst personal är inte medvetna om den potentiella skadliga användningen av tekniken och bör vara sammanutbildad av systemets ägare om funktionerna i tekniken. Mer information om röst personal och medgivande finns i vår information [om röst personal](/legal/cognitive-services/speech-service/disclosure-voice-talent).
+Röst kunskap bör ha kontroll över sin röst modell (hur och var den ska användas) och kompenseras för användning. Microsoft kräver att anpassade röst kunder erhåller uttryckligt skriftligt tillstånd från sina röst personal för att skapa en syntetisk röst och dess avtal med röst kunskap, vilket är varaktighet, användning och eventuella innehålls begränsningar.  Om du skapar en syntetisk röst av en välkänd person bör du tillhandahålla ett sätt för personen bakom rösten att redigera eller godkänna innehållet.
 
+Vissa röst kunskap är inte medvetna om den potentiella skadliga användningen av tekniken och bör vara sammanutbildad av systemets ägare om funktionerna i tekniken. Microsoft kräver att kunder delar Microsofts information [om röst personal](/legal/cognitive-services/speech-service/disclosure-voice-talent) med röst-personal direkt eller via röst personals auktoriserade ombud som beskriver hur syntetiska röster utvecklas och arbetar tillsammans med text till tal tjänster.
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Att tänka på med tal sjukdomar
 När du arbetar med individer med tal sjukdomar, för att skapa eller distribuera syntetisk röst teknik gäller följande rikt linjer.

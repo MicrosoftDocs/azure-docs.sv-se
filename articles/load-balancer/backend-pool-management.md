@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8887474f07928462afe7863ffe2b3667ece536dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575307"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429610"
 ---
 # <a name="backend-pool-management"></a>Hantering av Server dels pooler
 Backend-poolen är en kritisk komponent i belastningsutjämnaren. Backend-poolen definierar den grupp av resurser som kommer att betjäna trafik för en specifik belastnings Utjämnings regel.
@@ -25,6 +25,8 @@ Det finns två sätt att konfigurera en backend-pool:
 Konfigurera din backend-pool med NIC när du använder befintliga virtuella datorer och skalnings uppsättningar för virtuella datorer. Den här metoden skapar den mest direkta länken mellan resursen och backend-poolen. 
 
 När du förallokerar din backend-pool med ett IP-adressintervall som du planerar att senare skapa virtuella datorer och skalnings uppsättningar för virtuella datorer, konfigurerar du din backend-pool med en kombination av IP-adress och VNET-ID.
+
+Du kan konfigurera IP-baserade och NIC-baserade backend-pooler för samma belastningsutjämnare men du kan inte skapa en enda server dels uppsättning som blandar de adresser som är riktade mot NIC-och IP-adresser inom samma pool.
 
 Konfigurations avsnitten i den här artikeln kommer att fokuseras på:
 

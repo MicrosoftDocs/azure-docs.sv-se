@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f05afb3c23fc720bb0100a751a6943d7bb03453f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 89ff49b3ea5abae7ced046f714d34943a58c64a6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954791"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428308"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimera säkerheten och tillförlitligheten för Azure Functions
 
@@ -63,6 +63,31 @@ Hur reagerar din kod om ett fel inträffar när du har infogat 5 000 av dessa ob
 Om ett köobjekt redan bearbetats kan du tillåta att din funktion är en no-op.
 
 Dra nytta av försvars åtgärder som redan har angetts för komponenter som du använder i Azure Functionss plattformen. Se till exempel **hantering av meddelanden om Poison-kön** i dokumentationen för [Azure Storage köa utlösare och bindningar](functions-bindings-storage-queue-trigger.md#poison-messages). 
+
+## <a name="function-organization-best-practices"></a>Funktions praxis för funktionen organisation
+
+Som en del av din lösning kan du utveckla och publicera flera funktioner. Dessa funktioner kombineras ofta i en enda Function-app, men de kan också köras i separata Function-appar. I både Premium-och dedikerade (App Service) värd planer kan flera Function-appar också dela samma resurser genom att köra i samma plan. Hur du grupperar dina funktioner och Function-appar kan påverka prestanda, skalning, konfiguration, distribution och säkerhet för din övergripande lösning. Det finns inga regler som gäller för varje scenario, så tänk på informationen i det här avsnittet när du planerar och utvecklar dina funktioner.
+
+### <a name="organize-functions-for-performance-and-scaling"></a>Ordna funktioner för prestanda och skalning
+
+Varje funktion som du skapar har ett minnes utrymme. Det här utrymmet är vanligt vis litet, men eftersom för många funktioner i en Function-app kan leda till långsammare start av din app vid nya instanser. Det innebär också att den övergripande minnes användningen för din Function-app kan vara högre. Det är svårt att säga hur många funktioner som ska finnas i en enda app, vilket beror på din specifika arbets belastning. Men om din funktion lagrar mycket data i minnet bör du överväga att ha färre funktioner i en enda app.
+
+Om du kör flera Function-appar i en enda Premium plan eller dedikerade (App Service) plan skalas dessa appar tillsammans. Om du har en Function-app som har ett mycket högre minnes krav än andra, använder den en oproportionerlig mängd minnes resurser på varje instans som appen distribueras till. Eftersom detta kan lämna mindre minne tillgängligt för de andra apparna på varje instans, kanske du vill köra en hög minnes användning av Function-appen som i sin egen separata värd plan.
+
+> [!NOTE]
+> När du använder [förbruknings planen](./functions-scale.md)rekommenderar vi att du alltid sätter varje app i sin egen plan, eftersom appar skalas fristående ändå.
+
+Överväg om du vill gruppera funktioner med olika belastnings profiler. Om du till exempel har en funktion som bearbetar många tusentals Kömeddelanden och en annan som bara anropas ibland, men som har höga minnes krav, kanske du vill distribuera dem i separata funktions-appar så att de får sina egna uppsättningar resurser och skalas oberoende av varandra.
+
+### <a name="organize-functions-for-configuration-and-deployment"></a>Organisera funktioner för konfiguration och distribution
+
+Function-appar har en `host.json` fil som används för att konfigurera avancerade beteenden för funktions utlösare och Azure Functions Runtime. Ändringar i `host.json` filen gäller alla funktioner i appen. Om du har vissa funktioner som behöver anpassade konfigurationer bör du överväga att flytta dem till sin egen Function-app.
+
+Alla funktioner i det lokala projektet distribueras tillsammans som en uppsättning filer till din Function-app i Azure. Du kan behöva distribuera enskilda funktioner separat eller använda funktioner som [distributions platser](./functions-deployment-slots.md) för vissa funktioner och inte andra. I sådana fall bör du distribuera dessa funktioner (i separata kod projekt) till olika Function-appar.
+
+### <a name="organize-functions-by-privilege"></a>Ordna funktioner efter privilegium 
+
+Anslutnings strängar och andra autentiseringsuppgifter som lagras i program inställningar ger alla funktioner i Function-appen samma uppsättning behörigheter i den associerade resursen. Överväg att minimera antalet funktioner med åtkomst till särskilda autentiseringsuppgifter genom att flytta funktioner som inte använder dessa autentiseringsuppgifter till en separat Function-app. Du kan alltid använda metoder som [funktions länkning](/learn/modules/chain-azure-functions-data-using-bindings/) för att skicka data mellan funktioner i olika Function-appar.  
 
 ## <a name="scalability-best-practices"></a>Metod tips för skalbarhet
 

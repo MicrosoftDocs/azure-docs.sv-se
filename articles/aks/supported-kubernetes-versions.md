@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 587078f1f084d002e4d725ca3be64bcec36b4c45
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3ed5c2c1c95822717981f7d30b91edd244420c59
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734655"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427693"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Kubernetes-versioner som stöds i Azure Kubernetes Service (AKS)
 
@@ -138,7 +138,6 @@ Tidigare versions historik finns i [Kubernetes](https://en.wikipedia.org/wiki/Ku
 
 |  K8s-version | Överordnad version  | AKS för hands version  | AKS GA  | Uttjänta |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep-19-19  | Jan 2019   | Mar 2020  | Jan 2021| 
 | 1,17  | Dec-09-19  | Jan 2019   | Jul 2020  | 1,20 GA | 
 | 1,18  | Mar – 23-20  | Maj 2020   | Aug 2020  | 1,21 GA | 
 | 1,19  | Aug – 04-20  | Sep 2020   | Nov 2020  | 1,22 GA | 
@@ -156,7 +155,7 @@ Med beaktande av Kubernetes 1,19 [har communityn öppen källkod utökad support
 
 **Vad händer när en användare uppgraderar ett Kubernetes-kluster med en lägre version som inte stöds?**
 
-Om du använder *n-3-* versionen eller äldre, innebär det att du inte har stöd för och att du kommer att bli ombedd att uppgradera. När uppgraderingen från version n-3 till n-2 lyckas, är du tillbaka i våra support principer. Ett exempel:
+Om du använder *n-3-* versionen eller äldre, innebär det att du inte har stöd för och att du kommer att bli ombedd att uppgradera. När uppgraderingen från version n-3 till n-2 lyckas, är du tillbaka i våra support principer. Exempel:
 
 - Om den äldsta AKS-versionen som stöds är *1.15. a* och du är på *1.14. b* eller äldre är du utanför supporten.
 - När du har uppgraderat från *1.14. b* till *1.15. en* eller fler lyckas är du tillbaka i våra support principer.

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: c3366b7ba0eb0b49d4d5b89481b7bed843e52c8e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486139"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429030"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Hanterings hubb i Azure Data Factory
 
@@ -34,13 +34,17 @@ Länkade tjänster definierar anslutnings informationen för Azure Data Factory 
 
 En integration runtime är en beräknings infrastruktur som används av Azure Data Factory för att tillhandahålla funktioner för data integrering i olika nätverks miljöer. Mer information finns i [integration runtime-koncept](concepts-integration-runtime.md). I hanterings hubben kan du skapa, ta bort och övervaka dina integrerings körningar.
 
-![Hantera integrerings körningar](media/author-management-hub/management-hub-integration-runtime.png)
+![Hantera integreringskörningar](media/author-management-hub/management-hub-integration-runtime.png)
 
 ## <a name="manage-source-control"></a>Hantera käll kontroll
 
 ### <a name="git-configuration"></a>Git-konfiguration
 
-Visa och redigera dina konfigurerade git-serverinställningar i hanterings hubben. Mer information finns [i käll kontroll i Azure Data Factory](source-control.md).
+Du kan visa/redigera all git-relaterad information under git-konfigurationsinställningar i hanterings hubben. 
+
+Senast publicerade inchecknings information visas också och kan hjälpa dig att förstå det exakta genomförandet, som senast publicerades/distribuerades i olika miljöer. Det kan också vara användbart när du gör snabb korrigeringar i produktionen.
+
+Mer information finns [i käll kontroll i Azure Data Factory](source-control.md).
 
 ![Hantera git-lagrings platsen](media/author-management-hub/management-hub-git.png)
 

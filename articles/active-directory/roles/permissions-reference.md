@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0c8d237e270177ef38c60c523364054bae15af
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090866"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428782"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -69,13 +69,7 @@ Användare med den här rollen kan skapa program registreringar när inställnin
 
 ### <a name="authentication-administrator"></a>[Administratör för autentisering](#authentication-administrator-permissions)
 
-Användare med den här rollen kan ange eller återställa autentiseringsuppgifter som inte är lösen ord för vissa användare och kan uppdatera lösen ord för alla användare. Autentiserings administratörer kan kräva att användare som inte är administratörer eller som har tilldelats vissa roller omregistrerar sig mot befintliga autentiseringsuppgifter som inte är lösen ord (till exempel MFA eller FIDO) och kan även återkalla att **Spara MFA på enheten**, vilket gör att MFA används vid nästa inloggning. Dessa åtgärder gäller endast för användare som inte är administratörer eller som har tilldelats en eller flera av följande roller:
-
-* Administratör för autentisering
-* Katalog läsare
-* Gäst deltagare
-* Meddelande Center läsare
-* Rapportläsare
+Användare med den här rollen kan ange eller återställa autentiseringsuppgifter som inte är lösen ord för vissa användare och kan uppdatera lösen ord för alla användare. Autentiserings administratörer kan kräva att användare som inte är administratörer eller som har tilldelats vissa roller omregistrerar sig mot befintliga autentiseringsuppgifter som inte är lösen ord (till exempel MFA eller FIDO) och kan även återkalla att **Spara MFA på enheten**, vilket gör att MFA används vid nästa inloggning. Huruvida en administratör kan återställa en användares lösen ord beror på vilken roll användaren tilldelas. En lista över de roller som en autentiserings administratör kan återställa lösen ord för finns i [behörigheter för lösen ords återställning](#password-reset-permissions).
 
 Rollen [Privileged Authentication Administrator](#privileged-authentication-administrator) har behörighet kan framtvinga omregistrering och Multi-Factor Authentication för alla användare.
 
@@ -253,14 +247,7 @@ Användare med den här rollen kan hantera Azure Active Directory B2B-gäst anv�
 
 ### <a name="helpdesk-administrator"></a>[Support administratör](#helpdesk-administrator-permissions)
 
-Användare med den här rollen kan ändra lösen ord, ogiltig uppdatera tokens, hantera tjänst begär Anden och övervaka tjänstens hälsa. Om en uppdateringstoken inverifieras tvingar användaren att logga in igen. Administratörer för supportavdelningen kan återställa lösen ord och göra en ogiltig verifiering av uppdateringstoken för andra användare som inte är administratörer eller som tilldelas följande roller:
-
-* Katalog läsare
-* Gäst deltagare
-* Support administratör
-* Meddelande Center läsare
-* Lösen ords administratör
-* Rapportläsare
+Användare med den här rollen kan ändra lösen ord, ogiltig uppdatera tokens, hantera tjänst begär Anden och övervaka tjänstens hälsa. Om en uppdateringstoken inverifieras tvingar användaren att logga in igen. Om en helpdesk-administratör kan återställa en användares lösen ord och ogiltig verifiering av uppdateringstoken beror på vilken roll användaren tilldelas. En lista över de roller som en supportavdelningen-administratör kan återställa lösen ord för och inte validera uppdateringstoken finns i [behörigheter för lösen ords återställning](#password-reset-permissions).
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Exempel:
@@ -271,7 +258,7 @@ Användare med den här rollen kan ändra lösen ord, ogiltig uppdatera tokens, 
 >- Administratörer i andra tjänster utanför Azure AD, till exempel Exchange Online, Office Security och Compliance Center och personal system.
 >- Icke-administratörer som chefer, juridiska konsulter och personal anställda som kan ha till gång till känslig eller privat information.
 
-Att delegera administrativa behörigheter över del mängder av användare och tillämpa principer på en delmängd av användare är möjligt med [administrativa enheter (nu i offentlig för hands version)](administrative-units.md).
+Det kan vara möjligt att delegera administrativa behörigheter över del mängder av användare och tillämpa principer på en delmängd användare med [administrativa enheter](administrative-units.md).
 
 Den här rollen kallades tidigare för "lösen ords administratör" i [Azure Portal](https://portal.azure.com/). Namnet "supportavdelningen administratör" i Azure AD matchar nu namnet i Azure AD PowerShell och Microsoft Graph API.
 
@@ -344,11 +331,7 @@ Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure 
 
 ### <a name="password-administrator"></a>[Lösen ords administratör](#password-administrator-permissions)
 
-Användare med den här rollen har begränsad möjlighet att hantera lösen ord. Den här rollen ger inte möjlighet att hantera tjänst begär Anden eller övervaka tjänstens hälsa. Lösen ords administratörer kan återställa lösen ord för andra användare som inte är administratörer eller medlemmar i följande roller:
-
-* Katalog läsare
-* Gäst deltagare
-* Lösen ords administratör
+Användare med den här rollen har begränsad möjlighet att hantera lösen ord. Den här rollen ger inte möjlighet att hantera tjänst begär Anden eller övervaka tjänstens hälsa. Om en lösen ords administratör kan återställa en användares lösen ord beror på vilken roll användaren har tilldelats. En lista över de roller som en lösen ords administratör kan återställa lösen ord för finns i [behörigheter för lösen ords återställning](#password-reset-permissions).
 
 ### <a name="power-bi-administrator"></a>[Power BI administratör](#power-bi-service-administrator-permissions)
 
@@ -371,13 +354,7 @@ Användare med den här rollen kan registrera skrivare och hantera skrivar statu
 
 ### <a name="privileged-authentication-administrator"></a>[Administratör för privilegie rad autentisering](#privileged-authentication-administrator-permissions)
 
-Användare med den här rollen kan ange eller återställa autentiseringsuppgifter som inte är lösen ord för alla användare, inklusive globala administratörer, och kan uppdatera lösen ord för alla användare. Administratörer med privilegie rad autentisering kan tvinga användare att omregistrera sig mot befintliga autentiseringsuppgifter som inte är lösen ord (t. ex. MFA eller FIDO) och återkalla "MFA på enheten" och fråga om MFA vid nästa inloggning av alla användare. Rollen som [administratör för autentisering](#authentication-administrator) kan tvinga omregistrering och MFA för endast icke-administratörer och användare som har tilldelats följande Azure AD-roller:
-
-* Administratör för autentisering
-* Katalog läsare
-* Gäst deltagare
-* Meddelande Center läsare
-* Rapportläsare
+Användare med den här rollen kan ange eller återställa autentiseringsuppgifter som inte är lösen ord för alla användare, inklusive globala administratörer, och kan uppdatera lösen ord för alla användare. Administratörer med privilegie rad autentisering kan tvinga användare att omregistrera sig mot befintliga autentiseringsuppgifter som inte är lösen ord (t. ex. MFA eller FIDO) och återkalla "MFA på enheten" och fråga om MFA vid nästa inloggning av alla användare.
 
 ### <a name="privileged-role-administrator"></a>[Privilegie rad roll administratör](#privileged-role-administrator-permissions)
 
@@ -500,11 +477,12 @@ Användare med den här rollen har åtkomst till sammanställda data för klient
 
 Användare med den här rollen kan skapa användare och hantera alla aspekter av användare med vissa begränsningar (se tabellen) och kan uppdatera principer för lösen ordets giltighets tid. Dessutom kan användare med den här rollen skapa och hantera alla grupper. Den här rollen omfattar även möjligheten att skapa och hantera användar visningar, hantera support biljetter och övervaka tjänstens hälsa. Användar administratörer har inte behörighet att hantera vissa användar egenskaper för användare i de flesta administratörs roller. Användare med den här rollen har inte behörighet att hantera MFA. Rollerna som är undantag till den här begränsningen visas i följande tabell.
 
-| **Behörighet** | **Kan göra** |
+| Användar administratörs behörighet | Kommentarer |
 | --- | --- |
-|Allmänna behörigheter|<p>Skapa användare och grupper</p><p>Skapa och hantera användarvyer</p><p>Hantera Office-support biljetter<p>Uppdatera principer för förfallo datum för lösen ord|
-| <p>För alla användare, inklusive alla administratörer</p>|<p>Hantera licenser</p><p>Hantera alla användar egenskaper utom användarens huvud namn</p>
-| Endast på användare som inte är administratörer eller någon av följande begränsade administratörs roller:<ul><li>Katalog läsare<li>Grupp administratör<li>Gäst deltagare<li>Support administratör<li>Meddelande Center läsare<li>Lösen ords administratör<li>Rapportläsare<li>Användaradministratör|<p>Ta bort och Återställ</p><p>Inaktivera och aktivera</p><p>Invalidera uppdateringstoken</p><p>Hantera alla användar egenskaper inklusive användarens huvud namn</p><p>Återställa lösenord</p><p>Uppdatera (FIDO) enhets nycklar</p>|
+| Skapa användare och grupper<br/>Skapa och hantera användarvyer<br/>Hantera Office-support biljetter<br/>Uppdatera principer för förfallo datum för lösen ord |  |
+| Hantera licenser<br/>Hantera alla användar egenskaper utom användarens huvud namn | Gäller alla användare, inklusive alla administratörer |
+| Ta bort och Återställ<br/>Inaktivera och aktivera<br/>Hantera alla användar egenskaper inklusive användarens huvud namn<br/>Uppdatera (FIDO) enhets nycklar | Gäller för användare som inte är administratörer eller i någon av följande roller:<ul><li>Support administratör</li><li>Användare utan roll</li><li>Användaradministratör</li></ul> |
+| Invalidera uppdateringstoken<br/>Återställa lösenord | En lista över de roller som en användar administratör kan återställa lösen ord för och ogiltig uppdateringstoken finns i [behörigheter för lösen ords återställning](#password-reset-permissions). |
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra lösen ord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösen ordet för en användare kan innebära att du antar användarens identitet och behörigheter. Exempel:
@@ -572,6 +550,7 @@ Kan skapa och hantera alla aspekter av registrerings-och företags program.
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera support biljetter för Azure. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="application-developer-permissions"></a>Programutvecklare-behörigheter
 
@@ -647,6 +626,7 @@ Kan hantera alla aspekter av tjänsten Azure Information Protection.
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera support biljetter för Azure. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF Keys-administratör behörigheter
 
@@ -725,6 +705,7 @@ Kan skapa och hantera alla aspekter av app-registreringar och företags program 
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera support biljetter för Azure. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Administratörs behörighet för moln enhet
 
@@ -2064,6 +2045,31 @@ Support på partner nivå 2 | Visas inte eftersom det inte ska användas | [Supp
 Begränsad gäst användare | Visas inte eftersom det inte kan användas | NA
 User | Visas inte eftersom det inte kan användas | NA
 Anslutning till arbets plats enhet | Inaktuell | [Dokumentation om föråldrade roller](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>Behörigheter för lösen ords återställning
+
+Kolumn rubrikerna representerar de roller som kan återställa lösen ord. Tabell rader innehåller de roller som lösen ordet kan återställas för.
+
+Lösen ordet kan återställas | Administratör för autentisering | Supportavdelningen-administratör | Lösen ords administratör | Användar administratör | Administratör för privilegie rad autentisering | Global administratör
+------ | ------ | ------ | ------ | ------ | ------ | ------
+Administratör för autentisering | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Katalog läsare | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Global administratör | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+Grupp administratör | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Gäst | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Gäst deltagare | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Supportavdelningen-administratör | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Meddelande Center läsare | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Lösen ords administratör | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Administratör för privilegie rad autentisering | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Administratör för privilegie rad roll | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Rapportläsare | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Begränsad gäst | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Användare (ingen administratörs roll) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Användar administratör | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Rapport läsare för användnings Sammanfattning | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* En global administratör kan inte ta bort sin egen globala administratörs tilldelning. Detta är för att förhindra en situation där en organisation har 0 globala administratörer.
 
 ## <a name="next-steps"></a>Nästa steg
 

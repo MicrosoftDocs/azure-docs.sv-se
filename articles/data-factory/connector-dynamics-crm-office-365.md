@@ -11,15 +11,16 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: d11125ed00491f87844c7b0b344473825ad52a99
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/02/2021
+ms.openlocfilehash: 63816a40aa710d26dc036dfe82018883e917beb6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223482"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428495"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiera data från och till Dynamics 365 (Common Data Service) eller Dynamics CRM genom att använda Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln beskriver hur du använder en kopierings aktivitet i Azure Data Factory för att kopiera data från och till Microsoft Dynamics 365 och Microsoft Dynamics CRM. Den bygger på [översikts artikeln om kopierings aktiviteten](copy-activity-overview.md) som visar en allmän översikt över en kopierings aktivitet.
@@ -88,7 +89,7 @@ Följande egenskaper stöds för den länkade Dynamics-tjänsten.
 | servicePrincipalCredential | Tjänstens huvud behörighet. <br/><br/>När du använder "ServicePrincipalKey" som autentiseringstyp `servicePrincipalCredential` kan vara en sträng som Azure Data Factory krypteras vid en länkad tjänst distribution. Eller så kan det vara en referens till en hemlighet i Azure Key Vault. <br/><br/>När du använder "ServicePrincipalCert" som autentiseringsuppgift `servicePrincipalCredential` måste vara en referens till ett certifikat i Azure Key Vault. | Ja när autentiseringen är "AADServicePrincipal" |
 | användarnamn | Användar namnet för att ansluta till Dynamics. | Ja när autentiseringen är "Office365" |
 | password | Lösen ordet för det användar konto som du har angett som användar namn. Markera det här fältet med "SecureString" för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja när autentiseringen är "Office365" |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | Nej för källa och Ja för mottagare om den länkade käll tjänsten inte har en integrerings körning |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | Inga |
 
 >[!NOTE]
 >Dynamics Connector använde tidigare egenskap för **företags namn** för att identifiera Dynamics CRM-eller Dynamics 365 online-instansen. Även om egenskapen fortfarande fungerar föreslår vi att du anger den nya **serviceUri** -egenskapen i stället för att få bättre prestanda för instans identifiering.
@@ -184,7 +185,7 @@ Ytterligare egenskaper som jämförs med Dynamics Online är **värdnamn** och *
 | authenticationType | Autentiseringstypen för att ansluta till Dynamics-servern. Ange "IFD" för Dynamics lokalt med IFD. | Ja. |
 | användarnamn | Användar namnet för att ansluta till Dynamics. | Ja. |
 | password | Lösen ordet för det användar konto som du har angett för användar namnet. Du kan markera det här fältet med "SecureString" för att lagra det på ett säkert sätt i Data Factory. Eller så kan du lagra ett lösen ord i Key Vault och låta kopierings aktiviteten ta en stund när den kopierar data. Läs mer [om att lagra autentiseringsuppgifter i Key Vault](store-credentials-in-key-vault.md). | Ja. |
-| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | Nej för källa och Ja för mottagare. |
+| connectVia | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde har angetts använder egenskapen standard Azure integration Runtime. | Inga |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Exempel: Dynamics lokalt med IFD med IFD-autentisering
 

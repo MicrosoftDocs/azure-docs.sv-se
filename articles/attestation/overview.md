@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a2b26ae8debf1c52693018ce9a758bfa9b029fa2
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093384"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429270"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -67,7 +67,7 @@ Azure-attestering är det bästa valet för att intyga TEEs eftersom det ger fö
 
 - Enhetligt ramverk för att intyga flera miljöer, till exempel TPM, SGX enclaves och VBS enclaves 
 - Tjänst för flera innehavare som gör det möjligt att konfigurera anpassade leverantörer och principer för utfärdande av token
-- Erbjuder standardproviders som kan attestera utan konfiguration från användare
+- Erbjuder regionala delade leverantörer som kan attestera utan konfiguration från användare
 - Skyddar dess data vid användning med implementering i en SGX-enklaven
 - Tjänst med hög tillgänglighet 
 

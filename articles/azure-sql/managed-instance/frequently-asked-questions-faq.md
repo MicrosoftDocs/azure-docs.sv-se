@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: d3f859590b30aaeeaebaed7b1f2f85e1a86a92c9
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223414"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428681"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -364,13 +364,6 @@ Ja. Se [Konfigurera en anpassad DNS för Azure SQL-hanterad instans](./custom-dn
 **Kan jag göra DNS-uppdatering?**
 
 Ja. Se [Synkronisera virtuella nätverk DNS-servrar på SQL-hanterad instans virtuellt kluster](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md).
-
-DNS-konfigurationen uppdateras slutligen:
-
-- När DHCP-lånet upphör att gälla.
-- Vid plattforms uppgradering.
-
-Som en lösning kan du nedgradera SQL-hanterad instans till 4 virtuella kärnor och uppgradera den igen efteråt. Detta har en sido effekt på att uppdatera DNS-konfigurationen.
 
 ## <a name="change-time-zone"></a>Ändra tidszon
 

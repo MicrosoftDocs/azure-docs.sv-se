@@ -9,31 +9,29 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59c1eb7936bc113f8935d6fa2ad378c6994c3ca9
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e8d21e57f9a844b3cc0538f4805780829a1350f4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99408515"
+ms.locfileid: "99428596"
 ---
 # <a name="trusted-storage-for-media-services"></a>Betrodd lagring för Media Services
 
-När du skapar ett Media Services konto måste du associera det med ett lagrings konto. Media Services kan komma åt lagrings kontot med hjälp av systemautentisering. Media Services verifierar att Media Services kontot och lagrings kontot finns i samma prenumeration och verifierar att användaren som lägger till associationen har åtkomst till lagrings kontot med Azure Resource Manager RBAC.
+När du skapar ett Media Services konto måste du associera det med ett lagrings konto. Media Services kan komma åt lagrings kontot med hjälp av systemautentisering eller hanterad identitets autentisering. Media Services verifierar att Media Services kontot och lagrings kontot finns i samma prenumeration och verifierar att användaren som lägger till associationen har åtkomst till lagrings kontot med Azure Resource Manager RBAC.
 
-Men om du vill använda en brand vägg för att skydda ditt lagrings konto och aktivera betrodd lagring måste du använda [hanterade identiteter](concept-managed-identities.md) . Den ger Media Services åtkomst till lagrings kontot som har kon figurer ATS med en brand vägg eller en VNet-begränsning via betrodd lagrings åtkomst.
+## <a name="trusted-storage-with-a-firewall"></a>Betrodd lagring med en brand vägg
+
+Men om du vill använda en brand vägg för att skydda ditt lagrings konto och aktivera betrodd lagring är autentiseringen [hanterade identiteter](concept-managed-identities.md) det bästa alternativet. Den ger Media Services åtkomst till lagrings kontot som har kon figurer ATS med en brand vägg eller en VNet-begränsning via betrodd lagrings åtkomst. Den ger Media Services åtkomst till lagrings kontot som har kon figurer ATS med en brand vägg eller en VNet-begränsning via betrodd lagrings åtkomst.
+
+> [!NOTE]
+> Du måste bevilja åtkomst till AMS Managed Identity Storage BLOB data Contributor för att Media Services ska kunna läsa och skriva till lagrings kontot.  Att bevilja rollen som allmän deltagare fungerar inte eftersom den inte aktiverar rätt behörigheter för data planet.
+
+## <a name="further-reading"></a>Ytterligare läsning
 
 Om du vill förstå metoderna för att skapa betrodd lagring med hanterade identiteter kan du läsa [hanterade identiteter och Media Services](concept-managed-identities.md).
 
-Mer information om kund hanterade nycklar och Key Vault finns i [ta med din egen nyckel (Kundhanterade nycklar) med Media Services](concept-use-customer-managed-keys-byok.md)
-
 Mer information om betrodda Microsoft-tjänster finns i [konfigurera Azure Storage brand väggar och virtuella nätverk](../../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-## <a name="tutorials"></a>Självstudier
-
-De här självstudierna innehåller båda scenarierna ovan.
-
-- [Använd Azure Portal för att använda Kundhanterade nycklar eller BYOK med Media Services](tutorial-byok-portal.md)
-- [Använd kund hanterade nycklar eller BYOK med Media Services REST API](tutorial-byok-postman.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

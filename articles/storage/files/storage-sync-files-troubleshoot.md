@@ -4,15 +4,15 @@ description: Felsök vanliga problem i en distribution på Azure File Sync, som 
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/15/2021
+ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 65a1f8ef82ba9ec35e01a61d9682ebed0b9ba04c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878807"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428342"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -210,18 +210,10 @@ På den server som visas som "visas offline" i portalen tittar du på händelse-
         - Information om hur du använder TLS-cmdlets finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av TLS PowerShell-cmdletar](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         Azure File Sync stöder för närvarande följande chiffersviter för TLS 1,2-protokollet:  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
-        - TLS_RSA_WITH_AES_256_GCM_SHA384  
-        - TLS_RSA_WITH_AES_128_GCM_SHA256  
-        - TLS_RSA_WITH_AES_256_CBC_SHA256  
-        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Om **GetNextJob slutfördes med status:-2134347764** är inloggad kan servern inte kommunicera med Azure File Sync tjänsten på grund av ett utgånget eller Borttaget certifikat.  
     - Kör följande PowerShell-kommando på servern för att återställa certifikatet som används för autentisering:
@@ -386,7 +378,7 @@ Tabellen nedan innehåller alla Unicode-tecken Azure File Sync ännu inte har st
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (decimal)** | – 2147023673 | 
 | **Felsträng** | ERROR_CANCELLED |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Sync-sessioner kan Miss lyckas av olika orsaker, inklusive servern som startas om eller uppdateras, VSS-ögonblicksbilder osv. Även om felet ser ut som kräver uppföljning, är det säkert att ignorera det här felet om det inte behålls under en period på flera timmar.
 
@@ -408,7 +400,7 @@ Sync-sessioner kan Miss lyckas av olika orsaker, inklusive servern som startas o
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (decimal)** | – 2134376372 |
 | **Felsträng** | ECS_E_USER_REQUEST_THROTTLED |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Ingen åtgärd krävs. servern kommer att försöka igen. Om felet kvarstår i flera timmar kan du skapa en supportförfrågan.
 
@@ -419,7 +411,7 @@ Ingen åtgärd krävs. servern kommer att försöka igen. Om felet kvarstår i f
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (decimal)** | – 2134364043 |
 | **Felsträng** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Ingen åtgärd krävs. När en fil-eller fil resurs (moln slut punkt) återställs med hjälp av Azure Backup blockeras synkronisering tills ändrings identifieringen är klar på Azure-filresursen. Den här identifieringen körs direkt när återställningen är färdig och hur lång tid det tar beror på antalet filer i filresursen.
 
@@ -430,7 +422,7 @@ Ingen åtgärd krävs. När en fil-eller fil resurs (moln slut punkt) återstäl
 | **HRESULT** | 0x80041295 |
 | **HRESULT (decimal)** | – 2147216747 |
 | **Felsträng** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Det här felet uppstår vanligtvis när ett säkerhetskopieringsprogram skapar en VSS-ögonblicksbild och Sync-databasen tas bort från minnet. Om felet kvarstår i flera timmar kan du skapa en supportförfrågan.
 
@@ -599,7 +591,7 @@ Felet uppstår när det inte går att nå Azure-filresursen på grund av en bran
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (decimal)** | – 2134375911 |
 | **Felsträng** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Felet brukar lösas av sig självt och inträffa om det finns:
 
@@ -735,7 +727,7 @@ Det här felet beror på att volymen är full. Felet uppstår vanligtvis när fi
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (decimal)** | – 2134364145 |
 | **Felsträng** | ECS_E_REPLICA_NOT_READY |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Felet beror på att moln slut punkten skapades med innehåll som redan finns på Azure-filresursen. Azure File Sync måste genomsöka Azure-filresursen för allt innehåll innan Server slut punkten kan fortsätta med den första synkroniseringen.
 
@@ -796,7 +788,7 @@ Det här felet beror på att den version av filterdrivrutinen för molnnivåinde
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (decimal)** | – 2134376373 |
 | **Felsträng** | ECS_E_SERVICE_UNAVAILABLE |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Felet beror på att tjänsten Azure File Sync-tjänsten inte är tillgänglig. Det här felet löses automatiskt när Azure File Sync-tjänsten är tillgänglig igen.
 
@@ -807,7 +799,7 @@ Felet beror på att tjänsten Azure File Sync-tjänsten inte är tillgänglig. D
 | **HRESULT** | 0x80131500 |
 | **HRESULT (decimal)** | – 2146233088 |
 | **Felsträng** | COR_E_EXCEPTION |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Felet beror på att synkroniseringen misslyckades på grund av ett undantag. Om felet kvarstår i flera timmar kan du skapa en support förfrågan.
 
@@ -829,7 +821,7 @@ Felet beror på att lagringskontot har redundansväxlat till en annan region. Az
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (decimal)** | – 2134375922 |
 | **Felsträng** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Det här felet uppstår på grund av ett internt problem med Sync-databasen. Det här felet löses automatiskt när Sync försöker igen. Om felet fortsätter under en längre tid kan du skapa en supportbegäran så kontaktar vi dig för att hjälpa dig att lösa problemet.
 
@@ -913,7 +905,7 @@ Felet beror på att Azure File Sync inte stöder HTTP-omdirigering (3xx status k
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (decimal)** | – 2134364027 |
 | **Felsträng** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Reparation krävs** | Nej |
+| **Reparation krävs** | Inga |
 
 Felet uppstår när en data inmatnings åtgärd överskrider tids gränsen. Det här felet kan ignoreras om synkroniseringen gör förlopp (AppliedItemCount är större än 0). Se [Hur gör jag för att övervaka förloppet för en aktuell Sync-session?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 

@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.custom: references_regions
+ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572824"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429287"
 ---
 # <a name="basic-concepts"></a>Grundläggande begrepp
 
@@ -30,9 +31,9 @@ Nedan visas några grundläggande begrepp som rör Microsoft Azure attestering.
 
 Attesterings leverantören tillhör Azure Resource Provider med namnet Microsoft. attestering. Resurs leverantören är en tjänst slut punkt som tillhandahåller REST-avtal för Azure-attestering och distribueras med hjälp av [Azure Resource Manager](../azure-resource-manager/management/overview.md). Varje attesterings leverantör följer en speciell princip som kan upptäckas. Attesterings leverantörer skapas med en standard princip för varje attesterings typ (Observera att VBS-enklaven inte har någon standard princip). Se [exempel på en attesterings princip](policy-examples.md) för mer information om standard principen för SGX.
 
-### <a name="regional-default-provider"></a>Regional standard leverantör
+### <a name="regional-shared-provider"></a>Regional delad Provider
 
-Azure-attestering tillhandahåller en standardprovider i varje region. Kunder kan välja att använda standardprovidern för attestering eller skapa egna leverantörer med anpassade principer. Standard leverantörerna är tillgängliga för alla Azure AD-användare och principen som är associerad med en standardprovider kan inte ändras.
+Azure-attestering tillhandahåller en regional delad Provider i varje tillgänglig region. Kunderna kan välja att använda den regionala delade providern för attestering eller skapa egna leverantörer med anpassade principer. Delade providrar är tillgängliga för alla Azure AD-användare och principen som är kopplad till den kan inte ändras.
 
 | Region | Attesterings-URI | 
 |--|--|

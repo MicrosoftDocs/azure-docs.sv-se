@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563740"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428191"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Global överföring av nätverks arkitektur och virtuellt WAN
 
@@ -133,9 +133,6 @@ Azures virtuella WAN-hubbar sammankopplar alla nätverks slut punkter i hybrid n
 
 **Bild 5: säker virtuell hubb med Azure-brandvägg**
 
-> [!NOTE]
-> Inter-Hub med brand vägg stöds inte för närvarande. Trafik mellan hubbar kommer att flytta direkt till Azure-brandväggen i varje hubb.
-
 Azure-brandväggen till det virtuella WAN-nätverket stöder följande anslutnings vägar för Global säker överföring. Bokstäverna i parenteser mappas till bild 5.
 
 * Säker överföring mellan virtuella nätverk (e)
@@ -152,6 +149,23 @@ VNet-till-Internet gör att virtuella nätverk kan ansluta till Internet via Azu
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Lokal-till-Internet eller säkerhets tjänst från tredje part (j)
 Filial till Internet gör det möjligt för grenar att ansluta till Internet via Azure-brandväggen i den virtuella WAN-hubben. Trafik till Internet via tredjeparts säkerhets tjänster som stöds flödar inte över Azure-brandväggen. Du kan konfigurera en gren-till-Internet-sökväg via en säkerhets tjänst från tredje part med hjälp av Azure Firewall Manager. 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>Gren till gren säker överföring över region (f)
+
+Grenar kan anslutas till en säker virtuell hubb med Azure-brandväggen med hjälp av ExpressRoute-kretsar och/eller plats-till-plats-VPN-anslutningar. Du kan ansluta grenar till det virtuella WAN-hubben i den region som ligger närmast grenen.
+
+Med det här alternativet kan företag utnyttja Azures stamnät för att ansluta grenar. Men även om den här funktionen är tillgänglig bör du väga fördelarna med att ansluta grenar över Azure Virtual WAN jämfört med ett privat WAN.  
+
+> [!NOTE]
+> Bearbetning av trafik mellan olika platser i brand väggen stöds inte för närvarande. Trafiken mellan hubbarna dirigeras till rätt gren inom den säkra virtuella hubben, men trafiken kringgår Azure-brandväggen i varje hubb.
+
+### <a name="branch-to-vnet-secured-transit-g"></a>Skyddad mellan nivå till VNet-överföring (g)
+
+Den skyddade transporten mellan virtuella nätverk gör att grenar kan kommunicera med virtuella nätverk i samma region som den virtuella WAN-hubben och till ett annat virtuellt nätverk som är anslutet till en annan virtuell WAN-hubb i en annan region.
+
+> [!NOTE]
+> Inter-Hub med brand vägg stöds inte för närvarande. Trafik mellan hubbar kommer att flytta direkt till Azure-brandväggen i varje hubb.  Trafik via en anslutning som är avsedd för ett virtuellt nätverk i samma region bearbetas av Azure-brandväggen i den skyddade hubben.
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Hur gör jag för att aktivera standard väg (0.0.0.0/0) i en säker virtuell hubb
 

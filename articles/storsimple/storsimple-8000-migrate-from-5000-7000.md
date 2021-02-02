@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398194"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428174"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrera data från StorSimple 5000-7000-serien till 8000-serien het
 
@@ -137,11 +137,11 @@ Utför följande steg för att installera StorSimple Migration Tool på datorn.
 2. Redigera värdena som motsvarar nycklarna och Ersätt med:
 
     * `UserName` – Användar namn att logga in på Azure Portal.
-    * `SubscriptionName and SubscriptionId` – Namn och ID för din Azure-prenumeration. Klicka på **Egenskaper**under **allmänt**på StorSimple Enhetshanteraren tjänstens landnings sida. Kopiera prenumerations namnet och prenumerations-ID: t som är associerat med din tjänst.
+    * `SubscriptionName and SubscriptionId` – Namn och ID för din Azure-prenumeration. Klicka på **Egenskaper** under **allmänt** på StorSimple Enhetshanteraren tjänstens landnings sida. Kopiera prenumerations namnet och prenumerations-ID: t som är associerat med din tjänst.
     * `ResourceName` – Namnet på din StorSimple Enhetshanteraren-tjänst i Azure Portal. Visas också under tjänst egenskaper.
     * `ResourceGroup` – Namnet på den resurs grupp som är kopplad till din StorSimple Enhetshanteraren-tjänst i Azure Portal. Visas också under tjänst egenskaper.
     ![Kontrol lera tjänst egenskaperna för mål enheten](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId` – Azure Active Directory klient-ID i Azure Portal. Logga in på Microsoft Azure som administratör. Klicka på **Azure Active Directory**i Microsoft Azure-portalen. Klicka på **Egenskaper** under **Hantera**. Klient-ID visas i rutan **katalog-ID** .
+    * `TenantId` – Azure Active Directory klient-ID i Azure Portal. Logga in på Microsoft Azure som administratör. Klicka på **Azure Active Directory** i Microsoft Azure-portalen. Klicka på **Egenskaper** under **Hantera**. Klient-ID visas i rutan **katalog-ID** .
     ![Kontrol lera klient-ID för Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Spara ändringarna som gjorts i konfigurations filen.
@@ -150,4 +150,4 @@ Utför följande steg för att installera StorSimple Migration Tool på datorn.
   
 
 ## <a name="next-steps"></a>Nästa steg
-Hämta steg-för-steg-instruktioner om hur du [migrerar data från en StorSimple 5000-7000-serie till en enhet med 8000-serien](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b).
+Hämta steg-för-steg-instruktioner om hur du [migrerar data från en StorSimple 5000-7000-serie till en enhet med 8000-serien](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf).
