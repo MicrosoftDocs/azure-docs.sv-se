@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966674"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258548"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Självstudie: Använd principer för anpassad allokering med enhets etablerings tjänsten (DPS)
 
@@ -40,7 +40,7 @@ I den här självstudien ska du göra följande:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * I den här artikeln förutsätter vi att du har slutfört stegen i [konfigurera IoT Hub Device Provisioning service med Azure Portal](./quick-setup-auto-provision.md) för att skapa IoT Hub och DPS-instansen.
 
@@ -347,7 +347,7 @@ Den här exempel koden simulerar en enhets startsekvens som skickar etablerings 
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. I `main()` funktionen hittar du anropet till `Prov_Device_Register_Device()` . Precis före det anropet lägger du till följande rader med kod som använder [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) för att skicka en anpassad JSON-nyttolast under etableringen. Detta kan användas för att ge mer information till dina anpassade fördelnings funktioner. Detta kan också användas för att överföra enhets typen i stället för att undersöka registrerings-ID: t.
+6. I `main()` funktionen hittar du anropet till `Prov_Device_Register_Device()` . Precis före det anropet lägger du till följande rader med kod som använder [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) för att skicka en anpassad JSON-nyttolast under etableringen. Detta kan användas för att ge mer information till dina anpassade fördelnings funktioner. Detta kan också användas för att överföra enhets typen i stället för att undersöka registrerings-ID: t. Mer information om hur du skickar och tar emot anpassade data nytto laster med DPS finns i [så här överför du nytto laster mellan enheter och DPS](how-to-send-additional-data.md).
 
     ```c
     // An example custom payload

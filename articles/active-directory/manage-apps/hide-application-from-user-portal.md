@@ -3,7 +3,7 @@ title: Dölj ett företags program från användarens upplevelse i Azure AD
 description: Hur du döljer ett företags program från användarens upplevelse i Azure Active Directory åtkomst paneler eller Microsoft 365 startare.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,18 +12,18 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1abd1d72e4435aa59bbb9a99f3cc423f11268e
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8469b48b92f3f9a645a0c05441e6c1943b02e16f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858306"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258888"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Dölj företags program från slutanvändare i Azure Active Directory
 
 Instruktioner för hur du döljer program från slutanvändarens panel för Mina appar eller Microsoft 365 Launcher. När ett program är dolt har användarna fortfarande behörighet till programmet. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Program administratörs behörighet krävs för att dölja ett program från panelen för Mina appar och Microsoft 365 Launcher.
 

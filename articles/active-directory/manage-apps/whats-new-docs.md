@@ -1,24 +1,51 @@
 ---
 title: Vad är nytt i Azure Active Directory program hantering
 description: Ny och uppdaterad dokumentation för Azure Active Directory program hantering.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: ea2e08db91d23e9523b7bc95e01b7adc9c93b3cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+manager: daveba
+ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054829"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258582"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
 Välkommen till nyheter i Azure Active Directory program hanterings dokumentation. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt i program hanterings tjänsten finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>Januari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+- [Planera Azure Active Directory konfiguration av mina appar](my-apps-deployment-plan.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+- [Problem med att installera anslutningsappen för programproxyagenten](application-proxy-connector-installation-problem.md)
+- [Felsöka lösenordsbaserad enkel inloggning i Azure AD](troubleshoot-password-based-sso.md)
+- [Metod tips för program hantering](application-management-fundamentals.md)
+- [Att integrera Azure Active Directory med program komma igång-guide](plan-an-application-integration.md)
+- [Vad är programhantering?](what-is-application-management.md)
+- [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.md)
+- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Arbeta med befintliga lokala proxyservrar](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Utveckla branschspecifika appar för Azure Active Directory](developer-guidance-for-integrating-applications.md)
+- [Förstå Azure AD-programproxy-kopplingar](application-proxy-connectors.md)
+- [Förstå länkad inloggning](configure-linked-sign-on.md)
+- [Förstå lösenordsbaserad enkel inloggning](configure-password-single-sign-on-non-gallery-applications.md)
+- [Förstå SAML-baserad enkel inloggning](configure-saml-single-sign-on.md)
+- [Felsök vanliga problem med att lägga till eller ta bort ett program i Azure Active Directory](troubleshoot-adding-apps.md)
+- [Visa appar med hjälp av din Azure AD-klient för identitets hantering](application-types.md)
+- [Förstå hur användare tilldelas till appar i Azure Active Directory](ways-users-get-assigned-to-applications.md)
+- [Snabb start: ta bort ett program från din Azure Active Directory (Azure AD)-klient](delete-application-portal.md)
+- [Publicera Fjärrskrivbord med Azure AD-programproxy](application-proxy-integrate-with-remote-desktop-services.md)
+- [Vidta åtgärder för överanvändning eller misstänkta program i Azure Active Directory](manage-application-permissions.md)
+
 
 ## <a name="december-2020"></a>December 2020
 

@@ -3,12 +3,12 @@ title: Vägledning och metodtips
 description: Upptäck de bästa metoderna och vägledningen för att säkerhetskopiera molnet och den lokala arbets belastningen till molnet
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 522f7d2502a49b912f34f392c52e5046eba8d01f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7b65556d8dd9b5b12e8da25055f6e39732c83afd
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092315"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258769"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Säkerhetskopiera molnet och lokala arbets belastningar till molnet
 
@@ -66,16 +66,16 @@ Eftersom valvet är begränsat till en prenumeration kan du anpassa din valv des
 
 ### <a name="single-or-multiple-vault"></a>Ett eller flera valv
 
-Du kan använda ett enda valv eller flera valv för att organisera och hantera säkerhets kopieringen. Beakta följande rikt linjer:
+Du kan använda ett enda valv eller flera valv för att organisera och hantera säkerhets kopieringen. Läs igenom följande riktlinjer:
 
 * Om dina arbets belastningar hanteras av en enda prenumeration och en enda resurs kan du använda ett enda valv för att övervaka och hantera reserv fastigheten.
 
 * Om dina arbets belastningar sprids över prenumerationer kan du skapa flera valv, en eller flera per prenumeration.
-  * Med Backup Center kan du ha en enda fönster ruta för att hantera alla uppgifter som är relaterade till säkerhets kopiering. [Läs mer här]().
-  * Du kan anpassa dina vyer med mallar för arbets böcker. Backup Explorer är en sådan mall för virtuella Azure-datorer. [Läs mer här](monitor-azure-backup-with-backup-explorer.md).
-  * Om du behöver konsekvent princip över valv kan du använda Azure policy för att sprida säkerhets kopierings principen över flera valv. Du kan skriva en anpassad [Azure policy definition](../governance/policy/concepts/definition-structure.md) som använder ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) -resultatet för att sprida en säkerhets kopierings princip över flera valv. Du [kan tilldela den här Azure policy](../governance/policy/assign-policy-portal.md) definition till ett visst omfång (prenumerations-eller rg), så att den distribuerar en "säkerhets kopierings princip"-resurs till alla Recovery Services-valv inom omfånget för Azure policy tilldelningen. Inställningarna för säkerhets kopierings principen (t. ex. säkerhets kopierings frekvens, kvarhållning och så vidare) ska anges av användaren som parametrar i Azure Policy tilldelningen.
+  * Med Backup Center kan du ha en enda fönster ruta för att hantera alla uppgifter som är relaterade till säkerhets kopiering. [Mer information finns här]().
+  * Du kan anpassa dina vyer med mallar för arbets böcker. Backup Explorer är en sådan mall för virtuella Azure-datorer. [Mer information finns här](monitor-azure-backup-with-backup-explorer.md).
+  * Om du behöver konsekvent princip över valv kan du använda Azure policy för att sprida säkerhets kopierings principen över flera valv. Du kan skriva en anpassad [Azure policy definition](../governance/policy/concepts/definition-structure.md) som använder ["deployifnotexists"](../governance/policy/concepts/effects.md#deployifnotexists) -resultatet för att sprida en säkerhets kopierings princip över flera valv. Du kan också [tilldela](../governance/policy/assign-policy-portal.md) denna Azure policy-definition till ett visst omfång (prenumerations-eller rg), så att den distribuerar en "säkerhets kopierings princip"-resurs till alla Recovery Services-valv i omfånget för Azure policy tilldelningen. Inställningarna för säkerhets kopierings principen (t. ex. säkerhets kopierings frekvens, kvarhållning och så vidare) ska anges av användaren som parametrar i Azure Policy tilldelningen.
 
-* När organisationens utrymme växer kan du vilja flytta arbets belastningar mellan prenumerationer av följande orsaker: justera efter säkerhets kopierings princip, konsolidera valv, kompromissa med lägre redundans för att spara pengar (flytta från GRS till LRS).  Azure Backup stöder flytt av ett Recovery Services valv i Azure-prenumerationer eller till en annan resurs grupp inom samma prenumeration. [Läs mer här](backup-azure-move-recovery-services-vault.md).
+* När organisationens utrymme växer kan du vilja flytta arbets belastningar mellan prenumerationer av följande orsaker: justera efter säkerhets kopierings princip, konsolidera valv, kompromissa med lägre redundans för att spara pengar (flytta från GRS till LRS).  Azure Backup stöder flytt av ett Recovery Services valv i Azure-prenumerationer eller till en annan resurs grupp inom samma prenumeration. [Mer information finns här](backup-azure-move-recovery-services-vault.md).
 
 ### <a name="review-default-settings"></a>Granska standardinställningarna
 
@@ -85,13 +85,13 @@ Granska standardinställningarna för typ och säkerhets inställningar för lag
 
 * *Mjuk borttagning* är aktiverat som standard på nyligen skapade valv för att skydda säkerhets kopierings data från oavsiktliga eller skadliga borttagningar. Följ [dessa](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) steg om du vill granska och ändra inställningarna.
 
-* Med *återställning mellan regioner* kan du återställa virtuella Azure-datorer i en sekundär region, som är en Azure-kopplad region. Med det här alternativet kan du utföra granskningar för att uppfylla kraven på granskning eller efterlevnad och för att återställa den virtuella datorn eller disken om det finns en katastrof i den primära regionen. CRR är en valbar funktion för alla GRS-valv. [Läs mer här](backup-create-rs-vault.md#set-cross-region-restore).
+* Med *återställning mellan regioner* kan du återställa virtuella Azure-datorer i en sekundär region, som är en Azure-kopplad region. Med det här alternativet kan du utföra granskningar för att uppfylla kraven på granskning eller efterlevnad och för att återställa den virtuella datorn eller disken om det finns en katastrof i den primära regionen. CRR är en valbar funktion för alla GRS-valv. [Mer information finns här](backup-create-rs-vault.md#set-cross-region-restore).
 
 * Innan du slutfört din valv design går du igenom [valvets support mat ris](backup-support-matrix.md#vault-support) för att förstå de faktorer som kan påverka eller begränsa dina design val.
 
 ## <a name="backup-policy-considerations"></a>Säkerhets kopierings princip överväganden
 
-Azure Backup princip har två komponenter: *schema* (när säkerhets kopiering ska ske) och *kvarhållning* (hur länge säkerhets kopieringen ska behållas). Du kan definiera principen baserat på vilken typ av data som säkerhets kopie ras, RTO/återställnings krav, operativa eller reglerade krav och arbets belastnings typ (till exempel virtuell dator, databas, filer). [Läs mer här](backup-architecture.md#backup-policy-essentials).
+Azure Backup princip har två komponenter: *schema* (när säkerhets kopiering ska ske) och *kvarhållning* (hur länge säkerhets kopieringen ska behållas). Du kan definiera principen baserat på vilken typ av data som säkerhets kopie ras, RTO/återställnings krav, operativa eller reglerade krav och arbets belastnings typ (till exempel virtuell dator, databas, filer). [Mer information finns här](backup-architecture.md#backup-policy-essentials).
 
 Tänk på följande när du skapar en säkerhets kopierings princip:
 
@@ -130,7 +130,7 @@ Tänk på följande när du skapar en säkerhets kopierings princip:
   * En säkerhets kopierings princip är begränsad till ett valv.
   * Det finns en gräns för antalet objekt per princip (till exempel 100 VM: ar). För att skala kan du skapa dubbla principer med samma eller olika scheman.
   * Du kan inte ta bort vissa återställnings punkter selektivt.
-  * Du kan inte helt inaktivera den schemalagda säkerhets kopieringen och hålla data källan i skyddat tillstånd. Den minst frekventa säkerhets kopiering som du kan konfigurera med principen är att ha en veckovis schemalagd säkerhets kopiering. Ett alternativ är att stoppa skyddet med kvarhållna data och att aktivera skydd varje gången du vill göra en säkerhets kopia, ta en säkerhets kopia på begäran och sedan inaktivera skyddet, men behålla säkerhetskopierade data. [Läs mer här](backup-azure-manage-vms.md#stop-protecting-a-vm).
+  * Du kan inte helt inaktivera den schemalagda säkerhets kopieringen och hålla data källan i skyddat tillstånd. Den minst frekventa säkerhets kopiering som du kan konfigurera med principen är att ha en veckovis schemalagd säkerhets kopiering. Ett alternativ är att stoppa skyddet med kvarhållna data och att aktivera skydd varje gången du vill göra en säkerhets kopia, ta en säkerhets kopia på begäran och sedan inaktivera skyddet, men behålla säkerhetskopierade data. [Mer information finns här](backup-azure-manage-vms.md#stop-protecting-a-vm).
 
 ## <a name="security-considerations"></a>Säkerhetsöverväganden
 
@@ -138,9 +138,9 @@ För att hjälpa dig att skydda dina säkerhets kopierings data och uppfylla ver
 
 ### <a name="authentication-and-authorization"></a>Autentisering och auktorisering
 
-* Rollbaserad åtkomst kontroll i Azure (Azure RBAC) möjliggör detaljerad åtkomst hantering, uppdelning av uppgifter i teamet och ger endast åtkomst till de användare som krävs för att utföra sina jobb. [Läs mer här](backup-rbac-rs-vault.md).
+* Rollbaserad åtkomst kontroll i Azure (Azure RBAC) möjliggör detaljerad åtkomst hantering, uppdelning av uppgifter i teamet och ger endast åtkomst till de användare som krävs för att utföra sina jobb. [Mer information finns här](backup-rbac-rs-vault.md).
 
-* Azure Backup innehåller tre inbyggda roller för att kontrol lera säkerhets kopierings hanterings åtgärder: säkerhets kopierings deltagare, operatörer och läsare. [Läs mer här](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
+* Azure Backup innehåller tre inbyggda roller för att kontrol lera säkerhets kopierings hanterings åtgärder: säkerhets kopierings deltagare, operatörer och läsare. [Mer information finns här](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 
 * Azure Backup har flera säkerhets kontroller som är inbyggda i tjänsten för att förhindra, identifiera och reagera på säkerhets risker (Läs mer)
 
@@ -154,23 +154,23 @@ Kryptering skyddar dina data och hjälper dig att uppfylla organisationens säke
 
 * Säkerhetskopierade data krypteras automatiskt med Microsoft-hanterade nycklar. Du kan också använda egna nycklar, även kallade [kund hanterade nycklar](encryption-at-rest-with-cmk.md).
 
-* Azure Backup stöder säkerhets kopiering och återställning av virtuella Azure-datorer som har sina operativ system/data diskar krypterade med Azure Disk Encryption (ADE). [Läs mer här](backup-azure-vms-encryption.md).
+* Azure Backup stöder säkerhets kopiering och återställning av virtuella Azure-datorer som har sina operativ system/data diskar krypterade med Azure Disk Encryption (ADE). [Mer information finns här](backup-azure-vms-encryption.md).
 
 ### <a name="protection-of-backup-data-from-unintentional-deletes"></a>Skydd av säkerhets kopierings data från oavsiktliga borttagningar
 
-Azure Backup innehåller säkerhetsfunktioner som hjälper dig att skydda säkerhets kopierings data även efter borttagning. Om en användare tar bort säkerhets kopian (från en virtuell dator, SQL Server databas, Azure-filresurs, SAP HANA databas) med mjuk borttagning, bevaras säkerhets kopierings data under 14 ytterligare dagar, vilket gör det möjligt att återställa säkerhets kopierings objekt utan data förlust. De ytterligare 14 dagars kvarhållning av säkerhets kopierings data i läget "mjuk borttagning" kostar inga kostnader för dig. [Läs mer här](backup-azure-security-feature-cloud.md).
+Azure Backup innehåller säkerhetsfunktioner som hjälper dig att skydda säkerhets kopierings data även efter borttagning. Om en användare tar bort säkerhets kopian (från en virtuell dator, SQL Server databas, Azure-filresurs, SAP HANA databas) med mjuk borttagning, bevaras säkerhets kopierings data under 14 ytterligare dagar, vilket gör det möjligt att återställa säkerhets kopierings objekt utan data förlust. De ytterligare 14 dagars kvarhållning av säkerhets kopierings data i läget "mjuk borttagning" kostar inga kostnader för dig. [Mer information finns här](backup-azure-security-feature-cloud.md).
 
 ### <a name="monitoring-and-alerts-of-suspicious-activity"></a>Övervakning och aviseringar för misstänkt aktivitet
 
-Azure Backup innehåller inbyggda övervaknings-och aviserings funktioner för att visa och konfigurera åtgärder för händelser relaterade till Azure Backup. [Läs mer här](security-overview.md#monitoring-and-alerts-of-suspicious-activity).
+Azure Backup innehåller inbyggda övervaknings-och aviserings funktioner för att visa och konfigurera åtgärder för händelser relaterade till Azure Backup. [Mer information finns här](security-overview.md#monitoring-and-alerts-of-suspicious-activity).
 
 ### <a name="security-features-to-help-protect-hybrid-backups"></a>Säkerhetsfunktioner som hjälper dig att skydda hybrid säkerhets kopieringar
 
-Azure Backup tjänsten använder MARS-agenten (Microsoft Azure Recovery Services) för att säkerhetskopiera och återställa filer, mappar och volym eller system tillstånd från en lokal dator till Azure. MARS innehåller nu säkerhetsfunktioner: en lösen fras som ska krypteras innan den laddas upp och dekrypteras efter nedladdning från Azure Backup, behålls borttagna säkerhets kopierings data under ytterligare 14 dagar från borttagnings datumet och kritisk åtgärd (t. ex. att ändra en lösen fras) kan bara utföras av användare som har giltiga autentiseringsuppgifter för Azure. [Läs mer här](backup-azure-security-feature.md).
+Azure Backup tjänsten använder MARS-agenten (Microsoft Azure Recovery Services) för att säkerhetskopiera och återställa filer, mappar och volym eller system tillstånd från en lokal dator till Azure. MARS innehåller nu säkerhetsfunktioner: en lösen fras som ska krypteras innan den laddas upp och dekrypteras efter nedladdning från Azure Backup, behålls borttagna säkerhets kopierings data under ytterligare 14 dagar från borttagnings datumet och kritisk åtgärd (t. ex. att ändra en lösen fras) kan bara utföras av användare som har giltiga autentiseringsuppgifter för Azure. [Mer information finns här](backup-azure-security-feature.md).
 
 ## <a name="network-considerations"></a>Nätverksöverväganden
 
-Azure Backup måste flytta data från din arbets belastning till Recovery Services-valvet. Azure Backup tillhandahåller flera funktioner för att skydda säkerhets kopierings data från att exponeras oavsiktligt (till exempel en man-in-the-Middle-attack i nätverket). Beakta följande rikt linjer:
+Azure Backup måste flytta data från din arbets belastning till Recovery Services-valvet. Azure Backup tillhandahåller flera funktioner för att skydda säkerhets kopierings data från att exponeras oavsiktligt (till exempel en man-in-the-Middle-attack i nätverket). Läs igenom följande riktlinjer:
 
 ### <a name="internet-connectivity"></a>Internetanslutning
 
@@ -184,7 +184,7 @@ Azure Backup måste flytta data från din arbets belastning till Recovery Servic
 
 Den [privata Azure-slutpunkten](../private-link/private-endpoint-overview.md) är ett nätverks gränssnitt som ansluter privat och säkert till en tjänst som drivs av en privat Azure-länk. Med Azure Backup kan du säkerhetskopiera och återställa data på ett säkert sätt från dina Recovery Services-valv med privata slut punkter.
 
-* När du aktiverar privata slut punkter för valvet används de endast för säkerhets kopiering och återställning av SQL-och SAP HANA-arbetsbelastningar i en Azure VM-och MARS agent-säkerhetskopiering.  Du kan också använda valvet för säkerhets kopiering av andra arbets belastningar även (de kräver inte privata slut punkter). Förutom säkerhets kopian av SQL och SAP HANA arbets belastningar och säkerhets kopiering med MARS-agenten används även privata slut punkter för att utföra fil återställning när det gäller Azure VM-säkerhetskopiering. [Läs mer här](private-endpoints.md#recommended-and-supported-scenarios).
+* När du aktiverar privata slut punkter för valvet används de endast för säkerhets kopiering och återställning av SQL-och SAP HANA-arbetsbelastningar i en Azure VM-och MARS agent-säkerhetskopiering.  Du kan också använda valvet för säkerhets kopiering av andra arbets belastningar även (de kräver inte privata slut punkter). Förutom säkerhets kopian av SQL och SAP HANA arbets belastningar och säkerhets kopiering med MARS-agenten används även privata slut punkter för att utföra fil återställning när det gäller Azure VM-säkerhetskopiering. [Mer information finns här](private-endpoints.md#recommended-and-supported-scenarios).
 
 * Azure Active Directory stöder för närvarande inte privata slut punkter. Därför måste IP-adresser och FQDN: er som krävs för Azure Active Directory beviljas utgående åtkomst från det skyddade nätverket när säkerhets kopiering av databaser i virtuella Azure-datorer och säkerhets kopiering utförs med MARS-agenten. Du kan också använda NSG-Taggar och Azure Firewall-taggar för att tillåta åtkomst till Azure AD, efter vad som är tillämpligt. Läs mer om [kraven här](./private-endpoints.md#before-you-start).
 
@@ -194,13 +194,13 @@ Styrning i Azure implementeras främst med [Azure policy](../governance/policy/o
 
 ### <a name="azure-backup-support-two-key-scenarios-via-built-in-azure-policy"></a>Azure Backup stöder två nyckel scenarier via inbyggda Azure Policy
 
-* Se till att nyligen skapade affärs kritiska datorer säkerhets kopie ras automatiskt med rätt bevarande inställningar. Azure Backup tillhandahåller en inbyggd princip (med Azure Policy) som kan tilldelas till alla virtuella Azure-datorer på en angiven plats i en prenumeration eller resurs grupp. När den här principen tilldelas ett angivet omfång konfigureras alla nya virtuella datorer i det omfånget automatiskt för säkerhets kopiering till ett befintligt valv på samma plats och i en prenumeration. Användaren kan ange valvet och den bevarande princip som de säkerhetskopierade virtuella datorerna ska associeras med. [Läs mer här](backup-azure-auto-enable-backup.md).
+* Se till att nyligen skapade affärs kritiska datorer säkerhets kopie ras automatiskt med rätt bevarande inställningar. Azure Backup tillhandahåller en inbyggd princip (med Azure Policy) som kan tilldelas till alla virtuella Azure-datorer på en angiven plats i en prenumeration eller resurs grupp. När den här principen tilldelas ett angivet omfång konfigureras alla nya virtuella datorer i det omfånget automatiskt för säkerhets kopiering till ett befintligt valv på samma plats och i en prenumeration. Användaren kan ange valvet och den bevarande princip som de säkerhetskopierade virtuella datorerna ska associeras med. [Mer information finns här](backup-azure-auto-enable-backup.md).
 
-* Se till att nyligen skapade valv har aktive rad diagnostik för att stödja rapporter. Ofta kan det vara en besvärlig uppgift att lägga till en diagnostisk inställning manuellt per valv. Dessutom måste ett nytt valv som skapats ha aktiverat diagnostikinställningar, så att du kan visa rapporter för det här valvet. För att förenkla skapandet av diagnostikinställningar i skala (med Log Analytics som mål) är Azure Backup en inbyggd Azure Policy. Den här principen lägger till en LA-diagnostisk inställning för alla valv i varje prenumeration eller resurs grupp. I följande avsnitt finns anvisningar om hur du använder den här principen. [Läs mer här](azure-policy-configure-diagnostics.md).
+* Se till att nyligen skapade valv har aktive rad diagnostik för att stödja rapporter. Ofta kan det vara en besvärlig uppgift att lägga till en diagnostisk inställning manuellt per valv. Dessutom måste ett nytt valv som skapats ha aktiverat diagnostikinställningar, så att du kan visa rapporter för det här valvet. För att förenkla skapandet av diagnostikinställningar i skala (med Log Analytics som mål) är Azure Backup en inbyggd Azure Policy. Den här principen lägger till en LA-diagnostisk inställning för alla valv i varje prenumeration eller resurs grupp. I följande avsnitt finns anvisningar om hur du använder den här principen. [Mer information finns här](azure-policy-configure-diagnostics.md).
 
 ### <a name="azure-backup-cost-considerations"></a>Azure Backup kostnads överväganden
 
-Den Azure Backup tjänstens funktioner ger flexibiliteten att effektivt hantera dina kostnader och fortfarande uppfylla din BCDR (verksamhets kontinuitet och haveri beredskap). Beakta följande rikt linjer:
+Den Azure Backup tjänstens funktioner ger flexibiliteten att effektivt hantera dina kostnader och fortfarande uppfylla din BCDR (verksamhets kontinuitet och haveri beredskap). Läs igenom följande riktlinjer:
 
 * Använd pris Kalkylatorn för att utvärdera och optimera kostnader genom att justera olika Laffont. [Läs mer här](azure-backup-pricing.md)
 
@@ -213,7 +213,7 @@ Den Azure Backup tjänstens funktioner ger flexibiliteten att effektivt hantera 
 
 * Selektiv säkerhets kopierings diskar: exkludera disk (förhands gransknings funktion) ger ett effektivt och kostnads effektivt alternativ för att säkerhetskopiera viktiga data selektivt. Säkerhetskopiera till exempel bara en disk när du inte vill säkerhetskopiera resten av diskarna som är anslutna till en virtuell dator. Detta är också användbart när du har flera säkerhets kopierings lösningar. Till exempel när du säkerhetskopierar dina databaser eller data med en lösning för säkerhets kopiering av arbets belastning (SQL Server databas i Azure VM backup) och du vill använda säkerhets kopiering av Azure VM-nivå för valda diskar.
 
-* Azure Backup tar ögonblicks bilder av virtuella Azure-datorer och lagrar dem tillsammans med diskarna för att förbättra skapandet av återställnings punkter och påskynda återställnings åtgärder. Detta kallas för omedelbar återställning. Som standard behålls ögonblicks bilder av omedelbar återställning i två dagar. Med den här funktionen kan du utföra en återställning från dessa ögonblicks bilder genom att skära tillbaka återställnings tiderna. Det minskar den tid som krävs för att transformera och kopiera data tillbaka från valvet. Därför kan du se lagrings kostnader som motsvarar ögonblicks bilder som tas under den här perioden. [Läs mer här](backup-instant-restore-capability.md#configure-snapshot-retention).
+* Azure Backup tar ögonblicks bilder av virtuella Azure-datorer och lagrar dem tillsammans med diskarna för att förbättra skapandet av återställnings punkter och påskynda återställnings åtgärder. Detta kallas för omedelbar återställning. Som standard behålls ögonblicks bilder av omedelbar återställning i två dagar. Med den här funktionen kan du utföra en återställning från dessa ögonblicks bilder genom att skära tillbaka återställnings tiderna. Det minskar den tid som krävs för att transformera och kopiera data tillbaka från valvet. Därför kan du se lagrings kostnader som motsvarar ögonblicks bilder som tas under den här perioden. [Mer information finns här](backup-instant-restore-capability.md#configure-snapshot-retention).
 
 * Azure Backup valvets typ av lagrings replikering är som standard inställd på Geo-redundant (GRS). Det här alternativet kan inte ändras efter att objekten skyddats. Geo-redundant lagring (GRS) ger en högre nivå av data hållbarhet än lokalt redundant lagring (LRS), vilket gör det möjligt att välja att använda återställning och kostnader över flera regioner. Granska kompromisserna mellan lägre kostnader och högre data hållbarhet och Bestäm vad som passar bäst för ditt scenario. [Läs mer här](backup-create-rs-vault.md#set-storage-redundancy)
 
@@ -225,9 +225,9 @@ Som säkerhets kopierings användare eller administratör bör du kunna övervak
 
 ### <a name="monitoring"></a>Övervakning
 
-* Azure Backup tillhandahåller inbyggd **jobb övervakning** för åtgärder som att konfigurera säkerhets kopiering, säkerhets kopiering, återställning, borttagning av säkerhets kopior och så vidare. Detta är begränsat till valvet och idealiskt för övervakning av ett enda valv. [Läs mer här](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
+* Azure Backup tillhandahåller inbyggd **jobb övervakning** för åtgärder som att konfigurera säkerhets kopiering, säkerhets kopiering, återställning, borttagning av säkerhets kopior och så vidare. Detta är begränsat till valvet och idealiskt för övervakning av ett enda valv. [Mer information finns här](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
 
-* Om du behöver övervaka operativa aktiviteter i skala ger **Backup Explorer** en sammanställd vy över hela reserv fastigheten, vilket möjliggör detaljerad analys och fel sökning. Det är en inbyggd Azure Monitor arbets bok som ger en enkel, central plats som hjälper dig att övervaka operativa aktiviteter över hela reserv fastigheten på Azure, som omfattar klienter, platser, prenumerationer, resurs grupper och valv. [Läs mer här](monitor-azure-backup-with-backup-explorer.md).
+* Om du behöver övervaka operativa aktiviteter i skala ger **Backup Explorer** en sammanställd vy över hela reserv fastigheten, vilket möjliggör detaljerad analys och fel sökning. Det är en inbyggd Azure Monitor arbets bok som ger en enkel, central plats som hjälper dig att övervaka operativa aktiviteter över hela reserv fastigheten på Azure, som omfattar klienter, platser, prenumerationer, resurs grupper och valv. [Mer information finns här](monitor-azure-backup-with-backup-explorer.md).
   * Använd den för att identifiera resurser som inte har kon figurer ATS för säkerhets kopiering och se till att du inte någonsin kommer att skydda viktiga data i din växande egendom.
   * Instrument panelen tillhandahåller operativa aktiviteter under de senaste sju dagarna (max). Om du behöver behålla dessa data kan du exportera dem som en Excel-fil och spara dem.
   * Om du är en Azure Lighthouse-användare kan du Visa information över flera klienter, vilket möjliggör en mer begränsande övervakning.
@@ -238,8 +238,8 @@ Som säkerhets kopierings användare eller administratör bör du kunna övervak
   * Identifiera viktiga trender på olika nivåer av granularitet.
 
 * Dessutom ger
-  * Du kan skicka data (till exempel jobb, principer och så vidare) till arbets ytan **Log Analytics** . Detta aktiverar funktionerna i Azure Monitor loggar för att möjliggöra korrelation av data med andra övervaknings data som samlas in av Azure Monitor, konsolidera logg poster från flera Azure-prenumerationer och-klienter till en enda plats för analys, använda logg frågor för att utföra komplexa analyser och få djupgående insikter om logg poster. [Läs mer här](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
-  * Du kan skicka data till Händelsehubben för att skicka poster utanför Azure, till exempel en SIEM (säkerhets information och händelse hantering) eller en annan Log Analytics-lösning. [Läs mer här](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
+  * Du kan skicka data (till exempel jobb, principer och så vidare) till arbets ytan **Log Analytics** . Detta aktiverar funktionerna i Azure Monitor loggar för att möjliggöra korrelation av data med andra övervaknings data som samlas in av Azure Monitor, konsolidera logg poster från flera Azure-prenumerationer och-klienter till en enda plats för analys, använda logg frågor för att utföra komplexa analyser och få djupgående insikter om logg poster. [Mer information finns här](../azure-monitor/platform/activity-log.md#send-to-log-analytics-workspace).
+  * Du kan skicka data till Händelsehubben för att skicka poster utanför Azure, till exempel en SIEM (säkerhets information och händelse hantering) eller en annan Log Analytics-lösning. [Mer information finns här](../azure-monitor/platform/activity-log.md#send-to-azure-event-hubs).
   * Du kan skicka data till ett Azure Storage-konto om du vill behålla dina loggdata längre än 90 dagar för granskning, statisk analys eller säkerhets kopiering. Om du bara behöver behålla dina händelser i 90 dagar eller mindre, behöver du inte skapa arkiv till ett lagrings konto, eftersom aktivitets logg händelser lagras i Azure-plattformen i 90 dagar. [Läs mer](../azure-monitor/platform/activity-log.md#send-to--azure-storage).
 
 ### <a name="alerting"></a>Aviseringar
@@ -247,9 +247,9 @@ Som säkerhets kopierings användare eller administratör bör du kunna övervak
 * Aviseringar är i första hand ett sätt att komma fram till att vidta relevanta åtgärder. Avsnittet om säkerhets kopierings aviseringar visar aviseringar som genererats av tjänsten Azure Backup.
 
 * Azure Backup innehåller en inbyggd **aviserings funktion för aviseringar** via e-post för fel, varningar och kritiska åtgärder. Du kan ange enskilda e-postadresser eller distributions listor som ska meddelas när en avisering genereras. Du kan också välja om du vill bli meddelad om varje enskild avisering eller gruppera dem i en Tim sammandrag och sedan få ett meddelande.
-  * De här aviseringarna definieras av tjänsten och ger stöd för begränsade scenarier – säkerhets kopierings-/återställnings fel, stoppa skyddet med Behåll data/stoppa skydd med ta bort data och så vidare. [Läs mer här](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
+  * De här aviseringarna definieras av tjänsten och ger stöd för begränsade scenarier – säkerhets kopierings-/återställnings fel, stoppa skyddet med Behåll data/stoppa skydd med ta bort data och så vidare. [Mer information finns här](backup-azure-monitoring-built-in-monitor.md#alert-scenarios).
   * Om en destruktiv åtgärd, till exempel stoppa skydd med ta bort data, görs, aktive ras en avisering och ett e-postmeddelande skickas till prenumerations ägare, administratörer och medadministratörer även om meddelanden **inte** har kon figurer ats för Recovery Services valvet.
-  * Vissa arbets belastningar kan generera höga frekvenser av haverier (till exempel SQL Server var 15: e minut). För att förhindra att aviseringar blir överbelastade för varje förekomst av händelsen, konsol IDE ras aviseringarna. [Läs mer här](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
+  * Vissa arbets belastningar kan generera höga frekvenser av haverier (till exempel SQL Server var 15: e minut). För att förhindra att aviseringar blir överbelastade för varje förekomst av händelsen, konsol IDE ras aviseringarna. [Mer information finns här](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts).
   * De inbyggda aviseringarna kan inte anpassas och är begränsade till e-postmeddelanden som definierats i Azure Portal.
 
 * Om du behöver **skapa anpassade aviseringar** (till exempel aviseringar om lyckade jobb) använder du Log Analytics. I Azure Monitor kan du skapa egna aviseringar i en Log Analytics arbets yta. Hybrid arbets belastningar (DPM/MABS) kan också skicka data till LA och använda LA för att tillhandahålla vanliga aviseringar över arbets belastningar som stöds av Azure Backup.

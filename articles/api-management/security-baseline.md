@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201084"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258565"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azures säkerhets bas linje för API Management
 
@@ -90,15 +90,11 @@ Om du kombinerar API Management som har skapats i ett internt virtuellt nätverk
 
 OBS! den här funktionen är tillgänglig på nivån Premium och Developer för API Management.
 
-Aktivera Azure DDoS Protection standard på det virtuella nätverk som är associerat med din API Management-distribution för att skydda från DDoS-attacker (distributed denial of Service).
-
 Använd Azure Security Center integrerad Hot information för att neka kommunikation med kända skadliga eller oanvända Internet-IP-adresser.
 
 * [Så här integrerar du API Management i ett internt virtuellt nätverk med Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Förstå Azure Application Gateway](../application-gateway/index.yml)
-
-* [Så här konfigurerar du Azure DDoS Protection standard](../ddos-protection/manage-ddos-protection.md)
 
 * [Förstå Azure Security Center integrerad Hot information](../security-center/azure-defender.md)
 
@@ -184,8 +180,7 @@ Varning: när du konfigurerar en NSG på API Management under nätet, finns det 
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: underhåll standardkonfigurationer för nätverks enheter
 
-**Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för nätverks inställningar som är relaterade till dina Azure API Management-distributioner. Använd Azure Policy alias i namn områdena "Microsoft. API Management" och "Microsoft. Network" om du vill skapa anpassade principer för att granska eller tillämpa nätverks konfiguration för dina Azure API Management-distributioner och relaterade resurser. Du kan också använda inbyggda princip definitioner för virtuella Azure-nätverk, till exempel:
-- DDoS Protection standard ska vara aktive rad
+**Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för nätverks inställningar som är relaterade till dina Azure API Management-distributioner. Använd Azure Policy alias i namn områdena "Microsoft. API Management" och "Microsoft. Network" om du vill skapa anpassade principer för att granska eller tillämpa nätverks konfiguration för dina Azure API Management-distributioner och relaterade resurser. 
 
 Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-distributioner genom att paketera viktiga miljö artefakter, till exempel Azure Resource Manager mallar, rollbaserad åtkomst kontroll i Azure (Azure RBAC) och principer i en enda skiss definition. Du kan enkelt använda skissen för nya prenumerationer, miljöer och finjustera kontroll och hantering genom versions hantering.
 

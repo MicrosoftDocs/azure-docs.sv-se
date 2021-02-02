@@ -4,7 +4,7 @@ description: Beskriver grunderna för hur du integrerar en lokal SharePoint-Serv
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c318c539b1c09761ed81e7602808e415fdaf8b80
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658187"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258689"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivera fjärråtkomst till SharePoint med Azure AD-programproxy
 
@@ -188,7 +188,7 @@ Om du vill konfigurera KCD följer du de här stegen för varje kopplings dator:
 1. Hitta datorn som kör Azure AD proxy-anslutningsprogrammet. I det här exemplet är det själva SharePoint-servern.
 1. Dubbelklicka på datorn och välj sedan fliken **Delegering**.
 1. Kontrol lera att Delegerings alternativen är inställda på att **lita på den här datorn för delegering endast till de angivna tjänsterna**. Välj sedan **Använd valfritt autentiseringsprotokoll**.
-1. Välj knappen **Lägg till** , Välj **användare eller datorer** och leta upp kontot för SharePoint-programpoolen. Till exempel: `Contoso\spapppool`.
+1. Välj knappen **Lägg till** , Välj **användare eller datorer** och leta upp kontot för SharePoint-programpoolen. Exempel: `Contoso\spapppool`.
 1. I listan över SPN väljer du det som du skapade tidigare för tjänst kontot.
 1. Välj **OK** och välj sedan **OK** igen för att spara ändringarna.
   

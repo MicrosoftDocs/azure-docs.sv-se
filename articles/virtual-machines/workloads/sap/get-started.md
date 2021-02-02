@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/23/2021
+ms.date: 02/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873781"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258928"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Använd Azure för att vara värd för och köra SAP-arbetsbelastnings scenarier
 
@@ -84,6 +84,7 @@ I det här avsnittet hittar du dokument om Microsoft Power BI integration i SAP-
 
 ## <a name="change-log"></a>Ändrings logg
 
+- 02/01/2021: ändra i/ [ha för SAP HANA skala upp med ANF på RHEL](./sap-hana-high-availability-netapp-files-red-hat.md), [SAP HANA skalbara HSR med pacemaker på virtuella Azure-datorer på RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [SAP HANA skala ut med noden vänte läge på virtuella Azure-datorer med ANF på SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) och [SAP HANA skala ut med noden](./sap-hana-scale-out-standby-netapp-files-rhel.md) vänte läge på virtuella Azure-datorer med ANF på RHEL och Lägg till en länk till [NFS v 4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)
 - 01/23/2021: introducera funktionerna hos HANA-datavolym partitionering som en funktion för att skikta I/O-åtgärder mot HANA-datafiler över olika Azure-diskar eller NFS-resurser utan att använda en disk volym hanterare i artiklar [SAP HANA konfigurationer för virtuella Azure-datorer](./hana-vm-operations-storage.md) och [NFS v 4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)
 - 01/18/2021: stöd för Azure net Apps-filer baserade NFS för Oracle i [azure Virtual Machines Oracle DBMS-distribution för SAP-arbetsbelastning](./dbms_guide_oracle.md) och justera decimaler i tabell i Document [NFS v 4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)
 - 01/11/2021: mindre ändringar i [ha för SAP NW på virtuella Azure-datorer på RHEL för SAP-program](./high-availability-guide-rhel.md), [ha för SAP NW på virtuella Azure-datorer på RHEL med ANF](./high-availability-guide-rhel-netapp-files.md) och [ha för SAP NW på virtuella Azure-datorer på RHEL för multi-sid-guide](./high-availability-guide-rhel-multi-sid.md) för att justera kommandon för både RHEL8 och RHEL7, och ENSA1 och ENSA2

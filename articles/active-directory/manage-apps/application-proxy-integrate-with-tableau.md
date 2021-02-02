@@ -3,7 +3,7 @@ title: Azure Active Directory-programproxy och Tableau | Microsoft Docs
 description: Lär dig hur du använder Azure Active Directory (Azure AD) Application Proxy för att tillhandahålla fjärråtkomst för din Tableau-distribution.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,18 +13,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6720a5ad963bc73e11ef7b46150e946521928c01
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764510"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258633"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-programproxy och Tableau 
 
 Azure Active Directory-programproxy och Tableau har samarbetat för att säkerställa att du enkelt kan använda programproxy för att tillhandahålla fjärråtkomst för din Tableau-distribution. Den här artikeln förklarar hur du konfigurerar det här scenariot.  
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 
 Scenariot i den här artikeln förutsätter att du har:
 
@@ -60,13 +60,13 @@ Så här blir det för följande:
 
 5. Fyll i de obligatoriska fälten med information om din nya app. Använd följande vägledning för inställningarna: 
 
-    - **Intern URL**: det här programmet bör ha en intern URL som är själva TABLEAU-URL: en. Exempelvis `https://adventure-works.tableau.com`. 
+    - **Intern URL**: det här programmet bör ha en intern URL som är själva TABLEAU-URL: en. Ett exempel är `https://adventure-works.tableau.com`. 
 
     - **Metod för förautentisering**: Azure Active Directory (rekommenderas men krävs inte). 
 
 6. Välj **Lägg till** överst på bladet. Programmet läggs till och snabb starts menyn öppnas. 
 
-7. I snabb starts menyn väljer du **tilldela en användare för testning**och lägger till minst en användare i programmet. Kontrol lera att det här test kontot har åtkomst till det lokala programmet. 
+7. I snabb starts menyn väljer du **tilldela en användare för testning** och lägger till minst en användare i programmet. Kontrol lera att det här test kontot har åtkomst till det lokala programmet. 
 
 8. Välj **tilldela** för att spara test användar tilldelningen. 
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: d336d38465d601c1cbd4c1e88c0928ab17a1a18f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735721"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258712"
 ---
 # <a name="custom-script-extension-for-windows"></a>Anpassat skripttillägg för Windows
 
@@ -24,7 +24,7 @@ Det anpassade skript tillägget laddar ned och kör skript på virtuella Azure-d
 
 Det här dokumentet beskriver hur du använder tillägget för anpassat skript med hjälp av Azure PowerShell-modulen, Azure Resource Manager mallar och information om fel söknings steg i Windows-system.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!NOTE]  
 > Använd inte anpassat skript tillägg för att köra Update-AzVM med samma virtuella dator som parameter, eftersom det väntar på sig själv.  
@@ -247,8 +247,8 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
     -TypeHandlerVersion "1.10" `
-    -Settings $settings    `
-    -ProtectedSettings $protectedSettings `
+    -Settings $settings `
+    -ProtectedSettings $protectedSettings;
 ```
 
 ### <a name="running-scripts-from-a-local-share"></a>Köra skript från en lokal resurs
@@ -347,7 +347,7 @@ där `<n>` är ett decimal tal som kan ändras mellan körningar av tillägget. 
 
 När `commandToExecute` kommandot körs anger tillägget den här katalogen (till exempel `...\Downloads\2` ) som den aktuella arbets katalogen. Den här processen gör det möjligt att använda relativa sökvägar för att hitta filerna som hämtats via `fileURIs` egenskapen. Se tabellen nedan för exempel.
 
-Eftersom den absoluta nedladdnings Sök vägen kan variera med tiden är det bättre att välja relativa skript-och fil Sök vägar i `commandToExecute` strängen, närhelst det är möjligt. Ett exempel:
+Eftersom den absoluta nedladdnings Sök vägen kan variera med tiden är det bättre att välja relativa skript-och fil Sök vägar i `commandToExecute` strängen, närhelst det är möjligt. Exempel:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

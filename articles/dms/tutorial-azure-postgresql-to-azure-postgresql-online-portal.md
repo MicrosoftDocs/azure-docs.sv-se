@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 772fc9f21f36a1487e2e3a1acbe644f9fd12e0f4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 545359cd68c18fea8bf1369a57226d024489f293
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563202"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258939"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Självstudie: Migrera/uppgradera Azure DB för PostgreSQL – en server till Azure DB för PostgreSQL – en server online med DMS via Azure Portal
 
@@ -54,7 +54,7 @@ För att slutföra den här kursen behöver du:
 * [Skapa en Azure Database for postgresql-server](../postgresql/quickstart-create-server-database-portal.md) eller [skapa en citus-Server (Azure Database for PostgreSQL-Scale Scale)](../postgresql/quickstart-create-hyperscale-portal.md) som mål databas servern för att migrera data till.
 * Skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med hjälp av Azure Resource Manager distributions modellen. Mer information om hur du skapar ett virtuellt nätverk finns i [Virtual Network-dokumentationen](../virtual-network/index.yml)och i synnerhet snabb starts artiklar med stegvisa anvisningar.
 
-* Se till att reglerna för nätverks säkerhets gruppen (NSG) för ditt virtuella nätverk inte blockerar följande portar för inkommande kommunikation till Azure Database Migration Service: 443, 53, 9354, 445, 12000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Se till att reglerna för nätverks säkerhets gruppen (NSG) för ditt virtuella nätverk inte blockerar följande utgående kommunikations portar till Azure Database Migration Service: 443, 53, 9354, 445, 12000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Skapa en [brand Väggs regel](../azure-sql/database/firewall-configure.md) på server nivå för Azure Database for PostgreSQL källa för att tillåta Azure Database migration service åtkomst till käll databaserna. Ange under nätets intervall för det virtuella nätverk som används för Azure Database Migration Service.
 * Skapa en [brand Väggs regel](../azure-sql/database/firewall-configure.md) på server nivå för Azure Database for PostgreSQL Target för att tillåta Azure Database migration service åtkomst till mål databaserna. Ange under nätets intervall för det virtuella nätverk som används för Azure Database Migration Service.
 * [Aktivera logisk replikering](../postgresql/concepts-logical.md) i Azure dB för postgresql-källan. 
@@ -100,7 +100,7 @@ För att slutföra alla databasobjekt som tabellscheman, index och lagrade proce
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Till exempel:
+    Exempel:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql

@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory externa identiteter
 description: Ny och uppdaterad dokumentation för Azure Active Directory externa identiteter.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,21 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 84adb08231589ae636c6a6926a4019a8a070a62e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562386"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258871"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externa identiteter: Nyheter
 
 Välkommen till nyheter i Azure Active Directory external Identities-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med tjänsten externa identiteter finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
 
+## <a name="january-2021"></a>Januari 2021
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+- [Tillåt eller blockera inbjudningar till B2B-användare från specifika organisationer](allow-deny-list.md)
+- [Hur användare i din organisation kan bjuda in gäst användare till en app](add-users-information-worker.md)
+
+
 ## <a name="december-2020"></a>December 2020
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
-
 - [Vanliga frågor och svar om Azure Active Directory B2B-samarbete](faq.md)
 - [Lägg till Google som en identitets leverantör för B2B-gäst användare](google-federation.md)
 - [Identitets leverantörer för externa identiteter](identity-providers.md)

@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 8dfbdb338416511de403733ce61b7b2472190963
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 544847a06917d9cbe1413c678f471f51a10a9c58
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916277"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259007"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Distribuera ett SAP HANA skalbart system med noden vänte läge på virtuella Azure-datorer med Azure NetApp Files på Red Hat Enterprise Linux 
 
@@ -92,7 +92,7 @@ Läs följande SAP-anteckningar och dokument innan du börjar:
 * Azure-speciell RHEL-dokumentation:
   * [Installera SAP HANA på Red Hat Enterprise Linux för användning i Microsoft Azure](https://access.redhat.com/public-cloud/microsoft-azure)
 * [NetApp SAP-program på Microsoft Azure med Azure NetApp Files][anf-sap-applications-azure]
-
+* [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>Översikt
 
@@ -935,4 +935,5 @@ I det här exemplet för att distribuera SAP HANA i en skalbar konfiguration med
 * [Azure Virtual Machines planera och implementera SAP][planning-guide]
 * [Azure Virtual Machines distribution för SAP][deployment-guide]
 * [Azure Virtual Machines DBMS-distribution för SAP][dbms-guide]
+* [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 * Information om hur du upprättar hög tillgänglighet och planerar för haveri beredskap för SAP HANA på virtuella Azure-datorer finns i [hög tillgänglighet för SAP HANA på Azure-Virtual Machines (VM)][sap-hana-ha].

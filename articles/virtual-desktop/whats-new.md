@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 56013a51937915cc240e2bd0ec26342c24c79807
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095914"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258803"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -38,7 +38,7 @@ Ta en titt på de här artiklarna om du vill veta mer om uppdateringar för vår
 
 ## <a name="fslogix-updates"></a>FSLogix uppdateringar
 
-Undrar du över de senaste uppdateringarna för FSLogix? Kolla [vad som är nytt på FSLogix](/fslogix/whats-new.md).
+Undrar du över de senaste uppdateringarna för FSLogix? Kolla [vad som är nytt på FSLogix](/fslogix/whats-new).
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -248,7 +248,7 @@ Om du vill veta mer om nya funktioner kan du kolla i [det här blogg inlägget](
 
 Den senaste versionen av verktyget autoskalning som fanns i för hands versionen är nu allmänt tillgänglig. Det här verktyget använder ett Azure Automation-konto och Azure Logic-appen för att automatiskt stänga och starta om sessionens virtuella datorer (VM) i en adresspool, vilket minskar infrastruktur kostnaderna. Läs mer i [Scale session-värdar med hjälp av Azure Automation](set-up-scaling-script.md).
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Nu kan du göra följande saker med Azure Portal i det virtuella Windows-Skriv bordet: 
 

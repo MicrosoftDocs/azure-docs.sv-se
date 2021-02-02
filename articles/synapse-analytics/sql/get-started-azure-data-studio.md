@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfd0476d3462fc902acb7238fcc1947c85af041f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676187"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258905"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Ansluta till Synapse SQL med Azure Data Studio
 
@@ -26,7 +26,7 @@ ms.locfileid: "98676187"
 > * [SQLCMD](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Du kan använda [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Synapse SQL i Azure Synapse Analytics. 
+Du kan använda [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Synapse SQL i Azure Synapse Analytics. 
 
 ## <a name="connect"></a>Ansluta
 
