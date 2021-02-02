@@ -3,7 +3,7 @@ title: Cookie-inställningar för programproxy – Azure Active Directory | Micr
 description: Azure Active Directory (Azure AD) har åtkomst och sessionscookies för att komma åt lokala program via programproxyn. I den här artikeln får du veta hur du använder och konfigurerar inställningarna för cookies.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62afe97b44f45bc0b7aa12b33b6a65dd94ecf095
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764901"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252210"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-inställningar för åtkomst till lokala program i Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) har åtkomst och sessionscookies för att komm
 
 [Application Proxy](application-proxy.md) använder följande cookie-inställningar för åtkomst och session.
 
-| Cookie-inställning | Default | Beskrivning | Rekommendationer |
+| Cookie-inställning | Standardvärde | Beskrivning | Rekommendationer |
 | -------------- | ------- | ----------- | --------------- |
 | Använd endast HTTP-cookie | **Nej** | **Ja** tillåter att Application Proxy inkluderar HTTPOnly-flaggan i HTTP-svarshuvuden. Den här flaggan ger ytterligare säkerhets fördelar, till exempel förhindrar skript på klient sidan (CSS) från att kopiera eller ändra cookies.<br></br><br></br>Innan vi har stöd för den HTTP-Only inställningen krypterade programproxyn och skickade cookies via en säker TLS-kanal för att skydda mot ändring. | Använd **Ja** på grund av de ytterligare säkerhets fördelarna.<br></br><br></br>Använd **Nej** för klienter eller användar agenter som behöver åtkomst till sessions-cookien. Använd till exempel **Nej** för en RDP-eller MTSC-klient som ansluter till en server för fjärrskrivbordsgateway via programproxyn.|
 | Använd säker cookie | **Nej** | **Ja** låter programproxyn ta med säker flagga i HTTP-svarshuvuden. Säkra cookies ökar säkerheten genom att skicka cookies via en säker TLS-kanal, till exempel HTTPS. Detta förhindrar att cookies observeras av obehöriga parter på grund av överföring av cookien i klartext. | Använd **Ja** på grund av de ytterligare säkerhets fördelarna.|
@@ -52,7 +52,7 @@ Ange cookie-inställningar med hjälp av Azure Portal:
 2. Gå till **Azure Active Directory**   >  **företags program**   >  **alla program**.
 3. Välj det program som du vill aktivera en cookie-inställning för.
 4. Klicka på **Application Proxy**.
-5. Under **ytterligare inställningar**ställer du in cookie-inställningen på **Ja** eller **Nej**.
+5. Under **ytterligare inställningar** ställer du in cookie-inställningen på **Ja** eller **Nej**.
 6. Klicka på **Spara** för att tillämpa dina ändringar. 
 
 ## <a name="view-current-cookie-settings---powershell"></a>Visa aktuella cookie-inställningar – PowerShell

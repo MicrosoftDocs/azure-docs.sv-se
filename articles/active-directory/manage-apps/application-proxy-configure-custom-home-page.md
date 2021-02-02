@@ -4,7 +4,7 @@ description: Beskriver grunderna för Azure AD-programproxy-kopplingar
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebef93455414c114fb60df9af8ebc629769a33e6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642069"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254436"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ange en anpassad start sida för publicerade appar med hjälp av Azure AD-programproxy
 
@@ -56,9 +56,9 @@ Du kan ställa in URL: en för start sidan antingen via Azure Portal eller genom
 Följ dessa steg om du vill ändra start sidans URL för din app via Azure AD-portalen:
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) som administratör.
-1. Välj **Azure Active Directory**och **Appregistreringar**. Listan över registrerade appar visas.
+1. Välj **Azure Active Directory** och **Appregistreringar**. Listan över registrerade appar visas.
 1. Välj din app i listan. En sida som visar information om den registrerade appen visas.
-1. Under **Hantera**väljer du **märkes anpassning**.
+1. Under **Hantera** väljer du **märkes anpassning**.
 1. Uppdatera **Start sidans URL**  med din nya sökväg.
 
    ![Anpassnings sida för en registrerad app som visar start sidans URL-fält](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
@@ -75,7 +75,7 @@ Om du vill konfigurera start sidan för en app med hjälp av PowerShell måste d
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Installera Azure AD PowerShell-modulen
 
-Innan du definierar en anpassad start sidas webb adress med PowerShell installerar du Azure AD PowerShell-modulen.Du kan hämta paketet från [PowerShell-galleriet](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16)som använder Graph API-slutpunkten.
+Innan du definierar en anpassad start sidas webb adress med PowerShell installerar du Azure AD PowerShell-modulen. Du kan hämta paketet från [PowerShell-galleriet](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16)som använder Graph API-slutpunkten.
 
 Följ dessa steg för att installera paketet:
 
@@ -115,8 +115,8 @@ Du får appens ObjectId genom att söka efter appen med dess visnings namn eller
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
    Alternativt kan du bara hämta listan över alla appar, söka i listan efter appen med ett särskilt visnings namn eller en start sida och kopiera appens ObjectId när appen har hittats.
@@ -169,8 +169,8 @@ Skapa URL: en för start sidan och uppdatera din app med det värdet. Fortsätt 
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
 1. Starta om appen för att bekräfta att start sidan visas som den första skärmen som förväntat.

@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: de6c7e47af3019d034d457f43334aad1aeafabdc
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678465"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254282"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Felsöka dedikerad SQL-pool (tidigare SQL DW) i Azure Synapse Analytics
 
@@ -76,6 +76,7 @@ Den här artikeln innehåller vanliga fel söknings problem i dedikerad SQL-pool
 | SQL Database data typer som inte stöds   | Se [data typer som inte stöds](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
 | Begränsningar för lagrade procedurer          | Se [begränsningar för lagrade](sql-data-warehouse-develop-stored-procedures.md#limitations) procedurer för att förstå vissa begränsningar för lagrade procedurer. |
 | UDF: er stöder inte SELECT-instruktioner | Detta är en aktuell begränsning i vår UDF: er.  Se [skapa funktion](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) för den syntax som vi stöder. |
+| sp_rename (för hands version) för kolumner fungerar inte i scheman utanför *dbo* | Detta är en aktuell begränsning i Synapse [sp_rename (för hands version) för kolumner](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Kolumner i objekt som inte är en del av *dbo* -schemat kan byta namn via en CTAs till en ny tabell. |
 
 ## <a name="next-steps"></a>Nästa steg
 

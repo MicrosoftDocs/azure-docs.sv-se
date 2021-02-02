@@ -4,7 +4,7 @@ description: Aktivera enkel inloggning för dina publicerade lokala program med 
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0cb2830c019635e9020a4b586bdc370450fddb0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165047"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254010"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Lösen ords valv för enkel inloggning med programproxy
 
@@ -62,7 +62,7 @@ Du bör redan ha publicerat och testat din app med Application Proxy. Annars fö
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
 -->
 
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 
 Gå till portalen Mina appar. Logga in med dina autentiseringsuppgifter (eller autentiseringsuppgifterna för ett test konto som du har konfigurerat med åtkomst). När du har loggat in klickar du på ikonen för appen. Detta kan utlösa installationen av tillägget Mina appar säker inloggnings webbläsare. Om din användare hade fördefinierade autentiseringsuppgifter ska autentiseringen till appen ske automatiskt, annars måste du ange användar namnet eller lösen ordet för första gången. 
 

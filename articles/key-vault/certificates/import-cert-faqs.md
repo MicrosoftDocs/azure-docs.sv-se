@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289512"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254367"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Vanliga frågor om import av Azure Key Vault-certifikat
 
@@ -47,7 +47,7 @@ Om du vill visa ett mer beskrivande fel importerar du certifikat filen med hjäl
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hur kan jag lösa "typ av fel: åtkomst nekad eller användare har inte behörighet att importera certifikat"?
     
-Import åtgärden kräver att du ger användar behörighet att importera certifikatet under åtkomst principerna. Det gör du genom att gå till ditt nyckel valv, välja **åtkomst principer**  >  **Lägg till åtkomst princip**  >  **Välj certifikat behörighets**  >  **objekt** , söka efter användaren och sedan lägga till användarens e-postadress. 
+Import åtgärden kräver att du ger användar behörighet att importera certifikatet under åtkomst principerna. Det gör du genom att gå till ditt nyckel valv, välja **åtkomst principer**  >  **Lägg till åtkomst princip**  >  **Välj certifikat behörighets**  >  **objekt**, söka efter användaren och sedan lägga till användarens e-postadress. 
 
 Mer information om certifikat-relaterade åtkomst principer finns i [om Azure Key Vault certifikat](./about-certificates.md#certificate-access-control).
 
@@ -62,6 +62,10 @@ Mer information finns i [Get Deleted Certificate-åtgärd](/rest/api/keyvault/ge
 Det här felet kan bero på någon av två anledningar:    
 * Certifikatets ämnes namn är begränsat till 200 tecken.
 * Certifikat lösen ordet är begränsat till 200 tecken.
+
+
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>Fel: det angivna PEM X. 509-certifikatets innehåll är i ett oväntat format. Kontrol lera att certifikatet har ett giltigt PEM-format. "
+Kontrol lera att innehållet i PEM-filen använder rad avgränsare i UNIX-format `(\n)`
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>Kan jag importera ett utgånget certifikat för att Azure Key Vault?
     

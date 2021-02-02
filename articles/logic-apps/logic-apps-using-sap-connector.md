@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786698"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252618"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -529,6 +529,18 @@ För fullständiga fel meddelanden kontrollerar du SAP-kortets utökade loggar. 
 
 För lokala data Gateway-versioner från juni 2020 och senare kan du [Aktivera Gateway-loggar i appinställningar](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app). 
 
+* Standard loggnings nivån är **Varning**.
+
+* Om du aktiverar  **ytterligare loggning** i **diagnostikinställningar** för den lokala datagateway-appen, ökar loggnings nivån till **information**.
+
+* Om du vill öka loggnings nivån till **verbose** uppdaterar du följande inställning i konfigurations filen. Vanligt vis finns konfigurations filen på `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` .
+
+```json
+<setting name="SapTraceLevel" serializeAs="String">
+   <value>Verbose</value>
+</setting>
+```
+
 För lokala data Gateway-versioner från april 2020 och tidigare inaktive ras loggar som standard.
 
 ### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>Utökad SAP-loggning i lokal datagateway
@@ -717,7 +729,7 @@ Här är ett exempel som visar hur du extraherar enskilda IDocs från ett paket 
 
 1. Innan du börjar måste du ha en Logic-app med en SAP-utlösare. Om du inte redan har den här Logic-appen följer du de föregående stegen i det här avsnittet för att [Konfigurera en Logic app med en SAP-utlösare](#receive-message-from-sap).
 
-   Ett exempel:
+   Exempel:
 
    ![Lägg till SAP-utlösare i Logic app](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 

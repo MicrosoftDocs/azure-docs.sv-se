@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster 
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 56d3b36d17ee044ce7aba2337429c45123801ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734672"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254520"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
 
@@ -24,7 +24,7 @@ Privat kluster är tillgängligt i offentliga regioner, Azure Government och Azu
 > [!NOTE]
 > Azure Government-platser stöds, men US Gov, Texas stöds inte för närvarande på grund av stöd för privata länkar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure CLI-version 2.2.0 eller senare
 * Tjänsten Private Link stöds endast på standard Azure Load Balancer. Basic-Azure Load Balancer stöds inte.  
@@ -74,7 +74,7 @@ Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
 2. "Ingen" innebär att AKS inte skapar någon Privat DNS zon.  Detta kräver att du tar med din egen DNS-server och konfigurerar DNS-matchning för det privata fullständiga domän namnet.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas inom agentens noder och kan orsaka kluster problem efter distributionen.
 3. "Namn på anpassad privat DNS-zon" ska vara i det här formatet för Azures globala moln: `privatelink.<region>.azmk8s.io` . Du behöver resurs-ID för den Privat DNS zonen.  Dessutom behöver du en användare som tilldelats identitets-eller tjänstens huvud namn med minst `private dns zone contributor` rollen som anpassad privat DNS-zon.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 * AKS Preview version 0.4.71 eller senare
 * API-version 2020-11-01 eller senare
@@ -130,7 +130,6 @@ Som nämnts är virtuell nätverks-peering ett sätt att komma åt ditt privata 
 * För kunder som behöver aktivera Azure Container Registry för att fungera med privata AKS måste det Container Registry virtuella nätverket vara peer-kopplat med agent klustrets virtuella nätverk.
 * Inget stöd för att konvertera befintliga AKS-kluster till privata kluster
 * Om du tar bort eller ändrar den privata slut punkten i kundens undernät kommer klustret att sluta fungera. 
-* Azure Monitor för behållar real tids data stöds inte för närvarande.
 * När kunderna har uppdaterat en post på sina egna DNS-servrar skulle dessa poddar fortfarande matcha apiserver FQDN till den äldre IP-adressen efter migreringen tills de startas om. Kunder måste starta om hostNetwork poddar och standard-DNSPolicy poddar efter kontroll Plans migreringen.
 * När det gäller underhåll i kontroll planet kan din [AKS-IP-adress](./limit-egress-traffic.md) ändras. I det här fallet måste du uppdatera en post som pekar på den privata IP-adressen för API-servern på din anpassade DNS-server och starta om anpassade poddar eller distributioner med hjälp av hostNetwork.
 

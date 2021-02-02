@@ -1,6 +1,6 @@
 ---
 title: Anslut Azure Active Directory data till Azure Sentinel | Microsoft Docs
-description: Lär dig att samla in data från Azure Active Directory och strömma inloggnings loggar för Azure AD och gransknings loggar i Azure Sentinel.
+description: Lär dig att samla in data från Azure Active Directory och strömma inloggnings-, gransknings-och etablerings loggar i Azure AD i Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,20 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: eb89d2a4e719e34ad5ea31656dc9e3c02472b07d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98802261"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99251989"
 ---
-# <a name="connect-data-from-azure-active-directory-azure-ad"></a>Anslut data från Azure Active Directory (Azure AD)
+# <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Anslut Azure Active Directory (Azure AD)-data till Azure Sentinel
 
-Du kan använda Azure Sentinels inbyggda koppling för att samla in data från [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) och strömma dem till Azure Sentinel. Med anslutnings programmet kan du strömma [inloggnings loggar](../active-directory/reports-monitoring/concept-sign-ins.md) och [gransknings loggar](../active-directory/reports-monitoring/concept-audit-logs.md).
+Du kan använda Azure Sentinels inbyggda koppling för att samla in data från [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) och strömma dem till Azure Sentinel. Med anslutnings programmet kan du strömma följande logg typer:
 
+- [**Inloggnings loggar**](../active-directory/reports-monitoring/concept-all-sign-ins.md)som innehåller information om [interaktiva användar inloggningar](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins) där en användare tillhandahåller en autentiseringsnivå.
+
+    Azure AD Connector innehåller nu följande tre ytterligare kategorier med inloggnings loggar, som för närvarande finns i för **hands version**:
+    
+    - [**Inloggnings loggar som inte är interaktiva**](../active-directory/reports-monitoring/concept-all-sign-ins.md#non-interactive-user-sign-ins), som innehåller information om inloggningar som utförs av en klient för en användares räkning utan någon interaktion eller autentisering från användaren.
+    
+    - [**Inloggnings loggar för tjänstens huvud namn**](../active-directory/reports-monitoring/concept-all-sign-ins.md#service-principal-sign-ins)som innehåller information om inloggningar av appar och tjänst huvud namn som inte omfattar någon användare. I dessa inloggningar ger appen eller tjänsten en autentiseringsuppgift för det egna ombudet att autentisera eller komma åt resurser.
+    
+    - [**Inloggnings loggar för hanterade identiteter**](../active-directory/reports-monitoring/concept-all-sign-ins.md#managed-identity-for-azure-resources-sign-ins), som innehåller information om inloggningar av Azure-resurser som har hemligheter som hanteras av Azure. Mer information finns i [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md)
+
+- [**Gransknings loggar**](../active-directory/reports-monitoring/concept-audit-logs.md), som innehåller information om system aktivitet som rör användar-och grupp hantering, hanterade program och katalog aktiviteter.
+
+- [**Etablerings loggar**](../active-directory/reports-monitoring/concept-provisioning-logs.md) (även i för **hands version**), som innehåller system aktivitets information om användare, grupper och roller som tillhandahålls av Azure AD Provisioning-tjänsten. 
+
+> [!IMPORTANT]
+> Som anges ovan är några av de tillgängliga logg typerna för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Du måste ha en [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) -prenumeration för att mata in inloggnings loggar i Azure Sentinel. Ytterligare per GB-kostnader kan tillkomma för Azure Monitor (Log Analytics) och Azure Sentinel.
+- Alla Azure AD-licenser (ledig/O365/P1/P2) räcker för att mata in inloggnings loggar i Azure Sentinel. Ytterligare per GB-kostnader kan tillkomma för Azure Monitor (Log Analytics) och Azure Sentinel.
 
 - Användaren måste tilldelas rollen Azure Sentinel Contributor på arbets ytan.
 
@@ -42,10 +58,7 @@ Du kan använda Azure Sentinels inbyggda koppling för att samla in data från [
 
 1. I data kopplings galleriet väljer du **Azure Active Directory** och väljer sedan **Öppna kopplings sida**.
 
-1. Markera kryss rutorna bredvid de logg typer som du vill strömma till i Azure Sentinel och klicka på **Anslut**. Detta är de logg typer som du kan välja mellan:
-
-    - **Inloggnings loggar**: information om användningen av hanterade program och användar inloggnings aktiviteter.
-    - **Gransknings loggar**: system aktivitets information om användar-och grupp hantering, hanterade program och katalog aktiviteter.
+1. Markera kryss rutorna bredvid de logg typer som du vill strömma till Azure Sentinel (se ovan) och klicka på **Anslut**.
 
 ## <a name="find-your-data"></a>Hitta dina data
 
@@ -53,6 +66,10 @@ När en lyckad anslutning har upprättats visas data i **loggarna** under avsnit
 
 - `SigninLogs`
 - `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
 
 Om du vill fråga Azure AD-loggarna anger du det relevanta tabell namnet överst i frågefönstret.
 

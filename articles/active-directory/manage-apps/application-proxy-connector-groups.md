@@ -3,7 +3,7 @@ title: Publicera appar i separata nätverk via anslutnings grupper – Azure AD
 description: Beskriver hur du skapar och hanterar grupper med kopplingar i Azure AD-programproxy.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ca42137192fefbc669fca775b0deff2f5226c5c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764731"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253840"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publicera program i separata nätverk och platser med anslutnings grupper
 
@@ -32,7 +32,7 @@ Alla program har tilldelats en kopplings grupp. Om du inte skapar grupper tillde
 > [!TIP]
 > Om du har en stor Application Proxy-distribution ska du inte tilldela några program till standard anslutnings gruppen. På så sätt tar nya anslutningar inte emot någon Live-trafik förrän du tilldelar dem till en aktiv anslutnings grupp. Den här konfigurationen gör det också möjligt att placera anslutningar i ett inaktivt läge genom att flytta tillbaka dem till standard gruppen så att du kan utföra underhåll utan att påverka användarna.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill gruppera dina anslutningar måste du kontrol lera att du har [installerat flera kopplingar](application-proxy-add-on-premises-application.md). När du installerar en ny anslutning kopplas den automatiskt till **standard** anslutnings gruppen.
 
@@ -41,7 +41,7 @@ Om du vill gruppera dina anslutningar måste du kontrol lera att du har [install
 Använd de här stegen för att skapa så många kopplings grupper du vill.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **Azure Active Directory**  >  **Enterprise applications**  >  **programproxy**för företags program.
+1. Välj **Azure Active Directory**  >    >  **programproxy** för företags program.
 1. Välj **ny anslutnings grupp**. Bladet ny kopplings grupp visas.
 
    ![Visar skärmen för att välja en ny anslutnings grupp](./media/application-proxy-connector-groups/new-group.png)

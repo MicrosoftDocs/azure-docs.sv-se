@@ -3,7 +3,7 @@ title: Använd klient begränsningar för att hantera åtkomst till SaaS-appar �
 description: Så här använder du klient begränsningar för att hantera vilka användare som kan komma åt appar baserade på deras Azure AD-klient.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f605b2bb48855d70ea305dcda194b26da71ee9ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286211"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252482"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram
 
@@ -33,13 +33,13 @@ Den här artikeln fokuserar på klient begränsningar för Microsoft 365, men fu
 
 Den övergripande lösningen består av följande komponenter:
 
-1. **Azure AD** : om `Restrict-Access-To-Tenants: <permitted tenant list>` huvudet finns utfärdar bara säkerhetstoken för de tillåtna klienterna i Azure AD.
+1. **Azure AD**: om `Restrict-Access-To-Tenants: <permitted tenant list>` huvudet finns utfärdar bara säkerhetstoken för de tillåtna klienterna i Azure AD.
 
-2. **Lokal Proxy Server-infrastruktur** : den här infrastrukturen är en proxy-enhet som kan Transport Layer Security (TLS). Du måste konfigurera proxyn så att den infogar rubriken som innehåller listan över tillåtna klienter i trafik som är avsedda för Azure AD.
+2. **Lokal Proxy Server-infrastruktur**: den här infrastrukturen är en proxy-enhet som kan Transport Layer Security (TLS). Du måste konfigurera proxyn så att den infogar rubriken som innehåller listan över tillåtna klienter i trafik som är avsedda för Azure AD.
 
-3. **Klient program vara** : för att ge stöd för klient begränsningar måste klient programmet begära token direkt från Azure AD, så att proxyn kan fånga trafik. Webbläsarbaserade Microsoft 365-program har för närvarande stöd för klient begränsningar, som Office-klienter som använder modern autentisering (t. ex. OAuth 2,0).
+3. **Klient program vara**: för att ge stöd för klient begränsningar måste klient programmet begära token direkt från Azure AD, så att proxyn kan fånga trafik. Webbläsarbaserade Microsoft 365-program har för närvarande stöd för klient begränsningar, som Office-klienter som använder modern autentisering (t. ex. OAuth 2,0).
 
-4. **Modern autentisering** : moln tjänster måste använda modern autentisering för att använda klient begränsningar och blockera åtkomst till alla icke-tillåtna klienter. Du måste konfigurera Microsoft 365 moln tjänster för att använda moderna autentiseringsprotokoll som standard. Den senaste informationen om Microsoft 365 stöd för modern autentisering finns i [uppdaterad Office 365 modern Authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Modern autentisering**: moln tjänster måste använda modern autentisering för att använda klient begränsningar och blockera åtkomst till alla icke-tillåtna klienter. Du måste konfigurera Microsoft 365 moln tjänster för att använda moderna autentiseringsprotokoll som standard. Den senaste informationen om Microsoft 365 stöd för modern autentisering finns i [uppdaterad Office 365 modern Authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 Följande diagram illustrerar trafikflödet på hög nivå. Klient begränsningar kräver endast TLS-inspektion på trafik till Azure AD, inte för Microsoft 365 moln tjänster. Den här skillnaden är viktig eftersom trafik volymen för autentisering till Azure AD vanligt vis är mycket lägre än trafik volym till SaaS-program som Exchange Online och SharePoint Online.
 
@@ -57,7 +57,7 @@ Om du vill använda klient begränsningar måste klienterna kunna ansluta till f
 
 Följande konfiguration krävs för att aktivera klient begränsningar via proxyservern för infrastrukturen. Den här vägledningen är generisk, så du bör läsa dokumentationen för proxy-leverantören för att få detaljerade implementerings steg.
 
-#### <a name="prerequisites"></a>Krav
+#### <a name="prerequisites"></a>Förutsättningar
 
 - Proxyn måste kunna utföra TLS-avlyssning, infoga HTTP-huvud och filtrera mål med hjälp av FQDN/URL: er.
 
@@ -126,7 +126,7 @@ Precis som med andra rapporter i Azure Portal kan du använda filter för att an
 - **MFA auth-information** (information om multifaktorautentisering)
 - **MFA-resultat**
 - **IP-adress**
-- **Klientsession**
+- **Klient**
 - **Användarnamn**
 - **Plats**
 - **Mål klient-ID**

@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: c11bb0e369075c3024824d65290e8aecfa68e6f4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 1/28/2020
+ms.openlocfilehash: 7e58daf72522071eb7d0031d4ea236a21c6d8bfb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956148"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252329"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Ta med din egen nyckel (Kundhanterade nycklar) med Media Services
 
@@ -36,6 +36,12 @@ Du kan ange ett nyckel namn och en nyckel version, eller bara ett nyckel namn. O
 
 > [!WARNING]
 > Media Services övervakar åtkomsten till kund nyckeln. Om kund nyckeln blir otillgänglig (t. ex. om nyckeln har tagits bort eller om Key Vault har tagits bort eller om åtkomst tilldelningen har tagits bort), kommer Media Services att överföra kontot till status för kund nyckel otillgängligt (inaktive ring av kontot). Kontot kan dock tas bort i det här läget. De enda åtgärder som stöds är kontona GET, LIST och DELETE. alla andra begär Anden (kodning, direkt uppspelning och så vidare) kommer inte att fungera förrän åtkomst till konto nyckeln har återställts.
+
+## <a name="double-encryption"></a>Dubbel kryptering
+
+Media Services stöder Double Encryption.  Mer information om Double Encryption finns i [Azure Double Encryption](../../security/fundamentals/double-encryption.md).
+
+Dubbel kryptering aktive ras automatiskt på Media Services kontot. Du måste dock konfigurera kundens hanterade nyckel och dubbel kryptering på ditt lagrings konto separat.
 
 ## <a name="tutorials"></a>Självstudier
 
