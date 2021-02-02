@@ -3,18 +3,20 @@ title: Övervaka prestanda på virtuella Azure-datorer – Azure Application ins
 description: Övervakning av program prestanda för virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer. Diagrammets inläsnings-och svars tid, beroende information och ange aviseringar för prestanda.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 0ea005427348e5265867a9e7ee805b0e6aa202f2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 01583cf5ecb85e4f66538afaba6984bff455ea99
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933908"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475462"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Distribuera Azure Monitor Application Insights-agenten på virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer
 
-Nu är det enklare än någonsin att aktivera övervakning av .NET-baserade webb program som körs på [virtuella Azure-datorer](https://azure.microsoft.com/services/virtual-machines/) och [skalnings uppsättningar för virtuella Azure](../../virtual-machine-scale-sets/index.yml) -datorer. Få alla fördelar med att använda Application Insights utan att ändra koden.
+Nu är det enklare än någonsin att aktivera övervakning av .NET-eller Java-baserade webb program som körs på [virtuella Azure-datorer](https://azure.microsoft.com/services/virtual-machines/) och [skalnings uppsättningar för virtuella Azure](../../virtual-machine-scale-sets/index.yml) -datorer. Få alla fördelar med att använda Application Insights utan att ändra koden.
 
 Den här artikeln vägleder dig genom att aktivera Application Insights övervakning med hjälp av Application Insights agent och ger preliminär vägledning för att automatisera processen för storskalig distribution.
+> [!IMPORTANT]
+> **Java** -baserade program som körs på virtuella Azure-datorer och VMSS övervakas med **[Application Insights Java 3,0-agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)**, som är allmänt tillgänglig.
 
 > [!IMPORTANT]
 > Azure Application Insights-agenten för ASP.NET-program som körs på **virtuella Azure-datorer och VMSS** är för närvarande en offentlig för hands version. För att övervaka dina ASP.Net-program som körs **lokalt** använder du [Azure Application Insights-agenten för lokala servrar](./status-monitor-v2-overview.md), som är allmänt tillgänglig och fullt stöd.
@@ -25,23 +27,47 @@ Den här artikeln vägleder dig genom att aktivera Application Insights övervak
 
 Det finns två sätt att aktivera program övervakning för virtuella Azure-datorer och värdbaserade program för skalnings uppsättningar för virtuella Azure-datorer:
 
-* **Kod** till via Application Insights agent
-    * Den här metoden är det enklaste sättet att aktivera, och ingen Avancerad konfiguration krävs. Det kallas ofta övervakning av körnings miljön.
+### <a name="auto-inctrumentation-via-application-insights-agent"></a>Auto-inctrumentation via Application Insights agent
 
-    * För virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer rekommenderar vi att du minst aktiverar den här övervaknings nivån. Efter det, baserat på ditt speciella scenario, kan du utvärdera om du behöver manuell Instrumentation.
+* Den här metoden är det enklaste sättet att aktivera, och ingen Avancerad konfiguration krävs. Det kallas ofta övervakning av körnings miljön.
 
-    * Application Insights agenten automatiskt samlar in samma beroende signaler som är färdiga som .NET SDK. Mer information finns i [beroende automatisk insamling](./auto-collect-dependencies.md#net) .
-        > [!NOTE]
-        > För närvarande stöds endast .NET IIS-värdbaserade program. Använd ett SDK för att instrumentera ASP.NET Core-, Java-och Node.js-program som finns på en virtuell Azure-dator och skalnings uppsättningar för virtuella datorer.
-
-* **Kod baserad** via SDK
-
-    * Den här metoden är mycket mer anpassningsbar, men kräver [att du lägger till ett beroende på Application Insights SDK NuGet-paket](./asp-net.md). Den här metoden innebär också att du måste hantera uppdateringarna till den senaste versionen av paketen själv.
-
-    * Om du behöver göra anpassade API-anrop för att spåra händelser/beroenden som inte har registrerats som standard med en agent-baserad övervakning, behöver du använda den här metoden. Mer information finns i [artikeln om API för anpassade händelser och mått](./api-custom-events-metrics.md) .
+* För virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer rekommenderar vi att du minst aktiverar den här övervaknings nivån. Efter det, baserat på ditt speciella scenario, kan du utvärdera om du behöver manuell Instrumentation.
 
 > [!NOTE]
-> Om både agentbaserade övervakning och manuellt SDK-baserad Instrumentation identifieras, kommer de manuella Instrumentation inställningarna att påverkas. Detta är för att förhindra att duplicerade data skickas. Mer information om det här finns i [fel söknings avsnittet](#troubleshooting) nedan.
+> Automatisk Instrumentation är för närvarande endast tillgängligt för .NET IIS-värdbaserade program och Java. Använd ett SDK för att instrumentera ASP.NET Core-, Node.js-och python-program som finns på en virtuell Azure-dator och skalnings uppsättningar för virtuella datorer.
+
+
+#### <a name="net"></a>.NET
+
+  * Application Insights agenten automatiskt samlar in samma beroende signaler som är färdiga som .NET SDK. Mer information finns i [beroende automatisk insamling](./auto-collect-dependencies.md#net) .
+        
+#### <a name="java"></a>Java
+  * För Java är **[Application Insights Java 3,0-agenten](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** den rekommenderade metoden. De mest populära biblioteken och ramverken, samt loggar och beroenden, [samlas in automatiskt](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics)med en mängd [ytterligare konfigurationer](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)
+
+### <a name="code-based-via-sdk"></a>Kod baserad via SDK
+    
+#### <a name="net"></a>.NET
+  * För .NET-appar är den här metoden mycket mer anpassningsbar, men det kräver [att du lägger till ett beroende på Application Insights SDK NuGet-paketen](./asp-net.md). Den här metoden innebär också att du måste hantera uppdateringarna till den senaste versionen av paketen själv.
+
+  * Om du behöver göra anpassade API-anrop för att spåra händelser/beroenden som inte har registrerats som standard med en agent-baserad övervakning, behöver du använda den här metoden. Mer information finns i [artikeln om API för anpassade händelser och mått](./api-custom-events-metrics.md) .
+
+    > [!NOTE]
+    > Endast för .NET-appar – om både agentbaserade övervakning och manuellt SDK-baserad Instrumentation identifieras, kommer inställningarna för manuell Instrumentation att tillämpas. Detta är för att förhindra att duplicerade data skickas. Mer information om det här finns i [fel söknings avsnittet](#troubleshooting) nedan.
+
+#### <a name="net-core"></a>.NET Core
+Använd [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) för att övervaka .net Core-program 
+
+#### <a name="java"></a>Java 
+
+Om du behöver ytterligare anpassad telemetri för Java-program, se vad [som är tillgängligt](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application), Lägg till [anpassade dimensioner](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions)eller använda [telemetri-processorer](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors). 
+
+#### <a name="nodejs"></a>Node.js
+
+Använd [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)för att instrumentera ditt Node.js program.
+
+#### <a name="python"></a>Python
+
+Använd [SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)för att övervaka python-appar.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Hantera Application Insights agent för .NET-program på virtuella Azure-datorer med PowerShell
 
@@ -168,7 +194,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Hitta fel söknings tips för Application Insights Monitoring Agent-tillägg för .NET-program som körs på virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer.
 
 > [!NOTE]
-> .NET Core-, Java-och Node.js-program stöds bara på virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer via manuell SDK-baserad Instrumentation, och därför gäller inte stegen nedan för dessa scenarier.
+> .NET Core-, Node.js-och python-program stöds bara på virtuella Azure-datorer och skalnings uppsättningar för virtuella Azure-datorer via manuell SDK-baserad Instrumentation, och därför gäller inte stegen nedan för dessa scenarier.
 
 Utökning av utdata loggas till filer som finns i följande kataloger:
 ```Windows

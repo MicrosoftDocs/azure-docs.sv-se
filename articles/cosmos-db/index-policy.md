@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681658"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475108"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsprinciper i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,10 +42,7 @@ I Azure Cosmos DB är den totala förbrukade lagringen kombinationen av både da
 
 * Index storleken beror på indexerings principen. Om alla egenskaper är indexerade kan index storleken vara större än data storleken.
 * När data tas bort komprimeras indexen på en nästan kontinuerlig basis. För att ta bort små data kan du dock inte omedelbart Observera en minskning av index storleken.
-* Index storleken kan växa i följande fall:
-
-  * Varaktighet för partitions delning – index utrymmet släpps efter att partitionens delning har slutförts.
-  * När en partition delas, ökar index utrymmet tillfälligt när partitionen delas. 
+* Index storleken kan tillfälligt växa när fysiska partitioner delas. Index utrymmet släpps efter att partitionens delning har slutförts.
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Inklusive och exklusive egenskaps Sök vägar
 
@@ -186,33 +183,35 @@ Du bör anpassa indexerings principen så att du kan hantera alla nödvändiga `
 
 Om en fråga har filter på två eller fler egenskaper kan det vara bra att skapa ett sammansatt index för dessa egenskaper.
 
-Överväg till exempel följande fråga som har ett likhets filter för två egenskaper:
+Överväg till exempel följande fråga som har både ett likhets-och Range-filter:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18
 ```
 
-Den här frågan är mer effektiv, tar mindre tid och använder färre RU-objekt, om det går att använda ett sammansatt index på (namn ASC, ålder ASC).
+Den här frågan är mer effektiv, tar mindre tid och använder färre RU-objekt, om det går att använda ett sammansatt index på `(name ASC, age ASC)` .
 
-Frågor med intervall filter kan också optimeras med ett sammansatt index. Frågan kan dock bara ha ett enda intervall filter. Intervall filter är,,,, `>` `<` `<=` `>=` och `!=` . Range-filtret bör definieras sist i det sammansatta indexet.
+Frågor med flera intervall filter kan också optimeras med ett sammansatt index. Varje enskilt sammansatt index kan dock bara optimera ett enda intervall filter. Intervall filter är,,,, `>` `<` `<=` `>=` och `!=` . Range-filtret bör definieras sist i det sammansatta indexet.
 
-Tänk på följande fråga med både likhets-och intervall filter:
+Tänk på följande fråga med ett likhets filter och två intervall filter:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-Den här frågan är mer effektiv med ett sammansatt index på (namn ASC, ålder ASC). Frågan skulle dock inte använda ett sammansatt index på (ålder ASC, Name ASC) eftersom likhets filtren måste definieras först i det sammansatta indexet.
+Den här frågan är mer effektiv med ett sammansatt index på `(name ASC, age ASC)` och `(name ASC, _ts ASC)` . Frågan skulle dock inte använda ett sammansatt index på `(age ASC, name ASC)` eftersom egenskaperna med likhets filter måste definieras först i det sammansatta indexet. Två separata sammansatta index krävs i stället för ett enda sammansatt index på `(name ASC, age ASC, _ts ASC)` eftersom varje sammansatt index bara kan optimera ett enskilt intervall filter.
 
 Följande överväganden används när du skapar sammansatta index för frågor med filter för flera egenskaper
 
+- Filter uttryck kan använda flera sammansatta index.
 - Egenskaperna i frågans filter ska matcha dem i sammansatt index. Om en egenskap finns i det sammansatta indexet men inte ingår i frågan som ett filter, används inte det sammansatta indexet i frågan.
 - Om en fråga har ytterligare egenskaper i filtret som inte har definierats i ett sammansatt index, kommer en kombination av sammansatta och intervall index att användas för att utvärdera frågan. Detta kräver färre RU: s än uteslutande med intervall index.
-- Om en egenskap har ett intervall filter ( `>` ,,, `<` `<=` `>=` eller `!=` ), ska den här egenskapen definieras sist i det sammansatta indexet. Om en fråga har fler än ett intervall filter, används inte det sammansatta indexet.
+- Om en egenskap har ett intervall filter ( `>` ,,, `<` `<=` `>=` eller `!=` ), ska den här egenskapen definieras sist i det sammansatta indexet. Om en fråga har fler än ett intervall filter kan det ha nytta av flera sammansatta index.
 - När du skapar ett sammansatt index för att optimera frågor med flera filter påverkas `ORDER` inte resultatet av det sammansatta indexet. Den här egenskapen är valfri.
-- Om du inte definierar ett sammansatt index för en fråga med filter på flera egenskaper kommer frågan fortfarande att lyckas. RU-kostnaden för frågan kan dock minskas med ett sammansatt index.
-- Frågor med båda agg regeringar (till exempel COUNT eller SUM) och filter drar också fördel av sammansatta index.
-- Filter uttryck kan använda flera sammansatta index.
 
 Tänk på följande exempel där ett sammansatt index definieras för egenskaper, ålder och tidsstämpel:
 
@@ -227,43 +226,76 @@ Tänk på följande exempel där ett sammansatt index definieras för egenskaper
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 | ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Frågor med ett filter och en ORDER BY-sats
+### <a name="queries-with-a-filter-and-order-by"></a>Frågor med filter och sortera efter
 
 Om en fråga filtrerar på en eller flera egenskaper och har olika egenskaper i ORDER BY-satsen kan det vara bra att lägga till egenskaperna i filtret till- `ORDER BY` satsen.
 
-Genom att till exempel lägga till egenskaperna i filtret till ORDER BY-satsen kan följande fråga skrivas om för att utnyttja ett sammansatt index:
+Genom att till exempel lägga till egenskaperna i filtret till `ORDER BY` -satsen kan följande fråga skrivas om för att utnyttja ett sammansatt index:
 
 Fråga med intervall index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+SELECT *
+FROM c 
+WHERE c.name = "John" 
+ORDER BY c.timestamp
 ```
 
 Fråga med sammansatt index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John"
+ORDER BY c.name, c.timestamp
 ```
 
-Samma mönster och fråge optimeringar kan generaliseras för frågor med flera likhets filter:
+Samma optimering av frågor kan generaliseras för alla `ORDER BY` frågor med filter, och det bör vara viktigt att enskilda sammansatta index bara har stöd för ett intervall filter.
 
 Fråga med intervall index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.timestamp
 ```
 
 Fråga med sammansatt index:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.name, c.age, c.timestamp
+```
+
+Dessutom kan du använda sammansatta index för att optimera frågor med system funktioner och sortera efter:
+
+Fråga med intervall index:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.lastName
+```
+
+Fråga med sammansatt index:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.firstName, c.lastName
 ```
 
 Följande överväganden används när du skapar sammansatta index för att optimera en fråga med en filter-och- `ORDER BY` sats:
 
-* Om frågan filtreras efter egenskaper bör dessa tas med först i- `ORDER BY` satsen.
-* Om frågan filtrerar på flera egenskaper måste likhets filtren vara de första egenskaperna i `ORDER BY` satsen
 * Om du inte definierar ett sammansatt index för en fråga med ett filter på en egenskap och en separat `ORDER BY` sats med en annan egenskap, kommer frågan fortfarande att lyckas. RU-kostnaden för frågan kan dock minskas med ett sammansatt index, särskilt om egenskapen i- `ORDER BY` satsen har en hög kardinalitet.
+* Om frågan filtreras efter egenskaper bör dessa tas med först i- `ORDER BY` satsen.
+* Om frågan filtrerar på flera egenskaper måste likhets filtren vara de första egenskaperna i- `ORDER BY` satsen.
+* Om frågan filtrerar på flera egenskaper kan du ha maximalt ett intervall filter eller använda systemfunktionen per sammansatt index. Den egenskap som används i intervall filtret eller systemfunktionen ska definieras sist i det sammansatta indexet.
 * Alla överväganden för att skapa sammansatta index för `ORDER BY` frågor med flera egenskaper och frågor med filter för flera egenskaper gäller fortfarande.
 
 
@@ -276,6 +308,7 @@ Följande överväganden används när du skapar sammansatta index för att opti
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
 
 ## <a name="modifying-the-indexing-policy"></a>Ändra indexerings principen
 

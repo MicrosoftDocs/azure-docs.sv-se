@@ -4,16 +4,16 @@ description: Lär dig att identifiera, diagnostisera och felsöka Azure Cosmos D
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905119"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475734"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Felsöka problem med frågor när du använder Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,6 +62,8 @@ Se följande avsnitt för att förstå relevanta optimeringar av frågor för di
 - [Inkludera nödvändiga sökvägar i indexerings principen.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Förstå vilka system funktioner som använder indexet.](#understand-which-system-functions-use-the-index)
+
+- [Förbättra körningen av sträng system funktionen.](#improve-string-system-function-execution)
 
 - [Förstå vilka mängd frågor som använder indexet.](#understand-which-aggregate-queries-use-the-index)
 
@@ -198,10 +200,11 @@ Du kan när som helst lägga till egenskaper till indexerings principen, utan n�
 
 De flesta system Functions använder index. Här är en lista över några vanliga sträng funktioner som använder index:
 
-- STARTSWITH (str_expr1, str_expr2, bool_expr)  
-- INNEHÅLLER (str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- DEL sträng (str_expr, num_expr, num_expr) = str_expr, men endast om den första num_expr är 0
+- StartsWith
+- Innehåller
+- RegexMatch
+- Vänster
+- Del sträng – men endast om det första num_expr är 0
 
 Nedan följer några vanliga system funktioner som inte använder indexet och som måste läsa in varje dokument:
 
@@ -210,11 +213,21 @@ Nedan följer några vanliga system funktioner som inte använder indexet och so
 | ÖVRE/NEDRE                             | I stället för att använda systemfunktionen för att normalisera data för jämförelser normaliserar du höljet vid infogning. En fråga som ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` blir ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematiska funktioner (icke-mängder) | Om du behöver beräkna ett värde ofta i din fråga bör du lagra värdet som en egenskap i JSON-dokumentet. |
 
-------
+### <a name="improve-string-system-function-execution"></a>Förbättra körning av sträng system funktion
 
-Om en systemfunktion använder index och fortfarande har en hög RU-avgift kan du försöka lägga till `ORDER BY` i frågan. I vissa fall kan lägga till `ORDER BY` förbättra användningen av systemfunktions index, särskilt om frågan körs länge eller sträcker sig över flera sidor.
+För vissa system funktioner som använder index kan du förbättra frågekörningen genom att lägga till en `ORDER BY` sats i frågan. 
 
-Överväg till exempel nedanstående fråga med `CONTAINS` . `CONTAINS` bör använda ett index, men vi vill att när du har lagt till det relevanta indexet, observerar du fortfarande en mycket hög RU-avgift när du kör frågan nedan:
+Mer specifikt, alla systemfunktioner vars RU-avgift ökar när egenskapens kardinalitet ökar kan dra nytta av `ORDER BY` frågan. Dessa frågor gör en indexs ökning, så att frågeresultatet kan göra frågan mer effektiv.
+
+Den här optimeringen kan förbättra körningen för följande system funktioner:
+
+- StartsWith (där Skift läges okänslig = sant)
+- StringEquals (där Skift läges okänslig = sant)
+- Innehåller
+- RegexMatch
+- EndsWith
+
+Överväg till exempel nedanstående fråga med `CONTAINS` . `CONTAINS` använder index men ibland, även efter att du har lagt till det relevanta indexet, kan du fortfarande se en mycket hög RU-avgift när du kör frågan nedan.
 
 Ursprunglig fråga:
 
@@ -224,13 +237,32 @@ FROM c
 WHERE CONTAINS(c.town, "Sea")
 ```
 
-Uppdaterade fråga med `ORDER BY` :
+Du kan förbättra frågekörningen genom att lägga till `ORDER BY` :
 
 ```sql
 SELECT *
 FROM c
 WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
+```
+
+Samma optimering kan hjälpa i frågor med ytterligare filter. I det här fallet är det bäst att även lägga till egenskaper med likhets filter till- `ORDER BY` satsen.
+
+Ursprunglig fråga:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+Du kan förbättra frågekörningen genom att lägga till `ORDER BY` och [ett sammansatt index](index-policy.md#composite-indexes) för (c.Name, c. stad):
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
 ```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Förstå vilka mängd frågor som använder indexet

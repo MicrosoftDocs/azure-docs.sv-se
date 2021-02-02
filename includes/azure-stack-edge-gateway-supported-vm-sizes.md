@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 9ea5fb26a52c967c5296f1a83976e748c86c9e18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763883"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475058"
 ---
-Storleken på den virtuella datorn avgör hur mycket beräkningsresurser (t.ex. CPU, GPU och minne) som är tillgängligt för den virtuella datorn. Virtuella datorer måste skapas med en virtuell dator med lämplig storlek för arbetsbelastningen. Även om alla datorer ska köras på samma maskin vara, har dator storlekarna olika begränsningar för disk åtkomst, som kan hjälpa dig att hantera den totala disk åtkomsten över dina virtuella datorer. Om arbetsbelastningen ökar kan man även ändra storlek på den befintliga virtuella datorn.
+Storleken på den virtuella datorn avgör hur mycket data bearbetnings resurser (t. ex. processor, GPU och minne) som görs tillgängliga för den virtuella datorn. Du bör skapa virtuella datorer med hjälp av en storlek på den virtuella datorn som är lämplig för arbets belastningen. Även om alla datorer ska köras på samma maskin vara, har dator storlekarna olika begränsningar för disk åtkomst. Detta kan hjälpa dig att hantera den totala disk åtkomsten över dina virtuella datorer. Om en arbets belastning ökar kan du också ändra storlek på en befintlig virtuell dator.
 
-Följande virtuella datorer stöds för att skapas på Azure Stack Edge-enhet.
+Följande virtuella datorer stöds för att skapas på din Azure Stack Edge-enhet.
 
 ### <a name="dv2-series"></a>Dv2-serien
 |Storlek     |Virtuell processor     |Minne (GiB) | Resurs disk storlek (GiB)  | OS-diskens storlek (GiB) | Maximalt antal datadiskar | Maximalt antal nätverkskort |
@@ -40,7 +40,7 @@ Följande virtuella datorer stöds för att skapas på Azure Stack Edge-enhet.
 |**Standard_DS13_v2**|8   |56  |112|32000 |1000 |16 |8 |
 
 
-Mer information finns i Dv2- [serien på generell användning VM-storlekar](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
+Mer information finns i [Dv2 och DSv2-serien](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
 
 ### <a name="ncast4_v3-series-preview"></a>NCasT4_v3-serien (för hands version)
 
@@ -51,7 +51,7 @@ Dessa storlekar stöds för GPU-datorer på enheten och är optimerade för ber�
 |**Standard_NC4as_T4_v3** |4   |28  |180   |1000|1 |16   |4 |
 |**Standard_NC8as_T4_v3** |8   |56  |360   |1000|1 |16  |8 |
 
-Mer information finns i [NCasT4_v3-serien på GPU-optimerade VM-storlekar](../articles/virtual-machines/nct4-v3-series.md).
+Mer information finns i [NCasT4_v3-serien](../articles/virtual-machines/nct4-v3-series.md).
 
 ### <a name="f-series"></a>F-serien
 
@@ -70,5 +70,5 @@ Dessa serier är optimerade för beräknings arbets belastningar och körs på I
 | Standard_F8s | 8 | 16 |32 |1000| 32 |  8 |
 | Standard_F16s | 16 | 32 |64 |1000| 64 |  8 |
 
-Mer information finns i [Fsv2-serien om Compute-optimerade VM-storlekar](../articles/virtual-machines/fsv2-series.md).
+Mer information finns i [Fsv2-Series](../articles/virtual-machines/fsv2-series.md).
 

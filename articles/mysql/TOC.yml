@@ -412,6 +412,10 @@
       items:
         - name: Vad är flexibel server?
           href: flexible-server/overview.md
+        - name: Versioner som stöds
+          href: flexible-server/concepts-supported-versions.md
+        - name: Beräkning och lagring
+          href: flexible-server/concepts-compute-storage.md
     - name: Snabbstarter
       expanded: true
       items:
@@ -437,93 +441,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-    - name: Självstudier
-      items:
-        - name: WordPress på Azure Kubernetes
-          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
-        - name: Skapa en PHP (Laravel)-app med en databas
-          href: flexible-server/tutorial-php-database-app.md
-        - name: Ansluta med en privat webbapp
-          href: flexible-server/tutorial-webapp-server-vnet.md
-    - name: Begrepp
-      items:
-        - name: Servrar
-          href: flexible-server/concept-servers.md
-        - name: Versioner som stöds
-          href: flexible-server/concepts-supported-versions.md
-        - name: Begränsningar
-          href: flexible-server/concepts-limitations.md
-        - name: Beräkning och lagring
-          href: flexible-server/concepts-compute-storage.md
-        - name: Nätverk
-          href: flexible-server/concepts-networking.md
-          displayName: 'virtual network, IP address, public access'
-        - name: Underhåll
-          href: flexible-server/concepts-maintenance.md
-        - name: Verksamhetskontinuitet
-          items:
-            - name: Översikt över affärskontinuitet
-              href: flexible-server/concepts-business-continuity.md
-            - name: Säkerhetskopiering och återställning
-              href: flexible-server/concepts-backup-restore.md
-            - name: Hög tillgänglighet
-              href: flexible-server/concepts-high-availability.md
-        - name: Övervakning och loggar
-          items:
-            - name: Serverparametrar
-              href: flexible-server/concepts-server-parameters.md
-            - name: Långsamma frågeloggar
-              href: flexible-server/concepts-slow-query-logs.md
-            - name: Granskningsloggar
-              href: flexible-server/concepts-audit-logs.md
-            - name: Mått
-              href: flexible-server/concepts-monitoring.md
-        - name: Replikering
-          items:
-            - name: Skrivskyddade repliker
-              href: flexible-server/concepts-read-replicas.md
-    - name: Anvisningar
-      items:
-        - name: Hantera en server
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
-              href: flexible-server/how-to-manage-server-cli.md
-        - name: Underhåll
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-maintenance-portal.md
-        - name: Stoppa/starta en server
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Återställ en server
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-restore-server-portal.md
-        - name: Hög tillgänglighet
-          items:
-            - name: Azure Portal
-              href: flexible-server/how-to-configure-high-availability.md
-        - name: Nätverk
-          items:
-            - name: Privat åtkomst (VNet-integrering)
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-manage-virtual-network-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-virtual-network-cli.md
-            - name: Offentlig åtkomst (tillåtna IP-adresser)
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-manage-firewall-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
-              items:
-                - name: Ansluta med TLS/SSL
-                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: Ansluta med TLS/SSL
+          href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurera serverparametrar
           items:
             - name: Azure Portal
@@ -532,32 +451,104 @@
             - name: Azure CLI
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
-        - name: Övervakning och loggar
-          items:
-            - name: Skapa aviseringar för mått
-              href: flexible-server/how-to-alert-on-metric.md
-            - name: Långsamma frågeloggar
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-            - name: Granskningsloggar
-              items:
-                - name: Azure Portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-        - name: Starta om servern
+        - name: Skapa databaser och användare
+          href: howto-create-users.md
+          displayName: users
+        - name: Övervaka Server
+          href: flexible-server/how-to-alert-on-metric.md
+    - name: Apputveckling
+      items:
+        - name: WordPress på Azure Kubernetes
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
+        - name: Skapa en PHP (Laravel)-app med en databas
+          href: flexible-server/tutorial-php-database-app.md
+        - name: Ansluta med en privat webbapp
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Serverhantering
+      items:
+        - name: Begrepp
+          href: flexible-server/concept-servers.md
+        - name: Serverparametrar
+          href: flexible-server/concepts-server-parameters.md
+        - name: Begränsningar
+          href: flexible-server/concepts-limitations.md
+        - name: Hantera en server
           items:
             - name: Azure Portal
-              href: flexible-server/how-to-restart-server-portal.md
-        - name: Replikering
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Stoppa/starta servern med Azure Portal
+          href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Starta om servern med Azure Portal
+          href: flexible-server/how-to-restart-server-portal.md
+    - name: Nätverk
+      items:
+        - name: Begrepp
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: Privat åtkomst (VNet-integrering)
           items:
-            - name: Skapa skrivskyddade repliker på Azure-portalen
+            - name: Konfigurera privat åtkomst med Azure Portal
+              href: flexible-server/how-to-manage-virtual-network-portal.md
+            - name: Konfigurera privat åtkomst med Azure CLI
+              href: flexible-server/how-to-manage-virtual-network-cli.md
+        - name: Offentlig åtkomst (tillåtna IP-adresser)
+          items:
+            - name: Konfigurera offentlig åtkomst med Azure Portal
+              href: flexible-server/how-to-manage-firewall-portal.md
+            - name: Konfigurera offentlig åtkomst med Azure CLI
+              href: flexible-server/how-to-manage-firewall-cli.md
+    - name: Underhåll av tjänst
+      items:
+        - name: Schemalagt underhåll
+          href: flexible-server/concepts-maintenance.md
+        - name: Konfigurera schemalagt underhåll med Azure Portal
+          href: flexible-server/how-to-maintenance-portal.md
+    - name: Hög tillgänglighet
+      items:
+        - name: Översikt över affärskontinuitet
+          href: flexible-server/concepts-business-continuity.md
+        - name: Hög tillgänglighet
+          href: flexible-server/concepts-high-availability.md
+        - name: Konfigurera hög tillgänglighet med hjälp av Azure Portal
+          href: flexible-server/how-to-configure-high-availability.md
+    - name: Övervakning och loggar
+      items:
+        - name: Begrepp
+          href: flexible-server/concepts-monitoring.md
+        - name: Långsamma Query-loggar
+          items:
+            - name: Begrepp
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Konfigurera långsamma Query-loggar med Azure Portal
+              href: flexible-server/how-to-configure-slow-query-logs-portal.md
+        - name: Granskningsloggar
+          items:
+            - name: Begrepp
+              href: flexible-server/concepts-audit-logs.md
+            - name: Konfigurera gransknings loggar
+              href: flexible-server/how-to-configure-audit-logs-portal.md
+    - name: Replikering
+      items:
+        - name: Skrivskyddade repliker
+          href: flexible-server/concepts-read-replicas.md
+        - name: Skapa Läs repliker
+          items:
+            - name: Skapa Läs repliker med Azure Portal
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: Skapa skrivskyddade repliker i Azure CLI
+            - name: Skapa Läs repliker med Azure CLI
               href: flexible-server/how-to-read-replicas-cli.md
-        - name: Felsöka
-          items:
-            - name: Anslutningsfel
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+    - name: Säkerhetskopiera & återställning
+      items:
+        - name: Begrepp
+          href: flexible-server/concepts-backup-restore.md
+        - name: Återställa en server med hjälp av Microsoft Azure-portalen
+          href: flexible-server/how-to-restore-server-portal.md
+    - name: Felsökning
+      items:
+        - name: Felsöka anslutnings fel
+          href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Migrering
   items:
     - name: Migrera data med mysqldump eller phpmyadmin

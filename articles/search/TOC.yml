@@ -246,6 +246,8 @@
               href: search-howto-index-json-blobs.md
             - name: Indexera krypterade blobar
               href: search-howto-index-encrypted-blobs.md
+            - name: Metadata-egenskaper för BLOB-innehåll
+              href: search-blob-metadata-properties.md
         - name: Azure-tabeller
           href: search-howto-indexing-azure-tables.md
         - name: Azure Cosmos DB

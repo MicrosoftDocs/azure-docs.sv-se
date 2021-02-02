@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780747"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475547"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Hämta loggar från IoT Edge-distributioner
 
@@ -51,8 +51,8 @@ Den här metoden accepterar en JSON-nyttolast med följande schema:
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -70,8 +70,8 @@ Den här metoden accepterar en JSON-nyttolast med följande schema:
 | ID | sträng | Ett reguljärt uttryck som tillhandahåller modulnamnet. Den kan matcha flera moduler på en Edge-enhet. [Reguljära uttrycks](/dotnet/standard/base-types/regular-expressions) format för .NET förväntas. |
 | filter | JSON-avsnitt | Logg filter som ska tillämpas på de moduler som matchar det `id` reguljära uttrycket i tuppeln. |
 | slutet | heltal | Antal logg rader tidigare att hämta från den senaste. Valfritt. |
-| Starta | heltal | Returnera bara loggar sedan den här tiden, som varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter), rfc3339 tidsstämpel eller UNIX-tidsstämpel.  Om både `tail` och `since` anges, hämtas loggarna med `since` värdet först. Sedan `tail` tillämpas värdet på resultatet och det slutliga resultatet returneras. Valfritt. |
-| tills | heltal | Returnera endast loggar före den angivna tiden, som rfc3339-tidsstämpel, UNIX-tidsstämpel eller varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter). Valfritt. |
+| Starta | sträng | Returnera bara loggar sedan den här tiden, som varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter), rfc3339 tidsstämpel eller UNIX-tidsstämpel.  Om både `tail` och `since` anges, hämtas loggarna med `since` värdet först. Sedan `tail` tillämpas värdet på resultatet och det slutliga resultatet returneras. Valfritt. |
+| tills | sträng | Returnera endast loggar före den angivna tiden, som rfc3339-tidsstämpel, UNIX-tidsstämpel eller varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter). Valfritt. |
 | loggnings nivå | heltal | Filtrera logg rader som är mindre än eller lika med den angivna logg nivån. Logg rader ska följa det rekommenderade loggnings formatet och använda [syslog-allvarlighets nivå](https://en.wikipedia.org/wiki/Syslog#Severity_level) standard. Valfritt. |
 | verifiering | sträng | Filtrera logg rader som har innehåll som matchar det angivna reguljära uttrycket med .net-format för [reguljära uttryck](/dotnet/standard/base-types/regular-expressions) . Valfritt. |
 | inställning | sträng | Antingen `gzip` eller `none`. Standardvärdet är `none`. |
@@ -160,8 +160,8 @@ Den här metoden godkänner en JSON-nyttolast som liknar **GetModuleLogs**, med 
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -293,8 +293,8 @@ Den här metoden accepterar en JSON-nyttolast med följande schema:
 |-|-|-|
 | Schema | sträng | Ange till `1.0` |
 | sasURL | sträng (URI) | [URL för signatur för delad åtkomst med skriv åtkomst till Azure Blob Storage container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| Starta | heltal | Returnera bara loggar sedan den här tiden, som varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter), rfc3339 tidsstämpel eller UNIX-tidsstämpel. Valfritt. |
-| tills | heltal | Returnera endast loggar före den angivna tiden, som rfc3339-tidsstämpel, UNIX-tidsstämpel eller varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter). Valfritt. |
+| Starta | sträng | Returnera bara loggar sedan den här tiden, som varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter), rfc3339 tidsstämpel eller UNIX-tidsstämpel. Valfritt. |
+| tills | sträng | Returnera endast loggar före den angivna tiden, som rfc3339-tidsstämpel, UNIX-tidsstämpel eller varaktighet (1 d, 90 m, 2 dagar 3 timmar 2 minuter). Valfritt. |
 | edgeRuntimeOnly | boolean | Om värdet är true returneras bara loggar från Edge agent, Edge Hub och Edge Security daemon. Standard: falskt.  Valfritt. |
 
 > [!IMPORTANT]

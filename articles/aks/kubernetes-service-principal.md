@@ -4,12 +4,12 @@ description: Skapa och hantera ett tjänstobjekt för Azure Active Directory fö
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614803"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475445"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Tjänstens huvudnamn med Azure Kubernetes Service (AKS)
 
@@ -128,7 +128,7 @@ Tänk på följande när du använder AKS och Azure AD-tjänstens huvudnamn.
 - Om du inte specifikt skickar ett huvud namn för tjänsten i ytterligare AKS CLI-kommandon används det standard tjänst huvud namn som finns på `~/.azure/aksServicePrincipal.json` .  
 - Du kan också ta bort aksServicePrincipal.jspå filen och AKS skapar ett nytt huvud namn för tjänsten.
 - När du tar bort ett AKS-kluster som skapats av [az aks create][az-aks-create] tas tjänstens huvudnamn som skapades automatiskt inte bort.
-    - För att ta bort tjänstens huvudnamn kör du en fråga efter ditt kluster *servicePrincipalProfile.clientId* och tar sedan bort med [az ad app delete][az-ad-app-delete]. Ersätt följande resursgruppsnamn och klisternamn med dina egna värden:
+    - För att ta bort tjänstens huvud namn, fråga efter klustrets *servicePrincipalProfile. clientId* och ta sedan bort med [AZ AD SP Delete] [AZ-AD-SP-Delete]. Ersätt följande resursgruppsnamn och klisternamn med dina egna värden:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)

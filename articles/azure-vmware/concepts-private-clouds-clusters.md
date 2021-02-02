@@ -3,12 +3,12 @@ title: Koncept – privata moln och kluster
 description: Lär dig mer om de viktigaste funktionerna i Azure VMware-lösningen program varu definierade Data Center och vSphere-kluster.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825079"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474921"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-lösning, privata moln och kluster koncept
 
@@ -66,7 +66,10 @@ Schemat för privat moln vCenter och NSX-T-konfigurationer finns i ett schema f�
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nästa steg är att lära dig om [nätverks-och interanslutnings koncept](concepts-networking.md).
+Nu när du har täckt de här koncepten med privata moln i Azure VMware-lösningen kanske du vill lära dig mer om: 
+
+- [Nätverks-och samanslutnings koncept i Azure VMware-lösningen](concepts-networking.md).
+- [Lagrings koncept för Azure VMware-lösningar](concepts-storage.md).
 
 <!-- LINKS - internal -->
 

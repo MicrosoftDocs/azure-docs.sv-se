@@ -3,12 +3,12 @@ title: Support mat ris för VMware/fysisk haveri beredskap i Azure Site Recovery
 description: Sammanfattar stöd för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure med hjälp av Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: f525666e91a482a6c23128e266b4f5669437a502
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 48eba42548287b54d99d1a2188786437f4b05a2b
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956029"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475479"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Stöd mat ris för haveri beredskap för virtuella VMware-datorer och fysiska servrar till Azure
 
@@ -231,7 +231,7 @@ Gäst-/Server-NFS | Inga
 Gäst-/Server-iSCSI | För migrering – Ja<br/>Vid haveri beredskap – nej kommer iSCSI att återställas efter fel som en ansluten disk till den virtuella datorn
 Gäst/Server SMB 3,0 | Inga
 Gäst/Server-RDM | Ja<br/><br/> Ej tillämpligt för fysiska servrar
-Gäst-/Server disk > 1 TB | Ja, disken måste vara större än 1024 MB<br/><br/>Upp till 8 192 GB vid replikering till hanterade diskar (9,26-version och senare)<br></br> Upp till 4 095 GB vid replikering till lagrings konton
+Gäst-/Server disk > 1 TB | Ja, disken måste vara större än 1024 MB<br/><br/>Upp till 32 TB vid replikering till hanterade diskar (9,40-version och senare)<br></br> Upp till 4 095 GB vid replikering till lagrings konton
 Gäst/Server-disk med fysisk och fysisk sektor storlek för 4K | Inga
 Gäst-/Server disk med en fysisk sektor storlek på 4K och 512 byte | Inga
 Gäst-/Server volym med Striped disk >4 TB | Ja
@@ -292,7 +292,7 @@ Gäst operativ systemets arkitektur | 64-bitars. | Kontrollen Miss lyckas om den
 Storlek på operativsystemdisk | Upp till 2 048 GB. | Kontrollen Miss lyckas om den inte stöds.
 Antal operativsystemdiskar | 1 </br> Start-och systempartitionering på olika diskar stöds inte | Kontrollen Miss lyckas om den inte stöds.
 Antal datadiskar | 64 eller mindre. | Kontrollen Miss lyckas om den inte stöds.
-Data disk storlek | Upp till 8 192 GB vid replikering till hanterad disk (9,26-version och senare)<br></br>Upp till 4 095 GB vid replikering till lagrings konto| Kontrollen Miss lyckas om den inte stöds.
+Data disk storlek | Upp till 32 TB vid replikering till hanterad disk (9,40 version och senare)<br></br>Upp till 4 095 GB vid replikering till lagrings konto| Kontrollen Miss lyckas om den inte stöds.
 Nätverkskort | Flera nätverkskort stöds. |
 Delad VHD | Stöds inte. | Kontrollen Miss lyckas om den inte stöds.
 FC-disk | Stöds inte. | Kontrollen Miss lyckas om den inte stöds.

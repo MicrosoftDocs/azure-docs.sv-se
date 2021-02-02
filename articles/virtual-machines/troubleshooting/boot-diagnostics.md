@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9030adb9904095ac9b909e650ec6f11dcdf85ed3
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201611"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475530"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Så här använder du startdiagnostik för att felsöka virtuella datorer i Azure
 
@@ -52,7 +52,7 @@ På fliken **hantering** i avsnittet **övervakning** kontrollerar du att **star
 ![Skapa en virtuell dator](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Funktionen för startdiagnostik stöder inte Premium Storage-kontot eller zon typerna redundanta lagrings konton. Om du använder Premium Storage-kontot för startdiagnostik kan du få ett StorageAccountTypeNotSupported-fel när du startar den virtuella datorn.
+> Funktionen för startdiagnostik stöder inte Premium Storage-kontot eller zon typerna redundanta lagrings konton. Om du använder Premium Storage-kontot för startdiagnostik kan du få ett StorageAccountTypeNotSupported-fel när du startar den virtuella datorn. 
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Distribuera från en Azure Resource Manager-mall

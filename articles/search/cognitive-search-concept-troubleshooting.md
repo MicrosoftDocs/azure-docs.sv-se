@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403389"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475496"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips för AI-anrikning i Azure Kognitiv sökning
 
@@ -100,7 +100,7 @@ Bild analys är i beräknings intensiva för ännu enkla fall, så när avbildni
 
 Maximal kör tid varierar beroende på nivå: flera minuter på den kostnads fria nivån, 24-timmars indexering på fakturerbara nivåer. Om bearbetningen inte kan slutföras inom en 24-timmarsperiod för bearbetning på begäran, byter du till ett schema så att indexeraren kan hämta bearbetningen där den slutade. 
 
-Indexering av schemalagda indexerare återupptas enligt schema vid det senast fungerande dokumentet. Genom att använda ett återkommande schema kan indexeraren arbeta på ett sätt genom att vänta på en serie timmar eller dagar, tills alla icke bearbetade bilder bearbetas. Mer information om schema-syntax finns i [steg 3: Create-a-Indexer](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) eller se [hur du schemalägger indexerare för Azure kognitiv sökning](search-howto-schedule-indexers.md).
+Indexering av schemalagda indexerare återupptas enligt schema vid det senast fungerande dokumentet. Genom att använda ett återkommande schema kan indexeraren arbeta på ett sätt genom att vänta på en serie timmar eller dagar, tills alla icke bearbetade bilder bearbetas. Mer information om schema-syntax finns i [Schemalägga en indexerare](search-howto-schedule-indexers.md).
 
 > [!NOTE]
 > Om en indexerare har angetts till ett visst schema men upprepade gånger Miss lyckas på samma dokument över och över igen varje gång den körs, kommer indexeraren att köras på ett mindre frekvent intervall (upp till max minst en gång var 24: e timme) tills den har lyckats med att göra ett nytt försök.  Om du tror att du har åtgärdat problemet som gjorde att indexeraren har fastnat vid en viss tidpunkt, kan du utföra en körning av indexeraren på begäran, och om detta sker fortsätter indexeraren med angivet schema intervall igen.
@@ -109,12 +109,12 @@ För portalbaserade indexeringar (enligt beskrivningen i snabb starten) väljer 
 
 ## <a name="tip-8-increase-indexing-throughput"></a>Tips 8: öka indexerings data flödet
 
-För [parallell indexering](search-howto-large-index.md)ska du placera dina data i flera behållare eller flera virtuella mappar i samma behållare. Skapa sedan flera DataSource-och Indexer-par. Alla indexerare kan använda samma färdigheter och skriva till samma mål Sök index, så din Sökapp behöver inte vara medveten om denna partitionering.
+För [parallell indexering](search-howto-large-index.md)ska du placera dina data i flera behållare eller flera virtuella mappar i samma behållare. Skapa sedan flera data källor och index-par. Alla indexerare kan använda samma färdigheter och skriva till samma mål Sök index, så din Sökapp behöver inte vara medveten om denna partitionering.
 
 ## <a name="see-also"></a>Se även
 
 + [Snabb start: skapa en AI-pipeline i portalen](cognitive-search-quickstart-blob.md)
 + [Självstudie: Lär dig AI-anrikning REST API: er](cognitive-search-tutorial-blob.md)
-+ [Ange autentiseringsuppgifter för data Källa](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [Så här konfigurerar du Blob-indexerare](search-howto-indexing-azure-blob-storage.md)
 + [Så här definierar du en färdigheter](cognitive-search-defining-skillset.md)
 + [Så här mappar du omfattande fält till ett index](cognitive-search-output-field-mapping.md)

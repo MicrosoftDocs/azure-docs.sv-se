@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 5f9d772a4cc5722201891450707a68fe487acc3a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540771"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475260"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Felsök vanliga problem med Windows Virtual Desktop agent
 
@@ -125,7 +125,7 @@ Så här inaktiverar du en princip:
 3. I fönstret **gällande princip uppsättning** som öppnas går du till kategori Sök vägen.
 4. Välj principen.
 5. Välj **Inaktiverad**.
-6. Välj **Tillämpa**.   
+6. Välj **Använd**.   
 
    > [!div class="mx-imgBorder"]
    > ![Skärm bild av Windows Installer princip i gällande princip uppsättning](media/gpo-policy.png)
@@ -147,7 +147,7 @@ Så här inaktiverar du en princip:
 3. I fönstret **gällande princip uppsättning** som öppnas går du till kategori Sök vägen.
 4. Välj principen.
 5. Välj **Inaktiverad**.
-6. Välj **Tillämpa**.   
+6. Välj **Använd**.   
 
 ## <a name="error-stack-listener-isnt-working-on-windows-10-2004-vm"></a>Fel: stack lyssnaren fungerar inte på Windows 10 2004 VM
 
@@ -207,7 +207,7 @@ Lös problemet genom att göra utrymme på disken genom att:
 Öppna ett PowerShell-fönster som administratör och kör följande cmdlet:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object*
+Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
 ```
 
 Om statusen som anges för sessionens värd eller värdar i din värddator alltid står **otillgänglig** eller **uppgradering** kan agenten eller stack installationen ha misslyckats

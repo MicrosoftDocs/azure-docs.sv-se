@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 83c1d8ac316703d9d22d0716c86c5731c3db7133
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226479"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475598"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -38,7 +38,7 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes för arbets belastnings skydd kommer snart att lanseras för allmän tillgänglighet (GA)
 
-**Beräknat datum för ändring:** Januari 2021
+**Beräknat datum för ändring:** Februari 2021
 
 Kubernetes för arbets belastnings skydd som beskrivs i [skydda dina Kubernetes-arbetsbelastningar](kubernetes-workload-protections.md) är för närvarande en för hands version. Även om en rekommendation är i för hands version, återges inte en resurs som inte är felfri och ingår inte i beräkningarna av dina säkra poäng.
 

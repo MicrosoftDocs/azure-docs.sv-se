@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 5098d897d84ff6af31d430c0ddd2e26d8d6b08a7
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d6dd2b891cb3bf9ebb5442f541021c20a34ce1a1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814303"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474854"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Inlärnings kunskap för dokument extrahering
 
@@ -37,7 +37,7 @@ Parametrar är skiftlägeskänsliga.
 | Indata | Tillåtna värden | Beskrivning |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Ange som `default` dokument extrahering från filer som inte är rena text eller JSON. Ange till `text` för att förbättra prestandan på filer med oformaterad text. Ange till `json` om du vill extrahera strukturerat innehåll från JSON-filer. Om `parsingMode` inte uttryckligen definieras anges det som `default` . |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Ange till `contentAndMetadata` om du vill extrahera alla metadata och text innehåll från varje fil. Ange till `allMetadata` om du bara vill extrahera de metadata som är [specifika för innehålls typen](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (till exempel metadata som är unika för bara PNG-filer). Om `dataToExtract` inte uttryckligen definieras anges det som `contentAndMetadata` . |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Ange till `contentAndMetadata` om du vill extrahera alla metadata och text innehåll från varje fil. Ange till `allMetadata` om du bara vill extrahera [metadata-egenskaperna för innehålls typen](search-blob-metadata-properties.md) (till exempel metadata som är unika för just. png-filer). Om `dataToExtract` inte uttryckligen definieras anges det som `contentAndMetadata` . |
 | `configuration` | Se nedan. | En ord lista med valfria parametrar som justerar hur dokument extraheringen utförs. I tabellen nedan finns beskrivningar av de konfigurations egenskaper som stöds. |
 
 | Konfigurations parameter   | Tillåtna värden | Beskrivning |
