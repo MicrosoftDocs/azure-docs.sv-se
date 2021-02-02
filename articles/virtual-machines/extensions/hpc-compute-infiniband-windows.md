@@ -11,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966028"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260171"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>InfiniBand-drivrutins tillägg för Windows
 
@@ -26,19 +26,19 @@ Med det här tillägget installeras InfiniBand ND-drivrutiner (för ej SR-IOV-ak
 
 Det finns också ett tillägg för att installera InfiniBand-drivrutiner för [virtuella Linux-datorer](hpc-compute-infiniband-linux.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="operating-system"></a>Operativsystem
 
-Det här tillägget har stöd för följande OS-distributioner, beroende på driv rutins stöd för en speciell OS-version.
+Det här tillägget har stöd för följande OS-distributioner, beroende på driv rutins stöd för en speciell OS-version. Observera lämplig InfiniBand NIC för storleken på virtuella datorer i H-och N-serien.
 
-| Distribution | Version |
+| Distribution | InfiniBand NIC-drivrutiner |
 |---|---|
-| Windows 10 | Kärna |
-| Windows Server 2019 | Kärna |
-| Windows Server 2016 | Kärna |
-| Windows Server 2012 R2 | Kärna |
-| Windows Server 2012 | Kärna |
+| Windows 10 | CX5, CX6 |
+| Windows Server 2019 | CX5, CX6 |
+| Windows Server 2016 | CX3-Pro, CX5, CX6 |
+| Windows Server 2012 R2 | CX3-Pro, CX5, CX6 |
+| Windows Server 2012 | CX3-Pro, CX5, CX6 |
 
 ### <a name="internet-connectivity"></a>Internetanslutning
 
@@ -70,12 +70,12 @@ Följande JSON visar schemat för tillägget.
 
 ### <a name="properties"></a>Egenskaper
 
-| Namn | Värde/exempel | Datatyp |
+| Name | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | utgivare | Microsoft. HpcCompute | sträng |
 | typ | InfiniBandDriverWindows | sträng |
-| typeHandlerVersion | 1,2 | int |
+| typeHandlerVersion | 1.2 | int |
 
 
 

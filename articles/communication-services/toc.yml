@@ -43,6 +43,8 @@
   items:
     - name: Skapa en betrodd autentiseringstjänst med Azure Functions
       href: tutorials/trusted-service-tutorial.md
+    - name: Förbereda en webbapp för kommunikations tjänster (Node.js)
+      href: tutorials/building-app-start.md
 - name: Begrepp
   expanded: false
   items:

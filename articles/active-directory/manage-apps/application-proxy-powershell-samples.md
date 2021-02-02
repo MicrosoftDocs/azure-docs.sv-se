@@ -3,7 +3,7 @@ title: PowerShell-exempel för Azure AD-programproxy
 description: Använd de här PowerShell-exemplen för Azure AD-programproxy för att få information om programproxy-appar och-kopplingar i din katalog, tilldela användare och grupper till appar och hämta certifikat information.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10e2b0aa5c7e178ae6b58805703fcb1b0ff3e2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352498"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259108"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-exempel för Azure AD-programproxy
 
-Följande tabell innehåller länkar till exempel på PowerShell-skript för Azure AD-programproxy. De här exemplen kräver antingen [AzureAD v2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) eller [AzureAD v2 PowerShell för för hands versionen av Graph module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview), om inget annat anges.
+Följande tabell innehåller länkar till exempel på PowerShell-skript för Azure AD-programproxy. De här exemplen kräver antingen [AzureAD v2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2) eller [AzureAD v2 PowerShell för för hands versionen av Graph module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview), om inget annat anges.
 
 
-Mer information om de cmdlets som används i de här exemplen finns i [Application Management](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) och Application [proxy Connector Management](/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management).
+Mer information om de cmdlets som används i de här exemplen finns i [Application Management](/powershell/module/azuread/#application_proxy_application_management) och Application [proxy Connector Management](/powershell/module/azuread/#application_proxy_connector_management).
 
 | Länk | Beskrivning |
 |---|---|

@@ -3,7 +3,7 @@ title: Förstå och lösa problem med Azure AD-programproxy CORS
 description: Ger en förståelse för CORS i Azure AD-programproxy och hur du kan identifiera och lösa CORS-problem.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8836295e9f54260c4e9ff6c1da333ef2a86d58fb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b57fc7e3af99819c9b27b6bc796e501d1db02818
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651863"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259176"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Förstå och lösa Azure Active Directory-programproxy CORS-problem
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Förstå och lösa CORS-problem för Azure Active Directory-programproxy
 
 [Resurs delning mellan ursprung (CORS)](https://www.w3.org/TR/cors/) kan ibland innebära utmaningar för appar och API: er som du publicerar via Azure Active Directory-programproxy. I den här artikeln beskrivs problem och lösningar för Azure AD-programproxy CORS.
 
@@ -42,9 +42,9 @@ Principen med samma ursprung hindrar appar från att komma åt resurser från an
 
 Du kan identifiera CORS-problem med hjälp av webbläsarens fel söknings verktyg:
 
-1. Starta webbläsaren och bläddra till webbappen.
-1. Tryck på **F12** för att öppna fel söknings konsolen.
-1. Försök att återskapa transaktionen och granska konsol meddelandet. En CORS-överträdelse skapar ett konsol fel om ursprung.
+1. Starta webbläsaren och gå till webbappen.
+1. Tryck på **F12** för att öppna felsökningskonsolen.
+1. Försök att återskapa transaktionen och granska konsolmeddelandet. En CORS-överträdelse skapar ett konsolfel om ursprung.
 
 I följande skärm bild kan du välja knappen **testa** som orsakade ett CORS-fel meddelande om att https: \/ /corswebclient-contoso.msappproxy.net inte hittades i rubriken Access-Control-Allow-Origin.
 
@@ -112,7 +112,7 @@ Du kan ändra din app så att den stöder CORS genom att lägga till rubriken Ac
 
 ### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Alternativ 5: Förläng livs längden för åtkomsttoken
 
-Vissa CORS-problem kan inte lösas, till exempel när appen omdirigeras till *login.microsoftonline.com* för autentisering och åtkomsttoken upphör att gälla. CORS-anropet Miss lyckas sedan. En lösning för det här scenariot är att utöka livs längden för åtkomsttoken, för att förhindra att den upphör att gälla under en användarsession. Mer information om hur du gör detta finns i [konfigurations bara livs längder för token i Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
+Vissa CORS-problem kan inte lösas, till exempel när appen omdirigeras till *login.microsoftonline.com* för autentisering och åtkomsttoken upphör att gälla. CORS-anropet misslyckas då. En lösning för det här scenariot är att utöka livslängden för åtkomsttoken, för att förhindra att den upphör att gälla under en användarsession. Mer information om hur du gör detta finns i [konfigurations bara livs längder för token i Azure AD](../develop/active-directory-configurable-token-lifetimes.md).
 
 ## <a name="see-also"></a>Se även
 - [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md) 

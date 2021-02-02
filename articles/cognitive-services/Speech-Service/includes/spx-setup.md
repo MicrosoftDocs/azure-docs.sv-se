@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 68362b61aa0d919bd0e95f3cebb1cf1189f9f0f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095198"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427225"
 ---
 ## <a name="download-and-install"></a>Hämta och installera
 
@@ -29,14 +29,6 @@ Skriv `spx` för att se hjälp för tal-cli.
 > [!NOTE]
 > Som ett alternativ till NuGet kan du ladda ned och extrahera [zip-arkivet](https://aka.ms/speech/spx-zips.zip)för tal-CLI, hitta och extrahera din plattform från `spx-zips` katalogen och lägga till `spx` sökvägen till din system **Sök vägs** variabel.
 
-### <a name="run-the-speech-cli"></a>Kör tal-CLI
-
-1. Öppna kommando tolken eller PowerShell och navigera sedan till den katalog där du extraherade tal-CLI.  
-2. Skriv `spx` för att se hjälp kommandon för tal-cli.
-
-> [!NOTE]
-> PowerShell kontrollerar inte den lokala katalogen vid sökning efter ett kommando. I PowerShell ändrar du katalogen till platsen för `spx` och anropar verktyget genom att ange `.\spx` .
-> Om du lägger till den här katalogen i sökvägen kommer PowerShell och kommando tolken i Windows att hitta `spx` från vilken katalog som helst utan att inkludera `.\` prefixet.
 
 ### <a name="font-limitations"></a>Tecken begränsningar
 

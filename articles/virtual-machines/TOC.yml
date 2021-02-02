@@ -887,7 +887,7 @@
                   href: ./linux/disk-encryption-powershell-quickstart.md
                 - name: Windows
                   href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: Portalen
+            - name: Portal
               items:
                 - name: Linux
                   href: ./linux/disk-encryption-portal-quickstart.md
@@ -967,7 +967,7 @@
           items:
             - name: CLI och PowerShell
               href: disks-performance-tiers.md
-            - name: Portalen
+            - name: Portal
               href: disks-performance-tiers-portal.md
         - name: Aktivera Write Accelerator
           href: how-to-enable-write-accelerator.md
@@ -1017,7 +1017,7 @@
           items:
             - name: Azure CLI
               href: ./linux/add-disk.md
-            - name: Azure-portalen
+            - name: Azure Portal
               href: ./linux/attach-disk-portal.md
         - name: Windows
           items:
@@ -1472,30 +1472,11 @@
     - name: Anpassade data
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: Installera och konfigurera
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: Skapa en virtuell Linux-dator
-          href: /azure/developer/ansible/vm-configure
-        - name: Hantera en virtuell Linux-dator
-          href: /azure/developer/ansible/vm-manage
+      href: 'https://docs.microsoft.com/azure/developer/ansible/'
     - name: Terraform
-      items:
-        - name: Installera och konfigurera
-          href: /azure/developer/terraform/install-configure
-        - name: Skapa fullständig virtuell dator
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: 'https://docs.microsoft.com/azure/developer/terraform/'
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: Skapa en Jenkins-server
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: Skala med VM-agenter
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: Publicera artefakter till Storage
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: Säker Jenkins
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: Felsöka

@@ -3,7 +3,7 @@ title: Hantera användartilldelning för en app i Azure Active Directory
 description: Lär dig att tilldela och ta bort tilldelning av användare och grupper för en app som använder Azure Active Directory för identitets hantering.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 59c69e88fb64cbb00063534be9fd41b86dce0b62
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 50dcde478b708cd53d8229d70a9ddf4b1ff271be
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053388"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259742"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Hantera användartilldelning för en app i Azure Active Directory
 

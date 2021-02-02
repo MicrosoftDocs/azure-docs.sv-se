@@ -4,19 +4,19 @@ description: Felsöka SAML-baserad enkel inloggning till program i Azure Active 
 services: active-directory
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: f8eb00a2a88c6e26dd5361097f17990469caa8f3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4a5fbef3380db8c9b357c83b4cb8240a41a0012c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326097"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259295"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Felsöka SAML-baserad enkel inloggning för program i Azure Active Directory
 
@@ -37,7 +37,7 @@ Använd någon av följande länkar för att ladda ned och installera säkra inl
 Så här testar du SAML-baserad enkel inloggning mellan Azure AD och ett mål program:
 
 1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör eller annan administratör som har behörighet att hantera program.
-1. Välj **Azure Active Directory**i det vänstra bladet och välj sedan **företags program**. 
+1. Välj **Azure Active Directory** i det vänstra bladet och välj sedan **företags program**. 
 1. I listan över företags program väljer du det program som du vill testa enkel inloggning för och sedan från alternativen till vänster väljer du **enkel inloggning**.
 1. Om du vill öppna test miljön för SAML-baserad enkel inloggning går du till **Testa enkel inloggning** (steg 5). Om **test** knappen är nedtonad, måste du fylla i och spara de nödvändiga attributen först i avsnittet **grundläggande SAML-konfiguration** .
 1. På bladet **Testa enkel inloggning** använder du företagets autentiseringsuppgifter för att logga in på mål programmet. Du kan logga in som aktuell användare eller som en annan användare. Om du loggar in som en annan användare kommer du att uppmanas att autentisera.
@@ -71,7 +71,7 @@ Om det inte finns någon lösning för inloggnings felet föreslår vi att du an
     - Ett CorrelationID och en tidsstämpel. Dessa värden är viktiga när du skapar ett support ärende med Microsoft eftersom de hjälper teknikerna att identifiera ditt problem och ge en korrekt lösning på problemet.
     - En instruktion som identifierar rotor saken till problemet.
 1. Gå tillbaka till Azure AD och hitta bladet för **enkel inloggning på test** .
-1. I text rutan ovan **Hämta lösnings vägledning**klistrar du in fel meddelandet.
+1. I text rutan ovan **Hämta lösnings vägledning** klistrar du in fel meddelandet.
 1. Klicka på **Hämta lösnings vägledning** för att visa steg för att lösa problemet. Rikt linjerna kan kräva information från SAML-begäran eller SAML-svar. Om du inte använder säker inloggnings tillägg för Mina appar kan du behöva ett verktyg som [Fiddler](https://www.telerik.com/fiddler) för att hämta SAML-begäran och-svar.
 1. Kontrol lera att målet i SAML-begäran motsvarar den URL för tjänsten SAML Single Sign-On som hämtades från Azure AD.
 1. Kontrol lera att utfärdaren i SAML-begäran är samma identifierare som du har konfigurerat för programmet i Azure AD. Azure AD använder utfärdaren för att hitta ett program i din katalog.

@@ -3,7 +3,7 @@ title: Använd aktivitets rapporten för att flytta AD FS appar till Azure Activ
 description: I rapporten Active Directory Federation Services (AD FS) (AD FS) program aktivitet kan du snabbt migrera program från AD FS till Azure Active Directory (Azure AD). Det här migrations verktyget för AD FS identifierar kompatibilitet med Azure AD och ger vägledning om migrering.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573892"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260070"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Använda rapporten AD FS program aktivitet (för hands version) för att migrera program till Azure AD
 
@@ -33,7 +33,7 @@ I rapporten AD FS program aktivitet (för hands version) i Azure Portal kan du s
 
 AD FS programmets aktivitets data är tillgängliga för användare som har tilldelats någon av dessa administratörs roller: global administratör, rapport läsare, säkerhets läsare, program administratör eller moln program administratör.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Din organisation måste för närvarande använda AD FS för att få åtkomst till program.
 * Azure AD Connect Health måste vara aktiverat i din Azure AD-klient.

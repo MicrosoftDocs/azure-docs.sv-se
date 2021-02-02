@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a6a01b3a71a7e391c680e6c9547ccd9649dc0e89
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4ad619fa5f0fb8f8e87333f2681727dabedda42b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605050"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427219"
 ---
 I det här avsnittet beskrivs hur du använder [Azure-portalen](https://portal.azure.com) för att skapa en IoT-hubb.
 
@@ -35,17 +35,17 @@ I det här avsnittet beskrivs hur du använder [Azure-portalen](https://portal.a
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Skapa ett nav i Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png" alt-text="Skapa ett nav i Azure Portal.":::
 
 1. Välj **Nästa: nätverk** för att fortsätta skapa hubben.
 
    Välj de slut punkter som kan ansluta till din IoT Hub. Du kan välja den **offentliga slut punkten för standardinställning (alla nätverk)** eller välja **offentlig slut punkt (valda IP-intervall)** eller **privat slut punkt**. Acceptera standardinställningen för det här exemplet.
 
-   ![Välj de slut punkter som kan ansluta](./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="Välj de slut punkter som kan ansluta.":::
 
 1. Välj **Nästa: hantering** för att fortsätta skapa hubben.
 
-    ![Ange storlek och skala för en ny hubb med hjälp av Azure Portal](./media/iot-hub-include-create-hub/iot-hub-management-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management-screen.png" alt-text="Ange storlek och skala för en ny hubb med hjälp av Azure Portal.":::
 
     Du kan acceptera standardinställningarna här. Om du vill kan du ändra något av följande fält:
 
@@ -60,14 +60,14 @@ I det här avsnittet beskrivs hur du använder [Azure-portalen](https://portal.a
 
     - **Avancerade inställningar**  >  **Partitioner från enhet till moln**: den här egenskapen relaterar meddelanden från enhet till moln till antalet samtidiga läsare av meddelanden. De flesta hubbar behöver bara fyra partitioner.
 
-1.  Välj **Nästa: Taggar** för att fortsätta till nästa skärm.
+1. Välj **Nästa: Taggar** för att fortsätta till nästa skärm.
 
     Taggar är namn/värde-par. Du kan tilldela samma tagg till flera resurser och resurs grupper för att kategorisera resurser och konsolidera fakturering. Mer information finns i [använda taggar för att ordna dina Azure-resurser](../articles/azure-resource-manager/management/tag-resources.md).
 
-    ![Tilldela taggar för hubben med hjälp av Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tags.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="Tilldela taggar för hubben med hjälp av Azure Portal.":::
 
-1.  Välj **Nästa: granska + skapa** för att granska dina val. Du ser något som liknar den här skärmen, men med de värden som du valde när du skapade hubben. 
+1. Välj **Nästa: granska + skapa** för att granska dina val. Du ser något som liknar den här skärmen, men med de värden som du valde när du skapade hubben.
 
-    ![Granska informationen för att skapa den nya hubben](./media/iot-hub-include-create-hub/iot-hub-review-and-create.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="Granska informationen för att skapa den nya hubben.":::
 
-1.  Välj **skapa** för att skapa din nya hubb. Det tar några minuter att skapa hubben.
+1. Välj **skapa** för att skapa din nya hubb. Det tar några minuter att skapa hubben.

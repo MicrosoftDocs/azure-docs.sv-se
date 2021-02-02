@@ -4,7 +4,7 @@ description: Aktivera Application Proxy i Azure Portal och installera anslutning
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -14,17 +14,17 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a03f3c57d3fbc7efe20055343eab3db33aa8194
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84760056"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259092"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Application Proxy och Qlik Sense 
 Azure Active Directory-programproxy och Qlik Sense har samarbetat för att se till att du enkelt kan använda Application Proxy för att ge fjärråtkomst till din Qlik Sense-distribution.  
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 Resten av det här scenariot förutsätter att du har utfört följande:
  
 - Konfigurerat [Qlik Sense](https://community.qlik.com/docs/DOC-19822). 
@@ -45,7 +45,7 @@ Följ de här stegen för att publicera din app. En mer detaljerad genom gång a
    - **Intern URL**: det här programmet bör ha en intern URL som är själva QLIKSENSE-URL: en. Till exempel **https&#58;//demo.qlikemm.com:4244** 
    - **Metod för förautentisering**: Azure Active Directory (rekommenderas men krävs inte) 
 1. Välj **Lägg till** längst ned på bladet. Programmet läggs till och snabb starts menyn öppnas. 
-2. I snabb starts menyn väljer du **tilldela en användare för testning**och lägger till minst en användare i programmet. Kontrol lera att det här test kontot har åtkomst till det lokala programmet. 
+2. I snabb starts menyn väljer du **tilldela en användare för testning** och lägger till minst en användare i programmet. Kontrol lera att det här test kontot har åtkomst till det lokala programmet. 
 3. Välj **tilldela** för att spara test användar tilldelningen. 
 4. Valfritt På bladet program hantering väljer du enkel inloggning. Välj **Kerberos-begränsad delegering** på den nedrullningsbara menyn och fyll i de obligatoriska fälten baserat på din Qlik-konfiguration. Välj **Spara**. 
 

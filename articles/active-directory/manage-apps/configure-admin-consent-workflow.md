@@ -3,7 +3,7 @@ title: Konfigurera arbets flödet för administratörs medgivande – Azure Acti
 description: Lär dig hur du konfigurerar ett sätt för slutanvändare att begära åtkomst till program som kräver administratörs medgivande.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9552d1a0c7bdb73dbcf739144a3ab9f746705664
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: b38b8cf38d2d75493ef50c4f206758c6289be079
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053371"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259595"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurera arbets flödet för administratörs medgivande (för hands version)
 
@@ -127,7 +127,7 @@ I tabellen nedan beskrivs de scenarier och gransknings värden som är tillgäng
 |Granskare som godkänner en begäran om administrativt medgivande       |Åtkomstgranskningar           |UserManagement           |Godkänn alla förfrågningar i affärs flödet          |App-kontext            |För närvarande går det inte att hitta användar kontexten eller app-ID: t som har beviljats administrativt medgivande.           |
 |Granskare som nekar en begäran om administrativt medgivande       |Åtkomstgranskningar           |UserManagement           |Godkänn alla förfrågningar i affärs flödet          |App-kontext            | För närvarande går det inte att hitta användar kontexten för den aktör som nekade en administrativ begäran om godkännande          |
 
-## <a name="faq"></a>Vanliga frågor 
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR 
 
 **Jag aktiverade det här arbets flödet, men när du testar funktionen kan du inte se meddelandet "godkännande krävs", så att jag kan begära åtkomst?**
 

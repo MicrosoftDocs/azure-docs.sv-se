@@ -11,14 +11,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: cfa68bde2462cefd6f690247cfd1e3bd2e3dbc74
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b90d703a44cf89961eb0dca02abb1b8ea9cff166
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489215"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259210"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hög tillgänglighet för SAP HANA skala upp med Azure NetApp Files på Red Hat Enterprise Linux
 
@@ -91,6 +91,7 @@ Läs följande SAP-anteckningar och dokument först:
     - [Installera SAP HANA på Red Hat Enterprise Linux för användning i Microsoft Azure.](https://access.redhat.com/solutions/3193782)
     - [Konfigurera SAP HANA pacemaker kluster när HANA-filsystemet finns på NFS-resurser](https://access.redhat.com/solutions/5156571)
 - [NetApp SAP-program på Microsoft Azure med Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf)
+- [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 
 ## <a name="overview"></a>Översikt
 
@@ -694,3 +695,10 @@ I det här avsnittet beskrivs hur du kan testa installationen.
     ```
 
    Vi rekommenderar att du testar SAP HANA kluster konfigurationen noga, genom att även utföra de tester som beskrivs i [installations SAP HANA systemreplikering på RHEL](./sap-hana-high-availability-rhel.md#test-the-cluster-setup).
+
+## <a name="next-steps"></a>Nästa steg
+
+* [Azure Virtual Machines planera och implementera SAP][planning-guide]
+* [Azure Virtual Machines distribution för SAP][deployment-guide]
+* [Azure Virtual Machines DBMS-distribution för SAP][dbms-guide]
+* [NFS v4.1-volymer på Azure NetApp Files för SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

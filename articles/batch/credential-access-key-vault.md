@@ -1,17 +1,17 @@
 ---
-title: Säker åtkomst till Key Vault med Batch
+title: Använda certifikat och säker åtkomst Azure Key Vault med batch
 description: Lär dig hur du program mässigt får åtkomst till dina autentiseringsuppgifter från Key Vault med hjälp av Azure Batch.
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350695"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260137"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Säker åtkomst till Key Vault med Batch
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Använda certifikat och säker åtkomst Azure Key Vault med batch
 
 I den här artikeln får du lära dig hur du konfigurerar batch-noder för säker åtkomst till autentiseringsuppgifter som lagras i [Azure Key Vault](../key-vault/general/overview.md). Det finns ingen punkt där du kan ange autentiseringsuppgifter för din administratör i Key Vault och sedan ange autentiseringsuppgifter för att få åtkomst Key Vault från ett skript. Lösningen är att använda ett certifikat som ger dina batch-noder åtkomst till Key Vault.
 
