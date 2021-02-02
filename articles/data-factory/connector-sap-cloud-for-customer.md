@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 9578b87e16f418a7923cd71aa0638fa4e9279cfd
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529627"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430890"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopiera data från SAP-molnet för kunden (C4C) med hjälp av Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln beskriver hur du använder kopierings aktiviteten i Azure Data Factory för att kopiera data från/till SAP-moln för kunder (C4C). Den bygger på [översikts artikeln om kopierings aktiviteten](copy-activity-overview.md) som visar en översikt över kopierings aktiviteten.
@@ -54,10 +55,7 @@ Följande egenskaper stöds för SAP Cloud för kund länkad tjänst:
 | url | URL: en för SAP C4C OData-tjänsten. | Ja |
 | användarnamn | Ange användar namnet för att ansluta till SAP-C4C. | Ja |
 | password | Ange lösen ordet för det användar konto som du har angett för användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde anges används standard Azure Integration Runtime. | Nej för källa, Ja för mottagare |
-
->[!IMPORTANT]
->Om du vill kopiera data till SAP-molnet för kunden kan du uttryckligen [skapa en Azure IR](create-azure-integration-runtime.md#create-azure-ir) med en plats nära ditt SAP-moln för kunden och associera i den länkade tjänsten som i följande exempel:
+| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Om inget värde anges används standard Azure Integration Runtime. | Inga |
 
 **Exempel:**
 
@@ -167,8 +165,8 @@ Om du vill kopiera data till SAP-molnet för kunden ställer du in mottagar type
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Egenskapen Type måste anges till: **SapCloudForCustomerSink**  | Ja |
-| writeBehavior | Åtgärdens Skriv funktion. Kan vara "Infoga", "uppdatera". | Nej. Standard "Infoga". |
-| writeBatchSize | Batch-storlek för Skriv åtgärd. Batchstorleken för att få bästa prestanda kan vara olika för olika tabeller och servrar. | Nej. Standard 10. |
+| writeBehavior | Åtgärdens Skriv funktion. Kan vara "Infoga", "uppdatera". | Nej. Standard "Infoga". |
+| writeBatchSize | Batch-storlek för Skriv åtgärd. Batchstorleken för att få bästa prestanda kan vara olika för olika tabeller och servrar. | Nej. Standard 10. |
 
 **Exempel:**
 
@@ -215,14 +213,14 @@ När du kopierar data från SAP-molnet för kunden används följande mappningar
 
 | Data typen SAP C4C OData | Data fabrikens interimistiska datatyp |
 |:--- |:--- |
-| EDM. Binary | Byte [] |
+| EDM. Binary | Byte [] |
 | Edm.Boolean | Bool |
-| EDM. byte | Byte [] |
+| EDM. byte | Byte [] |
 | EDM. DateTime | DateTime |
 | EDM. decimal | Decimal |
 | Edm.Double | Double |
 | EDM. Single | Enkel |
-| EDM. GUID | GUID |
+| EDM. GUID | GUID |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |

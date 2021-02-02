@@ -3,18 +3,18 @@ title: 'Snabb start – etablera simulerad X. 509-enhet till Azure IoT Hub att a
 description: Snabb start – skapa och etablera en simulerad X. 509-enhet med C#-enhets-SDK för Azure IoT Hub Device Provisioning Service (DPS). Den här snabbstarten använder enskilda registreringar.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2018
+ms.date: 02/01/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 27bb1c97fa082f15642ab9eff6b0bdba357068a2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91323982"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430603"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en simulerad X. 509-enhet med C#-enhets-SDK för IoT Hub Device Provisioning Service
 
@@ -35,50 +35,77 @@ Den här artikeln visar enskilda registreringar.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Förbereda utvecklingsmiljön 
 
-1. Kontrol lera att du har [.net Core 2,1 SDK eller senare](https://www.microsoft.com/net/download/windows) installerad på datorn. 
-
 1. Kontrollera att `git` är installerat på datorn och har lagts till i de miljövariabler som är tillgängliga för kommandofönstret. Se [Git-klientverktyg för Software Freedom Conservancy](https://git-scm.com/download/) för att få den senaste versionen av `git`-verktyg att installera, vilket omfattar **Git Bash**, kommandoradsappen som du kan använda för att interagera med det lokala Git-lagret. 
 
 1. Öppna en kommandotolk eller Git Bash. Klona Azure IoT-exempel för C# GitHub-lagringsplatsen:
     
-    ```cmd
+    ```bash
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
-## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Skapa ett självsignerat X.509-enhetscertifikat och en post för enskild registrering
+1. Kontrol lera att du har [.net Core 3.0.0 SDK eller senare](https://www.microsoft.com/net/download/windows) installerat på datorn. Du kan kontrol lera din version med hjälp av följande kommando.
 
-I det här avsnittet använder du ett självsignerat X.509-certifikat. Det är viktigt att tänka på följande:
+    ```bash
+    dotnet --info
+    ```
+
+
+
+## <a name="create-a-self-signed-x509-device-certificate"></a>Skapa ett självsignerat X.509-enhetscertifikat
+
+I det här avsnittet skapar du ett självsignerat X. 509-testcertifikat `iothubx509device1` som använder som eget ämnes namn. Det är viktigt att tänka på följande:
 
 * Självsignerade certifikat är endast till för testning och ska inte användas i produktion.
 * Standardutgångsdatumet för ett självsignerat certifikat är ett år.
+* Enhets-ID: t för IoT-enheten är certifikatets allmänna namn. Se till att använda ett ämnes namn som uppfyller [kraven för enhets-ID-sträng](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
 
 Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.509-attestering](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) till att skapa det certifikat som ska användas med posten för enskild registrering för den simulerade enheten.
 
 
-1. I en kommandotolk ändrar du kataloger till projektkatalogen för X.509-enhetsetableringsexemplet.
+1. I en PowerShell-prompt ändrar du kataloger till projekt katalogen för enhets etablerings exemplet X. 509 Device.
 
-    ```cmd
+    ```powershell
     cd .\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample
     ```
 
-2. Exempelkoden konfigureras att använda X.509-certifikat som lagras i en lösenordsskyddad PKCS12-formaterad fil (certificate.pfx). Dessutom behöver du en offentlig nyckel certifikat fil (Certificate. cer) för att skapa en enskild registrering senare i den här snabb starten. Generera ett självsignerat certifikat och dess associerade .cer- och .pfx-filer genom att köra följande kommando:
+2. Exempelkoden konfigureras att använda X.509-certifikat som lagras i en lösenordsskyddad PKCS12-formaterad fil (certificate.pfx). Dessutom behöver du en offentlig nyckel certifikat fil (Certificate. cer) för att skapa en enskild registrering senare i den här snabb starten. Kör följande kommando för att skapa det självsignerade certifikatet och dess associerade CER-och PFX-filer:
 
-    ```cmd
-    powershell .\GenerateTestCertificate.ps1
+    ```powershell
+    PS D:\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample> .\GenerateTestCertificate.ps1 iothubx509device1
     ```
 
-3. Med skriptet uppmanas du att ange ett PFX-lösenord. Kom ihåg lösenordet. Du måste använda det när du kör exemplet.
+3. Med skriptet uppmanas du att ange ett PFX-lösenord. Kom ihåg lösen ordet, du måste använda det senare när du kör exemplet. Du kan köra `certutil` för att dumpa certifikatet och verifiera ämnes namnet.
 
-    ![ Ange PFX-lösenordet](./media/quick-create-simulated-device-x509-csharp/generate-certificate.png)  
+    ```powershell
+    PS D:\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample> certutil .\certificate.pfx
+    Enter PFX password:
+    ================ Certificate 0 ================
+    ================ Begin Nesting Level 1 ================
+    Element 0:
+    Serial Number: 7b4a0e2af6f40eae4d91b3b7ff05a4ce
+    Issuer: CN=iothubx509device1, O=TEST, C=US
+     NotBefore: 2/1/2021 6:18 PM
+     NotAfter: 2/1/2022 6:28 PM
+    Subject: CN=iothubx509device1, O=TEST, C=US
+    Signature matches Public Key
+    Root Certificate: Subject matches Issuer
+    Cert Hash(sha1): e3eb7b7cc1e2b601486bf8a733887a54cdab8ed6
+    ----------------  End Nesting Level 1  ----------------
+      Provider = Microsoft Strong Cryptographic Provider
+    Signature test passed
+    CertUtil: -dump command completed successfully.    
+    ```
+
+ ## <a name="create-an-individual-enrollment-entry-for-the-device"></a>Skapa en enskild registrerings post för enheten
 
 
-4. Logga in på Azure Portal, Välj knappen **alla resurser** i den vänstra menyn och öppna etablerings tjänsten.
+1. Logga in på Azure Portal, Välj knappen **alla resurser** i den vänstra menyn och öppna etablerings tjänsten.
 
-5. Från menyn enhets etablerings tjänst väljer du **Hantera registreringar**. Välj fliken **enskilda registreringar** och välj knappen **Lägg till individuell registrering** överst. 
+2. Från menyn enhets etablerings tjänst väljer du **Hantera registreringar**. Välj fliken **enskilda registreringar** och välj knappen **Lägg till individuell registrering** överst. 
 
-6. Ange följande information på panelen **Lägg till registrering** :
+3. Ange följande information på panelen **Lägg till registrering** :
    - Välj **X.509** som identitet för bestyrkande *mekanism*.
-   - Under *filen Primary Certificate. pem eller. cer*väljer du *Välj en fil* för att välja certifikat filen **Certificate. cer** som skapades i föregående steg.
+   - Under *filen Primary Certificate. pem eller. cer* väljer du *Välj en fil* för att välja certifikat filen **Certificate. cer** som skapades i föregående steg.
    - Lämna **Enhets-ID** tomt. Enheten etableras med dess enhet-ID inställt på nätverksnamnet (CN) i X.509-certifikatet **iothubx509device1**. Det här är även namnet som används som registrerings-ID för posten för enskild registrering. 
    - Du kan även ange följande information:
        - Välj en IoT hub som är länkad till din etableringstjänst.
@@ -89,6 +116,8 @@ Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.50
     
    Vid lyckad registrering visas X.509-registreringsposten som **iothubx509device1** under kolumnen *Registrerings-ID* på fliken *Enskilda registreringar*. 
 
+
+
 ## <a name="provision-the-simulated-device"></a>Etablera den simulerade enheten
 
 1. I **översikts** bladet för etablerings tjänsten noterar du värdet för **_ID-omfång_** .
@@ -98,13 +127,35 @@ Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.50
 
 2. Skriv följande kommando för att skapa och köra X.509-enhetsetableringsexemplet. Ersätt `<IDScope>`-värdet med ID-omfånget för etableringstjänsten. 
 
-    ```cmd
-    dotnet run <IDScope>
+    Certifikat filen är standardvärdet *./Certificate.pfx* och prompten för. pfx-lösenordet.  
+
+    ```powershell
+    dotnet run -- -s <IDScope>
     ```
 
-3. Vid uppmaning anger du lösenordet för PFX-filen du skapade tidigare. Lägg märke till de meddelanden som simulerar enhetsstart och anslutning till Device Provisioning-tjänsten för att hämta IoT-hubinformationen. 
+    Om du vill skicka allting som en parameter kan du använda följande exempel format.
 
-    ![Utdata för exempelenhet](./media/quick-create-simulated-device-x509-csharp/sample-output.png) 
+    ```powershell
+    dotnet run -- -s 0ne00000A0A -c certificate.pfx -p 1234
+    ```
+
+
+3. Enheten kommer att ansluta till DPS och tilldelas en IoT Hub. Enheten skickar dessutom ett telemetri-meddelande till hubben.
+
+    ```output
+    Loading the certificate...
+    Found certificate: 10952E59D13A3E388F88E534444484F52CD3D9E4 CN=iothubx509device1, O=TEST, C=US; PrivateKey: True
+    Using certificate 10952E59D13A3E388F88E534444484F52CD3D9E4 CN=iothubx509device1, O=TEST, C=US
+    Initializing the device provisioning client...
+    Initialized for registration Id iothubx509device1.
+    Registering with the device provisioning service...
+    Registration status: Assigned.
+    Device iothubx509device2 registered to sample-iot-hub1.azure-devices.net.
+    Creating X509 authentication for IoT Hub...
+    Testing the provisioned device with IoT Hub...
+    Sending a telemetry message...
+    Finished.
+    ```
 
 4. Kontrollera att enheten har etablerats. Vid lyckad etablering av den simulerade enheten till IoT-hubben som är länkad till din etablerings tjänst visas enhets-ID på hubbens bladet **IoT-enheter** . 
 

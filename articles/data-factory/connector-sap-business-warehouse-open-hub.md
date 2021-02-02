@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2020
+ms.openlocfilehash: ca8fad59e581ef3f5a3ebf585356564d539f0bbd
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533418"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430738"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiera data från SAP Business Warehouse via öppen hubb med Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln beskriver hur du använder kopierings aktiviteten i Azure Data Factory för att kopiera data från ett SAP Business Warehouse (BW) via öppen hubb. Den bygger på [översikts artikeln om kopierings aktiviteten](copy-activity-overview.md) som visar en översikt över kopierings aktiviteten.
@@ -38,8 +39,8 @@ Du kan kopiera data från SAP Business Warehouse via öppna hubbar till alla mot
 
 Mer specifikt stöder detta SAP Business Warehouse Open Hub Connector:
 
-- SAP Business Warehouse **version 7,01 eller senare (i en senaste SAP-support paket stack som publicerats efter året 2015)**. SAP BW4/HANA stöds inte av den här anslutningen.
-- Kopiera data via den lokala mål destinations tabellen som under kan vara DSO, InfoCube, multitillhandahållare, DataSource osv.
+- SAP Business Warehouse **version 7,01 eller senare (i en senaste SAP-support paket stack som publicerats efter året 2015)**. SAP BW/4HANA stöds inte av den här anslutningen.
+- Kopiera data via den lokala mål destinations tabellen, som under kan vara DSO, InfoCube, multitillhandahållare, DataSource osv.
 - Kopiera data med grundläggande autentisering.
 - Ansluta till en SAP-program Server eller SAP Message Server.
 - Hämtar data via RFC.
@@ -69,11 +70,11 @@ Som helhet består extraheringen från SAP InfoProviders till Azure Data Factory
 
 I det första steget körs en DTP. Varje körning skapar ett nytt ID för SAP-begäran. Fråge-ID: t lagras i den öppna Hub-tabellen och används sedan av ADF-kopplingen för att identifiera delta. De två stegen körs asynkront: DTP utlöses av SAP och data kopieringen för ADF utlöses via ADF. 
 
-Som standard läser ADF inte den senaste förändringen från den öppna Hub-tabellen (alternativet "exkludera senaste begäran" är sant). Data i ADF är inte 100% uppdaterade med data i den öppna Hub-tabellen (det sista deltaet saknas). I retur ser den här proceduren till att inga rader går förlorade av asynkron extrahering. Det fungerar fint även när ADF läser den öppna Hub-tabellen medan DTP fortfarande skriver till samma tabell. 
+Som standard läser ADF inte den senaste förändringen från den öppna Hub-tabellen (alternativet "exkludera senaste begäran" är sant). Det innebär att data i ADF inte är 100% uppdaterade med data i den öppna Hub-tabellen (det sista deltaet saknas). I retur ser den här proceduren till att inga rader går förlorade av asynkron extrahering. Det fungerar fint även när ADF läser den öppna Hub-tabellen medan DTP fortfarande skriver till samma tabell. 
 
 Du lagrar vanligt vis det maximala kopierade förfrågnings-ID: t i den senaste körningen av ADF i ett data lager för mellanlagring (till exempel Azure blob i diagrammet ovan). Därför läses samma begäran inte en andra gång med ADF i den efterföljande körningen. Observera att data inte tas bort automatiskt från den öppna Hub-tabellen.
 
-För korrekt delta hantering kan det inte ha fråge-ID: n från olika DTPs i samma öppna Hub-tabell. Därför får du inte skapa fler än en DTP för varje Open Hub-destination (OHD). När du behöver fullständig och delta extrahering från samma InfoProvider bör du skapa två OHDs för samma InfoProvider. 
+För korrekt delta hantering är det inte tillåtet att ha fråge-ID från olika DTPs i samma öppna Hub-tabell. Därför får du inte skapa fler än en DTP för varje Open Hub-destination (OHD). När du behöver fullständig och delta extrahering från samma InfoProvider bör du skapa två OHDs för samma InfoProvider. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -81,7 +82,7 @@ Om du vill använda den här SAP Business Warehouse-anslutningen med öppen hubb
 
 - Konfigurera en egen värd Integration Runtime med version 3,13 eller senare. Mer information finns i artikeln om [egen värd integration runtime](create-self-hosted-integration-runtime.md) .
 
-- Hämta **64-bitars [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html) ** från SAP: s webbplats och installera den på den lokala IR-datorn. När du installerar går du till fönstret valfria installations steg och kontrollerar att du väljer alternativet **Installera sammansättningar i GAC** som det visas i följande bild. 
+- Hämta **64-bitars [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html)** från SAP: s webbplats och installera den på den lokala IR-datorn. När du installerar går du till fönstret valfria installations steg och kontrollerar att du väljer alternativet **Installera sammansättningar i GAC** som det visas i följande bild. 
 
     ![Installera SAP .NET Connector](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -90,7 +91,7 @@ Om du vill använda den här SAP Business Warehouse-anslutningen med öppen hubb
     - Auktorisering för RFC och SAP BW. 
     - Behörigheter till "kör"-aktiviteten för Authorization-objektet "S_SDSAUTH".
 
-- Skapa en SAP Open Hub-måltyp som **databas tabell** med alternativet "teknisk nyckel" markerat.  Vi rekommenderar också att du lämnar kryss rutan ta bort data från tabellen som omarkerade även om det inte är obligatoriskt. Utnyttja DTP (direkt körning eller integrering i en befintlig process kedja) för att landa data från källobjektet (till exempel kub) som du har valt till mål tabellen med öppen hubb.
+- Skapa en SAP Open Hub-måltyp som **databas tabell** med alternativet "teknisk nyckel" markerat.  Vi rekommenderar också att du lämnar kryss rutan ta bort data från tabellen som omarkerade även om det inte är obligatoriskt. Använd DTP (direkt körning eller integrering i befintlig process kedja) för att landa data från källobjektet (till exempel kub) som du har valt till mål tabellen med öppen hubb.
 
 ## <a name="getting-started"></a>Komma igång
 

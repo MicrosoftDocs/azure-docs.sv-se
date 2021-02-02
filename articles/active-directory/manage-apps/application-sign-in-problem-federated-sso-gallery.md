@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: feeed07021e31dfee44fa9372927e45b53131d1e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254061"
+ms.locfileid: "99430419"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning
 För att felsöka inloggnings problemen nedan rekommenderar vi följande för att bättre diagnostisera och automatisera lösnings stegen:
@@ -54,7 +54,7 @@ Kontrol lera att `Issuer` attributet i SAML-begäran matchar det ID-värde som k
 På sidan SAML-baserad SSO-konfiguration, i avsnittet **grundläggande SAML-konfiguration** , kontrollerar du att värdet i text rutan identifierare matchar värdet för det ID-värde som visas i felet.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Svars adressen stämmer inte överens med de svars adresser som har kon figurer ATS för programmet
-`Error AADSTS50011: The reply address 'https:\//contoso.com' does not match the reply addresses configured for the application.`
+`Error AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '{application identifier}'.`
 
 **Möjlig orsak**
 

@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046051"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430636"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Skapa och etablera en IoT Edge enhet med en TPM på Linux
 
@@ -31,7 +31,7 @@ Uppgifterna är följande:
 >
 > Om du använder en fysisk enhet kan du gå vidare till avsnittet [Hämta etablerings information från en fysisk enhet](#retrieve-provisioning-information-from-a-physical-device) i den här artikeln.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Windows-utvecklings dator med [Hyper-V aktiverat](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). Den här artikeln använder Windows 10 som kör en virtuell Ubuntu-Server.
 * En aktiv IoT Hub.
@@ -53,7 +53,7 @@ En virtuell växel gör att den virtuella datorn kan ansluta till ett fysiskt n�
 
 3. Välj en **extern** virtuell växel och välj sedan **Skapa virtuell växel**.
 
-4. Ge din nya virtuella växel ett namn, till exempel **EdgeSwitch**. Kontrol lera att anslutnings typen är inställd på **externt nätverk**och välj sedan **OK**.
+4. Ge din nya virtuella växel ett namn, till exempel **EdgeSwitch**. Kontrol lera att anslutnings typen är inställd på **externt nätverk** och välj sedan **OK**.
 
 5. Ett popup-fönster varnar dig om att nätverks anslutningen kan avbrytas. Fortsätt genom att välja **Ja**.
 
@@ -91,7 +91,7 @@ När den virtuella datorn har skapats öppnar du dess inställningar för att ak
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>Starta den virtuella datorn och samla in TPM-data
 
-Bygg ett verktyg som du kan använda för att hämta enhetens **registrerings-ID** och **bekräftelse nyckel**på den virtuella datorn.
+Bygg ett verktyg som du kan använda för att hämta enhetens **registrerings-ID** och **bekräftelse nyckel** på den virtuella datorn.
 
 1. Starta den virtuella datorn i Hyper-V Manager och Anslut till den.
 
@@ -151,11 +151,11 @@ När du skapar en registrering i DPS har du möjlighet att deklarera en **först
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din instans av IoT Hub Device Provisioning service.
 
-2. Under **Inställningar**väljer du **Hantera registreringar**.
+2. Under **Inställningar** väljer du **Hantera registreringar**.
 
 3. Välj **Lägg till enskild registrering** och slutför sedan följande steg för att konfigurera registreringen:  
 
-   1. För **mekanism**väljer du **TPM**.
+   1. För **mekanism** väljer du **TPM**.
 
    2. Ange **bekräftelse nyckeln** och **registrerings-ID: t** som du kopierade från den virtuella datorn.
 
@@ -205,7 +205,11 @@ När körningen har installerats på enheten konfigurerar du enheten med den inf
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
+
+   Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
 
 1. Uppdatera värdena för `scope_id` och `registration_id` med din DPS-och enhets information.
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700609"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430087"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -82,6 +82,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft. avdelningens kontroll](#microsoftpurview) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft. Synapse](#microsoftsynapse) |
 | **Blockkedja** |
 | [Microsoft. blockchain](#microsoftblockchain) |
 | **AI + maskininlärning** |
@@ -94,7 +95,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
-| **Mixed Reality** |
+| **Mixad verklighet** |
 | [Microsoft. IoTSpaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Integrering** |
@@ -4765,6 +4766,169 @@ Azure-tjänst: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/Transforms/Delete | Ta bort transformering av Stream Analytics jobb |
 > | Microsoft. StreamAnalytics/streamingjobs/transformationer/Read | Läs Stream Analytics jobb omvandling |
 > | Microsoft. StreamAnalytics/streamingjobs/Transforms/Write | Skriv Stream Analytics jobb omvandling |
+
+### <a name="microsoftsynapse"></a>Microsoft. Synapse
+
+Azure-tjänst: [Synapse Analytics](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Åtgärd | Beskrivning |
+> | --- | --- |
+> | Microsoft. Synapse/checkNameAvailability/Action | Kontrollerar tillgänglighet för arbets ytans namn. |
+> | Microsoft. Synapse/register/åtgärd | Registrerar resurs leverantören för Azure Synapse Analytics (arbets ytor) och gör det möjligt att skapa arbets ytor. |
+> | Microsoft. Synapse/avregistrera/åtgärd | Avregistrerar resurs leverantören för Azure Synapse Analytics (arbets ytor) och inaktiverar skapandet av arbets ytor. |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/Read | Hämta alla Integration Runtime. |
+> | Microsoft. Synapse/arbets ytor/integrationruntimes/Write | Skapa eller uppdatera alla integrerings körningar. |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/Delete | Ta bort eventuella Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/getStatus/åtgärd | Hämta Integration Runtime status |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/createExpressSHIRInstallLink/åtgärd | Skapa en Integration Runtime installations länk |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/start/åtgärd | Starta alla Integration Runtime |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/stopp/åtgärd | Stoppa alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/getConnectionInfo/åtgärd | Hämta anslutnings information för alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/regenerateAuthKey/åtgärd | Återskapa auth Key för alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/listAuthKeys/åtgärd | Visa en lista över auth-nycklar för alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/removeNode/åtgärd | Ta bort alla Integration Runtime-noder |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/monitoringData/åtgärd | Hämta Integration Runtime övervaknings data |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/syncCredentials/åtgärd | Synkronisera autentiseringsuppgifter på alla Integration Runtime |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/uppgradering/åtgärd | Uppgradera alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/removeLinks/åtgärd | Ta bort eventuella Integration Runtime länkar |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/enableInteractiveQuery/åtgärd | Aktivera interaktiv fråga på alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/disableInteractiveQuery/åtgärd | Inaktivera interaktiv fråga på alla Integration Runtime |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/refreshObjectMetadata/åtgärd | Uppdatera metadata för objekt i en integrerings körning |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/getObjectMetadata/åtgärd | Hämta metadata för objekt i en integrerings körning |
+> | Microsoft. Synapse/arbets ytor/managedIdentitySqlControlSettings/Write | Uppdatera inställningar för hanterad identitets-SQL-kontroll på arbets ytan |
+> | Microsoft. Synapse/arbets ytor/managedIdentitySqlControlSettings/Read | Hämta inställningar för SQL-kontroll för hanterade identiteter |
+> | Microsoft. Synapse/arbets ytor/scopePools/Write | Skapa eller uppdatera alla scope-pooler. |
+> | Microsoft. Synapse/arbets ytor/scopePools/Read | Läs alla scope-pooler. |
+> | Microsoft. Synapse/arbets ytor/scopePools/Delete | Ta bort alla scope-pooler. |
+> | Microsoft. Synapse/Operations/Read | Läs tillgängliga åtgärder från Azure Synapse Analytics-resurs leverantören. |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/Nodes/Read | Hämta alla Integration Runtime-noder. |
+> | Microsoft. Synapse/arbetsytes/integrationRuntimes/Nodes/Delete | Ta bort alla Integration Runtime-noder. |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/Nodes/Write | Korrigera alla Integration Runtime-noder. |
+> | Microsoft. Synapse/arbets ytor/integrationRuntimes/Nodes/ipAddress/åtgärd | Hämta Integration Runtime IP-adress |
+> | Microsoft. Synapse/arbets ytor/firewallRules/Write | Skapa eller uppdatera en regel för IP-brandvägg. |
+> | Microsoft. Synapse/arbets ytor/firewallRules/Read | Läs regel för IP-brandvägg |
+> | Microsoft. Synapse/arbets ytor/firewallRules/Delete | Ta bort alla IP-brandväggar. |
+> | Microsoft. Synapse/arbets ytor/replaceAllIpFirewallRules/åtgärd | Ersätter alla IP-brandväggens regler för arbets ytan. |
+> | Microsoft. Synapse/arbets ytor/Skriv | Skapa eller uppdatera alla arbets ytor. |
+> | Microsoft. Synapse/arbets ytor/läsa | Läs alla arbets ytor. |
+> | Microsoft. Synapse/arbets ytor/ta bort | Ta bort alla arbets ytor. |
+> | Microsoft. Synapse/arbets ytor/checkDefaultStorageAccountStatus/åtgärd | Kontrollerar statusen för standard lagrings kontot. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/Write | Skapa eller uppdatera SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/Read | Läs alla SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/Delete | Ta bort alla SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/PAUSE/åtgärd | Pausa alla SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/återuppta/åtgärd | Återuppta alla SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/restorePoints/åtgärd | Skapa en återställnings punkt för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/Move/åtgärd | Byt namn på alla SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/dataWarehouseQueries/Read | Läs alla frågor om SQL Analytics-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/geoBackupPolicies/Read | Läs några geo-säkerhets kopierings principer för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/dataWarehouseUserActivities/Read | Läs alla användar aktiviteter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/restorePoints/Read | Läs alla återställnings punkter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/restorePoints/Delete | Tar bort en återställnings punkt. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Läs alla fråge steg för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/maintenanceWindows/Read | Läs alla underhålls fönster för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/maintenanceWindows/Write | Läs alla underhålls fönster för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/maintenanceWindowOptions/Read | Läs alternativ för underhålls fönster för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/replicationLinks/Read | Läs alla länkar för replikering av SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/transparentDataEncryption/Read | Läs transparent datakryptering konfiguration av SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/transparentDataEncryption/Write | Skapa eller uppdatera SQL Analytics-poolens transparent datakryptering konfiguration. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/transparentDataEncryption/operationResults/Read | Läs en SQL Analytics-pool transparent datakryptering konfigurations åtgärds resultat. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/auditingSettings/Read | Läs alla gransknings inställningar för SQL Analytics-poolen. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/auditingSettings/Write | Skapa eller uppdatera gransknings inställningar för SQL Analytics-poolen. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/Operations/Read | Läs alla åtgärder för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/Usage/Read | Läs några användnings områden för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/currentSensitivityLabels/Read | Läs alla aktuella känslighets etiketter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/currentSensitivityLabels/Write | Uppdatera aktuella känslighets etiketter |
+> | Microsoft. Synapse/arbets ytor/sqlPools/recommendedSensitivityLabels/Read | Läs alla rekommenderade känslighets etiketter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/recommendedSensitivityLabels/Write | Rekommenderade känslighets etiketter för batch-uppdatering |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schema/läsa | Läs alla scheman för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schema/tabeller/läsa | Läs alla schema tabeller för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schema/tabeller/kolumner/läsa | Läs alla kolumner för schema tabeller i SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/connectionPolicies/Read | Läs alla anslutnings principer för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/vulnerabilityAssessments/Read | Läs eventuella sårbarhets bedömning för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/vulnerabilityAssessments/Write | Skapar eller uppdaterar SQL-poolens sårbarhets bedömning |
+> | Microsoft. Synapse/arbets ytor/sqlPools/vulnerabilityAssessments/Delete | Ta bort SQL Analytics-poolens sårbarhets bedömning. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/vulnerabilityAssessments/Skanna/läsa | Läs eventuella skannings poster för sårbarhets bedömning i SQL Analytics-pool. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/vulnerabilityAssessments/Scans/initiateScan/åtgärd | Initiera söknings poster för SQL Analytics-poolens sårbarhets bedömning. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/vulnerabilityAssessments/Scans/export/åtgärd | Exportera alla söknings poster för sårbarhets bedömning i SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/securityAlertPolicies/Read | Läs alla hot identifierings principer för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/securityAlertPolicies/Write | Skapa eller uppdatera alla hot identifierings principer för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schemas/tables/columns/sensitivityLabels/Read | Hämtar känslighets etiketten för en specifik kolumn. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schemas/tables/columns/sensitivityLabels/Enable/åtgärd | Aktivera alla känslighets etiketter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schemas/tables/columns/sensitivityLabels/Disable/åtgärd | Inaktivera alla känslighets etiketter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schemas/tabeller/kolumner/sensitivityLabels/Write | Skapa eller uppdatera alla känslighets etiketter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/schema/tabeller/kolumner/sensitivityLabels/Delete | Ta bort alla känslighets etiketter för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/vulnerabilityAssessments/Rules/Baselines/Read | Hämta en regel bas linje för sårbarhets bedömning av SQL Analytics-pool. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/vulnerabilityAssessments/Rules/planal/Write | Skapa eller uppdatera en regel bas linje för sårbarhets bedömning av SQL Analytics-pool. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/vulnerabilityAssessments/Rules/planal/Delete | Ta bort en regel bas linje för sårbarhets bedömning av SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/operationStatuses/Read | Läs alla asynkrona åtgärds status. |
+> | Microsoft. Synapse/arbets ytor/operationResults/Read | Läs eventuella asynkrona åtgärds resultat. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/operationResults/Read | Läs eventuella asynkrona åtgärds resultat. |
+> | Microsoft. Synapse/arbets ytor/bigDataPools/Write | Skapa eller uppdatera eventuella Spark-pooler. |
+> | Microsoft. Synapse/arbets ytor/bigDataPools/Read | Läs alla Spark-pooler. |
+> | Microsoft. Synapse/arbets ytor/bigDataPools/Delete | Ta bort alla Spark-pooler. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/metadataSync/Write | Skapa eller uppdatera konfigurationen för metadata för synkronisering av SQL Analytics-pool |
+> | Microsoft. Synapse/arbets ytor/sqlPools/metadataSync/Read | Läs konfiguration av metadata för synkronisering i SQL Analytics-pool |
+> | Microsoft. Synapse/arbets ytor/recoverableSqlpools/Read | Hämtar SQL Analytics-pooler som kan återskapas, vilket är resurserna som representerar geo-säkerhetskopieringar av SQL Analytics-pooler |
+> | Microsoft. Synapse/arbets ytor/administratörer/skrivning | Ange Active Directory administratör på arbets ytan |
+> | Microsoft. Synapse/arbets ytor/administratörer/läsa | Hämta arbets ytans Active Directory administratör |
+> | Microsoft. Synapse/arbets ytor/administratörer/ta bort | Ta bort arbets ytans Active Directory administratör |
+> | Microsoft. Synapse/arbets ytor/privateEndpointConnections/Write | Skapa eller uppdatera privat slut punkts anslutning |
+> | Microsoft. Synapse/arbets ytor/privateEndpointConnections/Read | Läs eventuell privat slut punkts anslutning |
+> | Microsoft. Synapse/arbets ytor/privateEndpointConnections/Delete | Ta bort privat slut punkts anslutning |
+> | Microsoft. Synapse/arbets ytor/privateLinkResources/Read | Hämta en lista över resurser för privat länk |
+> | Microsoft. Synapse/arbets ytor/sqlPools/tillägg/läsa | Hämta pool-tillägg för SQL Analytics |
+> | Microsoft. Synapse/arbets ytor/sqlPools/tillägg/Skriv | Ändra tillägget för en specifik SQL Analytics-pool |
+> | Microsoft. Synapse/privateLinkHubs/Write | Skapa eventuella PrivateLinkHubs. |
+> | Microsoft. Synapse/privateLinkHubs/Read | Läs eventuella PrivateLinkHubs. |
+> | Microsoft. Synapse/privateLinkHubs/Delete | Ta bort PrivateLinkHubs. |
+> | Microsoft. Synapse/locations/operationStatuses/Read | Läs alla asynkrona åtgärds status. |
+> | Microsoft. Synapse/locations/operationResults/Read | Läs eventuella asynkrona åtgärds resultat. |
+> | Microsoft. Synapse/privateLinkHubs/privateLinkResources/Read | Hämta en lista över resurser för privat länk |
+> | Microsoft. Synapse/privateLinkHubs/privateEndpointConnections/Write | Skapa eller uppdatera privat slut punkts anslutning för PrivateLinkHub |
+> | Microsoft. Synapse/privateLinkHubs/privateEndpointConnections/Read | Läs eventuell privat slut punkts anslutning för PrivateLinkHub |
+> | Microsoft. Synapse/privateLinkHubs/privateEndpointConnections/Delete | Ta bort privat slut punkts anslutning för PrivateLinkHub |
+> | Microsoft. Synapse/arbets ytor/sqlPools/operationStatuses/Read | Läs eventuella asynkrona åtgärds resultat. |
+> | Microsoft. Synapse/arbets ytor/nycklar/Skriv | Skapa eller uppdatera arbets ytans nycklar |
+> | Microsoft. Synapse/arbets ytor/nycklar/läsa | Läs valfri nyckel definition för arbets ytan. |
+> | Microsoft. Synapse/arbets ytor/nycklar/ta bort | Ta bort en nyckel för arbets ytan. |
+> | Microsoft. Synapse/arbets ytor/bibliotek/läsa | Läsa biblioteks artefakter |
+> | Microsoft. Synapse/arbets ytor/sqlPools/workloadGroups/Read | Visar en lista över arbets belastnings grupper för en vald SQL-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/workloadGroups/Write | Anger egenskaperna för en speciell arbets belastnings grupp. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/workloadGroups/Delete | Släpper en speciell arbets belastnings grupp. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/workloadGroups/workloadClassifiers/Read | Visar en lista över arbets belastnings klassificeringar för en vald SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/workloadGroups/workloadClassifiers/Write | Anger egenskaperna för en angiven arbets belastnings klassificerare. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/workloadGroups/workloadClassifiers/Delete | Släpper en speciell arbets belastnings klassificering. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/extendedAuditingSettings/Read | Läs alla utökade gransknings inställningar för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/extendedAuditingSettings/Write | Skapa eller uppdatera alla utökade gransknings inställningar för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/dataMaskingPolicies/Read | Returnera listan över data masknings principer för SQL Analytics-poolen. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/dataMaskingPolicies/Write | Skapar eller uppdaterar en princip för data maskning för SQL Analytics-pool |
+> | Microsoft. Synapse/arbetsytes/sqlPools/dataMaskingPolicies/Rules/Read | Hämtar en lista över data masknings regler för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/dataMaskingPolicies/regler/Skriv | Skapar eller uppdaterar en SQL Analytics-pool data masking-regel. |
+> | Microsoft. Synapse/arbetsytes/sqlPools/columns/Read | Returnera en lista med kolumner för en SQL Analytics-pool |
+> | Microsoft. Synapse/arbets ytor/sqlPools/sensitivityLabels/Read | Hämtar känslighets etiketten för en specifik kolumn. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/auditRecords/Read | Hämta BLOB-gransknings poster för SQL-pool |
+> | Microsoft. Synapse/resourceGroups/operationStatuses/Read | Läs alla asynkrona åtgärds status. |
+> | Microsoft. Synapse/arbets ytor/extendedAuditingSettings/Write | Skapa eller uppdatera utökade gransknings inställningar för SQL Server. |
+> | Microsoft. Synapse/arbets ytor/extendedAuditingSettings/Read | Läs standard utökade gransknings inställningar för SQL Server. |
+> | Microsoft. Synapse/arbets ytor/auditingSettings/Write | Skapa eller uppdatera gransknings inställningar för SQL Server. |
+> | Microsoft. Synapse/arbets ytor/auditingSettings/Read | Läs standard gransknings inställningar för SQL Server. |
+> | Microsoft. Synapse/arbets ytor/securityAlertPolicies/Write | Skapa eller uppdatera säkerhets aviserings principer för SQL Server. |
+> | Microsoft. Synapse/arbets ytor/securityAlertPolicies/Read | Läs standard säkerhets aviserings principer för SQL Server. |
+> | Microsoft. Synapse/arbets ytor/vulnerabilityAssessments/Write | Skapa eller uppdatera SQL Server sårbarhets-rapporten. |
+> | Microsoft. Synapse/arbets ytor/vulnerabilityAssessments/Read | Läs standard sårbarhets rapport om SQL Server-säkerhetsproblem. |
+> | Microsoft. Synapse/arbets ytor/vulnerabilityAssessments/Delete | Ta bort SQL Server sårbarhets-rapporten. |
+> | Microsoft. Synapse/arbets ytor/restorableDroppedSqlPools/Read | Hämtar en borttagen SQL-pool som kan återställas |
+> | Microsoft. Synapse/arbetsytes/sqlPools/dataWarehouseQueries/steg/läsa | Läs alla fråge steg för SQL Analytics-pool. |
+> | Microsoft. Synapse/arbets ytor/sqlPools/workloadGroups/operationStatuses/Read | Åtgärds status för arbets belastnings grupp för SQL Analytics-pool |
+> | Microsoft. Synapse/arbetsytes/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/Read | Status för klassificering av arbets belastning för SQL Analytics-pool |
+> | Microsoft. Synapse/arbetsytes/sqlPools/workloadGroups/workloadClassifiers/operationResults/Read | Resultat för klassificering av arbets belastning för SQL Analytics-pool |
+> | Microsoft. Synapse/arbets ytor/sqlUsages/Read | Hämtar tillgängliga användnings gränser för SQL Analytics-pooler |
+> | Microsoft. Synapse/arbets ytor/auditingSettings/operationResults/Read | SQL Server gransknings inställningar |
+> | Microsoft. Synapse/arbets ytor/sqlAdministrators/Write | Ange Active Directory administratör på arbets ytan |
+> | Microsoft. Synapse/arbets ytor/sqlAdministrators/Read | Hämta arbets ytans Active Directory administratör |
+> | Microsoft. Synapse/arbets ytor/sqlAdministrators/Delete | Ta bort arbets ytans Active Directory administratör |
 
 ## <a name="blockchain"></a>Blockkedja
 

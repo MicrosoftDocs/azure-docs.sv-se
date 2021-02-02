@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bf4d0ed2173d048d968f60dea72a1a0c25ab05
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079249"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429793"
 ---
 # <a name="using-azure-batch-rendering"></a>Använda Azure Batch åter givning
 
@@ -51,15 +51,6 @@ Det är också möjligt för anpassade mallar att skapas, från början eller ge
 ### <a name="file-system-and-data-movement"></a>Fil system och data förflyttning
 
 Avsnittet "data" i Batch Explorer tillåter att filer kopieras mellan ett lokalt fil system och Azure Storages konton.
-
-## <a name="client-application-plug-ins"></a>Plugin-program för klient program
-
-Plugin-program är tillgängliga för några av klient programmen.  Plugin-programmen tillåter att pooler och jobb skapas direkt från programmet eller anropar Batch Explorer.
-
-* [Över gång 2,79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Blends 2,8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
-* [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-* [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 
 ## <a name="next-steps"></a>Nästa steg
 

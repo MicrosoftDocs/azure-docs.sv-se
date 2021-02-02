@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 01/22/2021
-ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760624"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430805"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
 
@@ -168,6 +168,8 @@ Läs följande avsnitt om du vill ha mer information om de pris modeller som gä
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Ändrade, begränsade, otillgängliga eller ej stödda funktioner
 
 I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är begränsade, otillgängliga eller stöds inte:
+
+* **OS-support**: för närvarande fungerar inte designern i Visual Studio Code på Linux OS, men du kan fortfarande distribuera Logi Kap par som använder Logic Apps för hands versions körning till Linux-baserade virtuella datorer. Nu kan du bygga dina Logi Kap par i Visual Studio Code på Windows eller macOS och sedan distribuera till en Linux-baserad virtuell dator.
 
 * **Utlösare och åtgärder**: vissa inbyggda utlösare är inte tillgängliga, till exempel glidande fönster och batch. För att starta arbets flödet använder du den [inbyggda upprepningen, begäran, http, HTTP-webhook, Event Hubs eller Service Bus utlösare](../connectors/apis-list.md). Inbyggda utlösare och åtgärder körs internt i Azure Logic Apps Preview-körningsmiljön, medan hanterade anslutningar distribueras i Azure. I designern visas inbyggda utlösare och åtgärder under den **inbyggda** fliken, medan utlösare för hanterade anslutningar och åtgärder visas på fliken **Azure** .
 

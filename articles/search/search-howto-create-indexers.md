@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: c26529f48d03b8cd038ce4fea8164a305dfc17f3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097648"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430053"
 ---
 # <a name="create-a-search-indexer"></a>Skapa en Sök indexerare
 
@@ -155,7 +155,7 @@ Med tanke på att indexerarna inte åtgärdar data problem kan andra former av r
 
 ## <a name="know-your-index"></a>Känna till ditt index
 
-Kom ihåg att indexerarna skickar Sök dokumenten till sökmotorn för indexering. Precis som indexerare har egenskaper som bestämmer körnings beteendet, har ett index schema egenskaper som visar hur strängar indexeras (endast strängar analyseras och token). Beroende på Analyzer-tilldelningar kan indexerade strängar skilja sig från vad du skickade. Du kan utvärdera effekterna av analys verktyg med [analysera text (rest)](/rest/api/searchservice/test-analyzer). Mer information om analys verktyg finns i [analys verktyg för text bearbetning](search-analyzers.md).
+Kom ihåg att indexerarna skickar Sök dokumenten till sökmotorn för indexering. Precis som indexerare har egenskaper som bestämmer körnings beteendet, har ett index schema egenskaper som inte kan användas för att påverka hur strängar indexeras (endast strängar analyseras och token). Beroende på Analyzer-tilldelningar kan indexerade strängar skilja sig från vad du skickade. Du kan utvärdera effekterna av analys verktyg med [analysera text (rest)](/rest/api/searchservice/test-analyzer). Mer information om analys verktyg finns i [analys verktyg för text bearbetning](search-analyzers.md).
 
 I termer av hur indexerare interagerar med ett index, kontrollerar en indexerare endast fält namn och typer. Det finns inget validerings steg som garanterar att inkommande innehåll är korrekt för motsvarande sökfält i indexet. Som ett verifierings steg kan du köra frågor på det ifyllda indexet som returnerar hela dokument eller markerade fält. Mer information om hur du frågar innehållet i ett index finns i [skapa en enkel fråga](search-query-create.md).
 

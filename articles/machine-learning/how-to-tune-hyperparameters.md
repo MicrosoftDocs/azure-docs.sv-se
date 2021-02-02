@@ -2,24 +2,23 @@
 title: Inställning av en modell
 titleSuffix: Azure Machine Learning
 description: Automatisera inställningen av en parameter för djup inlärning och maskin inlärnings modeller med Azure Machine Learning.
-ms.author: swatig
-author: swatig007
+ms.author: anumamah
+author: Aniththa
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/30/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133869"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430361"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Inställning av en modell med Azure Machine Learning
-
 
 Automatisera effektiv inställning av HyperDrive med hjälp av Azure Machine Learning [-paket](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py). Lär dig hur du utför de steg som krävs för att justera de båda parametrarna med [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py):
 
@@ -382,6 +381,30 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>Visualisera justerings körningar för den här parametern
 
+Du kan visualisera dina inställnings justeringar för din parameter i Azure Machine Learning Studio, eller så kan du använda en anteckningsbok-widget.
+
+### <a name="studio"></a>Studio
+
+Du kan visualisera alla dina inställnings justeringar för din parameter i [Azure Machine Learning Studio](https://ml.azure.com). Mer information om hur du visar ett experiment i portalen finns i [Visa körnings poster i Studio](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+
+- **Mått diagram**: den här visualiseringen spårar de mått som loggas för varje HyperDrive-underordnad körning under varaktigheten för justering av den aktuella parametern. Varje rad representerar en underordnad körning och varje punkt mäter det primära mått svärdet vid den iterationen av körning.  
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="Diagram över justerings mått för grundparameter":::
+
+- **Diagram över parallella koordinater**: den här visualiseringen visar korrelationen mellan primärt mått prestanda och individuella värden för en valfri parameter. Diagrammet är interaktivt via flytt av axlar (klicka och dra med Axel etiketten) och genom att markera värden på en enda axel (klicka och dra lodrätt längs en enda axel för att markera ett intervall med önskade värden).
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="Diagram för att justera parallella koordinater":::
+
+- tvådimensionellt **punkt diagram**: den här visualiseringen visar korrelationen mellan två enskilda grundparametrar tillsammans med deras associerade primära mått värde.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="Hyparameter-justering 2-dimensionellt punkt diagram":::
+
+- tredimensionellt **punkt diagram**: den här visualiseringen är samma som 2D, men tillåter att tre dimensions dimensioner används för korrelation med det primära mått svärdet. Du kan också klicka och dra för att orientera om diagrammet för att visa olika korrelationer i 3D-rymden.
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="Hyparameter-justering 3-dimensionellt punkt diagram":::
+
+### <a name="notebook-widget"></a>Anteckningsbok-widget
+
 Använd [widgeten Notebook](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) för att visualisera förloppet för din utbildning. Följande kodfragment visualiserar alla dina för inställnings justeringar på en plats i en Jupyter Notebook:
 
 ```Python
@@ -391,17 +414,9 @@ RunDetails(hyperdrive_run).show()
 
 Den här koden visar en tabell med information om inlärnings körningarna för var och en av konfigurationerna för de olika parametrarna.
 
-![justerings tabell för grundparameter](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
+:::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png" alt-text="Justerings tabell för grundparameter":::
 
-Du kan också visualisera prestanda för var och en av körningarna när inlärningen fortskrider. 
-
-![ritytans justerings område](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
-
-Du kan visuellt identifiera korrelationen mellan prestanda och värden för enskilda egenskaper med hjälp av en parallell Koordinats kurva. 
-
-[![parametrar för att justera parallella koordinater](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
-
-Du kan också visualisera alla dina inställnings justeringar för din parameter i Azure-webbportalen. Mer information om hur du visar ett experiment i portalen finns i [så här spårar du experiment](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
+Du kan också visualisera prestanda för var och en av körningarna när inlärningen fortskrider.
 
 ## <a name="find-the-best-model"></a>Hitta den bästa modellen
 

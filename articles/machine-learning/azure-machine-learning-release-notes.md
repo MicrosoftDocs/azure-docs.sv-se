@@ -9,17 +9,32 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788883"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99431005"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
 
+ ## <a name="2021-01-31"></a>2021-01-31
+### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio Notebooks Experience (januari Update)
++ **Nya funktioner**
+  + Inbyggd markdown-redigerare i AzureML. Användare kan nu återge och redigera markdown-filer internt i AzureML Studio.
+  + [Knappen Kör för skript (. py,. R och. sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script). Användarna kan nu enkelt köra python-, R-och bash-skript i AzureML
+  + [Variabel Utforskaren](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook). Utforska innehållet i variabler och data ramar i en popup-panel. Användare kan enkelt kontrol lera datatyp, storlek och innehåll.
+  + [Innehålls](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc)förteckning. Navigera till avsnitt i din antecknings bok, som anges av markdown-rubriker.
+  + Exportera din antecknings bok som latex/HTML/py. Skapa filer som är enkla att dela i anteckningsbok-format genom att exportera till LaTex, HTML eller. py
+  + Intellicode. Med de ML-baserade resultaten får du en förbättrad [intelligent autokomplettering](https://docs.microsoft.com/visualstudio/intellicode/overview).
+
++ **Fel korrigeringar och förbättringar**
+  + Förbättrade sid inläsnings tider
+  + Förbättrade prestanda 
+  + Förbättrad hastighet och kernel-tillförlitlighet
+  
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK för python v-1.21.0

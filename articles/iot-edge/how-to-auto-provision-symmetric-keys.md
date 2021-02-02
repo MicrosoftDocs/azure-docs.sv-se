@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 10ed546e8f05f4a93e4523c7870f79d41aa1f622
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046000"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430619"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Skapa och etablera en IoT Edge enhet med hjälp av symmetrisk nyckel attestering
 
@@ -28,7 +28,7 @@ Den här artikeln visar hur du skapar en individuell registrering av enhets etab
 
 Symmetrisk nyckel attestering är en enkel metod för att autentisera en enhet med en enhets etablerings tjänst instans. Den här attesterings metoden representerar en "Hello World"-upplevelse för utvecklare som är nya för enhets etablering eller som inte har strikta säkerhets krav. Enhets attestering med hjälp av [TPM](../iot-dps/concepts-tpm-attestation.md) -eller [X. 509-certifikat](../iot-dps/concepts-x509-attestation.md) är säkrare och bör användas för mer långtgående säkerhets krav.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En aktiv IoT Hub
 * En fysisk eller virtuell enhet
@@ -58,11 +58,11 @@ När du skapar en registrering i DPS har du möjlighet att deklarera en **först
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din instans av IoT Hub Device Provisioning service.
 
-1. Under **Inställningar**väljer du **Hantera registreringar**.
+1. Under **Inställningar** väljer du **Hantera registreringar**.
 
 1. Välj **Lägg till enskild registrering** och slutför sedan följande steg för att konfigurera registreringen:  
 
-   1. För **mekanism**väljer du **symmetrisk nyckel**.
+   1. För **mekanism** väljer du **symmetrisk nyckel**.
 
    1. Markera kryss rutan **generera nycklar automatiskt** .
 
@@ -94,7 +94,7 @@ När du skapar en registrering i DPS har du möjlighet att deklarera en **först
       }
       ```
 
-   1. Se till att **Aktivera post** är **aktive**rad.
+   1. Se till att **Aktivera post** är **aktive** rad.
 
    1. Välj **Spara**.
 
@@ -193,7 +193,11 @@ Ha följande information redo:
        method: "symmetric_key"
        registration_id: "<REGISTRATION_ID>"
        symmetric_key: "<SYMMETRIC_KEY>"
+   #  always_reprovision_on_startup: true
+   #  dynamic_reprovisioning: false
    ```
+
+   Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
 
 1. Uppdatera värdena för `scope_id` , `registration_id` och `symmetric_key` med din DPS-och enhets information.
 

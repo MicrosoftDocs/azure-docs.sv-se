@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ee51b31246760e4619eef1e16e800b16ea886de0
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914917"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430721"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Skapa och etablera en IoT Edge-enhet med X. 509-certifikat
 
@@ -29,7 +29,7 @@ Den här artikeln visar hur du skapar en registrering av enhets etablerings tjä
 
 Att använda X. 509-certifikat som en mekanism för attestering är ett utmärkt sätt att skala produktion och förenkla enhets etablering. Normalt är X. 509-certifikat ordnade i en certifikat kedja med förtroende. Från och med ett självsignerat eller betrott rot certifikat signerar varje certifikat i kedjan nästa lägre certifikat. Det här mönstret skapar en delegerad kedja av förtroende från rot certifikatet nedåt genom varje mellanliggande certifikat till det slutliga "löv"-certifikatet som är installerat på en enhet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En aktiv IoT Hub.
 * En fysisk eller virtuell enhet som IoT Edge enheten.
@@ -104,7 +104,7 @@ Mer information om registreringar i Device Provisioning-tjänsten finns i [Hante
 
    * **Välj de IoT-hubbar som enheten kan tilldelas**: Välj den länkade IoT-hubben som du vill ansluta enheten till. Du kan välja flera hubbar och enheten tilldelas en av dem enligt den valda allokeringsregeln.
 
-   * **Första enhets status**: Lägg till ett taggvärde som ska läggas till på enheten, med ett värde om du vill. Du kan använda taggar för att ange mål grupper för enheter för automatisk distribution. Till exempel:
+   * **Första enhets status**: Lägg till ett taggvärde som ska läggas till på enheten, med ett värde om du vill. Du kan använda taggar för att ange mål grupper för enheter för automatisk distribution. Exempel:
 
       ```json
       {
@@ -189,7 +189,7 @@ Mer information om registreringar i Device Provisioning-tjänsten finns i [Hante
 
    * **Välj de IoT-hubbar som enheten kan tilldelas**: Välj den länkade IoT-hubben som du vill ansluta enheten till. Du kan välja flera hubbar och enheten tilldelas en av dem enligt den valda allokeringsregeln.
 
-   * **Första enhets status**: Lägg till ett taggvärde som ska läggas till på enheten, med ett värde om du vill. Du kan använda taggar för att ange mål grupper för enheter för automatisk distribution. Till exempel:
+   * **Första enhets status**: Lägg till ett taggvärde som ska läggas till på enheten, med ett värde om du vill. Du kan använda taggar för att ange mål grupper för enheter för automatisk distribution. Exempel:
 
       ```json
       {
@@ -248,11 +248,15 @@ Ha följande information redo:
    #   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
        identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
        identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   #  always_reprovision_on_startup: true
+   #  dynamic_reprovisioning: false
    ```
+
+   Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
 
 1. Uppdatera värdena för `scope_id` , `identity_cert` och `identity_pk` med din DPS-och enhets information.
 
-   När du lägger till X. 509-certifikatet och nyckelinformation i filen config. yaml ska Sök vägarna anges som fil-URI: er. Till exempel:
+   När du lägger till X. 509-certifikatet och nyckelinformation i filen config. yaml ska Sök vägarna anges som fil-URI: er. Exempel:
 
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`

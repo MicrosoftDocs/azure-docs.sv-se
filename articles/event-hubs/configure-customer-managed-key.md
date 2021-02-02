@@ -2,19 +2,20 @@
 title: Konfigurera din egen nyckel för kryptering av Azure Event Hubs-data i vila
 description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för kryptering av Azure Event Hubs data rest.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 00e33bc3464aed1829968b7957e48455eaa04447
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/01/2021
+ms.openlocfilehash: 53622344e36e514543d547dec95caaf1b0b76a13
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933789"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430687"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurera Kundhanterade nycklar för kryptering av Azure Event Hubs-data i vila med hjälp av Azure Portal
 Azure Event Hubs tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Tjänsten Event Hubs använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med hjälp av Microsoft-hanterade nycklar. Om du använder din egen nyckel (kallas även Bring Your Own Key (BYOK) eller kundhanterad nyckel) krypteras data fortfarande med hjälp av den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den Kundhanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till Kundhanterade nycklar som används för kryptering av Microsoft-hanterade nycklar. Att aktivera funktionen BYOK är en tids inställnings process i namn området.
 
 > [!NOTE]
-> BYOK-funktionen stöds av [Event Hubs dedikerade kluster med en enda klient](event-hubs-dedicated-overview.md) . Det går inte att aktivera den för standard Event Hubs-namnområden.
+> - BYOK-funktionen stöds av [Event Hubs dedikerade kluster med en enda klient](event-hubs-dedicated-overview.md) . Det går inte att aktivera den för standard Event Hubs-namnområden.
+> - Kryptering kan bara aktive ras för nya eller tomma namn områden. Om namn området innehåller händelse nav, kommer krypterings åtgärden att Miss läge.
 
 Du kan använda Azure Key Vault för att hantera dina nycklar och granska din nyckel användning. Du kan antingen skapa egna nycklar och lagra dem i ett nyckel valv, eller så kan du använda Azure Key Vault API: er för att generera nycklar. Mer information om Azure Key Vault finns i [Vad är Azure Key Vault?](../key-vault/general/overview.md)
 

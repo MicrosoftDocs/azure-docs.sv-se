@@ -8,14 +8,17 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: c794af26fdfe2d3706d8d8d266d0756eff391b50
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747707"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430284"
 ---
-# <a name="how-to-convert-data-to-fhir"></a>Så här konverterar du data till FHIR
+# <a name="how-to-convert-data-to-fhir-preview"></a>Så här konverterar du data till FHIR (för hands version)
+
+> [!IMPORTANT]
+> Den här funktionen är tillgänglig som en offentlig förhandsversion utan servicenivåavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Den anpassade slut punkten $convert-data i Azure API för FHIR är avsedd för data konvertering från olika format till FHIR. Den använder motorn för flytande mallar och mallarna från [FHIR-konverteraren](https://github.com/microsoft/FHIR-Converter) som standardmallar. Du kan anpassa de här omvandlings mallarna efter behov. För närvarande stöder den HL7v2 till FHIR-konvertering.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7ee22121fd023f3942eed64bd605bf87b961d893
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736514"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429846"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Tableau-Server
 
@@ -27,7 +27,7 @@ I den här självstudien får du lära dig hur du integrerar Tableau-servern med
 * Hantera dina konton på en central plats – Azure Portal.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -40,7 +40,7 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 * Tableau Server stöder **SP** -INITIERAd SSO
 
-## <a name="adding-tableau-server-from-the-gallery"></a>Lägga till Tableau-Server från galleriet
+## <a name="add-tableau-server-from-the-gallery"></a>Lägg till Tableau-Server från galleriet
 
 Om du vill konfigurera integrering av Tableau-servern i Azure AD måste du lägga till Tableau-servern från galleriet i listan över hanterade SaaS-appar.
 
@@ -83,7 +83,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
-    > Föregående värden är inte verkliga värden. Uppdatera värdena med den faktiska URL: en och identifieraren från sidan för konfiguration av Tableau-servern som beskrivs senare i självstudien.
+    > Föregående värden är inte verkliga värden. Uppdatera värdena med den faktiska inloggnings-URL: en, identifierare och svars-URL från sidan konfiguration av Tableau-server som beskrivs senare i självstudien.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -123,27 +123,27 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 2. På fliken **konfiguration** väljer du **användar identitet & åtkomst** och väljer sedan fliken **autentiseringsmetod** .
 
-    ![Skärm bild som visar den autentisering som valts från användar identitet & åtkomst.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Skärm bild som visar den autentisering som valts från användar identitet & åtkomst.](./media/tableauserver-tutorial/auth.png)
 
 3. Utför följande steg på sidan **konfiguration** :
 
-    ![Skärm bild som visar konfigurations sidan där du kan ange de värden som beskrivs.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Skärm bild som visar konfigurations sidan där du kan ange de värden som beskrivs.](./media/tableauserver-tutorial/config.png)
 
     a. Som **autentiseringsmetod** väljer du SAML.
 
     b. Markera kryss rutan för **Aktivera SAML-autentisering för servern**.
 
-    c. Tableau Server retur-URL – den URL som Tableau-användare kommer att komma åt, till exempel `http://tableau_server` . Använd `http://localhost` rekommenderas inte. Användning av en URL med ett avslutande snedstreck (till exempel `http://tableau_server/` ) stöds inte. Kopiera **Tableau Server Return URL** och klistra in den i text rutan för att **signera URL-adresser** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal
+    c. Tableau Server retur-URL – den URL som Tableau-användare kommer att komma åt, till exempel `http://tableau_server` . Använd `http://localhost` rekommenderas inte. Användning av en URL med ett avslutande snedstreck (till exempel `http://tableau_server/` ) stöds inte. Kopiera **Tableau Server Return URL** och klistra in den i text rutan för att **signera URL-adresser** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-    d. SAML-entitets-ID – entitets-ID: t identifierar unikt Tableau-Server installationen till IdP. Du kan ange din Tableau-server-URL igen, om du vill, men den behöver inte vara Tableau-serverns URL. Kopiera **SAML entitets-ID** och klistra in det i text rutan **identifierare** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal
+    d. SAML-entitets-ID – entitets-ID: t identifierar unikt Tableau-Server installationen till IdP. Du kan ange din Tableau-server-URL igen, om du vill, men den behöver inte vara Tableau-serverns URL. Kopiera **SAML entitets-ID** och klistra in det i text rutan **identifierare** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-    e. Klicka på **filen Ladda ned XML-metadata** och öppna den i text redigerings programmet. Hitta intygets konsument tjänst-URL med http post och index 0 och kopiera URL: en. Klistra in den i text rutan för **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal
+    e. Klicka på **filen Ladda ned XML-metadata** och öppna den i text redigerings programmet. Hitta intygets konsument tjänst-URL med http post och index 0 och kopiera URL: en. Klistra in den i text rutan för **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
     f. Leta upp din federationsmetadata som hämtades från Azure Portal och ladda sedan upp den i **SAML-IDP metadata-fil**.
 
     ex. Ange namnen på de attribut som IdP använder för att lagra användar namn, visnings namn och e-postadresser.
 
-    h. Klicka på **Spara**
+    h. Klicka på **Spara**.
 
     > [!NOTE]
     > Kunden måste ladda upp en PEM x509-certifikatfil med fil namns tillägget. CRT och en RSA-eller DSA-fil för privata nycklar som har fil namns tillägget. Key, som en nyckel fil för certifikat. Mer information om certifikat filen och certifikat nyckel filen finns i [det här](https://help.tableau.com/current/server/en-us/saml_requ.htm) dokumentet. Om du behöver hjälp med att konfigurera SAML på Tableau-servern kan du läsa den här artikeln [Konfigurera serverns breda SAML](https://help.tableau.com/current/server/en-us/config_saml.htm).
@@ -165,9 +165,8 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 * Gå till Tableau Server inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen Tableau server i Mina appar omdirigeras det till Tableau-inloggnings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
-
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Tableau server i Mina appar omdirigeras det till Tableau-inloggnings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Tableau-servern kan du framtvinga sessionsnycklar som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Sessions kontroller utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+När du har konfigurerat Tableau-servern kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av support inställningar och begrän
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e390458884a2cdad0ba422c09165c825eb76d28
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: d6a8276de9674266415604e8654034f129da8f50
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223331"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430955"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Support mat ris för Azure disk Backup (för hands version)
 
@@ -22,7 +22,7 @@ Du kan använda [Azure Backup](./backup-overview.md) för att skydda Azure-diska
 
 ## <a name="supported-regions"></a>Regioner som stöds
 
-Azure disk Backup är tillgängligt i för hands version i följande regioner: västra USA, västra centrala USA, östra 2; USA, centrala Korea, södra Japan, västra Japan, Asien, östra, Förenade Arabemiraten Nord, södra Brasilien, centrala Indien. 
+Azure disk Backup är tillgängligt i för hands version i följande regioner: västra USA, västra centrala USA, östra 2; USA, centrala Kanada, Storbritannien, västra, Australien, centrala, Korea, södra, Japan, västra, Asien, östra, Nord, södra Brasilien, centrala Indien. 
 
 Fler regioner kommer att meddelas när de blir tillgängliga.
 

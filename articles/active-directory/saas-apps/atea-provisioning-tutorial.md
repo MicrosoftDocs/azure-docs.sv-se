@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 15bbab9c8ad83adc9047c812efe697a8ed49d34b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072738"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430704"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Atea för automatisk användar etablering
 
-I den här självstudien beskrivs de steg du behöver utföra i både Atea och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras, etablerar och avetablerar Azure AD automatiskt användare och grupper i [Atea](https://www.atea.com/) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../manage-apps/user-provisioning.md). 
+I den här självstudien beskrivs de steg du behöver göra i både Atea och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras, etablerar och avetablerar Azure AD automatiskt användare och grupper i [Atea](https://www.atea.com/) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur det fungerar och vanliga frågor finns i avsnittet [Automatisera användar etablering och avetablering för SaaS-program med Azure Active Directory](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Funktioner som stöds
@@ -48,24 +48,24 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Atea för att ge stöd för etablering med Azure AD
 
-Om du vill konfigurera Atea till att stödja etablering med Azure AD, e-post servicedesk@atea.dk .
+Om du vill konfigurera Iris-intranätet till stöd för etablering med Azure AD måste du hämta **klient-URL:** en och den **hemliga token** genom att släppa ett e-postmeddelande till [Atea support team](mailto:servicedesk@atea.dk). Dessa värden anges i fältet **hemlig token** och **klient-URL** på fliken etablering i Atea-programmet i Azure Portal.
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till Atea från Azure AD-programgalleriet
 
-Lägg till Atea från Azure AD-programgalleriet för att börja hantera etablering till Atea. Om du tidigare har konfigurerat Atea för SSO kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen i början. Lär dig mer om att lägga till ett program från galleriet [här](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Lägg till Atea från Azure AD-programgalleriet för att börja hantera etablering till Atea. Om du tidigare har konfigurerat Atea för SSO kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen från början. Lär dig mer om att lägga till ett program från galleriet [här](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Steg 4. Definiera vem som ska finnas i etableringsomfånget 
 
-Med Azure AD-etableringstjänsten kan du bestämma vem som ska etableras, baserat på tilldelningen till programmet och eller baserat på attribut för användaren/gruppen. Om du väljer att omfånget som ska etableras till din app ska baseras på tilldelning, kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du väljer att omfånget endast ska etableras baserat på attribut för användaren eller gruppen, kan du använda ett omfångsfilter enligt beskrivningen [här](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+Med Azure AD Provisioning-tjänsten kan du definiera omfång som ska tillhandahållas baserat på tilldelning till programmet och eller baserat på attribut för användaren och gruppen. Om du väljer att omfånget som ska etableras till din app ska baseras på tilldelning, kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du väljer att omfånget endast ska etableras baserat på attribut för användaren eller gruppen, kan du använda ett omfångsfilter enligt beskrivningen [här](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-* När du tilldelar användare och grupper till Atea måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) och lägga till fler roller. 
+* När du tilldelar användare och grupper till Atea måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standard åtkomst rollen kan du [Uppdatera applikations manifestet](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) för att lägga till andra roller. 
 
-* Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När etableringsomfånget har angetts till tilldelade användare och grupper, kan du kontrollera detta genom att tilldela en eller två användare eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attributbaserat omfångsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När omfång för etablering har angetts till tilldelade användare och grupper kan du kontrol lera det genom att tilldela en eller två användare eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attributbaserat omfångsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-atea"></a>Steg 5. Konfigurera automatisk användar etablering till Atea 
 
-Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i TestApp baserat på användar-och/eller grupp tilldelningar i Azure AD.
+Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och grupper i ATEA, baserat på användar-och grupp tilldelningar i Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-atea-in-azure-ad"></a>Konfigurera automatisk användar etablering för Atea i Azure AD:
 
@@ -89,7 +89,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
      ![Atea-auktorisering](media/atea-provisioning-tutorial/provisioning-authorize.png)
 
-6. I inloggnings dialog rutan för Atea loggar du in på din Atea-klient och verifierar din identitet.
+6. Logga in på din Atea-klient i dialog rutan Atea inloggning och verifiera din identitet.
        
       ![Dialog rutan Atea login](media/atea-provisioning-tutorial/atea-login.png)
 
@@ -97,7 +97,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
         
       ![Atea test anslutning](media/atea-provisioning-tutorial/test-connection.png)
 
-8. I fältet **E-postavisering** anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etableringsfel. Markera sedan kryssrutan **Skicka ett e-postmeddelande när ett fel uppstår**.
+8. I fältet **e-** postadress för avisering anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etablerings fel. Och markera sedan kryss rutan **Skicka ett e-postmeddelande när ett fel inträffar** .
 
     ![E-postavisering](common/provisioning-notification-email.png)
 
@@ -105,7 +105,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory användare till Atea**.
 
-11. Granska de användarattribut som synkroniseras från Azure AD till Atea i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Atea för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)måste du se till att Atea-API: et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
+11. Granska de användarattribut som synkroniseras från Azure AD till Atea i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Atea för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)måste du se till att Atea-API: et stöder filtrering av användare baserat på detta attribut. Välj knappen **Spara** för att spara ändringarna.
 
       |Attribut|Typ|Stöds för filtrering|
       |---|---|---|
@@ -125,7 +125,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Etableringsstatus är på](common/provisioning-toggle-on.png)
 
-14. Definiera de användare och/eller grupper som du vill etablera till Atea genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+14. Definiera de användare och grupper som du vill etablera till Atea genom att välja det relevanta värdet i **omfång** i avsnittet **Inställningar** .
 
     ![Etableringsomfång](common/provisioning-scope.png)
 
@@ -133,13 +133,13 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
 
-Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs. 
+Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att slutföra än nästa cykler, vilket inträffar ungefär var 40: e minut så länge som Azure AD Provisioning-tjänsten körs. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Steg 6. Övervaka distributionen
 När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:
 
-* Använd [etableringsloggarna](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) för att se vilka användare som har etablerats och vilka som har misslyckats
-* Kontrollera [förloppsindikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etableringscykeln och hur nära den är att slutföras
+* Använd [etablerings loggarna](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) för att avgöra vilka användare som har etablerats eller har misslyckats.
+* Kontrol lera [förlopps indikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etablerings cykeln och hur nära den är att slutföras.
 * Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="additional-resources"></a>Ytterligare resurser

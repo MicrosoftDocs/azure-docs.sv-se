@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f684aff58f441fb0642779e54de39dff941e818c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878501"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430670"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Felsöka fil resurser i Azure NFS
 
@@ -67,7 +67,6 @@ NFS är endast tillgängligt på lagrings konton med följande konfiguration:
 
 - Nivå – Premium
 - Konto Natura-FileStorage
-- Redundans – LRS
 - Regioner – [lista över regioner som stöds](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Lösning
@@ -150,6 +149,17 @@ NFS-protokollet kommunicerar med servern via port 2049, kontrol lera att porten 
 #### <a name="solution"></a>Lösning
 
 Kontrol lera att port 2049 är öppen på klienten genom att köra följande kommando: `telnet <storageaccountnamehere>.file.core.windows.net 2049` . Om porten inte är öppen öppnar du den.
+
+## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>LS (list Files) visar felaktigt/inkonsekventa resultat
+
+### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>Orsak: inkonsekvens mellan cachelagrade värden och metadata för Server filen när fil referensen är öppen
+Ibland visar kommandot "List Files" en storlek som inte är noll som förväntat och i det allra följande List fils kommandot visas i stället storlek 0 eller en mycket gammal tidstämpel. Detta är ett känt problem på grund av Inkonsekvent cachelagring av fil-metadata värden när filen är öppen. Du kan använda någon av följande lösningar för att lösa problemet:
+
+#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>Lösning 1: Använd WC-c i stället för ls-l för att hämta fil storlek.
+Att använda WC-c hämtar alltid det senaste värdet från servern och har inte någon inkonsekvens.
+
+#### <a name="workaround-2-use-noac-mount-flag"></a>Lösning 2: Använd flaggan "NOAC" (Mount)
+Montera om fil systemet med hjälp av flaggan "NOAC" med monterings kommandot. Alla metadata-värden från servern hämtas alltid. Det kan finnas mindre prestanda för alla metadata-åtgärder om den här lösningen används.
 
 ## <a name="need-help-contact-support"></a>Behöver du hjälp? Kontakta supporten.
 Om du fortfarande behöver hjälp kan du [kontakta supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) för att lösa problemet snabbt.

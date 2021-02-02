@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a62863607798e7f64a74926ebea4f1a1d05cbd6c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 220a575a252bb16cb5ac895a3d4c1ebedfd7c83e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517726"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99431043"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Veracode
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar Veracode med Azure 
 * Kontroll i Azure AD som har åtkomst till Veracode.
 * Gör det möjligt för användarna att logga in automatiskt till Veracode med sina Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
-
-Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -43,18 +41,18 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 Om du vill konfigurera integreringen av Veracode i Azure AD lägger du till Veracode från galleriet i listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. Skriv "Veracode" i sökrutan i avsnittet **Lägg till från galleriet** .
 1. Välj **Veracode** i panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>Konfigurera och testa enkel inloggning med Azure AD för Veracode
+## <a name="configure-and-test-azure-ad-sso-for-veracode"></a>Konfigurera och testa Azure AD SSO för Veracode
 
 Konfigurera och testa Azure AD SSO med Veracode med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk mellan en Azure AD-användare och en relaterad användare i Veracode.
 
-Om du vill konfigurera och testa Azure AD SSO med Veracode, slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Veracode:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** så att användarna kan använda den här funktionen.
     * **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** för att testa enkel inloggning i Azure AD med B. Simon.
@@ -67,11 +65,11 @@ Om du vill konfigurera och testa Azure AD SSO med Veracode, slutför du följand
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **Veracode** och letar upp avsnittet **Hantera** . Välj **enkel inloggning**.
+1. I Azure Portal går du till sidan för program integrering i **Veracode** och letar upp avsnittet **Hantera** . Välj **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** väljer du Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-   ![Skärm bild av konfiguration av enstaka Sign-On med SAML, med Penn ikonen markerad](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** är programmet förkonfigurerat och de nödvändiga URL: erna är redan ifyllda med Azure. Välj **Spara**.
 
@@ -85,7 +83,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Veracode förväntar sig också några fler attribut som ska skickas tillbaka i SAML-svaret. Dessa attribut har också fyllts i automatiskt, men du kan granska dem enligt dina krav.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ---------------| --------------- |
     | förnamn |User. givenName |
     | efternamn |Användare. efter namn |
@@ -95,35 +93,59 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Skärm bild av avsnittet Konfigurera Veracode med konfigurations-URL: er markerade](common/copy-configuration-urls.png)
 
+### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
+
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
+
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
+
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
+
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Veracode.
+
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **Veracode**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
+
 ## <a name="configure-veracode-sso"></a>Konfigurera Veracode SSO
 
 1. Logga in på din Veracode-företags webbplats som administratör i ett annat webbläsarfönster.
 
 1. I menyn högst upp väljer du **Inställningar**  >  **administratör**.
    
-    ![Skärm bild av Veracode-administration med inställnings ikon och administratör markerad](./media/veracode-tutorial/ic802911.png "Administration")
+    ![Skärm bild av Veracode-administration med inställnings ikon och administratör markerad](./media/veracode-tutorial/admin.png "Administration")
 
 1. Välj fliken **SAML** .
 
 1. I avsnittet **organisations SAML-inställningar** utför du följande steg:
 
-    ![Skärm bild av avsnittet SAML-inställningar för organisation](./media/veracode-tutorial/ic802912.png "Administration")
+    ![Skärm bild av avsnittet SAML-inställningar för organisation](./media/veracode-tutorial/saml.png "Administration")
 
-    a.  För **utfärdare**klistrar du in värdet för den **Azure AD-identifierare** som du kopierade från Azure Portal.
+    a.  För **utfärdare** klistrar du in värdet för den **Azure AD-identifierare** som du kopierade från Azure Portal.
 
-    b. För **certifikat för kontrollerande signering**väljer du **Välj fil** för att ladda upp det hämtade certifikatet från Azure Portal.
+    b. För **certifikat för kontrollerande signering** väljer du **Välj fil** för att ladda upp det hämtade certifikatet från Azure Portal.
 
-    c. För **själv registrering**väljer du **Aktivera själv registrering**.
+    c. För **själv registrering** väljer du **Aktivera själv registrering**.
 
 1. I avsnittet **Inställningar för själv registrering** utför du följande steg och väljer sedan **Spara**:
 
-    ![Skärm bild av avsnittet själv registrerings inställningar med olika alternativ markerade](./media/veracode-tutorial/ic802913.png "Administration")
+    ![Skärm bild av avsnittet själv registrerings inställningar med olika alternativ markerade](./media/veracode-tutorial/save.png "Administration")
 
-    a. För **ny användar aktivering**väljer du **ingen aktivering krävs**.
+    a. För **ny användar aktivering** väljer du **ingen aktivering krävs**.
 
-    b. För **användar data uppdateringar**väljer du **Preference Veracode user data**.
+    b. För **användar data uppdateringar** väljer du **Preference Veracode user data**.
 
-    c. För **information om SAML-attribut**väljer du följande:
+    c. För **information om SAML-attribut** väljer du följande:
       * **Användar roller**
       * **Princip administratör**
       * **Granskare**
@@ -135,56 +157,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
       * **Grupp medlemskap**
       * **Standard team**
 
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
-
-I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
-
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**  > **användare**  >  **alla användare**.
-1. Välj **ny användare** överst på skärmen.
-1. I **användar** egenskaperna följer du de här stegen:
-
-   1. Som **namn**anger du `B.Simon` .  
-   1. För **användar namn**anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Välj **Visa lösen ord**och skriv sedan ned värdet som visas.
-   1. Välj **Skapa**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
-
-I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Veracode.
-
-1. I Azure Portal väljer du **företags program**  >  **alla program**.
-1. I listan program väljer du **Veracode**.
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Skärm bild av avsnittet hantera med användare och grupper markerade](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**. I dialog rutan **Lägg till tilldelning** väljer **du användare och grupper**.
-
-    ![Skärm bild av sidan användare och grupper där Lägg till användare är markerat](common/add-assign-user.png)
-
-1. I dialog rutan **användare och grupper** väljer du **B. Simon**från **användare**. Välj sedan **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML-intyget väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** . Välj sedan **Välj** längst ned på skärmen.
-1. I dialogrutan **Lägg till tilldelning** väljer du **Tilldela**.
-
 ### <a name="create-veracode-test-user"></a>Skapa Veracode test användare
 
-För att kunna logga in på Veracode måste Azure AD-användare tillhandahållas i Veracode. Den här uppgiften är automatiserad och du behöver inte göra något manuellt. Användare skapas automatiskt vid behov under det första försöket vid enkel inloggning.
+I det här avsnittet skapas en användare som heter B. Simon i Veracode. Veracode stöder just-in-Time-etablering, som är aktiverat som standard. Det finns inget åtgärds objekt i det här avsnittet. Om en användare inte redan finns i Veracode skapas en ny efter autentiseringen.
 
 > [!NOTE]
 > Du kan använda andra verktyg för Veracode av användar konton eller API: er som tillhandahålls av Veracode för att etablera Azure AD-användarkonton.
 
 ## <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du din konfiguration av enkel inloggning för Azure AD med hjälp av Åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-När du väljer **Veracode** i åtkomst panelen bör du loggas in automatiskt på den Veracode som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på den Veracode som du ställer in SSO för.
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Veracode i Mina appar, bör du loggas in automatiskt på den Veracode som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Prova Veracode med Azure AD](https://aad.portal.azure.com/)
+När du har konfigurerat Veracode kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

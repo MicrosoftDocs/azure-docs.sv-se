@@ -1,14 +1,14 @@
 ---
 title: Återge program
 description: Det är möjligt att använda alla åter givnings program med Azure Batch. VIRTUELLA Azure Marketplace-avbildningar är dock tillgängliga med vanliga program för installation.
-ms.date: 09/19/2019
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d4eefa287575d68acccb2697e1d262c7e48dab62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4eeb87c866858f2f1733b81e3e2154f4521e94bc
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234417"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430036"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Förinstallerade program på VM-avbildningar för batch-rendering
 
@@ -18,7 +18,7 @@ I tillämpliga fall är licens för betalning per användning tillgängligt för
 
 Vissa program stöder bara Windows, men de flesta stöds i både Windows och Linux.
 
-## <a name="applications-on-centos-7-rendering-images"></a>Program på CentOS 7-åter givnings bilder
+## <a name="applications-on-centos-7-rendering-image"></a>Program på CentOS 7 åter givnings avbildning
 
 Följande lista gäller för CentOS 7,6, version 1.1.6 rendering images.
 
@@ -33,7 +33,26 @@ Följande lista gäller för CentOS 7,6, version 1.1.6 rendering images.
 * Blender (2.68)
 * Över gång (2,8)
 
-## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>Program på de senaste Windows Server 2016-avbildningarna
+## <a name="applications-on-latest-windows-server-rendering-image"></a>Program på den senaste Windows Server rendering-avbildningen
+
+Följande lista gäller Windows Server rendering-avbildningen, version 1.5.0.
+
+* Autodesk Maya I/O 2020 uppdatering 4,4
+* Autodesk 3ds Max I/O 2021 uppdatering 3
+* Autodesk Arnold för Maya 2020 (Arnold version 6.1.0.1) MtoA-4.1.1.1-2020
+* Autodesk Arnold för 3ds Max 2021 (Arnold version 6.1.0.1) MAXtoA-4.2.2.20-2021
+* Kaos Group V-Ray för Maya 2020 (version 5.00.21)
+* Kaos Group V-Ray för 3ds Max 2021 (version 5.00.05)
+* Blender (2.79)
+* Över gång (2,80)
+* AZ 10
+
+> [!IMPORTANT]
+> Om du vill köra V-Ray med Maya utanför [Azure Batch tilläggs mallar](https://github.com/Azure/batch-extension-templates)startar `vrayses.exe` du innan du kör renderingen. För att starta vrayses.exe utanför mallarna kan du använda följande kommando `%MAYA_2020%\vray\bin\vrayses.exe"` .
+>
+> Ett exempel finns i Start uppgiften för [Maya-och V-Ray-mallen](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) på GitHub.
+
+## <a name="applications-on-previous-windows-server-rendering-images"></a>Program på tidigare Windows Server-återgivnings avbildningar
 
 Följande lista gäller för Windows Server 2016, version 1.3.8 rendering images.
 
@@ -58,13 +77,6 @@ Följande lista gäller för Windows Server 2016, version 1.3.8 rendering images
 * Blender (2.79)
 * Över gång (2,80)
 * AZ 10
-
-> [!IMPORTANT]
-> Om du vill köra V-Ray med Maya utanför [Azure Batch tilläggs mallar](https://github.com/Azure/batch-extension-templates)startar `vrayses.exe` du innan du kör renderingen. För att starta vrayses.exe utanför mallarna kan du använda följande kommando `%MAYA_2017%\vray\bin\vrayses.exe"` .
->
-> Ett exempel finns i Start uppgiften för [Maya-och V-Ray-mallen](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) på GitHub.
-
-## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>Program på tidigare Windows Server 2016-åter givnings avbildningar
 
 Följande lista gäller för Windows Server 2016, version 1.3.7 rendering images.
 

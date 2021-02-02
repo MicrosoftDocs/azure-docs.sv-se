@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4983e4b7f76c627cb3cb3081bc12e27111b2b521
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bff13c24e0b5818b352e76df1d8ecd8251a5f12c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951469"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430233"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för data insamlings regler i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att distribuera och konfigurera [Log Analytics agent](../platform/log-analytics-agent.md) och [diagnostiskt tillägg](../platform/diagnostics-extension-overview.md) för virtuella datorer i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
@@ -21,7 +21,7 @@ Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azur
 
 ## <a name="create-association-with-azure-vm"></a>Skapa en Association med virtuell Azure-dator
 
-I följande exempel installeras Azure Monitor-agenten på en virtuell Windows Azure-dator. En Association skapas mellan en virtuell Azure-dator och en data insamlings regel.
+Följande exempel skapar en association mellan en virtuell Azure-dator och en data insamlings regel.
 
 ### <a name="template-file"></a>Mallfil
 
