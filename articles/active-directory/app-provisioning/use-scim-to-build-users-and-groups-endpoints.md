@@ -3,7 +3,7 @@ title: Bygg en SCIM-slutpunkt för användar etablering till appar från Azure A
 description: System för SCIM (Cross-Domain Identity Management) standardiserar automatisk användar etablering. Lär dig att utveckla en SCIM-slutpunkt, integrera ditt SCIM-API med Azure Active Directory och börja automatisera etableringen av användare och grupper i dina moln program med Azure Active Directory.
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 34fa76197c4e08cffd1d8c66d6877b3e427e9fd6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6b7451b0d664995a6b647f7926d856b0db6090d8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918152"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256110"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Självstudie: utveckla en exempel SCIM-slutpunkt
 

@@ -4,7 +4,7 @@ description: Lär dig hur du använder program med jokertecken i Azure Active Di
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997519"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257988"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Program med jokertecken i Azure Active Directory Application Proxy
 
@@ -45,7 +45,7 @@ Du kan publicera program med jokertecken om båda, de interna och externa URL: e
 
 > http (s)://*.\<domain\>
 
-Till exempel: `http(s)://*.adventure-works.com`.
+Exempel: `http(s)://*.adventure-works.com`.
 
 Även om interna och externa URL: er kan använda olika domäner, bör de vara desamma. När du publicerar programmet visas ett fel om en av URL: erna inte har ett jokertecken.
 
@@ -156,9 +156,9 @@ Konfigurationen implementerar följande struktur:
 
 ![Visar den struktur som implementeras i exempel konfigurationen](./media/application-proxy-wildcard/05.png)
 
-| Color (Färg) | Description |
+| Färg | Beskrivning |
 | ---   | ---         |
-| Blå  | Program som uttryckligen publiceras och visas i Azure Portal. |
+| Blue  | Program som uttryckligen publiceras och visas i Azure Portal. |
 | Mörkgrå  | Program som du kan komma åt via det överordnade programmet. |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenario 2: allmänt program med jokertecken med undantag

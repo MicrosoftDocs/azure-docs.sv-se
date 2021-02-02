@@ -3,7 +3,7 @@ title: Använda självbetjäning för program åtkomst i Azure AD
 description: Aktivera självbetjäning så att användarna kan hitta appar i Azure AD
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 13f91fdd9e2d9501fba426bd6facbf9824a39285
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372471"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257025"
 ---
 # <a name="how-to-use-self-service-application-access"></a>Använda självbetjäning för program åtkomst
 
@@ -43,8 +43,8 @@ Följ stegen nedan om du vill aktivera självbetjänings program åtkomst till e
 1. Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör.**
 2. Öppna **tillägget Azure Active Directory** genom att välja **alla tjänster** överst i huvud menyn till vänster.
 3. Skriv **"Azure Active Directory**" i rutan filtrera sökning och välj **Azure Active Directory** objektet.
-4. Välj **företags program** från Azure Active Directory vänstra navigerings menyn.
-5. Välj **alla program** om du vill visa en lista över alla dina program.
+4. Välj **Företagsprogram** på den vänstra navigeringsmenyn i Azure Active Directory.
+5. Välj **Alla program** för att visa en lista över alla dina program.
    * Om du inte ser det program som du vill visa här använder du **filter** kontrollen längst upp i **listan Alla program** och anger alternativet **Visa** för **alla program.**
 6. Välj det program som du vill aktivera självbetjänings åtkomst till i listan.
 7. När programmet har lästs in väljer du **självbetjäning** från programmets vänstra navigerings meny.

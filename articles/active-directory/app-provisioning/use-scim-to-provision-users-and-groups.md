@@ -3,7 +3,7 @@ title: Självstudie – utveckla en SCIM-slutpunkt för användar etablering til
 description: System för SCIM (Cross-Domain Identity Management) standardiserar automatisk användar etablering. I den här självstudien lär du dig att utveckla en SCIM-slutpunkt, integrera ditt SCIM-API med Azure Active Directory och börja automatisera etableringen av användare och grupper i dina moln program.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6250aef5ec69c65dcdfe457a56d4e077b31af4d1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a6895a47bc6d99a09408ca002ec48405a5c78682
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051676"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255686"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
@@ -69,7 +69,7 @@ Det schema som definierats ovan ska representeras med JSON-nyttolasten nedan. Ob
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
-     "userName":"bjensen",
+     "userName":"bjensen@testuser.com",
      "externalId":"bjensen",
      "name":{
        "familyName":"Jensen",
@@ -961,7 +961,7 @@ Om svaret på en fråga till webb tjänsten för en användare med ett `external
      "urn:ietf:params:scim:schemas:core:2.0:User",
      "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
    "externalId":"jyoung",
-   "userName":"jyoung",
+   "userName":"jyoung@testuser.com",
    "active":true,
    "addresses":null,
    "displayName":"Joy Young",

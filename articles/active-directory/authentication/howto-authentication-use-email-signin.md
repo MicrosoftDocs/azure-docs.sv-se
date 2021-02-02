@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559848"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255975"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Logga in för att Azure Active Directory med e-post som ett alternativt inloggnings-ID (för hands version)
 
@@ -113,7 +113,7 @@ Under för hands versionen kan du för närvarande endast aktivera inloggning me
 1. Kontrol lera om *HomeRealmDiscoveryPolicy* -principen redan finns i din klient med hjälp av cmdleten [Get-AzureADPolicy][Get-AzureADPolicy] på följande sätt:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. Om det inte finns någon princip som är konfigurerad för tillfället returnerar kommandot ingenting. Om en princip returneras hoppar du över det här steget och går vidare till nästa steg för att uppdatera en befintlig princip.
@@ -121,10 +121,22 @@ Under för hands versionen kan du för närvarande endast aktivera inloggning me
     Om du vill lägga till *HomeRealmDiscoveryPolicy* -principen till klienten använder du cmdleten [New-AzureADPolicy][New-AzureADPolicy] och anger attributet *AlternateIdLogin* till *"Enabled": true* , vilket visas i följande exempel:
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     När principen har skapats returnerar kommandot princip-ID: t, som visas i följande exempel på utdata:
@@ -156,17 +168,31 @@ Under för hands versionen kan du för närvarande endast aktivera inloggning me
     I följande exempel lägger till attributet *AlternateIdLogin* och bevarar det *AllowCloudPasswordValidation* -attribut som redan har angetts:
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Bekräfta att den uppdaterade principen visar ändringarna och att attributet *AlternateIdLogin* nu är aktiverat:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 När principen har tillämpats kan det ta upp till en timme att sprida och användare kan logga in med sina alternativa inloggnings-ID.
@@ -207,7 +233,12 @@ Du måste ha *klient administratörs* behörighet för att utföra följande ste
 4. Om det inte finns några befintliga stegvisa distributions principer för den här funktionen skapar du en ny stegvis distributions princip och noterar princip-ID:
 
    ```powershell
-   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
 5. Hitta directoryObject-ID: t för gruppen som ska läggas till i den stegvisa distributions principen. Observera värdet som returneras för parametern *ID* , eftersom det kommer att användas i nästa steg.
@@ -250,7 +281,7 @@ Om användarna har problem med inloggnings händelser med hjälp av e-postadress
 1. Bekräfta att Azure AD *HomeRealmDiscoveryPolicy* -principen har attributet *AlternateIdLogin* inställt på *"Enabled": true*:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>Nästa steg

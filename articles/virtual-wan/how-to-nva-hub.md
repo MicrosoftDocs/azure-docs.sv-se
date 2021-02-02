@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964651"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258073"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Så här skapar du en virtuell nätverks installation i Azure Virtual WAN Hub (för hands version)
 
@@ -21,10 +21,9 @@ Den här artikeln visar hur du använder Virtual WAN för att ansluta till dina 
 
 Stegen i den här artikeln hjälper dig att skapa en virtuell **Barracuda CLOUDGEN WAN** -nätverk i den virtuella WAN-hubben. För att slutföra den här övningen måste du ha en Barracuda-lokal enhet (CPE) och en licens för Barracuda CloudGen WAN-installationen som du distribuerar till hubben innan du börjar.
 
-Distributions dokumentation för **Cisco SD-WAN** i Azure Virtual WAN finns i [Cisco Cloud bearbetar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). Om du vill registrera ditt konto och få de Cisco-SD-WAN-licenser som krävs skickar du e-post till Cisco på följande e-post adress: vwan_public_preview@external.cisco.com
+Distributions dokumentation för **Cisco SD-WAN** i Azure Virtual WAN finns i [Cisco Cloud bearbetar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). 
 
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrollera att du har uppfyllt följande villkor innan du påbörjar konfigurationen:
 
@@ -55,7 +54,7 @@ En hubb är ett virtuellt nätverk som kan innehålla gatewayer för plats-till-
    **Projektinformation**
 
    * Region (tidigare kallad plats)
-   * Namn
+   * Name
    * NAV, privat adress utrymme. Det minsta adress utrymmet är/24 för att skapa en hubb, vilket innebär att allt mellan/25 och/32 genererar ett fel när det skapas. Azure Virtual WAN, som en hanterad tjänst av Microsoft, skapar lämpliga undernät i den virtuella hubben för de olika gatewayerna/tjänsterna. (Till exempel: virtuella nätverks enheter, VPN-gatewayer, ExpressRoute-gatewayer, användares VPN-och punkt-till-plats-gatewayer, brand vägg, routning osv.). Användaren behöver inte uttryckligen planera för under nätets adress utrymme för tjänsterna i det virtuella navet eftersom Microsoft gör detta som en del av tjänsten.
 1. Välj **Granska + skapa** för att validera.
 1. Välj **skapa** för att skapa hubben.

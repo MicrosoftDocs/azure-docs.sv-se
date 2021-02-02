@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: cdf029e0dd9ae126310842b8919c818f4721218e
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054745"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257465"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -132,20 +132,20 @@ Tjänsten kör community-versionen av MySQL. Detta möjliggör fullständig prog
 
 En av fördelarna med att köra din arbets belastning i Azure är den globala räckvidden. Den flexibla servern för Azure Database for MySQL är tillgänglig idag i följande Azure-regioner:
 
-| Region | Hög tillgänglighet | 
-| --- | --- |
-| Europa, västra | :heavy_check_mark: | 
-| Europa, norra | :heavy_check_mark: | 
-| Storbritannien, södra | röntgen | 
-| USA, östra 2 | :heavy_check_mark: | 
-| USA, västra 2 | :heavy_check_mark: | 
-| Central US | röntgen | 
-| East US | :heavy_check_mark: | 
-| Kanada, centrala | röntgen | 
-| Sydostasien | :heavy_check_mark: | 
-| Sydkorea, centrala | röntgen | 
-| Japan, östra | röntgen | 
-| Australien, östra | :heavy_check_mark: |
+| Region | Tillgänglighet | Zonens redundanta HA | 
+| --- | --- | --- |
+| Europa, västra | :heavy_check_mark: | :heavy_check_mark: |
+| Europa, norra | :heavy_check_mark: | :heavy_check_mark: |
+| Storbritannien, södra | :heavy_check_mark: | röntgen | 
+| USA, östra 2 | :heavy_check_mark: | :heavy_check_mark: |
+| USA, västra 2 | :heavy_check_mark: | :heavy_check_mark: |
+| Central US | :heavy_check_mark: | röntgen | 
+| East US | :heavy_check_mark: | :heavy_check_mark: |
+| Kanada, centrala | :heavy_check_mark: | röntgen | 
+| Sydostasien | :heavy_check_mark: | :heavy_check_mark: |
+| Sydkorea, centrala | :heavy_check_mark: | röntgen | 
+| Japan, östra | :heavy_check_mark: | röntgen | 
+| Australien, östra | :heavy_check_mark: | :heavy_check_mark: |
 
 Vi arbetar med att lägga till nya regioner snart.
 

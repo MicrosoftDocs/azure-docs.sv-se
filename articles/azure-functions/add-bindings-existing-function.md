@@ -1,16 +1,16 @@
 ---
-title: Lägg till bindningar till en befintlig funktion i Azure Functions
-description: Lär dig hur du lägger till bindningar till en befintlig funktion i Azure Functions-projektet.
+title: Anslut funktioner till andra Azure-tjänster
+description: Lär dig hur du lägger till bindningar som ansluter till andra Azure-tjänster till en befintlig funktion i ditt Azure Functions-projekt.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 23b7b05f9a9f9da5a48511ee555e3b6184a74179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c6f5bb8ca5fcf995b8a8d326abbec96f1d2e35
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654217"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258209"
 ---
-# <a name="add-bindings-to-an-existing-function-in-azure-functions"></a>Lägg till bindningar till en befintlig funktion i Azure Functions
+# <a name="connect-functions-to-azure-services-using-bindings"></a>Ansluta funktioner till Azure-tjänster med hjälp av bindningar
 
 När du skapar en funktion läggs språkspecifik utlösnings kod till i projektet från en uppsättning utlösare. Om du vill ansluta din funktion till andra tjänster med hjälp av indata eller utgående bindningar måste du lägga till vissa bindnings definitioner i din funktion. Mer information om bindningar finns i [Azure Functions utlösare och bindningar begrepp](functions-triggers-bindings.md).
 
@@ -18,7 +18,7 @@ När du skapar en funktion läggs språkspecifik utlösnings kod till i projekte
 
 När du utvecklar funktioner lokalt måste du uppdatera funktions koden för att lägga till bindningar. Med Visual Studio Code kan du göra det enklare att lägga till bindningar till en funktion.  
 
-### <a name="visual-studio-code"></a>Visual Studio-koden
+### <a name="visual-studio-code"></a>Visuell Studio-kod
 
 När du använder Visual Studio Code för att utveckla din funktion och din funktion använder en function.jspå filen, kan Azure Functions-tillägget automatiskt lägga till en bindning till en befintlig function.jsi filen. Läs mer i [lägga till indata och utgående bindningar](functions-develop-vs-code.md#add-input-and-output-bindings).   
 

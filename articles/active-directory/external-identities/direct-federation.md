@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860634"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257193"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkt Federation med AD FS och tredje parts leverantörer för gäst användare (för hands version)
 
@@ -30,7 +30,7 @@ När du konfigurerar direkt Federation med en partners IdP kan nya gäst använd
 > Gäst användare i direkt federationen måste logga in med en länk som innehåller klient kontexten (till exempel `https://myapps.microsoft.com/?tenantid=<tenant id>` eller `https://portal.azure.com/<tenant id>` , eller, om det är en verifierad domän `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Direkt länkar till program och resurser fungerar även så länge de omfattar klient kontexten. Direkt Federations användare kan för närvarande inte logga in med vanliga slut punkter som inte har någon klient kontext. Om du till exempel använder `https://myapps.microsoft.com` , `https://portal.azure.com` eller `https://teams.microsoft.com` resulterar i ett fel.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>När är en gäst användare autentiserad med direkt Federation?
-När du har konfigurerat direkt Federation med en organisation kommer alla nya gäst användare som du Bjud in att autentiseras med hjälp av direkt Federation. Det är viktigt att Observera att konfiguration av direkt Federation inte ändrar autentiseringsmetoden för gäst användare som redan har löst en inbjudan från dig. Här följer några exempel:
+När du har konfigurerat direkt Federation med en organisation kommer alla nya gäst användare som du Bjud in att autentiseras med hjälp av direkt Federation. Det är viktigt att Observera att konfiguration av direkt Federation inte ändrar autentiseringsmetoden för gäst användare som redan har löst en inbjudan från dig. Här är några exempel:
  - Om gäst användare redan har löst in inbjudningar från dig och du sedan konfigurerar direkt Federation med sin organisation, fortsätter gäst användarna att använda samma autentiseringsmetod som de använde innan du konfigurerade direkt federationen.
  - Om du ställer in direkt Federation med en partner organisation och bjuder in gäst användare, och partner organisationen senare flyttar till Azure AD, fortsätter gäst användare som redan har löst inbjudningarna att använda direkt Federation, så länge den direkta Federations principen i din klient organisation finns.
  - Om du tar bort direkt Federation med en partner organisation kan alla gäst användare som för närvarande använder direkt Federation inte logga in.
@@ -45,7 +45,7 @@ Med direkt Federation loggar gäst användare in på din Azure AD-klient med hj�
 ## <a name="limitations"></a>Begränsningar
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifierade domäner i Azure AD
-Den domän som du vill federera med måste vara **not** av DNS-verifierad i Azure AD. Du kan konfigurera direkt Federation med ohanterad (e-postverifierad eller "viral") Azure AD-klienter eftersom de inte är DNS-verifierade.
+Den domän som du vill federera med måste varaav DNS-verifierad i Azure AD. Du kan konfigurera direkt Federation med ohanterad (e-postverifierad eller "viral") Azure AD-klienter eftersom de inte är DNS-verifierade.
 
 ### <a name="authentication-url"></a>URL för autentisering
 Direkt Federation tillåts bara för principer där autentiserings-URL: en domän matchar mål domänen, eller där autentiserings-URL: en är en av dessa tillåtna identitets leverantörer (den här listan kan ändras):
@@ -78,7 +78,8 @@ Ja. Om domänen inte har verifierats och klienten inte har genomgått någon [Ad
 När direkt Federation upprättas med en partner organisation har den företräde framför e-postautentisering med eng ång slö sen ord för nya gäst användare från organisationen. Om en gäst användare har löst en inbjudan med autentisering med eng ång slö sen ord innan du konfigurerar direkt Federation, fortsätter de att använda autentisering med eng ång slö sen ord. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Är direkta Federations adress inloggnings problem på grund av ett delvis synkroniserat innehav?
 Nej, funktionen för [eng ång slö sen ord](one-time-passcode.md) ska användas i det här scenariot. Ett "delvis synkroniserat innehav" syftar på en partner Azure AD-klient där lokala användar identiteter inte är fullständigt synkroniserade med molnet. En gäst vars identitet ännu inte finns i molnet men som försöker lösa in B2B-inbjudan kommer inte att kunna logga in. Funktionen eng ång slö sen ord gör det möjligt för den här gästen att logga in. Direkt Federations funktionen löser scenarier där gästen har sitt eget IdP-hanterat organisations konto, men organisationen inte har någon Azure AD-närvaro alls.
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>När direkt Federation har kon figurer ATS med en organisation behöver varje gäst skickas och lösa in en enskild inbjudan?
+Konfiguration av direkt Federation ändrar inte autentiseringsmetoden för gäst användare som redan har löst en inbjudan från dig. Du kan uppdatera en gäst användares autentiseringsmetod genom att ta bort gäst användar kontot från din katalog och sedan bjuda in dem igen.
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Steg 1: Konfigurera partner organisationens identitetsprovider
 Först måste partner organisationen konfigurera sin identitets leverantör med nödvändiga anspråk och förtroenden för förlitande part. 
 

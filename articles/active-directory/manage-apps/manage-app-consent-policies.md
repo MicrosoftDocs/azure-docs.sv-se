@@ -3,7 +3,7 @@ title: Hantera principer för program medgivande i Azure AD
 description: Lär dig hur du hanterar inbyggda och anpassade appar för medgivande för att styra när medgivande kan beviljas.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 62a8b48d6b33a92b62bc4c3634794190585615b7
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 68ff89191a4e9b11c2d84ec016090f76b8ea11b7
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222038"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258124"
 ---
 # <a name="manage-app-consent-policies"></a>Hantera principer för appmedgivande
 
@@ -130,7 +130,7 @@ När appens medgivande princip har skapats kan du tillåta att [användarens med
 
 I följande tabell visas en lista över de villkor som stöds för principer för program medgivande.
 
-| Villkor | Description|
+| Villkor | Beskrivning|
 |:---------------|:----------|
 | PermissionClassification | [Behörighets klassificeringen](configure-permission-classifications.md) för behörigheten som beviljas, eller "alla" så att den överensstämmer med behörighets klassificeringen (inklusive behörigheter som inte klassificeras). Standardvärdet är all. |
 | PermissionType | Behörighets typen för den behörighet som beviljas. Använd "program" för program behörigheter (t. ex. app-roller) eller "delegerad" för delegerade behörigheter. <br><br>**Obs!** värdet "delegatedUserConsentable" indikerar delegerade behörigheter som inte har kon figurer ATS av API-utgivaren för att kräva administrativt godkännande – det här värdet kan användas i inbyggda behörighets beviljande principer, men kan inte användas i anpassade behörighets beviljande principer. Krävs. |

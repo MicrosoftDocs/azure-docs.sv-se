@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1c9c07d3770d2b71bee8f8e789022be6f831cc8f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4393607d6714bc4c1b10ac89d5ac69c173f8fef4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092876"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257329"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
 
@@ -26,7 +26,7 @@ ms.locfileid: "99092876"
 
 **Sammanfattning av högdagrar**
 - Mindre minne och disk utrymme gör SDK: n mer effektiv.
-- Förbättrad anpassad röst kvalitet och lätt att använda. 
+- Högre åter givning-utdataformat är tillgängliga för anpassad neurala Voice Private Preview.
 - Avsikts igenkänning kan nu få tillbaka mer än det främsta syftet, vilket ger dig möjlighet att göra en separat utvärdering av kundens avsikt.
 - Röst assistenten eller roboten är nu enklare att konfigurera, och du kan göra så att den slutar lyssna omedelbart och du får bättre kontroll över hur det svarar på fel.
 - Förbättrad på enhets prestanda genom att göra komprimering valfritt.
@@ -43,7 +43,7 @@ ms.locfileid: "99092876"
   - Android-bibliotek är 3-5% mindre.
 
 **Nya funktioner**
-- **Alla**: anpassad röst kvalitet fortsätter att bli bättre. Tillagt 48kHz-format för anpassade TTS-röster, vilket förbättrar ljud kvaliteten för anpassade röster vars inbyggda samplings frekvens är högre än 24kHz.
+- **Alla**: nya 48KHz-utdataformat som är tillgängliga för den privata förhands granskningen av anpassad neurala röst via tal syntes API: t för: Audio48Khz192KBitRateMonoMp3, Audio-48KHz-192kbitrate-mono-MP3, Audio48Khz96KBitRateMonoMp3, ljud-48KHz-96kbitrate-mono-MP3, Raw48Khz16BitMonoPcm, RAW-48KHz-bitarsläge-mono-PCM, Riff48Khz16BitMonoPcm, riff-mono-PCM.
 - **Alla**: anpassad röst är också enklare att använda. Stöd har lagts till för att ställa in anpassad röst via `EndpointId` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_), [Java Script](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId), [mål-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid), [python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id)). Före den här ändringen behövde anpassade röst användare ange slut punkts-URL: en via `FromEndpoint` metoden. Nu kan kunder använda `FromSubscription` metoden precis som offentliga röster och sedan ange distributions-ID: t genom att ange `EndpointId` . Detta fören klar installationen av anpassade röster. 
 - **C++/c #/Java/Objective-C/python**: Hämta fler än det främsta avsikts stället från `IntentRecognizer` . Nu har det stöd för att konfigurera JSON-resultatet som innehåller alla avsikter och inte bara den översta bedömnings `LanguageUnderstandingModel FromEndpoint` metoden via metod genom att använda `verbose=true` URI-parameter. Den här adressen [GitHub problem #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880). Se uppdaterad dokumentation [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents).
 - **C++/c #/Java**: gör så att röst assistenten eller roboten slutar lyssna. `DialogServiceConnector` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector), [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet), [Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) har nu en `StopListeningAsync()` metod att följa `ListenOnceAsync()` . Detta kommer omedelbart att stoppa ljud fångsten och vänta på ett resultat, vilket gör det perfekt för användning med knappen "stoppa nu" – Tryck på scenarier.

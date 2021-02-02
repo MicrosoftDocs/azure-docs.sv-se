@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a58fbf874339bf287ce1af62e1edb39ec6227d99
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741463"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257110"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Vanliga frågor om Azure AD Multi-Factor Authentication
 
@@ -124,7 +124,7 @@ Lär dig mer om MFA-leverantörer i [komma igång med en Azure Multi-Factor Auth
 
 I vissa fall Ja.
 
-Om din katalog har en Azure Multi-Factor Authentication *-Provider per användare* kan du lägga till MFA-licenser. Användare med licenser räknas inte in i förbruknings åtgången per användare. Användare utan licenser kan fortfarande aktive ras för MFA via MFA-providern. Om du köper och tilldelar licenser för alla användare som kon figurer ATS att använda Multi-Factor Authentication kan du ta bort Azure Multi-Factor Authentication-providern. Du kan alltid skapa en annan MFA-Provider per användare om du har fler användare än licenser i framtiden.
+Om din katalog har en Azure Multi-Factor Authentication *-Provider per användare* kan du lägga till MFA-licenser. Användare med licenser räknas inte i förbruknings åtgången per användare. Användare utan licenser kan fortfarande aktive ras för MFA via MFA-providern. Om du köper och tilldelar licenser för alla användare som kon figurer ATS att använda Multi-Factor Authentication kan du ta bort Azure Multi-Factor Authentication-providern. Du kan alltid skapa en annan MFA-Provider per användare om du har fler användare än licenser i framtiden.
 
 Om din katalog har en Azure Multi-Factor Authentication *-Provider per autentisering* , faktureras du alltid för varje autentisering, så länge MFA-providern är länkad till din prenumeration. Du kan tilldela MFA-licenser till användare, men du kommer fortfarande att faktureras för varje tvåstegsverifiering, oavsett om det kommer från någon med en MFA-licens som tilldelats eller inte.
 

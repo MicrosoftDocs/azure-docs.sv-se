@@ -49,6 +49,8 @@
           href: scenario-isolate-vnets.md
         - name: Isolera virtuella nätverk – anpassat
           href: scenario-isolate-vnets-custom.md
+        - name: Isolera virtuella nätverk och grenar
+          href: scenario-isolate-virtual-networks-branches.md
         - name: Virtuella nätverk för delade tjänster
           href: scenario-shared-services-vnet.md
         - name: Dirigera via en NVA

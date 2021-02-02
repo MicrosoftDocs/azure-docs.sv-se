@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929573"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256483"
 ---
 # <a name="azure-app-configuration-faq"></a>Vanliga frågor om Azure App konfiguration
 
@@ -105,7 +105,7 @@ Du kan inte nedgradera en lagring från standard-nivån till den kostnads fria n
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Finns det några begränsningar för antalet begär Anden som görs till app-konfigurationen?
 
-Konfigurations lager på den kostnads fria nivån är begränsade till 1 000 förfrågningar per dag. Konfigurations lager på standard nivån kan uppleva tillfälliga begränsningar när begär ande frekvensen överskrider 20 000 begär Anden per timme.
+Vid läsning av nyckel värden i appens konfiguration kommer data att få en sid brytning och varje begäran kan läsa upp till 100 nyckel värden. När du skriver nyckel värden kan varje förfrågan skapa eller uppdatera ett nyckel värde. Detta stöds via REST API, SDK: er för program konfiguration och konfigurations leverantörer. Konfigurations lager på den kostnads fria nivån är begränsade till 1 000 förfrågningar per dag. Konfigurations lager på standard nivån kan uppleva tillfälliga begränsningar när begär ande frekvensen överskrider 20 000 begär Anden per timme.
 
 När en butik når sin gräns returneras HTTP-statuskod 429 för alla begär Anden som görs tills tids perioden går ut. `retry-after-ms`Rubriken i svaret ger en föreslagen vänte tid (i millisekunder) innan begäran görs om.
 

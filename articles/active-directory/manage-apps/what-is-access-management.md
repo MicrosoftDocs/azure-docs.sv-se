@@ -3,19 +3,19 @@ title: Hantera åtkomst till appar med hjälp av Azure AD
 description: Beskriver hur Azure Active Directory gör det möjligt för organisationer att ange de appar som varje användare har åtkomst till.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: c73a5ccd9e16fb5efd9fefca6253701f942c3202
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5afc6aa8f52011eba6d7cfdfaa09b0ab995183e8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367796"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257431"
 ---
 # <a name="managing-access-to-apps"></a>Hantera åtkomst till appar
 
@@ -45,7 +45,7 @@ Med vissa typer av program kan du välja att kräva att [användarna ska tilldel
 * Program för programproxy som använder Azure Active Directory förautentisering
 * Program som bygger på Azure AD-programplattformen som använder OAuth 2,0/OpenID Connect-autentisering när en användare eller administratör har samtyckt till det programmet. Vissa företags program ger ytterligare kontroll över vem som tillåts att logga in.
 
-När användar tilldelning *inte krävs*ser inte otilldelade användare appen i sina appar, men de kan fortfarande logga in i själva programmet (även kallat SP-initierad inloggning) eller använda **URL: en för användar åtkomst** på programmets **egenskaps** sida (kallas även IDP inloggning).
+När användar tilldelning *inte krävs* ser inte otilldelade användare appen i sina appar, men de kan fortfarande logga in i själva programmet (även kallat SP-initierad inloggning) eller använda **URL: en för användar åtkomst** på programmets **egenskaps** sida (kallas även IDP inloggning).
 
 För vissa program är alternativet för att kräva användar tilldelning inte tillgängligt i programmets egenskaper. I dessa fall kan du använda PowerShell för att ange egenskapen appRoleAssignmentRequired för tjänstens huvud namn.
 

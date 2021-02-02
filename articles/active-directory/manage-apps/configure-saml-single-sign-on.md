@@ -3,7 +3,7 @@ title: Förstå SAML-baserad enkel inloggning (SSO) för appar i Azure Active Di
 description: Förstå SAML-baserad enkel inloggning (SSO) för appar i Azure Active Directory
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 32e654f002e3ba0c8bf72fb781b32d9098d83c00
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f6422c3f751a7aaa430b93ee68ca1a3520ac915f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219852"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257700"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>Förstå SAML-baserad enkel inloggning
 
@@ -44,7 +44,7 @@ Du bör hämta värdena från program leverantören. Du kan ange värdena manuel
 > [!TIP]
 > Många appar har redan förkonfigurerats för att fungera med Azure AD. De här apparna visas i galleriet med appar som du kan bläddra när du lägger till en app i Azure AD-klienten. [Snabb starts serien](add-application-portal-setup-sso.md) vägleder dig genom processen. För apparna i galleriet hittar du detaljerade steg-för-steg-instruktioner. Du kan komma åt stegen genom att klicka på länken på sidan SAML-konfiguration för appen enligt beskrivningen i snabb starts serien eller så kan du bläddra i en lista över alla program konfigurations guider i [självstudier för SaaS app Configuration](../saas-apps/tutorial-list.md).
 
-| Grundläggande konfigurations inställning för SAML | SP-initierad | idP-initierad | Description |
+| Grundläggande konfigurations inställning för SAML | SP-initierad | idP-initierad | Beskrivning |
 |:--|:--|:--|:--|
 | **Identifierare (entitets-ID)** | Krävs för vissa appar | Krävs för vissa appar | Identifierar programmet unikt. Azure AD skickar identifieraren till programmet som målgruppsparametern för SAML-token. Programmet förväntas verifiera den. Detta värde visas även som entitets-ID i alla SAML-metadata som anges av programmet. Ange en URL som använder följande mönster: "https:// <subdomain> . contoso.com" *du hittar det här värdet som **Issuer** -element i **AuthnRequest** (SAML-begäran) som skickas av programmet.* |
 | **Svarswebbadress** | Obligatorisk | Obligatorisk | Anger var programmet förväntas ta emot SAML-token. Svars-URL:en kallas även för URL för konsumenttjänst för försäkran (ACS-URL). Du kan använda ytterligare svars-URL-fält för att ange flera svars-URL: er. Du kan till exempel behöva ytterligare svars-URL: er för flera under domäner. I test syfte kan du ange flera svars-URL: er (lokala värden och offentliga URL: er) i taget. |

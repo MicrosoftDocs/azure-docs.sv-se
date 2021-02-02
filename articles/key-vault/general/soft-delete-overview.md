@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589992"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257954"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Översikt av mjuk borttagning för Azure Key Vault
 
@@ -99,5 +99,6 @@ I allmänhet finns det bara två åtgärder som är tillgängliga när ett objek
 
 Följande två guider ger de vanligaste användnings scenarierna för att använda mjuk borttagning.
 
+- [Använda Key Vault mjuk borttagning med portalen](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal)
 - [Så här använder du Key Vault mjuk borttagning med PowerShell](./key-vault-recovery.md) 
 - [Så här använder du Key Vault mjuk borttagning med CLI](./key-vault-recovery.md)

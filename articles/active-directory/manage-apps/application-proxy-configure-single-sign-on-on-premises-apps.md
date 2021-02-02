@@ -4,7 +4,7 @@ description: Lär dig att tillhandahålla enkel inloggning för lokala program s
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,14 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d51aa7e75d7e94d1c2ac66d7edb92a3ef9395b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 03c688952f37bf9fc91e9dd25e09d9c31cd980d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657473"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257076"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML enkel inloggning för lokala program med programproxy
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Enkel inloggning med SAML för lokala program med programproxy
 
 Du kan tillhandahålla enkel inloggning (SSO) till lokala program som skyddas med SAML-autentisering och ge fjärråtkomst till dessa program via programproxyn. Med enkel inloggning med SAML kan Azure Active Directory (Azure AD) autentiseras för programmet med hjälp av användarens Azure AD-konto. Azure AD kommunicerar inloggnings informationen till programmet via ett anslutnings protokoll. Du kan också mappa användare till specifika program roller baserat på regler som du definierar i dina SAML-anspråk. Genom att aktivera Application Proxy förutom SAML SSO får användarna extern åtkomst till programmet och en sömlös SSO-upplevelse.
 
@@ -88,7 +88,7 @@ Innan du kan ange SSO för lokala program måste du aktivera programproxyn och i
     > [!NOTE]
     > Om backend-appen förväntar sig att **svars-URL: en** ska vara den interna URL: en måste du antingen använda [anpassade domäner](application-proxy-configure-custom-domain.md) för att matcha interna och externa URL: er eller installera det säkra inloggnings tillägget Mina appar på användarnas enheter. Det här tillägget omdirigeras automatiskt till rätt Application Proxy-tjänst. Information om hur du installerar tillägget finns i avsnittet [Mina appar säkra inloggnings tillägg](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
     
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 
 När du har slutfört alla dessa steg ska appen vara igång. Så här testar du appen:
 

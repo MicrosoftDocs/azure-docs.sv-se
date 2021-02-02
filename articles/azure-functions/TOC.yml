@@ -281,9 +281,10 @@
               href: functions-create-storage-queue-triggered-function.md
             - name: Timerutlösare
               href: functions-create-scheduled-function.md
-        - name: Lägga till bindningar
+        - name: Ansluta till tjänster
           items:
-            - name: Så här lägger du till en bindning
+            - name: Så här ansluter du till tjänster
+              displayName: 'bindings,integrate'
               href: add-bindings-existing-function.md
             - name: Azure Cosmos DB – portalen
               href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -395,7 +396,7 @@
           href: configure-encrypt-at-rest-using-cmk.md
     - name: Integrera
       items:
-        - name: Lägga till bindningar
+        - name: Ansluta till tjänster
           items:
             - name: Azure Cosmos DB – portalen
               href: functions-integrate-store-unstructured-data-cosmosdb.md

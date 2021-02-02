@@ -3,7 +3,7 @@ title: 'Azure AD-programproxy: versions historik'
 description: Den här artikeln innehåller en lista över alla versioner av Azure AD-programproxy och beskriver nya funktioner och problem som har åtgärd ATS
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 8000d07824c27f60dd5d8d6a457521691fe2b7d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a4b029a1397a2522dfaa6eba9c0206dd5a031875
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658408"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258141"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-programproxy: versions historik
 Den här artikeln innehåller versioner och funktioner i Azure Active Directory (Azure AD) Application Proxy som har släppts. Azure AD-teamet uppdaterar regelbundet programproxy med nya funktioner och funktioner. Application Proxy-kopplingar uppdateras automatiskt när en ny version släpps. 

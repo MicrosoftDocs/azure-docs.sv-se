@@ -3,19 +3,19 @@ title: Etablera appar med omfångs filter | Microsoft Docs
 description: Lär dig hur du använder omfångs filter för att förhindra att objekt i appar som har stöd för automatisk användar etablering är etablerade om ett objekt inte uppfyller dina affärs krav.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861399"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255839"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbaserade program etablering med omfångs filter
 Syftet med den här artikeln är att förklara hur du använder omfångs filter för att definiera attributbaserade regler som avgör vilka användare som ska tillhandahållas till ett program.
@@ -60,7 +60,7 @@ Enligt det här omfångs filtret måste användarna uppfylla följande kriterier
 Definitions områdes filter konfigureras som en del av mappningar av mappar för varje Azure AD-anslutning för användar etablering. Följande procedur förutsätter att du redan har konfigurerat automatisk etablering för [ett av de program som stöds](../saas-apps/tutorial-list.md) och lägger till ett omfångs filter till det.
 
 ### <a name="create-a-scoping-filter"></a>Skapa ett omfångs filter
-1. I [Azure Portal](https://portal.azure.com)går du till avsnittet **Azure Active Directory**  >  **program för företags program**  >  **All applications** .
+1. I [Azure Portal](https://portal.azure.com)går du till avsnittet **Azure Active Directory**  >  **program för företags program**  >   .
 
 2. Välj det program som du har konfigurerat automatisk etablering för: till exempel "ServiceNow".
 

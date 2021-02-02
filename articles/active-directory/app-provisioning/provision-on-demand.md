@@ -3,7 +3,7 @@ title: Etablera en användare på begäran genom att använda Azure Active Direc
 description: Framtvinga synkronisering
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629020"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255669"
 ---
 # <a name="on-demand-provisioning"></a>Etablering på begäran
 Använd etablering på begäran för att etablera en användare i ett program på några sekunder. Bland annat kan du använda den här funktionen för att:
@@ -124,7 +124,7 @@ Slutligen vidtar etablerings tjänsten en åtgärd, till exempel att skapa, uppd
 
 Här är ett exempel på vad du kan se när du har slutfört etableringen av en användare på begäran:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Skärm bild som visar Azure Portal användar gränssnitt för att tillhandahålla en användare på begäran.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Skärm bild som visar att en användare har slutfört etableringen på begäran.":::
 
 #### <a name="view-details"></a>Visa detaljer
 

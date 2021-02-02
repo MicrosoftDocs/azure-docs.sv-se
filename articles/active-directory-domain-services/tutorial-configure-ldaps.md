@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618543"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256549"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Självstudie: Konfigurera säker LDAP för en Azure Active Directory Domain Services hanterad domän
 
@@ -212,6 +212,12 @@ Ett meddelande visas om att säker LDAP konfigureras för den hanterade domänen
 Det tar några minuter att aktivera säker LDAP för din hanterade domän. Om det säkra LDAP-certifikatet som du anger inte uppfyller de krav som krävs kan åtgärden för att aktivera säker LDAP för den hanterade domänen Miss lyckas.
 
 Några vanliga orsaker till fel är om domän namnet är felaktigt, krypteringsalgoritmen för certifikatet inte är *TripleDES-SHA1* eller om certifikatet upphör snart att gälla eller redan har gått ut. Du kan återskapa certifikatet med giltiga parametrar och sedan Aktivera säker LDAP med det uppdaterade certifikatet.
+
+## <a name="change-an-expiring-certificate"></a>Ändra ett certifikat som upphör att gälla
+
+1. Skapa ett nytt, säkert LDAP-certifikat genom att följa stegen för att [skapa ett certifikat för säker LDAP](#create-a-certificate-for-secure-ldap).
+1. Om du vill tillämpa ersättnings certifikatet på Azure AD DS går du till den vänstra menyn för Azure AD DS i Azure Portal, väljer **säkert LDAP** och väljer sedan **ändra certifikat**.
+1. Distribuera certifikatet till alla klienter som ansluter med hjälp av säker LDAP. 
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Lås säker LDAP-åtkomst via Internet
 

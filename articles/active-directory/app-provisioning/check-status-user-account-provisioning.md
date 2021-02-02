@@ -3,7 +3,7 @@ title: Rapportera automatisk användar konto etablering till SaaS-program
 description: Lär dig hur du kontrollerar status för automatiska etablerings jobb för användar konton och hur du felsöker etablering av enskilda användare.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069814"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256685"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Självstudie: rapportering om automatisk etablering av användar konton
 
@@ -40,7 +40,7 @@ I den här artikeln används följande villkor, som definieras nedan:
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Hämtar etablerings rapporter från Azure Portal
 
-Starta genom att starta [Azure Portal](https://portal.azure.com) och **Azure Active Directory** &gt; **Enterprise Apps** &gt; **etablerings loggar för företags program (för hands version)** i avsnittet **aktivitet** för att få information om etablerings rapporter för ett angivet program. Du kan också bläddra till företags programmet för vilken etablering har kon figurer ATS. Om du till exempel konfigurerar användare till LinkedIn-höjning är navigerings Sök vägen till program informationen:
+Starta genom att starta [Azure Portal](https://portal.azure.com) och **Azure Active Directory** &gt;  &gt; **etablerings loggar för företags program (för hands version)** i avsnittet **aktivitet** för att få information om etablerings rapporter för ett angivet program. Du kan också bläddra till företags programmet för vilken etablering har kon figurer ATS. Om du till exempel konfigurerar användare till LinkedIn-höjning är navigerings Sök vägen till program informationen:
 
 **Azure Active Directory > företags program > alla program > LinkedIn-höjning**
 
@@ -48,7 +48,7 @@ Härifrån kan du komma åt både etablerings förlopps fältet och etablerings 
 
 ## <a name="provisioning-progress-bar"></a>Förlopps indikator för etablering
 
-[Etablerings förlopps indikatorn](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) visas på fliken **etablering** för angivet program. Den finns i avsnittet **aktuell status** under **Inställningar**och visar statusen för den aktuella inledande eller stegvisa cykeln. I det här avsnittet visas även:
+[Etablerings förlopps indikatorn](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) visas på fliken **etablering** för angivet program. Den finns i avsnittet **aktuell status** under **Inställningar** och visar statusen för den aktuella inledande eller stegvisa cykeln. I det här avsnittet visas även:
 
 * Det totala antalet användare och/grupper som har synkroniserats och som för närvarande ingår i omfånget för etablering mellan käll systemet och mål systemet.
 * Den senaste gången som synkroniseringen kördes. Synkroniseringar sker vanligt vis var 20-40 minut, efter att en [första cykel](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental) har slutförts.
@@ -57,7 +57,7 @@ Härifrån kan du komma åt både etablerings förlopps fältet och etablerings 
 
 Den **aktuella statusen** bör vara den första plats som administratörer ser för att kontrol lera etablerings jobbets operativa hälsa.
 
- ![Sammanfattnings rapport](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Sammanfattnings rapport](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Etablerings loggar (för hands version)
 

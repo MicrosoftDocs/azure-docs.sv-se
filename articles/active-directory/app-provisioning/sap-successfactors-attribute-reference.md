@@ -3,7 +3,7 @@ title: Referens för SAP SuccessFactors-attribut
 description: Lär dig vilka attribut från SuccessFactors som stöds av SuccessFactors-HR driven-etablering
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87808515"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255550"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Referens för SAP SuccessFactors-attribut
 
@@ -34,7 +34,7 @@ I tabellen nedan samlas listan över SuccessFactors-attribut som ingår som stan
 
 I [integrerings referensen för SAP SuccessFactors](./sap-successfactors-integration-reference.md#retrieving-additional-attributes) finns mer information om hur du utökar schemat för ytterligare attribut. 
 
-| \# | SuccessFactors-entitet                  | SuccessFactors-attribut     | Åtgärds typ |
+| \# | SuccessFactors-entitet                  | SuccessFactors-attribut     | Åtgärdstyp |
 |----|----------------------------------------|------------------------------|----------------|
 | 1  | PerPerson                              | personIdExternal             | Läs           |
 | 2  | PerPerson                              | personId                     | Läs           |
@@ -45,35 +45,35 @@ I [integrerings referensen för SAP SuccessFactors](./sap-successfactors-integra
 | 7  | PerPersonal                            | lastName                     | Läs           |
 | 8  | PerPersonal                            | middleName                   | Läs           |
 | 9  | PerPersonal                            | preferredName                | Läs           |
-| 10 | Användare                                   | addressLine1                 | Läs           |
-| 11 | Användare                                   | addressLine2                 | Läs           |
-| 12 | Användare                                   | addressLIne3                 | Läs           |
-| 13 | Användare                                   | businessPhone                | Läs           |
-| 14 | Användare                                   | cellPhone                    | Läs           |
-| 15 | Användare                                   | city                         | Läs           |
-| 16 | Användare                                   | land                      | Läs           |
-| 17 | Användare                                   | custom01                     | Läs           |
-| 18 | Användare                                   | custom02                     | Läs           |
-| 19 | Användare                                   | custom03                     | Läs           |
-| 20 | Användare                                   | custom04                     | Läs           |
-| 21 | Användare                                   | custom05                     | Läs           |
-| 22 | Användare                                   | custom06                     | Läs           |
-| 23 | Användare                                   | custom07                     | Läs           |
-| 24 | Användare                                   | custom08                     | Läs           |
-| 25 | Användare                                   | custom09                     | Läs           |
-| 26 | Användare                                   | anpassad10                     | Läs           |
-| 27 | Användare                                   | custom11                     | Läs           |
-| 28 | Användare                                   | custom12                     | Läs           |
-| 29 | Användare                                   | custom13                     | Läs           |
-| 30 | Användare                                   | custom14                     | Läs           |
-| 31 | Användare                                   | empId                        | Läs           |
-| 32 | Användare                                   | homePhone                    | Läs           |
-| 33 | Användare                                   | jobFamily                    | Läs           |
-| 34 | Användare                                   | smek namn                     | Läs           |
-| 35 | Användare                                   | state                        | Läs           |
-| 36 | Användare                                   | Tidszon                     | Läs           |
-| 37 | Användare                                   | användarnamn                     | Läs           |
-| 38 | Användare                                   | Postummer                      | Läs           |
+| 10 | User                                   | addressLine1                 | Läs           |
+| 11 | User                                   | addressLine2                 | Läs           |
+| 12 | User                                   | addressLIne3                 | Läs           |
+| 13 | User                                   | businessPhone                | Läs           |
+| 14 | User                                   | cellPhone                    | Läs           |
+| 15 | User                                   | city                         | Läs           |
+| 16 | User                                   | land                      | Läs           |
+| 17 | User                                   | custom01                     | Läs           |
+| 18 | User                                   | custom02                     | Läs           |
+| 19 | User                                   | custom03                     | Läs           |
+| 20 | User                                   | custom04                     | Läs           |
+| 21 | User                                   | custom05                     | Läs           |
+| 22 | User                                   | custom06                     | Läs           |
+| 23 | User                                   | custom07                     | Läs           |
+| 24 | User                                   | custom08                     | Läs           |
+| 25 | User                                   | custom09                     | Läs           |
+| 26 | User                                   | anpassad10                     | Läs           |
+| 27 | User                                   | custom11                     | Läs           |
+| 28 | User                                   | custom12                     | Läs           |
+| 29 | User                                   | custom13                     | Läs           |
+| 30 | User                                   | custom14                     | Läs           |
+| 31 | User                                   | empId                        | Läs           |
+| 32 | User                                   | homePhone                    | Läs           |
+| 33 | User                                   | jobFamily                    | Läs           |
+| 34 | User                                   | smek namn                     | Läs           |
+| 35 | User                                   | state                        | Läs           |
+| 36 | User                                   | Tidszon                     | Läs           |
+| 37 | User                                   | användarnamn                     | Läs           |
+| 38 | User                                   | Postummer                      | Läs           |
 | 39 | PerPhone                               | areaCode                     | Läs           |
 | 40 | PerPhone                               | countryCode                  | Läs           |
 | 41 | PerPhone                               | utöka                    | Läs           |
@@ -89,7 +89,7 @@ I [integrerings referensen för SAP SuccessFactors](./sap-successfactors-integra
 | 51 | EmpJob                                 | emplStatus                   | Läs           |
 | 52 | EmpJob                                 | endDate                      | Läs           |
 | 53 | EmpJob                                 | /SD                    | Läs           |
-| 54 | EmpJob                                 | Befattning                     | Läs           |
+| 54 | EmpJob                                 | jobTitle                     | Läs           |
 | 55 | EmpJob                                 | position                     | Läs           |
 | 65 | EmpJob                                 | customString13               | Läs           |
 | 56 | EmpJob                                 | managerId                    | Läs           |
@@ -124,21 +124,21 @@ Tabellen nedan innehåller standardattributets mappning mellan SuccessFactors-at
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | Anställnings                              | Används som matchande attribut                                                                   |
 | 2  | PerPerson                              | perPersonUuid            | \[Inte mappad \- används som käll ankare\] | Under den inledande synkroniseringen länkar etablerings tjänsten personUuid till befintlig objectGuid\.  |
-| 3  | PerPersonal                            | displayName              | displayName                             | Ej tillämpligt                                                                                           |
-| 4  | PerPersonal                            | firstName                | förnamn                               | Ej tillämpligt                                                                                           |
-| 5  | PerPersonal                            | lastName                 | sn                                      | Ej tillämpligt                                                                                           |
-| 6  | Användare                                   | addressLine1             | streetAddress                           | Ej tillämpligt                                                                                           |
-| 7  | Användare                                   | city                     | l                                       | Ej tillämpligt                                                                                           |
-| 8  | Användare                                   | land                  | co                                      | Ej tillämpligt                                                                                           |
-| 9  | Användare                                   | state                    | st                                      | Ej tillämpligt                                                                                           |
-| 10 | Användare                                   | användarnamn                 | samAccountName                          | Ej tillämpligt                                                                                           |
-| 11 | Användare                                   | Postummer                  | Post nummer                              | Ej tillämpligt                                                                                           |
-| 12 | PerEmail                               | emailAddress             | e-post                                    | Ej tillämpligt                                                                                           |
-| 13 | EmpJob                                 | Befattning                 | title                                   | Ej tillämpligt                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | Ej tillämpligt                                                                                           |
-| 15 | EmpJob \. Company \. CountryOfRegistration | twoCharCountryCode       | c                                       | Ej tillämpligt                                                                                           |
-| 16 | EmpJob- \. avdelning                     | avdelning               | avdelning                              | Ej tillämpligt                                                                                           |
-| 17 | EmpJob- \. avdelning                       | vändning                 | company                                 | Ej tillämpligt                                                                                           |
-| 18 | EmpJob- \. plats                       | officeLocationAddress    | streetAddress                           | Ej tillämpligt                                                                                           |
-| 19 | EmpJob- \. plats                       | officeLocationZipCode    | Post nummer                              | Ej tillämpligt                                                                                           |
+| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | PerPersonal                            | firstName                | förnamn                               | NA                                                                                           |
+| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
+| 6  | User                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | User                                   | city                     | l                                       | NA                                                                                           |
+| 8  | User                                   | land                  | co                                      | NA                                                                                           |
+| 9  | User                                   | state                    | st                                      | NA                                                                                           |
+| 10 | User                                   | användarnamn                 | samAccountName                          | NA                                                                                           |
+| 11 | User                                   | Postummer                  | postalCode                              | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | e-post                                    | NA                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
+| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
+| 15 | EmpJob \. Company \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob- \. avdelning                     | avdelning               | avdelning                              | NA                                                                                           |
+| 17 | EmpJob- \. avdelning                       | vändning                 | company                                 | NA                                                                                           |
+| 18 | EmpJob- \. plats                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | EmpJob- \. plats                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | om activeEmploymentsCount = 0 inaktiverar du account\.                                           |

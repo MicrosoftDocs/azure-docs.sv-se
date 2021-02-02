@@ -3,12 +3,12 @@ title: Metodtips för mallar
 description: Beskriver rekommenderade metoder för att redigera Azure Resource Manager mallar (ARM-mallar). Innehåller förslag på hur du undviker vanliga problem när du använder mallar.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696354"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258005"
 ---
 # <a name="arm-template-best-practices"></a>Metod tips för ARM-mall
 
@@ -276,6 +276,8 @@ Följande information kan vara till hjälp när du arbetar med [resurser](templa
 
    > [!NOTE]
    > För att säkerställa att hemligheter krypteras när de skickas som parametrar till virtuella datorer och tillägg, använder du `protectedSettings` egenskapen för relevanta tillägg.
+
+* Ange explicita värden för egenskaper med standardvärden som kan ändras över tid. Om du till exempel distribuerar ett AKS-kluster kan du antingen ange eller utelämna `kubernetesVersion` egenskapen. Om du inte anger något värde, kommer [klustret att standardiseras till den N-1 lägre versionen och den senaste korrigeringen](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions). När du distribuerar klustret med en ARM-mall kanske det här standard beteendet inte är det du förväntar dig. Om du distribuerar om mallen kan det leda till att klustret uppgraderas till en ny Kubernetes-version. Överväg i stället att ange ett explicit versions nummer och ändra det manuellt när du är redo att uppgradera klustret.
 
 ## <a name="use-test-toolkit"></a>Använd test Toolkit
 

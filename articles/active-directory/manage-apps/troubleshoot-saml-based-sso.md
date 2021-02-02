@@ -3,19 +3,19 @@ title: Felsöka SAML-baserad enkel inloggning i Azure Active Directory
 description: Felsök problem med en Azure AD-app som är konfigurerad för SAML-baserad enkel inloggning.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658884"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257534"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Felsöka SAML-baserad enkel inloggning i Azure Active Directory
 Om det uppstår ett problem när du konfigurerar ett program. Kontrol lera att du har följt alla steg i självstudien för programmet. I programmets konfiguration har du infogat dokumentation om hur du konfigurerar programmet. Du kan också få åtkomst till [listan med självstudier om hur du integrerar SaaS-appar med Azure Active Directory](../saas-apps/tutorial-list.md) för en detaljerad steg-för-steg-guide.

@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322542"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257414"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Hitta hjälp och öppna ett support ärende för Azure Active Directory
 Microsoft tillhandahåller global teknisk, för försäljnings-, fakturerings-och prenumerations support för Azure Active Directory (Azure AD). Support är tillgängligt både online och per telefon för Microsoft Azure betalda och utvärderings prenumerationer. Telefonsupport och faktureringssupport online är tillgänglig på fler språk. 
@@ -41,22 +41,22 @@ Om du inte kan hitta svar med hjälp av självhjälps resurser kan du öppna ett
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Så här öppnar du ett support ärende för Azure AD i Azure Portal
 
 > [!NOTE]
-> För fakturerings-eller prenumerations problem måste du använda [Microsoft 365 administrations centret](https://admin.microsoft.com).
-> 
+> * För fakturerings-eller prenumerations problem måste du använda [Microsoft 365 administrations centret](https://admin.microsoft.com).  
+> * Om du använder Azure AD B2C öppnar du ett support ärende genom att först byta till en Azure AD-klient som har en associerad Azure-prenumeration. Detta är vanligt vis den anställdas klient organisation eller standard klient som skapas åt dig när du registrerade dig för en Azure-prenumeration. Mer information finns i [hur en Azure-prenumeration är relaterad till Azure AD](active-directory-how-subscriptions-associated-directory.md).
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och öppna **Azure Active Directory**.
    
 1. Rulla ned till **fel sökning + support** och välj **nytt support ärende**.
    
-1. På bladet **grundläggande** information väljer du **teknisk**för **typ av problem**.
+1. På bladet **grundläggande** information väljer du **teknisk** för **typ av problem**.
 
 1. Välj din **prenumeration**.
 
-1. För **tjänst**väljer du **Azure Active Directory**.
+1. För **tjänst** väljer du **Azure Active Directory**.
 
 1. Skapa en **Sammanfattning** för begäran. Sammanfattningen måste vara under 140 tecken.
   
-1. Välj en **problem typ**och välj sedan en kategori för den typen. I det här läget erbjuds du också information om dig själv hjälp för din problem kategori.
+1. Välj en **problem typ** och välj sedan en kategori för den typen. I det här läget erbjuds du också information om dig själv hjälp för din problem kategori.
   
 1. Lägg till resten av problem informationen och klicka på **Nästa**. 
 
@@ -74,7 +74,7 @@ Om du inte kan hitta svar med hjälp av självhjälps resurser kan du öppna ett
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Så här öppnar du ett support ärende för Azure AD i Microsoft 365 administrations Center
 
 > [!NOTE]
-> Stöd för Azure AD i [Microsoft 365 administrations Center](https://admin.microsoft.com) erbjuds endast för administratörer. 
+> Stöd för Azure AD i [Microsoft 365 administrations Center](https://admin.microsoft.com) erbjuds endast för administratörer.
 
 1. Logga in på [Microsoft 365 administrations Center](https://admin.microsoft.com) med ett konto som har en licens för Enterprise Mobility + Security (EMS).
 
@@ -82,9 +82,9 @@ Om du inte kan hitta svar med hjälp av självhjälps resurser kan du öppna ett
 
 1. På sidan **Support översikt** väljer du **identitets hantering** eller **användar-och domän hantering**:
 
-1. För **funktion**väljer du den Azure AD-funktion som du vill ha stöd för.
+1. För **funktion** väljer du den Azure AD-funktion som du vill ha stöd för.
 
-1. För **symptom**väljer du ett lämpligt symptom, sammanfattar problemet och anger relevant information och väljer sedan **Nästa**.
+1. För **symptom** väljer du ett lämpligt symptom, sammanfattar problemet och anger relevant information och väljer sedan **Nästa**.
 
 1. Välj en av de erbjudna självhjälps resurserna eller Välj **Ja, Fortsätt** eller **Nej, Avbryt begäran**.
 

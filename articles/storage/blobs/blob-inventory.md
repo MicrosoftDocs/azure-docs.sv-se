@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602690"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257819"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Använd Azure Storage BLOB Inventory för att hantera BLOB-data (för hands version)
 
@@ -32,6 +32,8 @@ För hands versionen av BLOB Inventory är tillgänglig på lagrings konton i f�
 - Frankrike, centrala
 - Kanada, centrala
 - Kanada, östra
+- East US
+- USA, östra 2
 
 ### <a name="pricing-and-billing"></a>Priser och fakturering
 
@@ -57,7 +59,7 @@ Aktivera BLOB Inventory-rapporter genom att lägga till en princip till ditt lag
 Inventerings principer läses eller skrivs fullständigt. Partiella uppdateringar stöds inte.
 
 > [!IMPORTANT]
-> Om du aktiverar brand Väggs regler för ditt lagrings konto kan inventerings begär Anden blockeras. Du kan avblockera dessa förfrågningar genom att tillhandahålla undantag för betrodda Microsoft-tjänster. Mer information finns i avsnittet undantag i [Konfigurera brand väggar och virtuella nätverk](../common/storage-network-security.md#exceptions).
+> Om du aktiverar brandväggsregler för ditt lagringskonto kan inventeringsbegäranden blockeras. Du kan avblockera dessa begäranden genom att tillhandahålla undantag för betrodda Microsoft-tjänster. Mer information finns i avsnittet undantag i [Konfigurera brand väggar och virtuella nätverk](../common/storage-network-security.md#exceptions).
 
 En BLOB Inventory-körning schemaläggs automatiskt varje dag. Det kan ta upp till 24 timmar innan en inventerings körning har slutförts. En inventerings rapport konfigureras genom att lägga till en inventerings princip med en eller flera regler.
 
@@ -85,11 +87,11 @@ En inventerings princip är en samling regler i ett JSON-dokument.
 
 Visa JSON för en inventerings princip genom att välja fliken **kodvy** i avsnittet **BLOB inventory** i Azure Portal.
 
-| Parameternamn | Parameter typ        | Kommentarer | Obligatoriskt? |
+| Parameternamn | Parametertyp        | Kommentarer | Obligatoriskt? |
 |----------------|-----------------------|-------|-----------|
-| mål    | Sträng                | Mål behållaren där alla Inventory Files kommer att skapas. Mål containern måste redan finnas. | Yes |
-| enabled        | Boolesk               | Används för att inaktivera hela principen. När det är inställt på **Sant** åsidosätter det aktiverade fältet för regel nivå den här parametern. När det är inaktiverat inaktive ras inventering för alla regler. | Yes |
-| regler          | Matris med regel objekt | Minst en regel krävs i en princip. Det finns stöd för upp till 10 regler. | Yes |
+| mål    | Sträng                | Mål behållaren där alla Inventory Files kommer att skapas. Mål containern måste redan finnas. | Ja |
+| enabled        | Boolesk               | Används för att inaktivera hela principen. När det är inställt på **Sant** åsidosätter det aktiverade fältet för regel nivå den här parametern. När det är inaktiverat inaktive ras inventering för alla regler. | Ja |
+| regler          | Matris med regel objekt | Minst en regel krävs i en princip. Det finns stöd för upp till 10 regler. | Ja |
 
 ## <a name="inventory-rules"></a>Inventerings regler
 
@@ -97,11 +99,11 @@ En regel samlar in filtrerings villkor och utdataparametrar för att generera en
 
 Varje regel i principen har flera parametrar:
 
-| Parameternamn | Parameter typ                 | Kommentarer | Obligatoriskt? |
+| Parameternamn | Parametertyp                 | Kommentarer | Obligatoriskt? |
 |----------------|--------------------------------|-------|-----------|
-| name           | Sträng                         | Ett regel namn kan innehålla upp till 256 Skift läges känsliga alfanumeriska tecken. Namnet måste vara unikt inom en princip. | Yes |
-| enabled        | Boolesk                        | En flagga som tillåter att en regel aktive ras eller inaktive ras. Standardvärdet är **True**. | Yes |
-| definition     | Inventerings regel definition för JSON | Varje definition består av en regel filter uppsättning. | Yes |
+| name           | Sträng                         | Ett regel namn kan innehålla upp till 256 Skift läges känsliga alfanumeriska tecken. Namnet måste vara unikt inom en princip. | Ja |
+| enabled        | Boolesk                        | En flagga som tillåter att en regel aktive ras eller inaktive ras. Standardvärdet är **True**. | Ja |
+| definition     | Inventerings regel definition för JSON | Varje definition består av en regel filter uppsättning. | Ja |
 
 Flaggan global **BLOB Inventory Enabled** har företräde framför den *aktiverade* parametern i en regel.
 
@@ -111,10 +113,10 @@ Det finns flera filter för att anpassa en BLOB Inventory-rapport:
 
 | Filternamn         | Filtertyp                     | Kommentarer | Obligatoriskt? |
 |---------------------|---------------------------------|-------|-----------|
-| blobTypes           | Matris med fördefinierade uppräknings värden | Giltiga värden är `blockBlob` och `appendBlob` för hierarkiskt namn områdes aktiverade konton, och `blockBlob` ,, `appendBlob` och `pageBlob` för andra konton. | Yes |
-| prefixMatch         | Matris med upp till 10 strängar för prefix som ska matchas. Ett prefix måste börja med ett behållar namn, till exempel "container1/foo" | Om du inte definierar *prefixMatch* eller anger ett tomt prefix gäller regeln för alla blobar i lagrings kontot. | No |
-| includeSnapshots    | Boolesk                         | Anger om lagret ska innehålla ögonblicks bilder. Standardvärdet är **false**. | No |
-| includeBlobVersions | Boolesk                         | Anger om inventeringen ska inkludera BLOB-versioner. Standardvärdet är **false**. | No |
+| blobTypes           | Matris med fördefinierade uppräknings värden | Giltiga värden är `blockBlob` och `appendBlob` för hierarkiskt namn områdes aktiverade konton, och `blockBlob` ,, `appendBlob` och `pageBlob` för andra konton. | Ja |
+| prefixMatch         | Matris med upp till 10 strängar för prefix som ska matchas. Ett prefix måste börja med ett behållar namn, till exempel "container1/foo" | Om du inte definierar *prefixMatch* eller anger ett tomt prefix gäller regeln för alla blobar i lagrings kontot. | Inga |
+| includeSnapshots    | Boolesk                         | Anger om lagret ska innehålla ögonblicks bilder. Standardvärdet är **false**. | Inga |
+| includeBlobVersions | Boolesk                         | Anger om inventeringen ska inkludera BLOB-versioner. Standardvärdet är **false**. | Inga |
 
 Visa JSON för inventerings regler genom att välja fliken **kodvy** i avsnittet **BLOB inventory** i Azure Portal. Filter anges i en regel definition.
 

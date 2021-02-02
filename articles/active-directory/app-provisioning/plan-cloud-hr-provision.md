@@ -3,7 +3,7 @@ title: Planera molnet HR Application för att Azure Active Directory användar e
 description: Den här artikeln beskriver distributions processen för att integrera moln HR-system, till exempel Workday och SuccessFactors, med Azure Active Directory. Genom att integrera Azure AD med ditt moln HR-system resulterar det i ett komplett hanterings system för identitets livs cykeln.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174908"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256719"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planera molnet HR Application för att Azure Active Directory användar etablering
 
@@ -96,10 +96,10 @@ Du måste också ha en giltig Azure AD Premium P1 eller högre prenumerations li
 | | [Så här distribuerar du användar etablering i Active Azure-katalogen](https://youtu.be/pKzyts6kfrw) |
 | Självstudier | [Lista över självstudier om hur du integrerar SaaS-appar med Azure AD](../saas-apps/tutorial-list.md) |
 | | [Självstudie: Konfigurera arbets dag för automatisk användar etablering](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Vanliga frågor | [Automatiserad användar etablering](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| VANLIGA FRÅGOR OCH SVAR | [Automatiserad användar etablering](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Etablering från Workday till Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
-### <a name="solution-architecture"></a>Lösningsarkitekturen
+### <a name="solution-architecture"></a>Lösningsarkitektur
 
 I följande exempel beskrivs den kompletta lösningen för användar etablerings lösningen för vanliga hybrid miljöer och inkluderar:
 

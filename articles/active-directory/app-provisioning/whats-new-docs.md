@@ -1,24 +1,36 @@
 ---
 title: Vad är nytt i Azure Active Directory programmets etablering
 description: Ny och uppdaterad dokumentation för Azure Active Directory programmets etablering.
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: daveba
+ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562216"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256009"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory applikations etablering: Nyheter
 
 Välkommen till nyheter i Azure Active Directory Application Provisioning-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med etablerings tjänsten finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="january-2021"></a>Januari 2021
+
+### <a name="new-articles"></a>Nya artiklar
+- [Hur Azure Active Directory etablering integreras med Workday](workday-integration-reference.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+- [Självstudie: utveckla en exempel SCIM-slutpunkt](use-scim-to-build-users-and-groups-endpoints.md)
+- [Självstudie – anpassa användar etablering attribut-mappningar för SaaS-program i Azure Active Directory](customize-application-attributes.md)
+- [Hur Azure Active Directory etablering integreras med SAP SuccessFactors](sap-successfactors-integration-reference.md)
+- [Program etablering i karantän status](application-provisioning-quarantine-status.md)
+
 
 ## <a name="december-2020"></a>December 2020
 
@@ -60,7 +72,7 @@ Välkommen till nyheter i Azure Active Directory Application Provisioning-dokume
 
 ### <a name="new-articles"></a>Nya artiklar
 
-- [Vad är nytt i dokumenten?](whats-new-docs.md)
+- [Nyheter i Docs](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 - [Program etablering i karantän status](application-provisioning-quarantine-status.md)

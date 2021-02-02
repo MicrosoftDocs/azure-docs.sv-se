@@ -3,7 +3,7 @@ title: Huvud-baserad autentisering med PingAccess för Azure AD-programproxy
 description: Publicera program med PingAccess och App proxy för att stödja huvud-baserad autentisering.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e09bb0b07112a962b709c380c48f2a656c16097b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 128e053016faf3ed2a9c53ad21f35a13f3ac1265
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663725"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258175"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Huvudbaserad autentisering för enkel inloggning med Programproxy och PingAccess
 
@@ -101,7 +101,7 @@ Tilldela nu en användare för program testning och välj rubrik-baserad enkel i
 
 1. Välj en användare för program testning och välj **Välj**. Kontrol lera att det här test kontot har åtkomst till det lokala programmet.
 1. Välj **Tilldela**.
-1. Från program sid panelen väljer du rubrik baserad **på enkel inloggning**  >  **Header-based**.
+1. Från program sid panelen väljer du rubrik baserad **på enkel inloggning**  >  .
 
    > [!TIP]
    > Om det här är första gången du använder en rubrik baserad enkel inloggning måste du installera PingAccess. För att se till att din Azure-prenumeration automatiskt associeras med din PingAccess-installation använder du länken på den här sidan för enkel inloggning för att hämta PingAccess. Du kan öppna hämtnings platsen nu eller gå tillbaka till den här sidan senare.
@@ -141,7 +141,7 @@ Du måste samla in dessa tre informations delar (alla GUID) för att konfigurera
 | --- | --- | --- |
 | **Program-ID (klient)** | **Klient-ID** | GUID |
 | **Katalog-ID (klient)** | **Utfärdare** | GUID |
-| `PingAccess key` | **Client Secret (Klienthemlighet)** | Slumpmässig sträng |
+| `PingAccess key` | **Klient hemlighet** | Slumpmässig sträng |
 
 Samla in den här informationen:
 
@@ -152,7 +152,7 @@ Samla in den här informationen:
 
 1. Klicka på ikonen **Kopiera till Urklipp** bredvid **programmets (klient) ID-** värde och kopiera och spara den sedan. Du anger det här värdet senare som PingAccess-klient-ID.
 1. Klicka på **Kopiera till Urklipp** bredvid **ID-värdet för katalogen (klient)** och kopiera och spara det. Du anger det här värdet senare som PingAccesss utfärdare.
-1. Välj **certifikat och hemligheter** **App registrations**  >  **ny klient hemlighet** från List rutan för Appregistreringar för ditt program. Sidan **Lägg till en klient hemlighet** visas.
+1. Välj **certifikat och hemligheter**   >  **ny klient hemlighet** från List rutan för Appregistreringar för ditt program. Sidan **Lägg till en klient hemlighet** visas.
 
    ![Visar sidan Lägg till en klient hemlighet](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
 
