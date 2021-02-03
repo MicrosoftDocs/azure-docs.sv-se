@@ -3,12 +3,12 @@ title: Mall funktioner i omfångs distributioner
 description: Beskriver hur du löser mallarnas funktioner i omfångs distributioner. Omfånget kan vara en klient, hanterings grupper, prenumerationer och resurs grupper.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: cb02a3dc808604a80fd9943138c1cd0d8648904e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681706"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492101"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>ARM-mallens funktioner i distributions omfång
 
@@ -40,15 +40,15 @@ När du distribuerar till olika omfång finns det några viktiga överväganden:
 * Använd funktionen [extensionResourceId ()](template-functions-resource.md#extensionresourceid) för resurser som implementeras som tillägg för hanterings gruppen. Anpassade princip definitioner som distribueras till hanterings gruppen är tillägg för hanterings gruppen.
 
   Använd följande för att hämta resurs-ID för en anpassad princip definition på hanterings grupps nivå:
-  
+
   ```json
   "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
-* Använd funktionen [tenantResourceId](template-functions-resource.md#tenantresourceid) för att hämta ID: t för en resurs som distribueras hos klienten. Inbyggda princip definitioner är klient nivå resurser. När du tilldelar en inbyggd princip på hanterings grupps nivå använder du funktionen tenantResourceId.
+* Använd funktionen [tenantResourceId ()](template-functions-resource.md#tenantresourceid) för att hämta ID: t för en resurs som distribueras hos klienten. Inbyggda princip definitioner är klient nivå resurser. När du tilldelar en inbyggd princip på hanterings grupps nivå använder du funktionen tenantResourceId.
 
   Om du vill hämta resurs-ID för en inbyggd princip definition använder du:
-  
+
   ```json
   "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
@@ -63,7 +63,7 @@ Följande tabell visar om funktionerna matchas med den överordnade eller inbäd
 | ------------- | ----- | ---------- |
 | Nest        | yttre (standard) | Överordnad resurs grupp |
 | Nest        | innersta | Under resurs grupp |
-| länkade        | E.t.   | Under resurs grupp |
+| länkade        | Ej tillämpligt   | Under resurs grupp |
 
 Följande [exempel-mall](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) visar:
 
@@ -138,6 +138,6 @@ Utdata från föregående exempel är:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du definierar parametrar i din mall finns i [förstå strukturen och syntaxen för Azure Resource Manager mallar](template-syntax.md).
+* Information om hur du definierar parametrar i din mall finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
 * Tips om hur du löser vanliga distributions fel finns i [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](common-deployment-errors.md).
-* Information om hur du distribuerar en mall som kräver en SAS-token finns i [distribuera privat mall med SAS-token](secure-template-with-sas-token.md).
+* Information om hur du distribuerar en mall som kräver en SAS-token finns i [distribuera privat arm-mall med SAS-token](secure-template-with-sas-token.md).

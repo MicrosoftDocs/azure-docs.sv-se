@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 4d2f339f5a1339b5f249172170fed54c91f1dc24
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2c469324db11d2e65f8eb958e68f77fd77020865
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927186"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491055"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure CLI
 
@@ -53,7 +53,7 @@ Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-pu
     --resource-group myResourceGroup \
     --name myStandardZRPublicIP \
     --sku Standard
-    --zone 1,2,3
+    --zone 1 2 3
 ```
 > [!IMPORTANT]
 > För versioner av API: t som är äldre än 2020-08-01 kör du kommandot ovan utan att ange en zon parameter för att skapa en zon-redundant IP-adress. 

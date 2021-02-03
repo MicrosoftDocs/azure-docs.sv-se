@@ -7,41 +7,41 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 717a1bc4361ba4a7366f4864c1fe44f93b6f4b5e
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: ba32cfa4bc5cd0b41a210cf88fb598afc3064495
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127863"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492560"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
 :::image type="icon" source="media/itsmc-overview/itsmc-symbol.png":::
 
-Den här artikeln innehåller information om hur du konfigurerar Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC) i Log Analytics för att centralt hantera dina arbets uppgifter.
+Den här artikeln innehåller information om hur du konfigurerar Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC) i Log Analytics för att centralt hantera dina ITSM-arbetsobjekt (IT Service Management).
 
 ## <a name="add-it-service-management-connector"></a>Lägg till Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
-Innan du kan skapa en anslutning måste du lägga till ITSMC.
+Innan du kan skapa en anslutning måste du installera ITSMC.
 
 1. I Azure Portal väljer du **skapa en resurs**:
 
-   ![Skärm bild som visar meny alternativet Skapa en resurs.](media/itsmc-overview/azure-add-new-resource.png)
+   ![Skärm bild som visar meny alternativet för att skapa en resurs.](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Sök efter **anslutningsprogram för hantering av IT-tjänster (ITSM)** på Azure Marketplace. Välj **skapa**:
+2. Sök efter **anslutningsprogram för hantering av IT-tjänster (ITSM)** på Azure Marketplace. Välj sedan **skapa**:
 
    ![Skärm bild som visar knappen Skapa i Azure Marketplace.](media/itsmc-overview/add-itsmc-solution.png)
 
-3. I avsnittet **La arbets yta** väljer du den Azure Log Analytics-arbetsyta där du vill installera ITSMC.
-   >[!NOTE]
-   >
-   > * ITSMC kan bara installeras i Log Analytics arbets ytor i följande regioner: östra USA, västra USA 2, södra centrala USA, västra centrala USA, US Gov, Arizona, US Gov, Virginia, centrala Kanada, Västeuropa, södra Storbritannien, Sydostasien, Östra Japan, centrala Indien och Australien, sydöstra.
+3. I avsnittet Välj **arbets yta** väljer du Log Analytics arbets ytan där du vill installera ITSMC.
+   > [!NOTE]
+   > Du kan bara installera ITSMC i Log Analytics arbets ytor i följande regioner: östra USA, västra USA 2, södra centrala USA, västra centrala USA, US Gov, Arizona, US Gov, Virginia, centrala Kanada, Västeuropa, södra Storbritannien, Sydostasien, Östra Japan, centrala Indien och Australien, sydöstra.
 
 4. I avsnittet **Log Analytics arbets yta** väljer du den resurs grupp där du vill skapa ITSMC-resursen:
 
    ![Skärm bild som visar avsnittet Log Analytics arbets yta.](media/itsmc-overview/itsmc-solution-workspace.png)
-   >[!NOTE]
-   >Som en del av den pågående över gången från Microsoft Operations Management Suite (OMS) till Azure Monitor, kallas OMS-arbetsytor nu *Log Analytics arbets ytor*.
+   
+   > [!NOTE]
+   > Som en del av den pågående över gången från Microsoft Operations Management Suite (OMS) till Azure Monitor kallas OMS-arbetsytor *Log Analytics arbets ytor*.
 
 5. Välj **OK**.
 
@@ -49,18 +49,14 @@ När ITSMC-resursen distribueras visas ett meddelande i det övre högra hörnet
 
 ## <a name="create-an-itsm-connection"></a>Skapa en ITSM-anslutning
 
-När du har installerat ITSMC kan du skapa en anslutning.
-
-Om du vill skapa en anslutning måste du utföra förberedelse av ITSM-verktyget för att tillåta anslutningen från ITSMC.  
-
-Baserat på den ITSM-produkt som du ansluter till väljer du någon av följande länkar för instruktioner:
+När du har installerat ITSMC måste du prepa ditt ITSM-verktyg för att tillåta anslutningen från ITSMC. Baserat på den ITSM-produkt som du ansluter till väljer du någon av följande länkar för instruktioner:
 
 - [ServiceNow](./itsmc-connections-servicenow.md)
 - [System Center Service Manager](./itsmc-connections-scsm.md)
 - [Cherwell](./itsmc-connections-cherwell.md)
 - [Provance](./itsmc-connections-provance.md)
 
-När du har beredd dina ITSM-verktyg utför du följande steg för att skapa en anslutning:
+När du har beredd ditt ITSM-verktyg utför du följande steg för att skapa en anslutning:
 
 1. I **alla resurser** letar du efter **Servicedesk (*namnet på din arbets yta*)**:
 
@@ -69,9 +65,10 @@ När du har beredd dina ITSM-verktyg utför du följande steg för att skapa en 
 1. Under **arbets ytans data källor** i det vänstra fönstret väljer du **ITSM-anslutningar**:
 
    ![Skärm bild som visar meny alternativet ITSM-anslutningar.](media/itsmc-overview/add-new-itsm-connection.png)
+
 1. Välj **Lägg till anslutning**.
 
-1. Ange anslutnings inställningarna enligt beskrivningen enligt ITSM Products/Services:
+1. Ange anslutnings inställningarna enligt den ITSM-produkt som du använder:
 
     - [ServiceNow](./itsmc-connections-servicenow.md)
     - [System Center Service Manager](./itsmc-connections-scsm.md)
@@ -79,31 +76,24 @@ När du har beredd dina ITSM-verktyg utför du följande steg för att skapa en 
     - [Provance](./itsmc-connections-provance.md)
 
    > [!NOTE]
+   > Som standard uppdaterar ITSMC anslutningens konfigurations data en gång var 24: e timme. Om du vill uppdatera din anslutnings data direkt för att avspegla eventuella ändringar eller uppdatering av mallar som du gör, väljer du knappen **Synkronisera** i anslutnings fönstret:
    >
-   > Som standard uppdaterar ITSMC anslutningens konfigurations data en gång var 24: e timme. Om du vill uppdatera din anslutnings data direkt för att avspegla eventuella ändringar eller uppdatering av mallar som du gör, väljer du knappen **Synkronisera** på bladet anslutning:
-   >
-   > ![Skärm bild som visar knappen Synkronisera på bladet anslutning.](media/itsmc-overview/itsmc-connections-refresh.png)
-
-## <a name="use-itsmc"></a>Använd ITSMC
-
-   Du kan använda ITSMC för att skapa aviseringar från Azure Monitor aviseringar till ITSM-verktyget.
+   > ![Skärm bild som visar knappen Synkronisera i anslutningens fönster.](media/itsmc-overview/itsmc-connections-refresh.png)
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Skapa ITSM arbets objekt från Azure-aviseringar
 
-När du har skapat din ITSM-anslutning kan du skapa arbets objekt i ITSM-verktyget baserat på Azure-aviseringar. Om du vill skapa arbets uppgifter använder du åtgärden ITSM i åtgärds grupper.
+När du har skapat din ITSM-anslutning kan du använda ITMC för att skapa arbets objekt i ditt ITSM-verktyg baserat på Azure-aviseringar. Om du vill skapa arbets uppgifter använder du åtgärden ITSM i åtgärds grupper.
 
-Åtgärds grupper ger ett modulärt och återanvändbart sätt att utlösa åtgärder för dina Azure-aviseringar. Du kan använda åtgärds grupper med mått aviseringar, aktivitets logg aviseringar och Azure Log Analytics-aviseringar i Azure Portal.
+Åtgärds grupper ger ett modulärt och återanvändbart sätt att utlösa åtgärder för dina Azure-aviseringar. Du kan använda åtgärds grupper med mått aviseringar, aktivitets logg aviseringar och Log Analytics aviseringar i Azure Portal.
 
 > [!NOTE]
-> När du har skapat ITSM-anslutningen måste du vänta i 30 minuter tills synkroniseringen har slutförts.
+> När du har skapat ITSM-anslutningen måste du vänta 30 minuter på att synkroniseringen ska slutföras.
 
-### <a name="template-definitions"></a>Mall definitioner
+## <a name="define-a-template"></a>Definiera en mall
 
-   Det finns arbets objekts typer som kan använda mallar som definieras av ITSM-verktyget.
-Med hjälp av mallar kan du definiera fält som fylls i automatiskt enligt fasta värden som definieras som en del av åtgärds gruppen. Du definierar mallar i ITSM-verktyget.
-Du kan definiera vilken mall du vill använda som en del av definitionen av åtgärds gruppen.
+Vissa typer av arbets objekt kan använda mallar som du definierar i ITSM-verktyget. Med hjälp av mallar kan du definiera fält som fylls i automatiskt enligt fasta värden för en åtgärds grupp. Du kan definiera vilken mall du vill använda som en del av definitionen av en åtgärds grupp.
 
-Använd följande procedur för att skapa åtgärds grupper:
+Så här skapar du en åtgärds grupp:
 
 1. I Azure Portal väljer du  **aviseringar**.
 2. På menyn längst upp på skärmen väljer du **Hantera åtgärder**:
@@ -112,61 +102,58 @@ Använd följande procedur för att skapa åtgärds grupper:
 
    Fönstret **skapa åtgärds grupp** visas.
 
-3. Välj den **prenumeration** och **resurs grupp** där du vill skapa en åtgärds grupp. Ange ett **namn** och **visnings namn** för åtgärds gruppen. Välj **Nästa: meddelanden**.
+3. Välj den **prenumeration** och **resurs grupp** där du vill skapa en åtgärds grupp. Ange värden i **Åtgärds gruppens namn** och **visnings namnet** för din åtgärds grupp. Välj sedan **Nästa: meddelanden**.
 
     ![Skärm bild som visar fönstret Skapa åtgärds grupp.](media/itsmc-overview/action-groups-details.png)
 
-4. I meddelande listan väljer du **Nästa: åtgärder**.
-5. I listan åtgärder väljer du **ITSM** i listan **Åtgärds typ** . Ange ett **namn** för åtgärden. Välj Penn knappen som representerar **redigerings information**.
+4. På fliken **meddelanden** väljer du **Nästa: åtgärder**.
+5. På fliken **åtgärder** väljer du **ITSM** i listan **Åtgärds typ** . Som **namn** anger du ett namn för åtgärden. Välj sedan Penn knappen som representerar **redigerings information**.
 
-    ![Skärm bild som visar definition för åtgärds grupp.](media/itsmc-definition/action-group-pen.png)
+    ![Skärm bild som visar val för att skapa en åtgärds grupp.](media/itsmc-definition/action-group-pen.png)
 
-6. I listan **prenumeration** väljer du den prenumeration där Log Analytics arbets ytan finns. I listan **anslutning** väljer du namnet på din ITSM-koppling. Det kommer att följas av namnet på din arbets yta. Till exempel MyITSMConnector (min arbets yta).
+6. I listan **prenumeration** väljer du den prenumeration som innehåller Log Analytics arbets ytan. I listan **anslutning** väljer du namnet på din ITSM-koppling. Det kommer att följas av namnet på din arbets yta. Ett exempel är *MyITSMConnector (min arbets yta)*.
 
 7. Välj en typ av **arbets objekt** .
 
-8. Om du vill fylla i fält med fasta värden väljer du **Använd anpassad mall**. Annars väljer du en befintlig [mall](#template-definitions) i listan **mall** och anger de fasta värdena i fälten mall.
+8. Om du vill fylla i fält med fasta värden väljer du **Använd anpassad mall**. Annars väljer du en befintlig [mall](#define-a-template) i listan **mall** och anger de fasta värdena i fälten mall.
 
-9. I det sista avsnittet av ITSM Group-definitionen kan du definiera hur många arbets objekt som ska skapas för varje avisering.
+9. I det sista avsnittet av gränssnittet för att skapa en ITSM-åtgärds grupp kan du definiera hur många arbets objekt som ska skapas för varje avisering.
 
-    >[!NOTE]
-    >
-    > * Det här avsnittet är endast relevant för loggs öknings aviseringar.
-    > * För alla andra aviserings typer skapas ett arbets objekt per avisering.
+   > [!NOTE]
+   > Det här avsnittet är endast relevant för loggs öknings aviseringar. För alla andra aviserings typer skapar du ett arbets objekt per avisering.
 
-    * I ett fall väljer du i list rutan "arbets objekt", "incident" eller "varning": ![ skärm bild som visar ITSM incident-fönstret.](media/itsmc-overview/itsm-action-configuration.png)
-        * Om du markerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje konfigurations objekt i varje avisering. På grund av flera aviseringar för samma konfigurations objekt kommer det att finnas mer än ett arbets objekt för varje konfigurations objekt.
+   * Om du valde **incident** eller **avisering** i list rutan **arbets objekt** har du möjlighet att skapa enskilda arbets objekt för varje konfigurations objekt.
+    
+     ![Skärm bild som visar biljett ytan i T S M med incidenten valt som arbets objekt.](media/itsmc-overview/itsm-action-configuration.png)
+    
+     * Om du markerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje konfigurations objekt i varje avisering. Eftersom flera aviseringar ska utföras för samma berörda konfigurations objekt finns det fler än ett arbets objekt för varje konfigurations objekt.
 
-             Exempel:
-             1) Avisering 1 med 3 konfigurations objekt: A, B, C – kommer att skapa 3 arbets uppgifter.
-             2) Avisering 2 med 1 konfigurations objekt: ett-kommer att skapa 1 arbets objekt.
+       En avisering som har tre konfigurations objekt kommer till exempel att skapa tre arbets objekt. En avisering som har ett konfigurations objekt kommer att skapa ett arbets objekt.
+        
+     * Om du avmarkerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett enskilt arbets objekt för varje aviserings regel i ITSMC och läggs till i alla konfigurations objekt som påverkas. Ett nytt arbets objekt skapas om föregående åtgärd stängs.
 
-        * Om du avmarkerar kryss rutan **"skapa enskilda arbets objekt för varje konfigurations objekt"** skapar ITSM-anslutaren ett enskilt arbets objekt för varje varnings regel och lägger till alla påverkade konfigurations objekt. Ett nytt arbets objekt skapas om föregående åtgärd stängs.
+       >[!NOTE]
+       > I det här fallet genererar vissa av de aktiverade varningarna inga nya arbets objekt i ITSM-verktyget.
 
-        >[!NOTE]
-        > I det här fallet genererar en del av den utlöst aviseringen inga nya arbets objekt i ITSM-verktyget.
+       En avisering som har tre konfigurations objekt kommer till exempel att skapa ett arbets objekt. Om en avisering för samma aviserings regel som föregående exempel har ett konfigurations objekt, kopplas det konfigurationsobjektet till listan över påverkade konfigurations objekt i den skapade arbets uppgiften. En avisering för en annan varnings regel som har ett konfigurations objekt som skapar ett arbets objekt.
 
-        Exempel:
-         1) Avisering 1 med 3 konfigurations objekt: A, B, C-kommer att skapa 1 arbets objekt.
-         2) Avisering 2 för samma varnings regel som i steg a med 1 konfigurations objekt: D-D bifogas till listan över påverkade konfigurations objekt i arbets objekt som skapades i steg a.
-         3) Avisering 3 för en annan varnings regel med 1 konfigurations objekt: E-kommer att skapa 1 arbets objekt.
+   * Om du valde **händelse** i list rutan **arbets objekt** kan du välja att skapa enskilda arbets objekt för varje loggpost eller för varje konfigurations objekt.
+    
+     ![Skärm bild som visar biljett ytan i T S M med händelsen valt som arbets objekt.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-    * I ett fall väljer du "händelse" i list rutan "arbets objekt": ![ skärm bild som visar händelse fönstret för ITSM.](media/itsmc-overview/itsm-action-configuration-event.png)
-
-        * Om du väljer **"skapa enskilda arbets objekt för varje loggpost" (konfigurations objekt) är inte ifyllt. Kan resultera i ett stort antal arbets objekt.) "** i valet alternativ knappar skapas ett arbets objekt per rad i Sök resultatet av varnings frågan för loggs ökning. Egenskapen Description i arbets objektets nytto Last kommer att innehålla raden från Sök resultaten.
-        * Om du väljer **"skapa enskilda arbets objekt för varje konfigurations objekt"** i alternativet alternativ knappar, kommer varje konfigurations objekt i varje avisering att skapa ett nytt arbets objekt. Det kan finnas mer än ett arbets objekt per konfigurations objekt i ITSM-systemet. Detta är samma som kryss rutan Markera kryss rutan i avsnittet om incidenter/aviseringar.
+     * Om du väljer **skapa enskilda arbets objekt för varje loggpost (fältet konfigurations objekt är inte ifyllt). Kan resultera i ett stort antal arbets objekt.)** skapas ett arbets objekt för varje rad i Sök resultatet av varnings frågan för loggs ökning. Egenskapen Description i arbets objektets nytto Last kommer att innehålla raden från Sök resultaten.
+      
+     * Om du väljer **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje konfigurations objekt i varje avisering. Varje konfigurations objekt kan ha mer än ett arbets objekt i ITSM-systemet. Det här alternativet är detsamma som att markera kryss rutan som visas när du har valt **incident** som arbets objekts typ.
 
 10. Välj **OK**.
 
 När du skapar eller redigerar en regel för Azure-avisering använder du en åtgärds grupp som har en ITSM-åtgärd. När aviseringen utlöses skapas eller uppdateras arbets uppgiften i ITSM-verktyget.
 
 > [!NOTE]
+> Information om prissättningen för ITSM-åtgärden finns på sidan med [priser](https://azure.microsoft.com/pricing/details/monitor/) för åtgärds grupper.
 >
->- Information om prissättningen för ITSM-åtgärden finns på sidan med [priser](https://azure.microsoft.com/pricing/details/monitor/) för åtgärds grupper.
->
->
->- Fältet kort beskrivning i varnings regel definitionen är begränsat till 40 tecken när du skickar det med hjälp av åtgärden ITSM.
+> Fältet kort beskrivning i varnings regel definitionen är begränsat till 40 tecken när du skickar det med hjälp av åtgärden ITSM.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-resync-servicenow.md)
+* [Felsöka problem i ITSMC](./itsmc-resync-servicenow.md)

@@ -3,12 +3,12 @@ title: Skapa en funktion i Go-eller Rust med Visual Studio Code-Azure Functions
 description: Lär dig hur du skapar en go-funktion som en Azure Functions anpassad hanterare och sedan publicerar det lokala projektet till Server lös värd i Azure Functions med hjälp av Azure Functions tillägget i Visual Studio Code.
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 911e2ed263271cff41562f383f231d3ca8181854
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 4f2e0b30c4bf5e6c4629fc63f3125e5ddda70ad2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567618"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493674"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Snabb start: skapa en Go-eller Rust-funktion i Azure med Visual Studio Code
 
@@ -226,7 +226,7 @@ Du kan köra det här projektet på den lokala utvecklings datorn innan du publi
 
 1. Ett svar returneras, vilket ser ut så här i en webbläsare:
 
-    ![Webbläsare – exempel på localhost-utdata](../../includes/media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
+    ![Webbläsare – exempel på localhost-utdata](./media/create-first-function-vs-code-other/functions-test-local-browser.png)
 
 1. Information om begäran visas på panelen **Terminal** .
 
@@ -308,7 +308,7 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
 1. Välj Azure-ikonen i aktivitets fältet och välj sedan knappen **distribuera till Function-appen** i avsnittet **Azure:** functions.
 
-    ![Publicera projektet till Azure](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Publicera projektet till Azure](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Ange följande information i meddelanderutorna:
 
@@ -337,19 +337,17 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
     + **Välj en Application Insights resurs**: Välj `+ Create Application Insights resource` . Det här namnet måste vara globalt unikt inom Azure. Du kan använda det namn som föreslås i prompten.
 
-    + **Välj en plats för nya resurser**: om du vill ha bättre prestanda väljer du en [region](https://azure.microsoft.com/regions/) nära dig. 
+    + **Välj en plats för nya resurser**: om du vill ha bättre prestanda väljer du en [region](https://azure.microsoft.com/regions/) nära dig. Tillägget visar status för enskilda resurser när de skapas i Azure i meddelande fältet.
 
-1. När det är slutfört skapas följande Azure-resurser i din prenumeration med hjälp av namn baserat på ditt funktions program namn:
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Meddelande om skapande av Azure-resurs":::
 
-    + En resurs grupp, som är en logisk behållare för relaterade resurser.
-    + Ett standard Azure Storage-konto som upprätthåller tillstånd och annan information om dina projekt.
-    + En förbruknings plan som definierar den underliggande värden för din server lös Function-app. 
-    + En Function-app som tillhandahåller miljön för att köra funktions koden. Med en Function-app kan du gruppera funktioner som en logisk enhet för enklare hantering, distribution och delning av resurser inom samma värd plan.
-    + En Application Insights instans som är ansluten till Function-appen, som spårar användningen av din server lös funktion.
+1. När det är slutfört skapas följande Azure-resurser i din prenumeration:
+
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     Ett meddelande visas när funktionsappen har skapats och distributionspaketet har tillämpats. 
 
-1. Välj **Visa utdata** i det här meddelandet för att Visa skapande-och distributions resultaten, inklusive de Azure-resurser som du har skapat. Om du saknar meddelandet väljer du klock ikonen i det nedre högra hörnet för att se den igen.
+4. Välj **Visa utdata** i det här meddelandet för att Visa skapande-och distributions resultaten, inklusive de Azure-resurser som du har skapat. Om du saknar meddelandet väljer du klock ikonen i det nedre högra hörnet för att se den igen.
 
     ![Skapa fullständig avisering](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 

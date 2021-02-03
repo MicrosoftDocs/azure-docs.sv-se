@@ -3,12 +3,12 @@ title: Distribuera resurser till resurs grupper
 description: Beskriver hur du distribuerar resurser i en Azure Resource Manager mall. Det visar hur du riktar in mer än en resurs grupp.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186234"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491562"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Resurs grupps distributioner med ARM-mallar
 
@@ -128,9 +128,9 @@ En exempel-mall finns i [skapa resurs grupp](#create-resource-group).
 
 ### <a name="scope-to-tenant"></a>Scope till klient organisation
 
-Du kan skapa resurser på klient organisationen genom att ange `scope` värdet `/` . Användaren som distribuerar mallen måste ha den [åtkomst som krävs för att distribuera på klienten](deploy-to-tenant.md#required-access).
+Ange till för att skapa resurser hos klienten `scope` `/` . Användaren som distribuerar mallen måste ha den [åtkomst som krävs för att distribuera på klienten](deploy-to-tenant.md#required-access).
 
-Du kan använda en kapslad distribution med `scope` och `location` Ange.
+Om du vill använda en kapslad distribution anger du `scope` och `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -142,7 +142,7 @@ Mer information finns i [hanterings grupp](deploy-to-management-group.md#managem
 
 ## <a name="deploy-to-target-resource-group"></a>Distribuera till mål resurs grupp
 
-Om du vill distribuera resurser i mål resurs gruppen definierar du resurserna i avsnittet **resurser** i mallen. Följande mall skapar ett lagrings konto i resurs gruppen som anges i distributions åtgärden.
+För att distribuera resurser i mål resurs gruppen definierar du resurserna i `resources` avsnittet i mallen. Följande mall skapar ett lagrings konto i resurs gruppen som anges i distributions åtgärden.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 

@@ -4,12 +4,12 @@ description: Lär dig hur du ansluter din Function-app för att Application Insi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e24f2b1a61d77dafd7a23b04d225d0301f82ca59
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070148"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493761"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Så här konfigurerar du övervakning för Azure Functions
 
@@ -229,6 +229,8 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
+När loggning av skalnings styrenhet är aktiverat kan du nu [ställa frågor till dina skalnings styrenhets loggar](analyze-telemetry-data.md#query-scale-controller-logs). 
+
 ## <a name="enable-application-insights-integration"></a>Aktivera Application Insights-integrering
 
 För att en Function-app ska skicka data till Application Insights måste den känna till Instrumentation-nyckeln för en Application Insights resurs. Nyckeln måste vara i en app-inställning med namnet **APPINSIGHTS_INSTRUMENTATIONKEY**.
@@ -271,30 +273,6 @@ Om en Application Insights resurs inte skapades med din Function-app, kan du anv
 
 > [!NOTE]
 > Tidiga versioner av Functions använde inbyggd övervakning, som inte längre rekommenderas. När du aktiverar Application Insights-integrering för en sådan Function-app måste du också [inaktivera inbyggd loggning](#disable-built-in-logging).  
-
-## <a name="query-scale-controller-logs"></a>Loggar för skalnings styrenhet för frågor
-
-När du har aktiverat loggning och Application Insights-integrering i både skalnings styrenheten kan du använda loggs ökningen Application Insights för att fråga efter loggarna för den utgivna skalnings kontrollen Loggar för skalnings styrenhet sparas i `traces` samlingen under kategorin **ScaleControllerLogs** .
-
-Följande fråga kan användas för att söka efter alla loggar för skalnings styrenhet för den aktuella Function-appen inom den angivna tids perioden:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-```
-
-Följande fråga expanderas i föregående fråga för att visa hur du bara hämtar loggar som indikerar en skalnings förändring:
-
-```kusto
-traces 
-| extend CustomDimensions = todynamic(tostring(customDimensions))
-| where CustomDimensions.Category == "ScaleControllerLogs"
-| where message == "Instance count changed"
-| extend Reason = CustomDimensions.Reason
-| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
-| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
-```
 
 ## <a name="disable-built-in-logging"></a>Inaktivera inbyggd loggning
 

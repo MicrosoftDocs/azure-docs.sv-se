@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 23f14e14bea665f838919ae357d11db32bddfa7f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ced29c3222b7f4f5d7cf5f9e472c420c47341786
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579427"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493251"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Introduktion till FreeBSD på Azure
 Den här artikeln innehåller en översikt över att köra en virtuell FreeBSD-dator i Azure.
@@ -119,4 +119,4 @@ Du kan också hämta ett rot gränssnitt genom att använda `sudo -s` .
 [Azure VM-gästens agent](https://github.com/Azure/WALinuxAgent/) version 2.2.2 har ett [känt problem](https://github.com/Azure/WALinuxAgent/pull/517) som orsakar etablerings fel för FreeBSD VM på Azure. Korrigeringen samlades in av [Azure VM-gäst Gent](https://github.com/Azure/WALinuxAgent/) version 2.2.3 och senare versioner. 
 
 ## <a name="next-steps"></a>Nästa steg
-* Gå till [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_1?tab=Overview) för att skapa en virtuell FreeBSD-dator.
+* Gå till [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/thefreebsdfoundation.freebsd-12_2?tab=Overview) för att skapa en virtuell FreeBSD-dator.

@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: e280fddbe83da2a7ee89185046883f6c2c77167a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 96384d2c50e7d5b4b5b6e652d01c4a89cd519573
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739832"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493418"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Ansluta Azure Functions till Azure Storage med Visual Studio Code
 
@@ -96,7 +96,7 @@ Nu kan du lägga till bindningen för Storage-utdata i projektet.
 
 I functions kräver varje typ av bindning en `direction` , `type` , och en unik `name` för att definieras i function.jspå filen. Hur du definierar dessa attribut beror på språket i din Function-app.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -148,35 +148,25 @@ När bindningen har definierats kan du använda `name` bindningen för att komma
 
 [!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
 
-## <a name="update-the-test-set"></a>Uppdatera test uppsättningen
+## <a name="update-the-tests"></a>Uppdatera testerna
 
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
 ::: zone-end  
 
-<!--- Local testing section --->
+## <a name="run-the-function-locally"></a>Köra funktionen lokalt
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+1. Som i föregående artikel trycker du på <kbd>F5</kbd> för att starta programmet för Function-appen och kärn verktyg. 
 
-[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
+1. Med kärn verktyg som körs går du till **Azure: Functions** -avsnittet. Under **funktioner**, expanderar du **lokala projekt**  >  **funktioner**. Högerklicka (Ctrl-klicka på Mac) `HttpExample` funktionen och välj **Kör funktion nu..**..
 
-::: zone-end
+    :::image type="content" source="../../includes/media/functions-run-function-test-local-vs-code/execute-function-now.png" alt-text="Kör funktionen nu från Visual Studio Code":::
 
-::: zone pivot="programming-language-powershell"
+1. I **Ange brödtext för begäran** visas bröd texten för begär ande meddelandet `{ "name": "Azure" }` . Skicka meddelandet till din funktion genom att trycka på RETUR.  
+ 
+1. När ett svar har returnerats trycker du på <kbd>CTRL + C</kbd> för att stoppa Core tools.
 
-[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
-
-::: zone-end
-
-En ny kö med namnet **arbetskö** skapas i ditt lagrings konto av Functions-körningen när den utgående bindningen används först. Du använder Storage Explorer för att kontrol lera att kön har skapats tillsammans med det nya meddelandet.
-
-::: zone pivot="programming-language-java"  
-
-## <a name="update-the-tests"></a>Uppdatera testerna
-
-[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
-
-::: zone-end
+Eftersom du använder lagrings anslutnings strängen ansluter din funktion till Azure Storage-kontot när den körs lokalt. En ny kö med namnet **arbetskö** skapas i ditt lagrings konto av Functions-körningen när den utgående bindningen används först. Du använder Storage Explorer för att kontrol lera att kön har skapats tillsammans med det nya meddelandet.
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Anslut Storage Explorer till ditt konto
 
@@ -212,11 +202,7 @@ Nu är det dags att publicera om den uppdaterade Function-appen till Azure.
 
 1. Välj den Function-app som du skapade i den första artikeln. Eftersom du omdistribuerar projektet till samma app väljer du **distribuera** för att ignorera varningen om att skriva över filer.
 
-1. När distributionen är klar kan du använda svängen igen eller en webbläsare för att testa den omdistribuerade funktionen. Som tidigare lägger du till frågesträngen `&name=<yourname>` i URL: en, som i följande exempel:
-
-    ```bash
-    curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-    ```
+1. När distributionen är klar kan du återigen använda funktionen **Kör funktion nu...** för att utlösa funktionen i Azure.
 
 1. [Visa meddelandet i lagrings kön](#examine-the-output-queue) igen för att kontrol lera att utgående bindningen igen genererar ett nytt meddelande i kön.
 

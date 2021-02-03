@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738109"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490885"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
@@ -30,6 +30,12 @@ En ny version av [behållaren för rums analys](spatial-analysis-container.md) h
 * [Åtgärder för spatial analys](spatial-analysis-operations.md) kan nu konfigureras för att identifiera om en person får en skyddande ansikte som en mask. 
     * Du kan aktivera en mask-klassificerare `personcount` för `personcrossingline` `personcrossingpolygon` åtgärderna och genom att konfigurera `ENABLE_FACE_MASK_CLASSIFIER` parametern.
     * Attributen `face_mask` och `face_noMask` kommer att returneras som metadata med förtroende poäng för varje person som identifieras i video strömmen
+* *Personcrossingpolygon* -åtgärden har utökats för att tillåta beräkningen av bostads tiden som en person tillbringar i en zon. Du kan ställa in `type` parametern i zon konfigurationen för åtgärden till `zonedwelltime` och en ny händelse av typen *personZoneDwellTimeEvent* innehåller `durationMs` fältet ifyllt med antalet millisekunder som den person som har använt zonen.
+* **Ändrad ändring**: *personZoneEvent* -händelsen har bytt namn till *personZoneEnterExitEvent*. Den här händelsen utlöses av *personcrossingpolygon* -åtgärden när en person går in eller avslutar zonen och ger riktad information med den numrerade sidan i den zon som har korsats.
+* Video-URL kan anges som "privat parameter/fördunklade" i alla åtgärder. Döljande är valfritt och fungerar bara om `KEY` och `IV` tillhandahålls som miljövariabler.
+* Kalibrering är aktiverat som standard för alla åtgärder. Ange `do_calibration: false` för att inaktivera den.
+* Stöd har lagts till för automatisk omkalibrering (som standard inaktive rad) via `enable_recalibration` parametern. mer information finns i avsnittet om [spatial analys](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
+* Kamera kalibrerings parametrar till `DETECTOR_NODE_CONFIG` . Mer information finns i [åtgärder för spatial analys](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations) .
 
 
 ## <a name="october-2020"></a>Oktober 2020

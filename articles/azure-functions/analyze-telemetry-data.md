@@ -4,12 +4,12 @@ description: Lär dig att visa och fråga efter Azure Functions telemetridata so
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937305"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493778"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysera Azure Functions telemetri i Application Insights 
 
@@ -78,18 +78,18 @@ Välj **loggar** för att utforska eller fråga efter loggade händelser.
 
 Här är ett exempel på en fråga som visar distributionen av förfrågningar per arbetare under de senaste 30 minuterna.
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 De tabeller som är tillgängliga visas på fliken **schema** till vänster. Du kan hitta data som genererats av funktions anrop i följande tabeller:
 
 | Tabell | Beskrivning |
 | ----- | ----------- |
-| **Anden** | Loggar som skapats av körningen och spårar från funktions koden. |
+| **Anden** | Loggar som skapats av körnings miljön, skalnings styrenheten och spårningen från funktions koden. |
 | **begäran** | En begäran för varje funktions anrop. |
 | **undantag** | Eventuella undantag som har utlösts av körningen. |
 | **customMetrics** | Antalet lyckade och misslyckade anrop, lyckade kostnader och varaktighet. |
@@ -100,12 +100,38 @@ De andra tabellerna är för tillgänglighets test och telemetri för klienter o
 
 I varje tabell finns vissa av de funktioner som är aktuella i ett `customDimensions` fält.  Följande fråga hämtar till exempel alla spår som har loggnings nivå `Error` .
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 Körningen innehåller `customDimensions.LogLevel` fälten och `customDimensions.Category` . Du kan ange ytterligare fält i loggar som du skriver i funktions koden. Ett exempel i C# finns i [strukturerad loggning](functions-dotnet-class-library.md#structured-logging) i guiden för utvecklare av .NET-klass bibliotek.
+
+## <a name="query-scale-controller-logs"></a>Loggar för skalnings styrenhet för frågor
+
+_Den här funktionen är i förhandsversion._
+
+När du har aktiverat loggning och [Application Insights-integrering](configure-monitoring.md#enable-application-insights-integration)i både [skalnings styrenheten](configure-monitoring.md#configure-scale-controller-logs) kan du använda loggs ökningen Application Insights för att fråga efter loggarna för den utgivna skalnings kontrollen Loggar för skalnings styrenhet sparas i `traces` samlingen under kategorin **ScaleControllerLogs** .
+
+Följande fråga kan användas för att söka efter alla loggar för skalnings styrenhet för den aktuella Function-appen inom den angivna tids perioden:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+Följande fråga expanderas i föregående fråga för att visa hur du bara hämtar loggar som indikerar en skalnings förändring:
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>Förbruknings plan – vissa mått
 

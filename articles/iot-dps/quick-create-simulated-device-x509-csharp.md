@@ -1,6 +1,6 @@
 ---
 title: 'Snabb start – etablera simulerad X. 509-enhet till Azure IoT Hub att använda C #'
-description: Snabb start – skapa och etablera en simulerad X. 509-enhet med C#-enhets-SDK för Azure IoT Hub Device Provisioning Service (DPS). Den här snabbstarten använder enskilda registreringar.
+description: Snabb start – skapa och etablera en X. 509-enhet med C#-enhets-SDK för Azure IoT Hub Device Provisioning Service (DPS). Den här snabbstarten använder enskilda registreringar.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/01/2021
@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: a6e859a39cbcf867e3c0a21bb59c6154cbd47412
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 06f1d34e7d8da9a3ece206fc1ff804accf9454ff
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430603"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493862"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en simulerad X. 509-enhet med C#-enhets-SDK för IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Snabb start: skapa och etablera en X. 509-enhet med C#-enhets-SDK för IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-De här stegen visar hur du använder [Azure IoT-exempel för C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) för att simulera en X.509-enhet på en utvecklingsdator som kör Windows operativsystem. Exemplet ansluter även den simulerade enhet till en IoT Hub med hjälp av enhetsetableringstjänsten.
+De här stegen visar hur du använder enhets kod från [Azure IoT-exempel för C# för](https://github.com/Azure-Samples/azure-iot-samples-csharp) att etablera en X. 509-enhet. I den här artikeln ska du köra exempel kod för enheten på utvecklings datorn för att ansluta till en IoT Hub med enhets etablerings tjänsten.
 
 Om du inte är bekant med processen för autoetablering, granskar du [etablerings](about-iot-dps.md#provisioning-process) översikten. Se också till att slutföra stegen i [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) (Konfigurera IoT Hub Device Provisioning-tjänsten med Azure Portal) innan du fortsätter. 
 
@@ -53,13 +53,13 @@ Den här artikeln visar enskilda registreringar.
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Skapa ett självsignerat X.509-enhetscertifikat
 
-I det här avsnittet skapar du ett självsignerat X. 509-testcertifikat `iothubx509device1` som använder som eget ämnes namn. Det är viktigt att tänka på följande:
+I det här avsnittet skapar du ett självsignerat X. 509-testcertifikat `iothubx509device1` som använder som eget ämnes namn. Det är viktigt att tänka på följande punkter:
 
 * Självsignerade certifikat är endast till för testning och ska inte användas i produktion.
 * Standardutgångsdatumet för ett självsignerat certifikat är ett år.
 * Enhets-ID: t för IoT-enheten är certifikatets allmänna namn. Se till att använda ett ämnes namn som uppfyller [kraven för enhets-ID-sträng](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).
 
-Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.509-attestering](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) till att skapa det certifikat som ska användas med posten för enskild registrering för den simulerade enheten.
+Du kommer att använda exempel kod från [X509Sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) för att skapa certifikatet som ska användas med den enskilda registrerings posten för enheten.
 
 
 1. I en PowerShell-prompt ändrar du kataloger till projekt katalogen för enhets etablerings exemplet X. 509 Device.
@@ -106,7 +106,7 @@ Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.50
 3. Ange följande information på panelen **Lägg till registrering** :
    - Välj **X.509** som identitet för bestyrkande *mekanism*.
    - Under *filen Primary Certificate. pem eller. cer* väljer du *Välj en fil* för att välja certifikat filen **Certificate. cer** som skapades i föregående steg.
-   - Lämna **Enhets-ID** tomt. Enheten etableras med dess enhet-ID inställt på nätverksnamnet (CN) i X.509-certifikatet **iothubx509device1**. Det här är även namnet som används som registrerings-ID för posten för enskild registrering. 
+   - Lämna **Enhets-ID** tomt. Enheten etableras med dess enhet-ID inställt på nätverksnamnet (CN) i X.509-certifikatet **iothubx509device1**. Detta egna namn är också det namn som används för registrerings-ID: t för den enskilda registrerings posten. 
    - Du kan även ange följande information:
        - Välj en IoT hub som är länkad till din etableringstjänst.
        - Uppdatera **inledande enhetstvillingstatus** med önskad inledande konfiguration för enheten.
@@ -118,7 +118,7 @@ Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.50
 
 
 
-## <a name="provision-the-simulated-device"></a>Etablera den simulerade enheten
+## <a name="provision-the-device"></a>Etablera enheten
 
 1. I **översikts** bladet för etablerings tjänsten noterar du värdet för **_ID-omfång_** .
 
@@ -157,7 +157,7 @@ Du kommer att använda exempelkoden från [Etablera enhetsklientexempel – X.50
     Finished.
     ```
 
-4. Kontrollera att enheten har etablerats. Vid lyckad etablering av den simulerade enheten till IoT-hubben som är länkad till din etablerings tjänst visas enhets-ID på hubbens bladet **IoT-enheter** . 
+4. Kontrollera att enheten har etablerats. Vid lyckad etablering av enheten på IoT-hubben som är länkad till etablerings tjänsten visas enhets-ID på hubbens blad med **IoT-enheter** . 
 
     ![Enheten är registrerad på IoT-hubben](./media/quick-create-simulated-device-x509-csharp/registration.png) 
 
@@ -175,7 +175,7 @@ Om du planerar att fortsätta att arbeta med och utforska enhets klient exemplet
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du skapat en simulerad X. 509-enhet på din Windows-dator och etablerade den till IoT-hubben med hjälp av Azure-IoT Hub Device Provisioning Service på portalen. Om du vill lära dig hur du registrerar X. 509-enheten program mässigt fortsätter du till snabb starten för program mässig registrering av X. 509-enheter. 
+I den här snabb starten etablerade du en X. 509-enhet till IoT-hubben med hjälp av Azure-IoT Hub Device Provisioning Service. Om du vill lära dig hur du registrerar X. 509-enheten program mässigt fortsätter du till snabb starten för program mässig registrering av X. 509-enheter. 
 
 > [!div class="nextstepaction"]
 > [Azure snabb start – registrera X. 509-enheter till Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-csharp.md)

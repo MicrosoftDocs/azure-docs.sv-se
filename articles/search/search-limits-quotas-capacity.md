@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591352"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493049"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Tjänstbegränsningar i Azure Cognitive Search
 
@@ -107,8 +107,8 @@ Indexerare kan komma åt andra Azure-resurser [via privata slut punkter](search-
 
 | Resurs | Kostnadsfri | Grundläggande | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Stöd för privat slut punkt indexerare | Nej | Ja | Ja | Ja | Ja | Nej | Ja | Ja |
-| Stöd för privat slut punkt för indexerare med en färdigheter<sup>1</sup> | Nej | Nej | Nej | Ja | Ja | Nej | Ja | Ja |
+| Stöd för privat slut punkt indexerare | Inga | Ja | Ja | Ja | Ja | Inga | Ja | Ja |
+| Stöd för privat slut punkt för indexerare med en färdigheter<sup>1</sup> | Inga | Inga | Inga | Ja | Ja | Inga | Ja | Ja |
 | Maximalt antal privata slut punkter | Ej tillämpligt | 10 eller 30 | 100 | 400 | 400 | Ej tillämpligt | 20 | 20 |
 | Maximalt antal distinkta resurs typer<sup>2</sup> | Saknas | 4 | 7 | 15 | 15 | Saknas | 4 | 4 |
 
@@ -139,7 +139,7 @@ En [pipeline för AI-anrikning](cognitive-search-concept-intro.md) som gör anro
 
 ## <a name="throttling-limits"></a>Begränsnings gränser
 
-Sök frågor och indexerings begär Anden är begränsade som systemet närmar sig högsta kapacitet. Begränsningen fungerar på olika sätt för olika API: er. API: er för frågor (Sök/föreslå/komplettera om) och indexerings-API: er begränsar dynamiskt baserat på belastningen på tjänsten. Index-API: er har begränsningar för statisk begär ande hastighet. 
+API-begäranden är begränsade som systemet närmar sig högsta kapacitet. Begränsningen fungerar på olika sätt för olika API: er. API: er för frågor (Sök/föreslå/komplettera om) och indexerings-API: er begränsar dynamiskt baserat på belastningen på tjänsten. Index-API: er och service åtgärds-API: et har begränsningar för statisk begäran. 
 
 Begränsningar för statisk taxa för begäran för åtgärder relaterade till ett index:
 
@@ -148,6 +148,10 @@ Begränsningar för statisk taxa för begäran för åtgärder relaterade till e
 + Skapa index (POST/Indexes): 12 per minut per Sök enhet
 + Skapa eller uppdatera index (Lägg/Indexes/myindex): 6 per sekund per Sök enhet
 + Ta bort index (ta bort/Indexes/myindex): 12 per minut per Sök enhet 
+
+Begränsningar för statisk taxa för begäran för åtgärder relaterade till en tjänst:
+
++ Service statistik (GET/servicestats): 4 per sekund per Sök enhet
 
 ## <a name="api-request-limits"></a>Begränsningar för API-begäran
 * Högst 16 MB per begäran <sup>1</sup>

@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: skicka anpassade händelser till lagrings kön – Event Grid, Azure CLI'
 description: 'Snabb start: Använd Azure Event Grid och Azure CLI för att publicera ett ämne och prenumerera på händelsen. En lagringskö används för slutpunkten.'
-ms.date: 07/07/2020
+ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566324"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493282"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Snabb start: dirigera anpassade händelser till Azure Queue Storage med Azure CLI och Event Grid
 
@@ -116,6 +116,11 @@ done
 Gå till Queue Storage i portalen och kontrollera att Event Grid skickade de tre händelserna till kön.
 
 ![Visa meddelanden](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> Om du använder en [Azure Queue Storage-utlösare för Azure Functions](../azure-functions/functions-bindings-storage-queue-trigger.md) för en kö som tar emot meddelanden från Event Grid kan du se följande fel meddelande i funktions körningen: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> 
+> Anledningen är att när du använder en [Azure Queue Storage-utlösare](../azure-functions/functions-bindings-storage-queue-trigger.md)förväntas Azure Functions en **Base64-kodad sträng**, men Event Grid skickar meddelanden till en lagrings kö i ett oformaterat text format. För närvarande går det inte att konfigurera kön utlösare för Azure Functions att acceptera oformaterad text. 
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029574"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493845"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning utbildnings miljö med virtuella nätverk
 
@@ -62,16 +62,19 @@ Om du vill använda en [hanterad Azure Machine Learning __beräknings mål__](co
 > * Om Azure Storage kontona för arbets ytan också är skyddade i ett virtuellt nätverk måste de finnas i samma virtuella nätverk som Azure Machine Learning beräknings instans eller kluster. 
 > * För att Compute instance Jupyter-funktionen ska fungera kontrollerar du att WebSocket-kommunikation inte är inaktiverat. Kontrol lera att nätverket tillåter WebSocket-anslutningar till *. instances.azureml.net och *. instances.azureml.ms. 
 > * När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås från det virtuella nätverket. Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för `<instance-name>.<region>.instances.azureml.ms` med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md) artikeln.
+> * Det undernät som används för att distribuera beräknings kluster/instans ska inte delegeras till någon annan tjänst som ACI
+> * Slut punkts principer för virtuella nätverks tjänster fungerar inte för beräknings kluster/instans system lagrings konton
+
     
 > [!TIP]
 > Machine Learning beräknings instans eller kluster allokerar automatiskt ytterligare nätverks resurser __i resurs gruppen som innehåller det virtuella nätverket__. För varje beräknings instans eller kluster allokerar tjänsten följande resurser:
 > 
 > * En nätverks säkerhets grupp
-> * En offentlig IP-adress
+> * En offentlig IP-adress. Om du har en Azure-princip som förhindrar att offentliga IP skapas, kommer distributionen av kluster/instanser att Miss Miss sen
 > * En belastningsutjämnare
 > 
 > I kluster är de här resurserna borttagna (och återskapas) varje gång klustret skalar ned till 0 noder, men för en instans är resurserna kvar på till instansen helt borttagna (stoppa tar inte bort resurserna). 
-> Dessa resurser begränsas av prenumerationens [resurskvoter](../azure-resource-manager/management/azure-subscription-service-limits.md).
+> Dessa resurser begränsas av prenumerationens [resurskvoter](../azure-resource-manager/management/azure-subscription-service-limits.md). Om den virtuella nätverks resurs gruppen är låst går det inte att ta bort beräknings kluster/instanser. Det går inte att ta bort belastningsutjämnaren förrän beräknings klustret/instansen har tagits bort.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Portar som krävs

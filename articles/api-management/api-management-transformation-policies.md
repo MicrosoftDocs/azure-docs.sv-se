@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 212a6b0786b371bfb92f2e193e67d9accd432bf8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657251"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491764"
 ---
 # <a name="api-management-transformation-policies"></a>Omvandlingsprinciper för API Management
 Det här avsnittet innehåller en referens för följande API Managements principer. Information om hur du lägger till och konfigurerar principer finns [i principer i API Management](./api-management-policies.md).
@@ -71,15 +71,15 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|JSON-till-XML|Rot element.|Yes|
+|JSON-till-XML|Rot element.|Ja|
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|apply|Attributet måste anges till ett av följande värden.<br /><br /> -alway-Always Always enconversion.<br />-Content-Type-JSON-Convert endast om svarets Content-Type-huvud indikerar förekomst av JSON.|Yes|Ej tillämpligt|
-|Överväg-accept-header|Attributet måste anges till ett av följande värden.<br /><br /> -True-Använd Conversion om XML har begärts i rubriken för begäran accept.<br />-falskt-Använd alltid konvertering.|Nej|true|
-|parse-datum|När ställs in på `false` datum värden kopieras bara under omvandlingen|Nej|true|
+|apply|Attributet måste anges till ett av följande värden.<br /><br /> -alway-Always Always enconversion.<br />-Content-Type-JSON-Convert endast om svarets Content-Type-huvud indikerar förekomst av JSON.|Ja|Ej tillämpligt|
+|Överväg-accept-header|Attributet måste anges till ett av följande värden.<br /><br /> -True-Använd Conversion om XML har begärts i rubriken för begäran accept.<br />-falskt-Använd alltid konvertering.|Inga|true|
+|parse-datum|När ställs in på `false` datum värden kopieras bara under omvandlingen|Inga|true|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -115,15 +115,15 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|XML-till-JSON|Rot element.|Yes|
+|XML-till-JSON|Rot element.|Ja|
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|metod|Attributet måste anges till ett av följande värden.<br /><br /> – anpassad Java Script – den konverterade JSON-filen har ett formulär som är användarvänligt för JavaScript-utvecklare.<br />– direkt – konverterad JSON visar strukturen för det ursprungliga XML-dokumentet.|Yes|Ej tillämpligt|
-|apply|Attributet måste anges till ett av följande värden.<br /><br /> -Always-Convert Always.<br />– Content-Type-XML-Convert endast om Content-Type-huvudet för svar anger förekomst av XML.|Yes|Ej tillämpligt|
-|Överväg-accept-header|Attributet måste anges till ett av följande värden.<br /><br /> -Sant-Använd konvertering om JSON begärs i rubriken för begäran accept.<br />-falskt-Använd alltid konvertering.|Nej|true|
+|metod|Attributet måste anges till ett av följande värden.<br /><br /> – anpassad Java Script – den konverterade JSON-filen har ett formulär som är användarvänligt för JavaScript-utvecklare.<br />– direkt – konverterad JSON visar strukturen för det ursprungliga XML-dokumentet.|Ja|Ej tillämpligt|
+|apply|Attributet måste anges till ett av följande värden.<br /><br /> -Always-Convert Always.<br />– Content-Type-XML-Convert endast om Content-Type-huvudet för svar anger förekomst av XML.|Ja|Ej tillämpligt|
+|Överväg-accept-header|Attributet måste anges till ett av följande värden.<br /><br /> -Sant-Använd konvertering om JSON begärs i rubriken för begäran accept.<br />-falskt-Använd alltid konvertering.|Inga|true|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -151,14 +151,14 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|Sök och ersätt|Rot element.|Yes|
+|Sök och ersätt|Rot element.|Ja|
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|Från|Strängen att söka efter.|Yes|Ej tillämpligt|
-|på|Ersättningssträngen. Ange en ersättnings sträng med längden noll för att ta bort Sök strängen.|Yes|Ej tillämpligt|
+|Från|Strängen att söka efter.|Ja|Ej tillämpligt|
+|på|Ersättningssträngen. Ange en ersättnings sträng med längden noll för att ta bort Sök strängen.|Ja|Ej tillämpligt|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -189,7 +189,7 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|omdirigera-innehålls-URL: er|Rot element.|Yes|
+|omdirigera-innehålls-URL: er|Rot element.|Ja|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -214,7 +214,7 @@ eller
 ```
 
 > [!NOTE]
-> Server dels enheter kan hanteras via hanterings- [API](/rest/api/apimanagement/2019-12-01/backend) och [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+> Backend-enheter kan hanteras via [Azure Portal](how-to-configure-service-fabric-backend.md), hanterings- [API](/rest/api/apimanagement)och [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
 
 ### <a name="example"></a>Exempel
 
@@ -262,19 +262,19 @@ I det här exemplet dirigerar principen begäran till en Service Fabric-Server d
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|Set-backend-tjänst|Rot element.|Yes|
+|Set-backend-tjänst|Rot element.|Ja|
 
 ### <a name="attributes"></a>Attribut
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
 |bas-URL|Bas-URL för ny server dels tjänst.|En av `base-url` eller `backend-id` måste vara närvarande.|Ej tillämpligt|
-|backend-ID|Identifierare för den server del som ska skickas till. (Backend-entiteter hanteras via [API](/rest/api/apimanagement/2019-12-01/backend) och [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|En av `base-url` eller `backend-id` måste vara närvarande.|Ej tillämpligt|
-|SF-partition – nyckel|Endast tillämpligt om Server delen är en Service Fabric tjänst och anges med backend-ID. Används för att matcha en speciell partition från namn matchnings tjänsten.|Nej|Ej tillämpligt|
-|SF-Replica-typ|Endast tillämpligt om Server delen är en Service Fabric tjänst och anges med backend-ID. Kontrollerar om begäran ska gå till den primära eller sekundära repliken av en partition. |Nej|Ej tillämpligt|
-|SF-resolve-Condition|Endast tillgängligt om Server delen är en Service Fabric-tjänst. Villkor som identifierar om anropet till Service Fabric Server del måste upprepas med ny lösning.|Nej|Ej tillämpligt|
-|SF-tjänst-instans-namn|Endast tillgängligt om Server delen är en Service Fabric-tjänst. Gör det möjligt att ändra tjänst instanser vid körning. |Nej|Ej tillämpligt|
-|SF-Listener-Name|Endast tillämpligt om Server delen är en Service Fabric tjänst och anges med backend-ID. Med Service Fabric Reliable Services kan du skapa flera lyssnare i en tjänst. Det här attributet används för att välja en speciell lyssnare när en server del Reliable service har fler än en lyssnare. Om det här attributet inte anges kommer API Management att försöka använda en lyssnare utan ett namn. En lyssnare utan ett namn är vanligt för Reliable Services som bara har en lyssnare. |Nej|Ej tillämpligt|
+|backend-ID|Identifierare för den server del som ska skickas till. (Backend-entiteter hanteras via [Azure Portal](how-to-configure-service-fabric-backend.md), [API](/rest/api/apimanagement)och [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|En av `base-url` eller `backend-id` måste vara närvarande.|Ej tillämpligt|
+|SF-partition – nyckel|Endast tillämpligt om Server delen är en Service Fabric tjänst och anges med backend-ID. Används för att matcha en speciell partition från namn matchnings tjänsten.|Inga|Ej tillämpligt|
+|SF-Replica-typ|Endast tillämpligt om Server delen är en Service Fabric tjänst och anges med backend-ID. Kontrollerar om begäran ska gå till den primära eller sekundära repliken av en partition. |Inga|Ej tillämpligt|
+|SF-resolve-Condition|Endast tillgängligt om Server delen är en Service Fabric-tjänst. Villkor som identifierar om anropet till Service Fabric Server del måste upprepas med ny lösning.|Inga|Ej tillämpligt|
+|SF-tjänst-instans-namn|Endast tillgängligt om Server delen är en Service Fabric-tjänst. Gör det möjligt att ändra tjänst instanser vid körning. |Inga|Ej tillämpligt|
+|SF-Listener-Name|Endast tillämpligt om Server delen är en Service Fabric tjänst och anges med backend-ID. Med Service Fabric Reliable Services kan du skapa flera lyssnare i en tjänst. Det här attributet används för att välja en speciell lyssnare när en server del Reliable service har fler än en lyssnare. Om det här attributet inte anges kommer API Management att försöka använda en lyssnare utan ett namn. En lyssnare utan ett namn är vanligt för Reliable Services som bara har en lyssnare. |Inga|Ej tillämpligt|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -398,13 +398,13 @@ I det här exemplet dirigerar principen begäran till en Service Fabric-Server d
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|Set-Body|Rot element. Innehåller bröd texten eller ett uttryck som returnerar en brödtext.|Yes|
+|Set-Body|Rot element. Innehåller bröd texten eller ett uttryck som returnerar en brödtext.|Ja|
 
 ### <a name="properties"></a>Egenskaper
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|mall|Används för att ändra det mall-läge som den angivna text principen ska köras i. För närvarande är det enda värde som stöds:<br /><br />– flytande – den uppsättnings huvud principen använder vätske mall-motorn |Nej||
+|mall|Används för att ändra det mall-läge som den angivna text principen ska köras i. För närvarande är det enda värde som stöds:<br /><br />– flytande – den uppsättnings huvud principen använder vätske mall-motorn |Inga||
 
 För att få åtkomst till information om begäran och svar kan den flytande mallen binda till ett kontext objekt med följande egenskaper: <br />
 <pre>context.
@@ -512,15 +512,15 @@ OriginalUrl.
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|Ange rubrik|Rot element.|Yes|
-|värde|Anger värdet för huvudet som ska ställas in. För flera rubriker med samma namn lägger du till ytterligare `value` element.|Nej|
+|Ange rubrik|Rot element.|Ja|
+|värde|Anger värdet för huvudet som ska ställas in. För flera rubriker med samma namn lägger du till ytterligare `value` element.|Inga|
 
 ### <a name="properties"></a>Egenskaper
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|exists-åtgärd|Anger vilken åtgärd som ska vidtas när rubriken redan har angetts. Det här attributet måste ha ett av följande värden.<br /><br /> -override-ersätter värdet i den befintliga rubriken.<br />-Skip-ersätter inte det befintliga huvud-värdet.<br />-append – lägger till värdet i det befintliga huvud-värdet.<br />-Delete – tar bort rubriken från begäran.<br /><br /> När du har angett `override` flera poster med samma namn resulterar det i att rubriken anges enligt alla poster (som visas flera gånger). endast listade värden anges i resultatet.|Nej|åsidosättningsinställning|
-|name|Anger namnet på den rubrik som ska anges.|Yes|Ej tillämpligt|
+|exists-åtgärd|Anger vilken åtgärd som ska vidtas när rubriken redan har angetts. Det här attributet måste ha ett av följande värden.<br /><br /> -override-ersätter värdet i den befintliga rubriken.<br />-Skip-ersätter inte det befintliga huvud-värdet.<br />-append – lägger till värdet i det befintliga huvud-värdet.<br />-Delete – tar bort rubriken från begäran.<br /><br /> När du har angett `override` flera poster med samma namn resulterar det i att rubriken anges enligt alla poster (som visas flera gånger). endast listade värden anges i resultatet.|Inga|åsidosättningsinställning|
+|name|Anger namnet på den rubrik som ska anges.|Ja|Ej tillämpligt|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -567,15 +567,15 @@ OriginalUrl.
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|Set-Query-parameter|Rot element.|Yes|
-|värde|Anger värdet på frågeparametern som ska ställas in. För flera frågeparametrar med samma namn lägger du till ytterligare `value` element.|Yes|
+|Set-Query-parameter|Rot element.|Ja|
+|värde|Anger värdet på frågeparametern som ska ställas in. För flera frågeparametrar med samma namn lägger du till ytterligare `value` element.|Ja|
 
 ### <a name="properties"></a>Egenskaper
 
-|Namn|Beskrivning|Krävs|Standard|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|exists-åtgärd|Anger vilken åtgärd som ska vidtas när frågeparametern redan är angiven. Det här attributet måste ha ett av följande värden.<br /><br /> -override-ersätter värdet för den befintliga parametern.<br />-Skip-ersätter inte det befintliga värdet för Frågeparametern.<br />-append – lägger till värdet i det befintliga värdet för Frågeparametern.<br />-Delete-tar bort Frågeparametern från begäran.<br /><br /> När du har angett `override` flera poster med samma namn resulterar det i att Frågeparametern anges enligt alla poster (som visas flera gånger). endast listade värden anges i resultatet.|Nej|åsidosättningsinställning|
-|name|Anger namnet på frågeparametern som ska anges.|Yes|Ej tillämpligt|
+|exists-åtgärd|Anger vilken åtgärd som ska vidtas när frågeparametern redan är angiven. Det här attributet måste ha ett av följande värden.<br /><br /> -override-ersätter värdet för den befintliga parametern.<br />-Skip-ersätter inte det befintliga värdet för Frågeparametern.<br />-append – lägger till värdet i det befintliga värdet för Frågeparametern.<br />-Delete-tar bort Frågeparametern från begäran.<br /><br /> När du har angett `override` flera poster med samma namn resulterar det i att Frågeparametern anges enligt alla poster (som visas flera gånger). endast listade värden anges i resultatet.|Inga|åsidosättningsinställning|
+|name|Anger namnet på frågeparametern som ska anges.|Ja|Ej tillämpligt|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -646,14 +646,14 @@ OriginalUrl.
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|omskrivning – URI|Rot element.|Yes|
+|omskrivning – URI|Rot element.|Ja|
 
 ### <a name="attributes"></a>Attribut
 
-|Attribut|Beskrivning|Krävs|Standard|
+|Attribut|Beskrivning|Krävs|Standardvärde|
 |---------------|-----------------|--------------|-------------|
-|mall|Den faktiska webb tjänst-URL: en med parametrar för frågesträng. När du använder uttryck måste hela värdet vara ett uttryck.|Yes|Ej tillämpligt|
-|Kopiera omatchade-params|Anger om frågeparametrar i den inkommande begäran som inte finns i den ursprungliga URL-mallen läggs till i URL: en som definieras av mallen för omskrivning|Nej|true|
+|mall|Den faktiska webb tjänst-URL: en med parametrar för frågesträng. När du använder uttryck måste hela värdet vara ett uttryck.|Ja|Ej tillämpligt|
+|Kopiera omatchade-params|Anger om frågeparametrar i den inkommande begäran som inte finns i den ursprungliga URL-mallen läggs till i URL: en som definieras av mallen för omskrivning|Inga|true|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -715,9 +715,9 @@ OriginalUrl.
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|XSL-Transform|Rot element.|Yes|
-|parameter|Används för att definiera variabler som används i transformeringen|Nej|
-|XSL: stylesheet|Rot format element. Alla element och attribut som definieras i följer standard [specifikationen för XSLT](https://www.w3.org/TR/xslt)|Yes|
+|XSL-Transform|Rot element.|Ja|
+|parameter|Används för att definiera variabler som används i transformeringen|Inga|
+|XSL: stylesheet|Rot format element. Alla element och attribut som definieras i följer standard [specifikationen för XSLT](https://www.w3.org/TR/xslt)|Ja|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).

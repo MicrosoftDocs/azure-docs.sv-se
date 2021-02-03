@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729727"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492679"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>Ansluta System Center Service Manager med Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -32,7 +32,7 @@ Se till att följande krav är uppfyllda:
 
 > [!NOTE]
 > - ITSM-anslutningsprogram kan bara ansluta till molnbaserade ServiceNow-instanser. Lokala ServiceNow-instanser stöds inte för närvarande.
-> - För att kunna använda anpassade [mallar](./itsmc-definition.md#template-definitions) som en del av de åtgärder som parametern "ProjectionType" i SCSM-mallen ska mappas till "IncidentManagement! System. WorkItem. incident. ProjectionType "
+> - För att kunna använda anpassade [mallar](./itsmc-definition.md#define-a-template) som en del av de åtgärder som parametern "ProjectionType" i SCSM-mallen ska mappas till "IncidentManagement! System. WorkItem. incident. ProjectionType "
 
 ## <a name="connection-procedure"></a>Anslutnings procedur
 
@@ -88,7 +88,7 @@ Kör skriptet genom att ange följande obligatoriska information:
 
 - Information om Azure-prenumeration
 - Namn på resursgrupp
-- Plats
+- Location
 - Service Manager Server information (Server namn, domän, användar namn och lösen ord)
 - Prefix för webbplats namn för din webbapp
 - Service Bus-namnrymd.
@@ -165,6 +165,6 @@ Följande exempel bild visar information om en lyckad anslutning:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Översikt över ITSM-anslutningsprogram](itsmc-overview.md)
+* [Översikt över anslutningsprogram för hantering av IT-tjänster (ITSM)](itsmc-overview.md)
 * [Skapa ITSM arbets objekt från Azure-aviseringar](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-resync-servicenow.md)

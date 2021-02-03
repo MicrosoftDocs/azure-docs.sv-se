@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 74009c7e7f2ad28655c9c5322a063a17da96e0c5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735172"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493929"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Meraki-instrumentpanel
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera Meraki-instrumentpanele
 * Gör det möjligt för användarna att logga in automatiskt till Meraki-instrumentpanelen med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -103,7 +103,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Redigera SAML-signeringscertifikat](common/edit-certificate.png)
 
-1. I avsnittet **SAML-signeringscertifikat** , kopierar du **värdet tumavtryck** och sparar det på din dator.
+1. I avsnittet **SAML-signeringscertifikat** , kopierar du **värdet tumavtryck** och sparar det på din dator. Värdet måste konverteras till att innehålla kolon för att Meraki-instrumentpanelen ska förstå det. Om du till exempel använder tumavtrycket från Azure `C2569F50A4AAEDBB8E` måste det ändras till `C2:56:9F:50:A4:AA:ED:BB:8E` för att kunna använda det senare i Meraki-instrumentpanelen.
 
     ![Kopiera tumavtrycksvärdet](common/copy-thumbprint.png)
 
@@ -165,7 +165,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Meraki-instrumentpanel Lägg till en SAML-IdP](./media/meraki-dashboard-tutorial/configure-3.png)
 
-1. Klistra in det **tumavtryck** -värde som du har kopierat från Azure Portal till **X. 590 cert-finger avtryck** . Klicka sedan på **Spara**. När du har sparat visas konsument-URL: en. Kopiera URL-värde för konsument och klistra in den i text rutan för **svars-URL** i **avsnittet grundläggande SAML-konfiguration** i Azure Portal.
+1. Klistra in det konverterade **tumavtryck** -värdet, som du har kopierat från Azure Portal och konverterat i angivet format enligt anvisningarna i steg 9 i föregående avsnitt till **X. 590 cert-finger avtryck** . Klicka sedan på **Spara**. När du har sparat visas konsument-URL: en. Kopiera URL-värde för konsument och klistra in den i text rutan för **svars-URL** i **avsnittet grundläggande SAML-konfiguration** i Azure Portal.
 
     ![Konfiguration av Meraki-instrumentpanel](./media/meraki-dashboard-tutorial/configure-4.png)
 

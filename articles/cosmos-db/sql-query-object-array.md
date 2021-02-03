@@ -5,19 +5,43 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018929"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493800"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Arbeta med matriser och objekt i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-En viktig funktion i Azure Cosmos DB SQL API är matris-och objekt skapande.
+En viktig funktion i Azure Cosmos DB SQL API är matris-och objekt skapande. Det här dokumentet använder exempel som kan återskapas med hjälp av [Family-datauppsättningen](sql-query-getting-started.md#upload-sample-data).
+
+Här är ett exempel objekt i den här data uppsättningen:
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "parents": [
+     { "firstName": "Thomas" },
+     { "firstName": "Mary Kay"}
+  ],
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
+         "grade": 5,
+         "pets": [{ "givenName": "Fluffy" }]
+     }
+  ],
+  "address": { "state": "WA", "county": "King", "city": "Seattle" },
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
 
 ## <a name="arrays"></a>Matriser
 
@@ -177,6 +201,8 @@ Resultatet är:
 
 > [!NOTE]
 > När du använder i nyckelordet for iteration kan du inte filtrera eller projicera egenskaper utanför matrisen. I stället bör du använda [kopplingar](sql-query-join.md).
+
+Fler exempel finns [i vårt blogg inlägg om att arbeta med matriser i Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/).
 
 ## <a name="next-steps"></a>Nästa steg
 

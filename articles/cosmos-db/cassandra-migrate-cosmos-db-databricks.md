@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516551"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493285"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrera data från Cassandra till Azure Cosmos DB API för Cassandra konto med Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,7 +114,28 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes` `connections_per_executor_max` Konfigurationerna och är viktiga för att undvika [hastighets begränsning](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), vilket inträffar när begär anden till Cosmos DB överskrider ett allokerat data flöde ([enheter för programbegäran](./request-units.md)). Du kan behöva justera de här inställningarna beroende på antalet körningar i Spark-klustret och eventuellt storleken (och därför RU-kostnaden) för varje post som skrivs till mål tabellerna.
+> `spark.cassandra.output.batch.size.rows`- `spark.cassandra.output.concurrent.writes` Och- `connections_per_executor_max` konfigurationerna är viktiga för att undvika [hastighets begränsning](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/), vilket inträffar när begär anden till Azure Cosmos DB överskrider etablerade data flöde/([enheter för programbegäran](./request-units.md)). Du kan behöva justera de här inställningarna beroende på antalet körningar i Spark-klustret och eventuellt storleken (och därför RU-kostnaden) för varje post som skrivs till mål tabellerna.
+
+## <a name="troubleshooting"></a>Felsökning
+
+### <a name="rate-limiting-429-error"></a>Hastighets begränsning (429-fel)
+Du kan få en felkod på 429 eller `request rate is large` fel text, trots att de båda inställningarna sänks till sina lägsta värden. Här följer några sådana scenarier:
+
+- **Data flödet som tilldelas tabellen är mindre än 6000 [enheter för programbegäran](./request-units.md)**. Med lägsta möjliga inställningar kommer Spark att kunna köra skrivningar till en hastighet av cirka 6000 enheter för programbegäran eller mer. Om du har etablerad en tabell i ett disk utrymme med delat data flöde, är det möjligt att den här tabellen har mindre än 6000 ru: er tillgänglig vid körning. Se till att tabellen som du migrerar till har minst 6000 ru: er tillgänglig för den när du kör migreringen, och om det behövs allokera enheter för dedikerade enheter till tabellen. 
+- **Onödig data lutning med stor data volym**. Om du har en stor mängd data (d.v.s. tabell rader) som ska migreras till en specifik tabell men har en betydande skev i data (dvs. ett stort antal poster som skrivs för samma partitionsnyckel), kan du fortfarande uppleva hastighets begränsning även om du har en stor mängd [enheter för programbegäran](./request-units.md) som tillhandahålls i tabellen. Detta beror på att enheter för programbegäran delas lika mellan fysiska partitioner och att tung data skevning kan resultera i en Flask hals för begär anden till en enda partition, vilket orsakar en hastighets begränsning. I det här scenariot rekommenderar vi att du minskar till minimala data flödes inställningar i Spark för att undvika hastighets begränsning och tvingar migreringen att köras långsamt. Det här scenariot kan vara vanligare när du migrerar referens-eller kontroll tabeller, där åtkomsten är mindre frekvent men skevningen kan vara hög. Men om en betydande skevning finns i någon annan typ av tabell, kan det också vara tillrådligt att granska data modellen för att undvika problem med hot mot partitioner för arbets belastningen under stabilitets åtgärder. 
+- **Det går inte att hämta Count i stor tabell**. Körning `select count(*) from table` stöds för närvarande inte för stora tabeller. Du kan hämta Count från mått i Azure Portal (se vår [fel söknings artikel](cassandra-troubleshoot.md)), men om du behöver fastställa antalet i en stor tabell inom ramen för ett Spark-jobb kan du kopiera data till en tillfällig tabell och sedan använda Spark SQL för att hämta Count, t. ex. nedan (Ersätt `<primary key>` med ett fält från den resulterande tillfälliga tabellen).
+
+  ```scala
+  val ReadFromCosmosCassandra = sqlContext
+    .read
+    .format("org.apache.spark.sql.cassandra")
+    .options(cosmosCassandra)
+    .load
+
+  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
+  %sql
+  select count(<primary key>) from CosmosCassandraResult
+  ```
 
 ## <a name="next-steps"></a>Nästa steg
 

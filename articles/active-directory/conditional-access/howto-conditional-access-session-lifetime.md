@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837472"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491948"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurera autentiseringsessionshantering med villkorsstyrd åtkomst
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurera hantering av autentisering med villkorlig åtkomst
 
 I komplexa distributioner kan organisationer ha behov av att begränsa sessionerna för autentisering. Vissa scenarier kan vara:
 
@@ -88,7 +88,7 @@ Med Azure AD-beständighet för webbläsarsessionen kan användare på personlig
 Villkorlig åtkomst är en Azure AD Premium funktion och kräver en Premium-licens. Om du vill veta mer om villkorlig åtkomst, se [Vad är villkorlig åtkomst i Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Observera att vi inte har stöd för att skapa två olika principer för samma användar-eller app-kombination om du använder den [konfigurerbara livs längden för token](../develop/active-directory-configurable-token-lifetimes.md) i en offentlig för hands version. Microsoft planerar att dra tillbaka den konfigurerbara livs längden för token för uppdatering och token för sessionstoken den 30 januari 2021 och ersätta den med funktionen för hantering av autentisering med villkorlig åtkomst.  
+> Observera att vi inte har stöd för att skapa två olika principer för samma användar-eller app-kombination om du använder den [konfigurerbara livs längden för token](../develop/active-directory-configurable-token-lifetimes.md) i en offentlig för hands version. Microsoft har dragit tillbaka den konfigurerbara livs längden för token för uppdatering och token för sessionstoken den 30 januari 2021 och ersatte den med funktionen för hantering av autentisering med villkorlig åtkomst.  
 >
 > Innan du aktiverar inloggnings frekvens kontrollerar du att andra inställningar för autentisering är inaktiverade i din klient. Om "kom ihåg MFA på betrodda enheter" är aktive rad måste du inaktivera den innan du använder inloggnings frekvensen, eftersom de båda inställningarna kan leda till att användarna uppmanas att vänta. Mer information om omautentiserings-prompter och sessionens livs längd finns i artikeln [optimera omautentiserings-prompter och förstå sessionens livs längd för Azure AD Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 

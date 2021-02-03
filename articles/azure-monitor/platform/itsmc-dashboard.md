@@ -1,62 +1,78 @@
 ---
-title: Undersök fel med hjälp av instrument panelen
-description: Det här dokumentet innehåller information om fel på ITSMC-instrumentpanelen.
+title: Undersök fel med hjälp av ITSMC-instrumentpanelen
+description: Lär dig hur du använder instrument panelen för Anslutningsprogram för hantering av IT-tjänster (ITSM) för att undersöka fel.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: ebd59e637e498b8088fe9a302b1bb12efdf2c173
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 5cbd501b9ccb408ee23cb5c8ed9cde2689ef79fb
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089283"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492543"
 ---
 # <a name="investigate-errors-by-using-the-itsmc-dashboard"></a>Undersök fel med hjälp av ITSMC-instrumentpanelen
 
-Den här artikeln innehåller information om instrument panelen för Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC). Med instrument panelen kan du undersöka status för ITSMC.
+Den här artikeln innehåller information om instrument panelen för Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC). På instrument panelen kan du undersöka anslutnings status.
 
-## <a name="view-the-dashboard"></a>Visa instrumentpanelen
+## <a name="view-errors"></a>Visa fel
 
-Följ dessa steg för att öppna instrument panelen.
+Visa fel på instrument panelen:
 
 1. Välj **alla resurser** och Sök efter **Servicedesk (*namnet på din arbets yta*)**.
 
    ![Skärm bild som visar resurserna i Azure-tjänster.](media/itsmc-definition/create-new-connection-from-resource.png)
 
-1. I det vänstra fönstret väljer du **data källor för arbets ytan** och väljer sedan **ITSM-anslutningar**.
+2. Under **arbets ytans data källor** i det vänstra fönstret väljer du **ITSM-anslutningar**:
 
    ![Skärm bild som visar val av ITSM-anslutningar under arbets plats data källor.](media/itsmc-overview/add-new-itsm-connection.png)
 
-1. I avsnittet **Sammanfattning** väljer du **Visa sammanfattning** för att visa ett sammanfattande diagram.
+3. Under **Sammanfattning**, i **anslutningsprogram för hantering av IT-tjänster (ITSM)** -ytan, väljer du **Visa sammanfattning**:
 
-    ![Skärm bild som visar alternativet Visa sammanfattning i avsnittet Sammanfattning.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+   ![Skärm bild som visar knappen Visa sammanfattning.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
 
-1. Välj grafen i avsnittet **Sammanfattning** för att öppna instrument panelen.
+4. När ett diagram visas i **anslutningsprogram för hantering av IT-tjänster (ITSM)s** område väljer du det:
 
-    ![Skärm bild som visar att du väljer sammanfattnings diagrammet.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+   ![Skärm bild som visar markering av ett diagram.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
 
-1. Granska instrument panelen för status och eventuella fel i din anslutning.
-    ![Skärm bild som visar instrument panelen.](media/itsmc-resync-servicenow/connector-dashboard.png)
+5. Instrument panelen visas. Använd den för att granska status och felen i din anslutning.
+   
+   ![Skärm bild som visar kopplings status på instrument panelen.](media/itsmc-resync-servicenow/connector-dashboard.png)
 
 ## <a name="understand-dashboard-elements"></a>Förstå instrument panels element
 
-Instrument panelen innehåller information om de aviseringar som har skickats till ITSM-verktyget med hjälp av den här anslutningen.
+Instrument panelen innehåller information om de aviseringar som har skickats till ITSM-verktyget via den här anslutningen. Instrument panelen delas upp i fyra delar.
 
-Instrument panelen är uppdelad i fyra delar:
+### <a name="created-work-items"></a>Skapade arbets objekt 
 
-- **Skapade arbets objekt**: grafen och tabellen visar antalet arbets objekt efter typ. Välj grafen eller tabellen om du vill veta mer om dina arbets uppgifter.
-      ![Skärm bild som visar avsnittet arbets objekt som skapats.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
-- **Påverkade datorer**: tabellen innehåller information om de konfigurations objekt som skapade arbets objekt.
-      Välj rader i tabellerna om du vill ha mer information om konfigurations objekt.
-      Tabellen innehåller ett begränsat antal rader. Om du vill se hela listan väljer du **Visa alla**.
-      ![Skärm bild som visar avsnittet datorer som påverkas.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
-- **ANSLUTNINGS status**: grafen och tabellen visar information om anslutnings status. Markera grafen eller meddelandena i tabellen om du vill ha mer information. Tabellen visar ett begränsat antal rader. Om du vill se hela listan väljer du **Visa alla**.
-      ![Skärm bild som visar avsnittet anslutnings status.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
-- **Aviserings regler**: det här avsnittet visar information om antalet aviserings regler som har identifierats. Välj rader i tabellerna om du vill ha mer information om reglerna som har identifierats. Tabellen har ett begränsat antal rader. Om du vill se hela listan väljer du **Visa alla**.
-      ![Skärm bild som visar avsnittet varnings regler.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
+I det **skapade arbets objekts** fältet innehåller grafen och tabellen nedan antalet arbets objekt per typ. Om du väljer grafen eller tabellen kan du se mer information om arbets objekt.
 
-## <a name="next-steps"></a>Nästa steg
+![Skärm bild som visar en skapad arbets uppgift.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
 
-Ta en titt på [status fel för vanliga anslutningar](itsmc-dashboard-errors.md).
+### <a name="affected-computers"></a>Berörda datorer 
+
+I den berörda **datorns** områden listar tabellen datorer och deras associerade arbets objekt. Genom att välja rader i tabellerna kan du få mer information om datorerna.
+
+Tabellen innehåller ett begränsat antal rader. Om du vill se alla rader väljer du **Visa alla**.
+
+![Skärm bild som visar berörda datorer.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+
+### <a name="connector-status"></a>Status för anslutningsprogrammet 
+
+I fältet **kopplings status** innehåller grafen och tabellen nedan meddelanden om anslutnings status. Genom att markera grafen eller raderna i tabellen kan du få mer information om meddelandena.
+
+Tabellen innehåller ett begränsat antal rader. Om du vill se alla rader väljer du **Visa alla**.
+
+Mer information om meddelandena i tabellen finns i [den här artikeln](itsmc-dashboard-errors.md).
+
+![Skärm bild som visar kopplings status.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+
+### <a name="alert-rules"></a>Aviseringsregler 
+
+I avsnittet **aviserings regler** innehåller tabellen information om antalet aviserings regler som har identifierats. Genom att markera rader i tabellen kan du få mer information om identifierade regler.
+    
+Tabellen innehåller ett begränsat antal rader. Om du vill se alla rader väljer du **Visa alla**.
+
+![Skärm bild som visar varnings regler.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)

@@ -2,15 +2,15 @@
 title: Konfigurera Linux python-appar
 description: Lär dig hur du konfigurerar python-behållaren där webbappar körs, med hjälp av både Azure Portal och Azure CLI.
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 83c49eea8bda10d665c0a08666276e905c60c584
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855064"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493710"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurera en Linux python-app för Azure App Service
 
@@ -22,7 +22,7 @@ Den här guiden innehåller viktiga begrepp och instruktioner för python-utveck
 
 Du kan använda antingen [Azure Portal](https://portal.azure.com) eller Azure CLI för konfiguration:
 
-- **Azure Portal** använder du **Settings**  >  **konfigurations** sidan för appens inställningar enligt beskrivningen i [Konfigurera en app service-app i Azure Portal](configure-common.md).
+- **Azure Portal** använder du   >  **konfigurations** sidan för appens inställningar enligt beskrivningen i [Konfigurera en app service-app i Azure Portal](configure-common.md).
 
 - **Azure CLI**: du har två alternativ.
 
@@ -67,10 +67,13 @@ Du kan köra en version av Python genom att skapa en egen containeravbildning i 
 
 App Service Bygg systemet, som kallas Oryx, utför följande steg när du distribuerar appen med git-eller zip-paket:
 
-1. Kör ett anpassat för skapande skript om det anges med `PRE_BUILD_COMMAND` inställningen.
+1. Kör ett anpassat för skapande skript om det anges med `PRE_BUILD_COMMAND` inställningen. (Skriptet kan köra andra python och Node.js skript, pip-och NPM-kommandon och Node-baserade verktyg som t. ex. garn, till exempel `yarn install` och `yarn build` .)
+
 1. Kör `pip install -r requirements.txt`. *requirements.txt* -filen måste finnas i projektets rotmapp. Annars rapporterar build-processen felet: "Det gick inte att hitta setup.py eller requirements.txt; Kör inte pip-installation. "
+
 1. Om *Manage.py* finns i roten för lagrings platsen (som anger en django-app) kör du *Manage.py collectstatic*. Men om `DISABLE_COLLECTSTATIC` inställningen är `true` hoppar detta steg över.
-1. Kör anpassat efter build-skript om det anges med `POST_BUILD_COMMAND` inställningen.
+
+1. Kör anpassat efter build-skript om det anges med `POST_BUILD_COMMAND` inställningen. (Skriptet kan köra andra python-och Node.js skript, pip-och NPM-kommandon och Node-baserade verktyg.)
 
 Som standard `PRE_BUILD_COMMAND` `POST_BUILD_COMMAND` `DISABLE_COLLECTSTATIC` är inställningarna, och tomma. 
 
@@ -131,6 +134,52 @@ I följande tabell beskrivs de produktions inställningar som är relevanta för
 | `ALLOWED_HOSTS` | I produktion kräver django att du inkluderar appens URL i `ALLOWED_HOSTS` matrisen *Settings.py*. Du kan hämta den här URL: en vid körning med koden `os.environ['WEBSITE_HOSTNAME']` . App Service ställer automatiskt in `WEBSITE_HOSTNAME` miljövariabeln till appens URL. |
 | `DATABASES` | Definiera inställningarna i App Service för databas anslutningen och Läs in dem som miljövariabler för att fylla i [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) ord listan. Du kan också lagra värdena (särskilt användar namn och lösen ord) som [Azure Key Vault hemligheter](../key-vault/secrets/quick-create-python.md). |
 
+## <a name="serve-static-files-for-django-apps"></a>Hantera statiska filer för django-appar
+
+Om din django-webbapp innehåller statiska frontend-filer ska du först följa instruktionerna för att [Hantera statiska filer](https://docs.djangoproject.com/en/3.1/howto/static-files/) i Django-dokumentationen.
+
+För App Service gör du följande ändringar:
+
+1. Överväg att använda miljövariabler (för lokal utveckling) och appinställningar (när du distribuerar till molnet) för att dynamiskt ange django `STATIC_URL` och `STATIC_ROOT` variabler. Exempel:    
+
+    ```python
+    STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
+    STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")    
+    ```
+
+    `DJANGO_STATIC_URL` och `DJANGO_STATIC_ROOT` kan ändras efter behov för dina lokala miljöer och moln miljöer. Om exempelvis build-processen för dina statiska filer placerar dem i en mapp med namnet `django-static` , kan du välja att `DJANGO_STATIC_URL` undvika att `/django-static/` använda standardvärdet.
+
+1. Om du har ett för-build-skript som genererar statiska filer i en annan mapp, inkluderar du mappen i Django- `STATICFILES_DIRS` variabeln så att django `collectstatic` process hittar dem. Om du till exempel kör `yarn build` i din frontend-mapp och garn genererar en `build/static` mapp som innehåller statiska filer, tar du med mappen på följande sätt:
+
+    ```python
+    FRONTEND_DIR = "path-to-frontend-folder" 
+    STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
+    ```
+
+    Här, `FRONTEND_DIR` för att skapa en sökväg till där ett build-verktyg som garn körs. Du kan återigen använda en miljö variabel och en app-inställning som du vill.
+
+1. Lägg till `whitenoise` i *requirements.txt* -filen. [Whitenoise](http://whitenoise.evans.io/en/stable/) (Whitenoise.Evans.IO) är ett python-paket som gör det enkelt för en produktions django-app att betjäna egna statiska filer. Whitenoise hanterar särskilt de filer som finns i mappen som anges av Django- `STATIC_ROOT` variabeln.
+
+1. I *Settings.py* -filen lägger du till följande rad för Whitenoise:
+
+    ```python
+    STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+    ```
+
+1. Ändra även `MIDDLEWARE` `INSTALLED_APPS` listorna och för att inkludera Whitenoise:
+
+    ```python
+    MIDDLEWARE = [
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        # Other values follow
+    ]
+
+    INSTALLED_APPS = [
+        "whitenoise.runserver_nostatic",
+        # Other values follow
+    ]
+    ```
+
 ## <a name="container-characteristics"></a>Containeregenskaper
 
 När du distribuerar till App Service körs python-appar i en Linux Docker-behållare som definieras i [App Service python GitHub-lagringsplatsen](https://github.com/Azure-App-Service/python). Du kan hitta bildkonfigurationerna i de versions bara katalogerna.
@@ -150,6 +199,8 @@ Den här containern har följande egenskaper:
 
 - App Service definierar automatiskt en miljö variabel med namnet `WEBSITE_HOSTNAME` med webbappens webb adress, till exempel `msdocs-hello-world.azurewebsites.net` . Den definierar också `WEBSITE_SITE_NAME` med namnet på din app, till exempel `msdocs-hello-world` . 
    
+- NPM och Node.js installeras i behållaren så att du kan köra Node-baserade build-verktyg, till exempel garn.
+
 ## <a name="container-startup-process"></a>Startprocessen för container
 
 Under starten kör App Service i Linux-containern följande steg:
@@ -270,7 +321,7 @@ Om du till exempel har skapat en app-inställning `DATABASE_SERVER` som kallas, 
 ```python
 db_server = os.environ['DATABASE_SERVER']
 ```
-    
+
 ## <a name="detect-https-session"></a>Identifiera HTTPS-sessionen
 
 I App Service sker [SSL-terminering](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) vid utjämning av nätverks belastning, så alla HTTPS-begäranden når din app som okrypterade HTTP-förfrågningar. Om din applogik behöver kontrollera om användarbegäranden är krypterade eller inte kan du kontrollera `X-Forwarded-Proto`-rubriken.

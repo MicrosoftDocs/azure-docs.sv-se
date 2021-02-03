@@ -2,27 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/01/2020
+ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 55a75651b724a4fe975f655958e36fbd40e35db7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4b15fec0f22db740bbd7c24fcc0acf2ad1a2d1cd
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96748217"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493511"
 ---
 ## <a name="run-the-function-in-azure"></a>Kör funktionen i Azure
 
-1. Gå tillbaka till avsnittet **Azure: Functions** i sido fältet och expandera den nya Function-appen under din prenumeration. Expandera **funktioner**, högerklicka (Windows) eller <kbd>CTRL-</kbd> klicka (MacOS) på **HttpExample** och välj sedan **Kopiera funktions webb adress**.
+1. Gå tillbaka till avsnittet **Azure: Functions** i sido fältet och Visa funktioner för **lokala projekt**  >  . Högerklicka (Windows) eller <kbd>CTRL-</kbd> klicka (MacOS) på `HttpExample` funktionen och välj **Kör funktion nu..**..
 
-    ![Kopiera funktions webb adressen för den nya HTTP-utlösaren](./media/functions-vs-code-run-remote/function-copy-endpoint-url.png)
+    :::image type="content" source="media/functions-vs-code-run-remote/execute-function-now.png" alt-text="Kör funktionen nu i Azure från Visual Studio Code":::
 
-1. Klistra in URL: en för HTTP-begäran i webbläsarens Adress fält, Lägg till `name` frågesträngen som `?name=Functions` i slutet av den här URL: en och kör sedan begäran. Den URL som anropar den HTTP-utlösta funktionen ska ha följande format:
+1. I **Ange brödtext för begäran** visas bröd texten för begär ande meddelandet `{ "name": "Azure" }` . Skicka meddelandet till din funktion genom att trycka på RETUR.  
 
-    ```http
-    http://<FUNCTION_APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions
-    ```
-
-    I följande exempel visas svaret i webbläsaren till den fjärranslutna GET-begäran som returnerades av funktionen:
-
-    ![Funktionssvar i webbläsaren](./media/functions-vs-code-run-remote/functions-test-remote-browser.png)
+1. När funktionen körs i Azure och returnerar ett svar, aktive ras ett meddelande i Visual Studio Code.

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976511"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492254"
 ---
 # <a name="page-layout-versions"></a>Sidlayoutversioner
 
@@ -24,7 +24,10 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 
 ## <a name="self-asserted-page-selfasserted"></a>Själv kontrollerad sida (selfasserted)
 
-**punkt**
+**2.1.2**
+- Korrigerade problem med lokaliserings kodning för språk som spanska och franska.
+
+**2.1.1**
 
 - Du har lagt till en UXString `heading` förutom `intro` att visa på sidan som en rubrik. Detta är dolt som standard.
 - Stöd har lagts till för att spara lösen ord till iCloud-nyckelring.
@@ -71,7 +74,11 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Sidan enhetlig inloggning med lösen ords återställning (unifiedssp)
 
-**punkt**
+**2.1.2**
+- Korrigerade problem med lokaliserings kodning för språk som spanska och franska.
+- Tillåt att länken "glömt lösen ord" används som anspråks utbyte som sociala IDP.
+
+**2.1.1**
 - Du har lagt till en UXString `heading` förutom `intro` att visa på sidan som en rubrik. Detta är dolt som standard.
 - Stöd har lagts till för användning av princip eller parametern QueryString `pageFlavor` för att välja layouten (klassisk, oceanBlue eller slateGray).
 - Stöd har lagts till för att spara lösen ord till iCloud-nyckelring.

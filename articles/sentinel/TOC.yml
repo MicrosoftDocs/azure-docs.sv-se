@@ -2,6 +2,8 @@
   href: index.yml
 - name: Översikt
   href: overview.md
+- name: Vad är nytt i Azure Sentinel?
+  href: whats-new.md
 - name: Snabbstarter
   expanded: true
   items:

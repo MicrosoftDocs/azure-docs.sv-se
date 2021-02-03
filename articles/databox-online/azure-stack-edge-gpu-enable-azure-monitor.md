@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 3485c6ca5c2672fa48b6118a78600b9745994ce1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466983"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493920"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivera Azure Monitor på din Azure Stack Edge Pro GPU-enhet
 
@@ -30,7 +30,7 @@ Innan du börjar behöver du:
 - Du har slutfört **Konfigurera beräknings** steget enligt [självstudien: Konfigurera compute på din Azure Stack Edge Pro-enhet](azure-stack-edge-gpu-deploy-configure-compute.md) på enheten. Enheten bör ha en tillhör ande IoT Hub resurs, en IoT-enhet och en IoT Edge enhet.
 
 
-## <a name="create-log-analytics-workspace"></a>Skapa Log Analytics arbets yta.
+## <a name="create-log-analytics-workspace"></a>Skapa Log Analytics-arbetsyta
 
 Utför följande steg för att skapa en Log Analytics-arbetsyta. En Log Analytics-arbetsyta är en logisk lagrings enhet där loggdata samlas in och lagras.
 
@@ -118,8 +118,8 @@ Utför följande steg för att aktivera behållar insikter på din arbets yta.
 
 1. Hämta resurs-ID och plats. Gå till `Your Log Analytics workspace > General > Properties`. Kopiera följande information:
 
-    - **resurs-ID** som är det fullständigt kvalificerade Azure-resurs-ID: t för Azure Log Analytics-arbetsytan. 
-    - **plats** som är Azure-regionen.
+    - **resurs-ID**, vilket är det fullständigt kvalificerade Azure-resurs-ID: t för Azure Log Analytics-arbetsytan. 
+    - **plats**, som är Azure-regionen.
 
     ![Egenskaper för Log Analytics arbets yta](media/azure-stack-edge-gpu-enable-azure-monitor/log-analytics-workspace-properties-1.png) 
 
@@ -241,3 +241,4 @@ Utför följande steg för att aktivera behållar insikter på din arbets yta.
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig hur du [övervakar Kubernetes-arbetsbelastningar via Kubernetes-instrumentpanelen](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
+- Lär dig [Hantera aviseringar om enhets händelser](azure-stack-edge-gpu-manage-device-event-alert-notifications.md). 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741498"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491393"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Aktivera Azure Active Directory lösen ords återställning via självbetjäning på Windows inloggnings skärm
 
@@ -40,7 +40,7 @@ Följande begränsningar gäller för att använda SSPR från Windows-inloggning
 - Hybrid Azure AD-anslutna datorer måste ha en nätverks anslutning till en domänkontrollant för att kunna använda det nya lösen ordet och uppdatera cachelagrade autentiseringsuppgifter. Det innebär att enheterna måste antingen vara i organisationens interna nätverk eller på ett VPN med nätverks åtkomst till en lokal domänkontrollant.
 - Om du använder en avbildning innan du kör Sysprep kontrollerar du att webbcachen har rensats för den inbyggda administratören innan du utför CopyProfile-steget. Mer information om det här steget finns i Support artikeln [dåliga prestanda när du använder anpassad standard användar profil](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - Följande inställningar är kända för att störa möjligheten att använda och återställa lösen ord på Windows 10-enheter:
-    - Om Ctrl + Alt + del krävs av en princip i versioner av Windows 10 innan v1909, så fungerar inte **återställa lösen ord** .
+    - Om Ctrl + Alt + del krävs av en princip i Windows 10 fungerar inte **återställa lösen ord** .
     - Om meddelanden från Lås skärmen stängs av fungerar inte **Återställ lösen ord** .
     - *HideFastUserSwitching* har angetts till Enabled eller 1
     - *DontDisplayLastUserName* har angetts till Enabled eller 1
@@ -51,6 +51,10 @@ Följande begränsningar gäller för att använda SSPR från Windows-inloggning
     - Interaktiv inloggning: Kräv inte CTRL + ALT + DEL = inaktive rad
     - *DisableLockScreenAppNotifications* = 1 eller aktive rad
     - Windows SKU är inte Home eller Professional Edition
+
+> [!NOTE]
+> Dessa begränsningar gäller även för PIN-återställning för Windows Hello för företag från enhets Lås skärmen.
+>
 
 ## <a name="windows-10-password-reset"></a>Lösen ords återställning för Windows 10
 

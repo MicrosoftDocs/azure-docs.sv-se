@@ -3,12 +3,12 @@ title: Skapa en TypeScript-funktion med Visual Studio Code-Azure Functions
 description: Lär dig hur du skapar en TypeScript-funktion och sedan publicerar det lokala Node.js projektet till Server lös värd i Azure Functions med hjälp av Azure Functions tillägget i Visual Studio Code.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 48295aab80b8a15a313ce7fa7acf94606357930b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425223"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493546"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>Snabb start: skapa en funktion i Azure med TypeScript med hjälp av Visual Studio Code
 
@@ -28,34 +28,34 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 + [Node.js](https://nodejs.org/), aktiva LTS och underhåll LTS-versioner (10.14.1 rekommenderas). Använd `node --version` kommandot för att kontrol lera din version.  
 
-+ [Visual Studio Code](https://code.visualstudio.com/) på en av de [plattformar som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) på någon av [plattformarna som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
 + [Azure Functions-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) för Visual Studio Code.
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Skapa ditt lokala projekt
 
-I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt Azure Functions-projekt i TypeScript. Senare i den här artikeln ska du publicera funktions koden till Azure. 
+I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt Azure Functions-projekt i TypeScript. Senare i den här artikeln ska du publicera funktionskoden till Azure. 
 
-1. Välj Azure-ikonen i aktivitets fältet och välj sedan ikonen **Skapa nytt projekt** i avsnittet **Azure: Functions** .
+1. Välj Azure-ikonen i Aktivitetsfältet och gör sedan följande i **Azure: I området för funktioner** väljer du ikonen **Skapa nytt projekt...**.
 
     ![Välj Skapa ett nytt projekt](media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Välj en katalog plats för projekt arbets ytan och välj **Välj**.
+1. Välj en katalogplats för projektarbetsytan och välj **Välj**.
 
     > [!NOTE]
     > De här stegen har utformats för att slutföras utanför en arbets yta. Välj i det här fallet inte en projektmapp som ingår i en arbetsyta.
 
-1. Ange följande information i prompten:
+1. Ange följande information i meddelanderutorna:
 
-    + **Välj ett språk för ditt funktions projekt** : Välj `TypeScript` .
+    + **Välj ett språk för ditt funktionsprojekt**: Välj `TypeScript`.
 
-    + **Välj en mall för projektets första funktion** : Välj `HTTP trigger` .
+    + **Välj en mall för projektets första funktion**: Välj `HTTP trigger`.
 
-    + **Ange ett funktions namn** : typ `HttpExample` .
+    + **Ange ett funktionsnamn**: Skriv `HttpExample`.
 
-    + **Autentiseringsnivå** : Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Autentiseringsnivå**: Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Välj hur du vill öppna projektet** : Välj `Add to workspace` .
+    + **Välj hur du vill öppna projektet**: Välj `Add to workspace`.
 
 1. Med hjälp av den här informationen genererar Visual Studio Code ett Azure Functions-projekt med en HTTP-utlösare. Du kan visa de lokala projektfilerna i Utforskaren. Mer information om filer som skapas finns i [genererade projektfiler](functions-develop-vs-code.md#generated-project-files). 
 
@@ -74,33 +74,35 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
 1. Välj Azure-ikonen i aktivitets fältet och välj sedan knappen **distribuera till Function-appen** i avsnittet **Azure:** functions.
 
-    ![Publicera ditt projekt till Azure](media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![Publicera projektet till Azure](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. Ange följande information i prompten:
+1. Ange följande information i meddelanderutorna:
 
-    + **Välj mapp** : Välj en mapp från din arbets yta eller bläddra till en mapp som innehåller din Function-app. Du ser inte det här om du redan har en giltig Function-app öppen.
+    + **Välj mapp**: Välj en mapp från din arbets yta eller bläddra till en mapp som innehåller din Function-app. Du ser inte det här om du redan har en giltig Function-app öppen.
 
-    + **Välj prenumeration** : Välj den prenumeration som ska användas. Du ser inte det här om du bara har en prenumeration.
+    + **Välj prenumeration**: Välj den prenumeration som ska användas. Du ser inte det här om du bara har en prenumeration.
 
-    + **Välj Funktionsapp i Azure** : Välj `+ Create new Function App` . (Välj inte `Advanced` alternativet, som inte beskrivs i den här artikeln.)
+    + **Välj Funktionsapp i Azure**: Välj `+ Create new Function App`. (Välj inte `Advanced` alternativet, som inte beskrivs i den här artikeln.)
 
-    + **Ange ett globalt unikt namn för Function-appen** : Ange ett namn som är giltigt i en URL-sökväg. Namnet du skriver verifieras för att säkerställa att det är unikt i Azure Functions. 
+    + **Ange ett globalt unikt namn för Function-appen**: Ange ett namn som är giltigt i en URL-sökväg. Namnet du skriver verifieras för att säkerställa att det är unikt i Azure Functions. 
 
-    + **Välj en körnings miljö** : Välj den version av Node.js som du har kört lokalt. Du kan `node --version` kontrol lera din version med hjälp av kommandot.
+    + **Välj en körnings miljö**: Välj den version av Node.js som du har kört lokalt. Du kan `node --version` kontrol lera din version med hjälp av kommandot.
 
-    + **Välj en plats för nya resurser** : om du vill ha bättre prestanda väljer du en [region](https://azure.microsoft.com/regions/) nära dig.
+    + **Välj en plats för nya resurser**: om du vill ha bättre prestanda väljer du en [region](https://azure.microsoft.com/regions/) nära dig.
+
+    Tillägget visar status för enskilda resurser när de skapas i Azure i meddelande fältet.
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Meddelande om skapande av Azure-resurs":::
 
 1. När det är slutfört skapas följande Azure-resurser i din prenumeration med hjälp av namn baserat på ditt funktions program namn:
 
-    + En resurs grupp, som är en logisk behållare för relaterade resurser.
-    + Ett standard Azure Storage-konto som upprätthåller tillstånd och annan information om dina projekt.
-    + En förbruknings plan som definierar den underliggande värden för din server lös Function-app. 
-    + En Function-app som tillhandahåller miljön för att köra funktions koden. Med en Function-app kan du gruppera funktioner som en logisk enhet för enklare hantering, distribution och delning av resurser inom samma värd plan.
-    + En Application Insights instans som är ansluten till Function-appen, som spårar användningen av din server lös funktion.
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     Ett meddelande visas när funktionsappen har skapats och distributionspaketet har tillämpats. 
 
-1. Välj **Visa utdata** i det här meddelandet för att Visa skapande-och distributions resultaten, inklusive de Azure-resurser som du har skapat. Om du saknar meddelandet väljer du klock ikonen i det nedre högra hörnet för att se den igen.
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. Välj **Visa utdata** i det här meddelandet för att Visa skapande-och distributions resultaten, inklusive de Azure-resurser som du har skapat. Om du saknar meddelandet väljer du klock ikonen i det nedre högra hörnet för att se den igen.
 
     ![Skapa fullständig avisering](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -110,7 +112,7 @@ I det här avsnittet ska du skapa en Function-app och relaterade resurser i din 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har nu använt Visual Studio Code för att skapa en funktionsapp med en enkel HTTP-utlöst funktion. I nästa artikel expanderar du den funktionen genom att lägga till en utgående bindning. Den här bindningen skriver strängen från HTTP-begäran till ett meddelande i en Azure Queue Storage-kö. 
+Du har använt [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) för att skapa en Function-app med en enkel http-utlöst funktion. I nästa artikel expanderar du den funktionen genom att ansluta till Azure Storage. Mer information om hur du ansluter till andra Azure-tjänster finns [i lägga till bindningar till en befintlig funktion i Azure Functions](add-bindings-existing-function.md?tabs=typescript).   
 
 > [!div class="nextstepaction"]
 > [Ansluta till en Azure Storage-kö](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-typescript)

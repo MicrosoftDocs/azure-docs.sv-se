@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 01/27/2021
 ms.author: apimpm
-ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071293"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492611"
 ---
 # <a name="api-management-authentication-policies"></a>Principer för API Management-autentisering
 Det här avsnittet innehåller en referens för följande API Managements principer. Information om hur du lägger till och konfigurerar principer finns [i principer i API Management](./api-management-policies.md).
@@ -50,14 +50,14 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 
 |Namn|Beskrivning|Krävs|
 |----------|-----------------|--------------|
-|autentisering – grundläggande|Rot element.|Yes|
+|autentisering – grundläggande|Rot element.|Ja|
 
 ### <a name="attributes"></a>Attribut
 
-|Name|Beskrivning|Krävs|Default|
+|Name|Beskrivning|Krävs|Standardvärde|
 |----------|-----------------|--------------|-------------|
-|användarnamn|Anger användar namnet för den grundläggande autentiseringsuppgiften.|Yes|Saknas|
-|password|Anger lösen ordet för grundläggande autentiseringsuppgifter.|Yes|Saknas|
+|användarnamn|Anger användar namnet för den grundläggande autentiseringsuppgiften.|Ja|Ej tillämpligt|
+|password|Anger lösen ordet för grundläggande autentiseringsuppgifter.|Ja|Ej tillämpligt|
 
 ### <a name="usage"></a>Användning
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).
@@ -67,7 +67,10 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 -   **Princip omfattningar:** alla omfattningar
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Autentisera med klient certifikat
- Använd `authentication-certificate` principen för att autentisera med en backend-tjänst med hjälp av klient certifikat. Certifikatet måste [installeras i API Management](./api-management-howto-mutual-certificates.md) först och identifieras av sitt tumavtryck.
+ Använd `authentication-certificate` principen för att autentisera med en backend-tjänst med ett klient certifikat. Certifikatet måste [installeras i API Management](./api-management-howto-mutual-certificates.md) först och identifieras av sitt tumavtryck eller certifikat-ID (resurs namn). 
+
+> [!CAUTION]
+> Om certifikatet refererar till ett certifikat som lagras i Azure Key Vault kan du identifiera det med hjälp av certifikat-ID: t. När ett Key Vault-certifikat roteras kommer dess tumavtryck i API Management att ändras, och principen kommer inte att matcha det nya certifikatet om det identifieras av tumavtrycket.
 
 ### <a name="policy-statement"></a>Princip kommentar
 
@@ -77,18 +80,17 @@ Det här avsnittet innehåller en referens för följande API Managements princi
 
 ### <a name="examples"></a>Exempel
 
-I det här exemplet identifieras klient certifikatet med tumavtrycket:
-
-```xml
-<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
-```
-
-I det här exemplet identifieras klient certifikatet av resurs namnet:
+I det här exemplet identifieras klient certifikatet av certifikat-ID: t:
 
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ``` 
 
+I det här exemplet identifieras klient certifikatet med tumavtrycket:
+
+```xml
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
+```
 I det här exemplet anges klient certifikatet i principen i stället för att hämtas från det inbyggda certifikat arkivet:
 
 ```xml
@@ -99,16 +101,16 @@ I det här exemplet anges klient certifikatet i principen i stället för att h�
   
 |Namn|Beskrivning|Krävs|  
 |----------|-----------------|--------------|  
-|autentisering-certifikat|Rot element.|Yes|  
+|autentisering-certifikat|Rot element.|Ja|  
   
 ### <a name="attributes"></a>Attribut  
   
-|Name|Beskrivning|Krävs|Standard|  
+|Name|Beskrivning|Krävs|Standardvärde|  
 |----------|-----------------|--------------|-------------|  
-|begäran|Tumavtryck för klient certifikatet.|Antingen `thumbprint` eller `certificate-id` måste finnas.|Saknas|
-|certifikat-ID|Certifikat resursens namn.|Antingen `thumbprint` eller `certificate-id` måste finnas.|Saknas|
-|body|Klient certifikat som en byte mat ris.|No|Saknas|
-|password|Lösen ordet för klient certifikatet.|Används om certifikatet som anges i `body` är lösenordsskyddat.|Saknas|
+|begäran|Tumavtryck för klient certifikatet.|Antingen `thumbprint` eller `certificate-id` måste finnas.|Ej tillämpligt|
+|certifikat-ID|Certifikat resursens namn.|Antingen `thumbprint` eller `certificate-id` måste finnas.|Ej tillämpligt|
+|body|Klient certifikat som en byte mat ris.|Inga|Ej tillämpligt|
+|password|Lösen ordet för klient certifikatet.|Används om certifikatet som anges i `body` är lösenordsskyddat.|Ej tillämpligt|
   
 ### <a name="usage"></a>Användning  
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).  
@@ -176,16 +178,16 @@ Både systemtilldelad identitet och någon av de flera användare som tilldelats
   
 |Namn|Beskrivning|Krävs|  
 |----------|-----------------|--------------|  
-|autentisering-hanterad-identitet |Rot element.|Yes|  
+|autentisering-hanterad-identitet |Rot element.|Ja|  
   
 ### <a name="attributes"></a>Attribut  
   
-|Name|Beskrivning|Krävs|Standard|  
+|Name|Beskrivning|Krävs|Standardvärde|  
 |----------|-----------------|--------------|-------------|  
-|resource|Sträng. App-ID för mål webb-API (säker resurs) i Azure Active Directory.|Yes|Saknas|
-|klient-ID|Sträng. App-ID: t för den användarspecifika identiteten i Azure Active Directory.|No|systemtilldelad identitet|
-|output-token-variabel-namn|Sträng. Namnet på den Sammanhangs variabel som kommer att ta emot token-värde som en objekt typ `string` . |No|Saknas|  
-|Ignorera-fel|Booleskt. Om detta är inställt på `true` , fortsätter princip pipelinen att köras även om en åtkomsttoken inte har hämtats.|No|falskt|  
+|resource|Sträng. App-ID för mål webb-API (säker resurs) i Azure Active Directory.|Ja|Ej tillämpligt|
+|klient-ID|Sträng. App-ID: t för den användarspecifika identiteten i Azure Active Directory.|Inga|systemtilldelad identitet|
+|output-token-variabel-namn|Sträng. Namnet på den Sammanhangs variabel som kommer att ta emot token-värde som en objekt typ `string` . |Inga|Ej tillämpligt|  
+|Ignorera-fel|Booleskt. Om detta är inställt på `true` , fortsätter princip pipelinen att köras även om en åtkomsttoken inte har hämtats.|Inga|falskt|  
   
 ### <a name="usage"></a>Användning  
  Den här principen kan användas i följande princip [avsnitt](./api-management-howto-policies.md#sections) och [områden](./api-management-howto-policies.md#scopes).  
@@ -200,4 +202,4 @@ Mer information om hur du arbetar med principer finns i:
 + [Principer i API Management](api-management-howto-policies.md)
 + [Transformera API: er](transform-api.md)
 + [Princip referens](./api-management-policies.md) för en fullständig lista över princip satser och deras inställningar
-+ [Princip exempel](./policy-reference.md)
++ [Principexempel](./policy-reference.md)

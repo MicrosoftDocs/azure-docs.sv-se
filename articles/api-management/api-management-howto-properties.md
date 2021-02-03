@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504740"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491028"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Använd namngivna värden i Azure API Management-principer
 
@@ -43,7 +43,7 @@ Det rekommenderas att du använder Key Vault-hemligheter eftersom det bidrar til
 
 * Hemligheter som lagras i nyckel valv kan återanvändas mellan tjänster
 * Detaljerade [åtkomst principer](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) kan tillämpas på hemligheter
-* Hemligheter som uppdateras i nyckel valvet roteras automatiskt i API Management. Efter uppdateringen i nyckel valvet uppdateras ett namngivet värde i API Management inom 4 timmar. 
+* Hemligheter som uppdateras i nyckel valvet roteras automatiskt i API Management. Efter uppdateringen i nyckel valvet uppdateras ett namngivet värde i API Management inom 4 timmar. Du kan också uppdatera hemligheten manuellt med hjälp av Azure Portal eller via hanterings REST API.
 
 ### <a name="prerequisites-for-key-vault-integration"></a>Krav för Key Vault-integrering
 
@@ -58,25 +58,16 @@ Det rekommenderas att du använder Key Vault-hemligheter eftersom det bidrar til
 
 Om du vill använda Key Vault Secret, [lägger du till eller redigerar ett namngivet värde](#add-or-edit-a-named-value)och anger en typ av **nyckel valv**. Välj hemligheten från nyckel valvet.
 
-> [!CAUTION]
-> När du använder en Key Vault-hemlighet i API Management bör du vara noga med att inte ta bort hemligheten, nyckel valvet eller hanterad identitet som används för att komma åt nyckel valvet.
-
-Om [Key Vault brand vägg](../key-vault/general/network-security.md) är aktive rad i nyckel valvet, är följande ytterligare krav för att använda nyckel valv hemligheter:
-
-* Du måste använda den API Management instansens **systemtilldelade** hanterade identitet för att få åtkomst till nyckel valvet.
-* I Key Vault brand vägg aktiverar du alternativet **Tillåt att betrodda Microsoft-tjänster kringgår den här brand väggen** .
-
-Om API Management-instansen distribueras i ett virtuellt nätverk kan du också konfigurera följande nätverks inställningar:
-* Aktivera en [tjänst slut punkt](../key-vault/general/overview-vnet-service-endpoints.md) för att Azure Key Vault i API Management-undernätet.
-* Konfigurera en regel för nätverks säkerhets grupp (NSG) för att tillåta utgående trafik till AzureKeyVault-och AzureActiveDirectory [-tjänstetaggar](../virtual-network/service-tags-overview.md). 
-
-Mer information finns i nätverks konfigurations information i [Anslut till ett virtuellt nätverk](api-management-using-with-vnet.md#-common-network-configuration-issues).
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>Lägg till eller redigera ett namngivet värde
 
 ### <a name="add-a-key-vault-secret"></a>Lägg till en nyckel valvs hemlighet
 
 Se [krav för Key Vault-integrering](#prerequisites-for-key-vault-integration).
+
+> [!CAUTION]
+> När du använder en Key Vault-hemlighet i API Management bör du vara noga med att inte ta bort hemligheten, nyckel valvet eller hanterad identitet som används för att komma åt nyckel valvet.
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till API Management-instansen.
 1. Under **API: er** väljer du **namngivna värden**  >  **+ Lägg till**.
@@ -109,7 +100,7 @@ När det namngivna värdet har skapats kan du redigera det genom att välja namn
 
 I exemplen i det här avsnittet används de namngivna värden som visas i följande tabell.
 
-| Namn               | Värde                      | Hemlighet | 
+| Name               | Värde                      | Hemlighet | 
 |--------------------|----------------------------|--------|---------|
 | ContosoHeader      | `TrackingId`                 | Falskt  | 
 | ContosoHeaderValue | ••••••••••••••••••••••     | Sant   | 

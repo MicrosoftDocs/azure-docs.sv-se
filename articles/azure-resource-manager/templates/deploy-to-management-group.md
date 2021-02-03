@@ -3,12 +3,12 @@ title: Distribuera resurser till hanterings grupp
 description: Beskriver hur du distribuerar resurser i hanterings gruppens omfattning i en Azure Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184024"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491615"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Distributioner av hanterings grupper med ARM-mallar
 
@@ -112,7 +112,7 @@ Mer detaljerad information om distributions kommandon och alternativ för att di
 
 För distributioner på hanterings grupp nivå måste du ange en plats för distributionen. Platsen för distributionen är separat från platsen för de resurser som du distribuerar. Distributions platsen anger var distributions data ska lagras. [Prenumerations](deploy-to-subscription.md) -och [klient](deploy-to-tenant.md) distributioner kräver också en plats. För [resurs grupps](deploy-to-resource-group.md) distributioner används resurs gruppens plats för att lagra distributions data.
 
-Du kan ange ett namn för distributionen eller använda standard distributions namnet. Standard namnet är namnet på mallfilen. Om du till exempel distribuerar en mall som heter **azuredeploy.jspå** skapas ett standard distributions namn för **azuredeploy**.
+Du kan ange ett namn för distributionen eller använda standard distributions namnet. Standard namnet är namnet på mallfilen. Om du till exempel distribuerar en mall som heter _azuredeploy.jspå_ skapas ett standard distributions namn för **azuredeploy**.
 
 För varje distributions namn är platsen oföränderlig. Du kan inte skapa en distribution på en plats om det finns en befintlig distribution med samma namn på en annan plats. Om du till exempel skapar en distribution av en hanterings grupp med namnet **deployment1** i **centrala** kan du inte senare skapa en annan distribution med namnet **deployment1** men en plats med **väst**. Om du får fel koden `InvalidDeploymentLocation` använder du antingen ett annat namn eller samma plats som den tidigare distributionen för det namnet.
 
@@ -164,9 +164,9 @@ Om du vill använda en distribution av hanterings grupper för att skapa en resu
 
 ### <a name="scope-to-tenant"></a>Scope till klient organisation
 
-Du kan skapa resurser på klient organisationen genom att ange `scope` värdet `/` . Användaren som distribuerar mallen måste ha den [åtkomst som krävs för att distribuera på klienten](deploy-to-tenant.md#required-access).
+Ange till för att skapa resurser hos klienten `scope` `/` . Användaren som distribuerar mallen måste ha den [åtkomst som krävs för att distribuera på klienten](deploy-to-tenant.md#required-access).
 
-Du kan använda en kapslad distribution med `scope` och `location` Ange.
+Om du vill använda en kapslad distribution anger du `scope` och `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
@@ -222,7 +222,7 @@ I nästa exempel skapas en ny hanterings grupp i hanterings gruppen som anges so
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Anpassade princip definitioner som distribueras till hanterings gruppen är tillägg för hanterings gruppen. Om du vill hämta ID för en anpassad princip definition använder du funktionen [extensionResourceId ()](template-functions-resource.md#extensionresourceid) . Inbyggda princip definitioner är klient nivå resurser. Använd funktionen [tenantResourceId](template-functions-resource.md#tenantresourceid) för att hämta ID: t för en inbyggd princip definition.
+Anpassade princip definitioner som distribueras till hanterings gruppen är tillägg för hanterings gruppen. Om du vill hämta ID för en anpassad princip definition använder du funktionen [extensionResourceId ()](template-functions-resource.md#extensionresourceid) . Inbyggda princip definitioner är klient nivå resurser. Om du vill hämta ID: t för en inbyggd princip definition använder du funktionen [tenantResourceId ()](template-functions-resource.md#tenantresourceid) .
 
 I följande exempel visas hur du [definierar](../../governance/policy/concepts/definition-structure.md) en princip på hanterings grupps nivån och tilldelar den.
 

@@ -103,6 +103,8 @@
       href: How-To/change-default-answer.md
     - name: Tjänstkonfiguration
       href: reference-app-service.md
+    - name: Formatriktlinjer för innehåll
+      href: reference-document-format-guidelines.md
     - name: Innehåll och dataformat
       items:
         - name: Formatriktlinjer för innehåll

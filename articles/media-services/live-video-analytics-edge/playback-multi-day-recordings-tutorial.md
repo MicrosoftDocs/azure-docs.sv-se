@@ -3,12 +3,12 @@ title: Uppspelning av flera dagars inspelningar – Azure
 description: 'I den här självstudien får du lära dig hur du använder Azure Media Service-API: er för att spela upp en kontinuerlig video inspelning på flera dagar.'
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803440"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492796"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Självstudie: uppspelning av flera dagars inspelningar  
 
@@ -33,7 +33,7 @@ Vi rekommenderar att du läser igenom följande dokumentations sidor:
 * [Instruktions guide: uppspelning av inspelningar](playback-recordings-how-to.md)
 * [Självstudie: kontinuerlig videoinspelning](continuous-video-recording-tutorial.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför [själv studie kursen om CVR](continuous-video-recording-tutorial.md). Den här själv studie kursen och relevanta API: er som diskuteras i [Självstudier: kontinuerlig videoinspelning](continuous-video-recording-tutorial.md) gäller för inspelningar som är 5 minuter eller längre, men vi rekommenderar att du spelar in 5 timmars video, om inte mer. De API: er som används för att bläddra i inspelningar visas bäst med långa inspelningar.
 * Vi rekommenderar att du kör den här självstudien medan [självstudien: kontinuerlig](continuous-video-recording-tutorial.md) inspelning av video fortfarande körs – det vill säga du spelar fortfarande in video till molnet.
@@ -57,7 +57,7 @@ Som en del av [självstudien om CVR](continuous-video-recording-tutorial.md)skul
 }
 ```
 
-Gå sedan till Visual Studio Code och öppna src/AMS-Asset-Player. Den här mappen innehåller de filer som krävs för den här självstudien. Öppna filen appsettings.jsoch kopiera innehållet till en ny fil appsettings.development.jspå. Gör följande ändringar i den senare filen:
+Gå sedan till Visual Studio Code och öppna src/AMS-Asset-Player. Den här mappen innehåller de filer som krävs för den här självstudien. Öppna filen appsettings.jsoch kopiera innehållet till en ny fil appsettings.development.jspå. Gör följande ändringar i den nyligen skapade appsettings.development.jspå:
 
 ```
   "AMS" : {
@@ -78,7 +78,22 @@ Gå sedan till Visual Studio Code och öppna src/AMS-Asset-Player. Den här mapp
 1. Sök och aktivera "Visa utförligt meddelande".
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Tilläggs inställningar" är markerad.
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
+1. <!--In Visual Studio Code, you can click-->Klicka på ikonen kör till vänster (eller CTRL + SHIFT + D) för att öppna tillgängliga program:
+
+    ![Skärm bild som visar en meny i Visual Studio Code med alternativet Kör markerat.](./media/playback-multi-day-recordings-tutorial/run.png)
+1. Välj programmet AMS Asset Player i list rutan som visas nedan och tryck på F5 för att starta fel sökningen.
+
+    ![Skärm bild som visar en meny i Visual Studio Code med AMS till gångs spelare vald.](./media/playback-multi-day-recordings-tutorial/debug.png)
+
+Exempel programmet skapar och startar din standardapp för webbläsare och öppnar sidan AMS Asset Player.
+
+> [!NOTE]
+> Beroende på säkerhets inställningarna i webbläsaren kan ett varnings meddelande visas. Eftersom webb sidan körs lokalt kan du välja att ignorera varningen.
+
+AMS till gångs spelaren anger att du anger namnet på en medie tjänst till gång. Du bör använda namnet på den till gång som du använde för att spela in video i [Självstudier: kontinuerlig inspelning av video](continuous-video-recording-tutorial.md).
+
+När du skriver in till gångs namnet och sedan klickar på Skicka, laddar Player-koden in den strömmande URL: en. Mer information finns i [instruktions guiden: uppspelning av inspelningar](playback-recordings-how-to.md). Om du som det rekommenderar att du fortfarande registrerar till gången, identifierar spelaren att och försöker att stacka uppspelningen till den senaste delen av den inspelade videon. Du kan se tidsstämpeln (i UTC) längst upp till vänster i spelaren. I skärm bilden nedan noterar du hur knappen "Live" är markerad.
 
 ![Dataström](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  

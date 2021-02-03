@@ -1,75 +1,89 @@
 ---
-title: Vanliga fel
-description: Det här dokumentet innehåller information om vanliga fel som finns i instrument panelen
+title: Anslutnings status fel i ITSMC-instrumentpanelen
+description: Lär dig mer om vanliga fel som finns på instrument panelen för Anslutningsprogram för hantering av IT-tjänster (ITSM).
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: be6d47d8f40746bfb2154ddb62cf2e9ce93e74aa
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955691"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492526"
 ---
-# <a name="errors-in-the-connector-status-section"></a>Fel i avsnittet anslutnings status
+# <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Anslutnings status fel i ITSMC-instrumentpanelen
 
-I avsnittet anslutnings status lista på instrument panelen kan du hitta fel som kan hjälpa dig att åtgärda problem i din ITSM-anslutning.
+Instrument panelen för Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC) visar fel som kan hjälpa dig att åtgärda problem i din anslutning.
 
-## <a name="status-common-errors"></a>Status vanliga fel
+I följande avsnitt beskrivs vanliga fel som visas i avsnittet anslutnings status på instrument panelen och hur du kan lösa dem.
 
-I det här avsnittet hittar du de vanliga fel som visas i avsnittet anslutnings status och hur du bör lösa dem:
+## <a name="unexpected-response"></a>Oväntat svar
 
-* **Fel**: "oväntat svar från ServiceNow tillsammans med status koden lyckades. Svar: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "resultat": [{"transform_map": "OMS-incident", "Tabell": "incident", "status": "fel", "error_message": {mål posten hittades inte | Ogiltig tabell | Ogiltig mellanlagringsdatabas}
+**Fel**: "oväntat svar från ServiceNow tillsammans med status koden lyckades. Svar: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "resultat": [{"transform_map": "OMS-incident", "Tabell": "incident", "status": "fel", "error_message": {mål posten hittades inte | Ogiltig tabell | Ogiltig mellanlagringsdatabas}
 
-    **Orsak**: det här felet returneras från ServiceNow när:
-  * Ett anpassat skript som distribueras i ServiceNow-instansen gör att incidenter ignoreras.
-  * "OMS Integrator-appens kod har ändrats på ServiceNow sida, t. ex. onBefore-skriptet.
+**Orsak**: ServiceNow returnerar det här felet när:
 
-  **Lösning**: inaktivera alla anpassade skript eller kod ändringar.
+* Ett anpassat skript som distribueras i en ServiceNow-instans gör att incidenter ignoreras.
+* Koden "OMS Integrator app" har ändrats på ServiceNow-sidan (till exempel via `onBefore` skriptet).
 
-* **Fel**: {"fel": {"meddelande": "åtgärden misslyckades", "information": uppdatering av ACL-undantag misslyckades på grund av säkerhets begränsningar "}"
+**Lösning**: inaktivera alla anpassade skript eller kod ändringar.
 
-    **Orsak**: felaktig konfiguration av ServiceNow-behörigheter
+## <a name="exception-update-failure"></a>Undantags uppdaterings fel
 
-    **Lösning**: kontrol lera att alla roller har tilldelats korrekt som [angivet](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role).
+**Fel**: {"fel": {"meddelande": "åtgärden misslyckades", "information": uppdatering av ACL-undantag misslyckades på grund av säkerhets begränsningar "}"
 
-* **Fel**: "ett fel uppstod när begäran skickades."
+**Orsak**: ServiceNow-behörigheter är felkonfigurerade.
 
-    **Orsak**: "ServiceNow-instans är inte tillgänglig"
+**Lösning**: kontrol lera att alla roller har tilldelats korrekt som [angivet](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role).
 
-    **Lösning**: kontrol lera din instans i ServiceNow att den kan tas bort eller inte är tillgänglig.
+## <a name="problem-sending-a-request"></a>Problem med att skicka en begäran
 
-* **Fel**: "ServiceDeskHttpBadRequestException: StatusCode = 429"
+**Fel**: "ett fel uppstod när begäran skickades."
 
-    **Orsak**: ServiceNow-frekvensen är för hög/låg.
+**Orsak**: en ServiceNow-instans är inte tillgänglig.
 
-    **Lösning**: öka eller Avbryt frekvens gränserna i ServiceNow-instansen enligt beskrivningen [här](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html).
+**Lösning**: kontrol lera din instans i ServiceNow. Det kan vara borttaget eller otillgängligt.
 
-* **Fel**: "AccessToken och RefreshToken är ogiltiga. Användaren måste autentisera igen. "
+## <a name="servicenow-rate-problem"></a>Problem med ServiceNow-frekvens
 
-    **Orsak**: uppdaterings-token har upphört att gälla.
+**Fel**: "ServiceDeskHttpBadRequestException: StatusCode = 429"
 
-    **Lösning**: synkronisera ITSM-anslutningsprogram för att generera en ny uppdateringstoken enligt beskrivningen [här](./itsmc-resync-servicenow.md).
+**Orsak**: ServiceNows hastighets begränsningar är för höga eller för lågt.
 
-* **Fel**: "Det gick inte att skapa/uppdatera arbets objekt för aviseringen {alertName}. ITSM-anslutningsprogram {connectionIdentifier} finns inte eller har tagits bort. "
+**Lösning**: öka eller Avbryt frekvens gränserna i ServiceNow-instansen enligt beskrivningen i [ServiceNow-dokumentationen](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html).
 
-    **Orsak**: ITSM-anslutningsprogram togs bort.
+## <a name="invalid-refresh-token"></a>Ogiltig uppdateringstoken
 
-    **Lösning**: ITSM-anslutningsprogram togs bort men det finns fortfarande ITSM åtgärds grupper som är kopplade till den. Det finns två alternativ för att lösa det här problemet:
-  * Hitta och inaktivera eller ta bort sådana åtgärds grupper
-  * [Konfigurera om åtgärds gruppen](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) så att den använder en befintlig ITSM-anslutningsprogram.
-  * [Skapa en ny ITSM-koppling](./itsmc-definition.md#create-an-itsm-connection) och [Konfigurera om åtgärds gruppen så att den används](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
+**Fel**: "AccessToken och RefreshToken är ogiltiga. Användaren måste autentisera igen. "
 
-## <a name="ui-common-errors"></a>Vanliga användar gränssnitts fel
+**Orsak**: en uppdaterad token har upphört att gälla.
 
-* **Fel**: "något gick fel. Det gick inte att hämta anslutnings information. " Det här felet presenteras när kunden definierar ITSM-åtgärds gruppen.
+**Lösning**: synkronisera ITSMC för att generera en ny uppdateringstoken, enligt beskrivningen i [så här åtgärdar du synkroniseringsproblem manuellt](./itsmc-resync-servicenow.md).
 
-    **Orsak**: det här felet visas när:
-    * Nyligen skapade ITSM-anslutningsprogram har ännu slutfört den inledande synkroniseringen.
-    * Kopplingen har inte definierats korrekt
+## <a name="missing-connector"></a>Koppling saknas
 
-    **Lösning**: 
-    * När en ny ITSM-anslutning skapas börjar ITSM-anslutningsprogram synkronisera information från ITSM-systemet, till exempel mallar för arbets objekt och arbets objekt. Synkronisera ITSM-anslutningsprogram för att generera en ny uppdateringstoken enligt beskrivningen [här](./itsmc-resync-servicenow.md).
-    * Granska anslutnings informationen i ITSM-anslutaren enligt beskrivningen [här](./itsmc-connections-servicenow.md#create-a-connection) och kontrol lera att din ITSM-anslutning kan [synkroniseras](./itsmc-resync-servicenow.md)korrekt.
+**Fel**: "Det gick inte att skapa/uppdatera arbets objekt för aviseringen {alertName}. ITSM-anslutningsprogram {connectionIdentifier} finns inte eller har tagits bort. "
+
+**Orsak**: ITSMC togs bort.
+
+**Lösning**: ITSMC har tagits bort, men de definierade åtgärds grupperna IT Service Management (ITSM) är fortfarande kopplade till den. Det finns tre alternativ för att lösa det här problemet:
+
+* Hitta och inaktivera eller ta bort sådana åtgärds grupper.
+* [Konfigurera om åtgärds grupperna](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) så att de använder en befintlig ITSMC-instans.
+* [Skapa en ny ITSMC-instans](./itsmc-definition.md#create-an-itsm-connection) och [Konfigurera om de åtgärds grupper som ska användas](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
+
+## <a name="lack-of-connection-details"></a>Avsaknad av anslutnings information
+
+**Fel**: "något gick fel. Det gick inte att hämta anslutnings information. " Det här felet visas när du definierar en ITSM-åtgärds grupp.
+
+**Orsak**: ett sådant fel visas i någon av följande situationer:
+
+* En nyligen skapad ITSM-anslutningsprogram-instans har ännu slutfört den inledande synkroniseringen.
+* Kopplingen har inte definierats korrekt.
+
+**Lösning**: 
+
+* När en ny ITSMC-instans skapas börjar den synkronisera information från ITSM-systemet, till exempel mallar för arbets objekt och arbets objekt. [Synkronisera ITSMC för att generera en ny uppdateringstoken](./itsmc-resync-servicenow.md).
+* [Granska anslutnings informationen i ITSMC](./itsmc-connections-servicenow.md#create-a-connection) och kontrol lera att ITSMC kan [synkroniseras](./itsmc-resync-servicenow.md).

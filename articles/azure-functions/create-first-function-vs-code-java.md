@@ -3,12 +3,12 @@ title: Skapa en Java-funktion med Visual Studio Code-Azure Functions
 description: Lär dig hur du skapar en Java-funktion och sedan publicerar det lokala projektet till Server lös värd i Azure Functions med hjälp av Azure Functions tillägget i Visual Studio Code.
 ms.topic: quickstart
 ms.date: 11/03/2020
-ms.openlocfilehash: daaa578b2842a6314706b3578f4c9e44d46aa6ce
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 36516abd8b50c0b0b7d72e6bae0b67701509ca65
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425135"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493642"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Snabb start: skapa en Java-funktion i Azure med Visual Studio Code
 
@@ -31,7 +31,7 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 + [Apache maven](https://maven.apache.org), version 3,0 eller senare.
 
-+ [Visual Studio Code](https://code.visualstudio.com/) på en av de [plattformar som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) på någon av [plattformarna som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
 + [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
 
@@ -39,36 +39,36 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Skapa ditt lokala projekt
 
-I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt Azure Functions-projekt i Java. Senare i den här artikeln ska du publicera funktions koden till Azure. 
+I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt Azure Functions-projekt i Java. Senare i den här artikeln ska du publicera funktionskoden till Azure. 
 
-1. Välj Azure-ikonen i aktivitets fältet och välj sedan ikonen **Skapa nytt projekt** i avsnittet **Azure: Functions** .
+1. Välj Azure-ikonen i Aktivitetsfältet och gör sedan följande i **Azure: I området för funktioner** väljer du ikonen **Skapa nytt projekt...**.
 
     ![Välj Skapa ett nytt projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Välj en katalog plats för projekt arbets ytan och välj **Välj**.
+1. Välj en katalogplats för projektarbetsytan och välj **Välj**.
 
     > [!NOTE]
     > De här stegen har utformats för att slutföras utanför en arbets yta. Välj i det här fallet inte en projektmapp som ingår i en arbetsyta.
 
-1. Ange följande information i prompten:
+1. Ange följande information i meddelanderutorna:
 
-    + **Välj ett språk för ditt funktions projekt** : Välj `Java` .
+    + **Välj ett språk för ditt funktionsprojekt**: Välj `Java`.
 
-    + **Välj en version av Java** : Välj `Java 8` eller `Java 11` , den Java-version som dina funktioner körs på i Azure. Välj en Java-version som du har verifierat lokalt.
+    + **Välj en version av Java**: Välj `Java 8` eller `Java 11` , den Java-version som dina funktioner körs på i Azure. Välj en Java-version som du har verifierat lokalt.
 
-    + **Ange ett grupp-ID** : Välj `com.function` .
+    + **Ange ett grupp-ID**: Välj `com.function` .
 
-    + **Ange ett artefakt-ID** : Välj `myFunction` .
+    + **Ange ett artefakt-ID**: Välj `myFunction` .
 
-    + **Ange en version** : Välj `1.0-SNAPSHOT` .
+    + **Ange en version**: Välj `1.0-SNAPSHOT` .
 
-    + **Ange ett paket namn** : Välj `com.function` .
+    + **Ange ett paket namn**: Välj `com.function` .
 
-    + **Ange ett namn på appen** : Välj `myFunction-12345` .
+    + **Ange ett namn på appen**: Välj `myFunction-12345` .
 
-    + **Autentiseringsnivå** : Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Autentiseringsnivå**: Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Välj hur du vill öppna projektet** : Välj `Add to workspace` .
+    + **Välj hur du vill öppna projektet**: Välj `Add to workspace`.
 
 1. Med hjälp av den här informationen genererar Visual Studio Code ett Azure Functions-projekt med en HTTP-utlösare. Du kan visa de lokala projektfilerna i Utforskaren. Mer information om filer som skapas finns i [genererade projektfiler](functions-develop-vs-code.md#generated-project-files). 
 
@@ -86,7 +86,7 @@ När du har kontrollerat att funktionen fungerar korrekt på den lokala datorn �
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har nu använt Visual Studio Code för att skapa en funktionsapp med en enkel HTTP-utlöst funktion. I nästa artikel expanderar du den funktionen genom att lägga till en utgående bindning. Den här bindningen skriver strängen från HTTP-begäran till ett meddelande i en Azure Queue Storage-kö. 
+Du har använt [Visual Studio Code](functions-develop-vs-code.md?tabs=java) för att skapa en Function-app med en enkel http-utlöst funktion. I nästa artikel expanderar du den funktionen genom att ansluta till Azure Storage. Mer information om hur du ansluter till andra Azure-tjänster finns [i lägga till bindningar till en befintlig funktion i Azure Functions](add-bindings-existing-function.md?tabs=java). 
 
 > [!div class="nextstepaction"]
 > [Ansluta till en Azure Storage-kö](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-java)

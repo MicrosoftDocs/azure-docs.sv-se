@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183920"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492186"
 ---
 # <a name="what-is-azure-bastion"></a>Vad är Azure Bastion?
 
@@ -30,7 +30,7 @@ RDP och SSH är några av de grundläggande metoder som du kan använda för att
 
 Den här bilden visar arkitekturen för en Azure skydds-distribution. I det här diagrammet:
 
-* Skydds-värden har distribuerats i det virtuella nätverket.
+* Skydds-värden distribueras i det virtuella nätverket som innehåller det AzureBastionSubnet-undernät som har ett minimum/27-prefix.
 * Användaren ansluter till Azure Portal med valfri HTML5-webbläsare.
 * Användaren väljer den virtuella dator som du vill ansluta till.
 * Med ett enda klick öppnas RDP/SSH-sessionen i webbläsaren.
@@ -51,7 +51,7 @@ Följande funktioner är tillgängliga:
 
 Prenumerera på RSS-flödet och Visa de senaste Azure skydds-funktions uppdateringarna på sidan [Azure updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion) .
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 

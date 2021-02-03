@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831932"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492763"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Skapa och ansluta ett Azure Kubernetes service-kluster
 
@@ -70,7 +70,9 @@ Azure Machine Learning kan distribuera utbildade maskin inlärnings modeller til
     - [Skala antalet noder manuellt i ett AKS-kluster](../aks/scale-cluster.md)
     - [Konfigurera autoskalning för kluster i AKS](../aks/cluster-autoscaler.md)
 
-## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes service-version
+- __Uppdatera inte klustret direkt genom att använda en yaml-konfiguration__. Även om Azure Kubernetes Services stöder uppdateringar via YAML-konfiguration kommer Azure Machine Learning distributioner att åsidosätta dina ändringar. De enda två YAML-fält som inte skrivs över är __begär ande begränsningar__ och __CPU och minne__.
+
+## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service-version
 
 Med Azure Kubernetes-tjänsten kan du skapa ett kluster med hjälp av en rad olika Kubernetes-versioner. Mer information om tillgängliga versioner finns [i Kubernetes-versioner som stöds i Azure Kubernetes-tjänsten](../aks/supported-kubernetes-versions.md).
 
@@ -381,7 +383,6 @@ I Azure Machine Learning Studio väljer du __beräknings__-, __härlednings klus
 ---
 
 ## <a name="troubleshooting"></a>Felsökning
-
 ### <a name="update-the-cluster"></a>Uppdatera klustret
 
 Uppdateringar av Azure Machine Learning-komponenter som är installerade i ett Azure Kubernetes service-kluster måste appliceras manuellt. 

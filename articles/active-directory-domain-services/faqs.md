@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: justinha
-ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619741"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491173"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Vanliga frågor och svar om Azure Active Directory (AD) Domain Services
 
@@ -106,7 +106,7 @@ Alla användar konton som ingår i den hanterade domänen kan ansluta till en vi
 Nej. Du har inte beviljats administratörs behörighet för den hanterade domänen. Behörigheterna *domän administratör* och *företags administratör* är inte tillgängliga för dig i domänen. Medlemmar i grupperna domän administratör eller företags administratör i din lokala Active Directory beviljas inte heller domän-/företags administratörs behörighet på den hanterade domänen.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Kan jag ändra grupp medlemskap med hjälp av LDAP eller andra administrations verktyg för AD i hanterade domäner?
-Användare och grupper som synkroniseras från Azure Active Directory till Azure AD Domain Services kan inte ändras eftersom deras ursprungs källa är Azure Active Directory. Alla användare eller grupper som har sitt ursprung i den hanterade domänen kan ändras.
+Användare och grupper som synkroniseras från Azure Active Directory till Azure AD Domain Services kan inte ändras eftersom deras ursprungs källa är Azure Active Directory. Detta innefattar att flytta användare eller grupper från AADDC användare som har hanterat organisationsenheter till en anpassad Organisationsenhet. Alla användare eller grupper som har sitt ursprung i den hanterade domänen kan ändras.  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Hur lång tid tar det innan ändringar jag gör i Azure AD-katalogen visas i min hanterade domän?
 Ändringar som görs i Azure AD-katalogen med antingen Azure AD-ANVÄNDARGRÄNSSNITTET eller PowerShell synkroniseras automatiskt till din hanterade domän. Den här synkroniseringsprocessen körs i bakgrunden. Det finns ingen definierad tids period för den här synkroniseringen att slutföra alla objekt ändringar.

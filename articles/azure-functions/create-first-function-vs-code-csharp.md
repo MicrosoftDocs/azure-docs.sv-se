@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en C#-funktion och sedan publicerar det loka
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0068a9cbf99117a0a2432a02c9be934eb749f19a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968627"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493693"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Snabb start: skapa en C#-funktion i Azure med Visual Studio Code
 
@@ -29,7 +29,7 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 + [Azure Functions Core tools](functions-run-local.md#install-the-azure-functions-core-tools) version 3. x.
 
-+ [Visual Studio Code](https://code.visualstudio.com/) på en av de [plattformar som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
++ [Visual Studio Code](https://code.visualstudio.com/) på någon av [plattformarna som stöds](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
 + [C#-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) för Visual Studio Code.  
 
@@ -37,30 +37,30 @@ Innan du börjar bör du kontrol lera att du har följande krav på plats:
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Skapa ditt lokala projekt
 
-I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt Azure Functions projekt i C#. Senare i den här artikeln ska du publicera funktions koden till Azure.
+I det här avsnittet använder du Visual Studio Code för att skapa ett lokalt Azure Functions projekt i C#. Senare i den här artikeln ska du publicera funktionskoden till Azure.
 
-1. Välj Azure-ikonen i aktivitets fältet och välj sedan ikonen **Skapa nytt projekt** i avsnittet **Azure: Functions** .
+1. Välj Azure-ikonen i Aktivitetsfältet och gör sedan följande i **Azure: I området för funktioner** väljer du ikonen **Skapa nytt projekt...**.
 
     ![Välj Skapa ett nytt projekt](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Välj en katalog plats för projekt arbets ytan och välj **Välj**.
+1. Välj en katalogplats för projektarbetsytan och välj **Välj**.
 
     > [!NOTE]
     > De här stegen har utformats för att slutföras utanför en arbets yta. Välj i det här fallet inte en projektmapp som ingår i en arbetsyta.
 
-1. Ange följande information i prompten:
+1. Ange följande information i meddelanderutorna:
 
-    + **Välj ett språk för ditt funktions projekt**: Välj `C#` .
+    + **Välj ett språk för ditt funktionsprojekt**: Välj `C#`.
 
-    + **Välj en mall för projektets första funktion**: Välj `HTTP trigger` .
+    + **Välj en mall för projektets första funktion**: Välj `HTTP trigger`.
 
-    + **Ange ett funktions namn**: typ `HttpExample` .
+    + **Ange ett funktionsnamn**: Skriv `HttpExample`.
 
-    + **Ange ett namn område**: typ `My.Functions` .
+    + **Ange ett namnområde**: Skriv `My.Functions`.
 
     + **Autentiseringsnivå**: Välj `Anonymous` , vilket gör att vem som helst kan anropa funktions slut punkten. Mer information om autentiseringsnivå finns i [Authorization Keys](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Välj hur du vill öppna projektet**: Välj `Add to workspace` .
+    + **Välj hur du vill öppna projektet**: Välj `Add to workspace`.
 
 1. Med hjälp av den här informationen genererar Visual Studio Code ett Azure Functions-projekt med en HTTP-utlösare. Du kan visa de lokala projektfilerna i Utforskaren. Mer information om filer som skapas finns i [genererade projektfiler](functions-develop-vs-code.md#generated-project-files).
 
@@ -78,7 +78,7 @@ När du har kontrollerat att funktionen fungerar korrekt på den lokala datorn �
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har nu använt Visual Studio Code för att skapa en funktionsapp med en enkel HTTP-utlöst funktion. I nästa artikel expanderar du den funktionen genom att lägga till en utgående bindning. Den här bindningen skriver strängen från HTTP-begäran till ett meddelande i en Azure Queue Storage-kö. 
+Du har använt [Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) för att skapa en Function-app med en enkel http-utlöst funktion. I nästa artikel expanderar du den funktionen genom att ansluta till Azure Storage. Mer information om hur du ansluter till andra Azure-tjänster finns [i lägga till bindningar till en befintlig funktion i Azure Functions](add-bindings-existing-function.md?tabs=csharp). 
 
 > [!div class="nextstepaction"]
 > [Ansluta till en Azure Storage-kö](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)

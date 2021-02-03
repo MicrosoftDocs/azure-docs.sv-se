@@ -2,25 +2,34 @@
 title: Det gick inte att återställa till en lyckad distribution
 description: Ange att en misslyckad distribution ska återställas till en lyckad distribution.
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460151"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492220"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Det gick inte att återställa vid lyckad distribution
 
-När en distribution Miss lyckas kan du automatiskt distribuera om en tidigare distribuerad distribution från din distributions historik. Den här funktionen är användbar om du har ett känt bra tillstånd för distribution av infrastrukturen och vill återställa till det här läget. Det finns ett antal varningar och begränsningar:
+När en distribution Miss lyckas kan du automatiskt distribuera om en tidigare distribuerad distribution från din distributions historik. Den här funktionen är användbar om du har ett känt bra tillstånd för distribution av infrastrukturen och vill återställa till det här läget. Du kan ange antingen en viss tidigare distribution eller den senaste lyckade distributionen.
 
+> [!IMPORTANT]
+> Den här funktionen återställer en misslyckad distribution genom att distribuera om en tidigare distribution. Det här resultatet kan skilja sig från vad du skulle förväntat dig från att ångra den misslyckade distributionen. Se till att du förstår hur den tidigare distributionen distribueras om.
+
+## <a name="considerations-for-redeploying"></a>Överväganden vid omdistribution
+
+Innan du använder den här funktionen bör du tänka på följande information om hur omdistributionen hanteras:
+
+- Den tidigare distributionen körs med [slutfört läge](./deployment-modes.md#complete-mode), även om du har använt [stegvist läge](./deployment-modes.md#incremental-mode) under den tidigare distributionen. Omdistribution i slutfört läge kan ge oväntade resultat när den tidigare distributionen användes stegvis. Det fullständiga läget innebär att alla resurser som inte ingår i den tidigare distributionen tas bort. Ange en tidigare distribution som representerar alla resurser och deras tillstånd som du vill ska finnas i resurs gruppen. Mer information finns i [distributions lägen](./deployment-modes.md).
 - Omdistributionen körs exakt eftersom den kördes tidigare med samma parametrar. Du kan inte ändra parametrarna.
-- Den tidigare distributionen körs med [slutfört läge](./deployment-modes.md#complete-mode). Alla resurser som inte ingår i den tidigare distributionen tas bort och alla resurspooler anges till sitt tidigare tillstånd. Se till att du förstår [distributions lägena](./deployment-modes.md)fullständigt.
 - Omdistributionen påverkar endast resurserna, alla data ändringar påverkas inte.
-- Du kan bara använda den här funktionen med distributioner av resurs grupper, inte på prenumerationer eller på hanterings grupps nivå. Mer information om distribution av prenumerations nivåer finns i [skapa resurs grupper och resurser på prenumerations nivå](./deploy-to-subscription.md).
+- Du kan bara använda den här funktionen med resurs grupps distributioner. Den stöder inte distributioner av prenumerationer, hanterings grupper eller klient nivåer. Mer information om distribution av prenumerations nivåer finns i [skapa resurs grupper och resurser på prenumerations nivå](./deploy-to-subscription.md).
 - Du kan bara använda det här alternativet med distributioner på rotnivå. Distributioner från en kapslad mall är inte tillgängliga för omdistribution.
 
-Om du vill använda det här alternativet måste distributionerna ha unika namn så att de kan identifieras i historiken. Om du inte har unika namn kan den aktuella misslyckade distributionen skriva över den tidigare lyckade distributionen i historiken.
+Om du vill använda det här alternativet måste distributionerna ha unika namn i distributions historiken. Den är bara med unika namn som en speciell distribution kan identifieras. Om du inte har unika namn kan en misslyckad distribution skriva över en lyckad distribution i historiken.
+
+Om du anger en tidigare distribution som inte finns i distributions historiken returnerar återställningen ett fel.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -115,7 +124,5 @@ Den angivna distributionen måste ha slutförts.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- För att på ett säkert sätt distribuera tjänsten till mer än en region, se [Azure Deployment Manager](deployment-manager-overview.md).
-- Information om hur du hanterar resurser som finns i resurs gruppen men som inte har definierats i mallen finns i [Azure Resource Manager distributions lägen](deployment-modes.md).
+- Information om fullständiga och stegvisa lägen finns i [Azure Resource Manager distributions lägen](deployment-modes.md).
 - Information om hur du definierar parametrar i din mall finns i [förstå strukturen och syntaxen för Azure Resource Manager mallar](template-syntax.md).
-- Information om hur du distribuerar en mall som kräver en SAS-token finns i [distribuera privat mall med SAS-token](secure-template-with-sas-token.md).
