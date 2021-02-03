@@ -3,12 +3,12 @@ title: Kom igång med live video analys på IoT Edge – Azure
 description: Den här snabb starten visar hur du kommer igång med live video analys på IoT Edge. Lär dig hur du identifierar rörelser i en video ström i real tid.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: fde82dde7df3fa9756c145940178f35ed255ce37
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 93eb2ab4df77afd3c2a55a04db2d39591a46e726
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986555"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507796"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Snabb start: kom igång – direktsända video analyser på IoT Edge
 
@@ -48,6 +48,8 @@ I den här självstudien krävs följande Azure-resurser:
 I den här snabb starten rekommenderar vi att du använder [installations skriptet Live Video Analytics-resurser](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) för att distribuera de nödvändiga resurserna i din Azure-prenumeration. Det gör du på följande sätt:
 
 1. Gå till [Azure Portal](https://portal.azure.com) och välj ikonen Cloud Shell.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Om du använder Cloud Shell för första gången uppmanas du att välja en prenumeration för att skapa ett lagrings konto och en Microsoft Azure fil resurs. Välj **skapa lagring** för att skapa ett lagrings konto för din Cloud Shell sessionsinformation. Det här lagrings kontot är skilt från kontot som skriptet skapar för användning med ditt Azure Media Services-konto.
 1. I den nedrullningsbara menyn på vänster sida av Cloud Shells fönstret väljer du **bash** som din miljö.
 
@@ -76,10 +78,10 @@ I den här snabb starten rekommenderar vi att du använder [installations skript
 I skriptets utdata visar en resurs tabell namnet på IoT Hub. Sök efter resurs typen **`Microsoft.Devices/IotHubs`** och Anteckna namnet. Du behöver det här namnet i nästa steg.  
 
 > [!NOTE]
-> Skriptet genererar också några konfigurationsfiler i katalogen **_~/clouddrive/lva-Sample/_* _. Du behöver dessa filer senare i snabb starten.
+> Skriptet genererar också några konfigurationsfiler i katalogen ***~/clouddrive/lva-Sample/*** . Du behöver dessa filer senare i snabb starten.
 
 > [!TIP]
-> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår _ *[fel söknings guide](troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.
+> Om du stöter på problem med Azure-resurser som skapas, kan du läsa vår **[fel söknings guide](troubleshoot-how-to.md#common-error-resolutions)** för att lösa vanliga problem som uppstår.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Distribuera moduler på din Edge-enhet
 

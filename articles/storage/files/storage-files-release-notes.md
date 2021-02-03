@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4dd1941e6a749c2ccf7ca082ab89ef2a70baa0d6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131482"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509544"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Viktig information om Azure File Sync-agenten
 Med Azure File Sync kan du centralisera din organisations filresurser i Azure Files med samma flexibilitet, prestanda och kompatibilitet som du får om du använder en lokal filserver. Dina Windows Server-installationer omvandlas till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt (inklusive SMB, NFS och FTPS). Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -25,6 +25,7 @@ Följande Azure File Sync agent versioner stöds:
 
 | Gränser | Agentversionsnummer | Utgivningsdatum | Status |
 |----|----------------------|--------------|------------------|
+| V 11.2-utgåva – [KB4539952](https://support.microsoft.com/en-us/help/4539952)| 11.2.0.0 | 2 februari 2021 | Support – flyg |
 | V 11.1 release- [KB4539951](https://support.microsoft.com/en-us/help/4539951)| 11.1.0.0 | 4 november 2020 | Stöds |
 | V 10.1-version – [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 5 juni 2020 | Stöds |
 | Samlad uppdatering för 2020 maj – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19 maj 2020 | Stöds |
@@ -38,16 +39,42 @@ Följande Azure File Sync agent versioner har upphört att gälla och stöds int
 
 | Gränser | Agentversionsnummer | Utgivningsdatum | Status |
 |----|----------------------|--------------|------------------|
-| V7-version | 7.0.0.0 - 7.2.0.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 1 september 2020 |
-| V6-version | 6.0.0.0 - 6.3.0.0 | Saknas | Stöds inte-agent versioner upphörde att gälla den 21 april 2020 |
-| Version V5 | 5.0.2.0 - 5.2.0.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 18 mars 2020 |
-| V4-version | 4.0.1.0 - 4.3.0.0 | Saknas | Stöds inte-agent versioner upphörde att gälla den 6 november 2019 |
-| V3-version | 3.1.0.0 - 3.4.0.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 19 augusti 2019 |
-| För GA-agenter | 1.1.0.0 – 3.0.13.0 | Saknas | Stöds inte-agent versioner har upphört att gälla den 1 oktober 2018 |
+| V7-version | 7.0.0.0 - 7.2.0.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 1 september 2020 |
+| V6-version | 6.0.0.0 - 6.3.0.0 | Ej tillämpligt | Stöds inte-agent versioner upphörde att gälla den 21 april 2020 |
+| Version V5 | 5.0.2.0 - 5.2.0.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 18 mars 2020 |
+| V4-version | 4.0.1.0 - 4.3.0.0 | Ej tillämpligt | Stöds inte-agent versioner upphörde att gälla den 6 november 2019 |
+| V3-version | 3.1.0.0 - 3.4.0.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 19 augusti 2019 |
+| För GA-agenter | 1.1.0.0 – 3.0.13.0 | Ej tillämpligt | Stöds inte-agent versioner har upphört att gälla den 1 oktober 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Uppdateringsprincip för Azure File Sync-agenten
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-11200"></a>11.2.0.0 för agent version
+Följande viktig information gäller version 11.2.0.0 av Azure File Sync agent som publicerades den 2 februari 2021. De här anteckningarna är utöver de versions anteckningar som anges för version 11.1.0.0.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Förbättringar och problem som åtgärdas 
+- Om en synkroniseringsanslutning avbryts på grund av ett stort antal fel per objekt, kan synkroniseringen gå igenom avstämningen när en ny session startar om den Azure File Sync tjänsten fastställer en anpassad svarsomgång som krävs för att korrigera felen per objekt.
+- Att registrera en server med hjälp av Register-AzStorageSyncServer cmdlet kan Miss lyckas med fel meddelandet "ohanterat undantag".
+- Ny PowerShell-cmdlet (Add-StorageSyncAllowedServerEndpointPath) för att konfigurera tillåtna Sök vägar för Server slut punkter på en server. Denna cmdlet är användbar för scenarier där Azure File Sync-distributionen hanteras av en leverantör av moln lösningar (CSP) eller tjänst leverantör och kunden vill konfigurera tillåtna Sök vägar för Server slut punkter på en server. När du skapar en server slut punkt, och den angivna sökvägen inte finns i listan över tillåtna, kommer det inte att gå att skapa server slut punkten. OBS! detta är en valfri funktion och alla sökvägar som stöds tillåts som standard när du skapar en server slut punkt.  
+
+    
+    - Om du vill lägga till en sökväg för Server slut punkten som tillåts kör du följande PowerShell-kommandon på servern:
+
+    ```powershell
+    Import-Module 'C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll' -verbose
+    Add-StorageSyncAllowedServerEndpointPath -Path <path>
+    ```  
+
+    - Om du vill hämta en lista över sökvägar som stöds kör du följande PowerShell-kommando:
+    
+    ```powershell
+    Get-StorageSyncAllowedServerEndpointPath
+    ```     
+    - Om du vill ta bort en sökväg kör du följande PowerShell-kommando:
+    
+    ```powershell
+    Remove-StorageSyncAllowedServerEndpointPath -Path <path>
+    ```  
 ## <a name="agent-version-11100"></a>11.1.0.0 för agent version
 Följande viktig information gäller version 11.1.0.0 av Azure File Sync agent (lanserades 4 november 2020).
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976766"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509056"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Undersök sensor identifieringar i enhets kartan
 
@@ -36,7 +36,7 @@ Följande verktyg används för att arbeta i kartan.
 
 Användar rollen avgör vilka verktyg som är tillgängliga i enhets kartans fönster. Mer information om användar roller finns i [skapa och hantera användare](how-to-create-and-manage-users.md) .
 
-| Symbol | Beskrivning |
+| Symbol | Description |
 |---|---|
 | :::image type="icon" source="media/how-to-work-with-maps/search-bar-icon-v2.png" border="false":::| Sök efter IP-adress eller MAC-adress för en speciell enhet. Ange IP-adressen eller MAC-adressen i text rutan. Kartan visar den enhet som du sökte efter med enheter som är anslutna till den. |
 | Grupp markering och filter <br /> :::image type="content" source="media/how-to-work-with-maps/group-highlight-and-filters-v2.png" alt-text="Skärm bild av gruppens högdagrar och filter."::: | Filtrera eller markera kartan baserat på standard och anpassade enhets grupper. |
@@ -63,7 +63,7 @@ Figuren nedan visar ett minimerat IT-undernät med 27-nätverks element.
 
 Så här aktiverar du funktionen för att dölja IT-nätverk:
 
-- I fönstret systeminställning kontrollerar du att funktionen IT-nätverk är aktive rad.
+- I fönstret **Systeminställningar** kontrollerar du att grupperings funktionen växla IT-nätverk är aktive rad.
 
 :::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="System inställnings fönster":::
 
@@ -76,7 +76,7 @@ Expandera ett IT-undernät:
 
    :::image type="content" source="media/how-to-work-with-maps/subnet-list.png" alt-text="Konfiguration av undernät":::
 
-2. I fönstret Redigera undernäts konfiguration rensar du ICS-undernätet för varje undernät som du vill definiera som ett IT-undernät. IT-undernätet visas minimerat i enhets kartan med meddelanden om ICS-enheter, till exempel en kontrollant eller PLC, i IT-nätverk.
+2. I fönstret **Redigera undernäts konfiguration** avmarkerar du kryss rutan **ICS-undernät** för varje undernät som du vill definiera som ett IT-undernät. IT-undernätet visas minimerat i enhets kartan med meddelanden om ICS-enheter, till exempel en kontrollant eller PLC, i IT-nätverk.
 
    :::image type="content" source="media/how-to-work-with-maps/edit-config.png" alt-text="Redigera undernät-konfiguration":::
 
@@ -106,31 +106,32 @@ Ikonen komprimera uppdateras med det uppdaterade antalet expanderade under nät.
 
 ## <a name="view-or-highlight-device-groups"></a>Visa eller markera enhets grupper
 
-Du kan anpassa kart visningen baserat på enhets grupper. Till exempel grupper av enheter som är associerade med ett angivet VLAN eller undernät. Fördefinierade grupper är tillgängliga och anpassade grupper kan skapas.
+Du kan anpassa kart visningen baserat på enhets grupper. Till exempel grupper av enheter som är associerade med ett speciellt nätverks protokoll, VLAN eller undernät. Fördefinierade grupper är tillgängliga och anpassade grupper kan skapas.
 
 Visa grupper efter:
 
   - **Markering:** Markera de enheter som tillhör en speciell grupp i blått.
 
-  - **Filtrering:** Visa endast enheter på kartan som tillhör en speciell grupp.
+  - **Filtrering:** Visa endast enheter som tillhör en speciell grupp.
 
 :::image type="content" source="media/how-to-work-with-maps/port-standard.png" alt-text="Standardvy för porten":::
 
 Följande fördefinierade grupper är tillgängliga:
 
-| Gruppnamn | Beskrivning |
+| Gruppnamn | Description |
 |--|--|
-| **Kända program eller portar som inte är standard (standard)** | Enheter som använder reserverade portar, till exempel TCP. Enheter som använder andra portar än standard portar eller portar som inte har tilldelats ett alias. |
-| **Överliggande protokoll (standard)** | Enheter som hanterar den andra trafiken. |
-| **Auktorisering (standard)** | Enheter som identifierades i nätverket under inlärnings processen eller som officiellt har lagts till i nätverket |
+| **Kända program** | Enheter som använder reserverade portar, till exempel TCP.  |
+| **portar som inte är standard (standard)** | Enheter som använder andra portar än standard portar eller portar som inte har tilldelats ett alias. |
+| **Överliggande protokoll (standard)** | Enheter som hanterar känd trafik. |
+| **Auktorisering (standard)** | Enheter som har identifierats i nätverket under inlärnings processen eller officiellt auktoriserats i nätverket. |
 | **Enhets inventerings filter** | Enheter grupperade enligt de filter som sparas i enhets inventerings tabellen. |
 | **Avsöknings intervall** | Enheter grupperade efter avsöknings intervall. Avsöknings intervallen genereras automatiskt enligt cykliska kanaler eller punkter. Till exempel 15,0 sekunder, 3,0 sekunder, 1,5 sekunder eller intervall. Genom att granska den här informationen kan du lära dig om system avsökers för snabbt eller långsamt. |
-| **Programmeringsspråk** | Teknik stationer och programmerade styrenheter |
+| **Programmeringsspråk** | Teknik stationer och programmerings datorer. |
 | **Undernät** | Enheter som tillhör ett speciellt undernät. |
 | **LOKALT** | Enheter som är associerade med ett angivet VLAN-ID. |
-| **Anslutning mellan undernät** | Enheter som är associerade med anslutning mellan undernät. |
+| **Anslutningar mellan undernät** | Enheter som kommunicerar från ett undernät till ett annat undernät. |
 | **Fästa aviseringar** | Enheter som användaren har fäst en avisering för. |
-| **Simuleringar av attack vektor** | Sårbara enheter identifierade i angrepps vektor rapporter. För att kunna visa dessa enheter på kartan markerar du kryss rutan **Visa i enhets karta** när du genererar angrepps vektorn. :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Lägga till simuleringar för attack vektor"::: |
+| **Simuleringar av attack vektor** | Sårbara enheter identifierade i angrepps vektor rapporter. För att kunna visa dessa enheter på kartan markerar du kryss rutan **Visa i enhets karta** när du genererar angrepps vektorn. :::image type="content" source="media/how-to-work-with-maps/add-attack-v2.png" alt-text="Lägg till simuleringar av attack vektor":::. |
 | **Senast observerad** | Enheter grupperade efter den tidsram som senast setts, t. ex. en timme, sex timmar, en dag, sju dagar. |
 | **Inte i Active Directory** | Alla icke-PLC-enheter som inte kommunicerar med Active Directory. |
 
@@ -142,7 +143,7 @@ För att markera eller filtrera enheter:
 
 3. I fönstret grupper väljer du den grupp som du vill markera eller filtrera enheter.
 
-4. Välj **Markera** eller **filtrera**.
+4. Välj **Markera** eller **filtrera**. Markera samma markering om du vill ta bort markeringen eller filtret.
 
 ## <a name="define-custom-groups"></a>Definiera anpassade grupper
 
@@ -155,20 +156,20 @@ Så här skapar du en grupp:
 
 1. Välj **enheter** på menyn på sidan. Enhets kartan visas.
 
-2. Välj :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="grupp inställning"::: för att Visa grupp inställningarna.
+1. Välj :::image type="content" source="media/how-to-work-with-maps/menu-icon.png" alt-text="grupp inställning"::: för att Visa grupp inställningarna.
 
-3. Välj :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="grupper"::: för att skapa en ny anpassad grupp.
+1. Välj :::image type="content" source="media/how-to-work-with-maps/create-group-v2.png" alt-text="grupper"::: för att skapa en ny anpassad grupp.
 
 :::image type="content" source="media/how-to-work-with-maps/custom-group-v2.png" alt-text="Skapa en anpassad grupp skärm":::
 
-4. Lägg till namnet på gruppen och Använd upp till 30 tecken.
+1. Lägg till namnet på gruppen och Använd upp till 30 tecken.
 
-5. Välj relevanta enheter enligt följande:
+1. Välj relevanta enheter enligt följande:
 
    - Lägg till enheterna från den här menyn genom att välja dem i listan (Välj på pilknappen)<br /> Eller: <br /> 
    - Lägg till enheterna från den här menyn genom att kopiera dem från en vald grupp (Välj på pilknappen)
 
-6. Välj **Lägg till grupp**.
+1. Välj **Lägg till grupp** för att lägga till befintliga grupper i anpassade grupper.
 
 ### <a name="add-devices-to-a-custom-group"></a>Lägga till enheter i en anpassad grupp
 
@@ -176,13 +177,13 @@ Du kan lägga till enheter i en anpassad grupp eller skapa en ny anpassad grupp 
 
 1. Högerklicka på en eller flera enheter på kartan.
 
-2. Välj **Lägg till i grupp**.
+1. Välj **Lägg till i grupp**.
 
-3. Ange ett grupp namn i fältet grupp och välj +. Den nya gruppen visas. Om gruppen redan finns kommer den att läggas till i den befintliga anpassade gruppen.
+1. Ange ett grupp namn i fältet grupp och välj +. Den nya gruppen visas. Om gruppen redan finns kommer den att läggas till i den befintliga anpassade gruppen.
 
    :::image type="content" source="media/how-to-work-with-maps/groups-section-v2.png" alt-text="Gruppnamn":::
 
-4. Lägg till enheter i en grupp genom att upprepa steg 1-3.
+1. Lägg till enheter i en grupp genom att upprepa steg 1-3.
 
 ## <a name="map-zoom-views"></a>Mappar med zoomnings läge
 
@@ -266,7 +267,7 @@ Det finns en mängd olika verktyg för att lära dig mer om enheter som utgör e
 
 Följande etiketter och indikatorer kan visas på enheter på kartan:
 
-| Enhets etikett | Beskrivning |
+| Enhets etikett | Description |
 |--|--|
 | :::image type="content" source="media/how-to-work-with-maps/host-v2.png" alt-text="IP-värdnamn"::: | IP-adressens värdnamn och IP-adress eller undernäts adresser |
 | :::image type="content" source="media/how-to-work-with-maps/amount-alerts-v2.png" alt-text="Antal aviseringar"::: | Antal aviseringar som är associerade med enheten |
@@ -312,24 +313,24 @@ Följande information kan uppdateras manuellt. Information som anges manuellt å
 
   - Purdue-skikt
 
-  - Beskrivning
+  - Description
 
 | Objekt | Beskrivning |
 |--|--|
 | Grundläggande information | Den grundläggande information som krävs. |
-| Namn | Enhetens namn. <br /> Sensorn identifierar som standard enhets namnet som det definieras i nätverket. Till exempel ett namn som definierats i DNS-servern. <br /> Om inga sådana namn har definierats visas enhetens IP-adress i det här fältet. <br /> Du kan ändra ett enhets namn manuellt. Ge dina enheter meningsfulla namn som återspeglar deras funktioner. |
+| Name | Enhetens namn. <br /> Sensorn identifierar som standard enhets namnet som det definieras i nätverket. Till exempel ett namn som definierats i DNS-servern. <br /> Om inga sådana namn har definierats visas enhetens IP-adress i det här fältet. <br /> Du kan ändra ett enhets namn manuellt. Ge dina enheter meningsfulla namn som återspeglar deras funktioner. |
 | Typ | Enhets typen som identifierades av sensorn. <br /> Mer information finns i [Visa enhets typer](#view-device-types). |
-| Leverantör | Enhets leverantören. |
-| Operativsystem | Enhetens operativ system. |
+| Leverantör | Enhets leverantören. Detta bestäms av de inledande tecknen i enhetens MAC-adress. Det här fältet är skrivskyddat. |
+| Operativsystem | Enhetens operativ system identifierat av sensorn. |
 | Purdue-skikt | Det Purdue-skikt som identifieras av sensorn för den här enheten, inklusive: <br /> -Automatisk <br /> -Process kontroll <br /> – Övervakare <br /> – Enterprise |
-| Beskrivning | Ett fritext fält. <br /> Lägg till mer information om enheten. |
+| Description | Ett fritext fält. <br /> Lägg till mer information om enheten. |
 | Attribut | Eventuell ytterligare information som identifierades om enheten under inlärnings perioden och som inte tillhör andra kategorier visas i avsnittet attribut. <br /> Informationen är RO. |
-| Inställningar | Du kan ändra enhets inställningarna manuellt för att förhindra falska positiva identifieringar: <br /> - **Auktoriserad enhet**: under inlärnings perioden identifieras alla enheter som identifieras i nätverket som auktoriserade enheter. När en enhet identifieras efter inlärnings perioden visas den som en oauktoriserad enhet som standard. Du kan ändra den här definitionen manuellt. <br /> - **Kallas skanner**: aktivera det här alternativet om du vet att enheten är känd som skanner och det inte finns något behov av att varna dig om den. <br /> - **Programmerings enhet**: aktivera det här alternativet om du vet att enheten är känd som en programmerings enhet och det inte finns något behov av att varna dig om den. |
+| Inställningar | Du kan ändra enhets inställningarna manuellt för att förhindra falska positiva identifieringar: <br /> - **Auktoriserad enhet**: under inlärnings perioden identifieras alla enheter som identifieras i nätverket som auktoriserade enheter. När en enhet identifieras efter inlärnings perioden visas den som en oauktoriserad enhet som standard. Du kan ändra den här definitionen manuellt. <br /> - **Kallas skanner**: aktivera det här alternativet om du vet att enheten är känd som skanner och det inte finns något behov av att varna dig om den. <br /> - **Programmerings enhet**: aktivera det här alternativet om du vet att den här enheten kallas en programmerings enhet och används för att göra programmerings ändringar. Att identifiera det som en programmerings enhet förhindrar aviseringar för programmerings ändringar från den här till gången. |
 | Anpassade grupper | De anpassade grupperna i enhets kartan där enheten ingår. |
-| Tillstånd | Enhetens säkerhet och status för auktorisering: <br /> -Statusen är `Secured` när det inte finns några aviseringar <br /> – När det finns aviseringar om enheten visas antalet aviseringar <br /> – Statusen `Unauthorized` visas för enheter som har lagts till i nätverket efter inlärnings perioden. Du kan definiera enheten manuellt som `Authorized Device` i inställningarna <br /> – Om den här enhetens adress definieras som en dynamisk adress `DHCP` läggs den till i status. |
+| Stat | Enhetens säkerhet och status för auktorisering: <br /> -Statusen är `Secured` när det inte finns några aviseringar <br /> – När det finns aviseringar om enheten visas antalet aviseringar <br /> – Statusen `Unauthorized` visas för enheter som har lagts till i nätverket efter inlärnings perioden. Du kan definiera enheten manuellt som `Authorized Device` i inställningarna <br /> – Om den här enhetens adress definieras som en dynamisk adress `DHCP` läggs den till i status. |
 
 
-| Nätverk | Beskrivning |
+| Nätverk | Description |
 |--|--|
 | Gränssnitt | Enhetens gränssnitt. Ett RO-fält. |
 | Protokoll | De protokoll som används av enheten. Ett RO-fält. |
@@ -369,7 +370,7 @@ Så här visar du enhets informationen:
 
 2. Högerklicka på en enhet och välj **Visa egenskaper**. Enhets Fönstret Egenskaper visas.
 
-3. Välj den begärda aviseringen längst ned i det här fönstret om du vill visa detaljerad information om aviseringar för den här enheten.
+3. Välj den avisering som krävs om du vill visa detaljerad information om aviseringar för den här enheten.
 
 ### <a name="backplane-properties"></a>Egenskaper för bakplan
 
@@ -429,7 +430,7 @@ Förbättra data utredning genom att Visa programmerings händelser som utförs 
 
 Du kan visa en programmerad enhet och bläddra igenom olika programmerings ändringar som utförs på den av andra enheter.
 
-Visa kod som har lagts till, ändrats eller tagits bort eller som inte har ändrats av programmerings enheten. Sök efter programmerings ändringar baserat på filtyper, datum eller tider av intresse.
+Visa kod som har lagts till, ändrats, tagits bort eller laddats om av programmerings enheten. Sök efter programmerings ändringar baserat på filtyper, datum eller tider av intresse.
 
 ### <a name="when-to-review-programming-activity"></a>När du ska granska programmerings aktivitet 
 
@@ -443,7 +444,7 @@ Du kan behöva granska programmerings aktivitet:
 
 :::image type="content" source="media/how-to-work-with-maps/differences.png" alt-text="Program ändrings logg":::
 
-Med ytterligare alternativ kan du:
+Med andra alternativ kan du:
 
   - Markera händelser av intresse med en stjärna.
 
@@ -476,7 +477,7 @@ Aviseringar utlöses när obehöriga programmerings enheter utför programmering
 :::image type="content" source="media/how-to-work-with-maps/unauthorized.png" alt-text="Obehöriga programmerings aviseringar":::
 
 > [!NOTE]
-> Du kan också visa grundläggande information om programmering i enhets Fönstret Egenskaper och enhets inventering. Se [information om enhets programmering: ytterligare platser](#device-programming-information-additional-locations) för mer information.
+> Du kan också visa grundläggande information om programmering i enhets Fönstret Egenskaper och enhets inventering.
 
 ### <a name="working-in-the-programming-timeline-window"></a>Arbeta i tids linje fönstret för programmering
 
@@ -488,7 +489,7 @@ I det här avsnittet beskrivs hur du visar programfiler och jämför versioner. 
 
 :::image type="content" source="media/how-to-work-with-maps/timeline-view.png" alt-text="tids linje fönster för programmering":::
 
-|Tids linje typ för programmering | Beskrivning |
+|Tids linje typ för programmering | Description |
 |--|--|
 | Programmerad enhet | Innehåller information om den enhet som har programmerats, inklusive värdnamn och fil. |
 | Senaste händelser | Visar de 50 senaste händelserna som identifierats av sensorn. <br />För att markera en händelse, Hovra över den och klicka på stjärnan. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> De senaste 50 händelserna kan visas. |
@@ -539,11 +540,11 @@ Att jämföra:
 
 5. Filen som väljs från fönstret senaste händelser/filer visas alltid till höger.
 
-### <a name="device-programming-information-additional-locations"></a>Information om enhets programmering: ytterligare platser
+### <a name="device-programming-information-other-locations"></a>Information om enhets programmering: andra platser
 
 Förutom att granska information i tids linjen för programmering, kan du komma åt programmerings information i enhets Fönstret Egenskaper och enhets inventeringen.
 
-| Enhetstyp | Beskrivning |
+| Enhetstyp | Description |
 |--|--|
 | Enhetsegenskaper | Fönstret enhets egenskaper innehåller information om den senaste programmerings händelsen som identifierats på device\. :::image type="content" source="media/how-to-work-with-maps/information-from-device-v2.png" alt-text="Enhetens egenskaper"::: |
 | Enhets inventeringen | Enhets inventeringen visar om enheten är en programmerings device\. :::image type="content" source="media/how-to-work-with-maps/inventory-v2.png" alt-text="Inventering av enheter"::: |
@@ -556,7 +557,7 @@ Sensorn uppdaterar eller påverkar inte enheter direkt i nätverket. Ändringar 
 
 Du kanske vill ta bort en enhet om den information som har lärts inte är relevant. Exempel:
 
-  - En partner entreprenör vid en teknisk arbets Station ansluter för att utföra konfigurations uppdateringar. När uppgiften har slutförts bör enheten inte längre övervakas.
+  - En partner entreprenör vid en teknisk arbets Station ansluter tillfälligt för att utföra konfigurations uppdateringar. Enheten tas bort när uppgiften har slutförts.
 
   - På grund av ändringar i nätverket är vissa enheter inte längre anslutna.
 
@@ -566,7 +567,7 @@ Du kan få en avisering som anger att enheten inte svarar om en annan enhet för
 
 Enheten tas bort från enhets kartan, enhets inventeringen och data utvinnings rapporterna. Annan information, till exempel: information som lagras i widgetar kommer att behållas.
 
-Enheten måste vara aktiv i minst 10 minuter för att ta bort den.
+Enheten måste vara inaktiv i minst 10 minuter för att ta bort den.
 
 Så här tar du bort en enhet från enhets kartan:
 
@@ -576,15 +577,17 @@ Så här tar du bort en enhet från enhets kartan:
 
 ### <a name="merge-devices"></a>Slå samman enheter
 
-Under vissa omständigheter kan du behöva slå samman enheter. Detta kan krävas om sensorn identifierade separata nätverks enheter som är en unik enhet. Exempel:
+Under vissa omständigheter kan du behöva slå samman enheter. Detta kan krävas om sensorn identifierade separata nätverks enheter som är associerade med en unik enhet. Exempel:
 
-  - En PLC med fyra nätverkskort
+  - En PLC med fyra nätverkskort.
 
-  - En bärbar dator med WIFI och fysiskt kort
+  - En bärbar dator med WIFI och fysiskt kort.
+  
+  - En arbets station med två eller flera nätverkskort.
 
 Vid sammanslagning instruerar du sensorn att kombinera enhets egenskaperna för två enheter till en. När du gör det uppdateras enhets Fönstret Egenskaper och sensor rapporter med den nya informationen om enhets egenskaper.
 
-Om du till exempel sammanfogar två enheter med en IP-adress visas båda IP-adresserna som separata gränssnitt i enhets Fönstret Egenskaper. Du kan endast sammanfoga auktoriserade enheter.
+Om du till exempel kopplar två enheter, var och en med en IP-adress, visas båda IP-adresserna som separata gränssnitt i enhetens Fönstret Egenskaper. Du kan endast sammanfoga auktoriserade enheter.
 
 :::image type="content" source="media/how-to-work-with-maps/device-properties-v2.png" alt-text="Enhets Fönstret Egenskaper":::
 
@@ -596,7 +599,7 @@ Det går inte att ångra en enhets sammanslagning. Om du av misstag har sammanfo
 
 Så här sammanfogar du enheter:
 
-1. Välj två enheter och högerklicka på en av dem.
+1. Välj två enheter (shift-klicka) och högerklicka sedan på en av dem.
 
 2. Välj **sammanfoga** för att sammanfoga enheterna. Det kan ta upp till 2 minuter att slutföra sammanslagningen.
 
@@ -622,7 +625,7 @@ Om du flyttar en enhet på kartan eller ändrar enhets egenskaperna manuellt, `N
 
 #### <a name="unauthorized-devices---attack-vectors-and-risk-assessment-reports"></a>Obehöriga enheter – angrepps vektorer och risk utvärderings rapporter
 
-Oauktoriserade enheter beräknas i rapporter om riskhantering och angrepps vektorer.
+Otillåtna enheter ingår i rapporter om riskhantering och angrepps vektorer.
 
 - **Angrepps vektor rapporter:** Enheter som har marker ATS som otillåtna löses i angrepps vektorn som misstänkta falska enheter som kan vara ett hot mot nätverket.
 

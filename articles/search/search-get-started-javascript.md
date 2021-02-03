@@ -8,14 +8,14 @@ ms.author: delegenz
 ms.devlang: javascript
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/26/2020
+ms.date: 02/02/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7d31201f9d1a4519538aba3ac57ddfd340d936d1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498990"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509409"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Snabb start: skapa ett Azure Kognitiv sökning-index med hjälp av Java Script SDK
 > [!div class="op_single_selector"]
@@ -169,7 +169,7 @@ Med det på plats är vi redo att skapa ett index.
 
 ## <a name="1---create-index"></a>1 – Skapa index 
 
-Skapa en fil **hotels_quickstart_index.jspå**.  Den här filen definierar hur Azure Kognitiv sökning fungerar med de dokument som ska läsas in i nästa steg. Varje fält identifieras av en `name` och har en angiven `type` . Varje fält har också en serie med indexfiler som anger om Azure Kognitiv sökning kan söka, filtrera, sortera och fasett vid fältet. De flesta fält är enkla data typer, men vissa, som `AddressType` är komplexa typer, som gör att du kan skapa omfattande data strukturer i ditt index.  Du kan läsa mer om [vilka data typer](/rest/api/searchservice/supported-data-types) och [index-attribut](./search-what-is-an-index.md#index-attributes)som stöds. 
+Skapa en fil **hotels_quickstart_index.jspå**.  Den här filen definierar hur Azure Kognitiv sökning fungerar med de dokument som ska läsas in i nästa steg. Varje fält identifieras av en `name` och har en angiven `type` . Varje fält har också en serie med indexfiler som anger om Azure Kognitiv sökning kan söka, filtrera, sortera och fasett vid fältet. De flesta fält är enkla data typer, men vissa, som `AddressType` är komplexa typer, som gör att du kan skapa omfattande data strukturer i ditt index.  Du kan läsa mer om [vilka data typer](/rest/api/searchservice/supported-data-types) och index-attribut som beskrivs i [skapa index (rest)](/rest/api/searchservice/create-index). 
 
 Lägg till följande för att **hotels_quickstart_index.jspå** eller [Ladda ned filen](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json). 
 

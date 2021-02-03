@@ -4,6 +4,15 @@
   items:
     - name: Vad är Virtual WAN?
       href: virtual-wan-about.md
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: ARM-mallar
+      expanded: true
+      items:
+        - name: All-till-valfri routning
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
 - name: Självstudier
   expanded: true
   items:

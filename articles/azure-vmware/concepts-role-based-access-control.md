@@ -3,12 +3,12 @@ title: Koncept – vSphere-rollbaserad åtkomst kontroll (vSphere RBAC)
 description: Lär dig mer om de viktigaste funktionerna i vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösning
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6f5c30b070b010f312d038d8286be994039c56f8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888410"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509256"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere-rollbaserad åtkomst kontroll (vSphere RBAC) för Azure VMware-lösning
 
@@ -23,9 +23,6 @@ I en distribution av Azure VMware-lösningar har administratören inte åtkomst 
 
 Det privata molnets användare har inte åtkomst till och kan inte konfigurera vissa hanterings komponenter som stöds och hanteras av Microsoft. Till exempel kluster, värdar, data lager och distribuerade virtuella växlar.
 
-
-
-
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>CloudAdmin-rollen för Azure VMware-lösningen på vCenter
 
 Du kan visa de behörigheter som har tilldelats Azure VMware-lösningen CloudAdmin-rollen i Azure VMware-lösningen privat moln vCenter.
@@ -38,7 +35,7 @@ Du kan visa de behörigheter som har tilldelats Azure VMware-lösningen CloudAdm
 
 CloudAdmin-rollen i Azure VMware-lösningen har följande behörigheter på vCenter. I [produkt dokumentationen för VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) hittar du en detaljerad förklaring av varje behörighet.
 
-| Privilege | Beskrivning |
+| Privilege | Description |
 | --------- | ----------- |
 | **Larm** | Bekräfta larm<br />Skapa alarm<br />Inaktivera alarm åtgärd<br />Ändra alarm<br />Ta bort alarm<br />Ange alarm status |
 | **Behörigheter** | Ändra behörigheter |
@@ -63,7 +60,11 @@ CloudAdmin-rollen i Azure VMware-lösningen har följande behörigheter på vCen
 
 ## <a name="next-steps"></a>Nästa steg
 
-I [produkt dokumentationen för VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) hittar du en detaljerad förklaring av varje behörighet.
+Nu när du har täckt grunderna i vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösningen kanske du vill lära dig mer om:
+
+- Information om varje behörighet finns i [produkt dokumentationen för VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html).
+- [Hur Azure VMware-lösningen övervakar och reparerar privata moln](concepts-monitor-repair-private-cloud.md).
+- [Så här aktiverar du Azure VMware-lösnings resurser](enable-azure-vmware-solution.md).
 
 <!-- LINKS - internal -->
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b35851bae8db39392d10a302d5f1059ba3ace696
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621222"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508768"
 ---
 # <a name="manage-individual-sensors"></a>Hantera enskilda sensorer
 
@@ -367,9 +367,9 @@ Så här ändrar du namnet:
 
 1. Ta bort sensorn från fönstret **sensor hantering** .
 
-1. Registrera med det nya namnet.
+1. Registrera igen med det nya namnet.
 
-1. Hämta och ny aktiverings fil.
+1. Hämta den nya aktiverings filen.
 
 1. Logga in på sensorn och överför den nya aktiverings filen.
 
@@ -504,7 +504,7 @@ I konsolen visas återställnings problem.
 
 Följande procedur beskriver hur du uppdaterar en fristående sensor med hjälp av sensor konsolen. Uppdaterings processen tar cirka 30 minuter.
 
-1. Öppna [Azure-portalen](https://portal.azure.com/).
+1. Gå till [Azure-portalen](https://portal.azure.com/).
 
 2. Gå till Defender för IoT.
 

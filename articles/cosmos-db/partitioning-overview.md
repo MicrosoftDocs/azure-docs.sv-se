@@ -6,21 +6,21 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080840"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507426"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionering och horisontell skalning i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB använder partitionering för att skala enskilda behållare i en databas för att uppfylla ditt programs prestanda behov. I partitionering är objekten i en behållare indelade i distinkta del mängder som kallas *logiska partitioner* . Logiska partitioner skapas baserat på värdet för en *partitionsnyckel* som är associerad med varje objekt i en behållare. Alla objekt i en logisk partition har samma partitionerings nyckel värde.
+Azure Cosmos DB använder partitionering för att skala enskilda behållare i en databas för att uppfylla ditt programs prestanda behov. I partitionering är objekten i en behållare indelade i distinkta del mängder som kallas *logiska partitioner*. Logiska partitioner skapas baserat på värdet för en *partitionsnyckel* som är associerad med varje objekt i en behållare. Alla objekt i en logisk partition har samma partitionerings nyckel värde.
 
 Till exempel innehåller en behållare objekt. Varje objekt har ett unikt värde för `UserID` egenskapen. Om `UserID` fungerar som partitionsnyckel för objekten i behållaren och det finns 1 000 unika `UserID` värden, skapas 1 000 logiska partitioner för behållaren.
 
-Förutom en partitionsnyckel som avgör objektets logiska partition, har varje objekt i en behållare ett *objekt-ID* (unikt inom en logisk partition). Genom att kombinera partitionsnyckel och *objekt-ID* skapas objektets *index* , vilket unikt identifierar objektet. [Att välja en partitionsnyckel](#choose-partitionkey) är ett viktigt beslut som påverkar programmets prestanda.
+Förutom en partitionsnyckel som avgör objektets logiska partition, har varje objekt i en behållare ett *objekt-ID* (unikt inom en logisk partition). Genom att kombinera partitionsnyckel och *objekt-ID* skapas objektets *index*, vilket unikt identifierar objektet. [Att välja en partitionsnyckel](#choose-partitionkey) är ett viktigt beslut som påverkar programmets prestanda.
 
 Den här artikeln förklarar förhållandet mellan logiska och fysiska partitioner. Den innehåller också metod tips för partitionering och ger en djupgående vy med hur horisontell skalning fungerar i Azure Cosmos DB. Du behöver inte känna till dessa interna uppgifter för att välja partitionsnyckel, men vi har täckt dem så att du har klarhet om hur Azure Cosmos DB fungerar.
 
@@ -36,10 +36,13 @@ Det finns ingen gräns för antalet logiska partitioner i din behållare. Varje 
 
 En behållare skalas genom att distribuera data och data flöde över fysiska partitioner. Internt mappas en eller flera logiska partitioner till en enda fysisk partition. Normalt har mindre behållare flera logiska partitioner, men de behöver bara en enda fysisk partition. Till skillnad från logiska partitioner är fysiska partitioner en intern implementering av systemet och de hanteras helt av Azure Cosmos DB.
 
-Antalet fysiska partitioner i din behållare beror på följande konfiguration:
+Antalet fysiska partitioner i din behållare är beroende av följande:
 
 * Antalet allokerade data flöde (varje enskild fysisk partition kan tillhandahålla ett data flöde på upp till 10 000 enheter för programbegäran per sekund).
 * Den totala data lagringen (varje enskild fysisk partition kan lagra upp till 50 GB data).
+
+> [!NOTE]
+> Fysiska partitioner är en intern implementering av systemet och de hanteras helt av Azure Cosmos DB. När du utvecklar dina lösningar bör du inte fokusera på fysiska partitioner eftersom du inte kan styra dem i stället för att fokusera på dina partitionsnyckel. Om du väljer en partitionsnyckel som jämnt distribuerar data flödes förbrukningen mellan logiska partitioner, ser du till att data flödes förbrukningen över fysiska partitioner är balanserade.
 
 Det finns ingen gräns för det totala antalet fysiska partitioner i din behållare. När det etablerade data flödet eller data storleken ökar, skapar Azure Cosmos DB automatiskt nya fysiska partitioner genom att dela befintliga. Delning av fysiska partitioner påverkar inte programmets tillgänglighet. Efter delningen av den fysiska partitionen kommer alla data i en enda logisk partition fortfarande att lagras på samma fysiska partition. En fysisk partitions delning skapar helt enkelt en ny mappning av logiska partitioner till fysiska partitioner.
 
@@ -49,12 +52,9 @@ Du kan se behållarens fysiska partitioner i **lagrings** avsnittet på **bladet
 
 :::image type="content" source="./media/partitioning-overview/view-partitions-zoomed-out.png" alt-text="Visa antal fysiska partitioner" lightbox="./media/partitioning-overview/view-partitions-zoomed-in.png" ::: 
 
-I skärm bilden ovan har en behållare `/foodGroup` samma nyckel som partitionsnyckel. Var och en av de tre staplarna i diagrammet representerar en fysisk partition. I avbildningen är **partitionerings nyckel intervallet** detsamma som en fysisk partition. Den valda fysiska partitionen innehåller tre logiska partitioner: `Beef Products` , `Vegetable and Vegetable Products` och `Soups, Sauces, and Gravies` .
+I skärm bilden ovan har en behållare `/foodGroup` samma nyckel som partitionsnyckel. Var och en av de tre staplarna i diagrammet representerar en fysisk partition. I avbildningen är **partitionerings nyckel intervallet** detsamma som en fysisk partition. Den valda fysiska partitionen innehåller de tre viktigaste logiska partitionerna: `Beef Products` , `Vegetable and Vegetable Products` och `Soups, Sauces, and Gravies` .
 
 Om du etablerar ett data flöde med 18 000-enheter för programbegäran per sekund (RU/s) kan var och en av de tre fysiska partitionerna använda 1/3 av det totala etablerade data flödet. I den valda fysiska partitionen, kan de logiska partitionernas nycklar `Beef Products` , `Vegetable and Vegetable Products` och `Soups, Sauces, and Gravies` kan gemensamt, använda den fysiska partitionens 6 000 etablerade ru/s. Eftersom det etablerade data flödet är jämnt delat över din behållares fysiska partitioner, är det viktigt att välja en partitionsnyckel som jämnt distribuerar data flödes förbrukningen genom [att välja rätt logisk partitionsnyckel](#choose-partitionkey). 
-
-> [!NOTE]
-> Om du väljer en partitionsnyckel som jämnt distribuerar data flödes förbrukningen mellan logiska partitioner, ser du till att data flödes förbrukningen över fysiska partitioner är balanserade.
 
 ## <a name="managing-logical-partitions"></a>Hantera logiska partitioner
 
@@ -74,11 +74,11 @@ Vanligt vis kräver mindre behållare bara en enda fysisk partition, men de komm
 
 Följande bild visar hur logiska partitioner mappas till fysiska partitioner som distribueras globalt:
 
-:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Visa antal fysiska partitioner" border="false":::
+:::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="En bild som visar Azure Cosmos DB partitionering" border="false":::
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Välja en partitionsnyckel
 
-En partitionsnyckel har två komponenter: **sökväg till partitionsnyckel** och nyckel **värde för partition** . Anta till exempel att du väljer ett objekt {"userId": "Anders", "worksFor": "Microsoft"} om du väljer "userId" som partitionsnyckel är följande de två partitionens nyckel komponenter:
+En partitionsnyckel har två komponenter: **sökväg till partitionsnyckel** och nyckel **värde för partition**. Anta till exempel att du väljer ett objekt {"userId": "Anders", "worksFor": "Microsoft"} om du väljer "userId" som partitionsnyckel är följande de två partitionens nyckel komponenter:
 
 * Sökvägen till partitionsnyckel (till exempel: "/userId"). Sökvägen till partitionsnyckel accepterar alfanumeriska tecken och under streck (_). Du kan också använda kapslade objekt med standard Sök vägs notation (/).
 
@@ -114,20 +114,20 @@ Om din behållare kan växa till fler än ett fåtal fysiska partitioner, bör d
 
 ## <a name="using-item-id-as-the-partition-key"></a>Använda objekt-ID som partitionsnyckel
 
-Om din behållare har en egenskap som har ett brett utbud av möjliga värden, är det troligt vis ett utmärkt partitionerings nyckel val. Ett möjligt exempel på en sådan egenskap är *objekt-ID* . För små Read-tung containrar eller Write-tungt behållare i valfri storlek är *objekt-ID: t* naturligt ett bra val för partitionsnyckel.
+Om din behållare har en egenskap som har ett brett utbud av möjliga värden, är det troligt vis ett utmärkt partitionerings nyckel val. Ett möjligt exempel på en sådan egenskap är *objekt-ID*. För små Read-tung containrar eller Write-tungt behållare i valfri storlek är *objekt-ID: t* naturligt ett bra val för partitionsnyckel.
 
-Systemets egenskaps *objekt-ID* finns i varje objekt i din behållare. Du kan ha andra egenskaper som representerar ett logiskt ID för ditt objekt. I många fall är dessa också fantastiska partitionsalternativ av olika anledningar som *objekt-ID* .
+Systemets egenskaps *objekt-ID* finns i varje objekt i din behållare. Du kan ha andra egenskaper som representerar ett logiskt ID för ditt objekt. I många fall är dessa också fantastiska partitionsalternativ av olika anledningar som *objekt-ID*.
 
 *Objekt-ID* är ett bra partitionerings val av följande orsaker:
 
 * Det finns ett brett utbud av möjliga värden (ett unikt *objekt-ID* per objekt).
 * Eftersom det finns ett unikt *objekt-ID* per objekt, gör *objekt-ID: t* ett bra jobb till jämn balansering av ru-förbrukning och data lagring.
-* Du kan enkelt göra effektiva Poäng läsningar eftersom du alltid känner till ett objekts partitionsnyckel om du känner till dess *objekt-ID* .
+* Du kan enkelt göra effektiva Poäng läsningar eftersom du alltid känner till ett objekts partitionsnyckel om du känner till dess *objekt-ID*.
 
 Några saker att tänka på när du väljer *objekt-ID: t* som partitionsnyckel är:
 
-* Om *objekt-ID: t* är partitionsnyckel, blir det en unik identifierare i hela behållaren. Du kan inte ha objekt som har en dubblett av *objekt-ID* .
-* Om du har en Läs intensiv behållare som har många [fysiska partitioner](partitioning-overview.md#physical-partitions), blir frågorna mer effektiva om de har ett likhets filter med *objekt-ID* .
+* Om *objekt-ID: t* är partitionsnyckel, blir det en unik identifierare i hela behållaren. Du kan inte ha objekt som har en dubblett av *objekt-ID*.
+* Om du har en Läs intensiv behållare som har många [fysiska partitioner](partitioning-overview.md#physical-partitions), blir frågorna mer effektiva om de har ett likhets filter med *objekt-ID*.
 * Du kan inte köra lagrade procedurer eller utlösare över flera logiska partitioner.
 
 ## <a name="next-steps"></a>Nästa steg

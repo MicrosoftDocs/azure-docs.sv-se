@@ -3,12 +3,12 @@ title: Kontinuerlig video inspelning till molnet och uppspelningen från Cloud-s
 description: I den här självstudien får du lära dig hur du använder Azure Live Video Analytics på Azure IoT Edge för att kontinuerligt spela in video i molnet och strömma någon del av videon med hjälp av Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 2db59b9c2b2893cad9a613257b4b7c1bafe3e333
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 898e7a07007d50d848f78c32b8763bf727e4cdcb
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491612"
+ms.locfileid: "99508308"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Självstudie: kontinuerlig video inspelning till molnet och uppspelningen från molnet
 
@@ -183,7 +183,7 @@ När du använder live video analys i IoT Edge-modulen för att spela in direktu
 1. Gå till src/Cloud-to-Device-console-app/operations.jspå.
 1. Under noden **GraphTopologySet** redigerar du följande:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json" `
 1. Se sedan till att värdet för **topologyName** matchar värdet för egenskapen **Name** i föregående graf-topologi under **GraphInstanceSet** -och **GraphTopologyDelete** -noderna:
 
     `"topologyName" : "CVRToAMSAsset"`  

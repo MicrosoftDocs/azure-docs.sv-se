@@ -5,16 +5,16 @@ author: normesta
 ms.topic: how-to
 ms.author: normesta
 ms.reviewer: b-pauls
-ms.date: 11/06/2020
+ms.date: 11/17/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914447"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508937"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>Uppfylla kraven för krav på migrering med WANdisco LiveData-plattformen för Azure (för hands version)
 
@@ -34,7 +34,9 @@ Till skillnad från migrering av data _offline_ genom [att kopiera statisk infor
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Viktiga funktioner i WANdisco LiveData-plattformen för Azure
 
-[WANdisco livedata-plattformen för Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) använder sig av en unik lösnings motor för Wide Area Network-kapacitet för att uppnå data konsekvens och för att utföra datareplikering i stor skala medan program kan fortsätta att ändra data under replikeringen.  
+[WANdisco livedata-plattformen för Azure](https://docs.wandisco.com/live-data-platform/docs/landing/) använder sig av en unik lösnings motor för Wide Area Network-kapacitet för att uppnå data konsekvens och för att utföra datareplikering i stor skala medan program kan fortsätta att ändra data under replikeringen. <br><br>
+
+>[!VIDEO https://www.youtube.com/embed/KRrmcYPxEho] 
 
 Viktiga funktioner i plattformen är följande:
 
@@ -86,7 +88,9 @@ Storskalig migrering av lokala data från sjöar till Azure behöver program tes
 Se till att dina data är konsekventa i lokala Hadoop-kluster och Azure Storage med LiveData-planet för Azure efter den första migreringen:
 
 1. Etablera LiveData-plan för Azure lokalt och i Azure, från Azure Portal. Inga program ändringar krävs.
+
 2. Konfigurera regler för replikering som avser de data platser som du vill ska vara konsekventa, till exempel: `/user/contoso/sales/region/WA` .
+
 3. Kör program som har åtkomst till och ändrar data på valfri plats som ett Hadoop-kompatibelt fil system som du behöver.
 
 LiveData-planet för Azure ser till att dina data är konsekventa utan att det medför avsevärda kostnader för kluster drift eller program prestanda. Ändra eller mata in data medan alla ändringar replikeras konsekvent.

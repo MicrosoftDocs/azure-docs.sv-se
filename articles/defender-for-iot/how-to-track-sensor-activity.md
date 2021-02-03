@@ -1,5 +1,5 @@
 ---
-title: Spåra sensor aktivitet
+title: Spåra sensoraktivitet
 description: Händelsens tids linje visar en tids linje för aktivitet som identifierats i nätverket, inklusive aviseringar och aviserings hanterings åtgärder, nätverks händelser och användar åtgärder som användar inloggning och borttagning av användare.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3895e01b1fbfcde79ff91bd1eade8d902c33b852
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843033"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509107"
 ---
-# <a name="track-sensor-activity"></a>Spåra sensor aktivitet
+# <a name="track-sensor-activity"></a>Spåra sensoraktivitet
 
 ## <a name="event-timeline"></a>Händelse tids linje
 
@@ -59,15 +59,15 @@ Så här filtrerar du tids linjen:
 
 2. Ange händelse filter enligt följande:
 
-   - **Ta med adress**: Visa vissa händelse enheter.
+   - **Ta med adress**: Visa händelser för vissa enheter.
 
-   - **Undanta adress**: Dölj vissa händelse enheter.
+   - **Undanta adress**: Dölj händelser för vissa enheter.
 
    - **Inkludera händelse typer**: Visa vissa händelse typer.
 
    - **Exkludera händelse typer**: Dölj vissa händelse typer.
 
-   - **Enhets grupp**: Välj en enhets grupp, som den definierades i enhets kartan. Endast händelser för den här gruppen visas.
+   - **Enhets grupp**: Välj en enhets grupp, som den definierades i enhets kartan. Endast händelser från den här gruppen visas.
 
 3. Välj **Rensa alla** om du vill rensa alla markerade filter.
 
@@ -87,7 +87,7 @@ Så här filtrerar du tids linjen:
 
     - Välj **pcap-fil** för att ladda ned pcap-filen (om den finns) som innehåller en paket fångst av hela nätverket vid en angiven tidpunkt. 
     
-      PCAP-filen innehåller teknisk information som kan hjälpa tekniker att avgöra exakt var händelsen fanns och vad som händer där. Du kan analysera PCAP-filen med en analys av nätverks protokoll som Wireshark, ett kostnads fritt program.
+      PCAP-filen innehåller teknisk information som kan hjälpa nätverks ingenjörer att fastställa de exakta parametrarna för händelsen. Du kan analysera PCAP-filen med en analys av nätverks protokoll som Wireshark, ett program med öppen källkod.
 
 ## <a name="see-also"></a>Se även
 

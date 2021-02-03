@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f26f3e6e80bf854ff4f57503aa43de2558f07a1e
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: f59ebfdb1942c7eb9be6c2cf09e1ed677c3f22e3
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888563"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507684"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Klientbibliotek och REST-API:er
 
@@ -42,12 +42,12 @@ Publicerings platser för enskilda klient biblioteks paket beskrivs nedan.
 | Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Övrigt                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Gå via GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | E.t.      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Ej tillämpligt      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases/tag/1.0.0-beta.1)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
 | Administration | [npm](https://www.npmjs.com/package/@azure/communication-administration)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Administration)    | [PyPi](https://pypi.org/project/azure-communication-administration/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-administration)   | -              | -              | -                            |
 | Chatt           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
 | SMS            | [npm](https://www.npmjs.com/package/@azure/communication-sms)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Sms)    | [PyPi](https://pypi.org/project/azure-communication-sms/)       | [Maven](https://search.maven.org/artifact/com.azure/azure-communication-sms)   | -              | -              | -                              |
 | Sänder        | [npm](https://www.npmjs.com/package/@azure/communication-calling)         | -      | -      | -     | [GitHub](https://github.com/Azure/Communication/releases/tag/v1.0.0-beta.2)     | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-calling/)            | -                              |
-| Referensdokumentation     | [dokumentation](https://azure.github.io/azure-sdk-for-js/communication.html)         | [dokumentation](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [dokumentation](http://azure.github.io/azure-sdk-for-java/communication.html)     | (OBJ-C) ✔️     | ✔️            | -                              |
+| Referensdokumentation     | [dokumentation](https://azure.github.io/azure-sdk-for-js/communication.html)         | [dokumentation](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [dokumentation](http://azure.github.io/azure-sdk-for-java/communication.html)     | [dokumentation](https://docs.microsoft.com/objectivec/communication-services/calling/)      | [dokumentation](https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android)            | -                              |
 ## <a name="rest-apis"></a>REST API:er
 
 API: er för kommunikations tjänster dokumenteras tillsammans med andra Azure REST-API: er i [docs.Microsoft.com](/rest/api/azure/). I den här dokumentationen får du lära dig hur du strukturerar dina HTTP-meddelanden och ger vägledning om hur du använder Postman. Den här dokumentationen erbjuds också i Swagger-format på [GitHub](https://github.com/Azure/azure-rest-api-specs).

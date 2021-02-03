@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4803691a82a97cd2be5fa3beafd4419010e7a9c9
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: bce83e11a0d4567d37e78388445c108385ca9a61
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842983"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509085"
 ---
 # <a name="view-alerts"></a>Visa aviseringar
 
@@ -32,7 +32,7 @@ För att visa aviseringar:
 
 Du kan visa aviseringar efter olika kategorier från huvudvyerna **aviseringar** . Välj en avisering för att granska informationen och hantera händelsen.
 
-| Sortera efter typ | Beskrivning |
+| Sortera efter typ | Description |
 |--|--|
 | **Viktiga aviseringar** | Aviseringar sorterade efter prioritet. |
 | **Fästa aviseringar** | Aviseringar som användaren har fäst för ytterligare undersökning. Fästa aviseringar arkiveras inte och lagras i 14 dagar i den fästa mappen. |
@@ -84,7 +84,7 @@ När inget av alternativen är markerat visas alla aviseringar.
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/alerts-security.png" alt-text="Säkerhet på skärmen aviseringar.":::
 
-## <a name="alert-window-options"></a>Alternativ för aviserings fönster
+## <a name="alert-page-options"></a>Alternativ för aviserings sida
 
 Aviserings meddelanden innehåller följande åtgärder:
 
@@ -101,6 +101,8 @@ Aviserings meddelanden innehåller följande åtgärder:
 - Välj :::image type="icon" source="media/how-to-work-with-alerts-sensor/learn-and-acknowledge-all-alerts.png" border="false"::: om du vill lära dig och bekräfta alla aviseringar.
 
 - Välj :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-csv.png" border="false"::: att exportera aviserings listan till en CSV-fil och välj alternativet Exportera. Välj **Exportera avisering** för det vanliga alternativet Exportera till CSV. Eller Välj **utökad varnings export** för möjligheten att lägga till separata rader för ytterligare information om en AVISERING i CSV-filen.
+
+## <a name="alert-pop-up-window-options"></a>Alternativ för popup-fönstret avisering
 
 - Välj :::image type="icon" source="media/how-to-work-with-alerts-sensor/export-to-pdf.png" border="false"::: ikonen för att ladda ned en varnings rapport som en PDF-fil.
 
@@ -120,6 +122,6 @@ Aviserings meddelanden innehåller följande åtgärder:
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Hantera aviserings händelsen](how-to-manage-the-alert-event.md)
+[Hantera aviseringshändelsen](how-to-manage-the-alert-event.md)
 
 [Påskynda aviserings arbets flöden](how-to-accelerate-alert-incident-response.md)

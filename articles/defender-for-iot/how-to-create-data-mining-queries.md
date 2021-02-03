@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56751adedfc01b3927acc65f47910c3b1281f09c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811733"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507578"
 ---
 # <a name="sensor-data-mining-queries"></a>Frågor om sensor Data utvinning
 
@@ -55,11 +55,11 @@ Frågor för Data utvinning som du skapar uppdateras dynamiskt varje gången du 
 
 Du kan använda frågor för att hantera en mängd olika säkerhets behov för olika säkerhets team:
 
-- **SOC incident svar**: generera en rapport i real tid för att hjälpa dig att hantera omedelbara incident åtgärder. Du kan till exempel generera en rapport för en lista över enheter som kan behöva korrigeras.
+- **SOC incident svar**: generera en rapport i real tid för att hjälpa dig att hantera omedelbara incident åtgärder. Data utvinning kan till exempel generera en rapport för en lista över enheter som kan behöva korrigeras.
 
 - **Data utredning**: generera en rapport som baseras på historiska data för utrednings rapporter.
 
-- **Nätverks integritet**: generera en rapport som hjälper till att förbättra den övergripande nätverks säkerheten. Generera till exempel en rapport som visar enheter med svaga autentiseringsuppgifter.
+- **Nätverks integritet**: generera en rapport som hjälper till att förbättra den övergripande nätverks säkerheten. Du kan till exempel generera en rapport som visar en lista över enheter med svaga autentiseringsuppgifter.
 
 - **Synlighet**: generera en rapport som täcker alla frågedata för att visa alla bas linje parametrar i nätverket.
 

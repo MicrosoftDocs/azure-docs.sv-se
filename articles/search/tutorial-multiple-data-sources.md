@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b8711fa468cf361a42ed996c5b5dc50372d6cf90
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746160"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509510"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Självstudie: index från flera data källor med hjälp av .NET SDK
 
@@ -43,7 +43,7 @@ En färdig version av koden i den här självstudien finns i följande projekt:
 
 Den här självstudien har uppdaterats med Azure.Search.Documents-paketet (version 11). En tidigare version av .NET SDK finns i [kod exemplet Microsoft. Azure. search (version 10)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources/v10) i GitHub.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 + [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
 + [Azure Storage](../storage/common/storage-account-create.md)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 587ad53fa3a4875f7019a8c094db1b9a5f096519
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125214"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509561"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Övervaka appar i Azure App Service
 [Azure App Service](./overview.md) innehåller inbyggda övervaknings funktioner för webbappar, mobil-och API-appar i [Azure Portal](https://portal.azure.com).
@@ -27,11 +27,11 @@ Appar som finns i App Service omfattas av vissa begränsningar för de resurser 
 
 Om appen finns i en *kostnads fri* eller *delad* plan definieras gränserna för de resurser som appen kan använda definieras av kvoter.
 
-Om appen finns i en *Basic* -, *standard* -eller *Premium* -plan anges gränserna för de resurser som de kan använda av *storlek* (liten, medel, stor) och *instans antal* (1, 2, 3 och så vidare) för App Service plan.
+Om appen finns i en *Basic*-, *standard*-eller *Premium* -plan anges gränserna för de resurser som de kan använda av *storlek* (liten, medel, stor) och *instans antal* (1, 2, 3 och så vidare) för App Service plan.
 
 Kvoter för kostnads fria eller delade appar är:
 
-| Kvot | Beskrivning |
+| Kvot | Description |
 | --- | --- |
 | **PROCESSOR (kort)** | Mängden CPU som tillåts för den här appen i ett intervall om 5 minuter. Den här kvoten återställs var femte minut. |
 | **PROCESSOR (dag)** | Den totala mängden processor som tillåts för den här appen under en dag. Den här kvoten återställs var 24: e timme vid midnatt UTC. |
@@ -39,13 +39,13 @@ Kvoter för kostnads fria eller delade appar är:
 | **Bandbredd** | Den totala mängden utgående bandbredd som tillåts för den här appen under en dag. Den här kvoten återställs var 24: e timme vid midnatt UTC. |
 | **Filsystem** | Den totala mängden lagrings utrymme som tillåts. |
 
-Den enda kvot som gäller för appar som finns i fil systemet *Basic* , *standard* och *Premium* är filesystem.
+Den enda kvot som gäller för appar som finns i fil systemet *Basic*, *standard* och *Premium* är filesystem.
 
 Mer information om vilka kvoter, gränser och funktioner som är tillgängliga för de olika App Service SKU: er finns i [begränsningar för Azure-prenumerations tjänsten](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Kvot tillämpning
 
-Om en app överskrider *processorns (kort)* , *CPU (dag)* eller *bandbredds* kvot stoppas appen tills kvoten återställs. Under den här tiden resulterar alla inkommande förfrågningar i ett HTTP 403-fel.
+Om en app överskrider *processorns (kort)*, *CPU (dag)* eller *bandbredds* kvot stoppas appen tills kvoten återställs. Under den här tiden resulterar alla inkommande förfrågningar i ett HTTP 403-fel.
 
 ![403-fel meddelande][http403]
 
@@ -72,7 +72,7 @@ Mått ger information om appen eller App Service plan beteendet.
 
 För en app är tillgängliga mått:
 
-| Mått | Beskrivning |
+| Metric | Beskrivning |
 | --- | --- |
 | **Svars tid** | Den tid det tar för appen att betjäna begär Anden, i sekunder. |
 | **Genomsnittlig svars tid (inaktuell)** | Genomsnittlig tid det tar för appen att betjäna begär Anden, i sekunder. |
@@ -82,7 +82,7 @@ För en app är tillgängliga mått:
 | **Aktuella sammansättningar** | Det aktuella antalet sammansättningar som har lästs in i alla AppDomains i det här programmet. |
 | **Data i** | Mängden inkommande bandbredd som används av appen, i MiB. |
 | **Data ut** | Mängden utgående bandbredd som används av appen, i MiB. |
-| **Fil system användning** | Procent andel av fil Systems kvoten som används av appen. |
+| **Fil system användning** | Mängden användning i byte per lagrings resurs. |
 | **Skräp insamling för gen 0** | Antalet gånger som generation 0-objekt är skräp insamlat sedan program processen startades. Högre generations GC generationer omfattar all lägre generations-GC generationer.|
 | **Skräp insamling för gen 1** | Antalet gånger som generation 1-objekten är skräp insamlat sedan program processen startades. Högre generations GC generationer omfattar all lägre generations-GC generationer.|
 | **Gen 2 skräp insamling** | Antalet gånger som generation 2-objekt är skräp insamlat sedan program processen startades.|
@@ -114,10 +114,10 @@ För en app är tillgängliga mått:
 För en App Service plan är tillgängliga mått:
 
 > [!NOTE]
-> App Service plan mått är bara tillgängliga för planer på nivåerna *Basic* , *standard* och *Premium* .
+> App Service plan mått är bara tillgängliga för planer på nivåerna *Basic*, *standard* och *Premium* .
 > 
 
-| Mått | Beskrivning |
+| Metric | Beskrivning |
 | --- | --- |
 | **CPU-procent** | Den genomsnittliga CPU som används för alla instanser av planen. |
 | **Minnes procent** | Genomsnittligt minne som används för alla instanser av planen. |
@@ -131,9 +131,9 @@ För en App Service plan är tillgängliga mått:
 
 Det finns två mått som återspeglar CPU-användning:
 
-**CPU-tid** : användbart för appar som finns i kostnads fria eller delade planer, eftersom en av deras kvoter definieras i CPU-minuter som används av appen.
+**CPU-tid**: användbart för appar som finns i kostnads fria eller delade planer, eftersom en av deras kvoter definieras i CPU-minuter som används av appen.
 
-**Processor procent** : användbart för appar som finns i Basic-, standard-och Premium-planer, eftersom de kan skalas ut. CPU-procent är en korrekt indikation på den övergripande användningen för alla instanser.
+**Processor procent**: användbart för appar som finns i Basic-, standard-och Premium-planer, eftersom de kan skalas ut. CPU-procent är en korrekt indikation på den övergripande användningen för alla instanser.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mät precisions precision och bevarande princip
 Mått för en app-och App Service-plan loggas och sammanställs av tjänsten och [bevaras enligt dessa regler](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
@@ -143,7 +143,7 @@ Om du vill granska statusen för de olika kvoter och mått som påverkar en app 
 
 ![Kvot diagram i Azure Portal][quotas]
 
-Välj **inställnings** kvoter för att hitta kvoter  >  **Quotas** . I diagrammet kan du granska: 
+Välj **inställnings** kvoter för att hitta kvoter  >  . I diagrammet kan du granska: 
 1. Kvotens namn.
 1. Dess återställnings intervall.
 1. Den aktuella gränsen.

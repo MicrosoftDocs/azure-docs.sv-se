@@ -14,8 +14,6 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Kvoter och begränsningar
       href: speech-services-quotas-and-limits.md
-    - name: Nyheter i Docs
-      href: whats-new.md
 - name: Tal till text
   items:
     - name: Dokumentation om tal till text
@@ -113,22 +111,10 @@
           href: long-audio-api.md
     - name: Anpassning
       items:
-        - name: Ansvarig distribution
-          items:
-            - name: Hantering av anpassad röst
-              href: concepts-gating-overview.md
-            - name: Distribution av syntetisk teknik
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Utlämnande för röstförmågor
-              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
-            - name: Utlämnande av designriktlinjer
-              href: concepts-disclosure-guidelines.md
-            - name: Utlämnande av designmönster
-              href: concepts-disclosure-patterns.md
-            - name: Uppförandekod
-              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: Portal för anpassad röst
           items:
+            - name: Vad är anpassat neurala röst?
+              href: custom-neural-voice.md
             - name: Komma igång med Custom Voice
               displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
@@ -142,6 +128,32 @@
           items:
             - name: Skapa ljudinnehåll
               href: how-to-audio-content-creation.md
+    - name: Ansvarsfull användning av AI
+      items:
+        - name: Anpassad röst för neurala
+          items:
+            - name: Transparensinformation
+              items:
+                - name: Användnings fall för anpassad röst för neurala
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Egenskaper och begränsningar
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+            - name: Integrering och ansvarsfull användning
+              items:
+                - name: Begränsad åtkomst
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: Ansvarig distribution av syntetiskt tal
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: Utlämnande för röstförmågor
+                  href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
+                - name: Utlämnande av designriktlinjer
+                  href: concepts-disclosure-guidelines.md
+                - name: Utlämnande av designmönster
+                  href: concepts-disclosure-patterns.md
+                - name: Uppförandekod
+                  href: /legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context
+            - name: 'Data, sekretess och säkerhet'
+              href: /legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
     - name: Referens
       items:
         - name: C++

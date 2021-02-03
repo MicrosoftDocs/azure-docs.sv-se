@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220844"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509578"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Huvud versions uppgradering i Azure Database for MySQL enskild server
 
@@ -121,15 +121,7 @@ GA för den här funktionen är planerad innan MySQL v 5.6 upphör. Funktionen �
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>Kommer detta att orsaka drift stopp av servern och i så fall hur lång tid?
 
-Ja, servern kommer inte att vara tillgänglig under uppgraderings processen så vi rekommenderar att du utför den här åtgärden under det planerade underhålls fönstret. Den uppskattade stillestånds tiden beror på databasens storlek, den allokerade lagrings storleken (IOPs etablerad) och antalet tabeller i databasen. Uppgraderings tiden är direkt proportionell till antalet tabeller på servern. Uppgraderingar av Basic SKU-servrar förväntas ta längre tid eftersom de är på standard plattform för lagring. Vi rekommenderar att du först uppgraderar till en återställd kopia av servern för att beräkna stillestånds tiden för din server miljö.  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>Det noteras att det inte stöds på replik servern ännu. Vad betyder det konkreta?
-
-För närvarande stöds inte högre versions uppgradering för replik servern, vilket innebär att du inte bör köra den för servrar som ingår i replikeringen (antingen käll-eller replik servern). Om du vill testa uppgraderingen av servrarna som ingår i replikeringen innan vi lägger till replik stödet för uppgraderings funktionen rekommenderar vi följande steg:
-
-1. Under planerat underhåll stoppar du [replikeringen och tar bort replik servern](howto-read-replicas-portal.md) efter att du har samlat in dess namn och all konfigurations information (brand Väggs inställningar, Server parameter konfiguration om den skiljer sig från käll servern).
-2. Utför uppgraderingen av käll servern.
-3. Etablera en ny Läs replik server med samma namn och konfigurations inställningar som du hämtade i steg 1. Den nya replik servern kommer att finnas på v 5.7 automatiskt efter att käll servern har uppgraderats till v 5.7.
+Ja, servern kommer inte att vara tillgänglig under uppgraderings processen så vi rekommenderar att du utför den här åtgärden under det planerade underhålls fönstret. Den uppskattade stillestånds tiden beror på databasens storlek, den allokerade lagrings storleken (IOPs etablerad) och antalet tabeller i databasen. Uppgraderings tiden är direkt proportionell till antalet tabeller på servern. Uppgraderingar av Basic SKU-servrar förväntas ta längre tid eftersom de är på standard plattform för lagring. Vi rekommenderar att du först uppgraderar till en återställd kopia av servern för att beräkna stillestånds tiden för din server miljö. Överväg att [utföra minimal stillestånds tid för stor versions uppgradering från MySQL 5,6 till mysql 5,7 med hjälp av Läs replik.](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>Vad händer om vi inte väljer att uppgradera vår MySQL v 5.6-server före den 5 februari 2021?
 

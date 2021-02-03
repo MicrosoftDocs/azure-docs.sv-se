@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 2276e66fa47b1c125a8c30f3c73a7c948f65a35d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b001b109df7c4b52b61f226a164db232b620a2c6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021940"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508548"
 ---
 # <a name="disclosure-design-guidelines"></a>Utlämnande av designriktlinjer
 Lär dig att bygga och upprätthålla förtroende med kunder genom att vara transparent om din röst upplevelses syntetiska natur.
@@ -78,7 +78,6 @@ Använd följande diagram för att avgöra om din syntetiska röst miljö kräve
 
 * [Utlämnande av röst personal](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Rikt linjer för ansvarig distribution av syntetisk röst teknik](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Översikt över hantera](concepts-gating-overview.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

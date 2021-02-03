@@ -231,3 +231,7 @@
       href: ../../vpn-gateway/security-baseline.md
     - name: Säkerhets bas linje för Windows Virtual Desktop
       href: ../../virtual-desktop/security-baseline.md
+- name: Resurser
+  items:
+    - name: Mappning mellan ASB och CIS-benchmark
+      href: v2-cis-benchmark.md

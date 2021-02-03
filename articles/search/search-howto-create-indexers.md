@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430053"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509392"
 ---
-# <a name="create-a-search-indexer"></a>Skapa en Sök indexerare
+# <a name="creating-indexers-in-azure-cognitive-search"></a>Skapa indexerare i Azure Kognitiv sökning
 
 En Sök Indexer innehåller ett automatiserat arbets flöde för att överföra dokument och innehåll från en extern data källa till ett sökindex på din Sök tjänst. Som ursprungligen har utformats extraherar text och metadata från en Azure-datakälla, serialiserar dokument till JSON och överför de resulterande dokumenten till en sökmotor för indexering. Det har sedan utökats för att stödja [AI-anrikning](cognitive-search-concept-intro.md) för djup innehålls bearbetning. 
 
@@ -99,7 +99,7 @@ Följande skärm bild visar var du kan hitta de här funktionerna i portalen.
 
 ### <a name="use-a-rest-client"></a>Använd en REST-klient
 
-Både Postman och Visual Studio Code (med ett tillägg för Azure Kognitiv sökning) kan fungera som en indexerare-klient. Med något av verktygen kan du ansluta till Sök tjänsten och skicka begär Anden som skapar indexerare och andra objekt. Det finns flera självstudier och exempel som demonstrerar REST-klienter för att skapa objekt. 
+Både Postman och Visual Studio Code (med ett tillägg för Azure Kognitiv sökning) kan fungera som en indexerare-klient. Med något av verktygen kan du ansluta till Sök tjänsten och skicka begäran om att [skapa indexerare (rest)](/rest/api/searchservice/create-indexer) . Det finns flera självstudier och exempel som demonstrerar REST-klienter för att skapa objekt. 
 
 Börja med någon av dessa artiklar för att lära dig om varje klient:
 
@@ -110,7 +110,7 @@ I avsnittet om [indexerings åtgärder (rest)](/rest/api/searchservice/Indexer-o
 
 ### <a name="use-an-sdk"></a>Använda en SDK
 
-För Kognitiv sökning implementerar Azure SDK: er allmänt tillgängliga funktioner. Därför kan du använda alla SDK: er för att skapa indexerare-relaterade objekt. Alla implementerar en **SearchIndexerClient** som tillhandahåller metoder för att skapa indexerare och relaterade objekt, inklusive färdighetsuppsättningar.
+För Kognitiv sökning implementerar Azure SDK: er allmänt tillgängliga funktioner. Därför kan du använda alla SDK: er för att skapa indexerare-relaterade objekt. Alla tillhandahåller en **SearchIndexerClient** som har metoder för att skapa indexerare och relaterade objekt, inklusive färdighetsuppsättningar.
 
 | Azure SDK | Klient | Exempel |
 |-----------|--------|----------|

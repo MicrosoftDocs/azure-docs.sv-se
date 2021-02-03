@@ -3,12 +3,12 @@ title: Koncept – nätverks anslutning
 description: Lär dig mer om viktiga aspekter och användnings fall för nätverk och anslutningar i Azure VMware-lösningar.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 49261f34f879c68f21b57f9256a58a9b0a44d637
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475428"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509290"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Nätverks-och samanslutnings koncept i Azure VMware-lösningen
 
@@ -59,10 +59,11 @@ För fullständig anslutning till ditt privata moln aktiverar du ExpressRoute Gl
 
 ## <a name="next-steps"></a>Nästa steg 
 
-Nu när du har täckt dessa nätverks-och samanslutnings koncept, kanske du vill lära dig mer om:
+Nu när du har täckt Azure VMware-lösningen nätverk och samanslutnings koncept, kanske du vill lära dig mer om:
 
 - [Lagrings koncept för Azure VMware-lösningar](concepts-storage.md).
-- [Identitets koncept för Azure VMware-lösning](concepts-identity.md)
+- [Identitets koncept för Azure VMware-lösning](concepts-identity.md).
+- [Så här aktiverar du Azure VMware-lösnings resurser](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

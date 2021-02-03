@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493049"
+ms.locfileid: "99509375"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Tjänstbegränsningar i Azure Cognitive Search
 
@@ -124,14 +124,6 @@ Det maximala antalet synonym Maps varierar efter nivå. Varje regel kan ha upp t
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximalt synonyma kartor |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximalt antal regler per karta |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
-
-## <a name="queries-per-second-qps"></a>Frågor per sekund (frågor per sekund)
-
-FRÅGOR per sekund-uppskattningar måste utvecklas oberoende av varje kund. Index storlek och komplexitet, fråga om storlek och komplexitet och mängden trafik är primär Determinant av frågor per sekund. Det finns inget sätt att erbjuda meningsfulla uppskattningar när sådana faktorer är okända.
-
-Uppskattningar är mer förutsägbara när de beräknas på tjänster som körs på dedikerade resurser (Basic-och standard-nivåer). Du kan beräkna frågor per sekund mer noggrant eftersom du har kontroll över fler parametrar. Information om hur du använder uppskattning finns i [Azure kognitiv sökning prestanda och optimering](search-performance-optimization.md).
-
-För lagrings optimerade nivåer (L1 och L2) bör du förvänta dig ett lägre flöde för frågor och högre latens än standard-nivåerna.
 
 ## <a name="data-limits-ai-enrichment"></a>Data begränsningar (AI-anrikning)
 

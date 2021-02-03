@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 8bfbacc77843c7978bcb1d364bd93f5e09381144
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811729"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509494"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Sensor trender och statistik rapporter
 
@@ -26,19 +26,29 @@ Du kan skapa widgets grafer och cirkel diagram för att få insyn i nätverks tr
 Instrument panelen består av widgetar som grafiskt beskriver följande typer av information:
 
 - Trafik efter port
+- Högsta trafik efter port
 - Kanal bandbredd
 - Total bandbredd
 - Aktiv TCP-anslutning
+- Högsta bandbredd per VLAN
 - Enheter:
   - Nya enheter
   - Upptagna enheter
   - Enheter efter leverantör
   - Enheter per operativ system
+  - Antal enheter per VLAN
   - Frånkopplade enheter
-- Anslutnings släpp per timme
+- Anslutningen faller efter timmar
 - Aviseringar för incidenter efter typ
 - Åtkomst till databas tabell
 - Widgetar protokoll avsnitt
+- DELTAV
+  - Distribution av DeltaV Roc-åtgärder
+  - DeltaV ROC-händelser efter namn
+  - DeltaV händelser efter tid
+- AMS
+  - AMS trafik efter server port
+  - AMS trafik via kommando
 - Ethernet-och IP-adress:
   - Ethernet-och IP-CIP av tjänster
   - Ethernet-och IP-datatrafik per CIP-klass
@@ -49,6 +59,15 @@ Instrument panelen består av widgetar som grafiskt beskriver följande typer av
 - Siemens S7:
   - S7 trafik efter kontroll funktion
   - S7 trafik per underfunktion
+- LOKALT
+  - Antal enheter per VLAN
+  - Högsta bandbredd per VLAN
+- 60870-5-104
+  - IEC-60870-trafik efter ASDU
+- BACNET
+  - BACnet-tjänster
+- DNP3
+  - DNP3 trafik efter funktion
 - SRTP:
   - SRTP trafik per service kod
   - SRTP fel per dag

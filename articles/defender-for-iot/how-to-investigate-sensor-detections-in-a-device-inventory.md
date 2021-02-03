@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625439"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508870"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Undersök identifieringar av sensorer i en enhetsinventering
 
@@ -32,18 +32,18 @@ Följande attribut visas i enhets inventerings tabellen.
 
 | Parameter | Beskrivning |
 |--|--|
-| Name | Enhetens namn som sensorn upptäckte den. |
-| Typ | Typ av enhet. |
+| Name | Enhetens namn som sensorn upptäckte den eller som anges av användaren. |
+| Typ | Typ av enhet som bestäms av sensorn eller som anges av användaren. |
 | Leverantör | Namnet på enhetens leverantör, enligt vad som definieras i MAC-adressen. |
-| Operativsystem | Enhetens operativ system. |
-| Inbyggd programvara | Enhetens inbyggda program vara. |
-| IP-adress | Enhetens IP-adress. |
+| Operativsystem | Enhetens operativ system, om det upptäcks. |
+| Version av inbyggd programvara | Enhetens inbyggda program vara, om den upptäcks. |
+| IP-adress | IP-adressen för enheten som definierats. |
 | LOKALT | Enhetens VLAN. Mer information om hur du instruerar sensorn att identifiera VLAN finns i [definiera VLAN-namn](how-to-manage-the-on-premises-management-console.md#define-vlan-names). (How-to-define-Management-Console-Network-Settings. MD # define-VLAN-Names). |
 | MAC-adress | Enhetens MAC-adress. |
 | Protokoll | De protokoll som enheten använder. |
 | Aviseringar som inte godkänts | Antalet aviseringar som inte har godkänts och som är kopplade till den här enheten. |
 | Har behörighet | Den behörighets status som definierats av användaren:<br />- **True**: enheten har auktoriserats.<br />- **Falskt**: enheten har inte auktoriserats. |
-| Kallas skanner | Definieras som en skannings enhet av användaren. |
+| Kallas skanner | Definieras som en enhet för nätverks genomsökning av användaren. |
 | Är programmerings enhet | Definieras som en auktoriserad programmerings enhet av användaren. <br />- **True**: enheten utför programmerings aktiviteter för PLCs, RTUs och kontrollanter, som är relevanta för teknik stationer. <br />- **Falskt**: enheten är ingen programmerings enhet. |
 | Grupper | De grupper som enheten ingår i. |
 | Senaste aktivitet | Den senaste aktivitet som enheten utförde. |
@@ -111,7 +111,7 @@ När du växlar till vyn karta är de filtrerade enheterna markerade och filtrer
 
 ## <a name="learn-windows-registry-details"></a>Lär dig mer om registret i Windows
 
-Förutom Learning-enheter kan du identifiera IT-enheter, inklusive Microsoft Windows-arbetsstationer och-servrar. Enheterna visas också i enhets inventeringen. När du har lärt enheterna kan du utöka enhets inventeringen med detaljerad Windows-information, till exempel:
+Förutom Learning-enheter kan du identifiera Microsoft Windows-arbetsstationer och-servrar. Enheterna visas också i enhets inventeringen. När du har lärt enheterna kan du utöka enhets inventeringen med detaljerad Windows-information, till exempel:
 
 - Windows-version installerad
 
@@ -217,7 +217,7 @@ För att importera:
 
 ## <a name="export-device-inventory-information"></a>Exportera information om enhets inventering
 
-Du kan exportera enhets inventerings information till en Excel-fil. Importerad information skriver över aktuell information.
+Du kan exportera enhets inventerings information till en Excel-fil.
 
 Så här exporterar du en CSV-fil:
 

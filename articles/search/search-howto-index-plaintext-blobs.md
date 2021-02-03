@@ -8,25 +8,25 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 422346430e32ccb8745d5a5d829c5d61089a99c6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b8881d3fa7ade08da103c5af4b828a12e74cc355
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430436"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509460"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Så här indexerar du oformaterad text blobbar i Azure Kognitiv sökning
 
-När du använder en [BLOB-indexerare](search-howto-indexing-azure-blob-storage.md) för att extrahera sökbar text för full texts ökning kan du anropa olika tolknings lägen för att få bättre indexerings resultat. Som standard parsar indexeraren BLOB-innehåll som ett enda text segment. Men om alla blobbar innehåller oformaterad text i samma kodning, kan du förbättra indexerings prestanda avsevärt genom att använda `text` tolknings läget.
+När du använder en [BLOB-indexerare](search-howto-indexing-azure-blob-storage.md) för att extrahera sökbara BLOB-text för full texts ökning kan du tilldela ett tolknings läge för att få bättre indexerings resultat. Som standard parsar indexeraren BLOB-innehåll som ett enda text segment. Men om alla blobbar innehåller oformaterad text i samma kodning, kan du förbättra indexerings prestanda avsevärt genom att använda `text` tolknings läget.
 
-Du bör använda `text` tolknings läget när:
+Rekommendationer för användnings `text` parsning är:
 
 + Filtypen är. txt
 + Filerna är av vilken typ som helst, men själva innehållet är text (till exempel program käll kod, HTML, XML och så vidare). För filer på ett markerings språk kommer alla tecken som används som statisk text att komma in.
 
-Kom ihåg att indexerare serialiseras till JSON. Innehållet i hela text filen kommer att indexeras inom ett enda stort fält som `"content": "<file-contents>"` . Nya rad-och retur instruktioner uttrycks som `\r\n\` .
+Kom ihåg att alla indexerare serialiseras till JSON. Som standard kommer innehållet i hela text filen att indexeras inom ett stort fält som `"content": "<file-contents>"` . Eventuella nya rad-och retur instruktioner är inbäddade i innehålls fältet och uttrycks som `\r\n\` .
 
-Överväg följande lösningar om du vill ha ett mer detaljerat resultat:
+Om du vill ha ett mer detaljerat resultat och om filtypen är kompatibel, bör du tänka på följande lösningar:
 
 + [`delimitedText`](search-howto-index-csv-blobs.md) tolknings läge, om källan är CSV
 + [ `jsonArray` eller `jsonLines` ](search-howto-index-json-blobs.md), om källan är JSON

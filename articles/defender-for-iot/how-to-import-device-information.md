@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625422"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509443"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Importera enhets information till en sensor
 
@@ -160,7 +160,7 @@ Så här importerar du IP-adress, operativ system och korrigerings nivå:
 
    - **Operativ system**: Välj i den nedrullningsbara listan.
 
-   - **Senaste uppdatering**: Använd formatet åååå-mm-dd.
+   - **Datum för senaste uppdatering**: Använd formatet åååå-mm-dd.
 
     :::image type="content" source="media/how-to-import-device-information/last-update-screen.png" alt-text="Innehållet på skärmen.":::
 
@@ -172,7 +172,7 @@ Så här importerar du IP-adress, operativ system och korrigerings nivå:
 
 Så här importerar du statusen för auktorisering:
 
-1. Hämta och spara [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) -filen från Defender för IoT Help Center. Kontrol lera att du har sparat filen som en CSV-fil.
+1. Hämta och spara filen [authorized_devices-examples.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) från Defender för IoT Help Center. Kontrol lera att du har sparat filen som en CSV-fil.
 
 2. Ange informationen som:
 

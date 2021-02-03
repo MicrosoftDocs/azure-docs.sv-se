@@ -5,12 +5,12 @@ keywords: Hadoop hög tillgänglighet
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6b995e2ab5ba663f6e33b009062859eb32928cc1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945366"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508599"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Fallstudie av hög tillgänglighet för Azure HDInsight-lösning
 
@@ -71,7 +71,7 @@ Följande bild visar Contosos åter betalnings arkitektur för hög tillgänglig
 
 **Hive och Spark** använder [aktiva primära, primära replikeringspartner på begäran](hdinsight-business-continuity-architecture.md#apache-spark) under normala tider. Hive-replikeringen körs regelbundet och medföljer Hive Azure SQL-metaarkiv och Hive-lagrings kontots replikering. Spark Storage-kontot replikeras regelbundet med hjälp av ADF-DistCP. De här klusternas tillfälliga egenskaper bidrar till att optimera kostnaderna. Replikeringar är schemalagda var fjärde timme för att komma till en återställnings punkt i kravet på fem timmar.
 
-**HBase** -replikering använder [ledare – följar](hdinsight-business-continuity-architecture.md#apache-hbase) modell under normal tid för att säkerställa att data alltid betjänas oavsett region och återställningen är noll.
+**HBase** -replikering använder [ledare – följar](hdinsight-business-continuity-architecture.md#apache-hbase) modell under normal tid för att säkerställa att data alltid betjänas oavsett region och återställningen är mycket låg.
 
 Om det finns ett regionalt haveri i den primära regionen, hanteras webb sidan och Server delen från den sekundära regionen i 5 timmar med en viss grad av föråldrad. Om instrument panelen för Azure-tjänstens hälso tillstånd inte anger en återställnings tid i fönstret fem timmar skapas Hive-och Spark-omvandlings lagret i den sekundära regionen, och sedan pekar alla överordnade data källor i den sekundära regionen. Att göra den sekundära regionen skrivbar kan orsaka en återställning efter fel som innebär replikering tillbaka till den primära.
 

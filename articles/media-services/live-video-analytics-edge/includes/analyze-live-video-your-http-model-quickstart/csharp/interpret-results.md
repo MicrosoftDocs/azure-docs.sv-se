@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6471108cbbb1ec7fffeb53de61ac71f94927019b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 373b7b8dbf2ccc516edbbb3b87e284d88dfaf0c2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684295"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508497"
 ---
 När du kör medie diagrammet passerar resultatet från noden för HTTP-tillägget processor genom noden IoT Hub mottagare till IoT Hub. De meddelanden som visas i fönstret **utdata** innehåller ett `body` avsnitt och ett `applicationProperties` avsnitt. Mer information finns i [skapa och läsa IoT Hub meddelanden](../../../../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -82,20 +82,12 @@ I följande exempel upptäcktes två bilar i samma video RAM, med varierande niv
         "type": "entity"
       }
     ]
-  },
-  "applicationProperties": {
-    "topic": "/subscriptions/{subscriptionID}/resourceGroups/{name}/providers/microsoft.media/mediaservices/hubname",
-    "subject": "/graphInstances/GRAPHINSTANCENAMEHERE/processors/inferenceClient",
-    "eventType": "Microsoft.Media.Graph.Analytics.Inference",
-    "eventTime": "2020-04-23T06:37:16.097Z"
   }
 }
 ```
 
 Observera följande information i meddelandena:
 
-* I `applicationProperties` `subject` refererar den nod i den graf-topologi från vilken meddelandet genererades. 
-* I `applicationProperties` `eventType` anger att den här händelsen är en analys händelse.
 * `eventTime`Värdet är den tidpunkt då händelsen inträffade.
 * `body`Avsnittet innehåller information om Analytics-händelsen. I det här fallet är händelsen en utmatnings händelse, så att texten innehåller `inferences` data.
 * `inferences`Avsnittet visar att `type` är `entity` . Det här avsnittet innehåller ytterligare information om entiteten.

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c0670f37da0cead5e3bd05a1d69e17191e8c0ccf
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803505"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508751"
 ---
 # <a name="manage-alert-events"></a>Hantera aviserings händelser
 
@@ -38,14 +38,14 @@ Inlärda händelser kan vara inlärt. När sensorn tar reda på händelser åter
 
 ## <a name="about-acknowledging-and-unacknowledging-events"></a>Om att bekräfta och bekräfta händelser
 
-I vissa situationer kanske du inte vill att en sensor ska lära sig en identifierad händelse, eller så kanske alternativet inte är tillgängligt. Incidenten kan i stället kräva en minskning. Ett exempel:
+I vissa situationer kanske du inte vill att en sensor ska lära sig en identifierad händelse, eller så kanske alternativet inte är tillgängligt. Incidenten kan i stället kräva en minskning. Exempel:
 
 - **Minimera en nätverks konfiguration eller enhet**: du får en avisering som anger att en ny enhet har identifierats i nätverket. När du undersöker upptäcker du att enheten är en oauktoriserad nätverks enhet. Du hanterar incidenten genom att koppla bort enheten från nätverket.
 - **Uppdatera en sensor konfiguration**: du får en avisering som anger att en server har initierat ett högt antal fjärr anslutningar. Den här aviseringen utlöstes på grund av att sensor avvikelse trösklar definierades för att utlösa aviseringar över ett visst antal sessioner inom en minut. Du hanterar incidenten genom att uppdatera tröskelvärdena.
 
 När du har gjort en minskning eller undersökning kan du instruera sensorn att dölja aviseringen genom att välja **Bekräfta**. Om händelsen identifieras igen återutlöss aviseringen.
 
-För att dölja aviseringen:
+Så här tar du bort aviseringen:
 
   - Välj **Bekräfta**.
 
@@ -57,7 +57,7 @@ Avbekräftelser aviseringar om ytterligare undersökning krävs.
 
 ## <a name="about-muting-and-unmuting-events"></a>Om avstängnings-och avstängnings händelser
 
-Under vissa omständigheter kanske du vill instruera sensorn att ignorera ett visst scenario i nätverket. Ett exempel:
+Under vissa omständigheter kanske du vill instruera sensorn att ignorera ett visst scenario i nätverket. Exempel:
 
   - **Avvikelse** motorn utlöser en varning vid en ökning i bandbredd mellan två enheter, men insamling är giltig för dessa enheter.
 
@@ -70,9 +70,9 @@ I dessa situationer är inlärning inte tillgängligt. När inlärningen inte ka
 
 ### <a name="what-traffic-is-muted"></a>Vilken trafik är avstängd?
 
-Ett inmutet scenario omfattar nätverks enheter och trafik som identifierats för en händelse. Aviserings rubriken beskriver den trafik som är avstängd.
+Ett mutet scenario omfattar nätverks enheterna och trafik som identifieras för en händelse. Aviserings rubriken beskriver den trafik som är avstängd.
 
-Enheten eller enheterna som är avstängda visas som en avbildning i aviseringen. Om två enheter visas blir trafiken mellan dem avstängd.
+Enheten eller enheterna som är avstängda visas som en avbildning i aviseringen. Om två enheter visas stängs den aktuella varnings trafiken mellan dem.
 
 **Exempel 1**
 

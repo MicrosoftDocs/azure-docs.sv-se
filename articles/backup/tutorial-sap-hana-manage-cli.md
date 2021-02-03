@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du hanterar säkerhe
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 22ff95fe5261a839927aa6ad8123ba370710f178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb552c5a336c3c55652936b87a668b54cfdeb41e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323098"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507239"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Självstudie: hantera SAP HANA databaser i en virtuell Azure-dator med Azure CLI
 
@@ -17,7 +17,7 @@ Azure CLI används för att skapa och hantera Azure-resurser från kommando rade
 
 Använd [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) för att köra CLI-kommandon.
 
-I slutet av den här självstudien kommer du att kunna:
+När du är färdig med självstudien kommer du att kunna:
 
 > [!div class="checklist"]
 >
@@ -76,6 +76,224 @@ Resultatet bör se ut så här:
 Name                                  Resource Group
 ------------------------------------- --------------
 cb110094-9b15-4c55-ad45-6899200eb8dd  SAPHANA
+```
+
+## <a name="create-incremental-backup-policy"></a>Skapa en princip för stegvis säkerhets kopiering
+
+Om du vill skapa en princip för stegvis säkerhets kopiering kör du kommandot [AZ backup policy Create](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_create) med följande parametrar:
+
+* **--säkerhets kopiering-hantering-typ** – Azure-arbetsbelastning
+* **--arbets belastning-typ** -SAPHana
+* **--namn** – namnet på principen
+* **--princip** -JSON-fil med lämplig information för schema och kvarhållning
+* **--resurs-grupp** -resurs grupp för valvet
+* **--valv-namn** – namn på valvet
+
+Exempel:
+
+```azurecli
+az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
+```
+
+Exempel-JSON-utdata (sappolicy.jspå):
+
+```json
+  "eTag": null,
+  "id": "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/saphanaVault/backupPolicies/sappolicy",
+  "location": null,
+  "name": "sappolicy",
+  "properties": {
+    "backupManagementType": "AzureWorkload",
+    "makePolicyConsistent": null,
+    "protectedItemsCount": 0,
+    "settings": {
+      "isCompression": false,
+      "issqlcompression": false,
+      "timeZone": "UTC"
+    },
+    "subProtectionPolicy": [
+      {
+        "policyType": "Full",
+        "retentionPolicy": {
+          "dailySchedule": null,
+          "monthlySchedule": {
+            "retentionDuration": {
+              "count": 60,
+              "durationType": "Months"
+            },
+            "retentionScheduleDaily": null,
+            "retentionScheduleFormatType": "Weekly",
+            "retentionScheduleWeekly": {
+              "daysOfTheWeek": [
+                "Sunday"
+              ],
+              "weeksOfTheMonth": [
+                "First"
+              ]
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          },
+          "retentionPolicyType": "LongTermRetentionPolicy",
+          "weeklySchedule": {
+            "daysOfTheWeek": [
+              "Sunday"
+            ],
+            "retentionDuration": {
+              "count": 104,
+              "durationType": "Weeks"
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          },
+          "yearlySchedule": {
+            "monthsOfYear": [
+              "January"
+            ],
+            "retentionDuration": {
+              "count": 10,
+              "durationType": "Years"
+            },
+            "retentionScheduleDaily": null,
+            "retentionScheduleFormatType": "Weekly",
+            "retentionScheduleWeekly": {
+              "daysOfTheWeek": [
+                "Sunday"
+              ],
+              "weeksOfTheMonth": [
+                "First"
+              ]
+            },
+            "retentionTimes": [
+              "2021-01-19T00:30:00+00:00"
+            ]
+          }
+        },
+        "schedulePolicy": {
+          "schedulePolicyType": "SimpleSchedulePolicy",
+          "scheduleRunDays": [
+            "Sunday"
+          ],
+          "scheduleRunFrequency": "Weekly",
+          "scheduleRunTimes": [
+            "2021-01-19T00:30:00+00:00"
+          ],
+          "scheduleWeeklyFrequency": 0
+        }
+      },
+      {
+        "policyType": "Incremental",
+        "retentionPolicy": {
+          "retentionDuration": {
+            "count": 30,
+            "durationType": "Days"
+          },
+          "retentionPolicyType": "SimpleRetentionPolicy"
+        },
+        "schedulePolicy": {
+          "schedulePolicyType": "SimpleSchedulePolicy",
+          "scheduleRunDays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "scheduleRunFrequency": "Weekly",
+          "scheduleRunTimes": [
+            "2017-03-07T02:00:00+00:00"
+          ],
+          "scheduleWeeklyFrequency": 0
+        }
+      },
+      {
+        "policyType": "Log",
+        "retentionPolicy": {
+          "retentionDuration": {
+            "count": 15,
+            "durationType": "Days"
+          },
+          "retentionPolicyType": "SimpleRetentionPolicy"
+        },
+        "schedulePolicy": {
+          "scheduleFrequencyInMins": 120,
+          "schedulePolicyType": "LogSchedulePolicy"
+        }
+      }
+    ],
+    "workLoadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "azurefiles",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
+} 
+```
+
+Du kan ändra följande avsnitt i principen om du vill ange önskad säkerhets kopierings frekvens och kvarhållning för stegvis säkerhets kopiering.
+
+Exempel:
+
+```json
+{
+  "policyType": "Incremental",
+  "retentionPolicy": {
+    "retentionDuration": {
+      "count": 30,
+      "durationType": "Days"
+    },
+    "retentionPolicyType": "SimpleRetentionPolicy"
+  },
+  "schedulePolicy": {
+    "schedulePolicyType": "SimpleSchedulePolicy",
+    "scheduleRunDays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "scheduleRunFrequency": "Weekly",
+    "scheduleRunTimes": [
+      "2017-03-07T02:00:00+00:00"
+    ],
+    "scheduleWeeklyFrequency": 0
+  }
+}
+```
+
+Exempel:
+
+Om du bara vill ha stegvisa säkerhets kopieringar på lördag och behåller dem i 60 dagar gör du följande ändringar i principen:
+
+* Uppdatera antalet **retentionDuration** till 60 dagar
+* Ange endast lördag som **ScheduleRunDays**
+
+```json
+ {
+  "policyType": "Incremental",
+  "retentionPolicy": {
+    "retentionDuration": {
+      "count": 60,
+      "durationType": "Days"
+    },
+    "retentionPolicyType": "SimpleRetentionPolicy"
+  },
+  "schedulePolicy": {
+    "schedulePolicyType": "SimpleSchedulePolicy",
+    "scheduleRunDays": [
+      "Saturday"
+    ],
+    "scheduleRunFrequency": "Weekly",
+    "scheduleRunTimes": [
+      "2017-03-07T02:00:00+00:00"
+    ],
+    "scheduleWeeklyFrequency": 0
+  }
+}
 ```
 
 ## <a name="protect-new-databases-added-to-an-sap-hana-instance"></a>Skydda nya databaser som läggs till i en SAP HANA-instans

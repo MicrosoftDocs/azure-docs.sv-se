@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623597"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509527"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivera och konfigurera sensor
 
@@ -81,7 +81,7 @@ Logga in och aktivera:
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Azure Defender för IoT-sensor.":::
 
-1. Ange de autentiseringsuppgifter som definierats under sensor installationen. Om du har köpt en förkonfigurerad sensor från pilen måste du först skapa ett lösen ord. Mer information om lösen ords återställning finns i [Undersök lösen ords haveri vid inledande inloggning](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
+1. Ange de autentiseringsuppgifter som definierats under sensor installationen eller Välj alternativet för **lösen ords återställning** . Om du har köpt en förkonfigurerad sensor från pilen måste du först skapa ett lösen ord. Mer information om lösen ords återställning finns i [Undersök lösen ords haveri vid inledande inloggning](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in).
 
 1. När du har loggat in öppnas dialog rutan **Aktivera** . Välj **överför** och gå till den aktiverings fil som du laddade ned under sensor onboarding.
 
@@ -142,7 +142,7 @@ Inlednings vis utförs den här aktiviteten i inlärnings läge, vilket instruer
 
 Granska sensorns Systeminställningar för att se till att sensorn är konfigurerad för optimal identifiering och avisering.
 
-Definiera sensorns system inställningar. Till exempel:
+Definiera sensorns system inställningar. Exempel:
 
 - Definiera ICS (eller IoT) och åtskiljda undernät.
 
@@ -152,7 +152,7 @@ Definiera sensorns system inställningar. Till exempel:
 
 - Om DHCP används definierar du giltiga DHCP-intervall.
 
-- Definiera integration med Active Directory-och e-postservrar.
+- Definiera integration med Active Directory och e-postserver efter behov.
 
 ### <a name="disable-learning-mode"></a>Inaktivera inlärnings läge
 
@@ -181,7 +181,7 @@ Du kommer åt konsol verktyg från sido menyn.
 | -----------|--|--|
 | Instrumentpanel | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Visa en intuitiv ögonblicks bild av status för nätverkets säkerhet. |
 | Enhets karta | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Visa nätverks enheter, enhets anslutningar och enhets egenskaper på en karta. Olika zoomnings-, markerings-och filter alternativ är tillgängliga för visning av ditt nätverk. |
-| Enhets inventering | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Enhets inventeringen visar ett stort antal enhets egenskaper som den här sensorn identifierar. Alternativen är tillgängliga för att: <br /> – Filtrera informationen enligt tabell fälten och se den filtrerade informationen som visas. <br /> – Exportera information till en CSV-fil. <br /> – Importera information om Windows-registret.|
+| Enhets inventering | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | Enhets inventeringen visar en lista över enhets egenskaper som sensorn känner av. Alternativen är tillgängliga för att: <br /> – Sortera eller filtrera informationen enligt tabell fälten och se den filtrerade informationen som visas. <br /> – Exportera information till en CSV-fil. <br /> – Importera information om Windows-registret.|
 | Aviseringar | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | Visa aviseringar när princip överträdelser inträffar, avvikelser från bas linje beteendet inträffar eller någon typ av misstänkt aktivitet i nätverket identifieras. |
 | Rapporter | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | Visa rapporter som baseras på data utvinnings frågor. |
 
@@ -196,7 +196,7 @@ Du kommer åt konsol verktyg från sido menyn.
 | Fönster | Ikon | Description |
 |---|---|---|
 | Data utvinning | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Generera omfattande och detaljerad information om dina nätverks enheter på olika lager. |
-| Trender och statistik | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Visa trender och statistik i en mängd olika widgetar. |
+| Undersökning | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Visa trender och statistik i en mängd olika widgetar. |
 | Riskbedömning | :::image type="icon" source="media/concept-sensor-console-overview/vulnerabilities-icon-azure.png" border="false"::: | Visa fönstret **sårbarheter** . |
 
 **Administratör**
@@ -204,7 +204,7 @@ Du kommer åt konsol verktyg från sido menyn.
 | Fönster | Ikon | Description |
 |---|---|---|
 | Användare | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definiera användare och roller med olika åtkomst nivåer. |
-| Styr | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Vidarebefordra aviserings information till partner som integreras med Defender för IoT, till e-postadresser, till webhook-servrar med mera. <br /> Mer information finns i [vidarebefordra aviserings information](how-to-forward-alert-information-to-partners.md) . |
+| Styr | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Vidarebefordra aviserings information till partner och interna källor (till exempel Sentinel) som integreras med Defender för IoT, till e-postadresser, till webhook-servrar med mera. <br /> Mer information finns i [vidarebefordra aviserings information](how-to-forward-alert-information-to-partners.md) . |
 | Systeminställningar | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Konfigurera systeminställningarna. Definiera till exempel DHCP-inställningar, ange information om e-postservern eller skapa port Ali Aset. |
 | Importera inställningar | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Visa fönstret **Importera inställningar** . Du kan utföra manuella ändringar i en enhets information.<br /> Mer information finns i [Importera enhets information](how-to-import-device-information.md) . |
 

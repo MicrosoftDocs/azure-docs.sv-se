@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, Java-part, mikroprofil, öppen-frihet, WebSphere-frihet, AKS, Kubernetes
-ms.openlocfilehash: 93ffa3ded4d0771438c5d6a2dc23e6e184f04fe2
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4d6e335cd4b522593091094ac6251acc97873208
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99227626"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508085"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Distribuera ett Java-program med öppen frihet eller WebSphere-frihet på ett Azure Kubernetes service-kluster (AKS)
 
@@ -213,7 +213,7 @@ Vänta tills den *externa IP* -adressen ändras från *väntande* till en verkli
 
 Öppna en webbläsare för den externa IP-adressen och porten för din tjänst ( `52.152.189.57:9080` för exemplet ovan) för att se programmets start sida. Du bör se namnet på Pod för dina program repliker som visas längst upp till vänster på sidan. Vänta några minuter och uppdatera sidan visas förmodligen ett annat Pod-namn som visas på grund av belastnings utjämning som tillhandahålls av AKS-klustret.
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/java-liberty-app-aks-deployed-success.png" alt-text="Java-frihets program har distribuerats på AKS":::
+:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java-frihets program har distribuerats på AKS":::
 
 >[!NOTE]
 > - Programmet använder inte HTTPS för närvarande. Vi rekommenderar att du [aktiverar TLS med dina egna certifikat](ingress-own-tls.md).

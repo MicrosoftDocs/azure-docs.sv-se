@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621936"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508616"
 ---
 # <a name="basic-concepts"></a>Grundläggande begrepp 
 
@@ -20,9 +20,9 @@ I den här artikeln beskrivs viktiga fördelar med Azure Defender för IoT.
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>Snabb icke-invasiv distribution och passiv övervakning
 
-Defender för IoT-sensorer ansluter till en intervall port eller ett nätverk, och börjar omedelbart samla in ICS-nätverkstrafik via passiv (agent lös) övervakning. Djup paket inspektion (DPI) används för att dissect trafik från både seriell och Ethernet-kontroll av nätverks utrustning. Defender for IoT har ingen påverkan på nätverksbaserade nätverk eftersom det inte placeras i data Sök vägen och inte aktivt söker på enheter. 
+Defender för IoT-sensorer ansluter till Switch SPAN-portar (spegling) och nätverks kranar och börjar direkt samla in ICS-nätverkstrafik via passiv (agent lös) övervakning. Djup paket inspektion (DPI) används för att dissect trafik från både seriell och Ethernet-kontroll av nätverks utrustning. Defender for IoT har ingen påverkan på nätverksbaserade nätverk eftersom det inte placeras i data Sök vägen och inte aktivt söker på enheter. 
 
-För att tillhandahålla ögonblicks bilder av detaljerad enhets information, kompletterar Defender för IoT-sensorn passiv övervakning med en valfri aktiv komponent. Den här komponenten använder säkra, leverantörs godkända kommandon för att fråga både Windows-och kontrollant-enheter om enhets information, så ofta eller som du vill.
+För att leverera ögonblicks bilder av detaljerad information om Windows-enheter kan Defender för IoT-sensorn konfigureras för att komplettera passiv övervakning med en valfri aktiv komponent. Den här komponenten använder säkra, leverantörsspecifika kommandon för att fråga Windows-enheter om enhets information, så ofta eller så ofta som du vill.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>Inbäddad kunskap om ICS-protokoll, enheter och program
 
@@ -73,7 +73,7 @@ Defender för IoT är en konsol IDE rad vy över alla dina enheter. Den innehål
 
 Defender för IoT möjliggör effektiv hantering av flera distributioner och en omfattande enhetlig vy av nätverket. Defender för IoT optimerar aviserings hantering och kontroll av drift nätverks säkerhet.
 
-Den lokala hanterings konsolen är en webbaserad administrations plattform som gör att du kan övervaka och kontrol lera aktiviteter för globala sensor installationer. Förutom att hantera data som tas emot från distribuerade sensorer, integrerar den lokala hanterings konsolen data från en mängd olika företags resurser: CMDBs, DNS, brand väggar, webb-API: er med mera.
+Den lokala hanterings konsolen är en webbaserad administrations plattform som gör att du kan övervaka och kontrol lera aktiviteter för globala sensor installationer. Förutom att hantera data som tas emot från distribuerade sensorer, integrerar den lokala hanterings konsolen data från olika företags resurser: CMDBs, DNS, brand väggar, webb-API: er med mera.
 
 :::image type="content" source="media/concept-air-gapped-networks/site-management-alert-screen.png" alt-text="Den lokala hanterings konsolen visas.":::
 
@@ -83,7 +83,7 @@ Vi rekommenderar att du bekantar dig med de begrepp, funktioner och funktioner s
 
 Du kan utöka funktionerna i Defender för IoT genom att dela både enhets-och aviserings information med partner system. Integreringar hjälper företag att överbrygga tidigare silode säkerhetslösningar för att avsevärt förbättra enhets synlighet och hot information. Integreringar hjälper företag att påskynda de systemomfattande svaren och minimera riskerna snabbare. 
 
-Integreringarna minskar komplexiteten och eliminerar IT-och mellanliggande silor genom att integrera dem i dina befintliga SOC-arbetsflöden och säkerhets stackar. Till exempel:
+Integreringarna minskar komplexiteten och eliminerar IT-och mellanliggande silor genom att integrera dem i dina befintliga SOC-arbetsflöden och säkerhets stackar. Exempel:
 
 - Siem, till exempel IBM QRadar, Splunk, ArcSight, LogRhythm och RSA netvittne
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881375"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508040"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Introduktion till Azure Defender för SQL
 
@@ -72,7 +72,6 @@ Aviseringar innehåller information om den incident som utlöste dem, samt rekom
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig om Azure Defender för SQL.
+I den här artikeln har du lärt dig om Azure Defender för SQL. Så här använder du de tjänster som har beskrivits:
 
-> [!div class="nextstepaction"]
-> [Sök igenom SQL-servrarna efter sårbarheter med Azure Defender](defender-for-sql-usage.md)
+- Använd Azure Defender för SQL-servrar på datorer för att [söka igenom SQL-servrar för sårbarheter](defender-for-sql-usage.md)

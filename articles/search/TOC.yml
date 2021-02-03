@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: Frågor
       items:
-        - name: Frågetyper och sammansättning
-          href: search-query-overview.md
         - name: Skapa en grundläggande fråga
           href: search-query-create.md
+        - name: Frågetyper och sammansättning
+          href: search-query-overview.md
         - name: Använd enkel syntax (exempel)
           href: search-query-simple-examples.md
         - name: Använda fullständig Lucene (exempel)

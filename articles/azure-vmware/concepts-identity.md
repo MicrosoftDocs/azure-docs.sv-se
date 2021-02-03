@@ -3,12 +3,12 @@ title: Koncept – identitet och åtkomst
 description: Lär dig mer om identitets-och åtkomst koncepten i Azure VMware-lösningen
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: bd1b4cd918ce977cf57d641908b127f7a2d1b0cc
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536106"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509307"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitets koncept för Azure VMware-lösning
 
@@ -53,7 +53,11 @@ Använd kontot "administratör" för att få åtkomst till NSX-T Manager. Den ha
   
 ## <a name="next-steps"></a>Nästa steg
 
-Nästa steg är att lära dig om [metoder för uppgradering av privata moln][concepts-upgrades].
+Nu när du har täckt Azure VMware-lösningens åtkomst och identitets koncept kan du vilja lära dig mer om:
+
+- [Koncept för uppgradering av privata moln](concepts-upgrades.md).
+- [vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösning](concepts-role-based-access-control.md).
+- [Så här aktiverar du Azure VMware-lösnings resurser](enable-azure-vmware-solution.md).
 
 <!-- LINKS - external -->
 

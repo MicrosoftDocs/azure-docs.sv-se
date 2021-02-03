@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1b5dd2fb4ef8cb3f6fd169477d9ee82e912c146e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7cbb9a09a6f8eae6a9325f060664d50c5725e09f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956376"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508523"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Granska och redigera exempelfilerna
 
@@ -16,16 +16,13 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 
 1. Gå till mappen *src/Cloud-to-Device-console-app* . Här ser du *appsettings.jspå* filen och några andra filer:
 
-    * ***C2D-console-app. CSPROJ** _-projekt filen för Visual Studio Code.
-    _ ***operations.jspå** _ – en lista över de åtgärder som du vill att programmet ska köra.
-    _ ***Program.cs** _ – exempel koden. Den här koden:
+    * operations.jsen lista över de åtgärder som du vill att programmet ska köra.
+    * main.py – exempel koden. Den här koden:
 
-        _ Läser in appinställningar.
-        * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess [direkta metoder](../../../direct-methods.md).
+        * Läser in appinställningar.
+        * Anropar direkta metoder som visar IoT Edge modulen för video analys i real tid. Du kan använda modulen för att analysera direktuppspelade video strömmar genom att anropa dess direkta metoder.
         * Pausar så att du kan granska programmets utdata i **terminalfönstret** och granska de händelser som har genererats av modulen i fönstret **utdata** .
-        * Anropar direkta metoder för att rensa resurser.
-
-
+        * Anropar direkta metoder för att rensa resurser.  
 1. Redigera *operations.jspå* filen:
     * Ändra länken till graf-topologin:
 

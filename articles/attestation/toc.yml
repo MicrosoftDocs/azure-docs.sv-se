@@ -63,5 +63,5 @@
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
     - name: Felsöka problem
       href: troubleshoot-guide.md
-    - name: VBS-attesteringsprotokoll
+    - name: TPM-och VBS-attesterings protokoll
       href: virtualization-based-security-protocol.md

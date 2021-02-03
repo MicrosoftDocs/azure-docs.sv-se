@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5cf933a11956bb8459bf6f5cd1b2b366eb8419d8
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021991"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508650"
 ---
 # <a name="disclosure-design-patterns"></a>Utlämnande av designmönster
 Nu när du&#39;ve fastställt rätt [nivå för utlämnande](concepts-disclosure-guidelines.md#disclosure-assessment) av den syntetiska röst upplevelsen,&#39;vi en lämplig tid att utforska potentiella design mönster.
@@ -249,7 +249,6 @@ Använd avslöjad som en möjlighet att fungera utan problem.
 
 * [Utlämnande av röst personal](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Rikt linjer för ansvarig distribution av syntetisk röst teknik](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Översikt över hantera](concepts-gating-overview.md)
 * [Lämna ut](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Nästa steg

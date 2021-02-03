@@ -1,29 +1,29 @@
 ---
-title: 'Snabb start: skapa ett Sök index i Java med hjälp av REST API: er'
+title: 'Snabb start: skapa ett Sök index i Java'
 titleSuffix: Azure Cognitive Search
-description: 'I den här Java-snabb starten lär du dig hur du skapar ett index, läser in data och kör frågor med hjälp av Azure Kognitiv sökning REST-API: er.'
+description: I den här Java-snabb starten lär du dig att skapa ett index, läsa in data och köra frågor med hjälp av Azures Kognitiv sökning klient bibliotek för Java.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 8c688b1ba80050c49b9e2a36696ed7a2fb863e3f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9e05e41ca0c293e31a29dc25a7b4ec7b87734246
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089401"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509426"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Snabb start: skapa ett Azure Kognitiv sökning-index i Java med hjälp av REST API: er
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>Snabb start: skapa ett Azure Kognitiv sökning-index i Java
 > [!div class="op_single_selector"]
+> * [Java](search-get-started-java.md)
 > * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
-> * [Java](search-get-started-java.md)
 > * [Portal](search-get-started-portal.md)
-> * [PowerShell](./search-get-started-powershell.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
@@ -49,11 +49,9 @@ Anrop till tjänsten kräver en URL-slutpunkt och en åtkomst nyckel på varje b
 
 1. [Logga](https://portal.azure.com/)in på Azure Portal och hämta URL: en på sidan **Översikt över** Sök tjänsten. Här följer ett exempel på hur en slutpunkt kan se ut: `https://mydemo.search.windows.net`.
 
-2. I **Inställningar**  >  **nycklar**, hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
+1. I **Inställningar**  >  **nycklar**, hämtar du en administratörs nyckel för fullständiga rättigheter till tjänsten. Det finns två utbytbara administratörs nycklar, som tillhandahålls för affärs kontinuitet om du behöver rulla en över. Du kan använda antingen den primära eller sekundära nyckeln på begär Anden för att lägga till, ändra och ta bort objekt.
 
-   Skapa även en sessionsnyckel. Det är en bra idé att utfärda förfrågningar med skrivskyddad åtkomst.
-
-:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Hämta tjänstens namn och administratör och fråge nycklar" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Hämta tjänstens namn och administratör och fråge nycklar" border="false":::
 
 Varje begäran som skickas till din tjänst kräver en API-nyckel. En giltig nyckel upprättar förtroende, i varje begäran, mellan programmet som skickar begäran och tjänsten som hanterar den.
 
@@ -88,21 +86,72 @@ Börja med att öppna IntelliJ-idén och skapa ett nytt projekt.
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
-    
         <groupId>AzureSearchQuickstart</groupId>
         <artifactId>AzureSearchQuickstart</artifactId>
+        <packaging>jar</packaging>
         <version>1.0-SNAPSHOT</version>
+        <properties>
+            <jackson.version>2.12.1</jackson.version>
+            <auto-value.version>1.6.2</auto-value.version>
+            <junit.version>5.4.2</junit.version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
+        <name>azuresearch-console</name>
+        <url>http://maven.apache.org</url>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value-annotations</artifactId>
+                <version>${auto-value.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.auto.value</groupId>
+                <artifactId>auto-value</artifactId>
+                <version>${auto-value.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-search-documents</artifactId>
+                <version>11.1.3</version>
+            </dependency>
+        </dependencies>
+    
         <build>
-            <sourceDirectory>src</sourceDirectory>
             <plugins>
+                <!--put generated source files to generated-sources-->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.0</version>
                     <configuration>
                         <source>11</source>
                         <target>11</target>
                     </configuration>
                 </plugin>
+                <!-- For JUnit -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
+                </plugin>
+                <!-- Add exec plugin to run demo program -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
@@ -115,27 +164,21 @@ Börja med att öppna IntelliJ-idén och skapa ett nytt projekt.
                         </execution>
                     </executions>
                     <configuration>
-                        <mainClass>main.java.app.App</mainClass>
+                        <mainClass>com.microsoft.azure.search.samples.demo.App</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
             </plugins>
         </build>
-        <dependencies>
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.json</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-        </dependencies>   
     </project>
     ```
 
+<!-- STOPPED HERE -- SENT EMAIL TO TONG XU ASKING FOR INFO -->
 ### <a name="set-up-the-project-structure"></a>Konfigurera projekt strukturen
 
 1. Välj **fil**  >  **projekt struktur**.
 1. Välj **moduler** och expandera käll trädet för att få åtkomst till innehållet i `src`  >   `main` mappen.
-1. I `src`  >   `main`  >  `java` mappen lägger du till `app` och `service` mappar. Det gör du genom att markera `java` mappen, trycka på ALT + INSERT och ange sedan mappnamnet.
+1. I `src`  >   `main`  >  `java` mappen lägger du till mappar för `com` , `microsoft` , `azure` `search` `samples` `demo` ,,,. Det gör du genom att markera `java` mappen, trycka på ALT + INSERT och ange sedan mappnamnet.
 1. I `src`  >   `main`  > `resources` mappen lägger du till `app` och `service` mappar.
 
     När du är klar bör projekt trädet se ut som på följande bild.
@@ -511,7 +554,7 @@ Index definitionen för hotell innehåller enkla fält och ett komplext fält. E
     }
     ```
 
-    Index namnet blir "Hotels-snabb start". Attributen för index fälten avgör hur indexerade data kan genomsökas i ett program. Till exempel `IsSearchable` måste attributet tilldelas till alla fält som ska ingå i en full texts ökning. Mer information om attribut finns i [fält samling och fältattribut](search-what-is-an-index.md#fields-collection).
+    Index namnet blir "Hotels-snabb start". Attributen för index fälten avgör hur indexerade data kan genomsökas i ett program. Till exempel `IsSearchable` måste attributet tilldelas till alla fält som ska ingå i en full texts ökning. Mer information om attribut finns i [skapa index (rest)](/rest/api/searchservice/create-index).
     
     `Description`Fältet i det här indexet använder den valfria `analyzer` egenskapen för att åsidosätta standard språk analys för Lucene. `Description_fr`I fältet används den franska Lucene-analysen `fr.lucene` eftersom den innehåller fransk text. `Description`Använder de valfria Microsoft Language Analyzer-en. Lucene. Mer information om analys verktyg finns i [analys verktyg för text bearbetning i Azure kognitiv sökning](search-analyzers.md).
 
