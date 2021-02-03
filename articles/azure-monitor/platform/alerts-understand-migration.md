@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 6509425f11b09a2fa5229f9dd68a508241391925
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e57b3dd31455db245103469874c517fe54479110
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875928"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526915"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>Förstå migrerings alternativ för nya aviseringar
 
-Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md), men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Ett nytt datum meddelas snart för migrering av återstående aviseringar, [Azure Government molnet](../../azure-government/documentation-government-welcome.md)och [Azure Kina 21Vianet](https://docs.azure.cn/).
+Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Ett nytt datum meddelas snart för migrering av återstående aviseringar, [Azure Government molnet](../../azure-government/documentation-government-welcome.md)och [Azure Kina 21Vianet](https://docs.azure.cn/).
 
 I den här artikeln förklaras hur det manuella migrerings-och volontär verktyget fungerar, som kommer att användas för att migrera återstående aviserings regler. Det beskriver också lösningar för några vanliga problem.
 
@@ -193,7 +193,7 @@ För Cosmos DB är motsvarande mått det som visas nedan:
 | Mått i klassiska aviseringar | Motsvarande mått i nya aviseringar | Kommentarer|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
-| Data storlek | DataUsage| |
+| Datavolym | DataUsage| |
 | Antal dokument | DocumentCount||
 | Index storlek | IndexUsage||
 | Avgift för mongo antal förfrågningar| MongoRequestCharge med dimension "CommandName" = "count"||
@@ -264,4 +264,4 @@ Som en del av migreringen skapas nya mått varningar och nya åtgärds grupper o
 ## <a name="next-steps"></a>Nästa steg
 
 - [Använda migreringsverktyget](alerts-using-migration-tool.md)
-- [Förbereda för migreringen](alerts-prepare-migration.md)
+- [Förbereda för migrering](alerts-prepare-migration.md)

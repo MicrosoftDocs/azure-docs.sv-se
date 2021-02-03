@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006446"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526983"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Självstudie: konfigurera attributet Skriv-back från Azure AD till SAP SuccessFactors
 Syftet med den här självstudien är att Visa stegen för att skriva tillbaka attribut från Azure AD till SAP SuccessFactors personal Central. 
@@ -282,7 +282,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från Success
    | 3 | 8448 | emailType | Det här konstanta värdet är det SuccessFactors-ID-värde som är kopplat till Business email. Uppdatera det här värdet för att matcha din SuccessFactors-miljö. I avsnittet [Hämta konstant värde för emailType](#retrieve-constant-value-for-emailtype) finns anvisningar för hur du anger det här värdet. |
    | 4 | true | emailIsPrimary | Använd det här attributet för att ställa in företags-e-post som primär i SuccessFactors. Om e-postmeddelandet inte är primärt, anger du den här flaggan till falsk. |
    | 5 | userPrincipalName | [custom01 – custom15] | Med **Lägg till ny mappning** kan du välja att skriva userPrincipalName eller något Azure AD-attribut till ett anpassat attribut som är tillgängligt i SuccessFactors-användarobjektet.  |
-   | 6 | on-lokal-samAccountName | användarnamn | Med **Lägg till ny mappning** kan du välja att mappa lokalt sAMAccountName till SuccessFactors username-attribut. |
+   | 6 | På lokal SamAccountName | användarnamn | Med **Lägg till ny mappning** kan du välja att mappa lokalt sAMAccountName till SuccessFactors username-attribut. Använd [Azure AD Connect Sync: Katalog tillägg](../hybrid/how-to-connect-sync-feature-directory-extensions.md) för att synkronisera sAMAccountName till Azure AD. Den visas i list rutan källa som *extension_yourTenantGUID_samAccountName* |
    | 7 | Enkel inloggning | loginMethod | Om SuccessFactors-klienten har kon figurer ATS för [partiell SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)och använder Lägg till ny mappning, kan du ange loginMethod till ett konstant värde "SSO" eller "PWD". |
    | 8 | telephoneNumber | businessPhoneNumber | Använd den här mappningen för att flöda *telephoneNumber* från Azure AD till SuccessFactors Business/Work-telefonnumret. |
    | 9 | 10605 | businessPhoneType | Det här konstanta värdet är det SuccessFactors-ID-värde som är kopplat till företags telefonen. Uppdatera det här värdet för att matcha din SuccessFactors-miljö. I avsnittet [Hämta konstant värde för phoneType](#retrieve-constant-value-for-phonetype) finns anvisningar för hur du anger det här värdet. |
@@ -326,7 +326,7 @@ När SuccessFactors-konfigurationen har slutförts kan du aktivera etablerings t
 
 1. Välj **omfång**. Du kan välja något av följande alternativ: 
    * **Synkronisera alla användare och grupper**: Välj det här alternativet om du planerar att skriva tillbaka mappade attribut för alla användare från Azure AD till SuccessFactors, enligt de definitions regler som definierats under **mappningar**  ->  **käll objekt omfånget**. 
-   * **Synkronisera endast tilldelade användare och grupper**: Välj det här alternativet om du planerar att skriva tillbaka mappade attribut för endast användare som du har tilldelat till **Application** det här programmet i  ->  **Manage**  ->  meny alternativet hantera **användare och grupper** i programmet. Dessa användare omfattas också av de definitions regler som definierats under **mappningar**  ->  **käll objekt omfånget**.
+   * **Synkronisera endast tilldelade användare och grupper**: Välj det här alternativet om du planerar att skriva tillbaka mappade attribut för endast användare som du har tilldelat till det här programmet i  ->    ->  meny alternativet hantera **användare och grupper** i programmet. Dessa användare omfattas också av de definitions regler som definierats under **mappningar**  ->  **käll objekt omfånget**.
 
    > [!div class="mx-imgBorder"]
    > ![Välj intervall för tillbakaskrivning](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)

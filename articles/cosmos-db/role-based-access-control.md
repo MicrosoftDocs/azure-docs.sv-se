@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2a5ec03bcd7d5002f85d32ed63614d277e95cfa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: db6721754802a3eeda387339498dadb9d25b3685
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943749"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526949"
 ---
 # <a name="azure-role-based-access-control-in-azure-cosmos-db"></a>Rollbaserad åtkomst kontroll i Azure i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,8 @@ Följande är de inbyggda roller som stöds av Azure Cosmos DB:
 |---------|---------|
 |[DocumentDB-konto deltagare](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan hantera Azure Cosmos DB-konton.|
 |[Cosmos DB konto läsare](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan läsa Azure Cosmos DB konto data.|
-|[Ansvarig för Cosmos-säkerhetskopiering](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Kan skicka en Restore-begäran för en Azure Cosmos-databas eller en behållare. Det går inte att komma åt data eller använda Datautforskaren.|
+|[Ansvarig för Cosmos-säkerhetskopiering](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Kan skicka en Restore-begäran för Azure Portal för en regelbunden säkerhets kopierings aktive rad databas eller en behållare. Kan ändra intervallet för säkerhets kopiering och kvarhållning av Azure Portal. Det går inte att komma åt data eller använda Datautforskaren.  |
+| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md) | Det går att utföra återställnings åtgärden för Azure Cosmos DB konto med kontinuerlig säkerhets kopierings läge.|
 |[Cosmos DB operatör](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Kan etablera Azure Cosmos-konton, databaser och behållare. Det går inte att komma åt data eller använda Datautforskaren.|
 
 > [!IMPORTANT]
@@ -36,7 +37,7 @@ Följande är de inbyggda roller som stöds av Azure Cosmos DB:
 
 Fönstret **åtkomst kontroll (IAM)** i Azure Portal används för att konfigurera rollbaserad åtkomst kontroll i Azure Cosmos-resurser. Rollerna tillämpas på användare, grupper, tjänstens huvud namn och hanterade identiteter i Active Directory. Du kan använda inbyggda roller eller anpassade roller för enskilda användare och grupper. Följande skärm bild visar Active Directory integration (Azure RBAC) med åtkomst kontroll (IAM) i Azure Portal:
 
-:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Åtkomst kontroll (IAM) i Azure Portal – demonstrera databas säkerhet":::
+:::image type="content" source="./media/role-based-access-control/database-security-identity-access-management-rbac.png" alt-text="Åtkomst kontroll (IAM) i Azure Portal-demonstrera databas säkerhet.":::
 
 ## <a name="custom-roles"></a>Anpassade roller
 
