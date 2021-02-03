@@ -5,17 +5,17 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 4b0d3acda56c3f45128d1cc7cefcc4eb938281a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8b4cdd834c0db6869fdf804b43914eaa74b14319
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943785"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525559"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Skapa, Visa och hantera klassiska mått varningar med Azure Monitor
 
 > [!WARNING]
-> Den här artikeln beskriver hur du skapar äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](./alerts-overview.md). Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md), men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna.
+> Den här artikeln beskriver hur du skapar äldre klassiska mått varningar. Azure Monitor har nu stöd för [nyare aviseringar i nästan real tid och nya aviserings upplevelser](./alerts-overview.md). Klassiska aviseringar [dras tillbaka](./monitoring-classic-retirement.md) för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna.
 >
 
 Klassiska mått varningar i Azure Monitor ger ett sätt att få ett meddelande när ett av dina mått överskrider ett tröskelvärde. Klassiska mått varningar är en äldre funktion som endast tillåter aviseringar på icke-dimensionella mått. Det finns en befintlig ny funktion som kallas mått aviseringar som har förbättrade funktioner i klassiska mått varningar. Du kan lära dig mer om de nya funktionerna för mått varningar i [Översikt över mått aviseringar](./alerts-metric-overview.md). I den här artikeln beskriver vi hur du skapar, visar och hanterar klassiska mått för aviserings regler via Azure Portal, Azure CLI och PowerShell.

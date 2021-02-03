@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bd64ca877f0bfd81597e091ef8ef000ad1b76992
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752209"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526440"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Säkerhetspoäng i Azure Security Center
 
@@ -244,8 +244,8 @@ Vi rekommenderar att varje organisation noggrant granskar sina tilldelade Azure 
     <td class="tg-lboi"; width=55%>- Anpassningsbara program kontroller ska vara aktiverade på virtuella datorer<br>- Övervaknings agenten ska installeras på dina virtuella datorer<br>- Övervaknings agenten ska installeras på dina datorer<br>- Log Analytics agenten ska installeras på dina Windows-baserade Azure Arc-datorer (för hands version)<br>- Log Analytics agent ska installeras på Linux-baserade Azure Arc-datorer (för hands version)<br>- Övervaknings agentens hälso problem bör lösas på dina datorer</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Använd data klassificering (max antal poäng 2)</p></strong>Genom att klassificera din organisations data efter känslighet och inverkan på företaget kan du fastställa och tilldela värden till data och tillhandahålla strategin och grunden för styrning.<br><a href="/azure/information-protection/what-is-information-protection">Azure information Protection</a> kan hjälpa med data klassificering. Den använder krypterings-, identitets-och Auktoriseringsprinciper för att skydda data och begränsa data åtkomsten. Vissa klassificeringar som Microsoft använder är icke-affärsmässiga, offentliga, allmänna, konfidentiella och mycket konfidentiella.</td>
-    <td class="tg-lboi"; width=55%>- Känsliga data i dina SQL-databaser ska klassificeras (för hands version)</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Använd data klassificering (max antal poäng 0)</p></strong>Genom att klassificera din organisations data efter känslighet och inverkan på företaget kan du fastställa och tilldela värden till data och tillhandahålla strategin och grunden för styrning.<br><a href="/azure/information-protection/what-is-information-protection">Azure information Protection</a> kan hjälpa med data klassificering. Den använder krypterings-, identitets-och Auktoriseringsprinciper för att skydda data och begränsa data åtkomsten. Vissa klassificeringar som Microsoft använder är icke-affärsmässiga, offentliga, allmänna, konfidentiella och mycket konfidentiella.</td>
+    <td class="tg-lboi"; width=55%>- Känsliga data i dina SQL-databaser bör klassificeras</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Skydda program mot DDoS-attacker (Max poäng 2)</p></strong>Distributed denial-of-service (DDoS) kan överbelasta resurser och göra program oanvändbara. Använd <a href="/azure/virtual-network/ddos-protection-overview">Azure DDoS Protection standard</a> för att skydda din organisation från de tre viktigaste typerna av DDoS-attacker:<br>Med - <strong>volym attacker</strong> översvämmas nätverket med legitim trafik. DDoS Protection standard minskar dessa attacker genom att absorbera eller rensa dem automatiskt.<br>- <strong>Protokoll attacker</strong> återger ett mål som inte kan nås genom att utnyttja svagheter i skikt 3-och lager 4-protokollstacken. DDoS Protection-standarden minimerar dessa attacker genom att blockera skadlig trafik.<br>- <strong>Resurs (program) skikt attacker</strong> mål webb program paket. Skydda mot den här typen med en brand vägg för webbaserade program och DDoS Protection standard.</td>

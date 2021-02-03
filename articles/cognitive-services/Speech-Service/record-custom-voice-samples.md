@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 966b11e2c9a0f7ffc5e6ec9238080b9076d37af6
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a44ff15300d05713e812f5c60ad3bf00d9f13104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572433"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526864"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Spela in röst exempel för att skapa en anpassad röst
 
@@ -112,7 +112,7 @@ Under upphovs rätts lagstiftning kan en aktörs läsning av upphovsrättsskydda
 
 Lyckligt vis är det möjligt att undvika dessa problem helt och hållet. Det finns många text källor som du kan använda utan behörighet eller licens.
 
-|Text källa|Beskrivning|
+|Text källa|Description|
 |-|-|
 |[CMU Arctic-sökkorpus](http://festvox.org/cmu_arctic/)|Om 1100 meningar som valts från frånvaro av upphovs rätts arbete som används i tal syntes projekt. En utmärkt start punkt.|
 |Fungerar inte längre<br>under Copyright|Vanligt vis publicerade Works före 1923. För engelska erbjuder [Project Gutenberg](https://www.gutenberg.org/) tusentals sådana arbeten. Du kanske vill fokusera på nyare arbeten, eftersom språket är närmare för modern engelska.|

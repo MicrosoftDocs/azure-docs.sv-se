@@ -1,6 +1,6 @@
 ---
 title: Konfigurera lokala mått och loggar för Azure API Management egen värd-Gateway | Microsoft Docs
-description: Lär dig hur du konfigurerar lokala mått och loggar för Azure API Management egen värd-Gateway
+description: Lär dig hur du konfigurerar lokala mått och loggar för Azure API Management egen värd-gateway på en Kubernetes Custer
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/30/2020
+ms.date: 02/01/2021
 ms.author: apimpm
-ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e34c25b2e3bfa845e258dc5d9699497d7ffcb004
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254511"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526678"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurera lokala mått och loggar för Azure API Management egen värd-Gateway
 
-Den här artikeln innehåller information om hur du konfigurerar lokala mått och loggar för den lokala [gatewayen](./self-hosted-gateway-overview.md). Information om hur du konfigurerar moln mått och loggar finns i [den här artikeln](how-to-configure-cloud-metrics-logs.md). 
+Den här artikeln innehåller information om hur du konfigurerar lokala mått och loggar för den [självbetjänings-Gateway](./self-hosted-gateway-overview.md) som distribueras i ett Kubernetes-kluster. Information om hur du konfigurerar moln mått och loggar finns i [den här artikeln](how-to-configure-cloud-metrics-logs.md). 
 
 ## <a name="metrics"></a>Mått
 Den egna värdbaserade gatewayen stöder [statistik](https://github.com/statsd/statsd), som har blivit ett enhetligt protokoll för insamling och insamling av mått. Det här avsnittet går igenom stegen för att distribuera statistik till Kubernetes, konfigurera gatewayen för att generera mått via statistik och använda [Prometheus](https://prometheus.io/) för att övervaka måtten. 
@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: sputnik-metrics-statsd
-        image: prom/statsd-exporter
+        image: mcr.microsoft.com/aks/hcp/prom/statsd-exporter
         ports:
         - name: tcp
           containerPort: 9102
@@ -80,7 +80,7 @@ spec:
           - mountPath: /tmp
             name: sputnik-metrics-config-files
       - name: sputnik-metrics-prometheus
-        image: prom/prometheus
+        image: mcr.microsoft.com/oss/prometheus/prometheus
         ports:
         - name: tcp
           containerPort: 9090
@@ -149,12 +149,12 @@ sputnik-metrics-statsd       NodePort       10.0.41.179   <none>          8125:3
 
 Nu när både statistik-och Prometheus har distribuerats kan vi uppdatera konfigurationerna för den egna värdbaserade gatewayen för att börja generera mått via statistik. Funktionen kan aktive ras eller inaktive ras med `telemetry.metrics.local` nyckeln i ConfigMap för lokal gateway-distribution med ytterligare alternativ. Nedan visas en uppdelning av tillgängliga alternativ:
 
-| Field  | Default | Beskrivning |
+| Fält  | Standardvärde | Description |
 | ------------- | ------------- | ------------- |
 | telemetri. Metrics. local  | `none` | Aktiverar loggning via statistik. Värdet kan vara `none` , `statsd` . |
-| telemetri. Metrics. local. statal. Endpoint  | Saknas | Anger den statistikbaserade slut punkten. |
-| telemetri. Metrics. local. statal. sampling  | Saknas | Anger samplings frekvens för mått. Värdet kan vara mellan 0 och 1. t. ex., `0.5`|
-| telemetri. Metrics. local. statal. tag-format  | Saknas | [Etikett format](https://github.com/prometheus/statsd_exporter#tagging-extensions)för statistik för exportör. Värdet kan vara `none` , `librato` , `dogStatsD` , `influxDB` . |
+| telemetri. Metrics. local. statal. Endpoint  | saknas | Anger den statistikbaserade slut punkten. |
+| telemetri. Metrics. local. statal. sampling  | saknas | Anger samplings frekvens för mått. Värdet kan vara mellan 0 och 1. t. ex., `0.5`|
+| telemetri. Metrics. local. statal. tag-format  | saknas | [Etikett format](https://github.com/prometheus/statsd_exporter#tagging-extensions)för statistik för exportör. Värdet kan vara `none` , `librato` , `dogStatsD` , `influxDB` . |
 
 Här är en exempel konfiguration:
 
@@ -189,7 +189,7 @@ Nu har vi allt distribuerat och konfigurerat, den egna värdbaserade gatewayen b
 
 Gör vissa API-anrop via den egen värdbaserade gatewayen, om allt är korrekt konfigurerat, bör du kunna visa nedanstående mått:
 
-| Mått  | Beskrivning |
+| Metric  | Beskrivning |
 | ------------- | ------------- |
 | Begäranden  | Antal API-begäranden under perioden |
 | DurationInMS | Antalet millisekunder från att gatewayen fick begäran till då svaret har skickats fullständigt |
@@ -208,15 +208,15 @@ Om din egen värdbaserade Gateway distribueras i Azure Kubernetes-tjänsten kan 
 
 Den egna värdbaserade gatewayen stöder också ett antal protokoll `localsyslog` , inklusive, `rfc5424` och `journal` . I tabellen nedan sammanfattas alla alternativ som stöds. 
 
-| Field  | Default | Beskrivning |
+| Fält  | Standardvärde | Description |
 | ------------- | ------------- | ------------- |
 | telemetri. logs. STD  | `text` | Aktiverar loggning till standard strömmar. Värdet kan vara `none` , `text` , `json` |
 | telemetri. logs. local  | `none` | Aktiverar lokal loggning. Värdet kan vara `none` ,,, `auto` `localsyslog` `rfc5424` , `journal`  |
-| telemetri. logs. local. localsyslog. Endpoint  | Saknas | Anger localsyslog-slutpunkt.  |
-| telemetri. logs. local. localsyslog. Facility  | Saknas | Anger localsyslog [Facility-kod](https://en.wikipedia.org/wiki/Syslog#Facility). t. ex., `7` 
-| telemetri. logs. local. rfc5424. Endpoint  | Saknas | Anger rfc5424-slutpunkt.  |
-| telemetri. logs. local. rfc5424. Facility  | Saknas | Anger anläggnings kod per [rfc5424](https://tools.ietf.org/html/rfc5424). t. ex., `7`  |
-| telemetri. logs. local. journal. Endpoint  | Saknas | Anger Journal slut punkt.  |
+| telemetri. logs. local. localsyslog. Endpoint  | saknas | Anger localsyslog-slutpunkt.  |
+| telemetri. logs. local. localsyslog. Facility  | saknas | Anger localsyslog [Facility-kod](https://en.wikipedia.org/wiki/Syslog#Facility). t. ex., `7` 
+| telemetri. logs. local. rfc5424. Endpoint  | saknas | Anger rfc5424-slutpunkt.  |
+| telemetri. logs. local. rfc5424. Facility  | saknas | Anger anläggnings kod per [rfc5424](https://tools.ietf.org/html/rfc5424). t. ex., `7`  |
+| telemetri. logs. local. journal. Endpoint  | saknas | Anger Journal slut punkt.  |
 
 Här är en exempel konfiguration av lokal loggning:
 

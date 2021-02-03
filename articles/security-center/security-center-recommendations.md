@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756817"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526532"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Säkerhetsrekommendationer i Azure Security Center 
 
@@ -39,11 +39,19 @@ Varje rekommendation ger dig följande:
 
 ## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Hur avgör Microsoft vad som behöver säkras och skärpas?
 
-Security Centers rekommendationer baseras på Azures säkerhets benchmark. 
+Security Centers rekommendationer baseras på Azures säkerhets benchmark. Nästan alla rekommendationer har en underliggande princip som härleds från ett krav i benchmark.
 
-Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
+Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet. Läs mer om [Azure Security Benchmark](../security/benchmarks/introduction.md).
 
-Läs mer om [Azure Security Benchmark](../security/benchmarks/introduction.md).
+När du granskar informationen om en rekommendation är det ofta bra att kunna se den underliggande principen. För varje rekommendation som stöds av en princip använder du länken **Visa princip definition** från rekommendations informations sidan för att gå direkt till Azure policy posten för den aktuella principen:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Länk till Azure Policy sida för den speciella principen som stöder en rekommendation":::
+
+Använd den här länken för att Visa princip definitionen och granska utvärderings logiken. 
+
+Om du granskar listan över rekommendationer i [referens guiden för säkerhets rekommendationer](recommendations-reference.md)kan du också se länkar till princip definitions sidorna:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Åtkomst till Azure Policy sidan för en speciell princip direkt från referens sidan för Azure Security Center rekommendationer":::
 
 ## <a name="monitor-recommendations"></a>Övervaka rekommendationer <a name="monitor-recommendations"></a>
 
@@ -63,9 +71,12 @@ Security Center analyserar dina resursers säkerhets tillstånd för att identif
 
     Sidan innehåller:
 
-    1. **Tillämpa** och **neka** knappar på rekommendationer som stöds (se [förhindra felaktig konfiguration med tvinga/neka-rekommendationer](prevent-misconfigurations.md))
+    1. För rekommendationer som stöds visar det övre verktygsfältet en eller flera av följande knappar:
+        - **Genomdriva** och **neka** (se [förhindra felaktig konfiguration med tvinga/neka-rekommendationer](prevent-misconfigurations.md))
+        - **Visa princip definition** för att gå direkt till Azure policy posten för den underliggande principen
     1. **Allvarlighets grad**
-    1. **Aktualitets intervall**  (i förekommande fall) 
+    1. **Aktualitets intervall** (i förekommande fall)
+    1. **Antal undantagna resurser** om undantag föreligger för den här rekommendationen visar detta antalet resurser som har undantagits
     1. **Beskrivning** – en kort beskrivning av problemet
     1. **Reparations steg** – en beskrivning av de manuella steg som krävs för att åtgärda säkerhets problemet på de berörda resurserna. För rekommendationer med snabb korrigering kan du välja **Visa reparations logik** innan du använder den föreslagna korrigeringen för dina resurser. 
     1. **Resurser som påverkas** – dina resurser grupperas i flikar:

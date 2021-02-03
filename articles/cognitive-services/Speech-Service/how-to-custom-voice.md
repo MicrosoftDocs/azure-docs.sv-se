@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 756c40be52f2739d3a7682752b038bfe3958d47d
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 4e487a3eab70e7d561468a8fac2103e177d2abc5
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507718"
+ms.locfileid: "99524983"
 ---
 # <a name="get-started-with-custom-voice"></a>Komma igång med Custom Voice
 
@@ -39,7 +39,10 @@ Diagrammet nedan visar stegen för att skapa en anpassad röst modell med hjälp
 
 ## <a name="custom-neural-voices"></a>Anpassade neurala-röster
 
-Neurala röst anpassnings funktion finns för närvarande i offentlig för hands version, begränsad till utvalda kunder. Fyll i det här [program formuläret](https://go.microsoft.com/fwlink/?linkid=2108737) för att komma igång.
+Anpassad röst stöder för närvarande både standard-och neurala-nivåer. Anpassad neurala-röst ger användarna möjlighet att bygga bättre kvalitets röst modeller samtidigt som de kräver mindre data och tillhandahåller mått som hjälper dig att distribuera AI-ett ansvarsfullt sätt. Vi rekommenderar att du använder anpassad neurala-röst för att utveckla mer realistiska röster för mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. [Läs mer om den anpassade neurala rösten](https://aka.ms/CNV-Transparency-Note). 
+
+> [!NOTE]
+> Som en del av Microsofts engagemang för att utforma ansvarig AI har vi begränsat användningen av anpassad neurala röst. Du får bara till gång till tekniken när dina program har granskats och du har åtagit dig att använda det i justering med våra ansvariga AI-principer. Läs mer om vår [policy om att begränsa åtkomsten](https://aka.ms/gating-overview) och [tillämpa den här](https://aka.ms/customneural). De [språk](language-support.md#customization) och [regioner](regions.md#custom-voices) som stöds för standard-och neurala-versionen av den anpassade rösten är olika. Kontrol lera informationen innan du börjar.  
 
 ## <a name="set-up-your-azure-account"></a>Konfigurera ditt Azure-konto
 
@@ -53,7 +56,7 @@ När du har skapat ett Azure-konto och en prenumeration på en röst tjänst må
 4. Om du vill växla till en annan tal prenumeration använder du kugg hjuls-ikonen som finns i det övre navigerings fönstret.
 
 > [!NOTE]
-> Du måste ha en F0-eller S0-nyckel som skapats i Azure innan du kan använda tjänsten.
+> Du måste ha en F0-eller S0 Speech service-nyckel som skapats i Azure innan du kan använda tjänsten. Anpassad neurala-röst stöder endast S0-nivån. 
 
 ## <a name="how-to-create-a-project"></a>Så här skapar du ett projekt
 

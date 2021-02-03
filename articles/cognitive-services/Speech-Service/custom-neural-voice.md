@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: trbye
-ms.openlocfilehash: 9e230ff4e84eba7b61846540fef2915765fa4f77
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: baa48ede04b9de98bd69de69753c97b5fcee7329
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509716"
+ms.locfileid: "99525270"
 ---
 # <a name="what-is-custom-neural-voice"></a>Vad är anpassat neurala röst?
 
@@ -51,7 +51,7 @@ Med anpassnings funktionen för anpassad neurala röst kan du anpassa neurala TT
 
 ## <a name="responsible-use-of-ai"></a>Ansvarsfull användning av AI
 
-Information om hur du använder anpassade neurala Voice-ett ansvarsfullt sätt finns i [Oh-anteckningen](https://docs.microsoft.com/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice). Microsofts Oh-kommentarer är avsedda att hjälpa dig att förstå hur vår AI-teknik fungerar, vilka alternativ som system ägare kan göra för att påverka systemets prestanda och hur viktigt det är att tänka på hela systemet, inklusive teknik, människor och miljö.
+Information om hur du använder anpassade neurala Voice-ett ansvarsfullt sätt finns i [Oh-anteckningen](/legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context). Microsofts Oh-kommentarer är avsedda att hjälpa dig att förstå hur vår AI-teknik fungerar, vilka alternativ som system ägare kan göra för att påverka systemets prestanda och hur viktigt det är att tänka på hela systemet, inklusive teknik, människor och miljö.
 
 ## <a name="next-steps"></a>Nästa steg
 

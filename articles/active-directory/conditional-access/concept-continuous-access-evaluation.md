@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678212"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524676"
 ---
 # <a name="continuous-access-evaluation"></a>Utvärdering av kontinuerlig åtkomst
 
@@ -48,7 +48,7 @@ Utvärdering av kontinuerlig åtkomst implementeras genom att aktivera tjänster
 - Lösen ordet för en användare ändras eller återställs
 - Multi-Factor Authentication har Aktiver ATS för användaren
 - Administratören återkallar uttryckligen alla uppdateringstoken för en användare
-- Utökad användar risk upptäckt av Azure AD Identity Protection
+- Hög användar risk som identifieras av Azure AD Identity Protection
 
 Den här processen gör det möjligt för användaren att förlora åtkomsten till SharePoint Online-filer, e-post, kalender eller uppgifter i organisationen, och team från Microsoft 365-klientens appar i minuter efter en av dessa kritiska händelser. 
 
@@ -146,7 +146,7 @@ För CAE har vi bara insikter om namngivna IP-baserade namngivna platser. Vi har
 
 ### <a name="ip-address-configuration"></a>Konfigurera IP-adress
 
-Identitets leverantören och resurs leverantörerna kan se olika IP-adresser. Detta matchnings fel kan inträffa på grund av nätverks-proxy-implementeringar i din organisation eller felaktiga IPv4/IPv6-konfigurationer mellan identitets leverantören och resurs leverantören. Till exempel:
+Identitets leverantören och resurs leverantörerna kan se olika IP-adresser. Detta matchnings fel kan inträffa på grund av nätverks-proxy-implementeringar i din organisation eller felaktiga IPv4/IPv6-konfigurationer mellan identitets leverantören och resurs leverantören. Exempel:
 
 - Din identitetsprovider ser en IP-adress från klienten.
 - Resurs leverantören ser en annan IP-adress från klienten när den har passerat via en proxy.

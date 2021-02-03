@@ -4,12 +4,12 @@ description: Lär dig hur du skapar en princip för Azure Policy gäst konfigura
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9d9a66ddad5bd3511d5372f62558af35cfcb5616
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226615"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525355"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Skapa gästkonfigurationsprinciper för Linux
 
@@ -217,7 +217,7 @@ Parametrar för `Publish-GuestConfigurationPackage` cmdleten:
 Exemplet nedan publicerar paketet till ett lagrings behållar namn ' guestconfiguration '.
 
 ```azurepowershell-interactive
-Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
+Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExists.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
 ```
 
 När ett anpassat princip paket för gäst konfiguration har skapats och överförts skapar du princip definitionen för gäst konfiguration. `New-GuestConfigurationPolicy`Cmdleten tar ett anpassat princip paket och skapar en princip definition.
@@ -331,8 +331,9 @@ $PolicyParameterInfo = @(
 
 # The hashtable also supports a property named 'AllowedValues' with an array of strings to limit input to a list
 
-New-GuestConfigurationPolicy
-    -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
+$uri = 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D'
+
+New-GuestConfigurationPolicy -ContentUri $uri `
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `

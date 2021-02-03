@@ -4,16 +4,16 @@ description: Lär dig hur processen för automatisk migrering fungerar.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6a2d032c6aa33b72fe422638df45ca48bf8b1036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3550dcef174a4d970917fabfda3c4fd2a8df4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847291"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526559"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Förstå processen för automatisk migrering för dina klassiska aviserings regler
 
-Som [tidigare](monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Som en del av indragnings processen finns [ett Migreringsverktyg](alerts-using-migration-tool.md) i Azure Portal för kunder att utlösa migrering själva.
+Som [tidigare](monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Som en del av indragnings processen finns [ett Migreringsverktyg](alerts-using-migration-tool.md) i Azure Portal för kunder att utlösa migrering själva.
 Den här artikeln vägleder dig genom processen för automatisk migrering och hjälper dig att lösa eventuella problem som du kan köra i.
 
   > [!NOTE]
@@ -21,9 +21,9 @@ Den här artikeln vägleder dig genom processen för automatisk migrering och hj
 
 ## <a name="what-will-happen-during-the-automatic-migration-process"></a>Vad händer när processen för automatisk migrering sker?
 
-- Från och med **1 September 2019**kommer kunder inte att kunna skapa några nya regler för klassisk avisering förutom [vissa mått](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
+- Från och med **1 September 2019** kommer kunder inte att kunna skapa några nya regler för klassisk avisering förutom [vissa mått](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 - För undantag kan kunden fortsätta att skapa nya klassiska aviserings regler och använda sina klassiska aviseringar fram till ytterligare ett meddelande.
-- Från och med **1 September 2019**aktive ras migrering av klassiska aviseringar i batchar för kunder som har klassiska aviseringar.
+- Från och med **1 September 2019** aktive ras migrering av klassiska aviseringar i batchar för kunder som har klassiska aviseringar.
 - Precis som med verktyget för frivillig migrering kommer vissa klassiska aviserings regler som inte går migrera att lämnas som de är. Dessa klassiska varnings regler kommer att fortsätta att stödjas fram till ytterligare meddelande. Alla ogiltiga regler för klassisk avisering tas dock bort eftersom de inte fungerar.
 Eventuella klassiska varnings regler som övervakar borttagna mål resurser eller på [mått som inte längre stöds](alerts-understand-migration.md#classic-alert-rules-on-deprecated-metrics) betraktas som ogiltiga.
 - När migreringen för din prenumeration startar, om det inte finns några problem, ska migreringen slutföras inom en timme. Kunder kan övervaka status för migreringen på [bladet migrering i Azure Monitor](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel).
@@ -56,5 +56,5 @@ I [fel söknings guiden](alerts-understand-migration.md#common-problems-and-reme
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Förbereda för migreringen](alerts-prepare-migration.md)
+- [Förbereda för migrering](alerts-prepare-migration.md)
 - [Förstå hur migreringsverktyget fungerar](alerts-understand-migration.md)

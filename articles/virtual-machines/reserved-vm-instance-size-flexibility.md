@@ -1,25 +1,25 @@
 ---
 title: Storleks flexibilitet för virtuella datorer – Azure Reserved VM Instances
 description: Lär dig vilken storleks serie en reservations rabatt gäller när du använder en reserverad VM-instans.
-author: manish-shukla01
+author: yashesvi
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.author: yashesvi
+ms.openlocfilehash: e6e96ff41503751741c8afc2229d66fd596e0806
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855514"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525372"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibel storlek för virtuella datorer med reserverade VM-instanser
 
 När du köper en reserverad VM-instans kan du välja att optimera storleks flexibiliteten för instans storleken eller kapacitets prioriteten. Mer information om hur du ställer in eller ändrar optimerings inställningen för reserverade VM-instanser finns i [ändra optimerings inställningen för reserverade VM-instanser](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 
-Med en reserverad virtuell dator instans som är optimerad för flexibilitet i instans storleken kan den reservation du köper tillämpa på storlekarna för virtuella datorer (VM) i samma instans storlek flexibilitet grupp. Om du till exempel köper en reservation för en VM-storlek som anges i DSv2-serien, som Standard_DS5_v2, kan reservations rabatten gälla för de andra fyra storlekarna som anges i samma instans storleks flexibilitet grupp:
+Med en reserverad virtuell dator instans som är optimerad för flexibilitet i instans storleken kan den reservation du köper tillämpa på storlekarna för virtuella datorer (VM) i samma instans storlek flexibilitet grupp. Om du till exempel köper en reservation för en VM-storlek som anges i DSv2-serien, t. ex. Standard_DS3_v2, kan reservations rabatten gälla för de andra storlekarna som anges i samma instans storlek flexibilitet grupp:
 
 - Standard_DS1_v2
 - Standard_DS2_v2

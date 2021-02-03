@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500726"
+ms.locfileid: "99526644"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -46,7 +46,7 @@ Azure Sentinel stöder nu den nya [AZ. SecurityInsights](https://www.powershellg
 
 Modulen **AZ. SecurityInsights** har stöd för vanliga scenarier för Azure Sentinel-användning, som att interagera med incidenter för att ändra Statues, allvarlighets grad, ägare och så vidare, lägga till kommentarer och etiketter till incidenter och skapa bok märken.
 
-Även om vi rekommenderar att du använder [Azure Resource Manager-mallar (arm)](/azure/azure-resource-manager/templates/) för din CI/CD-pipeline, är modulen **AZ. SecurityInsights** användbar för åtgärder efter distributionen och är specifikt avsedd för SOC Automation.  Till exempel kan SOC Automation innehålla steg för att konfigurera data kopplingar, skapa analys regler eller lägga till automatiserings åtgärder i analys regler.
+Även om vi rekommenderar att du använder [Azure Resource Manager-mallar (arm)](/azure/azure-resource-manager/templates/) för din CI/CD-pipeline, är modulen **AZ. SecurityInsights** användbar för åtgärder efter distributionen och är avsedd för SOC Automation.  Till exempel kan SOC Automation innehålla steg för att konfigurera data kopplingar, skapa analys regler eller lägga till automatiserings åtgärder i analys regler.
 
 Mer information, inklusive en fullständig lista och beskrivning av tillgängliga cmdlets, parameter beskrivningar och exempel finns i PowerShell-dokumentationen för [AZ. SecurityInsights](/powershell/module/az.securityinsights/).
 
@@ -78,7 +78,7 @@ Mer information finns i [Azure Monitor loggar dedicerade kluster](https://docs.m
 
 ### <a name="logic-apps-managed-identities"></a>Hanterade identiteter för Logic Apps
 
-Azure Sentinel stöder nu hanterade identiteter för Azure Sentinel Logic Apps-anslutningen, så att du kan ge behörighet till en direkt till en speciell Spelbok för att arbeta med Azure Sentinel i stället för att skapa extra identiteter.
+Azure Sentinel stöder nu hanterade identiteter för Azure Sentinel Logic Apps-anslutningen, så att du kan bevilja behörigheter direkt till en speciell Spelbok för att arbeta med Azure Sentinel i stället för att skapa extra identiteter.
 
 - **Utan en hanterad identitet** kräver Logic Apps-anslutningen en separat identitet med en Azure Sentinel RBAC-roll för att kunna köras på Azure Sentinel. Den separata identiteten kan vara en Azure AD-användare eller ett huvud namn för tjänsten, till exempel ett registrerat Azure AD-program.
 
@@ -123,7 +123,7 @@ Den här uppdateringen för Azure Sentinel innehåller nya jakt frågor som ger 
 
 De extra jakt frågorna är utformade för att hjälpa dig att hitta misstänkt aktivitet i din miljö. Även om de kan returnera legitim aktivitet och potentiellt skadlig aktivitet kan de vara användbara för att ge din jakt. 
 
-Om du, när du har kört dessa frågor, är säker på resultatet kan du vilja konvertera dem till analys regler eller lägga till jakt resultat till befintliga eller nya incidenter.
+Om du när du har kört dessa frågor kan du känna dig trygg med resultaten, du kanske vill konvertera dem till analys regler eller lägga till jakt resultat till befintliga eller nya incidenter.
 
 Alla tillagda frågor är tillgängliga via sidan Azure Sentinel jakt. Mer information finns i [jakt efter hot med Azure Sentinel](hunting.md).
 

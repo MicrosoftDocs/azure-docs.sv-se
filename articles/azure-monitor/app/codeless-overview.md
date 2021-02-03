@@ -6,27 +6,27 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: efa951ce5a15460e3eacfd4c7abecfac17106b4e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fe57174f1b090cbaa2196930f5ddd252074f1978
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880516"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526457"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Vad är Auto-Instrumentation eller kod fast kopplings Azure Monitor Application Insights?
 
 Automatisk instrumentering eller kod lös koppling gör att du kan aktivera program övervakning med Application Insights utan att ändra koden.  
 
-Application Insights är integrerat med olika resurs leverantörer och fungerar i olika miljöer. Allt du behöver göra är att aktivera och i vissa fall Konfigurera agenten, som samlar in telemetrina från kartongen. I ingen tid ser du Mät värden, data och beroenden i din Application Insights resurs, vilket gör att du kan hitta källan till eventuella problem innan de uppstår och analysera rotor saken med en transaktion från slut punkt till slut punkt.
+Application Insights är integrerat med olika resurs leverantörer och fungerar i olika miljöer. Allt du behöver göra är att aktivera och i vissa fall Konfigurera agenten, som samlar in den automatiska telemetri-rutan. I ingen tid ser du Mät värden, data och beroenden i din Application Insights resurs, vilket gör att du kan hitta källan till eventuella problem innan de uppstår och analysera rotor saken med en transaktion från slut punkt till slut punkt.
 
 ## <a name="supported-environments-languages-and-resource-providers"></a>Miljöer, språk och resurs leverantörer som stöds
 
-När vi lägger till fler och fler integreringar blir matrisen för automatiska instrument funktioner komplexa. I tabellen nedan visas det aktuella läget för frågan, i mån av stöd för olika resurs leverantörer, språk och miljöer.
+När vi lägger till ytterligare integreringar blir matrisen för automatiska instrument funktioner komplex. I tabellen nedan visas det aktuella läget för frågan, i mån av stöd för olika resurs leverantörer, språk och miljöer.
 
 |Miljö/resurs-Provider          | .NET            | .NET Core       | Java            | Node.js         | Python          |
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service i Windows           | GA, OnBD *       | GA, Anmäl dig      | Privat för hands version | Privat för hands version | Stöds inte   |
-|Azure App Service på Linux             | Ej tillämpligt             | Stöds inte   | Privat för hands version | Offentlig för hands version  | Stöds inte   |
+|Azure App Service i Windows           | GA, OnBD *       | GA, Anmäl dig      | Pågår     | Pågår     | Stöds inte   |
+|Azure App Service på Linux             | Ej tillämpligt             | Stöds inte   | Pågår     | Offentlig för hands version  | Stöds inte   |
 |Azure App Service på AKS               | Ej tillämpligt             | I design       | I design       | I design       | Stöds inte   |
 |Azure Functions-Basic                | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       | GA, OnBD *       |
 |Azure Functions Windows-beroenden | Stöds inte   | Stöds inte   | Offentlig för hands version  | Stöds inte   | Stöds inte   |
@@ -41,11 +41,31 @@ När vi lägger till fler och fler integreringar blir matrisen för automatiska 
 
 ### <a name="windows"></a>Windows
 
-[Program övervakning på Azure App Service](./azure-web-apps.md?tabs=net) är tillgängligt för .NET-program och är aktiverat som standard, kan .net Core aktive ras med ett klick och Java och Node.js finns i privat förhands granskning.
+#### <a name="net"></a>.NET
+Program övervakning på Azure App Service i Windows är tillgängligt för [.NET-program](./azure-web-apps.md?tabs=net) .net och är aktiverat som standard.
 
-### <a name="linux"></a>Linux 
+#### <a name="netcore"></a>. NETCore
+Övervakning för [. NetCore-program](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=netcore) kan aktive ras med ett klick.
 
-Övervakning av Java-och Node.js-program i App Service finns i offentlig för hands version och kan aktive ras i Azure Portal, som är tillgängligt i alla regioner.
+#### <a name="java"></a>Java
+Portal integreringen för övervakning av Java-program på App Service på Windows är för närvarande inte tillgänglig, men du kan lägga till Application Insights [Java 3,0 fristående agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) i programmet utan några kod ändringar innan du distribuerar apparna till App Service. Application Insights Java 3,0-agenten är allmänt tillgänglig.
+
+#### <a name="nodejs"></a>Node.js
+Övervakning av Node.js program i Windows kan för närvarande inte aktive ras från portalen. Använd [SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)för att övervaka Node.js-program.
+
+### <a name="linux"></a>Linux
+
+#### <a name="netcore"></a>. NETCore
+Att övervaka. NetCore-program som körs på Linux använder du [SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+
+#### <a name="java"></a>Java 
+Att aktivera övervakning av Java-program för App Service på Linux från portalen är inte tillgängligt, men du kan lägga till [Application Insights Java 3,0-agenten](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) i din app innan du distribuerar apparna till App Service. Application Insights Java 3,0-agenten är allmänt tillgänglig.
+
+#### <a name="nodejs"></a>Node.js
+[Övervakning av Node.js program i App Service på Linux](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=nodejs) finns i en offentlig för hands version och kan aktive ras i Azure Portal, som är tillgängliga i alla regioner. 
+
+#### <a name="python"></a>Python
+Använd SDK: n för att [övervaka din python-app](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -57,7 +77,7 @@ Kodbaserade instrumentering av Azure Kubernetes-tjänsten är för närvarande t
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Virtuella Azure Windows-datorer och skalnings uppsättningar för virtuella datorer
 
-[Automatisk instrumentering för virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer](./azure-vm-vmss-apps.md) är tillgängligt för .NET-program 
+Automatisk instrumentering för virtuella Azure-datorer och skalnings uppsättningar för virtuella datorer är tillgängligt för [.net](./azure-vm-vmss-apps.md) och [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).  
 
 ## <a name="on-premises-servers"></a>Lokala servrar
 Du kan enkelt aktivera övervakning för dina [lokala Windows-servrar för .NET-program](./status-monitor-v2-overview.md) och för [Java-appar](./java-in-process-agent.md).

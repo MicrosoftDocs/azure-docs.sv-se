@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d094e1760db1ddfcff520b0022a232735d21d355
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184118"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525830"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Borttagning av OperationalInsights-API-version
 Microsoft tillhandahåller ett meddelande minst 12 månader i förväg för att dra tillbaka ett API för att utjämna över gången till en nyare/version som stöds. Vi har släppt en ny version (2020-08-01) för **OperationalInsights** Resource Provider-API: er och kommer att dra tillbaka alla tidigare API-versioner den 29 februari 2024.
@@ -66,6 +66,15 @@ Beroende på vilken konfigurations metod du använder bör du uppdatera den nya 
     }
     ```
 
+
+### <a name="more-information"></a>Mer information
+Om du har frågor kan du få svar från [våra experter på Tech-gruppen]( https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor). Om du har en Support plan och behöver teknisk hjälp skapar du en [supportbegäran]( https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest): 
+1.  Välj **Technical** under *typ av problem*. 
+2.  Välj din prenumeration under *Prenumeration*. 
+3.  Under *tjänst* väljer du **Mina tjänster** och väljer sedan **Log Analytics**. 
+4.  Under *Sammanfattning* anger du en beskrivning av problemet. 
+5.  Under *problem typ* väljer du **Log Analytics arbets ytans hantering**.  
+6.  Under *typ av problem* väljer du **arm-mallar, PowerShell och CLI**. 
 
 ## <a name="next-steps"></a>Nästa steg
 

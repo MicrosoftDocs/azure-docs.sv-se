@@ -8,12 +8,12 @@ author: cpercy737
 ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 989e50ec03dae5d00961d572b70d524a56b3d64c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 99e1e77a37afbdc1ed54767700574316ed03fae3
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062247"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525253"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Marknads plats partner och kund användnings behörighet
 
@@ -248,10 +248,8 @@ foreach ($deployment in $deployments){
 
 }
 ```
-
 ## <a name="report"></a>Rapport
-
-Du hittar rapporten för kund användnings behörighet på din instrument panel för partner Center ( [https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview) ). För att kunna se rapporten måste du använda dina partner Center-autentiseringsuppgifter för att logga in. Om du stöter på problem med rapporten eller inloggningen skapar du en [supportbegäran](#get-support).
+Rapportering för Azure-användning som spåras via kund användnings behörighet är inte tillgängligt i nuläget för ISV-partner. Att lägga till rapporter i programmet för kommersiella marknads platser i Partner Center för att avse kund användnings behörighet är riktad till den andra halvan av 2021.
 
 ## <a name="notify-your-customers"></a>Meddela kunderna
 

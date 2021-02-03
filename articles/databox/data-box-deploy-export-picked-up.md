@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 9ebf95f0a9c5cfc059f38a13ad99a545dd863d21
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680836"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525038"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Självstudie: returnera Azure Data Box
 
@@ -43,7 +43,7 @@ Nästa steg beror på var du returnerar enheten.
 
 ## <a name="ship-data-box-back"></a>Skicka tillbaka Data Box
 
-Kontrol lera att data kopieringen från enheten är klar och att **Förbered för att skicka** körningen har slutförts. Proceduren skiljer sig från den region där du levererar enheten.
+Kontrol lera att data kopieringen från enheten är klar och att **Förbered för att skicka** körningen har slutförts. Stegen skiljer sig beroende på i vilken region du skickar enheten.
 
 ## <a name="us-canada-europe"></a>[USA, Kanada, Europa](#tab/in-us-canada-europe)
 
@@ -55,8 +55,8 @@ Utför följande steg om du returnerar enheten i USA, Kanada eller Europa.
 4. Om du returnerar enheten bokar du upphämtning med UPS. Så här schemalägger du en upphämtning:
 
    - Ring din lokala UPS (lands-/regionspecifikt avgiftsfritt nummer).
-   - Uppge spårningsnumret för returförsändelsen som visas på skärmen E-ink (E-bläck) eller på den utskrivna etiketten. Om du inte citerar spårnings numret krävs en extra kostnad vid hämtningen.
-   - Om några problem uppstår när du schemalägger en upphämtning, eller om du ombeds att betala ytterligare avgifter, kan du kontakta Azure Data Box åtgärder. Skicka ett e-postmeddelande till [adbops@microsoft.com](mailto:adbops@microsoft.com).
+   - Uppge spårningsnumret för returförsändelsen som visas på skärmen E-ink (E-bläck) eller på den utskrivna etiketten. Om du inte uppger spårningsnumret kommer UPS att ta ut en extra avgift vid upphämtningen.
+   - Om du får problem när du schemalägger en upphämtning, eller om du ombeds betala ytterligare avgifter, kontaktar du Azure Data Box Operations. Skicka ett e-postmeddelande till [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     I stället för att schemalägga upphämtningen kan du även lämna in Data Box-enheten på närmaste inlämningsställe.
 4. Nära Data Box-enheten hämtas och skannas av transportföretaget uppdateras orderstatusen i portalen till **hämtad**. Du får också ett spårnings-ID.
@@ -65,7 +65,7 @@ Utför följande steg om du returnerar enheten i USA, Kanada eller Europa.
 
 Azure-datacenter i Australien kräver ytterligare en säkerhetsavisering. För alla inkommande leveranser krävs en särskild avisering. Följ stegen nedan vid leveranser i Australien.
 
-1. Behåll den ursprungliga rutan som används för att leverera enheten för retur leverans.
+1. Returnera enheten i originalkartongen.
 2. Kontrollera att datakopieringen till enheten är klar och att **Förbered för att skicka** lyckades.
 3. Stäng av enheten och avlägsna kablarna.
 4. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
@@ -73,7 +73,7 @@ Azure-datacenter i Australien kräver ytterligare en säkerhetsavisering. För a
 
 ## <a name="japan"></a>[Japan](#tab/in-japan)
 
-1. Behåll den ursprungliga rutan som används för att leverera enheten för retur leverans.
+1. Returnera enheten i originalkartongen.
 2. Stäng av enheten och avlägsna kablarna.
 3. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
 4. Skriv företagets namn och adressuppgifter på fraktsedeln som din avsändarinformation.
@@ -103,7 +103,7 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
 
 ## <a name="singapore"></a>[Singapore](#tab/in-singapore)
 
-1. Behåll den ursprungliga rutan som används för att leverera enheten för retur leverans.
+1. Returnera enheten i originalkartongen.
 2. Skriv ned spårningsnumret (visas som referensnummer på sidan Förbereda för att skicka i det lokala webbgränssnittet för Data Box). Detta är tillgängligt när steget Förbered för att skicka har slutförts. Hämta frakthandlingen på den här sidan och klistra fast den på förpackningen.
 3. Stäng av enheten och avlägsna kablarna.
 4. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten. 
@@ -174,7 +174,7 @@ Om du kommer över alla problem, e-Data Box-enhet åtgärder för Asien som [adb
 
 ## <a name="self-managed"></a>[Egenhanterad](#tab/in-selfmanaged)
 
-Om du använder Data Box i Japan, Singapore, Korea, Indien, Sydafrika eller Västeuropa och valde alternativet för egenhanterad frakt när ordern skapades, följer du dessa anvisningar.
+Om du använder Data Box-enhet i Japan, Singapore, Korea, Indien, Sydafrika, Storbritannien, Västeuropa eller Australien och har valt alternativet för självhanterad leverans under skapande av order, följer du dessa anvisningar.
 
 1. Skriv ned auktoriseringskoden på sidan Förbereda för att leverera i det lokala webbgränssnittet för Data Box efter att det här steget har slutförts.
 2. Stäng av enheten och avlägsna kablarna. Rulla ihop strömkabeln som levererades med enheten och sätt fast kabeln ordentligt på baksidan av enheten.

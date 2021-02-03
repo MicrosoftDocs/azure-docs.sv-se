@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 9643e62f085888808b95698d068c5e383fb8d539
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 07529b18191c71776a9a36edbfa4cfd8ded5af4f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337975"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524557"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Använd självhanterad leverans för Azure Data Box i Azure Portal
 
@@ -24,12 +24,14 @@ I den här artikeln beskrivs självhanterade leverans uppgifter för att bestäl
 Självhanterad leverans är tillgängligt som ett alternativ när du [beställer Azure Data Box](data-box-deploy-ordered.md). Självhanterad leverans är endast tillgängligt i följande regioner:
 
 * US Government
+* Storbritannien
 * Västra Europa
 * Japan
 * Singapore
 * Sydkorea
 * Indien
 * Sydafrika
+* Australien
 
 ## <a name="use-self-managed-shipping"></a>Använd självhanterad frakt
 
@@ -73,12 +75,12 @@ När du placerar en Data Box-enhet order kan du välja alternativet för självh
 
 8. När enheten har hämtats kopierar du data till Data Box-enhet på din plats. När data kopieringen är klar kan du förbereda för att leverera Data Box-enhet. Mer information finns i [Förbered för att skicka](data-box-deploy-picked-up.md#prepare-to-ship).
 
-   **Förbered för att skicka** steget måste slutföras utan allvarliga fel, annars behöver du köra det här steget igen när du har gjort nödvändiga korrigeringar. När Förbered att leverera är slutförd kan du Visa auktoriseringskod för List rutan på enhetens lokala användar gränssnitt.
+   **Förbered för att skicka** steget måste slutföras utan kritiska fel. Annars måste du köra det här steget igen när du har gjort nödvändiga korrigeringar. När **Förbered för att skicka** steget har slutförts kan du Visa auktoriseringskod för List rutan på enhetens lokala användar gränssnitt.
 
    > [!NOTE]
    > Dela inte auktoriseringskod via e-post. Detta är endast att verifieras i data centret under avlämning.
 
-9. Om du har tagit emot en avtalad tid för att ta bort den, bör den vara **redo att ta emot på Azure Data Center** -status i Azure Portal. Följ anvisningarna under **Schemaläggning** för att returnera enheten.
+9. Om du har fått en avtalad tid för att ta bort den, bör den vara **redo att ta emot på Azure Data Center** -status i Azure Portal. Följ anvisningarna under **Schemaläggning** för att returnera enheten.
 
    ![Instruktioner för enhets listering](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-02b.png)
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: 5dd58dd5f43481184b17ca4bdd694a1df76697db
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916480"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526627"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -29,6 +29,49 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 
 > [!TIP]
 > Om du söker efter objekt som är äldre än sex månader hittar du dem i [arkivet för vad som är nytt i Azure Security Center](release-notes-archive.md).
+
+
+## <a name="february-2021"></a>Februari 2021
+
+Uppdateringar i februari inkluderar:
+
+- [Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Direkt länk till princip från rekommendations informations sida](#direct-link-to-policy-from-recommendation-details-page)
+- [Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+
+### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)
+
+Vi är glada över att kunna meddela allmän tillgänglighet (GA) för de rekommendationer som gäller för Kubernetes arbets belastnings skydd.
+
+För att säkerställa att Kubernetes-arbetsbelastningar är säkra som standard har Security Center lagt till Kubernetes nivå skärp rekommendationer, inklusive verk ställnings alternativ med Kubernetes-åtkomstkontroll.
+
+När Azure Policy-tillägget för Kubernetes är installerat i Azure Kubernetes service-klustret (AKS), kommer varje begäran till Kubernetes API-servern att övervakas mot den fördefinierade uppsättningen med bästa praxis – visas som 13 säkerhets rekommendationer – innan den sparas i klustret. Du kan sedan konfigurera för att tillämpa bästa praxis och bestämma dem för framtida arbets belastningar.
+
+Du kan till exempel bestämma att privilegierade behållare inte ska skapas och eventuella framtida förfrågningar om detta kommer att blockeras.
+
+Läs mer i [metod tips för arbets belastnings skydd med Kubernetes-åtkomstkontroll](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
+
+> [!NOTE]
+> Även om rekommendationerna var i för hands version visade de inte en AKS-klusterresurs, och de inkluderades inte i beräkningarna av dina säkra poäng. med detta GA-meddelande kommer dessa att ingå i Poäng beräkningen. Om du inte redan har reparerat dem kan det leda till en lätt inverkan på dina säkra poäng. Åtgärda dem när det är möjligt enligt beskrivningen i [åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
+
+
+### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Direkt länk till princip från rekommendations informations sida
+
+När du granskar informationen om en rekommendation är det ofta bra att kunna se den underliggande principen. För varje rekommendation som stöds av en princip finns det en ny länk från rekommendations informations sidan:
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Länk till Azure Policy sida för den speciella principen som stöder en rekommendation":::
+
+Använd den här länken för att Visa princip definitionen och granska utvärderings logiken. 
+
+Om du granskar listan över rekommendationer i [referens guiden för säkerhets rekommendationer](recommendations-reference.md)kan du också se dessa länkar till princip definitions sidorna:
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Åtkomst till Azure Policy sidan för en speciell princip direkt från referens sidan för Azure Security Center rekommendationer":::
+
+
+### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng
+
+Rekommendations **känsliga data i SQL-databaserna ska klassificeras** inte längre påverkar dina säkra poäng. Detta är den enda rekommendationen i säkerhets kontrollen **tillämpa data klassificering** , så att kontrollen nu har ett säkert Poäng värde på 0.
+
 
 
 ## <a name="january-2021"></a>Januari 2021
@@ -102,9 +145,12 @@ Läs mer om [säkra poäng-och säkerhets kontroller i Azure Security Center](se
 
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Secure score-API har släppts för allmän tillgänglighet (GA)
 
-Nu kan du komma åt dina poäng via [Secure score-API: et](/rest/api/securitycenter/securescores/). API-metoderna ger flexibiliteten att fråga data och skapa en egen rapporterings mekanism för dina säkra poäng över tid. Du kan till exempel använda **Secure Scores** -API: et för att hämta poängen för en speciell prenumeration. Dessutom kan du använda API: et för **säker Poäng** för att visa en lista över säkerhets kontrollerna och de aktuella poängen för dina prenumerationer.
+Nu kan du komma åt dina poäng via [Secure score-API: et](/rest/api/securitycenter/securescores/). API-metoderna ger flexibiliteten att fråga data och skapa en egen rapporterings mekanism för dina säkra poäng över tid. Exempel:
 
-Exempel på externa verktyg som möjliggörs med Secure score-API: et finns i avsnittet [Secure Scores i vår GitHub-community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
+- Använd API: et för **säkra Poäng** för att hämta poängen för en speciell prenumeration
+- Använd API: erna för **säker Poäng** för att visa en lista över säkerhets kontroller och aktuell Poäng för dina prenumerationer
+
+Lär dig mer om externa verktyg som möjliggörs med Secure score-API: et i [det säkra Poäng avsnittet i vår GitHub-community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
 
 Läs mer om [säkra poäng-och säkerhets kontroller i Azure Security Center](secure-score-security-controls.md).
 
@@ -156,7 +202,7 @@ Läs mer i:
 
 Vi utökar undantags funktionen för att inkludera hela rekommendationer. Ange ytterligare alternativ för att finjustera de säkerhets rekommendationer som Security Center gör för prenumerationer, hanterings grupper eller resurser.
 
-Ibland visas en resurs som ohälsosam när du vet att problemet har lösts av ett tredjepartsverktyg som Security Center inte har identifierat. Eller så visas en rekommendation i ett omfång där du känner att den inte tillhör. Rekommendationen kan vara olämplig för en speciell prenumeration. Eller så kanske din organisation bara har valt att godkänna riskerna relaterade till den aktuella resursen eller rekommendationen.
+Ibland visas en resurs som ohälsosam när du vet att problemet har lösts av ett tredjepartsverktyg som Security Center inte har identifierat. Eller så visas en rekommendation i ett omfång där du känner att den inte tillhör. Rekommendationen kan vara olämplig för en speciell prenumeration. Eller så kanske din organisation har valt att godkänna de risker som är relaterade till den aktuella resursen eller rekommendationen.
 
 Med den här förhands gransknings funktionen kan du nu skapa ett undantag för att:
 
@@ -347,7 +393,7 @@ Inventerings sidan i Azure Security Center har uppdaterats med följande ändrin
 - **Guider och feedback** har lagts till i verktygsfältet. Då öppnas ett fönster med länkar till relaterad information och verktyg. 
 - **Prenumerations filter** läggs till i de standard filter som är tillgängliga för dina resurser.
 - **Öppna frågans** länk om du vill öppna de aktuella filter alternativen som en Azure Resource Graph-fråga (kallades tidigare i resurs diagram Utforskaren).
-- **Operator alternativ** för varje filter. Nu kan du välja bland fler logiska operatorer än ' = '. Du kanske till exempel vill hitta alla resurser med aktiva rekommendationer vars titlar innehåller strängen "kryptera". 
+- **Operator alternativ** för varje filter. Nu kan du välja mellan fler logiska operatorer än ' = '. Du kanske till exempel vill hitta alla resurser med aktiva rekommendationer vars titlar innehåller strängen "kryptera". 
 
     :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Kontroller för alternativet operator i till gångs lager filter":::
 
@@ -358,7 +404,7 @@ Lär dig mer om inventering i [utforska och hantera dina resurser med till gång
 
 Rekommendationen "webbappar ska begära ett SSL-certifikat för alla inkommande begär Anden" har flyttats från säkerhets kontrollen **Hantera åtkomst och behörigheter** (värt högst 4 punkter) i **implementeringen av rekommenderade säkerhets metoder** (vilket är värt inga poäng). 
 
-Att se till att dina webbappar begär ett certifikat gör det verkligen säkrare. För offentliga webbappar är det dock irrelevant. Om du ansluter till din webbplats via HTTP och inte HTTPS får du inga klient certifikat. Så om ditt program kräver klient certifikat bör du inte tillåta begär anden till ditt program via HTTP. Läs mer i [Konfigurera ömsesidig TLS-autentisering för Azure App Service](../app-service/app-service-web-configure-tls-mutual-auth.md).
+Att se till att en webbapp begär ett certifikat gör det mycket säkrare. För offentliga webbappar är det dock irrelevant. Om du ansluter till din webbplats via HTTP och inte HTTPS får du inga klient certifikat. Så om ditt program kräver klient certifikat bör du inte tillåta begär anden till ditt program via HTTP. Läs mer i [Konfigurera ömsesidig TLS-autentisering för Azure App Service](../app-service/app-service-web-configure-tls-mutual-auth.md).
 
 Med den här ändringen är rekommendationen nu en rekommenderad metod som inte påverkar dina poäng. 
 
@@ -371,7 +417,7 @@ Azure Security Center övervakar alla anslutna resurser och genererar säkerhets
 
 När Security Center fortsätter att utöka sin täckning och funktioner, växer listan över säkerhets rekommendationer varje månad. Se till exempel [29 Preview-rekommendationer som har lagts till för att öka täckningen av Azures säkerhets benchmark](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark).
 
-Med den växande listan behöver du kunna filtrera fram rekommendationerna för bästa intresse. I november lade vi till filter till sidan rekommendationer (se [rekommendations listan innehåller nu filter](#recommendations-list-now-includes-filters)).
+Med den växande listan måste du filtrera rekommendationerna för att hitta de bästa intressena. I november lade vi till filter till sidan rekommendationer (se [rekommendations listan innehåller nu filter](#recommendations-list-now-includes-filters)).
 
 De filter som läggs till den här månaden innehåller alternativ för att förfina rekommendationer listan enligt:
 
@@ -423,7 +469,7 @@ Uppdateringarna i november omfattar:
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 Preview-rekommendationer har lagts till för att öka täckningen av Azures säkerhets benchmark
 
-Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](../security/benchmarks/introduction.md).
+Azures säkerhets Benchmark är Microsoft-skapade, Azure-/regionsspecifika, uppsättning rikt linjer för metod tips för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](../security/benchmarks/introduction.md).
 
 Följande 29 Preview-rekommendationer har lagts till Security Center för att öka omfattningen av detta benchmark.
 
@@ -475,7 +521,7 @@ Nu kan du filtrera listan över säkerhets rekommendationer enligt ett villkors 
 
 Funktionen automatisk etablering hjälper till att minska hanterings kostnaderna genom att installera de nödvändiga tilläggen på nya och befintliga virtuella Azure-datorer så att de kan dra nytta av Security Centers skydd. 
 
-När Azure Security Center växer har fler tillägg utvecklats och Security Center kan övervaka en större lista med resurs typer. De automatiska etablerings verktygen har nu utökats för att stödja ytterligare tillägg och resurs typer genom att använda funktionerna i Azure Policy.
+När Azure Security Center växer har fler tillägg utvecklats och Security Center kan övervaka en större lista med resurs typer. De automatiska etablerings verktygen har nu utökats för att stödja andra tillägg och resurs typer genom att använda funktionerna i Azure Policy.
 
 Nu kan du konfigurera automatisk etablering av:
 
@@ -575,7 +621,7 @@ Mer information om den här rekommendationen och alla andra Security Center reko
 
 Security Centers instrument panel för kontroll av efterlevnad ger insikter om din position utifrån hur du uppfyller särskilda efterlevnadsprinciper och krav.
 
-Instrument panelen innehåller en standard uppsättning regler. Om någon av de angivna standarderna inte är relevant för din organisation, är det nu en enkel process att bara ta bort dem från användar gränssnittet för en prenumeration. Standarder kan bara tas bort på *prenumerations* nivå. inte hanterings gruppens omfattning.
+Instrument panelen innehåller en standard uppsättning regler. Om någon av de angivna standarderna inte är relevant för din organisation, är det nu en enkel process att ta bort dem från användar gränssnittet för en prenumeration. Standarder kan bara tas bort på *prenumerations* nivå. inte hanterings gruppens omfattning.
 
 Läs mer i [ta bort en standard från din instrument panel](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
 
@@ -699,7 +745,7 @@ Uppdateringar i september omfattar:
 
 ### <a name="security-center-gets-a-new-look"></a>Security Center får ett nytt utseende!
 
-Vi har publicerat ett uppdaterat användar gränssnitt för Security Center Portal sidor. De nya sidorna innehåller en ny översikts sida och instrument paneler för säkra poäng, till gångs lager och Azure Defender.
+Vi har publicerat ett uppdaterat användar gränssnitt för Security Center Portal sidor. De nya sidorna innehåller en ny översikts sida och instrument paneler för säker poäng, till gångs inventering och Azure Defender.
 
 På sidan för den omdesignade översikten finns nu en panel för att komma åt säkra poäng-, inventarie-och Azure Defender-instrumentpaneler. Den har också en panel som länkar till instrument panelen för kontroll av efterlevnad.
 
@@ -892,114 +938,3 @@ Ett exempel på en förhands gransknings rekommendation:
 På informations sidan för rekommendationer finns nu en indikator för aktualitets intervall (när det är relevant) och en tydlig visning av rekommendationens allvarlighets grad.
 
 :::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Sidan rekommendation visar aktualitet och allvarlighets grad":::
-
-
-
-## <a name="august-2020"></a>Augusti 2020
-
-Uppdateringarna i augusti inkluderar:
-
-- [Till gångs lager – kraftfull ny vy av position till gångarnas säkerhet](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
-- [Stöd har lagts till för Azure Active Directory säkerhets inställningar (för Multi-Factor Authentication)](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
-- [Rekommendation för tjänstens huvud namn lades till](#service-principals-recommendation-added)
-- [Sårbarhets bedömning på virtuella datorer – rekommendationer och konsoliderade principer](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
-- [Nya AKS säkerhets principer har lagts till i ASC_default initiativ – för användning av privata för hands kunder](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
-
-
-### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>Till gångs lager – kraftfull ny vy av position till gångarnas säkerhet
-
-Security Center till gångs lagret (för närvarande i för hands version) ger dig ett sätt att Visa säkerhets position för de resurser som du har anslutit till Security Center.
-
-Security Center analyserar regelbundet säkerhets status för dina Azure-resurser för att identifiera potentiella säkerhets risker. Därefter får du rekommendationer om hur du åtgärdar problemen. När en resurs har utestående rekommendationer visas de i inventeringen.
-
-Du kan använda vyn och dess filter för att utforska dina säkerhets position data och vidta ytterligare åtgärder baserat på dina resultat.
-
-Läs mer om [till gångs inventering](asset-inventory.md).
-
-
-### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>Stöd har lagts till för Azure Active Directory säkerhets inställningar (för Multi-Factor Authentication)
-
-Security Center har lagt till fullständigt stöd för [säkerhets standarder](../active-directory/fundamentals/concept-fundamentals-security-defaults.md), Microsofts kostnads fria identitets skydds skydd.
-
-Säkerhets standarder tillhandahåller förkonfigurerade säkerhets inställningar för identitet för att skydda din organisation från vanliga problem med identitets angrepp. Säkerhets standarder skyddar redan över 5 000 000 klienter totalt. 50 000-klienter skyddas också av Security Center.
-
-Security Center har nu en säkerhets rekommendation när den identifierar en Azure-prenumeration utan säkerhets inställningar som är aktiverade. Fram till nu rekommenderar Security Center att du aktiverar Multi-Factor Authentication med villkorlig åtkomst, som är en del av Azure Active Directory (AD) Premium-licensen. För kunder som använder Azure AD kostnads fri rekommenderar vi nu att du aktiverar säkerhets inställningar. 
-
-Vårt mål är att uppmuntra fler kunder att skydda sina moln miljöer med MFA och minimera en av de högsta riskerna som också är mest påverkan av dina [säkra Poäng](secure-score-security-controls.md).
-
-Läs mer om [säkerhets inställningar](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
-
-
-### <a name="service-principals-recommendation-added"></a>Rekommendation för tjänstens huvud namn lades till
-
-En ny rekommendation har lagts till för att rekommendera att Security Center kunder som använder hanterings certifikat för att hantera sina prenumerationer växlar till tjänstens huvud namn.
-
-Rekommendationen är att **tjänstens huvud namn ska användas för att skydda dina prenumerationer i stället för hanterings certifikat** som rekommenderar att du använder tjänstens huvud namn eller Azure Resource Manager för att hantera dina prenumerationer på ett säkert sätt. 
-
-Läs mer om [program-och tjänst huvud objekt i Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object).
-
-
-### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Sårbarhets bedömning på virtuella datorer – rekommendationer och konsoliderade principer
-
-Security Center granskar de virtuella datorerna för att identifiera om de använder en lösning för sårbarhets bedömning. Om ingen lösning för sårbarhets bedömning hittas ger Security Center en rekommendation för att förenkla distributionen.
-
-När det finns sårbarheter ger Security Center en rekommendation som sammanfattar resultaten för att undersöka och åtgärda vid behov.
-
-För att säkerställa en konsekvent upplevelse för alla användare, oavsett vilken skanner typ de använder, har vi förenat fyra rekommendationer i följande två:
-
-|Enhetlig rekommendation|Ändra beskrivning|
-|----|:----|
-|**En lösning för sårbarhets bedömning ska vara aktive rad på dina virtuella datorer**|Ersätter följande två rekommendationer:<br> **•** Aktivera den inbyggda lösningen för sårbarhets bedömning på virtuella datorer (drivs av Qualys (nu föråldrad) (ingår i standard-nivån)<br> **•** Lösningen för sårbarhets bedömning bör installeras på dina virtuella datorer (nu föråldrade) (standard-och kostnads fria nivåer)|
-|**Säkerhets risker på dina virtuella datorer bör åtgärdas**|Ersätter följande två rekommendationer:<br>**•** Åtgärda säkerhets problem som finns på dina virtuella datorer (drivs av Qualys) (nu föråldrade)<br>**•** Sårbarheter bör åtgärdas av en lösning för sårbarhets bedömning (nu föråldrad)|
-|||
-
-Nu ska du använda samma rekommendation för att distribuera Security Centers tillägg för sårbarhets bedömning eller en privat licensierad lösning ("BYOL") från en partner, till exempel Qualys eller Rapid7.
-
-När säkerhets risker upptäcks och rapporteras till Security Center får du dessutom en enda rekommendation som meddelar dig om avgöranden, oavsett vilken lösning för sårbarhets bedömning som identifierade dem.
-
-#### <a name="updating-dependencies"></a>Uppdaterar beroenden
-
-Om du har skript, frågor eller automatiseringar som refererar till föregående rekommendationer eller princip nycklar/namn, använder du tabellerna nedan för att uppdatera referenserna:
-
-##### <a name="before-august-2020"></a>Före augusti 2020
-
-|Rekommendation|Omfång|
-|----|:----|
-|**Aktivera den inbyggda lösningen för sårbarhets bedömning på virtuella datorer (drivs av Qualys)**<br>Nyckel: 550e890b-e652-4D22-8274-60b3bdb24c63|Inbyggd|
-|**Åtgärda sårbarheter som finns på dina virtuella datorer (drivs av Qualys)**<br>Nyckel: 1195afff-c881-495e-9bc5-1486211ae03f|Inbyggd|
-|**Lösningen för sårbarhets bedömning bör installeras på dina virtuella datorer**<br>Nyckel: 01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
-|**Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning**<br>Nyckel: 71992a2a-D168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
-
-
-|Policy|Omfång|
-|----|:----|
-|**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Inbyggd|
-|**Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning**<br>Princip-ID: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
-
-
-##### <a name="from-august-2020"></a>Från augusti 2020
-
-|Rekommendation|Omfång|
-|----|:----|
-|**En lösning för sårbarhets bedömning ska vara aktive rad på dina virtuella datorer**<br>Nyckel: ffff0522-1e88-47fc-8382-2a80ba848f5d|Inbyggda + BYOL|
-|**Säkerhets risker på dina virtuella datorer bör åtgärdas**<br>Nyckel: 1195afff-c881-495e-9bc5-1486211ae03f|Inbyggda + BYOL|
-||||
-
-|Policy|Omfång|
-|----|:----|
-|[**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Inbyggda + BYOL|
-||||
-
-
-### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>Nya AKS säkerhets principer har lagts till i ASC_default initiativ – för användning av privata för hands kunder
-
-För att säkerställa att Kubernetes-arbetsbelastningar är säkra som standard, lägger Security Center till principer för Kubernetes-nivå och skärper rekommendationer, inklusive verk ställnings alternativ med Kubernetes-åtkomstkontroll.
-
-Den tidiga fasen i det här projektet innehåller en privat för hands version och tillägg av nya (inaktiverade som standard) principer för ASC_default initiativ.
-
-Du kan ignorera dessa principer utan att påverka din miljö. Om du vill aktivera dem kan du registrera dig för för hands versionen på https://aka.ms/SecurityPrP och välja bland följande alternativ:
-
-1. **Enkel förhands granskning** – om du bara vill ansluta till denna privata för hands version Nämna uttryckligen "ASC-kontinuerlig skanning" som förhands granskningen som du vill delta i.
-1. **Kontinuerligt program** – som ska läggas till i den här och framtida privata för hands versionerna. Du måste slutföra ett profil-och sekretess avtal.

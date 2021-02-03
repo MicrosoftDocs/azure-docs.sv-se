@@ -3,12 +3,12 @@ title: Det gick inte att hitta resursen
 description: Beskriver hur du löser fel när det inte går att hitta en resurs. Felet kan uppstå när du distribuerar en Azure Resource Manager-mall eller när du tar hanterings åtgärder.
 ms.topic: troubleshooting
 ms.date: 06/10/2020
-ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84667955"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526254"
 ---
 # <a name="resolve-resource-not-found-errors"></a>Fel vid matchning av resurs hittades inte
 
@@ -105,7 +105,7 @@ I funktionen Reference använder `Full` du för att hämta alla egenskaper, inkl
 
 Mönstret är:
 
-`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>), <API-version>, 'Full').Identity.propertyName]"`
 
 > [!IMPORTANT]
 > Använd inte mönstret:

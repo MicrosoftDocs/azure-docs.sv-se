@@ -2,13 +2,13 @@
 title: Importera containeravbildningar
 description: 'Importera behållar avbildningar till ett Azure Container Registry med hjälp av Azure API: er, utan att behöva köra Docker-kommandon.'
 ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/15/2021
+ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019981"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524506"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importera behållar avbildningar till ett behållar register
 
@@ -35,6 +35,11 @@ Den här artikeln kräver att du kör Azure CLI i Azure Cloud Shell eller lokalt
 > [!NOTE]
 > Om du behöver distribuera identiska behållar avbildningar i flera Azure-regioner stöder Azure Container Registry också [geo-replikering](container-registry-geo-replication.md). Genom geo-replikering av ett register (Premium service nivå krävs) kan du hantera flera regioner med identiska bild-och taggnamn från ett enda register.
 >
+
+> [!IMPORTANT]
+> Ändringar av avbildnings import mellan två Azure-behållar register har införts från och med januari 2021:
+> * Att importera till eller från en nätverks begränsad Azure Container Registry kräver att det begränsade registret [**tillåter åtkomst av betrodda tjänster**](allow-access-trusted-services.md) för att kringgå nätverket. Inställningen är aktive rad som standard, vilket tillåter import. Om inställningen inte är aktive rad i ett nyligen skapat register med en privat slut punkt eller med brand Väggs regler för registret kommer importen att Miss Förslut ATS. 
+> * I ett befintligt nätverks begränsat Azure Container Registry som används som import källa eller mål, är det valfritt att aktivera den här funktionen för nätverks säkerhet, men rekommenderas.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -92,6 +97,8 @@ Du kan importera en avbildning från ett Azure Container Registry i samma AD-kli
 * Registret kan finnas i samma eller en annan Azure-prenumeration i samma Active Directory klient.
 
 * [Offentlig åtkomst](container-registry-access-selected-networks.md#disable-public-network-access) till käll registret kan inaktive ras. Om offentlig åtkomst är inaktive rad anger du käll registret per resurs-ID i stället för inloggnings Server namnet för registret.
+
+* Om käll registret och/eller mål registret har en privat slut punkt eller brand Väggs regler för registret, kontrollerar du att det begränsade registret [tillåter betrodda tjänster](allow-access-trusted-services.md) att få åtkomst till nätverket.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Importera från ett register i samma prenumeration
 

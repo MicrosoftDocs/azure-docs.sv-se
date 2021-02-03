@@ -3,12 +3,12 @@ title: Felsöka nätverks problem med registret
 description: Symptom, orsaker och lösningar på vanliga problem vid åtkomst till ett Azure Container Registry i ett virtuellt nätverk eller bakom en brand vägg
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cf2f308f782ac7d6011c98afd181b194f2b3e09f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052169"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525084"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Felsöka nätverks problem med registret
 
@@ -105,20 +105,20 @@ Relaterade länkar:
 
 ### <a name="configure-service-access"></a>Konfigurera tjänst åtkomst
 
-Azure Security Center kan för närvarande inte utföra [avbildnings sårbarhets sökning](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) i ett register som begränsar åtkomsten till privata slut punkter, valda undernät eller IP-adresser. Resurser av följande tjänster kan inte heller komma åt ett behållar register med nätverks begränsningar:
+För närvarande tillåts inte åtkomst till ett behållar register med nätverks begränsningar från flera Azure-tjänster:
 
-* Azure DevOps Services 
-* Azure Container Instances
-* Azure Container Registry Tasks
+* Azure Security Center kan inte utföra [genomsökning av bild sårbarhet](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) i ett register som begränsar åtkomsten till privata slut punkter, valda undernät eller IP-adresser. 
+* Resurser för vissa Azure-tjänster kan inte komma åt ett behållar register med nätverks begränsningar, inklusive Azure App Service och Azure Container Instances.
 
 Om åtkomst eller integrering av dessa Azure-tjänster med ditt behållar register krävs tar du bort nätverks begränsningen. Ta till exempel bort registrets privata slut punkter eller ta bort eller ändra registrets offentliga åtkomst regler.
+
+Från och med 2021 januari kan du konfigurera ett nätverk som är begränsat till att [tillåta åtkomst](allow-access-trusted-services.md) från Välj betrodda tjänster.
 
 Relaterade länkar:
 
 * [Azure Container Registry avbildnings genomsökning av Security Center](../security-center/defender-for-container-registries-introduction.md)
 * Ge [feedback](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
-* [Konfigurera regler för offentliga IP-nätverk](container-registry-access-selected-networks.md)
-* [Anslut privat till ett Azure Container Registry med hjälp av Azure Private Link](container-registry-private-link.md)
+* [Tillåt betrodda tjänster att säkert komma åt en nätverks begränsad container Registry](allow-access-trusted-services.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Avancerad felsökning
@@ -140,5 +140,5 @@ Om du inte löser problemet här kan du läsa följande alternativ.
   * [Felsöka inloggning av registret](container-registry-troubleshoot-login.md) 
   * [Felsöka register prestanda](container-registry-troubleshoot-performance.md)
 * Alternativ för [Community-support](https://azure.microsoft.com/support/community/)
-* [Microsoft Q&A](/answers/products/)
+* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [Öppna en supportbegäran](https://azure.microsoft.com/support/create-ticket/)

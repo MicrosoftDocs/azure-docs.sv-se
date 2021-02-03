@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028384"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525000"
 ---
 ::: zone target="docs"
 
@@ -322,7 +322,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Egenhanterad](#tab/in-selfmanaged)
 
-Om du använder Data Box i någon av regionerna US Government, Japan, Singapore, Korea, Indien, Sydafrika eller Västeuropa, och du valde egenhanterad leverans när du skapade din beställning, följer du dessa anvisningar.
+Om du använder Data Box-enhet i USA, Japan, Singapore, Korea, Indien, Sydafrika, Storbritannien, Västeuropa eller Australien, och du har valt självhanterad leverans när du skapade din beställning, följer du dessa anvisningar.
 
 1. Skriv ner auktoriseringskoden som visas på sidan **Förbered för att skicka** i det lokala webbgränssnittet för Data Box-enheten när steget har utförts.
 2. Stäng av enheten och avlägsna kablarna. Rulla ihop strömkabeln som levererades med enheten och sätt fast kabeln ordentligt på baksidan av enheten.

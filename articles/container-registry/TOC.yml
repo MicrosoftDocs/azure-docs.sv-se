@@ -101,6 +101,8 @@
               href: container-registry-access-selected-networks.md
             - name: Begränsa åtkomst med hjälp av tjänstslutpunkter (förhandsversion)
               href: container-registry-vnet.md
+            - name: Tillåt åtkomst av betrodda tjänster
+              href: allow-access-trusted-services.md
             - name: Kryptering med kundhanterad nyckel
               href: container-registry-customer-managed-keys.md
             - name: Åtkomst bakom en brandvägg

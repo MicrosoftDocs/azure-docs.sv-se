@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan
 ms.date: 08/27/2019
-ms.openlocfilehash: 92d1ce51306e846e2d842bef33bb9782da14019a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594002"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525729"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Självstudie: Lägg till SQL-hanterad instans i en failover-grupp
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Lägg till hanterade instanser av den hanterade Azure SQL-instansen i en redunda
   > [!NOTE]
   > - När du går igenom den här självstudien kontrollerar du att du konfigurerar dina resurser med [förutsättningarna för att ställa in redundans för SQL-hanterad instans](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
   > - Det kan ta lång tid att skapa en hanterad instans. Därför kan det ta flera timmar att slutföra den här självstudien. Mer information om etablerings tider finns i [hanterings åtgärder för SQL-hanterade instanser](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Hanterade instanser som ingår i en failover-grupp kräver antingen [Azure-ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) eller två anslutna VPN-gatewayer. Global VNet-peering stöds inte. Den här självstudien innehåller steg för att skapa och ansluta VPN-gatewayer. Hoppa över de här stegen om du redan har konfigurerat ExpressRoute. 
+  > - Hanterade instanser som ingår i en failover-grupp måste ha [Azure-ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md), global VNet-peering eller två anslutna VPN-gatewayer. Den här självstudien innehåller steg för att skapa och ansluta VPN-gatewayer. Hoppa över de här stegen om du redan har konfigurerat ExpressRoute. 
 
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -930,9 +930,9 @@ Anslut de två gatewayerna med hjälp av Azure Portal.
     1. Välj din prenumeration från listrutan. 
     1. Välj resurs grupp för SQL-hanterad instans i list rutan. 
     1. Välj platsen för din primära hanterade instans i list rutan. 
-1. På sidan **Inställningar** väljer eller anger du följande värden och väljer sedan **OK** :
-    1. Välj den primära Nätverksgatewayen för den **första virtuella Nätverksgatewayen** , till exempel `primaryGateway` .  
-    1. Välj den sekundära Nätverksgatewayen för den **andra virtuella Nätverksgatewayen** , till exempel `secondaryGateway` . 
+1. På sidan **Inställningar** väljer eller anger du följande värden och väljer sedan **OK**:
+    1. Välj den primära Nätverksgatewayen för den **första virtuella Nätverksgatewayen**, till exempel `primaryGateway` .  
+    1. Välj den sekundära Nätverksgatewayen för den **andra virtuella Nätverksgatewayen**, till exempel `secondaryGateway` . 
     1. Markera kryss rutan bredvid **upprätta dubbelriktad anslutning**. 
     1. Lämna antingen standard namnet för primär anslutning eller Byt namn på det till önskat värde. 
     1. Ange en **delad nyckel (PSK)** för anslutningen, till exempel `mi1m2psk` . 

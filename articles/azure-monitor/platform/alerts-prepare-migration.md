@@ -6,17 +6,17 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc0be351253a15bf9039839c8cae2246681d41e2
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944486"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526661"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Förbered dina logikappar och runbooks för migrering av klassiska aviseringsregler
 
 > [!NOTE]
-> Som [tidigare](monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Datum för indragningen för dessa aviseringar har ännu förlängts. Ett nytt datum meddelas snart.
+> Som [tidigare](monitoring-classic-retirement.md)har meddelats kommer de klassiska aviseringarna i Azure monitor att dras tillbaka för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Datum för indragningen för dessa aviseringar har ännu förlängts. Ett nytt datum meddelas snart.
 >
 
 Om du väljer att frivilligt migrera dina klassiska aviserings regler till nya varnings regler bör du vara medveten om att det finns några skillnader mellan de två systemen. I den här artikeln beskrivs skillnaderna och hur du kan förbereda dig för ändringen.
@@ -29,7 +29,7 @@ Följande tabell är en referens till programmerings gränssnitten för både de
 
 | Typ av distributions skript | Klassiska aviseringar | Nya mått varningar |
 | ---------------------- | -------------- | ----------------- |
-|REST API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|REST-API     | [Microsoft. Insights/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [avisering om AZ-övervakaren](/cli/azure/monitor/alert)        | [avisering om AZ Monitor-mått](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [Referens](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referens](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-mall | [För klassiska aviseringar](./alerts-enable-template.md)|[För nya mått varningar](./alerts-metric-create-templates.md)|

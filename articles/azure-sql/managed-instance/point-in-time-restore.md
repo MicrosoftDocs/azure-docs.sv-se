@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788357"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525406"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Återställa en databas i en Azure SQL-hanterad instans till en tidigare tidpunkt
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,8 +46,8 @@ I följande tabell visas tidpunkter för återställnings scenarier för SQL-han
 
 |           |Återställ befintlig databas till samma instans av SQL-hanterad instans| Återställa en befintlig databas till en annan SQL-hanterad instans|Återställ utelämnad databas till samma SQL-hanterade instans|Återställ utelämnad databas till en annan SQL-hanterad instans|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure-portalen**| Ja|Nej |Ja|Nej|
-|**Azure CLI**|Ja |Ja |Nej|Nej|
+|**Azure-portalen**| Ja|Inga |Ja|Inga|
+|**Azure CLI**|Ja |Ja |Inga|Inga|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 
 ## <a name="restore-an-existing-database"></a>Återställa en befintlig databas
@@ -136,10 +136,10 @@ En detaljerad förklaring av tillgängliga parametrar finns i [CLI-dokumentation
 
 Du kan återställa en borttagen databas med hjälp av PowerShell eller Azure Portal. Om du vill återställa en borttagen databas till samma instans använder du antingen Azure Portal eller PowerShell. Om du vill återställa en borttagen databas till en annan instans använder du PowerShell. 
 
-### <a name="portal"></a>Portalen 
+### <a name="portal"></a>Portal 
 
 
-Om du vill återställa en hanterad databas med Azure Portal öppnar du översikts sidan SQL-hanterad instans och väljer **borttagna databaser** . Välj en borttagen databas som du vill återställa och skriv namnet på den nya databasen som ska skapas med data som återställs från säkerhets kopian.
+Om du vill återställa en hanterad databas med Azure Portal öppnar du översikts sidan SQL-hanterad instans och väljer **borttagna databaser**. Välj en borttagen databas som du vill återställa och skriv namnet på den nya databasen som ska skapas med data som återställs från säkerhets kopian.
 
   ![Skärm bild av Återställ borttagen Azure SQL-instans databas](./media/point-in-time-restore/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -162,7 +162,7 @@ $targetDatabaseName = "<target database name>"
 $deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
 -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -176,7 +176,7 @@ Om du vill återställa databasen till en annan SQL-hanterad instans anger du ä
 $targetResourceGroupName = "<Resource group of target SQL Managed Instance>"
 $targetInstanceName = "<Target SQL Managed Instance name>"
 
-Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+Restore-AzSqlinstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name `
    -InstanceName $deletedDatabase.ManagedInstanceName `
    -ResourceGroupName $deletedDatabase.ResourceGroupName `
    -DeletionDate $deletedDatabase.DeletionDate `
@@ -211,7 +211,7 @@ Använd någon av följande metoder för att ansluta till din databas i SQL-hant
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-I Azure Portal väljer du databasen från SQL-hanterad instans och väljer sedan **ta bort** .
+I Azure Portal väljer du databasen från SQL-hanterad instans och väljer sedan **ta bort**.
 
    ![Ta bort en databas med hjälp av Azure Portal](./media/point-in-time-restore/delete-database-from-mi.png)
 

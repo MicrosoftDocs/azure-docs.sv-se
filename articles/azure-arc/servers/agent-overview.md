@@ -1,14 +1,14 @@
 ---
 title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
-ms.date: 01/08/2021
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5f12ea90a4398b63eaa19a1fc5a375c15bdfa8c5
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033973"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526372"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -99,7 +99,7 @@ Service märken:
 
 Er
 
-| Agentresurs | Beskrivning |
+| Agentresurs | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -111,14 +111,14 @@ Er
 
 För hands versioner (version 0,11 och lägre) kräver också åtkomst till följande URL: er:
 
-| Agentresurs | Beskrivning |
+| Agentresurs | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Gästkonfiguration|
 |`*-agentservice-prod-1.azure-automation.net`|Gästkonfiguration|
 
-En lista över IP-adresser för varje service tag/region finns i JSON-filen – [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publicerar veckovis uppdateringar som innehåller varje Azure-tjänst och de IP-intervall som används. Mer information finns i [service tag](../../virtual-network/network-security-groups-overview.md#service-tags).
+En lista över IP-adresser för varje service tag/region finns i JSON-filen – [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publicerar veckovis uppdateringar som innehåller varje Azure-tjänst och de IP-intervall som används. Den här informationen i JSON-filen är den aktuella tidpunkts listan för de IP-intervall som motsvarar varje service tag. IP-adresserna kan komma att ändras. Om det krävs IP-adressintervall för brand Väggs konfigurationen ska **AzureCloud** -tjänst tag gen användas för att ge åtkomst till alla Azure-tjänster. Inaktivera inte säkerhetsövervakning eller granskning av dessa URL: er, Tillåt dem som andra Internet trafik.
 
-URL: erna i föregående tabell krävs utöver informationen om tjänst Tagns IP-adressintervall eftersom de flesta tjänster för närvarande inte har en registrering av service tag. Därför kan IP-adresserna ändras. Om det krävs IP-adressintervall för brand Väggs konfigurationen ska **AzureCloud** -tjänst tag gen användas för att ge åtkomst till alla Azure-tjänster. Inaktivera inte säkerhetsövervakning eller granskning av dessa URL: er, Tillåt dem som andra Internet trafik.
+Mer information finns i [Översikt över service märken](../../virtual-network/service-tags-overview.md).
 
 ### <a name="register-azure-resource-providers"></a>Registrera Azure-resurs leverantörer
 
@@ -175,7 +175,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande installationsfiler skapas under installationen.
 
-    |Mapp |Beskrivning |
+    |Mapp |Description |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Standard installations Sök väg som innehåller agentens stödfiler.|
     |%ProgramData%\AzureConnectedMachineAgent |Innehåller konfigurationsfilerna för agenten.|
@@ -187,7 +187,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande Windows-tjänster skapas på mål datorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
+    |Tjänstnamn |Visningsnamn |Processnamn |Description |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid-Instance Metadata Service |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
     |GCArcService |Arc-tjänst för gäst konfiguration |gc_service |Övervakar datorns önskade tillstånds konfiguration.|
@@ -195,14 +195,14 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande miljövariabler skapas under Agent installationen.
 
-    |Namn |Standardvärde |Beskrivning |
+    |Name |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Loggas |Beskrivning |
+    |Loggas |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
@@ -227,7 +227,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande installationsfiler skapas under installationen.
 
-    |Mapp |Beskrivning |
+    |Mapp |Description |
     |-------|------------|
     |/var/opt/azcmagent/ |Standard installations Sök väg som innehåller agentens stödfiler.|
     |/opt/azcmagent/ |
@@ -239,7 +239,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande daemonar skapas på mål datorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
+    |Tjänstnamn |Visningsnamn |Processnamn |Description |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Connected Machine Agent-tjänsten |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
     |gcad.servce |Tjänsten GC båg |gc_linux_service |Övervakar datorns önskade tillstånds konfiguration. |
@@ -247,7 +247,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Loggas |Beskrivning |
+    |Loggas |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
@@ -258,7 +258,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande miljövariabler skapas under Agent installationen. Dessa variabler anges i `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Namn |Standardvärde |Beskrivning |
+    |Name |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

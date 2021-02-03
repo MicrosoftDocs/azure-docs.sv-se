@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955283"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525796"
 ---
 # <a name="scenario-any-to-any"></a>Scenario: alla-till-alla
 
-När du arbetar med virtuell WAN-routning för virtuella WAN finns det några tillgängliga scenarier. I ett valfritt scenario kan alla ekrar komma åt en annan eker. När det finns flera hubbar är hubb-till-hubb-routning (även kallat mellan hubb) aktiverat som standard i standard Virtual WAN. Du kan skapa den här konfigurationen med en mängd olika metoder, till exempel Azure Portal eller en [Azure snabb starts mall](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/). Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-virtual-hub-routing.md). 
+När du arbetar med virtuell WAN-routning för virtuella WAN finns det några tillgängliga scenarier. I ett valfritt scenario kan alla ekrar komma åt en annan eker. När det finns flera hubbar är hubb-till-hubb-routning (även kallat mellan hubb) aktiverat som standard i standard Virtual WAN. Du kan skapa den här konfigurationen med en mängd olika metoder, till exempel Azure Portal eller en [Azure snabb starts mall](quickstart-any-to-any-template.md). Mer information om routning av virtuell hubb finns i [om virtuell hubb](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Design
 

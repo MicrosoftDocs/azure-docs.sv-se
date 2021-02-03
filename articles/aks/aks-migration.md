@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929743"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526695"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrera till Azure Kubernetes service (AKS)
 
@@ -21,7 +21,7 @@ Det här dokumentet kan användas för att hjälpa till att stödja följande sc
 * Migrera ett AKS-kluster som backas upp av [tillgänglighets uppsättningar](../virtual-machines/windows/tutorial-availability-sets.md) till [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md)
 * Migrera ett AKS-kluster för att använda en [standard-SKU-belastningsutjämnare](./load-balancer-standard.md)
 * Migrera från [Azure Container Service (ACS) – tas ur bruk 31 januari 2020](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) till AKS
-* Migrera från [AKS-motorn](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) till AKS
+* Migrera från [AKS-motorn](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) till AKS
 * Migrera från icke-Azure-baserade Kubernetes-kluster till AKS
 * Flytta befintliga resurser till en annan region
 

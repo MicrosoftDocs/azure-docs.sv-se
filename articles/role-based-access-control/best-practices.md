@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1444ee3643222ceebc67298bdb580955b1432104
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617382"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526423"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Metod tips för Azure RBAC
 
@@ -41,6 +41,10 @@ Du bör ha högst tre prenumerations ägare för att minska risken för brott mo
 För att skydda privilegierade konton från skadliga cyberhot-attacker kan du använda Azure Active Directory Privileged Identity Management (PIM) för att minska exponerings tiden för privilegier och öka din insyn i användningen genom rapporter och aviseringar. PIM skyddar privilegierade konton genom att tillhandahålla just-in-Time-åtkomst till Azure AD och Azure-resurser. Åtkomst kan vara en tids gräns efter vilken privilegierna återkallas automatiskt. 
 
 Mer information finns i [Vad är Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).
+
+## <a name="assign-roles-to-groups-not-users"></a>Tilldela roller till grupper, inte användare
+
+Undvik att tilldela roller direkt till användare för att göra roll tilldelningar mer hanterbara. Tilldela i stället roller till grupper. Genom att tilldela roller till grupper i stället för användare kan du också minimera antalet roll tilldelningar som har en [gräns på 2 000 roll tilldelningar per prenumeration](troubleshooting.md#azure-role-assignments-limit). 
 
 ## <a name="next-steps"></a>Nästa steg
 

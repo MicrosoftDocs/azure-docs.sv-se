@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754685"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525203"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>Konfigurera telefonin loggning och inloggning för användar flöden (förhands granskning)
 
@@ -89,7 +89,7 @@ Här är ett exempel som visar hur du lägger till telefon registrering i ett ny
 9. Under **sociala identitets leverantörer** väljer du andra identitets leverantörer som du vill tillåta för det här användar flödet.
 
    > [!NOTE]
-   > Multi-Factor Authentication (MFA) är inaktiverat som standard. Du kan aktivera MFA för ett telefon flöde för registrering, men eftersom ett telefonnummer används som primär identifierare är email eng ång slö sen ord det enda alternativet som är tillgängligt för den andra autentiserings faktorn.
+   > Multi-Factor Authentication (MFA) är inaktiverat som standard för registrering av användar flöden. Du kan aktivera MFA för ett telefon flöde för registrering, men eftersom ett telefonnummer används som primär identifierare är email eng ång slö sen ord det enda alternativet som är tillgängligt för den andra autentiserings faktorn.
 
 1. I avsnittet **användarattribut och token-anspråk** väljer du de anspråk och attribut som du vill samla in och skicka från användaren under registreringen. Välj till exempel **Visa mer** och välj sedan attribut och anspråk för **land/region**, **visnings namn** och **post nummer**. Välj **OK**.
 

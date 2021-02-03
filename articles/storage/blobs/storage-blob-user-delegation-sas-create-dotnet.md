@@ -1,27 +1,27 @@
 ---
-title: Använda .NET för att skapa en användar Delegerings-SAS för en behållare eller BLOB
+title: Använda .NET för att skapa en användar Delegerings-SAS för en behållare, katalog eller BLOB
 titleSuffix: Azure Storage
 description: Lär dig hur du skapar en användar Delegerings-SAS med Azure Active Directory autentiseringsuppgifter genom att använda .NET-klient biblioteket för Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199265"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526813"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Skapa en användar Delegerings-SAS för en behållare eller BLOB med .NET
+# <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>Skapa en användar Delegerings-SAS för en behållare, katalog eller BLOB med .NET
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Den här artikeln visar hur du använder Azure Active Directory (Azure AD)-autentiseringsuppgifter för att skapa en användar Delegerings-sa för en behållare eller BLOB med Azure Storage klient biblioteket för .NET version 12.
+Den här artikeln visar hur du använder Azure Active Directory (Azure AD)-autentiseringsuppgifter för att skapa en användar Delegerings-sa för en behållare, katalog eller BLOB med Azure Storage klient biblioteket för .NET version 12.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -99,7 +99,7 @@ I följande exempel testas de användar Delegerings-SAS som skapades i föregåe
 
 ## <a name="get-a-user-delegation-sas-for-a-directory"></a>Hämta en användar Delegerings-SAS för en katalog
 
-Följande kod exempel visar hur du skapar en användar Delegerings-SAS för en katalog när ett hierarkiskt namn område är aktiverat:
+Följande kod exempel visar hur du skapar en användar Delegerings-SAS för en katalog när ett hierarkiskt namn område är aktiverat för lagrings kontot:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
 

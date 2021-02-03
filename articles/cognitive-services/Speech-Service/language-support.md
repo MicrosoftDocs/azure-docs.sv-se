@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 118ab33c8d8ce46559957236daa21ba494655e69
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662938"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526287"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -392,10 +392,30 @@ Det finns fler än 75 standard röster i över 45 språk och nationella inställ
 
 ### <a name="customization"></a>Anpassning
 
-Röst anpassning är tillgänglig för,,,,,, `de-DE` `en-GB` `en-IN` `en-US` `es-MX` `fr-FR` `it-IT` `pt-BR` och `zh-CN` . Välj rätt språk version som matchar de tränings data du behöver för att träna en anpassad röst modell. Om till exempel de inspelnings data du har talas på engelska med en brittisk accent väljer du `en-GB` .
+Anpassad röst är tillgänglig i standard-och neurala-nivån. De språk som stöds är olika för dessa två nivåer. 
+
+| Språk | Nationell inställning | Standard | Neurala |
+|--|--|--|--|
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Ja | Ja |
+| Kinesiska (mandariner, förenklad), engelsk tvåspråkig | `zh-CN` tvåspråkig | Ja | Ja |
+| Engelska (Australien) | `en-AU` | Inga | Ja |
+| Engelska (Indien) | `en-IN` | Ja | Ja |
+| Engelska (Storbritannien) | `en-GB` | Ja | Ja |
+| Engelska (USA) | `en-US` | Ja | Ja |
+| Franska (Kanada) | `fr-CA` | Inga | Ja |
+| Franska (Frankrike) | `fr-FR` | Ja | Ja |
+| Tyska (Tyskland) | `de-DE` | Ja | Ja |
+| Italienska (Italien) | `it-IT` | Ja | Ja |
+| Japanska (Japan) | `ja-JP` | Inga | Ja |
+| Koreanska (Korea) | `ko-KR` | Inga | Ja |
+| Portugisiska (Brasilien) | `pt-BR` | Ja | Ja |
+| Spanska (Mexiko) | `es-MX` | Ja | Ja |
+| Spanska (Spanien) | `es-ES` | Inga | Ja |
+
+Välj rätt språk version som matchar de tränings data du behöver för att träna en anpassad röst modell. Om till exempel de inspelnings data du har talas på engelska med en brittisk accent väljer du `en-GB` .
 
 > [!NOTE]
-> Vi stöder inte dubbelriktad modell utbildning i anpassad röst, förutom för Chinese-English bi-språk. Välj "kinesiskt kinesiskt tvåspråkig" om du vill träna en kinesisk röst som även kan tala med engelska. Röstträning i alla språk börjar med en data uppsättning av 2000 + yttranden, med undantag för `en-US` och `zh-CN` där du kan börja med valfri storlek på tränings data.
+> Vi stöder inte dubbelriktad modell utbildning i anpassad röst, förutom för Chinese-English bi-språk. Välj "kinesiskt kinesiskt tvåspråkig" om du vill träna en kinesisk röst som även kan tala med engelska. Chinese-English tvåspråkig modell träning med standard metoden är endast tillgänglig i Nord Europa och norra centrala USA. Anpassad röst utbildning för neurala finns i Storbritannien, södra och östra USA.
 
 ## <a name="speech-translation"></a>Talöversättning
 

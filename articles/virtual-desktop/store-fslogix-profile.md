@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 189ff3bbfdb3b8533defcedb77e15fef433598b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023096"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526610"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Lagrings alternativ för FSLogix profil behållare i Windows Virtual Desktop
 
@@ -28,11 +28,11 @@ I följande tabeller jämförs lagrings lösningarna Azure Storage erbjudanden f
 |Användningsfall|Generellt syfte|Ultra Performance eller migration från NetApp lokalt|Plattformsoberoende|
 |Plattforms tjänst|Ja, Azure – inbyggd lösning|Ja, Azure – inbyggd lösning|Ingen, egen hantering|
 |Regional tillgänglighet|Alla regioner|[Välj regioner](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alla regioner|
-|Redundans|Lokalt redundant/zon-redundant/Geo-redundant|Lokalt redundant|Lokalt redundant/zon-redundant/Geo-redundant|
-|Nivåer och prestanda|Standard<br>Premium<br>Upp till max 100 000 IOPS per resurs med 5 Gbit/s per resurs med cirka 3 MS svars tid|Standard<br>Premium<br>Ultra<br>Upp till 320k (16K) IOPS med 4,5 Gbit/s per volym vid ungefär 1 MS svars tid|Standard HDD: gränser för upp till 500 IOPS per disk<br>Standard SSD: upp till 4 000 IOPS-gränser per disk<br>Premium SSD: upp till 20 000 IOPS per disk<br>Vi rekommenderar Premium diskar för Lagringsdirigering|
-|Kapacitet|100 TiB per resurs|100 TiB per volym, upp till 12,5 PiB per prenumeration|Maximalt 32 TiB per disk|
+|Redundans|Lokalt redundant/zon-redundant/Geo-redundant/geo-Zone-redundant|Lokalt redundant|Lokalt redundant/zon-redundant/Geo-redundant|
+|Nivåer och prestanda| Standard (transaktion optimerad)<br>Premium<br>Upp till max 100 000 IOPS per resurs med 10 Gbit/s per resurs vid cirka 3 MS svars tid|Standard<br>Premium<br>Ultra<br>Upp till 320k (16K) IOPS med 4,5 Gbit/s per volym vid ungefär 1 MS svars tid|Standard HDD: gränser för upp till 500 IOPS per disk<br>Standard SSD: upp till 4 000 IOPS-gränser per disk<br>Premium SSD: upp till 20 000 IOPS per disk<br>Vi rekommenderar Premium diskar för Lagringsdirigering|
+|Kapacitet|100 TiB per resurs, upp till 5 PiB per allmänt syftes konto |100 TiB per volym, upp till 12,5 PiB per prenumeration|Maximalt 32 TiB per disk|
 |Nödvändig infrastruktur|Minsta resurs storlek 1 GiB|Pool för minsta kapacitet 4 TiB, minsta volym storlek 100 GiB|Två virtuella datorer på Azure IaaS (+ Cloud vittne) eller minst tre virtuella datorer utan och kostnader för diskar|
-|Protokoll|SMB 2.1/3. och REST|NFSv3, NFSv 4.1 (för hands version), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
+|Protokoll|SMB 3.0/2.1, NFSv 4.1 (för hands version), REST|NFSv3, NFSv 4.1 (för hands version), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
 
 ## <a name="azure-management-details"></a>Information om Azure-hantering
 

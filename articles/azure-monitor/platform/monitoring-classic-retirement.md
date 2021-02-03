@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368ab1bc6a1fc13c3001b437c3c2a8be2bbb9c04
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848133"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525999"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Enhetlig avisering & övervakning i Azure Monitor ersätter klassisk avisering & övervakning
 
 Azure Monitor har nu blivit en enhetlig tjänst för fullständig stack övervakning som nu stöder "ett mått" och "en avisering" mellan resurser. Mer information finns i vårt [blogg inlägg på nya Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). De nya plattformarna för Azure-övervakning och-avisering har utformats för att vara snabbare, smartare och utöknings Bar – hålla jämna steg med den växande expanse av molnbaserad data behandling och online med Microsoft Intelligent Cloud-filosofi.
 
-Med den nya plattformen för Azure-övervakning och avisering kan de klassiska aviseringarna i Azure Monitor dras tillbaka, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Datum för indragningen för dessa aviseringar har ännu förlängts. Ett nytt datum meddelas snart för migrering av återstående aviseringar, [Azure Government molnet](../../azure-government/documentation-government-welcome.md)och [Azure Kina 21Vianet](https://docs.azure.cn/).
+Med den nya plattformen för Azure-övervakning och avisering är de klassiska aviseringarna i Azure Monitor pensionerade för offentliga moln användare, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Datum för indragningen för dessa aviseringar har ännu förlängts. Ett nytt datum meddelas snart för migrering av återstående aviseringar, [Azure Government molnet](../../azure-government/documentation-government-welcome.md)och [Azure Kina 21Vianet](https://docs.azure.cn/).
 
- ![Klassisk avisering i Azure Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
+ ![Klassisk avisering i Azure Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 Vi rekommenderar att du kommer igång och återskapar dina aviseringar på den nya plattformen.
 
@@ -48,7 +48,7 @@ Nya mått för Azure-resurser är tillgängliga som:
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Dra tillbaka klassisk övervaknings-och varnings plattform
 
-Som tidigare nämnts har äldre klassisk övervakning och avisering dragits tillbaka. inklusive stängning av relaterade API: er, Azure Portal gränssnitt och tjänster, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Mer specifikt är dessa funktioner inaktuella:
+Som tidigare nämnts har äldre klassisk övervakning och avisering dragits tillbaka för offentliga moln användare. inklusive stängning av relaterade API: er, Azure Portal gränssnitt och tjänster, men fortfarande i begränsad användning för resurser som ännu inte stöder de nya aviseringarna. Mer specifikt är dessa funktioner inaktuella:
 
 - Äldre (klassiska) mått och aviseringar för Azure-resurser som för närvarande är tillgängliga via [aviseringar (klassisk)](./alerts-classic.overview.md) i Azure Portal; tillgänglig som [Microsoft. Insights/alertrules-](/rest/api/monitor/alertrules) resurs
 - Äldre (klassisk) plattform och anpassade mått för Application Insights samt avisering om dem som för närvarande är tillgängliga via [aviseringar (klassisk)](./alerts-classic.overview.md) i Azure Portal och som är tillgängliga som [Microsoft. Insights/alertrules-](/rest/api/monitor/alertrules) resurs

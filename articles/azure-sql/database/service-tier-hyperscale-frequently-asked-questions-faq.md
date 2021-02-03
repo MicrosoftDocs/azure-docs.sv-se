@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 03/03/2020
-ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/03/2021
+ms.openlocfilehash: c6faa1703b0935d66d291281f33027b3a66a59d4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459641"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526830"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Vanliga frågor och svar om Azure SQL Database storskalig
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ Databas storleken ökar automatiskt när du infogar/matar in mer data.
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Vad är den minsta databas storlek som stöds av skalan eller börjar med
 
-40 GB. En storskalig databas skapas med en start storlek på 10 GB. Sedan börjar den växa med 10 GB var 10: e minut tills den når storleken på 40 GB. Var och en av dessa 10 GB-Chucks tilldelas på en annan server för att tillhandahålla mer IOPS och högre I/O-parallellitet. På grund av den här optimeringen, även om du väljer ursprunglig databas storlek som är mindre än 40 GB, växer databasen till minst 40 GB automatiskt.
+40 GB. En storskalig databas skapas med en start storlek på 10 GB. Sedan börjar den växa med 10 GB var 10: e minut tills den når storleken på 40 GB. Vart och ett av dessa 10 GB-segment tilldelas i en annan sid Server för att tillhandahålla mer IOPS och högre I/O-parallellitet. På grund av den här optimeringen, även om du väljer ursprunglig databas storlek som är mindre än 40 GB, växer databasen till minst 40 GB automatiskt.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>I vilka ökningar växer min databas storlek
 
@@ -233,7 +233,7 @@ Hög skalning kan förbruka 100 MB/s av nya/ändrade data, men den tid som behö
 
 Du kan låta ett klient program läsa data från Azure Storage och läsa in data inläsning i en storskalig databas (precis som du kan med andra databaser i Azure SQL Database). PolyBase stöds för närvarande inte i Azure SQL Database. Som ett alternativ till att ge en snabb belastning kan du använda [Azure Data Factory](../../data-factory/index.yml)eller använda ett Spark-jobb i [Azure Databricks](/azure/azure-databricks/) med [Spark-anslutaren för SQL](spark-connector.md). Spark-anslutningen till SQL stöder Mass infogning.
 
-Du kan också massredigera Läs data från Azure Blob Store med BULK INSERT eller OpenRowSet: [exempel på Mass åtkomst till data i Azure Blob Storage](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+Du kan också massredigera Läs data från Azure Blob Store med BULK INSERT eller OpenRowSet: [exempel på Mass åtkomst till data i Azure Blob Storage](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Enkel återställning eller Mass loggnings modell stöds inte i storskaliga versioner. Fullständig återställnings modell krävs för att tillhandahålla hög tillgänglighet och återställning av tidpunkter. Skalnings logg arkitekturen ger dock bättre data inmatnings hastighet jämfört med andra Azure SQL Database tjänst nivåer.
 

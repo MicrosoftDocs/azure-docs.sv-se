@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 02/01/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8449c5437bad6d0036d332ca5c35709b5d571cfa
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225166"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525152"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivera multifaktorautentisering i Azure Active Directory B2C
 
@@ -41,9 +41,12 @@ Den här funktionen hjälper program att hantera scenarier som:
 1. Välj det användar flöde som du vill aktivera MFA för. Till exempel *B2C_1_signinsignup*.
 1. Välj **Egenskaper**.
 1. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod** och under **MFA tvång** väljer du **Always on**, eller **villkorlig (rekommenderas)**.
-  > [!NOTE]
-  > Om du väljer **villkorlig (rekommenderas)** måste du också [lägga till en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) och ange de appar som du vill att principen ska tillämpas på.
-1. Välj Spara MFA har nu Aktiver ATS för det här användar flödet.
+   > [!NOTE]
+   >
+   > - Om du väljer **villkorlig (rekommenderas)** måste du också [lägga till en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy) och ange de appar som du vill att principen ska tillämpas på.
+   > - Multi-Factor Authentication (MFA) är inaktiverat som standard för registrering av användar flöden. Du kan aktivera MFA i användar flöden med telefon registrering, men eftersom ett telefonnummer används som primär identifierare är email eng ång slö sen ord det enda alternativet som är tillgängligt för den andra autentiserings faktorn.
+
+1. Välj **Spara**. MFA har nu Aktiver ATS för det här användar flödet.
 
 Du kan använda **Kör användar flöde** för att verifiera upplevelsen. Bekräfta följande scenario:
 
