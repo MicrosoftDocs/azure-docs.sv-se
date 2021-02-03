@@ -1,6 +1,6 @@
 ---
 title: Serverlös beräkningsnivå
-description: Den här artikeln beskriver den nya server lös beräknings nivån och jämför den med den befintliga allokerade beräknings nivån för Azure SQL Database.
+description: Den här artikeln beskriver den nya serverlös beräknings nivån och jämför den med den befintliga allokerade beräknings nivån för Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -21,26 +21,26 @@ ms.locfileid: "97687405"
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database utan Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Server lös är en beräknings nivå för enskilda databaser i Azure SQL Database som automatiskt skalar beräkning baserat på arbets belastnings behov och räkningar för mängden data bearbetning som används per sekund. Server lös beräknings nivån pausar också automatiskt databaser under inaktiva perioder när endast lagring faktureras och återupptar automatiskt databaser när aktiviteten returnerar.
+serverlös är en beräknings nivå för enskilda databaser i Azure SQL Database som automatiskt skalar beräkning baserat på arbets belastnings behov och räkningar för mängden data bearbetning som används per sekund. serverlös beräknings nivån pausar också automatiskt databaser under inaktiva perioder när endast lagring faktureras och återupptar automatiskt databaser när aktiviteten returnerar.
 
 ## <a name="serverless-compute-tier"></a>Serverlös beräkningsnivå
 
-Server lösa beräknings nivåer för enskilda databaser i Azure SQL Database är parameterstyrda av ett intervall för beräkning av automatisk skalning och en fördröjning för automatisk paus. Konfigurationen av dessa parametrar formar databasens prestanda upplevelse och beräknings kostnader.
+serverlösa beräknings nivåer för enskilda databaser i Azure SQL Database är parameterstyrda av ett intervall för beräkning av automatisk skalning och en fördröjning för automatisk paus. Konfigurationen av dessa parametrar formar databasens prestanda upplevelse och beräknings kostnader.
 
 ![utan server fakturering](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>Prestanda konfiguration
 
-- **Lägsta virtuella kärnor** och **maximal virtuella kärnor** är konfigurerbara parametrar som definierar intervallet för beräknings kapacitet som är tillgängliga för databasen. Minnes-och IO-gränser är proportionella till det vCore-intervall som angetts.  
+- **Lägsta virtuella kärnor** och **maximal virtuella kärnor** är konfigurerbara parametrar som definierar intervallet för beräkningskapacitet som är tillgängliga för databasen. Minnes-och IO-gränser är proportionella till det vCore-intervall som angetts.  
 - Den automatiska **paus fördröjningen** är en konfigurerbar parameter som definierar den tids period som databasen måste vara inaktiv innan den pausas automatiskt. Databasen återupptas automatiskt när nästa inloggning eller annan aktivitet sker.  Du kan också inaktivera AutoPause.
 
 ### <a name="cost"></a>Cost
 
-- Kostnaden för en server lös databas är summan av beräknings kostnaden och lagrings kostnaden.
-- När beräknings användningen är mellan den minsta och högsta gränsen som kon figurer ATS baseras beräknings kostnaden på vCore och använt minne.
-- När beräknings användningen är under de lägsta gränser som har kon figurer ATS, baseras beräknings kostnaden på den minsta virtuella kärnor och minimalt minne som har kon figurer ATS.
-- När databasen har pausats är beräknings kostnaden noll och endast lagrings kostnader uppkommer.
-- Lagrings kostnaden fastställs på samma sätt som i den allokerade beräknings nivån.
+- Kostnaden för en serverlös databas är summan av beräknings kostnaden och lagrings kostnaden.
+- När beräknings användningen är mellan den minsta och högsta gränsen som konfigurerats baseras beräknings kostnaden på vCore och använt minne.
+- När beräknings användningen är under de lägsta gränser som har konfigurerats, baseras beräkningskostnaden på den minsta virtuella kärnor och minimalt minne som har konfigurerats.
+- När databasen har pausats är beräkningskostnaden noll och endast lagrings kostnader uppkommer.
+- Lagringskostnaden fastställs på samma sätt som i den allokerade beräknings nivån.
 
 Mer kostnads information finns i [fakturering](serverless-tier-overview.md#billing).
 
@@ -48,7 +48,7 @@ Mer kostnads information finns i [fakturering](serverless-tier-overview.md#billi
 
 Nivån med serverlös databehandling är pris/prestanda-optimerad för enstaka databaser med oförutsägbart användningsmönster som inte störs av viss fördröjning i databehandlingen efter inaktiva perioder. Nivån med etablerad databehandling är å andra sidan pris/prestanda-optimerad för enstaka eller flera databaser i elastiska pooler med högre genomsnittlig användning där det inte får förekomma en sådan fördröjning.
 
-### <a name="scenarios-well-suited-for-serverless-compute"></a>Lämpliga scenarier för Server lös data behandling
+### <a name="scenarios-well-suited-for-serverless-compute"></a>Lämpliga scenarier för serverlös data behandling
 
 - Enkla databaser med intermittent, oförutsägbara användnings mönster som blandats med perioder av inaktivitet och lägre genomsnittlig data bearbetning över tid.
 - Enskilda databaser i den allokerade beräknings nivån som ofta skalas om och kunder som föredrar att delegera beräkning av skalbarhet till tjänsten.
@@ -62,7 +62,7 @@ Nivån med serverlös databehandling är pris/prestanda-optimerad för enstaka d
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>Jämförelse med allokerad beräknings nivå
 
-I följande tabell sammanfattas skillnader mellan server lös beräknings nivå och den allokerade beräknings nivån:
+I följande tabell sammanfattas skillnader mellan serverlös beräknings nivå och den allokerade beräknings nivån:
 
 | | **Serverlös databearbetning** | **Allokerad beräkning** |
 |:---|:---|:---|
@@ -74,7 +74,7 @@ I följande tabell sammanfattas skillnader mellan server lös beräknings nivå 
 
 ## <a name="purchasing-model-and-service-tier"></a>Inköps modell och tjänst nivå
 
-SQL Database Server lös stöds för närvarande bara på Generell användning nivå på generation 5-maskin vara i vCore inköps modell.
+SQL Database serverlös stöds för närvarande bara på Generell användning nivå på generation 5-maskin vara i vCore inköps modell.
 
 ## <a name="autoscaling"></a>Automatisk skalning
 
@@ -82,20 +82,20 @@ SQL Database Server lös stöds för närvarande bara på Generell användning n
 
 I allmänhet körs serverbaserade databaser på en dator som har tillräckligt med kapacitet för att uppfylla resurs behovet utan avbrott för en mängd data som begärs inom gränser som anges av Max värdet för virtuella kärnor. Ibland sker belastnings utjämning automatiskt om datorn inte kan uppfylla resurs behovet inom några minuter. Om till exempel resurs behovet är 4 virtuella kärnor, men bara 2 virtuella kärnor är tillgängliga, kan det ta upp till några minuter att belastningsutjämna innan 4 virtuella kärnor tillhandahålls. Databasen är online under belastnings utjämning, förutom en kort period i slutet av åtgärden när anslutningarna bryts.
 
-### <a name="memory-management"></a>Minnes hantering
+### <a name="memory-management"></a>Minneshantering
 
-Minne för serverbaserade databaser frigörs oftare än för etablerade beräknings databaser. Det här beteendet är viktigt för att kontrol lera kostnader i Server lös och kan påverka prestandan.
+Minne för serverbaserade databaser frigörs oftare än för etablerade beräknings databaser. Det här beteendet är viktigt för att kontrollera kostnader i serverlös och kan påverka prestandan.
 
 #### <a name="cache-reclamation"></a>Cache regenering
 
-Till skillnad från etablerade data bearbetnings databaser frigörs minne från SQL-cachen från en server lös databas när CPU eller aktiv cache-användning är låg.
+Till skillnad från etablerade data bearbetnings databaser frigörs minne från SQL-cachen från en serverlös databas när CPU eller aktiv cache-användning är låg.
 
 - Användningen av aktiva cacheminnen anses låg när den totala storleken på de senast använda cacheposter unders tiger ett tröskelvärde under en viss tids period.
 - När cache regenering utlöses, minskas storleken på målets cachestorlek stegvis till en bråkdel av den tidigare storleken och återställningen fortsätter bara om användningen är låg.
 - När cache regenering sker är principen för att välja cacheposter att ta bort samma princip som för etablerade beräknings databaser när minnes trycket är hög.
 - Cachestorleken minskas aldrig under den minsta minnes gränsen som definieras av den minsta virtuella kärnor som kan konfigureras.
 
-I både server lösa och etablerade beräknings databaser kan cacheposter avlägsnas om allt tillgängligt minne används.
+I både serverlösa och etablerade beräknings databaser kan cacheposter avlägsnas om allt tillgängligt minne används.
 
 Observera att användningen av aktiva cacheminnen kan vara hög beroende på användnings mönstret och förhindra minnes regenerering när processor användningen är låg.  Det kan också finnas ytterligare fördröjning efter att en användar aktivitet stoppas innan återtagning av minne sker på grund av regelbundna bakgrunds processer som svarar på tidigare användar aktiviteter.  Ta bort åtgärder och QDs servernamn rensnings uppgifter genererar Ghost-poster som marker ATS för borttagning, men tas inte bort fysiskt förrän rensningen av Ghost-processen körs, vilket kan innebära att data sidor läses till cache.
 
@@ -151,21 +151,21 @@ Funktionen för att återuppta automatiskt utlöses även under distributionen a
 
 ### <a name="connectivity"></a>Anslutning
 
-Om en server lös databas har pausats kommer den första inloggningen att återuppta databasen och returnera ett fel som anger att databasen inte är tillgänglig med felkoden 40613. När databasen har återupptagits måste inloggningen göras om för att upprätta anslutningen. Databas klienter med logik för anslutnings försök ska inte behöva ändras.
+Om en serverlös databas har pausats kommer den första inloggningen att återuppta databasen och returnera ett fel som anger att databasen inte är tillgänglig med felkoden 40613. När databasen har återupptagits måste inloggningen göras om för att upprätta anslutningen. Databas klienter med logik för anslutnings försök ska inte behöva ändras.
 
 ### <a name="latency"></a>Svarstid
 
-Svars tiden för autoresume och autopausning av en server lös databas är i regel 1 minut för att autoaktivera och 1-10 minuter att pausa.
+Svars tiden för autoresume och autopausning av en serverlös databas är i regel 1 minut för att autoaktivera och 1-10 minuter att pausa.
 
-### <a name="customer-managed-transparent-data-encryption-byok"></a>Kund hanterad transparent data kryptering (BYOK)
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Kundhanterad transparent data kryptering (BYOK)
 
-Om du använder [kundhanterad transparent data kryptering](transparent-data-encryption-byok-overview.md) (BYOK) och den server lösa databasen automatiskt pausas när nyckel borttagningen eller återkallning sker, så förblir databasen i läget för automatisk paus.  I det här fallet blir databasen otillgänglig inom cirka 10 minuter efter att databasen har återupptagits.  När databasen blir otillgänglig är återställnings processen densamma som för etablerade beräknings databaser.  Om databasen utan server är online när nyckel borttagningen eller återkallning sker, blir databasen också otillgänglig inom cirka 10 minuter på samma sätt som med etablerade beräknings databaser.
+Om du använder [kundhanterad transparent data kryptering](transparent-data-encryption-byok-overview.md) (BYOK) och den serverlösa databasen automatiskt pausas när nyckel borttagningen eller återkallning sker, så förblir databasen i läget för automatisk paus.  I det här fallet blir databasen otillgänglig inom cirka 10 minuter efter att databasen har återupptagits.  När databasen blir otillgänglig är återställnings processen densamma som för etablerade beräknings databaser.  Om databasen utan server är online när nyckel borttagningen eller återkallning sker, blir databasen också otillgänglig inom cirka 10 minuter på samma sätt som med etablerade beräknings databaser.
 
-## <a name="onboarding-into-serverless-compute-tier"></a>Onboarding in in på Server lös beräknings nivå
+## <a name="onboarding-into-serverless-compute-tier"></a>Onboarding in in på serverlös beräkningsnivå
 
-Att skapa en ny databas eller flytta en befintlig databas till en server lös beräknings nivå följer samma mönster som att skapa en ny databas i en allokerad beräknings nivå och omfattar följande två steg.
+Att skapa en ny databas eller flytta en befintlig databas till en serverlös beräknings nivå följer samma mönster som att skapa en ny databas i en allokerad beräkningsnivå och omfattar följande två steg.
 
-1. Ange tjänst målet. Tjänst målet föreskriver tjänst nivån, maskin varu genereringen och Max virtuella kärnor. Information om tjänst mål finns i [begränsningar för Server lös resurs](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
+1. Ange tjänst målet. Tjänst målet föreskriver tjänst nivån, maskin varu genereringen och Max virtuella kärnor. Information om tjänst mål finns i [begränsningar för serverlös resurs](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
 
 2. Alternativt kan du ange den minsta virtuella kärnor och den automatiskt paus fördröjningen för att ändra standardvärdena. I följande tabell visas de tillgängliga värdena för dessa parametrar.
@@ -176,9 +176,9 @@ Att skapa en ny databas eller flytta en befintlig databas till en server lös be
    |Pausa fördröjning|Minst: 60 minuter (1 timme)<br>Max: 10080 minuter (7 dagar)<br>Steg: 10 minuter<br>Inaktivera autopausen:-1|60 minuter|
 
 
-### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Skapa en ny databas i Server lös beräknings nivån
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Skapa en ny databas i Serverlös beräknings nivån
 
-I följande exempel skapas en ny databas i Server lös beräknings nivån.
+I följande exempel skapas en ny databas i Serverlös beräknings nivån.
 
 #### <a name="use-the-azure-portal"></a>Använda Azure-portalen
 
@@ -211,9 +211,9 @@ CREATE DATABASE testdb
 
 Mer information finns i [skapa databas](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
 
-### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Flytta en databas från den allokerade beräknings nivån till Server lös beräknings nivån
+### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Flytta en databas från den allokerade beräknings nivån till Serverlös beräknings nivån
 
-Följande exempel flyttar en databas från den allokerade beräknings nivån till Server lös beräknings nivån.
+Följande exempel flyttar en databas från den allokerade beräknings nivån till Serverlös beräknings nivån.
 
 #### <a name="use-powershell"></a>Använd PowerShell
 
@@ -243,9 +243,9 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
-### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Flytta en databas från Server lös beräknings nivån till den allokerade beräknings nivån
+### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Flytta en databas från serverlös beräknings nivån till den allokerade beräknings nivån
 
-En server lös databas kan flyttas till en allokerad beräknings nivå på samma sätt som en allokerad beräknings databas flyttas till en server lös beräknings nivå.
+En serverlös databas kan flyttas till en allokerad beräknings nivå på samma sätt som en allokerad beräknings databas flyttas till en serverlös beräknings nivå.
 
 ## <a name="modifying-serverless-configuration"></a>Ändra konfiguration utan Server
 
@@ -262,19 +262,19 @@ Att ändra den maximala eller lägsta virtuella kärnor och den autopausade för
 
 ### <a name="resources-used-and-billed"></a>Använda och fakturerade resurser
 
-Resurserna för en server lös databas kapslas av appaket, SQL-instans och entiteter för resurspooler för användare.
+Resurserna för en serverlös databas kapslas av appaket, SQL-instans och entiteter för resurspooler för användare.
 
 #### <a name="app-package"></a>Appaket
 
-Appaketet är den yttre mest resurs hanterings gränserna för en databas, oavsett om databasen finns i en server lös eller allokerad beräknings nivå. Appaketet innehåller SQL-instansen och externa tjänster som tillsammans omfattar alla användar-och system resurser som används av en databas i SQL Database. Exempel på externa tjänster är R och full texts ökning. SQL-instansen dominerar vanligt vis den övergripande resursutnyttjande över Appaketet.
+Appaketet är den yttre mest resurs hanterings gränserna för en databas, oavsett om databasen finns i en serverlös eller allokerad beräknings nivå. Appaketet innehåller SQL-instansen och externa tjänster som tillsammans omfattar alla användar-och system resurser som används av en databas i SQL Database. Exempel på externa tjänster är R och full texts ökning. SQL-instansen dominerar vanligt vis den övergripande resursutnyttjande över Appaketet.
 
 #### <a name="user-resource-pool"></a>Resurspool för användare
 
-Resurspoolen är den inre resurs hanterings gränserna för en databas, oavsett om databasen finns i en server lös eller allokerad beräknings nivå. Användarens resurspool omfångerar CPU och IO för användar arbets belastningar som skapats av DDL-frågor som skapa och ändra och DML-frågor, till exempel SELECT, INSERT, UPDATE och DELETE. Dessa frågor representerar vanligt vis den mest betydande delen av användningen i Appaketet.
+Resurspoolen är den inre resurs hanterings gränserna för en databas, oavsett om databasen finns i en serverlös eller allokerad beräknings nivå. Användarens resurspool omfångerar CPU och IO för användar arbets belastningar som skapats av DDL-frågor som skapa och ändra och DML-frågor, till exempel SELECT, INSERT, UPDATE och DELETE. Dessa frågor representerar vanligt vis den mest betydande delen av användningen i Appaketet.
 
 ### <a name="metrics"></a>Mått
 
-Mät värden för att övervaka resursanvändningen för Appaketet och poolen för en server lös databas visas i följande tabell:
+Mät värden för att övervaka resursanvändningen för Appaketet och poolen för en serverlös databas visas i följande tabell:
 
 |Entitet|Metric|Beskrivning|Enheter|
 |---|---|---|---|
@@ -309,7 +309,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 ## <a name="resource-limits"></a>Resursbegränsningar
 
-För resurs gränser, se [Server lös beräknings nivå](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).
+För resurs gränser, se [serverlös beräknings nivå](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).
 
 ## <a name="billing"></a>Fakturering
 
@@ -331,18 +331,18 @@ Den här kvantiteten beräknas varje sekund och sammanställs över 1 minut.
 
 ### <a name="minimum-compute-bill"></a>Minsta beräknings faktura
 
-Om en server lös databas har pausats är beräknings fakturan noll.  Om en server lös databas inte är pausad, är den minsta beräknings fakturan inte mindre än mängden virtuella kärnor baserat på max (min virtuella kärnor, minsta minne GB * 1/3).
+Om en serverlös databas har pausats är beräknings fakturan noll.  Om en serverlös databas inte är pausad, är den minsta beräknings fakturan inte mindre än mängden virtuella kärnor baserat på max (min virtuella kärnor, minsta minne GB * 1/3).
 
 Exempel:
 
 - Anta att en databas utan server inte har pausats och kon figurer ATS med 8 Max virtuella kärnor och 1 min vCore som motsvarar 3,0 GB för minsta minne.  Sedan baseras den minsta beräknings fakturan på max (1 vCore, 3,0 GB * 1 vCore/3 GB) = 1 vCore.
 - Anta att en databas utan server inte har pausats och kon figurer ATS med 4 Max virtuella kärnor och 0,5 min virtuella kärnor som motsvarar 2,1 GB för minsta minne.  Sedan baseras den minsta beräknings fakturan på max (0,5 virtuella kärnor, 2,1 GB * 1 vCore/3 GB) = 0,7 virtuella kärnor.
 
-[Azure SQL Database pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/?service=sql-database) för Server lös kan användas för att fastställa det minsta minnes konfigurerbara värdet baserat på antalet max-och min virtuella kärnor som kon figurer ATS.  Om den minsta virtuella kärnor som kon figurer ATS är större än 0,5 virtuella kärnor, är den minsta beräknings fakturan oberoende av det minsta minne som har kon figurer ATS och enbart baserat på antalet virtuella kärnor som kon figurer ATS.
+[Azure SQL Database pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/?service=sql-database) för serverlös kan användas för att fastställa det minsta minnes konfigurerbara värdet baserat på antalet max-och min virtuella kärnor som kon figurer ATS.  Om den minsta virtuella kärnor som kon figurer ATS är större än 0,5 virtuella kärnor, är den minsta beräknings fakturan oberoende av det minsta minne som har kon figurer ATS och enbart baserat på antalet virtuella kärnor som kon figurer ATS.
 
 ### <a name="example-scenario"></a>Exempelscenario
 
-Överväg en server lös databas som kon figurer ATS med 1 min vCore och 4 Max virtuella kärnor.  Detta motsvarar cirka 3 GB min minne och maximalt 12 GB minne.  Antag att fördröjningen för automatisk paus är inställd på 6 timmar och databasens arbets belastning är aktiv under de första två timmarna av en 24-timmarsperiod och annars inaktiv.    
+Överväg en serverlös databas som kon figurer ATS med 1 min vCore och 4 Max virtuella kärnor.  Detta motsvarar cirka 3 GB min minne och maximalt 12 GB minne.  Antag att fördröjningen för automatisk paus är inställd på 6 timmar och databasens arbets belastning är aktiv under de första två timmarna av en 24-timmarsperiod och annars inaktiv.    
 
 I det här fallet faktureras databasen för beräkning och lagring under de första 8 timmarna.  Även om databasen är inaktiv från och med den andra timmen, faktureras den fortfarande för beräkning under de följande 6 timmarna baserat på den lägsta beräkning som etablerades när databasen är online.  Endast lagring faktureras under resten av den 24-timmarsperiod medan databasen pausas.
 
@@ -360,13 +360,13 @@ Anta att priset för beräknings enheten är $0.000145/vCore/Second.  Sedan debi
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hybrid-förmån och reserverad kapacitet
 
-Azure Hybrid-förmån (AHB) och reserverade kapacitets rabatter gäller inte för Server lös beräknings nivån.
+Azure Hybrid-förmån (AHB) och reserverade kapacitets rabatter gäller inte för serverlös beräknings nivån.
 
 ## <a name="available-regions"></a>Tillgängliga regioner
 
-Server lös beräknings nivån är tillgänglig över hela världen utom följande regioner: Kina, östra, Kina, norra, Tyskland, centrala, Tyskland nordöstra och US Gov Central (Iowa).
+serverlös beräknings nivån är tillgänglig över hela världen utom följande regioner: Kina, östra, Kina, norra, Tyskland, centrala, Tyskland nordöstra och US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Information om hur du kommer igång finns i [snabb start: skapa en enda databas i Azure SQL Database med hjälp av Azure Portal](single-database-create-quickstart.md).
-- För resurs gränser, se [resurs gränser för Server lös beräknings nivå](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).
+- För resurs gränser, se [resurs gränser för serverlös beräknings nivå](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).
