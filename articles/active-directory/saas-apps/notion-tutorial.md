@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 512436c9d72e0318ec14bf7551a2fde76c6ef3d8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 520eb25bcb138c96b24166816d3374255fb7c3b2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735920"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493996"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-notion"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med begreppet
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig att integrera begreppet med Azure Act
 * Gör det möjligt för användarna att bli inloggade automatiskt för att definiera sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -40,7 +40,7 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 * Begreppet stöder **SP-och IDP** -INITIERAd SSO
 * Begreppet stöder **just-in-Time** User-etablering
 > [!NOTE]
-> ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
+> ID för det här programmet är ett fast sträng värde så att en teoretisk arbets yta kan konfigureras i en klient.
 
 
 ## <a name="adding-notion-from-the-gallery"></a>Lägga till begrepp från galleriet
@@ -80,14 +80,14 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    Skriv en URL i text rutan **svars-URL** med följande mönster:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    I text rutan **svars-URL** anger du URL: en med följande mönster som du kan hämta från dina användardefinierade inställningar för arbets ytan **& medlemmar** > **säkerhet & ID** > **för enkel inloggnings-URL**:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://www.notion.so/sso/saml/<CUSTOM_ID>`
+    I text rutan **inloggnings-URL** anger du följande URL:  `https://www.notion.so/login`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera värdena med faktisk svars-URL och inloggnings-URL. Kontakta [kundens kund support team](mailto:team@makenotion.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera värdena med faktisk svars-URL och inloggnings-URL. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 1. I definitions programmet förväntas SAML-kontroller i ett särskilt format, vilket kräver att du lägger till anpassade attribut mappningar i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
 
@@ -102,7 +102,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     | lastName | user.surname |
 
 
-1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på Kopiera för att kopiera **URL: en för appens Federations-metadata** och spara den på din dator.
+1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på Kopiera för att kopiera URL för **metadata för app Federation**. Gå till din **begrepps** arbets yta **Inställningar & medlemmar**  >  **säkerhet & identitet** och klistra in värdet som du kopierade i fältet **IDP metadata URL** .
 
     ![Länk för nedladdning av certifikatet](common/copy-metadataurl.png)
 
@@ -132,7 +132,13 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-notion-sso"></a>Konfigurera begrepp för enkel inloggning
 
-Om du vill konfigurera enkel inloggning på den **teoretiska** sidan måste du skicka **URL: en för appens Federations-metadata** till [begreppet support team](mailto:team@makenotion.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+Gå till din **begrepps** arbets yta **Inställningar & medlemmar**  >  **säkerhet & identitet** och klistra in URL-värdet för **appens federationsmetadata** som du kopierade till fältet **IDP metadata URL** .
+
+På samma inställnings sida, under **e-postdomäner** klickar du på **kontakta support** för att lägga till din organisations e-postdomän.
+
+När dina e-postdomäner har godkänts och lagts till aktiverar du SAML SSO med **Aktivera SAML** -växling.
+
+När testet är klart kan du använda SAML SSO med hjälp av **tvingande SAML** -växling. Observera att din teoretiska arbets yta administrastrators behåller möjligheten att logga in med e-post, men alla andra medlemmar måste använda SAML SSO för att logga in på begreppet.
 
 ### <a name="create-notion-test-user"></a>Skapa en teoretisk test användare
 

@@ -278,6 +278,8 @@
           items:
             - name: Använda måttdiagram
               href: azure-stack-edge-monitor.md
+            - name: Hantera aviseringar om enhets händelser
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Använda Kubernetes-instrumentpanelen
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Använda Azure Monitor

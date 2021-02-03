@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798622"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500393"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -140,6 +140,10 @@ Upp till 1 000 anslutningar stöds per virtuell hubb. Varje anslutning består a
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Vad är en förgrenings anslutning till Azure Virtual WAN?
 
 En anslutning från en gren eller VPN-enhet till Azure Virtual WAN är inget, men en VPN-anslutning som ansluter i stort sett VPN-platsen och Azure-VPN Gateway i en virtuell hubb.
+
+### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>Vad händer om den lokala VPN-enheten bara har 1 tunnel till en virtuell WAN-gateway i Azure?
+
+En virtuell Azure WAN-anslutning består av 2 tunnlar. En virtuell WAN-Gateway distribueras i en virtuell hubb i aktivt läge, vilket innebär att det finns separata tunnlar från lokala enheter som avslutas på separata isntances – detta är rekommendationen för alla användare. Om användaren däremot väljer att bara ha 1 tunnel till en av de virtuella WAN-Gateway-instanserna, om det av någon anledning (underhåll, korrigeringar osv.)  Gateway-instansen skulle vara offline, tunneln kommer att flyttas till den sekundära aktiva instansen och användaren kan uppleva en åter anslutning. Tänk på att BGP-sessionen inte kommer att flyttas mellan instanser.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Kan den lokala VPN-enheten ansluta till flera hubbar?
 

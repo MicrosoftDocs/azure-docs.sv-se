@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: ceb560a3f0c56a13b9f8da6c867f513b2b08e59b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962234"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500008"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
 
@@ -78,7 +78,7 @@ En begäran som inte uppfyller **båda** dessa krav kommer att avvisas av tjäns
 IMDS är **inte** avsett att användas bakom en proxyserver och detta stöds inte. De flesta HTTP-klienter tillhandahåller ett alternativ som du kan använda för att inaktivera proxyservrar på dina begär Anden och den här funktionen måste användas vid kommunikation med IMDS. Mer information finns i klientens dokumentation.
 
 > [!IMPORTANT]
-> Även om du inte känner till någon proxykonfiguration i din miljö **måste du fortfarande åsidosätta eventuella standardinställningar för klientens proxyserver**. Proxykonfigurationen kan identifieras automatiskt och det går inte att kringgå sådana konfigurationer som visar dig att Outrage riskerna om datorns konfiguration ändras i framtiden.
+> Även om du inte känner till någon proxykonfiguration i din miljö **måste du fortfarande åsidosätta eventuella standardinställningar för klientens proxyserver**. Proxykonfigurationen kan identifieras automatiskt och det går inte att kringgå de här konfigurationerna som visar att du kan avbrotts risker om datorns konfiguration ändras i framtiden.
 
 ## <a name="rate-limiting"></a>Frekvensbegränsning
 
@@ -98,7 +98,7 @@ Slut punkter kan ha stöd för obligatoriska och/eller valfria parametrar. Mer i
 
 ### <a name="query-parameters"></a>Frågeparametrar
 
-IMDS-slutpunkter stöder HTTP-frågeparametrar. Ett exempel: 
+IMDS-slutpunkter stöder HTTP-frågeparametrar. Exempel: 
 
 ```
 http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
@@ -106,7 +106,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Anger parametrarna:
 
-| Namn | Värde |
+| Name | Värde |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -191,7 +191,7 @@ filtrerar till det första elementet från `Network.interface` egenskapen och re
 
 Som standard returnerar IMDS data i JSON-format ( `Content-Type: application/json` ). Slut punkter som stöder svars filtrering (se [Route-parametrar](#route-parameters)) stöder dock också formatet `text` .
 
-Om du vill komma åt ett svar som inte är standardformat anger du det begärda formatet som en frågesträngparametern i begäran. Ett exempel:
+Om du vill komma åt ett svar som inte är standardformat anger du det begärda formatet som en frågesträngparametern i begäran. Exempel:
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
@@ -274,7 +274,7 @@ IMDS-API: et innehåller flera slut punkts kategorier som representerar olika da
 | `/metadata/identity` | Se [hanterad identitet via IMDS](#managed-identity) | 2018-02-01
 | `/metadata/instance` | Se [instansens metadata](#instance-metadata) | 2017-04-02
 | `/metadata/scheduledevents` | Se [schemalagda händelser via IMDS](#scheduled-events) | 2017-08-01
-| `/metadata/versions` | Se [versioner](#versions) | Saknas
+| `/metadata/versions` | Se [versioner](#versions) | Ej tillämpligt
 
 ## <a name="versions"></a>Versioner
 
@@ -317,7 +317,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametrar
 
-| Namn | Obligatorisk/valfri | Beskrivning |
+| Name | Obligatorisk/valfri | Beskrivning |
 |------|-------------------|-------------|
 | `api-version` | Krävs | Den version som används för att betjäna begäran.
 | `format` | Valfritt | `json`Svarets format (eller `text` ). * Obs: kan krävas när parametrarna för begäran används
@@ -721,7 +721,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametrar
 
-| Namn | Obligatorisk/valfri | Beskrivning |
+| Name | Obligatorisk/valfri | Beskrivning |
 |------|-------------------|-------------|
 | `api-version` | Krävs | Den version som används för att betjäna begäran.
 | `nonce` | Valfritt | En 10-siffrig sträng som fungerar som en kryptografisk nonce. Om inget värde anges använder IMDS den aktuella UTC-tidsstämpeln.
@@ -935,9 +935,9 @@ I följande tabell visas exempel på hur du anropar IMDS med olika språk i den 
 
 ## <a name="errors-and-debugging"></a>Fel och fel sökning
 
-Om det inte går att hitta ett data element eller en felaktig begäran, returnerar Instance Metadata Service vanliga HTTP-fel. Ett exempel:
+Om det inte går att hitta ett data element eller en felaktig begäran, returnerar Instance Metadata Service vanliga HTTP-fel. Exempel:
 
-| HTTP-statuskod | Orsak |
+| HTTP-statuskod | Anledning |
 |------------------|--------|
 | `200 OK` | Begäran lyckades.
 | `400 Bad Request` | Saknad `Metadata: true` rubrik eller saknad parameter `format=json` vid fråga till en lövnod
@@ -983,7 +983,7 @@ Metadata-anrop måste göras från den primära IP-adress som tilldelats till de
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
-1. Dumpa din lokala routningstabell och leta efter IMDS-posten. Ett exempel:
+1. Dumpa din lokala routningstabell och leta efter IMDS-posten. Exempel:
     ```console
     > route print
     IPv4 Route Table

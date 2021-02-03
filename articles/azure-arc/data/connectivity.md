@@ -9,22 +9,22 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7bff21a17af3c908caeed6a1e60de8e2fe4efc9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d148509af45b93dce8dbd99b9afc674276b149b6
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287580"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493980"
 ---
-# <a name="connectivity-modes-and-requirements"></a>Anslutnings lägen och krav
+# <a name="connectivity-modes-and-requirements"></a>Anslutningslägen och krav
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="connectivity-modes"></a>Anslutnings lägen
+## <a name="connectivity-modes"></a>Anslutningslägen
 
 Det finns flera alternativ för anslutnings graden från din Azure Arc-aktiverad data tjänst miljö till Azure. När dina krav varierar beroende på affärs policy, myndighets förordning eller om nätverks anslutningen till Azure är tillgänglig kan du välja mellan följande anslutnings lägen.
 
-Azure Arc-aktiverade data tjänster ger dig möjlighet att ansluta till Azure i två olika *anslutnings lägen* : 
+Azure Arc-aktiverade data tjänster ger dig möjlighet att ansluta till Azure i två olika *anslutnings lägen*: 
 
 - Direkt ansluten 
 - Indirekt ansluten
@@ -37,12 +37,10 @@ Dessutom kan Azure Active Directory och Azure Role-Based Access Control bara anv
 
 Vissa Azure-anslutna tjänster är bara tillgängliga när de kan nås direkt, till exempel Azure Defender Security Services, container Insights och Azure Backup till Blob Storage.
 
-I för hands versionen stöds för närvarande bara det indirekt anslutna läget. 
-
 ||**Indirekt ansluten**|**Direkt ansluten**|**Aldrig ansluten**|
 |---|---|---|---|
 |**Beskrivning**|I läget för indirekt anslutning finns de flesta hanterings tjänster lokalt i din miljö utan direkt anslutning till Azure.  En minimal mängd data måste skickas till Azure för inventerings-och fakturerings syfte _._ Den exporteras till en fil och överförs till Azure minst en gång per månad.  Ingen direkt eller kontinuerlig anslutning till Azure krävs.  Vissa funktioner och tjänster som kräver en anslutning till Azure är inte tillgängliga.|Direkt ansluten läge erbjuder alla tillgängliga tjänster när en direkt anslutning kan upprättas med Azure. Anslutningar initieras alltid _från_ din miljö till Azure och använder standard portar och protokoll som https/443.|Inga data kan skickas till eller från Azure på något sätt.|
-|**Aktuell tillgänglighet**| Tillgängligt i förhandsversion.|Planerat för för hands versionen i framtiden.|Stöds inte för närvarande.|
+|**Aktuell tillgänglighet**| Tillgängligt i förhandsversion.|Tillgängligt i förhandsversion.|Stöds inte för närvarande.|
 |**Typiska användnings fall**|Lokala data Center som inte tillåter anslutning till eller från data området i data centret på grund av affärs-eller reglerings policyer eller av frågor om externa attacker eller data exfiltrering.  Typiska exempel: finansiella institutioner, sjukvårds vård, myndigheter. <br/><br/>Kant webbplats platser där Edge-webbplatsen vanligt vis inte har någon anslutning till Internet.  Typiska exempel: olje-/gas-eller militära fält program.  <br/><br/>Platser med Edge-webbplatser som tillfälligt har anslutning till långa perioder av avbrott.  Typiska exempel: Stadiums, kryssnings-fartyg. | Organisationer som använder offentliga moln.  Typiska exempel: Azure, AWS eller Google Cloud.<br/><br/>Edge-webbplats platser där Internet anslutning vanligt vis finns och tillåts.  Typiska exempel: butiker, tillverkning.<br/><br/>Företags data Center med fler tillåtande principer för anslutning till/från data området i data centret till Internet.  Typiska exempel: icke-reglerade företag, små/medel stora företag|Verkligt "Air-gapped"-miljöer där inga data under några omständigheter kan komma eller gå från data miljön. Typiska exempel: Top Secrets myndigheters anläggningar.|
 |**Hur data skickas till Azure**|Det finns tre alternativ för hur fakturerings-och inventerings data kan skickas till Azure:<br><br> 1) data exporteras från data området av en automatiserad process som har anslutning till både det skyddade data området och Azure.<br><br>2) data exporteras från data området av en automatiserad process inom data området, kopieras automatiskt till en mindre säker region och en automatiserad process i den mindre säkra regionen överför data till Azure.<br><br>3) data exporteras manuellt av en användare inom den säkra regionen, manuellt från den säkra regionen och laddas manuellt till Azure. <br><br>De två första alternativen är en automatiserad kontinuerlig process som kan schemaläggas att köras ofta, så det finns en minimal fördröjning i överföringen av data till Azure som endast omfattas av den tillgängliga anslutningen till Azure.|Data skickas automatiskt och skickas kontinuerligt till Azure.|Data skickas aldrig till Azure.|
 
@@ -70,24 +68,24 @@ I för hands versionen stöds för närvarande bara det indirekt anslutna läget
 
 |**Typ av data**|**Riktning**|**Obligatorisk/valfri**|**Ytterligare kostnader**|**Läge krävs**|**Kommentarer**|
 |---|---|---|---|---|---|
-|**Containeravbildningar**|Microsoft Container Registry – >-kund|Obligatorisk|Nej|Indirekt eller direkt|Behållar avbildningar är metoden för att distribuera program varan.  I en miljö som kan ansluta till Microsoft Container Registry (MCR) via Internet kan behållar avbildningarna hämtas direkt från MCR.  Om distributions miljön inte har direkt anslutning kan du hämta avbildningarna från MCR och skicka dem till ett privat behållar register i distributions miljön.  När du skapar kan du konfigurera skapande processen att hämta från den privata behållar registret i stället för MCR. Detta gäller även för automatiserade uppdateringar.|
-|**Resurs inventering**|Kund miljö – > Azure|Obligatorisk|Nej|Indirekt eller direkt|En inventering av data kontroller, databas instanser (PostgreSQL och SQL) lagras i Azure för fakturerings syfte och används också för att skapa en inventering av alla datakontrollanter och databas instanser på ett ställe som är särskilt användbart om du har mer än en miljö med Azure Arc-datatjänster.  När instanser har etablerats, avetablerats, skalas ut/in, skalas upp/ned, så uppdateras inventeringen i Azure.|
-|**Information om fakturering av telemetri**|Kund miljö – > Azure|Obligatorisk|Nej|Indirekt eller direkt|Användningen av databas instanser måste skickas till Azure i fakturerings syfte.  Det kostar ingen kostnad för Azure Arc-aktiverade data tjänster under för hands versions perioden.|
+|**Containeravbildningar**|Microsoft Container Registry – >-kund|Obligatorisk|Inga|Indirekt eller direkt|Behållar avbildningar är metoden för att distribuera program varan.  I en miljö som kan ansluta till Microsoft Container Registry (MCR) via Internet kan behållar avbildningarna hämtas direkt från MCR.  Om distributions miljön inte har direkt anslutning kan du hämta avbildningarna från MCR och skicka dem till ett privat behållar register i distributions miljön.  När du skapar kan du konfigurera skapande processen att hämta från den privata behållar registret i stället för MCR. Detta gäller även för automatiserade uppdateringar.|
+|**Resurs inventering**|Kund miljö – > Azure|Obligatorisk|Inga|Indirekt eller direkt|En inventering av data kontroller, databas instanser (PostgreSQL och SQL) lagras i Azure för fakturerings syfte och används också för att skapa en inventering av alla datakontrollanter och databas instanser på ett ställe som är särskilt användbart om du har mer än en miljö med Azure Arc-datatjänster.  När instanser har etablerats, avetablerats, skalas ut/in, skalas upp/ned, så uppdateras inventeringen i Azure.|
+|**Information om fakturering av telemetri**|Kund miljö – > Azure|Obligatorisk|Inga|Indirekt eller direkt|Användningen av databas instanser måste skickas till Azure i fakturerings syfte.  Det kostar ingen kostnad för Azure Arc-aktiverade data tjänster under för hands versions perioden.|
 |**Övervaka data och loggar**|Kund miljö – > Azure|Valfritt|Kanske beroende på data volym (se [Azure Monitor priser](https://azure.microsoft.com/en-us/pricing/details/monitor/))|Indirekt eller direkt|Du kanske vill skicka det lokalt insamlade övervaknings data och loggar till Azure Monitor för att samla in data i flera miljöer på en och samma plats och även använda Azure Monitor tjänster som aviseringar med hjälp av data i Azure Machine Learning osv.|
 |**Azure Role-baserade Access Control (Azure RBAC)**|Kund miljö – > Azure-> kund miljö|Valfritt|Nej|Endast direkt|Om du vill använda Azure RBAC måste du alltid upprätta en anslutning med Azure.  Om du inte vill använda Azure RBAC kan lokala Kubernetes RBAC användas.  **Väntande tillgänglighet för direkt anslutet läge**|
 |**Azure Active Directory (AD)**|Kund miljö – > Azure-> kund miljö|Valfritt|Kanske, men du kanske redan betalar för Azure AD|Endast direkt|Om du vill använda Azure AD för autentisering måste du alltid upprätta en anslutning med Azure. Om du inte vill använda Azure AD för autentisering kan du välja oss Active Directory Federation Services (AD FS) (ADFS) över Active Directory. **Väntande tillgänglighet för direkt anslutet läge**|
-|**Säkerhetskopiering och återställning**|Kund miljö – > kund miljö|Obligatorisk|Nej|Direkt eller indirekt|Tjänsten säkerhets kopiering och återställning kan konfigureras så att den pekar på lokala lagrings klasser. |
+|**Säkerhetskopiering och återställning**|Kund miljö – > kund miljö|Obligatorisk|Inga|Direkt eller indirekt|Tjänsten säkerhets kopiering och återställning kan konfigureras så att den pekar på lokala lagrings klasser. |
 |**Azure Backup-långsiktig kvarhållning**| Kund miljö – > Azure | Valfritt| Ja för Azure Storage | Endast direkt |Du kanske vill skicka säkerhets kopior som tas lokalt till Azure Backup för långsiktig kvarhållning av säkerhets kopior och ta tillbaka dem till den lokala miljön för återställning. **Väntande tillgänglighet för direkt anslutet läge**|
 |**Azure Defender säkerhets tjänster**|Kund miljö – > Azure-> kund miljö|Valfritt|Ja|Endast direkt|**Väntande tillgänglighet för direkt anslutet läge**|
 |**Etablering och konfigurations ändringar från Azure Portal**|Kund miljö – > Azure-> kund miljö|Valfritt|Nej|Endast direkt|Etablerings-och konfigurations ändringar kan göras lokalt med Azure Data Studio eller [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .  I direkt anslutnings läge kommer du också att kunna tillhandahålla och göra konfigurations ändringar från Azure Portal. **Väntande tillgänglighet för direkt anslutet läge**|
 
 
-## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>Information om Internet adresser, portar, kryptering och proxy server-stöd
+## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>Information om Internet adresser, portar, kryptering och stöd för proxyserver
 
 I förhands gransknings fasen stöds för närvarande endast det indirekt anslutna läget. I det här läget finns det bara tre anslutningar som krävs för att tillhandahålla tjänster på Internet. Dessa anslutningar är:
 
 - [Microsoft Container Registry (MCR)](#microsoft-container-registry-mcr)
-- [Azure Resource Manager-API: er](#azure-resource-manager-apis)
+- [Azure Resource Manager-API:er](#azure-resource-manager-apis)
 - [API: er för Azure Monitor](#azure-monitor-apis)
 
 Alla HTTPS-anslutningar till Azure och Microsoft Container Registry krypteras med SSL/TLS med hjälp av officiellt signerade och verifierbara certifikat.
@@ -122,7 +120,7 @@ Ja
 
 Inget
 
-### <a name="azure-resource-manager-apis"></a>Azure Resource Manager-API: er
+### <a name="azure-resource-manager-apis"></a>Azure Resource Manager-API:er
 Azure Data Studio [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] och Azure CLI ansluter till Azure Resource Manager-API: er för att skicka och hämta data till och från Azure för vissa funktioner.
 
 #### <a name="connection-source"></a>Anslutningens källa

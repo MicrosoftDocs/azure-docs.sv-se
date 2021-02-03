@@ -4,20 +4,20 @@ ms.service: databox
 ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
-ms.openlocfilehash: caa17a02305c9e9fcba30cf8c39c4288d83d3da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92688051cf591470246094dd0d8ea1d436a8efb1
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419422"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500504"
 ---
-Anslut till den virtuella datorn med hjälp av den privata IP-adress som du skickade när du skapade den virtuella datorn.
+Anslut till den virtuella datorn via den privata IP-adress du skickade när du skapade den virtuella datorn.
 
 Öppna en SSH-session för att ansluta till IP-adressen.
 
 `ssh -l <username> <ip address>`
 
-När du uppmanas anger du det lösen ord som du använde när du skapade den virtuella datorn.
+När du uppmanas till det anger du lösenordet du använde när du skapade den virtuella datorn.
 
 Använd det här kommandot om du behöver ange SSH-nyckeln.
 
@@ -70,4 +70,4 @@ Om du använde en offentlig IP-adress när du skapade den virtuella datorn kan d
 ```powershell
 $publicIp = Get-AzureRmPublicIpAddress -Name <Public IP> -ResourceGroupName <Resource group name>
 ```
-Den offentliga IP-adressen i det här fallet är samma som den privata IP-adress som du skickade när du skapade ett virtuellt nätverks gränssnitt.
+Den offentliga IP-adressen i det här fallet är samma som den privata IP-adress som du skickade när det virtuella nätverks gränssnittet skapades.

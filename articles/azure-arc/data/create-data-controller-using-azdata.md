@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 50ab5a0d47292e36216a565a5bd39fbe7e850131
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735007"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494029"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Skapa en Azure Arc-dataenhet med hjälp av [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Läs avsnittet [skapa data styrenheten för Azure båg](create-data-controller.md) för översikts information.
 
@@ -269,6 +269,8 @@ När du har kört kommandot fortsätter du med att [övervaka skapande status](#
 Det krävs en säkerhets kontext begränsning för att OpenShift i Azure Red Hat.
 
 #### <a name="apply-the-security-context"></a>Tillämpa säkerhets kontexten
+
+Innan du skapar datakontrollanten på en Red Hat OpenShift måste du tillämpa vissa säkerhets kontext begränsningar (SCC). För för hands versionen gör dessa säkerhets begränsningar begränsade. Framtida versioner kommer att tillhandahålla uppdaterad SCC.
 
 [!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 

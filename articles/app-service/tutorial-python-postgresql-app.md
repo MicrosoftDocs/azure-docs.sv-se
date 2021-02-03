@@ -3,7 +3,7 @@ title: 'Självstudie: Distribuera en python django-app med postgres'
 description: Skapa en python-webbapp med en PostgreSQL-databas och distribuera den till Azure. I självstudien används django-ramverket och appen finns på Azure App Service på Linux.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898597"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494063"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Själv studie kurs: Distribuera en django-webbapp med PostgreSQL i Azure App Service
 
@@ -39,7 +39,7 @@ Du kan också använda [Azure Portal versionen av den här själv studie kursen]
 
 1. Ha ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. Installera <a href="https://www.python.org/downloads/" target="_blank">Python 3,6 eller högre</a>.
-1. Installera <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> -2.0.80 eller högre, med vilken du kör kommandon i alla gränssnitt för att etablera och konfigurera Azure-resurser.
+1. Installera <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> -2.18.0 eller högre, med vilken du kör kommandon i alla gränssnitt för att etablera och konfigurera Azure-resurser.
 
 Öppna ett terminalfönster och kontrol lera att python-versionen är 3,6 eller högre:
 
@@ -63,11 +63,13 @@ py -3 --version
 
 ---
 
-Kontrol lera att din Azure CLI-version är 2.0.80 eller högre:
+Kontrol lera att din Azure CLI-version är 2.18.0 eller högre:
 
 ```azurecli
 az --version
 ```
+
+Om du behöver uppgradera kan du prova `az upgrade` kommandot (kräver version 2.11 +) eller se <a href="/cli/azure/install-azure-cli" target="_blank">Installera Azure CLI</a>.
 
 Logga sedan in på Azure via CLI:
 
@@ -229,7 +231,7 @@ Django Database-migreringar ser till att schemat i PostgreSQL i Azure Database m
 
     Ersätt `<app-name>` med det namn som användes tidigare i `az webapp up` kommandot.
 
-    På macOS och Linux kan du också ansluta till en SSH-session med [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) kommandot.
+    Du kan också ansluta till en SSH-session med [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) kommandot. I Windows kräver det här kommandot Azure CLI-2.18.0 eller högre.
 
     Om du inte kan ansluta till SSH-sessionen har själva appen inte startats. Mer information [finns i diagnostikloggar](#6-stream-diagnostic-logs) . Om du till exempel inte har skapat de nödvändiga inställningarna för appen i föregående avsnitt, visar loggarna `KeyError: 'DBNAME'` .
 
@@ -239,8 +241,11 @@ Django Database-migreringar ser till att schemat i PostgreSQL i Azure Database m
     # Change to the app folder
     cd $APP_PATH
     
-    # Activate the venv (requirements.txt is installed automatically)
+    # Activate the venv
     source /antenv/bin/activate
+
+    # Install requirements
+    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -398,6 +403,7 @@ Eftersom du har gjort ändringar i data modellen måste du köra om migreringen 
 ```
 cd $APP_PATH
 source /antenv/bin/activate
+pip instal -r requirements.txt
 python manage.py migrate
 ```
 

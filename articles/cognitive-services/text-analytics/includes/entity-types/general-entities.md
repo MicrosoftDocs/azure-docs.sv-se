@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 43864d3593fda986031cf9b59251b920672476bb
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097295"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99500069"
 ---
 NER-funktionen för Textanalys returnerar följande allmänna (ej identifierade) entitets kategorier. till exempel när du skickar begär anden till `/entities/recognition/general` slut punkten.
 
@@ -34,6 +34,7 @@ NER-funktionen för Textanalys returnerar följande allmänna (ej identifierade)
 | [URL](#category-url) | URL: er till webbplatser. |
 | [IP-adress](#category-ip) | Nätverks-IP-adresser. |
 | [DateTime](#category-datetime) | Datum och tidpunkter på dagen. |
+| [Kvantitet](#category-quantity) | Numeriska mått och enheter. |
 
 
 ### <a name="category-person"></a>Kategori: person

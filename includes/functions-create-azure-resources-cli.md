@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026056"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500139"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>Skapa stöd för Azure-resurser för din funktion
 
 Innan du kan distribuera funktions koden till Azure måste du skapa tre resurser:
 
-- En resurs grupp, som är en logisk behållare för relaterade resurser.
-- Ett lagrings konto som upprätthåller tillstånd och annan information om dina projekt.
+- En [resurs grupp](../articles/azure-resource-manager/management/overview.md), som är en logisk behållare för relaterade resurser.
+- Ett [lagrings konto](../articles/storage/common/storage-account-create.md)som används för att underhålla tillstånd och annan information om dina funktioner.
 - En Function-app som tillhandahåller miljön för att köra funktions koden. En Function-app mappar till ditt lokala Function-projekt och gör att du kan gruppera funktioner som en logisk enhet för enklare hantering, distribution och delning av resurser.
 
 Använd följande kommandon för att skapa dessa objekt. Både Azure CLI och PowerShell stöds.
