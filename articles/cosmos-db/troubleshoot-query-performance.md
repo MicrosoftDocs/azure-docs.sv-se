@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475734"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524337"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Felsöka problem med frågor när du använder Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ De flesta system Functions använder index. Här är en lista över några vanli
 - Vänster
 - Del sträng – men endast om det första num_expr är 0
 
-Nedan följer några vanliga system funktioner som inte använder indexet och som måste läsa in varje dokument:
+Nedan följer några vanliga system funktioner som inte använder indexet och måste läsa in varje dokument när det används i en- `WHERE` sats:
 
 | **System funktion**                     | **Idéer för optimering**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| ÖVRE/NEDRE                             | I stället för att använda systemfunktionen för att normalisera data för jämförelser normaliserar du höljet vid infogning. En fråga som ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` blir ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| Övre/nedre                         | I stället för att använda systemfunktionen för att normalisera data för jämförelser normaliserar du höljet vid infogning. En fråga som ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` blir ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Beräkna den aktuella tiden innan frågekörningen körs och Använd det sträng värdet i- `WHERE` satsen. |
 | Matematiska funktioner (icke-mängder) | Om du behöver beräkna ett värde ofta i din fråga bör du lagra värdet som en egenskap i JSON-dokumentet. |
+
+När det används i `SELECT` -satsen påverkar ineffektiva system funktioner inte hur frågor kan använda index.
 
 ### <a name="improve-string-system-function-execution"></a>Förbättra körning av sträng system funktion
 

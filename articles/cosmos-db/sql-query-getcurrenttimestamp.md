@@ -1,19 +1,19 @@
 ---
 title: GetCurrentTimestamp i Azure Cosmos DB frågespråk
 description: Lär dig mer om SQL system Function GetCurrentTimestamp i Azure Cosmos DB.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6720b0e5d13f2baaaf063fef2244b0c1f1863571
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341934"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524276"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ Returnerar ett signerat numeriskt värde, det aktuella antalet millisekunder som
 
 GetCurrentTimestamp () är en icke-deterministisk funktion. Resultatet som returneras är UTC (Coordinated Universal Time).
 
-Den här system funktionen kommer inte att använda indexet.
+> [!NOTE]
+> Den här system funktionen kommer inte att använda indexet. Om du behöver jämföra värden med den aktuella tiden hämtar du den aktuella tiden innan du kör frågekörningen och använder det konstanta sträng värdet i- `WHERE` satsen.
 
 ## <a name="examples"></a>Exempel
   

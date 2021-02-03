@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 610c545bf25822d27e0a641a1b2631f899502420
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 16004e6e471094c99229c32a63396ac3b0490905
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340166"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524335"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ Returnerar ett signerat numeriskt värde, det aktuella antalet 100-nanosekunder 
 
 GetCurrentTicks () är en icke-deterministisk funktion. Resultatet som returneras är UTC (Coordinated Universal Time).
 
-Den här system funktionen kommer inte att använda indexet.
+> [!NOTE]
+> Den här system funktionen kommer inte att använda indexet. Om du behöver jämföra värden med den aktuella tiden hämtar du den aktuella tiden innan du kör frågekörningen och använder det konstanta sträng värdet i- `WHERE` satsen.
 
 ## <a name="examples"></a>Exempel
 

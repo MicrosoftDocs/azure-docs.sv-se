@@ -12,23 +12,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/11/2021
+ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 286f00318715764a5943387e6b362b3c8e69a82e
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 93278a2c8e83541f49ca76542de1c352fbc02239
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808146"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524252"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-serien: en hybrid moln lagrings lösning
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Översikt
-Välkommen till Microsoft Azure StorSimple, en integrerad lagrings lösning som hanterar lagrings aktiviteter mellan lokala enheter och Microsoft Azure moln lagring. StorSimple är en effektiv, kostnads effektiv och lätt hanterbar storage area network (SAN) lösning som eliminerar många av de problem och kostnader som är kopplade till företags lagring och data skydd. Den tillverkarspecifika enheten StorSimple 8000 används, och lösningen kan integreras med molntjänster. Du får en uppsättning hanteringsverktyg och en enhetlig vy av hela företagslagringen inklusive molnlagring. (Den StorSimple distributions information som publicerats på Microsoft Azure webbplats gäller endast StorSimple 8000-seriens enheter. Om du använder en enhet med StorSimple 5000/7000-serien går du till [StorSimple-hjälpen](http://onlinehelp.storsimple.com/).)
+Välkommen till Microsoft Azure StorSimple, en integrerad lagrings lösning som hanterar lagrings aktiviteter mellan lokala enheter och Microsoft Azure moln lagring. StorSimple är en effektiv, kostnads effektiv och lätt att hantera storage area network (SAN)-lösning som eliminerar många av de problem och utgifter som är associerade med företags lagring och data skydd. Den tillverkarspecifika enheten StorSimple 8000 används, och lösningen kan integreras med molntjänster. Du får en uppsättning hanteringsverktyg och en enhetlig vy av hela företagslagringen inklusive molnlagring. (Den StorSimple distributions information som publicerats på Microsoft Azure webbplats gäller endast StorSimple 8000-seriens enheter. Om du använder en enhet med StorSimple 5000/7000-serien går du till [StorSimple-hjälpen](http://onlinehelp.storsimple.com/).)
 
-StorSimple använder [lagrings nivåer](#automatic-storage-tiering) för att hantera lagrade data över olika lagrings medier. Den aktuella arbets minnet lagras lokalt på solid state-hårddiskar (SSD), data som används mindre ofta lagras på hård diskar och Arkiv data överförs till molnet. Dessutom använder StorSimple deduplicering och komprimering för att minska mängden lagrings utrymme som data förbrukar. Mer information finns i [deduplicering och komprimering](#deduplication-and-compression). För definitioner av andra viktiga termer och begrepp som används i dokumentationen för StorSimple 8000-serien, gå till [StorSimple-terminologi](#storsimple-terminology) i slutet av den här artikeln.
+StorSimple använder [lagrings nivåer](#automatic-storage-tiering) för att hantera lagrade data över olika lagrings medier. Den aktuella arbets minnet lagras lokalt på solid state-hårddiskar (SSD). Data som används mindre ofta lagras på hård diskar (HDD) och Arkiv data skickas till molnet. Dessutom använder StorSimple deduplicering och komprimering för att minska mängden lagrings utrymme som data förbrukar. Mer information finns i [deduplicering och komprimering](#deduplication-and-compression). För definitioner av andra viktiga termer och begrepp som används i dokumentationen för StorSimple 8000-serien, gå till [StorSimple-terminologi](#storsimple-terminology) i slutet av den här artikeln.
 
 Förutom lagrings hantering gör StorSimple data skydds funktioner det möjligt för dig att skapa säkerhets kopior på begäran och schemalagda säkerhets kopieringar och sedan lagra dem lokalt eller i molnet. Säkerhets kopieringar görs i form av stegvisa ögonblicks bilder, vilket innebär att de kan skapas och återställas snabbt. Moln ögonblicks bilder kan vara viktiga för haveri beredskap eftersom de ersätter sekundära lagrings system (t. ex. band säkerhets kopiering) och gör att du kan återställa data till ditt data Center eller till alternativa platser om det behövs.
 
@@ -41,7 +41,7 @@ I följande tabell beskrivs några av de viktiga fördelarna som Microsoft Azure
 
 | Funktion | Fördelar |
 | --- | --- |
-| Transparent integrering |Använder iSCSI-protokollet för att länka data lagrings utrymmen i bakgrunden. Detta säkerställer att data som lagras i molnet, i data centret eller på fjärrservrar, lagras på en enda plats. |
+| Transparent integrering |Använder iSCSI-protokollet för att länka data lagrings utrymmen i bakgrunden. Data som lagras i molnet, i data centret eller på fjärrservrar, kan lagras på en enda plats. |
 | Minskade lagrings kostnader |Allokerar tillräckligt lokalt eller moln lagrings utrymme för att uppfylla aktuella krav och utökar endast moln lagring vid behov. Det minskar lagrings kraven och kostnaderna ytterligare genom att eliminera redundanta versioner av samma data (deduplicering) och med komprimering. |
 | Förenklad lagrings hantering |Innehåller system administrations verktyg för att konfigurera och hantera data som lagras lokalt, på en fjärrserver och i molnet. Dessutom kan du hantera säkerhets kopierings-och återställnings funktioner från en snapin-modul i Microsoft Management Console (MMC).|
 | Förbättrad katastrof återställning och efterlevnad |Kräver ingen utökad återställnings tid. I stället återställs data när det behövs, så att normala åtgärder kan fortsätta med minimalt avbrott. Dessutom kan du konfigurera principer för att ange säkerhets kopierings scheman och datakvarhållning. |
@@ -49,7 +49,7 @@ I följande tabell beskrivs några av de viktiga fördelarna som Microsoft Azure
 | Verksamhetskontinuitet |Tillåter att användare i StorSimple 5000-7000-serien migrerar sina data till en StorSimple 8000-serie enhet. |
 | Tillgänglighet i Azure Governments portalen |StorSimple finns i Azure Government-portalen. Mer information finns i [distribuera din lokala StorSimple-enhet i myndighets portalen](storsimple-8000-deployment-walkthrough-gov-u2.md). |
 | Data skydd och tillgänglighet |StorSimple 8000-serien har stöd för Zone-redundant lagring (ZRS), förutom lokalt redundant lagring (LRS) och Geo-redundant lagring (GRS). Läs [den här artikeln om Azure Storage redundans alternativ](../storage/common/storage-redundancy.md) för ZRS-information. |
-| Stöd för kritiska program |StorSimple gör att du kan identifiera lämpliga volymer som lokalt fästa, vilket i sin tur säkerställer att data som krävs av kritiska program inte skiktas i molnet. Lokalt fästa volymer omfattas inte av moln fördröjningar eller anslutnings problem. Mer information om lokalt fästa volymer finns i [använda tjänsten StorSimple Enhetshanteraren för att hantera volymer](storsimple-8000-manage-volumes-u2.md). |
+| Stöd för kritiska program |Med StorSimple kan du identifiera lämpliga volymer som fästa lokalt för att säkerställa att data som krävs av kritiska program inte skiktas i molnet. Lokalt fästa volymer omfattas inte av moln fördröjningar eller anslutnings problem. Mer information om lokalt fästa volymer finns i [använda tjänsten StorSimple Enhetshanteraren för att hantera volymer](storsimple-8000-manage-volumes-u2.md). |
 | Låg latens och höga prestanda |Du kan skapa moln utrustning som drar nytta av funktionerna för hög prestanda och låg latens i Azure Premium Storage. Mer information om StorSimple Premium Cloud-apparater finns i [distribuera och hantera en StorSimple Cloud Appliance i Azure](storsimple-8000-cloud-appliance-u2.md). |
 
 
@@ -57,9 +57,9 @@ I följande tabell beskrivs några av de viktiga fördelarna som Microsoft Azure
 Den Microsoft Azure StorSimple lösningen innehåller följande komponenter:
 
 * **Microsoft Azure StorSimple enhet** – en lokal hybrid lagrings mat ris som innehåller SSD och hård diskar, tillsammans med redundanta styrenheter och funktioner för automatisk redundans. Styrenheterna hanterar lagrings nivåer, placerar data som används för närvarande (eller frekvent) på lokal lagring (på enheten eller lokala servrar) och flyttar mindre data som används ofta till molnet.
-* **StorSimple Cloud Appliance** – även känt som den virtuella StorSimple-installationen, är det här en program varu version av StorSimple-enheten som replikerar arkitekturen och de flesta funktioner i den fysiska hybrid lagrings enheten. StorSimple Cloud Appliance körs på en enskild nod på en virtuell Azure-dator. Premium-virtuella enheter, som utnyttjar Azure Premium Storage, är tillgängliga i uppdatering 2 och senare.
+* **StorSimple Cloud Appliance** – även kallat den virtuella StorSimple-enheten. En program varu version av StorSimple-enheten som replikerar arkitekturen och de flesta funktioner i den fysiska hybrid lagrings enheten. StorSimple Cloud Appliance körs på en enskild nod på en virtuell Azure-dator. Premium-virtuella enheter, som utnyttjar Azure Premium Storage, är tillgängliga i uppdatering 2 och senare.
 * **StorSimple Enhetshanteraren service** – en utökning av Azure Portal som gör att du kan hantera en StorSimple-enhet eller StorSimple Cloud Appliance från ett enda webb gränssnitt. Du kan använda tjänsten StorSimple Enhetshanteraren för att skapa och hantera tjänster, Visa och hantera enheter, Visa aviseringar, hantera volymer och Visa och hantera säkerhets kopierings principer och säkerhets kopierings katalogen.
-* **Windows PowerShell för StorSimple** – ett kommando rads gränssnitt som du kan använda för att hantera StorSimple-enheten. Windows PowerShell för StorSimple har funktioner som gör att du kan registrera din StorSimple-enhet, konfigurera nätverks gränssnittet på enheten, installera vissa typer av uppdateringar, Felsöka enheten genom att komma åt support sessionen och ändra enhetens tillstånd. Du kan komma åt Windows PowerShell för StorSimple genom att ansluta till serie konsolen eller genom att använda Windows PowerShell-fjärrkommunikation.
+* **Windows PowerShell för StorSimple** – ett kommando rads gränssnitt som du kan använda för att hantera StorSimple-enheten. Windows PowerShell för StorSimple har funktioner som gör att du kan registrera din StorSimple-enhet, konfigurera nätverks gränssnittet på enheten, installera vissa typer av uppdateringar, Felsöka enheten genom att komma åt support sessionen och ändra enhetens tillstånd. Du kan komma åt Windows PowerShell för StorSimple genom att ansluta till serie konsolen eller använda Windows PowerShell-fjärrkommunikation.
 * **Azure PowerShell StorSimple-cmdletar** – en samling Windows PowerShell-cmdletar som gör att du kan automatisera uppgifter på tjänst nivå och migrering från kommando raden. Mer information om Azure PowerShell-cmdletar för StorSimple finns i [cmdlet-referensen](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure).
 * **StorSimple Snapshot Manager** – en MMC-snapin-modul som använder volym grupper och Windows-tjänsten Volume Shadow Copy för att generera programkonsekventa säkerhets kopieringar. Dessutom kan du använda StorSimple Snapshot Manager för att skapa säkerhets kopierings scheman och klona eller återställa volymer.
 * **StorSimple Adapter för SharePoint** – ett verktyg som transparent utökar Microsoft Azure StorSimple lagring och data skydd till SharePoint-servergrupper, samtidigt som du gör StorSimple-lagring synlig och hanterbar från SharePoint Central administrations Portal.
@@ -68,7 +68,7 @@ Diagrammet nedan ger en övergripande bild av Microsoft Azure StorSimple arkitek
 
 ![StorSimple-arkitektur](./media/storsimple-overview/overview-big-picture.png)
 
-I följande avsnitt beskrivs var och en av dessa komponenter i större detalj och förklarar hur lösningen ordnar data, allokerar lagring och underlättar lagrings hantering och data skydd. Det sista avsnittet innehåller definitioner för några av de viktiga termer och begrepp som rör StorSimple-komponenter och deras hantering.
+I följande avsnitt beskrivs var och en av dessa komponenter i större detalj och förklarar hur lösningen ordnar data, allokerar lagring och underlättar lagrings hantering och data skydd. Det sista avsnittet innehåller definitioner för några av de viktiga termer och begrepp som är relaterade till StorSimple-komponenter och deras hantering.
 
 ## <a name="storsimple-device"></a>StorSimple-enhet
 Den Microsoft Azure StorSimple enheten är en lokal hybrid lagrings mat ris som tillhandahåller primär lagring och iSCSI-åtkomst till data som lagras på den. Den hanterar kommunikation med moln lagring och hjälper till att säkerställa säkerheten och konfidentialiteten för alla data som lagras i Microsoft Azure StorSimples lösningen.
@@ -111,7 +111,7 @@ Microsoft Azure StorSimple tillhandahåller ett webbaserat användar gränssnitt
 * Övervaka prestanda.
 * Granska Systeminställningar och identifiera möjliga problem.
 
-Du kan använda tjänsten StorSimple Enhetshanteraren för att utföra alla administrations aktiviteter förutom de som kräver system-offline-tid, till exempel inledande installation och installation av uppdateringar.
+Du kan använda tjänsten StorSimple Enhetshanteraren för att utföra alla administrativa uppgifter förutom uppgifter som kräver systemets tids period, till exempel inledande installation och installation av uppdateringar.
 
 Mer information finns i [använda tjänsten StorSimple Enhetshanteraren för att administrera StorSimple-enheten](storsimple-8000-manager-service-administration.md).
 
@@ -182,11 +182,14 @@ Processen för lagrings nivåer sker på följande sätt:
 6. Microsoft Azure skapar flera repliker av data i sitt Data Center och i ett fjärranslutna Data Center, vilket säkerställer att data kan återställas om en katastrof inträffar.
 7. När fil servern begär data som lagras i molnet returnerar StorSimple det sömlöst och lagrar en kopia på SSD-nivån på StorSimple-enheten.
 
+> [!IMPORTANT]
+> När du använder StorSimple ska du inte konvertera blobbar till arkivering, även om enheten har fasats ut. Om du vill hämta data från enheten måste du extrahera Blobbarna från arkivering till frekvent eller låg frekvent typ, vilket ger betydande kostnader.
+
 #### <a name="how-storsimple-manages-cloud-data"></a>Hur StorSimple hanterar moln data
 
 StorSimple deduplicerar kunddata över alla ögonblicks bilder och primära data (data som skrivits av värdar). Även om dedupliceringen är bra för lagrings effektiviteten, blir frågan om "Vad är i molnet" komplicerat. De nivåbaserade primära data och ögonblicks bild data överlappar varandra. Ett enda data segment i molnet kan användas som data skiktade primära data och kan också refereras till av flera ögonblicks bilder. Varje moln ögonblicks bild säkerställer att en kopia av alla tidpunkts data är låst i molnet tills ögonblicks bilden tas bort.
 
-Data tas bara bort från molnet när det inte finns några referenser till dessa data. Om vi till exempel tar en moln ögonblicks bild av alla data som finns i StorSimple-enheten och sedan tar bort vissa primära data, ser vi att de _primära data_ släpps direkt. _Moln data_, som innehåller data på nivå och säkerhets kopior, förblir desamma. Det beror på att det finns en ögonblicks bild som refererar till moln data. När moln ögonblicks bilden har tagits bort (och en annan ögonblicks bild som refererade till samma data), släpps moln förbrukningen. Innan vi tar bort moln data kontrollerar vi att inga ögonblicks bilder fortfarande refererar till dessa data. Den här processen kallas _skräp insamling_ och är en bakgrunds tjänst som körs på enheten. Borttagning av moln data sker inte omedelbart när skräp insamlings tjänsten söker efter andra referenser till dessa data före borttagningen. Hastigheten för skräp insamlingen beror på det totala antalet ögonblicks bilder och den totala datan. Normalt rensas moln data på mindre än en vecka.
+Data tas bara bort från molnet när det inte finns några referenser till dessa data. Om vi till exempel har tagit en moln ögonblicks bild av alla data som finns i StorSimple-enheten och sedan tagit bort vissa primära data, skulle vi se att de _primära data_ släpps direkt. _Moln data_, som innehåller data på nivå och säkerhets kopior, förblir desamma eftersom en ögonblicks bild fortfarande refererar till moln data. När moln ögonblicks bilden har tagits bort (och en annan ögonblicks bild som refererade till samma data), släpps moln förbrukningen. Innan vi tar bort moln data kontrollerar vi att inga ögonblicks bilder fortfarande refererar till dessa data. Den här processen kallas _skräp insamling_ och är en bakgrunds tjänst som körs på enheten. Borttagning av moln data sker inte omedelbart när skräp insamlings tjänsten söker efter andra referenser till dessa data före borttagningen. Hastigheten för skräp insamlingen beror på det totala antalet ögonblicks bilder och den totala datan. Normalt rensas moln data på mindre än en vecka.
 
 
 ### <a name="thin-provisioning"></a>Tunn allokering
@@ -210,10 +213,10 @@ En sammanfattning av de StorSimple-arbetsbelastningar som stöds är tabellen ne
 
 | Scenario | Arbetsbelastning | Stöds | Begränsningar | Version |
 | --- | --- | --- | --- | --- |
-| Samarbete |Fildelning |Ja | |Alla versioner |
-| Samarbete |Delning av distribuerad fil |Ja | |Alla versioner |
+| Samarbete |Fildelning |Yes | |Alla versioner |
+| Samarbete |Delning av distribuerad fil |Yes | |Alla versioner |
 | Samarbete |SharePoint |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
-| Arkivering |Enkel filarkivering |Ja | |Alla versioner |
+| Arkivering |Enkel filarkivering |Yes | |Alla versioner |
 | Virtualisering |Virtuella datorer |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
 | Databas |SQL |Ja* |Stöds bara med lokalt fästa volymer |Uppdatering 2 och senare |
 | Videoövervakning |Videoövervakning |Ja* |Stöds endast om StorSimple-enheten endast är dedikerad för den här arbets belastningen |Uppdatering 2 och senare |
@@ -237,7 +240,7 @@ Nedan följer en lista över de infrastruktur komponenter som stöds av StorSimp
 
 | Scenario | Arbetsbelastning | Stöds | Begränsningar | Version |
 | --- | --- | --- | --- | --- |
-| Allmänt |Express Route |Ja | |Alla versioner |
+| Allmänt |Express Route |Yes | |Alla versioner |
 | Allmänt |DataCore FC |Ja* |Stöds med DataCore SANsymphony |Alla versioner |
 | Allmänt |DFSR |Ja* |Stöds bara med lokalt fästa volymer |Alla versioner |
 | Allmänt |Indexering |Ja* |För volymer med nivåer stöds endast metadata-indexering (inga data).<br>Fullständig indexering stöds för lokalt fästa volymer. |Alla versioner |
