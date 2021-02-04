@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 86942f509ab067a53c47b5132c451f0585760050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539323"
+ms.locfileid: "99549651"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrera och skanna en lokal SQL Server
 
@@ -65,6 +65,9 @@ Om du planerar att använda en befintlig server administratörs användare (sa) 
 #### <a name="creating-a-new-login-and-user"></a>Skapa en ny inloggning och användare
 
 Följ stegen nedan om du vill skapa en ny inloggning och användare för att kunna söka igenom SQL Server:
+
+> [!Note]
+    > Alla stegen nedan kan utföras med hjälp av den kod som anges [här](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql).
 
 1. Navigera till SQL Server Management Studio (SSMS), Anslut till servern, gå till säkerhet, högerklicka på inloggning och skapa ny inloggning. Se till att välja SQL-autentisering.
 

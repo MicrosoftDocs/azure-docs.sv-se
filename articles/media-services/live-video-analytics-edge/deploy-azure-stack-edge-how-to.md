@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på Azure Stack Edge
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din Azure Stack Edge.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f33b6fb0f0dc5c5b733a0fcb021e2792ce9c6ec6
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019604"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551016"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Distribuera video analys i real tid på Azure Stack Edge
 
@@ -42,38 +42,7 @@ Azure Stack Edge är en maskinvaru-som-tjänst-lösning och en AI-aktiverad Edge
 * [Azure Stack Edge/Data Box Gateway-resurs skapas](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [Installera och konfigurera](../../databox-online/azure-stack-edge-deploy-install.md)
 * [Anslutning och aktivering](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-
-### <a name="attach-an-iot-hub-to-azure-stack-edge"></a>Koppla en IoT Hub till Azure Stack kant
-
-1. I [Azure Portal](https://ms.portal.azure.com)går du till din Azure Stack Edge-resurs och klickar på Översikt. Välj kom igång i den högra rutan på beräknings panelen.
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge.png" alt-text="Azure Stack Edge":::
-1. På panelen Konfigurera Edge Compute väljer du konfigurera beräkning.
-1. Ange följande på bladet konfigurera Edge Compute:
-    
-    | Fält|Värde|
-    |---|---|
-    |IoT Hub|Välj från ny eller befintlig.<br/>Som standard används nivån Standard (S1) till att skapa en IoT-resurs. Om du vill använda en IoT-resurs på kostnadsfri nivå skapar du en sådan och väljer sedan den befintliga resursen.<br/>I varje fall använder IoT Hub resursen samma prenumeration och resurs grupp som används för Azure Stack Edge-resursen.|
-    |Name|Ange ett namn för din IoT Hub-resurs.|
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-get-started.png" alt-text="Azure Stack Edge":::
-1. Välj **Skapa**. Det tar några minuter att skapa en IoT Hub-resurs. När IoT Hub resursen har skapats kan du **Konfigurera** Compute-panelen för att Visa beräknings konfigurationen. Bekräfta att Edge Compute-rollen har kon figurer ATS genom att välja **Visa beräkning** på panelen **Konfigurera beräkning** .
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/edge-compute-config.png" alt-text="Azure Stack Edge":::
-
-    > [!NOTE]
-    > Om dialog rutan konfigurera beräkning stängs innan IoT Hub associeras med Azure Stack Edge-resursen, skapas IoT Hub men visas inte i beräknings konfigurationen. Läs in sidan igen om några minuter och se att den visas.
-    
-    När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. En IoT Edge runtime körs också på IoT Edge enheten. För tillfället är det bara Linux-plattformen tillgänglig för din IoT Edge-enhet.
-    
-    När all information har fyllts visas den Konfigurera Edge Compute-kortet ungefär så här:
-    
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/configure-edge-compute.png" alt-text="Azure Stack Edge":::
- 
+* [Koppla en IoT Hub till Azure Stack kant](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Aktivera beräknings krav i Azure Stack Edge Local UI
 
 Innan du fortsätter bör du kontrol lera att:
@@ -89,7 +58,7 @@ Innan du fortsätter bör du kontrol lera att:
         * Välj tillämpa – den här åtgärden tar cirka 2 minuter.
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Compute-krav i Azure Stack Edge-lokalt användar gränssnitt":::
 
         * Om DNS inte har kon figurer ATS för Kubernetes-API: et och Azure Stack Edge-resurs, kan du uppdatera fönstrets värd fil.
         
@@ -146,7 +115,8 @@ För detta kommer vi bara att vidta vissa åtgärder för att [distribuera video
       ```
 
       > [!NOTE]
-      > Avsnittet "binds" i JSON har 2 poster. Du kan uppdatera gräns enhetens bindningar, men se till att dessa kataloger finns.
+      > Avsnittet "binds" i JSON har 2 poster. De kataloger som anges i bindnings avsnittet ovan kommer automatiskt att skapas av LVA.  
+        Du kan uppdatera gräns enhetens bindningar, men om du gör det kontrollerar du att dessa kataloger finns på enheten.
     
     * "/var/lib/azuremediaservices:/var/lib/azuremediaservices": används för att binda de beständiga program konfigurations data från behållaren och lagra dem på gräns enheten.
     * "/var/media:/var/media": detta binder Media-mapparna mellan gräns enheten och behållaren. Detta används för att lagra videoinspelningarna när du kör en Media Graph-topologi som har stöd för lagring av video klipp på gräns enheten.
@@ -169,13 +139,14 @@ Dessa steg beskriver hur du skapar en gateway-användare och konfigurerar fil re
 1. Öppna Azure Portal och gå till Azure Stack Edge-resursen.
 1. Skapa en **Gateway-användare** som har åtkomst till resurser.
     
-    1. I det vänstra navigerings fönstret klickar du på **Gateway->användare**.
-    1. Klicka på **+ Lägg till användare** i Ange användar namn och lösen ord. (Rekommenderas: `lvauser` ).
+    1. I det vänstra navigerings fönstret klickar du på **Cloud Storage Gateway**.
+    1. Klicka på **användare** i det vänstra navigerings fönstret.
+    1. Klicka på Jon **+ Lägg till användare** i Ange användar namn och lösen ord. (Rekommenderas: `lvauser` ).
     1. Klicka på **Lägg till**.
     
 1. Skapa en **lokal resurs** för Live Video Analytics-persistence.
 
-    1. Klicka på **Gateway->resurser**.
+    1. Klicka på **Cloud Storage Gateway->resurser**.
     1. Klicka på **+ Lägg till resurser**.
     1. Ange ett resurs namn. (Rekommenderas: `lva` ).
     1. Behåll resurs typen som SMB.
@@ -185,12 +156,15 @@ Dessa steg beskriver hur du skapar en gateway-användare och konfigurerar fil re
     1. Klicka på **skapa**.
         
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Azure Stack Edge":::
-    
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/local-share.png" alt-text="Lokal resurs":::  
+
+    > [!TIP]
+    > Med hjälp av Windows-klienten som är ansluten till Azure Stack Edge ansluter du till SMB-resurserna enligt de steg [som beskrivs i det här dokumentet](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share).    
+
 1. Skapa en fjär resurs för fil lagrings lagring.
 
-    1. Skapa först ett Blob Storage-konto i samma region.
-    1. Klicka på **Gateway->resurser**.
+    1. Skapa först ett Blob Storage-konto i samma region genom att klicka på **Cloud Storage Gateway->lagrings konton**.
+    1. Klicka på **Cloud Storage Gateway->resurser**.
     1. Klicka på **+ Lägg till resurser**.
     1. Ange ett resurs namn. (Rekommenderas: Media).
     1. Behåll resurs typen som SMB.
@@ -203,10 +177,30 @@ Dessa steg beskriver hur du skapar en gateway-användare och konfigurerar fil re
     1. Klicka på **skapa**.    
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Azure Stack Edge"
-            }]
-        }
-    }
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/remote-share.png" alt-text="Fjär resurs":::
+    
+    
+1. Uppdatera behållaren för video analys Edge-modulen för att skapa alternativ (se punkt 4 i [Lägg till moduler-dokument](deploy-iot-edge-device.md#add-modules)) om du vill använda volym monteringar.
+
+   ```json
+      "createOptions": 
+         {
+             "HostConfig": 
+             {
+                 "Binds": 
+                 [
+                     "/var/lib/azuremediaservices:/var/lib/azuremediaservices"
+                 ],
+                 "Mounts": 
+                 [
+                     {
+                         "Target": "/var/media",
+                         "Source": "media",
+                         "Type": "volume"
+                     }
+                 ]
+             }
+         }
     ```
 
 ### <a name="verify-that-the-module-is-running"></a>Kontrol lera att modulen körs
@@ -219,7 +213,7 @@ Verifiera att modulen körs genom att göra följande:
 1. Välj panelen moduler. Då går du till bladet moduler. Identifiera den modul som du har distribuerat i listan över moduler. Körnings status för modulen som du har lagt till ska köras.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Azure Stack Edge":::
+    > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/iot-edge-custom-module.png" alt-text="Anpassad modul":::
 
 ### <a name="configure-the-azure-iot-tools-extension"></a>Konfigurera tillägget Azure IoT-verktyg
 

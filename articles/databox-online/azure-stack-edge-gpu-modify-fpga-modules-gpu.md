@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: c23022a1a1ee7796ada32d9111855b9e3bfb7d46
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539629"
+ms.locfileid: "99550226"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Kör befintliga IoT Edge moduler från Azure Stack Edge Pro FPGA-enheter på Azure Stack Edge Pro GPU-enhet
 
@@ -205,8 +205,7 @@ Om du vill ange minne och CPU-användning använder du processor gränser för m
 ```
 Minnes-och CPU-specifikationen är inte nödvändig, men i allmänhet bra praxis. Om `requests` inte anges används de värden som anges i gränser som minimi krav. 
 
-Du måste också ha ett annat sätt att använda delat minne för moduler. <!-- should we give an example-->
-
+Du måste också ha ett annat sätt att använda delat minne för moduler. Du kan till exempel använda värd IPC-läget för delad minnes åtkomst mellan live video analys och Härlednings lösningar enligt beskrivningen i [distribuera Real video analys på Azure Stack Edge](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal).
 
 
 ## <a name="web-proxy"></a>Webbproxy 

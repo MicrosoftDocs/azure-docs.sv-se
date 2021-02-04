@@ -3,15 +3,15 @@ title: SSL/TLS-anslutning – Azure Database for MariaDB
 description: Information om hur du konfigurerar Azure Database for MariaDB och associerade program för att använda SSL-anslutningar korrekt
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 7ada6f5a7b7ece9b8b36ea1bd2e52b5ad7efd12d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6c4ee8c6d12a6350c319e40bbe30046af4932311
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662499"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550648"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mariadb"></a>SSL/TLS-anslutning i Azure Database for MariaDB
 Azure Database for MariaDB stöder anslutning av databas servern till klient program med hjälp av Secure Sockets Layer (SSL). Framtvingande av SSL-anslutningar mellan databasservern och klientprogrammen hjälper till att skydda mot ”man in the middle”-attacker genom att kryptera dataströmmen mellan servern och programmet.
@@ -62,7 +62,7 @@ Information om hur du anger TLS-inställningen för Azure Database for MariaDB f
 
 ## <a name="cipher-support-by-azure-database-for-mariadb"></a>Chiffrering stöder Azure Database for MariaDB
 
-Som en del av SSL/TLS-kommunikationen verifieras chiffersviter och endast stöd för chiffersviter är tillåtna för att kommunicera med databasen serer. Verifieringen av chiffersviter styrs i [Gateway-lagret](concepts-connectivity-architecture.md#connectivity-architecture) och inte uttryckligen på själva noden. Om chiffersviter inte matchar någon av paketen i listan nedan, kommer inkommande klient anslutningar att avvisas.
+Som en del av SSL/TLS-kommunikationen verifieras chiffersviter och endast stöd för chiffersviter är tillåtna för att kommunicera med databas servern. Verifieringen av chiffersviter styrs i [Gateway-lagret](concepts-connectivity-architecture.md#connectivity-architecture) och inte uttryckligen på själva noden. Om chiffersviter inte matchar någon av paketen i listan nedan, kommer inkommande klient anslutningar att avvisas.
 
 ### <a name="cipher-suite-supported"></a>Chiffrering stöds
 

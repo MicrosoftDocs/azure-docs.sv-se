@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
-ms.openlocfilehash: 89e64b6e8018fafb22820e8594bc2b3c888bb04a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732171"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550466"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Fortes ändra moln för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Fortes än
 > * Behåll användarattribut synkroniserade mellan Azure AD och Fortes ändra moln
 > * [Enkel inloggning](fortes-change-cloud-tutorial.md) till Fortes ändra moln (rekommenderas)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -50,11 +50,11 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 ## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Fortes ändra moln till stöd för etablering med Azure AD
 
-1. Logga in med ditt administratörs konto för att Fortes ändra molnet. Klicka på **ikonen Inställningar** och gå sedan till **scim-inställningar**.
+1. Logga in med ditt administratörs konto för att Fortes ändra molnet. Klicka på **ikonen Inställningar** och navigera sedan till **användar etablering (scim)**.
 
     [![Fortes ändra Cloud scim-inställningen ](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png)](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png#lightbox)
 
-2. Kopiera och spara **primär token** i det nya fönstret. Det här värdet kommer att anges i fältet hemligt token på fliken etablering i Fortes ändra moln program i Azure Portal.
+2. I det nya fönstret kopierar och sparar du **klient-URL** och **primär token**. Klient webb adressen anges i fältet för **klient-URL** * och primär token i fältet **Secret** * token på fliken etablering i Fortes ändra moln program i Azure Portal.
      
       [![Fortes ändra molnets primära token](media/fortes-change-cloud-provisioning-tutorial/primary-token.png)](media/fortes-change-cloud-provisioning-tutorial/primary-token.png#lightbox)
 

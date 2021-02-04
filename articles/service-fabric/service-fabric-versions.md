@@ -3,12 +3,12 @@ title: Uppgradera Azure Service Fabric Cluster-versionen
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918117"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549076"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Uppgradera Azure Service Fabric Cluster-versionen
 
@@ -40,7 +40,7 @@ Azure Service Fabric-kluster som körs på versioner från 5,7 till 6.3.63. * bl
 Uppgradera till en Service Fabric-version som stöds för att förhindra drift avbrott eller förlust av funktioner som är relaterade till den här ändringen. Se till att klustren kör minst följande versioner för att förhindra problem i miljön.
 
 > [!Note]
-> Alla utgivna versioner av 7,2 innehåller nödvändiga ändringar.
+> **Alla utgivna versioner av 7,2 innehåller nödvändiga ändringar**.
   
   | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering |
   | --- | --- |--- |
@@ -75,9 +75,15 @@ Säkerställ att klustren kör någon av följande versioner för att förhindra
 Versioner av Service Fabric i tabellen innehåller nödvändiga ändringar för att förhindra att funktioner går förlorade. Kontrol lera att du använder någon av dessa versioner.  
 
 > [!Note]
-> Alla versions versioner av 7,2 innehåller nödvändiga ändringar.
+> **Azure Service Fabric kluster som körs på version 6,5, måste utföra flera uppgraderingar samtidigt innan infrastucuture ändrar för att undvika förlust av funktioner i klustret**. 
+>   -   1. Uppgradera till 7.0.466. **Kluster som kör Windows-operativsystemet som har funktionen Windows-behållare aktiverat får inte finnas i den här mellanliggande versionen. De måste utföra nästa steg (II) nedan.  Uppgradera för att vara på ett säkrare och kompatibelt version för att undvika avbrott i tjänsten**
+>   -   2. Uppgradera till senaste inklagomåls versioner i 7,0 * Release (7.0.478) eller någon av de högre versionerna i listan nedan.
 
-  | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering |
+
+> [!Note]
+> **Alla versions versioner av 7,2 innehåller nödvändiga ändringar**.
+
+ | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering |
   | --- | --- |--- |
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/30/2020
-ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.date: 02/03/2021
+ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967046"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550665"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Skapa en Integration Service Environment (ISE) med hjälp av Logic Apps REST-API
 
@@ -25,7 +25,7 @@ Mer information om andra sätt att skapa en ISE finns i följande artiklar:
 * [Skapa en ISE med hjälp av exempel mal len Azure Resource Manager snabb start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [Skapa en ISE som stöder användning av Kundhanterade nycklar för kryptering av data i vila](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Samma krav [](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) och [åtkomst krav](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) som när du skapar en ISE i Azure Portal
 
@@ -188,17 +188,28 @@ Den här exempel texten visar exempel värden:
 
 ## <a name="add-custom-root-certificates"></a>Lägg till anpassade rot certifikat
 
-Du använder ofta en ISE för att ansluta till anpassade tjänster i ditt virtuella nätverk eller lokalt. Dessa anpassade tjänster skyddas ofta av ett certifikat som har utfärdats av en anpassad rot certifikat utfärdare, till exempel en företags certifikat utfärdare eller ett självsignerat certifikat. Mer information om hur du använder självsignerade certifikat finns i [säker åtkomst och data åtkomst för utgående anrop till andra tjänster och system](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). För att din ISE ska kunna ansluta till dessa tjänster via Transport Layer Security (TLS) behöver din ISE åtkomst till dessa rot certifikat. Om du vill uppdatera ISE med ett anpassat betrott rot certifikat, gör du följande HTTPS- `PATCH` begäran:
+Du använder ofta en ISE för att ansluta till anpassade tjänster i ditt virtuella nätverk eller lokalt. Dessa anpassade tjänster skyddas ofta av ett certifikat som har utfärdats av en anpassad rot certifikat utfärdare, till exempel en företags certifikat utfärdare eller ett självsignerat certifikat. Mer information om hur du använder självsignerade certifikat finns i [säker åtkomst och data åtkomst för utgående anrop till andra tjänster och system](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). För att din ISE ska kunna ansluta till dessa tjänster via Transport Layer Security (TLS) behöver din ISE åtkomst till dessa rot certifikat.
 
-`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+#### <a name="considerations-for-adding-custom-root-certificates"></a>Att tänka på när du lägger till anpassade rot certifikat
 
-Granska följande saker innan du utför den här åtgärden:
+Innan du uppdaterar din ISE med ett anpassat betrott rot certifikat granskar du följande överväganden:
 
 * Se till att du laddar upp rot certifikatet *och* alla mellanliggande certifikat. Det maximala antalet certifikat är 20.
 
 * Överföring av rot certifikat är en ersättnings åtgärd där den senaste överföringen skriver över tidigare överföringar. Om du till exempel skickar en begäran som överför ett certifikat och sedan skickar en annan begäran om att ladda upp ett annat certifikat, används endast det andra certifikatet i ISE. Om du behöver använda båda certifikaten lägger du till dem tillsammans i samma begäran.  
 
 * Överföring av rot certifikat är en asynkron åtgärd som kan ta lite tid. Om du vill kontrol lera status eller resultat kan du skicka en `GET` begäran med samma URI. Svarsmeddelandet har ett `provisioningState` fält som returnerar `InProgress` värdet när uppladdnings åtgärden fortfarande fungerar. När `provisioningState` värdet är `Succeeded` slutförs överförings åtgärden.
+
+#### <a name="request-syntax"></a>Syntax för begäran
+
+Om du vill uppdatera ISE med ett anpassat betrott rot certifikat skickar du följande HTTPS PATCH-begäran till [Azure Resource Manager URL, som skiljer sig från Azure-miljön](../azure-resource-manager/management/control-plane-and-data-plane.md#control-plane), till exempel:
+
+| Miljö | Azure Resource Manager-URL |
+|-------------|----------------------------|
+| Azure Global (flera innehavare) | `PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Azure Government | `PATCH https://management.usgovcloudapi.net/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Microsoft Azure China 21Vianet | `PATCH https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+|||
 
 #### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Syntax för begär ande brödtext för att lägga till anpassade rot certifikat
 

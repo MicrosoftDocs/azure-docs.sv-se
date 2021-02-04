@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/15/2018
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: bb5a785cba4a560fc15963363d4e5f6b811af97a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071908"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548839"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Tillåt eller blockera inbjudningar till B2B-användare från specifika organisationer
 
@@ -27,7 +27,7 @@ Du kan använda en lista över tillåtna eller en neka för att tillåta eller b
 
 - Du kan skapa antingen en lista över tillåtna eller nekade listor. Du kan inte konfigurera båda typerna av listor. Som standard är de domäner som inte finns i listan över tillåtna i listan över nekade, och vice versa. 
 - Du kan bara skapa en princip per organisation. Du kan uppdatera principen för att inkludera fler domäner, eller så kan du ta bort principen för att skapa en ny. 
-- Antalet domäner som du kan lägga till i en lista över tillåtna eller nekade listor begränsas bara av principens storlek. Den maximala storleken för hela principen är 25 KB (25 000 tecken) som innehåller listan över tillåtna eller nekade listor och andra parametrar som har kon figurer ATS för andra funktioner.
+- Antalet domäner som du kan lägga till i en lista över tillåtna eller nekade listor begränsas bara av principens storlek. Den här gränsen gäller för antalet tecken, så du kan ha mer kortare domäner eller färre längre domäner. Den maximala storleken för hela principen är 25 KB (25 000 tecken) som innehåller listan över tillåtna eller nekade listor och andra parametrar som har kon figurer ATS för andra funktioner.
 - Listan fungerar oberoende av listor över tillåtna/blockerade OneDrive för företag och SharePoint Online. Om du vill begränsa enskilda fildelningar i SharePoint Online måste du konfigurera en lista över tillåtna eller nekade för OneDrive för företag och SharePoint Online. Mer information finns i avsnittet [begränsade domäner som delas i SharePoint Online och OneDrive för företag](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
 - Listan gäller inte för externa användare som redan har löst in inbjudan. Listan kommer att verkställas när listan har kon figurer ATS. Om en användar inbjudan är i ett väntande tillstånd och du anger en princip som blockerar sin domän, kommer användarens försök att lösa in inbjudan att Miss lyckas.
 

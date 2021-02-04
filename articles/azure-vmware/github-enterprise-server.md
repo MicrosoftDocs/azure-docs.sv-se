@@ -2,13 +2,13 @@
 title: Konfigurera GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen
 description: Lär dig hur du konfigurerar GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/03/2021
+ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326921"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549110"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Konfigurera GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen
 
@@ -61,7 +61,7 @@ Använd dina inställningar.  När instansen startas om kan du fortsätta med n�
 
 När instansen har startats om skapar du ett nytt administratörs konto på instansen. Glöm inte att anteckna den här användarens lösen ord.
 
-### <a name="additional-configuration-steps"></a>Ytterligare konfigurations steg
+### <a name="other-configuration-steps"></a>Andra konfigurations steg
 
 Följande valfria installations steg rekommenderas för att förstärka din instans för produktions användning:
 
@@ -182,7 +182,7 @@ Här kommer vi att göra den tillgänglig för alla organisationer, men du kan o
 
 ## <a name="optional-configuring-github-connect"></a>Valfritt Konfigurera GitHub Connect
 
-Även om det här steget är valfritt rekommenderar vi det om du planerar att använda åtgärder med öppen källkod som finns på GitHub.com. På så sätt kan du bygga vidare på arbetet med andra genom att referera till dessa återanvändbara åtgärder i dina arbets flöden.
+Även om det här steget är valfritt rekommenderar vi det om du planerar att använda åtgärder med öppen källkod som finns på GitHub.com. Det gör att du kan bygga vidare på arbetet med andra genom att referera till dessa återanvändbara åtgärder i dina arbets flöden.
 
 Om du vill aktivera GitHub Connect följer du stegen i [Aktivera automatisk åtkomst till GitHub.com-åtgärder med GitHub Connect](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect).
 
@@ -223,14 +223,12 @@ Om allt har körts utan problem bör du se ett nytt ärende i din lagrings plats
 
 Grattis! Du har precis slutfört ditt första åtgärds arbets flöde på GitHub Enterprise Server, som körs på ditt privata moln i Azure VMware-lösningen.
 
-Vi tar helt enkelt på ytan av vad du kan göra med GitHub-åtgärder. För mer inspiration kan du checka in listan med åtgärder på [GitHubs marknads plats](https://github.com/marketplace)eller [skapa en egen](https://docs.github.com/en/actions/creating-actions).
+I den här artikeln ställer vi in en ny instans av GitHub Enterprise Server, som är den GitHub.com som är egen värd, ovanpå ditt privata moln i Azure VMware-lösningen. Den här instansen innehåller stöd för GitHub-åtgärder och använder Azure Blob Storage för att beständige loggar och artefakter. Men vi skapar bara ytan på vad du kan göra med GitHub-åtgärder. Kolla in listan med åtgärder på [GitHubs Marketplace](https://github.com/marketplace)eller [skapa en egen](https://docs.github.com/en/actions/creating-actions).
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln ställer vi in en ny instans av GitHub Enterprise Server, som är den GitHub.com som är egen värd, ovanpå ditt privata moln i Azure VMware-lösningen. Den här instansen innehåller stöd för GitHub-åtgärder och använder Azure Blob Storage för att beständige loggar och artefakter. Detta är en bra kombination av en modern, gemensam och säker program utvecklings miljö. Den bygger på en solid grund i Azure VMware-lösningen, så att du kan utnyttja moln resurser i en välbekant inställning.
+Nu när du har sett hur du konfigurerar GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen kanske du vill lära dig mer om: 
 
-Mer information finns i följande resurser:
-
-- [Komma igång med GitHub-åtgärder](https://docs.github.com/en/actions)
-- [Delta i beta programmet](https://resources.github.com/beta-signup/)
-- [Lär dig mer om administration av GitHub Enterprise Server](https://githubtraining.github.io/admin-training/#/00_getting_started)
+- [Komma igång med GitHub-åtgärder](https://docs.github.com/en/actions).
+- [Delta i beta programmet](https://resources.github.com/beta-signup/).
+- [Administration av GitHub Enterprise Server](https://githubtraining.github.io/admin-training/#/00_getting_started).

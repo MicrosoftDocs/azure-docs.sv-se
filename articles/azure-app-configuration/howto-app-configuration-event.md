@@ -1,6 +1,6 @@
 ---
-title: Skicka händelser till en webb slut punkt med hjälp av Azure App konfiguration
-description: Lär dig att använda Azure App konfigurations händelse prenumerationer för att skicka ändrings händelser för nyckel värden till en webb slut punkt
+title: Använd Event Grid för ändrings meddelanden för konfigurations data för appar
+description: Lär dig hur du använder Azure App konfigurations händelse prenumerationer för att skicka ändrings händelser för nyckel värden till en webb slut punkt
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.assetid: ''
@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4e005d2f929fd615080d22e93a102a7cc5c1174a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: c188a4b7fe8e9223faa1cdeb52ae01ed83b94d84
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696104"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549787"
 ---
-# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Dirigera Azure App konfigurations händelser till en webb slut punkt med Azure CLI
+# <a name="use-event-grid-for-app-configuration-data-change-notifications"></a>Använd Event Grid för ändrings meddelanden för konfigurations data för appar
 
 I den här artikeln får du lära dig hur du konfigurerar Azure App konfigurations händelse prenumerationer för att skicka ändrings händelser för nyckel värden till en webb slut punkt. Azure App konfigurations användare kan prenumerera på händelser som genereras när nyckel värden ändras. Dessa händelser kan utlösa Webhooks, Azure Functions, Azure Storage köer eller andra händelse hanterare som stöds av Azure Event Grid. Normalt kan du skicka händelser till en slutpunkt som bearbetar informationen om händelsen och utför åtgärder. Men för att enkelt beskriva den här artikeln kan skicka du händelser till en webbapp som samlar in och visar meddelanden.
 

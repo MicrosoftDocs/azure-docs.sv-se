@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919535"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550327"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Automatisera svar på Security Center utlösare
 
 Varje säkerhets program innehåller flera arbets flöden för incident svar. De här processerna kan omfatta att meddela relevanta intressenter, starta en ändrings hanterings process och tillämpa vissa åtgärder för reparation. Säkerhets experter rekommenderar att du automatiserar så många steg som beskrivs i de här procedurerna. Automation minskar kostnaderna. Det kan också förbättra säkerheten genom att se till att process stegen utförs snabbt, konsekvent och enligt dina fördefinierade krav.
 
-I den här artikeln beskrivs funktionen för arbets flödes automatisering i Azure Security Center. Den här funktionen kan utlösa Logic Apps om säkerhets aviseringar och rekommendationer. Till exempel kanske du vill Security Center att e-posta en speciell användare när en avisering inträffar. Du lär dig också hur du skapar Logic Apps att använda [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
+I den här artikeln beskrivs funktionen för arbets flödes automatisering i Azure Security Center. Den här funktionen kan utlösa Logic Apps om säkerhets aviseringar, rekommendationer och ändringar i regelefterlevnad. Till exempel kanske du vill Security Center att e-posta en speciell användare när en avisering inträffar. Du lär dig också hur du skapar Logic Apps att använda [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="availability"></a>Tillgänglighet
@@ -29,7 +29,7 @@ I den här artikeln beskrivs funktionen för arbets flödes automatisering i Azu
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kostnadsfri|
 |Nödvändiga roller och behörigheter:|**Rollen säkerhets administratör** eller **ägare** av resurs gruppen<br>Måste också ha Skriv behörighet för mål resursen<br><br>Om du vill arbeta med Azure Logic Apps arbets flöden måste du också ha följande Logic Apps roller/behörigheter:<br> - [Logic app operatörs](../role-based-access-control/built-in-roles.md#logic-app-operator) behörigheter krävs eller Läs-/utlösare för Logic app (den här rollen kan inte skapa eller redigera Logi Kap par). *Kör* bara befintliga)<br> - [Logic app Contributor](../role-based-access-control/built-in-roles.md#logic-app-contributor) -behörigheter krävs för att skapa och ändra Logic app<br>Om du vill använda Logic app-kopplingar kan du behöva ytterligare autentiseringsuppgifter för att logga in på deras respektive tjänster (till exempel dina Outlook/team/slack-instanser)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 
@@ -70,10 +70,12 @@ I den här artikeln beskrivs funktionen för arbets flödes automatisering i Azu
 
     Logic App Designer stöder dessa Security Center-utlösare:
 
-    * **När en Azure Security Center rekommendation skapas eller utlöses** – om din Logic-app är beroende av en rekommendation som inaktive ras eller ersätts, slutar automatiseringen att fungera och du måste uppdatera utlösaren. Information om hur du spårar ändringar i rekommendationer finns i [Azure Security Center viktig information](release-notes.md).
+    - **När en Azure Security Center rekommendation skapas eller utlöses** – om din Logic-app är beroende av en rekommendation som inaktive ras eller ersätts, slutar automatiseringen att fungera och du måste uppdatera utlösaren. Information om hur du spårar ändringar i rekommendationer finns i [Azure Security Center viktig information](release-notes.md).
 
-    * **När en Azure Security Center-avisering skapas eller utlöses** , kan du anpassa utlösaren så att den bara relaterar till aviseringar med de allvarlighets grader som intresserar dig.
+    - **När en Azure Security Center-avisering skapas eller utlöses** , kan du anpassa utlösaren så att den bara relaterar till aviseringar med de allvarlighets grader som intresserar dig.
     
+    - **När en Security Center reglerings bedömning av efterlevnad skapas eller utlöses** , utlöses automatiseringar baserat på uppdateringar av regelefterlevnad.
+
     > [!NOTE]
     > Om du använder den äldre utlösaren "när ett svar på en Azure Security Center avisering utlöses", kommer dina Logi Kap par inte att startas av funktionen för arbets flödes automatisering. Använd i stället någon av de utlösare som anges ovan. 
 

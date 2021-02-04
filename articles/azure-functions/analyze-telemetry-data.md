@@ -4,12 +4,12 @@ description: Lär dig att visa och fråga efter Azure Functions telemetridata so
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a991157962b0588e3d49510e8a82a9abcfb9aed
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9e03a36824853a3e43bbf8628fd12481cfbcaf25
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493778"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549566"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysera Azure Functions telemetri i Application Insights 
 
@@ -61,7 +61,7 @@ Information om hur du använder Application Insights finns i Application Insight
 Följande områden i Application Insights kan vara användbara när du ska utvärdera beteende, prestanda och fel i dina funktioner:
 
 | Undersök
- | Beskrivning |
+ | Description |
 | ---- | ----------- |
 | **[Fel](../azure-monitor/app/asp-net-exceptions.md)** |  Skapa diagram och aviseringar baserat på funktions fel och Server undantag. **Åtgärds namnet** är funktions namnet. Felen i beroenden visas inte om du inte implementerar anpassad telemetri för beroenden. |
 | **[Prestanda](../azure-monitor/app/performance-counters.md)** | Analysera prestanda problem genom att Visa resursutnyttjande och data flöde per **moln roll instanser**. Dessa prestanda data kan vara användbara för fel sökning av scenarier där funktioner bogging de underliggande resurserna. |
@@ -140,6 +140,18 @@ Vid körning i en [förbruknings plan](consumption-plan.md)mäts körnings *kost
 Följande telemetridata är speciella för mått som påverkar kostnaden för att köra funktioner i förbruknings planen.
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
+
+## <a name="azure-monitor-metrics"></a>Azure Monitor mått
+
+Förutom telemetri-data som samlas in av Application Insights kan du också hämta information om hur Function-appen körs från [Azure Monitor mått](../azure-monitor/platform/data-platform-metrics.md). Tillsammans med de vanliga [mått som är tillgängliga för App Service appar](../app-service/web-sites-monitor.md#understand-metrics)finns det två mått som är specifika för funktioner som är av intresse:
+
+| Metric | Beskrivning |
+| ---- | ---- |
+| **FunctionExecutionCount** | Antal funktions körningar anger hur många gånger din funktions app har körts. Detta motsvarar antalet gånger som en funktion körs i din app. Det här måttet stöds för närvarande inte för Premium-och dedikerade-planer (App Service) som körs på Linux. |
+| **FunctionExecutionUnits** | Funktions körnings enheter är en kombination av körnings tid och minnes användning.  Minnes data är inte ett mått som för närvarande är tillgängligt via Azure Monitor. Men om du vill optimera minnes användningen för din app kan använda prestanda räknar data som samlas in av Application Insights. Det här måttet stöds för närvarande inte för Premium-och dedikerade-planer (App Service) som körs på Linux.|
+
+Mer information om hur du beräknar kostnader för en förbruknings plan med Application Insights data finns i [uppskatta förbruknings plan kostnader](functions-consumption-costs.md). Mer information om hur du använder Monitor Explorer för att visa mått finns i [komma igång med Azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md).
+
 
 ## <a name="next-steps"></a>Nästa steg
 

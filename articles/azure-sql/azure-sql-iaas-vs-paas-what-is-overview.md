@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 99703acc4965a38337a39fe23cc19cafddd1531d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791128"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550886"
 ---
 # <a name="what-is-azure-sql"></a>Vad är Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
 Azure SQL är en familj av hanterade, säkra och intelligenta produkter som använder SQL Server Database Engine i Azure-molnet.
 
-- **Azure SQL Database** : stöd för moderna moln program i en intelligent, hanterad databas tjänst som innehåller Server lös beräkning. 
-- **Azure SQL-hanterad instans** : modernisera dina befintliga SQL Server program i stor skala med en intelligent, fullständigt hanterad instans som en tjänst, med nästan 100% funktions paritet med SQL Server databas motorn. Bäst för de flesta migreringar till molnet.
-- **SQL Server på virtuella Azure-datorer** : lyft-och-flytta dina SQL Server-arbetsbelastningar med enkel och underhåll av 100% SQL Server kompatibilitet och operativ Systems nivå åtkomst. 
+- **Azure SQL Database**: stöd för moderna moln program i en intelligent, hanterad databas tjänst som innehåller Server lös beräkning. 
+- **Azure SQL-hanterad instans**: modernisera dina befintliga SQL Server program i stor skala med en intelligent, fullständigt hanterad instans som en tjänst, med nästan 100% funktions paritet med SQL Server databas motorn. Bäst för de flesta migreringar till molnet.
+- **SQL Server på virtuella Azure-datorer**: lyft-och-flytta dina SQL Server-arbetsbelastningar med enkel och underhåll av 100% SQL Server kompatibilitet och operativ Systems nivå åtkomst. 
  
 Azure SQL bygger på den välbekanta SQL Server motorn, så att du kan migrera program snabbt och fortsätta att använda verktygen, språken och resurserna som du är van vid. Dina kunskaper och erfarenhet till molnet, så att du kan göra ännu mer med det du redan har. 
 
@@ -53,7 +53,7 @@ En av de första sakerna man ska förstå när det gäller Azure kontra lokala S
 
 Azure övervakar ständigt dina data för hot. Med Azure SQL kan du:
 
-- Åtgärda potentiella hot i real tid med intelligent [Avancerad hot identifiering](../security/fundamentals/threat-detection.md#advanced-threat-detection-features-other-azure-services) och proaktiva varningar för sårbarhets bedömning. 
+- Åtgärda potentiella hot i real tid med intelligent [Avancerad hot identifiering](../security/fundamentals/threat-detection.md#threat-protection-features-other-azure-services) och proaktiva varningar för sårbarhets bedömning. 
 - Få branschledande skydd med flera lager med [inbyggda säkerhets kontroller](https://azure.microsoft.com/overview/security/) , inklusive T-SQL, autentisering, nätverk och nyckel hantering. 
 - Dra nytta av den mest omfattande [efterlevnaden](https://azure.microsoft.com/overview/trusted-cloud/compliance/) av alla moln databas tjänster. 
 
@@ -78,7 +78,7 @@ I Azure kan du ha SQL Server arbets belastningar som körs som en värdbaserad t
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 
-[Azure SQL Database](database/sql-database-paas-overview.md) är en Relations databas som en tjänst (DBaaS) som är värd för Azure och som ingår i bransch kategorin för *PaaS (Platform-as-a-Service)* . 
+[Azure SQL Database](database/sql-database-paas-overview.md) är en Relations databas som en tjänst (DBaaS) som är värd för Azure och som ingår i bransch kategorin för *PaaS (Platform-as-a-Service)*. 
 - Bäst för moderna moln program som vill använda de senaste stabila SQL Server funktionerna och har tidsbegränsningar i utvecklingen och marknadsföringen. 
 - En helt hanterad SQL Server-databasmotor, baserat på den senaste stabila Enterprise-versionen av SQL Server. SQL Database har två distributions alternativ som bygger på standardiserad maskin-och program vara som ägs, hanteras av och underhålls av Microsoft. 
 
@@ -89,7 +89,7 @@ Azure SQL Database erbjuder följande distributions alternativ:
   - Som en [*enskild databas*](database/single-database-overview.md) med en egen uppsättning resurser som hanteras via en [logisk SQL-Server](database/logical-servers.md). En enda databas liknar en [innesluten databas](/sql/relational-databases/databases/contained-databases) i SQL Server. Det här alternativet är optimerat för modern program utveckling av nya molnbaserade program. Alternativen för [storskalig](database/service-tier-hyperscale.md) och [Server](database/serverless-tier-overview.md) lös är tillgängliga.
   - En [*elastisk pool*](database/elastic-pool-overview.md), som är en samling databaser med en delad uppsättning resurser som hanteras via en [logisk SQL-Server](database/logical-servers.md). Enskilda databaser kan flyttas till och från en elastisk pool. Det här alternativet är optimerat för modern program utveckling av nya molnbaserade program med hjälp av SaaS program mönster för flera innehavare. Elastiska pooler ger en kostnads effektiv lösning för att hantera prestanda för flera databaser som har varierande användnings mönster.
 
-### <a name="azure-sql-managed-instance"></a>Hanterad Azure SQL-instans
+### <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
 
 Den [hanterade Azure SQL-instansen](managed-instance/sql-managed-instance-paas-overview.md) hamnar i bransch kategorin för *PaaS (Platform-as-a-Service)* och är bäst för de flesta migreringar till molnet. SQL-hanterad instans är en samling system-och användar databaser med en delad uppsättning resurser som lyfter och Skift klar.  
 - Bäst för nya program eller befintliga lokala program som vill använda de senaste stabila SQL Server funktionerna och som migreras till molnet med minimala ändringar. En instans av SQL-hanterad instans liknar en instans av [Microsoft SQL Server databas motor](/sql/database-engine/sql-server-database-engine-overview) som erbjuder delade resurser för databaser och ytterligare funktioner som omfattas av instanser. 
@@ -119,7 +119,7 @@ I allmänhet kan SQL Database och SQL-hanterad instans dramatiskt öka antalet d
 | Lokala program kan komma åt data i Azure SQL Database. | [Inbyggd implementering av virtuella nätverk](managed-instance/vnet-existing-add-subnet.md) och anslutning till din lokala miljö med hjälp av Azure Express Route eller VPN gateway. | Med virtuella SQL-datorer kan du ha program som körs delvis i molnet och delvis lokalt. Du kan till exempel utöka ditt lokala nätverk och Active Directory-domän till molnet via [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Mer information om hybrid moln lösningar finns i [utöka lokala data lösningar till molnet](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
-## <a name="cost"></a>Kostnad
+## <a name="cost"></a>Cost
 
 Oavsett om du är en dålig för kontanter eller ett team i ett etablerat företag som arbetar under tätt budget begränsningar, är den begränsade finansieringen ofta den primära driv rutinen när du bestämmer dig för att vara värd för dina databaser. I det här avsnittet får du lära dig om fakturerings-och licensierings grunderna i Azure som är kopplade till Azure SQL-serien med tjänster.  Du lär dig också hur du beräknar den totala programkostnaden.
 
@@ -128,7 +128,7 @@ Oavsett om du är en dålig för kontanter eller ett team i ett etablerat föret
 För närvarande säljs både **SQL Database** -och **SQL-hanterade instanser** som en tjänst och är tillgängliga med flera alternativ och på flera tjänst nivåer med olika priser för resurser, som alla debiteras per timme enligt en fast taxa baserat på tjänst nivån och den beräknings storlek du väljer. Den senaste informationen om aktuella tjänst nivåer, beräknings storlek och lagrings utrymme som stöds finns i [DTU-baserad inköps modell för SQL Database](database/service-tiers-dtu.md) och [vCore-baserad inköps modell för både SQL Database-och SQL-hanterade instanser](database/service-tiers-vcore.md).
 
 - Med SQL Database kan du välja en tjänst nivå som passar dina behov från ett brett utbud av priser som börjar från 5 $/månad för Basic-nivån och du kan skapa [elastiska pooler](database/elastic-pool-overview.md) för att dela resurser mellan databaser för att minska kostnaderna och hantera användnings toppar.
-- Med SQL-hanterad instans kan du också ta med din egen licens. Mer information om att använda en egen licensiering finns [licensmobilitet via Software Assurance på Azure](https://azure.microsoft.com/pricing/license-mobility/) eller Använd [Azure Hybrid-förmån kalkylatorn](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) för att se hur du **sparar upp till 40%** .
+- Med SQL-hanterad instans kan du också ta med din egen licens. Mer information om att använda en egen licensiering finns [licensmobilitet via Software Assurance på Azure](https://azure.microsoft.com/pricing/license-mobility/) eller Använd [Azure Hybrid-förmån kalkylatorn](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) för att se hur du **sparar upp till 40%**.
 
 Dessutom debiteras du för utgående Internettrafik till normal [dataöverföringskostnad](https://azure.microsoft.com/pricing/details/data-transfers/). Du kan justera tjänst nivåerna dynamiskt och beräknings storlekarna så att de överensstämmer med programmets varierande data flödes behov.
 

@@ -3,28 +3,28 @@ title: Sök efter fel i pooler och noder
 description: Den här artikeln beskriver de bakgrunds åtgärder som kan uppstå, tillsammans med fel för att söka efter och hur du undviker dem när du skapar pooler och noder.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/23/2019
+ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85979925"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549143"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sök efter fel i pooler och noder
 
-När du skapar och hanterar Azure Batch pooler sker vissa åtgärder omedelbart. Vissa åtgärder är dock asynkrona och körs i bakgrunden, vilket tar flera minuter att slutföra.
+När du skapar och hanterar Azure Batch pooler sker vissa åtgärder omedelbart. Att upptäcka felen för dessa åtgärder är vanligt vis enkelt eftersom de returneras direkt av API, CLI eller UI. Vissa åtgärder är dock asynkrona och körs i bakgrunden, vilket tar flera minuter att slutföra.
 
-Det är enkelt att identifiera problem för åtgärder som sker direkt eftersom eventuella problem returneras direkt av API, CLI eller gränssnitt.
+Kontrol lera att du har angett att programmen ska implementera omfattande fel kontroller, särskilt för asynkrona åtgärder. Detta kan hjälpa dig att snabbt identifiera och diagnostisera problem.
 
-Den här artikeln beskriver bakgrunds åtgärder som kan uppstå för pooler och noder i pooler. Det anger hur du kan identifiera och undvika fel.
+I den här artikeln beskrivs olika sätt att identifiera och undvika fel i bakgrunds åtgärder som kan uppstå för pooler och noder i pooler.
 
 ## <a name="pool-errors"></a>Allokeringsfel
 
 ### <a name="resize-timeout-or-failure"></a>Tids gräns för storlek eller haveriering
 
-När du skapar en ny pool eller ändrar storlek på en befintlig pool anger du mål antalet noder.  Åtgärden skapa eller ändra storlek slutförs omedelbart, men den faktiska allokeringen av nya noder eller borttagning av befintliga noder kan ta flera minuter.  Du anger tids gränsen för storleks ändring i API för att [skapa](/rest/api/batchservice/pool/add) eller [ändra storlek](/rest/api/batchservice/pool/resize) . Om batch inte kan hämta mål antalet noder under tids gränsen för storleks ändring försätts poolen i ett stabilt tillstånd och rapporter ändrar storlek på fel.
+När du skapar en ny pool eller ändrar storlek på en befintlig pool anger du mål antalet noder. Åtgärden skapa eller ändra storlek slutförs omedelbart, men den faktiska allokeringen av nya noder eller borttagning av befintliga noder kan ta flera minuter. Du anger ett värde för timeout för storleks ändring i API för att [skapa](/rest/api/batchservice/pool/add) eller [ändra storlek](/rest/api/batchservice/pool/resize) . Om batch inte kan hämta mål antalet noder under tids gränsen för storleks ändring, försätts poolen i ett stabilt tillstånd och rapporter ändrar storlek på fel.
 
 Egenskapen [ResizeError](/rest/api/batchservice/pool/get#resizeerror) för den senaste utvärderingen visar en lista över felen som har inträffat.
 
@@ -44,23 +44,25 @@ Vanliga orsaker till fel storleks ändringar är:
 
 ### <a name="automatic-scaling-failures"></a>Automatiska skalnings problem
 
-Du kan också ange Azure Batch för att automatiskt skala antalet noder i en pool. Du definierar parametrar för den [automatiska skalnings formeln för en pool](./batch-automatic-scaling.md). Batch-tjänsten använder formeln för att regelbundet utvärdera antalet noder i poolen och ange ett nytt mål nummer. Följande typer av problem kan uppstå:
+Du kan ange Azure Batch för att automatiskt skala antalet noder i en pool. Du definierar parametrar för den [automatiska skalnings formeln för en pool](./batch-automatic-scaling.md). Batch-tjänsten använder sedan formeln för att regelbundet utvärdera antalet noder i poolen och ange ett nytt mål nummer.
+
+Följande typer av problem kan uppstå när du använder automatisk skalning:
 
 - Utvärderingen av automatisk skalning Miss lyckas.
 - Den resulterande ändrings åtgärden Miss lyckas och tids gränsen uppnås.
 - Ett problem med den automatiska skalnings formeln leder till felaktiga värden för mål värden. Storleken på antingen Works eller tids gränsen.
 
-Du kan få information om den senaste automatiska skalnings utvärderingen med hjälp av egenskapen [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) . Den här egenskapen rapporterar utvärderings tiden, värdena och resultatet samt eventuella prestanda fel.
+Använd egenskapen [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) för att få information om den senaste automatiska skalnings utvärderingen. Den här egenskapen rapporterar utvärderings tiden, värdena och resultatet samt eventuella prestanda fel.
 
 [Loggen för storleks ändring av pooler](./batch-pool-resize-complete-event.md) samlar in information om alla utvärderingar.
 
-### <a name="delete"></a>Ta bort
+### <a name="pool-deletion-failures"></a>Borttagnings problem för pool
 
-När du tar bort en pool som innehåller noder, tar den första batchen bort noderna. Sedan tas själva pool-objektet bort. Det kan ta några minuter innan poolens noder tas bort.
+När du tar bort en pool som innehåller noder, tar den första batchen bort noderna. Det kan ta flera minuter att slutföra. Därefter tar batchen bort själva objektet i poolen.
 
 Batch anger det [tillstånd för poolen](/rest/api/batchservice/pool/get#poolstate) som ska **tas bort** under borttagnings processen. Det anropande programmet kan identifiera om borttagningen tar för lång tid genom att använda egenskaperna **State** och **stateTransitionTime** .
 
-## <a name="pool-compute-node-errors"></a>Fel vid beräkning av pool
+## <a name="node-errors"></a>Nodfel
 
 Även om batch allokerar noder i en pool kan olika problem orsaka att några av noderna inte är felfria och inte kan köra uppgifter. De här noderna kostar fortfarande att betala, så det är viktigt att upptäcka problem för att undvika att betala för noder som inte kan användas. Förutom vanliga nodfel kan det vara bra att känna till det aktuella [jobb läget](/rest/api/batchservice/job/get#jobstate) för fel sökning.
 
@@ -74,7 +76,7 @@ Du kan identifiera start aktivitets problem genom att använda egenskaperna [res
 
 En misslyckad start aktivitet gör också att batch anger nodens [tillstånd](/rest/api/batchservice/computenode/get#computenodestate) till **starttaskfailed** om  **waitForSuccess** har angetts till **True**.
 
-Precis som med alla aktiviteter kan det finnas många orsaker till att start aktiviteten Miss Missing.  Du kan felsöka genom att kontrol lera STDOUT, stderr och eventuella ytterligare verksamhetsspecifika loggfiler.
+Precis som med alla aktiviteter kan det finnas många orsaker till ett start aktivitets fel. Du kan felsöka genom att kontrol lera STDOUT, stderr och eventuella ytterligare verksamhetsspecifika loggfiler.
 
 Start aktiviteter måste vara omordnade eftersom det är möjligt att start aktiviteten körs flera gånger på samma nod. Start aktiviteten körs när en nod återställs eller startas om. I sällsynta fall körs en start aktivitet efter att en händelse orsakade en omstart av en nod, där ett av operativ systemen eller de tillfälliga diskarna återställdes när den andra inte var det. Eftersom batch-startuppgifter (t. ex. alla batch-aktiviteter) körs från den tillfälliga disken är detta vanligt vis inget problem, men i vissa fall där start aktiviteten installerar ett program på operativ system disken och behåller andra data på den tillfälliga disken kan detta orsaka problem eftersom det inte är synkroniserat. Skydda ditt program efter behov om du använder båda diskarna.
 
@@ -88,9 +90,13 @@ Egenskapen Node [errors](/rest/api/batchservice/computenode/get#computenodeerror
 
 Du kan ange en eller flera behållar referenser i en pool. Batch hämtar de angivna behållarna till varje nod. Egenskapen Node [errors](/rest/api/batchservice/computenode/get#computenodeerror) rapporterar ett fel vid hämtning av en behållare och anger att nodens tillstånd är **oanvändbar**.
 
+### <a name="node-os-updates"></a>Node OS-uppdateringar
+
+För Windows-pooler `enableAutomaticUpdates` anges som `true` standard som standard. Att tillåta automatiska uppdateringar rekommenderas, men de kan avbryta aktivitets förloppet, i synnerhet om aktiviteterna körs längre. Du kan ställa in det här värdet på `false` om du behöver kontrol lera att en operativ system uppdatering inte sker utan förvarning.
+
 ### <a name="node-in-unusable-state"></a>Noden är oanvändbar
 
-Azure Batch kan ange att [nodens tillstånd](/rest/api/batchservice/computenode/get#computenodestate) inte kan **användas** av många skäl. När Node State är **oanvändbart**kan aktiviteter inte schemaläggas till noden, men de debiteras ändå.
+Azure Batch kan ange att [nodens tillstånd](/rest/api/batchservice/computenode/get#computenodestate) inte kan **användas** av många skäl. När Node State är **oanvändbart** kan aktiviteter inte schemaläggas till noden, men de debiteras ändå.
 
 Noder i ett **oanvändbart** tillstånd, men utan [fel](/rest/api/batchservice/computenode/get#computenodeerror) innebär att batchen inte kan kommunicera med den virtuella datorn. I det här fallet försöker batch alltid återställa den virtuella datorn. Batch försöker inte automatiskt att återställa virtuella datorer som inte kunde installera programpaket eller behållare trots att deras tillstånd är **oanvändbart**.
 
@@ -116,7 +122,7 @@ Batch agent-processen som körs på varje pool-nod kan ge loggfiler som kan vara
 
 ### <a name="node-disk-full"></a>Nod disken är full
 
-Den tillfälliga enheten för en pool med virtuella datorer används av batch för projektfiler, filer och delade filer.
+Den tillfälliga enheten för en pool med virtuella datorer används av batch för projektfiler, registerfiler och delade filer, till exempel följande:
 
 - Programpaket-filer
 - Resurs fil för aktivitet
@@ -135,23 +141,17 @@ Storleken på den tillfälliga enheten beror på storleken på den virtuella dat
 
 För filer som skrivs ut av varje aktivitet kan en kvarhållningsperiod anges för varje aktivitet som avgör hur länge originalfilerna sparas innan de rensas automatiskt. Retentions tiden kan minskas för att minska lagrings kraven.
 
-
 Om den temporära disken tar slut på utrymme (eller ligger mycket nära att det tar slut på utrymme) flyttas noden till [oanvändbart](/rest/api/batchservice/computenode/get#computenodestate) läge och ett nodfel rapporteras om att disken är full.
 
-### <a name="what-to-do-when-a-disk-is-full"></a>Vad du gör när en disk är full
+Om du inte är säker på vad som tar upp utrymme på noden kan du försöka med fjärr kommunikation till noden och undersöka manuellt var utrymmet har försvunnit. Du kan också använda [API: erna för batch-lista](/rest/api/batchservice/file/listfromcomputenode) för att undersöka filer i grupphanterade mappar (till exempel Uppgiftsutdata). Observera att detta API endast listar filer i de hanterade katalogerna. Om dina aktiviteter har skapat filer någon annan stans visas de inte.
 
-Ta reda på varför disken är full: om du inte är säker på vad som tar upp utrymme på noden, rekommenderar vi att du fjärransluter till noden och undersöker manuellt var utrymmet har försvunnit. Du kan också använda [API: erna för batch-lista](/rest/api/batchservice/file/listfromcomputenode) för att undersöka filer i grupphanterade mappar (till exempel Uppgiftsutdata). Observera att detta API endast listar filer i de grupper som hanteras av gruppen och om dina aktiviteter har skapat filer någon annan stans kommer de inte att visas.
+Se till att alla data som du behöver har hämtats från noden eller överförts till ett varaktigt lager och ta sedan bort data efter behov för att frigöra utrymme.
 
-Kontrol lera att alla data som du behöver har hämtats från noden eller laddats upp till ett varaktigt lager. All minskning av diskens fullständiga problem innebär att ta bort data för att frigöra utrymme.
+Du kan ta bort gamla slutförda jobb eller gamla slutförda uppgifter vars uppgifts data fortfarande finns på noderna. Titta i [RecentTasks-samlingen](/rest/api/batchservice/computenode/get#taskinformation) på noden eller på [filer på noden](/rest/api/batchservice/file/listfromcomputenode). Om du tar bort ett jobb raderas alla aktiviteter i jobbet. Om du tar bort aktiviteterna i jobbet utlöses data i aktivitets katalogerna på noden, vilket frigör utrymme. När du har frigjort tillräckligt med utrymme kan du starta om noden och den ska flyttas från "oanvändbar"-tillstånd och till "inaktive rad" igen.
 
-### <a name="recovering-the-node"></a>Återställer noden
-
-1. Om poolen är en [C. loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) -pool kan du återställa noden via [batch-avbildningen-API](/rest/api/batchservice/computenode/reimage). Då rensas hela disken. Reimage stöds inte för närvarande för [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) -pooler.
-
-2. Om poolen är en [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)kan du ta bort noden från poolen med hjälp av API: [et Remove Nodes](/rest/api/batchservice/pool/removenodes). Sedan kan du växa poolen igen för att ersätta den felaktiga noden med en ny.
-
-3.  Ta bort gamla slutförda jobb eller gamla slutförda uppgifter vars uppgifts data fortfarande finns på noderna. En ledtråd för vilka jobb/uppgifter-data finns på noderna du kan titta på i [RecentTasks-samlingen](/rest/api/batchservice/computenode/get#taskinformation) på noden eller på [filer på noden](/rest/api/batchservice/file/listfromcomputenode). Om du tar bort jobbet raderas alla aktiviteter i jobbet och om du tar bort uppgifterna i jobbet utlöses data i aktivitets katalogerna på noden, vilket frigör utrymme. När du har frigjort tillräckligt med utrymme kan du starta om noden och den ska flyttas från "oanvändbar"-tillstånd och till "inaktive rad" igen.
+Om du vill återställa en oanvändbar nod i [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) -pooler kan du ta bort en nod från poolen med hjälp av [API: et Remove Nodes](/rest/api/batchservice/pool/removenodes). Sedan kan du växa poolen igen för att ersätta den felaktiga noden med en ny. För [CloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) -pooler kan du återställa noden via [batch-avbildningen-API](/rest/api/batchservice/computenode/reimage). Då rensas hela disken. Reimage stöds inte för närvarande för [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) -pooler.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Kontrol lera att du har angett att ditt program ska implementera omfattande fel kontroller, särskilt för asynkrona åtgärder. Det kan vara viktigt att snabbt identifiera och diagnostisera problem.
+- Läs mer om [fel kontroll av jobb och aktivitet](batch-job-task-error-checking.md).
+- Lär dig mer om [metod tips](best-practices.md) för att arbeta med Azure Batch.

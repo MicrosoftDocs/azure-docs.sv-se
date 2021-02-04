@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: raynew
-ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222823"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550716"
 ---
 # <a name="common-questions"></a>Vanliga frågor
 
@@ -49,6 +49,10 @@ Med hjälp av resurs förflyttning kan du för närvarande flytta följande resu
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kan jag flytta resurser mellan prenumerationer när jag flyttar dem över flera regioner?
 
 Du kan ändra prenumerationen när du har flyttat resurser till mål regionen. [Lär dig mer](../azure-resource-manager/management/move-resource-group-and-subscription.md) om att flytta resurser till en annan prenumeration. 
+
+### <a name="does-azure-resource-move-service-store-customer-data"></a>Flyttar Azure-resursen kund information? 
+Nej. Tjänsten för resurs flyttning lagrar inte kund information, den lagrar bara metadatainformation som underlättar spårningen och förloppet för de resurser som valts för flytt, av kunden.
+
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Var finns metadata för att flytta mellan regioner?
 

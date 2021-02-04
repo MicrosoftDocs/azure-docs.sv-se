@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 31cfb321a60e700aecfdc1288ccdd379b89658ba
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 5630eba4f1be9aead6ff1a89bc036bcc548c3646
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99531650"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99540986"
 ---
 1. Leta upp det virtuella WAN-nätverket som du har skapat. På sidan virtuellt WAN, under avsnittet **anslutning** , väljer du **hubbar**.
 2. På sidan hubbar väljer du **+ ny hubb** för att öppna sidan **Skapa virtuell hubb** .
@@ -25,7 +25,7 @@ ms.locfileid: "99531650"
 
    * Region (tidigare kallad plats)
    * Name
-   * NAV, privat adress utrymme. Det minsta adress utrymmet är/24 för att skapa en hubb, vilket innebär att allt mellan/25 och/32 genererar ett fel när det skapas. Vi rekommenderar dock att du allokerar ett/23 adress utrymme eller större för att säkerställa att det finns tillräckligt med IP-adresser för att stödja framtida tjänster som kan distribueras i den virtuella hubben. Azure Virtual WAN som en hanterad tjänst av Microsoft skapar lämpliga undernät i den virtuella hubben för olika gatewayer/tjänster (t. ex. VPN-gatewayer, ExpressRoute-gatewayer, användares VPN/punkt-till-plats-gatewayer, brand vägg, routning osv.). Användaren behöver inte uttryckligen planera för under nätets adress utrymme för tjänsterna i den virtuella hubben eftersom Microsoft gör detta som en del av tjänsten.
+   * NAV, privat adress utrymme. Det minsta adress utrymmet är/24 för att skapa en hubb, vilket innebär att allt mellan/25 och/32 genererar ett fel när det skapas. Azure Virtual WAN, som är en hanterad tjänst av Microsoft, skapar lämpliga undernät i den virtuella hubben för olika gatewayer/tjänster (t. ex. VPN-gatewayer, ExpressRoute-gatewayer, användares VPN/punkt-till-plats-gatewayer, brand vägg, routning osv.). Användaren behöver inte uttryckligen planera för under nätets adress utrymme för tjänsterna i den virtuella hubben eftersom Microsoft gör detta som en del av tjänsten.
 4. Välj **Nästa: plats-till-plats**.
 
     ![Skärm bild som visar fönstret Skapa virtuellt nav med plats-till-plats vald.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Plats-till-plats")

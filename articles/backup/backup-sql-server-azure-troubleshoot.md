@@ -3,12 +3,12 @@ title: Felsöka SQL Server säkerhets kopiering av databasen
 description: Felsöknings information för att säkerhetskopiera SQL Server databaser som körs på virtuella Azure-datorer med Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429474"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549906"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Felsöka SQL Server säkerhets kopiering av databasen med Azure Backup
 
@@ -202,6 +202,13 @@ Gör så här om du vill utlösa en återställning av de felfria SQL-instansern
 |---|---|---|
 Åtgärden blockeras eftersom valvet har uppnått Max gränsen för sådana åtgärder som tillåts inom ett intervall på 24 timmar. | När du har nått den högsta tillåtna gränsen för en åtgärd i ett intervall på 24 timmar visas det här felet. Det här felet visas vanligt vis när det finns åtgärder i skala, till exempel ändra princip eller automatiskt skydd. Till skillnad från CloudDosAbsoluteLimitReached är det inte mycket du kan göra för att lösa det här läget. Azure Backups tjänsten försöker faktiskt utföra åtgärderna internt för alla objekt i fråga.<br> Exempel: om du har ett stort antal data källor som skyddas med en princip och du försöker ändra den principen, utlöses konfigurationen av skydds jobb för vart och ett av de skyddade objekten och ibland kan det överskrida den maximala gräns som tillåts för sådana åtgärder per dag.| Azure Backup tjänsten gör om åtgärden automatiskt efter 24 timmar.
 
+### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
+
+| Felmeddelande | Möjliga orsaker | Rekommenderad åtgärd |
+|---|---|---|
+AzureBackup för arbets belastnings tillägg misslyckades. | Den virtuella datorn stängs av (eller) den virtuella datorn kan inte kontakta Azure Backup tjänsten på grund av problem med Internet anslutningen.| -Kontrol lera att den virtuella datorn är igång och att den är ansluten till Internet.<br>- [Registrera tillägget på nytt på SQL Server VM](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+
+
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Felmeddelande | Möjliga orsaker | Rekommenderad åtgärd |
@@ -212,7 +219,7 @@ Den virtuella datorn kan inte kontakta Azure Backup tjänsten på grund av probl
 
 Kontrol lera om det finns ett eller flera av följande symptom innan du utlöser omregistrerings åtgärden:
 
-- Alla åtgärder (till exempel säkerhets kopiering, återställning och konfigurations säkerhets kopiering) kan inte utföras på den virtuella datorn med någon av följande felkoder: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
+- Alla åtgärder (till exempel säkerhets kopiering, återställning och konfigurations säkerhets kopiering) kan inte utföras på den virtuella datorn med någon av följande felkoder: **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
 - Om **säkerhets kopierings status** fältet för det säkerhetskopierade objektet **visas kan du** utesluta alla andra orsaker som kan resultera i samma status:
 
   - Saknar behörighet att utföra säkerhetskopierade åtgärder på den virtuella datorn.

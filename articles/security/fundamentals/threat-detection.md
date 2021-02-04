@@ -1,10 +1,10 @@
 ---
-title: Avancerad hot identifiering i Azure | Microsoft Docs
-description: Lär dig mer om inbyggda funktioner för avancerad hot identifiering för Azure, till exempel tjänsten Azure AD Identity Protection.
+title: Azure Threat Protection | Microsoft Docs
+description: Lär dig mer om inbyggda hot skydds funktioner i Azure, till exempel tjänsten Azure AD Identity Protection.
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
-ms.author: TomSh
-ms.openlocfilehash: c8fbb2f6d858b2f654ff404bef3b415bf170ab37
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: eb8332bda2105c3f83c0c1cc28fb7db4b1ca0102
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747281"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549957"
 ---
-# <a name="azure-advanced-threat-detection"></a>Avancerad hotidentifiering i Azure
+# <a name="azure-threat-protection"></a>Azure Threat Protection
 
-Azure erbjuder inbyggda funktioner för avancerad hot identifiering via tjänster som Azure Active Directory (Azure AD), Azure Monitor loggar och Azure Security Center. Den här samlingen av säkerhets tjänster och funktioner är ett enkelt och snabbt sätt att förstå vad som händer i dina Azure-distributioner.
+Azure erbjuder inbyggd hot skydds funktion via tjänster som Azure Active Directory (Azure AD), Azure Monitor loggar och Azure Security Center. Den här samlingen av säkerhets tjänster och funktioner är ett enkelt och snabbt sätt att förstå vad som händer i dina Azure-distributioner.
 
 Azure erbjuder ett brett utbud av alternativ för att konfigurera och anpassa säkerheten för att uppfylla kraven för dina program distributioner. Den här artikeln beskriver hur du uppfyller dessa krav.
 
@@ -84,23 +84,9 @@ Förutom att tillhandahålla värdefulla tjänster på egen hand kan Azure Monit
 
 ### <a name="holistic-security-and-compliance-posture"></a>Holistisk position för säkerhet och efterlevnad
 
-[Instrument panelen för Log Analytics säkerhet och granskning](../../security-center/security-center-introduction.md) ger en omfattande översikt över din organisations IT-position, med inbyggda Sök frågor för viktiga problem som kräver din uppmärksamhet. Säkerhet och granskning-instrumentpanelen är Start skärmen för allt som är relaterat till säkerhet i Azure Monitor loggar. Den innehåller en översikt över säkerhetsstatusen för dina datorer. Du kan också Visa alla händelser från de senaste 24 timmarna, 7 dagar eller någon annan anpassad tidsram.
+[Azure Security Center](../../security-center/security-center-introduction.md) ger en omfattande översikt över din organisations IT-position, med inbyggda Sök frågor för viktiga problem som kräver din uppmärksamhet. Den innehåller en översikt över säkerhetsstatusen för dina datorer. Du kan också Visa alla händelser från de senaste 24 timmarna, 7 dagar eller andra anpassade tids ramar.
 
 Azure Monitor loggar hjälper dig att snabbt och enkelt förstå den övergripande säkerhets position i alla miljöer, allt inom ramen för IT-åtgärder, inklusive utvärdering av program uppdateringar, utvärdering av program mot skadlig kod och konfigurations bas linjer. Säkerhets logg data är lätt att komma åt för att effektivisera gransknings processerna för säkerhet och efterlevnad.
-
-![Instrument panelen för Log Analytics Säkerhet och granskning](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-Instrument panelen för Log Analytics Säkerhet och granskning är indelad i fyra huvud kategorier:
-
--   **Säkerhets domäner**: gör att du ytterligare kan utforska säkerhets poster över tid; åtkomst bedömning av skadlig kod; uppdaterings bedömningar; Visa nätverks säkerhet, identitets-och åtkomst information; Visa datorer med säkerhets händelser. kom snabbt åt Azure Security Center-instrumentpanelen.
-
--   **Viktiga problem**: gör att du snabbt kan identifiera antalet aktiva problem och hur allvarliga problemen är.
-
--   **Identifieringar (för hands version)**: gör att du kan identifiera angrepps mönster genom att Visa säkerhets aviseringar när de inträffar mot dina resurser.
-
--   **Hot information**: gör att du kan identifiera angrepps mönster genom att visa det totala antalet servrar med utgående skadlig IP-trafik, typen skadlig hot och en karta över IP-platserna.
-
--   **Vanliga säkerhets frågor**: visar de vanligaste säkerhets frågorna som du kan använda för att övervaka din miljö. När du väljer en fråga öppnas Sök-fönstret och visar resultatet för frågan.
 
 ### <a name="insight-and-analytics"></a>Insight and Analytics
 I mitten av [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overview.md) är lagrings platsen som finns i Azure.
@@ -109,21 +95,16 @@ I mitten av [Azure Monitor loggar](../../azure-monitor/log-query/log-query-overv
 
 Du samlar in data i databasen från anslutna källor genom att konfigurera data källor och lägga till lösningar i din prenumeration.
 
-![Instrument panelen för Azure Monitor loggar](./media/threat-detection/azure-threat-detection-fig5.png)
-
 Data källor och lösningar varje skapa separata post typer med en egen uppsättning egenskaper, men du kan fortfarande analysera dem tillsammans i frågor till lagrings platsen. Du kan använda samma verktyg och metoder för att arbeta med en mängd data som samlas in av olika källor.
-
 
 De flesta av dina interaktioner med Azure Monitor loggar sker via Azure Portal, som körs i alla webbläsare och ger åtkomst till konfigurations inställningar och flera verktyg för att analysera och agera på insamlade data. Från portalen kan du använda:
 * [Loggs ökningar](../../azure-monitor/log-query/log-query-overview.md) där du skapar frågor för att analysera insamlade data.
 * [Instrument paneler](../../azure-monitor/learn/tutorial-logs-dashboards.md), som du kan anpassa med grafiska vyer över dina mest värdefulla sökningar.
 * [Lösningar](../../azure-monitor/insights/solutions.md)som ger ytterligare funktioner och analys verktyg.
 
-![Analys verktyg](./media/threat-detection/azure-threat-detection-fig6.png)
-
 Lösningar lägger till funktioner i Azure Monitor loggar. De körs främst i molnet och tillhandahåller analys av data som samlas in i Log Analytics-lagringsplatsen. Lösningar kan också definiera nya post typer som ska samlas in som kan analyseras med loggs ökningar eller med hjälp av ett ytterligare användar gränssnitt som lösningen tillhandahåller i Log Analytics-instrumentpanelen.
 
-Instrument panelen för Säkerhet och granskning är ett exempel på dessa typer av lösningar.
+Security Center är ett exempel på dessa typer av lösningar.
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automatisering och kontroll: avisering om säkerhets konfigurations avvikelser
 
@@ -216,7 +197,7 @@ Azure Security Center arbetar med forsknings-och data vetenskaps team i hela vä
 
 Dessa kombinerade ansträngningar resulterar i nya och förbättrade identifieringar, som du kan dra nytta av direkt. Du kan inte vidta några åtgärder.
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>Funktioner för avancerad hot identifiering: andra Azure-tjänster
+## <a name="threat-protection-features-other-azure-services"></a>Hot skydds funktioner: andra Azure-tjänster
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>Virtuella datorer: Microsoft Antimalware
 
@@ -368,7 +349,7 @@ Cloud App Security integrerar synligheten med ditt moln genom att:
 
 Vid insamling av data från dessa källor, Cloud App Security köra avancerad analys på den. Du varnas omedelbart om avvikande aktiviteter och får djupgående insyn i molnmiljön. Du kan konfigurera en princip i Cloud App Security och använda den för att skydda allt innehåll i molnmiljön.
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Funktioner för avancerad hot identifiering från tredje part via Azure Marketplace
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Hot skydds funktioner från tredje part via Azure Marketplace
 
 ### <a name="web-application-firewall"></a>Brandvägg för webbaserade program
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 8f16105d6bda1798828bc423ec8a158d49e0cf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72518374"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548957"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>Delat ansvar i molnet
 
@@ -50,4 +50,4 @@ Följande diagram visar en traditionell metod där många säkerhets ansvars omr
 I den molnbaserade metoden kan du också utnyttja molnbaserade säkerhetsfunktioner för att öka effektiviteten och använda Cloud Intelligence för att förbättra din hot identifiering och svars tid. Genom att ändra ansvars områden till moln leverantören kan organisationer få mer säkerhets täckning, vilket gör att de kan allokera om säkerhets resurser och budget till andra affärs prioriteringar.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om ansvars fördelningen mellan dig och Microsoft i en SaaS-, PaaS-och IaaS-distribution finns i [delade ansvars områden för molnbaserad data behandling](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).
+Mer information om ansvars fördelningen mellan dig och Microsoft i en SaaS-, PaaS-och IaaS-distribution finns i [delade ansvars områden för molnbaserad data behandling](https://azure.microsoft.com/resources/shared-responsibility-for-cloud-computing/).

@@ -1,14 +1,14 @@
 ---
-title: Bästa praxis
+title: Rekommenderade metoder
 description: Lär dig metod tips och användbara tips för att utveckla dina Azure Batch-lösningar.
-ms.date: 12/18/2020
+ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732419"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550869"
 ---
 # <a name="azure-batch-best-practices"></a>Metod tips för Azure Batch
 
@@ -169,6 +169,8 @@ Om du upptäcker ett problem som involverar beteendet för en nod eller aktivite
 
 För batch-konton för användar prenumerations läge kan automatiserade OS-uppgraderingar avbryta aktivitets förloppet, särskilt om aktiviteterna körs långvarigt. Att [skapa idempotenta-uppgifter](#build-durable-tasks) kan hjälpa till att minska felen som orsakas av dessa avbrott. Vi rekommenderar också [att du schemalägger uppgradering av OS-avbildningar för de tillfällen då aktiviteter inte förväntas köras](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
+För Windows-pooler `enableAutomaticUpdates` anges som `true` standard som standard. Att tillåta automatiska uppdateringar rekommenderas, men du kan ange det här värdet `false` om du vill kontrol lera att en OS-uppdatering inte sker utan förvarning.
+
 ## <a name="isolation-security"></a>Isolerings säkerhet
 
 Om ditt scenario kräver att du isolerar jobb från varandra i isolerings syfte, gör du det genom att ha dem i separata pooler. En pool är säkerhets isolerings gränser i batch och som standard är två pooler inte synliga eller kan kommunicera med varandra. Undvik att använda separata batch-konton som ett sätt att isolera.
@@ -189,8 +191,7 @@ Läs följande rikt linjer för anslutning i dina batch-lösningar.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Nätverks säkerhets grupper (NSG: er) och användardefinierade vägar (UDR)
 
-När du konfigurerar [batch-pooler i ett virtuellt nätverk](batch-virtual-network.md)bör du se till att du noga följer rikt linjerna för användningen av `BatchNodeManagement` Service Tag-numret, portarna, protokollen och riktningen för regeln.
-Användningen av service tag gen rekommenderas i stället för att använda de underliggande IP-adresserna för batch-tjänsten. Detta beror på att IP-adresserna kan ändras med tiden. Användning av IP-adresser för batch-tjänsten direkt kan orsaka instabilitet, avbrott eller avbrott för dina batch-pooler.
+När du konfigurerar [batch-pooler i ett virtuellt nätverk](batch-virtual-network.md)bör du se till att du noga följer rikt linjerna för användningen av `BatchNodeManagement` Service Tag-numret, portarna, protokollen och riktningen för regeln. Användningen av service tag gen rekommenderas i stället för att använda de underliggande IP-adresserna för batch-tjänsten. Detta beror på att IP-adresserna kan ändras med tiden. Användning av IP-adresser för batch-tjänsten direkt kan orsaka instabilitet, avbrott eller avbrott för dina batch-pooler.
 
 För användardefinierade vägar (UDR) ser du till att du har en process för att uppdatera batch-tjänstens IP-adresser med jämna mellanrum i routningstabellen, eftersom dessa adresser ändras med tiden. Information om hur du hämtar en lista över IP-adresser för batch-tjänsten finns i [tjänst Taggar lokalt](../virtual-network/service-tags-overview.md). IP-adresserna för batch-tjänsten kommer att associeras med `BatchNodeManagement` Service Tag-numret (eller den regionala variant som matchar ditt batch-kontoområdet).
 

@@ -4,18 +4,29 @@ description: I den här artikeln får du lära dig mer om övervaknings-och avis
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174007"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550359"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Övervaka Azure Backup arbets belastningar
 
 Azure Backup innehåller flera säkerhets kopierings lösningar baserade på säkerhets kopierings kravet och infrastruktur sto pol Ogin (lokalt vs Azure). Alla säkerhets kopierings användare och administratörer bör se vad som händer i alla lösningar och kan förvänta sig att bli meddelad i viktiga scenarier. Den här artikeln beskriver de övervaknings-och aviserings funktioner som tillhandahålls av Azure Backups tjänsten.
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
+## <a name="backup-items-in-recovery-services-vault"></a>Säkerhetskopiera objekt i Recovery Services Vault
+
+Du kan övervaka alla dina säkerhets kopierings objekt via ett Recovery Services-valv. Om du navigerar till avsnittet **säkerhets kopierings objekt** i valvet öppnas en vy som tillhandahåller antalet säkerhets kopierings objekt för varje arbets belastnings typ som är associerad med valvet. Om du klickar på en rad öppnas en detaljerad vy över alla säkerhets kopierings objekt för den aktuella arbets belastnings typen, med information om den senaste säkerhets kopierings statusen för varje objekt, den senaste återställnings punkten och så vidare.
+
+![Säkerhets kopierings objekt i RS Vault](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+
+> [!NOTE]
+> För objekt som har säkerhetskopierats till Azure med DPM visar listan alla data källor som skyddas (både disk och online) med DPM-servern. Om skyddet har stoppats för data källan med säkerhetskopierade data, kommer data källan fortfarande att visas i portalen. Du kan gå till information om data källan för att se om återställnings punkterna finns på disk, online eller både och. Data källor för vilka onlineskydd stoppas, men data behålls, faktureringen för återställnings punkter för online-återställnings punkter fortsätter tills data har tagits bort helt.
+>
+> DPM-versionen måste vara DPM 1807 (5.1.378.0) eller DPM 2019 (version 10.19.58.0 eller senare) för att säkerhets kopierings objekten ska synas i Recovery Services Vault-portalen.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Säkerhets kopierings jobb i Recovery Services valvet
 

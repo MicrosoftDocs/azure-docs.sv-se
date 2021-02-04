@@ -3,12 +3,12 @@ title: 'Självstudie: använda Azure Event Grid för att automatisera storleks �
 description: 'Självstudie: Azure Event Grid kan utlösa vid BLOB-uppladdningar i Azure Storage. Du kan använda det här till att skicka bildfiler som laddats upp till Azure Storage till andra tjänster, som Azure Functions, för storleksändring och andra förbättringar.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 47ac8cad6d7c2ead8d25aa3525aafdab735f9e71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326617"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550528"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Självstudie: automatisera storleks ändring av överförda bilder med hjälp av Event Grid
 
@@ -35,7 +35,7 @@ I den här guiden får du lära dig att:
 > * Distribuera serverfri kod med Azure Functions
 > * Skapa en prenumeration på en Blob Storage-händelse i Event Grid
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -43,7 +43,7 @@ För att slutföra den här kursen behöver du:
 
 Du måste ha slutfört föregående Blob Storage-självstudie: [Överför bilddata i molnet med Azure Storage][previous-tutorial].
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Du behöver en [Azure-prenumeration](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing). Den här själv studie kursen fungerar inte med den **kostnads fria** prenumerationen. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -263,7 +263,7 @@ En händelseprenumeration anger vilka provider-genererade händelser du vill ski
 
 1.  Välj Välj **integrering** och välj sedan **Event Grid utlösare** och välj **Skapa event Grid prenumeration**.
 
-    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Välj miniatyr funktionen i portalen" :::
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Navigera för att lägga till Event Grid prenumeration i Azure Portal" :::
 
 1. Använd de inställningar för händelseprenumerationen som anges i tabellen.
     
@@ -283,7 +283,7 @@ En händelseprenumeration anger vilka provider-genererade händelser du vill ski
 
 1. Växla till fliken **filter** och utför följande åtgärder:
     1. Välj alternativet **Aktivera ämnesfiltrering**.
-    1. För **Ämne börjar med** anger du följande värde: **/blobServices/default/containers/images/blobs/**.
+    1. För **ämne börjar med** anger du följande värde: **/blobServices/default/containers/images/**.
 
         ![Ange filter för händelseprenumeration](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 

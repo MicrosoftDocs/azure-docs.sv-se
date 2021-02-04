@@ -79,6 +79,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Flytande IP-konfiguration
       href: load-balancer-floating-ip.md
+    - name: Distributionslägen
+      href: distribution-mode-concepts.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje

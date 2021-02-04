@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 1f32e9788b2255be373a4db8c159ef2a6b6ccf04
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 63c7f226dcd99ec8040f2078ce12be0fe3c594df
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753849"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548821"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrering av Azure Migrate Server: vanliga frågor
 
@@ -32,14 +32,14 @@ Azure Migrate: verktyget Migreringsverktyg migrerar UEFI-baserade datorer till A
 
 | **Operativ system som stöds för UEFI-baserade datorer** | **Agent lös VMware till Azure**                                                                                                             | **Agent lös Hyper-V till Azure** | **Agent-baserade VMware, fysiska och andra moln till Azure** |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------- |
-| Windows Server 2019, 2016, 2012 R2, 201                 | J                                                                                                                                         | J                              | J                                                          |
-| Windows 10 Pro, Windows 10 Enterprise                   | J                                                                                                                                         | J                              | J                                                          |
-| SUSE Linux Enterprise Server 15 SP1                     | J                                                                                                                                         | J                              | J                                                          |
-| SUSE Linux Enterprise Server 12 SP4                     | J                                                                                                                                         | J                              | J                                                          |
-| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | J                                                                                                                                         | J                              | J                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | J<br>                 _RHEL 8. x kräver [manuell förberedelse](./prepare-for-migration.md#linux-machines)_   | J                              | J                                                          |
-| % OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | J<br>_% OS 8. x kräver [manuell förberedelse](./prepare-for-migration.md#linux-machines)_ | J                              | J                                                          |
-| Oracle Linux 7,7, 7,7 – CI                                |  J                                                                                                                                        | J                              | J                                                          |
+| Windows Server 2019, 2016, 2012 R2, 2012                | Y                                                                                                                                         | Y                              | Y                                                          |
+| Windows 10 Pro, Windows 10 Enterprise                   | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
+| Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x kräver [manuell förberedelse](./prepare-for-migration.md#linux-machines)_   | Y                              | Y                                                          |
+| % OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_% OS 8. x kräver [manuell förberedelse](./prepare-for-migration.md#linux-machines)_ | Y                              | Y                                                          |
+| Oracle Linux 7,7, 7,7 – CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Kan jag använda Recovery Services-valvet som skapats av Azure Migrate för katastrof återställnings scenarier?
 Vi rekommenderar inte att du använder Recovery Services-valvet som skapats av Azure Migrate för katastrof återställnings scenarier. Detta kan leda till att det inte går att starta replikeringar i Azure Migrate. 

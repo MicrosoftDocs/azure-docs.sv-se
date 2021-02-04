@@ -7,29 +7,29 @@ ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078212"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550750"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagerar på Azure App konfigurations händelser
 
 Azure App konfigurations händelser gör det möjligt för program att reagera på ändringar i nyckel värden. Detta görs utan behov av komplicerad kod eller dyra och ineffektiva avsöknings tjänster. I stället flyttas händelser via [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) till prenumeranter som [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)eller till och med din egen anpassade http-lyssnare. Du betalar mycket bara för det du använder.
 
-Azure App konfigurations händelser skickas till Azure Event Grid som tillhandahåller pålitliga leverans tjänster till dina program genom omfattande principer för återförsök och leverans av obeställbara meddelanden. Läs mer i [Event Grid meddelande leverans och försök igen](../event-grid/delivery-and-retry.md).
+Azure App konfigurations händelser skickas till Azure Event Grid, vilket ger tillförlitliga leverans tjänster till dina program genom omfattande principer för återförsök och leverans av obeställbara meddelanden. Läs mer i [Event Grid meddelande leverans och försök igen](../event-grid/delivery-and-retry.md).
 
 Vanliga konfigurations scenarier för appar omfattar uppdatering av program konfiguration, aktivering av distributioner eller konfigurations-orienterade arbets flöden. När ändringar är ovanliga, men scenariot kräver omedelbar svars tid, kan den händelsebaserade arkitekturen vara särskilt effektiv.
 
-Ta en titt på [Route Azure App konfigurations händelser till en anpassad webb slut punkt – CLI](./howto-app-configuration-event.md) för ett enkelt exempel. 
+Ta en titt på [använd Event Grid för meddelanden om data ändring](./howto-app-configuration-event.md) i ett snabbt exempel. 
 
 ![Event Grid modell](./media/event-grid-functional-model.png)
 
 ## <a name="available-azure-app-configuration-events"></a>Tillgängliga Azure App konfigurations händelser
 Event Grid använder [händelse prenumerationer](../event-grid/concepts.md#event-subscriptions) för att dirigera händelse meddelanden till prenumeranter. Azure App konfigurations händelse prenumerationer kan innehålla två typer av händelser:  
 
-> |Händelsenamn|Beskrivning|
+> |Händelsenamn|Description|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Utlöses när ett nyckel värde skapas eller ersätts|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Utlöses när ett nyckel värde tas bort|
@@ -37,10 +37,10 @@ Event Grid använder [händelse prenumerationer](../event-grid/concepts.md#event
 ## <a name="event-schema"></a>Händelseschema
 Azure App konfigurations händelser innehåller all information som du behöver för att svara på ändringar i dina data. Du kan identifiera en konfigurations händelse för appen eftersom egenskapen eventType börjar med "Microsoft. AppConfiguration". Ytterligare information om användningen av Event Grid händelse egenskaper dokumenteras i [Event Grid händelse schema](../event-grid/event-schema.md).  
 
-> |Egenskap|Typ|Beskrivning|
+> |Egenskap|Typ|Description|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |ämne|sträng|Fullständigt Azure Resource Manager-ID för den app-konfiguration som utsänder händelsen.|
-> |motiv|sträng|URI för det nyckel värde som är ämnet för händelsen.|
+> |Ämne|sträng|URI för det nyckel värde som är ämnet för händelsen.|
 > |Händelsetid|sträng|Datum/tid då händelsen genererades, i ISO 8601-format.|
 > |Händelsetyp|sträng|"Microsoft. AppConfiguration. KeyValueModified" eller "Microsoft. AppConfiguration. KeyValueDeleted".|
 > |Id|sträng|En unik identifierare för den här händelsen.|
@@ -87,4 +87,4 @@ Program som hanterar konfigurations händelser för appar bör följa dessa reko
 Läs mer om Event Grid och ge Azure App konfigurations händelser ett försök:
 
 - [Om Event Grid](../event-grid/overview.md)
-- [Dirigera Azure App konfigurations händelser till en anpassad webb slut punkt](./howto-app-configuration-event.md)
+- [Använda Event Grid för meddelanden om data ändring](./howto-app-configuration-event.md)

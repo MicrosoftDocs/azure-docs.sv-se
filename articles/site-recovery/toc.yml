@@ -478,6 +478,8 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Lägga till Azure Automation-runbookflöden i återställningsplaner
       href: site-recovery-runbook-automation.md
+    - name: ARM-mallar
+      href: asr-arm-templates.md
 - name: Övervakning
   items:
     - name: Vanliga frågor om övervakning

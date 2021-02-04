@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1062f126da8be6b37f6b52eee520425b3edcde16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7528d12dcbfba09b4dae4ac07a5c683a7c11bd88
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84744348"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548810"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Inaktivera nätverks principer för tjänst Källans IP-adress för privata länkar
 
 För att kunna välja en käll-IP-adress för din privata länk tjänst krävs en explicit inaktivera inställning `privateLinkServiceNetworkPolicies` i under nätet. Den här inställningen gäller bara för den angivna privata IP-adressen som du valde som käll-IP för den privata länk tjänsten. För andra resurser i under nätet styrs åtkomsten baserat på säkerhets regel definitionen för nätverks säkerhets grupper (NSG). 
  
-När du använder en Azure-klient (PowerShell, CLI eller mallar) krävs ett ytterligare steg för att ändra den här egenskapen. Du kan inaktivera principen med hjälp av Cloud Shell från Azure Portal eller lokala installationer av Azure PowerShell, Azure CLI eller använda Azure Resource Manager mallar.  
+När du använder portalen för att skapa en privat länk-tjänst inaktive ras den här inställningen automatiskt som en del av processen för att skapa. Distributioner med valfri Azure-klient (PowerShell, CLI eller mallar) kräver ytterligare ett steg för att ändra den här egenskapen. Du kan inaktivera principen med hjälp av Cloud Shell från Azure Portal eller lokala installationer av Azure PowerShell, Azure CLI eller använda Azure Resource Manager mallar.  
  
 Följ stegen nedan om du vill inaktivera nätverks principer för privata Länkar för ett virtuellt nätverk med namnet *myVirtualNetwork* med ett *standard* -undernät som finns i en resurs grupp med namnet *myResourceGroup*. 
 

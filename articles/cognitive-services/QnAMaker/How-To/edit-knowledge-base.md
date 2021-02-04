@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f5d7094920a21af630e10aec2aa759ce9c505050
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351715"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550592"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Redigera QnA-par i kunskaps basen
 
@@ -19,6 +19,23 @@ Med QnA Maker kan du hantera innehållet i kunskaps basen genom att tillhandahå
 QnA-par läggs till från en data källa, till exempel en fil eller URL, eller läggs till som en redaktionell källa. En redaktionell källa visar att QnA-paret lades till i QnA-portalen manuellt. Alla QnA-par är tillgängliga för redigering.
 
 <a name="add-an-editorial-qna-set"></a>
+
+## <a name="question-and-answer-pairs"></a>Frågor och svar-par
+
+En kunskaps bas består av QnA-par (frågor och svar).  Varje par har ett svar och ett par innehåller all information som är kopplad till det _svaret_. Ett svar kan likna en databas rad eller en data struktur instans. De **obligatoriska** inställningarna i ett QNA-par (fråga-and-Answer) är:
+
+* en **Frågetext** för användar frågan, som används för att QNA Maker maskin inlärning, för att justera med texten i användarens fråga med annan formulering men samma svar
+* **svaret** – parets svar är svaret som returneras när en användar fråga matchas med den associerade frågan
+
+Varje par representeras av ett **ID**.
+
+De **valfria** inställningarna för ett par är:
+
+* **Andra typer av frågor** – detta hjälper QNA Maker att returnera rätt svar för en större mängd olika frågor ordföljder
+* **Metadata**: metadata är taggar som är associerade med ett QNA-par och som representeras som nyckel/värde-par. Metadata-Taggar används för att filtrera QnA-par och begränsa den mängd som frågan ska matchas över.
+* Snabb **prompter** som används för att fortsätta en konversation med flera varv
+
+![QnA Maker kunskaps baser](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
 ## <a name="add-an-editorial-qna-pair"></a>Lägg till ett redigerings QnA-par
 
@@ -129,6 +146,14 @@ Välj regelbundet **Spara och träna** efter att du har redigerat ändringarna f
 Med [text redigering](#add-an-editorial-qna-set) av svar kan du, som författare, använda verktygsfältet Formatering för att snabbt välja och formatera text.
 
 [Markdown](../reference-markdown-format.md) är ett bättre verktyg när du behöver generera innehåll automatiskt för att skapa kunskaps banker som ska importeras som en del av en CI/CD-pipeline eller för [batch-testning](../index.yml).
+
+## <a name="editing-your-knowledge-base-locally"></a>Redigera din kunskaps bas lokalt
+
+När en kunskaps bas har skapats rekommenderar vi att du gör ändringar i kunskaps bas texten i [QNA Maker Portal](https://qnamaker.ai), i stället för att exportera och importera via lokala filer. Det kan dock finnas tillfällen då du behöver redigera en kunskaps bas lokalt.
+
+Exportera kunskaps basen från sidan **Inställningar** och redigera sedan kunskaps basen med Microsoft Excel. Om du väljer att använda ett annat program för att redigera den exporterade filen kan det medföra syntaxfel på grund av att det inte är helt TSV. Microsoft Excel-TSV-filer innehåller vanligt vis inte formateringsfel.
+
+När du är färdig med redigeringarna importerar du om TSV-filen från sidan **Inställningar** . Detta kommer att ersätta den aktuella kunskaps basen med den importerade kunskaps basen.
 
 ## <a name="next-steps"></a>Nästa steg
 

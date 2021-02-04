@@ -52,6 +52,8 @@
       href: application-development.md
 - name: Gör så här
   items:
+    - name: Fortanix-konfidentiell data behandlings hanterare
+      href: how-to-fortanix-confidential-computing-manager.md
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
 - name: Referenser

@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936846"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550767"
 ---
 # <a name="monitor-azure-functions"></a>Övervaka Azure Functions
 
@@ -88,6 +88,10 @@ Mer information om hur du skriver loggar från dina funktioner finns i Guide fö
 + [JavaScript](functions-reference-node.md#write-trace-output-to-logs) 
 + [PowerShell](functions-reference-powershell.md#logging)
 + [Python](functions-reference-python.md#logging)
+
+## <a name="analyze-data"></a>Analysera data
+
+Som standard lagras data som samlas in från din Function-app i Application Insights. I [Azure Portal](https://portal.azure.com)innehåller Application Insights en omfattande uppsättning visualiseringar av dina telemetridata. Du kan öka detalj nivån för fel loggar och fråga händelser och mått. Mer information, inklusive grundläggande exempel på hur du kan visa och fråga dina insamlade data finns i [analysera Azure Functions telemetri i Application Insights](analyze-telemetry-data.md). 
 
 ## <a name="streaming-logs"></a>Strömmande loggar
 

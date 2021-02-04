@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7cbcdb4b947e4b45a5473dc0f9f0252b5ad1d5c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442056"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548669"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>API för Azure Active Directory B2B-samarbete och anpassning
 
@@ -67,6 +66,16 @@ API: et erbjuder följande funktioner:
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>Ta reda på om en användare redan har bjudits in till din katalog
+
+Du kan använda Inbjudnings-API: et för att avgöra om en användare redan finns i resurs klienten. Detta kan vara användbart när du utvecklar en app som använder Inbjudnings-API: et för att bjuda in en användare. Om användaren redan finns i din resurs katalog får de inte någon inbjudan, så du kan köra en fråga först för att avgöra om det redan finns en UPN-eller annan inloggnings egenskap.
+
+1. Kontrol lera att användarens e-postdomän inte är en del av resurs innehavarens verifierade domän.
+2. I resurs klienten använder du följande Hämta användar fråga där {0} är den e-postadress som du bjuder in:
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>Auktoriserings modell
 

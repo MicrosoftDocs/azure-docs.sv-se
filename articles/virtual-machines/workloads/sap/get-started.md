@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: dfd0156907f18dcb7f38246993ddc4abcd508631
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258928"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549396"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Använd Azure för att vara värd för och köra SAP-arbetsbelastnings scenarier
 
@@ -84,6 +84,9 @@ I det här avsnittet hittar du dokument om Microsoft Power BI integration i SAP-
 
 ## <a name="change-log"></a>Ändrings logg
 
+- 02/03/2021: ändra i [ställa in pacemaker på RHEL i Azure](./high-availability-guide-rhel-pacemaker.md) för att uppdatera pcmk_host_map i kommandot stonith Create
+- 02/03/2021: ändra i [ställa in pacemaker på SLES i Azure](./high-availability-guide-suse-pacemaker.md) för att lägga till pcmk_host_map i kommandot stonith Create 
+- 02/03/2021: Mer information om I/O Scheduler-inställningar för SUSE i artikel [SAP HANA Storage-konfigurationer för virtuella Azure-datorer](./hana-vm-operations-storage.md)
 - 02/01/2021: ändra i/ [ha för SAP HANA skala upp med ANF på RHEL](./sap-hana-high-availability-netapp-files-red-hat.md), [SAP HANA skalbara HSR med pacemaker på virtuella Azure-datorer på RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [SAP HANA skala ut med noden vänte läge på virtuella Azure-datorer med ANF på SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) och [SAP HANA skala ut med noden](./sap-hana-scale-out-standby-netapp-files-rhel.md) vänte läge på virtuella Azure-datorer med ANF på RHEL och Lägg till en länk till [NFS v 4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)
 - 01/23/2021: introducera funktionerna hos HANA-datavolym partitionering som en funktion för att skikta I/O-åtgärder mot HANA-datafiler över olika Azure-diskar eller NFS-resurser utan att använda en disk volym hanterare i artiklar [SAP HANA konfigurationer för virtuella Azure-datorer](./hana-vm-operations-storage.md) och [NFS v 4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)
 - 01/18/2021: stöd för Azure net Apps-filer baserade NFS för Oracle i [azure Virtual Machines Oracle DBMS-distribution för SAP-arbetsbelastning](./dbms_guide_oracle.md) och justera decimaler i tabell i Document [NFS v 4.1-volymer på Azure NetApp Files för SAP HANA](./hana-vm-operations-netapp.md)

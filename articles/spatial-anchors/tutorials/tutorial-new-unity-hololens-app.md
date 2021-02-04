@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0233e58a404721586af0ae2fbdf78dbab6d424ed
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95996276"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550398"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Självstudie: steg-för-steg-anvisningar för att skapa en ny HoloLens Unity-app med hjälp av Azure spatiala ankare
 
@@ -43,7 +43,7 @@ Vi konfigurerar först vår projekt-och Unity-scen:
 Vi kommer nu att ange vissa inställningar för enhets projekt som hjälper oss att rikta Windows Holographic SDK för utveckling.
 
 Först ställer vi in kvalitets inställningar för programmet.
-1. Välj **Redigera**  >  **kvalitets inställningar för projekt**  >  **Quality**
+1. Välj **Redigera**  >  **kvalitets inställningar för projekt**  >  
 2. I kolumnen under **Windows Store** -logotypen klickar du på pilen på **standard** raden och väljer **mycket låg**. Du vet att inställningen tillämpas korrekt när rutan i **Windows Store** -kolumnen och en **mycket låg** rad är grön.
 
 Vi behöver konfigurera Unity-appen med en fördjupad vy i stället för en 2D-vy. Vi kan skapa en avancerad vy genom att aktivera stöd för Virtual Reality på Unity riktade mot Windows 10 SDK.
@@ -140,36 +140,13 @@ Vi kan använda loopen Update () för att kontrol lera om det finns en åtgärd 
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Hämta SDK för Azure spatiala ankare
 
-## <a name="via-unity-package-manager-upm-package"></a>[Via UPM-paket (Unity Package Manager)](#tab/UPMPackage)
+### <a name="download-packages"></a>Ladda ned paket
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-Den här metoden är kompatibel med Unity-versioner 2019.1 +.
+### <a name="import-packages"></a>Importera paket
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="add-the-registry-to-your-unity-project"></a>Lägg till registret i ditt Unity-projekt
-
-1. Navigera till din Unity Project-mapp i Utforskaren `Packages` . Öppna projekt manifest filen `manifest.json` i en text redigerare.
-2. Längst upp i filen, på samma nivå som `dependencies` avsnittet, lägger du till följande post för att ta med Azures ankare för spatialdata till ditt projekt. `scopedRegistries`Posten visar en enhet där du kan söka efter Azure spatial ankare SDK-paket.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-### <a name="add-the-sdk-package-to-your-unity-project"></a>Lägg till SDK-paketet i ditt Unity-projekt
-
-1. Lägg till en post med de spatiala Ankarena för Azure Windows SDK paket namn ( `com.microsoft.azure.spatial-anchors-sdk.windows` ) och paket version till `dependencies` avsnittet i projekt manifestet. Nedan visas ett exempel.
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
-
-2. Spara och Stäng `manifest.json` filen. När du återgår till Unity ska Unity automatiskt identifiera projekt Manifestets ändring och hämta de angivna paketen. Du kan expandera `Packages` mappen i projektvyn för att kontrol lera att rätt paket har importer ATS.
-
-## <a name="via-unity-asset-package"></a>[Via Unity Asset-paket](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Fördelningen av paket till gångs paket för Azures spatialdata SDK kommer att bli föråldrad efter SDK-version 2.5.0.
-
-Nu ska vi ladda ned Azures spatiala ankare SDK. Gå till [sidan med GitHub-versioner för Azure spatial ankare](https://github.com/Azure/azure-spatial-anchors-samples/releases). Under **till gångar** laddar du ned **AzureSpatialAnchors. unitypackage**. Gå till **till gångar** i Unity, Välj **Importera paket**  >  **anpassat paket.**.. Navigera till paketet och välj **Öppna**.
-
-I fönstret nytt **import Uniting-paket** som öppnas, avmarkerar du **plugin** -program och väljer sedan **Importera** i det nedre högra hörnet.
-
----
-
+### <a name="prepare-code"></a>Förbered kod
 Lägg till följande import i din **Visual Studio** -lösning `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` :
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]

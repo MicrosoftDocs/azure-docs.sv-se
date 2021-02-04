@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5f70f74accba5df439351547fda7497656e2c06e
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3fca96c6cf11e0b35cd830fe4c0d8ccac8e66bd2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986692"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548872"
 ---
-# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassa uppsättningen standarder i din instrument panel för regelefterlevnad
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassa uppsättningen standarder på instrument panelen för regelefterlevnad
 
 Azure Security Center jämför kontinuerligt konfigurationen av dina resurser med krav i bransch standarder, regler och benchmarks. **Instrument panelen** för övervakning av efterlevnad ger insikter om position utifrån hur du uppfyller särskilda krav för efterlevnad.
 
@@ -123,5 +123,5 @@ I den här artikeln har du lärt dig hur du **lägger till efterlevnads standard
 För relaterat material, se följande sidor:
 
 - [Benchmark för Azure-säkerhet](../security/benchmarks/introduction.md)
-- [Instrument panel för övervakning av gällande säkerhets Center](security-center-compliance-dashboard.md)
+- [Instrument panel för gällande säkerhets Center](security-center-compliance-dashboard.md) – lär dig hur du spårar och exporterar dina regler för regelefterlevnad med Security Center och externa verktyg
 - [Arbeta med säkerhetspolicyer](tutorial-security-policy.md)

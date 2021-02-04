@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7d0c83f1ae18d36557a7a5b0222aee2905e05cb7
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223014"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550243"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Snabb start: skapa en offentlig IP-adress med hjälp av Azure Portal
 
 Den här artikeln visar hur du skapar en offentlig IP-adressresurs med hjälp av Azure Portal. Mer information om vilka resurser som kan kopplas till, skillnaden mellan Basic-och standard-SKU och annan relaterad information finns i [offentliga IP-adresser](./public-ip-addresses.md).  I det här exemplet kommer vi bara att fokusera på IPv4-adresser. Mer information om IPv6-adresser finns i [IPv6 för Azure VNet](./ipv6-overview.md).
 
-# <a name="standard-sku---using-zones"></a>[**Standard-SKU – använda zoner**](#tab/option-create-public-ip-standard-zones)
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-create-public-ip-standard-zones)
 
 Använd följande steg för att skapa en standard zon med redundant offentlig IP-adress med namnet **myStandardZRPublicIP**.
 
@@ -43,10 +43,10 @@ Använd följande steg för att skapa en standard zon med redundant offentlig IP
     | DNS-namnetikett          | Lämna värdet tomt    |
     | Prenumeration            | Välj din prenumeration.   |
     | Resursgrupp          | Välj **Skapa ny** , ange myResourceGroup och välj sedan **OK** |
-    | Plats                | Välj **USA, östra 2**      |
-    | Tillgänglighetszon       | Välj **zon – redundant** eller plocka en speciell zon (se anmärkning nedan) |
+    | Location                | Välj **USA, östra 2**      |
+    | Tillgänglighetszon       | Välj **zon – redundant**, ingen zon eller Välj en speciell zon (se anmärkning nedan) |
 
-Observera att dessa endast är giltiga val i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Du kan också välja en speciell zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem.)
+Observera att dessa endast är giltiga val i regioner med [Tillgänglighetszoner](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).  (Du kan också välja en speciell zon i dessa regioner, men den kommer inte att vara elastisk till zonindelade-problem.)  Mer information om tillgänglighets zoner finns i [Översikt över tillgänglighets zoner](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 \* =-Nivån relaterar till Load Balancer funktionerna i [flera regioner](../load-balancer/cross-region-overview.md) , för närvarande i för hands version.
 
@@ -70,7 +70,7 @@ Använd följande steg för att skapa en grundläggande statisk offentlig IP-adr
     | DNS-namnetikett          | Lämna värdet tomt    |
     | Prenumeration            | Välj din prenumeration.   |
     | Resursgrupp          | Välj **Skapa ny** , ange myResourceGroup och välj sedan **OK** |
-    | Plats                | Välj **USA, östra 2**      |
+    | Location                | Välj **USA, östra 2**      |
 
 Om det är acceptabelt att IP-adressen kan ändras över tid kan du välja **dynamisk** IP-tilldelning.
 

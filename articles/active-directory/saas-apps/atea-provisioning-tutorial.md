@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 67b114ac355b293db61d00b89816ab73aaa2e5b2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430704"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550276"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Atea för automatisk användar etablering
 
@@ -48,7 +48,7 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Atea för att ge stöd för etablering med Azure AD
 
-Om du vill konfigurera Iris-intranätet till stöd för etablering med Azure AD måste du hämta **klient-URL:** en och den **hemliga token** genom att släppa ett e-postmeddelande till [Atea support team](mailto:servicedesk@atea.dk). Dessa värden anges i fältet **hemlig token** och **klient-URL** på fliken etablering i Atea-programmet i Azure Portal.
+Konfigurera Atea till att stödja etablering med Azure AD – Skriv ett e-postmeddelande till Atea support-teamet <SSO.Support@atea.com>
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till Atea från Azure AD-programgalleriet
 

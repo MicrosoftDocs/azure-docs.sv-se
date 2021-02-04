@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ff9bd328dd98fbd614a3bb63a1edddc2027d97b2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879788"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549193"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Självstudie: skapa en klassificerings modell med automatiserad ML i Azure Machine Learning
 
@@ -102,8 +102,8 @@ Innan du konfigurerar experimentet laddar du upp data filen till din arbets yta 
         Kolumnrubriker| Anger hur data uppsättningens huvuden, om det finns, kommer att behandlas.| Alla filer har samma rubriker
         Hoppa över rader | Anger hur många rader som ska hoppas över i data uppsättningen.| Inget
 
-    1. Med hjälp av **schema** formuläret kan du ytterligare konfigurera dina data för det här experimentet. I det här exemplet gör vi inga val. Välj **Nästa**.
-
+    1. Med hjälp av **schema** formuläret kan du ytterligare konfigurera dina data för det här experimentet. I det här exemplet väljer du växlings växeln för **day_of_week**, så att du inte inkluderar den. Välj **Nästa**.
+         ![Schema formulär](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
     1. I formuläret **bekräfta information** kontrollerar du att informationen stämmer överens med den **grundläggande informationen, data lagret och fil val** och **Inställningar och för hands** formulär.
     
     1. Klicka på **skapa** för att slutföra skapandet av din data uppsättning.
@@ -170,12 +170,6 @@ När du har läst in och konfigurerat dina data kan du konfigurera experimentet.
         
         Välj **Spara**.
     
-    1. Välj **Visa funktionalisering-inställningar**. I det här exemplet väljer du växlings växeln för **day_of_week** -funktionen, så att den inte inkluderas för funktionalisering i det här experimentet.
-
-        ![Funktionalisering val](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
- 
-        Välj **Spara**.
-
 1. Klicka på **Slutför** om du vill köra experimentet. Skärmen **körnings information**  öppnas med **körnings status** överst när experiment förberedelsen börjar. Den här statusen uppdateras när experimentet fortskrider. Meddelanden visas också i det övre högra hörnet i Studio för att informera dig om status för experimentet.
 
 >[!IMPORTANT]

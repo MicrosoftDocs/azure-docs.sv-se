@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: cdc29f89307a986b2d71604ca495eac45458632b
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526627"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551034"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -37,7 +37,8 @@ Uppdateringar i februari inkluderar:
 
 - [Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Direkt länk till princip från rekommendations informations sida](#direct-link-to-policy-from-recommendation-details-page)
-- [Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng](#sql-data-classification-recommendation-no-longer-affect-your-secure-score)
+- [Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
+- [Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)
 
@@ -63,15 +64,21 @@ När du granskar informationen om en rekommendation är det ofta bra att kunna s
 
 Använd den här länken för att Visa princip definitionen och granska utvärderings logiken. 
 
-Om du granskar listan över rekommendationer i [referens guiden för säkerhets rekommendationer](recommendations-reference.md)kan du också se dessa länkar till princip definitions sidorna:
+Om du granskar listan över rekommendationer i [referens guiden för säkerhets rekommendationer](recommendations-reference.md)kan du också se länkar till princip definitions sidorna:
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Åtkomst till Azure Policy sidan för en speciell princip direkt från referens sidan för Azure Security Center rekommendationer":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Åtkomst till Azure Policy sidan för en speciell princip direkt från referens sidan för Azure Security Center rekommendationer" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
-### <a name="sql-data-classification-recommendation-no-longer-affect-your-secure-score"></a>Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng
+### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng
 
 Rekommendations **känsliga data i SQL-databaserna ska klassificeras** inte längre påverkar dina säkra poäng. Detta är den enda rekommendationen i säkerhets kontrollen **tillämpa data klassificering** , så att kontrollen nu har ett säkert Poäng värde på 0.
 
+
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)
+
+Vi har lagt till en tredje datatyp till Utlösar alternativen för arbets flödes automatiseringar: ändringar i regelefterlevnad.
+
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Använda ändringar i regelefterlevnad för att utlösa en arbets flödes automatisering" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ## <a name="january-2021"></a>Januari 2021
@@ -111,7 +118,7 @@ Befintliga rekommendationer påverkas inte och när benchmark-effekten växer vi
 Mer information finns på följande sidor:
 
 - [Läs mer om Azures säkerhets prestanda](../security/benchmarks/introduction.md)
-- [Anpassa uppsättningen standarder i din instrument panel för regelefterlevnad](update-regulatory-compliance-packages.md)
+- [Anpassa uppsättningen standarder på instrument panelen för regelefterlevnad](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Sårbarhets bedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)
 
@@ -161,7 +168,7 @@ Under domänens övertag Ande är ett vanligt hot mot hög allvarlighets grad f�
 
 Under domäner överlåter hot aktörer att omdirigera trafik som är avsedd för en organisations domän till en plats som utför skadlig aktivitet.
 
-Azure Defender för App Service identifierar nu Dangling DNS-poster när en App Service webbplats tas ur bruk. Detta är den tidpunkt då DNS-posten pekar på en resurs som inte finns och din webbplats är sårbar för en under domän överköps. Dessa skydd är tillgängliga oavsett om dina domäner hanteras med Azure DNS eller en extern domän registrator och gäller för både App Service på Windows och App Service i Linux.
+Azure Defender för App Service identifierar nu Dangling DNS-poster när en App Service webbplats tas ur bruk. Detta är den tidpunkt då DNS-posten pekar på en resurs som inte finns, och din webbplats är sårbar för en under domän överköps. Dessa skydd är tillgängliga oavsett om dina domäner hanteras med Azure DNS eller en extern domän registrator och gäller för både App Service på Windows och App Service i Linux.
 
 Läs mer:
 

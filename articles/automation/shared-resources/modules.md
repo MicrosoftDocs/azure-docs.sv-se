@@ -3,14 +3,14 @@ title: Använda moduler i Azure Automation
 description: Den här artikeln beskriver hur du använder PowerShell-moduler för att aktivera cmdletar i Runbooks och DSC-resurser i DSC-konfigurationer.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936627"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548789"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Använda moduler i Azure Automation
 
@@ -40,7 +40,11 @@ Dessa är kända begränsningar i sand boxen. Den rekommenderade lösningen är 
 
 ## <a name="default-modules"></a>Standardmoduler
 
-I följande tabell visas moduler som Azure Automation importerar som standard när du skapar ett Automation-konto. Automation kan importera nyare versioner av dessa moduler. Du kan dock inte ta bort den ursprungliga versionen från ditt Automation-konto, även om du tar bort en nyare version. Observera att dessa standardmoduler innehåller flera AzureRM-moduler. 
+I följande tabell visas moduler som Azure Automation importerar som standard när du skapar ett Automation-konto. Automation kan importera nyare versioner av dessa moduler. Du kan dock inte ta bort den ursprungliga versionen från ditt Automation-konto, även om du tar bort en nyare version. Observera att dessa standardmoduler innehåller flera AzureRM-moduler.
+
+Standardmodulerna kallas även globala moduler. I Azure Portal kommer den **globala modulen** att vara **sann** när du visar en modul som har importer ATS när kontot skapades.
+
+![Skärm bild av egenskapen global modul i Azure Portal](../media/modules/automation-global-modules.png)
 
 Automation importerar inte root AZ-modulen automatiskt till nya eller befintliga Automation-konton. Mer information om hur du arbetar med dessa moduler finns i [migrera till AZ-moduler](#migrate-to-az-modules).
 

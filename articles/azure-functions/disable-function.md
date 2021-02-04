@@ -2,20 +2,20 @@
 title: Så här inaktiverar du funktioner i Azure Functions
 description: Lär dig hur du inaktiverar och aktiverar funktioner i Azure Functions.
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91661031"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551051"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Så här inaktiverar du funktioner i Azure Functions
 
 Den här artikeln förklarar hur du inaktiverar en funktion i Azure Functions. Om du vill *inaktivera* en funktion innebär körningen att den automatiska utlösaren som definierats för funktionen ignoreras. På så sätt kan du förhindra att en speciell funktion körs utan att stoppa hela Function-appen.
 
-Det rekommenderade sättet att inaktivera en funktion är med en app-inställning i formatet `AzureWebJobs.<FUNCTION_NAME>.Disabled` inställt på `true` . Du kan skapa och ändra den här program inställningen på flera olika sätt, inklusive genom att använda [Azure CLI](/cli/azure/) och från funktionens **Hantera** -flik i [Azure Portal](https://portal.azure.com). 
+Det rekommenderade sättet att inaktivera en funktion är med en app-inställning i formatet `AzureWebJobs.<FUNCTION_NAME>.Disabled` inställt på `true` . Du kan skapa och ändra den här program inställningen på flera olika sätt, inklusive genom att använda [Azure CLI](/cli/azure/) och från funktions fliken **Översikt** i [Azure Portal](https://portal.azure.com). 
 
 > [!NOTE]  
 > När du inaktiverar en HTTP-utlöst funktion med hjälp av metoderna som beskrivs i den här artikeln, kan slut punkten fortfarande vara tillgänglig när den körs på den lokala datorn.  
@@ -40,9 +40,11 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>Använda portalen
 
-Du kan också använda knapparna **Aktivera** och **inaktivera** på funktionens **översikts** sida. Dessa knappar fungerar genom att ändra värdet för `AzureWebJobs.<FUNCTION_NAME>.Disabled` appens inställning. Den här användarspecifika inställningen skapas första gången den inaktive ras.
+Du kan också använda knapparna **Aktivera** och **inaktivera** på funktionens **översikts** sida. Dessa knappar fungerar genom att ändra värdet för `AzureWebJobs.<FUNCTION_NAME>.Disabled` appens inställning. Den här användarspecifika inställningen skapas första gången den inaktive ras. 
 
 ![Funktions tillstånds växel](media/disable-function/function-state-switch.png)
+
+Även när du publicerar till din Function-app från ett lokalt projekt kan du fortfarande använda portalen för att inaktivera funktioner i Function-appen. 
 
 > [!NOTE]  
 > Den Portal-integrerade test funktionen ignorerar `Disabled` inställningen. Det innebär att en inaktive rad funktion fortfarande körs när den startas från **test** fönstret i portalen. 
@@ -68,23 +70,7 @@ Funktioner kan inaktive ras på samma sätt när de körs lokalt. Om du vill ina
 
 ### <a name="c-class-libraries"></a>C#-klass bibliotek
 
-I en klass biblioteks funktion kan du också använda `Disable` attributet för att förhindra att funktionen utlöses. Du kan använda attributet utan en konstruktor-parameter, som du ser i följande exempel:
-
-```csharp
-public static class QueueFunctions
-{
-    [Disable]
-    [FunctionName("QueueTrigger")]
-    public static void QueueTrigger(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        TraceWriter log)
-    {
-        log.Info($"C# function processed: {myQueueItem}");
-    }
-}
-```
-
-Attributet utan en konstruktor-parameter kräver att du kompilerar om och distribuerar om projektet för att ändra funktionens inaktiverade tillstånd. Ett mer flexibelt sätt att använda attributet är att inkludera en konstruktor-parameter som refererar till en boolesk app-inställning, som visas i följande exempel:
+I en klass biblioteks funktion kan du också använda `Disable` attributet för att förhindra att funktionen utlöses. Med det här attributet kan du anpassa namnet på inställningen som används för att inaktivera funktionen. Använd versionen av attributet som låter dig definiera en konstruktor-parameter som refererar till en boolesk app-inställning, som visas i följande exempel:
 
 ```csharp
 public static class QueueFunctions
@@ -102,12 +88,7 @@ public static class QueueFunctions
 
 Med den här metoden kan du aktivera och inaktivera funktionen genom att ändra appens inställning utan att kompilera om eller distribuera om. Om du ändrar en app-inställning startar Function-appen om, så att den inaktiverade tillstånds ändringen kan identifieras direkt.
 
-> [!IMPORTANT]
-> `Disabled`Attributet är det enda sättet att inaktivera en klass biblioteks funktion. Den genererade *function.jsi* filen för en klass biblioteks funktion är inte avsedd att redige ras direkt. Om du redigerar filen får du ingen påverkan på vad du gör `disabled` .
->
-> Samma sak gäller för **funktions tillstånds** växeln på fliken **Hantera** , eftersom den fungerar genom att ändra *function.jsi* filen.
->
-> Observera också att portalen kan indikera att funktionen är inaktive rad när den inte är det.
+Det finns också en konstruktor för parametern som inte accepterar en sträng för inställnings namnet. Den här versionen av attributet rekommenderas inte. Om du använder den här versionen måste du kompilera om och distribuera om projektet för att ändra funktionens inaktiverade tillstånd.
 
 ### <a name="functions-1x---scripting-languages"></a>Functions 1. x – skript språk
 
@@ -139,7 +120,7 @@ eller
 I det andra exemplet inaktive ras funktionen när det finns en app-inställning med namnet IS_DISABLED och har värdet `true` eller 1.
 
 >[!IMPORTANT]  
->Portalen använder nu program inställningar för att inaktivera v1. x-funktioner. När en program inställning står i konflikt med function.jsav filen kan ett fel uppstå. Du bör ta bort `disabled` egenskapen från function.jspå filen för att förhindra fel. 
+>Portalen använder program inställningar för att inaktivera v1. x-funktioner. När en program inställning står i konflikt med function.jsav filen kan ett fel uppstå. Du bör ta bort `disabled` egenskapen från function.jspå filen för att förhindra fel. 
 
 
 ## <a name="next-steps"></a>Nästa steg

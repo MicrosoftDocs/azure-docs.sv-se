@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942055"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551084"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>Felsöka integration runtime med egen värd
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>Felsöka Integration Runtime (lokal installation)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -244,7 +244,7 @@ Installera driv rutiner för både käll-och mål data lager på mål-IR och se 
  
 Om trafiken inte kan passera nätverket mellan två data lager (till exempel att de har kon figurer ATS i två virtuella nätverk) kan du inte slutföra kopieringen i en aktivitet även om IR är installerat. Om du inte kan slutföra kopieringen i en enskild aktivitet, kan du skapa två kopierings aktiviteter med två IRs, var och en i en ventilation: 
 * Kopiera en IR från data lagret 1 till Azure Blob Storage
-* Kopiera en annan IR från Azure Blob Storage till ddatastore 2. 
+* Kopiera en annan IR från Azure Blob Storage till data lagret 2. 
 
 Den här lösningen kan simulera kravet på att använda IR för att skapa en brygga som ansluter två frånkopplade data lager.
 
@@ -710,7 +710,7 @@ Detta meddelande gäller följande scenarier:
 
 Så här avgör du om du har påverkat:
 
-- Du påverkas *inte* om du definierar brand Väggs regler baserade på fullständigt kvalificerade domän namn (FQDN) som använder den metod som beskrivs i [Konfigurera en brand Väggs konfiguration och listan över tillåtna IP-adresser](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
+- Du påverkas *inte* om du definierar brand Väggs regler baserade på fullständigt kvalificerade domän namn (FQDN) som använder den metod som beskrivs i [Konfigurera en brand Väggs konfiguration och listan över tillåtna IP-adresser](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses).
 
 - Du *påverkas om du uttryckligen* aktiverar listan över tillåtna för utgående IP-adresser i företags brand väggen.
 
