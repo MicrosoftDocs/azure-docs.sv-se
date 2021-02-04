@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 9419e5f419a358be50fbb3b8478d62dfe6e3dff0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509358"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536840"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Skapa frågor i Azure Kognitiv sökning
 
@@ -23,7 +23,7 @@ Om du skapar en fråga för första gången beskriver den här artikeln metoder 
 
 En fråga är en skrivskyddad begäran mot dokument samlingen för ett enda sökindex. Den anger en ' queryType ' och ett frågeuttryck även om parametern ' search '. Frågeuttrycket kan ha Sök termer, en offert omgiven fras och operatörer.
 
-En fråga kan också ha "count" för att returnera antalet matchningar som finns i indexet, select för att välja vilka fält som returneras i Sök resultatet och OrderBy för att sortera resultat. I följande exempel visas en förfrågan med en delmängd av de tillgängliga parametrarna. Mer information om frågans sammansättning finns i [frågetyper och sammansättningar](search-query-overview.md) och [Sök dokument (rest)](/rest/api/searchservice/search-documents).
+En fråga kan också ha "count" för att returnera antalet matchningar som finns i indexet, select för att välja vilka fält som returneras i Sök resultatet och OrderBy för att sortera resultat. I följande exempel får du en allmän uppfattning om en förfrågan genom att visa en delmängd av de tillgängliga parametrarna. Mer information om frågans sammansättning finns i [frågetyper och sammansättningar](search-query-overview.md) och [Sök dokument (rest)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -38,7 +38,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="choose-a-client"></a>Välj en klient
 
-Du behöver ett verktyg eller en API för att skapa en fråga som Azure Portal eller Postman eller kod som instansierar en fråga-klient. Vi rekommenderar Azure Portal-eller REST-API: er för tidig utveckling och koncept validerings testning.
+Du behöver ett verktyg som Azure Portal eller Postman eller kod som instansierar en fråga-klient med hjälp av API: er. Vi rekommenderar Azure Portal-eller REST-API: er för tidig utveckling och koncept validerings testning.
 
 ### <a name="permissions"></a>Behörigheter
 
@@ -111,14 +111,6 @@ En beskrivning av fältattribut finns i [create index (REST API)](/rest/api/sear
 Under indexeringen använder sökmotorn en analys för att utföra text analyser på strängar, vilket maximerar risken för matchning vid tidpunkten för frågan. Som minst är strängarna lägre-bokstäver, men de kan också genomgå lemmatisering och stoppa borttagning av ord. Större strängar eller sammansatta ord delas vanligt vis upp efter blank steg, bindestreck eller tank streck och indexeras som separata tokens. 
 
 Den punkt som ska tas bort här är att det du tror att ditt index innehåller, och vad som faktiskt finns i det, kan vara olika. Om frågor inte returnerar förväntade resultat kan du granska de token som skapats av analysen genom att [analysera texten (REST API)](/rest/api/searchservice/test-analyzer). Mer information om tokenisering och hur du kan påverka frågor finns i [partiell terms ökning och mönster med specialtecken](search-query-partial-matching.md).
-
-## <a name="about-queries-per-second-qps"></a>Om frågor per sekund (frågor per sekund)
-
-På grund av det stora antalet faktorer som går in i fråga om prestanda publicerar Microsoft inte förväntade frågor per sekund-nummer. FRÅGOR per sekund-uppskattningar måste utvecklas oberoende av alla kunder som använder tjänst nivå, konfiguration, index och de fråge konstruktioner som är giltiga för ditt program. Index storlek och komplexitet, fråga om storlek och komplexitet och mängden trafik är primär Determinant av frågor per sekund. Det finns inget sätt att erbjuda meningsfulla uppskattningar när sådana faktorer är okända.
-
-Uppskattningar är mer förutsägbara när de beräknas på tjänster som körs på dedikerade resurser (Basic-och standard-nivåer). Du kan beräkna frågor per sekund mer noggrant eftersom du har kontroll över fler parametrar. Information om hur du använder uppskattning finns i [Azure kognitiv sökning prestanda och optimering](search-performance-optimization.md).
-
-För lagrings optimerade nivåer (L1 och L2) bör du förvänta dig ett lägre flöde för frågor och högre latens än standard-nivåerna.
 
 ## <a name="next-steps"></a>Nästa steg
 
