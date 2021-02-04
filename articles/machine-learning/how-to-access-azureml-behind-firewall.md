@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538076"
+ms.locfileid: "99560294"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Använd arbets ytan bakom en brand vägg för Azure Machine Learning
 
@@ -93,6 +93,7 @@ Mer information finns i [skapa en Azure Batch pool i ett virtuellt nätverk](../
 
     | **Värdnamn** | **Syfte** |
     | ---- | ---- |
+    | **graph.windows.net** | Används av Azure Machine Learning beräknings instans/kluster. |
     | **anaconda.com**</br>**\*. anaconda.com** | Används för att installera standard paket. |
     | **\*. anaconda.org** | Används för att hämta lagrings platsen-data. |
     | **pypi.org** | Används för att Visa beroenden från standard index, om det finns några, och indexet skrivs inte över av användar inställningarna. Om indexet skrivs över måste du också tillåta **\* . pythonhosted.org**. |
@@ -145,6 +146,7 @@ Värdarna i det här avsnittet ägs av Microsoft och tillhandahåller tjänster 
 | **Krävs för** | **Azure, offentlig** | **Azure Government** | **Azure Kina 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Beräknings kluster/instans | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
+| Beräknings kluster/instans | graph.windows.net |  |  |
 | Beräkninsinstans | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
 | Beräkninsinstans | \*. instances.azureml.ms |  |  |
 

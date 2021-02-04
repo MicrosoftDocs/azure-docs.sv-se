@@ -1,15 +1,15 @@
 ---
 title: Information om regelefterlevnad för CIS Microsoft Azure grunderna
 description: Information om CIS Microsoft Azure grunderna i det inbyggda initiativet för benchmark-efterlevnad. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: e1b30ae4f0708fd48e1832c4b9272d8e0c4744f2
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 87af2d644490170af1dba336c578af3e8ceb5639
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091518"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559183"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>Information om CIS-Microsoft Azure grunderna i det inbyggda initiativet för benchmark-regelefterlevnad
 

@@ -3,19 +3,18 @@ title: Azure Defender för lagring – fördelar och funktioner
 description: Lär dig mer om fördelarna och funktionerna i Azure Defender för lagring.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: eb1635cec2b0bcf7f2c13101b2aeab25a869dc66
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916429"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558532"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Introduktion till Azure Defender för Storage
-
 
 **Azure Defender för lagring** är ett Azure-ursprungligt informations lager som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja dina lagrings konton. Den använder avancerade funktioner i Security AI och [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) för att tillhandahålla sammanhangsbaserade säkerhets aviseringar och rekommendationer.
 
@@ -28,7 +27,7 @@ Säkerhetsaviseringar utlöses när avvikelser i en aktivitet inträffar. Dessa 
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|**Azure Defender för lagring** faktureras så som visas på [sidan med priser](security-center-pricing.md)|
 |Skyddade lagrings typer:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
 
 
@@ -68,7 +67,40 @@ När en fil misstänks innehålla skadlig kod visar Security Center en avisering
 >
 > Du kan aktivera **Azure Defender för lagring** på antingen prenumerations nivån eller resurs nivån.
 
+## <a name="trigger-a-test-alert-for-azure-defender-for-storage"></a>Utlös en test avisering för Azure Defender för lagring
 
+Om du vill testa säkerhets aviseringarna från Azure Defender för lagring i din miljö genererar du aviseringen "åtkomst från en Tor-nod till ett lagrings konto" med följande steg:
+
+1. Öppna ett lagrings konto med Azure Defender för lagring aktiverat.
+1. Välj behållare på sid panelen och öppna en befintlig behållare eller skapa en ny.
+
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Öppna en BLOB-behållare från ett Azure Storage konto" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+
+1. Ladda upp en fil till containern.
+
+    > [!CAUTION]
+    > Ladda inte upp en fil som innehåller känsliga data.
+
+1. Använd snabb menyn på den överförda filen för att välja "generera SAS".
+
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="Alternativet Skapa SAS för en fil i en BLOB-behållare":::
+
+1. Lämna standard alternativen och välj **generera SAS-token och URL**.
+
+1. Kopiera den genererade SAS-webbadressen.
+
+1. Öppna Tor-webbläsaren på den lokala datorn.
+
+    > [!TIP]
+    > Du kan ladda ned Tor från webbplatsen Tor-projekt [https://www.torproject.org/download/](https://www.torproject.org/download/) .
+
+1. I webbläsaren Tor navigerar du till SAS-URL: en.
+
+1. Ladda ned filen som du laddade upp i steg 3.
+
+    Inom två timmar får du följande säkerhets avisering från Security Center:
+
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Säkerhets avisering om åtkomst från en Tor-stängningsmodul":::
 
 ## <a name="next-steps"></a>Nästa steg
 

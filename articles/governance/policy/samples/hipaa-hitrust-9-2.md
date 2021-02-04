@@ -1,15 +1,15 @@
 ---
 title: Information om regelefterlevnad för HIPAA HITRUST 9,2
 description: Information om det inbyggda initiativet HIPAA HITRUST 9,2-kontroll. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 4ee5f87b5bf8d2476685eb469df05bb2267bcf2f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 24604bf59ab7aaca5921f397f3fed74655442e44
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095764"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558743"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>Information om det inbyggda initiativet HIPAA HITRUST 9,2-kontroll
 

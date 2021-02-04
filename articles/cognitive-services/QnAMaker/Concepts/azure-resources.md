@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705412"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559995"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resurser för QnA Maker
 
@@ -120,7 +120,7 @@ QnA Maker Managed är en kostnads fri tjänst och data flödet är för närvara
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
 
-|Uppgradera|Orsak|
+|Uppgradera|Anledning|
 |--|--|
 |[Uppgradera](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) SKU för QnA Maker hantering|Du vill ha fler QnA-par eller dokument källor i din kunskaps bas.|
 |[Uppgradera](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU och kontrol lera Kognitiv sökning nivå och [skapa kognitiv sökning repliker](../../../search/search-capacity-planning.md)|Kunskaps basen behöver för att betjäna fler förfrågningar från din klient app, till exempel en chatt-robot.|
@@ -210,7 +210,7 @@ För att fråga den publicerade kunskaps basen använder alla publicerade kunska
 
 QnA Maker skapar flera Azure-resurser. Använd följande tabell för att ta reda på vad du kan och inte kan dela för att minska hanteringen och dra nytta av kostnads delning:
 
-|Tjänst|Dela|Orsak|
+|Tjänst|Dela|Anledning|
 |--|--|--|
 |Cognitive Services|X|Inte möjlig enligt design|
 |App Service-plan|✔|Fast disk utrymme som allokerats för en App Service plan. Om andra appar som delar samma App Service plan använder betydande disk utrymme, kommer QnAMaker App Service-instansen att drabbas av problem.|
@@ -232,22 +232,14 @@ Hanterings tjänsten för QnA Maker används endast för QnA Maker-portalen och 
 
 Din QnA Maker-tjänst har två typer av nycklar: **redigerings nycklar** och **fråge slut punkts nycklar** som används med körnings miljön som finns i App Service.
 
-Om du letar efter din **prenumerations nyckel** [har du ändrat terminologin](#subscription-keys).
-
 Använd de här nycklarna när du gör förfrågningar till tjänsten via API: er.
 
 ![Nyckelhantering](../media/qnamaker-how-to-key-management/key-management.png)
 
 |Namn|Plats|Syfte|
 |--|--|--|
-|Redigerings nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
+|Redigering/prenumerations nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
 |Frågans slut punkts nyckel|[QnA Maker-portalen](https://www.qnamaker.ai)|Dessa nycklar används för att skicka frågor till den publicerade kunskaps bas slut punkten för att få svar på en användar fråga. Du använder vanligt vis den här fråge slut punkten i din Chat-robot eller i klient program koden som ansluter till QnA Maker-tjänsten. De här nycklarna skapas när du publicerar din QnA Maker-kunskaps bas.<br><br>Sök efter dessa nycklar på sidan **tjänst inställningar** . Hitta den här sidan från användarens meny längst upp till höger på sidan på den nedrullningsbara menyn.|
-
-### <a name="subscription-keys"></a>Prenumerationsnycklar
-
-Term redigerings-och fråge slut punkts nyckeln är rätt villkor. Föregående term var **prenumerations nyckel**. Om du ser en annan dokumentation som hänvisar till prenumerations nycklar motsvarar dessa referenser till redigerings-och fråge slut punkts nycklar (används i körnings miljön).
-
-Du måste veta vad nyckeln har åtkomst till, kunskaps bas hantering eller kunskaps bas frågor för att veta vilken nyckel du behöver hitta.
 
 ### <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
 
@@ -311,22 +303,14 @@ I QnA Maker hanterad (för hands version) är både hanterings-och förutsägels
 
 Tjänsten QnA Maker Managed (för hands version) har två typer av nycklar: **redigerings nycklar** och **Azure kognitiv sökning nycklar** som används för att få åtkomst till tjänsten i kundens prenumeration.
 
-Om du letar efter din **prenumerations nyckel** [har du ändrat terminologin](#subscription-keys).
-
 Använd de här nycklarna när du gör förfrågningar till tjänsten via API: er.
 
 ![Hanterad för hands version av Key Management](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
 
 |Namn|Plats|Syfte|
 |--|--|--|
-|Redigerings nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
+|Redigering/prenumerations nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
 |Administratörs nyckel för Azure Kognitiv sökning|[Azure-portalen](../../../search/search-security-api-keys.md)|Dessa nycklar används för att kommunicera med Azure kognitiv Search-tjänsten som distribueras i användarens Azure-prenumeration. När du associerar en Azure kognitiv-sökning med tjänsten QnA Maker Managed (förhands granskning) skickas administratörs nyckeln automatiskt vidare till tjänsten QnA Maker. <br><br>Du hittar dessa nycklar på **Azure kognitiv sökning** -resursen på sidan **nycklar** .|
-
-### <a name="subscription-keys"></a>Prenumerationsnycklar
-
-Term redigerings-och fråge slut punkts nyckeln är rätt villkor. Föregående term var **prenumerations nyckel**. Om du ser en annan dokumentation som hänvisar till prenumerations nycklar motsvarar dessa referenser till redigerings-och fråge slut punkts nycklar (används i körnings miljön).
-
-Du måste veta vad nyckeln har åtkomst till, kunskaps bas hantering eller kunskaps bas frågor för att veta vilken nyckel du behöver hitta.
 
 ### <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering 
 

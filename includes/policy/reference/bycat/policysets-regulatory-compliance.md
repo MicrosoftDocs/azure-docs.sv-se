@@ -2,22 +2,22 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 934497f0d4debf8f21d5e12ba1e6addedd3c70f6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 87ba292efcb2f1a2a920c6053d00e2c040a5f0b5
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99214040"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560744"
 ---
 |Name |Beskrivning |Principer |Version |
 |---|---|---|---|
 |[Den australiska regeringens ISM PROTECTED-kontroller](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Det här initiativet inkluderar principer för granskning och distribution av virtuella datorer som åtgärdar en delmängd av de australiska-kontrollerna för säkerhets manuella myndigheter i myndigheter. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |61 |4.0.0 – för hands version |
 |[Canada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av de federala PBMM-kontrollerna i Kanada. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |4.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |Det här initiativet innehåller principer som åtgärdar en delmängd av CIS Microsoft Azure grunderna för benchmark-rekommendationer. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |90 |9.0.0 |
-|[CMMC nivå 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |Detta initiativ inkluderar principer som åtgärdar en delmängd av CMMC (cybersäkerhet förfallo modell Certificate) på nivå 3. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) . |183 |1.0.0 – för hands version |
+|[CMMC nivå 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |Detta initiativ inkluderar principer som åtgärdar en delmängd av CMMC (cybersäkerhet förfallo modell Certificate) på nivå 3. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) . |181 |2.0.0 – för hands version |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av FedRAMP H-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |71 |4.0.0 |
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av FedRAMP M-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |4.0.0 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Detta initiativ inkluderar principer för granskning och distribution av virtuella dator tillägg som hanterar en delmängd av HITRUST/HIPAA-kontroller. Ytterligare principer kommer att läggas till i kommande versioner. Mer information finns på [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |120 |5.0.0 |

@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Key Vault
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Key Vault. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: fd1d45878777eea5d662ef108c710d73dcdf5fb8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 855b2759716bdda4b8da6f870edf17a6ccf3600c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092188"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99561006"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-key-vault"></a>Azure Policy kontroll av efterlevnad för Azure Key Vault
 

@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015911"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560210"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Använda referens data för sökningar i Stream Analytics
 
@@ -32,13 +32,13 @@ Stream Analytics stöder Azure Blob Storage och Azure SQL Database som lagrings 
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Referens data modelleras som en sekvens av blobbar (definieras i inmatnings konfigurationen) i stigande ordning för datum/tid som anges i BLOB-namnet. Den har **bara** stöd för att lägga till i slutet av sekvensen genom att använda en datum/tid som är **större** än den som anges av den sista blobben i sekvensen.
+Referens data modelleras som en sekvens av blobbar (definieras i inmatnings konfigurationen) i stigande ordning för datum/tid som anges i BLOB-namnet. Den har **bara** stöd för att lägga till i slutet av sekvensen genom att använda en datum/tid som är **större** än den som anges av den sista blobben i sekvensen. Mer information finns i [använda referens data från en Blob Storage för ett Azure Stream Analytics jobb](data-protection.md).
 
 ### <a name="configure-blob-reference-data"></a>Konfigurera referens data för BLOB
 
 Om du vill konfigurera dina referens data måste du först skapa en indata som är av typen **referens data**. I tabellen nedan förklaras varje egenskap som du måste ange när du skapar referens data inmatningen med beskrivningen:
 
-|**Egenskaps namn**  |**Beskrivning**  |
+|**Egenskapens namn**  |**Beskrivning**  |
 |---------|---------|
 |Indataalias   | Ett eget namn som ska användas i jobb frågan för att referera till den här indatamängden.   |
 |Lagringskonto   | Namnet på det lagrings konto där blobarna finns. Om det är i samma prenumeration som ditt Stream Analytics jobb kan du välja det från List rutan.   |
@@ -97,7 +97,7 @@ Om du vill konfigurera dina SQL Database referens data måste du först skapa **
 
 Du kan använda en [hanterad Azure SQL-instans](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) som referens data inmatning. Du måste [Konfigurera den offentliga slut punkten i SQL-hanterad instans](../azure-sql/managed-instance/public-endpoint-configure.md) och manuellt konfigurera följande inställningar i Azure Stream Analytics. Den virtuella Azure-datorn som kör SQL Server med en databas ansluten stöds också genom att konfigurera inställningarna manuellt nedan.
 
-|**Egenskaps namn**|**Beskrivning**  |
+|**Egenskapens namn**|**Beskrivning**  |
 |---------|---------|
 |Inmatat alias|Ett eget namn som ska användas i jobb frågan för att referera till den här indatamängden.|
 |Prenumeration|Välj din prenumeration|

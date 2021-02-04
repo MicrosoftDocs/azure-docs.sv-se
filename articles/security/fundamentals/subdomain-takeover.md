@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409900"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559241"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Förhindra Dangling DNS-poster och Undvik under domän övertag Ande
 
 I den här artikeln beskrivs det vanliga säkerhetshot för under domän Övertagning och de steg du kan vidta för att undvika det.
 
 
-## <a name="what-is-subdomain-takeover"></a>Vad är under domän överköps?
+## <a name="what-is-a-subdomain-takeover"></a>Vad är en under domän överköps?
 
 Under domänens övertag Ande är ett vanligt hot mot hög allvarlighets grad för organisationer som regelbundet skapar och tar bort många resurser. En under domän överköps kan uppstå när du har en [DNS-post](../../dns/dns-zones-records.md#dns-records) som pekar på en Deetablerad Azure-resurs. Sådana DNS-poster kallas även "Dangling DNS"-poster. CNAME-poster är särskilt sårbara för det här hotet. Under domänens övertag ande gör det möjligt för skadliga aktörer att omdirigera trafik som är avsedd för en organisations domän till en plats som utför skadlig aktivitet.
 
@@ -144,6 +144,15 @@ Att se till att din organisation har implementerat processer för att förhindra
 
 Vissa Azure-tjänster erbjuder funktioner som hjälper dig att skapa förebyggande åtgärder och beskrivs nedan. Andra metoder för att förhindra det här problemet måste upprättas genom organisationens bästa praxis eller standard operativa procedurer.
 
+### <a name="enable-azure-defender-for-app-service"></a>Aktivera Azure Defender för App Service
+
+I Azure Security Center s integrerade Cloud Worker Protection Platform (CWPP), Azure Defender erbjuder vi ett antal planer för att skydda dina resurser och arbets belastningar i Azure, hybrid och flera moln.
+
+**Azure Defender for App Service** -planen innehåller Dangling DNS-identifiering. När den här planen är aktive rad får du säkerhets aviseringar om du inaktiverar en App Service webbplats men inte tar bort den anpassade domänen från din DNS-registrator.
+
+Azure Defenders Dangling DNS-skydd är tillgängligt oavsett om dina domäner hanteras med Azure DNS eller en extern domän registrator och gäller för App Service på både Windows och Linux.
+
+Lär dig mer om det här och andra fördelar med den här Azure Defender-planen i [Introduktion till Azure Defender för App Service](../../security-center/defender-for-app-service-introduction.md).
 
 ### <a name="use-azure-dns-alias-records"></a>Använd Azure DNS Ali Aset poster
 
@@ -201,6 +210,8 @@ Det är ofta upp till utvecklare och drift team att köra rensnings processer f�
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om relaterade tjänster och Azure-funktioner som du kan använda för att skydda dig mot under domän övertag ande finns på följande sidor.
+
+- [Aktivera Azure Defender för App Service](../../security-center/defender-for-app-service-introduction.md) för att ta emot aviseringar när Dangling DNS-poster identifieras
 
 - [Förhindra Dangling DNS-poster med Azure DNS](../../dns/dns-alias.md#prevent-dangling-dns-records)
 

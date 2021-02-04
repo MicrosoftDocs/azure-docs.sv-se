@@ -1,15 +1,15 @@
 ---
 title: Lista över inbyggda princip definitioner
 description: Visa en lista över inbyggda princip definitioner för Azure Policy. Kategorierna omfattar taggar, regelefterlevnad, Key Vault, Kubernetes, gäst konfiguration och mycket annat.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 2c9d4432276abe5392a554e57087e38615aaf902
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7adce6f1dd75f7084b1beac37277c4abadfe904d
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220502"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99561140"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy inbyggda princip definitioner
 
@@ -161,7 +161,7 @@ Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Anvä
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
-## <a name="portal"></a>Portalen
+## <a name="portal"></a>Portal
 
 [!INCLUDE [azure-policy-reference-policies-portal](../../../../includes/policy/reference/bycat/policies-portal.md)]
 
