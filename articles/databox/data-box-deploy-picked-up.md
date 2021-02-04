@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525000"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539119"
 ---
 ::: zone target="docs"
 
@@ -267,6 +267,35 @@ När uppladdningen till Azure är klar raderar Data Box-enheten data på diskarn
     ```
 
 Om du får problem skickar du ett e-postmeddelande till Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) med information om problemet och anger jobbnamnet på ämnesraden.
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Kontrollera datauppladdning till Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Radera data från Data Box
+ 
+
+::: zone-end
+
+## <a name="united-arab-emirates"></a>[Förenade Arabemiraten](#tab/in-uae)
+
+1. Returnera enheten i originalkartongen.
+2. Kontrol lera att data kopieringen till enheten är klar och att **Förbered för att skicka** steget har slutförts.
+3. Notera referens numret på sidan **Förbered för att skicka** i det lokala webb gränssnittet för enheten.
+4. Stäng av enheten och ta bort kablarna. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
+6. Placera enheten i den ursprungliga förpackningen.
+7. E- [Azure Data Box åtgärder](mailto:adbops@microsoft.com) för att hämta ett ID som ska användas för att identifiera paketet när det går tillbaka till data centret.
+8. Skriv ned det här ID: t på etiketten utskrift, bredvid retur adressen så att den visas tydligt.  
+9. Boka en upphämtning online genom att gå till [DHL Express Förenade Arabemiraten](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab)  >  **Schemalägg en hämtning**.
+   - Ange referens numret på sidan **Förbered för att skicka** i det lokala webb gränssnittet för enheten i fältet frakt sedel nummer.
+   - Bokningar godkänns från 9:00 AM – 2:00 PM sex dagar i veckan (exklusive fre och offentliga helgdagar).
+   - Upphämtnings begär Anden ska placeras minst 90 minuter innan kundens stängnings tid.
+10. Om du stöter på ett problem med DHL-boknings verktyget kan du kontakta DHL med någon av följande metoder:
+    - Ring 04-2924545.
+    - E-postmeddelande [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) med information om problemen och Lägg frakt sedels numret i raden subject:.
+    - Ring DHL kund support på 600 567567.
 
 ::: zone target="chromeless"
 

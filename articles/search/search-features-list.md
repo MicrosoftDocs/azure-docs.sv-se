@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 286d826f61a6c99396ef04af0a0855567bc4d1e4
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951391"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538915"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Funktioner i Azure Kognitiv sökning
 
@@ -49,7 +49,7 @@ Azure Kognitiv sökning tillhandahåller en full texts öknings motor, beständi
 
 | Kategori&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funktioner |
 |-------------------|----------|
-| Datakryptering | [**Microsoft-Managed Encrypted Encryption-at-rest**](search-security-overview.md#encrypted-transmissions-and-storage) är inbyggt i det interna lagrings lagret och är oåterkalleligt. <br/><br/>[**Kundhanterade krypterings nycklar**](search-security-manage-encryption-keys.md) som du skapar och hanterar i Azure Key Vault kan användas för kompletterande kryptering av index och synonym mappningar. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar för fullständig dubbel kryptering av indexerat innehåll.|
+| Datakryptering | [**Microsoft-Managed Encrypted Encryption-at-rest**](search-security-overview.md#encryption) är inbyggt i det interna lagrings lagret och är oåterkalleligt. <br/><br/>[**Kundhanterade krypterings nycklar**](search-security-manage-encryption-keys.md) som du skapar och hanterar i Azure Key Vault kan användas för kompletterande kryptering av index och synonym mappningar. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar för fullständig dubbel kryptering av indexerat innehåll.|
 | Endpoint Protection | Med [**IP-regler för inkommande brand Väggs stöd**](service-configure-firewall.md) kan du konfigurera IP-intervall som Sök tjänsten ska ta emot begär Anden för.<br/><br/>[**Skapa en privat slut punkt**](service-create-private-endpoint.md) med hjälp av en privat Azure-länk för att tvinga alla begär Anden via ett virtuellt nätverk. |
 | Utgående säkerhet (indexerare) | [**Med data åtkomst via privata slut punkter**](search-indexer-howto-access-private.md) kan en indexerare ansluta till Azure-resurser som skyddas via en privat Azure-länk.<br/><br/>[**Data åtkomst med en betrodd identitet**](search-howto-managed-identities-data-sources.md) innebär att anslutnings strängar till externa data källor kan utesluta användar namn och lösen ord. När en indexerare ansluter till data källan tillåter resursen anslutningen om Sök tjänsten tidigare har registrerats som en betrodd tjänst. |
 

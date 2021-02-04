@@ -63,6 +63,8 @@
       items:
         - name: Skapa en VM-skalningsuppsättning
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: Skapa och hantera skalnings uppsättning för virtuella datorer
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: Skapa en skalningsuppsättning från en anpassad virtuell datoravbildning
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: Installera program till en skalningsuppsättning

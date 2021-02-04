@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493845"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538008"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning utbildnings miljö med virtuella nätverk
 
@@ -163,15 +163,22 @@ Du kan göra detta på två sätt:
 
 * Använd en [Virtual Network NAT](../virtual-network/nat-overview.md). En NAT-gateway ger utgående Internet anslutning för ett eller flera undernät i det virtuella nätverket. Mer information finns i [utforma virtuella nätverk med NAT-gateway-resurser](../virtual-network/nat-gateway-resource.md).
 
-* Lägg till [användardefinierade vägar (UDR)](../virtual-network/virtual-networks-udr-overview.md) till det undernät som innehåller beräknings resursen. Upprätta en UDR för varje IP-adress som används av tjänsten Azure Batch i den region där dina resurser finns. Dessa UDR gör att batch-tjänsten kan kommunicera med datornoder för schemaläggning av aktiviteter. Lägg också till IP-adressen för den Azure Machine Learning tjänst där resurserna finns, eftersom detta krävs för åtkomst till beräknings instanser. Använd någon av följande metoder för att hämta en lista över IP-adresser för batch-tjänsten och Azure Machine Learning tjänsten:
+* Lägg till [användardefinierade vägar (UDR)](../virtual-network/virtual-networks-udr-overview.md) till det undernät som innehåller beräknings resursen. Upprätta en UDR för varje IP-adress som används av tjänsten Azure Batch i den region där dina resurser finns. Dessa UDR gör att batch-tjänsten kan kommunicera med datornoder för schemaläggning av aktiviteter. Lägg också till IP-adressen för den Azure Machine Learning tjänsten, eftersom detta krävs för att få åtkomst till beräknings instanser. När du lägger till IP-adressen för tjänsten Azure Machine Learning måste du lägga till IP för både de __primära och sekundära__ Azure-regionerna. Den primära regionen är den plats där din arbets yta finns.
+
+    Du hittar den sekundära regionen genom att se till [att verksamhets kontinuiteten & haveri beredskap med Azure-kopplade regioner](../best-practices-availability-paired-regions.md#azure-regional-pairs). Om din Azure Machine Learning-tjänst till exempel finns i USA, östra 2, är den sekundära regionen Central USA. 
+
+    Använd någon av följande metoder för att hämta en lista över IP-adresser för batch-tjänsten och Azure Machine Learning tjänsten:
 
     * Hämta [Azure IP-intervall och service märken](https://www.microsoft.com/download/details.aspx?id=56519) och Sök efter `BatchNodeManagement.<region>` och `AzureMachineLearning.<region>` , där `<region>` är din Azure-region.
 
-    * Använd [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) för att hämta informationen. I följande exempel hämtas IP-adress informationen och filtreras bort informationen för regionen USA, östra 2:
+    * Använd [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) för att hämta informationen. I följande exempel hämtas IP-adressinformation och filtreras bort informationen för regionen USA, östra 2 (primär) och USA, centrala (sekundär):
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+        # Get primary region IPs
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+        # Get secondary region IPs
+        az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
         ```
 
         > [!TIP]
@@ -190,7 +197,6 @@ Du kan göra detta på två sätt:
     Förutom de UDR som du definierar måste utgående trafik till Azure Storage tillåtas via den lokala nätverks enheten. Mer specifikt är URL: erna för den här trafiken i följande format: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` och `<account>.blob.core.windows.net` . 
 
     Mer information finns i [skapa en Azure Batch pool i ett virtuellt nätverk](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
-
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Skapa ett beräknings kluster i ett virtuellt nätverk
 

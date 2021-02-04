@@ -176,6 +176,8 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-modul via Marketplace
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: Moduler från FPGA-enheter
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
             - name: Modul via Azure Portal
               href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: Distribuera Kubernetes-arbetsbelastningar

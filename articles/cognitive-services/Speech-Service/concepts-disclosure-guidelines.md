@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: b001b109df7c4b52b61f226a164db232b620a2c6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: f1889d49d1eb4981e59af6248817a6a9b6e2002d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508548"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537263"
 ---
 # <a name="disclosure-design-guidelines"></a>Utlämnande av designriktlinjer
 Lär dig att bygga och upprätthålla förtroende med kunder genom att vara transparent om din röst upplevelses syntetiska natur.
@@ -74,11 +74,8 @@ Använd följande diagram för att avgöra om din syntetiska röst miljö kräve
 
   ![Diagram över bedömning av avslöjande](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>Referens dokument
-
-* [Utlämnande av röst personal](/legal/cognitive-services/speech-service/disclosure-voice-talent)
-* [Rikt linjer för ansvarig distribution av syntetisk röst teknik](concepts-guidelines-responsible-deployment-synthetic.md)
-
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 * [Utlämnande av designmönster](concepts-disclosure-patterns.md)
+* [Utlämnande av röst personal](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [Rikt linjer för ansvarig distribution av syntetisk röst teknik](concepts-guidelines-responsible-deployment-synthetic.md)

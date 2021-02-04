@@ -2,13 +2,13 @@
 title: Koncept – vSphere-rollbaserad åtkomst kontroll (vSphere RBAC)
 description: Lär dig mer om de viktigaste funktionerna i vSphere-rollbaserad åtkomst kontroll för Azure VMware-lösning
 ms.topic: conceptual
-ms.date: 10/23/2020
-ms.openlocfilehash: 6f5c30b070b010f312d038d8286be994039c56f8
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/02/2021
+ms.openlocfilehash: 9d7c724fba194d86c2d73bb8323439de7c83c170
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509256"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537026"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere-rollbaserad åtkomst kontroll (vSphere RBAC) för Azure VMware-lösning
 

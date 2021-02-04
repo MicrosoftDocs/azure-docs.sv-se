@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: d9ca9dd345be7fb8f1a2b613386bdca7bdcd835a
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 253ec23a421415c11e4b47670dca870ebc463256
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070397"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538775"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Självstudier: Använda en simulerad enhet för att testa anslutningen till din IoT-hubb
 
@@ -66,15 +66,15 @@ En enhet måste autentiseras mot din hubb innan den kan utbyta data med hubben. 
 
 Logga in på portalen och gå till IoT-hubben. Gå sedan till verktyget **IoT-enheter**:
 
-![Verktyget IoT-enheter](media/tutorial-connectivity/iot-devices-tool.png)
+:::image type="content" source="media/tutorial-connectivity/iot-devices-tool.png" alt-text="Verktyget IoT-enheter":::
 
-Om du vill registrera en ny enhet klickar du på **+ Lägg till**, ange **MyTestDevice** som **enhets-ID** och klicka på **Spara**:
+Registrera en ny enhet genom att klicka på **+ ny**, ange **enhets-ID** till **MyTestDevice** och klicka på **Spara**.
 
-![Lägg till en ny enhet](media/tutorial-connectivity/add-device.png)
+:::image type="content" source="media/tutorial-connectivity/add-device.png" alt-text="Lägg till en ny enhet":::
 
-För att hämta anslutningssträngen för **MyTestDevice**, klicka på den i listan över enheter och kopiera sedan värdet **sträng-primär anslutningsnyckel**. Anslutningssträngen innehåller den *delade åtkomstnyckeln* för enheten.
+Om du vill hämta anslutnings strängen för **MyTestDevice** klickar du på den i listan över enheter och kopierar sedan värdet för **primär anslutnings sträng** . Anslutningssträngen innehåller den *delade åtkomstnyckeln* för enheten.
 
-![Hämta enhetens anslutningssträng](media/tutorial-connectivity/copy-connection-string.png)
+:::image type="content" source="media/tutorial-connectivity/copy-connection-string.png" alt-text="Hämta anslutnings sträng för enhet}":::
 
 För att simulera när **MyTestDevice** skickar telemetri till din IoT-hubb kan du köra den Node.js simulerade enheten programmet du hämtade tidigare.
 
@@ -218,7 +218,7 @@ Den simulerade enheten skriver ut ett meddelande till konsolen när den tar emot
 
 ![Den simulerade enheten tar emot direkt metodanrop](media/tutorial-connectivity/receive-method-call.png)
 
-När den simulerade enheten tar emot ett direkt metodanrop skickar den en bekräftelse till hubben:
+När den simulerade enheten tar emot det direkta metod anropet skickar den en bekräftelse tillbaka till hubben:
 
 ![Ta emot bekräftelse av direkt metod](media/tutorial-connectivity/method-acknowledgement.png)
 

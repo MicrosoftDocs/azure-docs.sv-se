@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 1a8064c3ff89c0bc8b0ceb5249492b912c219ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d001a7a24d44c46a19bde08051e21d3ae3c5acb8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535839"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538059"
 ---
 # <a name="caching-with-azure-front-door"></a>Cachelagring med Azures front dörr
 Följande dokument anger beteenden för front dörren med routningsregler som har aktiverat cachelagring. Front dörren är en modern Content Delivery Network (CDN) med dynamisk webbplats acceleration och belastnings utjämning, men stöder även cachelagring-beteenden precis som med andra CDN.
@@ -24,13 +24,13 @@ Följande dokument anger beteenden för front dörren med routningsregler som ha
 ## <a name="delivery-of-large-files"></a>Leverans av stora filer
 Azures front dörr levererar stora filer utan fil storlek. Front dörren använder en teknik som kallas objekt segment. När en stor fil har begärts, hämtar Front Door mindre delar av filen från serverdelen. Efter att ha tagit emot en filbegäran med full eller byte Range begär den främre dörr miljön filen från Server delen i segment om 8 MB.
 
-</br>När segmentet har fått till gång till den främre dörren är det cachelagrat och betjänas direkt för användaren. Front dörren sedan för att hämta nästa segment parallellt. Den här för hämtningen garanterar att innehållet förblir ett segment före användaren, vilket minskar svars tiden. Den här processen fortsätter tills hela filen laddas ned (om det krävs) eller klienten stänger anslutningen.
+När segmentet har fått till gång till den främre dörren är det cachelagrat och betjänas direkt för användaren. Front dörren sedan för att hämta nästa segment parallellt. Den här för hämtningen garanterar att innehållet förblir ett segment före användaren, vilket minskar svars tiden. Den här processen fortsätter tills hela filen laddas ned (om det krävs) eller klienten stänger anslutningen.
 
-</br>Mer information om byte Range-begäran finns i [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
+Mer information om byte Range-begäran finns i [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 Frontend-dörren cachelagrar alla segment när de tas emot, så att hela filen inte behöver cachelagras i cachen på frontend-dörren. Begär Anden om fil-eller byte-intervallen hanteras från cachen. Om segmenten inte är cachelagrade används för hämtning för att begära segment från Server delen. Den här optimeringen är beroende av Server delens förmåga att stödja byte intervall begär Anden. Om Server delen inte stöder byte intervall begär Anden, är den här optimeringen inte effektiv.
 
 ## <a name="file-compression"></a>Filkomprimering
-Front dörren kan dynamiskt komprimera innehåll på gränsen, vilket resulterar i en mindre och snabbare svars tid för dina klienter. Alla filer är berättigade till komprimering. En fil måste dock vara av en MIME-typ för att vara tillgänglig för komprimering. Den här listan kan för närvarande inte ändras av en front dörr. Den aktuella listan är:</br>
+Front dörren kan dynamiskt komprimera innehåll på gränsen, vilket resulterar i en mindre och snabbare svars tid för dina klienter. För att en fil ska vara tillgänglig för komprimering måste cachelagring vara aktiverat och filen måste vara av en MIME-typ för att kunna komprimera. Den här listan kan för närvarande inte ändras av en front dörr. Den aktuella listan är:
 - "Application/EOT varningszon"
 - "program/teckensnitt"
 - "program/Font-sfnt"
@@ -82,7 +82,7 @@ Om en begäran stöder gzip och Brotli komprimering prioriteras Brotli-komprimer
 När en begäran för en till gång anger komprimering och begäran resulterar i ett cache-missar, sker komprimering av till gången direkt på POP-servern. Efteråt hanteras den komprimerade filen från cachen. Det resulterande objektet returneras med en överförings kodning: segment.
 
 ## <a name="query-string-behavior"></a>Fråga om sträng beteende
-Med front dörren kan du styra hur filer cachelagras för en webbegäran som innehåller en frågesträng. I en webbegäran med en frågesträng är frågesträngen den del av begäran som inträffar efter ett frågetecken (?). En frågesträng kan innehålla ett eller flera nyckel/värde-par, där fält namnet och dess värde skiljs åt av ett likhets tecken (=). Varje nyckel/värde-par avgränsas med ett et-tecken (&). Exempelvis `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Om det finns fler än ett nyckel/värde-par i en frågesträng i en begäran spelar deras ordning ingen roll.
+Med front dörren kan du styra hur filer cachelagras för en webbegäran som innehåller en frågesträng. I en webbegäran med en frågesträng är frågesträngen den del av begäran som inträffar efter ett frågetecken (?). En frågesträng kan innehålla ett eller flera nyckel/värde-par, där fält namnet och dess värde skiljs åt av ett likhets tecken (=). Varje nyckel/värde-par avgränsas med ett et-tecken (&). Ett exempel är `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Om det finns fler än ett nyckel/värde-par i en frågesträng i en begäran spelar deras ordning ingen roll.
 - **Ignorera frågesträngar**: i det här läget skickar front dörren frågesträngarna från begär anden till Server delen på den första begäran och cachelagrar till gången. Alla begär Anden om till gången som hanteras från Front dörrens miljö ignorerar frågesträngarna tills den cachelagrade till gången upphör att gälla.
 
 - **Cachelagra varje unik URL**: i det här läget behandlas varje begäran med en unik URL, inklusive frågesträngen, som en unik till gång med sin egen cache. Till exempel är svaret från Server delen för en begäran om `www.example.ashx?q=test1` cachelagrad i front dörrens miljö och returneras för att följa cacheminnen med samma frågesträng. En begäran om `www.example.ashx?q=test2` cachelagras som en separat till gång med en egen tids-till-Live-inställning.

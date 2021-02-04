@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: dc90bfb6325831276b3c6171b73aebfa2877cf68
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b5800c2e9c1f3b36a3ac9afe6cd68f706505fbe0
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527923"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537449"
 ---
 # <a name="list-restorable-resources-in-azure-cosmos-db-api-for-mongodb-using-rest-api"></a>Visa en lista över återställas-resurser i Azure Cosmos DB API för MongoDB med hjälp av REST API
+
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Returnera en lista över databas-och samlings kombination som finns på kontot vid den aktuella tidsstämpeln och platsen. Detta hjälper i scenarier att verifiera vilka resurser som finns på den aktuella tidsstämpeln och platsen. Detta API kräver `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` behörighet.
 

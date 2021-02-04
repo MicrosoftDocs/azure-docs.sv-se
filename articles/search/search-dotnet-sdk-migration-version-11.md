@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043752"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536823"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Uppgradera till Azure Kognitiv sökning .NET SDK version 11
 
@@ -168,8 +168,8 @@ Version 11,1 lägger till följande:
 
 Följande version 10-funktioner är ännu inte tillgängliga i version 11. Om du behöver dessa funktioner ska du hålla på migrering tills de stöds.
 
-+ geospatiala typer
 + [Knowledge Store](knowledge-store-concept-intro.md)
++ Geospatiala typer-förstklassigt stöd för geospatiala typer pågår fortfarande. Nu kan [Microsoft. spatial](https://www.nuget.org/packages/Microsoft.Spatial/) -paketet användas för att stödja geografiska åtgärder. Exempel är tillgängliga för [System.Text.Jspå](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) och [Newtonsoft.Jspå](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md).
 
 <a name="UpgradeSteps"></a>
 

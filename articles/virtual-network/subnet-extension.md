@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73587516"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539306"
 ---
 # <a name="subnet-extension"></a>Undernätstillägg
 Migrering av arbets belastning till det offentliga molnet kräver noggrann planering och samordning. Ett av de viktigaste aspekterna kan vara möjligheten att behålla dina IP-adresser. Det kan vara viktigt, särskilt om dina program har IP-adress beroenden eller om du har krav på efterlevnad för att använda särskilda IP-adresser. Azure Virtual Network löser det här problemet åt dig genom att du kan skapa VNet och undernät med ett valfritt IP-adressintervall.

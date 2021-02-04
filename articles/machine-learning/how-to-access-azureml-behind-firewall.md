@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 150e1aee38a724a0d52c83219c4d214265be9274
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045520"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538076"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Använd arbets ytan bakom en brand vägg för Azure Machine Learning
 
@@ -33,15 +33,22 @@ När du använder Azure Firewall använder du __mål Network Address Translation
 
 Om du använder en Azure Machine Learning __beräknings instans__ eller __beräknings kluster__, lägger du till en [användardefinierad routning (UDR)](../virtual-network/virtual-networks-udr-overview.md) för det undernät som innehåller Azure Machine Learning-resurserna. Den här vägen tvingar trafik __från__ IP-adresserna för- `BatchNodeManagement` och- `AzureMachineLearning` resurserna till den offentliga IP-adressen för din beräknings instans och beräknings kluster.
 
-Dessa UDR gör att batch-tjänsten kan kommunicera med datornoder för schemaläggning av aktiviteter. Lägg också till IP-adressen för den Azure Machine Learning tjänst där resurserna finns, eftersom detta krävs för åtkomst till beräknings instanser. Använd någon av följande metoder för att hämta en lista över IP-adresser för batch-tjänsten och Azure Machine Learning tjänsten:
+Dessa UDR gör att batch-tjänsten kan kommunicera med datornoder för schemaläggning av aktiviteter. Lägg också till IP-adressen för den Azure Machine Learning tjänsten, eftersom detta krävs för att få åtkomst till beräknings instanser. När du lägger till IP-adressen för tjänsten Azure Machine Learning måste du lägga till IP för både de __primära och sekundära__ Azure-regionerna. Den primära regionen är den plats där din arbets yta finns.
+
+Du hittar den sekundära regionen genom att se till [att verksamhets kontinuiteten & haveri beredskap med Azure-kopplade regioner](../best-practices-availability-paired-regions.md#azure-regional-pairs). Om din Azure Machine Learning-tjänst till exempel finns i USA, östra 2, är den sekundära regionen Central USA. 
+
+Använd någon av följande metoder för att hämta en lista över IP-adresser för batch-tjänsten och Azure Machine Learning tjänsten:
 
 * Hämta [Azure IP-intervall och service märken](https://www.microsoft.com/download/details.aspx?id=56519) och Sök efter `BatchNodeManagement.<region>` och `AzureMachineLearning.<region>` , där `<region>` är din Azure-region.
 
-* Använd [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) för att hämta informationen. I följande exempel hämtas IP-adress informationen och filtreras bort informationen för regionen USA, östra 2:
+* Använd [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) för att hämta informationen. I följande exempel hämtas IP-adressinformation och filtreras bort informationen för regionen USA, östra 2 (primär) och USA, centrala (sekundär):
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+    # Get primary region IPs
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+    # Get secondary region IPs
+    az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
     ```
 
     > [!TIP]

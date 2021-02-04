@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7a41eb8bdd573ac08b0c76eb9a6c2b0724637c39
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527963"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539197"
 ---
-# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature"></a>Vanliga frågor och svar om den Azure Cosmos DB funktionen för återställning av tidpunkt
+# <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Vanliga frågor och svar om den Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Den här artikeln innehåller vanliga frågor och svar om den Azure Cosmos DB funktionen för återställning av en viss tidpunkt som uppnås med hjälp av läget för kontinuerlig säkerhets kopiering.
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Den här artikeln innehåller vanliga frågor och svar om Azure Cosmos DB tidpunkt för återställning (för hands version) som uppnås med hjälp av läget för kontinuerlig säkerhets kopiering.
 
 ## <a name="how-much-time-does-it-takes-to-restore"></a>Hur lång tid tar det att återställa?
 Återställnings tiden är beroende av storleken på dina data.

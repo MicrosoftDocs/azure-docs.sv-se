@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 83e1c7c27e8c5d179c4ec6aa4ba64b3367294a48
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: c19de134f40c58a687dcf6bac6ac156e46cef7da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527938"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537551"
 ---
 # <a name="list-restorable-collections-in-azure-cosmos-db-api-for-mongodb-using-rest-api"></a>Visa en lista över återställas-samlingar i Azure Cosmos DB API för MongoDB med hjälp av REST API
+
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Visa händelse matningen av alla mutationer som gjorts på alla Azure Cosmos DB-API: er för MongoDB-samlingar under en speciell databas. Detta hjälper i scenariot där behållaren har tagits bort av misstag. Detta API kräver `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` behörighet
 

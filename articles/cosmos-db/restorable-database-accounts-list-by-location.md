@@ -6,16 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 2a3fbc1bb00c57c20436c19602c135f1917c6a60
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26c07ddaf4db71961d4aeff50e482740d969f0ef
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527900"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537686"
 ---
 # <a name="list-restorable-database-accounts-by-location-using-azure-cosmos-db-rest-api"></a>Visa lista återställas Database Accounts by location using Azure Cosmos DB REST API
 
-Visar en lista över alla återställas Azure Cosmos DB databas konton som är tillgängliga under prenumerationen och i en region. Det här anropet kräver `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` behörighet.
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Visar en lista över alla återställas-Azure Cosmos DB återställas databas konton som är tillgängliga under prenumerationen och i en region. Det här anropet kräver `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` behörighet.
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts?api-version=2020-06-01-preview

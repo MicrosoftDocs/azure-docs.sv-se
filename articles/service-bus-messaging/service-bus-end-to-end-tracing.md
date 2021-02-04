@@ -2,14 +2,14 @@
 title: Azure Service Bus slut punkt till slut punkt för spårning och diagnostik | Microsoft Docs
 description: Översikt över Service Bus-klientautentisering och spårning från slut punkt till slut punkt (klient genom alla tjänster som ingår i bearbetningen.)
 ms.topic: article
-ms.date: 01/17/2021
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: edfd789f8803acf9fc8d76202805dec0187d220e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601250"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539221"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuerad spårning och korrelation genom Service Bus meddelanden
 
@@ -22,7 +22,7 @@ Microsoft Azure Service Bus Messaging har definierat nytto Last egenskaper som p
 Protokollet baseras på [http-korrelations protokollet](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
 # <a name="azuremessagingservicebus-sdk-latest"></a>[Azure. Messaging. Service Bus SDK (senaste)](#tab/net-standard-sdk-2)
-| Egenskapens namn        | Beskrivning                                                 |
+| Egenskapens namn        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Unikt ID för ett externt anrop från producent till kön. Se [begärande-ID i HTTP-protokollet](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) för att få rationella, överväganden och format |
 
@@ -135,12 +135,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 I det här exemplet loggar Listener varaktighet, resultat, unik identifierare och start tid för varje Service Bus åtgärd.
 
 ### <a name="events"></a>Händelser
-För varje åtgärd skickas två händelser: "starta" och "stoppa". Förmodligen är du bara intresse rad av "stopp"-händelser. De ger resultatet av åtgärden och start tid och varaktighet som aktivitets egenskaper.
-
-Händelse nytto Last tillhandahåller en lyssnare med åtgärdens kontext, den replikerar API-inkommande parametrar och retur värde. Händelse nytto lasten "stoppa" har alla egenskaper för "starta" händelse nytto Last, så att du kan ignorera "Start"-händelsen fullständigt.
-
-Varje "stopp"-händelse har en `Status` egenskap med en `TaskStatus` asynkron åtgärd slutfördes med, vilket också utelämnas i följande tabell för enkelhetens skull.
-
 Alla händelser har följande egenskaper som stämmer med den öppna telemetri-specifikationen: https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md .
 
 - `message_bus.destination` – kö/ämne/prenumerations Sök väg
@@ -201,7 +195,7 @@ I närvaro av flera `DiagnosticSource` lyssnare för samma källa räcker det ba
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. Service Bus SDK](#tab/net-standard-sdk)
 
-| Egenskapens namn        | Beskrivning                                                 |
+| Egenskapens namn        | Description                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Unikt ID för ett externt anrop från producent till kön. Se [begärande-ID i HTTP-protokollet](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) för att få rationella, överväganden och format |
 |  Correlation-Context | Åtgärds kontext, som sprids över alla tjänster som ingår i åtgärds bearbetning. Mer information finns i [korrelations kontext i HTTP-protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |

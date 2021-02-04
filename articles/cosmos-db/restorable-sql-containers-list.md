@@ -6,14 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: govindk
-ms.openlocfilehash: 90018d3e1b793575830ba34756ad685927612006
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: bba00b10d1a24dc29c1e986de1f0144c00350f5d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527953"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537432"
 ---
 # <a name="list-restorable-sql-api-containers-in-azure-cosmos-db-using-rest-api"></a>Visa lista återställas SQL API-behållare i Azure Cosmos DB att använda REST API
+
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Visa händelse matningen av alla mutationer som gjorts på alla Azure Cosmos DB SQL-behållare under en angiven databas. Detta hjälper i scenariot där behållaren har tagits bort av misstag. Detta API kräver `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` behörighet
 

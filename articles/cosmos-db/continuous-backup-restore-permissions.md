@@ -7,17 +7,22 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 3614a85a6df2e793a73a2609d6f5762e4dc873fb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 9d30f5325162b9ea447d54aadc092dbd9aa29132
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527865"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538837"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Hantera behörigheter för att återställa ett Azure Cosmos DB konto
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Med Azure Cosmos DB kan du isolera och begränsa återställnings behörigheter för kontinuerligt säkerhets kopierings konto till en speciell roll eller ett huvud konto. Kontots ägare kan utlösa en återställning och tilldela en roll till andra huvud konton för att utföra återställnings åtgärden. Dessa behörigheter kan tillämpas i prenumerations omfattningen eller mer detaljerad i käll konto omfånget som visas i följande bild:
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Med Azure Cosmos DB kan du isolera och begränsa återställnings behörigheter för kontinuerlig säkerhets kopiering (för hands version) till en speciell roll eller ett huvud konto. Kontots ägare kan utlösa en återställning och tilldela en roll till andra huvud konton för att utföra återställnings åtgärden. Dessa behörigheter kan tillämpas i prenumerations omfattningen eller mer detaljerad i käll konto omfånget som visas i följande bild:
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="Lista över roller som krävs för att utföra återställnings åtgärden." lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 

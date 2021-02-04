@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6f63315c3e9b150a54e122d9a1c6948087603d51
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359089"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537415"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurera en SQL Server Always on-tillgänglighets grupp i olika Azure-regioner
 
@@ -86,6 +86,7 @@ Gör så här om du vill skapa en replik i ett fjärranslutet Data Center:
    - Använd en TCP-port avsökning som är speciell för IP-adressen.
    - Ha en regel för belastnings utjämning som är unik för SQL Server i samma region.  
    - Vara en Standard Load Balancer om de virtuella datorerna i backend-poolen inte är en del av antingen en enskild tillgänglighets uppsättning eller en skalnings uppsättning för virtuella datorer. För ytterligare informations granskning [Azure Load Balancer standard översikt](../../../load-balancer/load-balancer-overview.md).
+   - Vara en Standard Load Balancer om de två virtuella nätverken i två olika regioner är peer-kopplade över global VNet-peering. Mer information finns i [vanliga frågor och svar om Azure Virtual Network](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 1. [Lägg till funktionen kluster för växling vid fel i den nya SQL Server](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 
@@ -184,7 +185,7 @@ Om du vill testa lyssnare anslutningen till fjärrregionen kan du växla över r
 
 När du har testat anslutningen flyttar du tillbaka den primära repliken till ditt primära Data Center och återställer tillgänglighets läget till sina normala drift inställningar. I följande tabell visas de normala drift inställningarna för den arkitektur som beskrivs i det här dokumentet:
 
-| Plats | Server instans | Roll | Tillgänglighets läge | Växlings läge
+| Location | Server instans | Roll | Tillgänglighets läge | Växlings läge
 | ----- | ----- | ----- | ----- | -----
 | Primärt Data Center | SQL-1 | Primär | Synkront | Automatiskt
 | Primärt Data Center | SQL-2 | Sekundär | Synkront | Automatiskt

@@ -8,17 +8,22 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: f8ba08c6147320160e99e522536f00fc98855eb4
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527868"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538864"
 ---
-# <a name="continuous-backup-with-point-in-time-restore-feature-in-azure-cosmos-db"></a>Kontinuerlig säkerhets kopiering med funktionen för återställning av tidpunkt i Azure Cosmos DB
+# <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Kontinuerlig säkerhets kopiering med funktionen för återställning av en viss tidpunkt (för hands version) i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-Azure Cosmos DB funktionen för återställning av en viss tidpunkt hjälper i flera scenarier, till exempel följande:
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Cosmos DB funktionen för återställning av en viss tidpunkt (för hands version) hjälper till med flera scenarier, till exempel följande:
 
 * För att återställa från en oavsiktlig Skriv-eller borttagnings åtgärd i en behållare.
 * Återställa ett borttaget konto, en databas eller en behållare.
@@ -58,17 +63,17 @@ Här följer några av de viktiga scenarier som åtgärdas med funktionen för �
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Livs cykel händelser med tidsstämplar för ett återställas-konto." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Återställ borttaget konto** – alla borttagna konton som du kan återställa visas från rutan **Återställ** . Till exempel om "konto A" tas bort vid tidsstämpeln T3. I det här fallet är tidsstämpeln precis före T3, plats, mål konto namn, resurs grupp och mål konto namn tillräckligt för att återställa från [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md).  
+a. **Återställ borttaget konto** – alla borttagna konton som du kan återställa visas från rutan **Återställ** . Till exempel om "konto A" tas bort vid tidsstämpeln T3. I det här fallet är tidsstämpeln precis före T3, plats, mål konto namn, resurs grupp och mål konto namn tillräckligt för att återställa från [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore).  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Livs cykel händelser med tidsstämplar för en återställas-databas och-behållare." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Återställ data för ett konto i en viss region** – till exempel om "konto a" finns i två regioner "östra USA" och "västra USA" vid tidsstämpel T3. Om du behöver en kopia av konto A i "västra USA" kan du göra en återställning vid ett tillfälle från [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md)eller [CLI](continuous-backup-restore-command-line.md) med västra USA som målplats.
+b. **Återställ data för ett konto i en viss region** – till exempel om "konto a" finns i två regioner "östra USA" och "västra USA" vid tidsstämpel T3. Om du behöver en kopia av konto A i "västra USA" kan du göra en återställning vid ett tillfälle från [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore) med västra USA som målplats.
 
-c. **Återställ från en oavsiktlig Skriv-eller borttagnings åtgärd i en behållare med en känd Restore-tidsstämpel** – till exempel om du **vet** att innehållet i "container 1" i "databas 1" ändrades av misstag vid tidsstämpeln T3. Du kan göra en återställning av en tidpunkt från [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md)eller [CLI](continuous-backup-restore-command-line.md) till ett annat konto vid tidsstämpeln T3 för att återställa det önskade tillståndet för behållaren.
+c. **Återställ från en oavsiktlig Skriv-eller borttagnings åtgärd i en behållare med en känd Restore-tidsstämpel** – till exempel om du **vet** att innehållet i "container 1" i "databas 1" ändrades av misstag vid tidsstämpeln T3. Du kan göra en återställning av en tidpunkt från [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore) till ett annat konto vid tidsstämpeln T3 för att återställa det önskade tillståndet för behållaren.
 
-d. **Återställ ett konto till en tidigare tidpunkt innan den oavsiktliga borttagningen av databasen** – i [Azure Portal](continuous-backup-restore-portal.md)kan du använda fönstret för händelse inmatning för att avgöra när en databas har tagits bort och hitta återställnings tiden. På samma sätt kan du med [Azure CLI](continuous-backup-restore-command-line.md) och [PowerShell](continuous-backup-restore-powershell.md)identifiera händelsen borttagning av databasen genom att räkna upp flödet för databas händelser och sedan utlösa kommandot Restore med de obligatoriska parametrarna.
+d. **Återställ ett konto till en tidigare tidpunkt innan den oavsiktliga borttagningen av databasen** – i [Azure Portal](continuous-backup-restore-portal.md#restore-live-account)kan du använda fönstret för händelse inmatning för att avgöra när en databas har tagits bort och hitta återställnings tiden. På samma sätt kan du med [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) och [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)identifiera händelsen borttagning av databasen genom att räkna upp flödet för databas händelser och sedan utlösa kommandot Restore med de obligatoriska parametrarna.
 
-e. **Återställ ett konto till en tidigare tidpunkt innan du tar bort eller ändrar behållar egenskaperna av misstag.** – I [Azure Portal](continuous-backup-restore-portal.md)kan du använda fönstret för händelse inmatning för att fastställa när en behållare har skapats, ändrats eller tagits bort för att hitta återställnings tiden. På samma sätt kan du med [Azure CLI](continuous-backup-restore-command-line.md) och [PowerShell](continuous-backup-restore-powershell.md)identifiera alla behållar händelser genom att räkna upp flödet för behållar händelser och sedan utlösa kommandot Restore med nödvändiga parametrar.
+e. **Återställ ett konto till en tidigare tidpunkt innan du tar bort eller ändrar behållar egenskaperna av misstag.** – I [Azure Portal](continuous-backup-restore-portal.md#restore-live-account)kan du använda fönstret för händelse inmatning för att fastställa när en behållare har skapats, ändrats eller tagits bort för att hitta återställnings tiden. På samma sätt kan du med [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) och [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)identifiera alla behållar händelser genom att räkna upp flödet för behållar händelser och sedan utlösa kommandot Restore med nödvändiga parametrar.
 
 ## <a name="permissions"></a>Behörigheter
 

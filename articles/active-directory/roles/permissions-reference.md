@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849c159f31a14441ef9c6aa19b8704b286727bd7
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 7c89bfab6c4914cee26726006e6928eeb14c0686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507189"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538195"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -1046,18 +1046,19 @@ Kan hantera alla aspekter av Exchange-produkten.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
-| Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Uppdatera Groups. Unified-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/Basic/Update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/skapa | Skapa Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/ta bort | Ta bort Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/medlemmar/uppdatering | Uppdatera medlemskap i Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/ägare/uppdatering | Uppdatera ägarskap för Microsoft 365 grupper. |
+| Microsoft. Directory/grupper/hiddenMembers/Read | Läsa dolda medlemmar i en grupp |
+| Microsoft. Directory/Groups. Unified/Basic/Update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Create | Skapa Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Delete | Ta bort Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Restore | Återställ Microsoft 365 grupper |
+| Microsoft. Directory/grupper. Unified/members/Update | Uppdatera medlemskap i Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Owners/Update | Uppdatera ägarskap för Microsoft 365 grupper. |
 | Microsoft. Office365. Exchange/-upplånade/allTasks | Hantera alla aspekter av Exchange Online. |
 | Microsoft. Office365. Network/Performance/allProperties/Read | Läs nätverks prestanda sidor i Microsoft 365 administrations Center. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
-| Microsoft. Office365. usageReports/upplånade/upplånade/lästa | Läs Office 365-användnings rapporter. |
-| Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
+| Microsoft. Office365. usageReports/uplånar/allProperties/Read | Läs Office 365-användnings rapporter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="external-id-user-flow-administrator-permissions"></a>External ID användar flöde administratörs behörighet
 
@@ -1295,23 +1296,24 @@ Kan hantera alla aspekter av Intune-produkten.
 | Microsoft. Directory/Devices/extensionAttributes/Update | Uppdatera alla värden för egenskapen Devices. extensionAttributes i Azure Active Directory. |
 | Microsoft. Directory/Devices/registeredOwners/Update | Uppdatera Devices. registeredOwners-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Devices/registeredUsers/Update | Uppdatera Devices. registeredUsers-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/Groups/appRoleAssignments/Update | Uppdatera Groups. appRoleAssignments-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/grupper/Basic/Update | Uppdatera grundläggande egenskaper för grupper i Azure Active Directory. |
-| Microsoft. Directory/grupper/skapa | Skapa grupper i Azure Active Directory. |
-| Microsoft. Directory/grupper/createAsOwner | Skapa grupper i Azure Active Directory. Skaparen läggs till som den första ägaren och det antal skapade objektet mot skapare objekt kvoten 250 har skapats. |
-| Microsoft. Directory/grupper/ta bort | Ta bort grupper i Azure Active Directory. |
+| Microsoft. Directory/deviceManagementPolicies/standard/Read | Läsa standard egenskaper för användnings principer för enhets hantering |
+| Microsoft. Directory/deviceRegistrationPolicy/standard/Read | Läsa standard egenskaper för enhets registrerings principer |
 | Microsoft. Directory/grupper/hiddenMembers/Read | Läs Groups. hiddenMembers-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/grupper/medlemmar/uppdatera | Uppdatera Groups. members-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/grupper/ägare/uppdatera | Uppdatera Groups. Owners-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/grupper/Återställ | Återställ grupper i Azure Active Directory. |
-| Microsoft. Directory/grupper/inställningar/uppdatera | Uppdatera Groups. Settings-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Uppdatera users. appRoleAssignments-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/Groups. Security/Basic/Update | Uppdatera grundläggande egenskaper för grupper i Azure Active Directory. |
+| Microsoft. Directory/grupper. säkerhet/klassificering/uppdatera | Uppdatera klassificerings egenskapen för säkerhets grupperna med undantag av roll tilldelnings bara grupper |
+| Microsoft. Directory/grupper. säkerhet/skapa | Skapa grupper i Azure Active Directory. |
+| Microsoft. Directory/Groups. Security/Delete | Ta bort grupper i Azure Active Directory. |
+| Microsoft. Directory/Groups. Security/dynamicMembershipRule/Update | Uppdatera dynamicMembershipRule-egenskapen för säkerhets grupperna med undantag av roll tilldelnings bara grupper |
+| Microsoft. Directory/Groups. Security/groupType/Update | Uppdatera grupp typ egenskapen för säkerhets grupperna med undantag av roll tilldelnings bara grupper |
+| Microsoft. Directory/grupper. säkerhet/medlemmar/uppdatera | Uppdatera Groups. members-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/grupper. säkerhet/ägare/uppdatera | Uppdatera Groups. Owners-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/grupper. säkerhet/synlighet/uppdatera | Uppdatera Synlighets egenskapen för säkerhets grupperna med undantag av roll tilldelnings bara grupper |
 | Microsoft. Directory/Users/Basic/Update | Uppdatera grundläggande egenskaper för användare i Azure Active Directory. |
 | Microsoft. Directory/Users/Manager/Update | Uppdatera users. Manager-egenskapen i Azure Active Directory. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
 | Microsoft. Intune/upplånade/allTasks | Hantera alla aspekter av Intune. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
-| Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="kaizala-administrator-permissions"></a>Kaizala administratörs behörighet
 
@@ -1458,13 +1460,18 @@ Använd inte – inte avsedd för allmän användning.
 | Microsoft. Directory/kontakter/skapa | Skapa kontakter i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Delete | Ta bort kontakter i Azure Active Directory. |
 | Microsoft. Directory/grupper/skapa | Skapa grupper i Azure Active Directory. |
-| Microsoft. Directory/grupper/createAsOwner | Skapa grupper i Azure Active Directory. Skaparen läggs till som den första ägaren och det antal skapade objektet mot skapare objekt kvoten 250 har skapats. |
+| Microsoft. Directory/grupper/ta bort | Ta bort grupper, exklusive roll tilldelnings bara grupper |
 | Microsoft. Directory/grupper/medlemmar/uppdatera | Uppdatera Groups. members-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/grupper/ägare/uppdatera | Uppdatera Groups. Owners-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Uppdatera users. appRoleAssignments-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/grupper/Återställ | Återställa borttagna grupper |
+| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2,0-behörighet bidrag och läsa och uppdatera alla egenskaper |
+| Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Update | Uppdatera roll tilldelningar för tjänstens huvud namn |
 | Microsoft. Directory/Users/assignLicense | Hantera licenser för användare i Azure Active Directory. |
 | Microsoft. Directory/Users/Basic/Update | Uppdatera grundläggande egenskaper för användare i Azure Active Directory. |
+| Microsoft. Directory/Users/Create | Lägga till användare |
 | Microsoft. Directory/Users/Delete | Ta bort användare i Azure Active Directory. |
+| Microsoft. Directory/användare/inaktivera | Inaktivera användare |
+| Microsoft. Directory/Users/Enable | Aktivera användare |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Ogiltig verifiering av alla användares uppdateringstoken i Azure Active Directory. |
 | Microsoft. Directory/Users/Manager/Update | Uppdatera users. Manager-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Users/Password/Update | Uppdatera lösen ord för alla användare i Azure Active Directory. Mer information finns i onlinedokumentationen. |
@@ -1472,9 +1479,9 @@ Använd inte – inte avsedd för allmän användning.
 | Microsoft. Directory/Users/userPrincipalName/Update | Uppdatera users. userPrincipalName-egenskapen i Azure Active Directory. |
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
-| Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="partner-tier2-support-permissions"></a>Support behörigheter för partner – nivå 2
 
@@ -1498,16 +1505,25 @@ Använd inte – inte avsedd för allmän användning.
 | Microsoft. Directory/Contacts/Basic/Update | Uppdatera grundläggande egenskaper för kontakter i Azure Active Directory. |
 | Microsoft. Directory/kontakter/skapa | Skapa kontakter i Azure Active Directory. |
 | Microsoft. Directory/Contacts/Delete | Ta bort kontakter i Azure Active Directory. |
-| Microsoft. Directory/Domains/allTasks | Skapa och ta bort domäner och läsa och uppdatera standard egenskaper i Azure Active Directory. |
+| Microsoft. Directory/Domains/Basic/allTasks | Skapa och ta bort domäner och läsa och uppdatera standard egenskaper i Azure Active Directory. |
 | Microsoft. Directory/grupper/skapa | Skapa grupper i Azure Active Directory. |
 | Microsoft. Directory/grupper/ta bort | Ta bort grupper i Azure Active Directory. |
 | Microsoft. Directory/grupper/medlemmar/uppdatera | Uppdatera Groups. members-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/grupper/ägare/uppdatera | Uppdatera ägare av grupper, exklusive roll tilldelnings bara grupper |
 | Microsoft. Directory/grupper/Återställ | Återställ grupper i Azure Active Directory. |
+| Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2,0-behörighet bidrag och läsa och uppdatera alla egenskaper |
 | Microsoft. Directory/Organization/Basic/Update | Uppdatera grundläggande egenskaper för organisation i Azure Active Directory. |
-| Microsoft. Directory/Users/appRoleAssignments/Update | Uppdatera users. appRoleAssignments-egenskapen i Azure Active Directory. |
+| Microsoft. Directory/roleAssignments/allProperties/allTasks | Skapa och ta bort roll tilldelningar och läsa och uppdatera alla Roll tilldelnings egenskaper |
+| Microsoft. Directory/roleDefinitions/allProperties/allTasks | Skapa och ta bort roll definitioner och läsa och uppdatera alla egenskaper |
+| Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Skapa och ta bort scopedRoleMemberships och läsa och uppdatera alla egenskaper |
+| Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Update | Uppdatera roll tilldelningar för tjänstens huvud namn |
+| Microsoft. Directory/subscribedSkus/standard/Read | Läsa grundläggande egenskaper för prenumerationer |
 | Microsoft. Directory/Users/assignLicense | Hantera licenser för användare i Azure Active Directory. |
 | Microsoft. Directory/Users/Basic/Update | Uppdatera grundläggande egenskaper för användare i Azure Active Directory. |
+| Microsoft. Directory/Users/Create | Lägga till användare |
 | Microsoft. Directory/Users/Delete | Ta bort användare i Azure Active Directory. |
+| Microsoft. Directory/användare/inaktivera | Inaktivera användare |
+| Microsoft. Directory/Users/Enable | Aktivera användare |
 | Microsoft. Directory/Users/invalidateAllRefreshTokens | Ogiltig verifiering av alla användares uppdateringstoken i Azure Active Directory. |
 | Microsoft. Directory/Users/Manager/Update | Uppdatera users. Manager-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Users/Password/Update | Uppdatera lösen ord för alla användare i Azure Active Directory. Mer information finns i onlinedokumentationen. |
@@ -1515,9 +1531,9 @@ Använd inte – inte avsedd för allmän användning.
 | Microsoft. Directory/Users/userPrincipalName/Update | Uppdatera users. userPrincipalName-egenskapen i Azure Active Directory. |
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
-| Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="password-administrator-permissions"></a>Lösen ords administratörs behörighet
 
@@ -1785,18 +1801,18 @@ Kan hantera alla aspekter av SharePoint-tjänsten.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
-| Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Uppdatera Groups. Unified-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/Basic/Update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/skapa | Skapa Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/ta bort | Ta bort Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/medlemmar/uppdatering | Uppdatera medlemskap i Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/ägare/uppdatering | Uppdatera ägarskap för Microsoft 365 grupper. |
+| Microsoft. Directory/Groups. Unified/Basic/Update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Create | Skapa Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Delete | Ta bort Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/members/Update | Uppdatera medlemskap i Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Owners/Update | Uppdatera ägarskap för Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Restore | Återställ Microsoft 365 grupper |
 | Microsoft. Office365. Network/Performance/allProperties/Read | Läs nätverks prestanda sidor i M365 administrations Center. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 | Microsoft. Office365. SharePoint/upplånade/allTasks | Skapa och ta bort alla resurser och läsa och uppdatera standard egenskaper i Microsoft. Office365. SharePoint. |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
-| Microsoft. Office365. usageReports/upplånade/upplånade/lästa    | Läs Office 365-användnings rapporter. |
-| Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
+| Microsoft. Office365. usageReports/uplånar/allProperties/Read | Läs Office 365-användnings rapporter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="teams-communications-administrator-permissions"></a>Administratörs behörighet för Teams kommunikation
 
@@ -1880,16 +1896,19 @@ Kan hantera Microsoft Teams-tjänsten.
 | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
 | Microsoft. Directory/grupper/hiddenMembers/Read | Läs Groups. hiddenMembers-egenskapen i Azure Active Directory. |
 | Microsoft. Directory/Groups/Unified/appRoleAssignments/Update | Uppdatera Groups. Unified-egenskapen i Azure Active Directory. |
-| Microsoft. Directory/Groups/Unified/Basic/Update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/skapa | Skapa Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/ta bort | Ta bort Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/medlemmar/uppdatering | Uppdatera medlemskap i Microsoft 365 grupper. |
-| Microsoft. Directory/grupper/enhetlig/ägare/uppdatering | Uppdatera ägarskap för Microsoft 365 grupper. |
+| Microsoft. Directory/Groups. Unified/Basic/Update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Create | Skapa Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Delete | Ta bort Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/members/Update | Uppdatera medlemskap i Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Owners/Update | Uppdatera ägarskap för Microsoft 365 grupper. |
+| Microsoft. Directory/grupper. Unified/Restore | Återställ Microsoft 365 grupper |
+| Microsoft. Directory/Service princip ALS/managePermissionGrantsForGroup. Microsoft-all-Application-Permissions | Bevilja medgivande till delegerade behörigheter för en grupps räkning |
 | Microsoft. Office365. Network/Performance/allProperties/Read | Läs nätverks prestanda sidor i M365 administrations Center. |
 | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
+| Microsoft. Office365. skypeForBusiness/uplånar/allTasks | Hantera alla aspekter av Skype för företag – Online |
 | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
-| Microsoft. Office365. usageReports/upplånade/upplånade/lästa | Läs Office 365-användnings rapporter. |
-| Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
+| Microsoft. Office365. usageReports/uplånar/allProperties/Read | Läs Office 365-användnings rapporter. |
+| Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 | Microsoft. Teams/utlånare/allProperties/allTasks | Hantera alla resurser i team. |
 
 ### <a name="usage-summary-reports-reader-permissions"></a>Användning Sammanfattning rapporter läsa behörigheter

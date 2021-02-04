@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70f4ac69721db57aa06c0d8fda12189f43e79686
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736422"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537838"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Skapa en FCI med Azure Shared disks (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,12 +27,12 @@ I den här artikeln förklaras hur du skapar en instans av en redundanskluster (
 
 Mer information finns i Översikt över [FCI med SQL Server på Azure VM](failover-cluster-instance-overview.md) och [kluster metod tips](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar 
 
 Innan du slutför instruktionerna i den här artikeln bör du redan ha:
 
 - En Azure-prenumeration. Kom igång [kostnads fritt](https://azure.microsoft.com/free/). 
-- [Två eller flera virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md). [Tillgänglighets uppsättningar](../../../virtual-machines/windows/tutorial-availability-sets.md) och [närhets placerings grupper](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) som stöds för Premium SSD-och [tillgänglighets zoner](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) stöds för Ultra disks. Om du använder en PPG måste alla noder finnas i samma grupp.
+- [Två eller flera virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md). [Tillgänglighets uppsättningar](../../../virtual-machines/windows/tutorial-availability-sets.md) och [närhets placerings grupper](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPGs) som stöds för Premium SSD-och [tillgänglighets zoner](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) stöds för Ultra disks. Alla noder måste finnas i samma [närhets placerings grupp](../../../virtual-machines/co-location.md#proximity-placement-groups).
 - Ett konto som har behörighet att skapa objekt både på virtuella Azure-datorer och i Active Directory.
 - Den senaste versionen av [PowerShell](/powershell/azure/install-az-ps). 
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702793"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537229"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Beräkna och hantera kapaciteten för en Azure Kognitiv sökning-tjänst
 
@@ -207,6 +207,14 @@ Allmänna rekommendationer för hög tillgänglighet:
 Service avtal (SLA) för Azure Kognitiv sökning riktas mot åtgärder och vid index uppdateringar som består av att lägga till, uppdatera eller ta bort dokument.
 
 Basic-nivån ligger utanför en partition och tre repliker. Om du vill att flexibiliteten omedelbart ska svara på fluktuationer i behov för både indexering och frågans data flöde, bör du överväga en av standard nivåerna.  Om du upptäcker att dina lagrings krav ökar mycket snabbare än din fråga genom att använda en av de optimerade lagrings nivåerna.
+
+## <a name="about-queries-per-second-qps"></a>Om frågor per sekund (frågor per sekund)
+
+På grund av det stora antalet faktorer som går in i fråga om prestanda publicerar Microsoft inte förväntade frågor per sekund-nummer. FRÅGOR per sekund-uppskattningar måste utvecklas oberoende av alla kunder som använder tjänst nivå, konfiguration, index och de fråge konstruktioner som är giltiga för ditt program. Index storlek och komplexitet, fråga om storlek och komplexitet och mängden trafik är primär Determinant av frågor per sekund. Det finns inget sätt att erbjuda meningsfulla uppskattningar när sådana faktorer är okända.
+
+Uppskattningar är mer förutsägbara när de beräknas på tjänster som körs på dedikerade resurser (Basic-och standard-nivåer). Du kan beräkna frågor per sekund mer noggrant eftersom du har kontroll över fler parametrar. Information om hur du använder uppskattning finns i [Azure kognitiv sökning prestanda och optimering](search-performance-optimization.md).
+
+För lagrings optimerade nivåer (L1 och L2) bör du förvänta dig ett lägre flöde för frågor och högre latens än standard-nivåerna.
 
 ## <a name="next-steps"></a>Nästa steg
 

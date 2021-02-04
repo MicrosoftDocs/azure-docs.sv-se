@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2018
+ms.date: 02/03/2020
 ms.author: barclayn
-ms.openlocfilehash: 84a262cae17a4e26724ab06da397e699e09468db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: dca5f9ed2911ae3042fb9871f849212ec18b1b58
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969201"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539391"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Så här slutar du använda tillägget för hanterade identiteter för virtuella datorer och börjar använda Azure-Instance Metadata Service
 
@@ -71,7 +72,7 @@ Om du arbetar med skalnings uppsättningar för virtuella datorer kan du även e
    ```azurepowershell-interactive
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
-   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
+   Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
 Om du vill etablera tillägget för skalnings uppsättning för virtuell dator med mallen för Azure Resource Manager distribution lägger du till följande JSON till `extensionpProfile` -avsnittet i mallen (Använd `ManagedIdentityExtensionForLinux` för namn-och typ element för Linux-versionen).
 
@@ -166,7 +167,7 @@ Om tillägget stoppas i Windows och vissa versioner av Linux kan följande cmdle
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
-Där: 
+Plats: 
 - Tilläggs namn och typ för Windows är: `ManagedIdentityExtensionForWindows`
 - Tilläggs namn och-typ för Linux är: `ManagedIdentityExtensionForLinux`
 

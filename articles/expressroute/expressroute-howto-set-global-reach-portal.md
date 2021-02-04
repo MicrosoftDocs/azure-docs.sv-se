@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 9e943be3544da38788d16e54011e09e1ac3426cc
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8366978d50875389ce872c2d1402f0defa2a7371
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122455"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539357"
 ---
 # <a name="configure-expressroute-global-reach-using-the-azure-portal"></a>Konfigurera ExpressRoute-Global Reach med hjälp av Azure Portal
 
@@ -68,7 +68,7 @@ Om de två kretsarna inte finns i samma Azure-prenumeration behöver du behörig
 
    :::image type="content" source="./media/expressroute-howto-set-global-reach-portal/create-authorization-expressroute-circuit.png" alt-text="Skapa auktoriseringsregel"::: 
 
-   Anteckna ID för privat peering för krets 2 och verifierings nyckeln.
+   Anteckna krets resurs-ID: t för krets 2 och verifierings nyckeln.
 
 1. Välj **Azures privata** peering-konfiguration. 
 

@@ -7,36 +7,130 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695788"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537314"
 ---
-# <a name="security-in-azure-cognitive-search---overview"></a>Säkerhet i Azure Kognitiv sökning – översikt
+# <a name="security-overview-for-azure-cognitive-search"></a>Säkerhets översikt för Azure Kognitiv sökning
 
 I den här artikeln beskrivs säkerhetsfunktionerna i Azure Kognitiv sökning som skyddar innehåll och åtgärder.
 
-+ På lagrings nivån är data krypteringen inbyggd för allt tjänst hanterat innehåll som sparas till disk, inklusive index, synonym mappningar och definitioner av indexerare, data källor och färdighetsuppsättningar. Alternativt kan du lägga till Kundhanterade nycklar (CMK) för kompletterande kryptering av indexerat innehåll. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar, för fullständig "dubbel kryptering" av indexerat innehåll.
+För inkommande begär Anden som görs till en Sök tjänst finns det ett förlopp för säkerhets åtgärder som skyddar Sök tjänstens slut punkt: från API-nycklar på begäran till inkommande regler i brand väggen, till privata slut punkter som helt skyddar din tjänst från det offentliga Internet.
 
-+ Inkommande säkerhet syftar på skydd på Sök tjänstens slut punkt vid ökande säkerhets nivåer: från API-nycklar på begäran till inkommande regler i brand väggen till privata slut punkter som helt skyddar din tjänst från det offentliga Internet.
+För utgående begär Anden som görs till andra tjänster görs den dominerande begäran av indexerare som läser innehåll från externa källor. Du kan ange autentiseringsuppgifter för anslutnings strängen. Eller så kan du konfigurera en hanterad identitet för att söka i en betrodd tjänst vid åtkomst till data från Azure Storage, Azure SQL, Cosmos DB eller andra Azure-datakällor. En hanterad identitet är en ersättning för autentiseringsuppgifter eller åtkomst nycklar på anslutningen. Mer information om den här funktionen finns i [Anslut till en data källa med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md).
 
-+ Utgående säkerhet relaterar till indexerare som hämtar innehåll från externa källor. För utgående begär Anden ställer du in en hanterad identitet för att söka efter en betrodd tjänst vid åtkomst till data från Azure Storage, Azure SQL, Cosmos DB eller andra Azure-datakällor. En hanterad identitet är en ersättning för autentiseringsuppgifter eller åtkomst nycklar på anslutningen. Utgående säkerhet beskrivs inte i den här artikeln. Mer information om den här funktionen finns i [Anslut till en data källa med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md).
+Skriv åtgärder till externa tjänster: en Sök tjänst skriver till loggfiler och skriver till Azure Storage när du skapar kunskaps lager, bevarar cachelagrade berikade berikade och bevarar fel söknings sessioner. Andra tjänst-till-tjänst-anrop, till exempel Cognitive Services, görs i det interna nätverket.
 
 Titta på den här videon med snabb takt för en översikt över säkerhets arkitekturen och varje funktions kategori.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+## <a name="network-security"></a>Nätverkssäkerhet
+
+<a name="service-access-and-authentication"></a>
+
+Inkommande säkerhetsfunktioner skyddar Sök tjänstens slut punkt genom att öka säkerhets-och komplexitets nivåerna. För det första krävs en API-nyckel för autentiserad åtkomst för alla begär Anden. För det andra kan du ange brand Väggs regler som begränsar åtkomsten till vissa IP-adresser. För avancerat skydd är ett tredje alternativ att aktivera Azures privata länk för att skydda tjänstens slut punkt från all Internet trafik.
+
+### <a name="public-access-using-api-keys"></a>Offentlig åtkomst med API-nycklar
+
+Som standard nås en Sök tjänst via det offentliga molnet med hjälp av nyckelbaserad autentisering för administratörs-eller frågans åtkomst till Sök tjänstens slut punkt. Inlämning av en giltig nyckel betraktas som bevis för att begäran härstammar från en betrodd entitet. Nyckelbaserad autentisering beskrivs i nästa avsnitt.
+
+### <a name="configure-ip-firewalls"></a>Konfigurera IP-brandväggar
+
+Om du vill kontrol lera åtkomsten till din Sök tjänst ytterligare kan du skapa ingående brand Väggs regler som tillåter åtkomst till en speciell IP-adress eller ett intervall med IP-adresser. Alla klient anslutningar måste göras via en tillåten IP-adress, annars nekas anslutningen.
+
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="diagram över exempel arkitektur för begränsad åtkomst till IP":::
+
+Du kan använda portalen för att [Konfigurera inkommande åtkomst](service-configure-firewall.md).
+
+Du kan också använda REST-API: er för hantering. Från och med API version 2020-03-13, med parametern [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) , kan du begränsa åtkomsten till din tjänst genom att identifiera IP-adresser, individuellt eller i ett intervall, som du vill bevilja åtkomst till din Sök tjänst.
+
+### <a name="network-isolation-through-a-private-endpoint-no-internet-traffic"></a>Nätverks isolering via en privat slut punkt (ingen Internet trafik)
+
+Du kan upprätta en [privat slut punkt](../private-link/private-endpoint-overview.md) för Azure kognitiv sökning tillåta en klient i ett [virtuellt nätverk](../virtual-network/virtual-networks-overview.md) att säkert komma åt data i ett sökindex över en [privat länk](../private-link/private-link-overview.md).
+
+Den privata slut punkten använder en IP-adress från det virtuella nätverkets adress utrymme för anslutningar till din Sök tjänst. Nätverks trafiken mellan klienten och Sök tjänsten passerar över det virtuella nätverket och en privat länk i Microsoft stamnät nätverket, vilket eliminerar exponering från det offentliga Internet. Ett VNET möjliggör säker kommunikation mellan resurser, med ditt lokala nätverk och Internet.
+
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="diagram över exempel arkitektur för åtkomst till privat slut punkt":::
+
+Även om den här lösningen är den säkraste, är användningen av ytterligare tjänster en extra kostnad, så se till att du har en tydlig förståelse av fördelarna innan du simhopp i. eller mer information om kostnader finns på [sidan med priser](https://azure.microsoft.com/pricing/details/private-link/). Mer information om hur dessa komponenter fungerar tillsammans finns på videon överst i den här artikeln. Täckning av privat slut punkts alternativ börjar på 5:48 i videon. Instruktioner för hur du konfigurerar slut punkten finns i [skapa en privat slut punkt för Azure kognitiv sökning](service-create-private-endpoint.md).
+
+## <a name="authentication"></a>Autentisering
+
+För inkommande begär anden till Sök tjänsten sker autentiseringen via en [obligatorisk API-nyckel](search-security-api-keys.md) (en sträng som består av slumpmässigt genererade siffror och bokstäver) som visar att begäran kommer från en betrodd källa. Kognitiv sökning stöder för närvarande inte Azure Active Directory autentisering för inkommande begär Anden.
+
+Utgående begär Anden som görs av en indexerare omfattas av autentisering av den externa tjänsten. Under tjänsten indexerare i Kognitiv sökning kan göras till en betrodd tjänst på Azure och ansluta till andra tjänster med hjälp av en hanterad identitet. Mer information finns i [Konfigurera en indexerare-anslutning till en data källa med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md).
+
+## <a name="authorization"></a>Auktorisering
+
+Kognitiv sökning tillhandahåller olika auktoriserings modeller för innehålls hantering och tjänst hantering. 
+
+### <a name="authorization-for-content-management"></a>Auktorisering för innehålls hantering
+
+Auktorisering av innehåll och åtgärder relaterade till innehåll är antingen skriv åtkomst, som härleds genom [API-nyckeln](search-security-api-keys.md) som anges i begäran. API-nyckeln är en autentiseringsmekanism, men kan även ge åtkomst beroende på typen av API-nyckel.
+
++ Administratörs nyckel (tillåter Läs-och Skriv behörighet för Create-Read-Update-Delete-Delete-Delete på Search Service), som skapas när tjänsten är etablerad
+
++ Fråga efter nyckel (tillåter skrivskyddad åtkomst till dokument samlingen för ett index), skapad som de behövs och är utformade för klient program som utfärdar frågor
+
+I program kod anger du slut punkten och en API-nyckel för att tillåta åtkomst till innehåll och alternativ. En slut punkt kan vara själva tjänsten, index samlingen, ett enskilt index, en dokument samling eller ett enskilt dokument. Vid länkning tillsammans utgör slut punkten, åtgärden (till exempel en begäran om att skapa eller uppdatera) och behörighets nivån (fullständig eller skrivskyddad behörighet baserat på nyckeln) den säkerhets formel som skyddar innehåll och åtgärder.
+
+### <a name="controlling-access-to-indexes"></a>Kontrol lera åtkomst till index
+
+I Azure Kognitiv sökning är ett enskilt index inte ett skydds Bart objekt. I stället fastställs åtkomst till ett index på tjänst lagret (Läs-eller skriv åtkomst baserat på vilken API-nyckel du anger), tillsammans med kontexten för en åtgärd.
+
+För skrivskyddad åtkomst kan du strukturera förfrågningar om att ansluta med hjälp av en [sessionsnyckel](search-security-rbac.md)och inkludera det speciella index som används av din app. I en förfrågan finns det ingen idé att koppla index eller att komma åt flera index samtidigt, så att alla begär Anden är riktade mot ett enda index med definition. Därför definierar själva begäran (en nyckel plus ett enskilt mål index) säkerhets gränserna.
+
+Administratörs-och utvecklarens åtkomst till index är inte differentierad: båda behöver Skriv behörighet för att skapa, ta bort och uppdatera objekt som hanteras av tjänsten. Alla med en [Administratörs nyckel](search-security-rbac.md) till din tjänst kan läsa, ändra eller ta bort alla index i samma tjänst. För att skydda mot oavsiktlig eller skadlig borttagning av index, är din interna käll kontroll för kod till gångar en påföljd för att återföra en oönskad index borttagning eller ändring. Azure Kognitiv sökning har redundans i klustret för att säkerställa tillgängligheten, men den lagrar eller kör inte din egna kod som används för att skapa eller läsa in index.
+
+För lösningar med flera innehavare som kräver säkerhets gränser på index nivån omfattar sådana lösningar vanligt vis en mellan nivå, som kunder använder för att hantera index isolering. Mer information om användnings fallet för flera innehavare finns i [design mönster för SaaS-program för flera innehavare och Azure kognitiv sökning](search-modeling-multitenant-saas-applications.md).
+
+### <a name="controlling-access-to-documents"></a>Kontrol lera åtkomst till dokument
+
+Om du behöver detaljerad kontroll över varje användare över Sök resultat kan du bygga säkerhets filter på dina frågor och returnera dokument som är associerade med en viss säkerhets identitet. 
+
+Till följd av "säkerhet på radnivå", stöds inte behörighet till innehåll i indexet med fördefinierade roller eller roll tilldelningar som mappar till entiteter i Azure Active Directory. Alla användar behörigheter för data i externa system, till exempel Cosmos DB, överförs inte med dessa data som indexeras av Kognitiv sökning.
+
+Lösningar för lösningar som kräver "säkerhet på radnivå" inkluderar att skapa ett fält i data källan som representerar en säkerhets grupp eller användar identitet och sedan använda filter i Kognitiv sökning för att selektivt trimma Sök Resultat från dokument och innehåll baserat på identiteter. I följande tabell beskrivs två metoder för att trimma Sök Resultat av obehörigt innehåll.
+
+| Metod | Description |
+|----------|-------------|
+|[Säkerhets trimning baserat på identitets filter](search-security-trimming-for-azure-search.md)  | Dokumenterar det grundläggande arbets flödet för att implementera åtkomst kontroll för användar identitet. Det omfattar att lägga till säkerhets identifierare i ett index och sedan förklarar filtreringen för fältet för att trimma resultat från otillåtet innehåll. |
+|[Säkerhets trimning baserat på Azure Active Directory identiteter](search-security-trimming-for-azure-search-with-aad.md)  | Den här artikeln visar hur du hämtar identiteter från Azure Active Directory (Azure AD), en av de [kostnads fria tjänsterna](https://azure.microsoft.com/free/) i Azure Cloud Platform. |
+
+### <a name="authorization-for-service-management"></a>Auktorisering för Service Management
+
+Service Management-åtgärder auktoriseras via [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md). Azure RBAC är ett auktoriserings system som bygger på [Azure Resource Manager](../azure-resource-manager/management/overview.md) för etablering av Azure-resurser. 
+
+I Azure Kognitiv sökning används Resource Manager för att skapa eller ta bort tjänsten, hantera API-nycklar och skala tjänsten. Därför avgör Azure Role-tilldelningar vilka som kan utföra dessa uppgifter, oavsett om de använder [portalen](search-manage.md), [POWERSHELL](search-manage-powershell.md)eller [hantering REST-API: er](/rest/api/searchmanagement/search-howto-management-rest-api).
+
+[Tre grundläggande roller](search-security-rbac.md#management-tasks-by-role) definieras för Sök tjänstens administration. Roll tilldelningarna kan göras med hjälp av en metod som stöds (portal, PowerShell och så vidare) och omfattas av hela tjänsten. Rollen ägare och deltagare kan utföra olika administrations funktioner. Du kan tilldela rollen läsare till användare som bara visar viktig information.
+
+> [!Note]
+> Med hjälp av Azure-omfattande mekanismer kan du låsa en prenumeration eller resurs för att förhindra oavsiktlig eller obehörig borttagning av Sök tjänsten av användare med administratörs behörighet. Mer information finns i [låsa resurser för att förhindra oväntad borttagning](../azure-resource-manager/management/lock-resources.md).
+
+## <a name="threat-protection"></a>Hotskydd
+
+Åtkomst till innehåll i en Sök tjänst är enbart via frågor. Om Sök tjänsten är målet för en fråga, släpper systemet frågor när systemet närmar sig högsta kapacitet. 
+
+Begränsningen fungerar på olika sätt för olika API: er. API: er för frågor (Sök/föreslå/komplettera om) och indexerings-API: er begränsar dynamiskt baserat på belastningen på tjänsten. Index-API: er och service åtgärds-API: et har begränsningar för statisk begäran. Du kan granska gränserna för den statiska hastigheten i [begränsnings gränser](search-limits-quotas-capacity.md#throttling-limits). Mer information om begränsnings beteende finns i [övervaka fråge förfrågningar](search-monitor-queries.md).
+
 <a name="encryption"></a>
 
-## <a name="encrypted-transmissions-and-storage"></a>Krypterad överföring och lagring
+## <a name="data-protection"></a>Dataskydd
+
+På lagrings nivån skapas data kryptering för allt tjänst hanterat innehåll som sparas på disk, inklusive index, synonym mappningar och definitioner av indexerare, data källor och färdighetsuppsättningar. Alternativt kan du lägga till Kundhanterade nycklar (CMK) för kompletterande kryptering av indexerat innehåll. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar, för fullständig "dubbel kryptering" av indexerat innehåll.
+
+### <a name="data-in-transit"></a>Data under överföring
 
 I Azure Kognitiv sökning börjar krypteringen med anslutningar och överföring och utökar till innehåll som lagras på disk. För Sök tjänster på det offentliga Internet lyssnar Azure Kognitiv sökning på HTTPS-port 443. Alla klient-till-tjänst-anslutningar använder TLS 1,2-kryptering. Tidigare versioner (1,0 eller 1,1) stöds inte.
 
-:::image type="content" source="media/search-security-overview/encryption-at-rest-cmk.png" alt-text="diagram som illustrerar olika typer av säkerhet på varje nivå av service engagemang":::
+### <a name="encrypted-data-at-rest"></a>Krypterade data i vila
 
 I följande tabell beskrivs [data krypterings modeller](../security/fundamentals/encryption-models.md)för data som hanteras internt av Sök tjänsten. Vissa funktioner, till exempel kunskaps lager, stegvis anrikning och indexerad indexering, läses från eller skrivs till data strukturer i andra Azure-tjänster. Dessa tjänster har sina egna nivåer av krypterings stöd separat från Azure Kognitiv sökning.
 
@@ -68,81 +162,21 @@ Double Encryption är för närvarande tillgängligt för nya tjänster som skap
 + US Gov, Virginia
 + US Gov, Arizona
 
-<a name="service-access-and-authentication"></a>
+## <a name="security-management"></a>Säkerhetshantering
 
-## <a name="inbound-security-and-endpoint-protection"></a>Inkommande säkerhet och Endpoint Protection
+### <a name="api-keys"></a>API-nycklar
 
-Inkommande säkerhetsfunktioner skyddar Sök tjänstens slut punkt genom att öka säkerhets-och komplexitets nivåerna. För det första krävs en API-nyckel för autentiserad åtkomst för alla begär Anden. För det andra kan du ange brand Väggs regler som begränsar åtkomsten till vissa IP-adresser. För avancerat skydd är ett tredje alternativ att aktivera Azures privata länk för att skydda tjänstens slut punkt från all Internet trafik.
+Beroende av API-nyckelbaserad autentisering innebär att du bör ha en plan för att återskapa administratörs nyckeln med jämna mellanrum, enligt metod tips för Azure-säkerhet. Det finns högst två administrations nycklar per Sök tjänst. Mer information om hur du skyddar och hanterar API-nycklar finns i [skapa och hantera API-nycklar](search-security-api-keys.md).
 
-### <a name="public-access-using-api-keys"></a>Offentlig åtkomst med API-nycklar
+#### <a name="activity-and-diagnostic-logs"></a>Aktivitets- och diagnostikloggar
 
-Som standard nås en Sök tjänst via det offentliga molnet med hjälp av nyckelbaserad autentisering för administratörs-eller frågans åtkomst till Sök tjänstens slut punkt. En [API-nyckel](search-security-rbac.md) är en sträng som består av slumpmässigt genererade siffror och bokstäver. Typ av nyckel (administratör eller fråga) fastställer åtkomst nivån. Inlämning av en giltig nyckel betraktas som bevis för att begäran härstammar från en betrodd entitet.
+Kognitiv sökning loggar inte användar identiteter, så du kan inte referera till loggar för information om en speciell användare. Tjänsten registrerar dock åtgärder för att skapa, läsa, uppdatera och ta bort, som du kanske kan korrelera med andra loggar för att förstå byrån för vissa åtgärder.
 
-Det finns två åtkomst nivåer till din Sök tjänst, som aktive ras med följande API-nycklar:
+Med hjälp av aviseringar och loggnings infrastrukturen i Azure kan du hämta volym toppar eller andra åtgärder som avviker från förväntade arbets belastningar. Mer information om hur du konfigurerar loggar finns i [samla in och analysera logg data](search-monitor-logs.md) och [övervaka fråge förfrågningar](search-monitor-queries.md).
 
-+ Administratörs nyckel (tillåter Läs-och skriv åtkomst för [create-Read-Update-Delete-Delete-Delete-](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) åtgärder på Sök tjänsten)
+### <a name="certifications-and-compliance"></a>Certifieringar och efterlevnad
 
-+ Fråga efter nyckel (tillåter skrivskyddad åtkomst till dokument samlingen för ett index)
-
-*Administratörs nycklar* skapas när tjänsten är etablerad. Det finns två administratörs nycklar som anges som *primär* och *sekundär* för att hålla dem direkt, men i själva verket är de utbytbara. Varje tjänst har två administratörs nycklar så att du kan återställa en över utan att förlora åtkomsten till tjänsten. Du kan [Återskapa administratörs nyckeln](search-security-api-keys.md#regenerate-admin-keys) regelbundet enligt rekommendationer för Azure-säkerhet, men du kan inte lägga till det totala antalet admin-nycklar. Det finns högst två administrations nycklar per Sök tjänst.
-
-*Frågeinställningar* skapas som de behövs och är utformade för klient program som utfärdar frågor. Du kan skapa upp till 50 frågeinställningar. I program kod anger du Sök-URL och en fråge-API-nyckel för att tillåta skrivskyddad åtkomst till dokument samlingen för ett särskilt index. Tillsammans är slut punkten, en API-nyckel för skrivskyddad åtkomst och ett mål index som definierar omfattning och åtkomst nivå för anslutningen från klient programmet.
-
-Autentisering krävs för varje begäran, där varje begäran består av en obligatorisk nyckel, en åtgärd och ett objekt. Vid samman koppling är de två behörighets nivåerna (fullständig eller skrivskyddad) plus kontexten (till exempel en fråga-åtgärd för ett index) tillräckliga för att tillhandahålla fullständig säkerhet för tjänst åtgärder. Mer information om nycklar finns i [skapa och hantera API-nycklar](search-security-api-keys.md).
-
-### <a name="ip-restricted-access"></a>IP-begränsad åtkomst
-
-Om du vill kontrol lera åtkomsten till din Sök tjänst ytterligare kan du skapa ingående brand Väggs regler som tillåter åtkomst till en speciell IP-adress eller ett intervall med IP-adresser. Alla klient anslutningar måste göras via en tillåten IP-adress, annars nekas anslutningen.
-
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="diagram över exempel arkitektur för begränsad åtkomst till IP":::
-
-Du kan använda portalen för att [Konfigurera inkommande åtkomst](service-configure-firewall.md).
-
-Du kan också använda REST-API: er för hantering. Från och med API version 2020-03-13, med parametern [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) , kan du begränsa åtkomsten till din tjänst genom att identifiera IP-adresser, individuellt eller i ett intervall, som du vill bevilja åtkomst till din Sök tjänst.
-
-### <a name="private-endpoint-no-internet-traffic"></a>Privat slut punkt (ingen Internet trafik)
-
-En [privat slut punkt](../private-link/private-endpoint-overview.md) för Azure kognitiv sökning tillåter en klient i ett [virtuellt nätverk](../virtual-network/virtual-networks-overview.md) att säkert komma åt data i ett sökindex över en [privat länk](../private-link/private-link-overview.md).
-
-Den privata slut punkten använder en IP-adress från det virtuella nätverkets adress utrymme för anslutningar till din Sök tjänst. Nätverks trafiken mellan klienten och Sök tjänsten passerar över det virtuella nätverket och en privat länk i Microsoft stamnät nätverket, vilket eliminerar exponering från det offentliga Internet. Ett VNET möjliggör säker kommunikation mellan resurser, med ditt lokala nätverk och Internet.
-
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="diagram över exempel arkitektur för åtkomst till privat slut punkt":::
-
-Även om den här lösningen är den säkraste, är användningen av ytterligare tjänster en extra kostnad, så se till att du har en tydlig förståelse av fördelarna innan du simhopp i. eller mer information om kostnader finns på [sidan med priser](https://azure.microsoft.com/pricing/details/private-link/). Mer information om hur dessa komponenter fungerar tillsammans finns på videon överst i den här artikeln. Täckning av privat slut punkts alternativ börjar på 5:48 i videon. Instruktioner för hur du konfigurerar slut punkten finns i [skapa en privat slut punkt för Azure kognitiv sökning](service-create-private-endpoint.md).
-
-## <a name="index-access"></a>Index åtkomst
-
-I Azure Kognitiv sökning är ett enskilt index inte ett skydds Bart objekt. I stället fastställs åtkomst till ett index på tjänst lagret (Läs-eller skriv åtkomst till tjänsten), tillsammans med kontexten för en åtgärd.
-
-För slut användar åtkomst kan du strukturera förfrågningar om att ansluta med hjälp av en [frågegrupp](search-security-rbac.md), som gör begäran skrivskyddad och inkludera det särskilda index som används av din app. I en förfrågan finns det ingen idé att koppla index eller att komma åt flera index samtidigt, så att alla begär Anden är riktade mot ett enda index med definition. Därför definierar själva begäran (en nyckel plus ett enskilt mål index) säkerhets gränserna.
-
-Administratörs-och utvecklarens åtkomst till index är inte differentierad: båda behöver Skriv behörighet för att skapa, ta bort och uppdatera objekt som hanteras av tjänsten. Alla med en [Administratörs nyckel](search-security-rbac.md) till din tjänst kan läsa, ändra eller ta bort alla index i samma tjänst. För att skydda mot oavsiktlig eller skadlig borttagning av index, är din interna käll kontroll för kod till gångar en påföljd för att återföra en oönskad index borttagning eller ändring. Azure Kognitiv sökning har redundans i klustret för att säkerställa tillgängligheten, men den lagrar eller kör inte din egna kod som används för att skapa eller läsa in index.
-
-För lösningar med flera innehavare som kräver säkerhets gränser på index nivån omfattar sådana lösningar vanligt vis en mellan nivå, som kunder använder för att hantera index isolering. Mer information om användnings fallet för flera innehavare finns i [design mönster för SaaS-program för flera innehavare och Azure kognitiv sökning](search-modeling-multitenant-saas-applications.md).
-
-## <a name="user-access"></a>Användaråtkomst
-
-Hur en användare kommer åt ett index och andra objekt bestäms av typen av API-nyckel i begäran. De flesta utvecklare skapar och tilldelar [frågeinställningar](search-security-api-keys.md) för Sök begär Anden på klient sidan. En frågegrupp beviljar skrivskyddad åtkomst till sökbart innehåll i indexet.
-
-Om du behöver detaljerad kontroll över varje användare över Sök resultat kan du bygga säkerhets filter på dina frågor och returnera dokument som är associerade med en viss säkerhets identitet. I stället för fördefinierade roller och roll tilldelningar implementeras identitetsbaserade åtkomst kontroller som ett *filter* som trimmar Sök Resultat för dokument och innehåll baserat på identiteter. I följande tabell beskrivs två metoder för att trimma Sök Resultat av obehörigt innehåll.
-
-| Metod | Beskrivning |
-|----------|-------------|
-|[Säkerhets trimning baserat på identitets filter](search-security-trimming-for-azure-search.md)  | Dokumenterar det grundläggande arbets flödet för att implementera åtkomst kontroll för användar identitet. Det omfattar att lägga till säkerhets identifierare i ett index och sedan förklarar filtreringen för fältet för att trimma resultat från otillåtet innehåll. |
-|[Säkerhets trimning baserat på Azure Active Directory identiteter](search-security-trimming-for-azure-search-with-aad.md)  | Den här artikeln visar hur du hämtar identiteter från Azure Active Directory (Azure AD), en av de [kostnads fria tjänsterna](https://azure.microsoft.com/free/) i Azure Cloud Platform. |
-
-## <a name="administrative-rights"></a>Administrativa rättigheter
-
-[Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md) är ett auktoriserings system som bygger på [Azure Resource Manager](../azure-resource-manager/management/overview.md) för etablering av Azure-resurser. I Azure Kognitiv sökning används Resource Manager för att skapa eller ta bort tjänsten, hantera API-nycklar och skala tjänsten. Därför avgör Azure Role-tilldelningar vilka som kan utföra dessa uppgifter, oavsett om de använder [portalen](search-manage.md), [POWERSHELL](search-manage-powershell.md)eller [hantering REST-API: er](/rest/api/searchmanagement/search-howto-management-rest-api).
-
-Administratörs rättigheter över innehåll som är värd för tjänsten, till exempel möjligheten att skapa eller ta bort ett index, härleds genom API-nycklar enligt beskrivningen i [föregående avsnitt](#index-access).
-
-> [!TIP]
-> Med hjälp av Azure-omfattande mekanismer kan du låsa en prenumeration eller resurs för att förhindra oavsiktlig eller obehörig borttagning av Sök tjänsten av användare med administratörs behörighet. Mer information finns i [låsa resurser för att förhindra oväntad borttagning](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="certifications-and-compliance"></a>Certifieringar och efterlevnad
-
-Azure Kognitiv sökning har certifierats vara kompatibel för flera globala, regionala och branschspecifika standarder för både det offentliga molnet och Azure Government. För den fullständiga listan hämtar du [fakta bladet om **Microsoft Azure regelefterlevnad**](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) från sidan officiella gransknings rapporter.
+Azure Kognitiv sökning deltar i vanliga revisioner och har certifierats mot ett antal globala, regionala och branschspecifika standarder för både det offentliga molnet och Azure Government. För den fullständiga listan hämtar du [fakta bladet om **Microsoft Azure regelefterlevnad**](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) från sidan officiella gransknings rapporter.
 
 Om du vill ha kompatibilitet kan du använda [Azure policy](../governance/policy/overview.md) för att implementera de bästa metoderna för säkerhet i [Azure](../security/benchmarks/introduction.md). Azure Security Benchmark är en samling säkerhets rekommendationer, som du kan använda för att mäta säkerhets kontroller som mappar till viktiga åtgärder som du bör vidta för att minimera hot mot tjänster och data. Det finns för närvarande 11 säkerhets kontroller, inklusive [nätverks säkerhet](../security/benchmarks/security-control-network-security.md), [loggning och övervakning](../security/benchmarks/security-control-logging-monitoring.md)och [data skydd](../security/benchmarks/security-control-data-protection.md) för att ge ett fåtal.
 

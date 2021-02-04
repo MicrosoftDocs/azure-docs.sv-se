@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 26012b23a10f560158e3ba3919e12f5c15759189
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555907"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539323"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrera och skanna en lokal SQL Server
 
@@ -50,21 +50,17 @@ Det finns bara ett sätt att konfigurera autentisering för SQL Server lokalt:
 
 ### <a name="sql-authentication"></a>SQL-autentisering
 
-SQL-identiteten måste ha åtkomst till den primära databasen. Den här platsen är `sys.databases` lagrad. Avdelningens kontroll-skannern måste räkna upp för `sys.databases` att hitta alla SQL DB-instanser på servern.
+SQL-kontot måste ha åtkomst till **huvud** databasen. Detta beror på att `sys.databases` finns i huvud databasen. Avdelningens kontroll-skannern måste räknas upp för `sys.databases` att det ska gå att hitta alla SQL-databaser på servern.
 
 #### <a name="using-an-existing-server-administrator"></a>Använda en befintlig Server administratör
 
 Om du planerar att använda en befintlig server administratörs användare (sa) för att söka igenom din lokala SQL Server kontrollerar du följande:
 
-1. `sa` är inte av typen Windows-autentisering.
+1. `sa` är inte ett Windows-konto för autentisering.
 
-2. Den server nivå användare som du planerar att använda måste ha Server roller som offentliga och sysadmin. Du kan kontrol lera detta genom att navigera till SQL Server Management Studio (SSMS), ansluta till servern, navigera till säkerhet, välja den inloggning som du planerar att använda, högerklicka på **Egenskaper** och sedan välja **Server roller**.
+2. Den inloggning på server nivå som du planerar att använda måste ha Server roller för offentliga och sysadmin. Du kan kontrol lera detta genom att ansluta till servern, navigera till SQL Server Management Studio (SSMS), navigera till säkerhet, välja den inloggning som du planerar att använda, högerklicka på **Egenskaper** och sedan välja **Server roller**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="Inloggning på server nivå.":::
-
-3. Databaserna mappas till en användare som har minst db_datareader nivå åtkomst på varje databas.
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping-sa.png" alt-text="användar mappning för sa.":::
 
 #### <a name="creating-a-new-login-and-user"></a>Skapa en ny inloggning och användare
 
@@ -74,9 +70,9 @@ Följ stegen nedan om du vill skapa en ny inloggning och användare för att kun
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="Skapa ny inloggning och användare.":::
 
-2. Välj Server roller i det vänstra navigerings fältet och välj både offentlig och sysadmin.
+2. Välj Server roller i det vänstra navigerings fältet och kontrol lera att den offentliga rollen är tilldelad.
 
-3. Välj användar mappning i det vänstra navigerings fältet och välj alla databaser på kartan.
+3. Välj användar mappning i det vänstra navigerings fältet, Välj alla databaser på kartan och välj databas rollen: **db_datareader**.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="användar mappning.":::
 
@@ -88,8 +84,7 @@ Följ stegen nedan om du vill skapa en ny inloggning och användare för att kun
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>Lagra lösen ordet för SQL-inloggning i ett nyckel valv och skapa en autentiseringsuppgift i avdelningens kontroll
 
-1. Navigera till ditt nyckel valv i Azure Portal
-1. Välj **inställningar > hemligheter**
+1. Navigera till ditt nyckel valv i Azure-portal1. Välj **inställningar > hemligheter**
 1. Välj **+ generera/importera** och ange **namn** och **värde** som *lösen ord* från din SQL Server-inloggning
 1. Välj **skapa** för att slutföra
 1. Om nyckel valvet inte är anslutet till avdelningens kontroll måste du [skapa en ny nyckel valv anslutning](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)

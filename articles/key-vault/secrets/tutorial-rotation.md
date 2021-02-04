@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 61e1e729ab0aeac1f7b8e5ee6787da38c5fef108
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020153"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539407"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som använder en uppsättning autentiseringsuppgifter för autentisering
 
@@ -45,7 +45,7 @@ Nedan kan du använda distributions länken, om du inte har befintliga Key Vault
 
 [![Bild som visar en knapp med etiketten "distribuera till Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Under **resurs grupp** väljer du **Skapa ny**. Namnge gruppen **akvrotation**.
+1. Under **resurs grupp** väljer du **Skapa ny**. Ge grupp ett namn, vi använder **akvrotation** i den här självstudien.
 1. Under **SQL admin-inloggning** skriver du SQL Administrator inloggnings namn. 
 1. Välj **Granska + skapa**.
 1. Välj **Skapa**
@@ -248,7 +248,7 @@ Gå till den distribuerade program-URL: en:
 
 När programmet öppnas i webbläsaren visas det **genererade hemliga värdet** och värdet *Sant* för **databas anslutet** .
 
-## <a name="learn-more"></a>Mer information
+## <a name="learn-more"></a>Läs mer
 
 - Självstudie: [rotation för resurser med två uppsättningar autentiseringsuppgifter](tutorial-rotation-dual.md)
 - Översikt: [övervaka Key Vault med Azure Event Grid](../general/event-grid-overview.md)

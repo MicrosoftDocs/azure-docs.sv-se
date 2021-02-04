@@ -2,13 +2,13 @@
 title: Koncept – lagring
 description: Lär dig mer om nyckel lagrings funktionerna i privata moln i Azure VMware-lösningar.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: da5117de4b066fd9872558fa6d018ab898a576f4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.date: 02/02/2021
+ms.openlocfilehash: 522e4f651b36532ac0c144b3889b2b67c91dc77b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509229"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536958"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Lagrings koncept för Azure VMware-lösningar
 
@@ -32,11 +32,11 @@ Virtuellt San-datalager använder kryptering av data i vila som standard. Krypte
 
 ## <a name="scaling"></a>Skalning
 
-Intern kluster lagrings kapacitet skalas genom att lägga till värdar i ett kluster. För kluster som använder våra värdar ökas kapaciteten för den obearbetade klustret med 15,4 TB med varje ytterligare värd. Kluster som har skapats med GP-värdar har sin RAW-kapacitet ökad med 7,7 TB med varje ytterligare värd. I båda typerna av kluster tar värdar cirka 10 minuter att lägga till i ett kluster. Instruktioner för hur du skalar kluster finns i [själv studie kursen för att skala privat moln][tutorial-scale-private-cloud].
+Intern kluster lagrings kapacitet skalas genom att lägga till värdar i ett kluster. För kluster som använder våra värdar ökas kapaciteten för den obearbetade klustret med 15,4 TB med varje tillagd värd. Kluster som har skapats med GP-värdar har sin RAW-kapacitet ökad med 7,7 TB med varje tillagd värd. I båda typerna av kluster tar värdar cirka 10 minuter att lägga till i ett kluster. Instruktioner för hur du skalar kluster finns i [själv studie kursen för att skala privat moln][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Integrering av Azure Storage
 
-Du kan använda Azure Storage-tjänster på arbets belastningar som körs i ditt privata moln. Azure Storage-tjänsterna omfattar lagrings konton, Table Storage och Blob Storage. Anslutningen av arbets belastningar till Azure Storage-tjänster passerar inte Internet. Den här anslutningen ger ytterligare säkerhet och gör att du kan använda SLA-baserade Azure Storage-tjänster i dina privata moln arbets belastningar.
+Du kan använda Azure Storage-tjänster på arbets belastningar som körs i ditt privata moln. Azure Storage-tjänsterna omfattar lagrings konton, Table Storage och Blob Storage. Anslutningen av arbets belastningar till Azure Storage-tjänster passerar inte Internet. Den här anslutningen ger högre säkerhet och gör att du kan använda SLA-baserade Azure Storage-tjänster i dina privata moln arbets belastningar.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 03ed47ee97f52aca708118f202fad583753549bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331227"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537753"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Självstudie: lägga till en anpassad domän i din slut punkt
 
@@ -163,6 +163,10 @@ Skapa en CNAME-post för den anpassade domänen:
 
 När du har registrerat din anpassade domän kan du lägga till den i din CDN-slutpunkt. 
 
+
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal)
+
 1. Logga in på [Azure Portal](https://portal.azure.com/) och navigera till den CDN-profil som innehåller den slutpunkt du vill mappa till en anpassad domän.
     
 2. På sidan **CDN-profil** väljer du den CDN-slutpunkt som du vill associera med den anpassade domänen.
@@ -173,7 +177,7 @@ När du har registrerat din anpassade domän kan du lägga till den i din CDN-sl
 
    :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png" alt-text="Knappen Lägg till anpassad domän" border="true":::
 
-4. I **Lägg till en anpassad domän** , fylls **slut punktens värdnamn** i i förväg och härleds från CDN-slutpunktens URL: **\<endpoint-hostname>** . azureedge.net. Det kan inte ändras.
+4. I **Lägg till en anpassad domän**, fylls **slut punktens värdnamn** i i förväg och härleds från CDN-slutpunktens URL: **\<endpoint-hostname>** . azureedge.net. Det kan inte ändras.
 
 5. För **Anpassat värdnamn** anger du din anpassade domän, inklusive underdomänen, som ska användas som källdomän för din CNAME-post. 
     1. Till exempel **www.contoso.com** eller **CDN.contoso.com**. **Använd inte namnet på cdnverify-underdomänen**.
@@ -185,11 +189,47 @@ När du har registrerat din anpassade domän kan du lägga till den i din CDN-sl
    Azure verifierar att det finns en CNAME-post för det anpassade domännamnet som du har angett. Om CNAME är korrekt verifieras din anpassade domän. 
 
    Det kan ta lite tid innan inställningarna för den nya anpassade domänen sprids till alla CDN-gränsnoder: 
-    - För **Azure CDN Standard från Microsoft** -profiler slutförs spridningen vanligtvis inom 10 minuter. 
-    - För **Azure CDN Standard från Akamai** -profiler slutförs spridningen vanligtvis inom en minut. 
-    - För **Azure CDN Standard från Verizon** - och **Azure CDN Premium från Verizon** -profiler slutförs spridningen vanligtvis inom 10 minuter.   
+    - För **Azure CDN Standard från Microsoft**-profiler slutförs spridningen vanligtvis inom 10 minuter. 
+    - För **Azure CDN Standard från Akamai**-profiler slutförs spridningen vanligtvis inom en minut. 
+    - För **Azure CDN Standard från Verizon**- och **Azure CDN Premium från Verizon**-profiler slutförs spridningen vanligtvis inom 10 minuter.   
+
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
+
+1. Logga in på Azure PowerShell:
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. Använd [New-AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) för att mappa den anpassade domänen till CDN-slutpunkten. 
+
+    * Ersätt **myendpoint8675.azureedge.net** med slut punkts-URL: en.
+    * Ersätt **myendpoint8675** med namnet på CDN-slutpunkten.
+    * Ersätt **www.contoso.com** med ditt anpassade domän namn.
+    * Ersätt **myCDN** med ditt CDN-profilnamn.
+    * Ersätt **myResourceGroupCDN** med namnet på din resurs grupp.
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+Azure verifierar att det finns en CNAME-post för det anpassade domännamnet som du har angett. Om CNAME är korrekt verifieras din anpassade domän. 
+
+   Det kan ta lite tid innan inställningarna för den nya anpassade domänen sprids till alla CDN-gränsnoder: 
+
+- För **Azure CDN Standard från Microsoft**-profiler slutförs spridningen vanligtvis inom 10 minuter. 
+- För **Azure CDN Standard från Akamai**-profiler slutförs spridningen vanligtvis inom en minut. 
+- För **Azure CDN Standard från Verizon**- och **Azure CDN Premium från Verizon**-profiler slutförs spridningen vanligtvis inom 10 minuter.   
 
 
+---
 ## <a name="verify-the-custom-domain"></a>Verifiera den anpassade domänen
 
 När du har slutfört registreringen av din anpassade domän kontrollerar du att den anpassade domänen refererar till CDN-slutpunkten.
@@ -200,6 +240,9 @@ När du har slutfört registreringen av din anpassade domän kontrollerar du att
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
+---
+# <a name="azure-portal"></a>[**Azure Portal**](#tab/azure-portal-cleanup)
+
 Om du inte längre vill koppla slut punkten till en anpassad domän tar du bort den anpassade domänen genom att utföra följande steg:
  
 1. I din CDN-profil väljer du slutpunkten med den anpassade domän som du vill ta bort.
@@ -208,6 +251,29 @@ Om du inte längre vill koppla slut punkten till en anpassad domän tar du bort 
 
    Den anpassade domänen kopplas bort från slutpunkten.
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
+
+Om du inte längre vill koppla slut punkten till en anpassad domän tar du bort den anpassade domänen genom att utföra följande steg:
+
+1. Använd [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) om du vill ta bort den anpassade domänen från slut punkten:
+
+    * Ersätt **myendpoint8675** med namnet på CDN-slutpunkten.
+    * Ersätt **www.contoso.com** med ditt anpassade domän namn.
+    * Ersätt **myCDN** med ditt CDN-profilnamn.
+    * Ersätt **myResourceGroupCDN** med namnet på din resurs grupp.
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>Nästa steg
 
 I den här självstudiekursen lärde du dig att:

@@ -7,17 +7,22 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 64033182356e66d6a69bd47c1780b7081416019e
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527812"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538518"
 ---
-# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature"></a>Resurs modell för den Azure Cosmos DB funktionen för återställning av tidpunkt
+# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Resurs modell för Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-I den här artikeln förklaras resurs modellen för den Azure Cosmos DB funktionen för återställning av tidpunkt. Den förklarar de parametrar som stöder den kontinuerliga säkerhets kopieringen och de resurser som kan återställas i Azure Cosmos DB API för SQL-och MongoDB-konton.
+> [!IMPORTANT]
+> Funktionen för återställning av tidpunkt (kontinuerlig säkerhets kopiering) för Azure Cosmos DB är för närvarande en offentlig för hands version.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+I den här artikeln förklaras resurs modellen för Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version). Den förklarar de parametrar som stöder den kontinuerliga säkerhets kopieringen och de resurser som kan återställas i Azure Cosmos DB API för SQL-och MongoDB-konton.
 
 ## <a name="database-accounts-resource-model"></a>Databas kontots resurs modell
 

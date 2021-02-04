@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d9f4ba48a7dc6cdcf6d60e4e9da5f68fcc6b1f28
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509341"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539102"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Skapa Sök index i Azure Kognitiv sökning
 
-Ett Sök index lagrar sökbart innehåll som används för fullständig text och filtrerade frågor. Ett index definieras av ett schema och sparas i tjänsten, med data import enligt ett andra steg. 
+Kognitiv sökning lagrar sökbart innehåll som används för fullständig text och filtrerade frågor i ett *sökindex*. Ett index definieras av ett schema och sparas i tjänsten, med data import enligt ett andra steg. 
 
-Index innehåller *dokument*. Ett dokument är konceptuellt en enskild enhet med sökbara data i ditt index. En åter försäljare kan ha ett dokument för varje produkt, en nyhets organisation kan ha ett dokument för varje artikel och så vidare. Mappa dessa begrepp till mer välkända databas motsvarigheter: ett *sökindex* motsvarar en *tabell*, och *dokument* är ungefär lika med *rader* i en tabell.
+Index innehåller *Sök dokument*. Ett dokument är konceptuellt en enskild enhet med sökbara data i ditt index. En åter försäljare kan ha ett dokument för varje produkt, en nyhets organisation kan ha ett dokument för varje artikel och så vidare. Mappa dessa begrepp till mer välkända databas motsvarigheter: ett *sökindex* motsvarar en *tabell*, och *dokument* är ungefär lika med *rader* i en tabell.
 
 ## <a name="whats-an-index-schema"></a>Vad är ett index schema?
 
@@ -106,7 +106,9 @@ För Kognitiv sökning implementerar Azure SDK: er allmänt tillgängliga funkti
 | JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Index](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations. py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
-## <a name="defining-fields"></a>Definiera fält
+## <a name="define-fields"></a>Definiera fält
+
+Ett Sök dokument definieras av `fields` samlingen. Du behöver fält för frågor och nycklar. Du behöver förmodligen också fält för att stödja filter, ansikte och sortering. Du kanske också behöver fält för data som en användare aldrig ser, till exempel om du vill ha fält för vinst marginaler eller marknadsförings kampanjer som du kan använda för att ändra Sök rangordning.
 
 Ett fält av typen EDM. String måste anges som dokument nyckel. Den används för att unikt identifiera varje sökdokument. Du kan hämta ett dokument efter dess nyckel för att fylla i en informations sida.  
 
@@ -146,9 +148,11 @@ Följande skärm bild illustrerar index lagrings mönster som orsakas av olika k
 
 ![Index storlek baserat på val av attribut](./media/search-what-is-an-index/realestate-index-size.png "Index storlek baserat på val av attribut")
 
-Även om de här varianterna av index är artificiella kan vi referera till dem för att se hur attribut påverkar lagringen. Ger inställningen "hämtnings bar" ökning av index storlek? Nej. Lägger du till fält till en **förslags** öknings index storlek? Ja.
+Även om de här varianterna av index är artificiella kan vi referera till dem för att se hur attribut påverkar lagringen. Ger inställningen "hämtnings bar" ökning av index storlek? Nej. Lägger du till fält till en **förslags** öknings index storlek? Ja. 
 
-Index som stöder filter och sortering är proportionerligt större än index som stöder bara full texts ökning. Detta beror på att filtrerings-och sorterings åtgärder söker efter exakta matchningar, vilket kräver förekomst av orda Grant text strängar. Sökbara fält som stöder full text frågor använder inverterade index, som är ifyllda med token-termer som förbrukar mindre utrymme än hela dokument. 
+Att göra ett fält filter Bart eller sorterbart lägger också till i lagrings förbrukning eftersom filtrerade och sorterade fält inte är tokens, så att teckensekvensen kan matchas orda Grant.
+
+Som inte återspeglas i tabellen ovan visas effekterna av [analys](search-analyzers.md)verktyg. Om du använder edgeNgram-tokenizer för att lagra orda Grant sekvenser av tecken (a, AB, ABC, abcd) blir Indexets storlek större än om du använde en standard analys.
 
 > [!Note]
 > Lagrings arkitektur betraktas som en implementerings detalj i Azure Kognitiv sökning och kan ändras utan föregående meddelande. Det finns ingen garanti för att det aktuella beteendet är kvar i framtiden.
@@ -169,9 +173,9 @@ Följande alternativ kan ställas in för CORS:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan få praktisk erfarenhet av att skapa ett index med hjälp av nästan alla exempel eller genom gång för Kognitiv sökning. Du kan välja någon av snabb starterna från innehålls förteckningen för att komma igång.
+Du kan få praktisk erfarenhet av att skapa ett index med hjälp av nästan alla exempel eller genom gång för Kognitiv sökning. För Starter kan du välja någon av snabb starterna i innehålls förteckningen.
 
-Du ska också bekanta dig med metoder för att läsa in ett index med data. Index definitionen och populationen görs tillsammans. I följande artiklar finns mer information.
+Men du vill också bekanta dig med metoder för att läsa in ett index med data. Index definition och data import strategier definieras i tandem. I följande artiklar finns mer information om hur du läser in ett index.
 
 + [Översikt över dataimport](search-what-is-data-import.md)
 
