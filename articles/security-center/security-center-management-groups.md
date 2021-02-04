@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757655"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556421"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Organisera hanterings grupper, prenumerationer och synligheten för hela klienten
 
@@ -81,12 +81,14 @@ Du kan lägga till prenumerationer i hanterings gruppen som du skapade.
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>Bevilja behörighet för hela klienten själv
 
-En användare med rollen Azure Active Directory **Global administratör** kan ha ansvar för hela företaget, men saknar Azure-behörighet att visa den här informationen i organisationen i Azure Security Center. 
+En användare med rollen Azure Active Directory (AD) för **Global administratör** kan ha ansvar för hela företaget, men saknar Azure-behörighet att visa den organisations information som finns i Azure Security Center. Behörighets höjning krävs eftersom roll tilldelningar för Azure AD inte beviljar åtkomst till Azure-resurser. 
 
 > [!TIP]
-> Om din organisation hanterar resurs åtkomst med [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)eller något annat PIM-verktyg måste den globala administratörs rollen vara aktiv för den användare som utför ändringarna.
+> Läs mer om behörighets höjning för rollen global administratör i [öka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper](../role-based-access-control/elevate-access-global-admin.md).
 
 Så här tilldelar du dig själv behörigheter på klient nivå:
+
+1. Om din organisation hanterar resurs åtkomst med [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md)eller något annat PIM-verktyg måste den globala administratörs rollen vara aktiv för användaren enligt proceduren nedan.
 
 1. Som global administratörs användare utan en tilldelning i rot hanterings gruppen för klient organisationen öppnar du Security Center sidan **Översikt** och väljer länken för den sammanslagna länken för **hela klienten** i banderollbilden. 
 

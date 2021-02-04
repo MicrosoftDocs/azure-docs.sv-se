@@ -2,31 +2,21 @@
 title: Konvertera Portal mal len till mall specifikation
 description: Beskriver hur du konverterar en befintlig mall i Azure Portal galleriet till en mall-specifikationer.
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 8fe02f55348f2cdcabb43e05bb547819d4b51228
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739141"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555941"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>Konvertera mallens galleri i Portal till mall-specifikationer
 
-Azure Portal är ett sätt att lagra Azure Resource Manager mallar (ARM-mallar) i ditt konto. **Den här funktionen är föråldrad.** Om du vill fortsätta att använda mallar i det här galleriet konverterar du dem till [mall-specifikationerna](template-specs.md).
+Azure Portal är ett sätt att lagra Azure Resource Manager mallar (ARM-mallar) i ditt konto. Mall- [specifikationer](template-specs.md) ger dock ett enklare sätt att dela dina mallar med användare i din organisation och länka till andra mallar. Den här artikeln visar hur du konverterar befintliga mallar i mallgalleriet till mall-specifikationer.
 
-Den här artikeln visar hur du konverterar befintliga mallar i mallgalleriet till mall-specifikationer.
-
-Funktionen som är föråldrad kallas för **mallar (för hands version)** i portalen. Om du vill se om du har några mallar att konvertera kan du Visa mallgalleriet [i portalen](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems). Dessa mallar har resurs typen `Microsoft.Gallery/myareas/galleryitems` .
-
-## <a name="deprecation-of-portal-feature"></a>Utfasning av Portal funktion
-
-Mallgalleriet i portalen föråldras den 21 januari 2021. Du kan fortsätta att använda den fram till den 21 februari. Från och med den 22 februari kan du inte skapa nya mallar i Portal galleriet, men du kan fortfarande visa och distribuera befintliga mallar.
-
-Den 22 juni kommer funktionen att tas bort från portalen och alla API-åtgärder kommer att blockeras. Du kan inte Visa eller distribuera några mallar från galleriet.
-
-Innan den 22 juni bör du migrera alla mallar som du vill fortsätta använda. Du kan använda en av metoderna som visas i den här artikeln för att migrera mallarna. När funktionen har tagits bort måste du öppna ett support ärende för att få alla mallar som du inte har migrerat.
+Om du vill se om du har några mallar att konvertera kan du Visa mallgalleriet [i portalen](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems). Dessa mallar har resurs typen `Microsoft.Gallery/myareas/galleryitems` .
 
 ## <a name="convert-with-powershell-script"></a>Konvertera med PowerShell-skript
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c3bb05af3e0a24ebb10dc98b9174cfb235ddda13
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567475"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555919"
 ---
 # <a name="connect-data-sources"></a>Ansluta till datakällor
 
@@ -66,11 +66,13 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
 
 - **Externa lösningar via API**: vissa data källor är anslutna via API: er som tillhandahålls av den anslutna data källan. Oftast tillhandahåller de flesta säkerhets tekniker en uppsättning API: er via vilka händelse loggar som kan hämtas. API: erna ansluter till Azure Sentinel och samlar in vissa data typer och skickar dem till Azure Log Analytics. Enheter som är anslutna via API inkluderar:
     
+    - [Agari phishing-skydd och varumärkes skydd](connect-agari-phishing-defense.md)
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen-brandväggen](connect-barracuda-cloudgen-firewall.md)
     - [BETTER Mobile Threat Defense](connect-better-mtd.md)
     - [Utöver säkerhet – beSECURE](connect-besecure.md)
+    - [Cisco Umbrella](connect-cisco-umbrella.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -95,6 +97,7 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
 
     - **Brand väggar, proxyservrar och slut punkter – CEF:**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
+        - [Akamai säkerhets händelser](connect-akamai-security-events.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Citrix WAF](connect-citrix-waf.md)
@@ -104,24 +107,27 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
         - [Forcepoint-produkter](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
+        - [Imperva WAF-Gateway](connect-imperva-waf-gateway.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
-        - [Thycotic hemlig Server](connect-thycotic-secret-server.md)
+        - [Thycotic Secret Server](connect-thycotic-secret-server.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
         - [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
         - [WireX Network data utredning Platform](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [Andra CEF-baserade apparater](connect-common-event-format.md)
     - **Brand väggar, proxyservrar och slut punkter – syslog:**
+        - [Alsid för Active Directory](connect-alsid-active-directory.md)
         - [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
         - [Pulse Connect Secure](connect-pulse-connect-secure.md)
         - [Sophos-XG](connect-sophos-xg-firewall.md)
-        - [Squid-proxy](connect-squid-proxy.md)
+        - [Squid Proxy](connect-squid-proxy.md)
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [Andra syslog-baserade apparater](connect-syslog.md)
+    - [Apache HTTP-Server](connect-apache-http-server.md)
     - DLP-lösningar
     - [Leverantörer av hotinformation](connect-threat-intelligence.md)
     - [DNS-datorer](connect-dns.md) – Agent installeras direkt på DNS-datorn
@@ -132,7 +138,6 @@ Följande data anslutnings metoder stöds av Azure Sentinel:
 ## <a name="agent-connection-options"></a>Alternativ för agentanslutning<a name="agent-options"></a>
 
 Om du vill ansluta din externa installation till Azure Sentinel måste agenten distribueras på en dedikerad dator (VM eller lokalt) för att stödja kommunikationen mellan-enheten och Azure Sentinel. Du kan distribuera agenten automatiskt eller manuellt. Automatisk distribution är bara tillgängligt om din dedikerade dator är en ny virtuell dator som du skapar i Azure. 
-
 
 ![CEF i Azure](./media/connect-cef/cef-syslog-azure.png)
 

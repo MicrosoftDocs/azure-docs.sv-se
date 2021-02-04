@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: f5d7094920a21af630e10aec2aa759ce9c505050
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 8d9f54c1fcd142c77fb73c294b81bf0f11ee083f
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550592"
+ms.locfileid: "99557687"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Redigera QnA-par i kunskaps basen
 
@@ -38,6 +38,8 @@ De **valfria** inställningarna för ett par är:
 ![QnA Maker kunskaps baser](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
 ## <a name="add-an-editorial-qna-pair"></a>Lägg till ett redigerings QnA-par
+
+Om du inte har redan befintligt innehåll för att fylla i kunskaps basen kan du lägga till QnA-par i QnA Maker portalen.
 
 1. Logga in på [QNA-portalen](https://www.qnamaker.ai/)och välj sedan den kunskaps bas som QNA-paret ska läggas till i.
 1. På sidan **Redigera** i kunskaps basen väljer du **Lägg till QNA-par** för att lägga till ett nytt QNA-par.

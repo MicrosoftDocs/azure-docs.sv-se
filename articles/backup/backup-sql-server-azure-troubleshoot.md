@@ -3,12 +3,12 @@ title: Felsöka SQL Server säkerhets kopiering av databasen
 description: Felsöknings information för att säkerhetskopiera SQL Server databaser som körs på virtuella Azure-datorer med Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1e4ee2bdcd0826b655aa71d83674ff1e0c06a8cb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549906"
+ms.locfileid: "99557745"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Felsöka SQL Server säkerhets kopiering av databasen med Azure Backup
 
@@ -206,14 +206,14 @@ Gör så här om du vill utlösa en återställning av de felfria SQL-instansern
 
 | Felmeddelande | Möjliga orsaker | Rekommenderad åtgärd |
 |---|---|---|
-AzureBackup för arbets belastnings tillägg misslyckades. | Den virtuella datorn stängs av (eller) den virtuella datorn kan inte kontakta Azure Backup tjänsten på grund av problem med Internet anslutningen.| -Kontrol lera att den virtuella datorn är igång och att den är ansluten till Internet.<br>- [Registrera tillägget på nytt på SQL Server VM](https://docs.microsoft.com/azure/backup/manage-monitor-sql-database-backup#re-register-extension-on-the-sql-server-vm).
+AzureBackup för arbets belastnings tillägg misslyckades. | Den virtuella datorn stängs av, eller också kan den virtuella datorn inte kontakta Azure Backup tjänsten på grund av problem med Internet anslutningen.| <li> Se till att den virtuella datorn är igång och att den är ansluten till Internet.<li> [Registrera tillägget på nytt på SQL Server VM](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm).
 
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | Felmeddelande | Möjliga orsaker | Rekommenderad åtgärd |
 |---|---|---|
-Den virtuella datorn kan inte kontakta Azure Backup tjänsten på grund av problem med Internet anslutningen. | Den virtuella datorn behöver utgående anslutning till Azure Backup tjänst, Azure Storage eller Azure Active Directory tjänster.| – Om du använder NSG för att begränsa anslutningen bör du använda *AzureBackup* -tjänst tag gen för att tillåta utgående åtkomst till Azure Backup-tjänsten och på samma sätt som Azure AD-tjänsten (*AzureActiveDirectory*) och Azure Storage-tjänster (*lagring*). Följ dessa [steg](./backup-sql-server-database-azure-vms.md#nsg-tags) om du vill bevilja åtkomst.<br>– Kontrol lera att DNS löser Azure-slutpunkter.<br>-Kontrol lera om den virtuella datorn ligger bakom en belastningsutjämnare som blockerar Internet åtkomst. Genom att tilldela den offentliga IP-adressen till de virtuella datorerna fungerar identifieringen.<br>– Kontrol lera att det inte finns någon brand vägg/Antivirus/proxy som blockerar anrop till de tre mål tjänsterna ovan.
+Den virtuella datorn kan inte kontakta Azure Backup tjänsten på grund av problem med Internet anslutningen. | Den virtuella datorn behöver utgående anslutning till Azure Backup tjänst, Azure Storage eller Azure Active Directory tjänster.| <li> Om du använder NSG för att begränsa anslutningen bör du använda *AzureBackup* -tjänst tag gen för att tillåta utgående åtkomst till Azure Backup-tjänsten och på samma sätt som Azure AD-tjänsten (*AzureActiveDirectory*) och Azure Storage-tjänster (*lagring*). Följ dessa [steg](./backup-sql-server-database-azure-vms.md#nsg-tags) om du vill bevilja åtkomst. <li> Se till att DNS matchar Azure-slutpunkter. <li> Kontrol lera om den virtuella datorn ligger bakom en belastningsutjämnare som blockerar Internet åtkomst. Genom att tilldela den offentliga IP-adressen till de virtuella datorerna fungerar identifieringen. <li> Kontrol lera att det inte finns någon brand vägg/Antivirus/proxy som blockerar anrop till ovannämnda tre mål tjänster.
 
 ## <a name="re-registration-failures"></a>Försök att registrera igen
 

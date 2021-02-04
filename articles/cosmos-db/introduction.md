@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 2dd60d1962734f7a4264587fd1b5b0d2a03c9ff0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359770"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556854"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Välkommen till Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -46,7 +46,7 @@ Bygg snabbt med API: er för öppen källkod, flera SDK: er, schemabaserade data
 - Bygg appar på Core-API (SQL) med de språk som du väljer med SDK: er för .NET, Java, Node.js och python. Eller ditt val av driv rutiner för alla andra databas-API: er.
 - Kör ingen-ETL-analys över de nära real tids operativa data som lagras i Azure Cosmos DB med Azure Synapse Analytics.
 - Genom att ändra feed är det enkelt att spåra och hantera ändringar i databas behållare och skapa utlösta händelser med Azure Functions.
-- Azure Cosmos DB s schema-mindre tjänst indexeras automatiskt alla dina data, oavsett data modellen, för leverans blixt snabba snabb frågor.
+- Azure Cosmos DB schema-mindre tjänst indexerar automatiskt alla dina data, oavsett data modellen, för att leverera blixt snabba snabb frågor.
 
 ### <a name="mission-critical-ready"></a>Redo för verksamhetskritiskt
 

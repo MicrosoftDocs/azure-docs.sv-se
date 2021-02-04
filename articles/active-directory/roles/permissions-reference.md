@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c544bd6d3965bc71df2024e66defbdf9443c8f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 4982acb54207a9ed08a96414877603a8253c2ade
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550733"
+ms.locfileid: "99557759"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -2058,7 +2058,7 @@ Team kommunikations administratör | Team kommunikations administratör | baf37b
 Support tekniker för Teams kommunikation | Support tekniker för Teams kommunikation | f70938a0-fc10-4177-9e90-2178f8765737
 Support specialist för Teams kommunikation | Support specialist för Teams kommunikation | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Team enhets administratör | Team enhets administratör | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Team administratör | Team administratör | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Team tjänst administratör | Team tjänst administratör | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Rapport läsare för användnings Sammanfattning | Rapport läsare för användnings Sammanfattning | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | Visas inte eftersom det inte kan användas | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Användaradministratör | Användaradministratör | fe930be7-5e62-47db-91af-98c3a49a38b1

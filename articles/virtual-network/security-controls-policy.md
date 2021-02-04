@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Virtual Network
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Virtual Network. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 5ae4db3b8ff1aa61c778b6385f9e84a5270d2b2c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4e8502235f5c24deb600d9a988b7b396a185a221
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096092"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558175"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>Azure Policy kontroll av efterlevnad för Azure Virtual Network
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8ef0fedcbf7ce06063db22fb345a0711acddcb4d
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526389"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555144"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -33,6 +33,7 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 - [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)
+- [Utfasning av 11 Azure Defender-aviseringar](#deprecation-of-11-azure-defender-alerts)
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
 
@@ -53,6 +54,37 @@ Läs mer om de här rekommendationerna på [referens sidan för säkerhets rekom
 **Beräknat datum för ändring:** K2 2021
 
 Rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Som ett resultat kommer rekommendationens ID också att ändras (för närvarande b0df6f56-862d-4730-8597-38c0fd4ebd59).
+
+
+### <a name="deprecation-of-11-azure-defender-alerts"></a>Utfasning av 11 Azure Defender-aviseringar
+
+**Beräknat datum för ändring:** Mars 2021
+
+Nästa månad kommer de elva Azure Defender-aviseringarna som anges nedan att bli föråldrade.
+
+- Nya aviseringar ersätter dessa två aviseringar och ger bättre täckning:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW – mikroburst Toolkit "Get-AzureDomainInfo"-funktionen körs upptäckt |
+    | ARM_MicroBurstRunbook    | PREVIEW – mikroburst Toolkit "Get-AzurePasswords"-funktionen körs upptäckt  |
+    |                          |                                                                          |
+
+- Dessa nio aviseringar avser en Azure Active Directory Identity Protection koppling som redan är föråldrad:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Obekanta inloggningsegenskaper |
+    | AnonymousLogin      | Anonym IP-adress          |
+    | InfectedDeviceLogin | Länkad IP-adress för skadlig kod     |
+    | ImpossibleTravel    | Ovanlig resa               |
+    | MaliciousIP         | Skadlig IP-adress          |
+    | LeakedCredentials   | Läckta autentiseringsuppgifter            |
+    | PasswordSpray       | Lösen ords sprayning                |
+    | LeakedCredentials   | Azure AD Threat Intelligence  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
 
 
 

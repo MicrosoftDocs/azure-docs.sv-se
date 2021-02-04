@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 8ee18043f0485ae6290b1b323648ba9b2b83258b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255924"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555623"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Hantera användar konto etablering för företags program i Azure Portal
 
@@ -63,7 +63,7 @@ Välj **test anslutning** för att testa autentiseringsuppgifterna genom att lå
 
 Expandera **mappningar** för att visa och redigera användarattribut som flödar mellan Azure AD och mål programmet när användar konton har skapats eller uppdaterats.
 
-Det finns en förkonfigurerad uppsättning mappningar mellan användar objekt i Azure AD och varje SaaS-Apps användar objekt. Vissa appar hanterar andra typer av objekt, t. ex. grupper eller kontakter. Välj en mappning i tabellen för att öppna mappnings redigeraren till höger, där du kan visa och anpassa dem.
+Det finns en förkonfigurerad uppsättning mappningar mellan användar objekt i Azure AD och varje SaaS-Apps användar objekt. Vissa appar hanterar även grupp objekt. Välj en mappning i tabellen för att öppna mappnings redigeraren till höger, där du kan visa och anpassa dem.
 
 ![Visar skärmen för mappning av attribut](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 

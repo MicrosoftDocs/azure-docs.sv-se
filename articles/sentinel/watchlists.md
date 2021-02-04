@@ -1,5 +1,5 @@
 ---
-title: Använd Azure Sentinel-watchlists
+title: Använda Azure Sentinel-visningslistor
 description: Den här artikeln beskriver hur du använder Azure Sentinel watchlists för att undersöka hot, importera affärs data, skapa listor över tillåtna och utöka händelse data.
 services: sentinel
 author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 97509b878fb5e0cb28bddc5d1b58c21b32c34675
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797361"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555648"
 ---
-# <a name="use-azure-sentinel-watchlists"></a>Använd Azure Sentinel-watchlists
+# <a name="use-azure-sentinel-watchlists"></a>Använda Azure Sentinel-visningslistor
 
 > [!IMPORTANT]
 > Funktionen watchlists är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för hands versioner av ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släppts till allmän tillgänglighet.
@@ -28,7 +28,7 @@ Vanliga scenarier för att använda watchlists är:
 
 - **Undersöka hot** och svara på incidenter snabbt med snabb import av IP-adresser, filhash-filer och andra data från CSV-filer. När du har importerat kan du använda visnings lista namn/värde-par för kopplingar och filter i aviserings regler, hot på jakt, arbets böcker, bärbara datorer och allmänna frågor.
 
-- **Importera affärs data** som en watchlists. Du kan till exempel importera användar listor med privilegie rad system åtkomst eller avslutade medarbetare och sedan använda visnings lista för att skapa listor över tillåtna och nekade användare som används för att identifiera eller förhindra att användarna loggar in i nätverket.
+- **Importera affärs data** som en visnings lista. Du kan till exempel importera användar listor med privilegie rad system åtkomst eller avslutade medarbetare och sedan använda visnings lista för att skapa listor över tillåtna och nekade användare som används för att identifiera eller förhindra att användarna loggar in i nätverket.
 
 - **Minska aviserings utmattningen**. Skapa listan över tillåtna för att förhindra aviseringar från en grupp användare, till exempel användare från auktoriserade IP-adresser som utför uppgifter som normalt utlöser aviseringen och förhindrar att ofarliga händelser blir aviseringar.
 

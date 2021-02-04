@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531334"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556123"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Hantera användning och kostnader för Application Insights
 
@@ -186,7 +186,7 @@ Mängden data som du skickar kan hanteras med hjälp av följande tekniker:
 
 * **Sampling**: du kan använda sampling för att minska mängden telemetri som skickas från servern och klientens appar, med minimal snedvridning av mått. Sampling är det primära verktyget som du kan använda för att justera mängden data som du skickar. Lär dig mer om [samplings funktioner](./sampling.md).
 
-* **Begränsa AJAX-anrop**: du kan [begränsa antalet AJAX-anrop som kan rapporteras](./javascript.md#configuration) i varje sidvy eller inaktivera Ajax-rapportering.
+* **Begränsa AJAX-anrop**: du kan [begränsa antalet AJAX-anrop som kan rapporteras](./javascript.md#configuration) i varje sidvy eller inaktivera Ajax-rapportering. Observera att om du inaktiverar AJAX-anrop inaktive ras [JavaScript-korrelation](./javascript.md#enable-correlation).
 
 * **Inaktivera onödiga moduler**: [Redigera ApplicationInsights.config](./configuration-with-applicationinsights-config.md) för att inaktivera insamlings moduler som du inte behöver. Du kan till exempel bestämma att prestanda räknare eller beroende data inte är nödvändiga.
 

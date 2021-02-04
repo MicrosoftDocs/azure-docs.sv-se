@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071621"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555615"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Tjänster som stöder hanterade identiteter för Azure-resurser
 
@@ -307,8 +307,8 @@ Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner 
 
 |Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Systemtilldelad | ![Få][check] | ![Få][check] | Förhandsgranskning | ![Få][check] |
-| Användartilldelad | ![Få][check] | ![Få][check] | Förhandsgranskning | ![Få][check] |
+| Systemtilldelad | ![Få][check] | ![Få][check] | ![Få][check] | ![Få][check] |
+| Användartilldelad | ![Få][check] | ![Få][check] | ![Få][check] | ![Få][check] |
 
 I följande lista kan du konfigurera hanterad identitet för Azure Virtual Machine Scale Sets (i regioner där det är tillgängligt):
 
@@ -324,8 +324,8 @@ I följande lista kan du konfigurera hanterad identitet för Azure Virtual Machi
 
 | Hanterad identitets typ | Alla allmänt tillgängliga<br>Globala Azure-regioner | Azure Government | Azure Tyskland | Azure Kina 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Systemtilldelad | ![Få][check] | ![Få][check] | Förhandsgranskning | ![Få][check] |
-| Användartilldelad | ![Få][check] | ![Få][check] | Förhandsgranskning | ![Få][check] |
+| Systemtilldelad | ![Få][check] | ![Få][check] | ![Få][check] | ![Få][check] |
+| Användartilldelad | ![Få][check] | ![Få][check] | ![Få][check] | ![Få][check] |
 
 I följande lista kan du konfigurera hanterad identitet för Azure Virtual Machines (i regioner där det är tillgängligt):
 
