@@ -1,36 +1,35 @@
 ---
-title: Förstå resurs uppsättningar
+title: Förstå resursuppsättningar
 description: I den här artikeln beskrivs vilka resurs uppsättningar som är och hur Azure-avdelningens kontroll skapar dem.
-author: yaronyg
-ms.author: yarong
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 10/19/2020
-ms.openlocfilehash: 55efa9443fd59b66a7677c9c460e473715f201df
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 02/03/2021
+ms.openlocfilehash: e4b48729f13ec0234a7a711032a2db34e55a8bd1
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553984"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539475"
 ---
-# <a name="understanding-resource-sets"></a>Förstå resurs uppsättningar
+# <a name="understanding-resource-sets"></a>Förstå resursuppsättningar
 
 Den här artikeln hjälper dig att förstå hur Azure-avdelningens kontroll använder resurs uppsättningar för att mappa data till gångar till logiska resurser.
-
 ## <a name="background-info"></a>Bakgrunds information
 
 Vid skalning av data bearbetnings system lagras vanligt vis en enda tabell på en disk som flera filer. Det här konceptet representeras i Azure avdelningens kontroll med hjälp av resurs uppsättningar. En resurs uppsättning är ett enda objekt i katalogen som representerar ett stort antal till gångar i lagringen.
 
-Anta till exempel att ditt Spark-kluster har sparat en DataFrame i en ADLS Gen2-datakälla. Även om tabellen i Spark ser ut som en enda logisk resurs, finns det troligen tusentals Parquet-filer på disken som representerar en partition av den totala DataFrame innehåll. IoT-data och webb logg data har samma utmaning. Anta att du har en sensor som utvärderar loggfiler flera gånger om en sekund. Det tar inte lång tid förrän du har hundratals tusentals loggfiler från den enskilda sensorn.
+Anta till exempel att ditt Spark-kluster har bevarat en DataFrame till en ADLS-Gen2 (data källa för Azure Data Lake Storage). Även om tabellen i Spark ser ut som en enda logisk resurs, finns det troligen tusentals Parquet-filer på disken som representerar en partition av den totala DataFrame innehåll. IoT-data och webb logg data har samma utmaning. Anta att du har en sensor som utvärderar loggfiler flera gånger om en sekund. Det tar inte lång tid förrän du har hundratals tusentals loggfiler från den enskilda sensorn.
 
 Azure avdelningens kontroll använder resurs uppsättningar för att åtgärda utmaningen med att mappa ett stort antal data till gångar till en enda logisk resurs.
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>Hur Azure avdelningens kontroll identifierar resurs uppsättningar
 
-Azure avdelningens kontroll stöder enbart identifiering av resurs uppsättningar i Azure-blobbar, ADLS Gen1 och ADLS Gen2.
+Azure avdelningens kontroll stöder identifiering av resurs uppsättningar i Azure Blob Storage, ADLS Gen1 och ADLS Gen2.
 
-Azure avdelningens kontroll identifierar automatiskt resurs uppsättningar med hjälp av en funktion som kallas automatisk identifiering av resurs uppsättning. Den här funktionen ser till att alla data som matas in via skanning och jämförs med en uppsättning definierade mönster.
+Azure avdelningens kontroll identifierar automatiskt resurs uppsättningar vid genomsökning. Den här funktionen ser till att alla data som matas in via skanning och jämförs med en uppsättning definierade mönster.
 
 Anta till exempel att du skannar en data källa vars URL är `https://myaccount.blob.core.windows.net/mycontainer/machinesets/23/foo.parquet` . Azure-avdelningens kontroll tittar på Sök vägs segmenten och bestämmer om de matchar några inbyggda mönster. Den har inbyggda mönster för GUID, siffror, datum format, lokaliserings koder (till exempel en-US) och så vidare. I det här fallet matchar nummer mönstret *23*. Azure-avdelningens kontroll förutsätter att den här filen ingår i en resurs uppsättning med namnet `https://myaccount.blob.core.windows.net/mycontainer/machinesets/{N}/foo.parquet` .
 
@@ -42,12 +41,9 @@ Med den här strategin mappar Azure avdelningens kontroll följande resurser til
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/234.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/de_Ch/23434.json`
 
-> [!Note]
-> Azure Data Lake Storage Gen2 är nu allmänt tillgänglig. Vi rekommenderar att du börjar använda den idag. Mer information finns på [produkt sidan](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/).
-
 ## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Filtyper som Azure-avdelningens kontroll inte kan identifiera som resurs uppsättningar
 
-Avdelningens kontroll försöker avsiktligt inte klassificera de flesta dokument fil typer som Word, Excel eller PDF som resurs uppsättningar. Undantaget är CSV: er eftersom det är ett gemensamt partitionerat fil format.
+Avdelningens kontroll försöker avsiktligt inte klassificera de flesta dokument fil typer som Word, Excel eller PDF som resurs uppsättningar. Undantaget är CSV-format eftersom det är ett gemensamt partitionerat fil format.
 
 ## <a name="how-azure-purview-scans-resource-sets"></a>Hur Azure avdelningens kontroll genomsöker resurs uppsättningar
 
@@ -66,16 +62,47 @@ Förutom Single schema och klassificeringar lagrar Azure avdelningens kontroll f
 ## <a name="built-in-resource-set-patterns"></a>Inbyggda resurs uppsättnings mönster
 
 Azure avdelningens kontroll stöder följande resurs uppsättnings mönster. Dessa mönster kan visas som ett namn i en katalog eller som en del av ett fil namn.
+### <a name="regex-based-patterns"></a>Regex-baserade mönster
 
 | Mönster namn | Visningsnamn | Beskrivning |
 |--------------|--------------|-------------|
-| GUID         | LED       | En globalt unik identifierare som definieras i [RFC 4122](https://tools.ietf.org/html/rfc4122). |
-| Antal       | M          | En eller flera siffror. |
-| Datum-/tids format | M     | Azure avdelningens kontroll stöder olika typer av datum-och tids format, men alla minskas till en serie med {N} s. |
-| 4ByteHex     | HEXADECIMAL        | Ett fyrsiffrigt hexadecimalt tal. |
-| Lokalisering | Loc        | En språkkod som definieras i [BCP 47](https://tools.ietf.org/html/bcp47). Azure avdelningens kontroll stöder taggar som innehåller antingen ett bindestreck (-) eller ett under streck (_). Till exempel en_ca och en-ca. |
+| GUID         | LED       | En globalt unik identifierare som definieras i [RFC 4122](https://tools.ietf.org/html/rfc4122) |
+| Antal       | M          | En eller flera siffror |
+| Datum-/tids format | År Månaderna Dagen M     | Vi har stöd för olika datum-och tids format, men alla visas med {Year} [avgränsare] {month} [avgränsare] {Day} eller serien {N} s. |
+| 4ByteHex     | HEXADECIMAL        | Ett fyrsiffrigt HEXADECIMALt tal. |
+| Lokalisering | Loc        | En språkkod som definieras i [BCP 47](https://tools.ietf.org/html/bcp47), både-och _-namn stöds (till exempel en_CA och en-ca) |
 
-## <a name="issues-with-resource-sets"></a>Problem med resurs uppsättningar
+### <a name="complex-patterns"></a>Komplexa mönster
+
+| Mönster namn | Visningsnamn | Beskrivning |
+|--------------|--------------|-------------|
+| SparkPath    | {SparkPartitions} | Fil identifierare för Spark-partition |
+| Datum (åååå/mm/dd) insökväg  | {Year}/{Month}/{Day} | Mönster för år/månad/dag som sträcker sig över flera mappar |
+
+
+## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>Hur resurs uppsättningar visas i Azure avdelningens kontroll-katalogen
+
+När Azure-avdelningens kontroll matchar en grupp med till gångar i en resurs uppsättning försöker den extrahera den mest användbara informationen som ska användas som ett visnings namn i katalogen. Några exempel på standard namngivnings konventionen som används: 
+
+### <a name="example-1"></a>Exempel 1
+
+Kvalificerat namn: https://myblob.blob.core.windows.net/sample-data/name-of-spark-output/{SparkPartitions}
+
+Visnings namn: "namn på Spark-utdata"
+
+### <a name="example-2"></a>Exempel 2
+
+Kvalificerat namn: https://myblob.blob.core.windows.net/my-partitioned-data/{Year}-{Month}-{Day}/{N}-{N}-{N}-{N}/{GUID}
+
+Visnings namn: "mina partitionerade data"
+
+### <a name="example-3"></a>Exempel 3
+
+Kvalificerat namn: https://myblob.blob.core.windows.net/sample-data/data{N}.csv
+
+Visnings namn: "data"
+
+## <a name="known-issues-with-resource-sets"></a>Kända problem med resurs uppsättningar
 
 Även om resurs uppsättningarna fungerar bra i de flesta fall kan du stöta på följande problem, där Azure-avdelningens kontroll:
 
@@ -85,4 +112,4 @@ Azure avdelningens kontroll stöder följande resurs uppsättnings mönster. Des
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du kommer igång med Data Catalog finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
+Information om hur du kommer igång med Azure avdelningens kontroll finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).

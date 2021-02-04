@@ -4,15 +4,15 @@ description: Beskriver data källor och anslutningar som stöds för tabell 1200
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/03/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2b4ae4aa8f6b08b273088c98d120d339db7deadb
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493828"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539458"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Datakällor som stöds i Azure Analysis Services
 
@@ -36,7 +36,7 @@ Data källor och anslutningar som visas i guiden hämta data eller tabell import
 **Anteckningar:**
 
 <a name="tab1400a">1</a> – tabell 1400 och högre modeller.  
-<a name="azprovider">2</a> – när det har angetts som en *Provider* -datakälla i tabell 1200 och högre modeller, kräver både InMemory-och DirectQuery-modeller Microsoft OLE DB driv rutin för SQL Server MSOLEDBSQL (rekommenderas), SQL Server Native Client 11,0 eller .NET Framework Data Provider för SQL Server.  
+<a name="azprovider">2</a> – när det har angetts som en *Provider* -datakälla i tabell 1200 och högre modeller, kräver både InMemory-och DirectQuery-modeller Microsoft OLE DB driv rutin för SQL Server MSOLEDBSQL (rekommenderas) eller .NET Framework data leverantör för SQL Server.  
 <a name="azsqlmanaged">3</a> – Azure SQL-hanterad instans stöds. Eftersom SQL-hanterad instans körs i Azure VNet med en privat IP-adress måste den offentliga slut punkten vara aktive rad på instansen. Om den inte är aktive rad krävs en [lokal datagateway](analysis-services-gateway.md) .  
 <a name="databricks">4</a> -Azure Databricks med Spark-anslutningen stöds inte för närvarande.  
 <a name="gen2">5</a> -ADLS Gen2 anslutningen stöds inte för närvarande, men Azure Blob Storage Connector kan användas med en ADLS Gen2 data källa.

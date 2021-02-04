@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1b0bcf528a16e2f75bf21235980424b5375f8824
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98951318"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539492"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parametrar i Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Se följande avsnitt för att lära dig mer om gränserna för de många ofta up
 
 ### <a name="thread-pools"></a>Trådbaserade pooler
 
-MySQL tilldelar traditionellt en tråd för varje klient anslutning. I takt med att antalet samtidiga användare växer, finns det en motsvarande Drop-form. Många aktiva trådar kan påverka prestandan avsevärt på grund av ökad kontext växling, tråd konkurrens och felaktig plats för CPU-cacheminnen.
+MySQL tilldelar traditionellt en tråd för varje klient anslutning. När antalet samtidiga användare växer, finns det en motsvarande minskning av prestanda. Många aktiva trådar kan påverka prestandan avsevärt på grund av ökad kontext växling, tråd konkurrens och felaktig plats för CPU-cacheminnen.
 
 Trådbaserade pooler som är en funktion på Server sidan och som är skilda från anslutningspoolen, maximerar prestanda genom att introducera en dynamisk pool av arbets trådar som kan användas för att begränsa antalet aktiva trådar som körs på servern och minimerar tråd omsättningen. På så sätt ser du till att en burst-anslutning inte medför att servern tar slut på resurser eller kraschar med ett slut på minnes fel. Trådbaserade pooler är mest effektiva för korta frågor och CPU-intensiva arbets belastningar, till exempel OLTP-arbetsbelastningar.
 

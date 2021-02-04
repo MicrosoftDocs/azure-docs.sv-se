@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108678"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539441"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Lagra data på gränsen med Azure Blob Storage på IoT Edge
 
@@ -110,7 +110,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
 
-Till exempel:
+Exempel:
 
 ```powershell
 $creds = Get-Credential
@@ -136,7 +136,7 @@ sudo chown -R 11000:11000 <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-Till exempel:
+Exempel:
 
 ```terminal
 sudo chown -R 11000:11000 /srv/containerdata
@@ -184,6 +184,7 @@ Azure Blob Storage-dokumentationen innehåller exempel kod för snabb start på 
 Följande snabb starts exempel använder språk som också stöds av IoT Edge, så du kan distribuera dem som IoT Edge moduler tillsammans med Blob Storage-modulen:
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+  * Azure Blob Storage på IoT Edge-modul v-1.4.0 och tidigare är kompatibla med WindowsAzure. Storage 9.3.3 SDK och v 1.4.1 stöder också Azure. Storage. blobs 12.8.0 SDK.
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Versioner före V 2.1 i python SDK har ett känt problem där modulen inte returnerar skapande tid för BLOB. På grund av det här problemet fungerar inte vissa metoder som List blobbar. Som en lösning anger du uttryckligen API-versionen på BLOB-klienten till "2017-04-17". Exempel  `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [Lägg till BLOB-exempel](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
@@ -232,7 +233,7 @@ Som inte stöds
 * Hämta BLOB service-statistik
 * Hämta konto information
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 
 Tillåtna
 
@@ -292,7 +293,7 @@ Den här Azure-Blob Storage i IoT Edge-modulen tillhandahåller nu integrering m
 
 ## <a name="release-notes"></a>Viktig information
 
-Här är [viktig information i Docker Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) för den här modulen
+Här är [viktig information i Docker Hub](https://hub.docker.com/_/microsoft-azure-blob-storage) för den här modulen. Du kanske kan hitta mer information om fel korrigeringar och reparationer i versions anteckningarna för en speciell version.
 
 ## <a name="suggestions"></a>Förslag
 
