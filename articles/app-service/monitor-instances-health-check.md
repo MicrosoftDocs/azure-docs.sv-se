@@ -6,18 +6,18 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 60a210c6c336c1b820015304e8ab53bc894c17bf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8892723ec1a53c59e3e6183b5d53c2e61db4e5d0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792509"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575236"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Övervaka App Service instanser med hjälp av hälso kontroll
 
 ![Hälso kontroll fel][2]
 
-I den här artikeln används hälso kontroll i Azure Portal för att övervaka App Service instanser. Hälso kontroll ökar programmets tillgänglighet genom att ta bort felaktiga instanser. Din [App Service plan](/overview-hosting-plans) ska skalas till två eller fler instanser för att kunna använda hälso kontrollen. Hälso kontroll Sök vägen bör kontrol lera viktiga komponenter i ditt program. Om ditt program till exempel är beroende av en databas och ett meddelande system bör hälso kontrollens slut punkt ansluta till dessa komponenter. Om programmet inte kan ansluta till en kritisk komponent, ska sökvägen returnera en svars kod på 500 nivå för att indikera att appen inte är felfri.
+I den här artikeln används hälso kontroll i Azure Portal för att övervaka App Service instanser. Hälso kontroll ökar programmets tillgänglighet genom att ta bort felaktiga instanser. Din [App Service plan](/azure/app-service/overview-hosting-plans) ska skalas till två eller fler instanser för att kunna använda hälso kontrollen. Hälso kontroll Sök vägen bör kontrol lera viktiga komponenter i ditt program. Om ditt program till exempel är beroende av en databas och ett meddelande system bör hälso kontrollens slut punkt ansluta till dessa komponenter. Om programmet inte kan ansluta till en kritisk komponent, ska sökvägen returnera en svars kod på 500 nivå för att indikera att appen inte är felfri.
 
 ## <a name="what-app-service-does-with-health-checks"></a>Vad App Service gör med hälso kontroller
 
@@ -48,7 +48,7 @@ I den här artikeln används hälso kontroll i Azure Portal för att övervaka A
 
 Förutom att konfigurera hälso kontroll alternativen kan du också konfigurera följande [Inställningar för appen](configure-common.md):
 
-| Namn på App-inställning | Tillåtna värden | Beskrivning |
+| Namn på App-inställning | Tillåtna värden | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | Maximalt antal ping-försök. Om till exempel är inställt på `2` , tas instanserna bort efter `2` misslyckade ping-signaler. När du skalar upp eller ut, kommer App Service pinga till hälso kontroll Sök vägen för att se till att nya instanser är klara. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | För att undvika överbelastande av felfria instanser kommer högst hälften av instanserna att undantas. Till exempel, om en App Service plan skalas till fyra instanser och tre inte är felfria, kommer högst två att undantas. De andra två instanserna (en felfri och en skadad) fortsätter att ta emot begär Anden. I värsta fall där alla instanser är felaktiga kommer ingen att undantas. Om du vill åsidosätta det här beteendet ställer du in app-inställningen på ett värde mellan `0` och `100` . Ett högre värde innebär att fler felaktiga instanser tas bort (standard är 50). |

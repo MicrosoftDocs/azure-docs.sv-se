@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, behållare
-ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 7bebaf7558de8ec5c1fcca3c9a4526330da1d695
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703334"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575796"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installera och kör Docker-behållare för tal tjänstens API: er 
 
@@ -41,10 +41,10 @@ Speech-containrar gör det möjligt för kunder att bygga en arkitektur för tal
 
 | Container | Funktioner | Senast |
 |--|--|--|
-| Tal till text | Analyserar sentiment och beskrivar kontinuerliga tal i real tid eller batch-ljudinspelningar med mellanliggande resultat.  | 2.7.0 |
-| Custom Speech till text | Genom att använda en anpassad modell från [Custom Speech portalen](https://speech.microsoft.com/customspeech), kan du skriva över kontinuerliga tal i real tid eller köra ljud inspelningar i text med mellanliggande resultat. | 2.7.0 |
-| Text till tal | Konverterar text till tal med naturligt ljud med text indata eller SSML (Speech syntes Markup Language). | 1.9.0 |
-| Anpassad text till tal | Med hjälp av en anpassad modell från den [anpassade röst portalen](https://aka.ms/custom-voice-portal)konverteras text till tal med naturligt ljud med text-eller tal syntess språk (SSML). | 1.9.0 |
+| Tal till text | Analyserar sentiment och beskrivar kontinuerliga tal i real tid eller batch-ljudinspelningar med mellanliggande resultat.  | 2.9.0 |
+| Custom Speech till text | Genom att använda en anpassad modell från [Custom Speech portalen](https://speech.microsoft.com/customspeech), kan du skriva över kontinuerliga tal i real tid eller köra ljud inspelningar i text med mellanliggande resultat. | 2.9.0 |
+| Text till tal | Konverterar text till tal med naturligt ljud med text indata eller SSML (Speech syntes Markup Language). | 1.11.0 |
+| Anpassad text till tal | Med hjälp av en anpassad modell från den [anpassade röst portalen](https://aka.ms/custom-voice-portal)konverteras text till tal med naturligt ljud med text-eller tal syntess språk (SSML). | 1.11.0 |
 | Tal Språkidentifiering | Identifiera det språk som talas i ljudfiler. | 1.0 |
 | Neurala text till tal | Konverterar text till naturligt ljuds tal med djup neurala nätverks teknik, vilket ger mer naturliga syntetiskt syntetiskt tal. | 1.3.0 |
 
@@ -317,6 +317,28 @@ Det här kommandot:
 > Behållare stöder komprimerade ljud indata till tal-SDK med hjälp av GStreamer.
 > Om du vill installera GStreamer i en behållare följer du Linux-instruktionerna för GStreamer i [använda codec-komprimerad ljud inspelning med talet SDK](how-to-use-codec-compressed-audio-input-streams.md).
 
+#### <a name="diarization-on-the-speech-to-text-output"></a>Diarization för utdata från tal till text
+Diarization är aktiverat som standard. Använd om du vill hämta diarization i ditt svar `diarize_speech_config.set_service_property` .
+
+1. Ställ in utmatnings formatet för fraser på `Detailed` .
+2. Ange läget för diarization. De lägen som stöds är `Identity` och `Anonymous` .
+```python
+diarize_speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Format',
+    value='Detailed',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+
+diarize_speech_config.set_service_property(
+    name='speechcontext-phraseDetection.speakerDiarization.mode',
+    value='Identity',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+> [!NOTE]
+> "Identity"-läget returnerar `"SpeakerId": "Customer"` eller `"SpeakerId": "Agent"` .
+> Läget "Anonym" returnerar `"SpeakerId": "Speaker 1"` eller `"SpeakerId": "Speaker 2"`
+
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analysera sentiment för utdata från tal till text 
 Från och med v 2.6.0 av den tal-till-text-behållare ska du använda TextAnalytics 3,0 API-slutpunkten i stället för för hands versionen. Till exempel
@@ -326,7 +348,7 @@ Från och med v 2.6.0 av den tal-till-text-behållare ska du använda TextAnalyt
 > [!NOTE]
 > Textanalys- `v3.0` API: t är inte bakåtkompatibel med textanalys `v3.0-preview.1` . För att få den senaste stöd för sentiment-funktioner använder `v2.6.0` du behållar avbildningen tal-till-text och textanalys `v3.0` .
 
-Från och med v-2.2.0 av den tal-till-text-behållaren kan du anropa [sentiment Analysis v3-API: et](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) på utdata. Om du vill anropa sentiment-analysen behöver du en API för textanalys resurs slut punkt. Ett exempel: 
+Från och med v-2.2.0 av den tal-till-text-behållaren kan du anropa [sentiment Analysis v3-API: et](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) på utdata. Om du vill anropa sentiment-analysen behöver du en API för textanalys resurs slut punkt. Exempel: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -355,7 +377,7 @@ Från och med v-2.6.0 av den tal-till-text-behållaren kan du hämta utdata med 
 
 * "Det här är en mening som är den **största man** är en mening."
 
-Om du vill konfigurera en fras lista måste du lägga till egna fraser när du gör anropet. Ett exempel:
+Om du vill konfigurera en fras lista måste du lägga till egna fraser när du gör anropet. Exempel:
 
 ```python
     phrase="the tall man"
@@ -417,7 +439,7 @@ Det här kommandot:
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Bas modell hämtning av den anpassade tal-till-text-behållaren  
-Från och med v 2.6.0 av den anpassade-till-text-behållaren kan du hämta den tillgängliga bas modell informationen med hjälp av alternativet `BaseModelLocale=<locale>` . Med det här alternativet får du en lista över tillgängliga bas modeller på det aktuella språket under ditt fakturerings konto. Ett exempel:
+Från och med v 2.6.0 av den anpassade-till-text-behållaren kan du hämta den tillgängliga bas modell informationen med hjälp av alternativet `BaseModelLocale=<locale>` . Med det här alternativet får du en lista över tillgängliga bas modeller på det aktuella språket under ditt fakturerings konto. Exempel:
 
 ```bash
 docker run --rm -it \
@@ -433,7 +455,7 @@ Det här kommandot:
 * Kör en *Custom Speech-till-text-* behållare från behållar avbildningen.
 * Kontrol lera och returnera tillgängliga bas modeller för mål språket.
 
-Utdata ger dig en lista över bas modeller med information språk, modell-ID och datum/tid för skapande. Du kan använda modell-ID: t för att hämta och använda den aktuella bas modell som du föredrar. Ett exempel:
+Utdata ger dig en lista över bas modeller med information språk, modell-ID och datum/tid för skapande. Du kan använda modell-ID: t för att hämta och använda den aktuella bas modell som du föredrar. Exempel:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

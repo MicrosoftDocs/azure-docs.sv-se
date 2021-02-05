@@ -1,14 +1,14 @@
 ---
 title: Övervaka delegerade resurser i stor skala
 description: Lär dig hur du effektivt använder Azure Monitor loggar på ett skalbart sätt över de kund innehavare som du hanterar.
-ms.date: 02/01/2021
+ms.date: 02/02/2021
 ms.topic: how-to
-ms.openlocfilehash: b214f63fba9a5d13aac0f4bf86ce0810f16f0c9c
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509477"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575914"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Övervaka delegerade resurser i stor skala
 
@@ -49,9 +49,9 @@ När du har distribuerat dina principer kommer data att loggas i Log Analytics a
 
 Du kan visa [aviseringar](../../azure-monitor/platform/alerts-overview.md) för de delegerade prenumerationerna på kund klienter som din hantering.
 
-Om du vill uppdatera aviseringar automatiskt över flera kunder använder du en [Azure Resource Graph](../../governance/resource-graph/overview.md) -fråga för att filtrera efter aviseringar. Du kan fästa frågan på din instrument panel och välja alla lämpliga kunder och prenumerationer.
+Du kan [skapa, Visa och hantera aktivitets logg aviseringar](../../azure-monitor/platform/alerts-activity-log.md) i Azure Portal eller via API: er och hanterings verktyg från din hanterings klient.
 
-Följande exempel fråga visar allvarlighets grad 0 och 1 aviseringar, som uppdateras var 60: e minut.
+Om du vill uppdatera aviseringar automatiskt över flera kunder använder du en [Azure Resource Graph](../../governance/resource-graph/overview.md) -fråga för att filtrera efter aviseringar. Du kan fästa frågan på din instrument panel och välja alla lämpliga kunder och prenumerationer. Frågan nedan visar till exempel allvarlighets grad 0 och 1 aviseringar, som uppdateras var 60: e minut.
 
 ```kusto
 alertsmanagementresources

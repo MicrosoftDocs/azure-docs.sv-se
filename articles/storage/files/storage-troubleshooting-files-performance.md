@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 729c3e46cf329c525ce9204b26d4c6aefa04c89d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632503"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574439"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Felsöka prestanda problem i Azure-filresurser
 
@@ -34,14 +34,28 @@ Du kan kontrol lera om din resurs har begränsats genom att komma åt och använ
 
 1. Välj **transaktioner** som mått.
 
-1. Lägg till ett filter för **svars typ** och kontrol lera om det finns några begär Anden som har någon av följande svars koder:
-   * **SuccessWithThrottling**: för SMB (Server Message Block)
-   * **ClientThrottlingError**: för rest
+1. Lägg till ett filter för **svars typ** och kontrol lera sedan för att se om några begär Anden har begränsats. 
 
-   ![Skärm bild av mått alternativen för Premium-filresurser som visar egenskaps filtret "svars typ".](media/storage-troubleshooting-premium-fileshares/metrics.png)
+    För standard fil resurser loggas följande svars typer om en begäran begränsas:
 
-   > [!NOTE]
-   > Information om hur du får en avisering finns i avsnittet ["så här skapar du en avisering om en fil resurs är begränsad"](#how-to-create-an-alert-if-a-file-share-is-throttled) senare i den här artikeln.
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    För Premium-filresurser loggas följande svars typer om en begäran begränsas:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
+
+    Om du vill veta mer om varje svars typ, se [mått mått](https://docs.microsoft.com/azure/storage/files/storage-files-monitoring-reference#metrics-dimensions).
+
+    ![Skärm bild av mått alternativen för Premium-filresurser som visar egenskaps filtret "svars typ".](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+    > [!NOTE]
+    > Information om hur du får en avisering finns i avsnittet ["så här skapar du en avisering om en fil resurs är begränsad"](#how-to-create-an-alert-if-a-file-share-is-throttled) senare i den här artikeln.
 
 ### <a name="solution"></a>Lösning
 
@@ -219,48 +233,63 @@ För att bekräfta kan du använda Azure-mått i portalen –
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Så här skapar du en avisering om en fil resurs är begränsad
 
-1. I Azure Portal går du till ditt lagrings konto.
-1. I avsnittet **övervakning** väljer du **aviseringar** och väljer sedan **ny aviserings regel**.
-1. Välj **Redigera resurs**, Välj **fil resurs typ** för lagrings kontot och välj sedan **Slutför**. Om lagrings konto namnet till exempel är *contoso* väljer du Contoso/File-resursen.
-1. Klicka på **Välj villkor** för att lägga till ett villkor.
-1. I listan över signaler som stöds för lagrings kontot väljer du **transaktions** måttet.
-1. I list rutan **Dimensions namn** i rutan **Konfigurera signal logik** väljer du **svarstyp**.
-1. I list rutan **Dimensions värden** väljer du **SUCCESSWITHTHROTTLING** (för SMB) eller **ClientThrottlingError** (för rest).
+1. Gå till ditt **lagrings konto** i **Azure Portal**.
+2. I avsnittet **övervakning** klickar du på **aviseringar** och klickar sedan på **+ ny varnings regel**.
+3. Klicka på **Redigera resurs**, Välj **fil resurs typ** för lagrings kontot och klicka sedan på **färdig**. Om lagrings kontots namn till exempel är `contoso` väljer du `contoso/file` resursen.
+4. Lägg till ett villkor genom att klicka på **Lägg till villkor** .
+5. Du kommer att se en lista över signaler som stöds för lagrings kontot. Välj måttet **transaktioner** .
+6. På bladet **Konfigurera signal logik** klickar du på list rutan **Dimensions namn** och väljer **svarstyp**.
+7. Klicka på list rutan **Dimensions värden** och Välj lämpliga svars typer för din fil resurs.
+
+    För standard fil resurser väljer du följande svars typer:
+
+    - SuccessWithThrottling
+    - ClientThrottlingError
+
+    Välj följande svars typer för Premium File-resurser:
+
+    - SuccessWithShareEgressThrottling
+    - SuccessWithShareIngressThrottling
+    - SuccessWithShareIopsThrottling
+    - ClientShareEgressThrottlingError
+    - ClientShareIngressThrottlingError
+    - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > Om varken **SuccessWithThrottling** eller **ClientThrottlingError** -dimension svärdet visas innebär det att resursen inte har begränsats. Lägg till dimension svärdet genom att klicka på **Lägg till anpassat värde** bredvid List rutan **Dimensions värden** , ange **SuccessWithThrottling** eller **ClientThrottlingError**, Välj **OK** och upprepa sedan steg 7.
+   > Om svars typerna inte visas i list rutan **Dimensions värden** innebär det att resursen inte har begränsats. Om du vill lägga till dimensionsvärdena väljer du **Lägg till anpassat värde** bredvid List rutan **Dimensions värden** , anger svaret-typen (till exempel **SuccessWithThrottling**), väljer **OK** och upprepar sedan de här stegen för att lägga till alla lämpliga svars typer för din fil resurs.
 
-1. I list rutan **Dimensions namn** väljer du **fil resurs**.
-1. I list rutan **Dimensions värden** väljer du den fil resurs eller de resurser som du vill Avisera om.
+8. Klicka på list rutan **Dimensions namn** och välj **fil resurs**.
+9. Klicka på list rutan **Dimensions värden** och välj den eller de fil resurser som du vill Avisera om.
+
 
    > [!NOTE]
-   > Om fil resursen är en standard fil resurs väljer du **alla aktuella och framtida värden**. List rutan med dimensions värden listar inte fil resurserna, eftersom det inte finns några mått per resurs som är tillgängliga för standard fil resurser. Begränsnings aviseringar för standard fil resurser utlöses om någon fil resurs inom lagrings kontot är begränsad och aviseringen inte identifierar vilken fil resurs som har begränsats. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, rekommenderar vi att du använder en fil resurs per lagrings konto.
+   > Om fil resursen är en standard fil resurs väljer du **alla aktuella och framtida värden**. List rutan med dimensions värden visar inte fil resurserna eftersom det inte finns några tillgängliga fil resurser per resurs. Begränsnings varningar för standard fil resurser utlöses om någon fil resurs på lagrings kontot är begränsad och aviseringen inte kommer att identifiera vilken fil resurs som har begränsats. Eftersom per resurs-mått inte är tillgängliga för standard fil resurser, är rekommendationen att ha en fil resurs per lagrings konto.
 
-1. Definiera aviserings parametrar genom att ange **tröskelvärde**, **operator**, **agg regerings kornig het** och **utvärderings frekvens** och välj sedan **klar**.
+10. Definiera **aviserings parametrarna** (tröskelvärde, Operator, agg regerings precision och frekvens för utvärderingen) och klicka på **Slutför**.
 
     > [!TIP]
-    > Om du använder ett statiskt tröskelvärde kan mått diagrammet hjälpa dig att fastställa ett rimligt tröskelvärde om fil resursen för närvarande begränsas. Om du använder ett dynamiskt tröskelvärde visar mått diagrammet de beräknade tröskelvärdena baserat på senaste data.
+    > Om du använder ett statiskt tröskelvärde kan mått diagrammet hjälpa till att fastställa ett rimligt tröskelvärde om fil resursen för närvarande begränsas. Om du använder ett dynamiskt tröskelvärde visar mått diagrammet de beräknade tröskelvärdena baserat på aktuella data.
 
-1. Välj **Välj åtgärds grupp** och Lägg sedan till en åtgärds grupp (till exempel e-post eller SMS) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller genom att skapa en ny åtgärds grupp.
-1. Ange aviserings information, till exempel namn, **Beskrivning** och **allvarlighets grad** för **aviserings regel**.
-1. Välj **skapa aviserings regel** för att skapa aviseringen.
+11. Klicka på **Lägg till åtgärds grupper** för att lägga till en **Åtgärds grupp** (e-post, SMS osv.) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller skapa en ny åtgärds grupp.
+12. Fyll i **aviserings informationen** som **aviserings regelns namn**, **Beskrivning** och **allvarlighets grad**.
+13. Klicka på **skapa aviserings regel** för att skapa aviseringen.
 
 Mer information om hur du konfigurerar aviseringar i Azure Monitor finns i [Översikt över aviseringar i Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>Så här skapar du aviseringar om en Premium-filresurs tendenser ut mot begränsning
 
 1. I Azure Portal går du till ditt lagrings konto.
-1. I avsnittet **övervakning** väljer du **aviseringar** och väljer sedan **ny aviserings regel**.
-1. Välj **Redigera resurs**, Välj **fil resurs typ** för lagrings kontot och välj sedan **Slutför**. Om lagrings konto namnet till exempel är *contoso* väljer du Contoso/File-resursen.
-1. Klicka på **Välj villkor** för att lägga till ett villkor.
-1. Välj **utgående** mått i listan över signaler som stöds för lagrings kontot.
+2. I avsnittet **övervakning** väljer du **aviseringar** och väljer sedan **ny aviserings regel**.
+3. Välj **Redigera resurs**, Välj **fil resurs typ** för lagrings kontot och välj sedan **Slutför**. Om lagrings konto namnet till exempel är *contoso* väljer du Contoso/File-resursen.
+4. Klicka på **Välj villkor** för att lägga till ett villkor.
+5. Välj **utgående** mått i listan över signaler som stöds för lagrings kontot.
 
    > [!NOTE]
    > Du måste skapa tre separata aviseringar för att få en avisering när värdena för ingångs-, utgångs-eller transaktions värden överskrider tröskelvärdena som du har angett. Detta beror på att en avisering endast utlöses när alla villkor är uppfyllda. Om du till exempel placerar alla villkor i en avisering, blir du bara aviserad om ingress, utgående och transaktioner överskrider tröskelvärdena.
 
-1. Rulla nedåt. I list rutan **Dimensions namn** väljer du **fil resurs**.
-1. I list rutan **Dimensions värden** väljer du den fil resurs eller de resurser som du vill Avisera om.
-1. Definiera aviserings parametrar genom att välja värden i **operatorn**, **tröskelvärdet**, **agg regerings precisionen** och **frekvensen för utvärderings** List rutorna och välj sedan **Slutför**.
+6. Rulla nedåt. I list rutan **Dimensions namn** väljer du **fil resurs**.
+7. I list rutan **Dimensions värden** väljer du den fil resurs eller de resurser som du vill Avisera om.
+8. Definiera aviserings parametrar genom att välja värden i **operatorn**, **tröskelvärdet**, **agg regerings precisionen** och **frekvensen för utvärderings** List rutorna och välj sedan **Slutför**.
 
    Utgångs-, ingångs-och transaktions mått uttrycks per minut, även om du är etablerad, ingående och I/O per sekund. Om till exempel din tillhandahållna utgång är 90 &nbsp; mebibytes per sekund (MIB/s) och du vill att ditt tröskelvärde ska vara 80 &nbsp; procent av etableringen, väljer du följande aviserings parametrar: 
    - För **tröskel värde**: *75497472* 
@@ -271,9 +300,9 @@ Mer information om hur du konfigurerar aviseringar i Azure Monitor finns i [Öve
    - För **agg regerings granularitet**: *1 timme*
    - För **utvärderings frekvens**: *1 timme*
 
-1. Välj **Välj åtgärds grupp** och Lägg sedan till en åtgärds grupp (till exempel e-post eller SMS) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller genom att skapa en ny.
-1. Ange aviserings information, till exempel namn, **Beskrivning** och **allvarlighets grad** för **aviserings regel**.
-1. Välj **skapa aviserings regel** för att skapa aviseringen.
+9. Välj **Lägg till åtgärds grupper** och Lägg sedan till en åtgärds grupp (till exempel e-post eller SMS) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller genom att skapa en ny.
+10. Ange aviserings information, till exempel namn, **Beskrivning** och **allvarlighets grad** för **aviserings regel**.
+11. Välj **skapa aviserings regel** för att skapa aviseringen.
 
     > [!NOTE]
     > - Om du vill få ett meddelande om att Premium-filresursen är nära begränsad till begränsning *på grund av* insamlade ingångar följer du de föregående anvisningarna, men med följande ändring:

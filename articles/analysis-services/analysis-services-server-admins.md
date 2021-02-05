@@ -4,21 +4,23 @@ description: 'Den här artikeln beskriver hur du hanterar Server administratöre
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351732"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573508"
 ---
 # <a name="manage-server-administrators"></a>Hantera serveradministratörer
 
 Server administratörer måste vara en giltig användare, tjänstens huvud namn eller säkerhets grupp i Azure Active Directory (Azure AD) för den klient där-servern finns. Du kan använda **Analysis Services administratörer** för servern i Azure Portal, Server egenskaper i SSMS, PowerShell eller REST API för att hantera Server administratörer. 
 
 Använd om du vill lägga till en **säkerhets grupp** `obj:groupid@tenantid` . Tjänstens huvud namn stöds inte i säkerhets grupper som har lagts till i Server administratörs rollen.
+
+Mer information om hur du lägger till ett huvud namn för tjänsten i Server administratörs rollen finns i [lägga till ett huvud namn för tjänsten i Server administratörs rollen](analysis-services-addservprinc-admins.md).
 
 Om Server brand väggen är aktive rad måste IP-adresser för Server administratörs klienten inkluderas i en brand Väggs regel. Mer information finns i [Konfigurera Server brand väggen](analysis-services-qs-firewall.md).
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672a3f95efad24c07379fafe8b22088dc731c2df
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881169"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575779"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gör så här: Kräv app Protection-princip och en godkänd klient app för åtkomst till Cloud App med villkorlig åtkomst
 
@@ -34,7 +34,7 @@ I den villkorliga åtkomsten känner de här klient programmen till att skyddas 
 > Alla program stöds inte som godkända program eller stöder program skydds principer. En lista över tillgängliga klient program finns i [krav på skydds princip för appar](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
-> "Kräv en av de valda kontrollerna" under Granting Controls är som en OR-sats. Detta används inom en princip för att tillåta att användare använder appar som har stöd för antingen **Kräv app Protection-princip** eller **kräver godkända kontroller för klient programs** tilldelning. **Kräv att appens skydds princip** tillämpas om en app stöds i båda principerna. Mer information om vilka appar som stöder **Kräv skydds kontroll för program skydds principen** finns i [krav på skydds princip](concept-conditional-access-grant.md#require-app-protection-policy)för appar.
+> "Kräv en av de valda kontrollerna" under Granting Controls är som en OR-sats. Detta används inom en princip för att tillåta att användare använder appar som har stöd för antingen **Kräv app Protection-princip** eller **kräver godkända kontroller för klient programs** tilldelning. **Kräv att appens skydds princip** tillämpas när appen stöder den beviljande kontrollen. Mer information om vilka appar som stöder **Kräv skydds kontroll för program skydds principen** finns i [krav på skydds princip](concept-conditional-access-grant.md#require-app-protection-policy)för appar.
 
 ## <a name="scenario-1-microsoft-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 1: Microsoft 365 appar kräver godkända appar med skydds principer för appar
 

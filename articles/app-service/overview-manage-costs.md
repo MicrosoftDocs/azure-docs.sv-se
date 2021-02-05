@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3df08705859678525526f8fef198826f58249d8b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736229"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573372"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Planera och hantera kostnader för Azure App Service
 
@@ -51,7 +51,7 @@ Andra kostnads resurser för App Service är (se [App Service prissättning](htt
 
 När du tar bort alla appar i en App Service plan fortsätter planen att debiteras enligt dess konfigurerade pris nivå och antalet instanser. Ta bort planen eller skala ned den till den **kostnads fria** nivån för att undvika oönskade kostnader.
 
-När du har tagit bort Azure App Service-resurser kan resurser från relaterade Azure-tjänster fortsätta att existera. De fortsätter att Periodisera kostnader tills du tar bort dem. Ett exempel:
+När du har tagit bort Azure App Service-resurser kan resurser från relaterade Azure-tjänster fortsätta att existera. De fortsätter att Periodisera kostnader tills du tar bort dem. Exempel:
 
 - Virtual Network som du har skapat för en **isolerad** nivå App Service plan
 - Lagrings konton som du har skapat för att lagra säkerhets kopior eller diagnostikloggar
@@ -125,7 +125,7 @@ Om du planerar att använda ett känt minsta antal beräknings instanser för et
 
 Priset för reserverad instans gäller för tillämpliga instanser i din prenumeration, upp till antalet instanser som du reserverar. Reserverade instanser är en fakturerings fråga och är inte knutna till vissa beräknings instanser. Om du kör färre instanser än du reserverar när som helst under reservations perioden, betalar du fortfarande för de reserverade instanserna. Om du kör fler instanser än du reserverar när som helst under reservations perioden betalar du den normala upplupna kostnaden för ytterligare instanser.
 
-Den **isolerade** nivån (App Service miljö) stöder också 1-års-och 3-års reservationer till minskad prissättning. Mer information finns i [hur reservations rabatter gäller för Azure App Service isolerade stämplar](../cost-management-billing/reservations/reservation-discount-app-service-isolated-stamp.md).
+Den **isolerade** nivån (App Service miljö) stöder också 1-års-och 3-års reservationer till minskad prissättning. Mer information finns i [hur reservations rabatter gäller för Azure App Service](../cost-management-billing/reservations/reservation-discount-app-service.md).
 
 ## <a name="monitor-costs"></a>Övervaka kostnader
 

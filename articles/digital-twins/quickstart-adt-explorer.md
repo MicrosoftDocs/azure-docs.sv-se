@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050535"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575698"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Snabb start – utforska ett exempel på Azure Digitals dubbla scenarier med ADT Explorer
 
@@ -306,11 +306,15 @@ I den här snabb starten gjorde du temperatur uppdateringen manuellt. Det är va
 
 För att packa upp arbetet för den här snabb starten ska du först avsluta den aktiva konsolen. Den här åtgärden stänger av anslutningen till ADT Explorer-appen i webbläsaren. Du kommer inte längre att kunna visa real tids data i webbläsaren. Du kan stänga fliken webbläsare.
 
-Om du planerar att fortsätta med självstudierna för Azure Digitals dubbla, kan du återanvända instansen i den här snabb starten för dessa artiklar och du behöver inte ta bort den.
+Sedan kan du välja vilka resurser du vill ta bort, beroende på vad du vill göra härnäst.
+
+* **Om du planerar att fortsätta med självstudierna för Azure Digitals dubbla**, kan du återanvända instansen i den här snabb starten för dessa artiklar och du behöver inte ta bort den.
+
+[!INCLUDE [digital-twins-cleanup-clear-instance.md](../../includes/digital-twins-cleanup-clear-instance.md)]
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Slutligen tar du bort projekt exempel mappen **Azure_Digital_Twins__ADT__explorer**, som du laddade ned till din lokala dator. Du kanske måste ta bort både zippade och zippade versioner.
+Du kanske också vill ta bort projektmappen från den lokala datorn.
 
 ## <a name="next-steps"></a>Nästa steg
 

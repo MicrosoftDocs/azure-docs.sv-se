@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: visuellt innehåll, program för visuellt innehåll, dator vision
-ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033297"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575948"
 ---
 # <a name="what-is-computer-vision"></a>Vad är visuellt innehåll?
 
@@ -32,7 +32,7 @@ Du kan skapa Visuellt innehåll program via ett [klient biblioteks-SDK](./quicks
 
 ## <a name="optical-character-recognition-ocr"></a>Optisk teckenläsning (OCR)
 
-Visuellt innehåll innehåller [OCR-funktioner (optisk tecken läsning)](concept-recognizing-text.md) . Du kan använda den nya Read API: n för att extrahera utskrift och handskriven text från bilder och dokument. Den använder de senaste modellerna och fungerar med text på en rad olika ytor och bakgrunder. Det kan vara kvitton, affischer, visitkort, brev och whiteboardtavlor. De två OCR-API: erna stöder extrahering av utskriven text på [flera språk](./language-support.md). Kom igång genom att följa en [snabb start](./quickstarts-sdk/client-library.md) .
+Visuellt innehåll innehåller [OCR-funktioner (optisk tecken läsning)](concept-recognizing-text.md) . Du kan använda den nya Read API: n för att extrahera utskrift och handskriven text från bilder och dokument. Den använder djup inlärning baserade modeller och fungerar med text på en rad olika ytor och bakgrunder. Det kan vara affärs dokument, fakturor, kvitton, affischer, visitkort, brev och whiteboardtavlor. API: erna för OCR stöder extrahering av utskriven text på [flera språk](./language-support.md). Kom igång genom att följa en [snabb start](./quickstarts-sdk/client-library.md) .
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Visuellt innehåll för digital till gångs hantering
 

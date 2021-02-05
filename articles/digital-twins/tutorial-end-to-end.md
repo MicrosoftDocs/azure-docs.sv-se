@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684013"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575813"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -401,18 +401,15 @@ Här är en recension av scenariot som du skapade i den här självstudien.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte längre behöver resurserna som skapas i den här självstudien kan du ta bort dem genom att följa stegen nedan. 
+När du har slutfört den här självstudien kan du välja vilka resurser du vill ta bort, beroende på vad du vill göra härnäst.
 
-Med hjälp av [Azure Cloud Shell](https://shell.azure.com)kan du ta bort alla Azure-resurser i en resurs grupp med kommandot [AZ Group Delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) . Detta tar bort resurs gruppen. Azure Digitals dubbla instanser, IoT-hubben och nav enhets registreringen. avsnittet Event Grid och associerade prenumerationer. och Azure Functions-appen, inklusive både funktioner och associerade resurser som lagring.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> Att ta bort en resursgrupp kan inte ångras. Resursgruppen och alla resurser som ingår i den tas bort permanent. Kontrollera att du inte av misstag tar bort fel resursgrupp eller resurser. 
+* **Om du vill fortsätta använda Azure Digital-instansen som du har skapat i den här artikeln, men ta bort några eller alla modeller, delar och relationer**, kan du använda [AZ DT](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI-kommandona i ett [Azure Cloud Shells](https://shell.azure.com) fönster för att ta bort de element som du vill ta bort.
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    Det här alternativet tar inte bort några andra Azure-resurser som skapats i den här självstudien (IoT Hub, Azure Functions app osv.). Du kan ta bort dessa individuellt med de [DT-kommandon](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) som är lämpliga för varje resurs typ.
 
-Slutligen tar du bort exempel mappen Project som du laddade ned till din lokala dator.
+Du kanske också vill ta bort projektmappen från den lokala datorn.
 
 ## <a name="next-steps"></a>Nästa steg
 

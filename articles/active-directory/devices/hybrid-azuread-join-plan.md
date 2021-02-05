@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435765"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573338"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Gör så här: planera din hybrid Azure Active Directory delta-implementering
 
@@ -81,6 +81,8 @@ Som första planerings steg bör du granska din miljö och avgöra om du behöve
 - Hybrid Azure AD-anslutning stöds inte på Windows-enheter med äldre versioner vid användning av centrala autentiseringsuppgifter eller centrala profiler för användar profiler.
 
 - Server Core OS stöder inte någon typ av enhets registrering.
+
+- User State Migration Tool (USMT) fungerar inte med enhets registrering.  
 
 ### <a name="os-imaging-considerations"></a>Överväganden för OS-avbildningar
 - Om du förlitar dig på system förberedelse verktyget (Sysprep) och om du använder en avbildning med **tidigare versioner än Windows 10 1809** för installation kontrollerar du att avbildningen inte är från en enhet som redan har registrerats med Azure AD som en hybrid Azure AD-anslutning.

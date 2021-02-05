@@ -7,19 +7,16 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: estfan, valthom
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 02/03/2021
 tags: connectors
-ms.openlocfilehash: ae99e3fa287cc9012e317142cc1e6aef36ce90d6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7873076618125241d9bdf4f225c194572553d060
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095007"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573440"
 ---
-# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrera 3270-skärmdrivna appar på IBM-stordatorer med Azure med hjälp av Azure Logic Apps och IBM 3270-anslutningsprogrammet
-
-> [!NOTE]
-> Den här kopplingen finns i en [*offentlig för hands version*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+# <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrera 3270-skärm drivna appar i IBM-stordatorer med Azure med hjälp av Azure Logic Apps och IBM 3270-anslutning
 
 Med Azure Logic Apps och IBM 3270-anslutningsprogrammet kan du få åtkomst till och köra IBM-stordatorappar som du normalt kör genom att navigera genom 3270-emulatorns skärmar. På så sätt kan du integrera IBM-stordatorappar med Azure, Microsoft och andra appar, tjänster och system genom att skapa automatiserade arbetsflöden med Azure Logic Apps. Anslutningsprogrammet kommunicerar med IBM-stordatorer med hjälp av TN3270-protokollet och är tillgängligt i alla Azure Logic Apps-regioner förutom för Azure Government och Azure China 21Vianet. Om du är nybörjare på Logi Kap par kan du läsa om [Vad är Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
@@ -55,13 +52,13 @@ När du har genererat metadatafilen från design verktyget lägger du till filen
   Om du använder en ISE väljer du den ISE som din Logic app-plats.
 
 * [Hämta och installera design verktyget 3270](https://aka.ms/3270-design-tool-download).
-Den enda förutsättningen är [Microsoft .NET Framework 4.6.1](https://aka.ms/net-framework-download).
+Den enda förutsättningen är [Microsoft .NET Framework 4,8](https://aka.ms/net-framework-download).
 
   Med det här verktyget kan du registrera skärmar, navigerings Sök vägar, metoder och parametrar för de aktiviteter i din app som du lägger till och kör som 3270 kopplings åtgärder. Verktyget genererar en XML-fil (HIDX) för Host Integration designer som innehåller de metadata som krävs för att anslutnings tjänsten ska kunna använda för att köra din stordator-app.
   
   När du har laddat ned och installerat verktyget följer du de här stegen för att ansluta till värden:
 
-  1. Öppna design verktyget för 3270. Från **sessionen** väljer du Host- **sessioner** .
+  1. Öppna design verktyget för 3270. Från **sessionen** väljer du Host- **sessioner**.
   
   1. Ange information om din TN3270-värd Server.
 
@@ -75,22 +72,21 @@ Den enda förutsättningen är [Microsoft .NET Framework 4.6.1](https://aka.ms/n
 
 ## <a name="create-metadata-overview"></a>Översikt över Create metadata
 
-I en 3270-skärm driven app är skärmarna och data fälten unika för dina scenarier, så att 3270-anslutningen behöver den här informationen om din app, som du kan tillhandahålla som metadata. Dessa metadata beskriver information som hjälper din Logic app att identifiera och identifiera skärmar, beskriver hur du navigerar mellan skärmar, var du kan mata in data och var resultatet ska förväntas. Om du vill ange och generera dessa metadata använder du design verktyget 3270, som vägleder dig genom dessa speciella *lägen* , eller steg, som beskrivs senare i mer information:
+I en 3270-skärm driven app är skärmarna och data fälten unika för dina scenarier, så att 3270-anslutningen behöver den här informationen om din app, som du kan tillhandahålla som metadata. Dessa metadata beskriver information som hjälper din Logic app att identifiera och identifiera skärmar, beskriver hur du navigerar mellan skärmar, var du kan mata in data och var resultatet ska förväntas. Om du vill ange och generera dessa metadata använder du design verktyget 3270, som vägleder dig genom dessa speciella *lägen*, eller steg, som beskrivs senare i mer information:
 
-* **Avbildning** : i det här läget registrerar du de skärmar som krävs för att slutföra en speciell uppgift med en stordator, till exempel, hämta ett bank saldo.
+* **Avbildning**: i det här läget registrerar du de skärmar som krävs för att slutföra en speciell uppgift med en stordator, till exempel, hämta ett bank saldo.
 
-* **Navigering** : i det här läget kan du ange en plan eller sökväg för hur du navigerar genom dina stordator skärmar för den aktuella aktiviteten.
+* **Navigering**: i det här läget kan du ange en plan eller sökväg för hur du navigerar genom dina stordator skärmar för den aktuella aktiviteten.
 
-* **Metoder** : i det här läget definierar du metoden, till exempel `GetBalance` , som beskriver sökvägen till skärm navigering. Du väljer också fälten på varje skärm som blir metodens indata-och utdataparametrar.
+* **Metoder**: i det här läget definierar du metoden, till exempel `GetBalance` , som beskriver sökvägen till skärm navigering. Du väljer också fälten på varje skärm som blir metodens indata-och utdataparametrar.
 
 ### <a name="unsupported-elements"></a>Element som inte stöds
 
 Design verktyget har inte stöd för dessa element:
 
 * Partiella BMS-mappningar (IBM Basic Maps support): om du importerar en BMS-karta ignorerar design verktyget partiella skärm definitioner.
-* In-/out-parametrar: du kan inte definiera in-/out-parametrar.
-* Meny bearbetning: stöds inte under för hands versionen
-* Mat ris bearbetning: stöds inte under för hands versionen
+
+* Meny bearbetning
 
 <a name="capture-screens"></a>
 
@@ -100,23 +96,23 @@ I det här läget markerar du ett objekt på varje 3270-skärm som unikt identif
 
 1. Öppna design verktyget 3270 om du inte redan gjort det. I verktygsfältet väljer du **fånga** så att du anger bild tagnings läge.
 
-1. Om du vill starta inspelningen trycker du på F5 eller på **inspelnings** menyn väljer du **Starta inspelning** . 
+1. Från menyn **session** väljer du **Anslut**.
 
-1. Från menyn **session** väljer du **Anslut** .
+1. Starta inspelningen genom att välja **Starta inspelning** på **inspelnings** menyn. (Tangent bord: Ctrl + E)
 
 1. I fönstret **Capture** , som börjar från den första skärmen i din app, steg för steg igenom din app för den uppgift som du spelar in.
 
 1. När du är klar med uppgiften loggar du ut från din app som vanligt.
 
-1. Från menyn **session** väljer du **Koppla från** .
+1. Från menyn **session** väljer du **Koppla från**.
 
-1. Om du vill stoppa inspelningen trycker du på tangenterna Shift + F5 eller på **inspelnings** menyn och väljer **stoppa inspelning** .
+1. Om du vill stoppa inspelningen väljer du **stoppa inspelning** på **inspelnings** menyn. (Tangent bord: CTRL + SKIFT + E)
 
    När du har hämtat skärmarna för en aktivitet visar verktyget designer miniatyrer som representerar dessa skärmar. Några anmärkningar om de här miniatyr bilderna:
 
    * Som ingår i dina infångade skärmar har du en skärm med namnet "Tom".
 
-     När du först ansluter till [CICS](https://www.ibm.com/it-infrastructure/z/cics)måste du skicka "Rensa"-nyckeln innan du kan ange namnet på den transaktion som du vill köra. Skärmen där du skickar "Rensa"-nyckeln har inga *igenkännings attribut* , till exempel en skärm rubrik, som du kan lägga till med hjälp av skärm igenkännings redigeraren. För att representera den här skärmen innehåller miniatyr bilderna en skärm med namnet "Tom". Du kan senare använda den här skärmen för att representera skärmen där du anger transaktions namnet.
+     När du först ansluter till [CICS](https://www.ibm.com/it-infrastructure/z/cics)måste du skicka "Rensa"-nyckeln innan du kan ange namnet på den transaktion som du vill köra. Skärmen där du skickar "Rensa"-nyckeln har inga *igenkännings attribut*, till exempel en skärm rubrik, som du kan lägga till med hjälp av skärm igenkännings redigeraren. För att representera den här skärmen innehåller miniatyr bilderna en skärm med namnet "Tom". Du kan senare använda den här skärmen för att representera skärmen där du anger transaktions namnet.
 
    * Som standard använder namnet på en infångad skärm det första ordet på skärmen. Om det namnet redan finns lägger design verktyget till namnet med ett under streck och ett tal, till exempel "WBGB" och "WBGB_1".
 
@@ -138,7 +134,7 @@ När du har valt att välja igenkännings fält går du vidare till nästa läge
 
 För att kopplingen ska kunna navigera och skilja mellan skärmar, hittar du vanligt vis unik text på en skärm som du kan använda som identifierare bland de fångade skärmarna. För upprepade skärmar kan du behöva fler identifierings metoder. Anta till exempel att du har två skärmar som ser likadana ut utom en skärm returnerar ett giltigt värde, medan den andra skärmen returnerar ett fel meddelande.
 
-I design verktyget kan du lägga till *igenkännings attribut* , till exempel en skärm rubrik, till exempel "Hämta konto balans" med hjälp av skärm igenkännings redigeraren. Om du har en förgrenings väg och båda grenarna returnerar samma skärm men med olika resultat behöver du andra igenkännings attribut. Vid körning använder anslutningen dessa attribut för att fastställa aktuell gren och förgrening. Här följer de villkor som du kan använda:
+I design verktyget kan du lägga till *igenkännings attribut*, till exempel en skärm rubrik, till exempel "Hämta konto balans" med hjälp av skärm igenkännings redigeraren. Om du har en förgrenings väg och båda grenarna returnerar samma skärm men med olika resultat behöver du andra igenkännings attribut. Vid körning använder anslutningen dessa attribut för att fastställa aktuell gren och förgrening. Här följer de villkor som du kan använda:
 
 * Specifikt värde: det här värdet matchar den angivna strängen på den angivna platsen.
 * INGET specifikt värde: det här värdet matchar inte den angivna strängen på den angivna platsen.
@@ -182,7 +178,7 @@ I det här läget definierar du flödet eller stegen för att navigera genom din
 
 1. Under **Välj nytt plan namn** anger du ett namn för din plan. I listan **typ** väljer du typ av prenumeration:
 
-   | Plantyp | Beskrivning |
+   | Plantyp | Description |
    |-----------|-------------|
    | **Process** | För fristående eller kombinerade planer |
    | **Anslut** | För Connect-planer |
@@ -195,7 +191,7 @@ I det här läget definierar du flödet eller stegen för att navigera genom din
 
 1. Ordna skärmarna i den ordning som beskriver den uppgift som du definierar.
 
-1. För att definiera flödes vägen mellan skärmar, inklusive förgreningar och kopplingar, i verktygsfältet i design verktyg väljer du **flöde** .
+1. För att definiera flödes vägen mellan skärmar, inklusive förgreningar och kopplingar, i verktygsfältet i design verktyget, väljer du **Flow**.
 
 1. Välj den första skärmen i flödet. Dra och rita en anslutning till nästa skärm i flödet.
 
@@ -266,23 +262,23 @@ I det här läget definierar du en metod som är kopplad till din navigerings pl
 
 1. Följ dessa steg om du vill lägga till den första Indataparametern för metoden:
 
-   1. I fönstret **Capture** på 3270-emulatorns skärm väljer du hela fältet, inte bara text i fältet som du vill ha som första inmatade.
+   1. I fönstret **Capture** på 3270-emulatorn-skärmen väljer du hela fältet, inte bara text i fältet som du vill ha som första inmatade.
 
       > [!TIP]
-      > Om du vill visa alla fält och se till att du väljer fältet fullständig går du till menyn **Visa** och väljer **alla fält** .
+      > Om du vill visa alla fält och se till att du väljer fältet fullständig går du till menyn **Visa** och väljer **alla fält**.
 
-   1. I verktygsfältet i design verktyget väljer du **inmatade fält** . 
+   1. I verktygsfältet i design verktyget väljer du **inmatade fält**. 
 
    Upprepa föregående steg för varje parameter om du vill lägga till fler indataparametrar.
 
 1. Följ dessa steg om du vill lägga till den första Utdataparametern för metoden:
 
-   1. I fönstret **Capture** på 3270-emulatorns skärm väljer du hela fältet, inte bara text i fältet som du vill ha som första utdata.
+   1. I fönstret **Capture** på 3270-emulatorn-skärmen väljer du hela fältet, inte bara text i fältet som du vill ha som första utdata.
 
       > [!TIP]
-      > Om du vill visa alla fält och se till att du väljer fältet fullständig går du till menyn **Visa** och väljer **alla fält** .
+      > Om du vill visa alla fält och se till att du väljer fältet fullständig går du till menyn **Visa** och väljer **alla fält**.
 
-   1. I verktygsfältet i design verktyget väljer du **utmatnings fält** .
+   1. I verktygsfältet i design verktyget väljer du **utmatnings fält**.
 
    Om du vill lägga till fler utdataparametrar upprepar du föregående steg för varje parameter.
 
@@ -291,8 +287,8 @@ I det här läget definierar du en metod som är kopplad till din navigerings pl
    | Egenskapsnamn | Möjliga värden | 
    |---------------|-----------------|
    | **Datatyp** | Byte, datum tid, decimal, heltal, lång, kort, sträng |
-   | **Fält fyllnings teknik** | Parametrarna har stöd för dessa fyllnings typer och fyller med blank steg om det behövs: <p><p>- **Skriv** : Ange tecken sekventiellt i fältet. <p>- **Fill** : Ersätt fältets innehåll med tecken och fyll med blank steg om det behövs. <p>- **EraseEofType** : Rensa fältet och ange sedan tecknen i turordning i fältet. |
-   | **Format sträng** | Vissa parameter data typer använder en format sträng som informerar 3270-anslutningen så här konverterar du text från skärmen till en .NET-datatyp: <p><p>- **Datetime** : datetime-format strängen följer [anpassade .net-datum-och tids format strängar](/dotnet/standard/base-types/custom-date-and-time-format-strings). Till exempel `06/30/2019` används format strängen i datumet `MM/dd/yyyy` . <p>- **Decimal** : decimal format strängen använder [COBOL Picture-satsen](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm). Till exempel `100.35` använder talet formatet sträng `999V99` . |
+   | **Fält fyllnings teknik** | Parametrarna har stöd för dessa fyllnings typer och fyller med blank steg om det behövs: <p><p>- **Skriv**: Ange tecken sekventiellt i fältet. <p>- **Fill**: Ersätt fältets innehåll med tecken och fyll med blank steg om det behövs. <p>- **EraseEofType**: Rensa fältet och ange sedan tecknen i turordning i fältet. |
+   | **Format sträng** | Vissa parameter data typer använder en format sträng som informerar 3270-anslutningen så här konverterar du text från skärmen till en .NET-datatyp: <p><p>- **Datetime**: datetime-format strängen följer [anpassade .net-datum-och tids format strängar](/dotnet/standard/base-types/custom-date-and-time-format-strings). Till exempel `06/30/2019` används format strängen i datumet `MM/dd/yyyy` . <p>- **Decimal**: decimal format strängen använder [COBOL Picture-satsen](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_73/rzasb/picture.htm). Till exempel `100.35` använder talet formatet sträng `999V99` . |
    |||
 
 ## <a name="save-and-view-metadata"></a>Spara och visa metadata
@@ -310,16 +306,16 @@ Men om du försöker spara ändringar i exempel-RAP-filen eller skapa en HIDX-fi
 
 ## <a name="test-your-method"></a>Testa din metod
 
-1. Om du vill köra din metod mot Live-värden, medan du fortfarande arbetar i metod läge, trycker du på F5 eller väljer **Kör** i design verktygets verktygsfält.
+1. Om du vill köra din metod mot Live-värden, medan du fortfarande befinner dig i metod läge, trycker du på F5 eller väljer **testa** i design verktygets verktygsfält.
 
    > [!TIP]
    > Du kan ändra lägen när som helst. Välj **läge** på **Arkiv** -menyn och välj sedan det läge som du vill använda.
 
-1. Ange dina parameter värden och välj **OK** .
+1. Ange dina parameter värden och välj **OK**.
 
-1. Fortsätt till nästa skärm genom att välja **Nästa** .
+1. Fortsätt till nästa skärm genom att välja **Nästa**.
 
-1. När du är klar väljer du **klar** , som visar värdena för utmatnings parameter.
+1. När du är klar väljer du **klar**, som visar värdena för utmatnings parameter.
 
 <a name="add-metadata-integration-account"></a>
 
@@ -327,13 +323,13 @@ Men om du försöker spara ändringar i exempel-RAP-filen eller skapa en HIDX-fi
 
 När du är klar genererar du HIDX-filen så att du kan överföra till ditt integrations konto. Design verktyget 3270 skapar HIDX-filen i en ny undermapp där du sparade din RAP-fil.
 
-1. I verktygsfältet 3270 design verktyg väljer du **skapa kod** .
+1. I design verktyget 3270 väljer du **generera definitioner** på **verktyg** -menyn. (Tangent bord: F6)
 
 1. Gå till den mapp som innehåller din RAP-fil och öppna undermappen som verktyget skapade när du har genererat HIDX-filen. Bekräfta att verktyget skapade HIDX-filen.
 
 1. Logga in på [Azure Portal](https://portal.azure.com)och hitta ditt integrations konto.
 
-1. Lägg till din HIDX-fil som en karta till ditt integrations konto genom [att följa dessa liknande steg för att lägga till kartor](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md), men när du väljer kart typen väljer du **HIDX** .
+1. Lägg till din HIDX-fil som en karta till ditt integrations konto genom [att följa dessa liknande steg för att lägga till kartor](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md), men när du väljer kart typen väljer du **HIDX**.
 
 Senare i det här avsnittet när du lägger till en IBM 3270-åtgärd i din Logic app för första gången uppmanas du att skapa en anslutning mellan din Logic app och värd servern genom att tillhandahålla anslutnings information, till exempel namn för ditt integrations konto och värd servern. När du har skapat anslutningen kan du välja den nyligen tillagda HIDX-filen, vilken metod som ska köras och vilka parametrar som ska användas.
 
@@ -347,22 +343,21 @@ När du har slutfört alla dessa steg kan du använda den åtgärd som du skapar
 
 1. Logga in på [Azure Portal](https://portal.azure.com)och öppna din Logic app i Logic App Designer, om du inte redan har gjort det.
 
-1. Under det sista steget där du vill lägga till en åtgärd väljer du **nytt steg** och sedan **Lägg till en åtgärd** . 
+1. Under det sista steget där du vill lägga till en åtgärd väljer du **nytt steg** **>** **Lägg till en åtgärd**. 
 
-1. Välj **Enterprise** i rutan Sök. I rutan Sök anger du "3270" som filter. I listan åtgärder väljer du den här åtgärden: **kör ett stordator program över en TN3270-anslutning**
+1. Under sökrutan väljer du **företag**. I rutan Sök anger `3270` du som filter. I listan åtgärder väljer du den åtgärd som heter **kör ett stordator program över en TN3270-anslutning**
 
    ![Välj 3270-åtgärd](./media/connectors-create-api-3270/select-3270-action.png)
 
-   Om du vill lägga till en åtgärd mellan stegen flyttar du pekaren över pilen mellan stegen. 
-   Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd** .
+   Om du vill lägga till en åtgärd mellan stegen flyttar du pekaren över pilen mellan stegen. Välj plus tecknet ( **+** ) som visas och välj sedan **Lägg till en åtgärd**.
 
-1. Om det inte finns någon anslutning ännu, anger du nödvändig information för anslutningen och väljer **skapa** .
+1. Om det inte finns någon anslutning ännu, anger du nödvändig information för anslutningen och väljer **skapa**.
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
    | **Anslutnings namn** | Yes | <*anslutnings namn*> | Namnet på anslutningen |
    | **Integrations konto-ID** | Yes | <*integration – konto namn*> | Integrations kontots namn |
-   | **SAS-URL för integrations konto** | Yes | <*integration – konto – SAS-URL*> | Ditt integrations kontos URL för signatur för delad åtkomst (SAS), som du kan generera från integrations kontots inställningar i Azure Portal. <p>1. i menyn integrations konto **väljer du** **återanrops-URL** . <br>2. i den högra rutan kopierar du det **genererade URL** -värdet för motringning. |
+   | **SAS-URL för integrations konto** | Yes | <*integration – konto – SAS-URL*> | Ditt integrations kontos URL för signatur för delad åtkomst (SAS), som du kan generera från integrations kontots inställningar i Azure Portal. <p>1. i menyn integrations konto **väljer du** **återanrops-URL**. <br>2. i den högra rutan kopierar du det **genererade URL** -värdet för motringning. |
    | **Server** | Yes | <*TN3270-Server namn*> | Server namnet för din TN3270-tjänst |
    | **Port** | No | <*TN3270-server-port*> | Porten som används av TN3270-servern. Om det lämnas tomt används anslutningen `23` som standardvärde. |
    | **Enhetstyp** | No | <*IBM-Terminal-Model*> | Modell namnet eller numret för den IBM-Terminal som ska emuleras. Om det lämnas tomt används standardvärden av kopplings funktionen. |
@@ -405,7 +400,7 @@ När du har slutfört alla dessa steg kan du använda den åtgärd som du skapar
 
 1. Om du vill granska indata och utdata för varje steg expanderar du det steget.
 
-1. Om du vill granska utdata väljer du **Visa rå data** .
+1. Om du vill granska utdata väljer du **se rå data**.
 
 ## <a name="connector-reference"></a>Referens för anslutningsapp
 

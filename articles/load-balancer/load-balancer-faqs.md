@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051880"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576049"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Vanliga frågor och svar om Load Balancer
 
@@ -52,9 +52,11 @@ Nej, det är inte möjligt.
 ## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Vad är det maximala data flödet som kan uppnås via en Azure Load Balancer?
 Eftersom Azure LB är en direkt utjämning av nätverks belastning, bestäms data flödes begränsningar av den typ av virtuell dator som används i backend-poolen. Om du vill veta mer om annan information om nätverks data flöde, se [data flöde för virtuella datorer](../virtual-network/virtual-machine-network-throughput.md).
 
-
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Hur fungerar anslutningar till Azure Storage i samma region?
 Att ha utgående anslutningar via scenarierna ovan är inte nödvändigt för att ansluta till lagring i samma region som den virtuella datorn. Om du inte vill det använder du nätverks säkerhets grupper (NSG: er) enligt beskrivningen ovan. För anslutning till lagring i andra regioner krävs utgående anslutning. Observera att när du ansluter till lagring från en virtuell dator i samma region, kommer käll-IP-adressen i lagrings diagnostikloggar att vara en intern provideradress och inte den offentliga IP-adressen för den virtuella datorn. Om du vill begränsa åtkomsten till ditt lagrings konto till virtuella datorer i ett eller flera Virtual Network undernät i samma region, använder du [Virtual Network tjänst slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) och inte din offentliga IP-adress när du konfigurerar brand väggen för ditt lagrings konto. När tjänstens slut punkter har kon figurer ATS visas din Virtual Network privata IP-adress i dina lagrings diagnostikloggar och inte på den interna provideradress.
+
+## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>Stöder Azure Load Balancer TLS/SSL-terminering?
+Nej, Azure Load Balancer har för närvarande inte stöd för uppsägning eftersom det är ett pass via en utjämning av nätverks belastning. Application Gateway kan vara en potentiell lösning om ditt program kräver detta.
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Vad är bäst vad gäller utgående anslutningar?
 Standard Load Balancer och allmän standard-IP-adress ger funktioner och olika beteenden för utgående anslutning. De är inte samma som för grundläggande SKU: er. Om du vill använda utgående anslutningar när du arbetar med standard-SKU: er måste du uttryckligen definiera det antingen med offentliga IP-adresser eller offentliga standard Load Balancer. Detta inkluderar att skapa utgående anslutningar när du använder en intern Standard Load Balancer. Vi rekommenderar att du alltid använder utgående regler på en offentlig standard Load Balancer. Det innebär att när en intern Standard Load Balancer används, måste du vidta åtgärder för att skapa utgående anslutningar för de virtuella datorerna i backend-poolen om den utgående anslutningen önskas. I kontexten för utgående anslutning, en enda fristående virtuell dator, alla virtuella datorer i en tillgänglighets uppsättning, fungerar alla instanser i en VMSS som en grupp. Det innebär att om en enskild virtuell dator i en tillgänglighets uppsättning är associerad med en standard-SKU fungerar alla VM-instanser i den här tillgänglighets uppsättningen med samma regler som om de är associerade med standard-SKU: n, även om en enskild instans inte är direkt kopplad till den. Det här beteendet observeras även när det gäller en fristående virtuell dator med flera nätverkskort kopplade till en belastningsutjämnare. Om ett nätverkskort läggs till som fristående har det samma beteende. Läs noggrant igenom hela dokumentet för att förstå de övergripande begreppen, granska [standard Load Balancer](./load-balancer-overview.md) för skillnader mellan SKU: er och granska [utgående regler](load-balancer-outbound-connections.md#outboundrules).

@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232394"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575762"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Åtkomsttoken för Microsoft Identity Platform
 
@@ -241,7 +241,7 @@ Ditt programs affärs logik kommer att diktera det här steget, några vanliga a
 * Verifiera autentiseringen för den anropande klienten med `appidacr` -den bör inte vara 0 om offentliga klienter inte tillåts anropa ditt API.
 * Kontrol lera mot en lista över tidigare `nonce` anspråk för att kontrol lera att token inte spelas upp.
 * Kontrol lera att `tid` matchar en klient som har behörighet att anropa ditt API.
-* Använd `acr` anspråket för att verifiera att användaren har utfört MFA. Detta bör tillämpas med [villkorlig åtkomst](../conditional-access/overview.md).
+* Använd `amr` anspråket för att verifiera att användaren har utfört MFA. Detta bör tillämpas med [villkorlig åtkomst](../conditional-access/overview.md).
 * Om du har begärt `roles` -eller `groups` -anspråk i åtkomsttoken kontrollerar du att användaren finns i gruppen som har behörighet att utföra den här åtgärden.
   * För token som hämtats med det implicita flödet måste du förmodligen fråga [Microsoft Graph](https://developer.microsoft.com/graph/) efter dessa data, eftersom det ofta är för stort för att få plats i token.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 552e5c2411889ee7f07265eb1cc35d98aed4d7c1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997230"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Självstudie: Azure Active Directory integrering med M-Files
 
@@ -129,7 +129,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för M-
     >[!NOTE]
     >Följ stegen nedan om du vill konfigurera enkel inloggning för M-Files-skrivbordsprogrammet. Det krävs inga fler steg om du bara vill konfigurera enkel inloggning för webbversionen av M-Files.  
 
-1. Följ stegen nedan om du vill konfigurera M-Files-skrivbordsprogrammet för att aktivera enkel inloggning med Azure AD. För att ladda ned M-Files går du till sidan för [nedladdning av M-Files](https://www.m-files.com/en/download-latest-version).
+1. Följ stegen nedan om du vill konfigurera M-Files-skrivbordsprogrammet för att aktivera enkel inloggning med Azure AD. För att ladda ned M-Files går du till sidan för [nedladdning av M-Files](https://www.m-files.com/customers/product-downloads/download-update-links/).
 
 1. Öppna fönstret **M-Files Desktop Settings** (M-Files-skrivbordsinställningar). Klicka sedan på **Lägg till**.
    

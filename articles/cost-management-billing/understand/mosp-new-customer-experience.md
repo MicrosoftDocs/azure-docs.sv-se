@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133578"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575474"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Kom igång med ditt uppdaterade Azure-faktureringskonto
 
@@ -42,7 +42,7 @@ När ditt konto uppdateras skapas en faktureringsprofil automatiskt för varje p
 
 Roller för faktureringsprofiler har behörighet att visa och hantera fakturor och betalningsmetoder. De här rollerna bör tilldelas till användare som betalar fakturor, t.ex. medlemmar i redovisningsteamet i en organisation. Mer information finns i [Roller och uppgifter för faktureringsprofiler](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-För varje prenumeration som du har gett andra behörighet att [visa fakturor](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice) för, tilldelas användare som har en Azure-roll som ägare, deltagare, läsare eller faktureringsläsare, rollen som läsare i den aktuella faktureringsprofilen när ditt konto uppdateras.
+För varje prenumeration som du har gett andra behörighet att [visa fakturor](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice) för, tilldelas användare som har en Azure-roll som ägare, deltagare, läsare eller faktureringsläsare, rollen som läsare i den aktuella faktureringsprofilen när ditt konto uppdateras.
 
 ## <a name="invoice-sections"></a>Fakturaavsnitt
 

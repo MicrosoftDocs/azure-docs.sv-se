@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 02/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 8901877ab3055c02dfc8c129fb35864418cd19d8
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549143"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576320"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sök efter fel i pooler och noder
 
@@ -24,7 +24,7 @@ I den här artikeln beskrivs olika sätt att identifiera och undvika fel i bakgr
 
 ### <a name="resize-timeout-or-failure"></a>Tids gräns för storlek eller haveriering
 
-När du skapar en ny pool eller ändrar storlek på en befintlig pool anger du mål antalet noder. Åtgärden skapa eller ändra storlek slutförs omedelbart, men den faktiska allokeringen av nya noder eller borttagning av befintliga noder kan ta flera minuter. Du anger ett värde för timeout för storleks ändring i API för att [skapa](/rest/api/batchservice/pool/add) eller [ändra storlek](/rest/api/batchservice/pool/resize) . Om batch inte kan hämta mål antalet noder under tids gränsen för storleks ändring, försätts poolen i ett stabilt tillstånd och rapporter ändrar storlek på fel.
+När du skapar en ny pool eller ändrar storlek på en befintlig pool anger du mål antalet noder. Åtgärden skapa eller ändra storlek slutförs omedelbart, men den faktiska allokeringen av nya noder eller borttagning av befintliga noder kan ta flera minuter. Du kan ange tids gränsen för storleks ändring i API för att [skapa](/rest/api/batchservice/pool/add) eller [ändra storlek](/rest/api/batchservice/pool/resize) . Om batch inte kan hämta mål antalet noder under tids gränsen för storleks ändring, försätts poolen i ett stabilt tillstånd och rapporter ändrar storlek på fel.
 
 Egenskapen [ResizeError](/rest/api/batchservice/pool/get#resizeerror) för den senaste utvärderingen visar en lista över felen som har inträffat.
 

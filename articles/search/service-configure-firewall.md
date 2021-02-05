@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67fa53e565de70d3da0b90e36a968b68d54d667f
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932805"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573253"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurera IP-brandvägg för Azure Kognitiv sökning
 
@@ -24,14 +24,14 @@ Azure Kognitiv sökning stöder IP-regler för inkommande brand Väggs stöd. De
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurera en IP-brandvägg med hjälp av Azure Portal
 
-Om du vill ange princip för IP-åtkomstkontroll i Azure Portal går du till Azure Kognitiv sökning service-sidan och väljer **nätverk** på navigerings menyn. Slut punktens nätverks anslutning måste vara **offentlig**. Om din anslutning är inställd på **privat**kan du bara komma åt Sök tjänsten via en privat slut punkt.
+Om du vill ange princip för IP-åtkomstkontroll i Azure Portal går du till Azure Kognitiv sökning service-sidan och väljer **nätverk** på navigerings menyn. Slut punktens nätverks anslutning måste vara **offentlig**. Om din anslutning är inställd på **privat** kan du bara komma åt Sök tjänsten via en privat slut punkt.
 
 ![Skärm bild som visar hur du konfigurerar IP-brandväggen i Azure Portal](./media/service-configure-firewall/azure-portal-firewall.png)
 
 Azure Portal ger möjlighet att ange IP-adresser och IP-adressintervall i CIDR-format. Ett exempel på CIDR-notering är 8.8.8.0/24 som representerar de IP-adresser som sträcker sig från 8.8.8.0 till 8.8.8.255.
 
 > [!NOTE]
-> När du har aktiverat principen för IP-åtkomstkontroll för din Azure Kognitiv sökning-tjänst avvisas alla förfrågningar till data planet från datorer utanför listan över tillåtna IP-adressintervall. När IP-regler har kon figurer ATS är vissa funktioner i Azure Portal inaktiverade. Du kan visa och hantera information om service nivå, men Portal åtkomst till index data och de olika komponenterna i tjänsten, till exempel index, indexerare och färdigheter definitioner, är begränsad av säkerhets skäl.
+> När du har aktiverat principen för IP-åtkomstkontroll för din Azure Kognitiv sökning-tjänst avvisas alla förfrågningar till data planet från datorer utanför listan över tillåtna IP-adressintervall. När IP-regler har kon figurer ATS är vissa funktioner i Azure Portal inaktiverade. Du kan visa och hantera information om service nivå, men Portal åtkomst till index data och de olika komponenterna i tjänsten, till exempel index, indexerare och färdigheter definitioner, är begränsad av säkerhets skäl. Som ett alternativ till portalen kan du använda [vs Code-tillägget](https://aka.ms/vscode-search) för att interagera med de olika komponenterna i tjänsten.
 
 ### <a name="requests-from-your-current-ip"></a>Begär Anden från din aktuella IP
 

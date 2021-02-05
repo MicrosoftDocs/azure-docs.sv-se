@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 02611bdf9689d2f62f661f558fd547ea46bd4d36
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744891"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576016"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1,3 viktig information
 
@@ -28,15 +28,15 @@ Uppdatering 1,3 motsvarar program varu versionen 10.0.10319.0.
 
 ## <a name="whats-new-in-update-13"></a>Nyheter i uppdatering 1,3
 
-Den här uppdateringen innehåller följande förbättringar:
+Den här uppdateringen innehåller följande förbättringar: KB4540725
 
 - Transport Layer Security (TLS) 1,2 är en obligatorisk uppdatering och måste vara installerad. I den här versionen kommer TLS 1,2 att bli standard protokoll för all Azure Portal kommunikation.
 - Skräp insamling fel korrigeringar förbättra prestanda för skräp insamlings cykeln när enhets-och lagrings kontot finns i två regioner.
 - Korrigering för säkerhets kopierings problem på grund av BLOB-timeout.
 - Uppdaterade säkerhets korrigeringar för OS/. NET Framework:
-  - [KB4540725](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4540725\V1.001\free\NEU\X64): mars 2020 självbetjänings (uppdatering av underhålls stack)
-  - [KB4565541](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Windows6.3\RTM\KB4565541\V1.014\free\NEU\X64): samlad 2020 juli
-  - [KB4565622](\\winsehotfix.segroup.winse.corp.microsoft.com\hotfixes\Partner\DOTNET47x\KB4565622\V1.000\free\NEU\x64): 2020 juli .NET Framework uppdatering
+  - [KB4540725](https://support.microsoft.com/topic/servicing-stack-update-for-windows-8-1-rt-8-1-and-server-2012-r2-march-10-2020-cfa082a3-0b58-a8a3-7dc7-ab424de91b86): mars 2020 självbetjänings (uppdatering av underhålls stack)
+  - [KB4565541](https://support.microsoft.com/topic/july-14-2020-kb4565541-monthly-rollup-fed6b2b1-3d23-5981-34df-9215a8d8ce01): samlad 2020 juli
+  - [KB4565622](https://support.microsoft.com/topic/security-and-quality-rollup-for-net-framework-4-6-4-6-1-4-6-2-4-7-4-7-1-4-7-2-for-windows-8-1-rt-8-1-and-windows-server-2012-r2-kb4565622-b7320848-1889-a624-da01-719f55ee8a00): 2020 juli .NET Framework uppdatering
 
 ## <a name="download-update-13"></a>Hämta uppdatering 1,3
 

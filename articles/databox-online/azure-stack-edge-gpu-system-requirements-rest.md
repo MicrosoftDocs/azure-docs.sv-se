@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426216"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575863"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Krav för Azure Stack gräns-blob-lagring
 
@@ -26,7 +26,7 @@ Vi rekommenderar att du läser informationen noggrant innan du ansluter till Azu
 |     Funktion                                             |     Azure Storage                                     |     Azure Stack Edge Blob Storage |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure File Storage                                   |    Molnbaserade SMB-filresurser stöds              |    Stöds inte      |
-|    Storage Account-typ                                 |    Generell användnings-och Azure Blob Storage-konton    |    Allmän användning endast v1|
+|    Typ av lagringskonto                                 |    Generell användnings-och Azure Blob Storage-konton    |    Allmän användning endast v1|
 |    Blobnamn                                            |    1 024 tecken (2 048 byte)                     |    880 tecken (1 760 byte)|
 |    Maximal storlek för Block Blob                              |    4,75 TB (100 MB X 50 000 block)                   |    4,75 TB (100 MB x 50 000 block) för Azure Stack Edge|
 |    Maximal storlek för Page BLOB                               |    8 TB                                               |    1 TB                   |

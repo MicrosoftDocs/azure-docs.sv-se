@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 3e8eb79d519e2f7bfbf006b852f0c5294976b727
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397159"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575661"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Skriv om HTTP-huvuden med Application Gateway
 
@@ -49,14 +49,14 @@ Du kan använda ett villkor för att utvärdera om en angiven variabel finns, om
 Du använder återskrivnings åtgärder för att ange de begärandehuvuden för begäran och svar som du vill skriva om och det nya värdet för rubrikerna. Du kan antingen skapa ett nytt sidhuvud, ändra värdet för en befintlig rubrik eller ta bort ett befintligt sidhuvud. Värdet för ett nytt sidhuvud eller en befintlig rubrik kan anges till följande typer av värden:
 
 - Text.
-- Begär ande huvud. Om du vill ange ett huvud för begäran måste du använda syntaxen {http_req_ *huvud* }.
-- Svarshuvud. Om du vill ange ett svars huvud måste du använda syntaxen {http_resp_ *huvud* }.
-- Server variabel. Om du vill ange en server variabel måste du använda syntaxen {var_ *serverVariable* }.
+- Begär ande huvud. Om du vill ange ett huvud för begäran måste du använda syntaxen {http_req_ *huvud*}.
+- Svarshuvud. Om du vill ange ett svars huvud måste du använda syntaxen {http_resp_ *huvud*}.
+- Server variabel. Om du vill ange en server variabel måste du använda syntaxen {var_ *serverVariable*}.
 - En kombination av text, ett begär ande huvud, ett svars huvud och en server variabel.
 
 ## <a name="server-variables"></a>Servervariabler
 
-Application Gateway använder servervariabler för att lagra användbar information om servern, anslutningen till klienten och den aktuella begäran på anslutningen. Exempel på information som lagras är klientens IP-adress och webbläsarens typ. Servervariabler ändras dynamiskt, till exempel när en ny sida läses in eller när ett formulär publiceras. Du kan använda dessa variabler för att utvärdera Skriv villkor och skriva om rubriker. För att kunna använda värdet för servervariabler för att skriva om rubriker måste du ange dessa variabler i syntaxen {var_ *serverVariable* }
+Application Gateway använder servervariabler för att lagra användbar information om servern, anslutningen till klienten och den aktuella begäran på anslutningen. Exempel på information som lagras är klientens IP-adress och webbläsarens typ. Servervariabler ändras dynamiskt, till exempel när en ny sida läses in eller när ett formulär publiceras. Du kan använda dessa variabler för att utvärdera Skriv villkor och skriva om rubriker. För att kunna använda värdet för servervariabler för att skriva om rubriker måste du ange dessa variabler i syntaxen {var_ *serverVariable*}
 
 Application Gateway stöder följande servervariabler:
 
@@ -69,21 +69,21 @@ Application Gateway stöder följande servervariabler:
 | client_port                | Klient porten.                                                  |
 | client_tcp_rtt             | Information om klientens TCP-anslutning. Tillgängligt på system som har stöd för alternativet TCP_INFO socket. |
 | client_user                | När HTTP-autentisering används anges användar namnet för autentisering. |
-| värd                       | I den här prioritetsordningen: värd namnet från begär ande raden, värd namnet från fältet värd begär ande huvud eller Server namnet som matchar en begäran. Exempel: i begäran *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* är värd värdet *contoso.com* |
+| värd                       | I den här prioritetsordningen: värd namnet från begär ande raden, värd namnet från fältet värd begär ande huvud eller Server namnet som matchar en begäran. Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` är värd värdet *contoso.com* |
 | cookie_ *namn*              | Cookie- *namn* .                                            |
 | http_method                | Den metod som används för att göra URL-begäran. Till exempel GET eller POST. |
 | http_status                | Sessionens status. Till exempel 200, 400 eller 403.                       |
 | http_version               | Protokollet för begäran. Vanligt vis HTTP/1.0, HTTP/1.1 eller HTTP/2.0. |
-| query_string               | Listan över variabel/värde-par som följer "?" i den begärda URL: en. Exempel: i begäran blir *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING värde *ID = 123&title = Fabrikam* |
+| query_string               | Listan över variabel/värde-par som följer "?" i den begärda URL: en. Exempel: i begäran blir `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` QUERY_STRING värde *ID = 123&title = Fabrikam* |
 | received_bytes             | Längden på begäran (inklusive raden för begäran, sidhuvud och brödtext). |
 | request_query              | Argumenten på raden för begäran.                                |
 | request_scheme             | Begär ande schema: http eller https.                            |
-| request_uri                | Fullständig URI för ursprunglig begäran (med argument). Exempel: i begäran *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* kommer REQUEST_URI värde att */article.aspx? id = 123&title = Fabrikam*   |
+| request_uri                | Fullständig URI för ursprunglig begäran (med argument). Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` kommer REQUEST_URI värde att */article.aspx? id = 123&title = Fabrikam*   |
 | sent_bytes                 | Antalet byte som har skickats till en klient.                             |
 | server_port                | Porten för den server som godkände en begäran.                 |
 | ssl_connection_protocol    | Protokollet för en etablerad TLS-anslutning.        |
 | ssl_enabled                | "On" om anslutningen fungerar i TLS-läge. Annars är en tom sträng. |
-| uri_path                   | Identifierar den angivna resursen i värden som webb klienten vill ha åtkomst till. Detta är en del av URI: n för begäran utan argumenten. Exempel: i begäran blir *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* uri_path värde */article.aspx*  |
+| uri_path                   | Identifierar den angivna resursen i värden som webb klienten vill ha åtkomst till. Detta är en del av URI: n för begäran utan argumenten. Exempel: i begäran blir `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path värde */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>Skriv om konfigurationen
 
@@ -91,19 +91,19 @@ Om du vill konfigurera omskrivning av HTTP-huvud måste du slutföra de här ste
 
 1. Skapa de objekt som krävs för omskrivning av HTTP-huvud:
 
-   - **Skriv om åtgärd** : används för att ange de rubrik fält för begäran och begär Ande som du vill skriva om och det nya värdet för rubrikerna. Du kan associera ett eller flera omskrivnings villkor med en Skriv åtgärd.
+   - **Skriv om åtgärd**: används för att ange de rubrik fält för begäran och begär Ande som du vill skriva om och det nya värdet för rubrikerna. Du kan associera ett eller flera omskrivnings villkor med en Skriv åtgärd.
 
-   - **Skriv villkor** : en valfri konfiguration. Omskrivnings villkor utvärderar innehållet i HTTP (S)-begär Anden och svar. Återskrivning görs om HTTP (S)-begäran eller-svaret matchar omskrivnings villkoret.
+   - **Skriv villkor**: en valfri konfiguration. Omskrivnings villkor utvärderar innehållet i HTTP (S)-begär Anden och svar. Återskrivning görs om HTTP (S)-begäran eller-svaret matchar omskrivnings villkoret.
 
      Om du associerar fler än ett villkor med en åtgärd sker åtgärden endast när alla villkor är uppfyllda. Med andra ord är åtgärden ett logiskt och en åtgärd.
 
-   - **Rewrite-regel** : innehåller flera kombinationer av åtgärder för omskrivning/omskrivning.
+   - **Rewrite-regel**: innehåller flera kombinationer av åtgärder för omskrivning/omskrivning.
 
-   - **Regel ordning** : hjälper till att fastställa i vilken ordning reglerna för att skriva om ska köras. Den här konfigurationen är användbar när du har flera omskrivnings regler i en omskrivnings uppsättning. En omskrivnings regel som har ett lägre regel ordnings värde körs först. Om du tilldelar samma regel ordning till två omskrivnings regler är körnings ordningen icke-deterministisk.
+   - **Regel ordning**: hjälper till att fastställa i vilken ordning reglerna för att skriva om ska köras. Den här konfigurationen är användbar när du har flera omskrivnings regler i en omskrivnings uppsättning. En omskrivnings regel som har ett lägre regel ordnings värde körs först. Om du tilldelar samma regel ordning till två omskrivnings regler är körnings ordningen icke-deterministisk.
 
-   - **Skriv över uppsättning** : innehåller flera omskrivnings regler som ska associeras med en regel för anslutningsbegäran.
+   - **Skriv över uppsättning**: innehåller flera omskrivnings regler som ska associeras med en regel för anslutningsbegäran.
 
-2. Koppla *rewriteRuleSet* (Rewrite set) till en regel för routning. Den omskrivna konfigurationen är kopplad till käll lyssnaren via regeln för routning. När du använder en regel för grundläggande routning associeras konfigurationen för omskrivning av huvuden med en käll lyssnare och är en omskrivning av globala huvuden. När du använder en regel för Sök vägs-baserad routning definieras konfigurationen för att skriva över rubriker i sökvägen till URL-sökvägen. I så fall gäller det bara för det angivna Sök vägs området på en plats.
+2. Koppla *rewriteRuleSet*(Rewrite set) till en regel för routning. Den omskrivna konfigurationen är kopplad till käll lyssnaren via regeln för routning. När du använder en regel för grundläggande routning associeras konfigurationen för omskrivning av huvuden med en käll lyssnare och är en omskrivning av globala huvuden. När du använder en regel för Sök vägs-baserad routning definieras konfigurationen för att skriva över rubriker i sökvägen till URL-sökvägen. I så fall gäller det bara för det angivna Sök vägs området på en plats.
    > [!NOTE]
    > URL-omskrivning ändra rubrikerna. URL: en för sökvägen ändras inte.
 

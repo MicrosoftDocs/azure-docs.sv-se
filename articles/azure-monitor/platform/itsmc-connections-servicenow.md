@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: cc4f961c399e9ac5e853085106924584eb3935d0
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 222257f5045984a71c2aee9de83b5fa420306728
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223397"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573423"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Anslut ServiceNow med Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -123,7 +123,7 @@ Använd följande procedur för att skapa en ServiceNow-anslutning.
    | --- | --- |
    | **Anslutnings namn**   | Ange ett namn för den ServiceNow-instans som du vill ansluta till ITSMC. Du använder det här namnet senare i Log Analytics när du konfigurerar ITSM arbets objekt och Visa detaljerad analys. |
    | **Partner typ**   | Välj **ServiceNow**. |
-   | **Server-URL**   | Ange URL: en för den ServiceNow-instans som du vill ansluta till ITSMC. URL: en måste peka på en SaaS-version som stöds med suffixet *. ServiceNow.com* (till exempel https://XXXXX.service-now.com/) .|
+   | **Server-URL**   | Ange URL: en för den ServiceNow-instans som du vill ansluta till ITSMC. URL: en måste peka på en SaaS-version som stöds med suffixet *. ServiceNow.com* (till exempel `https://XXXXX.service-now.com/` ).|
    | **Användarnamn**   | Ange det integrerings användar namn som du skapade i ServiceNow-appen för att stödja anslutningen till ITSMC.|
    | **Lösenord**   | Ange lösen ordet som är kopplat till det här användar namnet. **Obs!** användar namn och lösen ord används endast för att skapa autentiseringstoken. De lagras inte var som helst i ITSMC-tjänsten.  |
    | **Klient-ID**   | Ange det klient-ID som du vill använda för OAuth2-autentisering, som du skapade tidigare. Mer information om hur du genererar ett klient-ID och en hemlighet finns i [Konfigurera OAuth](https://old.wiki/index.php/OAuth_Setup). |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5658bfcf0bf877db1dd001c2af58a40f3b027bd9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050246"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576252"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Självstudie: utforska digitala Azure-enheter med ett exempel på en klient
 
@@ -133,7 +133,7 @@ Content-Length: 223
 Content-Type: application/json; charset=utf-8
 ```
 
-### <a name="create-digital-twins"></a>Skapa digitala dubbla
+### <a name="create-digital-twins"></a>Skapa digitala tvillingar
 
 Nu när vissa modeller har laddats upp till din Azure Digital-instansen, kan du skapa [**digitala**](concepts-twins-graph.md) delar baserade på modell definitionerna. Digitala delar representerar entiteterna i din affärs miljö – saker som sensorer i en grupp, rum i en byggnad eller lampor i en bil. 
 
@@ -274,12 +274,15 @@ En huvud funktion i Azure Digitals flätas är möjligheten att [fråga](concept
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Projektet i den här självstudien utgör grunden för nästa självstudie, [*Självstudier: ansluta en komplett lösning*](tutorial-end-to-end.md). Om du planerar att fortsätta till nästa självstudie kan du behålla de resurser som du har ställt in här för att fortsätta använda den här Azure Digital-instansen och den konfigurerade exempel appen.
-* I det här fallet kan du använda exempel appens `DeleteAllTwins` och- `DeleteAllModels` kommandon för att rensa de dubbla och modellerna i din instans. Detta ger dig en ren arbets gång för nästa självstudie.
+När du har slutfört den här självstudien kan du välja vilka resurser du vill ta bort, beroende på vad du vill göra härnäst.
+
+* **Om du planerar att fortsätta till nästa självstudie** kan du behålla de resurser som du har ställt in här för att fortsätta använda den här Azure Digital-instansen och den konfigurerade exempel appen för nästa självstudie
+
+* **Om du vill fortsätta använda Azure Digitals-instansen, men ta bort alla dess modeller, delar och relationer**, kan du använda exempel appens `DeleteAllTwins` och `DeleteAllModels` -kommandon för att ta bort de dubbla och modellerna i din instans. Detta ger dig en ren arbets gång för nästa självstudie.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Slutligen tar du bort exempel mappen Project som du laddade ned till din lokala dator.
+Du kanske också vill ta bort projektmappen från den lokala datorn.
 
 ## <a name="next-steps"></a>Nästa steg 
 

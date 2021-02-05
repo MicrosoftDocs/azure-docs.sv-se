@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar externa händelser i Durable Functions-til
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87014947"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576337"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Hantera externa händelser i Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Orchestrator-funktioner kan vänta och lyssna efter externa händelser. Den här
 
 ## <a name="wait-for-events"></a>Vänta på händelser
 
-Metoderna [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net), `waitForExternalEvent` (Java Script) och `wait_for_external_event` (python) i [Dirigerings utlösaren](durable-functions-bindings.md#orchestration-trigger) tillåter att en Orchestrator-funktion asynkront väntar och lyssnar efter en extern händelse. Den lyssnande Orchestrator-funktionen deklarerar *namnet* på händelsen och *formen på de data* som det förväntar sig att ta emot.
+Metoderna [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.net), `waitForExternalEvent` (Java Script) och `wait_for_external_event` (python) i [Dirigerings utlösaren](durable-functions-bindings.md#orchestration-trigger) tillåter att en Orchestrator-funktion asynkront väntar och lyssnar efter en extern händelse. Den lyssnande Orchestrator-funktionen deklarerar *namnet* på händelsen och *formen på de data* som det förväntar sig att ta emot.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,9 +230,9 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>Skicka händelser
 
-Du kan använda metoderna [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.net) eller `raiseEventAsync` (Java Script) för att skicka en extern händelse till ett Orchestration. Dessa metoder exponeras av [Dirigerings klientens](durable-functions-bindings.md#orchestration-client) bindning. Du kan också använda den inbyggda funktionen för att skapa en extern händelse i [HTTP-API: et](durable-functions-http-api.md#raise-event) för att skicka en extern händelse till ett Orchestration.
+Du kan använda metoderna [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.net) eller `raiseEventAsync` (Java Script) för att skicka en extern händelse till ett Orchestration. Dessa metoder exponeras av [Dirigerings klientens](durable-functions-bindings.md#orchestration-client) bindning. Du kan också använda den inbyggda funktionen för att skapa en extern händelse i [HTTP-API: et](durable-functions-http-api.md#raise-event) för att skicka en extern händelse till ett Orchestration.
 
-En utlöst händelse innehåller ett *instans-ID*, en *EventName*och *eventData* som parametrar. Orchestrator Functions hanterar dessa händelser med `WaitForExternalEvent` API: erna (.net) eller `waitForExternalEvent` (Java Script). *EventName* måste matcha både sändnings-och mottagnings slut för att händelsen ska kunna bearbetas. Händelse data måste också vara JSON-serialiserbar.
+En utlöst händelse innehåller ett *instans-ID*, en *EventName* och *eventData* som parametrar. Orchestrator Functions hanterar dessa händelser med `WaitForExternalEvent` API: erna (.net) eller `waitForExternalEvent` (Java Script). *EventName* måste matcha både sändnings-och mottagnings slut för att händelsen ska kunna bearbetas. Händelse data måste också vara JSON-serialiserbar.
 
 Internt kallas "Utlös Event"-mekanismer ett meddelande som hämtas av den väntande Orchestrator-funktionen. Om instansen inte väntar på det angivna *händelse namnet* läggs händelse meddelandet till i en kö i minnet. Om Orchestration-instansen senare börjar lyssna efter detta *händelse namn,* kommer den att söka efter händelse meddelanden i kön.
 

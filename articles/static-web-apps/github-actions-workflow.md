@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: acdb635dec5abd73341cc1dda4991b58b82a18c0
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901206"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574524"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub åtgärder arbets flöden för för hands versionen av Azure static Web Apps
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_job:
@@ -87,11 +87,11 @@ En [utlösare](https://help.github.com/actions/reference/events-that-trigger-wor
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 ```
 
 Genom inställningar som är kopplade till `on` egenskapen kan du definiera vilka grenar som utlöser ett jobb och ställa in utlösare för att utlösa olika pull-begäranden.
@@ -104,7 +104,7 @@ Varje händelse utlösare kräver en händelse hanterare. [Jobb](https://help.gi
 
 I den statiska Web Apps arbets flödes filen finns det två tillgängliga jobb.
 
-| Namn  | Beskrivning |
+| Name  | Beskrivning |
 |---------|---------|
 |`build_and_deploy_job` | Körs när du utför push-överföring eller öppnar en pull-begäran mot den gren som anges i `on` egenskapen. |
 |`close_pull_request_job` | Körs bara när du stänger en pull-begäran som tar bort den mellanlagrings miljö som skapats från pull-begäranden. |
@@ -194,6 +194,53 @@ jobs:
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
 ```
+
+## <a name="monorepo-support"></a>Monorepo-stöd
+
+En monorepo är en lagrings plats som innehåller kod för mer än ett program. Som standard spårar en statisk Web Apps arbets flödes fil alla filer i en lagrings plats, men du kan justera den så att den är riktad mot en enda app. För monorepos har varje statisk plats därför den konfigurations fil som finns sida vid sida i databasens *git* -mapp.
+
+```files
+├── .git
+│   ├── azure-static-web-apps-purple-pond.yml
+│   └── azure-static-web-apps-yellow-shoe.yml
+│
+├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+└── readme.md
+```
+
+Om du vill ange en enda app som mål för en arbets flödes fil anger du sökvägar i `push` `pull_request` avsnitten och.
+
+Följande exempel visar hur du lägger till en `paths` nod i `push` avsnitten och `pull_request` i en fil med namnet _Azure-static-Web-Apps-Purple-Pond. yml_.
+
+```yml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+```
+
+I den här instansen utlöses bara ändringar gjorda i filer som följer efter att en ny version har gjorts:
+
+- Alla filer i mappen *APP1*
+- Alla filer i mappen *API1*
+- Ändringar i appens *Azure-static-Web-Apps-Purple-Pond. yml* -arbetsflöde
 
 ## <a name="next-steps"></a>Nästa steg
 

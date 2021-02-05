@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252618"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575491"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -504,7 +504,7 @@ Om du inte kan skicka IDoc-paket från SAP till din Logic Apps utlösare, se med
   * Kontakta ABAP-teknikern för ditt SAP-system om du vill att dessa segment ska lanseras av SAP.
 ### <a name="asynchronous-request-reply-for-triggers"></a>Asynkron begäran-svara på utlösare
 
-SAP-anslutaren stöder Azures [asynkrona svars svars mönster](/azure/architecture/patterns/async-request-reply.md) för Logic Apps utlösare. Du kan använda det här mönstret för att skapa lyckade förfrågningar som annars skulle Miss lyckas med Standardsvars mönstret för synkrona begär Anden. 
+SAP-anslutaren stöder Azures [asynkrona svars svars mönster](/azure/architecture/patterns/async-request-reply) för Logic Apps utlösare. Du kan använda det här mönstret för att skapa lyckade förfrågningar som annars skulle Miss lyckas med Standardsvars mönstret för synkrona begär Anden. 
 
 > [!TIP]
 > I Logi Kap par med flera svars åtgärder måste alla svars åtgärder använda samma begär ande svars mönster. Om din Logic app exempelvis använder en växel kontroll med flera möjliga svars åtgärder måste du konfigurera alla svars åtgärder så att de använder samma svars svars mönster, antingen synkront eller asynkront. 

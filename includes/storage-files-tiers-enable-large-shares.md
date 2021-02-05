@@ -5,24 +5,25 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 12/27/2019
-ms.author: rogarana
+ms.date: 02/03/2021
+ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 327e86642041a607ada7c1173bb053b12a41832c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a086aae35c9a800c6a4cfc3e872a34438bc84095
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011773"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99569547"
 ---
-Som standard kan standard fil resurser bara omfatta upp till 5 TiB, även om resurs gränsen kan ökas till 100 TiB. För att göra detta måste funktionen *stor fil resurs* vara aktive rad på lagrings konto nivå. Premium Storage-konton (*FileStorage* lagrings konton) har inte den stora fil resursens funktions flagga eftersom alla Premium-filresurser redan har Aktiver ATS för etablering upp till den fullständiga 100 TIB-kapaciteten.
+Som standard kan standard fil resurser bara omfatta upp till 5 TiB, men du kan öka gränsen för delning till 100 TiB. Aktivera **stor fil resurs** på ditt lagrings konto om du vill öka gränsen för din resurs. Premium Storage-konton (*FileStorage* lagrings konton) har inte den stora fil resursens funktions flagga eftersom alla Premium-filresurser redan har Aktiver ATS för etablering upp till den fullständiga 100-TIB-kapaciteten.
 
 Du kan bara aktivera stora fil resurser på lokalt redundanta eller redundanta standard lagrings konton. När du har aktiverat funktions flaggan stor fil resurs kan du inte ändra redundans nivån till Geo-redundant eller geo-Zone-redundant lagring.
 
-Om du vill aktivera stora fil resurser på ett befintligt lagrings konto navigerar du till vyn **konfiguration** i lagrings kontots innehålls förteckning och byter ut den stora fil resursens rockare till aktive rad:
+Om du vill aktivera stora fil resurser på ett befintligt lagrings konto navigerar du till **fil resurser** i lagrings kontots innehålls förteckning.
+På det här bladet väljer du **dela kapacitet**, ändrar resurs kapaciteten till **100 TIB** och väljer **Spara**.
 
-![En skärm bild av växeln aktivera stor fil resurs Rock i Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+:::image type="content" source="media/storage-files-tiers-enable-large-shares/enable-lfs.png" alt-text="En skärm bild av inställningen Aktivera stor fil resurs deltagande i Azure Portal." lightbox="media/storage-files-tiers-enable-large-shares/increase-share-capacity.png":::
 
-Du kan också aktivera 100 TiB fil resurser via [`Set-AzStorageAccount`](/powershell/module/az.storage/set-azstorageaccount) PowerShell-cmdleten och [`az storage account update`](/cli/azure/storage/account#az-storage-account-update) Azure CLI-kommandot. Detaljerade anvisningar om hur du aktiverar stora fil resurser finns i [Aktivera och skapa stora fil resurser](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
+Du kan också aktivera 100-TiB fil resurser via [`Set-AzStorageAccount`](/powershell/module/az.storage/set-azstorageaccount) PowerShell-cmdleten och [`az storage account update`](/cli/azure/storage/account#az-storage-account-update) Azure CLI-kommandot. Detaljerade anvisningar om hur du aktiverar stora fil resurser finns i [Aktivera och skapa stora fil resurser](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
 
 Mer information om hur du skapar fil resurser på nya lagrings konton finns i [skapa en Azure-filresurs](../articles/storage/files/storage-how-to-create-file-share.md).

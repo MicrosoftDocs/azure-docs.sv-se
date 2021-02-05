@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340710"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575965"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Lagrade procedurer, utlösare och användardefinierade funktioner
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB tillhandahåller språkintegrerad, transaktionell körning av JavaScript. När du använder SQL API i Azure Cosmos DB kan du skriva **lagrade procedurer** , **utlösare** och **användardefinierade funktioner (UDF: er)** i JavaScript-språket. Du kan skriva logiken i JavaScript, som körs i databasmotorn. Du kan skapa och köra utlösare, lagrade procedurer och UDF: er med hjälp av [Azure Portal](https://portal.azure.com/), [java script language-API för integrerad fråga i Azure Cosmos DB](javascript-query-api.md) Cosmos DB eller klient-SDK: er för [SQL API i SQL API](how-to-use-stored-procedures-triggers-udfs.md).
+Azure Cosmos DB tillhandahåller språkintegrerad, transaktionell körning av JavaScript. När du använder SQL API i Azure Cosmos DB kan du skriva **lagrade procedurer**, **utlösare** och **användardefinierade funktioner (UDF: er)** i JavaScript-språket. Du kan skriva logiken i JavaScript, som körs i databasmotorn. Du kan skapa och köra utlösare, lagrade procedurer och UDF: er med hjälp av [Azure Portal](https://portal.azure.com/), [java script language-API för integrerad fråga i Azure Cosmos DB](javascript-query-api.md) Cosmos DB eller klient-SDK: er för [SQL API i SQL API](how-to-use-stored-procedures-triggers-udfs.md).
 
 ## <a name="benefits-of-using-server-side-programming"></a>Fördelar med att använda programmering på Server Sidan
 
@@ -72,7 +72,7 @@ Lagrade procedurer och utlösare körs alltid på den primära repliken av en Az
 
 ## <a name="bounded-execution"></a>Begränsad körning
 
-Alla Azure Cosmos DB åtgärder måste slutföras inom den angivna tids gränsen. Den här begränsningen gäller för JavaScript-funktioner – lagrade procedurer, utlösare och användardefinierade funktioner. Om en åtgärd inte slutförs inom den tids gränsen återställs transaktionen.
+Alla Azure Cosmos DB åtgärder måste slutföras inom den angivna tids gränsen. Lagrade procedurer har en tids gräns på 5 sekunder. Den här begränsningen gäller för JavaScript-funktioner – lagrade procedurer, utlösare och användardefinierade funktioner. Om en åtgärd inte slutförs inom den tids gränsen återställs transaktionen.
 
 Du kan antingen se till att JavaScript-funktionerna slutförs inom tids gränsen eller implementera en forts-baserad modell för körning av batch/omstart. För att förenkla utvecklingen av lagrade procedurer och utlösare för att hantera tids gränser kan alla funktioner under Azure Cosmos-behållaren (till exempel skapa, läsa, uppdatera och ta bort objekt) returnera ett booleskt värde som anger om åtgärden ska slutföras. Om det här värdet är false, är det en indikation på att proceduren måste omsluta körningen eftersom skriptet förbrukar mer tid eller ett allokerat data flöde än det konfigurerade värdet. Åtgärder som placerats i kö före den första ej accepterade lagrings åtgärden är garanterade att slutföras om den lagrade proceduren slutförs i tid och inte står i kö för fler begär Anden. Därför ska åtgärder placeras i kö en i taget med hjälp av JavaScript-callback-konventionen för att hantera skriptets kontroll flöde. Eftersom skript körs i en miljö på Server sidan, styrs de strikt. Skript som upprepade gånger bryter mot körnings gränser kan vara markerade som inaktiva och kan inte utföras, och de bör återskapas för att respektera körnings gränserna.
 

@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258803"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575321"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
@@ -56,7 +56,7 @@ I den Azure Resource Manager kapslade mallen har vi ändrat standardvärdet för
 
 Vi har lanserat FSLogix, version 2009 HF_01 (2.9.7654.46150) för att lösa problem i den tidigare versionen (2.9.7621.30127). Vi rekommenderar att du slutar använda den tidigare versionen och uppdaterar FSLogix så snart som möjligt.
 
-Mer information finns i versions anteckningar i [Nyheter i FSLogix](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150).
+Mer information finns i versions anteckningar i [Nyheter i FSLogix](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150).
 
 ### <a name="azure-portal-experience-improvements"></a>Förbättringar i Azure Portal Experience
 

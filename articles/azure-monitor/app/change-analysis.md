@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 133a7d9b3fa04797648fa253825505d29e37ca98
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195882"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576421"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Använda program ändrings analys (för hands version) i Azure Monitor
 
@@ -28,6 +28,17 @@ Genom att bygga vidare på kraften i [Azures resurs diagram](../../governance/re
 Följande diagram illustrerar arkitekturen för ändrings analys:
 
 ![Arkitektur diagram över hur ändrings analys får ändra data och ger den till klient verktyg](./media/change-analysis/overview.png)
+
+## <a name="supported-resource-types"></a>Resurstyper som stöds
+
+Tjänsten för program ändrings analys stöder ändringar i resurs egenskaps nivån i alla Azure-resurs typer, inklusive vanliga resurser som:
+- Virtuell dator
+- Skaluppsättning för virtuella datorer
+- App Service
+- Azure Kubernetes-tjänst
+- Azure-funktion
+- Nätverks resurser: t. ex. nätverks säkerhets grupp, Virtual Network, Application Gateway osv.
+- Data tjänster: lagring, SQL, Redis Cache, Cosmos DB osv.
 
 ## <a name="data-sources"></a>Datakällor
 
@@ -49,17 +60,27 @@ Med ändrings analys samlas distributions-och konfigurations status för ett pro
 
 ### <a name="dependency-changes"></a>Beroende ändringar
 
-Ändringar i resurs beroenden kan också orsaka problem i en webbapp. Om en webbapp till exempel anropar en Redis cache kan Redis cache-SKU: n påverka webbappens prestanda. Om du vill identifiera ändringar i beroenden kontrollerar ändrings analysen webbappens DNS-post. På så sätt identifieras ändringar i alla app-komponenter som kan orsaka problem.
-För närvarande stöds följande beroenden:
+Ändringar i resurs beroenden kan också orsaka problem i en resurs. Om en webbapp till exempel anropar en Redis cache kan Redis cache-SKU: n påverka webbappens prestanda. Ett annat exempel är om Port 22 stängdes i en virtuell dators nätverks säkerhets grupp, vilket leder till anslutnings fel. 
+
+#### <a name="web-app-diagnose-and-solve-problems-navigator-preview"></a>Webbappen diagnostisera och lösa problem navigering (för hands version)
+Om du vill identifiera ändringar i beroenden kontrollerar ändrings analysen webbappens DNS-post. På så sätt identifieras ändringar i alla app-komponenter som kan orsaka problem.
+För närvarande stöds följande beroenden i **webbappen diagnostisera och lösa problem | Navigator (för hands version)**:
 - Web Apps
 - Azure Storage
 - Azure SQL
 
-## <a name="application-change-analysis-service"></a>Analys tjänst för program ändring
+#### <a name="related-resources"></a>Relaterade resurser
+Program ändrings analysen identifierar relaterade resurser. Vanliga exempel är nätverks säkerhets grupp, Virtual Network, Application Gateway och Load Balancer som är relaterade till en virtuell dator. Nätverks resurserna tillhandahålls vanligt vis automatiskt i samma resurs grupp som de resurser som använder den, så filtrering av ändringarna per resurs grupp visar alla ändringar för den virtuella datorn och relaterade nätverks resurser.
+
+![Skärm bild av nätverks ändringar](./media/change-analysis/network-changes.png)
+
+## <a name="application-change-analysis-service-enablement"></a>Aktivering av program ändrings analys tjänsten
 
 Beräknings-och agg regeringar för program ändrings analys gör ändrings data från de data källor som anges ovan. Den innehåller en uppsättning analyser för användare som enkelt kan navigera bland alla resurs ändringar och identifiera vilken ändring som är relevant i fel söknings-eller övervaknings kontexten.
-Resurs leverantören Microsoft. ChangeAnalysis måste registreras med en prenumeration för Azure Resource Manager spårade egenskaper och proxy-inställningar ändra att data ska vara tillgängliga. När du anger ett verktyg för att diagnostisera och lösa problem, eller ta fram fliken för att skapa ändrings analyser, registreras denna resurs leverantör automatiskt. Det finns inga prestanda-eller kostnads implementeringar för din prenumeration. När du aktiverar ändrings analys för webbappar (eller aktiverar verktyget diagnostisera och lösa problem) har den försumbar prestanda påverkan på webbappen och ingen fakturerings kostnad.
-För att webbappen ska ändras i gästen krävs separat aktivering för att genomsöka filer i en webbapp. Mer information finns i avsnittet om att [ändra analyser i verktyget diagnostisera och lösa problem](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) längre fram i den här artikeln.
+Resurs leverantören Microsoft. ChangeAnalysis måste registreras med en prenumeration för Azure Resource Manager spårade egenskaper och proxy-inställningar ändra att data ska vara tillgängliga. När du anger ett verktyg för att diagnostisera och lösa problem, eller ta fram fliken för att skapa ändrings analyser, registreras denna resurs leverantör automatiskt. För att webbappen ska ändras i gästen krävs separat aktivering för att genomsöka filer i en webbapp. Mer information finns i avsnittet om att [ändra analyser i verktyget diagnostisera och lösa problem](#application-change-analysis-in-the-diagnose-and-solve-problems-tool) längre fram i den här artikeln.
+
+## <a name="cost"></a>Cost
+Program ändrings analys är en kostnads fri tjänst – det kostar ingen fakturerings kostnad för prenumerationer med den aktiverade. Tjänsten har inte heller några prestanda effekter för att skanna ändringar i Azure-resursens egenskaper. När du aktiverar ändrings analys för webb program ändringar i gäst filen (eller aktiverar verktyget diagnostisera och lösa problem) har den försumbar prestanda påverkan i webbappen och ingen fakturerings kostnad.
 
 ## <a name="visualizations-for-application-change-analysis"></a>Visualiseringar för program ändrings analys
 
@@ -82,6 +103,11 @@ Visa alla ändringar genom att klicka på en resurs. Vid behov kan du öka detal
 Använd knappen Skicka feedback i bladet eller e-postmeddelandet för all feedback changeanalysisteam@microsoft.com .
 
 ![Skärm bild av knappen feedback i bladet ändra analys](./media/change-analysis/change-analysis-feedback.png)
+
+#### <a name="multiple-subscription-support"></a>Stöd för flera prenumerationer
+Användar gränssnittet har stöd för att välja flera prenumerationer för att Visa resurs ändringar. Använd prenumerations filtret:
+
+![Skärm bild av prenumerations filter som stöder val av flera prenumerationer](./media/change-analysis/multiple-subscriptions-support.png)
 
 ### <a name="web-app-diagnose-and-solve-problems"></a>Webbappen diagnostisera och lösa problem
 

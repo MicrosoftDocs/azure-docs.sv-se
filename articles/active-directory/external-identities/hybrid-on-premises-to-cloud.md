@@ -12,21 +12,21 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06a6a42724eb172a77079b94f2cf50afb8e9cdf1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 29aeca30e1fbdd28d3f69597d902a9b714056cd5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357325"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575931"
 ---
-# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Bevilja lokalt hanterad partner konton åtkomst till moln resurser med Azure AD B2B-samarbete
+# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Bevilja lokalt hanterade partnerkonton åtkomst till molnresurser med Azure AD B2B-samarbete
 
 Innan Azure Active Directory (Azure AD) har organisationer med lokala identitets system traditionellt hanterade partner konton i sin lokala katalog. När du börjar flytta appar till Azure AD i en sådan organisation, vill du se till att dina partner har åtkomst till de resurser som de behöver. Det bör inte vara viktigt om resurserna är lokala eller i molnet. Du vill också att dina partner användare ska kunna använda samma inloggnings uppgifter för både lokala och Azure AD-resurser. 
 
 Om du skapar konton för dina externa partner i din lokala katalog (till exempel skapar du ett konto med inloggnings namnet "wmoran" för en extern användare med namnet Wendy Moran i din partners.contoso.com-domän) kan du nu synkronisera dessa konton till molnet. Mer specifikt kan du använda Azure AD Connect för att synkronisera partner kontona till molnet, vilket skapar ett användar konto med UserType = gäst. Detta gör det möjligt för dina partner användare att komma åt moln resurser med samma autentiseringsuppgifter som de lokala kontona, utan att ge dem mer åtkomst än de behöver.
 
 > [!NOTE]
-> Se även hur du [bjuder in interna användare till B2B-samarbete](invite-internal-users.md) (en offentlig för hands versions funktion). Med den här funktionen kan du bjuda in interna gäst användare att använda B2B-samarbete, oavsett om du har synkroniserat deras konton från din lokala katalog till molnet. När användaren har godkänt inbjudan att använda B2B-samarbete kan de använda sina egna identiteter och autentiseringsuppgifter för att logga in på de resurser som du vill att de ska ha åtkomst till. Du behöver inte hantera lösen ord eller hantera livs cykel för konton.
+> Se även hur du [bjuder in interna användare till B2B-samarbete](invite-internal-users.md). Med den här funktionen kan du bjuda in interna gäst användare att använda B2B-samarbete, oavsett om du har synkroniserat deras konton från din lokala katalog till molnet. När användaren har godkänt inbjudan att använda B2B-samarbete kan de använda sina egna identiteter och autentiseringsuppgifter för att logga in på de resurser som du vill att de ska ha åtkomst till. Du behöver inte hantera lösen ord eller hantera livs cykel för konton.
 
 ## <a name="identify-unique-attributes-for-usertype"></a>Identifiera unika attribut för UserType
 

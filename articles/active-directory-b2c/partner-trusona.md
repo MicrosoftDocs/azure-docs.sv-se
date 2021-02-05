@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489477"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573695"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Integrera Trusona med Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ För att komma igång behöver du:
 
 * En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 * [En Azure AD B2C klient](tutorial-create-tenant.md) som är länkad till din Azure-prenumeration.
-* Ett [utvärderings konto](https://www.trusona.com/aadb2c) på Trusona
+* Ett [utvärderings konto](https://www.trusona.com/) på Trusona
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -53,7 +53,7 @@ I det här scenariot fungerar Trusona som en identitets leverantör för Azure A
 
 ## <a name="onboard-with-trusona"></a>Publicera med Trusona
 
-1. Fyll i [formuläret](https://www.trusona.com/aadb2c) för att skapa ett Trusona-konto och kom igång.
+1. Fyll i [formuläret](https://www.trusona.com/) för att skapa ett Trusona-konto och kom igång.
 
 2. Ladda ned Trusona-mobilappen från App Store. Installera appen och registrera din e-postadress.
 
@@ -63,7 +63,7 @@ I det här scenariot fungerar Trusona som en identitets leverantör för Azure A
 
 5. Välj **Jag är redo** och autentisera dig med din Trusona-app.
 
-6. Välj **OIDC-integreringar**i den vänstra navigerings panelen.
+6. Välj **OIDC-integreringar** i den vänstra navigerings panelen.
 
 7. Välj **skapa OpenID Connect integration**.
 
@@ -127,11 +127,11 @@ I det här scenariot fungerar Trusona som en identitets leverantör för Azure A
 
 Nu bör du se Trusona som en **ny OpenID Connect** -identitetsprovider som anges i dina B2C Identity providers.
 
-1. I Azure AD B2C klient väljer du **användar flöden**under **principer**.
+1. I Azure AD B2C klient väljer du **användar flöden** under **principer**.
 
 1. Välj **nytt användar flöde**.
 
-1. Välj **Registrera dig och logga**in, Välj en version och välj sedan **skapa**.
+1. Välj **Registrera dig och logga** in, Välj en version och välj sedan **skapa**.
 
 1. Ange ett **namn** för principen.
 
@@ -142,7 +142,7 @@ Nu bör du se Trusona som en **ny OpenID Connect** -identitetsprovider som anges
 
 1. Välj **Skapa**.
 
-1. Under **användarattribut och anspråk**väljer du **Visa fler**. I formuläret väljer du minst ett attribut som du angav under installationen av identitets leverantören i det tidigare avsnittet.
+1. Under **användarattribut och anspråk** väljer du **Visa fler**. I formuläret väljer du minst ett attribut som du angav under installationen av identitets leverantören i det tidigare avsnittet.
 
 1. Välj **OK**.  
 

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054795"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576370"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Självstudie: automatisera uppgifter för att bearbeta e-postmeddelanden med hjälp av Azure Logic Apps, Azure Functions och Azure Storage
 
@@ -88,7 +88,7 @@ Du kan spara inkommande e-postmeddelanden och blobar i en [Azure-lagringscontain
 
       ![Kopiera och spara lagringskontots namn och nyckel](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   När du hämtar lagringskontots åtkomstnyckel kan du också använda [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) och [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list).
+   När du hämtar lagringskontots åtkomstnyckel kan du också använda [Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) och [Azure CLI](/cli/azure/storage/account/keys).
 
 1. Skapa en bloblagringscontainer för e-postbilagor.
 
@@ -280,8 +280,8 @@ Lägg sedan till en [utlösare](../logic-apps/logic-apps-overview.md#logic-app-c
       | Inställning | Värde | Beskrivning |
       | ------- | ----- | ----------- |
       | **Mapp** | Inkorgen | E-postmappen som ska kontrolleras |
-      | **Has Attachment** (Innehåller bifogad fil) | Ja | Hämta endast e-postmeddelanden med bifogade filer. <p>**Obs!** Utlösaren tar inte bort e-post från ditt konto, kontrollerar endast nya meddelanden och bearbetar endast e-postmeddelanden som matchar filtrets ämne. |
-      | **Inkludera bifogade filer** | Ja | Hämta bilagorna som indata i arbetsflödet istället för att bara söka efter bilagor. |
+      | **Has Attachment** (Innehåller bifogad fil) | Yes | Hämta endast e-postmeddelanden med bifogade filer. <p>**Obs!** Utlösaren tar inte bort e-post från ditt konto, kontrollerar endast nya meddelanden och bearbetar endast e-postmeddelanden som matchar filtrets ämne. |
+      | **Inkludera bifogade filer** | Yes | Hämta bilagorna som indata i arbetsflödet istället för att bara söka efter bilagor. |
       | **Intervall** | 1 | Antalet intervaller som ska förflyta mellan kontrollerna |
       | **Frekvens** | Minut | Tidsenhet för varje intervall mellan kontroller |
       ||||

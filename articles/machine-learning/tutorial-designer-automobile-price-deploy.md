@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246476"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576065"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Självstudie: Distribuera en maskin inlärnings modell med designern
 
 
-Du kan distribuera den förutsägande modellen som utvecklats i [del ett av självstudien](tutorial-designer-automobile-price-train-score.md) för att ge andra möjlighet att använda den. I del ett tränar du din modell. Nu är det dags att generera nya förutsägelser baserat på användarindata. I den här delen av självstudien får du göra följande:
+Du kan distribuera den förutsägande modellen som utvecklats i [del ett av självstudien](tutorial-designer-automobile-price-train-score.md) för att ge andra möjlighet att använda den. I del ett tränar du din modell. Nu är det dags att generera förutsägelser baserat på användarindata. I den här delen av självstudien får du göra följande:
 
 > [!div class="checklist"]
 > * Skapa en pipeline för real tids härledning.
@@ -101,7 +101,7 @@ När din AKS-tjänst har slutfört etableringen återgår du till inferencing-pi
 
     Du kan också ändra den **avancerade** inställningen för slut punkten i real tid.
     
-    |Avancerad inställning|Beskrivning|
+    |Avancerad inställning|Description|
     |---|---|
     |Aktivera Application Insights diagnostik och data insamling| Om Azure Application Ingishts ska kunna samla in data från de distribuerade slut punkterna. </br> Som standard: falskt |
     |Poängsättnings-timeout| En timeout i millisekunder för att tvinga fram Poäng anrop till webb tjänsten.</br>Som standard: 60000|
@@ -122,17 +122,19 @@ När din AKS-tjänst har slutfört etableringen återgår du till inferencing-pi
 > Du kan också distribuera till **Azure Container instance** (ACI) om du väljer **Azure Container instance** för **Compute-typ** i inställnings rutan för slut punkt i real tid.
 > Azure Container instance används för testning eller utveckling. Använd ACI för processorbaserade CPU-baserade arbets belastningar som kräver mindre än 48 GB RAM-minne.
 
-## <a name="view-the-real-time-endpoint"></a>Visa real tids slut punkten
+## <a name="test-the-real-time-endpoint"></a>Testa real tids slut punkten
 
 När distributionen är klar kan du Visa real tids slut punkten genom att gå till sidan **slut punkter** .
 
 1. På sidan **slut punkter** väljer du den slut punkt som du har distribuerat.
 
-1. På fliken **information** kan du se mer information, till exempel rest-URI, status och taggar.
+    På fliken **information** kan du se mer information, till exempel rest-URI, Swagger-definition, status och taggar.
 
-1. På fliken **förbrukare** kan du hitta säkerhets nycklar och ange autentiseringsmetoder.
+    På fliken **förbrukare** kan du hitta exempel på förbruknings kod, säkerhets nycklar och ange autentiseringsmetoder.
 
-1. På fliken **distributions loggar** hittar du detaljerade distributions loggar för din real tids slut punkt. 
+    På fliken **distributions loggar** hittar du detaljerade distributions loggar för din real tids slut punkt.
+
+1. Testa slut punkten genom att gå till fliken **test** . Härifrån kan du ange test data och välja **testa** för att verifiera slut punktens utdata.
 
 Mer information om hur du konsumerar din webb tjänst finns i [använda en modell som distribueras som en webb tjänst](how-to-consume-web-service.md)
 

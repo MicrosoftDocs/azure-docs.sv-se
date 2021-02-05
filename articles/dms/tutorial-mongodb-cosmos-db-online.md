@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 09/25/2019
-ms.openlocfilehash: fed568d67c688a8c2adab979eb68eaf384a72172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 02/03/2021
+ms.openlocfilehash: 359f268f69918ccfd9fe34a28c3f8d1c79988393
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539282"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575630"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>Självstudie: Migrera MongoDB till Azure Cosmos DB s API för MongoDB online med DMS
 
@@ -68,6 +68,18 @@ För att slutföra den här kursen behöver du:
 * Se till att dina regler för nätverks säkerhets gruppen (NSG) för virtuella nätverk inte blockerar följande kommunikations portar: 53, 443, 445, 9354 och 10000-20000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Öppna Windows-brandväggen för att tillåta Azure Database Migration Service att få åtkomst till MongoDB-servern, som standard är TCP-port 27017.
 * När du använder en brand Väggs installation framför dina käll databaser, kan du behöva lägga till brand Väggs regler för att tillåta Azure Database Migration Service åtkomst till käll databaserna för migrering.
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Konfigurera Azure Cosmos DB server sidans nya försök för effektiv migrering
+
+Kunder som migrerar från MongoDB till Azure Cosmos DB dra nytta av resurs styrnings funktioner som garanterar möjligheten att fullt ut använda dina etablerade RU/s-genomflöde. Azure Cosmos DB kan begränsa en begäran om en datamigrerings tjänst under migreringen om denna begäran överskrider den behållare som etablerade RU/s; sedan måste begäran göras om. Datamigrerings tjänsten kan utföra nya försök, men den fördröjning som ingår i nätverks hoppet mellan datamigrerings tjänsten och Azure Cosmos DB påverkar den totala svars tiden för denna begäran. Att förbättra svars tiden för begränsade begär Anden kan förkorta den totala tiden som krävs för migrering. Funktionen *försök igen på Server sidan* på Azure Cosmos DB tillåter att tjänsten fångar upp begränsnings felkoder och gör ett nytt försök med mycket kortare svars tid för svars tider, vilket dramatiskt förbättrar svars tiderna för begäran.
+
+Du hittar funktionen för nya försök på Server sidan på bladet *funktioner* på Azure Cosmos DBS portalen
+
+![Skärm bild av funktionen MongoDB Server-Side försök igen.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-feature.png)
+
+Och om den är *inaktive rad* rekommenderar vi att du aktiverar det enligt nedan
+
+![Skärm bild av MongoDB Server-Side försök aktivera igen.](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrera resursprovidern Microsoft.DataMigration
 

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 01/08/2020
-ms.openlocfilehash: 4f3b201d35781d6d33eead0b0a21d38fbb897097
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 02/03/2021
+ms.openlocfilehash: 1ba6a45062f4018c59f5b41ab616f7a04f87140a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966827"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575579"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Självstudie: Migrera MongoDB till Azure Cosmos DB s API för MongoDB offline med DMS
 
@@ -33,7 +33,7 @@ I den här guiden får du lära dig att:
 
 I den här självstudien migrerar du en data uppsättning i MongoDB som finns på en virtuell Azure-dator till Azure Cosmos DB API för MongoDB med hjälp av Azure Database Migration Service. Om du inte har konfigurerat någon MongoDB-källa, kan du läsa artikeln [Installera och konfigurera MongoDB på en virtuell Windows-dator i Azure](../virtual-machines/windows/install-mongodb.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -53,6 +53,18 @@ För att slutföra den här kursen behöver du:
 * Se till att dina regler för nätverks säkerhets gruppen (NSG) för virtuella nätverk inte blockerar följande kommunikations portar: 53, 443, 445, 9354 och 10000-20000. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 * Öppna Windows-brandväggen för att tillåta Azure Database Migration Service att få åtkomst till MongoDB-servern, som standard är TCP-port 27017.
 * När du använder en brand Väggs installation framför dina käll databaser, kan du behöva lägga till brand Väggs regler för att tillåta Azure Database Migration Service åtkomst till käll databaserna för migrering.
+
+## <a name="configure-azure-cosmos-db-server-side-retries-for-efficient-migration"></a>Konfigurera Azure Cosmos DB server sidans nya försök för effektiv migrering
+
+Kunder som migrerar från MongoDB till Azure Cosmos DB dra nytta av resurs styrnings funktioner som garanterar möjligheten att fullt ut använda dina etablerade RU/s-genomflöde. Azure Cosmos DB kan begränsa en begäran om en datamigrerings tjänst under migreringen om denna begäran överskrider den behållare som etablerade RU/s; sedan måste begäran göras om. Datamigrerings tjänsten kan utföra nya försök, men den fördröjning som ingår i nätverks hoppet mellan datamigrerings tjänsten och Azure Cosmos DB påverkar den totala svars tiden för denna begäran. Att förbättra svars tiden för begränsade begär Anden kan förkorta den totala tiden som krävs för migrering. Funktionen *försök igen på Server sidan* på Azure Cosmos DB tillåter att tjänsten fångar upp begränsnings felkoder och gör ett nytt försök med mycket kortare svars tid för svars tider, vilket dramatiskt förbättrar svars tiderna för begäran.
+
+Du hittar funktionen för nya försök på Server sidan på bladet *funktioner* på Azure Cosmos DBS portalen
+
+![MongoDB SSR-funktion](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-feature.png)
+
+Och om den är *inaktive rad* rekommenderar vi att du aktiverar det enligt nedan
+
+![Aktivera MongoDB SSR](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-enable.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrera resursprovidern Microsoft.DataMigration
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e987f96402f4c922bdaca8ecf32348bc99c34199
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 01cd79afe3e718a32663544a76a2a43353bc082e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798489"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575389"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azures säkerhets bas linje för Windows Virtual Desktop
 
@@ -64,7 +64,7 @@ Använd peering för virtuella nätverk för att ansluta två eller flera virtue
 
 - [Översikt över Azure VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 
 
-- [Peering för virtuella nätverk](/azure/virtual-network/virtual-network-peering-overvie)
+- [Peering för virtuella nätverk](/azure/virtual-network/virtual-network-peering-overview)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -96,7 +96,7 @@ Om du har en regel eller annat krav för användning av intrångs avkänning ell
 
 - [Azure Marketplace innehåller funktioner från tredje part-ID](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
-- [Microsoft Defender ATP-EDR-kapacitet](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [Microsoft Defender ATP-EDR-kapacitet](/bs-cyrl-ba/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -310,7 +310,7 @@ Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller s
 
 Använd Azure Active Directory (Azure AD), Microsoft Defender Avancerat skydd (ATP) eller Microsoft Intune för att distribuera en säker och hanterad användar arbets station för administrativa uppgifter. Den skyddade arbets stationen kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer, begränsad logisk och nätverks åtkomst.
 
-- [Förstå arbets stationer med privilegie rad åtkomst](/azure/active-directory/devices/concept-azure-managed-workstation) 
+- [Förstå arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [Distribuera en arbetsstation med privilegierad åtkomst](/azure/active-directory/devices/howto-azure-managed-workstation)
 
@@ -488,7 +488,7 @@ Vi rekommenderar att kunden skapar en process för att avbilda attributet och ä
 
 ## <a name="logging-and-threat-detection"></a>Loggning och hotidentifiering
 
-*Mer information finns i [Azure Security Benchmark: Loggning och hotidentifiering](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Mer information finns i [Azure Security Benchmark: Loggning och hotidentifiering](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hot identifiering för Azure-resurser
 
@@ -684,7 +684,7 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 ## <a name="posture-and-vulnerability-management"></a>Hantering av säkerhetsposition och säkerhetsrisker
 
-*Mer information finns i [Azure Security Benchmark: Hantering av säkerhetsposition och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Mer information finns i [Azure Security Benchmark: Hantering av säkerhetsposition och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: upprätta säkra konfigurationer för beräknings resurser
 
@@ -765,9 +765,9 @@ Använd Azure Automation Uppdateringshantering eller en lösning från tredje pa
 
 Använd en lösning för korrigerings hantering från tredje part för program vara från tredje part eller System Center Updates Publisher för Configuration Manager.
 
-- [Så här konfigurerar du Uppdateringshantering för virtuella datorer i Azure](/azure/automation/automation-update-management) 
+- [Så här konfigurerar du Uppdateringshantering för virtuella datorer i Azure](/azure/automation/update-management/overview) 
 
-- [Hantera uppdateringar och korrigeringar för dina virtuella Azure-datorer](/azure/automation/automation-tutorial-update-management)
+- [Hantera uppdateringar och korrigeringar för dina virtuella Azure-datorer](/azure/automation/update-management/manage-updates-for-vm)
 
 - [Konfigurera Microsoft Endpoint Configuration Manager för virtuellt Windows-skrivbord](configure-automatic-updates.md)
 
@@ -873,7 +873,7 @@ Använd rollbaserad åtkomst kontroll i Azure Backup, Azure Key Vault eller andr
 
 Översikt över säkerhetsfunktioner i Azure Backup/Azure/Backup/Security-Overview 
 
-- [Kryptering av säkerhets kopierings data med Kundhanterade nycklar](/azure/backup/encryption-at-rest-with-cmk) 
+- [Kryptering av säkerhetskopieringsdata med kundhanterade nycklar](/azure/backup/encryption-at-rest-with-cmk) 
 
 - [Säkerhetskopiera Key Vault nycklar i Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&amp;preserve-view=true)
 
@@ -928,9 +928,9 @@ Läs mer i följande referenser:
 
 - [Cloud Adoption Framework – regelverk kring datasäkerhet och kryptering i Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure Security Benchmark – hantering av tillgångar](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure Security Benchmark – hantering av tillgångar](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure Security Benchmark – dataskydd](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Security Benchmark – dataskydd](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -958,7 +958,7 @@ Se till att segmenteringsstrategin implementeras konsekvent för olika kontrollt
 
 **Vägledning**: Mät och minimera risker gällande enskilda tillgångar och miljöerna där de finns regelbundet. Prioritera värdefulla tillgångar och attackytor med stor exponering, som publicerade appar, in- och utgångar i nätverket och slutpunkter för användare och administratörer.
 
-- [Azure Security Benchmark – hantering av säkerhetspositionen och säkerhetsrisker](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Security Benchmark – hantering av säkerhetspositionen och säkerhetsrisker](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -999,7 +999,7 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 Läs mer i följande referenser:
 - [Regelverk för Azure-säkerhet 11 – arkitektur. En enhetlig säkerhetsstrategi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – nätverkssäkerhet](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure Security Benchmark – nätverkssäkerhet](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Översikt över nätverkssäkerhet i Azure](../security/fundamentals/network-overview.md)
 
@@ -1027,9 +1027,9 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 Läs mer i följande referenser:
 
-- [Azure Security Benchmark – hantering av identiteter](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Security Benchmark – hantering av identiteter](/azure/automation/update-management/overview)
 
-- [Azure Security Benchmark – privilegierad åtkomst](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Security Benchmark – privilegierad åtkomst](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Regelverk för Azure-säkerhet 11 – arkitektur. En enhetlig säkerhetsstrategi](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -1061,9 +1061,9 @@ Strategin bör omfatta dokumenterad vägledning, policyer och standarder för f�
 
 Läs mer i följande referenser:
 
-- [Azure Security Benchmark – loggning och hotidentifiering](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Security Benchmark – loggning och hotidentifiering](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Security Benchmark – svar på incidenter](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Security Benchmark – svar på incidenter](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Regelverk för Azure-säkerhet 4 – process: uppdatera processer kring incidentsvar för molnet](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ca8584d6cce3f5487d84f6647c42274879d610dd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 647564a9b9ca909d2f45ae66673d8beac168a4aa
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198075"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575982"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Använd portalen för att koppla en datadisk till en virtuell Linux-dator 
 Den här artikeln visar hur du ansluter både nya och befintliga diskar till en virtuell Linux-dator via Azure Portal. Du kan också [ansluta en datadisk till en virtuell Windows-dator i Azure Portal](../windows/attach-managed-disk-portal.md). 
@@ -225,4 +225,7 @@ Det finns två sätt att aktivera TRIMNINGs stöd i din virtuella Linux-dator. S
     ```
 
 ## <a name="next-steps"></a>Nästa steg
+
+Mer information och hjälp med fel sökning av disk problem finns i [FELSÖKA virtuella Linux-enheters enhets namn ändringar](../troubleshooting/troubleshoot-device-names-problems.md).
+
 Du kan också [ansluta en datadisk](add-disk.md) med hjälp av Azure CLI.
