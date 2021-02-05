@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0945b35f7aff8e93a1a3ba23b89db288db3d8efa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80681875"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593899"
 ---
 # <a name="object-and-resource-lifetime"></a>Objekt- och resurslivslängd
 
@@ -32,7 +32,7 @@ Många resurser är oföränderliga, till exempel [nät](meshes.md) och [texture
 
 ### <a name="built-in-resources"></a>Inbyggda resurser
 
-Azure fjärrrendering innehåller några inbyggda resurser som kan läsas in genom att vänta på respektive identifierare med `builtin://` under anropet till `AzureSession.Actions.LoadXYZAsync()` . De tillgängliga inbyggda resurserna visas i dokumentationen för respektive funktion. I det här [kapitlet](../overview/features/sky.md) visas till exempel den inbyggda himmelsblå-texturen.
+Azure fjärrrendering innehåller några inbyggda resurser som kan läsas in genom att vänta på respektive identifierare med `builtin://` under anropet till `RenderingSession.Connection.LoadXYZAsync()` . De tillgängliga inbyggda resurserna visas i dokumentationen för respektive funktion. I det här [kapitlet](../overview/features/sky.md) visas till exempel den inbyggda himmelsblå-texturen.
 
 ## <a name="general-lifetime"></a>Allmän livs längd
 

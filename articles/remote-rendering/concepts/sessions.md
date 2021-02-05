@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f2adc846247c4f06c9356f482501fd01c5463bf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 321d73c78d0192dcb7a303f4aa70a4ff0f18ecea
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202692"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593713"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-sessioner
 
@@ -25,9 +25,9 @@ Det innebär att när du använder Azure-fjärrrendering måste en moln server m
 
 ## <a name="managing-sessions"></a>Hantera sessioner
 
-Det finns flera olika sätt att hantera och interagera med sessioner. Det språk oberoende sättet att skapa, uppdatera och stänga av sessioner är via [REST API för hantering av sessionen](../how-tos/session-rest-api.md). I C# och C++ exponeras dessa åtgärder via klasserna `AzureFrontend` och `AzureSession` . För Unity-program finns ytterligare verktyg som tillhandahålls av `ARRServiceUnity` komponenten.
+Det finns flera olika sätt att hantera och interagera med sessioner. Det språk oberoende sättet att skapa, uppdatera och stänga av sessioner är via [REST API för hantering av sessionen](../how-tos/session-rest-api.md). I C# och C++ exponeras dessa åtgärder via klasserna `RemoteRenderingClient` och `RenderingSession` . För Unity-program finns ytterligare verktyg som tillhandahålls av `ARRServiceUnity` komponenten.
 
-När du är *ansluten* till en aktiv session exponeras åtgärder som att [läsa in modeller](models.md) och interagera med scenen genom `AzureSession` klassen.
+När du är *ansluten* till en aktiv session exponeras åtgärder som att [läsa in modeller](models.md) och interagera med scenen genom `RenderingSession` klassen.
 
 ### <a name="managing-multiple-sessions-simultaneously"></a>Hantera flera sessioner samtidigt
 
@@ -52,7 +52,7 @@ I det här läget väntar servern enbart på din inaktuella information. Detta �
 
 ### <a name="connecting-to-a-session"></a>Ansluta till en session
 
-När sessionen är *klar*kan du *ansluta* till den. När du är ansluten kan enheten skicka kommandon för att läsa in och ändra modeller. Varje ARR-värd betjänar bara en klient enhet i taget, så när en klient ansluter till en session har den exklusiv kontroll över det återgivna innehållet. Det innebär också att åter givnings prestandan inte varierar beroende på orsaker utanför kontrollen.
+När sessionen är *klar* kan du *ansluta* till den. När du är ansluten kan enheten skicka kommandon för att läsa in och ändra modeller. Varje ARR-värd betjänar bara en klient enhet i taget, så när en klient ansluter till en session har den exklusiv kontroll över det återgivna innehållet. Det innebär också att åter givnings prestandan inte varierar beroende på orsaker utanför kontrollen.
 
 > [!IMPORTANT]
 > Även om bara en klient kan *ansluta* till en session, kan grundläggande information om sessioner, till exempel deras aktuella tillstånd, frågas utan att ansluta.
@@ -89,20 +89,22 @@ RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 
 RemoteManagerStatic.StartupRemoteRendering(init);
 
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// fill out accountInfo details...
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// fill out sessionConfig details...
 
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
-RenderingSessionCreationParams sessionCreationParams = new RenderingSessionCreationParams();
-// fill out sessionCreationParams...
+RenderingSessionCreationOptions rendererOptions = new RenderingSessionCreationOptions();
+// fill out rendererOptions...
 
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(sessionCreationParams).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(rendererOptions);
 
+RenderingSession session = result.Session;
 RenderingSessionProperties sessionProperties;
 while (true)
 {
-    sessionProperties = await session.GetPropertiesAsync().AsTask();
+    var propertiesResult = await session.GetPropertiesAsync();
+    sessionProperties = propertiesResult.SessionProperties;
     if (sessionProperties.Status != RenderingSessionStatus.Starting &&
         sessionProperties.Status != RenderingSessionStatus.Unknown)
     {
@@ -118,43 +120,43 @@ if (sessionProperties.Status != RenderingSessionStatus.Ready)
 }
 
 // Connect to server
-Result connectResult = await session.ConnectToRuntime(new ConnectToRuntimeParams()).AsTask();
+ConnectionStatus connectStatus = await session.ConnectAsync(new RendererInitOptions());
 
 // Connected!
 
-while(...)
+while (...)
 {
     // per frame update
 
-    session.Actions.Update();
+    session.Connection.Update();
 }
 
 // Disconnect
-session.DisconnectFromRuntime();
+session.Disconnect();
 
 // stop the session
-await session.StopAsync().AsTask();
+await session.StopAsync();
 
 // shut down the remote rendering SDK
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Flera `AzureFrontend` och `AzureSession` instanser kan underhållas, manipuleras och efter frågas från kod. Men bara en enskild enhet kan ansluta till en `AzureSession` i taget.
+Flera `RemoteRenderingClient` och `RenderingSession` instanser kan underhållas, manipuleras och efter frågas från kod. Men bara en enskild enhet kan ansluta till en `RenderingSession` i taget.
 
-Livs längden för en virtuell dator är inte kopplad till `AzureFrontend` instansen eller `AzureSession` instansen. `AzureSession.StopAsync` måste anropas för att stoppa en session.
+Livs längden för en virtuell dator är inte kopplad till `RemoteRenderingClient` instansen eller `RenderingSession` instansen. `RenderingSession.StopAsync` måste anropas för att stoppa en session.
 
-Det permanenta sessions-ID: t kan frågas via `AzureSession.SessionUUID()` och cachelagras lokalt. Med det här ID: t kan ett program anropa `AzureFrontend.OpenSession` för att binda till den sessionen.
+Det permanenta sessions-ID: t kan frågas via `RenderingSession.SessionUuid()` och cachelagras lokalt. Med det här ID: t kan ett program anropa `RemoteRenderingClient.OpenRenderingSessionAsync` för att binda till den sessionen.
 
-När `AzureSession.IsConnected` är sant `AzureSession.Actions` returnerar en instans av `RemoteManager` , som innehåller funktionerna för att [läsa in modeller](models.md), manipulera [entiteter](entities.md)och [fråga efter information](../overview/features/spatial-queries.md) om den återgede scenen.
+När `RenderingSession.IsConnected` är sant `RenderingSession.Connection` returnerar en instans av `RenderingConnection` , som innehåller funktionerna för att [läsa in modeller](models.md), manipulera [entiteter](entities.md)och [fråga efter information](../overview/features/spatial-queries.md) om den återgede scenen.
 
 ## <a name="api-documentation"></a>API-dokumentation
 
-* [C# AzureSession-klass](/dotnet/api/microsoft.azure.remoterendering.azuresession)
-* [C# AzureFrontend. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.createnewrenderingsessionasync)
-* [C# AzureFrontend. OpenRenderingSession ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.openrenderingsession)
-* [C++ AzureSession-klass](/cpp/api/remote-rendering/azuresession)
-* [C++ AzureFrontend:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/azurefrontend#createnewrenderingsessionasync)
-* [C++ AzureFrontend:: OpenRenderingSession](/cpp/api/remote-rendering/azurefrontend#openrenderingsession)
+* [C# RenderingSession-klass](/dotnet/api/microsoft.azure.remoterendering.renderingsession)
+* [C# RemoteRenderingClient. CreateNewRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.createnewrenderingsessionasync)
+* [C# RemoteRenderingClient. OpenRenderingSessionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.openrenderingsessionasync)
+* [C++ RenderingSession-klass](/cpp/api/remote-rendering/renderingsession)
+* [C++ RemoteRenderingClient:: CreateNewRenderingSessionAsync](/cpp/api/remote-rendering/remoterenderingclient#createnewrenderingsessionasync)
+* [C++ RemoteRenderingClient:: OpenRenderingSession](/cpp/api/remote-rendering/remoterenderingclient#openrenderingsession)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -2,25 +2,29 @@
 title: CI/CD med Azure-pipeline och-mallar
 description: Beskriver hur du konfigurerar kontinuerlig integrering i Azure-pipeline med hjälp av Azure Resource Manager mallar. Det visar hur du använder ett PowerShell-skript eller kopierar filer till en mellanlagringsplats och distribuerar därifrån.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.date: 02/05/2021
+ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233822"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594205"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrera ARM-mallar med Azure Pipelines
 
-Du kan integrera Azure Resource Manager mallar (ARM-mallar) med Azure-pipelines för kontinuerlig integrering och kontinuerlig distribution (CI/CD). Självstudien [för kontinuerlig integrering av arm-mallar med Azure-pipeliner](deployment-tutorial-pipeline.md) visar hur du använder [distributions uppgiften för arm-mallen](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) för att distribuera en mall från din GitHub-lagrings platsen. Den här metoden fungerar när du vill distribuera en mall direkt från en lagrings plats.
+Du kan integrera Azure Resource Manager mallar (ARM-mallar) med Azure-pipelines för kontinuerlig integrering och kontinuerlig distribution (CI/CD). I den här artikeln får du lära dig ytterligare två avancerade sätt att distribuera mallar med Azure-pipeliner.
 
-I den här artikeln får du lära dig ytterligare två sätt att distribuera mallar med Azure-pipeliner. Den här artikeln visar hur du:
+## <a name="select-your-option"></a>Välj ditt alternativ
 
-* **Lägg till aktivitet som kör ett Azure PowerShell-skript**. Det här alternativet har fördelen att tillhandahålla konsekvens under utvecklings livs cykeln eftersom du kan använda samma skript som du använde när du körde lokala tester. Skriptet distribuerar mallen men kan också utföra andra åtgärder, till exempel att hämta värden som parametrar.
+Innan du fortsätter med den här artikeln ska vi ta en titt på de olika alternativen för att distribuera en ARM-mall från en pipeline.
+
+* **Använd distributions uppgift för arm-mall**. Det här alternativet är det enklaste alternativet. Den här metoden fungerar när du vill distribuera en mall direkt från en lagrings plats. Det här alternativet beskrivs inte i den här artikeln, utan beskrivs i stället i självstudien [för kontinuerlig integrering av arm-mallar med Azure-pipeliner](deployment-tutorial-pipeline.md). Det visar hur du använder [distributions uppgiften för arm-mallen](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) för att distribuera en mall från din GitHub-lagrings platsen.
+
+* **Lägg till aktivitet som kör ett Azure PowerShell-skript**. Det här alternativet har fördelen att tillhandahålla konsekvens under utvecklings livs cykeln eftersom du kan använda samma skript som du använde när du körde lokala tester. Skriptet distribuerar mallen men kan också utföra andra åtgärder, till exempel att hämta värden som parametrar. Det här alternativet visas i den här artikeln. Se [Azure PowerShell aktivitet](#azure-powershell-task).
 
    Visual Studio innehåller ett [Azure-resurs grupps projekt](create-visual-studio-deployment-project.md) som innehåller ett PowerShell-skript. Skript stegen artefakter från ditt projekt till ett lagrings konto som Resource Manager har åtkomst till. Artefakter är objekt i projektet, till exempel länkade mallar, skript och binärfiler för program. Om du vill fortsätta att använda skriptet från projektet kan du använda PowerShell-skriptet som visas i den här artikeln.
 
-* **Lägg till aktiviteter för att kopiera och distribuera uppgifter**. Det här alternativet erbjuder ett användbart alternativ till projekt skriptet. Du konfigurerar två aktiviteter i pipelinen. En uppgift stadier artefakter till en tillgänglig plats. Den andra aktiviteten distribuerar mallen från den platsen.
+* **Lägg till aktiviteter för att kopiera och distribuera uppgifter**. Det här alternativet erbjuder ett användbart alternativ till projekt skriptet. Du konfigurerar två aktiviteter i pipelinen. En uppgift stadier artefakter till en tillgänglig plats. Den andra aktiviteten distribuerar mallen från den platsen. Det här alternativet visas i den här artikeln. Se [Kopiera och distribuera uppgifter](#copy-and-deploy-tasks).
 
 ## <a name="prepare-your-project"></a>Förbered ditt projekt
 

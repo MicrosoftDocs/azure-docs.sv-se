@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210026"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593137"
 ---
 # <a name="app-service-networking-features"></a>App Service nätverksfunktioner
 
@@ -113,6 +113,9 @@ Funktionen IP-baserade åtkomst begränsningar hjälper när du vill begränsa d
 * Begränsa åtkomsten till trafik som kommer via en extern belastnings Utjämnings tjänst eller andra nätverks enheter med kända utgående IP-adresser. 
 
 Information om hur du aktiverar den här funktionen finns i [Konfigurera åtkomst begränsningar][iprestrictions].
+
+> [!NOTE]
+> IP-baserade regler för åtkomst begränsning hanterar endast virtuella nätverks adress intervall när din app finns i en App Service-miljön. Om din app finns i tjänsten flera innehavare måste du använda [tjänstens slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) för att begränsa trafiken till att välja undernät i det virtuella nätverket.
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>Åtkomst begränsnings regler baserade på tjänst slut punkter 
 

@@ -88,6 +88,8 @@
       href: concepts/client-and-server-architecture.md
     - name: Samtalsflöden
       href: concepts/call-flows.md
+    - name: Topologier för anrops flöden
+      href: concepts/detailed-call-flows.md
     - name: 'Klientbibliotek och REST-API:er'
       href: concepts/sdk-options.md
     - name: Prismodell

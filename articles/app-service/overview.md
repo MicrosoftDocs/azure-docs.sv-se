@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936217"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592338"
 ---
 # <a name="app-service-overview"></a>Översikt över App Service
 
@@ -50,13 +50,13 @@ Föråldrade körningar tas regelbundet bort från Web Apps skapa och konfigurer
 
 När en föråldrad körning är dold från portalen kommer alla befintliga webbplatser som använder den versionen att fortsätta att köras. Om en runtime tas bort helt från App Services plattformen får dina Azure-Prenumerationens ägare ett e-postmeddelande innan borttagningen.
 
-Om du behöver skapa en annan webbapp med en inaktuell runtime-version som inte längre visas på portalen, se språk konfigurations guiderna för instruktioner om hur du hämtar körnings versionen för din webbplats. Du kan använda Azure CLI för att skapa en annan plats med samma körnings tid. Du kan också använda knappen **Exportera mall** på bladet webbapp på portalen för att exportera en arm-mall på platsen. Du kan använda den här mallen igen för att distribuera en ny plats med samma körning och konfiguration.
+Om du behöver skapa en annan webbapp med en inaktuell runtime-version som inte längre visas på portalen, se språk konfigurations guiderna för instruktioner om hur du hämtar körnings versionen för din webbplats. Du kan använda Azure CLI för att skapa en annan plats med samma körnings tid. Du kan också använda knappen **Exportera mall** på bladet webbapp på portalen för att exportera en arm-mall på platsen. Du kan återanvända den här mallen för att distribuera en ny plats med samma körning och konfiguration.
 
 ### <a name="limitations"></a>Begränsningar
 
 - App Service på Linux stöds inte på den [delade](https://azure.microsoft.com/pricing/details/app-service/plans/) pris nivån. 
 - Du kan inte mixa Windows-och Linux-appar i samma App Service plan.  
-- I samma resurs grupp kan du inte mixa Windows-och Linux-appar i samma region.
+- Tidigare kan du inte blanda Windows-och Linux-appar i samma resurs grupp. Men alla resurs grupper som skapats den 21 januari 2021 har stöd för det här scenariot. För resurs grupper som skapats före den 21 januari 2021 kommer möjligheten att lägga till blandade plattforms distributioner att distribueras i Azure-regioner (inklusive nationella moln regioner) snart.
 - Azure Portal visar endast funktioner som för närvarande fungerar för Linux-appar. När funktionerna är aktiverade är de aktiverade på portalen.
 - När den distribueras till inbyggda avbildningar allokeras din kod och ditt innehåll till en lagrings volym för webb innehåll, som backas upp av Azure Storage. Disk fördröjningen för den här volymen är högre och mer variabel än svars tiden för behållar systemet. Appar som kräver tung skrivskyddad åtkomst till innehållsfiler kan dra nytta av alternativet för anpassad behållare, som placerar filer i behållarens fil system i stället för på innehålls volymen.
 

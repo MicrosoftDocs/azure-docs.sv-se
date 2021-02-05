@@ -13,58 +13,63 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 41d70b20708f0f355fab5b5a06790c1c0c6530c6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583560"
+ms.locfileid: "99593086"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Snabbstart: Konfigurera en klientorganisation
 
-Med Microsoft Identity-plattformen kan utvecklare skapa appar som riktar sig till flera olika anpassade Microsoft 365-miljöer och -identiteter. För att komma igång med att använda Microsoft Identity-plattform så behöver du åtkomst till en miljö, även kallad en Azure AD-klientorganisation, som kan registrera och hantera appar, ha åtkomst till Microsoft 365-data och distribuera villkorsstyrd åtkomst och klientorganisationsbegränsningar.
+Om du vill bygga appar som använder Microsoft Identity Platform för identitets-och åtkomst hantering behöver du åtkomst till en Azure Active Directory (Azure AD)- *klient*. Det finns i Azure AD-klienten som du registrerar och hanterar dina appar, konfigurerar deras åtkomst till data i Microsoft 365 och andra webb-API: er och aktiverar funktioner som villkorlig åtkomst.
 
-En klientorganisation är en representation av en organisation. Det är en dedikerad instans av Azure AD som en organisation eller apputvecklare får när organisationen eller apputvecklaren skapar en relation med Microsoft – som att registrera sig för Azure, Microsoft Intune eller Microsoft 365.
+En klientorganisation representerar en organisation. Det är en dedikerad instans av Azure AD som en organisation eller app-utvecklare tar emot i början av en relation med Microsoft. Relationen kan börja med att registrera sig för Azure, Microsoft Intune eller Microsoft 365 till exempel.
 
-Varje Azure AD-klientorganisation skiljer sig från andra Azure AD-klientorganisationer och har en egen representation av arbets- och skolidentiteter (om det är en Azure AD B2C-klientorganisation) och appregistreringar. En appregistrering i din klientorganisation kan bara tillåta autentiseringar från konton i din klientorganisation eller alla klientorganisationer.
+Varje Azure AD-klient är unik och avgränsad från andra Azure AD-klienter. Det har en egen representation av identiteter för arbets-och skol identiteter, konsument identiteter (om det är en Azure AD B2C klient) och app-registreringar. En app-registrering i din klient organisation kan bara tillåta autentiseringar från konton inom din klient organisation eller alla klienter.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ett Azure-konto som har en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="determining-environment-type"></a>Fastställa miljötyp
+## <a name="determining-the-environment-type"></a>Fastställa miljö typ
 
-Det finns två typer av miljöer som du kan skapa. Att bestämma vilken du behöver baseras helt på vilka typer av användare som din app autentiserar.
+Du kan skapa två typer av miljöer. Miljön beror bara på vilka typer av användare som din app autentiserar. 
 
-* Arbets- och skolkonton (Azure AD-konton) eller Microsof-konton (t.ex. outlook.com och live.com)
+Den här snabb starten åtgärdar två scenarier för den typ av app som du vill bygga:
+
+* Arbets-och skol konton (Azure AD) eller Microsoft-konton (till exempel Outlook.com och Live.com)
 * Sociala och lokala konton (Azure AD B2C)
-
-Snabbstarten är indelad i två scenarier beroende på vilken app du vill skapa.
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>Arbets- och skolkonton eller personliga Microsoft-konton
 
-### <a name="use-an-existing-tenant"></a>Använda en befintlig klientorganisation
+Om du vill skapa en miljö för antingen arbets-och skol konton eller personliga Microsoft-konton kan du använda en befintlig Azure AD-klient eller skapa en ny.
+### <a name="use-an-existing-azure-ad-tenant"></a>Använd en befintlig Azure AD-klient
 
-Många utvecklare har redan klienter via tjänster eller prenumerationer som är knutna till Azure AD-klienter (till exempel: Microsoft 365- eller Azure-prenumerationer).
+Många utvecklare har redan klient organisationer via tjänster eller prenumerationer som är kopplade till Azure AD-klienter, till exempel Microsoft 365 eller Azure-prenumerationer.
 
-1. Om du vill kontrol lera klient organisationen loggar du in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med det konto som du vill använda för att hantera ditt program.
-1. Se det övre högra hörnet. Om du har en klient kommer du automatiskt att loggas in och kan se klientorganisationens namn direkt under namnet på ditt konto.
-   * Hovra över ditt kontonamn längst upp till höger i Azure-portalen så visas namn, e-post, katalog/klient-ID (ett GUID) och domän.
+Så här kontrollerar du klienten:
+
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Använd det konto som du använder för att hantera ditt program.
+1. Markera det övre högra hörnet. Om du har en klient, loggas du in automatiskt. Du ser klient namnet direkt under ditt konto namn.
+   * Hovra över ditt konto namn för att se namn, e-postadress, katalog eller klient-ID (ett GUID) och domän.
    * Om ditt konto är kopplat till flera klienter måste du välja namnet på ditt konto för att öppna en meny där du kan växla mellan klienter. Varje klient har sitt eget klient-ID.
 
 > [!TIP]
 > För att hitta klient-ID: t kan du:
-> * Hovra över kontonamnet för att hämta katalogen/klient-ID:t eller
-> * Sök och välj **Azure Active Directory > egenskaper > klient-ID** i Azure Portal
+> * Hovra över ditt konto namn för att hämta katalogen eller klient-ID: t.
+> * Sök och välj **Azure Active Directory**  >  **Egenskaper**  >  **klient-ID** i Azure Portal.
 
-Om du inte har en befintlig klient som är kopplad till ditt konto kan du ser ett GUID under namnet på ditt konto och kommer inte att kunna utföra åtgärder som att registrera appar förrän följer stegen i nästa avsnitt.
+Om du inte har en klient som är kopplad till ditt konto visas ett GUID under ditt konto namn. Du kommer inte att kunna utföra åtgärder som att registrera appar förrän du har skapat en Azure AD-klient.
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Skapa en ny Azure AD-klient
 
-Om du inte redan har en Azure AD-klient eller vill skapa en ny för utveckling, kan du läsa [snabb](../fundamentals/active-directory-access-create-new-tenant.md) starten eller följa [skapandet av katalogen](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Du måste ange följande information för att skapa den nya klientorganisationen:
+Om du inte redan har en Azure AD-klient eller om du vill skapa en ny för utveckling, se [skapa en ny klient i Azure AD](../fundamentals/active-directory-access-create-new-tenant.md). Eller Använd den här funktionen för att [skapa en katalog](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) i Azure Portal. 
+
+Du kommer att ange följande information för att skapa din nya klient:
 
 - **Organisationsnamn**
-- **Initial domän** – kommer att vara en del av *.onmicrosoft.com. Du kan anpassa domänen mer senare.
+- **Första domän** – den här domänen ingår i *. onmicrosoft.com. Du kan anpassa domänen senare.
 - **Land eller region**
 
 > [!NOTE]
@@ -72,7 +77,7 @@ Om du inte redan har en Azure AD-klient eller vill skapa en ny för utveckling, 
 
 ## <a name="social-and-local-accounts"></a>Sociala och lokala konton
 
-Om du vill börja skapa appar som loggar in sociala och lokala konton måste du skapa en Azure AD B2C-klientorganisation. Börja genom att följa avsnittet om att [skapa en Azure AD B2C-klientorganisation](../../active-directory-b2c/tutorial-create-tenant.md).
+Skapa en Azure AD B2C klient för att börja skapa appar som loggar in på sociala och lokala konton. För att börja, se [skapa en Azure AD B2C klient](../../active-directory-b2c/tutorial-create-tenant.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

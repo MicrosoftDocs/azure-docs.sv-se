@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
-ms.openlocfilehash: 7f2525b89f03e8bc1a2c3166b46c40b4dbb6ff17
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22d7af4f307a99d2d2e29bc1f494d327394e4f10
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561993"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594290"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurera distributions läget för Azure Load Balancer
 
@@ -46,8 +46,8 @@ Du kan ändra konfigurationen för distributions läget genom att ändra belastn
 Följande alternativ är tillgängliga: 
 
 * **Ingen (Hash-baserad)** – anger att efterföljande begär Anden från samma klient kan hanteras av alla virtuella datorer.
-* **Klientens IP-adress (käll-IP-tillhörighet 2-tupel)** – anger att efterföljande förfrågningar från samma klient-IP-adress ska hanteras av samma virtuella dator.
-* **Klientens IP och protokoll (Källans IP-tillhörighet 3-tupel)** – anger att efterföljande förfrågningar från samma klient-IP-adress och protokoll kombination ska hanteras av samma virtuella dator.
+* **Klientens IP-adress (IP-tupel för källa)** – anger att efterföljande förfrågningar från samma klient-IP-adress ska hanteras av samma virtuella dator.
+* **Klientens IP och protokoll (Källans IP-tillhörighet)** -anger att efterföljande förfrågningar från samma klient-IP-adress och protokoll kombination ska hanteras av samma virtuella dator.
 
 5. Välj distributions läge och välj sedan **Spara**.
 
@@ -66,13 +66,36 @@ $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
-Ange värdet för `LoadDistribution` elementet för den mängd belastnings utjämning som krävs. 
+Ange värdet för `LoadDistribution` elementet för den typ av belastnings utjämning som krävs. 
 
-Ange **sourceIP** för belastnings utjämning för två tupleer (käll-IP och mål-IP). 
+* Ange **SourceIP** för belastnings utjämning för två tupleer (käll-IP och mål-IP). 
 
-Ange **sourceIPProtocol** för tre tupler (käll-IP, mål-IP och protokoll typ) belastnings utjämning. 
+* Ange **SourceIPProtocol** för tre tupler (käll-IP, mål-IP och protokoll typ) belastnings utjämning. 
 
-Ange **standard** för belastnings utjämning för fem tupler.
+* Ange **standard** för belastnings utjämning för fem tupler.
+
+# <a name="cli"></a>[**CLI**](#tab/azure-cli)
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+Använd Azure CLI för att ändra distributions inställningarna för belastningsutjämnare för en befintlig belastnings Utjämnings regel.  Följande kommando uppdaterar distributions läget:
+
+```azurecli-interactive
+az network lb rule update \
+    --lb-name myLoadBalancer \
+    --load-distribution SourceIP \
+    --name myHTTPRule \
+    --resource-group myResourceGroupLB 
+```
+Ange värdet `--load-distribution` för den typ av belastnings utjämning som krävs.
+
+* Ange **SourceIP** för belastnings utjämning för två tupleer (käll-IP och mål-IP). 
+
+* Ange **SourceIPProtocol** för tre tupler (käll-IP, mål-IP och protokoll typ) belastnings utjämning. 
+
+* Ange **standard** för belastnings utjämning för fem tupler.
+
+Mer information om kommandot som används i den här artikeln finns i [AZ Network lb Rule Update](/cli/azure/network/lb/rule#az_network_lb_rule_update)
 
 ---
 

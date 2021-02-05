@@ -1,19 +1,19 @@
 ---
-title: Skal åter givning
+title: Rendering av gränssnitt
 description: Förklarar hur du använder skal åter givnings effekter
 author: jumeder
 ms.author: jumeder
 ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f59c4f8225d31b61df08f30863c8b9300e20e820
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447872"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594171"
 ---
-# <a name="shell-rendering"></a>Skal åter givning
+# <a name="shell-rendering"></a>Rendering av gränssnitt
 
 Shell-statusen för [komponenten för åsidosättning av hierarkiskt tillstånd](../../overview/features/override-hierarchical-state.md) är en genomskinlighets påverkan. I motsats till att [Visa genom](../../overview/features/override-hierarchical-state.md) åter givning, är det bara det översta skiktet av objekt som är synligt, via till täckande åter givning. Dessutom kan objekts normala utseende ändras när de återges som gränssnitt. Den här funktionen är avsedd för användnings fall där användaren bör förvaras visuellt från icke-viktiga delar samtidigt som det fortfarande upprätthåller känslig medvetenhet för hela scenen.
 
@@ -23,14 +23,14 @@ Du kan konfigurera utseendet på objekt som återges av gränssnittet via det `S
 
 Klassen `ShellRenderingSettings` innehåller inställningar som rör globala skal åter givnings egenskaper:
 
-| Parameter      | Typ    | Beskrivning                                             |
+| Parameter      | Typ    | Description                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Desaturation` | flyt   | Mängden demättnad som ska användas för den vanliga slutgiltiga objekt färgen, i intervall 0 (ingen demättnad) till 1 (fullständig avmättnad) |
 | `Opacity`      | flyt   | Opaciteten för Shell-renderade objekt, i intervall 0 (osynliga) till 1 (helt täckande) |
 
 Se även följande tabell för exempel på Parameters-effekter när de tillämpas på en hel scen:
 
-|                | 0 | 0,25 | 0,5 | 0,75 | 1,0 | 
+|                | 0 | 0,25 | 0,5 | 0,75 | 1.0 | 
 |----------------|:-:|:----:|:---:|:----:|:---:|
 | **Frimättnad** | ![Avmättnad – 0,0](./media/shell-desaturation-00.png) | ![Avmättnad – 0,25](./media/shell-desaturation-025.png) | ![Avmättnad – 0,5](./media/shell-desaturation-05.png) | ![Avmättnad – 0,75](./media/shell-desaturation-075.png) | ![Avmättnad – 1,0](./media/shell-desaturation-10.png) |
 | **Ogenomskinlighet**      | ![Opacitet – 0,0](./media/shell-opacity-00.png) | ![Opacitet – 0,25](./media/shell-opacity-025.png) | ![Opacitet – 0,5](./media/shell-opacity-05.png) | ![Opacitet – 0,75](./media/shell-opacity-075.png) | ![Opacitet – 1,0](./media/shell-opacity-10.png) |
@@ -42,18 +42,18 @@ Shell-effekt tillämpas på den slutliga täckande färgen som motivet återges 
 Följande kod visar ett exempel på användningen av `ShellRenderingSettings` tillstånd via API: et:
 
 ```cs
-void SetShellSettings(AzureSession session)
+void SetShellSettings(RenderingSession session)
 {
-    ShellRenderingSettings shellRenderingSettings = session.Actions.ShellRenderingSettings;
+    ShellRenderingSettings shellRenderingSettings = session.Connection.ShellRenderingSettings;
     shellRenderingSettings.Desaturation = 0.5f;
     shellRenderingSettings.Opacity = 0.1f;
 }
 ```
 
 ```cpp
-void SetShellSettings(ApiHandle<AzureSession> session)
+void SetShellSettings(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Actions()->GetShellRenderingSettings();
+    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Connection()->GetShellRenderingSettings();
     shellRenderingSettings->SetDesaturation(0.5f);
     shellRenderingSettings->SetOpacity(0.1f);
 }

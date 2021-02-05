@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746112"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592763"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Felsöka problem med hälsotillstånd i serverdelen i Application Gateway
 ==================================================
@@ -24,7 +24,7 @@ Azure Application Gateway avsöker som standard server dels servrar för att kon
 
 ### <a name="how-to-check-backend-health"></a>Så här kontrollerar du Server dels hälsa
 
-Om du vill kontrol lera hälso tillståndet för din backend-pool kan du använda sidan för **hälso tillstånds** sidan på Azure Portal. Du kan också använda [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)eller [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
+Om du vill kontrol lera hälso tillståndet för din backend-pool kan du använda sidan för **hälso tillstånds** sidan på Azure Portal. Du kan också använda [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth), [CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)eller [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
 
 Statusen som hämtas av någon av dessa metoder kan vara något av följande:
 
@@ -119,7 +119,7 @@ Följ dessa steg om du vill öka timeout-värdet:
 
 1.  Om du använder Azure standard DNS, kan du kontrol lera med domän namnet registrator om rätt A-post eller CNAME-Postmappning har slutförts.
 
-1.  Om domänen är privat eller intern försöker du lösa den från en virtuell dator i samma virtuella nätverk. Om du kan lösa det startar du om Application Gateway och kontrollerar igen. Om du vill starta om Application Gateway måste du [stoppa](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) och [Starta](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) med hjälp av PowerShell-kommandona som beskrivs i dessa länkade resurser.
+1.  Om domänen är privat eller intern försöker du lösa den från en virtuell dator i samma virtuella nätverk. Om du kan lösa det startar du om Application Gateway och kontrollerar igen. Om du vill starta om Application Gateway måste du [stoppa](/powershell/module/azurerm.network/stop-azurermapplicationgateway) och [Starta](/powershell/module/azurerm.network/start-azurermapplicationgateway) med hjälp av PowerShell-kommandona som beskrivs i dessa länkade resurser.
 
 #### <a name="tcp-connect-error"></a>TCP Connect-fel
 
@@ -157,7 +157,7 @@ Kontrol lera också om någon NSG/UDR/brand vägg blockerar åtkomsten till IP-a
 
     a.  Öppna en kommando tolk (Win + R- \> cmd), ange `netstat` och välj RETUR.
 
-    b.  Kontrol lera om servern lyssnar på den port som har kon figurer ATS. Ett exempel:
+    b.  Kontrol lera om servern lyssnar på den port som har kon figurer ATS. Exempel:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -257,7 +257,7 @@ Mer information om hur du extraherar och laddar upp betrodda rot certifikat i Ap
 > [!NOTE]
 > Det här felet kan också inträffa om backend-servern inte utbyter hela kedjan av certifikatet, inklusive roten > mellanliggande (om tillämpligt) > löv under TLS-handskakningen. För att verifiera kan du använda OpenSSL-kommandon från vilken klient som helst och ansluta till backend-servern med hjälp av de konfigurerade inställningarna i Application Gateway avsökningen.
 
-Ett exempel:
+Exempel:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```

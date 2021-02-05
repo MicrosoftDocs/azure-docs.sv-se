@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7924409a1760d59f4ecc88a736f7b8238fbd647b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f6d79f41843069fe6cafe1fa1358ac6c1aab12e6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205871"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591743"
 ---
 # <a name="debug-rendering"></a>Rendering av felsökning
 
@@ -28,9 +28,9 @@ API för fel söknings åter givning innehåller en uppsättning globala alterna
 Följande kod aktiverar dessa fel söknings effekter:
 
 ```cs
-void EnableDebugRenderingEffects(AzureSession session, bool highlight)
+void EnableDebugRenderingEffects(RenderingSession session, bool highlight)
 {
-    DebugRenderingSettings settings = session.Actions.DebugRenderingSettings;
+    DebugRenderingSettings settings = session.Connection.DebugRenderingSettings;
 
     // Enable frame counter text overlay on the server side rendering
     settings.RenderFrameCount = true;
@@ -44,9 +44,9 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 ```
 
 ```cpp
-void EnableDebugRenderingEffects(ApiHandle<AzureSession> session, bool highlight)
+void EnableDebugRenderingEffects(ApiHandle<RenderingSession> session, bool highlight)
 {
-    ApiHandle<DebugRenderingSettings> settings = session->Actions()->GetDebugRenderingSettings();
+    ApiHandle<DebugRenderingSettings> settings = session->Connection()->GetDebugRenderingSettings();
 
     // Enable frame counter text overlay on the server side rendering
     settings->SetRenderFrameCount(true);
@@ -77,7 +77,7 @@ De tillhandahållna effekterna ger dock ingen detaljerad introspektionsfunktione
 
 ## <a name="api-documentation"></a>API-dokumentation
 
-* [C++ RemoteManager::D ebugRenderingSettings ()](/cpp/api/remote-rendering/remotemanager#debugrenderingsettings)
+* [C++ RenderingConnection::D ebugRenderingSettings ()](/cpp/api/remote-rendering/renderingconnection#debugrenderingsettings)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,42 +9,34 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: fbd5d3c4489d124014e0d956359f64a8ec9c568a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763055"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592797"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
+
+Webb anrops exemplet är ett webb program som fungerar som en stegvis genom gång av de olika funktionerna som tillhandahålls av kommunikations tjänstens webb anrops klient bibliotek. 
+
+Det här exemplet har skapats för utvecklare och gör det enkelt för dig att komma igång med kommunikations tjänster. Dess användar gränssnitt är indelat i flera avsnitt, med en knapp för att Visa kod som gör att du kan kopiera kod direkt från webbläsaren till ditt eget kommunikations tjänst program.
+
+## <a name="get-started-with-the-web-calling-sample"></a>Kom igång med webb anrops exemplet
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
 > [Det här exemplet finns på GitHub.](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/).
 
-Azure Communication Services **webb anrops exempel** visar hur kommunikations tjänsterna som anropar klient biblioteket kan användas för att bygga en anrops upplevelse med Java Script.
-
-I den här snabb starten ska vi lära dig hur exemplet fungerar innan vi kör exemplet på den lokala datorn. Vi distribuerar sedan exemplet till Azure med dina egna Azure Communication Services-resurser.
-
-## <a name="overview"></a>Översikt
-
-Webb anrops exemplet är ett webb program som fungerar som en stegvis genom gång av de olika funktionerna som tillhandahålls av kommunikations tjänstens webb anrops klient bibliotek. 
-
-Det här exemplet har skapats för utvecklare och gör det enkelt för dig att komma igång med kommunikations tjänster. Dess användar gränssnitt är indelat i flera avsnitt, med en knapp för att Visa kod som gör att du kan kopiera kod direkt från webbläsaren till ditt eget kommunikations tjänst program.
-
+Följ/Project/Readme.MD för att ställa in projektet och köra det lokalt på din dator.
 När [webb anrops exemplet](https://github.com/Azure-Samples/communication-services-web-calling-tutorial) körs på datorn visas följande landnings sida:
 
 :::image type="content" source="./media/web-calling-tutorial-page-1.png" alt-text="Vägledning för webb samtal 1" lightbox="./media/web-calling-tutorial-page-1.png":::
 
 :::image type="content" source="./media/web-calling-tutorial-page-2.png" alt-text="Webb samtals Guide 2" lightbox="./media/web-calling-tutorial-page-2.png":::
 
-
 ## <a name="user-provisioning-and-sdk-initialization"></a>Användar etablering och SDK-initiering 
-
-Börja använda demonstrationen genom att ange anslutnings strängen från [resursen kommunikations tjänster](../quickstarts/create-communication-resource.md) till `config.json` . Detta används för att etablera en [token för användar åtkomst](../concepts/authentication.md) så att din anropande SDK kan initieras.
-
-Ange ditt eget personliga ID i användar identitetens indata. Om inget anges här skapas en slumpmässig användar identitet. 
 
 Klicka på "etableringen user and Initialize SDK" för att initiera din SDK med hjälp av en token som tillhandahålls av backend-token för etablerings tjänsten. Den här server dels tjänsten är i `/project/webpack.config.js` .
 

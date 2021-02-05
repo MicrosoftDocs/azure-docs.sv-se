@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: sashan
-ms.author: sashan
-ms.reviewer: sstein, sashan
+author: emlisa
+ms.author: emlisa
+ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 53b6b4f5d783029cb53de71fe3c47b8cb2d26968
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095448"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593426"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Zonens redundanta version av hög tillgänglighets arkitektur för tjänst nivå
 ![Zon redundant konfiguration för generell användning](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> För uppdaterad information om de regioner som har stöd för zonens redundanta databaser, se [tjänster support per region](../../availability-zones/az-region.md). Zon redundant konfiguration är bara tillgänglig när Gen5 Compute-maskinvaran har valts. Den här funktionen är inte tillgänglig i SQL-hanterad instans.
+> Zon redundant konfiguration är bara tillgänglig när Gen5 Compute-maskinvaran har valts. Den här funktionen är inte tillgänglig i SQL-hanterad instans. Zon redundant konfiguration för generell användnings nivå är endast tillgängligt i följande regioner: östra USA, östra USA 2, västra USA 2, norra Europa, Västeuropa, Sydostasien, östra Australien, Östra Japan, Storbritannien, södra och Frankrike, centrala.
 
 > [!NOTE]
 > Generell användning-databaser med en storlek på 80 vCore kan orsaka försämrade prestanda med Zone-redundant konfiguration. Dessutom kan åtgärder som säkerhets kopiering, återställning, databas kopiering och konfiguration av Geo-DR-relationer uppleva sämre prestanda för alla enskilda databaser som är större än 1 TB. 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 8be5ac75e2da3eaeae300fd36e152a24c9777e64
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693662"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593747"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Så här installerar du en Application Gateway ingress-styrenhet (AGIC) med en ny Application Gateway
 
@@ -30,7 +30,7 @@ Du kan också starta Cloud Shell från Azure Portal med följande ikon:
 
 Din [Azure Cloud Shell](https://shell.azure.com/) har redan alla verktyg som krävs. Om du väljer att använda en annan miljö bör du kontrol lera att följande kommando rads verktyg är installerade:
 
-* `az` – Azure CLI: [installations anvisningar](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `az` – Azure CLI: [installations anvisningar](/cli/azure/install-azure-cli)
 * `kubectl` -Kubernetes kommando rads verktyg: [installations anvisningar](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * `helm` – Kubernetes Package Manager: [installations anvisningar](https://github.com/helm/helm/releases/latest)
 * `jq` – kommando rads-JSON-processor: [Installationsinstruktioner](https://stedolan.github.io/jq/download/)

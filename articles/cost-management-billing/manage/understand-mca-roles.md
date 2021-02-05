@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 02/05/2021
 ms.author: banders
-ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: HT
+ms.openlocfilehash: 00ac61567502984759c5db9837060c86aaee378d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673839"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593594"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Förstå administrativa roller för Microsoft-kundavtal i Azure
 
@@ -100,6 +100,8 @@ Följande tabeller visar vilken roll du behöver för att slutföra uppgifter i 
 |Uppdatera egenskaper för faktureringsprofil |✔|✔|✘|✘|✘|✘|✘|
 |Visa principer som tillämpas på faktureringsprofilen, till exempel aktivering av Azure-reservationsinköp, aktivering av Azure Marketplace-inköp och mer|✔|✔|✔|✔|✔|✔|✔|
 |Tillämpa principer på faktureringsprofilen |✔|✔|✘|✘|✘|✘|✘|
+|Hantera reservations order |✔|✔|✘|✘|✘|✘|✘|
+|Visa reservations order |✔|✔|✔|✘|✘|✘|✘|
 
 ### <a name="manage-invoices-for-billing-profile"></a>Hantera fakturor för faktureringsprofilen
 

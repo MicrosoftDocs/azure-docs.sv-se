@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/14/2020
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 915aca5f7400496aacb3c3cf248120dff39d747c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468955"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594458"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Självstudie: Konfigurera nätverk för Azure Stack Edge Mini R
 
@@ -126,6 +126,7 @@ Följ dessa steg om du vill konfigurera nätverket för enheten.
    - Om DHCP har aktiverats i din miljö konfigureras nätverksgränssnitten automatiskt. IP-adress, undernät, gateway och DNS tilldelas automatiskt.
    - Om DHCP inte är aktive rad kan du tilldela statiska IP-adresser om det behövs.
    - Du kan konfigurera nätverks gränssnittet som IPv4.
+   - NIC-team (Network Interface Card) eller länk agg regering stöds inte med Azure Stack Edge.
    - Serie numret för vilken port som helst motsvarar nodens serie nummer. För en enhet i K-serien visas bara ett serie nummer.
 
      >[!NOTE] 
@@ -152,7 +153,7 @@ Följ dessa steg om du vill aktivera Compute och konfigurera Compute Network.
     > Kubernetes på Azure Stack Edge använder 172.27.0.0/16 undernät för Pod och 172.28.0.0/16 under nätet för tjänsten. Se till att de inte används i nätverket. Om dessa undernät redan används i nätverket kan du ändra dessa undernät genom att köra `Set-HcsKubeClusterNetworkInfo` cmdleten från PowerShell-gränssnittet på enheten. Mer information finns i [ändra Kubernetes-Pod och tjänst under nät](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-1. Tilldela **Kubernetes external service IP-adresser**. Dessa är också IP-adresser för belastnings utjämning. Dessa sammanhängande IP-adresser är för tjänster som du vill exponera utanför Kubernetes-klustret och du anger det statiska IP-intervallet beroende på antalet tjänster som exponeras. 
+1. Tilldela **Kubernetes external service IP-adresser**. Detta är också IP-adresser för belastnings utjämning. Dessa sammanhängande IP-adresser är för tjänster som du vill exponera utanför Kubernetes-klustret och du anger det statiska IP-intervallet beroende på antalet tjänster som exponeras. 
     
     > [!IMPORTANT]
     > Vi rekommenderar starkt att du anger minst 1 IP-adress för Azure Stack Edge Mini R Hub-tjänsten för att få åtkomst till Compute-moduler. Alternativt kan du ange ytterligare IP-adresser för andra tjänster/IoT Edge moduler (1 per tjänst/modul) som behöver nås från utanför klustret. IP-adresserna för tjänsten kan uppdateras senare. 

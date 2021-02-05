@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e09f9b8564c9319e68984df1c0f8db7a496a6d0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: beb45d0d650b07f6106a3307d2d3a955095ee8b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584812"
+ms.locfileid: "99592270"
 ---
 # <a name="manage-qna-maker-resources"></a>Hantera QnA Maker resurser
 
@@ -92,60 +92,10 @@ Den här proceduren skapar de Azure-resurser som krävs för att hantera innehå
     ![Resursen skapade en ny QnA Maker hanterad tjänst (för hands version)](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
     Resursen med _Cognitive Services_ typen har dina _prenumerations_ nycklar.
-
+    
 ---
 
-## <a name="find-authoring-keys-in-the-azure-portal"></a>Hitta redigerings nycklar i Azure Portal
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
-
-Du kan visa och återställa dina redigerings nycklar från Azure Portal, där du skapade QnA Maker resursen. Dessa nycklar kan kallas för prenumerations nycklar.
-
-1. Gå till QnA Maker resursen i Azure Portal och välj den resurs som har _Cognitive Servicess_ typ:
-
-    ![QnA Maker resurs lista](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
-
-2. Gå till **nycklar och slut punkt**:
-
-    ![Prenumerations nyckel för QnA Maker Managed (för hands version)](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Hitta fråge slut punkts nycklar i QnA Maker Portal
-
-Slut punkten finns i samma region som resursen eftersom slut punkts nycklarna används för att anropa kunskaps basen.
-
-Slut punkts nycklar kan hanteras från [QNA Maker-portalen](https://qnamaker.ai).
-
-1. Logga in på [QNA Maker Portal](https://qnamaker.ai), gå till din profil och välj sedan **tjänst inställningar**:
-
-    ![Slut punkts nyckel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
-
-2. Visa eller Återställ dina nycklar:
-
-    > [!div class="mx-imgBorder"]
-    > ![Slut punkts nyckel hanterare](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
-
-    >[!NOTE]
-    >Uppdatera dina nycklar om du tror att de har komprometterats. Detta kan kräva motsvarande ändringar i klient programmet eller bot koden.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
-
-Du kan visa och återställa redigerings nycklarna från Azure Portal, där du skapade resursen QnA Maker Managed (för hands version). Dessa nycklar kan kallas för prenumerations nycklar.
-
-1. Gå till resursen QnA Maker Managed (för hands version) i Azure Portal och välj den resurs som har *Cognitive Servicess* typ:
-
-    ![Resurs lista för QnA Maker Managed (för hands version)](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
-
-2. Gå till **nycklar och slut punkt**:
-
-    ![Prenumerations nyckel för QnA Maker Managed (för hands version)](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
-
-### <a name="update-the-resources"></a>Uppdatera resurserna
-
-Lär dig hur du uppgraderar de resurser som används av din kunskaps bas. QnA Maker Managed (för hands version) är **kostnads fritt** i för hands versionen. 
-
----
-
-### <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
+## <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
 

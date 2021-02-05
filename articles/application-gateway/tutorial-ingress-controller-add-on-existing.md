@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183693"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593828"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Självstudie: Aktivera Application Gateway ingress Controller-tillägg för ett befintligt AKS-kluster med en befintlig Application Gateway via Azure CLI (för hands version)
 
 Du kan använda Azure CLI för att aktivera [AGIC-tillägget (Application Gateway ingress Controller)](ingress-controller-overview.md) , som för närvarande är en för hands version, för ditt [AKS-kluster (Azure Kubernetes Services](https://azure.microsoft.com/services/kubernetes-service/) ). I den här självstudien får du lära dig hur du använder AGIC-tillägg för att exponera ditt Kubernetes-program i ett befintligt AKS-kluster via en befintlig Application Gateway som distribueras i separata virtuella nätverk. Du börjar med att skapa ett AKS-kluster i ett virtuellt nätverk och en Application Gateway i ett separat virtuellt nätverk för att simulera befintliga resurser. Sedan aktiverar du AGIC-tillägget, peer-koppla de två virtuella nätverken och distribuerar ett exempel program som visas via Application Gateway med hjälp av AGIC-tillägget. Om du aktiverar AGIC-tillägget för en befintlig Application Gateway och ett befintligt AKS-kluster i samma virtuella nätverk kan du hoppa över peering-steget nedan. Tillägget ger ett mycket snabbare sätt att distribuera AGIC för ditt AKS-kluster än [tidigare via Helm](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) och erbjuder även en fullständigt hanterad upplevelse.  
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en resursgrupp 
@@ -67,7 +67,7 @@ I följande exempel ska du distribuera ett nytt AKS-kluster *med namnet IT-klust
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Om du vill konfigurera ytterligare parametrar för `az aks create` kommandot kan du gå till referenser [här](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+Om du vill konfigurera ytterligare parametrar för `az aks create` kommandot kan du gå till referenser [här](/cli/azure/aks#az-aks-create). 
 
 ## <a name="deploy-a-new-application-gateway"></a>Distribuera en ny Application Gateway 
 

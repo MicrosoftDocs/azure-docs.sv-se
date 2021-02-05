@@ -62,7 +62,7 @@
       items:
         - name: Transformeringar
           href: how-to-transformation.md
-        - name: Inkommande synkronisering med MS Graph API
+        - name: Konfigurera moln synkronisering program mässigt med MS Graph API
           href: how-to-inbound-synch-ms-graph.md
         - name: API för synkronisering med Azure AD
           href: /graph/api/resources/synchronization-overview

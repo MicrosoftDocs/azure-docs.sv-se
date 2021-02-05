@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 525872ca3ad2558c327b7b856254319d3db2dc7f
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724942"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594001"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Snabb start: rendera en modell med Unity
 
@@ -74,8 +74,8 @@ Standard modellen som vi återger är en [inbyggd exempel modell](../samples/sam
 ![Information om ARR-konto](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Ange **AccountDomain** till `<region>.mixedreality.azure.com` , där `<region>` är [en av de tillgängliga regionerna nära dig](../reference/regions.md). \
-> Ange **AccountAuthenticationDomain** till [konto domän](../how-tos/create-an-account.md#retrieve-the-account-information) som det visas i Azure Portal.
+> Ange **RemoteRenderingDomain** till `<region>.mixedreality.azure.com` , där `<region>` är [en av de tillgängliga regionerna nära dig](../reference/regions.md). \
+> Ange **AccountDomain** till [konto domän](../how-tos/create-an-account.md#retrieve-the-account-information) som det visas i Azure Portal.
 
 Senare vill vi distribuera det här projektet till en HoloLens och ansluta till tjänsten Remote rendering från den enheten. Eftersom vi inte har något enkelt sätt att ange autentiseringsuppgifterna på enheten sparar snabb starts exemplet **autentiseringsuppgifterna i Unity-scenen**.
 

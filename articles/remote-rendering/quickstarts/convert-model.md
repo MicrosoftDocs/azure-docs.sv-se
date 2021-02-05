@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c9b5d525954e7f0742cd13fe4d64a73df64ea854
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281348"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594475"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Snabbstart: Konvertera en modell för rendering
 
@@ -70,7 +70,7 @@ Genom att klicka på den här knappen visas följande skärm med lagrings egensk
 Fyll i formuläret på följande sätt:
 
 * Skapa en ny resurs grupp från länken nedanför List rutan och ge den namnet **ARR_Tutorial**
-* För **lagrings konto namnet**anger du ett unikt namn här. **Det här namnet måste vara globalt unikt**, annars visas en uppfattande meddelande som informerar att namnet redan är upptaget. I omfånget för den här snabb starten namnger vi IT- **arrtutorialstorage**. Därefter måste du ersätta den med ditt namn för valfri förekomst i den här snabb starten.
+* För **lagrings konto namnet** anger du ett unikt namn här. **Det här namnet måste vara globalt unikt**, annars visas en uppfattande meddelande som informerar att namnet redan är upptaget. I omfånget för den här snabb starten namnger vi IT- **arrtutorialstorage**. Därefter måste du ersätta den med ditt namn för valfri förekomst i den här snabb starten.
 * Välj en **plats** nära dig. Vi rekommenderar att du använder samma plats som används för att ställa in renderingen i den andra snabb starten.
 * **Prestanda** har angetts till "standard"
 * **Konto typ** har angetts till "StorageV2 (generell användning v2)"
@@ -155,7 +155,7 @@ Skriptet läser konfigurationen från filen *Scripts\arrconfig.jspå*. Öppna JS
 
 Konfigurationen i **accountSettings** -gruppen (konto-ID och nyckel) bör fyllas i analogt med autentiseringsuppgifterna i avsnittet [rendera en modell med enhets snabb start](render-model.md).
 
-I gruppen **assetConversionSettings** ser du till att ändra **resourceGroup**, **blobInputContainerName**och **blobOutputContainerName** som visas ovan.
+I gruppen **assetConversionSettings** ser du till att ändra **resourceGroup**, **blobInputContainerName** och **blobOutputContainerName** som visas ovan.
 Observera att värdet för **arrtutorialstorage** måste ersättas med det unika namn som du valde när du skapade lagrings kontot.
 
 Ändra **localAssetDirectoryPath** så att den pekar på katalogen på disken, som innehåller den modell som du vill konvertera. Var noga med att kringgå omvända snedstreck (" \\ ") i sökvägen med dubbla omvända snedstreck (" \\ \\ ").
@@ -188,8 +188,8 @@ Du bör se något som liknar detta: ![Conversion.ps1](./media/successful-convers
 ### <a name="3-conversion-via-api-calls"></a>3. konvertering via API-anrop
 
 Både C#-och C++-API: et tillhandahåller en start punkt för att interagera med tjänsten:
-* [C# AzureFrontend. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
-* [C++ AzureFrontend:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+* [C# RemoteRenderingClient. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient.startassetconversionasync)
+* [C++ RemoteRenderingClient:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/remoterenderingclient#startassetconversionasync)
 
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>Infoga ny modell i exempel appen för snabb start
@@ -207,7 +207,7 @@ SAS-URI: n som skapas av konverterings skriptet är bara giltig i 24 timmar. Nä
 1. Gå till [Azure Portal](https://www.portal.azure.com)
 1. Klicka på din **lagrings konto** resurs: ![ skärm bild som markerar den valda lagrings konto resursen.](./media/portal-storage-accounts.png)
 1. I följande skärm klickar du på **lagrings Utforskaren** på den vänstra panelen och letar reda på din utmatnings modell (*. arrAsset* -fil) i *arroutput* Blob storage-behållaren. Högerklicka på filen och välj **Hämta signatur för delad åtkomst** från snabb menyn: ![ åtkomst till signatur](./media/portal-storage-explorer.png)
-1. En ny skärm öppnas där du kan välja ett utgångs datum. Tryck på **skapa**och kopiera URI: n som visas i nästa dialog ruta. Denna nya URI ersätter den temporära URI som skriptet skapade.
+1. En ny skärm öppnas där du kan välja ett utgångs datum. Tryck på **skapa** och kopiera URI: n som visas i nästa dialog ruta. Denna nya URI ersätter den temporära URI som skriptet skapade.
 
 ## <a name="next-steps"></a>Nästa steg
 

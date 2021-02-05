@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 39eb007c85d9f0623b4a5611e36d4ed7a75423e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941186"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594442"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrera Apache Spark och Apache Hive med Hive Warehouse Connector i Azure HDInsight
 
@@ -38,7 +38,11 @@ Några av de åtgärder som stöds av Hive-lager kopplingen är:
 ## <a name="hive-warehouse-connector-setup"></a>Installation av Hive lager koppling
 
 > [!IMPORTANT]
-> Den interaktiva HiveServer2-instansen som är installerad på Spark 2,4 Enterprise Security Package-kluster stöds inte för användning med Hive-lagrets koppling. I stället måste du konfigurera ett separat HiveServer2-interaktivt kluster som värd för dina HiveServer2-interaktiva arbets belastningar. Det finns inte stöd för att konfigurera en Hive-nätkoppling som använder ett enda Spark 2,4-kluster.
+> - Den interaktiva HiveServer2-instansen som är installerad på Spark 2,4 Enterprise Security Package-kluster stöds inte för användning med Hive-lagrets koppling. I stället måste du konfigurera ett separat HiveServer2-interaktivt kluster som värd för dina HiveServer2-interaktiva arbets belastningar. Det finns inte stöd för att konfigurera en Hive-nätkoppling som använder ett enda Spark 2,4-kluster.
+> - INSTANSEN-bibliotek (Hive Warehouse Connector) stöds inte för användning med interaktiva Query-kluster där funktionen för arbets belastnings hantering (WLM) är aktive rad. <br>
+I ett scenario där du bara har Spark-arbetsbelastningar och vill använda INSTANSEN-bibliotek, ser du till att det inte finns någon aktive rad funktion för hantering av arbets belastning ( `hive.server2.tez.interactive.queue` konfigurationen har inte ställts in i Hive-konfigurationer). <br>
+För ett scenario där både Spark-arbetsbelastningar (INSTANSEN) och LLAP-inhemska arbets belastningar finns måste du skapa två separata interaktiva Query-kluster med en delad metaarkiv-databas. Ett kluster för interna LLAP-arbetsbelastningar där WLM-funktionen kan aktive ras på behovs nivå och andra kluster för INSTANSEN arbets belastning där WLM-funktionen inte ska konfigureras.
+Det är viktigt att Observera att du kan visa WLM resurs planer från båda klustren även om den är aktive rad i ett enda kluster. Gör inga ändringar i resurs planer i klustret där WLM-funktionen är inaktive rad eftersom den kan påverka WLM-funktionen i andra kluster.
 
 Hive-lagerställen behöver separata kluster för Spark-och Interactive Query-arbetsbelastningar. Följ dessa steg om du vill konfigurera dessa kluster i Azure HDInsight.
 

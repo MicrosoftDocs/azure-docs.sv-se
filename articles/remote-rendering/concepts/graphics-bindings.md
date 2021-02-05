@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cefd00609062c30b036f87a0a01a75dc2afb868b
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246153"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593916"
 ---
 # <a name="graphics-binding"></a>Grafik bindning
 
@@ -38,30 +38,31 @@ Den enda andra relevanta delen för Unity har åtkomst till den [grundläggande 
 Om du vill välja en grafik bindning gör du följande två steg: först måste grafik bindningen vara statiskt initierad när programmet initieras:
 
 ```cs
-RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization;
-managerInit.graphicsApi = GraphicsApiType.WmrD3D11;
-managerInit.connectionType = ConnectionType.General;
-managerInit.right = ///...
+RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization();
+managerInit.GraphicsApi = GraphicsApiType.WmrD3D11;
+managerInit.ConnectionType = ConnectionType.General;
+managerInit.Right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
 ```
 
 ```cpp
 RemoteRenderingInitialization managerInit;
-managerInit.graphicsApi = GraphicsApiType::WmrD3D11;
-managerInit.connectionType = ConnectionType::General;
-managerInit.right = ///...
+managerInit.GraphicsApi = GraphicsApiType::WmrD3D11;
+managerInit.ConnectionType = ConnectionType::General;
+managerInit.Right = ///...
 StartupRemoteRendering(managerInit); // static function in namespace Microsoft::Azure::RemoteRendering
+
 ```
 
 Anropet ovan krävs för att initiera Azures fjärrrendering i Holographic-API: erna. Den här funktionen måste anropas innan något Holographic-API anropas och innan andra API: er för fjärrrendering används. På samma sätt ska motsvarande avinitierings funktion `RemoteManagerStatic.ShutdownRemoteRendering();` anropas när inga Holographic-API: er anropas längre.
 
 ## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">Åtkomst till grafik bindning
 
-När en klient har kon figurer ATS kan den grundläggande grafik bindningen nås med get- `AzureSession.GraphicsBinding` metoden. Till exempel kan den senaste ram statistiken hämtas så här:
+När en klient har kon figurer ATS kan den grundläggande grafik bindningen nås med get- `RenderingSession.GraphicsBinding` metoden. Till exempel kan den senaste ram statistiken hämtas så här:
 
 ```cs
-AzureSession currentSession = ...;
-if (currentSession.GraphicsBinding)
+RenderingSession currentSession = ...;
+if (currentSession.GraphicsBinding != null)
 {
     FrameStatistics frameStatistics;
     if (currentSession.GraphicsBinding.GetLastFrameStatistics(out frameStatistics) == Result.Success)
@@ -72,11 +73,11 @@ if (currentSession.GraphicsBinding)
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 {
     FrameStatistics frameStatistics;
-    if (*binding->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    if (binding->GetLastFrameStatistics(&frameStatistics) == Result::Success)
     {
         ...
     }
@@ -97,7 +98,7 @@ Det finns två saker som måste utföras för att använda WMR-bindningen:
 #### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>Meddela fjärrrendering av det använda koordinatsystemet
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 IntPtr ptr = ...; // native pointer to ISpatialCoordinateSystem
 GraphicsBindingWmrD3d11 wmrBinding = (currentSession.GraphicsBinding as GraphicsBindingWmrD3d11);
 if (wmrBinding.UpdateUserCoordinateSystem(ptr) == Result.Success)
@@ -107,10 +108,10 @@ if (wmrBinding.UpdateUserCoordinateSystem(ptr) == Result.Success)
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 void* ptr = ...; // native pointer to ISpatialCoordinateSystem
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
-if (*wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
+if (wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 {
     //...
 }
@@ -126,13 +127,13 @@ I början av varje ram måste den fjärranslutna ramen återges i den bakre buff
 > När fjärravbildningen var blit i den bakre bufferten ska det lokala innehållet återges med en teknik för en enda pass-teknik, t. ex. med hjälp av **SV_RenderTargetArrayIndex**. Att använda andra tekniker för stereo åter givning, till exempel rendera varje öga i ett separat pass, kan leda till betydande prestanda försämring eller grafiska artefakter och bör undvikas.
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 GraphicsBindingWmrD3d11 wmrBinding = (currentSession.GraphicsBinding as GraphicsBindingWmrD3d11);
 wmrBinding.BlitRemoteFrame();
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
 wmrBinding->BlitRemoteFrame();
 ```
@@ -159,7 +160,7 @@ Fjärrinnehållet och det lokala innehållet måste återges för att rendera m�
 Proxyservern måste matcha den bakre buffertens upplösning och måste vara int *DXGI_FORMAT_R8G8B8A8_UNORM* -eller *DXGI_FORMAT_B8G8R8A8_UNORM* -formatet. När det gäller Stereoscopic-rendering, både färg-proxyns struktur och, om djupet används, så måste du ha två mat ris lager i stället för ett i djupet. När en session är klar `GraphicsBindingSimD3d11.InitSimulation` måste anropas före anslutning till den:
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 IntPtr d3dDevice = ...; // native pointer to ID3D11Device
 IntPtr color = ...; // native pointer to ID3D11Texture2D
 IntPtr depth = ...; // native pointer to ID3D11Texture2D
@@ -172,7 +173,7 @@ simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFr
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession = ...;
+ApiHandle<RenderingSession> currentSession = ...;
 void* d3dDevice = ...; // native pointer to ID3D11Device
 void* color = ...; // native pointer to ID3D11Texture2D
 void* depth = ...; // native pointer to ID3D11Texture2D
@@ -184,7 +185,7 @@ ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBindi
 simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
-Funktionen init måste tillhandahållas med pekare till den interna D3D-enheten samt färg-och djup texturen för proxyns åter givnings mål. När den har initierats `AzureSession.ConnectToRuntime` och `DisconnectFromRuntime` kan anropas flera gånger, men när du växlar till en annan session, `GraphicsBindingSimD3d11.DeinitSimulation` måste anropas först på den gamla sessionen innan den `GraphicsBindingSimD3d11.InitSimulation` kan anropas i en annan session.
+Funktionen init måste tillhandahållas med pekare till den interna D3D-enheten samt färg-och djup texturen för proxyns åter givnings mål. När den har initierats `RenderingSession.ConnectAsync` och `Disconnect` kan anropas flera gånger, men när du växlar till en annan session, `GraphicsBindingSimD3d11.DeinitSimulation` måste anropas först på den gamla sessionen innan den `GraphicsBindingSimD3d11.InitSimulation` kan anropas i en annan session.
 
 #### <a name="render-loop-update"></a>Uppdatera upprepnings slinga
 
@@ -196,7 +197,7 @@ Om den returnerade proxykonfigurationen `SimulationUpdate.frameId` är null finn
 1. Sedan måste den bakre bufferten vara kopplad till ett åter givnings mål och `GraphicsBindingSimD3d11.ReprojectProxy` anropas med den punkt där den bakre bufferten kan visas.
 
 ```cs
-AzureSession currentSession = ...;
+RenderingSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
 SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 // Fill out camera data with current camera data
@@ -205,7 +206,7 @@ SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 SimulationUpdateResult updateResult = new SimulationUpdateResult();
 simBinding.Update(updateParameters, out updateResult);
 // Is the frame data valid?
-if (updateResult.frameId != 0)
+if (updateResult.FrameId != 0)
 {
     // Bind proxy render target
     simBinding.BlitRemoteFrameToProxy();
@@ -223,7 +224,7 @@ else
 ```
 
 ```cpp
-ApiHandle<AzureSession> currentSession;
+ApiHandle<RenderingSession> currentSession;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
 
 SimulationUpdateParameters updateParameters;
@@ -233,7 +234,7 @@ SimulationUpdateParameters updateParameters;
 SimulationUpdateResult updateResult;
 simBinding->Update(updateParameters, &updateResult);
 // Is the frame data valid?
-if (updateResult.frameId != 0)
+if (updateResult.FrameId != 0)
 {
     // Bind proxy render target
     simBinding->BlitRemoteFrameToProxy();
@@ -257,67 +258,71 @@ I varje ram kräver **uppdatering av Render-loopen** från föregående avsnitt 
 ```cs
 public struct SimulationUpdateParameters
 {
-    public UInt32 frameId;
-    public StereoMatrix4x4 viewTransform;
-    public StereoCameraFOV fieldOfView;
+    public int FrameId;
+    public StereoMatrix4x4 ViewTransform;
+    public StereoCameraFov FieldOfView;
 };
 
 public struct SimulationUpdateResult
 {
-    public UInt32 frameId;
-    public float nearPlaneDistance;
-    public float farPlaneDistance;
-    public StereoMatrix4x4 viewTransform;
-    public StereoCameraFOV fieldOfView;
+    public int FrameId;
+    public float NearPlaneDistance;
+    public float FarPlaneDistance;
+    public StereoMatrix4x4 ViewTransform;
+    public StereoCameraFov FieldOfView;
 };
 ```
 
 Struktur medlemmarna har följande betydelse:
 
-| Medlem | Beskrivning |
+| Medlem | Description |
 |--------|-------------|
-| frameId | ID för kontinuerlig ram. Krävs för SimulationUpdateParameters-indatamängd och måste ökas kontinuerligt för varje ny ram. Kommer att vara 0 i SimulationUpdateResult om inga ramdata är tillgängliga än. |
-| viewTransform | Vänster-höger-stereo-par av ramens omvandlings-matriser för kamera visning. Endast medlemmen är giltig för monoscopic-rendering `left` . |
-| fieldOfView | Vänster-höger-stereo-par av ramens kamera fält – för-visning i [OpenXR-fältet i View-konventionen](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles). Endast medlemmen är giltig för monoscopic-rendering `left` . |
-| nearPlaneDistance | avstånd i nära plan som används för projektions mat ris för den aktuella fjärran sluten ram. |
-| farPlaneDistance | det långt planet avstånd som används för projektions mat ris för den aktuella fjärran sluten ram. |
+| FrameId | ID för kontinuerlig ram. Krävs för SimulationUpdateParameters-indatamängd och måste ökas kontinuerligt för varje ny ram. Kommer att vara 0 i SimulationUpdateResult om inga ramdata är tillgängliga än. |
+| ViewTransform | Vänster-höger-stereo-par av ramens omvandlings-matriser för kamera visning. Endast medlemmen är giltig för monoscopic-rendering `Left` . |
+| FieldOfView | Vänster-höger-stereo-par av ramens kamera fält – för-visning i [OpenXR-fältet i View-konventionen](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles). Endast medlemmen är giltig för monoscopic-rendering `Left` . |
+| NearPlaneDistance | avstånd i nära plan som används för projektions mat ris för den aktuella fjärran sluten ram. |
+| FarPlaneDistance | det långt planet avstånd som används för projektions mat ris för den aktuella fjärran sluten ram. |
 
-Med stereo-par `viewTransform` och `fieldOfView` kan du ange båda värdena för ögon-kameran om åter givning av Stereoscopic har Aktiver ATS. Annars `right` kommer medlemmarna att ignoreras. Som du kan se överförs bara kamerans omvandling som oformaterade matriser för 4x4-omvandling medan inga matriser för projektion har angetts. De faktiska matriserna beräknas av Azure-fjärrrenderingen internt med de angivna fälten i vyn och den aktuella nära planet och den i långt planet som angetts i [CameraSettings-API: et](../overview/features/camera.md).
+Med stereo-par `ViewTransform` och `FieldOfView` kan du ange båda värdena för ögon-kameran om åter givning av Stereoscopic har Aktiver ATS. Annars `Right` kommer medlemmarna att ignoreras. Som du kan se överförs bara kamerans omvandling som oformaterade matriser för 4x4-omvandling medan inga matriser för projektion har angetts. De faktiska matriserna beräknas av Azure-fjärrrenderingen internt med de angivna fälten i vyn och den aktuella nära planet och den i långt planet som angetts i [CameraSettings-API: et](../overview/features/camera.md).
 
 Eftersom du kan ändra nära planet och långt planet på [CameraSettings](../overview/features/camera.md) under körningen efter behov och tjänsten tillämpar dessa inställningar asynkront, bär varje SimulationUpdateResult också det speciella nära planet och det långt planet som används under åter givningen av motsvarande ram. Du kan använda dessa plan värden för att anpassa dina projektions-matriser för att återge lokala objekt så att de matchar fjärrrams rendering.
 
 Slutligen, medan **simulerings uppdaterings** anropet kräver OpenXR för standardisering och algoritmer, kan du använda konverterings funktionerna som illustreras i följande exempel på struktur ifyllning:
 
 ```cs
-public SimulationUpdateParameters CreateSimulationUpdateParameters(UInt32 frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+public SimulationUpdateParameters CreateSimulationUpdateParameters(int frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
 {
-    SimulationUpdateParameters parameters;
-    parameters.frameId = frameId;
-    parameters.viewTransform.left = viewTransform;
-    if(parameters.fieldOfView.left.fromProjectionMatrix(projectionMatrix) != Result.Success)
+    SimulationUpdateParameters parameters = default;
+    parameters.FrameId = frameId;
+    parameters.ViewTransform.Left = viewTransform;
+    if (parameters.FieldOfView.Left.FromProjectionMatrix(projectionMatrix) != Result.Success)
     {
         // Invalid projection matrix
-        return null;
+        throw new ArgumentException("Invalid projection settings");
     }
     return parameters;
 }
 
-public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out UInt32 frameId)
+public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out int frameId)
 {
-    if(result.frameId == 0)
+    projectionMatrix = default;
+    viewTransform = default;
+    frameId = 0;
+
+    if (result.FrameId == 0)
     {
         // Invalid frame data
         return;
     }
-    
+
     // Use the screenspace depth convention you expect for your projection matrix locally
-    if(result.fov.left.toProjectionMatrix(result.nearPlaneDistance, result.farPlaneDistance, DepthConvention.ZeroToOne, projectionMatrix) != Result.Success)
+    if (result.FieldOfView.Left.ToProjectionMatrix(result.NearPlaneDistance, result.FarPlaneDistance, DepthConvention.ZeroToOne, out projectionMatrix) != Result.Success)
     {
         // Invalid field-of-view
         return;
     }
-    viewTransform = result.viewTransform.left;
-    frameId = result.frameId;
+    viewTransform = result.ViewTransform.Left;
+    frameId = result.FrameId;
 }
 ```
 
@@ -325,9 +330,9 @@ public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult r
 SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
 {
     SimulationUpdateParameters parameters;
-    parameters.frameId = frameId;
-    parameters.viewTransform.left = viewTransform;
-    if(FovFromProjectionMatrix(projectionMatrix, parameters.fieldOfView.left) != Result::Success)
+    parameters.FrameId = frameId;
+    parameters.ViewTransform.Left = viewTransform;
+    if (FovFromProjectionMatrix(projectionMatrix, parameters.FieldOfView.Left) != Result::Success)
     {
         // Invalid projection matrix
         return {};
@@ -337,20 +342,20 @@ SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Ma
 
 void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& result, Matrix4x4& projectionMatrix, Matrix4x4& viewTransform, uint32_t& frameId)
 {
-    if(result.frameId == 0)
+    if (result.FrameId == 0)
     {
         // Invalid frame data
         return;
     }
-    
+
     // Use the screenspace depth convention you expect for your projection matrix locally
-    if(FovToProjectionMatrix(result.fieldOfView.left, result.nearPlaneDistance, result.farPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
+    if (FovToProjectionMatrix(result.FieldOfView.Left, result.NearPlaneDistance, result.FarPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
     {
         // Invalid field-of-view
         return;
     }
-    viewTransform = result.viewTransform.left;
-    frameId = result.frameId;
+    viewTransform = result.ViewTransform.Left;
+    frameId = result.FrameId;
 }
 ```
 

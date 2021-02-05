@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d1a7baa25497cf1ba697725ac8530bc04c458aa5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c664df586c260b3e16f64c071190055dbaeccd24
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207451"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594052"
 ---
 # <a name="spatial-queries"></a>Rumsliga frågor
 
@@ -34,7 +34,7 @@ Spatiala frågor drivs av [Havok fysik](https://www.havok.com/products/havok-phy
 En *Ray-Cast* är en rums fråga där körningen kontrollerar vilka objekt som skärs av en Ray, med början vid en viss position och pekar på en viss riktning. Som en optimering ges ett maximalt Ray-avstånd också för att inte söka efter objekt som är för långt bort.
 
 ```cs
-async void CastRay(AzureSession session)
+async void CastRay(RenderingSession session)
 {
     // trace a line from the origin into the +z direction, over 10 units of distance.
     RayCast rayCast = new RayCast(new Double3(0, 0, 0), new Double3(0, 0, 1), 10);
@@ -42,8 +42,8 @@ async void CastRay(AzureSession session)
     // only return the closest hit
     rayCast.HitCollection = HitCollectionPolicy.ClosestHit;
 
-    RayCastHit[] hits = await session.Actions.RayCastQueryAsync(rayCast).AsTask();
-
+    RayCastQueryResult result = await session.Connection.RayCastQueryAsync(rayCast);
+    RayCastHit[] hits = result.Hits;
     if (hits.Length > 0)
     {
         var hitObject = hits[0].HitObject;
@@ -56,23 +56,23 @@ async void CastRay(AzureSession session)
 ```
 
 ```cpp
-void CastRay(ApiHandle<AzureSession> session)
+void CastRay(ApiHandle<RenderingSession> session)
 {
     // trace a line from the origin into the +z direction, over 10 units of distance.
     RayCast rayCast;
-    rayCast.StartPos = { 0, 0, 0 };
-    rayCast.EndPos = { 0, 0, 1 };
+    rayCast.StartPos = {0, 0, 0};
+    rayCast.EndPos = {0, 0, 1};
     rayCast.MaxHits = 10;
 
     // only return the closest hit
     rayCast.HitCollection = HitCollectionPolicy::ClosestHit;
 
-    ApiHandle<RaycastQueryAsync> castQuery = *session->Actions()->RayCastQueryAsync(rayCast);
-
-    castQuery->Completed([](const ApiHandle<RaycastQueryAsync>& async)
+    session->Connection()->RayCastQueryAsync(rayCast, [](Status status, ApiHandle<RayCastQueryResult> result)
+    {
+        if (status == Status::OK)
         {
             std::vector<RayCastHit> hits;
-            async->GetResult(hits);
+            result->GetHits(hits);
 
             if (hits.size() > 0)
             {
@@ -82,16 +82,17 @@ void CastRay(ApiHandle<AzureSession> session)
 
                 // do something with the hit information
             }
-        });
+        }
+    });
 }
 ```
 
 
 Det finns tre lägen för träff insamling:
 
-* ** `Closest` :** I det här läget rapporteras endast den närmaste träffen.
-* ** `Any` :** Föredra det här läget när alla du vill veta är *om* en Ray skulle träffa något, men var inte noga med vad som trycks exakt. Den här frågan kan vara avsevärt billigare att utvärdera, men har även bara några få program.
-* ** `All` :** I det här läget rapporteras alla träffar längs Rayen, sorterade efter avstånd. Använd inte det här läget om du inte verkligen behöver mer än den första träffen. Begränsa antalet rapporterade träffar med `MaxHits` alternativet.
+* **`Closest` :** I det här läget rapporteras endast den närmaste träffen.
+* **`Any` :** Föredra det här läget när alla du vill veta är *om* en Ray skulle träffa något, men var inte noga med vad som trycks exakt. Den här frågan kan vara avsevärt billigare att utvärdera, men har även bara några få program.
+* **`All` :** I det här läget rapporteras alla träffar längs Rayen, sorterade efter avstånd. Använd inte det här läget om du inte verkligen behöver mer än den första träffen. Begränsa antalet rapporterade träffar med `MaxHits` alternativet.
 
 Om du vill utesluta objekt selektivt från att beaktas för Ray-sändningar kan [HierarchicalStateOverrideComponent](override-hierarchical-state.md) -komponenten användas.
 
@@ -107,16 +108,16 @@ Resultatet av en Ray Cast-fråga är en matris med träffar. Matrisen är tom, o
 
 En träff har följande egenskaper:
 
-* ** `HitEntity` :** Vilken [entitet](../../concepts/entities.md) som träffades.
-* ** `SubPartId` :** Vilket under *nätet* nåddes i en [MeshComponent](../../concepts/meshes.md). Kan användas för att indexera `MeshComponent.UsedMaterials` och slå upp [materialet](../../concepts/materials.md) vid den tidpunkten.
-* ** `HitPosition` :** Det världs LED ande position där Ray korsar objektet.
-* ** `HitNormal` :** Världens yta i mitten av nätet vid positionen för skärnings punkten.
-* ** `DistanceToHit` :** Avståndet från Ray-start positionen till träffen.
+* **`HitEntity` :** Vilken [entitet](../../concepts/entities.md) som träffades.
+* **`SubPartId` :** Vilket under *nätet* nåddes i en [MeshComponent](../../concepts/meshes.md). Kan användas för att indexera `MeshComponent.UsedMaterials` och slå upp [materialet](../../concepts/materials.md) vid den tidpunkten.
+* **`HitPosition` :** Det världs LED ande position där Ray korsar objektet.
+* **`HitNormal` :** Världens yta i mitten av nätet vid positionen för skärnings punkten.
+* **`DistanceToHit` :** Avståndet från Ray-start positionen till träffen.
 
 ## <a name="api-documentation"></a>API-dokumentation
 
-* [C# RemoteManager. RayCastQueryAsync ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.raycastqueryasync)
-* [C++ RemoteManager:: RayCastQueryAsync ()](/cpp/api/remote-rendering/remotemanager#raycastqueryasync)
+* [C# RenderingConnection. RayCastQueryAsync ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.raycastqueryasync)
+* [C++ RenderingConnection:: RayCastQueryAsync ()](/cpp/api/remote-rendering/renderingconnection#raycastqueryasync)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en hanterings grupp med REST API'
 description: I den här snabb starten använder du REST API för att skapa en hanterings grupp för att organisera resurserna i en resurspool.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: b19fddf8215a1b133254c2a31bbea568a315f721
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237407"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592508"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>Snabb start: skapa en hanterings grupp med REST API
 
@@ -20,7 +20,7 @@ Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-- Om du inte redan har gjort det installerar du [ARMClient](https://github.com/projectkudu/ARMClient). Det är ett verktyg som skickar HTTP-förfrågningar till Azure Resource Manager-baserade REST API: er. Du kan också använda funktionen "Testa funktionen" i REST-dokumentationen eller verktyg som PowerShell: s [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) eller [Postman](https://www.postman.com).
+- Om du inte redan har gjort det installerar du [ARMClient](https://github.com/projectkudu/ARMClient). Det är ett verktyg som skickar HTTP-förfrågningar till Azure Resource Manager-baserade REST API: er. I stället kan du använda funktionen "Testa funktionen" i REST-dokumentationen eller verktyg som PowerShell: s [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) eller [Postman](https://www.postman.com).
 
 - Alla Azure AD-användare i klient organisationen kan skapa en hanterings grupp utan den Skriv behörighet för hanterings gruppen som tilldelats den användaren om du inte har aktiverat [skydd av hierarkin](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Den nya hanterings gruppen blir underordnad rot hanterings gruppen eller [standard hanterings gruppen](./how-to/protect-resource-hierarchy.md#setting---default-management-group) och skaparen tilldelas rollen "ägare". Hanterings grupp tjänsten tillåter den här möjligheten så att roll tilldelningar inte behövs på rotnivå. Inga användare har åtkomst till rot hanterings gruppen när den skapas. För att undvika att Hurdle för att hitta Azure AD global-administratörer ska börja använda hanterings grupper, tillåter vi att de första hanterings grupperna skapas på rotnivå.
 

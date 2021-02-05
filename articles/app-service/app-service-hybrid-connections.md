@@ -4,15 +4,15 @@ description: Lär dig hur du skapar och använder hybrid anslutningar i Azure Ap
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 20bdeef0a45bb02fab8841c0dd8ec7755143c693
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575999"
+ms.locfileid: "99594239"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybridanslutningar med Azure App Service
 
@@ -201,11 +201,18 @@ Alla som har `Reader` åtkomst till reläet kan _Se_ hybrid anslutningen vid fö
 
 ## <a name="troubleshooting"></a>Felsökning ##
 
-Statusen "ansluten" innebär att minst en HCM har kon figurer ATS med hybrid anslutningen och att den kan komma åt Azure. Om statusen för din hybrid anslutning inte är **ansluten** konfigureras inte din hybrid anslutning på någon HCM som har åtkomst till Azure.
+Statusen "ansluten" innebär att minst en HCM har kon figurer ATS med hybrid anslutningen och att den kan komma åt Azure. Om statusen för din hybrid anslutning inte är **ansluten** konfigureras inte din hybrid anslutning på någon HCM som har åtkomst till Azure. När din HCM visar **inte anslutna** finns det några saker att kontrol lera:
 
-Den primära orsaken till att klienterna inte kan ansluta till slut punkten beror på att slut punkten angavs med en IP-adress i stället för ett DNS-namn. Om din app inte kan komma åt den önskade slut punkten och du använde en IP-adress, byter du till att använda ett DNS-namn som är giltigt på den värd där HCM körs. Kontrol lera också att DNS-namnet matchas korrekt på den värd där HCM körs. Bekräfta att det finns en anslutning från värden där HCM körs till hybrid anslutningens slut punkt.  
+* Har värden utgående åtkomst till Azure på port 443? Du kan testa från din HCM-värd med PowerShell-kommandot *test-NetConnection destination-P-port* 
+* Är din HCM potentiellt i ett dåligt tillstånd? Försök att starta om den lokala tjänsten Azure Hybridanslutningshanteraren service.
 
-I App Service kan kommando rads verktyget **tcpping** anropas från kudu-konsolen (Advanced tools). Det här verktyget kan meddela dig om du har åtkomst till en TCP-slutpunkt, men om du har åtkomst till en hybrid anslutnings slut punkt. När du använder verktyget i-konsolen mot en hybrid anslutnings slut punkt bekräftar du bara att den använder en värd: port kombination.  
+Om din status **är ansluten** men appen inte kan komma åt din slut punkt:
+
+* kontrol lera att du använder ett DNS-namn i din hybrid anslutning. Om du använder en IP-adress kanske inte den begärda DNS-sökningen sker. Om klienten som kör i din webbapp inte gör en DNS-sökning kommer hybrid anslutningen inte att fungera
+* kontrol lera att DNS-namnet som används i din hybrid anslutning kan matchas från HCM-värden. Kontrol lera lösning med hjälp av *nslookup EndpointDNSname* där EndpointDNSname är en exakt matchning av vad som används i din hybrid anslutnings definition.
+* testa åtkomst från din HCM-värd till din slut punkt med PowerShell *-kommandot test-NetConnection EndpointDNSname-P-port*  om du inte kan nå slut punkten från HCM-värden kontrollerar du brand väggarna mellan de två värdarna, inklusive alla värdbaserade brand väggar på mål värden.
+
+I App Service kan kommando rads verktyget **tcpping** anropas från konsolen Advanced tools (kudu). Det här verktyget kan meddela dig om du har åtkomst till en TCP-slutpunkt, men om du har åtkomst till en hybrid anslutnings slut punkt. När du använder verktyget i-konsolen mot en hybrid anslutnings slut punkt bekräftar du bara att den använder en värd: port kombination.  
 
 Om du har en kommando rads klient för slut punkten kan du testa anslutningen från App-konsolen. Du kan till exempel testa åtkomst till webb server slut punkter med hjälp av sväng.
 

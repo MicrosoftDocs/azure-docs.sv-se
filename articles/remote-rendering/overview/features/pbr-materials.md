@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: f2e63903546e173e17f2b457b78eb41bcdf65dbd
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555574"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591947"
 ---
 # <a name="pbr-materials"></a>PBR-material
 
@@ -51,7 +51,7 @@ Dessa egenskaper är gemensamma för allt material:
 
 ## <a name="pbr-material-properties"></a>Egenskaper för PBR-material
 
-Kärn idén med fysiskt baserad åter givning är att använda *BaseColor* , *Egenskaper* för maskin vara och *ojämnheter* för att emulera ett brett utbud av verkliga material. En detaljerad beskrivning av PBR är utöver den här artikelns omfattning. Mer information om PBR finns i [andra källor](http://www.pbr-book.org). Följande egenskaper är speciella för PBR-material:
+Kärn idén med fysiskt baserad åter givning är att använda *BaseColor*, *Egenskaper* för maskin vara och *ojämnheter* för att emulera ett brett utbud av verkliga material. En detaljerad beskrivning av PBR är utöver den här artikelns omfattning. Mer information om PBR finns i [andra källor](http://www.pbr-book.org). Följande egenskaper är speciella för PBR-material:
 
 * **baseColor:** I PBR-material kallas *albedo-färgen* som *bas färgen*. I Azure Remote rendering finns *albedo färg* -egenskapen redan i de gemensamma material egenskaperna, så det finns ingen ytterligare bas färgs egenskap.
 
@@ -92,9 +92,9 @@ Det är inte alltid möjligt att konvertera från *spegel-Glossiness* till *Meta
 ## <a name="api-documentation"></a>API-dokumentation
 
 * [C# PbrMaterial-klass](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [C# RenderingConnection. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
 * [C++ PbrMaterial-klass](/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager:: CreateMaterial ()](/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [C++ RenderingConnection:: CreateMaterial ()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>Nästa steg
 

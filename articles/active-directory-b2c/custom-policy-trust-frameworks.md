@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936661"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592848"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Översikt över Azure AD B2C anpassad princip
 
@@ -115,7 +115,7 @@ Varje start paket innehåller följande filer:
 Arvs modellen ser ut så här:
 
 - Den underordnade principen på alla nivåer kan ärva från den överordnade principen och utöka den genom att lägga till nya element.
-- För mer komplexa scenarier kan du lägga till fler arvs nivåer (upp till 5 totalt).
+- För mer komplexa scenarier kan du lägga till fler arvs nivåer (upp till 10 totalt).
 - Du kan lägga till fler principer för förlitande part. Ta till exempel bort mitt konto, ändra ett telefonnummer, en princip för SAML-förlitande part och mer.
 
 I följande diagram visas relationen mellan principfiler och de förlitande part programmen.

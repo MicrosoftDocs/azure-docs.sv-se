@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: skapa en delad fråga med mallar'
 description: I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) för att skapa en delad resurs diagram fråga som räknar virtuella datorer av operativ systemet.
-ms.date: 10/14/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: a629dd5325fc20d6f173d9f4e0524885af8fdf49
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8d631ffcb14af93f10e578097470efc6156287d5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057016"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594324"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Snabb start: skapa en delad fråga med en ARM-mall
 
@@ -52,7 +52,7 @@ Den resurs som definierats i mallen är:
    |------|-------|
    | Prenumeration | Välj din Azure-prenumeration. |
    | Resursgrupp | Välj **Skapa ny**, ange ett namn och välj sedan **OK**. |
-   | Plats | Välj en region. Välj till exempel **USA, centrala**. |
+   | Location | Välj en region. Välj till exempel **USA, centrala**. |
    | Frågenamn | Lämna standardvärdet: **antal virtuella datorer per operativ system**. |
    | Fråga kod | Låt standardvärdet vara kvar: `Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)` |
    | Beskrivning av fråga | Lämna standardvärdet: **den här delade frågan räknar alla virtuella dator resurser och sammanfattar efter OS-typ.** |
@@ -73,7 +73,7 @@ Följ dessa steg om du vill köra den nya delade frågan:
 
 1. I Portal Sök fältet söker du efter **resurs diagram frågor** och markerar den.
 
-1. Välj den delade frågan **antal virtuella datorer per operativ system**och välj sedan fliken **resultat** på sidan **Översikt** .
+1. Välj den delade frågan **antal virtuella datorer per operativ system** och välj sedan fliken **resultat** på sidan **Översikt** .
 
 Den delade frågan kan också öppnas från resursens diagram Utforskaren:
 

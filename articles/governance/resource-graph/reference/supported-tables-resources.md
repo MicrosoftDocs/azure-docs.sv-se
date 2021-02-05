@@ -1,15 +1,15 @@
 ---
 title: Resurs typer som stöds Azure Resource Manager
 description: Ange en lista över de Azure Resource Manager resurs typer som stöds av Azure Resource Graph och ändrings historik.
-ms.date: 01/06/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251785"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594341"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Resurs diagram tabell och referens för resurs typ i Azure
 
@@ -130,6 +130,9 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. azurestack/linkedsubscriptions
 - Microsoft. Azurestack/-registreringar (Azure Stack hubbar)
 - Microsoft. AzureStackHCI/kluster (Azure Stack HCI)
+- Microsoft. azurestackhci/galleryimages
+- Microsoft. azurestackhci/NetworkInterfaces
+- Microsoft. azurestackhci/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (Cray-servrar)
 - Microsoft. BareMetal/monitoringServers (övervaknings servrar)
@@ -331,6 +334,9 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Insights/workbooktemplates (mallar för Azure-arbetsböcker)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minervas)
 - Microsoft. intelligentitdigitaltwin/digitaltwins/assets
+- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplans
+- Microsoft. intelligentitdigitaltwin/digitaltwins/testplans
+- Microsoft. intelligentitdigitaltwin/digitaltwins/tests
 - Microsoft. IoTCentral/IoTApps (IoT Central program)
 - Microsoft. IoTSpaces/Graph (digitala dubbla (inaktuella))
 - Microsoft. nyckel valv/hsmpools
@@ -494,6 +500,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Resources/templateSpecs (mall-specifikationer)
 - Microsoft. Resources/templatespecs/versions
 - Microsoft. SaaS/program (program vara som en tjänst (klassisk))
+- Microsoft. SaaS/Resources (CPX-placeholder)
 - Microsoft. Scheduler/Förfrågningsåtgärder (Scheduler Job Collections)
 - Microsoft. SCVMM/moln
 - Microsoft. SCVMM/virtualMachines (SCVMM virtuell dator – Azure-båge)
@@ -588,6 +595,7 @@ Azure Resource Graph stöder följande **resurs typer** av [Azure Resource Manag
 - Microsoft. Web/StaticSites (statisk Web Apps (för hands version))
 - Microsoft. WindowsESU/multipleActivationKeys (Windows flera aktiverings nycklar)
 - Microsoft. WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
+- Microsoft. workloadbuilder/migrationagents
 - Microsoft. workloadbuilder/arbets belastningar
 - MyGet. PackageManagement/Services (MyGet-värdbaserad NuGet, NPM, Bower och vsix)
 - Paraleap. CloudMonix/Services (CloudMonix)

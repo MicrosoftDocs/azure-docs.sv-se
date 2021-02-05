@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 3dd46f4033a568a278d7006c0d5aab451496ff47
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397231"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594273"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrera Azure Application Gateway och brand vägg för webbaserade program från v1 till v2
 
@@ -125,7 +125,7 @@ Kör skriptet så här:
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      Om du vill skapa en lista över PSApplicationGatewayTrustedRootCertificate-objekt, se [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+      Om du vill skapa en lista över PSApplicationGatewayTrustedRootCertificate-objekt, se [New-AzApplicationGatewayTrustedRootCertificate](/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate).
    * **privateIpAddress: [sträng]: valfritt**. En speciell privat IP-adress som du vill koppla till din nya v2-Gateway.  Detta måste vara från samma VNet som du allokerar för din nya v2-Gateway. Om detta inte anges allokerar skriptet en privat IP-adress för din v2-Gateway.
    * **publicIpResourceId: [sträng]: valfritt**. Resurs-ID för befintlig offentlig IP-adress (standard-SKU) i din prenumeration som du vill tilldela till den nya v2-gatewayen. Om detta inte anges allokerar skriptet en ny offentlig IP-adress i samma resurs grupp. Namnet är v2-gatewayens namn med *-IP* tillagt.
    * **validateMigration: [växel]: valfritt**. Använd den här parametern om du vill att skriptet ska utföra vissa grundläggande konfigurations jämförelser när v2-gatewayen har skapats och konfigurations kopian. Ingen validering görs som standard.

@@ -1,5 +1,5 @@
 ---
-title: Inkommande synkronisering för molnbaserad synkronisering med MS Graph API
+title: Program mässigt konfigurera molnbaserad synkronisering med MS Graph API
 description: I det här avsnittet beskrivs hur du aktiverar inkommande synkronisering med bara Graph API
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682046"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593171"
 ---
-# <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>Inkommande synkronisering för molnbaserad synkronisering med MS Graph API
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Program mässigt konfigurera molnbaserad synkronisering med MS Graph API
 
 I följande dokument beskrivs hur du replikerar en Synkroniseringsregel från grunden med endast MSGraph-API: er.  
 Strukturen för hur du gör detta består av följande steg.  De är:
@@ -28,6 +28,7 @@ Strukturen för hur du gör detta består av följande steg.  De är:
 - [Skapa synkroniseringsjobb](#create-sync-job)
 - [Uppdatera riktad domän](#update-targeted-domain)
 - [Aktivera synkronisering av lösen ords-hashar](#enable-sync-password-hashes-on-configuration-blade)
+- [Oavsiktliga borttagningar](#accidental-deletes)
 - [Starta synkroniseringsjobb](#start-sync-job)
 - [Gransknings status](#review-status)
 
@@ -210,6 +211,71 @@ Här är det markerade "domän"-värdet namnet på den lokala Active Directory d
 ```
 
  Lägg till schemat i begär ande texten. 
+
+## <a name="accidental-deletes"></a>Oavsiktliga borttagningar
+Det här avsnittet beskriver hur du program mässigt aktiverar/inaktiverar och använder [oavsiktliga borttagningar](how-to-accidental-deletes.md) program mässigt.
+
+
+### <a name="enabling-and-setting-the-threshold"></a>Aktivera och ange tröskeln
+Det finns två inställningar för varje jobb som du kan använda:
+
+ - DeleteThresholdEnabled – möjliggör oavsiktlig borttagning av jobbet när det är inställt på "true". Ange till true som standard.
+ - DeleteThresholdValue – definierar det maximala antalet borttagningar som ska tillåtas vid varje körning av jobbet när förebyggande borttagning av misstag har Aktiver ATS. Värdet är inställt på 500 som standard.  Så om värdet är inställt på 500 kommer det högsta antalet tillåtna rader att vara 499 i varje körning.
+
+Inställningarna för tröskelvärde för borttagning är en del av `SyncNotificationSettings` och kan ändras via Graph. 
+
+Vi kommer att behöva uppdatera SyncNotificationSettings som den här konfigurationen är riktad till, så uppdatera hemligheterna.
+
+ ```
+ PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
+ ```
+
+ Lägg till följande nyckel/värde-par i nedanstående värde mat ris baserat på vad du försöker göra:
+
+```
+ Request body -
+ {
+   "value":[
+             {
+               "key":"SyncNotificationSettings",
+               "value": "{\"Enabled\":true,\"Recipients\":\"foobar@xyz.com\",\"DeleteThresholdEnabled\":true,\"DeleteThresholdValue\":50}"
+              }
+            ]
+  }
+
+
+```
+
+Inställningen "aktive rad" i exemplet ovan är att aktivera/inaktivera e-postmeddelanden när jobbet är i karantän.
+
+
+Vi stöder för närvarande inte PATCH-begäranden för hemligheter, så du måste lägga till alla värden i begärans brödtext (som i exemplet ovan) för att bevara de andra värdena.
+
+De befintliga värdena för alla hemligheter kan hämtas med hjälp av 
+
+```
+GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
+```
+
+### <a name="allowing-deletes"></a>Tillåter borttagning
+Om du vill tillåta borttagningarna att flöda genom när jobbet har satts i karantän måste du utfärda en omstart med bara "ForceDeletes" som definitions område. 
+
+```
+Request:
+POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
+```
+Request Body:
+{
+  "criteria": {"resetScope": "ForceDeletes"}
+}
+```
+
+
+
+
+
 
 ## <a name="start-sync-job"></a>Starta synkroniseringsjobb
 Jobbet kan hämtas igen via följande kommando:

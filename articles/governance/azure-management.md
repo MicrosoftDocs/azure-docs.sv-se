@@ -1,14 +1,14 @@
 ---
 title: Översikt över Azure Management – Azure-styrning
 description: Översikt över hanterings områden för Azure-program och-resurser med länkar till innehåll på hanterings verktyg för Azure.
-ms.date: 09/09/2020
+ms.date: 02/05/2021
 ms.topic: overview
-ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949504"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593933"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Vad är Azures hanterings områden?
 
@@ -26,14 +26,14 @@ Ingen enskild Azure-tjänst fyller fullständigt kraven i ett visst hanterings u
 
 Följande avsnitt beskriver i korta ordalag de olika hanteringsområdena och tillhandahåller länkar till detaljerat innehåll om de viktigaste Azure-tjänsterna.
 
-## <a name="monitor"></a>Övervaka
+## <a name="monitor"></a>Monitor
 
 Övervakning handlar om att samla in och analysera data för att granska prestanda, hälsa och tillgänglighet för dina resurser. En effektiv övervaknings strategi hjälper dig att förstå driften av komponenter och öka din drift tid med meddelanden. Läs en översikt över övervakning som täcker de olika tjänsterna som används vid [övervakning av Azure-program och-resurser](../azure-monitor/overview.md).
 
 ## <a name="configure"></a>Konfigurera
 
 Konfigurera syftar på den första distributionen och konfigurationen av resurser och pågående underhåll.
-Genom att automatisera dessa uppgifter kan du undvika redundans, minimera din tid och ansträngning och öka din precision och effektivitet. [Azure Automation](../automation/automation-intro.md) innehåller många tjänster för att automatisera konfigurationsåtgärder. Medan Runbooks hanterar process automatisering kan konfiguration och uppdaterings hantering hjälpa till att hantera konfigurationen.
+Genom att automatisera dessa uppgifter kan du undvika redundans, minimera din tid och ansträngning och öka din precision och effektivitet. [Azure Automation](../automation/automation-intro.md) innehåller många tjänster för att automatisera konfigurationsåtgärder. Medan Runbooks hanterar process automatisering, hjälper konfiguration och uppdaterings hantering att hantera konfigurationen.
 
 ## <a name="govern"></a>Styrning
 
@@ -55,7 +55,7 @@ Skydd syftar till att hålla dina program och data tillgängliga, även med avbr
 Migrering refererar till att överföra arbetsbelastningar som körs lokalt till Azure-molnet.
 [Azure Migrate](../migrate/migrate-services-overview.md) är en tjänst som hjälper dig att utvärdera migreringens lämplighet för lokala virtuella datorer till Azure. Azure Site Recovery migrerar virtuella datorer [från lokala platser](../site-recovery/migrate-tutorial-on-premises-azure.md) eller [från Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md). [Azure Database migration](../dms/dms-overview.md) hjälper dig att migrera databas källor till Azure Data Platforms.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Mer information om Azure-styrning finns i följande artiklar:
 

@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: skapa en hanterings grupp med Azure CLI'
 description: I den här snabb starten använder du Azure CLI för att skapa en hanterings grupp för att organisera resurserna i en resurspool.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 54d7afbaa4bfe2799ca0d68927394a38d9845c53
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: fe38882bd3b025635662e228ae919a24b03dee78
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920669"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592474"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>Snabb start: skapa en hanterings grupp med Azure CLI
 
@@ -17,7 +17,7 @@ Hanterings grupper är behållare som hjälper dig att hantera åtkomst, princip
 
 Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter att slutföra. Det finns processer som körs första gången för att konfigurera hanterings grupps tjänsten i Azure för din katalog. Du får ett meddelande när processen är klar. Mer information finns i [den första installationen av hanterings grupper](./overview.md#initial-setup-of-management-groups).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 

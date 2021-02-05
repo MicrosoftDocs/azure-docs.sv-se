@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: skapa en hanterings grupp med Portal'
 description: I den här snabb starten använder du Azure Portal för att skapa en hanterings grupp för att organisera resurserna i en resurspool.
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89661737"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592440"
 ---
 # <a name="quickstart-create-a-management-group"></a>Snabb start: skapa en hanterings grupp
 
@@ -26,7 +26,7 @@ Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter
 
 1. Logga in på [Azure Portal](https://portal.azure.com).
 
-1. Välj **all**hantering av tjänster och  >  **styrning**.
+1. Välj **all** hantering av tjänster och  >  **styrning**.
 
 1. Välj **hanteringsgrupper**.
 
@@ -39,7 +39,7 @@ Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter
    - **Hanterings gruppens ID** är katalogens unika identifierare som används för att skicka kommandon i den här hanterings gruppen. Den här identifieraren kan inte redige ras när den används i hela Azure-systemet för att identifiera den här gruppen. [Rot hanterings gruppen](./overview.md#root-management-group-for-each-directory) skapas automatiskt med ett ID som är Azure Active Directory-ID: t. Tilldela ett unikt ID för alla andra hanterings grupper.
    - Fältet visnings namn är det namn som visas i Azure Portal. Ett separat visnings namn är ett valfritt fält när du skapar hanterings gruppen och kan ändras när som helst.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Skärm bild av sidan hanterings grupper som visar underordnade hanterings grupper och prenumerationer.":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Skärm bild av alternativen Lägg till hanterings grupp för att skapa en ny hanterings grupp.":::
 
 1. Välj **Spara**.
 
@@ -47,7 +47,7 @@ Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter
 
 Följ dessa steg om du vill ta bort en hanterings grupp som skapats:
 
-1. Välj **all**hantering av tjänster och  >  **styrning**.
+1. Välj **all** hantering av tjänster och  >  **styrning**.
 
 1. Välj **hanteringsgrupper**.
 

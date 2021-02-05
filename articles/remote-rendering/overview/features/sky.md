@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58c07654c174f5b94512574cb4c279d35897dc71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 9c5ad4b21b428f38bbd4d9f7d19fa633c5161b5c
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701950"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594188"
 ---
 # <a name="sky-reflections"></a>Reflektioner av himmel
 
@@ -41,57 +41,41 @@ Mer information om belysnings modellen finns i kapitlet om [material](../../conc
 Om du vill ändra miljö kartan behöver du bara [läsa in en struktur](../../concepts/textures.md) och ändra sessionens `SkyReflectionSettings` :
 
 ```cs
-LoadTextureAsync _skyTextureLoad = null;
-void ChangeEnvironmentMap(AzureSession session)
+async void ChangeEnvironmentMap(RenderingSession session)
 {
-    _skyTextureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams("builtin://VeniceSunset", TextureType.CubeMap));
-
-    _skyTextureLoad.Completed += (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                try
-                {
-                    session.Actions.SkyReflectionSettings.SkyReflectionTexture = res.Result;
-                }
-                catch (RRException exception)
-                {
-                    System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
-                }
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-        };
+    try
+    {
+        Texture skyTex = await session.Connection.LoadTextureFromSasAsync(new LoadTextureFromSasOptions("builtin://VeniceSunset", TextureType.CubeMap));
+        session.Connection.SkyReflectionSettings.SkyReflectionTexture = skyTex;
+    }
+    catch (RRException exception)
+    {
+        System.Console.WriteLine($"Setting sky reflection failed: {exception.Message}");
+    }
 }
 ```
 
 ```cpp
-void ChangeEnvironmentMap(ApiHandle<AzureSession> session)
+void ChangeEnvironmentMap(ApiHandle<RenderingSession> session)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureFromSasOptions params;
     params.TextureType = TextureType::CubeMap;
-    params.TextureUrl = "builtin://VeniceSunset";
-    ApiHandle<LoadTextureAsync> skyTextureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-
-    skyTextureLoad->Completed([&](ApiHandle<LoadTextureAsync> res)
+    params.TextureUri = "builtin://VeniceSunset";
+    session->Connection()->LoadTextureFromSasAsync(params, [&](Status status, ApiHandle<Texture> res) {
+        if (status == Status::OK)
         {
-            if (res->GetIsRanToCompletion())
-            {
-                ApiHandle<SkyReflectionSettings> settings = session->Actions()->GetSkyReflectionSettings();
-                settings->SetSkyReflectionTexture(res->GetResult());
-            }
-            else
-            {
-                printf("Texture loading failed!\n");
-            }
-        });
+            ApiHandle<SkyReflectionSettings> settings = session->Connection()->GetSkyReflectionSettings();
+            settings->SetSkyReflectionTexture(res);
+        }
+        else
+        {
+            printf("Texture loading failed!\n");
+        }
+    });
 }
-
 ```
 
-Observera att `LoadTextureFromSASAsync` varianten används ovan eftersom en inbyggd textur har lästs in. Om du läser in från [länkade BLOB-lagringar](../../how-tos/create-an-account.md#link-storage-accounts)använder du `LoadTextureAsync` varianten.
+Observera att `LoadTextureFromSasAsync` varianten används ovan eftersom en inbyggd textur har lästs in. Om du läser in från [länkade BLOB-lagringar](../../how-tos/create-an-account.md#link-storage-accounts)använder du `LoadTextureAsync` varianten.
 
 ## <a name="sky-texture-types"></a>Typer av luft rummets struktur
 
@@ -105,7 +89,7 @@ För referens är här en cubemap som inte är figursatt:
 
 ![En figursatt cubemap](media/Cubemap-example.png)
 
-Använd `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` med `TextureType.CubeMap` för att läsa in cubemap texturer.
+Använd `RenderingSession.Connection.LoadTextureAsync` /  `LoadTextureFromSasAsync` med `TextureType.CubeMap` för att läsa in cubemap texturer.
 
 ### <a name="sphere-environment-maps"></a>Sfär miljö kartor
 
@@ -113,13 +97,13 @@ När du använder en 2D-struktur som en miljö karta måste bilden vara i [sfär
 
 ![En himmel-bild i sfäriska koordinater](media/spheremap-example.png)
 
-Använd `AzureSession.Actions.LoadTextureAsync` med `TextureType.Texture2D` för att läsa in sfäriska miljö kartor.
+Använd `RenderingSession.Connection.LoadTextureAsync` med `TextureType.Texture2D` för att läsa in sfäriska miljö kartor.
 
 ## <a name="built-in-environment-maps"></a>Inbyggda miljö kartor
 
 Azure Remote rendering innehåller några inbyggda miljö kartor som alltid är tillgängliga. Alla inbyggda miljö kartor är cubemaps.
 
-|Identifierare                         | Beskrivning                                              | Exemplet                                                      |
+|Identifierare                         | Description                                              | Exemplet                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Olika rand lampor, ljus inomhus bas belysning    | ![Skybox används för att lätta ett objekt](media/autoshop.png)
 |builtin://BoilerRoom               | Ljus inomhus-inställning, flera fönster lampor      | ![BoilerRoom Skybox som används för att lätta ett objekt](media/boiler-room.png)
@@ -138,8 +122,8 @@ Azure Remote rendering innehåller några inbyggda miljö kartor som alltid är 
 
 ## <a name="api-documentation"></a>API-dokumentation
 
-* [C# RemoteManager. SkyReflectionSettings-egenskap](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
-* [C++ RemoteManager:: SkyReflectionSettings ()](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
+* [C# RenderingConnection. SkyReflectionSettings-egenskap](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.skyreflectionsettings)
+* [C++ RenderingConnection:: SkyReflectionSettings ()](/cpp/api/remote-rendering/renderingconnection#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -3,14 +3,14 @@ title: Malldistribution vad-om
 description: Ta reda på vilka ändringar som sker i resurserna innan du distribuerar en Azure Resource Manager-mall.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/05/2021
 ms.author: tomfitz
-ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673978"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591632"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Åtgärden what-if för distribution av ARM-mall
 
@@ -18,13 +18,9 @@ Innan du distribuerar en Azure Resource Manager-mall (ARM-mall) kan du förhands
 
 Du kan använda åtgärden vad händer om med Azure PowerShell, Azure CLI eller REST API åtgärder. Vad-om stöds för resurs grupp, prenumeration, hanterings grupp och distributioner på klient nivå.
 
-## <a name="install-azure-powershell-module"></a>Installera Azure PowerShell-modul
+## <a name="install-azure-powershell-module"></a>Installera Azure PowerShell modul
 
 Om du vill använda konsekvens i PowerShell måste du ha version **4,2 eller senare av AZ-modulen**.
-
-Men innan du installerar modulen måste du kontrol lera att du har PowerShell Core (6. x eller 7. x). Om du har PowerShell 5. x eller tidigare [uppdaterar du din version av PowerShell](/powershell/scripting/install/installing-powershell). Du kan inte installera den modul som krävs på PowerShell 5. x eller tidigare.
-
-### <a name="install-latest-version"></a>Installera den senaste versionen
 
 Använd följande för att installera modulen:
 
@@ -117,7 +113,7 @@ Föregående kommandon returnerar en text sammanfattning som du kan kontrol lera
 
 Om du vill returnera resultaten utan färger öppnar du [Azure CLI-konfigurationsfilen](/cli/azure/azure-cli-configuration) . Ange **no_color** till **Ja**.
 
-### <a name="azure-rest-api"></a>REST-API för Azure
+### <a name="azure-rest-api"></a>Azure REST API
 
 För REST API använder du:
 
@@ -326,7 +322,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 Konsekvens åtgärden stöder användning av [distributions läge](deployment-modes.md). När du har angett till slutfört läge raderas inte resurser som inte finns i mallen. I följande exempel distribueras en [mall som inte har några definierade resurser](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) i komplett läge.
 
-Om du vill förhandsgranska ändringarna innan du distribuerar en mall använder du parametern confirm switch (bekräfta ändring) i distributionskommandot. Om ändringarna är de du förväntar dig bekräftar du att du vill utföra distributionen.
+Om du vill förhandsgranska ändringarna innan du distribuerar en mall använder du parametern confirm switch (bekräfta ändring) i distributionskommandot. Om ändringarna visas som du förväntade dig, svara som du vill att distributionen ska slutföras.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

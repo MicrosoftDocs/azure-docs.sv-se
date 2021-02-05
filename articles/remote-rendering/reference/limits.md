@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 33f5314c80dc33dbec50dc21a71f4cb507979e12
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 68c0c04feba2779598a500c84b2ba4a9086b104d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427436"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593964"
 ---
 # <a name="limitations"></a>Begränsningar
 
@@ -19,8 +19,8 @@ Ett antal funktioner har storlek, antal eller andra begränsningar.
 ## <a name="azure-frontend"></a>Azure-frontend
 
 Följande begränsningar gäller för klient dels-API: et (C++ och C#):
-* Totalt antal [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) -instanser per process: 16.
-* Totalt antal [AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession) -instanser per [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend): 16.
+* Totalt antal [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient) -instanser per process: 16.
+* Totalt antal [RenderingSession](/dotnet/api/microsoft.azure.remoterendering.renderingsession) -instanser per [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient): 16.
 
 ## <a name="objects"></a>Objekt
 
@@ -32,7 +32,7 @@ Följande begränsningar gäller för klient dels-API: et (C++ och C#):
 * **Animering:** Animeringar är begränsade till animering av enskilda omvandlingar av [spel objekt](../concepts/entities.md). Skeletal-animeringar med skalnings-eller hörn funktioner stöds inte. Animerings spår från käll till gångs filen bevaras inte. I stället måste objekt Transformations animeringar drivas av klient koden.
 * **Anpassade skuggningar:** Redigering av anpassade skuggningar stöds inte. Endast inbyggt [färg material](../overview/features/color-materials.md) eller PBR- [material](../overview/features/pbr-materials.md) kan användas.
 * **Maximalt antal distinkt material** i en till gång: 65 535. Mer information om minskning av automatiskt material antal finns [i kapitlet om att minska material.](../how-tos/conversion/configure-model-conversion.md#material-de-duplication)
-* **Högsta dimension för en enda textur** : 16 384 x 16 384. Större käll texturer minskas i storlek av konverterings processen.
+* **Högsta dimension för en enda textur**: 16 384 x 16 384. Större käll texturer minskas i storlek av konverterings processen.
 
 ### <a name="overall-number-of-polygons"></a>Totalt antal polygoner
 

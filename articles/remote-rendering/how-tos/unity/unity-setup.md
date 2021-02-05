@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a0be44d8709726e159e17e703566c6c576bc18f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f01058d8e879a9610e76638215214c059982fa
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018985"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594222"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Konfigurera Remote Rendering för Unity
 
@@ -19,7 +19,7 @@ För att aktivera Azure Remote rendering (ARR) i Unity tillhandahåller vi dedik
 
 ## <a name="startup-and-shutdown"></a>Start och avstängning
 
-Använd för att initiera fjärrrendering `RemoteManagerUnity` . Den här klassen anropar generiskt `RemoteManager` men implementerar redan uppdelad information åt dig. Enhets systemet använder till exempel ett angivet koordinatsystem. När du anropar `RemoteManagerUnity.Initialize` kommer rätt konvention att konfigureras. Anropet kräver också att du tillhandahåller den Unity-kamera som ska användas för att visa det fjärranslutna innehållet.
+Använd för att initiera fjärrrendering `RemoteManagerUnity` . Den här klassen anropar generiskt `RenderingConnection` men implementerar redan uppdelad information åt dig. Enhets systemet använder till exempel ett angivet koordinatsystem. När du anropar `RemoteManagerUnity.Initialize` kommer rätt konvention att konfigureras. Anropet kräver också att du tillhandahåller den Unity-kamera som ska användas för att visa det fjärranslutna innehållet.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -30,7 +30,7 @@ RemoteManagerUnity.InitializeManager(clientInit);
 
 Anropa för att stänga av fjärrrendering `RemoteManagerStatic.ShutdownRemoteRendering()` .
 
-När en `AzureSession` har skapats och valts som den primära åter givnings sessionen måste den registreras med `RemoteManagerUnity` :
+När en `RenderingSession` har skapats och valts som den primära åter givnings sessionen måste den registreras med `RemoteManagerUnity` :
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -46,17 +46,18 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 
 // create a frontend
-AzureFrontendAccountInfo accountInfo = new AzureFrontendAccountInfo();
-// ... fill out accountInfo ...
-AzureFrontend frontend = new AzureFrontend(accountInfo);
+SessionConfiguration sessionConfig = new SessionConfiguration();
+// ... fill out sessionConfig ...
+RemoteRenderingClient client = new RemoteRenderingClient(sessionConfig);
 
 // start a session
-AzureSession session = await frontend.CreateNewRenderingSessionAsync(new RenderingSessionCreationParams(RenderingSessionVmSize.Standard, 0, 30)).AsTask();
+CreateRenderingSessionResult result = await client.CreateNewRenderingSessionAsync(new RenderingSessionCreationOptions(RenderingSessionVmSize.Standard, 0, 30));
+RenderingSession session = result.Session;
 
 // let RemoteManagerUnity know about the session we want to use
 RemoteManagerUnity.CurrentSession = session;
 
-session.ConnectToRuntime(new ConnectToRuntimeParams());
+await session.ConnectAsync(new RendererInitOptions());
 
 /// When connected, load and modify content
 

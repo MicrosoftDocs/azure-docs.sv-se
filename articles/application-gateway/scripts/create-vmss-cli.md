@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 81c936acc00801f8473c1ec74aa50dbf2abb4936
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2e766bcdee2afa3ff4ed75476c619326c4c0e0c2
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397033"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591675"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Hantera webbtrafik med hjälp av Azure CLI
 
@@ -48,8 +48,8 @@ Det här skriptet använder följande kommandon för att skapa distributionen. V
 | [az group create](/cli/azure/group) | Skapar en resursgrupp där alla resurser lagras. |
 | [az network vnet create](/cli/azure/network/vnet) | Skapar ett virtuellt nätverk. |
 | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Skapar ett undernät i ett virtuellt nätverk. |
-| [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest) | Skapar den offentliga IP-adressen för programgatewayen. |
-| [az network application-gateway create](/cli/azure/network/application-gateway?view=azure-cli-latest) | Skapar en programgateway. |
+| [az network public-ip create](/cli/azure/network/public-ip) | Skapar den offentliga IP-adressen för programgatewayen. |
+| [az network application-gateway create](/cli/azure/network/application-gateway) | Skapar en programgateway. |
 | [az vmss create](/cli/azure/vmss) | Skapar en VM-skalningsuppsättning. |
 | [az network public-ip show](/cli/azure/network/public-ip) | Hämtar programgatewayens offentliga IP-adress. |
 
