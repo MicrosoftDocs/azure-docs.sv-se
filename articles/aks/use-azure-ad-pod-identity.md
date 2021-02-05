@@ -4,16 +4,19 @@ description: Lär dig hur du använder AAD-Pod hanterade identiteter i Azure Kub
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217880"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557366"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Använda Azure Active Directory Pod-hanterade identiteter i Azure Kubernetes service (för hands version)
 
 Azure Active Directory Pod-hanterade identiteter använder Kubernetes-primitiver för att associera [hanterade identiteter för Azure-resurser][az-managed-identities] och identiteter i Azure Active Directory (AAD) med poddar. Administratörer skapar identiteter och bindningar som Kubernetes-primitiver som ger poddar åtkomst till Azure-resurser som förlitar sig på AAD som identitets leverantör.
+
+> [!NOTE]
+> Om du har en befintlig installation av AADPODIDENTITY måste du ta bort den befintliga installationen. Aktivering av den här funktionen innebär att MIC-komponenten inte behövs.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
