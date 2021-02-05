@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/04/2021
+ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145724"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584931"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Bygg uttryck i data flöde för mappning
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-I mappnings data flödet anges många omvandlings egenskaper som uttryck. Dessa uttryck består av kolumn värden, parametrar, funktioner, operatorer och litteraler som utvärderar till data typen Spark vid körning. Kart data flöden har en särskild erfarenhet som syftar till att hjälpa dig att skapa dessa uttryck som kallas **uttrycks verktyg** . Att använda  [IntelliSense](/visualstudio/ide/using-intellisense) -kod komplettering för markering, syntaxkontroll och autokomplettering är att uttrycks verktyget är utformat för att göra det enkelt att skapa data flöden. Den här artikeln förklarar hur du använder uttrycks verktyget för att effektivt bygga affärs logiken.
+I mappnings data flödet anges många omvandlings egenskaper som uttryck. Dessa uttryck består av kolumn värden, parametrar, funktioner, operatorer och litteraler som utvärderar till data typen Spark vid körning. Kart data flöden har en särskild erfarenhet som syftar till att hjälpa dig att skapa dessa uttryck som kallas **uttrycks verktyg**. Att använda  [IntelliSense](/visualstudio/ide/using-intellisense) -kod komplettering för markering, syntaxkontroll och autokomplettering är att uttrycks verktyget är utformat för att göra det enkelt att skapa data flöden. Den här artikeln förklarar hur du använder uttrycks verktyget för att effektivt bygga affärs logiken.
 
 ![Uttrycks verktyg](media/data-flow/expresion-builder.png "Uttrycksverktyget")
 
@@ -32,7 +32,7 @@ I vissa transformeringar som [filter](data-flow-filter.md), öppnar uttrycks ver
 
 ![Rutan blå uttryck](media/data-flow/expressionbox.png "Rutan blå uttryck")
 
-När du refererar till kolumner i en matchande eller Group by-villkor kan ett uttryck extrahera värden från kolumner. Om du vill skapa ett uttryck väljer du **beräknad kolumn** .
+När du refererar till kolumner i en matchande eller Group by-villkor kan ett uttryck extrahera värden från kolumner. Om du vill skapa ett uttryck väljer du **beräknad kolumn**.
 
 ![Alternativ för beräknad kolumn](media/data-flow/computedcolumn.png "Alternativ för beräknad kolumn")
 
@@ -46,7 +46,7 @@ I mappnings data flöden kan uttryck bestå av kolumn värden, parametrar, funkt
 
 ![Uttrycks element](media/data-flow/expression-elements.png "Uttrycks element")
 
-### <a name="functions"></a>Funktioner
+### <a name="functions"></a>Functions
 
 Mappning av data flöden har inbyggda funktioner och operatorer som kan användas i uttryck. En lista över tillgängliga funktioner finns i [språk referens för mappnings data flöde](data-flow-expression-functions.md).
 
@@ -106,6 +106,9 @@ Några exempel på String-interpolation:
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 * ```"{:playerName} is a {:playerRating} player"```
+
+> [!NOTE]
+> När du använder syntaxen för String-interpolation i SQL-källfiler måste frågesträngen finnas på en enda rad, utan "/n".
 
 ## <a name="commenting-expressions"></a>Kommentera uttryck
 

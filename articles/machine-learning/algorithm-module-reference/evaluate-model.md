@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323789"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584948"
 ---
 # <a name="evaluate-model-module"></a>Utvärdera modell modul
 
@@ -75,7 +75,7 @@ Eftersom det här är en kluster modell är utvärderings resultatet annorlunda 
 
 ## <a name="metrics"></a>Mått
 
-I det här avsnittet beskrivs de mått som returneras för de olika typerna av modeller som stöds för användning med **utvärdera modell** :
+I det här avsnittet beskrivs de mått som returneras för de olika typerna av modeller som stöds för användning med **utvärdera modell**:
 
 + [klassificerings modeller](#metrics-for-classification-models)
 + [Regressions modeller](#metrics-for-regression-models)
@@ -94,7 +94,7 @@ Följande mått rapporteras när du utvärderar binära klassificerings modeller
   
 -   **F1-poängen** beräknas som viktat medelvärde för precision och återkallande mellan 0 och 1, där det idealiska värdet för F1 är 1.  
   
--   **AUC** mäter ytan under kurvan som ritas med sant positiva resultat på y-axeln och falska positiva identifieringar på x-axeln. Det här måttet är användbart eftersom det innehåller ett enda nummer som gör det möjligt att jämföra modeller av olika typer.  
+-   **AUC** mäter ytan under kurvan som ritas med sant positiva resultat på y-axeln och falska positiva identifieringar på x-axeln. Det här måttet är användbart eftersom det innehåller ett enda nummer som gör det möjligt att jämföra modeller av olika typer. AUC är klassificerings tröskel-invariant. Den mäter kvaliteten på modellens förutsägelser oavsett vilket klassificerings tröskel som valts.
 
 
 ### <a name="metrics-for-regression-models"></a>Mät värden för Regressions modeller
@@ -113,7 +113,7 @@ Måtten som returneras för Regressions modeller är utformade för att uppskatt
   
 
   
-- **Koefficienten för bestämning** , som ofta kallas R <sup>2</sup>, representerar modellens förutsägande effekt som ett värde mellan 0 och 1. Noll betyder att modellen är slumpmässig (förklarar ingenting). 1 betyder en perfekt anpassning. Vi bör dock använda försiktighet i tolkningen av R<sup>2</sup> -värden, eftersom låga värden kan vara helt normala och höga värden kan vara misstänkta.
+- **Koefficienten för bestämning**, som ofta kallas R <sup>2</sup>, representerar modellens förutsägande effekt som ett värde mellan 0 och 1. Noll betyder att modellen är slumpmässig (förklarar ingenting). 1 betyder en perfekt anpassning. Vi bör dock använda försiktighet i tolkningen av R<sup>2</sup> -värden, eftersom låga värden kan vara helt normala och höga värden kan vara misstänkta.
 
 ###  <a name="metrics-for-clustering-models"></a>Mått för kluster modeller
 
@@ -125,15 +125,15 @@ Eftersom kluster modeller skiljer sig avsevärt från klassificerings-och Regres
   
 Följande mått rapporteras för utvärdering av kluster modeller.
     
--   Poängen i kolumnen, det **genomsnittliga avståndet till andra centret** , visar hur nära, i genomsnitt, varje punkt i klustret är till centroids för alla andra kluster.   
+-   Poängen i kolumnen, det **genomsnittliga avståndet till andra centret**, visar hur nära, i genomsnitt, varje punkt i klustret är till centroids för alla andra kluster.   
 
--   Poängen i kolumnen, **Genomsnittligt avstånd till kluster Center** , motsvarar stängningen av alla punkter i ett kluster till centroid i klustret.  
+-   Poängen i kolumnen, **Genomsnittligt avstånd till kluster Center**, motsvarar stängningen av alla punkter i ett kluster till centroid i klustret.  
   
 -   I kolumnen **antal punkter** visas hur många data punkter som har tilldelats varje kluster, tillsammans med det totala antalet data punkter i alla kluster.  
   
      Om antalet data punkter som tilldelas till kluster är mindre än det totala antalet tillgängliga data punkter, innebär det att data punkterna inte kunde tilldelas till ett kluster.  
   
--   Poängen i kolumnen, **Maximalt avstånd till kluster Center** , representerar Max avståndet mellan varje punkt och centroid för den aktuella punktens kluster.  
+-   Poängen i kolumnen, **Maximalt avstånd till kluster Center**, representerar Max avståndet mellan varje punkt och centroid för den aktuella punktens kluster.  
   
      Om det här värdet är högt, kan det betyda att klustret är allmänt utspridd. Du bör granska statistiken tillsammans med det **genomsnittliga avståndet till kluster Center** för att fastställa klustrets uppslag.   
 

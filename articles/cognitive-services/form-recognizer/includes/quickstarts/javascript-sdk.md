@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a4d29dfb2a57dde2bb21244b2e5335f1a8ea1fcf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e5a131753829edddbb4f385766a2d8697ebd0106
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947110"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584674"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
@@ -81,15 +81,15 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `FormRecognizerClient` tillhandahåller åtgärder för:
 
- * Igenkänning av formulär fält och innehåll med anpassade modeller utbildade för att identifiera dina anpassade formulär. Dessa värden returneras i en `RecognizedForm` objekt samling.
+ * Igenkänning av formulär fält och innehåll med anpassade modeller som har tränats för att analysera dina anpassade formulär. Dessa värden returneras i en `RecognizedForm` objekt samling.
  * Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell. Formulär innehåll returneras i en `FormPage` objekt samling.
  * Att känna igen vanliga fält från inleveranser, med en förtränad kvitto modell på formulär igenkännings tjänsten. De här fälten och meta-data returneras i en-samling `RecognizedReceipt` .
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `FormTrainingClient` tillhandahåller åtgärder för:
 
-* Utbilda anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär. En `CustomFormModel` returneras som anger vilka formulär som modellen ska identifiera och vilka fält som ska extraheras för varje formulär typ. Mer detaljerad information om hur du skapar en tränings data uppsättning finns i [tjänstens dokumentation om etiketterad modell utbildning](#train-a-model-without-labels) .
-* Utbilda anpassade modeller för att identifiera vissa fält och värden som du anger genom att namnge dina anpassade formulär. En `CustomFormModel` returneras som anger de fält som modellen extraherar, samt den uppskattade noggrannheten för varje fält. Se [tjänst dokumentationen om etiketterad modell utbildning](#train-a-model-with-labels) för en mer detaljerad förklaring av hur du använder etiketter i en tränings data uppsättning.
+* Utbilda anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär. En `CustomFormModel` returneras som anger vilka formulär modeller som ska analyseras och vilka fält som ska extraheras för varje formulär typ. Mer detaljerad information om hur du skapar en tränings data uppsättning finns i [tjänstens dokumentation om etiketterad modell utbildning](#train-a-model-without-labels) .
+* Utbilda anpassade modeller för att analysera vissa fält och värden som du anger genom att namnge dina anpassade formulär. En `CustomFormModel` returneras som anger de fält som modellen extraherar, samt den uppskattade noggrannheten för varje fält. Se [tjänst dokumentationen om etiketterad modell utbildning](#train-a-model-with-labels) för en mer detaljerad förklaring av hur du använder etiketter i en tränings data uppsättning.
 * Hantera modeller som skapats i ditt konto.
 * Kopiera en anpassad modell från en formulär igenkännings resurs till en annan.
 
@@ -128,7 +128,7 @@ Du måste också lägga till referenser till URL: erna för din utbildning och t
 
 ## <a name="analyze-layout"></a>Analysera layout
 
-Du kan använda formulär igenkänning för att identifiera tabeller, rader och ord i dokument, utan att behöva träna en modell. Använd-metoden för att identifiera innehållet i en fil vid en specifik URI `beginRecognizeContentFromUrl` .
+Du kan använda formulär igenkänning för att analysera tabeller, rader och ord i dokument, utan att behöva träna en modell. Mer information om extrahering av layout finns i [rikt linjer för layout](../../concept-layout.md). Använd-metoden för att analysera innehållet i en fil vid en specifik URI `beginRecognizeContentFromUrl` .
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
@@ -152,31 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="analyze-receipts"></a>Analysera kvitton
 
-Det här avsnittet visar hur du identifierar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell.
-
-Om du vill känna igen kvitton från en URI använder du- `beginRecognizeReceiptsFromUrl` metoden. Följande kod bearbetar ett kvitto vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
-
-> [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
-
-### <a name="output"></a>Utdata
-
-```console
-status: notStarted
-status: running
-status: succeeded
-First receipt:
-  Receipt Type: 'Itemized', with confidence of 0.659
-  Merchant Name: 'Contoso Contoso', with confidence of 0.516
-  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
-    Item Name: '8GB RAM (Black)', with confidence of 0.916
-    Item Name: 'SurfacePen', with confidence of 0.858
-  Total: '1203.39', with confidence of 0.774
-```
 
 ## <a name="train-a-custom-model"></a>Träna en anpassad modell
 
@@ -187,7 +163,7 @@ Det här avsnittet visar hur du tränar en modell med dina egna data. En utbilda
 
 ### <a name="train-a-model-without-labels"></a>Träna en modell utan etiketter
 
-Träna anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten.
+Träna anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten.
 
 Följande funktion tågen en modell på en specifik uppsättning dokument och skriver ut modellens status till-konsolen. 
 
@@ -320,6 +296,32 @@ Field Signature has value 'undefined' with a confidence score of undefined
 Field Subtotal has value 'undefined' with a confidence score of undefined
 Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
+```
+
+## <a name="analyze-receipts"></a>Analysera kvitton
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell. Mer information om inleverans analys finns i [Guide för inleveranser konceptuell](../../concept-receipts.md).
+
+Använd-metoden för att analysera kvitton från en URI `beginRecognizeReceiptsFromUrl` . Följande kod bearbetar ett kvitto vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
+
+> [!TIP]
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) för scenarier som involverar lokala avbildningar.
+
+### <a name="output"></a>Utdata
+
+```console
+status: notStarted
+status: running
+status: succeeded
+First receipt:
+  Receipt Type: 'Itemized', with confidence of 0.659
+  Merchant Name: 'Contoso Contoso', with confidence of 0.516
+  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
+    Item Name: '8GB RAM (Black)', with confidence of 0.916
+    Item Name: 'SurfacePen', with confidence of 0.858
+  Total: '1203.39', with confidence of 0.774
 ```
 
 ## <a name="manage-your-custom-models"></a>Hantera dina anpassade modeller

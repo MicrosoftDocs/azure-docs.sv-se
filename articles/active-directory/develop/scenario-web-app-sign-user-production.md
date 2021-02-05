@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c7abad31c9936729b8d9c19ed2efcb841ac103ca
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756238"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584305"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Webbapp som loggar in användare: flytta till produktion
 
-Nu när du vet hur du kan hämta en token för att anropa webb-API: er, lär dig hur du flyttar den till produktionen.
+Nu när du vet hur du kan hämta en token för att anropa webb-API: er, här är några saker att tänka på när du flyttar ditt program till produktion.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="troubleshooting"></a>Felsökning
-
-> [!NOTE]
-> När användarna loggar in på webb programmet för första gången måste de godkänna. Men i vissa organisationer kan användare se ett meddelande som liknar följande:
->
-> *AppName behöver behörighet för att få åtkomst till resurser i din organisation som bara en administratör kan bevilja. Be en administratör att bevilja behörighet till den här appen innan du kan använda den.*
->
-> Detta beror på att klient administratören har **inaktiverat** möjligheten för användare att godkänna. I så fall måste du kontakta klient organisationens administratörer så att de gör ett administrativt medgivande för de omfattningar som krävs av programmet.
+När användarna loggar in på webb programmet för första gången måste de godkänna. Men i vissa organisationer kan användare se ett meddelande som liknar följande: *APPNAME behöver behörighet för att komma åt resurser i din organisation som bara en administratör kan bevilja. Be en administratör att bevilja behörighet till den här appen innan du kan använda den.*
+Detta beror på att klient administratören har **inaktiverat** möjligheten för användare att godkänna. I så fall kan du kontakta klient organisationens administratörer så att de gör ett administrativt medgivande för de omfattningar som krävs av programmet.
 
 ## <a name="same-site"></a>Samma plats
 

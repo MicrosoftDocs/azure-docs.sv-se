@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c1ae52b2b92c5c8d5a1a98632e19d3140672d6ea
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792090"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585049"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Inbyggd fördefinierad inleverans modell för formulär tolken
 
@@ -38,7 +38,7 @@ Den förbyggda tjänsten för inbyggade kvitton extraherar innehållet i försä
 
 ### <a name="fields-extracted"></a>Extraherade fält
 
-|Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
+|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | ReceiptType | sträng | Typ av försäljnings kvitto | Uppdelat |  |
 | MerchantName | sträng | Namn på den handlare som utfärdar kvittot | Contoso |  |
@@ -467,7 +467,7 @@ Mottagnings-API: t har även befogenhet att [bearbeta hanterings funktionen för
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Slutför en [snabb start för formulär igenkänning](quickstarts/client-library.md) för att komma igång med att skriva en app för mottagnings bearbetning med formulär tolken på det språk du väljer.
+- Slutför en [snabb start för formulär igenkänning](quickstarts/client-library.md) för att komma igång med att skriva en app för mottagnings bearbetning med formulär tolken i det utvecklings språk du väljer.
 
 ## <a name="see-also"></a>Se även
 

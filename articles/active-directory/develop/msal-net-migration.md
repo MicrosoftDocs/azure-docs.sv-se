@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2b8577af2c8a6296ae6f4f090e8ff233e51ee6fb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754825"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583933"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrera program till MSAL.NET
 
@@ -145,7 +145,7 @@ MSAL.NET gör att token cachelagrar en förseglad klass och tar bort möjlighete
 
 Om du använder-utfärdaren i v 1.0 kan `https://login.microsoftonline.com/common` användarna logga in med alla AAD-konton (för alla organisationer). Se [verifiering av auktoritet i ADAL.net](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
-Om du använder `https://login.microsoftonline.com/common` -utfärdaren i v 2.0 kan användarna logga in med en AAD-organisation eller ett Microsoft-konto (MSA). I MSAL.NET, om du vill begränsa inloggningen till ett AAD-konto (samma beteende som med ADAL.NET), måste du använda `https://login.microsoftonline.com/organizations` . Mer information finns i- `authority` parametern i det [offentliga klient programmet](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
+Om du använder `https://login.microsoftonline.com/common` -utfärdaren i v 2.0 kan användarna logga in med en AAD-organisation eller ett Microsoft-konto (MSA). I MSAL.NET, om du vill begränsa inloggningen till ett AAD-konto (samma beteende som med ADAL.NET), använder du `https://login.microsoftonline.com/organizations` . Mer information finns i- `authority` parametern i det [offentliga klient programmet](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
 ## <a name="v10-and-v20-tokens"></a>v 1.0-och v 2.0-token
 
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Varning! om du har ett eller två snedstreck i omfånget som motsvarar ett v 1.0-webb-API
 
-Om du vill skriva det omfång som motsvarar Azure Resource Manager-API: t (måste https://management.core.windows.net/) du begära följande omfång (Observera de två snedstrecken)
+Om du vill skriva den omfattning som motsvarar Azure Resource Manager-API: t ( https://management.core.windows.net/) , begär du följande omfång (Observera de två snedstrecken).
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};

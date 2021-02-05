@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536774"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584998"
 ---
 # <a name="apply-math-operation"></a>Använda matematisk åtgärd
 
@@ -138,9 +138,9 @@ Returnerar e upphöjt till kraften i värdet i den markerade kolumnen. Den här 
 
 Returnerar bas 2 upphöjt till argumenten, lösning för y = x * 2<sup>t</sup> där t är en kolumn med värden som innehåller exponenter.  
 
-I  **kolumn uppsättning**väljer du den kolumn som innehåller exponent värden t.
+I  **kolumn uppsättning** väljer du den kolumn som innehåller exponent värden t.
 
-För **Exp2** kan du ange ett andra argument x, som kan vara antingen en konstant eller en annan kolumn med värden. I den **andra argument typen**anger du om du vill ge multiplikatorn x som en konstant eller ett värde i en kolumn.  
+För **Exp2** kan du ange ett andra argument x, som kan vara antingen en konstant eller en annan kolumn med värden. I den **andra argument typen** anger du om du vill ge multiplikatorn x som en konstant eller ett värde i en kolumn.  
 
 Om du till exempel väljer en kolumn med värdena {0,1,2,3,4,5} för både multiplikatorn och exponenten returnerar funktionen {0, 2, 8, 24, 64 160).  
 
@@ -162,7 +162,7 @@ Returnerar den naturliga logaritmen för värdena i den markerade kolumnen.
 
 Returnerar den naturliga logaritmen plus en för värdena i den markerade kolumnen.  
 
-### <a name="log"></a>Logga
+### <a name="log"></a>Loggas
 
 Returnerar loggen för värdena i den markerade kolumnen, med angiven bas.  
 
@@ -181,7 +181,7 @@ Returnerar den n:te roten av värdet med en n som du anger.
 
 Välj de kolumner som du vill beräkna roten för, genom att använda alternativet **ColumnSet** .  
 
-I den **andra argument typen**väljer du en annan kolumn som innehåller roten eller anger en konstant som ska användas som rot.  
+I den **andra argument typen** väljer du en annan kolumn som innehåller roten eller anger en konstant som ska användas som rot.  
 
 Om det andra argumentet är en kolumn används varje värde i kolumnen som värdet n för motsvarande rad. Om det andra argumentet är en konstant skriver du värdet för n i text rutan **andra argument** .
 ### <a name="pow"></a>POW
@@ -190,7 +190,7 @@ Beräknar X upphöjt till Y för varje värde i den markerade kolumnen.
 
 Först väljer du de kolumner som innehåller **basen**, som ska vara ett flyttal, med alternativet **ColumnSet** .  
 
-I den **andra argument typen**väljer du den kolumn som innehåller exponenten eller anger en konstant som ska användas som exponent.  
+I den **andra argument typen** väljer du den kolumn som innehåller exponenten eller anger en konstant som ska användas som exponent.  
 
 Om det andra argumentet är en kolumn, används varje värde i kolumnen som exponent för motsvarande rad. Om det andra argumentet är en konstant, anger du värdet för exponenten i text rutan **andra argument** .  
 
@@ -249,22 +249,25 @@ Returnerar värdet som är mindre – värdet i **kolumn uppsättningen** eller 
 
 Innehåller de grundläggande aritmetiska åtgärderna: addition och subtraktion, Division och multiplikation.  Eftersom de flesta åtgärder är binära och kräver två siffror väljer du först åtgärden och väljer sedan den kolumn eller de tal som ska användas i de första och andra argumenten.
 
-Ordningen i vilken du väljer kolumner för Division och subtraktion kan verka counterintuitive; men för att göra det lättare att förstå resultaten, innehåller kolumn rubriken åtgärds namnet och i vilken ordning kolumnerna användes.
+Ordningen för Division och subtraktion är följande: 
+- Subtrahera (Arg1_Arg2) = Arg1-arg 2
+- Dividera (Arg1_Arg2) = Arg1/arg 2
 
+I följande tabell visas några exempel
 Åtgärd|Num1|Num2|Resultat kolumn|Resultat värde|
 ----|----|----|----|----
-|Addition|1|5|Lägg till (Num2_Num1)| 4|
+|Addition|1|5|Lägg till (Num2_Num1)| 6|
 |Multiplikation|1|5|Flera (Num2_Num1)|5|
-|Subtraktion|1|5|Subtrahera (Num2_Num1)|4|
-|Subtraktion|0|1|Subtrahera (Num2_Num1)|0|
-|Division|1|5|Dividera (Num2_Num1)|5|
-|Division|0|1|Dividera (Num2_Num1)|Infinity|
+|Subtraktion|5|1|Subtrahera (Num2_Num1)|4|
+|Subtraktion|0|1|Subtrahera (Num2_Num1)|-1|
+|Division|5|1|Dividera (Num2_Num1)|5|
+|Division|1|0|Dividera (Num2_Num1)|Infinity|
 
 ### <a name="add"></a>Lägg till
 
-Ange käll kolumnerna med hjälp av **kolumn uppsättning**och Lägg sedan till dessa värden ett tal som anges i det **andra argumentet**.  
+Ange käll kolumnerna med hjälp av **kolumn uppsättning** och Lägg sedan till dessa värden ett tal som anges i det **andra argumentet**.  
 
-Om du vill lägga till värden i två kolumner väljer du en kolumn eller kolumner med **kolumn uppsättning**och väljer sedan en andra kolumn med hjälp av det **andra argumentet**.  
+Om du vill lägga till värden i två kolumner väljer du en kolumn eller kolumner med **kolumn uppsättning** och väljer sedan en andra kolumn med hjälp av det **andra argumentet**.  
 
 ### <a name="divide"></a>Dividera
 
@@ -284,7 +287,7 @@ Azure Machine Learning Designer stöder flera olika avrundnings åtgärder. För
 
 - Om du använder en konstant anger du **precisions typen** **konstant** och skriver sedan antalet siffror som ett heltal i text rutan **konstant precision** . Om du anger ett icke-heltal, genererar modulen inget fel, men det kan vara oväntade resultat.  
 
-- Om du vill använda ett annat precisions värde för varje rad i data uppsättningen anger du **precisions typen** till **ColumnSet**och väljer sedan den kolumn som innehåller lämpliga precisions värden.  
+- Om du vill använda ett annat precisions värde för varje rad i data uppsättningen anger du **precisions typen** till **ColumnSet** och väljer sedan den kolumn som innehåller lämpliga precisions värden.  
 
 ### <a name="ceiling"></a>Ceiling
 
@@ -296,15 +299,15 @@ Returnerar taket i fyrkant för värdena i **kolumn uppsättningen**.
 
 ### <a name="floor"></a>Floor
 
-Returnerar golvet för värdena i **kolumn uppsättningen**till den angivna precisionen.  
+Returnerar golvet för värdena i **kolumn uppsättningen** till den angivna precisionen.  
 
 ### <a name="mod"></a>Mod
 
-Returnerar decimal delen av värdena i **kolumn uppsättningen**till den angivna precisionen.  
+Returnerar decimal delen av värdena i **kolumn uppsättningen** till den angivna precisionen.  
 
 ### <a name="quotient"></a>Kvot
 
-Returnerar decimal delen av värdena i **kolumn uppsättningen**till den angivna precisionen.  
+Returnerar decimal delen av värdena i **kolumn uppsättningen** till den angivna precisionen.  
 
 ### <a name="remainder"></a>Rest
 
@@ -580,7 +583,7 @@ Anta att din data uppsättning har flera kolumner och att du lägger till data u
 |2|3|-1|4|6|-2|
 |0|1|-1|0|2|-2|
 
-Om du behöver utföra mer komplexa beräkningar kan du kedja flera instanser av **Använd matematik-åtgärd**. Du kan till exempel lägga till två kolumner genom att använda en instans av **Använd matematik-åtgärd**och sedan använda en annan instans av **Använd matematik-åtgärd** för att dividera summan med en konstant för att få medelvärdet.  
+Om du behöver utföra mer komplexa beräkningar kan du kedja flera instanser av **Använd matematik-åtgärd**. Du kan till exempel lägga till två kolumner genom att använda en instans av **Använd matematik-åtgärd** och sedan använda en annan instans av **Använd matematik-åtgärd** för att dividera summan med en konstant för att få medelvärdet.  
   
 Du kan också använda en av följande moduler för att utföra alla beräkningar samtidigt, med SQL, R eller Python-skript:
  

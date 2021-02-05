@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisk data bearbetning, dokument bearbetning, automatisk data inmatning, formulär bearbetning
-ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2d3a37165994a8c7ff9d46ac24e63b7f58404ce3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044772"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584574"
 ---
 # <a name="what-is-form-recognizer"></a>Vad är formigenkänning?
 
@@ -87,13 +87,13 @@ Formulär tolken använder [layout-API](#layout-api) för att lära dig de förv
 Formulär tolken innehåller också färdiga modeller för automatisk data bearbetning av unika formulär typer.
 
 ### <a name="prebuilt-invoice-model"></a>Fördefinierad faktura modell
-Den fördefinierade faktura modellen hämtar data från fakturor i olika format och returnerar strukturerade data. Den här modellen hämtar viktig information, till exempel faktura-ID, kund information, leverantörs information, leverans till, faktura till, Summa, skatt, delsumma med mera. Dessutom tränas den förinställda faktura modellen för att identifiera och returnera all text och alla tabeller på fakturan. Mer information finns i konceptuell guide för [fakturor](./concept-invoices.md) .
+Den fördefinierade faktura modellen hämtar data från fakturor i olika format och returnerar strukturerade data. Den här modellen hämtar viktig information, till exempel faktura-ID, kund information, leverantörs information, leverans till, faktura till, Summa, skatt, delsumma med mera. Dessutom tränas den förinställda faktura modellen för att analysera och returnera all text och alla tabeller på fakturan. Mer information finns i konceptuell guide för [fakturor](./concept-invoices.md) .
 
 :::image type="content" source="./media/overview-invoices.jpg" alt-text="exempel faktura" lightbox="./media/overview-invoices.jpg":::
 
 ### <a name="prebuilt-receipt-model"></a>Fördefinierad kvitto modell
 
-Fördefinierad kvitto modell används för att läsa kvitton på engelska försäljning från Australien, Kanada, Storbritannien, Indien och USA typ som &mdash; används av restauranger, gas stationer, åter försäljare och så vidare. Den här modellen hämtar viktig information, till exempel tid och datum för transaktionen, handels information, moms belopp, rad artiklar, total summor och mer. Dessutom tränas den förskapade kvitto modellen att identifiera och returnera all text i ett kvitto. Mer information finns i Guide för [kvitton](./concept-receipts.md) .
+Fördefinierad kvitto modell används för att läsa kvitton på engelska försäljning från Australien, Kanada, Storbritannien, Indien och USA typ som &mdash; används av restauranger, gas stationer, åter försäljare och så vidare. Den här modellen hämtar viktig information, till exempel tid och datum för transaktionen, handels information, moms belopp, rad artiklar, total summor och mer. Dessutom tränas den förskapade kvitto modellen att analysera och returnera all text i ett kvitto. Mer information finns i Guide för [kvitton](./concept-receipts.md) .
 
 :::image type="content" source="./media/overview-receipt.jpg" alt-text="exempel kvitto" lightbox="./media/overview-receipt.jpg":::
 
@@ -128,7 +128,7 @@ Använd [exempel verktyget igenkännings verktyg](https://fott.azurewebsites.net
 
 Du använder följande API: er för att träna modeller och extrahera strukturerade data från formulär.
 
-|Namn |Beskrivning |
+|Name |Beskrivning |
 |---|---|
 | **Analysera layout** | Analysera ett dokument som skickas som en data ström för att extrahera text, markerings märken, tabeller och struktur från dokumentet |
 | **Träna anpassad modell**| Träna en ny modell för att analysera dina formulär genom att använda fem formulär av samma typ. Ange parametern _useLabelFile_ för `true` att träna med manuellt märkta data. |
@@ -171,4 +171,4 @@ Precis som med alla kognitiva tjänster bör utvecklare som använder formulär 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Slutför en [snabb start](quickstarts/client-library.md) för att komma igång med att skriva en app för formulär bearbetning med formulär tolken på det språk du väljer.
+Slutför en [snabb start](quickstarts/client-library.md) för att komma igång med att skriva en app för bearbetning av formulär med formulär igenkänning på det utvecklings språk du väljer.

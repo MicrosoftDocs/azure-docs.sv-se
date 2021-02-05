@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: e578cd08177eb9db03e5e4af4a134473a8484a41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d0c26a4b0cc860b959afc6703ee3e709c606f209
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948327"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584617"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
@@ -78,15 +78,15 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `form_rec
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 `form_recognizer_client` tillhandahåller åtgärder för:
 
- * Igenkänning av formulär fält och innehåll med anpassade modeller utbildade för att identifiera dina anpassade formulär. 
+ * Igenkänning av formulär fält och innehåll med anpassade modeller som har tränats för att analysera dina anpassade formulär. 
  * Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell. 
  * Att känna igen vanliga fält från inleveranser, med en förtränad kvitto modell på formulär igenkännings tjänsten.
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 `form_training_client` tillhandahåller åtgärder för:
 
-* Utbilda anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär. Mer detaljerad information om hur du skapar en tränings data uppsättning finns i [tjänstens dokumentation om etiketterad modell utbildning](#train-a-model-without-labels) .
-* Utbilda anpassade modeller för att identifiera vissa fält och värden som du anger genom att namnge dina anpassade formulär. Se [tjänst dokumentationen om etiketterad modell utbildning](#train-a-model-with-labels) för en mer detaljerad förklaring av hur du använder etiketter i en tränings data uppsättning.
+* Utbilda anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär. Mer detaljerad information om hur du skapar en tränings data uppsättning finns i [tjänstens dokumentation om etiketterad modell utbildning](#train-a-model-without-labels) .
+* Utbilda anpassade modeller för att analysera vissa fält och värden som du anger genom att namnge dina anpassade formulär. Se [tjänst dokumentationen om etiketterad modell utbildning](#train-a-model-with-labels) för en mer detaljerad förklaring av hur du använder etiketter i en tränings data uppsättning.
 * Hantera modeller som skapats i ditt konto.
 * Kopiera en anpassad modell från en formulär igenkännings resurs till en annan.
 
@@ -139,9 +139,9 @@ Du måste lägga till referenser till URL: erna för din utbildning och testa da
 
 ## <a name="analyze-layout"></a>Analysera layout
 
-Du kan använda formulär igenkänning för att identifiera tabeller, rader och ord i dokument, utan att behöva träna en modell.
+Du kan använda formulär igenkänning för att analysera tabeller, rader och ord i dokument, utan att behöva träna en modell. Mer information om extrahering av layout finns i [rikt linjer för layout](../../concept-layout.md).
 
-Använd metoden för att identifiera innehållet i en fil på en viss URL `begin_recognize_content_from_url` . Det returnerade värdet är en samling `FormPage` objekt: ett för varje sida i det dokument som skickas. Följande kod itererar igenom dessa objekt och skriver ut de extraherade nyckel-och värdeparen och tabell data.
+Använd metoden för att analysera innehållet i en fil på en viss URL `begin_recognize_content_from_url` . Det returnerade värdet är en samling `FormPage` objekt: ett för varje sida i det dokument som skickas. Följande kod itererar igenom dessa objekt och skriver ut de extraherade nyckel-och värdeparen och tabell data.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
@@ -171,55 +171,6 @@ Confidence score: 1.0
 
 ```
 
-## <a name="analyze-receipts"></a>Analysera kvitton
-
-Det här avsnittet visar hur du identifierar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell. Om du vill känna igen kvitton från en URL använder du- `begin_recognize_receipts_from_url` metoden. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
-
-> [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel `begin_recognize_receipts` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
-
-### <a name="output"></a>Utdata
-
-```console
-ReceiptType: Itemized has confidence 0.659
-MerchantName: Contoso Contoso has confidence 0.516
-MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
-MerchantPhoneNumber: None has confidence 0.99
-TransactionDate: 2019-06-10 has confidence 0.985
-TransactionTime: 13:59:00 has confidence 0.968
-Receipt Items:
-...Item #1
-......Name: 8GB RAM (Black) has confidence 0.916
-......TotalPrice: 999.0 has confidence 0.559
-...Item #2
-......Quantity: None has confidence 0.858
-......Name: SurfacePen has confidence 0.858
-......TotalPrice: 99.99 has confidence 0.386
-Subtotal: 1098.99 has confidence 0.964
-Tax: 104.4 has confidence 0.713
-Total: 1203.39 has confidence 0.774
-```
-
-
-## <a name="analyze-business-cards"></a>Analysera visitkort
-
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Den här funktionen är inte tillgänglig i den valda API-versionen.
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
-
-Det här avsnittet visar hur du känner igen och extraherar vanliga fält från engelska visitkort med en förtränad modell. Använd metoden för att identifiera visitkort från en URL `begin_recognize_business_cards_from_url` . 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
-
-> [!TIP]
-> Du kan också identifiera lokala visitkorts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
-
----
 
 ## <a name="analyze-invoices"></a>Analysera fakturor
 
@@ -230,12 +181,12 @@ Det här avsnittet visar hur du känner igen och extraherar vanliga fält från 
 
 #### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
-Det här avsnittet visar hur du identifierar och extraherar gemensamma fält från försäljnings fakturor med hjälp av en förtränad modell. Använd-metoden för att identifiera fakturor från en URL `begin_recognize_invoices_from_url` . 
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från försäljnings fakturor med hjälp av en förtränad modell. Mer information om faktura analys finns i [vägledningen för faktura](../../concept-invoices.md). Använd metoden för att analysera fakturor från en URL `begin_recognize_invoices_from_url` . 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> Du kan också identifiera lokala faktura avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel `begin_recognize_invoices` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_invoices` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
 
 ---
 
@@ -248,9 +199,9 @@ Det här avsnittet visar hur du tränar en modell med dina egna data. En utbilda
 
 ### <a name="train-a-model-without-labels"></a>Träna en modell utan etiketter
 
-Träna anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten.
+Träna anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten.
 
-I följande kod används träna klienten med `begin_training` funktionen för att träna en modell på en specifik uppsättning dokument. Det returnerade `CustomFormModel` objektet innehåller information om formulär typerna som modellen kan identifiera och vilka fält som kan extraheras från varje formulär typ. Följande kod block skriver ut den här informationen till-konsolen.
+I följande kod används träna klienten med `begin_training` funktionen för att träna en modell på en specifik uppsättning dokument. Det returnerade `CustomFormModel` objektet innehåller information om formulär typerna som modellen kan analysera och vilka fält som kan extraheras från varje formulär typ. Följande kod block skriver ut den här informationen till-konsolen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
@@ -370,6 +321,56 @@ Field 'Subtotal' has label 'Subtotal' with value 'None' and a confidence score o
 Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
 Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
+
+## <a name="analyze-receipts"></a>Analysera kvitton
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell. Mer information om inleverans analys finns i [Guide för inleveranser konceptuell](../../concept-receipts.md). Använd-metoden för att analysera kvitton från en URL `begin_recognize_receipts_from_url` . 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
+
+> [!TIP]
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_receipts` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+
+### <a name="output"></a>Utdata
+
+```console
+ReceiptType: Itemized has confidence 0.659
+MerchantName: Contoso Contoso has confidence 0.516
+MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
+MerchantPhoneNumber: None has confidence 0.99
+TransactionDate: 2019-06-10 has confidence 0.985
+TransactionTime: 13:59:00 has confidence 0.968
+Receipt Items:
+...Item #1
+......Name: 8GB RAM (Black) has confidence 0.916
+......TotalPrice: 999.0 has confidence 0.559
+...Item #2
+......Quantity: None has confidence 0.858
+......Name: SurfacePen has confidence 0.858
+......TotalPrice: 99.99 has confidence 0.386
+Subtotal: 1098.99 has confidence 0.964
+Tax: 104.4 has confidence 0.713
+Total: 1203.39 has confidence 0.774
+```
+
+
+## <a name="analyze-business-cards"></a>Analysera visitkort
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från engelska visitkort med en förtränad modell. Mer information om företags korts analys finns i [konceptuell guide för visitkort](../../concept-business-cards.md). Använd-metoden för att analysera visitkort från en URL `begin_recognize_business_cards_from_url` . 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> Du kan också analysera lokala företags korts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
+
+---
 
 ## <a name="manage-your-custom-models"></a>Hantera dina anpassade modeller
 

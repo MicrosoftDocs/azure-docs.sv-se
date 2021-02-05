@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 12/16/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 56a3183e259a0b1c661dfe84d5e47c4c221e5d48
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881745"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584878"
 ---
-# <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Utlösa pipeline för maskin inlärning med Azure Machine Learning SDK för python
+# <a name="trigger-machine-learning-pipelines"></a>Utlös ande maskin inlärnings pipeliner
 
-I den här artikeln får du lära dig hur du program mässigt schemalägger en pipeline för att köras på Azure. Du kan välja att skapa ett schema baserat på förfluten tid eller ändringar i fil systemet. Tidsbaserade scheman kan användas för att ta hand om rutin uppgifter, till exempel övervakning av data drift. Ändrings scheman kan användas för att reagera på oregelbundna eller oförutsägbara ändringar, till exempel nya data som laddas upp eller gamla data redige ras. När du har lärt dig hur du skapar scheman får du lära dig hur du hämtar och inaktiverar dem. Slutligen får du lära dig hur du använder en Azure Logic-app för att tillåta mer komplex utlösnings logik eller beteende.
+I den här artikeln får du lära dig hur du program mässigt schemalägger en pipeline för att köras på Azure. Du kan skapa ett schema baserat på förfluten tid eller ändringar i fil systemet. Tidsbaserade scheman kan användas för att ta hand om rutin uppgifter, till exempel övervakning av data drift. Ändrings scheman kan användas för att reagera på oregelbundna eller oförutsägbara ändringar, till exempel nya data som laddas upp eller gamla data redige ras. När du har lärt dig hur du skapar scheman får du lära dig hur du hämtar och inaktiverar dem. Slutligen får du lära dig hur du använder andra Azure-tjänster, Azure Logic app och Azure Data Factory för att köra pipeliner. En Azure Logic-app gör det möjligt för mer komplex att utlösa logik eller beteende. Med Azure Data Factory pipelines kan du anropa en pipeline för maskin inlärning som en del av en större pipeline för data dirigering.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -29,7 +29,7 @@ I den här artikeln får du lära dig hur du program mässigt schemalägger en p
 
 * En Machine Learning arbets yta med en publicerad pipeline. Du kan använda en inbyggd pipeline för att [skapa och köra Machine Learning med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md).
 
-## <a name="initialize-the-workspace--get-data"></a>Initiera arbets ytan & hämta data
+## <a name="trigger-pipelines-with-azure-machine-learning-sdk-for-python"></a>Utlös pipelines med Azure Machine Learning SDK för python
 
 Om du vill schemalägga en pipeline behöver du en referens till din arbets yta, identifieraren för den publicerade pipelinen och namnet på det experiment som du vill skapa schemat i. Du kan hämta dessa värden med följande kod:
 
@@ -81,7 +81,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 ### <a name="create-a-change-based-schedule"></a>Skapa ett ändrings baserat schema
 
-Pipelines som utlöses av fil ändringar kan vara mer effektiva än tidsbaserade scheman. Du kanske till exempel vill utföra ett förbehandlings steg när en fil ändras eller när en ny fil läggs till i en data katalog. Du kan övervaka ändringar i ett data lager eller ändringar i en angiven katalog i data lagret. Om du övervakar en angiven katalog kommer ändringar i under kataloger i den katalogen _inte_ att utlösa någon körning.
+Pipelines som utlöses av fil ändringar kan vara mer effektiva än tidsbaserade scheman. När du vill göra något innan en fil ändras eller när en ny fil läggs till i en data katalog kan du Förbearbeta filen. Du kan övervaka ändringar i ett data lager eller ändringar i en angiven katalog i data lagret. Om du övervakar en angiven katalog kommer ändringar i under kataloger i den katalogen _inte_ att utlösa någon körning.
 
 Om du vill skapa en fil som `Schedule` är aktive rad måste du ange `datastore` parametern i anropet till [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Om du vill övervaka en mapp anger du `path_on_datastore` argumentet.
 
@@ -104,7 +104,7 @@ Förutom argumenten som beskrivits tidigare kan du ange `status` argumentet till
 
 Navigera till Azure Machine Learning i webbläsaren. I avsnittet **slut punkter** i navigerings fönstret väljer du pipeline- **slutpunkter**. Då går du till en lista över de pipeliner som publicerats i arbets ytan.
 
-![Sidan pipeliner i AML](./media/how-to-trigger-published-pipeline/scheduled-pipelines.png)
+:::image type="content" source="./media/how-to-trigger-published-pipeline/scheduled-pipelines.png" alt-text="Sidan pipeliner i AML":::
 
 På den här sidan kan du se översikts information om alla pipeliner på arbets ytan: namn, beskrivningar, status och så vidare. Gå in genom att klicka i din pipeline. På den resulterande sidan finns det mer information om din pipeline och du kan öka detalj nivån i enskilda körningar.
 
@@ -161,11 +161,11 @@ När du har etablerat din Logi Kap par kan du använda de här stegen för att k
 
 1. Navigera till vyn Logic App Designer och välj den tomma Logic app-mallen. 
     > [!div class="mx-imgBorder"]
-    > ![Tom mall](media/how-to-trigger-published-pipeline/blank-template.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/blank-template.png" alt-text="Tom mall":::
 
 1. I designern söker du efter **BLOB**. Markera kryss rutan **när en BLOB läggs till eller ändras (endast egenskaper)** utlösas och Lägg till den här utlösaren i din Logic app.
     > [!div class="mx-imgBorder"]
-    > ![Lägg till utlösare](media/how-to-trigger-published-pipeline/add-trigger.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/add-trigger.png" alt-text="Lägg till utlösare":::
 
 1. Fyll i anslutnings informationen för det Blob Storage-konto som du vill övervaka för BLOB-tillägg eller-ändringar. Välj den behållare som ska övervakas. 
  
@@ -177,7 +177,7 @@ När du har etablerat din Logi Kap par kan du använda de här stegen för att k
 1. Lägg till en HTTP-åtgärd som ska köras när en ny eller ändrad BLOB identifieras. Välj **+ nytt steg** och Sök sedan efter och välj http-åtgärd.
 
   > [!div class="mx-imgBorder"]
-  > ![Sök efter HTTP-åtgärd](media/how-to-trigger-published-pipeline/search-http.png)
+  > :::image type="content" source="media/how-to-trigger-published-pipeline/search-http.png" alt-text="Sök efter HTTP-åtgärd":::
 
   Använd följande inställningar för att konfigurera din åtgärd:
 
@@ -208,12 +208,18 @@ När du har etablerat din Logi Kap par kan du använda de här stegen för att k
     Använd `DataStoreName` du har lagt till i din arbets yta som en [förutsättning](#prerequisites).
      
     > [!div class="mx-imgBorder"]
-    > ![HTTP-inställningar](media/how-to-trigger-published-pipeline/http-settings.png)
+    > :::image type="content" source="media/how-to-trigger-published-pipeline/http-settings.png" alt-text="HTTP-inställningar":::
 
 1. Välj **Spara** så är ditt schema nu klart.
 
 > [!IMPORTANT]
 > Om du använder rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att hantera åtkomst till din pipeline, anger du [behörigheterna för ditt pipeline-scenario (utbildning eller poängsättning)](how-to-assign-roles.md#common-scenarios).
+
+## <a name="call-machine-learning-pipelines-from-azure-data-factory-pipelines"></a>Anropa maskin inlärnings pipeliner från Azure Data Factory pipelines
+
+I en Azure Data Factory pipelinen kör *Machine Learning kör pipeline* -aktiviteten en Azure Machine Learning pipeline. Du hittar den här aktiviteten på sidan för Data Factory sidan redigering i kategorin *Machine Learning* :
+
+:::image type="content" source="media/how-to-trigger-published-pipeline/azure-data-factory-pipeline-activity.png" alt-text="Skärm bild som visar aktiviteten ML pipeline i Azure Data Factory redigerings miljö":::
 
 ## <a name="next-steps"></a>Nästa steg
 

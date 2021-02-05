@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f92b8c4835e42e758085e0434ee926fbabce5a38
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936240"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584750"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Få ett svar med GenerateAnswer-API och metadata
 
@@ -291,3 +291,5 @@ På sidan **publicera** finns också information om hur du [genererar ett svar](
 
 > [!div class="nextstepaction"]
 > [Få analyser om din kunskapsbas](../how-to/get-analytics-knowledge-base.md)
+> [!div class="nextstepaction"]
+> [Förtroende Poäng](../Concepts/confidence-score.md)

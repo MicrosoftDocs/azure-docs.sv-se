@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9e9c4773b8f50d3d7b47f0eb94c039a42bee1d04
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225841"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584456"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snabb start: lägga till inloggning med Microsoft i ett ASP.NET Core-webbprogram
 
@@ -62,7 +62,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
-> I den här snabb startens exempel kod krävs en **omdirigerings-URI** för `https://localhost:44321/` och `https://localhost:44321/signin-oidc` en **URL för utloggning av frontend-kanal** för `https://localhost:44321/signout-oidc` . Begärande-ID-token utfärdas av behörighets slut punkten.
+> För att kod exemplet i den här snabb starten ska fungera lägger du till en **omdirigerings-URI** för `https://localhost:44321/` och `https://localhost:44321/signin-oidc` en **webb adress för utloggning på klient sidan** för `https://localhost:44321/signout-oidc` . Begärande-ID-token utfärdas av behörighets slut punkten.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör den här ändringen åt mig]()
 >
@@ -150,7 +150,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApp` lägger till Microsoft Identity Platform-autentisering till ditt program. Den konfigureras sedan att logga in med Microsoft Identity Platform baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |

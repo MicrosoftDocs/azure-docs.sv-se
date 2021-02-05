@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c9e4997ad08f2dd1d96dd442f80ad4203abf6261
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5734844d91e95fe7d4081e5986095934ea02b4fd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015894"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584288"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Självstudie: Logga in användare och anropa Microsoft Graph från en iOS-eller macOS-app
 
@@ -155,7 +155,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-Det enda värde som du behöver ändra ovan är det värde som tilldelas som `kClientID` [program-ID](./developer-glossary.md#application-id-client-id). Det här värdet är en del av de konfigurations data för MSAL som du sparade under steget i början av den här självstudien för att registrera programmet i Azure Portal.
+Det enda värde som du ändrar ovan är det värde som tilldelas som `kClientID` [program-ID](./developer-glossary.md#application-id-client-id). Det här värdet är en del av de konfigurations data för MSAL som du sparade under steget i början av den här självstudien för att registrera programmet i Azure Portal.
 
 ## <a name="configure-xcode-project-settings"></a>Konfigurera Xcode-projekt inställningar
 

@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: formulär tolkens klient bibliotek för .NET'
-description: Använd formulär tolkens klient bibliotek för .NET för att skapa en app för bearbetning av formulär som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
+title: 'Snabb start: formulär igenkännings REST API'
+description: Använd formulär igenkännings REST API för att skapa en app för formulär bearbetning som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5b00388f1a68560582120e92bb6fceb4f1e153d3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132338"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584638"
 ---
 > [!NOTE]
 > Den här guiden använder sväng för att köra REST API-anrop. Det finns även [exempel kod på GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) som illustrerar hur du ANROPAr REST-API: er med python.
@@ -34,7 +34,7 @@ ms.locfileid: "98132338"
 
 ## <a name="analyze-layout"></a>Analysera layout
 
-Du kan använda formulär igenkänning för att identifiera och extrahera tabeller, rader och ord i dokument, utan att behöva träna en modell. Innan du kör kommandot gör du följande ändringar:
+Du kan använda formulär igenkänning för att analysera och extrahera tabeller, markerings märken, text och struktur i dokument, utan att behöva träna en modell. Mer information om extrahering av layout finns i [rikt linjer för layout](../../concept-layout.md). Innan du kör kommandot gör du följande ändringar:
 
 1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
 1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
@@ -91,7 +91,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 Du får ett `200 (success)` svar med JSON-innehåll.
 
-Se följande faktura bild och dess motsvarande JSON-utdata. Utdatan har kort ATS för enkelhetens skull. `"readResults"`Noden innehåller alla text rader med dess respektive placering på sidan. `"selectionMarks"`Noden (i för hands versionen av v 2.1) visar varje markerings märke (kryss markering) och om dess status är "markerad" eller "omarkerad". I `"pageResults"` fältet visas alla text delar i tabeller, var och en med dess rad-kolumn-koordinat.
+Se följande faktura bild och dess motsvarande JSON-utdata. Utdatan har kort ATS för enkelhetens skull. `"readResults"`Noden innehåller alla text rader med dess respektive placering på sidan. `"selectionMarks"`Noden (i för hands versionen av v 2.1) visar varje markerings märke (kryss markering) och om dess status är "markerad" eller "omarkerad". I `"pageResults"` avsnittet visas de tabeller som har extraherats. För varje tabell extraheras text-, rad-och kolumn index, rad-och kolumn omfång, avgränsnings ruta och fler.
 
 :::image type="content" source="../../media/contoso-invoice.png" alt-text="Contoso Project Statement-dokument med en tabell.":::
 
@@ -319,9 +319,661 @@ Se följande faktura bild och dess motsvarande JSON-utdata. Utdatan har kort ATS
 
 ---
 
+
+
+## <a name="analyze-invoices"></a>Analysera fakturor
+
+# <a name="version-20"></a>[version 2,0](#tab/v2-0)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+# <a name="version-21-preview"></a>[version 2,1 Preview](#tab/v2-1)
+
+Om du vill börja analysera en faktura använder du kommandot vänd nedan. Mer information om faktura analys finns i [vägledningen för faktura](../../concept-invoices.md). Innan du kör kommandot gör du följande ändringar:
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
+1. Ersätt `{your invoice URL}` med URL-adressen för ett faktura dokument.
+1. Ersätt `{subscription key}` med din prenumerationsnyckel.
+
+```bash
+curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze"
+-H "Content-Type: application/json"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+--data-ascii "{ \"source\": \"{your invoice URL}\"}"
+```
+
+Du får ett `202 (Success)` svar som innehåller rubriken för **åtgärden location** . Värdet för den här rubriken innehåller ett åtgärds-ID som du kan använda för att fråga efter statusen för den asynkrona åtgärden och hämta resultatet.
+
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+
+### <a name="get-invoice-results"></a>Hämta faktura resultat
+
+När du har anropat API för **[analys av fakturor](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** anropar du API: et för att **[analysera resultatet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** och hämta status för åtgärden och de extraherade data. Innan du kör kommandot gör du följande ändringar:
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick med ditt formulärs igenkännings prenumerations nyckel. Du hittar det på fliken **Översikt** i formulärets tolknings resurs.
+1. Ersätt `{resultId}` med åtgärds-ID: t från föregående steg.
+1. Ersätt `{subscription key}` med din prenumerationsnyckel.
+
+```bash
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+### <a name="examine-the-response"></a>Granska svaret
+
+Du får ett `200 (Success)` svar med JSON-utdata. `"readResults"`Fältet innehåller alla rader med text som har extraherats från fakturan, `"pageResults"` inklusive de tabeller och markerings märken som extraheras från fakturan och `"documentResults"` fältet innehåller nyckel/värde-information för de mest relevanta delarna av fakturan.
+
+Se följande faktura dokument och dess motsvarande JSON-utdata. JSON-innehållet har förkort ATS för läsbarhet.
+
+* [Exempel faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
+
+```json
+{
+    "status": "succeeded",
+    "createdDateTime": "2020-11-06T23:32:11Z",
+    "lastUpdatedDateTime": "2020-11-06T23:32:20Z",
+    "analyzeResult": {
+        "version": "2.1.0",
+        "readResults": [{
+            "page": 1,
+            "angle": 0,
+            "width": 8.5,
+            "height": 11,
+            "unit": "inch"
+        }],
+        "pageResults": [{
+            "page": 1,
+            "tables": [{
+                "rows": 3,
+                "columns": 4,
+                "cells": [{
+                    "rowIndex": 0,
+                    "columnIndex": 0,
+                    "text": "QUANTITY",
+                    "boundingBox": [0.4953,
+                    5.7306,
+                    1.8097,
+                    5.7306,
+                    1.7942,
+                    6.0122,
+                    0.4953,
+                    6.0122]
+                },
+                {
+                    "rowIndex": 0,
+                    "columnIndex": 1,
+                    "text": "DESCRIPTION",
+                    "boundingBox": [1.8097,
+                    5.7306,
+                    5.7529,
+                    5.7306,
+                    5.7452,
+                    6.0122,
+                    1.7942,
+                    6.0122]
+                },
+                ...
+                ],
+                "boundingBox": [0.4794,
+                5.7132,
+                8.0158,
+                5.714,
+                8.0118,
+                6.5627,
+                0.4757,
+                6.5619]
+            },
+            {
+                "rows": 2,
+                "columns": 6,
+                "cells": [{
+                    "rowIndex": 0,
+                    "columnIndex": 0,
+                    "text": "SALESPERSON",
+                    "boundingBox": [0.4979,
+                    4.963,
+                    1.8051,
+                    4.963,
+                    1.7975,
+                    5.2398,
+                    0.5056,
+                    5.2398]
+                },
+                {
+                    "rowIndex": 0,
+                    "columnIndex": 1,
+                    "text": "P.O. NUMBER",
+                    "boundingBox": [1.8051,
+                    4.963,
+                    3.3047,
+                    4.963,
+                    3.3124,
+                    5.2398,
+                    1.7975,
+                    5.2398]
+                },
+                ...
+                ],
+                "boundingBox": [0.4976,
+                4.961,
+                7.9959,
+                4.9606,
+                7.9959,
+                5.5204,
+                0.4972,
+                5.5209]
+            }]
+        }],
+        "documentResults": [{
+            "docType": "prebuilt:invoice",
+            "pageRange": [1,
+            1],
+            "fields": {
+                "AmountDue": {
+                    "type": "number",
+                    "valueNumber": 610,
+                    "text": "$610.00",
+                    "boundingBox": [7.3809,
+                    7.8153,
+                    7.9167,
+                    7.8153,
+                    7.9167,
+                    7.9591,
+                    7.3809,
+                    7.9591],
+                    "page": 1,
+                    "confidence": 0.875
+                },
+                "BillingAddress": {
+                    "type": "string",
+                    "valueString": "123 Bill St, Redmond WA, 98052",
+                    "text": "123 Bill St, Redmond WA, 98052",
+                    "boundingBox": [0.594,
+                    4.3724,
+                    2.0125,
+                    4.3724,
+                    2.0125,
+                    4.7125,
+                    0.594,
+                    4.7125],
+                    "page": 1,
+                    "confidence": 0.997
+                },
+                "BillingAddressRecipient": {
+                    "type": "string",
+                    "valueString": "Microsoft Finance",
+                    "text": "Microsoft Finance",
+                    "boundingBox": [0.594,
+                    4.1684,
+                    1.7907,
+                    4.1684,
+                    1.7907,
+                    4.2837,
+                    0.594,
+                    4.2837],
+                    "page": 1,
+                    "confidence": 0.998
+                },
+                ...                
+            }
+        }]
+    }
+}
+```
+
+---
+
+## <a name="train-a-custom-model"></a>Träna en anpassad modell
+
+För att träna en anpassad modell behöver du en uppsättning tränings data i en Azure Storage-blob. Du behöver minst fem ifyllda formulär (PDF-dokument och/eller bilder) av samma typ/struktur. Se [skapa en tränings data uppsättning för en anpassad modell](../../build-training-data-set.md) för tips och alternativ för att sätta samman dina tränings data.
+
+> [!NOTE]
+> För modeller med hög noggrannhet kan du träna med manuellt märkta data. Se guiden [träna med etiketter](../../quickstarts/label-tool.md) för att komma igång.
+
+Om du vill träna en formulär igenkännings modell med dokumenten i din Azure Blob-behållare anropar du det **[anpassade modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** -API: et för träna genom att köra följande spiral-kommando. Innan du kör kommandot gör du följande ändringar:
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
+1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
+1. Ersätt `{SAS URL}` med Azure Blob Storage-behållarens URL för signatur för delad åtkomst (SAS). [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
+```
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+```bash
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
+```
+
+---
+
+
+Du får ett `201 (Success)` svar med ett **plats** huvud. Värdet för den här rubriken är ID: t för den nya modell som tränas.
+
+### <a name="get-training-results"></a>Hämta utbildnings resultat
+
+När du har startat träna-åtgärden använder du en ny åtgärd, **[hämtar anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)** för att kontrol lera kursens status. Skicka modell-ID: t till det här API-anropet för att kontrol lera utbildningens status:
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick med ditt formulärs igenkännings prenumerations nyckel.
+1. Ersätt `{subscription key}` med din prenumerations nyckel
+1. Ersätt `{model ID}` med modell-ID: t som du fick i föregående steg
+
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+    
+---
+
+Du får ett `200 (Success)` svar med en JSON-text i följande format. Lägg märke till `"status"` fältet. Detta kommer att ha värdet `"ready"` när inlärningen är klar. Om modellen inte är avslutad måste du fråga tjänsten igen genom att köra kommandot på nytt. Vi rekommenderar ett intervall på en sekund eller flera anrop mellan anrop.
+
+`"modelId"`Fältet innehåller ID: t för den modell som du tränar. Du behöver detta för nästa steg.
+
+```json
+{
+  "modelInfo":{
+    "status":"ready",
+    "createdDateTime":"2019-10-08T10:20:31.957784",
+    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
+    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
+  },
+  "trainResult":{
+    "trainingDocuments":[
+      {
+        "documentName":"invoices\\Invoice_1.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_2.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_3.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_4.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      },
+      {
+        "documentName":"invoices\\Invoice_5.pdf",
+        "pages":1,
+        "errors":[
+
+        ],
+        "status":"succeeded"
+      }
+    ],
+    "errors":[
+
+    ]
+  },
+  "keys":{
+    "0":[
+      "Address:",
+      "Invoice For:",
+      "Microsoft",
+      "Page"
+    ]
+  }
+}
+```
+
+## <a name="analyze-forms-with-a-custom-model"></a>Analysera formulär med en anpassad modell
+
+Sedan använder du din nya tränade modell för att analysera ett dokument och extrahera nyckel/värde-par och tabeller från det. Anropa **[analys formulärets](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API genom att köra följande spiral-kommando. Innan du kör kommandot gör du följande ändringar:
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick från ditt formulärs igenkännings prenumerations nyckel. Du hittar det på fliken **Översikt** i formulärets tolknings resurs.
+1. Ersätt `{model ID}` med det modell-ID som du fick i föregående avsnitt.
+1. Ersätt `{SAS URL}` med en SAS-URL till din fil i Azure Storage. Följ stegen i avsnittet utbildning, men i stället för att få en SAS-URL för hela BLOB-behållaren, hämta en för den aktuella filen som du vill analysera.
+1. Ersätt `{subscription key}` med din prenumerationsnyckel.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
+```
+
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+```bash
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
+```
+    
+---
+
+
+
+Du får ett `202 (Success)` svar med en **Åtgärds plats** rubrik. Värdet för den här rubriken innehåller ett resultat-ID som du använder för att spåra resultatet av analys åtgärden. Spara detta resultat-ID för nästa steg.
+
+### <a name="get-the-analyze-results"></a>Hämta analys resultatet
+
+Anropa anrops-API: et för att **[analysera](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeFormResult)** resultatet för att fråga resultatet av analys åtgärden.
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick från ditt formulärs igenkännings prenumerations nyckel. Du hittar det på fliken **Översikt** i formulärets tolknings resurs.
+1. Ersätt `{result ID}` med det ID som du fick i föregående avsnitt.
+1. Ersätt `{subscription key}` med din prenumerationsnyckel.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+```bash
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+---
+
+Du får ett `200 (Success)` svar med en JSON-text i följande format. Utdatan har kort ATS för enkelhetens skull. Lägg märke till `"status"` fältet längst ned. Detta kommer att ha värdet `"succeeded"` när analys åtgärden har slutförts. Om analys åtgärden inte har slutförts måste du fråga tjänsten igen genom att köra kommandot på nytt. Vi rekommenderar ett intervall på en sekund eller flera anrop mellan anrop.
+
+I anpassade modeller som har tränats utan etiketter finns nyckel/värde-paret associationer och tabeller i `"pageResults"` noden i JSON-utdata. I anpassade modeller som har tränats med etiketter finns nyckel-och värdepars kopplingarna i `"documentResults"` noden. Om du även har angett oformaterad text extrahering genom *includeTextDetails* URL-parameter, `"readResults"` visar noden innehållet och positionerna för all text i dokumentet.
+
+Det här exemplet på JSON-utdata har kortas ned för enkelhetens skull.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T00:46:25Z",
+  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
+  "analyzeResult": {
+    "version": "2.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0153,
+              0.275,
+              8.0944,
+              0.275,
+              8.0944,
+              0.7125,
+              5.0153,
+              0.7125
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0153,
+                  0.275,
+                  6.2278,
+                  0.275,
+                  6.2278,
+                  0.7125,
+                  5.0153,
+                  0.7125
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3292,
+                  0.275,
+                  8.0944,
+                  0.275,
+                  8.0944,
+                  0.7125,
+                  6.3292,
+                  0.7125
+                ]
+              }
+            ]
+          }, 
+        ...
+        ]
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9722,
+                1.0264,
+                7.3417,
+                1.0264,
+                7.3417,
+                1.1931,
+                6.9722,
+                1.1931
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+         ...
+        ],
+        "tables": [
+          {
+            "rows": 4,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6931,
+                  4.2444,
+                  1.5681,
+                  4.2444,
+                  1.5681,
+                  4.4125,
+                  0.6931,
+                  4.4125
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ],
+    "documentResults": [],
+    "errors": []
+  }
+}
+```    
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+```JSON
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-08-21T01:13:28Z",
+  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
+  "analyzeResult": {
+    "version": "2.1.0",
+    "readResults": [
+      {
+        "page": 1,
+        "angle": 0,
+        "width": 8.5,
+        "height": 11,
+        "unit": "inch",
+        "lines": [
+          {
+            "text": "Project Statement",
+            "boundingBox": [
+              5.0444,
+              0.3613,
+              8.0917,
+              0.3613,
+              8.0917,
+              0.6718,
+              5.0444,
+              0.6718
+            ],
+            "words": [
+              {
+                "text": "Project",
+                "boundingBox": [
+                  5.0444,
+                  0.3587,
+                  6.2264,
+                  0.3587,
+                  6.2264,
+                  0.708,
+                  5.0444,
+                  0.708
+                ]
+              },
+              {
+                "text": "Statement",
+                "boundingBox": [
+                  6.3361,
+                  0.3635,
+                  8.0917,
+                  0.3635,
+                  8.0917,
+                  0.6396,
+                  6.3361,
+                  0.6396
+                ]
+              }
+            ]
+          }, 
+          ...
+        ] 
+      }
+    ],
+    "pageResults": [
+      {
+        "page": 1,
+        "keyValuePairs": [
+          {
+            "key": {
+              "text": "Date:",
+              "boundingBox": [
+                6.9833,
+                1.0615,
+                7.3333,
+                1.0615,
+                7.3333,
+                1.1649,
+                6.9833,
+                1.1649
+              ],
+              "elements": [
+                "#/readResults/0/lines/2/words/0"
+              ]
+            },
+            "value": {
+              "text": "9/10/2020",
+              "boundingBox": [
+                7.3833,
+                1.0802,
+                7.925,
+                1.0802,
+                7.925,
+                1.174,
+                7.3833,
+                1.174
+              ],
+              "elements": [
+                "#/readResults/0/lines/3/words/0"
+              ]
+            },
+            "confidence": 1
+          },
+          ...
+        ], 
+        "tables": [
+          {
+            "rows": 5,
+            "columns": 5,
+            "cells": [
+              {
+                "text": "Training Date",
+                "rowIndex": 0,
+                "columnIndex": 0,
+                "boundingBox": [
+                  0.6944,
+                  4.2779,
+                  1.5625,
+                  4.2779,
+                  1.5625,
+                  4.4005,
+                  0.6944,
+                  4.4005
+                ],
+                "confidence": 1,
+                "rowSpan": 1,
+                "columnSpan": 1,
+                "elements": [
+                  "#/readResults/0/lines/15/words/0",
+                  "#/readResults/0/lines/15/words/1"
+                ],
+                "isHeader": true,
+                "isFooter": false
+              },
+              ...
+            ]
+          }
+        ], 
+        "clusterId": 0
+      }
+    ], 
+    "documentResults": [],
+    "errors": []
+  }
+}
+``` 
+---
+
+### <a name="improve-results"></a>Förbättra resultaten
+
+[!INCLUDE [improve results](../improve-results-unlabeled.md)]
+
 ## <a name="analyze-receipts"></a>Analysera kvitton
 
-Du börjar analysera ett kvitto genom att anropa API för att **[analysera kvitto](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** med hjälp av kommandot vänd nedan. Innan du kör kommandot gör du följande ändringar:
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell. Mer information om inleverans analys finns i [Guide för inleveranser konceptuell](../../concept-receipts.md). Du börjar analysera ett kvitto genom att anropa API för att **[analysera kvitto](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** med hjälp av kommandot vänd nedan. Innan du kör kommandot gör du följande ändringar:
 
 1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
 1. Ersätt `{your receipt URL}` med URL-adressen för en kvitto avbildning.
@@ -708,7 +1360,7 @@ Se följande kvitto avbildning och dess motsvarande JSON-utdata. Utdatan har kor
 
 # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)  
 
-Om du vill börja analysera ett visitkort anropar du **[visitkorts](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** -API: et med kommandot vändning nedan. Innan du kör kommandot gör du följande ändringar:
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från engelska visitkort med en förtränad modell. Mer information om företags korts analys finns i [konceptuell guide för visitkort](../../concept-business-cards.md). Om du vill börja analysera ett visitkort anropar du **[visitkorts](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** -API: et med kommandot vändning nedan. Innan du kör kommandot gör du följande ändringar:
 
 1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
 1. Ersätt `{your receipt URL}` med URL-adressen för en kvitto avbildning.
@@ -861,661 +1513,11 @@ Skriptet kommer att skriva ut svar till konsolen tills åtgärden **analysera vi
 
 ---
 
-## <a name="analyze-invoices"></a>Analysera fakturor
-
-# <a name="version-20"></a>[version 2,0](#tab/v2-0)
-
-> [!IMPORTANT]
-> Den här funktionen är inte tillgänglig i den valda API-versionen.
-
-# <a name="version-21-preview"></a>[version 2,1 Preview](#tab/v2-1)
-
-Om du vill börja analysera en faktura anropar du **[analys](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** -API: et med hjälp av kommandot vänd nedan. Innan du kör kommandot gör du följande ändringar:
-
-1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
-1. Ersätt `{your invoice URL}` med URL-adressen för ett faktura dokument.
-1. Ersätt `{subscription key}` med din prenumerationsnyckel.
-
-```bash
-curl -v -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze"
--H "Content-Type: application/json"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{ \"source\": \"{your invoice URL}\"}"
-```
-
-Du får ett `202 (Success)` svar som innehåller rubriken för **åtgärden location** . Värdet för den här rubriken innehåller ett åtgärds-ID som du kan använda för att fråga efter statusen för den asynkrona åtgärden och hämta resultatet.
-
-```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
-```
-
-### <a name="get-invoice-results"></a>Hämta faktura resultat
-
-När du har anropat API för **analys av fakturor** anropar du API: et för att **[analysera resultatet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** och hämta status för åtgärden och de extraherade data. Innan du kör kommandot gör du följande ändringar:
-
-1. Ersätt `{Endpoint}` med den slut punkt som du fick med ditt formulärs igenkännings prenumerations nyckel. Du hittar det på fliken **Översikt** i formulärets tolknings resurs.
-1. Ersätt `{resultId}` med åtgärds-ID: t från föregående steg.
-1. Ersätt `{subscription key}` med din prenumerationsnyckel.
-
-```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}"
--H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-
-### <a name="examine-the-response"></a>Granska svaret
-
-Du får ett `200 (Success)` svar med JSON-utdata. `"readResults"`Fältet innehåller alla rader med text som har extraherats från fakturan, `"pageResults"` inklusive de tabeller och markerings märken som extraheras från fakturan och `"documentResults"` fältet innehåller nyckel/värde-information för de mest relevanta delarna av fakturan.
-
-Se följande faktura dokument och dess motsvarande JSON-utdata. JSON-innehållet har förkort ATS för läsbarhet.
-
-* [Exempel faktura](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-invoice.pdf)
-
-```json
-{
-    "status": "succeeded",
-    "createdDateTime": "2020-11-06T23:32:11Z",
-    "lastUpdatedDateTime": "2020-11-06T23:32:20Z",
-    "analyzeResult": {
-        "version": "2.1.0",
-        "readResults": [{
-            "page": 1,
-            "angle": 0,
-            "width": 8.5,
-            "height": 11,
-            "unit": "inch"
-        }],
-        "pageResults": [{
-            "page": 1,
-            "tables": [{
-                "rows": 3,
-                "columns": 4,
-                "cells": [{
-                    "rowIndex": 0,
-                    "columnIndex": 0,
-                    "text": "QUANTITY",
-                    "boundingBox": [0.4953,
-                    5.7306,
-                    1.8097,
-                    5.7306,
-                    1.7942,
-                    6.0122,
-                    0.4953,
-                    6.0122]
-                },
-                {
-                    "rowIndex": 0,
-                    "columnIndex": 1,
-                    "text": "DESCRIPTION",
-                    "boundingBox": [1.8097,
-                    5.7306,
-                    5.7529,
-                    5.7306,
-                    5.7452,
-                    6.0122,
-                    1.7942,
-                    6.0122]
-                },
-                ...
-                ],
-                "boundingBox": [0.4794,
-                5.7132,
-                8.0158,
-                5.714,
-                8.0118,
-                6.5627,
-                0.4757,
-                6.5619]
-            },
-            {
-                "rows": 2,
-                "columns": 6,
-                "cells": [{
-                    "rowIndex": 0,
-                    "columnIndex": 0,
-                    "text": "SALESPERSON",
-                    "boundingBox": [0.4979,
-                    4.963,
-                    1.8051,
-                    4.963,
-                    1.7975,
-                    5.2398,
-                    0.5056,
-                    5.2398]
-                },
-                {
-                    "rowIndex": 0,
-                    "columnIndex": 1,
-                    "text": "P.O. NUMBER",
-                    "boundingBox": [1.8051,
-                    4.963,
-                    3.3047,
-                    4.963,
-                    3.3124,
-                    5.2398,
-                    1.7975,
-                    5.2398]
-                },
-                ...
-                ],
-                "boundingBox": [0.4976,
-                4.961,
-                7.9959,
-                4.9606,
-                7.9959,
-                5.5204,
-                0.4972,
-                5.5209]
-            }]
-        }],
-        "documentResults": [{
-            "docType": "prebuilt:invoice",
-            "pageRange": [1,
-            1],
-            "fields": {
-                "AmountDue": {
-                    "type": "number",
-                    "valueNumber": 610,
-                    "text": "$610.00",
-                    "boundingBox": [7.3809,
-                    7.8153,
-                    7.9167,
-                    7.8153,
-                    7.9167,
-                    7.9591,
-                    7.3809,
-                    7.9591],
-                    "page": 1,
-                    "confidence": 0.875
-                },
-                "BillingAddress": {
-                    "type": "string",
-                    "valueString": "123 Bill St, Redmond WA, 98052",
-                    "text": "123 Bill St, Redmond WA, 98052",
-                    "boundingBox": [0.594,
-                    4.3724,
-                    2.0125,
-                    4.3724,
-                    2.0125,
-                    4.7125,
-                    0.594,
-                    4.7125],
-                    "page": 1,
-                    "confidence": 0.997
-                },
-                "BillingAddressRecipient": {
-                    "type": "string",
-                    "valueString": "Microsoft Finance",
-                    "text": "Microsoft Finance",
-                    "boundingBox": [0.594,
-                    4.1684,
-                    1.7907,
-                    4.1684,
-                    1.7907,
-                    4.2837,
-                    0.594,
-                    4.2837],
-                    "page": 1,
-                    "confidence": 0.998
-                },
-                ...                
-            }
-        }]
-    }
-}
-```
-
----
-
-## <a name="train-a-custom-model"></a>Träna en anpassad modell
-
-För att träna en anpassad modell behöver du en uppsättning tränings data i en Azure Storage-blob. Du bör ha minst fem ifyllda formulär (PDF-dokument och/eller bilder) av samma typ/struktur som dina viktigaste indata. Eller så kan du använda ett enda tomt formulär med två ifyllda formulär. Det tomma formulärets fil namn måste innehålla ordet "Empty". Se [skapa en tränings data uppsättning för en anpassad modell](../../build-training-data-set.md) för tips och alternativ för att sätta samman dina tränings data.
-
-> [!NOTE]
-> Du kan använda funktionen märkta data för att manuellt märka vissa eller alla dina utbildnings data i förväg. Detta är en mer komplex process men resulterar i en bättre tränad modell. Mer information om den här funktionen finns i avsnittet [träna med etiketter](../../overview.md#train-with-labels) i översikten.
-
-Om du vill träna en formulär igenkännings modell med dokumenten i din Azure Blob-behållare anropar du det **[anpassade modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** -API: et för träna genom att köra följande spiral-kommando. Innan du kör kommandot gör du följande ändringar:
-
-1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
-1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
-1. Ersätt `{SAS URL}` med Azure Blob Storage-behållarens URL för signatur för delad åtkomst (SAS). [!INCLUDE [get SAS URL](../sas-instructions.md)]
-
-   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
-```
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ \"source\": \""{SAS URL}"\"}"
-```
-
----
-
-
-Du får ett `201 (Success)` svar med ett **plats** huvud. Värdet för den här rubriken är ID: t för den nya modell som tränas.
-
-### <a name="get-training-results"></a>Hämta utbildnings resultat
-
-När du har startat träna-åtgärden använder du en ny åtgärd, **[hämtar anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)** för att kontrol lera kursens status. Skicka modell-ID: t till det här API-anropet för att kontrol lera utbildningens status:
-
-1. Ersätt `{Endpoint}` med den slut punkt som du fick med ditt formulärs igenkännings prenumerations nyckel.
-1. Ersätt `{subscription key}` med din prenumerations nyckel
-1. Ersätt `{model ID}` med modell-ID: t som du fick i föregående steg
-
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-    
----
-
-Du får ett `200 (Success)` svar med en JSON-text i följande format. Lägg märke till `"status"` fältet. Detta kommer att ha värdet `"ready"` när inlärningen är klar. Om modellen inte är avslutad måste du fråga tjänsten igen genom att köra kommandot på nytt. Vi rekommenderar ett intervall på en sekund eller flera anrop mellan anrop.
-
-`"modelId"`Fältet innehåller ID: t för den modell som du tränar. Du behöver detta för nästa steg.
-
-```json
-{
-  "modelInfo":{
-    "status":"ready",
-    "createdDateTime":"2019-10-08T10:20:31.957784",
-    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
-    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
-  },
-  "trainResult":{
-    "trainingDocuments":[
-      {
-        "documentName":"invoices\\Invoice_1.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_2.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_3.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_4.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      },
-      {
-        "documentName":"invoices\\Invoice_5.pdf",
-        "pages":1,
-        "errors":[
-
-        ],
-        "status":"succeeded"
-      }
-    ],
-    "errors":[
-
-    ]
-  },
-  "keys":{
-    "0":[
-      "Address:",
-      "Invoice For:",
-      "Microsoft",
-      "Page"
-    ]
-  }
-}
-```
-
-## <a name="analyze-forms-with-a-custom-model"></a>Analysera formulär med en anpassad modell
-
-Sedan använder du din nya tränade modell för att analysera ett dokument och extrahera nyckel/värde-par och tabeller från det. Anropa **[analys formulärets](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API genom att köra följande spiral-kommando. Innan du kör kommandot gör du följande ändringar:
-
-1. Ersätt `{Endpoint}` med den slut punkt som du fick från ditt formulärs igenkännings prenumerations nyckel. Du hittar det på fliken **Översikt** i formulärets tolknings resurs.
-1. Ersätt `{model ID}` med det modell-ID som du fick i föregående avsnitt.
-1. Ersätt `{SAS URL}` med en SAS-URL till din fil i Azure Storage. Följ stegen i avsnittet utbildning, men i stället för att få en SAS-URL för hela BLOB-behållaren, hämta en för den aktuella filen som du vill analysera.
-1. Ersätt `{subscription key}` med din prenumerationsnyckel.
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
-```
-
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-```bash
-curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model ID}/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ \"source\": \""{SAS URL}"\" } "
-```
-    
----
-
-
-
-Du får ett `202 (Success)` svar med en **Åtgärds plats** rubrik. Värdet för den här rubriken innehåller ett resultat-ID som du använder för att spåra resultatet av analys åtgärden. Spara detta resultat-ID för nästa steg.
-
-### <a name="get-the-analyze-results"></a>Hämta analys resultatet
-
-Använd följande API för att fråga resultatet av analys åtgärden.
-
-1. Ersätt `{Endpoint}` med den slut punkt som du fick från ditt formulärs igenkännings prenumerations nyckel. Du hittar det på fliken **Översikt** i formulärets tolknings resurs.
-1. Ersätt `{result ID}` med det ID som du fick i föregående avsnitt.
-1. Ersätt `{subscription key}` med din prenumerationsnyckel.
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-```bash
-curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview/custom/models/{model ID}/analyzeResults/{result ID}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
-```
----
-
-Du får ett `200 (Success)` svar med en JSON-text i följande format. Utdatan har kort ATS för enkelhetens skull. Lägg märke till `"status"` fältet längst ned. Detta kommer att ha värdet `"succeeded"` när analys åtgärden har slutförts. Om analys åtgärden inte har slutförts måste du fråga tjänsten igen genom att köra kommandot på nytt. Vi rekommenderar ett intervall på en sekund eller flera anrop mellan anrop.
-
-Huvud nyckel/värde paret associationer och tabeller finns i `"pageResults"` noden. Om du även har angett oformaterad text extrahering genom *includeTextDetails* URL-parameter, `"readResults"` visar noden innehållet och positionerna för all text i dokumentet.
-
-Det här exemplet på JSON-utdata har kortas ned för enkelhetens skull.
-
-# <a name="v20"></a>[v2.0](#tab/v2-0)
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T00:46:25Z",
-  "lastUpdatedDateTime": "2020-08-21T00:46:32Z",
-  "analyzeResult": {
-    "version": "2.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0153,
-              0.275,
-              8.0944,
-              0.275,
-              8.0944,
-              0.7125,
-              5.0153,
-              0.7125
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0153,
-                  0.275,
-                  6.2278,
-                  0.275,
-                  6.2278,
-                  0.7125,
-                  5.0153,
-                  0.7125
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3292,
-                  0.275,
-                  8.0944,
-                  0.275,
-                  8.0944,
-                  0.7125,
-                  6.3292,
-                  0.7125
-                ]
-              }
-            ]
-          }, 
-        ...
-        ]
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9722,
-                1.0264,
-                7.3417,
-                1.0264,
-                7.3417,
-                1.1931,
-                6.9722,
-                1.1931
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-         ...
-        ],
-        "tables": [
-          {
-            "rows": 4,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6931,
-                  4.2444,
-                  1.5681,
-                  4.2444,
-                  1.5681,
-                  4.4125,
-                  0.6931,
-                  4.4125
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ],
-    "documentResults": [],
-    "errors": []
-  }
-}
-```    
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
-```JSON
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-08-21T01:13:28Z",
-  "lastUpdatedDateTime": "2020-08-21T01:13:42Z",
-  "analyzeResult": {
-    "version": "2.1.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 0,
-        "width": 8.5,
-        "height": 11,
-        "unit": "inch",
-        "lines": [
-          {
-            "text": "Project Statement",
-            "boundingBox": [
-              5.0444,
-              0.3613,
-              8.0917,
-              0.3613,
-              8.0917,
-              0.6718,
-              5.0444,
-              0.6718
-            ],
-            "words": [
-              {
-                "text": "Project",
-                "boundingBox": [
-                  5.0444,
-                  0.3587,
-                  6.2264,
-                  0.3587,
-                  6.2264,
-                  0.708,
-                  5.0444,
-                  0.708
-                ]
-              },
-              {
-                "text": "Statement",
-                "boundingBox": [
-                  6.3361,
-                  0.3635,
-                  8.0917,
-                  0.3635,
-                  8.0917,
-                  0.6396,
-                  6.3361,
-                  0.6396
-                ]
-              }
-            ]
-          }, 
-          ...
-        ] 
-      }
-    ],
-    "pageResults": [
-      {
-        "page": 1,
-        "keyValuePairs": [
-          {
-            "key": {
-              "text": "Date:",
-              "boundingBox": [
-                6.9833,
-                1.0615,
-                7.3333,
-                1.0615,
-                7.3333,
-                1.1649,
-                6.9833,
-                1.1649
-              ],
-              "elements": [
-                "#/readResults/0/lines/2/words/0"
-              ]
-            },
-            "value": {
-              "text": "9/10/2020",
-              "boundingBox": [
-                7.3833,
-                1.0802,
-                7.925,
-                1.0802,
-                7.925,
-                1.174,
-                7.3833,
-                1.174
-              ],
-              "elements": [
-                "#/readResults/0/lines/3/words/0"
-              ]
-            },
-            "confidence": 1
-          },
-          ...
-        ], 
-        "tables": [
-          {
-            "rows": 5,
-            "columns": 5,
-            "cells": [
-              {
-                "text": "Training Date",
-                "rowIndex": 0,
-                "columnIndex": 0,
-                "boundingBox": [
-                  0.6944,
-                  4.2779,
-                  1.5625,
-                  4.2779,
-                  1.5625,
-                  4.4005,
-                  0.6944,
-                  4.4005
-                ],
-                "confidence": 1,
-                "rowSpan": 1,
-                "columnSpan": 1,
-                "elements": [
-                  "#/readResults/0/lines/15/words/0",
-                  "#/readResults/0/lines/15/words/1"
-                ],
-                "isHeader": true,
-                "isFooter": false
-              },
-              ...
-            ]
-          }
-        ], 
-        "clusterId": 0
-      }
-    ], 
-    "documentResults": [],
-    "errors": []
-  }
-}
-``` 
----
-
-### <a name="improve-results"></a>Förbättra resultaten
-
-[!INCLUDE [improve results](../improve-results-unlabeled.md)]
-
 ## <a name="manage-custom-models"></a>Hantera anpassade modeller
 
 ### <a name="get-a-list-of-custom-models"></a>Hämta en lista över anpassade modeller
 
-Använd följande kommando för att returnera en lista över alla anpassade modeller som hör till din prenumeration.
+Använd **[listan med anpassade modell](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModels)** -API: er i följande kommando för att returnera en lista över alla anpassade modeller som hör till din prenumeration.
 
 1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
 1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
@@ -1557,7 +1559,7 @@ Du får ett `200` lyckat svar med JSON-data som följande. `"modelList"`Elemente
 
 ### <a name="get-a-specific-model"></a>Hämta en speciell modell
 
-Om du vill hämta detaljerad information om en speciell anpassad modell använder du följande kommando.
+Om du vill hämta detaljerad information om en speciell anpassad modell använder du API: et för **[anpassad modell](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModel)** i följande kommando.
 
 1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
 1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
@@ -1568,7 +1570,6 @@ Om du vill hämta detaljerad information om en speciell anpassad modell använde
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{body}" 
 ```
 
 # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
@@ -1576,7 +1577,6 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
 ```bash
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
---data-ascii "{body}" 
 ```
 ---
 
@@ -1619,6 +1619,32 @@ Du får ett `200` lyckat svar med JSON-data som följande.
   }
 }
 ```
+
+### <a name="delete-a-model-from-the-resource-account"></a>Ta bort en modell från resurs kontot
+
+Du kan också ta bort en modell från ditt konto genom att referera till dess ID. Det här kommandot anropar den **[anpassade modell](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/DeleteCustomModel)** -API: et för att ta bort modellen som används i föregående avsnitt.
+
+1. Ersätt `{Endpoint}` med den slut punkt som du fick med din igenkännings prenumeration för formulär.
+1. Ersätt `{subscription key}` med den prenumerations nyckel som du kopierade från föregående steg.
+1. Ersätt `{modelId}` med ID: t för den anpassade modell som du vill söka efter.
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+
+# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+
+```bash
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{modelId}"
+-H "Ocp-Apim-Subscription-Key: {subscription key}"
+```
+---
+
+Du får ett `204` lyckat svar som anger att din modell har marker ATS för borttagning. Modell artefakter tas bort inom 48 timmar.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

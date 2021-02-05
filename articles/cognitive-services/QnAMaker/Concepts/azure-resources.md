@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 38115f18d9b35545912fad97767f38fd3827d626
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 8c740e2868d2cd2033bc896f9b6ca897b38e922f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559995"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584829"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resurser för QnA Maker
 
@@ -134,6 +134,94 @@ Hämta de senaste körnings uppdateringarna genom att [uppdatera App Service i A
 
 ---
 
+## <a name="keys-in-qna-maker"></a>Nycklar i QnA Maker
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
+
+Din QnA Maker-tjänst har två typer av nycklar: **redigerings nycklar** och **fråge slut punkts nycklar** som används med körnings miljön som finns i App Service.
+
+Använd de här nycklarna när du gör förfrågningar till tjänsten via API: er.
+
+![Nyckelhantering](../media/qnamaker-how-to-key-management/key-management.png)
+
+|Namn|Plats|Syfte|
+|--|--|--|
+|Redigering/prenumerations nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
+|Frågans slut punkts nyckel|[QnA Maker-portalen](https://www.qnamaker.ai)|Dessa nycklar används för att skicka frågor till den publicerade kunskaps bas slut punkten för att få svar på en användar fråga. Du använder vanligt vis den här fråge slut punkten i din Chat-robot eller i klient program koden som ansluter till QnA Maker-tjänsten. De här nycklarna skapas när du publicerar din QnA Maker-kunskaps bas.<br><br>Sök efter dessa nycklar på sidan **tjänst inställningar** . Hitta den här sidan från användarens meny längst upp till höger på sidan på den nedrullningsbara menyn.|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Hitta redigerings nycklar i Azure Portal
+
+Du kan visa och återställa dina redigerings nycklar från Azure Portal, där du skapade QnA Maker resursen. Dessa nycklar kan kallas för prenumerations nycklar.
+
+1. Gå till QnA Maker resursen i Azure Portal och välj den resurs som har _Cognitive Servicess_ typ:
+
+    ![QnA Maker resurs lista](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+
+2. Gå till **nycklar**:
+
+    ![Prenumerationsnyckel](../media/qnamaker-how-to-key-management/subscription-key.PNG)
+
+### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Hitta fråge slut punkts nycklar i QnA Maker Portal
+
+Slut punkten finns i samma region som resursen eftersom slut punkts nycklarna används för att anropa kunskaps basen.
+
+Slut punkts nycklar kan hanteras från [QNA Maker-portalen](https://qnamaker.ai).
+
+1. Logga in på [QNA Maker Portal](https://qnamaker.ai), gå till din profil och välj sedan **tjänst inställningar**:
+
+    ![Slut punkts nyckel](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+
+2. Visa eller Återställ dina nycklar:
+
+    > [!div class="mx-imgBorder"]
+    > ![Slut punkts nyckel hanterare](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+
+    >[!NOTE]
+    >Uppdatera dina nycklar om du tror att de har komprometterats. Detta kan kräva motsvarande ändringar i klient programmet eller bot koden.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
+
+Tjänsten QnA Maker Managed (för hands version) har två typer av nycklar: **redigerings nycklar** och **Azure kognitiv sökning nycklar** som används för att få åtkomst till tjänsten i kundens prenumeration.
+
+Använd de här nycklarna när du gör förfrågningar till tjänsten via API: er.
+
+![Hanterad för hands version av Key Management](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
+
+|Namn|Plats|Syfte|
+|--|--|--|
+|Redigering/prenumerations nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
+|Administratörs nyckel för Azure Kognitiv sökning|[Azure-portalen](../../../search/search-security-api-keys.md)|Dessa nycklar används för att kommunicera med Azure kognitiv Search-tjänsten som distribueras i användarens Azure-prenumeration. När du associerar en Azure kognitiv-sökning med tjänsten QnA Maker Managed (förhands granskning) skickas administratörs nyckeln automatiskt vidare till tjänsten QnA Maker. <br><br>Du hittar dessa nycklar på **Azure kognitiv sökning** -resursen på sidan **nycklar** .|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Hitta redigerings nycklar i Azure Portal
+
+Du kan visa och återställa redigerings nycklarna från Azure Portal, där du skapade resursen QnA Maker Managed (för hands version). Dessa nycklar kan kallas för prenumerations nycklar.
+
+1. Gå till resursen QnA Maker Managed (för hands version) i Azure Portal och välj den resurs som har *Cognitive Servicess* typ:
+
+    ![Resurs lista för QnA Maker Managed (för hands version)](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+
+2. Gå till **nycklar och slut punkt**:
+
+    ![Prenumerations nyckel för QnA Maker Managed (för hands version)](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="update-the-resources"></a>Uppdatera resurserna
+
+Lär dig hur du uppgraderar de resurser som används av din kunskaps bas. QnA Maker Managed (för hands version) är **kostnads fritt** i för hands versionen. 
+
+---
+
+## <a name="management-service-region"></a>Region för hanterings tjänst
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
+
+Hanterings tjänsten för QnA Maker används endast för QnA Maker-portalen och för inledande data bearbetning. Den här tjänsten är endast tillgänglig i regionen **USA, västra** . Ingen kund information lagras i den här västra USA-tjänsten.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
+
+I QnA Maker hanterad (för hands version) är både hanterings-och förutsägelse tjänsterna samplacerade i samma region. För närvarande QnA Maker hanterad (för hands version) tillgänglig i **södra centrala USA, norra Europa och östra Australien**.
+
+---
+
 ## <a name="resource-naming-considerations"></a>Överväganden för resurs namn givning
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
@@ -224,31 +312,6 @@ Om du skapar en QnA-tjänst och dess beroenden (till exempel Sök) via portalen 
 
 Lär dig [hur du konfigurerar](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QNA Maker att använda en annan kognitiv tjänst resurs än den som skapats som en del av processen för att skapa en QNA Maker resurs.
 
-## <a name="management-service-region"></a>Region för hanterings tjänst
-
-Hanterings tjänsten för QnA Maker används endast för QnA Maker-portalen och för inledande data bearbetning. Den här tjänsten är endast tillgänglig i regionen **USA, västra** . Ingen kund information lagras i den här västra USA-tjänsten.
-
-## <a name="keys-in-qna-maker"></a>Nycklar i QnA Maker
-
-Din QnA Maker-tjänst har två typer av nycklar: **redigerings nycklar** och **fråge slut punkts nycklar** som används med körnings miljön som finns i App Service.
-
-Använd de här nycklarna när du gör förfrågningar till tjänsten via API: er.
-
-![Nyckelhantering](../media/qnamaker-how-to-key-management/key-management.png)
-
-|Namn|Plats|Syfte|
-|--|--|--|
-|Redigering/prenumerations nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
-|Frågans slut punkts nyckel|[QnA Maker-portalen](https://www.qnamaker.ai)|Dessa nycklar används för att skicka frågor till den publicerade kunskaps bas slut punkten för att få svar på en användar fråga. Du använder vanligt vis den här fråge slut punkten i din Chat-robot eller i klient program koden som ansluter till QnA Maker-tjänsten. De här nycklarna skapas när du publicerar din QnA Maker-kunskaps bas.<br><br>Sök efter dessa nycklar på sidan **tjänst inställningar** . Hitta den här sidan från användarens meny längst upp till höger på sidan på den nedrullningsbara menyn.|
-
-### <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering
-
-* Skydda kognitiva tjänst resurser från offentlig åtkomst genom [att konfigurera det virtuella nätverket](../../cognitive-services-virtual-networks.md?tabs=portal).
-* Skydda App Service (QnA Runtime) från offentlig åtkomst:
-    * Tillåt enbart trafik från kognitiva tjänst-IP: er. Dessa ingår redan i service tag gen "CognitiveServicesManagement". Detta krävs för att skapa API: er (Skapa/uppdatera KB) för att anropa app service och uppdatera Azure Search-tjänsten enligt detta.
-    * Se till att du även tillåter andra start punkter som bot service, QnA Maker portal (kan vara ditt företags nätverket) osv. för förutsägelse "GenerateAnswer" API-åtkomst.
-    * Läs [Mer information om service märken.](../../../virtual-network/service-tags-overview.md)
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 
 Resurs namnet för den QnA Maker hanterade resursen (för hands version), till exempel `qna-westus-f0-b` , används också för att ge de andra resurserna.
@@ -294,27 +357,6 @@ Med QnA Maker hanterad (för hands version) kan du välja att konfigurera QnA Ma
 ### <a name="qna-maker-resource"></a>QnA Maker resurs
 
 Den QnA Maker hanterade resursen (för hands version) ger åtkomst till API: erna för redigering och publicering, är värd för rangordnings körningen och ger telemetri.
-
-## <a name="region-support"></a>Stöd för regioner
-
-I QnA Maker hanterad (för hands version) är både hanterings-och förutsägelse tjänsterna samplacerade i samma region. För närvarande QnA Maker hanterad (för hands version) tillgänglig i **södra centrala USA, norra Europa och östra Australien**.
-
-### <a name="keys-in-qna-maker-managed-preview"></a>Nycklar i QnA Maker hanterade (för hands version)
-
-Tjänsten QnA Maker Managed (för hands version) har två typer av nycklar: **redigerings nycklar** och **Azure kognitiv sökning nycklar** som används för att få åtkomst till tjänsten i kundens prenumeration.
-
-Använd de här nycklarna när du gör förfrågningar till tjänsten via API: er.
-
-![Hanterad för hands version av Key Management](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
-
-|Namn|Plats|Syfte|
-|--|--|--|
-|Redigering/prenumerations nyckel|[Azure-portalen](https://azure.microsoft.com/free/cognitive-services/)|Dessa nycklar används för att få åtkomst till [API: erna för QNA Maker Management-tjänsten](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase). Med dessa API: er kan du redigera frågorna och svaren i din kunskaps bas och publicera din kunskaps bas. Nycklarna skapas när du skapar en ny QnA Maker-tjänst.<br><br>Sök efter dessa nycklar på **Cognitive Services** resurs på sidan **nycklar** .|
-|Administratörs nyckel för Azure Kognitiv sökning|[Azure-portalen](../../../search/search-security-api-keys.md)|Dessa nycklar används för att kommunicera med Azure kognitiv Search-tjänsten som distribueras i användarens Azure-prenumeration. När du associerar en Azure kognitiv-sökning med tjänsten QnA Maker Managed (förhands granskning) skickas administratörs nyckeln automatiskt vidare till tjänsten QnA Maker. <br><br>Du hittar dessa nycklar på **Azure kognitiv sökning** -resursen på sidan **nycklar** .|
-
-### <a name="recommended-settings-for-network-isolation"></a>Rekommenderade inställningar för nätverks isolering 
-
-Skydda kognitiva tjänst resurser från offentlig åtkomst genom [att konfigurera det virtuella nätverket](../../cognitive-services-virtual-networks.md?tabs=portal).
 
 ---
 

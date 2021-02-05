@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 656cb167fb47e44c28922afed75d8c46a460aaf1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756474"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584405"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Anropa ett webb-API från en mobilapp
 
@@ -117,7 +117,7 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>Gör flera API-begäranden
 
-Om du behöver anropa samma API flera gånger, eller om du behöver anropa flera API: er, bör du tänka på följande när du skapar din app:
+Om du vill anropa samma API flera gånger eller anropa flera API: er kan du tänka på följande när du skapar din app:
 
 - **Stegvist godkännande**: med Microsoft Identity Platform kan appar få användar medgivande när behörigheter krävs i stället för alla vid starten. Varje gången appen är redo att anropa ett API bör den endast begära de omfattningar som krävs.
 
@@ -125,7 +125,7 @@ Om du behöver anropa samma API flera gånger, eller om du behöver anropa flera
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Anropa flera API: er med hjälp av stegvisa medgivande och villkorlig åtkomst
 
-Om du behöver anropa flera API: er för samma användare kan du, efter att du har skaffat en token för användaren, undvika att upprepade gånger be användaren om autentiseringsuppgifter genom att sedan anropa `AcquireTokenSilent` för att hämta en token:
+Om du vill anropa flera API: er för samma användare kan du, efter att du har skaffat en token för användaren, undvika att upprepade gånger be användaren om autentiseringsuppgifter genom att sedan anropa `AcquireTokenSilent` för att hämta en token:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

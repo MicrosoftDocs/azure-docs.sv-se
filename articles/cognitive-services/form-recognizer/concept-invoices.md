@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 875fa2ad5a3a18c0e2582425a6528730234ac8ed
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845580"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585083"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Fördefinierad faktura modell för formulär tolken
 
@@ -74,7 +74,7 @@ JSON-utdata har 3 delar:
 
 Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. Nedan visas fälten som extraheras från en faktura i JSON-utdata (resultatet nedan använder den här [exempel fakturan](./media/sample-invoice.jpg))  
 
-|Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
+|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sträng | Kunden faktureras | Microsoft Corp |  |
 | CustomerId | sträng | Referens-ID för kunden | CID – 12345 |  |
@@ -107,7 +107,7 @@ Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. N
 ## <a name="next-steps"></a>Nästa steg
 
 - Testa dina egna fakturor och exempel i [formulär tolkens exempel gränssnitt](https://fott-preview.azurewebsites.net/).
-- Slutför snabb starten för [formulär tolken](quickstarts/client-library.md) och kom igång genom att skriva en app för faktura bearbetning med formulär tolken på valfritt språk.
+- Slutför snabb starten för [formulär tolken](quickstarts/client-library.md) och kom igång genom att skriva en app för faktura bearbetning med formulär tolken på det utvecklings språk du väljer.
 
 ## <a name="see-also"></a>Se även
 

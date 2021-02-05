@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756487"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584439"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurera en mobilapp som anropar webb-API: er
 
@@ -27,7 +27,7 @@ När du har skapat ditt program får du lära dig hur du konfigurerar koden med 
 
 Följande typer av MSAL-typer (Microsoft Authentication Library) stöder mobila appar.
 
-MSAL | Beskrivning
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Används för att utveckla bärbara program. MSAL.NET stöder följande plattformar för att skapa ett mobil program: Universell Windows-plattform (UWP), Xamarin. iOS och Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Används för att utveckla interna iOS-program med hjälp av mål-C eller Swift.
@@ -82,7 +82,7 @@ I följande avsnitt finns mer information om att instansiera programmet.
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>Ange överordnat gränssnitt, fönster eller aktivitet
 
-På Android måste du skicka den överordnade aktiviteten innan du utför den interaktiva autentiseringen. När du använder en Service Broker i iOS måste du gå vidare `ViewController` . På samma sätt på UWP kanske du vill skicka det överordnade fönstret. Du skickar det i när du hämtar token. Men när du skapar appen kan du också ange ett återanrop som ett ombud som returnerar `UIParent` .
+På Android överför du den överordnade aktiviteten innan du utför den interaktiva autentiseringen. I iOS, när du använder en Service Broker-överföring `ViewController` . På samma sätt på UWP kanske du vill skicka det överordnade fönstret. Du skickar det i när du hämtar token. Men när du skapar appen kan du också ange ett återanrop som ett ombud som returnerar `UIParent` .
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)

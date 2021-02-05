@@ -2,20 +2,21 @@
 title: Tekniska funktioner för säkerhet i Azure – Microsoft Azure
 description: Introduktion till säkerhets tjänster i Azure som hjälper dig att skydda data, resurser och program i molnet.
 services: security
-author: terrylanfear
+author: TerryLanfear
+manager: rkarlin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092776"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585151"
 ---
 # <a name="azure-security-technical-capabilities"></a>Tekniska funktioner för Azure-säkerhet
 Den här artikeln innehåller en introduktion till säkerhets tjänster i Azure som hjälper dig att skydda dina data, resurser och program i molnet och uppfylla verksamhetens behov av säkerhet.
@@ -431,20 +432,6 @@ Resource Manager har flera fördelar:
 > [!Note]
 > Resource Manager erbjuder ett nytt sätt att distribuera och hantera lösningar. Om du använde den tidigare distributions modellen och vill lära dig mer om ändringarna, se [förstå Resource Manager-distribution och klassisk distribution](../../azure-resource-manager/management/deployment-models.md).
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-step"></a>Nästa steg
 
-Lär dig mer om säkerhet genom att läsa några av våra djupgående säkerhets ämnen:
-
-- [Granskning och loggning](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [Cyberbrott](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [Design-och drift säkerhet](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [Kryptering](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [Identitets- och åtkomsthantering](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [Nätverkssäkerhet](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [Hothantering](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+[Azures säkerhets benchmark](../benchmarks/introduction.md) -program innehåller en samling säkerhets rekommendationer som du kan använda för att skydda de tjänster som du använder i Azure.

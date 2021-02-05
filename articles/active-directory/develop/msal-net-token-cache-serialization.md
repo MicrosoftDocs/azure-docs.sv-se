@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7e80123f21efded92ab6d59d550965ca72427b1c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 60ce3d32ffa20fc9117890528eac053d1af9fdf2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064665"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583916"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Cachelagring av token i MSAL.NET
 När en [token har hämtats](msal-acquire-cache-tokens.md)cachelagras den av Microsoft Authentication Library (MSAL).  Program koden bör försöka hämta en token från cachen innan du hämtar en token med en annan metod.  I den här artikeln beskrivs standard och anpassad serialisering för token cache i MSAL.NET.
@@ -34,7 +34,7 @@ I MSAL.NET anges en token i minnet som standard. Serialisering tillhandahålls s
 
 ## <a name="custom-serialization-for-windows-desktop-apps-and-web-appsweb-apis"></a>Anpassad serialisering för Windows-skrivbordsappar och webbappar/webb-API: er
 
-Kom ihåg att anpassad serialisering inte är tillgänglig på mobila plattformar (UWP, Xamarin. iOS och Xamarin. Android). MSAL definierar redan en säker och utförd serialisering för dessa plattformar. .NET Desktop-och .NET Core-program, men har varierande arkitekturer och MSAL kan inte implementera en mekanism för generell användning av serialisering. Webbplatser kan till exempel välja att lagra tokens i en Redis cache, eller skrivbordsappar lagra tokens i en krypterad fil. Därför har serialisering inte tillhandahållits direkt. Om du vill ha ett program med beständig token cache i .NET Desktop eller .NET Core måste du anpassa serialiseringen.
+Kom ihåg att anpassad serialisering inte är tillgänglig på mobila plattformar (UWP, Xamarin. iOS och Xamarin. Android). MSAL definierar redan en säker och utförd serialisering för dessa plattformar. .NET Desktop-och .NET Core-program, men har varierande arkitekturer och MSAL kan inte implementera en mekanism för generell användning av serialisering. Webbplatser kan till exempel välja att lagra tokens i en Redis cache, eller skrivbordsappar lagra tokens i en krypterad fil. Därför har serialisering inte tillhandahållits direkt. Om du vill ha ett program med beständig token cache i .NET Desktop eller .NET Core, anpassar du serialiseringen.
 
 Följande klasser och gränssnitt används i cache-serialisering för token:
 
@@ -281,7 +281,7 @@ MSAL.NET tillhandahåller anpassad cachelagring av token i .NET Framework och .N
 
 [Microsoft. Identity. Web-](https://github.com/AzureAD/microsoft-identity-web) biblioteket innehåller ett för hands versions NuGet-paket [Microsoft. identitet. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) som innehåller serialisering av cachelagring av token:
 
-| Tilläggs metod | Namn område för Microsoft. Identity. Web | Beskrivning  |
+| Tilläggs metod | Namn område för Microsoft. Identity. Web | Description  |
 | ---------------- | --------- | ------------ |
 | `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | I minnes-token cache-serialisering. Den här implementeringen är fantastisk i exempel. Det är också lämpligt i produktions program förutsatt att du inte kommer ihåg att token cache försvinner när webbappen startas om. `AddInMemoryTokenCaches` använder en valfri parameter av typen `MsalMemoryTokenCacheOptions` som gör att du kan ange efter hur lång tid som cache-posten ska gå ut om den inte används.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Token-cachen är kopplad till användarsessionen. Det här alternativet är inte idealiskt om ID-token innehåller många anspråk eftersom cookien skulle bli för stor.
@@ -331,7 +331,7 @@ Deras användning finns i [självstudierna ASP.net Core Web Apps](/aspnet/core/t
 
 I följande exempel visas serialisering av cachelagring av token.
 
-| Exempel | Plattform | Beskrivning|
+| Exempel | Plattform | Description|
 | ------ | -------- | ----------- |
 |[Active Directory – dotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Desktop (WPF) | Windows Desktop .NET-program (WPF) anropar Microsoft Graph-API: et. ![Diagrammet visar en topologi med Desktop app W P F TodoListClient som flödar till Azure A D genom att förvärva en token interaktivt och till Microsoft Graph.](media/msal-net-token-cache-serialization/topology.png)|
 |[Active Directory – dotNet-v1-till-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Skriv bord (konsol) | En uppsättning Visual Studio-lösningar som illustrerar migreringen av Azure AD v 1.0-program (med ADAL.NET) till Microsoft Identity Platform-program (med MSAL.NET). I synnerhet, se [migrering av token cache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

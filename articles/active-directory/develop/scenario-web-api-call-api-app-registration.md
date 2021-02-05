@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8349b7a53eb7b03b27c695bb24c8cb9bc665a1ac
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: af1047c5f890b1b88ae6d043a30704e84b8dc079
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756356"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584322"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>Ett webb-API som anropar webb-API: app-registrering
 
-Ett webb-API som anropar underordnade webb-API: er har samma registrering som en skyddad webb-API. Du måste därför följa instruktionerna i [Protected Web API: app Registration](scenario-protected-web-api-app-registration.md).
+Ett webb-API som anropar underordnade webb-API: er har samma registrering som en skyddad webb-API. Följ instruktionerna i [Protected Web API: app Registration](scenario-protected-web-api-app-registration.md).
 
 Eftersom webbappen nu anropar webb-API: er blir det ett konfidentiellt klient program. Det är anledningen till att extra registrerings information krävs: appen måste dela hemligheter (klientautentiseringsuppgifter) med Microsoft Identity Platform.
 

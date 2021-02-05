@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223133"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584532"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Använd Synapse Studio för att övervaka dina Apache Spark-program
 
@@ -155,6 +155,26 @@ Du kan visa alla Apache Spark program från **övervaka**  ->  **Apache Spark pr
 6. Kontrol lera fel informationen.
 
    ![jobb information misslyckades](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="compare-apache-spark-applications"></a>Jämför Apache Spark program
+Klicka på knappen **Jämför program** och välj ett program för att jämföra prestanda. användarna kan intuitivt se skillnaden mellan de två programmen.
+
+![Jämför program](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+1. Använd musen för att hovra ett program och sedan visas ikonen **Jämför program** .
+
+2. Klicka på ikonen **Jämför program** och popup-sidan jämför program visas.
+
+3. Klicka på knappen **Välj program** för att öppna sidan **Välj jämförelse program** .
+
+4. När du väljer jämförelse programmet måste användarna antingen ange programmets URL eller välja från listan återkommande. Klicka sedan på knappen **OK** . 
+
+   ![Välj jämförelse program](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
+
+5. Jämförelse resultatet kommer att visas på sidan jämför program.
+
+   ![jämförelse resultat](./media/how-to-monitor-spark-applications/comparison-result.png)
+
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,23 +7,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 750c24fd84629f709beb7a92e92fd1ecf581c09a
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 53334dfdcdb917c754c9bc4205b0918c6d207da8
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862222"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584795"
 ---
-# <a name="install-and-run-form-recognizer-containers-preview"></a>Installera och kör formulär igenkännings behållare (förhands granskning)
+# <a name="install-and-run-form-recognizer-containers-retiring"></a>Installera och kör formulär igenkännings behållare (tas ur bruk)
 
 [!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure formulär tolken använder Machine Learning-teknik för att identifiera och extrahera nyckel/värde-par och tabeller från formulär. Den associerar värden och tabell poster med nyckel/värde-par och matar sedan ut strukturerade data som innehåller relationerna i original filen. 
 
-För att minska komplexiteten och enkelt integrera en anpassad formulär igenkännings modell i automatiserings processen för arbets flödet eller ett annat program, kan du anropa modellen med hjälp av en enkel REST API. Endast fem formulär dokument (eller ett tomt formulär och två ifyllda formulär) behövs, så att du kan få resultat snabbt, exakt och skräddarsys efter ditt eget innehåll. Ingen kraftig manuell åtgärd eller omfattande data vetenskaps expertis krävs. Och det kräver inte data etiketter eller data anteckningar.
+För att minska komplexiteten och enkelt integrera en anpassad formulär igenkännings modell i automatiserings processen för arbets flödet eller ett annat program, kan du anropa modellen med hjälp av en enkel REST API. Endast fem formulär dokument behövs, så att du kan få resultat snabbt, exakt och skräddarsys efter ditt eget innehåll. Ingen kraftig manuell åtgärd eller omfattande data vetenskaps expertis krävs. Och det kräver inte data etiketter eller data anteckningar.
 
 | Funktion | Funktioner |
 |----------|----------|
@@ -35,7 +35,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 Innan du använder formulär igenkännings behållare måste du uppfylla följande krav:
 
-| Obligatoriskt | Syfte |
+| Obligatorisk | Syfte |
 |----------|---------|
 | Docker-motorn | Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> I Windows måste Docker också konfigureras för att stödja Linux-behållare.<br><br> |
 | Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, till exempel register, databaser, behållare och behållar avbildningar samt kunskaper om grundläggande `docker` kommandon. |
@@ -84,37 +84,9 @@ De minsta och rekommenderade processor kärnor och minne som ska allokeras för 
 > [!Note]
 > De lägsta och rekommenderade värdena baseras på Docker-gränser och *inte* värd datorns resurser.
 
-## <a name="get-the-container-images-with-the-docker-pull-command"></a>Hämta behållar avbildningarna med kommandot Docker pull
-
-Behållar avbildningar för både **formulär tolken** och **identifiera text** erbjudanden är tillgängliga i följande behållar register:
-
-| Container | Fullständigt kvalificerat avbildnings namn |
-|-----------|------------|
-| Formigenkänning | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
-| Identifiera text | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-Du behöver båda behållarna, Observera att text behållaren för **tolkning** är [detaljerad utanför den här artikeln.](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
+Du behöver både formulär tolken och Identifiera text behållare, Observera att **identifiera text** containern [beskrivs utanför den här artikeln.](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
-
-### <a name="docker-pull-for-the-form-recognizer-container"></a>Docker-hämtning för formulär igenkännings behållare
-
-#### <a name="form-recognizer"></a>Formigenkänning
-
-Använd följande kommando för att hämta formulär tolkens behållare:
-
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
-```
-### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-hämtning för Identifiera text container
-
-#### <a name="recognize-text"></a>Identifiera text
-
-Använd följande kommando för att hämta Identifiera text container:
-
-```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
 
 ## <a name="how-to-use-the-container"></a>Använda behållaren
 

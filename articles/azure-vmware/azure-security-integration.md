@@ -2,13 +2,13 @@
 title: Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
 description: Lär dig hur du skyddar dina virtuella Azure VMware-lösningar med Azures inbyggda säkerhets verktyg från en enda instrument panel i Azure Security Center.
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061472"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584965"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
 
@@ -36,7 +36,12 @@ Du kan konfigurera arbets ytan Log Analytics med Azure Sentinel för aviserings 
 
 - Azure inbyggda tjänster kan användas för hybrid miljö säkerhet i Azure, Azure VMware-lösning och lokala tjänster.
 - Med hjälp av en Log Analytics arbets yta kan du samla in data eller loggarna till en enda punkt och presentera samma data för olika Azure Native-tjänster.
-- Azure Security Center innehåller säkerhetsfunktioner som övervakning av fil integritet, filbegränsad attack identifiering, utvärdering av operativ Systems korrigering, utvärdering av säkerhets konfiguration och Endpoint Protection.
+- Azure Security Center erbjuder ett antal funktioner, bland annat:
+    - Övervakning av filintegritet
+    - Avkänning av filbaserad attack
+    - Utvärdering av operativ Systems korrigering 
+    - Utvärdering av felkonfigurationer för säkerhet
+    - Endpoint Protection-utvärdering
 - Med Azure Sentinel kan du:
     - Samla in data i moln skala över alla användare, enheter, program och infrastruktur, både lokalt och i flera moln.
     - Identifiera tidigare oidentifierade hot.
@@ -183,7 +188,7 @@ När du har anslutit data källor till Azure Sentinel kan du skapa regler för a
 
 6. På fliken **incident inställningar** aktiverar du **skapa incidenter från aviseringar som utlösts av den här analys regeln** och väljer **nästa: automatiserat svar >**.
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Skärm bild av guiden analys regel för att skapa en ny regel i Azure Sentinel som visar skapa incidenter från aviseringar som utlösts av den här analys regeln som aktive rad.":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Skärm bild av guiden analys regel för att skapa en ny regel i Azure Sentinel. Visar skapa incidenter från aviseringar som utlöses av den här regeln som aktive rad.":::
 
 7. Välj **Nästa: granska >**.
 
@@ -235,6 +240,8 @@ Du kan skapa frågor eller använda den tillgängliga fördefinierade frågan i 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig att använda [Azure Defender-instrumentpanelen](../security-center/azure-defender-dashboard.md).
-- Utforska det fullständiga skydds intervallet som erbjuds av [Azure Defender](../security-center/azure-defender.md).
-- Lär dig mer om [Avancerad attack identifiering i Multistage i Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+Nu när du har gått igenom hur du skyddar dina virtuella datorer i Azure VMware-lösningen, kanske du vill lära dig mer om:
+
+- Använda [Azure Defender-instrumentpanelen](../security-center/azure-defender-dashboard.md).
+- [Avancerad attack identifiering i Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+- [Livs cykel hantering av virtuella datorer i Azure VMware-lösningen](lifecycle-management-of-azure-vmware-solution-vms.md).

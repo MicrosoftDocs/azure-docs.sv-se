@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3ce00c5182246513aaf3178118058826528619d2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752868"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584272"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publicera din app i Azure AD App-galleriet
 
@@ -69,7 +69,7 @@ Stegen för att publicera din app i Azure AD App-galleriet är:
 - Ömsesidiga kunder får en steg-för-steg-konfigurations guide.
 - Kunder som använder systemet för[scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)(Cross-Domain Identity Management) kan använda etablering för samma app.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver ett permanent konto för testning med minst två användare registrerade.
 
@@ -85,7 +85,7 @@ Du kan få ett kostnads fritt test konto med alla Premium Azure AD-funktioner �
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>Steg 1 – Välj rätt enkel inloggnings standard för appen
 
-Om du vill visa ett program i Azure AD App-galleriet måste du implementera minst ett av de alternativ för enkel inloggning som stöds. Om du vill förstå alternativen för enkel inloggning och hur kunderna ska konfigurera dem i Azure AD, se [SSO-alternativ](../manage-apps/sso-options.md).
+Om du vill visa ett program i Azure AD App-galleriet implementerar du minst ett av de alternativ för enkel inloggning som stöds. Om du vill förstå alternativen för enkel inloggning och hur kunderna ska konfigurera dem i Azure AD, se [SSO-alternativ](../manage-apps/sso-options.md).
 
 I följande tabell jämförs huvud standarder: Open Authentication 2,0 (OAuth 2,0) med OpenID Connect (OIDC), Security Assertion Markup Language (SAML) och Web Services Federation (WS-utfodras).
 
@@ -186,7 +186,7 @@ Du behöver en Azure AD-klient för att testa appen. Information om hur du konfi
 
 En Azure AD-klient levereras med varje Microsoft 365 prenumeration. Information om hur du konfigurerar en kostnads fri Microsoft 365 utvecklings miljö finns i [delta i Microsoft 365 Developer-programmet](/office/developer-program/microsoft-365-developer-program).
 
-När du har en klient måste du testa enkel inloggning och [etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
+När du har en klient kan du testa enkel inloggning och [etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
 
 [Registrera ditt program](quickstart-register-app.md) som ett program med flera innehavare **för OIDC-eller Oath-program**. Välj kontona i valfri organisations katalog och alternativet personliga Microsoft-konton i de konto typer som stöds.
 

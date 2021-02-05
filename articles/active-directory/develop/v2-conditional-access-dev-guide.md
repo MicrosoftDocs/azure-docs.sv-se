@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064376"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584238"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Vägledning för utvecklare för Azure Active Directory villkorlig åtkomst
 
@@ -43,7 +43,7 @@ Kunskaper om appar för [en](quickstart-register-app.md) och [flera innehavare](
 
 ### <a name="app-types-impacted"></a>Program typer som påverkas
 
-I de flesta vanliga fall ändrar inte villkorlig åtkomst appens beteende eller kräver ändringar från utvecklaren. Endast i vissa fall när en app indirekt eller tyst begär en token för en tjänst, kräver en app kod ändringar för att hantera utmaningarna med villkorlig åtkomst. Det kan vara så enkelt som att utföra en interaktiv inloggnings förfrågan.
+I de flesta vanliga fall ändrar inte villkorlig åtkomst appens beteende eller kräver ändringar från utvecklaren. I vissa fall när en app indirekt eller tyst begär en token för en tjänst, kräver en app kod ändringar för att hantera utmaningarna för villkorlig åtkomst. Det kan vara så enkelt som att utföra en interaktiv inloggnings förfrågan.
 
 Mer specifikt kräver följande scenarier kod för att hantera utmaningarna för villkorlig åtkomst:
 
@@ -54,7 +54,7 @@ Mer specifikt kräver följande scenarier kod för att hantera utmaningarna för
 
 Principer för villkorlig åtkomst kan tillämpas på appen, men kan också tillämpas på ett webb-API som appen får åtkomst till. Mer information om hur du konfigurerar en princip för villkorlig åtkomst finns i [snabb start: KRÄV MFA för vissa appar med Azure Active Directory villkorlig åtkomst](../authentication/tutorial-enable-azure-mfa.md).
 
-Beroende på scenariot kan en företags kund tillämpa och ta bort principer för villkorlig åtkomst när som helst. För att din app ska fortsätta att fungera när en ny princip tillämpas måste du implementera "utmanings hanteringen". I följande exempel visas utmanings hantering.
+Beroende på scenariot kan en företags kund tillämpa och ta bort principer för villkorlig åtkomst när som helst. Implementera utmanings hantering för att din app ska fortsätta att fungera när en ny princip tillämpas. I följande exempel visas utmanings hantering.
 
 ### <a name="conditional-access-examples"></a>Exempel på villkorlig åtkomst
 

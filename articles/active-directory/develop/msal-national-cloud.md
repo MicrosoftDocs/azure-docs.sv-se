@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f9396e20ae0f426dddd57b32297cfe98e135c44
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 01a69dbf9230154b74145f932b678d6bbebbde08
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225824"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583967"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Använda MSAL i en nationell moln miljö
 
@@ -40,7 +40,7 @@ Innan du börjar ska du kontrol lera att du uppfyller dessa krav.
 
 ### <a name="choose-the-appropriate-identities"></a>Välj lämpliga identiteter
 
-[Azure Government](../../azure-government/index.yml) program kan använda Azure AD myndighets identiteter och offentliga Azure AD-identiteter för att autentisera användare. Eftersom du kan använda någon av dessa identiteter måste du bestämma vilken auktoritets slut punkt du ska välja för ditt scenario:
+[Azure Government](../../azure-government/index.yml) program kan använda Azure AD myndighets identiteter och offentliga Azure AD-identiteter för att autentisera användare. Eftersom du kan använda någon av dessa identiteter bestämmer du vilken auktoritets slut punkt du bör välja för ditt scenario:
 
 - Azure AD Public: används ofta om din organisation redan har en offentlig Azure AD-klient som stöder Microsoft 365 (offentlig eller GCC) eller något annat program.
 - Azure AD myndigheter: används ofta om din organisation redan har en Azure AD myndighets-klient som stöder Office 365 (GCC High eller DoD) eller skapar en ny klient i Azure AD myndigheter.

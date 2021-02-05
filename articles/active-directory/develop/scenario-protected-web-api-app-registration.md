@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5d93df0b6d59e013c22e138942ab4651784421ae
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756462"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584388"
 ---
 # <a name="protected-web-api-app-registration"></a>Skyddat webb-API: registrera appar
 
@@ -58,7 +58,7 @@ Andra inställningar som är speciella för webb-API: er är exponerade API och 
 
 Omfattningarna har vanligt vis formuläret `resourceURI/scopeName` . För Microsoft Graph har omfången genvägar. Till exempel `User.Read` är en genväg till `https://graph.microsoft.com/user.read` .
 
-När du registrerar appar måste du definiera följande parametrar:
+Definiera följande parametrar under app Registration:
 
 - Resurs-URI
 - Ett eller flera omfång
@@ -68,7 +68,7 @@ Som standard rekommenderar program registrerings portalen att du använder resur
 
 För klient program visas omfattningar som *delegerade behörigheter* och app-roller visas som *program behörigheter* för ditt webb-API.
 
-Omfattningar visas också i godkännande fönstret som presenteras för användare av din app. Du måste ange motsvarande strängar som beskriver omfånget:
+Omfattningar visas också i godkännande fönstret som presenteras för användare av din app. Ange därför motsvarande strängar som beskriver omfånget:
 
 - Som det setts av en användare.
 - Som det visas av en innehavaradministratör, som kan ge administrativt medgivande.
@@ -99,7 +99,7 @@ I det här avsnittet får du lära dig hur du registrerar ditt skyddade webb-API
 
 #### <a name="exposing-application-permissions-app-roles"></a>Exponera program behörigheter (app-roller)
 
-Om du vill visa program behörigheter måste du redigera manifestet.
+Redigera manifestet för att exponera program behörigheter.
 
 1. Välj **manifest** i program registreringen för ditt program.
 1. Om du vill redigera manifestet letar du upp `appRoles` inställningen och lägger till program roller. Roll definitionerna finns i följande exempel-JSON-block.

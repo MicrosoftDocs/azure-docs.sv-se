@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064852"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583984"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Kända problem i Internet Explorer-webbläsare (MSAL.js)
 
@@ -39,7 +39,7 @@ Detta beror på att Internet Explorer inte har stöd för JavaScript-löfte inte
 Att distribuera ditt program till produktion (till exempel i Azure Web Apps) fungerar normalt bra, förutsatt att slutanvändaren har accepterat popup-fönster. Vi testade det med Internet Explorer 11.
 
 ### <a name="running-locally"></a>Körs lokalt
-Om du vill köra och felsöka lokalt program som körs i Internet Explorer måste du vara medveten om följande saker (Antag att du vill köra programmet som *http://localhost:1234* ):
+Om du vill köra och felsöka lokalt program som körs i Internet Explorer måste du tänka på följande saker (Antag att du vill köra programmet som *http://localhost:1234* ):
 
 - Internet Explorer har en säkerhetsmekanism med namnet "skyddat läge", vilket förhindrar att MSAL.js fungerar korrekt. När du har loggat in kan du välja mellan att omdirigera sidan till http://localhost:1234/null .
 

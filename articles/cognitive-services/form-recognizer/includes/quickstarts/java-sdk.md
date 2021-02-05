@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 3923f3d0a65412c23d5fc32d7a4cea8648686df4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4f48416153f5a378f9e4eff84802519250488301
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948405"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584677"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
@@ -155,7 +155,7 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 
 `FormRecognizerClient` tillhandahåller åtgärder för:
 
-- Igenkänning av formulär fält och innehåll, med anpassade modeller utbildade för att identifiera dina anpassade formulär.  Dessa värden returneras i en `RecognizedForm` objekt samling. Se exempel [analysera anpassade formulär](#analyze-forms-with-a-custom-model).
+- Igenkänning av formulär fält och innehåll, med anpassade modeller som har tränats för att analysera dina anpassade formulär.  Dessa värden returneras i en `RecognizedForm` objekt samling. Se exempel [analysera anpassade formulär](#analyze-forms-with-a-custom-model).
 - Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell.  Formulär innehåll returneras i en `FormPage` objekt samling. Se exempel [analys av layout](#analyze-layout).
 - Identifiera vanliga fält från USA-kvitton med en förtränad kvitto modell på formulär igenkännings tjänsten.  Dessa fält och meta-data returneras i en `RecognizedForm` objekt samling. Se exempel på att [analysera inleveranser](#analyze-receipts).
 
@@ -163,8 +163,8 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 
 `FormTrainingClient` tillhandahåller åtgärder för:
 
-- Utbilda anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär.  En `CustomFormModel` returneras som anger vilka formulär som modellen ska identifiera och vilka fält som ska extraheras för varje formulär typ.
-- Utbilda anpassade modeller för att identifiera vissa fält och värden som du anger genom att namnge dina anpassade formulär.  En `CustomFormModel` returneras som anger de fält som modellen extraherar, samt den uppskattade noggrannheten för varje fält.
+- Utbilda anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär.  En `CustomFormModel` returneras som anger vilka formulär modeller som ska analyseras och vilka fält som ska extraheras för varje formulär typ.
+- Utbilda anpassade modeller för att analysera vissa fält och värden som du anger genom att namnge dina anpassade formulär.  En `CustomFormModel` returneras som anger de fält som modellen extraherar, samt den uppskattade noggrannheten för varje fält.
 - Hantera modeller som skapats i ditt konto.
 - Kopiera en anpassad modell från en formulär igenkännings resurs till en annan.
 
@@ -202,9 +202,9 @@ Lägg till följande kod högst upp i **huvud** metoden. Här ska du autentisera
 
 ## <a name="analyze-layout"></a>Analysera layout
 
-Du kan använda formulär igenkänning för att identifiera tabeller, rader och ord i dokument, utan att behöva träna en modell.
+Du kan använda formulär igenkänning för att analysera tabeller, rader och ord i dokument, utan att behöva träna en modell. Mer information om extrahering av layout finns i [rikt linjer för layout](../../concept-layout.md).
 
-Om du vill identifiera innehållet i en fil på en viss URL använder du metoden **beginRecognizeContentFromUrl** .
+Om du vill analysera innehållet i en fil på en viss URL använder du metoden **beginRecognizeContentFromUrl** .
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
@@ -233,65 +233,6 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="analyze-receipts"></a>Analysera kvitton
-
-Det här avsnittet visar hur du identifierar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell.
-
-Om du vill känna igen kvitton från en URI använder du metoden **beginRecognizeReceiptsFromUrl** . 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
-
-> [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
-
-Det returnerade värdet är en samling **RecognizedReceipt** -objekt: en för varje sida i det dokument som skickas. Nästa kodblock upprepas genom kvittona och skriver ut information till-konsolen.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
-
-Nästa kodblock upprepas genom de enskilda objekt som identifierats vid inleveransen och skriver ut information till-konsolen.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
-
-### <a name="output"></a>Utdata 
-
-```console
-Analyze receipt...
------------ Recognized Receipt page 0 -----------
-Merchant Name: Contoso Contoso, confidence: 0.62
-Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
-Transaction Date: 2020-06-10, confidence: 0.90
-Receipt Items:
-Name: Cappuccino, confidence: 0.96s
-Quantity: null, confidence: 0.957s]
-Total Price: 2.200000, confidence: 0.95
-Name: BACON & EGGS, confidence: 0.94s
-Quantity: null, confidence: 0.927s]
-Total Price: null, confidence: 0.93
-```
-
-## <a name="analyze-business-cards"></a>Analysera visitkort
-
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Den här funktionen är inte tillgänglig i den valda API-versionen.
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
-
-Det här avsnittet visar hur du känner igen och extraherar vanliga fält från engelska visitkort med en förtränad modell.
-
-Använd metoden för att identifiera visitkort från en URL `beginRecognizeBusinessCardsFromUrl` . 
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
-
-> [!TIP]
-> Du kan också identifiera lokala visitkorts avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
-
-Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varje kort i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>Analysera fakturor
 
@@ -302,16 +243,16 @@ Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varj
 
 #### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
-Det här avsnittet visar hur du identifierar och extraherar gemensamma fält från försäljnings fakturor med hjälp av en förtränad modell.
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från försäljnings fakturor med hjälp av en förtränad modell. Mer information om faktura analys finns i [vägledningen för faktura](../../concept-invoices.md).
 
-Använd metoden för att identifiera visitkort från en URL `beginRecognizeInvoicesFromUrl` . 
+Använd metoden för att analysera fakturor från en URL `beginRecognizeInvoicesFromUrl` . 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> Du kan också identifiera lokala fakturor. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **beginRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala fakturor. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
 
-Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varje faktura i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
+Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varje faktura i dokumentet. Följande kod bearbetar fakturan vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
@@ -326,14 +267,14 @@ Det här avsnittet visar hur du tränar en modell med dina egna data. En utbilda
 
 ### <a name="train-a-model-without-labels"></a>Träna en modell utan etiketter
 
-Träna anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten.
+Träna anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten.
 
 Följande metod tränar en modell på en specifik uppsättning dokument och skriver ut modellens status till-konsolen. 
 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
-Det returnerade **CustomFormModel** -objektet innehåller information om formulär typerna som modellen kan identifiera och vilka fält som kan extraheras från varje formulär typ. Följande kod block skriver ut den här informationen till-konsolen.
+Det returnerade **CustomFormModel** -objektet innehåller information om formulär typerna som modellen kan analysera och vilka fält som kan extraheras från varje formulär typ. Följande kod block skriver ut den här informationen till-konsolen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_print)]
 
@@ -428,6 +369,65 @@ Field 'field-5' has label 'Charges' with a confidence score of 1.00.
 Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 ```
 
+## <a name="analyze-receipts"></a>Analysera kvitton
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell. Mer information om inleverans analys finns i [Guide för inleveranser konceptuell](../../concept-receipts.md).
+
+Om du vill analysera kvitton från en URI använder du metoden **beginRecognizeReceiptsFromUrl** . 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
+
+> [!TIP]
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+
+Det returnerade värdet är en samling **RecognizedReceipt** -objekt: en för varje sida i det dokument som skickas. Nästa kodblock upprepas genom kvittona och skriver ut information till-konsolen.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print)]
+
+Nästa kodblock upprepas genom de enskilda objekt som identifierats vid inleveransen och skriver ut information till-konsolen.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
+
+### <a name="output"></a>Utdata 
+
+```console
+Analyze receipt...
+----------- Recognized Receipt page 0 -----------
+Merchant Name: Contoso Contoso, confidence: 0.62
+Merchant Address: 123 Main Street Redmond, WA 98052, confidence: 0.99
+Transaction Date: 2020-06-10, confidence: 0.90
+Receipt Items:
+Name: Cappuccino, confidence: 0.96s
+Quantity: null, confidence: 0.957s]
+Total Price: 2.200000, confidence: 0.95
+Name: BACON & EGGS, confidence: 0.94s
+Quantity: null, confidence: 0.927s]
+Total Price: null, confidence: 0.93
+```
+
+## <a name="analyze-business-cards"></a>Analysera visitkort
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från engelska visitkort med en förtränad modell. Mer information om företags korts analys finns i [konceptuell guide för visitkort](../../concept-business-cards.md).
+
+Använd-metoden för att analysera visitkort från en URL `beginRecognizeBusinessCardsFromUrl` . 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
+
+> [!TIP]
+> Du kan också analysera lokala företags korts avbildningar. Se [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) -metoderna, till exempel **beginRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) för scenarier som involverar lokala avbildningar.
+
+Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varje kort i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>Hantera anpassade modeller
 

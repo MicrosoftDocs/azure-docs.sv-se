@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 36724e518f1bae636c2d2602a227b53a11257591
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791062"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584778"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Lägg till en säker SharePoint-datakälla i kunskaps basen
 
@@ -20,7 +20,7 @@ När du lägger till ett skyddat SharePoint-dokument i kunskaps basen måste du 
 
 Om QnA Maker Knowledge Base Manager inte är Active Directory Manager måste du kommunicera med Active Directory Manager för att slutföra den här processen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Molnbaserad SharePoint-QnA Maker använder Microsoft Graph för behörigheter. Om ditt SharePoint är lokalt kan du inte extrahera från SharePoint eftersom Microsoft Graph inte kan fastställa behörigheter.
 * URL-format – QnA Maker stöder endast SharePoint-URL: er som genereras för delning och är av format `https://\*.sharepoint.com`
@@ -132,8 +132,8 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 Det finns en lösning för att lägga till det senaste SharePoint-innehållet via API med Azure Blob Storage. nedan följer stegen: 
 1.  Hämta SharePoint-filerna lokalt. Användaren som anropar API: n måste ha åtkomst till SharePoint. 
-1.  Överför dem till Azure Blob-stoarge. Då skapas en säker delad åtkomst med [hjälp av SAS-token.](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) 
-1. Skicka BLOB-URL: en som genereras med SAS-token till API för QnA Maker. Om du vill tillåta att frågan svarar på extrahering från filerna måste du lägga till suffixets filtyp som "&ext = PDF" eller "&ext = doc" i slutet av URL: en innan du skickar den till API för QnA Maker>  
+1.  Överför dem till Azure Blob Storage. Då skapas en säker delad åtkomst med [hjälp av SAS-token.](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) 
+1. Skicka BLOB-URL: en som genereras med SAS-token till API för QnA Maker. Om du vill tillåta att frågan svarar på extrahering från filerna måste du lägga till suffixets filtyp som "&ext = PDF" eller "&ext = doc" i slutet av URL: en innan du skickar den till API för QnA Maker.
 
 
 <!--

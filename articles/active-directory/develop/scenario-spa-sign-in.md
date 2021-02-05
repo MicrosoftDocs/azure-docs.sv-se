@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 60ecb60d2fe90f190963255adff7a0bb1df15da4
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bdfffbf8d2e416c87dd5abb8f6383c58ad270231
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756381"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584371"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Program med en sida: inloggning och utloggning
 
@@ -208,7 +208,7 @@ myMsal.loginRedirect(loginRequest);
 
 # <a name="javascript-msaljs-1x"></a>[Java Script (MSAL.js 1. x)](#tab/javascript1)
 
-Omdirigerings metoderna returnerar inte ett löfte på grund av att huvud-appen har flyttats bort. Om du vill bearbeta och komma åt de returnerade tokens måste du registrera lyckade och felfria återanrop innan du anropar omdirigerings metoderna.
+Omdirigerings metoderna returnerar inte ett löfte på grund av att huvud-appen har flyttats bort. Om du vill bearbeta och komma åt de returnerade tokens registrerar du lyckade och felfria återanrop innan du anropar omdirigerings metoderna.
 
 ```javascript
 

@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 3f2e8fef35095a007051999d806f2942089ae19a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164948"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584761"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Acceptera föreslagna frågor om aktiva utbildningar i kunskaps basen
 
@@ -49,18 +49,39 @@ För att kunna se föreslagna frågor måste du [Aktivera aktiv utbildning](../c
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
+## <a name="active-learning-suggestions-are-saved-in-the-exported-knowledge-base"></a>Aktiva utbildnings förslag sparas i den exporterade kunskaps basen
+
+När du har aktiverat aktiv inlärning i appen och du exporterar appen, `SuggestedQuestions` behåller kolumnen i TSV-filen de aktiva inlärnings data.
+
+`SuggestedQuestions`Kolumnen är ett JSON-objekt med information om implicit, `autosuggested` och explicit, `usersuggested` feedback. Ett exempel på detta JSON-objekt för en enskild användare som har skickat frågan av `help` är:
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+När du importerar om den här appen fortsätter den aktiva inlärningen att samla in information och rekommendera förslag för din kunskaps bas.
+
+
 ### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>Arkitektur flöde för att använda GenerateAnswer och träna API: er från en robot
 
 En robot eller något annat klient program bör använda följande arkitektur flöde för att använda aktiv inlärning:
 
 * Bot [hämtar svaret från kunskaps basen](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) med GenerateAnswer-API: et med hjälp av `top` egenskapen för att få ett antal svar.
-* Bot avgör explicit feedback:
-    * Filtrera ut låga resultat med din egen [anpassade affärs logik](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user).
-    * I robot-eller klient programmet visar du en lista över möjliga svar på användaren och får användarens valda svar.
-* Robot [skickar det valda svaret tillbaka till QNA Maker](#bot-framework-sample-code) med [träna-API: et](#train-api).
 
-
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Använd egenskapen Top i GenerateAnswer-begäran för att få flera matchande svar
+#### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Använd egenskapen Top i GenerateAnswer-begäran för att få flera matchande svar
 
 När du skickar en fråga till QnA Maker för ett svar `top` anger egenskapen för JSON-texten antalet svar som ska returneras.
 
@@ -71,6 +92,12 @@ När du skickar en fråga till QnA Maker för ett svar `top` anger egenskapen f�
     "top": 3
 }
 ```
+
+* Bot avgör explicit feedback:
+    * Filtrera ut låga resultat med din egen [anpassade affärs logik](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user).
+    * I robot-eller klient programmet visar du en lista över möjliga svar på användaren och får användarens valda svar.
+* Robot [skickar det valda svaret tillbaka till QNA Maker](#bot-framework-sample-code) med [träna-API: et](#train-api).
+
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Använd score-egenskapen tillsammans med affärs logiken för att få en lista med svar för att visa användare
 
@@ -310,34 +337,7 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktiv inlärning sparas i den exporterade kunskaps basen
-
-När du har aktiverat aktiv inlärning i appen och du exporterar appen, `SuggestedQuestions` behåller kolumnen i TSV-filen de aktiva inlärnings data.
-
-`SuggestedQuestions`Kolumnen är ett JSON-objekt med information om implicit, `autosuggested` och explicit, `usersuggested` feedback. Ett exempel på detta JSON-objekt för en enskild användare som har skickat frågan av `help` är:
-
-```JSON
-[
-    {
-        "clusterHead": "help",
-        "totalAutoSuggestedCount": 1,
-        "totalUserSuggestedCount": 0,
-        "alternateQuestionList": [
-            {
-                "question": "help",
-                "autoSuggestedCount": 1,
-                "userSuggestedCount": 0
-            }
-        ]
-    }
-]
-```
-
-När du importerar om den här appen fortsätter den aktiva inlärningen att samla in information och rekommendera förslag för din kunskaps bas.
-
-
-
-## <a name="best-practices"></a>Bästa praxis
+## <a name="best-practices"></a>Rekommenderade metoder
 
 För bästa praxis när du använder aktiv inlärning, se [metod tips](../Concepts/best-practices.md#active-learning).
 

@@ -9,20 +9,20 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845590"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585117"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Skapa en tränings data uppsättning för en anpassad modell
 
 När du använder den anpassade modellen för formulär igenkänning kan du ange dina egna utbildnings data till åtgärden [träna anpassad modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) så att modellen kan träna till dina branschspecifika formulär. Följ den här guiden för att lära dig hur du samlar in och förbereder data för att träna modellen på ett effektivt sätt.
 
-Om du är utbildning utan manuella etiketter kan du använda fem ifyllda formulär eller ett tomt formulär (du måste inkludera ordet "tomt" i fil namnet) plus två ifyllda formulär. Även om du har tillräckligt med ifyllda formulär kan du förbättra modellens precision genom att lägga till ett tomt formulär i din tränings data uppsättning.
+Du behöver minst fem ifyllda formulär av samma typ.
 
-Om du vill använda manuellt märkta utbildnings data måste du börja med minst fem ifyllda formulär av samma typ. Du kan fortfarande använda omärkta formulär och ett tomt formulär utöver den obligatoriska data uppsättningen.
+Om du vill använda manuellt märkta utbildnings data måste du börja med minst fem ifyllda formulär av samma typ. Du kan fortfarande använda omärkta formulär utöver den obligatoriska data uppsättningen.
 
 ## <a name="custom-model-input-requirements"></a>Krav för anpassad modell indatamängd
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 4cd762d6c264d95ecb1bd0f3f4c3a4d96eb5a57d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131141"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585100"
 ---
 # <a name="form-recognizer-prebuilt-business-cards-model"></a>Fördefinierad visitkorts modell för formulär igenkänning 
 
@@ -35,7 +35,7 @@ Det inbyggda visitkorts-API: n extraherar nyckel fält från visitkort och retur
 |:-----|:----|:----|:----|
 | ContactNames | objekt mat ris | Kontakt namn extraherat från visitkort | [{"FirstName": "John", "LastName": "berg"}] |
 | FirstName | sträng | Första (angivet) namn på kontakt | Anders | 
-| LastName | sträng | Kontaktens senaste (familj) namn |   Andersson | 
+| LastName | sträng | Kontaktens senaste (familj) namn |     Andersson | 
 | CompanyNames | matris med strängar | Företags namn extraherat från visitkort | ["Contoso"] | 
 | Avdelningar | matris med strängar | Kontakt personens avdelning eller organisation | ["R&D"] | 
 | JobTitles | matris med strängar | Listad kontakt persons titel | ["Program varu tekniker"] | 
@@ -45,7 +45,7 @@ Det inbyggda visitkorts-API: n extraherar nyckel fält från visitkort och retur
 | MobilePhones | matris med telefonnummer | Mobiltelefon nummer extraherat från visitkort | ["+ 19876543210"] |
 | Fax | matris med telefonnummer | Fax nummer extraherat från visitkort | ["+ 19876543211"] |
 | WorkPhones | matris med telefonnummer | Telefonnummer för arbets telefonnummer som extraherats från visitkort | ["+ 19876543231"] |
-| OtherPhones    | matris med telefonnummer | Annat telefonnummer extraherat från visitkort | ["+ 19876543233"] |
+| OtherPhones     | matris med telefonnummer | Annat telefonnummer extraherat från visitkort | ["+ 19876543233"] |
 
 
 Visitkorts-API: et kan också returnera all identifierad text från visitkortet. Denna OCR-utdata ingår i JSON-svaret.  

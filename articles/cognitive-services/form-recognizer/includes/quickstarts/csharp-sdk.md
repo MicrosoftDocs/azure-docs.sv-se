@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 93282e79321f8999ddf8c737ebcb5ea76fbf6e02
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e85a6ad4619897a6c655874b43e6a6b1a7723d3a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948326"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584673"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
@@ -112,7 +112,7 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 
 `FormRecognizerClient` tillhandahåller åtgärder för:
 
- - Igenkänning av formulär fält och innehåll, med anpassade modeller utbildade för att identifiera dina anpassade formulär.  Dessa värden returneras i en `RecognizedForm` objekt samling. Se exempel [analysera anpassade formulär](#analyze-forms-with-a-custom-model).
+ - Igenkänning av formulär fält och innehåll, med anpassade modeller som har tränats för att analysera dina anpassade formulär.  Dessa värden returneras i en `RecognizedForm` objekt samling. Se exempel [analysera anpassade formulär](#analyze-forms-with-a-custom-model).
  - Igenkänning av formulär innehåll, inklusive tabeller, rader och ord, utan att behöva träna en modell.  Formulär innehåll returneras i en `FormPage` objekt samling. Se exempel [analys av layout](#analyze-layout).
  - Identifiera vanliga fält från USA-kvitton med en förtränad kvitto modell på formulär igenkännings tjänsten. Dessa fält och meta-data returneras i en `RecognizedForm` objekt samling. Se exempel på att [analysera inleveranser](#analyze-receipts).
 
@@ -120,8 +120,8 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 
 `FormTrainingClient` tillhandahåller åtgärder för:
 
-- Utbilda anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär.  En `CustomFormModel` returneras som anger vilka formulär som modellen ska identifiera och vilka fält som ska extraheras för varje formulär typ.
-- Utbilda anpassade modeller för att identifiera vissa fält och värden som du anger genom att namnge dina anpassade formulär.  En `CustomFormModel` returneras som anger de fält som modellen extraherar, samt den uppskattade noggrannheten för varje fält.
+- Utbilda anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär.  En `CustomFormModel` returneras som anger vilka formulär modeller som ska analyseras och vilka fält som ska extraheras för varje formulär typ.
+- Utbilda anpassade modeller för att analysera vissa fält och värden som du anger genom att namnge dina anpassade formulär.  En `CustomFormModel` returneras som anger de fält som modellen extraherar, samt den uppskattade noggrannheten för varje fält.
 - Hantera modeller som skapats i ditt konto.
 - Kopiera en anpassad modell från en formulär igenkännings resurs till en annan.
 
@@ -191,9 +191,9 @@ Du måste också lägga till referenser till URL: erna för din utbildning och t
 
 ## <a name="analyze-layout"></a>Analysera layout
 
-Du kan använda formulär igenkänning för att identifiera tabeller, rader och ord i dokument, utan att behöva träna en modell. Det returnerade värdet är en samling **FormPage** -objekt: en för varje sida i det dokument som skickas. 
+Du kan använda formulär igenkänning för att analysera tabeller, rader och ord i dokument, utan att behöva träna en modell. Det returnerade värdet är en samling **FormPage** -objekt: en för varje sida i det dokument som skickas. Mer information om extrahering av layout finns i [rikt linjer för layout](../../concept-layout.md).
 
-Använd metoden för att identifiera innehållet i en fil på en viss URL `StartRecognizeContentFromUri` .
+Använd metoden för att analysera innehållet i en fil på en viss URL `StartRecognizeContentFromUri` .
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
 
@@ -239,89 +239,6 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-## <a name="analyze-receipts"></a>Analysera kvitton
-
-Det här avsnittet visar hur du identifierar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell.
-
-Om du vill känna igen kvitton från en URL använder du- `StartRecognizeReceiptsFromUri` metoden. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
-
-> [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **StartRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
-
-Det returnerade värdet är en samling `RecognizedReceipt` objekt: ett för varje sida i det dokument som skickas. Följande kod bearbetar kvittot vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
-
-### <a name="output"></a>Utdata 
-
-```console
-Form Page 1 has 18 lines.
-    Line 0 has 1 word, and text: 'Contoso'.
-    Line 1 has 1 word, and text: 'Address:'.
-    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
-    Line 3 has 4 words, and text: '1 Redmond way Suite'.
-    Line 4 has 3 words, and text: '1020 Enterprise Way'.
-    Line 5 has 3 words, and text: '6000 Redmond, WA'.
-    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
-    Line 7 has 1 word, and text: '99243'.
-    Line 8 has 2 words, and text: 'Invoice Number'.
-    Line 9 has 2 words, and text: 'Invoice Date'.
-    Line 10 has 3 words, and text: 'Invoice Due Date'.
-    Line 11 has 1 word, and text: 'Charges'.
-    Line 12 has 2 words, and text: 'VAT ID'.
-    Line 13 has 1 word, and text: '34278587'.
-    Line 14 has 1 word, and text: '6/18/2017'.
-    Line 15 has 1 word, and text: '6/24/2017'.
-    Line 16 has 1 word, and text: '$56,651.49'.
-    Line 17 has 1 word, and text: 'PT'.
-Table 0 has 2 rows and 6 columns.
-    Cell (0, 0) contains text: 'Invoice Number'.
-    Cell (0, 1) contains text: 'Invoice Date'.
-    Cell (0, 2) contains text: 'Invoice Due Date'.
-    Cell (0, 3) contains text: 'Charges'.
-    Cell (0, 5) contains text: 'VAT ID'.
-    Cell (1, 0) contains text: '34278587'.
-    Cell (1, 1) contains text: '6/18/2017'.
-    Cell (1, 2) contains text: '6/24/2017'.
-    Cell (1, 3) contains text: '$56,651.49'.
-    Cell (1, 5) contains text: 'PT'.
-Merchant Name: 'Contoso Contoso', with confidence 0.516
-Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
-Item:
-    Name: '8GB RAM (Black)', with confidence 0.916
-    Total Price: '999', with confidence 0.559
-Item:
-    Name: 'SurfacePen', with confidence 0.858
-    Total Price: '99.99', with confidence 0.386
-Total: '1203.39', with confidence '0.774'
-```
-
-## <a name="analyze-business-cards"></a>Analysera visitkort
-
-#### <a name="version-20"></a>[version 2,0](#tab/ga)
-
-> [!IMPORTANT]
-> Den här funktionen är inte tillgänglig i den valda API-versionen.
-
-#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
-
-
-Det här avsnittet visar hur du känner igen och extraherar vanliga fält från engelska visitkort med en förtränad modell.
-
-Använd metoden för att identifiera visitkort från en URL `StartRecognizeBusinessCardsFromUriAsync` . 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
-
-> [!TIP]
-> Du kan också identifiera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **StartRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
-
-Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje kort i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
-
----
 
 ## <a name="analyze-invoices"></a>Analysera fakturor
 
@@ -332,14 +249,14 @@ Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje k
 
 #### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
-Det här avsnittet visar hur du identifierar och extraherar gemensamma fält från försäljnings fakturor med hjälp av en förtränad modell.
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från försäljnings fakturor med hjälp av en förtränad modell. Mer information om faktura analys finns i [vägledningen för faktura](../../concept-invoices.md).
 
-Använd-metoden för att identifiera fakturor från en URL `StartRecognizeInvoicesFromUriAsync` . 
+Använd metoden för att analysera fakturor från en URL `StartRecognizeInvoicesFromUriAsync` . 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
 
 > [!TIP]
-> Du kan också identifiera lokala faktura avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient) -metoderna, till exempel **StartRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
+> Du kan också analysera lokala faktura avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) -metoderna, till exempel **StartRecognizeInvoices**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
 
 Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje faktura i det dokument som skickas. Följande kod bearbetar fakturan vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
 
@@ -357,13 +274,13 @@ Det här avsnittet visar hur du tränar en modell med dina egna data. En utbilda
 
 ### <a name="train-a-model-without-labels"></a>Träna en modell utan etiketter
 
-Träna anpassade modeller för att identifiera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten. Följande metod tränar en modell på en specifik uppsättning dokument och skriver ut modellens status till-konsolen. 
+Träna anpassade modeller för att analysera alla fält och värden som finns i dina anpassade formulär utan att manuellt märka utbildnings dokumenten. Följande metod tränar en modell på en specifik uppsättning dokument och skriver ut modellens status till-konsolen. 
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train)]
 
 
-Det returnerade `CustomFormModel` objektet innehåller information om formulär typerna som modellen kan identifiera och vilka fält som kan extraheras från varje formulär typ. Följande kod block skriver ut den här informationen till-konsolen.
+Det returnerade `CustomFormModel` objektet innehåller information om formulär typerna som modellen kan analysera och vilka fält som kan extraheras från varje formulär typ. Följande kod block skriver ut den här informationen till-konsolen.
 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_response)]
@@ -560,6 +477,90 @@ Field 'Azure.AI.FormRecognizer.Models.FieldValue:
     Confidence: '0.114
    ...
 ```
+
+## <a name="analyze-receipts"></a>Analysera kvitton
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från amerikanska kvitton med hjälp av en förtränad kvitto modell. Mer information om inleverans analys finns i [Guide för inleveranser konceptuell](../../concept-receipts.md).
+
+Använd-metoden för att analysera kvitton från en URL `StartRecognizeReceiptsFromUri` . 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
+
+> [!TIP]
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) -metoderna, till exempel **StartRecognizeReceipts**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
+
+Det returnerade värdet är en samling `RecognizedReceipt` objekt: ett för varje sida i det dokument som skickas. Följande kod bearbetar kvittot vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
+
+### <a name="output"></a>Utdata 
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+```
+
+## <a name="analyze-business-cards"></a>Analysera visitkort
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+
+
+Det här avsnittet visar hur du analyserar och extraherar vanliga fält från engelska visitkort med en förtränad modell. Mer information om företags korts analys finns i [konceptuell guide för visitkort](../../concept-business-cards.md).
+
+Använd-metoden för att analysera visitkort från en URL `StartRecognizeBusinessCardsFromUriAsync` . 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> Du kan också analysera lokala kvitto avbildningar. Se [FormRecognizerClient](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) -metoderna, till exempel **StartRecognizeBusinessCards**. Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) för scenarier som involverar lokala avbildningar.
+
+Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje kort i dokumentet. Följande kod bearbetar visitkortet vid den aktuella URI: n och skriver ut de viktigaste fälten och värdena till-konsolen.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+---
 
 ## <a name="manage-custom-models"></a>Hantera anpassade modeller
 

@@ -2,13 +2,13 @@
 title: Säkerhetskopiera virtuella datorer i Azure VMware-lösningen med Azure Backup Server
 description: Konfigurera din Azure VMware-lösning för att säkerhetskopiera virtuella datorer med hjälp av Azure Backup Server.
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.date: 02/04/2021
+ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495697"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585032"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Säkerhetskopiera virtuella datorer i Azure VMware-lösningen med Azure Backup Server
 
@@ -48,14 +48,14 @@ Azure Backup Server kommunicerar som standard med VMware-servrar via HTTPS. Om d
 
 1. Högerklicka på rot certifikatet och välj **Installera certifikat**.
 
-1. I **guiden Importera certifikat**väljer du **lokal dator** som mål för certifikatet och väljer **Nästa**.
+1. I **guiden Importera certifikat** väljer du **lokal dator** som mål för certifikatet och väljer **Nästa**.
 
    ![Välkomst sida för guiden](../backup/media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
    > [!NOTE] 
    > Bekräfta att du vill tillåta ändringar på datorn om du uppmanas att göra det.
 
-1. Välj **Placera alla certifikat i följande Arkiv**och välj **Bläddra** för att välja certifikat arkivet.
+1. Välj **Placera alla certifikat i följande Arkiv** och välj **Bläddra** för att välja certifikat arkivet.
 
    ![Certifikat lagring](../backup/media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
@@ -108,7 +108,7 @@ VMware 6,7 och tidigare hade TLS aktiverat som kommunikations protokoll.
 
 ## <a name="add-the-account-on-azure-backup-server"></a>Lägg till kontot på Azure Backup Server
 
-1. Öppna Azure Backup Server och välj **hanterings**  >  **produktions servrar**i Azure Backup Server-konsolen  >  **Hantera VMware**.
+1. Öppna Azure Backup Server och välj **hanterings**  >  **produktions servrar** i Azure Backup Server-konsolen  >  **Hantera VMware**.
 
    ![Azure Backup Server-konsol](../backup/media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -133,7 +133,7 @@ VMware 6,7 och tidigare hade TLS aktiverat som kommunikations protokoll.
 
    ![Öppna guiden för att lägga till produktions server](../backup/media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-1. Välj **VMware-servrar**och välj **Nästa**.
+1. Välj **VMware-servrar** och välj **Nästa**.
 
    ![Guiden för att lägga till produktions server](../backup/media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -166,7 +166,7 @@ VMware 6,7 och tidigare hade TLS aktiverat som kommunikations protokoll.
    - Typ som **VMware-Server** 
    - Agent status som **OK** 
    
-      Om du ser **agent status** som **okänd**väljer du **Uppdatera**.
+      Om du ser **agent status** som **okänd** väljer du **Uppdatera**.
 
 ## <a name="configure-a-protection-group"></a>Konfigurera en skydds grupp
 
@@ -180,7 +180,7 @@ Skydds grupper samlar in flera virtuella datorer och tillämpar samma data lagri
 
    ![Dialog rutan skapa ny skydds grupp guide](../backup/media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. Välj **servrar**på sidan **Välj typ av skydds grupp** och välj sedan **Nästa**. Sidan **Välj grupp medlemmar** visas.
+1. Välj **servrar** på sidan **Välj typ av skydds grupp** och välj sedan **Nästa**. Sidan **Välj grupp medlemmar** visas.
 
 1. På sidan **Välj grupp medlemmar** väljer du de virtuella datorer (eller VM-mappar) som du vill säkerhetskopiera och väljer sedan **Nästa**.
 
@@ -200,7 +200,7 @@ Skydds grupper samlar in flera virtuella datorer och tillämpar samma data lagri
    - **Kvarhållningsintervall**: antalet dagar som disk återställnings punkter behålls.
    - **Snabb och fullständig säkerhets kopiering**: hur ofta disk återställnings punkter tas. Om du vill ändra de tidpunkter eller datum då kortsiktiga säkerhets kopieringar sker väljer du **ändra**.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="vSphere-webbklient":::
+   :::image type="content" source="media/azure-vmware-solution-backup/new-protection-group-specify-short-term-goals.png" alt-text="Ange kortsiktiga mål för disk-baserat skydd":::
 
 1. På sidan **granska disklagring allokering** granskar du disk utrymmet för säkerhets kopiorna för virtuella datorer.
 
@@ -209,19 +209,19 @@ Skydds grupper samlar in flera virtuella datorer och tillämpar samma data lagri
    - **Disk utrymme:** Rekommenderad mängd disk utrymme för skydds gruppen. Om du vill ändra den här inställningen väljer du utrymme som är ljust större än det belopp du uppskattar varje data källa växer.
    - **Information om lagringspool:** Visar status för lagringspoolen, som innehåller total och återstående disk storlek.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="vSphere-webbklient":::
+   :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="Granska det disk utrymme som tilldelats i lagringspoolen":::
 
    > [!NOTE]
    > I vissa fall är data storleken som rapporteras större än den faktiska storleken på den virtuella datorn. Vi är medvetna om problemet och undersöker det just nu.
 
 1. På sidan **Välj metod för skapande av replik** anger du hur du vill att den första säkerhets kopieringen ska utföras och väljer **sedan nästa**.
 
-   - Standardvärdet sker **automatiskt över nätverket** och **nu**. Om du använder standardvärdet anger du en tid med låg belastning. Om du väljer **senare**anger du en dag och en tidpunkt.
+   - Standardvärdet sker **automatiskt över nätverket** och **nu**. Om du använder standardvärdet anger du en tid med låg belastning. Om du väljer **senare** anger du en dag och en tidpunkt.
    - Överväg att replikera data offline med hjälp av flyttbara media för stora mängder data eller mindre än optimala nätverks förhållanden.
 
    ![Välj metod för skapande av replik](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. För **alternativ för konsekvens kontroll**väljer du hur och när du vill automatisera konsekvens kontroller och väljer **Nästa**.
+1. För **alternativ för konsekvens kontroll** väljer du hur och när du vill automatisera konsekvens kontroller och väljer **Nästa**.
 
    - Du kan köra konsekvens kontroller när replik data blir inkonsekventa eller enligt ett angivet schema.
    - Om du inte vill konfigurera automatiska konsekvens kontroller kan du köra en manuell kontroll genom att högerklicka på skydds gruppen **utför konsekvens kontroll**.
@@ -256,12 +256,12 @@ Skydds grupper samlar in flera virtuella datorer och tillämpar samma data lagri
 När du har konfigurerat skydds gruppen för säkerhets kopiering av virtuella datorer i Azure VMware-lösningen kan du övervaka säkerhets kopierings jobbets status och avisering med hjälp av Azure Backup Server-konsolen. Det här kan du övervaka.
 
 - I **övervaknings** aktivitets fältet:
-   - Under **aviseringar**kan du övervaka fel, varningar och allmän information.  Du kan visa aktiva och inaktiva aviseringar och konfigurera e-postaviseringar.
-   - Under **jobb**kan du Visa jobb som startats av Azure Backup Server för en bestämd skyddad data källa eller skydds grupp. Du kan följa jobb förloppet eller kontrol lera resurser som förbrukas av jobb.
+   - Under **aviseringar** kan du övervaka fel, varningar och allmän information.  Du kan visa aktiva och inaktiva aviseringar och konfigurera e-postaviseringar.
+   - Under **jobb** kan du Visa jobb som startats av Azure Backup Server för en bestämd skyddad data källa eller skydds grupp. Du kan följa jobb förloppet eller kontrol lera resurser som förbrukas av jobb.
 - I aktivitets avsnittet **skydd** kan du kontrol lera statusen för volymer och resurser i skydds gruppen. Du kan också kontrol lera konfigurations inställningar, till exempel återställnings inställningar, diskallokering och schema för säkerhets kopiering.
-- I aktivitets avsnittet **hantering** kan du Visa flikarna **diskar, online**och **agenter** för att kontrol lera statusen för diskarna i lagringspoolen, registrera till Azure och distribuera statusen för DPM-agenten.
+- I aktivitets avsnittet **hantering** kan du Visa flikarna **diskar, online** och **agenter** för att kontrol lera statusen för diskarna i lagringspoolen, registrera till Azure och distribuera statusen för DPM-agenten.
 
-:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="vSphere-webbklient":::
+:::image type="content" source="media/azure-vmware-solution-backup/monitor-backup-jobs.png" alt-text="Övervaka status för säkerhets kopierings jobb i Azure Backup Server":::
 
 ## <a name="restore-vmware-virtual-machines"></a>Återställa virtuella VMware-datorer
 
@@ -286,7 +286,7 @@ I Azure Backup Server Administratörskonsol finns det två sätt att hitta åter
 
 1. Innan du återställer från en onlineåterställningspunkt ser du till att mellanlagringsplatsen innehåller tillräckligt med ledigt utrymme för att kunna ta del av den fulla okomprimerade storleken på den virtuella dator som du vill återställa. Du kan visa eller ändra mellanlagringsplatsen genom att köra **guiden Konfigurera prenumerations inställningar**.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="vSphere-webbklient":::
+   :::image type="content" source="media/azure-vmware-solution-backup/mabs-recovery-folder-settings.png" alt-text="Azure Backup Server inställningar för återställnings mapp":::
 
 1. Välj **Återställ** för att öppna **återställnings guiden**.
 
@@ -299,8 +299,8 @@ I Azure Backup Server Administratörskonsol finns det två sätt att hitta åter
 
 1. På sidan **Välj återställnings typ** återställer du antingen till den ursprungliga instansen eller till en ny plats.
 
-   - Om du väljer **Återställ till ursprunglig instans**behöver du inte göra några fler val i guiden. Data för den ursprungliga instansen används.
-   - Om du väljer **Återställ som virtuell dator på en värd**anger du informationen för **ESXi-värden**, **resurspool**, **mappar**och **sökväg**på skärmen **Ange mål** .
+   - Om du väljer **Återställ till ursprunglig instans** behöver du inte göra några fler val i guiden. Data för den ursprungliga instansen används.
+   - Om du väljer **Återställ som virtuell dator på en värd** anger du informationen för **ESXi-värden**, **resurspool**, **mappar** och **sökväg** på skärmen **Ange mål** .
 
    ![Sidan Välj återställnings typ](../backup/media/restore-azure-backup-server-vmware/recovery-type.png)
 
@@ -337,7 +337,7 @@ Du kan återställa enskilda filer från en skyddad VM-återställnings punkt. D
 
    ![Granska val av återställning](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
-1. När du har valt objekten för återställning går du till menyfliksområdet Administratörskonsol verktyg och väljer **Återställ** för att öppna **återställnings guiden**. I **återställnings guiden**visar sidan **Granska val av återställning** de valda objekten som ska återställas.
+1. När du har valt objekten för återställning går du till menyfliksområdet Administratörskonsol verktyg och väljer **Återställ** för att öppna **återställnings guiden**. I **återställnings guiden** visar sidan **Granska val av återställning** de valda objekten som ska återställas.
 
 1. Gör något av följande på skärmen **Ange återställnings alternativ** :
 
@@ -356,7 +356,7 @@ Du kan återställa enskilda filer från en skyddad VM-återställnings punkt. D
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om fel sökning av problem när du konfigurerar säkerhets kopieringar finns i fel söknings guiden för Azure Backup Server.
+Nu när du har använt säkerhets kopieringen av dina virtuella datorer i Azure VMware-lösningen med Azure Backup Server kanske du vill lära dig mer om: 
 
-> [!div class="nextstepaction"]
-> [Fel söknings guide för Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md)
+- [Fel sökning när du konfigurerar säkerhets kopieringar i Azure Backup Server](../backup/backup-azure-mabs-troubleshoot.md).
+- [Livs cykel hantering av virtuella datorer i Azure VMware-lösningen](lifecycle-management-of-azure-vmware-solution-vms.md).

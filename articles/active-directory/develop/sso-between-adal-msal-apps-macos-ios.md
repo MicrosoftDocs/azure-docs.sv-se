@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 396e9cfeace8791a59dec4a9c9c7203212f57304
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756200"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584255"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Så här: SSO mellan ADAL-och MSAL-appar på macOS och iOS
 
@@ -34,7 +34,7 @@ I det här avsnittet beskrivs SSO-skillnader mellan MSAL och ADAL 2.7. x
 
 ### <a name="cache-format"></a>Cache-format
 
-ADAL 2.7. x kan läsa MSAL cache-format. Du behöver inte göra något särskilt för enkel inloggning mellan appar med version ADAL 2.7. x. Du måste dock vara medveten om skillnaderna i konto identifierare som de två biblioteken stöder.
+ADAL 2.7. x kan läsa MSAL cache-format. Du behöver inte göra något särskilt för enkel inloggning mellan appar med version ADAL 2.7. x. Tänk dock på skillnader i konto identifierare som de två biblioteken stöder.
 
 ### <a name="account-identifier-differences"></a>Skillnader i konto identifierare
 
@@ -204,7 +204,7 @@ Eftersom `homeAccountId` inte är tillgängligt i äldre ADAL-versioner måste d
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Ett exempel:
+Exempel:
 
 Mål-C:
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232343"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584338"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Självstudie: anropa Microsoft Graph API från ett Universell Windows-plattform-program (UWP)
 
@@ -48,7 +48,7 @@ Den här guiden skapar ett exempel på ett UWP-program som frågar Microsoft Gra
 
 I den här guiden används följande NuGet-paket:
 
-|Bibliotek|Beskrivning|
+|Bibliotek|Description|
 |---|---|
 |[Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsofts autentiseringsbibliotek|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph klient bibliotek|
@@ -292,7 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-MSAL.NET använder asynkrona metoder för att förvärva token eller manipulera konton. Du måste ha stöd för UI-åtgärder i UI-tråden. Detta är orsaken till `Dispatcher.RunAsync` anropet och de försiktighets åtgärder som krävs för att anropa `ConfigureAwait(false)` .
+MSAL.NET använder asynkrona metoder för att förvärva token eller manipulera konton. Därför kan du ge stöd för UI-åtgärder i UI-tråden. Detta är orsaken till `Dispatcher.RunAsync` anropet och de försiktighets åtgärder som krävs för att anropa `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Mer information om att logga ut<a name="more-information-on-sign-out"></a>
 
@@ -343,7 +343,7 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="register-your-application"></a>Registrera ditt program
 
-Nu måste du registrera ditt program:
+Registrera ditt program nu:
 
 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.

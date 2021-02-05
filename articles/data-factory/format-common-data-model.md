@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: a08457ba041fa39fda367976498a4a89930c56e3
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854016"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585168"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemensamt data modell format i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,14 +32,14 @@ Den gemensamma data modellen är tillgänglig som en [infogad data uppsättning]
 
 I tabellen nedan visas de egenskaper som stöds av en common data service-källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Formatet måste vara `cdm` | ja | `cdm` | format |
 | Format för metadata | Där enhets referensen till data finns. Om du använder common data service version 1,0 väljer du manifest. Om du använder en common data service-version före 1,0 väljer du model.jspå. | Ja | `'manifest'` eller `'model'` | manifestType |
 | Rot plats: behållare | Behållarens namn på mappen common data service | ja | Sträng | Fil Systems |
 | Rot plats: mappsökväg | Rotmappens plats för mappen common data service | ja | Sträng | folderPath |
 | Manifest fil: enhets Sök väg | Mappsökväg för entiteten i rotmappen | nej | Sträng | entityPath |
-| Manifest fil: manifest namn | Manifest filens namn. Standardvärdet är ' default '  | Nej | Sträng | manifestName |
+| Manifest fil: manifest namn | Manifest filens namn. Standardvärdet är ' default '  | Inga | Sträng | manifestName |
 | Filtrera efter senast ändrad | Välj att filtrera filer baserat på när de senast ändrades | nej | Timestamp | modifiedAfter <br> modifiedBefore | 
 | Länkad schema tjänst | Den länkade tjänsten där sökkorpus finns | Ja, om du använder manifest | `'adlsgen2'` eller `'github'` | corpusStore | 
 | Enhets referens behållare | Containerns sökkorpus finns i | Ja, om du använder manifest och sökkorpus i ADLS Gen2 | Sträng | adlsgen2_fileSystem |
@@ -85,6 +85,7 @@ När du mappar data flödes kolumner till enhets egenskaper i Sink-omvandlingen,
 2. Hitta partitionerna. Plats egenskap 
 3. Ändra "blob.core.windows.net" till "dfs.core.windows.net"
 4. Korrigera all "% 2F"-kodning i URL: en till "/"
+5. Om du använder ADF-dataflöden måste specialtecken i sökvägen ersättas med alfanumeriska värden eller växla till Synapse data flöden
 
 ### <a name="cdm-source-data-flow-script-example"></a>Skript exempel för common data service-käll data flöde
 
@@ -114,13 +115,13 @@ source(output(
 
 I tabellen nedan visas de egenskaper som stöds av en common data service-mottagare. Du kan redigera dessa egenskaper på fliken **Inställningar** .
 
-| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Formatet måste vara `cdm` | ja | `cdm` | format |
 | Rot plats: behållare | Behållarens namn på mappen common data service | ja | Sträng | Fil Systems |
 | Rot plats: mappsökväg | Rotmappens plats för mappen common data service | ja | Sträng | folderPath |
 | Manifest fil: enhets Sök väg | Mappsökväg för entiteten i rotmappen | nej | Sträng | entityPath |
-| Manifest fil: manifest namn | Manifest filens namn. Standardvärdet är ' default ' | Nej | Sträng | manifestName |
+| Manifest fil: manifest namn | Manifest filens namn. Standardvärdet är ' default ' | Inga | Sträng | manifestName |
 | Länkad schema tjänst | Den länkade tjänsten där sökkorpus finns | ja | `'adlsgen2'` eller `'github'` | corpusStore | 
 | Enhets referens behållare | Containerns sökkorpus finns i | Ja, om sökkorpus i ADLS Gen2 | Sträng | adlsgen2_fileSystem |
 | Enhets referens databas | GitHub-lagringsplatsnamn | Ja, om sökkorpus i GitHub | Sträng | github_repository |

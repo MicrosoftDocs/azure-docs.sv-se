@@ -13,12 +13,12 @@ ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 161bcb2a4276b39765361e97a4516812c26ef580
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d847e38a6114b0e5f8d56f6e994aa47dfbe929e7
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064478"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583713"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory Federation Services (AD FS) stöd i MSAL för python
 
@@ -57,7 +57,7 @@ När du ansluter katalogen till AD FS kommer den behörighet som du vill använd
 
 MSAL python stöder ADFS 2019.
 
-Den har inte stöd för en direkt anslutning till ADFS 2016 eller ADFS v2. Om du behöver stöd för scenarier som kräver en direkt anslutning till ADFS 2016 använder du den senaste versionen av ADAL python. När du har uppgraderat ditt lokala system till ADFS 2019 kan du använda MSAL python.
+Den har inte stöd för en direkt anslutning till ADFS 2016 eller ADFS v2. Använd den senaste versionen av ADAL python för att stödja scenarier som kräver en direkt anslutning till ADFS 2016. När du har uppgraderat ditt lokala system till ADFS 2019 kan du använda MSAL python.
 
 ## <a name="next-steps"></a>Nästa steg
 

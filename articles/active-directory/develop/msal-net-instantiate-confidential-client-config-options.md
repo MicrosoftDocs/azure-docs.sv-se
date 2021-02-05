@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5bccc39144186b23cc7f9fedf02e5b9d84ea2ee4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d477c419bb677a6b8f24a3aae26c403e47cc96cb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063560"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583950"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Instansiera ett konfidentiellt klient program med konfigurations alternativ med MSAL.NET
 
@@ -60,7 +60,7 @@ En ASP.NET Core program konfiguration beskrivs i en *appsettings.jspå* filen:
 
 Från och med MSAL.NET v3. x kan du konfigurera ditt konfidentiella klient program från konfigurations filen.
 
-I den klass där du vill konfigurera och instansiera ditt program måste du deklarera ett- `ConfidentialClientApplicationOptions` objekt.  Bind konfigurationen från källan (inklusive appconfig.jspå fil) till instansen av program alternativen med hjälp av `IConfigurationRoot.Bind()` metoden från [Microsoft.Extensions.Configuration. Binder NuGet-paket](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+I den klass där du vill konfigurera och instansiera ditt program, deklarera ett `ConfidentialClientApplicationOptions` objekt.  Bind konfigurationen från källan (inklusive appconfig.jspå fil) till instansen av program alternativen med hjälp av `IConfigurationRoot.Bind()` metoden från [Microsoft.Extensions.Configuration. Binder NuGet-paket](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;

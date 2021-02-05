@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: d790b466f669ed067863b6643c8f59662eb628a7
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 5dae14f546a8c51c7df016ba1e39698302be6f40
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226445"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584354"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Java Script (Single-Side Application)
 
@@ -407,13 +407,13 @@ Skapa en ny. js-fil med namnet `authPopup.js` , som innehåller din autentiserin
 
 ### <a name="more-information"></a>Mer information
 
-När en användare väljer knappen **Logga in** för första gången, `signIn` anropar metoden `loginPopup` för att logga in användaren. Den här metoden öppnar ett popup-fönster med *Microsoft Identity Platform-slutpunkten* för att fråga och verifiera användarens autentiseringsuppgifter. Efter en lyckad inloggning omdirigeras användaren tillbaka till den ursprungliga *index.html* -sidan. En token tas emot, bearbetas av `msal.js` och den information som finns i token cachelagras. Denna token kallas *ID-token* och innehåller grundläggande information om användaren, t. ex. användarens visnings namn. Om du planerar att använda data som tillhandahålls av denna token i något syfte, måste du se till att denna token verifieras av backend-servern för att garantera att token har utfärdats till en giltig användare för ditt program.
+När en användare väljer knappen **Logga in** för första gången, `signIn` anropar metoden `loginPopup` för att logga in användaren. Den här metoden öppnar ett popup-fönster med *Microsoft Identity Platform-slutpunkten* för att fråga och verifiera användarens autentiseringsuppgifter. Efter en lyckad inloggning omdirigeras användaren tillbaka till den ursprungliga *index.html* -sidan. En token tas emot, bearbetas av `msal.js` och den information som finns i token cachelagras. Denna token kallas *ID-token* och innehåller grundläggande information om användaren, t. ex. användarens visnings namn. Om du planerar att använda data som tillhandahålls av denna token i något syfte, se till att denna token verifieras av backend-servern för att garantera att token har utfärdats till en giltig användare för ditt program.
 
 Det SPA som genereras av den här guiden anropar `acquireTokenSilent` och/eller `acquireTokenPopup` hämtar en *åtkomsttoken som* används för att fråga Microsoft Graph-API: t för användar profil information. Ta en titt på [det här](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-dotNet-WebAPI-v2-exempel") exempel programmet i GitHub om du behöver ett exempel som VALIDERAR ID-token. Exemplet använder ett ASP.NET webb-API för verifiering av token.
 
 #### <a name="get-a-user-token-interactively"></a>Hämta en användartoken interaktivt
 
-Efter den första inloggningen vill du inte be användarna att autentisera varje gång de behöver för att begära en token för att få åtkomst till en resurs. Så *acquireTokenSilent* bör användas mest av tiden för att hämta tokens. Det finns dock situationer där du måste tvinga användare att interagera med Microsoft Identity Platform. Exempel:
+Efter den första inloggningen vill du inte be användarna att autentisera varje gång de behöver för att begära en token för att få åtkomst till en resurs. Så *acquireTokenSilent* bör användas mest av tiden för att hämta tokens. Det finns dock situationer där du tvingar användare att interagera med Microsoft Identity Platform. Exempel:
 
 - Användare måste ange sina autentiseringsuppgifter på grund av att lösen ordet har upphört att gälla.
 - Ditt program begär åtkomst till en resurs och du behöver användarens medgivande.

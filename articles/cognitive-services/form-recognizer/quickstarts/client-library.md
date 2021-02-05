@@ -13,25 +13,25 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: formulär bearbetning, automatisk data bearbetning
-ms.openlocfilehash: cc18cc9e54a5a8887ecd3e079285ba5130b88278
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: d468f40d9de7fd7efb4ac7d8021a667e0c6c31f6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218051"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584616"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Snabb start: Använd formulär identifierarens klient bibliotek eller REST API
 
-Kom igång med formulär tolken med valfritt språk. Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa automatiserad data bearbetnings program vara med hjälp av Machine Learning-teknik. Identifiera och extrahera text, nyckel/värde-par, markerings märken, tabell data och mycket mer från formuläret dokument &mdash; data som innehåller de strukturerade data som innehåller relationerna i original filen. Du kan använda formulär igenkänning via REST API eller SDK. Följ de här stegen för att installera SDK-paketet och prova exempel koden för grundläggande uppgifter. 
+Kom igång med formulär tolken med valfritt utvecklings språk. Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa automatiserad data bearbetnings program vara med hjälp av Machine Learning-teknik. Identifiera och extrahera text, nyckel/värde-par, markerings märken, tabell data och mycket mer från formuläret dokument &mdash; data som innehåller de strukturerade data som innehåller relationerna i original filen. Du kan använda formulär igenkänning via REST API eller SDK. Följ de här stegen för att installera SDK-paketet och prova exempel koden för grundläggande uppgifter. 
 
 Använd formulär igenkänning för att:
 
 * [Analysera layout](#analyze-layout)
-* [Analysera kvitton](#analyze-receipts)
-* [Analysera visitkort](#analyze-business-cards)
 * [Analysera fakturor](#analyze-invoices)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
+* [Analysera kvitton](#analyze-receipts)
+* [Analysera visitkort](#analyze-business-cards)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
 
 ::: zone pivot="programming-language-csharp"

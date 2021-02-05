@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: Konvertera till indikatorvärden
       href: convert-to-indicator-values.md
-    - name: Rensa data som saknas
-      href: clean-missing-data.md
     - name: Redigera metadata
       href: edit-metadata.md
     - name: Gruppera data till lagerplatser

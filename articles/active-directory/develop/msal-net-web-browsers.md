@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165829"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583747"
 ---
 # <a name="using-web-browsers-msalnet"></a>Använda webbläsare (MSAL.NET)
 
@@ -41,11 +41,11 @@ Det är viktigt att förstå att när du hämtar en token interaktivt, har inneh
 
 MSAL.NET är ett bibliotek med flera ramverk och har en Framework-specifik kod som är värd för en webbläsare i en GRÄNSSNITTs kontroll (till exempel på den klassiska .NET-IT använder WinForms, på Xamarin den använder sig av inbyggda mobila kontroller osv.). Den här kontrollen kallas `embedded` webb gränssnitt. Du kan också starta MSAL.NET i systemets OS-webbläsare.
 
-I allmänhet rekommenderar vi att du använder plattforms standarden och det är vanligt vis system läsaren. System läsaren är bättre för att komma ihåg vilka användare som har loggat in tidigare. Om du behöver ändra det här beteendet använder du `WithUseEmbeddedWebView(bool)`
+I allmänhet rekommenderar vi att du använder plattforms standarden och det är vanligt vis system läsaren. System läsaren är bättre för att komma ihåg vilka användare som har loggat in tidigare. Om du vill ändra det här beteendet använder du `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Snabbt
+### <a name="at-a-glance"></a>I korthet
 
-| Ramverk        | Inbäddat | System | Default |
+| Ramverk        | Inbäddat | System | Standardvärde |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | Ja | Ja ^ | Inbäddat |
 | .NET Core     | Inga | Ja ^ | System |
@@ -141,7 +141,7 @@ Du kan också aktivera inbäddade webvyer i Xamarin. iOS och Xamarin. Android-ap
 
 Som utvecklare som använder MSAL.NET Target Xamarin kan du välja att använda antingen inbäddade webbvyer eller system webbläsare. Det här är ditt val beroende på användar upplevelsen och de säkerhets problem som du vill använda.
 
-MSAL.NET har för närvarande inte stöd för Android-och iOS-mäklare. Om du behöver tillhandahålla enkel inloggning (SSO) kan system läsaren ändå vara ett bättre alternativ. Det finns stöd för utjämnare med den inbäddade webbläsaren på MSAL.NET efter släpning.
+MSAL.NET har för närvarande inte stöd för Android-och iOS-mäklare. För att tillhandahålla enkel inloggning (SSO) kan system läsaren ändå vara ett bättre alternativ. Det finns stöd för utjämnare med den inbäddade webbläsaren på MSAL.NET efter släpning.
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>Skillnader mellan inbäddad webbvy och systemets webbläsare
 Det finns vissa visuella skillnader mellan inbäddad webbvy och systemets webbläsare i MSAL.NET.

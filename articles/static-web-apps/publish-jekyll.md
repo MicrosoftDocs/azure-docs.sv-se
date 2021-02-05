@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8c6764ad5b63aa2fde07326ab986404ea4312316
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862017"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585184"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Självstudie: publicera en Jekyll-webbplats till Azures statiska Web Apps för hands version
 
 Den här artikeln visar hur du skapar och distribuerar ett [Jekyll](https://jekyllrb.com/) -webbprogram till [azures statiska Web Apps](overview.md).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -79,8 +79,11 @@ Azures statiska Web Apps använder GitHub för att publicera din webbplats. Föl
 1. Skicka din lokala lagrings platsen upp till GitHub.
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
+
+   > [!NOTE]
+   > Git-grenen kan ha ett annat namn än `main` . Ersätt `main` i det här kommandot med rätt värde.
 
 ## <a name="deploy-your-web-app"></a>Distribuera din webbapp
 
@@ -116,7 +119,7 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. Välj den **Jekyll-statiska-appen** som _lagrings plats_.
 
-1. För _grenen_ Välj **huvud**.
+1. För _grenen_ Select **main**.
 
     :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Slutförd GitHub-information":::
 
@@ -146,7 +149,7 @@ Sedan lägger du till de konfigurations inställningar som bygg processen använ
 
 1. Öppna appen Jekyll i en text redigerare och öppna filen _. GitHub/arbets flöden/Azure-Pages-<WORKFLOW_NAME>. yml_ .
 
-1. Efter raden `- uses: actions/checkout@v2` lägger du till följande konfigurations block.
+1. `- name: Build And Deploy`Lägg till följande konfigurations block innan raden.
 
     ```yml
     - name: Set up Ruby

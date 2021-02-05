@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063492"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583849"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Använda Microsoft Authenticator eller Intune-företagsportal på Xamarin-program
 
@@ -91,7 +91,7 @@ Den här metoden anropas varje gång programmet startas. Den används som en mö
 
 ### <a name="step-4-set-uiviewcontroller"></a>Steg 4: Ange UIViewController ()
 
-Du måste ange ett objekt fönster fortfarande i *AppDelegate.cs* -filen. Du behöver normalt inte ange objekt fönstret för Xamarin iOS, men du behöver ett objekt fönster för att skicka och ta emot svar från Service Broker.
+Ange ett objekt fönster fortfarande i *AppDelegate.cs* -filen. Du behöver normalt inte ange objekt fönstret för Xamarin iOS, men du behöver ett objekt fönster för att skicka och ta emot svar från Service Broker.
 
 Så här konfigurerar du objekt fönstret:
 
@@ -237,9 +237,9 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>Steg 4: Lägg till en omdirigerings-URI i din app-registrering
 
-MSAL använder URL: er för att anropa Service Broker och återgår sedan till din app. För att slutföra den här tur och retur måste du registrera en **omdirigerings-URI** för din app med hjälp av [Azure Portal](https://portal.azure.com).
+MSAL använder URL: er för att anropa Service Broker och återgår sedan till din app. För att slutföra den här tur och retur registrerar du en **omdirigerings-URI** för din app med hjälp av [Azure Portal](https://portal.azure.com).
 
-Formatet på omdirigerings-URI för programmet beror på vilket certifikat som används för att signera APK. Till exempel:
+Formatet på omdirigerings-URI för programmet beror på vilket certifikat som används för att signera APK. Exempel:
 
 ```
 msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
