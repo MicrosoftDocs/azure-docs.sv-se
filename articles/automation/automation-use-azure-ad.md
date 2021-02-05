@@ -4,12 +4,12 @@ description: Den här artikeln beskriver hur du använder Azure AD inom Azure Au
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41eaab7be66d446109e1052948a29ad4723b191c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894668"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576811"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Använda Azure AD för att autentisera mot Azure
 
@@ -50,7 +50,7 @@ Innan du installerar Azure AD-modulerna på datorn:
 
 1. Se till att funktionen Microsoft .NET Framework 3.5. x är aktive rad på datorn. Det är troligt att datorn har en senare version installerad, men bakåtkompatibilitet med äldre versioner av .NET Framework kan aktive ras eller inaktive ras. 
 
-2. Installera 64-bitars versionen av [Microsoft Online Services-inloggnings assistenten](https://www.microsoft.com/download/details.aspx?id=41950).
+2. Installera 64-bitars versionen av [Microsoft Online Services-inloggnings assistenten](https://www.microsoft.com/Download/details.aspx?id=28177).
 
 3. Kör Windows PowerShell som administratör för att skapa en upphöjd kommando tolk för Windows PowerShell.
 

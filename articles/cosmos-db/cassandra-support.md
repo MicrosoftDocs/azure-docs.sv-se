@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134236"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576489"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-funktioner som stöds av Azure Cosmos DB Cassandra-API 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,7 +43,7 @@ Följande versioner av Cassandra-drivrutiner stöds av Azure Cosmos DB Cassandra
 
 Azure Cosmos DB Cassandra-API:et stöder följande CQL-datatyper:
 
-|Kommando  |Stöds |
+|Typ  |Stöds |
 |---------|---------|
 | ascii  | Yes |
 | bigint  | Yes |
@@ -82,13 +82,14 @@ Azure Cosmos DB Cassandra-API:et stöder följande CQL-funktioner:
 |Kommando  |Stöds |
 |---------|---------|
 | Åtkomsttokenbegäran | Yes |
-| ttl | Yes |
-| writetime | Yes |
+| TTL * * * | Yes |
+| writetime *** | Yes |
 | Cast * * | Yes |
 
 > [!NOTE] 
 > \* API för Cassandra stöder token som en projektion/väljare och tillåter bara token (PK) till vänster i en WHERE-sats. Stöds till exempel `WHERE token(pk) > 1024` , men `WHERE token(pk) > token(100)` stöds **inte** .  
-> \*\*`cast()`Funktionen kan inte kapslas i API för Cassandra. Stöds till exempel `SELECT cast(count as double) FROM myTable` , men `SELECT avg(cast(count as double)) FROM myTable` stöds **inte** .
+> \*\*`cast()`Funktionen kan inte kapslas i API för Cassandra. Stöds till exempel `SELECT cast(count as double) FROM myTable` , men `SELECT avg(cast(count as double)) FROM myTable` stöds **inte** .    
+> \*\*\* Anpassade tidsstämplar och TTL som anges med `USING` alternativet appliceras på en rad nivå (och inte per cell).
 
 
 
@@ -159,7 +160,6 @@ Azure Cosmos DB stöder följande databaskommandon på alla Cassandra API-konton
 | SKAPA ROLL | No |
 | Skapa användare (inaktuellt i ursprunglig Apache-Cassandra) | No |
 | DELETE | Yes |
-| TA bort (Lightweight-transaktioner med IF-villkor)| Yes |
 | DISTINKTA | No |
 | SLÄPP AGG REGERING | No |
 | DROP FUNCTION | No |
@@ -173,17 +173,25 @@ Azure Cosmos DB stöder följande databaskommandon på alla Cassandra API-konton
 | SLÄPP användare (inaktuellt i native Apache Cassandra) | No |
 | GRANT | No |
 | INSERT | Yes |
-| Infoga (Lightweight-transaktioner med IF-villkor)| Yes |
 | LIST BEHÖRIGHETER | No |
 | LIST ROLLER | No |
 | LISTA användare (föråldrade i ursprunglig Apache-Cassandra) | No |
 | REVOKE | No |
-| VÄLJ | Yes |
-| Välj (Lightweight-transaktioner med IF-villkor)| No |
+| SELECT | Yes |
 | UPDATE | Yes |
-| Uppdatera (Lightweight-transaktioner med IF-villkor)| No |
 | TRUNCATE | No |
 | USE | Yes |
+
+## <a name="lightweight-transactions-lwt"></a>Lightweight-transaktioner (LWT)
+
+| Komponent  |Stöds |
+|---------|---------|
+| TA BORT OM FINNS | Yes |
+| TA bort villkor | No |
+| INFOGA OM DEN INTE FINNS | Yes |
+| UPPDATERA OM FINNS | Yes |
+| UPPDATERA OM DEN INTE FINNS | Yes |
+| UPPDATERINGs villkor | No |
 
 ## <a name="cql-shell-commands"></a>CQL Shell-kommandon
 
@@ -193,14 +201,14 @@ Azure Cosmos DB stöder följande databaskommandon på alla Cassandra API-konton
 |---------|---------|
 | WEBBINFÅNGSTEN | Yes |
 | Rensa | Yes |
-| KONTROLL | Saknas |
+| KONTROLL | Ej tillämpligt |
 | EXEMPLAR | No |
 | BESKRIVNINGAR | Yes |
 | cqlshExpand | No |
 | PROGRAMMET | Yes |
 | GÄST | Saknas (CQL-funktionen `USER` stöds inte, därför `LOGIN` är redundant) |
 | VÄXLINGS | Yes |
-| SERIE KONSEKVENS * | Saknas |
+| SERIE KONSEKVENS * | Ej tillämpligt |
 | SHOW | Yes |
 | KÄLLA | Yes |
 | SPÅRNING | Ej tillämpligt (API för Cassandra backas upp av Azure Cosmos DB-Använd [diagnostikloggning](cosmosdb-monitor-resource-logs.md) för fel sökning) |

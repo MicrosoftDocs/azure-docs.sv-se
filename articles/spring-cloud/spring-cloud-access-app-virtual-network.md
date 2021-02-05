@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: b6e523fc4a3dcd0eb8c8ed7a44b3d7d9fcdd7d34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 37c8b4bc186c217ecb27638f5f50297102345de7
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887282"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576539"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Få åtkomst till ditt program i ett privat nätverk
 
 Det här dokumentet beskriver hur du får åtkomst till en slut punkt för ditt program i ett privat nätverk.  För att få åtkomst måste du skapa en **Azure privat DNS-zon** i din prenumeration för att översätta/lösa det privata fullständigt kvalificerade domän namnet (FQDN) till dess IP-adress.
 
-När **tilldelnings slut punkten** för program i en Azure våren Cloud-tjänstinstans distribueras i det virtuella nätverket, är slut punkten ett privat fullständigt domän namn. Domänen är bara tillgänglig i det privata nätverket. Appar och tjänster använder program slut punkten. De innehåller **test slut punkten** som beskrivs i [Verifiera mellanlagrings distributionen](spring-cloud-howto-staging-environment.md#verify-the-staging-deployment). **Logg strömning**, som beskrivs i [Stream Azure våren Cloud App-loggar i real tid](spring-cloud-howto-log-streaming.md), fungerar också bara inom det privata nätverket.
+När **tilldelnings slut punkten** för program i en Azure våren Cloud-tjänstinstans distribueras i det virtuella nätverket, är slut punkten ett privat fullständigt domän namn. Domänen är bara tillgänglig i det privata nätverket. Appar och tjänster använder program slut punkten. De innehåller **test slut punkten** som beskrivs i [Visa appar och distributioner](spring-cloud-howto-staging-environment.md#view-apps-and-deployments). **Logg strömning**, som beskrivs i [Stream Azure våren Cloud App-loggar i real tid](spring-cloud-howto-log-streaming.md), fungerar också bara inom det privata nätverket.
 
 ## <a name="create-a-private-dns-zone"></a>Skapa en privat DNS-zon
 

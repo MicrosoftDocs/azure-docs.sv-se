@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e0088fb129e9c6558de7539ba754a45e067dc3d8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051472"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576845"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Skapa ett fristående Azure Automation-konto
 
@@ -105,4 +105,4 @@ Klassiska kör som-konton skapas inte som standard när du skapar ett Azure Auto
 * Information om hur du kommer igång med PowerShell-Runbooks finns i [Självstudier: skapa en PowerShell-Runbook](learn/automation-tutorial-runbook-textual-powershell.md).
 * Information om hur du kommer igång med PowerShell Workflow-Runbooks finns i [självstudie: skapa en PowerShell Workflow-Runbook](learn/automation-tutorial-runbook-textual.md).
 * Information om hur du kommer igång med python 3-Runbooks finns i [Självstudier: skapa en python 3-Runbook](learn/automation-tutorial-runbook-textual-python-3.md).
-* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation&preserve-view=true#automation).
+* En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).

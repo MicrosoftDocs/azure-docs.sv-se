@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511288"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576624"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Utveckla säkra program på Azure
 I den här artikeln presenterar vi säkerhets aktiviteter och kontroller för att tänka på när du utvecklar program för molnet. Säkerhets frågor och koncept som du bör tänka på under implementerings-och verifierings faserna i Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) omfattas. Målet är att hjälpa dig att definiera aktiviteter och Azure-tjänster som du kan använda för att utveckla ett säkrare program.
@@ -140,7 +140,7 @@ I [fuzz-testningen](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/
 
 Genom att granska attack ytan efter kod kompletteringen ser du till att alla design-eller implementerings ändringar av ett program eller system har beaktats. Den hjälper till att se till att alla nya angrepps vektorer som har skapats på grund av ändringarna, inklusive hot modeller, har granskats och minimerats.
 
-Du kan bygga en bild av attack ytan genom att genomsöka programmet. Microsoft erbjuder ett analys verktyg för angrepps ytan som kallas [analys av attack ytan](https://www.microsoft.com/download/details.aspx?id=24487). Du kan välja bland många dynamiska, dynamiska testnings-och sårbarhets skannings verktyg eller-tjänster, inklusive [OWASP okaliserad-angrepps-proxy-projekt](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)och [w3af](http://w3af.sourceforge.net/). De här sökverktygen söker igenom din app och mappar de delar av programmet som är tillgängliga via webben. Du kan också söka i Azure Marketplace efter liknande [utvecklarverktyg](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
+Du kan bygga en bild av attack ytan genom att genomsöka programmet. Microsoft erbjuder ett analys verktyg för angrepps ytan som kallas [analys av attack ytan](https://www.microsoft.com/download/details.aspx?id=58105). Du kan välja bland många dynamiska, dynamiska testnings-och sårbarhets skannings verktyg eller-tjänster, inklusive [OWASP okaliserad-angrepps-proxy-projekt](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project), [Arachni](http://arachni-scanner.com/), [Skipfish](https://code.google.com/p/skipfish/)och [w3af](http://w3af.sourceforge.net/). De här sökverktygen söker igenom din app och mappar de delar av programmet som är tillgängliga via webben. Du kan också söka i Azure Marketplace efter liknande [utvecklarverktyg](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1).
 
 ### <a name="perform-security-penetration-testing"></a>Utför testning av säkerhets inträngning
 

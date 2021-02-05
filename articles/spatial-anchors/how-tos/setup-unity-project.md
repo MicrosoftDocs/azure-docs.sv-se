@@ -8,29 +8,29 @@ ms.author: parkerra
 ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e058186d8848256bf97d99ee1b8b1ddae7d78383
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550631"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576573"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Konfigurera Azure spatiala ankare i ett Unity-projekt
 
 Den här guiden visar hur du kommer igång med Azures spatiala ankare SDK i ditt Unity-projekt.
 
-## <a name="requirements"></a>Krav
+## <a name="project-requirements"></a>Projekt krav
 
-Azures spatiala ankare stöder för närvarande Unity 2019,4 (LTS) med följande konfigurationer.
-
-* Unity 2019,4 med P.A. Foundation 3,1 stöds i Azure spatiala ankare 2.4.0 +.
+[!INCLUDE [Unity Project Requirements](../../../includes/spatial-anchors-unity-project-requirements.md)]
 
 ## <a name="configuring-a-project"></a>Konfigurera ett projekt
 
-### <a name="download-packages"></a>Ladda ned paket
+Innan du inkluderar SDK: er för Azure spatial ankare i ditt Unity-projekt, måste du installera de [nödvändiga](#project-requirements) paketen via paket hanteraren.
+
+### <a name="download-asa-packages"></a>Ladda ned ASA-paket
 [!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-### <a name="import-packages"></a>Importera paket
+### <a name="import-asa-packages"></a>Importera ASA-paket
 [!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
 ### <a name="android-only-configure-the-maintemplategradle-file"></a>Endast Android: Konfigurera filen mainTemplate. gradle

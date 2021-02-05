@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: lokal, OCR, Docker, container
-ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862478"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576828"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installera Läs OCR Docker-behållare (förhands granskning) 
 
@@ -32,17 +32,17 @@ Med *Read* OCR-behållaren kan du extrahera utskrift och handskriven text från 
 > [!NOTE]
 > Behållaren Read 3,0-Preview är föråldrad. 
 
-Behållaren Read 3,2-Preview tillhandahåller:
+Behållaren Read 3,2-Preview OCR innehåller:
 * Nya modeller för förbättrad noggrannhet.
-* Stöd för flera språk i samma dokument
-* Stöd för: nederländska, engelska, franska, tyska, italienska, portugisiska och spanska.
+* Stöd för flera språk i samma dokument.
+* Stöd för totalt 73 språk. Se den fullständiga listan över [språk som stöds av OCR](./language-support.md#optical-character-recognition-ocr).
 * En enda åtgärd för både dokument och bilder.
 * Stöd för större dokument och bilder.
-* Förtroende poängen från 0 till 1.
-* Stöd för dokument med både utskrift och handskriven text
-* Stöd för förenklad kinesiska och japanska.
-* Tillförlitlighets Poäng och etiketter för utskrift och handskriven text. 
+* Förtroende poäng.
+* Stöd för dokument med både utskrift och handskriven text.
 * Möjlighet att extrahera text från endast valda sidor i ett dokument.
+* Välj text rads utmatnings ordning från standard till en mer naturlig Läs ordning.
+* Text linje klassificering som handskriven stil eller inte enbart för latinska språk.
 
 Om du använder läsa 2,0-behållare idag kan du läsa mer om ändringar i de nya versionerna i [migreringsguiden](read-container-migration-guide.md) .
 
@@ -50,7 +50,7 @@ Om du använder läsa 2,0-behållare idag kan du läsa mer om ändringar i de ny
 
 Du måste uppfylla följande krav innan du använder behållarna:
 
-|Obligatoriskt|Syfte|
+|Obligatorisk|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.| 
@@ -207,7 +207,7 @@ Använd värden, `http://localhost:5000`, för container-API:er. Du kan visa Swa
 Du kan använda- `POST /vision/v3.2/read/analyze` och `GET /vision/v3.2/read/operations/{operationId}` -åtgärderna i samförstånd för att läsa en avbildning asynkront, på liknande sätt som visuellt innehåll tjänsten använder motsvarande rest-åtgärder. Metoden asynkron POST returnerar en `operationId` som används som identifierare till HTTP GET-begäran.
 
 
-I Swagger-ANVÄNDARGRÄNSSNITTET väljer du alternativet `asyncBatchAnalyze` för att expandera det i webbläsaren. Välj sedan **testa den**  >  **Välj fil**. I det här exemplet ska vi använda följande bild:
+I Swagger-ANVÄNDARGRÄNSSNITTET väljer du alternativet `Analyze` för att expandera det i webbläsaren. Välj sedan **testa den**  >  **Välj fil**. I det här exemplet ska vi använda följande bild:
 
 ![tabbar eller blank steg](media/tabs-vs-spaces.png)
 
@@ -225,51 +225,99 @@ När det asynkrona inlägget har körts returneras en status kod för **HTTP 202
 ```json
 {
   "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:30:14Z",
-  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "createdDateTime": "2021-02-04T06:32:08.2752706+00:00",
+  "lastUpdatedDateTime": "2021-02-04T06:32:08.7706172+00:00",
   "analyzeResult": {
     "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
-        "angle": 2.12,
+        "angle": 2.1243,
         "width": 502,
         "height": 252,
         "unit": "pixel",
-        "language": "",
         "lines": [
           {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "boundingBox": [
+              58,
+              42,
+              314,
+              59,
+              311,
+              123,
+              56,
+              121
+            ],
             "text": "Tabs vs",
             "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.999
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.96
+              }
             },
             "words": [
               {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "boundingBox": [
+                  68,
+                  44,
+                  225,
+                  59,
+                  224,
+                  122,
+                  66,
+                  123
+                ],
                 "text": "Tabs",
-                "confidence": 0.981
+                "confidence": 0.933
               },
               {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "boundingBox": [
+                  241,
+                  61,
+                  314,
+                  72,
+                  314,
+                  123,
+                  239,
+                  122
+                ],
                 "text": "vs",
-                "confidence": 0.958
+                "confidence": 0.977
               }
             ]
           },
           {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "boundingBox": [
+              286,
+              171,
+              415,
+              165,
+              417,
+              197,
+              287,
+              201
+            ],
             "text": "paces",
             "appearance": {
-              "style": "print",
-              "styleConfidence": 0.603
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.746
+              }
             },
             "words": [
               {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "boundingBox": [
+                  286,
+                  179,
+                  404,
+                  166,
+                  405,
+                  198,
+                  290,
+                  201
+                ],
                 "text": "paces",
-                "confidence": 0.918
+                "confidence": 0.938
               }
             ]
           }

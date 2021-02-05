@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 5e97a35a272684a99e1ca21cbec9c8f3edef253c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8926e99db926fc8182e98509c3deff0ccc3d1612
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097430"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576675"
 ---
 # <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuellt nätverk
 
@@ -126,7 +126,7 @@ Tjänst slut punkter kan konfigureras på virtuella nätverk oberoende av en anv
 
 Mer information om inbyggda roller finns i [inbyggda roller i Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Mer information om hur du tilldelar vissa behörigheter till anpassade roller finns i [Azure-anpassade roller](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Virtuella nätverk och Azure-tjänstresurser kan finnas i samma eller olika prenumerationer. Om det virtuella nätverket och Azure-tjänstresurser finns i olika prenumerationer måste resurserna finnas under samma AD-klientorganisation (Active Directory). 
+Virtuella nätverk och Azure-tjänstresurser kan finnas i samma eller olika prenumerationer. Vissa Azure-tjänster (inte alla), till exempel Azure Storage och Azure Key Vault också stöd för tjänst slut punkter över olika Active Directory (AD)-klienter, d.v.s. det virtuella nätverket och Azure Service-resursen kan finnas i olika Active Directory (AD)-klienter. Mer information finns i dokumentationen för den enskilda tjänsten.  
 
 ## <a name="pricing-and-limits"></a>Priser och begränsningar
 

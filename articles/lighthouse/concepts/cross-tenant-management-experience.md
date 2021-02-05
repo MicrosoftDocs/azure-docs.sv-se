@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 01/26/2021
+ms.date: 02/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9af90e10d889c3d30375e001891ce0dc70767ab4
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5180b2c28bc1157cb785c04f794cc5c9636764c8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881409"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576692"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -98,6 +98,7 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 - Visa aviseringar för delegerade prenumerationer med möjlighet att visa och uppdatera aviseringar över alla prenumerationer
 - Visa aktivitets logg information för delegerade prenumerationer
 - [Log Analytics](../../azure-monitor/platform/service-providers.md): fråga efter data från fjärrarbetsyta i flera klienter (Observera att Automation-konton som används för att komma åt data från arbets ytor i kund klienter måste skapas i samma klient organisation)
+- [Skapa, Visa och hantera aktivitets logg aviseringar](../../azure-monitor/platform/alerts-activity-log.md) i kund klienter
 - Skapa aviseringar i kund klienter som utlöser automatisering, till exempel Azure Automation runbooks eller Azure Functions, i hantera klient organisationen via Webhooks
 - Skapa [diagnostiska inställningar](../..//azure-monitor/platform/diagnostic-settings.md) i kund klienter för att skicka resurs loggar till arbets ytor i hanterings klienten
 - För SAP-arbetsbelastningar [övervakar du SAP Solutions-mått med en sammanställd vy över kund klienter](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

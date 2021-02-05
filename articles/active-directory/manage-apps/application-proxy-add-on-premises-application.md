@@ -1,5 +1,5 @@
 ---
-title: Självstudie – Lägg till en lokal app-Application Proxy i Azure AD
+title: Självstudie – Lägg till en lokal app-Application Proxy i Azure Active Directory
 description: Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Den här självstudien visar hur du förbereder din miljö för användning med Application Proxy. Sedan använder den Azure Portal för att lägga till ett lokalt program till Azure AD-klienten.
 services: active-directory
 author: kenwith
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 02/04/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f18126448f5a6dca29e798ad80cb53a8760689d8
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260086"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576522"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
-Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Den här självstudien förbereder din miljö för användning med programproxy. När din miljö är redo använder du Azure-portalen för att lägga till ett lokalt program till Azure AD-klientorganisationen.
+Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Den här självstudien förbereder din miljö för användning med programproxy. När din miljö är redo använder du Azure-portalen för att lägga till ett lokalt program till Azure AD-klientorganisationen. Om du vill **Visa dina appar och snabbt komma** igång med program hantering i Azure bör du ta en titt på [snabb starts serien](view-applications-portal.md).
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Översikts diagram över Application Proxy" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 

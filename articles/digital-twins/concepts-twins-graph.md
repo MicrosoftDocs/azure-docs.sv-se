@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071723"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576556"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Förstå digitala sammanflätade och deras dubbla diagram
 
@@ -58,9 +58,9 @@ Du kan också använda en hjälp klass som kallas `BasicDigitalTwin` för att la
 
 ### <a name="create-relationships"></a>Skapa relationer
 
-Här är ett exempel på en klient kod som använder [DigitalTwins-API: er](/rest/api/digital-twins/dataplane/twins) för att bygga en relation mellan en *vånings* typ, Digital, som kallas *GroundFloor* och en av *rums* typen digital, som kallas *Cafe*.
+Här är ett exempel på en klient kod som använder [DigitalTwins-API: er](/rest/api/digital-twins/dataplane/twins) för att bygga en relation från en digital grupp ("källa") till en annan digital ("mål").
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-representationer av diagram element
 
