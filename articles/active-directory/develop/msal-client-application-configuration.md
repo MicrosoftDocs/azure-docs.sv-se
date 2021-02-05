@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761376"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580946"
 ---
 # <a name="application-configuration-options"></a>Program konfigurations alternativ
 
@@ -73,7 +73,7 @@ Om du inte anger en instans, kommer din app att rikta in sig på Azures offentli
 
 Inloggnings mål gruppen beror på affärs behoven för din app:
 
-- Om du är en LOB-utvecklare (Line of Business) kan du förmodligen skapa ett program med en enda klient som endast används i din organisation. I så fall måste du ange organisationen, antingen genom sitt klient-ID (ID: t för din Azure AD-instans) eller med ett domän namn som är kopplat till Azure AD-instansen.
+- Om du är en LOB-utvecklare (Line of Business) kan du förmodligen skapa ett program med en enda klient som endast används i din organisation. I så fall anger du organisationens ID (ID för Azure AD-instansen) eller ett domän namn som är kopplat till Azure AD-instansen.
 - Om du är en ISV kan du behöva logga in användare med sina arbets-och skol konton i valfri organisation eller i vissa organisationer (appar för flera innehavare). Men du kanske också vill att användarna ska logga in med sina personliga Microsoft-konton.
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Så här anger du mål gruppen i din kod/konfiguration
@@ -122,9 +122,9 @@ Om du är en offentlig klient programs utvecklare som använder MSAL:
   | UWP | värde för `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` . Detta möjliggör enkel inloggning med webbläsaren genom att ange värdet till resultatet av WebAuthenticationBroker. GetCurrentApplicationCallbackUri () som du behöver registrera |
   | .NET Core | `https://localhost`. Detta gör att användaren kan använda systemets webbläsare för interaktiv autentisering eftersom .NET Core inte har något användar gränssnitt för den inbäddade webbvy för tillfället. |
 
-- Du behöver inte lägga till en omdirigerings-URI om du skapar ett Xamarin Android-och iOS-program som inte stöder Broker (omdirigerings-URI: n ställs in automatiskt `msal{ClientId}://auth` för Xamarin Android och iOS
+- Du behöver inte lägga till en omdirigerings-URI om du skapar ett Xamarin Android-och iOS-program som inte stöder omdirigerings-URI för Broker. Den ställs in automatiskt `msal{ClientId}://auth` för Xamarin Android och iOS.
 
-- Du måste konfigurera omdirigerings-URI: n i [Appregistreringar](https://aka.ms/appregistrations):
+- Konfigurera omdirigerings-URI: n i [Appregistreringar](https://aka.ms/appregistrations):
 
    ![Omdirigerings-URI i Appregistreringar](media/msal-client-application-configuration/redirect-uri.png)
 

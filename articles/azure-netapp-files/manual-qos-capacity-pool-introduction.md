@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 239b985bf45942afbff8ca49d7e15ead24456304
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993983"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581133"
 ---
 # <a name="manual-qos-capacity-pool"></a>Manuell QoS-kapacitetspool
 
@@ -29,7 +29,7 @@ Den här artikeln innehåller en introduktion till funktionerna för manuell QoS
 
 [QoS-typen](azure-netapp-files-understand-storage-hierarchy.md#qos_types) är ett attribut för en pool för kapacitet. Azure NetApp Files tillhandahåller två QoS-typer av kapacitets grupper – automatisk (standard) och manuell.  
 
-I en *manuell* pool för QoS-kapacitet kan du tilldela kapaciteten och data flödet för en volym oberoende av varandra. Det totala data flödet för alla volymer som skapats med en manuell QoS-kapacitet begränsas av poolens totala genomflöde. Det bestäms av kombinationen av poolens storlek och data flödet på tjänst nivå. 
+I en *manuell* pool för QoS-kapacitet kan du tilldela kapaciteten och data flödet för en volym oberoende av varandra. För lägsta och högsta data flödes nivåer, se [resurs gränser för Azure NetApp Files](azure-netapp-files-resource-limits.md#resource-limits). Det totala data flödet för alla volymer som skapats med en manuell QoS-kapacitet begränsas av poolens totala genomflöde. Det bestäms av kombinationen av poolens storlek och data flödet på tjänst nivå. 
 
 I en pool med *Automatisk* QoS-kapacitet tilldelas data flöde automatiskt till volymerna i poolen, proportionella mot storleks kvoten som tilldelats volymerna.  
 
@@ -60,4 +60,4 @@ Om du använder den manuella QoS-typen måste du [Registrera funktionen](manage-
 * [Skapa en SMB-volym](azure-netapp-files-create-volumes-smb.md)
 * [Skapa en volym med dubbla protokoll](create-volumes-dual-protocol.md)
 * [Mått för Azure NetApp Files](azure-netapp-files-metrics.md)
-* [Felsök problem med kapacitets pooler](troubleshoot-capacity-pools.md)
+* [Felsöka problem med kapacitetspooler](troubleshoot-capacity-pools.md)

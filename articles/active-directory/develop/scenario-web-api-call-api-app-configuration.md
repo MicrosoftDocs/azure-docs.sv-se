@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d1ab7da9753642093505fa91ea76b9327612a6ac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753510"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582374"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Ett webb-API som anropar webb-API: er kod konfiguration
 
@@ -33,7 +33,7 @@ Microsoft rekommenderar att du använder [Microsoft. Identity. Web NuGet-](https
 
 ## <a name="client-secrets-or-client-certificates"></a>Klient hemligheter eller klient certifikat
 
-Eftersom ditt webb-API nu anropar ett underordnat webb-API måste du ange en klient hemlighet eller ett klient certifikat i *appsettings.js* filen. Du kan också lägga till ett avsnitt som anger:
+Under förutsättning att ditt webb-API nu anropar ett underordnat webb-API, anger du en klient hemlighet eller ett klient certifikat i *appsettings.jspå* filen. Du kan också lägga till ett avsnitt som anger:
 
 - URL: en för det underordnade webb-API: et
 - De omfattningar som krävs för att anropa API: et
@@ -169,7 +169,7 @@ Följande bild visar de olika möjligheterna för *Microsoft. Identity. Web* och
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blockera diagram som visar tjänst konfigurations alternativ i Start punkt C S för att anropa ett webb-API och ange en implementation av token cache":::
 
 > [!NOTE]
-> För att fullständigt förstå kod exemplen måste du vara bekant med [ASP.net Core fundament ALS](/aspnet/core/fundamentals), särskilt med [beroende inmatning](/aspnet/core/fundamentals/dependency-injection) och [alternativ](/aspnet/core/fundamentals/configuration/options).
+> För att fullständigt förstå kod exemplen här, bör du vara bekant med [ASP.net Core fundament ALS](/aspnet/core/fundamentals), särskilt med [beroende inmatning](/aspnet/core/fundamentals/dependency-injection) och [alternativ](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="java"></a>[Java](#tab/java)
 

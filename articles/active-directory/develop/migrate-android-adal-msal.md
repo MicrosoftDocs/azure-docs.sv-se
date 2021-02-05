@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672295"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581048"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL till MSAL migration guide för Android
 
@@ -71,7 +71,7 @@ I din app-registrering i portalen visas fliken **API-behörigheter** . Detta ger
 Med ADAL och Azure AD v1-slutpunkten beviljades användaren de resurser de äger vid första användningen. Med MSAL och Microsoft Identity Platform kan medgivande begäras stegvis. Ett stegvist godkännande är användbart för behörigheter som en användare kan överväga med hög behörighet eller som annars kan frågas om det inte finns en tydlig förklaring av varför behörigheten krävs. I ADAL kan de behörigheterna ha resulterat i att användaren överger inloggningen i din app.
 
 > [!TIP]
-> Vi rekommenderar att du använder ett stegvist tillstånd i scenarier där du behöver ge ytterligare kontext till din användare om varför appen behöver en behörighet.
+> Använd ett stegvist medgivande för att ge ytterligare kontext till dina användare om varför appen behöver en behörighet.
 
 ### <a name="admin-consent"></a>Administratörsmedgivande
 
@@ -237,7 +237,7 @@ public interface SilentAuthenticationCallback {
 I ADAL finns en typ av undantag, `AuthenticationException` som innehåller en metod för att hämta `ADALError` Enum-värdet.
 I MSAL finns det en hierarki med undantag och var och en har en egen uppsättning av tillhör ande specifika felkoder.
 
-| Undantag                                        | Beskrivning                                                         |
+| Undantag                                        | Description                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
 | `MsalArgumentException`                          | Utlöstes om ett eller flera argument för indata är ogiltiga.                 |
 | `MsalClientException`                            | Genereras om felet är klient sidan.                                 |

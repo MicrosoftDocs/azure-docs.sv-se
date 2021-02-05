@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 141abea0c0946c98b6dfe627f32f01682a18be44
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315787"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581031"
 ---
 # <a name="bring-your-own-key-specification"></a>Specifikation för Bring your own key
 
@@ -31,11 +31,11 @@ Följande är kraven:
 
 ## <a name="terminology"></a>Terminologi
 
-|Nyckel namn|Nyckel typ|Ursprung|Beskrivning|
+|Nyckel namn|Nyckel typ|Ursprung|Description|
 |---|---|---|---|
 |Nyckel utbytes nyckel (KEK)|RSA|Azure Key Vault HSM|Ett HSM-baserat RSA-nyckelpar som genererats i Azure Key Vault
 Rad brytnings nyckel|AES|Vendor HSM|En [beständig] AES-nyckel genererad av HSM on-lokal
-Mål nyckel|RSA, EC, AES|Vendor HSM|Nyckeln som ska överföras till Azure Key Vault HSM
+Mål nyckel|RSA, EG, AES (endast hanterad HSM)|Vendor HSM|Nyckeln som ska överföras till Azure Key Vault HSM
 
 **Nyckel utbytes nyckel**: en HSM-backad nyckel som kunden genererar i nyckel valvet där BYOK-nyckeln kommer att importeras. Den här KEK måste ha följande egenskaper:
 
@@ -130,9 +130,16 @@ JSON-blobben lagras i en fil med ett ". BYOK"-tillägg så att Azure PowerShell-
 
 Kunden överför nyckel överförings-Bloben (". BYOK"-filen) till en online-arbetsstation och kör sedan ett **AZ import kommando för nyckel valv** för att importera denna blob som en ny HSM-backad nyckel till Key Vault. 
 
+Använd följande kommando för att importera en RSA-nyckel:
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok --ops encrypt decrypt
 ```
+Om du vill importera en EG-nyckel måste du ange nyckel typ och kurv namn.
+
+```azurecli
+az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file --kty EC-HSM --curve-name "P-256" KeyTransferPackage-ContosoFirstHSMkey.byok --ops sign verify
+```
+
 
 När ovanstående kommando körs, resulterar det i att en REST API-begäran skickas enligt följande:
 
@@ -140,7 +147,7 @@ När ovanstående kommando körs, resulterar det i att en REST API-begäran skic
 PUT https://contosokeyvaulthsm.vault.azure.net/keys/ContosoFirstHSMKey?api-version=7.0
 ```
 
-Begärandetext:
+Begär ande text när du importerar en RSA-nyckel:
 ```json
 {
   "key": {
@@ -156,6 +163,25 @@ Begärandetext:
   }
 }
 ```
+
+Begär ande text vid import av en EG-nyckel:
+```json
+{
+  "key": {
+    "kty": "EC-HSM",
+    "crv": "P-256",
+    "key_ops": [
+      "sign",
+      "verify"
+    ],
+    "key_hsm": "<Base64 encoded BYOK_BLOB>"
+  },
+  "attributes": {
+    "enabled": true
+  }
+}
+```
+
 värdet "key_hsm" är hela innehållet i KeyTransferPackage-ContosoFirstHSMkey. BYOK kodat i base64-format.
 
 ## <a name="references"></a>Referenser

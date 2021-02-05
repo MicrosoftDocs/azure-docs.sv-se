@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 02/04/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 37da2869f0cf315ac0a6851c9a77dcee4debf71a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944509"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581694"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Felsöka problem med Azure Data Factory säkerhet och åtkomst kontroll
 
@@ -88,9 +88,10 @@ Gör så här för att kontrol lera om Data Factory fullständiga domän namnet 
 #### <a name="resolution"></a>Lösning
 
 Lös problemet genom att göra följande:
-- Se den [privata Azure-länken för Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) artikeln. Instruktionen är att konfigurera den privata DNS-zonen eller-servern för att matcha Data Factory-FQDN till en privat IP-adress.
 
-- Vi rekommenderar att du använder en anpassad DNS som långsiktig lösning. Men om du inte vill konfigurera den privata DNS-zonen eller-servern kan du prova med följande tillfälliga lösning:
+- Som alternativ vill vi föreslå att du manuellt lägger till en "Virtual Network länk" under Data Factory "privat länk till DNS-zon". Mer information finns i den [privata Azure-länken för Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints) artikeln. Instruktionen är att konfigurera den privata DNS-zonen eller en anpassad DNS-server för att matcha Data Factory FQDN till en privat IP-adress. 
+
+- Men om du inte vill konfigurera den privata DNS-zonen eller den anpassade DNS-servern kan du prova följande tillfälliga lösning:
 
   1. Ändra värd filen i Windows och mappa den privata IP-adressen (den Azure Data Factory privata slut punkten) till Azure Data Factory FQDN.
   

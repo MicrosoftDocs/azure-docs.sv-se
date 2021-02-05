@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c858f48a67cd434a620fb610046833d29b7475f7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756592"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582898"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app som anropar webb-API: er – kod konfiguration
 
@@ -26,7 +26,7 @@ Lär dig hur du konfigurerar koden för daemon-programmet som anropar webb-API: 
 
 Dessa Microsoft-bibliotek stöder daemon-appar:
 
-  MSAL-bibliotek | Beskrivning
+  MSAL-bibliotek | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework-och .NET Core-plattformarna stöds för att skapa daemon-program. (UWP, Xamarin. iOS och Xamarin. Android stöds inte eftersom dessa plattformar används för att bygga offentliga klient program.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Stöd för daemon-program i python.
@@ -111,7 +111,7 @@ När du skapar en konfidentiell klient med certifikat, är [parameters.js](https
 
 ### <a name="instantiate-the-msal-application"></a>Instansiera MSAL-programmet
 
-Om du vill instansiera MSAL-programmet måste du lägga till, referera eller importera MSAL-paketet (beroende på språket).
+Om du vill instansiera MSAL-programmet lägger du till, refererar till eller importerar MSAL-paketet (beroende på språket).
 
 Konstruktion skiljer sig beroende på om du använder klient hemligheter eller certifikat (eller som ett avancerat scenario, signerade intyg).
 
@@ -289,7 +289,7 @@ MSAL.NET har två metoder för att tillhandahålla signerade kontroller till app
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-När du använder `WithClientAssertion` måste du ange ett signerat JWT. Det här avancerade scenariot beskrivs i [klient kontroll](msal-net-client-assertions.md).
+`WithClientAssertion`Ange ett signerat JWT när du använder. Det här avancerade scenariot beskrivs i [klient kontroll](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();

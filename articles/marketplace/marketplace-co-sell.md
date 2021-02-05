@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 1/29/2021
-ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 2/05/2021
+ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063087"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581575"
 ---
 # <a name="co-sell-partner-engagement"></a>Deltagande i partnersäljsamarbete
 
@@ -79,6 +79,9 @@ Starta din co-försäljnings resa direkt i Partner Center genom att följa stege
 
 1. Spara utkastet innan du fortsätter.
 1. När du har slutfört alla nödvändiga avsnitt i erbjudandet kan du skicka det till granskning och publicering. I det övre högra hörnet väljer du **Granska och publicera**. Granska erbjudande informationen och välj sedan **publicera**.
+
+> [!NOTE]
+> Du behöver inte längre kontakta oss för att nämna ditt erbjudande om Co-försäljning. När du har slutfört alla obligatoriska fält på sidan försäljning med Microsoft och publicerar om ditt erbjudande, kommer vi att granska ditt erbjudande för att avgöra om det uppfyller kraven för medförsäljnings status.
 
 ## <a name="see-your-offers-co-sell-status"></a>Se ditt erbjudandes status för co-försäljning
 

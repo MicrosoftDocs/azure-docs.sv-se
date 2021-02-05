@@ -13,12 +13,12 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 3ee59226853f4ea5aabf57a8866ba014aa874774
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706208"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582000"
 ---
 # <a name="branding-guidelines-for-applications"></a>Varumärkesriktlinjer för program
 
@@ -27,7 +27,7 @@ När du utvecklar program med Microsoft Identity Platform måste du dirigera din
 I den här artikeln kommer du att:
 
 - Lära dig om de två typer av användarkonton som hanteras av Microsoft och hur du refererar till Azure AD-konton i ditt program
-- Ta reda på vad du behöver göra för att lägga till Microsofts logo typ för användning i din app
+- Lär dig kraven för att använda Microsofts logo typ i din app
 - Ladda ned de officiella bilderna för **Logga in** eller **Logga in med Microsoft** för användning i din app
 - Läs mer om vad du behöver göra och tänka på när det gäller varumärkesanpassning och navigering
 

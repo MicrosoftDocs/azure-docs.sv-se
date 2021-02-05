@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 902348063a24b50d1de0a821d9d6e67931cc53cd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014730"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582544"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrera mobilappar som anropar webb-API: er
 
@@ -79,9 +79,9 @@ Om du föredrar att konfigurera omdirigerings-URI: n manuellt kan du göra det v
 
 ### <a name="username-password-authentication"></a>Användar namn – lösenordsautentisering
 
-Om din app endast använder username-Password Authentication behöver du inte registrera en omdirigerings-URI för programmet. Det här flödet gör en tur och retur till Microsoft Identity Platform version 2,0-slutpunkten. Programmet kommer inte att anropas igen på någon specifik URI.
+Om din app endast använder username-Password Authentication behöver du inte registrera en omdirigerings-URI för programmet. Det här flödet gör en tur och retur till Microsoft Identity Platform. Programmet kommer inte att anropas igen på någon specifik URI.
 
-Du måste dock identifiera ditt program som ett offentligt klient program. Så här gör du:
+Identifiera dock ditt program som ett offentligt klient program. Så här gör du:
 
 1. I <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>väljer du din app i **Appregistreringar** och väljer sedan **autentisering**.
 1. I **Avancerade inställningar**  >  **kan offentliga klient flöden**  >  **Aktivera följande mobila och skriv bords flöden:** Välj **Ja**.

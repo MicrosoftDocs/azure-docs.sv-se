@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225807"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583577"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
 
@@ -53,7 +53,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Steg 1: konfigurera programmet i Azure Portal
-> För att kod exemplet för den här snabb starten ska fungera måste du lägga till en omdirigerings-URI som **http://localhost:4200/** och aktivera * * * * implicit beviljande * *.
+> För att kod exemplet i den här snabb starten ska fungera måste du lägga till en omdirigerings-URI som **http://localhost:4200/** och aktivera **implicit beviljande**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör ändringarna åt mig]()
 >
@@ -96,7 +96,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >
 > Ersätt följande värden:
 >
->|Värdenamn|Beskrivning|
+>|Värdenamn|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|På sidan **Översikt** i program registreringen är det här ditt **program (klient) ID-** värde. |
 >|Enter_the_Cloud_Instance_Id_Here|Detta är instansen av Azure-molnet. För huvud-eller globala Azure-molnet anger du **https://login.microsoftonline.com** . För nationella moln (till exempel Kina), se [nationella moln](./authentication-national-cloud.md).|

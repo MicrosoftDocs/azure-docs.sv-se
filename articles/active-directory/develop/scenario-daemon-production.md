@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062719"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582849"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Daemon-app som anropar webb-API: er – flytta till produktion
 
@@ -25,7 +25,7 @@ Nu när du vet hur man hämtar och använder en token för ett tjänst-till-tjä
 
 ## <a name="deployment---multitenant-daemon-apps"></a>Distribution – daemon-appar för flera innehavare
 
-Om du är en ISV som skapar ett daemon-program som kan köras i flera klienter, måste du se till att klient organisationens administratör:
+Om du är en ISV som skapar ett daemon-program som kan köras i flera klienter, kontrollerar du att klient administratören:
 
 - Tillhandahåller ett tjänst huvud namn för programmet.
 - Ger medgivande till programmet.

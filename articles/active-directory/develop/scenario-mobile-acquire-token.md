@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753621"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582561"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Hämta en token för en mobilapp som anropar webb-API: er
 
@@ -26,7 +26,7 @@ Innan din app kan anropa skyddade webb-API: er måste den ha en åtkomsttoken. D
 
 ## <a name="define-a-scope"></a>Definiera ett omfång
 
-När du begär en token måste du definiera ett omfång. Omfånget avgör vilka data som din app kan komma åt.
+Definiera ett omfång när du begär en token. Omfånget avgör vilka data som din app kan komma åt.
 
 Det enklaste sättet att definiera ett omfång är att kombinera det önskade webb-API: et `App ID URI` med omfånget `.default` . Den här definitionen visar vilken Microsoft Identity-plattform som appen kräver alla omfattningar som anges i portalen.
 
@@ -236,7 +236,7 @@ Klassen definierar följande konstanter:
     Det här alternativet kan vara användbart om hämtningen av token Miss lyckas och du vill låta användaren logga in igen. I det här fallet skickar MSAL `prompt=login` till identitets leverantören. Du kanske vill använda det här alternativet i säkerhetsfokuserade program där organisationens styrning kräver att användaren loggar in varje gång de kommer åt specifika delar av programmet.
 - `Never` är endast för .NET 4,5 och Windows Runtime (WinRT). Den här konstanten kommer inte att fråga användaren, men den kommer att försöka använda den cookie som lagras i den dolda inbäddade vyn. Mer information finns i [använda webbläsare med MSAL.net](./msal-net-web-browsers.md).
 
-    Om det här alternativet Miss lyckas `AcquireTokenInteractive` utlöses ett undantag för att meddela dig att det krävs en användar gränssnitts interaktion. Sedan måste du använda en annan `Prompt` parameter.
+    Om det här alternativet Miss lyckas `AcquireTokenInteractive` utlöses ett undantag för att meddela dig att det krävs en användar gränssnitts interaktion. Använd sedan en annan `Prompt` parameter.
 - `NoPrompt` skickar inte någon prompt till identitets leverantören.
 
     Det här alternativet är användbart endast för principer för redigering och profiler i Azure Active Directory B2C. Mer information finns i [B2C-information](https://aka.ms/msal-net-b2c-specificities).

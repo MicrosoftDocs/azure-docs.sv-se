@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785133"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582663"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Skriv bords app som anropar webb-API: er: Hämta en token
 
@@ -445,7 +445,7 @@ Mer information om medgivande finns i [Microsoft Identity Platform-behörigheter
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-I MSAL.NET måste du använda:
+I MSAL.NET använder du:
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -922,7 +922,7 @@ Det här flödet stöds inte på MSAL för macOS.
 
 ### <a name="device-code-flow"></a>Enhets kod flöde
 
-Om du skriver ett kommando rads verktyg som inte har webb kontroller, och du inte vill använda de tidigare flödena, måste du använda enhets kod flödet.
+Om du skriver ett kommando rads verktyg som inte har webb kontroller, och du inte vill använda de tidigare flödena, använder du enhets kod flödet.
 
 Interaktiv autentisering med Azure AD kräver en webbläsare. Mer information finns i [användningen av webbläsare](https://aka.ms/msal-net-uses-web-browser). För att autentisera användare på enheter eller operativ system som inte tillhandahåller en webbläsare, tillåter enhets kod flödet att användaren använder en annan enhet, till exempel en dator eller en mobil telefon för att logga in interaktivt. Genom att använda enhets kod flödet hämtar programmet token via en två stegs process som är utformad för dessa enheter eller operativ system. Exempel på sådana program är program som körs på iOT eller kommando rads verktyg (CLI). Tanken är att:
 

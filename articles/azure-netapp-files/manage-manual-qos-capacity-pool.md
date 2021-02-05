@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929225"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581165"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Hantera en manuell QoS-kapacitetspool
 
@@ -59,7 +59,8 @@ För att skapa en ny kapacitets uppsättning med hjälp av den manuella QoS-type
 Du kan ändra en pool som för närvarande använder den automatiska QoS-typen för att använda den manuella QoS-typen.  
 
 > [!IMPORTANT]
-> Att ställa in kapacitets typen till manuell QoS är en permanent ändring. Du kan inte konvertera ett manuellt kapacitets verktyg för QoS-typ till en pool med automatisk QoS-kapacitet. 
+> Att ställa in kapacitets typen till manuell QoS är en permanent ändring. Du kan inte konvertera ett manuellt kapacitets verktyg för QoS-typ till en pool med automatisk QoS-kapacitet.  
+> Vid konverterings tillfället kan data flödes nivåer vara begränsade till data flödes gränserna för volymer av den manuella QoS-typen. Se [resurs gränser för Azure NetApp Files](azure-netapp-files-resource-limits.md#resource-limits).
 
 1. Från hanterings bladet för ditt NetApp-konto klickar du på **kapacitets grupper** för att visa befintliga kapacitets grupper.   
  
@@ -89,7 +90,7 @@ Om en volym ingår i en manuell pool för QoS-kapacitet kan du ändra den tillde
 * [Konfigurera en kapacitetspool](azure-netapp-files-set-up-capacity-pool.md)
 * [Mått för Azure NetApp Files](azure-netapp-files-metrics.md)
 * [Saker att tänka på gällande prestanda för Azure NetApp Files](azure-netapp-files-performance-considerations.md)
-* [Felsök problem med kapacitets pooler](troubleshoot-capacity-pools.md)
+* [Felsöka problem med kapacitetspooler](troubleshoot-capacity-pools.md)
 * [Lagringshierarkin för Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
 * [Tjänstnivåer för Azure NetApp Files](azure-netapp-files-service-levels.md)
 * [Kostnadsmodell för Azure NetApp Files](azure-netapp-files-cost-model.md)

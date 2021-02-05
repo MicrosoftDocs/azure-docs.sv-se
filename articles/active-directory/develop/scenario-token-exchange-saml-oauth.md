@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 812bf7bd68362667fcd1b636d0d28fdbb21c1409
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063305"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582357"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>Microsoft Identity Platform token Exchange-scenarier med SAML och OIDC/OAuth
 
 SAML och OpenID Connect (OIDC)/OAuth är populära protokoll som används för att implementera enkel Sign-On (SSO). Vissa appar kan bara implementera SAML och andra kan bara implementera OIDC/OAuth. Båda protokollen använder tokens för att kommunicera hemligheter. Mer information om SAML finns i [Single Sign-On SAML-protokollet](single-sign-on-saml-protocol.md). Mer information om OIDC/OAuth finns i [OAuth 2,0-och OpenID Connect-protokoll på Microsoft Identity Platform](active-directory-v2-protocols.md).
 
-Den här artikeln beskriver ett vanligt scenario där en app implementerar SAML men du måste anropa Graph API, som använder OIDC/OAuth. Grundläggande vägledning finns för personer som arbetar med det här scenariot.
+Den här artikeln beskriver ett vanligt scenario där en app implementerar SAML men anropar Graph API, som använder OIDC/OAuth. Grundläggande vägledning finns för personer som arbetar med det här scenariot.
 
 ## <a name="scenario-you-have-a-saml-token-and-want-to-call-the-graph-api"></a>Scenario: du har en SAML-token och vill anropa Graph API
 Många appar implementeras med SAML. Graph API använder dock protokollen OIDC/OAuth. Det är möjligt, men inte trivial, att lägga till OIDC/OAuth-funktioner i en SAML-app. När OAuth-funktioner är tillgängliga i en app kan Graph API användas.

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754797"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580854"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>Skillnader mellan MSAL.js och ADAL.js
 
@@ -48,7 +48,7 @@ Du måste dock fortfarande använda ADAL.js om ditt program behöver logga in an
 
 I v 1.0 `https://login.microsoftonline.com/common` gör det möjligt för användarna att logga in med alla Azure AD-konton (för alla organisationer) med hjälp av-utfärdaren.
 
-I v 2.0 kan användare med hjälp av `https://login.microsoftonline.com/common` -utfärdaren logga in med ett Azure AD-organisations konto eller ett Microsoft personal-konto (MSA). Om du vill begränsa inloggningen till enbart Azure AD-konton (samma beteende som med ADAL.js), måste du använda `https://login.microsoftonline.com/organizations` . Mer information finns i `authority` konfigurations alternativet i [initiera med MSAL.js](msal-js-initializing-client-applications.md).
+I v 2.0 kan användare med hjälp av `https://login.microsoftonline.com/common` -utfärdaren logga in med ett Azure AD-organisations konto eller ett Microsoft personal-konto (MSA). Använd om du vill begränsa inloggningen till enbart Azure AD-konton (samma beteende som med ADAL.js) `https://login.microsoftonline.com/organizations` . Mer information finns i `authority` konfigurations alternativet i [initiera med MSAL.js](msal-js-initializing-client-applications.md).
 
 ### <a name="scopes-for-acquiring-tokens"></a>Omfattningar för att förvärva token
 * Omfattning i stället för resurs parameter i autentiseringsbegäranden för att hämta token
@@ -73,7 +73,7 @@ I v 2.0 kan användare med hjälp av `https://login.microsoftonline.com/common` 
 
 * Dynamiska omfattningar för stegvist godkännande.
 
-    När du skapar program med v 1.0 behövde du registrera en fullständig uppsättning behörigheter (statiska omfattningar) som krävs av programmet för att användaren ska kunna godkänna inloggnings tiden. I v 2.0 kan du använda omfattnings parametern för att begära behörigheten vid den tidpunkt du vill. Dessa kallas dynamiska omfattningar. Detta gör det möjligt för användaren att tillhandahålla ett stegvist tillstånd för omfattningar. Så om du i början vill att användaren ska logga in på ditt program och du inte behöver någon typ av åtkomst kan du göra det. Om du senare behöver kunna läsa kalendern för användaren kan du begära att kalender omfånget används i acquireToken-metoderna och få användarens medgivande. Ett exempel:
+    När du skapar program med v 1.0 behövde du registrera en fullständig uppsättning behörigheter (statiska omfattningar) som krävs av programmet för att användaren ska kunna godkänna inloggnings tiden. I v 2.0 kan du använda omfattnings parametern för att begära behörigheten vid den tidpunkt du vill. Dessa kallas dynamiska omfattningar. Detta gör det möjligt för användaren att tillhandahålla ett stegvist tillstånd för omfattningar. Så om du i början vill att användaren ska logga in på ditt program och du inte behöver någon typ av åtkomst kan du göra det. Om du senare behöver kunna läsa kalendern för användaren kan du begära att kalender omfånget används i acquireToken-metoderna och få användarens medgivande. Exempel:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ I v 2.0 kan användare med hjälp av `https://login.microsoftonline.com/common` 
 
 * Omfattningar för V 1.0 API: er
 
-    När du hämtar token för V 1.0-API: er med hjälp av MSAL.js kan du begära alla statiska omfattningar som registrerats i API: et genom `.default` att lägga till i app-ID-URI: n för API: et som omfång. Ett exempel:
+    När du hämtar token för V 1.0-API: er med hjälp av MSAL.js kan du begära alla statiska omfattningar som registrerats i API: et genom `.default` att lägga till i app-ID-URI: n för API: et som omfång. Exempel:
 
     ```javascript
     var request = {

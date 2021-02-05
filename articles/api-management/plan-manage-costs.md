@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725945"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581337"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>Planera och hantera kostnader för API Management
 
@@ -20,7 +20,7 @@ Den här artikeln beskriver hur du planerar för och hanterar kostnader för Azu
 
 Kostnaderna för API Management är bara en del av månads kostnaderna på din Azure-faktura. Även om den här artikeln förklarar hur du planerar för och hanterar kostnader för API Management debiteras du för alla Azure-tjänster och-resurser som används i din Azure-prenumeration, inklusive tjänster från tredje part.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kostnads analys i Cost Management stöder de flesta typer av Azure-konton, men inte alla. Om du vill se hela listan med kontotyper som stöds kan du läsa [Förstå Cost Management-data](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Om du vill visa kostnads data måste du ha minst Läs behörighet för ett Azure-konto. Mer information om hur du får åtkomst till Azure Cost Management finns i [Tilldela åtkomst till data](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -89,10 +89,10 @@ Du kan också [Exportera dina kostnads data](../cost-management-billing/costs/tu
 
 ### <a name="choose-tier"></a>Välj nivå
 
-Granska den [funktionsbaserade jämförelsen av Azure API Management-nivåerna](api-management-features.md) för att avgöra vilken tjänst nivå som kan vara lämplig för dina scenarier. De olika tjänst nivåerna stöder kombinationer av funktioner och funktioner som är utformade för olika användnings fall, med olika kostnader. [Uppgradera](upgrade-and-scale.md) till en annan tjänst nivå när som helst.
+Granska den [funktionsbaserade jämförelsen av Azure API Management-nivåerna](api-management-features.md) för att avgöra vilken tjänst nivå som kan vara lämplig för dina scenarier. De olika tjänst nivåerna stöder kombinationer av funktioner och funktioner som är utformade för olika användnings fall, med olika kostnader. 
 
 * **Förbruknings** tjänst nivån ger ett enkelt, utan Server alternativ som debiteras utan fasta kostnader. Du faktureras baserat på antalet API-anrop till tjänsten över ett visst tröskelvärde. Kapaciteten skalas också automatiskt utifrån belastningen på tjänsten.
-* Andra API Managements nivåer debiteras månads kostnaden och ger större data flöden och rikare funktions uppsättningar för utvärderings-och produktions arbets belastningar.
+* API Management nivåerna **Developer**, **Basic**, **standard** och **Premium** debiteras månads kostnaden och ger större data flöden och rikare funktions uppsättningar för utvärderings-och produktions arbets belastningar. [Uppgradera](upgrade-and-scale.md) till en annan tjänst nivå när som helst.
 
 ### <a name="scale-using-capacity-units"></a>Skala med kapacitets enheter
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3b77cc93385efb0bbb8a9b87d29de9bad5cd4ceb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 938a19276839d5e0d2bd3e0244510fc068cb029c
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996021"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582915"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Daemon-app som anropar webb-API: er – app-registrering
 
@@ -24,7 +24,7 @@ För ett daemon-program måste du veta vad du behöver veta när du registrerar 
 
 ## <a name="supported-account-types"></a>Kontotyper som stöds
 
-Daemon-program ser bara bra in i Azure AD-klienter. När du skapar programmet måste du välja något av följande alternativ:
+Daemon-program ser bara bra in i Azure AD-klienter. När du skapar programmet väljer du något av följande alternativ:
 
 - **Konton i den här organisations katalogen**. Det här är det vanligaste alternativet eftersom daemon-program vanligt vis skrivs av verksamhetsspecifika utvecklare.
 - **Konton i valfri organisations katalog**. Du väljer själv om du är en ISV som tillhandahåller ett verktygs verktyg för dina kunder. Du behöver dina kunders klient administratörer för att godkänna den.

@@ -13,12 +13,12 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98795628"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582034"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Autentiseringsuppgifter för certifikat för Microsoft Identity Platform Application Authentication
 
@@ -101,12 +101,12 @@ I Azure App-registreringen för klient programmet:
 
 ### <a name="updating-the-application-manifest"></a>Uppdaterar applikations manifestet
 
-Med ett certifikat måste du beräkna:
+När du har skaffat ett certifikat beräknar du dessa värden:
 
 - `$base64Thumbprint` – Base64-kodat värde för certifikatets hash
 - `$base64Value` – Base64-kodat värde för certifikatets rå data
 
-Du måste också ange en GUID för att identifiera nyckeln i applikations manifestet ( `$keyId` ).
+Ange ett GUID för att identifiera nyckeln i applikations manifestet ( `$keyId` ).
 
 I Azure App-registreringen för klient programmet:
 1. Välj **manifest** för att öppna applikations manifestet.

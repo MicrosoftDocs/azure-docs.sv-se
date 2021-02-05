@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b28454e9b60654541d4f62ec1d8455b30cfc2906
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614922"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580835"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Använda MSAL.NET för att logga in användare med sociala identiteter
 
 Du kan använda MSAL.NET för att logga in användare med sociala identiteter genom att använda [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md). Azure AD B2C är byggd runt begreppet principer. I MSAL.NET anger du en princip som översätter för att tillhandahålla en utfärdare.
 
-- När du instansierar det offentliga klient programmet måste du ange principen som en del av utfärdaren.
+- När du instansierar det offentliga klient programmet anger du principen som en del av utfärdaren.
 - När du vill tillämpa en princip anropar du en åsidosättning av `AcquireTokenInteractive` som accepterar `authority` parametern.
 
 Den här artikeln gäller MSAL.NET 3. x. För MSAL.NET 2. x, se [Azure AD B2C information i MSAL 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x) i MSAL.net wiki på GitHub.
@@ -194,6 +194,6 @@ Mer information om hur du anger vilka anspråk som returneras av dina användar 
 
 Mer information om hur du hämtar token interaktivt med MSAL.NET för Azure AD B2C program finns i följande exempel.
 
-| Exempel | Plattform | Beskrivning|
+| Exempel | Plattform | Description|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | En Xamarin Forms-app som använder MSAL.NET för att autentisera användare via Azure AD B2C och sedan få åtkomst till ett webb-API med de token som returneras.|

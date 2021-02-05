@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b56c57a0b803a41c095f6f25f69a18a815d182f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901546"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582017"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Private Link
 
@@ -26,7 +26,7 @@ ms.locfileid: "97901546"
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hur skickas trafik när du använder en privat länk?
 Trafiken skickas privat med Microsoft stamnätet. Den passerar inte Internet. Azures privata länk lagrar inte kund information.
  
-### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Vad är skillnaden mellan en tjänst slut punkt och en privat slut punkt?
+### <a name="what-is-the-difference-between-service-endpoints-and-private-endpoints"></a>Vad är skillnaden mellan tjänst slut punkter och privata slut punkter?
 - Privata slut punkter ger nätverks åtkomst till vissa resurser bakom en angiven tjänst som tillhandahåller detaljerad segmentering. Trafiken kan komma åt tjänst resursen från lokalt utan att använda offentliga slut punkter.
 - En tjänst slut punkt förblir en offentligt dirigerad IP-adress.  En privat slut punkt är en privat IP i adress utrymmet för det virtuella nätverk där den privata slut punkten har kon figurer ATS.
 
@@ -34,6 +34,9 @@ Trafiken skickas privat med Microsoft stamnätet. Den passerar inte Internet. Az
 Flera typer av privata länk resurser stöder åtkomst via privat slut punkt. Resurser är bland annat Azure PaaS Services och din egen privata länk tjänst. Det är en en-till-många-relation. 
 
 En privat länk tjänst tar emot anslutningar från flera privata slut punkter. En privat slut punkt ansluter till en privat länk tjänst.    
+
+### <a name="do-i-need-to-disable-network-policies-for-private-link"></a>Måste jag inaktivera nätverks principer för privat länk
+Ja. Både privat och privat länk tjänst måste inaktivera nätverks principer för att fungera korrekt. Båda har egenskaper som är oberoende av varandra.
 
 ## <a name="private-endpoint"></a>Privat slutpunkt 
  

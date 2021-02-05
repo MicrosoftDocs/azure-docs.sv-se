@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753276"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582255"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webbapp som loggar in användare: kod konfiguration
 
@@ -28,7 +28,7 @@ Lär dig hur du konfigurerar koden för din webbapp som loggar in användare.
 <!-- This section can be in an include for web app and web APIs -->
 De bibliotek som används för att skydda en webbapp (och ett webb-API) är:
 
-| Plattform | Bibliotek | Beskrivning |
+| Plattform | Bibliotek | Description |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [Identitets modells tillägg för .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Som används direkt av ASP.NET och ASP.NET Core föreslår Microsoft Identity Model-tillägg för .NET en uppsättning dll: er som körs på både .NET Framework och .NET Core. Från en ASP.NET-eller ASP.NET Core-webbapp kan du kontrol lera token-verifieringen med hjälp av **TokenValidationParameters** -klassen (särskilt i vissa partner scenarier). I praktiken kapslas komplexiteten in i biblioteket [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Stöd för Java-webbprogram |
@@ -64,13 +64,13 @@ Du kanske vill referera till det här exemplet för fullständig implementerings
 
 ## <a name="configuration-files"></a>Konfigurationsfiler
 
-Webb program som loggar in användare med hjälp av Microsoft Identity Platform konfigureras via konfigurationsfiler. De inställningar som du behöver fylla i är:
+Webb program som loggar in användare med hjälp av Microsoft Identity Platform konfigureras via konfigurationsfiler. Detta är de värden som du måste ange i konfigurationen:
 
 - Moln instansen ( `Instance` ) om du vill att din app ska köras i nationella moln, till exempel
 - Mål gruppen i klient-ID: t ( `TenantId` )
 - Klient-ID ( `ClientId` ) för ditt program, som kopieras från Azure Portal
 
-Ibland kan program parametrized av `Authority` , vilket är en sammanfogning av `Instance` och `TenantId` .
+Du kan också se referenser till `Authority` . `Authority`Värdet är sammanfogningen av `Instance` `TenantId` värdena och.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -133,7 +133,7 @@ I ASP.NET Core innehåller en annan fil ([properties\launchSettings.jspå](https
 }
 ```
 
-I Azure Portal måste de svars-URI: er som du måste registrera på sidan **autentisering** för programmet matcha dessa URL: er. För de två föregående konfigurationsfilerna är de `https://localhost:44321/signin-oidc` . Orsaken är att `applicationUrl` `http://localhost:3110` , men har `sslPort` angetts (44321). `CallbackPath` är `/signin-oidc` , enligt definitionen i `appsettings.json` .
+I Azure Portal måste omdirigerings-URI: er som du registrerar på sidan **autentisering** för programmet matcha dessa URL: er. För de två föregående konfigurationsfilerna är de `https://localhost:44321/signin-oidc` . Orsaken är att `applicationUrl` `http://localhost:3110` , men har `sslPort` angetts (44321). `CallbackPath` är `/signin-oidc` , enligt definitionen i `appsettings.json` .
 
 På samma sätt skulle utloggnings-URI: n vara inställd på `https://localhost:44321/signout-oidc` .
 
@@ -161,7 +161,7 @@ I ASP.NET konfigureras programmet via [Web.config](https://github.com/Azure-Samp
   </appSettings>
 ```
 
-I Azure Portal måste de svars-URI: er som du måste registrera på sidan **autentisering** för programmet matcha dessa URL: er. Det vill säga att de ska vara `https://localhost:44326/` .
+I Azure Portal måste de svars-URI: er som du registrerar på sidan **autentisering** för programmet matcha dessa URL: er. Det vill säga att de ska vara `https://localhost:44326/` .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -175,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-I Azure Portal måste de svars-URI: er som du måste registrera på sidan **autentisering** för programmet matcha de `redirectUri` instanser som programmet definierar. Det vill säga att de ska vara `http://localhost:8080/msal4jsample/secure/aad` och `http://localhost:8080/msal4jsample/graph/me` .
+I Azure Portal måste de svars-URI: er som du registrerar på sidan **autentisering** för programmet matcha de `redirectUri` instanser som programmet definierar. Det vill säga att de ska vara `http://localhost:8080/msal4jsample/secure/aad` och `http://localhost:8080/msal4jsample/graph/me` .
 
 # <a name="python"></a>[Python](#tab/python)
 

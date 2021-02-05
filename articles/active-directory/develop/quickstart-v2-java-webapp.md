@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 601b725e5f1fe06c12416ad8ab36ac657f0412f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178579"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583424"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snabb start: lägga till inloggning med Microsoft i en Java-webbapp
 
@@ -25,7 +25,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 
  En översikt finns i [diagrammet över hur exemplet fungerar](#how-the-sample-works).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill köra det här exemplet behöver du:
 
@@ -68,7 +68,7 @@ Om du vill köra det här exemplet behöver du:
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
 >
-> Om du vill använda kod exemplet i den här snabb starten måste du:
+> Använda kod exemplet i den här snabb starten:
 >
 > 1. Lägg till svars-URL: er `https://localhost:8443/msal4jsample/secure/aad` och `https://localhost:8443/msal4jsample/graph/me` .
 > 1. Skapa en klient hemlighet.
@@ -161,7 +161,7 @@ Om du vill köra webb programmet från en IDE väljer du kör och går sedan til
 
 ##### <a name="running-the-project-from-tomcat"></a>Köra projektet från Tomcat
 
-Om du vill distribuera webb exemplet till Tomcat måste du göra några ändringar i käll koden.
+Om du vill distribuera webb exemplet till Tomcat gör du ett par ändringar i käll koden.
 
 1. Öppna *MS-Identity-Java-webapp/pom.xml*.
     - Under `<name>msal-web-sample</name>` lägger du till `<packaging>war</packaging>` .

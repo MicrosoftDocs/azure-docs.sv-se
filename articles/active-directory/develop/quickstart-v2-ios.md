@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b43141a3700b9594e2d5fbb875774b7b90e62a0b
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754296"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583458"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snabb start: Logga in användare och anropa Microsoft Graph API från en iOS-eller macOS-app
 
@@ -26,7 +26,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 
 Snabb starten gäller både iOS-och macOS-appar. Vissa steg behövs bara för iOS-appar och visas som sådana.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * XCode 10 +
@@ -69,7 +69,7 @@ Snabb starten gäller både iOS-och macOS-appar. Vissa steg behövs bara för iO
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>Steg 1: Konfigurera programmet
-> För att kod exemplet för den här snabb starten ska fungera måste du lägga till en omdirigerings-URI som är kompatibel med auth Broker.
+> För att kod exemplet för den här snabb starten ska fungera lägger du till en **omdirigerings-URI** som är kompatibel med auth Broker.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör den här ändringen åt mig]()
 >
@@ -118,7 +118,7 @@ I ett terminalfönster navigerar du till mappen med det nedladdade kod exemplet 
 >     ```
 > 1. Öppna projekt inställningarna. I avsnittet **identitet** anger du det **paket-ID** som du angav i portalen.
 > 1. Högerklicka på **info. plist** och välj **öppna som**  >  **källkod**.
-> 1. Under noden dict root ersätter `Enter_the_bundle_Id_Here` du med **_paket-ID_* _ som du använde i portalen.
+> 1. Under noden dict root ersätter `Enter_the_bundle_Id_Here` du med det ***paket-ID*** som du använde i portalen.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -178,9 +178,9 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Plats: | Beskrivning |
+> |Plats: | Description |
 > |---------|---------|
-> | `clientId` | Program-ID: t från programmet som är registrerat i _portal. Azure. com * |
+> | `clientId` | Program-ID från den app som registrerats i *portal.azure.com* |
 > | `authority` | Microsoft Identity Platform. I de flesta fall är detta `https://login.microsoftonline.com/common` |
 > | `redirectUri` | Omdirigerings-URI för programmet. Du kan skicka Nil om du vill använda standardvärdet eller din anpassade omdirigerings-URI. |
 
@@ -214,7 +214,7 @@ Din app måste också ha följande i din `AppDelegate` . Detta låter MSAL SDK h
     }
  ```
 
-Slutligen måste appen ha en `LSApplicationQueriesSchemes` post i ***info. plist** _ tillsammans med `CFBundleURLTypes` . Exemplet följer med detta.
+Slutligen måste appen ha en `LSApplicationQueriesSchemes` post i din ***info. plist*** tillsammans med `CFBundleURLTypes` . Exemplet följer med detta.
 
    ```xml
    <key>LSApplicationQueriesSchemes</key>
@@ -232,7 +232,7 @@ MSAL har två metoder som används för att hämta token: `acquireToken` och `ac
 
 Vissa situationer kräver att användare interagerar med Microsoft Identity Platform. I sådana fall kan slutanvändaren behöva välja sitt konto, ange sina autentiseringsuppgifter eller godkänna appens behörigheter. Exempel:
 
-_ Första gången användare loggar in i programmet
+* Första gången användaren loggar in på programmet
 * Om en användare återställer sitt lösen ord måste de ange sina autentiseringsuppgifter
 * När ditt program begär åtkomst till en resurs för första gången
 * När MFA eller andra principer för villkorlig åtkomst krävs
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Plats:| Beskrivning |
+> |Plats:| Description |
 > |---------|---------|
 > | `scopes` | Innehåller de omfattningar som begärs (det vill säga `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,7 +262,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Plats: | Beskrivning |
+> |Plats: | Description |
 > |---------|---------|
 > | `scopes` | Innehåller de omfattningar som begärs (det vill säga `[ "user.read" ]` för Microsoft Graph eller `[ "<Application ID URL>/scope" ]` för anpassade webb-API: er ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Det konto som en token begärs för. Den här snabb starten är ungefär samma konto program. Om du vill skapa en app med flera konton måste du definiera logik för att identifiera vilket konto som ska användas för token-begäranden som använder `accountsFromDeviceForParameters:completionBlock:` och skickar korrekt `accountIdentifier` |

@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95752802"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582816"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Begränsningar och begränsningar för omdirigerings-URI (svars-URL)
 
@@ -32,7 +32,7 @@ En omdirigerings-URI eller svars-URL är den plats där auktoriseringsservern sk
 
 Den här tabellen visar det maximala antalet omdirigerings-URI: er som du kan lägga till i en app-registrering i Microsoft Identity Platform.
 
-| Konton som är inloggade | Maximalt antal omdirigerings-URI: er | Beskrivning |
+| Konton som är inloggade | Maximalt antal omdirigerings-URI: er | Description |
 |--------------------------|---------------------------------|-------------|
 | Microsoft arbets-eller skol konton i en organisations Azure Active Directory-klient (Azure AD) | 256 | `signInAudience` fältet i applikations manifestet har angetts till antingen *AzureADMyOrg* eller *AzureADMultipleOrgs* |
 | Personliga Microsoft-konton och arbets-och skol konton | 100 | `signInAudience` fältet i applikations manifestet har angetts till *AzureADandPersonalMicrosoftAccount* |
@@ -45,7 +45,7 @@ Du kan använda högst 256 tecken för varje omdirigerings-URI som du lägger ti
 
 Program modellen för Azure Active Directory (Azure AD) stöder för närvarande både HTTP-och HTTPS-scheman för appar som loggar in på arbets-eller skol konton i en organisations Azure AD-klient. Dessa konto typer anges av `AzureADMyOrg` `AzureADMultipleOrgs` värdena och i-fältet i `signInAudience` applikations manifestet. För appar som loggar in på personliga Microsoft-konton (MSA) *och* arbets-och skol konton (det `signInAudience` vill säga är inställt på `AzureADandPersonalMicrosoftAccount` ) tillåts bara https-schemat.
 
-Om du vill lägga till omdirigerings-URI: er med ett HTTP-schema till app-registreringar som loggar in på arbets-eller skol konton, måste du använda program manifest redigeraren i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) i Azure Portal. Men även om det är möjligt att ställa in en HTTP-baserad omdirigerings-URI med hjälp av manifest redigeraren rekommenderar vi *starkt* att du använder https-schemat för omdirigerings-URI: er.
+Om du vill lägga till omdirigerings-URI: er med ett HTTP-schema till app-registreringar som loggar in på arbets-eller skol konton använder du program manifest redigeraren i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) i Azure Portal. Men även om det är möjligt att ställa in en HTTP-baserad omdirigerings-URI med hjälp av manifest redigeraren rekommenderar vi *starkt* att du använder https-schemat för omdirigerings-URI: er.
 
 ## <a name="localhost-exceptions"></a>Localhost-undantag
 
@@ -65,12 +65,12 @@ I en utvecklings synpunkt innebär detta några saker:
 * Registrera inte flera omdirigerings-URI: er där bara porten är annorlunda. Inloggnings servern väljer en godtyckligt och använder beteendet som är kopplat till denna omdirigerings-URI (till exempel om det är en `web` -, `native` -eller `spa` -Skriv-omdirigering).
 
     Detta är särskilt viktigt när du vill använda olika autentiserings flöden i samma program registrering, till exempel både auktoriseringskod och implicit flöde. För att associera rätt svars beteende med varje omdirigerings-URI måste inloggnings servern kunna skilja mellan omdirigerings-URI: erna och kan inte göra det när bara porten är annorlunda.
-* Om du behöver registrera flera omdirigerings-URI: er på localhost för att testa olika flöden under utvecklingen kan du skilja dem åt med hjälp av *Sök vägs* komponenten i URI: n. Matchar till exempel `http://localhost/MyWebApp` inte `http://localhost/MyNativeApp` .
+* Om du vill registrera flera omdirigerings-URI: er på localhost för att testa olika flöden under utvecklingen kan du skilja dem åt med hjälp av *Sök vägs* komponenten i URI Matchar till exempel `http://localhost/MyWebApp` inte `http://localhost/MyNativeApp` .
 * IPv6 loopback-adressen ( `[::1]` ) stöds inte för närvarande.
 
 #### <a name="prefer-127001-over-localhost"></a>Föredra till 127.0.0.1 över localhost
 
-För att förhindra att appen bryts av felkonfigurerade brand väggar eller byter namn på nätverks gränssnitt, använder du IP-literal loopback-adress `127.0.0.1` i omdirigerings-URI i stället för `localhost` . Exempelvis `https://127.0.0.1`.
+För att förhindra att appen bryts av felkonfigurerade brand väggar eller byter namn på nätverks gränssnitt, använder du IP-literal loopback-adress `127.0.0.1` i omdirigerings-URI i stället för `localhost` . Ett exempel är `https://127.0.0.1`.
 
 Du kan dock inte använda text rutan **omdirigerings-URI: er** i Azure Portal för att lägga till en loopback-baserad omdirigerings-URI som använder `http` schemat:
 
@@ -84,7 +84,7 @@ Jokertecken i jokertecken `https://*.contoso.com` verkar vara praktiska, men bö
 
 URI: er för jokertecken stöds för närvarande inte i appar som kon figurer ATS för att logga in på personliga Microsoft-konton och arbets-eller skol konton. URI: er med jokertecken tillåts dock för appar som har kon figurer ATS för att logga in på arbets-eller skol konton i en organisations Azure AD-klient.
 
-Om du vill lägga till omdirigerings-URI: er med jokertecken till app-registreringar som loggar in på arbets-eller skol konton, måste du använda program manifest redigeraren i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) i Azure Portal. Även om det är möjligt att ange en omdirigerings-URI med ett jokertecken med hjälp av manifest redigeraren rekommenderar vi *starkt* att du följer [Section 3.1.2 i RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) och använder endast absoluta URI: er.
+Om du vill lägga till omdirigerings-URI: er med jokertecken till app-registreringar som loggar in på arbets-eller skol konton, använder du program manifest redigeraren i [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) i Azure Portal. Även om det är möjligt att ange en omdirigerings-URI med ett jokertecken med hjälp av manifest redigeraren rekommenderar vi *starkt* att du följer [Section 3.1.2 i RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) och använder endast absoluta URI: er.
 
 Om ditt scenario kräver fler omdirigerings-URI: er än den högsta tillåtna gränsen, bör du tänka på följande [tillstånds parameter metod](#use-a-state-parameter) i stället för att lägga till en omdirigering
 

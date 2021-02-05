@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: b81b34010736bce33085cb1ebf0faa3da6a41bd6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5244a8e572abb56c00d87d0bdd7e8d1291af9b9e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755391"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581915"
 ---
 # <a name="authentication-vs-authorization"></a>Autentisering kontra auktorisering
 
@@ -34,7 +34,7 @@ Den här artikeln definierar autentisering och auktorisering. Du får också en 
 
 ## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>Autentisering och auktorisering med hjälp av Microsoft Identity Platform
 
-Att skapa appar som var och en upprätthåller sina egna användar namn och lösen ords uppgifter innebär en hög administrativ börda när du behöver lägga till eller ta bort användare över flera appar. I stället kan dina appar delegera det ansvaret till en central identitets leverantör.
+Att skapa appar som var och en upprätthåller sina egna användar namn och lösen ords uppgifter innebär en hög administrativ börda när du lägger till eller tar bort användare i flera appar. I stället kan dina appar delegera det ansvaret till en central identitets leverantör.
 
 Azure Active Directory (Azure AD) är en centraliserad identitets leverantör i molnet. Att delegera autentisering och auktorisering till det möjliggör scenarier som:
 

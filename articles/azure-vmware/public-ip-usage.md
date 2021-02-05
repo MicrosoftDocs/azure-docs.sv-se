@@ -2,13 +2,13 @@
 title: Använda funktionen för offentliga IP-funktioner i Azure VMware-lösningen
 description: Den här artikeln förklarar hur du använder funktionen för offentliga IP-funktioner i Azure Virtual WAN.
 ms.topic: how-to
-ms.date: 10/28/2020
-ms.openlocfilehash: 036ec00077720e9dc3197bf9235bea34b77fb5f4
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.date: 02/04/2021
+ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517911"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581388"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Använda funktionen för offentliga IP-funktioner i Azure VMware-lösningen
 
@@ -21,7 +21,7 @@ Du aktiverar offentlig Internet åtkomst på två sätt.
 
 Som en del av distributionen av privata moln i Azure VMware-lösningen, vid aktivering av offentliga IP-funktioner, skapas nödvändiga komponenter med Automation get och Enabled:
 
--  Virtual WAN
+-  Virtuellt WAN
 
 -  Virtuell WAN-hubb med ExpressRoute-anslutning
 
@@ -120,16 +120,16 @@ När alla komponenter har distribuerats kan du se dem i den tillagda resurs grup
 
 1. Välj **inaktivera** på fliken **DNS** och välj sedan **Nästa: regler**.
 
-1. Välj **Lägg till en regel samling** , ange informationen nedan och välj **Lägg till** och välj sedan **Nästa: Hot information**.
+1. Välj **Lägg till en regel samling**, ange informationen nedan och välj **Lägg till** och välj sedan **Nästa: Hot information**.
 
-   -  Namn
+   -  Name
    -  Typ av regel samling – DNAT
    -  Prioritet
    -  Regel samlings åtgärd – Tillåt
    -  Namn på regel
    -  Källtyp- **IPaddress**
-   -  Källa-* *\** _
-   -  Protokoll – _ *TCP**
+   -  Källicensservern **\***
+   -  Protokoll – **TCP**
    -  Målport – **80**
    -  Mål typ – **IP-adress**
    -  Mål – **offentlig IP-adress**
@@ -156,5 +156,7 @@ Du kan ha 100 offentliga IP-adresser per SDDCs.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om hur du använder offentliga IP-adresser med hjälp av [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md).
+Nu när du har använt funktionen för offentliga IP-funktioner i Azure VMware-lösningen kanske du vill lära dig mer om:
 
+- Använda offentliga IP-adresser med [Azure Virtual WAN](../virtual-wan/virtual-wan-about.md).
+- [Skapa en IPSec-tunnel i Azure VMware-lösningen](create-ipsec-tunnel.md).

@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 4f64bab698cb87e26fa4fd1587c4269acf99fa59
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 5dde3da693d87d537fd2177a6f12b55297b5776e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384137"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582204"
 ---
-# <a name="precise-answering"></a>Exakt svar
+# <a name="precise-answering"></a>Exakta svar
 
-Med funktionen exakt svars funktion kan du få ett exakt kort svar från det bästa kandidat svar som finns i kunskaps basen för alla användar frågor. Den här funktionen använder en djup inlärnings modell som på körning, som förstår avsikten med användar frågan och identifierar det exakta korta svaret från svars passage, om det finns ett kort svar som är ett faktum i svars passagen. 
+Funktionen exakt svars funktion som introducerades i QnA Maker hanterad (för hands version), gör det möjligt att få det exakta korta svaret från den bästa kandidat svars passage som finns i kunskaps basen för alla användar frågor. Den här funktionen använder en djup inlärnings modell som på körning, som förstår avsikten med användar frågan och identifierar det exakta korta svaret från svars passage, om det finns ett kort svar som är ett faktum i svars passagen. 
 
 Den här funktionen är aktive ras som standard i test fönstret så att du kan testa funktionaliteten som är speciell för ditt scenario. Den här funktionen är mycket bra för både innehålls utvecklare och slutanvändare. Innehålls utvecklare behöver nu inte manuellt se specifika QnA-par för varje faktum i kunskaps basen och slutanvändaren behöver inte gå igenom hela svars resultatet som returneras från tjänsten för att hitta det faktiska faktum som svarar på användarens fråga. 
 
@@ -32,7 +32,7 @@ Tjänsten returnerar också säkerhets poängen för det exakta svaret som ett *
 
 ## <a name="publishing-a-qna-maker-bot"></a>Publicera en QnA Maker robot
 
-När du publicerar en robot får du den exakta svars upplevelsen som är aktive rad som standard i ditt program, där du kommer att se ett kort svar tillsammans med svarets passage. Användaren har möjlighet att välja andra upplevelser genom att uppdatera mallen via den eBot app service. 
+När du publicerar en robot får du den exakta svars upplevelsen som är aktive rad som standard i ditt program, där du kommer att se ett kort svar tillsammans med svarets passage. Se API-referensen för att [generera svar](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/knowledgebase/generateanswer#answerspan) för att se hur du använder det exakta svaret (kallas AnswerSpan) i svaret. Användaren har möjlighet att välja andra upplevelser genom att uppdatera mallen via robot app service. 
 
 ## <a name="language-support"></a>Stöd för språk
 

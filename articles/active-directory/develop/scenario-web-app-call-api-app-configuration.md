@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: bcbff131706854c079a5af2f38cad98f97018167
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753316"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582337"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>En webbapp som anropar webb-API: er kod konfiguration
 
@@ -32,7 +32,7 @@ Som du ser i [webbappen som loggar in i användar](scenario-web-app-sign-user-ov
 
 Följande bibliotek i Microsoft Authentication Library (MSAL) stöder Authorization Code Flow för Web Apps:
 
-| MSAL-bibliotek | Beskrivning |
+| MSAL-bibliotek | Description |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Stöd för .NET Framework-och .NET Core-plattformar. Stöds inte Universell Windows-plattform (UWP), Xamarin. iOS och Xamarin. Android, eftersom dessa plattformar används för att bygga offentliga klient program. <br/><br/>För ASP.NET Core webbappar och webb-API: er, kapslas MSAL.NET in i ett bibliotek på högre nivå med namnet [Microsoft. Identity. Web](https://aka.ms/ms-identity-web). |
 | ![MSAL python](media/sample-v2-code/logo_python.png) <br/> MSAL för Python | Stöd för python-webbprogram. |
@@ -44,7 +44,7 @@ Välj fliken för den plattform som du är intresse rad av:
 
 ## <a name="client-secrets-or-client-certificates"></a>Klient hemligheter eller klient certifikat
 
-Under förutsättning att webbappen nu anropar ett underordnat webb-API måste du ange en klient hemlighet eller ett klient certifikat i *appsettings.js* filen. Du kan också lägga till ett avsnitt som anger:
+Under förutsättning att webbappen nu anropar ett underordnat webb-API, anger du en klient hemlighet eller ett klient certifikat i *appsettings.js* filen. Du kan också lägga till ett avsnitt som anger:
 
 - URL: en för det underordnade webb-API: et
 - De omfattningar som krävs för att anropa API: et
@@ -184,7 +184,7 @@ Följande bild visar de olika möjligheterna för *Microsoft. Identity. Web* och
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blockera diagram som visar tjänst konfigurations alternativ i Start punkt C S för att anropa ett webb-API och ange en implementation av token cache":::
 
 > [!NOTE]
-> För att fullständigt förstå kod exemplen måste du vara bekant med [ASP.net Core fundament ALS](/aspnet/core/fundamentals), särskilt med [beroende inmatning](/aspnet/core/fundamentals/dependency-injection) och [alternativ](/aspnet/core/fundamentals/configuration/options).
+> För att fullständigt förstå kod exemplen här, bör du vara bekant med [ASP.net Core fundament ALS](/aspnet/core/fundamentals), särskilt med [beroende inmatning](/aspnet/core/fundamentals/dependency-injection) och [alternativ](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

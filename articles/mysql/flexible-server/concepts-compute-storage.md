@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 765ff76578e48135d2e7d4d9200c1868d2501df4
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052354"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581456"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Beräknings-och lagrings alternativ i Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -102,15 +102,14 @@ Vi rekommenderar att du <!--turn on storage auto-grow or to--> Konfigurera en av
 Automatisk storleks ökning för lagring är inte tillgängligt ännu för Azure Database for MySQL flexibel Server.
 
 ## <a name="iops"></a>IOPS
-Lägsta effektiva IOPS är 100 över alla beräknings storlekar och högsta effektiva IOPS bestäms av båda följande attribut: 
-- Compute: den högsta effektiva IOPS som kan begränsas av den maximala tillgängliga IOPS för den valda beräknings storleken.
-- Lagring: i alla beräknings nivåer kan IOPS skalas med den tillhandahållna lagrings storleken i ett 3:1-förhållande.
 
-Du kan skala effektiva IOPS som är tillgängliga genom att öka den etablerade lagringen eller flytta till en större beräknings storlek (om din IOPS begränsas av beräkning). I för hands versionen är den högsta effektiva IOPS som stöds 20 000 IOPS.
+Azure Database for MySQL – flexibel Server stöder etablering av ytterligare IOPS. Med den här funktionen kan du etablera ytterligare IOPS över den kostnads fria IOPS-gränsen. Med hjälp av den här funktionen kan du när som helst öka eller minska antalet IOPS som tillhandahålls utifrån dina arbets belastnings krav. 
 
-Om du vill veta mer om högsta antalet effektiva IOPS per beräknings storlek, kan du använda kombinationen av både beräkning och lagring, nedan: 
+Lägsta IOPS är 100 över alla beräknings storlekar och högsta IOPS bestäms av den valda beräknings storleken. I för hands versionen är den högsta IOPS som stöds 20 000 IOPS.
 
-| Beräknings storlek         | Högsta effektiva IOPS  | 
+Om du vill veta mer om högsta antalet IOPS per beräknings storlek visas nedan: 
+
+| Beräknings storlek         | Högsta IOPS        | 
 |----------------------|---------------------|
 | **Burstable**        |                     |
 | Standard_B1s         | 320                 |
@@ -133,11 +132,14 @@ Om du vill veta mer om högsta antalet effektiva IOPS per beräknings storlek, k
 | Standard_E48ds_v4    | 20000               | 
 | Standard_E64ds_v4    | 20000               |  
 
-Högsta effektiva IOPS är beroende av Max antalet tillgängliga IOPS per beräknings storlek. Se formeln nedan och referera till *maximalt antal cachelagrade diskar i kolumnen: IOPS/Mbps* i dokumentationen för [B-serien](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-serien](../../virtual-machines/ddv4-ddsv4-series.md)och [Edsv4-serien](../../virtual-machines/edv4-edsv4-series.md) .
+Högsta IOPS är beroende av Max antalet tillgängliga IOPS per beräknings storlek. Referera till kolumnen *Max ej cachelagrad disk data flöde: IOPS/Mbps* i dokumentationen [för B-serien](../../virtual-machines/sizes-b-series-burstable.md), [Ddsv4-serien](../../virtual-machines/ddv4-ddsv4-series.md)och [Edsv4-serien](../../virtual-machines/edv4-edsv4-series.md) .
 
-**Högsta effektiva IOPS** = minimum (*"Max ej cachelagrad disk data flöde: IOPS/Mbit/s"* av beräknings storlek, lagring etablerad i GIB * 3)
+> [!Important]
+> **Kostnads fri IOPS** är lika med minimum ("Max ej cachelagrad disk data flöde: IOPS/Mbit/s" av beräknings storlek, lagring etablerad i GIB * 3)<br>
+> **Lägsta IOPS** är 100 över alla beräknings storlekar<br>
+> **Högsta IOPS** bestäms av den valda beräknings storleken. I för hands versionen är den högsta IOPS som stöds 20 000 IOPS.
 
-Du kan övervaka i/O-förbrukningen i Azure Portal (med Azure Monitor) med [IO-procentens](./concepts-monitoring.md) mått. Om du behöver mer IOPS måste du förstå om du begränsas av beräknings storleken eller det tillhandahållna lagrings utrymmet. Skala serverns beräkning eller lagrings utrymme enligt detta.
+Du kan övervaka i/O-förbrukningen i Azure Portal (med Azure Monitor) med [IO-procentens](./concepts-monitoring.md) mått. Om du behöver fler IOPS än max IOPS baserat på beräkning måste du skala serverns data bearbetning.
 
 ## <a name="backup"></a>Backup
 

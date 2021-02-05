@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015121"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582238"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gör så här: konfigurera det roll anspråk som utfärdats i SAML-token för företags program
 
@@ -30,7 +30,7 @@ Genom att använda Azure Active Directory (Azure AD) kan du anpassa anspråks ty
 
 ## <a name="when-to-use-this-feature"></a>När du ska använda den här funktionen
 
-Om programmet förväntar sig att anpassade roller ska skickas i ett SAML-svar, måste du använda den här funktionen. Du kan skapa så många roller som du måste skicka tillbaka från Azure AD till ditt program.
+Använd den här funktionen om programmet förväntar sig anpassade roller i SAML-svaret som returneras av Azure AD. Du kan skapa så många roller du behöver.
 
 ## <a name="create-roles-for-an-application"></a>Skapa roller för ett program
 
@@ -139,7 +139,7 @@ Om programmet förväntar sig att anpassade roller ska skickas i ett SAML-svar, 
     ![Fönstret "Redigera tilldelning" och "Välj roll"](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     
-    Du måste uppdatera sessionen i Azure Portal för att se nya roller.
+    Uppdatera sessionen i Azure Portal för att se nya roller.
 
 1. Uppdatera **attribut** -tabellen för att definiera en anpassad mappning av roll anspråket.
 

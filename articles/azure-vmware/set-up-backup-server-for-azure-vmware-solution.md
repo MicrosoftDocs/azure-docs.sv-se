@@ -2,13 +2,13 @@
 title: Konfigurera Azure Backup Server för Azure VMware-lösning
 description: Konfigurera din Azure VMware-lösning för att säkerhetskopiera virtuella datorer med Azure Backup Server.
 ms.topic: how-to
-ms.date: 10/23/2020
-ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.date: 02/04/2021
+ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703410"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581490"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Konfigurera Azure Backup Server för Azure VMware-lösning
 
@@ -389,7 +389,7 @@ Azure Backup Server v3 accepterar bara lagrings volymer. När du lägger till en
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fortsätt till nästa självstudie och lär dig hur du konfigurerar en säkerhets kopia av virtuella VMware-datorer som körs på en Azure VMware-lösning med hjälp av Azure Backup Server.
+Nu när du har gått igenom hur du konfigurerar Azure Backup Server för Azure VMware-lösningen kanske du vill lära dig mer om:
 
-> [!div class="nextstepaction"]
-> [Konfigurera säkerhets kopiering av virtuella datorer med Azure VMware-lösningen](backup-azure-vmware-solution-virtual-machines.md)
+- [Konfigurera säkerhets kopior för dina virtuella datorer med Azure VMware-lösningen](backup-azure-vmware-solution-virtual-machines.md).
+- [Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering](azure-security-integration.md).

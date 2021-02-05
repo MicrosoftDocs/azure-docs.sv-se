@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0a99ff32f3f1fbcf4af64188640d2edd7f3f5470
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178216"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583136"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snabb start: lägga till inloggning med Microsoft i en python-webbapp
 
@@ -25,7 +25,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 
 Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) eller [python 3 +](https://www.python.org/downloads/release/python-364/)
@@ -65,7 +65,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > 1. Ange en nyckel Beskrivning (till exempel appens hemlighet), lämna standard förfallo datum och välj **Lägg till**.
 > 1. Notera **värdet** för **klient hemligheten** för senare användning.
 > 1. Under **Hantera** väljer du **API-behörigheter**  >  **Lägg till en behörighet**.
->1.  Se till att fliken **Microsoft API: er** är markerad.
+> 1. Se till att fliken **Microsoft API: er** är markerad.
 > 1. I avsnittet *vanliga API: er för Microsoft* väljer du **Microsoft Graph**.
 > 1. I avsnittet **delegerade behörigheter** kontrollerar du att rätt behörigheter är markerade: **User. ReadBasic. all**. Använd Sök fältet om det behövs.
 > 1. Välj knappen **Lägg till behörigheter** .
@@ -74,7 +74,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
 >
-> För att kod exemplet för den här snabb starten ska fungera måste du:
+> Kod exemplet i den här snabb starten fungerar:
 >
 > 1. Lägg till en svars-URL som `http://localhost:5000/getAToken` .
 > 1. Skapa en klient hemlighet.
@@ -110,7 +110,7 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 > AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 > ```
-> Där:
+> Plats:
 >
 > - `Enter_the_Application_Id_here` – är program-Id för programmet som du har registrerat.
 > - `Enter_the_Client_Secret_Here` – är den **klient hemlighet** som du skapade i **certifikat & hemligheter**  för det program som du har registrerat.

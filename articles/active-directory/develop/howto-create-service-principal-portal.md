@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014951"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581762"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Anvisningar: Använd portalen för att skapa ett Azure AD-program och huvudnamn för tjänsten som kan komma åt resurser
 
@@ -55,7 +55,7 @@ Så här kontrollerar du dina prenumerations behörigheter:
 
 1. Sök efter och välj **prenumerationer** eller Välj **prenumerationer** på **Start** sidan.
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Sök](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Välj den prenumeration som du vill skapa tjänstens huvud namn i.
 
@@ -115,7 +115,7 @@ Nästa avsnitt visar hur du hämtar värden som behövs när du loggar in progra
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>Hämta klient-och app-ID-värden för inloggning
 
-När du har loggat in via programmering måste du skicka klient-ID: t med din autentiseringsbegäran och program-ID: t.  Du måste också ha ett certifikat eller en autentiseringsnyckel (beskrivs i följande avsnitt). Hämta dessa värden med följande steg:
+När program mässigt loggar in skickar du klient-ID: t med din autentiseringsbegäran och program-ID: t.  Du måste också ha ett certifikat eller en autentiseringsnyckel (beskrivs i följande avsnitt). Hämta dessa värden med följande steg:
 
 1. Välj **Azure Active Directory**.
 1. Välj ditt program från **Appregistreringar** i Azure AD.
@@ -162,7 +162,7 @@ För att ladda upp certifikatet:
 
 1. Välj **Lägg till**.
 
-När du har registrerat certifikatet med ditt program i program registrerings portalen måste du aktivera klient program koden för att använda certifikatet.
+När du har registrerat certifikatet med ditt program på program registrerings portalen ska du aktivera klient program koden för att använda certifikatet.
 
 ### <a name="option-2-create-a-new-application-secret"></a>Alternativ 2: skapa en ny program hemlighet
 
