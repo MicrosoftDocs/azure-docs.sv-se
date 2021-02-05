@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954655"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594610"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Självstudie: Konfigurera nätverk för Azure Stack Edge Pro med GPU
 
@@ -56,15 +56,13 @@ Följ dessa steg om du vill konfigurera nätverket för enheten.
     
     ![Sidan nätverks inställningar för lokalt webb gränssnitt](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. Om du vill ändra nätverks inställningarna väljer du en port och i den högra rutan som visas ändrar du IP-adress, undernät, Gateway, primär DNS och sekundär DNS. 
 
     - Om du väljer port 1 kan du se att den är förkonfigurerad som statisk. 
 
         ![Lokalt webb gränssnitt "port 1 nätverks inställningar"](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-3.png)
 
-    - Om du väljer port 2, Port 3, Port 4 eller port 5, konfigureras alla dessa portar som DHCP som standard.
+    - Om du väljer port 2, Port 3, Port 4 eller port 5 konfigureras alla dessa portar som DHCP som standard.
 
         ![Lokalt webb gränssnitt "Port 3 nätverks inställningar"](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-4.png)
 
@@ -73,7 +71,8 @@ Följ dessa steg om du vill konfigurera nätverket för enheten.
    * Om DHCP har aktiverats i din miljö konfigureras nätverksgränssnitten automatiskt. IP-adress, undernät, gateway och DNS tilldelas automatiskt.
    * Om DHCP inte är aktive rad kan du tilldela statiska IP-adresser om det behövs.
    * Du kan konfigurera nätverks gränssnittet som IPv4.
-   * På 25 Gbit/s-gränssnitten kan du ange RDMA-läget (Remote Direct Access Memory) till iWarp eller RoCE (RDMA över konvergerat Ethernet). Om låg fördröjning är det primära kravet och skalbarheten inte är ett problem, Använd RoCE. När svars tiden är ett nyckel krav, men enkel användning och skalbarhet också är höga prioriteringar, är iWARP den bästa kandidaten.
+   * På 25 Gbit/s-gränssnitt kan du ställa in RDMA-läget (Remote Direct Access Memory) på iWarp eller RoCE (RDMA över konvergerat Ethernet). Om låg fördröjning är det primära kravet och skalbarheten inte är ett problem, Använd RoCE. När svars tiden är ett nyckel krav, men enkel användning och skalbarhet också är höga prioriteringar, är iWARP den bästa kandidaten.
+   * NIC-team (Network Interface Card) eller länk agg regering stöds inte med Azure Stack Edge. 
    * Serie numret för vilken port som helst motsvarar nodens serie nummer.
 
     När enhets nätverket har kon figurer ATS uppdateras sidan på det sätt som visas nedan.
@@ -81,12 +80,11 @@ Följ dessa steg om du vill konfigurera nätverket för enheten.
     ![Lokalt webb gränssnitt "nätverks inställningar" Sidan 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * Vi rekommenderar att du inte byter nätverksgränssnittets lokala IP-adress från statisk till DCHP om du inte har någon annan IP-adress för att ansluta till enheten. Om du använder ett nätverksgränssnitt och växlar till DHCP finns det inget sätt att fastställa DHCP-adressen. Om du vill ändra till en DHCP-adress väntar du tills enheten har Aktiver ATS med tjänsten och ändrar sedan. Du kan sedan Visa IP-adresserna för alla nätverkskort i **enhets egenskaperna** i Azure Portal för din tjänst.
+     > [!NOTE]
+     > Vi rekommenderar att du inte byter nätverksgränssnittets lokala IP-adress från statisk till DCHP om du inte har någon annan IP-adress för att ansluta till enheten. Om du använder ett nätverksgränssnitt och växlar till DHCP finns det inget sätt att fastställa DHCP-adressen. Om du vill ändra till en DHCP-adress väntar du tills enheten har Aktiver ATS med tjänsten och ändrar sedan. Du kan sedan Visa IP-adresserna för alla nätverkskort i **enhets egenskaperna** i Azure Portal för din tjänst.
 
 
-    När du har konfigurerat och tillämpat nätverks inställningarna väljer du nästa: Compute för att konfigurera Compute Network.
+    När du har konfigurerat och tillämpat nätverks inställningarna väljer du **Nästa: Compute** för att konfigurera Compute Network.
 
 ## <a name="enable-compute-network"></a>Aktivera beräknings nätverk
 

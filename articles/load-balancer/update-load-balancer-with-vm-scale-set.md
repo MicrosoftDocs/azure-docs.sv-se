@@ -1,7 +1,7 @@
 ---
-title: Uppdatera eller ta bort befintliga Azure Load Balancer-objekt som används av VM-skalningsuppsättningar
-titleSuffix: Update or delete existing Azure Load Balancer used by Virtual Machine Scale Set
-description: Med den här instruktions artikeln kan du komma igång med Azure Standard Load Balancer och Virtual Machine Scale Sets.
+title: Uppdatera eller ta bort en befintlig belastningsutjämnare som används av skalnings uppsättningar för virtuella datorer
+titleSuffix: Update or delete an existing load balancer used by virtual machine scale sets
+description: Med den här instruktions artikeln kan du komma igång med Azure Standard Load Balancer och skalnings uppsättningar för virtuella datorer.
 services: load-balancer
 documentationcenter: na
 author: irenehua
@@ -13,52 +13,65 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/30/2020
 ms.author: irenehua
-ms.openlocfilehash: d5614490bfd2cfb67b6b7afd7b7b8643bbf754bd
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0c491275f793ce2cd5e830ca6a3014dc45d6d509
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790097"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594543"
 ---
-# <a name="how-to-updatedelete-azure-load-balancer-used-by-virtual-machine-scale-sets"></a>Uppdatera/ta bort Azure Load Balancer som används av Virtual Machine Scale Sets
+# <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Uppdatera eller ta bort en belastningsutjämnare som används av skalnings uppsättningar för virtuella datorer
 
-## <a name="how-to-set-up-azure-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Konfigurera Azure Load Balancer för att skala ut Virtual Machine Scale Sets
-  * Kontrol lera att Load Balancer har en [inkommande NAT-pool](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) och att den virtuella datorns skalnings uppsättning placeras i Server delen för Load Balancer. Azure Load Balancer skapar automatiskt nya inkommande NAT-regler i den inkommande NAT-poolen när nya virtuella dator instanser läggs till i skalnings uppsättningen för den virtuella datorn. 
-  * För att kontrol lera om den inkommande NAT-poolen är korrekt konfigurerad, 
-  1. Logga in på Azure Portal på https://portal.azure.com.
-  
-  1. Välj **Alla resurser** på den vänstra menyn och välj sedan **MyLoadBalancer** i resurslistan.
-  
-  1. Under **Inställningar** väljer du **ingående NAT-regler**.
-Om du ser i den högra rutan visas en lista över regler som har skapats för varje enskild instans i den virtuella datorns skalnings uppsättning.
+När du arbetar med skalnings uppsättningar för virtuella datorer och en instans av Azure Load Balancer kan du:
 
-## <a name="how-to-add-inbound-nat-rules"></a>Hur lägger du till inkommande NAT-regler? 
-  * Det går inte att lägga till en enskild inkommande NAT-regel. Du kan dock lägga till en uppsättning inkommande NAT-regler med ett definierat port intervall för klient delen och Server dels porten för alla instanser i skalnings uppsättningen för den virtuella datorn.
-  * Om du vill lägga till en hel uppsättning inkommande NAT-regler för Virtual Machine Scale Sets måste du först skapa en inkommande NAT-pool i Load Balancer och sedan referera till den inkommande NAT-poolen från nätverks profilen för den virtuella datorns skalnings uppsättning. Ett fullständigt exempel som använder CLI visas nedan.
-  * Den nya inkommande NAT-poolen ska inte ha överlappande port intervall för klient delen med befintliga inkommande NAT-pooler. Du kan använda detta [CLI-kommando](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) om du vill visa befintliga inkommande NAT-pooler
+- Lägg till, uppdatera och ta bort regler.
+- Lägg till konfigurationer.
+- Ta bort belastningsutjämnaren.
+
+## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Konfigurera en belastningsutjämnare för skalning av skalnings uppsättningar för virtuella datorer
+
+Se till att instansen av Azure Load Balancer har en [inkommande NAT-pool](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) och att den virtuella datorns skalnings uppsättning placeras i belastningsutjämnaren. Load Balancer skapar automatiskt nya inkommande NAT-regler i den inkommande NAT-poolen när nya virtuella dator instanser läggs till i skalnings uppsättningen för den virtuella datorn.
+
+Så här kontrollerar du om den inkommande NAT-poolen är korrekt konfigurerad:
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Välj **alla resurser** på den vänstra menyn. Välj sedan **MyLoadBalancer** i resurs listan.
+1. Under **Inställningar** väljer du **ingående NAT-regler**. Om du ser en lista över regler som har skapats för varje enskild instans i den virtuella datorns skalnings uppsättning i den högra rutan, är du redo att gå vidare för att skala upp när som helst.
+
+## <a name="add-inbound-nat-rules"></a>Lägg till inkommande NAT-regler
+
+Det går inte att lägga till enskilda inkommande NAT-regler. Men du kan lägga till en uppsättning inkommande NAT-regler med ett definierat frontend-port intervall och backend-port för alla instanser i den virtuella datorns skal uppsättning.
+
+Om du vill lägga till en hel uppsättning inkommande NAT-regler för den virtuella datorns skalnings uppsättningar måste du först skapa en inkommande NAT-pool i belastningsutjämnaren. Referera sedan till den inkommande NAT-poolen från nätverks profilen för den virtuella datorns skalnings uppsättning. Ett fullständigt exempel som använder CLI visas.
+
+Den nya inkommande NAT-poolen ska inte ha ett överlappande port intervall för front-end med befintliga inkommande NAT-pooler. Om du vill visa befintliga inkommande NAT-pooler som har kon figurer ATS använder du detta [CLI-kommando](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list):
+  
 ```azurecli-interactive
-az network lb inbound-nat-pool create 
-        -g MyResourceGroup 
-        --lb-name MyLb
-        -n MyNatPool 
-        --protocol Tcp 
-        --frontend-port-range-start 80 
-        --frontend-port-range-end 89 
-        --backend-port 80 
-        --frontend-ip-name MyFrontendIp
-az vmss update 
-        -g MyResourceGroup 
-        -n myVMSS 
-        --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
-        
-az vmss update-instances
-        -–instance-ids *
-        --resource-group MyResourceGroup
-        --name MyVMSS
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool 
+          --protocol Tcp 
+          --frontend-port-range-start 80 
+          --frontend-port-range-end 89 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIp
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS
 ```
-## <a name="how-to-update-inbound-nat-rules"></a>Hur uppdaterar jag inkommande NAT-regler? 
-  * Det går inte att uppdatera en enskild inkommande NAT-regel. Du kan dock uppdatera en uppsättning inkommande NAT-regler med ett definierat port intervall för klient delen och backend-porten för alla instanser i skalnings uppsättningen för den virtuella datorn.
-  * För att kunna uppdatera en hel uppsättning inkommande NAT-regler för Virtual Machine Scale Sets måste du uppdatera den inkommande NAT-poolen i Load Balancer. 
+## <a name="update-inbound-nat-rules"></a>Uppdatera inkommande NAT-regler
+
+Det går inte att uppdatera enskilda inkommande NAT-regler. Men du kan uppdatera en uppsättning inkommande NAT-regler med ett definierat klient dels port intervall och en backend-port för alla instanser i skalnings uppsättningen för den virtuella datorn.
+
+Uppdatera den inkommande NAT-poolen i belastningsutjämnaren för att uppdatera en hel uppsättning inkommande NAT-regler för virtuell dators skalnings uppsättningar.
+    
 ```azurecli-interactive
 az network lb inbound-nat-pool update 
         -g MyResourceGroup 
@@ -68,60 +81,68 @@ az network lb inbound-nat-pool update
         --backend-port 8080
 ```
 
-## <a name="how-to-delete-inbound-nat-rules"></a>Hur tar du bort inkommande NAT-regler? 
-* Det går inte att ta bort en enskild inkommande NAT-regel. Du kan dock ta bort hela uppsättningen inkommande NAT-regler.
-* För att ta bort hela uppsättningen inkommande NAT-regler som används av skalnings uppsättningen måste du först ta bort NAT-poolen från skalnings uppsättningen. Ett fullständigt exempel som använder CLI visas nedan:
+## <a name="delete-inbound-nat-rules"></a>Ta bort inkommande NAT-regler
+
+Enskilda inkommande NAT-regler kan inte tas bort, men du kan ta bort hela uppsättningen inkommande NAT-regler.
+
+Om du vill ta bort hela uppsättningen inkommande NAT-regler som används av skalnings uppsättningen tar du först bort NAT-poolen från skalnings uppsättningen. Ett fullständigt exempel som använder CLI visas här:
+    
 ```azurecli-interactive
-  az vmss update
-     --resource-group MyResourceGroup
-     --name MyVMSS
-   az vmss update-instances 
-     --instance-ids "*" 
-     --resource-group MyResourceGroup
-     --name MyVMSS
-  az network lb inbound-nat-pool delete
-     --resource-group MyResourceGroup
-     -–lb-name MyLoadBalancer
-     --name MyNatPool
+    az vmss update
+       --resource-group MyResourceGroup
+       --name MyVMSS
+     az vmss update-instances 
+       --instance-ids "*" 
+       --resource-group MyResourceGroup
+       --name MyVMSS
+    az network lb inbound-nat-pool delete
+       --resource-group MyResourceGroup
+       -–lb-name MyLoadBalancer
+       --name MyNatPool
 ```
 
-## <a name="how-to-add-multiple-ip-configurations"></a>Så här lägger du till flera IP-konfigurationer:
-1. Välj **Alla resurser** på den vänstra menyn och välj sedan **MyLoadBalancer** i resurslistan.
-   
-1. Under **Inställningar** väljer du **IP-konfigurationer för klient** del och väljer sedan **Lägg till**.
-   
-1. På sidan **Lägg till klient delens IP-adress** skriver du in värdena och väljer **OK**
+## <a name="add-multiple-ip-configurations"></a>Lägg till flera IP-konfigurationer
 
-1. Följ [steg 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) och [steg 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) i den här självstudien om nya regler för belastnings utjämning behövs
+Lägga till flera IP-konfigurationer:
 
-1. Skapa en ny uppsättning inkommande NAT-regler med de nyligen skapade IP-konfigurationerna för klient delen vid behov. Du hittar exempel här i avsnittet [föregående].
+1. Välj **alla resurser** på den vänstra menyn. Välj sedan **MyLoadBalancer** i resurs listan.
+1. Under **Inställningar** väljer du **IP-konfiguration för klient delen**. Välj **Lägg till**.
+1. På sidan **Lägg till IP-adress för klient** del anger du värdena och väljer **OK**.
+1. Följ [steg 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) och [6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) i den här självstudien om nya regler för belastnings utjämning behövs.
+1. Skapa en ny uppsättning inkommande NAT-regler genom att använda de nyligen skapade frontend-IP-konfigurationerna om det behövs. Ett exempel finns i föregående avsnitt.
 
-## <a name="how-to-delete-frontend-ip-configuration-used-by-virtual-machine-scale-set"></a>Ta bort klient delens IP-konfiguration som används av den virtuella datorns skal uppsättning: 
- 1. Om du vill ta bort klient delens IP-konfiguration som används av skalnings uppsättningen måste du först ta bort den inkommande NAT-poolen (uppsättning inkommande NAT-regler) som refererar till IP-konfigurationen för klient delen. Instruktioner för hur du tar bort reglerna för inkommande trafik finns i föregående avsnitt.
- 1. Ta bort belastnings Utjämnings regeln som refererar till klient delens IP-konfiguration. 
+## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>Ta bort klient delens IP-konfiguration som används av den virtuella datorns skal uppsättning
+
+Ta bort klient delens IP-konfiguration som används av skalnings uppsättningen:
+
+ 1. Ta först bort den inkommande NAT-poolen (den uppsättning inkommande NAT-regler) som refererar till klient delens IP-konfiguration. Instruktioner för hur du tar bort de inkommande reglerna finns i föregående avsnitt.
+ 1. Ta bort den belastnings Utjämnings regel som refererar till klient delens IP-konfiguration.
  1. Ta bort klient delens IP-konfiguration.
- 
 
-## <a name="how-to-delete-azure-load-balancer-used-by-virtual-machine-scale-set"></a>Ta bort Azure Load Balancer som används av den virtuella datorns skal uppsättning: 
- 1. Om du vill ta bort klient delens IP-konfiguration som används av skalnings uppsättningen måste du först ta bort den inkommande NAT-poolen (uppsättning inkommande NAT-regler) som refererar till IP-konfigurationen för klient delen. Instruktioner för hur du tar bort reglerna för inkommande trafik finns i föregående avsnitt.
+## <a name="delete-a-load-balancer-used-by-a-virtual-machine-scale-set"></a>Ta bort en belastningsutjämnare som används av en skalnings uppsättning för virtuell dator
+
+Ta bort klient delens IP-konfiguration som används av skalnings uppsättningen:
+
+ 1. Ta först bort den inkommande NAT-poolen (den uppsättning inkommande NAT-regler) som refererar till klient delens IP-konfiguration. Instruktioner för hur du tar bort de inkommande reglerna finns i föregående avsnitt.
+ 1. Ta bort belastnings Utjämnings regeln som refererar till backend-poolen som innehåller den virtuella datorns skal uppsättning.
+ 1. Ta bort `loadBalancerBackendAddressPool` referensen från nätverks profilen för den virtuella datorns skal uppsättning.
  
- 1. Ta bort belastnings Utjämnings regeln som refererar till backend-poolen som innehåller skalnings uppsättningen för den virtuella datorn.
- 
- 1. Ta bort loadBalancerBackendAddressPool-referensen från nätverks profilen för den virtuella datorns skal uppsättning. Ett fullständigt exempel som använder CLI visas nedan:
- ```azurecli-interactive
-  az vmss update
-     --resource-group MyResourceGroup
-     --name MyVMSS
-     --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerBackendAddressPools
-  az vmss update-instances 
-     --instance-ids "*" 
-     --resource-group MyResourceGroup
-     --name MyVMSS
+ Ett fullständigt exempel som använder CLI visas här:
+
+```azurecli-interactive
+    az vmss update
+       --resource-group MyResourceGroup
+       --name MyVMSS
+       --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerBackendAddressPools
+    az vmss update-instances 
+       --instance-ids "*" 
+       --resource-group MyResourceGroup
+       --name MyVMSS
 ```
-Ta slutligen bort Load Balancer resursen.
+Ta slutligen bort belastnings Utjämnings resursen.
  
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om begreppen för att lära dig mer om Azure Load Balancer och skalnings uppsättningen för virtuella datorer.
+Läs mer om begreppen för att lära dig mer om Azure Load Balancer och skalnings uppsättningar för virtuella datorer.
 
-> [Azure Load Balancer med skalnings uppsättningar för virtuella Azure-datorer](load-balancer-standard-virtual-machine-scale-sets.md)
+> [Azure Load Balancer med skalnings uppsättningar för virtuella datorer](load-balancer-standard-virtual-machine-scale-sets.md)

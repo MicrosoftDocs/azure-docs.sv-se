@@ -9,16 +9,16 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486304"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594577"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Vad är IoT Plug and Play?
 
-IoT Plug and Play gör det möjligt för lösnings byggare att integrera smarta enheter med sina lösningar utan manuell konfiguration. I IoT Plug and Play är en enhets _modell_ som en enhet använder för att annonsera sina funktioner till ett IoT plug and Play-aktiverat program. Den här modellen är strukturerad som en uppsättning element som definierar:
+Med IoT Plug and Play kan lösningsutvecklare integrera smarta enheter med sina lösningar utan manuell konfiguration. I IoT Plug and Play är en enhets _modell_ som en enhet använder för att annonsera sina funktioner till ett IoT plug and Play-aktiverat program. Den här modellen är strukturerad som en uppsättning element som definierar:
 
 - _Egenskaper_ som representerar ett skrivskyddat eller skrivbart tillstånd för en enhet eller annan enhet. Ett enhets serie nummer kan till exempel vara en skrivskyddad egenskap och en mål temperatur på en termostat kan vara en skrivbar egenskap.
 - _Telemetri_ som är data som skickas av en enhet, oavsett om datan är en vanlig ström av sensor avläsningar, ett tillfälligt fel eller ett informations meddelande.
@@ -45,11 +45,13 @@ IoT Plug and Play är användbart för två typer av utvecklare:
 
 ## <a name="use-iot-plug-and-play-devices"></a>Använda IoT Plug and Play-enheter
 
-Som Solution Builder kan du utveckla en IoT-lösning i molnet som använder IoT Plug and Play-enheter. Använd [IoT Hub](../iot-hub/about-iot-hub.md) -en hanterad moln tjänst som fungerar som en meddelande hubb för säker, dubbelriktad kommunikation mellan IoT-programmet och dina enheter.
+Som Solution Builder kan du använda [IoT Central](../iot-central/core/overview-iot-central.md) eller [IoT Hub](../iot-hub/about-iot-hub.md) för att utveckla en lösning för en molnbaserad IoT-lösning som använder IoT plug and Play-enheter.
 
-När du ansluter en IoT Plug and Play-enhet till en IoT-hubb kan du använda [Azure IoT Explorer](./howto-use-iot-explorer.md) -verktyget för att Visa telemetri, egenskaper och kommandon som definierats i de gränssnitt som skapar modellen.
+Med webb gränssnittet i IoT Central kan du övervaka enhets villkor, skapa regler och hantera miljon tals enheter och deras data under hela livs cykeln. IoT Plug and Play-enheter ansluter direkt till ett IoT Central program där du kan använda anpassningsbara instrument paneler för att övervaka och kontrol lera dina enheter. Du kan också använda enhetsspecifika i IoT Central-webbgränssnittet för att skapa och redigera DTDL-modeller.
 
-Om du har befintliga sensorer som är kopplade till en Windows-eller Linux-Gateway kan du använda [IoT plug and Play Bridge](./concepts-iot-pnp-bridge.md)för att ansluta sensorer och skapa IoT plug and Play-enheter utan att behöva skriva enhets program/inbyggd program vara (för [protokoll som stöds](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors) ).
+IoT Hub – en hanterad moln tjänst – fungerar som en meddelande hubb för säker, dubbelriktad kommunikation mellan IoT-programmet och dina enheter. När du ansluter en IoT Plug and Play-enhet till en IoT-hubb kan du använda [Azure IoT Explorer](./howto-use-iot-explorer.md) -verktyget för att Visa telemetri, egenskaper och kommandon som definierats i DTDL-modellen.
+
+Om du har befintliga sensorer som är kopplade till en Windows-eller Linux-Gateway kan du använda [IoT plug and Play Bridge](./concepts-iot-pnp-bridge.md)för att ansluta sensorer och skapa IoT plug and Play-enheter utan att behöva skriva enhets program/inbyggd program vara (för [protokoll som stöds](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)).
 
 ## <a name="develop-an-iot-device-application"></a>Utveckla ett IoT-enhets program
 
