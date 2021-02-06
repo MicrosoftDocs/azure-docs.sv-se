@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 825a7d8c53552120a861657c7f3df7ae8f488c18
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755345"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581728"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Anvisningar: Loggar in valfri Azure Active Directory-användare med programmönstret för flera klienter
 
@@ -125,7 +125,7 @@ Appspecifika behörigheter kräver alltid medgivande av en klientadministratör.
 
 Vissa delegerade behörigheter kräver också en klient administratörs medgivande. Möjligheten till exempel att skriva tillbaka till Azure AD eftersom den inloggade användaren kräver administratörs medgivande. Som endast app-only-behörigheter, om en vanlig användare försöker logga in till ett program som begär en delegerad behörighet som kräver administratörs medgivande, får programmet ett fel meddelande. Om en behörighet kräver administratörs medgivande bestäms av utvecklaren som publicerade resursen, och du hittar den i dokumentationen för resursen. Behörighets dokumentationen för [Microsoft Graph-API: et][MSFT-Graph-permission-scopes] anger vilka behörigheter som kräver administratörs medgivande.
 
-Om programmet använder behörigheter som kräver administratörs medgivande måste du ha en gest som en knapp eller länk där administratören kan initiera åtgärden. Begäran som ditt program skickar för den här åtgärden är den vanliga OAuth2/OpenID Connect-auktoriseringsbegäran som också innehåller frågesträngparametern `prompt=admin_consent` . När administratören har samtyckt och tjänstens huvud namn har skapats i kundens klient behöver efterföljande inloggnings begär Anden inte `prompt=admin_consent` parametern. Eftersom administratören har beslutat att de begärda behörigheterna är acceptabla, uppmanas inga andra användare i klienten att tillfrågas om godkännande från den punkten.
+Om ditt program använder behörigheter som kräver administratörs medgivande, har du en gest som en knapp eller länk där administratören kan starta åtgärden. Begäran som ditt program skickar för den här åtgärden är den vanliga OAuth2/OpenID Connect-auktoriseringsbegäran som också innehåller frågesträngparametern `prompt=admin_consent` . När administratören har samtyckt och tjänstens huvud namn har skapats i kundens klient behöver efterföljande inloggnings begär Anden inte `prompt=admin_consent` parametern. Eftersom administratören har beslutat att de begärda behörigheterna är acceptabla, uppmanas inga andra användare i klienten att tillfrågas om godkännande från den punkten.
 
 En klientadministratör kan inaktivera möjligheten för vanliga användare att samtycka till program. Om den här funktionen har inaktiverats krävs alltid administratörens godkännande för program som ska användas i klienten. Om du vill testa att ditt program har inaktiverats för slutanvändare kan du hitta konfigurations växeln i [Azure Portal][AZURE-portal] i avsnittet **[användar inställningar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** under **företags program**.
 
@@ -139,7 +139,7 @@ Ditt program kan ha flera nivåer som representeras av sin egen registrering i A
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Flera nivåer i en enda klient
 
-Detta kan vara ett problem om ditt logiska program består av två eller flera program registreringar, till exempel en separat klient och resurs. Hur får du resursen i kund klienten först? Azure AD täcker det här fallet genom att aktivera att klienten och resursen samtycks i ett enda steg. Användaren ser summan av de behörigheter som begärs av både klienten och resursen på godkännande sidan. För att aktivera det här beteendet måste resursens program registrering innehålla klientens app-ID som en `knownClientApplications` i dess [applikations manifest][AAD-App-Manifest]. Ett exempel:
+Detta kan vara ett problem om ditt logiska program består av två eller flera program registreringar, till exempel en separat klient och resurs. Hur får du resursen i kund klienten först? Azure AD täcker det här fallet genom att aktivera att klienten och resursen samtycks i ett enda steg. Användaren ser summan av de behörigheter som begärs av både klienten och resursen på godkännande sidan. För att aktivera det här beteendet måste resursens program registrering innehålla klientens app-ID som en `knownClientApplications` i dess [applikations manifest][AAD-App-Manifest]. Exempel:
 
 ```json
 "knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
