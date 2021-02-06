@@ -1,14 +1,14 @@
 ---
 title: Distribuera ISO 27001-skiss för delade tjänster
 description: Distribuera steg för ISO 27001-skissen för delade tjänster, inklusive information om skiss artefakts parametrar.
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: acce9ecf906430047fa1e687f719fd4e04daf756
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 8b28954b6145a9e6c1827107cf11aa85326dcc1f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420304"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627806"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Distribuera skiss exemplet för delade tjänster i ISO 27001
 
@@ -33,8 +33,8 @@ Börja först med att implementera skissexemplet genom att skapa en ny skiss i d
 
 1. Ange _Grundinställningar_ för skissexemplet:
 
-   - **Namn på skiss** : Ange ett namn för din kopia av skiss exemplet för delade tjänster i ISO 27001.
-   - **Definitions plats** : Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
+   - **Namn på skiss**: Ange ett namn för din kopia av skiss exemplet för delade tjänster i ISO 27001.
+   - **Definitions plats**: Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
 
 1. Välj fliken _Artefakter_ överst på sidan eller **Nästa: Artefakter** längst ned på sidan.
 
@@ -64,11 +64,11 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 
    - Grundläggande inställningar
 
-     - **Prenumerationer** : Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
-     - **Tilldelnings namn** : namnet fylls i automatiskt för dig baserat på namnet på skissen.
+     - **Prenumerationer**: Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
+     - **Tilldelnings namn**: namnet fylls i automatiskt för dig baserat på namnet på skissen.
        Ändra vid behov eller lämna det som det är.
-     - **Plats** : Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Ritnings definitions version** : Välj en **publicerad** version av din kopia av skiss exemplet.
+     - **Plats**: Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Ritnings definitions version**: Välj en **publicerad** version av din kopia av skiss exemplet.
 
    - Lås tilldelning
 
@@ -82,11 +82,11 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 
      De parametrar som definieras i avsnittet används av många av artefakterna i skissdefinitionen för att ge konsekvens.
 
-     - **Organisations namn** : Ange ett kort namn för din organisation. Den här egenskapen används främst för att namnge resurser.
-     - **Adressprefix för delade tjänster** : Ange värdet för CIDR-notation för att hantera de distribuerade resurserna i nätverket.
-     - **Plats för delade tjänster** : avgör vilken plats artefakterna distribueras till. Alla tjänster är inte tillgängliga på alla platser. Artefakter som distribuerar sådana tjänster tillhandahåller ett parameter alternativ för platsen som artefakten ska distribueras till.
-     - **Tillåten plats (princip: skiss initiativ för ISO 27001)** : värde som anger tillåtna platser för resurs grupper och resurser.
-     - **Log Analytics arbets yta för VM-agenter (princip: skiss initiativ för ISO 27001)** : anger resurs-ID för en arbets yta. Den här parametern använder en `concat` funktion för att konstruera resurs-ID: t.
+     - **Organisations namn**: Ange ett kort namn för din organisation. Den här egenskapen används främst för att namnge resurser.
+     - **Adressprefix för delade tjänster**: Ange värdet för CIDR-notation för att hantera de distribuerade resurserna i nätverket.
+     - **Plats för delade tjänster**: avgör vilken plats artefakterna distribueras till. Alla tjänster är inte tillgängliga på alla platser. Artefakter som distribuerar sådana tjänster tillhandahåller ett parameter alternativ för platsen som artefakten ska distribueras till.
+     - **Tillåten plats (princip: skiss initiativ för ISO 27001)**: värde som anger tillåtna platser för resurs grupper och resurser.
+     - **Log Analytics arbets yta för VM-agenter (princip: skiss initiativ för ISO 27001)**: anger resurs-ID för en arbets yta. Den här parametern använder en `concat` funktion för att konstruera resurs-ID: t.
 
    - Artefaktparametrar
 
@@ -109,13 +109,13 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 |\[För hands version \] : distribuera Log Analytics agent för virtuella Windows-datorer|Principtilldelning|Valfritt: lista över virtuella dator avbildningar som har stöd för Windows OS som ska läggas till i omfånget|Valfritt Standardvärdet är _["none"]_.|
 |Tillåtna resurstyper|Principtilldelning|Tillåtna resurstyper|Lista över resurs typer som får distribueras. Den här listan består av alla resurs typer som distribueras i delade tjänster.|
 |Tillåtna SKU:er för lagringskonto|Principtilldelning|Tillåtna lagrings-SKU: er|Lista över diagnostiska loggar lagrings konto SKU: er tillåts. Standardvärdet är _["Standard_LRS"]_.|
-|Tillåtna SKU:er för virtuella datorer|Principtilldelning|Lista över virtuella dator-SKU: er som kan distribueras. Standardvärdet är _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
+|Tillåtna SKU: er för virtuella datorer|Principtilldelning|Lista över virtuella dator-SKU: er som kan distribueras. Standardvärdet är _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
 |Skiss initiativ för ISO 27001|Principtilldelning|Resurs typer för att granska diagnostikloggar|Lista över resurs typer som ska granskas om diagnostisk logg inställning inte är aktive rad. Du hittar giltiga värden i [Azure Monitor-diagnostiska loggar scheman](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 |Log Analytics resurs grupp|Resursgrupp|Name|**Locked** -sammanfogar **organisations namnet** med `-sharedsvsc-log-rg` för att göra resurs gruppen unik.|
 |Log Analytics resurs grupp|Resursgrupp|Plats|**Locked** – använder skiss parametern.|
-|Log Analytics mall|Resource Manager-mall|Tjänstnivå|Anger nivån för Log Analytics arbets ytan. Standardvärdet är _PerNode_.|
+|Log Analytics mall|Resource Manager-mall|Tjänstenivå|Anger nivån för Log Analytics arbets ytan. Standardvärdet är _PerNode_.|
 |Log Analytics mall|Resource Manager-mall|Kvarhållning av logg i dagar|Data kvarhållning i dagar. Standardvärdet är _365_.|
-|Log Analytics mall|Resource Manager-mall|Plats|Region som används för att skapa Log Analytics-arbetsytan. Standardvärdet är _USA, västra 2_.|
+|Log Analytics mall|Resource Manager-mall|Location|Region som används för att skapa Log Analytics-arbetsytan. Standardvärdet är _USA, västra 2_.|
 |Nätverks resurs grupp|Resursgrupp|Name|**Locked** -sammanfogar **organisations namnet** med `-sharedsvcs-net-rg` för att göra resurs gruppen unik.|
 |Nätverks resurs grupp|Resursgrupp|Plats|**Locked** – använder skiss parametern.|
 |Mall för Azure-brandvägg|Resource Manager-mall|Azure Firewall privat IP|Konfigurerar den privata IP-adressen för [Azure-brandväggen](../../../../firewall/overview.md). Det här värdet används också som standard väg tabell på under nätet för delade tjänster. Ska ingå i CIDR-notationen som definieras i adressprefix för **Azure Firewall-undernätet**. Standardvärdet är _10.0.4.4_.|

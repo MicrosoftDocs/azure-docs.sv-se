@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a70cfc7ab01dabd3d740d878acb453b4d1e76b5f
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507426"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627786"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionering och horisontell skalning i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -42,7 +42,7 @@ Antalet fysiska partitioner i din behållare är beroende av följande:
 * Den totala data lagringen (varje enskild fysisk partition kan lagra upp till 50 GB data).
 
 > [!NOTE]
-> Fysiska partitioner är en intern implementering av systemet och de hanteras helt av Azure Cosmos DB. När du utvecklar dina lösningar bör du inte fokusera på fysiska partitioner eftersom du inte kan styra dem i stället för att fokusera på dina partitionsnyckel. Om du väljer en partitionsnyckel som jämnt distribuerar data flödes förbrukningen mellan logiska partitioner, ser du till att data flödes förbrukningen över fysiska partitioner är balanserade.
+> Fysiska partitioner är en intern implementering av systemet och de hanteras helt av Azure Cosmos DB. När du utvecklar dina lösningar bör du inte fokusera på fysiska partitioner eftersom du inte kan styra dem. Fokusera i stället på dina partitionsnyckel. Om du väljer en partitionsnyckel som jämnt distribuerar data flödes förbrukningen mellan logiska partitioner, ser du till att data flödes förbrukningen över fysiska partitioner är balanserade.
 
 Det finns ingen gräns för det totala antalet fysiska partitioner i din behållare. När det etablerade data flödet eller data storleken ökar, skapar Azure Cosmos DB automatiskt nya fysiska partitioner genom att dela befintliga. Delning av fysiska partitioner påverkar inte programmets tillgänglighet. Efter delningen av den fysiska partitionen kommer alla data i en enda logisk partition fortfarande att lagras på samma fysiska partition. En fysisk partitions delning skapar helt enkelt en ny mappning av logiska partitioner till fysiska partitioner.
 

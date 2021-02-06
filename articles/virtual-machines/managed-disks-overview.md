@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202716"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627823"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Introduktion till Azure Managed Disks
 
@@ -44,6 +44,10 @@ Hanterade diskar har stöd för [Tillgänglighetszoner](../availability-zones/az
 ### <a name="azure-backup-support"></a>Azure Backup support
 
 För att skydda mot regionala haverier kan [Azure Backup](../backup/backup-overview.md) användas för att skapa ett säkerhets kopierings jobb med tidsbaserade säkerhets kopieringar och säkerhets kopierings principer. På så sätt kan du utföra återställning av virtuella datorer eller hanterade diskar på. För närvarande Azure Backup stöd för disk storlekar på upp till 32 tebibyte-diskar (TiB). [Läs mer](../backup/backup-support-matrix-iaas.md) om stöd för säkerhets kopiering av virtuella Azure-datorer.
+
+#### <a name="azure-disk-backup"></a>Säkerhetskopiering av Azure-disk
+
+Azure Backup erbjuder Azure disk Backup (för hands version) som en inbyggd, molnbaserad säkerhets kopierings lösning som skyddar dina data i Managed disks. Det är en enkel, säker och kostnads effektiv lösning som gör att du kan konfigurera skydd för hanterade diskar med några få steg. Azure disk Backup erbjuder en nyckel färdig lösning som tillhandahåller hantering av ögonblicks bilder för hanterade diskar genom att automatisera regelbunden generering av ögonblicks bilder och behålla den för konfigurerad varaktighet med hjälp av säkerhets kopierings principen. Mer information om säkerhets kopiering av Azure-diskar finns [i Översikt över Azure disk Backup (i för hands version)](../backup/disk-backup-overview.md).
 
 ### <a name="granular-access-control"></a>Detaljerad åtkomst kontroll
 

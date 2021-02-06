@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 02/04/2021
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 7ba0f1b6f37da923e389964b99a02295dc3d6050
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f3458c3b12b3151fd20531282f56ed2f1fd29b6b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359535"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627736"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Självstudie: Skapa en plats-till-plats-anslutning med Azure Virtual WAN
 
@@ -55,7 +55,7 @@ En hubb är ett virtuellt nätverk som kan innehålla gatewayer för plats-till-
 
 ## <a name="create-a-site"></a><a name="site"></a>Skapa en plats
 
-Du är nu redo att skapa de platser som motsvarar dina fysiska platser. Skapa så många platser som du behöver för att motsvara de fysiska platserna. Om du till exempel har ett avdelningskontor i New York, ett i London och ett i LA kan du skapa tre separata platser. Platserna innehåller de lokala VPN-enhetsslutpunkterna. Du kan skapa upp till 1000 platser per virtuell hubb i ett virtuellt WAN-nätverk. Om du har flera hubbar kan du skapa 1000 per var och en av dessa hubbar. Om du har en virtuell WAN-partner (länk infogning) CPE-enhet kan du kontakta dem för att lära dig om deras automatisering av Azure. Vanligt vis förutsätter Automation enkel klickning för att exportera storskalig gren information till Azure och konfigurera anslutning från CPE till Azure Virtual WAN-VPN gateway. Mer information finns i [Automation-vägledning från Azure till CPE-partner](virtual-wan-configure-automation-providers.md).
+I det här avsnittet skapar du en webbplats. Platser motsvarar dina fysiska platser. Skapa så många platser du behöver. Om du till exempel har ett avdelningskontor i New York, ett i London och ett i LA kan du skapa tre separata platser. Platserna innehåller de lokala VPN-enhetsslutpunkterna. Du kan skapa upp till 1000 platser per virtuell hubb i ett virtuellt WAN-nätverk. Om du har flera hubbar kan du skapa 1000 per var och en av dessa hubbar. Om du har en virtuell WAN-partner CPE-enhet kan du kontakta dem för att lära dig om deras automatisering av Azure. Vanligt vis innebär Automation en enkel klicknings upplevelse för att exportera storskalig gren information till Azure och konfigurera anslutning från CPE till Azure Virtual WAN-gatewayen. Mer information finns i [Automation-vägledning från Azure till CPE-partner](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
@@ -78,19 +78,19 @@ Konfigurera den lokala VPN-enheten med hjälp av konfigurationen för VPN-enhete
 3. När filen har skapats klickar du på länken för att ladda ned den.
 4. Tillämpa konfigurationen på din lokala VPN-enhet.
 
-### <a name="understanding-the-vpn-device-configuration-file"></a>Förstå konfigurationsfilen för VPN-enheten
+### <a name="about-the-vpn-device-configuration-file"></a>Om konfigurations filen för VPN-enheter
 
 Konfigurationsfilen för enheten innehåller de inställningarna du ska använda när du konfigurerar den lokala VPN-enheten. När du visar den här filen ser du följande information:
 
 * **vpnSiteConfiguration** I det här avsnittet anges enhetsinformation konfigurerad som en plats som ansluter till det virtuella WAN-nätverket. Det omfattar namn och offentlig IP-adress för grenenheten.
 * **vpnSiteConnections –** Det här avsnittet innehåller information om följande inställningar:
 
-    * **adressutrymme** för de virtuella hubbarnas virtuella nätverk<br>Exempel:
+    * **Adress utrymme** för virtuella hubbar VNet.<br>Exempel:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * **adressutrymme** för de virtuella nätverk som är anslutna till hubben<br>Exempel:
+    * **Adress utrymmet** för de virtuella nätverk som är anslutna till hubben.<br>Exempel:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
