@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 10/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 67b4b27a5d1faab3e6c156704d67a30b220ac54c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f0e115e596925878bf9fdd43b7074cefdba47b2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840191"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626866"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Skala Service Fabric nätprogram
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 En av de största fördelarna med att distribuera program till Service Fabric nät är möjligheten att enkelt skala dina tjänster i eller ut. Detta bör användas för att hantera olika belastnings mängder på dina tjänster eller förbättra tillgängligheten. Du kan skala dina tjänster manuellt i eller ut eller konfigurera principer för automatisk skalning.
 

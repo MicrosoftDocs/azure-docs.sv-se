@@ -51,6 +51,8 @@
   items:
     - name: Skapa en betrodd autentiseringstjänst med Azure Functions
       href: tutorials/trusted-service-tutorial.md
+    - name: 'Signera en HTTP-begäran med en HMAC-signatur med C #'
+      href: tutorials/hmac-header-tutorial.md
     - name: Förbereda en webbapp för kommunikations tjänster (Node.js)
       href: tutorials/building-app-start.md
 - name: Begrepp
@@ -110,6 +112,8 @@
       href: concepts/metrics.md
     - name: Felsökning
       href: concepts/troubleshooting-info.md
+    - name: Kända problem
+      href: concepts/known-issues.md
 - name: Exempel
   items:
     - name: Exempel på gruppsamtal

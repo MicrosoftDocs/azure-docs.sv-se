@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9d4eb90d49e8cc671156833f22a85e7c2b4dd15b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424759"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626668"
 ---
-# <a name="scenario-route-traffic-through-an-nva"></a>Scenario: dirigera trafik via en NVA
+# <a name="scenario-route-traffic-through-an-nva"></a>Scenario: Dirigera trafik via NVA
 
 När du arbetar med virtuell WAN-routning för virtuella WAN finns det några tillgängliga scenarier. I det här NVA-scenariot är målet att dirigera trafik via en NVA (virtuell nätverks installation) för gren till VNet och VNet till gren. Information om virtuell hubb routning finns i [om virtuell nav-routning](about-virtual-hub-routing.md).
 
@@ -30,9 +30,9 @@ När du arbetar med virtuell WAN-routning för virtuella WAN finns det några ti
 
 I det här scenariot använder vi namngivnings konventionen:
 
-* "NVA virtuella nätverk" för virtuella nätverk där användare har distribuerat en NVA och har anslutit andra virtuella nätverk som ekrar (VNet 2 och VNet 4 i **anslutnings matrisen**nedan).
-* "NVA ekrar" för virtuella nätverk som är anslutna till ett NVA VNet (VNet 5, VNet 6, VNet 7 och VNet 8 i **anslutnings matrisen**nedan).
-* "Icke-NVA virtuella nätverk" för virtuella nätverk som är anslutna till ett virtuellt WAN-nätverk som inte har en NVA eller andra virtuella nätverk som peer-kopplas med dem (VNet 1 och VNet 3 i **anslutnings matrisen**nedan).
+* "NVA virtuella nätverk" för virtuella nätverk där användare har distribuerat en NVA och har anslutit andra virtuella nätverk som ekrar (VNet 2 och VNet 4 i **anslutnings matrisen** nedan).
+* "NVA ekrar" för virtuella nätverk som är anslutna till ett NVA VNet (VNet 5, VNet 6, VNet 7 och VNet 8 i **anslutnings matrisen** nedan).
+* "Icke-NVA virtuella nätverk" för virtuella nätverk som är anslutna till ett virtuellt WAN-nätverk som inte har en NVA eller andra virtuella nätverk som peer-kopplas med dem (VNet 1 och VNet 3 i **anslutnings matrisen** nedan).
 * "Hubbar" för Microsoft-hanterade virtuella WAN-nav, där NVA virtuella nätverk är anslutna till. NVA eker-virtuella nätverk behöver inte vara anslutna till virtuella WAN-nav, endast till NVA virtuella nätverk.
 
 Följande anslutnings mat ris sammanfattar de flöden som stöds i det här scenariot:
@@ -71,8 +71,8 @@ Med det här alternativet är de statiska vägar som vi behöver i standard tabe
 
 | Description | Routningstabell | Statisk väg              |
 | ----------- | ----------- | ------------------------- |
-| VNet 2       | Standard     | 10.2.0.0/16-> eastusconn |
-| VNet 4       | Standard     | 10.4.0.0/16-> weconn     |
+| VNet 2       | Standardvärde     | 10.2.0.0/16-> eastusconn |
+| VNet 4       | Standardvärde     | 10.4.0.0/16-> weconn     |
 
 Nu vet Virtual WAN vilken anslutning som ska skicka paketen till, men anslutningen måste veta vad du ska göra när du tar emot dessa paket: det är här som anslutnings väg tabellerna används. Här kommer vi att använda de kortare prefixen (/24 i stället för längre/16) för att se till att dessa vägar har prioritet över vägar som importeras från NVA-virtuella nätverk (VNet 2 och VNet 4):
 
@@ -87,7 +87,7 @@ Nu NVA virtuella nätverk, icke-NVA virtuella nätverk och grenar vet hur man n�
 
 ## <a name="architecture"></a><a name="architecture"></a>Arkitektur
 
-I **bild 2**finns det två hubbar. **Hub1** och **Hub2**.
+I **bild 2** finns det två hubbar. **Hub1** och **Hub2**.
 
 * **Hub1** och **Hub2** är direkt anslutna till NVA virtuella nätverk **VNet 2** och **VNet 4**.
 
@@ -99,13 +99,13 @@ I **bild 2**finns det två hubbar. **Hub1** och **Hub2**.
 
 **Bild 2**
 
-:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Bild 1" lightbox="./media/routing-scenarios/nva/nva.png":::
+:::image type="content" source="./media/routing-scenarios/nva/nva.png" alt-text="Bild 2" lightbox="./media/routing-scenarios/nva/nva.png":::
 
 ## <a name="scenario-workflow"></a><a name="workflow"></a>Scenario arbets flöde
 
 Om du vill konfigurera routning via NVA följer du stegen nedan:
 
-1. Identifiera NVA eker VNet-anslutningen. I **bild 2**är det **VNet 2-anslutning (Eastusconn)** och **VNet 4-anslutning (weconn)**.
+1. Identifiera NVA eker VNet-anslutningen. I **bild 2** är det **VNet 2-anslutning (Eastusconn)** och **VNet 4-anslutning (weconn)**.
 
    Se till att UDR har kon figurer ATS:
    * Från VNet 5 och VNet 6 till VNet 2 NVA IP
@@ -117,7 +117,7 @@ Det virtuella WAN-nätverket har inte stöd för ett scenario där virtuella nä
 
 2. Lägg till en sammanställd statisk väg post för virtuella nätverk 2, 5, 6 till hubb 1 standard väg tabell.
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Bild 1":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="Exempel":::
 
 3. Konfigurera en statisk väg för virtuella nätverk 5, 6 i VNet 2: s virtuella nätverks anslutning. Information om hur du konfigurerar konfigurering av routning för en virtuell nätverks anslutning finns i [routning av virtuell hubb](how-to-virtual-hub-routing.md#routing-configuration).
 
@@ -125,11 +125,11 @@ Det virtuella WAN-nätverket har inte stöd för ett scenario där virtuella nä
 
 5. Upprepa steg 2, 3 och 4 för standard väg tabellen i hubb 2.
 
-Detta leder till konfigurations ändringar för routning, som visas i **bild 3**nedan.
+Detta leder till konfigurations ändringar för routning, som visas i **bild 3** nedan.
 
 **Bild 3**
 
-   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Bild 1" lightbox="./media/routing-scenarios/nva/nva-result.png":::
+   :::image type="content" source="./media/routing-scenarios/nva/nva-result.png" alt-text="Bild 3" lightbox="./media/routing-scenarios/nva/nva-result.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -148,8 +148,6 @@
       items:
         - name: Webb- och mobilappar
           href: ../../app-service/troubleshoot-diagnostic-logs.md
-        - name: Virtuell Linux-dator
-          href: ../../virtual-machines/linux/tutorial-monitor.md
         - name: Virtuell Windows-dator
           href: ../../virtual-machines/windows/tutorial-monitor.md
         - name: Mikrotjänster

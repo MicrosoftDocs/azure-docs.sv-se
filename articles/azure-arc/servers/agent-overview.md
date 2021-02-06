@@ -3,12 +3,12 @@ title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
 ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5f12ea90a4398b63eaa19a1fc5a375c15bdfa8c5
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: ed77ee00510fedaf42226081fcf11c4753b8a63a
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526372"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626316"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -55,6 +55,7 @@ Följande versioner av operativ systemet Windows och Linux stöds officiellt fö
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
+- Oracle Linux 7
 
 > [!WARNING]
 > Linux-värdnamnet eller Windows-datornamnet kan inte använda ett av de reserverade orden eller varumärkena i namnet, annars försöker registreringen av den anslutna datorn i Azure Miss lyckas. Se [lösa fel i reserverat resurs namn](../../azure-resource-manager/templates/error-reserved-resource-name.md) för en lista över reserverade ord.

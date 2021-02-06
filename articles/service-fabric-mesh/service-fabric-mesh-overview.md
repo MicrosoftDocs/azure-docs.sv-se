@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: 32e855ef1580dd065ee681e635994064a9038f77
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 64880a9ac3d6d48ce6d39d0b3a7a3aff6587f328
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840276"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626985"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Vad är Service Fabric Mesh?
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här videon ger en snabb översikt över Service Fabric Mesh.
 > [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]

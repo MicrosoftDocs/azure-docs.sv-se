@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: aeeb810174ff5c21a81bcec8aa9265ff100edf91
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881103"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626333"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrera datorer som fysiska servrar till Azure
 
@@ -30,7 +30,7 @@ Den här självstudien är den tredje i en serie som visar hur du bedömer och m
 > [!div class="checklist"]
 > * Förbered för att använda Azure med Azure Migrate: Server-migrering.
 > * Kontrol lera kraven för datorer som du vill migrera och Förbered en dator för Azure Migrate Replication-enheten som används för att identifiera och migrera datorer till Azure.
-> * Lägg till Migreringsverktyg för Azure Migrate server i Azure Migrate Hub.
+> * Lägg till verktyget Azure Migrate: Migreringsverktyg i Azure Migrate Hub.
 > * Konfigurera replikerings enheten.
 > * Installera mobilitets tjänsten på datorer som du vill migrera.
 > * Aktivera replikering.
@@ -51,7 +51,7 @@ Innan du börjar de här självstudierna bör du:
 
 ## <a name="prepare-azure"></a>Förbereda Azure
 
-Förbered Azure för migrering med Server migrering.
+Förbered Azure för migrering med Azure Migrate: Server-migrering.
 
 **Uppgift** | **Information**
 --- | ---
@@ -116,7 +116,7 @@ Förbered distribution av installationer enligt följande:
 
 ## <a name="set-up-the-replication-appliance"></a>Konfigurera replikerings enheten
 
-Det första steget i migreringen är att konfigurera replikerings enheten. Om du vill konfigurera installations programmet för fysisk server-migrering, laddar du ned installations filen för installationen och kör den sedan på den [dator som du för beredde](#prepare-a-machine-for-the-replication-appliance). När du har installerat installationen registrerar du den med Azure Migrate Server-migrering.
+Det första steget i migreringen är att konfigurera replikerings enheten. Om du vill konfigurera installations programmet för fysisk server-migrering, laddar du ned installations filen för installationen och kör den sedan på den [dator som du för beredde](#prepare-a-machine-for-the-replication-appliance). När du har installerat installationen registrerar du den med Azure Migrate: Server-migrering.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>Ladda ned installations programmet för replikerings enheten
@@ -129,7 +129,7 @@ Det första steget i migreringen är att konfigurera replikerings enheten. Om du
 4. I **mål region** väljer du den Azure-region som du vill migrera datorerna till.
 5. Välj **Bekräfta att mål regionen för migrering är regions namn**.
 6. Klicka på **Skapa resurser**. Detta skapar ett Azure Site Recovery valv i bakgrunden.
-    - Om du redan har konfigurerat migrering med Azure Migrate Server-migreringen kan du inte konfigurera mål alternativet eftersom resurserna tidigare har kon figurer ATS.    
+    - Om du redan har konfigurerat migreringen med Azure Migrate: Server-migreringen kan du inte konfigurera mål alternativet eftersom resurserna har kon figurer ATS tidigare.    
     - Du kan inte ändra mål region för projektet när du har klickat på den här knappen.
     - Alla efterföljande migreringar är till den här regionen.
 
@@ -145,7 +145,7 @@ Det första steget i migreringen är att konfigurera replikerings enheten. Om du
 
     ![Slutför registrering](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Det kan ta lite tid efter att registreringen har slutförts tills identifierade datorer visas i Azure Migrate Server-migrering. När virtuella datorer identifieras ökar antalet **identifierade servrar** .
+Det kan ta lite tid efter att registreringen har slutförts tills identifierade datorer visas i Azure Migrate: Server-migrering. När virtuella datorer identifieras ökar antalet **identifierade servrar** .
 
 ![Identifierade servrar](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

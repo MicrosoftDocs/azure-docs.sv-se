@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: dc6fdadbdfdbdd1d32f640e356a67841187a83c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999271"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626112"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Konfigurera ett labb för teknik klasser med hjälp av SOLIDWORKs
 
@@ -31,7 +31,7 @@ När licens servern har kon figurer ATS måste du koppla det [virtuella nätverk
 
 ## <a name="lab-configuration"></a>Labb konfiguration
 
-För att kunna konfigurera det här labbet behöver du ett Azure-prenumerations-och labb konto för att komma igång. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar. När du har skaffat en Azure-prenumeration kan du skapa ett nytt labb konto i Azure Lab Services. Mer information om hur du skapar ett nytt labb konto finns i självstudien om [hur du ställer in ett labb konto](./tutorial-setup-lab-account.md). Du kan också använda ett befintligt labb konto.
+För att kunna konfigurera det här labbet behöver du ett Azure-prenumerations-och labb konto för att komma igång. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar. När du har skaffat en Azure-prenumeration kan du skapa ett nytt labb konto i Azure Lab Services. Mer information om hur du skapar ett nytt labb konto finns i självstudien om [hur du ställer in ett labb konto](./tutorial-setup-lab-account.md). Du kan också använda ett befintligt labb konto.
 
 ### <a name="lab-account-settings"></a>Labb konto inställningar
 
@@ -57,7 +57,7 @@ Använd inställningarna i tabellen nedan när du konfigurerar ett klass rums la
 > Storleken på den virtuella datorn med **liten GPU (visualisering)** är konfigurerad för att möjliggöra en grafik upplevelse med hög prestanda.  Mer information om den här virtuella dator storleken finns i artikeln om [hur du konfigurerar ett labb med GPU: er](./how-to-setup-lab-gpu.md).
 
 > [!WARNING]
-> Glöm inte att [peer-koppla det virtuella nätverket](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) för labb kontot till det virtuella nätverket för licens servern **innan** du skapar labbet.
+> Glöm inte att [peer-koppla det virtuella nätverket](./how-to-connect-peer-virtual-network.md) för labb kontot till det virtuella nätverket för licens servern **innan** du skapar labbet.
 
 ## <a name="template-virtual-machine-configuration"></a>Mall för konfiguration av virtuell dator
 
@@ -76,7 +76,7 @@ Stegen i det här avsnittet visar hur du konfigurerar en mall för virtuella dat
     > [!NOTE]
     > I dialog rutan **Lägg till Server** uppmanas du att ange det **port nummer** som används för licens servern och namnet eller IP-adressen för licens servern.
 
-## <a name="cost"></a>Cost (Kostnad)
+## <a name="cost"></a>Cost
 
 Vi ska se en möjlig kostnads uppskattning för den här klassen. Den här beräkningen omfattar inte kostnaden för att köra licens servern. Vi använder en klass av 25 studenter. Det finns 20 timmar med den schemalagda klass tiden. Dessutom får varje student en kvot på 10 timmar för läxor eller tilldelningar utanför schemalagda klass tider. Storleken på den virtuella datorn som vi valde var **liten GPU (visualisering)**, som är 160 lab-enheter.
 

@@ -6,14 +6,19 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.custom: devx-track-java
-ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd42752dc7ef2c7686073b7a2d780fe9356425c7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372475"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625591"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Maven-plugin-program för Service Fabric nät
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

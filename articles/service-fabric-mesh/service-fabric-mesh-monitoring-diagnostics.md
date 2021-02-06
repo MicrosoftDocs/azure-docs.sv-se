@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 02de8ea5dd5c53192d2b8c7beba8bc36143beac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682079"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627002"
 ---
 # <a name="monitoring-and-diagnostics"></a>Övervakning och diagnostik
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Azure Service Fabric Mesh är en fullständigt hanterad tjänst som gör att utvecklare kan distribuera mikrotjänstprogram utan att hantera virtuella datorer, lagring eller nätverk. Övervakning och diagnostik för Service Fabric nät kategoriseras i tre huvud typer av diagnostikdata:
 
 - Program loggar – dessa definieras som loggar från dina behållares program, baserat på hur du har instrumenterat ditt program (t. ex. Docker-loggar)
@@ -43,7 +49,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Nät miljön visar en fåtal av mått som anger hur dina behållare presterar. Följande mått är tillgängliga via Azure Portal och Azure Monitor CLI:
 
-| Mått | Beskrivning | Enheter|
+| Metric | Beskrivning | Enheter|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu som en procent andel | % |
 | MemoryUtilization | ActualMem/AllocatedMem som en procent andel | % |
@@ -58,7 +64,7 @@ Nät miljön visar en fåtal av mått som anger hur dina behållare presterar. F
 | RestartCount | Antal omstarter av behållare | Ej tillämpligt |
 
 > [!NOTE]
-> Värdena för ServiceStatus och ServiceReplicaStatus är desamma som för [hälso](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) tillstånd i Service Fabric. 
+> Värdena för ServiceStatus och ServiceReplicaStatus är desamma som för [hälso](/dotnet/api/system.fabric.health.healthstate) tillstånd i Service Fabric.
 
 Varje mått är tillgängligt på olika dimensioner så att du kan se agg regeringar på olika nivåer. Den aktuella listan med dimensioner är följande:
 

@@ -5,14 +5,20 @@ author: erikadoyle
 ms.author: edoyle
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: da4eaa34840f14714616b85e24fd62cf65602b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85b4bb6ee4d76a7115c9ebdd1466049afe6683c6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277625"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625540"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-programhemligheter
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 Service Fabric Mesh stöder hemligheter som Azure-resurser. En Service Fabric Mesh-hemlighet kan vara valfri känslig textinformation, till exempel lagringsanslutningssträngar, lösenord eller andra värden som bör lagras och överföras på ett säkert sätt.
 
 ![Översikt över Mesh-hemligheter][sf-mesh-secrets-overview]

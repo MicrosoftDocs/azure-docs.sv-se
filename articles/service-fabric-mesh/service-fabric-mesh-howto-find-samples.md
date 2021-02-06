@@ -3,14 +3,19 @@ title: Hitta Azure Service Fabric nät-exempel
 description: Här är ett index över tillgängliga Service Fabric nät-exempel program. Källkoden i de här exemplen visar hur du uppnår ett visst scenario med hjälp av Service Fabric-resursmodellen.
 ms.date: 12/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 64d9e4e112f26f83eedd02b034c8191c6f677618
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b38cd6a6c0f3aaab4ff5b77be82aee242afef23
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261282"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627036"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Hitta Service Fabric Mesh-exempel
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 I den här tabellen beskrivs tillgängliga Service Fabric Mesh-exempelprogram. Källkoden i de här exemplen visar hur du uppnår ett visst scenario med hjälp av Service Fabric-resursmodellen.
 

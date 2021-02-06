@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: fa15432072f6478100a378fdbdb697556fdf1dc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0bdb3c09aead812e1c16f4d0d17aae58e141809
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842554"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626800"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Självstudie: skapa, felsök, distribuera och uppgradera en webbapp för flera tjänster till Service Fabric Mesh
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här självstudien ingår i en serie. Du får lära dig att använda Visual Studio för att skapa en Azure Service Fabric Mesh-app som har en ASP.NET-webbklientdels- och en ASP.NET Core webb-API-serverdelstjänst. Därefter felsöker du appen i det lokala utvecklingsklustret. Du publicerar appen i Azure och gör därefter konfigurations- och kodändringar och uppgraderar appen. Slutligen rensar du upp oanvända Azure-resurser så att du inte debiteras för vad du inte använder.
 
@@ -41,7 +46,7 @@ I den här självstudieserien får du lära du dig att:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 
@@ -268,7 +273,7 @@ Den här självstudien implementerar inte lägga till, ta bort och så vidare, f
 Med serversidetjänsten implementerad kodar du webbplatsen som visar de att göra-objekt som tillhandahålls. Följande steg äger rum inom projektet **WebFrontEnd**.
 
 Webbplatsen som visar att göra-objekten behöver åtkomst till klass och lista för **ToDoItem**.
-I **Solution Explorer**lägger du till en referens i modell projektet genom att högerklicka på **webfrontend** och välja **Lägg till**  >  **referens...** Dialog rutan **referens hanterare** visas.
+I **Solution Explorer** lägger du till en referens i modell projektet genom att högerklicka på **webfrontend** och välja **Lägg till**  >  **referens...** Dialog rutan **referens hanterare** visas.
 
 I **Reference Manager** klickar du i kryssrutan **Model** (Modell) och klickar på **OK**.
 

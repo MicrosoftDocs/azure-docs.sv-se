@@ -4,8 +4,7 @@ description: Lär dig mer om de grundläggande säkerhetsfunktionerna i Azure so
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
-editor: TomSh
+manager: rkarlin
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 02/05/2021
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 2c7d51da361816841ff556c1da696a48d2ce6a06
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d931d3923ff49dde2bea234278c995e79670429f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843697"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627641"
 ---
-# <a name="azure-identity-management-security-overview"></a>Översikt över Azure Identity Management-säkerhet
+# <a name="azure-identity-management-security-overview"></a>Översikt över säker identitetshantering i Azure
 
  Identitets hantering är en process som autentiserar och auktoriserar [säkerhets objekt](/windows/security/identity-protection/access-control/security-principals). Det omfattar också att kontrol lera information om dessa huvud konton (identiteter). Säkerhets objekt (identiteter) kan omfatta tjänster, program, användare, grupper osv. Microsofts identitets-och åtkomst hanterings lösningar hjälper till att skydda åtkomsten till program och resurser i företags data centret och i molnet. Detta skydd möjliggör ytterligare verifierings nivåer, till exempel Multi-Factor Authentication och principer för villkorlig åtkomst. Övervakning av misstänkt aktivitet via avancerad säkerhets rapportering, granskning och avisering bidrar till att minska potentiella säkerhets problem. [Azure Active Directory Premium](../../active-directory/fundamentals/active-directory-whatis.md) tillhandahåller enkel inloggning (SSO) till tusentals moln program vara som en tjänst (SaaS) och åtkomst till webbappar som du kör lokalt.
  
@@ -46,7 +45,7 @@ Artikeln fokuserar på följande viktiga funktioner i Azure Identity Management:
 * Konsument identitets-och åtkomst hantering
 * Enhetsregistrering
 * Privileged Identity Management
-* Identitetsskydd
+* Identity Protection
 * Hybrid identitets hantering/Azure AD Connect
 * Azure AD-åtkomstgranskningar
 
@@ -62,9 +61,9 @@ Användarna behöver inte bara hantera flera uppsättningar användar namn och l
 
 Läs mer:
 
-* [Översikt över enkel inloggning](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Snabb starts serie på App Management](../../active-directory/manage-apps/view-applications-portal.md)
+* [Översikt på SSO](../../active-directory/manage-apps/what-is-single-sign-on.md)
+* [Video om grundläggande autentisering](https://www.youtube.com/watch?v=fbSVgC8nGz4&feature=emb_title)
+* [Snabb starts serie för program hantering](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>Omvänd proxy
 
@@ -85,7 +84,7 @@ Läs mer:
 
 * [Multifaktorautentisering](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Vad är Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Så här fungerar Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Så fungerar Azure AD-multifaktorautentisering](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="azure-rbac"></a>Azure RBAC
 
@@ -163,7 +162,7 @@ Läs mer:
 * [Vad är Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Tilldela Azure AD Directory-roller i PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identitetsskydd
+## <a name="identity-protection"></a>Identity Protection
 
 Azure AD Identity Protection är en säkerhets tjänst som tillhandahåller en samlad vy över risk identifieringar och potentiella sårbarheter som påverkar organisationens identiteter. Identitets skydd drar nytta av befintliga funktioner för avvikelse identifiering i Azure AD, som är tillgängliga via rapporter om avvikande aktivitets rapporter i Azure AD. Identitets skydd introducerar också nya risk identifierings typer som kan identifiera avvikelser i real tid.
 

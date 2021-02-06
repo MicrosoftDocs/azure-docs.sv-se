@@ -4,12 +4,12 @@ description: Lär dig hur du distribuerar en tjänst över flera regioner med Az
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: baed44e04a0beca02cc959d302a4a29906b4a78e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 63553b0bbca031faa44e0d88480fcc08950a3e2c
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539526"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627507"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Aktivera distributions metoder för säker distribution med Azure Deployment Manager (offentlig för hands version)
 
@@ -21,10 +21,10 @@ Azure Deployment Manager är i för hands version. Hjälp oss att förbättra fu
 
 Om du vill använda Deployment Manager måste du skapa fyra filer:
 
-* Topology-mall
-* Distributions mal len
-* Parameter fil för topologi
-* Parameter fil för distribution
+* Topology-mall.
+* Distributions mal len.
+* Parameter fil för topologi.
+* Parameter fil för distribution.
 
 Du distribuerar topologin innan du distribuerar distributions mal len.
 

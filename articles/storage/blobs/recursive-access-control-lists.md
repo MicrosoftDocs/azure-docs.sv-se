@@ -5,22 +5,25 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741051"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627348"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Ange åtkomst kontrol listor (ACL) rekursivt för Azure Data Lake Storage Gen2
 
 ACL-arv är redan tillgängligt för nya underordnade objekt som skapas under en överordnad katalog. Nu kan du lägga till, uppdatera och ta bort ACL rekursivt för befintliga underordnade objekt i en överordnad katalog utan att behöva göra dessa ändringar individuellt för varje underordnat objekt.
 
 [Bibliotek](#libraries)  |  [Exempel](#code-samples)  |  [Metod tips](#best-practice-guidelines)
+
+> [!NOTE]
+> Azure Storage Explorer stöder nu möjligheten att tillämpa ACL: er rekursivt. Läs mer i [använda ACL: er rekursivt i Azure Storage Explorer](data-lake-storage-explorer.md#apply-acls-recursively). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -717,7 +720,7 @@ För att minska svars tiden rekommenderar vi att du kör den rekursiva ACL-proce
 
 #### <a name="acl-limits"></a>ACL-gränser
 
-Det maximala antalet ACL: er som du kan tillämpa på en katalog eller fil är 32 åtkomst-ACL: er och 32 standard-ACL: er. Mer information finns i [åtkomst kontroll i Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
+Det maximala antalet ACL: er som du kan tillämpa på en katalog eller fil är 32 åtkomst-ACL: er och 32 standard-ACL: er. Mer information finns i [Åtkomstkontroll i Azure Data Lake Storage Gen2](./data-lake-storage-access-control.md).
 
 ## <a name="see-also"></a>Se även
 

@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
-ms.openlocfilehash: 2d74841e1873e5bd84d839122e0e662ef65ccd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1020613eb43177ba159601f253848f8d03f385a8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842010"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625440"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Självstudie: Lär dig hur du uppgraderar ett Service Fabric program med hjälp av Visual Studio
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här självstudien är del fyra i en serie och visar hur du uppgraderar ett Azure Service Fabric-nätprogram direkt från Visual Studio. Uppgraderingen kommer att innehålla både en kod uppdatering och en konfigurations uppdatering. Du ser att stegen för att uppgradera och publicera från Visual Studio är desamma.
 

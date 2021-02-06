@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 56cc8b4010dc17cf2b723a72898034de8d6a7175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843302"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625456"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Självstudie: felsök ett Service Fabric Mesh-program som körs i ditt lokala utvecklingskluster
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här självstudien är del två i en serie och visar hur du skapar och felsöker ett Azure Service Fabric Mesh-program på ditt lokala utvecklingskluster.
 
@@ -33,7 +38,7 @@ I den här självstudieserien får du lära du dig att:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar den här självstudien:
 

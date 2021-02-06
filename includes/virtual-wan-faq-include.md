@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500393"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624885"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -21,19 +21,25 @@ Ja, Azure Virtual WAN är allmänt tillgänglig (GA). Virtuella WAN-nätverk bes
 
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Behöver användaren ha hubb och eker med SD-WAN/VPN-enheter för att kunna använda Azure Virtual WAN?
 
-Det virtuella WAN-nätverket innehåller många funktioner som är inbyggda i ett enda fönster, till exempel plats-till-plats-VPN-anslutning, användare/P2S-anslutning, ExpressRoute-anslutning, Virtual Network anslutning, VPN-ExpressRoute, interaktivt, interaktivt nätverk med transitivt nätverk, centraliserad routning, Azure Firewall och Firewall Manager säkerhet, övervakning, ExpressRoute-kryptering och många andra funktioner. Du behöver inte ha alla dessa användnings fall för att börja använda Virtual WAN. Du kan komma igång med bara ett användnings fall. Den virtuella WAN-arkitekturen är en hubb och eker-arkitektur med skalning och prestanda som är inbyggda i där grenar (VPN/SD-WAN-enheter), användare (Azure VPN-klienter, openVPN eller IKEv2 klienter), ExpressRoute-kretsar, virtuella nätverk fungerar som ekrar till virtuella hubbar. Alla hubbar är anslutna i hela nät i ett standard virtuellt WAN-nätverk som gör det enkelt för användaren att använda Microsofts stamnät för alla-till-alla-anslutningar (alla ekrar). För hubb och eker med SD-WAN/VPN-enheter kan användarna antingen manuellt konfigurera det på Azures virtuella WAN-portal eller använda den virtuella WAN-partner CPE (SD-WAN/VPN) för att konfigurera anslutning till Azure. Virtuella WAN-partner ger automatisering för anslutning, vilket är möjligheten att exportera enhets informationen till Azure, ladda ned Azure-konfigurationen och upprätta anslutning till Azure Virtual WAN Hub. För VPN-anslutning från punkt-till-plats/användare stöder vi [Azure VPN-klienten](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN eller ikev2-klienten. 
+Det virtuella WAN-nätverket innehåller många funktioner som är inbyggda i ett enda fönster, till exempel plats-till-plats-VPN-anslutning, användare/P2S-anslutning, ExpressRoute-anslutning, Virtual Network anslutning, VPN-ExpressRoute, interaktivt, interaktivt nätverk med transitivt nätverk, centraliserad routning, Azure Firewall och Firewall Manager säkerhet, övervakning, ExpressRoute-kryptering och många andra funktioner. Du behöver inte ha alla dessa användnings fall för att börja använda Virtual WAN. Du kan komma igång med bara ett användnings fall.
+
+Den virtuella WAN-arkitekturen är en hubb och eker-arkitektur med skalning och prestanda som är inbyggda i där grenar (VPN/SD-WAN-enheter), användare (Azure VPN-klienter, openVPN eller IKEv2 klienter), ExpressRoute-kretsar, virtuella nätverk fungerar som ekrar till virtuella hubbar. Alla hubbar är anslutna i hela nät i ett standard virtuellt WAN-nätverk som gör det enkelt för användaren att använda Microsofts stamnät för alla-till-alla-anslutningar (alla ekrar). För hubb och eker med SD-WAN/VPN-enheter kan användarna antingen manuellt konfigurera det på Azures virtuella WAN-portal eller använda den virtuella WAN-partner CPE (SD-WAN/VPN) för att konfigurera anslutning till Azure.
+
+Virtuella WAN-partner ger automatisering för anslutning, vilket är möjligheten att exportera enhets informationen till Azure, ladda ned Azure-konfigurationen och upprätta anslutning till Azure Virtual WAN Hub. För VPN-anslutning från punkt-till-plats/användare stöder vi [Azure VPN-klienten](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN eller ikev2-klienten.
 
 ### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>Kan du inaktivera helt nätaktiverade hubbar i ett virtuellt WAN-nätverk?
 
-Det finns två varianter för virtuella WAN-nätverk: Basic och standard. I grundläggande virtuella WAN-nätverk är hubbar inte nät. I ett standard-virtuellt WAN-nätverk är hubbar nätanslutna och ansluts automatiskt när det virtuella WAN-nätverket konfigureras. Användaren behöver inte göra något speciellt. Användaren behöver inte heller inaktivera eller aktivera funktionen för att hämta nät nav. Det virtuella WAN-nätverket ger dig många routningstjänster för styrning av trafiken mellan ekrar (VNet, VPN eller ExpressRoute). Det ger dig enkelt med helt nätnav, och även flexibiliteten för att dirigera trafik efter dina behov. 
+Det finns två varianter för virtuella WAN-nätverk: Basic och standard. I grundläggande virtuella WAN-nätverk är hubbar inte nät. I ett standard-virtuellt WAN-nätverk är hubbar nätanslutna och ansluts automatiskt när det virtuella WAN-nätverket konfigureras. Användaren behöver inte göra något speciellt. Användaren behöver inte heller inaktivera eller aktivera funktionen för att hämta nät nav. Det virtuella WAN-nätverket ger dig många routningstjänster för styrning av trafiken mellan ekrar (VNet, VPN eller ExpressRoute). Det ger dig enkelt med helt nätnav, och även flexibiliteten för att dirigera trafik efter dina behov.
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Hur hanteras Tillgänglighetszoner och återhämtning i virtuella WAN-nätverk?
 
-Virtuellt WAN är en samling nav och tjänster som görs tillgängliga i hubben. Användaren kan ha så många virtuella WAN-nätverk som behövs. I en virtuell WAN-hubb finns det flera tjänster som VPN, ExpressRoute osv. Var och en av dessa tjänster (utom Azure-brandväggen) distribueras i en Tillgänglighetszoner region, det vill säga om regionen stöder Tillgänglighetszoner. Om en region blir en tillgänglighets zon efter den första distributionen i hubben, kan användaren återskapa gatewayerna, vilket utlöser en tillgänglighets zon distribution. Alla gatewayer är etablerade i en hubb som aktiv-aktiv, vilket innebär att det finns återhämtnings kapacitet inbyggd i ett nav. Användare kan ansluta till flera hubbar om de vill ha återhämtning över flera regioner. Även om begreppet virtuellt WAN-nätverk är globalt, är den faktiska virtuella WAN-resursen Resource Manager-baserad och distribuerad i regionalt läge. Om den virtuella WAN-regionen själva skulle ha ett problem, kommer alla hubbar i det virtuella WAN-nätverket fortsätta att fungera som det är, men användaren kan inte skapa nya hubbar förrän den virtuella WAN-regionen är tillgänglig.
+Virtuellt WAN är en samling nav och tjänster som görs tillgängliga i hubben. Användaren kan ha så många virtuella WAN-nätverk som behövs. I en virtuell WAN-hubb finns det flera tjänster som VPN, ExpressRoute osv. Var och en av dessa tjänster (utom Azure-brandväggen) distribueras i en Tillgänglighetszoner region, det vill säga om regionen stöder Tillgänglighetszoner. Om en region blir en tillgänglighets zon efter den första distributionen i hubben, kan användaren återskapa gatewayerna, vilket utlöser en tillgänglighets zon distribution. Alla gatewayer är etablerade i en hubb som aktiv-aktiv, vilket innebär att det finns återhämtnings kapacitet inbyggd i ett nav. Användare kan ansluta till flera hubbar om de vill ha återhämtning över flera regioner.
+
+Även om begreppet virtuellt WAN-nätverk är globalt, är den faktiska virtuella WAN-resursen Resource Manager-baserad och distribuerad i regionalt läge. Om den virtuella WAN-regionen själva skulle ha ett problem, kommer alla hubbar i det virtuella WAN-nätverket fortsätta att fungera som det är, men användaren kan inte skapa nya hubbar förrän den virtuella WAN-regionen är tillgänglig.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Vilken klient gör Azure Virtual WAN-användaren VPN (punkt-till-plats) support?
 
-Virtuellt WAN stöder [Azure VPN-klienten](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN-klienten eller en IKEv2-klient. Azure AD-autentisering stöds med Azure VPN-klienten. minst Windows 10 client OS version 17763,0 eller senare krävs.  OpenVPN-klienter kan ha stöd för certifikatbaserad autentisering. När CERT-baserad autentisering har valts på gatewayen visas *. ovpn* -filen för att ladda ned till enheten. IKEv2 stöder både certifikat-och RADIUS-autentisering. 
+Virtuellt WAN stöder [Azure VPN-klienten](https://go.microsoft.com/fwlink/?linkid=2117554), OpenVPN-klienten eller en IKEv2-klient. Azure AD-autentisering stöds med Azure VPN-klienten. minst Windows 10 client OS version 17763,0 eller senare krävs.  OpenVPN-klienter kan ha stöd för certifikatbaserad autentisering. När CERT-baserad autentisering har valts på gatewayen visas. ovpn *-filen som ska laddas ned till enheten. IKEv2 stöder både certifikat-och RADIUS-autentisering. 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>För användares VPN (punkt-till-plats) – Varför delas P2S i två vägar?
 
@@ -87,9 +93,9 @@ Det finns två alternativ för att lägga till DNS-servrar för P2S-klienter. De
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>För användar-VPN (punkt-till-plats) – hur många klienter stöds?
 
-Varje användares VPN-P2S Gateway har två instanser och varje instans har stöd för upp till vissa användare när skalnings enheten ändras. Skalnings enhet 1-3 har stöd för 500 anslutningar, skalnings enhet 4-6 har stöd för 1000 anslutningar, skalnings enhet 7-12 har stöd för 5000-anslutningar och skalnings enhet 13-18 har stöd för upp till 10 000 
+Varje användares VPN-P2S Gateway har två instanser och varje instans har stöd för upp till vissa användare när skalnings enheten ändras. Skalnings enhet 1-3 har stöd för 500 anslutningar, skalnings enhet 4-6 har stöd för 1000 anslutningar, skalnings enhet 7-12 har stöd för 5000-anslutningar och skalnings enhet 13-18 har stöd för upp till 10 000
 
-Till exempel låter användaren välja 1 skalen het. Varje skalnings enhet innebär att en aktiv-aktiv Gateway distribueras och var och en av instanserna (i det här fallet 2) har stöd för upp till 500 anslutningar. Eftersom du kan få 500 anslutningar * 2 per Gateway, innebär det inte att du planerar för 1000 i stället för 500 för den här skalnings enheten. Instanser kan behöva servas under vilken anslutningen för den extra 500 kan avbrytas om du överskrider det rekommenderade antalet anslutningar. Se också till att planera för stillestånds tid om du vill skala upp eller ned i skalnings enheten eller ändra plats-till-plats-konfigurationen på VPN-gatewayen.
+Anta till exempel att användaren väljer 1 skalnings enhet. Varje skalnings enhet innebär att en aktiv-aktiv Gateway distribueras och var och en av instanserna (i det här fallet 2) har stöd för upp till 500 anslutningar. Eftersom du kan få 500 anslutningar * 2 per Gateway, innebär det inte att du planerar för 1000 i stället för 500 för den här skalnings enheten. Instanser kan behöva servas under vilken anslutningen för den extra 500 kan avbrytas om du överskrider det rekommenderade antalet anslutningar. Se också till att planera för stillestånds tid om du vill skala upp eller ned i skalnings enheten eller ändra plats-till-plats-konfigurationen på VPN-gatewayen.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Vad är skillnaden mellan en virtuell Azure-nätverksgateway (VPN Gateway) och en virtuell WAN-gateway i Azure?
 
@@ -101,7 +107,7 @@ Virtuellt WAN stöder upp till 20 Gbit/s aggregerade data flöden både för VPN
 
 En virtuell nätverksgateway VPN är begränsad till 30 tunnlar. För anslutningar bör du använda Virtual WAN för ett storskaligt virtuellt privat nätverk. Du kan ansluta upp till 1 000 förgrenings anslutningar per region (virtuell hubb) med en agg regering på 20 Gbit/s per hubb. En anslutning är en aktiv-aktiv-tunnel från den lokala VPN-enheten till den virtuella hubben. Du kan ha en hubb per region, vilket innebär att du kan ansluta fler än 1 000 grenar över hubbar.
 
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Vad är en skalnings enhet för virtuell WAN-Gateway
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Vad är en skalnings enhet för virtuell WAN-Gateway?
 
 En skalnings enhet är en enhet som definieras för att välja ett sammanställt data flöde för en gateway i virtuell hubb. 1 skalnings enhet för VPN = 500 Mbit/s. 1 skalnings enhet av ExpressRoute = 2 Gbit/s. Exempel: 10 skalnings enhet för VPN skulle innebära 500 Mbit/s * 10 = 5 Gbit/s
 
@@ -139,11 +145,11 @@ Upp till 1 000 anslutningar stöds per virtuell hubb. Varje anslutning består a
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Vad är en förgrenings anslutning till Azure Virtual WAN?
 
-En anslutning från en gren eller VPN-enhet till Azure Virtual WAN är inget, men en VPN-anslutning som ansluter i stort sett VPN-platsen och Azure-VPN Gateway i en virtuell hubb.
+En anslutning från en gren eller VPN-enhet till Azure Virtual WAN är en VPN-anslutning som ansluter i stort sett VPN-platsen och Azure-VPN Gateway i en virtuell hubb.
 
-### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>Vad händer om den lokala VPN-enheten bara har 1 tunnel till en virtuell WAN-gateway i Azure?
+### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>Vad händer om den lokala VPN-enheten bara har 1 tunnel till en virtuell WAN-gateway i Azure?
 
-En virtuell Azure WAN-anslutning består av 2 tunnlar. En virtuell WAN-Gateway distribueras i en virtuell hubb i aktivt läge, vilket innebär att det finns separata tunnlar från lokala enheter som avslutas på separata isntances – detta är rekommendationen för alla användare. Om användaren däremot väljer att bara ha 1 tunnel till en av de virtuella WAN-Gateway-instanserna, om det av någon anledning (underhåll, korrigeringar osv.)  Gateway-instansen skulle vara offline, tunneln kommer att flyttas till den sekundära aktiva instansen och användaren kan uppleva en åter anslutning. Tänk på att BGP-sessionen inte kommer att flyttas mellan instanser.
+En virtuell WAN-anslutning i Azure består av två tunnlar. En virtuell WAN-Gateway distribueras i en virtuell hubb i aktivt-aktivt läge, vilket innebär att det finns separata tunnlar från lokala enheter som avslutas på separata instanser. Detta är rekommendationen för alla användare. Men om användaren väljer att bara ha 1 tunnel till en av de virtuella WAN-Gateway-instanserna, om det av någon anledning (underhåll, korrigeringar osv.) som gateway-instansen skulle vara frånkopplad, kommer tunneln att flyttas till den sekundära aktiva instansen och användaren kan uppleva en åter anslutning. BGP-sessioner kommer inte att flyttas mellan instanser.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Kan den lokala VPN-enheten ansluta till flera hubbar?
 
@@ -179,19 +185,21 @@ En enkel konfiguration av ett virtuellt WAN med en hubb och en vpnsite kan skapa
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Kan eker-virtuella nätverk som är anslutna till en virtuell hubb kommunicera med varandra (V2V-överföring)?
 
-Ja. Standard Virtual WAN stöder VNet-till-VNet-transitiv anslutning via det virtuella WAN-hubb som virtuella nätverk är anslutet till. I Virtual WAN-terminologi hänvisar vi till dessa sökvägar som "lokal virtuell WAN VNet-överföring" för virtuella nätverk som är ansluten till en virtuell WAN-hubb inom en region och "global virtuell WAN-överföring av virtuella WAN-nätverk" för virtuella nätverk som är ansluten via flera virtuella WAN-hubbar i två eller flera regioner. I vissa fall kan eker-virtuella nätverk också vara direkt peer-kopplad till varandra med hjälp av [Virtual Network-peering](../articles/virtual-network/virtual-network-peering-overview.md) förutom lokal eller global virtuell WAN-överföring. I detta fall prioriteras VNet-peering över den transitiva anslutningen via den virtuella WAN-hubben.
+Ja. Standard Virtual WAN stöder VNet-till-VNet-transitiv anslutning via det virtuella WAN-hubb som virtuella nätverk är anslutet till. I Virtual WAN-terminologi hänvisar vi till dessa sökvägar som "lokal virtuell WAN VNet-överföring" för virtuella nätverk som är ansluten till en virtuell WAN-hubb inom en region och "global virtuell WAN-överföring av virtuella WAN-nätverk" för virtuella nätverk som är ansluten via flera virtuella WAN-hubbar i två eller flera regioner.
+
+I vissa fall kan eker-virtuella nätverk också vara direkt peer-kopplad till varandra med hjälp av [virtuella nätverks-peering](../articles/virtual-network/virtual-network-peering-overview.md) förutom lokal eller global överföring av virtuella WAN-nätverk. I detta fall prioriteras VNet-peering över den transitiva anslutningen via den virtuella WAN-hubben.
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Tillåts gren-till-gren-anslutningar i Virtual WAN?
 
-Ja, det finns stöd för gren-till-gren-anslutningar i Virtual WAN. Gren gäller konceptuellt för VPN-platsen, ExpressRoute-kretsar eller punkt-till-plats/användare VPN-användare. Aktivering av gren till gren är aktiverat som standard och kan finnas i inställningar för WAN-konfiguration. Detta gör det möjligt för VPN-grenar/användare att ansluta till andra VPN-grenar och överförings anslutningar är aktiverat mellan VPN-och ExpressRoute-användare.
+Ja, det finns stöd för gren-till-gren-anslutningar i Virtual WAN. Gren gäller konceptuellt för VPN-platsen, ExpressRoute-kretsar eller punkt-till-plats/användare VPN-användare. Att aktivera gren-till-gren är aktiverat som standard och kan finnas i inställningar för WAN- **konfiguration** . Detta gör att VPN-grenar/-användare ansluter till andra VPN-grenar och överförings anslutningar är också aktiverade mellan VPN-och ExpressRoute-användare.
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Passerar gren-till-gren-trafik via det virtuella Azure-nätverket?
 
-Ja.
+Ja. Gren-till-gren-trafik passerar genom Azure Virtual WAN.
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Kräver Virtual WAN ExpressRoute från varje plats?
 
-Nej. Virtual WAN kräver inte ExpressRoute från varje plats. Dina platser kan anslutas till ett providernätverk med hjälp av en ExpressRoute-krets. För platser som är anslutna via ExpressRoute till en virtuell hubb och IPsec VPN i samma hubb tillhandahåller det virtuella navet överförings anslutningar mellan VPN-och ExpressRoute-användaren.
+Nej. Virtual WAN kräver inte ExpressRoute från varje plats. Dina platser kan anslutas till ett providernätverk med hjälp av en ExpressRoute-krets. För platser som är anslutna via ExpressRoute till en virtuell hubb och IPsec VPN i samma hubb tillhandahåller virtuella hubb överförings anslutningar mellan VPN-och ExpressRoute-användaren.
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Finns det ett nätverks flöde eller en anslutnings gräns när du använder Azure Virtual WAN?
 
@@ -204,11 +212,12 @@ När VPN-platser ansluter till en hubb gör de det med anslutningar. Virtuellt W
 Det totala VPN-dataflödet för en hubb är upp till 20 Gbit/s baserat på den valda skalnings enheten för VPN-gatewayen. Data flödet delas av alla befintliga anslutningar. Varje tunnel i en anslutning har stöd för upp till 1 Gbit/s.
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kan jag använda NAT-T på mina VPN-anslutningar?
-Ja, NAT Traversal (NAT-T) stöds. Virtuella WAN-VPN Gateway kommer inte att utföra NAT-liknande funktioner på de inre paketen till/från IPsec-tunnlarna. I den här konfigurationen kontrollerar du att den lokala enheten initierar IPSec-tunneln.
+
+Ja, NAT Traversal (NAT-T) stöds. Den virtuella WAN-VPN-gatewayen utför inga NAT-liknande funktioner på de inre paketen till/från IPsec-tunnlarna. I den här konfigurationen kontrollerar du att den lokala enheten initierar IPSec-tunneln.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Jag ser inte inställningen 20 Gbit/s för den virtuella hubben i portalen. Hur gör jag för att konfigurera?
 
-Navigera till VPN-gatewayen i ett nav på portalen och klicka på skalnings enheten för att ändra den till lämplig inställning.
+Navigera till VPN-gatewayen i ett nav på portalen och klicka sedan på skalnings enheten för att ändra den till lämplig inställning.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Tillåter Virtual WAN att den lokala enheten använder flera olika Internet leverantörer parallellt, eller är alltid en enda VPN-tunnel?
 
@@ -226,21 +235,23 @@ Trafiken följer mönstret: Branch enhet->ISP->Microsoft Network Edge->Microsoft
 
 Ja. En Internet anslutning och en fysisk enhet som stöder IPsec, helst från våra integrerade [virtuella WAN-partner](../articles/virtual-wan/virtual-wan-locations-partners.md). Du kan också manuellt hantera konfigurationen och anslutningen till Azure från den önskade enheten.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Hur gör jag för att aktivera standard väg (0.0.0.0/0) i en anslutning (VPN, ExpressRoute eller Virtual Network)?
+### <a name="how-do-i-enable-default-route-00000-for-a-connection-vpn-expressroute-or-virtual-network"></a>Hur gör jag för att aktivera standard väg (0.0.0.0/0) för en anslutning (VPN, ExpressRoute eller Virtual Network)?
 
-En virtuell hubb kan sprida en inlärd standard väg till en VPN-/ExpressRoute-anslutning för virtuella nätverk/plats-till-plats om flaggan är aktive rad på anslutningen. Den här flaggan visas när användaren redigerar en virtuell nätverks anslutning, en VPN-anslutning eller en ExpressRoute-anslutning. Som standard inaktive ras den här flaggan när en plats eller en ExpressRoute-krets är ansluten till en hubb. Den aktive ras som standard när en virtuell nätverks anslutning läggs till för att ansluta ett VNet till en virtuell hubb. Standard vägen kommer inte från den virtuella WAN-hubben. standard vägen sprids om den redan har belärts av den virtuella WAN-hubben som ett resultat av distributionen av en brand vägg i hubben, eller om en annan ansluten plats har Tvingad tunnel trafik aktive rad. En standard väg sprids inte mellan hubbar (mellan hub).
+En virtuell hubb kan sprida en inlärd standard väg till en VPN-/ExpressRoute-anslutning för virtuella nätverk/plats-till-plats om flaggan är aktive rad på anslutningen. Den här flaggan visas när användaren redigerar en virtuell nätverks anslutning, en VPN-anslutning eller en ExpressRoute-anslutning. Som standard inaktive ras den här flaggan när en plats eller en ExpressRoute-krets är ansluten till en hubb. Den aktive ras som standard när en virtuell nätverks anslutning läggs till för att ansluta ett VNet till en virtuell hubb.
 
-### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hur kan den virtuella hubben i ett virtuellt WAN-nätverk välja den bästa vägen för en väg från flera hubbar
+Standard vägen kommer inte från den virtuella WAN-hubben. standard vägen sprids om den redan har belärts av den virtuella WAN-hubben som ett resultat av distributionen av en brand vägg i hubben, eller om en annan ansluten plats har Tvingad tunnel trafik aktive rad. En standard väg sprids inte mellan hubbar (mellan hub).
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hur väljer den virtuella hubben i ett virtuellt WAN-nätverk den bästa vägen för en väg från flera hubbar?
 
 Om en virtuell hubb lär sig samma väg från flera fjärrhubbar, är ordningen i vilken den bestämmer sig enligt följande:
 
 1. Längsta prefix matchning.
-2. Lokala vägar över interhub (virtuell hubb tilldelar 65520-65520 för interhub som)
-3. Statiska vägar över BGP: Detta är i kontext till besluts fattandet av en virtuell hubb-router. Om besluts fattaren däremot är VPN-gatewayen där en plats meddelar vägar via BGP eller tillhandahåller statiska adressprefix, kan statiska vägar prioriteras framför BGP-vägar.
-4. ExpressRoute (ER) via VPN: ER föredras över VPN när kontexten är en lokal hubb. Överförings anslutningar mellan ExpressRoute-kretsar är bara tillgängliga via Global Reach. I scenarier där ExpressRoute-kretsen är ansluten till en hubb och det finns en annan ExpressRoute-krets som är ansluten till en annan hubb med VPN-anslutning, kan VPN vara ett alternativ för scenarier mellan olika nav.
-5. SOM sökväg längd.
+1. Lokala vägar över interhub (virtuell hubb tilldelar 65520-65520 för interhub som).
+1. Statiska vägar över BGP: detta sker i samband med beslutet som görs av routern för virtuella hubbar. Men om besluts fattaren är VPN-gatewayen där en plats meddelar vägar via BGP eller tillhandahåller statiska adressprefix, kan statiska vägar prioriteras framför BGP-vägar.
+1. ExpressRoute (ER) via VPN: ER föredras över VPN när kontexten är en lokal hubb. Överförings anslutningar mellan ExpressRoute-kretsar är bara tillgängliga via Global Reach. I scenarier där ExpressRoute-kretsen är ansluten till en hubb och det finns en annan ExpressRoute-krets som är ansluten till en annan hubb med VPN-anslutning, kan det därför vara lämpligt med VPN för scenarier mellan hubbar.
+1. SOM sökväg längd.
 
-### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Tillåter Virtual WAN Hub anslutning mellan ExpressRoute-kretsar.
+### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Tillåter den virtuella WAN Hub anslutning mellan ExpressRoute-kretsar?
 
 Överföring mellan ER-till-ER är alltid via global räckvidd. Gatewayer för virtuella hubbar distribueras i DC-eller Azure-regioner. När två ExpressRoute-kretsar ansluter via global räckvidd, behöver trafiken inte komma från gräns routrarna till den virtuella domänkontrollantens DC.
 
@@ -250,28 +261,31 @@ När flera ExpressRoute-kretsar är anslutna till en virtuell hubb, tillhandahå
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Föredrar Virtual WAN ExpressRoute via VPN för trafik som utgående Azure
 
-Ja.
+Ja. Det virtuella WAN-nätverket föredrar ExpressRoute via VPN för trafik som utgående Azure.
 
 ### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>När en virtuell WAN-hubb har en ExpressRoute-krets och en VPN-plats som är ansluten till den, kan det som skulle medföra att en anslutning till ett VPN-nätverk föredras över ExpressRoute?
 
-När en ExpressRoute-krets är ansluten till en virtuell hubb är Microsoft Edge-routrarna den första noden för kommunikation mellan lokala platser och Azure. Dessa yttre routrar kommunicerar med de virtuella WAN-ExpressRoute gateways som i sin tur lär sig vägar från den virtuella Hub-routern som styr alla vägar mellan alla gateways i virtuella WAN. Microsoft Edge-routrarna bearbetar virtuella Hubbs ExpressRoute vägar med högre prioritet över vägar som har lärts från lokala platser. Om VPN-anslutningen blir det primära mediet för den virtuella hubben för att lära sig vägar från (t. ex. failover-scenarier mellan ExpressRoute och VPN), såvida inte VPN-platsen längre är som sökväg, kommer den virtuella hubben fortsätta att dela VPN-inlärda vägar med ExpressRoute-gatewayen, vilket gör att Microsoft Edge-routrarna föredrar VPN-vägar över lokala vägar.
+När en ExpressRoute-krets är ansluten till en virtuell hubb är Microsoft Edge-routrarna den första noden för kommunikation mellan lokala platser och Azure. Dessa yttre routrar kommunicerar med de virtuella WAN-ExpressRoute gateways som i sin tur lär sig vägar från den virtuella Hub-routern som styr alla vägar mellan alla gateways i virtuella WAN. Microsoft Edge-routrarna bearbetar virtuella Hubbs ExpressRoute vägar med högre prioritet över vägar som har lärts från lokala platser.
+
+Om VPN-anslutningen blir det primära mediet för den virtuella hubben för att lära sig vägar från (t. ex. failover-scenarier mellan ExpressRoute och VPN), såvida inte VPN-platsen längre är som sökväg, kommer den virtuella hubben fortsätta att dela VPN-inlärda vägar med ExpressRoute-gatewayen. Detta gör att Microsoft Edge-routrarna föredrar VPN-vägar över lokala vägar.
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>När två hubbar (hubb 1 och 2) är anslutna och det finns en ExpressRoute-krets ansluten som en bog-bind till båda hubbarna, vilken är sökvägen för ett VNet som är anslutet till hubb 1 för att uppnå ett VNet som är anslutet i hubb 2?
 
 Det aktuella beteendet är att föredra ExpressRoute krets Sök väg över hubb-till-hubb för anslutning mellan virtuella nätverk. Detta rekommenderas dock inte i en virtuell WAN-installation. Det virtuella WAN-teamet arbetar med en åtgärd för att aktivera inställningen för hubb-till-hubb över ExpressRoute-sökvägen. Rekommendationen gäller för flera ExpressRoute-kretsar (olika providrar) för att ansluta till en hubb och använda nav-till-hubb-anslutningen som tillhandahålls av Virtual WAN för trafik flöden mellan regioner.
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Kan hubbar skapas i olika resurs grupper i virtuella WAN-nätverk?
-Ja. Det här alternativet är för närvarande endast tillgängligt via PowerShell. Virtual WAN-portalen bestämmer hubbarna i samma resurs grupp som den virtuella WAN-resursen.
+
+Ja. Det här alternativet är för närvarande endast tillgängligt via PowerShell. Den virtuella WAN-portalen kräver att hubbarna finns i samma resurs grupp som den virtuella WAN-resursen.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Finns det stöd för IPv6 i virtuella WAN-nätverk?
 
-IPv6 stöds inte i Virtual WAN Hub och dess gatewayer. Om du har ett VNet som har stöd för IPv4 och IPv6 och du vill ansluta VNet till ett virtuellt WAN-nätverk stöds inte det här scenariot för närvarande. 
+IPv6 stöds inte i den virtuella WAN-hubben och dess gatewayer. Om du har ett VNet som har stöd för IPv4 och IPv6 och du vill ansluta VNet till ett virtuellt WAN-nätverk stöds inte det här scenariot för närvarande.
 
-För VPN-scenariot för peka-till-plats (användare) med Internet-grupp via Azure Firewall måste du förmodligen inaktivera IPv6-anslutning på klient enheten för att tvinga trafik till den virtuella WAN-hubben. Detta beror på att moderna enheter som standard använder IPv6-adresser som standard.
+För VPN-scenariot för punkt-till-plats-användare med Internet-grupp via Azure Firewall måste du förmodligen inaktivera IPv6-anslutning på klient enheten för att tvinga trafik till den virtuella WAN-hubben. Detta beror på att moderna enheter, som standard, använder IPv6-adresser.
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Vilken är den rekommenderade API-versionen som ska användas av skript som automatiserar olika virtuella WAN-funktioner?
 
-En lägsta version av 05-01-2020 (kan 1 2020) krävs. 
+En lägsta version av 05-01-2020 (kan 1 2020) krävs.
 
 ### <a name="are-there-any-virtual-wan-limits"></a>Finns det några virtuella WAN-gränser?
 
@@ -281,10 +295,10 @@ Se avsnittet [virtuella WAN-gränser](../articles/azure-resource-manager/managem
 
 Se [Basic och standard Virtual WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard). Information om priser finns på sidan med [priser](https://azure.microsoft.com/pricing/details/virtual-wan/) .
 
-### <a name="does-virtual-wan-store-customer-data"></a>Kan virtuella WAN-data lagra kund information? 
+### <a name="does-virtual-wan-store-customer-data"></a>Kan virtuella WAN-data lagra kund information?
 
 Nej. Det virtuella WAN-nätverket lagrar ingen kund information.
 
-### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Finns det några leverantörer av hanterade tjänster som kan hantera virtuella WAN-nätverk för användare som en tjänst? 
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Finns det några leverantörer av hanterade tjänster som kan hantera virtuella WAN-nätverk för användare som en tjänst?
 
 Ja. En lista över MSP-lösningar (Managed Service Provider) som är aktiverade via Azure Marketplace finns i [Azure Marketplace-erbjudanden från Azure Network MSP-partner](../articles/networking/networking-partners-msp.md#msp).

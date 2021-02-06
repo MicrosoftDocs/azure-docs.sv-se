@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5517afe7407da7428d4a83f3d2de67836280c7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f80990854fd0c584d8e6582fdf35108e67d9202b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741906"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625136"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Vanliga frågor och svar om Azure AD Password Protection på plats
 
@@ -150,6 +150,146 @@ Gransknings läget stöds bara i den lokala Active Directorys miljön. Azure AD 
 **F: mina användare ser det traditionella Windows fel meddelandet när ett lösen ord avvisas av lösen ords skyddet i Azure AD. Är det möjligt att anpassa det här fel meddelandet så att användarna vet vad som verkligen hände?**
 
 Nej. Fel meddelandet som visas av användare när ett lösen ord avvisas av en domänkontrollant styrs av klient datorn, inte av domänkontrollanten. Det här problemet uppstår om ett lösen ord avvisas av standard Active Directory lösen ords principer eller av en metod för lösen ords filtrering, till exempel Azure AD Password Protection.
+
+## <a name="password-testing-procedures"></a>Procedurer för att testa lösen ord
+
+Du kanske vill göra några grundläggande tester av olika lösen ord för att verifiera att program varan fungerar som den ska och få en bättre förståelse för [algoritmen för lösen ords utvärdering](concept-password-ban-bad.md#how-are-passwords-evaluated). Det här avsnittet beskriver en metod för sådan testning som är utformad för att producera upprepnings bara resultat.
+
+Varför är det nödvändigt att följa dessa steg? Det finns flera faktorer som gör det svårt att utföra kontrollerade, upprepnings bara tester av lösen ord i den lokala Active Directorys miljön:
+
+* Lösen ords principen konfigureras och sparas i Azure och kopior av principen synkroniseras regelbundet av de lokala DC-agenterna med en avsöknings funktion. Svars tiden i denna avsöknings cykel kan orsaka förvirring. Om du till exempel konfigurerar principen i Azure men glömmer att synkronisera den med DC-agenten kanske inte dina tester ger det förväntade resultatet. Avsöknings intervallet är för närvarande hårdkodadt per timme, men att vänta en timme mellan princip ändringar är inte perfekt för ett interaktivt test scenario.
+* När en ny lösen ords princip har synkroniserats till en domänkontrollant inträffar mer svars tid när den replikeras till andra domänkontrollanter. De här fördröjningarna kan orsaka oväntade resultat om du testar en lösen ords ändring mot en domänkontrollant som ännu inte har fått den senaste versionen av principen.
+* Att testa lösen ords ändringar via ett användar gränssnitt gör det svårt att ha förtroende för dina resultat. Till exempel är det enkelt att skriva ett ogiltigt lösen ord till ett användar gränssnitt, särskilt eftersom de flesta användar gränssnitt för lösen ord döljer användar indata (t. ex. Windows Ctrl-Alt-Delete-> ändra lösen ordets användar gränssnitt).
+* Det går inte att strikt styra vilken domänkontrollant som används när du testar lösen ords ändringar från domänanslutna klienter. Windows-klientens operativ system väljer en domänkontrollant baserat på faktorer som Active Directory plats-och under näts tilldelningar, miljö-/regionsspecifika nätverks konfiguration osv.
+
+För att undvika dessa problem baseras stegen nedan på kommando rads testning av lösen ords återställning vid inloggning på en domänkontrollant.
+
+> [!WARNING]
+> Dessa procedurer bör endast användas i en test miljö eftersom alla ändringar av inkommande lösen ord och återställningar godkänns utan verifiering medan DC-agenttjänsten stoppas, och även för att undvika ökade risker som är förknippade med att logga in på en domänkontrollant.
+
+Följande steg förutsätter att du har installerat DC-agenten på minst en domänkontrollant, har installerat minst en proxy och registrerat både proxyn och skogen.
+
+1. Logga in på en domänkontrollant med autentiseringsuppgifter för domän administratör (eller andra autentiseringsuppgifter som har behörighet att skapa test användar konton och Återställ lösen ord), som har installerat DC-agenten och har startats om.
+1. Öppna Loggboken och navigera till [händelse loggen DC agent admin](howto-password-ban-bad-on-premises-monitor.md#dc-agent-admin-event-log).
+1. Öppna ett kommando tolks fönster med förhöjd behörighet.
+1. Skapa ett test konto för lösen ords testning
+
+   Det finns många sätt att skapa ett användar konto, men ett kommando rads alternativ erbjuds här på ett sätt som gör det enkelt vid upprepade testnings prov:
+
+   ```text
+   net.exe user <testuseraccountname> /add <password>
+   ```
+
+   I diskussions syfte nedan antar vi att vi har skapat ett test konto med namnet "ContosoUser", till exempel:
+
+   ```text
+   net.exe user ContosoUser /add <password>
+   ```
+
+1. Öppna en webbläsare (du kan behöva använda en separat enhet i stället för domänkontrollanten), logga in på [Azure Portal](https://portal.azure.com)och bläddra till Azure Active Directory > säkerhets > autentiseringsmetoder > lösen ords skydd.
+1. Ändra Azure AD-principen för lösen ords skydd efter behov för den testning du vill utföra.  Du kan till exempel välja att konfigurera antingen tvingande eller gransknings läge, eller så kan du välja att ändra listan över blockerade villkor i listan med egna förbjudna lösen ord.
+1. Synkronisera den nya principen genom att stoppa och starta om DC-agenttjänsten.
+
+   Det här steget kan utföras på olika sätt. Ett sätt är att använda den administrativa konsolen för service hantering genom att högerklicka på Azure AD Password Protection DC agent service och välja "starta om". Ett annat sätt kan utföras från kommando tolks fönstret så här:
+
+   ```text
+   net stop AzureADPasswordProtectionDCAgent && net start AzureADPasswordProtectionDCAgent
+   ```
+    
+1. Kontrol lera Loggboken för att kontrol lera att en ny princip har hämtats.
+
+   Varje gång DC-agenttjänsten stoppas och startas bör du se 2 30006-händelser som utfärdats i stängnings åtgärden. Den första 30006-händelsen visar principen som cachelagrades på disken i Sysvol-resursen. Den andra 30006-händelsen (om den finns) ska ha ett uppdaterat datum för klient principen, och om så är fallet kommer principen som hämtades från Azure att visas. Datum svärdet för klient principen är för närvarande kodat för att visa den ungefärliga tidsstämpeln som principen hämtades från Azure.
+   
+   Om den andra 30006-händelsen inte visas bör du felsöka problemet innan du fortsätter.
+   
+   30006-händelserna kommer att se ut ungefär som i det här exemplet:
+ 
+   ```text
+   The service is now enforcing the following Azure password policy.
+
+   Enabled: 1
+   AuditOnly: 0
+   Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+   Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+   Enforce tenant policy: 1
+   ```
+
+   Om du till exempel ändrar mellan tvingande och gransknings läge så kommer AuditOnly-flaggan att ändras (principen ovan med AuditOnly = 0 är i tvingande läge). ändringar i listan med anpassade förbjudna lösen ord avspeglas inte direkt i 30006-händelsen ovan (och loggas inte någon annan stans av säkerhets skäl). Principen har hämtats från Azure efter att en sådan ändring även inkluderar den ändrade anpassade listan över blockerade lösen ord.
+
+1. Kör ett test genom att försöka återställa ett nytt lösen ord på test användar kontot.
+
+   Det här steget kan göras från kommando tolks fönstret så här:
+
+   ```text
+   net.exe user ContosoUser <password>
+   ```
+
+   När du har kört kommandot kan du få mer information om resultatet av kommandot genom att titta i logg boken. Händelse loggen för lösen ords validering dokumenteras i avsnittet om [händelse loggen för DC-agenten](howto-password-ban-bad-on-premises-monitor.md#dc-agent-admin-event-log) . du kommer att använda sådana händelser för att verifiera resultatet av testet förutom de interaktiva utdata från net.exe-kommandon.
+
+   Nu ska vi prova med att ange ett lösen ord som har blockerats av Microsofts globala lista (Observera att listan [inte är dokumenterad](concept-password-ban-bad.md#global-banned-password-list) men vi kan testa detta mot en känd beständig term). I det här exemplet förutsätts att du har konfigurerat principen så att den är i tvingat läge och har lagt till noll villkor i listan anpassat blockerade lösen ord.
+
+   ```text
+   net.exe user ContosoUser PassWord
+   The password does not meet the password policy requirements. Check the minimum password length, password complexity and password history requirements.
+
+   More help is available by typing NET HELPMSG 2245.
+   ```
+
+   Per dokumentation, eftersom vårt test var en lösen ords återställning, bör du se en 10017 och en 30005-händelse för ContosoUser-användaren.
+
+   Händelsen 10017 ska se ut som i det här exemplet:
+
+   ```text
+   The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   Händelsen 30005 ska se ut som i det här exemplet:
+
+   ```text
+   The reset password for the specified user was rejected because it matched at least one of the tokens present in the Microsoft global banned password list of the current Azure password policy.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   Det var roligt – låt oss prova ett annat exempel! Den här gången görs ett försök att ange ett lösen ord som är förbjudet av den anpassade förbjudna listan medan principen är i gransknings läge. I det här exemplet förutsätts att du har gjort följande: konfigurerat principen som gransknings läge, lade till termen "Lachrymose" i listan med anpassade undantagna lösen ord och synkroniserar den resulterande nya principen till domänkontrollanten genom att inaktivera DC Agent-tjänsten enligt beskrivningen ovan.
+
+   OK, ange en variant av det förbjudna lösen ordet:
+
+   ```text
+   net.exe user ContosoUser LaChRymoSE!1
+   The command completed successfully.
+   ```
+
+   Kom ihåg att den här gången lyckades eftersom principen är i gransknings läge. Du bör se en 10025 och en 30007-händelse för ContosoUser-användaren.
+
+   Händelsen 10025 ska se ut som i det här exemplet:
+   
+   ```text
+   The reset password for the specified user would normally have been rejected because it did not comply with the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted. Please see the correlated event log message for more details.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+   Händelsen 30007 ska se ut som i det här exemplet:
+
+   ```text
+   The reset password for the specified user would normally have been rejected because it matches at least one of the tokens present in the per-tenant banned password list of the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted.
+ 
+   UserName: ContosoUser
+   FullName: 
+   ```
+
+1. Fortsätt att testa olika lösen ord och kontrol lera resultaten i logg boken med hjälp av de procedurer som beskrivs i föregående steg. Om du behöver ändra principen i Azure Portal ska du inte glömma att synkronisera den nya principen till DC-agenten enligt beskrivningen ovan.
+
+Vi har beskrivna procedurer som gör det möjligt att göra kontrollerade tester av lösen ords verifierings beteendet i Azure AD Password Protection. Att återställa lösen ord från kommando raden direkt på en domänkontrollant kan verka ett udda sätt att göra sådana tester, men enligt beskrivningen tidigare är det utformat för att producera upprepnings bara resultat. När du testar olika lösen ord bör du behålla [algoritmen för lösen ords utvärdering](concept-password-ban-bad.md#how-are-passwords-evaluated) i åtanke eftersom det kan hjälpa till att förklara resultat som du inte förväntar dig.
+
+> [!WARNING]
+> Glöm inte att ta bort några användar konton som har skapats för test ändamål när all testning har slutförts.
 
 ## <a name="additional-content"></a>Ytterligare innehåll
 

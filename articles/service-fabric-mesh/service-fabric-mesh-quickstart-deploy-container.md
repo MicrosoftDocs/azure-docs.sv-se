@@ -5,14 +5,19 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f34034394d2492dba64214c612a239b92f4b9c46
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499891"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625726"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Snabbstart: Distribuera Hello World till Service Fabric Mesh
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 [Service Fabric Mesh](service-fabric-mesh-overview.md) gör det enkelt att skapa och hantera mikrotjänstprogram i Azure utan att behöva etablera virtuella datorer. I den här snabbstarten skapar du ett Hello World-program i Azure och gör det tillgängligt på Internet. Den här åtgärden utförs med ett enda kommando. Inom ett par minuter visas den här vyn i webbläsaren:
 

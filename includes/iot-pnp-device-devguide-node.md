@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: c5846c42fe55dab7328e89a6d7bc5987b0937416
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: dea63ba4939579f3f227d2eac05eb124ada1e4ec
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511518"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616406"
 ---
 ## <a name="model-id-announcement"></a>Meddelande om modell-ID
 
@@ -24,6 +24,9 @@ await client.open();
 
 > [!TIP]
 > För moduler och IoT Edge använder du `ModuleClient` i stället för `Client` .
+
+> [!TIP]
+> Det här är den enda tid som en enhet kan ställa in modell-ID: t kan inte uppdateras efter att enheten har anslutits.
 
 ## <a name="dps-payload"></a>DPS-nyttolast
 

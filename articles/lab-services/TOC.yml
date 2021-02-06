@@ -36,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: Använda labbtjänster för hackathon
           href: hackathon-labs.md
-        - name: labb – klasstyper
+        - name: Labb klass typer
           items:
             - name: Översikt över klasstyper
               href: class-types.md
@@ -46,9 +46,11 @@
               href: class-type-shell-scripting-linux.md
             - name: Etisk hackning
               href: class-type-ethical-hacking.md
+            - name: Nätverk med GNS3
+              href: class-type-networking-gns3.md
             - name: Databashantering
               href: class-type-database-management.md
-            - name: Hantering och utveckling av Azure SQL Database
+            - name: Hantering och utveckling av SQL-databaser
               href: class-type-sql-server.md
             - name: Python och Jupyter Notebook
               href: class-type-jupyter-notebook.md
@@ -58,8 +60,8 @@
               href: class-type-matlab.md
             - name: SolidWorks datorstödda design (CAD)
               href: class-type-solidworks.md
-            - name: Nätverk med GNS3
-              href: class-type-networking-gns3.md
+            - name: ArcGIS
+              href: class-type-arcgis.md
             - name: Visa vägen som projektledare
               href: class-type-pltw.md
         - name: Använda Azure Lab Services i Teams

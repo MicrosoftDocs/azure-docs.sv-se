@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 526ef0af08833954aef4136716930cec0df40eea
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133522"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625255"
 ---
 # <a name="how-azure-netapp-files-snapshots-work"></a>Så här fungerar Azure NetApp Files-ögonblicksbilder
 
@@ -49,26 +49,26 @@ Samtidigt förblir data blocken som pekas från en ögonblicks bild till stabila
 
 Eftersom en ögonblicks bild av en volym endast registrerar block ändringarna sedan den senaste ögonblicks bilden, ger den följande viktiga fördelar:
 
-* Ögonblicks bilder är ***lagrings effektiv** _.   
-    Ögonblicks bilder förbrukar minimalt lagrings utrymme eftersom det inte kopierar data blocken för hela volymen. Två ögonblicks bilder som tas i följd skiljer sig bara från block som lagts till eller ändrats under tidsintervallet mellan de två. Det här block-incrementa beteendet begränsar den associerade lagrings kapacitets användningen. Många alternativa ögonblicks bilds implementeringar förbrukar lagrings volymer som motsvarar det aktiva fil systemet, vilket ger krav på lagrings kapacitet. Beroende på programmets dagliga _block nivå * ändrings takt förbrukar Azure NetApp Files ögonblicks bilder mer eller mindre kapacitet, men endast på ändrade data. Genomsnittlig förbrukning av en daglig ögonblicks bild sträcker sig från endast 1-5% av använt volym kapacitet för många program volymer, eller upp till 20-30% för volymer som SAP HANA databas volymer. Se till att [övervaka din volym och ögonblicks bilds användning](azure-netapp-files-metrics.md#volumes) för kapacitets förbrukning i bild i förhållande till antalet skapade och underhållna ögonblicks bilder.   
+* Ögonblicks bilder är ***lagrings effektiva***.   
+    Ögonblicks bilder förbrukar minimalt lagrings utrymme eftersom det inte kopierar data blocken för hela volymen. Två ögonblicks bilder som tas i följd skiljer sig bara från block som lagts till eller ändrats under tidsintervallet mellan de två. Det här block-incrementa beteendet begränsar den associerade lagrings kapacitets användningen. Många alternativa ögonblicks bilds implementeringar förbrukar lagrings volymer som motsvarar det aktiva fil systemet, vilket ger krav på lagrings kapacitet. Beroende på programmets dagliga ändrings takt på *Block nivå* , förbrukar Azure NetApp Files ögonblicks bilder mer eller mindre kapacitet, men endast för ändrade data. Genomsnittlig förbrukning av en daglig ögonblicks bild sträcker sig från endast 1-5% av använt volym kapacitet för många program volymer, eller upp till 20-30% för volymer som SAP HANA databas volymer. Se till att [övervaka din volym och ögonblicks bilds användning](azure-netapp-files-metrics.md#volumes) för kapacitets förbrukning i bild i förhållande till antalet skapade och underhållna ögonblicks bilder.   
 
-* Ögonblicks bilder är ***snabb för att skapa, replikera, återställa eller klona** _.   
+* Ögonblicks bilder kan ***snabbt skapas, replikeras, återställas eller klonas***.   
     Det tar bara några sekunder att skapa, replikera, återställa eller klona en ögonblicks bild, oavsett volym storlek och aktivitets nivå. Du kan skapa en ögonblicks bild [av volymen på begäran](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume). Du kan också använda [ögonblicks bilds principer](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) för att ange när Azure NetApp Files ska skapa en ögonblicks bild automatiskt och hur många ögonblicks bilder som ska behållas för en volym.  Program konsekvens kan uppnås genom att dirigera ögonblicks bilder med program lagret, till exempel med hjälp av [AzAcSnap-verktyget](azacsnap-introduction.md) för SAP HANA.
 
-_ Ögonblicks bilder har ingen påverkan på volymen ***prestanda** _.   
+* Ögonblicks bilder påverkar inte volymens ***prestanda***.   
     På grund av den här typen av teknik för att dirigera om den här tekniken, sparar eller behåller Azure NetApp Files ögonblicks bilder ingen prestanda påverkan, även med tung data aktivitet. Att ta bort en ögonblicks bild har också liten prestanda påverkan i de flesta fall. 
 
-_ Ögonblicks bilder ger ***skalbar** _ eftersom de kan skapas ofta och många kan behållas.   
+* Ögonblicks bilder ger ***skalbarhet*** eftersom de kan skapas ofta och många kan behållas.   
     Azure NetApp Files volymer har stöd för upp till 255 ögonblicks bilder. Möjligheten att lagra ett stort antal låg frekventa ögonblicks bilder ökar ofta sannolikheten för att den önskade versionen av data kan återställas.
 
-_ Ögonblicks bilder ger ***användar synlighet** _ och _*_fil återställnings möjlighet_*_.   
+* Ögonblicks bilder ger ***användar synlighet** _ och _ *_fil återställnings möjlighet_* *.   
 Hög prestanda, skalbarhet och stabilitet för Azure NetApp Files ögonblicks bild teknik innebär att den ger en idealisk onlinesäkerhetskopiering för användar driven återställning. Ögonblicks bilder kan göras tillgängliga för fil-, katalog-eller volym återställnings syfte. Med ytterligare lösningar kan du kopiera säkerhets kopior till offline-lagring eller [Replikera över flera regioner](cross-region-replication-introduction.md) för kvarhållning eller katastrof återställning.
 
 ## <a name="ways-to-create-snapshots"></a>Sätt att skapa ögonblicks bilder   
 
 Du kan använda flera metoder för att skapa och underhålla ögonblicks bilder:
 
-_ Manuellt (på begäran), med hjälp av:   
+* Manuellt (på begäran) genom att använda:   
     * Verktygen [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), [REST API](/rest/api/netapp/snapshots), [Azure CLI](/cli/azure/netappfiles/snapshot)eller [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot)
     * Skript (se [exempel](azure-netapp-files-solution-architectures.md#sap-tech-community-and-blog-posts))
 
@@ -161,7 +161,7 @@ Se [ta bort ögonblicks bilder](azure-netapp-files-manage-snapshots.md#delete-sn
 * [Felsöka policyer för ögonblicksbilder](troubleshoot-snapshot-policies.md)
 * [Resursbegränsningar för Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files ögonblicks bilder 101 video](https://www.youtube.com/watch?v=uxbTXhtXCkw)
-* [NetApp Snapshot – NetApp video bibliotek](https://tv.netapp.com/detail/video/2579133646001/snapshot)
+* [Översikt över Azure NetApp Files ögonblicks bild](https://anfcommunity.com/2021/01/31/azure-netapp-files-snapshot-overview/)
 
 
 

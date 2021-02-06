@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797301"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624778"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure dataSynapses-arbetsyta
 
@@ -101,7 +101,7 @@ Använd [distributions tillägget Synapse-arbetsyta](https://marketplace.visuals
 
      ![Installera tillägget](media/install-extension.png)
 
-1. Kontrol lera att Azure DevOps pipeline: s tjänst princip har beviljats behörigheten för prenumerationen och även tilldelats som arbets ytans administratör för mål arbets ytan. 
+1. Se till att Azure DevOps pipeline: s tjänst huvud namn har beviljats behörigheten för prenumerationen och även tilldelats som arbets ytans administratör för mål arbets ytan. 
 
 1. Skapa en ny uppgift. Sök efter **distributionen av Synapse-arbetsytan** och välj sedan **Lägg till**.
 
@@ -139,8 +139,8 @@ Om du använder git-integrering med din Synapse-arbetsyta och har en CI/CD-pipel
 
 ### <a name="use-the-synapse-workspace-deployment-task"></a>Använda distributions uppgiften Synapse-arbetsyta
 
-I Synapse är alla typer av artefakter inte ARM-resurser, som skiljer sig från ADF. Du kan inte använda distributions uppgift för ARM-mallar för att distribuera Synapse-artefakter
+I Synapse finns det ett antal artefakter som inte är ARM-resurser. Detta skiljer sig från Azure Data Factory. Distributions uppgiften för ARM-mallen fungerar inte korrekt för att distribuera Synapse-artefakter
  
 ### <a name="unexpected-token-error-in-release"></a>Oväntat token-fel i version
 
-När parameter filen har parameter värden som inte är undantagna, kunde inte versions pipelinen parsa filen med felet för en oväntad token. Vi rekommenderar att du åsidosätter parametrar eller nyckel valv för att hämta parametrar. Du kan också dubbla Escape som en lösning.
+När parameter filen har parameter värden som inte är undantagna, kan inte versions pipelinen parsa filen och generera felet "oväntad token". Vi föreslår att du åsidosätter parametrar eller använder Azure-nyckel valvet för att hämta parameter värden. Du kan också använda dubbla escape-tecken som en lösning.

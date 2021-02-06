@@ -1,14 +1,14 @@
 ---
 title: Distribuera exempel på arbets belastnings skiss för ISO 27001 ASE/SQL
 description: Distribuera steg i exemplet ISO 27001 App Service-miljön/SQL Database arbets belastnings skiss, inklusive information om skiss artefakt parameter.
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 2b05015c05799625bf720096e70551eae7ff4d01
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 60867c117c9f1fda6f8ba33333c19a7bd764d219
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420401"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627490"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Distribuera exempel på arbets belastnings skiss för ISO 27001 App Service-miljön/SQL Database
 
@@ -41,8 +41,8 @@ Börja först med att implementera skissexemplet genom att skapa en ny skiss i d
 
 1. Ange _Grundinställningar_ för skissexemplet:
 
-   - **Skiss namn** : Ange ett namn för din kopia av skiss exemplet för arbets belastningen ISO 27001 ASE/SQL.
-   - **Definitions plats** : Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
+   - **Skiss namn**: Ange ett namn för din kopia av skiss exemplet för arbets belastningen ISO 27001 ASE/SQL.
+   - **Definitions plats**: Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
 
 1. Välj fliken _Artefakter_ överst på sidan eller **Nästa: Artefakter** längst ned på sidan.
 
@@ -72,11 +72,11 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 
    - Grundläggande inställningar
 
-     - **Prenumerationer** : Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
-     - **Tilldelnings namn** : namnet fylls i automatiskt för dig baserat på namnet på skissen.
+     - **Prenumerationer**: Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
+     - **Tilldelnings namn**: namnet fylls i automatiskt för dig baserat på namnet på skissen.
        Ändra vid behov eller lämna det som det är.
-     - **Plats** : Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Ritnings definitions version** : Välj en **publicerad** version av din kopia av skiss exemplet.
+     - **Plats**: Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Ritnings definitions version**: Välj en **publicerad** version av din kopia av skiss exemplet.
 
    - Lås tilldelning
 
@@ -90,11 +90,11 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 
      De parametrar som definieras i avsnittet används av många av artefakterna i skissdefinitionen för att ge konsekvens.
 
-     - **Organisations namn** : Ange ett kort namn för din organisation. Den här egenskapen används främst för att namnge resurser.
-     - **Prenumerations-ID för delad tjänst** : PRENUMERATIONS-ID där ISO 27001-skiss exemplet för [delade tjänster](../iso27001-shared/index.md) har tilldelats.
-     - Adressprefix för **standard under nätet** : CIDR-notering för det virtuella nätverkets standard under nät.
+     - **Organisations namn**: Ange ett kort namn för din organisation. Den här egenskapen används främst för att namnge resurser.
+     - **Prenumerations-ID för delad tjänst**: PRENUMERATIONS-ID där ISO 27001-skiss exemplet för [delade tjänster](../iso27001-shared/index.md) har tilldelats.
+     - Adressprefix för **standard under nätet**: CIDR-notering för det virtuella nätverkets standard under nät.
        Standardvärdet är _10.1.0.0/16_.
-     - **Arbets belastnings plats** : avgör vilken plats artefakterna distribueras till. Alla tjänster är inte tillgängliga på alla platser. Artefakter som distribuerar sådana tjänster tillhandahåller ett parameter alternativ för platsen som artefakten ska distribueras till.
+     - **Arbets belastnings plats**: avgör vilken plats artefakterna distribueras till. Alla tjänster är inte tillgängliga på alla platser. Artefakter som distribuerar sådana tjänster tillhandahåller ett parameter alternativ för platsen som artefakten ska distribueras till.
 
    - Artefaktparametrar
 
@@ -113,9 +113,9 @@ I följande tabell visas en lista med skissartefaktens parametrar:
 |-|-|-|-|
 |Log Analytics resurs grupp|Resursgrupp|Name|**Locked** -sammanfogar **organisations namnet** med `-workload-log-rg` för att göra resurs gruppen unik.|
 |Log Analytics resurs grupp|Resursgrupp|Plats|**Locked** – använder skiss parametern.|
-|Log Analytics mall|Resource Manager-mall|Tjänstnivå|Anger nivån för Log Analytics arbets ytan. Standardvärdet är _PerNode_.|
+|Log Analytics mall|Resource Manager-mall|Tjänstenivå|Anger nivån för Log Analytics arbets ytan. Standardvärdet är _PerNode_.|
 |Log Analytics mall|Resource Manager-mall|Kvarhållning av logg i dagar|Data kvarhållning i dagar. Standardvärdet är _365_.|
-|Log Analytics mall|Resource Manager-mall|Plats|Region som används för att skapa Log Analytics-arbetsytan. Standardvärdet är _USA, västra 2_.|
+|Log Analytics mall|Resource Manager-mall|Location|Region som används för att skapa Log Analytics-arbetsytan. Standardvärdet är _USA, västra 2_.|
 |Nätverks resurs grupp|Resursgrupp|Name|**Locked** -sammanfogar **organisations namnet** med `-workload-net-rg` för att göra resurs gruppen unik.|
 |Nätverks resurs grupp|Resursgrupp|Plats|**Locked** – använder skiss parametern.|
 |Mall för nätverks säkerhets grupp|Resource Manager-mall|Kvarhållning av logg i dagar|Data kvarhållning i dagar. Standardvärdet är _365_.|

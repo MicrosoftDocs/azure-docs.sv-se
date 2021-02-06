@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef8b40be366afe24b960f7419d84cc2a9976b592
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842707"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625709"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Introduktion till nätverk i Service Fabric nätprogram
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 I den här artikeln beskrivs olika typer av belastningsutjämnare, hur gatewayer ansluter nätverket till dina program till andra nätverk och hur trafik dirigeras mellan tjänsterna i dina program.
 
 ## <a name="layer-4-vs-layer-7-load-balancers"></a>Layer 4 vs Layer 7 Load Balancer

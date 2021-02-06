@@ -6,14 +6,19 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 15e0c3bcbc19eae344ca3965b2b866ca9a15f28d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 665988f37d0afdb91bb074d8653cc3c24155966e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91840327"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627019"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Snabbstart: Skapa och distribuera en webbapp till Azure Service Fabric Mesh
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Azure Service Fabric Mesh är en fullständigt hanterad tjänst som gör att utvecklare kan distribuera mikrotjänstprogram utan att hantera virtuella datorer, lagring eller nätverk.
 
@@ -67,11 +72,11 @@ Dialogrutan **Publicera Service Fabric-program** visas.
 
 Välj Azure-konto och Azure-prenumeration. Välj en **plats**. Den här artikeln använder **USA, östra**.
 
-Under **resurs grupp**väljer du **\<Create New Resource Group...>** . Dialogrutan **Skapa resursgrupp** visas. Ange **Resursgruppsnamn** och **Plats**.  Den här snabbstarten använder platsen **USA, östra** och namnger gruppen **sfmeshTutorial1RG** (Välj ett unikt resursgruppnamn om organisationen har flera personer med samma prenumeration).  Klicka på **Skapa** för att skapa resursgruppen och återgå till publiceringsdialogrutan.
+Under **resurs grupp** väljer du **\<Create New Resource Group...>** . Dialogrutan **Skapa resursgrupp** visas. Ange **Resursgruppsnamn** och **Plats**.  Den här snabbstarten använder platsen **USA, östra** och namnger gruppen **sfmeshTutorial1RG** (Välj ett unikt resursgruppnamn om organisationen har flera personer med samma prenumeration).  Klicka på **Skapa** för att skapa resursgruppen och återgå till publiceringsdialogrutan.
 
 ![Skärm bild som visar hur du skapar en ny resurs grupp.](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-Gå tillbaka till dialog rutan **publicera Service Fabric program** under **Azure Container Registry**och välj **\<Create New Container Registry...>** . I dialogrutan **Create Container Registry** (Skapa containerregister) använder du ett unikt namn för **Container registry name** (Containerregisternamn). Ange en **plats** (i den här snabbstarten används **USA, östra**). Välj den **resursgrupp** som du skapade i föregående steg i listrutan, exempelvis **sfmeshTutorial1RG**. Välj **Basic** för **SKU** och klicka sedan på **Skapa** för att återgå till publiceringsdialogrutan.
+Gå tillbaka till dialog rutan **publicera Service Fabric program** under **Azure Container Registry** och välj **\<Create New Container Registry...>** . I dialogrutan **Create Container Registry** (Skapa containerregister) använder du ett unikt namn för **Container registry name** (Containerregisternamn). Ange en **plats** (i den här snabbstarten används **USA, östra**). Välj den **resursgrupp** som du skapade i föregående steg i listrutan, exempelvis **sfmeshTutorial1RG**. Välj **Basic** för **SKU** och klicka sedan på **Skapa** för att återgå till publiceringsdialogrutan.
 
 ![Visual Studio, dialogruta för ny Service Fabric Mesh-resursgrupp](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

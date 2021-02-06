@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4982acb54207a9ed08a96414877603a8253c2ade
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 22ac3b9ac5f7a10226e8dc7197fdf60dc0a84e3b
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557759"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627624"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -535,6 +535,7 @@ Kan skapa och hantera alla aspekter av registrerings-och företags program.
 > | Microsoft. Directory/policys/applicationConfiguration/Owners/Read | Läs policies. applicationConfiguration-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/policys/applicationConfiguration/Owners/Update | Uppdatera policys. applicationConfiguration-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/policys/applicationConfiguration/policyAppliedTo/Read | Läs policies. applicationConfiguration-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Update | Uppdatera service princip ALS. appRoleAssignedTo-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/Service princip ALS/appRoleAssignments/Update | Uppdatera service princip ALS. appRoleAssignments-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/Service princip ALS/målgrupp/uppdatera | Uppdatera service princip ALS. Audience-egenskapen i Azure Active Directory. |
@@ -697,6 +698,7 @@ Kan skapa och hantera alla aspekter av app-registreringar och företags program 
 > | Microsoft. Directory/policys/applicationConfiguration/Owners/Read | Läs policies. applicationConfiguration-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/policys/applicationConfiguration/Owners/Update | Uppdatera policys. applicationConfiguration-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/policys/applicationConfiguration/policyAppliedTo/Read | Läs policies. applicationConfiguration-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Update | Uppdatera service princip ALS. appRoleAssignedTo-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/Service princip ALS/appRoleAssignments/Update | Uppdatera service princip ALS. appRoleAssignments-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/Service princip ALS/målgrupp/uppdatera | Uppdatera service princip ALS. Audience-egenskapen i Azure Active Directory. |
@@ -766,6 +768,7 @@ Kan hantera alla aspekter av Azure AD och Microsoft-tjänster som använder Azur
 > | Microsoft. Directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort oAuth2PermissionGrants och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 > | Microsoft. Directory/Organization/allProperties/allTasks | Skapa och ta bort organisation och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 > | Microsoft. Directory/policys/allProperties/allTasks | Skapa och ta bort principer och läsa och uppdatera alla egenskaper i Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Directory/roleAssignments/allProperties/allTasks | Skapa och ta bort roleAssignments och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 > | Microsoft. Directory/roleDefinitions/allProperties/allTasks | Skapa och ta bort roleDefinitions och läsa och uppdatera alla egenskaper i Azure Active Directory. |
 > | Microsoft. Directory/scopedRoleMemberships/allProperties/allTasks | Skapa och ta bort scopedRoleMemberships och läsa och uppdatera alla egenskaper i Azure Active Directory. |
@@ -1143,6 +1146,7 @@ Kan läsa allt som en global administratör kan, men inte redigera något.
 > | Microsoft. Directory/Organization/Basic/Read    | Läsa grundläggande egenskaper för organisation i Azure Active Directory. |
 > | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read    | Läs organisation. trustedCAsForPasswordlessAuth-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/policys/standard/Read    | Läs standard principer i Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Directory/roleAssignments/Basic/Read    | Läsa grundläggande egenskaper för roleAssignments i Azure Active Directory. |
 > | Microsoft. Directory/roleDefinitions/Basic/Read    | Läsa grundläggande egenskaper för roleDefinitions i Azure Active Directory. |
 > | Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Read    | Läsa service princip ALS. appRoleAssignedTo-egenskapen i Azure Active Directory. |
@@ -1683,6 +1687,7 @@ Kan läsa inloggnings-och gransknings rapporter.
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | Microsoft. Directory/auditLogs/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på auditLogs i Azure Active Directory. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Directory/signInReports/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på signInReports i Azure Active Directory. |
 > | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 > | Microsoft. Office365. usageReports/upplånade/upplånade/lästa | Läs Office 365-användnings rapporter. |
@@ -1743,6 +1748,7 @@ Kan läsa säkerhets information och rapporter och hantera konfigurationen i Azu
 > | Microsoft. Directory/principer/ägare/uppdatering | Uppdatera policys. Owners-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/policys/tenantDefault/Update | Uppdatera policys. tenantDefault-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/privilegedIdentityManagement/allProperties/Read | Läs alla resurser i Microsoft. AAD. privilegedIdentityManagement. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Directory/Service princip ALS/policies/Update | Uppdatera service princip ALS. policys-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/signInReports/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på signInReports i Azure Active Directory. |
 > | Microsoft. Office365. protectionCenter/upplånade/upplånade/lästa | Läs alla aspekter av Office 365 Protection Center. |
@@ -1792,6 +1798,7 @@ Kan läsa säkerhets information och rapporter i Azure AD och Microsoft 365.
 > | Microsoft. Directory/signInReports/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på signInReports i Azure Active Directory. |
 > | Microsoft. AAD. identityProtection/upplånare/Läs | Läs alla resurser i Microsoft. AAD. identityProtection. |
 > | Microsoft. AAD. privilegedIdentityManagement/upplånare/Läs | Läs alla resurser i Microsoft. AAD. privilegedIdentityManagement. |
+> | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
 > | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 > | Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 > | Microsoft. Office365. protectionCenter/upplånade/upplånade/lästa | Läs alla aspekter av Office 365 Protection Center. |

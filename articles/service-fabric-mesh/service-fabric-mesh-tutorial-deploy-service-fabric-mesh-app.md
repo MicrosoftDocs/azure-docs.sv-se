@@ -5,15 +5,20 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
-ms.custom: mvc, devcenter , devx-track-azurecli
-ms.openlocfilehash: 51e5fd29d16c3f927dc9b89d9c7145a16f4fd49f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devcenter
+ms.openlocfilehash: be1e477bf3f11d487b8a6705535c09ff6e2b9c3e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748248"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626740"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Självstudie: Distribuera ett Service Fabric Mesh-program
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här självstudien är del tre i en serie. Här får du se hur du publicerar ett Azure Service Fabric Mesh-webbprogram direkt från Visual Studio.
 
@@ -59,13 +64,13 @@ Därefter visas dialogrutan **Publish Service Fabric Application** (Publicera Se
 
 ![Visual Studio, dialogruta för Service Fabric Mesh-projekt](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Välj Azure-konto och Azure-prenumeration. Välj en **plats** . Den här artikeln använder **USA, östra** .
+Välj Azure-konto och Azure-prenumeration. Välj en **plats**. Den här artikeln använder **USA, östra**.
 
 Under **resurs grupp** väljer du **\<Create New Resource Group...>** . En dialogruta visas där du skapar en ny resursgrupp. Den här artikeln använder platsen **USA, östra** och namnger gruppen **sfmeshTutorial1RG** (Välj ett unikt gruppnamn om organisationen har flera personer med samma prenumeration).  Tryck på **Create** (Skapa) för att skapa resursgruppen och återgå till publiceringsdialogrutan.
 
 ![Visual Studio, dialogruta för ny Service Fabric Mesh-resursgrupp](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-Gå tillbaka till dialog rutan **publicera Service Fabric program** under **Azure Container Registry** och välj **\<Create New Container Registry...>** . I dialogrutan **Create Container Registry** (Skapa containerregister) använder du ett unikt namn för **Container registry name** (Containerregisternamn). Ange en **plats** (den här självstudien använder **USA, östra** ). Välj den **resursgrupp** som du skapade i föregående steg i listrutan, exempelvis **sfmeshTutorial1RG** . Ställ in **SKU** på **Basic** och tryck på **Skapa** för att skapa det privata Azure-containerregistret och återvänd till publiceringsdialogrutan.
+Gå tillbaka till dialog rutan **publicera Service Fabric program** under **Azure Container Registry** och välj **\<Create New Container Registry...>** . I dialogrutan **Create Container Registry** (Skapa containerregister) använder du ett unikt namn för **Container registry name** (Containerregisternamn). Ange en **plats** (den här självstudien använder **USA, östra**). Välj den **resursgrupp** som du skapade i föregående steg i listrutan, exempelvis **sfmeshTutorial1RG**. Ställ in **SKU** på **Basic** och tryck på **Skapa** för att skapa det privata Azure-containerregistret och återvänd till publiceringsdialogrutan.
 
 ![Visual Studio, dialogruta för nytt Service Fabric Mesh-containerregister](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

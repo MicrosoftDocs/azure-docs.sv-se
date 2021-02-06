@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98a16e0a60ddf149e8f0e1a092051f3e98ea8225
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002584"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627070"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Felsöka problem med distribution av virtuella Windows-datorer i Azure
 
@@ -104,7 +104,7 @@ Du kan kontrol lera tillgängligheten från [tabellen produkter som är tillgän
 
 Du kan använda Windows 7, Windows 8 eller Windows 10 i Azure för utveckling/testning-scenarier förutsatt att du har en lämplig Visual Studio-prenumeration (tidigare MSDN). 
 
-- Windows 10-avbildningar är tillgängliga från Azure-galleriet inom [berättigade erbjudanden om utveckling/testning](../windows/client-images.md#eligible-offers). 
+- Windows 10-avbildningar är tillgängliga från Azure-galleriet inom [berättigade erbjudanden om utveckling/testning](../windows/client-images.md). 
 - Visual Studio-prenumeranter inom vilken typ av erbjudande som helst kan också [förbereda och skapa](../windows/prepare-for-upload-vhd-image.md) en 64-bitars Windows 7-, Windows 8-eller Windows 10-avbildning och sedan [Ladda upp till Azure](../windows/upload-generalized-managed.md). Användningen är begränsad till utveckling/testning av aktiva Visual Studio-prenumeranter.
 
 Den här [artikeln](../windows/client-images.md) beskriver behörighets kraven för att köra Windows-klienten i Azure och använda Azure Gallery-avbildningar.

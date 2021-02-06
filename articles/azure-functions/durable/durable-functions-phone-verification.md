@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar mänsklig interaktion och tids gränser i 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: dd7f8416b2f4520ec8e94c8608f753f7412afc4d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028311"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627380"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Mänsklig interaktion i Durable Functions-telefon verifierings exempel
 
@@ -37,6 +37,9 @@ Den här artikeln vägleder dig genom följande funktioner i exempel appen:
 
 * `E4_SmsPhoneVerification`: En [Orchestrator-funktion](durable-functions-bindings.md#orchestration-trigger) som utför telefon verifierings processen, inklusive hantering av tids gränser och återförsök.
 * `E4_SendSmsChallenge`: En [aktivitets funktion](durable-functions-bindings.md#activity-trigger) som skickar en kod via SMS.
+
+> [!NOTE]
+> `HttpStart`Funktionen i [exempel appen och snabb](#prerequisites) starten fungerar som Orchestration- [klient](durable-functions-bindings.md#orchestration-client) som utlöser Orchestrator-funktionen.
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification Orchestrator-funktion
 

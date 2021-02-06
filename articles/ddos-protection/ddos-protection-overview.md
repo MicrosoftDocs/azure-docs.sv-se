@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 71eada0dcd7f7684e6c6be935bcb44405eb95322
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223354"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626214"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Översikt över Azure DDoS Protection Standard
 
@@ -51,6 +51,10 @@ DDoS skydds planer har en fast månads avgift på $2 944 per månad som omfattar
 Under en klient kan en enda DDoS skydds plan användas över flera prenumerationer, så det finns inget behov av att skapa mer än en DDoS-skydds plan.
 
 Mer information om Azure DDoS Protection standard priser finns i [Azure DDoS Protection standard prissättning](https://azure.microsoft.com/pricing/details/ddos-protection/).
+
+## <a name="reference-architectures"></a>Referensarkitekturer
+
+DDoS Protection standard är utformad för [tjänster som distribueras i ett virtuellt nätverk](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services). För andra tjänster gäller standard tjänsten för DDoS Protection Basic. Mer information om arkitekturer som stöds finns i [DDoS Protection referens arkitekturer](https://docs.microsoft.com/azure/ddos-protection/ddos-protection-reference-architectures). 
 
 ## <a name="next-steps"></a>Nästa steg
 

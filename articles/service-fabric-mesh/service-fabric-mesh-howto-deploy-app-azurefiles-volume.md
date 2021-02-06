@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
-ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 40d10568e13ad455bc5178821da80e89f4132e93
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007400"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625845"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Montera en Azure Files baserad volym i ett Service Fabric nätprogram 
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här artikeln beskriver hur du monterar en Azure Files-baserad volym i en tjänst av ett Service Fabric nätprogram.  Azure Files volym driv rutinen är en Docker-volym driv rutin som används för att montera en Azure Files resurs till en behållare som du använder för att spara tjänstens tillstånd. -Volymer ger dig generell fil lagring och gör att du kan läsa och skriva filer med hjälp av normal disk-I/O-fil-API: er.  Läs mer om volymer och alternativ för att lagra program data i [lagra tillstånd](service-fabric-mesh-storing-state.md).
 

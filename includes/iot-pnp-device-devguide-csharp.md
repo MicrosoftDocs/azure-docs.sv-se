@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: 46cb129d18e082f836a688b95111c10c8e191b01
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f731e07de4936bc8de396c4f9bcd3a52913cb502
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511535"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616589"
 ---
 ## <a name="model-id-announcement"></a>Meddelande om modell-ID
 
@@ -26,6 +26,9 @@ Den nya `ClientOptions` överlagringen är tillgänglig i alla `DeviceClient` me
 
 > [!TIP]
 > För moduler och IoT Edge använder du `ModuleClient` i stället för `DeviceClient` .
+
+> [!TIP]
+> Det här är den enda tid som en enhet kan ställa in modell-ID: t kan inte uppdateras efter att enheten har anslutits.
 
 ## <a name="dps-payload"></a>DPS-nyttolast
 

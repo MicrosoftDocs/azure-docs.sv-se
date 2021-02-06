@@ -7,25 +7,25 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 37f1c9f59b6ffb45e1b874d2a6969bf263d2d5eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341373"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627356"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Resursmodell för Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB är en fullständigt hanterad PaaS-tjänst (Platform-as-a-Service). Om du vill börja använda Azure Cosmos DB bör du först skapa ett Azure Cosmos-konto i din Azure-prenumeration och databaser, behållare, objekt under det. I den här artikeln beskrivs Azure Cosmos DB resurs modell och olika entiteter i resurs modellens hierarki.
 
-Azure Cosmos-kontot är den grundläggande enheten för global distribution och hög tillgänglighet. Ditt Azure Cosmos-konto innehåller ett unikt DNS-namn och du kan hantera ett konto med hjälp av Azure Portal, Azure CLI eller med olika språkspecifika SDK: er. Mer information finns i [Hantera ditt Azure Cosmos-konto](how-to-manage-database-account.md). För att globalt distribuera dina data och data flödet i flera Azure-regioner kan du när som helst lägga till och ta bort Azure-regioner i ditt konto. Du kan konfigurera ditt konto så att det antingen har en enda region eller flera Skriv regioner. Mer information finns i [så här lägger du till och tar bort Azure-regioner i ditt konto](how-to-manage-database-account.md). Du kan konfigurera [standard konsekvens](consistency-levels.md) nivån för ett konto.
+Azure Cosmos-kontot är den grundläggande enheten för global distribution och hög tillgänglighet. Ditt Azure Cosmos-konto innehåller ett unikt DNS-namn och du kan hantera ett konto med hjälp av Azure Portal eller Azure CLI, eller genom att använda olika språkspecifika SDK: er. Mer information finns i [Hantera ditt Azure Cosmos-konto](how-to-manage-database-account.md). För att globalt distribuera dina data och data flödet i flera Azure-regioner kan du när som helst lägga till och ta bort Azure-regioner i ditt konto. Du kan konfigurera ditt konto så att det antingen har en enda region eller flera Skriv regioner. Mer information finns i [så här lägger du till och tar bort Azure-regioner i ditt konto](how-to-manage-database-account.md). Du kan konfigurera [standard konsekvens](consistency-levels.md) nivån för ett konto.
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Element i ett Azure Cosmos-konto
 
-Azure Cosmos-behållaren är den grundläggande enheten för skalbarhet. Du kan i princip ha ett obegränsat, allokerat data flöde (RU/s) och lagrings utrymme i en behållare. Azure Cosmos DB transparent partitionering av din behållare med hjälp av den logiska partitionsnyckel som du anger för att elastiskt skala ditt etablerade data flöde och lagrings utrymme elastiskt.
+En Azure Cosmos-behållare är den grundläggande enheten för skalbarhet. Du kan i princip ha ett obegränsat, allokerat data flöde (RU/s) och lagrings utrymme i en behållare. Azure Cosmos DB transparent partitionering av din behållare med hjälp av den logiska partitionsnyckel som du anger för att elastiskt skala ditt etablerade data flöde och lagrings utrymme elastiskt.
 
-För närvarande kan du skapa högst 50 Azure Cosmos-konton under en Azure-prenumeration (detta är en mjuk gräns som kan ökas via support förfrågan). Ett enda Azure Cosmos-konto kan i princip hantera obegränsad mängd data och etablerade data flöden. Om du vill hantera dina data och ett allokerat data flöde kan du skapa en eller flera Azure Cosmos-databaser under ditt konto och inom den databasen, kan du skapa en eller flera behållare. Följande bild visar hierarkin för element i ett Azure Cosmos-konto:
+För närvarande kan du skapa högst 50 Azure Cosmos-konton under en Azure-prenumeration (detta är en mjuk gräns som kan ökas via support förfrågan). Ett enda Azure Cosmos-konto kan i princip hantera en obegränsad mängd data och ett allokerat data flöde. Om du vill hantera dina data och ett allokerat data flöde kan du skapa en eller flera Azure Cosmos-databaser under ditt konto och inom den databasen, kan du skapa en eller flera behållare. Följande bild visar hierarkin för element i ett Azure Cosmos-konto:
 
 :::image type="content" source="./media/account-databases-containers-items/hierarchy.png" alt-text="Hierarki för ett Azure Cosmos-konto" border="false":::
 
@@ -63,9 +63,9 @@ En Azure Cosmos-behållare är enhets skalbarhet både för allokerat data flöd
 
 När du skapar en behållare konfigurerar du data flödet i något av följande lägen:
 
-* **Dedikerat allokerat data flödes läge** : det data flöde som har allokerats på en behållare är exklusivt reserverat för den behållaren och den backas upp av service avtal. Mer information finns i [så här etablerar du data flöde på en behållare](how-to-provision-container-throughput.md).
+* **Dedikerat allokerat data flödes läge**: det data flöde som har allokerats på en behållare är exklusivt reserverat för den behållaren och den backas upp av service avtal. Mer information finns i [så här etablerar du data flöde på en behållare](how-to-provision-container-throughput.md).
 
-* **Delat etablerat data flödes läge** : de här behållarna delar det etablerade data flödet med andra behållare i samma databas (exklusive behållare som har kon figurer ATS med dedikerat etablerat data flöde). Med andra ord delas det etablerade data flödet på databasen över alla "delade data flöde"-behållare. Mer information finns i [så här etablerar du data flöde i en databas](how-to-provision-database-throughput.md).
+* **Delat etablerat data flödes läge**: de här behållarna delar det etablerade data flödet med andra behållare i samma databas (exklusive behållare som har kon figurer ATS med dedikerat etablerat data flöde). Med andra ord delas det etablerade data flödet på databasen över alla "delade data flöde"-behållare. Mer information finns i [så här etablerar du data flöde i en databas](how-to-provision-database-throughput.md).
 
 > [!NOTE]
 > Du kan bara konfigurera delade och dedikerade data flöde när du skapar databasen och behållaren. Om du vill byta från dedikerat dataflödesläge till delat dataflödesläge (och vice versa) efter det att containern har skapats måste du skapa en ny container och migrera data till den nya containern. Du kan migrera data med hjälp av funktionen Azure Cosmos DB ändra feed.
@@ -86,7 +86,7 @@ En behållare är specialiserad i API-specifika entiteter som visas i följande 
 
 | Azure Cosmos-entitet | API för SQL | Cassandra-API | API för Azure Cosmos DB för MongoDB | Gremlin-API | Tabell-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-behållare | Container | Tabell | Samling | Graph | Tabeller |
+|Azure Cosmos-behållare | Container | Tabell | Samling | Graph | Tabell |
 
 > [!NOTE]
 > När du skapar behållare ser du till att du inte skapar två behållare med samma namn men med olika Skift läge. Det beror på att vissa delar av Azure-plattformen inte är Skift läges känsliga, och det kan leda till förvirring/kollisioner för telemetri och åtgärder på behållare med sådana namn.
@@ -97,15 +97,15 @@ En Azure Cosmos-behållare har en uppsättning systemdefinierade egenskaper. Ber
 
 | Systemdefinierad egenskap | Systemgenererad eller användare kan konfigureras | Syfte | API för SQL | Cassandra-API | API för Azure Cosmos DB för MongoDB | Gremlin-API | Tabell-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Systemgenererad | Unikt ID för behållare | Ja | Nej | Nej | Nej | Nej |
-|\_etag | Systemgenererad | Entity-taggen används för optimistisk concurrency-kontroll | Ja | Nej | Nej | Nej | Nej |
-|\_ts | Systemgenererad | Senast uppdaterad tidsstämpel för behållaren | Ja | Nej | Nej | Nej | Nej |
-|\_ständiga | Systemgenererad | Adresser bara URI för behållaren | Ja | Nej | Nej | Nej | Nej |
+|\_rid | Systemgenererad | Unikt ID för behållare | Ja | Inga | Inga | Inga | Inga |
+|\_etag | Systemgenererad | Entity-taggen används för optimistisk concurrency-kontroll | Ja | Inga | Inga | Inga | Inga |
+|\_via | Systemgenererad | Senast uppdaterad tidsstämpel för behållaren | Ja | Inga | Inga | Inga | Inga |
+|\_ständiga | Systemgenererad | Adresser bara URI för behållaren | Ja | Inga | Inga | Inga | Inga |
 |id | Kan konfigureras av användare | Användardefinierat unikt namn på behållaren | Ja | Ja | Ja | Ja | Ja |
-|indexingPolicy | Kan konfigureras av användare | Ger möjlighet att ändra index Sök väg, index typ och index läge | Ja | Nej | Nej | Nej | Ja |
-|TimeToLive | Kan konfigureras av användare | Ger möjlighet att ta bort objekt automatiskt från en behållare efter en angiven tids period. Mer information finns i [Time to Live](time-to-live.md). | Ja | Nej | Nej | Nej | Ja |
-|changeFeedPolicy | Kan konfigureras av användare | Används för att läsa ändringar som gjorts i objekt i en behållare. Mer information finns i [ändra feed](change-feed.md). | Ja | Nej | Nej | Nej | Ja |
-|uniqueKeyPolicy | Kan konfigureras av användare | Används för att säkerställa att ett eller flera värden är unika i en logisk partition. Mer information finns i [unika nyckel begränsningar](unique-keys.md). | Ja | Nej | Nej | Nej | Ja |
+|indexingPolicy | Kan konfigureras av användare | Ger möjlighet att ändra index Sök väg, index typ och index läge | Ja | Inga | Inga | Inga | Ja |
+|TimeToLive | Kan konfigureras av användare | Ger möjlighet att ta bort objekt automatiskt från en behållare efter en angiven tids period. Mer information finns i [Time to Live](time-to-live.md). | Ja | Inga | Inga | Inga | Ja |
+|changeFeedPolicy | Kan konfigureras av användare | Används för att läsa ändringar som gjorts i objekt i en behållare. Mer information finns i [ändra feed](change-feed.md). | Ja | Inga | Inga | Inga | Ja |
+|uniqueKeyPolicy | Kan konfigureras av användare | Används för att säkerställa att ett eller flera värden är unika i en logisk partition. Mer information finns i [unika nyckel begränsningar](unique-keys.md). | Ja | Inga | Inga | Inga | Ja |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Åtgärder på en Azure Cosmos-behållare
 
@@ -133,10 +133,10 @@ Varje Azure Cosmos-objekt har följande systemdefinierade egenskaper. Beroende p
 
 | Systemdefinierad egenskap | Systemgenererad eller användare kan konfigureras| Syfte | API för SQL | Cassandra-API | API för Azure Cosmos DB för MongoDB | Gremlin-API | Tabell-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Systemgenererad | Unikt ID för objektet | Ja | Nej | Nej | Nej | Nej |
-|\_etag | Systemgenererad | Entity-taggen används för optimistisk concurrency-kontroll | Ja | Nej | Nej | Nej | Nej |
-|\_ts | Systemgenererad | Tidsstämpel för den senaste uppdateringen av objektet | Ja | Nej | Nej | Nej | Nej |
-|\_ständiga | Systemgenererad | Adresser bara URI för objektet | Ja | Nej | Nej | Nej | Nej |
+|\_rid | Systemgenererad | Unikt ID för objektet | Ja | Inga | Inga | Inga | Inga |
+|\_etag | Systemgenererad | Entity-taggen används för optimistisk concurrency-kontroll | Ja | Inga | Inga | Inga | Inga |
+|\_via | Systemgenererad | Tidsstämpel för den senaste uppdateringen av objektet | Ja | Inga | Inga | Inga | Inga |
+|\_ständiga | Systemgenererad | Adresser bara URI för objektet | Ja | Inga | Inga | Inga | Inga |
 |id | Vilken som helst | Användardefinierat unikt namn i en logisk partition. | Ja | Ja | Ja | Ja | Ja |
 |Godtyckliga användardefinierade egenskaper | Användardefinierade | Användardefinierade egenskaper som representeras i API – intern representation (inklusive JSON, BSON och CQL) | Ja | Ja | Ja | Ja | Ja |
 
@@ -149,7 +149,7 @@ Azure Cosmos-objekt har stöd för följande åtgärder. Du kan använda någon 
 
 | Åtgärd | Azure CLI | API för SQL | Cassandra-API | API för Azure Cosmos DB för MongoDB | Gremlin-API | Tabell-API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Infoga, ersätta, ta bort, upsert, läsa | Nej | Ja | Ja | Ja | Ja | Ja |
+| Infoga, ersätta, ta bort, upsert, läsa | Inga | Ja | Ja | Ja | Ja | Ja |
 
 ## <a name="next-steps"></a>Nästa steg
 

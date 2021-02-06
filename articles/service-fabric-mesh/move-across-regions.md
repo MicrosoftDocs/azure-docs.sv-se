@@ -6,20 +6,25 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c842a065f108a924c6bffd70d6c2edbbd31b6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260147"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626095"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Flytta ett Service Fabric nät program till en annan Azure-region
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här artikeln beskriver hur du flyttar ditt Service Fabric-nätprogram och dess resurser till en annan Azure-region. Du kan flytta dina resurser till en annan region av olika anledningar. Till exempel, som svar på drifts störningar, för att få funktioner eller tjänster som endast är tillgängliga i vissa regioner, för att uppfylla interna principer och styrnings krav, eller som svar på kapacitets planerings kraven.
 
  [Service Fabric nät har inte stöd](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh) för möjligheten att direkt flytta resurser mellan Azure-regioner. Du kan dock flytta resurser indirekt genom att distribuera en kopia av din aktuella Azure Resource Manager-mall till den nya mål regionen och sedan omdirigera inkommande trafik och beroenden till det nyskapade Service Fabric-Nätprogrammet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ingångs kontroll (till exempel [Application Gateway](../application-gateway/index.yml)) som fungerar som en mellanhand för att dirigera trafik mellan klienter och ditt Service Fabric-nätprogram
 * Service Fabric nät (för hands version) tillgänglighet i Azure-regionen för målet ( `westus` , `eastus` eller `westeurope` )
@@ -44,7 +49,7 @@ Den här artikeln beskriver hur du flyttar ditt Service Fabric-nätprogram och d
 
 1. När distributionen är klar testar du programmets slut punkter för att verifiera programmets funktioner.
 
-2. Du kan också kontrol lera status för programmet genom att kontrol lera program status ([AZ nät app show](/cli/azure/ext/mesh/mesh/app?view=azure-cli-latest#ext-mesh-az-mesh-app-show)) och granska program loggarna och ([AZ-paket-log](/cli/azure/ext/mesh/mesh/code-package-log?view=azure-cli-latest)) kommandon med hjälp av [Azure Service Fabric nät masken](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
+2. Du kan också kontrol lera status för programmet genom att kontrol lera program status ([AZ nät app show](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) och granska program loggarna och ([AZ-paket-log](/cli/azure/ext/mesh/mesh/code-package-log)) kommandon med hjälp av [Azure Service Fabric nät masken](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli).
 
 ## <a name="commit"></a>Checka in
 

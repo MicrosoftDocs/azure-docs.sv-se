@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: df28083a0522178b7327d9f6d24029d303e417a1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 02dc5d43a23c572d441da2bbb7386885bf66ece7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747865"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625390"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Självstudie: Skala ett program som körs i Service Fabric Mesh
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 Den här självstudien är del två i en serie. Lär dig hur du manuellt skalar antalet tjänstinstanser för ett program som [tidigare har distribuerats till Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md). När du är klar har du en klienttjänst som kör tre instanser och en datatjänst som kör två instanser.
 
@@ -56,7 +61,7 @@ Om du vill visa antalet repliker som körs för ToDoService-tjänsten kör du f�
 az mesh service show --resource-group myResourceGroup --name ToDoService --app-name todolistapp --query "replicaCount"
 ```
 
-I distributionsmallen för programresursen har varje tjänst en *replicaCount* -egenskap som kan användas för att ange hur många gånger du vill att tjänsten distribueras. Ett program kan bestå av flera tjänster, och varje tjänst kan ha ett unikt *replicaCount* -värde, som distribueras och hanteras tillsammans. Om du vill skala antalet tjänstrepliker ändra du *replicaCount* -värdet för varje tjänst som du vill skala i distributionsmallen eller parameterfilen.  Sedan uppgraderar du programmet.
+I distributionsmallen för programresursen har varje tjänst en *replicaCount*-egenskap som kan användas för att ange hur många gånger du vill att tjänsten distribueras. Ett program kan bestå av flera tjänster, och varje tjänst kan ha ett unikt *replicaCount*-värde, som distribueras och hanteras tillsammans. Om du vill skala antalet tjänstrepliker ändra du *replicaCount*-värdet för varje tjänst som du vill skala i distributionsmallen eller parameterfilen.  Sedan uppgraderar du programmet.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Ändra parametrarna för distributionsmallen
 
@@ -64,7 +69,7 @@ Om det finns värden i mallen som förväntas ändras när programmet har distri
 
 Tidigare distribuerades programmet med hjälp av [mesh_rp.windows.json-distributionsmallen](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) och [mesh_rp.windows.parameter.json-parameterfilen](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json).
 
-Öppna [mesh_rp.windows.parameter.json-parameterfilen](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) lokalt och ange *frontEndReplicaCount* -värdet till 3 och *serviceReplicaCount* -värdet till 2:
+Öppna [mesh_rp.windows.parameter.json-parameterfilen](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) lokalt och ange *frontEndReplicaCount*-värdet till 3 och *serviceReplicaCount*-värdet till 2:
 
 ```json
       "frontEndReplicaCount":{
@@ -88,7 +93,7 @@ Spara dina ändringar i parameterfilen.  Parametrarna *frontEndReplicaCount* och
     }
 ```
 
-*replicaCount* -egenskapen för WebFrontEnd-tjänsten refererar till *frontEndReplicaCount* -parametern och *replicaCount* -egenskapen för ToDoService-tjänsten refererar till *serviceReplicaCount* -parametern:
+*replicaCount*-egenskapen för WebFrontEnd-tjänsten refererar till *frontEndReplicaCount*-parametern och *replicaCount*-egenskapen för ToDoService-tjänsten refererar till *serviceReplicaCount*-parametern:
 
 ```json
     "services": [

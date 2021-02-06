@@ -1,14 +1,14 @@
 ---
 title: Distribuera Kanadas federala PBMM skiss-exempel
 description: Distribuera steg för det federala PBMM skiss-exemplet, inklusive information om skiss artefakt parameter.
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: da83ec775b953f064444c0c97687a506d66de57f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 376c6329c0c3c571364c7d5d23a21c9f8cad2e53
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420469"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625002"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Distribuera de federala PBMM-skiss exemplen i Kanada
 
@@ -33,8 +33,8 @@ Börja först med att implementera skissexemplet genom att skapa en ny skiss i d
 
 1. Ange _Grundinställningar_ för skissexemplet:
 
-   - **Skiss namn** : Ange ett namn för din kopia av skiss exemplet.
-   - **Definitions plats** : Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
+   - **Skiss namn**: Ange ett namn för din kopia av skiss exemplet.
+   - **Definitions plats**: Använd ellipsen och välj den hanterings grupp där du vill spara din kopia av exemplet.
 
 1. Välj fliken _Artefakter_ överst på sidan eller **Nästa: Artefakter** längst ned på sidan.
 
@@ -64,11 +64,11 @@ När kopieringen av skiss exemplet har **publicerats** kan den tilldelas en pren
 
    - Grundläggande inställningar
 
-     - **Prenumerationer** : Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
-     - **Tilldelnings namn** : namnet fylls i automatiskt för dig baserat på namnet på skissen.
+     - **Prenumerationer**: Välj en eller flera av de prenumerationer som finns i hanterings gruppen som du sparade din kopia av skiss exemplet till. Om du väljer mer än en prenumeration, skapas en tilldelning för var och en med de angivna parametrarna.
+     - **Tilldelnings namn**: namnet fylls i automatiskt för dig baserat på namnet på skissen.
        Ändra vid behov eller lämna det som det är.
-     - **Plats** : Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Ritnings definitions version** : Välj en **publicerad** version av din kopia av skiss exemplet.
+     - **Plats**: Välj en region som den hanterade identiteten ska skapas i. Azure Blueprint använder den här hanterade identiteten för att distribuera alla artefakter i den tilldelade skissen. Mer information finns i [hanterade identiteter för Azure-resurser](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Ritnings definitions version**: Välj en **publicerad** version av din kopia av skiss exemplet.
 
    - Lås tilldelning
 

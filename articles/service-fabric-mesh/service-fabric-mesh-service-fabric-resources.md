@@ -6,14 +6,19 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650755cf2692b613b2998e8ef7b706e09022b178
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354878"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626917"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Introduktion till Service Fabric Resource Model
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
 
 I Service Fabric resurs modellen beskrivs en enkel metod för att definiera resurser som utgör ett Service Fabric nätprogram. Enskilda resurser kan distribueras till alla Service Fabrics miljöer.  Service Fabric resurs modellen är också kompatibel med Azure Resource Manager-modellen. Följande typer av resurser stöds för närvarande i den här modellen:
 

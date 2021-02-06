@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: bdbab0e032764d07119402686051d391376cb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91844002"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627171"
 ---
 # <a name="exporting-de-identified-data-preview"></a>Exportera avidentifierade data (för hands version)
 
@@ -23,7 +23,10 @@ Kommandot $export kan också användas för att exportera de data som identifier
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
-|Frågeparameter            | Exempel |Valfrihet| Beskrivning|
+> [!Note] 
+> Just nu stöder Azure API för FHIR endast avidentifierad export på system nivå ($export).
+
+|Frågeparameter            | Exempel |Valfrihet| Description|
 |---------------------------|---------|-----------|------------|
 | _\_anonymizationConfig_   |DemoConfig.jspå|Krävs för avidentifierad export |Namn på konfigurations filen. Se konfigurations fil formatet [här](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format). Den här filen bör behållas i en behållare med namnet **anonymisering** inom samma Azure Storage-konto som har kon figurer ATS som export plats. |
 | _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|Valfritt för avidentifierad export|Detta är etag i konfigurations filen. Du kan hämta etag med Azure Storage Explorer från BLOB-egenskapen|

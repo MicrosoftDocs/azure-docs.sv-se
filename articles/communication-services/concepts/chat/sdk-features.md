@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b239cf6d253c1c2d2e36d213e92e0b218add3f8c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: dcd8222b46262f6ec70459ec670789ae4a433c1d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94885996"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625272"
 ---
 # <a name="chat-client-library-overview"></a>Översikt över klientbiblioteket för chatt
 
@@ -26,7 +26,7 @@ Azure Communication Services Chat-klient bibliotek kan användas för att lägga
 
 I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i kommunikations tjänstens klient bibliotek för kommunikations tjänster.
 
-| Grupp med funktioner | Kapacitet                                                                                                          | JS  | Java | .NET | Python |
+| Grupp med funktioner | Funktion                                                                                                          | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | --- | ----- | ---- | -----  |
 | Kärn funktioner | Skapa en chatt-tråd mellan två eller flera användare (upp till 250 användare)                                                       | ✔️   | ✔️  | ✔️    | ✔️   |
 |                   | Uppdatera ämnet i en chatt-tråd                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |
@@ -53,6 +53,17 @@ I följande lista visas en uppsättning funktioner som för närvarande är till
 | Övervakning        | Övervaka användning avseende meddelanden som skickas                                                                               | ✔️   | ✔️  | ✔️    | ✔️  |
 |                    | Övervaka kvalitet och status för API-begäranden som görs av din app och konfigurera aviseringar via portalen                                                          | ✔️   | ✔️  | ✔️    | ✔️  |
 |Ytterligare funktioner | Använd [API:er för Cognitive Services](../../../cognitive-services/index.yml) tillsammans med klient biblioteket i Chat för att aktivera intelligenta funktioner – *språk översättning & sentiment analys av det inkommande meddelandet på en klient, tal till text konvertering för att skapa ett meddelande när medlemmen pratar, osv.*                                                                                         | ✔️   | ✔️  | ✔️    | ✔️  |
+
+## <a name="javascript-chat-client-library-support-by-os-and-browser"></a>Java Script Chat-klient bibliotek stöd av OS och webbläsare
+
+Följande tabell visar en uppsättning webbläsare och versioner som stöds och som är tillgängliga för tillfället.
+
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Klient bibliotek för chat** | Firefox *, Chrome*, ny kant | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
+
+
+* Observera att den senaste versionen stöds utöver de tidigare två versionerna.<br/>
 
 ## <a name="next-steps"></a>Nästa steg
 

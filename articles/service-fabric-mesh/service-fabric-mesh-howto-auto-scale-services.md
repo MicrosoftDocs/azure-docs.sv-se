@@ -6,14 +6,20 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f65fcfa76069a3de37fd3a76e38e38fba40e04ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a707e3601bb24b2d5c2aa9402edff4a2e8803033
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843064"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625912"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Skapa principer för autoskalning för ett Service Fabric nätprogram
+
+> [!IMPORTANT]
+> Förhands granskningen av Azure Service Fabric-nätet har dragits tillbaka. Nya distributioner kommer inte längre att tillåtas via Service Fabric nät-API. Stöd för befintliga distributioner fortsätter till 28 april 2021.
+> 
+> Mer information finns i [förhands granskning av Azure Service Fabric nät](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/).
+
 En av de största fördelarna med att distribuera program till Service Fabric nät är möjligheten att enkelt skala dina tjänster i eller ut. Detta bör användas för att hantera olika belastnings mängder på dina tjänster eller förbättra tillgängligheten. Du kan skala dina tjänster manuellt i eller ut eller konfigurera principer för automatisk skalning.
 
 Med [automatisk skalning](service-fabric-mesh-scalability.md#autoscaling-service-instances) kan du skala upp antalet tjänst instanser dynamiskt (vågrät skalning). Automatisk skalning ger bra elastiskhet och möjliggör etablering eller borttagning av tjänst instanser baserat på processor-eller minnes användning.

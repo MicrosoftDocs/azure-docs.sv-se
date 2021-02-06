@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353552"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627607"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Utlösare och bindningar i Azure Functions
 
@@ -28,10 +28,10 @@ Tänk på följande exempel på hur du kan implementera olika funktioner.
 
 | Exempelscenario | Utlösare | Binda in | Utgående bindning |
 |-------------|---------|---------------|----------------|
-| Ett nytt Queue-meddelande anländer som kör en funktion för att skriva till en annan kö. | Köjobb<sup>*</sup> | *Inga* | Köjobb<sup>*</sup> |
+| Ett nytt Queue-meddelande anländer som kör en funktion för att skriva till en annan kö. | Köjobb<sup>*</sup> | *Ingen* | Köjobb<sup>*</sup> |
 |Ett schemalagt jobb läser Blob Storage innehåll och skapar ett nytt Cosmos DB-dokument. | Timer | Blob Storage | Cosmos DB |
 |Event Grid används för att läsa en avbildning från Blob Storage och ett dokument från Cosmos DB för att skicka ett e-postmeddelande. | Event Grid | Blob Storage och Cosmos DB | SendGrid |
-| En webhook som använder Microsoft Graph för att uppdatera ett Excel-blad. | HTTP | *Inga* | Microsoft Graph |
+| En webhook som använder Microsoft Graph för att uppdatera ett Excel-blad. | HTTP | *Ingen* | Microsoft Graph |
 
 <sup>\*</sup> Representerar olika köer
 
@@ -39,16 +39,19 @@ Dessa exempel är inte avsedda att vara uttömmande, men de tillhandahålls för
 
 ###  <a name="trigger-and-binding-definitions"></a>Utlösare och bindnings definitioner
 
-Utlösare och bindningar definieras på olika sätt beroende på utvecklings metoden.
+Utlösare och bindningar definieras på olika sätt beroende på utvecklings språket.
 
-| Plattform | Utlösare och bindningar konfigureras av... |
+| Språk | Utlösare och bindningar konfigureras av... |
 |-------------|--------------------------------------------|
 | C#-klass bibliotek | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metoder och parametrar för dekorera med C#-attribut |
-| Alla andra (inklusive Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uppdatera [function.jspå](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metoder och parametrar för dekorera med Java-anteckningar  | 
+| Java Script/PowerShell/python/TypeScript | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uppdatera [function.jspå](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
 
-Portalen innehåller ett användar gränssnitt för den här konfigurationen, men du kan redigera filen direkt genom att öppna den **avancerade redigeraren** som är tillgänglig via fliken **integrera** i din funktion.
+För språk som förlitar sig på function.jspå, ger portalen ett användar gränssnitt för att lägga till bindningar på fliken **integration** . Du kan också redigera filen direkt i portalen på fliken **kod + test** i din funktion. Med Visual Studio Code kan du enkelt [lägga till en bindning till en function.jspå en fil](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project) genom att följa en behändig uppsättning prompter. 
 
-I .NET definierar parameter typen data typen för indata. Använd till exempel för `string` att binda till texten i en Queue-utlösare, en byte mat ris som ska läsas som binär och en anpassad typ för deserialisering till ett objekt.
+I .NET och Java definierar parameter typen data typen för indata. Använd till exempel för `string` att binda till texten i en Queue-utlösare, en byte mat ris som ska läsas som binär och en anpassad typ för att deserialisera till ett objekt. Eftersom funktioner i .NET-klass bibliotek och Java-funktioner inte förlitar sig på *function.js* för bindnings definitioner, kan de inte skapas och redige ras i portalen. C#-portalen redigerar baseras på C#-skript, som använder *function.jsi* stället för attribut.
+
+Mer information om hur du lägger till bindningar i befintliga funktioner finns i [ansluta funktioner till Azure-tjänster med hjälp av bindningar](add-bindings-existing-function.md).
 
 För språk som är dynamiskt skrivna, till exempel Java Script, använder du `dataType` egenskapen i *function.jsi* filen. Om du till exempel vill läsa innehållet i en HTTP-begäran i binärt format, ange `dataType` till `binary` :
 

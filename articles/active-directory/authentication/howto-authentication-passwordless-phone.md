@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 62dea67f139857befc7ca24b8b8a105241b5c949
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743606"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626163"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivera lösen ords utan lösen ord med Microsoft Authenticator-appen (förhands granskning)
 
@@ -57,10 +57,13 @@ Med Azure AD kan du välja vilka autentiseringsmetoder som ska användas under i
 Utför följande steg för att aktivera autentiseringsmetoden för inloggning med lösen ord utan lösen ord:
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med ett *globalt administratörs* konto.
-1. Sök efter och välj *Azure Active Directory* och bläddra sedan till autentiseringsmetoder för **säkerhets**  >  **autentiseringsmetoder**  >  **(för hands version)**
-1. Under **lösen ords telefon inloggning** väljer du följande alternativ:
+1. Sök efter och välj *Azure Active Directory* och bläddra sedan till principer för **säkerhets**  >  **autentisering**  >  .
+1. Under **Microsoft Authenticator (för hands version)** väljer du följande alternativ:
    1. **Aktivera** – Ja eller Nej
    1. **Mål** – alla användare eller Välj användare
+1. Varje tillagd grupp eller användare är aktive rad som standard för att använda Microsoft Authenticator i både lösen ords lös och push-meddelande läge ("valfritt"). För att ändra detta, för varje rad:
+   1. Bläddra till **...**  >  **Konfigurera**.
+   1. För **autentiseringsläge** – alla, lösen ords fritt eller push
 1. Välj **Spara** om du vill tillämpa den nya principen.
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Användar registrering och hantering av Microsoft Authenticator
