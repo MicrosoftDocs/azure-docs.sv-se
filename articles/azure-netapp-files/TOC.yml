@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: Vad är verktyget Azure Application Consistent Snapshot?
       href: azacsnap-introduction.md
+    - name: Det innebär att volymens hård kvot ändras
+      href: volume-hard-quota-guidelines.md
 - name: Anvisningar
   items:
     - name: Registrera för Azure NetApp Files

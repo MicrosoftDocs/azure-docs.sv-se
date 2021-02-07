@@ -23,6 +23,8 @@
       href: common-errors.md
     - name: Reparera ett trasigt Automanage-konto
       href: repair-automanage-account.md
+    - name: Flytta en hanterad virtuell dator över flera regioner
+      href: move-automanaged-vms.md
 - name: Resurser
   expanded: true
   items:

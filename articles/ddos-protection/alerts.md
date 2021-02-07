@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915155"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806298"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Visa och konfigurera aviseringar för DDoS-skydd
 
@@ -41,13 +41,13 @@ I den här självstudien får du lära dig att:
 Med dessa mallar kan du konfigurera aviseringar för alla offentliga IP-adresser som du har aktiverat diagnostisk inloggning på. För att kunna använda dessa aviserings mallar måste du först ha en Log Analytics-arbetsyta med aktiverade diagnostiska inställningar. Se [Visa och konfigurera DDoS-diagnostisk loggning](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor varnings regel
-Den här [Azure Monitor varnings regeln](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started) kör en enkel fråga för att identifiera när en aktiv DDoS-minskning inträffar. Detta tyder på ett potentiellt angrepp. Åtgärds grupper kan användas för att anropa åtgärder som ett resultat av aviseringen.
+Den här [Azure Monitor varnings regeln](https://aka.ms/ddosmitigationstatus) kör en enkel fråga för att identifiera när en aktiv DDoS-minskning inträffar. Detta tyder på ett potentiellt angrepp. Åtgärds grupper kan användas för att anropa åtgärder som ett resultat av aviseringen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
 ### <a name="azure-monitor-alert-rule-with-logic-app"></a>Azure Monitor aviserings regel med Logic app
 
-Den här [mallen](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/DDoS%20Mitigation%20Alert%20Enrichment) distribuerar de nödvändiga komponenterna i en berikad DDoS-lösning för minskning: Azure Monitor varnings regel, åtgärds grupp och Logic-app. Resultatet av processen är en e-postavisering med information om IP-adressen under angrepp, inklusive information om den resurs som är associerad med IP-adressen. Ägaren till resursen läggs till som mottagare av e-postmeddelandet, tillsammans med säkerhets teamet. Ett grundläggande program tillgänglighets test utförs också och resultaten ingår i e-postaviseringen.
+Den här [mallen](https://aka.ms/ddosalert) distribuerar de nödvändiga komponenterna i en berikad DDoS-lösning för minskning: Azure Monitor varnings regel, åtgärds grupp och Logic-app. Resultatet av processen är en e-postavisering med information om IP-adressen under angrepp, inklusive information om den resurs som är associerad med IP-adressen. Ägaren till resursen läggs till som mottagare av e-postmeddelandet, tillsammans med säkerhets teamet. Ett grundläggande program tillgänglighets test utförs också och resultaten ingår i e-postaviseringen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
@@ -64,7 +64,7 @@ Du kan välja något av de tillgängliga DDoS-skydds måtten för att varna dig 
     |---------                |---------                                                                                           |
     | Omfång                   | Välj **Välj resurs**. </br> Välj den **prenumeration** som innehåller den offentliga IP-adress som du vill logga, Välj **offentlig IP-adress** för **resurs typ** och välj sedan den angivna offentliga IP-adress som du vill använda för att logga mått för. </br> Välj **Klar**. | 
     | Villkor | Välj **Välj villkor**. </br> Under signal namn väljer du **under DDoS-attack eller inte**. </br> Under **operator** väljer du **större än eller lika** med. </br> Under **agg regerings typ** väljer du **Max**. </br> Under **tröskel värde** anger du *1*. **0** innebär att du inte befinner dig för **under DDoS-angrepp eller inte** , medan **1** innebär att du är utsatt för angrepp. </br> Välj **Klar**. | 
-    | Actions | Välj **Lägg till åtgärds grupper**. </br> Välj **Skapa åtgärdsgrupp**. </br> Under **aviseringar**, under **meddelande typ**, väljer du **e-post/SMS meddelande/push/röst**. </br> Under **namn** anger du _MyUnderAttackEmailAlert_. </br> Klicka på knappen Redigera, Välj **e-post** och så många av följande alternativ du behöver och välj sedan **OK**. </br> Välj **Granska + skapa**. | 
+    | Åtgärder | Välj **Lägg till åtgärds grupper**. </br> Välj **Skapa åtgärdsgrupp**. </br> Under **aviseringar**, under **meddelande typ**, väljer du **e-post/SMS meddelande/push/röst**. </br> Under **namn** anger du _MyUnderAttackEmailAlert_. </br> Klicka på knappen Redigera, Välj **e-post** och så många av följande alternativ du behöver och välj sedan **OK**. </br> Välj **Granska + skapa**. | 
     | Information om aviserings regel | Under **aviserings regelns namn** anger du _MyDdosAlert_. |
 
 Inom några minuter av attack identifiering bör du få ett e-postmeddelande från Azure Monitor mått som liknar följande bild:

@@ -1,6 +1,6 @@
 ---
 title: Anslut syslog-data till Azure Sentinel | Microsoft Docs
-description: Anslut alla datorer och installationer som stöder Syslog till Azure Sentinel genom att använda en agent på en Linux-dator mellan-installationen och kontroll enheten.
+description: Anslut alla datorer och installationer som stöder Syslog till Azure Sentinel genom att använda en agent på en Linux-dator mellan installationen och Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 35c8c2aa31887feb294b04b8a88bbe5478659e5e
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747198"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807911"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Samla in data från Linux-baserade källor med syslog
 
@@ -113,7 +113,7 @@ Azure Sentinel kan använda Machine Learning (ML) till syslog-data för att iden
  
 Den här identifieringen kräver en speciell konfiguration av syslog-datakopplingen: 
 
-1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Ett exempel:
+1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Exempel:
     
     > [!div class="mx-imgBorder"]
     > ![Anläggningar som krävs för identifiering av avvikande SSH-inloggning](./media/connect-syslog/facilities-ssh-detection.png)

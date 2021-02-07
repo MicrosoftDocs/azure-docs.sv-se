@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954198"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807656"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -107,29 +107,29 @@ Integrationen mellan Data Factory och avdelningens kontroll har endast stöd fö
 
 ### <a name="data-factory-copy-data-support"></a>Data Factory Kopiera data support
 
-| Data lagrings system | Stöds som källa | Stöds som mottagare |
-| ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | Ja | Ja (endast icke-binär kopia) |
-| ADLS Gen2 | Ja | Ja |
-| Azure-blobb | Ja | Ja |
-| Azure Cosmos DB (SQL API) | Ja | Ja |
-| Azure Cosmos DB (Mongo-API) | Ja | Ja |
-| Azure Cognitive Search | Ja | Ja |
-| Azure-datautforskaren | Ja | Ja |
-| Azure Database för Maria DB \* | Ja | Ja |
-| Azure Database för MYSQL \* | Ja | Ja |
-| Azure Database for PostgreSQL \* | Ja | Ja |
-| Azure File Storage | Ja | Ja |
-| Azure Table Storage | Ja | Ja |
-| Azure SQL Database \* | Ja | Ja |
-| Azure SQL MI \* | Ja | Ja |
-| Azure Synapse Analytics (tidigare SQL DW) \* | Ja | Ja |
-| SQL Server lokal (SHIR krävs) \* | Ja | Ja |
-| Amazon S3 | Ja | Ja |
-| Teradata | Ja | Ja |
-| SAP S4 Hana | Ja | Ja |
-| SAP ECC | Ja | Ja |
-| Hive | Ja | Ja |
+| Data lagrings system | Stöds som källa | 
+| ------------------- | ------------------- | 
+| ADLS Gen1 | Ja | 
+| ADLS Gen2 | Ja | 
+| Azure-blobb | Ja |
+| Azure Cosmos DB (SQL API) | Ja | 
+| Azure Cosmos DB (Mongo-API) | Ja |
+| Azure Cognitive Search | Ja | 
+| Azure-datautforskaren | Ja | 
+| Azure Database för Maria DB \* | Ja | 
+| Azure Database för MYSQL \* | Ja | 
+| Azure Database for PostgreSQL \* | Ja |
+| Azure File Storage | Ja | 
+| Azure Table Storage | Ja |
+| Azure SQL Database \* | Ja | 
+| Azure SQL MI \* | Ja | 
+| Azure Synapse Analytics (tidigare SQL DW) \* | Ja | 
+| SQL Server lokal  \* | Ja | 
+| Amazon S3 | Ja | 
+| Teradata | Ja | 
+| SAP Table Connector | Ja |
+| SAP ECC | Ja | 
+| Hive | Ja | 
 
 > [!Note]
 > Härkomst-funktionen har vissa prestanda kostnader i Data Factory kopierings aktivitet. För de som installerar Data Factory-anslutningar i avdelningens kontroll kan du se att vissa kopierings jobb tar längre tid att slutföra. Det mesta av effekten är att ingen ska vara försumbar. Kontakta supporten med tids jämförelse om kopierings jobben tar betydligt längre tid att slutföra än vanligt.
@@ -137,7 +137,7 @@ Integrationen mellan Data Factory och avdelningens kontroll har endast stöd fö
 ### <a name="data-factory-data-flow-support"></a>Stöd för Data Factory data flöde
 
 | Data lagrings system | Stöds |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- | 
 | ADLS Gen1 | Ja |
 | ADLS Gen2 | Ja |
 | Azure-blobb | Ja |
@@ -147,7 +147,7 @@ Integrationen mellan Data Factory och avdelningens kontroll har endast stöd fö
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory köra stöd för SSIS-paket
 
 | Data lagrings system | Stöds |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- |
 | Azure-blobb | Ja |
 | ADLS Gen1 | Ja |
 | ADLS Gen2 | Ja |

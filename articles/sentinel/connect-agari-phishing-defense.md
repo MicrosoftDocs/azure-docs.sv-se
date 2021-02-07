@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: ba37b2280ba4d7138f4ed652b7b330bcaf7b9935
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3684b5a8069a6b683ae562c527af89814362a7f9
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566939"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806994"
 ---
 # <a name="connect-your-agari-phishing-defense-and-brand-protection-solutions-to-azure-sentinel"></a>Anslut din agar-lösning för phishing-skydd och märkes skydd till Azure Sentinel
 
@@ -58,7 +58,7 @@ Agari-lösningar kan integrera och exportera loggar direkt till Azure Sentinel m
 
 1. **Valfritt Aktivera säkerhets Graph API:** 
 
-    Med Agari-Funktionsapp kan du dela Hot information med Sentinel via säkerhets Graph API. Om du vill använda den här funktionen måste du aktivera [kopplingen för Sentinel Threat Intelligence-plattformar](connect-threat-intelligence.md) och [Registrera ett program](/graph/auth-register-app-v2) i Azure Active Directory.
+    Med Agari-Funktionsapp kan du dela Hot information med Azure Sentinel via säkerhets Graph API. Om du vill använda den här funktionen måste du aktivera [kopplingen för Sentinel Threat Intelligence-plattformar](connect-threat-intelligence.md) och [Registrera ett program](/graph/auth-register-app-v2) i Azure Active Directory.
 
     Den här processen ger dig tre delar av information som du kan använda när du distribuerar Funktionsapp nedan: **graf-ID**, **graf-klient-ID** och **grafiskt klient hemlighet**.
 

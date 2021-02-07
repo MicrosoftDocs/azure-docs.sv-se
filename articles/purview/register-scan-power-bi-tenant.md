@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874914"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807554"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
 
@@ -84,7 +84,7 @@ Lägg först till en särskild funktions flagga till din avdelningens kontroll-U
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="Bild som visar en lista över data källor som kan väljas":::
 
-1. Ge Power BI instansen ett eget namn.
+3. Ge Power BI instansen ett eget namn.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Bild som visar Power BI data källa – eget namn":::
 
@@ -94,17 +94,21 @@ Lägg först till en särskild funktions flagga till din avdelningens kontroll-U
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="Power BI data källa registrerad":::
 
-1. Ge skanningen ett namn. Observera att den enda autentiseringsmetoden som stöds är **hanterad identitet**.
+    > [!Note]
+    > För Power BI tillåts registrering och genomsökning av data källor bara för en instans.
+
+
+4. Ge skanningen ett namn. Observera att den enda autentiseringsmetoden som stöds är **hanterad identitet**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Bild som visar Power BI skannings konfiguration":::
 
     Skannings namnet måste innehålla mellan 3-63 tecken och får bara innehålla bokstäver, siffror, under streck och bindestreck.  Blank steg är inte tillåtna.
 
-1. Konfigurera en genomsöknings utlösare. Dina alternativ är **en gång**, **var sjunde dag** och **var 30: e dag**.
+5. Konfigurera en genomsöknings utlösare. Dina alternativ är **en gång**, **var sjunde dag** och **var 30: e dag**.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="Skanna utlösare avbildning":::
 
-1. Vid **Granska ny genomsökning** väljer du **Spara och kör** för att starta din sökning.
+6. Vid **Granska ny genomsökning** väljer du **Spara och kör** för att starta din sökning.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Spara och kör Power BI skärm bild":::
 

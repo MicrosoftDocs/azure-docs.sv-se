@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 041de50fea6152aade706cc938a75bb70619ebf3
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 97bcf0bedb3ed175f8fdb5d4dc361c069ae0327d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202818"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805217"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azures säkerhets bas linje för Cognitive Services
 
@@ -398,7 +398,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 **Vägledning**: använda Azure Active Directory (AD) som central autentiserings-och auktoriserings system. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt. Om ditt användnings fall stöder AD-autentisering använder du Azure AD för att autentisera begär anden till din Cognitive Services-API.
 
-För närvarande är det bara API för visuellt innehåll, Ansikts-API, API för textanalys, avancerad läsare, formulär igenkänning, avvikelse detektor och alla Bing-tjänster utom Anpassad sökning i Bing stöd för autentisering med Azure AD.
+För närvarande är det bara API för visuellt innehåll, Ansikts-API, API för textanalys, avancerad läsare, formulär igenkänning, avvikelse detektor och alla Bing-tjänster utom Anpassad Bing-sökning stöd för autentisering med Azure AD.
 
 * [Autentisera begär anden till Cognitive Services](./authentication.md#authenticate-with-azure-active-directory)
 
@@ -1056,7 +1056,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
 
-**Vägledning**: exportera Azure Security Center aviseringar och rekommendationer med hjälp av funktionen för kontinuerlig export. Med kontinuerlig export kan du exportera aviseringar och rekommendationer antingen manuellt eller i löpande miljö. Du kan använda Azure Security Center Data Connector för att strömma aviserings indikatorn.
+**Vägledning**: exportera Azure Security Center aviseringar och rekommendationer med hjälp av funktionen för kontinuerlig export. Med kontinuerlig export kan du exportera aviseringar och rekommendationer antingen manuellt eller i löpande miljö. Du kan använda Azure Security Center Data Connector för att strömma aviseringarna till Azure Sentinel.
 
 * [Så här konfigurerar du kontinuerlig export](../security-center/continuous-export.md)
 

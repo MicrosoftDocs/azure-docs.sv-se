@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 33af92c1987d9cd0c88e689dd7bafccadd60cb06
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614058"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805537"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Fel sökning av Cloud Sync
 
@@ -164,7 +164,7 @@ Cloud Sync övervakar hälso tillståndet för din konfiguration och placerar Fe
 
 Genom att välja status kan du se ytterligare information om karantänen. Du kan också hämta fel koden och meddelandet.
 
-![Information om karantän status](media/how-to-troubleshoot/quarantine-2.png)
+![Skärm bild som visar ytterligare information om karantänen.](media/how-to-troubleshoot/quarantine-2.png)
 
 Genom att högerklicka på statusen visas fler alternativ:
     
@@ -172,7 +172,7 @@ Genom att högerklicka på statusen visas fler alternativ:
    - Visa agent
    - Rensa karantän
 
-![Information om karantän status](media/how-to-troubleshoot/quarantine-4.png)
+![Skärm bild som visar meny alternativen på snabb menyn.](media/how-to-troubleshoot/quarantine-4.png)
 
 
 ### <a name="resolve-a-quarantine"></a>Lösa en karantän
@@ -186,7 +186,7 @@ Om du vill rensa vattenstämpeln och köra en Delta-synkronisering på etablerin
 
 Du bör se ett meddelande om att karantänen har rensats.
 
-![Information om karantän status](media/how-to-troubleshoot/quarantine-5.png)
+![Skärm bild som visar ett meddelande om att karantänen rensas.](media/how-to-troubleshoot/quarantine-5.png)
 
 Sedan bör du se statusen på agenten som felfri.
 

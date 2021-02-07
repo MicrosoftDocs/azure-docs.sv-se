@@ -1,5 +1,5 @@
 ---
-title: Konvertera Managed disks Storage mellan standard och Premium SSD
+title: Konvertera Managed disks Storage mellan standard-och Premium SSD genom att använda Azure PowerShell
 description: Så här konverterar du Azure Managed disks från standard till Premium eller Premium till standard med hjälp av Azure PowerShell.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d81cd0ac57a5a18d90144584e8705cbffcba6f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13159e527fac76a1a79118e9363b94904935a2be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871436"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807503"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Uppdatera lagrings typen för en hanterad disk
 
@@ -118,7 +118,7 @@ Gör så här:
 4. Välj den disk som du vill konvertera.
 5. Välj **konfiguration** på menyn.
 6. Ändra **konto typen** från **standard HDD** till **Premium SSD**.
-7. Klicka på **Spara**och Stäng disk fönstret.
+7. Klicka på **Spara** och Stäng disk fönstret.
 
 Disk typs konverteringen är omedelbar. Du kan starta den virtuella datorn efter konverteringen.
 

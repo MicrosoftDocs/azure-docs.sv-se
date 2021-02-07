@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631332"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805048"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>Använda autentisering med Azure-Active Directory (AD) för din StorSimple
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>Använd Azure Active Directory autentisering (AD) för din StorSimple
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -75,7 +75,7 @@ Utför följande steg för att skapa en registrerings nyckel för AAD-tjänsten.
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>Så här skapar du registrerings nyckeln för AAD-tjänsten
 
-1. I **StorSimple Enhetshanteraren**går du till **hanterings &gt; ** **nycklar**. Du kan också söka efter _nycklar_med hjälp av Sök fältet.
+1. I **StorSimple Enhetshanteraren** går du till **hanterings &gt;** **nycklar**. Du kan också söka efter _nycklar_ med hjälp av Sök fältet.
     
 2. Klicka på **generera nyckel**.
 

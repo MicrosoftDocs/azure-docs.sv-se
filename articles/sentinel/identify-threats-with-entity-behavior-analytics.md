@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784803"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807571"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifiera avancerade hot med användar-och enhets beteende analys (UEBA) i Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Funktionerna UEBA och enhets sidor är nu **allmänt tillgängliga** i **_alla_* _ Azure Sentinel-geografiska områden och regioner.
+> - Funktionerna UEBA och enhets sidor är nu **allmänt tillgängliga** i **_alla_** geografiska diagram och regioner i Azure Sentinel.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Vad är användar-och enhets beteende analys (UEBA)?
 
@@ -35,7 +35,7 @@ Identifiera hot i din organisation och deras potentiella påverkan – om en kom
 
 UEBA-funktionen i Azure Sentinel eliminerar drudgery från dina analytikers arbets belastningar och osäkerhet från deras ansträngningar, och levererar hög åter givning, användbar information, så att de kan fokusera på undersökningar och åtgärder.
 
-När Azure Sentinel samlar in loggar och aviseringar från alla anslutna data källor, analyseras de och skapar bas linje beteende profiler för organisationens entiteter (användare, värdar, IP-adresser, program osv.) över tid och gruppens horisont. Med en mängd olika tekniker och Machine Learning-funktioner kan Sentinel identifiera avvikande aktivitet och hjälpa dig att avgöra om en till gång har komprometterats. Det är inte bara det, men det kan också ta reda på den relativa känsligheten för särskilda till gångar, identifiera peer-grupper med till gångar och utvärdera den potentiella effekten av en viss komprometterad till gång (dess "Mas radie"). Med den här informationen kan du på ett effektivt sätt prioritera din undersökning och incident hantering. 
+När Azure Sentinel samlar in loggar och aviseringar från alla anslutna data källor, analyseras de och skapar bas linje beteende profiler för organisationens entiteter (till exempel användare, värdar, IP-adresser och program) för tids-och grupp horisont. Med hjälp av en mängd olika tekniker och maskin inlärnings funktioner kan Azure Sentinel identifiera avvikande aktivitet och hjälpa dig att avgöra om en till gång har komprometterats. Det är inte bara det, men det kan också ta reda på den relativa känsligheten för särskilda till gångar, identifiera peer-grupper med till gångar och utvärdera den potentiella effekten av en viss komprometterad till gång (dess "Mas radie"). Med den här informationen kan du på ett effektivt sätt prioritera din undersökning och incident hantering. 
 
 ### <a name="architecture-overview"></a>Översikt över arkitekturen
 
@@ -45,7 +45,7 @@ När Azure Sentinel samlar in loggar och aviseringar från alla anslutna data k�
 
 Azure Sentinel har inspirerats av Gartners paradigm för UEBA-lösningar och tillhandahåller en "yttre" metod, baserat på tre referens ramar:
 
-- _ *Användnings fall:** genom att prioritera relevanta angrepps vektorer och scenarier baserade på säkerhets undersökningar som är justerade med MITRE till&vikt ramverk med taktiker, tekniker och undertekniker som placerar olika entiteter som offer, perpetrators eller Pivot Points i Kill-kedjan. Azure Sentinel fokuserar särskilt på de mest värdefulla loggar som varje data källa kan ge.
+- **Användnings fall:** Genom att prioritera relevanta angrepps vektorer och scenarier baserade på säkerhets undersökningar som är justerade med MITRE till&vikt ramverk för taktiker, tekniker och undertekniker som placerar olika entiteter som offer, perpetrators eller Pivot Points i Kill-kedjan. Azure Sentinel fokuserar särskilt på de mest värdefulla loggar som varje data källa kan ge.
 
 - **Data Källor:** Medan Azure-datakällor först och främst har stöd för, väljer Azure Sentinel data källor från tredje part för att tillhandahålla data som matchar våra Hot scenarier.
 

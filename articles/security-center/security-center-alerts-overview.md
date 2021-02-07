@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b26d42ca32f0048bb2bedcb5fef337c3ac1d7d65
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433027"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807232"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Säkerhetsaviseringar i Azure Security Center
 
@@ -23,7 +23,7 @@ I Security Center finns det många olika typer av aviseringar för många olika 
 
 Säkerhets aviseringar utlöses av avancerade identifieringar och är bara tillgängliga med Azure Defender. Det finns en kostnadsfri utvärderingsversion. Du kan uppgradera från sidan för **pris & inställningar** . Läs mer om [Security Center prissättning](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="respond-to-todays-threats"></a>Svara på dagens hot <a name="respond-threats"> </a>
+## <a name="respond-to-todays-threats"></a>Svara på dagens hot <a name="respond-threats"></a>
 
 Hoten i dag ser helt annorlunda ut mot för 20 år sedan. Tidigare hade företag vanligt vis bara bekymrat sig om att det finns en webbplats för enskilda angripare som främst hade intresse av att se vad de kunde göra. Dagens angripare är mycket mer sofistikerade och organiserade. De har ofta specifika ekonomiska och strategiska mål. De har också till gång till fler resurser, eftersom de kan finansieras av Nations stater eller organiserad brottslighet.
 
@@ -91,7 +91,7 @@ Du har flera alternativ för att visa aviseringar utanför Security Center, inkl
 
 - **Hämta CSV-rapport** på instrument panelen för aviseringar innehåller en export till CSV-filen vid ett tillfälle.
 - Med **kontinuerlig export** från pris &s inställningar kan du konfigurera strömmar av säkerhets aviseringar och rekommendationer till Log Analytics arbets ytor och Event Hubs. [Läs mer om kontinuerlig export](continuous-export.md)
-- **Azure Sentinel Connector** strömmar säkerhets aviseringar från Azure Security Center till Azure Sentinel. [Lär dig mer om att ansluta Azure Security Center med Sentinel](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel Connector** strömmar säkerhets aviseringar från Azure Security Center till Azure Sentinel. [Lär dig mer om att ansluta Azure Security Center med Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Nästa steg

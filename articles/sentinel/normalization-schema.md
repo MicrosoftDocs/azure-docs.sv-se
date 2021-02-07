@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: eb1752ea66f2cbebf6a653705b5a760e8e268240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd97aef5d8c959aeb2e0314e051790fd0421585
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90937608"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806943"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Schema referens för Azure Sentinel-datanormalisering
 
 ## <a name="terminology"></a>Terminologi
 
-Följande terminologi används i Sentinel-scheman:
+Följande terminologi används i Azure Sentinel-scheman:
 
 | Period | Definition |
 | ---- | ---------- |
@@ -45,8 +45,8 @@ Värdena ska normaliseras baserat på rikt linjerna nedan. Detta är obligatoris
 | **IP-adress** | IP-adress | Schemat har inga separata IPv4-och IPv6-adresser. Alla IP-adresser kan innehålla antingen en IPv4-eller IPv6-adress:<ul><li>IPv4 i en punkt-Decimal form</li><li>IPv6 i 8 hextets-notation, som tillåter de kort former som beskrivs här.</li></ul> |
 | **Användare** | Sträng | Följande tre användar fält är tillgängliga:<ul><li>Användarnamn</li><li>Användarens UPN</li><li>Användar domän</li></ul> |
 | **Användar-ID** | Sträng | Följande 2 användar-ID: n stöds för närvarande:<ul><li>Användarens SID</li><li>Azure Active Directory-ID</li></ul> |
-| **Enhet** | Sträng | Följande tre enhets-och värd kolumner stöds:<ul><li>ID</li><li>Namn</li><li>Fullständigt kvalificerat domän namn (FQDN)</li></ul> |
-| **Ursprungslandet** | Sträng | En sträng som använder ISO 3166-1 enligt denna prioritet:<ul><li>Alfa – 2 koder (t. ex. oss för USA)</li><li>Alfa-3 koder (t. ex. USA för USA)</li><li>Kort namn</li></ul> |
+| **Enhet** | Sträng | Följande tre enhets-och värd kolumner stöds:<ul><li>ID</li><li>Name</li><li>Fullständigt kvalificerat domän namn (FQDN)</li></ul> |
+| **Land** | Sträng | En sträng som använder ISO 3166-1 enligt denna prioritet:<ul><li>Alfa – 2 koder (t. ex. oss för USA)</li><li>Alfa-3 koder (t. ex. USA för USA)</li><li>Kort namn</li></ul> |
 | **Region** | Sträng | Landets underordnade avdelnings namn med hjälp av ISO 3166-2 |
 | **City** | Sträng | |
 | **Long** | Double | ISO 6709-koordinat representation (signerad decimal) |
@@ -59,7 +59,7 @@ Värdena ska normaliseras baserat på rikt linjerna nedan. Detta är obligatoris
 
 Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 
-| Fältnamn | Värdetyp | Exempel | Beskrivning | Associerade OSSEM-entiteter |
+| Fältnamn | Värdetyp | Exempel | Description | Associerade OSSEM-entiteter |
 |-|-|-|-|-|
 | Typ | Sträng | Trafik | Typ av händelse som samlas in | Händelse |
 | EventSubType | Sträng | Autentisering | Ytterligare beskrivning av typ om tillämpligt | Händelse |
@@ -76,18 +76,18 @@ Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 | EventVendor | Sträng | Microsoft | Leverantören av produkten som genererar händelsen. | Händelse |
 | EventResult | Multivärde: lyckad, partiell, misslyckad, [tom] (sträng) | Klart | Resultatet som rapporteras för aktiviteten. Tomt värde om det inte är tillämpligt. | Händelse |
 | EventResultDetails | Sträng | Fel lösen ord | Orsak eller Detaljer för resultatet som rapporteras i EventResult | Händelse |
-| EventSchemaVersion | Verkligen | 0,1 | Schema version för Azure Sentinel. För närvarande 0,1. | Händelse |
+| EventSchemaVersion | Verkligen | 0.1 | Schema version för Azure Sentinel. För närvarande 0,1. | Händelse |
 | EventSeverity | Sträng | Låg | Om aktiviteten som rapporteras har en säkerhets påverkan anger allvarlighets graden för påverkan. | Händelse |
 | EventOriginalUid | Sträng | af6ae8fe-ff43-4a4c-b537-8635976a2b51 | Post-ID: t från rapporterings enheten. | Händelse |
 | EventStartTime | Datum/tid | Se "data typer" | Tiden då händelsen angavs | Händelse |
 | TimeGenerated | Datum/tid | Se "data typer" | Tiden då händelsen inträffade, som rapporteras av rapport källan. | Anpassat fält |
 | EventTimeIngested | Datum/tid | Se "data typer" | Tiden då händelsen skrevs till Azure Sentinel. Kommer att läggas till av Azure Sentinel. | Händelse |
-| EventUid | GUID (sträng) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Unik identifierare som används av Sentinel för att markera en rad. | Händelse |
+| EventUid | GUID (sträng) | 516a64e3-8360-4f1e-a67c-d96b3d52df54 | Unik identifierare som används av Azure Sentinel för att markera en rad. | Händelse |
 | NetworkApplicationProtocol | Sträng | HTTPS | Det program skikts protokoll som används av anslutningen eller sessionen. | Nätverk |
 | DstBytes | int | 32455 | Antalet byte som har skickats från målet till källan för anslutningen eller sessionen. | Mål |
 | SrcBytes | int | 46536 | Antalet byte som skickats från källan till målet för anslutningen eller sessionen. | Källa |
 | NetworkBytes | int | 78991 | Antal byte som har skickats i båda riktningarna. Om både BytesReceived och bytes sent finns måste BytesTotal vara lika med summan. | Nätverk |
-| NetworkDirection | Multi-Value: inkommande, utgående (sträng) | Inbound (Inkommande) | Riktningen på anslutningen eller sessionen, in i eller ut ur organisationen. | Nätverk |
+| NetworkDirection | Multi-Value: inkommande, utgående (sträng) | Inkommande | Riktningen på anslutningen eller sessionen, in i eller ut ur organisationen. | Nätverk |
 | DstGeoCity | Sträng | Burlington | Den stad som är kopplad till målets IP-adress | Mål<br>Geografi |
 | DstGeoCountry | Land (sträng) | USA | Det land som är associerat med käll-IP-adressen | Mål<br>Geografi |
 | DstDvcHostname | Enhets namn (sträng) |  victim_pc | Enhets namnet på mål enheten | Mål<br>Enhet |
@@ -106,11 +106,11 @@ Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 | DstResourceId | Enhets-ID (sträng) |  /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /victim | Resurs-ID för mål enheten. | Mål |
 | DstNatIpAddr | IP-adress | 2::1 | Om den rapporteras av en mellanhand NAT-enhet, till exempel en brand vägg, den IP-adress som används av NAT-enheten för kommunikation med källan. | Mål-NAT,<br>IP-adress |
 | DstNatPortNumber | int | 443 | Om det rapporteras av en mellanhand NAT-enhet, till exempel en brand vägg, den port som används av NAT-enheten för kommunikation med källan. | Mål-NAT,<br>Port |
-| DstUserSid | Användarens SID |  S-12-1445 | Användar-ID för den identitet som är kopplad till sessionens mål. Normalt används den identitet som används för att autentisera en server. Mer information finns i "data typer". | Mål<br>Användare |
-| DstUserAadId | Sträng (GUID) | ae92b0b4-cfba-4b42-85a0-fbd862f4df54 | Objekt-ID för Azure AD-kontot för användaren i slutet av sessionen | Mål<br>Användare |
-| DstUserName | Användar namn (sträng) | John | Användar namnet för den identitet som är kopplad till sessionens mål.  | Mål<br>Användare |
-| DstUserUpn | sträng | johnd@anon.com | UPN för den identitet som är kopplad till sessionens mål. | Mål<br>Användare |
-| DstUserDomain | sträng | ARBETS | Domän-eller dator namnet för kontot vid sessionens mål | Mål<br>Användare |
+| DstUserSid | Användarens SID |  S-12-1445 | Användar-ID för den identitet som är kopplad till sessionens mål. Normalt används den identitet som används för att autentisera en server. Mer information finns i "data typer". | Mål<br>User |
+| DstUserAadId | Sträng (GUID) | ae92b0b4-cfba-4b42-85a0-fbd862f4df54 | Objekt-ID för Azure AD-kontot för användaren i slutet av sessionen | Mål<br>User |
+| DstUserName | Användar namn (sträng) | John | Användar namnet för den identitet som är kopplad till sessionens mål.  | Mål<br>User |
+| DstUserUpn | sträng | johnd@anon.com | UPN för den identitet som är kopplad till sessionens mål. | Mål<br>User |
+| DstUserDomain | sträng | ARBETS | Domän-eller dator namnet för kontot vid sessionens mål | Mål<br>User |
 | DstZone | Sträng | DMZ | Nätverks zonen för målet, som definieras av rapporterings enheten. | Mål |
 | DstGeoLongitude | Longitud (dubbel) | – 73,211944 | Longitud för den geografiska koordinat som är kopplad till målets IP-adress | Mål<br>Geografi |
 | DvcAction | Multivärde: Tillåt, neka, Drop (sträng) | Tillåt | Om det rapporteras av en mellanliggande enhet, till exempel en brand vägg, den åtgärd som utförs av enheten. | Enhet |
@@ -135,7 +135,7 @@ Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 | SrcDvcOs | Sträng | iOS | Käll enhetens operativ system | Källicensservern<br>Enhet |
 | SrcDvcModelName | Sträng | Samsung Galaxy-anteckning | Käll enhetens modell namn | Källicensservern<br>Enhet |
 | SrcDvcModelNumber | Sträng | 10,0 | Käll enhetens modell nummer | Källicensservern<br>Enhet |
-| SrcDvcType | Sträng | Mobil | Typ av käll enhet | Källicensservern<br> Enhet |
+| SrcDvcType | Sträng | Mobilt | Typ av käll enhet | Källicensservern<br> Enhet |
 | SrcIntefaceName | Sträng | eth01 | Nätverks gränssnittet som används för anslutningen eller sessionen av käll enheten. | Källa |
 | SrcInterfaceGuid | Sträng | 46ad544b-eaf0-47ef-827c-266030f545a6 | GUID för det nätverks gränssnitt som används | Källa |
 | SrcIpAddr | IP-adress | 77.138.103.108 | IP-adressen som anslutningen eller sessionen kommer från. | Källicensservern<br>IP-adress |
@@ -149,11 +149,11 @@ Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 | SrcResourceId | Sträng | /subscriptions/3c1bb38c-82e3-4f8d-a115-a7110ba70d05 /resourcegroups/contoso77/providers /microsoft.compute/virtualmachines /syslogserver1 | Resurs-ID för enheten som genererar meddelandet. | Källa |
 | SrcNatIpAddr | IP-adress | 4.3.2.1 | Om den rapporteras av en mellanhand NAT-enhet, till exempel en brand vägg, den IP-adress som används av NAT-enheten för kommunikation med målet. | Källans NAT,<br>IP-adress |
 | SrcNatPortNumber | Integer | 345 | Om det rapporteras av en mellanhand NAT-enhet, till exempel en brand vägg, den port som används av NAT-enheten för kommunikation med målet. | Källans NAT,<br>Port |
-| SrcUserSid | Användar-ID (sträng) | S-15-1445 | Användar-ID för den identitet som är kopplad till sessionens källa. Normalt utför användaren en åtgärd på klienten. Mer information finns i "data typer". | Källicensservern<br>Användare |
-| SrcUserAadId | Sträng (GUID) | 16c8752c-7dd2-4cad-9e03-fb5d1cee5477 | Objekt-ID för Azure AD-kontot för användaren vid sessionens källa | Källicensservern<br>Användare |
-| SrcUserName | Användar namn (sträng) | Bob | Användar namnet för den identitet som är kopplad till sessionens källa. Normalt utför användaren en åtgärd på klienten. Mer information finns i "data typer". | Källa<br>Användare |
-| SrcUserUpn | sträng | bob@alice.com | UPN för det konto som initierar sessionen | Källicensservern<br>Användare |
-| SrcUserDomain | sträng | SKRIVBORDSGADGETAR | Domänen för det konto som initierar sessionen | Källicensservern<br>Användare |
+| SrcUserSid | Användar-ID (sträng) | S-15-1445 | Användar-ID för den identitet som är kopplad till sessionens källa. Normalt utför användaren en åtgärd på klienten. Mer information finns i "data typer". | Källicensservern<br>User |
+| SrcUserAadId | Sträng (GUID) | 16c8752c-7dd2-4cad-9e03-fb5d1cee5477 | Objekt-ID för Azure AD-kontot för användaren vid sessionens källa | Källicensservern<br>User |
+| SrcUserName | Användar namn (sträng) | Bob | Användar namnet för den identitet som är kopplad till sessionens källa. Normalt utför användaren en åtgärd på klienten. Mer information finns i "data typer". | Källa<br>User |
+| SrcUserUpn | sträng | bob@alice.com | UPN för det konto som initierar sessionen | Källicensservern<br>User |
+| SrcUserDomain | sträng | SKRIVBORDSGADGETAR | Domänen för det konto som initierar sessionen | Källicensservern<br>User |
 | SrcZone | Sträng | Tryck på | Källans nätverks zon, som definieras av rapporterings enheten. | Källa |
 | NetworkProtocol | Sträng | TCP | IP-protokollet som används av anslutningen eller sessionen. Normalt, TCP, UDP eller ICMP | Nätverk |
 | CloudAppName | Sträng | Facebook | Namnet på mål programmet för ett HTTP-program som identifieras av en proxy. | Moln |
@@ -169,7 +169,7 @@ Nedan visas schemat för tabellen nätverks sessioner, versions 1.0.0
 | FileExtension |  Sträng | exe | Den typ av fil som överförs via nätverks anslutningar för protokoll som FTP och HTTP. | Fil
 | FileMimeType | Sträng | program-MSWord | MIME-typen för den fil som överförs via nätverks anslutningar för protokoll som FTP och HTTP | Fil |
 | Storlek | Integer | 23500 | Fil storleken, i byte, för den överförda filen över nätverks anslutningarna för protokoll. | Fil |
-| HttpVersion | Sträng | 2,0 | HTTP-begäran version för HTTP/HTTPS-nätverksanslutningar. | Http |
+| HttpVersion | Sträng | 2.0 | HTTP-begäran version för HTTP/HTTPS-nätverksanslutningar. | Http |
 | HttpRequestMethod | Sträng | GET | HTTP-metoden för HTTP/HTTPS-klientsessioner. | Http |
 | HttpStatusCode | Sträng | 404 | HTTP-statuskod för HTTP/HTTPS-klientsessioner. | Http |
 | HttpContentType | Sträng | multipart/form-data; gränser = något | Innehålls typ huvudet för HTTP-svar för HTTP/HTTPS-klientsessioner. | Http |

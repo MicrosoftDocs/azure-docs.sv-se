@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: c767edca46696bc7d04a1cf101e2bd183f5cf7f9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e00496ad623d534e1fbdcb60f22a1e36f77c4212
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970851"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806180"
 ---
-# <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrera till Premium Storage med Azure Site Recovery
+# <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Använd Site Recovery för att migrera till Premium Storage
 
 [Azure Premium-SSD](../disks-types.md) ger hög prestanda, låg latens disk support för virtuella datorer som kör I/O-intensiva arbets belastningar. Den här guiden hjälper dig att migrera dina virtuella dator diskar från ett standard lagrings konto till ett Premium Storage-konto med hjälp av [Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
@@ -74,17 +74,17 @@ Du kan använda Site Recovery för att migrera virtuella Azure IaaS-datorer mell
 ### <a name="step-1-create-a-recovery-services-vault"></a>Steg 1: skapa ett Recovery Services-valv
 
 1. Öppna [Azure-portalen](https://portal.azure.com).
-2. Välj **skapa en**  >  **Management**  >  **säkerhets kopia** av resurs hantering och **Site Recovery (OMS)**. Alternativt kan du välja **Bläddra**  >  **Recovery Services valv**  >  **Lägg till**. 
+2. Välj **skapa en**  >    >  **säkerhets kopia** av resurs hantering och **Site Recovery (OMS)**. Alternativt kan du välja **Bläddra**  >  **Recovery Services valv**  >  **Lägg till**. 
 3. Ange en region som de virtuella datorerna ska replikeras till. För migrering i samma region väljer du den region där dina virtuella käll datorer och käll lagrings konton är. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Steg 2: Välj skydds mål 
 
 1. Öppna [Azure Portal](https://portal.azure.com)på den virtuella datorn där du vill installera konfigurations servern.
-2. Gå till inställningar för **Recovery Services valv**  >  **Settings**  >  **Site Recovery**  >  **steg 1: Förbered infrastruktur**  >  **skydds mål**.
+2. Gå till inställningar för **Recovery Services valv**  >    >  **Site Recovery**  >  **steg 1: Förbered infrastruktur**  >  **skydds mål**.
 
    ![Bläddra till rutan skydds mål][2]
 
-3. I den första List rutan under **skydds mål**väljer **du Azure**. Välj **inte virtualiserad/övrigt**i den andra List rutan och välj sedan **OK**.
+3. I den första List rutan under **skydds mål** väljer **du Azure**. Välj **inte virtualiserad/övrigt** i den andra List rutan och välj sedan **OK**.
 
    ![Rutan skydds mål med ifyllda rutor][3]
 
@@ -102,7 +102,7 @@ Du kan använda Site Recovery för att migrera virtuella Azure IaaS-datorer mell
 
 3. På den virtuella datorn som du använder som konfigurations server kör du en enhetlig installation för att installera konfigurations servern och processervern. Du kan [gå igenom skärm](../../site-recovery/vmware-azure-tutorial.md) bilderna för att slutföra installationen. Du kan referera till följande skärm dum par för steg som har angetts för det här scenariot för migrering.
 
-   1. I **innan du börjar**väljer du **Installera konfigurations servern och processervern**.
+   1. I **innan du börjar** väljer du **Installera konfigurations servern och processervern**.
 
       ![Innan du börjar Sidan][6]
 
@@ -123,7 +123,7 @@ Du kan använda Site Recovery för att migrera virtuella Azure IaaS-datorer mell
 
 ### <a name="step-4-set-up-the-target-environment"></a>Steg 4: Konfigurera mål miljön
 
-Välj **Förbered infrastruktur**  >  **mål**och ange den distributions modell som du vill använda för virtuella datorer efter redundansväxlingen. Du kan välja **klassisk** eller **Resource Manager**, beroende på ditt scenario.
+Välj **Förbered infrastruktur**  >  **mål** och ange den distributions modell som du vill använda för virtuella datorer efter redundansväxlingen. Du kan välja **klassisk** eller **Resource Manager**, beroende på ditt scenario.
 
 ![Mål fönster][10]
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b50ab8cae91aab56be287f517fa6e6a0b25db8e1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878129"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807877"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azures säkerhets bas linje för Azure Web Application-brandvägg
 
@@ -135,7 +135,7 @@ Välj Azure PowerShell eller Azure CLI för att söka efter eller utföra åtgä
 
 **Vägledning**: Konfigurera Azure Web Application FIREWALL (WAF)-loggar som ska skickas till en central lösning för säkerhets logg hantering, till exempel Azure SENTINEL eller Siem från tredje part. I dessa loggar ingår Azure Activity, Diagnostic och WAF-loggar i real tid. dessa loggar kan sedan visas i olika verktyg, till exempel Azure Monitor, Excel och Power BI. Azure Web Application Firewall-loggar ger insikt om vilka data som Azure-WAF utvärderar, matchar och blockerar.
 
-Azure Sentinel har en inbyggd Azure WAF-arbetsbok som ger en översikt över säkerhets händelser på Azure-WAF. Den här arbets boken innehåller händelser, matchade och blockerade regler och allt annat som loggas i brand Väggs loggarna. Den här Telemetrin kan användas för att starta Spelbok Automation för att meddela eller vidta åtgärder baserat på WAF-händelser som samlas in av Sentinel.
+Azure Sentinel har en inbyggd Azure WAF-arbetsbok som ger en översikt över säkerhets händelser på Azure-WAF. Den här arbets boken innehåller händelser, matchade och blockerade regler och allt annat som loggas i brand Väggs loggarna. Den här Telemetrin kan användas för att starta Spelbok Automation för att meddela eller vidta åtgärder baserat på WAF-händelser som samlats in av Azure Sentinel.
 
 - [Visa aktivitets loggar](../azure-resource-manager/management/view-activity-logs.md)
 

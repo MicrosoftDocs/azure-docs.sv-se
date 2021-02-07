@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906302"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807300"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Skapa incidenter automatiskt från Microsofts säkerhets aviseringar
 
-Aviseringar som utlöses i Microsoft-säkerhetslösningar som är anslutna till Azure Sentinel, till exempel Microsoft Cloud App Security och Microsoft Defender för identitet (tidigare Azure ATP). skapa inte incidenter automatiskt i Azure Sentinel. När du ansluter en Microsoft-lösning till Azure Sentinel kommer alla aviseringar som genereras i den tjänsten att lagras som rå data i Azure Sentinel, i tabellen säkerhets avisering i Azure Sentinel-arbetsytan. Du kan sedan använda dessa data, t. ex. andra rå data som du ansluter till Sentinel.
+Aviseringar som utlöses i Microsoft-säkerhetslösningar som är anslutna till Azure Sentinel, till exempel Microsoft Cloud App Security och Microsoft Defender för identitet (tidigare Azure ATP). skapa inte incidenter automatiskt i Azure Sentinel. När du ansluter en Microsoft-lösning till Azure Sentinel kommer alla aviseringar som genereras i den tjänsten att lagras som rå data i Azure Sentinel, i tabellen säkerhets avisering i Azure Sentinel-arbetsytan. Du kan sedan använda dessa data, t. ex. andra rå data som du ansluter till Azure Sentinel.
 
 Du kan enkelt konfigurera Azure Sentinel för att automatiskt skapa incidenter varje gång en avisering utlöses i en ansluten Microsoft-säkerhetslösning genom att följa anvisningarna i den här artikeln.
 

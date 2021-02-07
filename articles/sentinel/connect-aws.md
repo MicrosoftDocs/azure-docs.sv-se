@@ -1,6 +1,6 @@
 ---
 title: Anslut AWS CloudTrail till Azure Sentinel | Microsoft Docs
-description: Använd AWS-anslutningen för att delegera Azure Sentinel-åtkomst till AWS-resurs loggar och skapa en förtroende relation mellan AWS CloudTrail och Sentinel.
+description: Använd AWS-anslutningen för att delegera Azure Sentinel-åtkomst till AWS-resurs loggar och skapa en förtroende relation mellan AWS CloudTrail och Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436614"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807605"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Ansluta Azure Sentinel till AWS CloudTrail
 
 Använd AWS-anslutningsprogrammet för att strömma dina AWS CloudTrail Management-händelser till Azure Sentinel. Den här anslutnings processen delegerar åtkomst för Azure Sentinel till dina AWS-resurs loggar och skapar en förtroende relation mellan AWS CloudTrail och Azure Sentinel. Detta görs på AWS genom att skapa en roll som ger behörighet till Azure Sentinel för att få åtkomst till dina AWS-loggar.
 
 > [!NOTE]
-> AWS-CloudTrail har [inbyggda begränsningar](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) i dess LOOKUPEVENTS-API. Den tillåter inte fler än två transaktioner per sekund (TPS) per konto och varje fråga kan returnera högst 50 poster. Om en enskild klient däremot genererar fler än 100 poster per sekund i en region, kommer efter släpningar och fördröjningar i data inmatningen att uppstå.
+> AWS-CloudTrail har [inbyggda begränsningar](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) i dess LOOKUPEVENTS-API. Den tillåter inte fler än två transaktioner per sekund (TPS) per konto och varje fråga kan returnera högst 50 poster. Om en enskild klientorganisation konstant genererar fler än 100 poster per sekund i en region kommer därför eftersläpningar och fördröjningar i datainmatningen att uppstå.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

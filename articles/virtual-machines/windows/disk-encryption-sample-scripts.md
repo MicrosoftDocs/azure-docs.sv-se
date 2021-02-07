@@ -1,5 +1,5 @@
 ---
-title: Exempelskript för Azure Disk Encryption
+title: Azure Disk Encryption exempel skript för virtuella Windows-datorer
 description: Den här artikeln är bilagan till Microsoft Azure disk kryptering för virtuella Windows-datorer.
 author: msmbaldwin
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 255e284cf8d54a9be59f09f5613cb2728417d234
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f113a1e559798328a2ef81336e8afff02732bb90
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912046"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804962"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Exempelskript för Azure Disk Encryption 
 
@@ -81,7 +81,7 @@ I följande tabell visas vilka parametrar som kan användas i PowerShell-skripte
 Avsnitten som följer är nödvändiga för att förbereda en förkrypterad Windows-VHD för distribution som en krypterad virtuell hård disk i Azure IaaS. Använd informationen för att förbereda och starta en ny virtuell Windows-dator (VHD) på Azure Site Recovery eller Azure. Mer information om hur du förbereder och laddar upp en virtuell hård disk finns i [överföra en generaliserad virtuell hård disk och använda den för att skapa nya virtuella datorer i Azure](upload-generalized-managed.md).
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>Uppdatera grup princip för att tillåta icke-TPM för OS-skydd
-Konfigurera BitLocker-grupprincip inställningen **BitLocker-diskkryptering** , som du hittar under dator konfiguration för **lokal dator princip**  >  **Computer Configuration**  >  **administrativa mallar**  >  **Windows-komponenter** . Om du ändrar den här inställningen till **operativ system enheter**  >  **krävs ytterligare autentisering vid start**  >  **Tillåt BitLocker utan en kompatibel TPM** , som visas i följande bild:
+Konfigurera BitLocker-grupprincip inställningen **BitLocker-diskkryptering**, som du hittar under dator konfiguration för **lokal dator princip**  >    >  **administrativa mallar**  >  **Windows-komponenter**. Om du ändrar den här inställningen till **operativ system enheter**  >  **krävs ytterligare autentisering vid start**  >  **Tillåt BitLocker utan en kompatibel TPM**, som visas i följande bild:
 
 ![Microsoft Antimalware i Azure](../media/disk-encryption/disk-encryption-fig8.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 9a80242422631995f6d5c24ba2118ee98a9b8d32
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576184"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806976"
 ---
 # <a name="public-ip-addresses"></a>Offentliga IP-adresser
 
@@ -64,7 +64,7 @@ Offentliga IP-adresser för standard-SKU:
 > Endast offentliga IP-adresser med Basic SKU är tillgängliga när du använder [IMDS för instans-metadata](../virtual-machines/windows/instance-metadata-service.md). Standard-SKU stöds inte.
 
 > [!NOTE]
-> Diagnostikinställningar visas inte under bladet om att använda en offentlig IP-adress för standard-SKU. Om du vill aktivera loggning på din Stanrd offentliga IP-adressresurs går du till diagnostikinställningar under Azure Monitor bladet och väljer din IP-adressresurs.
+> Diagnostikinställningar visas inte under bladet om att använda en offentlig IP-adress för standard-SKU. Om du vill aktivera loggning på din offentliga standard-IP-adressresurs navigerar du till diagnostikinställningar under Azure Monitor bladet och väljer din IP-adressresurs.
 
 ### <a name="basic"></a>Grundläggande
 

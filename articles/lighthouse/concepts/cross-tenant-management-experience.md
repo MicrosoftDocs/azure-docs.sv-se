@@ -3,12 +3,12 @@ title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
 ms.date: 02/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5180b2c28bc1157cb785c04f794cc5c9636764c8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 41047a35328d4eac370d98a6d660f20e5006a2bb
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576692"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805182"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -143,7 +143,7 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 
 - Hantera Azure Sentinel-resurser [i kund klienter](../../sentinel/multiple-tenants-service-providers.md)
 - [Spåra attacker och Visa säkerhets aviseringar över flera klienter](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- [Visa incidenter](../../sentinel/multiple-workspace-view.md) över flera Sentinel-arbetsytor som sprids över klienter
+- [Visa incidenter](../../sentinel/multiple-workspace-view.md) över flera Azure Sentinel-arbetsytor som sprids över klienter
 
 [Azure Service Health](../../service-health/index.yml):
 

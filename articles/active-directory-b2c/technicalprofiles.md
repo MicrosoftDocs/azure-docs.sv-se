@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5eff20ecb1366114ead80877b684ef512742803b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219680"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805402"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -448,14 +448,14 @@ Anta att du har en [REST API teknisk profil](restful-technical-profile.md) med e
 Följande exempel illustrerar användningen av inkludering:
 
 - *REST-API – common* – en vanlig teknisk profil med den grundläggande konfigurationen.
-- *Rest-ValidateProfile* – innehåller den tekniska profilen *REST-API-Commom* och anger indata och utgående anspråk.
-- *Rest-UpdateProfile* – innehåller den tekniska profilen *REST-API-Commom* , anger indata-anspråk och skriver över `ServiceUrl` metadata.
+- *Rest-ValidateProfile* – innehåller *REST-API – vanlig* teknisk profil och anger anspråk för indata och utdata.
+- *Rest-UpdateProfile* – innehåller *REST-API-common* Technical Profile, anger indata-anspråk och skriver över `ServiceUrl` metadata.
 
 ```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="REST-API-Commom">
+    <TechnicalProfile Id="REST-API-Common">
       <DisplayName>Base REST API configuration</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
@@ -480,7 +480,7 @@ Följande exempel illustrerar användningen av inkludering:
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="promoCode" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
@@ -492,7 +492,7 @@ Följande exempel illustrerar användningen av inkludering:
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />
       </InputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
