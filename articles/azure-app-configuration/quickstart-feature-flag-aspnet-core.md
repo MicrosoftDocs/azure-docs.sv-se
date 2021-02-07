@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663054"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806078"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snabb start: Lägg till funktions flaggor i en ASP.NET Core app
 
@@ -207,7 +207,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. Öppna *_Layout. cshtml* i den  \\ *delade* katalogen för vyer. Leta upp `<nav>` streckkoden under `<body>`  >  `<header>` . Infoga en ny `<feature>` tagg mellan *Start* -och *Sekretess* navigerings objekt, som du ser i de markerade raderna nedan.
 
-    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
+    :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="14-18":::
 
 1. Skapa en *vy/beta-* katalog och en *index. cshtml* -fil som innehåller följande markering:
 

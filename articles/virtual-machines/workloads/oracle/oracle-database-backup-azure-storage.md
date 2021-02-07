@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064247"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806281"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Säkerhetskopiera och återställa en Oracle Database 19c-databas på en virtuell Azure Linux-dator med Azure Storage
 
@@ -31,19 +31,19 @@ Den här artikeln visar hur du använder Azure Storage som ett medium för att s
    ssh azureuser@<publicIpAddress>
    ```
    
-2. Växla till **_roten_* _ användare:
+2. Växla till ***rot*** användaren:
  
    ```bash
    sudo su -
    ```
     
-3. Lägg till Oracle-användaren till _*_ /etc/-sudoers_ * _-filen:
+3. Lägg till Oracle-användaren till ***/etc/sudoers*** -filen:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. Det här steget förutsätter att du har en Oracle-instans (test) som körs på en virtuell dator med namnet _vmoracle19c *.
+4. Det här steget förutsätter att du har en Oracle-instans (test) som körs på en virtuell dator med namnet *vmoracle19c*.
 
    Växla användare till *Oracle* -användare:
 
@@ -182,31 +182,31 @@ Konfigurera först ditt lagrings konto.
 
 1. Konfigurera File Storage i Azure Portal
 
-    I Azure Portal väljer du ***+ skapa en resurs** _ och söker efter och väljer _*_lagrings konto_*_
+    I Azure Portal väljer du ***+ skapa en resurs** _ och söker efter och väljer _ *_lagrings konto_**
     
-    ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/storage-1.png)
+    ![Skärm bild som visar var du skapar en resurs och väljer lagrings konto.](./media/oracle-backup-recovery/storage-1.png)
     
-2. På sidan Skapa lagrings konto väljer du den befintliga resurs gruppen _*_RG-Oracle_*_, namnger ditt lagrings konto _*_Oracbkup1_*_ och väljer _*_Storage v2 (generalpurpose v2)_*_ för konto typ. Ändra replikeringen till _*_Lokalt Redundant lagring (LRS)_*_ och Ställ in prestanda som _*_standard_*_. Kontrol lera att platsen har angetts till samma region som alla andra resurser i resurs gruppen. 
+2. På sidan Skapa lagrings konto väljer du den befintliga resurs gruppen ***RG-Oracle** _, namnger ditt lagrings konto _*_Oracbkup1_*_ och väljer _*_Storage v2 (generalpurpose v2)_*_ för konto typ. Ändra replikeringen till _*_Lokalt Redundant lagring (LRS)_*_ och ange prestanda till _ *_standard_* *. Kontrol lera att platsen har angetts till samma region som alla andra resurser i resurs gruppen. 
     
-    ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/file-storage-1.png)
+    ![Skärm bild som visar var du kan välja den befintliga resurs gruppen.](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. Klicka på fliken _*_Avancerat_*_ och under Azure Files ange att _*_stora fil resurser_*_ ska _*_aktive ras_*_. Klicka på granska + skapa och klicka sedan på Skapa.
+3. Klicka på fliken ***Avancerat** _ och under Azure Files ange _*_stora fil resurser_*_ till _ *_aktiverat_* *. Klicka på granska + skapa och klicka sedan på Skapa.
     
-    ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. När lagrings kontot har skapats går du till resursen och väljer _*_fil resurser_*_
-    
-    ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. Klicka på _*_ + fil share_ *_ och i bladet _*_ny fil resurs_*_ namn din fil resurs _*_orabkup1_*_. Ange _*_kvot_*_ till _*_10240_*_ GIB och kontrol lera _*_transaktion optimerad_*_ som nivå. Kvoten visar en övre gräns som fil resursen kan växa till. När vi använder standard lagring är resurserna PAYG och de är inte etablerade så att du kan ställa in den på 10 TiB inte kostar mer än vad du använder. Om din säkerhets kopierings strategi kräver mer lagrings utrymme måste du ange kvoten till en lämplig nivå för att lagra alla säkerhets kopior.   När du är klar med det nya fil resurs bladet klickar du på _*_skapa_* _.
-    
-    ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/file-storage-4.png)
+    ![Skärm bild som visar var du ställer in stora fil resurser på aktive rad.](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. När du har skapat klickar du på _*_orabkup1_*_ på sidan fil resurs inställningar. 
-    Klicka på fliken _*_Anslut_*_ för att öppna bladet Anslut och klicka sedan på fliken _*_Linux_*_ . Kopiera de kommandon som finns för att montera fil resursen med SMB-protokoll. 
+4. När lagrings kontot har skapats går du till resursen och väljer ***fil resurser***
+    
+    ![Skärm bild som visar var du kan välja fil resurser.](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. Klicka på ***+ fil resurs** _ och i det _*_nya fil resurs_*_ bladet namnger du fil resursen _*_orabkup1_*_. Ange _*_kvoten_*_ till _*_10240_*_ GIB och kontrol lera transaktionen som är _*_optimerad_*_ som nivån. Kvoten visar en övre gräns som fil resursen kan växa till. När vi använder standard lagring är resurserna PAYG och de är inte etablerade så att du kan ställa in den på 10 TiB inte kostar mer än vad du använder. Om din säkerhets kopierings strategi kräver mer lagrings utrymme måste du ange kvoten till en lämplig nivå för att lagra alla säkerhets kopior.   När du har slutfört det nya fil resurs bladet klickar du på _ *_skapa_* *.
+    
+    ![Skärm bild som visar var du kan lägga till en ny fil resurs.](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. När du har skapat klickar du på ***orabkup1*** på sidan fil resurs inställningar. 
+    Klicka på fliken ***Connect** _ för att öppna bladet Anslut och klicka sedan på fliken _ *_Linux_**. Kopiera de kommandon som finns för att montera fil resursen med SMB-protokoll. 
     
     ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ När du använder RMAN och Azure File Storage för säkerhets kopiering av datab
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. Följande kommandon använder RMAN för att återställa saknade data och återställa databasen:

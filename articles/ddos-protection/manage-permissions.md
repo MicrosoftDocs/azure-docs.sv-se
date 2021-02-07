@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813878"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806264"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>Hantera DDoS Protections planer: behörigheter och begränsningar
 
@@ -30,7 +30,7 @@ En DDoS skydds plan fungerar mellan regioner och prenumerationer. Samma plan kan
 
 För att kunna arbeta med DDoS-skydds planer måste ditt konto tilldelas rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller en [anpassad](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roll som har tilldelats lämpliga åtgärder i följande tabell:
 
-| Åtgärd                                            | Namn                                     |
+| Action                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/Read        | Läs en DDoS skydds plan              |
 | Microsoft. Network/ddosProtectionPlans/Write       | Skapa eller uppdatera en DDoS-skydds plan  |
@@ -43,7 +43,7 @@ För att aktivera DDoS-skydd för ett virtuellt nätverk måste ditt konto ocks�
 
 Det krävs inte att skapa mer än en plan för de flesta organisationer. Det går inte att flytta en plan mellan prenumerationer. Om du vill ändra prenumerationen som en plan finns i måste du ta bort den befintliga planen och skapa en ny.
 
-För kunder som har olika prenumerationer och som vill se till att en enda plan distribueras över sin klient för kostnads kontroll kan du använda Azure Policy för att [begränsa skapandet av Azure DDoS Protection standard-planer](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Den här principen blockerar skapandet av eventuella DDoS planer, om inte prenumerationen tidigare har marker ATS som ett undantag. Den här principen visar också en lista över alla prenumerationer som har en DDoS-plan distribuerad men bör inte markeras som inkompatibel.
+För kunder som har olika prenumerationer och som vill se till att en enda plan distribueras över sin klient för kostnads kontroll kan du använda Azure Policy för att [begränsa skapandet av Azure DDoS Protection standard-planer](https://aka.ms/ddosrestrictplan). Den här principen blockerar skapandet av eventuella DDoS planer, om inte prenumerationen tidigare har marker ATS som ett undantag. Den här principen visar också en lista över alla prenumerationer som har en DDoS-plan distribuerad men bör inte markeras som inkompatibel.
 
 
 ## <a name="next-steps"></a>Nästa steg

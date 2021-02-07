@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2e1536d4f2ea7d71691c611e9127109c154f3266
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009780"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807351"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Översikt: Automatisera distribution av Azure Logic Apps med hjälp av Azure Resource Manager mallar
 
@@ -86,7 +86,7 @@ En Logic app-mall har flera `parameters` objekt som finns på olika nivåer och 
 * Anslutningar som din logik använder för att komma åt andra tjänster och system via [hanterade anslutningar](../connectors/apis-list.md)
 * Andra resurser som din Logic app behöver för distribution
 
-  Om din Logic app t. ex. använder ett [integrations konto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) för B2B-scenarier (Business-to-Business), `parameters` deklarerar mallens översta objekt den parameter som godkänner resurs-ID: t för det integrations kontot.
+  Om din Logic app t. ex. använder ett [integrations konto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) för ett B2B-scenario (Business-to-Business), deklarerar mallens objekt på översta nivån `parameters` den parameter som accepterar resurs-ID: t för det integrations kontot.
 
 Här är den allmänna strukturen och syntaxen för en parameter definition, som beskrivs fullständigt av [parametrarna-Resource Manager-mallens struktur och syntax](../azure-resource-manager/templates/template-syntax.md#parameters):
 
@@ -331,11 +331,11 @@ Här följer de attribut som är speciella för din resurs definition för Logic
 | Attribut | Krävs | Typ | Beskrivning |
 |-----------|----------|------|-------------|
 | `state` | Ja | Sträng | Din Logi Kap par status vid distribution där innebär att din Logi Kap par `Enabled` är Live och `Disabled` innebär att din Logic app är inaktiv. Om du till exempel inte är redo för din Logi Kap par, men vill distribuera ett utkast till en version, kan du använda `Disabled` alternativet. |
-| `integrationAccount` | No | Objekt | Om din Logic app använder ett integrations konto, som lagrar artefakter för Business-to-Business (B2B)-scenarier, inkluderar det här objektet `id` attributet, som anger ID: t för integrations kontot. |
-| `definition` | Yes | Objekt | Din Logic Apps-underliggande arbets flödes definition, som är samma objekt som visas i kodvyn och beskrivs fullständigt i avsnittet [schema referens för språk för arbets flödes definition](../logic-apps/logic-apps-workflow-definition-language.md) . I den här arbets flödes definitionen `parameters` deklarerar objektet parametrar för de värden som ska användas vid Logic app Runtime. Mer information finns i [arbets flödes definitioner och parametrar](#workflow-definition-parameters). <p><p>Om du vill visa attributen i din Logic Apps arbets flödes definition växlar du från "designvyn" till "kodvyn" i Azure Portal eller Visual Studio, eller genom att använda ett verktyg som [Azure Resource Explorer](https://resources.azure.com). |
-| `parameters` | No | Objekt | [Parameter värden för arbets flödes definition](#workflow-definition-parameters) som ska användas vid Logic app Runtime. Parameter definitionerna för dessa värden visas i [arbets flödes definitionens](#workflow-definition-parameters)Parameters-objekt. Om din Logic app använder [hanterade anslutningar](../connectors/apis-list.md) för att komma åt andra tjänster och system, innehåller det här objektet dessutom ett `$connections` objekt som anger de anslutnings värden som ska användas vid körning. |
-| `accessControl` | No | Objekt | För att ange säkerhetsattribut för din Logi Kap par, till exempel att begränsa IP-åtkomsten till begär ande utlösare eller köra tidigare indata och utdata. Mer information finns i [säker åtkomst till Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
-| `runtimeConfiguration` | No | Objekt | För att ange `operationOptions` egenskaper som styr hur din Logic app beter sig vid körning. Du kan till exempel köra din Logic app i [läget för hög data flöde](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode). |
+| `integrationAccount` | Inga | Objekt | Om din Logic app använder ett integrations konto, som lagrar artefakter för Business-to-Business (B2B)-scenarier, inkluderar det här objektet `id` attributet, som anger ID: t för integrations kontot. |
+| `definition` | Ja | Objekt | Din Logic Apps-underliggande arbets flödes definition, som är samma objekt som visas i kodvyn och beskrivs fullständigt i avsnittet [schema referens för språk för arbets flödes definition](../logic-apps/logic-apps-workflow-definition-language.md) . I den här arbets flödes definitionen `parameters` deklarerar objektet parametrar för de värden som ska användas vid Logic app Runtime. Mer information finns i [arbets flödes definitioner och parametrar](#workflow-definition-parameters). <p><p>Om du vill visa attributen i din Logic Apps arbets flödes definition växlar du från "designvyn" till "kodvyn" i Azure Portal eller Visual Studio, eller genom att använda ett verktyg som [Azure Resource Explorer](https://resources.azure.com). |
+| `parameters` | Inga | Objekt | [Parameter värden för arbets flödes definition](#workflow-definition-parameters) som ska användas vid Logic app Runtime. Parameter definitionerna för dessa värden visas i [arbets flödes definitionens](#workflow-definition-parameters)Parameters-objekt. Om din Logic app använder [hanterade anslutningar](../connectors/apis-list.md) för att komma åt andra tjänster och system, innehåller det här objektet dessutom ett `$connections` objekt som anger de anslutnings värden som ska användas vid körning. |
+| `accessControl` | Inga | Objekt | För att ange säkerhetsattribut för din Logi Kap par, till exempel att begränsa IP-åtkomsten till begär ande utlösare eller köra tidigare indata och utdata. Mer information finns i [säker åtkomst till Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `runtimeConfiguration` | Inga | Objekt | För att ange `operationOptions` egenskaper som styr hur din Logic app beter sig vid körning. Du kan till exempel köra din Logic app i [läget för hög data flöde](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode). |
 |||||
 
 Mer information om resurs definitioner för dessa Logic Apps-objekt finns i [Microsoft. Logic-resurs typer](/azure/templates/microsoft.logic/allversions):
@@ -627,7 +627,7 @@ När din Logi Kap par skapar och använder anslutningar till andra tjänster och
 }
 ```
 
-Anslutnings resurs definitioner hänvisar till mallens toppnivå parametrar för sina värden, vilket innebär att du kan ange dessa värden vid distributionen genom att använda en parameter fil. Se till att anslutningarna använder samma Azure-resurs grupp och plats som din Logic app.
+Anslutnings resurs definitioner hänvisar till mallens toppnivå parametrar för sina värden, så att du kan ange dessa värden vid distributionen genom att använda en parameter fil. Se till att anslutningarna använder samma Azure-resurs grupp och plats som din Logic app.
 
 Här är en exempel resurs definition för en Office 365 Outlook-anslutning och motsvarande mallparametrar:
 
@@ -746,12 +746,12 @@ Det här exemplet visar interaktioner mellan din Logic Apps resurs definition oc
                      }
                   }
                }
-            },
-            <other-logic-app-resource-information>,
-            "dependsOn": [
-               "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
-            ]
-         }
+            }
+         },
+         <other-logic-app-resource-information>,
+         "dependsOn": [
+            "[resourceId('Microsoft.Web/connections', parameters('office365_1_Connection_Name'))]"
+         ]
          // End logic app resource definition
       },
       // Office 365 Outlook API connection resource definition
@@ -982,7 +982,7 @@ Vissa anslutningar stöder användning av en Azure Active Directory (Azure AD) [
 
 **Mall parameter definitioner**
 
-Mallens översta nivå- `parameters` objekt deklarerar dessa parametrar för exempel anslutningen:
+Mallens översta nivå- `parameters` objekt deklarerar följande parametrar för exempel anslutningen:
 
 ```json
 {

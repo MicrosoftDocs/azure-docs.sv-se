@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 1a8ed80daa4406f32909a6622b8649f37ec48063
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: accb9bbf195daa3d25e1aed109e36ef309083385
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064219"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805317"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Identifiera och utforska data i ADF med avdelningens kontroll
 
@@ -47,7 +47,7 @@ Om du vill identifiera data som registrerats och genomsökts av Azure avdelninge
 ### <a name="actions-that-you-can-perform-over-datasets-with-data-factory-resources"></a>Åtgärder som du kan utföra över data uppsättningar med Data Factory resurser 
 Du kan direkt skapa länkad tjänst, data uppsättning eller data flöde med de data du söker via Azure avdelningens kontroll.
 
-:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Skärm bild för att utföra över data uppsättningar.":::
+:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Skärm bild som visar hur du kan skapa länkad tjänst, data uppsättning eller data flöde direkt via de data du söker via Azure avdelningens kontroll.":::
 
 ##  <a name="nextsteps"></a>Nästa steg 
 

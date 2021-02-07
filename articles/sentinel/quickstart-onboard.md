@@ -1,6 +1,6 @@
 ---
 title: 'Snabb start: publicera i Azure Sentinel'
-description: I den här snabb starten lär du dig att använda Azure Sentinel på kort genom att först aktivera Sentinel och sedan ansluta data källor.
+description: I den här snabb starten lär du dig att använda Azure Sentinel på kort genom att först aktivera det och sedan ansluta data källor.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248653"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807775"
 ---
-# <a name="quickstart-on-board-azure-sentinel"></a>Snabbstart: Registrera Azure Sentinel
+# <a name="quickstart-on-board-azure-sentinel"></a>Snabb start: fordonsbaserad Azure Sentinel
 
 I den här snabb starten lär du dig att använda Azure Sentinel på kort sikt. 
 
@@ -41,7 +41,7 @@ När du har anslutit dina data källor väljer du från ett galleri med arbets b
 
 ### <a name="geographical-availability-and-data-residency"></a>Geografisk tillgänglighet och data placering
 
-- Azure Sentinel kan köras på arbets ytor i de flesta [ga-regioner med Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) förutom regionerna Kina och Tyskland (suverän). Ibland kan det ta lite tid för nya Log Analytics regioner att publicera kontroll tjänsten. 
+- Azure Sentinel kan köras på arbets ytor i de flesta [ga-regioner med Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) förutom regionerna Kina och Tyskland (suverän). Ibland kan det ta lite tid för nya Log Analytics regioner att publicera Azure Sentinel-tjänsten. 
 
 - Data som genereras av Azure Sentinel, till exempel incidenter, bok märken och analys regler, kan innehålla viss kund information från kundens Log Analytics arbets ytor. Dessa Azure Sentinel-genererade data sparas i det geografiska området som anges i följande tabell, enligt det geografiska område där arbets ytan finns:
 
@@ -67,7 +67,7 @@ När du har anslutit dina data källor väljer du från ett galleri med arbets b
 
 1. Välj den arbets yta som du vill använda eller skapa en ny. Du kan köra Azure Sentinel på fler än en arbets yta, men data isoleras till en enda arbets yta.
 
-   ![Välj en arbets yta](./media/quickstart-onboard/choose-workspace.png)
+   ![Välj en arbetsyta](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Standard arbets ytor som skapats av Azure Security Center visas inte i listan. Du kan inte installera Azure Sentinel på dem.

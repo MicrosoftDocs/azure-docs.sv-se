@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: 6a891a301d5869603a7d90d28bb9063d7d5bdb1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660584"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807011"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>Ta med din egen Machine Learning (ML) till Azure Sentinel
 
@@ -82,7 +82,7 @@ BYOD ML-paketet innehåller bästa praxis och forskning från Microsoft i den f�
 | Filnamn | Description |
 | --------- | ----------- |
 | azure_sentinel_utilities. WHL | Innehåller verktyg för att läsa blobbar från Azure och skriva till Log Analytics. |
-| AnomalousRASampleData | Antecknings boken demonstrerar användningen av avvikande resurs åtkomst modell i Sentinel med genererad utbildning och testning av exempel data. |
+| AnomalousRASampleData | Notebook visar användningen av avvikande resurs åtkomst modell i Azure Sentinel med genererad utbildning och testning av exempel data. |
 | AnomalousRATraining. ipynb | Bärbar dator för att träna algoritmen, skapa och spara modeller. |
 | AnomalousRAScoring. ipynb | Bärbar dator om du vill schemalägga modellen för körning, visualisera resultatet och skriv poängen tillbaka till Azure Sentinel. |
 |
@@ -99,7 +99,7 @@ Du måste konfigurera din egen Databricks-miljö om du inte redan har en. Instru
 
 ### <a name="auto-export-instruction"></a>Automatiskt exportera-instruktion
 
-Om du vill bygga anpassade ML-modeller baserat på dina egna data i Sentinel måste du exportera dina data från Log Analytics till en Blob Storage-eller Event Hub-resurs, så att den ML-modellen kan komma åt den från Databricks. Lär dig hur du matar [in data i Azure Sentinel](connect-data-sources.md).
+Om du vill bygga anpassade ML-modeller baserat på dina egna data i Azure Sentinel måste du exportera dina data från Log Analytics till en Blob Storage-eller Event Hub-resurs, så att ML-modellen kan komma åt den från Databricks. Lär dig hur du matar [in data i Azure Sentinel](connect-data-sources.md).
 
 I det här exemplet måste du ha dina utbildnings data för fil resursens åtkomst logg i Azure Blob Storage. Formatet på data dokumenteras i antecknings boken och biblioteken.
 
@@ -141,7 +141,7 @@ För anpassade data som inte stöds av Log Analytics Auto-export kan du använda
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Korrelera med data utanför Azure Sentinel
 
-Du kan också hämta data utanför Azure Sentinel till Blob Storage eller Event Hub och korrelera dem med kontroll data för att bygga dina ML-modeller. 
+Du kan också hämta data utanför Azure Sentinel till Blob Storage eller Event Hub och korrelera dem med Azure Sentinel-data för att bygga dina ML-modeller. 
  
 ### <a name="copy-and-install-the-related-packages"></a>Kopiera och installera de relaterade paketen
 

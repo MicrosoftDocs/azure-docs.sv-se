@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056266"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806163"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>Importera lösen ord till Microsoft Authenticator-appen
 
@@ -39,21 +39,21 @@ Google Chrome-användare på Android och Apple-telefoner kan importera sina lös
 
 1. Tryck på ![ Google Chrome-ellipsen längst ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) upp till höger för Android-telefoner eller längst ned till höger för iOS-enheter och tryck sedan på **Inställningar.**
 
-   &nbsp; | &nbsp;
+   Plattform | Länk
    ---------- | --------
    Android | ![Meny plats för Google Chrome-inställningar](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Meny ikonen Google Chrome-inställningar](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. I **Inställningar** öppnar du **lösen ord**.
 
-   &nbsp; | &nbsp;
+   Plattform | Länk
    ---------- | --------
    Android | ![Sökväg till kommandot Andoid Chrome passwords](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Kommando plats för Apple Chrome-lösenord](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. På Android-enheter trycker du på ![ Google Chrome ellips-menyn längst ](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) upp till höger för Android-telefoner eller längst ned till höger för iOS-enheter och sedan på **Exportera lösen ord**.
 
-   &nbsp; | &nbsp;
+   Plattform | Länk
    ---------- | --------
    Android | ![Sökväg till exportera lösen ord för Android Chrome](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Apple Chrome-sökväg för lösen ords export](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ Google Chrome-användare på Android och Apple-telefoner kan importera sina lös
 
 1. När lösen orden har exporter ATS, uppmanas du att välja vilken app du importerar till. Välj **autentiserare** för att starta importen av lösen ord. Du får information om import status när den är klar.
 
-   &nbsp; | &nbsp;
+   Plattform | Länk
    ---------- | --------
    Android | ![Sökväg för att importera lösen ord för Android Chrome](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Apple Chrome-plats för import av lösen ord](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ Med Firefox kan du bara exportera lösen ord från Skriv bordets webbläsare, s�
 
       1. Överför den exporterade CSV-filen på din Android-eller iOS-telefon med ett önskat och säkert sätt och hämta den sedan. Sedan delar du CSV-filen med Authenticator-appen för att starta importen.
 
-         &nbsp; | &nbsp;
+         Plattform | Länk
          ---------- | --------
          Android | ![Sökväg för att importera lösen ord för Android Chrome](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Chrome-plats för import av lösen ord](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ LastPass har endast stöd för att exportera lösen ord från en webbläsare, s�
 
       1. Överför den exporterade CSV-filen på din smartphone med ett önskat och säkert sätt och hämta den sedan. Dela sedan CSV-filen med Authenticator-appen för att starta importen.
 
-         &nbsp; | &nbsp;
+         Plattform | Länk
          ---------- | --------
          Android | ![Sökväg till import lösen ord för Android-LastPass](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple LastPass-plats för import av lösen ord](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ Bitwarden har endast stöd för att exportera lösen ord från en webbläsare, s
 
       1. Överför den exporterade CSV-filen på din smartphone med ett önskat och säkert sätt och hämta den sedan. Dela sedan CSV-filen med Authenticator-appen för att starta importen.
 
-         &nbsp; | &nbsp;
+         Plattform | Länk
          ---------- | --------
          Android | ![Sökväg till import lösen ord för Android-Bitwarden](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple Bitwarden-plats för import av lösen ord](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ RoboForm tillåter endast export av lösen ord från sin Desktop-app, så se til
 
       1. Överför den exporterade CSV-filen på din smartphone med ett önskat och säkert sätt och hämta den sedan. Dela sedan CSV-filen med Authenticator-appen för att starta importen.
 
-         &nbsp; | &nbsp;
+         Plattform | Länk
          ---------- | --------
          Android | ![Sökväg till import lösen ord för Android-RoboForm](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Apple RoboForm-plats för import av lösen ord](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Om steg för att importera lösen ord från din lösen ords hanterare inte visas
 
       1. Överför den exporterade CSV-filen på din smartphone med ett önskat och säkert sätt och hämta den sedan. Dela sedan CSV-filen med Authenticator-appen för att starta importen.
 
-         &nbsp; | &nbsp;
+         Plattform | Länk
          ---------- | --------
          Android | ![Plats för import lösen ord för Android CSV](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Plats för import lösen ord för Apple CSV](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)

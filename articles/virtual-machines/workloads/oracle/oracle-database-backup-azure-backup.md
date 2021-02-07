@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072412"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806417"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Säkerhetskopiera och återställa en Oracle Database 19c-databas på en virtuell Azure Linux-dator med Azure Backup
 
@@ -697,7 +697,7 @@ Slutför följande steg för att återställa hela den virtuella datorn:
 
    1. I Azure Portal väljer du **+ skapa en resurs** och söker efter och väljer **lagrings konto**.
     
-      ![Sidan Lägg till lagrings konto](./media/oracle-backup-recovery/storage-1.png)
+      ![Skärm bild som visar var du skapar en resurs.](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. På sidan Skapa lagrings konto väljer du den befintliga resurs gruppen **RG-Oracle**, namnger ditt lagrings konto **Oracrestore** och väljer **Storage v2 (generalpurpose v2)** för konto typ. Ändra replikeringen till **Lokalt Redundant lagring (LRS)** och Ställ in prestanda som **standard**. Kontrol lera att platsen har angetts till samma region som alla andra resurser i resurs gruppen. 
@@ -877,7 +877,7 @@ När den virtuella datorn har återställts bör du tilldela om den ursprungliga
 
 5.  Nu måste du koppla från NÄTVERKSKORTet som skapades med återställnings åtgärden för den virtuella datorn eftersom det är konfigurerat som det primära gränssnittet. Klicka på **Koppla från nätverks gränssnittet** och välj det nya nätverkskortet som liknar **vmoracle19c-NIC-xxxxxxxxxxxx** och klicka sedan på **OK**
 
-    ![IP-adress värde](./media/oracle-backup-recovery/create-ip-05.png)
+    ![Skärm bild som visar var du väljer koppla från nätverks gränssnittet.](./media/oracle-backup-recovery/create-ip-05.png)
     
     Den återskapade virtuella datorn kommer nu att ha det ursprungliga NÄTVERKSKORTet, som är associerat med reglerna för den ursprungliga IP-adressen och nätverks säkerhets gruppen
     

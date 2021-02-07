@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7d045ad104f8e2055ae85b74f4aae8f4d3fd61a4
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5d2d923fc448beeff8fa165226890d88d97d01ad
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509527"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805673"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivera och konfigurera sensor
 
@@ -204,7 +204,7 @@ Du kommer åt konsol verktyg från sido menyn.
 | Fönster | Ikon | Description |
 |---|---|---|
 | Användare | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Definiera användare och roller med olika åtkomst nivåer. |
-| Styr | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Vidarebefordra aviserings information till partner och interna källor (till exempel Sentinel) som integreras med Defender för IoT, till e-postadresser, till webhook-servrar med mera. <br /> Mer information finns i [vidarebefordra aviserings information](how-to-forward-alert-information-to-partners.md) . |
+| Styr | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Vidarebefordra aviserings information till partner och interna källor (till exempel Azure Sentinel) som integreras med Defender för IoT, till e-postadresser, till webhook-servrar med mera. <br /> Mer information finns i [vidarebefordra aviserings information](how-to-forward-alert-information-to-partners.md) . |
 | Systeminställningar | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | Konfigurera systeminställningarna. Definiera till exempel DHCP-inställningar, ange information om e-postservern eller skapa port Ali Aset. |
 | Importera inställningar | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | Visa fönstret **Importera inställningar** . Du kan utföra manuella ändringar i en enhets information.<br /> Mer information finns i [Importera enhets information](how-to-import-device-information.md) . |
 

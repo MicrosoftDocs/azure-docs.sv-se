@@ -8,20 +8,20 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: yelevin
-ms.openlocfilehash: df132c35ebb04596d91720431f5b08cb88e2abd9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a3a09ceffc75e2d396d7bd7aeedd97b7f2b6ec2b
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98104209"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807741"
 ---
 # <a name="connect-azure-sql-database-diagnostics-and-auditing-logs"></a>Anslut Azure SQL Database-diagnostik och gransknings loggar
 
 Azure SQL är en fullständigt hanterad databas motor för PaaS (Platform-as-a-Service) som hanterar de flesta funktioner för databas hantering, till exempel uppgradering, uppdatering, säkerhets kopiering och övervakning, utan medverkan från användaren. 
 
-Med Azure SQL Database Connector kan du strömma dina databasers gransknings-och diagnostikloggar till Sentinel, så att du kontinuerligt kan övervaka aktivitet i alla dina instanser.
+Med Azure SQL Database Connector kan du strömma dina databasers gransknings-och diagnostikloggar till Azure Sentinel, så att du kontinuerligt kan övervaka aktivitet i alla dina instanser.
 
-- Genom att ansluta diagnostikloggar kan du skicka databasens diagnostikloggar av olika data typer till din Sentinel-arbetsyta.
+- Genom att ansluta diagnostikloggar loggar kan du skicka databasens diagnostikloggar av olika data typer till din Azure Sentinel-arbetsyta.
 
 - Genom att ansluta gransknings loggar kan du strömma säkerhets gransknings loggar från alla dina Azure SQL-databaser på server nivå.
 
@@ -50,7 +50,7 @@ Läs mer om [övervakning av Azure SQL-databaser](../azure-sql/database/metrics-
 1. **(Valfritt)** Om du vill hitta din databas resurs enkelt, väljer du **Lägg till filter** i fältet Filter överst.
     1. Välj **resurs typ** i list rutan **filter** .
     1. I list rutan **värde** avmarkerar du **Markera alla** och väljer sedan **SQL Database**.
-    1. Klicka på **Använd**.
+    1. Klicka på **Applicera**.
     
 1. Välj den databas resurs vars diagnostikloggar du vill skicka till Azure Sentinel.
 

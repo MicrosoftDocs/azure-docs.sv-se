@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 9117474c3cbf5087a5b63512fcc17c4771bf7aa6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343883"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805520"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Lägga till en API-anslutning till ett användar flöde för registrering (för hands version)
 
@@ -36,7 +36,7 @@ Om du vill använda en [API-anslutning](api-connectors-overview.md)skapar du fö
 6. Ange **slut punkts-URL** för API-anropet.
 7. Ange autentiseringsinformation för API: et.
 
-   - Det finns för närvarande endast stöd för grundläggande autentisering. Om du vill använda ett API utan grundläggande autentisering i utvecklings syfte anger du bara ett "dummy"- **användar namn** och **lösen ord** som ditt API kan ignorera. För användning med en Azure-funktion med en API-nyckel kan du inkludera koden som en frågeparameter i **slut punkts-URL: en** (till exempel https []() ://contoso.azurewebsites.NET/API/Endpoint <b>? Code = 0123456789</b>).
+   - Det finns för närvarande endast stöd för grundläggande autentisering. Om du vill använda ett API utan grundläggande autentisering i utvecklings syfte anger du bara ett "dummy"- **användar namn** och **lösen ord** som ditt API kan ignorera. För användning med en Azure-funktion med en API-nyckel kan du inkludera koden som en frågeparameter i **slut punktens URL** (t. ex. `https://contoso.azurewebsites.net/api/endpoint?code=0123456789` ).
 
    ![Konfigurera en ny API-anslutning](./media/add-api-connector/api-connector-config.png)
 8. Välj **Spara**.
@@ -103,7 +103,7 @@ Följ dessa steg om du vill lägga till en API-anslutning till ett registrerings
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>När du har loggat in med en identitets leverantör
 
-En API-anslutning i det här steget i registrerings processen anropas omedelbart när användaren autentiseras med en identitets leverantör (som Google, Facebook, & Azure AD). Det här steget föregår *_sidan * Attribute Collection_* _, som är det formulär som visas för användaren att samla in användarattribut. Det här steget anropas inte om en användare registreras med ett lokalt konto.
+En API-anslutning i det här steget i registrerings processen anropas omedelbart när användaren autentiseras med en identitets leverantör (som Google, Facebook, & Azure AD). Det här steget föregår ***sidan för attribut samling***, som är det formulär som visas för användaren att samla in användarattribut. Det här steget anropas inte om en användare registreras med ett lokalt konto.
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Exempel förfrågan skickades till API: et i det här steget
 ```http
@@ -241,7 +241,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | Sträng            | Ja      | API-versionen.                                                                                                                                                                                                                                                                |
 | åtgärd                                             | Sträng            | Ja      | Värdet måste vara `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Inga       | Returnerade värden kan skriva över värden som samlas in från en användare. De kan också returneras i token om de väljs som _ * program anspråk * *.                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Inga       | Returnerade värden kan skriva över värden som samlas in från en användare. De kan också returneras i token om de väljs som ett **program anspråk**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Inga       | Anspråket behöver inte innehålla något `_<extensions-app-id>_` . Returnerade värden kan skriva över värden som samlas in från en användare. De kan också returneras i token om de väljs som ett **program anspråk**.  |
 
 ### <a name="example-of-a-blocking-response"></a>Exempel på ett blockerande svar
@@ -304,7 +304,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Använda Server lös moln funktioner
 Funktioner utan server, t. ex. HTTP-utlösare i Azure Functions, ger ett enkelt sätt att skapa API-slutpunkter att använda med API-anslutningen. Du kan använda funktionen för Server lös molnet till [exempel](code-samples.md#api-connectors)utföra validerings logik och begränsa registreringen till vissa e-postdomäner. Moln funktionen utan server kan också anropa och anropa andra webb-API: er, användar lager och andra moln tjänster för mer komplexa scenarier.
 
-### <a name="best-practices"></a>Bästa praxis
+### <a name="best-practices"></a>Rekommenderade metoder
 Se till att:
 * Ditt API följer API-begäran och svars avtalen enligt beskrivningen ovan. 
 * **Slut punkts-URL: en** för API-anslutningen pekar på rätt API-slutpunkt.

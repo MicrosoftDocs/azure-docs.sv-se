@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bde1c503d0aaaff1afcee67a26245d5021c43bb4
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995870"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807758"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-hanterings lösning i Azure (för hands version)
 
@@ -95,8 +95,8 @@ ms.locfileid: "95995870"
 > - [Identifiera hot som är färdiga](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Skapa anpassade analysregler för att identifiera misstänkta hot](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Övervaka dina data](../../sentinel/tutorial-monitor-your-data.md)
-> - [Undersök incidenter med Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
-> - [Konfigurera automatiska hot svar i Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
+> - [Undersöka incidenter med Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
+> - [Konfigurera automatiska svar på hot i Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Azure Sentinel GitHub-community](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>F: tillhandahåller Azure Sentinel ytterligare anslutningar som en del av lösningen?
@@ -109,7 +109,7 @@ ms.locfileid: "95995870"
 > - Om du inte avpublicera din lösning manuellt den 31 oktober kommer dina data att kopplas från automatiskt och **OfficeActivity** -tabellen tas bort. Dessutom kan du fortfarande återställa tabellen när du aktiverar Office 365-anslutaren i Azure Sentinel, enligt beskrivningen nedan.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>F: överförs data till den nya lösningen?
-> Ja. När du tar bort **Office 365** -lösningen från arbets ytan blir dess data tillfälligt otillgängliga eftersom schemat tas bort. När du aktiverar den nya **Office 365** -anslutningen i Sentinel återställs schemat till arbets ytan och alla data som redan har samlats in blir tillgängliga. 
+> Ja. När du tar bort **Office 365** -lösningen från arbets ytan blir dess data tillfälligt otillgängliga eftersom schemat tas bort. När du aktiverar den nya **Office 365** -anslutningen i Azure Sentinel, återställs schemat till arbets ytan och alla data som redan har samlats in blir tillgängliga. 
  
 
 Med hanterings lösningen för Office 365 kan du övervaka din Office 365-miljö i Azure Monitor.
@@ -462,7 +462,7 @@ Dessa poster skapas som svar på fil åtgärder i SharePoint.
 
 Följande tabell innehåller exempel på logg frågor för uppdaterings poster som samlas in av den här lösningen.
 
-| Fråga | Description |
+| Söka i data | Description |
 | --- | --- |
 |Antal åtgärder på din Office 365-prenumeration |OfficeActivity &#124; sammanfatta antal () efter åtgärd |
 |Användning av SharePoint-webbplatser|OfficeActivity &#124; där OfficeWorkload = ~ "SharePoint" &#124; sammanfatta antal () efter SiteUrl \| Sortera efter antal ASC|

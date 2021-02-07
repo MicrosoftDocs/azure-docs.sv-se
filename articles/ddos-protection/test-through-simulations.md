@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: e95495e48725a68ab1fe3f37d235e5765b2c8015
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537831"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806247"
 ---
 # <a name="test-through-simulations"></a>Testa genom simuleringar
 
@@ -63,7 +63,7 @@ När resursen är utsatt för angrepp bör du se att värdet ändras från **0**
 
 ### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint Cloud API-skript
 
-Det här [API-skriptet](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) kan användas för att automatisera DDoS-testning genom att köra en gång eller använda cron för att schemalägga vanliga tester. Detta är användbart för att verifiera att loggningen är korrekt konfigurerad och att identifierings-och svars procedurerna är effektiva. Skripten kräver ett Linux-operativsystem (testat med Ubuntu 18,04-LTS) och python 3. Installera nödvändiga komponenter och API-klienten med hjälp av det inkluderade skriptet eller med hjälp av dokumentationen på [BreakingPoint Cloud](http://breakingpoint.cloud/) -webbplatsen.
+Det här [API-skriptet](https://aka.ms/ddosbreakingpoint) kan användas för att automatisera DDoS-testning genom att köra en gång eller använda cron för att schemalägga vanliga tester. Detta är användbart för att verifiera att loggningen är korrekt konfigurerad och att identifierings-och svars procedurerna är effektiva. Skripten kräver ett Linux-operativsystem (testat med Ubuntu 18,04-LTS) och python 3. Installera nödvändiga komponenter och API-klienten med hjälp av det inkluderade skriptet eller med hjälp av dokumentationen på [BreakingPoint Cloud](http://breakingpoint.cloud/) -webbplatsen.
 
 ## <a name="next-steps"></a>Nästa steg
 

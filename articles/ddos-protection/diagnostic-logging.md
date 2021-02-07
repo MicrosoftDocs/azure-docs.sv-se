@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 42d4467a6441e517ef3194f701eb47e7e68505b1
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915172"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806315"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Visa och konfigurera diagnostisk loggning för DDoS-skydd
 
@@ -67,7 +67,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när meddelandet skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -75,7 +75,7 @@ I följande tabell visas fält namn och beskrivningar:
 | **ResourceGroup** | Resurs gruppen som innehåller din offentliga IP-adress och det virtuella nätverket. |
 | **SubscriptionId** | Ditt prenumerations-ID för DDoS Protection plan. |
 | **Resurs** | Namnet på din offentliga IP-adress. |
-| **Typer** | Detta är alltid `PUBLICIPADDRESS` . |
+| **ResourceType** | Detta är alltid `PUBLICIPADDRESS` . |
 | **OperationName** | För aviseringar är detta `DDoSProtectionNotifications` .  |
 | **Meddelande** | Information om angreppet. |
 | **Typ** | Typ av meddelande. Möjliga värden är `MitigationStarted` . `MitigationStopped`. |
@@ -83,7 +83,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när flödes loggen skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -91,7 +91,7 @@ I följande tabell visas fält namn och beskrivningar:
 | **ResourceGroup** | Resurs gruppen som innehåller din offentliga IP-adress och det virtuella nätverket. |
 | **SubscriptionId** | Ditt prenumerations-ID för DDoS Protection plan. |
 | **Resurs** | Namnet på din offentliga IP-adress. |
-| **Typer** | Detta är alltid `PUBLICIPADDRESS` . |
+| **ResourceType** | Detta är alltid `PUBLICIPADDRESS` . |
 | **OperationName** | För flödes loggar är detta `DDoSMitigationFlowLogs` . |
 | **Meddelande** | Information om angreppet. |
 | **SourcePublicIpAddress** | Den offentliga IP-adressen för klienten som genererar trafik till din offentliga IP-adress. |
@@ -102,7 +102,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när rapporten skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -110,7 +110,7 @@ I följande tabell visas fält namn och beskrivningar:
 | **ResourceGroup** | Resurs gruppen som innehåller din offentliga IP-adress och det virtuella nätverket. |
 | **SubscriptionId** | Ditt prenumerations-ID för DDoS Protection plan. |
 | **Resurs** | Namnet på din offentliga IP-adress. |
-| **Typer** | Detta är alltid `PUBLICIPADDRESS` . |
+| **ResourceType** | Detta är alltid `PUBLICIPADDRESS` . |
 | **OperationName** | För minsknings rapporter blir detta `DDoSMitigationReports` . |
 | **ReportType** | Möjliga värden är `Incremental` , `PostMitigation` .|
 | **MitigationPeriodStart** | Datum och tid i UTC när minskningen startades.  |
@@ -128,7 +128,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>Aktivera diagnostisk loggning på alla offentliga IP-adresser
 
-Den här [mallen](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) skapar en Azure policy-definition för att automatiskt aktivera diagnostikloggning på alla offentliga IP-loggar i ett definierat omfång.
+Den här [mallen](https://aka.ms/ddosdiaglogs) skapar en Azure policy-definition för att automatiskt aktivera diagnostikloggning på alla offentliga IP-loggar i ett definierat omfång.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
 
@@ -142,7 +142,7 @@ Du kan ansluta loggar till Azure Sentinel, Visa och analysera dina data i arbets
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection arbets bok
 
-Du kan använda den här Azure Resource Manager-mallen (ARM) för att distribuera en arbets bok för attack analys. Med den här arbets boken kan du visualisera angrepps data över flera filter bara paneler för att enkelt förstå vad som är i spel. 
+Du kan använda [den här Azure Resource Manager-mallen (arm)](https://aka.ms/ddosworkbook) för att distribuera en arbets bok för attack analys. Med den här arbets boken kan du visualisera angrepps data över flera filter bara paneler för att enkelt förstå vad som är i spel. 
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 

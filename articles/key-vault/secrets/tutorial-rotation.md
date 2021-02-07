@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539407"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805237"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som använder en uppsättning autentiseringsuppgifter för autentisering
 
@@ -213,7 +213,7 @@ Att skapa en hemlighet med ett kort utgångs datum kommer att publicera en `Secr
 
 Om du vill kontrol lera att hemligheten har roterats går du till **Key Vault**  >  **hemligheter**:
 
-:::image type="content" source="../media/rotate-8.png" alt-text="Gå till hemligheter":::
+:::image type="content" source="../media/rotate-8.png" alt-text="Skärm bild som visar hur du kommer åt Key Vault > hemligheter.":::
 
 Öppna **sqlPassword** -hemligheten och Visa de ursprungliga och roterade versionerna:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2020
 ms.author: yelevin
-ms.openlocfilehash: bde11c8e06891025be96810acf6d87952a3d8d2f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 5bf94d7c5889bb5a743655d65e48f021e91e01b7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660788"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807148"
 ---
 # <a name="import-threat-intelligence-into-azure-sentinel"></a>Importera hotinformation till Azure Sentinel
 
@@ -36,7 +36,7 @@ Du kan integrera Hot information (TI) i Azure Sentinel genom följande aktivitet
 - Använd de inbyggda **analys** regel mallarna för att generera säkerhets aviseringar och incidenter med hjälp av din importerade Hot information.
 - Visualisera nyckelinformation om din Hot information i Azure Sentinel med **arbets boken Hot information**.
 
-Hot information ger också användbar kontext inom andra Azure Sentinel-upplevelser, till exempel **jakt** och **bärbara datorer**, och även om de inte beskrivs i den här artikeln, behandlas dessa erfarenheter i [det här fantastiska blogg inlägget av Ian Hellen på Jupyter Notebooks i Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), som täcker användningen av CTI i antecknings böcker.
+Hot information ger också användbar kontext inom andra Azure Sentinel-upplevelser, till exempel **jakt** och **bärbara datorer**, och även om de inte beskrivs i den här artikeln, åtgärdas dessa erfarenheter i [det här fantastiska blogg inlägget av Ian Hellen på Jupyter Notebooks i Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/using-threat-intelligence-in-your-jupyter-notebooks/ba-p/860239), som täcker användningen av CTI i antecknings böcker.
 
 ## <a name="azure-sentinel-data-connectors-for-threat-intelligence"></a>Azure Sentinel data Connectors för hot information
 
@@ -326,7 +326,7 @@ Nu ska vi titta på två vanliga uppgifter och skapa nya hot indikatorer och tag
 
 1. Välj indikator typ och fyll sedan i de obligatoriska fälten som är markerade med en röd asterisk (*) på den **nya indikator** panelen.
 
-1. Välj **Tillämpa**. Indikatorn läggs till i rutnätet för indikatorer och skickas även till tabellen ThreatIntelligenceIndicator i **loggar**.
+1. Välj **Använd**. Indikatorn läggs till i rutnätet för indikatorer och skickas även till tabellen ThreatIntelligenceIndicator i **loggar**.
 
 Att tagga hot indikatorer är ett enkelt sätt att gruppera dem så att de blir lättare att hitta. Normalt kan du tillämpa en tagg på indikatorer som rör en viss incident eller till indikatorer som visar hot från en viss känd aktör eller en välkänd angrepps kampanj. Du kan tagga hot indikatorer individuellt eller flera markerings indikatorer och tagga dem på samma gång. Nedan visas ett exempel på hur du kan tagga flera indikatorer med ett incident-ID. Eftersom taggning är kostnads fritt, är en rekommenderad metod att skapa standard namngivnings konventioner för hot indikator taggar. Du kan använda flera taggar för varje indikator.
 

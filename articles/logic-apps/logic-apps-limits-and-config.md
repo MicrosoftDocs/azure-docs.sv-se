@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054762"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805942"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -427,6 +427,12 @@ I det här avsnittet visas endast inkommande IP-adresser för den Azure Logic Ap
 
 > [!TIP]
 > För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicAppsManagement** i stället för att ange inkommande Logic Apps IP-adressprefix för varje region. Alternativt kan du också använda **AzureConnectors** för hanterade anslutningar som gör inkommande webhook-återanrop till den Logic Apps tjänsten, i stället för att ange inkommande IP-adressprefix för hanterade anslutningar för varje region. Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig.
+>
+> Följande kopplingar gör inkommande webhook-återanrop till tjänsten Logic Apps:
+>
+> Adobe Creative Cloud, Adobe-signera, Adobe-signera demo, Adobe Sign-förhandsgranskning, Adobe Sign-fas, Azure Sentinel, Business Central, Calendly, Common Data Service, DocuSign, DocuSign demo, Dynamics 365 for fin & Ops, LiveChat, Office 365 Outlook, Outlook.com, tolkare, SAP *, Shift för Microsoft Teams, lag projekt, Typeform
+>
+> \***SAP**: retur anroparen beror på om distributions miljön är en Azure eller ISE med flera innehavare. I en miljö med flera innehavare gör den lokala datagatewayen att anropet tillbaka till Logic Apps-tjänsten. I en ISE gör SAP-anslutaren anropet tillbaka till Logic Apps-tjänsten.
 
 <a name="multi-tenant-inbound"></a>
 

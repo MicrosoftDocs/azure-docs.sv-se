@@ -3,12 +3,12 @@ title: Aktivera Azure Monitor för behållare | Microsoft Docs
 description: I den här artikeln beskrivs hur du aktiverar och konfigurerar Azure Monitor för behållare så att du kan förstå hur din behållare presterar och vilka prestandarelaterade problem som har identifierats.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943820"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806027"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Aktivera Azure Monitor för behållare
 
@@ -35,6 +35,12 @@ Du kan aktivera Azure Monitor för behållare för en ny distribution eller för
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar kontrollerar du att du uppfyller följande krav:
+
+> [!IMPORTANT]
+> Log Analytics Pod Linux-agenten (REPLICASET) gör API-anrop till alla Windows-noder på Kubelet Secure-port (10250) i klustret för att samla in värden för nod-och container prestanda. Kubelet Secure port (: 10250) måste öppnas i klustrets virtuella nätverk för att både inkommande och utgående för Windows-nod och container prestanda-insamling ska fungera.
+>
+> Om du har ett Kubernetes-kluster med Windows-noder kan du granska och konfigurera nätverks säkerhets gruppen och nätverks principer för att kontrol lera att den Kubelet-säkra porten (: 10250) är öppen för både inkommande och utgående i klustrets virtuella nätverk.
+
 
 - Du har en Log Analytics-arbetsyta.
 

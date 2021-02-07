@@ -760,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: Förstå prissättningen
       items:
+        - name: Översikt över reserverade data flödes kapacitet
+          href: data-flow-reserved-capacity-overview.md
+        - name: Data flöde förstå reservations avgifter
+          href: data-flow-understand-reservation-charges.md
         - name: Planera och hantera kostnader
           href: plan-manage-costs.md
         - name: Prissättningsexempel
