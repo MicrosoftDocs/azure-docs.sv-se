@@ -4,30 +4,30 @@ description: Lär dig mer om säkerhetsmodulen för Azure återställnings tider
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
-ms.author: mlottner
-ms.openlocfilehash: 9950f3727aac365205e979d9590edacebd32f1fc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 01/14/2021
+ms.author: shhazam
+ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832751"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809090"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Översikt: Defender för IoT Security Module för Azure återställnings tider (för hands version)
 
-Azure Defender för IoT-säkerhetsmodulen innehåller en omfattande säkerhetslösning för enheter som använder Azure-återställnings tider. Den ger täckning för vanliga hot och potentiella skadliga aktiviteter på återställnings tider-enheter (Real Time Opera ting system). Azure återställnings tider levereras nu med Azure IoT Security-modulen inbyggd.
+Azure Defender for IoT Micro-modulen innehåller en omfattande säkerhetslösning för enheter som använder Azure återställnings tider. Den ger täckning för vanliga hot och potentiella skadliga aktiviteter på återställnings tider-enheter (Real Time Opera ting system). Azure återställnings tider levereras nu med Azure IoT Security-modulen inbyggd.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Visualisering av Defender för IoT Azure-återställnings tider.":::
 
 
-Säkerhetsmodulen för Azure återställnings tider erbjuder följande funktioner:
+Micro-modulen för Azure återställnings tider erbjuder följande funktioner:
 
 - Identifiering av skadlig nätverks aktivitet
 - Anpassad avisering-baserad enhets beteende bas linje

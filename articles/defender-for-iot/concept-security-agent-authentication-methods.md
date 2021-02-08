@@ -4,21 +4,21 @@ description: Lär dig mer om de olika autentiseringsmetoder som är tillgänglig
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: aa5a8a842a750e44d4beeb915008f86c6b5bbb70
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941708"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809260"
 ---
 # <a name="security-agent-authentication-methods"></a>Autentiseringsmetoder för säkerhets agent
 
@@ -32,7 +32,7 @@ För varje enhet som har publicerats till Defender för IoT i IoT Hub krävs en 
 
 ## <a name="authentication-methods"></a>Autentiseringsmetoder
 
-De två metoderna för AzureIoTSecurity-agenten att utföra autentisering:
+De två metoderna för AzureIoTSecurity-agenten Defender for IoT för att utföra autentisering:
 
 - **SecurityModule** -autentiseringsläge<br>
 Agenten autentiseras med säkerhetsmodulens identitet oberoende av enhetens identitet.
@@ -55,7 +55,7 @@ Se [installations parametrar för säkerhets agent](#security-agent-installation
 När du [distribuerar en säkerhets agent](how-to-deploy-agent.md)måste autentiserings information tillhandahållas som argument.
 Dessa argument beskrivs i följande tabell.
 
-|Linux-parameter namn | Windows-parameter namn | Stenografisk parameter |Beskrivning|Alternativ|
+|Linux-parameter namn | Windows-parameter namn | Stenografisk parameter |Description|Alternativ|
 |---------------------|---------------|---------|---------------|---------------|
 |autentisering-identitet|AuthenticationIdentity|aui|Autentiseringsidentitet| **SecurityModule** eller **enhet**|
 |autentisering-metod|AuthenticationMethod|aum|Autentiseringsmetod|**SymmetricKey** eller **SelfSignedCertificate**|

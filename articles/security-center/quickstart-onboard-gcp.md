@@ -3,16 +3,16 @@ title: Anslut ditt GCP-konto till Azure Security Center
 description: Övervaka dina GCP-resurser från Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 02/07/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757618"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809413"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Anslut dina GCP-konton till Azure Security Center
 
@@ -20,7 +20,7 @@ Med moln arbets belastningar som ofta spänner över flera moln plattformar mås
 
 Azure Security Center skyddar arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
 
-Registrera ditt GCP-konto i Security Center, integrerar GCP Security-kommandot och Azure Security Center. Security Center ger därmed insyn och skydd i båda dessa moln miljöer för att tillhandahålla:
+Registrera dina GCP-konton i Security Center, integrerar GCP Security-kommandot och Azure Security Center. Security Center ger därmed insyn och skydd i båda dessa moln miljöer för att tillhandahålla:
 
 - Identifiering av felkonfigurationer av säkerhet
 - En enskild vy som visar Security Center rekommendationer och GCP Security Command Center-resultat
@@ -39,12 +39,15 @@ I skärm bilden nedan ser du GCP-projekt som visas på instrument panelen i Secu
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
 |Priset|Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)|
 |Nödvändiga roller och behörigheter:|**Ägare** eller **deltagare** på den aktuella Azure-prenumerationen|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>Anslut ditt GCP-konto
 
-Följ stegen nedan för att skapa din GCP Cloud Connector. 
+Följ stegen nedan för att skapa din GCP Cloud Connector för att ansluta dina Google Cloud-resurser på antingen organisations-eller projekt nivå. 
+
+> [!TIP]
+> Lär dig mer om Google Cloud-hierarkistrukturen i sina online-dokument [här](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Steg 1. Konfigurera GCP Security Command Center med säkerhets hälso analys
 
@@ -120,6 +123,15 @@ Om du vill visa alla aktiva rekommendationer för dina resurser efter resurs typ
 
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Resurs typs filtret för till gångs lager visar GCP alternativ"::: 
 
+
+## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Vanliga frågor och svar om att ansluta GCP-konton till Azure Security Center
+
+### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Kan jag ansluta flera GCP-konton till Security Center?
+Ja. Som vi nämnt ovan kan du ansluta dina Google Cloud-resurser på antingen organisations-eller projekt nivå. Lär dig mer om Google Cloud-hierarkistrukturen i sina online-dokument [här](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
+
+
+### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>Finns det ett API för att ansluta mina GCP-resurser till Security Center?
+Ja. Om du vill skapa, redigera eller ta bort Security Center moln anslutningar med en REST API kan du läsa mer i [anslutnings-API: et](/rest/api/securitycenter/connectors).
 
 ## <a name="next-steps"></a>Nästa steg
 

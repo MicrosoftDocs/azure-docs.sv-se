@@ -8,14 +8,14 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 0b04ebd9672990738d77bc5ae09d7f7fae4ffb9d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0121ea65b190f254f032085133f12f6eb0f374ca
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500008"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808493"
 ---
-# <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
+# <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
 Azure-Instance Metadata Service (IMDS) innehåller information om de virtuella dator instanser som körs. Du kan använda den för att hantera och konfigurera dina virtuella datorer.
 Den här informationen omfattar SKU, lagring, nätverkskonfigurationer och kommande underhålls händelser. En fullständig lista över tillgängliga data finns i [Sammanfattning av slut punkts kategorier](#endpoint-categories).
@@ -88,7 +88,7 @@ I allmänhet är begär anden till IMDS begränsade till 5 begär Anden per seku
 
 Följande HTTP-verb stöds för närvarande:
 
-| Verb | Beskrivning |
+| Verb | Description |
 |------|-------------|
 | `GET` | Hämta den begärda resursen
 
@@ -268,7 +268,7 @@ Rot slut punkten är `http://169.254.169.254/metadata` .
 
 IMDS-API: et innehåller flera slut punkts kategorier som representerar olika data källor, som var och en innehåller en eller flera slut punkter. Se varje kategori för information.
 
-| Kategori rot | Beskrivning | Version introducerad |
+| Kategori rot | Description | Version introducerad |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Se [attesterade data](#attested-data) | 2018-10-01
 | `/metadata/identity` | Se [hanterad identitet via IMDS](#managed-identity) | 2018-02-01
@@ -332,7 +332,7 @@ Schema analys:
 
 **Beräkning**
 
-| Data | Beskrivning | Version introducerad |
+| Data | Description | Version introducerad |
 |------|-------------|--------------------|
 | `azEnvironment` | Azure-miljö där den virtuella datorn körs i | 2018-10-01
 | `customData` | Den här funktionen är för närvarande inaktive rad. Vi kommer att uppdatera den här dokumentationen när den blir tillgänglig | 2019-02-01
@@ -373,7 +373,7 @@ Lagrings profilen för en virtuell dator är uppdelad i tre kategorier: avbildni
 
 Objektet bild referens innehåller följande information om operativ system avbildningen:
 
-| Data | Beskrivning |
+| Data | Description |
 |------|-------------|
 | `id` | Resurs-ID
 | `offer` | Erbjudande för plattformen eller Marketplace-avbildningen
@@ -383,7 +383,7 @@ Objektet bild referens innehåller följande information om operativ system avbi
 
 Objektet OS-disk innehåller följande information om den OS-disk som används av den virtuella datorn:
 
-| Data | Beskrivning |
+| Data | Description |
 |------|-------------|
 | `caching` | Krav för cachelagring
 | `createOption` | Information om hur den virtuella datorn skapades
@@ -398,7 +398,7 @@ Objektet OS-disk innehåller följande information om den OS-disk som används a
 
 Data disks-matrisen innehåller en lista över data diskar som är anslutna till den virtuella datorn. Varje data disk objekt innehåller följande information:
 
-Data | Beskrivning |
+Data | Description |
 -----|-------------|
 | `caching` | Krav för cachelagring
 | `createOption` | Information om hur den virtuella datorn skapades
@@ -414,7 +414,7 @@ Data | Beskrivning |
 
 **Nätverk**
 
-| Data | Beskrivning | Version introducerad |
+| Data | Description | Version introducerad |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | Lokal IPv4-adress för den virtuella datorn | 2017-04-02
 | `ipv4.publicIpAddress` | Offentlig IPv4-adress för den virtuella datorn | 2017-04-02
@@ -746,7 +746,7 @@ För virtuella datorer som skapats med den klassiska distributions modellen är 
 
 Det avkodade dokumentet innehåller följande fält:
 
-| Data | Beskrivning | Version introducerad |
+| Data | Description | Version introducerad |
 |------|-------------|--------------------|
 | `licenseType` | Typ av licens för [Azure Hybrid-förmån](https://azure.microsoft.com/pricing/hybrid-benefit). Detta är endast tillgängligt för AHB-aktiverade virtuella datorer. | 2020-09-01
 | `nonce` | En sträng som kan anges med begäran. Om inget `nonce` har angetts används den aktuella UTC-tidsstämpeln för universell tid. | 2018-10-01

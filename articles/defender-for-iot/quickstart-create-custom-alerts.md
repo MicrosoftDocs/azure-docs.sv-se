@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: skapa anpassade aviseringar'
+title: Skapa anpassade aviseringar
 description: Förstå, skapa och tilldela anpassade enhets aviseringar för tjänsten Azure Defender for IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 48682e465374c1a0e1fb74fc6627016696ff6d2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948529"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809054"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Snabb start: skapa anpassade aviseringar
+# <a name="create-custom-alerts"></a>Skapa anpassade aviseringar
 
 Genom att använda anpassade säkerhets grupper och aviseringar kan du utnyttja all fullständig säkerhets information och kategoriska för att säkerställa bättre säkerhet i din IoT-lösning.
 
@@ -38,7 +38,7 @@ Dessa grupper kan representera enheter med specifik maskin vara, enheter som har
 
 Säkerhets grupper definieras av en enhets dubbla tag-egenskap med namnet **SecurityGroup**. Som standard har varje IoT-lösning på IoT Hub en säkerhets grupp med namnet **default**. Ändra värdet för egenskapen **SecurityGroup** om du vill ändra säkerhets gruppen för en enhet.
 
-Till exempel:
+Exempel:
 
 ```
 {
@@ -65,17 +65,23 @@ Använd säkerhets grupper för att gruppera dina enheter i logiska kategorier. 
 
 ## <a name="customize-an-alert"></a>Anpassa en avisering
 
-1. Öppna din IoT Hub och välj **Inställningar** på menyn **säkerhet** . 
-1. Klicka på **anpassade aviseringar**.
+1. Öppna din IoT Hub och välj **Inställningar** på menyn **säkerhet** .
+
+1. Välj på **anpassade aviseringar**.
+
 1. Välj en säkerhets grupp som du vill tillämpa anpassningen på.
-1. Klicka på **Lägg till en anpassad avisering**.
+
+1. Välj **Lägg till en anpassad avisering**.
+
 1. Välj en anpassad avisering i list rutan.
-1. Redigera de nödvändiga egenskaperna och klicka på **OK**.
-1. Se till att klicka på **Spara**. Om du inte sparar den nya aviseringen tas aviseringen bort nästa gången du stänger IoT Hub.
+
+1. Redigera de obligatoriska egenskaperna och välj **OK**.
+
+1. Se till att välja **Spara**. Om du inte sparar den nya aviseringen tas aviseringen bort nästa gången du stänger IoT Hub.
 
 ## <a name="alerts-available-for-customization"></a>Aviseringar tillgängliga för anpassning
 
-Defender for IoT erbjuder ett stort antal aviseringar som kan anpassas efter dina behov. Granska den [anpassningsbara aviserings tabellen](concept-customizable-security-alerts.md) för aviserings allvarlighets grad, data källa, beskrivning och våra föreslagna reparations steg om och när varje avisering tas emot.
+Defender for IoT erbjuder ett stort antal aviseringar, som kan anpassas efter dina behov. Granska den [anpassningsbara aviserings tabellen](concept-customizable-security-alerts.md) för aviserings allvarlighets grad, data källa, beskrivning och våra föreslagna reparations steg om och när varje avisering tas emot.
 
 ## <a name="next-steps"></a>Nästa steg
 

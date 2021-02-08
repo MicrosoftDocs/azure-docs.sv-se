@@ -1,24 +1,24 @@
 ---
-title: 'Snabb start: Konfigurera din lösning'
+title: Lägg till Azure-resurser i din IoT-lösning
 description: I den här snabb starten får du lära dig hur du konfigurerar din IoT-lösning från slut punkt till slut punkt med hjälp av Azure Defender för IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: Shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: f949d52d4ba461da94153cbbd17ca5fb3eb214d7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 01/25/2021
+ms.author: shhazam
+ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092094"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809047"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Snabb start: Konfigurera din Azure Defender för IoT-lösning
 
@@ -36,16 +36,19 @@ Förutom automatisk Relations identifiering kan du också välja vilka andra Azu
 
 Med dina val kan du lägga till hela prenumerationer, resurs grupper eller enskilda resurser.
 
-När du har definierat alla resurs relationer utnyttjar Defender för IoT Defender för att tillhandahålla säkerhets rekommendationer och aviseringar för dessa resurser.
+När du har definierat alla resurs relationer använder Defender för IoT Defender för att tillhandahålla säkerhets rekommendationer och aviseringar för dessa resurser.
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>Lägg till Azure-resurser i din IoT-lösning
 
-Gör så här om du vill lägga till en ny resurs i IoT-lösningen:
+Så här lägger du till en ny resurs i IoT-lösningen:
 
 1. Öppna din **IoT Hub** i Azure Portal.
-1. Under **säkerhet** Välj **Översikt** följt av **Inställningar**och välj sedan **övervakade resurser**.
+
+1. Under **säkerhet** Välj **Översikt** följt av **Inställningar** och välj sedan **övervakade resurser**.
+
 1. Välj **Redigera** och välj de övervakade resurser som hör till din IoT-lösning.
-1. Klicka på **Lägg till**.
+
+1. Välj **Lägg till**.
 
 Grattis! Du har lagt till en ny resurs grupp i IoT-lösningen.
 

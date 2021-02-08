@@ -3,12 +3,15 @@
 - name: Översikt
   href: overview.md
   items:
-    - name: Lösningsarkitektur
-      href: architecture.md
     - name: Nyheter
       href: release-notes.md
-    - name: Snabbstarter
-      expanded: true
+    - name: Arkitektur för agent lösa lösningar
+      href: architecture.md
+    - name: Agent-baserad lösnings arkitektur
+      href: architecture-agent-based.md
+- name: Snabbstarter
+  expanded: true
+  items:
     - name: Lösning utan agent för organisationer
       items:
         - name: Systemkrav
@@ -17,24 +20,24 @@
           href: getting-started.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Konfigurera säkerhetsmodul för Azure RTOS
+        - name: Konfigurera säkerhetsmodulen för Azure-återställnings tider
           href: quickstart-azure-rtos-security-module.md
-        - name: IoT Hub
-          href: quickstart-iot-hub-integration.md
-        - name: Registrera Azure Defender for IoT i IoT Hub
+        - name: Publicera till Defender för IoT-agent-baserad lösning
           href: quickstart-onboard-iot-hub.md
-        - name: Säkerhetsagenter
-          href: security-agent-architecture.md
-        - name: Konfigurera lösningen
+        - name: 'Skapa en Defender IoT Micro agent-modul, delad (för hands version)'
+          href: quickstart-create-micro-agent-module-twin.md
+        - name: Installera Defender för IoT Micro agent (för hands version)
+          href: quickstart-standalone-agent-binary-installation.md
+        - name: Bygg in Defender för IoT Micro agent från käll koden (för hands version)
+          href: quickstart-building-the-defender-micro-agent-from-source.md
+        - name: Lägg till Azure-resurser i din IoT-lösning
           href: quickstart-configure-your-solution.md
-        - name: Skapa en Azure Defender for IoT-modultvilling
-          href: quickstart-create-security-twin.md
-        - name: Undersöka säkerhetsrekommendationer
-          href: quickstart-investigate-security-recommendations.md
-        - name: Skapa anpassade säkerhetsaviseringar
-          href: quickstart-create-custom-alerts.md
-        - name: Undersöka säkerhetsaviseringar
-          href: quickstart-investigate-security-alerts.md
+        - name: Klassisk
+          items:
+            - name: Översikt över säkerhets agent
+              href: security-agent-architecture.md
+            - name: Skapa en azureiotsecurity-modul med dubbla
+              href: quickstart-create-security-twin.md
 - name: Begrepp
   items:
     - name: Lösning utan agent för organisationer
@@ -43,35 +46,38 @@
           href: concept-key-concepts.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Säkerhetsmodul för Azure RTOS
-          href: iot-security-azure-rtos.md
-          items:
-            - name: Förstå säkerhetsmodulen för Azure RTOS
-              href: concept-rtos-security-module.md
-            - name: Aviseringar och rekommendationer för säkerhetsmodul för Azure RTOS
-              href: concept-rtos-security-alerts-recommendations.md
-        - name: Edge-säkerhetsmodul
-          href: security-edge-architecture.md
-        - name: Säkerhetsagenter
-          href: overview-security-agents.md
-        - name: Autentisering av säkerhetsagent
-          href: concept-security-agent-authentication-methods.md
-        - name: Säkerhetsmodul
-          href: concept-security-module.md
+        - name: Översikt över agent portfölj och OS-support (för hands version)
+          href: concept-agent-portfolio-overview-os-support.md
+        - name: Översikt över fristående Micro agent (för hands version)
+          href: concept-standalone-micro-agent-overview.md
+        - name: Autentisering av säkerhets agent (för hands version)
+          href: concept-security-agent-authentication.md
+        - name: Säkerhet position – CIS-benchmark
+          href: concept-security-posture.md
+        - name: Händelse agg regering (för hands version)
+          href: concept-event-aggregation.md
         - name: Säkerhetsaviseringar
           href: concept-security-alerts.md
-        - name: Anpassningsbara säkerhetsaviseringar
+        - name: Anpassade säkerhets aviseringar
           href: concept-customizable-security-alerts.md
-        - name: Säkerhet
+        - name: Säkerhetsrekommendationer
+          href: concept-recommendations.md
+        - name: Klassisk
           items:
-            - name: Säkerhetsrekommendationer
-              href: concept-recommendations.md
-            - name: Säkerhetsbaslinje
+            - name: Säkerhetsmodul
+              href: concept-security-module.md
+            - name: Edge-säkerhetsmodul
+              href: security-edge-architecture.md
+            - name: Säkerhetsagenter
+              href: overview-security-agents.md
+            - name: Autentisering av säkerhetsagent
+              href: concept-security-agent-authentication-methods.md
+            - name: Baslinje
+              href: concept-baseline.md
+            - name: Azures säkerhets bas linje för Azure Defender för IoT
               href: security-baseline.md
-        - name: Baslinje
-          href: concept-baseline.md
-        - name: Händelsesammansättning
-          href: event-aggregation.md
+            - name: Klassisk händelse agg regering för säkerhetsmodulen
+              href: event-aggregation.md
 - name: Anvisningar
   items:
     - name: Lösning utan agent för organisationer
@@ -147,8 +153,10 @@
               href: how-to-manage-the-alert-event.md
             - name: Påskynda incidenthantering för en avisering
               href: how-to-accelerate-alert-incident-response.md
+              displayName: 'custom, alerts, comments, groups'
             - name: Vidarebefordra aviseringsinformation
               href: how-to-forward-alert-information-to-partners.md
+              displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: 'Få insikter om globala, regionala och lokala hot'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: Arbeta med aviseringar på den lokala hanteringskonsolen
@@ -176,11 +184,12 @@
               displayName: 'import, enrich'
         - name: Spåra sensoraktivitet
           href: how-to-track-sensor-activity.md
-          displayName: 'timeline, time line, time-line, event'
+          displayName: 'timeline, time line, time-line, event, audit'
         - name: Felsöka sensorn och den lokala hanteringskonsolen
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Konfigurera SNMP MIB-övervakning
           href: how-to-set-up-snmp-mib-monitoring.md
+          displayName: health
         - name: Integrera med partner
           items:
             - name: Cisco ISE pxGrid-integrering
@@ -197,40 +206,65 @@
               href: integration-splunk.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Arbeta med säkerhetsmodul för Azure RTOS
-          href: how-to-azure-rtos-security-module.md
-        - name: Vilken agent ska jag distribuera?
+        - name: Säkerhetsmodul för Azure RTOS
+          href: iot-security-azure-rtos.md
           items:
-            - name: Välj en agent för att distribuera
-              href: how-to-deploy-agent.md
-            - name: Distribuera en C#-baserad säkerhetsagent på en Windows-enhet
-              href: how-to-deploy-windows-cs.md
-            - name: Distribuera en C#-baserad säkerhetsagent på en Linux-enhet
-              href: how-to-deploy-linux-cs.md
-            - name: Distribuera en C-baserad säkerhetsagent på en Linux-enhet
-              href: how-to-deploy-linux-c.md
-        - name: Felsöka en säkerhetsagent
-          items:
-            - name: Felsöka Azure Defender for IoT Linux-säkerhetsagenten
-              href: troubleshoot-agent.md
-            - name: Lokal konfiguration C
-              href: azure-iot-security-local-configuration-c.md
-            - name: Lokal konfiguration C#
-              href: azure-iot-security-local-configuration-csharp.md
-        - name: Distribuera Edge-säkerhetsmodul
-          href: how-to-deploy-edge.md
-        - name: Konfigurera säkerhetsagenter
-          href: how-to-agent-configuration.md
-        - name: Skicka dina egna säkerhetsmeddelanden
-          href: how-to-send-security-messages.md
-        - name: Få åtkomst till råsäkerhetsdata
-          href: how-to-security-data-access.md
-        - name: Undersöka en enhet
-          href: how-to-investigate-device.md
+            - name: Arbeta med säkerhetsmodul för Azure RTOS
+              href: how-to-azure-rtos-security-module.md
+            - name: Förstå säkerhetsmodulen för Azure RTOS
+              href: concept-rtos-security-module.md
+            - name: Aviseringar och rekommendationer för säkerhetsmodul för Azure RTOS
+              href: concept-rtos-security-alerts-recommendations.md
         - name: Ansluta till Azure Sentinel
           href: how-to-configure-with-sentinel.md
-        - name: Anpassa din agent
-          href: how-to-customize-solution.md
+        - name: Konfigurera Azure Defender för IoT agent-baserad lösning
+          href: how-to-configure-agent-based-solution.md
+        - name: Undersök benchmark-rekommendation för CIS
+          href: how-to-investigate-cis-benchmark.md
+        - name: Undersöka säkerhetsrekommendationer
+          href: quickstart-investigate-security-recommendations.md
+        - name: Undersöka säkerhetsaviseringar
+          href: quickstart-investigate-security-alerts.md
+        - name: Skapa anpassade aviseringar
+          href: quickstart-create-custom-alerts.md
+        - name: Klassisk
+          items:
+            - name: Vilken agent ska jag distribuera?
+              items:
+                - name: Välj en agent för att distribuera
+                  href: how-to-deploy-agent.md
+                - name: Distribuera en C#-baserad säkerhetsagent på en Windows-enhet
+                  href: how-to-deploy-windows-cs.md
+                - name: Distribuera en C#-baserad säkerhetsagent på en Linux-enhet
+                  href: how-to-deploy-linux-cs.md
+                - name: Distribuera en C-baserad säkerhetsagent på en Linux-enhet
+                  href: how-to-deploy-linux-c.md
+            - name: Felsöka en säkerhetsagent
+              items:
+                - name: Felsöka Azure Defender for IoT Linux-säkerhetsagenten
+                  href: troubleshoot-agent.md
+                - name: Lokal konfiguration C
+                  href: azure-iot-security-local-configuration-c.md
+                - name: Lokal konfiguration C#
+                  href: azure-iot-security-local-configuration-csharp.md
+            - name: Distribuera Edge-säkerhetsmodul
+              href: how-to-deploy-edge.md
+            - name: Konfigurera säkerhetsagenter
+              href: how-to-agent-configuration.md
+            - name: Skicka dina egna säkerhetsmeddelanden
+              href: how-to-send-security-messages.md
+            - name: Få åtkomst till råsäkerhetsdata
+              href: how-to-security-data-access.md
+            - name: Undersöka en enhet
+              href: how-to-investigate-device.md
+- name: Felsökning
+  items:
+    - name: Fel sökning av Defender IoT Micro-agent (för hands version)
+      href: troubleshoot-defender-micro-agent.md
+- name: Funktions support och pensionering
+  items:
+    - name: Funktions support och pensionering
+      href: edge-security-module-deprecation.md
 - name: Referenser
   items:
     - name: Lösning utan agent för organisationer

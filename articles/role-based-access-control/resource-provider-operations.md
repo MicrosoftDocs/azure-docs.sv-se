@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/01/2021
 ms.custom: generated
-ms.openlocfilehash: 768a327421a941a39b6f66be411712a565097f66
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 72a8f2eb93a9c12510b093e29c7b8fc6867cb2eb
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557326"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809395"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -160,7 +160,9 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft.Intune](#microsoftintune) |
 | **Övrigt** |
 | [Microsoft. Bingkartssökning](#microsoftbingmaps) |
+| [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization) |
 | [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
+| [Microsoft. ServicesHub](#microsoftserviceshub) |
 
 
 ## <a name="general"></a>Allmänt
@@ -10268,6 +10270,51 @@ Azure-tjänst: [Bing Maps](/BingMaps/)
 > | Microsoft. Bingkartssökning/mapApis/listUsageMetrics/Action | Visa måtten för Microsoft. Bingkartssökning/mapApis |
 > | Microsoft. Bingkartssökning/Operations/Read | Visa en lista över åtgärder för Microsoft. Bingkartssökning |
 
+### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
+
+Azure-tjänst: [virtuellt Windows-skrivbord](../virtual-desktop/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Åtgärd | Beskrivning |
+> | --- | --- |
+> | Microsoft. DesktopVirtualization/register/åtgärd | Registrera prenumeration |
+> | Microsoft. DesktopVirtualization/applicationgroups/Read | Läs applicationgroups |
+> | Microsoft. DesktopVirtualization/applicationgroups/Write | Skriv applicationgroups |
+> | Microsoft. DesktopVirtualization/applicationgroups/Delete | Ta bort applicationgroups |
+> | Microsoft. DesktopVirtualization/applicationgroups/Applications/Read | Läs applicationgroups/program |
+> | Microsoft. DesktopVirtualization/applicationgroups/program/Write | Skriv applicationgroups/program |
+> | Microsoft. DesktopVirtualization/applicationgroups/Applications/Delete | Ta bort applicationgroups/program |
+> | Microsoft. DesktopVirtualization/applicationgroups/Desktop/Read | Läs applicationgroups/Station ära datorer |
+> | Microsoft. DesktopVirtualization/applicationgroups/Station ära datorer/skriva | Skriv applicationgroups/Station ära datorer |
+> | Microsoft. DesktopVirtualization/applicationgroups/Station ära datorer/ta bort | Ta bort applicationgroups/Station ära datorer |
+> | Microsoft. DesktopVirtualization/applicationgroups/externaluserassignments/Read |  |
+> | Microsoft. DesktopVirtualization/applicationgroups/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar diagnostikinställningar |
+> | Microsoft. DesktopVirtualization/applicationgroups/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen |
+> | Microsoft. DesktopVirtualization/applicationgroups/providers/Microsoft. Insights/logDefinitions/Read | Hämtar de tillgängliga loggarna |
+> | Microsoft. DesktopVirtualization/applicationgroups/startmenuitems/Read | Läs objekt på Start-menyn |
+> | Microsoft. DesktopVirtualization/hostpools/Read | Läs hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/Write | Skriv hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/Delete | Ta bort hostpools |
+> | Microsoft. DesktopVirtualization/hostpools/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar diagnostikinställningar |
+> | Microsoft. DesktopVirtualization/hostpools/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen |
+> | Microsoft. DesktopVirtualization/hostpools/providers/Microsoft. Insights/logDefinitions/Read | Hämtar de tillgängliga loggarna |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/Read | Läs hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/Write | Skriv hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/Delete | Ta bort hostpools/sessionhosts |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Read | Läs hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Write | Skriv hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/Delete | Ta bort hostpools/sessionhosts/usersessions |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/från koppling/åtgärd | Kopplar bort användarsessionen för användarsessionen |
+> | Microsoft. DesktopVirtualization/hostpools/sessionhosts/usersessions/sendMessage/åtgärd | Skicka meddelande till användarsession |
+> | Microsoft. DesktopVirtualization/arbets ytor/läsa | Läs arbets ytor |
+> | Microsoft. DesktopVirtualization/arbets ytor/Skriv | Skriv arbets ytor |
+> | Microsoft. DesktopVirtualization/arbets ytor/ta bort | Ta bort arbets ytor |
+> | Microsoft. DesktopVirtualization/arbets ytor/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar diagnostikinställningar |
+> | Microsoft. DesktopVirtualization/arbets ytor/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen |
+> | Microsoft. DesktopVirtualization/arbets ytor/providers/Microsoft. Insights/logDefinitions/Read | Hämtar de tillgängliga loggarna |
+> | **DataAction** | **Beskrivning** |
+> | Microsoft. DesktopVirtualization/applicationgroups/useapplications/Action | Använd variabeln applicationgroup |
+
 ### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 Azure-tjänst: [Azure Digitals dubbla](../digital-twins/index.yml)
@@ -10316,6 +10363,20 @@ Azure-tjänst: [Azure Digitals dubbla](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modeller/läsa | Läs valfri modell |
 > | Microsoft. DigitalTwins/modeller/Skriv | Skapa eller uppdatera en modell |
 > | Microsoft. DigitalTwins/Models/Delete | Ta bort valfri modell |
+
+### <a name="microsoftserviceshub"></a>Microsoft. ServicesHub
+
+Azure-tjänst: [hubb för tjänster](/services-hub/)
+
+> [!div class="mx-tableFixed"]
+> | Åtgärd | Beskrivning |
+> | --- | --- |
+> | Microsoft. ServicesHub/Connectors/skriva | Skapa eller uppdatera en hubb anslutning för Services |
+> | Microsoft. ServicesHub/Connectors/läsa | Visa eller lista Services Hub-kopplingar |
+> | Microsoft. ServicesHub/Connectors/ta bort | Ta bort Services Hub-kopplingar |
+> | Microsoft. ServicesHub/Connectors/checkAssessmentEntitlement/åtgärd | Visar en lista över bedömnings rättigheter för en specifik Services Hub-arbetsyta |
+> | Microsoft. ServicesHub/supportOfferingEntitlement/Read | Visa support erbjudande rättigheter för en specifik Services Hub-arbetsyta |
+> | Microsoft. ServicesHub/arbets ytor/läsa | Visa en lista över Services Hub-arbetsytor för en specifik användare |
 
 ## <a name="next-steps"></a>Nästa steg
 

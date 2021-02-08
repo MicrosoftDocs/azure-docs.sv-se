@@ -1,26 +1,26 @@
 ---
-title: 'Snabb start: skapa en säkerhetsmodul med dubbla'
+title: Skapa en säkerhetsmodul med dubbla
 description: I den här snabb starten får du lära dig hur du skapar en Defender för IoT-modul med dubbla för användning med Azure Defender för IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
-ms.author: mlottner
-ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/21/2021
+ms.author: shhazam
+ms.openlocfilehash: 35195ea5d66bcf27764fa889e5f2e8ebb6a2bae1
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835014"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809107"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Snabb start: skapa en azureiotsecurity-modul med dubbla
+# <a name="create-an-azureiotsecurity-module-twin"></a>Skapa en azureiotsecurity-modul med dubbla
 
 I den här snabb starten beskrivs hur du skapar en enskild _azureiotsecurity_ -modul för nya enheter, eller om du skapar en modul med flera enheter i en IoT Hub.
 
@@ -28,7 +28,7 @@ I den här snabb starten beskrivs hur du skapar en enskild _azureiotsecurity_ -m
 
 För IoT-lösningar som är inbyggda i Azure spelar enheten upp en viktig roll i både enhets hantering och process automatisering.
 
-Defender för IoT erbjuder fullständig integrering med din befintliga plattform för IoT-enhets hantering, så att du kan hantera din enhets säkerhets status och använda befintliga funktioner för enhets kontroll.
+Defender för IoT erbjuder fullständig integrering med din befintliga plattform för IoT-enhets hantering, så att du kan hantera enhetens säkerhets status och använda befintliga funktioner för enhets kontroll.
 Defender för IoT-integrering uppnås genom att använda den IoT Hub dubbla mekanismen.
 
 Se [IoT Hub moduls dubblare](../iot-hub/iot-hub-devguide-module-twins.md) för att lära dig mer om det allmänna begreppet modul-i Azure IoT Hub.
@@ -37,7 +37,7 @@ Defender for IoT använder modulens dubbla mekanism och underhåller en säkerhe
 
 Säkerhetsmodulen är dubbelt lagra all information som är relevant för enhets säkerhet för var och en av dina enheter.
 
-För att kunna använda Defender för IoT-funktioner måste du skapa, konfigurera och använda den här säkerhetsmodulen för alla enheter i tjänsten.
+För att kunna utnyttja Defender för IoT-funktioner måste du skapa, konfigurera och använda den här säkerhetsmodulen för varje enhet i tjänsten.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Skapa azureiotsecurity-modul, dubbla
 
@@ -51,23 +51,30 @@ _azureiotsecurity_ -modulens dubblare kan skapas på två sätt:
 
 Se [agent konfiguration](how-to-agent-configuration.md) för att lära dig att ändra eller ändra konfigurationen för en befintlig modul med dubbla.
 
-Om du vill skapa en ny _azureiotsecurity_ -modul för en enhet manuellt använder du följande instruktioner:
+Så här skapar du en ny _azureiotsecurity_ -modul för en enhet manuellt:
 
 1. Leta upp och välj den enhet som du vill skapa en säkerhetsmodul för i IoT Hub.
-1. Klicka på enheten och sedan på **Lägg till modulens identitet**.
+
+1. Välj på enheten och sedan på **Lägg till modulens identitet**.
+
 1. Ange **azureiotsecurity** i fältet **namn på modulens identitet** .
 
-1. Klicka på **Spara**.
+1. Välj **Spara**.
 
 ## <a name="verify-creation-of-a-module-twin"></a>Verifiera att en modul har skapats
 
 Så här kontrollerar du om det finns en säkerhetsmodul för en speciell enhet:
 
 1. I Azure IoT Hub väljer du **IoT-enheter** på menyn **Explorer** .
-1. Ange enhets-ID eller Välj ett alternativ i **fältet fråga enhet** och klicka på **fråga enheter**.
+
+1. Ange enhets-ID eller Välj ett alternativ i **fältet fråga enhet** och välj **fråga enheter**.
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="Fråga enheter":::
+
 1. Välj enheten eller dubbelklicka på den för att öppna sidan med enhets information.
+
 1. Välj menyn **modul identiteter** och bekräfta att **azureiotsecurity** -modulen finns i listan över modul identiteter som är associerade med enheten.
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="Moduler som är kopplade till en enhet":::
 
 Mer information om hur du anpassar egenskaper för Defender for IoT-modulen finns i [agent konfiguration](how-to-agent-configuration.md).

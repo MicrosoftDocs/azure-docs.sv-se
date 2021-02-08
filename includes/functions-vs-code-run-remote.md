@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 4b15fec0f22db740bbd7c24fcc0acf2ad1a2d1cd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 121b10cc568cce089c90e66b9c6f292c74f4acbe
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493511"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809577"
 ---
 ## <a name="run-the-function-in-azure"></a>Kör funktionen i Azure
 
-1. Gå tillbaka till avsnittet **Azure: Functions** i sido fältet och Visa funktioner för **lokala projekt**  >  . Högerklicka (Windows) eller <kbd>CTRL-</kbd> klicka (MacOS) på `HttpExample` funktionen och välj **Kör funktion nu..**..
+1. Gå tillbaka till avsnittet **Azure: Functions** i sido fältet, expandera din prenumeration, din nya Function-app och **functions.** Högerklicka (Windows) eller <kbd>CTRL-</kbd> klicka (MacOS) på `HttpExample` funktionen och välj **Kör funktion nu..**..
 
     :::image type="content" source="media/functions-vs-code-run-remote/execute-function-now.png" alt-text="Kör funktionen nu i Azure från Visual Studio Code":::
 

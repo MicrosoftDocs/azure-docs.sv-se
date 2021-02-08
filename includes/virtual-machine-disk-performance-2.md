@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 086ebf71e2da19a96433f32cfb1bae133e875400
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3c4ab8362b2a717a348a59c0baf829b61e1a8006
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518096"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808510"
 ---
 ![Diagram som visar D s v v 3-specifikationer.](media/vm-disk-performance/dsv3-documentation.jpg)
 
@@ -67,7 +67,7 @@ Härnäst ska vi titta på vad som händer med IO-begäranden när inställninge
   - IOPS: 5 000
   - Cachelagring av värd: **läsa/skriva**
 
-En läsning hanteras på samma sätt som en skrivskyddad. Skrivningar är det enda som skiljer sig från läsning/skrivning-cachelagring. När du skriver med cachelagring av värden till **Läs-och skriv**behörighet behöver du bara skriva till värd-cachen för att anses vara slutförd. Skrivningen skrivs sedan till disken som bakgrunds process Lazy. Det innebär att en skrivning räknas mot cachelagrad IO när den skrivs till cachen. När Lazy skrivs till disken räknas den till i/o.
+En läsning hanteras på samma sätt som en skrivskyddad. Skrivningar är det enda som skiljer sig från läsning/skrivning-cachelagring. När du skriver med cachelagring av värden till **Läs-och skriv** behörighet behöver du bara skriva till värd-cachen för att anses vara slutförd. Skrivningen skrivs sedan till disken som bakgrunds process Lazy. Det innebär att en skrivning räknas mot cachelagrad IO när den skrivs till cachen. När Lazy skrivs till disken räknas den till i/o.
 
 ![Diagram som visar Skriv-och skriv värden för cachelagring av värdar.](media/vm-disk-performance/host-caching-read-write.jpg)
 
@@ -137,12 +137,13 @@ Vi har mått på Azure som ger insikt om hur dina virtuella datorer och diskar p
 - **Disk skrivnings åtgärder/SEK**: antalet utgående åtgärder som skrivs i en sekund från alla diskar som är kopplade till en virtuell dator.
 
 ## <a name="storage-io-utilization-metrics"></a>Mått för lagring i i/o-användning
+Följande mått hjälper till att diagnostisera Flask halsar i din virtuella dator och disk kombination. Dessa mått är bara tillgängliga när du använder Premium-aktiverad virtuell dator. De här måtten är tillgängliga för alla disk typer förutom Ultra. 
 
 Mått som hjälper till att diagnostisera disk-i/o-capping:
 
 - **Data disk IOPS förbrukad procent**: den procent andel som beräknas av den data disk IOPS som slutförts över den etablerade data disken IOPS. Om den här mängden är 100% är ditt program i/o-gränsen från data diskens IOPS-gräns.
 - **Förbrukad mängd data disk bandbredd**: den procent andel som beräknas av data disk flödet som slutförts via data flödet för den allokerade datadisken. Om den här mängden är på 100% är ditt program som körs i/o-gränser från data diskens bandbredds gräns.
-- **Förbrukad procent**andel av OS-disk: den procent andel som beräknats av OS-disken IOPS som har slutförts på den etablerade OS-disken IOPS. Om den här mängden är på 100% är ditt program som körs i/o-gränser från din OS-disks IOPS-gräns.
+- **Förbrukad procent** andel av OS-disk: den procent andel som beräknats av OS-disken IOPS som har slutförts på den etablerade OS-disken IOPS. Om den här mängden är på 100% är ditt program som körs i/o-gränser från din OS-disks IOPS-gräns.
 - **Förbrukad procent andel OS disk bandbredd**: den procent andel som beräknats av OS-dataflödet som slutförts via det ALLOKERAde OS-disk flödet. Om den här mängden är på 100% är ditt program som körs i/o-gränser från din OS-disks bandbredds gräns.
 
 Mått som hjälper till att diagnostisera VM-IO-capping:
