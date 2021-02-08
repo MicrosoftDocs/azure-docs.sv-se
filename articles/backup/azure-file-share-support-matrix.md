@@ -4,12 +4,12 @@ description: Innehåller en översikt över support inställningar och begränsn
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6381170df93fdf52c2d0dc7059ad47bbff734025
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 999cb4c764e9960c509d19faa61016b2522259ac
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378040"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819868"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Support mat ris för säkerhets kopiering av Azure-filresurs
 
@@ -60,7 +60,7 @@ Säkerhets kopiering av Azure-filresurser är tillgänglig i alla regioner **uto
 | Inställning                                                      | Gräns   |
 | ------------------------------------------------------------ | ------- |
 | Maximalt antal återställningar per dag                           | 10      |
-| Maximalt antal filer per återställning                         | 10      |
+| Maximalt antal filer per återställning                         | 99      |
 | Maximal rekommenderad återställnings storlek per återställning för stora fil resurser | 15 TiB |
 
 ## <a name="retention-limits"></a>Gräns för kvarhållning

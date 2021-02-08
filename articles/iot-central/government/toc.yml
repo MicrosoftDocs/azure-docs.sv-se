@@ -5,6 +5,7 @@
     - name: Skapa lösningar för myndigheter med Azure IoT Central
       href: overview-iot-central-government.md
 - name: Självstudier
+  expanded: true
   items:
     - name: Skapa en ansluten app för avfallshantering
       href: tutorial-connected-waste-management.md

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 621c5e7b0061ccd76fd0109552107915b943511f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06d6352f018238318c3bb4625ae86a2974f14569
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653623"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820171"
 ---
 # <a name="what-is-azure-resource-mover"></a>Vad är Azure Resource-arbetskraft?
 
@@ -27,10 +27,8 @@ Du kan flytta resurser till olika Azure-regioner till:
 - **Justera mot närhet**: flytta resurser till en region som är lokal för din verksamhet.
 - **Uppfylla data kraven**: flytta resurser för att anpassas efter data placering krav eller data klassificerings behov.
 - **Svara på distributions krav**: flytta resurser som har distribuerats i fel eller flytta som svar på kapacitets behoven.
-- **Svara på**inaktive ring: flytta resurser eftersom en region tas ur bruk.
+- **Svara på** inaktive ring: flytta resurser eftersom en region tas ur bruk.
 
-> [!IMPORTANT]
-> Azure Resource-arbetskraft är för närvarande en offentlig för hands version.
 
 ## <a name="why-use-resource-mover"></a>Varför ska jag använda resurs förflyttning?
 
@@ -62,6 +60,7 @@ Du kan flytta resurser mellan regioner i resurs förflyttnings hubben eller inif
 Med hjälp av resurs förflyttning kan du för närvarande flytta följande resurser över flera regioner:
 
 - Virtuella Azure-datorer och tillhör ande diskar
+- Krypterade virtuella Azure-datorer och associerade diskar. Detta inkluderar virtuella datorer med Azure Disk Encryption aktiverat och virtuella Azure-datorer som använder standard kryptering på Server sidan (både med plattforms hanterade nycklar och Kundhanterade nycklar)
 - Nätverkskort
 - Tillgänglighetsuppsättningar 
 - Virtuella Azure-nätverk 

@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520449"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820220"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Självstudie: flytta virtuella Azure-datorer över regioner
 
@@ -23,7 +23,7 @@ I den här artikeln lär du dig hur du flyttar virtuella Azure-datorer och relat
 > Azure Resource-arbetskraft är för närvarande en offentlig för hands version.
 
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Kontrol lera krav och krav.
@@ -37,7 +37,7 @@ I de här självstudierna får du lära dig att
 > [!NOTE]
 > Självstudier visar den snabbaste sökvägen för att testa ett scenario och använda standard alternativ. 
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -238,12 +238,16 @@ Spara flyttningen om du vill slutföra flyttnings processen.
 - Mobilitets tjänsten avinstalleras inte automatiskt från virtuella datorer. Avinstallera det manuellt eller lämna det om du planerar att flytta servern igen.
 - Ändra Azure-rollbaserad åtkomst kontroll (Azure RBAC) regler efter flytten.
 
+
 ## <a name="delete-source-resources-after-commit"></a>Ta bort käll resurser efter incheckning
 
 Efter flytten kan du välja att ta bort resurser i käll regionen. 
 
-1. I **flera regioner** klickar du på namnet på varje käll resurs som du vill ta bort.
-2. På sidan Egenskaper för varje resurs väljer du **ta bort**.
+> [!NOTE]
+> Några resurser, till exempel nyckel valv och SQL Server servrar, kan inte tas bort från portalen och måste tas bort från egenskaps sidan resurs.
+
+1. I **flera regioner** klickar du på namnet på den käll resurs som du vill ta bort.
+2. Välj **ta bort källa**.
 
 ## <a name="delete-additional-resources-created-for-move"></a>Ta bort ytterligare resurser som har skapats för flytt
 

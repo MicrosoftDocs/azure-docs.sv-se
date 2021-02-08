@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b26b4390cb19b832349b49d4e95a5355caed594
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463265"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820304"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Självstudie: Distribuera och gå igenom en mall för hantering av Smart inventerings program
 
-
-
 Den här självstudien visar hur du kommer igång genom att distribuera en IoT Central Mall för **Smart inventerings hantering** . Du får lära dig hur du distribuerar mallen, vad som ingår i rutan och vad du kanske vill göra härnäst.
 
-I den här självstudien får du lära dig att 
-* Skapa program för smart inventerings hantering 
-* gå igenom programmet 
+I den här självstudien får du lära dig att
+
+> [!div class="checklist"]
+> Skapa program för smart inventerings hantering genom programmet 
 
 ## <a name="prerequisites"></a>Förutsättningar
 

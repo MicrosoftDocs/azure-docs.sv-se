@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422730"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820525"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versioner i Azure Kognitiv sökning
 
@@ -87,7 +87,7 @@ Följande tabell innehåller länkar till nyare SDK-versioner.
 
 | SDK-version | Status | Beskrivning |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Nytt klient bibliotek från Azure .NET SDK, lanserat juli 2020. Riktar in the search REST API-version = 2020-06-30 REST API men har ännu inte stöd för geo-filter. |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | Nytt klient bibliotek från Azure .NET SDK, lanserat juli 2020. Riktar in the search REST API-version = 2020-06-30 REST API men inte har inbyggt stöd för geo-filter. Vi rekommenderar [Microsoft. spatial](https://www.nuget.org/packages/Microsoft.Spatial/) paket för geografiska åtgärder. Exempel är tillgängliga för [System.Text.Jspå](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) och [Newtonsoft.Jspå](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md). |
 | [Microsoft. Azure. search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Lanserad maj 2019. Mål för search REST API-version = 2019-05-06.|
 | [Microsoft. Azure. Management. search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Rikta in the Management REST API-version = 2020-08-01.  |
 | Microsoft. Azure. Management. search 3.0.0 | Stable | Rikta in the Management REST API-version = 2015-08-19.  |

@@ -5,6 +5,7 @@
     - name: Skapa lösningar för detaljhandeln med Azure IoT Central
       href: overview-iot-central-retail.md
 - name: Självstudier
+  expanded: true
   items:
     - name: Analys i butik för kassan
       items:

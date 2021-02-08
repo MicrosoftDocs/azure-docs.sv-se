@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542821"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820236"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Självstudie: flytta Azure SQL Database resurser till en annan region
 
@@ -22,7 +22,7 @@ I den här självstudien lär du dig att flytta Azure SQL-databaser och elastisk
 > [!NOTE]
 > Azure Resource-arbetskraften är för närvarande en för hands version.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Kontrol lera krav och krav.
@@ -36,7 +36,7 @@ I de här självstudierna får du lära dig att
 > [!NOTE]
 > Självstudier visar den snabbaste sökvägen för att testa ett scenario och använda standard alternativ. 
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -272,8 +272,11 @@ Avslutar flyttningen av databaser och elastiska pooler enligt följande:
 
 Efter flytten kan du välja att ta bort resurser i käll regionen. 
 
-1. I **flera regioner** klickar du på namnet på varje käll resurs som du vill ta bort.
-2. På sidan Egenskaper för varje resurs väljer du **ta bort**.
+> [!NOTE]
+> Det går inte att ta bort SQL Server servrar från portalen och de måste tas bort från egenskaps sidan resurs.
+
+1. I **flera regioner** klickar du på namnet på den käll resurs som du vill ta bort.
+2. Välj **ta bort källa**.
 
 ## <a name="next-steps"></a>Nästa steg
 

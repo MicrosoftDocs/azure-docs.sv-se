@@ -5,25 +5,18 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: ab4b8f5a691bc8e4091e9f3f01b709391deeddb0
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550716"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820882"
 ---
 # <a name="common-questions"></a>Vanliga frågor
 
 I den här artikeln besvaras vanliga frågor om [Azure Resource-arbetskraft](overview.md).
-
-## <a name="general"></a>Allmänt
-
-### <a name="is-resource-mover-generally-available"></a>Är resurs förflyttningen allmänt tillgänglig?
-
-Resurs förflyttning är för närvarande en offentlig för hands version. Produktions arbets belastningar stöds.
-
 
 
 ## <a name="moving-across-regions"></a>Flytta över regioner
@@ -45,6 +38,9 @@ Med hjälp av resurs förflyttning kan du för närvarande flytta följande resu
 - Interna och offentliga belastningsutjämnare 
 - Azure SQL-databaser och elastiska pooler
 
+### <a name="can-i-move-disks-across-regions"></a>Kan jag flytta diskar i flera regioner?
+
+Det går inte att välja diskar som resurser som flyttas mellan regioner. Diskar flyttas dock som en del av flyttningen av en virtuell dator.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kan jag flytta resurser mellan prenumerationer när jag flyttar dem över flera regioner?
 
@@ -97,6 +93,12 @@ Prenumerationen har flyttats till en annan klient. | Inaktivera och aktivera sed
 ### <a name="how-can-i-do-multiple-moves-together"></a>Hur kan jag göra flera flyttningar tillsammans?
 
 Ändra kombinationerna av källa/mål efter behov med hjälp av alternativet ändra i portalen.
+
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Vad händer när jag tar bort en resurs från en lista över flytt resurser?
+
+Du kan ta bort resurser som du har lagt till i flytta listan. Beteende när du tar bort en resurs från listan beror på resursens tillstånd. [Läs mer](remove-move-resources.md#vm-resource-state-after-removing).
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

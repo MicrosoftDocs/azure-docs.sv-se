@@ -1,20 +1,20 @@
 ---
-title: Använd Azure Time Series Insights för att lagra och analysera din Azure IoT Plug and Play Device-telemetri
-description: Konfigurera en Time Series Insights-miljö och Anslut IoT Hub för att visa och analysera telemetri från IoT Plug and Play-enheter.
+title: Självstudie – Använd Azure Time Series Insights för att lagra och analysera Azure IoT Plug and Play Device-telemetri
+description: Självstudie – konfigurera en Time Series Insights miljö och Anslut IoT Hub för att visa och analysera telemetri från IoT Plug and Play-enheter.
 author: lyrana
 ms.author: lyhughes
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5491df61a1198e8eee4ba4701ccfc56154ec75eb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905100"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820187"
 ---
-# <a name="preview-tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>För hands versions Självstudier: skapa och konfigurera en Time Series Insights Gen2-miljö
+# <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Självstudie: skapa och konfigurera en Time Series Insights Gen2-miljö
 
 I den här självstudien får du lära dig hur du skapar och konfigurerar en [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) -miljö som kan integreras med din IoT plug and Play-lösning. Använd Time Series Insights för att samla in, bearbeta, lagra, fråga och visualisera tids serie data i Sakernas Internets skala (IoT).
 
@@ -23,7 +23,7 @@ Först etablerar du en Time Series Insights-miljö och ansluter din IoT Hub som 
 > [!NOTE]
 > Den här integrationen mellan Time Series Insights och IoT Plug and Play är i för hands version. Det sätt som DTDL enhets modeller mappar till Time Series Insights Time Series-modellen kan ändras. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 

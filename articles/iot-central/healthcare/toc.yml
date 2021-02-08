@@ -5,6 +5,7 @@
     - name: Skapa lösningar för hälso- och sjukvården med Azure IoT Central
       href: overview-iot-central-healthcare.md
 - name: Självstudier
+  expanded: true
   items:
     - name: Skapa en app för kontinuerlig övervakning av patienter
       href: tutorial-continuous-patient-monitoring.md

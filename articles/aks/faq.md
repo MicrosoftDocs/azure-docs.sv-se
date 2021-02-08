@@ -3,12 +3,12 @@ title: Vanliga frågor och svar om Azure Kubernetes service (AKS)
 description: Hitta svar på några vanliga frågor om Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 6c2eddf3b7002b101fed8face4a58f2d2b2f4878
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127642"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820270"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Vanliga frågor om Azure Kubernetes Service (AKS)
 
@@ -132,7 +132,9 @@ Windows Server-stöd för Node-pool innehåller vissa begränsningar som ingår 
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Erbjuder AKS ett service nivå avtal?
 
-AKS tillhandahåller SLA-garantier som en valfri tilläggs funktion med [SLA för drift tid][uptime-sla].
+AKS tillhandahåller SLA-garantier som en valfri tilläggs funktion med [SLA för drift tid][uptime-sla]. 
+
+Det kostnads fria SLA som erbjuds som standard garanterar inte en slut punkt för API-server med hög tillgänglighet (vårt service nivå mål är 99,5%). Det kan bero på att tillfälliga anslutnings problem uppstår vid uppgraderingar, felaktiga Underlay-noder, plattforms underhåll osv... Om din arbets belastning inte tolererar APIServer-omstarter, rekommenderar vi att du använder SLA för drift tid.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kan jag använda Azure reservation-rabatter på mina AKS-agent-noder?
 

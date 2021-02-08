@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.author: shhazam
-ms.openlocfilehash: a8f4b96b27eb09443c2644fd63a8783faaa610e4
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809515"
+ms.locfileid: "99820678"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Vad är nytt i Azure Defender för IoT?
 
@@ -27,13 +27,13 @@ Den här artikeln innehåller nya funktioner och funktions förbättringar för 
 Antecknade funktioner finns i för hands version. I [tilläggs villkoren för Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ingår ytterligare juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte har publicerats i allmän tillgänglighet.
 ## <a name="february-2021"></a>Februari 2021
 
-### <a name="enhanced-custom-alert-rules"></a>Förbättrade anpassade aviserings regler
+### <a name="sensor---enhanced-custom-alert-rules"></a>Sensor-förbättrade anpassade aviserings regler
 
 Nu kan du skapa anpassade varnings regler baserat på den dag, den grupp av dagar och den tids period som nätverks aktiviteten har identifierats.  Att arbeta med villkor för dag och tid är användbart, till exempel i fall där allvarlighets graden för aviseringar härleds vid tidpunkten för att aviserings händelsen ska äga rum. Du kan till exempel skapa en anpassad regel som utlöser en avisering med hög allvarlighets grad när en nätverks aktivitet identifieras på en helg eller på kvällen.
 
 Den här funktionen är tillgänglig i sensorn med version 10,1.
 
-### <a name="export-alerts-from-on-premises-management-console"></a>Exportera aviseringar från den lokala hanterings konsolen
+### <a name="on-premises-management-console---export-alerts"></a>Lokal hanterings konsol-exportera aviseringar
 
 Aviserings informationen kan nu exporteras till en. csv-fil från den lokala hanterings konsolen. Du kan exportera information om alla aviseringar som identifierats eller exportera information baserat på den filtrerade vyn.
 
@@ -48,7 +48,7 @@ Det finns en ny Device Builder-modul. Modulen, som kallas Micro-agent, tillåter
 - **Hantering av säkerhets position** – proaktivt övervaka säkerhets position för dina IoT-enheter.
 - **Kontinuerlig identifiering av IoT/nätverks-hot i real tid** – identifiera hot som botnät, brutna Force-försök, krypto gruvprogram och misstänkt nätverks aktivitet
 
-Dokumentationen för föråldrad säkerhetsmodul kommer att flyttas till den klassiska mappen.
+Den föråldrade dokumentationen för säkerhetsmodulen kommer att flyttas till den *agentbaserade lösningen för enhets byggare>Classic* -mappen.
 
 Den här funktionen är tillgänglig med den aktuella offentliga för hands versionen av molnet.
 

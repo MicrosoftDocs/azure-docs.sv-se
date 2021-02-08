@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 65a1f8ef82ba9ec35e01a61d9682ebed0b9ba04c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428342"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820712"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -210,10 +210,10 @@ På den server som visas som "visas offline" i portalen tittar du på händelse-
         - Information om hur du använder TLS-cmdlets finns i [Konfigurera TLS-chiffrering av TLS-paket med hjälp av TLS PowerShell-cmdletar](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         Azure File Sync stöder för närvarande följande chiffersviter för TLS 1,2-protokollet:  
-        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
-        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
-        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
-        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256  
 
 - Om **GetNextJob slutfördes med status:-2134347764** är inloggad kan servern inte kommunicera med Azure File Sync tjänsten på grund av ett utgånget eller Borttaget certifikat.  
     - Kör följande PowerShell-kommando på servern för att återställa certifikatet som används för autentisering:

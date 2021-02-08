@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927739"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820559"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser
 [Plattforms loggar](platform-logs-overview.md) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. [Plattforms mått](data-platform-metrics.md) samlas in som standard och lagras vanligt vis i Azure Monitor Metrics-databasen. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål.
@@ -175,6 +175,24 @@ Se [diagnostikinställningar](/rest/api/monitor/diagnosticsettings) för att ska
 
 ## <a name="create-using-azure-policy"></a>Skapa med Azure Policy
 Eftersom en diagnostisk inställning måste skapas för varje Azure-resurs kan Azure Policy användas för att automatiskt skapa en diagnostisk inställning när varje resurs skapas. Mer information finns i [distribuera Azure Monitor i skala med hjälp av Azure policy](../deploy-scale.md) .
+
+## <a name="metric-category-is-not-supported-error"></a>Mått kategorin stöds inte
+När du distribuerar en diagnostisk inställning visas följande fel meddelande:
+
+   "Mått kategorin *xxxx*" stöds inte "
+
+Exempel: 
+
+   "Mått kategorin" ActionsFailed "stöds inte"
+
+där distributionen tidigare lyckades. 
+
+Problemet uppstår när du använder en Resource Manager-mall, diagnostikinställningar REST API, Azure CLI eller Azure PowerShell. Diagnostikinställningar som skapats via Azure Portal påverkas inte eftersom endast de kategori namn som stöds visas.
+
+Problemet orsakas av en ny ändring i det underliggande API: et. Mått kategorier som skiljer sig från "AllMetrics" stöds inte och är aldrig undantagna i mycket speciella listor över tillåtna IP-listor. Tidigare ignorerades andra kategori namn när en diagnostisk inställning distribuerades. Azure Monitor-filservern omdirigerade bara de här kategorierna till "AllMetrics".  Från och med februari 2021 uppdaterades Server delen till att särskilt bekräfta att den angivna mått kategorin är korrekt. Den här ändringen har gjort att vissa distributioner inte fungerar.
+
+Om du får det här felet kan du uppdatera distributionerna för att ersätta alla mått kategori namn med "AllMetrics" för att åtgärda problemet. Om distributionen tidigare lades till flera kategorier ska endast en med referensen "AllMetrics" behållas. Om problemet kvarstår kan du kontakta Azure-supporten via Azure Portal. 
+
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -1,24 +1,24 @@
 ---
-title: Konfigurera de IoT-resurser du behöver för IoT Plug and Play | Microsoft Docs
-description: Skapa en instans av IoT Hub-och Device Provisioning-tjänsten som ska användas med IoT-Plug and Play snabb starter och självstudier.
+title: Snabb start – konfigurera de IoT-resurser du behöver för IoT Plug and Play | Microsoft Docs
+description: Snabb start – skapa en instans av IoT Hub-och Device Provisioning-tjänsten som ska användas med IoT-Plug and Play snabb starter och självstudier.
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/11/2020
-ms.topic: how-to
+ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96004270"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820038"
 ---
-# <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Konfigurera din miljö för IoT Plug and Play snabb starter och självstudier
+# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Snabb start – konfigurera din miljö för IoT Plug and Play snabb starter och självstudier
 
 Innan du kan slutföra någon av IoT-Plug and Play snabb starter och självstudier måste du konfigurera en IoT-hubb och enhets etablerings tjänsten (DPS) i din Azure-prenumeration. Du behöver också lokala kopior av de konsolfiler som används av exempel programmen och Azure IoT Explorer-verktyget.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 Du kan undvika kravet på att installera Azure CLI lokalt genom att använda Azure Cloud Shell för att konfigurera moln tjänsterna.
 

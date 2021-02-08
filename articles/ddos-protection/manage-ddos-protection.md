@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f4ce830c889feaeda05745eeb02b72f55ad9314a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813946"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819851"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard
 
@@ -47,7 +47,7 @@ I den här snabb starten skapar du en DDoS skydds plan och länkar den till ett 
     |Namn           | Ange _MyDdosProtectionPlan_.                     |
     |Prenumeration   | Välj din prenumeration.                         |
     |Resursgrupp | Välj **Skapa ny** och ange _MyResourceGroup_.|
-    |Plats       | Ange _USA, östra_.                                  |
+    |Location       | Ange _USA, östra_.                                  |
 
 ## <a name="enable-ddos-protection-for-a-virtual-network"></a>Aktivera DDoS-skydd för ett virtuellt nätverk
 
@@ -62,7 +62,7 @@ I den här snabb starten skapar du en DDoS skydds plan och länkar den till ett 
     | Namn            | Ange _MyVnet_.                                 |
     | Prenumeration    | Välj din prenumeration.                                    |
     | Resursgrupp  | Välj **Använd befintlig** och välj sedan **MyResourceGroup** |
-    | Plats        | Ange _USA, östra_                                                    |
+    | Location        | Ange _USA, östra_                                                    |
     | DDoS Protection Standard | Välj **Aktivera**. Den plan du väljer kan vara i samma eller en annan prenumeration än det virtuella nätverket, men båda prenumerationerna måste vara kopplade till samma Azure Active Directory-klient.|
 
 Du kan inte flytta ett virtuellt nätverk till en annan resurs grupp eller prenumeration när DDoS standard är aktive rad för det virtuella nätverket. Om du behöver flytta ett virtuellt nätverk med DDoS standard aktiverat inaktiverar du DDoS standard först, flyttar det virtuella nätverket och aktiverar sedan DDoS standard. Efter flyttningen återställs automatiskt justerade princip tröskelvärden för alla skyddade offentliga IP-adresser i det virtuella nätverket.
@@ -77,7 +77,7 @@ Du kan inte flytta ett virtuellt nätverk till en annan resurs grupp eller prenu
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Aktivera DDoS-skydd för alla virtuella nätverk
 
-Den här [principen](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) identifierar virtuella nätverk i en definierad omfattning som inte har DDoS Protection standard aktiverat och du kan också skapa en reparations aktivitet som skapar associationen för att skydda det virtuella nätverket. Detaljerade steg-för-steg-instruktioner om hur du distribuerar den här principen finns i https://aka.ms/ddosvnetpolicy-techcommunity .
+Den här [principen](https://aka.ms/ddosvnetpolicy) identifierar virtuella nätverk i en definierad omfattning som inte har DDoS Protection standard aktiverat och du kan också skapa en reparations aktivitet som skapar associationen för att skydda det virtuella nätverket. Detaljerade steg-för-steg-instruktioner om hur du distribuerar den här principen finns i https://aka.ms/ddosvnetpolicy-techcommunity .
 
 ## <a name="validate-and-test"></a>Validera och testa
 

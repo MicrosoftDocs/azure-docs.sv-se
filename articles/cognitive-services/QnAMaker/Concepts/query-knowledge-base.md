@@ -3,12 +3,12 @@ title: Fråga kunskaps basen – QnA Maker
 description: 'En kunskaps bas måste publiceras. När den har publicerats frågas kunskaps basen vid körnings förutsägelse slut punkten med generateAnswer-API: et.'
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346213"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820389"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Fråga kunskaps basen efter svar
 
@@ -31,7 +31,7 @@ Processen beskrivs i följande tabell.
 |1|Klient programmet skickar användar frågan till [GenerateAnswer-API: et](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker förbearbetar användar frågan med språk identifiering, stavnings-och ord separatorer.|
 |3|Den här förbearbetningen görs för att ändra användar frågan för bästa Sök resultat.|
-|4|Den här ändrade frågan skickas till ett Azure Kognitiv sökning-index som tar emot `top` antalet resultat. Om rätt svar inte finns i dessa resultat ökar du värdet `top` något. Normalt är ett värde på 10 för `top` Works i 90% av frågorna.|
+|4|Den här ändrade frågan skickas till ett Azure Kognitiv sökning-index som tar emot `top` antalet resultat. Om rätt svar inte finns i dessa resultat ökar du värdet `top` något. Normalt är ett värde på 10 för `top` Works i 90% av frågorna. Azure Search-filter [stoppar ord](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) i det här steget.|
 |5|QnA Maker använder syntaktiskt och semantiskt baserat funktionalisering för att fastställa likheten mellan användar frågan och hämtade QnA-resultat.|
 |6|Den dator som är inlärt i rangordnings modellen använder de olika funktionerna, från steg 5, för att fastställa förtroende poängen och den nya rangordnings ordningen.|
 |7|De nya resultaten returneras till klient programmet i rangordnings ordning.|
@@ -54,7 +54,7 @@ Processen beskrivs i följande tabell.
 |1|Klient programmet skickar användar frågan till [GenerateAnswer-API: et](../how-to/metadata-generateanswer-usage.md).|
 |2|QnA Maker förbearbetar användar frågan med språk identifiering, stavnings-och ord separatorer.|
 |3|Den här förbearbetningen görs för att ändra användar frågan för bästa Sök resultat.|
-|4|Den här ändrade frågan skickas till ett Azure Kognitiv sökning-index som tar emot `top` antalet resultat. Om rätt svar inte finns i dessa resultat ökar du värdet `top` något. Normalt är ett värde på 10 för `top` Works i 90% av frågorna.|
+|4|Den här ändrade frågan skickas till ett Azure Kognitiv sökning-index som tar emot `top` antalet resultat. Om rätt svar inte finns i dessa resultat ökar du värdet `top` något. Normalt är ett värde på 10 för `top` Works i 90% av frågorna. Azure Search-filter [stoppar ord](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) i det här steget.|
 |5|QnA Maker använder den stegvisa transformatorbaserade modellen för att fastställa likheten mellan användar frågan och kandidat QnA resultat som hämtats från Azure Kognitiv sökning. Transformerad modell är en djup inlärnings modell med flera språk, som fungerar vågrätt för alla språk för att fastställa förtroende poängen och den nya rangordnings ordningen.|
 |6|De nya resultaten returneras till klient programmet i rangordnings ordning.|
 |||
@@ -125,4 +125,4 @@ HTTP-svaret är det svar som hämtats från kunskaps basen, baserat på den bäs
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Förtroendepoäng](./confidence-score.md)
+> [Förtroende Poäng](./confidence-score.md)

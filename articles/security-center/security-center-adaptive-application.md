@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: 103f2c87cf9d14f81462fed145ff8df3d69bfca0
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916141"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820763"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
 
@@ -44,7 +44,7 @@ Genom att definiera listor över kända säkra program och generera aviseringar 
 - Förhindra en speciell program vara som har blockerats av din organisation
 - Öka överblicken i appar som har åtkomst till känsliga data
 
-
+Inga tvingande alternativ är tillgängliga och inga planeras. Anpassningsbara program kontroller är avsedda att ge säkerhets aviseringar om andra program körs än de som du har definierat som säkra.
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -235,7 +235,12 @@ Några av de funktioner som är tillgängliga från REST API:
    > Ta bort följande egenskaper innan du använder JSON i begäran om att skicka: recommendationStatus, configurationStatus, Issues, Location och sourceSystem.
 
 
+## <a name="faq---adaptive-application-controls"></a>Vanliga frågor och anpassningsbara program kontroller
 
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Finns det några alternativ för att genomdriva program kontrollerna?
+Inga tvingande alternativ är tillgängliga och inga planeras. Anpassningsbara program kontroller är avsedda att ge **säkerhets aviseringar** om andra program körs än de som du har definierat som säkra. De har ett antal fördelar ([vilka är fördelarna med anpassningsbara program kontroller?](#what-are-the-benefits-of-adaptive-application-controls)) och är mycket anpassningsbara som de visas på den här sidan.
+
+ 
 
 ## <a name="next-steps"></a>Nästa steg
 I det här dokumentet har du lärt dig hur du använder adaptiv-Programkontroll i Azure Security Center för att definiera listor över tillåtna program som körs på dina Azure-och icke-Azure-datorer. Mer information om några av Security Centers andra moln skydds funktioner finns i:

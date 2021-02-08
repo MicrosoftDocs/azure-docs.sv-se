@@ -4,26 +4,26 @@ description: Lär dig hur du skickar säkerhets meddelanden med hjälp av Defend
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
+ms.date: 2/8/2021
+ms.author: shhazam
 ms.custom: devx-track-js
-ms.openlocfilehash: 5217940a3696bd001db421e61be8313453807c8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59121f2dbae208ba045a9c2e6d66245296537a0
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318525"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820695"
 ---
 # <a name="send-security-messages-sdk"></a>Skicka Security-meddelanden SDK
 
-I den här instruktions guiden förklaras funktionerna för Defender för IoT-tjänster när du väljer att samla in och skicka dina enhets säkerhets meddelanden utan att använda en Defender for IoT-agent och förklarar hur du gör det.
+I den här instruktions guiden förklaras funktionerna för Defender för IoT-tjänster när du väljer att samla in och skicka enhets säkerhets meddelanden utan att använda en Defender för IoT-agenten och förklarar hur du gör det.
 
 I den här guiden får du lära du dig att:
 
@@ -196,7 +196,7 @@ function SendSecurityMessage(messageContent)
 
 Om du vill använda python-API: et måste du installera paketet [Azure-IoT-Device](https://pypi.org/project/azure-iot-device/).
 
-När du använder python-API: et kan du antingen skicka säkerhets meddelandet via modulen eller via enheten med hjälp av anslutnings strängen för den unika enheten eller modulen. När du använder följande Python-skript exempel med en enhet, använder du **IoTHubDeviceClient**och använder en modul, använder du **IoTHubModuleClient**.
+När du använder python-API: et kan du antingen skicka säkerhets meddelandet via modulen eller via enheten med hjälp av anslutnings strängen för den unika enheten eller modulen. När du använder följande Python-skript exempel med en enhet, använder du **IoTHubDeviceClient** och använder en modul, använder du **IoTHubModuleClient**.
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient

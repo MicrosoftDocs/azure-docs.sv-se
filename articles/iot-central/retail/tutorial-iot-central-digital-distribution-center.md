@@ -7,22 +7,21 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2b8ed417de966f8731542e8f5ca12a6a05e2dc8a
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346205"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820287"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Självstudie: Distribuera och gå igenom en app-mall för digital distributions Center
-
-
 
 Den här självstudien visar hur du kommer igång genom att distribuera en IoT Central **digital distributions Center** -Programmall. Du får lära dig hur du distribuerar mallen, vad som ingår i rutan och vad du kanske vill göra härnäst.
 
 I den här självstudien får du lära dig att 
-* Skapa ett program för digital distributions Center 
-* Gå igenom programmet 
+
+> [!div class="checklist"]
+> Skapa ett program för digital distributions Center genom programmet 
 
 ## <a name="prerequisites"></a>Förutsättningar
 * Inga särskilda krav krävs för att distribuera den här appen

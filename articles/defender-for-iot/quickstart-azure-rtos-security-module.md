@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: d7e901e440a6df5ae1d11a150e09a36b565904d9
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3054981bbbff45666297399033663d1830ad9e4e
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809073"
+ms.locfileid: "99820440"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Snabb start: säkerhetsmodul för Azure-återställnings tider (för hands version)
 
@@ -43,8 +43,11 @@ Nästa steg för att komma igång förbereder dina Azure-resurser. Du behöver e
 Det krävs en IoT Hub anslutning för att komma igång. 
 
 1. Öppna din **IoT Hub** i Azure Portal.
+
 1. Navigera till **IoT-enheter**.
+
 1. Välj **Skapa**.
+
 1. Kopiera IoT-anslutningssträngen till [konfigurations filen](how-to-azure-rtos-security-module.md).
 
 Autentiseringsuppgifterna för anslutningen hämtas från konfiguration av användar program **HOST_NAME**, **DEVICE_ID** och **DEVICE_SYMMETRIC_KEY**.

@@ -1,21 +1,21 @@
 ---
-title: Så här distribuerar du Azure IoT Central program mal len video analys – objekt och rörelse identifiering
-description: Den här guiden sammanfattar stegen för att distribuera ett Azure IoT Central-program med hjälp av program mal len video analys – objekt och rörelse identifiering.
+title: 'Självstudie: distribuera video analys – identifiering av objekt och rörelse i Azure IoT Central program mal len'
+description: Självstudie – i den här guiden sammanfattas stegen för att distribuera ett Azure IoT Central-program med hjälp av program mal len video analys – objekt och rörelse identifiering.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: how-to
+ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: decfa7020be7778e8ca64a9fb0cb4aac1657da27
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873344"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820372"
 ---
-# <a name="how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Distribuera ett IoT Central program med hjälp av program mal len video analys – objekt och rörelse identifiering
+# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Självstudie: Distribuera ett IoT Central program med hjälp av program mal len video analys – objekt och rörelse identifiering
 
 En översikt över program komponenterna för nyckel *video analys – objekt och motion-identifiering* finns i [program arkitektur för objekt-och motion-identifiering](architecture-video-analytics.md).
 
@@ -45,4 +45,10 @@ Utför följande steg för att distribuera ett IoT Central program med hjälp av
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu har du en översikt över stegen för att distribuera och använda program mal len video analys, se [skapa ett video analys program i azure IoT Central (Yolo v3)](tutorial-video-analytics-create-app-yolo-v3.md) eller [skapa en video analys i Azure IoT Central (Open &trade; )](tutorial-video-analytics-create-app-openvino.md) för att komma igång.
+Nu har du en översikt över stegen för att distribuera och använda program mal len video analys, se
+
+> [!div class="nextstepaction"]
+> [Skapa ett video analys program i Azure IoT Central (Yolo v3)](tutorial-video-analytics-create-app-yolo-v3.md) eller
+
+> [!div class="nextstepaction"]
+> Kom igång genom att [skapa en video analys i Azure &trade; IoT Central (](tutorial-video-analytics-create-app-openvino.md) openman).

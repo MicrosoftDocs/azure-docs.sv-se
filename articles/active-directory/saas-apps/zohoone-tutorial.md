@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 98c9012969051e4370239a0f4098e0ea1d7a55a0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 225d6b13c882566a6b71c5809d67955a27561ed6
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348321"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99821113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Självstudie: Azure Active Directory integrering med Zoho One
 
-I den här självstudien får du lära dig att integrera Zoho en med Azure Active Directory (Azure AD).
-Genom att integrera Zoho en med Azure AD får du följande fördelar:
+I den här självstudien får du lära dig att integrera Zoho en med Azure Active Directory (Azure AD). När du integrerar Zoho en med Azure AD kan du:
 
-* Du kan styra Azure AD som har åtkomst till Zoho.
-* Du kan göra det möjligt för användarna att logga in automatiskt för att Zoho en (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
-
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+* Kontroll i Azure AD som har åtkomst till Zoho.
+* Gör det möjligt för användarna att logga in automatiskt för att Zoho en med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Zoho ett behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har en Azure AD-miljö kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/)
-* Zoho en aktive rad prenumeration med enkel inloggning
+* En Azure AD-prenumeration. Om du inte har en Azure AD-miljö kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+* Zoho en aktive rad prenumeration med enkel inloggning.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -43,65 +39,46 @@ I den här självstudien konfigurerar och testar du enkel inloggning med Azure A
 
 * Zoho One stöder **SP** -och **IDP** -initierad SSO
 
-## <a name="adding-zoho-one-from-the-gallery"></a>Lägga till Zoho från galleriet
+> [!NOTE]
+> ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
+
+## <a name="add-zoho-one-from-the-gallery"></a>Lägg till Zoho från galleriet
 
 Om du vill konfigurera integreringen av Zoho i Azure AD måste du lägga till Zoho från galleriet i listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Zoho från galleriet:**
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
+1. Navigera till **företags program** och välj sedan **alla program**.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
+1. I avsnittet **Lägg till från galleriet** , skriver du **Zoho ett** i sökrutan.
+1. Välj **Zoho en** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
+## <a name="configure-and-test-azure-ad-sso-for-zoho-one"></a>Konfigurera och testa Azure AD SSO för Zoho One
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+Konfigurera och testa Azure AD SSO med Zoho med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i Zoho.
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
+Utför följande steg för att konfigurera och testa Azure AD SSO med Zoho en:
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
+    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
+    1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
+1. **[Konfigurera Zoho en SSO](#configure-zoho-one-sso)** -för att konfigurera inställningarna för enkel inloggning på program sidan.
+    1. **[Skapa Zoho en test användare](#create-zoho-one-test-user)** – för att få en motsvarighet till B. Simon i Zoho som är länkad till Azure AD-representation av användare.
+1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
-3. Lägg till ett nytt program genom att klicka på knappen **Nytt program** högst upp i dialogrutan.
+### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-    ![Knappen Nytt program](common/add-new-app.png)
+Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-4. I sökrutan skriver du **Zoho ett**, väljer **Zoho ett** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+1. I Azure Portal på sidan **Zoho One** Application Integration letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-     ![Zoho en i resultat listan](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
-
-I det här avsnittet ska du konfigurera och testa enkel inloggning med Azure AD med Zoho, baserat på en test användare som kallas **Britta Simon**.
-För att enkel inloggning ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Zoho.
-
-Om du vill konfigurera och testa enkel inloggning med Zoho i Azure AD måste du slutföra följande Bygg stenar:
-
-1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera Zoho en enkel inloggning](#configure-zoho-one-single-sign-on)** för att konfigurera de enskilda Sign-On inställningarna på program sidan.
-3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa Zoho en test användare](#create-zoho-one-test-user)** – om du vill ha en motsvarighet till Britta Simon i Zoho som är länkad till Azure AD-representation av användare.
-6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
-
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
-
-Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zoho One:
-
-1. I [Azure Portal](https://portal.azure.com/)på sidan **Zoho One** Application Integration väljer du **enkel inloggning**.
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
-
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
-    ![Skärm bild som visar den grundläggande SAML-konfigurationen, där du kan ange identifierare, svara U R L och välja Spara.](common/idp-relay.png)
-
-    a. Skriv en URL i text rutan **identifierare** : `one.zoho.com`
+    a. Skriv webb adressen i text rutan **identifierare** : `one.zoho.com`
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
@@ -110,11 +87,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
     c. Klicka på **Ange ytterligare URL:er**.
 
-    d. Skriv en URL i textrutan **Vidarebefordransstatus**: `https://one.zoho.com`
+    d. I text rutan **relä tillstånd** anger du URL: en: `https://one.zoho.com`
 
 5. Utför följande steg om du vill konfigurera programmet i **SP** initierat läge:
-
-    ![Skärm bild som visar ytterligare U R LS där du kan ange ett tecken på U R L.](common/both-signonurl.png)
 
     I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
@@ -129,23 +104,41 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
+### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
-    b. Azure AD-identifierare
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-    c. Utloggnings-URL
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
-### <a name="configure-zoho-one-single-sign-on"></a>Konfigurera Zoho en enda Sign-On
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
+
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Zoho One.
+
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **Zoho ett**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
+
+### <a name="configure-zoho-one-sso"></a>Konfigurera Zoho en SSO
 
 1. Logga in på din Zoho-företags webbplats som administratör i ett annat webbläsarfönster.
 
 2. Klicka på **Konfigurera** under **SAML-autentisering** på fliken **organisation** .
 
-    ![Zoho en organisation](./media/zohoone-tutorial/tutorial_zohoone_setup.png)
+    ![Zoho en organisation](./media/zoho-one-tutorial/set-up.png)
 
 3. På popup-sidan utför du följande steg:
 
-    ![Zoho en sig](./media/zohoone-tutorial/tutorial_zohoone_save.png)
+    ![Zoho en sig](./media/zoho-one-tutorial/save.png)
 
     a. I text rutan **inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
@@ -157,15 +150,15 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
 4. När du har sparat inställningen för SAML-autentisering kopierar du värdet för **SAML-identifieraren** och lägger till det med **svars-URL:** en i stället för `<saml-identifier>` `https://accounts.zoho.com/samlresponse/one.zoho.com` och klistrar in det genererade värdet i text rutan **SVARs-URL** under avsnittet **grundläggande SAML-konfiguration** .
 
-    ![Zoho ett SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
+    ![Zoho ett SAML](./media/zoho-one-tutorial/saml-identifier.png)
 
 5. Gå till fliken **domäner** och klicka sedan på **Lägg till domän**.
 
-    ![Zoho en domän](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
+    ![Zoho en domän](./media/zoho-one-tutorial/add-domain.png)
 
 6. På sidan **Lägg till domän** utför du följande steg:
 
-    ![Zoho en Lägg till domän](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
+    ![Zoho en Lägg till domän](./media/zoho-one-tutorial/add-domain-name.png)
 
     a. I text rutan **domän namn** skriver du domän som contoso.com.
 
@@ -173,56 +166,6 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
     >[!Note]
     >När du har lagt till domänen följer du [de här](https://www.zoho.com/one/help/admin-guide/domain-verification.html) stegen för att verifiera din domän. När domänen har verifierats kan du använda ditt domän namn i **inloggnings-URL: en** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
-
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
-
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
-
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
-
-I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Zoho One.
-
-1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Zoho ett**.
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-
-2. I listan program väljer du **Zoho ett**.
-
-    ![Zoho en länk i program listan](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper**.
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-zoho-one-test-user"></a>Skapa Zoho en test användare
 
@@ -234,11 +177,11 @@ Om du vill att Azure AD-användare ska kunna logga in på Zoho ett måste de var
 
 2. På fliken **användare** klickar du på **användar logo typ**.
 
-    ![Zoho en användare](./media/zohoone-tutorial/tutorial_zohoone_users.png)
+    ![Zoho en användare](./media/zoho-one-tutorial/user.png)
 
 3. Utför följande steg på sidan **Lägg till användare** :
 
-    ![Zoho en Lägg till användare](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
+    ![Zoho en Lägg till användare](./media/zoho-one-tutorial/add-user.png)
     
     a. I text rutan **namn** anger du namnet på den användare som **Britta Simon**.
     
@@ -249,16 +192,22 @@ Om du vill att Azure AD-användare ska kunna logga in på Zoho ett måste de var
 
     c. Klicka på **Lägg till**.
 
-### <a name="test-single-sign-on"></a>Testa enkel inloggning 
+### <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på Zoho en panel på åtkomst panelen, bör du loggas in automatiskt på den Zoho som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Zoho med en inloggnings-URL där du kan starta inloggnings flödet.  
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Gå till Zoho för en inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den Zoho som du ställer in SSO för. 
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på Zoho en panel i Mina appar, om den har kon figurer ATS i SP-läge, kommer du att omdirigeras till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på den Zoho som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat Zoho kan du framtvinga kontroll, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

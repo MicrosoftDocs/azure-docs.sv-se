@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs populära allmänna frågor om Azure S
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746483"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820204"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allmänna frågor om Azure Site Recovery
 
@@ -188,7 +188,7 @@ Ja, [ExpressRoute kan användas](concepts-expressroute-with-site-recovery.md) f�
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Om jag replikerar till Azure, vilken typ av lagrings konto eller hanterad disk behöver jag?
 
-Du behöver en LRS-eller GRS-lagring. Vi rekommenderar GRS så att dina data är flexibla i händelse av ett regionalt strömavbrott, eller om det inte går att återställa den primära regionen. Kontot måste finnas i samma region som Recovery Services-valvet. Premium Storage stöds för virtuella VMware-datorer, virtuella Hyper-V-datorer och replikering av fysiska servrar när du distribuerar Site Recovery i Azure Portal. Managed disks stöder endast LRS.
+Att använda lagrings konton som mål lagring stöds inte av Azure Site Recovery. Vi rekommenderar att du hellre använder hanterade diskar som mål lagring för dina datorer. Managed disks stöder endast LRS-typ för data återhämtning.
 
 ### <a name="how-often-can-i-replicate-data"></a>Hur ofta kan jag replikera data?
 * **Hyper-V:** Virtuella Hyper-V-datorer kan replikeras var 30: e sekund (med undantag för Premium Storage), fem minuter eller 15 minuter.

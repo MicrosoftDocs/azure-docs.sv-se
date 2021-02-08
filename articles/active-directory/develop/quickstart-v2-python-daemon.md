@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: b6087140380fab00e2f24ea7f3b94334c4b79a71
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 734fad7d3f4fb7a2a816d9ad10fb6b15e2faf9e2
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583170"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820417"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Snabb start: Hämta en token och anropa Microsoft Graph API från en python-konsol app med appens identitet
 
 I den här snabb starten laddar du ned och kör ett kod exempel som visar hur ett python-program kan få en åtkomsttoken med appens identitet för att anropa Microsoft Graph-API: et och visa en [lista över användare](/graph/api/user-list) i katalogen. Kod exemplet visar hur ett obevakat jobb eller en Windows-tjänst kan köras med en program identitet, i stället för en användares identitet. 
 
 > [!div renderon="docs"]
-> ![Visar hur exempel appen som genereras av den här snabb starten fungerar](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+> ![Visar hur exempel appen som genereras av den här snabb starten fungerar](media/quickstart-v2-python-daemon/python-console-daemon.svg)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -42,7 +42,7 @@ Om du vill köra det här exemplet behöver du:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1: Registrera och konfigurera appen automatiskt och ladda sedan ned ditt kodexempel
 >
-> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar</a> .
 > 1. Ange ett namn för programmet och välj **Registrera**.
 > 1. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt med ett enda klick.
 >
@@ -52,7 +52,7 @@ Om du vill köra det här exemplet behöver du:
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
-> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -65,7 +65,7 @@ Om du vill köra det här exemplet behöver du:
 > 1. Under noden **användare** väljer du **User. Read. all** och väljer sedan **Lägg till behörigheter**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>Hämta och konfigurera din app för Snabbstart
+> ### <a name="download-and-configure-the-quickstart-app"></a>Hämta och konfigurera snabb starts appen
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
 > För att kod exemplet i den här snabb starten ska fungera skapar du en klient hemlighet och lägger till Graph API **User. Read. all** program behörighet.
@@ -75,7 +75,7 @@ Om du vill köra det här exemplet behöver du:
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Redan konfigurerad](media/quickstart-v2-netcore-daemon/green-check.png) Programmet konfigureras med de här attributen.
 
-#### <a name="step-2-download-your-python-project"></a>Steg 2: Ladda ned ditt python-projekt
+#### <a name="step-2-download-the-python-project"></a>Steg 2: Ladda ned python-projektet
 
 > [!div renderon="docs"]
 > [Ladda ned python daemon-projektet](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
@@ -89,10 +89,10 @@ Om du vill köra det här exemplet behöver du:
 
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-python-project"></a>Steg 3: Konfigurera ditt python-projekt
+> #### <a name="step-3-configure-the-python-project"></a>Steg 3: Konfigurera python-projektet
 >
 > 1. Extrahera zip-filen i en lokal mapp nära diskens rot, till exempel **C:\Azure-Samples**.
-> 1. Navigera till undermappen **1-Call-MsGraph-WithSecret "**.
+> 1. Navigera till undermappen **1-Call-MsGraph-WithSecret**.
 > 1. Redigera **parameters.jspå** och ersätt värdena för fälten `authority` , `client_id` och `secret` med följande kodfragment:
 >
 >    ```json
@@ -119,10 +119,10 @@ Om du försöker köra programmet nu får du ett *HTTP 403-otillåtet* fel: `Ins
 ##### <a name="global-tenant-administrator"></a>Global innehavaradministratör
 
 > [!div renderon="docs"]
-> Om du är global klientadministratör går du till sidan **API-behörigheter** i Programregistrering (förhandsversion) i Azure-portalen och väljer **Bevilja administratörsmedgivande för {klientnamn}** (där {klientnamn} är namnet på din katalog).
+> Om du är global innehavaradministratör går du till sidan med **API-behörigheter** i **Appregistreringar** i Azure Portal och väljer **bevilja administratörs medgivande för {klient organisationens namn}** (där {klient organisationens namn} är namnet på din katalog).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Om du är global administratör går du till sidan **API-behörigheter** och väljer **Bevilja administratörsmedgivande för Enter_the_Tenant_Name_Here**
+> Om du är global administratör går du till sidan **API-behörigheter** och väljer **bevilja administrativt medgivande för Enter_the_Tenant_Name_Here**.
 > > [!div id="apipermissionspage"]
 > > [Gå till sidan API-behörigheter]()
 
@@ -145,7 +145,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>Steg 5: Köra appen
 
-Du måste installera beroendena för det här exemplet en gång
+Du måste installera beroendena för det här exemplet en gång.
 
 ```console
 pip install -r requirements.txt
@@ -160,7 +160,7 @@ python confidential_client_secret_sample.py parameters.json
 Du bör se i konsolen utdata av ett JSON-fragment som representerar en lista med användare i Azure AD-katalogen.
 
 > [!IMPORTANT]
-> Det här snabbstartsprogrammet använder en klienthemlighet för att identifiera sig som en konfidentiell klient. Eftersom klienthemligheten läggs till som oformaterad text till dina projektfiler rekommenderar vi att du av säkerhetsskäl använder ett certifikat i stället för en klienthemlighet innan programmet används som produktionsprogram. Mer information om hur du använder ett certifikat finns i [följande instruktioner](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md) i samma GitHub-lagringsplats för det här exemplet, men i den andra mappen **2-Call-MsGraph-WithCertificate**
+> Det här snabbstartsprogrammet använder en klienthemlighet för att identifiera sig som en konfidentiell klient. Eftersom klienthemligheten läggs till som oformaterad text till dina projektfiler rekommenderar vi att du av säkerhetsskäl använder ett certifikat i stället för en klienthemlighet innan programmet används som produktionsprogram. Mer information om hur du använder ett certifikat finns i [följande instruktioner](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/README.md) i samma GitHub-lagringsplats för det här exemplet, men i den andra mappen **2-Call-MsGraph-WithCertificate**.
 
 ## <a name="more-information"></a>Mer information
 
@@ -196,7 +196,7 @@ app = msal.ConfidentialClientApplication(
 > | `config["client_id"]` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
 > | `config["authority"]`    | STS-slutpunkten för autentisering av användaren. Vanligtvis `https://login.microsoftonline.com/{tenant}` för offentligt moln, där {klient} är namnet på klientorganisationen eller klient-ID:t.|
 
-Mer information finns i [referensdokumentationen för `ConfidentialClientApplication`](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication)
+Mer information finns i [referens dokumentationen för `ConfidentialClientApplication` ](https://msal-python.readthedocs.io/en/latest/#confidentialclientapplication).
 
 ### <a name="requesting-tokens"></a>Begära token
 
@@ -213,15 +213,15 @@ if not result:
 
 > |Plats:| Description |
 > |---------|---------|
-> | `config["scope"]` | Innehåller omfattningarna som begärdes. För konfidentiella klienter bör ett format som liknar `{Application ID URI}/.default` användas för att ange att omfattningarna som begärs är dem som statiskt definieras i appobjektet som anges i Azure-portalen (för Microsoft Graph, `{Application ID URI}` pekar på `https://graph.microsoft.com`). För anpassade webb-API: er `{Application ID URI}` definieras under **exponera ett API** -avsnitt i Azure-portalens program registrering (för hands version). |
+> | `config["scope"]` | Innehåller omfattningarna som begärdes. För konfidentiella klienter bör det använda formatet som liknar `{Application ID URI}/.default` för att indikera att de omfattningar som begärs är de statiskt definierade i app-objektet som anges i Azure Portal (för Microsoft Graph `{Application ID URI}` pekar på `https://graph.microsoft.com` ). För anpassade webb-API: er `{Application ID URI}` definieras under avsnittet **exponera ett API** i **Appregistreringar** i Azure-portalen.|
 
-Mer information finns i [referensdokumentationen för `AcquireTokenForClient`](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client)
+Mer information finns i [referens dokumentationen för `AcquireTokenForClient` ](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client).
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om daemon-program finns på sidan om scenario landning
+Mer information om daemon-program finns på sidan om scenario landning.
 
 > [!div class="nextstepaction"]
 > [Daemon-program som anropar webb-API: er](scenario-daemon-overview.md)

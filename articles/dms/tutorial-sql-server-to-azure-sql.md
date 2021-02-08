@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c79a1ab46513da54d61f1da5c1ba3a6dd480a95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 23bc476c0d4fd90e19428d52b1468d090ffe2a1b
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785371"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820797"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Självstudie: Migrera SQL Server till Azure SQL Database offline med hjälp av DMS
 
@@ -38,7 +38,7 @@ Du lär dig hur du:
 
 I den här artikeln beskrivs en offline-migrering från SQL Server till en databas i Azure SQL Database. En onlinemigrering beskrivs i [Migrera SQL Server till Azure SQL Database online med DMS](tutorial-sql-server-azure-sql-online.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -237,6 +237,9 @@ När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och
 1. På skärmen **Välj mål** anger du anslutnings information för mål Azure SQL Database, vilket är den företablerade Azure SQL Database som **Adventureworks2016** -schemat har distribuerats till med hjälp av data migration assistant.
 
     ![Välja mål](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
+    
+    > [!NOTE]
+    > Anslutningar för privata slut punkter till mål Azure SQL Database stöds av Azure Database Migration Service, förutom när du använder ett anpassat DNS-namn. 
 
 2. Välj **Nästa: mappa till mål databaser** -skärmen, mappa källan och mål databasen för migrering.
 

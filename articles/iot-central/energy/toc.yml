@@ -5,6 +5,7 @@
     - name: Skapa lösningar för energi med Azure IoT Central
       href: overview-iot-central-energy.md
 - name: Självstudier
+  expanded: true
   items:
     - name: Skapa en app för smart mätarövervakning
       href: tutorial-smart-meter-app.md
