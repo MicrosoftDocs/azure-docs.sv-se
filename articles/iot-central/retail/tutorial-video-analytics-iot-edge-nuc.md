@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427997"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831934"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Självstudie: skapa en IoT Edge-instans för video analys (Intel NUC)
 
@@ -148,6 +148,14 @@ Identifiera RTSP-Stream-URL: erna för de kameror som är anslutna till din IoT 
 
 > [!TIP]
 > Försök att Visa kamera strömmen på den IoT Edge datorn med en medie spelare som VLC.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Om du är klar med programmet kan du ta bort alla resurser som du har skapat på följande sätt:
+
+1. I IoT Central programmet navigerar du till sidan **program** i avsnittet **Administration** . Välj sedan **Ta bort**.
+1. Ta bort resurs gruppen **lva-RG** i Azure Portal.
+1. På den lokala datorn stoppar du Docker-behållaren för **amp-visningsprogrammet** .
 
 ## <a name="next-steps"></a>Nästa steg
 

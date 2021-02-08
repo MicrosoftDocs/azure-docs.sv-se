@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: victorh
-ms.openlocfilehash: dabe154535d2bd3ae5550d4bbbafa75adc5ae2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347378"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831849"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Övervaka loggar med hjälp av Azure Firewall-arbetsboken
 
@@ -26,9 +26,9 @@ Innan du börjar bör du [Aktivera diagnostisk loggning](firewall-diagnostics.md
 
 ## <a name="get-started"></a>Kom igång
 
-Om du vill distribuera arbets boken går du till [Azure Monitor arbets bok för Azure-brandvägg](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Azure%20Monitor%20Workbook) och följer anvisningarna på sidan. Azure Firewall-arbetsboken är utformad för att fungera över flera klienter, flera prenumerationer och kan filtreras till flera brand väggar.
+Om du vill distribuera arbets boken går du till [Azure Monitor arbets bok för Azure-brandvägg](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Workbook%20-%20Azure%20Firewall%20Monitor%20Workbook) och följer anvisningarna på sidan. Azure Firewall-arbetsboken är utformad för att fungera över flera klienter, flera prenumerationer och kan filtreras till flera brand väggar.
 
-## <a name="overview-page"></a>Översikts sida
+## <a name="overview-page"></a>Översiktssidan
 
 Översikts sidan ger dig ett sätt att filtrera över arbets ytor, tid och brand väggar. Det visar händelser efter tid i brand väggar och logg typer (program, nätverk, Hot-Intel, DNS-proxy).
 
@@ -38,23 +38,23 @@ Om du vill distribuera arbets boken går du till [Azure Monitor arbets bok för 
 
 På den här sidan visas unika källor med IP-adress över tid, användning av antal program regler, nekad/tillåten FQDN över tid och filtrerade data. Du kan filtrera data baserat på IP-adress.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Översikt över Azure Firewall-arbetsböcker":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Program regel logg för Azure Firewall-arbetsbok":::
 
 ## <a name="network-rule-log-statistics"></a>Statistik för nätverks regel logg
 
 Den här sidan ger en vy efter regel åtgärd – Tillåt/neka, mål Port per IP-adress och DNAT över tid. Du kan också filtrera efter åtgärd, port och måltyp.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Översikt över Azure Firewall-arbetsböcker":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Nätverks regel logg för Azure Firewall-arbetsboken":::
 
 Du kan också filtrera loggar baserat på tids period:
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Översikt över Azure Firewall-arbetsböcker":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Arbets boks fönster för Azure Firewall-arbetsbok logg tid":::
 
 ## <a name="investigations"></a>Undersökningar
 
 Du kan titta på loggarna och ta reda på mer om resursen baserat på käll-IP-adressen. Du kan hämta information som namn på virtuell dator och nätverks gränssnitt. Det är enkelt att filtrera efter resursen från loggarna.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Översikt över Azure Firewall-arbetsböcker":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Undersökning av Azure Firewall-arbetsböcker":::
 
 ## <a name="next-steps"></a>Nästa steg
 

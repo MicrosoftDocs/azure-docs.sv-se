@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: abeae674cef8f13a092b53bde6040ad853bd0cca
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820372"
+ms.locfileid: "99831951"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Självstudie: Distribuera ett IoT Central program med hjälp av program mal len video analys – objekt och rörelse identifiering
 
@@ -22,6 +22,10 @@ En översikt över program komponenterna för nyckel *video analys – objekt oc
 Följande videoklipp ger en genom gång av hur du använder _program mal len video analys – objekt och rörelse identifiering_ för att distribuera en IoT Central-lösning:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+## <a name="prerequisites"></a>Förutsättningar
+
+En Azure-prenumeration rekommenderas. Du kan också använda en kostnads fri 7-dagars utvärderings version. Om du inte har någon Azure-prenumeration kan du skapa en på [sidan för Azure-registrering](https://aka.ms/createazuresubscription).
 
 ## <a name="deploy-the-application"></a>Distribuera programmet
 
@@ -42,6 +46,14 @@ Utför följande steg för att distribuera ett IoT Central program med hjälp av
     - Installera en lokal medie spelare för att visa fångade videor i AMS.
     - Visa fångade videor som visar identifierade objekt.
     - Städa upp.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+När du är klar med programmet kan du ta bort alla resurser som du har skapat på följande sätt:
+
+1. I IoT Central programmet navigerar du till sidan **program** i avsnittet **Administration** . Välj sedan **Ta bort**.
+1. Ta bort resurs gruppen **lva-RG** i Azure Portal.
+1. På den lokala datorn stoppar du Docker-behållaren för **amp-visningsprogrammet** .
 
 ## <a name="next-steps"></a>Nästa steg
 

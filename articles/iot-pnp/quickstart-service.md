@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 2c39672c779c5aa27aae7271b8a903a1146118d9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f1c7cb4c760b5344a7c27fc0257fdea445280b7f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510605"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831907"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution"></a>Snabb start: interagera med en IoT Plug and Play-enhet som är ansluten till din lösning
 
@@ -41,6 +41,10 @@ ms.locfileid: "95510605"
 [!INCLUDE [iot-pnp-service-python](../../includes/iot-pnp-service-python.md)]
 
 :::zone-end
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Om du är klar med snabb starterna och självstudierna, se [Rensa resurser](set-up-environment.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nästa steg
 

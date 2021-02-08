@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e5236bb7034ae4d5f86ab2f8f965bdbfbc3d6ccd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124902"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832053"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Självstudie: ändra och bygga Live Video Analytics Gateway-moduler
 
@@ -73,6 +73,13 @@ git clone https://github.com/Azure/live-video-analytics
 1. Använd VS Code-terminalen för att köra kommandot **NPM version patch** . Det här build-skriptet distribuerar avbildningarna till behållar registret. Utdata i fönstret VS Code-terminalen visar om bygget lyckades.
 
 1. Versionen av **LvaEdgeGatewayModule** -avbildningen ökar varje gång bygget slutförs. Du måste använda den här versionen i distributions manifest filen.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Om du är klar med programmet kan du ta bort alla resurser som du har skapat på följande sätt:
+
+1. I IoT Central programmet navigerar du till sidan **program** i avsnittet **Administration** . Välj sedan **Ta bort**.
+1. Ta bort resurs gruppen **lva-RG** i Azure Portal.
 
 ## <a name="next-steps"></a>Nästa steg
 

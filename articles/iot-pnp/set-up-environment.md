@@ -7,18 +7,20 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 10ec761313ce39beb4b24b838d156478704f943e
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820038"
+ms.locfileid: "99831917"
 ---
 # <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>Snabb start – konfigurera din miljö för IoT Plug and Play snabb starter och självstudier
 
 Innan du kan slutföra någon av IoT-Plug and Play snabb starter och självstudier måste du konfigurera en IoT-hubb och enhets etablerings tjänsten (DPS) i din Azure-prenumeration. Du behöver också lokala kopior av de konsolfiler som används av exempel programmen och Azure IoT Explorer-verktyget.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+## <a name="prerequisites"></a>Krav
+
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 Du kan undvika kravet på att installera Azure CLI lokalt genom att använda Azure Cloud Shell för att konfigurera moln tjänsterna.
 
@@ -130,7 +132,7 @@ Konfigurera verktyget för att använda de modell filer som du laddade ned tidig
 
 Mer information finns i [Installera och använda Azure IoT Explorer](howto-use-iot-explorer.md).
 
-## <a name="remove-the-resources"></a>Ta bort resurserna
+## <a name="clean-up-resources"></a>Rensa resurser
 
 Du kan använda IoT Hub och DPS-instansen för alla IoT Plug and Play snabb starter och självstudier, så du behöver bara slutföra stegen i den här artikeln en gång. När du är klar kan du ta bort dem från prenumerationen med följande kommando:
 
