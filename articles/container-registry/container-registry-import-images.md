@@ -3,12 +3,12 @@ title: Importera containeravbildningar
 description: 'Importera behållar avbildningar till ett Azure Container Registry med hjälp av Azure API: er, utan att behöva köra Docker-kommandon.'
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: 364c90b857d0d7d479152e2aa56db4d80041f037
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524506"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988242"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importera behållar avbildningar till ett behållar register
 
@@ -68,13 +68,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-I följande exempel importeras en offentlig avbildning från `tensorflow` lagrings platsen i Docker Hub:
+Om du har ett [Docker Hub-konto](https://www.docker.com/pricing)rekommenderar vi att du använder autentiseringsuppgifterna när du importerar en avbildning från Docker Hub. Skicka Docker-hubbens användar namn och lösen ord eller en [personlig åtkomsttoken](https://docs.docker.com/docker-hub/access-tokens/) som parametrar till `az acr import` . I följande exempel importeras en offentlig avbildning från `tensorflow` lagrings platsen i Docker Hub med hjälp av Docker Hub-autentiseringsuppgifter:
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source docker.io/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Importera från Microsoft Container Registry

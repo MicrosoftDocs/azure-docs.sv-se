@@ -4,14 +4,14 @@ description: Skicka och ta emot OCI-artefakter (Open container Initiative) med e
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485011"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988221"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Push-överför och hämta en OCI-artefakt med ett Azure Container Registry
 
@@ -46,7 +46,7 @@ Om du vill läsa lösen ordet från STDIN använder du `--password-stdin` .
 
 [Logga in](/cli/azure/authenticate-azure-cli) på Azure CLI med din identitet för att skicka och ta emot artefakter från behållar registret.
 
-Använd sedan Azure CLI-kommandot [AZ ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) för att få åtkomst till registret. Om du till exempel vill autentisera till ett register med namnet *unregistry*:
+Använd sedan Azure CLI-kommandot [AZ ACR login](/cli/azure/acr#az-acr-login) för att få åtkomst till registret. Om du till exempel vill autentisera till ett register med namnet *unregistry*:
 
 ```azurecli
 az login
@@ -61,12 +61,12 @@ az acr login --name myregistry
 Skapa en textfil i en lokal arbets katalog med lite exempel text. Till exempel i ett bash-gränssnitt:
 
 ```bash
-echo "Here is an artifact!" > artifact.txt
+echo "Here is an artifact" > artifact.txt
 ```
 
 Använd `oras push` kommandot för att skicka den här text filen till registret. I följande exempel skickas exempel text filen till `samples/artifact` lagrings platsen. Registret identifieras med det fullständigt kvalificerade register namnet *myregistry.azurecr.io* (alla gemener). Artefakten är taggad `1.0` . Artefakten har en odefinierad typ som standard identifieras av *medie typ* strängen efter fil namnet `artifact.txt` . Se [OCI-artefakter](https://github.com/opencontainers/artifacts) för ytterligare typer. 
 
-**Linux**
+**Linux eller macOS**
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -137,7 +137,7 @@ Verifiera att hämtningen lyckades:
 
 ```bash
 $ cat artifact.txt
-Here is an artifact!
+Here is an artifact
 ```
 
 ## <a name="remove-the-artifact-optional"></a>Ta bort artefakten (valfritt)
@@ -157,7 +157,7 @@ Käll koden och binärfiler för att bygga en behållar avbildning kan lagras so
 Skapa till exempel en Dockerfile med en rad:
 
 ```bash
-echo "FROM hello-world" > hello-world.dockerfile
+echo "FROM mcr.microsoft.com/hello-world" > hello-world.dockerfile
 ```
 
 Logga in på mål behållar registret.
@@ -170,14 +170,15 @@ az acr login --name myregistry
 Skapa och skicka en ny OCI-artefakt till mål registret med hjälp av `oras push` kommandot. I det här exemplet anges standard medie typen för artefakten.
 
 ```bash
-oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
 ```
 
 Kör kommandot [AZ ACR build](/cli/azure/acr#az-acr-build) för att skapa Hello-World-avbildningen med den nya artefakten som bygg kontext:
 
 ```azurecli
-az acr build --registry myregistry --file hello-world.dockerfile \
-  oci://myregistry.azurecr.io/hello-world:1.0
+az acr build --registry myregistry --image builds/hello-world:v1 \
+  --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/dockerfile:1.0
 ```
 
 ## <a name="next-steps"></a>Nästa steg

@@ -6,17 +6,23 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 11/20/2020
-ms.openlocfilehash: 7458b027add8be86d9491c674c2f1a0bc9fbc68c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 2/5/2021
+ms.openlocfilehash: d98f2f80bf22627eb34855234e22e314c241c852
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554239"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988306"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Klassificeringar som stöds i Azure avdelningens kontroll
 
 Den här artikeln innehåller de system klassificeringar som stöds och definieras i Azure avdelningens kontroll (för hands version).
+
+
+- **Distinkt matchnings tröskel**: det totala antalet distinkta data värden som måste hittas i en kolumn innan skannern kör data mönstret på den. Reglerna för system klassificering kräver att det finns minst 8 distinkta värden i varje kolumn för att de ska kunna klassificeras. Systemet måste ha det här värdet för att se till att kolumnen innehåller tillräckligt med data för skannern för att kunna klassificera den korrekt. En kolumn som innehåller flera rader som innehåller värdet 1 klassificeras till exempel inte. Kolumner som innehåller en rad med ett värde och resten av raderna har null-värden får inte heller klassificeras. Om du anger flera mönster gäller det här värdet för var och en av dem.
+
+- **Minsta matchnings tröskel**: det är den minsta procent andelen data värdes matchningar i en kolumn som måste hittas av skannern för att klassificeringen ska tillämpas. System klassificering svärdet är inställt på 60%.
+
 
 ## <a name="defined-system-classifications"></a>Definierade system klassificeringar
 
@@ -274,7 +280,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-## <a name="australia-medical-account-number"></a>Australien, medicin konto nummer
+## <a name="australian-medicare-number"></a>Australiensisk Medicare-nummer
 
 ### <a name="format"></a>Format
 
@@ -291,7 +297,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>Nyckelord
 
-#### <a name="keyword_australia_medical_account_number"></a>Keyword_Australia_Medical_Account_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
 
 ```
 bank account details

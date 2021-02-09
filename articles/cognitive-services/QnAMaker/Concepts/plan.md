@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222873"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987988"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planera QnA Maker-appen
 
@@ -124,17 +124,17 @@ Du bör utforma ditt konversations flöde med en loop i åtanke så att en anvä
 
 Medarbetare kan vara andra utvecklare som delar den fullständiga utvecklings stacken i kunskaps bas programmet eller kan vara begränsade till att bara redigera kunskaps basen.
 
-Redigering av kunskaps bas har stöd för flera [rollbaserade åtkomst behörigheter](../reference-role-based-access-control.md) som du använder i Azure Portal för att begränsa omfattningen för en medarbetares förmågor.
+Redigering av kunskaps bas har stöd för flera rollbaserade åtkomst behörigheter som du använder i Azure Portal för att begränsa omfattningen för en medarbetares förmågor.
 
 ## <a name="integration-with-client-applications"></a>Integrering med klient program
 
-Integrering med [klient program](../index.yml) uppnås genom att skicka en fråga till körnings slut punkten för förutsägelse. En fråga skickas till din speciella kunskaps bas med en SDK-eller REST-baserad begäran till din QnA Makers webb programs slut punkt.
+Integrering med klient program uppnås genom att skicka en fråga till körnings slut punkten för förutsägelse. En fråga skickas till din speciella kunskaps bas med en SDK-eller REST-baserad begäran till din QnA Makers webb programs slut punkt.
 
 Om du vill autentisera en klientbegäran korrekt måste klient programmet skicka rätt autentiseringsuppgifter och ID för kunskaps bas. Om du använder en Azure Bot Service konfigurerar du inställningarna som en del av robot konfigurationen i Azure Portal.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Konversations flöde i ett klient program
 
-Konversations flödet i ett [klient program](../index.yml), t. ex. en Azure-robot, kan kräva funktioner innan och efter att du har interagerat i kunskaps basen.
+Konversations flödet i ett klient program, t. ex. en Azure-robot, kan kräva funktioner innan och efter att du har interagerat i kunskaps basen.
 
 Stöder ditt klient program konversations flödet, antingen genom att tillhandahålla alternativa metoder för att hantera uppföljnings-prompter eller inklusive CHI2TEST? I så fall kan du utforma dessa tidiga och se till att klient program frågan hanteras korrekt av en annan tjänst eller när den skickas till din kunskaps bas.
 
@@ -148,7 +148,7 @@ I ett sådant scenario med [delad arkitektur](../choose-natural-language-process
 
 ### <a name="active-learning-from-a-client-application"></a>Aktiv inlärning från ett klient program
 
-QnA Maker använder _Active Learning_ för att förbättra din kunskaps bas genom att föreslå alternativa frågor till ett svar. Klient programmet ansvarar för en del av den här [aktiva inlärningen](active-learning-suggestions.md). Via konversationer kan klient programmet avgöra om kunskaps basen returnerade ett svar som inte är användbart för användaren, och det kan fastställa ett bättre svar. Klient programmet måste [skicka tillbaka informationen till kunskaps basen](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api) för att förbättra förutsägelse kvaliteten.
+QnA Maker använder _Active Learning_ för att förbättra din kunskaps bas genom att föreslå alternativa frågor till ett svar. Klient programmet ansvarar för en del av den här [aktiva inlärningen](../How-To/use-active-learning.md). Via konversationer kan klient programmet avgöra om kunskaps basen returnerade ett svar som inte är användbart för användaren, och det kan fastställa ett bättre svar. Klient programmet måste skicka tillbaka informationen till kunskaps basen för att förbättra förutsägelse kvaliteten.
 
 ### <a name="providing-a-default-answer"></a>Ange ett standard svar
 
@@ -208,16 +208,16 @@ I den hanterade distributionen erbjuds telemetri via [tjänsten Azure Monitor](.
 
 ### <a name="knowledge-base-development-of-qna-maker-pairs"></a>Kunskaps bas utveckling av QnA Maker par
 
-Dina [QNA-par](question-answer-set.md) bör utformas och utvecklas baserat på användningen av klient programmet.
+Dina QnA-par bör utformas och utvecklas baserat på användningen av klient programmet.
 
 Varje par kan innehålla:
 * Metadata – filtrerat vid frågor så att du kan tagga dina QnA-par med ytterligare information om källa, innehåll, format och syfte för dina data.
 * Uppföljnings frågor – hjälper dig att fastställa en sökväg genom kunskaps basen så att användaren kommer till rätt svar.
-* Alternativa frågor – viktigt för att söka efter svar från olika former av frågan. [Aktiva utbildnings förslag](active-learning-suggestions.md) gör alternativa frågor.
+* Alternativa frågor – viktigt för att söka efter svar från olika former av frågan. [Aktiva utbildnings förslag](../How-To/use-active-learning.md) gör alternativa frågor.
 
 ### <a name="devops-development"></a>DevOps-utveckling
 
-Att utveckla en kunskaps bas som ska infogas i en DevOps-pipeline kräver att kunskaps basen isoleras under [batch-testning](../index.yml).
+Att utveckla en kunskaps bas som ska infogas i en DevOps-pipeline kräver att kunskaps basen isoleras under batch-testning.
 
 En kunskaps bas delar Kognitiv sökning indexet med alla andra kunskaps baser på den QnA Maker resursen. När kunskaps basen isoleras av en partition kan delning av index orsaka en skillnad i poängen jämfört med den publicerade kunskaps basen.
 

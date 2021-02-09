@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: cb6d0ee9c651ca1dcc554f5951a5733727af2d6b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954114"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988024"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Samar beta med andra författare och redigerare
 
@@ -46,7 +46,7 @@ Om du tänker anropa redigerings- [API: erna](../index.yml)kan du läsa mer om h
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Autentisera med QnA Maker Portal
 
-Om du skapar och samarbetar med hjälp av QnA Maker Portal hanterar QnA Maker portalen alla åtkomst behörigheter när du har [lagt till en lämplig roll till resursen för en medarbetare](../index.yml).
+Om du skapar och samarbetar med hjälp av QnA Maker Portal hanterar QnA Maker portalen alla åtkomst behörigheter när du har lagt till en lämplig roll till resursen för en medarbetare.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Autentisera med QnA Maker-API: er och SDK: er
 
@@ -54,4 +54,4 @@ Om du skapar och samarbetar med hjälp av API: er, antingen via REST eller SDK: 
 
 ## <a name="next-step"></a>Nästa steg
 
-* Utforma en kunskaps bas för [språk](../index.yml) och för [klient program](../index.yml)
+* Utforma en kunskaps bas för språk och för klient program

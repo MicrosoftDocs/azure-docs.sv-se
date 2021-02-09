@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/1/2020
-ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 2/5/2021
+ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693463"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988373"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Anpassade klassificeringar i Azure avdelningens kontroll 
 
@@ -39,7 +39,7 @@ Gör så här om du vill skapa en anpassad klassificering:
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification.png" alt-text="Ny klassificering" border="true":::
 
 Fönstret **Lägg till ny klassificering** öppnas där du kan ge klassificeringen ett namn och en beskrivning. Det är en bra idé att använda en namn utrymmes konvention, till exempel `your company name.classification name` .
-Microsofts system klassificeringar grupperas under det reserverade `MS.` namn området. Ett exempel är **MS. Stat. USA. PERSON \_ \_ nummer**.
+Microsofts system klassificeringar grupperas under det reserverade `MICROSOFT.` namn området. Ett exempel är **Microsoft. Stat. USA. PERSON \_ \_ nummer**.
 
 Namnet på din klassificering måste börja med en bokstav följt av en sekvens med bokstäver, siffror och punkt tecken (.) eller under streck.
 Inga blank steg är tillåtna. När du skriver genererar UX ett eget namn automatiskt. Det egna namnet är det som användarna ser när de använder det på en till gång i katalogen.
@@ -98,9 +98,9 @@ Så här skapar du en anpassad klassificerings regel:
 |Fält     |Beskrivning  |
 |---------|---------|
 |Namn   |    Krävs. Det maximala värdet är 100 tecken.    |
-|Beskrivning      |Valfritt. Det maximala värdet är 256 tecken.    |
+|Description      |Valfritt. Det maximala värdet är 256 tecken.    |
 |Klassificerings namn    | Krävs. Välj namnet på klassificeringen i list rutan för att be skannern att tillämpa den om en matchning hittas.        |
-|Tillstånd   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
+|Stat   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
 |Data mönster    |Valfritt. Ett reguljärt uttryck som representerar de data som lagras i data fältet. Gränsen är mycket stor. I det föregående exemplet testar data mönstren för ett anställnings-ID som är ett ord `Employee{GUID}` .  |
 |Kolumn mönster    |Valfritt. Ett reguljärt uttryck som representerar de kolumn namn som du vill matcha. Gränsen är mycket stor.          |
 

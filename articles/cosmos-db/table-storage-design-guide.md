@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943884"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988441"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Tabelldesignguide för Azure Table Storage: Skalbara och högpresterande tabeller
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -632,7 +632,7 @@ För det här alternativet använder du indexerade entiteter som lagrar följand
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="Skärm bild som visar den anställdas indexerade entitet som innehåller en lista med anställnings-ID för anställda med efter namnet som lagras i RowKey och PartitionKey.":::
 
-`EmployeeIDs`Egenskapen innehåller en lista med anställnings-ID för anställda med efter namnet som lagras i `RowKey` och `PartitionKey` .  
+`EmployeeDetails`Egenskapen innehåller en lista över anställnings-ID: n och avdelnings namns par för anställda med efter namnet som lagras i `RowKey` .
 
 Du kan inte använda EGTs för att upprätthålla konsekvens eftersom index entiteterna finns i en separat partition från de anställdas entiteter. Se till att index entiteterna är konsekventa med de anställdas entiteter.  
 

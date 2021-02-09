@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346366"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988040"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Metod tips för en QnA Maker kunskaps bas
 
@@ -141,7 +141,7 @@ Du kan till exempel ha två separata kring med följande frågor:
 Eftersom dessa två kring är formulerade med mycket liknande ord, kan den här likheten orsaka mycket liknande Poäng för många användar frågor som är formulerade som  *"där är `<x>` platsen"*. Försök i stället att tydligt särskilja med frågor som  *"Where är parkerings partiet"* och *"var är ATM"*, genom att undvika ord som "plats" som kan finnas i många frågor i din KB.
 
 ## <a name="collaborate"></a>Samarbeta
-QnA Maker gör det möjligt för användare att [samar beta](../index.yml) i en kunskaps bas. Användare behöver åtkomst till resurs gruppen för Azure-QnA Maker för att få åtkomst till kunskaps baserna. Vissa organisationer kan vilja ta ut kunskaps bas redigeringen och underhållet och fortfarande kunna skydda åtkomsten till sina Azure-resurser. Den här redigeraren – god kännare modell görs genom att konfigurera två identiska [QNA Maker-tjänster](../How-to/set-up-qnamaker-service-azure.md) i olika prenumerationer och välja en för redigerings test cykeln. När testet är klart överförs kunskaps bas innehållet med en [import-export-](../Tutorials/migrate-knowledge-base.md) process till QNA Maker tjänsten för god kännaren som slutligen publicerar kunskaps basen och uppdaterar slut punkten.
+QnA Maker gör det möjligt för användare att samar beta i en kunskaps bas. Användare behöver åtkomst till resurs gruppen för Azure-QnA Maker för att få åtkomst till kunskaps baserna. Vissa organisationer kan vilja ta ut kunskaps bas redigeringen och underhållet och fortfarande kunna skydda åtkomsten till sina Azure-resurser. Den här redigeraren – god kännare modell görs genom att konfigurera två identiska [QNA Maker-tjänster](../How-to/set-up-qnamaker-service-azure.md) i olika prenumerationer och välja en för redigerings test cykeln. När testet är klart överförs kunskaps bas innehållet med en [import-export-](../Tutorials/migrate-knowledge-base.md) process till QNA Maker tjänsten för god kännaren som slutligen publicerar kunskaps basen och uppdaterar slut punkten.
 
 
 

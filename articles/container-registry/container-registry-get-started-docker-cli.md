@@ -1,21 +1,21 @@
 ---
-title: Push-& Hämta Docker-avbildning
-description: Skicka och hämta Docker-avbildningar till ett privat containerregister i Azure med hjälp av Docker CLI
+title: Avbildning av push-& Hämta behållare
+description: Push-överför och hämta Docker-avbildningar till ditt privata behållar register i Azure med hjälp av Docker CLI
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071637"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987762"
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Skicka din första avbildning till ett privat Docker-containerregister med hjälp av Docker CLI
+# <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Skicka din första avbildning till ditt Azure Container Registry med hjälp av Docker CLI
 
-Ett Azure-containerregister lagrar och hanterar privata [Docker](https://hub.docker.com)-containeravbildningar, på samma sätt som [Docker Hub](https://hub.docker.com/) lagrar offentliga Docker-avbildningar. Du kan använda [Docker-kommando rads gränssnittet](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) för [inloggning](https://docs.docker.com/engine/reference/commandline/login/), [push](https://docs.docker.com/engine/reference/commandline/push/), [pull](https://docs.docker.com/engine/reference/commandline/pull/)och andra åtgärder i behållar registret.
+Ett Azure Container Registry lagrar och hanterar privata behållar avbildningar och andra artefakter, på samma sätt som [Docker Hub](https://hub.docker.com/) lagrar offentliga Docker-behållar avbildningar. Du kan använda [Docker-kommando rads gränssnittet](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) för [inloggnings](https://docs.docker.com/engine/reference/commandline/login/)-, [push](https://docs.docker.com/engine/reference/commandline/push/)-, [pull](https://docs.docker.com/engine/reference/commandline/pull/)-och annan behållar avbildnings åtgärder i behållar registret.
 
-I följande steg kan du hämta en officiell [nginx-avbildning](https://store.docker.com/images/nginx) från det offentliga Docker Hub-registret, tagga det för ditt privata Azure Container Registry, skicka det till registret och sedan hämta det från registret.
+I följande steg laddar du ned en offentlig [nginx-avbildning](https://store.docker.com/images/nginx), tagga den för ditt privata Azure Container Registry, push-överför den till registret och hämtar den sedan från registret.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -24,9 +24,10 @@ I följande steg kan du hämta en officiell [nginx-avbildning](https://store.doc
 
 ## <a name="log-in-to-a-registry"></a>Logga in i ett register
 
-Det finns [flera sätt att autentisera](container-registry-authentication.md) till ditt privata behållar register. Den rekommenderade metoden när du arbetar i en kommando rad är med Azure CLI-kommandot [AZ ACR login](/cli/azure/acr?view=azure-cli-latest#az-acr-login). Om du till exempel vill logga in till ett register med namnet min *Registry*:
+Det finns [flera sätt att autentisera](container-registry-authentication.md) till ditt privata behållar register. Den rekommenderade metoden när du arbetar i en kommando rad är med Azure CLI-kommandot [AZ ACR login](/cli/azure/acr#az-acr-login). Om du till exempel vill logga in i ett register med namnet min *Registry* loggar du in på Azure CLI och autentiserar sedan till registret:
 
 ```azurecli
+az login
 az acr login --name myregistry
 ```
 
@@ -43,12 +44,12 @@ Båda kommandona returnerades `Login Succeeded` när de har slutförts.
 > [!TIP]
 > Ange alltid det fullständigt kvalificerade register namnet (alla gemener) när du använder `docker login` och när du taggar avbildningar för att överföra till registret. I exemplen i den här artikeln är det fullständigt kvalificerade namnet *myregistry.azurecr.io*.
 
-## <a name="pull-the-official-nginx-image"></a>Hämta den officiella nginx-avbildningen
+## <a name="pull-a-public-nginx-image"></a>Hämta en offentlig nginx-avbildning
 
-Börja med att hämta den offentliga nginx-avbildningen till den lokala datorn.
+Börja med att hämta en offentlig nginx-avbildning till din lokala dator. Det här exemplet hämtar en avbildning från Microsoft Container Registry.
 
 ```
-docker pull nginx
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 ## <a name="run-the-container-locally"></a>Kör containern lokalt
@@ -56,7 +57,7 @@ docker pull nginx
 Kör följande [Docker-körnings](https://docs.docker.com/engine/reference/run/) kommando för att starta en lokal instans av nginx-behållaren interaktivt ( `-it` ) på Port 8080. `--rm`Argumentet anger att behållaren ska tas bort när du stoppar den.
 
 ```
-docker run -it --rm -p 8080:80 nginx
+docker run -it --rm -p 8080:80 mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 Bläddra till `http://localhost:8080` om du vill visa standard webb sidan som hanteras av nginx i behållaren som körs. Du bör se en sida som liknar följande:
@@ -72,7 +73,7 @@ Om du vill stoppa och ta bort behållaren trycker du på `Control` + `C` .
 Använd [Docker-taggen](https://docs.docker.com/engine/reference/commandline/tag/) för att skapa ett alias för avbildningen med den fullständigt kvalificerade sökvägen till registret. I det här exemplet anges `samples`-namnområdet för att undvika oreda i registrets rot.
 
 ```
-docker tag nginx myregistry.azurecr.io/samples/nginx
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx
 ```
 
 Mer information om Taggar med namn områden finns i avsnittet [databas namn områden](container-registry-best-practices.md#repository-namespaces) i [metod tips för Azure Container Registry](container-registry-best-practices.md).

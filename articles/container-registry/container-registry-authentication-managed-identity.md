@@ -3,12 +3,12 @@ title: Autentisera med hanterad identitet
 description: Ge till gång till avbildningar i ditt privata behållar register med hjälp av en användar tilldelad eller systemtilldelad hanterad Azure-identitet.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253470"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987757"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Använd en Azure-hanterad identitet för att autentisera till ett Azure Container Registry 
 
@@ -53,7 +53,7 @@ I den här artikeln förutsätter vi att du har `aci-helloworld:v1` behållar av
 
 ## <a name="create-a-docker-enabled-vm"></a>Skapa en Docker-aktiverad virtuell dator
 
-Skapa en Docker-aktiverad virtuell Ubuntu-dator. Du måste också installera [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) på den virtuella datorn. Om du redan har en virtuell Azure-dator kan du hoppa över det här steget för att skapa den virtuella datorn.
+Skapa en Docker-aktiverad virtuell Ubuntu-dator. Du måste också installera [Azure CLI](/cli/azure/install-azure-cli) på den virtuella datorn. Om du redan har en virtuell Azure-dator kan du hoppa över det här steget för att skapa den virtuella datorn.
 
 Distribuera en standard virtuell Azure-Ubuntu med [AZ VM Create][az-vm-create]. I följande exempel skapas en virtuell dator med namnet *myDockerVM* i en befintlig resurs grupp med namnet *myResourceGroup*:
 
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 Efter installationen kör du följande kommando för att kontrol lera att Docker körs korrekt på den virtuella datorn:
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 Utdata:
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Installera Azure CLI
 
-Följ stegen i [Installera Azure CLI med apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) för att installera Azure CLI på den virtuella Ubuntu-datorn. I den här artikeln kontrollerar du att du installerar version 2.0.55 eller senare.
+Följ stegen i [Installera Azure CLI med apt](/cli/azure/install-azure-cli-apt) för att installera Azure CLI på den virtuella Ubuntu-datorn. I den här artikeln kontrollerar du att du installerar version 2.0.55 eller senare.
 
 Avsluta SSH-sessionen.
 
@@ -107,7 +107,7 @@ Avsluta SSH-sessionen.
 
 ### <a name="create-an-identity"></a>Skapa en identitet
 
-Skapa en identitet i din prenumeration med kommandot [AZ Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) . Du kan använda samma resurs grupp som du använde tidigare för att skapa behållar registret eller den virtuella datorn, eller en annan.
+Skapa en identitet i din prenumeration med kommandot [AZ Identity Create](/cli/azure/identit#az-identity-create) . Du kan använda samma resurs grupp som du använde tidigare för att skapa behållar registret eller den virtuella datorn, eller en annan.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId

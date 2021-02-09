@@ -3,12 +3,12 @@ title: Självstudie – säkerhetskopiera SAP HANA databaser i virtuella Azure-d
 description: I den här självstudien lär du dig att säkerhetskopiera SAP HANA databaser som körs på virtuella Azure-datorer till ett Azure Backup Recovery Services-valv.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ede8ebab205e814de3988a2b5c432a21f965eb55
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695222"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987792"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Självstudie: säkerhetskopiera SAP HANA databaser på en virtuell Azure-dator
 
@@ -51,7 +51,7 @@ I följande tabell visas de olika alternativ som du kan använda för att upprä
 
 | **Alternativ**                        | **Fördelar**                                               | **Nackdelar**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Privata slut punkter                 | Tillåt säkerhets kopiering över privata IP-adresser i det virtuella nätverket  <br><br>   Ge detaljerad kontroll över nätverket och valv Sidan | Debiterar standard [avgifter](https://azure.microsoft.com/pricing/details/private-link/) för privata slut punkter |
+| Privata slutpunkter                 | Tillåt säkerhets kopiering över privata IP-adresser i det virtuella nätverket  <br><br>   Ge detaljerad kontroll över nätverket och valv Sidan | Debiterar standard [avgifter](https://azure.microsoft.com/pricing/details/private-link/) för privata slut punkter |
 | NSG service-Taggar                  | Enklare att hantera när intervall ändringar slås samman automatiskt   <br><br>   Inga ytterligare kostnader | Kan endast användas med NSG: er  <br><br>    Ger åtkomst till hela tjänsten |
 | Azure Firewall FQDN-Taggar          | Enklare att hantera eftersom de nödvändiga FQDN-namnen hanteras automatiskt | Kan endast användas med Azure brand vägg                         |
 | Tillåt åtkomst till tjänst-FQDN/IP-adresser | Inga ytterligare kostnader   <br><br>  Fungerar med alla nätverks säkerhetsutrustningar och brand väggar | En stor uppsättning IP-adresser eller FQDN-namn kan krävas för åtkomst   |
@@ -59,7 +59,7 @@ I följande tabell visas de olika alternativ som du kan använda för att upprä
 
 Mer information om hur du använder dessa alternativ delas nedan:
 
-### <a name="private-endpoints"></a>Privata slut punkter
+### <a name="private-endpoints"></a>Privata slutpunkter
 
 Med privata slut punkter kan du ansluta säkert från servrar i ett virtuellt nätverk till ditt Recovery Services-valv. Den privata slut punkten använder en IP-adress från VNET-adressutrymmet för ditt valv. Nätverks trafiken mellan resurserna i det virtuella nätverket och valvet överförs över ditt virtuella nätverk och en privat länk i Microsoft stamnät nätverket. Detta eliminerar exponeringen från det offentliga Internet. Läs mer om privata slut punkter för Azure Backup [här](./private-endpoints.md).
 
@@ -98,6 +98,46 @@ Du kan också använda följande fullständiga domän namn för att ge åtkomst 
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>Använda en HTTP-proxyserver för att dirigera trafik
 
 När du säkerhetskopierar en SAP HANA databas som körs på en virtuell Azure-dator använder säkerhets kopierings tillägget på den virtuella datorn HTTPS-API: er för att skicka hanterings kommandon till Azure Backup och data till Azure Storage. Säkerhets kopierings tillägget använder också Azure AD för autentisering. Dirigera trafiken för säkerhetskopieringstillägget för dessa tre tjänster via HTTP-proxyn. Använd listan över IP-adresser och FQDN: er som nämns ovan för att tillåta åtkomst till de nödvändiga tjänsterna. Autentiserade proxyservrar stöds inte.
+
+## <a name="understanding-backup-and-restore-throughput-performance"></a>Förstå prestanda för säkerhets kopiering och återställning av data flöde
+
+Säkerhets kopiorna (logg och icke-logg) i SAP HANA virtuella Azure-datorer som tillhandahålls via Backint är strömmar till Azure Recovery Services-valv och är därför viktigt att förstå den här strömnings metoden.
+
+Backint-komponenten i HANA ger "pipes" (en pipe för att läsa från och en pipe att skriva till), ansluten till underliggande diskar där databasfilerna finns, som sedan läses av Azure Backup tjänsten och transporteras till Azure Recovery Services-valvet. I Azure Backups tjänsten utförs även en kontroll summa för att verifiera data strömmarna, utöver de inbyggda verifierings kontrollerna i backint. Dessa verifieringar ser till att de data som finns i Azure Recovery Services-valvet verkligen är pålitliga och kan återskapas.
+
+Eftersom data strömmar främst hanterar diskar måste du förstå disk prestanda för att mäta säkerhets kopierings-och återställnings prestanda. I [den här artikeln](https://docs.microsoft.com/azure/virtual-machines/disks-performance) hittar du en djupgående förståelse för disk data flöde och prestanda i virtuella Azure-datorer. Dessa gäller också för säkerhets kopierings-och återställnings prestanda.
+
+**Azure backups tjänsten försöker uppnå upp till ~ 420 Mbit/s för säkerhets kopieringar som inte är loggade (till exempel fullständig, differentiell och stegvis) och upp till 100 Mbit/s för logg säkerhets kopior för Hana**. Som nämnts ovan garanterar inte dessa hastigheter och är beroende av följande faktorer:
+
+* Högsta antal cachelagrade disk data flöden för den virtuella datorn
+* Underliggande disk typ och dess data flöde
+* Antalet processer som försöker läsa och skriva till samma disk på samma tid.
+
+> [!IMPORTANT]
+> I mindre virtuella datorer, där det cachelagrade disk data flödet är mycket nära eller mindre än 400 Mbit/s, kan du behöva oroa dig för att hela disken som används av säkerhets kopierings tjänsten förbrukas av säkerhets kopierings tjänsten som kan påverka SAP HANA åtgärder som rör läsning/skrivning från diskarna. I så fall kan du se nästa avsnitt om du vill begränsa eller begränsa förbrukningen av säkerhets kopierings tjänsten till max gränsen.
+
+### <a name="limiting-backup-throughput-performance"></a>Begränsa prestanda för data flöde för säkerhets kopiering
+
+Om du vill begränsa disk-förbrukningen för säkerhets kopierings tjänsten till ett högsta värde utför du följande steg.
+
+1. Gå till mappen "opt/msawb/bin"
+2. Skapa en ny JSON-fil med namnet "ExtensionSettingOverrides.JSpå"
+3. Lägg till ett nyckel/värde-par i JSON-filen enligt följande:
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. Ändra behörighet och ägarskap för filen på följande sätt:
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. Ingen omstart krävs för någon tjänst. Azure Backups tjänsten försöker begränsa data flödes prestandan som anges i den här filen.
 
 ## <a name="what-the-pre-registration-script-does"></a>Vad skriptet för för registrering gör
 

@@ -530,6 +530,8 @@
   items:
     - name: Support av Azure-communityn
       href: 'https://azure.microsoft.com/support/community/?product=search'
+    - name: Partner Spotlight
+      href: resource-partners-knowledge-mining.md
     - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Feedback Forum (UserVoice)
@@ -554,8 +556,6 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Developer-kurs (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
-    - name: Partnerlösningar
-      href: resource-partners-knowledge-mining.md
     - name: VANLIGA FRÅGOR OCH SVAR
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning

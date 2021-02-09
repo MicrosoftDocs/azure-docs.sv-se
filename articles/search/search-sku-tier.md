@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693459"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987886"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Välj en pris nivå för Azure Kognitiv sökning
 
@@ -60,7 +60,8 @@ De flesta funktioner är tillgängliga på alla nivåer, inklusive den kostnads 
 | [Hanterade eller betrodda identiteter för utgående (index) åtkomst](search-howto-managed-identities-data-sources.md) | Inte tillgängligt på den kostnads fria nivån.|
 | [Kundhanterade krypterings nycklar](search-security-manage-encryption-keys.md) | Inte tillgängligt på den kostnads fria nivån. |
 | [Åtkomst till IP-brandvägg](service-configure-firewall.md) | Inte tillgängligt på den kostnads fria nivån. |
-| [Privat slut punkt (integrering med Azures privata länk)](service-create-private-endpoint.md) | För inkommande anslutningar till en search-tjänst är inte tillgänglig på den kostnads fria nivån. För utgående anslutningar från indexerare till andra Azure-resurser är de inte tillgängliga på kostnads fria eller S3 HD. För indexerare som använder färdighetsuppsättningar, inte tillgängligt på kostnads fri, grundläggande, S1 eller S3 HD.|
+| [Privat slut punkt (integrering med Azures privata länk)](service-create-private-endpoint.md) | För inkommande anslutningar till en search-tjänst är inte tillgänglig på den kostnads fria nivån. För utgående anslutningar från indexerare till andra Azure-resurser är de inte tillgängliga på kostnads fria eller S3 HD. För indexerare som använder färdighetsuppsättningar, inte tillgängligt på kostnads fri, grundläggande, S1 eller S3 HD.| 
+| [Tillgänglighetszoner](search-performance-optimization.md) | Inte tillgängligt på den kostnads fria nivån och nivån Basic. |
 
 Resurs krävande funktioner kanske inte fungerar bra om du inte ger den tillräckligt med kapacitet. [AI-anrikning](cognitive-search-concept-intro.md) har till exempel långvariga färdigheter som tar slut på en kostnads fri tjänst, om inte data uppsättningen är liten.
 
