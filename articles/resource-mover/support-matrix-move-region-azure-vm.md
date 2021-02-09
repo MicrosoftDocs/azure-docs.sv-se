@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222806"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980498"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Stöd för att flytta virtuella Azure-datorer mellan Azure-regioner
 
@@ -116,7 +116,7 @@ Tillägg | Stöds inte | Tillägg kopieras inte till den virtuella datorn i mål
 Den här tabellen sammanfattade stödet för den virtuella Azure OS-disken, data disken och den temporära disken. Det är viktigt att Observera de virtuella datorernas disk gränser och mål för [hanterade diskar](../virtual-machines/disks-scalability-targets.md) för att undvika prestanda problem.
 
 > [!NOTE]
-> Storleken på den virtuella mål datorn måste vara lika med eller större än den virtuella käll datorn. De parametrar som används för verifiering är: antal data diskar, antal nätverkskort, tillgängliga processorer, minne i GB. Om det inte är ett fel utfärdas.
+> Storleken på den virtuella mål datorn måste vara lika med eller större än den virtuella käll datorn. De parametrar som används för verifiering är: antal data diskar, antal nätverkskort, tillgängliga processorer, minne i GB. Om det sn't ett fel utfärdas.
 
 
 **Komponent** | **Support** | **Information**
@@ -134,6 +134,8 @@ Hanterad disk (Premium) | Stöds |
 Standard SSD | Stöds |
 Generation 2 (UEFI-start) | Stöds
 Lagrings konto för startdiagnostik | Stöds inte | Aktivera det igen när du har flyttat den virtuella datorn till mål regionen.
+Virtuella datorer med Azure Disk Encryption aktiverat | Stöds | [Läs mer](tutorial-move-region-encrypted-virtual-machines.md)
+Virtuella datorer som använder kryptering på Server sidan med kundhanterad nyckel | Stöds | [Läs mer](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>Begränsningar och data ändrings takt
 

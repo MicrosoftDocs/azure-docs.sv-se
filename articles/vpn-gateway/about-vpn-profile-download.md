@@ -4,19 +4,44 @@ description: Använd den här artikeln för att hitta den information du behöve
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/03/2020
+ms.topic: how-to
+ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6a09767a7992a5f902adea6f99e937f3fc6fa7fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985928"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979084"
 ---
-# <a name="about-p2s-vpn-client-profiles"></a>Om P2S VPN-klientinställningar
+# <a name="working-with-p2s-vpn-client-profile-files"></a>Arbeta med P2S VPN-klient profil filer
 
-Den hämtade profil filen innehåller information som krävs för att konfigurera en VPN-anslutning. Den här artikeln hjälper dig att få och förstå den information som krävs för en VPN-klient profil.
+Profilmappar innehåller information som krävs för att konfigurera en VPN-anslutning. Den här artikeln hjälper dig att få och förstå den information som krävs för en VPN-klient profil.
+
+## <a name="generate-and-download-profile"></a>Skapa och ladda ned profil
+
+Du kan generera konfigurationsfiler för klienter med hjälp av PowerShell, eller med hjälp av Azure Portal. Båda metoderna returnerar samma zip-fil.
+
+### <a name="portal"></a>Portalen
+
+1. I Azure Portal navigerar du till den virtuella Nätverksgatewayen för det virtuella nätverk som du vill ansluta till.
+1. På sidan virtuell nätverksgateway väljer du **punkt-till-plats-konfiguration**.
+1. Överst på sidan punkt-till-plats-konfiguration väljer du **Hämta VPN-klient**. Det tar några minuter för klient konfigurations paketet att genereras.
+1. Din webbläsare indikerar att en zip-fil för klient konfiguration är tillgänglig. Den heter samma namn som din gateway. Zippa upp filen för att visa mapparna.
+
+### <a name="powershell"></a>PowerShell
+
+Om du vill generera med PowerShell kan du använda följande exempel:
+
+1. När du genererar konfigurationsfiler för VPN-klienter är värdet för "-AuthenticationMethod" EapTls ". Generera VPN-klientens konfigurationsfiler med följande kommando:
+
+   ```azurepowershell-interactive
+   $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+
+   $profile.VPNProfileSASUrl
+   ```
+
+1. Kopiera URL: en till webbläsaren för att ladda ned ZIP-filen och packa sedan upp filen för att visa mapparna.
 
 [!INCLUDE [client profiles](../../includes/vpn-gateway-vwan-vpn-profile-download.md)]
 

@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkemper
-ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c5e0cc3eb29fb612460b16d8de9dee62949b5bd2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932123"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979614"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Push-inställningar till app-konfiguration med Azure-pipeline
 
 Med push-åtgärden för [Azure App konfiguration](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) skickas nyckel värden från en konfigurations fil till appens konfigurations arkiv. Den här aktiviteten möjliggör fullständig cirkel funktion i pipelinen eftersom du nu kan hämta inställningar från appens konfigurations Arkiv och push-inställningar till appens konfigurations arkiv.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - Konfigurations resurs för app – skapa en kostnads fri i [Azure Portal](https://portal.azure.com).
@@ -56,7 +56,7 @@ Tilldela rätt roll tilldelningar för program konfigurationen till de autentise
 
 Det här avsnittet beskriver hur du använder push-aktiviteten Azure App konfiguration i en pipeline för Azure DevOpss build.
 
-1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  **Pipelines**. Dokumentation för att bygga pipelines finns [här](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops).
+1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  . Dokumentation för att bygga pipelines finns [här](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2).
       - Om du skapar en ny pipeline för bygge väljer du **Visa assistenten** på höger sida av pipelinen och söker efter push-aktiviteten **Azure App konfiguration** .
       - Om du använder en befintlig versions pipeline går du till fliken **aktiviteter** när du redigerar pipelinen och söker efter push-aktiviteten **Azure App konfiguration** .
 2. Konfigurera de nödvändiga parametrarna för uppgiften för att push-överför nyckel värden från konfigurations filen till appens konfigurations arkiv. Parametern för **konfigurations filens sökväg** börjar i roten på fil lagrings platsen.
@@ -66,10 +66,10 @@ Det här avsnittet beskriver hur du använder push-aktiviteten Azure App konfigu
 
 Det här avsnittet beskriver hur du använder push-aktiviteten Azure App konfiguration i en pipeline för Azure DevOps-utgåvor.
 
-1. Gå till sidan Frisläpp pipeline genom att välja **pipelines**-  >  **versioner**. Dokumentation för lanserings pipelines finns [här](/azure/devops/pipelines/release?view=azure-devops).
+1. Gå till sidan Frisläpp pipeline genom att välja **pipelines**-  >  **versioner**. Dokumentation för lanserings pipelines finns [här](/azure/devops/pipelines/release).
 1. Välj en befintlig versions pipeline. Om du inte har någon väljer du **+ ny** för att skapa en ny.
 1. Klicka på knappen **Redigera** i det övre högra hörnet för att redigera lanserings pipelinen.
-1. Välj **scenen** för att lägga till aktiviteten. Mer information om faser hittar du [här](/azure/devops/pipelines/release/environments?view=azure-devops).
+1. Välj **scenen** för att lägga till aktiviteten. Mer information om faser hittar du [här](/azure/devops/pipelines/release/environments).
 1. Välj **+** för det jobbet och Lägg sedan till åtgärden för att lägga till **Azure App konfiguration** under fliken **distribuera** .
 1. Konfigurera de nödvändiga parametrarna i aktiviteten för att skicka dina nyckel värden från konfigurations filen till appens konfigurations arkiv. Förklaringar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
 1. Spara och köa en version. I versions loggen visas eventuella fel som påträffas under körningen av aktiviteten.
@@ -97,7 +97,7 @@ När du har fyllt i nödvändiga parametrar kör du pipelinen. Alla nyckel värd
 
 Om ett oväntat fel inträffar kan fel söknings loggar aktive ras genom att ställa in pipeline-variabeln `system.debug` till `true` .
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Hur kan jag ladda upp flera konfigurationsfiler?**
 

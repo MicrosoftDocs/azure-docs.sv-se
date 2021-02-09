@@ -161,7 +161,7 @@
               href: openvpn-azure-ad-mfa.md
             - name: Konfigurera en VPN-klient
               href: openvpn-azure-ad-client.md
-            - name: Om nedladdningsfilen för VPN-klientprofilen
+            - name: Arbeta med filer för VPN-klient profil
               href: about-vpn-profile-download.md
             - name: Intune – distribuera VPN-klientprofil
               href: vpn-profile-intune.md

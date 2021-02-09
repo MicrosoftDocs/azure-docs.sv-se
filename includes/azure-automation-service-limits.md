@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 10/21/2020
+ms.date: 02/08/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 4a6b21d3782931e3bee4a13ff95e7f313dcc1af2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379789"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99974458"
 ---
 #### <a name="process-automation"></a>Processautomatisering
 
@@ -22,11 +22,12 @@ ms.locfileid: "92379789"
 | Maximalt antal nya jobb som kan skickas var 30 sekund per Azure Automation konto (ej schemalagda jobb) |100 |När den här gränsen uppnås kan efterföljande begär Anden om att skapa ett jobb inte utföras. Klienten får ett fel svar.|
 | Maximalt antal samtidiga jobb som körs på samma tids instans per Automation-konto (ej schemalagda jobb) |200 |När den här gränsen uppnås kan efterföljande begär Anden om att skapa ett jobb inte utföras. Klienten får ett fel svar.|
 | Maximal lagrings storlek för jobbets metadata för en rullande period på 30 dagar | 10 GB (cirka 4 000 000 jobb)|När den här gränsen uppnås kan efterföljande begär Anden om att skapa ett jobb inte utföras. |
-| Maximal jobb Ströms gräns|1 MiB|En enda data ström får inte vara större än 1 MB.|
+| Maximal jobb Ströms gräns|1 MiB|En enda data ström får inte vara större än 1 MiB.|
 | Maximalt antal moduler som kan importeras var 30 sekund per Automation-konto |5 ||
 | Maximal storlek för en modul |100 MB ||
+| Maximal storlek för en nods konfigurations fil | 1 MB | Gäller för tillstånds konfiguration |
 | Jobb körnings tid, kostnads fri nivå |500 minuter per prenumeration per kalender månad ||
-| Högsta mängd disk utrymme som tillåts per begränsat läge<sup>1</sup> |1 GB |Gäller endast för Azures sand boxar.|
+| Högsta mängd disk utrymme som tillåts per begränsat läge<sup>1</sup> |1 GB |Gäller endast för Azures sand boxar.|
 | Maximal mängd minne som tilldelats till en begränsat läge<sup>1</sup> |400 MB |Gäller endast för Azures sand boxar.|
 | Maximalt antal tillåtna nätverks platser per begränsat läge<sup>1</sup> |1 000 |Gäller endast för Azures sand boxar.|
 | Högsta tillåtna körnings tid per Runbook<sup>1</sup> |3 timmar |Gäller endast för Azures sand boxar.|
@@ -45,7 +46,7 @@ ms.locfileid: "92379789"
 
 I följande tabell visas gränserna för spårade objekt per dator för ändrings spårning.
 
-| **Resurs** | **Gräns**| **Kommentarer** |
+| **Resurs** | **Gränserna**| **Kommentarer** |
 |---|---|---|
 |Fil|500||
 |Register|250||
@@ -58,6 +59,6 @@ I följande tabell visas gränserna för spårade objekt per dator för ändring
 
 I följande tabell visas gränserna för Uppdateringshantering.
 
-| **Resurs** | **Gräns**| **Kommentarer** |
+| **Resurs** | **Gränserna**| **Kommentarer** |
 |---|---|---|
 |Antal datorer per uppdaterings distribution|1000||

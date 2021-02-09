@@ -3,17 +3,17 @@ title: Ändra feed i Azure Blob Storage | Microsoft Docs
 description: Lär dig mer om att ändra flödes loggar i Azure Blob Storage och hur du använder dem.
 author: normesta
 ms.author: normesta
-ms.date: 09/08/2020
+ms.date: 02/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 7174f7dd53387de9a569a5ddcadc08c32692c749
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a439541880cc8e20457edc8d24c5600ba2747c8
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997111"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979234"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Ändra stöd för feed i Azure Blob Storage
 
@@ -21,9 +21,15 @@ Syftet med ändrings flödet är att tillhandahålla transaktions loggar för al
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
+## <a name="how-the-change-feed-works"></a>Så här fungerar ändrings flödet
+
 Ändrings flödet lagras som [blobbar](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) i en särskild behållare i ditt lagrings konto med standard [priset för BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) . Du kan styra Retentions perioden för de här filerna utifrån dina krav (se [villkoren](#conditions) i den aktuella versionen). Ändrings händelser läggs till i ändrings flödet som poster i [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) format specifikation: ett kompakt, fast binärformat som ger omfattande data strukturer med infogat schema. Det här formatet används ofta i Hadoop-eko systemet, Stream Analytics och Azure Data Factory.
 
 Du kan bearbeta loggarna asynkront, stegvis eller helt och hållet. Valfritt antal klient program kan samtidigt läsa ändrings flödet, parallellt och i sin egen takt. Analys program som [Apache-granskning](https://drill.apache.org/docs/querying-avro-files/) eller [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) kan använda loggar direkt som Avro-filer, vilket gör att du kan bearbeta dem till en låg kostnad, med hög bandbredd och utan att behöva skriva ett anpassat program.
+
+Följande diagram visar hur poster läggs till i ändrings flödet:
+
+:::image type="content" source="media/storage-blob-change-feed/change-feed-diagram.png" alt-text="Diagram över hur ändrings flödet fungerar för att tillhandahålla en ordnad logg över ändringar i blobbar":::
 
 Stöd för ändring av feed passar bra för scenarier som bearbetar data baserat på objekt som har ändrats. Till exempel kan program:
 

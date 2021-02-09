@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 72efcacf20b0d67c9d6a8255426a09f9813f17b4
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 9276f845c95b5e736180159b282ddedc33523c17
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550506"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980753"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Skapa och hantera en integration runtime med egen värd
 
@@ -41,7 +41,7 @@ Den här artikeln beskriver hur du skapar och hanterar en egen värd för integr
 
    - Kopiera och klistra in nyckeln Authentication.
 
-   - Ladda ned integration runtime med egen värd från [Azure Data Factory integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) på en lokal Windows-dator. Kör installationsprogrammet.
+   - Ladda ned integration runtime med egen värd från [Microsoft integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) på en lokal Windows-dator. Kör installationsprogrammet.
 
    - På sidan **registrera integration Runtime (lokal installation)** klistrar du in en av de två nycklarna som du sparade tidigare och väljer **Registrera**.
 

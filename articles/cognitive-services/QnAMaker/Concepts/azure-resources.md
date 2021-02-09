@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0864db8a653ff1d6f89ed0b1c857e51053ff50ff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592611"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979770"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resurser för QnA Maker
 
@@ -244,74 +244,6 @@ När resurserna har skapats har de samma namn, förutom den valfria Application 
 > [!TIP]
 > Använd en namngivnings konvention för att ange pris nivåer i namnet på resursen eller resurs gruppen. När du får fel meddelanden när du skapar en ny kunskaps bas eller lägger till nya dokument, är gränsen för Kognitiv sökning pris nivån ett vanligt problem.
 
-### <a name="resource-purposes"></a>Resurs syfte
-
-Varje Azure-resurs som skapats med QnA Maker har ett specifikt syfte:
-
-* QnA Maker resurs
-* Kognitiv sökning resurs
-* App Service
-* App Plans tjänst
-* Application Insights tjänst
-
-
-### <a name="cognitive-search-resource"></a>Kognitiv sökning resurs
-
-[Kognitiv sökning](../../../search/index.yml) resurs används för att:
-
-* Lagra QnA-par
-* Ange den inledande rangordningen (Ranger #1) för QnA-par vid körning
-
-#### <a name="index-usage"></a>Index användning
-
-Resursen behåller ett index som fungerar som test index och de återstående indexen korreleras med en publicerad kunskaps bas.
-
-En resurs som är priss ätts 15 index, innehåller 14 publicerade kunskaps banker och ett index används för att testa alla kunskaps baser. Det här test indexet är partitionerat av kunskaps basen så att en fråga som använder det interaktiva test fönstret använder test index men bara returnerar resultat från den partition som är associerad med den aktuella kunskaps basen.
-
-#### <a name="language-usage"></a>Språk användning
-
-Den första kunskaps basen som skapas i QnA Maker-resursen används för att fastställa det _enskilda_ språk som har angetts för kognitiv sökning resursen och alla dess index. Du kan bara ha _en språk uppsättning_ för en QNA Maker-tjänst.
-
-### <a name="qna-maker-resource"></a>QnA Maker resurs
-
-QnA Maker-resursen ger till gång till API: erna för redigering och publicering samt det NLP-baserade (Natural Language Processing)-baserade andra rangordnings skiktet (Ranging #2) för QnA-par vid körning.
-
-Den andra rangordningen använder intelligenta filter som kan innehålla metadata och Uppföljnings-prompter.
-
-#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker inställningar för resurs konfiguration
-
-När du skapar en ny kunskaps bas i [QNA Maker Portal](https://qnamaker.ai)är **språk** inställningen den enda inställning som tillämpas på resurs nivå. Du väljer språk när du skapar den första kunskaps basen för resursen.
-
-### <a name="app-service-and-app-service-plan"></a>App service-och App Service-plan
-
-[App Service](../../../app-service/index.yml) används av klient programmet för att få åtkomst till publicerade kunskaps banker via runtime-slutpunkten.
-
-För att fråga den publicerade kunskaps basen använder alla publicerade kunskaps baser samma URL-slutpunkt, men anger **kunskaps bas-ID: t** i vägen.
-
-`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
-
-### <a name="application-insights"></a>Application Insights
-
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) används för att samla in chatt och telemetri. Granska vanliga [Kusto-frågor](../how-to/get-analytics-knowledge-base.md) för information om tjänsten.
-
-## <a name="share-services-with-qna-maker"></a>Dela tjänster med QnA Maker
-
-QnA Maker skapar flera Azure-resurser. Använd följande tabell för att ta reda på vad du kan och inte kan dela för att minska hanteringen och dra nytta av kostnads delning:
-
-|Tjänst|Dela|Anledning|
-|--|--|--|
-|Cognitive Services|X|Inte möjlig enligt design|
-|App Service-plan|✔|Fast disk utrymme som allokerats för en App Service plan. Om andra appar som delar samma App Service plan använder betydande disk utrymme, kommer QnAMaker App Service-instansen att drabbas av problem.|
-|App Service|X|Inte möjlig enligt design|
-|Application Insights|✔|Kan delas|
-|Söktjänst|✔|1. `testkb` är ett reserverat namn för QnAMaker-tjänsten. det kan inte användas av andra.<br>2. synonym mappningen med namnet `synonym-map` är reserverad för QnAMaker-tjänsten.<br>3. antalet publicerade kunskaps baser är begränsat av Sök tjänst nivån. Om det finns lediga index är andra tjänster som kan använda dem.|
-
-### <a name="using-a-single-cognitive-search-service"></a>Använda en enda Kognitiv sökning-tjänst
-
-Om du skapar en QnA-tjänst och dess beroenden (till exempel Sök) via portalen skapas en Sök tjänst för dig och länkas till QnA Maker tjänsten. När resurserna har skapats kan du uppdatera App Service-inställningen för att använda en tidigare befintlig Sök tjänst och ta bort den som du nyss skapade.
-
-Lär dig [hur du konfigurerar](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QNA Maker att använda en annan kognitiv tjänst resurs än den som skapats som en del av processen för att skapa en QNA Maker resurs.
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 
 Resurs namnet för den QnA Maker hanterade resursen (för hands version), till exempel `qna-westus-f0-b` , används också för att ge de andra resurserna.
@@ -330,12 +262,87 @@ Med Azure Portal skapa-fönstret kan du skapa en QnA Maker hanterad resurs (för
 > [!TIP]
 > Använd en namngivnings konvention för att ange pris nivåer i namnet på resursen eller resurs gruppen. När du får fel meddelanden när du skapar en ny kunskaps bas eller lägger till nya dokument, är gränsen för Kognitiv sökning pris nivån ett vanligt problem.
 
-### <a name="resource-purposes"></a>Resurs syfte
+---
+
+## <a name="resource-purposes"></a>Resurs syfte
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil utgåva)](#tab/v1)
+
+Varje Azure-resurs som skapats med QnA Maker har ett specifikt syfte:
+
+* QnA Maker resurs
+* Kognitiv sökning resurs
+* App Service
+* App Plans tjänst
+* Application Insights tjänst
+
+### <a name="qna-maker-resource"></a>QnA Maker resurs
+
+QnA Maker-resursen ger till gång till API: erna för redigering och publicering samt det NLP-baserade (Natural Language Processing)-baserade andra rangordnings skiktet (Ranging #2) för QnA-par vid körning.
+
+Den andra rangordningen använder intelligenta filter som kan innehålla metadata och Uppföljnings-prompter.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker inställningar för resurs konfiguration
+
+När du skapar en ny kunskaps bas i [QNA Maker Portal](https://qnamaker.ai)är **språk** inställningen den enda inställning som tillämpas på resurs nivå. Du väljer språk när du skapar den första kunskaps basen för resursen.
+
+### <a name="cognitive-search-resource"></a>Kognitiv sökning resurs
+
+[Kognitiv sökning](../../../search/index.yml) resurs används för att:
+
+* Lagra QnA-par
+* Ange den inledande rangordningen (Ranger #1) för QnA-par vid körning
+
+#### <a name="index-usage"></a>Index användning
+
+Resursen behåller ett index som fungerar som test index och de återstående indexen korreleras med en publicerad kunskaps bas.
+
+En resurs som är priss ätts 15 index, innehåller 14 publicerade kunskaps banker och ett index används för att testa alla kunskaps baser. Det här test indexet är partitionerat av kunskaps basen så att en fråga som använder det interaktiva test fönstret använder test index men bara returnerar resultat från den partition som är associerad med den aktuella kunskaps basen.
+
+#### <a name="language-usage"></a>Språk användning
+
+Den första kunskaps basen som skapas i QnA Maker-resursen används för att fastställa det _enskilda_ språk som har angetts för kognitiv sökning resursen och alla dess index. Du kan bara ha _en språk uppsättning_ för en QNA Maker-tjänst.
+
+#### <a name="using-a-single-cognitive-search-service"></a>Använda en enda Kognitiv sökning-tjänst
+
+Om du skapar en QnA-tjänst och dess beroenden (till exempel Sök) via portalen skapas en Sök tjänst för dig och länkas till QnA Maker tjänsten. När resurserna har skapats kan du uppdatera App Service-inställningen för att använda en tidigare befintlig Sök tjänst och ta bort den som du nyss skapade.
+
+Lär dig [hur du konfigurerar](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) QNA Maker att använda en annan kognitiv tjänst resurs än den som skapats som en del av processen för att skapa en QNA Maker resurs.
+
+### <a name="app-service-and-app-service-plan"></a>App service-och App Service-plan
+
+[App Service](../../../app-service/index.yml) används av klient programmet för att få åtkomst till publicerade kunskaps banker via runtime-slutpunkten.
+
+För att fråga den publicerade kunskaps basen använder alla publicerade kunskaps baser samma URL-slutpunkt, men anger **kunskaps bas-ID: t** i vägen.
+
+`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
+
+### <a name="application-insights"></a>Application Insights
+
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) används för att samla in chatt och telemetri. Granska vanliga [Kusto-frågor](../how-to/get-analytics-knowledge-base.md) för information om tjänsten.
+
+### <a name="share-services-with-qna-maker"></a>Dela tjänster med QnA Maker
+
+QnA Maker skapar flera Azure-resurser. Använd följande tabell för att ta reda på vad du kan och inte kan dela för att minska hanteringen och dra nytta av kostnads delning:
+
+|Tjänst|Dela|Anledning|
+|--|--|--|
+|Cognitive Services|X|Inte möjlig enligt design|
+|App Service-plan|✔|Fast disk utrymme som allokerats för en App Service plan. Om andra appar som delar samma App Service plan använder betydande disk utrymme, kommer QnAMaker App Service-instansen att drabbas av problem.|
+|App Service|X|Inte möjlig enligt design|
+|Application Insights|✔|Kan delas|
+|Söktjänst|✔|1. `testkb` är ett reserverat namn för QnAMaker-tjänsten. det kan inte användas av andra.<br>2. synonym mappningen med namnet `synonym-map` är reserverad för QnAMaker-tjänsten.<br>3. antalet publicerade kunskaps baser är begränsat av Sök tjänst nivån. Om det finns lediga index är andra tjänster som kan använda dem.|
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 
 Varje Azure-resurs som skapats med QnA Maker hanterad (för hands version) har ett specifikt syfte:
 
 * QnA Maker resurs
 * Kognitiv sökning resurs
+
+### <a name="qna-maker-resource"></a>QnA Maker resurs
+
+Den QnA Maker hanterade resursen (för hands version) ger åtkomst till API: erna för redigering och publicering, är värd för rangordnings körningen och ger telemetri.
 
 ### <a name="azure-cognitive-search-resource"></a>Azure Kognitiv sökning-resurs
 
@@ -353,10 +360,6 @@ Om din nivå till exempel har 15 tillåtna index, kan du publicera 14 kunskaps b
 #### <a name="language-usage"></a>Språk användning
 
 Med QnA Maker hanterad (för hands version) kan du välja att konfigurera QnA Maker tjänsten för kunskaps baser på ett enda språk eller flera språk. Du gör det här valet under skapandet av den första kunskaps basen i QnA Makers tjänsten. Se [hur](#pricing-tier-considerations) du aktiverar språk inställningar per kunskaps bas.
-
-### <a name="qna-maker-resource"></a>QnA Maker resurs
-
-Den QnA Maker hanterade resursen (för hands version) ger åtkomst till API: erna för redigering och publicering, är värd för rangordnings körningen och ger telemetri.
 
 ---
 

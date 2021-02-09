@@ -10,12 +10,12 @@ ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5f8264221ada261ccae1b347c47cdf27967d5d8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537176"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980278"
 ---
 # <a name="blob-versioning"></a>BLOB-versioner
 
@@ -37,6 +37,10 @@ Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLO
 En version fångar in statusen för en BLOB vid en viss tidpunkt. När BLOB-versioner har Aktiver ATS för ett lagrings konto skapar Azure Storage automatiskt en ny version av en BLOB varje gång bloben ändras eller tas bort.
 
 När du skapar en blob med versions hantering aktive rad är den nya blobben den aktuella versionen av blobben (eller bas-BLOB). Om du senare ändrar denna BLOB skapar Azure Storage en version som fångar upp status för blobben innan den ändrades. Den ändrade blobben blir den nya aktuella versionen. En ny version skapas varje gången du ändrar blobben.
+
+Följande diagram visar hur versioner skapas vid Skriv-och borttagnings åtgärder och hur en tidigare version kan uppgraderas till den aktuella versionen:
+
+:::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Diagram över hur BLOB-versioner fungerar":::
 
 Att ha ett stort antal versioner per BLOB kan öka svars tiden för BLOB List-åtgärder. Microsoft rekommenderar att du behåller färre än 1000 versioner per blob. Du kan använda livs cykel hantering för att automatiskt ta bort gamla versioner. Mer information om livs cykel hantering finns i [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](storage-lifecycle-management-concepts.md).
 

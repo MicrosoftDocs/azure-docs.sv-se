@@ -8,19 +8,17 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d208a4a86896c81982aa2b10ca7ce5e7a6773c05
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820220"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979750"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Självstudie: flytta virtuella Azure-datorer över regioner
 
 I den här artikeln lär du dig hur du flyttar virtuella Azure-datorer och relaterade nätverks-och lagrings resurser till en annan Azure-region med hjälp av [Azure Resource](overview.md)överbelastning.
-
-> [!NOTE]
-> Azure Resource-arbetskraft är för närvarande en offentlig för hands version.
+.
 
 
 I den här guiden får du lära dig att:
@@ -40,26 +38,21 @@ I den här guiden får du lära dig att:
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Förutsättningar
-
--  Kontrol lera att du har *ägar* åtkomst till prenumerationen som innehåller de resurser som du vill flytta.
-    - Första gången du lägger till en resurs för ett visst käll-och mål par i en Azure-prenumeration skapar resurs förflyttningen en [systemtilldelad hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (tidigare känd som hanterad tjänst identifiering (MSI)) som är betrodd av prenumerationen.
-    - Om du vill skapa identiteten och tilldela den rollen som krävs (deltagare eller administratör för användar åtkomst i käll prenumerationen) måste kontot som du använder för att lägga till resurser ha *ägar* behörigheter för prenumerationen. [Lär dig mer](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) om Azure-roller.
-- Prenumerationen måste ha tillräckligt med kvot för att skapa de resurser som du flyttar i mål regionen. Om den inte har någon kvot [begär du ytterligare begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Kontrol lera priser och avgifter som är kopplade till den mål region som du flyttar virtuella datorer till. Använd [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/) för att hjälpa dig.
+**Krav** | **Beskrivning**
+--- | ---
+**Prenumerations behörigheter** | Kontrol lera att du har *ägar* åtkomst till prenumerationen som innehåller de resurser som du vill flytta<br/><br/> **Varför behöver jag ägar åtkomst?** Första gången du lägger till en resurs för ett visst käll-och mål par i en Azure-prenumeration skapar resurs förflyttningen en [systemtilldelad hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (tidigare känd som hanterad tjänst identifiering (MSI)) som är betrodd av prenumerationen. Om du vill skapa identiteten och tilldela den rollen som krävs (deltagare eller administratör för användar åtkomst i käll prenumerationen) måste kontot som du använder för att lägga till resurser ha *ägar* behörigheter för prenumerationen. [Lär dig mer](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) om Azure-roller.
+**Stöd för virtuella datorer** |  Kontrol lera att de virtuella datorer som du vill flytta stöds.<br/><br/> - [Verifiera](support-matrix-move-region-azure-vm.md#windows-vm-support) stödda virtuella Windows-datorer.<br/><br/> - [Kontrol lera](support-matrix-move-region-azure-vm.md#linux-vm-support) virtuella Linux-datorer och kernel-versioner som stöds.<br/><br/> – Kontrol lera inställningarna för [beräkning](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [lagring](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)och [nätverk](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) som stöds.
+**Mål prenumeration** | Prenumerationen i mål regionen behöver tillräcklig kvot för att skapa de resurser som du flyttar i mål regionen. Om den inte har någon kvot [begär du ytterligare begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md).
+**Avgifter för mål region** | Kontrol lera priser och avgifter som är kopplade till den mål region som du flyttar virtuella datorer till. Använd [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/) för att hjälpa dig.
     
 
-## <a name="check-vm-requirements"></a>Kontrol lera krav för virtuella datorer
+## <a name="prepare-vms"></a>Förbereda virtuella datorer
 
-1. Kontrol lera att de virtuella datorer som du vill flytta stöds.
-
-    - [Verifiera](support-matrix-move-region-azure-vm.md#windows-vm-support) stödda virtuella Windows-datorer.
-    - [Kontrol lera](support-matrix-move-region-azure-vm.md#linux-vm-support) virtuella Linux-datorer och kernel-versioner som stöds.
-    - Kontrol lera inställningar för [beräkning](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [lagring](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)och [nätverk](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) som stöds.
-2. Kontrol lera att de virtuella datorer som du vill flytta är aktiverade.
-3. Kontrol lera att de virtuella datorerna har de senaste betrodda rot certifikaten och en uppdaterad lista över återkallade certifikat (CRL). Gör så här:
+1. När du har kontrollerat att de virtuella datorerna uppfyller kraven kontrollerar du att de virtuella datorerna som du vill flytta är aktiverade. Alla virtuella dator diskar som du vill ska vara tillgängliga i mål regionen måste vara kopplade till och initieras på den virtuella datorn.
+1. Kontrol lera att de virtuella datorerna har de senaste betrodda rot certifikaten och en uppdaterad lista över återkallade certifikat (CRL). Gör så här:
     - På virtuella Windows-datorer installerar du de senaste Windows-uppdateringarna.
     - På virtuella Linux-datorer följer du vägledningen för distributör så att datorerna har de senaste certifikaten och CRL: en. 
-4. Tillåt utgående anslutning från virtuella datorer:
+1. Tillåt utgående anslutning från virtuella datorer:
     - Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutning ger du åtkomst till dessa [URL: er](support-matrix-move-region-azure-vm.md#url-access)
     - Om du använder regler för nätverks säkerhets grupper (NSG) för att kontrol lera utgående anslutningar skapar du dessa [service tag-regler](support-matrix-move-region-azure-vm.md#nsg-rules).
 
@@ -85,12 +78,12 @@ Välj de resurser som du vill flytta.
     ![Sidan för att välja käll-och mål region](./media/tutorial-move-region-virtual-machines/source-target.png)
 
 6. I **resurser att flytta klickar du** på **Välj resurser**.
-7. I **Välj resurser** väljer du den virtuella datorn. Du kan bara lägga till [resurser som stöds för flytt](#check-vm-requirements). Klicka sedan på **färdig**.
+7. I **Välj resurser** väljer du den virtuella datorn. Du kan bara lägga till [resurser som stöds för flytt](#prepare-vms). Klicka sedan på **färdig**.
 
     ![Sidan för att välja de virtuella datorer som ska flyttas](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  I **resurser att flytta klickar du** på **Nästa**.
-9. Kontrol lera käll-och mål inställningarna i **Granska + Lägg till**. 
+9. Kontrol lera käll-och mål inställningarna i **granskning**. 
 
     ![Sida för att granska inställningar och fortsätta med flytten](./media/tutorial-move-region-virtual-machines/review.png)
 10. Klicka på **Fortsätt** för att börja lägga till resurserna.
@@ -99,25 +92,27 @@ Välj de resurser som du vill flytta.
 
 > [!NOTE]
 > - De resurser som har lagts till är i *vänte* läge.
+> - Resurs gruppen för de virtuella datorerna läggs till automatiskt.
 > - Om du vill ta bort en resurs från en flyttnings samling är metoden för att göra det beroende av var du befinner dig i flyttnings processen. [Läs mer](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Matcha beroenden
 
 1. Om resurser visar ett *verifierings beroende* meddelande i kolumnen **problem** klickar du på knappen **Verifiera beroenden** . Verifierings processen börjar.
 2. Om det finns beroenden klickar du på **Lägg till beroenden**. 
-3. I **Lägg till beroenden** väljer du de beroende resurserna > **lägga till beroenden**. Övervaka förloppet i aviseringarna.
+3. I **Lägg till beroenden** lämnar du standard alternativet **Visa alla beroenden** .
+
+    - Visa alla beroenden upprepas genom alla direkta och indirekta beroenden för en resurs. För en virtuell dator visar till exempel NÄTVERKSKORTet, det virtuella nätverket, nätverks säkerhets grupper (NSG: er) osv.
+    - Visa endast direkta beroenden på första nivå-beroenden. För en virtuell dator visar till exempel NÄTVERKSKORTet, men inte det virtuella nätverket.
+
+
+4. Välj de beroende resurser som du vill lägga till > **lägga till beroenden**. Övervaka förloppet i aviseringarna.
 
     ![Lägg till beroenden](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
-4. Lägg till ytterligare beroenden om det behövs och verifiera beroenden igen. 
+4. Verifiera beroenden igen. 
     ![Sida för att lägga till ytterligare beroenden](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. På sidan **över regioner** kontrollerar du att resurserna nu är i ett *förberedelse* tillstånd utan problem.
 
-    ![Sida som visar resurser i förberedelse av väntande tillstånd](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
-
-> [!NOTE]
-> Om du vill redigera mål inställningarna innan du påbörjar flyttningen väljer du länken i kolumnen **mål konfiguration** för resursen och redigerar inställningarna. Om du redigerar inställningarna för den virtuella mål datorn bör storleken på den virtuella mål datorn inte vara mindre än storleken på den virtuella käll datorn.  
 
 ## <a name="move-the-source-resource-group"></a>Flytta käll resurs gruppen 
 
@@ -158,9 +153,17 @@ För att genomföra och slutföra flytt processen:
 
 ## <a name="prepare-resources-to-move"></a>Förbered resurser för att flytta
 
+Nu när käll resurs gruppen flyttas kan du förbereda för att flytta andra resurser som är i *förberedelse* tillstånd.
+
+1. I **flera regioner** kontrollerar du att resurserna nu är i ett *förberedelse* tillstånd utan problem. Om de inte är det kontrollerar du igen och löser eventuella utestående problem.
+
+    ![Sida som visar resurser i förberedelse av väntande tillstånd](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
+
+2. Om du vill redigera mål inställningarna innan du påbörjar flyttningen väljer du länken i kolumnen **mål konfiguration** för resursen och redigerar inställningarna. Om du redigerar inställningarna för den virtuella mål datorn bör storleken på den virtuella mål datorn inte vara mindre än storleken på den virtuella käll datorn.  
+
 Nu när käll resurs gruppen flyttas kan du förbereda för att flytta de andra resurserna.
 
-1. I **flera regioner** väljer du de resurser som du vill förbereda. 
+3. Välj de resurser som du vill förbereda. 
 
     ![Sidan för att välja Förbered för andra resurser](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
-ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928457"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979852"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrera med en CI/CD-pipeline
 
@@ -33,11 +33,11 @@ I följande exempel visas hur du inkluderar konfigurations data för appar som e
 
 Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. [Visual Studio Code](https://code.visualstudio.com/) är ett utmärkt alternativ som är tillgängligt på Windows-, MacOS-och Linux-plattformarna.
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
-Om du skapar lokalt kan du hämta och installera [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) om du inte redan gjort det.
+Om du skapar lokalt kan du hämta och installera [Azure CLI](/cli/azure/install-azure-cli) om du inte redan gjort det.
 
-Om du vill göra en moln version kan du till exempel se till att [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) är installerat i versions systemet med Azure DevOps.
+Om du vill göra en moln version kan du till exempel se till att [Azure CLI](/cli/azure/install-azure-cli) är installerat i versions systemet med Azure DevOps.
 
 ### <a name="export-an-app-configuration-store"></a>Exportera ett konfigurations Arkiv för appen
 
@@ -107,4 +107,4 @@ Om du vill göra en moln version kan du till exempel se till att [Azure CLI](/cl
 I den här självstudien har du exporterat Azure App konfigurations data som ska användas i en distributions pipeline. Om du vill veta mer om hur du använder app-konfiguration kan du fortsätta till Azure CLI-exemplen.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: e894caddd037738645a37ccb43265a24d56e8afe
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493811"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979937"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Självstudie: Använd dynamisk konfiguration i en ASP.NET Core app
 
@@ -191,7 +191,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     ```
     ---
     > [!Tip]
-    > Mer information om alternativ mönster när du läser konfigurations värden finns [i alternativ mönster i ASP.net Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > Mer information om alternativ mönster när du läser konfigurations värden finns [i alternativ mönster i ASP.net Core](/aspnet/core/fundamentals/configuration/options).
 
 4. Uppdatera `Configure` metoden, Lägg till `UseAzureAppConfiguration` mellanprogram för att tillåta att konfigurations inställningarna som registreras för uppdatering uppdateras medan den ASP.net Core webbappen fortsätter att ta emot begär Anden.
 

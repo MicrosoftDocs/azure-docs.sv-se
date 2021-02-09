@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 46d569eae768178815a933d9a857e19bacdaaeb9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 46bdaf932d4224bf97b46e7713d49d815ca1bcdd
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013234"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833005"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>Skapa en anslutnings övervakare med ARM-mallen
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kommer inte heller att kunna lägga till nya anslutnings övervakare i anslutnings övervakaren (klassisk). Du kan fortsätta att använda de tester och anslutnings Övervakare som skapades före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda](migrate-to-connection-monitor-from-network-performance-monitor.md) eller [Migrera från anslutnings övervakaren (klassisk)](migrate-to-connection-monitor-from-connection-monitor-classic.md) till den nya anslutnings övervakaren i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Lär dig hur du skapar anslutnings övervakaren för att övervaka kommunikationen mellan dina resurser med hjälp av ARMClient. Det stöder hybrid-och Azure Cloud-distributioner.
 

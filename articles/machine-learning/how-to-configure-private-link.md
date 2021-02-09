@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 2953f85a5c21cdd670d6e133d09ffacf06f178ef
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842710"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979189"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -35,7 +35,8 @@ Om du planerar att använda en privat länk aktive rad arbets yta med en kundhan
 
 ## <a name="limitations"></a>Begränsningar
 
-Det går inte att använda en Azure Machine Learning arbets yta med privat länk i Azure Government regioner eller Azure Kina 21Vianet-regioner.
+* Det går inte att använda en Azure Machine Learning arbets yta med privat länk i Azure Government regioner eller Azure Kina 21Vianet-regioner.
+* Om du aktiverar offentlig åtkomst för en arbets yta som skyddas med en privat länk och använder Azure Machine Learning Studio via det offentliga Internet, kan vissa funktioner, till exempel designern, inte komma åt dina data. Det här problemet uppstår när data lagras på en tjänst som skyddas bakom VNet. Till exempel ett Azure Storage konto.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Skapa en arbets yta som använder en privat slut punkt
 
@@ -158,6 +159,31 @@ Eftersom kommunikation till arbets ytan endast tillåts från det virtuella nät
 > För att undvika tillfälligt avbrott i anslutningen rekommenderar Microsoft att tömma DNS-cachen på datorer som ansluter till arbets ytan när du har aktiverat privat länk. 
 
 Information om Azure Virtual Machines finns i Virtual Machines- [dokumentationen](../virtual-machines/index.yml).
+
+## <a name="enable-public-access"></a>Aktivera offentlig åtkomst
+
+När du har konfigurerat en arbets yta med en privat slut punkt kan du välja att aktivera offentlig åtkomst till arbets ytan. Om du gör det tas inte den privata slut punkten bort. Den möjliggör offentlig åtkomst utöver den privata åtkomsten. Använd följande steg för att aktivera offentlig åtkomst till en privat länk aktive rad arbets yta:
+
+# <a name="python"></a>[Python](#tab/python)
+
+Använd [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) för att ta bort en privat slut punkt.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+ws.update(allow_public_access_when_behind_vnet=True)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Azure CLI-tillägget för Machine Learning](reference-azure-machine-learning-cli.md) tillhandahåller [uppdaterings kommandot för AZ ml-arbetsytan](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_update) . Lägg till parametern om du vill aktivera offentlig åtkomst till arbets ytan `--allow-public-access true` .
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Det finns för närvarande inget sätt att aktivera den här funktionen med hjälp av portalen.
+
+---
 
 
 ## <a name="next-steps"></a>Nästa steg

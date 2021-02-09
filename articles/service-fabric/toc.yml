@@ -713,8 +713,6 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: Fjärransluta till klusternod för virtuell dator
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-                - name: Uppgradera klusternoder för att använda hanterade diskar
-                  href: upgrade-managed-disks.md
         - name: Fristående kluster
           items:
             - name: Skapa

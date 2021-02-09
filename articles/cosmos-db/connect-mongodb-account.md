@@ -8,12 +8,16 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06b03ac1cfe37307a5839be0d5ca3b1003db35af
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+adobe-target: true
+adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
+adobe-target-experience: Experience B
+adobe-target-content: connect-mongodb-account-experimental.md
+ms.openlocfilehash: d3e619559f1fb2500904aa7349aa131fd9b5fc00
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072422"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980804"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Ansluta ett MongoDB-program till Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -34,8 +38,8 @@ I den här självstudien beskrivs två sätt att hämta information om anslutnin
 
 1. Logga in på [Azure Portal](https://portal.azure.com)i en webbläsare.
 2. På bladet **Azure Cosmos DB** väljer du API: et.
-3. I det vänstra fönstret på konto bladet klickar du på **snabb start** .
-4. Välj din plattform ( **.net** , **Node.js** , **MongoDB Shell** , **Java** , **python** ). Om du inte ser den driv rutin eller det verktyg som visas, behöver vi kontinuerligt dokumentera fler anslutnings kods tycken. Kommentera nedan om vad du vill se. Information om hur du kan skapa en egen anslutning finns [i Hämta kontots anslutnings sträng information](#get-the-mongodb-connection-string-to-customize).
+3. I det vänstra fönstret på konto bladet klickar du på **snabb start**.
+4. Välj din plattform (**.net**, **Node.js**, **MongoDB Shell**, **Java**, **python**). Om du inte ser den driv rutin eller det verktyg som visas, behöver vi kontinuerligt dokumentera fler anslutnings kods tycken. Kommentera nedan om vad du vill se. Information om hur du kan skapa en egen anslutning finns [i Hämta kontots anslutnings sträng information](#get-the-mongodb-connection-string-to-customize).
 5. Kopiera och klistra in kodfragmentet i MongoDB-appen.
 
     :::image type="content" source="./media/connect-mongodb-account/QuickStartBlade.png" alt-text="Bladet snabb start":::
@@ -44,15 +48,15 @@ I den här självstudien beskrivs två sätt att hämta information om anslutnin
 
 1. Logga in på [Azure Portal](https://portal.azure.com)i en webbläsare.
 2. På bladet **Azure Cosmos DB** väljer du API: et.
-3. I det vänstra fönstret på konto bladet klickar du på **anslutnings sträng** .
+3. I det vänstra fönstret på konto bladet klickar du på **anslutnings sträng**.
 4. Bladet **anslutnings sträng** öppnas. Den innehåller all information som krävs för att ansluta till kontot med hjälp av en driv rutin för MongoDB, inklusive en förkonstruerad anslutnings sträng.
 
-   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Bladet snabb start" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="Bladet Anslutningssträng" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Krav för anslutnings sträng
 
 > [!Important]
-> Azure Cosmos DB har stränga säkerhetskrav och säkerhetsstandarder. Azure Cosmos DB konton kräver autentisering och säker kommunikation via *TLS* .
+> Azure Cosmos DB har stränga säkerhetskrav och säkerhetsstandarder. Azure Cosmos DB konton kräver autentisering och säker kommunikation via *TLS*.
 
 Azure Cosmos DB stöder URI-formatet standard MongoDB-anslutnings sträng, med ett par särskilda krav: Azure Cosmos DB konton kräver autentisering och säker kommunikation via TLS. Formatet för anslutnings strängen är alltså:
 

@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 57228c6b7da04b139c7075c83e313b207907e214
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898019"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833107"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Övervakning av nätverks anslutning med anslutnings övervakaren
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kommer inte heller att kunna lägga till nya anslutnings övervakare i anslutnings övervakaren (klassisk). Du kan fortsätta att använda de tester och anslutnings Övervakare som skapades före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda](migrate-to-connection-monitor-from-network-performance-monitor.md) eller [Migrera från anslutnings övervakaren (klassisk)](migrate-to-connection-monitor-from-connection-monitor-classic.md) till den nya anslutnings övervakaren i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Anslutnings övervakaren tillhandahåller enhetlig anslutnings övervakning från slut punkt till slut punkt i Azure Network Watcher. Funktionen anslutnings övervakare stöder hybrid-och Azure Cloud-distributioner. Network Watcher innehåller verktyg för att övervaka, diagnostisera och Visa anslutnings relaterade mått för dina Azure-distributioner.
 
@@ -111,7 +114,7 @@ Anslutnings övervakaren innehåller följande entiteter:
 
  ![Diagram som visar en anslutnings Övervakare som definierar relationen mellan test grupper och tester](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-Du kan skapa en anslutnings övervakare med hjälp av [Azure Portal](./connection-monitor-create-using-portal.md) eller [ARMClient](./connection-monitor-create-using-template.md)
+Du kan skapa en anslutnings övervakare med hjälp av [Azure Portal](./connection-monitor-create-using-portal.md), [ARMClient](./connection-monitor-create-using-template.md) eller [PowerShell](connection-monitor-create-using-powershell.md)
 
 Alla källor, destinationer och testkonfigurationer som du lägger till i en test grupp får delats upp till enskilda tester. Här är ett exempel på hur källor och mål är uppdelade:
 
@@ -271,12 +274,13 @@ I anslutnings Övervakare som skapades före anslutnings övervakaren, är alla 
 
 När du använder mått anger du resurs typen som Microsoft. Network/networkWatchers/connectionMonitors
 
-| Mått | Visningsnamn | Enhet | Sammansättningstyp | Description | Dimensioner |
+| Metric | Visningsnamn | Enhet | Sammansättningstyp | Description | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | % Avsökningar misslyckades | Procent | Genomsnitt | Procent av anslutnings övervaknings avsökningarna misslyckades. | Inga dimensioner |
-| AverageRoundtripMs | Genomsnittlig tid för fördröjning (MS) | Millisekunder | Genomsnitt | Genomsnittlig för inblandning av nätverks belastning för anslutnings övervaknings avsökningar skickas mellan källa och mål. |             Inga dimensioner |
-| ChecksFailedPercent (för hands version) | % Kontroller misslyckades (förhands granskning) | Procent | Genomsnitt | Procent andelen misslyckade kontroller för ett test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs (för hands version) | Tur och retur tid (MS) (för hands version) | Millisekunder | Genomsnitt | Söker efter kontroller som skickats mellan källa och mål. Värdet är inte medelvärdet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| ProbesFailedPercent (klassisk) | % Avsökningar misslyckades (klassisk) | Procent | Genomsnitt | Procent av anslutnings övervaknings avsökningarna misslyckades. | Inga dimensioner |
+| AverageRoundtripMs (klassisk) | Genomsnittlig tid för tur och retur (MS) (klassisk) | Millisekunder | Genomsnitt | Genomsnittlig för inblandning av nätverks belastning för anslutnings övervaknings avsökningar skickas mellan källa och mål. |             Inga dimensioner |
+| ChecksFailedPercent | % Kontroller misslyckades | Procent | Genomsnitt | Procent andelen misslyckade kontroller för ett test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| RoundTripTimeMs | Svars tid för fördröjning (MS) | Millisekunder | Genomsnitt | Söker efter kontroller som skickats mellan källa och mål. Värdet är inte medelvärdet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| TestResult | Test resultat | Antal | Genomsnitt | Test resultat för anslutnings övervakaren | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Metric-baserade aviseringar för anslutnings övervakaren
 
@@ -346,7 +350,7 @@ Följande problem kan identifieras för nätverk vars källor är virtuella Azur
 * BGP är inte aktiverat på Gateway-anslutningen.
 * DIP-avsökningen är nere i belastningsutjämnaren.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
     
    * Lär dig [hur du skapar anslutnings övervakare med hjälp av Azure Portal](./connection-monitor-create-using-portal.md)  
    * Lär dig [hur du skapar anslutnings övervakaren med ARMClient](./connection-monitor-create-using-template.md)

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4e38366ddcee07f38ca390acf9d580b8764c1c00
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426721"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979835"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrera med Kubernetes-distribution med Helm
 
@@ -30,10 +30,10 @@ I den här guiden får du lära dig att:
 
 Den här självstudien förutsätter grundläggande förståelse för att hantera Kubernetes med Helm. Lär dig mer om att installera program med Helm i [Azure Kubernetes-tjänsten](../aks/kubernetes-helm.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- Installera [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (version 2.4.0 eller senare)
+- Installera [Azure CLI](/cli/azure/install-azure-cli) (version 2.4.0 eller senare)
 - Installera [Helm](https://helm.sh/docs/intro/install/) (version 2.14.0 eller senare)
 - Ett Kubernetes-kluster.
 
@@ -56,10 +56,10 @@ Den här självstudien förutsätter grundläggande förståelse för att hanter
 
 3. Välj **konfigurations Utforskaren**.
 
-4. Välj **+ skapa**  >  **Key Vault-referens**och ange sedan följande värden:
+4. Välj **+ skapa**  >  **Key Vault-referens** och ange sedan följande värden:
     - **Nyckel**: Välj **hemligheter. password**.
     - **Etikett**: lämna värdet tomt.
-    - **Prenumeration**, **resurs grupp**och **nyckel valv**: Ange de värden som motsvarar dem i nyckel valvet som du skapade i föregående steg.
+    - **Prenumeration**, **resurs grupp** och **nyckel valv**: Ange de värden som motsvarar dem i nyckel valvet som du skapade i föregående steg.
     - **Hemlighet**: Välj det hemliga namnet **lösen ord** som du skapade i föregående avsnitt.
 
 ## <a name="create-helm-chart"></a>Skapa Helm-diagram ##
@@ -185,7 +185,7 @@ settings:
 Hämta först konfigurationen från App-konfigurationen till en *yaml* -fil. Använd ett nyckel filter för att bara hämta de nycklar som börjar med **Inställningar.**. Om nyckel filtret inte räcker för att utesluta nycklar med Key Vault referenser kan du använda argumentet **--Skip-Key Vault** för att utesluta dem. 
 
 > [!TIP]
-> Läs mer om [export kommandot](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
+> Läs mer om [export kommandot](/cli/azure/appconfig/kv#az-appconfig-kv-export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
@@ -242,4 +242,4 @@ En hemlighet, **lösen ord**, butiker som Key Vault referens i app Configuration
 I den här självstudien har du exporterat Azure App konfigurations data som ska användas i en Kubernetes-distribution med Helm. Om du vill veta mer om hur du använder app-konfiguration kan du fortsätta till Azure CLI-exemplen.
 
 > [!div class="nextstepaction"]
-> [Azure CLI](/cli/azure/appconfig?view=azure-cli-latest)
+> [Azure CLI](/cli/azure/appconfig)

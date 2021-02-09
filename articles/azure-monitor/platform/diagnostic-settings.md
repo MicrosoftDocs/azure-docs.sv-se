@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: a6f8e681f68fb53d7cf88582b4bf4416efc11c86
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 5e1a1c62cafd982d44be3e06b98fc8c30461021c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820559"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979988"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser
 [Plattforms loggar](platform-logs-overview.md) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. [Plattforms mått](data-platform-metrics.md) samlas in som standard och lagras vanligt vis i Azure Monitor Metrics-databasen. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål.
@@ -189,7 +189,7 @@ där distributionen tidigare lyckades.
 
 Problemet uppstår när du använder en Resource Manager-mall, diagnostikinställningar REST API, Azure CLI eller Azure PowerShell. Diagnostikinställningar som skapats via Azure Portal påverkas inte eftersom endast de kategori namn som stöds visas.
 
-Problemet orsakas av en ny ändring i det underliggande API: et. Mått kategorier som skiljer sig från "AllMetrics" stöds inte och är aldrig undantagna i mycket speciella listor över tillåtna IP-listor. Tidigare ignorerades andra kategori namn när en diagnostisk inställning distribuerades. Azure Monitor-filservern omdirigerade bara de här kategorierna till "AllMetrics".  Från och med februari 2021 uppdaterades Server delen till att särskilt bekräfta att den angivna mått kategorin är korrekt. Den här ändringen har gjort att vissa distributioner inte fungerar.
+Problemet orsakas av en ny ändring i det underliggande API: et. Mått kategorier som skiljer sig från "AllMetrics" stöds inte och har aldrig varit undantagna för några mycket olika Azure-tjänster. Tidigare ignorerades andra kategori namn när en diagnostisk inställning distribuerades. Azure Monitor-filservern omdirigerade bara de här kategorierna till "AllMetrics".  Från och med februari 2021 uppdaterades Server delen till att särskilt bekräfta att den angivna mått kategorin är korrekt. Den här ändringen har gjort att vissa distributioner inte fungerar.
 
 Om du får det här felet kan du uppdatera distributionerna för att ersätta alla mått kategori namn med "AllMetrics" för att åtgärda problemet. Om distributionen tidigare lades till flera kategorier ska endast en med referensen "AllMetrics" behållas. Om problemet kvarstår kan du kontakta Azure-supporten via Azure Portal. 
 

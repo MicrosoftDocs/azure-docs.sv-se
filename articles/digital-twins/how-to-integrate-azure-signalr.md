@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 86d0c75d8b4c7c331e3e7ad90271e3fb42ff1964
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664120"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980736"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrera Azure Digitals dubbla med Azure SignalR-tjänsten
 
@@ -69,7 +69,7 @@ Gå först till webbläsaren där Azure Portal öppnas och utför följande steg
 
 Starta sedan Visual Studio (eller en annan valfri kod redigerare) och öppna kod lösningen i mappen Digital-endrived *-samples-master > ADTSampleApp* . Utför sedan följande steg för att skapa funktionerna:
 
-1. Skapa en ny C# Sharp-klass med namnet **SignalRFunctions.cs** i *SampleFunctionsApp* -projektet.
+1. Skapa en ny C#-klass med namnet **SignalRFunctions.cs** i *SampleFunctionsApp* -projektet.
 
 1. Ersätt innehållet i klass filen med följande kod:
     
@@ -82,7 +82,9 @@ Starta sedan Visual Studio (eller en annan valfri kod redigerare) och öppna kod
 
     Detta bör lösa eventuella beroende problem i klassen.
 
-Publicera sedan din funktion till Azure med hjälp av stegen som beskrivs i artikeln [ *Publicera appen app*](tutorial-end-to-end.md#publish-the-app) i guiden *Anslut en lösning från slut punkt till slut punkt* . Du kan publicera den till samma app service/Function-app som du använde i den kompletta självstudien krav, eller skapa en ny, men du kanske vill använda samma som för att minimera duplicering. Slutför också appen publicera med följande steg:
+Publicera sedan din funktion till Azure med hjälp av stegen som beskrivs i artikeln [ *Publicera appen app*](tutorial-end-to-end.md#publish-the-app) i guiden *Anslut en lösning från slut punkt till slut punkt* . Du kan publicera den till samma app service/Function-app som du använde i den heltäckande själv studie kursen, eller skapa en ny [-, men](#prerequisites)du kanske vill använda samma som för att minimera duplicering. 
+
+Slutför sedan appen publicera med följande steg:
 1. Samla in URL: en för *Negotiate* -funktionens **http-slutpunkt**. Det gör du genom att gå till sidan för Azure Portal [funktions appar](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) och välja din Function-app i listan. I menyn app väljer du *Functions* och sedan *Negotiate* -funktionen.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal visning av Function-appen med &quot;Functions&quot; markerat i menyn. Listan över funktioner visas på sidan och funktionen Negotiate är också markerad.":::
@@ -124,23 +126,11 @@ Gå tillbaka till sidan *Skapa händelse prenumeration* och tryck på **skapa**.
 
 ## <a name="configure-and-run-the-web-app"></a>Konfigurera och köra webb programmet
 
-I det här avsnittet visas resultatet av åtgärden. Först ska du starta den **simulerade enhetens exempel App** som skickar telemetridata via din Azure Digitals-instans. Sedan konfigurerar du **exempel klientens webbapp** så att den ansluter till Azure SignalR-flödet som du har konfigurerat. Därefter bör du kunna se data som uppdaterar exempel webb programmet i real tid.
-
-### <a name="run-the-device-simulator"></a>Köra enhets simulatorn
-
-Under den heltäckande själv studie kursen [konfigurerade du enhets simulatorn](tutorial-end-to-end.md#configure-and-run-the-simulation) för att skicka data via en IoT Hub och till din Azure Digital-instansen.
-
-Nu behöver du bara starta Simulator projektet, som finns i *digital-endrives-samples-master > DeviceSimulator > DeviceSimulator. SLN*. Om du använder Visual Studio kan du öppna projektet och sedan köra det med den här knappen i verktygsfältet:
-
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Start knappen i Visual Studio (DeviceSimulator-projekt)":::
-
-Ett konsol fönster öppnas och visar simulerade simulerings meddelanden för temperatur. De skickas via din Azure Digital-instansen, där de sedan hämtas av Azure Functions och SignalR.
-
-Du behöver inte göra något annat i den här konsolen, men lämna det samtidigt som du slutför nästa steg.
+I det här avsnittet visas resultatet av åtgärden. Konfigurera först **exempel klientens webbapp** så att den ansluter till det Azure SignalR-flöde som du har konfigurerat. Sedan startar du den **simulerade enhets exempel appen** som skickar telemetridata via din Azure Digitals-instans. Därefter ska du Visa exempel webbappen för att se de simulerade enhets data som uppdaterar exempel webb programmet i real tid.
 
 ### <a name="configure-the-sample-client-web-app"></a>Konfigurera en exempel klients webbapp
 
-Sedan konfigurerar du **webb programmet för signal integrering** med följande steg:
+Konfigurera **webb programmet för signal integrering** med följande steg:
 1. Öppna den zippade _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ mappen som du laddade ned i avsnittet [*Ladda ned exempel program*](#download-the-sample-applications) , genom att använda Visual Studio eller valfri valfri kod redigerare.
 
 1. Öppna filen *src/App.js* och ersätt webb adressen i `HubConnectionBuilder` med http-slutpunktens URL för den **förhandlande** funktionen som du sparade tidigare:
@@ -161,6 +151,18 @@ Ange sedan behörigheter i din Function-app i Azure Portal:
 1. Rulla ned på menyn instans och välj *CORS*. På sidan CORS lägger du till `http://localhost:3000` som ett tillåtet ursprung genom att ange den i rutan tom. Markera kryss rutan *Aktivera åtkomst kontroll-Tillåt-autentiseringsuppgifter* och tryck på *Spara*.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="CORS-inställning i Azure Function":::
+
+### <a name="run-the-device-simulator"></a>Köra enhets simulatorn
+
+Under den heltäckande själv studie kursen [konfigurerade du enhets simulatorn](tutorial-end-to-end.md#configure-and-run-the-simulation) för att skicka data via en IoT Hub och till din Azure Digital-instansen.
+
+Nu behöver du bara starta Simulator projektet, som finns i *digital-endrives-samples-master > DeviceSimulator > DeviceSimulator. SLN*. Om du använder Visual Studio kan du öppna projektet och sedan köra det med den här knappen i verktygsfältet:
+
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Start knappen i Visual Studio (DeviceSimulator-projekt)":::
+
+Ett konsol fönster öppnas och visar simulerade simulerings meddelanden för temperatur. De skickas via din Azure Digital-instansen, där de sedan hämtas av Azure Functions och SignalR.
+
+Du behöver inte göra något annat i den här konsolen, men lämna det samtidigt som du slutför nästa steg.
 
 ### <a name="see-the-results"></a>Visa resultaten
 

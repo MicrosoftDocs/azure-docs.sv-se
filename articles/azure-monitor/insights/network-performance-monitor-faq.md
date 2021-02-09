@@ -6,16 +6,19 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1faeb047783b9db24348425e5a6453754e550d4d
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625173"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833022"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Vanliga frågor om Övervakare av nätverksprestanda-lösning
 
 ![Övervakare av nätverksprestanda symbol](media/network-performance-monitor-faq/npm-symbol.png)
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Den här artikeln innehåller vanliga frågor och svar om Övervakare av nätverksprestanda (NPM) i Azure
 
@@ -34,7 +37,7 @@ Nedan visas plattforms kraven för NPM olika funktioner:
 - NPM för ExpressRoute-övervakaren stöder bara Windows Server (2008 SP1 eller senare) operativ system.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kan jag använda Linux-datorer som övervaknings-noder i NPM?
-Funktionen för att övervaka nätverk som använder Linux-baserade noder är nu allmänt tillgänglig. Öppna agenten [här](../../virtual-machines/extensions/oms-linux.md). 
+Funktionen för att övervaka nätverk som använder Linux-baserade noder är nu allmänt tillgänglig. Få åtkomst till agenten [här](../../virtual-machines/extensions/oms-linux.md). 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Vilka är storleks kraven för noderna som ska användas för övervakning av NPM?
 För att köra NPM-lösningen på nod-VM: ar för att övervaka nätverk ska noderna ha minst 500 MB minne och en kärna. Du behöver inte använda separata noder för att köra NPM. Lösningen kan köras på noder som har andra arbets belastningar som körs på den. Lösningen har möjlighet att stoppa övervaknings processen om den använder mer än 5% processor.
@@ -255,10 +258,10 @@ Detta kan inträffa i följande fall:
 * De lokala och Azure-noderna som väljs för att övervaka ExpressRoute-kretsen i övervaknings konfigurationen har ingen anslutning till varandra via den avsedda ExpressRoute-kretsen. Se till att du har valt rätt noder som har anslutning till varandra över den ExpressRoute-krets som du vill övervaka.
 
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Varför övervakar ExpressRoute min krets/peering som ohälsosam när den är tillgänglig och skickar data.
-ExpressRoute-övervakaren jämför nätverks prestanda värden (förlust, fördröjning och bandbredds användning) som rapporteras av agenter/tjänsten med tröskelvärdena som anges under konfigurationen. Om bandbredds användningen som rapporteras är större än tröskelvärdet i konfigurationen är kretsen markerad som ohälsosam. För peer-koppling är peer-kopplingen markerad som ohälsosam om förlusten, fördröjningen eller bandbredds användningen som rapporteras är större än tröskelvärdet som angetts i konfigurationen. NPM använder inte mått eller någon annan form av data för att deicde hälso tillstånd.
+ExpressRoute-övervakaren jämför nätverkets prestanda värden (förlust, fördröjning och bandbredds användning) som rapporteras av agenter/tjänsten med tröskelvärdena som anges under konfigurationen. Om bandbredds användningen som rapporteras är större än tröskelvärdet i konfigurationen för en krets, markeras kretsen som ohälsosam. För peer-koppling är peer-kopplingen markerad som ohälsosam om förlusten, svars tiden eller bandbredds användningen som rapporteras är större än tröskelvärdet som angetts i konfigurationen. NPM använder inte Mät värden eller någon annan form av data för att avgöra hälso tillståndet.
 
-### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Varför rapporterar ExpressRoute Monitor'bandwidth-användning ett värde annan från mått bitar in/ut
-För ExpressRoute-övervakaren är bandbredds utiliation genomsnittet av inkommande och utgående bandbredd under de senaste 20 minuterna uttryckt i bitar per sekund. För Express Route-mått är bit in/ut per minut data punkter. Internt som används för båda är samma, men agg valies mellan NPM och ER-mått. För detaljerad övervakning av minuter per minut och snabba aviseringar rekommenderar vi att du ställer in aviseringar direkt på ER-statistik
+### <a name="why-does-expressroute-monitorbandwidth-utilization-report-a-value-different-from-metrics-bits-inout"></a>Varför rapporterar ExpressRoute Monitor'bandwidth-användning ett värde som skiljer sig från mått bitar in/ut
+För ExpressRoute-övervakaren är bandbredds användningen genomsnittet av inkommande och utgående bandbredd under de senaste 20 minuterna uttryckt i bitar per sekund. För Express Route-mått är bit in/ut per minut data punkter. Internt som används för båda är detsamma, men agg regeringen varierar mellan NPM och ER-mått. För detaljerad övervakning av minuter per minut och snabba aviseringar rekommenderar vi att du ställer in aviseringar direkt på ER-statistik
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>När du konfigurerar övervakning av min ExpressRoute-krets identifieras inte Azure-noderna.
 Detta kan inträffa om Azure-noderna är anslutna via Operations Manager. ExpressRoute Monitor-kapacitet stöder bara de Azure-noder som är anslutna som direkta agenter.
@@ -300,4 +303,3 @@ NPM avrundar latens-talen i användar gränssnittet och i millisekunder. Samma d
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om Övervakare av nätverksprestanda genom att referera till [övervakare av nätverksprestanda-lösning i Azure](./network-performance-monitor.md).
-

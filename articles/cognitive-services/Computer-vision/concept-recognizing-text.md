@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 17a7ad29596c5ab5ed65868fde0e814bc83e8c37
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1d633b1a9f5fee0a5cceb48f2b37aaec2092069f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576750"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979543"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optisk teckenläsning (OCR)
 
@@ -132,20 +132,20 @@ Se följande exempel på ett lyckat JSON-svar:
 }
 ```
 
-## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Välj sidor eller sid intervall för text extrahering
-Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005), för stora flersidiga dokument, använder du `pages` Frågeparametern för att ange sid nummer eller sid intervall för att extrahera text från de sidorna. I följande exempel visas till exempel ett dokument med 10 sidor för båda fallen – alla sidor (1-10) och valda sidor (3-6).
+## <a name="natural-reading-order-output"></a>Naturlig Läs ordning för utdata
+Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)anger du i vilken ordning text raderna ska matas med `readingOrder` Frågeparametern. Använd `natural` för att se en mer användarvänlig läsnings ordning enligt följande exempel.
 
-:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Valda sidor-utdata":::
-
-## <a name="specify-text-line-order-in-the-output"></a>Ange text rad ordningen i utdata
-Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)anger du i vilken ordning text raderna ska matas med `read order` Frågeparametern. Välj mellan `basic` för standard linjen vänster-höger och uppifrån och ned, eller `natural` en mer mänsklig, anpassad rad ordning. I följande exempel visas båda uppsättningarna med rad ordnings nummer för samma dokument med två kolumner. Observera att bilden till höger visar sekventiella rad nummer i varje kolumn som representerar Läs ordningen.
-
-:::image border type="content" source="./Images/ocr-read-order.png" alt-text="Exempel på OCR-Läs ordning":::
+:::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="Exempel på OCR-Läs ordning":::
 
 ## <a name="handwritten-classification-for-text-lines-latin-only"></a>Handskriven klassificering för text rader (endast latinsk)
 I API-svaret för [Read 3,2-förhands granskning](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) ingår att klassificera om varje textrad är av hand SKRIFTS format eller inte, tillsammans med en förtroende poäng. Den här funktionen stöds bara för latinska språk. I följande exempel visas den handskrivna klassificeringen för texten i bilden.
 
-:::image border type="content" source="./Images/handwritten-text-line.png" alt-text="Exempel på klassificering av OCR-handstil":::
+:::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="Exempel på klassificering av OCR-handstil":::
+
+## <a name="select-pages-or-page-ranges-for-text-extraction"></a>Välj sidor eller sid intervall för text extrahering
+Med [läsa 3,2 för hands versions-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005), för stora flersidiga dokument, använder du `pages` Frågeparametern för att ange sid nummer eller sid intervall för att extrahera text från de sidorna. I följande exempel visas ett dokument med 10 sidor, med text som extraherats för båda fallen – alla sidor (1-10) och valda sidor (3-6).
+
+:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="Valda sidor-utdata":::
 
 ## <a name="supported-languages"></a>Språk som stöds
 Läsnings-API: erna stöder totalt 73 språk för utskrifts format text. Se den fullständiga listan över [språk som stöds av OCR](./language-support.md#optical-character-recognition-ocr). OCR av handskriven stil stöds enbart för engelska.

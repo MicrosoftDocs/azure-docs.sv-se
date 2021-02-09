@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803875"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980526"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Återställning av tidpunkter för block-blobar
 
@@ -32,6 +32,10 @@ Om du vill aktivera återställning vid tidpunkter skapar du en hanterings princ
 Om du vill initiera en tidpunkts återställning anropar du åtgärden [Återställ BLOB-intervall](/rest/api/storagerp/storageaccounts/restoreblobranges) och anger en återställnings punkt i UTC-tid. Du kan ange lexicographical-intervall för behållare och blob-namn som ska återställas, eller utelämna intervallet för att återställa alla behållare i lagrings kontot. Upp till 10 lexicographical-intervall stöds per återställnings åtgärd.
 
 Azure Storage analyserar alla ändringar som har gjorts i de angivna Blobbarna mellan den begärda återställnings punkten, anges i UTC-tid och för tillfället. Återställnings åtgärden är Atomic, så den slutförs fullständigt i återställningen av alla ändringar, eller så Miss lyckas den. Om det finns blobbar som inte kan återställas, Miss lyckas åtgärden och Läs-och skriv åtgärder till de berörda behållarna återupptas.
+
+Följande diagram visar hur tidpunkts återställning fungerar. En eller flera behållare eller BLOB-intervall återställs till sitt tillstånd för *n* dagar sedan, där *n* är mindre än eller lika med kvarhållningsperioden som definierats för återställning vid tidpunkter. Resultatet är att återställa Skriv-och borttagnings åtgärder som har skett under kvarhållningsperioden.
+
+:::image type="content" source="media/point-in-time-restore-overview/point-in-time-restore-diagram.png" alt-text="Diagram som visar hur punkt-i-tid återställer behållare till ett tidigare tillstånd":::
 
 Endast en återställnings åtgärd kan köras på ett lagrings konto i taget. En återställnings åtgärd kan inte avbrytas när den pågår, men en andra återställnings åtgärd kan utföras för att ångra den första åtgärden.
 
@@ -50,7 +54,7 @@ Endast en återställnings åtgärd kan köras på ett lagrings konto i taget. E
 Vid återställning från tidpunkt krävs att följande Azure Storage funktioner aktive ras innan du kan aktivera återställning vid tidpunkter:
 
 - [Mjuk borttagning](./soft-delete-blob-overview.md)
-- [Ändringsfeed](storage-blob-change-feed.md)
+- [Ändra feed](storage-blob-change-feed.md)
 - [BLOB-versioner](versioning-overview.md)
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Kvarhållningsperiod för återställning av tidpunkt

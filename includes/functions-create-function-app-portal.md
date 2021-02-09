@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3289db9b0f27aa528e027ab2e355852947187e76
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 9a4bda216a91efc8139c1f87c5c350c50ae8741d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98187285"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980951"
 ---
 1. I menyn i Azure-portalen eller på sidan **Start** väljer du **Skapa en resurs**.
 
@@ -27,7 +27,7 @@ ms.locfileid: "98187285"
     | **[Resurs grupp](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Namnet på den nya resursgrupp där du vill skapa funktionsappen. |
     | **Funktionsappens namn** | Globalt unikt namn | Namn som identifierar din nya funktionsapp. Giltiga tecken är `a-z` (skiftlägesokänsligt), `0-9` och `-`.  |
     |**Publicera**| Kod | Alternativ för att publicera kodfiler eller en Docker-container. |
-    | **Körningsstack** | Önskat språk | Välj en körning som stöder det funktionsprogrammeringsspråk som du föredrar. Redigering i portalen stöds för närvarande inte för [python-utveckling](../articles/azure-functions/functions-reference-python.md). |
+    | **Körningsstack** | Önskat språk | Välj en körning som stöder det funktionsprogrammeringsspråk som du föredrar. Redigering i portalen är bara tillgängligt för Java Script-, PowerShell-, TypeScript-och C#-skript. C#-klass biblioteks-, Java-och python-funktioner måste [utvecklas lokalt](../articles/azure-functions/functions-develop-local.md#local-development-environments).  |
     |**Version**| Versionsnummer | Välj den version av den installerade körnings miljön. |
     |**Region**| Önskad region | Välj en [region](https://azure.microsoft.com/regions/) nära dig eller nära andra tjänster som dina funktioner kommer åt. |
 

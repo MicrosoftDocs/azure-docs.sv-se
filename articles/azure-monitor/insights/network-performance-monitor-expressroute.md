@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91bb303fca4517f84ad8b430f26543e9f116fddc
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326162"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833090"
 ---
 # <a name="expressroute-monitor"></a>Övervakaren ExpressRoute
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Du kan använda Azure ExpressRoute Monitor-funktionen i [övervakare av nätverksprestanda](network-performance-monitor.md) för att övervaka anslutnings möjligheter från slut punkt till slut punkt och prestanda mellan dina avdelnings kontor och Azure, via Azure ExpressRoute. Viktiga fördelar: 
 
@@ -81,7 +84,7 @@ Om du vill se en lista över alla övervakade ExpressRoute-kretsar väljer du pa
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>Trender för förlust, svars tid och data flöde 
 
-Diagrammets användnings-, latens-och förlust diagram är interaktiva. Du kan zooma in till ett avsnitt i dessa diagram med hjälp av mus kontroller. Du kan också se bandbredd, latens och förlust data för andra intervall. I det övre vänstra hörnet under knappen **åtgärder** väljer du **datum/tid**. 
+Diagrammets användnings-, latens-och förlust diagram är interaktiva. Du kan zooma in till ett avsnitt i dessa diagram med hjälp av mus kontroller. Du kan också se bandbredd, latens och förlust data för andra intervall. I det övre vänstra hörnet under knappen **åtgärder** väljer du  **datum/tid**. 
 
 ![ExpressRoute-svars tid](media/network-performance-monitor-expressroute/expressroute-latency.png) 
 
@@ -109,7 +112,7 @@ I den här vyn visas virtuella nätverks anslutningar. 
 
 Du kan se meddelande koderna och ange aviseringar på dem via **LogAnalytics**. På sidan **NPM Diagnostics** kan du se beskrivningar för varje diagnostik-meddelande som utlöses.
 
-| Meddelande kod (loggar) | Beskrivning |
+| Meddelande kod (loggar) | Description |
 | --- | --- |
 | 5501 | Det går inte att passera genom den sekundära anslutningen av ExpressRoute-kretsen |
 | 5502 | Det gick inte att passera genom den primära anslutningen av ExpressRoute-kretsen |
@@ -141,4 +144,3 @@ Du kan se meddelande koderna och ange aviseringar på dem via **LogAnalytics**. 
 
 ## <a name="next-steps"></a>Nästa steg
 [Sök i loggar](../log-query/log-query-overview.md) om du vill visa detaljerade data poster för nätverks prestanda.
-

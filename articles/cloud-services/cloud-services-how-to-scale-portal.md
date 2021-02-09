@@ -1,6 +1,6 @@
 ---
 title: Skala en moln tjänst automatiskt (klassisk) i portalen | Microsoft Docs
-description: Lär dig hur du använder portalen för att konfigurera regler för automatisk skalning för en webb roll eller arbets roll i en moln tjänst i Azure.
+description: Lär dig hur du använder portalen för att konfigurera regler för automatisk skalning för en moln tjänst roll (klassisk) i Azure.
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743363"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980838"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Så här konfigurerar du automatisk skalning för en moln tjänst (klassisk) i portalen
 
@@ -23,7 +23,7 @@ ms.locfileid: "98743363"
 Villkor kan anges för en arbets roll för en moln tjänst som utlöser en skalning i eller ut-åtgärd. Villkoren för rollen kan baseras på CPU, disk eller nätverks belastning för rollen. Du kan också ange ett villkor baserat på en meddelandekö eller mått för en annan Azure-resurs som är associerad med din prenumeration.
 
 > [!NOTE]
-> Den här artikeln fokuserar på webb-och arbets roller i moln tjänster. När du skapar en virtuell dator (klassisk) direkt är den värdbaserad i en moln tjänst. Du kan skala en virtuell standard dator genom att associera den med en [tillgänglighets uppsättning](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) och aktivera eller inaktivera dem manuellt.
+> Den här artikeln fokuserar på moln tjänst (klassisk). När du skapar en virtuell dator (klassisk) direkt är den värdbaserad i en moln tjänst. Du kan skala en virtuell standard dator genom att associera den med en [tillgänglighets uppsättning](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic) och aktivera eller inaktivera dem manuellt.
 
 ## <a name="considerations"></a>Överväganden
 Du bör fundera över följande information innan du konfigurerar skalning för programmet:

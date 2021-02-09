@@ -10,12 +10,12 @@ author: aashishb
 ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8399cfb4ceed9f50a5c9de0d3d16912a718bbfaa
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 68163f7ca8cc1b37bda4e1224330f966265554c2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070124"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980481"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Använda TLS för att skydda en webbtjänst via Azure Machine Learning
 
@@ -28,6 +28,8 @@ Du använder [https](https://en.wikipedia.org/wiki/HTTPS) för att begränsa åt
 > Azure Machine Learning SDK använder termen "SSL" för egenskaper som är relaterade till säker kommunikation. Detta innebär inte att din webb tjänst inte använder *TLS*. SSL är bara en oftare erkänd term.
 >
 > Mer specifikt distribueras webb tjänster via Azure Machine Learning stöd för TLS version 1,2 för AKS och ACI. Om du använder en äldre TLS-version, rekommenderar vi att du distribuerar om för att få den senaste TLS-versionen för ACI-distributioner.
+>
+> TLS-version 1,3 för Azure Machine Learning-AKS-härledning stöds inte.
 
 TLS och SSL är beroende av *digitala certifikat*, som hjälper till med kryptering och identitets verifiering. Mer information om hur digitala certifikat fungerar finns i avsnittet om infrastrukturen för [offentliga nycklar](https://en.wikipedia.org/wiki/Public_key_infrastructure)i Wikipedia-ämnet.
 

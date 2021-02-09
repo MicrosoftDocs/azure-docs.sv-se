@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127489"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979305"
 ---
 # <a name="soft-delete-for-blobs"></a>Mjuk borttagning för blobar
 
@@ -27,6 +27,10 @@ Om det finns en risk att dina data av misstag kan ändras eller tas bort av ett 
 ## <a name="about-soft-delete-for-blobs"></a>Om mjuk borttagning för blobbar
 
 När mjuk borttagning för blobbar är aktiverat på ett lagrings konto kan du återställa objekt när de har tagits bort, inom den angivna data lagrings perioden. Det här skyddet utökar till alla blobbar (block-blobbar, tillägg av blobbar eller sidfel) som raderas som ett resultat av en överskrivning.
+
+Följande diagram visar hur en borttagen BLOB kan återställas när BLOB-mjuk borttagning är aktiverat:
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="Diagram över hur en mjuk borttagen BLOB kan återställas":::
 
 Om data i en befintlig BLOB eller ögonblicks bild tas bort när BLOB-mjuk borttagning har Aktiver ATS men BLOB-versioner inte är aktive rad genereras en mjuk borttagen ögonblicks bild för att spara statusen för de överskrivna data. När den angivna kvarhållningsperioden har upphört att gälla tas objektet bort permanent.
 

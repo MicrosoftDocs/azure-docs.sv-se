@@ -40,7 +40,7 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: Självstudier
   items:
-    - name: Aktivera dynamisk konfiguration
+    - name: Aktivera dynamisk konfiguration med hjälp av avsöknings modell
       items:
         - name: ASP.NET Core
           href: enable-dynamic-configuration-aspnet-core.md
@@ -52,6 +52,10 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
+    - name: Aktivera dynamisk konfiguration med push-modell
+      items:
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
     - name: Använda funktionsflaggor
       items:
         - name: ASP.NET Core

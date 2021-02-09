@@ -5,23 +5,23 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/07/2021
+ms.date: 02/08/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: fdc4bbd463c45fecfc9e3961e42f81ed93d820ae
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 2395e8e0027755357e65aab247185c02f7b1723d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054644"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980719"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory anslutningar
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factory-anslutningar.
-  
+
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code-azurebloboperationfailed"></a>Felkod: AzureBlobOperationFailed
@@ -109,7 +109,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
             
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL API)
 
-### <a name="error-code--cosmosdbsqlapioperationfailed"></a>Felkod: CosmosDbSqlApiOperationFailed
+### <a name="error-code-cosmosdbsqlapioperationfailed"></a>Felkod: CosmosDbSqlApiOperationFailed
 
 - **Meddelande**: `CosmosDbSqlApi operation Failed. ErrorMessage: %msg;.`
 
@@ -161,17 +161,13 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 - **Meddelande**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
 
-- **Orsak**: om Azure Data Lake Storage Gen2 genererar det här felet har åtgärden misslyckats.
+- **Orsaker och rekommendationer**: olika orsaker kan leda till det här felet. Kontrol lera nedan för möjlig orsaks analys och relaterad rekommendation.
 
-- **Rekommendation**: kontrol lera det detaljerade fel meddelandet som har utlösts av Azure Data Lake Storage Gen2. Försök igen om felet är ett tillfälligt fel. Kontakta Azure Storage support för ytterligare hjälp och ange ID för begäran i fel meddelande.
-
-- **Orsak**: om fel meddelandet innehåller strängen "förbjuden" kanske tjänstens huvud namn eller hanterade identitet som du använder inte har tillräcklig behörighet för att komma åt Azure Data Lake Storage Gen2.
-
-- **Rekommendation**: om du vill felsöka det här felet kan du läsa [Kopiera och transformera data i Azure Data Lake Storage Gen2 med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication).
-
-- **Orsak**: om fel meddelandet innehåller strängen "InternalServerError" returneras felet av Azure Data Lake Storage Gen2.
-
-- **Rekommendation**: felet kan bero på ett tillfälligt fel. Om den är det kan du försöka att utföra åtgärden igen. Kontakta Azure Storage-supporten och ange ID: t för begäran från fel meddelandet om problemet kvarstår.
+  | Orsaka analys                                               | Rekommendation                                               |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | Om Azure Data Lake Storage Gen2 genererar fel som indikerar att en åtgärd misslyckades.| Kontrol lera det detaljerade fel meddelandet som har utlösts av Azure Data Lake Storage Gen2. Försök igen om felet är ett tillfälligt fel. Kontakta Azure Storage support för ytterligare hjälp och ange ID för begäran i fel meddelande. |
+  | Om fel meddelandet innehåller strängen "förbjuden" kanske tjänstens huvud namn eller hanterade identitet som du använder inte har tillräcklig behörighet för att komma åt Azure Data Lake Storage Gen2. | Information om hur du felsöker det här felet finns [i kopiera och transformera data i Azure Data Lake Storage Gen2 med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication). |
+  | Om fel meddelandet innehåller strängen "InternalServerError" returneras felet av Azure Data Lake Storage Gen2. | Felet kan ha orsakats av ett tillfälligt fel. Om den är det kan du försöka att utföra åtgärden igen. Kontakta Azure Storage-supporten och ange ID: t för begäran från fel meddelandet om problemet kvarstår. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Begäran om att Azure Data Lake Storage Gen2 kontot orsakade ett tids gräns fel
 
@@ -204,7 +200,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
                   
 ## <a name="azure-files-storage"></a>Azure Files lagring
 
-### <a name="error-code--azurefileoperationfailed"></a>Felkod: AzureFileOperationFailed
+### <a name="error-code-azurefileoperationfailed"></a>Felkod: AzureFileOperationFailed
 
 - **Meddelande**: `Azure File operation Failed. Path: %path;. ErrorMessage: %msg;.`
 
@@ -215,55 +211,34 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure Synapse Analytics, Azure SQL Database och SQL Server
 
-### <a name="error-code--sqlfailedtoconnect"></a>Felkod: SqlFailedToConnect
+### <a name="error-code-sqlfailedtoconnect"></a>Felkod: SqlFailedToConnect
 
 - **Meddelande**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
+- **Orsaker och rekommendationer**: olika orsaker kan leda till det här felet. Kontrol lera nedan för möjlig orsaks analys och relaterad rekommendation.
 
-- **Orsak**: om fel meddelandet innehåller strängen "SqlErrorNumber = 47073" i Azure SQL innebär det att offentlig nätverks åtkomst nekas i anslutnings inställningen.
-
-- **Rekommendation**: i Azure SQL-brandväggen anger du alternativet **neka offentligt nätverks åtkomst** till *Nej*. Mer information finns i [Inställningar för Azure SQL-anslutning](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access).
-
-- **Orsak**: för Azure SQL visas fel söknings guiden för Azure SQL om fel meddelandet innehåller en SQL-felkod, till exempel "SqlErrorNumber = [ErrorCode]".
-
-- **Rekommendation**: en rekommendation finns i [Felsöka anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues).
-
-- **Orsak**: kontrol lera om port 1433 finns i listan över tillåtna brand Väggs listor.
-
-- **Rekommendation**: Mer information finns i [portar som används av SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-).
-
-- **Orsak**: om fel meddelandet innehåller strängen "SqlException" SQL Database felet indikerar att en viss åtgärd misslyckades.
-
-- **Rekommendation**: om du vill ha mer information kan du söka i SQL-felkoden i [databas motor fel](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp.
-
-- **Orsak**: om det här är ett tillfälligt problem (till exempel en instabil nätverks anslutning) lägger du till försök igen i aktivitets principen för att minimera.
-
-- **Rekommendation**: Mer information finns i [pipelines och aktiviteter i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy).
-
-- **Orsak**: om fel meddelandet innehåller strängen "client med IP-adress"... " är inte tillåten för att komma åt servern, "och du försöker ansluta till Azure SQL Database. felet orsakas vanligt vis av ett problem med Azure SQL Database brand väggen.
-
-- **Rekommendation**: i Azure SQL Server Firewall-konfigurationen aktiverar du alternativet **Tillåt att Azure-tjänster och-resurser får åtkomst till den här servern** . Mer information finns i [Azure SQL Database och Azure SYNAPSE IP Firewall Rules](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
-
-
-### <a name="error-code--sqloperationfailed"></a>Felkod: SqlOperationFailed
+    | Orsaka analys                                               | Rekommendation                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | För Azure SQL, om fel meddelandet innehåller strängen "SqlErrorNumber = 47073", innebär det att offentlig nätverks åtkomst nekas i anslutnings inställningen. | I Azure SQL-brandväggen anger du alternativet **neka offentligt nätverks åtkomst** till *Nej*. Mer information finns i [Inställningar för Azure SQL-anslutning](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access). |
+    | Om fel meddelandet innehåller en SQL-felkod som "SqlErrorNumber = [ErrorCode]" i Azure SQL kan du läsa mer i fel söknings guiden för Azure SQL. | En rekommendation finns i [Felsöka anslutnings problem och andra fel med Azure SQL Database och Azure SQL-hanterad instans](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues). |
+    | Kontrol lera om port 1433 finns i listan över tillåtna brand Väggs listor. | Mer information finns i [portar som används av SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Om fel meddelandet innehåller strängen "SqlException" SQL Database felet indikerar att en viss åtgärd misslyckades. | Om du vill ha mer information kan du söka i SQL-felkoden i [databas motor fel](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
+    | Om detta är ett tillfälligt problem (till exempel en instabil nätverks anslutning) lägger du till försök igen i aktivitets principen för att minimera. | Mer information finns i [pipelines och aktiviteter i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy). |
+    | Om fel meddelandet innehåller strängen "client med IP-adress"... " är inte tillåten för att komma åt servern och du försöker ansluta till Azure SQL Database, felet orsakas vanligt vis av ett problem med Azure SQL Database brand väggen. | I Azure SQL Server Firewall-konfigurationen aktiverar du alternativet **Tillåt Azure-tjänster och-resurser för att komma åt den här servern** . Mer information finns i [Azure SQL Database och Azure SYNAPSE IP Firewall Rules](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure). |
+    
+### <a name="error-code-sqloperationfailed"></a>Felkod: SqlOperationFailed
 
 - **Meddelande**: `A database operation failed. Please search error to get more details.`
 
-- **Orsak**: om fel meddelandet innehåller strängen "SqlException" returnerar SQL Database ett fel som indikerar att en viss åtgärd misslyckades.
+- **Orsaker och rekommendationer**: olika orsaker kan leda till det här felet. Kontrol lera nedan för möjlig orsaks analys och relaterad rekommendation.
 
-- **Rekommendation**: om SQL-felet inte är klart försöker du ändra databasen till den senaste kompatibilitetsnivån "150". Den kan resultera i den senaste versionen av SQL-fel. Mer information finns i [dokumentationen](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
-
-    Om du vill ha mer information om fel sökning av SQL-problem kan du söka i SQL-felkoden i [databas motor fel](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp.
-
-- **Orsak**: om fel meddelandet innehåller strängen "PdwManagedToNativeInteropException", orsakas det vanligt vis av ett matchnings fel mellan kolumn storlekarna källa och mottagare.
-
-- **Rekommendation**: kontrol lera storleken på kolumnerna källa och mottagare. Kontakta Azure SQL-supporten om du vill ha mer hjälp.
-
-- **Orsak**: om fel meddelandet innehåller strängen "InvalidOperationException" orsakas det vanligt vis av ogiltiga indata.
-
-- **Rekommendation**: om du vill identifiera vilken rad som har påträffat problemet aktiverar du fel tolerans funktionen på kopierings aktiviteten, som kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
+    | Orsaka analys                                               | Rekommendation                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | Om fel meddelandet innehåller strängen "SqlException", genererar SQL Database ett fel som indikerar att en viss åtgärd misslyckades. | Om SQL-felet inte är klart försöker du ändra databasen till den senaste kompatibilitetsnivån "150". Den kan resultera i den senaste versionen av SQL-fel. Mer information finns i [dokumentationen](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Om du vill ha mer information om fel sökning av SQL-problem kan du söka i SQL-felkoden i [databas motor fel](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors). Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
+    | Om fel meddelandet innehåller strängen "PdwManagedToNativeInteropException", orsakas det vanligt vis av ett matchnings fel mellan kolumn storlekarna källa och mottagare. | Kontrol lera storleken på kolumnerna källa och mottagare. Kontakta Azure SQL-supporten om du vill ha mer hjälp. |
+    | Om fel meddelandet innehåller strängen "InvalidOperationException", orsakas det vanligt vis av ogiltiga indata. | För att identifiera vilken rad som har påträffat problemet aktiverar du fel tolerans funktionen på kopierings aktiviteten, som kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance). |
 
 
-### <a name="error-code--sqlunauthorizedaccess"></a>Felkod: SqlUnauthorizedAccess
+### <a name="error-code-sqlunauthorizedaccess"></a>Felkod: SqlUnauthorizedAccess
 
 - **Meddelande**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
@@ -272,7 +247,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: kontrol lera att inloggnings kontot har tillräcklig behörighet för att få åtkomst till SQL-databasen.
 
 
-### <a name="error-code--sqlopenconnectiontimeout"></a>Felkod: SqlOpenConnectionTimeout
+### <a name="error-code-sqlopenconnectiontimeout"></a>Felkod: SqlOpenConnectionTimeout
 
 - **Meddelande**: `Open connection to database timeout after '%timeoutValue;' seconds.`
 
@@ -281,7 +256,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: försök utföra åtgärden igen för att uppdatera anslutnings strängen för den länkade tjänsten med ett större timeout-värde för anslutningen.
 
 
-### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Felkod: SqlAutoCreateTableTypeMapFailed
+### <a name="error-code-sqlautocreatetabletypemapfailed"></a>Felkod: SqlAutoCreateTableTypeMapFailed
 
 - **Meddelande**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
@@ -290,7 +265,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: uppdatera kolumn typen i *mappningar* eller skapa mottagar tabellen manuellt på mål servern.
 
 
-### <a name="error-code--sqldatatypenotsupported"></a>Felkod: SqlDataTypeNotSupported
+### <a name="error-code-sqldatatypenotsupported"></a>Felkod: SqlDataTypeNotSupported
 
 - **Meddelande**: `A database operation failed. Check the SQL errors.`
 
@@ -303,7 +278,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: uppdatera motsvarande kolumn typ till *datetime2* -typen i tabellen Sink.
 
 
-### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Felkod: SqlInvalidDbStoredProcedure
+### <a name="error-code-sqlinvaliddbstoredprocedure"></a>Felkod: SqlInvalidDbStoredProcedure
 
 - **Meddelande**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
@@ -312,7 +287,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: verifiera den lagrade proceduren med hjälp av SQL-verktyg. Se till att den lagrade proceduren kan returnera data.
 
 
-### <a name="error-code--sqlinvaliddbquerystring"></a>Felkod: SqlInvalidDbQueryString
+### <a name="error-code-sqlinvaliddbquerystring"></a>Felkod: SqlInvalidDbQueryString
 
 - **Meddelande**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
 
@@ -321,7 +296,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: validera SQL-frågan med hjälp av SQL-verktyg. Se till att frågan kan returnera data.
 
 
-### <a name="error-code--sqlinvalidcolumnname"></a>Felkod: SqlInvalidColumnName
+### <a name="error-code-sqlinvalidcolumnname"></a>Felkod: SqlInvalidColumnName
 
 - **Meddelande**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
 
@@ -330,7 +305,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: verifiera kolumnen i frågan, *strukturen* i data uppsättningen och *mappningar* i aktiviteten.
 
 
-### <a name="error-code--sqlbatchwritetimeout"></a>Felkod: SqlBatchWriteTimeout
+### <a name="error-code-sqlbatchwritetimeout"></a>Felkod: SqlBatchWriteTimeout
 
 - **Meddelande**: `Timeouts in SQL write operation.`
 
@@ -339,7 +314,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: försök igen. Kontakta Azure SQL-supporten om problemet kvarstår.
 
 
-### <a name="error-code--sqlbatchwritetransactionfailed"></a>Felkod: SqlBatchWriteTransactionFailed
+### <a name="error-code-sqlbatchwritetransactionfailed"></a>Felkod: SqlBatchWriteTransactionFailed
 
 - **Meddelande**: `SQL transaction commits failed.`
 
@@ -352,7 +327,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: försök utföra aktiviteten igen och granska måtten på SQL Database-sidan.
 
 
-### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Felkod: SqlBulkCopyInvalidColumnLength
+### <a name="error-code-sqlbulkcopyinvalidcolumnlength"></a>Felkod: SqlBulkCopyInvalidColumnLength
 
 - **Meddelande**: `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
@@ -361,7 +336,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Aktivera fel tolerans funktionen på kopierings aktiviteten för att identifiera vilken rad som har påträffat problemet. Detta kan dirigera om problematiska rader till lagringen för ytterligare undersökning. Mer information finns i [fel tolerans för kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
 
 
-### <a name="error-code--sqlconnectionisclosed"></a>Felkod: SqlConnectionIsClosed
+### <a name="error-code-sqlconnectionisclosed"></a>Felkod: SqlConnectionIsClosed
 
 - **Meddelande**: `The connection is closed by SQL Database.`
 
@@ -480,7 +455,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
-### <a name="error-code--azuretableduplicatecolumnsfromsource"></a>Felkod: AzureTableDuplicateColumnsFromSource
+### <a name="error-code-azuretableduplicatecolumnsfromsource"></a>Felkod: AzureTableDuplicateColumnsFromSource
 
 - **Meddelande**: `Duplicate columns with same name '%name;' are detected from source. This is NOT supported by Azure Table Storage sink.`
 
@@ -493,18 +468,18 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="db2"></a>DB2
 
-### <a name="error-code--db2driverrunfailed"></a>Felkod: DB2DriverRunFailed
+### <a name="error-code-db2driverrunfailed"></a>Felkod: DB2DriverRunFailed
 
 - **Meddelande**: `Error thrown from driver. Sql code: '%code;'`
 
-- **Orsak**: om fel meddelandet innehåller STRÄNGEN "SQLSTATE = 51002 SQLCODE =-805" följer du tipset i [Kopiera data från DB2 med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
+- **Orsak**: om fel meddelandet innehåller STRÄNGEN "SQLSTATE = 51002 SQLCODE =-805" följer du "Tip" i [Kopiera data från DB2 med hjälp av Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
 
 - **Rekommendation**: försök att ange "NULLID" i `packageCollection`  egenskapen.
 
 
 ## <a name="delimited-text-format"></a>Avgränsat textformat
 
-### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>Felkod: DelimitedTextColumnNameNotAllowNull
+### <a name="error-code-delimitedtextcolumnnamenotallownull"></a>Felkod: DelimitedTextColumnNameNotAllowNull
 
 - **Meddelande**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
@@ -513,26 +488,22 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: kontrol lera den första raden och korrigera värdet om det är tomt.
 
 
-### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Felkod: DelimitedTextMoreColumnsThanDefined
+### <a name="error-code-delimitedtextmorecolumnsthandefined"></a>Felkod: DelimitedTextMoreColumnsThanDefined
 
 - **Meddelande**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %expectedColumnCount;.`
 
-- **Orsak**: den problematiska radens kolumn antal är större än den första radens kolumn antal. Det kan ha orsakats av ett data problem eller felaktiga inställningar för kolumn avgränsare eller citat tecken.
+- **Orsaker och rekommendationer**: olika orsaker kan leda till det här felet. Kontrol lera nedan för möjlig orsaks analys och relaterad rekommendation.
 
-- **Rekommendation**: Hämta rad antalet från fel meddelandet, kontrol lera radens kolumn och korrigera data.
-
-- **Orsak**: om det förväntade kolumn antalet är "1" i ett fel meddelande kan du ha angett fel komprimerings-eller format inställningar, vilket orsakade Data Factory att parsa filerna felaktigt.
-
-- **Rekommendation**: kontrol lera format inställningarna för att se till att de matchar källfilerna.
-
-- **Orsak**: om din källa är en mapp kan filerna i den angivna mappen ha ett annat schema.
-
-- **Rekommendation**: kontrol lera att filerna i den angivna mappen har ett identiskt schema.
+  | Orsaka analys                                               | Rekommendation                                               |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | Antalet felaktiga rader i kolumnen är större än den första radens kolumn antal. Det kan ha orsakats av ett data problem eller felaktiga inställningar för kolumn avgränsare eller citat tecken. | Hämta rad antalet från fel meddelandet, kontrol lera radens kolumn och korrigera data. |
+  | Om det förväntade kolumn antalet är "1" i ett fel meddelande kan du ha angett fel komprimerings-eller format inställningar, vilket orsakade Data Factory att parsa filerna felaktigt. | Kontrol lera format inställningarna för att se till att de matchar källfilerna. |
+  | Om din källa är en mapp kan filerna i den angivna mappen ha ett annat schema. | Kontrol lera att filerna i den angivna mappen har ett identiskt schema. |
 
 
 ## <a name="dynamics-365-common-data-service-and-dynamics-crm"></a>Dynamics 365, Common Data Service och Dynamics CRM
 
-### <a name="error-code--dynamicscreateserviceclienterror"></a>Felkod: DynamicsCreateServiceClientError
+### <a name="error-code-dynamicscreateserviceclienterror"></a>Felkod: DynamicsCreateServiceClientError
 
 - **Meddelande**: `This is a transient issue on Dynamics server side. Try to rerun the pipeline.`
 
@@ -550,7 +521,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Lägg till kolumnerna manuellt på fliken mappning.
 
 
-### <a name="error-code--dynamicsmissingtargetformultitargetlookupfield"></a>Felkod: DynamicsMissingTargetForMultiTargetLookupField
+### <a name="error-code-dynamicsmissingtargetformultitargetlookupfield"></a>Felkod: DynamicsMissingTargetForMultiTargetLookupField
 
 - **Meddelande**: `Cannot find the target column for multi-target lookup field: '%fieldName;'.`
 
@@ -561,7 +532,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
   2. Lägg till mål kolumnen i kolumn mappningen. Se till att kolumnen Sink är i formatet *{FieldName} @EntityReference*.
 
 
-### <a name="error-code--dynamicsinvalidtargetformultitargetlookupfield"></a>Felkod: DynamicsInvalidTargetForMultiTargetLookupField
+### <a name="error-code-dynamicsinvalidtargetformultitargetlookupfield"></a>Felkod: DynamicsInvalidTargetForMultiTargetLookupField
 
 - **Meddelande**: `The provided target: '%targetName;' is not a valid target of field: '%fieldName;'. Valid targets are: '%validTargetNames;'`
 
@@ -570,7 +541,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Ange ett giltigt entitetsnamn för uppslags fältet för flera mål.
 
 
-### <a name="error-code--dynamicsinvalidtypeformultitargetlookupfield"></a>Felkod: DynamicsInvalidTypeForMultiTargetLookupField
+### <a name="error-code-dynamicsinvalidtypeformultitargetlookupfield"></a>Felkod: DynamicsInvalidTypeForMultiTargetLookupField
 
 - **Meddelande**: `The provided target type is not a valid string. Field: '%fieldName;'.`
 
@@ -579,18 +550,18 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Ange en giltig sträng i kolumnen för söknings mål i flera mål.
 
 
-### <a name="error-code--dynamicsfailedtorequetserver"></a>Felkod: DynamicsFailedToRequetServer
+### <a name="error-code-dynamicsfailedtorequetserver"></a>Felkod: DynamicsFailedToRequetServer
 
 - **Meddelande**: `The Dynamics server or the network is experiencing issues. Check network connectivity or check Dynamics server log for more details.`
 
 - **Orsak**: Dynamics-servern är instabil eller otillgänglig, eller så har nätverket problem.
 
 - **Rekommendation**: kontrol lera nätverks anslutningen eller kontrol lera i Dynamics Server-loggen om du vill ha mer information. Kontakta Dynamics support om du vill ha mer hjälp.
-    
+  
 
 ## <a name="ftp"></a>FTP
 
-### <a name="error-code--ftpfailedtoconnecttoftpserver"></a>Felkod: FtpFailedToConnectToFtpServer
+### <a name="error-code-ftpfailedtoconnecttoftpserver"></a>Felkod: FtpFailedToConnectToFtpServer
 
 - **Meddelande**: `Failed to connect to FTP server. Please make sure the provided server information is correct, and try again.`
 
@@ -601,7 +572,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="http"></a>HTTP
 
-### <a name="error-code--httpfilefailedtoread"></a>Felkod: HttpFileFailedToRead
+### <a name="error-code-httpfilefailedtoread"></a>Felkod: HttpFileFailedToRead
 
 - **Meddelande**: `Failed to read data from http server. Check the error from http server：%message;`
 
@@ -627,31 +598,20 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="orc-format"></a>ORC-format
 
-### <a name="error-code--orcjavainvocationexception"></a>Felkod: OrcJavaInvocationException
+### <a name="error-code-orcjavainvocationexception"></a>Felkod: OrcJavaInvocationException
 
 - **Meddelande**: `An error occurred when invoking Java, message: %javaException;.`
+- **Orsaker och rekommendationer**: olika orsaker kan leda till det här felet. Kontrol lera nedan för möjlig orsaks analys och relaterad rekommendation.
 
-- **Orsak**: när fel meddelandet innehåller strängarna "Java. lang. OutOfMemory", "" Java heap Space "och" doubleCapacity ", är det vanligt vis ett minnes hanterings problem i en gammal version av integration Runtime.
+    | Orsaka analys                                               | Rekommendation                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | När fel meddelandet innehåller strängarna "Java. lang. OutOfMemory", "Java heap Space" och "doubleCapacity", är det vanligt vis ett minnes hanterings problem i en gammal version av integration Runtime. | Om du använder egen värd Integration Runtime rekommenderar vi att du uppgraderar till den senaste versionen. |
+    | När fel meddelandet innehåller strängen "Java. lang. OutOfMemory" har integrerings körningen inte tillräckligt med resurser för att bearbeta filerna. | Begränsa samtidiga körningar i integration Runtime. För IR med egen värd skalar du upp till en kraftfull dator med minne som är lika med eller större än 8 GB. |
+    |När fel meddelandet innehåller strängen "NullPointerReference" kan orsaken vara ett tillfälligt fel. | Försök att utföra åtgärden igen. Kontakta supporten om problemet kvarstår. |
+    | När fel meddelandet innehåller strängen "BufferOverflowException" kan orsaken vara ett tillfälligt fel. | Försök att utföra åtgärden igen. Kontakta supporten om problemet kvarstår. |
+    | När fel meddelandet innehåller strängen "Java. lang. ClassCastException:org. apache. Hadoop. Hive. serde2. io. HiveCharWritable kan inte omvandlas till org. apache. Hadoop. io. text", orsaken kan vara ett typ konverterings problem i Java Runtime. Det innebär vanligt vis att källdata inte kan hanteras korrekt i Java Runtime. | Detta är ett data problem. Försök att använda en sträng i stället för char eller varchar i ORC format data. |
 
-- **Rekommendation**: om du använder integration runtime med egen värd, rekommenderar vi att du uppgraderar till den senaste versionen.
-
-- **Orsak**: när fel meddelandet innehåller strängen "Java. lang. OutOfMemory" har integrerings körningen inte tillräckligt med resurser för att bearbeta filerna.
-
-- **Rekommendation**: begränsa samtidiga körningar i integration Runtime. För IR med egen värd skalar du upp till en kraftfull dator med minne som är lika med eller större än 8 GB.
-
-- **Orsak**: när fel meddelandet innehåller strängen "NullPointerReference" kan orsaken vara ett tillfälligt fel.
-
-- **Rekommendation**: försök igen. Kontakta supporten om problemet kvarstår.
-
-- **Orsak**: när fel meddelandet innehåller strängen "BufferOverflowException" kan orsaken vara ett tillfälligt fel.
-
-- **Rekommendation**: försök igen. Kontakta supporten om problemet kvarstår.
-
-- **Orsak**: när fel meddelandet innehåller strängen "Java. lang. ClassCastException:org. apache. Hadoop. Hive. serde2. io. HiveCharWritable kan inte omvandlas till org. apache. Hadoop. io. text" orsaken kan vara ett typ konverterings problem i Java Runtime. Det innebär vanligt vis att källdata inte kan hanteras korrekt i Java Runtime.
-
-- **Rekommendation**: Detta är ett data problem. Försök att använda en sträng i stället för char eller varchar i ORC format data.
-
-### <a name="error-code--orcdatetimeexceedlimit"></a>Felkod: OrcDateTimeExceedLimit
+### <a name="error-code-orcdatetimeexceedlimit"></a>Felkod: OrcDateTimeExceedLimit
 
 - **Meddelande**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
 
@@ -662,24 +622,19 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="parquet-format"></a>Parquet-format
 
-### <a name="error-code--parquetjavainvocationexception"></a>Felkod: ParquetJavaInvocationException
+### <a name="error-code-parquetjavainvocationexception"></a>Felkod: ParquetJavaInvocationException
 
 - **Meddelande**: `An error occurred when invoking java, message: %javaException;.`
 
-- **Orsak**: när fel meddelandet innehåller strängarna "Java. lang. OutOfMemory", "" Java heap Space "och" doubleCapacity ", är det vanligt vis ett minnes hanterings problem i en gammal version av integration Runtime.
+- **Orsaker och rekommendationer**: olika orsaker kan leda till det här felet. Kontrol lera nedan för möjlig orsaks analys och relaterad rekommendation.
 
-- **Rekommendation**: om du använder IR med egen värd och versionen är tidigare än 3.20.7159.1, rekommenderar vi att du uppgraderar till den senaste versionen.
+    | Orsaka analys                                               | Rekommendation                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | När fel meddelandet innehåller strängarna "Java. lang. OutOfMemory", "Java heap Space" och "doubleCapacity", är det vanligt vis ett minnes hanterings problem i en gammal version av Integration Runtime. | Om du använder IR med egen värd och versionen är tidigare än 3.20.7159.1, rekommenderar vi att du uppgraderar till den senaste versionen. |
+    | När fel meddelandet innehåller strängen "Java. lang. OutOfMemory" har integrerings körningen inte tillräckligt med resurser för att bearbeta filerna. | Begränsa samtidiga körningar i integration Runtime. För IR med egen värd skalar du upp till en kraftfull dator med minne som är lika med eller större än 8 GB. |
+    | När fel meddelandet innehåller strängen "NullPointerReference" kan det vara ett tillfälligt fel. | Försök att utföra åtgärden igen. Kontakta supporten om problemet kvarstår. |
 
-- **Orsak**: när fel meddelandet innehåller strängen "Java. lang. OutOfMemory" har integrerings körningen inte tillräckligt med resurser för att bearbeta filerna.
-
-- **Rekommendation**: begränsa samtidiga körningar i integration Runtime. För IR med egen värd skalar du upp till en kraftfull dator med minne som är lika med eller större än 8 GB.
-
-- **Orsak**: när fel meddelandet innehåller strängen "NullPointerReference" kan det vara ett tillfälligt fel.
-
-- **Rekommendation**: försök igen. Kontakta supporten om problemet kvarstår.
-
-
-### <a name="error-code--parquetinvalidfile"></a>Felkod: ParquetInvalidFile
+### <a name="error-code-parquetinvalidfile"></a>Felkod: ParquetInvalidFile
 
 - **Meddelande**: `File is not a valid Parquet file.`
 
@@ -688,7 +643,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: kontrol lera om indata är en giltig Parquet-fil.
 
 
-### <a name="error-code--parquetnotsupportedtype"></a>Felkod: ParquetNotSupportedType
+### <a name="error-code-parquetnotsupportedtype"></a>Felkod: ParquetNotSupportedType
 
 - **Meddelande**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
@@ -697,7 +652,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: dubbelt kontrol lera källdata genom att gå till [fil format och komprimerings-codecar som stöds genom kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
 
 
-### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Felkod: ParquetMissedDecimalPrecisionScale
+### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Felkod: ParquetMissedDecimalPrecisionScale
 
 - **Meddelande**: `Decimal Precision or Scale information is not found in schema for column: %column;.`
 
@@ -706,7 +661,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: källan returnerar inte rätt precisions-och skalnings information. Kontrol lera informationen i ärende kolumnen.
 
 
-### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Felkod: ParquetInvalidDecimalPrecisionScale
+### <a name="error-code-parquetinvaliddecimalprecisionscale"></a>Felkod: ParquetInvalidDecimalPrecisionScale
 
 - **Meddelande**: `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
 
@@ -715,7 +670,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: mer precision och skalning finns i kolumnen ärende.
 
 
-### <a name="error-code--parquetcolumnnotfound"></a>Felkod: ParquetColumnNotFound
+### <a name="error-code-parquetcolumnnotfound"></a>Felkod: ParquetColumnNotFound
 
 - **Meddelande**: `Column %column; does not exist in Parquet file.`
 
@@ -724,7 +679,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: kontrol lera mappningarna i aktiviteten. Kontrol lera att käll kolumnen kan mappas till rätt Sink-kolumn.
 
 
-### <a name="error-code--parquetinvaliddataformat"></a>Felkod: ParquetInvalidDataFormat
+### <a name="error-code-parquetinvaliddataformat"></a>Felkod: ParquetInvalidDataFormat
 
 - **Meddelande**: `Incorrect format of %srcValue; for converting to %dstType;.`
 
@@ -733,7 +688,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: dubbelklicka på källdata eller ange rätt datatyp för den här kolumnen i kolumn mappningen kopiera aktivitet. Mer information finns i [fil format och komprimerings-codecar som stöds genom kopierings aktivitet i Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
 
 
-### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Felkod: ParquetDataCountNotMatchColumnCount
+### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Felkod: ParquetDataCountNotMatchColumnCount
 
 - **Meddelande**: `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
 
@@ -742,7 +697,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: dubbel kontroll för att se till att käll kolumnernas antal är samma som kolumnen Sink i mappningen.
 
 
-### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>Felkod: ParquetDataTypeNotMatchColumnType
+### <a name="error-code-parquetdatatypenotmatchcolumntype"></a>Felkod: ParquetDataTypeNotMatchColumnType
 
 - **Meddelande**: `The data type %srcType; is not match given column type %dstType; at column '%columnIndex;'.`
 
@@ -751,7 +706,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Ange en korrekt typ i mappning. Sink.
 
 
-### <a name="error-code--parquetbridgeinvaliddata"></a>Felkod: ParquetBridgeInvalidData
+### <a name="error-code-parquetbridgeinvaliddata"></a>Felkod: ParquetBridgeInvalidData
 
 - **Meddelande**: `%message;`
 
@@ -760,7 +715,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: försök igen. Kontakta oss om problemet kvarstår.
 
 
-### <a name="error-code--parquetunsupportedinterpretation"></a>Felkod: ParquetUnsupportedInterpretation
+### <a name="error-code-parquetunsupportedinterpretation"></a>Felkod: ParquetUnsupportedInterpretation
 
 - **Meddelande**: `The given interpretation '%interpretation;' of Parquet format is not supported.`
 
@@ -769,7 +724,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: ' ParquetInterpretFor ' får inte vara ' sparkSql '.
 
 
-### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Felkod: ParquetUnsupportFileLevelCompressionOption
+### <a name="error-code-parquetunsupportfilelevelcompressionoption"></a>Felkod: ParquetUnsupportFileLevelCompressionOption
 
 - **Meddelande**: `File level compression is not supported for Parquet.`
 
@@ -778,7 +733,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: ta bort CompressionType i nytto lasten.
 
 
-### <a name="error-code--usererrorjniexception"></a>Felkod: UserErrorJniException
+### <a name="error-code-usererrorjniexception"></a>Felkod: UserErrorJniException
 
 - **Meddelande**: `Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
 
@@ -818,7 +773,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="rest"></a>REST
 
-### <a name="error-code--restsinkcallfailed"></a>Felkod: RestSinkCallFailed
+### <a name="error-code-restsinkcallfailed"></a>Felkod: RestSinkCallFailed
 
 - **Meddelande**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
 
@@ -850,7 +805,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="sftp"></a>SFTP
 
-#### <a name="error-code--sftpoperationfail"></a>Felkod: SftpOperationFail
+#### <a name="error-code-sftpoperationfail"></a>Felkod: SftpOperationFail
 
 - **Meddelande**: `Failed to '%operation;'. Check detailed error from SFTP.`
 
@@ -859,7 +814,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: kontrol lera fel informationen från SFTP.
 
 
-### <a name="error-code--sftprenameoperationfail"></a>Felkod: SftpRenameOperationFail
+### <a name="error-code-sftprenameoperationfail"></a>Felkod: SftpRenameOperationFail
 
 - **Meddelande**: `Failed to rename the temp file. Your SFTP server doesn't support renaming temp file, set "useTempFileRename" as false in copy sink to disable uploading to temp file.`
 
@@ -868,7 +823,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Ange "useTempFileRename" som falskt i kopians Sink för att inaktivera överföring till den temporära filen.
 
 
-### <a name="error-code--sftpinvalidsftpcredential"></a>Felkod: SftpInvalidSftpCredential
+### <a name="error-code-sftpinvalidsftpcredential"></a>Felkod: SftpInvalidSftpCredential
 
 - **Meddelande**: `Invalid SFTP credential provided for '%type;' authentication type.`
 
@@ -932,15 +887,15 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Lösning**: du kan kontrol lera om kolumnen "AccMngr" finns genom att dubbelklicka på data uppsättnings konfigurationen genom att mappa kolumnen mål data uppsättning.
 
 
-### <a name="error-code--sftpfailedtoconnecttosftpserver"></a>Felkod: SftpFailedToConnectToSftpServer
+### <a name="error-code-sftpfailedtoconnecttosftpserver"></a>Felkod: SftpFailedToConnectToSftpServer
 
 - **Meddelande**: `Failed to connect to SFTP server '%server;'.`
 
-- **Orsak**: om fel meddelandet innehåller strängen "Läs åtgärd för socket nådde tids gränsen efter 30000 millisekunder" är en möjlig orsak att en felaktig länkad tjänst typ används för SFTP-servern. Du kanske t. ex. använder den länkade FTP-tjänsten för att ansluta till SFTP-servern.
+- **Orsak**: om fel meddelandet innehåller strängen "Läs åtgärd för socket nådde tids gränsen efter 30 000 millisekunder", kan en möjlig orsak vara att en felaktig länkad tjänst typ används för SFTP-servern. Du kanske t. ex. använder den länkade FTP-tjänsten för att ansluta till SFTP-servern.
 
 - **Rekommendation**: kontrol lera mål serverns port. Som standard använder SFTP port 22.
 
-- **Orsak**: om fel meddelandet innehåller strängen "Server svaret innehåller inte SSH-protokoll identifiering" är en möjlig orsak att SFTP-servern har begränsat anslutningen. Data Factory skapar flera anslutningar för att ladda ned från SFTP-servern parallellt, och ibland kommer den att drabbas av SFTP-server-begränsning. Vanligt vis returnerar olika servrar olika fel när de drabbas av begränsning.
+- **Orsak**: om fel meddelandet innehåller strängen "Server svaret innehåller inte SSH-protokoll-ID", en möjlig orsak är att SFTP-servern har begränsat anslutningen. Data Factory skapar flera anslutningar för att ladda ned från SFTP-servern parallellt, och ibland kommer den att drabbas av SFTP-server-begränsning. Vanligt vis returnerar olika servrar olika fel när de drabbas av begränsning.
 
 - **Rekommendation**:  
 
@@ -953,7 +908,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online-lista
 
-### <a name="error-code--sharepointonlineauthfailed"></a>Felkod: SharePointOnlineAuthFailed
+### <a name="error-code-sharepointonlineauthfailed"></a>Felkod: SharePointOnlineAuthFailed
 
 - **Meddelande**: `The access token generated failed, status code: %code;, error message: %message;.`
 
@@ -964,7 +919,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="xml-format"></a>XML-format
 
-### <a name="error-code--xmlsinknotsupported"></a>Felkod: XmlSinkNotSupported
+### <a name="error-code-xmlsinknotsupported"></a>Felkod: XmlSinkNotSupported
 
 - **Meddelande**: `Write data in XML format is not supported yet, choose a different format!`
 
@@ -973,7 +928,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Använd en data uppsättning i ett annat format än den data uppsättningens data uppsättning.
 
 
-### <a name="error-code--xmlattributecolumnnameconflict"></a>Felkod: XmlAttributeColumnNameConflict
+### <a name="error-code-xmlattributecolumnnameconflict"></a>Felkod: XmlAttributeColumnNameConflict
 
 - **Meddelande**: `Column names %attrNames;' for attributes of element '%element;' conflict with that for corresponding child elements, and the attribute prefix used is '%prefix;'.`
 
@@ -982,7 +937,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Ange ett annat värde för egenskapen "attributePrefix".
 
 
-### <a name="error-code--xmlvaluecolumnnameconflict"></a>Felkod: XmlValueColumnNameConflict
+### <a name="error-code-xmlvaluecolumnnameconflict"></a>Felkod: XmlValueColumnNameConflict
 
 - **Meddelande**: `Column name for the value of element '%element;' is '%columnName;' and it conflicts with the child element having the same name.`
 
@@ -991,7 +946,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: Ange ett annat värde för egenskapen "valueColumn".
 
 
-### <a name="error-code--xmlinvalid"></a>Felkod: XmlInvalid
+### <a name="error-code-xmlinvalid"></a>Felkod: XmlInvalid
 
 - **Meddelande**: `Input XML file '%file;' is invalid with parsing error '%error;'.`
 
@@ -1002,7 +957,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 
 ## <a name="general-copy-activity-error"></a>Fel vid allmän kopierings aktivitet
 
-### <a name="error-code--jrenotfound"></a>Felkod: JreNotFound
+### <a name="error-code-jrenotfound"></a>Felkod: JreNotFound
 
 - **Meddelande**: `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
 
@@ -1011,7 +966,7 @@ Den här artikeln visar vanliga sätt att felsöka problem med Azure Data Factor
 - **Rekommendation**: kontrol lera din integration runtime-miljö, se [Använd integration runtime med egen värd](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime).
 
 
-### <a name="error-code--wildcardpathsinknotsupported"></a>Felkod: WildcardPathSinkNotSupported
+### <a name="error-code-wildcardpathsinknotsupported"></a>Felkod: WildcardPathSinkNotSupported
 
 - **Meddelande**: `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
 

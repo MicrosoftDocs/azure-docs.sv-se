@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 6ea796fb2ec038a03595d37d903fe8ee3ce904db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070277"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979172"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Felsökning av ParallelRunStep
 
@@ -171,7 +171,16 @@ När du behöver en fullständig förståelse för hur varje nod kör Poäng skr
     - Det totala antalet objekt, antalet behandlade objekt och antalet misslyckade objekt.
     - Tid för start tid, varaktighet, bearbetnings tid och körnings metod.
 
-Du kan också hitta information om resursanvändningen för processerna för varje arbets tagare. Den här informationen är i CSV-format och finns på `~/logs/sys/perf/<ip_address>/node_resource_usage.csv` . Information om varje process finns tillgänglig under `~logs/sys/perf/<ip_address>/processes_resource_usage.csv` .
+Du kan också visa resultaten av periodiska kontroller av resursanvändningen för varje nod. Loggfilerna och installationsfilerna finns i följande mapp:
+
+- `~/logs/perf`: Ange `--resource_monitor_interval` om du vill ändra kontroll intervallet i sekunder. Standard intervallet är `600` cirka 10 minuter. Om du vill stoppa övervakningen ställer du in värdet på `0` . Varje `<ip_address>` mapp innehåller:
+
+    - `os/`: Information om alla processer som körs i noden. En kontroll kör ett operativ system kommando och sparar resultatet i en fil. I Linux är kommandot `ps` . Använd i Windows `tasklist` .
+        - `%Y%m%d%H`: Namnet på den underordnade mappen är tiden till timmen.
+            - `processes_%M`: Filen slutar med minuten för kontroll tiden.
+    - `node_disk_usage.csv`: Detaljerad disk användning för noden.
+    - `node_resource_usage.csv`: Översikt över resursanvändning för noden.
+    - `processes_resource_usage.csv`: Översikt över resursanvändning för varje process.
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Hur gör jag för att logg från mitt användar skript från en fjärran sluten kontext?
 
@@ -233,25 +242,25 @@ Användaren kan skicka indata-datauppsättningar med autentisering av tjänstens
 
 ```python
 service_principal = ServicePrincipalAuthentication(
-    tenant_id="**_",
-    service_principal_id="_*_",
-    service_principal_password="_*_")
+    tenant_id="***",
+    service_principal_id="***",
+    service_principal_password="***")
  
 ws = Workspace(
-    subscription_id="_*_",
-    resource_group="_*_",
-    workspace_name="_*_",
+    subscription_id="***",
+    resource_group="***",
+    workspace_name="***",
     auth=service_principal
     )
  
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '_*_datastore-name_*_') 
-ds = Dataset.File.from_files(default_blob_store, '_*path**_')
-registered_ds = ds.register(ws, '_*_dataset-name_*_', create_new_version=True)
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+ds = Dataset.File.from_files(default_blob_store, '**path***')
+registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-_ Se dessa [Jupyter-anteckningsböcker som demonstrerar Azure Machine Learning pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+* Se dessa [Jupyter-anteckningsböcker som demonstrerar Azure Machine Learning pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 * Se SDK-referensen för hjälp med paketet [azureml-pipeline-steg](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) . Visa referens [dokumentation](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py) för ParallelRunStep-klassen.
 

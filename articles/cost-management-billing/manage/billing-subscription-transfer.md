@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601540"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979441"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Överföra faktureringsägarskap för en Azure-prenumeration till ett annat konto
 
@@ -80,7 +80,7 @@ Endast en överföringsbegäran i taget är aktiv. En överföringsbegäran är 
 Så här avbryter du en överföringsbegäran:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Gå till **Prenumerationer** > Välj den prenumeration som du har skickat en överföringsbegäran för > Välj **Överför faktureringsägarskap**.
+1. Gå till **prenumerationer** > Välj den prenumeration som du skickade en överföringsbegäran för och välj sedan **överför fakturerings ägande**.
 1. Längst ned på sidan väljer du **Avbryt överföringsbegäran**.
 
 :::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Exempel som visar fönstret Överför faktureringsägarskap med alternativet Avbryt överföringsbegäran" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
@@ -88,6 +88,20 @@ Så här avbryter du en överföringsbegäran:
 ## <a name="troubleshooting"></a>Felsökning
 
 Använd följande felsökningsinformation om det uppstår problem med överföring av prenumerationer.
+
+### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Den ursprungliga Azure-prenumerationens fakturerings ägare lämnar din organisation
+
+Det är möjligt att den ursprungliga fakturerings ägaren som skapade ett Azure-konto och en Azure-prenumeration lämnar din organisation. Om denna situation inträffar är användar identiteten inte längre i organisationens Azure Active Directory. Sedan har Azure-prenumerationen ingen fakturerings ägare. Den här situationen förhindrar att vem som helst utför fakturerings åtgärder för kontot, inklusive visning och betalning av fakturor. Prenumerationen kan hamna i förfallet tillstånd. Slutligen kan prenumerationen inaktive ras på grund av utebliven betalning. Slutligen kan prenumerationen tas bort och den påverkar alla tjänster som körs i prenumerationen.
+
+När en prenumeration inte längre har en giltig fakturerings ägare, skickar Azure ett e-postmeddelande till andra fakturerings ägare, tjänst administratörer, samadministratörer och prenumerations ägare som informerar dem i situationen och ger dem en länk för att acceptera prenumerationens fakturerings ägarskap. En av användarna kan välja länken för att acceptera fakturerings ägande. Mer information om fakturerings roller finns i [fakturerings roller](understand-mca-roles.md) och [klassiska roller och Azure RBAC-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+
+Här är ett exempel på hur e-postmeddelandet ser ut.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-email.png" alt-text="Skärm bild som visar ett exempel på ett e-postmeddelande för att acceptera fakturerings ägande." lightbox="./media/billing-subscription-transfer/orphaned-subscription-email.png" :::
+
+Dessutom visar Azure en banderoll i prenumerationens informations fönster i Azure Portal till fakturerings ägare, tjänst administratörer, samadministratörer och prenumerations ägare. Välj länken i banderollen för att acceptera fakturerings ägande.
+
+:::image type="content" source="./media/billing-subscription-transfer/orphaned-subscription-example.png" alt-text="Skärm bild som visar ett exempel på en prenumeration utan en giltig fakturerings ägare." lightbox="./media/billing-subscription-transfer/orphaned-subscription-example.png" :::
 
 ### <a name="the-transfer-subscription-option-is-unavailable"></a>Alternativet ”Överför prenumeration” är inte tillgängligt
 

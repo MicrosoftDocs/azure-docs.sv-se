@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 0eb7dec2fd4ee327905acdea7a07456221bcbd46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 882384b5e57db27cff981f80e790dfd41b624c93
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946002"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980702"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Åtkomst Apache Hadoop garn program loggar på Linux-baserade HDInsight
 
@@ -37,7 +37,7 @@ GARN tids linje server innehåller följande typ av data:
 
 ## <a name="yarn-applications-and-logs"></a>GARN program och loggar
 
-Program loggar (och tillhör ande behållar loggar) är viktiga vid fel sökning av problematiska Hadoop-program. GARN är ett bra ramverk för att samla in, aggregera och lagra program loggar med [logg agg regering](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+Program loggar (och tillhör ande behållar loggar) är viktiga vid fel sökning av problematiska Hadoop-program. GARN är ett bra ramverk för att samla in, aggregera och lagra program loggar med logg agg regering.
 
 Funktionen för insamling av loggar ger åtkomst till program loggar mer deterministisk. Den sammanställer loggar över alla behållare på en arbetsnoden och lagrar dem som en sammanställd loggfil per arbets nod. Loggen lagras i standard fil systemet när ett program har slutförts. Ditt program kan använda hundratals eller tusentals behållare, men loggar för alla behållare som körs på en enda arbetsnoden sammanställs alltid i en enda fil. Så det finns bara 1 logg per arbetsnoden som används av ditt program. Logg agg regering är aktiverat som standard i HDInsight-kluster version 3,0 och senare. Sammanställda loggar finns i standard lagrings utrymmet för klustret. Följande sökväg är HDFS-sökvägen till loggarna:
 

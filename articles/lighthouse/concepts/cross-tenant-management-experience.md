@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 02/02/2021
+ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 41047a35328d4eac370d98a6d660f20e5006a2bb
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b76723c9ea94581561f5bdb04ea1fd8335da77b7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805182"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981093"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -165,6 +165,7 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 Support förfrågningar:
 
 - [Öppna support förfrågningar från **hjälp + support**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) i Azure Portal för delegerade resurser (välja det support avtal som är tillgängligt för det delegerade omfånget)
+- Använd [Azures kvot-API](/rest/api/reserved-vm-instances/quotaapi) för att visa och hantera Azures tjänst kvoter för delegerade kund resurser
 
 ## <a name="current-limitations"></a>Aktuella begränsningar
 

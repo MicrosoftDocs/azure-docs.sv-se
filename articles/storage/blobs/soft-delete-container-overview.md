@@ -6,33 +6,39 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/06/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0c15be86c282451440f9b81d57f17e835559b5ae
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962184"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979115"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Mjuk borttagning för behållare (förhands granskning)
 
-Mjuk borttagning för behållare (för hands version) skyddar dina data från att oavsiktligt eller felaktigt ändras eller tas bort. Om mjuk borttagning av behållare är aktiverat för ett lagrings konto behålls alla borttagna behållare och deras innehåll i Azure Storage under den period som du anger. Under kvarhållningsperioden kan du återställa tidigare borttagna behållare och eventuella blobbar i dem.
+Mjuk borttagning för behållare (för hands version) skyddar dina data från att oavsiktligt eller avsiktligt tas bort. Om mjuk borttagning av behållare är aktiverat för ett lagrings konto behålls alla borttagna behållare och deras innehåll i Azure Storage under den period som du anger. Under kvarhållningsperioden kan du återställa tidigare borttagna behållare. När du återställer en behållare återställs alla blobar i behållaren när den har tagits bort.
 
 För slut punkt till slut punkts skydd för dina BLOB-data rekommenderar Microsoft att du aktiverar följande funktioner för data skydd:
 
-- Mjuk borttagning av behållare, för att skydda mot oavsiktlig borttagning eller överskrivning av en behållare. Information om hur du aktiverar mjuk borttagning av behållare finns i [Aktivera och hantera mjuk borttagning för behållare](soft-delete-container-enable.md).
-- BLOB-mjuk borttagning, för att skydda mot oavsiktlig borttagning eller överskrivning av en enskild blob. Information om hur du aktiverar mjuk borttagning av BLOB finns i [mjuk borttagning för blobbar](soft-delete-blob-overview.md).
+- Behållare för mjuk borttagning, för att återställa en behållare som har tagits bort. Information om hur du aktiverar mjuk borttagning av behållare finns i [Aktivera och hantera mjuk borttagning för behållare](soft-delete-container-enable.md).
 - BLOB-versioner för att automatiskt underhålla tidigare versioner av en blob. När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort. Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
+- BLOB-mjuk borttagning, för att återställa en BLOB eller version som har tagits bort. Information om hur du aktiverar mjuk borttagning av BLOB finns i [Aktivera och hantera mjuk borttagning för blobbar](soft-delete-blob-enable.md).
 
 > [!WARNING]
-> Det går inte att ångra borttagningen av ett lagrings konto. Mjuk borttagning skyddar inte borttagningen av ett lagrings konto. För att förhindra oavsiktlig borttagning av ett lagrings konto konfigurerar du ett **CannotDelete** -lås på lagrings konto resursen. Mer information om hur du låser Azure-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+> Det går inte att ångra borttagningen av ett lagrings konto. Mjuk borttagning skyddar inte borttagningen av ett lagrings konto, utan endast mot borttagning av data objekt i det kontot. Om du vill skydda ett lagrings konto från borttagning konfigurerar du ett **CannotDelete** -lås på lagrings konto resursen. Mer information om hur du låser Azure Resource Manager-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="how-container-soft-delete-works"></a>Så här fungerar mjuk borttagning av behållare
 
 När du aktiverar mjuk borttagning av behållare kan du ange en kvarhållningsperiod för borttagna behållare mellan 1 och 365 dagar. Standard kvarhållningsperioden är 7 dagar. Under kvarhållningsperioden kan du återställa en borttagen behållare genom att anropa åtgärden **ta bort behållare** .
+
+När du återställer en behållare återställs även behållarens blobbar och alla BLOB-versioner. Du kan dock endast använda mjuk borttagning av behållare för att återställa blobbar om själva behållaren har tagits bort. Om du vill återställa en borttagen BLOB när dess överordnade behållare inte har tagits bort, måste du använda blob-version med mjuk borttagning eller BLOB-versioner.
+
+Följande diagram visar hur en borttagen behållare kan återställas när mjuk borttagning av behållare är aktiverat:
+
+:::image type="content" source="media/soft-delete-container-overview/container-soft-delete-diagram.png" alt-text="Diagram över hur en mjuk, borttagen behållare kan återställas":::
 
 När du återställer en behållare kan du återställa den till dess ursprungliga namn om det namnet inte har använts igen. Om det ursprungliga behållar namnet har använts kan du återställa behållaren med ett nytt namn.
 
@@ -42,7 +48,7 @@ Att inaktivera mjuk borttagning av behållare resulterar inte i permanent bortta
 
 ## <a name="about-the-preview"></a>Om för hands versionen
 
-Mjuk borttagning av behållare är tillgänglig i för hands versionen i alla offentliga Azure-regioner.
+Mjuk borttagning av behållare är tillgänglig i för hands versionen i alla Azure-regioner.
 
 > [!IMPORTANT]
 > Förhands granskningen av behållarens mjuka borttagning är endast avsedd för användning utan produktion. Service nivå avtal (service avtal) för produktions tjänster är inte tillgängliga för närvarande.

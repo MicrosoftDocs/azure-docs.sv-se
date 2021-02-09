@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060018"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980583"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Översikt över virtuella nätverks isolering och sekretess
 
@@ -137,6 +137,15 @@ I följande nätverks diagram visas en skyddad Azure Machine Learning arbets yta
 ### <a name="limitations"></a>Begränsningar
 - AKS-kluster måste tillhöra samma VNet som arbets ytan och dess associerade resurser. 
 
+## <a name="optional-enable-public-access"></a>Valfritt: Aktivera offentlig åtkomst
+
+Du kan skydda arbets ytan bakom ett virtuellt nätverk med en privat slut punkt och fortfarande tillåta åtkomst via det offentliga Internet. Den inledande konfigurationen är densamma som för [att skydda arbets ytan och de tillhör ande resurserna](#secure-the-workspace-and-associated-resources). 
+
+När du har säkerställt arbets ytan med en privat länk aktiverar du sedan [offentlig åtkomst](how-to-configure-private-link.md#enable-public-access). Därefter kan du komma åt arbets ytan från både det offentliga Internet och VNet.
+
+### <a name="limitations"></a>Begränsningar
+
+- Om du använder Azure Machine Learning Studio via det offentliga Internet kanske vissa funktioner som designern inte kan komma åt dina data. Det här problemet uppstår när data lagras på en tjänst som skyddas bakom VNet. Till exempel ett Azure Storage konto.
 ## <a name="optional-enable-studio-functionality"></a>Valfritt: Aktivera Studio-funktioner
 
 [Skydda arbets ytan](#secure-the-workspace-and-associated-resources)  >  [Skydda inlärnings miljön](#secure-the-training-environment)  >  [Skydda inferencing-miljön](#secure-the-inferencing-environment)  >  **Aktivera Studio-funktioner**  >  [Konfigurera brand Väggs inställningar](#configure-firewall-settings)

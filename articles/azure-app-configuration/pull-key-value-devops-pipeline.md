@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7bd163781203a277f4c9d6866a156c11e4d5d520
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728099"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979580"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Hämta inställningar till app-konfiguration med Azure-pipeline
 
 Den [Azure App konfigurations](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task) aktiviteten hämtar nyckel värden från appens konfigurations Arkiv och anger dem som Azure pipeline-variabler, som kan användas av efterföljande uppgifter. Den här uppgiften kompletterar den [Azure App push](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) -aktivitet för konfiguration som skickar nyckel värden från en konfigurations fil till konfigurations arkivet för appen. Mer information finns i [push-inställningar för att konfigurera appar med Azure-pipeliner](push-kv-devops-pipeline.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - Konfigurations Arkiv för app – skapa ett kostnads fritt i [Azure Portal](https://portal.azure.com).
@@ -60,7 +60,7 @@ Tilldela den korrekta program konfigurations rollen till den tjänst anslutning 
 
 Det här avsnittet beskriver hur du använder Azure App konfigurations aktivitet i en pipeline för Azure DevOpss build.
 
-1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  . Om du vill bygga pipeline-dokumentation, se  [skapa din första pipeline](/azure/devops/pipelines/create-first-pipeline?view=azure-devops&tabs=net%2Ctfs-2018-2%2Cbrowser).
+1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  . Om du vill bygga pipeline-dokumentation, se  [skapa din första pipeline](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser).
       - Om du skapar en ny pipeline för bygge, klickar du på **ny pipeline** och väljer lagrings platsen för din pipeline. Välj **Visa assistenten** på höger sida av pipelinen och sök efter **Azure App konfigurations** uppgiften.
       - Om du använder en befintlig versions pipeline väljer du **Redigera** för att redigera pipelinen. På fliken **aktiviteter** söker du efter aktiviteten **Azure App konfiguration** .
 1. Konfigurera de nödvändiga parametrarna för uppgiften för att hämta nyckel värden från App Configuration Store. Beskrivningar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
@@ -73,10 +73,10 @@ Det här avsnittet beskriver hur du använder Azure App konfigurations aktivitet
 
 Det här avsnittet beskriver hur du använder Azure App konfigurations aktivitet i en pipeline för Azure DevOps release.
 
-1. Gå till sidan Frisläpp pipeline genom att välja **pipelines**-  >  **versioner**. Mer information om versions pipelinen finns i [versions pipeliner](/azure/devops/pipelines/release?view=azure-devops).
+1. Gå till sidan Frisläpp pipeline genom att välja **pipelines**-  >  **versioner**. Mer information om versions pipelinen finns i [versions pipeliner](/azure/devops/pipelines/release).
 1. Välj en befintlig versions pipeline. Om du inte har en sådan, klickar du på **ny pipeline** för att skapa en ny.
 1. Klicka på knappen **Redigera** i det övre högra hörnet för att redigera lanserings pipelinen.
-1. Välj **scenen** för att lägga till aktiviteten. Mer information om steg finns i [lägga till stadier, beroenden & villkor](/azure/devops/pipelines/release/environments?view=azure-devops).
+1. Välj **scenen** för att lägga till aktiviteten. Mer information om steg finns i [lägga till stadier, beroenden & villkor](/azure/devops/pipelines/release/environments).
 1. Klicka **+** för på "kör på agent" och Lägg sedan till aktiviteten **Azure App konfiguration** på fliken **Lägg till aktiviteter** .
 1. Konfigurera de nödvändiga parametrarna i uppgiften för att hämta nyckel värden från appens konfigurations lager. Beskrivningar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
       - Ange parametern för **Azure-prenumerationen** till namnet på den tjänst anslutning som du skapade i föregående steg.
@@ -111,7 +111,7 @@ Värdet skrivs då till-konsolen.
 
 Om ett oväntat fel inträffar kan fel söknings loggar aktive ras genom att ställa in pipeline-variabeln `system.debug` till `true` .
 
-## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
+## <a name="faq"></a>Vanliga frågor
 
 **Hur gör jag för att skriva min konfiguration från flera nycklar och etiketter?**
 

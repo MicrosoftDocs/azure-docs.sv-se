@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 30b7f1054f7bfee8dc58638791f0b8a424de92a4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226429"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979886"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Självstudie: Logga in användare och anropa ett skyddat API från en blixt WebAssembly-app
 
@@ -102,7 +102,7 @@ Lägg sedan till följande i projektets *. CSPROJ* -fil i netstandard 2.1- **Ite
 
 Ändra sedan koden enligt anvisningarna i följande steg. De här ändringarna lägger till [åtkomsttoken](access-tokens.md) till de utgående förfrågningar som skickas till Microsoft Graph-API: et. Det här mönstret beskrivs i detalj i [ASP.net Core blixt WebAssembly ytterligare säkerhets scenarier](/aspnet/core/blazor/security/webassembly/additional-scenarios).
 
-Börja med att skapa en ny fil med namnet *GraphAuthorizationMessageHandler.cs* med följande kod. Den här hanteraren kommer att vara användare att lägga till en åtkomsttoken för- `User.Read` och- `Mail.Read` omfattningarna till utgående begär anden till Microsoft Graph-API: et.
+Börja med att skapa en ny fil med namnet *GraphAPIAuthorizationMessageHandler.cs* med följande kod. Den här hanteraren kommer att vara användare att lägga till en åtkomsttoken för- `User.Read` och- `Mail.Read` omfattningarna till utgående begär anden till Microsoft Graph-API: et.
 
 ```csharp
 using Microsoft.AspNetCore.Components;
