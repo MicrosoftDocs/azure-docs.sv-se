@@ -4,14 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: ff1041c941a994784c68d779bd96dec9070ce89a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 6d507d31680b25932980bdede2c1252348d84803
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510557"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834205"
 ---
 I den här självstudien får du lära dig hur du skapar ett exempel på IoT Plug and Play enhets program med komponenter, ansluter det till din IoT-hubb och använder Azure IoT Explorer-verktyget för att visa den information som skickas till hubben. Exempel programmet är skrivet i C# och ingår i Azure IoT-enhetens SDK för C#. Ett Solution Builder kan använda Azure IoT Explorer-verktyget för att förstå funktionerna i en IoT Plug and Play-enhet utan att behöva visa någon enhets kod.
+
+I den här kursen får du:
+
+> [!div class="checklist"]
+> * Hämta exempel koden.
+> * Bygg exempel koden.
+> * Kör enhets exempel programmet och kontrol lera att det ansluter till din IoT-hubb.
+> * Granska käll koden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -40,7 +48,7 @@ I den här snabb starten använder du en exempel temperatur styrenhets enhet som
 
 1. I Visual Studio navigerar du till **Project > TemperatureController-egenskaper > Felsök**. Lägg sedan till följande miljövariabler i projektet:
 
-    | Name | Värde |
+    | Namn | Värde |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | – |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

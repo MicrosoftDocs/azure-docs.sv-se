@@ -3,19 +3,19 @@ title: Dokumentation om Azure Application Gateway
 summary: Lär dig hur du skapar programgatewayer. Den här dokumentationen hjälper dig att planera, distribuera och hantera webbtrafik till dina Azure-resurser.
 metadata:
   title: Dokumentation om Azure Application Gateway
-  description: Lär dig att distribuera Azure Firewall, en molnbaserad tjänst för nätverkssäkerhet.
+  description: Lär dig mer om Azure Application Gateway, en belastningsutjämnare för webb trafik som gör att du kan hantera trafik till dina webb program.
   services: application-gateway
   ms.service: application-gateway
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 03/24/2020
-  ms.openlocfilehash: df125820d56aa5c2edda29306c69cef00e012a12
-  ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-  ms.translationtype: HT
+  ms.date: 02/08/2021
+  ms.openlocfilehash: 7493683355ea3be24bf086dab1a968f9f03b1e05
+  ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/10/2021
-  ms.locfileid: "98059542"
+  ms.lasthandoff: 02/08/2021
+  ms.locfileid: "99833260"
 landingContent:
 - title: Läs mer om Application Gateway
   linkLists:

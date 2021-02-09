@@ -4,14 +4,14 @@ description: Lär dig hur du skapar ett AKS-kluster med konfidentiella noder och
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/11/2020
+ms.date: 2/5/2020
 ms.author: amgowda
-ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b6fe8f4fe34799a71d59b7487d96217b4ac6a429
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760647"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833211"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med konfidentiella beräknings noder (DCsv2) med hjälp av Azure CLI (för hands version)
 
@@ -75,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 ### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azures konfidentiella data behandlings funktion registrering på Azure (valfritt men rekommenderas)
-Registrera AKS-ConfidentialComputinAddon på Azure-prenumerationen. Med den här funktionen läggs två daemonsets till som beskrivs i informationen [här](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon):
+Registrera AKS-ConfidentialComputingAddon på Azure-prenumerationen. Med den här funktionen läggs två daemonsets till som beskrivs i informationen [här](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon):
 1. Plugin-program för SGX-drivrutiner
 2. Offert hjälp för SGX-attestering
 
@@ -85,7 +85,7 @@ az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.
 Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list". Den här funktions registreringen utförs bara en gång per prenumeration. Om detta har registrerats tidigare kan du hoppa över steget ovan:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 När statusen visas som registrerad uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot AZ Provider register:
 
@@ -143,12 +143,12 @@ Det här avsnittet förutsätter att du har ett AKS-kluster som kör redan och s
 Låt oss först lägga till funktionen i Azure-prenumerationen
 
 ```azurecli-interactive
-az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
 ```
 Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list". Den här funktions registreringen utförs bara en gång per prenumeration. Om detta har registrerats tidigare kan du hoppa över steget ovan:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputingAddon')].{Name:name,State:properties.state}"
 ```
 När statusen visas som registrerad uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot AZ Provider register:
 

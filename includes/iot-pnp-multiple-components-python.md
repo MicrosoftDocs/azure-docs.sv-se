@@ -4,14 +4,21 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 3a7bcbba99595468aa69d852493308a5a77851d8
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 5e0fa474412815a1ce830267ac2f09830a6353d3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510540"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834198"
 ---
 I den här självstudien får du lära dig hur du skapar ett exempel på IoT Plug and Play enhets program med komponenter, ansluter det till din IoT-hubb och använder Azure IoT Explorer-verktyget för att visa den information som skickas till hubben. Exempel programmet skrivs i python och ingår i Azure IoT-enhetens SDK för python. Ett Solution Builder kan använda Azure IoT Explorer-verktyget för att förstå funktionerna i en IoT Plug and Play-enhet utan att behöva visa någon enhets kod.
+
+I den här kursen får du:
+
+> [!div class="checklist"]
+> * Hämta exempel koden.
+> * Kör enhets exempel programmet och kontrol lera att det ansluter till din IoT-hubb.
+> * Granska käll koden.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

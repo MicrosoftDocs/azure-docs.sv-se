@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: cc35f9ee25511faec5723b49763cbdae8963e88b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820763"
+ms.locfileid: "99834399"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Använd anpassningsbara program kontroller för att minska dina datorers attack ytor
 
@@ -44,7 +44,7 @@ Genom att definiera listor över kända säkra program och generera aviseringar 
 - Förhindra en speciell program vara som har blockerats av din organisation
 - Öka överblicken i appar som har åtkomst till känsliga data
 
-Inga tvingande alternativ är tillgängliga och inga planeras. Anpassningsbara program kontroller är avsedda att ge säkerhets aviseringar om andra program körs än de som du har definierat som säkra.
+Inga tvingande alternativ är tillgängliga för närvarande. Anpassningsbara program kontroller är avsedda att ge säkerhets aviseringar om andra program körs än de som du har definierat som säkra.
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -238,7 +238,7 @@ Några av de funktioner som är tillgängliga från REST API:
 ## <a name="faq---adaptive-application-controls"></a>Vanliga frågor och anpassningsbara program kontroller
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>Finns det några alternativ för att genomdriva program kontrollerna?
-Inga tvingande alternativ är tillgängliga och inga planeras. Anpassningsbara program kontroller är avsedda att ge **säkerhets aviseringar** om andra program körs än de som du har definierat som säkra. De har ett antal fördelar ([vilka är fördelarna med anpassningsbara program kontroller?](#what-are-the-benefits-of-adaptive-application-controls)) och är mycket anpassningsbara som de visas på den här sidan.
+Inga tvingande alternativ är tillgängliga för närvarande. Anpassningsbara program kontroller är avsedda att ge **säkerhets aviseringar** om andra program körs än de som du har definierat som säkra. De har ett antal fördelar ([vilka är fördelarna med anpassningsbara program kontroller?](#what-are-the-benefits-of-adaptive-application-controls)) och är mycket anpassningsbara som de visas på den här sidan.
 
  
 
