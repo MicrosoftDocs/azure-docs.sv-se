@@ -4,15 +4,15 @@ description: Beskriver data källor och anslutningar som stöds för tabell 1200
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/08/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2b4ae4aa8f6b08b273088c98d120d339db7deadb
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 03f4d151fc948e4c060989a7d101ad91aecdecb6
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539458"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981501"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Datakällor som stöds i Azure Analysis Services
 
@@ -118,13 +118,6 @@ För moln data Källor:
 
 * Om du använder SQL-autentisering ska personifiering vara ett tjänst konto.
 
-## <a name="service-principal-authentication"></a>Autentisering av tjänstens huvud namn
-
-När den har angetts som data källa för *providern* stöder Azure Analysis Services [MSOLEDBSQL](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory tjänstens huvud namns autentisering för Azure SQL Database och Azure Synapse-datakällor.
-
-`
-Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
-`
 
 ## <a name="oauth-credentials"></a>Autentiseringsuppgifter för OAuth
 

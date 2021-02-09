@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 8d45ad630d09a4909cf00b830df139057cc0fcaf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 43cafb8c5efe0581fe7c4136aa41980b3d817be2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142285"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981416"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Ladda upp filer från enheten till molnet med IoT Hub (.NET)
 
@@ -31,7 +31,7 @@ Den här självstudien bygger på koden i [skicka meddelanden från moln till en
 
 * Stora filer som innehåller bilder
 
-* Videoklipp
+* Video
 
 * Exempel på vibrations data med hög frekvens
 
@@ -79,16 +79,15 @@ I det här avsnittet ändrar du den enhets app som du skapade i [skicka meddelan
 1. Lägg till följande metod i **program** -klassen:
 
     ```csharp
-    private static async void SendToBlobAsync()
+    private static async Task SendToBlobAsync(string fileName)
     {
-        string fileName = "image.jpg";
         Console.WriteLine("Uploading file: {0}", fileName);
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
-        {
-            await deviceClient.UploadToBlobAsync(fileName, sourceData);
-        }
+        await deviceClient.GetFileUploadSasUriAsync(new FileUploadSasUriRequest { BlobName = fileName });
+        var blob = new CloudBlockBlob(sas.GetBlobUri());
+        await blob.UploadFromFileAsync(fileName);
+        await deviceClient.CompleteFileUploadAsync(new FileUploadCompletionNotification { CorrelationId = sas.CorrelationId, IsSuccess = true });
 
         watch.Stop();
         Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
@@ -100,7 +99,7 @@ I det här avsnittet ändrar du den enhets app som du skapade i [skicka meddelan
 1. Lägg till följande rad i **huvud** metoden, precis före `Console.ReadLine()` :
 
     ```csharp
-    SendToBlobAsync();
+    await SendToBlobAsync("image.jpg");
     ```
 
 > [!NOTE]
@@ -116,15 +115,15 @@ I den här artikeln skapar du en server dels tjänst för att ta emot meddelande
 
 I det här avsnittet skriver du en .NET-konsol app som tar emot meddelanden om fil överförings meddelanden från IoT Hub.
 
-1. I den aktuella Visual Studio-lösningen väljer du **fil**  >  **nytt**  >  **projekt**. I **skapa ett nytt projekt**väljer du **konsol program (.NET Framework)** och väljer sedan **Nästa**.
+1. I den aktuella Visual Studio-lösningen väljer du **fil**  >  **nytt**  >  **projekt**. I **skapa ett nytt projekt** väljer du **konsol program (.NET Framework)** och väljer sedan **Nästa**.
 
-1. Ge projektet namnet *ReadFileUploadNotification*. Under **lösning**väljer **du Lägg till i lösning**. Välj **Skapa** för att skapa projektet.
+1. Ge projektet namnet *ReadFileUploadNotification*. Under **lösning** väljer **du Lägg till i lösning**. Välj **Skapa** för att skapa projektet.
 
     ![Konfigurera ReadFileUploadNotification-projektet i Visual Studio](./media/iot-hub-csharp-csharp-file-upload/read-file-upload-project-configure.png)
 
 1. I Solution Explorer högerklickar du på projektet **ReadFileUploadNotification** och väljer **Hantera NuGet-paket**.
 
-1. I **NuGet Package Manager**väljer du **Bläddra**. Sök efter och välj **Microsoft. Azure. Devices**och välj sedan **Installera**.
+1. I **NuGet Package Manager** väljer du **Bläddra**. Sök efter och välj **Microsoft. Azure. Devices** och välj sedan **Installera**.
 
     I det här steget hämtas, installeras och läggs en referens till i [Azure IoT service SDK NuGet-paketet](https://www.nuget.org/packages/Microsoft.Azure.Devices/) i **ReadFileUploadNotification** -projektet.
 
@@ -182,7 +181,7 @@ Du är nu redo att köra programmen.
 
 1. Högerklicka på din lösning i Solution Explorer och välj **Ange start projekt**.
 
-1. I **vanliga egenskaper**  >  **Start projekt**, Välj **flera start projekt**och välj sedan **Start** åtgärden för **ReadFileUploadNotification** och **SimulatedDevice**. Klicka på **OK** för att spara ändringarna.
+1. I **vanliga egenskaper**  >  **Start projekt**, Välj **flera start projekt** och välj sedan **Start** åtgärden för **ReadFileUploadNotification** och **SimulatedDevice**. Klicka på **OK** för att spara ändringarna.
 
 1. Tryck på **F5**. Båda programmen ska starta. Du bör se att uppladdningen är klar i en enda konsol app och meddelandet överförings meddelande som tagits emot av den andra konsolen. Du kan använda [Azure Portal](https://portal.azure.com/) -eller Visual Studio-Server Explorer för att söka efter förekomsten av den överförda filen i ditt Azure Storage-konto.
 

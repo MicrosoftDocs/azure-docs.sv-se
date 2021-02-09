@@ -108,9 +108,6 @@
     - name: Databaser
       items:
         - name: MongoDB
-          items:
-            - name: Windows
-              href: ./windows/install-mongodb.md
         - name: MS SQL på Linux
           href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Databehandling med höga prestanda (HPC)
@@ -878,7 +875,7 @@
                   href: ./linux/disk-encryption-powershell-quickstart.md
                 - name: Windows
                   href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: Portal
+            - name: Portalen
               items:
                 - name: Linux
                   href: ./linux/disk-encryption-portal-quickstart.md
@@ -958,7 +955,7 @@
           items:
             - name: CLI och PowerShell
               href: disks-performance-tiers.md
-            - name: Portal
+            - name: Portalen
               href: disks-performance-tiers-portal.md
         - name: Aktivera Write Accelerator
           href: how-to-enable-write-accelerator.md
@@ -1292,8 +1289,10 @@
               href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
             - name: Tillägg för Linux-diagnostik
               items:
-                - name: Översikt
+                - name: 'Version 4,0'
                   href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: 'Version 3,0'
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Samla in mått med Telegraf
                   href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
                   displayname: diagnostics extension

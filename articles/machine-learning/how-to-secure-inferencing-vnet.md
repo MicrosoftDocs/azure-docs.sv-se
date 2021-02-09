@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 4dfe2130d8274e2b3463c0fb42587b50fef77f18
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953741"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981314"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning inferencing-miljö med virtuella nätverk
 
@@ -257,7 +257,7 @@ Azure Container Instances skapas dynamiskt när du distribuerar en modell. Om du
 > * I samma resurs grupp som din Azure Machine Learning-arbetsyta.
 > * Om din arbets yta har en __privat slut punkt__ måste det virtuella nätverket som används för Azure Container instances vara samma som det som används av den privata slut punkten för arbets ytan.
 >
-> När du använder Azure Container Instances inuti det virtuella nätverket kan Azure Container Registry (ACR) för din arbets yta också inte finnas i det virtuella nätverket.
+> När du använder Azure Container Instances inuti det virtuella nätverket kan Azure Container Registry (ACR) för din arbets yta inte finnas i det virtuella nätverket.
 
 Använd följande steg för att använda ACI i ett virtuellt nätverk på din arbets yta:
 

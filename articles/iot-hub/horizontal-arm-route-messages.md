@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 1b9c576ce03d808fe6a4d0cac5196dfcd1b73eab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fc8ddba2ec9b7bc9f1c2db8673ab805810afe17e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545488"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981297"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Snabb start: Distribuera ett Azure-IoT Hub och ett lagrings konto med en ARM-mall
 
@@ -21,7 +21,7 @@ I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
@@ -61,7 +61,7 @@ Det här avsnittet innehåller stegen för att distribuera mallen, skapa en virt
 
    ![Visa resurser i resurs gruppen](./media/horizontal-arm-route-messages/02-view-resources-in-group.png)
 
-1. Du behöver **hubbens namn** . Välj hubben i listan över resurser. Kopiera namnet på Hub överst i IoT Hub-avsnittet till Urklipp i Windows.
+1. Du behöver **hubbens namn**. Välj hubben i listan över resurser. Kopiera namnet på Hub överst i IoT Hub-avsnittet till Urklipp i Windows.
 
    ![Kopiera hubbens namn](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
 
@@ -83,15 +83,15 @@ Det här avsnittet innehåller stegen för att distribuera mallen, skapa en virt
 
 1. På höger sida av skärmen väljer du **+ ny** för att lägga till en ny enhet.
 
-   Fyll i det nya enhets namnet. I den här snabb starten används ett namn som börjar med **contoso-test-Device** . Spara enheten och öppna sedan skärmen igen för att hämta enhets nyckeln. (Nyckeln skapas åt dig när du stänger fönstret.) Välj antingen den primära eller sekundära nyckeln och kopiera den till Urklipp i Windows. I kommando fönstret anger du kommandot som ska köras och trycker sedan på **RETUR** . Kommandot bör se ut så här men med enhets nyckeln inklistrad i:
+   Fyll i det nya enhets namnet. I den här snabb starten används ett namn som börjar med **contoso-test-Device**. Spara enheten och öppna sedan skärmen igen för att hämta enhets nyckeln. (Nyckeln skapas åt dig när du stänger fönstret.) Välj antingen den primära eller sekundära nyckeln och kopiera den till Urklipp i Windows. I kommando fönstret anger du kommandot som ska köras och trycker sedan på **RETUR**. Kommandot bör se ut så här men med enhets nyckeln inklistrad i:
 
    ```cmd
    SET IOT_DEVICE_KEY=<device-key-goes-here>
    ```
 
-1. Den sista miljövariabeln är **enhets-ID** . I kommando fönstret ställer du in kommandot och kör det.
+1. Den sista miljövariabeln är **enhets-ID**. I kommando fönstret ställer du in kommandot och kör det.
 
-   ```cms
+   ```cmd
    SET IOT_DEVICE_ID=<device-id-goes-here>
    ```
 
@@ -101,13 +101,13 @@ Det här avsnittet innehåller stegen för att distribuera mallen, skapa en virt
    SET IOT_DEVICE_ID=Contoso-Test-Device
    ```
 
-1. Om du vill se de miljövariabler som du har definierat, skriver du in SET på kommando raden och trycker på **RETUR** och letar efter de som börjar med **IoT** .
+1. Om du vill se de miljövariabler som du har definierat, skriver du in SET på kommando raden och trycker på **RETUR** och letar efter de som börjar med **IoT**.
 
    ![Se miljövariabler](./media/horizontal-arm-route-messages/06-environment-variables.png)
 
     Nu har miljövariablerna angetts, kör programmet från samma kommando fönster. Eftersom du använder samma fönster, är variablerna tillgängliga i minnet när du kör programmet.
 
-1. Kör programmet genom att skriva följande kommando i kommando fönstret och trycka på **RETUR** .
+1. Kör programmet genom att skriva följande kommando i kommando fönstret och trycka på **RETUR**.
 
     `dotnet run arm-read-write`
 
@@ -134,7 +134,7 @@ Du har distribuerat en ARM-mall för att skapa en IoT Hub och ett lagrings konto
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill ta bort de resurser som lagts till under den här snabb starten loggar du in på [Azure Portal](https://portal.azure.com). Välj **resurs grupper** och leta sedan reda på resurs gruppen som du använde för den här snabb starten. Välj resurs gruppen och välj sedan *ta bort* . Alla resurser i gruppen tas bort.
+Om du vill ta bort de resurser som lagts till under den här snabb starten loggar du in på [Azure Portal](https://portal.azure.com). Välj **resurs grupper** och leta sedan reda på resurs gruppen som du använde för den här snabb starten. Välj resurs gruppen och välj sedan *ta bort*. Alla resurser i gruppen tas bort.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987379"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981518"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Skapa och utforska Azure Machine Learning data uppsättning med etiketter
 
@@ -39,6 +39,9 @@ När du har slutfört ett data etiketts projekt kan du exportera etikett data fr
 ### <a name="coco"></a>COCO 
 
  COCO-filen skapas i standard-BLOB-arkivet för Azure Machine Learning arbets ytan i en mapp i *export-/Coco*. 
+ 
+>[!NOTE]
+>I objekt identifierings projekt normaliseras de exporterade "bbox": [x, y, width, height] "-värden i COCO-filen. De skalas till 1. Exempel: en avgränsnings ruta på (10, 10) plats, med 30 pixlars bredd, 60 bild punkter höjd i en bild av 640x480 bild punkter (0,015625). 0,02083, 0,046875, 0,125). Eftersom coordintes är normaliserat visas det som "0,0" som "width" och "Height" för alla bilder. Den faktiska bredden och höjden kan hämtas med hjälp av python-biblioteket som OpenCV eller Pillow (PIL).
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning data uppsättning
 

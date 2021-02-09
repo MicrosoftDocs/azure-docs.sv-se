@@ -30,6 +30,8 @@
       href: Concepts/azure-resources.md
     - name: Datakällor och innehåll
       href: Concepts/data-sources-and-content.md
+    - name: Azure RBAC (rollbaserad åtkomstkontroll)
+      href: Concepts/role-based-access-control.md
     - name: Process för rankningsberäknare
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -46,7 +48,7 @@
     - name: Hantera Azure-resurser
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: Hantera QnA Maker-app
+    - name: Hantera QnA Maker resurs åtkomst
       href: How-To/manage-qna-maker-app.md
     - name: Aktivera aktiv inlärning
       href: How-To/use-active-learning.md
@@ -92,8 +94,6 @@
       href: Concepts/confidence-score.md
     - name: Felsökning
       href: troubleshooting.md
-    - name: Frågor och svar-par
-      href: Concepts/question-answer-set.md
     - name: Exakta svar
       href: reference-precise-answering.md
     - name: Lägg till skyddade SharePoint-filer
@@ -105,14 +105,6 @@
       href: reference-app-service.md
     - name: Formatriktlinjer för innehåll
       href: reference-document-format-guidelines.md
-    - name: Innehåll och dataformat
-      items:
-        - name: Formatriktlinjer för innehåll
-          href: reference-document-format-guidelines.md
-        - name: Webbadresser
-          href: reference-document-type-url.md
-        - name: Riktlinjer för att importera och exportera data
-          href: reference-data-guidelines.md
     - name: Visningsformat
       href: reference-markdown-format.md
     - name: Privata länkar

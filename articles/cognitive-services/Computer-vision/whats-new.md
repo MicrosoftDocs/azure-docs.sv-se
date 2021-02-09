@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: ec340e3371b0fe337354006b1284a21420a11f3a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1128504ee5f8c086d6a3c30a9fdd021550394f3f
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573644"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981773"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
@@ -25,12 +25,12 @@ Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, 
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Läs API v 3.2 offentlig för hands version med OCR-stöd för 73 språk
 Visuellt innehåll s Read API v 3.2: s offentliga för hands version innehåller följande funktioner:
-* OCR för totalt [73 språk](./language-support.md#optical-character-recognition-ocr) , inklusive enkla och traditionella kinesiska, japanska, koreanska och stora latinska språk.
-* Välj om du vill skriva ut text raderna i vänster-höger-och uppifrån och ned (standard) ordning eller en mer naturlig Läs ordning.
-* För varje text rad utdata anger du om dess handstil-format eller inte tillsammans med en förtroende poäng (endast latinska språk).
+* [OCR för 73-språk](./language-support.md#optical-character-recognition-ocr) , inklusive förenklade och traditionella kinesiska, japanska, koreanska och latinska språk.
+* Mata ut text raderna i den naturliga Läs ordningen.
+* Klassificera text rader som hand SKRIFTS format eller inte tillsammans med en förtroende poäng (endast latinska språk).
 * För ett flersidigt dokument extrahera text enbart för markerade sidor eller sid intervall.
 
-Mer information finns i [Översikt över Read API](concept-recognizing-text.md) .
+Mer information finns i [läsa för hands versions funktioner](concept-recognizing-text.md#natural-reading-order-output) .
 
 > [!div class="nextstepaction"]
 > [Använd Read API v 3.2 offentlig för hands version](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)

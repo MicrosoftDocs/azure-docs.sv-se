@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709456"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981348"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Instruktioner för Azure Stack Edge Pro R-säkerhet
 
@@ -27,17 +27,17 @@ Läs all säkerhets information i den här artikeln innan du använder din Azure
 
 Följande signal ord för varnings signaler är:
 
-| Ikon | Beskrivning |
+| Ikon | Description |
 |:--- |:--- |
 | ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Risk:** Indikerar en farlig situation som, om de inte undviks, leder till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till mindre eller måttlig skada.|
 |
 
 Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azure Stack Edge Pro R Edge-enhet:
 
-| Ikon | Beskrivning |
+| Ikon | Description |
 |:--- |:--- |
 | ![Läs alla instruktioner först](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Läs alla instruktioner först |
-| ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Varnings symbol |
+| ![Meddelande Ikons ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **meddelande:** | Anger information som anses viktig, men inte risk relaterad. || ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Varnings symbol |
 | ![Varnings ikon för tips](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Tips risk|
 | ![Ikon med tung vikt](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Risk med tung vikt|
 | ![Elektrisk stötande ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Fara för elektrisk stöt |
@@ -88,6 +88,7 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
   * Tillhandahålls tillräckligt med utrymme för att få åtkomst till strömförsörjnings kablarna, eftersom de fungerar som produktens huvudsakliga strömförsörjnings anslutning.
 * Ethernet-kablar medföljer inte produkten. För att minska elektro magnetisk interferens rekommenderar vi att Cat 6 skärmade STP-kablar (skärmade tvinnad hop parkabel) används.
 * Konfigurera utrustningen i ett arbets utrymme som möjliggör tillräcklig luft cirkulation runt utrustningen. Se till att fram-och bak sidan tas bort helt medan enheten körs.
+* Ethernet-kablar medföljer inte produkten. För att minska elektro magnetisk interferens rekommenderar vi att Cat 6 skärmade kablar (STP) används.
 * Installera utrustningen i temperatur-kontrollerat utrymme utan att utföra främmande ämnen och tillåta tillräcklig luft cirkulation runt utrustningen.
 * Hålla utrustningen borta från källor till flytande och överdriven fukt miljö.
 * Tillåt inte eventuell vätska eller främmande objekt att ange systemet. Placera inte drycker eller andra flytande behållare på eller nära systemet.
@@ -207,7 +208,7 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![Meddelande ikon ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **meddelande:** &nbsp; ändringar eller ändringar av utrustning som inte uttryckligen godkänns av Microsoft kan säga till att användarens myndighet kan använda utrustningen.
+> ![Meddelande ikon – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **meddelande:** &nbsp; ändringar eller ändringar som gjorts i utrustning som inte uttryckligen godkänns av Microsoft kan säga till att användarens myndighet kan använda utrustningen.
 
 Kanada och USA:
 

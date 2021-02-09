@@ -6,23 +6,23 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: f761d86bd7dbe54b687e8db75ecb3df2dbba3384
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4b5a073459fad734a11d3a75718240d0ebbb486a
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932718"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981399"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC-autentisering – REST API referens
 
 Du kan autentisera HTTP-begäranden med hjälp av autentiseringsschemat HMAC-SHA256. (HMAC refererar till hash-baserad meddelande kod.) Dessa begär Anden måste överföras via TLS.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - **Certifiering** - \<Access Key ID\>
 - **Hemligt** Base64-kodat åtkomst nyckel värde. ``base64_decode(<Access Key Value>)``
 
-Värdena för Credential (även kallat `id` ) och hemlighet (även kallade `value` ) måste hämtas från instansen av Azure App-konfigurationen. Du kan göra detta med hjälp av [Azure Portal](https://portal.azure.com) eller [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest).
+Värdena för Credential (även kallat `id` ) och hemlighet (även kallade `value` ) måste hämtas från instansen av Azure App-konfigurationen. Du kan göra detta med hjälp av [Azure Portal](https://portal.azure.com) eller [Azure CLI](/cli/azure/).
 
 Ange varje begäran med alla HTTP-huvuden som krävs för autentisering. Minimi kravet är:
 
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Argument | Beskrivning  |
+|  Argument | Description  |
 | ------ | ------ |
 | **HMAC-SHA256** | Authorization-schema. _kunna_ |
 | **Autentiseringsuppgift** | ID för den åtkomst nyckel som används för att beräkna signaturen. _kunna_ |
@@ -87,7 +87,7 @@ _Sträng-till-tecken =_
 
 **HTTP_METHOD** + \n + **path_and_query** + \n + **signed_headers_values**
 
-|  Argument | Beskrivning  |
+|  Argument | Description  |
 | ------ | ------ |
 | **HTTP_METHOD** | Versaler HTTP-metod namn som används med begäran. Mer information finns i [avsnitt 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | Sammanfogning av begär ande absolut URI-sökväg och frågesträng. Mer information finns i [avsnitt 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).
@@ -549,7 +549,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 | ------------ | ------- | --------------- |
 | [Bash](https://www.gnu.org/software/bash/) | bash | 3.5.27, 4.4.23 |
 | [coreutils](https://www.gnu.org/software/coreutils/) | TR | 8,28 |
-| [klammerparentes](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
+| [curl](https://curl.haxx.se/) | curl | 7.55.1, 7.58.0 |
 | [OpenSSL](https://www.openssl.org/) | openssl | 1.1.0 g, 1.1.1 a |
 | [util – linux](https://github.com/karelzak/util-linux/) | hexdump | 2.14.1, 2.31.1 |
 

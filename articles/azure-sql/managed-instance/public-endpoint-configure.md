@@ -9,13 +9,13 @@ ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
-ms.date: 05/07/2019
-ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/08/2021
+ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788289"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981450"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurera offentlig slut punkt i Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -98,7 +98,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Källa**     |Valfri IP-adress eller service tag         |<ul><li>För Azure-tjänster som Power BI väljer du Azure Cloud Service-taggen</li> <li>Använd NAT IP-adress för din dator eller virtuella Azure-dator</li></ul> |
     |**Källportintervall**     |* |Lämna det till * (valfritt) eftersom käll portarna vanligt vis är dynamiskt allokerade och som sådana, oförutsägbara |
-    |**Mål**     |Alla         |Lämna destination som valfri för att tillåta trafik till under nätet för hanterade instanser |
+    |**Mål**     |Valfri         |Lämna destination som valfri för att tillåta trafik till under nätet för hanterade instanser |
     |**Målportintervall**     |3342         |Scope-målport till 3342, som är den offentliga TDS-slutpunkten för hanterad instans |
     |**Protokoll**     |TCP         |SQL-hanterad instans använder TCP-protokollet för TDS |
     |**Åtgärd**     |Tillåt         |Tillåt inkommande trafik till hanterad instans via den offentliga slut punkten |
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Hämtning av den offentliga slut punkts anslutnings strängen för hanterad instans
 
 1. Gå till konfigurations sidan för hanterade instanser som har Aktiver ATS för den offentliga slut punkten. Välj fliken **anslutnings strängar** under **inställnings** konfigurationen.
-1. Observera att värd namnet för den offentliga slut punkten anges i formatet <mi_name>. **Public** . <dns_zone>. Database.Windows.net och att porten som används för anslutningen är 3342.
+1. Observera att värd namnet för den offentliga slut punkten anges i formatet <mi_name>. **Public**. <dns_zone>. Database.Windows.net och att porten som används för anslutningen är 3342. Här är ett exempel på ett Server värde för anslutnings strängen som anger den offentliga slut punkts port som kan användas i SQL Server Management Studio-eller Azure Data Studio anslutningar: `<mi_name>.public.<dns_zone>.database.windows.net,3342`
 
     ![Skärm bild som visar anslutnings strängar för dina offentliga och privata slut punkter.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

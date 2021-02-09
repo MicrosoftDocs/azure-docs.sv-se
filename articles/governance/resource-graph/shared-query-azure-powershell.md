@@ -4,12 +4,12 @@ description: I den här snabb starten följer du stegen för att skapa en resurs
 ms.date: 01/11/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7efc02cad3aaa67c639a319f1a7bb455d6e04b0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 2b771253b1dea4bd1d2913bf7c48062112019a19
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128098"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981552"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-powershell"></a>Snabb start: skapa en resurs diagram delad fråga med hjälp av Azure PowerShell
 
@@ -36,7 +36,7 @@ Den här artikeln beskriver hur du kan skapa en delad Azure-resurs graf-fråga m
 
 ## <a name="create-a-resource-graph-shared-query"></a>Skapa en delad resurs diagrams fråga
 
-Med `Az.ResourceGraph` PowerShell-modulen som har lagts till i din miljö väljer du att skapa en delad fråga för resurs diagram. Den delade frågan är ett Azure Resource Manager objekt som du kan ge behörighet till eller köra i Azure Resource Graph Explorer. Frågan sammanfattar antalet resurser grupperade efter _plats_.
+Med PowerShell-modulen **AZ. ResourceGraph** som har lagts till i din miljö, är det dags att skapa en delad fråga för resurs diagram. Den delade frågan är ett Azure Resource Manager objekt som du kan ge behörighet till eller köra i Azure Resource Graph Explorer. Frågan sammanfattar antalet resurser grupperade efter _plats_.
 
 1. Skapa en resurs grupp med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) för att lagra den delade frågan i Azure Resource Graph. Den här resurs gruppen har namnet `resource-graph-queries` och platsen är `westus2` .
 
@@ -47,7 +47,7 @@ Med `Az.ResourceGraph` PowerShell-modulen som har lagts till i din miljö välje
    New-AzResourceGroup -Name resource-graph-queries -Location westus2
    ```
 
-1. Skapa en delad Azure Resource Graph-fråga med `Az.ResourceGraph` PowerShell-modulen och cmdlet: en [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) :
+1. Skapa en delad Azure Resource Graph-fråga med PowerShell-modulen **AZ. ResourceGraph** och cmdleten [New-AzResourceGraphQuery](/powershell/module/az.resourcegraph/new-azresourcegraphquery) :
 
    ```azurepowershell-interactive
    # Create the Azure Resource Graph shared query
@@ -80,7 +80,7 @@ Med `Az.ResourceGraph` PowerShell-modulen som har lagts till i din miljö välje
 Om du vill ta bort den delade frågan och resurs gruppen för resurs grafer från din Azure-miljö kan du göra det med hjälp av följande kommandon:
 
 - [Remove-AzResourceGraphQuery](/powershell/module/az.resourcegraph/remove-azresourcegraphquery)
-- [Remove-AzResourceGroup](/cli/azure/group#az_group_delete)
+- [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)
 
 ```azurepowershell-interactive
 # Delete the Azure Resource Graph shared query
