@@ -3,15 +3,15 @@ title: Hantera ett flytande moln – Azure-partner lösningar
 description: Den här artikeln beskriver hanteringen av ett samarbets-moln på Azure Portal. Så här konfigurerar du enkel inloggning, tar bort en gemensam organisation och får support.
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 2d13c183f0b3891fa92b5e2a6534acbf8102e032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253593"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989145"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Hantera moln resursen
 
@@ -66,13 +66,23 @@ Om du vill skicka in en supportbegäran till dig, kan du antingen kontakta [supp
 > [!NOTE]
 > För första gången återställer du ditt lösen ord innan du loggar in på webbplatsen för att avhjälpa support. Om du inte har ett konto med ett överförings moln kan du skicka ett e-postmeddelande till `cloud-support@confluent.io` för att få hjälp.
 
+I portalen kan du antingen skicka en förfrågan via Azure hjälp och support, eller direkt från din instans av Apache Kafka för att överföra molnet i Azure.
+
+Skicka en begäran via Azure hjälp och support:
+
+1. Välj **Hjälp + support**.
+1. Välj **skapa en supportbegäran**.
+1. I formuläret väljer du **teknisk** för **ärende typ**. Välj din prenumeration. I listan över tjänster väljer du samsig **till Azure**.
+
+    :::image type="content" source="media/support-request-help.png" alt-text="Skapa en support förfrågan från hjälpen.":::
+
 Följ dessa steg om du vill skicka en begäran från resursen:
 
 1. I Azure Portal väljer du din organisation.
 1. På menyn på skärmens vänstra sida väljer du **ny supportbegäran**.
 1. Om du vill skapa en supportbegäran väljer du länken till sambands **portalen**.
 
-    :::image type="content" source="media/support-request.png" alt-text="Skapa en support förfrågan.":::
+    :::image type="content" source="media/support-request.png" alt-text="Skapa en supportbegäran från en instans.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

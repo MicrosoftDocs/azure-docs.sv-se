@@ -8,12 +8,13 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 266538a7aff11bff0b6dc5c2d2b6a7a3d25c18ab
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474989"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988727"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Så här konfigurerar du Blob-indexering i Kognitiv sökning
 
@@ -201,7 +202,7 @@ Andra, standard egenskaper för BLOB-metadata kan extraheras till fälten i list
 
   + **metadata_storage_path** ( `Edm.String` ) – den fullständiga URI: n för blobben, inklusive lagrings kontot. Till exempel `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
 
-  + **metadata_storage_content_type** ( `Edm.String` ) – innehålls typ som anges av den kod som du använde för att ladda upp blobben. Ett exempel är `application/octet-stream`.
+  + **metadata_storage_content_type** ( `Edm.String` ) – innehålls typ som anges av den kod som du använde för att ladda upp blobben. Till exempel `application/octet-stream`.
 
   + **metadata_storage_last_modified** ( `Edm.DateTimeOffset` )-den senaste ändrade tidsstämpeln för blobben. Azure Kognitiv sökning använder den här tidsstämpeln för att identifiera ändrade blobbar, för att undvika att indexera om allt efter den inledande indexeringen.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4e5522c162e08f0257bd6f20b058bf8bb858cff3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 553b4527796db3e5d0f430afd6c5e614626187e5
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099354"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988896"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Så skyddar du API:er genom att autentisera klientcertifikat i API Management
 
@@ -94,6 +94,18 @@ I följande exempel visas hur du kontrollerar tumavtrycket för ett klient certi
 > [!TIP]
 > Problem med deadlock för klient certifikat som beskrivs i den här [artikeln](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) kan visas på flera olika sätt, t. ex. begär Anden som låser sig, resulterar i `403 Forbidden` status kod efter att tids gränsen `context.Request.Certificate` är klar `null` . Det här problemet påverkar vanligt vis `POST` och `PUT` begär Anden med en innehålls längd på ungefär 60KB eller större.
 > För att förhindra att det här problemet inträffar aktiverar du inställningen "förhandla klient certifikat" för önskade värdnamn på bladet "anpassade domäner" som visas i den första bilden i det här dokumentet. Den här funktionen är inte tillgänglig i förbruknings nivån.
+
+## <a name="certificate-validation-in-self-hosted-gateway"></a>Certifikat validering i lokal gateway
+
+Standard API Management [egen Gateway-](self-hosted-gateway-overview.md) avbildningen stöder inte validering av Server-och klient certifikat med hjälp av [certifikat utfärdarens rot certifikat](api-management-howto-ca-certificates.md) som laddats upp till en API Management instans. Klienter som presenterar ett anpassat certifikat till den lokala gatewayen kan uppleva långsamma svar, eftersom det kan ta lång tid att verifiera listan över återkallade certifikat. 
+
+Som en lösning när du kör gatewayen kan du konfigurera PKI-IP-adressen så att den pekar på localhost-adressen (127.0.0.1) i stället för API Management-instansen. Detta gör att CRL-verifieringen Miss lyckas snabbt när gatewayen försöker verifiera klient certifikatet. Konfigurera gatewayen genom att lägga till en DNS-post för API Management-instansen för att matcha localhost i `/etc/hosts` filen i behållaren. Du kan lägga till den här posten under Gateway-distributionen:
+ 
+* För Docker-distribution – Lägg till `--add-host <hostname>:127.0.0.1` parametern i `docker run` kommandot. Mer information finns i [lägga till poster till behållaren hosts File](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host)
+ 
+* För Kubernetes-distribution – Lägg till en `hostAliases` specifikation i `myGateway.yaml` konfigurations filen. Mer information finns i [lägga till poster i pod-/etc/hosts med värd Ali Aset](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
+
+
 
 
 ## <a name="next-steps"></a>Nästa steg

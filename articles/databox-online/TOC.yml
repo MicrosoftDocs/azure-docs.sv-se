@@ -206,6 +206,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Distribuera tillståndslös app via GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+                - name: Distribuera Azure Arc data Controller
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Konfigurera Azure Resource Manager (förhandsversion)
           items:
             - name: Ansluta via Azure PowerShell

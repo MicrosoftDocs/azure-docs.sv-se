@@ -2,13 +2,13 @@
 title: Använd Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen
 description: Konfigurera Azure Application Gateway för att på ett säkert sätt exponera dina webbappar som körs på Azure VMware-lösningen.
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.openlocfilehash: 02e439989c985354dbe06fa3e231d5daf7099d70
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 02/08/2021
+ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629055"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988628"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Använd Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen
 
@@ -188,4 +188,8 @@ Den här proceduren visar hur du definierar backend-adresspooler med virtuella d
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs [dokumentationen om Azure Application Gateway](../application-gateway/index.yml) för fler konfigurations exempel.
+Nu när du har använt Application Gateway för att skydda en webbapp som körs på Azure VMware-lösningen kanske du vill lära dig mer om:
+
+- [Konfigurera Azure Application Gateway för olika scenarier](../application-gateway/configuration-overview.md).
+- [Distribuera Traffic Manager för att balansera arbets belastningar för Azure VMware-lösningar](deploy-traffic-manager-balance-workloads.md).
+- [Integrera Azure NetApp Files med Azure VMware Solution-baserade arbets belastningar](netapp-files-with-azure-vmware-solution.md).

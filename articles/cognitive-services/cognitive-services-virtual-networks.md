@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940045"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989083"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurera virtuella nätverk för Azure Cognitive Services
 
@@ -59,7 +59,7 @@ Virtuella nätverk (virtuella nätverk) stöds i [regioner där Cognitive Servic
 
 
 > [!NOTE]
-> Om du använder LUIS kan du med **CognitiveServicesManagement** -taggen bara använda tjänsten med SDK eller REST API. För att få åtkomst till och använda LUIS-portalen från ett virtuellt nätverk måste du använda följande Taggar:  
+> Om du använder LUIS-eller tal tjänster kan **CognitiveServicesManagement** -taggen bara använda tjänsten med SDK eller REST API. För att få åtkomst till och använda LUIS-portalen och/eller tal Studio från ett virtuellt nätverk måste du använda följande Taggar:  
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor. frontend**
 > * **AzureResourceManager** 
@@ -157,7 +157,7 @@ Du kan hantera standard regler för nätverks åtkomst för Cognitive Services r
         --default-action Allow
     ```
 
-**_
+***
 
 ## <a name="grant-access-from-a-virtual-network"></a>Bevilja åtkomst från ett virtuellt nätverk
 
@@ -169,7 +169,7 @@ Varje Cognitive Services-resurs har stöd för upp till 100 virtuella nätverks 
 
 ### <a name="required-permissions"></a>Behörigheter som krävs
 
-Om du vill tillämpa en virtuell nätverks regel på en Cognitive Services resurs måste användaren ha rätt behörighet för de undernät som läggs till. Den nödvändiga behörigheten är standard _Contributor *-rollen eller rollen *Cognitive Services Contributor* . Nödvändiga behörigheter kan också läggas till i anpassade roll definitioner.
+Om du vill tillämpa en virtuell nätverks regel på en Cognitive Services resurs måste användaren ha rätt behörighet för de undernät som läggs till. Den behörighet som krävs är standard *deltagar* rollen eller rollen *Cognitive Services Contributor* . Nödvändiga behörigheter kan också läggas till i anpassade roll definitioner.
 
 Cognitive Services resurs och de virtuella nätverk som beviljats åtkomst kan finnas i olika prenumerationer, inklusive prenumerationer som ingår i en annan Azure AD-klient.
 
@@ -325,10 +325,10 @@ Du kan hantera virtuella nätverks regler för Cognitive Services resurser via A
         --subnet $subnetid
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> Var noga med att [ställa in standard regeln](#change-the-default-network-access-rule) på _ * neka * * eller nätverks regler har ingen påverkan.
+> Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Bevilja åtkomst från ett IP-intervall på internet
 
@@ -472,10 +472,10 @@ Du kan hantera IP-nätverks regler för Cognitive Services resurser via Azure Po
         --ip-address "16.17.18.0/24"
     ```
 
-**_
+***
 
 > [!IMPORTANT]
-> Var noga med att [ställa in standard regeln](#change-the-default-network-access-rule) på _ * neka * * eller nätverks regler har ingen påverkan.
+> Se till att [Ange standard regeln](#change-the-default-network-access-rule) för **neka** eller att nätverks regler inte har någon påverkan.
 
 ## <a name="use-private-endpoints"></a>Använda privata slutpunkter
 

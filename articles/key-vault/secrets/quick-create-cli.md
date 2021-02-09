@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c2c6d106a198445fdbd08fbaeb7d03472b688b62
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071383"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989168"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Snabbstart: Ställ in och hämta en hemlighet från Azure Key Vault med hjälp av Azure CLI
 
@@ -50,7 +50,7 @@ Nu kan du referera till det här lösenordet som du lagt till i Azure Key Vault 
 Så här visar du värdet som finns i hemligheten som oformaterad text:
 
 ```azurecli
-az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyvault-name>"
+az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyvault-name>" --query "value"
 ```
 
 Nu har du skapat ett nyckelvalv, lagrat en hemlighet och hämtat den.

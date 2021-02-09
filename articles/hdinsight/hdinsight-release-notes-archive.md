@@ -4,19 +4,47 @@ description: Arkiverad versions information för Azure HDInsight. Få utveckling
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 10/07/2020
-ms.openlocfilehash: 8e6f27c378a6cea8fffbdcda58c4fc3bb865e51e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/08/2021
+ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932159"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988550"
 ---
 # <a name="archived-release-notes"></a>Arkiverad viktig information
 
 ## <a name="summary"></a>Sammanfattning
 
 Azure HDInsight är en av de mest populära tjänsterna bland företagskunder för analys med Apache Hadoop med öppen källkod och Apache Spark på Azure.
+
+## <a name="release-date-11182020"></a>Utgivnings datum: 11/18/2020
+
+Den här versionen gäller både HDInsight 3,6 och HDInsight 4,0. HDInsight-versionen görs tillgänglig för alla regioner över flera dagar. Lanserings datumet här anger den första regionens utgivnings datum. Om du inte ser ändringarna nedan väntar du tills lanseringen är aktiv i din region under flera dagar.
+
+### <a name="new-features"></a>Nya funktioner
+#### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Automatisk nyckel rotation för kund hanterad nyckel kryptering i vila
+Från och med den här versionen kan kunder använda Azure KeyValut-version – färre URL: er för krypterings nyckel för kund hanterad nyckel kryptering i vila. HDInsight roterar automatiskt nycklarna när de går ut eller ersätts med nya versioner. Läs mer information [här](./disk-encryption.md).
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Möjlighet att välja olika Zookeeper-storlekar för virtuella datorer för Spark-, Hadoop-och ML-tjänster
+HDInsight har tidigare inte stöd för anpassning av Zookeeper-noden för kluster typerna Spark, Hadoop och ML. Standardvärdet för A2_v2/a2 virtuella dator storlekar som tillhandahålls kostnads fritt. I den här versionen kan du välja en Zookeeper-storlek för virtuella datorer som passar bäst för ditt scenario. Zookeeper-noder med en annan virtuell dator storlek än A2_v2/a2 kommer att debiteras. A2_v2-och a2-virtuella datorer tillhandahålls fortfarande utan kostnad.
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Flytta till skalnings uppsättningar för virtuella Azure-datorer
+HDInsight använder nu virtuella Azure-datorer för att etablera klustret. Från och med den här versionen migrerar tjänsten gradvis till [skalnings uppsättningar för virtuella Azure-datorer](../virtual-machine-scale-sets/overview.md). Hela processen kan ta månader. När dina regioner och prenumerationer migreras, kommer nyligen skapade HDInsight-kluster att köras på virtuella datorers skalnings uppsättningar utan kund åtgärder. Ingen avbrytande ändring förväntas.
+
+### <a name="deprecation"></a>Utfasning
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Utfasning av HDInsight 3,6 ML Services-kluster
+HDInsight 3,6 ML-kluster typ upphör att fungera i december 31 2020. Kunder kan inte skapa nya 3,6 ML-tjänstekluster efter 31 2020 december. Befintliga kluster kommer att köras i befintligt skick utan support från Microsoft. Kontrol lera att support upphör för HDInsight-versioner och kluster typer [här](./hdinsight-component-versioning.md#available-versions).
+
+#### <a name="disabled-vm-sizes"></a>Inaktiverade VM-storlekar
+Från och med november 16 2020 kommer HDInsight att blockera nya kunder som skapar kluster med hjälp av standand_A8, standand_A9 standand_A10 och standand_A11 VM-storlekar. Befintliga kunder som har använt de här VM-storlekarna under de senaste tre månaderna påverkas inte. Från och med den 9 2021 januari kommer HDInsight att blockera alla kunder som skapar kluster med hjälp av standand_A8, standand_A9 standand_A10 och standand_A11 VM-storlekar. Befintliga kluster kommer att köras som de är. Överväg att flytta till HDInsight 4,0 för att undvika eventuellt system-och support avbrott.
+
+### <a name="behavior-changes"></a>Beteende ändringar
+#### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Lägg till regel kontroll för NSG före skalning
+HDInsight lade till nätverks säkerhets grupper (NSG: er) och UDR-kontroll (User-Defined routing) med skalnings åtgärd. Samma verifiering görs för kluster skalning förutom att klustret skapas. Den här verifieringen förhindrar oförutsägbara fel. Om verifieringen inte godkänns Miss lyckas skalningen. Läs mer om hur du konfigurerar NSG: er och UDR korrekt, se [IP-adresser för HDInsight-hantering](./hdinsight-management-ip-addresses.md).
+
+### <a name="component-version-change"></a>Komponent versions ändring
+Ingen komponent versions ändring för den här versionen. Du hittar de aktuella komponent versionerna för HDInsight 4,0 och HDInsight 3,6 i [det här dokumentet](./hdinsight-component-versioning.md).
 
 ## <a name="release-date-11092020"></a>Utgivnings datum: 11/09/2020
 
@@ -595,11 +623,11 @@ De nya uppdateringarna och funktionerna hamnar i följande kategorier:
 
     b.  [**Nya funktioner i Apache Kafka 1,0**](https://kafka.apache.org/downloads#1.0.0)
 
-*  ***Uppdatering R Server 9,1 till Machine Learning Services 9,3** _ – med den här versionen tillhandahåller vi data experter och tekniker med den bästa av öppen källkod som har utökats med algoritmer och driftsättning, allt som är tillgängligt på det språk som föredras med Apache Sparks hastighet. Den här versionen expanderar de funktioner som erbjuds i R Server med stöd för python, vilket leder till kluster namnet som ändras från R Server till ML-tjänster. 
+*  ***Uppdatering R Server 9,1 till Machine Learning Services 9,3*** – med den här versionen tillhandahåller vi data experter och tekniker med den bästa av öppen källkod som har utökats med algoritmer och driftsättning, vilket är tillgängligt på det språk som är det bästa språket med hastigheten för Apache Spark. Den här versionen expanderar de funktioner som erbjuds i R Server med stöd för python, vilket leder till kluster namnet som ändras från R Server till ML-tjänster. 
 
-_ ***Stöd för Azure Data Lake Storage Gen2** _ – HDInsight kommer att stödja för hands versionen av Azure Data Lake Storage Gen2. I tillgängliga regioner kommer kunderna att kunna välja ett ADLS Gen2 konto som primär eller sekundär lagring för sina HDInsight-kluster.
+*  ***Stöd för Azure Data Lake Storage Gen2*** – HDInsight kommer att stödja för hands versionen av Azure Data Lake Storage Gen2. I tillgängliga regioner kommer kunderna att kunna välja ett ADLS Gen2 konto som primär eller sekundär lagring för sina HDInsight-kluster.
 
-_ ***HDInsight Enterprise Security Package-uppdateringar (förhands granskning)** _ – (för hands version) Virtual Network stöd för [tjänst slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) för Azure Blob Storage, ADLS gen1, Cosmos DB och Azure dB.
+*  ***HDInsight Enterprise Security Package-uppdateringar (*** för hands version) – (för hands version) [Virtual Network tjänst slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) stöd för Azure Blob Storage, ADLS gen1, Cosmos DB och Azure dB.
 
 ### <a name="component-versions"></a>Komponent versioner
 
@@ -797,7 +825,7 @@ Den här versionen ger HBase 1.1.2 och följande Apache-korrigeringsfiler.
 
 Den här versionen tillhandahåller Hive 1.2.1 och Hive 2.1.0, förutom följande korrigeringar:
 
-_ *Hive 1.2.1 Apache-korrigeringsfiler:**
+**Hive 1.2.1 Apache-korrigeringsfiler:**
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697): ObjectInspectorConvertors \# UnionConvertor orsakar en fel konvertering.
 

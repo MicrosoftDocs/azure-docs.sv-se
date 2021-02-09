@@ -12,16 +12,16 @@ ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ba000fd4cf79f2bb4a176bd7d5c33fc2dfff3781
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 35efcd4059ab654178fb87c133a6f64721caf7d2
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428410"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989056"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
-Som programutvecklare kan du använda systemet för användar hanterings-API: et för SCIM (Cross-Domain Identity Management) för att aktivera automatisk etablering av användare och grupper mellan ditt program och Azure AD. Den här artikeln beskriver hur du skapar en SCIM-slutpunkt och integrerar med Azure AD Provisioning-tjänsten. SCIM-specifikationen innehåller ett gemensamt användar schema för etablering. När det används tillsammans med Federations standarder som SAML eller OpenID Connect ger SCIM administratörer en heltäckande lösning för åtkomst hantering från slut punkt till slut punkt.
+Som programutvecklare kan du använda systemet för användar hanterings-API: et för SCIM (Cross-Domain Identity Management) för att aktivera automatisk etablering av användare och grupper mellan ditt program och Azure AD (AAD). Den här artikeln beskriver hur du skapar en SCIM-slutpunkt och integrerar med AAD Provisioning-tjänsten. SCIM-specifikationen innehåller ett gemensamt användar schema för etablering. När det används tillsammans med Federations standarder som SAML eller OpenID Connect ger SCIM administratörer en heltäckande lösning för åtkomst hantering från slut punkt till slut punkt.
 
 ![Etablering från Azure AD till en app med SCIM](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -29,29 +29,55 @@ SCIM är en standardiserad definition av två slut punkter: en `/Users` slut pun
 
 Standardschemat för användar objekt och REST API: er för hantering som definieras i SCIM 2,0 (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) gör att identitets leverantörer och appar enkelt kan integreras med varandra. Programutvecklare som skapar en SCIM-slutpunkt kan integreras med alla SCIM-kompatibla klienter utan att behöva göra anpassade arbeten.
 
-Att automatisera etableringen av ett program kräver att du skapar och integrerar en SCIM-slutpunkt med Azure AD SCIM-klienten. Utför följande steg för att starta etableringen av användare och grupper i ditt program. 
+Om du vill automatisera etableringen av ett program måste du skapa och integrera en SCIM-slutpunkt med Azure AD SCIM-klienten. Använd följande steg för att starta etableringen av användare och grupper i ditt program. 
     
-  * **[Steg 1: utforma användar-och grupp schemat.](#step-1-design-your-user-and-group-schema)** Identifiera de objekt och attribut som programmet behöver och Bestäm hur de mappar till användar-och grupp schema som stöds av Azure AD SCIM-implementeringen.
+1. Utforma användar-och grupp schema
 
-  * **[Steg 2: förstå Azure AD SCIM-implementeringen.](#step-2-understand-the-azure-ad-scim-implementation)** Förstå hur Azure AD SCIM-klienten implementeras och utforma SCIM-protokollets hantering och svar.
+   Identifiera programmets objekt och attribut för att avgöra hur de mappar till användar-och grupp schema som stöds av AAD SCIM-implementeringen.
 
-  * **[Steg 3: Bygg en SCIM-slutpunkt.](#step-3-build-a-scim-endpoint)** En slut punkt måste vara SCIM 2,0-kompatibel för integrering med Azure AD Provisioning-tjänsten. Som ett alternativ kan du använda CLI-bibliotek (Common Language Infrastructure) och kod exempel för att bygga din slut punkt. Dessa exempel är endast för referens och testning. Vi rekommenderar att du kodar din produktions-app för att ta ett beroende på dem.
+1. Förstå SCIM-implementeringen för AAD
 
-  * **[Steg 4: integrera din SCIM-slutpunkt med Azure AD SCIM-klienten.](#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)** Om din organisation använder ett program från tredje part som implementerar profilen för SCIM 2,0 som Azure AD stöder, kan du börja automatisera både etablering och avetablering av användare och grupper direkt.
+   Förstå hur AAD SCIM-klienten implementeras för att modellera SCIM-protokollets hantering och svar.
 
-  * **[Steg 5: publicera ditt program i Azure AD-programgalleriet.](#step-5-publish-your-application-to-the-azure-ad-application-gallery)** Gör det enkelt för kunderna att upptäcka ditt program och enkelt konfigurera etablering. 
+1. Bygg en SCIM-slutpunkt
+
+   En slut punkt måste vara SCIM 2,0-kompatibel för att kunna integreras med AAD-etablerings tjänsten. Som ett alternativ använder du CLI-bibliotek (Common Language Infrastructure) och kod exempel för att bygga slut punkten. Dessa exempel är endast för referens och testning. Vi rekommenderar att du använder dem som beroenden i din webbapp.
+
+1. Integrera din SCIM-slutpunkt med AAD SCIM-klienten 
+
+   Om din organisation använder ett program från tredje part för att implementera en profil av SCIM 2,0 som AAD stöder, kan du snabbt automatisera både etablering och avetablering av användare och grupper.
+
+1. Publicera ditt program i program galleriet AAD 
+
+   Gör det enkelt för kunderna att upptäcka ditt program och enkelt konfigurera etablering. 
 
 ![Steg för att integrera en SCIM-slutpunkt med Azure AD](media/use-scim-to-provision-users-and-groups/process.png)
 
-## <a name="step-1-design-your-user-and-group-schema"></a>Steg 1: utforma användar-och grupp schema
+## <a name="design-your-user-and-group-schema"></a>Utforma användar-och grupp schema
 
-Varje program kräver olika attribut för att skapa en användare eller grupp. Starta din integrering genom att identifiera de objekt (användare, grupper) och attribut (namn, chef, befattning osv.) som programmet kräver. SCIM-standarden definierar ett schema för hantering av användare och grupper. Kärn användar schemat kräver bara tre attribut: **ID** (Service Provider Defined Identifier), **externalId** (identifierare för den klient som definieras) och **meta** (skrivskyddade metadata som underhålls av tjänst leverantören). Alla andra attribut är valfria. Förutom kärn användar schemat definierar SCIM-standarden ett företags användar tillägg och en modell för utökning av användar schemat för att uppfylla ditt programs behov. Om ditt program till exempel kräver en användares chef kan du använda användar schemat för företag för att samla in användarens chef och kärn schemat för att samla in användarens e-post. Skapa schemat genom att följa stegen nedan:
-  1. Lista de attribut som programmet kräver. Det kan vara bra att dela upp dina krav i de attribut som behövs för autentisering (t. ex. loginName och e-post), attribut som behövs för att hantera användarens livs cykel (t. ex. status/aktiv) och andra attribut som behövs för att ditt program ska fungera (t. ex. chef, tagg).
-  2. Kontrol lera om dessa attribut redan har definierats i kärn användar schema eller användar schema för företag. Om du har attribut som du behöver och inte omfattas av kärn-eller företags användar scheman, måste du definiera ett tillägg till användar schemat som täcker de attribut som du behöver. I exemplet nedan har vi lagt till ett tillägg till användaren för att tillåta att en "tagg" skapas för en användare. Det är bäst att börja med bara kärn-och företags användar scheman och utöka till ytterligare anpassade scheman senare.  
-  3. Mappa SCIM-attributen till användarattribut i Azure AD. Om något av de attribut som du har definierat i SCIM-slutpunkten inte har en tydlig motsvarighet i användar schemat för Azure AD, så är det en stor chans att data inte lagras på användarobjektet på de flesta klienter. Överväg om det här attributet kan vara valfritt för att skapa en användare. Om attributet är kritiskt för att ditt program ska fungera, vägleder klient organisationen att du utökar sitt schema eller använder ett attribut för tillägg som visas nedan för egenskapen "Taggar".
+Varje program kräver olika attribut för att skapa en användare eller grupp. Starta din integrering genom att identifiera de nödvändiga objekten (användare, grupper) och attribut (namn, chef, befattning osv.) som programmet behöver. 
 
-### <a name="table-1-outline-the-attributes-that-you-need"></a>Tabell 1: disponera de attribut som du behöver 
-| Steg 1: Bestäm vilka attribut appen kräver| Steg 2: mappa appens krav till SCIM standard| Steg 3: mappa SCIM-attribut till Azure AD-attributen|
+SCIM-standarden definierar ett schema för hantering av användare och grupper. 
+
+**Kärn** användar schemat kräver bara tre attribut (alla andra attribut är valfria):
+
+- `id`, identifierare för tjänst leverantör definierad
+- `externalId`, identifierare för klient som definierats
+- `meta`, *skrivskyddade* metadata som underhålls av tjänst leverantören
+
+Förutom **kärn** användar schemat definierar scim-standarden ett **företags** användar tillägg med en modell för att utöka användar schemat så att det passar ditt programs behov. 
+
+Om ditt program till exempel kräver både en användares e-post och användarens chef använder du **kärn** schemat för att samla in användarens e-post och användar schema för **företag** för att samla in användarens chef.
+
+Följ dessa steg för att utforma schemat:
+
+1. Lista de attribut som programmet kräver, kategorisera sedan som attribut som behövs för autentisering (t. ex. loginName och e-post), attribut som behövs för att hantera användar livs cykeln (t. ex. status/aktiv) och alla andra attribut som behövs för att programmet ska fungera (t. ex. chef, tagg).
+
+1. Kontrol lera att attributen redan har definierats i **kärn** användar schema eller användar schema för **företag** . Om inte, måste du definiera ett tillägg till det användar schema som täcker de attribut som saknas. Se exemplet nedan för att göra det möjligt för användaren att tillåta etablering av en användare `tag` .
+
+1. Mappa SCIM-attribut till användarattribut i Azure AD. Om något av de attribut som du har definierat i SCIM-slutpunkten inte har en tydlig motsvarighet i Azure AD-användarkontot, kan klient organisationen utöka sitt schema eller använda ett tillägg som visas nedan för `tags` egenskapen.
+
+|Obligatoriskt app-attribut|Mappat SCIM-attribut|Mappat Azure AD-attribut|
 |--|--|--|
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|förnamn|
@@ -61,7 +87,7 @@ Varje program kräver olika attribut för att skapa en användare eller grupp. S
 |tagg|urn: IETF: params: scim: schemas: tillägg: 2.0: CustomExtension: tagg|extensionAttribute1|
 |status|aktiv|isSoftDeleted (beräknat värde lagras inte på användare)|
 
-Det schema som definierats ovan ska representeras med JSON-nyttolasten nedan. Observera att förutom de attribut som krävs för programmet innehåller JSON-representationen obligatoriska `id` , `externalId` -och- `meta` attribut.
+**Exempel lista med obligatoriska attribut**
 
 ```json
 {
@@ -91,9 +117,13 @@ Det schema som definierats ovan ska representeras med JSON-nyttolasten nedan. Ob
    }
 }   
 ```
+**Exempel schema som definieras av en JSON-nyttolast**
 
-### <a name="table-2-default-user-attribute-mapping"></a>Tabell 2: mappning av standardattribut för användare
-Du kan sedan använda tabellen nedan för att förstå hur attributen som programmet kräver kan mappas till ett attribut i Azure AD och SCIM RFC. Du kan [Anpassa](customize-application-attributes.md) hur attribut mappas mellan Azure AD och din scim-slutpunkt. Observera att du inte behöver stödja både användare och grupper eller alla attribut som visas nedan. De är en referens för hur attribut i Azure AD ofta mappas till egenskaper i SCIM-protokollet. 
+> [!NOTE]
+> Förutom de attribut som krävs för programmet innehåller JSON-representationen även `id` attributen required, `externalId` och `meta` .
+
+Det hjälper dig att kategorisera mellan `/User` och `/Group` för att mappa alla standardattribut i Azure AD till scim RFC, se [hur anpassa attribut mappas mellan Azure AD och din scim-slutpunkt](customize-application-attributes.md).
+
 
 | Azure Active Directory användare | "urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: User" |
 | --- | --- |
@@ -116,8 +146,7 @@ Du kan sedan använda tabellen nedan för att förstå hur attributen som progra
 | telefonnummer |phoneNumbers[type eq "work"].value |
 | User-PrincipalName |userName |
 
-
-### <a name="table-3-default-group-attribute-mapping"></a>Tabell 3: mappning av standardmapp-attribut
+**Exempel lista över användar-och Gruppattribut**
 
 | Azure Active Directory grupp | urn: IETF: params: scim: schemas: Core: 2.0: grupp |
 | --- | --- |
@@ -128,10 +157,14 @@ Du kan sedan använda tabellen nedan för att förstå hur attributen som progra
 | objectId |externalId |
 | proxyAddresses |e-postmeddelanden [Type EQ "other"]. Värde |
 
-Det finns flera slut punkter definierade i SCIM RFC. Du kan komma igång med/User-slutpunkten och sedan expandera därifrån. /Schemas-slutpunkten är användbar när du använder anpassade attribut eller om schemat ändras ofta. Det gör det möjligt för en klient att hämta det mest uppdaterade schemat automatiskt. /Bulk-slutpunkten är särskilt användbar när du har stöd för grupper. Tabellen nedan beskriver de olika slut punkter som definieras i SCIM-standarden.
- 
-### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>Tabell 4: Bestäm de slut punkter som du vill utveckla
-|ENDPOINT|BESKRIVNING|
+**Exempel lista över Gruppattribut**
+
+> [!NOTE]
+> Du behöver inte stödja både användare och grupper eller alla attribut som visas här, det är bara en referens till hur attribut i Azure AD ofta mappas till egenskaper i SCIM-protokollet. 
+
+Det finns flera slut punkter definierade i SCIM RFC. Du kan börja med `/User` slut punkten och sedan expandera därifrån. 
+
+|Slutpunkt|Beskrivning|
 |--|--|
 |/User|Utföra CRUD-åtgärder på ett användar objekt.|
 |/Group|Utföra CRUD-åtgärder på ett grupp objekt.|
@@ -140,49 +173,54 @@ Det finns flera slut punkter definierade i SCIM RFC. Du kan komma igång med/Use
 |/Schemas|De attribut som stöds av varje klient och tjänst leverantör kan variera. En tjänst leverantör kan inkludera `name` , `title` och `emails` en annan tjänst leverantör använder `name` , `title` och `phoneNumbers` . Schema slut punkten gör det möjligt att identifiera de attribut som stöds.|
 |/Bulk|Med Mass åtgärder kan du utföra åtgärder på en stor mängd resurs objekt i en enda åtgärd (t. ex. Uppdatera medlemskap för en stor grupp).|
 
+**Exempel lista över slut punkter**
 
-## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Steg 2: förstå Azure AD SCIM-implementeringen
+> [!NOTE]
+> Använd `/Schemas` slut punkten för att stödja anpassade attribut eller om schemat ändras ofta, eftersom det gör det möjligt för en klient att hämta det mest uppdaterade schemat automatiskt. Använd `/Bulk` slut punkten för att stödja grupper.
+
+## <a name="understand-the-aad-scim-implementation"></a>Förstå SCIM-implementeringen för AAD
+
+I det här avsnittet beskrivs hur AAD SCIM-klienten implementeras för att stödja ett SCIM 2,0-API för användar hantering.
+
 > [!IMPORTANT]
 > Beteendet för Azure AD SCIM-implementeringen uppdaterades senast den 18 december 2018. Information om vad som har ändrats finns i [SCIM 2,0 Protocol Compliance of the Azure AD User Provisioning-tjänsten](application-provisioning-config-problem-scim-compatibility.md).
 
-Om du skapar ett program som stöder ett SCIM 2,0-API för användar hantering beskrivs i det här avsnittet hur du implementerar Azure AD SCIM-klienten. Det visar också hur du kan modellera hantering och svar för SCIM-protokoll begär Anden. När du har implementerat din SCIM-slutpunkt kan du testa den genom att följa anvisningarna som beskrivs i föregående avsnitt.
+I [SCIM 2,0-protokoll specifikationen](http://www.simplecloud.info/#Specification)måste ditt program stödja följande krav:
 
-I [SCIM 2,0-protokoll specifikationen](http://www.simplecloud.info/#Specification)måste ditt program uppfylla följande krav:
+|Krav|Referens anteckningar (SCIM-protokoll)|
+|-|-|
+|Skapa användare och eventuellt även grupper|[avsnitt 3,3](https://tools.ietf.org/html/rfc7644#section-3.3)|
+|Ändra användare eller grupper med PATCH-begäranden|[avsnitt 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2). Stöd säkerställer att grupper och användare är etablerade på ett effektivt sätt.|
+|Hämta en känd resurs för en användare eller grupp som skapats tidigare|[avsnitt 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)|
+|Fråga användare eller grupper|[avsnitt 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Som standard hämtas användare av och efter `id` frågas av deras `username` och `externalId` , och grupper efter frågas av `displayName` .|
+|Fråga användare efter ID och efter chef|avsnitt 3.4.2|
+|Fråga grupper efter ID och medlem|avsnitt 3.4.2|
+|Filtret [excludedAttributes = members](#get-group) när du frågar grupp resursen|avsnitt 3.4.2.5|
+|Acceptera en enda Bearer-token för autentisering och auktorisering av AAD till ditt program.||
+|Mjuk borttagning av en användare `active=false` och återställning av användaren `active=true`|Användarobjektet ska returneras i en begäran oavsett om användaren är aktiv eller inte. Den enda gång som användaren inte ska returneras är när den är hårt borttagen från programmet.|
 
-* Har stöd för att skapa användare och eventuellt även grupper, enligt avsnitt [3,3 i scim-protokollet](https://tools.ietf.org/html/rfc7644#section-3.3).  
-* Stöder ändring av användare eller grupper med PATCH-begäranden enligt [avsnittet 3.5.2 i scim-protokollet](https://tools.ietf.org/html/rfc7644#section-3.5.2). Stöd säkerställer att grupper och användare är etablerade på ett effektivt sätt. 
-* Stöder hämtning av en känd resurs för en användare eller grupp som skapats tidigare, enligt [avsnittet 3.4.1 i scim-protokollet](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
-* Har stöd för att skicka frågor till användare eller grupper enligt avsnittet [3.4.2 i scim-protokollet](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Som standard hämtas användare av och efter `id` frågas av deras `username` och `externalId` , och grupper efter frågas av `displayName` .  
-* Har stöd för att skicka frågor till användare efter ID och chef, enligt avsnittet 3.4.2 i SCIM-protokollet.  
-* Har stöd för att skicka frågor till grupper efter ID och per medlem, enligt avsnittet 3.4.2 i SCIM-protokollet.  
-* Stöder filtret [excludedAttributes = members](#get-group) när du frågar grupp resursen, enligt avsnitt 3.4.2.5 i scim-protokollet.
-* Accepterar en enda Bearer-token för autentisering och auktorisering av Azure AD till ditt program.
-* Stöder mjuk borttagning av en användare `active=false` och återställning av användaren `active=true` (användarobjektet ska returneras i en begäran oavsett om användaren är aktiv) eller inte. Den enda gång som användaren inte ska returneras är när den är hårt borttagen från programmet. 
-
-Följ dessa allmänna rikt linjer när du implementerar en SCIM-slutpunkt för att säkerställa kompatibilitet med Azure AD:
+Använd de allmänna rikt linjerna när du implementerar en SCIM-slutpunkt för att säkerställa kompatibilitet med AAD:
 
 * `id` är en obligatorisk egenskap för alla resurser. Varje svar som returnerar en resurs måste se till att varje resurs har den här egenskapen, förutom `ListResponse` med noll medlemmar.
 * Svar på en fråga/filter-begäran ska alltid vara en `ListResponse` .
-* Grupper är valfria, men stöds endast om SCIM-implementeringen stöder PATCH-begäranden.
-* Det är inte nödvändigt att inkludera hela resursen i KORRIGERINGs svaret.
-* Microsoft Azure AD använder endast följande operatorer:  
-    - `eq`
-    - `and`
-* Kräv inte Skift läges känslig matchning på strukturella element i SCIM, i synnerhet KORRIGERINGs `op` Åtgärds värden, enligt definitionen i https://tools.ietf.org/html/rfc7644#section-3.5.2 . Azure AD avger värdena för "OP" som `Add` , `Replace` och `Remove` .
-* Microsoft Azure AD gör begär Anden att hämta en slumpmässig användare och grupp för att säkerställa att slut punkten och autentiseringsuppgifterna är giltiga. Det sker också som en del av **test anslutnings** flödet i [Azure Portal](https://portal.azure.com). 
-* Attributet som resurserna kan frågas om på ska anges som ett matchande attribut i programmet i [Azure Portal](https://portal.azure.com). Mer information finns i [Anpassa mappningar för användar etablerings attribut](customize-application-attributes.md)
+* Grupper är valfria, men stöds endast om SCIM-implementeringen stöder **patch** -begäranden.
+* Det är inte nödvändigt att inkludera hela resursen i **korrigerings** svaret.
+* Microsoft AAD använder endast följande operatorer: `eq` , `and`
+* Kräv inte Skift läges känslig matchning på strukturella element i SCIM, i synnerhet **korrigerings** `op` Åtgärds värden, enligt definitionen i [avsnitt 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2). AAD genererar värdena `op` som **Lägg till**, **Ersätt** och **ta bort**.
+* Microsoft AAD gör förfrågningar om att hämta en slumpmässig användare och grupp för att säkerställa att slut punkten och autentiseringsuppgifterna är giltiga. Det sker också som en del av **test anslutnings** flödet i [Azure Portal](https://portal.azure.com). 
+* Attributet som resurserna kan frågas om på ska anges som ett matchande attribut i programmet i [Azure Portal](https://portal.azure.com). mer information finns i [Anpassa mappningar av användar Provisioning-attribut](customize-application-attributes.md).
 * Stöd för HTTPS på din SCIM-slutpunkt
 
 ### <a name="user-provisioning-and-deprovisioning"></a>Användar etablering och avetablering
 
-Följande bild visar de meddelanden som Azure Active Directory skickar till en SCIM-tjänst för att hantera livs cykeln för en användare i ditt programs identitets lager.  
+Följande bild visar de meddelanden som AAD skickar till en SCIM-tjänst för att hantera livs cykeln för en användare i ditt programs identitets lager.  
 
 ![Visar användar etablering och avetablerings ordning](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
 *Användar etablering och avetablerings ordning*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>Grupp etablering och avetablering
 
-Grupp etablering och avetablering är valfria. När det implementeras och aktive ras visar följande bild de meddelanden som Azure AD skickar till en SCIM-tjänst för att hantera livs cykeln för en grupp i ditt programs identitets lager.  Dessa meddelanden skiljer sig från meddelanden om användare på två sätt:
+Grupp etablering och avetablering är valfria. När det implementeras och aktive ras visar följande bild de meddelanden som AAD skickar till en SCIM-tjänst för att hantera livs cykeln för en grupp i ditt programs identitets lager. Dessa meddelanden skiljer sig från meddelanden om användare på två sätt:
 
 * Begär Anden om att hämta grupper anger att attributet members ska uteslutas från alla resurser som tillhandahålls som svar på begäran.  
 * Begär Anden för att avgöra om ett referensvärde har ett visst värde, begär Anden om medlemmarnas attribut.  
@@ -191,10 +229,10 @@ Grupp etablering och avetablering är valfria. När det implementeras och aktive
 *Grupp etablering och avetablerings ordning*
 
 ### <a name="scim-protocol-requests-and-responses"></a>Begär Anden och svar för SCIM-protokoll
-Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats av Azure AD SCIM-klienten och exempel på förväntade svar. För bästa resultat bör du koda appen för att hantera dessa begär anden i det här formatet och generera förväntade svar.
+Det här avsnittet innehåller exempel på SCIM-begäranden som har spridits av AAD SCIM-klienten och exempel på förväntade svar. För bästa resultat bör du koda appen för att hantera dessa begär anden i det här formatet och generera förväntade svar.
 
 > [!IMPORTANT]
-> Information om hur och när Azure AD-tjänsten för användar etablering avger de åtgärder som beskrivs nedan finns i avsnittet [etablerings cykler: initial och stegvisa](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) [anvisningar för hur etablering fungerar](how-provisioning-works.md).
+> Information om hur och när tjänsten AAD User Provisioning genererar de åtgärder som beskrivs nedan finns i avsnittet [etablerings cykler: initial och stegvisa](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) [anvisningar för hur etablering fungerar](how-provisioning-works.md).
 
 [Användar åtgärder](#user-operations)
   - [Skapa användare](#create-user) ([](#request)  /  [svar](#response)på begäran)
@@ -205,7 +243,6 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
   - [Uppdatera användare [Egenskaper för enstaka värde]](#update-user-single-valued-properties) ([begär](#request-5)  /  [svar](#response-5)) 
   - [Inaktivera användare](#disable-user) ([](#request-14)  /  [svar](#response-14)på begäran)
   - [Ta bort användare](#delete-user) (svar på[begäran](#request-6)  /  [](#response-6))
-
 
 [Grupp åtgärder](#group-operations)
   - [Skapa grupp](#create-group) ([begär](#request-7)  /  [svar](#response-7))
@@ -222,7 +259,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 #### <a name="create-user"></a>Skapa användare
 
-###### <a name="request"></a>Förfrågan
+##### <a name="request"></a>Förfrågan
 
 *POST-/users*
 ```json
@@ -363,7 +400,6 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
     "startIndex": 1,
     "itemsPerPage": 20
 }
-
 ```
 
 #### <a name="get-user-by-query---zero-results"></a>Hämta användare från fråga – noll resultat
@@ -383,7 +419,6 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
     "startIndex": 1,
     "itemsPerPage": 20
 }
-
 ```
 
 #### <a name="update-user-multi-valued-properties"></a>Uppdatera användare [Egenskaper för flera värden]
@@ -722,7 +757,6 @@ De enda acceptabla TLS-protokollen är TLS 1,2 och TLS 1,3. Inga andra versioner
 - RSA-nycklar måste vara minst 2 048 bitar.
 - ECC-nycklar måste vara minst 256 bitar, genererade med en godkänd Elliptic-kurva
 
-
 **Nyckel längder**
 
 Alla tjänster måste använda X. 509-certifikat som genererats med krypterings nycklar av tillräcklig längd, vilket innebär:
@@ -745,7 +779,7 @@ Minsta fält för TLS 1,2 cipher-paket:
 ### <a name="ip-ranges"></a>IP-intervall
 Azure AD Provisioning-tjänsten fungerar för närvarande under IP-intervallen för AzureActiveDirectory som visas [här](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all). Du kan lägga till IP-intervallen som visas i AzureActiveDirectory-taggen för att tillåta trafik från Azure AD Provisioning-tjänsten till ditt program. Observera att du måste granska listan över IP-adressintervall noggrant för beräknade adresser. En adress som "40.126.25.32" kunde representeras i listan över IP-adressintervall som "40.126.0.0/18". Du kan också hämta listan över IP-adressintervall via programmering med följande [API](/rest/api/virtualnetwork/servicetags/list).
 
-## <a name="step-3-build-a-scim-endpoint"></a>Steg 3: Bygg en SCIM-slutpunkt
+## <a name="build-a-scim-endpoint"></a>Bygg en SCIM-slutpunkt
 
 Nu när du har utformat schemat och förstått Azure AD SCIM-implementeringen kan du komma igång med att utveckla din SCIM-slutpunkt. I stället för att börja från början och skapa implementeringen helt och hållet, kan du lita på ett antal SCIM-bibliotek med öppen källkod som publicerats av SCIM-communityn.
 
@@ -848,78 +882,77 @@ I exempel koden autentiseras begär Anden med hjälp av paketet Microsoft. AspNe
 
 En Bearer-token krävs också för att använda de tillhandahållna [Postman-testen](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) och utföra lokal fel sökning med localhost. Exempel koden använder ASP.NET Core miljöer för att ändra autentiseringsinställningarna under utvecklings fasen och aktivera Använd en självsignerad token.
 
-Om du vill ha mer information om flera miljöer i ASP.NET Core använder du följande länk: [Använd flera miljöer i ASP.net Core](
-https://docs.microsoft.com/aspnet/core/fundamentals/environments)
+Mer information om flera miljöer i ASP.NET Core finns i [använda flera miljöer i ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
 
 Följande kod framtvingar att begär anden till någon av tjänstens slut punkter autentiseras med hjälp av en Bearer-token signerad med en anpassad nyckel:
 
 ```csharp
-        public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
+{
+    if (_env.IsDevelopment())
+    {
+        services.AddAuthentication(options =>
         {
-            if (_env.IsDevelopment())
-            {
-                services.AddAuthentication(options =>
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters =
+                new TokenValidationParameters
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                    .AddJwtBearer(options =>
-                    {
-                        options.TokenValidationParameters =
-                            new TokenValidationParameters
-                            {
-                                ValidateIssuer = false,
-                                ValidateAudience = false,
-                                ValidateLifetime = false,
-                                ValidateIssuerSigningKey = false,
-                                ValidIssuer = "Microsoft.Security.Bearer",
-                                ValidAudience = "Microsoft.Security.Bearer",
-                                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"))
-                            };
-                    });
-            }
-        ...
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = false,
+                    ValidIssuer = "Microsoft.Security.Bearer",
+                    ValidAudience = "Microsoft.Security.Bearer",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"))
+                };
+        });
+    }
+...
 ```
 
 Skicka en GET-begäran till token-styrenheten för att få en giltig Bearer-token är metoden _GenerateJSONWebToken_ ansvarig för att skapa en token som matchar parametrarna som har kon figurer ATS för utveckling:
 
 ```csharp
-        private string GenerateJSONWebToken()
-        {
-            // Create token key
-            SymmetricSecurityKey securityKey =
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"));
-            SigningCredentials credentials =
-                new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+private string GenerateJSONWebToken()
+{
+    // Create token key
+    SymmetricSecurityKey securityKey =
+        new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"));
+    SigningCredentials credentials =
+        new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            // Set token expiration
-            DateTime startTime = DateTime.UtcNow;
-            DateTime expiryTime = startTime.AddMinutes(120);
+    // Set token expiration
+    DateTime startTime = DateTime.UtcNow;
+    DateTime expiryTime = startTime.AddMinutes(120);
 
-            // Generate the token
-            JwtSecurityToken token =
-                new JwtSecurityToken(
-                    "Microsoft.Security.Bearer",
-                    "Microsoft.Security.Bearer",
-                    null,
-                    notBefore: startTime,
-                    expires: expiryTime,
-                    signingCredentials: credentials);
+    // Generate the token
+    JwtSecurityToken token =
+        new JwtSecurityToken(
+            "Microsoft.Security.Bearer",
+            "Microsoft.Security.Bearer",
+            null,
+            notBefore: startTime,
+            expires: expiryTime,
+            signingCredentials: credentials);
 
-            string result = new JwtSecurityTokenHandler().WriteToken(token);
-            return result;
-        }
+    string result = new JwtSecurityTokenHandler().WriteToken(token);
+    return result;
+}
 ```
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Hantera etablering och avetablering av användare
 
 ***Exempel 1. Fråga tjänsten om en matchande användare***
 
-Azure Active Directory skickar en fråga till tjänsten för en användare med ett `externalId` attributvärde som matchar värdet för attributet smek namn för en användare i Azure AD. Frågan uttrycks som en Hypertext Transfer Protocol (HTTP)-begäran, till exempel det här exemplet, där jyoung är ett exempel på ett smek namn för en användare i Azure Active Directory.
+Azure Active Directory (AAD) frågar tjänsten efter en användare med ett `externalId` attributvärde som matchar värdet för attributet smek namn för en användare i AAD. Frågan uttrycks som en Hypertext Transfer Protocol (HTTP)-begäran, till exempel det här exemplet, där jyoung är ett exempel på ett smek namn för en användare i Azure Active Directory.
 
 >[!NOTE]
-> Detta är endast ett exempel. Alla användare får inte ett smek namn-attribut och värdet som en användare har kanske inte är unikt i katalogen. Dessutom kan attributet som används för matchning (som i det här fallet `externalId` ) konfigureras i [mappningar för Azure AD-attribut](customize-application-attributes.md).
+> Detta är endast ett exempel. Alla användare får inte ett smek namn-attribut och värdet som en användare har kanske inte är unikt i katalogen. Dessutom kan attributet som används för matchning (som i det här fallet `externalId` ) konfigureras i [mappningar av AAD-attribut](customize-application-attributes.md).
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -929,15 +962,15 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 I exempel koden översätts begäran till ett anrop till QueryAsync-metoden för tjänstens Provider. Här är signaturen för den metoden: 
 
 ```csharp
- // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
- // Microsoft.SCIM.IRequest is defined in 
- // Microsoft.SCIM.Service.  
- // Microsoft.SCIM.Resource is defined in 
- // Microsoft.SCIM.Schemas.  
- // Microsoft.SCIM.IQueryParameters is defined in 
- // Microsoft.SCIM.Protocol.  
+// System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+// Microsoft.SCIM.IRequest is defined in 
+// Microsoft.SCIM.Service.  
+// Microsoft.SCIM.Resource is defined in 
+// Microsoft.SCIM.Schemas.  
+// Microsoft.SCIM.IQueryParameters is defined in 
+// Microsoft.SCIM.Protocol.  
 
- Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
+Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
 I exempel frågan, för en användare med ett angivet värde för `externalId` attributet, är värdena för argumenten som skickas till metoden QueryAsync:
@@ -949,13 +982,13 @@ I exempel frågan, för en användare med ett angivet värde för `externalId` a
 
 ***Exempel 2. Etablera en användare***
 
-Om svaret på en fråga till webb tjänsten för en användare med ett `externalId` attributvärde som matchar värdet för ett värde för en användare inte returnerar några användare, kommer Azure Active Directory begär Anden som tjänsten etablerar en användare som motsvarar den som finns i Azure Active Directory.  Här är ett exempel på en sådan begäran: 
+Om svaret på en fråga till webb tjänsten för en användare med ett `externalId` attributvärde som överensstämmer med värdet för ett värde för en användare inte returnerar några användare, kommer AAD att tillhandahålla en användare som motsvarar den som finns i AAD.  Här är ett exempel på en sådan begäran: 
 
 ```
- POST https://.../scim/Users HTTP/1.1
- Authorization: Bearer ...
- Content-type: application/scim+json
- {
+POST https://.../scim/Users HTTP/1.1
+Authorization: Bearer ...
+Content-type: application/scim+json
+{
    "schemas":
    [
      "urn:ietf:params:scim:schemas:core:2.0:User",
@@ -985,13 +1018,13 @@ Om svaret på en fråga till webb tjänsten för en användare med ett `external
 I exempel koden översätts begäran till ett anrop till CreateAsync-metoden för tjänstens Provider. Här är signaturen för den metoden: 
 
 ```csharp
- // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
- // Microsoft.SCIM.IRequest is defined in 
- // Microsoft.SCIM.Service.  
- // Microsoft.SCIM.Resource is defined in 
- // Microsoft.SCIM.Schemas.  
+// System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+// Microsoft.SCIM.IRequest is defined in 
+// Microsoft.SCIM.Service.  
+// Microsoft.SCIM.Resource is defined in 
+// Microsoft.SCIM.Schemas.  
 
- Task<Resource> CreateAsync(IRequest<Resource> request);
+Task<Resource> CreateAsync(IRequest<Resource> request);
 ```
 
 I en begäran om att etablera en användare är värdet för resurs argumentet en instans av klassen Microsoft. SCIM. Core2EnterpriseUser som definieras i biblioteket Microsoft. SCIM. schemas.  Om begäran att etablera användaren lyckas förväntas implementeringen av metoden returnera en instans av klassen Microsoft. SCIM. Core2EnterpriseUser med värdet för egenskapen Identifier inställd på den unika identifieraren för den nyligen etablerade användaren.  
@@ -1001,21 +1034,21 @@ I en begäran om att etablera en användare är värdet för resurs argumentet e
 Om du vill uppdatera en användare som är känd att finnas i ett identitets lager som har en SCIM, kan Azure Active Directory fortsätta genom att begära det aktuella status för användaren från tjänsten med en begäran, till exempel: 
 
 ```
- GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
- Authorization: Bearer ...
+GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+Authorization: Bearer ...
 ```
 
 I exempel koden översätts begäran till ett anrop till RetrieveAsync-metoden för tjänstens Provider. Här är signaturen för den metoden: 
 
 ```csharp
- // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
- // Microsoft.SCIM.IRequest is defined in 
- // Microsoft.SCIM.Service.  
- // Microsoft.SCIM.Resource and 
- // Microsoft.SCIM.IResourceRetrievalParameters 
- // are defined in Microsoft.SCIM.Schemas 
+// System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+// Microsoft.SCIM.IRequest is defined in 
+// Microsoft.SCIM.Service.  
+// Microsoft.SCIM.Resource and 
+// Microsoft.SCIM.IResourceRetrievalParameters 
+// are defined in Microsoft.SCIM.Schemas 
 
- Task<Resource> RetrieveAsync(IRequest<IResourceRetrievalParameters> request);
+Task<Resource> RetrieveAsync(IRequest<IResourceRetrievalParameters> request);
 ```
 
 I exemplet på en begäran om att hämta det aktuella status för en användare är värdena för egenskaperna för objektet som anges som värde för argumentet Parameters följande: 
@@ -1044,10 +1077,10 @@ Här kan värdet för index x vara 0 och värdet för indexet y kan vara 1 eller
 Här är ett exempel på en begäran från Azure Active Directory till en SCIM-tjänst för att uppdatera en användare: 
 
 ```
-  PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-  Authorization: Bearer ...
-  Content-type: application/scim+json
-  {
+PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+Authorization: Bearer ...
+Content-type: application/scim+json
+{
     "schemas": 
     [
       "urn:ietf:params:scim:api:messages:2.0:PatchOp"],
@@ -1066,46 +1099,48 @@ Här är ett exempel på en begäran från Azure Active Directory till en SCIM-t
 I exempel koden översätts begäran till ett anrop till UpdateAsync-metoden för tjänstens Provider. Här är signaturen för den metoden: 
 
 ```csharp
- // System.Threading.Tasks.Tasks and 
- // System.Collections.Generic.IReadOnlyCollection<T>  // are defined in mscorlib.dll.  
- // Microsoft.SCIM.IRequest is defined in
- // Microsoft.SCIM.Service.
- // Microsoft.SCIM.IPatch, 
- // is defined in Microsoft.SCIM.Protocol. 
+// System.Threading.Tasks.Tasks and 
+// System.Collections.Generic.IReadOnlyCollection<T>  // are defined in mscorlib.dll.  
+// Microsoft.SCIM.IRequest is defined in
+// Microsoft.SCIM.Service.
+// Microsoft.SCIM.IPatch, 
+// is defined in Microsoft.SCIM.Protocol. 
 
- Task UpdateAsync(IRequest<IPatch> request);
+Task UpdateAsync(IRequest<IPatch> request);
 ```
 
 I exemplet på en begäran om att uppdatera en användare har det objekt som angavs som värde för argumentet patch följande egenskaps värden: 
-  
-* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
-* ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: User"
-* (PatchRequest som PatchRequest2). Åtgärder. Count: 1
-* (PatchRequest som PatchRequest2). Operations. ElementAt (0). OperationName: OperationName. Add
-* (PatchRequest som PatchRequest2). Operations. ElementAt (0). Path. AttributePath: "Manager"
-* (PatchRequest som PatchRequest2). Operations. ElementAt (0). Värde. Count: 1
-* (PatchRequest som PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Referens: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
-* (PatchRequest som PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Värde: 2819c223-7f76-453A-919d-413861904646
+
+|Argument|Värde|
+|-|-|
+|ResourceIdentifier. Identifier|"54D382A4-2050-4C03-94D1-E769F1D15682"|
+|ResourceIdentifier.SchemaIdentifier|"urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: User"|
+|(PatchRequest som PatchRequest2). Åtgärder. Count|1|
+|(PatchRequest som PatchRequest2). Operations. ElementAt (0). OperationName|OperationName. Add|
+|(PatchRequest som PatchRequest2). Operations. ElementAt (0). Path. AttributePath|Cachehanteraren|
+|(PatchRequest som PatchRequest2). Operations. ElementAt (0). Värde. Count|1|
+|(PatchRequest som PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Förhållande|http://.../scim/Users/2819c223-7f76-453a-919d-413861904646|
+|(PatchRequest som PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Värde| 2819c223-7f76-453A-919d-413861904646|
 
 ***Exempel 6. Avetablera en användare***
 
-För att avetablera en användare från ett identitets lager med en SCIM-tjänst skickar Azure AD en begäran som:
+För att avetablera en användare från ett identitets lager med en SCIM-tjänst skickar AAD en begäran som:
 
 ```
-  DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
-  Authorization: Bearer ...
+DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+Authorization: Bearer ...
 ```
 
 I exempel koden översätts begäran till ett anrop till DeleteAsync-metoden för tjänstens Provider. Här är signaturen för den metoden: 
 
 ```csharp
- // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
- // Microsoft.SCIM.IRequest is defined in 
- // Microsoft.SCIM.Service.  
- // Microsoft.SCIM.IResourceIdentifier, 
- // is defined in Microsoft.SCIM.Protocol. 
+// System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+// Microsoft.SCIM.IRequest is defined in 
+// Microsoft.SCIM.Service.  
+// Microsoft.SCIM.IResourceIdentifier, 
+// is defined in Microsoft.SCIM.Protocol. 
 
- Task DeleteAsync(IRequest<IResourceIdentifier> request);
+Task DeleteAsync(IRequest<IResourceIdentifier> request);
 ```
 
 Det tillhandahållna objektet som värde för argumentet resourceIdentifier har följande egenskaps värden i exemplet på en begäran om att avetablera en användare: 
@@ -1113,9 +1148,9 @@ Det tillhandahållna objektet som värde för argumentet resourceIdentifier har 
 * ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: User"
 
-## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Steg 4: integrera din SCIM-slutpunkt med Azure AD SCIM-klienten
+## <a name="integrate-your-scim-endpoint-with-the-aad-scim-client"></a>Integrera din SCIM-slutpunkt med AAD SCIM-klienten
 
-Azure AD kan konfigureras att automatiskt etablera tilldelade användare och grupper till program som implementerar en särskild profil för [SCIM 2,0-protokollet](https://tools.ietf.org/html/rfc7644). Information om profilen beskrivs i [steg 2: förstå Azure AD scim-implementeringen](#step-2-understand-the-azure-ad-scim-implementation).
+Azure AD kan konfigureras att automatiskt etablera tilldelade användare och grupper till program som implementerar en särskild profil för [SCIM 2,0-protokollet](https://tools.ietf.org/html/rfc7644). Profilerna i profilen dokumenteras i [förstå Azure AD scim-implementeringen](#understand-the-aad-scim-implementation).
 
 Kontakta din programprovider eller dokumentationen för program leverantören om du vill ha information om kompatibilitet med dessa krav.
 
@@ -1128,10 +1163,10 @@ Program som stöder SCIM-profilen som beskrivs i den här artikeln kan anslutas 
 
 **Så här ansluter du ett program som stöder SCIM:**
 
-1. Logga in på [Azure Active Directory Portal](https://aad.portal.azure.com). Observera att du kan få åtkomst till en kostnads fri utvärderings version av Azure Active Directory med P2-licenser genom att registrera dig för [programmet för utvecklare](https://developer.microsoft.com/office/dev-program)
-2. Välj **företags program** i det vänstra fönstret. En lista över alla konfigurerade appar visas, inklusive appar som har lagts till från galleriet.
-3. Välj **+ nytt program**  >  **+ skapa ditt eget program**.
-4. Ange ett namn för ditt program, Välj alternativet "*integrera andra program som du inte hittar i galleriet*" och välj **Lägg till** för att skapa ett app-objekt. Den nya appen läggs till i listan över företags program och öppnas på sidan för hantering av appar.
+1. Logga in på [AAD-portalen](https://aad.portal.azure.com). Observera att du kan få åtkomst till en kostnads fri utvärderings version av Azure Active Directory med P2-licenser genom att registrera dig för [programmet för utvecklare](https://developer.microsoft.com/office/dev-program)
+1. Välj **företags program** i det vänstra fönstret. En lista över alla konfigurerade appar visas, inklusive appar som har lagts till från galleriet.
+1. Välj **+ nytt program**  >  **+ skapa ditt eget program**.
+1. Ange ett namn för ditt program, Välj alternativet "*integrera andra program som du inte hittar i galleriet*" och välj **Lägg till** för att skapa ett app-objekt. Den nya appen läggs till i listan över företags program och öppnas på sidan för hantering av appar.
 
    ![Skärm bild som visar Azure AD Application Gallery ](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
     *Azure AD-programgalleriet*
@@ -1142,57 +1177,56 @@ Program som stöder SCIM-profilen som beskrivs i den här artikeln kan anslutas 
    ![Skärm bild som visar Azure ADs gamla App Gallery Experience ](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
     *Azure AD-upplevelse*
 
-5. På skärmen hantering av appar väljer du **etablering** i den vänstra panelen.
-6. I menyn **etablerings läge** väljer du **Automatisk**.
+1. På skärmen hantering av appar väljer du **etablering** i den vänstra panelen.
+1. I menyn **etablerings läge** väljer du **Automatisk**.
 
    ![Exempel: etablerings sidan för en app i Azure Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *Konfigurera etablering i Azure Portal*
 
-7. I fältet **klient-URL** anger du URL: en för programmets scim-slutpunkt. Exempel: `https://api.contoso.com/scim/`
-8. Om SCIM-slutpunkten kräver en OAuth Bearer-token från en annan utfärdare än Azure AD kopierar du den obligatoriska OAuth Bearer-token till fältet valfritt **hemligt token** . Om det här fältet lämnas tomt innehåller Azure AD en OAuth Bearer-token som utfärdats från Azure AD med varje begäran. Appar som använder Azure AD som en identitetsprovider kan verifiera den här Azure AD-utfärdade token. 
+1. I fältet **klient-URL** anger du URL: en för programmets scim-slutpunkt. Exempel: `https://api.contoso.com/scim/`
+1. Om SCIM-slutpunkten kräver en OAuth Bearer-token från en annan utfärdare än Azure AD kopierar du den obligatoriska OAuth Bearer-token till fältet valfritt **hemligt token** . Om det här fältet lämnas tomt innehåller Azure AD en OAuth Bearer-token som utfärdats från Azure AD med varje begäran. Appar som använder Azure AD som en identitetsprovider kan verifiera den här Azure AD-utfärdade token. 
    > [!NOTE]
    > Vi rekommenderar ***inte*** att du lämnar det här fältet tomt och förlitar sig på en token som genereras av Azure AD. Det här alternativet är i första hand tillgängligt i test syfte.
-9. Välj **test anslutning** för att Azure Active Directory försöka ansluta till scim-slutpunkten. Om försöket Miss lyckas visas fel information.  
+1. Välj **test anslutning** för att Azure Active Directory försöka ansluta till scim-slutpunkten. Om försöket Miss lyckas visas fel information.  
 
     > [!NOTE]
     > **Test anslutning** frågar scim-slutpunkten för en användare som inte finns med ett slumpmässigt GUID som den matchande egenskap som valts i Azure AD-konfigurationen. Det förväntade korrekta svaret är HTTP 200 OK med ett tomt SCIM ListResponse-meddelande.
 
-10. Om försöket att ansluta till programmet lyckas väljer du **Spara** för att spara administratörens autentiseringsuppgifter.
-11. I avsnittet **mappningar** finns det två valbara uppsättningar av [mappningar för attribut](customize-application-attributes.md): en för användar objekt och en för grupp objekt. Välj var och en för att granska de attribut som synkroniseras från Azure Active Directory till din app. Attributen som väljs som **matchande** egenskaper används för att matcha användare och grupper i appen för uppdaterings åtgärder. Välj **Spara** för att genomföra ändringarna.
+1. Om försöket att ansluta till programmet lyckas väljer du **Spara** för att spara administratörens autentiseringsuppgifter.
+1. I avsnittet **mappningar** finns det två valbara uppsättningar av [mappningar för attribut](customize-application-attributes.md): en för användar objekt och en för grupp objekt. Välj var och en för att granska de attribut som synkroniseras från Azure Active Directory till din app. Attributen som väljs som **matchande** egenskaper används för att matcha användare och grupper i appen för uppdaterings åtgärder. Välj **Spara** för att genomföra ändringarna.
 
     > [!NOTE]
     > Du kan välja att inaktivera synkronisering av grupp objekt genom att inaktivera mappningen "grupper".
 
-12. Under **Inställningar** definierar fältet **omfattning** vilka användare och grupper som ska synkroniseras. Välj **Synkronisera endast tilldelade användare och grupper** (rekommenderas) om du bara vill synkronisera användare och grupper som tilldelats på fliken **användare och grupper** .
-13. När konfigurationen är klar ställer du in **etablerings statusen** **på på**.
-14. Välj **Spara** för att starta Azure AD Provisioning-tjänsten.
-15. Om du bara synkroniserar tilldelade användare och grupper (rekommenderas), måste du välja fliken **användare och grupper** och tilldela de användare eller grupper som du vill synkronisera.
+1. Under **Inställningar** definierar fältet **omfattning** vilka användare och grupper som ska synkroniseras. Välj **Synkronisera endast tilldelade användare och grupper** (rekommenderas) om du bara vill synkronisera användare och grupper som tilldelats på fliken **användare och grupper** .
+1. När konfigurationen är klar ställer du in **etablerings statusen** **på på**.
+1. Välj **Spara** för att starta Azure AD Provisioning-tjänsten.
+1. Om du bara synkroniserar tilldelade användare och grupper (rekommenderas), måste du välja fliken **användare och grupper** och tilldela de användare eller grupper som du vill synkronisera.
 
 När den första cykeln har startats kan du välja **etablerings loggar** i den vänstra panelen för att övervaka förloppet, vilket visar alla åtgärder som utförs av etablerings tjänsten i din app. Mer information om hur du läser etablerings loggarna i Azure AD finns i [rapportering om automatisk etablering av användar konton](check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > Den första cykeln tar längre tid att utföra än senare synkroniseringar, vilket inträffar ungefär var 40: e minut så länge tjänsten körs.
 
-## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Steg 5: publicera ditt program i Azure AD-programgalleriet
+## <a name="publish-your-application-to-the-aad-application-gallery"></a>Publicera ditt program i program galleriet AAD
 
 Om du skapar ett program som ska användas av fler än en klient kan du göra det tillgängligt i Azure AD-programgalleriet. Detta gör det enkelt för organisationer att identifiera programmet och konfigurera etablering. Det är enkelt att publicera din app i Azure AD-galleriet och göra etableringen tillgänglig för andra. Kolla in stegen [här](../develop/v2-howto-app-gallery-listing.md). Microsoft kommer att samar beta med dig för att integrera ditt program i vårt galleri, testa din slut punkt och publicera onboarding- [dokumentation](../saas-apps/tutorial-list.md) för kunder att använda.
 
 ### <a name="gallery-onboarding-checklist"></a>Check lista för Galleri registrering
-Följ check listan nedan för att säkerställa att ditt program registreras snabbt och att kunderna har en smidig distributions upplevelse. Informationen kommer att samlas in från dig när du registrerar dig i galleriet. 
+Använd check listan för att publicera ditt program snabbt och kunder har en smidig distributions upplevelse. Informationen kommer att samlas in från dig när du registrerar dig i galleriet. 
 > [!div class="checklist"]
-> * Stöd för en [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) -användare och grupp slut punkt (endast en krävs, men båda rekommenderas)
+> * Stöd för en [SCIM 2,0](#understand-the-aad-scim-implementation) -användare och grupp slut punkt (endast en krävs, men båda rekommenderas)
 > * Stöd minst 25 begär Anden per sekund per klient för att säkerställa att användare och grupper etableras och avetableras utan fördröjning (krävs)
 > * Upprätta teknisk support och support kontakter som hjälper kunder att publicera gallerier (krävs)
 > * 3 ej utgångna testautentiseringsuppgifter för ditt program (krävs)
 > * Stöd för OAuth-auktoriseringskod eller en lång livs längd enligt beskrivningen nedan (krävs)
 > * Upprätta en teknisk kontakt punkt för att få support för kunder efter Galleri registrering (krävs)
-> * Stöd för uppdatering av flera grupp medlemskap med en enda korrigering (rekommenderas) 
-> * Dokumentera din SCIM-slutpunkt offentligt (rekommenderas) 
-> * [Stöd för schema identifiering](https://tools.ietf.org/html/rfc7643#section-6) (rekommenderas)
+> * Stöd för uppdatering av flera grupp medlemskap med en enda korrigering
+> * Dokumentera din SCIM-slutpunkt offentligt
+> * [Stöd för schema identifiering](https://tools.ietf.org/html/rfc7643#section-6)
 
-
-### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Auktorisering för etablering av anslutningar i program galleriet
-SCIM-specifikationen definierar inte ett SCIM schema för autentisering och auktorisering. Den förlitar sig på användningen av befintliga bransch standarder. Azure AD Provisioning-klienten har stöd för två autentiseringsmetoder för program i galleriet. 
+### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Auktorisering till etablering av anslutningar i program galleriet
+SCIM-specifikationen definierar inte ett SCIM schema för autentisering och auktorisering och förlitar sig på användningen av befintliga bransch standarder.
 
 |Auktoriseringsmetod|Fördelar|Nackdelar|Support|
 |--|--|--|--|
@@ -1202,53 +1236,70 @@ SCIM-specifikationen definierar inte ett SCIM schema för autentisering och aukt
 |Beviljande av OAuth-klientautentiseringsuppgifter|Åtkomst-token är mycket kortare än lösen ord och har en automatiserad uppdaterings funktion som används av token med lång livs längd. Både behörigheten Tillåt och klientens autentiseringsuppgifter skapar samma typ av åtkomsttoken, så att flytta mellan dessa metoder är transparent för API: et.  Etableringen kan vara helt automatiserad och nya token kan utföras tyst utan användar interaktion. ||Stöds inte för Galleri-och appar som inte är gallerier. Support finns i vår efter släpning.|
 
 > [!NOTE]
-> Vi rekommenderar inte att du lämnar fältet token tomt i konfigurations gränssnittet för Azure AD-etablering av anpassade appar. Den token som genereras är primärt tillgänglig i test syfte.
+> Vi rekommenderar inte att du lämnar fältet token tomt i konfigurations gränssnittet för AAD-etablering av anpassade appar. Den token som genereras är primärt tillgänglig i test syfte.
 
-**Utfärdande flöde för OAuth-auktoriseringskod:** Etablerings tjänsten har stöd för [beviljande av auktoriseringskod](https://tools.ietf.org/html/rfc6749#page-24). När du har skickat din begäran om att publicera din app i galleriet, kommer vårt team att samar beta med dig för att samla in följande information:
-*  URL för auktorisering: en URL som klienten kan använda för att få behörighet från resurs ägaren via omdirigering av användar agent. Användaren omdirigeras till denna URL för att ge åtkomst. Observera att denna URL för närvarande inte kan konfigureras per klient.
-*  URL för token Exchange: en URL till klienten som utbyter en auktorisering för en åtkomsttoken, vanligt vis med klientautentisering. Observera att denna URL för närvarande inte kan konfigureras per klient.
-*  Klient-ID: auktoriseringsservern utfärdar den registrerade klienten ett klient-ID, vilket är en unik sträng som representerar den registrerings information som tillhandahålls av klienten.  Klient-ID: n är inte en hemlighet. den exponeras för resurs ägaren och **får inte** användas separat för klientautentisering.  
-*  Klient hemlighet: klient hemligheten är en hemlighet som genereras av auktoriseringsservern. Det bör vara ett unikt värde som endast är känt för auktoriseringsservern. 
+### <a name="oauth-code-grant-flow"></a>Flöde för OAuth-kod beviljande
 
-Observera att OAuth v1 inte stöds på grund av exponering av klient hemligheten. OAuth v2 stöds.  
+Etablerings tjänsten stöder [auktoriseringskod](https://tools.ietf.org/html/rfc6749#page-24) och när du har skickat din begäran om att publicera din app i galleriet, kommer vårt team att samar beta med dig för att samla in följande information:
 
-Metod tips (rekommenderas men krävs inte):
-* Stöder flera omdirigerings-URL: er. Administratörer kan konfigurera etablering från både "portal.azure.com" och "aad.portal.azure.com". Genom att stödja flera omdirigerings-URL: er ser du till att användarna kan auktorisera åtkomst från portalen.
-* Stöd för flera hemligheter för att säkerställa en smidig hemlig förnyelse utan drift avbrott. 
+- URL för **auktorisering**, en URL som klienten kan använda för att få behörighet från resurs ägaren via omdirigering av användar agent. Användaren omdirigeras till denna URL för att ge åtkomst. 
 
-Steg i OAuth Code Granting-flödet:
-1. Logga in på Azure Portal > företags program > Välj program > etablering > Klicka på Auktorisera.
-2. Azure Portal omdirigerar användaren till URL: en för auktorisering (inloggnings sidan för appen från tredje part).
-3. Admin tillhandahåller autentiseringsuppgifter för programmet från tredje part. 
-4. Appen från tredje part omdirigerar användaren tillbaka till Azure Portal och ger beviljande koden 
-5. Azure AD Provisioning Services anropar token-URL: en och ger Grant-koden. Programmet från tredje part svarar med åtkomsttoken, uppdateringstoken och förfallo datum
-6. När etablerings cykeln börjar kontrollerar tjänsten om den aktuella åtkomsttoken är giltig och utbyter den för en ny token vid behov. Åtkomsttoken anges i varje begäran som görs till appen och giltigheten för begäran kontrol leras före varje begäran.
+- **URL för token Exchange**, en URL till klienten som utbyter en auktorisering för en åtkomsttoken, vanligt vis med klientautentisering.
+
+- **Klient-ID**, servern utfärdar den registrerade klienten ett klient-ID, vilket är en unik sträng som representerar den registrerings information som tillhandahålls av klienten.  Klient-ID: n är inte en hemlighet. den exponeras för resurs ägaren och **får inte** användas separat för klientautentisering.  
+
+- **Klient hemlighet**, en hemlighet som genererats av auktoriseringsservern och som ska vara ett unikt värde som bara är känd för auktoriseringsservern. 
 
 > [!NOTE]
-> Det går inte att konfigurera OAuth i det program som inte är galleriet i dag, men du kan skapa en åtkomsttoken manuellt från din Authorization Server och inmatade värden i fältet hemligt token i program som inte är Galleri. På så sätt kan du kontrol lera kompatibiliteten för SCIM-servern med Azure AD SCIM-klienten innan du registrerar i app-galleriet, som har stöd för OAuth-kod beviljande.  
+> URL: en för **auktorisering** och **Exchange-token för Exchange** kan för närvarande inte konfigureras per klient.
 
-**OAuth-token för lång livs längd:** Om ditt program inte stöder OAuth-auktoriseringsvärdet för OAuth-auktoriseringskod kan du också generera en lång livs längd för OAuth Bearer-token som en administratör kan använda för att konfigurera etablerings integrationen. Token ska vara beständig, annars placeras etablerings jobbet i [karantän](application-provisioning-quarantine-status.md) när token upphör att gälla.
+> [!NOTE]
+> OAuth v1 stöds inte på grund av exponering av klient hemligheten. OAuth v2 stöds.  
+
+Metod tips (rekommenderas, men krävs inte):
+* Stöder flera omdirigerings-URL: er. Administratörer kan konfigurera etablering från både "portal.azure.com" och "aad.portal.azure.com". Genom att stödja flera omdirigerings-URL: er ser du till att användarna kan auktorisera åtkomst från portalen.
+* Stöd för flera hemligheter för enkel förnyelse, utan drift avbrott. 
+
+#### <a name="how-to-setup-oauth-code-grant-flow"></a>Konfigurera flöde för OAuth-kod beviljande
+
+1. Logga in på Azure Portal, gå till program etablering för **företags program**  >    >   och välj **auktorisera**.
+
+   1. Azure Portal omdirigerar användaren till URL: en för auktorisering (inloggnings sidan för appen från tredje part).
+
+   1. Admin tillhandahåller autentiseringsuppgifter för programmet från tredje part. 
+
+   1. Appen från tredje part omdirigerar användaren tillbaka till Azure Portal och ger beviljande koden 
+
+   1. Azure AD Provisioning Services anropar token-URL: en och ger Grant-koden. Programmet från tredje part svarar med åtkomsttoken, uppdateringstoken och förfallo datum
+
+1. När etablerings cykeln börjar kontrollerar tjänsten om den aktuella åtkomsttoken är giltig och utbyter den för en ny token vid behov. Åtkomsttoken anges i varje begäran som görs till appen och giltigheten för begäran kontrol leras före varje begäran.
+
+> [!NOTE]
+> Det går inte att konfigurera OAuth i program som inte är gallerier, men du kan skapa en åtkomsttoken manuellt från din Authorization-Server och skriva in den som en hemlig token till ett program som inte är ett galleri program. På så sätt kan du kontrol lera kompatibiliteten för SCIM-servern med AAD SCIM-klienten innan du registrerar i app-galleriet, som har stöd för OAuth-kod beviljande.  
+
+**OAuth-token för lång livs längd:** Om ditt program inte har stöd för OAuth Authorization-flödet för OAuth-auktorisering, genererar i stället en lång tillfällig token-token för OAuth som en administratör kan använda för att konfigurera etablerings integrationen. Token ska vara beständig, annars placeras etablerings jobbet i [karantän](application-provisioning-quarantine-status.md) när token upphör att gälla.
 
 Om du vill ha ytterligare metoder för autentisering och auktorisering kan du berätta för oss på [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
 
 ### <a name="gallery-go-to-market-launch-check-list"></a>Check lista för att gå till marknads start
 För att hjälpa till att öka medvetenheten och behovet av vår gemensamma integrering rekommenderar vi att du uppdaterar din befintliga dokumentation och utvidgar integrationen i dina marknadsförings kanaler.  Nedan visas en uppsättning med check lista aktiviteter som vi rekommenderar att du slutför för att stödja lanseringen
 
-* **Beredskap för försäljning och kund support.** Se till att dina Sälj-och support team är medvetna och kan prata med integrerings funktionerna. Korta ditt sälj-och support team och ge dem med vanliga frågor och svar och inkludera integreringen i ditt försäljnings material. 
-* **Blogg inlägg och/eller pressmeddelanden.** Skapa en blogg post eller pressmeddelande som beskriver den gemensamma integrationen, fördelarna och hur du kommer igång. [Exempel: InPrivate och Azure Active Directory pressmeddelande](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
-* **Sociala medier.** Utnyttja dina sociala medier som Twitter, Facebook eller LinkedIn för att marknadsföra integreringen med kunderna. Var noga med att ta med @AzureAD så att vi kan göra en Tweet för ditt inlägg. [Exempel: InPrivate Twitter post](https://twitter.com/azuread/status/1123964502909779968)
-* **Marknadsförings webbplats.** Skapa eller uppdatera dina marknadsförings sidor (t. ex. integrations sidan, partner sidan, sidan med priser osv.) för att inkludera den gemensamma integreringens tillgänglighet. [Exempel: Pingboard integration Page](https://pingboard.com/org-chart-for), sidan för [Smartsheet-integrering](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), sidan [Monday.com prissättning](https://monday.com/pricing/) 
-* **Teknisk dokumentation.** Skapa en hjälp Center-artikel eller teknisk dokumentation om hur kunder kan komma igång. [Exempel: mottagare + Microsoft Azure Active Directory-integration.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+> [!div class="checklist"]
+> * Se till att dina Sälj-och kund support team är medvetna, redo och kan prata med integrerings funktionerna. Korta dina team, ge dem med vanliga frågor och svar och inkludera integreringen i ditt försäljnings material. 
+> * Skapa en blogg post eller pressmeddelande som beskriver den gemensamma integrationen, fördelarna och hur du kommer igång. [Exempel: InPrivate och Azure Active Directory pressmeddelande](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+> * Utnyttja dina sociala medier som Twitter, Facebook eller LinkedIn för att marknadsföra integreringen med kunderna. Var noga med att ta med @AzureAD så att vi kan göra en Tweet för ditt inlägg. [Exempel: InPrivate Twitter post](https://twitter.com/azuread/status/1123964502909779968)
+> * Skapa eller uppdatera marknadsförings sidorna/webbplatsen (t. ex. integrations sidan, partner sidan, sidan med priser osv.) för att inkludera tillgängligheten för den gemensamma integrationen. [Exempel: Pingboard integration Page](https://pingboard.com/org-chart-for), sidan för [Smartsheet-integrering](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), sidan [Monday.com prissättning](https://monday.com/pricing/) 
+> * Skapa en hjälp Center-artikel eller teknisk dokumentation om hur kunder kan komma igång. [Exempel: mottagare + Microsoft Azure Active Directory-integration.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
-* **Kund kommunikation.** Meddela kunder om den nya integrationen genom din kund kommunikation (månads Visa nyhets brev, e-postkampanjer, produkt viktig information). 
+> * Meddela kunder om den nya integrationen genom din kund kommunikation (månads Visa nyhets brev, e-postkampanjer, produkt viktig information). 
 
-## <a name="related-articles"></a>Relaterade artiklar
+## <a name="next-steps"></a>Nästa steg
 
-* [Utveckla en exempel SCIM-slutpunkt](use-scim-to-build-users-and-groups-endpoints.md)
-* [Automatisera användar etablering och avetablering för SaaS-appar](user-provisioning.md)
-* [Anpassa mappningar av attribut för användar etablering](customize-application-attributes.md)
-* [Skriver uttryck för mappningar av attribut](functions-for-customizing-application-data.md)
-* [Omfångs filter för användar etablering](define-conditional-rules-for-provisioning-user-accounts.md)
-* [Meddelanden om konto etablering](user-provisioning.md)
-* [Lista över självstudier om hur du integrerar SaaS-appar](../saas-apps/tutorial-list.md)
-
+> [!div class="nextstepaction"]
+> [Utveckla en exempel scim-slutpunkt](use-scim-to-build-users-and-groups-endpoints.md) 
+>  [Automatisera användar etablering och avetablering för SaaS-appar](user-provisioning.md) 
+>  [Anpassa mappningar av attribut för användar etablering](customize-application-attributes.md) 
+>  [Skriver uttryck för mappningar](functions-for-customizing-application-data.md) 
+>  av attribut [Omfångs filter för användar etablering](define-conditional-rules-for-provisioning-user-accounts.md) 
+>  Meddelanden om konto [etablering](user-provisioning.md) 
+>  [Lista över självstudier om hur du integrerar SaaS-appar](../saas-apps/tutorial-list.md)

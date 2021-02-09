@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2020
+ms.date: 02/09/2021
 ms.author: memildin
-ms.openlocfilehash: 72ded01b141aafb7fd3e4d761882a10eaf0c4b33
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 4dc9855afe7ed53db120f4dbc6c09ac4db0f58d9
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920417"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988562"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Konfigurera e-postaviseringar för säkerhets aviseringar 
 
@@ -26,8 +26,8 @@ Säkerhets aviseringar måste kontakta rätt personer i din organisation. Som st
 
 Om du vill definiera egna inställningar för e-postmeddelanden Azure Security Center kan du med hjälp av sidan Inställningar för **e-postavisering** välja:
 
-- **_vem som_ ska meddelas** – e-postmeddelanden kan skickas till utvalda individer eller till någon med en angiven Azure-roll för en prenumeration. 
-- **_vad_ de ska meddelas om** – ändra allvarlighets graderna som Security Center ska skicka ut meddelanden till.
+- ***vem som* ska meddelas** – e-postmeddelanden kan skickas till utvalda individer eller till någon med en angiven Azure-roll för en prenumeration. 
+- ***vad* de ska meddelas om** – ändra allvarlighets graderna som Security Center ska skicka ut meddelanden till.
 
 För att undvika aviserings utmattning begränsar Security Center volymen utgående e-post. Security Center skickar för varje prenumeration:
 
@@ -48,8 +48,7 @@ För att undvika aviserings utmattning begränsar Security Center volymen utgåe
 |||
 
 
-## <a name="customize-the-security-alerts-email-notifications"></a>Anpassa e-postaviseringar om säkerhets varningar<a name="email"></a>
-
+## <a name="customize-the-security-alerts-email-notifications-via-the-portal"></a>Anpassa e-postaviseringar om säkerhets aviseringar via portalen<a name="email"></a>
 Du kan skicka e-postmeddelanden till enskilda användare eller till alla användare med vissa Azure-roller.
 
 1. Välj den relevanta prenumerationen från Security Center **pris & inställningar** och välj **e-postaviseringar**.
@@ -60,6 +59,28 @@ Du kan skicka e-postmeddelanden till enskilda användare eller till alla använd
     - Ange vissa e-postadresser avgränsade med kommatecken. Det finns ingen gräns för antalet e-postadresser som du kan ange.
 
 1. Om du vill använda säkerhets kontakt information för din prenumeration väljer du **Spara**.
+
+## <a name="customize-the-alerts-email-notifications-through-the-api"></a>Anpassa e-postaviseringar via e-post via API: et
+Du kan också hantera dina e-postaviseringar via den tillhandahållna REST API. Fullständig information finns i [SECURITYCONTACTS API-dokumentationen](https://docs.microsoft.com/rest/api/securitycenter/securitycontacts).
+
+Det här är en exempel begär ande text för förfrågan om att skapa en säkerhets kontakt konfiguration:
+
+```json
+{
+    "properties": {
+        "emails": admin@contoso.com;admin2@contoso.com,
+        "notificationsByRole": {
+            "state": "On",
+            "roles": ["AccountAdmin", "Owner"]
+        },
+        "alertNotifications": {
+            "state": "On",
+            "minimalSeverity": "High"
+        },
+        "phone": ""
+    }
+}
+```
 
 
 ## <a name="see-also"></a>Se även

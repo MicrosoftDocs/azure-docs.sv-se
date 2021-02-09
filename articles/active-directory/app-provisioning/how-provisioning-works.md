@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1f4466dea35fe3d52f86386f0bf0cc0c3b6a658f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256364"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988977"
 ---
 # <a name="how-provisioning-works"></a>Så här fungerar etablering
 
@@ -43,7 +43,7 @@ Om du vill begära en automatisk Azure AD Provisioning-anslutning för en app so
 
 ## <a name="authorization"></a>Auktorisering
 
-Autentiseringsuppgifter krävs för att Azure AD ska kunna ansluta till programmets användar hanterings-API. När du konfigurerar automatisk användar etablering för ett program måste du ange giltiga autentiseringsuppgifter. För Galleri program kan du hitta autentiseringstypen och kraven för programmet genom att titta på självstudierna för appen. För program som inte är gallerier kan du läsa [scim](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) -dokumentationen för att förstå typ och krav för autentiseringsuppgifter. I Azure Portal kan du testa autentiseringsuppgifterna genom att låta Azure AD försöka ansluta till appens etablerings app med de angivna autentiseringsuppgifterna.
+Autentiseringsuppgifter krävs för att Azure AD ska kunna ansluta till programmets användar hanterings-API. När du konfigurerar automatisk användar etablering för ett program måste du ange giltiga autentiseringsuppgifter. För Galleri program kan du hitta autentiseringstypen och kraven för programmet genom att titta på självstudierna för appen. För program som inte är gallerier kan du läsa [scim](./use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery) -dokumentationen för att förstå typ och krav för autentiseringsuppgifter. I Azure Portal kan du testa autentiseringsuppgifterna genom att låta Azure AD försöka ansluta till appens etablerings app med de angivna autentiseringsuppgifterna.
 
 ## <a name="mapping-attributes"></a>Mappar attribut
 

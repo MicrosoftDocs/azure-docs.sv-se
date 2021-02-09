@@ -2,13 +2,13 @@
 title: Livs cykel hantering av virtuella Azure VMware-lösningar
 description: Lär dig att hantera alla aspekter av livs cykeln för dina virtuella Azure VMware-lösningar med Microsoft Azure inbyggda verktyg.
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062904"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988536"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Livs cykel hantering av virtuella Azure VMware-lösningar
 
@@ -110,3 +110,11 @@ Azure Monitor är en omfattande lösning för att samla in, analysera och agera 
     - [Skapa, Visa och hantera logg aviseringar med hjälp av Azure Monitor](../azure-monitor/platform/alerts-log.md).
     - [Åtgärds regler](../azure-monitor/platform/alerts-action-rules.md) för att ange automatiserade åtgärder och meddelanden.
     - [Anslut Azure till ITSM-verktyg med anslutningsprogram för hantering av IT-tjänster (ITSM)](../azure-monitor/platform/itsmc-overview.md).
+    
+ ## <a name="next-steps"></a>Nästa steg
+
+Nu när du har använt Azures inbyggda verktyg för att hantera dina virtuella datorer i Azure VMware-lösningen under hela livs cykeln, kanske du vill lära dig mer om:
+
+- [Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center](azure-security-integration.md).
+- Konfigurera [Azure Backup Server för Azure VMware-lösning](set-up-backup-server-for-azure-vmware-solution.md).
+- [Integrera Azure VMware-lösningen i en hubb och eker-arkitektur](concepts-hub-and-spoke.md).

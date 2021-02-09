@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 01/25/2021
 ms.author: apimpm
-ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82232980"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989087"
 ---
 # <a name="self-hosted-gateway-overview"></a>Översikt över gateway med egen värd
 
@@ -43,13 +43,13 @@ Att distribuera lokala gateways i samma miljöer där Server dels API-implemente
 
 ## <a name="packaging-and-features"></a>Paketering och funktioner
 
-Den egen värdbaserade gatewayen är en behållare med en funktions motsvarighet som är en del av den hanterade gateway som distribueras till Azure som en del av varje API Management tjänst. Den egna värdbaserade gatewayen är tillgänglig som en Linux-baserad Docker- [behållare](https://aka.ms/apim/sputnik/dhub) från Microsoft container Registry. Den kan distribueras till Docker, Kubernetes eller någon annan lösning för behållar dirigering som körs på ett Server kluster lokalt, i molnet eller i utvärderings-och utvecklings syfte på en personlig dator.
+Den egen värdbaserade gatewayen är en behållare som är funktions ekvivalent med den hanterade gateway som distribuerats till Azure som en del av varje API Management tjänst. Den egna värdbaserade gatewayen är tillgänglig som en Linux-baserad Docker- [behållare](https://aka.ms/apim/sputnik/dhub) från Microsoft container Registry. Den kan distribueras till Docker, Kubernetes eller någon annan lösning för behållar dirigering som körs på ett Server kluster lokalt, i molnet eller i utvärderings-och utvecklings syfte på en personlig dator.
 
 Följande funktioner som finns i de hanterade gatewayerna är **inte tillgängliga** i de egna värdbaserade gatewayerna:
 
 - Azure Monitor-loggar
 - Överordnad (Server dels sida) TLS-version och cipher-hantering
-- Validering av Server-och klient certifikat med hjälp av [certifikat utfärdarens rot certifikat](api-management-howto-ca-certificates.md) som laddats upp till API Management tjänsten. Om du vill lägga till stöd för anpassad certifikat utfärdare lägger du till ett lager i den egna värd behållar avbildningen som installerar certifikat utfärdarens rot certifikat.
+- Validering av Server-och klient certifikat med hjälp av [certifikat utfärdarens rot certifikat](api-management-howto-ca-certificates.md) som laddats upp till API Management tjänsten. Mer information finns i [certifikat validering i lokal gateway](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway).
 - Integrering med [Service Fabric](../service-fabric/service-fabric-api-management-overview.md)
 - Återupptagande av TLS-session
 - Återförhandlat klient certifikat. Det innebär att för [autentisering av klient certifikat](api-management-howto-mutual-certificates-for-clients.md) till arbets-API-konsumenter måste presentera sina certifikat som en del av den första TLS-handskakningen. För att se till att aktivera inställningen förhandla klient certifikat när du konfigurerar ett anpassat värdnamn för en egen värd.

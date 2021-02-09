@@ -5,12 +5,12 @@ description: Den här artikeln beskriver de två krypterings lager som är tillg
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927324"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988621"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight Double Encryption för vilande data
 
@@ -116,7 +116,7 @@ HDInsight har endast stöd för Azure Key Vault. Om du har ett eget nyckel valv 
 
 Nu är du redo att skapa ett nytt HDInsight-kluster. Kundhanterade nycklar kan bara tillämpas på nya kluster när klustret skapas. Det går inte att ta bort kryptering från kund hanterade nyckel kluster och Kundhanterade nycklar kan inte läggas till i befintliga kluster.
 
-Från och med [November 2020-utgåvan](hdinsight-release-notes.md#release-date-11182020)stöder HDInsight skapandet av kluster med hjälp av både versions-och versions lösa nyckel-URI: er. Om du skapar klustret med en versions lös nyckel-URI kommer HDInsight-klustret att försöka utföra automatisk rotation när nyckeln uppdateras i Azure Key Vault. Om du skapar klustret med en versions nyckel-URI måste du utföra en manuell nyckel rotation enligt beskrivningen i [rotationen av krypterings nyckeln](#rotating-the-encryption-key).
+Från och med november 2020-utgåvan stöder HDInsight skapandet av kluster med hjälp av både versions-och versions lösa nyckel-URI: er. Om du skapar klustret med en versions lös nyckel-URI kommer HDInsight-klustret att försöka utföra automatisk rotation när nyckeln uppdateras i Azure Key Vault. Om du skapar klustret med en versions nyckel-URI måste du utföra en manuell nyckel rotation enligt beskrivningen i [rotationen av krypterings nyckeln](#rotating-the-encryption-key).
 
 För kluster som skapats före november 2020-versionen måste du utföra nyckel rotation manuellt med den versions bara nyckel-URI: n.
 
@@ -124,8 +124,8 @@ För kluster som skapats före november 2020-versionen måste du utföra nyckel 
 
 När klustret skapas kan du antingen använda en versions nyckel eller en versions hanterings nyckel på följande sätt:
 
-- **Versions hantering** – ange den fullständiga **nyckel identifieraren**, inklusive nyckel versionen, under skapandet av klustret. Ett exempel är `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
-- **Versions hantering** – ange endast **nyckel-ID** när klustret skapas. Ett exempel är `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+- **Versions hantering** – ange den fullständiga **nyckel identifieraren**, inklusive nyckel versionen, under skapandet av klustret. Till exempel `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- **Versions hantering** – ange endast **nyckel-ID** när klustret skapas. Till exempel `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
 
 Du måste också tilldela den hanterade identiteten till klustret.
 

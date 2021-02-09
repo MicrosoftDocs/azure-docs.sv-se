@@ -2,13 +2,13 @@
 title: Azure NetApp Files med Azure VMware-lösning
 description: Använd Azure NetApp Files med virtuella Azure VMware-lösningar för att migrera och synkronisera data mellan lokala servrar, virtuella Azure VMware-lösningar och moln infrastrukturer.
 ms.topic: how-to
-ms.date: 02/01/2021
-ms.openlocfilehash: 8c101b652ffcefe05e9b6c11f166c1da3df2ede1
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/08/2021
+ms.openlocfilehash: 69d4e3a99de28d55b2fd95b1fc05c04c2ae0a37b
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539374"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988657"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files med Azure VMware-lösning
 
@@ -16,7 +16,7 @@ I den här artikeln går vi igenom stegen för att integrera Azure NetApp Files 
 
 ## <a name="azure-netapp-files-overview"></a>Översikt över Azure NetApp Files
 
-[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) är en Azure First service-tjänst för migrering och körning av de mest krävande företags fil arbets belastningarna i molnet, inklusive databaser, SAP och data behandlings program med höga prestanda, utan kod ändringar.
+[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md) är en Azure-tjänst för migrering och körning av de mest krävande företags fil arbets belastningarna i molnet. Detta inkluderar databaser, SAP och data behandlings program med höga prestanda, utan kod ändringar.
 
 ### <a name="features"></a>Funktioner
 (Tjänster där Azure NetApp Files används.)
@@ -31,7 +31,7 @@ Azure NetApp Files finns i många Azure-regioner och stöder replikering över f
 
 ## <a name="reference-architecture"></a>Referensarkitektur
 
-Följande diagram illustrerar en anslutning via Azure-ExpressRoute till ett privat moln i Azure VMware-lösningen. Det visar användningen av en Azure NetApp Files-resurs, som monteras på virtuella datorer i Azure VMware-lösningen, som används av Azure VMware-lösnings miljön.
+Följande diagram illustrerar en anslutning via Azure-ExpressRoute till ett privat moln i Azure VMware-lösningen. Azure VMware-lösningens miljö har åtkomst till den Azure NetApp Files resursen som är monterad på virtuella datorer i Azure VMware-lösningen.
 
 ![Diagram som visar NetApp-filer för Azure VMware-lösningens arkitektur.](media/net-app-files/net-app-files-topology.png)
 
@@ -83,11 +83,11 @@ Följande steg innehåller verifiering av den förkonfigurerade Azure NetApp Fil
 
     :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Skärm bild som visar konfigurations information för en volym.":::
 
-    Du kan se att volymen anfvolume, med en storlek på 200 GiB, skapades i pool-anfpool1 och exporterats som en NFS-filresurs via 10.22.3.4:/ANFVOLUME. En privat IP-adress från Azure-Virtual Network (VNet) skapades för Azure NetApp Files och NFS-sökvägen för att montera på den virtuella datorn. Information om Azure NetApp Files volym prestanda i förhållande till storlek ("kvot") finns i [prestanda överväganden för Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
+    Du kan se att volymen anfvolume har en storlek på 200 GiB och att den är i pool-anfpool1.  Den exporteras som en NFS-filresurs via 10.22.3.4:/ANFVOLUME. En privat IP-adress från Azure-Virtual Network (VNet) skapades för Azure NetApp Files och NFS-sökvägen för att montera på den virtuella datorn. Mer information om Azure NetApp Files volym prestanda efter storlek eller "kvot" finns i [prestanda överväganden för Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md). 
 
 ## <a name="verify-pre-configured-azure-vmware-solution-vm-share-mapping"></a>Verifiera förkonfigurerad resurs mappning för virtuell Azure VMware-lösning
 
-Innan du demonstrerar tillgängligheten för Azure NetApp Files dela till en virtuell Azure VMware-lösning är det viktigt att förstå mappning mellan SMB och NFS-resurser. När du har konfigurerat SMB-eller NFS-volymer kan de monteras enligt dokumentationen här.
+Om du vill göra en Azure NetApp Files resurs tillgänglig för en virtuell Azure VMware-lösning är det viktigt att förstå mappning av SMB-och NFS-resurser. När du har konfigurerat SMB-eller NFS-volymer kan de monteras enligt dokumentationen här.
 
 - SMB-resurs: skapa en Active Directory anslutning innan du distribuerar en SMB-volym. De angivna domän kontrol Lanterna måste vara tillgängliga för det delegerade under nätet för Azure NetApp Files för lyckad anslutning. När Active Directory har kon figurer ATS i Azure NetApp Files kontot visas det som ett valbart objekt när du skapar SMB-volymer.
 
@@ -103,7 +103,7 @@ Följande är bara några övertygande Azure NetApp Files användnings fall.
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har integrerat Azure NetApp Files med dina arbets belastningar för Azure VMware-lösningen kanske du vill lära dig mer om:
+Nu när du har lärt dig att integrera Azure NetApp Files med dina arbets belastningar för Azure VMware-lösningen kan du vilja lära dig mer om:
 
 - [Resurs gränser för Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
 - [Rikt linjer för Azure NetApp Files nätverks planering](../azure-netapp-files/azure-netapp-files-network-topologies.md).

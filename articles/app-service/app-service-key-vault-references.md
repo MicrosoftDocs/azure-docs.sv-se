@@ -3,15 +3,15 @@ title: Använda Key Vault-referenser
 description: Lär dig hur du konfigurerar Azure App Service och Azure Functions att använda Azure Key Vault referenser. Gör Key Vault hemligheter tillgängliga för din program kod.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b55aeb68d5fa740d34c8823f555f804be54895a7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205854"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988769"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Använd Key Vault referenser för App Service och Azure Functions
 
@@ -38,26 +38,26 @@ För att kunna läsa hemligheter från Key Vault måste ett valv skapas och ge d
 En Key Vault referens är av formuläret `@Microsoft.KeyVault({referenceString})` , där `{referenceString}` ersätts av något av följande alternativ:
 
 > [!div class="mx-tdBreakAll"]
-> | Referens sträng                                                            | Beskrivning                                                                                                                                                                                 |
+> | Referens sträng                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | **SecretUri** bör vara den fullständiga data Plans-URI: n för en hemlighet i Key Vault, inklusive en version, t. ex.https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_VaultName_; SecretName =_SecretName_; SecretVersion =_SecretVersion_ | **VaultName** ska vara namnet på din Key Vault-resurs. **SecretName** ska vara namnet på mål hemligheten. **SecretVersion** bör vara den version av hemligheten som ska användas. |
+> | SecretUri =_SecretUri_                                                       | **SecretUri** bör vara den fullständiga data Plans-URI: n för en hemlighet i Key Vault, om du vill, inklusive en version, t. ex. `https://myvault.vault.azure.net/secrets/mysecret/` eller`https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
+> | VaultName =_VaultName_; SecretName =_SecretName_; SecretVersion =_SecretVersion_ | **VaultName** är obligatoriskt och bör vara namnet på din Key Vault-resurs. **SecretName** är obligatoriskt och bör vara namnet på mål hemligheten. **SecretVersion** är valfritt, men om det finns en version av hemligheten som ska användas. |
 
-> [!NOTE] 
-> Versioner är för närvarande nödvändiga. När du roterar hemligheter måste du uppdatera versionen i program konfigurationen.
 En fullständig referens skulle till exempel se ut så här:
 
-
 ```
-@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret)
 ```
 
 Du kan också:
 
 ```
-@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret)
 ```
 
+## <a name="rotation"></a>Rotation
+
+Om en version inte anges i referensen kommer appen att använda den senaste versionen som finns i Key Vault. När nyare versioner blir tillgängliga, till exempel med en rotations händelse, uppdateras appen automatiskt och börjar använda den senaste versionen inom en dag. Alla konfigurations ändringar som görs i appen leder till en omedelbar uppdatering av de senaste versionerna av alla refererade hemligheter.
 
 ## <a name="source-application-settings-from-key-vault"></a>Käll program inställningar från Key Vault
 

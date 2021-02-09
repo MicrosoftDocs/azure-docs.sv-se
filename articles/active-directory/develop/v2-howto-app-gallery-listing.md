@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3ce00c5182246513aaf3178118058826528619d2
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584272"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988901"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publicera din app i Azure AD App-galleriet
 
@@ -186,7 +186,7 @@ Du behöver en Azure AD-klient för att testa appen. Information om hur du konfi
 
 En Azure AD-klient levereras med varje Microsoft 365 prenumeration. Information om hur du konfigurerar en kostnads fri Microsoft 365 utvecklings miljö finns i [delta i Microsoft 365 Developer-programmet](/office/developer-program/microsoft-365-developer-program).
 
-När du har en klient kan du testa enkel inloggning och [etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client). 
+När du har en klient kan du testa enkel inloggning och [etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md#integrate-your-scim-endpoint-with-the-aad-scim-client). 
 
 [Registrera ditt program](quickstart-register-app.md) som ett program med flera innehavare **för OIDC-eller Oath-program**. Välj kontona i valfri organisations katalog och alternativet personliga Microsoft-konton i de konto typer som stöds.
 

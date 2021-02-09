@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91516c9815cfd71ffb59c399ea6580c6e28d8fce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4d76bdcb385ed2fe4b8a697f24187b8e3d5addbc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576472"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988755"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Använda en partitionerad graf i Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 En av de viktigaste funktionerna i Gremlin-API: et i Azure Cosmos DB är möjligheten att hantera storskaliga grafer genom vågrät skalning. Behållare kan skalas oberoende av lagring och data flöde. Du kan skapa behållare i Azure Cosmos DB som automatiskt kan skalas för att lagra diagram data. Data bal anse ras automatiskt baserat på den angivna **partitionsnyckel**.
 
-Partitionering görs internt om behållaren förväntas lagra mer än 20 GB i storlek eller om du vill allokera mer än 10 000 begär ande enheter per sekund (ru: er). Data partitioneras automatiskt utifrån den partitionsnyckel som du anger. Partitionsnyckel krävs om du skapar graf-behållare från Azure Portal eller 3. x eller senare versioner av Gremlin-drivrutiner. Partitionsnyckel krävs inte om du använder 2. x eller lägre versioner av Gremlin-drivrutiner. 
+Partitionering görs internt om behållaren förväntas lagra mer än 20 GB i storlek eller om du vill allokera mer än 10 000 begär ande enheter per sekund (ru: er). Data partitioneras automatiskt utifrån den partitionsnyckel som du anger. Partitionsnyckel krävs om du skapar graf-behållare från Azure Portal eller 3. x eller senare versioner av Gremlin-drivrutiner. Partitionsnyckel krävs inte om du använder 2. x eller lägre versioner av Gremlin-drivrutiner.
 
 Samma allmänna principer från mekanismen för [Azure Cosmos DB partitionering](partitioning-overview.md) gäller med några diagram olika optimeringar som beskrivs nedan.
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Använda GitOps för att konfigurera ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, AKS, containers
-ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 72dc42fffb3653de81477fa504c11b9b0328d2eb
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737192"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988698"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 
@@ -148,17 +148,17 @@ Om du vill anpassa konfigurationen kan du använda följande parametrar:
 
 `--helm-operator-params` : *Valfria* diagram värden för Helm-operatorn (om aktive rad).  Till exempel "--Set Helm. versions = v3".
 
-`--helm-operator-chart-version` : *Valfri* diagram version för Helm-operatorn (om aktive rad). Standard: ' 1.2.0 '.
+`--helm-operator-version` : *Valfri* diagram version för Helm-operatorn (om aktive rad). Använd "1.2.0" eller större. Standard: ' 1.2.0 '.
 
 `--operator-namespace` : Det *valfria* namnet för operatorns namn område. Standard: standard. Högst 23 tecken.
 
-`--operator-params` : *Valfria* parametrar för operatorn. Måste anges inom enkla citat tecken. Till exempel ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
+`--operator-params` : *Valfria* parametrar för operatorn. Måste anges inom enkla citat tecken. Till exempel ```--operator-params='--git-readonly --sync-garbage-collection --git-branch=main' ```
 
 Alternativ som stöds i--Operator-params
 
 | Alternativ | Beskrivning |
 | ------------- | ------------- |
-| --git-gren  | Gren av Git-lagrings platsen som ska användas för Kubernetes-manifest. Standardvärdet är Master. |
+| --git-gren  | Gren av Git-lagrings platsen som ska användas för Kubernetes-manifest. Standardvärdet är Master. Nyare databaser har rot grenen "Main", i vilket fall måste du ange--git-Branch = main. |
 | --git-sökväg  | Relativ sökväg i git-lagrings platsen för flöde för att hitta Kubernetes-manifest. |
 | --git-ReadOnly | Git-lagrings platsen anses vara skrivskyddad; Flödet försöker inte skriva till den. |
 | --manifest-generation  | Om aktive rad kommer flödet att leta efter. flöde. yaml och köra Kustomize eller andra manifest generatorer. |
@@ -226,16 +226,13 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 }
 ```
 
-När `sourceControlConfiguration` har skapats händer några saker under huven:
+När en `sourceControlConfiguration` har skapats eller uppdaterats händer några saker under huven:
 
-1. Azure-bågen `config-agent` övervakar Azure Resource Manager för nya eller uppdaterade konfigurationer ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` )
-1. `config-agent` Observera den nya `Pending` konfigurationen
-1. `config-agent` läser konfigurations egenskaperna och förbereder distributionen av en hanterad instans av `flux`
-    * `config-agent` skapar mål namn området
-    * `config-agent` förbereder ett Kubernetes tjänst konto med rätt behörighet ( `cluster` eller `namespace` omfång)
-    * `config-agent` distribuerar en instans av `flux`
-    * `flux` genererar en SSH-nyckel och loggar den offentliga nyckeln (om du använder alternativet för SSH med flöden-genererade nycklar)
-1. `config-agent` rapporterar status tillbaka till `sourceControlConfiguration` resursen i Azure
+1. Azure-bågen `config-agent` övervakar Azure Resource Manager för nya eller uppdaterade konfigurationer ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` ) och ser den nya `Pending` konfigurationen.
+1. `config-agent`Läser konfigurations egenskaperna och skapar mål namn rymden.
+1. Azure-bågen `controller-manager` förbereder ett Kubernetes tjänst konto med rätt behörighet ( `cluster` eller `namespace` omfång) och distribuerar sedan en instans av `flux` .
+1. Om du använder alternativet för SSH med flödes genererade nycklar `flux` genererar en SSH-nyckel och loggar den offentliga nyckeln.
+1. `config-agent`Rapporterar status tillbaka till `sourceControlConfiguration` resursen i Azure.
 
 När etablerings processen utförs går det `sourceControlConfiguration` igenom några tillstånds ändringar. Övervaka förloppet med `az k8sconfiguration show ...` kommandot ovan:
 
