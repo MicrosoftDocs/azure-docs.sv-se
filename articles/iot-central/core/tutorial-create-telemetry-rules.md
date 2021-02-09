@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065294"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834382"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Självstudier: Skapa en regel och konfigurera aviseringar i ditt Azure IoT Central-program
 
@@ -24,7 +24,7 @@ Enheter använder telemetri för att skicka numeriska data från enheten. En reg
 
 I den här självstudien skapar du en regel för att skicka ett e-postmeddelande när temperaturen i en simulerad sensor enhet överskrider 70 &deg; F.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -107,6 +107,10 @@ Välj den regel som du vill aktivera eller inaktivera. Aktivera eller inaktivera
 ## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Aktivera eller inaktivera en regel för vissa enheter
 
 Välj den regel som du vill anpassa. Använd ett eller flera filter i avsnittet **mål enheter** för att begränsa regelns omfång till de enheter som du vill övervaka.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346715"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832240"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Självstudie: skapa ett in-Store Analytics-program i Azure IoT Central
-
-
 
 I självstudien visas lösnings verktyg för att skapa ett Azure IoT Central i Store Analytics-program. Exempel programmet är för ett detalj handels lager. Det är en lösning på det vanliga företaget som behöver övervaka och anpassa sig till användning och miljö förhållanden.
 
@@ -276,7 +274,12 @@ Så här lägger du till en åtgärd i regeln:
 
     Inom några minuter ska det angivna e-postkontot börja ta emot e-post. Programmet skickar ett e-postmeddelande varje gången en sensor anger att fuktighets nivån överskrider värdet i ditt villkor.
 
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Nästa steg
+
 I den här självstudiekursen lärde du dig att:
 
 * Använd Azure IoT Central **in-Store Analytics-** betalningsmall för att skapa ett Retail Store-program

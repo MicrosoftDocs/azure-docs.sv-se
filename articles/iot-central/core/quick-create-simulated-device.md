@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f8d366554634444db16eb3292f100540f3808e8a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 488de7114d80e6a88cc619ba3b42f867c985ea11
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992929"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833923"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Snabb start: lägga till en simulerad enhet till ditt IoT Central program
 
@@ -76,7 +76,7 @@ En enhets mall kan innehålla moln egenskaper. Moln egenskaper finns bara i IoT 
 
     | Visningsnamn      | Semantisk typ | Schema |
     | ----------------- | ------------- | ------ |
-    | Senaste servicedatum | Inget          | Date   |
+    | Senaste servicedatum | Inget          | Datum   |
     | Kundnamn     | Inget          | Sträng |
 
 1. Välj **Spara** för att spara ändringarna:
@@ -165,6 +165,10 @@ När du har skapat en ny simulerad enhet kan verktyget använda den här enheten
 1. Välj den simulerade enheten i listan. Välj sedan **Använd**. Nu kan du se samma simulerade enhet i din enhets mall för att skapa upplevelser. Den här vyn är användbar för diagram och andra visualiseringar.
 
     :::image type="content" source="media/quick-create-simulated-device/configure-preview.png" alt-text="Skärm bild som visar en konfigurerad förhands gransknings enhet":::
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

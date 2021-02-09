@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b36a4089a15118499b0ce57500f221b74af82242
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 6396ca4483f5e9782890123a7c39a0cbcdbd30a3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753762"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832580"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: vanliga frågor
 
@@ -34,8 +34,8 @@ Använd Azure Migrate för att identifiera, utvärdera och migrera lokal infrast
 
 - Användning av Azure Migrate ger möjlighet till samverkan och framtida utöknings barhet med Azure Migrate verktyg, andra Azure-tjänster och verktyg från tredje part.
 - Verktyget Azure Migrate: Migreringsverktyg för Server är syftet-byggt för Server migrering till Azure. Den är optimerad för migrering. Du behöver inte lära dig mer om begrepp och scenarier som inte är direkt relevanta för migrering. 
-- Det finns inga avgifter för verktygs användning för migrering i 180 dagar, från tidpunkten då replikeringen startades för en virtuell dator. Det ger dig tid att slutföra migreringen. Du betalar bara för de lagrings-och nätverks resurser som används i replikeringen och för de beräknings avgifter som förbrukas under testmigreringar.
-- Azure Migrate stöder alla migrerings scenarier som stöds av Site Recovery. För virtuella VMware-datorer tillhandahåller Azure Migrate dessutom ett alternativ för att migrera utan agent.
+- Det finns inga avgifter för verktygs användning för migrering i 180 dagar, från tidpunkten då replikeringen startades för en virtuell dator. Du får tid att slutföra migreringen. Du betalar bara för de lagrings-och nätverks resurser som används i replikeringen och för de beräknings avgifter som förbrukas under testmigreringar.
+- Azure Migrate stöder alla migrerings scenarier som stöds av Site Recovery. För virtuella VMware-datorer tillhandahåller Azure Migrate också ett alternativ för att migrera utan agent.
 - Vi prioriterar nya funktioner för migrering för Azure Migrate: Migreringsverktyg för Server. Dessa funktioner är inte riktade för Site Recovery.
 
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) bör endast användas för haveri beredskap.
@@ -44,7 +44,7 @@ Verktyget Azure Migrate: Migreringsverktyg använder vissa backend-Site Recovery
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Jag har ett projekt med den tidigare klassiska upplevelsen av Azure Migrate. Hur gör jag för att börja använda den nya versionen?
 
-Du kan inte uppgradera projekt eller komponenter i den tidigare versionen till den nya versionen. Du måste [skapa ett nytt Azure Migrate-projekt](create-manage-projects.md)och [lägga till verktyg för utvärdering och migrering](./create-manage-projects.md) i det. Använd självstudierna för att lära dig hur du använder verktyg för bedömning och migrering som är tillgängliga. Om du har en Log Analytics arbets yta som är kopplad till ett klassiskt projekt kan du koppla den till ett projekt med aktuell version när du har tagit bort det klassiska projektet.
+Den klassiska Azure Migrate tas ur bruk i feb 2024. Efter feb 2024 kommer den klassiska versionen av Azure Migrate inte längre att stödjas och lager-metadata i det klassiska projektet tas bort. Du kan inte uppgradera projekt eller komponenter i den tidigare versionen till den nya versionen. Du måste [skapa ett nytt Azure Migrate-projekt](create-manage-projects.md)och [lägga till verktyg för utvärdering och migrering](./create-manage-projects.md) i det. Använd självstudierna för att lära dig hur du använder verktyg för bedömning och migrering som är tillgängliga. Om du har en Log Analytics arbets yta som är kopplad till ett klassiskt projekt kan du koppla den till ett projekt med aktuell version när du har tagit bort det klassiska projektet.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Vad är skillnaden mellan Azure Migrate: Server utvärdering och kart verktyg?
 

@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4deeec1b6c9db80c15b001efb7b40bdb4bb9d515
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c87c8cfd40903f6296f0a36f5c83c0b5c5cb7818
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452639"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831592"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>System krav för Azure Stack Edge Pro
 
 I den här artikeln beskrivs viktiga system krav för din Microsoft Azure Stack Edge Pro-lösning och för klienter som ansluter till Azure Stack Edge Pro. Vi rekommenderar att du läser informationen noggrant innan du distribuerar din Azure Stack Edge Pro. Du kan referera tillbaka till den här informationen vid behov under distributionen och efterföljande åtgärder.
 
-System kraven för Azure Stack Edge Pro är:
+System kraven för Azure Stack Edge Pro är: 
 
 - **Program varu krav för värdar** – beskriver plattformar som stöds, webbläsare för det lokala konfigurations gränssnittet, SMB-klienter och eventuella ytterligare krav för klienter som har åtkomst till enheten.
 - **Nätverks krav för enheten** – ger information om eventuella nätverks krav för den fysiska enhetens drift.
@@ -60,7 +60,7 @@ Använd följande tabell för port konfiguration för servrar som är värdar f�
 
 | Port nr. | In eller ut | Port omfång | Obligatorisk | Vägledning |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ut       | WAN        | Yes      | Utgående öppen för IoT Edge etablering. Den här konfigurationen krävs när du använder manuella skript eller DPS (Azure IoT Device Provisioning service).|
+| TCP 443 (HTTPS)| Ut       | WAN        | Ja      | Utgående öppen för IoT Edge etablering. Den här konfigurationen krävs när du använder manuella skript eller DPS (Azure IoT Device Provisioning service).|
 
 Fullständig information finns i [brand Väggs-och port konfigurations regler för IoT Edge distribution](../iot-edge/troubleshoot.md).
 

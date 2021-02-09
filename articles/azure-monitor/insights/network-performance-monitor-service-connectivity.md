@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d7c7068c4a8669cdff782267030d38ac0f73584
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761047"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832937"
 ---
 # <a name="service-connectivity-monitor"></a>Övervakare av tjänstanslutning
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Du kan använda tjänst anslutnings övervakarens funktion i [övervakare av nätverksprestanda](network-performance-monitor.md) för att övervaka nätverks anslutningen till en slut punkt som har en öppen TCP-port. Sådana slut punkter omfattar webbplatser, SaaS-program, PaaS-program och SQL-databaser. 
 
@@ -52,16 +55,16 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 Börja skapa dina tester för att övervaka nätverks anslutningen till tjänstens slut punkter.
 
 1. Välj fliken **Övervakare för tjänst anslutning** .
-2. Välj **Lägg till test**och ange test namnet och beskrivningen. Du kan skapa maximalt 450 test per arbets yta. 
+2. Välj **Lägg till test** och ange test namnet och beskrivningen. Du kan skapa maximalt 450 test per arbets yta. 
 3. Välj typ av test:<br>
 
     * Välj **webb** för att övervaka anslutning till en tjänst som svarar på http/S-begäranden, till exempel outlook.office365.com eller Bing.com.<br>
     * Välj **nätverk** för att övervaka anslutning till en tjänst som svarar på TCP-begäranden, men som inte svarar på http/S-begäranden, till exempel en SQL Server, FTP-server eller SSH-port. 
     * Exempel: om du vill skapa ett webbtest till ett Blob Storage-konto väljer du **webb** och anger mål som *yourstorageaccount*. blob.Core.Windows.net. På samma sätt kan du skapa tester för annan tabell lagring, Queue Storage och Azure Files med [den här länken.](../../storage/common/storage-account-overview.md#storage-account-endpoints)
 4. Om du inte vill utföra nätverks mått, till exempel nätverks svars tid, paket förlust och identifiering av topologi, avmarkerar du kryss rutan **utför nätverks mått** . Håll det markerat för att få ut högsta nytta av kapaciteten. 
-5. I **mål**anger du den URL/FQDN/IP-adress som du vill övervaka nätverks anslutningen till.
-6. I **port nummer**anger du Port numret för mål tjänsten. 
-7. I **test frekvens**anger du ett värde för hur ofta du vill att testet ska köras. 
+5. I **mål** anger du den URL/FQDN/IP-adress som du vill övervaka nätverks anslutningen till.
+6. I **port nummer** anger du Port numret för mål tjänsten. 
+7. I **test frekvens** anger du ett värde för hur ofta du vill att testet ska köras. 
 8. Välj de noder från vilka du vill övervaka nätverks anslutningen till tjänsten. Se till att antalet agenter som lagts till per test är mindre än 150. Alla agenter kan testa maximalt 150 slut punkter/agenter.
 
     >[!NOTE]
@@ -124,7 +127,7 @@ Följ dessa steg om du ser en avvikelse:
 ## <a name="gcc-office-urls-for-us-government-customers"></a>GCC Office-URL: er för amerikanska myndighets kunder
 För amerikanska myndigheter i Virginia-regionen är endast DOD-URL: er inbyggda NPM. Kunder som använder GCC-URL: er måste skapa anpassade tester och lägga till varje URL individuellt.
 
-| Field | GCC |
+| Fält | GCC |
 |:---   |:--- |
 | Office 365-portalen och delad | portal.apps.mil |
 | Office 365-autentisering och identitet | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
@@ -134,4 +137,3 @@ För amerikanska myndigheter i Virginia-regionen är endast DOD-URL: er inbyggda
 
 ## <a name="next-steps"></a>Nästa steg
 [Sök i loggar](../log-query/log-query-overview.md) om du vill visa detaljerade data poster för nätverks prestanda.
-

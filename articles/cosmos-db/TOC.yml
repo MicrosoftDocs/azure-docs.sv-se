@@ -766,6 +766,8 @@
                   href: troubleshoot-not-found.md
                 - name: Felsöka behörighet saknas
                   href: troubleshoot-unauthorized.md
+                - name: Felsök förbjuden
+                  href: troubleshoot-forbidden.md
                 - name: Tillgänglighetsproblem i miljöer med flera regioner
                   href: troubleshoot-sdk-availability.md
             - name: .NET

@@ -4,12 +4,12 @@ description: Tillgänglighet för beräknings-och minnes resurser för tjänsten
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a415a739cd9c1e2ca39ebeaef1d8903ab72cf0c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661382"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831288"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Resurs tillgänglighet för Azure Container Instances i Azure-regioner
 
@@ -34,7 +34,7 @@ Följande regioner och maximala resurser är tillgängliga för behållar gruppe
 | Australien, östra | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | Brasilien, södra | 4 | 16 | 2 | 8 | 50 | Ej tillämpligt |
 | Kanada, centrala | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
-| Indien, centrala | 4 | 16 | Saknas | Saknas | 50 | V100 |
+| Indien, centrala | 4 | 16 | 4 | 4 | 50 | V100 |
 | Central US | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | Asien, östra | 4 | 16 | 4 | 16 | 50 | Ej tillämpligt |
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |

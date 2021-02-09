@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 01/21/2021
+ms.date: 02/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c56fcecbd850dd0add26e5d50093eea595e3d825
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761538"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833430"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Felsök problem med din Azure Stack Edge Pro GPU-enhet 
 
@@ -167,7 +167,7 @@ Här är de fel som kan visas under konfigurationen av Azure Resource Manager f�
 
 2. Kontrol lera att rätt PowerShell-moduler är installerade som anges [här](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client).
 
-3. Verifiera att Azure Resource Manager-och inloggnings slut punkter kan uppnås. Du kan prova att pinga slut punkterna. Ett exempel:
+3. Verifiera att Azure Resource Manager-och inloggnings slut punkter kan uppnås. Du kan prova att pinga slut punkterna. Exempel:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -196,7 +196,7 @@ Här är felen som rör Blob Storage på Azure Stack Edge Pro/Data Box Gateway D
 |AzCopy-kommandot verkar sluta svara i 20 minuter innan det här felet visas:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Kontrol lera att slut punkts namnet `<accountname>.blob.<serialnumber>.microsoftdatabox.com` läggs till i hosts-filen på: `/etc/hosts` .|
 |AzCopy-kommandot verkar sluta svara i 20 minuter innan det här felet visas: `Error parsing source location… The SSL connection could not be established` .|Importera SSL-certifikatet för enheten till certifikat arkivet i systemet. Mer information finns i [Hämta certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |Värdet för ett av HTTP-huvudena har fel format.|Den installerade versionen av Microsoft Azure Storages biblioteket för python stöds inte av Data Box-enhet. Se Azure Data Box Blob Storage-krav för versioner som stöds.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Innan du kör python anger du REQUESTS_CA_BUNDLE miljövariabeln till sökvägen till den base64-kodade SSL-certifikatfil (se hur du [hämtar certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Ett exempel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativt kan du lägga till certifikatet i systemets certifikat Arkiv och sedan ange miljövariabeln till sökvägen för arkivet. Till exempel på Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Innan du kör python anger du REQUESTS_CA_BUNDLE miljövariabeln till sökvägen till den base64-kodade SSL-certifikatfil (se hur du [hämtar certifikatet](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Exempel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternativt kan du lägga till certifikatet i systemets certifikat Arkiv och sedan ange miljövariabeln till sökvägen för arkivet. Till exempel på Ubuntu:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Anslutnings tiden är slut.|Logga in på Azure Stack Edge Pro och kontrol lera att den är olåst. När enheten startas om förblir den låst tills någon loggar in.|
 
 ## <a name="troubleshoot-iot-edge-errors"></a>Felsöka IoT Edge fel

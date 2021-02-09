@@ -4,15 +4,15 @@ description: Lär dig begrepp för en lösning för övervakning av vatten kvali
 author: miriambrus
 ms.author: miriamb
 ms.date: 12/11/2020
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 229074ad97e6d066a358da19bbbd43158fe1d6fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3dad4aea56586444bd54ac47c0462232913e173f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586728"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831611"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Referensarkitektur för övervakning av vattenkvalitet 
 Lösningar för övervakning av vatten kvalitet kan byggas med **Azure IoT Central app-mallen** som ett kick start programmet IoT-program. Den här artikeln innehåller en översikt över referens arkitektur på hög nivå om hur du skapar en lösning från slut punkt till slut punkt. 

@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d9c2aea284a2ab84b5d45fe35a35785adfc88123
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763459"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832081"
 ---
 ### <a name="publish-the-device-template"></a>Publicera enhetsmallen
 
@@ -61,16 +61,3 @@ Du behöver de autentiseringsuppgifter som tillåter att enheten ansluter till d
 
 1. Välj **Stäng**.
 
-## <a name="next-steps"></a>Nästa steg
-
-Nu har du skapat ett IoT Central program med hjälp av program mal len **video analys – objekt och rörelse identifiering** , skapat en enhets mall för gateway-enheten och lagt till en gateway-enhet i programmet.
-
-Om du vill testa programmet för video analys – objekt-och motion-identifiering med hjälp av IoT Edge moduler som kör en virtuell dator i molnet med simulerade video strömmar:
-
-> [!div class="nextstepaction"]
-> [Skapa en IoT Edge-instans för video analys (Linux VM)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-vm.md)
-
-Om du vill prova program för video analys – objekt-och motion-identifiering med IoT Edge moduler som kör en riktig enhet med en riktig **ONVIF** -kamera:
-
-> [!div class="nextstepaction"]
-> [Skapa en IoT Edge-instans för video analys (Intel NUC)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-nuc.md)

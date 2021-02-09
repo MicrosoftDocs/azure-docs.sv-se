@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762876"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834331"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objekt replikering för block-blobar
 
@@ -42,6 +42,8 @@ Objekt replikering kräver att följande Azure Storage funktioner också är akt
 - [BLOB-versioner](versioning-overview.md): måste vara aktive rad på både käll-och mål kontona. Information om hur du aktiverar versions hantering finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
 
 Att aktivera ändrings flöde och blob-versioner kan medföra ytterligare kostnader. Mer information finns på [sidan med Azure Storage priser](https://azure.microsoft.com/pricing/details/storage/).
+
+Objekt replikering stöds endast för allmänna-syfte v2-lagrings konton. Både käll-och mål kontona måste vara generell-Purpose v2. 
 
 ## <a name="how-object-replication-works"></a>Så här fungerar objekt replikering
 

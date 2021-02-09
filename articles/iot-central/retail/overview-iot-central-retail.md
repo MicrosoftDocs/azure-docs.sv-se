@@ -1,5 +1,5 @@
 ---
-title: Skapa detalj handels lösningar med Azure IoT Central | Microsoft Docs
+title: Vad är Azure IoT Central detalj handels lösningar | Microsoft Docs
 description: Lär dig mer om att använda Azure IoT Central-programmallar för att skapa ansluten logistik, digital distributions Center, in-Store-analys, villkors övervakning, utcheckning, hantering av smarta lager och detalj handels lösningar.
 author: avneet723
 ms.author: avneets
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124970"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832291"
 ---
-# <a name="building-retail-solutions-with-azure-iot-central"></a>Skapa lösningar för detaljhandeln med Azure IoT Central
+# <a name="what-are-the-iot-central-retail-solutions"></a>Vad är IoT Central detalj handels lösningar?
 
 Azure IoT Central är en IoT app-plattform som minskar den börda och kostnad som är kopplad till utveckling, hantering och underhåll av IoT-lösningar i företags klass. Genom att välja att skapa med Azure IoT Central får du möjlighet att fokusera tid, pengar och energi på att omvandla din verksamhet med IoT-data, i stället för att bara underhålla och uppdatera en komplex och ständigt växande IoT-infrastruktur.
 
@@ -41,9 +41,9 @@ Fördelarna med en ansluten logistik lösning är:
 
 Följande skärm bilder visar den färdiga instrument panelen i program mal len. Instrument panelen är helt anpassningsbar för att uppfylla dina särskilda lösnings krav:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Skärm bild som visar den övre halvan av instrument panelen för anslutna logistik åtgärder.":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Skärm bild som visar den nedre halvan av instrument panelen för anslutna logistik åtgärder.":::
 
 Mer information finns i själv studie kursen [distribuera och gå igenom en sammankopplad logistik-Programmall](./tutorial-iot-central-connected-logistics.md) .
 
@@ -64,7 +64,7 @@ Fördelarna med en digital distributions Center är:
 
 Följande skärm bild visar den färdiga instrument panelen i program mal len. Instrument panelen är helt anpassningsbar för att uppfylla dina särskilda lösnings krav: 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Instrument panel för digital distributions Center":::
 
 Mer information finns i själv studie kursen [distribuera och gå igenom en app-mall för digital distributions Center](./tutorial-iot-central-digital-distribution-center.md) .
 
@@ -86,7 +86,7 @@ Program mal len innehåller en uppsättning enhetsspecifika mallar och använder
 
 Följande skärm bild visar den färdiga instrument panelen i program mal len. Instrument panelen är helt anpassningsbar för att uppfylla dina särskilda lösnings krav: 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Övervakning av villkor i Store Analytics":::
 
 Mer information finns i själv studie kursen [skapa ett program för analys i Azure IoT Central](./tutorial-in-store-analytics-create-app.md) .
 
@@ -108,7 +108,7 @@ Program mal len levereras med en uppsättning enhetsspecifika mallar och använd
 
 Följande skärm bild visar den färdiga instrument panelen i program mal len. Instrument panelen är helt anpassningsbar för att uppfylla dina särskilda lösnings krav: 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Checka in Store Analytics":::
 
 Mer information finns i själv studie kursen [skapa ett program för analys i Azure IoT Central](./tutorial-in-store-analytics-create-app.md) .
 
@@ -128,7 +128,7 @@ Den här program mal len fokuserar på enhets anslutningar och konfigurationen o
 
 Följande skärm bild visar den färdiga instrument panelen i program mal len. Instrument panelen är helt anpassningsbar för att uppfylla dina särskilda lösnings krav:
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Hanterings instrument panel för smart inventering":::
 
 Mer information finns i själv studie kursen [distribuera och gå igenom en smart inventerings hantering](./tutorial-iot-central-smart-inventory-management.md) .
 
@@ -148,7 +148,7 @@ Med program mal len kan du:
 
 Följande skärm bild visar den färdiga instrument panelen i program mal len. Instrument panelen är helt anpassningsbar för att uppfylla dina särskilda lösnings krav:
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Micro-uppfyllelse Center":::
 
 Mer information finns i själv studie kursen [distribuera och gå igenom programmallen för Micro-uppfyllelse Center](./tutorial-micro-fulfillment-center.md) .
 
@@ -165,7 +165,7 @@ Program mal len innehåller fyra instrument paneler för program:
 * **(Exempel) Real Camera Management** använder simulerade kameror för att visa hur du kan hantera dina kameror från programmet.
 * **(Exempel) den verkliga kamera övervakaren** använder simulerade kameror för att visa hur du kan övervaka dina kameror från programmet.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Översikt över Azure IoT återförsäljarversion":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videoanalys – objekt- och rörelseidentifiering":::
 
 Mer information om lösningens arkitektur finns i [program arkitekturen för video analys](architecture-video-analytics.md).
 
@@ -180,9 +180,5 @@ Med [Live Video Analytics](https://github.com/Azure/live-video-analytics) får d
 För att komma igång med att skapa en detalj handels lösning:
 
 * Kom igång med guiden [skapa ett in-Store-analys i Azure IoT Central](./tutorial-in-store-analytics-create-app.md) -självstudier som vägleder dig genom hur du skapar en lösning med en av mallarna för BA-program i butiken.
-* [Distribuera och gå igenom en sammankopplad logistik program mall](./tutorial-iot-central-connected-logistics.md).
-* [Distribuera och gå igenom en app-mall för digital distributions Center](./tutorial-iot-central-digital-distribution-center.md).
-* [Distribuera och gå igenom en mall för hantering av Smart inventerings program](./tutorial-iot-central-smart-inventory-management.md).
-* [Distribuera och gå igenom programmallen för Micro-uppfyllelse Center](./tutorial-micro-fulfillment-center.md).
 * [Distribuera och gå igenom program mal len video analys](./tutorial-video-analytics-deploy.md).
-* Läs mer om IoT Central i [översikten över IoT Central](../core/overview-iot-central.md).
+* [Distribuera och gå igenom en sammankopplad logistik program mall](./tutorial-iot-central-connected-logistics.md).

@@ -7,18 +7,23 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 299730bcdab3ae7e558f39cc7f7d5076ffc58ea9
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820187"
+ms.locfileid: "99834365"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Självstudie: skapa och konfigurera en Time Series Insights Gen2-miljö
 
 I den här självstudien får du lära dig hur du skapar och konfigurerar en [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) -miljö som kan integreras med din IoT plug and Play-lösning. Använd Time Series Insights för att samla in, bearbeta, lagra, fråga och visualisera tids serie data i Sakernas Internets skala (IoT).
 
-Först etablerar du en Time Series Insights-miljö och ansluter din IoT Hub som en händelse källa för strömning. Sedan arbetar du med synkronisering av modeller för att redigera din [tids serie modell](../time-series-insights/concepts-model-overview.md). Du använder [DTDL-exempelfilerna (Digital-definitions språket)](https://github.com/Azure/opendigitaltwins-dtdl) som du använde för temperatur styrenheten och termostat-enheter.
+I den här kursen har du:
+
+> [!div class="checklist"]
+> * Etablera en Time Series Insights-miljö och Anslut IoT Hub som en händelse källa för strömning.
+> * Arbeta med synkronisering av modeller för att redigera din [tids serie modell](../time-series-insights/concepts-model-overview.md).
+> * Använd [DTDL-exempelfilerna (Digital-definitions språket)](https://github.com/Azure/opendigitaltwins-dtdl) som du använde för temperatur styrenheten och termostat-enheter.
 
 > [!NOTE]
 > Den här integrationen mellan Time Series Insights och IoT Plug and Play är i för hands version. Det sätt som DTDL enhets modeller mappar till Time Series Insights Time Series-modellen kan ändras. 
@@ -222,10 +227,11 @@ Gå tillbaka till diagram fönstret och expandera **enhets flottan** > enheten. 
 
 ![Skärm bild som visar hur du ändrar instans typen för thermostat2.](./media/tutorial-configure-tsi/charting-values.png)
 
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om olika diagram alternativ, inklusive intervall storlek och kontroll av y-axeln, finns i [Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md).
-
-* En djupgående översikt över din miljös tids serie modell finns i [tids serie modell i Azure Time Series Insights Gen2](../time-series-insights/concepts-model-overview.md).
-
-* Information om API: n för frågor och tids serie uttryck finns i [Azure Time Series Insights Gen2-fråge-API: er](/rest/api/time-series-insights/reference-query-apis).
+> [!div class="nextstepaction"]
+> Mer information om olika diagram alternativ, inklusive intervall storlek och kontroll av y-axeln, finns i [Azure Time Series Insights Explorer](../time-series-insights/concepts-ux-panels.md).

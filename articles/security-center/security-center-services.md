@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/08/2021
 ms.author: memildin
-ms.openlocfilehash: 04dfd731f1dcf0e9e7c045e0f7ef335c8db5b359
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e827178d8ccb0f7de8d32433d03502a7412d1139
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805631"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834058"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktions täckning för datorer
 
@@ -45,16 +45,16 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 |Utvärdering av OS-korrigeringsfiler som saknas|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
 |Utvärdering av felkonfigurationer för säkerhet|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
 |[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
-|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nej|
-|Sårbarhets bedömning från tredje part|✔|-|✔|Nej|
-|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Nej|
+|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Inga|
+|Sårbarhets bedömning från tredje part|✔|-|✔|Inga|
+|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Inga|
 
 
 ### <a name="linux-machines"></a>[**Linux-datorer**](#tab/features-linux)
 
 |**Funktion**|**Azure Virtual Machines**|**Skalningsuppsättningar för virtuella Azure-datorer**|**Azure Arc-aktiverade datorer**|**Azure Defender krävs**
 |----|:----:|:----:|:----:|:----:|
-|[Microsoft Defender för slut punkts integrering](security-center-wdatp.md)|-|-|-|Ja|
+|[Microsoft Defender för slut punkts integrering](security-center-wdatp.md)|-|-|-|-|
 |[Beteende analys av virtuella datorer (och säkerhets aviseringar)](./azure-defender.md)|✔</br>(i versioner som stöds)|✔</br>(i versioner som stöds)|✔|Ja|
 |[Filbaserad säkerhets aviseringar](alerts-reference.md#alerts-windows)|-|-|-|Ja|
 |[Nätverksbaserade säkerhets aviseringar](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
@@ -68,10 +68,10 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 |Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|✔|✔|✔|Ja|
 |Utvärdering av OS-korrigeringsfiler som saknas|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
 |Utvärdering av felkonfigurationer för säkerhet|✔|✔|✔|Azure: Nej<br><br>Arc-aktiverat: Ja|
-|[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nej|
-|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nej|
-|Sårbarhets bedömning från tredje part|✔|-|✔|Nej|
-|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Nej|
+|[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Inga|
+|Disk krypterings bedömning|✔</br>(för [scenarier som stöds](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Inga|
+|Sårbarhets bedömning från tredje part|✔|-|✔|Inga|
+|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Inga|
 
 --- 
 
@@ -93,13 +93,13 @@ Information om när rekommendationer genereras för vart och ett av dessa skydd 
 |------|------|-----|-----|
 | Microsoft Defender Antivirus| Windows Server 2016 eller senare| Nej, inbyggd i OS| Ja |
 | System Center Endpoint Protection (Microsoft-programvara mot skadlig kod) | Windows Server 2012 R2, 2012, 2008 R2 (se anmärkning nedan) | Via tillägg | Ja |
-| Trend Micro – djup säkerhet | Windows Server-familjen  | Nej | Ja |
-| Symantec v12.1.1100+| Windows Server-familjen  | Nej | Ja |
-| McAfee v10 + | Windows Server-familjen  | Nej | Ja |
-| McAfee v10 + | Linux Server-serien  | Nej | Ja * *\** _ |
-| Sophos v9 +| Linux Server-serien  | Nej | Ja  _*\**_  |
+| Trend Micro – djup säkerhet | Windows Server-familjen  | Inga | Ja |
+| Symantec v12.1.1100+| Windows Server-familjen  | Inga | Ja |
+| McAfee v10 + | Windows Server-familjen  | Inga | Ja |
+| McAfee v10 + | Linux Server-serien  | Inga | Ja **\*** |
+| Sophos v9 +| Linux Server-serien  | Inga | Ja  **\***  |
 
- _*\**_ Täcknings tillstånd och kompletterande data är för närvarande bara tillgängligt i Log Analytics arbets ytan som är kopplad till dina skyddade prenumerationer. Den visas inte i Azure Security Center portalen.
+ **\*** Täcknings tillstånd och kompletterande data är för närvarande bara tillgängligt i Log Analytics arbets ytan som är kopplad till dina skyddade prenumerationer. Den visas inte i Azure Security Center portalen.
 
 > [!NOTE]
 > Identifiering av System Center Endpoint Protection (SCEP) på en virtuell dator med Windows Server 2008 R2 kräver SCEP för att installeras efter PowerShell (v 3.0 eller senare).
@@ -136,7 +136,7 @@ Information om när rekommendationer genereras för vart och ett av dessa skydd 
 |[Kubernetes arbets belastnings skydd](kubernetes-workload-protections.md)|-|-|
 |||
 
-(1) kräver _ *Azure Defender för servrar**
+(1) kräver **Azure Defender för servrar**
 
 (2) delvis
 

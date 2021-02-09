@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d6d988b4dd71fadccba056e501ba7c799b46d0d9
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 08a8dde815a6dea5d69e5e2a385cbaa03fba681a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508903"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832702"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Distribuera en moln tjänst (utökad support) med Azure PowerShell
 
@@ -44,7 +44,7 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
 
     ```powershell
     $storageAccount = New-AzStorageAccount -ResourceGroupName “ContosOrg” -Name “contosostorageaccount” -Location “East US” -SkuName “Standard_RAGRS” -Kind “StorageV2” 
-    $container = New-AzStorageContainer -Name “ContosoContainer” -Context $storageAccount.Context -Permission Blob 
+    $container = New-AzStorageContainer -Name “contosocontainer” -Context $storageAccount.Context -Permission Blob 
     ```
 
 4. Överför ditt Cloud Service-paket (cspkg) till lagrings kontot.
@@ -52,8 +52,8 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     ```powershell
     $tokenStartTime = Get-Date 
     $tokenEndTime = $tokenStartTime.AddYears(1) 
-    $cspkgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cspkg” -Container “ContosoContainer” -Blob “ContosoApp.cspkg” -Context $storageAccount.Context 
-    $cspkgToken = New-AzStorageBlobSASToken -Container “ContosoContainer” -Blob $cspkgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
+    $cspkgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cspkg” -Container “contosocontainer” -Blob “ContosoApp.cspkg” -Context $storageAccount.Context 
+    $cspkgToken = New-AzStorageBlobSASToken -Container “contosocontainer” -Blob $cspkgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
     $cspkgUrl = $cspkgBlob.ICloudBlob.Uri.AbsoluteUri + $cspkgToken 
     ```
  
@@ -61,8 +61,8 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
 5.  Överför din moln tjänst konfiguration (cscfg) till lagrings kontot. 
 
     ```powershell
-    $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container ContosoContainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
-    $cscfgToken = New-AzStorageBlobSASToken -Container “ContosoContainer” -Blob $cscfgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
+    $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container contosocontainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
+    $cscfgToken = New-AzStorageBlobSASToken -Container “contosocontainer” -Blob $cscfgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
     $cscfgUrl = $cscfgBlob.ICloudBlob.Uri.AbsoluteUri + $cscfgToken 
     ```
 
@@ -91,13 +91,13 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
 9. Skapa ett nyckelvalv. Den här Key Vault kommer att användas för att lagra certifikat som är associerade med moln tjänsten (utökade stöd) roller. Se till att du har aktiverat "åtkomst principer" (i portalen) för åtkomst till "Azure Virtual Machines for Deployment" och "Azure Resource Manager for Template Deployment". Key Vault måste finnas i samma region och prenumeration som moln tjänsten och ha ett unikt namn. Mer information finns i [använda certifikat med Azure Cloud Services (utökad support)](certificates-and-key-vault.md).
 
     ```powershell
-    New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
+    New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosOrg” -Location “East US” 
     ```
 
 10. Uppdatera Key Vault åtkomst princip och bevilja certifikat behörigheter till ditt användar konto. 
 
     ```powershell
-    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
     ```
 
     Du kan också ange åtkomst princip via ObjectId (som kan hämtas genom att köra `Get-AzADUser` ) 
@@ -136,12 +136,19 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     ```powershell
     $credential = Get-Credential 
     $expiration = (Get-Date).AddYears(1) 
-    $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
+    $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
 
     $storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "contosostorageaccount"
     $configFile = "<WAD public configuration file path>"
-    $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
+    $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "contosostorageaccount" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
+    ```
+    Observera att configFile endast ska ha PublicConfig-Taggar och ska innehålla ett namn område enligt följande:
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+        ...............
+    </PublicConfig>
     ```
 15. Valfritt Definiera taggar som en PowerShell-hash-tabell som du vill lägga till i din moln tjänst. 
 

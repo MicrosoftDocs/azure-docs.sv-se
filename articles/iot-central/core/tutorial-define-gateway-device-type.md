@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995530"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832394"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Självstudie – definiera en ny enhets typ för IoT gateway i ditt Azure IoT Central-program
 
@@ -51,11 +51,11 @@ Så här skapar du en enhets mall för en **S1 sensor** enhet:
 
 1. På sidan **Granska** väljer du **skapa** för att lägga till enhets mal len i programmet. 
 
-Så här skapar du en enhets mall för en * RS40 för användnings *_sensor_* :
+Så här skapar du en enhets mall för en * RS40 för användnings **sensor** :
 
 1. I det vänstra fönstret väljer du **enhets mallar**. Välj sedan **+** för att börja lägga till mallen.
 
-1. Rulla nedåt tills du ser panelen för **_RS40 besittnings sensor_* enhet. Välj panelen och välj sedan **Nästa: anpassa**.
+1. Rulla nedåt tills du ser panelen för ***RS40 besittnings sensor** enhet. Välj panelen och välj sedan **Nästa: anpassa**.
 
 1. På sidan **Granska** väljer du **skapa** för att lägga till enhets mal len i programmet. 
 
@@ -198,6 +198,10 @@ Både de simulerade underordnade enheterna är nu anslutna till den simulerade g
 
 Välj en mall för gateway-enhet och gateway-enhet och välj **Anslut**.
 
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>Nästa steg
 
 I den här självstudiekursen lärde du dig att:
@@ -208,9 +212,6 @@ I den här självstudiekursen lärde du dig att:
 * Definiera en visualisering för enhetens telemetri.
 * Lägg till relationer.
 * Publicera din enhets mall.
-
-> [!NOTE]
-> VS Code-baserad kodgenerering stöds för närvarande inte för gateway-enheter som modelleras i IoT Central.
 
 Sedan kan du, som enhets utvecklare, lära dig att:
 

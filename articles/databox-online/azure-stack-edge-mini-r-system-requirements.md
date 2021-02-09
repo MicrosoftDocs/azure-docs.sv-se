@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 75eb847bd85f52e8fe168b0ee7270af4bdea20ed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6836777c761fa2cce482cb000b6c86919e6b5613
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467460"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834076"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>System krav för Azure Stack Edge Mini R
 
@@ -82,7 +82,7 @@ Använd följande tabell för port konfiguration för servrar som är värdar f�
 
 | Port nr. | In eller ut | Port omfång | Obligatorisk | Vägledning |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ut       | WAN        | Yes      | Utgående öppen för IoT Edge etablering. Den här konfigurationen krävs när du använder manuella skript eller DPS (Azure IoT Device Provisioning service).|
+| TCP 443 (HTTPS)| Ut       | WAN        | Ja      | Utgående öppen för IoT Edge etablering. Den här konfigurationen krävs när du använder manuella skript eller DPS (Azure IoT Device Provisioning service).|
 
 Fullständig information finns i [brand Väggs-och port konfigurations regler för IoT Edge distribution](../iot-edge/troubleshoot.md).
 

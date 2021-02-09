@@ -3,18 +3,18 @@ title: Diagnostisera och felsöka problem med Azure Cosmos DB .NET SDK
 description: Använd funktioner som loggning på klient sidan och andra verktyg från tredje part för att identifiera, diagnostisera och felsöka Azure Cosmos DB problem när du använder .NET SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 09/12/2020
+ms.date: 02/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683113"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831254"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostisera och felsöka problem med Azure Cosmos DB .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,7 +55,7 @@ Se [avsnittet GitHub-problem](https://github.com/Azure/azure-cosmos-dotnet-v2/is
 Genom att kontrol lera [Portal måtten](./monitor-cosmos-db.md) kan du avgöra om det är problem med klient sidan eller om det är problem med tjänsten. Om måtten t. ex. innehåller en hög frekvens av avgiftsbelagda begär Anden (HTTP-statuskod 429), vilket innebär att begäran får en begränsning, kontrollerar du i avsnittet om [antalet begär Anden är för stort](troubleshoot-request-rate-too-large.md) . 
 
 ## <a name="retry-logic"></a>Omprövnings logik <a id="retry-logics"></a>
-Cosmos DB SDK vid ett i/o-fel försöker utföra åtgärden igen om det är möjligt att försöka igen i SDK. Det är en bra idé att använda ett nytt försök för ett fel, men det kan vara en bra idé att hantera eller försöka skriva fel. Vi rekommenderar att du använder den senaste SDK: n eftersom logiken för omprövning ständigt förbättras.
+Vid alla I/O-fel försöker Cosmos DB SDK utföra åtgärden igen om det är möjligt. Det är en bra idé att använda ett nytt försök för ett fel, men det kan vara en bra idé att hantera eller försöka skriva fel. Vi rekommenderar att du använder den senaste SDK: n eftersom logiken för omprövning ständigt förbättras.
 
 1. Läs-och fråge-i/o-felen kommer att få ett nytt försök av SDK utan att visa dem till slutanvändaren.
 2. Skrivningar (Create, upsert, replace, Delete) är "inte" idempotenta och därför kan SDK: n inte alltid försöka utföra misslyckade Skriv åtgärder på ett blindt sätt. Det krävs att användarens program logik hanterar fel och försöker igen.
@@ -63,10 +63,11 @@ Cosmos DB SDK vid ett i/o-fel försöker utföra åtgärden igen om det är möj
 
 ## <a name="common-error-status-codes"></a>Vanliga fel status koder <a id="error-codes"></a>
 
-| Statuskod | Beskrivning | 
+| Statuskod | Description | 
 |----------|-------------|
 | 400 | Felaktig begäran (beror på fel meddelandet)| 
 | 401 | [Inte auktoriserad](troubleshoot-unauthorized.md) | 
+| 403 | [Forbidden](troubleshoot-forbidden.md) |
 | 404 | [Resursen hittades inte](troubleshoot-not-found.md) |
 | 408 | [Tids gränsen nåddes för begäran](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | Ett konflikt haveri är när det ID som angetts för en resurs på en Skriv åtgärd har tagits av en befintlig resurs. Använd ett annat ID för resursen för att lösa problemet eftersom ID måste vara unikt i alla dokument med samma partitionsnyckel. |

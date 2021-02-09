@@ -7,12 +7,12 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421387"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831271"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Självstudie – använda MQTT för att utveckla en IoT Plug and Play enhets klient
 
@@ -37,7 +37,7 @@ Använd *Azure IoT Explorer* -verktyget för att lägga till en ny enhet i IoT H
 1. På sidan **enheter** väljer du **+ ny**.
 1. Skapa en enhet med namnet *My-MQTT-Device* som använder en automatiskt genererad symmetrisk nyckel.
 1. På sidan **enhets identitet** expanderar du **ANSLUTNINGS sträng med SAS-token**.
-1. Välj den **primära nyckel** som ska användas som **symmetrisk nyckel** , ange förfallo tiden till 60 minuter och välj **generera**.
+1. Välj den **primära nyckel** som ska användas som **symmetrisk nyckel**, ange förfallo tiden till 60 minuter och välj **generera**.
 1. Kopiera den genererade **SAS-tokens anslutnings sträng**. du använder det här värdet senare i självstudien.
 
 ## <a name="clone-sample-repo"></a>Klona exempel lagrings platsen
@@ -137,15 +137,14 @@ Följande definitioner gäller för de MQTT-ämnen som enheten använder för at
 * Den `DEVICE_TELEMETRY_MESSAGE` definierar det avsnitt som enheten använder för att skicka telemetri till din IoT-hubb.
 
 Mer information om MQTT finns i MQTT- [exemplen för Azure IoT](https://github.com/Azure-Samples/IoTMQTTSample/) GitHub-lagringsplatsen.
-  
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
+
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig hur du ändrar en MQTT-enhets klient för att följa IoT Plug and Play-konventionerna. Mer information om IoT Plug and Play finns i:
-
-> [!div class="nextstepaction"]
-> [Arkitektur](concepts-architecture.md)
-
-Mer information om IoT Hub-stöd för MQTT-protokollet finns i:
+I den här självstudien har du lärt dig hur du ändrar en MQTT-enhets klient för att följa IoT Plug and Play-konventionerna. Mer information om IoT Hub-stöd för MQTT-protokollet finns i:
 
 > [!div class="nextstepaction"]
 > [Kommunicera med IoT-hubben med MQTT-protokollet](../iot-hub/iot-hub-mqtt-support.md)

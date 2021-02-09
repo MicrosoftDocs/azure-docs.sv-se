@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 1967a2fb5adebe01ef4bff8d58f7832bffe95762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98482a43516683499e83bebafe4eeadc5b7a8b7
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531278"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832512"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Självstudie: Distribuera och genom gång av en kontinuerlig app-mall för patient övervakning
 
@@ -24,6 +24,10 @@ I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Skapa en Programmall
 > * Gå igenom program mal len
+
+## <a name="prerequisites"></a>Förutsättningar
+
+En Azure-prenumeration rekommenderas. Du kan också använda en kostnads fri 7-dagars utvärderings version. Om du inte har någon Azure-prenumeration kan du skapa en på [sidan för Azure-registrering](https://aka.ms/createazuresubscription).
 
 ## <a name="create-an-application-template"></a>Skapa en Programmall
 
@@ -61,21 +65,21 @@ När du har distribuerat app-mallen hamnar du först på **lamna instrument pane
 
 * Ändra enhetens **patient status** för att ange om enheten används för ett pågående eller ett fjärrscenario.
 
-:::image type="content" source="media/lamna-in-patient.png" alt-text="Healthcre app-mall":::
+:::image type="content" source="media/lamna-in-patient.png" alt-text="Status för patienter":::
 
 Du kan också välja **gå till instrument panelen för en fjärran sluten patient** för att se instrument panelen för Burkville sjukhus. Den här instrument panelen innehåller en liknande uppsättning åtgärder, telemetri och information. Du kan också se flera enheter som används och välja att **Uppdatera den inbyggda program varan** på var och en.
 
-:::image type="content" source="media/lamna-remote.png" alt-text="Healthcre app-mall":::
+:::image type="content" source="media/lamna-remote.png" alt-text="Instrument panel för fjärr operatör":::
 
 ### <a name="device-templates"></a>Enhetsmallar
 
-Om du väljer **enhets mallar**visas de två enhets typerna i mallen:
+Om du väljer **enhets mallar** visas de två enhets typerna i mallen:
 
 * **Smart Vital-korrigering**: den här enheten representerar en korrigering som mäter olika viktiga tecken. Den används för att övervaka patienter i och utanför sjukhus. Om du väljer mallen ser du att korrigerings filen skickar både enhets data, till exempel batteri nivå och enhets temperatur samt patient hälso data som andnings frekvens och blod tryck.
 
 * **Smart Knee-klammer**: den här enheten representerar en Knee-klammer som patienter använder vid återställning från en Knee-reoperation. Om du väljer den här mallen visas funktioner som enhets data, rörelse intervall och acceleration.
 
-:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Healthcre app-mall":::
+:::image type="content" source="media/smart-vitals-device-template.png" alt-text="Mall för smart korrigering":::
 
 ### <a name="device-groups"></a>Enhetsgrupper
 
@@ -85,7 +89,7 @@ Om du väljer fliken enhets grupper visas en standard enhets grupp för varje en
 
 ### <a name="rules"></a>Regler
 
-Om du väljer **regler**visas de tre reglerna i mallen:
+Om du väljer **regler** visas de tre reglerna i mallen:
 
 * **Klammerparentes temperatur hög**: den här regeln utlöses när den smarta Knee-klammerns enhets temperatur är större än 95 &deg; F över ett 5-minuters fönster. Använd den här regeln för att avisera patient-och sjukvårds teamet och fjärrlagra enheten.
 
@@ -93,7 +97,7 @@ Om du väljer **regler**visas de tre reglerna i mallen:
 
 * **Korrigerings batteri låg**: den här regeln utlöses när batteri nivån på enheten hamnar under 10%. Använd den här regeln för att utlösa en avisering till patienten för att debitera enheten.
 
-:::image type="content" source="media/brace-temp-rule.png" alt-text="Healthcre app-mall":::
+:::image type="content" source="media/brace-temp-rule.png" alt-text="Regler":::
 
 ### <a name="jobs"></a>Jobb
 
@@ -103,7 +107,7 @@ Med jobb kan du köra Mass åtgärder på en uppsättning enheter, med hjälp av
 
 * **Reprovision-enheter**: du har en uppsättning enheter som nyligen har returnerats till sjukhus. Det här jobbet hittar enheter i enhets gruppen **etablera enheter** och kör ett kommando för att etablera om dem för nästa uppsättning patienter.
 
-### <a name="devices"></a>Egenskaper
+### <a name="devices"></a>Enheter
 
 Välj fliken **enheter** och välj sedan en instans av den **smarta Knee-klammern**. Det finns tre vyer för att utforska information om den enhet som du har valt. Dessa vyer skapas och publiceras när du skapar enhets mal len för enheten. Därför är dessa vyer konsekventa för alla enheter som du ansluter eller simulerar.
 
@@ -113,7 +117,7 @@ På fliken **Egenskaper** kan du redigera moln egenskaper och egenskaper för l�
 
 På fliken **kommandon** kan du köra kommandon på enheten.
 
-:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Healthcre app-mall":::
+:::image type="content" source="media/knee-brace-dashboard.png" alt-text="Knee-klammer":::
 
 ### <a name="data-export"></a>Dataexport
 
@@ -123,7 +127,7 @@ Med data export kan du exportera enhets data kontinuerligt till andra Azure-tjä
 
 Om du inte kommer att fortsätta att använda det här programmet kan du ta bort programmet genom att gå till **Administration > program inställningar** och klicka på **ta bort**.
 
-:::image type="content" source="media/admin-delete.png" alt-text="Healthcre app-mall":::
+:::image type="content" source="media/admin-delete.png" alt-text="Städade resurser":::
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 0eb3b8feda09d931654d1781ea37737d68a1b377
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 02/04/2021
+ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526644"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832767"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -32,6 +32,7 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 
 ## <a name="january-2021"></a>Januari 2021
 
+- [Analys regel guiden: förbättrad redigerings upplevelse för frågor (offentlig för hands version)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [PowerShell-modulen AZ. SecurityInsights (offentlig för hands version)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-anslutning](#sql-database-connector)
 - [Förbättrade incident kommentarer](#improved-incident-comments)
@@ -40,6 +41,16 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 - [Förbättrad regel justering med för hands versions diagram för analys regel](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analys regel guiden: förbättrad redigerings upplevelse för frågor (offentlig för hands version)
+
+Guiden regel för schemalagd analys i Azure Sentinel innehåller nu följande förbättringar för att skriva och redigera frågor:
+
+-   Ett expanderbart redigerings fönster som ger dig mer skärm utrymme för att visa din fråga.
+-   Ord markering för ord i din frågeparameter.
+-   Utökat stöd för automatisk komplettering.
+-   Valideringar av frågor i real tid. Fel i frågan visas nu som ett rött block i rullnings listen och som en röd prick på fliken **Ange regelns logiska** namn. Dessutom går det inte att spara en fråga med fel.
+
+Mer information finns i [Självstudier: identifiera hot direkt från rutan](tutorial-detect-threats-built-in.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>PowerShell-modulen AZ. SecurityInsights (offentlig för hands version)
 
 Azure Sentinel stöder nu den nya [AZ. SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell-modulen.
@@ -113,7 +124,7 @@ Den här uppdateringen för Azure Sentinel innehåller nya jakt frågor som ger 
 - **Samling**
 - **Kommando och kontroll**
 - **Åtkomst till autentiseringsuppgifter**
-- **Identifikation**
+- **Identifiering**
 - **Projektering**
 - **Exfiltrering**
 - **Påverkan**

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 01/27/2021
+ms.date: 02/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 6fff5b9d41c960ebe37098695c694725de0226e0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: eb01ae5e9c7e134e33460674eb2c44b710671a4a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954622"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833362"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Viktig information om Azure Stack Edge 2101
 
@@ -47,7 +47,7 @@ Följande tabell innehåller en sammanfattning av kända problem i 2101-versione
 |**3.**|Kubernetes |Edge container Registry fungerar inte när webbproxy är aktiverat.|Funktionen kommer att vara tillgänglig i framtida versioner. |
 |**4.**|Kubernetes |Edge container Registry fungerar inte med IoT Edge moduler.| |
 |**5.**|Kubernetes |Kubernetes stöder inte ":" i miljö variabel namn som används av .NET-program. Detta krävs också för Event Grid IoT Edge-modulen för att fungera på Azure Stack Edge-enhet och andra program. Mer information finns i [ASP.net Core-dokumentation](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables).|Ersätt ":" med dubbel under streck. Mer information finns i [Kubernetes-problem](https://github.com/kubernetes/kubernetes/issues/53201)|
-|**3-6.** |Azure-båg + Kubernetes-kluster |När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |Du måste ställa in `--sync-garbage-collection`  i Arc-OperatorParams för att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
+|**3-6.** |Azure-båg + Kubernetes-kluster |När resursen `yamls` tas bort från git-lagringsplatsen tas som standard inte de motsvarande resurserna bort från Kubernetes-klustret.  |För att tillåta borttagning av resurser när de tas bort från git-lagringsplatsen, anges `--sync-garbage-collection` i Arc-OperatorParams. Mer information finns i [ta bort en konfiguration](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters). |
 |**3,7.**|NFS |Program som använder NFS-resurser monteras på enheten för att skriva data ska använda exklusiv skrivning. Detta säkerställer att skrivningarna skrivs till disken.| |
 |**7,8.**|Beräknings konfiguration |Beräknings konfiguration Miss lyckas i nätverkskonfigurationer där gatewayer eller växlar eller routrar svarar på ARP-begäranden (Address Resolution Protocol) för system som inte finns i nätverket.| |
 |**1.9.**|Compute och Kubernetes |Om Kubernetes konfigureras först på din enhet anlitar den alla tillgängliga GPU: er. Därför är det inte möjligt att skapa Azure Resource Manager virtuella datorer med GPU: er när du har konfigurerat Kubernetes. |Om enheten har 2 GPU: er kan du skapa en virtuell dator som använder GPU: n och sedan konfigurera Kubernetes. I det här fallet kommer Kubernetes att använda de återstående tillgängliga 1 GPU: n. |
@@ -73,11 +73,12 @@ Följande tabell innehåller en sammanfattning av kända problem som överförs 
 |**12.5.**|Kubernetes |Kubernetes tillåter för närvarande inte Multi-Protocol LoadBalancer-tjänster. Till exempel en DNS-tjänst som måste lyssna på både TCP och UDP. |För att undvika den här begränsningen av Kubernetes med MetalLB kan två tjänster (en för TCP, en för UDP) skapas på samma Pod-selektor. Dessa tjänster använder samma delnings nyckel och spec. loadBalancerIP för att dela samma IP-adress. IP-adresser kan också delas om du har fler tjänster än tillgängliga IP-adresser. <br> Mer information finns i [IP-adress delning](https://metallb.universe.tf/usage/#ip-address-sharing).|
 |**13.4.**|Kubernetes-kluster|Befintliga Azure IoT Edge Marketplace-moduler kan kräva att ändringar körs på IoT Edge på Azure Stack Edge-enhet.|Mer information finns i ändra Azure IoT Edge moduler från Marketplace till att köra på Azure Stack Edge-enhet.<!-- insert link-->|
 |**längre.**|Kubernetes |Filbaserade bind-monteringar stöds inte med Azure IoT Edge på Kubernetes på Azure Stack Edge-enhet.|IoT Edge använder ett översättnings lager för att översätta `ContainerCreate` alternativ till Kubernetes-konstruktioner. Att skapa `Binds` kartor till `hostpath` katalog och därmed kan filbaserade bindnings monteringar inte bindas till sökvägar i IoT Edge behållare. Mappa om möjligt den överordnade katalogen.|
-|**15.4.**|Kubernetes |Om du använder dina egna certifikat för IoT Edge och lägger till dem på din Azure Stack Edge-enhet när beräkningen har kon figurer ATS på enheten, hämtas inte de nya certifikaten.|Undvik det här problemet genom att överföra certifikaten innan du konfigurerar beräkning på enheten. Om beräkningen redan har kon figurer ATS [ansluter du till PowerShell-gränssnittet för enheten och kör IoT Edge kommandon](azure-stack-edge-gpu-connect-powershell-interface.md#use-iotedge-commands). Starta om `iotedged` och `edgehub` poddar.|
+|**15.4.**|Kubernetes |Om du tar med dina egna certifikat för IoT Edge och lägger till dessa certifikat på din Azure Stack Edge-enhet när beräkningen har kon figurer ATS på enheten, hämtas inte de nya certifikaten.|Undvik det här problemet genom att överföra certifikaten innan du konfigurerar beräkning på enheten. Om beräkningen redan har kon figurer ATS [ansluter du till PowerShell-gränssnittet för enheten och kör IoT Edge kommandon](azure-stack-edge-gpu-connect-powershell-interface.md#use-iotedge-commands). Starta om `iotedged` och `edgehub` poddar.|
 |**16.**|Certifikat |I vissa fall kan det ta flera sekunder att uppdatera certifikat tillstånd i det lokala användar gränssnittet. |Följande scenarier i det lokala användar gränssnittet kan påverkas.<ul><li>**Status** kolumn på sidan **certifikat** .</li><li>**Säkerhets** panel på sidan **Kom igång** .</li><li>**Konfigurations** panelen på **översikts** sidan.</li></ul>  |
 |**43.**|IoT Edge |Moduler som distribueras via IoT Edge kan inte använda värd nätverk. | |
 |**arton.**|Compute + Kubernetes |Compute/Kubernetes stöder inte NTLM-webbproxy. ||
 |**19.3.**|Kubernetes + uppdatera |Tidigare program versioner som 2008-versioner har ett problem med en problem uppdatering som gör att uppdateringen Miss känner till ClusterConnectionException. |Att använda nya versioner bör hjälpa dig att undvika det här problemet. Om du fortfarande ser det här problemet är lösningen att försöka uppgradera igen och bör fungera.|
+|**tjugo**|Internet Explorer|Om utökade säkerhetsfunktioner är aktiverade kanske du inte kan komma åt lokala webb GRÄNSSNITTs sidor. | Inaktivera Förbättrad säkerhet och starta om webbläsaren.|
 
 
 <!--|**18.**|Azure Private Edge Zone (Preview) |There is a known issue with Virtual Network Function VM if the VM was created on Azure Stack Edge device running earlier preview builds such as 2006/2007b and then the device was updated to 2009 GA release. The issue is that the VNF information can't be retrieved or any new VNFs can't be created unless the VNF VMs are deleted before the device is updated.  |Before you update Azure Stack Edge device to 2009 release, use the PowerShell command `get-mecvnf` followed by `remove-mecvnf <VNF guid>` to remove all Virtual Network Function VMs one at a time. After the upgrade, you will need to redeploy the same VNFs.|-->

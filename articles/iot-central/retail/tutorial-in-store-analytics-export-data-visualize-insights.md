@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346375"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831696"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Självstudie: exportera data från Azure IoT Central och visualisera insikter i Power BI
 
@@ -504,6 +504,4 @@ Du kan ta bort dina Power BI data uppsättningar och instrument paneler genom at
 De här tre självstudierna visar en komplett lösning som använder program mal len **för analys av IoT Central i butiken** . Du har anslutit enheter till programmet, använt IoT Central för att övervaka enheterna och använt Power BI för att bygga en instrument panel för att Visa insikter från enhetens telemetri. Ett rekommenderat nästa steg är att utforska en av de andra IoT Central Programmallarna:
 
 > [!div class="nextstepaction"]
-> * [Skapa energilösningar med IoT Central](../energy/overview-iot-central-energy.md)
-> * [Skapa lösningar för myndigheter med IoT Central](../government/overview-iot-central-government.md)
-> * [Skapa lösningar för hälso- och sjukvården med Azure IoT Central](../healthcare/overview-iot-central-healthcare.md)
+> [Skapa energilösningar med IoT Central](../energy/overview-iot-central-energy.md)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: ecc32908aea2fb474d2ebe5bd94f556527eda814
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 70769ec97affcd95d07a1365d6357262072c86ec
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763454"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832085"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>Självstudie: skapa ett program för video analys – identifiering av objekt och motion i Azure IoT Central (YOLO v3)
 
@@ -127,3 +127,25 @@ På sidan **lva Edge Gateway v2** väljer du **+ Ersätt manifest**.
 Navigera till mappen *lva-Configuration* och välj *deployment.amd64.jspå* manifest filen som du redigerade tidigare. Välj **Överför**. När verifieringen är klar väljer du **Ersätt**.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Om du är klar med programmet kan du ta bort alla resurser som du har skapat på följande sätt:
+
+1. I IoT Central programmet navigerar du till sidan **program** i avsnittet **Administration** . Välj sedan **Ta bort**.
+1. Ta bort resurs gruppen **lva-RG** i Azure Portal.
+1. På den lokala datorn stoppar du Docker-behållaren för **amp-visningsprogrammet** .
+
+## <a name="next-steps"></a>Nästa steg
+
+Nu har du skapat ett IoT Central program med hjälp av program mal len **video analys – objekt och rörelse identifiering** , skapat en enhets mall för gateway-enheten och lagt till en gateway-enhet i programmet.
+
+Om du vill testa programmet för video analys – objekt-och motion-identifiering med hjälp av IoT Edge moduler som kör en virtuell dator i molnet med simulerade video strömmar:
+
+> [!div class="nextstepaction"]
+> [Skapa en IoT Edge-instans för video analys (Linux VM)](tutorial-video-analytics-iot-edge-vm.md)
+
+Om du vill prova program för video analys – objekt-och motion-identifiering med IoT Edge moduler som kör en riktig enhet med en riktig **ONVIF** -kamera:
+
+> [!div class="nextstepaction"]
+> [Skapa en IoT Edge-instans för video analys (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md)

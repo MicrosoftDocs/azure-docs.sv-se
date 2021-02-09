@@ -3,12 +3,12 @@ title: Mall-funktioner – jämförelse
 description: Beskriver de funktioner som används i en Azure Resource Manager-mall (ARM-mall) för att jämföra värden.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920525"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834008"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Jämförelse funktioner för ARM-mallar
 
@@ -31,7 +31,7 @@ Returnerar det första värdet som inte är null från parametrarna. Tomma strä
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |heltal, sträng, matris eller objekt |Det första värdet som ska testas för null. |
 | ytterligare argument |Inga |heltal, sträng, matris eller objekt |Ytterligare värden att testa för null. |
@@ -106,11 +106,11 @@ param objectToTest object = {
   ]
 }
 
-output stringOutput string = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.string)
-output intOutput int = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.int)
-output objectOutput object = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.object)
-output arrayOutput array = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.array)
-output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
+output stringOutput string = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.string
+output intOutput int = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.int
+output objectOutput object = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.object
+output arrayOutput array = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.array
+output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 ```
 
 ---
@@ -133,7 +133,7 @@ Kontrollerar om två värden är lika med varandra. `equals`Funktionen stöds in
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |heltal, sträng, matris eller objekt |Det första värdet för att kontrol lera om det är lika. |
 | arg2 |Ja |heltal, sträng, matris eller objekt |Det andra värdet för att kontrol lera om det är lika. |
@@ -317,7 +317,7 @@ Kontrollerar om det första värdet är större än det andra värdet. `greater`
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för större jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för större jämförelse. |
@@ -398,7 +398,7 @@ Kontrollerar om det första värdet är större än eller lika med det andra vä
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för större eller lika jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för större eller lika jämförelse. |
@@ -479,7 +479,7 @@ Kontrollerar om det första värdet är mindre än det andra värdet. `less`Funk
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för mindre jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för mindre jämförelse. |
@@ -560,7 +560,7 @@ Kontrollerar om det första värdet är mindre än eller lika med det andra vär
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Beskrivning |
+| Parameter | Krävs | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |int eller string |Det första värdet för mindre eller lika med jämförelse. |
 | arg2 |Ja |int eller string |Det andra värdet för jämförelsen som är mindre eller lika med. |

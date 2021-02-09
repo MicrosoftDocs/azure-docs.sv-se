@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 2757d696f5922263abf87399d6491e46b5e5513c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033904"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833974"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Självstudie: skapa och ansluta ett klient program till ditt Azure IoT Central-program
 
@@ -71,6 +71,10 @@ Som enhets utvecklare kan du använda vyn **rå data** för att undersöka rå d
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="Vyn rå data":::
 
 I den här vyn kan du välja vilka kolumner som ska visas och ange ett tidsintervall som ska visas. I kolumnen för staplade **data** visas data från enheten som inte matchar några definitioner för egenskaper eller telemetri i enhets mal len.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c13821544ff9725a387534370fc716c70072bb85
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734631"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831781"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Så här konfigurerar du Azure cache för Redis
 I det här avsnittet beskrivs de konfigurationer som är tillgängliga för Azure-cachen för Redis-instanser. Det här avsnittet beskriver också standard konfigurationen för Redis-servern för Azure cache för Redis-instanser.
@@ -33,7 +33,7 @@ Du kan visa och konfigurera följande inställningar med **resurs-menyn**.
 * [Översikt](#overview)
 * [Aktivitetslogg](#activity-log)
 * [Åtkomstkontroll (IAM)](#access-control-iam)
-* [Taggen](#tags)
+* [Taggar](#tags)
 * [Diagnostisera och lösa problem](#diagnose-and-solve-problems)
 * [Inställningar](#settings)
     * [Åtkomstnycklar](#access-keys)
@@ -236,10 +236,7 @@ På bladet **schema uppdateringar** kan du ange ett underhålls fönster för re
 
 Om du vill ange en underhålls period kontrollerar du önskade dagar och anger start timme för underhålls perioden för varje dag och klickar på **OK**. Tiden för underhålls perioden är UTC.
 
-> [!IMPORTANT]
-> Funktionen **Schemalägg uppdateringar** är bara tillgänglig för cacheminnen på Premium-nivån. Mer information och instruktioner finns i [Azure cache for Redis administration-Schedule updates](cache-administration.md#schedule-updates).
->
->
+Mer information och instruktioner finns i [Azure cache for Redis administration-Schedule updates](cache-administration.md#schedule-updates)
 
 ### <a name="geo-replication"></a>Geo-replikering
 

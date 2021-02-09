@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc8044ee72689634a1d4ce3e0e8b1a499404c5ce
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 0fcea6a44f5379ff3da5b348ae45486be6c2516a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560294"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831322"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Använd arbets ytan bakom en brand vägg för Azure Machine Learning
 
@@ -82,7 +82,7 @@ Mer information finns i [skapa en Azure Batch pool i ett virtuellt nätverk](../
     * MicrosoftContainerRegistry. region
     * AzureFrontDoor.FirstParty
 
-    För poster som innehåller `region` ersätter du med den Azure-region som du använder. Ett exempel är `keyvault.westus`.
+    För poster som innehåller `region` ersätter du med den Azure-region som du använder. Till exempel `keyvault.westus`.
 
     För __protokollet__ väljer du `TCP` . För käll-och mål __portarna__ väljer du `*` .
 
@@ -123,6 +123,7 @@ Värdarna i det här avsnittet ägs av Microsoft och tillhandahåller tjänster 
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
 | Azure Portal | management.azure.com | management.azure.us | management.azure.cn |
+| Azure Resource Manager | management.azure.com | management.usgovcloudapi.net | management.chinacloudapi.cn |
 
 **Azure Machine Learning värdar**
 
@@ -146,7 +147,7 @@ Värdarna i det här avsnittet ägs av Microsoft och tillhandahåller tjänster 
 | **Krävs för** | **Azure, offentlig** | **Azure Government** | **Azure Kina 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Beräknings kluster/instans | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
-| Beräknings kluster/instans | graph.windows.net |  |  |
+| Beräknings kluster/instans | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | Beräkninsinstans | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
 | Beräkninsinstans | \*. instances.azureml.ms |  |  |
 

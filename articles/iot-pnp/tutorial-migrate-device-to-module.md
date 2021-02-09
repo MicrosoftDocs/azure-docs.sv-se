@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95500279"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831219"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Självstudie: ansluta en IoT Plug and Play-modul (C#)
 
@@ -20,7 +20,12 @@ Den här självstudien visar hur du ansluter en allmän IoT Plug and Play- [modu
 
 En enhet är en IoT Plug and Play-enhet om den publicerar sitt modell-ID när den ansluter till en IoT-hubb och implementerar de egenskaper och metoder som beskrivs i DTDL-modellen (Digital-definitions språk) som identifieras av modell-ID: t. Mer information om hur enheter använder ett DTDL och modell-ID finns i [IoT plug and Play Developer Guide](./concepts-developer-guide-device.md). Moduler använder modell-ID: n och DTDL modeller på samma sätt.
 
-För att demonstrera hur du implementerar en IoT Plug and Play-modul visar den här självstudien hur du konverterar termostat C#-enhets exemplet till en allmän modul.
+För att demonstrera hur du implementerar en IoT Plug and Play-modul visar den här självstudien hur du:
+
+> [!div class="checklist"]
+> * Lägg till en enhet med en modul i IoT Hub.
+> * Konvertera termostat C#-enhets exemplet till en allmän modul.
+> * Använd service SDK för att interagera med modulen.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -98,7 +103,7 @@ Så här öppnar och förbereder du exempelprojektet:
 
 1. I Visual Studio navigerar du till **Project > termostat-egenskaper > Felsök**. Lägg sedan till följande miljövariabler i projektet:
 
-    | Name | Värde |
+    | Namn | Värde |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | Begär |
     | IOTHUB_MODULE_CONNECTION_STRING | Den anslutnings sträng för modul som du antecknade tidigare |
@@ -173,7 +178,7 @@ Med tjänst-SDK: er kan du hämta modell-ID: t för anslutna IoT Plug and Play e
 
 1. I Visual Studio navigerar du till **Project > termostat-egenskaper > Felsök**. Lägg sedan till följande miljövariabler i projektet:
 
-    | Name | Värde |
+    | Namn | Värde |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | min-modul-enhet |
     | IOTHUB_CONNECTION_STRING | Värdet du antecknade när du slutförde [konfiguration av din miljö](set-up-environment.md) |
@@ -232,6 +237,10 @@ Du kan använda Azure IoT Explorer-verktyget för att se:
 * Telemetri från IoT Edge-enheten.
 * IoT Edge moduls dubbla egenskaps uppdateringar utlöser IoT Plug and Play-meddelanden.
 * IoT Edge-modulen reagerar på IoT Plug and Play-kommandon.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+[!INCLUDE [iot-pnp-clean-resources](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

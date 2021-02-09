@@ -6,14 +6,17 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6502d4259aa383c1466967d01282cecfbb8d1ded
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326128"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832971"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Övervakare av nätverksprestanda lösning: prestanda övervakning
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya tester på en befintlig arbets yta eller aktivera en ny arbets yta i Övervakare av nätverksprestanda. Du kan fortsätta att använda testerna som skapats före den 1 juli 2021. [Migrera dina tester från övervakare av nätverksprestanda till den nya anslutnings övervakaren](https://docs.microsoft.com/azure/network-watcher/migrate-to-connection-monitor-from-network-performance-monitor) i Azure Network Watcher före den 29 februari 2024 för att minimera avbrott i tjänsten för dina aktuella arbets belastningar.
 
 Prestanda övervaknings funktionen i [övervakare av nätverksprestanda](network-performance-monitor.md) hjälper dig att övervaka nätverks anslutningen mellan olika platser i nätverket. Du kan övervaka moln distributioner och lokala platser, flera data Center och avdelnings kontor och verksamhets kritiska program på flera nivåer eller mikrotjänster. Med prestanda övervakaren kan du identifiera nätverks problem innan användarna klagar. Viktiga fördelar är att du kan: 
 
@@ -41,7 +44,7 @@ Så här skapar du ett nytt nätverk:
 
 
 1. Välj fliken **nätverk** .
-1. Välj **Lägg till nätverk**och ange sedan nätverks namn och beskrivning. 
+1. Välj **Lägg till nätverk** och ange sedan nätverks namn och beskrivning. 
 2. Välj ett eller flera undernät och välj sedan **Lägg till**. 
 3. Välj **Spara** för att spara konfigurationen. 
 
@@ -94,7 +97,7 @@ Formatet, storleken och sekvensen för dessa paket bestäms av det protokoll som
 
 Om du väljer att använda ICMP under distributionen kan du när som helst växla till TCP genom att redigera standard övervaknings regeln.
 
-1. Gå till övervakaren för **nätverks prestanda**   >  **Monitor**   >  **Konfigurera**   >  **övervakaren**. Välj sedan **standard regel**. 
+1. Gå till övervakaren för **nätverks prestanda**   >  ****   >  **Konfigurera**   >  **övervakaren**. Välj sedan **standard regel**. 
 2. Bläddra till avsnittet **protokoll** och välj det protokoll som du vill använda. 
 3. Välj **Spara** för att tillämpa inställningen. 
 
@@ -129,4 +132,3 @@ I följande bild visas den bakomliggande orsaken till problemen med de olika del
 
 ## <a name="next-steps"></a>Nästa steg
 [Sök i loggar](../log-query/log-query-overview.md) om du vill visa detaljerade data poster för nätverks prestanda.
-

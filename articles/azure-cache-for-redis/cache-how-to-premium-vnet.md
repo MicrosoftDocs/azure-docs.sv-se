@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9343bc424a0a38da173a56701528c4fd7549aabd
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 908254fec0d9e92b0e30c2e4968c3c505bbbdbf8
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734665"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833838"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-tier-azure-cache-for-redis-instance"></a>Konfigurera stöd för virtuella nätverk för en Azure-cache på Premium-nivå för Redis-instans
 
@@ -178,7 +178,7 @@ Det finns krav på nätverks anslutning för Azure-cache för Redis som kanske i
 * Utgående nätverks anslutning till Azure Storage slut punkter över hela världen. Slut punkter som finns i samma region som Azure cache för Redis-instansen och lagrings slut punkter som finns i *andra* Azure-regioner ingår. Azure Storage slut punkter matchas enligt följande DNS-domäner: *Table.Core.Windows.net*, *blob.Core.Windows.net*, *Queue.Core.Windows.net* och *File.Core.Windows.net*.
 * Utgående nätverks anslutning till *OCSP.DigiCert.com*, *crl4.DigiCert.com*, *OCSP.msocsp.com*, *mscrl.Microsoft.com*, *crl3.DigiCert.com*, *cacerts.DigiCert.com*, *oneocsp.Microsoft.com* och *CRL.Microsoft.com*. Den här anslutningen krävs för att stödja TLS/SSL-funktioner.
 * DNS-konfigurationen för det virtuella nätverket måste kunna matcha alla slut punkter och domäner som nämns i de tidigare punkterna. Dessa DNS-krav kan uppfyllas genom att en giltig DNS-infrastruktur konfigureras och underhålls för det virtuella nätverket.
-* Utgående nätverks anslutning till följande Azure Monitor slut punkter, som löses under följande DNS-domäner: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net* och *azglobal-Red.azglobal.Metrics.nsatc.net*.
+* Utgående nätverks anslutning till följande Azure Monitor slut punkter, som löses under följande DNS-domäner: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net*, *azglobal-Red.azglobal.Metrics.nsatc.net*, *shoebox3.prod.microsoftmetrics.com*, *shoebox3-Red.prod.microsoftmetrics.com* och *shoebox3-Black.prod.microsoftmetrics.com*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>Hur kan jag kontrol lera att mitt cacheminne fungerar i ett virtuellt nätverk?
 

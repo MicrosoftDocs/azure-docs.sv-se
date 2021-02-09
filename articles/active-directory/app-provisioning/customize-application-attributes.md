@@ -8,18 +8,22 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 1/25/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.openlocfilehash: 89b40ac68143c2af0d94434ddedec489a2208839
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 03eacf4405217ee883689a088499d86d6f2262b5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256415"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830710"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Självstudie – anpassa användar etablering attribut-mappningar för SaaS-program i Azure Active Directory
 
 Microsoft Azure AD ger stöd för användar etablering för SaaS-program från tredje part, till exempel Salesforce, G Suite och andra. Om du aktiverar användar etablering för ett SaaS-program från tredje part styr Azure Portal dess attributvärden via attribut-mappningar.
+
+Innan du börjar ska du kontrol lera att du är bekant med koncepten för appars hantering och **enkel Sign-On (SSO)** , kolla in följande länkar:
+- [Snabb starts serie för app Management i Azure AD](../manage-apps/view-applications-portal.md)
+- [Vad är enkel Sign-On (SSO)?](../manage-apps/what-is-single-sign-on.md)
 
 Det finns en förkonfigurerad uppsättning attribut och attribut mappningar mellan Azure AD-användarkonton och varje SaaS-Apps användar objekt. Vissa appar hanterar andra typer av objekt tillsammans med användare, t. ex. grupper.
 

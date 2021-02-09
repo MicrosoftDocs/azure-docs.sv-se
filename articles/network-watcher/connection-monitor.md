@@ -15,19 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896370"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834093"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Självstudie: Övervaka nätverkskommunikationen mellan två virtuella datorer i Azure Portal
 
 > [!NOTE]
 > Den här självstudien beskriver anslutnings övervakaren (klassisk). Prova den nya och förbättrade [anslutnings övervakaren](connection-monitor-overview.md) för att få förbättrad anslutnings övervakning
 
-Det kan vara mycket viktigt att kommunikationen mellan en virtuell dator (VM) och en slutpunkt, som en annan virtuell dator, fungerar ordentligt. Ibland görs konfigurationsändringar som kan bryta kommunikationen. I de här självstudierna får du lära dig att
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya anslutnings övervakare i anslutnings övervakaren (klassisk), men du kan fortsätta att använda befintliga anslutnings Övervakare som skapats före 1 juli 2021. Om du vill minimera avbrott i tjänsten för dina aktuella arbets belastningar [migrerar du från anslutnings övervakaren (klassisk) till den nya anslutnings övervakaren](migrate-to-connection-monitor-from-connection-monitor-classic.md) i Azure Network Watcher före den 29 februari 2024.
+
+Det kan vara mycket viktigt att kommunikationen mellan en virtuell dator (VM) och en slutpunkt, som en annan virtuell dator, fungerar ordentligt. Ibland görs konfigurationsändringar som kan bryta kommunikationen. I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa två virtuella datorer
@@ -60,7 +63,7 @@ Skapa två virtuella datorer.
     |Lösenord| Ange ett valfritt lösenord. Lösen ordet måste vara minst 12 tecken långt och uppfylla de [definierade komplexitets kraven](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Prenumeration| Välj din prenumeration.|
     |Resursgrupp| Välj **Skapa ny** och skriv **myResourceGroup**.|
-    |Plats| Välj **USA, östra**|
+    |Location| Välj **USA, östra**|
 
 4. Välj en storlek för den virtuella datorn och sedan **Välj**.
 5. Under **Inställningar** väljer du **Tillägg**. Välj **Lägg till tillägg** och välj **Network Watcher Agent for Windows**, så som visas i följande bild:
@@ -78,7 +81,7 @@ Utför stegen i [Skapa den första virtuella datorn](#create-the-first-vm) igen 
 |Steg|Inställning|Värde|
 |---|---|---|
 | 1 | Välj en version av **Ubuntu Server** |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | Namn                                  | myVm2                                                                   |
 | 3 | Autentiseringstyp                   | Klistra in den offentliga SSH-nyckeln eller välj **Lösenord** och ange ett lösenord. |
 | 3 | Resursgrupp                        | Välj **Använd befintlig** och sedan **myResourceGroup**.                 |
 | 6 | Tillägg                            | **Network Watcher agent för Linux**                                             |

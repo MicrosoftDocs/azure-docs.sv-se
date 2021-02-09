@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516764"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833311"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Självstudie: skapa och gå igenom App-mallen för smart avläsning av övervakning 
 
@@ -28,7 +28,7 @@ Den här självstudien vägleder dig genom processen att skapa ett program för 
 Om du inte har någon prenumeration kan du [skapa ett kostnads fritt utvärderings konto](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Förutsättningar
-- Ingen
+- Inget
 - Azure-prenumeration rekommenderas, men du behöver inte testa
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Skapa en app för smart mätarövervakning 
@@ -102,8 +102,7 @@ Om du väljer att inte fortsätta använda programmet tar du bort programmet med
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om Smart avläsning av program arkitektur se 
+Om du vill veta mer om arkitektur för smart avläsning av program vara, se:
+
 > [!div class="nextstepaction"]
-> [begrepps artikeln](./concept-iot-central-smart-meter-app.md)
-* Skapa mallar för smart avläsning av program vara kostnads fritt: [appen Smart avläsning](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* Läs mer om IoT Central i [IoT Central översikt](../index.yml)
+> [Program arkitektur för smart avläsning](./concept-iot-central-smart-meter-app.md)

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125977"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832138"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Självstudie: Distribuera och gå igenom en Programmall för Micro-uppfyllelse Center
 
@@ -86,14 +86,13 @@ Använd exempel regeln som inspiration för att definiera regler som passar dina
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte kommer att fortsätta att använda det här programmet tar du bort program mal len. Gå till inställningar för **administrations**  >  **program**och välj **ta bort**.
+Om du inte kommer att fortsätta att använda det här programmet tar du bort program mal len. Gå till inställningar för **administrations**  >  **program** och välj **ta bort**.
 
 ![Skärm bild av sidan program inställningar för Micro-uppfyllelse Center](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om
+Läs mer om:
+
 > [!div class="nextstepaction"]
 > [lösnings arkitektur för Micro-uppfyllelse Center](./architecture-micro-fulfillment-center.md)
-* Läs mer om [mallar för Azure IoT Central återförsäljarversion](./overview-iot-central-retail.md)
-* Läs mer om [Azure IoT Central](../core/overview-iot-central.md)

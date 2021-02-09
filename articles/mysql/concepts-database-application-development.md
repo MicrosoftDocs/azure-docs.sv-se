@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 20c6841bb596c7f4a32ef689423515a8da59a945
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 45447a26c0455fc5945af8b8e9f7442af7facfbe
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541563"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830693"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Översikt över program utveckling för Azure Database for MySQL 
 Den här artikeln beskriver design överväganden som en utvecklare bör följa när de skriver program kod för att ansluta till Azure Database for MySQL. 
@@ -23,7 +23,7 @@ Den här artikeln beskriver design överväganden som en utvecklare bör följa 
 Det finns kodexempel för olika programmeringsspråk och plattformar. Du kan hitta länkar till kod exempel på: [anslutnings bibliotek som används för att ansluta till Azure Database for MySQL](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Verktyg
-Azure Database for MySQL använder MySQL community-versionen som är kompatibel med MySQLs vanliga hanterings verktyg som Workbench eller MySQL-verktyg som mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)och andra. Du kan också använda Azure Portal, Azure CLI och REST-API: er för att interagera med databas tjänsten.
+Azure Database for MySQL använder MySQL-community-versionen som är kompatibel med MySQLs vanliga hanterings verktyg som Workbench eller MySQL-verktyg som mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql), [dbForge Studio för MySQL](https://www.devart.com/dbforge/mysql/studio/) och andra. Du kan också använda Azure Portal, Azure CLI och REST-API: er för att interagera med databas tjänsten.
 
 ## <a name="resource-limitations"></a>Resursbegränsningar
 Azure Database for MySQL hanterar resurserna som är tillgängliga för en server med hjälp av två olika metoder: 

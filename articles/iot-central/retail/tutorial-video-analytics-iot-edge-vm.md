@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 10ddbf3dde62380eb79af685ad41b22e4552cea1
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763884"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832631"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Självstudie: skapa en IoT Edge-instans för video analys (Linux VM)
 
@@ -62,7 +62,7 @@ Använd informationen i följande tabell för att slutföra det **anpassade dist
 | Etablerings nyckel för IoT Central Device | Den **primära nyckeln för SAS-IoT-enheter** som du antecknade i *scratchpad.txt* -filen i föregående självstudie. |
 | Storlek på virtuell dator | *Standard_DS1_v2* |
 | Ubuntu OS-version | *18,04 – LTS* |
-| Plats | *[resourceGroup (). location]* |
+| Location | *[resourceGroup (). location]* |
 
 Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**. Det tar vanligt vis cirka tre minuter innan distributionen har slutförts. När distributionen är klar navigerar du till resurs gruppen **lva-RG** i Azure Portal.
 
@@ -118,6 +118,14 @@ sudo docker ps
 ```
 
 Listan innehåller en behållare som heter **live555**.
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Om du är klar med programmet kan du ta bort alla resurser som du har skapat på följande sätt:
+
+1. I IoT Central programmet navigerar du till sidan **program** i avsnittet **Administration** . Välj sedan **Ta bort**.
+1. Ta bort resurs gruppen **lva-RG** i Azure Portal.
+1. På den lokala datorn stoppar du Docker-behållaren för **amp-visningsprogrammet** .
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3c094bf5397d15e24c3b1a58369a74438c99017e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018419"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833991"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrera till anslutnings övervakaren från anslutnings övervakaren (klassisk)
+
+> [!IMPORTANT]
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya anslutnings övervakare i anslutnings övervakaren (klassisk), men du kan fortsätta att använda befintliga anslutnings Övervakare som skapats före 1 juli 2021. Om du vill minimera avbrott i tjänsten för dina aktuella arbets belastningar [migrerar du från anslutnings övervakaren (klassisk) till den nya anslutnings övervakaren](migrate-to-connection-monitor-from-connection-monitor-classic.md)  i Azure Network Watcher före den 29 februari 2024.
 
 Du kan migrera befintliga anslutnings övervakare till ny, förbättrad anslutnings övervakare med bara några klick och utan stillestånds tid. Läs mer om fördelarna i [anslutnings övervakaren](./connection-monitor-overview.md).
 

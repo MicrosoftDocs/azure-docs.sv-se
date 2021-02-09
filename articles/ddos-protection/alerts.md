@@ -3,7 +3,7 @@ title: Visa och konfigurera DDoS-skydds varningar för Azure DDoS Protection sta
 description: Lär dig att visa och konfigurera DDoS-skydds varningar för Azure DDoS Protection standard.
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: ea62b5df7159440a7538c7db0711b7d8f63ec220
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 2d72027082ed2b57b28a15a736c35801ba88188c
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806298"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832529"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>Visa och konfigurera aviseringar för DDoS-skydd
 
@@ -41,7 +41,8 @@ I den här självstudien får du lära dig att:
 Med dessa mallar kan du konfigurera aviseringar för alla offentliga IP-adresser som du har aktiverat diagnostisk inloggning på. För att kunna använda dessa aviserings mallar måste du först ha en Log Analytics-arbetsyta med aktiverade diagnostiska inställningar. Se [Visa och konfigurera DDoS-diagnostisk loggning](diagnostic-logging.md).
 
 ### <a name="azure-monitor-alert-rule"></a>Azure Monitor varnings regel
-Den här [Azure Monitor varnings regeln](https://aka.ms/ddosmitigationstatus) kör en enkel fråga för att identifiera när en aktiv DDoS-minskning inträffar. Detta tyder på ett potentiellt angrepp. Åtgärds grupper kan användas för att anropa åtgärder som ett resultat av aviseringen.
+
+Den här [Azure Monitor varnings regeln](https://aka.ms/DDOSmitigationstatus) kör en enkel fråga för att identifiera när en aktiv DDoS-minskning inträffar. Detta tyder på ett potentiellt angrepp. Åtgärds grupper kan användas för att anropa åtgärder som ett resultat av aviseringen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520Monitor%2520Alert%2520-%2520DDoS%2520Mitigation%2520Started%2FDDoSMitigationStarted.json)
 
