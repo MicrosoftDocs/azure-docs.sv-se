@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/01/2020
+ms.date: 02/04/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2be66904898ecdf2006952f5e80c17dc78b81c06
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825810"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008544"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Vanliga frågor och svar med hanterade identiteter för Azure-resurser
 
@@ -48,6 +48,10 @@ Nej. Hanterade identiteter och Azure AD App registreringar är inte samma sak i 
 Appregistreringar har två komponenter: ett program objekt och ett huvud objekt för tjänsten. Hanterade identiteter för Azure-resurser har bara en av dessa komponenter: ett huvud objekt för tjänsten. 
 
 Hanterade identiteter har inget program objekt i katalogen, vilket är det som ofta används för att bevilja app-behörigheter för MS Graph. I stället måste MS Graph-behörigheter för hanterade identiteter beviljas direkt till tjänstens huvud namn.  
+
+### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>Kan samma hanterade identitet användas i flera regioner?
+
+I korthet kan du använda användare som tilldelats hanterade identiteter i mer än en Azure-region. Det längre svar är att när användare som tilldelats hanterade identiteter skapas som regionala resurser är det associerade [tjänst huvud namnet](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) som skapats i Azure AD tillgängligt globalt. Tjänstens huvud namn kan användas från alla Azure-regioner och dess tillgänglighet är beroende av tillgängligheten för Azure AD. Om du till exempel har skapat en användare som tilldelats en hanterad identitet i South-Central region och regionen blir otillgänglig, påverkar det här problemet bara [kontroll Plans](../../azure-resource-manager/management/control-plane-and-data-plane.md) aktiviteterna på den hanterade identiteten.  De aktiviteter som utförs av alla resurser som redan har kon figurer ATS för att använda hanterade identiteter påverkas inte.
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Fungerar hanterade identiteter för Azure-resurser med Azure Cloud Services?
 

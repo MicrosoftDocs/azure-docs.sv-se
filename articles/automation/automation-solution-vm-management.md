@@ -3,18 +3,18 @@ title: Översikt över Azure Automation Starta/stoppa virtuella datorer när de 
 description: I den här artikeln beskrivs Starta/stoppa virtuella datorer när de inte används funktionen som startar eller stoppar virtuella datorer enligt ett schema och övervakar dem proaktivt från Azure Monitor loggar.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 991ef6e7ffc26294f75ba5bd2f24c62ea6e0b421
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055389"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007014"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Översikt över Starta/stoppa virtuella datorer när de inte används
 
-Starta/stoppa virtuella datorer när de inte används funktionen startar eller stoppar aktiverade virtuella Azure-datorer. Den startar eller stoppar datorer enligt användardefinierade scheman, ger insikter via Azure Monitor loggar och skickar valfria e-postmeddelanden med hjälp av [Åtgärds grupper](../azure-monitor/platform/action-groups.md). Funktionen kan aktive ras på både Azure Resource Manager och klassiska virtuella datorer för de flesta scenarier. 
+Starta/stoppa virtuella datorer när de inte används funktionen startar eller stoppar aktiverade virtuella Azure-datorer. Den startar eller stoppar datorer enligt användardefinierade scheman, ger insikter via Azure Monitor loggar och skickar valfria e-postmeddelanden med hjälp av [Åtgärds grupper](../azure-monitor/platform/action-groups.md). Funktionen kan aktive ras på både Azure Resource Manager och klassiska virtuella datorer för de flesta scenarier.
 
 Den här funktionen använder cmdleten [Start-AzVm](/powershell/module/az.compute/start-azvm) för att starta virtuella datorer. Den använder [Stop-AzVM](/powershell/module/az.compute/stop-azvm) för att stoppa virtuella datorer.
 
@@ -39,9 +39,9 @@ Följande är begränsningar med den aktuella funktionen:
 
 - Runbooks för funktionen starta/stoppa virtuella datorer under låg tid fungerar med ett [Kör som-konto i Azure](./automation-security-overview.md#run-as-accounts). Kör som-kontot är den föredragna autentiseringsmetoden eftersom den använder certifikatautentisering i stället för ett lösen ord som kan gå ut eller ändras ofta.
 
-- Det länkade Automation-kontot och Log Analytics arbets ytan måste finnas i samma resurs grupp.
+- En [Azure Monitor Log Analytics arbets yta](../azure-monitor/platform/design-logs-deployment.md) som lagrar Runbook-jobbets loggar och jobb Ströms resultat i en arbets yta för att fråga och analysera. Automation-kontot kan länkas till en ny eller befintlig Log Analytics-arbetsyta och båda resurserna måste finnas i samma resurs grupp.
 
-- Vi rekommenderar att du använder ett separat Automation-konto för att arbeta med virtuella datorer som är aktiverade för Starta/stoppa virtuella datorer när de inte används funktionen. Azure-modulernas versioner uppgraderas ofta och deras parametrar kan ändras. Funktionen uppgraderas inte på samma takt och fungerar kanske inte med nyare versioner av de cmdletar som används. Du rekommenderas att testa modul uppdateringar i ett test Automation-konto innan du importerar dem till dina produktions Automation-konton.
+Vi rekommenderar att du använder ett separat Automation-konto för att arbeta med virtuella datorer som är aktiverade för Starta/stoppa virtuella datorer när de inte används funktionen. Azure-modulernas versioner uppgraderas ofta och deras parametrar kan ändras. Funktionen uppgraderas inte på samma takt och fungerar kanske inte med nyare versioner av de cmdletar som används. Innan du importerar de uppdaterade modulerna till dina produktions Automation-konton rekommenderar vi att du importerar dem till ett test Automation-konto för att kontrol lera att det inte finns några kompatibilitetsproblem.
 
 ## <a name="permissions"></a>Behörigheter
 
@@ -148,7 +148,7 @@ I följande tabell visas variablerna som skapas i ditt Automation-konto. Ändra 
 |Internal_ResourceGroupName | Namnet på resurs gruppen för Automation-kontot.|
 
 >[!NOTE]
->`External_WaitTimeForVMRetryInSeconds`Standardvärdet har uppdaterats från 600 till 2100 för variabeln. 
+>`External_WaitTimeForVMRetryInSeconds`Standardvärdet har uppdaterats från 600 till 2100 för variabeln.
 
 I alla scenarier, variablerna `External_Start_ResourceGroupNames` ,  `External_Stop_ResourceGroupNames` och `External_ExcludeVMNames` är nödvändiga för att rikta in virtuella datorer, förutom de kommaavgränsade VM-listorna för **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** och **ScheduledStartStop_Parent** Runbooks. Det innebär att de virtuella datorerna måste tillhöra mål resurs grupper för att start-och stopp åtgärder ska inträffa. Logiken fungerar ungefär som Azure Policy, i så att du kan rikta prenumerationen eller resurs gruppen och ha åtgärder som ärvts av nyskapade virtuella datorer. Den här metoden gör att du inte behöver ha ett separat schema för varje virtuell dator och hantera startar och stoppas i stor skala.
 
@@ -174,18 +174,14 @@ För att kunna använda funktionen med klassiska virtuella datorer behöver du e
 
 Om du har fler än 20 virtuella datorer per moln tjänst är här några rekommendationer:
 
-* Skapa flera scheman med den överordnade Runbook- **ScheduledStartStop_Parent** och ange 20 virtuella datorer per schema. 
-* I schema egenskaper använder du `VMList` parametern för att ange namn på virtuella datorer som en kommaavgränsad lista (inga blank steg). 
+* Skapa flera scheman med den överordnade Runbook- **ScheduledStartStop_Parent** och ange 20 virtuella datorer per schema.
+* I schema egenskaper använder du `VMList` parametern för att ange namn på virtuella datorer som en kommaavgränsad lista (inga blank steg).
 
 Annars, om automatiserings jobbet för den här funktionen körs mer än tre timmar, tas det tillfälligt bort eller stoppas enligt den [verkliga delnings](automation-runbook-execution.md#fair-share) gränsen.
 
 Azure CSP-prenumerationer stöder endast Azure Resource Managers modellen. Icke-Azure Resource Manager tjänster är inte tillgängliga i programmet. När Starta/stoppa virtuella datorer när de inte används funktionen körs kan du få fel eftersom den innehåller cmdlets för att hantera klassiska resurser. Läs mer om CSP i [tillgängliga tjänster i CSP-prenumerationer](/azure/cloud-solution-provider/overview/azure-csp-available-services). Om du använder en CSP-prenumeration ska du ange [External_EnableClassicVMs](#variables) variabeln till falskt efter distributionen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-## <a name="enable-the-feature"></a>Aktivera funktionen
-
-Börja använda funktionen genom att följa stegen i [aktivera starta/stoppa virtuella datorer när de inte används](automation-solution-vm-management-enable.md).
 
 ## <a name="view-the-feature"></a>Visa funktionen
 
@@ -195,7 +191,7 @@ Använd någon av följande metoder för att få åtkomst till den aktiverade fu
 
 * Navigera till den Log Analytics arbets ytan som är länkad till ditt Automation-konto. När du har valt arbets ytan väljer du **lösningar** i det vänstra fönstret. På sidan lösningar väljer du **Start-Stop-VM [arbets yta]** i listan.  
 
-Om du väljer funktionen visas sidan Start-Stop-VM [Workspace]. Här kan du granska viktig information, till exempel informationen på **StartStopVM** -panelen. Precis som i arbets ytan Log Analytics visar den här panelen ett antal och en grafisk representation av Runbook-jobben för funktionen som har startat och har slutförts.
+Om du väljer funktionen visas sidan **Start-Stop-VM [Workspace]** . Här kan du granska viktig information, till exempel informationen på **StartStopVM** -panelen. Precis som i arbets ytan Log Analytics visar den här panelen ett antal och en grafisk representation av Runbook-jobben för funktionen som har startat och har slutförts.
 
 ![Sidan Automation Uppdateringshantering](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
@@ -203,37 +199,7 @@ Du kan utföra ytterligare analyser av jobb posterna genom att klicka på Ring p
 
 ## <a name="update-the-feature"></a>Uppdatera funktionen
 
-Om du har distribuerat en tidigare version av Starta/stoppa virtuella datorer när de inte används tar du bort den från ditt konto innan du distribuerar en uppdaterad version. Följ stegen för att [ta bort funktionen](#remove-the-feature) och följ sedan stegen för att [Aktivera den](automation-solution-vm-management-enable.md).
-
-## <a name="remove-the-feature"></a>Ta bort funktionen
-
-Om du inte längre behöver använda funktionen kan du ta bort den från Automation-kontot. Om du tar bort funktionen tas endast de associerade Runbooks bort. Det tar inte bort scheman eller variabler som skapades när funktionen lades till. 
-
-Ta bort Starta/stoppa virtuella datorer när de inte används:
-
-1. Från ditt Automation-konto väljer du **länkad arbets yta** under **relaterade resurser**.
-
-2. Välj **gå till arbets yta**.
-
-3. Klicka på **lösningar** under **Allmänt**. 
-
-4. På sidan lösningar väljer du **Start-Stop-VM [arbets yta]**. 
-
-5. På sidan VMManagementSolution [Workspace] väljer du **ta bort** på menyn.<br><br> ![Ta bort hanterings funktion för virtuell dator](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-6. I fönstret ta bort lösning bekräftar du att du vill ta bort funktionen.
-
-7. Medan informationen är verifierad och funktionen tas bort, kan du följa förloppet under **meddelanden**, valt i menyn. Du kommer tillbaka till lösnings sidan efter borttagnings processen.
-
-8. Automation-kontot och Log Analytics-arbetsytan tas inte bort som en del av den här processen. Om du inte vill behålla Log Analytics arbets ytan måste du manuellt ta bort den från Azure Portal:
-
-    1. Sök efter och välj **Log Analytics arbets ytor**.
-
-    2. På sidan Log Analytics arbets yta väljer du arbets ytan.
-
-    3. Välj **ta bort** på menyn.
-
-    4. Om du inte vill behålla komponenter för Azure Automation konto [funktioner](#components)kan du ta bort dem manuellt.
+Om du har distribuerat en tidigare version av Starta/stoppa virtuella datorer när de inte används tar du bort den från ditt konto innan du distribuerar en uppdaterad version. Följ stegen för att [ta bort funktionen](automation-solution-vm-management-remove.md#delete-the-feature) och följ sedan stegen för att [Aktivera den](automation-solution-vm-management-enable.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

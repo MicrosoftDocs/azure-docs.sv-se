@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: lokal, OCR, Docker, container
-ms.openlocfilehash: 2298c7b931a5bb51d5067a9f789135ecf86ef3e5
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576828"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008595"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installera Läs OCR Docker-behållare (förhands granskning) 
 
@@ -92,7 +92,7 @@ Behållar avbildningar för läsning är tillgängliga.
 | Container | Container Registry/namn på lagrings plats/avbildning |
 |-----------|------------|
 | Läs 2,0 – för hands version | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Läs 3,2 – för hands version | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
+| Läs 3,2 – för hands version | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
 
 Använd [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) kommandot för att ladda ned en behållar avbildning.
 
@@ -101,7 +101,7 @@ Använd [`docker pull`](https://docs.docker.com/engine/reference/commandline/pul
 # <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
 ```
 
 # <a name="version-20-preview"></a>[Version 2,0 – för hands version](#tab/version-2)
@@ -131,7 +131,7 @@ Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

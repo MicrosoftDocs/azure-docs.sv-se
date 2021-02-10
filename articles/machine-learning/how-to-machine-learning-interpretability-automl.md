@@ -10,12 +10,12 @@ ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: fe0b2abb7fa2ca986a896a75e5f6d4c238d70109
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 709c85bed4a028c6c168c79cd9fffd6b7b40cb68
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807266"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008051"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Tolkning: modellförklaringar i automatiserad maskininlärning (förhandsversion)
 
@@ -51,7 +51,7 @@ Hämta förklaringen från `best_run` , som innehåller förklaringar för både
 > * Säsongs genomsnitt 
 > * Säsongs Naive
 
-### <a name="download-engineered-feature-importance-from-artifact-store"></a>Hämtnings bar funktions prioritet från artefakt arkivet
+### <a name="download-the-engineered-feature-importances-from-the-best-run"></a>Hämta de funktioner som är utformade för den som är bäst från bästa körning
 
 Du kan använda `ExplanationClient` för att ladda ned de tekniker som är de som är utformade från artefakt lagret för `best_run` . 
 
@@ -61,6 +61,18 @@ from azureml.interpret import ExplanationClient
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
 print(engineered_explanations.get_feature_importance_dict())
+```
+
+### <a name="download-the-raw-feature-importances-from-the-best-run"></a>Hämta den råa funktions betydelsen från den bästa körningen
+
+Du kan använda `ExplanationClient` för att hämta rå funktions förklaringar från artefakt lagret för `best_run` .
+
+```python
+from azureml.interpret import ExplanationClient
+
+client = ExplanationClient.from_run(best_run)
+raw_explanations = client.download_model_explanation(raw=True)
+print(raw_explanations.get_feature_importance_dict())
 ```
 
 ## <a name="interpretability-during-training-for-any-model"></a>Tolkning under utbildning för vilken modell som helst 
@@ -75,7 +87,7 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>Konfigurera modell förklaringarna
 
-Används `automl_setup_model_explanations` för att hämta de utformade förklaringarna. `fitted_model`Kan generera följande objekt:
+Används `automl_setup_model_explanations` för att hämta de utformade och råa förklaringarna. `fitted_model`Kan generera följande objekt:
 
 - Aktuella data från utbildade eller test exempel
 - Namn listor för en förutformad funktion
@@ -114,13 +126,25 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
                          explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params)
 ```
 
-### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Använda MimicExplainer för beräkning och visualisering av utformad funktions prioritet
+### <a name="use-mimic-explainer-for-computing-and-visualizing-engineered-feature-importance"></a>Använd efterlikna förklaringar för beräkning och visualisering av utnyttjad funktions prioritet
 
-Du kan anropa `explain()` metoden i MimicWrapper med de transformerade test exemplen för att få funktions vikten för de genererade funktionerna. Du kan också använda `ExplanationDashboard` för att visa instrument panelens visualisering av funktions prioritets värden för de genererade funktionerna av AutoML featurizers.
+Du kan anropa `explain()` metoden i MimicWrapper med de transformerade test exemplen för att få funktions vikten för de genererade funktionerna. Du kan också logga in på [Azure Machine Learning Studio](https://ml.azure.com/) för att visa instrument panelens visualisering av funktions prioritets värden för de genererade funktionerna av AutoML featurizers.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
+```
+
+### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Använd efterlikna förklaringar för beräkning och visualisering av rå funktions prioritet
+
+Du kan anropa `explain()` metoden i MimicWrapper med de transformerade test exemplen för att få funktions vikten för RAW-funktionerna. I [Machine Learning Studio](https://ml.azure.com/)kan du Visa instrument panelens visualisering av funktions prioritets värden för RAW-funktionerna.
+
+```python
+raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
+                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
+                                     eval_dataset=automl_explainer_setup_obj.X_test_transform,
+                                     raw_eval_dataset=automl_explainer_setup_obj.X_test_raw)
+print(raw_explanations.get_feature_importance_dict())
 ```
 
 ## <a name="interpretability-during-inference"></a>Tolkning under härledning
@@ -174,6 +198,48 @@ with open("myenv.yml","r") as f:
 
 ```
 
+### <a name="create-the-scoring-script"></a>Skapa bedömnings skriptet
+
+Skriv ett skript som läser in din modell och ger förutsägelser och förklaringar baserat på en ny data uppsättning.
+
+```python
+%%writefile score.py
+import joblib
+import pandas as pd
+from azureml.core.model import Model
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
+
+
+def init():
+    global automl_model
+    global scoring_explainer
+
+    # Retrieve the path to the model file using the model name
+    # Assume original model is named automl_model
+    automl_model_path = Model.get_model_path('automl_model')
+    scoring_explainer_path = Model.get_model_path('scoring_explainer')
+
+    automl_model = joblib.load(automl_model_path)
+    scoring_explainer = joblib.load(scoring_explainer_path)
+
+
+def run(raw_data):
+    data = pd.read_json(raw_data, orient='records')
+    # Make prediction
+    predictions = automl_model.predict(data)
+    # Setup for inferencing explanations
+    automl_explainer_setup_obj = automl_setup_model_explanations(automl_model,
+                                                                 X_test=data, task='classification')
+    # Retrieve model explanations for engineered explanations
+    engineered_local_importance_values = scoring_explainer.explain(automl_explainer_setup_obj.X_test_transform)
+    # Retrieve model explanations for raw explanations
+    raw_local_importance_values = scoring_explainer.explain(automl_explainer_setup_obj.X_test_transform, get_raw=True)
+    # You can return any data type as long as it is JSON-serializable
+    return {'predictions': predictions.tolist(),
+            'engineered_local_importance_values': engineered_local_importance_values,
+            'raw_local_importance_values': raw_local_importance_values}
+```
+
 ### <a name="deploy-the-service"></a>Distribuera tjänsten
 
 Distribuera tjänsten med hjälp av Conda-filen och bedömnings filen från föregående steg.
@@ -216,11 +282,13 @@ if service.state == 'Healthy':
     print(output['predictions'])
     # Print the engineered feature importances for the predicted value
     print(output['engineered_local_importance_values'])
+    # Print the raw feature importances for the predicted value
+    print('raw_local_importance_values:\n{}\n'.format(output['raw_local_importance_values']))
 ```
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualisera för att identifiera mönster i data och förklaringar i utbildnings tid
 
-Du kan visualisera funktions prioritets diagrammet i din arbets yta i [Azure Machine Learning Studio](https://ml.azure.com). När din AutoML-körning är klar väljer du **Visa modell information** för att visa en speciell körning. Välj fliken **förklaringar** om du vill visa instrument panelen förklarings visualisering.
+Du kan visualisera funktions prioritets diagrammet i din arbets yta i [Machine Learning Studio](https://ml.azure.com). När din AutoML-körning är klar väljer du **Visa modell information** för att visa en speciell körning. Välj fliken **förklaringar** om du vill visa instrument panelen förklarings visualisering.
 
 [![Machine Learning tolknings arkitektur](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
 

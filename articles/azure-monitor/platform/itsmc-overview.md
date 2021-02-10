@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed13837eabadc38cee50efac3b9340c973c8ea70
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d22bb05ad6db3630e9b0242e098fd81f65e34b05
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492441"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007320"
 ---
 # <a name="it-service-management-connector-overview"></a>Översikt över Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -32,7 +32,8 @@ ITSMC stöder anslutningar med följande ITSM-verktyg:
 -   Cherwell
 
    >[!NOTE]
-> Vi föreslår våra Cherwell och förstyrker kunder att använda [webhook-åtgärder](./action-groups.md#webhook) för att Cherwell och bevisa slut punkt som en annan lösning på integrationen.
+> Från och med 1 – okt-2020-Cherwell och ITSM-integrering med Azure-avisering kommer inte längre att aktive ras för nya kunder. Det går inte att använda nya ITSM-anslutningar.
+> Befintliga ITSM-anslutningar kommer att stödjas.
 
 Med ITSMC kan du:
 

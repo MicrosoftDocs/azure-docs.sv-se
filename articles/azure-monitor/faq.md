@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a8d3ded1d11a350ff53ffda71348b2cc707760b8
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878943"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008425"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Monitor
 
@@ -81,10 +81,12 @@ Azure Data Explorer är en snabb och mycket skalbar datautforskningstjänst för
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hur gör jag för att hämta logg data?
 Alla data hämtas från en Log Analytics-arbetsyta med hjälp av en logg fråga som skrivits med hjälp av KQL (Kusto Query Language). Du kan skriva egna frågor eller använda lösningar och insikter som innehåller logg frågor för ett visst program eller en viss tjänst. Se [Översikt över logg frågor i Azure Monitor](log-query/log-query-overview.md).
-P
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kan jag ta bort data från en Log Analytics arbets yta?
 Data tas bort från en arbets yta enligt kvarhållningsperioden [.](platform/manage-cost-storage.md#change-the-data-retention-period) Du kan ta bort vissa data för sekretess eller efterlevnad. Mer information finns i [Exportera och ta bort privata data](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) .
 
+### <a name="is-log-analytics-storage-immutable"></a>Är Log Analytics lagring oföränderligt?
+Data i databas lagringen kan inte ändras när de har matats in men kan tas bort via [ *rensnings* -API-sökvägen för borttagning av privata data](platform/personal-data-mgmt.md#delete). Även om det inte går att ändra data, kräver vissa certifieringar att data förblir oföränderliga och inte kan ändras eller tas bort i lagrings utrymmet. Data oföränderlighets kan uppnås med hjälp av [data export](platform/logs-data-export.md) till ett lagrings konto som har kon figurer ATS som [oföränderligt lagrings utrymme](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Vad är en Log Analytics-arbetsyta?
 Alla loggdata som samlas in av Azure Monitor lagras i en Log Analytics arbets yta. En arbets yta är i grunden en behållare där loggdata samlas in från olika källor. Du kan ha en enda Log Analytics arbets yta för alla dina övervaknings data eller så kan det finnas krav för flera arbets ytor. Se [utforma distributioner av Azure Monitor loggar](platform/design-logs-deployment.md).

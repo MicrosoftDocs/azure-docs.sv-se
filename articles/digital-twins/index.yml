@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
-  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-  ms.translationtype: HT
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/26/2020
-  ms.locfileid: "96186413"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007762"
 landingContent:
 - title: Om Azure Digital Twins
   linkLists:
@@ -23,6 +23,14 @@ landingContent:
     links:
     - text: Vad är Azure Digital Twins?
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: Anpassade modeller
+      url: concepts-models.md
+    - text: Digitala tvillingenheter och tvillingdiagrammet
+      url: concepts-twins-graph.md
+    - text: Frågespråk
+      url: concepts-query-language.md
 - title: Kom igång med snabbstarten
   linkLists:
   - linkListType: quickstart
@@ -43,20 +51,6 @@ landingContent:
     links:
     - text: Ansluta en lösning från slutpunkt till slutpunkt
       url: tutorial-end-to-end.md
-- title: Läs mer
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Anpassade modeller
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: Digitala tvillingenheter och tvillingdiagrammet
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: Frågespråk
-      url: concepts-query-language.md
 - title: Utveckla
   linkLists:
   - linkListType: how-to-guide
@@ -115,3 +109,19 @@ landingContent:
     links:
     - text: Anpassade swaggers för Logic Apps-anslutningsprogram
       url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: Scenario-baserad utbildning med Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Utbildnings väg: utveckla med digitala Azure-dubbla'
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: 'Lär dig modul: Introduktion till Azure Digitals, dubbla'
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: 'Lär dig modul: bygga ett digitalt Azure-diagram med en choklad fabriks produktions linje'
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: 'Lär dig modul: mata in data i Azure Digitals, dubbla'
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: 'Lär dig modul: utdata från Azure Digitals dubbla till underordnade tjänster'
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

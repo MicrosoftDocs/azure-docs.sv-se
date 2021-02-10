@@ -3,12 +3,12 @@ title: Om databaser & avbildningar
 description: Introduktion till viktiga begrepp för Azure Container register,-databaser och behållar avbildningar.
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0cc7df22236c60bd473385d92c8db563be68f688
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335902"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008527"
 ---
 # <a name="about-registries-repositories-and-images"></a>Om register, databaser och avbildningar
 
@@ -61,7 +61,7 @@ För fullständiga namngivnings regler för databaser, se [distributions specifi
 
 En behållar avbildning eller en annan artefakt i ett register är kopplad till en eller flera taggar, har ett eller flera skikt, och identifieras av ett manifest. Att förstå hur dessa komponenter är relaterade till varandra kan hjälpa dig att hantera registret effektivt.
 
-### <a name="tag"></a>Tagga
+### <a name="tag"></a>Tagg
 
 *Taggen* för en bild eller en annan artefakt anger dess version. En enda artefakt i en lagrings plats kan tilldelas en eller flera taggar, och kan också vara "omärkt". Det innebär att du kan ta bort alla Taggar från en bild, medan bildens data (dess lager) finns kvar i registret.
 
@@ -73,7 +73,7 @@ För namngivnings regler för taggar, se [Docker-dokumentationen](https://docs.d
 
 ### <a name="layer"></a>Skikt
 
-Behållar avbildningar består av ett eller flera *lager* , var och en som motsvarar en linje i Dockerfile som definierar bilden. Avbildningar i ett register delar gemensamma lager, vilket ökar lagrings effektiviteten. Till exempel kan flera avbildningar i olika lagrings platser dela samma Alpine Linux-basadress, men endast en kopia av det lagret lagras i registret.
+Behållar avbildningar består av ett eller flera *lager*, var och en som motsvarar en linje i Dockerfile som definierar bilden. Avbildningar i ett register delar gemensamma lager, vilket ökar lagrings effektiviteten. Till exempel kan flera avbildningar i olika lagrings platser dela samma Alpine Linux-basadress, men endast en kopia av det lagret lagras i registret.
 
 Lager delning optimerar också lager distribution till noder med flera bilder som delar gemensamma lager. Om en avbildning som redan finns på en nod t. ex. inkluderar Alpine Linux-lagret som bas, överförs inte lagret till noden när den efterföljande hämtningen av en annan bild som refererar till samma lager. I stället refererar den till det lager som redan finns på noden.
 
@@ -81,7 +81,30 @@ För att tillhandahålla säker isolering och skydd från potentiell lager hante
 
 ### <a name="manifest"></a>Manifest
 
-Varje behållar avbildning eller artefakt som flyttas till ett behållar register är associerad med ett *manifest*. Manifestet, som genereras av registret när avbildningen skickas, identifierar avbildningen unikt och anger dess lager. Du kan visa manifesten för en lagrings plats med Azure CLI [-kommandot AZ ACR-lagringsplats show-manifest][az-acr-repository-show-manifests]:
+Varje behållar avbildning eller artefakt som flyttas till ett behållar register är associerad med ett *manifest*. Manifestet, som genereras av registret när avbildningen skickas, identifierar avbildningen unikt och anger dess lager. 
+
+Ett grundläggande manifest för en Linux- `hello-world` avbildning ser ut ungefär så här:
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+Du kan visa manifesten för en lagrings plats med Azure CLI [-kommandot AZ ACR-lagringsplats show-manifest][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>

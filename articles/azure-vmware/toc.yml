@@ -107,7 +107,7 @@
         - name: Skapa en supportbegäran om distributionsproblem
           href: fix-deployment-provisioning-failures.md
     - name: VANLIGA FRÅGOR OCH SVAR
-      href: faq.md
+      href: faq.yml
 - name: Referens
   items:
     - name: Azure CLI

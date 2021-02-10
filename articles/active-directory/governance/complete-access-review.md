@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
+ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779558"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008248"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Slutför en åtkomst granskning av grupper och program i åtkomst granskningar för Azure AD
 
@@ -48,15 +48,22 @@ Du kan följa förloppet när granskarna har slutfört granskningarna.
 
     Om du vill visa framtida instanser av åtkomst granskningar går du till åtkomst granskningen och väljer schemalagda granskningar.
 
-    På sidan **Översikt** kan du se förloppet. Ingen åtkomst behörighet har ändrats i katalogen förrän granskningen har slutförts.
+    På sidan **Översikt** kan du se förloppet för den aktuella instansen. Ingen åtkomst behörighet har ändrats i katalogen förrän granskningen har slutförts.
 
-    ![Status för åtkomst granskningar](./media/complete-access-review/overview-progress.png)
-    
-    Om du visar en åtkomst granskning som granskar gäst åtkomst över Microsoft 365 grupper (för hands version), visar översikts bladet varje grupp i granskningen.  
+     ![Granskning av alla företags grupper](./media/complete-access-review/all-company-group.png)
 
-   ![granska gäst åtkomst över Microsoft 365 grupper](./media/complete-access-review/review-guest-access-across-365-groups.png)
+    Alla blad under aktuella visas bara under hela gransknings instansens varaktighet. 
 
-    Klicka på en grupp för att se förloppet för granskningen i gruppen.
+    Sidan resultat innehåller mer information om varje användare under granskning i instansen, inklusive möjligheten att stoppa, återställa och hämta resultat.
+
+    ![Granska gäst åtkomst över Microsoft 365 grupper](./media/complete-access-review/all-company-group-results.png)
+
+
+    Om du visar en åtkomst granskning som granskar gäst åtkomst över Microsoft 365 grupper (för hands version), visar översikts bladet varje grupp i granskningen. 
+   
+    ![granska gäst åtkomst över Microsoft 365 grupper](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    Klicka på en grupp för att se förloppet för granskningen av gruppen, samt för att stoppa, återställa, tillämpa och ta bort.
 
    ![granska gäst åtkomst över Microsoft 365 grupper i detalj](./media/complete-access-review/progress-group-review.png)
 
@@ -68,15 +75,20 @@ Du kan följa förloppet när granskarna har slutfört granskningarna.
 
 ## <a name="apply-the-changes"></a>Tillämpa ändringarna
 
-Om **automatiskt tillämpa resultat på resursen** har Aktiver ATS och baserat på dina val i när inställningarna för slut för **ande har slutförts**, utförs automatisk komplettering efter granskningens slutdatum eller när du stoppar granskningen manuellt.
+Om **automatiskt tillämpa resultat på resursen** har Aktiver ATS baserat på dina val i när inställningarna för slut för **ande har slutförts**, utförs automatisk komplettering efter granskningens slutdatum eller när du stoppar granskningen manuellt.
 
-Om **automatiskt tillämpa resultat till resursen** inte har Aktiver ATS för granskningen klickar du på **tillämpa** för att tillämpa ändringarna manuellt. Om en användares åtkomst nekades i granskningen och du klickar på **Verkställ**, tar Azure AD bort sina medlemskap eller program tilldelningar.
+Om alternativet **tillämpa resultat automatiskt på resursen** inte har Aktiver ATS för granskningen navigerar du till **gransknings historik** under **serie** efter att gransknings varaktigheten har gått ut eller om granskningen stoppades tidigt, och klickar på den instans av granskningen som du vill använda.
 
 ![Tillämpa ändringar av åtkomst granskning](./media/complete-access-review/apply-changes.png)
 
+Tillämpa ändringarna manuellt genom att klicka på **tillämpa** . Om en användares åtkomst nekades i granskningen och du klickar på **Verkställ**, tar Azure AD bort sina medlemskap eller program tilldelningar.
+
+![Använd knappen Använd ändringar för åtkomst granskning](./media/complete-access-review/apply-changes-button.png)
+
+
 Status för granskningen ändras från **slutförd** till mellanliggande tillstånd, till exempel att **tillämpa** och slutligen för tillstånds **resultat som tillämpas**. Du bör förvänta dig att se till att nekade användare, om de finns, tas bort från grupp medlemskapet eller program tilldelningen om några minuter.
 
-En konfigurerad automatisk granskning, eller om du väljer **tillämpa** , har ingen påverkan på en grupp som kommer från en lokal katalog eller en dynamisk grupp. Om du vill ändra en grupp som har sitt ursprung lokalt hämtar du resultaten och tillämpar ändringarna i åter givningen av gruppen i den katalogen.
+Manuellt eller automatiskt tillämpade resultat påverkar inte en grupp som kommer från en lokal katalog eller en dynamisk grupp. Om du vill ändra en grupp som har sitt ursprung lokalt hämtar du resultaten och tillämpar ändringarna i åter givningen av gruppen i den katalogen.
 
 ## <a name="retrieve-the-results"></a>Hämta resultaten
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35ffae55e749c7493b9cd8af13dfd5216abf5822
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515514"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008136"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 extern delning och Azure Active Directory (Azure AD) B2B-samarbete
 
@@ -32,8 +32,7 @@ OneDrive/SharePoint Online har en separat Inbjudnings hanterare. Stöd för exte
 
 - Azure AD B2B-samarbete inbjudna användare kan plockas från dialog rutorna OneDrive/SharePoint Online-delning. OneDrive/SharePoint Online inbjudna användare visas också i Azure AD när de har löst in sina inbjudningar.
 
-- Licensierings kraven skiljer sig åt. Läs mer om licensiering i [Azure AD B2B-licensiering](./external-identities-pricing.md) och ["Vad är en extern användare?" i Översikt över SharePoint Online-delning](/sharepoint/external-sharing-overview#what-happens-when-users-share).
-
+- Licensierings kraven skiljer sig åt. Läs mer om licensiering i [Azure AD external Identities Licensing](./external-identities-pricing.md) och [Översikt över SharePoint Online extern delning](/sharepoint/external-sharing-overview).
 Om du vill hantera extern delning i OneDrive/SharePoint Online med Azure AD B2B-samarbete ställer du in inställningen för extern delning i OneDrive/SharePoint Online så att **den bara tillåter delning med de externa användare som redan finns i din organisations katalog**. Användare kan gå till externt delade platser och välja från externa medarbetare som administratören har lagt till. Administratören kan lägga till externa medarbetare via API: er för inbjudan till B2B-samarbete.
 
 

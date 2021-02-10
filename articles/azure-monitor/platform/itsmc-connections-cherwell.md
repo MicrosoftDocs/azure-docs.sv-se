@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 73fc13cf2a49d7cacd7540d06c6d0afd9cea68e5
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: a24ece3c0b75d0d0d22e13c6e5367c27fbaeab66
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729751"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006793"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>Anslut Cherwell med Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
 Den här artikeln innehåller information om hur du konfigurerar anslutningen mellan Cherwell-instansen och Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC) i Log Analytics för att centralt hantera dina arbets uppgifter.
 
 > [!NOTE]
-> Vi föreslår våra Cherwell och förstyrker kunder att använda [webhook-åtgärder](./action-groups.md#webhook) för att Cherwell och bevisa slut punkt som en annan lösning på integrationen.
+> Från och med 1 – okt-2020 Cherwell ITSM-integrering med Azure Alert kommer inte längre att aktive ras för nya kunder. Det går inte att använda nya ITSM-anslutningar.
+> Befintliga ITSM-anslutningar kommer att stödjas.
 
 Följande avsnitt innehåller information om hur du ansluter din Cherwell-produkt till ITSMC i Azure.
 
@@ -80,6 +81,6 @@ Använd följande procedur för att generera klient-ID/nyckel för Cherwell:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Översikt över ITSM-anslutningsprogram](itsmc-overview.md)
+* [Översikt över anslutningsprogram för hantering av IT-tjänster (ITSM)](itsmc-overview.md)
 * [Skapa ITSM arbets objekt från Azure-aviseringar](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-resync-servicenow.md)

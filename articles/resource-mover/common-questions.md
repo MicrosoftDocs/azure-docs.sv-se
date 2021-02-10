@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: c586832386f3bf6419d8af94ad23662c6801b1ae
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820882"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007065"
 ---
 # <a name="common-questions"></a>Vanliga frågor
 
@@ -42,6 +42,10 @@ Med hjälp av resurs förflyttning kan du för närvarande flytta följande resu
 
 Det går inte att välja diskar som resurser som flyttas mellan regioner. Diskar flyttas dock som en del av flyttningen av en virtuell dator.
 
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>Vad innebär det att flytta en resurs grupp?
+
+När en resurs väljs för flytt läggs motsvarande resurs grupp automatiskt till för flytt. Detta krävs eftersom mål resursen måste placeras under en resurs grupp som den var i målet. Du kan välja att anpassa och ange en befintlig resurs grupp när den har lagts till för flytt. Observera att om du flyttar en resurs grupp innebär det **inte** att alla resurser i käll resurs gruppen kommer att flyttas.
+
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Kan jag flytta resurser mellan prenumerationer när jag flyttar dem över flera regioner?
 
 Du kan ändra prenumerationen när du har flyttat resurser till mål regionen. [Lär dig mer](../azure-resource-manager/management/move-resource-group-and-subscription.md) om att flytta resurser till en annan prenumeration. 
@@ -69,7 +73,7 @@ Ja, både under överföring och i vila.
 - Om du flyttar resurser mellan regioner i portalen sker den här processen automatiskt.
 - Om du flyttar resurser med hjälp av PowerShell kör du cmdletar för att tilldela en tilldelad identitet till samlingen och tilldelar sedan en roll med rätt prenumerations behörigheter till identitetens huvud namn. 
 
-### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Vilka behörigheter för hanterad identitet behöver resurs förflyttningen?
+### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Vilka behörigheter för hanterad identitet behöver resurs förflyttningen? 
 
 En Azure Resource Mover-hanterad identitet måste ha minst följande behörigheter: 
 

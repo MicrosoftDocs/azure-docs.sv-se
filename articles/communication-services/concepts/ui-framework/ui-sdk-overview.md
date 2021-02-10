@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ecef7e13c107a07b6dac52a467315d2a5f1f9090
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: b6f9987c21ecdcf0e1b5358486312dceb26c8b82
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539881"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008561"
 ---
 # <a name="azure-communication-services-ui-framework"></a>GRÄNSSNITTs ramverk för Azure Communication Services
 
@@ -47,7 +47,7 @@ Genom att förstå dessa krav kan du välja rätt klient bibliotek:
 
 Information om funktions tillgänglighet i de varierande [SDK: erna för användar gränssnitt finns här](ui-sdk-features.md), men viktiga uppgifter sammanfattas nedan.
 
-|Klient bibliotek/SDK|Implementerings komplexitet|    Anpassnings möjlighet|  Sänder| Chatt| [Team-interop](./../voice-video-calling/teams-interop.md)
+|Klient bibliotek/SDK|Implementerings komplexitet|    Anpassnings möjlighet|  Sänder| Chatt| [Team-interop](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Sammansatta komponenter|Låg|Låg|✔|✔|✕
 |Bas komponenter|Medel|Medel|✔|✔|✕

@@ -6,19 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 19d2ef1d4d711738d60938aac502dfd490e021a1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 0cdbcf0a895a2fc9b81df464f364e04aa79abf99
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729735"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006776"
 ---
 # <a name="connect-provance-with-it-service-management-connector"></a>Anslut förhandlingen med Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
 Den här artikeln innehåller information om hur du konfigurerar anslutningen mellan din instans av upphandlings instansen och Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC) i Log Analytics för att centralt hantera dina arbets uppgifter.
 
 > [!NOTE]
-> Vi föreslår våra Cherwell och förstyrker kunder att använda [webhook-åtgärder](./action-groups.md#webhook) för att Cherwell och bevisa slut punkt som en annan lösning på integrationen.
+> Från och med 1 – okt-2020-ITSM-integrering med Azure-avisering kommer inte längre att vara aktive rad för nya kunder. Det går inte att använda nya ITSM-anslutningar.
+> Befintliga ITSM-anslutningar kommer att stödjas.
 
 Följande avsnitt innehåller information om hur du ansluter din bestyrkande produkt till ITSMC i Azure.
 
@@ -69,6 +70,6 @@ Använd följande procedur för att skapa en upphandlings anslutning:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Översikt över ITSM-anslutningsprogram](itsmc-overview.md)
+* [Översikt över anslutningsprogram för hantering av IT-tjänster (ITSM)](itsmc-overview.md)
 * [Skapa ITSM arbets objekt från Azure-aviseringar](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
 * [Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-resync-servicenow.md)

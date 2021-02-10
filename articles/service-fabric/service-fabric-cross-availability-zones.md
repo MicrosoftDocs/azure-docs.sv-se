@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918931"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007048"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -374,8 +374,8 @@ Service Fabric nodeType måste vara aktive rad för att stödja flera tillgängl
 * Det första värdet är **multipleAvailabilityZones** som ska anges till sant för nodeType.
 * Det andra värdet är **sfZonalUpgradeMode** och är valfritt. Den här egenskapen kan inte ändras om en NodeType med flera AZ redan finns i klustret.
       Egenskapen styr den logiska grupperingen av virtuella datorer i uppgraderings domäner.
-          Om värdet är inställt på falskt (fast läge): virtuella datorer under nodtypen kommer att grupperas i UD som ignorerar zon informationen i 5 UDs.
-          Om värdet utelämnas eller anges till sant (hierarkiskt läge) kommer de virtuella datorerna att grupperas för att avspegla zonindelade-distributionen i upp till 15 UDs. Var och en av de tre zonerna kommer att ha 5 UDs.
+          Om värdet är inställt på "parallell": de virtuella datorerna under NodeType kommer att grupperas i UDs som ignorerar zon informationen i 5 UDs.
+          Om värdet utelämnas eller anges till "hierarkisk": de virtuella datorerna kommer att grupperas för att avspegla zonindelade-distributionen i upp till 15 UDs. Var och en av de tre zonerna kommer att ha 5 UDs.
           Den här egenskapen definierar bara uppgraderings beteendet för ServiceFabric program och kod uppgraderingar. De underliggande uppgraderingarna av skalnings uppsättningen för virtuella datorer är fortfarande parallella i alla AZ.
       Den här egenskapen påverkar inte UD-distributionen för nodtyper som inte har flera zoner aktiverade.
 * Det tredje värdet är **vmssZonalUpgradeMode = Parallel**. Detta är en *obligatorisk* egenskap som ska konfigureras i klustret, om en nodeType med flera AZS läggs till. Den här egenskapen definierar uppgraderings läget för de uppdateringar av skalnings uppsättningen för virtuella datorer som sker parallellt i alla AZ på en gång.

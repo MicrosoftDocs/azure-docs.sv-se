@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8192d7104daf1474a2123331183edf05e6fa1ada
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968612"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007422"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure Monitor för SAP Solutions-providers (för hands version)
 
@@ -41,7 +41,7 @@ Om kunderna inte konfigurerar några providrar vid distribution av SAP Monitor-r
 
 Kunder kan konfigurera en eller flera providers av leverantörs typ *SAP HANA* för att aktivera data insamling från SAP HANA-databasen. SAP HANA-providern ansluter till SAP HANA-databasen via SQL-port, hämtar telemetridata från databasen och skickar den till Log Analytics-arbetsytan i kund prenumerationen. SAP HANA-providern samlar in data var 1 minut från SAP HANA-databasen.  
 
-I en offentlig för hands version kan kunderna se följande data med SAP HANA provider: underliggande infrastruktur användning, SAP HANA värd status, SAP HANA systemreplikering och SAP HANA data för att säkerhetskopiera telemetri. Om du vill konfigurera SAP HANA-providern måste värd-IP-adress, HANA SQL-portnummer och SYSTEMDB användar namn och lösen ord anges. Kunder rekommenderas att konfigurera SAP HANA-providern mot SYSTEMDB, men ytterligare providers kan konfigureras mot andra databas klienter.
+I en offentlig för hands version kan kunderna se följande data med SAP HANA provider: underliggande infrastruktur användning, SAP HANA värd status, SAP HANA systemreplikering och SAP HANA data för att säkerhetskopiera telemetri. Om du vill konfigurera SAP HANA-providern måste värd-IP-adress, HANA SQL-portnummer och SYSTEMDB användar namn och lösen ord anges. Kunder rekommenderas att konfigurera SAP HANA-providern mot SYSTEMDB, men fler providers kan konfigureras mot andra databas klienter.
 
 ![Azure Monitor för SAP Solutions-providers – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
@@ -68,10 +68,38 @@ För att konfigurera en kluster leverantör med hög tillgänglighet ingår två
    Följande information krävs för att konfigurera kluster leverantören med hög tillgänglighet:
    
    - **Namn**. Ett namn för den här providern. Det måste vara unikt för den här Azure Monitor för SAP-lösningar-instans.
-   - **Prometheus-slutpunkt**. Vanligt vis http \: // \<servername or ip address\> : 9664/Metrics.
+   - **Prometheus-slutpunkt**. http \: // \<servername or ip address\> : 9664/Metrics.
    - **Sid**. För SAP-system använder du SAP SID. För andra system (t. ex. NFS-kluster) använder du ett namn med tre bokstäver för klustret. SID måste skilja sig från andra kluster som övervakas.   
    - **Kluster namn**. Kluster namnet som används när klustret skapas. Kluster namnet kan hittas i kluster egenskapen `cluster-name` .
    - **Hostname**. Linux-värdnamn för den virtuella datorn.  
+
+
+## <a name="provider-type-os-linux"></a>Provider typ OS (Linux)
+Kunder kan konfigurera en eller flera providrar för providerns typ av operativ system (Linux) för att aktivera data insamling från BareMetal eller VM-noden. OS-providern (Linux) ansluter till BareMetal eller VM-noder, med [Node_Exporter](https://github.com/prometheus/node_exporter)   slut punkt, hämtar telemetridata från noderna och skickar dem till Log Analytics arbets yta i kund prenumerationen. OS (Linux) samlar in data var 60: e sekund för de flesta måtten från noderna. 
+
+I en offentlig för hands version kan kunderna se följande data med OS-Provider (Linux): 
+   - CPU-användning, CPU-användning per process 
+   - Disk användning, I/O-läsning & skrivning 
+   - Minnes distribution, minnes användning, växlings minnes användning 
+   - Nätverks användning, inkommande & utgående trafik information i nätverket. 
+
+För att konfigurera en OS-Provider (Linux) är två primära steg inblandade:
+1. Installera [Node_Exporter](https://github.com/prometheus/node_exporter)   på varje BareMetal eller VM-noder.
+   Du har två alternativ för att installera [Node_exporter](https://github.com/prometheus/node_exporter): 
+      - För Automation-installation med Ansible använder du [Node_Exporter](https://github.com/prometheus/node_exporter) på varje BAREMETAL eller VM-noder för att installera OS-providern (Linux).  
+      - Gör en [manuell installation](https://prometheus.io/docs/guides/node-exporter/).
+
+2. Konfigurera en OS-Provider (Linux) för varje BareMetal eller instans av VM-noden i din miljö. 
+   Om du vill konfigurera OS (Linux)-providern krävs följande information: 
+      - Namn. Ett namn för den här providern. Det måste vara unikt för den här Azure Monitor för SAP-lösningar-instans. 
+      - Endpoint för Node-verktyget. Vanligt vis http:// <servername or ip address> : 9100/Metrics 
+
+> [!NOTE]
+> 9100 är en port som exponeras för Node_Exporter slut punkt.
+
+> [!Warning]
+> Se till att Node-exporten fortsätter att köras efter nodens omstart. 
+
 
 ## <a name="provider-type-microsoft-sql-server"></a>Typ av Provider Microsoft SQL Server
 
@@ -79,7 +107,7 @@ Kunder kan konfigurera en eller flera providers av leverantörs typ *Microsoft S
 
 I en offentlig för hands version kan kunderna se följande data med SQL Server provider: underliggande infrastruktur användning, översta SQL-uttryck, högsta största tabell, problem som registrerats i SQL Server fel loggar, blockera processer och andra.  
 
-För att kunna konfigurera Microsoft SQL Server-Provider krävs ID för SAP-system, värd-IP-adress, SQL Server port nummer samt SQL Server inloggnings namn och lösen ord.
+Om du vill konfigurera Microsoft SQL Server providern måste du ange ID för SAP-system, värd-IP-adress, SQL Server port nummer och SQL Server inloggnings namn och lösen ord.
 
 ![Azure Monitor för SAP Solutions-leverantörer – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
 

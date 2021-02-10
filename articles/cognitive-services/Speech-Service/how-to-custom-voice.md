@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 4e487a3eab70e7d561468a8fac2103e177d2abc5
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: eff51c8568ce82c9d8d21bff7a2ba079c291679c
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524983"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007303"
 ---
 # <a name="get-started-with-custom-voice"></a>Komma igång med Custom Voice
 
@@ -60,12 +60,24 @@ När du har skapat ett Azure-konto och en prenumeration på en röst tjänst må
 
 ## <a name="how-to-create-a-project"></a>Så här skapar du ett projekt
 
-Innehåll som data, modeller, tester och slut punkter organiseras i **projekt** i den anpassade röst portalen. Varje projekt är specifika för ett land/språk och köns kön för den röst du vill skapa. Du kan till exempel skapa ett projekt för en hona röst för samtals centrets chatt-robotar som använder engelska i USA (en-US).
+Innehåll som data, modeller, tester och slut punkter organiseras i **projekt** i den anpassade röst portalen. Varje projekt är specifika för ett land/språk och köns kön för den röst du vill skapa. Du kan till exempel skapa ett projekt för en hona röst för samtals centrets chatt-robotar som använder engelska i USA ("en-US").
 
 Skapa ditt första projekt genom att välja fliken **text-till-tal/anpassad röst** och klicka på **nytt projekt**. Följ anvisningarna i guiden för att skapa projektet. När du har skapat ett projekt visas fyra flikar: **data**, **utbildning**, **testning** och **distribution**. Använd länkarna som beskrivs i [Nästa steg](#next-steps) för att lära dig hur du använder varje flik.
 
 > [!IMPORTANT]
 > Den [anpassade röst portalen](https://aka.ms/custom-voice) har nyligen uppdaterats! Om du har skapat tidigare data, modeller, tester och publicerade slut punkter i CRIS.ai-portalen eller med API: er, måste du skapa ett nytt projekt i den nya portalen för att ansluta till dessa gamla entiteter.
+
+## <a name="how-to-migrate-to-custom-neural-voice"></a>Så här migrerar du till den anpassade neurala rösten
+
+Om du använder den anpassade rösten icke-neurala (eller standard) bör du överväga att migrera till anpassad neurala röst direkt genom att följa stegen nedan. Genom att flytta till den anpassade neurala rösten kan du utveckla mer realistiska röster för ännu mer naturliga konversations gränssnitt och göra det möjligt för dina kunder och slutanvändare att dra nytta av den senaste text till tal-tekniken på ett ansvarigt sätt. 
+
+1. Läs mer om vår [policy om att begränsa åtkomsten](https://aka.ms/gating-overview) och [tillämpa den här](https://aka.ms/customneural). Observera att åtkomsten till den anpassade röst tjänsten för neurala är föremål för Microsofts enda val utifrån våra Berättiganderegler. Kunder kan få till gång till tekniken först efter det att programmet har granskats och de har åtagit sig att använda det i sin egen anpassning med våra [ansvariga AI-principer](https://microsoft.com/ai/responsible-ai) och [uppförandekod](https://aka.ms/custom-neural-code-of-conduct). 
+2. När ditt program har godkänts får du till gång till inlärnings funktionen "neurala". Se till att du loggar in på den [anpassade röst portalen](https://speech.microsoft.com/customvoice) med samma Azure-prenumeration som du anger i ditt program. 
+    > [!IMPORTANT]
+    > För att skydda röst-personal och förhindra utbildning av röst modeller med otillåten inspelning eller utan bekräftelse från röst-personal, kräver vi att kunden laddar upp en inspelad översikt över röst personal som ger sitt medgivande. När du förbereder ditt inspelnings skript ska du se till att ta med den här meningen. "I [tillstånd ditt för-och efter namn] är du medveten om att inspelningar av min röst kommer att användas av [stat namnet på företaget] för att skapa och använda en syntetisk version av rösten."
+    > Den här meningen måste överföras till fliken **röst personal** som en muntlig medgivande fil. Det kommer att användas för att kontrol lera om inspelningarna i dina utbildnings data uppsättningar utförs av samma person som gör ditt medgivande.
+3. När den anpassade röst modellen för neurala har skapats distribuerar du röst modellen till en ny slut punkt. Om du vill skapa en ny anpassad röst slut punkt med neurala röst modell går du till **text-till-tal > anpassad röst > distribution**. Välj **distribuera modell** och ange ett **namn** och en **Beskrivning** för din anpassade slut punkt. Välj sedan den anpassade neurala röst modell som du vill koppla till den här slut punkten och bekräfta distributionen.  
+4. Uppdatera koden i dina appar om du har skapat en ny slut punkt med en ny modell. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/24/2020
+ms.date: 01/31/2021
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 0fb4cce8eca2516957c394635e3dab2dbf282385
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f0508f903cf2daa4c387ff51ecba2f5af7d99694
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584489"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007950"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -40,7 +40,7 @@ Standard priset för Log Analytics är en modell där **du betalar per** använd
   
 Förutom modellen betala per användning har Log Analytics **kapacitets reservations** nivåer som gör att du kan spara så mycket som 25% jämfört med priset för betala per användning. Med kapacitets reservations priset kan du köpa en reservation som börjar på 100 GB/dag. All användning ovanför reservations nivån debiteras enligt priset för betala per användning. Kapacitets reservationens nivåer har en period på 31 dagar. Under perioden kan du ändra till en kapacitets reservations nivå på högre nivå (som startar om perioden på 31 dagar), men du kan inte gå tillbaka till betala per användning eller till en reservations nivå med lägre kapacitet förrän perioden är slut. Faktureringen för kapacitets nivåer för kapacitet görs per dag. [Läs mer](https://azure.microsoft.com/pricing/details/monitor/) om hur du Log Analytics priser för betala per användning och kapacitets reservationer. 
 
-På alla pris nivåer beräknas en händelses data storlek från en sträng representation av de egenskaper som lagras i Log Analytics för den här händelsen, om data skickas från en agent eller läggs till under inmatnings processen. Detta inkluderar alla [anpassade fält](custom-fields.md) som läggs till som data samlas in och lagras sedan i Log Analytics. Flera egenskaper som är gemensamma för alla data typer, inklusive vissa [Log Analytics standard egenskaper](./log-standard-columns.md), undantas i beräkningen av händelse storleken. Detta inkluderar `_ResourceId` , `_ItemId` , `_IsBillable` `_BilledSize` och `Type` . Alla andra egenskaper som lagras i Log Analytics ingår i beräkningen av händelse storleken. Vissa data typer är kostnads fria från data inmatnings avgifter helt, till exempel AzureActivity, pulsslag och användnings typer. Du kan använda `_IsBillable` egenskapen som visas [nedan](#data-volume-for-specific-events)för att avgöra om en händelse uteslöts från faktureringen för data inmatning. Användningen rapporteras i GB (1,0 E9 byte). 
+På alla pris nivåer beräknas en händelses data storlek från en sträng representation av de egenskaper som lagras i Log Analytics för den här händelsen, om data skickas från en agent eller läggs till under inmatnings processen. Detta inkluderar alla [anpassade fält](custom-fields.md) som läggs till som data samlas in och lagras sedan i Log Analytics. Flera egenskaper som är gemensamma för alla data typer, inklusive vissa [Log Analytics standard egenskaper](./log-standard-columns.md), undantas i beräkningen av händelse storleken. Detta inkluderar `_ResourceId` ,,, `_SubscriptionId` `_ItemId` `_IsBillable` `_BilledSize` och `Type` . Alla andra egenskaper som lagras i Log Analytics ingår i beräkningen av händelse storleken. Vissa data typer är kostnads fria från data inmatnings avgifter helt, till exempel AzureActivity, pulsslag och användnings typer. Du kan använda `_IsBillable` egenskapen som visas [nedan](#data-volume-for-specific-events)för att avgöra om en händelse uteslöts från faktureringen för data inmatning. Användningen rapporteras i GB (1,0 E9 byte). 
 
 Observera också att vissa lösningar, till exempel [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) och [konfigurations hantering](https://azure.microsoft.com/pricing/details/automation/) har sina egna pris modeller. 
 
@@ -66,11 +66,11 @@ Om du inte använder Azure Monitor loggar än kan du använda [pris Kalkylatorn 
 
 Om du använder Azure Monitor loggar nu är det enkelt att förstå vad kostnaderna beror på de senaste användnings mönstren. Det gör du genom att använda  **Log Analytics användning och beräknade kostnader** för att granska och analysera data användningen. Detta visar hur mycket data som samlas in av varje lösning, hur mycket data som behålls och en uppskattning av dina kostnader baserat på mängden data som matas in och eventuell ytterligare kvarhållning utöver den mängd som ingår.
 
-![Användning och uppskattade kostnader](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
+:::image type="content" source="media/manage-cost-storage/usage-estimated-cost-dashboard-01.png" alt-text="Användning och uppskattade kostnader":::
 
 Om du vill utforska dina data mer detaljerat klickar du på ikonen längst upp till höger i något av diagrammen på sidan **användning och uppskattade kostnader** . Nu kan du arbeta med den här frågan och utforska mer information om din användning.  
 
-![Vyn loggar](media/manage-cost-storage/logs.png)
+:::image type="content" source="media/manage-cost-storage/logs.png" alt-text="Vyn loggar":::
 
 På sidan **användning och uppskattade kostnader** kan du granska din data volym för månaden. Detta inkluderar alla fakturerbara data som har tagits emot och sparats i Log Analytics-arbetsytan.  
  
@@ -90,8 +90,8 @@ Om du vill ändra Log Analytics pris nivå för arbets ytan,
 
 2. Granska de beräknade kostnaderna för var och en av pris nivåerna. Den här uppskattningen baseras på de senaste 31 användnings dagarna, så den här kostnads uppskattningen är beroende av de senaste 31 dagarna som är representativ för din typiska användning. I exemplet nedan kan du se hur, baserat på data mönstren från de senaste 31 dagarna, att den här arbets ytan kostar mindre i nivån betala per användning (#1) jämfört med kapacitets nivån 100 GB/dag för kapacitet (#2).  
 
-    ![Prisnivåer](media/manage-cost-storage/pricing-tier-estimated-costs.png)
-
+:::image type="content" source="media/manage-cost-storage/pricing-tier-estimated-costs.png" alt-text="Prisnivåer":::
+    
 3. När du har granskat de uppskattade kostnaderna baserat på de senaste 31 dagarna av användningen klickar du på **Välj** för att ändra pris nivån.  
 
 Du kan också [ställa in pris nivån via Azure Resource Manager](../samples/resource-manager-workspace.md) med hjälp av `sku` parametern ( `pricingTier` i Azure Resource Manager mal len). 
@@ -132,7 +132,7 @@ Ingen av de äldre pris nivåerna har regional-baserade priser.
 
 ## <a name="change-the-data-retention-period"></a>Ändra kvarhållningsperioden för data
 
-Följande steg beskriver hur du konfigurerar hur länge loggdata sparas i din arbets yta. Datakvarhållning på arbets ytans nivå kan konfigureras från 30 till 730 dagar (2 år) för alla arbets ytor om de inte använder den äldre pris nivån kostnads fri. [Lär dig mer](https://azure.microsoft.com/pricing/details/monitor/) om priser för längre data kvarhållning. Kvarhållning för enskilda data typer kan anges så lågt som 4 dagar. 
+Följande steg beskriver hur du konfigurerar hur länge loggdata sparas i din arbets yta. Datakvarhållning på arbets ytans nivå kan konfigureras från 30 till 730 dagar (2 år) för alla arbets ytor om de inte använder den äldre pris nivån kostnads fri. Kvarhållning för enskilda data typer kan anges så lågt som 4 dagar. [Lär dig mer](https://azure.microsoft.com/pricing/details/monitor/) om priser för längre data kvarhållning.  Överväg att använda [Log Analytics data export för arbets ytan](logs-data-export.md)om du vill behålla data som är längre än 730 dagar.
 
 ### <a name="workspace-level-default-retention"></a>Standard kvarhållning på arbetsyte nivå
 
@@ -142,11 +142,11 @@ Ange standard kvarhållning för din arbets yta genom att
 2. På sidan **Användning och uppskattade kostnader** klickar du på **Datakvarhållning** högst upp på sidan.
 3. I fönstret flyttar du reglaget för att öka eller minska antal dagar. Klicka sedan på **OK**.  Om du är på den *kostnads fria* nivån kan du inte ändra data lagrings perioden och du måste uppgradera till den betalda nivån för att kunna styra den här inställningen.
 
-    ![Ändra inställning för kvarhållning av data arbets yta](media/manage-cost-storage/manage-cost-change-retention-01.png)
+:::image type="content" source="media/manage-cost-storage/manage-cost-change-retention-01.png" alt-text="Ändra inställning för kvarhållning av data arbets yta":::
 
 När kvarhållning sänks, finns det en tids period på flera dagar innan de data som är äldre än den nya inställningen för kvarhållning tas bort. 
 
-Kvarhållning kan också [ställas in via Azure Resource Manager](../samples/resource-manager-workspace.md) med hjälp av `retentionInDays` parametern. När du ställer in data kvarhållning på 30 dagar kan du utlösa en omedelbar rensning av äldre data med hjälp av `immediatePurgeDataOn30Days` parametern (vilket eliminerar den flera dagars respitperioden). Detta kan vara användbart för kompatibilitets-relaterade scenarier där omedelbar data borttagning är tvingande. Den här funktionen för omedelbar rensning exponeras bara via Azure Resource Manager. 
+Sidan **datakvarhållning** tillåter inställningar för kvarhållning på 30, 31, 60, 90, 120, 180, 270, 365, 550 och 730 dagar. Om det krävs en annan inställning, kan konfigureras med hjälp av [Azure Resource Manager](../samples/resource-manager-workspace.md) med hjälp av `retentionInDays` parametern. När du ställer in data kvarhållning på 30 dagar kan du utlösa en omedelbar rensning av äldre data med hjälp av `immediatePurgeDataOn30Days` parametern (vilket eliminerar den flera dagars respitperioden). Detta kan vara användbart för kompatibilitets-relaterade scenarier där omedelbar data borttagning är tvingande. Den här funktionen för omedelbar rensning exponeras bara via Azure Resource Manager. 
 
 Arbets ytor med en lagring på 30 dagar kan faktiskt behålla data i 31 dagar. Om det är absolut nödvändigt att data sparas i 30 dagar kan du använda Azure Resource Manager för att ange kvarhållning till 30 dagar och med `immediatePurgeDataOn30Days` parametern.  
 
@@ -230,7 +230,7 @@ Följande steg beskriver hur du konfigurerar en gräns för att hantera den data
 2. På sidan **användning och uppskattade kostnader** för den valda arbets ytan klickar du på **data Kap** överst på sidan. 
 3. Är dagligt tak **inaktiverat** som standard? Aktivera det genom att klicka på **på** . Ange sedan data volym gränsen i GB/dag.
 
-    ![Log Analytics konfigurera data gräns](media/manage-cost-storage/set-daily-volume-cap-01.png)
+:::image type="content" source="media/manage-cost-storage/set-daily-volume-cap-01.png" alt-text="Log Analytics konfigurera data gräns":::
     
 Den dagliga begränsningen kan konfigureras via ARM genom att ange `dailyQuotaGb` parametern under `WorkspaceCapping` som beskrivs på [arbets ytor – skapa eller uppdatera](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping). 
 
@@ -245,8 +245,10 @@ Usage
 | extend TimeGenerated=datetime_add("hour",-1*DailyCapResetHour,TimeGenerated)
 | where TimeGenerated > startofday(ago(31d))
 | where IsBillable
-| summarize IngestedGbBetweenDailyCapResets=sum(_BilledSize)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
+| summarize IngestedGbBetweenDailyCapResets=sum(Quantity)/1000. by day=bin(TimeGenerated, 1d) | render areachart  
 ```
+
+(I användnings data typen `Quantity` är enheterna i MB.)
 
 ### <a name="alert-when-daily-cap-reached"></a>Avisering när dagligt hölje uppnås
 
@@ -420,9 +422,10 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 För data från noder som finns i Azure kan du hämta **storleken** på inmatade data __per Azure-prenumeration__, Hämta `_SubscriptionId` egenskapen som:
 
 ```kusto
-find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable, _SubscriptionId
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
 För att hämta data volym per resurs grupp kan du parsa `_ResourceId` :
@@ -484,6 +487,9 @@ Några förslag på hur du minskar mängden loggar som samlas in är:
 | Syslog                     | Ändra [systemloggkonfigurationen](data-sources-syslog.md) för att: <br> - Minska antalet anläggningar som samlas in <br> - Endast samla in obligatoriska händelsenivåer. Till exempel, samla inte in händelser på *Informations-* eller *Felsökningsnivå* |
 | AzureDiagnostics           | Ändra [resurs logg samling](./diagnostic-settings.md#create-in-azure-portal) till: <br> – Minska antalet resursloggar som skickas till Log Analytics <br> – Endast samla in nödvändiga loggar |
 | Lösningsdata från datorer som inte behöver lösningen | Använd [lösnings mål](../insights/solution-targeting.md) om du endast vill samla in data från nödvändiga grupper av datorer. |
+| Application Insights | Granska alternativ för [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
+| [SQL-analys](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Använd [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) för att finjustera gransknings inställningarna. |
+| Azure Sentinel | Granska alla [Sentinel-datakällor](https://docs.microsoft.com/azure/sentinel/connect-data-sources) som du nyligen har aktiverat som källor till ytterligare data volym. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Hämtar noder som faktureras i pris nivån per nod
 

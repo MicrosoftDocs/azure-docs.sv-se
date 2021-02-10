@@ -3,12 +3,12 @@ title: Händelse leverans, hanterad tjänst identitet och privat länk
 description: I den här artikeln beskrivs hur du aktiverar hanterad tjänst identitet för ett Azure Event Grid-ämne. Använd den för att vidarebefordra händelser till destinationer som stöds.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054425"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007779"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Händelse leverans med en hanterad identitet
 I den här artikeln beskrivs hur du aktiverar en [hanterad tjänst identitet](../active-directory/managed-identities-azure-resources/overview.md) för anpassade ämnen eller domäner i Azure Event Grid. Använd den för att vidarebefordra händelser till stödda destinationer som Service Bus köer och ämnen, Event Hub och lagrings konton.
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>Använd Azure CLI-Azure Storage-kön 
-I det här avsnittet får du lära dig hur du använder Azure CLI för att aktivera användning av en systemtilldelad identitet för att leverera händelser till en Azure Storage kö. Identiteten måste vara medlem i rollen **Storage BLOB data Contributor** på lagrings kontot.
+I det här avsnittet får du lära dig hur du använder Azure CLI för att aktivera användning av en systemtilldelad identitet för att leverera händelser till en Azure Storage kö. Identiteten måste vara medlem i rollen för **lagrings köns data meddelande avsändare** på lagrings kontot. Det måste också vara medlem i rollen **Storage BLOB data Contributor** på det lagrings konto som används för obeställbara meddelanden.
 
 #### <a name="define-variables"></a>Definiera variabler  
 

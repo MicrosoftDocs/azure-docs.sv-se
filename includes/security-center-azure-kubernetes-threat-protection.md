@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
-ms.openlocfilehash: 051cd8646718c17c288b06a535d35e1eed5e9259
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c09057f606423dc92b3364e502e632a385bf83f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557171"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007825"
 ---
 Security Center tillhandahåller hot skydd i real tid för dina behållares miljöer och genererar aviseringar för misstänkta aktiviteter. Du kan använda den här informationen för att snabbt åtgärda säkerhetsproblem och förbättra säkerheten för dina containrar.
 
@@ -17,8 +17,10 @@ Security Center ger hot skydd på olika nivåer:
 
 * **Värdnivå (tillhandahålls av Azure Defender för servrar)** – med samma Log Analytics-agent som Security Center använder på andra virtuella datorer, övervakar Azure Defender dina Linux AKS-noder för misstänkta aktiviteter som identifiering av webb gränssnitt och anslutning med kända misstänkta IP-adresser. Agenten övervakar även certifikatbaserad analys, till exempel skapande av privilegierade behållare, misstänkt åtkomst till API-servrar och SSH-servrar (Secure Shell) som körs i en Docker-behållare.
 
+    Om du väljer att inte installera agenterna på dina värdar får du bara en del av fördelarna med skydd mot hot och säkerhets aviseringar. Du får fortfarande aviseringar om nätverks analyser och kommunikation med skadliga servrar.
+
     >[!IMPORTANT]
-    > Om du väljer att inte installera agenterna på dina värdar får du bara en del av fördelarna med skydd mot hot och säkerhets aviseringar. Du får fortfarande aviseringar om nätverks analyser och kommunikation med skadliga servrar.
+    > Vi stöder för närvarande inte installation av Log Analytics agent på Azure Kubernetes service-kluster som körs på virtuella datorers skalnings uppsättningar.
 
     En lista över AKS-aviseringar om värd nivå finns i [referens tabellen för aviseringar](../articles/security-center/alerts-reference.md#alerts-containerhost).
 

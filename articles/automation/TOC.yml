@@ -252,6 +252,8 @@
           href: automation-solution-vm-management-config.md
         - name: Frågeloggar från Starta/stoppa virtuella datorer när de inte används
           href: automation-solution-vm-management-logs.md
+        - name: Ta bort Starta/stoppa virtuella datorer när de inte används
+          href: automation-solution-vm-management-remove.md
         - name: Felsöka Stoppa/starta virtuella datorer när de inte används
           href: troubleshoot/start-stop-vm.md
     - name: Uppdateringshantering

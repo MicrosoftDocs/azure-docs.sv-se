@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 41388e46f5204acaa53f376bc05cebf975361dad
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896519"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008170"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>Felsöka problem med distribution av funktioner
 
@@ -148,7 +148,7 @@ Ta bort resurserna för följande funktioner från din arbets yta om du använde
 När du har tagit bort funktions resurserna kan du ta bort länken till arbets ytan. Det är viktigt att du rensar befintliga artefakter från dessa funktioner från din arbets yta och ditt Automation-konto:
 
 * För Uppdateringshantering tar du bort **uppdaterings distributioner (scheman)** från ditt Automation-konto.
-* För starta/stoppa virtuella datorer när de inte används tar du bort eventuella lås på funktions komponenter i ditt Automation-konto under **Inställningar**  >  **Lås**. Mer information finns i [ta bort funktionen](../automation-solution-vm-management.md#remove-the-feature).
+* För starta/stoppa virtuella datorer när de inte används tar du bort eventuella lås på funktions komponenter i ditt Automation-konto under **Inställningar**  >  **Lås**. Mer information finns i [ta bort funktionen](../automation-solution-vm-management-remove.md).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics för Windows-tilläggsbegäranden
 

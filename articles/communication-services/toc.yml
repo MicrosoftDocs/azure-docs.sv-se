@@ -58,6 +58,8 @@
 - name: Begrepp
   expanded: false
   items:
+    - name: Samverkan mellan team
+      href: concepts/teams-interop.md
     - name: Chatt
       items:
         - name: Översikt över klientbiblioteket för chatt
@@ -78,8 +80,6 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Begrepp inom röst- och videosamtal
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Samverkan mellan team
-          href: concepts/voice-video-calling/teams-interop.md
     - name: GRÄNSSNITTs ramverk
       items:
         - name: Översikt över UI Framework

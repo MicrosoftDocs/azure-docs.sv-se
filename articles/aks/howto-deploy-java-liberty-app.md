@@ -7,16 +7,23 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: Java, jakartaee, Java-part, mikroprofil, öppen-frihet, WebSphere-frihet, AKS, Kubernetes
-ms.openlocfilehash: 2e025c706512b6ab3945118da996b11a5a8a9585
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526898"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007145"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Distribuera ett Java-program med öppen frihet eller WebSphere-frihet på ett Azure Kubernetes service-kluster (AKS)
 
-Den här guiden visar hur du kör ditt Java-, Java-, [Jakarta](https://jakarta.ee/)-eller [mikroprofil](https://microprofile.io/) -program i den öppna frihets-eller WebSphere frihets körningen och sedan distribuerar det containerbaserade programmet till ett AKS-kluster med operatorn Open frihet. Operatorn Open frihet fören klar distributionen och hanteringen av program som körs på öppna frihets Kubernetes-kluster. Du kan också utföra mer avancerade åtgärder, till exempel samla in spårningar och dum par med operatorn. Den här artikeln vägleder dig genom att förbereda ett frihets program, skapa program Docker-avbildningen och köra program varan på ett AKS-kluster.  Mer information om öppen frihet finns [på sidan öppna frihets projekt](https://openliberty.io/). Mer information om IBM WebSphere-frihet finns på [produkt sidan för WebSphere-frihet](https://www.ibm.com/cloud/websphere-liberty).
+Den här artikeln visar hur du:  
+* Kör ditt Java-, Java-, Jakarta-eller mikroprofil-program på den öppna frihets-eller WebSphere frihets körningen.
+* Skapa program Docker-avbildningen med hjälp av Open frihets behållar avbildningar.
+* Distribuera programmet för behållare till ett AKS-kluster med hjälp av Open frihet-operatorn.   
+
+Operatorn Open frihet fören klar distributionen och hanteringen av program som körs på Kubernetes-kluster. Med Open frihet-operatör kan du också utföra mer avancerade åtgärder, t. ex. insamling av spår och dum par. 
+
+Mer information om öppen frihet finns [på sidan öppna frihets projekt](https://openliberty.io/). Mer information om IBM WebSphere-frihet finns på [produkt sidan för WebSphere-frihet](https://www.ibm.com/cloud/websphere-liberty).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,17 +31,20 @@ Den här guiden visar hur du kör ditt Java-, Java-, [Jakarta](https://jakarta.e
 
 * Den här artikeln kräver den senaste versionen av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
 * Om du kör kommandona i den här hand boken lokalt (i stället för Azure Cloud Shell):
-  * Förbered en lokal dator med UNIX-liknande operativ system installerat (till exempel Ubuntu, macOS).
+  * Förbered en lokal dator med UNIX-liknande operativ system installerat (till exempel Ubuntu, macOS, Windows-undersystem för Linux).
   * Installera en Java SE-implementering (till exempel [AdoptOpenJDK openjdk 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
   * Installera [maven](https://maven.apache.org/download.cgi) 3.5.0 eller högre.
   * Installera [Docker](https://docs.docker.com/get-docker/) för ditt operativ system.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. Skapa en resurs grupp, *Java-frihet-projekt* med kommandot [AZ Group Create](/cli/azure/group#az_group_create) på den *östra* platsen. Den kommer att användas för att skapa Azure Container Registry-instansen (ACR) och AKS-klustret senare. 
+En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras.  
+
+Skapa en resurs grupp med namnet *Java-frihet-projekt* med kommandot [AZ Group Create](/cli/azure/group#az_group_create) på platsen *öster* . Den här resurs gruppen kommer att användas senare för att skapa Azure Container Registry-instansen (ACR) och AKS-klustret. 
 
 ```azurecli-interactive
-az group create --name java-liberty-project --location eastus
+RESOURCE_GROUP_NAME=java-liberty-project
+az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
 ## <a name="create-an-acr-instance"></a>Skapa en ACR-instans
@@ -42,7 +52,8 @@ az group create --name java-liberty-project --location eastus
 Använd kommandot [AZ ACR Create](/cli/azure/acr#az_acr_create) för att skapa ACR-instansen. I följande exempel skapas en ACR-instans med namnet *youruniqueacrname*. Kontrol lera att *youruniqueacrname* är unikt i Azure.
 
 ```azurecli-interactive
-az acr create --resource-group java-liberty-project --name youruniqueacrname --sku Basic --admin-enabled
+REGISTRY_NAME=youruniqueacrname
+az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
 Efter en kort stund bör du se ett JSON-utdata som innehåller:
@@ -55,10 +66,9 @@ Efter en kort stund bör du se ett JSON-utdata som innehåller:
 
 ### <a name="connect-to-the-acr-instance"></a>Ansluta till ACR-instansen
 
-Om du vill skicka en avbildning till ACR-instansen måste du logga in på den först. Verifiera anslutningen genom att köra följande kommandon:
+Du måste logga in på ACR-instansen innan du kan push-överföra en avbildning till den. Verifiera anslutningen genom att köra följande kommandon:
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
 USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
 PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
@@ -73,7 +83,8 @@ Du bör se `Login Succeeded` i slutet av kommandots utdata om du har loggat in p
 Använd kommandot [az aks create](/cli/azure/aks#az_aks_create) för att skapa ett AKS-kluster. I följande exempel skapas ett kluster med namnet *myAKSCluster* och en enda nod. Det tar flera minuter att slutföra.
 
 ```azurecli-interactive
-az aks create --resource-group java-liberty-project --name myAKSCluster --node-count 1 --generate-ssh-keys --enable-managed-identity
+CLUSTER_NAME=myAKSCluster
+az aks create --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --node-count 1 --generate-ssh-keys --enable-managed-identity
 ```
 
 Efter några minuter slutförs kommandot och returnerar JSON-formaterad information om klustret, inklusive följande:
@@ -96,7 +107,7 @@ az aks install-cli
 För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials). Det här kommandot laddar ned autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem.
 
 ```azurecli-interactive
-az aks get-credentials --resource-group java-liberty-project --name myAKSCluster --overwrite-existing
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME --overwrite-existing
 ```
 
 > [!NOTE]
@@ -144,6 +155,7 @@ För att distribuera och köra ditt frihets program på AKS-klustret, Använd di
 1. Klona exempel koden för den här guiden. Exemplet finns på [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
 1. Ändra katalog till `javaee-app-simple-cluster` av din lokala klon.
 1. Kör `mvn clean package` för att paketera programmet.
+1. Kör `mvn liberty:dev` för att testa programmet. Du bör se `The defaultServer server is ready to run a smarter planet.` utdata för kommandot om det lyckas. Används `CTRL-C` för att stoppa programmet.
 1. Kör något av följande kommandon för att skapa program avbildningen och push-överföra den till ACR-instansen.
    * Skapa med öppen frihets bas avbildning om du föredrar att använda Open frihet som en lätt öppen källa Java™ Runtime:
 
@@ -206,12 +218,12 @@ Du kan övervaka förloppet genom att använda kommandot [kubectl get service](h
 kubectl get service javaee-app-simple-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   9080:31732/TCP   68s
+javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
-Vänta tills den *externa IP* -adressen ändras från *väntande* till en verklig offentlig IP-adress, Använd `CTRL-C` för att stoppa `kubectl` bevaknings processen.
+När den *externa IP* -adressen ändras från *väntande* till en verklig offentlig IP-adress, använder `CTRL-C` du för att stoppa `kubectl` bevaknings processen.
 
-Öppna en webbläsare för den externa IP-adressen och porten för din tjänst ( `52.152.189.57:9080` för exemplet ovan) för att se programmets start sida. Du bör se namnet på Pod för dina program repliker som visas längst upp till vänster på sidan. Vänta några minuter och uppdatera sidan visas förmodligen ett annat Pod-namn som visas på grund av belastnings utjämning som tillhandahålls av AKS-klustret.
+Öppna en webbläsare till den externa IP-adressen för din tjänst ( `52.152.189.57` i exemplet ovan) för att se programmets start sida. Du bör se namnet på Pod för dina program repliker som visas längst upp till vänster på sidan. Vänta några minuter och uppdatera sidan om du vill se ett annat Pod-namn som visas på grund av belastnings utjämning som tillhandahålls av AKS-klustret.
 
 :::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java-frihets program har distribuerats på AKS":::
 
@@ -220,10 +232,10 @@ Vänta tills den *externa IP* -adressen ändras från *väntande* till en verkli
 
 ## <a name="clean-up-the-resources"></a>Rensa resurserna
 
-För att undvika Azure-avgifter bör du rensa resurser som inte behövs.  När klustret inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az_group_delete) för att ta bort resurs gruppen, Container Service, container Registry och alla relaterade resurser.
+För att undvika Azure-avgifter bör du rensa onödiga resurser.  När klustret inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az_group_delete) för att ta bort resurs gruppen, Container Service, container Registry och alla relaterade resurser.
 
 ```azurecli-interactive
-az group delete --name java-liberty-project --yes --no-wait
+az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Nästa steg

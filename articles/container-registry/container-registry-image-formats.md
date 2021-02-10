@@ -3,12 +3,12 @@ title: Innehålls format som stöds
 description: Lär dig mer om innehålls format som stöds av Azure Container Registry, inklusive Docker-kompatibla behållar avbildningar, Helm-diagram, OCI-avbildningar och OCI-artefakter.
 ms.topic: article
 ms.date: 08/30/2019
-ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a54c65d149a27ed9eae85c3308d657ed3471a3
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84695274"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008340"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Innehålls format som stöds i Azure Container Registry
 
@@ -20,11 +20,11 @@ Följande versioner av Docker-behållar avbildningar stöds:
 
 * [Docker-avbildnings manifest v2, schema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
-* [Docker-avbildnings manifest v2, schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) – innehåller manifest listor som tillåter register att lagra avbildningar av flera plattformar under en enda "image: tag"-referens
+* [Docker-avbildnings manifest v2, schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) – innehåller manifest listor som tillåter register för att lagra [avbildningar med flera arkitektur](push-multi-architecture-images.md) under en enda `image:tag` referens
 
 ## <a name="oci-images"></a>OCI-avbildningar
 
-Azure Container Registry stöder avbildningar som uppfyller [specifikationen för avbildnings formatet Open container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md). Paket formaten innehåller ett [bild format för bilder (SIF)](https://github.com/sylabs/sif).
+Azure Container Registry stöder avbildningar som uppfyller specifikationen för [avbildnings formatet öppen container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md), inklusive specifikationen för valfria [avbildnings index](https://github.com/opencontainers/image-spec/blob/master/image-index.md) . Paket formaten innehåller ett [bild format för bilder (SIF)](https://github.com/sylabs/sif).
 
 ## <a name="oci-artifacts"></a>OCI-artefakter
 

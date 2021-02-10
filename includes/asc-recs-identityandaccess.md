@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/09/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7487262faa8af74af26ac2123686a8e202254e76
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: e1d2039ba3a667e40740acd7781090c9c0cf5281
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797183"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007652"
 ---
 Det finns **21** rekommendationer i den här kategorin.
 
@@ -20,7 +20,7 @@ Det finns **21** rekommendationer i den här kategorin.
 |Azure Defender för Key Vault ska vara aktiverat |Azure Security Center innehåller Azure Defender för Key Vault, vilket ger ytterligare ett lager av säkerhets information.<br>Azure Defender för Key Vault identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja Key Vault-konton.<br><br>Viktigt: att åtgärda den här rekommendationen leder till att du får kostnader för att skydda dina nyckel valv. Om du inte har några nyckel valv i den här prenumerationen kommer inga avgifter att debiteras.<br>Om du skapar ett nyckel valv i den här prenumerationen i framtiden kommer de automatiskt att skyddas och kostnader kommer att börja vid den tidpunkten.<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Läs mer om Azure Defender för Key Vault.</a><br />(Relaterad princip: [Azure Defender för Key Vault ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |Högt |
 |Föråldrade konton bör tas bort från din prenumeration |Användar konton som har blockerats från att logga in bör tas bort från dina prenumerationer.<br>De här kontona kan vara mål för angripare som söker efter sätt att komma åt dina data utan att märkas.<br />(Relaterad princip: [föråldrade konton bör tas bort från din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)) |Högt |
 |Föråldrade konton med ägar behörigheter bör tas bort från din prenumeration |Användar konton som har blockerats från att logga in bör tas bort från dina prenumerationer.<br>De här kontona kan vara mål för angripare som söker efter sätt att komma åt dina data utan att märkas.<br />(Relaterad princip: [föråldrade konton med ägar behörigheter ska tas bort från din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)) |Högt |
-|Diagnostikloggar i Key Vault ska vara aktive rad |Aktivera loggar och behåll dem på ett år. På så sätt kan du återskapa aktivitets spårningar i utrednings syfte när en säkerhets incident inträffar eller nätverket komprometteras.<br />(Relaterad princip: [diagnostikloggar i Key Vault ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |Låg |
+|Diagnostikloggar i Key Vault ska vara aktive rad |Aktivera loggar och behåll dem på ett år. På så sätt kan du återskapa aktivitets spårningar i utrednings syfte när en säkerhets incident inträffar eller nätverket komprometteras.<br />(Relaterad princip: [resurs loggar i Key Vault ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |Låg |
 |Externa konton med ägar behörigheter bör tas bort från din prenumeration |Konton med ägar behörigheter som har olika domän namn (externa konton) bör tas bort från din prenumeration. Detta förhindrar oövervakad åtkomst. De här kontona kan vara mål för angripare som söker efter sätt att komma åt dina data utan att märkas.<br />(Relaterad princip: [externa konton med ägar behörigheter bör tas bort från din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9)) |Högt |
 |Externa konton med Läs behörighet bör tas bort från din prenumeration |Konton med Läs behörighet som har olika domän namn (externa konton) bör tas bort från din prenumeration. Detta förhindrar oövervakad åtkomst. De här kontona kan vara mål för angripare som söker efter sätt att komma åt dina data utan att märkas.<br />(Relaterad princip: [externa konton med Läs behörighet bör tas bort från din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60)) |Högt |
 |Externa konton med Skriv behörighet bör tas bort från din prenumeration |Konton med Skriv behörighet som har olika domän namn (externa konton) bör tas bort från din prenumeration. Detta förhindrar oövervakad åtkomst. De här kontona kan vara mål för angripare som söker efter sätt att komma åt dina data utan att märkas.<br />(Relaterad princip: [externa konton med Skriv behörighet bör tas bort från din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4)) |Högt |

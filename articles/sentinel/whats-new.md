@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 02/04/2021
-ms.openlocfilehash: 37a9294b156bd41b72e777696f10a1c4ac2bb354
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832767"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007371"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -41,7 +41,7 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 - [Förbättrad regel justering med för hands versions diagram för analys regel](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
-## <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analys regel guiden: förbättrad redigerings upplevelse för frågor (offentlig för hands version)
+### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analys regel guiden: förbättrad redigerings upplevelse för frågor (offentlig för hands version)
 
 Guiden regel för schemalagd analys i Azure Sentinel innehåller nu följande förbättringar för att skriva och redigera frågor:
 

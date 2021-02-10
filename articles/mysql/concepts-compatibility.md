@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542651"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006861"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-drivrutiner och hanterings verktyg som är kompatibla med Azure Database for MySQL
 I den här artikeln beskrivs de driv rutiner och hanterings verktyg som är kompatibla med Azure Database for MySQL.
@@ -43,16 +43,16 @@ Azure Database for MySQL använder världens mest populära community-version av
 ## <a name="management-tools"></a>Hanteringsverktyg
 Fördelen med kompatibilitet är också till för databas hanterings verktyg. Dina befintliga verktyg bör fortsätta att fungera med Azure Database for MySQL, så länge databas hanteringen fungerar inom de olika användar behörigheterna. Tre vanliga verktyg för databas hantering som har testats och visat sig vara kompatibla med Azure Database for MySQL 5,6 och 5,7 visas i följande tabell:
 
-|                                     | **MySQL Workbench 6. x och uppåt** | **Navicat 12** | **PHPMyAdmin 4. x och uppåt** |
-| :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| **Skapa, uppdatera, läsa, skriva, ta bort** | X | X | X |
-| **SSL-anslutning** | X | X | X |
-| **Automatisk komplettering av SQL-fråga** | X | X |  |
-| **Importera och exportera data** | X | X | X |
-| **Exportera till flera format** | X | X | X |
-| **Säkerhets kopiering och återställning** |  | X |  |
-| **Visa Server parametrar** | X | X | X |
-| **Visa klient anslutningar** | X | X | X |
+|                                     | **MySQL Workbench 6. x och uppåt** | **Navicat 12** | **PHPMyAdmin 4. x och uppåt** | **dbForge Studio för MySQL 9,0** |
+| :---------------------------------- | :----------------------------- | :------------- | :-------------------------| :------------------------------- |
+| **Skapa, uppdatera, läsa, skriva, ta bort** | X | X | X | X |
+| **SSL-anslutning** | X | X | X | X |
+| **Automatisk komplettering av SQL-fråga** | X | X |  | X |
+| **Importera och exportera data** | X | X | X | X |
+| **Exportera till flera format** | X | X | X | X |
+| **Säkerhetskopiera och återställ** |  | X |  | X |
+| **Visa Server parametrar** | X | X | X | X |
+| **Visa klient anslutningar** | X | X | X | X |
 
 ## <a name="next-steps"></a>Nästa steg
 

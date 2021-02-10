@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 1128504ee5f8c086d6a3c30a9fdd021550394f3f
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981773"
+ms.locfileid: "100007405"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
@@ -24,13 +24,14 @@ Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, 
 ## <a name="february-2021"></a>Februari 2021
 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Läs API v 3.2 offentlig för hands version med OCR-stöd för 73 språk
-Visuellt innehåll s Read API v 3.2: s offentliga för hands version innehåller följande funktioner:
+Visuellt innehåll s Read API v 3.2 offentlig för hands version, som är tillgänglig som moln tjänst och Docker-behållare, innehåller följande uppdateringar:
 * [OCR för 73-språk](./language-support.md#optical-character-recognition-ocr) , inklusive förenklade och traditionella kinesiska, japanska, koreanska och latinska språk.
-* Mata ut text raderna i den naturliga Läs ordningen.
-* Klassificera text rader som hand SKRIFTS format eller inte tillsammans med en förtroende poäng (endast latinska språk).
-* För ett flersidigt dokument extrahera text enbart för markerade sidor eller sid intervall.
+* Naturlig Läs ordning för text radens utdata.
+* Stil klassificering för hand skrift för text rader tillsammans med en förtroende poäng (endast latinska språk).
+* Extrahera endast text för markerade sidor för ett flersidigt dokument.
+* Tillgängligt som en [Distroless-behållare](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
 
-Mer information finns i [läsa för hands versions funktioner](concept-recognizing-text.md#natural-reading-order-output) .
+[Läs mer](concept-recognizing-text.md) om Read API.
 
 > [!div class="nextstepaction"]
 > [Använd Read API v 3.2 offentlig för hands version](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)

@@ -3,16 +3,16 @@ title: Anslut ditt GCP-konto till Azure Security Center
 description: Övervaka dina GCP-resurser från Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8ee7b37861be299dd36a596ae1cd4899b0ebffab
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 94c7a800fc551faf6650b8e30fe7c2188f7d2dbb
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809413"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008391"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Anslut dina GCP-konton till Azure Security Center
 
@@ -44,10 +44,16 @@ I skärm bilden nedan ser du GCP-projekt som visas på instrument panelen i Secu
 
 ## <a name="connect-your-gcp-account"></a>Anslut ditt GCP-konto
 
-Följ stegen nedan för att skapa din GCP Cloud Connector för att ansluta dina Google Cloud-resurser på antingen organisations-eller projekt nivå. 
+Skapa en anslutning för varje organisation som du vill övervaka från Security Center.
 
-> [!TIP]
-> Lär dig mer om Google Cloud-hierarkistrukturen i sina online-dokument [här](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
+När du ansluter dina GCP-konton till vissa Azure-prenumerationer bör du tänka på [Google Cloud-hierarkin](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#resource-hierarchy-detail) och dessa rikt linjer:
+
+- Du kan ansluta dina GCP-konton till ASC på *organisations* nivå
+- Du kan ansluta flera organisationer till en Azure-prenumeration
+- Du kan ansluta flera organisationer till flera Azure-prenumerationer
+- När du ansluter en organisation läggs alla *projekt* i organisationen till i Security Center
+
+Följ stegen nedan för att skapa din GCP Cloud Connector. 
 
 ### <a name="step-1-set-up-gcp-security-command-center-with-security-health-analytics"></a>Steg 1. Konfigurera GCP Security Command Center med säkerhets hälso analys
 
@@ -64,7 +70,7 @@ När du först aktiverar säkerhets hälso analys kan det ta flera timmar innan 
 
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>Steg 2. Aktivera GCP Security Command Center API
 
-1. Välj det projekt som du vill ansluta till Azure Security Center från Googles **moln konsol API-bibliotek**.
+1. Från Googles **moln konsol API-bibliotek** väljer du varje projekt i organisationen som du vill ansluta till Azure Security Center.
 1. I API-biblioteket letar du reda på och väljer **Security Command Center API**.
 1. På sidan API väljer du **Aktivera**.
 
@@ -73,7 +79,11 @@ Läs mer om [Security Command Center API](https://cloud.google.com/security-comm
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>Steg 3. Skapa ett dedikerat tjänst konto för integrering av säkerhets konfiguration
 
-1. I **GCP-konsolen** väljer du det projekt som du vill ansluta till Security Center.
+1. I **GCP-konsolen** väljer du ett projekt från organisationen där du skapar det tjänst konto som krävs. 
+
+    > [!NOTE]
+    > När det här tjänst kontot läggs till på organisations nivå används det för att komma åt data som samlats in av Security Command Center från alla andra aktiverade projekt i organisationen. 
+
 1. I **navigerings menyn** under **IAM & admin** -alternativ väljer du **tjänst konton**.
 1. Välj **skapa tjänst konto**.
 1. Ange ett konto namn och välj **skapa**.
@@ -84,7 +94,7 @@ Läs mer om [Security Command Center API](https://cloud.google.com/security-comm
     1. Växla till organisations nivå.
     1. Välj **Lägg till**.
     1. I fältet **nya medlemmar** klistrar du in det **e-Postvärde** som du kopierade tidigare.
-    1. Ange rollen som **Security Center admin Viewer** och välj sedan Spara.
+    1. Ange rollen som **Security Center admin Viewer** och välj sedan **Spara**.
         :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Ange relevanta GCP-behörigheter":::
 
 
@@ -97,7 +107,7 @@ Läs mer om [Security Command Center API](https://cloud.google.com/security-comm
 1. Spara denna JSON-fil för senare användning.
 
 
-### <a name="step-5-connect-gcp-to-security-center"></a>Steg 5. Anslut GCP till Security Center 
+### <a name="step-5-connect-gcp-to-security-center"></a>Steg 5. Anslut GCP till Security Center
 1. Från Security Center menyn väljer du **moln anslutningar**.
 1. Välj Lägg till GCP-konto.
 1. På sidan onboarding, gör du följande och väljer sedan **Nästa**.
@@ -126,8 +136,12 @@ Om du vill visa alla aktiva rekommendationer för dina resurser efter resurs typ
 
 ## <a name="faq-for-connecting-gcp-accounts-to-azure-security-center"></a>Vanliga frågor och svar om att ansluta GCP-konton till Azure Security Center
 
-### <a name="can-i-connect-multiple-gcp-accounts-to-security-center"></a>Kan jag ansluta flera GCP-konton till Security Center?
-Ja. Som vi nämnt ovan kan du ansluta dina Google Cloud-resurser på antingen organisations-eller projekt nivå. Lär dig mer om Google Cloud-hierarkistrukturen i sina online-dokument [här](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
+### <a name="can-i-connect-multiple-gcp-organizations-to-security-center"></a>Kan jag ansluta flera GCP-organisationer till Security Center?
+Ja. Security Center GCP Connector ansluter dina Google Cloud-resurser på *organisations* nivå. 
+
+Skapa en anslutning för varje GCP-organisation som du vill övervaka från Security Center. När du ansluter en organisation läggs alla projekt i organisationen till Security Center.
+
+Lär dig mer om Google Cloud-hierarkistrukturen i [Googles online-dokument](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy).
 
 
 ### <a name="is-there-an-api-for-connecting-my-gcp-resources-to-security-center"></a>Finns det ett API för att ansluta mina GCP-resurser till Security Center?
@@ -138,3 +152,4 @@ Ja. Om du vill skapa, redigera eller ta bort Security Center moln anslutningar m
 Att ansluta ditt GCP-konto är en del av den multi-Cloud-upplevelse som finns i Azure Security Center. Relaterad information finns på följande sida:
 
 - [Anslut dina AWS-konton till Azure Security Center](quickstart-onboard-aws.md)
+- [Google Cloud-resurs-hierarki](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy)– lär dig mer om Google Cloud-mappstrukturen i Googles online-dokument

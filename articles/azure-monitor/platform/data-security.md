@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1e0dbd23fa14c1bd79275d3f9ff6a164293ac19
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728867"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007354"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics data säkerhet
 Det här dokumentet är avsett att ge information som är speciell för Log Analytics, som är en funktion i Azure Monitor, för att komplettera informationen på [Azure Säkerhetscenter](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -173,6 +173,8 @@ Som det beskrivs ovan skickas data från hanterings servern eller direkt anslutn
 Log Analytics tjänsten säkerställer att inkommande data kommer från en betrodd källa genom att verifiera certifikat och data integritet med Azure-autentisering. Obearbetade rå data lagras sedan i en Azure Event Hub i den region som data kommer att lagras i vila. Vilken typ av data som lagras beror på vilka typer av lösningar som har importer ATS och använts för att samla in data. Sedan bearbetar Log Analyticss tjänsten rå data och matar in dem i databasen.
 
 Kvarhållningsperioden för insamlade data som lagras i databasen beror på den valda pris planen. För den *kostnads fria* nivån finns insamlade data tillgängliga i sju dagar. För den *betalda* nivån är insamlade data tillgängliga i 31 dagar som standard, men kan utökas till 730 dagar. Data lagras krypterade i vila i Azure Storage, för att säkerställa data sekretessen och data replikeras i den lokala regionen med hjälp av lokalt redundant lagring (LRS). De senaste två veckorna med data lagras också i SSD-baserad cache och denna cache är krypterad.
+
+Data i databas lagringen kan inte ändras när de har matats in men kan tas bort via [ *rensnings* -API-sökväg](personal-data-mgmt.md#delete). Även om det inte går att ändra data, kräver vissa certifieringar att data förblir oföränderliga och inte kan ändras eller tas bort i lagrings utrymmet. Data oföränderlighets kan uppnås med hjälp av [data export](logs-data-export.md) till ett lagrings konto som har kon figurer ATS som [oföränderligt lagrings utrymme](../../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Använd Log Analytics för att komma åt data
 För att komma åt din Log Analytics-arbetsyta loggar du in på Azure Portal med hjälp av organisations kontot eller Microsoft-konto som du har skapat tidigare. All trafik mellan portalen och Log Analytics tjänsten skickas via en säker HTTPS-kanal. När du använder portalen genereras ett sessions-ID på användar klienten (webbläsaren) och data lagras i en lokal cache tills sessionen avslutas. När den avbröts tas cacheminnet bort. Cookies på klient sidan, som inte innehåller personligt identifierbar information, tas inte bort automatiskt. Sessionscookies är markerade som HTTPOnly och skyddas. Azure Portal sessionen avslutas efter en fördefinierad inaktiv period.

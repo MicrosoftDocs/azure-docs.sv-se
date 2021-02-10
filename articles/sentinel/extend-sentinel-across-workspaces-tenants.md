@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: dfd8f94dc7ab4e428647b8f44a86a2cd06634e2a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 9cbafa2a87db9aa59769ac759da9b56a6463874a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807249"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006691"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Utöka Azure Sentinel för arbetsytor och klientorganisationer
 
@@ -98,7 +98,7 @@ Du kan sedan skriva en fråga i båda arbets ytorna genom att börja med `unionS
 <!-- Bookmark added for backward compatibility with old heading -->
 Frågor över arbets ytor kan nu inkluderas i regler för schemalagd analys, med följande begränsningar:
 
-- Upp till 15 arbets ytor kan inkluderas i en enda fråga.
+- Upp till 20 arbets ytor kan inkluderas i en enda fråga.
 - Azure Sentinel måste distribueras på varje arbets yta som refereras till i frågan.
 
 > [!NOTE] 

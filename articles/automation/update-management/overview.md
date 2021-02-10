@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896909"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007745"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -74,7 +74,7 @@ I följande tabell visas de operativ system som stöds för uppdaterings bedömn
 
 |Operativsystem  |Kommentarer  |
 |---------|---------|
-|Windows Server 2019 (Data Center/Data Center Core/standard)<br>Windows Server 2016 (Data Center/Data Center Core/standard)<br>Windows Server 2012 R2 (Data Center/standard)<br>Windows Server 2012 |
+|Windows Server 2019 (Data Center/standard inklusive Server Core)<br><br>Windows Server 2016 (Data Center/standard exklusive Server Core)<br><br>Windows Server 2012 R2 (Data Center/standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM och SP1 standard)| Uppdateringshantering stöder utvärderingar och korrigeringar för det här operativ systemet. [Hybrid Runbook Worker](../automation-windows-hrw-install.md) stöds för Windows Server 2008 R2. |
 |CentOS 6 och 7 (x64)      | Linux-agenter kräver åtkomst till ett uppdaterings lager. Klassificerings-baserad uppdatering kräver `yum` att returnera säkerhets data som CentOS inte har i sina RTM-versioner. Mer information om klassificerings-baserad uppdatering på CentOS finns i [uppdaterings klassificeringar i Linux](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 och 7 (x64)     | Linux-agenter kräver åtkomst till ett uppdaterings lager.        |
