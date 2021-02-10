@@ -143,6 +143,8 @@
                   href: resilience-client-app.md
                 - name: Daemon-program
                   href: resilience-daemon-app.md
+            - name: Övervaka program hälsa för återhämtning
+              href: monitor-sign-in-health-for-resilience.md
         - name: Certifikatutfärdare som används i Azure
           href: certificate-authorities.md
     - name: Distributionsguide

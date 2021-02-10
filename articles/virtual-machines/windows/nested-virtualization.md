@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074250"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091354"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Så här aktiverar du kapslad virtualisering i en virtuell Azure-dator
 
@@ -24,7 +24,7 @@ Den här artikeln beskriver hur du aktiverar Hyper-V på en virtuell Azure-dator
 
 Skapa en ny Windows Server 2016 Azure VM. En fullständig lista över virtuella dator storlekar som stöder kapsling finns i [artikeln om Azure Compute Unit](../acu.md).
 
-Kom ihåg att välja en VM-storlek som är tillräckligt stor för att stödja kraven hos en virtuell gäst dator. I det här exemplet använder vi en D3_v3 storlek för virtuell Azure-dator. 
+Kom ihåg att välja en VM-storlek som är tillräckligt stor för att stödja kraven hos en virtuell gäst dator. I det här exemplet använder vi en D4_v3 storlek för virtuell Azure-dator. 
 
 Du kan visa den regionala tillgängligheten för dv3-eller Ev3-seriens virtuella datorer [här](https://azure.microsoft.com/regions/services/).
 
@@ -139,11 +139,11 @@ Följ stegen nedan för att konfigurera DHCP på den virtuella värd datorn för
 
 #### <a name="install-dhcp-server-on-the-azure-vm"></a>Installera DHCP-server på den virtuella Azure-datorn
 
-1. Öppna Serverhanteraren. Klicka på **Lägg till roller och funktioner**på instrument panelen. Guiden Lägg till roller och funktioner visas.
+1. Öppna Serverhanteraren. Klicka på **Lägg till roller och funktioner** på instrument panelen. Guiden Lägg till roller och funktioner visas.
   
 2. Klicka på **Nästa** på sidan Server roller i guiden.
   
-3. Klicka för att markera kryss rutan **DHCP-server** , klicka på **Lägg till funktioner**och klicka sedan på **Nästa** tills du har slutfört guiden.
+3. Klicka för att markera kryss rutan **DHCP-server** , klicka på **Lägg till funktioner** och klicka sedan på **Nästa** tills du har slutfört guiden.
   
 4. Klicka på **Installera**.
 
@@ -151,7 +151,7 @@ Följ stegen nedan för att konfigurera DHCP på den virtuella värd datorn för
 
 1. Öppna DHCP-hanteraren.
   
-2. I navigerings fönstret expanderar du Server namnet, högerklickar på **IPv4**och klickar på **nytt omfång**. Guiden Nytt scope visas, klicka på **Nästa**.
+2. I navigerings fönstret expanderar du Server namnet, högerklickar på **IPv4** och klickar på **nytt omfång**. Guiden Nytt scope visas, klicka på **Nästa**.
   
 3. Ange ett namn och en beskrivning för omfattningen och klicka på **Nästa**.
   

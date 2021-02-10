@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure IoT Hub
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure IoT Hub. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: da4ee1c46b895435cf99c1f6d2149d05257b8945
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: c30dad83195948c898cd9f5f3e4c3ed4604ee1ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558633"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090555"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-iot-hub"></a>Azure Policy kontroll av efterlevnad för Azure IoT Hub
 

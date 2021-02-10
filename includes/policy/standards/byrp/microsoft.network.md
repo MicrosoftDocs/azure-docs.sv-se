@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 192a57dbca523125ea5c13c7f9c41efd7fe99baa
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a4f16067fa8837fa0f1062ba4cc8c2c1daf5d22b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558176"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091303"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -147,6 +147,20 @@ Mer information om den här standarden för efterlevnad finns i [HIPAA HITRUST 9
 |Säkerhet för Network Services |0837.09. n2Organizational. 2-09. n |Formella avtal med externa informations system leverantörer innehåller vissa skyldigheter för säkerhet och sekretess. |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Säkerhet för Network Services |0886.09 n2Organizational. 4-09. n |Organisationen använder och dokument i ett formellt avtal eller annat dokument, antingen i) Tillåt-alla, neka-by-Exception eller, II) neka-alla, Tillåt-by-Exception (prioriterad), princip för att tillåta att vissa informations system ansluter till externa informations system. |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 |Säkerhet för Network Services |0888.09 n2Organizational. 6-09. n |I kontraktet med den externa/utkontrakterade tjänste leverantören ingår den specifikation som tjänste leverantören ansvarar för att skydda skyddad information som delas. |[Network Watcher ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+
+## <a name="new-zealand-ism"></a>Nya Zeeland ISM
+
+Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tjänster mappar till den här standarden för efterlevnad, se [Azure policy regelefterlevnad – nya Zeeland information Security manual](../../../../articles/governance/policy/samples/new-zealand-ism.md).
+Mer information om den här standarden för efterlevnad finns i [ny Zeelands information säkerhets hand bok](https://www.nzism.gcsb.govt.nz/).
+
+|Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Nätverkssäkerhet |NS-5 |18.3.19 innehåll i en DoS-svars plan (Denial of Service) |[Azure DDoS Protection standard ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableDDoSProtection_Audit.json) |
+|Nätverkssäkerhet |NS-7 |18.4.10 skadlig kod räknare-mått |[All Internet trafik ska dirigeras via din distribuerade Azure-brandvägg](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |[3.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
+|Nätverkssäkerhet |NS-7 |18.4.10 skadlig kod räknare-mått |[Brand vägg för webbaserade program (WAF) måste vara aktive rad för Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
+|Nätverkssäkerhet |NS-7 |18.4.10 skadlig kod räknare-mått |[Brand vägg för webbaserade program (WAF) måste vara aktive rad för tjänsten Azure frontend dörr service](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
+|Nätverkssäkerhet |NS-7 |18.4.10 skadlig kod räknare-mått |[Brand vägg för webbaserade program (WAF) ska använda det angivna läget för Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |
+|Nätverkssäkerhet |NS-7 |18.4.10 skadlig kod räknare-mått |[Brand vägg för webbaserade program (WAF) ska använda det angivna läget för Azure-tjänsten för front dörr](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F425bea59-a659-4cbb-8d31-34499bd030b8) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Mode_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

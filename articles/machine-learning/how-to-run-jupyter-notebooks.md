@@ -1,5 +1,5 @@
 ---
-title: Så här kör du Jupyter-anteckningsböcker i din arbets yta
+title: Köra Jupyter-anteckningsböcker i din arbets yta
 titleSuffix: Azure Machine Learning
 description: Lär dig hur du kör en Jupyter-anteckningsbok utan att lämna din arbets yta i Azure Machine Learning Studio.
 services: machine-learning
@@ -11,89 +11,27 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 06ae46eb96db39f44cd052e6e9b0d1a19f898007
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061842"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091576"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter Notebooks på arbetsytan
+# <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
 Lär dig hur du kör dina Jupyter-anteckningsböcker direkt i din arbets yta i Azure Machine Learning Studio. Även om du kan starta [Jupyter](https://jupyter.org/) eller [JupyterLab](https://jupyterlab.readthedocs.io)kan du även redigera och köra dina antecknings böcker utan att lämna arbets ytan.
+
+Information om hur du skapar och hanterar filer, inklusive antecknings böcker, finns i [skapa och hantera filer i din arbets yta](how-to-manage-files.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://aka.ms/AMLFree) innan du börjar.
 * En Machine Learning-arbetsyta. Se [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
-## <a name="create-notebooks"></a><a name="create"></a> Skapa antecknings böcker
-
-I arbets ytan Azure Machine Learning skapar du en ny Jupyter-anteckningsbok och börjar arbeta. Den nyligen skapade antecknings boken lagras i standard lagrings ytan. Den här antecknings boken kan delas med alla som har åtkomst till arbets ytan. 
-
-Så här skapar du en ny antecknings bok: 
-
-1. Öppna din arbets yta i [Azure Machine Learning Studio](https://ml.azure.com).
-1. På den vänstra sidan väljer du **antecknings böcker**. 
-1. Välj ikonen  **Skapa ny fil** ovanför listan **användarfiler** i avsnittet **Mina filer** .
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Skapa en ny fil":::
-
-1. Ge filen ett namn. 
-1. För Jupyter notebook-filer väljer du **Notebook** som filtyp.
-1. Välj en fil katalog.
-1. Välj **Skapa**.
-
-Du kan också skapa textfiler.  Välj **text** som filtyp och Lägg till tillägget i namnet (till exempel myfile.py eller myfile.txt)  
-
-Du kan också ladda upp mappar och filer, inklusive antecknings böcker, med verktygen överst på sidan antecknings böcker.  Antecknings böcker och de flesta text fil typer visas i avsnittet för förhands granskning.  Ingen förhands granskning är tillgänglig för de flesta andra filtyper.
-
-> [!IMPORTANT]
-> Innehåll i antecknings böcker och skript kan potentiellt läsa data från dina sessioner och komma åt data utan din organisation i Azure.  Läs bara in filer från betrodda källor. Mer information finns i [metod tips för säker kod](concept-secure-code-best-practice.md#azure-ml-studio-notebooks).
-
-### <a name="clone-samples"></a>Klona exempel
-
-Din arbets yta innehåller en **exempel** -mapp med antecknings böcker utformade för att hjälpa dig att utforska SDK och fungerar som exempel för dina egna Machine Learning-projekt.  Du kan klona de här antecknings böckerna till din egen mapp på arbets ytans lagrings behållare.  
-
-Ett exempel finns i [Självstudier: skapa ditt första ml experiment](tutorial-1st-experiment-sdk-setup.md#azure).
-
-### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a> Använd filer från git och version mina filer
-
-Du kan komma åt alla git-åtgärder med hjälp av ett terminalfönster. Alla git-filer och mappar kommer att lagras i fil systemet för arbets ytan.
-
-> [!NOTE]
-> Lägg till dina filer och mappar var som helst under mappen **~/CloudFiles/Code/Users** så att de visas i alla dina Jupyter-miljöer.
-
-För att få åtkomst till terminalen:
-
-1. Öppna din arbets yta i [Azure Machine Learning Studio](https://ml.azure.com).
-1. På den vänstra sidan väljer du **antecknings böcker**.
-1. Välj en antecknings bok som finns i avsnittet **användarfiler** på den vänstra sidan.  Om du inte har några antecknings böcker där måste du först [skapa en antecknings bok](#create)
-1. Välj ett **beräknings** mål eller skapa ett nytt och vänta tills det körs.
-1. Välj ikonen **Öppna Terminal** .
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Öppna Terminal":::
-
-1. Om du inte ser ikonen väljer du **...** till höger om beräknings målet och väljer sedan **Öppna Terminal**.
-
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Öppna Terminal från...":::
-
-
-Lär dig mer om [att klona git-databaser till fil systemet för arbets ytan](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
-
-### <a name="copy-and-paste-in-terminal"></a>Kopiera och klistra in i Terminal
-
-> * Windows: `Ctrl-Insert` för att kopiera och använda `Ctrl-Shift-v` eller `Shift-Insert` Klistra in.
-> * Mac OS: `Cmd-c` för att kopiera och `Cmd-v` Klistra in.
-> * FireFox/IE kanske inte stöder urklipps behörigheter korrekt.
-
-### <a name="share-notebooks-and-other-files"></a>Dela antecknings böcker och andra filer
-
-Kopiera och klistra in URL: en för att dela en antecknings bok eller fil.  Endast andra användare av arbets ytan har åtkomst till den här URL: en.  Läs mer om hur [du beviljar åtkomst till din arbets yta](how-to-assign-roles.md).
-
 ## <a name="edit-a-notebook"></a>Redigera en bärbar dator
 
-Om du vill redigera en antecknings bok öppnar du en antecknings bok i avsnittet **användarfiler** i din arbets yta. Klicka på cellen som du vill redigera. 
+Om du vill redigera en antecknings bok öppnar du en antecknings bok i avsnittet **användarfiler** i din arbets yta. Klicka på cellen som du vill redigera.  Om du inte har några antecknings böcker i det här avsnittet kan du läsa [skapa och hantera filer i din arbets yta](how-to-manage-files.md).
 
 Du kan redigera antecknings boken utan att ansluta till en beräknings instans.  När du vill köra cellerna i antecknings boken väljer eller skapar du en beräknings instans.  Om du väljer en stoppad beräknings instans kommer den automatiskt att starta när du kör den första cellen.
 
@@ -101,7 +39,7 @@ När en beräknings instans körs kan du också använda kod komplettering, som 
 
 Du kan också starta Jupyter eller JupyterLab från antecknings bokens verktygsfält.  Azure Machine Learning tillhandahåller inte uppdateringar och korrigerar buggar från Jupyter eller JupyterLab eftersom de är produkter med öppen källkod utanför gränserna för Microsoft Support.
 
-### <a name="focus-mode"></a>Fokusläge
+## <a name="focus-mode"></a>Fokusläge
 
 Använd fokus läge för att expandera den aktuella vyn så att du kan fokusera på dina aktiva flikar. Fokus läge döljer fil Utforskaren i antecknings boken.
 
@@ -110,14 +48,13 @@ Använd fokus läge för att expandera den aktuella vyn så att du kan fokusera 
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Växla fokus läge/standardvy":::
 
-
-### <a name="use-intellisense"></a>Använd IntelliSense
+## <a name="use-intellisense"></a>Använd IntelliSense
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) är ett stöd för kod komplettering som innehåller ett antal funktioner: list medlemmar, parameter information, snabb information och fullständig ord. Dessa funktioner hjälper dig att lära dig mer om den kod som du använder, håller reda på de parametrar som du skriver och lägger till anrop till egenskaper och metoder med bara några få tangenttryckningar.  
 
 När du skriver kod använder du Ctrl + blank steg för att utlösa IntelliSense.
 
-### <a name="clean-your-notebook-preview"></a>Rensa din bärbara dator (för hands version)
+## <a name="clean-your-notebook-preview"></a>Rensa din bärbara dator (för hands version)
 
 > [!IMPORTANT]
 > Funktionen samla in finns för närvarande i offentlig för hands version.
@@ -133,7 +70,7 @@ I samband med att du skapar en antecknings bok slutar du normalt med celler som 
 
 Den nya antecknings boken innehåller bara kod celler, med alla celler som krävs för att skapa samma resultat som den cell som du har valt för att samla in.
 
-### <a name="save-and-checkpoint-a-notebook"></a>Spara och Checkpoint en bärbar dator
+## <a name="save-and-checkpoint-a-notebook"></a>Spara och Checkpoint en bärbar dator
 
 Azure Machine Learning skapar en kontroll punkts fil när du skapar en *ipynb* -fil.
 
@@ -145,24 +82,34 @@ Alla antecknings böcker sparas automatiskt var 30: e sekund. Spara automatiskt 
  
 Välj **kontroll punkter** i Notebook-menyn för att skapa en namngiven kontroll punkt och återställa antecknings boken till en sparad kontroll punkt.
 
-## <a name="delete-a-notebook"></a>Ta bort en notebook-fil
+## <a name="export-a-notebook"></a>Exportera en bärbar dator
 
-Du *kan inte* ta bort **exempel** antecknings böckerna.  Dessa antecknings böcker ingår i Studio och uppdateras varje gången ett nytt SDK publiceras.  
+I verktygsfältet Notebook väljer du menyn och **exporterar sedan som** för att exportera antecknings boken som vilken typ som stöds:
 
-Du *kan* ta bort antecknings böcker för **användar filer** på något av följande sätt:
+* Notebook-fil
+* Python
+* HTML
+* LaTeX
 
-* I Studio väljer du **...** i slutet av en mapp eller fil.  Se till att använda en webbläsare som stöds (Microsoft Edge, Chrome eller Firefox).
-* I valfri antecknings boks verktygsfält väljer du [**Öppna Terminal**](#terminal)  för att få åtkomst till terminalfönstret för beräknings instansen.
-* I antingen Jupyter eller JupyterLab med sina verktyg.
+:::image type="content" source="media/how-to-run-jupyter-notebooks/export-notebook.png" alt-text="Exportera en bärbar dator till din dator":::
+
+Den exporterade filen sparas på din dator.
 
 ## <a name="run-a-notebook-or-python-script"></a>Köra ett Notebook-eller Python-skript
 
-Om du vill köra en bärbar dator eller ett Python-skript ansluter du först till en [beräknings instans](concept-compute-instance.md)som körs. Om du inte har en beräknings instans använder du följande steg för att skapa ett: 
+Om du vill köra en bärbar dator eller ett Python-skript ansluter du först till en [beräknings instans](concept-compute-instance.md)som körs.
 
-1. Välj **+** i verktygsfältet för antecknings boken eller skript. 
-2. Namnge beräkningen och välj en storlek för den **virtuella datorn**. 
-3. Välj **Skapa**.
-4. Beräknings instansen är automatiskt ansluten till filen.  Nu kan du köra Notebook-cellerna eller python-skriptet med verktyget till vänster om beräknings instansen
+* Om du inte har en beräknings instans använder du följande steg för att skapa ett:
+
+    1. I verktygsfältet för antecknings boken eller skript, till höger om List rutan Compute, väljer du **+ ny beräkning**. Beroende på din skärm storlek kan detta finnas i en **...** -meny.
+        :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="Skapa en ny beräkning":::
+    1. Namnge beräkningen och välj en storlek för den **virtuella datorn**. 
+    1. Välj **Skapa**.
+    1. Beräknings instansen är automatiskt ansluten till filen.  Nu kan du köra Notebook-cellerna eller python-skriptet med verktyget till vänster om beräknings instansen.
+
+* Om du har en stoppad beräknings instans väljer du  **Starta beräkning** till höger om List rutan beräkna. Beroende på din skärm storlek kan detta finnas i en **...** -meny.
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="Starta beräknings instans":::
 
 Endast du kan se och använda de beräknings instanser som du skapar.  Dina **användarfiler** lagras separat från den virtuella datorn och delas mellan alla beräknings instanser i arbets ytan.
 
@@ -209,33 +156,12 @@ Dessa åtgärder återställer antecknings bokens tillstånd och återställer a
 | Stoppa beräkning     |    Inga celler kommer att köras  |
 | Öppna antecknings boken i Jupyter eller JupyterLab     |    Antecknings boken öppnas på en ny flik.  |
 
-### <a name="add-new-kernels"></a>Lägg till nya kärnor
+## <a name="add-new-kernels"></a>Lägg till nya kärnor
 
-Antecknings boken hittar automatiskt alla Jupyter-kernels som är installerade på den anslutna beräknings instansen.  Så här lägger du till en kernel till beräknings instansen:
+[Använd terminalen ](how-to-access-terminal.md#add-new-kernels) för att skapa och lägga till nya kärnor i din beräknings instans. Antecknings boken hittar automatiskt alla Jupyter-kernels som är installerade på den anslutna beräknings instansen.
 
-1. Välj [**öppna terminalen**](#terminal) i antecknings bokens verktygsfält.
-1. Använd terminalfönstret för att skapa en ny miljö.  Koden nedan skapar till exempel `newenv` :
-    ```shell
-    conda create -y --name newenv
-    ```
-1. Aktivera miljön.  Till exempel när du har skapat `newenv` :
+Använd List rutan kernel till höger för att ändra till någon av de installerade kernelerna.  
 
-    ```shell
-    conda activate newenv
-    ```
-1. Installera pip-och ipykernel-paketet i den nya miljön och skapa en kernel för det Conda-avsnittet
-
-    ```shell
-    conda install -y pip
-    conda install -y ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-1. När du har installerat kärnan ska du uppdatera sidan och öppna en antecknings bok. Nu visas den nya kerneln i kernel-listan.
-
-> [!NOTE]
-> För paket hantering i en bärbar dator använder du **% pip** eller **% Conda** Magic Functions för att automatiskt installera paket i den **aktuella kerneln** i stället för **! pip** eller **! Conda** som refererar till alla paket (inklusive paket utanför den aktuella kerneln som körs)
-
-Alla [tillgängliga Jupyter-kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kan installeras.
 
 ### <a name="status-indicators"></a>Status indikatorer
 

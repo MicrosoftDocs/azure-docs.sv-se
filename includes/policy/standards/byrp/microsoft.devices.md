@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f7e887e0d3cf942c7d8372a0ad3c25d050978efe
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 2d05a80fead478ee8a1752910e09c14718fe2acd
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558625"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090551"
 ---
 ## <a name="azure-security-benchmark"></a>Benchmark för Azure-säkerhet
 
@@ -20,7 +20,7 @@ Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tj
 
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Loggning och hotidentifiering |LT-4 |Aktivera loggning för Azure-resurser |[Diagnostikloggar i IoT Hub ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
+|Loggning och hotidentifiering |LT-4 |Aktivera loggning för Azure-resurser |[Resurs loggar i IoT Hub ska aktive ras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="azure-security-benchmark-v1"></a>Azure-säkerhet för prestandatest v1
 
@@ -30,7 +30,7 @@ Om du vill se hur tillgängliga Azure Policy inbyggda program för alla Azure-tj
 
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Loggning och övervakning |2.3 |Aktivera gransknings loggning för Azure-resurser |[Diagnostikloggar i IoT Hub ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
+|Loggning och övervakning |2.3 |Aktivera gransknings loggning för Azure-resurser |[Resurs loggar i IoT Hub ska aktive ras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="cmmc-level-3"></a>CMMC nivå 3
 
@@ -39,7 +39,7 @@ Mer information om den här standarden för efterlevnad finns i [cybersäkerhet 
 
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Granskning och ansvar |AU. 3.048 |Samla in gransknings information (t. ex. loggar) i en eller flera centrala databaser. |[Diagnostikloggar i IoT Hub ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
+|Granskning och ansvar |AU. 3.048 |Samla in gransknings information (t. ex. loggar) i en eller flera centrala databaser. |[Resurs loggar i IoT Hub ska aktive ras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
 
 ## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
 
@@ -48,5 +48,5 @@ Mer information om den här standarden för efterlevnad finns i [HIPAA HITRUST 9
 
 |Domain |Kontroll-ID |Kontroll rubrik |Policy<br /><sub>(Azure Portal)</sub> |Princip version<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Gransknings loggning |1204.09 aa1System. 3-09. AA |Aktiviteter för privilegierade användare (administratörer, operatörer osv.) inkluderar händelsen lyckades eller misslyckades, tid då händelsen inträffade, det konto som är involverad och ytterligare information om händelsen. |[Diagnostikloggar i IoT Hub ska vara aktive rad](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
+|Gransknings loggning |1204.09 aa1System. 3-09. AA |Aktiviteter för privilegierade användare (administratörer, operatörer osv.) inkluderar händelsen lyckades eller misslyckades, tid då händelsen inträffade, det konto som är involverad och ytterligare information om händelsen. |[Resurs loggar i IoT Hub ska aktive ras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F383856f8-de7f-44a2-81fc-e5135b5c2aa4) |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_AuditDiagnosticLog_Audit.json) |
 

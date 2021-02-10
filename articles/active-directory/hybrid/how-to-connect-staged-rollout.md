@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762974"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090606"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrera till molnbaserad autentisering med stegvis distribution (för hands version)
 
@@ -33,7 +33,7 @@ En översikt över funktionen finns i "Azure Active Directory: Vad är mellanlag
 
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 -   Du har en Azure Active Directory-klient (Azure AD) med federerade domäner.
 
@@ -83,10 +83,6 @@ Följande scenarier stöds inte för stegvis distribution:
     - Dynamiska grupper *stöds inte* för mellanlagrad distribution.
     - Kontakt objekt inuti gruppen kommer att blockera gruppen från att läggas till.
 
-- Du måste fortfarande göra den slutliga start punkt från federerad till molnbaserad autentisering med hjälp av Azure AD Connect eller PowerShell. Den mellanlagrade distributionen växlar inte domäner från federerade till hanterade.  Mer information om domän-start punkt finns i [Migrera från Federation till hash-synkronisering av lösen ord](plan-migrate-adfs-password-hash-sync.md) och [Migrera från Federation till vidarekoppling](plan-migrate-adfs-pass-through-authentication.md)
-
-
-
 - När du först lägger till en säkerhets grupp för stegvis distribution är du begränsad till 200 användare för att undvika en UX-timeout. När du har lagt till gruppen kan du lägga till fler användare direkt till den, efter behov.
 
 - Medan användarna är i stegvis distribution, när EnforceCloudPasswordPolicyForPasswordSyncedUsers har Aktiver ATS, anges principen för lösen ordets giltighets tid till 90 dagar utan alternativ för att anpassa den. 
@@ -95,7 +91,9 @@ Följande scenarier stöds inte för stegvis distribution:
 
 - Windows 10 hybrid anslutning eller Azure AD Join-hämtning av primär uppdateringstoken för alla versioner, när användarens lokala UPN inte är flyttbara. Det här scenariot återgår till WS-Trust slut punkten i läget för mellanlagrad distribution, men slutar att fungera när mellanlagrad migrering är slutförd och användar inloggning inte längre förlitar sig på Federations servern.
 
-
+  >[!NOTE]
+  >Du måste fortfarande göra den slutliga start punkt från federerad till molnbaserad autentisering med hjälp av Azure AD Connect eller PowerShell. Den mellanlagrade distributionen växlar inte domäner från federerade till hanterade.  Mer information om domän-start punkt finns i [Migrera från Federation till hash-synkronisering av lösen ord](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) och [Migrera från Federation till vidarekoppling](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  
 ## <a name="get-started-with-staged-rollout"></a>Kom igång med stegvis distribution
 
 Om du vill testa inloggningen för *lösen ords-hash-synkronisering* med hjälp av stegvis distribution följer du anvisningarna i nästa avsnitt.
@@ -257,3 +255,5 @@ S: Ja. Information om hur du använder PowerShell för att utföra stegvis distr
 
 ## <a name="next-steps"></a>Nästa steg
 - [Azure AD 2,0-förhandsgranskning](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Ändra inloggnings metoden till hash-synkronisering av lösen ord](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [Ändra inloggnings metod till direktautentisering](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

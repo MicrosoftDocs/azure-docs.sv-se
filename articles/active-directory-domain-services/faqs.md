@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: justinha
-ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491173"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090997"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Vanliga frågor och svar om Azure Active Directory (AD) Domain Services
 
@@ -152,7 +152,7 @@ Azure AD Domain Services ingår i den kostnads fria utvärderings versionen av A
 Nej. När du har aktiverat en Azure AD Domain Services hanterad domän är tjänsten tillgänglig i det valda virtuella nätverket tills du tar bort den hanterade domänen. Det finns inget sätt att pausa tjänsten. Faktureringen fortsätter per timme tills du tar bort den hanterade domänen.
 
 ### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Kan jag redundansväxla Azure AD Domain Services till en annan region för en DR-händelse?
-Nej. Azure AD Domain Services tillhandahåller för närvarande ingen Geo-redundant distributions modell. Den är begränsad till ett enda virtuellt nätverk i en Azure-region. Om du vill använda flera Azure-regioner måste du köra dina Active Directory-domän kontrollanter på virtuella Azure IaaS-datorer. Vägledning för arkitektur finns i [Utöka din lokala Active Directory domän till Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Ja, om du vill tillhandahålla geografisk återhämtning för en hanterad domän kan du skapa ytterligare en [replik uppsättning](tutorial-create-replica-set.md) till ett peer-kopplat virtuellt nätverk i valfri Azure-region som stöder Azure AD DS. Replik uppsättningar delar samma namnrymd och konfiguration med den hanterade domänen.
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Kan jag få Azure AD Domain Services som en del av EMS (Enterprise Mobility Suite)? Behöver jag Azure AD Premium använda Azure AD Domain Services?
 Nej. Azure AD Domain Services är en Azure-tjänst enligt principen betala per användning och ingår inte i EMS. Azure AD Domain Services kan användas med alla utgåvor av Azure AD (kostnads fri och Premium). Du faktureras per timme, beroende på användning.
