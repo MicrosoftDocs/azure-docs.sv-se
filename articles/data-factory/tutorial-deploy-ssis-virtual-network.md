@@ -1,22 +1,17 @@
 ---
 title: Självstudie för att konfigurera en Azure-SSIS integration runtime för att ansluta till ett virtuellt nätverk
 description: Lär dig hur du ansluter en Azure-SSIS integration runtime för att ansluta till ett virtuellt Azure-nätverk.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: fc34c2422816f23c0c3eb8adf8a02b5e7ed3b4c0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3dbbce4adc44696fdd12f6ce948b48b34caaed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636994"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391243"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurera en Azure-SQL Server Integration Services (SSIS) integration Runtime (IR) för att ansluta till ett virtuellt nätverk
 
@@ -31,14 +26,14 @@ Stegen är:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- **Azure-SSIS integration runtime** . Om du inte har en Azure-SSIS integration runtime, [etablera en Azure-SSIS integration runtime i Azure Data Factory](tutorial-deploy-ssis-packages-azure.md) innan du börjar.
+- **Azure-SSIS integration runtime**. Om du inte har en Azure-SSIS integration runtime, [etablera en Azure-SSIS integration runtime i Azure Data Factory](tutorial-deploy-ssis-packages-azure.md) innan du börjar.
 
-- **Användar behörighet** . Den användare som skapar Azure-SSIS IR måste ha [roll tilldelningen](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) minst på Azure Data Factory resurs med något av alternativen nedan:
+- **Användar behörighet**. Den användare som skapar Azure-SSIS IR måste ha [roll tilldelningen](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) minst på Azure Data Factory resurs med något av alternativen nedan:
 
     - Använd den inbyggda rollen nätverks deltagare. Den här rollen ingår i _Microsoft. Network/ \*_ permission, som har en mycket större omfattning än vad som behövs.
     - Skapa en anpassad roll som endast innehåller nödvändig _Microsoft. Network/virtualNetworks/ \* /Join/Action-_ behörighet. Om du även vill ta med dina egna offentliga IP-adresser för Azure-SSIS IR när du ansluter till den till ett Azure Resource Manager virtuellt nätverk, kan du även ta med _Microsoft. Network/publicIPAddresses/*/Join/Action-_ behörighet i rollen.
 
-- **Virtuellt nätverk** .
+- **Virtuellt nätverk**.
 
     - Om du inte har ett virtuellt nätverk skapar du [ett virtuellt nätverk med hjälp av Azure Portal](../virtual-network/quick-create-portal.md).
 
@@ -74,15 +69,15 @@ Använd Azure Portal för att konfigurera ett virtuellt nätverk innan du förs�
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **fler tjänster** . Filtrera och välj **virtuella nätverk** .
+1. Välj **fler tjänster**. Filtrera och välj **virtuella nätverk**.
 
 1. Filtrera efter och välj ditt virtuella nätverk i listan.
 
-1. På sidan **virtuellt nätverk** väljer du **Egenskaper** .
+1. På sidan **virtuellt nätverk** väljer du **Egenskaper**.
 
 1. Välj kopierings knappen för **resurs-ID** för att kopiera resurs-ID för det virtuella nätverket till Urklipp. Spara ID: t från Urklipp i OneNote eller en fil.
 
-1. På den vänstra menyn väljer du **undernät** .
+1. På den vänstra menyn väljer du **undernät**.
 
     - Kontrol lera att det undernät du väljer har tillräckligt med ledigt adress utrymme för att Azure-SSIS IR ska kunna använda. Lämna tillgängliga IP-adresser för minst två gånger IR-nodnummer. Azure reserverar vissa IP-adresser i varje undernät. De här adresserna kan inte användas. De första och sista IP-adresserna i under näten är reserverade för protokoll överensstämmelse och tre fler adresser används för Azure-tjänster. Mer information finns i finns [det några begränsningar för att använda IP-adresser i dessa undernät?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
     - Välj inte GatewaySubnet för att distribuera en Azure-SSIS IR. Den är dedikerad för virtuella nätverks-gatewayer.
@@ -106,7 +101,7 @@ När du har konfigurerat ditt Azure Resource Manager virtuella nätverk eller et
 
 1. Starta Microsoft Edge eller Google Chrome. För närvarande stöder endast dessa webbläsare Data Factory användar gränssnitt.
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **data fabriker** på den vänstra menyn. Om du inte ser **data fabriker** på menyn väljer du **fler tjänster** och i avsnittet **information + analys** väljer du **data fabriker** .
+1. I [Azure Portal](https://portal.azure.com)väljer du **data fabriker** på den vänstra menyn. Om du inte ser **data fabriker** på menyn väljer du **fler tjänster** och i avsnittet **information + analys** väljer du **data fabriker**.
 
    ![Lista över data fabriker](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
@@ -141,14 +136,14 @@ När du har konfigurerat ditt Azure Resource Manager virtuella nätverk eller et
 
    1. För **under näts namn** väljer du namnet på under nätet för ditt virtuella nätverk. Det bör vara samma som används för SQL-datbase med tjänst slut punkter för virtuella nätverk som värd för SSISDB. Eller bör vara ett annat undernät än det som används för din SQL-hanterade instans med privat slut punkt som värd för SSISDB. Annars kan det vara vilket undernät som helst för att ta med egna statiska IP-adresser för Azure-SSIS IR.
 
-   1. Välj **VNet-validering** . Om verifieringen lyckas väljer du **Fortsätt** .
+   1. Välj **VNet-validering**. Om verifieringen lyckas väljer du **Fortsätt**.
 
    ![Avancerade inställningar med ett virtuellt nätverk](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
-1. I avsnittet **Sammanfattning** granskar du alla inställningar för din Azure-SSIS IR. Välj sedan **Uppdatera** .
+1. I avsnittet **Sammanfattning** granskar du alla inställningar för din Azure-SSIS IR. Välj sedan **Uppdatera**.
 
 1. Starta din Azure-SSIS IR genom att välja **Start** -knappen i kolumnen **åtgärder** för din Azure-SSIS IR. Det tar cirka 20 till 30 minuter att starta Azure-SSIS IR som ansluter till ett virtuellt nätverk.
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Lär dig mer om [att ansluta Azure-SSIS IR till ett virtuellt nätverk](join-azure-ssis-integration-runtime-virtual-network.md).

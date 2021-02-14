@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från MySQL med Azure Data Factory
 description: Lär dig mer om MySQL Connector i Azure Data Factory som gör att du kan kopiera data från en MySQL-databas till ett data lager som stöds som mottagare.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 16f7a1481b15f280995bb71fa9e30ed3a129ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375263"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiera data från MySQL med Azure Data Factory
 
@@ -65,7 +60,7 @@ Följande egenskaper stöds för MySQL-länkade tjänster:
 
 En typisk anslutnings sträng är `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>` . Fler egenskaper som du kan ställa in per ärende:
 
-| Egenskap | Beskrivning | Alternativ | Krävs |
+| Egenskap | Beskrivning | Alternativ | Obligatorisk |
 |:--- |:--- |:--- |:--- |
 | SSLMode | Det här alternativet anger om driv rutinen använder TLS-kryptering och verifiering vid anslutning till MySQL. T. ex.,  `SSLMode=<0/1/2/3/4>` .| Inaktive rad (0)/PRIORITERAt (1) **(standard)** /obligatoriskt (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Inga |
 | SSLCert | Den fullständiga sökvägen till och namnet på en. PEM-fil som innehåller SSL-certifikatet som används för att bevisa klientens identitet. <br/> Om du vill ange en privat nyckel för att kryptera det här certifikatet innan det skickas till servern använder du `SSLKey` egenskapen.| | Ja, om du använder tvåvägs SSL-verifiering. |
@@ -99,13 +94,13 @@ En typisk anslutnings sträng är `Server=<server>;Port=<port>;Database=<databas
         "type": "MySql",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

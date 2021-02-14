@@ -6,44 +6,46 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
+dev_langs:
+- TSQL
 ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 02/07/2020
-ms.openlocfilehash: 76f9fb4ed5c3b88b3a1f69e352f50079586ec336
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.date: 02/01/2021
+ms.openlocfilehash: 11b94ba5bcedf56f0115b8730dc58f808aff5c58
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663340"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371608"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Använd Transact-SQL (T-SQL) för att skapa och hantera Elastic Database jobb (förhands granskning)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Den här artikeln innehåller många exempel scenarier som hjälper dig att komma igång med elastiska jobb med T-SQL.
 
-I exemplen används [lagrade procedurer](#job-stored-procedures) och [vyer](#job-views) som är tillgängliga i [*jobb databasen*](job-automation-overview.md#job-database).
+I exemplen används [lagrade procedurer](#job-stored-procedures) och [vyer](#job-views) som är tillgängliga i [*jobb databasen*](job-automation-overview.md#elastic-job-database).
 
 Transact-SQL (T-SQL) används för att skapa, konfigurera, köra och hantera jobb. Det går inte att skapa en elastisk jobb agent i T-SQL, så du måste först skapa en *elastisk jobb agent* med hjälp av portalen eller [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent).
 
 ## <a name="create-a-credential-for-job-execution"></a>Skapa en autentiseringsuppgift för jobb körning
 
-Autentiseringsuppgiften används för att ansluta till mål databaserna för skript körning. Autentiseringsuppgiften behöver rätt behörigheter, på de databaser som anges av mål gruppen, för att kunna köra skriptet. När du använder en logisk grupp medlem för [SQL Server](logical-servers.md) och/eller grupp medlemmar, rekommenderar vi starkt att du skapar en huvud referens som används för att uppdatera autentiseringsuppgifterna innan du expanderar servern och/eller poolen vid tidpunkten för jobb körningen. Databasens begränsade autentiseringsuppgifter skapas på jobb agents databasen. Samma autentiseringsuppgift måste användas för att *skapa en inloggning* och *skapa en användare från inloggning för att ge behörighet för inloggnings databasen* på mål databaserna.
+Autentiseringsuppgiften används för att ansluta till mål databaserna för skript körning. Autentiseringsuppgiften behöver rätt behörigheter, på de databaser som anges av mål gruppen, för att kunna köra skriptet. När du använder en logisk grupp medlem för [SQL Server](logical-servers.md) och/eller grupp medlemmar, rekommenderar vi starkt att du skapar en autentiseringsuppgift för att uppdatera autentiseringsuppgifterna innan du expanderar servern och/eller poolen vid jobb körningen. Databasens begränsade autentiseringsuppgifter skapas på jobb agents databasen. Samma autentiseringsuppgift måste användas för att *skapa en inloggning* och *skapa en användare från inloggning för att ge behörighet för inloggnings databasen* på mål databaserna.
 
 ```sql
---Connect to the job database specified when creating the job agent
+--Connect to the new job database specified when creating the Elastic Job agent
 
--- Create a db master key if one does not already exist, using your own password.  
+-- Create a database master key if one does not already exist, using your own password.  
 CREATE MASTER KEY ENCRYPTION BY PASSWORD='<EnterStrongPasswordHere>';  
   
--- Create a database scoped credential.  
-CREATE DATABASE SCOPED CREDENTIAL myjobcred WITH IDENTITY = 'jobcred',
+-- Create two database scoped credentials.  
+-- The credential to connect to the Azure SQL logical server, to execute jobs
+CREATE DATABASE SCOPED CREDENTIAL job_credential WITH IDENTITY = 'job_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
-
--- Create a database scoped credential for the master database of server1.
-CREATE DATABASE SCOPED CREDENTIAL mymastercred WITH IDENTITY = 'mastercred',
+-- The credential to connect to the Azure SQL logical server, to refresh the database metadata in server
+CREATE DATABASE SCOPED CREDENTIAL refresh_credential WITH IDENTITY = 'refresh_credential',
     SECRET = '<EnterStrongPasswordHere>';
 GO
 ```
@@ -51,20 +53,20 @@ GO
 ## <a name="create-a-target-group-servers"></a>Skapa en mål grupp (servrar)
 
 I följande exempel visas hur du kör ett jobb mot alla databaser på en server.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 -- Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group 'ServerGroup1'
+EXEC jobs.sp_add_target_group 'ServerGroup1';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-'ServerGroup1',
+@target_group_name = 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server1.database.windows.net'
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net';
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -74,29 +76,29 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-an-individual-database"></a>Undanta en enskild databas
 
 I följande exempel visas hur du kör ett jobb mot alla databaser på en server, förutom databasen med namnet *MappingDB*.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing server(s)
-EXEC [jobs].sp_add_target_group N'ServerGroup'
+EXEC [jobs].sp_add_target_group N'ServerGroup';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = N'London.database.windows.net'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
-@server_name = 'server2.database.windows.net'
+@refresh_credential_name = N'refresh_credential', --credential required to refresh the databases in a server
+@server_name = 'server2.database.windows.net';
 GO
 
 --Exclude a database target member from the server target group
@@ -105,7 +107,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.windows.net',
-@database_name = N'MappingDB'
+@database_name = N'MappingDB';
 GO
 
 --View the recently created target group and target group members
@@ -116,21 +118,21 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Skapa en mål grupp (pooler)
 
 I följande exempel visas hur du riktar in alla databaser i en eller flera elastiska pooler.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Add a target group containing pool(s)
-EXEC jobs.sp_add_target_group 'PoolGroup'
+EXEC jobs.sp_add_target_group 'PoolGroup';
 
 -- Add an elastic pool(s) target member
 EXEC jobs.sp_add_target_group_member
-'PoolGroup',
+@target_group_name = 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@refresh_credential_name = 'refresh_credential', --credential required to refresh the databases in a server
 @server_name = 'server1.database.windows.net',
-@elastic_pool_name = 'ElasticPool-1'
+@elastic_pool_name = 'ElasticPool-1';
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -140,20 +142,20 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Distribuera nytt schema till många databaser
 
 I följande exempel visas hur du distribuerar nytt schema till alla databaser.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test';
 
 -- Add job step for create table
 EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
 @command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name = 'myjobcred',
-@target_group_name = 'PoolGroup'
+@credential_name = 'job_credential',
+@target_group_name = 'PoolGroup';
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>Data insamling med inbyggda parametrar
@@ -188,7 +190,7 @@ Om du vill skapa tabellen manuellt i förväg måste du ha följande egenskaper:
 3. Ett grupperat index med namnet `IX_<TableName>_Internal_Execution_ID` i kolumnen internal_execution_id.
 4. Alla behörigheter som anges ovan förutom `CREATE TABLE` behörighet för databasen.
 
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommandon:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommandon:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -200,32 +202,34 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 EXEC jobs.sp_add_jobstep
 @job_name = 'ResultsJob',
 @command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name = 'myjobcred',
+@credential_name = 'job_credential',
 @target_group_name = 'PoolGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = '<resultsdb>',
-@output_table_name = '<resutlstable>'
-Create a job to monitor pool performance
+@output_table_name = '<resutlstable>';
+
+--Create a job to monitor pool performance
+
 --Connect to the job database specified when creating the job agent
 
--- Add a target group containing master database
-EXEC jobs.sp_add_target_group 'MasterGroup'
+-- Add a target group containing Elastic Job database
+EXEC jobs.sp_add_target_group 'ElasticJobGroup';
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name = 'MasterGroup',
+@target_group_name = 'ElasticJobGroup',
 @target_type = 'SqlDatabase',
 @server_name = 'server1.database.windows.net',
-@database_name = 'master'
+@database_name = 'master';
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
 @job_name = 'ResultsPoolsJob',
 @description = 'Demo: Collection Performance data from all pools',
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -246,61 +250,61 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name = 'myjobcred',
-@target_group_name = 'MasterGroup',
+@credential_name = 'job_credential',
+@target_group_name = 'ElasticJobGroup',
 @output_type = 'SqlDatabase',
-@output_credential_name = 'myjobcred',
+@output_credential_name = 'job_credential',
 @output_server_name = 'server1.database.windows.net',
 @output_database_name = 'resultsdb',
-@output_table_name = 'resutlstable'
+@output_table_name = 'resutlstable';
 ```
 
 ## <a name="view-job-definitions"></a>Visa jobb definitioner
 
 I följande exempel visas hur du visar aktuella jobb definitioner.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- View all jobs
-SELECT * FROM jobs.jobs
+SELECT * FROM jobs.jobs;
 
 -- View the steps of the current version of all jobs
 SELECT js.* FROM jobs.jobsteps js
 JOIN jobs.jobs j
-  ON j.job_id = js.job_id AND j.job_version = js.job_version
+  ON j.job_id = js.job_id AND j.job_version = js.job_version;
 
 -- View the steps of all versions of all jobs
-select * from jobs.jobsteps
+SELECT * FROM jobs.jobsteps;
 ```
 
 ## <a name="begin-unplanned-execution-of-a-job"></a>Påbörja oplanerad körning av ett jobb
 
 I följande exempel visas hur du startar ett jobb direkt.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
 -- Execute the latest version of a job
-EXEC jobs.sp_start_job 'CreateTableTest'
+EXEC jobs.sp_start_job 'CreateTableTest';
 
 -- Execute the latest version of a job and receive the execution id
-declare @je uniqueidentifier
-exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output
-select @je
+declare @je uniqueidentifier;
+exec jobs.sp_start_job 'CreateTableTest', @job_execution_id = @je output;
+select @je;
 
-select * from jobs.job_executions where job_execution_id = @je
+select * from jobs.job_executions where job_execution_id = @je;
 
 -- Execute a specific version of a job (e.g. version 1)
-exec jobs.sp_start_job 'CreateTableTest', 1
+exec jobs.sp_start_job 'CreateTableTest', 1;
 ```
 
 ## <a name="schedule-execution-of-a-job"></a>Schemalägg körning av ett jobb
 
 I följande exempel visas hur du schemalägger ett jobb för framtida körning.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -309,13 +313,13 @@ EXEC jobs.sp_update_job
 @job_name = 'ResultsJob',
 @enabled=1,
 @schedule_interval_type = 'Minutes',
-@schedule_interval_count = 15
+@schedule_interval_count = 15;
 ```
 
 ## <a name="monitor-job-execution-status"></a>Övervaka jobb körnings status
 
 I följande exempel visas hur du visar information om körnings status för alla jobb.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -323,27 +327,27 @@ Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör
 --View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all top-level execution status for all jobs
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 --View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions
 WHERE job_name = 'ResultsPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 
 -- View all active executions
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ## <a name="cancel-a-job"></a>Avbryta ett jobb
 
 I följande exempel visas hur du avbryter ett jobb.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -351,23 +355,23 @@ Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör
 -- View all active executions to determine job execution id
 SELECT * FROM jobs.job_executions
 WHERE is_active = 1 AND job_name = 'ResultPoolsJob'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 GO
 
 -- Cancel job execution with the specified job execution id
-EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
+EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef';
 ```
 
 ## <a name="delete-old-job-history"></a>Ta bort gammal jobb historik
 
 I följande exempel visas hur du tar bort jobb historik före ett visst datum.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
--- Delete history of a specific job’s executions older than the specified date
-EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00'
+-- Delete history of a specific job's executions older than the specified date
+EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-01 00:00:00';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
@@ -375,21 +379,21 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>Ta bort ett jobb och alla jobb historik
 
 I följande exempel visas hur du tar bort ett jobb och alla relaterade jobb historik.  
-Anslut till [*jobb databasen*](job-automation-overview.md#job-database) och kör följande kommando:
+Anslut till [*jobb databasen*](job-automation-overview.md#elastic-job-database) och kör följande kommando:
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
-EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
+EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob';
 
 --Note: job history is automatically deleted if it is >45 days old
 ```
 
 ## <a name="job-stored-procedures"></a>Lagrade procedurer för jobb
 
-Följande lagrade procedurer finns i [jobb databasen](job-automation-overview.md#job-database).
+Följande lagrade procedurer finns i [jobb databasen](job-automation-overview.md#elastic-job-database).
 
-|Lagrad procedur  |Description  |
+|Lagrad procedur  |Beskrivning  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Lägger till ett nytt jobb.    |
 |[sp_update_job](#sp_update_job)    |      Uppdaterar ett befintligt jobb.   |
@@ -1065,27 +1069,27 @@ I följande exempel läggs alla databaser i London-och NewYork-servrarna till i 
 
 ```sql
 --Connect to the jobs database specified when creating the job agent
-USE ElasticJobs ;
+USE ElasticJobs;
 GO
 
 -- Add a target group containing server(s)
-EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information'
+EXEC jobs.sp_add_target_group @target_group_name =  N'Servers Maintaining Customer Information';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
-@server_name=N'London.database.windows.net' ;
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
+@server_name=N'London.database.windows.net';
 GO
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in server
-@server_name=N'NewYork.database.windows.net' ;
+@refresh_credential_name=N'refresh_credential', --credential required to refresh the databases in server
+@server_name=N'NewYork.database.windows.net';
 GO
 
 --View the recently added members to the target group
@@ -1139,12 +1143,12 @@ GO
 
 -- Retrieve the target_id for a target_group_members
 declare @tid uniqueidentifier
-SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.windows.net'
+SELECT @tid = target_id FROM [jobs].target_group_members WHERE target_group_name = 'Servers Maintaining Customer Information' and server_name = 'London.database.windows.net';
 
 -- Remove a target group member of type server
 EXEC jobs.sp_delete_target_group_member
 @target_group_name = N'Servers Maintaining Customer Information',
-@target_id = @tid
+@target_id = @tid;
 GO
 ```
 
@@ -1202,9 +1206,9 @@ GO
 
 ## <a name="job-views"></a>Vyer för jobb
 
-Följande vyer är tillgängliga i [jobb databasen](job-automation-overview.md#job-database).
+Följande vyer är tillgängliga i [jobb databasen](job-automation-overview.md#elastic-job-database).
 
-|Visa  |Description  |
+|Visa  |Beskrivning  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Visar jobb körnings historik.      |
 |[utskrifts](#jobs-view)     |   Visar alla jobb.      |

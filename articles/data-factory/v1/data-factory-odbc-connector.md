@@ -1,23 +1,18 @@
 ---
 title: Flytta data från ODBC-datalager
 description: Lär dig mer om hur du flyttar data från ODBC-datalager med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e847592127d19eba3370255385f5b969b87e886e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636875"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380108"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Flytta data från ODBC-datalager med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -44,12 +39,12 @@ Förutom Data Management Gateway måste du också installera ODBC-drivrutinen f�
 > [!NOTE]
 > Mer information om fel sökning av problem med anslutning/Gateway finns i [Felsöka Gateway-problem](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopierings aktivitet som flyttar data från ett ODBC-data lager med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera** . Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
+Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager mall** , .net- **API** och **REST API** . Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
@@ -68,10 +63,10 @@ Följande tabell innehåller en beskrivning av JSON-element som är speciella f�
 | --- | --- | --- |
 | typ |Egenskapen Type måste anges till: **OnPremisesOdbc** |Ja |
 | Begär |Delen av autentiseringsuppgifter som inte är till gång till i anslutnings strängen och en valfri krypterad autentiseringsuppgift. Se exemplen i följande avsnitt. <br/><br/>Du kan ange anslutnings strängen med ett mönster som `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , eller använda system-DSN (data källans namn) som du konfigurerade på gateway-datorn med `"DSN=<name of the DSN>;"` (du behöver fortfarande ange Credential-delen i den länkade tjänsten). |Ja |
-| credential |Delen autentiseringsuppgifter för den anslutnings sträng som anges i drivrutinsspecifika egenskaps värde format. Exempel: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nej |
+| credential |Delen autentiseringsuppgifter för den anslutnings sträng som anges i drivrutinsspecifika egenskaps värde format. Exempel: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Inga |
 | authenticationType |Typ av autentisering som används för att ansluta till ODBC-datalagret. Möjliga värden är: anonyma och grundläggande. |Ja |
-| userName |Ange användar namnet om du använder grundläggande autentisering. |Nej |
-| password |Ange lösen ordet för det användar konto som du har angett för användar namnet. |Nej |
+| userName |Ange användar namnet om du använder grundläggande autentisering. |Inga |
+| password |Ange lösen ordet för det användar konto som du har angett för användar namnet. |Inga |
 | gatewayName |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till ODBC-datalagret. |Ja |
 
 ### <a name="using-basic-authentication"></a>Använda grundläggande autentisering
@@ -147,7 +142,7 @@ Vilka egenskaper som är tillgängliga i avsnittet **typeProperties** i aktivite
 
 När källa är av typen **RelationalSource** (som innehåller ODBC) i kopierings aktivitet är följande egenskaper tillgängliga i avsnittet typeProperties:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | DocumentDB |Använd den anpassade frågan för att läsa data. |SQL-frågesträng. Exempel: Välj * från tabellen tabell. |Ja |
 
@@ -293,7 +288,7 @@ Data skrivs till en ny BLOB varje timme (frekvens: timme, intervall: 1). Mappsö
 
 **Kopiera aktivitet i en pipeline med ODBC-källa (RelationalSource) och blob-handfat (BlobSink)**
 
-Pipelinen innehåller en kopierings aktivitet som är konfigurerad för att använda dessa data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **RelationalSource** och **mottagar** typ är inställd på **BlobSink** . SQL-frågan som anges för egenskapen **fråga** väljer data under den senaste timmen som ska kopieras.
+Pipelinen innehåller en kopierings aktivitet som är konfigurerad för att använda dessa data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **RelationalSource** och **mottagar** typ är inställd på **BlobSink**. SQL-frågan som anges för egenskapen **fråga** väljer data under den senaste timmen som ska kopieras.
 
 ```json
 {
@@ -357,7 +352,7 @@ När du kopierar data från Relations data lager bör du ha repeterbarhet i åta
 ## <a name="troubleshoot-connectivity-issues"></a>Felsöka anslutningsproblem
 Använd fliken **diagnostik** i **Data Management Gateway Configuration Manager** för att felsöka anslutnings problem.
 
-1. Starta **Data Management Gateway Configuration Manager** . Du kan antingen köra "C:\Program Files\Microsoft Datahantering Gateway\1.0\Shared\ConfigManager.exe" direkt (eller) söka efter **Gateway** för att hitta en länk till **Microsoft Data Management Gateway** program som visas i följande bild.
+1. Starta **Data Management Gateway Configuration Manager**. Du kan antingen köra "C:\Program Files\Microsoft Datahantering Gateway\1.0\Shared\ConfigManager.exe" direkt (eller) söka efter **Gateway** för att hitta en länk till **Microsoft Data Management Gateway** program som visas i följande bild.
 
     ![Sök Gateway](./media/data-factory-odbc-connector/search-gateway.png)
 2. Växla till fliken **diagnostik** .

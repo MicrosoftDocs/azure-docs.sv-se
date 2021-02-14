@@ -1,22 +1,18 @@
 ---
 title: Mass kopiering från en databas med hjälp av kontroll tabellen
 description: Lär dig hur du använder en lösnings mall för att kopiera Mass data från en databas med hjälp av en extern kontroll tabell för att lagra en partitions lista med käll tabeller med hjälp av Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: eed7a304bdd57846cd038cc9bf9a67e8150ca505
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920882"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392467"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Mass kopiering från en databas med en kontroll tabell
 
@@ -24,7 +20,7 @@ ms.locfileid: "96920882"
 
 Om du vill kopiera data från ett informations lager i Oracle server, Netezza, Teradata eller SQL Server till Azure Synapse Analytics måste du läsa in stora mängder data från flera tabeller. Normalt måste data partitioneras i varje tabell så att du kan läsa in rader med flera trådar parallellt från en enda tabell. I den här artikeln beskrivs en mall som du kan använda i dessa scenarier.
 
- >! Obs! Om du vill kopiera data från ett litet antal tabeller med en relativt liten data volym till Azure Synapse Analytics, är det mer effektivt att använda [Azure Data Factory kopiera data-verktyget](copy-data-tool.md). Mallen som beskrivs i den här artikeln är mer än du behöver för det scenariot.
+ >! Obs! Om du vill kopiera data från ett litet antal tabeller med relativt små data volymer till Azure Synapse Analytics, är det mer effektivt att använda [Azure Data Factory kopiera data-verktyget](copy-data-tool.md). Mallen som beskrivs i den här artikeln är mer än du behöver för det scenariot.
 
 ## <a name="about-this-solution-template"></a>Om den här lösnings mal len
 

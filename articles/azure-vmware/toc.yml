@@ -60,6 +60,8 @@
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: Hantera DHCP
       href: manage-dhcp.md
+    - name: Konfigurera NSX-nätverks komponenter
+      href: configure-nsx-network-components-azure-portal.md
     - name: Distribuera haveriberedskap för virtuella datorer
       href: disaster-recovery-for-virtual-machines.md
     - name: Distribuera virtuell dator via innehållsbibliotek

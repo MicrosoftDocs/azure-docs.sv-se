@@ -3,12 +3,12 @@ title: Begränsningar och kvoter för Azure-prenumeration
 description: Innehåller en lista över vanliga gränser, kvoter och begränsningar för Azure-prenumerationer och tjänster. Den här artikeln innehåller information om hur du ökar gränserna tillsammans med högsta värden.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ac35f09e1a7274019a8ca504fc697ca81de000f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920482"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370127"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-prenumeration och tjänstbegränsningar, kvoter och krav
 
@@ -364,6 +364,9 @@ För SQL Database gränser, se [SQL Database resurs gränser för enskilda datab
 
 För Azure Synapse Analytics-gränser, se [resurs gränser för Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure Files och Azure File Sync
+Mer information om gränserna för Azure Files och File Sync finns i [Azure Files skalbarhets-och prestanda mål](../../storage/files/storage-files-scale-targets.md).
+
 ## <a name="storage-limits"></a>Lagrings gränser
 
 <!--like # storage accts -->
@@ -378,16 +381,6 @@ Mer information om gränser för standard lagrings konton finns i [skalbarhets m
 ### <a name="azure-blob-storage-limits"></a>Azure Blob Storage-gränser
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure Files gränser
-
-Mer information om Azure Files gränser finns i [Azure Files skalbarhets-och prestanda mål](../../storage/files/storage-files-scale-targets.md).
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Azure File Sync gränser
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Lagrings gränser i Azure Queue
 

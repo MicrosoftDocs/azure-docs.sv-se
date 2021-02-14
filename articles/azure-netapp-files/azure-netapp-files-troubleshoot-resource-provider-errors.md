@@ -13,20 +13,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/18/2019
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483473"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374889"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Felsöka fel i resursprovidern för Azure NetApp Files 
 
 I den här artikeln beskrivs vanliga Azure NetApp Files Resource Provider-fel, deras orsaker, lösningar och lösningar (om det är tillgängligt).
 
 ## <a name="common-azure-netapp-files-resource-provider-errors"></a>Vanliga Azure NetApp Files Resource Provider-fel
+
+***Skapandet av `netAppAccounts` har begränsats i den här regionen.***
+
+Den här situationen inträffar när prenumerationen är waitlisted för Azure NetApp Files och användaren försöker skapa ett NetApp-konto.
+
+* Orsak:   
+Azure Resource Provider för Azure NetApp Files har inte registrerats korrekt. 
+ 
+* Lösning:   
+Slutför alla steg som beskrivs i [registreringen av Azure NetApp Resource Provider](azure-netapp-files-register.md#resource-provider) efter att din prenumeration är waitlisted.
 
 ***BareMetalTenantId kan inte ändras.***  
 

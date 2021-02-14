@@ -4,19 +4,19 @@ description: Övervakning av program prestanda för Azure App Services. Diagramm
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cd203c64695a9a61a93409a96f6a92b9acf9fe70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186379"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365233"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Övervaka Azure App Service-prestanda
 
 Nu är det enklare än någonsin att aktivera övervakning i ASP.NET och ASP.NET Core baserade webb program som körs på [Azure App Services](../../app-service/index.yml) . Tidigare var du tvungen att installera ett plats tillägg manuellt, det senaste tillägget/agenten är nu inbyggt i App Service-avbildningen som standard. Den här artikeln vägleder dig genom att aktivera Application Insights övervakning och ge preliminär vägledning för automatisering av processen för storskaliga distributioner.
 
 > [!NOTE]
-> Att manuellt lägga till ett Application Insights webbplats **Development Tools** tillägg via  >  **tillägg** för utvecklingsverktyg är föråldrad. Den här metoden för tilläggs installation var beroende av manuella uppdateringar för varje ny version. Den senaste stabila versionen av tillägget är nu  [förinstallerad](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) som en del av App Service avbildningen. Filerna finns i `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` och uppdateras automatiskt med varje stabil utgåva. Om du följer agentbaserade instruktioner för att aktivera övervakning nedan tas det inaktuella tillägget bort automatiskt.
+> Att manuellt lägga till ett Application Insights webbplats tillägg via  >  **tillägg** för utvecklingsverktyg är föråldrad. Den här metoden för tilläggs installation var beroende av manuella uppdateringar för varje ny version. Den senaste stabila versionen av tillägget är nu  [förinstallerad](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) som en del av App Service avbildningen. Filerna finns i `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` och uppdateras automatiskt med varje stabil utgåva. Om du följer agentbaserade instruktioner för att aktivera övervakning nedan tas det inaktuella tillägget bort automatiskt.
 
 ## <a name="enable-application-insights"></a>Aktivera Application Insights
 
@@ -75,7 +75,8 @@ Det finns två sätt att aktivera program övervakning för Azure App Services-v
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-Följande versioner av ASP.NET Core stöds: ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0, ASP.NET Core 3,1
+> [!IMPORTANT]
+> Följande versioner av ASP.NET Core stöds: ASP.NET Core 2,1, 3,1 och 5,0. Versionerna 2,0, 2,2 och 3,0 har dragits tillbaka och stöds inte längre. Uppgradera till en version av .NET Core som [stöds](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) för automatisk Instrumentation att fungera.
 
 Det finns för närvarande **inte stöd** för att rikta in hela framework från ASP.net Core, fristående distribution och Linux-baserade program med hjälp av agent/tillägg-baserad övervakning. ([Manuell instrumentering](./asp-net-core.md) via kod fungerar i alla tidigare scenarier.)
 
@@ -90,7 +91,7 @@ Det finns för närvarande **inte stöd** för att rikta in hela framework från
 
      ![Instrumentera din webbapp](./media/azure-web-apps/create-resource-01.png)
 
-2. När du har angett vilken resurs som ska användas kan du välja hur du vill Application Insights Samla in data per plattform för ditt program. ASP.NET Core erbjuder **rekommenderad samling** eller **inaktive rad** för ASP.net Core 2,1, 2,2, 3,0 och 3,1.
+2. När du har angett vilken resurs som ska användas kan du välja hur du vill Application Insights Samla in data per plattform för ditt program. ASP.NET Core erbjuder **rekommenderad samling** eller **inaktive rad** för ASP.net Core 2,1 och 3,1.
 
     ![Välj alternativ per plattform](./media/azure-web-apps/choose-options-new-net-core.png)
 
@@ -419,6 +420,12 @@ Om du vill testa en kod lös Server och övervakning på klient sidan för ASP.N
 ### <a name="connection-string-and-instrumentation-key"></a>Anslutnings sträng och Instrumentation-nyckel
 
 När kod enbart övervakning används krävs bara anslutnings strängen. Vi rekommenderar dock fortfarande att ställa in Instrumentation-nyckeln för att bevara bakåtkompatibilitet med äldre versioner av SDK när manuell Instrumentation utförs.
+
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Skillnaden mellan standard mått från Application Insights vs Azure App Service mått?
+
+Application Insights samlar in telemetri för de begär Anden som gjorde det till programmet. Om felet uppstod i webapps/IIS, och begäran inte har nått användar programmet, kommer Application Insights inte att ha någon telemetri om det.
+
+Varaktigheten för `serverresponsetime` beräknad av Application Insights matchar inte nödvändigt vis Server svars tiden som observerats av Web Apps. Detta beror på att Application Insights bara räknar varaktigheten när begäran faktiskt når användar programmet. Om begäran har fastnat i kö i IIS, kommer den vänte tiden att inkluderas i webbappens mått, men inte i Application Insights mått.
 
 ## <a name="release-notes"></a>Viktig information
 

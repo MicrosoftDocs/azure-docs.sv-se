@@ -1,0 +1,317 @@
+- name: Dokumentation om Azure IoT Central
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är Azure IoT Central?
+      href: core/overview-iot-central.md
+    - name: Genomgång av användargränssnittet
+      href: core/overview-iot-central-tour.md
+    - name: Senaste uppdateringarna
+      items:
+        - name: Nya och uppdaterade funktioner i januari 2021
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
+        - name: Nya och ändrade funktioner i november 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
+        - name: Oktober 2020 – nya och ändrade funktioner
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
+        - name: Nya och ändrade funktioner i september 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-september-2020/'
+        - name: Augusti 2020 – nya och ändrade funktioner
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-august-2020/'
+        - name: Juli 2020 – nya och ändrade funktioner
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
+        - name: Juni 2020 – nya och ändrade funktioner
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
+        - name: Juni 2020 – uppdateringar till användargränssnitt och dokumentation
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+        - name: Maj 2020 – jobb och måttuppdateringar
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: Maj 2020 – uppdateringar till instrumentpanelen
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
+        - name: April 2020 – nya funktioner
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: April 2020 – uppdateringar
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
+        - name: Mars 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+- name: Snabbstarter
+  expanded: true
+  items:
+    - name: 1. Skapa ett nytt program
+      href: core/quick-deploy-iot-central.md
+    - name: 2. Lägga till en simulerad enhet
+      href: core/quick-create-simulated-device.md
+    - name: 3. Konfigurera regler och åtgärder
+      href: core/quick-configure-rules.md
+    - name: 4. Övervaka dina enheter
+      href: core/quick-monitor-devices.md
+- name: Självstudier
+  items:
+    - name: Utveckla och ansluta enheter
+      items:
+        - name: Skapa och ansluta en enhet
+          href: core/tutorial-connect-device.md
+        - name: Mall för att skapa en gateway-enhet
+          href: core/tutorial-define-gateway-device-type.md
+        - name: Ansluta en IoT Edge-enhet
+          href: core/tutorial-add-edge-as-leaf-device.md
+    - name: Bygg integrerade lösningar
+      items:
+        - name: Skapa en enhetsgrupp.
+          href: core/tutorial-use-device-groups.md
+        - name: Skapa en regel
+          href: core/tutorial-create-telemetry-rules.md
+        - name: 'Utforska IoT Central-API:erna'
+          href: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - name: Branschspecifika lösningar
+      items:
+        - name: Retail
+          href: retail/overview-iot-central-retail.md
+          items:
+            - name: Analys i butik för kassan
+              href: retail/store-analytics-architecture.md
+              items:
+                - name: 1 – Skapa ett program för detaljhandeln
+                  href: retail/tutorial-in-store-analytics-create-app.md
+                - name: 2 – Anpassa instrumentpanelerna för operatörer
+                  href: retail/tutorial-in-store-analytics-customize-dashboard.md
+                - name: 3 – Exportera data och visualisera insikter
+                  href: retail/tutorial-in-store-analytics-export-data-visualize-insights.md
+            - name: Smart lagerhantering
+              href: retail/architecture-smart-inventory-management.md
+              items:
+                - name: Skapa ett program för smart lagerhantering
+                  href: retail/tutorial-iot-central-smart-inventory-management.md
+            - name: Ansluten logistik
+              href: retail/architecture-connected-logistics.md
+              items:
+                - name: Skapa ett anslutet logistikprogram
+                  href: retail/tutorial-iot-central-connected-logistics.md
+            - name: Digitalt distributionscenter
+              href: retail/architecture-digital-distribution-center.md
+              items:
+                - name: Skapa ett program för digitala distributionscenter
+                  href: retail/tutorial-iot-central-digital-distribution-center.md
+            - name: Mikrofullgörelsecenter
+              href: retail/architecture-micro-fulfillment-center.md
+              items:
+                - name: Skapa ett program för mikrofullgörelsecenter
+                  href: retail/tutorial-micro-fulfillment-center.md
+            - name: Videoanalys – objekt- och rörelseidentifiering
+              href: retail/architecture-video-analytics.md
+              items:
+                - name: 0 – Distribuera program för objekt- och rörelseidentifiering
+                  href: retail/tutorial-video-analytics-deploy.md
+                - name: 1 – Skapa ett videoanalysprogram
+                  items:
+                    - name: Objekt- och rörelseidentifiering (YOLO v3)
+                      href: retail/tutorial-video-analytics-create-app-yolo-v3.md
+                    - name: Objekt- och rörelseidentifiering (OpenVINO)
+                      href: retail/tutorial-video-analytics-create-app-openvino.md
+                - name: 2 – Konfigurera en IoT Edge-enhet
+                  items:
+                    - name: Skapa ett videoanalysprogram på gränsenheter (Linus VM)
+                      href: retail/tutorial-video-analytics-iot-edge-vm.md
+                    - name: Skapa ett videoanalysprogram på gränsenheter (Intel NUC)
+                      href: retail/tutorial-video-analytics-iot-edge-nuc.md
+                - name: 3 – Övervaka och hantera ett videoanalysprogram
+                  href: retail/tutorial-video-analytics-manage.md
+                - name: 4 – Ändra och bygg gatewaymoduler för videoanalys
+                  href: retail/tutorial-video-analytics-build-module.md
+        - name: Energi
+          href: energy/overview-iot-central-energy.md
+          items:
+            - name: Arkitektur för smarta mätarprogram
+              href: energy/concept-iot-central-smart-meter-app.md
+            - name: Skapa en app för smart mätarövervakning
+              href: energy/tutorial-smart-meter-app.md
+            - name: Arkitektur för solpanelsprogram
+              href: energy/concept-iot-central-solar-panel-app.md
+            - name: Skapa en app för solpanelsövervakning
+              href: energy/tutorial-solar-panel-app.md
+        - name: Myndigheter
+          href: government/overview-iot-central-government.md
+          items:
+            - name: Referensarkitektur för ansluten avfallsövervakning
+              href: government/concepts-connectedwastemanagement-architecture.md
+            - name: Skapa en ansluten app för avfallshantering
+              href: government/tutorial-connected-waste-management.md
+            - name: Referensarkitektur för övervakning av vattenförbrukning
+              href: government/concepts-waterconsumptionmonitoring-architecture.md
+            - name: Skapa en app för övervakning av vattenförbrukning
+              href: government/tutorial-water-consumption-monitoring.md
+            - name: Referensarkitektur för övervakning av vattenkvalitet
+              href: government/concepts-waterqualitymonitoring-architecture.md
+            - name: Skapa en app för övervakning av vattenkvalitet
+              href: government/tutorial-water-quality-monitoring.md
+            - name: Anslut ditt Azure IoT Central-program med Dynamics 365 Field Services
+              href: government/how-to-configure-connected-field-services.md
+        - name: Sjukvård
+          href: healthcare/overview-iot-central-healthcare.md
+          items:
+            - name: Arkitektur för kontinuerlig övervakning av patienter
+              href: healthcare/concept-continuous-patient-monitoring-architecture.md
+            - name: Skapa en app för kontinuerlig övervakning av patienter
+              href: healthcare/tutorial-continuous-patient-monitoring.md
+            - name: Skapa en instrumentpanel för prioritering av hälsodata
+              href: healthcare/howto-health-data-triage.md
+- name: Begrepp
+  items:
+    - name: Arkitektur
+      href: core/concepts-architecture.md
+    - name: Guide för enhetsutvecklare
+      href: core/overview-iot-central-developer.md
+    - name: Guide för Solution Builder
+      href: core/overview-iot-central-developer.md
+    - name: Vad är programmallar?
+      href: core/concepts-app-templates.md
+    - name: Vad är enhetsmallar?
+      href: core/concepts-device-templates.md
+    - name: Enhetsanslutning
+      href: core/concepts-get-connected.md
+    - name: Nyttolaster för meddelanden
+      href: core/concepts-telemetry-properties-commands.md
+    - name: Ansluta IoT Edge-enheter
+      href: core/concepts-iot-edge.md
+- name: Anvisningar
+  items:
+    - name: Utveckla och ansluta enheter
+      items:
+        - name: Konfigurera en enhetsmall
+          href: core/howto-set-up-template.md
+        - name: Version av enhetsmall
+          href: core/howto-version-device-template.md
+        - name: Så här använder du egenskaper
+          href: core/howto-use-properties.md
+        - name: Så här använder du kommandon
+          href: core/howto-use-commands.md
+        - name: Ansluta enheter med X.509
+          href: core/how-to-connect-devices-x509.md
+        - name: Övervaka enhetsanslutningar med Azure CLI
+          href: core/howto-monitor-devices-azure-cli.md
+        - name: Förbereda och ansluta ett Azure Sphere DevKit
+          href: core/howto-connect-sphere.md
+        - name: Förbereda och ansluta en RuuviTag-enhet
+          href: core/howto-connect-ruuvi.md
+        - name: Förbereda och ansluta en Rigado Cascade 500
+          href: core/howto-connect-rigado-cascade-500.md
+        - name: Ansluta andra IoT-moln
+          href: core/howto-build-iotc-device-bridge.md
+    - name: Bygg integrerade lösningar
+      items:
+        - name: Lägga till paneler på din instrumentpanel
+          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: Konfigurera regler
+          href: core/howto-configure-rules.md
+        - name: Skapa webhooks med regler
+          href: core/howto-create-webhooks.md
+        - name: Anslut Azure Monitor åtgärdsgrupper för regler
+          href: core/howto-use-action-groups.md
+        - name: Analysera dina enhetsdata
+          href: core/howto-create-analytics.md
+        - name: Exportera data till molndestinationer
+          href: core/howto-export-data.md
+        - name: Exportera data till molnmål (äldre)
+          href: core/howto-export-data-legacy.md
+        - name: Använd arbetsflöden för att integrera med andra tjänster
+          href: core/howto-configure-rules-advanced.md
+        - name: Skapa anpassade roller
+          href: core/howto-create-custom-rules.md
+        - name: Skapa anpassad analys med Databricks
+          href: core/howto-create-custom-analytics.md
+        - name: Visualisera dina data i Power BI
+          href: core/howto-connect-powerbi.md
+    - name: Hantera dina enheter
+      items:
+        - name: Lägga till och ta bort enheter
+          href: core/howto-manage-devices.md
+        - name: Köra ett jobb
+          href: core/howto-run-a-job.md
+    - name: Administrera din lösning
+      items:
+        - name: Ändra tillämpningsinställningar
+          href: core/howto-administer.md
+        - name: Hantera användare och roller
+          href: core/howto-manage-users-roles.md
+        - name: Hantera din faktura
+          href: core/howto-view-bill.md
+        - name: Anpassa användargränssnitt i program
+          href: core/howto-customize-ui.md
+        - name: Exportera ditt program
+          href: core/howto-use-app-templates.md
+        - name: Migrera v2 till v3-program
+          href: core/howto-migrate.md
+        - name: Övervaka programhälsa
+          href: core/howto-monitor-application-health.md
+        - name: Om ditt program
+          href: core/howto-get-app-info.md
+        - name: Konfigurera och använda filuppladdningar
+          href: core/howto-configure-file-uploads.md
+        - name: Distribuera X.509-certifikat
+          href: core/how-to-roll-x509-certificates.md
+        - name: Hantera från Azure-portalen
+          href: core/howto-manage-iot-central-from-portal.md
+        - name: Hantera från Azure CLI
+          href: core/howto-manage-iot-central-from-cli.md
+        - name: Hantera från Azure PowerShell
+          href: core/howto-manage-iot-central-from-powershell.md
+        - name: Hantera programmässigt
+          href: core/howto-manage-iot-central-programmatically.md
+        - name: Hantera från CSP-portalen
+          href: core/howto-create-and-manage-applications-csp.md
+    - name: Anpassa din lösning
+      items:
+        - name: Skapa en personlig instrument panel
+          href: core/howto-create-personal-dashboards.md
+        - name: Hantera dina personliga inställningar
+          href: core/howto-manage-preferences.md
+        - name: Växla livechatt
+          href: core/howto-show-hide-chat.md
+    - name: Felsöka
+      items:
+        - name: Enhetsanslutningar
+          href: core/troubleshoot-connection.md
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: core/howto-faq.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: 'Referens till IoT Central-API:er'
+      href: /rest/api/iotcentral/
+- name: Resurser
+  items:
+    - name: Kodexempel
+      href: /samples/browse/?expanded=azure&products=azure-iot-central
+    - name: Alternativ för support och hjälp
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT-tjänster
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT-lösningsacceleratorer
+          href: ../iot-accelerators/index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml
+    - name: 'SDK:er för Azure IoT'
+      items:
+        - name: 'SDK:er för IoT-tjänster'
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
+        - name: 'SDK:er för IoT-enheter'
+          href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
+    - name: Kunddatahemvist
+      href: core/iot-central-customer-data-residency.md
+    - name: Kunddataförfrågningar
+      href: core/iot-central-customer-data-requests.md
+    - name: Webbläsare som stöds
+      href: core/iot-central-supported-browsers.md
+    - name: Azure IoT Central (äldre mallar)
+      href: /previous-versions/azure/iot-central/core/overview-iot-central

@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577807"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369738"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Hur reservations rabatter gäller för Azure App Service Premium v3-instanser och isolerade stämplar
 
@@ -40,10 +40,6 @@ Reservations rabatten för Azure används för att köra Premium v3-instanser pe
 4.  För timme 4 körs instans 1 i 0,5 timmar och instans 2 körs i 1 timme. Instans 1 omfattas helt av reservationen och 0,5 timmar av instans 2 omfattas. Du debiteras Betala per användning-priser för de återstående 0,5 timmarna.
 
 Information om hur du förstår och visar tillämpningen av dina Azure-reservationer i användningsrapporter för fakturering finns i [Förstå reservationsanvändning](understand-reserved-instance-usage-ea.md).
-
-### <a name="discount-can-apply-to-different-sizes"></a>Rabatten kan tillämpas på olika storlekar
-
-När du köper en reserverad Premium v3-instans och väljer **optimerad för storleks storlek för en instans**, gäller rabatt täckningen för den Premium v3-instans storlek som du väljer. Den kan också användas för andra instans storlekar i samma storlek som flexibilitet för instans storleks gruppen.
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>Så här gäller reservations rabatter för isolerade stämplar
 

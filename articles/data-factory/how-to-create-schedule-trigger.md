@@ -1,23 +1,19 @@
 ---
 title: Skapa schema utlösare i Azure Data Factory
 description: Lär dig hur du skapar en utlösare i Azure Data Factory som kör en pipeline enligt ett schema.
-services: data-factory
-documentationcenter: ''
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3673dd9eba717d2bdb569b4248936bbb59a8eae7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001991"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387588"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Skapa en utlösare som kör en pipeline enligt ett schema
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -349,13 +345,13 @@ Följande JSON-definition visar hur du skapar en schema utlösare med schemaläg
 ### <a name="schema-overview"></a>Översikt över schema
 I följande tabell ges en översikt över de viktigaste schemaelementen relaterade till upprepning och schemaläggning i en utlösare:
 
-| JSON-egenskap | Description |
+| JSON-egenskap | Beskrivning |
 |:--- |:--- |
 | **/St** | Ett datum/tid-värde. För enkla scheman gäller värdet för egenskapen **startTime** den första förekomsten. För komplexa scheman startar utlösaren tidigast vid det angivna värdet för **startTime**. <br> För UTC-tidszonen är format `'yyyy-MM-ddTHH:mm:ssZ'` , för annan tidszon, format `'yyyy-MM-ddTHH:mm:ss'` . |
-| **endTime** | Slutdatum och tidpunkt för utlösaren. Utlösaren körs inte efter angivet slutdatum och sluttid. Värdet för egenskapen kan inte ha passerat. Den här egenskapen är valfri.  <br> För UTC-tidszonen är format `'yyyy-MM-ddTHH:mm:ssZ'` , för annan tidszon, format `'yyyy-MM-ddTHH:mm:ss'` . |
-| **Informationen** | Tids zonen som utlösaren skapas i. Den här inställningen påverkar **StartTime**, slut **tid och schema**. **endTime** Se [lista över tids zoner som stöds](#time-zone-option) |
+| **Slut** | Slutdatum och tidpunkt för utlösaren. Utlösaren körs inte efter angivet slutdatum och sluttid. Värdet för egenskapen kan inte ha passerat. Den här egenskapen är valfri.  <br> För UTC-tidszonen är format `'yyyy-MM-ddTHH:mm:ssZ'` , för annan tidszon, format `'yyyy-MM-ddTHH:mm:ss'` . |
+| **Informationen** | Tids zonen som utlösaren skapas i. Den här inställningen påverkar **StartTime**, slut **tid och schema**.  Se [lista över tids zoner som stöds](#time-zone-option) |
 | **mönster** | Ett upprepningsobjekt som anger upprepningsregler för utlösaren. Upprepningsobjektet har stöd för elementen **frequency** (frekvens), **interval** (intervall), **endTime** (sluttid), **count** (antal) och **schedule** (schema). När du definierar ett upprepningsobjekt är elementet **frequency** obligatoriskt. De andra elementen är valfria. |
-| **frekvens** | Frekvensen som utlösaren ska upprepas med. Du kan använda värden som ”minute”, ”hour”, ”day”, ”week” och ”month”. |
+| **frequency** | Frekvensen som utlösaren ska upprepas med. Du kan använda värden som ”minute”, ”hour”, ”day”, ”week” och ”month”. |
 | **intervall** | Ett positivt heltal som anger intervallet för värdet för **frequency** och som avgör hur ofta utlösaren körs. Om **interval** till exempel är 3 och **frequency** är ”week” (vecka) upprepas utlösaren var tredje vecka. |
 | **Ange** | Upprepningsschemat för utlösaren. En utlösare med ett angivet värde för **frequency** ändrar sin upprepning baserat på ett upprepningsschema. Egenskapen **schedule** innehåller ändringar för upprepningen som baseras på minuter, timmar, veckodagar, dagar i månaden och veckonummer.
 
@@ -368,12 +364,12 @@ I följande tabell ges en översikt över de viktigaste schemaelementen relatera
 
 | JSON-egenskap | Typ | Obligatorisk | Standardvärde | Giltiga värden | Exempel |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **/St** | Sträng | Yes | Inget | ISO 8601-datum/tid | för UTC-tidszonen `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> för annan tidszon `"2013-01-09T09:30:00-08:00"` |
-| **Informationen** | Sträng | Yes | Inget | [Tids zons värden](#time-zone-option)  | `"UTC"` |
-| **mönster** | Objekt | Yes | Inget | Upprepningsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **intervall** | Antal | No | 1 | 1 till 1 000 | `"interval":10` |
-| **endTime** | Sträng | Yes | Inget | Ett datum/tid-värde som representerar en tidpunkt i framtiden. | för UTC-tidszonen `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> för annan tidszon `"endTime" : "2013-02-09T09:30:00-08:00"`|
-| **Ange** | Objekt | No | Inget | Schemaobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **/St** | Sträng | Ja | Inget | ISO 8601-datum/tid | för UTC-tidszonen `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> för annan tidszon `"2013-01-09T09:30:00-08:00"` |
+| **Informationen** | Sträng | Ja | Inget | [Tids zons värden](#time-zone-option)  | `"UTC"` |
+| **mönster** | Objekt | Ja | Inget | Upprepningsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **intervall** | Antal | Inga | 1 | 1 till 1 000 | `"interval":10` |
+| **Slut** | Sträng | Ja | Inget | Ett datum/tid-värde som representerar en tidpunkt i framtiden. | för UTC-tidszonen `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> för annan tidszon `"endTime" : "2013-02-09T09:30:00-08:00"`|
+| **Ange** | Objekt | Inga | Inget | Schemaobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="time-zone-option"></a>Tids zons alternativ
 
@@ -381,14 +377,14 @@ Här följer några tids zoner som stöds för schemalagda utlösare:
 
 | Tidszon | UTC-förskjutning (icke-sommar) | timeZone-värde | Observera sommar tid | Tids stämplings format |
 | :--- | :--- | :--- | :--- | :--- |
-| Koordinerad universell tid | 0 | `UTC` | No | `'yyyy-MM-ddTHH:mm:ssZ'`|
-| Pacific Time (PT) | -8 | `Pacific Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Central tid (CT) | −6 | `Central Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Eastern Time (ET) | -5 | `Eastern Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Greenwich Mean Time (GMT) | 0 | `GMT Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Central europeisk normal tid | +1 | `W. Europe Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
-| Indien, normal tid (IST) | + 5:30 | `India Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
-| Kina, normal tid | + 8 | `China Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
+| Koordinerad universell tid | 0 | `UTC` | Inga | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| Pacific Time (PT) | -8 | `Pacific Standard Time` | Ja | `'yyyy-MM-ddTHH:mm:ss'` |
+| Central tid (CT) | −6 | `Central Standard Time` | Ja | `'yyyy-MM-ddTHH:mm:ss'` |
+| Eastern Time (ET) | -5 | `Eastern Standard Time` | Ja | `'yyyy-MM-ddTHH:mm:ss'` |
+| Greenwich Mean Time (GMT) | 0 | `GMT Standard Time` | Ja | `'yyyy-MM-ddTHH:mm:ss'` |
+| Central europeisk normal tid | +1 | `W. Europe Standard Time` | Ja | `'yyyy-MM-ddTHH:mm:ss'` |
+| Indien, normal tid (IST) | + 5:30 | `India Standard Time` | Inga | `'yyyy-MM-ddTHH:mm:ss'` |
+| Kina, normal tid | + 8 | `China Standard Time` | Inga | `'yyyy-MM-ddTHH:mm:ss'` |
 
 Den här listan är ofullständig. För en fullständig lista över tids zons alternativ, utforska på sidan för att skapa Data Factory Portal [utlösare](#data-factory-ui)
 
@@ -418,7 +414,7 @@ Om du anger flera **schedule**-element utvärderas de från största till minsta
 I följande tabell beskrivs **schedule**-elementen i detalj:
 
 
-| JSON-element | Description | Giltiga värden |
+| JSON-element | Beskrivning | Giltiga värden |
 |:--- |:--- |:--- |
 | **fördröjning** | Minuter för den timme då utlösaren körs. | <ul><li>Integer</li><li>Heltalsmatris</li></ul>
 | **timmarna** | Timmar på dagen då utlösaren körs. | <ul><li>Integer</li><li>Heltalsmatris</li></ul> |
@@ -432,7 +428,7 @@ I det här avsnittet ges exempel på upprepningsscheman med fokus på objektet *
 
 I exemplen antas att värdet för **interval** är 1 och att värdet för **frequency** är giltigt enligt schemadefinitionen. Du kan till exempel inte ha ett **frekvens** värde för "Day" och har även en "monthDays"-ändring i **schemaobjektet** . De här begränsningarna tas upp i tabellen i föregående avsnitt.
 
-| Exempel | Description |
+| Exempel | Beskrivning |
 |:--- |:--- |
 | `{"hours":[5]}` | Kör kl. 05.00 varje dag. |
 | `{"minutes":[15], "hours":[5]}` | Kör kl. 05.15 varje dag. |

@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Azure Blob Storage till Azure SQL Database
 description: Den här självstudien innehåller stegvisa instruktioner för att kopiera data från Azure Blob Storage till Azure SQL Database.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2ec4a65f1001d6d1c93a23964d59972419f651e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513265"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380890"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopiera data från en Azure-blob till Azure SQL Database med Data Factory
 
@@ -38,13 +33,13 @@ I den här självstudiekursen används .NET SDK. Du kan använda andra metoder f
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * *Azure Storage konto*. Du kan använda blob-lagringen som *källa* för datalagringen. Om du inte har ett Azure Storage-konto kan du läsa [skapa ett allmänt lagrings konto](../storage/common/storage-account-create.md).
 * *Azure SQL Database*. Du använder databasen som *mottagare* för datalagringen. Om du inte har en databas i Azure SQL Database kan du läsa [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. Genom gången i den här artikeln används Visual Studio 2019.
 * *[Azure SDK för .net](/dotnet/azure/dotnet-tools)*.
-* *Azure Active Directory program*. Om du inte har ett Azure Active Directory program kan du läsa avsnittet [skapa ett Azure Active Directory program](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) i [How to: använda portalen för att skapa ett Azure AD-program](../active-directory/develop/howto-create-service-principal-portal.md). Kopiera följande värden för användning i senare steg: **program (klient) ID**, **autentiseringsnyckel**och **katalog (klient) ID**. Tilldela programmet till **deltagar** rollen genom att följa anvisningarna i samma artikel.
+* *Azure Active Directory program*. Om du inte har ett Azure Active Directory program kan du läsa avsnittet [skapa ett Azure Active Directory program](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) i [How to: använda portalen för att skapa ett Azure AD-program](../active-directory/develop/howto-create-service-principal-portal.md). Kopiera följande värden för användning i senare steg: **program (klient) ID**, **autentiseringsnyckel** och **katalog (klient) ID**. Tilldela programmet till **deltagar** rollen genom att följa anvisningarna i samma artikel.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Skapa en blob och en SQL-tabell
 
@@ -97,8 +92,8 @@ Skapa ett C# .NET-konsol program med Visual Studio.
 
 1. Öppna Visual Studio.
 2. I fönstret **Starta** väljer du **skapa ett nytt projekt**.
-3. I fönstret **skapa ett nytt projekt** väljer du C#-versionen av **konsol programmet (.NET Framework)** från listan över projekt typer. Välj **Nästa**.
-4. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** för *ADFv2Tutorial*. För **plats**bläddrar du till och/eller skapar katalogen för att spara projektet i. Välj sedan **Skapa**. Det nya projektet visas i Visual Studio IDE.
+3. I fönstret **skapa ett nytt projekt** väljer du C#-versionen av **konsol programmet (.NET Framework)** från listan över projekt typer. Välj sedan **Nästa**.
+4. I fönstret **Konfigurera ditt nya projekt** anger du ett **projekt namn** för *ADFv2Tutorial*. För **plats** bläddrar du till och/eller skapar katalogen för att spara projektet i. Välj sedan **Skapa**. Det nya projektet visas i Visual Studio IDE.
 
 ## <a name="install-nuget-packages"></a>Installera NuGet-paket
 
@@ -117,7 +112,7 @@ Installera sedan de biblioteks paket som krävs med hjälp av NuGet Package Mana
 
 Följ de här stegen för att skapa en Data Factory-klient.
 
-1. Öppna *program.cs*och skriv sedan över de befintliga `using` instruktionerna med följande kod för att lägga till referenser till namn områden.
+1. Öppna *program.cs* och skriv sedan över de befintliga `using` instruktionerna med följande kod för att lägga till referenser till namn områden.
 
     ```csharp
     using System;
@@ -133,7 +128,7 @@ Följ de här stegen för att skapa en Data Factory-klient.
 
 2. Lägg till följande kod i `Main` metoden som anger variabler. Ersätt 14 plats hållarna med dina egna värden.
 
-    Om du vill se en lista över Azure-regioner där Data Factory för närvarande är tillgängligt, se [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/). Välj **Products** **Sök**  >  **analys**  >  **Data Factory**under List rutan produkter. I list rutan **regioner** väljer du sedan de regioner som intresserar dig. Ett rutnät visas med tillgänglighets status för Data Factory produkter för dina valda regioner.
+    Om du vill se en lista över Azure-regioner där Data Factory för närvarande är tillgängligt, se [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/). Välj  **Sök**  >  **analys**  >  **Data Factory** under List rutan produkter. I list rutan **regioner** väljer du sedan de regioner som intresserar dig. Ett rutnät visas med tillgänglighets status för Data Factory produkter för dina valda regioner.
 
     > [!NOTE]
     > Data lager, till exempel Azure Storage och Azure SQL Database, och beräkningarna, till exempel HDInsight, som Data Factory användning kan finnas i andra regioner än vad du väljer för Data Factory.
@@ -432,7 +427,7 @@ Nu ska du infoga koden för att kontrol lera pipelinens körnings tillstånd och
 
 ## <a name="run-the-code"></a>Kör koden
 
-Bygg programmet genom att välja **build**  >  **build-lösning**. Starta sedan programmet genom att välja **Felsök**  >  **Starta fel sökning**och verifiera pipeline-körningen.
+Bygg programmet genom att välja **build**  >  **build-lösning**. Starta sedan programmet genom att välja **Felsök**  >  **Starta fel sökning** och verifiera pipeline-körningen.
 
 Konsolen skriver ut förloppet för skapandet av en datafabrik, den länkade tjänsten, datauppsättningar, pipeline och pipelinekörning. Sedan kontrolleras status för pipelinekörningen. Vänta tills du ser körnings informationen för kopierings aktiviteten med Läs-och skriv storlek för data. Sedan kan du använda verktyg som SQL Server Management Studio (SSMS) eller Visual Studio för att ansluta till mål Azure SQL Database och kontrol lera om mål tabellen som du har angett innehåller de kopierade data.
 

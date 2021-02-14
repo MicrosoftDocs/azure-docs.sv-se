@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537314"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097644"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Säkerhets översikt för Azure Kognitiv sökning
 
@@ -113,12 +113,6 @@ I Azure Kognitiv sökning används Resource Manager för att skapa eller ta bort
 
 > [!Note]
 > Med hjälp av Azure-omfattande mekanismer kan du låsa en prenumeration eller resurs för att förhindra oavsiktlig eller obehörig borttagning av Sök tjänsten av användare med administratörs behörighet. Mer information finns i [låsa resurser för att förhindra oväntad borttagning](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="threat-protection"></a>Hotskydd
-
-Åtkomst till innehåll i en Sök tjänst är enbart via frågor. Om Sök tjänsten är målet för en fråga, släpper systemet frågor när systemet närmar sig högsta kapacitet. 
-
-Begränsningen fungerar på olika sätt för olika API: er. API: er för frågor (Sök/föreslå/komplettera om) och indexerings-API: er begränsar dynamiskt baserat på belastningen på tjänsten. Index-API: er och service åtgärds-API: et har begränsningar för statisk begäran. Du kan granska gränserna för den statiska hastigheten i [begränsnings gränser](search-limits-quotas-capacity.md#throttling-limits). Mer information om begränsnings beteende finns i [övervaka fråge förfrågningar](search-monitor-queries.md).
 
 <a name="encryption"></a>
 

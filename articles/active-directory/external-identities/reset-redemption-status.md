@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc51a8af85b85db28265d1fca420a5b9b368b078
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: d843755847d074e00aec9ed2830cb873b6bb3382
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576935"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365420"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>Återställ inlösen status för en gäst användare
 
@@ -26,7 +26,7 @@ När en gäst användare har löst din inbjudan om B2B-samarbete kan det finnas 
 - Användaren har flyttat till ett annat företag, men de behöver fortfarande samma åtkomst till dina resurser
 - Användarens ansvars områden har skickats till en annan användare
 
-Om du vill hantera de här scenarierna tidigare var du tvungen att manuellt ta bort gäst användarens konto från katalogen och ombjuda användaren. Nu kan du använda PowerShell eller Microsoft Graph Inbjudnings-API för att återställa användarens inlösnings status och ombjuda användaren samtidigt som användarens objekt-ID, grupp medlemskap och app-tilldelningar behålls. När användaren löser in den nya inbjudan blir den nya e-postadressen användarens UPN. Användaren kan sedan logga in med det nya e-postmeddelandet eller ett e-postmeddelande som du har lagt till i `otherMails` egenskapen för objektet användare.
+Om du vill hantera de här scenarierna tidigare var du tvungen att manuellt ta bort gäst användarens konto från katalogen och ombjuda användaren. Nu kan du använda PowerShell eller Microsoft Graph Inbjudnings-API för att återställa användarens inlösnings status och ombjuda användaren samtidigt som användarens objekt-ID, grupp medlemskap och app-tilldelningar behålls. När användaren löser in den nya inbjudan ändras inte UPN-namnet för användaren, men användarens inloggnings namn ändras till det nya e-postmeddelandet. Användaren kan sedan logga in med det nya e-postmeddelandet eller ett e-postmeddelande som du har lagt till i `otherMails` egenskapen för objektet användare.
 
 ## <a name="use-powershell-to-reset-redemption-status"></a>Använd PowerShell för att återställa inlösen status
 

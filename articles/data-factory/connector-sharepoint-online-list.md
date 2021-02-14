@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från SharePoint Online-listan med Azure Data Factory
 description: Lär dig hur du kopierar data från SharePoint Online-listan till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474955"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393436"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopiera data från SharePoint Online-listan med Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -45,7 +40,7 @@ SharePoint-listans Online Connector använder tjänstens huvud namns autentiseri
 
     - Program-ID
     - Program nyckel
-    - Klientorganisations-ID
+    - Klient-ID:t
 
 2. Bevilja SharePoint Online-webbplats behörighet till ditt registrerade program: 
 
@@ -196,7 +191,7 @@ När du kopierar data från SharePoint Online-listan används följande mappning
 | Flera rader med text                          | Edm.String                                           | Sträng                                   |
 | Val (meny att välja från)                    | Edm.String                                           | Sträng                                   |
 | Tal (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
-| Valuta ($, ¥, €)                              | Edm.Double                                           | Double                                   |
+| Valuta ($, ¥, &euro; )                              | Edm.Double                                           | Double                                   |
 | Datum och tid                                   | EDM. DateTime                                         | DateTime                                 |
 | Uppslag (information som redan finns på webbplatsen)       | Edm.Int32                                            | Int32                                    |
 | Ja/Nej (kryss ruta)                              | Edm.Boolean                                          | Boolesk                                  |

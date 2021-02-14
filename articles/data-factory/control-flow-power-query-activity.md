@@ -1,19 +1,17 @@
 ---
 title: Power Query aktivitet i Azure Data Factory
 description: Lär dig hur du använder Power Query-aktivitet för data datatransformering-funktioner i en Data Factory pipeline
-services: data-factory
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: c0ad769ceba4fc3fa7f602d70188ea1942ca73aa
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: fc4f20db55f8e7e0b2f92cb8309c1c128b235089
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791702"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385463"
 ---
 # <a name="power-query-activity-in-data-factory"></a>Power Query-aktivitet i Data Factory
 

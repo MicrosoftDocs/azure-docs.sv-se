@@ -1,18 +1,18 @@
 ---
 title: Använda Azure/Service-Bus-köer i Java Script
-description: Lär dig hur du skriver ett JavaScript-program som använder den senaste för hands versionen av @azure/service-bus paketet för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
+description: Lär dig hur du skriver ett JavaScript-program som använder den senaste versionen av @azure/service-bus Package för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: ac24d84176f27170648545bc8044c5dcbc77781a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 27ffbafb92dd3269e38092b64e2b74f17ff9f09f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180021"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373087"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer (Java Script)
 I den här självstudien får du lära dig hur du använder [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketet i ett JavaScript-program för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
@@ -205,6 +205,7 @@ Välj kön på den här **översikts** sidan för att gå till sidan **Service B
 ## <a name="next-steps"></a>Nästa steg
 Se följande dokumentation och exempel: 
 
-- [Azure Service Bus klient bibliotek för JS](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). **JavaScript** -mappen har JavaScript-exempel och **typescript** har typescript-exempel. 
-- [dokumentation om Azure-Service Bus-referens](/javascript/api/overview/azure/service-bus)
+- [Azure Service Bus klient bibliotek för Java Script](https://www.npmjs.com/package/@azure/service-bus)
+- [JavaScript-exempel](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [TypeScript-exempel](https://docs.microsoft.com/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [Referensdokumentation för API](/javascript/api/overview/azure/service-bus)

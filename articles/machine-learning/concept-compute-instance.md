@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862145"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099803"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Vad är en Azure Machine Learning-beräkningsinstans?
 
@@ -32,7 +32,7 @@ För att Compute instance Jupyter-funktionen ska fungera kontrollerar du att Web
 
 En beräknings instans är en fullständigt hanterad molnbaserad arbets station som är optimerad för din Machine Learning Development-miljö. Det ger följande fördelar:
 
-|Viktiga fördelar|Beskrivning|
+|Viktiga fördelar|Description|
 |----|----|
 |Produktivitet|Du kan bygga och distribuera modeller med integrerade antecknings böcker och följande verktyg i Azure Machine Learning Studio:<br/>– Jupyter<br/>- JupyterLab<br/>-RStudio (för hands version)<br/>Compute-instansen är helt integrerad med Azure Machine Learning-arbetsyta och Studio. Du kan dela antecknings böcker och data med andra data forskare på arbets ytan.<br/> Du kan också använda [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) med beräknings instanser.
 |Hanterad & säker|Minska din säkerhets storlek och Lägg till efterlevnad med företagets säkerhets krav. Beräknings instanser ger robusta hanterings principer och säkra nätverkskonfigurationer som:<br/><br/>– Autoetablering från Resource Manager-mallar eller Azure Machine Learning SDK<br/>- [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Stöd för virtuella nätverk](./how-to-secure-training-vnet.md#compute-instance)<br/>– SSH-princip för att aktivera/inaktivera SSH-åtkomst<br/>TLS 1,2 aktiverat |
@@ -51,7 +51,7 @@ Med Azure Machine Learning Compute-instansen kan du skapa, träna och distribuer
 
 Du kan köra Jupyter-anteckningsböcker i [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) med beräknings instanser som fjärrserver utan SSH behövs. Du kan också aktivera VS-kod integrering via [fjärr-SSH-tillägg](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/).
 
-Du kan [installera paket](how-to-create-manage-compute-instance.md#install-packages) och [lägga till kernels](how-to-create-manage-compute-instance.md#add-new-kernels) i din beräknings instans.  
+Du kan [installera paket](how-to-access-terminal.md#install-packages) och [lägga till kernels](how-to-access-terminal.md#add-new-kernels) i din beräknings instans.  
 
 Följande verktyg och miljöer är redan installerade på beräknings instansen: 
 
@@ -77,7 +77,7 @@ Följande verktyg och miljöer är redan installerade på beräknings instansen:
 |Anaconda Python||
 |Jupyter och tillägg||
 |Jupyterlab och tillägg||
-[Azure Machine Learning-SDK för Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>från PyPI|Innehåller de flesta av de azureml extra paketen.  Om du vill se hela listan [öppnar du ett terminalfönster på beräknings instansen](how-to-run-jupyter-notebooks.md#terminal) och kör <br/> `conda list -n azureml_py36 azureml*` |
+[Azure Machine Learning-SDK för Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>från PyPI|Innehåller de flesta av de azureml extra paketen.  Om du vill se hela listan [öppnar du ett terminalfönster på beräknings instansen](how-to-access-terminal.md) och kör <br/> `conda list -n azureml_py36 azureml*` |
 |Andra PyPI-paket|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-paket|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Djup inlärnings paket|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -124,18 +124,18 @@ Med [Azure RBAC](../role-based-access-control/overview.md) kan du styra vilka an
 
 De här åtgärderna kan styras av Azure RBAC:
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/läsning*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/skrivning*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/ta bort*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/start/åtgärd*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/stoppa/åtgärd*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/omstart/åtgärd*
 
 Om du vill skapa en beräknings instans måste du ha behörighet för följande åtgärder:
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/skrivning*
-* *Microsoft. MachineLearningServices/arbets ytor/checkComputeNameAvailability/åtgärd*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>Skapa en beräknings instans
+### <a name="create-a-compute-instance"></a><a name="create"></a>Skapa en beräkningsinstans
 
 I arbets ytan i Azure Machine Learning Studio [skapar du en ny beräknings instans](how-to-create-attach-compute-studio.md#compute-instance) från antingen **Compute** -avsnittet eller i avsnittet **antecknings böcker** när du är redo att köra en av dina antecknings böcker. 
 

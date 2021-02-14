@@ -4,12 +4,12 @@ description: Aktivera automatisk skalning i en molnbaserad pool för att dynamis
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95737300"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381434"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Skapa en automatisk formel för skalning av Compute-noder i en batch-pool
 
@@ -128,6 +128,7 @@ Du kan hämta värdet för de här tjänstedefinierade variablerna för att gör
 | $PendingTasks |Summan av $ActiveTasks och $RunningTasks. |
 | $SucceededTasks |Antalet uppgifter som har slutförts. |
 | $FailedTasks |Antalet uppgifter som misslyckades. |
+| $TaskSlotsPerNode |Antalet aktivitets platser som kan användas för att köra samtidiga aktiviteter på en enskild Compute-nod i poolen. |
 | $CurrentDedicatedNodes |Aktuellt antal dedikerade datornoder. |
 | $CurrentLowPriorityNodes |Det aktuella antalet Compute-noder med låg prioritet, inklusive eventuella noder som har blockerats. |
 | $PreemptedNodeCount | Antalet noder i poolen som är i ett väntetillstånd-tillstånd. |
@@ -166,7 +167,7 @@ Automatiska skalnings formler stöder följande typer:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Åtgärder
+## <a name="operations"></a>Operations
 
 De här åtgärderna tillåts för de typer som anges i föregående avsnitt.
 
@@ -290,7 +291,7 @@ Följande metoder kan användas för att hämta exempel data om tjänstedefinier
 | GetSamplePeriod() |Returnerar den period med exempel som togs i en historisk exempel data uppsättning. |
 | Count () |Returnerar det totala antalet exempel i mått historiken. |
 | HistoryBeginTime() |Returnerar tidstämpeln för det äldsta tillgängliga data exemplet för måttet. |
-| GetSamplePercent() |Returnerar procent andelen exempel som är tillgängliga under ett angivet tidsintervall. Exempelvis `doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`. Eftersom `GetSample` metoden Miss lyckas om procent andelen av exempel som returneras är mindre än den `samplePercent` angivna kan du använda `GetSamplePercent` metoden för att kontrol lera först. Sedan kan du utföra en alternativ åtgärd om det inte finns tillräckligt många exempel, utan att stoppa den automatiska skalnings utvärderingen. |
+| GetSamplePercent() |Returnerar procent andelen exempel som är tillgängliga under ett angivet tidsintervall. Till exempel `doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`. Eftersom `GetSample` metoden Miss lyckas om procent andelen av exempel som returneras är mindre än den `samplePercent` angivna kan du använda `GetSamplePercent` metoden för att kontrol lera först. Sedan kan du utföra en alternativ åtgärd om det inte finns tillräckligt många exempel, utan att stoppa den automatiska skalnings utvärderingen. |
 
 ### <a name="samples"></a>Exempel
 

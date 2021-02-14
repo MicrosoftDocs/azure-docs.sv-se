@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 18d944cd2b3bfde1a0ee5fc53e83e4016b11b01f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476152"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379224"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL enskild server
 
@@ -69,7 +69,7 @@ Förutom den interna autentiseringen har tjänsten för enskild server stöd fö
 
 [Gransknings loggning]() (i för hands version) är tillgänglig för att spåra alla aktiviteter på databas nivå.
 
-Tjänsten för enskild server är en framställning av alla branschledande certifieringar som FedRAMP, HIPAA, PCI DSS. Besök [Azure Säkerhetscenter]() för information om Azures plattformssäkerhet.
+Tjänsten enskild server är kompatibel med alla branschledande certifieringar som FedRAMP, HIPAA, PCI DSS. Besök [Azure Säkerhetscenter]() för information om Azures plattformssäkerhet.
 
 Mer information om Azure Database for PostgreSQL säkerhetsfunktioner finns i [säkerhets översikten]().
 

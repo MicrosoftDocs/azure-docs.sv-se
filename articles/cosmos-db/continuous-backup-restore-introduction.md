@@ -8,12 +8,12 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: 036f086c88267f6a20da51746ca875c48a248712
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538864"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393147"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Kontinuerlig säkerhets kopiering med funktionen för återställning av en viss tidpunkt (för hands version) i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,7 +33,7 @@ Azure Cosmos DB utför säkerhets kopiering av data i bakgrunden utan att behöv
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" alt-text="Azure Cosmos DB säkerhets kopiering av data till Azure-Blob Storage." lightbox="./media/continuous-backup-restore-introduction/continuous-backup-restore-blob-storage.png" border="false":::
 
-Det tillgängliga tidsfönstret för återställning (kallas även kvarhållningsperiod) är det lägre värdet av följande två: "30 dagar tillbaka tidigare från nu" eller "upp till resursens skapelse tid". Tidpunkten för återställning kan vara valfri tidsstämpel inom kvarhållningsperioden.
+Det tillgängliga tidsfönstret för återställning (kallas även kvarhållningsperiod) är det lägre värdet av följande två: *30 dagar tillbaka tidigare från nu* eller *upp till resursens skapande tid*. Tidpunkten för återställning kan vara valfri tidsstämpel inom kvarhållningsperioden.
 
 I offentlig för hands version kan du återställa Azure Cosmos DB-kontot för SQL API eller MongoDB-innehåll i tid till ett annat konto med [Azure Portal](continuous-backup-restore-portal.md), [Azure Command Line Interface](continuous-backup-restore-command-line.md) (az CLI), [Azure PowerShell](continuous-backup-restore-powershell.md)eller [Azure Resource Manager](continuous-backup-restore-template.md).
 
@@ -59,17 +59,18 @@ Du kan lägga till dessa konfigurationer till det återställda kontot när åte
 
 ## <a name="restore-scenarios"></a>Återställningsscenarier
 
-Här följer några av de viktiga scenarier som åtgärdas med funktionen för återställning av tidpunkter. Scenarier [a] till [c] visar hur du utlöser en återställning om tidsstämpeln för återställning är känd i förväg. Det kan dock finnas scenarier där du inte vet den exakta tiden för oavsiktlig borttagning eller skada. Scenarier [d] och [e] visar hur du _identifierar_ tidsstämpeln för återställning med hjälp av de nya API: erna för händelse-feed på återställas-databasen eller behållare.
+Här följer några av de viktiga scenarier som åtgärdas med funktionen för återställning av tidpunkter. Scenarier [a] till [c] visar hur du utlöser en återställning om tidsstämpeln för återställning är känd i förväg.
+Det kan dock finnas scenarier där du inte vet den exakta tiden för oavsiktlig borttagning eller skada. Scenarier [d] och [e] visar hur du _identifierar_ tidsstämpeln för återställning med hjälp av de nya API: erna för händelse-feed på återställas-databasen eller behållare.
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="Livs cykel händelser med tidsstämplar för ett återställas-konto." lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. **Återställ borttaget konto** – alla borttagna konton som du kan återställa visas från rutan **Återställ** . Till exempel om "konto A" tas bort vid tidsstämpeln T3. I det här fallet är tidsstämpeln precis före T3, plats, mål konto namn, resurs grupp och mål konto namn tillräckligt för att återställa från [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore).  
+a. **Återställ borttaget konto** – alla borttagna konton som du kan återställa visas från rutan **Återställ** . Till exempel om *konto A* tas bort vid tidsstämpeln T3. I det här fallet är tidsstämpeln precis före T3, plats, mål konto namn, resurs grupp och mål konto namn tillräckligt för att återställa från [Azure Portal](continuous-backup-restore-portal.md#restore-deleted-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore).  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="Livs cykel händelser med tidsstämplar för en återställas-databas och-behållare." lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. **Återställ data för ett konto i en viss region** – till exempel om "konto a" finns i två regioner "östra USA" och "västra USA" vid tidsstämpel T3. Om du behöver en kopia av konto A i "västra USA" kan du göra en återställning vid ett tillfälle från [Azure Portal](continuous-backup-restore-portal.md), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore) med västra USA som målplats.
+b. **Återställ data för ett konto i en viss region** – till exempel om *konto a* finns i två regioner *östra USA* och *västra USA* vid tidsstämpeln T3. Om du behöver en kopia av kontot A i *västra USA* kan du göra en tidpunkts återställning från [Azure Portal](continuous-backup-restore-portal.md), [POWERSHELL](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore) med västra USA som mål plats.
 
-c. **Återställ från en oavsiktlig Skriv-eller borttagnings åtgärd i en behållare med en känd Restore-tidsstämpel** – till exempel om du **vet** att innehållet i "container 1" i "databas 1" ändrades av misstag vid tidsstämpeln T3. Du kan göra en återställning av en tidpunkt från [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore) till ett annat konto vid tidsstämpeln T3 för att återställa det önskade tillståndet för behållaren.
+c. **Återställ från en oavsiktlig Skriv-eller borttagnings åtgärd i en behållare med en känd Restore-tidsstämpel** – till exempel om du **vet** att innehållet i *container 1* i *databas 1* har ändrats av misstag vid tidsstämpel T3. Du kan göra en återställning av en tidpunkt från [Azure Portal](continuous-backup-restore-portal.md#restore-live-account), [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)eller [CLI](continuous-backup-restore-command-line.md#trigger-restore) till ett annat konto vid tidsstämpeln T3 för att återställa det önskade tillståndet för behållaren.
 
 d. **Återställ ett konto till en tidigare tidpunkt innan den oavsiktliga borttagningen av databasen** – i [Azure Portal](continuous-backup-restore-portal.md#restore-live-account)kan du använda fönstret för händelse inmatning för att avgöra när en databas har tagits bort och hitta återställnings tiden. På samma sätt kan du med [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) och [PowerShell](continuous-backup-restore-powershell.md#trigger-restore)identifiera händelsen borttagning av databasen genom att räkna upp flödet för databas händelser och sedan utlösa kommandot Restore med de obligatoriska parametrarna.
 
@@ -81,7 +82,7 @@ Med Azure Cosmos DB kan du isolera och begränsa återställnings behörigheter 
 
 ## <a name="pricing"></a><a id="continuous-backup-pricing"></a>Prissättning
 
-Azure Cosmos DB konton som har kontinuerlig säkerhets kopiering aktiverat debiteras ytterligare en månatlig avgift för att "lagra säkerhets kopian" och "återställa dina data". Restore Cost läggs till varje gång återställnings åtgärden initieras. Om du konfigurerar ett konto med kontinuerlig säkerhets kopiering men inte återställer data, ingår bara lagrings kostnaden för säkerhets kopiering på fakturan.
+Azure Cosmos DB konton som har kontinuerlig säkerhets kopiering aktiverat debiteras ytterligare en månatlig avgift för att *lagra säkerhets kopian* och *återställa dina data*. Restore Cost läggs till varje gång återställnings åtgärden initieras. Om du konfigurerar ett konto med kontinuerlig säkerhets kopiering men inte återställer data, ingår bara lagrings kostnaden för säkerhets kopiering på fakturan.
 
 Följande exempel baseras på priset för ett Azure Cosmos-konto som distribueras i en icke-myndighets region i USA. Prissättningen och beräkningen kan variera beroende på vilken region du använder, se [sidan Azure Cosmos DB prissättning](https://azure.microsoft.com/pricing/details/cosmos-db/) för den senaste pris informationen.
 
@@ -103,7 +104,7 @@ Om du till exempel har 1 – TB data i två regioner gör du följande:
 
 För närvarande är tidpunkten för att återställa till en offentlig för hands version och har följande begränsningar:
 
-* Endast Azure Cosmos DB-API: er för SQL och MongoDB stöds för kontinuerlig säkerhets kopiering. Cassandra-, Table-och Gremlin-API: er stöds inte ännu.
+* Det är bara Azure Cosmos DB-API:er för SQL och MongoDB som stöds för kontinuerlig säkerhetskopiering. API:er för Cassandra, Table och Gremlin stöds ännu inte.
 
 * Det går inte att konvertera ett befintligt konto med standard principen för periodisk säkerhets kopiering till att använda kontinuerligt säkerhets kopierings läge.
 
@@ -115,23 +116,23 @@ För närvarande är tidpunkten för att återställa till en offentlig för han
 
 * Konton med Synapse-länk aktiverat stöds inte.
 
-* Det återställda kontot skapas i samma region där ditt käll konto finns. Det går inte att återställa ett konto till en region där det inte finns något käll konto.
+* Det återställda kontot skapas i samma region där källkontot finns. Det går inte att återställa ett konto till en region där det inte finns något källkonto.
 
 * Återställnings fönstret är bara 30 dagar och kan inte ändras.
 
-* Säkerhets kopieringarna är inte automatiskt geo-katastrofer. Du måste uttryckligen lägga till en annan region för att få återhämtning för kontot och säkerhets kopian.
+* Säkerhetskopieringarna är inte automatiskt skyddade mot geohaverier. Du måste uttryckligen lägga till en annan region för att ha återhämtning av kontot och säkerhetskopian.
 
 * När en återställning pågår ska du inte ändra eller ta bort principer för identitets-och åtkomst hantering (IAM) som ger behörighet för kontot eller ändra eventuella VNET-och brand Väggs konfiguration.
 
-* Azure Cosmos DB-API för SQL-eller MongoDB-konton som skapar ett unikt index när behållaren har skapats stöds inte för kontinuerlig säkerhets kopiering. Endast behållare som skapar unikt index som en del av den första behållaren för att skapa behållare stöds. För MongoDB-konton skapar du ett unikt index med hjälp av [tilläggs kommandon](mongodb-custom-commands.md).
+* Azure Cosmos DB-API:et för SQL- eller MongoDB-konton som skapar ett unikt index när containern har skapats, stöds inte för kontinuerlig säkerhetskopiering. Det är bara containrar som skapar ett unikt index när den initiala containern skapas som stöds. För MongoDB-konton skapar du ett unikt index med hjälp av [tilläggs kommandon](mongodb-custom-commands.md).
 
-* Funktionen för återställning av en viss tidpunkt återställs alltid till ett nytt Azure Cosmos-konto. Det finns för närvarande inte stöd för att återställa till ett befintligt konto. Om du är intresse rad av att ge feedback om återställning på plats kan du kontakta Azure Cosmos DB-teamet via din konto representant eller [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+* Funktionen för återställning till tidpunkt återställer alltid till ett nytt Azure Cosmos-konto. Det finns för närvarande inte stöd för att återställa till ett befintligt konto. Om du är intresse rad av att ge feedback om återställning på plats kan du kontakta Azure Cosmos DB-teamet via din konto representant eller [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 * Alla nya API: er som exponeras för List `RestorableDatabaseAccount` ,,, kan `RestorableSqlDatabases` `RestorableSqlContainer` `RestorableMongodbDatabase` `RestorableMongodbCollection` ändras när funktionen är i för hands version.
 
 * Efter återställning är det möjligt att det konsekventa indexet kan återskapas för vissa samlingar. Du kan kontrol lera status för återställnings åtgärden via egenskapen [IndexTransformationProgress](how-to-manage-indexing-policy.md) .
 
-* Med återställnings processen återställs alla egenskaper för en behållare, inklusive dess TTL-konfiguration. Därför är det möjligt att data som återställs omedelbart tas bort om du har konfigurerat det sättet. För att förhindra denna situation måste Restore-tidsstämpeln vara innan TTL-egenskaperna lades till i behållaren.
+* Med återställningsprocessen återställs alla egenskaper för en container, inklusive dess TTL-konfiguration. Därför är det möjligt att data som har återställts tas bort omedelbart om du har konfigurerat detta. För att förhindra detta måste tidsstämpeln för återställningen vara innan TTL-egenskaperna lades till i containern.
 
 ## <a name="next-steps"></a>Nästa steg
 

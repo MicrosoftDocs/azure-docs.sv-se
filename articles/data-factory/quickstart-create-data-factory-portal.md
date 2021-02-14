@@ -1,21 +1,17 @@
 ---
 title: Skapa en Azure-datafabrik med hjälp av Azure Data Factory gränssnittet
 description: Skapa en datafabrik med en pipeline som en kopierar data från en plats till en annan i Azure Blob Storage.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632757"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372798"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snabbstart: Skapa en datafabrik via gränssnittet i Azure Data Factory 
 
@@ -39,7 +35,7 @@ Om du tittar på den här videon får du hjälp med att förstå Data Factory-an
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
 1. Starta webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-1. Öppna [Azure-portalen](https://portal.azure.com). 
+1. Gå till [Azure-portalen](https://portal.azure.com). 
 1. I menyn i Azure-portalen väljer du **Skapa en resurs**.
 1. Välj **integration** och välj sedan **Data Factory**. 
    

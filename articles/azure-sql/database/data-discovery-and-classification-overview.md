@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/11/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 254d69c723a97d9007a1f6c0f0eb7b34bcfe3c4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392773"
 ---
 # <a name="data-discovery--classification"></a>Data Discovery & Classification
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -183,6 +183,13 @@ Du kan använda REST API för att program mässigt hantera klassificeringar och 
 - [Get](/rest/api/sql/sensitivitylabels/get): hämtar känslighets etiketten för den angivna kolumnen.
 - [Lista aktuell efter databas](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): hämtar de aktuella känslighets etiketterna för den angivna databasen.
 - [Lista rekommenderas av databasen](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): hämtar de rekommenderade känslighets etiketterna för den angivna databasen.
+
+
+## <a name="faq---advanced-classification-capabilities"></a>Vanliga frågor och svar om avancerade funktioner
+
+**Fråga**: kommer [Azure AVDELNINGENS kontroll](https://docs.microsoft.com/azure/purview/overview) att ersätta SQL data Discovery & klassificering eller kommer att inaktive ras för SQL data Discovery &-klassificeringen snart?
+**Svar**: vi fortsätter att stödja SQL Data Discovery & klassificering och du uppmanas att använda [Azure-avdelningens kontroll](https://docs.microsoft.com/azure/purview/overview) som har rikare funktioner för att driva avancerade klassificerings funktioner och data styrning. Om vi bestämmer sig för att dra tillbaka alla tjänster, funktioner, API eller SKU: er, får du förhands meddelande, inklusive en migrering eller över gångs Sök väg. Läs mer om Microsofts livs cykel principer här.
+
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Nästa steg
 

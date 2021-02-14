@@ -7,13 +7,13 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 9fb76c5c96795b8092c86e22acbab4ea5963b42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/09/2021
+ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90971636"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390869"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Stegvis anrikning och cachelagring i Azure Kognitiv sökning
 
@@ -23,7 +23,7 @@ ms.locfileid: "90971636"
 
 *Stegvis anrikning* är en funktion som är riktad mot [färdighetsuppsättningar](cognitive-search-working-with-skillsets.md). Den använder Azure Storage för att spara bearbetnings resultatet som släpps av en pipeline-pipeline för åter användning i framtida indexerare körs. När det är möjligt återanvänder indexeraren alla cachelagrade utdata som fortfarande är giltiga. 
 
-Den stegvisa berikningen bevarar inte bara din monetära investering i bearbetningen (särskilt OCR-bearbetning och bild bearbetning), men det gör också ett mer effektivt system. När strukturer och innehåll cachelagras kan en indexerare avgöra vilka kunskaper som har ändrats och bara köra de som har ändrats, samt eventuella underordnade beroende kunskaper. 
+Den stegvisa berikningen bevarar inte bara din monetära investering i bearbetningen (särskilt OCR-bearbetning och bild bearbetning), men det gör också ett mer effektivt system. 
 
 Ett arbets flöde som använder stegvis cachelagring innehåller följande steg:
 
@@ -95,7 +95,7 @@ Genom att ange den här parametern ser du till att endast uppdateringar av färd
 I följande exempel visas en uppdatering färdigheter-begäran med parametern:
 
 ```http
-PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
+PUT https://[search service].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
 ### <a name="bypass-data-source-validation-checks"></a>Kringgå verifierings kontroller för data Källa
@@ -103,7 +103,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 De flesta ändringar av en data käll definition kommer att ogiltig förklara cachen. Men för scenarier där du vet att en ändring inte ska göra detta ska du inte göra en ändring i cachen, till exempel ändra en anslutnings sträng eller rotera nyckeln på lagrings kontot – Lägg till `ignoreResetRequirement` parametern i uppdateringen av data källan. Om du anger den här parametern så att `true` incheckning kan gå igenom, utan att utlösa ett återställnings villkor som skulle resultera i att alla objekt byggs om och fylls från från början.
 
 ```http
-PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2020-06-30-Preview&ignoreResetRequirement=true
+PUT https://[search service].search.windows.net/datasources/[data source name]?api-version=2020-06-30-Preview&ignoreResetRequirement=true
 ```
 
 ### <a name="force-skillset-evaluation"></a>Framtvinga färdigheter-utvärdering
@@ -111,6 +111,10 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 Syftet med cachen är att undvika onödig bearbetning, men vi antar att du gör en ändring i en färdighet som indexeraren inte identifierar (till exempel ändra något i extern kod, till exempel en anpassad färdighet).
 
 I det här fallet kan du använda [återställnings kunskaper](/rest/api/searchservice/preview-api/reset-skills) för att tvinga ombearbetning av en viss färdighet, inklusive eventuella efterföljande kunskaper som har ett beroende på den aktuella färdighetens utdata. Detta API accepterar en POST-begäran med en lista med kunskaper som ska ogiltig förklaras och markeras för ombearbetning. När du har återställt färdigheter kan du köra indexeraren för att anropa pipelinen.
+
+### <a name="reset-documents"></a>Återställ dokument
+
+[Om du återställer en indexerare](/rest/api/searchservice/reset-indexer) kommer alla dokument i Sök sökkorpus att ombearbetas. I scenarier där bara några få dokument behöver ombearbetas och data källan inte kan uppdateras använder du [Återställ dokument (för hands version)](/rest/api/searchservice/preview-api/reset-documents) för att tvinga ombearbetning av vissa dokument. När ett dokument återställs, ogiltig förklaras cachen för dokumentet och dokumentet bearbetas igen genom att läsa det från data källan. Mer information finns i [köra eller återställa indexerare, kunskaper och dokument](search-howto-run-reset-indexers.md).
 
 ## <a name="change-detection"></a>Ändringsidentifiering
 

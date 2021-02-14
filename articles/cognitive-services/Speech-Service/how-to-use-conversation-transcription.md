@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: ae3d7b329c55ce0be101cee73e1fc7674a2d75aa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 48cd4c7996eabad7293aa2429c76b8943e0ab3da
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026547"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368480"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Kom igång med konversations avskrift i real tid
 
@@ -25,7 +25,7 @@ Talet SDK: s **ConversationTranscriber** -API gör att du kan skriva över möte
 ## <a name="limitations"></a>Begränsningar
 
 * Endast tillgängligt i följande prenumerations regioner: `centralus` , `eastasia` , `eastus` , `westeurope`
-* Kräver en 7-MIC cirkulär multi-Microphone-matris med en uppspelnings referens ström. Mikrofonens matris ska uppfylla [vår specifikation](./speech-devices-sdk-microphone.md).
+* Kräver en 7-MIC cirkulär multi-Microphone-matris. Mikrofonens matris ska uppfylla [vår specifikation](./speech-devices-sdk-microphone.md).
 * [Tal enheternas SDK](speech-devices-sdk.md) tillhandahåller lämpliga enheter och en exempel-app som demonstrerar konversations avskrift.
 
 ## <a name="prerequisites"></a>Förutsättningar

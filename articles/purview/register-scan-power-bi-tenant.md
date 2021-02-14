@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 78187b2cbb6603a0ae0df55465b9a5ce5e7dca7f
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: a4883bfce2469af0ee8bcc34933f94b0b5329959
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807554"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518087"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
 
@@ -23,7 +23,7 @@ Den här artikeln visar hur du använder Azure avdelningens kontroll-portalen f�
 
 ## <a name="create-a-security-group-for-permissions"></a>Skapa en säkerhets grupp för behörigheter
 
-Om du vill konfigurera autentisering skapar du en säkerhets grupp och lägger till katalogens hanterade identitet i den.
+Skapa en säkerhets grupp och Lägg till den avdelningens kontroll-hanterade identiteten för att konfigurera autentisering.
 
 1. Sök efter **Azure Active Directory** i [Azure Portal](https://portal.azure.com).
 1. Skapa en ny säkerhets grupp i Azure Active Directory genom att följa [skapa en grundläggande grupp och lägga till medlemmar med Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -35,11 +35,11 @@ Om du vill konfigurera autentisering skapar du en säkerhets grupp och lägger t
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Typ av säkerhets grupp":::
 
-1. Lägg till din katalogs hanterade identitet i den här säkerhets gruppen. Välj **medlemmar** och välj sedan **+ Lägg till medlemmar**.
+1. Lägg till din avdelningens kontroll-hanterade identitet i den här säkerhets gruppen. Välj **medlemmar** och välj sedan **+ Lägg till medlemmar**.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="Lägg till katalogens hanterade instans i gruppen.":::
 
-1. Sök efter din katalog och markera den.
+1. Sök efter din avdelningens kontroll-hanterade identitet och markera den.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="Lägg till katalog genom att söka efter den":::
 
@@ -61,14 +61,14 @@ Om du vill konfigurera autentisering skapar du en säkerhets grupp och lägger t
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild som visar hur du tillåter tjänstens huvud namn för att få skrivskyddade Power BI administrations-API-behörigheter":::
 
     > [!Caution]
-    > När du tillåter säkerhets gruppen som du skapade (som har din hanterade identitet för data katalogen som medlem) att använda skrivskyddade Power BI administrations-API: er kan du också få åtkomst till metadata (t. ex. instrument panel och rapport namn, ägare, beskrivningar osv.) för alla dina Power BI artefakter i den här klienten. När metadata har hämtats till Azure-avdelningens kontroll, avdelningens kontroll-behörigheter, inte Power BI behörigheter, avgör vem som kan se dessa metadata.
+    > När du tillåter säkerhets gruppen som du skapade (som har din avdelningens kontroll-hanterade identitet som medlem) att använda skrivskyddade Power BI administrations-API: er kan du också få åtkomst till metadata (t. ex. instrument panel och rapport namn, ägare, beskrivningar osv.) för alla dina Power BI artefakter i den här klienten. När metadata har hämtats till Azure-avdelningens kontroll, avdelningens kontroll-behörigheter, inte Power BI behörigheter, avgör vem som kan se dessa metadata.
 
     > [!Note]
     > Du kan ta bort säkerhets gruppen från dina inställningar för utvecklare, men de metadata som tidigare extraheras tas inte bort från avdelningens kontroll-kontot. Du kan ta bort den separat, om du vill.
 
 ## <a name="register-your-power-bi-and-set-up-a-scan"></a>Registrera din Power BI och konfigurera en sökning
 
-Nu när du har gett katalog behörighet att ansluta till administrations-API: t för din Power BI-klient kan du konfigurera din genomsökning från katalog portalen.
+Nu när du har fått avdelningens kontroll-hanterade identitets behörigheter för att ansluta till administrations-API: t för din Power BI-klient kan du konfigurera din sökning från Azure avdelningens kontroll Studio.
 
 Lägg först till en särskild funktions flagga till din avdelningens kontroll-URL 
 

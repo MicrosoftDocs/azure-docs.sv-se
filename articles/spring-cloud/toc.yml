@@ -10,7 +10,7 @@
   items:
     - name: Lansera din första app
       href: spring-cloud-quickstart.md
-    - name: Skapa och köra mikrotjänster
+    - name: Skapa och kör mikrotjänster
       expanded: true
       items:
         - name: Introduktion till exempelappen
@@ -63,7 +63,7 @@
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: Konfigurera en konfigurationsserver
           href: spring-cloud-tutorial-config-server.md
-        - name: Aktivera tjänstregistrering
+        - name: Aktivera tjänst registrering
           href: spring-cloud-service-registration.md
     - name: Distribuera
       items:
@@ -157,7 +157,11 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
-- name: DevOps-distribuering
+- name: Arkitektur
+  items:
+    - name: Referensarkitektur
+      href: spring-cloud-reference-architecture.md
+- name: DevOps-distribution
   items:
     - name: CI/CD med Azure DevOps
       href: spring-cloud-howto-cicd.md

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574439"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393861"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Felsöka prestanda problem i Azure-filresurser
 
@@ -22,7 +22,7 @@ Den här artikeln innehåller några vanliga problem som rör Azure-filresurser.
 
 ### <a name="cause-1-share-was-throttled"></a>Orsak 1: resursen har begränsats
 
-Begär Anden begränsas när i/O-åtgärder per sekund (IOPS), ingångs-eller utgående gränser för en fil resurs nås. Information om begränsningar för fil resurser för standard och Premium finns i [fil resurs-och fil skalnings mål](./storage-files-scale-targets.md#file-share-and-file-scale-targets).
+Begär Anden begränsas när i/O-åtgärder per sekund (IOPS), ingångs-eller utgående gränser för en fil resurs nås. Information om begränsningar för fil resurser för standard och Premium finns i [fil resurs-och fil skalnings mål](./storage-files-scale-targets.md#azure-file-share-scale-targets).
 
 Du kan kontrol lera om din resurs har begränsats genom att komma åt och använda Azure-mått i portalen.
 

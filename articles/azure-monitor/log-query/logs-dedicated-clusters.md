@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: bcd89274b1f2ba7b31a10a481e3d73901eac2c60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954757"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375195"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -84,7 +84,7 @@ När du har skapat en *kluster* resurs kan du redigera ytterligare egenskaper so
 Du kan ha upp till 2 aktiva kluster per prenumeration per region. Om klustret tas bort är det fortfarande reserverat i 14 dagar. Du kan ha upp till 4 reserverade kluster per prenumeration per region (aktiv eller nyligen borttagen).
 
 > [!WARNING]
-> Skapande av kluster utlöser resursallokering och etablering. Den här åtgärden kan ta upp till en timme att slutföra. Vi rekommenderar att du kör det asynkront.
+> Skapande av kluster utlöser resursallokering och etablering. Det kan ta några timmar att slutföra den här åtgärden. Vi rekommenderar att du kör det asynkront.
 
 Användar kontot som skapar klustren måste ha standard behörigheten för Azure-resurser: `Microsoft.Resources/deployments/*` och kluster Skriv behörighet `Microsoft.OperationalInsights/clusters/write` genom att ha i deras roll tilldelningar den här åtgärden eller `Microsoft.OperationalInsights/*` eller `*/write` .
 

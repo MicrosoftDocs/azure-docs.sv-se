@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d380b9d6a20cbe28a8fc4b64179437cd31fd2937
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979305"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390366"
 ---
 # <a name="soft-delete-for-blobs"></a>Mjuk borttagning för blobar
 
@@ -83,11 +83,11 @@ När **Delete BLOB** anropas på en bas-BLOB (en blob som inte är en ögonblick
 > [!NOTE]  
 > När en mjuk borttagen BLOB skrivs över skapas en mjuk raderad ögonblicks bild av blobens tillstånd innan Skriv åtgärden genereras automatiskt. Den nya blobben ärver den överskrivna blobens nivå.
 
-Med mjuk borttagning sparas inte dina data i fall då behållaren eller kontot tas bort, eller när BLOB-metadata och blob-egenskaper skrivs över. Om du vill skydda ett lagrings konto från borttagning kan du konfigurera ett lås med hjälp av Azure Resource Manager. Mer information finns i Azure Resource Manager artikel [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+Med mjuk borttagning sparas inte dina data i fall då behållaren eller kontot tas bort, eller när BLOB-metadata och blob-egenskaper skrivs över. Om du vill skydda ett lagrings konto från borttagning kan du konfigurera ett lås med hjälp av Azure Resource Manager. Mer information finns i Azure Resource Manager artikel [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).  Om du vill skydda behållare från oavsiktlig borttagning konfigurerar du behållaren mjuk borttagning för lagrings kontot. Mer information finns i [Soft Delete for containers (för hands version)](soft-delete-container-overview.md).
 
 Följande tabell information förväntas när mjuk borttagning är aktiverat:
 
-| REST API åtgärd | Resurstyp | Description | Funktions förändring |
+| REST API åtgärd | Resurstyp | Beskrivning | Funktions förändring |
 |--------------------|---------------|-------------|--------------------|
 | [Ta bort](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Tar bort lagrings kontot, inklusive alla behållare och blobbar som det innehåller.                           | Ingen förändring. Behållare och blobbar i det borttagna kontot går inte att återskapa. |
 | [Ta bort container](/rest/api/storageservices/delete-container) | Container | Tar bort behållaren, inklusive alla blobbar som den innehåller. | Ingen förändring. Blobbar i den borttagna behållaren går inte att återskapa. |

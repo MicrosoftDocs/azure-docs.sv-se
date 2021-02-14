@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Hive med Azure Data Factory
 description: Lär dig hur du kopierar data från Hive till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 4207c4ddfcbab325b1ae119dcd200af30fc59f58
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8f6e85d82c01663e404f7046f84706feb209ba5a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844950"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367035"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>Kopiera och transformera data från Hive med Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -53,22 +48,22 @@ Följande egenskaper stöds för den länkade Hive-tjänsten:
 | typ | Egenskapen Type måste anges till: **Hive** | Ja |
 | värd | IP-adressen eller värd namnet för registrerings data filen, avgränsat med ";" för flera värdar (endast när serviceDiscoveryMode har Aktiver ATS).  | Ja |
 | port | TCP-porten som Hive-servern använder för att lyssna efter klient anslutningar. Om du ansluter till Azure HDInsights anger du port som 443. | Ja |
-| serverType | Typ av Hive-Server. <br/>Tillåtna värden är: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nej |
-| thriftTransportProtocol | Transport protokollet som ska användas i Thrift-skiktet. <br/>Tillåtna värden är: **Binary**, **sasl**, **http** | Nej |
+| serverType | Typ av Hive-Server. <br/>Tillåtna värden är: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Inga |
+| thriftTransportProtocol | Transport protokollet som ska användas i Thrift-skiktet. <br/>Tillåtna värden är: **Binary**, **sasl**, **http** | Inga |
 | authenticationType | Autentiseringsmetoden som används för att få åtkomst till Hive-servern. <br/>Tillåtna värden är: **Anonym**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. Kerberos-autentisering stöds inte nu. | Ja |
-| serviceDiscoveryMode | sant om du vill ange att använda ZooKeeper-tjänsten, falskt.  | Nej |
-| zooKeeperNameSpace | Namn området på ZooKeeper under vilka Hive-Server 2 noder läggs till.  | Nej |
-| useNativeQuery | Anger om driv rutinen använder interna HiveQL-frågor eller konverterar dem till ett motsvarande formulär i HiveQL.  | Nej |
-| användarnamn | Det användar namn som du använder för att komma åt Hive-servern.  | Nej |
-| password | Lösen ordet som motsvarar användaren. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Nej |
-| httpPath | Den partiella URL som motsvarar Hive-servern.  | Nej |
-| enableSsl | Anger om anslutningarna till servern är krypterade med TLS. Standardvärdet är false.  | Nej |
-| trustedCertPath | Den fullständiga sökvägen till. pem-filen som innehåller certifikat från betrodda certifikat utfärdare för att verifiera servern vid anslutning via TLS. Den här egenskapen kan bara anges när du använder TLS på IR med egen värd. Standardvärdet är den cacerts. PEM-fil som installeras med IR.  | Nej |
-| useSystemTrustStore | Anger om du vill använda ett CA-certifikat från systemets betrodda lager eller från en angiven PEM-fil. Standardvärdet är false.  | Nej |
-| allowHostNameCNMismatch | Anger om ett CA-utfärdat TLS/SSL-certifikat namn ska matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är false.  | Nej |
-| allowSelfSignedServerCert | Anger om självsignerade certifikat ska tillåtas från servern. Standardvärdet är false.  | Nej |
-| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Nej |
-| storageReference | En referens till den länkade tjänsten för det lagrings konto som används för att mellanlagra data i mappnings data flödet. Detta krävs endast när du använder den länkade Hive-tjänsten i mappnings data flödet | Nej |
+| serviceDiscoveryMode | sant om du vill ange att använda ZooKeeper-tjänsten, falskt.  | Inga |
+| zooKeeperNameSpace | Namn området på ZooKeeper under vilka Hive-Server 2 noder läggs till.  | Inga |
+| useNativeQuery | Anger om driv rutinen använder interna HiveQL-frågor eller konverterar dem till ett motsvarande formulär i HiveQL.  | Inga |
+| användarnamn | Det användar namn som du använder för att komma åt Hive-servern.  | Inga |
+| password | Lösen ordet som motsvarar användaren. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Inga |
+| httpPath | Den partiella URL som motsvarar Hive-servern.  | Inga |
+| enableSsl | Anger om anslutningarna till servern är krypterade med TLS. Standardvärdet är false.  | Inga |
+| trustedCertPath | Den fullständiga sökvägen till. pem-filen som innehåller certifikat från betrodda certifikat utfärdare för att verifiera servern vid anslutning via TLS. Den här egenskapen kan bara anges när du använder TLS på IR med egen värd. Standardvärdet är den cacerts. PEM-fil som installeras med IR.  | Inga |
+| useSystemTrustStore | Anger om du vill använda ett CA-certifikat från systemets betrodda lager eller från en angiven PEM-fil. Standardvärdet är false.  | Inga |
+| allowHostNameCNMismatch | Anger om ett CA-utfärdat TLS/SSL-certifikat namn ska matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är false.  | Inga |
+| allowSelfSignedServerCert | Anger om självsignerade certifikat ska tillåtas från servern. Standardvärdet är false.  | Inga |
+| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Inga |
+| storageReference | En referens till den länkade tjänsten för det lagrings konto som används för att mellanlagra data i mappnings data flödet. Detta krävs endast när du använder den länkade Hive-tjänsten i mappnings data flödet | Inga |
 
 **Exempel:**
 
@@ -132,7 +127,7 @@ Om du vill kopiera data från Hive anger du käll typen i kopierings aktiviteten
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **HiveSource** | Ja |
-| DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Till exempel: `"SELECT * FROM MyTable"`. | Nej (om "tableName" i data uppsättningen har angetts) |
+| DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Exempel: `"SELECT * FROM MyTable"`. | Nej (om "tableName" i data uppsättningen har angetts) |
 
 **Exempel:**
 
@@ -176,13 +171,13 @@ I tabellen nedan visas de egenskaper som stöds av en Hive-källa. Du kan redige
 
 | Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Lagringsplats | Arkivet måste vara `hive` | yes |  `hive` | butik | 
-| Format | Om du läser från en tabell eller fråga | yes | `table` eller `query` | format |
+| Lagringsplats | Arkivet måste vara `hive` | ja |  `hive` | butik | 
+| Format | Om du läser från en tabell eller fråga | ja | `table` eller `query` | format |
 | Schemanamn | Om du läser från en tabell används schemat för käll tabellen |  Ja, om formatet är `table` | Sträng | schemaName |
 | Tabellnamn | Om du läser från en tabell används tabell namnet |   Ja, om formatet är `table` | Sträng | tableName |
 | Söka i data | Om format är `query` , käll frågan på den länkade Hive-tjänsten | Ja, om formatet är `query` | Sträng | DocumentDB |
-| Mellanlagrad | Hive-tabellen kommer alltid att mellanlagras. | yes | `true` | mellanlagrad |
-| Lagrings behållare | Lagrings behållare som används för att mellanlagra data innan den läses från Hive eller skrivs till Hive. Hive-klustret måste ha åtkomst till den här behållaren. | yes | Sträng | storageContainer |
+| Mellanlagrad | Hive-tabellen kommer alltid att mellanlagras. | ja | `true` | mellanlagrad |
+| Lagrings behållare | Lagrings behållare som används för att mellanlagra data innan den läses från Hive eller skrivs till Hive. Hive-klustret måste ha åtkomst till den här behållaren. | ja | Sträng | storageContainer |
 | Mellanlagringsdatabas | Schemat/databasen där det användar konto som anges i den länkade tjänsten har åtkomst till. Den används för att skapa externa tabeller under mellanlagringen och tas bort efteråt | nej | `true` eller `false` | stagingDatabaseName |
 | SQL-skript | SQL-kod som ska köras i Hive-tabellen innan data läses | nej | Sträng | preSQLs |
 

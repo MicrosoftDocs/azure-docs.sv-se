@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: b23dabb4388331de9e37ee9db1d4b9d727ccde68
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430568"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383542"
 ---
-# <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>Så här konfigurerar du ändrings-och borttagnings identifiering för blobbar i Azure Kognitiv sökning indexering
+# <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Ändring och borttagning av identifiering i BLOB-indexering (Azure Kognitiv sökning)
 
 När ett inledande sökindex har skapats kanske du vill att efterföljande indexerings jobb bara ska hämta nya och ändrade dokument. För Sök innehåll som kommer från Azure Blob Storage sker ändrings identifiering automatiskt när du använder ett schema för att utlösa indexering. Som standard indexerar tjänsten om bara de ändrade blobbar som fastställs av blobens `LastModified` tidsstämpel. Till skillnad från andra data källor som stöds av Sök indexerare har blobbar alltid en tidsstämpel, vilket eliminerar behovet av att konfigurera en princip för ändrings identifiering manuellt.
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: 20a464011e5a8d37a6215b222323ca989e02ac04
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550929"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370280"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Självstudie: Förbättra regelefterlevnaden
 
@@ -26,7 +26,7 @@ Azure Security Center hjälper till att effektivisera processen för att uppfyll
 
 Security Center kontinuerligt utvärderar din hybrid moln miljö för att analysera risk faktorer enligt de kontroller och bästa metoderna i de standarder som tillämpas på dina prenumerationer. Instrument panelen visar statusen för din efterlevnad av dessa standarder. 
 
-När du aktiverar Security Center på en Azure-prenumeration tilldelas den automatiskt [Azures säkerhets benchmark](../security/benchmarks/introduction.md). Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
+När du aktiverar Security Center på en Azure-prenumeration tilldelas [Azures säkerhets mått](../security/benchmarks/introduction.md) automatiskt till den prenumerationen. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
 
 Instrument panelen för kontroll av efterlevnad visar status för alla utvärderingar i din miljö för de valda standarderna och reglerna. När du arbetar med rekommendationerna och minskar riskfaktorerna i din miljö förbättras position.
 
@@ -59,13 +59,13 @@ Använd instrument panelen för kontroll av efterlevnad för att fokusera på de
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Instrument panel för regler för efterlevnad" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
-1. Välj en flik för en efterlevnadsprincip som är relevant för dig (1). Du ser vilka prenumerationer som standarden tillämpas på (2) och listan över alla kontroller för den standarden (3). För tillämpliga kontroller kan du Visa information om att skicka och stoppa utvärderingar som är associerade med kontrollen (4) samt antalet resurser som påverkas (5). Vissa kontroller är nedtonade. De här kontrollerna har inga associerade Security Center-utvärderingar. Kontrol lera kraven för dessa och utvärdera dem i din miljö på egen hand. Vissa av dessa kan vara processbaserade och inte tekniska.
+1. Välj en flik för en efterlevnadsprincip som är relevant för dig (1). Du ser vilka prenumerationer som standarden tillämpas på (2) och listan över alla kontroller för den standarden (3). För tillämpliga kontroller kan du Visa information om att skicka och stoppa utvärderingar som är associerade med kontrollen (4) och antalet påverkade resurser (5). Vissa kontroller är nedtonade. De här kontrollerna har inga associerade Security Center-utvärderingar. Kontrol lera deras krav och utvärdera dem i din miljö. Vissa av dessa kan vara processbaserade och inte tekniska.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Utforska informationen om kompatibilitet med en speciell standard":::
 
 1. Välj **Hämta rapport** om du vill generera en PDF-rapport med en sammanfattning av din aktuella kompatibilitetsstatus för en viss standard.
 
-    Rapporten ger en översikt över din kompatibilitetsstatus för den valda standarden baserat på Security Center utvärderings data och organiseras enligt kontrollerna i denna specifika standard. Rapporten kan delas med relevanta intressenter och kan ge bevis på interna och externa revisorer.
+    Rapporten ger en översikt över din kompatibilitetsstatus för den valda standarden baserat på Security Center utvärderings data. Rapportens ordning enligt kontrollerna i denna särskilda standard. Rapporten kan delas med relevanta intressenter och kan ge bevis på interna och externa revisorer.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Hämta Kompatibilitetsrapport":::
 
@@ -73,7 +73,7 @@ Använd instrument panelen för kontroll av efterlevnad för att fokusera på de
 
 Med hjälp av informationen i instrument panelen för regelefterlevnad kan du förbättra position genom att lösa rekommendationer direkt på instrument panelen.
 
-1.  Klicka dig igenom några icke godkända utvärderingar som visas i instrumentpanelen för att visa information om den här rekommendationen. Varje rekommendation innehåller en uppsättning steg som ska följas för att lösa problemet.
+1.  Välj någon av de misslyckade utvärderingarna som visas på instrument panelen för att visa information om den rekommendationen. Varje rekommendation innehåller en uppsättning reparations steg för att lösa problemet.
 
 1.  Välj en viss resurs om du vill visa mer information och lösa rekommendationerna för resursen. <br>Till exempel, i **Azure CIS-1.1.0** standard, väljer du rekommendations **disk kryptering ska tillämpas på virtuella datorer**.
 
@@ -85,7 +85,7 @@ Med hjälp av informationen i instrument panelen för regelefterlevnad kan du f�
 
     Mer information om hur du utför rekommendationerna finns i artikeln [Utföra säkerhetsrekommendationerna i Azure Security Center](security-center-recommendations.md).
 
-1.  När du har åtgärdat för att lösa rekommendationer, ser du effekten i instrument panels rapporten för regelefterlevnad eftersom resultatet förbättras.
+1.  När du har åtgärdat för att lösa rekommendationer ser du resultatet i rapporten instrument panel för efterlevnad, eftersom ditt prispoäng ökar.
 
     > [!NOTE]
     > Utvärderingarna körs ungefär var 12: e timme, så du kommer att se påverkan på dina efterlevnadsprinciper endast efter nästa körning av den relevanta utvärderingen.
@@ -116,21 +116,99 @@ Lär dig mer om att [kontinuerligt exportera Security Center data](continuous-ex
 
 Security Center s funktion för arbets flödes automatisering kan utlösa Logic Apps när någon av de ändrade tillstånden för regelefterlevnad.
 
-Till exempel kanske du vill Security Center e-posta en speciell användare när en kompatibilitetskontroll Miss lyckas. Du måste först skapa Logic app (med [Azure Logic Apps](../logic-apps/logic-apps-overview.md)) och sedan konfigurera utlösaren i en ny arbets flödes automatisering som beskrivs i [automatiserade svar på Security Center utlösare](workflow-automation.md).
+Till exempel kanske du vill Security Center e-posta en speciell användare när en kompatibilitetskontroll Miss lyckas. Du måste först skapa Logic app (med [Azure Logic Apps](../logic-apps/logic-apps-overview.md)) och sedan konfigurera utlösaren i en ny arbets flödes automatisering som beskrivs i [automatisera svar på Security Center utlösare](workflow-automation.md).
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Använda ändringar i regelefterlevnad för att utlösa en arbets flödes automatisering" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+
+
+
+
+## <a name="faq---regulatory-compliance-dashboard"></a>Vanliga frågor och svars paneler för regelefterlevnad
+
+- [Vilka standarder stöds i instrument panelen för efterlevnad?](#what-standards-are-supported-in-the-compliance-dashboard)
+- [Varför visas vissa kontroller nedtonade?](#why-do-some-controls-appear-grayed-out)
+- [Hur kan jag ta bort en inbyggd standard, som PCI-DSS, ISO 27001 eller SOC2 TSP från instrument panelen?](#how-can-i-remove-a-built-in-standard-like-pci-dss-iso-27001-or-soc2-tsp-from-the-dashboard)
+- [Jag gjorde den föreslagna ändringen baserat på rekommendationen, men den visas inte på instrument panelen](#i-made-the-suggested-changed-based-on-the-recommendation-yet-it-isnt-being-reflected-in-the-dashboard)
+- [Vilka behörigheter behöver jag för att få åtkomst till instrument panelen för efterlevnad?](#what-permissions-do-i-need-to-access-the-compliance-dashboard)
+- [Instrument panelen för kontroll av efterlevnad har inte lästs in åt mig](#the-regulatory-compliance-dashboard-isnt-loading-for-me)
+- [Hur visar jag en rapport om att skicka och stoppa kontroller per standard i min instrument panel?](#how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard)
+- [Hur kan jag hämta en rapport med efterlevnadsprinciper i ett annat format än PDF?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
+- [Hur kan jag skapa undantag för några av principerna på instrument panelen för kontroll av efterlevnad?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
+- [Vilka Azure Defender-planer eller licenser behöver jag för att använda instrument panelen för kontroll av efterlevnad?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+
+### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>Vilka standarder stöds i instrument panelen för efterlevnad?
+Som standard visas instrument panelen för övervakning av Azures säkerhets mått. Azures säkerhets Benchmark är de Microsoft-baserade, Azure-/regionsspecifika rikt linjerna för säkerhet och metod tips som baseras på vanliga ramverk för efterlevnad. Läs mer i [Introduktion till Azures säkerhet](../security/benchmarks/introduction.md).
+
+Om du vill spåra din efterlevnad av någon annan standard måste du uttryckligen lägga till dem på din instrument panel.
+ 
+Du kan lägga till standarder som Azure CIS-1.1.0 (ny), NIST SP 800-53 R4, NIST SP 800-171 R2, SWIFT CSP CSCF-v2020, Storbritannien och Storbritannien NHS, HIPAA HITRUST, Kanada Federal PBMM, ISO 27001, SOC2-TSP och PCI-DSS 3.2.1.  
+ 
+Fler standarder läggs till i instrument panelen och ingår i informationen om hur [du anpassar uppsättningen med standarder på instrument panelen för](update-regulatory-compliance-packages.md)regelefterlevnad.
+
+### <a name="why-do-some-controls-appear-grayed-out"></a>Varför visas vissa kontroller nedtonade?
+För varje efterlevnadsprincip i instrument panelen finns det en lista över standard kontrollerna. För tillämpliga kontroller kan du Visa information om att skicka och stoppa utvärderingar.
+
+Vissa kontroller är nedtonade. De här kontrollerna har inga associerade Security Center-utvärderingar. Vissa kan vara procedurer eller process-relaterade och kan därför inte verifieras av Security Center. Några automatiska principer eller utvärderingar har inte implementerats ännu, men kommer att ha i framtiden. Och vissa kontroller kan vara plattforms ansvar som förklaras i [det delade ansvaret i molnet](../security/fundamentals/shared-responsibility.md). 
+
+### <a name="how-can-i-remove-a-built-in-standard-like-pci-dss-iso-27001-or-soc2-tsp-from-the-dashboard"></a>Hur kan jag ta bort en inbyggd standard, som PCI-DSS, ISO 27001 eller SOC2 TSP från instrument panelen? 
+Om du vill anpassa instrument panelen för reglering av efterlevnad och bara fokusera på de standarder som gäller för dig, kan du ta bort någon av de regler som visas som inte är relevanta för din organisation. Ta bort en standard genom att följa anvisningarna i [ta bort en standard från din instrument panel](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
+
+### <a name="i-made-the-suggested-changed-based-on-the-recommendation-yet-it-isnt-being-reflected-in-the-dashboard"></a>Jag gjorde den föreslagna ändringen baserat på rekommendationen, men den visas inte på instrument panelen
+Efter att du vidtar åtgärder för att lösa rekommendationerna väntar du i 12 timmar för att se ändringarna i dina efterlevnadsprinciper. Utvärderingarna körs ungefär var 12: e timme, så du kommer att se effekterna på dina Compliance-data endast efter att utvärderingarna har körts.
+ 
+### <a name="what-permissions-do-i-need-to-access-the-compliance-dashboard"></a>Vilka behörigheter behöver jag för att få åtkomst till instrument panelen för efterlevnad?
+Om du vill visa kompatibilitetsinformation måste du ha minst **läsar** åtkomst till policyns efterlevnadsprinciper även. så att säkerhets läsaren inte räcker till. Om du är en global läsare i prenumerationen så är det tillräckligt.
+
+Den minsta uppsättningen roller för åtkomst till instrument panelen och hanterings standarder är **resurs princip deltagare** och **säkerhets administratör**.
+
+
+### <a name="the-regulatory-compliance-dashboard-isnt-loading-for-me"></a>Instrument panelen för kontroll av efterlevnad har inte lästs in åt mig
+Om du vill använda instrument panelen för kontroll av efterlevnad måste Azure Security Center ha Azure Defender aktiverat på prenumerations nivån. Om instrument panelen inte läses in på rätt sätt kan du prova följande steg:
+
+1. Rensa webbläsarens cacheminne.
+1. Försök med en annan webbläsare.
+1. Försök att öppna instrument panelen från en annan nätverks plats.
+
+
+### <a name="how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard"></a>Hur visar jag en rapport om att skicka och stoppa kontroller per standard i min instrument panel?
+På huvud instrument panelen kan du se en rapport över att skicka och stoppa kontroller för (1) de lägsta 4 lägsta kraven för efterlevnad på instrument panelen. Välj (2) **Visa alla *x*** (där x är antalet standarder som du spårar) om du vill se alla status inställningar för att skicka/stoppa. Ett kontext plan visar kompatibilitetsstatus för var och en av dina spårade standarder.
+
+:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="Sammanfattnings avsnittet på instrument panelen för regler för efterlevnad":::
+
+
+### <a name="how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf"></a>Hur kan jag hämta en rapport med efterlevnadsprinciper i ett annat format än PDF?
+När du väljer **Hämta rapport** väljer du standard och formatet (PDF eller CSV). Den resulterande rapporten visar den aktuella uppsättningen prenumerationer som du har valt i portalens filter.
+
+- I PDF-rapporten visas en sammanfattnings status för den standard som du har valt
+- CSV-rapporten innehåller detaljerade resultat per resurs, som den är relaterad till principer som är associerade med varje kontroll
+
+För närvarande finns det inget stöd för att ladda ned en rapport för en anpassad princip. endast för de angivna reglerings standarderna.
+
+
+### <a name="how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard"></a>Hur kan jag skapa undantag för några av principerna på instrument panelen för kontroll av efterlevnad?
+För principer som är inbyggda i Security Center och ingår i säkra poäng, kan du skapa undantag för en eller flera resurser direkt i portalen enligt beskrivningen i [undanta resurser och rekommendationer från dina säkra Poäng](exempt-resource.md).
+
+För andra principer kan du skapa ett undantag direkt i själva principen genom att följa anvisningarna i [Azure policy undantags struktur](../governance/policy/concepts/exemption-structure.md).
+
+
+### <a name="what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard"></a>Vilka Azure Defender-planer eller licenser behöver jag för att använda instrument panelen för kontroll av efterlevnad?
+Om du har något av Azure Defender-paketen aktiverade på någon av dina Azure-resurs typer har du åtkomst till instrument panelen för kontroll av efterlevnad, med alla dess data, i Security Center.
+
+
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 
 I den här självstudien lärde du dig att använda Security Centers instrument panel för kontroll av efterlevnad för att:
 
-- Visa och övervaka din position för efterlevnad av de standarder och föreskrifter som är viktiga för dig.
-- Förbättra din kompatibilitetsstatus genom att utföra relevanta rekommendationer och se dina kompatibilitetspoäng öka.
+> [!div class="checklist"]
+> * Visa och övervaka din position för efterlevnad av de standarder och föreskrifter som är viktiga för dig.
+> * Förbättra din kompatibilitetsstatus genom att utföra relevanta rekommendationer och se dina kompatibilitetspoäng öka.
 
 Instrument panelen för kontroll av efterlevnad kan förenkla processen för efterlevnad och avsevärt minska den tid som krävs för att samla in kompatibiliteten för din Azure-, hybrid-och miljö med flera moln.
 
 Läs mer i följande relaterade sidor:
 
 - [Anpassa uppsättningen med standarder på instrument panelen för](update-regulatory-compliance-packages.md) regelefterlevnad – lär dig hur du väljer vilka standarder som visas på instrument panelen för kontroll av efterlevnad. 
-- [Övervakning av säkerhets hälsa i Azure Security Center](security-center-monitoring.md) – lär dig hur du övervakar Azure-resursernas hälsa.
-- [Hantera säkerhets rekommendationer i Azure Security Center](security-center-recommendations.md) – lär dig hur du använder rekommendationer i Azure Security Center för att skydda dina Azure-resurser.
+- [Hantera säkerhets rekommendationer i Azure Security Center](security-center-recommendations.md) – lär dig hur du använder rekommendationer i Security Center för att skydda dina Azure-resurser.
