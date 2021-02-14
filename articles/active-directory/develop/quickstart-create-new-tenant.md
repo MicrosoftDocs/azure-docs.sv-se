@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 815947b7c1774fb58ca4e3d20a4d1d2b43099cd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 83cf8840ffb9d123efa88d4acc304c8af4db5bf8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593086"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102469"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Snabbstart: Konfigurera en klientorganisation
 
@@ -50,7 +50,7 @@ Många utvecklare har redan klient organisationer via tjänster eller prenumerat
 
 Så här kontrollerar du klienten:
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Använd det konto som du använder för att hantera ditt program.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>. Använd det konto som du använder för att hantera ditt program.
 1. Markera det övre högra hörnet. Om du har en klient, loggas du in automatiskt. Du ser klient namnet direkt under ditt konto namn.
    * Hovra över ditt konto namn för att se namn, e-postadress, katalog eller klient-ID (ett GUID) och domän.
    * Om ditt konto är kopplat till flera klienter måste du välja namnet på ditt konto för att öppna en meny där du kan växla mellan klienter. Varje klient har sitt eget klient-ID.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833987"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094975"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Felsök problem med portalen för Mina appar
 
@@ -31,9 +31,9 @@ Om du har problem med att installera säkra inloggnings tillägg för Mina appar
 
     - **Microsoft Edge.** Körs på Windows 10-jubileums version eller senare.
 
-    - **Google Chrome.** Körs på Windows 7 eller senare och på Mac OS X eller senare.
+    - **Google Chrome.** Körs på Windows 7 eller senare och på macOS X eller senare.
 
-    - **Mozilla Firefox 26,0 eller senare.** Körs på Windows XP SP2 eller senare och på Mac OS X 10,6 eller senare.
+    - **Mozilla Firefox 26,0 eller senare.** Körs på Windows XP SP2 eller senare och på macOS X 10,6 eller senare.
 
     - **Internet Explorer 11.** Körs på Windows 7 eller senare (begränsat stöd).
 
@@ -46,6 +46,11 @@ Om du har problem med att installera säkra inloggnings tillägg för Mina appar
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Jag kan inte logga in på **min Apps** -Portal
 
 Om du har problem med att logga in på portalen för **Mina appar** kan du prova följande:
+
+- Om du ser ett fel när du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller **klient organisations-ID: t** för din organisation från administratören i någon av följande URL: er:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 - Kontrol lera att du använder rätt URL. Den bör vara https://myapps.microsoft.com eller en anpassad sida för din organisation, till exempel https://myapps.microsoft.com/contoso.com .
 

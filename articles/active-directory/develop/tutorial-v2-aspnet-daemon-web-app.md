@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a5f0a7d8221e970c8c1aa3c1ddffbfc56f2d5715
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 4fccff70fd267aef84550b4e2f5d6f5f9422a341
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226193"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103030"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -93,7 +93,7 @@ Om du inte vill använda Automation följer du stegen i följande avsnitt.
 
 ### <a name="choose-the-azure-ad-tenant"></a>Välj Azure AD-klient
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 
 
@@ -203,7 +203,7 @@ Det här projektet har Web App-och Web API-projekt. För att distribuera dem til
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Skapa och publicera dotNet-Web-daemon-v2 till en Azure-webbplats
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Välj **Skapa en resurs** i det övre vänstra hörnet.
 1. Välj **webb**  >  **-** webbapp och ge din webbplats ett namn. Du kan till exempel ge den namnet **dotNet-Web-daemon-v2-contoso.azurewebsites.net**.
 1. Välj information för **prenumeration**, **resurs grupp** och **App Service-plan och plats**. **OS** är **Windows** och **publicera** är **kod**.
@@ -224,7 +224,7 @@ Visual Studio kommer att publicera projektet och automatiskt öppna en webbläsa
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Uppdatera Azure AD-klientens program registrering för dotNET-Web-daemon-v2
 
-1. Gå tillbaka till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Gå tillbaka till <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. I den vänstra rutan väljer du tjänsten **Azure Active Directory** och väljer sedan **Appregistreringar**.
 1. Välj programmet **dotNet-Web-daemon-v2** .
 1. På sidan **autentisering** för ditt program uppdaterar du **URL-fälten för klient delens utloggnings-URL** med adressen till din tjänst. Använd till exempel `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`.

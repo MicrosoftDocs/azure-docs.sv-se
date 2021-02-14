@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 18be0f7d1bd8622735f24bf20161d652846112f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233975"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373427"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivera Azure Monitor for VMs översikt
 
@@ -46,7 +46,7 @@ Azure Monitor for VMs är tillgängligt för Azure Arc-aktiverade servrar i regi
 |:--|:--|:--|
 | Windows-agenter | Ja | Tillsammans med [Log Analytics agent för Windows](../platform/log-analytics-agent.md), behöver Windows-agenter beroende agenten. Mer information finns i [operativ system som stöds](../platform/agents-overview.md#supported-operating-systems). |
 | Linux-agenter | Ja | Tillsammans med [Log Analytics-agenten för Linux](../platform/log-analytics-agent.md)behöver Linux-agenterna beroende agenten. Mer information finns i [operativ system som stöds](#supported-operating-systems). |
-| System Center Operations Manager-hanteringsgrupp | Nej | |
+| System Center Operations Manager-hanteringsgrupp | Inga | |
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 
@@ -66,7 +66,7 @@ Se följande lista över överväganden för Linux-stöd för den beroende agent
 ## <a name="log-analytics-workspace"></a>Log Analytics-arbetsyta
 Azure Monitor for VMs kräver en Log Analytics-arbetsyta. Mer information och krav för den här arbets ytan finns i [konfigurera Log Analytics arbets yta för Azure Monitor for VMS](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Agenter
-Azure Monitor for VMs kräver att följande två agenter installeras på varje virtuell dator eller skalnings uppsättning för virtuella datorer som ska övervakas. Om du vill publicera resursen installerar du dessa agenter och ansluter dem till arbets ytan.  Se [nätverks krav](../platform/log-analytics-agent.md#network-requirements) för nätverks kraven för dessa agenter.
+Azure Monitor for VMs kräver att följande två agenter installeras på varje virtuell dator eller skalnings uppsättning för virtuella datorer som ska övervakas. Om du vill publicera resursen installerar du dessa agenter och ansluter dem till arbets ytan.  
 
 - [Log Analytics agent](../platform/log-analytics-agent.md). Samlar in händelser och prestanda data från den virtuella datorn eller skalnings uppsättningen för den virtuella datorn och levererar den till Log Analytics arbets ytan. Distributions metoder för Log Analytics-agenten på Azure-resurser använder VM-tillägget för [Windows](../../virtual-machines/extensions/oms-windows.md) och [Linux](../../virtual-machines/extensions/oms-linux.md).
 - Beroende agent. Samlar in identifierade data om processer som körs på den virtuella datorn och externa process beroenden, vilka används av [Map-funktionen i Azure Monitor for VMS](vminsights-maps.md). Beroende agenten använder den Log Analytics agenten för att leverera data till Azure Monitor. Distributions metoder för beroende agenten på Azure-resurser använder VM-tillägget för [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) och [Linux](../../virtual-machines/extensions/agent-dependency-linux.md).
@@ -84,6 +84,10 @@ Följande är flera metoder för att distribuera dessa agenter.
 | [Manuell installation](./vminsights-enable-hybrid.md) | Installera agenterna i gäst operativ systemet på datorer som ligger utanför Azure, inklusive i ditt data Center eller i andra moln miljöer. |
 
 
+## <a name="network-requirements"></a>Nätverkskrav
+
+- Se [nätverks krav](../platform/log-analytics-agent.md#network-requirements) för nätverks kraven för den Log Analytics agenten.
+- Beroende agenten kräver en anslutning från den virtuella datorn till 169.254.169.254-adressen. Detta är Azure metadata service-slutpunkten. Se till att brand Väggs inställningarna tillåter anslutningar till den här slut punkten.
 
 
 ## <a name="management-packs"></a>Hanteringspaket

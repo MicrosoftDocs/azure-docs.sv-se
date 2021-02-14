@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner
 description: Visar Azure Policy inbyggda princip definitioner för Azure Synapse Analytics. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b28758a2e2d99a1cc80b58f74425e00987a02686
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 09bdbe59843421bed3ac9ec69ee3cf222006df13
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555803"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092374"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure Policy inbyggda definitioner för Azure Synapse Analytics 
 

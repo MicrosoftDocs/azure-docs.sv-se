@@ -11,18 +11,21 @@ ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797642"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362751"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurera inställningar för nätverks routning för Azure Storage (för hands version)
 
 Du kan konfigurera inställningar för nätverks [routning](../../virtual-network/routing-preference-overview.md) (för hands version) för ditt Azure Storage-konto för att ange hur nätverks trafik dirigeras till ditt konto från klienter via Internet. Som standard dirigeras trafik från Internet till den offentliga slut punkten för ditt lagrings konto över [Microsofts globala nätverk](../../networking/microsoft-global-network.md). Azure Storage innehåller fler alternativ för att konfigurera hur trafik dirigeras till ditt lagrings konto.
 
 Genom att konfigurera cirkulations inställningen får du flexibiliteten att optimera trafiken antingen för förstklassiga nätverks prestanda eller för kostnad. När du konfigurerar en cirkulations inställning anger du hur trafiken ska dirigeras till den offentliga slut punkten för ditt lagrings konto som standard. Du kan också publicera dirigerade slut punkter för ditt lagrings konto.
+
+> [!NOTE]
+> Den här funktionen stöds inte i lagrings konton som har kon figurer ATS för att använda prestanda nivån Premium eller Zone-redundant lagring (ZRS).
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Microsoft globalt nätverk jämfört med Internet routning
 

@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/14/2020
-ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331649"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382199"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Snabb start: Använd en ARM-mall för att skapa en Azure Database for PostgreSQL-enskild server
 
@@ -24,7 +24,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Distribuera till Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -70,30 +70,30 @@ Välj följande länk för att distribuera Azure Database for PostgreSQL Server 
 
 På sidan **distribuera Azure Database for PostgreSQL med VNet** :
 
-1. För **resurs grupp** väljer du **Skapa ny** , anger ett namn för den nya resurs gruppen och väljer **OK**.
+1. För **resurs grupp** väljer du **Skapa ny**, anger ett namn för den nya resurs gruppen och väljer **OK**.
 
 2. Om du har skapat en ny resurs grupp väljer du en **plats** för resurs gruppen och den nya servern.
 
-3. Ange ett **Server namn** , **Administratörs inloggning** och **lösen ord för Administratörs inloggning**.
+3. Ange ett **Server namn**, **Administratörs inloggning** och **lösen ord för Administratörs inloggning**.
 
     :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Distribuera Azure Database for PostgreSQL med VNet-fönstret, Azure snabb starts mal len Azure Portal":::
 
 4. Ändra de andra standardinställningarna om du vill:
 
-    * **Prenumeration** : den Azure-prenumeration som du vill använda för servern.
-    * **SKU-kapacitet** : vCore-kapaciteten, som kan *vara 2* (standard), *4* , *8* , *16* , *32* eller *64*.
-    * **SKU-namn** : SKU-nivåns prefix, SKU-serien och SKU-kapaciteten som ingår i under streck, till exempel *B_Gen5_1* , *GP_Gen5_2* (standard) eller *MO_Gen5_32*.
-    * **SKU-storlek MB** : lagrings utrymmet i megabyte för Azure Database for postgresql server (standard *51200* ).
-    * **SKU-nivå** : distributions nivån, till *exempel Basic* , *generalpurpose* (standard) eller *MemoryOptimized*.
-    * **SKU-familj** : *Gen4* eller *Gen5* (standard), vilket indikerar maskin varu generering för Server distribution.
-    * **Postgresql-version** : den version av postgresql-servern som ska distribueras, till exempel *9,5* , *9,6* , *10* eller *11* (standard).
-    * **Kvarhållning av säkerhets kopierings dagar** : den önskade perioden för kvarhållning av Geo-redundant säkerhets kopia i dagar (standard *7* ).
-    * **Geo-redundant säkerhets kopiering** : *aktive rad* eller *inaktive* rad (standard), beroende på krav för geo-haveri beredskap (geo-Dr).
-    * **Virtual Network namn** : namnet på det virtuella nätverket (standard *azure_postgresql_vnet* ).
-    * **Under näts namn** : namnet på under nätet (standard *azure_postgresql_subnet* ).
-    * **Virtual Network regel namn** : namnet på den virtuella nätverks regel som tillåter under nätet (standard *AllowSubnet* ).
-    * **VNet-** adressprefix: adressprefixet för det virtuella nätverket (standard *10.0.0.0/16* ).
-    * **Undernätsprefixet** : adressprefixet för under nätet (standard *10.0.0.0/16* ).
+    * **Prenumeration**: den Azure-prenumeration som du vill använda för servern.
+    * **SKU-kapacitet**: vCore-kapaciteten, som kan *vara 2* (standard), *4*, *8*, *16*, *32* eller *64*.
+    * **SKU-namn**: SKU-nivåns prefix, SKU-serien och SKU-kapaciteten som ingår i under streck, till exempel *B_Gen5_1*, *GP_Gen5_2* (standard) eller *MO_Gen5_32*.
+    * **SKU-storlek MB**: lagrings utrymmet i megabyte för Azure Database for postgresql server (standard *51200*).
+    * **SKU-nivå**: distributions nivån, till *exempel Basic*, *generalpurpose* (standard) eller *MemoryOptimized*.
+    * **SKU-familj**: *Gen4* eller *Gen5* (standard), vilket indikerar maskin varu generering för Server distribution.
+    * **Postgresql-version**: den version av postgresql-servern som ska distribueras, till exempel *9,5*, *9,6*, *10* eller *11* (standard).
+    * **Kvarhållning av säkerhets kopierings dagar**: den önskade perioden för kvarhållning av Geo-redundant säkerhets kopia i dagar (standard *7*).
+    * **Geo-redundant säkerhets kopiering**: *aktive rad* eller *inaktive* rad (standard), beroende på krav för geo-haveri beredskap (geo-Dr).
+    * **Virtual Network namn**: namnet på det virtuella nätverket (standard *azure_postgresql_vnet*).
+    * **Under näts namn**: namnet på under nätet (standard *azure_postgresql_subnet*).
+    * **Virtual Network regel namn**: namnet på den virtuella nätverks regel som tillåter under nätet (standard *AllowSubnet*).
+    * **VNet-** adressprefix: adressprefixet för det virtuella nätverket (standard *10.0.0.0/16*).
+    * **Undernätsprefixet**: adressprefixet för under nätet (standard *10.0.0.0/16*).
 
 5. Läs de allmänna villkoren och välj sedan **Jag accepterar villkoren som anges ovan**.
 
@@ -174,6 +174,34 @@ read -p "Press [ENTER] to continue: "
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>Exportera ARM-mall från portalen
+Du kan [Exportera en arm-mall](../azure-resource-manager/templates/export-template-portal.md) från Azure Portal. Det finns två sätt att exportera en mall:
+
+- [Exportera från resurs grupp eller resurs](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Med det här alternativet skapas en ny mall från befintliga resurser. Den exporterade mallen är en "ögonblicks bild" av resurs gruppens aktuella tillstånd. Du kan exportera en hel resurs grupp eller vissa resurser inom den resurs gruppen.
+- [Exportera före distribution eller från historik](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Med det här alternativet hämtas en exakt kopia av en mall som används för distribution.
+
+När du exporterar mallen visas i ```"properties":{ }```  avsnittet i postgresql-serverns resurs att du ser att ```administratorLogin``` och ```administratorLoginPassword``` inte tas med av säkerhets skäl. Du **måste** lägga till de här parametrarna i mallen innan du distribuerar mallen, annars Miss kommer mallen.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

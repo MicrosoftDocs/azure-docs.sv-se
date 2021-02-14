@@ -1,23 +1,18 @@
 ---
 title: Kopiera data till/från Azure Synapse Analytics
 description: Lär dig hur du kopierar data till och från Azure Synapse Analytics med hjälp av Azure Data Factory
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452357"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392093"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Kopiera data till och från Azure Synapse Analytics med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -70,8 +65,8 @@ Följande tabell innehåller en beskrivning av JSON-element som är speciella f�
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen Type måste anges till: **AzureSqlDW** |Yes |
-| Begär |Ange information som krävs för att ansluta till Azure Synapse Analytics-instansen för egenskapen connectionString. Endast grundläggande autentisering stöds. |Yes |
+| typ |Egenskapen Type måste anges till: **AzureSqlDW** |Ja |
+| Begär |Ange information som krävs för att ansluta till Azure Synapse Analytics-instansen för egenskapen connectionString. Endast grundläggande autentisering stöds. |Ja |
 
 > [!IMPORTANT]
 > Konfigurera [Azure SQL Database-brandväggen](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure) och databas servern så att [Azure-tjänster får åtkomst till servern](/previous-versions/azure/ee621782(v=azure.100)#ConnectingFromAzure). Om du kopierar data till Azure Synapse Analytics från utanför Azure, inklusive från lokala data källor med Data Factory Gateway, konfigurerar du också lämpligt IP-adressintervall för datorn som skickar data till Azure Synapse Analytics.
@@ -83,7 +78,7 @@ Avsnittet typeProperties är olika för varje typ av data uppsättning och inneh
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| tableName |Namnet på den tabell eller vy i Azure Synapse Analytics-databasen som den länkade tjänsten refererar till. |Yes |
+| tableName |Namnet på den tabell eller vy i Azure Synapse Analytics-databasen som den länkade tjänsten refererar till. |Ja |
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
 En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns i artikeln [skapa pipeliner](data-factory-create-pipelines.md) . Egenskaper som namn, beskrivning, indata och utdata-tabeller och policy är tillgängliga för alla typer av aktiviteter.
@@ -98,9 +93,9 @@ När källan är av typen **SqlDWSource** finns följande egenskaper i avsnittet
 
 | Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Använd den anpassade frågan för att läsa data. |SQL-frågesträng. Exempel: Välj * från tabellen tabell. |No |
-| sqlReaderStoredProcedureName |Namnet på den lagrade proceduren som läser data från käll tabellen. |Namnet på den lagrade proceduren. Den sista SQL-instruktionen måste vara en SELECT-instruktion i den lagrade proceduren. |No |
-| storedProcedureParameters |Parametrar för den lagrade proceduren. |Namn/värde-par. Namn och Skift läge för parametrar måste matcha namn och Skift läge för parametrarna för den lagrade proceduren. |No |
+| sqlReaderQuery |Använd den anpassade frågan för att läsa data. |SQL-frågesträng. Exempel: Välj * från tabellen tabell. |Inga |
+| sqlReaderStoredProcedureName |Namnet på den lagrade proceduren som läser data från käll tabellen. |Namnet på den lagrade proceduren. Den sista SQL-instruktionen måste vara en SELECT-instruktion i den lagrade proceduren. |Inga |
+| storedProcedureParameters |Parametrar för den lagrade proceduren. |Namn/värde-par. Namn och Skift läge för parametrar måste matcha namn och Skift läge för parametrarna för den lagrade proceduren. |Inga |
 
 Om **sqlReaderQuery** har angetts för SqlDWSource kör kopierings aktiviteten den här frågan mot Azure Synapse Analytics-källan för att hämta data.
 
@@ -144,15 +139,15 @@ GO
 
 | Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| sqlWriterCleanupScript |Ange en fråga för kopierings aktivitet som ska köras så att data i en angiven sektor rensas. Mer information finns i [avsnittet repeterbarhet](#repeatability-during-copy). |Ett frågeuttryck. |No |
-| allowPolyBase |Anger om PolyBase ska användas (när det är tillämpligt) i stället för BULKINSERT-mekanismen. <br/><br/> **Att använda PolyBase är det rekommenderade sättet att läsa in data i Azure Synapse Analytics.** Se [använda PolyBase för att läsa in data i avsnittet om Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) för begränsningar och information. |Sant <br/>False (standard) |No |
-| polyBaseSettings |En grupp egenskaper som kan anges när **allowPolybase** -egenskapen har angetts till **True**. |&nbsp; |No |
-| rejectValue |Anger antalet rader eller procent av rader som kan avvisas innan frågan Miss lyckas. <br/><br/>Läs mer om polybases avvisnings alternativ i avsnittet **arguments** i avsnittet [skapa en extern tabell (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (standard), 1, 2,... |No |
-| rejectType |Anger om alternativet rejectValue anges som ett litteralt värde eller i procent. |Värde (standard), procent |No |
+| sqlWriterCleanupScript |Ange en fråga för kopierings aktivitet som ska köras så att data i en angiven sektor rensas. Mer information finns i [avsnittet repeterbarhet](#repeatability-during-copy). |Ett frågeuttryck. |Inga |
+| allowPolyBase |Anger om PolyBase ska användas (när det är tillämpligt) i stället för BULKINSERT-mekanismen. <br/><br/> **Att använda PolyBase är det rekommenderade sättet att läsa in data i Azure Synapse Analytics.** Se [använda PolyBase för att läsa in data i avsnittet om Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) för begränsningar och information. |Sant <br/>False (standard) |Inga |
+| polyBaseSettings |En grupp egenskaper som kan anges när **allowPolybase** -egenskapen har angetts till **True**. |&nbsp; |Inga |
+| rejectValue |Anger antalet rader eller procent av rader som kan avvisas innan frågan Miss lyckas. <br/><br/>Läs mer om polybases avvisnings alternativ i avsnittet **arguments** i avsnittet [skapa en extern tabell (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (standard), 1, 2,... |Inga |
+| rejectType |Anger om alternativet rejectValue anges som ett litteralt värde eller i procent. |Värde (standard), procent |Inga |
 | rejectSampleValue |Anger det antal rader som ska hämtas innan PolyBase beräknar om procent andelen avvisade rader. |1, 2,... |Ja, om **rejectType** är **procent** |
-| useTypeDefault |Anger hur du ska hantera saknade värden i avgränsade textfiler när PolyBase hämtar data från text filen.<br/><br/>Lär dig mer om den här egenskapen från avsnittet argument i [Skapa externt fil format (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql). |Sant, falskt (standard) |No |
+| useTypeDefault |Anger hur du ska hantera saknade värden i avgränsade textfiler när PolyBase hämtar data från text filen.<br/><br/>Lär dig mer om den här egenskapen från avsnittet argument i [Skapa externt fil format (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql). |Sant, falskt (standard) |Inga |
 | writeBatchSize |Infogar data i SQL-tabellen när buffertstorleken når writeBatchSize |Heltal (antal rader) |Nej (standard: 10000) |
-| writeBatchTimeout |Vänte tid för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes. |tidsintervall<br/><br/> Exempel: "00:30:00" (30 minuter). |No |
+| writeBatchTimeout |Vänte tid för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes. |tidsintervall<br/><br/> Exempel: "00:30:00" (30 minuter). |Inga |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink-exempel
 
@@ -307,14 +302,14 @@ Data Factory skapar tabellen i mål lagret med samma tabell namn i käll data la
 | TinyInt | TinyInt |
 | Bitmask | Bitmask |
 | Decimal | Decimal |
-| Numeriskt | Decimal |
+| Numerisk | Decimal |
 | Float | Float |
 | Money (Pengar) | Money (Pengar) |
 | Verkligen | Verkligen |
 | SmallMoney | SmallMoney |
 | Binär | Binär |
 | Varbinary | Varbinary (upp till 8000) |
-| Datum | Datum |
+| Date | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Tid | Tid |

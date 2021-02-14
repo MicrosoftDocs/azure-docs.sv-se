@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018249"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362292"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Agent installation
 
@@ -34,7 +34,7 @@ I följande tabell visas kraven för att använda Azure AD Connect Health.
 
 | Krav | Beskrivning |
 | --- | --- |
-| Azure AD Premium har installerats. |Azure AD Connect Health är en funktion i Azure AD Premium. Mer information finns i [Registrera dig för Azure AD Premium](../fundamentals/active-directory-get-started-premium.md). <br /><br />Om du vill starta en kostnads fri 30-dagars utvärderings version läser du [starta en utvärderings version](https://azure.microsoft.com/trial/get-started-active-directory/). |
+| Det finns en Azure AD Premium (P1 eller P2) prenumerationen.  |Azure AD Connect Health är en funktion i Azure AD Premium (P1 eller P2). Mer information finns i [Registrera dig för Azure AD Premium](../fundamentals/active-directory-get-started-premium.md). <br /><br />Om du vill starta en kostnads fri 30-dagars utvärderings version läser du [starta en utvärderings version](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | Du är global administratör i Azure AD. |Som standard kan endast globala administratörer installera och konfigurera hälso agenter, få åtkomst till portalen och utföra åtgärder i Azure AD Connect Health. Mer information finns i [Administrera Azure AD-katalogen](../fundamentals/active-directory-whatis.md). <br /><br /> Genom att använda rollbaserad åtkomst kontroll i Azure (Azure RBAC) kan du ge andra användare i organisationen åtkomst till Azure AD Connect Health. Mer information finns i [Azure RBAC för Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Viktigt**: Använd ett arbets-eller skol konto för att installera agenterna. Du kan inte använda en Microsoft-konto. Mer information finns i [Registrera dig för Azure som en organisation](../fundamentals/sign-up-organization.md). |
 | Azure AD Connect Health agenten installeras på varje mål server. | Hälso agenter måste installeras och konfigureras på mål servrar så att de kan ta emot data och tillhandahålla funktioner för övervakning och analys. <br /><br />Om du till exempel vill hämta data från din Active Directory Federation Services (AD FS)-infrastruktur (AD FS) måste du installera agenten på AD FS-servern och Web Application Proxy-servern. På samma sätt måste du installera agenten på domän kontrol Lanterna för att kunna hämta data från din lokala Azure AD Domain Services-infrastruktur (Azure AD DS).  |
 | Azure-tjänstens slut punkter har utgående anslutning. | Under installation och körning kräver agenten anslutning till Azure AD Connect Health-tjänstens slutpunkter. Om brand väggar blockerar utgående anslutning lägger du till [slut punkterna för utgående anslutningar](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) i listan över tillåtna. |
@@ -195,7 +195,7 @@ Kontrollera att agenten har installerats genom att leta efter följande tjänste
 ![Skärm bild som visar Azure AD Connect Health som körs för Sync Services på servern.](./media/how-to-connect-health-agent-install/services.png)
 
 > [!NOTE]
-> Kom ihåg att du måste ha Azure AD Premium att använda Azure AD Connect Health. Om du inte har Azure AD Premium kan du inte slutföra konfigurationen i Azure Portal. Mer information finns i [kraven](how-to-connect-health-agent-install.md#requirements).
+> Kom ihåg att du måste ha Azure AD Premium (P1 eller P2) för att kunna använda Azure AD Connect Health. Om du inte har Azure AD Premium kan du inte slutföra konfigurationen i Azure Portal. Mer information finns i [kraven](how-to-connect-health-agent-install.md#requirements).
 >
 >
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c12ad505777111499fb354709ce606189398458f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805356"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391953"
 ---
 # <a name="pricing-of-azure-security-center"></a>Prissättning för Azure Security Center
 Azure Security Center har en enhetlig säkerhetshantering och avancerat skydd mot hot för arbetsbelastningar som körs i Azure, lokalt och i andra moln. Den ger insyn och kontroll över hybrid moln arbets belastningar, aktiva försvar som minskar exponeringen för hot och intelligent identifiering som hjälper dig att hålla jämna steg med snabbt växande cyberhot-risker.
@@ -101,7 +101,7 @@ Du kan använda något av följande sätt för att aktivera Azure Defender för 
 |Metod  |Instruktioner  |
 |---------|---------|
 |Azure Security Center sidor i Azure Portal|[Aktivera Azure Defender](#enable-azure-defender)|
-|REST API|[Prissättnings-API](/rest/api/securitycenter/pricings)|
+|REST-API|[Prissättnings-API](/rest/api/securitycenter/pricings)|
 |Azure CLI|[AZ Security-prissättning](/cli/azure/security/pricing)|
 |PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[Paket priser](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
@@ -118,10 +118,9 @@ Om du redan har en licens för Microsoft Defender för slut punkt behöver du in
 Om du vill bekräfta rabatten kontaktar du Security Center support teamet och anger relevant arbetsyte-ID, region och licens information för varje relevant licens.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång? 
-Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration faktureras du per timme för endast servrar som körs. Du debiteras inte för någon server som är inaktive rad, under den tid det tar. 
+Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration debiteras du inte för några servrar som har statusen "frigjord" när de befinner sig i det aktuella läget.
 
-> [!TIP]
-> Detta gäller även för de andra resurs typer som skyddas av Security Center. 
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Azure Virtual Machines som visar en fribelagd dator":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?
 Ja. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration får datorerna i den prenumerationen ett antal skydd även om du inte har installerat Log Analytics agenten.

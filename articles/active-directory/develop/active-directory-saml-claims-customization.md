@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756078"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102707"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gör så här: anpassa anspråk som utfärdats i SAML-token för företags program
 
@@ -54,7 +54,7 @@ Om SAML-begäran inte innehåller ett element för NameIDPolicy, kommer Microsof
 
 I list rutan **Välj namn identifierare format** kan du välja något av följande alternativ.
 
-| NameID-format | Beskrivning |
+| NameID-format | Description |
 |---------------|-------------|
 | **Standardvärde** | Microsoft Identity Platform använder standard käll formatet. |
 | **Permanent** | Microsoft Identity Platform kommer att använda beständigt som NameID-format. |
@@ -67,7 +67,7 @@ En tillfällig NameID stöds också, men är inte tillgänglig i list rutan och 
 
 Välj önskad källa för `NameIdentifier` (eller NameID)-anspråket. Du kan välja bland följande alternativ.
 
-| Name | Beskrivning |
+| Namn | Beskrivning |
 |------|-------------|
 | E-post | Användarens e-postadress |
 | userprincipalName | Användarens huvud namn (UPN) |
@@ -81,10 +81,8 @@ Mer information finns i [tabell 3: giltiga ID-värden per källa](active-directo
 
 Du kan också tilldela ett konstant värde (statisk) till alla anspråk som du definierar i Azure AD. Följ stegen nedan för att tilldela ett konstant värde:
 
-1. I <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>i avsnittet **användarattribut &-anspråk** klickar du på **Redigera** -ikonen för att redigera anspråken.
-
+1. I <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>i avsnittet **användarattribut &-anspråk** klickar du på **Redigera** -ikonen för att redigera anspråken.
 1. Klicka på det obligatoriska anspråk som du vill ändra.
-
 1. Ange det konstanta värdet utan citat tecken i **källattributet** enligt din organisation och klicka på **Spara**.
 
     ![Avsnittet org attributes & Claims i Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)

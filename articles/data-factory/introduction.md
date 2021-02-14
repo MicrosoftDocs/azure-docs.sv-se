@@ -1,20 +1,17 @@
 ---
 title: introduktion till Azure Data Factory
 description: Lär dig mer om den molnbaserade dataintegreringstjänsten Azure Data Factory som samordnar och automatiserar förflyttning och omvandling av data.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97812876"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392552"
 ---
 # <a name="what-is-azure-data-factory"></a>Vad är Azure Data Factory?
 
@@ -57,7 +54,7 @@ Om du föredrar att koda omvandlingar manuellt stöder ADF externa aktiviteter f
 
 ### <a name="cicd-and-publish"></a>CI/CD och publicera
 [Data Factory erbjuder fullt stöd för CI/CD-](continuous-integration-deployment.md) datapipeliner med Azure DevOps och GitHub. På så sätt kan du stegvis utveckla och leverera dina ETL-processer innan du publicerar den färdiga produkten. Efter att rådata har förfinats till en form som företaget kan använda, läser du in data i Azure Data Warehouse, Azure SQL Database, Azure CosmosDB eller den analysmotor som ditt företags användare kan peka till från sina business intelligence-verktyg.
-### <a name="monitor"></a>Övervaka
+### <a name="monitor"></a>Monitor
 När du har skapat och distribuerat din pipeline för dataintegrering och fått affärsvärde från förfinade data, kan du övervaka schemalagda aktiviteter och pipelines för att se hur många som lyckats respektive misslyckats. Azure Data Factory har ett inbyggt stöd för pipelineövervakning via Azure Monitor, API, PowerShell, Azure Monitor-loggar och hälsopaneler i Azure-portalen.
 
 ## <a name="top-level-concepts"></a>Toppnivåbegrepp
@@ -126,5 +123,5 @@ Här är några viktiga nästa steg i dokument som du kan utforska:
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager mall](quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager-mall](quickstart-create-data-factory-resource-manager-template.md)
  

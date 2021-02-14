@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 0de0c5d53bd3195a24f75f4a2e65c19602e2a2b3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 103855748c4b5d998dfc81eeb4044f5f53dae9e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99088929"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372016"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Pris-och fakturerings modeller för Azure Logic Apps
 
@@ -25,7 +25,7 @@ En prissättnings modell för användnings-och användnings priser gäller för 
 
 En begäran om avsöknings utlösare är till exempel fortfarande avgiftsbelagd som en körning även om denna utlösare hoppas över och ingen Logic app-arbetsflöde skapas.
 
-| Poster | Description |
+| Poster | Beskrivning |
 |-------|-------------|
 | [Inbyggda](../connectors/apis-list.md#built-in) utlösare och åtgärder | Körs internt i Logic Appss tjänsten och mäts med hjälp av [ **Åtgärds** priset](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Till exempel är HTTP-utlösaren och begär ande utlösare inbyggda utlösare, medan åtgärden HTTP-åtgärd och svar är inbyggda åtgärder. Åtgärder för data åtgärder, batch-åtgärder, varierande åtgärder och [arbets flödes kontroll](../connectors/apis-list.md#control-workflow), till exempel slingor, villkor, växlar, parallella grenar och så vidare, är också inbyggda åtgärder. |
 | [Standard anslutnings](../connectors/apis-list.md#managed-connectors) utlösare och åtgärder <p><p>[Anpassade anslutnings](../connectors/apis-list.md#custom) program utlösare och åtgärder | Mäts med [standard anslutnings priset](https://azure.microsoft.com/pricing/details/logic-apps/). |
@@ -70,15 +70,15 @@ Läs följande tips för att få hjälp att beräkna mer exakta förbruknings ko
 
 En fast pris modell gäller för Logic Apps som körs i en [ *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). En ISE faktureras med hjälp av [integration service Environment priset](https://azure.microsoft.com/pricing/details/logic-apps), som är beroende av den [ISE-nivå eller *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) som du skapar. Den här prissättningen skiljer sig från priserna för flera klienter när du betalar för reserverad kapacitet och dedikerade resurser oavsett om du använder dem eller inte.
 
-| ISE SKU | Description |
+| ISE SKU | Beskrivning |
 |---------|-------------|
-| **Premium** | Bas enheten har fast kapacitet och [debiteras enligt Tim priset för Premium-SKU: n](https://azure.microsoft.com/pricing/details/logic-apps). Om du behöver mer data flöde kan du [lägga till fler skalnings enheter](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) när du skapar din ISE eller senare. Varje skalnings enhet debiteras enligt [Tim pris som är ungefär hälften av bas enhets](https://azure.microsoft.com/pricing/details/logic-apps)priset. <p><p>Information om begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| **Utvecklare** | Bas enheten har fast kapacitet och [debiteras enligt Tim priset för Developer-SKU: n](https://azure.microsoft.com/pricing/details/logic-apps). SKU: n har inte möjlighet att skala upp, ett service nivå avtal (SLA) eller publicerade gränser. Använd endast den här SKU: n för prospektering, experiment, utveckling och testning, inte produktion eller prestanda testning. |
+| **Premium** | Bas enheten har [fast kapacitet](logic-apps-limits-and-config.md#integration-service-environment-ise) och [debiteras enligt Tim priset för Premium-SKU: n](https://azure.microsoft.com/pricing/details/logic-apps). Om du behöver mer data flöde kan du [lägga till fler skalnings enheter](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) när du skapar din ISE eller senare. Varje skalnings enhet debiteras enligt [Tim pris som är ungefär hälften av bas enhets](https://azure.microsoft.com/pricing/details/logic-apps)priset. <p><p>Information om kapacitet och begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Utvecklare** | Bas enheten har [fast kapacitet](logic-apps-limits-and-config.md#integration-service-environment-ise) och [debiteras enligt Tim priset för Developer-SKU: n](https://azure.microsoft.com/pricing/details/logic-apps). Denna SKU har dock inget service avtal (SLA), skalnings kapacitet eller redundans under återvinning, vilket innebär att du kan uppleva fördröjningar eller stillestånds tid. Server dels uppdateringar kan tillfälligt avbryta tjänsten. <p><p>**Viktigt**: se till att du endast använder den här SKU: n för utforskning, experiment, utveckling och testning – inte för produktion eller prestanda testning. <p><p>Information om kapacitet och begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>Ingår utan extra kostnad
 
-| Poster | Description |
+| Poster | Beskrivning |
 |-------|-------------|
 | [Inbyggda](../connectors/apis-list.md#built-in) utlösare och åtgärder | Visa **kärn** etiketten och kör i samma ISE som dina Logic Apps. |
 | [Anslutningsappar av standardtyp](../connectors/apis-list.md#managed-connectors) <p><p>[Enterprise-anslutningsappar](../connectors/apis-list.md#enterprise-connectors) | – Hanterade anslutningar som visar **ISE** -etiketten är särskilt utformade för att fungera utan den lokala datagatewayen och köras i samma ISE som dina Logic Apps. ISE-prissättningen innehåller så många företags anslutningar som du vill. <p><p>– Kopplingar som inte visar ISE-etiketten körs i Logic Appss tjänsten för flera innehavare. ISE-prissättningen omfattar dock dessa körningar för logi Kap par som körs i en ISE. |
@@ -96,7 +96,7 @@ Information om begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps
 
 Ett [integrations konto](../logic-apps/logic-apps-pricing.md#integration-accounts) är en separat resurs som du skapar och länkar till logi Kap par så att du kan utforska, bygga och testa B2B-integrerings lösningar som använder funktioner för [EDI](logic-apps-enterprise-integration-b2b.md) och [XML-bearbetning](logic-apps-enterprise-integration-xml.md) . Azure Logic Apps erbjuder dessa nivåer eller nivåer för integrerings kontona:
 
-| Nivå | Description |
+| Nivå | Beskrivning |
 |------|-------------|
 | **Basic** | För scenarier där du bara vill ha meddelande hantering eller som fungerar som en liten affärs partner som har en partner relation med en större affär senhet. <p><p>Stöds av Logic Apps service avtal. |
 | **Standard** | För scenarier där du har mer komplexa B2B-relationer och ökat antal entiteter som du måste hantera. <p><p>Stöds av Logic Apps service avtal. |

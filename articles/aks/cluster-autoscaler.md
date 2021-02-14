@@ -4,12 +4,12 @@ description: Lär dig hur du använder kluster autoskalning för att automatiskt
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c0564dc3b394b4a65e70a487b6f6989cb306bdda
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223150"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373257"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Skala ett kluster automatiskt för att uppfylla programbehov i Azure Kubernetes Service (AKS)
 
@@ -273,6 +273,9 @@ az aks nodepool update \
 ```
 
 Om du vill återaktivera klustrets autoskalning i ett befintligt kluster kan du återaktivera det med kommandot [AZ AKS nodepool Update][az-aks-nodepool-update] och ange `--enable-cluster-autoscaler` `--min-count` parametrarna, och `--max-count` .
+
+> [!NOTE]
+> Om du planerar att använda den automatiska skalnings tjänsten för kluster med nodepools som sträcker sig över flera zoner och utnyttjar schemaläggnings funktioner som är relaterade till zoner som volym Top-schemaläggning, är rekommendationen att ha en nodepool per zon och aktiverar den `--balance-similar-node-groups` automatiska skalnings profilen. Detta säkerställer att autoskalning kan skalas upp och prövas och samtidigt hålla storlekarna på nodepools balanserade.
 
 ## <a name="next-steps"></a>Nästa steg
 

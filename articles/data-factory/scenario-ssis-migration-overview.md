@@ -1,22 +1,17 @@
 ---
 title: Migrera lokala SQL Server Integration Services-arbetsbelastningar (SSIS) till SSIS i Azure Data Factory (ADF)
 description: Migrera lokala SSIS-arbetsbelastningar till SSIS i ADF.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: ef4b01e38a60d6770ba476988fab934ada0bc631
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635702"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373614"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrera lokala SSIS-arbetsbelastningar till SSIS i ADF
 
@@ -28,7 +23,7 @@ När du migrerar dina databas arbets belastningar från SQL Server lokalt till A
 
 Azure-SSIS Integration Runtime (IR) i Azure Data Factory (ADF) stöder körning av SSIS-paket. När Azure-SSIS IR har skapats kan du sedan använda välbekanta verktyg, till exempel SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) och kommando rads verktyg, till exempel dtinstall/dtutil/Dtexec, för att distribuera och köra dina paket i Azure. Mer information finns i [Översikt över Azure SSIS-och-Shift](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-I den här artikeln beskrivs migreringsprocessen för dina ETL-arbetsbelastningar från lokala SSIS till SSIS i ADF. Migreringsprocessen består av två faser: **utvärdering** och **migrering** .
+I den här artikeln beskrivs migreringsprocessen för dina ETL-arbetsbelastningar från lokala SSIS till SSIS i ADF. Migreringsprocessen består av två faser: **utvärdering** och **migrering**.
 
 ## <a name="assessment"></a>Utvärdering
 
@@ -49,7 +44,7 @@ Data Migration Assistant (DMA) är ett fritt nedladdnings Bart verktyg för det 
   - MSDB, som är en system databas i SQL Server som används för att lagra SSIS-paket.
   - Hanterat fil system, som är en bestämd mapp i SQL Server installations Sök väg som används för att lagra SSIS-paket.
 
-DMA stöder för närvarande batch-utvärderingen av paket som lagras i **fil systemet** , i **paket lagret** och **SSIS-katalogen** sedan **DMA version v 5.0** .
+DMA stöder för närvarande batch-utvärderingen av paket som lagras i **fil systemet**, i **paket lagret** och **SSIS-katalogen** sedan **DMA version v 5.0**.
 
 Hämta [DMA](/sql/dma/dma-overview)och [genomför din paket utvärdering med den](/sql/dma/dma-assess-ssis).
 

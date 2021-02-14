@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/11/2021
 ms.author: banders
-ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: HT
+ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962118"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363057"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Överför Azure-prenumerationer mellan prenumeranter och molnlösningsleverantörer
 
@@ -36,6 +36,7 @@ När begäran har godkänts kan CSP:n tillhandahålla en kombinerad faktura till
 
 För att kunna överföra andra Azure-prenumerationer till en CSP-partner måste prenumeranten flytta resurser från källprenumerationer till CSP-prenumerationer. Använd följande vägledning när du flyttar resurser mellan prenumerationer.
 
+1. Upprätta en [åter försäljares relation](/partner-center/request-a-relationship-with-a-customer) med kunden. Granska den [regionala CSP-auktoriseringen](/partner-center/regional-authorization-overview) för att se till att både kund-och partner klienten är inom samma auktoriserade regioner.
 1. Samarbeta med din CSP-partner när du skapar Azure CSP-målprenumerationer.
 1. Se till att käll- och målprenumerationerna finns i samma Azure Active Directory-klient (Azure AD).  
     Du kan inte ändra Azure AD-klienten för en Azure CSP-prenumeration. I stället måste du lägga till eller associera källprenumerationen till CSP Azure AD-klienten. Mer information finns i [Lägga till eller associera en Azure-prenumeration till Azure Active Directory-klienten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).

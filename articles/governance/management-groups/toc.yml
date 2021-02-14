@@ -22,9 +22,15 @@
     - name: Skapa en hanteringsgrupp – .NET
       displayName: hierarchy
       href: ./create-management-group-dotnet.md
+    - name: Skapa en hanterings grupp – gå
+      displayName: hierarchy
+      href: ./create-management-group-go.md
     - name: Skapa en hanteringsgrupp – JavaScript
       displayName: hierarchy
       href: ./create-management-group-javascript.md
+    - name: Skapa en hanterings grupp – python
+      displayName: hierarchy
+      href: ./create-management-group-python.md
     - name: Skapa en hanteringsgrupp – REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
@@ -48,8 +54,12 @@
       href: /powershell/module/az.resources/#resources
     - name: Azure SDK för .NET
       href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK för Go
+      href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups'
     - name: Azure SDK för Java Script
       href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: Azure SDK för Python
+      href: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - name: REST
       href: /rest/api/resources/managementgroups
     - name: Mallar för Resurshanteraren

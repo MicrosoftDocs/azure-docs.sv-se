@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521146"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093173"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Support policy för Azure Red Hat OpenShift
 
@@ -26,6 +26,7 @@ Vissa konfigurationer för Azure Red Hat OpenShift 4-kluster kan påverka klustr
 * Klustret måste ha minst två arbetsnoder. Skala inte kluster arbetarna till noll eller försök med en korrekt kluster avstängning.
 * Ta inte bort eller ändra klustrets Prometheus-och Alertmanager-tjänster.
 * Ta inte bort Alertmanager-regler för tjänsten.
+* Ta inte bort eller ändra nätverks säkerhets grupper.
 * Ta inte bort eller ändra Azure Red Hat OpenShift service Logging (mdsd poddar).
 * Ta inte bort eller ändra pull-hemligheten för arosvc.azurecr.io-klustret.
 * Alla virtuella kluster datorer måste ha direkt utgående Internet åtkomst, minst Azure Resource Manager (ARM) och service Logging (Genève).  Ingen form av HTTPS-proxyering stöds.

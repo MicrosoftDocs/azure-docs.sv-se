@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: lokal, OCR, Docker, container
-ms.openlocfilehash: fc5d281a6c0c9dd9620109de9d8deea27462ad0e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 843000963bc05cab5415c9bb1db32b3272c8dc9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008595"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391786"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installera Läs OCR Docker-behållare (förhands granskning) 
 
@@ -41,7 +41,7 @@ Behållaren Read 3,2-Preview OCR innehåller:
 * Förtroende poäng.
 * Stöd för dokument med både utskrift och handskriven text.
 * Möjlighet att extrahera text från endast valda sidor i ett dokument.
-* Välj text rads utmatnings ordning från standard till en mer naturlig Läs ordning.
+* Välj text rads utmatnings ordning från standard till en mer naturlig Läs ordning för latinska språk.
 * Text linje klassificering som handskriven stil eller inte enbart för latinska språk.
 
 Om du använder läsa 2,0-behållare idag kan du läsa mer om ändringar i de nya versionerna i [migreringsguiden](read-container-migration-guide.md) .

@@ -32,6 +32,8 @@
       href: tutorial-deploy-vmware-hcx.md
     - name: 8 – Skala ett privat moln
       href: tutorial-scale-private-cloud.md
+    - name: 9 – ta bort ett privat moln
+      href: tutorial-delete-private-cloud.md
 - name: Begrepp
   items:
     - name: Privata moln och kluster

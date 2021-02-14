@@ -1,21 +1,18 @@
 ---
 title: Azure PowerShell exempel för Azure Data Factory
 description: Azure PowerShell exempel – skript som hjälper dig att skapa och hantera data fabriker.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 031c897c17a086e0ebb3b2708cfe942a1ef3208e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 69d29fca13f24bfccd585de3ad83bdc13ec48a37
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497273"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373648"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure PowerShell exempel för Azure Data Factory
 
@@ -23,7 +20,7 @@ ms.locfileid: "96497273"
 
 Följande tabell innehåller länkar till exempel Azure PowerShell skript för Azure Data Factory.
 
-| Skript | Description  |
+| Skript | Beskrivning  |
 |---|---|
 |**Kopiera data**||
 |[Kopiera blobbar från en mapp till en annan mapp i ett Azure-Blob Storage](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Det här PowerShell-skriptet kopierar blobbar från en mapp i Azure Blob Storage till en annan mapp i samma Blob Storage. |
