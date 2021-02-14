@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 9c30b1ff7b6e708fdd64d082b14b4e9d3c7a0f1a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: fe85fd314ba631a26ece4164e317b0977e7cf749
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583323"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103676"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Snabb start: Logga in och få en åtkomsttoken i en reakta SPA med auth Code Flow
 
@@ -40,7 +40,7 @@ I den här snabb starten används MSAL reagera med Authorization Code Flow. En l
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1 (Express): registrera och konfigurera appen automatiskt och ladda ned kod exemplet
 >
-> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar</a> .
 > 1. Ange ett namn för ditt program.
 > 1. Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
 > 1. Välj **Register** (Registrera).
@@ -50,7 +50,7 @@ I den här snabb starten används MSAL reagera med Authorization Code Flow. En l
 >
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 >
-> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -118,7 +118,7 @@ I den här snabb starten används MSAL reagera med Authorization Code Flow. En l
 > - `Enter_the_Application_Id_Here` är **program-ID: t (Client)** för det program som du har registrerat.
 > - `Enter_the_Cloud_Instance_Id_Here` är instansen av Azure-molnet. För huvud-eller globala Azure-molnet anger du `https://login.microsoftonline.com/` . För **nationella** moln (till exempel Kina), se [nationella moln](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` är inställt på något av följande:
->   - Om ditt program har stöd *för konton i den här organisations katalogen* ersätter du värdet med **klient-ID** eller **klient namn**. Ett exempel är `contoso.microsoft.com`.
+>   - Om ditt program har stöd *för konton i den här organisations katalogen* ersätter du värdet med **klient-ID** eller **klient namn**. Till exempel `contoso.microsoft.com`.
 >   - Om ditt program har stöd *för konton i en organisations katalog* ersätter du värdet med `organizations` .
 >   - Om ditt program har stöd *för konton i en organisations katalog och personliga Microsoft-konton* ersätter du värdet med `common` . **I den här snabb** starten använder du `common` .
 >   - Om du bara vill begränsa stödet till *personliga Microsoft-konton* ersätter du värdet med `consumers` .

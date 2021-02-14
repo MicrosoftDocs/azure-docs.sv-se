@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 09/30/2020
-  ms.openlocfilehash: 120e020a30daf377844ad9933a067def3360a399
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-  ms.translationtype: HT
+  ms.openlocfilehash: 0f799ecd13258b683acd112b01c5d63425dab99c
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91597774"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100094176"
 landingContent:
 - title: Om Azure Governance
   linkLists:
@@ -41,8 +41,12 @@ landingContent:
       url: ./create-management-group-powershell.md
     - text: Skapa en hanteringsgrupp (.NET)
       url: ./create-management-group-dotnet.md
+    - text: Skapa en hanterings grupp (go)
+      url: ./create-management-group-go.md
     - text: Skapa en hanteringsgrupp (JavaScript)
       url: ./create-management-group-javascript.md
+    - text: Skapa en hanterings grupp (python)
+      url: ./create-management-group-python.md
     - text: Skapa en hanteringsgrupp (REST)
       url: ./create-management-group-rest-api.md
     - text: Distribuera resurser till hanteringsgruppen (ARM-mallar)
@@ -63,8 +67,12 @@ landingContent:
       url: /powershell/module/az.resources/#resources
     - text: Azure SDK för .NET
       url: /dotnet/api/overview/azure/managementgroups
+    - text: Azure SDK för Go
+      url: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
     - text: Azure SDK för Java Script
       url: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - text: Azure SDK för Python
+      url: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - text: REST
       url: /rest/api/resources/managementgroups
     - text: Mallar för Resurshanteraren

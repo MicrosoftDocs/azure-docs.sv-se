@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 9565ad1efc5ae3dc03b94c78ce8ce52e8dd48c65
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019201"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382301"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Skapa, Schemalägg och kör återkommande uppgifter och arbets flöden med upprepnings utlösaren i Azure Logic Apps
 
@@ -59,12 +59,12 @@ För skillnader mellan den här utlösaren och den glidande fönster utlösaren 
    ||||||
 
    > [!IMPORTANT]
-   > När upprepningar inte anger avancerade alternativ för schemaläggning baseras framtida upprepningar på den senaste körnings tiden.
-   > Start tiderna för dessa upprepningar kan uppstå på grund av faktorer som svars tid under lagrings anrop. För att se till att din Logi Kap par inte saknar upprepning, särskilt när frekvensen är i dagar eller längre, använder du ett av följande alternativ:
+   > Om en upprepning inte anger ett visst [start datum och](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)en angiven tid körs den första upprepningen omedelbart när du sparar eller distribuerar den logiska appen, trots din utlösare för upprepnings konfiguration. Undvik det här problemet genom att ange start datum och-tid för när du vill att den första upprepningen ska köras.
+   >
+   > Om en upprepning inte anger några andra avancerade schemaläggnings alternativ, till exempel vissa tider för att köra framtida upprepningar, baseras dessa upprepningar på den senaste körnings tiden. Därför kan start tiderna för dessa upprepningar uppstå på grund av faktorer som svars tid under lagrings anrop. 
+   > För att se till att din Logi Kap par inte saknar upprepning, särskilt när frekvensen är i dagar eller längre, kan du prova följande alternativ:
    > 
-   > * Ange en start tid för upprepningen.
-   > 
-   > * Ange i hur många timmar och minuter som upprepningen ska köras med hjälp av egenskaperna som heter **vid dessa timmar** och **på dessa minuter**.
+   > * Ange start datum och-tid för upprepningen plus de angivna tiderna när du vill köra efterföljande upprepningar med hjälp av egenskaperna som heter **vid dessa timmar** och **på dessa minuter**, som endast är tillgängliga **för vecko** frekvensen. 
    > 
    > * Använd den [glidande fönster utlösaren](../connectors/connectors-native-sliding-window.md)i stället för upprepnings utlösaren.
 

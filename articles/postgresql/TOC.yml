@@ -30,6 +30,9 @@
     - name: Versionspolicy
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: Kända problem & begränsningar
+      href: concepts-known-issues-limitations.md
+      displayName: 'issues, limitations, postgresql'
 - name: Enskild server
   expanded: true
   items:

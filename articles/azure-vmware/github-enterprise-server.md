@@ -2,17 +2,17 @@
 title: Konfigurera GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen
 description: Lär dig hur du konfigurerar GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 2b05e352fd8a81d6d180d4c60e67ab48465b284f
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549110"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382029"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Konfigurera GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen
 
-I den här artikeln går vi igenom stegen för att konfigurera GitHub Enterprise Server, den lokala versionen av [GitHub.com](https://github.com/), i ditt privata moln i Azure VMware-lösningen. Scenariot som beskrivs i den här genom gången är för en GitHub Enterprise Server-instans som kan betjäna upp till 3 000 utvecklare som kör upp till 25 jobb per minut på GitHub åtgärder. Den innehåller konfigurationen av (vid tidpunkten för skrivning) för *hands versions* funktioner, till exempel GitHub-åtgärder. Om du vill anpassa konfigurationen för dina specifika behov granskar du kraven som anges i [Installera GitHub Enterprise Server på VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
+I den här artikeln går vi igenom stegen för att konfigurera GitHub Enterprise Server, den lokala versionen av [GitHub.com](https://github.com/), i ditt privata moln i Azure VMware-lösningen. Scenariot är en GitHub Enterprise Server-instans som kan hantera upp till 3 000 utvecklare som kör upp till 25 jobb per minut på GitHub åtgärder. Den innehåller konfigurationen av (vid tidpunkten för skrivning) för *hands versions* funktioner, till exempel GitHub-åtgärder. Om du vill anpassa konfigurationen för dina specifika behov granskar du kraven som anges i [Installera GitHub Enterprise Server på VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -30,7 +30,7 @@ Ange ett identifierbart namn för din nya virtuella dator, till exempel GitHubEn
 
 När du har importerat [justerar du maskin varu konfigurationen](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) utifrån dina behov. I vårt exempel scenario behöver vi följande konfiguration.
 
-| Resurs | Standard konfiguration | Standard konfiguration + "beta funktioner" (åtgärder) |
+| Resurs | Standard konfiguration | Standard konfigurera + "beta funktioner" (åtgärder) |
 | --- | --- | --- |
 | Virtuella processorer | 4 | 8 |
 | Minne | 32 GB | 61 GB |
@@ -59,7 +59,7 @@ Använd dina inställningar.  När instansen startas om kan du fortsätta med n�
 
 :::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Skapa ditt administratörs konto.":::
 
-När instansen har startats om skapar du ett nytt administratörs konto på instansen. Glöm inte att anteckna den här användarens lösen ord.
+När instansen har startats om kan du skapa ett nytt administratörs konto på instansen. Glöm inte att anteckna den här användarens lösen ord.
 
 ### <a name="other-configuration-steps"></a>Andra konfigurations steg
 
@@ -178,7 +178,7 @@ Om du vill göra den här utlöpareen tillgänglig för organisationer i företa
 
 :::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Redigera löpare-åtkomst.":::
 
-Här kommer vi att göra den tillgänglig för alla organisationer, men du kan också begränsa åtkomsten till en delmängd av organisationer och till och med vissa databaser.
+Här kommer vi att göra den tillgänglig för alla organisationer, men du kan begränsa åtkomsten till en delmängd organisationer och till och med vissa databaser.
 
 ## <a name="optional-configuring-github-connect"></a>Valfritt Konfigurera GitHub Connect
 
@@ -227,7 +227,7 @@ I den här artikeln ställer vi in en ny instans av GitHub Enterprise Server, so
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har sett hur du konfigurerar GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen kanske du vill lära dig mer om: 
+Nu när du har täckt GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen kanske du vill lära dig mer om: 
 
 - [Komma igång med GitHub-åtgärder](https://docs.github.com/en/actions).
 - [Delta i beta programmet](https://resources.github.com/beta-signup/).

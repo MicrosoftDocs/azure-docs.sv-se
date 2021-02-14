@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 02/09/2021
 ms.author: banders
-ms.openlocfilehash: 2cd0611d5701f5ca407afd6d4e3b1b0ae22b6c12
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562981"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392280"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Hantera reservationer för Azure-resurser
 
@@ -35,7 +35,7 @@ Du kan visa en reservationsbeställning genom att gå till **Reservationer**, v�
 
 ![Exempel på information om en reservationsbeställning med reservationsbeställnings-id:t ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
-En reservation ärver sina behörigheter från reservationsbeställningen.
+En reservation ärver sina behörigheter från reservationsbeställningen. Om du vill byta ut eller återbetala en reservation måste användaren läggas till i reservations ordern.
 
 ## <a name="change-the-reservation-scope"></a>Ändra reservationens omfång
 

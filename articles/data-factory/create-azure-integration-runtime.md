@@ -1,23 +1,19 @@
 ---
 title: Skapa Azure integration runtime i Azure Data Factory
 description: Lär dig hur du skapar Azure integration runtime i Azure Data Factory, som används för att kopiera data och skicka Transform-aktiviteter.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373070"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Så här skapar och konfigurerar du Azure Integration Runtime
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Skapa och konfigurera Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Integration Runtime (IR) är den beräknings infrastruktur som används av Azure Data Factory för att tillhandahålla funktioner för data integrering i olika nätverks miljöer. Mer information om IR finns i [integration runtime](concepts-integration-runtime.md).
@@ -41,7 +37,7 @@ Integration Runtime kan skapas med PowerShell-cmdleten **set-AzDataFactoryV2Inte
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-För Azure IR måste typen anges som **hanterad** . Du behöver inte ange beräknings information eftersom den hanteras helt elastiskt i molnet. Ange beräknings information som Node-storlek och antal noder när du vill skapa Azure-SSIS IR. Mer information finns i [skapa och konfigurera Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
+För Azure IR måste typen anges som **hanterad**. Du behöver inte ange beräknings information eftersom den hanteras helt elastiskt i molnet. Ange beräknings information som Node-storlek och antal noder när du vill skapa Azure-SSIS IR. Mer information finns i [skapa och konfigurera Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
 
 Du kan konfigurera en befintlig Azure IR att ändra dess plats med hjälp av Set-AzDataFactoryV2IntegrationRuntime PowerShell-cmdleten. Mer information om platsen för en Azure IR finns i [Introduktion till integration runtime](concepts-integration-runtime.md).
 
@@ -52,16 +48,16 @@ Använd följande steg för att skapa en Azure IR med hjälp av Azure Data Facto
 
    ![Knappen Hantera start sida](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Välj **integrerings körningar** i den vänstra rutan och välj sedan **+ ny** .
+1. Välj **integrerings körningar** i den vänstra rutan och välj sedan **+ ny**.
 
    ![Skärm bild som visar integrerings körningar i det vänstra fönstret och knappen + Ny.](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. På sidan **installation av integration runtime** väljer du **Azure, egen värd** och väljer sedan **Fortsätt** . 
+1. På sidan **installation av integration runtime** väljer du **Azure, egen värd** och väljer sedan **Fortsätt**. 
 
-1. På följande sida väljer du **Azure** för att skapa en Azure IR och väljer sedan **Fortsätt** .
+1. På följande sida väljer du **Azure** för att skapa en Azure IR och väljer sedan **Fortsätt**.
    ![Skapa Integration Runtime](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. Ange ett namn för din Azure IR och välj **skapa** .
+1. Ange ett namn för din Azure IR och välj **skapa**.
    ![Skapa en Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Ett popup-meddelande visas när skapandet har slutförts. På sidan **integrerings körningar** ser du till att du ser den nyligen skapade IR-filen i listan.

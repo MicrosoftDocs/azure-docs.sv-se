@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 02/11/2021
 tags: connectors
-ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355128"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382367"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Skapa och hantera poster i Common Data Service (Microsoft Dataverse) med hjälp av Azure Logic Apps
 
 > [!NOTE]
 > I november 2020 har Common Data Service bytt namn till Microsoft Dataverse.
 
-Med [Azure Logic Apps](../logic-apps/logic-apps-overview.md) och [common data service Connector](/connectors/commondataservice/)kan du bygga automatiserade arbets flöden som hanterar poster i din [common data service, nu Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) Database. Dessa arbets flöden kan skapa poster, uppdatera poster och utföra andra åtgärder. Du kan också hämta information från Common Data Service-databasen och göra utdata tillgängliga för andra åtgärder som ska användas i din Logic app. När en post till exempel uppdateras i Common Data Service-databasen kan du skicka ett e-postmeddelande med hjälp av Office 365 Outlook Connector.
+Med [Azure Logic Apps](../logic-apps/logic-apps-overview.md) och [common data service Connector](/connectors/commondataservice/)kan du bygga automatiserade arbets flöden som hanterar poster i din [common data service, nu Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) Database. Dessa arbets flöden kan skapa poster, uppdatera poster och utföra andra åtgärder. Du kan också få information från Dataverse-databasen och göra utdata tillgängliga för andra åtgärder som ska användas i din Logic app. Till exempel när en post uppdateras i Dataverse-databasen kan du skicka ett e-postmeddelande med hjälp av Office 365 Outlook Connector.
 
 Den här artikeln visar hur du kan skapa en Logic app som skapar en uppgifts post när en ny leadpost skapas.
 
@@ -32,7 +32,7 @@ Den här artikeln visar hur du kan skapa en Logic app som skapar en uppgifts pos
   * [Lär dig: kom igång med Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Översikt över Power Platform-miljöer](/power-platform/admin/environments-overview)
 
-* Grundläggande information om [hur du skapar](../logic-apps/quickstart-create-first-logic-app-workflow.md) Logi Kap par och vilken Logic-app du vill använda för att komma åt posterna i din common data service databas. Om du vill starta din Logic app med en Common Data Service utlösare behöver du en tom Logic-app. Om du inte har använt Azure Logic Apps bör du gå igenom [snabb starten: skapa ditt första arbets flöde med hjälp av Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Grundläggande information om [hur du skapar](../logic-apps/quickstart-create-first-logic-app-workflow.md) Logi Kap par och vilken Logic-app du vill använda för att komma åt posterna i Dataverse-databasen. Om du vill starta din Logic app med en Common Data Service utlösare behöver du en tom Logic-app. Om du inte har använt Azure Logic Apps bör du gå igenom [snabb starten: skapa ditt första arbets flöde med hjälp av Azure Logic Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="add-common-data-service-trigger"></a>Lägg till Common Data Service-utlösare
 
@@ -170,6 +170,62 @@ I det här exemplet visas hur åtgärden **skapa en ny post** skapar en ny "task
 ## <a name="connector-reference"></a>Referens för anslutningsapp
 
 Teknisk information som baseras på kopplingens Swagger beskrivning, till exempel utlösare, åtgärder, gränser och annan information finns på [kopplingens referens sida](/connectors/commondataservice/).
+
+## <a name="troubleshooting-problems"></a>Felsöka problem
+
+### <a name="calls-from-multiple-environments"></a>Anrop från flera miljöer
+
+Båda kopplingarna, Common Data Service och Common Data Service (aktuell miljö) lagrar information om de Logic app-arbetsflöden som behöver och får aviseringar om enhets ändringar med hjälp av `callbackregistrations` entiteten i Microsoft-Dataverse. Om du kopierar en Dataverse-organisation kopieras alla webhookar. Om du kopierar din organisation innan du inaktiverar arbets flöden som är mappade till din organisation, pekar alla kopierade webhookar också i samma Logic Apps, som sedan får aviseringar från flera organisationer.
+
+Om du vill stoppa oönskade meddelanden tar du bort återanrops registreringen från organisationen som skickar dessa meddelanden genom att följa dessa steg:
+
+1. Identifiera Dataverse-organisationen från vilken du vill ta bort meddelanden och logga in på den organisationen.
+
+1. I webbläsaren Chrome letar du reda på den återanrops registrering som du vill ta bort genom att följa dessa steg:
+
+   1. Granska den allmänna listan för alla återanrops registreringar i följande OData URI så att du kan visa data i `callbackregistrations` entiteten:
+
+      `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
+
+      > [!NOTE]
+      > Om inga värden returneras kanske du inte har behörighet att visa den här entitetstypen, eller så kanske du inte är inloggad i rätt organisation.
+
+   1. Filtrera på den Utlös ande enhetens logiska namn `entityname` och meddelande händelsen som matchar ditt Logic app-arbetsflöde (meddelande). Varje händelse typ mappas till meddelandet Integer på följande sätt:
+
+      | Händelsetyp | Meddelande-heltal |
+      |------------|-----------------|
+      | Skapa | 1 |
+      | Ta bort | 2 |
+      | Uppdatera | 3 |
+      | CreateOrUpdate | 4 |
+      | CreateOrDelete | 5 |
+      | UpdateOrDelete | 6 |
+      | CreateOrUpdateOrDelete | 7 |
+      |||
+
+      Det här exemplet visar hur du kan filtrera efter `Create` meddelanden på en entitet med namnet `nov_validation` med hjälp av följande OData URI för en exempel organisation:
+
+      `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
+
+      ![Skärm bild som visar webbläsarfönstret och OData URI i adress fältet.](./media/connect-common-data-service/find-callback-registrations.png)
+
+      > [!TIP]
+      > Om det finns flera utlösare för samma entitet eller händelse kan du filtrera listan genom att använda ytterligare filter som `createdon` `_owninguser_value` attributen och. Ägarens användar namn visas under `/api/data/v9.0/systemusers({id})` .
+
+   1. Följ dessa steg när du har hittat ID: t för den återanrops registrering som du vill ta bort:
+   
+      1. Öppna krom Utvecklarverktyg (tangent bord: F12) i webbläsaren.
+
+      1. Välj fliken **konsol** längst upp i fönstret.
+
+      1. I kommando tolken anger du det här kommandot, som skickar en begäran om att ta bort den angivna återanrops registreringen:
+
+         `fetch('http://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations({ID-to-delete})', { method: 'DELETE'})`
+
+         > [!IMPORTANT]
+         > Se till att du gör begäran från en icke-Unified client Interface-sida (t. ex. på sidan OData-eller API-svar). Annars kan logiken i den app.js filen störa den här åtgärden.
+
+   1. Om du vill bekräfta att återanrops registreringen inte längre finns kontrollerar du listan med återanrops registreringar.
 
 ## <a name="next-steps"></a>Nästa steg
 

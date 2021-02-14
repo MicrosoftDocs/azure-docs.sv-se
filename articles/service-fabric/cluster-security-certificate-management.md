@@ -4,12 +4,12 @@ description: Lär dig mer om att hantera certifikat i ett Service Fabric kluster
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901274"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099514"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certifikat hantering i Service Fabric kluster
 
@@ -427,6 +427,7 @@ KVVM-tillägget, som en etablerings agent, körs kontinuerligt enligt en fördef
 Du kanske har märkt flaggan "linkOnRenewal" för KVVM-tillägget och det faktum att det är inställt på false. Vi riktar in dig på djupet beteende som styrs av den här flaggan och dess konsekvenser för ett klusters drift. Observera att det här beteendet är speciellt för Windows.
 
 Enligt dess [definition](../virtual-machines/extensions/key-vault-windows.md#extension-schema):
+
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```

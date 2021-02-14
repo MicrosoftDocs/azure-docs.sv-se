@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
-  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-  ms.translationtype: HT
+  ms.openlocfilehash: 65b2c25bde616f8a2bbc9abf6439871d288306b9
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570141"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100363040"
 landingContent:
 - title: Om Azure Functions
   linkLists:
@@ -128,14 +128,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Distribuera med hjälp av Jenkins-pluginprogrammet
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: Prestanda och övervakning
+- title: Metod tips för prestanda och övervakning
   linkLists:
   - linkListType: concept
     links:
+    - text: Prestanda och tillförlitlighet
+      url: functions-best-practices.md
+    - text: Hantera anslutningar
+      url: manage-connections.md
+    - text: Överväganden för lagring
+      url: storage-considerations.md
+    - text: Fel hantering och funktions försök
+      url: functions-bindings-error-pages.md
+    - text: Säkerhet
+      url: security-concepts.md
     - text: Övervaka funktioner
       url: functions-monitoring.md
-    - text: Optimera prestanda
-      url: functions-best-practices.md
     - text: Nätverksöverväganden
       url: functions-networking-options.md
   - linkListType: how-to-guide

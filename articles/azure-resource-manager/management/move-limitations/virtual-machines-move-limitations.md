@@ -3,12 +3,12 @@ title: Flytta virtuella Azure-datorer till en ny prenumeration eller resurs grup
 description: Använd Azure Resource Manager för att flytta virtuella datorer till en ny resurs grupp eller prenumeration.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456315"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104917"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Flytta vägledning för virtuella datorer
 
@@ -58,7 +58,7 @@ Virtuella datorer som skapats från Marketplace-resurser med anslutna planer kan
 
 Om du vill flytta virtuella datorer som kon figurer ATS med Azure Backup måste du ta bort återställnings punkterna från valvet.
 
-Om [mjuk borttagning](../../../backup/backup-azure-security-feature-cloud.md) är aktiverat för den virtuella datorn kan du inte flytta den virtuella datorn medan återställnings punkterna behålls. [Inaktivera mjuk borttagning](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) eller vänta 14 dagar efter att återställnings punkterna har tagits bort.
+Om [mjuk borttagning](../../../backup/soft-delete-virtual-machines.md) är aktiverat för den virtuella datorn kan du inte flytta den virtuella datorn medan återställnings punkterna behålls. [Inaktivera mjuk borttagning](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) eller vänta 14 dagar efter att återställnings punkterna har tagits bort.
 
 ### <a name="portal"></a>Portalen
 

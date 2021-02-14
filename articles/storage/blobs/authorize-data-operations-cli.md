@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 060bfb6c88bbed8ba12c5b5ebfd2e9617f5abfb2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637471"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361680"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Välj hur du vill ge åtkomst till BLOB-data med Azure CLI
 
@@ -33,6 +33,9 @@ Azure CLI-kommandon för att läsa och skriva BLOB-data inkluderar valfri `--aut
 - Ange `--auth-mode` parametern till det bakåtkompatibla `key` värdet för att försöka hämta konto åtkomst nyckeln som ska användas för auktorisering. Om du utelämnar `--auth-mode` parametern försöker Azure CLI också hämta åtkomst nyckeln.
 
 Om du vill använda `--auth-mode` parametern kontrollerar du att du har installerat Azure CLI-version 2.0.46 eller senare. Kör `az --version` för att kontrol lera den installerade versionen.
+
+> [!NOTE]
+> När ett lagrings konto är låst med ett Azure Resource Manager **skrivskyddat** lås, tillåts inte [list nyckel](/rest/api/storagerp/storageaccounts/listkeys) åtgärden för det lagrings kontot. **List nycklar** är en post-åtgärd och alla post-åtgärder förhindras när ett **skrivskyddat** lås har kon figurer ATS för kontot. Därför måste användare som inte redan har konto nycklar använda Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-data när kontot är låst med ett **skrivskyddat** lås.
 
 > [!IMPORTANT]
 > Om du utelämnar `--auth-mode` parametern eller anger den till `key` , försöker Azure CLI använda kontots åtkomst nyckel för auktorisering. I det här fallet rekommenderar Microsoft att du anger åtkomst nyckeln antingen i kommandot eller i **AZURE_STORAGE_KEY** -miljövariabeln. Mer information om miljövariabler finns i avsnittet [Ange miljövariabler för parametrar för auktorisering](#set-environment-variables-for-authorization-parameters).
@@ -82,6 +85,9 @@ az storage container create \
     --account-key <key>
     --auth-mode key
 ```
+
+> [!IMPORTANT]
+> När ett lagrings konto är låst med ett Azure Resource Manager **skrivskyddat** lås, tillåts inte [list nyckel](/rest/api/storagerp/storageaccounts/listkeys) åtgärden för det lagrings kontot. **List nycklar** är en post-åtgärd och alla post-åtgärder förhindras när ett **skrivskyddat** lås har kon figurer ATS för kontot. Därför måste användarna komma åt data med Azure AD-autentiseringsuppgifter när kontot är låst med ett **skrivskyddat** lås.
 
 ## <a name="authorize-with-a-sas-token"></a>Auktorisera med en SAS-token
 

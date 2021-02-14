@@ -1,23 +1,18 @@
 ---
 title: Flytta data till/från Azure-tabellen
 description: Lär dig hur du flyttar data till/från Azure Table Storage med Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1d7802a3fe4fb904aad7fd9257edbf8b10efe127
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637436"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392127"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Flytta data till och från Azure-tabellen med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -33,12 +28,12 @@ Du kan kopiera data från alla käll data lager som stöds till Azure Table Stor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopierings aktivitet som flyttar data till/från en Azure-Table Storage med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera** . Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
+Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager mall** , .net- **API** och **REST API** . Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager: 
 
@@ -79,10 +74,10 @@ Vilka egenskaper som är tillgängliga i avsnittet typeProperties i aktiviteten 
 
 **AzureTableSource** stöder följande egenskaper i avsnittet typeProperties:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Använd den anpassade frågan för att läsa data. |Sträng för Azure Table-fråga. Se exemplen i nästa avsnitt. |Nej. När ett tableName anges utan azureTableSourceQuery, kopieras alla poster från tabellen till målet. Om en azureTableSourceQuery också anges kopieras poster från den tabell som uppfyller frågan till målet. |
-| azureTableSourceIgnoreTableNotFound |Ange om förtäring av undantag för tabell saknas. |TRUE<br/>FALSE |Nej |
+| azureTableSourceIgnoreTableNotFound |Ange om förtäring av undantag för tabell saknas. |TRUE<br/>FALSE |Inga |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-exempel
 Om Azure Table-kolumnen är av sträng typ:
@@ -99,12 +94,12 @@ Om Azure Table-kolumnen är av typen datetime:
 
 **AzureTableSink** stöder följande egenskaper i avsnittet typeProperties:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Standardvärdet för partitionerings nyckel som kan användas av mottagaren. |Ett sträng värde. |Nej |
-| azureTablePartitionKeyName |Ange namnet på den kolumn vars värden används som partitionsnyckel. Om inget anges används AzureTableDefaultPartitionKeyValue som partitionsnyckel. |Ett kolumn namn. |Nej |
-| azureTableRowKeyName |Ange namnet på den kolumn vars kolumn värden används som rad nyckel. Om inget anges ska du använda ett GUID för varje rad. |Ett kolumn namn. |Nej |
-| azureTableInsertType |Det läge där data ska infogas i Azure-tabellen.<br/><br/>Den här egenskapen anger om befintliga rader i utdatatabellen med matchande partition och rad nycklar har ersatts eller slås samman. <br/><br/>Information om hur de här inställningarna (sammanfoga och ersätt) fungerar finns i avsnittet [Infoga eller sammanfoga entiteter](/rest/api/storageservices/Insert-Or-Merge-Entity) och [Infoga eller ersätta entiteter](/rest/api/storageservices/Insert-Or-Replace-Entity) . <br/><br> Den här inställningen gäller på radnivå, inte på tabell nivå, och inget av alternativen tar bort rader i den utgående tabellen som inte finns i indata. |Sammanfoga (standard)<br/>bytt |Nej |
+| azureTableDefaultPartitionKeyValue |Standardvärdet för partitionerings nyckel som kan användas av mottagaren. |Ett sträng värde. |Inga |
+| azureTablePartitionKeyName |Ange namnet på den kolumn vars värden används som partitionsnyckel. Om inget anges används AzureTableDefaultPartitionKeyValue som partitionsnyckel. |Ett kolumn namn. |Inga |
+| azureTableRowKeyName |Ange namnet på den kolumn vars kolumn värden används som rad nyckel. Om inget anges ska du använda ett GUID för varje rad. |Ett kolumn namn. |Inga |
+| azureTableInsertType |Det läge där data ska infogas i Azure-tabellen.<br/><br/>Den här egenskapen anger om befintliga rader i utdatatabellen med matchande partition och rad nycklar har ersatts eller slås samman. <br/><br/>Information om hur de här inställningarna (sammanfoga och ersätt) fungerar finns i avsnittet [Infoga eller sammanfoga entiteter](/rest/api/storageservices/Insert-Or-Merge-Entity) och [Infoga eller ersätta entiteter](/rest/api/storageservices/Insert-Or-Replace-Entity) . <br/><br> Den här inställningen gäller på radnivå, inte på tabell nivå, och inget av alternativen tar bort rader i den utgående tabellen som inte finns i indata. |Sammanfoga (standard)<br/>bytt |Inga |
 | writeBatchSize |Infogar data i Azure-tabellen när writeBatchSize eller writeBatchTimeout har nåtts. |Heltal (antal rader) |Nej (standard: 10000) |
 | writeBatchTimeout |Infogar data i Azure-tabellen när writeBatchSize eller writeBatchTimeout har nåtts |tidsintervall<br/><br/>Exempel: "00:20:00" (20 minuter) |Nej (standard-timeout-värdet för Storage-klienten är 90 SEK) |
 
@@ -155,7 +150,7 @@ Exemplet kopierar data som tillhör standardpartitionen i en Azure-tabell till e
   }
 }
 ```
-Azure Data Factory stöder två typer av Azure Storage länkade tjänster: **AzureStorage** och **AzureStorageSas** . För det första anger du anslutnings strängen som innehåller konto nyckeln och för den senare, anger du URL: en för signatur för delad åtkomst (SAS). Mer information finns i avsnittet [länkade tjänster](#linked-service-properties) .  
+Azure Data Factory stöder två typer av Azure Storage länkade tjänster: **AzureStorage** och **AzureStorageSas**. För det första anger du anslutnings strängen som innehåller konto nyckeln och för den senare, anger du URL: en för signatur för delad åtkomst (SAS). Mer information finns i avsnittet [länkade tjänster](#linked-service-properties) .  
 
 **Data uppsättning för Azure Table-indata:**
 
@@ -250,7 +245,7 @@ Data skrivs till en ny BLOB varje timme (frekvens: timme, intervall: 1). Mappsö
 
 **Kopiera aktivitet i en pipeline med AzureTableSource och BlobSink:**
 
-Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **AzureTableSource** och **mottagar** typ är inställd på **BlobSink** . SQL-frågan som anges med egenskapen **AzureTableSourceQuery** väljer data från standardpartitionen varje timme som ska kopieras.
+Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **AzureTableSource** och **mottagar** typ är inställd på **BlobSink**. SQL-frågan som anges med egenskapen **AzureTableSourceQuery** väljer data från standardpartitionen varje timme som ska kopieras.
 
 ```JSON
 {
@@ -323,7 +318,7 @@ Exemplet kopierar Time Series-data från en Azure-blob till en Azure-tabell varj
 }
 ```
 
-Azure Data Factory stöder två typer av Azure Storage länkade tjänster: **AzureStorage** och **AzureStorageSas** . För det första anger du anslutnings strängen som innehåller konto nyckeln och för den senare, anger du URL: en för signatur för delad åtkomst (SAS). Mer information finns i avsnittet [länkade tjänster](#linked-service-properties) .
+Azure Data Factory stöder två typer av Azure Storage länkade tjänster: **AzureStorage** och **AzureStorageSas**. För det första anger du anslutnings strängen som innehåller konto nyckeln och för den senare, anger du URL: en för signatur för delad åtkomst (SAS). Mer information finns i avsnittet [länkade tjänster](#linked-service-properties) .
 
 **Data uppsättning för Azure Blob-indata:**
 
@@ -417,7 +412,7 @@ Exemplet kopierar data till en tabell med namnet "min tabell" i Azure-tabellen. 
 
 **Kopiera aktivitet i en pipeline med BlobSource och AzureTableSink:**
 
-Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **BlobSource** och **mottagar** typ är inställd på **AzureTableSink** .
+Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **BlobSource** och **mottagar** typ är inställd på **AzureTableSink**.
 
 ```JSON
 {

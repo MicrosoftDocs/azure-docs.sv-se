@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 03ffea7688207b56a683d3afcbe49bf95ea00708
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226312"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103132"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Självstudie: lägga till inloggning till Microsoft i en ASP.NET-webbapp
 
@@ -48,7 +48,7 @@ Det exempel program som du skapar baseras på ett scenario där du kan använda 
 
 I den här guiden används följande bibliotek:
 
-|Bibliotek|Beskrivning|
+|Bibliotek|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Mellanprogram som gör att ett program kan använda OpenIdConnect för autentisering|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Mellanprogram som gör det möjligt för ett program att underhålla en användarsession med hjälp av cookies|
@@ -361,7 +361,7 @@ Om du vill registrera ditt program och lägga till program registrerings informa
 
 Följ dessa steg för att snabbt registrera ditt program:
 
-1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .  
+1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar</a> .  
 1. Ange ett namn för programmet och välj **Registrera**.
 1. Följ anvisningarna för att ladda ned och automatiskt konfigurera det nya programmet i ett enda klick.
 
@@ -375,7 +375,7 @@ Du registrerar programmet och lägger till appens registreringsinformationen i l
    1. Högerklicka på projektet i Visual Studio, Välj **Egenskaper** och välj sedan fliken **webb** . I avsnittet **servrar** ändrar du projekt- **URL** -inställningen till **SSL-URL: en**.
    1. Kopiera SSL-URL: en. Du kommer att lägga till denna URL i listan över omdirigerings-URI: er i registrerings portalens lista över omdirigerings-URI: er i nästa steg.<br/><br/>![Projektegenskaper](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
    
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

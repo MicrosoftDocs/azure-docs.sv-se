@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: bec931309cbd6bc8bfa96ba3e054d06336c031e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f0fafa5c0cc2e0b1bf0f4e11db3265824feb5296
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459551"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374717"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Självstudie: integrera JFrog-artefakter med Azure Active Directory
 
@@ -49,7 +49,7 @@ Om du vill konfigurera integrationen av JFrog-artefakter i Azure AD måste du l�
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **JFrog artefakter** i sökrutan.
 1. Välj **JFrog artefakter** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -81,20 +81,25 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `<servername>.jfrog.io`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
+    
+    - För artefakter 6. x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - För artefakt 7. x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<servername>.jfrog.io/<servername>/webapp/`
+    I textrutan **Inloggnings-URL** skriver du in en URL med följande mönster:
+    - För artefakter 6. x: `https://<servername>.jfrog.io/<servername>/webapp/`
+    - För artefakt 7. x: `https://<servername>.jfrog.io/ui/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [JFrog](https://support.jfrog.com) för att hämta de här värdena. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-1. JFrog-artefakt programmet förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+1. JFrog-artefakt programmet förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialog rutan användarattribut.
 
     ![Skärm bild som visar användarattribut med redigerings kontrollen som kallas.](common/edit-attribute.png)
 
-1. Utöver ovan förväntar sig JFrog-artefakt program att fler attribut skickas tillbaka i SAML-svar. I avsnittet **användarattribut &-anspråk** i dialog rutan **grupp anspråk (förhands granskning)** utför du följande steg:
+1. Förutom ovanstående förväntar JFrog artefakter ett antal ytterligare attribut som ska skickas tillbaka i SAML-svaret. I avsnittet **användarattribut &-anspråk** i dialog rutan **grupp anspråk (förhands granskning)** utför du följande steg:
 
     a. Klicka på **pennan** bredvid **grupper som returneras i anspråk**.
 
@@ -106,23 +111,26 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     c. Klicka på **Spara**.
 
-4. På sidan **Konfigurera en enskild Sign-On med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **certifikat (RAW)** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
+4. På sidan **Konfigurera enskilda Sign-On med SAML** , i avsnittet SAML- **signeringscertifikat** , letar du upp **certifikatet (base64)** och väljer **Hämta** för att ladda ned certifikatet och spara det på datorn.
 
-    ![Länk för nedladdning av certifikatet](common/certificateraw.png)
+    ![Länk för nedladdning av certifikatet](./media/jfrog-artifactory-tutorial/certificate-base.png)
 
-6. I avsnittet **Konfigurera JFrog artefakter** kopierar du lämpliga URL: er baserat på ditt krav.
+6. Konfigurera artefakten (SAML service Providerns namn) med fältet "ID" (se steg 4). I avsnittet **Konfigurera JFrog artefakter** kopierar du lämpliga URL: er baserat på ditt krav.
+
+   - För artefakter 6. x: `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+   - För artefakt 7. x: `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
 ### <a name="configure-jfrog-artifactory-sso"></a>Konfigurera JFrog-artefakter för enkel inloggning
 
-Om du vill konfigurera enkel inloggning på **JFrog-artefakt** sidan måste du skicka det hämtade **certifikatet (RAW)** och lämpliga kopierade url: er från Azure Portal till [JFrog för artefakt support](https://support.jfrog.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+Allt du behöver för att konfigurera enkel inloggning på JFrog- **artefakten** kan konfigureras av artefakt administratören på SAML configugration-skärmen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
@@ -134,13 +142,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till JFrog-artefakter.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **JFrog artefakter**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

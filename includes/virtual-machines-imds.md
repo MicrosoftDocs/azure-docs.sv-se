@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 0121ea65b190f254f032085133f12f6eb0f374ca
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: fcdccf6701afe73ab0f11a7a907072b01a9d5aa4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808493"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373323"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -42,7 +42,7 @@ Här är exempel kod för att hämta alla metadata för en instans. För att få
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -88,7 +88,7 @@ I allmänhet är begär anden till IMDS begränsade till 5 begär Anden per seku
 
 Följande HTTP-verb stöds för närvarande:
 
-| Verb | Description |
+| Verb | Beskrivning |
 |------|-------------|
 | `GET` | Hämta den begärda resursen
 
@@ -106,7 +106,7 @@ http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=j
 
 Anger parametrarna:
 
-| Name | Värde |
+| Namn | Värde |
 |------|-------|
 | `api-version` | `2019-06-04`
 | `format` | `json`
@@ -268,7 +268,7 @@ Rot slut punkten är `http://169.254.169.254/metadata` .
 
 IMDS-API: et innehåller flera slut punkts kategorier som representerar olika data källor, som var och en innehåller en eller flera slut punkter. Se varje kategori för information.
 
-| Kategori rot | Description | Version introducerad |
+| Kategori rot | Beskrivning | Version introducerad |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | Se [attesterade data](#attested-data) | 2018-10-01
 | `/metadata/identity` | Se [hanterad identitet via IMDS](#managed-identity) | 2018-02-01
@@ -317,7 +317,7 @@ GET /metadata/instance
 
 #### <a name="parameters"></a>Parametrar
 
-| Name | Obligatorisk/valfri | Beskrivning |
+| Namn | Obligatorisk/valfri | Beskrivning |
 |------|-------------------|-------------|
 | `api-version` | Krävs | Den version som används för att betjäna begäran.
 | `format` | Valfritt | `json`Svarets format (eller `text` ). * Obs: kan krävas när parametrarna för begäran används
@@ -332,7 +332,7 @@ Schema analys:
 
 **Beräkning**
 
-| Data | Description | Version introducerad |
+| Data | Beskrivning | Version introducerad |
 |------|-------------|--------------------|
 | `azEnvironment` | Azure-miljö där den virtuella datorn körs i | 2018-10-01
 | `customData` | Den här funktionen är för närvarande inaktive rad. Vi kommer att uppdatera den här dokumentationen när den blir tillgänglig | 2019-02-01
@@ -373,7 +373,7 @@ Lagrings profilen för en virtuell dator är uppdelad i tre kategorier: avbildni
 
 Objektet bild referens innehåller följande information om operativ system avbildningen:
 
-| Data | Description |
+| Data | Beskrivning |
 |------|-------------|
 | `id` | Resurs-ID
 | `offer` | Erbjudande för plattformen eller Marketplace-avbildningen
@@ -383,7 +383,7 @@ Objektet bild referens innehåller följande information om operativ system avbi
 
 Objektet OS-disk innehåller följande information om den OS-disk som används av den virtuella datorn:
 
-| Data | Description |
+| Data | Beskrivning |
 |------|-------------|
 | `caching` | Krav för cachelagring
 | `createOption` | Information om hur den virtuella datorn skapades
@@ -398,7 +398,7 @@ Objektet OS-disk innehåller följande information om den OS-disk som används a
 
 Data disks-matrisen innehåller en lista över data diskar som är anslutna till den virtuella datorn. Varje data disk objekt innehåller följande information:
 
-Data | Description |
+Data | Beskrivning |
 -----|-------------|
 | `caching` | Krav för cachelagring
 | `createOption` | Information om hur den virtuella datorn skapades
@@ -414,7 +414,7 @@ Data | Description |
 
 **Nätverk**
 
-| Data | Description | Version introducerad |
+| Data | Beskrivning | Version introducerad |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | Lokal IPv4-adress för den virtuella datorn | 2017-04-02
 | `ipv4.publicIpAddress` | Offentlig IPv4-adress för den virtuella datorn | 2017-04-02
@@ -494,7 +494,7 @@ Som tjänst leverantör kan du få ett support samtal där du vill ha mer inform
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -653,7 +653,7 @@ Molnet och värdena i Azure-miljön visas här.
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -721,7 +721,7 @@ GET /metadata/attested/document
 
 #### <a name="parameters"></a>Parametrar
 
-| Name | Obligatorisk/valfri | Beskrivning |
+| Namn | Obligatorisk/valfri | Beskrivning |
 |------|-------------------|-------------|
 | `api-version` | Krävs | Den version som används för att betjäna begäran.
 | `nonce` | Valfritt | En 10-siffrig sträng som fungerar som en kryptografisk nonce. Om inget värde anges använder IMDS den aktuella UTC-tidsstämpeln.
@@ -746,7 +746,7 @@ För virtuella datorer som skapats med den klassiska distributions modellen är 
 
 Det avkodade dokumentet innehåller följande fält:
 
-| Data | Description | Version introducerad |
+| Data | Beskrivning | Version introducerad |
 |------|-------------|--------------------|
 | `licenseType` | Typ av licens för [Azure Hybrid-förmån](https://azure.microsoft.com/pricing/hybrid-benefit). Detta är endast tillgängligt för AHB-aktiverade virtuella datorer. | 2020-09-01
 | `nonce` | En sträng som kan anges med begäran. Om inget `nonce` har angetts används den aktuella UTC-tidsstämpeln för universell tid. | 2018-10-01

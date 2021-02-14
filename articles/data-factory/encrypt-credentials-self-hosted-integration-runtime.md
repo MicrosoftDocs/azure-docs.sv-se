@@ -1,22 +1,17 @@
 ---
 title: Kryptera autentiseringsuppgifter i Azure Data Factory
 description: Lär dig hur du krypterar och lagrar autentiseringsuppgifter för dina lokala data lager på en dator med integration runtime med egen värd.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: cd775c5a3bf367600a4537a9409a9bb8f902f588
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59d177aa3baf25f185201f1b6c4738cfce9c25a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82628988"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392654"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Kryptera autentiseringsuppgifter för lokala data lager i Azure Data Factory
 
@@ -50,7 +45,7 @@ Ersätt `<servername>` , `<databasename>` , `<username>` och `<password>` med v�
 ```
 
 ## <a name="encrypt-credentials"></a>Kryptera autentiseringsuppgifter
-Om du vill kryptera känsliga data från JSON-nyttolasten på en lokal lokal integration runtime kör du **New-AzDataFactoryV2LinkedServiceEncryptedCredential**och skickar den till JSON-nyttolasten. Denna cmdlet säkerställer att autentiseringsuppgifterna krypteras med DPAPI och lagras på den lokala integration runtime-noden lokalt. Nytto lasten för utdata som innehåller den krypterade referensen till autentiseringsuppgiften kan omdirigeras till en annan JSON-fil (i det här fallet encryptedLinkedService.jspå).
+Om du vill kryptera känsliga data från JSON-nyttolasten på en lokal lokal integration runtime kör du **New-AzDataFactoryV2LinkedServiceEncryptedCredential** och skickar den till JSON-nyttolasten. Denna cmdlet säkerställer att autentiseringsuppgifterna krypteras med DPAPI och lagras på den lokala integration runtime-noden lokalt. Nytto lasten för utdata som innehåller den krypterade referensen till autentiseringsuppgiften kan omdirigeras till en annan JSON-fil (i det här fallet encryptedLinkedService.jspå).
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

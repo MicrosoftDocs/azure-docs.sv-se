@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från och till Microsoft Access
 description: Lär dig hur du kopierar data från och till Microsoft Access genom att använda en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
-ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a17876385e3a48543c8185a0f48a3e4016afa1a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513373"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374396"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Kopiera data från och till Microsoft Access med Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +28,7 @@ Den här Microsoft Access-anslutningen stöds för följande aktiviteter:
 
 Du kan kopiera data från Microsoft Access-källan till alla mottagar data lager som stöds, eller kopiera från alla käll data lager som stöds till Microsoft Access-mottagare. En lista över data lager som stöds som källor/mottagare av kopierings aktiviteten finns i tabellen över [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda den här Microsoft Access-anslutningen måste du:
 
@@ -55,7 +51,7 @@ Följande egenskaper stöds för Microsoft Access-länkade tjänster:
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Egenskapen Type måste anges till: **MicrosoftAccess** | Ja |
-| Begär | ODBC-anslutningssträngen exklusive Credential-delen. Du kan ange anslutnings strängen eller använda system-DSN (data källans namn) som du ställer in på den Integration Runtime datorn (du behöver fortfarande ange Credential-delen i den länkade tjänsten).<br> Du kan också ange ett lösen ord i Azure Key Vault och hämta  `password`   konfigurationen från anslutnings strängen.Mer information finns [i lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md)   .| Ja |
+| Begär | ODBC-anslutningssträngen exklusive Credential-delen. Du kan ange anslutnings strängen eller använda system-DSN (data källans namn) som du ställer in på den Integration Runtime datorn (du behöver fortfarande ange Credential-delen i den länkade tjänsten).<br> Du kan också ange ett lösen ord i Azure Key Vault och hämta `password` konfigurationen från anslutnings strängen. Mer information finns [i lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) .| Ja |
 | authenticationType | Typ av autentisering som används för att ansluta till data lagret för Microsoft Access.<br/>Tillåtna värden är: **Basic** och **Anonymous**. | Ja |
 | userName | Ange användar namn om du använder grundläggande autentisering. | Inga |
 | password | Ange lösen ordet för det användar konto som du har angett för användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Inga |

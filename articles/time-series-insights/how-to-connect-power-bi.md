@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: b4ed5a419df97f98b883a07825184122945e092e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38403eed56dc718afdfce13375dd2662beb13eb6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879569"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374175"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Visualisera data från Azure Time Series Insights i Power BI
 
@@ -37,9 +37,7 @@ Granska [miljö åtkomst principer](./concepts-access-policies.md) och se till a
 > [!IMPORTANT]
 > * Hämta och installera den senaste versionen av [Power BI Desktop](https://powerbi.microsoft.com/downloads/). För att följa anvisningarna i den här artikeln måste du kontrol lera att du har minst december 2020-versionen (2.88.321.0) av Power BI Desktop installerad. 
 
-## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Anslut data från Azure Time Series Insights till Power BI
-
-### <a name="1-export-data-into-power-bi-desktop"></a>1. exportera data till Power BI Desktop
+## <a name="export-data-from-azure-time-series-insights-into-power-bi-desktop"></a>Exportera data från Azure Time Series Insights till Power BI Desktop
 
 Så här kommer du igång:
 
@@ -53,37 +51,36 @@ Så här kommer du igång:
    * **Data format**: Välj om du vill exportera **sammanställda data** eller **rå händelser** till Power BI. 
 
        > [!NOTE]
-       > * Om du exporterar obehandlade händelser kan du samla dessa data senare i Power BI. Men om du exporterar sammanställda data kan du inte återgå till rå data i Power BI. 
-       > * Det finns en gräns för antal 250 000-händelser för rå data på händelse nivå.
+       > Om du exporterar obehandlade händelser kan du samla dessa data senare i Power BI. Men om du exporterar sammanställda data kan du inte återgå till rå data i Power BI. Det finns en gräns för antal 250 000-händelser för rå data på händelse nivå.
 
    * **Tidsintervall**: Välj om du vill se ett **fast** tidsintervall eller de **senaste** data i Power BI. Om du väljer det fasta tidsintervallet så kommer data i Sök omfånget som du har ritat att exporteras till Power BI. Om du väljer det senaste tidsintervallet innebär det att Power BI hämtar den senaste informationen för Sök omfånget som du har valt (t. ex. om du skapar en data mängd i 1 timme och väljer alternativet "senaste" kommer Power BI Connector alltid att ställa frågor för de senaste 1 timmen med data.)
   
-   * **Lagrings typ**: Välj om du vill köra den valda frågan mot **varmt lagrings** utrymme eller **kall lagring**. 
+   * **Lagrings typ**: Välj om du vill köra den valda frågan mot **varmt lagrings** utrymme eller **kall lagring**. Om du har valt ett intervall som sträcker sig över både kall och varma butiker dirigeras din fråga till kall lagring som standard eftersom den varma butiken bara kommer att innehålla den senaste informationen. Det går inte att ändra storeType-parametern manuellt, men rekommenderas inte för bästa möjliga upplevelse. 
 
-    > [!TIP]
-    > * Azure Time Series Insights Explorer väljer automatiskt de rekommenderade parametrarna beroende på vilka data du har valt att exportera. 
+    > [!TIP] 
+    > Azure Time Series Insights Explorer väljer automatiskt de rekommenderade parametrarna beroende på Sök omfång och den vy av data som du har valt att exportera. 
 
 1. När du har konfigurerat inställningarna väljer du **Kopiera fråga till Urklipp**.
 
     [![Azure Time Series Insights Explorer exportera modal](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-2. Starta Power BI Desktop.
+1. Starta Power BI Desktop.
    
-3. I Power BI Desktop på fliken **Start** väljer du **Hämta data** i det övre vänstra hörnet och sedan **mer**.
+1. I Power BI Desktop på fliken **Start** väljer du **Hämta data** i det övre vänstra hörnet och sedan **mer**.
 
     [![Hämta data i Power BI](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-4. Sök efter **Azure Time Series Insights**, Välj **Azure Time Series Insights (beta)** och **Anslut**.
+1. Sök efter **Azure Time Series Insights**, Välj **Azure Time Series Insights (beta)** och **Anslut**.
 
     [![Anslut Power BI till Azure Time Series Insights](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Du kan också navigera till fliken **Azure** , välja **Azure Time Series Insights (beta)** och sedan **ansluta**.
 
-5. Klistra in frågan som du kopierade från Azure Time Series Insights Explorer i fältet **anpassad fråga** och tryck sedan på **OK**.
+1. Klistra in frågan som du kopierade från Azure Time Series Insights Explorer i fältet **anpassad fråga** och tryck sedan på **OK**.
 
     [![Klistra in i den anpassade frågan och välj OK](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-6.  Data tabellen kommer nu att läsas in. Tryck på **load** för att läsa in i Power BI. Om du vill göra några transformeringar av data kan du göra det nu genom att klicka på **transformera data**. Du kan också transformera dina data efter att de har lästs in.
+1.  Data tabellen kommer nu att läsas in. Tryck på **load** för att läsa in i Power BI. Om du vill göra några transformeringar av data kan du göra det nu genom att klicka på **transformera data**. Du kan också transformera dina data efter att de har lästs in.
 
     [![Granska informationen i tabellen och välj load](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 

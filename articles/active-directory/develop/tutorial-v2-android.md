@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f3dee72180d0850ce6d920c7e3180cebcbe2f4b4
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7d297d96ba764c812a3d4db6d9383122c73cfe31
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753036"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103149"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Android-program
 
@@ -35,7 +35,7 @@ I de här självstudierna har du
 > * Lägg till kod för att anropa API: et för Microsoft Graph
 > * Testa appen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Android Studio 3.5 +
 
@@ -74,7 +74,7 @@ Om du inte redan har ett Android-program följer du dessa steg för att skapa et
 
 ### <a name="register-your-application"></a>Registrera ditt program
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

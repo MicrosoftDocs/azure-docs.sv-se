@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b1b055fa7f083bd8bccda16498e2894d5d67eace
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736759"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374141"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Skicka frågor till data från Azure Time Series Insights Gen2
 
@@ -54,13 +54,12 @@ De flesta av dessa API: er har stöd för batch-körning för att aktivera CRUD-
 
 ## <a name="time-series-query-tsq-apis"></a>API: er för Time Series-frågor (TSQ)
 
-Dessa API: er är tillgängliga i båda butikerna (varm och kall) i vår lagrings lösning för flera lager. Fråge-URL-parametrar används för att ange den [lagrings typ](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) som frågan ska köras på:
+Dessa API: er är tillgängliga i båda butikerna (varm och kall) i vår lagrings lösning för flera lager. 
 
 * [Hämta händelse-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents): aktiverar frågor och hämtning av rå händelser och associerade händelse-tidsstämplar när de registreras i Azure Time Series Insights Gen2 från käll leverantören. Med det här API: et kan du hämta rå händelser för ett angivet Time Series-ID och Sök omfång. Detta API stöder sid brytning för att hämta fullständig svars data uppsättning för de valda indata.
 
   > [!IMPORTANT]
-
-  > * Som en del av de [kommande ändringarna av JSON-förenkling och undantags regler](./ingestion-rules-update.md)kommer matriser att lagras som **dynamisk** typ. Nytto Last egenskaper som lagras som den här typen är **bara tillgängliga via API: t get Events**.
+  > Som en del av de [kommande ändringarna av JSON-förenkling och undantags regler](./ingestion-rules-update.md)kommer matriser att lagras som **dynamisk** typ. Nytto Last egenskaper som lagras som den här typen är **bara tillgängliga via API: t get Events**.
 
 * [Hämta serie-API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries): aktiverar frågor och hämtning av beräknade värden och associerade händelse-tidsstämplar genom att tillämpa beräkningar som definierats av variabler i rå händelser. Dessa variabler kan definieras i tids serie modellen eller som anges i frågan. Detta API stöder sid brytning för att hämta fullständig svars data uppsättning för de valda indata.
 
@@ -69,6 +68,16 @@ Dessa API: er är tillgängliga i båda butikerna (varm och kall) i vår lagring
   För ett angivet Sök omfång och intervall returnerar detta API ett sammanställt svar per intervall per variabel för ett Time Series-ID. Antalet intervall i data uppsättningen för svar beräknas genom att räkna upp Epoka Tick (antalet millisekunder som har förflutit sedan UNIX epok-1 Jan, 1970) och dividerar skalstrecken med intervall intervall storleken som anges i frågan.
 
   De tidsstämplar som returneras i svars uppsättningen är av gränserna för det vänstra intervallet, inte av exempel händelser från intervallet.
+
+
+### <a name="selecting-store-type"></a>Väljer lagrings typ
+
+API: erna ovan kan bara köras mot en av de två lagrings typerna (kall eller varm) i ett enda anrop. Fråge-URL-parametrar används för att ange den [lagrings typ](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters) som frågan ska köras på. 
+
+Om ingen parameter anges körs frågan som standard i kall lagring. Om en fråga sträcker sig över ett tidsintervall som överlappar både kall och varm lagring, rekommenderar vi att du dirigerar frågan till kall lagring för bästa möjliga upplevelse eftersom den varma butiken bara kommer att innehålla ofullständiga data. 
+
+[Azure Time Series Insights Explorer](./concepts-ux-panels.md) och [Power BI Connector](./how-to-connect-power-bi.md) gör anrop till ovanstående API: er och väljer automatiskt rätt storeType-parameter där det är relevant. 
+
 
 ## <a name="next-steps"></a>Nästa steg
 

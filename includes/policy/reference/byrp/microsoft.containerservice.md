@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: aa728c71b880abbf023fcc1d6c08d460180fddf8
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: d18a17accb53fa4d4b0e49383e3da79bd81a3582
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557527"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096030"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Namn<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Auktoriserade IP-intervall ska definieras på Kubernetes Services](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Begränsa åtkomsten till Kubernetes-Service Management-API genom att endast bevilja API-åtkomst till IP-adresser i vissa intervall. Vi rekommenderar att du begränsar åtkomsten till tillåtna IP-adressintervall så att endast program från tillåtna nätverk kan komma åt klustret. |Granskning, inaktive rad |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
 |[Azure Policy tillägg för Kubernetes-tjänsten (AKS) ska installeras och aktive ras i klustren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy-tillägget för Kubernetes-tjänsten (AKS) utökar Gatekeeper v3, en webhook för en Admission Controller för Open Policy Agent (OPA) för att tillämpa i/skala-användning och skydd i klustren på ett centraliserat, konsekvent sätt. |Granskning, inaktive rad |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |

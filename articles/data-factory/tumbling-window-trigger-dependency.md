@@ -1,22 +1,18 @@
 ---
 title: Skapa rullande Window trigger-beroenden
 description: Lär dig hur du skapar beroende för en rullande fönster utlösare i Azure Data Factory.
-services: data-factory
 ms.author: chez
 author: chez-charlie
-manager: weetok
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f969c06a3419a8017cfc5ebc0de19caa67c8dc68
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508806"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361476"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Skapa ett beroende för utlösare för rullande fönster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,11 +75,11 @@ En utlösare för rullande fönster med ett beroende har följande egenskaper:
 
 Följande tabell innehåller en lista med attribut som behövs för att definiera ett rullande fönster-beroende.
 
-| **Egenskaps namn** | **Beskrivning**  | **Typ** | **Obligatoriskt** |
+| **Egenskapens namn** | **Beskrivning**  | **Typ** | **Obligatoriskt** |
 |---|---|---|---|
 | typ  | Alla befintliga rullande fönster-utlösare visas i den här List rutan. Välj utlösaren att ta beroende av.  | TumblingWindowTriggerDependencyReference eller SelfDependencyTumblingWindowTriggerReference | Ja |
 | offset | Förskjutning av beroende utlösare. Ange ett värde i intervall format och både negativa och positiva förskjutningar tillåts. Den här egenskapen är obligatorisk om utlösaren är beroende av sig själv och i alla andra fall är den valfri. Self-Dependency måste alltid vara en negativ förskjutning. Om inget värde anges är fönstret detsamma som själva utlösaren. | Tidsintervall<br/>(hh: mm: SS) | Själv-beroende: Ja<br/>Övrigt: Nej |
-| ikoner | Storlek på fönstret beroende rullande. Ange ett positivt TimeSpan-värde. Den här egenskapen är valfri. | Tidsintervall<br/>(hh: mm: SS) | Nej  |
+| ikoner | Storlek på fönstret beroende rullande. Ange ett positivt TimeSpan-värde. Den här egenskapen är valfri. | Tidsintervall<br/>(hh: mm: SS) | Inga  |
 
 > [!NOTE]
 > En utlösare för rullande fönster kan vara beroende av högst fem andra utlösare.

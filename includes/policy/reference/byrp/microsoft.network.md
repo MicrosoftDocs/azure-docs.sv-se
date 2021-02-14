@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a20c44ed6b328a2f83f0dbd66eb37888c5b1a92c
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 047b4fdf1c46ae0d9caf3780e0d4d2736f2ef320
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559195"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099038"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Namn<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[En anpassad IPsec/IKE-princip måste tillämpas på alla Azure Virtual Network Gateway-anslutningar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Den här principen säkerställer att alla Azure Virtual Network Gateway-anslutningar använder en princip för en anpassad IKE-/Internet (Custom Internet Protocol Security). Algoritmer och nyckel längder som stöds – [https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Granskning, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[All Internet trafik ska dirigeras via din distribuerade Azure-brandvägg](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center har identifierat att vissa av dina undernät inte skyddas med en nästa generations brand vägg. Skydda dina undernät från potentiella hot genom att begränsa åtkomsten till dem med Azure-brandväggen eller en nästa generations brand vägg som stöds |AuditIfNotExists, inaktiverat |[3.0.0 – för hands version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
