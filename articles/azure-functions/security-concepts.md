@@ -3,12 +3,12 @@ title: Skydda Azure Functions
 description: Lär dig mer om hur du gör funktions koden igång i Azure säkrare från vanliga attacker.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491332"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368497"
 ---
 # <a name="securing-azure-functions"></a>Skydda Azure Functions
 
@@ -76,7 +76,7 @@ Mer information om åtkomst nycklar finns i artikeln om [bindning av http-utlös
 
 Som standard lagras nycklar i en Blob Storage-behållare i kontot som anges av `AzureWebJobsStorage` inställningen. Du kan använda specifika program inställningar för att åsidosätta det här beteendet och lagra nycklar på en annan plats.
 
-|Plats  |Inställningen | Värde | Beskrivning  |
+|Location  |Inställning | Värde | Beskrivning  |
 |---------|---------|---------|---------|
 |Annat lagrings konto     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Lagrar nycklar i Blob Storage för ett andra lagrings konto, baserat på den angivna SAS-webbadressen. Nycklar krypteras innan de lagras med en hemlighet som är unik för din Function-app. |
 |Filsystem   | `AzureWebJobsSecretStorageType`   |  `files`       | Nycklar sparas i fil systemet, krypteras före lagring med hjälp av en hemlighet som är unik för din Function-app. |
@@ -107,6 +107,8 @@ Anslutnings strängar och andra autentiseringsuppgifter som lagras i program ins
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+Hanterade identiteter kan användas i stället för hemligheter för anslutningar från vissa utlösare och bindningar. Se [identitetsbaserade anslutningar](#identity-based-connections).
+
 Mer information finns i [så här använder du hanterade identiteter för app service och Azure Functions](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json).
 
 #### <a name="restrict-cors-access"></a>Begränsa CORS-åtkomst
@@ -136,6 +138,14 @@ Du kan också kryptera inställningar som standard i local.settings.jsi filen n�
 Även om program inställningarna är tillräckliga för de flesta funktioner kanske du vill dela samma hemligheter över flera tjänster. I det här fallet resulterar redundant lagring av hemligheter på fler potentiella säkerhets risker. En säkrare metod är till en central hemlighet Storage-tjänst och använder referenser till den här tjänsten i stället för själva hemligheterna.      
 
 [Azure Key Vault](../key-vault/general/overview.md) är en tjänst som tillhandahåller centraliserad hemligheter-hantering med fullständig kontroll över åtkomst principer och gransknings historik. Du kan använda en Key Vault referens i stället för en anslutnings sträng eller nyckel i dina program inställningar. Läs mer i [använda Key Vault referenser för app service och Azure Functions](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json).
+
+### <a name="identity-based-connections"></a>Identitetsbaserade anslutningar
+
+Identiteter kan användas i stället för hemligheter för att ansluta till vissa resurser. Detta har fördelen att inte kräva hantering av en hemlighet och ger mer detaljerad åtkomst kontroll och granskning. 
+
+När du skriver kod som skapar anslutningen till Azure- [tjänster som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), kan du välja att använda en identitet i stället för en hemlig eller anslutnings sträng. Information om båda anslutnings metoderna beskrivs i dokumentationen för varje tjänst.
+
+Vissa Azure Functions-utlösare och bindnings tillägg kan konfigureras med en identitets baserad anslutning. Idag inkluderar detta [Azure Blob](./functions-bindings-storage-blob.md) och [Azure Queue](./functions-bindings-storage-queue.md) Extensions. Information om hur du konfigurerar dessa tillägg så att de använder en identitet finns i [så här använder du identitetsbaserade anslutningar i Azure Functions](./functions-reference.md#configure-an-identity-based-connection).
 
 ### <a name="set-usage-quotas"></a>Ange användnings kvoter
 

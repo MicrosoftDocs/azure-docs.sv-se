@@ -1,21 +1,17 @@
 ---
 title: Konfigurera prestanda för Azure-SSIS Integration Runtime
 description: Lär dig hur du konfigurerar egenskaperna för Azure-SSIS Integration Runtime för hög prestanda
-services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: ''
-manager: anandsub
-ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5d275100124660b901504b7e7f71cf93518fd077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635328"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364400"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurera Azure-SSIS Integration Runtime för hög prestanda
 
@@ -118,11 +114,11 @@ Y-axeln är antalet paket som har slutfört körningen inom en timme. Observera 
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** justerar skalbarheten för integration Runtime. Data flödet för integration runtime är proportionellt mot **AzureSSISNodeNumber** . Ange **AzureSSISNodeNumber** till ett litet värde först, övervaka data flödet för integrerings körningen och justera sedan värdet för ditt scenario. Information om hur du konfigurerar om antalet arbets noder finns i [hantera en Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** justerar skalbarheten för integration Runtime. Data flödet för integration runtime är proportionellt mot **AzureSSISNodeNumber**. Ange **AzureSSISNodeNumber** till ett litet värde först, övervaka data flödet för integrerings körningen och justera sedan värdet för ditt scenario. Information om hur du konfigurerar om antalet arbets noder finns i [hantera en Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Om du redan använder en kraftfull arbetsnode för att köra paket kan du öka det totala data flödet för integrerings körningen genom att öka **AzureSSISMaxParallelExecutionsPerNode** . Om du vill öka Max värdet måste du använda Azure PowerShell för att uppdatera **AzureSSISMaxParallelExecutionsPerNode** . Du kan uppskatta lämpligt värde baserat på kostnaden för ditt paket och följande konfigurationer för arbetsnoderna. Mer information finns i [allmänna storlekar för virtuella datorer](../virtual-machines/sizes-general.md).
+Om du redan använder en kraftfull arbetsnode för att köra paket kan du öka det totala data flödet för integrerings körningen genom att öka **AzureSSISMaxParallelExecutionsPerNode** . Om du vill öka Max värdet måste du använda Azure PowerShell för att uppdatera **AzureSSISMaxParallelExecutionsPerNode**. Du kan uppskatta lämpligt värde baserat på kostnaden för ditt paket och följande konfigurationer för arbetsnoderna. Mer information finns i [allmänna storlekar för virtuella datorer](../virtual-machines/sizes-general.md).
 
 | Storlek             | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt genomflöde för temporär lagring: IOPS / Mbit/s för läsning / M/bit/s för skrivning | Maximalt antal datadiskar/dataflöde: IOPS | Maximalt antal nätverkskort/förväntade nätverksprestanda (Mbit/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

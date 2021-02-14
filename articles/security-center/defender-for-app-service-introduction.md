@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916721"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393317"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Introduktion till Azure Defender för App Service
 
@@ -23,13 +23,13 @@ Azure App Service är en helt hanterad plattform för att bygga och vara värd f
 
 ## <a name="availability"></a>Tillgänglighet
 
-|Aspekt|Information|
-|----|:----|
-|Versions tillstånd:|Allmän tillgänglighet (GA)|
-|Priset|[Azure Defender för App Service](azure-defender.md) faktureras så som visas på [sidan med priser](security-center-pricing.md)<br>Sidan priser och inställningar visar antalet instanser för din **resurs antal**. Detta är det totala antalet beräknings instanser, i alla App Service planer i den här prenumerationen, som körs vid den tidpunkt då du öppnade sidan pris nivå.<br>Om du vill validera antalet öppnar **App Service planer** i Azure Portal och kontrollerar antalet beräknings instanser som används av varje plan.|
-|App Services planer som stöds:|![Ja ](./media/icons/yes-icon.png) Basic, standard, Premium, isolerat eller Linux<br>![Inga ](./media/icons/no-icon.png) lediga, delade eller konsumtion<br>[Läs mer om App Service-planer](https://azure.microsoft.com/pricing/details/app-service/plans/)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
-|||
+| Aspekt                       | Information                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Versions tillstånd:               | Allmän tillgänglighet (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Priset                     | [Azure Defender för App Service](azure-defender.md) faktureras så som visas på [sidan med priser](security-center-pricing.md)<br>Faktureringen sker enligt de totala beräknings instanserna i alla planer|
+| App Services planer som stöds: | Alla App Services planer stöds (med ett undantag, se nedan). [Läs mer om app Services planer](https://azure.microsoft.com/pricing/details/app-service/plans/).<br>Azure Functions i förbruknings planen stöds inte. [Läs mer om Azure Functions värd alternativ](../azure-functions/functions-scale.md).                                                                                                                                                                                                                                                                   |
+| Moln                      | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                                                                                                                                                                                                                                                                                                                                                 |
+|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Vilka är fördelarna med Azure Defender för App Service?
 

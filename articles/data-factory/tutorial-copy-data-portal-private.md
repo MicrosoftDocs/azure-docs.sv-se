@@ -1,23 +1,18 @@
 ---
 title: Använd privata slut punkter för att skapa en Azure Data Factory pipeline
 description: Den här självstudien innehåller stegvisa instruktioner för att skapa en datafabrik med en pipeline i Azure-portalen. Pipelinen använder kopierings aktiviteten för att kopiera data från Azure Blob Storage till en Azure SQL-databas.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 002ceba60853908e381f084e95ec1ee58e8580cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249524"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375824"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>Kopiera data säkert från Azure Blob Storage till en SQL-databas med hjälp av privata slut punkter
 
@@ -157,7 +152,7 @@ I den här självstudien börjar du med att skapa en pipeline. Sedan skapar du l
 
     ![Skärm bild som visar interaktiv redigering.](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
-1. Välj **test anslutning**. Den bör inte fungera när lagrings kontot bara tillåter åtkomst från **valda nätverk** och kräver Data Factory för att skapa en privat slut punkt till det som ska godkännas innan det används. I fel meddelandet bör du se en länk för att skapa en privat slut punkt som du kan följa för att skapa en hanterad privat slut punkt. Ett alternativ är att gå direkt till fliken **Hantera** och följa anvisningarna i [Nästa avsnitt](#create-a-managed-private-endpoint) för att skapa en hanterad privat slut punkt.
+1. Välj **Testanslutning**. Den bör inte fungera när lagrings kontot bara tillåter åtkomst från **valda nätverk** och kräver Data Factory för att skapa en privat slut punkt till det som ska godkännas innan det används. I fel meddelandet bör du se en länk för att skapa en privat slut punkt som du kan följa för att skapa en hanterad privat slut punkt. Ett alternativ är att gå direkt till fliken **Hantera** och följa anvisningarna i [Nästa avsnitt](#create-a-managed-private-endpoint) för att skapa en hanterad privat slut punkt.
 
    > [!NOTE]
    > Fliken **Hantera** kanske inte är tillgänglig för alla data Factory-instanser. Om du inte ser det kan du komma åt privata slut punkter genom att välja **författar**  >  **anslutningar**  >  **privat slut punkt**.
@@ -235,7 +230,7 @@ Om du inte har valt hyperlänken när du testade anslutningen följer du sökvä
     1. Under **Databasnamn** väljer du din SQL-databas.
     1. Under **Användarnamn** anger du namnet på användaren.
     1. För **Lösenord** anger du användarens lösenord.
-    1. Välj **test anslutning**. Den bör inte utföras eftersom SQL Server endast tillåter åtkomst från **valda nätverk** och kräver Data Factory för att skapa en privat slut punkt till den, vilket bör godkännas innan den används. I fel meddelandet bör du se en länk för att skapa en privat slut punkt som du kan följa för att skapa en hanterad privat slut punkt. Ett alternativ är att gå direkt till fliken **Hantera** och följa anvisningarna i nästa avsnitt för att skapa en hanterad privat slut punkt.
+    1. Välj **Testanslutning**. Den bör inte utföras eftersom SQL Server endast tillåter åtkomst från **valda nätverk** och kräver Data Factory för att skapa en privat slut punkt till den, vilket bör godkännas innan den används. I fel meddelandet bör du se en länk för att skapa en privat slut punkt som du kan följa för att skapa en hanterad privat slut punkt. Ett alternativ är att gå direkt till fliken **Hantera** och följa anvisningarna i nästa avsnitt för att skapa en hanterad privat slut punkt.
     1. Håll dialog rutan öppen och gå sedan till den valda SQL-servern.
     1. Följ anvisningarna i [det här avsnittet](#approval-of-a-private-link-in-sql-server) om du vill godkänna den privata länken.
     1. Gå tillbaka till dialog rutan. Välj **Testa anslutning** igen och välj **skapa** för att distribuera den länkade tjänsten.

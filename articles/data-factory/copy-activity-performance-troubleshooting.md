@@ -1,23 +1,18 @@
 ---
 title: Felsöka prestanda för kopierings aktivitet
 description: Lär dig mer om hur du felsöker kopierings aktivitets prestanda i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933921"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387690"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Felsöka prestanda för kopierings aktivitet
 
@@ -53,7 +48,7 @@ Som en referens ger för närvarande prestanda justerings tips förslag på föl
 
 Körnings informationen och varaktigheterna längst ned i vyn kopierings aktivitets övervakning beskriver de viktiga steg som din kopierings aktivitet går igenom (se exemplet i början av den här artikeln), vilket är särskilt användbart för att felsöka kopierings prestanda. Flask halsen för din kopierings körning är den som har den längsta varaktigheten. Se följande tabell i varje Stadiums definition och lär dig hur du [felsöker kopierings aktivitet på Azure IR](#troubleshoot-copy-activity-on-azure-ir) och [felsöker kopierings aktivitet på egen värd-IR](#troubleshoot-copy-activity-on-self-hosted-ir) med sådan information.
 
-| Fas           | Description                                                  |
+| Fas           | Beskrivning                                                  |
 | --------------- | ------------------------------------------------------------ |
 | Kö           | Den tid som förflutit tills kopierings aktiviteten faktiskt börjar på integration Runtime. |
 | Skript före kopiering | Tiden mellan kopierings aktiviteten som startar på IR-och kopierings aktiviteten som kör skriptet för att kopiera i mottagar data lagret. Använd när du konfigurerar skriptet för att kopiera för databas handfat, t. ex. När du skriver data i Azure SQL Database rensa innan du kopierar nya data. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630861"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374991"
 ---
 # <a name="smb-multichannel-performance"></a>SMB Multichannel-prestanda
 
@@ -110,7 +110,7 @@ Belastningen genererades mot en enskild 128 GiB-fil. När SMB Multichannel är a
 
 - På ett enda nätverkskort med en större genomsnittlig IO-storlek (> ~ 16k) fanns det betydande förbättringar i både läsningar och skrivningar.
 - För mindre IO-storlekar var det en liten inverkan på ~ 10% av prestanda när SMB Multichannel var aktiverat. Detta kan minskas genom att belastningen sprids över flera filer eller att funktionen inaktive ras.
-- Prestandan är fortfarande kopplad till  [gränser för en enskild fil](storage-files-scale-targets.md#file-level-limits).
+- Prestandan är fortfarande kopplad till [gränser för en enskild fil](storage-files-scale-targets.md#file-scale-targets).
 
 ## <a name="optimizing-performance"></a>Optimera prestanda
 

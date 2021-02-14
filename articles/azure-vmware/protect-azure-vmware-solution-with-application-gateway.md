@@ -2,13 +2,13 @@
 title: Använd Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen
 description: Konfigurera Azure Application Gateway för att på ett säkert sätt exponera dina webbappar som körs på Azure VMware-lösningen.
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: fdef37bd76b08a8778db8401a1e8a0406c2ed652
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.date: 02/10/2021
+ms.openlocfilehash: 9b10c206114ca922cc11bd8cb0321941b8ba672c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988628"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384205"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Använd Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen
 
@@ -35,7 +35,7 @@ Diagrammet visar test scenariot som används för att verifiera Application Gate
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Diagram som visar test scenariot som används för att verifiera Application Gateway med webb program för Azure VMware-lösningar." border="false":::
 
-Application Gateway-instansen distribueras på hubben i ett dedikerat undernät. Den har en offentlig Azure-IP-adress. Det rekommenderas att du aktiverar standard DDoS-skydd för det virtuella nätverket. Webb servern finns i ett privat moln i Azure VMware-lösningen bakom NSX t0 och T1-routrar. Azure VMware-lösningen använder [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) för att aktivera kommunikation med hubb och lokala system.
+Application Gateway-instansen distribueras på hubben i ett dedikerat undernät. Den har en offentlig Azure-IP-adress. Det rekommenderas att du aktiverar standard DDoS-skydd för det virtuella nätverket. Webb servern finns i ett privat moln i Azure VMware-lösningen bakom NSX t0 och T1-gatewayer. Azure VMware-lösningen använder [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) för att aktivera kommunikation med hubb och lokala system.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -57,7 +57,7 @@ Application Gateway-instansen distribueras på hubben i ett dedikerat undernät.
 
 4. Lägg till en backend-pool för de virtuella datorer som körs på Azures infrastruktur för VMware-lösning. Ange information om webb servrar som körs i det privata molnet för Azure VMware-lösningen och välj **Lägg till**.  Välj sedan **Nästa: konfigurations>**.
 
-1. På fliken **konfiguration** väljer du **Lägg till en regel för routning**.
+5. På fliken **konfiguration** väljer du **Lägg till en regel för routning**.
 
 6. Ange information om lyssnaren på fliken **lyssnare** . Om du väljer HTTPS måste du ange ett certifikat, antingen från en PFX-fil eller ett befintligt Azure Key Vault certifikat. 
 
@@ -67,7 +67,7 @@ Application Gateway-instansen distribueras på hubben i ett dedikerat undernät.
 
 9. Om du vill konfigurera Sök vägsbaserade regler väljer **du Lägg till flera mål för att skapa en Sök vägs baserad regel**. 
 
-10. Lägg till en Sök vägs-baserad regel och välj **Lägg till**. Upprepa för att lägga till ytterligare Sök vägs regler. 
+10. Lägg till en Sök vägs-baserad regel och välj **Lägg till**. Upprepa om du vill lägga till fler Sök vägs regler. 
 
 11. När du är färdig med att lägga till Sök vägs baserade regler väljer du **Lägg till** igen. Välj sedan **Nästa: taggar>**. 
 
@@ -77,7 +77,7 @@ Application Gateway-instansen distribueras på hubben i ett dedikerat undernät.
 
 ## <a name="configuration-examples"></a>Konfigurations exempel
 
-I det här avsnittet får du lära dig hur du konfigurerar Application Gateway med virtuella datorer i Azure VMware-lösningen som backend-pooler för dessa användnings fall: 
+Nu ska vi konfigurera Application Gateway med virtuella Azure VMware-lösningar som backend-pooler för följande användnings fall: 
 
 - [Vara värd för flera platser](#hosting-multiple-sites)
 - [Routning efter URL](#routing-by-url)
@@ -94,7 +94,7 @@ Den här proceduren visar hur du definierar backend-adresspooler med virtuella d
 
     :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="Skärm bild som visar en sammanfattning av en webb servers information i VSphere-klienten.":::
 
-    Vi har använt Windows Server 2016 med rollen Internet Information Services (IIS) installerad för att illustrera den här självstudien. När de virtuella datorerna har installerats kör du följande PowerShell-kommandon för att konfigurera IIS på var och en av de virtuella datorerna. 
+    Vi har använt Windows Server 2016 med rollen Internet Information Services (IIS) installerad. När de virtuella datorerna har installerats kör du följande PowerShell-kommandon för att konfigurera IIS på var och en av de virtuella datorerna. 
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -121,7 +121,7 @@ Den här proceduren visar hur du definierar backend-adresspooler med virtuella d
 
 ### <a name="routing-by-url"></a>Routning efter URL
 
-Den här proceduren visar hur du definierar backend-adresspooler med virtuella datorer som körs på ett privat moln i Azure VMware-lösningar på en befintlig Application Gateway. Du skapar sedan routningsregler som kontrollerar att webb trafiken kommer till rätt servrar i poolerna.
+Följande steg definierar Server dels adressernas pooler med virtuella datorer som körs i ett privat moln i Azure VMware-lösningen. Det privata molnet är på en befintlig Application Gateway. Du skapar sedan routningsregler som kontrollerar att webb trafiken kommer till rätt servrar i poolerna.
 
 1. Skapa en pool för virtuella datorer som representerar webb server gruppen i ditt privata moln. 
 

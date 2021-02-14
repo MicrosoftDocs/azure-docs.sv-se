@@ -1,17 +1,17 @@
 ---
 title: Anslutnings arkitektur – Azure Database for PostgreSQL-enskild server
 description: Beskriver anslutnings arkitekturen för din Azure Database for PostgreSQL-enskild server.
-author: mksuni
-ms.author: sumuth
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 23847c164ba59a8c46c2fdd5fb954b76ea251148
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 2/11/2021
+ms.openlocfilehash: 97778951777677ce02adec59d906c1246494457a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877687"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369415"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Anslutnings arkitektur i Azure Database for PostgreSQL
 Den här artikeln förklarar Azure Database for PostgreSQL anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for PostgreSQL databas instans från klienter både inom och utanför Azure.
@@ -49,14 +49,14 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Post
 | Brasilien, södra |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Kanada, centrala |40.85.224.249  | | |
 | Kanada, östra | 40.86.226.166    | | |
-| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
+| Central US | 23.99.160.139, 52.182.136.37, 52.182.136.38 | 13.67.215.62 | |
 | Kina, östra | 139.219.130.35    | | |
 | Kina, östra 2 | 40.73.82.1  | | |
 | Kina, norra | 139.219.15.17    | | |
 | Kina, norra 2 | 40.73.50.0     | | |
 | Asien, östra | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     | | |
 | East US |40.71.8.203, 40.71.83.113 |40.121.158.30|191.238.6.43 |
-| USA, östra 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  | | |
+| USA, östra 2 | 40.70.144.38, 52.167.105.38  | 52.177.185.181 | |
 | Frankrike, centrala | 40.79.137.0, 40.79.129.1  | | |
 | Frankrike, södra | 40.79.177.0     | | |
 | Tyskland, centrala | 51.4.144.100     | | |
@@ -64,22 +64,22 @@ I följande tabell visas gatewayens IP-adresser för den Azure Database for Post
 | Indien, centrala | 104.211.96.159     | | |
 | Södra Indien | 104.211.224.146  | | |
 | Indien, västra | 104.211.160.80    | | |
-| Japan, östra | 13.78.61.196, 191.237.240.43, 40.79.192.23 | | |
-| Japan, västra | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    | | |
-| Sydkorea, centrala | 52.231.32.42   | | |
-| Sydkorea, södra | 52.231.200.86    | | |
-| USA, norra centrala | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    | | |
-| Europa, norra | 52.138.224.6, 52.138.224.7  |40.113.93.91 |191.235.193.75 |
+| Japan, östra | 40.79.192.23 | 13.78.61.196 | |
+| Japan, västra | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
+| Sydkorea, centrala | 52.231.17.13   | 52.231.32.42 | |
+| Sydkorea, södra | 52.231.145.3     | 52.231.200.86 | |
+| USA, norra centrala | 52.162.104.35, 52.162.104.36    | 23.96.178.199 | |
+| Europa, norra | 52.138.224.6, 52.138.224.7  | 40.113.93.91 |191.235.193.75 |
 | Sydafrika, norra  | 102.133.152.0    | | |
 | Sydafrika, västra | 102.133.24.0   | | |
 | USA, södra centrala |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
-| Sydostasien | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     | | |
+| Sydostasien | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
 | Förenade Arabemiraten Central | 20.37.72.64  | | |
 | Förenade Arabemiraten, norra | 65.52.248.0    | | |
 | Storbritannien, södra | 51.140.184.11   | | |
 | Storbritannien, västra | 51.141.8.11  | | |
 | USA, västra centrala | 13.78.145.25     | | |
-| Europa, västra |13.69.105.208,104.40.169.187 |40.68.37.158 | 191.237.232.75|
+| Europa, västra |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | USA, västra |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
 | USA, västra 2 | 13.66.226.202  | | |
 ||||

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369806"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Inbyggt stöd för Jupyter Notebooks i Azure Cosmos DB (för hands version)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,7 +24,7 @@ Azure Cosmos DB inbyggda antecknings böcker för Jupyter är direkt integrerade
 
 Azure Cosmos DB stöder både C#-och python-anteckningsböcker för alla API: er, inklusive Core (SQL), Cassandra, Gremlin, Table och API för MongoDB. I antecknings boken kan du dra nytta av inbyggda kommandon och funktioner som gör det enkelt att skapa Azure Cosmos DB resurser, ladda upp data och fråga och visualisera dina data i Azure Cosmos DB. 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Jupyter Notebooks-visualiseringar i Azure Cosmos DB":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Stöd för Jupyter Notebooks i Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Fördelar med Jupyter-anteckningsböcker
 
@@ -61,5 +61,7 @@ Jupyter-anteckningsböcker kan innehålla flera typer av komponenter, som var oc
 Information om hur du kommer igång med inbyggda Jupyter-anteckningsböcker i Azure Cosmos DB finns i följande artiklar:
 
 * [Aktivera antecknings böcker i ett Azure Cosmos-konto](enable-notebooks.md)
+* [Utforska exempel galleriet för bärbara datorer](https://cosmos.azure.com/gallery.html)
 * [Använda python-funktioner och-kommandon i python](use-python-notebook-features-and-commands.md)
 * [Använda C#-funktioner och-kommandon i C#](use-csharp-notebook-features-and-commands.md)
+* [Importera antecknings böcker från en GitHub-lagrings platsen](import-github-notebooks.md)

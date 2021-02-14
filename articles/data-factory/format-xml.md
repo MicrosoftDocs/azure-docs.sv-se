@@ -2,19 +2,16 @@
 title: XML-format i Azure Data Factory
 description: I det här avsnittet beskrivs hur du hanterar XML-format i Azure Data Factory.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 1555d8b97f89b567cb1769c0ba10ecf50bca4366
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a4082e1e00ecb1d3b0157fcc35616704eaab0aae
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352614"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386364"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-format i Azure Data Factory
 
@@ -71,7 +68,7 @@ Lär dig mer om att mappa XML-data och ta bort data lager/format från [schema m
 
 ### <a name="xml-as-source"></a>XML som källa
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ källa \****. Lär dig mer från [XML-kopplingens beteende](#xml-connector-behavior).
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* källa \**** . Lär dig mer från [XML-kopplingens beteende](#xml-connector-behavior).
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -100,7 +97,7 @@ I mappa data flöden kan du läsa och skriva till XML-format i följande data la
 
 I tabellen nedan visas de egenskaper som stöds av en XML-källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** . Lär dig mer från [XML-kopplingens beteende](#xml-connector-behavior). När du använder en infogad data uppsättning visas ytterligare fil inställningar, som är samma som de egenskaper som beskrivs i avsnittet [Egenskaper för data mängd](#dataset-properties) . 
 
-| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Jokertecken sökvägar | Alla filer som matchar sökvägen för jokertecken kommer att bearbetas. Åsidosätter mappen och fil Sök vägen som angetts i data uppsättningen. | Inga | Sträng [] | wildcardPaths |
 | Partitionens rot Sök väg | För fildata som är partitionerade kan du ange en rot Sök väg för partitionen för att kunna läsa partitionerade mappar som kolumner | Inga | Sträng | partitionRootPath |

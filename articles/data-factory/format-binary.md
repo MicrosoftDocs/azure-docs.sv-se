@@ -2,19 +2,16 @@
 title: Binärt format i Azure Data Factory
 description: I det här avsnittet beskrivs hur du hanterar binärt format i Azure Data Factory.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: be4338942057cf52bf26b7fd1e15f77e724d49f8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc5b54e99584b74b287fa66deba1694419b46b16
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348916"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393691"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binärt format i Azure Data Factory
 
@@ -73,7 +70,7 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 
 ### <a name="binary-as-source"></a>Binär som källa
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ källa \****.
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* källa \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -120,7 +117,7 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ källa \****.
 
 ### <a name="binary-as-sink"></a>Binär som mottagare
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ mottagare \****.
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* mottagare \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |

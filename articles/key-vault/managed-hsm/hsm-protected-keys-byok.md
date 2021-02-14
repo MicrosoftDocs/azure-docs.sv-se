@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581422"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376062"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importera HSM-skyddade nycklar till hanterad HSM (BYOK)
 
@@ -70,12 +70,13 @@ Mer information om inloggningsalternativen via CLI finns i [Logga in med Azure C
 |Securosys SA|Tillverkare, HSM som en tjänst|Primus HSM-familjen, Securosys-moln HSM|[Primus BYOK-verktyg och dokumentation](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Flera HSM-varumärken och-modeller, inklusive<ul><li>Utimaco</li><li>Thales</li><li>Hjälp programmet nCipher</li></ul>Mer [information finns på StorMagic-webbplatsen](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|[SvKMS och Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
 |IBM|Tillverkare|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
+|Utimaco|Tillverkare<br/>HSM som en tjänst|u. förtroende ankare, CryptoServer|[Utimaco BYOK-verktyg och integrerings guide](https://support.hsm.utimaco.com/support/downloads/byok)|
 ||||
 
 
 ## <a name="supported-key-types"></a>Nyckeltyper som stöds
 
-|Nyckelnamn|Nyckeltyp|Nyckel storlek/kurva|Ursprung|Description|
+|Nyckelnamn|Nyckeltyp|Nyckel storlek/kurva|Ursprung|Beskrivning|
 |---|---|---|---|---|
 |Nyckel utbytes nyckel (KEK)|RSA| 2 048-bitars<br />3 072-bitars<br />4 096-bitars|Managed HSM|Ett HSM-backat RSA-nyckelpar genererat i hanterad HSM|
 |Mål nyckel|

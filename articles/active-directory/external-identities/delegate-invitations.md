@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 68ed67afc949b3a67936f20a098bca8b6906a598
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546225"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365556"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivera externt B2B-samarbete och hantera vilka som kan bjuda in gäster
 
@@ -45,8 +45,6 @@ Som standard kan alla användare, inklusive gäster, bjuda in gäst användare.
 
 4. Under **åtkomst begränsningar för gäst användare (för hands version)** väljer du den åtkomst nivå som du vill att gäst användare ska ha:
   
-    ![Inställningar för åtkomst begränsningar för gäst användare](./media/delegate-invitations/guest-user-access.png)
-
    - **Gäst användare har samma åtkomst som medlemmar (oftast)**: det här alternativet ger gästerna samma åtkomst till Azure AD-resurser och katalog data som medlems användare.
 
    - **Gäst användare har begränsad åtkomst till egenskaper och medlemskap i katalog objekt**: (standard) den här inställningen blockerar gäster från vissa katalog aktiviteter, t. ex. att räkna upp användare, grupper eller andra katalog resurser. Gäster kan se medlemskap i alla grupper som inte är dolda.
@@ -69,13 +67,11 @@ Som standard kan alla användare, inklusive gäster, bjuda in gäst användare.
 
 6. Under **email eng ång slö sen ord för gäster** väljer du lämpliga inställningar (mer information finns i [e-postautentisering med eng ång slö sen ord](one-time-passcode.md)):
 
-   ![E-postinställningar för eng ång slö sen ord](./media/delegate-invitations/email-otp-settings.png)
-
-   - **Aktivera automatiskt e-postlösenord för gäster i mars 2021**. Objekt Om e-postfunktionen för eng ång slö sen ord inte redan är aktive rad för din klient, aktive ras den automatiskt den 1 mars 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska vara aktive rad vid den tiden. Om du redan har aktiverat eller inaktiverat funktionen kommer det här alternativet att vara otillgängligt.
+   - **Aktivera automatiskt e-postlösenord för gäster i oktober 2021**. Objekt Om e-postfunktionen för eng ång slö sen ord inte redan är aktive rad för din klient, aktive ras den automatiskt i oktober 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska vara aktive rad vid den tiden. Om du redan har aktiverat eller inaktiverat funktionen kommer det här alternativet att vara otillgängligt.
 
    - **Aktivera e-post med eng ång slö sen ord för gäster gällande nu**. Aktiverar funktionen email eng ång slö sen ord för din klient.
 
-   - **Inaktivera e-post med eng ång slö sen ord för gäster**. Inaktiverar funktionen för eng ång slö sen ord för din klient och förhindrar att funktionen aktive ras i mars 2021.
+   - **Inaktivera e-post med eng ång slö sen ord för gäster**. Inaktiverar funktionen för eng ång slö sen ord för din klient och förhindrar att funktionen aktive ras i oktober 2021.
 
    > [!NOTE]
    > I stället för alternativen ovan ser du följande växling om du har aktiverat eller inaktiverat den här funktionen eller om du tidigare har valt att förhandsgranska:

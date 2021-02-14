@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ac3141823eb72b17754a771cd63264fe851949d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725136"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365369"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Kontrol lera åtkomst med känslighets etiketter 
 
@@ -66,7 +66,7 @@ När du funderar på att styra extern åtkomst till ditt innehåll måste du bes
 
 * Vilka standardinställningar ska användas för HBI-data, webbplatser eller Microsoft 365s grupper?
 
-* Var kommer du att använda känslighets etiketter för att [märka och övervaka](/microsoft-365/compliance/label-analytics?view=o365-worldwide), jämfört med [kryptering](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) eller för att [genomdriva åtkomst begränsningar för behållare](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
+* Var kommer du att använda känslighets etiketter för att [märka och övervaka](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide), jämfört med [kryptering](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) eller för att [genomdriva åtkomst begränsningar för behållare](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)?
 
 **För e-post och innehåll**
 

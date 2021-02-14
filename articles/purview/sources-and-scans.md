@@ -1,5 +1,5 @@
 ---
-title: Data källor och filtyper som stöds
+title: Datakällor som stöds och filtyper
 description: Den här artikeln innehåller konceptuell information om data källor och filtyper som stöds i avdelningens kontroll.
 author: viseshag
 ms.author: viseshag
@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576680"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383899"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Data källor och filtyper som stöds i Azure avdelningens kontroll
 
@@ -70,6 +71,28 @@ Fil sampling för resurs uppsättningar efter filtyper:
 - **Andra strukturerade filtyper (JSON, XML, txt)** -1 i 100 filer samplas (L3-skanning) i en mapp eller grupp med diskpartitioner som betraktas som en resurs uppsättning
 - **SQL-objekt och CosmosDB-entiteter** – varje fil är L3-genomsökd.
 - **Dokument fil typer** – varje fil är L3-genomsökd. Resurs uppsättnings mönster gäller inte för de här fil typerna.
+
+## <a name="scan-regions"></a>Skanna regioner
+Följande är en lista över alla Azure Data Source-regioner (Data Center) där avdelningens kontroll-skannern körs. Om din Azure-datakälla finns i en region utanför listan, kommer skannern att köras i regionen för din avdelningens kontroll-instans.
+ 
+### <a name="purview-scanner-regions"></a>Avdelningens kontroll-skanner regioner
+
+- EastUs
+- EastUs2 
+- Usasödracentrala
+- WestUs
+- WestUs2
+- Sydostasien
+- Västeuropa
+- Europanorra
+- UkSouth
+- AustraliaEast
+- Indiensödra
+- Centrala
+- Kanada
+- Japanöstra
+- SouthAfricaNorth
+- FranceCentral
 
 ## <a name="classification"></a>Klassificering
 

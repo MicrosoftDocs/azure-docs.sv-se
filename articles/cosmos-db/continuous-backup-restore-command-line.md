@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2e09542cbe56df7c8d6984a98fe77142f543ec03
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539204"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377337"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>Konfigurera och hantera kontinuerlig säkerhets kopiering och tidpunkts återställning (för hands version) – med Azure CLI
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -46,7 +46,7 @@ Den här artikeln beskriver hur du etablerar ett konto med kontinuerlig säkerhe
 
 ## <a name="provision-a-sql-api-account-with-continuous-backup"></a><a id="provision-sql-api"></a>Etablera ett SQL API-konto med kontinuerlig säkerhets kopiering
 
-För att etablera ett SQL API-konto med kontinuerlig säkerhets kopiering ska ett extra argument `--backup-policy-type Continuous` skickas tillsammans med det vanliga etablerings kommandot. Följande kommando är ett exempel på ett enda regions Skriv konto `pitracct2` som heter med kontinuerlig säkerhets kopierings policy som skapats i regionen "västra USA" under resurs gruppen "myrg":
+För att etablera ett SQL API-konto med kontinuerlig säkerhets kopiering ska ett extra argument `--backup-policy-type Continuous` skickas tillsammans med det vanliga etablerings kommandot. Följande kommando är ett exempel på ett enda regions Skriv konto `pitracct2` som heter med kontinuerlig säkerhets kopierings policy som skapats i regionen *västra USA* under *myrg* resurs grupp:
 
 ```azurecli-interactive
 
@@ -61,7 +61,7 @@ az cosmosdb create \
 
 ## <a name="provision-an-azure-cosmos-db-api-for-mongodb-account-with-continuous-backup"></a><a id="provision-mongo-api"></a>Etablera ett Azure Cosmos DB-API för MongoDB-konto med kontinuerlig säkerhets kopiering
 
-Följande kommando visar ett exempel på ett enda regions Skriv konto `pitracct3` som heter med kontinuerlig säkerhets kopierings princip som skapade regionen "västra USA" under resurs gruppen "myrg":
+Följande kommando visar ett exempel på ett enda regions Skriv konto `pitracct3` som heter med kontinuerlig säkerhets kopierings princip som skapade regionen *västra USA* under *myrg* resurs grupp:
 
 ```azurecli-interactive
 
@@ -145,13 +145,13 @@ Svaret innehåller alla databas konton (både Live och borttaget) som kan åters
   }
 ```
 
-Precis som "CreationTime" eller "DeletionTime" för kontot finns det också en "CreationTime" eller "DeletionTime" för regionen. Med de här tiderna kan du välja rätt region och ett giltigt tidsintervall för att återställa till den regionen.
+Precis som `CreationTime` eller `DeletionTime` för kontot finns det `CreationTime` också en eller `DeletionTime` för regionen. Med de här tiderna kan du välja rätt region och ett giltigt tidsintervall för att återställa till den regionen.
 
 **Visa en lista över alla versioner av databaser i ett Live Database-konto**
 
 Genom att visa alla versioner av databaserna kan du välja rätt databas i ett scenario där den faktiska tiden det finns en okänd databas.
 
-Kör följande CLI-kommando för att visa en lista över alla versioner av-databaser. Det här kommandot fungerar bara med Live-konton. Parametrarna "instanceId" och "location" hämtas från egenskaperna "name" och "location" i kommandot Response `az cosmosdb restorable-database-account list` . InstanceId-attributet är också en egenskap för det käll databas konto som återställs:
+Kör följande CLI-kommando för att visa en lista över alla versioner av-databaser. Det här kommandot fungerar bara med Live-konton. `instanceId` `location` Parametrarna och hämtas från-och- `name` `location` egenskaperna i `az cosmosdb restorable-database-account list` kommandots svar. InstanceId-attributet är också en egenskap för det käll databas konto som återställs:
 
 ```azurecli-interactive
 az cosmosdb sql restorable-database list \
@@ -198,7 +198,7 @@ Detta kommando visar nu när en databas har skapats och tagits bort.
 
 **Visa en lista över alla versioner av SQL-behållare för en databas i ett Live Database-konto**
 
-Använd följande kommando för att visa en lista över alla versioner av SQL-behållare. Det här kommandot fungerar bara med Live-konton. Parametern "databaseRid" är "ResourceId" för den databas som du vill återställa. Det är värdet för attributet "ownerResourceid" som finns i `az cosmosdb sql restorable-database list` kommandots svar.
+Använd följande kommando för att visa en lista över alla versioner av SQL-behållare. Det här kommandot fungerar bara med Live-konton. `databaseRid`Parametern är `ResourceId` av den databas som du vill återställa. Det är värdet för `ownerResourceid` attributet som finns i `az cosmosdb sql restorable-database list` kommandots svar.
 
 ```azurecli-interactive
 az cosmosdb sql restorable-container list \
@@ -265,7 +265,7 @@ az cosmosdb sql restorable-resource list \
 
 ## <a name="enumerate-restorable-resources-for-mongodb-api-account"></a><a id="enumerate-mongodb-api"></a>Räkna upp återställas-resurser för MongoDB API-konto
 
-Uppräknings kommandon som beskrivs nedan hjälper dig att identifiera de resurser som är tillgängliga för återställning vid olika tidsstämplar. Dessutom ger de också en feed av viktiga händelser för återställas-kontot,-databasen och container resurserna. Precis som med SQL API kan du använda `az cosmosdb` kommandot men med parametern "MongoDB" som parameter i stället för "SQL". Dessa kommandon fungerar bara för Live-konton.
+Uppräknings kommandon som beskrivs nedan hjälper dig att identifiera de resurser som är tillgängliga för återställning vid olika tidsstämplar. Dessutom ger de också en feed av viktiga händelser för återställas-kontot,-databasen och container resurserna. Precis som med SQL API kan du använda `az cosmosdb` kommandot men med `mongodb` parametern som parameter i stället för `sql` . Dessa kommandon fungerar bara för Live-konton.
 
 **Visa en lista över alla versioner av MongoDB-databaser i ett Live Database-konto**
 

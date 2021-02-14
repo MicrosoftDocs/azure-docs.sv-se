@@ -1,143 +1,141 @@
-### YamlMime:Hub
-title: Dokumentation om IoT Central-lösningar
-summary: Utforska dokumentationen för Azure IoT Central-tjänsten och -lösningar.
-brand: azure
+### YamlMime:Landing
+title: Dokumentation om Azure IoT Central
+summary: Azure IoT Central är en IoT-programplattform som gör skapandet av IoT-lösningar enklare. Azure IoT Central förenklar den inledande installationen av IoT-lösningen och minskar administrationen och sänker driftkostnaderna och de övergripande kostnaderna för ett typiskt IoT-projekt. Lär dig hur du skapar, anpassar, hanterar och använder ett Azure IoT Central-program med våra snabbstarter och självstudier.
 metadata:
-  title: Dokumentationshubb för Azure IoT Central
-  description: Utforska dokumentationen för Azure IoT Central-tjänsten och -lösningar.
+  title: Dokumentation om Azure IoT Central
+  description: Azure IoT Central-program gör skapandet av IoT-lösningar enklare. Lär dig hur du skapar, anpassar, hanterar och använder ett Azure IoT Central-program.
+  services: iot-central
   ms.service: iot-central
-  ms.topic: hub-page
-  author: philmea
-  ms.author: philmea
-  ms.date: 06/30/2020
-  ms.openlocfilehash: 59d95b8ce13161999c06993cbbf9194a66e38ed3
-  ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
-  ms.translationtype: HT
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  ms.date: 09/02/2021
+  ms.openlocfilehash: f36d2bd704a00a450385d9766fdee3ea7c1f52a6
+  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/25/2020
-  ms.locfileid: "96122486"
-highlightedContent:
-  items:
-  - title: Vad är IoT Central?
-    itemType: overview
-    url: ./core/overview-iot-central.md
-  - title: Vad är programmallar?
-    itemType: concept
-    url: ./core/concepts-app-templates.md
-  - title: Översikt över enhetsutveckling i IoT Central
-    itemType: overview
-    url: ./core/overview-iot-central-developer.md
-  - title: Skapa ett nytt program
-    itemType: quickstart
-    url: ./core/quick-deploy-iot-central.md
-  - title: Definiera en enhetstyp och lägg till en enhet
-    itemType: tutorial
-    url: ./core/howto-set-up-template.md
-  - title: Övervaka dina enheter
-    itemType: tutorial
-    url: ./core/tutorial-create-telemetry-rules.md
-conceptualContent:
-  items:
-  - title: Ansluta och utveckla enheter
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100365148"
+landingContent:
+- title: Om Azure IoT Central
+  linkLists:
+  - linkListType: overview
     links:
-    - url: ./core/tutorial-connect-device.md
-      itemType: tutorial
-      text: Ansluta enheter
-    - url: ./core/concepts-get-connected.md
-      itemType: concept
-      text: Enhetsanslutning
-    - url: ./core/concepts-device-templates.md
-      itemType: concept
-      text: Enhetsmallar
-    - url: ./core/troubleshoot-connection.md
-      itemType: how-to-guide
-      text: Felsöka anslutningar till enheter
-    footerLink:
-      url: ./core/index.yml
-      text: Mer information
-  - title: Fortsätt vara uppkopplad
+    - text: Vad är Azure IoT Central?
+      url: core/overview-iot-central.md
+    - text: Genomgång av användargränssnittet
+      url: core/overview-iot-central-tour.md
+  - linkListType: quickstart
     links:
-    - url: ./core/tutorial-use-device-groups.md
-      itemType: how-to-guide
-      text: Använda enhetsgrupper
-    - url: ./core/howto-manage-devices.md
-      itemType: how-to-guide
-      text: Hantera dina enheter
-    - url: ./core/howto-run-a-job.md
-      itemType: concept
-      text: Så här kör du ett jobb
-    - url: ./core/howto-create-analytics.md
-      itemType: how-to-guide
-      text: Analysera dina enhetsdata
-    footerLink:
-      url: ./core/index.yml
-      text: Mer information
-  - title: Transformering
+    - text: Skapa ett nytt program
+      url: core/quick-deploy-iot-central.md
+  - linkListType: architecture
     links:
-    - url: ./core/tutorial-create-telemetry-rules.md
-      itemType: how-to-guide
-      text: Skapa en regel för telemetri
-    - url: ./core/howto-export-data.md
-      itemType: how-to-guide
-      text: Exportera data till molndestinationer
-    footerLink:
-      url: ./core/index.yml
-      text: Mer information
-productDirectory:
-  title: Kom igång med att skapa mallar för branschprogram
-  summary: Är du redo att börja skapa? Titta på våra branschrelevanta programmallar som skapats för dig som jobbar med att ta fram lösningar.
-  items:
-  - title: Skapa för detaljhandeln
-    imageSrc: ./retail/media/index/iot-central-retail.svg
+    - text: Azure IoT Central-arkitektur
+      url: core/concepts-architecture.md
+    - text: Programmallar
+      url: core/concepts-app-templates.md
+  - linkListType: whats-new
     links:
-    - text: Skapa lösningar för detaljhandeln med Azure IoT Central
-      url: ./retail/overview-iot-central-retail.md
-    - text: Skapa ett program för analys i butik
-      url: ./retail/tutorial-in-store-analytics-create-app.md
-    - text: Skapa ett program för smart lagerhantering
-      url: ./retail/tutorial-iot-central-smart-inventory-management.md
-    - text: Skapa ett anslutet logistikprogram
-      url: ./retail/tutorial-iot-central-connected-logistics.md
-    - text: Skapa ett program för digitala distributionscenter
-      url: ./retail/tutorial-iot-central-digital-distribution-center.md
-    - text: Skapa ett videoanalysprogram
-      url: ./retail/tutorial-video-analytics-create-app-yolo-v3.md
-  - title: Skapa för hälso- och sjukvård
-    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
-    links:
-    - url: ./healthcare/overview-iot-central-healthcare.md
-      text: Skapa lösningar för hälso- och sjukvården med Azure IoT Central
-    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
-      text: Skapa en app för kontinuerlig övervakning av patienter
-  - title: Skapa för energi
-    imageSrc: ./energy/media/index/iot-central-energy.svg
-    links:
-    - url: ./energy/overview-iot-central-energy.md
-      text: Skapa energilösningar med IoT Central
-    - url: ./energy/tutorial-smart-meter-app.md
-      text: Skapa en app för smart mätarövervakning
-    - url: ./energy/tutorial-solar-panel-app.md
-      text: Skapa en app för solpanelsövervakning
-  - title: Skapa för myndigheter
-    imageSrc: ./government/media/index/iot-central-government.svg
-    links:
-    - url: ./government/overview-iot-central-government.md
-      text: Skapa lösningar för myndigheter med IoT Central
-    - url: ./government/tutorial-water-quality-monitoring.md
-      text: Skapa en app för övervakning av vattenkvalitet
-    - url: ./government/tutorial-water-consumption-monitoring.md
-      text: Skapa en app för övervakning av vattenförbrukning
-    - url: ./government/tutorial-connected-waste-management.md
-      text: Skapa en ansluten app för avfallshantering
-additionalContent:
-  sections:
-  - items:
-    - title: IoT Central API:er
-      summary: Utforska IoT Central API:er.
-      url: /rest/api/iotcentral/
-    - title: IoT Central på Microsoft Learn
-      summary: Utforska IoT Central i en kostnadsfri sandbox-miljö.
-      url: /learn/browse/?products=azure-iot-central
-    - title: Senaste uppdateringarna
-      summary: Se vad som är nytt i IoT Central.
+    - text: Senaste uppdateringarna
       url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
+- title: Utveckla och ansluta enheter
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Översikt för enhetsutvecklare
+      url: core/overview-iot-central-developer.md
+  - linkListType: tutorial
+    links:
+    - text: Skapa och ansluta en enhet
+      url: core/tutorial-connect-device.md
+  - linkListType: concept
+    links:
+    - text: Enhetsanslutning
+      url: core/concepts-get-connected.md
+    - text: Nyttolaster för meddelanden
+      url: core/concepts-telemetry-properties-commands.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ansluta en Azure Sphere-enhet
+      url: core/howto-connect-sphere.md
+    - text: Felsöka anslutningar till enheter
+      url: core/troubleshoot-connection.md
+- title: Bygg integrerade lösningar
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Översikt för lösnings byggare
+      url: core/overview-iot-central-solution-builder.md
+  - linkListType: tutorial
+    links:
+    - text: Använd regler
+      url: core/tutorial-create-telemetry-rules.md
+  - linkListType: how-to-guide
+    links:
+    - text: Skapa en instrumentpanel
+      url: core/howto-create-personal-dashboards.md
+    - text: Analysera dina enhetsdata
+      url: core/howto-create-analytics.md
+    - text: Exportera data till molndestinationer
+      url: core/howto-export-data.md
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: /rest/api/iotcentral/
+- title: Hantera dina enheter
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Använda enhetsgrupper
+      url: core/tutorial-use-device-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: Lägga till, importera och exportera enheter
+      url: core/howto-manage-devices.md
+    - text: Köra ett jobb
+      url: core/howto-run-a-job.md
+- title: Administration
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hantera ditt program
+      url: core/howto-administer.md
+    - text: Hantera användare och roller
+      url: core/howto-manage-users-roles.md
+    - text: Visa din faktura
+      url: core/howto-view-bill.md
+    - text: Anpassa användargränssnitt i program
+      url: core/howto-customize-ui.md
+  - linkListType: sample
+    links:
+    - text: ARM SDK-exempel
+      url: /samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/
+- title: Scenario-baserad utbildning med Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 'Utbildnings väg: utveckla IoT-lösningar med Azure IoT Central'
+      url: /learn/paths/develop-iot-solutions-with-azure-iot-central/
+  - linkListType: learn
+    links:
+    - text: 'Lär dig modul: skapa din första Azure IoT Central-app'
+      url: /learn/modules/create-your-first-iot-central-app/
+    - text: 'Lär dig modul: Konfigurera regler och vidta åtgärder för telemetri-data i Azure IoT Central'
+      url: /learn/modules/set-up-rules-take-actions-telemetry-data-azure-iot-central/
+    - text: 'Lär dig modul: hantera IoT Central program med REST API'
+      url: /learn/modules/manage-iot-central-apps-with-rest-api/
+    - text: 'Lär dig modul: Konfigurera kontinuerlig data export från Azure IoT Central till en Power BI app'
+      url: /learn/modules/continuously-export-data-from-iot-central-power-bi/
+- title: Mallar för branschprogram
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Detaljhandeln
+      url: retail/overview-iot-central-retail.md
+    - text: Sjukvård
+      url: healthcare/overview-iot-central-healthcare.md
+    - text: Myndigheter
+      url: government/overview-iot-central-government.md
+    - text: Energi
+      url: energy/overview-iot-central-energy.md

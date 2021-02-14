@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577815"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374549"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Spara kostnader med Azure App Service reserverade instanser
 
@@ -37,24 +37,12 @@ Du kan använda reservations rekommendationer för att avgöra vilka reservation
 - Du kan använda API: erna för att få inköps rekommendationer för både delad omfattning och enskild prenumerations omfattning. Mer information finns i [reserverade instanser köp rekommendations-API: er för företags kunder](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - För Enterprise-avtal (EA) och Microsoft Customer Agreement (MCA) är inköps rekommendationer för delade och enkla prenumerations omfattningar tillgängliga med [Azure Consumption Insights Power BI innehålls paketet](/power-bi/service-connect-to-azure-consumption-insights).
 
-#### <a name="instance-size-flexibility-setting"></a>Inställning för flexibel instansstorlek
-
-Inställningen för flexibel instansstorlek avgör vilka tjänster som får rabatterna för reserverad instans.
-
-Oavsett om inställningen är på eller av, gäller reservations rabatter automatiskt för alla matchande Premium v3 reserverad instans användning.
-
 ### <a name="analyze-your-usage-information"></a>Analysera din användnings information
 
 Analysera användnings informationen för att avgöra vilka reservationer du bör köpa. Användnings data är tillgängliga i användnings filen och API: erna. Använd dem tillsammans för att avgöra vilken reservation som ska köpas. Kontrol lera om det finns Premium v3-instanser med hög användning per dag för att fastställa antalet reservationer som ska köpas.
 
 Din användnings fil visar dina avgifter per fakturerings period och daglig användning. Information om hur du hämtar din användnings fil finns i [Visa och ladda ned Azure-användning och-kostnader](../understand/download-azure-daily-usage.md). Sedan kan du med hjälp av informationen om användnings filen [avgöra vilken reservation som ska köpas](determine-reservation-purchase.md).
 
-### <a name="purchase-restriction-considerations"></a>Överväganden vid köp av begränsningar
-
-Reservations rabatter gäller inte för följande Premium v3-instanser:
-
-- För **hands versions-eller kampanj instanser** – alla Premium v3 reserverad instans-serien eller storlek som finns i för hands versionen eller använder kampanj mätare.
-- **Moln** – reservationer är inte tillgängliga för köp i Tyskland eller regioner i Kina.
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Köp en reserverad Premium v3-instans
 
@@ -79,7 +67,6 @@ Om du har ett EA-avtal kan du använda **alternativet Lägg till fler** för att
 | Omfång | Reservationens omfång kan omfatta en prenumeration eller flera prenumerationer (delad omfattning). Om du väljer: <ul><li>**Omfång för enskild resursgrupp** – reservationsrabatten tillämpas endast på matchande resurser i den valda resursgruppen. </li><li>**Omfång för enskild prenumeration** – reservationsrabatten tillämpas på matchande resurser i den valda prenumerationen.</li><li>**Delat omfång** – reservationsrabatten tillämpas på matchande resurser i berättigade prenumerationer i faktureringskontexten. För EA-kunder är fakturerings kontexten registreringen. För enskilda prenumerationer med betalning per användning är faktureringsomfånget alla berättigade prenumerationer som kontoadministratören har skapat.</li></ul> |
 | Region | Den Azure-region som omfattas av reservationen. |
 | Premium v3, reserverad instans storlek | Storleken på de reserverade Premium v3-instanserna. |
-| Optimera för | Premium v3-storlek flexibilitet för reserverad instans är valt som standard. Klicka på **Avancerade inställningar** om du vill ändra storlek på flexibiliteten för instans storlek för att tillämpa reservations rabatten på andra Premium v3-reserverade instanser i samma [Premium v3-grupp med reserverade instanser](../../virtual-machines/reserved-vm-instance-size-flexibility.md). Om du prioriterar kapaciteten prioriteras datacenterkapaciteten för dina distributioner. Det ger ytterligare förtroende för möjligheten att starta Premium v3-reserverade instanser när du behöver dem. Kapacitets prioritet är bara tillgängligt när reservations omfånget är en enskild prenumeration. |
 | Period | Ett år eller tre år. Det finns också en 5 års period som endast är tillgänglig för HBv2 Premium v3-reserverade instanser. |
 | Kvantitet | Antalet instanser som köps i reservationen. Kvantiteten är antalet aktiva Premium v3-reserverade instanser som kan få fakturerings rabatt. Om du till exempel kör 10 standard \_ D2 Premium v3-reserverade instanser i USA, kan du ange kvantitet som 10 för att maximera fördelarna med alla reserverade instanser som körs med Premium v3. |
 

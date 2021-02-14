@@ -1,23 +1,18 @@
 ---
 title: Flytta data från Salesforce med hjälp av Data Factory
 description: Lär dig mer om hur du flyttar data från Salesforce med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ba95ba57bb57b1b2e9ecde3ad27f6bb5fbca66cb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ccc20f415d13356de755af5d1d3afc5b29de72f2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124891"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387061"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Flytta data från Salesforce med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -49,9 +44,9 @@ Du kan också få fel meddelandet "REQUEST_LIMIT_EXCEEDED" i båda scenarierna. 
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopierings aktivitet som flyttar data från Salesforce genom att använda olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera** . Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
+Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager mall** , .net- **API** och **REST API** . Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
@@ -68,11 +63,11 @@ Följande tabell innehåller beskrivningar av JSON-element som är speciella fö
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen Type måste anges till: **Salesforce** . |Yes |
-| environmentUrl | Ange URL: en för Salesforce-instansen. <br><br> -Standard är "https: \/ /login.Salesforce.com". <br> – Om du vill kopiera data från sandbox anger du " https://test.salesforce.com ". <br> – Om du vill kopiera data från en anpassad domän anger du exempelvis "https://[domän]. My. Salesforce. com". |No |
-| användarnamn |Ange ett användar namn för användar kontot. |Yes |
-| password |Ange ett lösen ord för användar kontot. |Yes |
-| securityToken |Ange en säkerhetstoken för användar kontot. Se [Hämta säkerhetstoken](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) för instruktioner om hur du återställer/hämtar en säkerhetstoken. Mer information om säkerhetstoken i allmänhet finns i [säkerhet och API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
+| typ |Egenskapen Type måste anges till: **Salesforce**. |Ja |
+| environmentUrl | Ange URL: en för Salesforce-instansen. <br><br> -Standard är "https: \/ /login.Salesforce.com". <br> – Om du vill kopiera data från sandbox anger du " https://test.salesforce.com ". <br> – Om du vill kopiera data från en anpassad domän anger du exempelvis "https://[domän]. My. Salesforce. com". |Inga |
+| användarnamn |Ange ett användar namn för användar kontot. |Ja |
+| password |Ange ett lösen ord för användar kontot. |Ja |
+| securityToken |Ange en säkerhetstoken för användar kontot. Se [Hämta säkerhetstoken](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) för instruktioner om hur du återställer/hämtar en säkerhetstoken. Mer information om säkerhetstoken i allmänhet finns i [säkerhet och API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ja |
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
 En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [skapa data uppsättningar](data-factory-create-datasets.md) . Avsnitt som struktur, tillgänglighet och princip för en data uppsättnings-JSON liknar alla typer av data uppsättningar (Azure SQL, Azure Blob, Azure Table och så vidare).
@@ -97,7 +92,7 @@ När källan är av typen **RelationalSource** (som innehåller Salesforce) i ko
 
 | Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| DocumentDB |Använd den anpassade frågan för att läsa data. |En SQL-92-fråga eller en [SOQL-fråga (Salesforce Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Till exempel `select * from MyTable__c`. |Nej (om **data uppsättningens** **TableName** anges) |
+| DocumentDB |Använd den anpassade frågan för att läsa data. |En SQL-92-fråga eller en [SOQL-fråga (Salesforce Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Exempel: `select * from MyTable__c`. |Nej (om **data uppsättningens** **TableName** anges) |
 
 > [!IMPORTANT]
 > En "__c"-del av API-namnet krävs för alla anpassade objekt.
@@ -108,8 +103,8 @@ När källan är av typen **RelationalSource** (som innehåller Salesforce) i ko
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Hämtar data med WHERE-satsen i kolumnen DateTime
 När du anger SOQL-eller SQL-frågan ska du tänka på DateTime-formatets skillnad. Exempel:
 
-* **SOQL-exempel** : `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
-* **SQL-exempel** :
+* **SOQL-exempel**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SQL-exempel**:
     * **Använda guiden Kopiera för att ange frågan:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **Använd JSON-redigering för att ange frågan (escape-tecken korrekt):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
@@ -119,8 +114,8 @@ Du kan hämta data från Salesforce-rapporter genom att ange fråga som `{call "
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Hämtar borttagna poster från Salesforce-pappers korgen
 Om du vill fråga de mjuka borttagna posterna från pappers korgen i Salesforce kan du ange **"IsDeleted = 1"** i frågan. Exempel:
 
-* Om du bara vill fråga de borttagna posterna anger du "Select * from MyTable__c **WHERE IsDeleted = 1** "
-* Om du vill fråga alla poster, inklusive befintliga och borttagna, anger du "Select * from MyTable__c **WHERE IsDeleted = 0 eller IsDeleted = 1** "
+* Om du bara vill fråga de borttagna posterna anger du "Select * from MyTable__c **WHERE IsDeleted = 1**"
+* Om du vill fråga alla poster, inklusive befintliga och borttagna, anger du "Select * from MyTable__c **WHERE IsDeleted = 0 eller IsDeleted = 1**"
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-exempel: kopiera data från Salesforce till Azure-Blob
 I följande exempel finns exempel på JSON-definitioner som du kan använda för att skapa en pipeline med hjälp av [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur du kopierar data från Salesforce till Azure Blob Storage. Data kan dock kopieras till någon av de handfat som anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med kopierings aktiviteten i Azure Data Factory.
@@ -225,7 +220,7 @@ Data skrivs till en ny BLOB varje timme (frekvens: timme, intervall: 1).
 
 **Pipeline med kopierings aktivitet**
 
-Pipelinen innehåller kopierings aktivitet, som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **RelationalSource** och **mottagar** typen är inställd på **BlobSink** .
+Pipelinen innehåller kopierings aktivitet, som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **RelationalSource** och **mottagar** typen är inställd på **BlobSink**.
 
 Se [RelationalSource typ egenskaper](#copy-activity-properties) för listan över egenskaper som stöds av RelationalSource.
 
@@ -288,7 +283,7 @@ Se [RelationalSource typ egenskaper](#copy-activity-properties) för listan öve
 | Automatisk numrering |Sträng |
 | Checkbox |Boolesk |
 | Valuta |Decimal |
-| Date |DateTime |
+| Datum |DateTime |
 | Datum/tid |DateTime |
 | E-post |Sträng |
 | Id |Sträng |

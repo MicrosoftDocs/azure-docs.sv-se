@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624046"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386857"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Självstudie: Migrera webb tjänsten från Google Maps
 
@@ -54,7 +54,7 @@ I tabellen visas Azure Maps tjänst-API: er, som har liknande funktioner som lis
 
 Följande tjänst-API: er är för närvarande inte tillgängliga i Azure Maps:
 
-- Geolocation
+- Geolokalisering – Azure Maps har en tjänst som heter geolokalisering, men den tillhandahåller IP-adress till plats information, men stöder för närvarande inte cell torn eller WiFi-triangulering.
 - Plats information och foton – telefonnummer och webbplats-URL finns i Azure Maps Search API.
 - Kart-URL: er
 - Närmaste vägar – detta kan åstadkommas med hjälp av webb-SDK: n som visas [här](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic), men inte tillgänglig som en tjänst för närvarande.

@@ -3,12 +3,12 @@ title: Versions anteckningar för Application Insights | Microsoft Docs
 description: Lägg till distribution eller skapa markörer i dina Metrics Explorer-diagram i Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993728"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386041"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anteckningar på mått diagram i Application Insights
 
@@ -81,7 +81,7 @@ Skapa en separat API-nyckel för var och en av dina mallar för Azure-pipeliner.
 
 När du nu använder versions mal len för att distribuera en ny version skickas en anteckning till Application Insights. Anteckningarna kan visas på följande platser:
 
-I användnings fönstret kan du också skapa versions anteckningar manuellt:
+I **användnings** fönstret kan du också skapa versions anteckningar manuellt:
 
 ![Skärm bild av stapeldiagram med antalet användar besök som visas under en period om timmar. Versions anteckningar visas som gröna bockar ovanför diagrammet som visar hur lång tid en version inträffade](./media/annotations/usage-pane.png)
 

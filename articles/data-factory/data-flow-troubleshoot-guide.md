@@ -1,19 +1,18 @@
 ---
 title: Felsöka data flöden för mappning
 description: Lär dig hur du felsöker data flödes problem i Azure Data Factory.
-services: data-factory
 ms.author: makromer
 author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: cc87694686bd5143b03d690286bd3171cf8b0e18
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 8370940b1d7131142810d53e93c35f65e14b7575
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222157"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367936"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Felsöka mappning av data flöden i Azure Data Factory
 

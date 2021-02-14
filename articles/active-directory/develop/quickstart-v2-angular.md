@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 0de3c46eba0b9364e38c4a952a320ac1c3de512f
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583577"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103863"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
 
@@ -35,9 +35,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Alternativ 1 (Express): registrera och konfigurera appen automatiskt och hämta sedan kod exemplet
 >
-> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
-> 1. Om ditt konto har åtkomst till fler än en klient väljer du kontot längst upp till höger och anger sedan din portal-session till den Azure Active Directory (Azure AD) som du vill använda.
-> 1. Öppna fönstret ny [Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) i Azure Portal.
+> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar</a> .
 > 1. Ange ett namn för programmet och välj sedan **Registrera**.
 > 1. Gå till snabb starts fönstret och Visa vinkel snabb starten. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt.
 >
@@ -45,8 +43,8 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >
 > #### <a name="step-1-register-the-application"></a>Steg 1: registrera programmet
 >
-> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
-> 1. Om ditt konto har åtkomst till fler än en klient väljer du ditt konto längst upp till höger och ställer in din portal-session till den Azure AD-klient som du vill använda.
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Följ anvisningarna för att [Registrera ett program på en sida](./scenario-spa-app-registration.md) i Azure Portal.
 > 1. Lägg till en ny plattform i fönstret **verifiering** i appens registrering och registrera omdirigerings-URI: n: `http://localhost:4200/` .
 > 1. I den här snabb starten används det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen loggar in användare och anropar ett API.

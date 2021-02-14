@@ -1,23 +1,18 @@
 ---
 title: Flytta data från en webb tabell med Azure Data Factory
 description: Lär dig mer om hur du flyttar data från en tabell på en webb sida med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: f54a26a4-baa4-4255-9791-5a8f935898e2
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012858"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392909"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Flytta data från en webb tabell källa med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -72,9 +67,9 @@ Följande tabell innehåller en beskrivning av JSON-element som är speciella f�
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen Type måste anges till: **webb** |Yes |
-| URL |URL till webb adressen |Yes |
-| authenticationType |Antal. |Yes |
+| typ |Egenskapen Type måste anges till: **webb** |Ja |
+| URL |URL till webb adressen |Ja |
+| authenticationType |Anonym. |Ja |
 
 ### <a name="using-anonymous-authentication"></a>Använda anonym autentisering
 
@@ -100,9 +95,9 @@ Avsnittet **typeProperties** är olika för varje typ av data uppsättning och i
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ |typ av data uppsättning. måste vara inställd på **Webtable** |Yes |
+| typ |typ av data uppsättning. måste vara inställd på **Webtable** |Ja |
 | path |En relativ URL till den resurs som innehåller tabellen. |Nej. Om ingen sökväg anges används endast den URL som angavs i den länkade tjänst definitionen. |
-| index |Indexet för tabellen i resursen. Se avsnittet [Hämta index för en tabell i en HTML-sida](#get-index-of-a-table-in-an-html-page) för steg för att hämta index för en tabell på en HTML-sida. |Yes |
+| index |Indexet för tabellen i resursen. Se avsnittet [Hämta index för en tabell i en HTML-sida](#get-index-of-a-table-in-an-html-page) för steg för att hämta index för en tabell på en HTML-sida. |Ja |
 
 **Exempel:**
 

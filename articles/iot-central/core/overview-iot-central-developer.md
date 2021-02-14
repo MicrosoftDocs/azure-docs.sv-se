@@ -4,24 +4,24 @@ description: Azure IoT Central är en IoT-programplattform som gör skapandet av
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122256"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377813"
 ---
-# <a name="iot-central-device-development-overview"></a>Översikt över enhetsutveckling i IoT Central
+# <a name="iot-central-device-development-guide"></a>Guide för utveckling av IoT Central enhet
 
 *Den här artikeln gäller för enhets utvecklare.*
 
-Med ett IoT Central program kan du övervaka och hantera miljon tals enheter under deras livs cykel. Den här översikten är avsedd för enhets utvecklare som implementerar kod som ska köras på enheter som ansluter till IoT Central.
+Med ett IoT Central program kan du övervaka och hantera miljon tals enheter under deras livs cykel. Den här guiden är avsedd för enhets utvecklare som implementerar kod som ska köras på enheter som ansluter till IoT Central.
 
 Enheter interagerar med ett IoT Central program med hjälp av följande primitiver:
 

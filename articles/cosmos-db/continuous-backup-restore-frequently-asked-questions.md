@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c0af1db12f3ade2945524f48e4539d2d2e9aa6b9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 1cf94964f420f7a7d4fc0f6ba0b77813b3e75787
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539197"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393232"
 ---
 # <a name="frequently-asked-questions-on-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Vanliga frågor och svar om den Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -31,7 +31,7 @@ Den här artikeln innehåller vanliga frågor och svar om Azure Cosmos DB tidpun
 Återställningen kanske inte sker beroende på om de viktiga resurserna som databaser eller behållare fanns vid den tidpunkten. Du kan kontrol lera genom att ange tiden och titta på den valda databasen eller behållaren under en viss tid. Om det inte finns några resurser att återställa, fungerar inte återställnings processen.
 
 ### <a name="how-can-i-track-if-an-account-is-being-restored"></a>Hur kan jag spåra om ett konto återställs?
-När du har skickat kommandot Restore och väntar på samma sida när åtgärden har slutförts, visar statusfältet ett fullständigt återställt konto meddelande. Du kan också söka efter det återställda kontot och [spåra statusen för det konto som återställs](continuous-backup-restore-portal.md#track-restore-status). När återställningen pågår, ändras kontots status till "online" när återställningen är slutförd.
+När du har skickat kommandot Restore och väntar på samma sida när åtgärden har slutförts, visar statusfältet ett fullständigt återställt konto meddelande. Du kan också söka efter det återställda kontot och [spåra statusen för det konto som återställs](continuous-backup-restore-portal.md#track-restore-status). När återställningen pågår kommer kontots status att *skapas*, när återställningen har slutförts, ändras kontots status till *online*.
 
 På samma sätt för PowerShell och CLI kan du spåra förloppet för återställnings åtgärden genom att köra `az cosmosdb show` kommandot på följande sätt:
 
@@ -39,7 +39,7 @@ På samma sätt för PowerShell och CLI kan du spåra förloppet för återstäl
 az cosmosdb show --name "accountName" --resource-group "resourceGroup"
 ```
 
-ProvisioningState visar "lyckades" när kontot är online.
+ProvisioningState visar att det *lyckades* när kontot är online.
 
 ```json
 {
@@ -60,7 +60,7 @@ ProvisioningState visar "lyckades" när kontot är online.
 ### <a name="how-can-i-find-out-whether-an-account-was-restored-from-another-account"></a>Hur kan jag ta reda på om ett konto har återställts från ett annat konto?
 Kör `az cosmosdb show` kommandot, i utdata, kan du se att `createMode` egenskapens värde. Om värdet är inställt på **Återställ**. Det anger att kontot har återställts från ett annat konto. `restoreParameters`Egenskapen innehåller ytterligare information, till exempel `restoreSource` , som har käll konto-ID: t. Det sista GUID i `restoreSource` parametern är InstanceID för käll kontot.
 
-I följande utdata är till exempel käll kontots instans-ID "7b4bb-f6a0-430E-ade1-638d781830cc"
+I följande utdata är till exempel käll kontots instans-ID *7b4bb-f6a0-430E-ade1-638d781830cc*
 
 ```json
 "restoreParameters": {
@@ -75,9 +75,9 @@ I följande utdata är till exempel käll kontots instans-ID "7b4bb-f6a0-430E-ad
 Hela den delade data flödes databasen återställs. Du kan inte välja en delmängd av behållare i en delad data flödes databas för återställning.
 
 ### <a name="what-is-the-use-of-instanceid-in-the-account-definition"></a>Vad är användningen av InstanceID i konto definitionen?
-Vid en viss tidpunkt är Azure Cosmos DB kontots accountName-egenskap globalt unikt medan den är aktiv. När kontot har tagits bort är det dock möjligt att skapa ett annat konto med samma namn, och därför är "accountName" inte längre tillräckligt för att identifiera en instans av ett konto. 
+Vid en viss tidpunkt är Azure Cosmos DB kontots `accountName` egenskap globalt unikt medan den är aktiv. När kontot har tagits bort är det dock möjligt att skapa ett annat konto med samma namn, och därför är "accountName" inte längre tillräckligt för att identifiera en instans av ett konto. 
 
-ID eller "instanceId" är en egenskap hos en instans av ett konto och det används för att disambiguate över flera konton (Live och Deleted) om de har samma namn för återställning. Du kan hämta instans-ID genom att köra `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` kommandona eller. Värdet för namnattributet anger "InstanceID".
+ID eller `instanceId` är en egenskap för en instans av ett konto och den används för att disambiguate över flera konton (Live och Deleted) om de har samma namn för återställning. Du kan hämta instans-ID genom att köra `Get-AzCosmosDBRestorableDatabaseAccount`  `az cosmosdb restorable-database-account` kommandona eller. Värdet för namnattributet anger "InstanceID".
 
 ## <a name="next-steps"></a>Nästa steg
 

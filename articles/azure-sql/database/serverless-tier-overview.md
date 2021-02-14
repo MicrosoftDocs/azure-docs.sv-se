@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97687405"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393249"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database utan Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,14 +25,14 @@ Server lös är en beräknings nivå för enskilda databaser i Azure SQL Databas
 
 ## <a name="serverless-compute-tier"></a>Serverlös beräkningsnivå
 
-Server lösa beräknings nivåer för enskilda databaser i Azure SQL Database är parameterstyrda av ett intervall för beräkning av automatisk skalning och en fördröjning för automatisk paus. Konfigurationen av dessa parametrar formar databasens prestanda upplevelse och beräknings kostnader.
+Den server lösa beräknings nivån för enskilda databaser i Azure SQL Database är parametriserad av ett intervall för automatisk skalning av beräkning och en fördröjning för automatisk paus. Konfigurationen av dessa parametrar formar databasens prestanda upplevelse och beräknings kostnader.
 
 ![utan server fakturering](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>Prestanda konfiguration
 
 - **Lägsta virtuella kärnor** och **maximal virtuella kärnor** är konfigurerbara parametrar som definierar intervallet för beräknings kapacitet som är tillgängliga för databasen. Minnes-och IO-gränser är proportionella till det vCore-intervall som angetts.  
-- Den automatiska **paus fördröjningen** är en konfigurerbar parameter som definierar den tids period som databasen måste vara inaktiv innan den pausas automatiskt. Databasen återupptas automatiskt när nästa inloggning eller annan aktivitet sker.  Du kan också inaktivera AutoPause.
+- **Fördröjningen för automatisk paus** är en konfigurerbar parameter som definierar den tids period som databasen måste vara inaktiv innan den pausas automatiskt. Databasen återupptas automatiskt när nästa inloggning eller annan aktivitet sker.  Du kan också inaktivera automatisk upppausning.
 
 ### <a name="cost"></a>Cost
 
@@ -48,16 +48,16 @@ Mer kostnads information finns i [fakturering](serverless-tier-overview.md#billi
 
 Nivån med serverlös databehandling är pris/prestanda-optimerad för enstaka databaser med oförutsägbart användningsmönster som inte störs av viss fördröjning i databehandlingen efter inaktiva perioder. Nivån med etablerad databehandling är å andra sidan pris/prestanda-optimerad för enstaka eller flera databaser i elastiska pooler med högre genomsnittlig användning där det inte får förekomma en sådan fördröjning.
 
-### <a name="scenarios-well-suited-for-serverless-compute"></a>Lämpliga scenarier för Server lös data behandling
+### <a name="scenarios-well-suited-for-serverless-compute"></a>Scenarier som passar bra för Server lös data behandling
 
 - Enkla databaser med intermittent, oförutsägbara användnings mönster som blandats med perioder av inaktivitet och lägre genomsnittlig data bearbetning över tid.
 - Enskilda databaser i den allokerade beräknings nivån som ofta skalas om och kunder som föredrar att delegera beräkning av skalbarhet till tjänsten.
 - Nya enkla databaser utan användnings historik där beräknings storlek är svårt eller inte går att uppskatta innan distributionen i SQL Database.
 
-### <a name="scenarios-well-suited-for-provisioned-compute"></a>Scenarier som passar bra för allokerad beräkning
+### <a name="scenarios-well-suited-for-provisioned-compute"></a>Scenarier som är väl lämpade för allokerad beräkning
 
 - Enkla databaser med mer vanliga, förutsägbara användnings mönster och större genomsnittlig beräknings användning över tid.
-- Databaser som inte kan tolerera prestanda kompromisser som orsakas av frekvent minnes trimning eller fördröjning i att återupptas från paus läge.
+- Databaser som inte kan tolerera prestanda kompromisser som orsakas av mer frekvent minnes trimning eller fördröjningar i att återupptas från pausat tillstånd.
 - Flera databaser med intermittent, oförutsägbara användnings mönster som kan konsol IDE ras i elastiska pooler för bättre pris-och prestanda optimering.
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>Jämförelse med allokerad beräknings nivå
@@ -93,28 +93,28 @@ Till skillnad från etablerade data bearbetnings databaser frigörs minne från 
 - Användningen av aktiva cacheminnen anses låg när den totala storleken på de senast använda cacheposter unders tiger ett tröskelvärde under en viss tids period.
 - När cache regenering utlöses, minskas storleken på målets cachestorlek stegvis till en bråkdel av den tidigare storleken och återställningen fortsätter bara om användningen är låg.
 - När cache regenering sker är principen för att välja cacheposter att ta bort samma princip som för etablerade beräknings databaser när minnes trycket är hög.
-- Cachestorleken minskas aldrig under den minsta minnes gränsen som definieras av den minsta virtuella kärnor som kan konfigureras.
+- Cachestorleken minskas aldrig under den minsta minnes gränsen som definieras av min virtuella kärnor, som kan konfigureras.
 
 I både server lösa och etablerade beräknings databaser kan cacheposter avlägsnas om allt tillgängligt minne används.
 
-Observera att användningen av aktiva cacheminnen kan vara hög beroende på användnings mönstret och förhindra minnes regenerering när processor användningen är låg.  Det kan också finnas ytterligare fördröjning efter att en användar aktivitet stoppas innan återtagning av minne sker på grund av regelbundna bakgrunds processer som svarar på tidigare användar aktiviteter.  Ta bort åtgärder och QDs servernamn rensnings uppgifter genererar Ghost-poster som marker ATS för borttagning, men tas inte bort fysiskt förrän rensningen av Ghost-processen körs, vilket kan innebära att data sidor läses till cache.
+Observera att användningen av aktiva cacheminnen kan vara hög beroende på användnings mönstret och förhindra minnes regenerering när processor användningen är låg.  Det kan också uppstå ytterligare fördröjningar efter att en användar aktivitet stoppas innan återtagning av minne sker på grund av regelbundna bakgrunds processer som svarar på tidigare användar aktivitet.  Ta bort åtgärder och QDs servernamn rensnings uppgifter genererar Ghost-poster som marker ATS för borttagning, men tas inte bort fysiskt förrän rensnings processen för dubbel rensning körs som kan innebära att läsning av data sidor cachelagras.
 
 #### <a name="cache-hydration"></a>Cachelagra hydrering
 
 SQL-cachen växer när data hämtas från disk på samma sätt och med samma hastighet som för etablerade databaser. När databasen är upptagen får cachen öka obegränsad till högsta minnes gräns.
 
-## <a name="autopausing-and-autoresuming"></a>Autopausa och Autoåteruppta
+## <a name="auto-pause-and-auto-resume"></a>Automatisk paus och automatisk återgång
 
-### <a name="autopausing"></a>Autopausa
+### <a name="auto-pause"></a>Pausa automatiskt
 
-AutoPause utlöses om samtliga följande villkor är uppfyllda för varaktigheten för den automatiskt pausade fördröjningen:
+Automatisk paus utlöses om samtliga följande villkor är uppfyllda under tiden för fördröjningen för automatisk paus:
 
 - Antal sessioner = 0
 - CPU = 0 för användar arbets belastning som körs i anslutningspoolen
 
-Det finns ett alternativ för att inaktivera autopausen om du vill.
+Det finns ett alternativ för att inaktivera automatisk paus vid behov.
 
-Följande funktioner har inte stöd för automatisk pausning, men stöder automatisk skalning.  Om någon av följande funktioner används måste den automatiskt pausa inaktive ras och databasen förblir online oavsett hur länge databasen inaktive ras:
+Följande funktioner stöder inte automatisk pausning, men stöder automatisk skalning.  Om någon av följande funktioner används, ska automatisk pausning vara inaktive rad och databasen förblir online oavsett hur lång tid det tar för inaktivitet i databasen:
 
 - Geo-replikering (aktiv geo-replikering och grupper för automatisk redundans).
 - Långsiktig kvarhållning av säkerhets kopior (brv).
@@ -122,13 +122,13 @@ Följande funktioner har inte stöd för automatisk pausning, men stöder automa
 - DNS-alias
 - Jobb databasen som används i elastiska jobb (för hands version).
 
-AutoPause förhindras tillfälligt under distributionen av vissa tjänste uppdateringar som kräver att databasen är online.  I sådana fall tillåts autopausen igen när tjänsten har uppdaterats.
+Automatisk Pausering förhindras tillfälligt under distributionen av vissa tjänste uppdateringar som kräver att databasen är online.  I sådana fall blir automatisk paus automatiskt tillåten när uppdateringen är klar.
 
-### <a name="autoresuming"></a>Återupptar
+### <a name="auto-resuming"></a>Automatisk återställning
 
-Autoåterupptagande utlöses om något av följande villkor är uppfyllt när som helst:
+Automatisk aktivering utlöses om något av följande villkor är uppfyllt när som helst:
 
-|Funktion|Autoresume-utlösare|
+|Funktion|Automatiskt återuppta utlösare|
 |---|---|
 |Autentisering och auktorisering|Inloggning|
 |Hotidentifiering|Aktivera/inaktivera inställningar för hot identifiering på databas-eller server nivå.<br>Ändra inställningarna för hot identifiering på databas-eller server nivå.|
@@ -139,7 +139,7 @@ Autoåterupptagande utlöses om något av följande villkor är uppfyllt när so
 |Sårbarhetsbedömning|Ad hoc-sökningar och regelbundna sökningar om det är aktiverat|
 |Fråga (prestanda) data lager|Ändra eller Visa inställningar för frågearkivet|
 |Prestandarekommendationer|Visa eller tillämpa prestanda rekommendationer|
-|Autojustera|Program och verifiering av rekommendationer för automatisk justering, till exempel automatisk indexering|
+|Automatisk justering|Program och verifiering av rekommendationer för automatisk justering, till exempel automatisk indexering|
 |Databas kopiering|Skapa databas som kopia.<br>Exportera till en BACPAC-fil.|
 |SQL Data Sync|Synkronisering mellan hubb och medlems databaser som körs enligt ett konfigurerbart schema eller som utförs manuellt|
 |Ändra vissa metadata för databasen|Lägger till nya Database-taggar.<br>Ändra Max virtuella kärnor, min virtuella kärnor eller AutoPause fördröjning.|
@@ -147,7 +147,7 @@ Autoåterupptagande utlöses om något av följande villkor är uppfyllt när so
 
 Övervakning, hantering eller andra lösningar som utför någon av de åtgärder som anges ovan utlöser automatiskt återupptagning.
 
-Funktionen för att återuppta automatiskt utlöses även under distributionen av vissa tjänste uppdateringar som kräver att databasen är online.
+Automatisk återupptagning utlöses även under distributionen av vissa tjänst uppdateringar som kräver att databasen är online.
 
 ### <a name="connectivity"></a>Anslutning
 
@@ -155,7 +155,7 @@ Om en server lös databas har pausats kommer den första inloggningen att återu
 
 ### <a name="latency"></a>Svarstid
 
-Svars tiden för autoresume och autopausning av en server lös databas är i regel 1 minut för att autoaktivera och 1-10 minuter att pausa.
+Svars tiden för att automatiskt återuppta och automatiskt pausa en databas utan server är vanligt vis 1 minut att automatiskt återuppta och 1-10 minuter för automatisk pausning.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Kund hanterad transparent data kryptering (BYOK)
 
@@ -209,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-Mer information finns i [skapa databas](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+Mer information finns i [skapa databas](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true).  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Flytta en databas från den allokerade beräknings nivån till Server lös beräknings nivån
 
@@ -234,14 +234,14 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Använd Transact-SQL (T-SQL)
 
-När du använder T-SQL tillämpas standardvärden för den minsta virtuella kärnor och den automatiskt pausade fördröjningen.
+När du använder T-SQL används standardvärden för den minsta virtuella kärnor och fördröjningen för automatisk paus.
 
 ```sql
 ALTER DATABASE testdb 
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
+Mer information finns i [Alter Database](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true).
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Flytta en databas från Server lös beräknings nivån till den allokerade beräknings nivån
 
@@ -307,7 +307,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 ```
 
 
-## <a name="resource-limits"></a>Resursbegränsningar
+## <a name="resource-limits"></a>Resursgränser
 
 För resurs gränser, se [Server lös beräknings nivå](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).
 

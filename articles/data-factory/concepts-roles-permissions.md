@@ -4,18 +4,14 @@ description: Beskriver de roller och behörigheter som krävs för att skapa dat
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053779"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364485"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Roller och behörigheter för Azure Data Factory
 
@@ -54,14 +50,13 @@ Rollen **Data Factory Contributor** , på resurs grupps nivå eller över, låte
 
 Behörigheter för Azure databaser och GitHub är oberoende av Data Factory behörigheter. Därför kan en användare med lagrings platsen-behörigheter som bara är en medlem i rollen läsare redigera Data Factory underordnade resurser och genomföra ändringar i lagrings platsen, men inte publicera ändringarna.
 
+
 > [!IMPORTANT]
 > Distribution av Resource Manager-mallar med rollen **Data Factorys medarbetare** höjer inte dina behörigheter. Om du till exempel distribuerar en mall som skapar en virtuell Azure-dator och du inte har behörighet att skapa virtuella datorer, Miss lyckas distributionen med ett auktoriseringsfel.
 
-> [!IMPORTANT]
-> Behörigheten **Microsoft. DataFactory/factors/Write** krävs i båda lägena i publicerings kontexten.
-
-- Den här behörigheten krävs endast i Live-läge när kunden ändrar globala parametrar.
-- Den här behörigheten krävs alltid i git-läge eftersom varje gång kunden publicerar, eftersom Factory-objektet med det senaste inchecknings-ID: t uppdateras.
+   I publicerings kontexten gäller **Microsoft. DataFactory/factors/Write-** behörigheten följande lägen.
+- Den behörigheten krävs i Live-läge när kunden ändrar de globala parametrarna.
+- Den behörigheten krävs alltid i git-läge, eftersom varje gång kunden publicerar, Factory-objektet med det senaste bekräftelse-ID: t måste uppdateras.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Anpassade scenarier och anpassade roller
 
@@ -95,6 +90,7 @@ Här följer några exempel som visar vad du kan uppnå med anpassade roller:
 - Låt en användare uppdatera en data fabrik från PowerShell eller SDK, men inte i Azure Portal.
 
   Tilldela den inbyggda rollen **deltagare** på Data Factory-resursen för användaren. Med den här rollen kan användaren se resurserna i Azure Portal, men användaren kan inte komma åt knapparna  **publicera** och **publicera alla** .
+
 
 ## <a name="next-steps"></a>Nästa steg
 

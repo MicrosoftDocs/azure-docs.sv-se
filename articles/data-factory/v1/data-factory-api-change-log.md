@@ -1,23 +1,19 @@
 ---
 title: Data Factory-.NET API-ändrings logg
 description: Beskriver hur du avbryter ändringar, funktions tillägg, fel korrigeringar och så vidare i en speciell version av .NET API för Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 70df35409d1c84efb996bb40f4e39bde6ad7d5a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3f7c80f5818c1353f438a164bf52c777056ad6d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496508"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377490"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API-ändrings logg
 > [!NOTE]
@@ -154,7 +150,7 @@ Följande klasser har bytt namn. De nya namnen är de ursprungliga namnen för k
 | Gammalt namn | Nytt namn |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](/dotnet/api/microsoft.azure.management.datafactories.idatasetoperations) |
-| Tabeller |[Data uppsättning](/dotnet/api/microsoft.azure.management.datafactories.models.dataset) |
+| Tabell |[Data uppsättning](/dotnet/api/microsoft.azure.management.datafactories.models.dataset) |
 | TableProperties |[DatasetProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasetproperties) |
 | TableTypeProprerties |[DatasetTypeProperties](/dotnet/api/microsoft.azure.management.datafactories.models.datasettypeproperties) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](/dotnet/api/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters) |

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 13cb22c178be29af71b57d0f50fdbd0e95718069
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099531"
+ms.locfileid: "100104611"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
@@ -24,7 +24,7 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 |Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
 |------------------------------|---------------|---------------|
 | [Återställ dokument (förhands granskning)](search-howto-run-reset-indexers.md) |  Ombearbetar individuellt valda Sök dokument i Indexer-arbetsbelastningar. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/index-preview) |
-| Support för tillgänglighets zon | Sök tjänster med två eller fler repliker i vissa regioner, som listas i [skala för prestanda](search-performance-optimization.md), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i dokumentet om prestanda justering. |
+| [Tillgänglighetszoner](search-performance-optimization.md#availability-zones)| Sök tjänster med två eller fler repliker i vissa regioner, enligt vad som anges i [den här artikeln](search-performance-optimization.md#availability-zones), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i dokumentet om prestanda justering. |
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -36,7 +36,8 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 
 | Månad | Funktion | Beskrivning |
 |-------|---------|-------------|
-| November | [Kundhanterad nyckel kryptering (utökad)](search-security-manage-encryption-keys.md) | utökar kundhanterad kryptering över hela det antal till gångar som skapas och hanteras av en Sök tjänst. Allmänt tillgänglig.|
+| November | [Kundhanterad nyckel kryptering (utökad)](search-security-manage-encryption-keys.md) | Utökar kundhanterad kryptering över hela det antal till gångar som skapas och hanteras av en Sök tjänst. Allmänt tillgänglig.|
+| September | [Visual Studio Code-tillägg för Azure Kognitiv sökning](search-get-started-vs-code.md) | Lägger till en arbets yta, navigering, IntelliSense och mallar för att skapa index, indexerare, data källor och färdighetsuppsättningar. | Offentlig för hands version |
 | September | [Hanterad tjänst identitet (indexerare)](search-howto-managed-identities-data-sources.md) | Allmänt tillgänglig.  |
 | September | [Utgående begär Anden med en privat länk](search-indexer-howto-access-private.md) | Allmänt tillgänglig.  |
 | September | [Hanterings REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | Allmänt tillgänglig. |

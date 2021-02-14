@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 18104f06e779046786a2c7794736d01c35139490
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895622"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365811"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Felsöka hybrid Azure Active Directory anslutna enheter med äldre versioner 
 
@@ -39,6 +39,7 @@ Den här artikeln innehåller fel söknings vägledning för hur du löser event
 **Vad du bör känna till:** 
 
 - Hybrid Azure AD-anslutning för tidigare Windows-enheter fungerar något annorlunda än i Windows 10. Många kunder inser inte att de behöver AD FS (för federerade domäner) eller sömlös SSO-konfiguration (för hanterade domäner).
+- Sömlös SSO fungerar inte i privat bläddringsläge i Firefox och Microsoft Edge-webbläsare. Det fungerar inte heller i Internet Explorer om webbläsaren körs i utökat skyddat läge.
 - För kunder med federerade domäner, om tjänst anslutnings punkten (SCP) har kon figurer ATS så att den pekar på det hanterade domän namnet (t. ex. contoso.onmicrosoft.com, i stället för contoso.com), fungerar inte hybrid Azure AD Join för tidigare Windows-enheter.
 - Samma fysiska enhet visas flera gånger i Azure AD när flera domän användare loggar in i tidigare hybrid Azure AD-anslutna enheter.  Om t. ex. *jdoe* och *jharnett* loggar in på en enhet, skapas en separat registrering (DeviceID) för var och en av dem på fliken **användar** information. 
 - Du kan också hämta flera poster för en enhet på fliken Användar information på grund av en ominstallation av operativ systemet eller manuell omregistrering.

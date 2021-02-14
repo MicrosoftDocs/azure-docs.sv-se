@@ -3,16 +3,15 @@ title: Översikt över mappning av data flödes omvandling
 description: En översikt över de olika omvandlingarna som är tillgängliga i mappnings data flödet
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 9d44890e84e97a413543a4291d1331fee0f04841
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490898"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367919"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Översikt över mappning av data flödes omvandling
 
@@ -20,7 +19,7 @@ ms.locfileid: "96490898"
 
 Nedan visas en lista över de omvandlingar som stöds för närvarande i mappnings data flödet. Klicka på varje omvandling för att lära dig mer om konfigurationen.
 
-| Name | Kategori | Beskrivning |
+| Namn | Kategori | Beskrivning |
 | ---- | -------- | ----------- |
 | [Aggregera](data-flow-aggregate.md) | Schema modifierare | Definiera olika typer av agg regeringar som SUM, MIN, MAX och COUNT grupperade efter befintliga eller beräknade kolumner. | 
 | [Ändra rad](data-flow-alter-row.md) | Rads modifierare | Ange INSERT-, DELETE-, Update-och upsert-principer på rader. |

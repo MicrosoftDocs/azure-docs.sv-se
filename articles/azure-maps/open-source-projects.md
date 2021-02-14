@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16e7f04c62f25e787c3cab44b85a075e1c7d7277
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601602"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386755"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps community-projekt med öppen källkod
 
@@ -66,11 +66,14 @@ Följande är en lista med projekt med öppen källkod som utökar funktionerna 
 | [Implementera rumslig IoT-analys med Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Att spåra och fånga relevanta händelser som inträffar i utrymme och tid är ett vanligt IoT-scenario. |
 
 **Plugin-program från tredje part kart kontroll**
+<a name="third-part-map-control-plugins"></a>
 
 | Projektnamn | Beskrivning |
 |-|-|
+| [Azure Maps cesium-plugin](https://github.com/azure-samples/azure-maps-cesium) | Ett [CESIUM JS](https://cesium.com/cesiumjs/) -pluginprogram som gör det enkelt att integrera Azure Maps tjänster, till exempel [panel lager](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) och [tjänster för kodning](https://docs.microsoft.com/rest/api/maps/search). |
 | [Azure Maps-plugin-program](https://github.com/azure-samples/azure-maps-leaflet) | Ett plugin-program [för en JavaScript](https://leafletjs.com/) -skript som gör det enkelt att täcka panel lager från [Azure Maps panels tjänster](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
- 
+ | [Plugin-program för openlagers Azure Maps](https://github.com/azure-samples/azure-maps-openlayers) | Ett [OpenLayers](https://www.openlayers.org/) JavaScript-plugin-program som gör det enkelt att täcka över panel lager från [Azure Maps panels tjänster](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). |
+
 **Verktyg och resurser**
 
 | Projektnamn | Beskrivning |

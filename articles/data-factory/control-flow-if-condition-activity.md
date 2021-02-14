@@ -1,22 +1,18 @@
 ---
 title: Om villkors aktivitet i Azure Data Factory
 description: Med aktiviteten if-villkor kan du styra bearbetnings flödet baserat på ett villkor.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 150efe87565b1949dc1ed29b03af69c26f84a896
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c0dbda298cf808dd3caa7a767e0ec5e847c92108
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499483"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385531"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Om villkors aktivitet i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -67,11 +63,11 @@ If-villkoret fungerar på samma sätt som en if-sats i ett programmeringsspråk.
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-name | Namnet på IF-condition-aktiviteten. | Sträng | Yes
-typ | Måste anges till **IfCondition** | Sträng | Yes
-uttryck | Uttryck som måste utvärderas till sant eller falskt | Uttryck med resultat typen Boolean | Yes
-ifTrueActivities | Uppsättning aktiviteter som körs när uttrycket utvärderas till `true` . | Matris | Yes
-ifFalseActivities | Uppsättning aktiviteter som körs när uttrycket utvärderas till `false` . | Matris | Yes
+name | Namnet på IF-condition-aktiviteten. | Sträng | Ja
+typ | Måste anges till **IfCondition** | Sträng | Ja
+uttryck | Uttryck som måste utvärderas till sant eller falskt | Uttryck med resultat typen Boolean | Ja
+ifTrueActivities | Uppsättning aktiviteter som körs när uttrycket utvärderas till `true` . | Matris | Ja
+ifFalseActivities | Uppsättning aktiviteter som körs när uttrycket utvärderas till `false` . | Matris | Ja
 
 ## <a name="example"></a>Exempel
 Pipelinen i det här exemplet kopierar data från en mapp till en utdatafil. Mappen utdata bestäms av värdet för pipeline-parametern: routeSelection. Om värdet för routeSelection är sant kopieras data till outputPath1. Om värdet för routeSelection är false kopieras data till outputPath2. 

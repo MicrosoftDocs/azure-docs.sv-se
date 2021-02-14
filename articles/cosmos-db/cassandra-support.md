@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 3b2d1bbe2de0ae72087fdf3debeaf42f8745fed9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576489"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374379"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-funktioner som stöds av Azure Cosmos DB Cassandra-API 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -45,33 +45,33 @@ Azure Cosmos DB Cassandra-API:et stöder följande CQL-datatyper:
 
 |Typ  |Stöds |
 |---------|---------|
-| ascii  | Yes |
-| bigint  | Yes |
-| blob  | Yes |
-| boolean  | Yes |
-| räknare  | Yes |
-| date  | Yes |
-| decimal  | Yes |
-| double  | Yes |
-| flyt  | Yes |
-| frusen  | Yes |
-| inet  | Yes |
-| int  | Yes |
-| lista  | Yes |
-| set  | Yes |
-| smallint  | Yes |
-| text  | Yes |
-| time  | Yes |
-| timestamp  | Yes |
-| timeuuid  | Yes |
-| tinyint  | Yes |
-| tuppel  | Yes |
-| uuid  | Yes |
-| varchar  | Yes |
-| varint  | Yes |
-| tupplar | Yes | 
-| udts  | Yes |
-| map | Yes |
+| ascii  | Ja |
+| bigint  | Ja |
+| blob  | Ja |
+| boolean  | Ja |
+| räknare  | Ja |
+| date  | Ja |
+| decimal  | Ja |
+| double  | Ja |
+| flyt  | Ja |
+| frusen  | Ja |
+| inet  | Ja |
+| int  | Ja |
+| lista  | Ja |
+| set  | Ja |
+| smallint  | Ja |
+| text  | Ja |
+| time  | Ja |
+| timestamp  | Ja |
+| timeuuid  | Ja |
+| tinyint  | Ja |
+| tuppel  | Ja |
+| uuid  | Ja |
+| varchar  | Ja |
+| varint  | Ja |
+| tupplar | Ja | 
+| udts  | Ja |
+| map | Ja |
 
 Statiskt stöds för data typs deklaration.
 
@@ -81,10 +81,10 @@ Azure Cosmos DB Cassandra-API:et stöder följande CQL-funktioner:
 
 |Kommando  |Stöds |
 |---------|---------|
-| Åtkomsttokenbegäran | Yes |
-| TTL * * * | Yes |
-| writetime *** | Yes |
-| Cast * * | Yes |
+| Åtkomsttokenbegäran | Ja |
+| TTL * * * | Ja |
+| writetime *** | Ja |
+| Cast * * | Ja |
 
 > [!NOTE] 
 > \* API för Cassandra stöder token som en projektion/väljare och tillåter bara token (PK) till vänster i en WHERE-sats. Stöds till exempel `WHERE token(pk) > 1024` , men `WHERE token(pk) > token(100)` stöds **inte** .  
@@ -97,11 +97,11 @@ Mängd funktioner:
 
 |Kommando  |Stöds |
 |---------|---------|
-| Gmsn | Yes |
-| count | Yes |
-| min | Yes |
-| max | Yes |
-| fordra | Yes |
+| Gmsn | Ja |
+| count | Ja |
+| min | Ja |
+| max | Ja |
+| fordra | Ja |
 
 > [!NOTE]
 > Mängd funktioner fungerar på vanliga kolumner, men agg regeringar i kluster kolumner stöds **inte** .
@@ -111,25 +111,25 @@ BLOB-konverterings funktioner:
  
 |Kommando  |Stöds |
 |---------|---------|
-| typeAsBlob(value)   | Yes |
-| blobAsType(value) | Yes |
+| typeAsBlob(value)   | Ja |
+| blobAsType(value) | Ja |
 
 
 UUID-och timeuuid-funktioner:
  
 |Kommando  |Stöds |
 |---------|---------|
-| dateOf()  | Yes |
-| now()  | Yes |
-| minTimeuuid()  | Yes |
-| unixTimestampOf()  | Yes |
-| toDate(timeuuid)  | Yes |
-| toTimestamp(timeuuid)  | Yes |
-| toUnixTimestamp(timeuuid)  | Yes |
-| toDate(timestamp)  | Yes |
-| toUnixTimestamp(timestamp)  | Yes |
-| toTimestamp(date)  | Yes |
-| toUnixTimestamp(date) | Yes |
+| dateOf()  | Ja |
+| now()  | Ja |
+| minTimeuuid()  | Ja |
+| unixTimestampOf()  | Ja |
+| toDate(timeuuid)  | Ja |
+| toTimestamp(timeuuid)  | Ja |
+| toUnixTimestamp(timeuuid)  | Ja |
+| toDate(timestamp)  | Ja |
+| toUnixTimestamp(timestamp)  | Ja |
+| toTimestamp(date)  | Ja |
+| toUnixTimestamp(date) | Ja |
 
 
   
@@ -139,59 +139,59 @@ Azure Cosmos DB stöder följande databaskommandon på alla Cassandra API-konton
 
 |Kommando  |Stöds |
 |---------|---------|
-| TILLÅT FILTRERING | Yes |
+| TILLÅT FILTRERING | Ja |
 | ÄNDRA TECKEN AVSTÅND | Ej tillämpligt (PaaS-tjänst, replikering hanteras internt)|
-| ÄNDRA MATERIALISERAD VY | No |
-| ÄNDRA ROLL | No |
-| ALTER TABLE | Yes |
-| ÄNDRA TYP | No |
-| ÄNDRA ANVÄNDARE | No |
+| ÄNDRA MATERIALISERAD VY | Inga |
+| ÄNDRA ROLL | Inga |
+| ALTER TABLE | Ja |
+| ÄNDRA TYP | Inga |
+| ÄNDRA ANVÄNDARE | Inga |
 | BATCHUPPGIFTEN | Ja (endast inloggad batch)|
 | KOMPAKT LAGRING | Ej tillämpligt (PaaS-tjänst) |
-| SKAPA MÄNGD | No | 
-| SKAPA ETT ANPASSAT INDEX (SASI) | No |
+| SKAPA MÄNGD | Inga | 
+| SKAPA ETT ANPASSAT INDEX (SASI) | Inga |
 | CREATE INDEX | Ja (utan att [Ange index namn](cassandra-secondary-index.md)och index på kluster nycklar eller en fullständig frusen samling stöds inte) |
-| CREATE FUNCTION | No |
-| SKAPA ett tecken utrymme (replikeringsinställningar ignoreras) | Yes |
-| SKAPA MATERIALISERAD VY | No |
-| CREATE TABLE | Yes |
-| SKAPA UTLÖSARE | No |
-| SKAPA TYP | Yes |
-| SKAPA ROLL | No |
-| Skapa användare (inaktuellt i ursprunglig Apache-Cassandra) | No |
-| DELETE | Yes |
-| DISTINKTA | No |
-| SLÄPP AGG REGERING | No |
-| DROP FUNCTION | No |
-| DROP INDEX | Yes |
-| SLÄPP BLANK STEG | Yes |
-| TA BORT MATERIALISERAD VY | No |
-| TA BORT ROLL | No |
-| DROP TABLE | Yes |
-| SLÄPP UTLÖSARE | No | 
-| SLÄPP TYP | Yes |
-| SLÄPP användare (inaktuellt i native Apache Cassandra) | No |
-| GRANT | No |
-| INSERT | Yes |
-| LIST BEHÖRIGHETER | No |
-| LIST ROLLER | No |
-| LISTA användare (föråldrade i ursprunglig Apache-Cassandra) | No |
-| REVOKE | No |
-| SELECT | Yes |
-| UPDATE | Yes |
-| TRUNCATE | No |
-| USE | Yes |
+| CREATE FUNCTION | Inga |
+| SKAPA ett tecken utrymme (replikeringsinställningar ignoreras) | Ja |
+| SKAPA MATERIALISERAD VY | Inga |
+| CREATE TABLE | Ja |
+| SKAPA UTLÖSARE | Inga |
+| SKAPA TYP | Ja |
+| SKAPA ROLL | Inga |
+| Skapa användare (inaktuellt i ursprunglig Apache-Cassandra) | Inga |
+| DELETE | Ja |
+| DISTINKTA | Inga |
+| SLÄPP AGG REGERING | Inga |
+| DROP FUNCTION | Inga |
+| DROP INDEX | Ja |
+| SLÄPP BLANK STEG | Ja |
+| TA BORT MATERIALISERAD VY | Inga |
+| TA BORT ROLL | Inga |
+| DROP TABLE | Ja |
+| SLÄPP UTLÖSARE | Inga | 
+| SLÄPP TYP | Ja |
+| SLÄPP användare (inaktuellt i native Apache Cassandra) | Inga |
+| GRANT | Inga |
+| INSERT | Ja |
+| LIST BEHÖRIGHETER | Inga |
+| LIST ROLLER | Inga |
+| LISTA användare (föråldrade i ursprunglig Apache-Cassandra) | Inga |
+| REVOKE | Inga |
+| SELECT | Ja |
+| UPDATE | Ja |
+| TRUNCATE | Inga |
+| USE | Ja |
 
 ## <a name="lightweight-transactions-lwt"></a>Lightweight-transaktioner (LWT)
 
 | Komponent  |Stöds |
 |---------|---------|
-| TA BORT OM FINNS | Yes |
-| TA bort villkor | No |
-| INFOGA OM DEN INTE FINNS | Yes |
-| UPPDATERA OM FINNS | Yes |
-| UPPDATERA OM DEN INTE FINNS | Yes |
-| UPPDATERINGs villkor | No |
+| TA BORT OM FINNS | Ja |
+| TA bort villkor | Inga |
+| INFOGA OM DEN INTE FINNS | Ja |
+| UPPDATERA OM FINNS | Ja |
+| UPPDATERA OM DEN INTE FINNS | Ja |
+| UPPDATERINGs villkor | Inga |
 
 ## <a name="cql-shell-commands"></a>CQL Shell-kommandon
 
@@ -199,18 +199,18 @@ Azure Cosmos DB stöder följande databaskommandon på alla Cassandra API-konton
 
 |Kommando  |Stöds |
 |---------|---------|
-| WEBBINFÅNGSTEN | Yes |
-| Rensa | Yes |
+| WEBBINFÅNGSTEN | Ja |
+| Rensa | Ja |
 | KONTROLL | Ej tillämpligt |
-| EXEMPLAR | No |
-| BESKRIVNINGAR | Yes |
-| cqlshExpand | No |
-| PROGRAMMET | Yes |
+| EXEMPLAR | Inga |
+| BESKRIVNINGAR | Ja |
+| cqlshExpand | Inga |
+| PROGRAMMET | Ja |
 | GÄST | Saknas (CQL-funktionen `USER` stöds inte, därför `LOGIN` är redundant) |
-| VÄXLINGS | Yes |
+| VÄXLINGS | Ja |
 | SERIE KONSEKVENS * | Ej tillämpligt |
-| SHOW | Yes |
-| KÄLLA | Yes |
+| SHOW | Ja |
+| KÄLLA | Ja |
 | SPÅRNING | Ej tillämpligt (API för Cassandra backas upp av Azure Cosmos DB-Använd [diagnostikloggning](cosmosdb-monitor-resource-logs.md) för fel sökning) |
 
 > [!NOTE] 
@@ -220,10 +220,10 @@ Azure Cosmos DB stöder följande databaskommandon på alla Cassandra API-konton
 ## <a name="json-support"></a>JSON-stöd
 |Kommando  |Stöds |
 |---------|---------|
-| VÄLJ JSON | Yes |
-| INFOGA JSON | Yes |
-| fromJson() | No |
-| toJson() | No |
+| VÄLJ JSON | Ja |
+| INFOGA JSON | Ja |
+| fromJson() | Inga |
+| toJson() | Inga |
 
 
 ## <a name="cassandra-api-limits"></a>Begränsningar i API:et för Cassandra
@@ -238,7 +238,7 @@ Azure Cosmos DB Cassandra API är en hanterad tjänst-plattform. Det krävs inga
 
 ## <a name="hosted-cql-shell-preview"></a>Värdbaserad CQL Shell (för hands version)
 
-Du kan öppna en värdbaserad Cassandra Shell (CQLSH v 5.0.1) direkt från Datautforskaren i [Azure Portal](data-explorer.md) eller [Azure Cosmos DB Explorer](https://cosmos.azure.com/). Innan du aktiverar CQL-gränssnittet måste du [aktivera funktionen Notebooks](enable-notebooks.md) i ditt konto (om den inte redan är aktive rad uppmanas du att klicka på `Open Cassandra Shell` ). Markera den markerade anteckningen i [Aktivera antecknings böcker för Azure Cosmos DB konton](enable-notebooks.md) för Azure-regioner som stöds.
+Du kan öppna en värdbaserad Cassandra Shell (CQLSH v 5.0.1) direkt från Datautforskaren i [Azure Portal](data-explorer.md) eller [Azure Cosmos DB Explorer](https://cosmos.azure.com/). Innan du aktiverar CQL-gränssnittet måste du [aktivera funktionen Notebooks](enable-notebooks.md) i ditt konto (om den inte redan är aktive rad uppmanas du att klicka på `Open Cassandra Shell` ). Se artikeln [Aktivera antecknings böcker för Azure Cosmos DB konton](enable-notebooks.md#supported-regions) för Azure-regioner som stöds.
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="Öppna CQLSH":::
 

@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 09/30/2020
-ms.openlocfilehash: 5ba1b9d53255406a73b1b74dbc59fe39e3f9a0d7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.date: 02/09/2021
+ms.openlocfilehash: 75ea473c8669e9d50d2e9971a20a5fc1c3070779
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979189"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368021"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -31,8 +31,9 @@ Med Azures privata länk kan du ansluta till din arbets yta med en privat slut p
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du planerar att använda en privat länk aktive rad arbets yta med en kundhanterad nyckel måste du begära denna funktion med hjälp av ett support ärende. Mer information finns i [Hantera och öka kvoter](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Om du planerar att använda en privat länk aktive rad arbets yta med en kundhanterad nyckel måste du begära denna funktion med hjälp av ett support ärende. Mer information finns i [Hantera och öka kvoter](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+* Du måste ha ett befintligt virtuellt nätverk för att skapa den privata slut punkten i. Du måste också [inaktivera nätverks principer för privata slut punkter](../private-link/disable-private-endpoint-network-policy.md) innan du lägger till den privata slut punkten.
 ## <a name="limitations"></a>Begränsningar
 
 * Det går inte att använda en Azure Machine Learning arbets yta med privat länk i Azure Government regioner eller Azure Kina 21Vianet-regioner.
@@ -73,6 +74,19 @@ ws = Workspace.create(name='myworkspace',
 * `--pe-vnet-name`: Det befintliga virtuella nätverket som den privata slut punkten ska skapas i.
 * `--pe-subnet-name`: Namnet på det undernät som den privata slut punkten ska skapas i. Standardvärdet är `default`.
 
+Dessa parametrar är förutom andra obligatoriska parametrar för kommandot CREATE. Följande kommando skapar till exempel en ny arbets yta i regionen USA, västra, med en befintlig resurs grupp och VNet:
+
+```azurecli
+az ml workspace create -r myresourcegroup \
+    -l westus \
+    -n myworkspace \
+    --pe-name myprivateendpoint \
+    --pe-auto-approval \
+    --pe-resource-group myresourcegroup \
+    --pe-vnet-name myvnet \
+    --pe-subnet-name mysubnet
+```
+
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 På fliken __nätverk__ i Azure Machine Learning Studio kan du konfigurera en privat slut punkt. Det kräver dock ett befintligt virtuellt nätverk. Mer information finns i [skapa arbets ytor i portalen](how-to-manage-workspace.md).
@@ -82,10 +96,6 @@ På fliken __nätverk__ i Azure Machine Learning Studio kan du konfigurera en pr
 ## <a name="add-a-private-endpoint-to-a-workspace"></a>Lägga till en privat slut punkt i en arbets yta
 
 Använd någon av följande metoder för att lägga till en privat slut punkt till en befintlig arbets yta:
-
-> [!IMPORTANT]
->
-> Du måste ha ett befintligt virtuellt nätverk för att skapa den privata slut punkten i. Du måste också [inaktivera nätverks principer för privata slut punkter](../private-link/disable-private-endpoint-network-policy.md) innan du lägger till den privata slut punkten.
 
 > [!WARNING]
 >

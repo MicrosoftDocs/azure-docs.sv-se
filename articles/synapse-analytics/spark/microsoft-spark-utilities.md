@@ -1,7 +1,7 @@
 ---
 title: Introduktion till Microsoft Spark-verktyg
 description: 'Självstudie: MSSparkutils i Azure Synapse Analytics-anteckningsböcker'
-author: ruxu
+author: ruixinxu
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: reference
@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954301"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368667"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Introduktion till Microsoft Spark-verktyg
 
@@ -25,9 +25,9 @@ Microsoft Spark-verktyg (MSSparkUtils) är ett inbyggt paket som hjälper dig at
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurera åtkomst till Azure Data Lake Storage Gen2 
 
-Synapse Notebooks använder Azure Active Directory (Azure AD) genom strömning för att få åtkomst till ADLS Gen2-konton. Du måste vara en **Blob Storage deltagare** för att få åtkomst till ADLS Gen2s kontot (eller mappen). 
+Synapse Notebooks använder Azure Active Directory (Azure AD) genom strömning för att få åtkomst till ADLS Gen2-konton. Du måste vara en **Blob Storage data deltagare** för att få åtkomst till ADLS Gen2-kontot (eller mappen). 
 
-Synapse pipelines använder arbets ytans identitet (MSI) för att komma åt lagrings kontona. Om du vill använda MSSparkUtils i dina pipeline-aktiviteter måste din arbets ytans identitet **Blob Storage deltagare** för att få åtkomst till ADLS Gen2-kontot (eller mappen).
+Synapse pipelines använder arbets ytans identitet (MSI) för att komma åt lagrings kontona. Om du vill använda MSSparkUtils i dina pipeline-aktiviteter måste din arbets ytans identitet **Blob Storage data deltagare** för att få åtkomst till ADLS Gen2-kontot (eller mappen).
 
 Följ dessa steg för att se till att din Azure AD-och Workspace-MSI har åtkomst till det ADLS Gen2 kontot:
 1. Öppna [Azure Portal](https://portal.azure.com/) och det lagrings konto som du vill få åtkomst till. Du kan gå till den angivna behållaren som du vill komma åt.

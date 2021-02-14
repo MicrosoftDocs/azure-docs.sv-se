@@ -5,17 +5,61 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 01/11/2021
-ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 02/10/2021
+ms.openlocfilehash: 35bfc9c752243a69912b0732c4105712fa4a6086
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071875"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377677"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Vad är nytt i Azure Monitor-dokumentationen?
 
 Den här artikeln innehåller listor Azure Monitor artiklar som antingen är nya eller som har uppdaterats markant. Den kommer att uppdateras den första veckan i varje månad för att inkludera artikel uppdateringar från föregående månad.
+
+## <a name="january-2021"></a>Januari 2021 
+
+### <a name="general"></a>Allmänt 
+- [Azure Monitor FAQ](faq.md) – tillagd post på enhets information för Application Insights.
+### <a name="agents"></a>Agenter  
+- [Samla in ETW (Event tracing for Windows)-händelser (ETW) för analys Azure Monitor loggar](platform/data-sources-event-tracing-windows.md) – ny artikel.
+- [Data insamlings regler i Azure Monitor (för hands version)](platform/data-collection-rule-overview.md) – har lagt till länkar till PowerShell-och CLI-exempel.
+
+### <a name="alerts"></a>Aviseringar  
+- [Konfigurera Azure för att ansluta ITSM-verktyg med säker export](platform/itsm-connector-secure-webhook-connections-azure-configuration.md) – ny artikel.
+- [Anslutnings status fel i ITSMC-instrumentpanelen](platform/itsmc-dashboard-errors.md) – ny artikel.
+- [Undersök fel med hjälp av ITSMC-instrumentpanelen](platform/itsmc-dashboard.md) – ny artikel.
+- [Felsöka Azure Metric Alerts](platform/alerts-troubleshoot-metric.md) – tillagda avsnitt för dynamiska tröskelvärden.
+- [Felsök problem i anslutningsprogram för hantering av IT-tjänster (ITSM)](platform/itsmc-troubleshoot-overview.md) -ny artikel.
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights telemetri korrelation](app/correlation.md) – tillagd spårnings korrelation när en modul anropar en annan i openräkningar python.
+- [Application Insights för webb sidor](app/javascript.md) – ny artikel.
+- [Klicka på analys-plugin-programmet för automatisk insamling för Application Insights JavaScript SDK](app/javascript-click-analytics-plugin.md) – ny artikel.
+- [Övervaka dina appar utan kod ändringar – Auto-Instrumentation för Azure Monitor Application Insights](app/codeless-overview.md) -tillagd python-kolumn.
+- [Reagera på plugin-programmet för Application Insights JavaScript SDK](app/javascript-react-plugin.md) – ny artikel.
+- [Telemetri-processorer (för hands version) – Azure Monitor Application Insights för Java](app/java-standalone-telemetry-processors.md) -omskrivning.
+- [Användnings analys med Azure Application Insights](app/usage-overview.md) – ny artikel.
+- [Använda program ändrings analys i Azure Monitor för att hitta problem med webb-app](app/change-analysis.md) – tillagt fel messges.
+
+
+### <a name="insights"></a>Insikter    
+- [Azure Monitor för Azure datautforskaren (för hands version)](insights/data-explorer.md) – ny artikel.
+
+### <a name="logs"></a>Loggar    
+- [Azure Monitor kundhanterad nyckel](platform/customer-managed-keys.md) – introducera användare som tilldelats hanterad identitet.
+- [Azure Monitor loggar dedicerade kluster](log-query/logs-dedicated-clusters.md) -uppdaterad svars kod.
+- [Fråga om Cross service – Azure Monitor och Azure datautforskaren (för hands version)](platform/azure-monitor-troubleshooting-logs.md) – ny artikel.
+
+### <a name="metrics"></a>Mått
+- [Azure Monitor Mät värden för Mät värden och Visa förklaring](platform/metrics-aggregation-explained.md) – ny artikel.
+
+### <a name="platform-logs"></a>Plattforms loggar
+- [Azure Monitor resurs loggar som stöds tjänster och kategorier](platform/resource-logs-categories.md) – ny artikel.
+
+### <a name="visualizations"></a>Visualiseringar
+- [Azure Monitor arbets böcker data källor](platform/workbooks-data-sources.md) – sammanfognings-och ändrings analys har lagts till.
+
 
 ## <a name="december-2020"></a>December 2020
 
@@ -51,7 +95,7 @@ Den här artikeln innehåller listor Azure Monitor artiklar som antingen är nya
 - [Felsök Azure Application Insights-tillgänglighets test](app/troubleshoot-availability.md) – uppdateringar av fel sökning för ping-test.
 - [Fel sökning Azure Monitor Application Insights för Java](app/java-standalone-troubleshoot.md) -ny artikel.
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Rapporter i Azure Monitor för behållare](insights/container-insights-reports.md) – ny artikel.
 
 ### <a name="logs"></a>Loggar
@@ -66,7 +110,7 @@ Den här artikeln innehåller listor Azure Monitor artiklar som antingen är nya
 ### <a name="networks"></a>Nätverk
 - [Azure Networking Analytics-lösning i Azure Monitor](insights/azure-networking-analytics.md) -tillagd information på nätverks insikts arbets bok.
 
-### <a name="virtual-machines"></a>Virtuella datorer
+### <a name="virtual-machines"></a>Virtual Machines
 - [Aktivera Azure Monitor för en hybrid miljö](insights/vminsights-enable-hybrid.md) – ny version av beroende agent.
 
 
@@ -165,7 +209,7 @@ Nya artiklar om Azure Monitor for VMs gäst hälsa (för hands version)
 ### <a name="autoscale"></a>Automatisk skalning
 - [Kom igång med autoskalning i Azure](platform/autoscale-get-started.md) -tillagt avsnitt om att flytta autoskalning till en annan region.
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Konfigurera PV-övervakning med Azure Monitor för behållare](insights/container-insights-persistent-volumes.md) – ny artikel.
 - [Hantera Azure Monitor för behållare agent](insights/container-insights-manage-agent.md) – stöd för Azure Arc-aktiverade Kubernetes-kluster.
 - [Mått varningar från Azure Monitor för behållare](insights/container-insights-metric-alerts.md) – stöd för Azure Arc-aktiverade Kubernetes-kluster har lagts till.
@@ -220,7 +264,7 @@ Nya artiklar om Azure Monitor for VMs gäst hälsa (för hands version)
 - [Använd program ändrings analys i Azure Monitor för att hitta problem med webb-app](app/change-analysis.md) -tillagd virtuell dator och aktivitets logg.
 
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Konfigurera Azure Arc-aktiverade Kubernetes-kluster med Azure Monitor för behållare](insights/container-insights-enable-arc-enabled-clusters.md) – ytterligare vägledning för att aktivera övervakning med tjänstens huvud namn.
 - [Distributions & hPa mått med Azure Monitor för behållare](insights/container-insights-deployment-hpa-metrics.md) – ny artikel.
 
@@ -299,7 +343,7 @@ Nya artiklar om Azure Monitor for VMs gäst hälsa (för hands version)
 - [Data insamlings regler i Azure Monitor (för hands version)](platform/data-collection-rule-overview.md) – ny artikel.
 
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Distributions & hPa mått med Azure Monitor för behållare](insights/container-insights-deployment-hpa-metrics.md) – ny artikel.
 
 ### <a name="insights"></a>Insikter
@@ -344,7 +388,7 @@ Nya artiklar om Azure Monitor for VMs gäst hälsa (för hands version)
 - [Exempel på Resource Manager-mallar för Application Insights resurser](samples/resource-manager-app-resource.md) – ny artikel.
 - [Felsök problem med Azure Application Insights profiler](app/profiler-troubleshooting.md) – en anteckning om fel som kör profiler för ASP.net Core appar på Azure App Service. 
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Logga aviseringar från Azure Monitor för behållare](insights/container-insights-log-alerts.md) – ny artikel.
 - [Mått varningar från Azure Monitor för behållare](insights/container-insights-metric-alerts.md) – ny artikel.
 
@@ -407,7 +451,7 @@ Nya och uppdaterade artiklar från omstrukturering av Azure Monitor for VMs inne
 - [Övervaka dina appar utan kod ändringar – Auto-Instrumentation för Azure Monitor Application Insights](app/codeless-overview.md) nya artikeln.
 - [FELSÖKA SDK-inläsnings fel för JavaScript-webbprogram](app/javascript-sdk-load-failure.md) – ny artikel.
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Så här slutar du övervaka ditt hybrid Kubernetes-kluster](insights/container-insights-optout-hybrid.md) för Arc-aktiverad Kubernetes.
 - [Konfigurera Azure Arc-aktiverat Kubernetes-kluster med Azure Monitor för behållare](insights/container-insights-enable-arc-enabled-clusters.md) – ny artikel.
 - [Konfigurera Azure Red Hat OpenShift v4. x med Azure Monitor för behållare](insights/container-insights-azure-redhat4-setup.md) – uppdaterade krav.
@@ -514,7 +558,7 @@ Nya och uppdaterade artiklar från omstrukturera och konsolidering av plattforms
 
 
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 - [Så här aktiverar du Azure Monitor för behållare](insights/container-insights-onboard.md) – uppdaterad brand Väggs konfigurations tabell.
 - [Uppdatera Azure Monitor för behållare för mått](insights/container-insights-update-metrics.md) – uppdatering för att använda hanterade identiteter för att samla in mått.
 - [Övervaknings kostnad för Azure Monitor för behållare](insights/container-insights-cost.md) – ny artikel.
@@ -577,7 +621,7 @@ Nya och uppdaterade artiklar från omstrukturera och konsolidering av plattforms
 - [Ta bort Application Insights i Visual Studio](app/remove-application-insights.md) – ny artikel.
 - [Telemetri-sampling i Azure Application Insights](app/sampling.md) -Fix i fast priss exempel i python.
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 
 - [Konfigurera Azure Red Hat OpenShift v4. x med Azure Monitor för behållare](insights/container-insights-azure-redhat4-setup.md) – ny artikel.
 - [Åtgärda ServiceNow-synkroniseringsproblem manuellt](platform/itsmc-resync-servicenow.md) – ny artikel.
@@ -625,7 +669,7 @@ Nya och uppdaterade artiklar från omstrukturera och konsolidering av plattforms
 - [Övervaka python-program med Azure Monitor (för hands version)](app/opencensus-python.md) – tillagda standard mått.
 - [Käll kart stöd för JavaScript-program – Azure Monitor Application Insights](app/source-map-support.md) – ny artikel.
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 
 - [Azure Monitor vanliga frågor och svar](faq.md) – uppdatering för Azure Monitor för behållare.
 - [Konfigurera GPU-övervakning med Azure Monitor för behållare](insights/container-insights-gpu-monitoring.md) – ny artikel.

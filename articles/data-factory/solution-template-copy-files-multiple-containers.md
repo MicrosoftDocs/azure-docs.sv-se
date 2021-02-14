@@ -1,22 +1,18 @@
 ---
 title: Kopiera filer från flera containrar
 description: Lär dig hur du använder en lösnings mall för att kopiera filer från flera behållare med hjälp av Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ec7af1e81e0b295491420597636c8443f4d36512
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629433"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376096"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>Kopiera flera mappar med Azure Data Factory
 
@@ -37,8 +33,8 @@ Mallen innehåller tre aktiviteter:
 - **Kopiera** kopierar varje mapp från käll lagrings lagret till mål arkivet.
 
 Mallen definierar följande parametrar:
-- *SourceFileFolder* är en del av sökvägen till den överordnade mappen för data käll arkivet: *SourceFileFolder/SourceFileDirectory* , där du kan hämta en lista över undermapparna. 
-- *SourceFileDirectory* är en del av sökvägen till den överordnade mappen för data käll arkivet: *SourceFileFolder/SourceFileDirectory* , där du kan hämta en lista över undermapparna. 
+- *SourceFileFolder* är en del av sökvägen till den överordnade mappen för data käll arkivet: *SourceFileFolder/SourceFileDirectory*, där du kan hämta en lista över undermapparna. 
+- *SourceFileDirectory* är en del av sökvägen till den överordnade mappen för data käll arkivet: *SourceFileFolder/SourceFileDirectory*, där du kan hämta en lista över undermapparna. 
 - *DestinationFileFolder* är en del av sökvägen till den överordnade mappen: *DestinationFileFolder/DestinationFileDirectory* där filerna ska kopieras till mål lagret. 
 - *DestinationFileDirectory* är en del av sökvägen till den överordnade mappen: *DestinationFileFolder/DestinationFileDirectory* där filerna ska kopieras till mål lagret. 
 
@@ -54,7 +50,7 @@ Om du vill kopiera flera behållare under rot-mappar mellan lagrings lager, kan 
 
     ![Skapa en ny anslutning till målet](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Välj **Använd den här mallen** .
+3. Välj **Använd den här mallen**.
 
     ![Använd den här mallen](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -62,7 +58,7 @@ Om du vill kopiera flera behållare under rot-mappar mellan lagrings lager, kan 
 
     ![Visa pipelinen](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Välj **Felsök** , ange **parametrarna** och välj sedan **Slutför** .
+5. Välj **Felsök**, ange **parametrarna** och välj sedan **Slutför**.
 
     ![Köra en pipeline](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

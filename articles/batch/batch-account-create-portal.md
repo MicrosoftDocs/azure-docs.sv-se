@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett Azure Batch-konto på Azure-portalen fö
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896016"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368514"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Skapa ett Batch-konto med Azure Portal
 
@@ -67,6 +67,9 @@ Om du vill visa de [resurs kvoter](batch-quota-limit.md) som gäller för batch-
 ## <a name="additional-configuration-for-user-subscription-mode"></a>Ytterligare konfiguration för läget Användarprenumeration
 
 Om du väljer att skapa ett Batch-konto i läget Användarprenumeration ska du utföra följande åtgärder innan du skapar kontot.
+
+> [!IMPORTANT]
+> Användaren som skapar batch-kontot i användar prenumerations läge måste ha deltagar-eller ägar roll tilldelning för den prenumeration där batch-kontot ska skapas.
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Tillåt att Azure Batch får åtkomst till prenumerationen (engångsåtgärd)
 

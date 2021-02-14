@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6140f5fd431a0b089b45892130e075bde02a2eb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6185c5408f74b914ce5ad47634999786ba1d7ab6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299773"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368004"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Vanliga frågor och svar om Azure AD Connect Health
 Den här artikeln innehåller svar på vanliga frågor och svar om Azure Active Directory (Azure AD) Connect Health. Vanliga frågor och svar om hur du använder tjänsten, inklusive fakturerings modellen, funktioner, begränsningar och support.
@@ -29,7 +29,7 @@ Den här artikeln innehåller svar på vanliga frågor och svar om Azure Active 
 ## <a name="general-questions"></a>Allmänna frågor
 **F: jag hanterar flera Azure AD-kataloger. Hur gör jag för att växlar till den som har Azure Active Directory Premium?**
 
-Om du vill växla mellan olika Azure AD-klienter väljer du det för tillfället inloggade **användar namnet** i det övre högra hörnet och väljer sedan lämpligt konto. Om kontot inte visas här väljer du **Logga ut**och använder sedan den globala administratörs behörigheten för den katalog som har Azure Active Directory Premium aktiverat för att logga in.
+Om du vill växla mellan olika Azure AD-klienter väljer du det för tillfället inloggade **användar namnet** i det övre högra hörnet och väljer sedan lämpligt konto. Om kontot inte visas här väljer du **Logga ut** och använder sedan den globala administratörs behörigheten för den katalog som har Azure Active Directory Premium (P1 eller P2) som är aktive rad för att logga in.
 
 **F: vilken version av identitets roller som stöds av Azure AD Connect Health?**
 
@@ -47,8 +47,8 @@ Observera att de funktioner som tillhandahålls av tjänsten kan variera beroend
 
 **F: hur många licenser behöver jag för att övervaka min infrastruktur?**
 
-* Den första Connect Health-agenten kräver minst en Azure AD Premium-licens.
-* För varje ytterligare registrerad agent krävs 25 ytterligare Azure AD Premium licenser.
+* Den första Connect Health-agenten kräver minst en licens för Azure AD Premium (P1 eller P2).
+* För alla ytterligare registrerade agenter krävs 25 ytterligare Azure AD Premium-licenser (P1 eller P2).
 * Antalet agenter motsvarar det totala antalet agenter som har registrerats för alla övervakade roller (AD FS, Azure AD Connect och/eller AD DS).
 * AAD Connect Health Licensing kräver inte att du tilldelar licensen till vissa användare. Du behöver bara ha det nödvändiga antalet giltiga licenser.
 

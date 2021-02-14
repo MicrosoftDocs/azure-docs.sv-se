@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 477a96f1bf66255b11b2fee36c38e55b18cddb69
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 3ae3224ae17d0dee2ed1080669c6057ca62959d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556123"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384511"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Hantera användning och kostnader för Application Insights
 
@@ -286,15 +286,18 @@ Om du vill inaktivera de dagliga e-postmeddelandena för volym tak går du till 
 
 För tidiga antaganden av Azure Application insikter finns det fortfarande två möjliga pris nivåer: Basic och Enterprise. Den grundläggande pris nivån är densamma som beskrivs ovan och är standard nivån. Den innehåller alla funktioner på företags nivå utan extra kostnad. Basic-nivån faktureras främst på mängden data som matas in.
 
-> [!NOTE]
-> Dessa äldre pris nivåer har bytt namn. Pris nivån för företaget kallas nu **per nod** och den grundläggande pris nivån kallas nu **per GB**. Dessa nya namn används nedan och i Azure Portal.  
+Dessa äldre pris nivåer har bytt namn. Pris nivån för företaget kallas nu **per nod** och den grundläggande pris nivån kallas nu **per GB**. Dessa nya namn används nedan och i Azure Portal.  
 
-Nivån per nod (tidigare företag) har en avgift per nod och varje nod får en daglig data tilldelning. I pris nivån per nod debiteras du för inmatade data utöver den mängd som ingår. Om du använder Operations Management Suite bör du välja nivån per nod.
+Nivån per nod (tidigare företag) har en avgift per nod och varje nod får en daglig data tilldelning. I pris nivån per nod debiteras du för inmatade data utöver den mängd som ingår. Om du använder Operations Management Suite bör du välja nivån per nod. I april 2018 [introducerade](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) vi en ny pris sättnings modell för Azure-övervakning. Den här modellen antar en enkel "betala per användning"-modell i hela portföljen av övervaknings tjänster. Läs mer om den [nya pris sättnings modellen](../platform/usage-estimated-costs.md).
 
 För aktuella priser i din valuta och region, se [Application Insights priser](https://azure.microsoft.com/pricing/details/application-insights/).
 
-> [!NOTE]
-> I april 2018 [introducerade](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) vi en ny pris sättnings modell för Azure-övervakning. Den här modellen antar en enkel "betala per användning"-modell i hela portföljen av övervaknings tjänster. Lär dig mer om den [nya pris sättnings modellen](../platform/usage-estimated-costs.md), hur du kan [bedöma effekten av att flytta till den här modellen](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs) baserat på dina användnings mönster och [hur du kan välja den nya modellen](../platform/usage-estimated-costs.md#azure-monitor-pricing-model)
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>Om fakturerad användning på den äldre nivån för Enterprise (per nod) 
+
+Som beskrivs nedan i detalj är den äldre nivån för Enterprise (per nod) att kombinera användning från alla Application Insights resurser i en prenumeration för att beräkna antalet noder och överförbrukningen av data. På grund av den här kombinations processen **rapporteras användningen för alla Application Insights resurser i en prenumeration mot bara en av resurserna**.  Detta gör att du kan synkronisera den [fakturerade användningen](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill) med den användning som du ser för varje Application Insights resurser mycket komplicerade. 
+
+> [!WARNING]
+> På grund av komplexiteten vid spårning och förståelse av användningen av Application Insights resurser på den äldre Enterprise-nivån (per nod) rekommenderar vi starkt att du använder den nuvarande pris nivån betala per användning. 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Per nod-och Operations Management Suite-prenumerations rättigheter
 
@@ -347,4 +350,3 @@ Du kan skriva ett skript för att ställa in pris nivån med hjälp av Azure Res
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

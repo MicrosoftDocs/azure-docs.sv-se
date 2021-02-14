@@ -3,14 +3,14 @@ title: Konfigurera Kundhanterade nycklar för ditt Azure Batch-konto med Azure K
 description: Lär dig hur du krypterar batch-data med Kundhanterade nycklar.
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/11/2021
 ms.author: peshultz
-ms.openlocfilehash: 01dc21f067b03ad8e07a05a18aa6312ed7f7189e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d3f10436b95aaeb5eb35a873c2a3862c1492bd47
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789421"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385072"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurera Kundhanterade nycklar för ditt Azure Batch-konto med Azure Key Vault och hanterad identitet
 
@@ -21,11 +21,6 @@ De nycklar du anger måste genereras i [Azure Key Vault](../key-vault/general/ba
 Det finns två typer av hanterade identiteter: [ *systemtilldelade* och *tilldelade användare*](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
 Du kan antingen skapa ett batch-konto med systemtilldelad hanterad identitet eller skapa en separat användardefinierad hanterad identitet som kommer att ha åtkomst till Kundhanterade nycklar. Granska [jämförelse tabellen](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) för att förstå skillnaderna och fundera över vilka alternativ som fungerar bäst för din lösning. Om du till exempel vill använda samma hanterade identitet för att få åtkomst till flera Azure-resurser krävs en användare som tilldelats en hanterad identitet. Om inte, kan en systemtilldelad hanterad identitet som är kopplad till ditt batch-konto räcka. Genom att använda en användardefinierad hanterad identitet får du också möjlighet att använda Kundhanterade nycklar när batch-kontot skapas, som [du ser i exemplet nedan](#create-a-batch-account-with-user-assigned-managed-identity-and-customer-managed-keys).
-
-> [!IMPORTANT]
-> Stöd för Kundhanterade nycklar i Azure Batch är för närvarande en offentlig för hands version för Västeuropa, norra Europa, Schweiz, norra, centrala USA, södra centrala USA, västra centrala USA, östra USA, östra USA 2, västra USA 2, US Gov, Virginia och US Gov, Arizona regioner.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>Skapa ett batch-konto med systemtilldelad hanterad identitet
 
@@ -68,7 +63,7 @@ az batch account show \
 ```
 
 > [!NOTE]
-> Den systemtilldelade hanterade identiteten som skapats i ett batch-konto används bara för att hämta Kundhanterade nycklar från Key Vault. Den här identiteten är inte tillgänglig i batch-pooler.
+> Den systemtilldelade hanterade identiteten som skapats i ett batch-konto används bara för att hämta Kundhanterade nycklar från Key Vault. Den här identiteten är inte tillgänglig i batch-pooler. Om du vill använda en användare som tilldelats en hanterad identitet i en pool, se [Konfigurera hanterade identiteter i batch-pooler](managed-identity-pools.md).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Skapa en användartilldelad hanterad identitet
 
@@ -90,7 +85,7 @@ När du [skapar en Azure Key Vault-instans](../key-vault/general/quick-create-po
 
 När Key Vault har skapats i Azure Portal lägger du till batch-kontot åtkomst med hanterad identitet i **åtkomst principen** under **inställning**. Under **nyckel behörigheter** väljer du **Hämta**, **Radbryt nyckel** och **packa upp nyckel**.
 
-![Screenshow visar skärmen Lägg till åtkomst princip.](./media/batch-customer-managed-key/key-permissions.png)
+![Skärm bild som visar skärmen Lägg till åtkomst princip.](./media/batch-customer-managed-key/key-permissions.png)
 
 I **Välj** -fältet under **huvud namn** fyller du i något av följande:
 
@@ -202,7 +197,7 @@ az batch account set \
 - **När jag har återställt åtkomst hur lång tid tar det för batch-kontot att fungera igen?** Det kan ta upp till 10 minuter innan kontot kan nås igen när åtkomsten har återställts.
 - **När batch-kontot inte är tillgängligt vad händer med mina resurser?** Alla pooler som körs när batch-åtkomst till Kundhanterade nycklar går förlorade kommer att fortsätta att köras. Noderna övergår dock till ett otillgängligt tillstånd och aktiviteterna kommer att sluta köras (och köas). När åtkomsten återställs blir noderna tillgängliga igen och aktiviteter kommer att startas om.
 - **Gäller den här krypterings funktionen för VM-diskar i en batch-pool?** Nej. För konfigurations pooler för moln tjänster tillämpas ingen kryptering för operativ systemet och den temporära disken. För konfigurations pooler för virtuella datorer krypteras operativ systemet och de angivna data diskarna med en hanterad Microsoft Platform-nyckel som standard. För närvarande kan du inte ange din egen nyckel för de här diskarna. Om du vill kryptera den temporära disken för virtuella datorer för en batch-pool med en hanterad nyckel för Microsoft-plattform måste du aktivera egenskapen [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) i den [virtuella datorns konfigurations](/rest/api/batchservice/pool/add#virtualmachineconfiguration) uppsättning. För mycket känsliga miljöer rekommenderar vi att du aktiverar temporär disk kryptering och undviker att lagra känsliga data på operativ system och data diskar. Mer information finns i [skapa en pool med disk kryptering aktiverat](./disk-encryption.md)
-- **Är den systemtilldelade hanterade identiteten på batch-kontot som är tillgängligt på Compute-noderna?** Nej. Den systemtilldelade hanterade identiteten används för närvarande endast för att få åtkomst till Azure Key Vault för den Kundhanterade nyckeln.
+- **Är den systemtilldelade hanterade identiteten på batch-kontot som är tillgängligt på Compute-noderna?** Nej. Den systemtilldelade hanterade identiteten används för närvarande endast för att få åtkomst till Azure Key Vault för den Kundhanterade nyckeln. Om du vill använda en användardefinierad hanterad identitet på datornoderna, se [Konfigurera hanterade identiteter i batch-pooler](managed-identity-pools.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

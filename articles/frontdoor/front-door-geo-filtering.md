@@ -13,18 +13,19 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cd3d4837c39fdeb0e7addced10ab2e7fd330b9a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449260"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369432"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geo-filtrering på en domän för Azures front dörr
 
 Som standard svarar Azures front dörr på alla användar förfrågningar oavsett var den plats där begäran kommer från finns. I vissa fall kanske du vill begränsa åtkomsten till ditt webb program i länder/regioner. Med tjänsten brand vägg för webbaserade program (WAF) i front dörren kan du definiera en princip med hjälp av anpassade åtkomst regler för en viss sökväg på slut punkten, antingen för att tillåta eller blockera åtkomst från angivna länder/regioner. 
 
-En WAF-princip innehåller en uppsättning anpassade regler. Regeln består av matchnings villkor, en åtgärd och en prioritet. I ett matchnings villkor definierar du ett matchande variabel-, operator-och match-värde. För en geo filtrerings regel är en match-variabel REMOTE_ADDR, operatorn är en geografisk matchning och värdet är ett land/region med två bokstäver av intresse. Du kan kombinera ett villkor för en geografisk matchning och en REQUEST_URI sträng matchnings villkor för att skapa en Sök vägs baserad geo-filtrerings regel.
+En WAF-princip innehåller en uppsättning anpassade regler. Regeln består av matchnings villkor, en åtgärd och en prioritet. I ett matchnings villkor definierar du ett matchande variabel-, operator-och match-värde. För en geo filtrerings regel är en match-variabel REMOTE_ADDR, operatorn är en geografisk matchning och värdet är ett land/region med två bokstäver av intresse. "ZZ"-lands kod eller "okänt"-land fångar upp IP-adresser som ännu inte har mappats till ett land i vår data uppsättning. Du kan lägga till ZZ i matchnings villkoret för att undvika falska positiva identifieringar. Du kan kombinera ett villkor för en geografisk matchning och en REQUEST_URI sträng matchnings villkor för att skapa en Sök vägs baserad geo-filtrerings regel. 
+
 
 Du kan konfigurera en princip för geo-filtrering för din front dörr genom att använda [Azure PowerShell](front-door-tutorial-geo-filtering.md) eller genom att använda en [snabb starts mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
@@ -53,7 +54,7 @@ Du kan konfigurera en princip för geo-filtrering för din front dörr genom att
 | BH | Bahrain|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Sankt Barthélemy|
+| BL | Saint Barthélemy|
 | BN | Brunei Darussalam|
 | BO | Bolivia|
 | BR | Brasilien|
@@ -150,7 +151,7 @@ Du kan konfigurera en princip för geo-filtrering för din front dörr genom att
 | MX | Mexico|
 | MY | Malaysia|
 | MZ | Moçambique|
-| Ej tillämpligt | Namibia|
+| NA | Namibia|
 | NE | Niger|
 | NG | Nigeria|
 | NI | Nicaragua|

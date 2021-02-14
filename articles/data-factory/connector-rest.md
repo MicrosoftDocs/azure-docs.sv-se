@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från och till en REST-slutpunkt genom att använda Azure Data Factory
 description: Lär dig hur du kopierar data från en moln-eller lokal REST-källa till mottagar data lager, eller från ett käll data lager som stöds till en REST-mottagare genom att använda en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223110"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369891"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiera data från och till en REST-slutpunkt genom att använda Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -385,7 +380,7 @@ Denna generiska REST-anslutning har stöd för följande sid brytnings mönster:
 
 **Exempel:**
 
-Facebook-Graph API returnerar svar i följande struktur, i vilket fall nästa sidas URL visas i **_växling. Next_* _:
+Facebook Graph API returnerar svar i följande struktur, i vilket fall visas nästa sidas URL i ***sid indelning. nästa***:
 
 ```json
 {
@@ -440,7 +435,7 @@ I det här avsnittet beskrivs hur du använder en lösnings mall för att kopier
 ### <a name="about-the-solution-template"></a>Om lösnings mal len
 
 Mallen innehåller två aktiviteter:
-- _ *Webb** aktivitet hämtar Bearer-token och skickar den sedan till efterföljande kopierings aktivitet som auktorisering.
+- **Webb** aktivitet hämtar Bearer-token och skickar den sedan till efterföljande kopierings aktivitet som auktorisering.
 - **Kopierings** aktiviteten kopierar data från REST till Azure Data Lake Storage.
 
 Mallen definierar två parametrar:
