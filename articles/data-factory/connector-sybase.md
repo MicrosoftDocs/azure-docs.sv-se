@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Sybase med Azure Data Factory
 description: Lär dig hur du kopierar data från Sybase till mottagar data lager som stöds genom att använda en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef63eded5403c1cf5faddec71ed3503c3ae2138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669842"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384817"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopiera data från Sybase med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -42,7 +37,7 @@ Mer specifikt stöder denna Sybase-anslutning:
 
 Sybase-SWEETIQ och ASE stöds inte. Du kan använda allmän ODBC-anslutning med Sybase-drivrutin i stället.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda den här Sybase-kopplingen måste du:
 
@@ -64,7 +59,7 @@ Följande egenskaper stöds för den länkade tjänsten Sybase:
 | typ | Typ egenskapen måste anges till: **Sybase** | Ja |
 | server | Sybase-serverns namn. |Ja |
 | databas | Sybase-databasens namn. |Ja |
-| authenticationType | Typ av autentisering som används för att ansluta till Sybase-databasen.<br/>Tillåtna värden är: **Basic**och **Windows**. |Ja |
+| authenticationType | Typ av autentisering som används för att ansluta till Sybase-databasen.<br/>Tillåtna värden är: **Basic** och **Windows**. |Ja |
 | användarnamn | Ange användar namnet för att ansluta till Sybase-databasen. |Ja |
 | password | Ange lösen ordet för det användar konto som du har angett för användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Det krävs en egen värd Integration Runtime som anges i [krav](#prerequisites). |Ja |

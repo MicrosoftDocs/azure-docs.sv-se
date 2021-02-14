@@ -1,24 +1,18 @@
 ---
 title: Kopiera nya filer stegvis baserat på tidspartitionerat fil namn
 description: Skapa en Azure-datafabrik och Använd sedan Kopiera data-verktyget för att stegvis läsa in nya filer baserat på tidspartitionerat fil namn.
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: ae66bb025f2a49a79120fe86e0de7c4a3ccf26ca
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 8e68852434a4a8bea43b575523a60c9346b2a569
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555387"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384783"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Kopiera nya filer stegvis baserat på partitionerat fil namn med hjälp av Kopiera data-verktyget
 
@@ -38,8 +32,8 @@ I den här självstudien får du göra följande:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* **Azure-prenumeration** : Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
-* **Azure Storage-konto** : Använd Blob Storage som data lager för _källa_  och _mottagare_ . Om du inte har något Azure-lagringskonto finns det anvisningar i [Skapa ett lagringskonto](../storage/common/storage-account-create.md).
+* **Azure-prenumeration**: Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+* **Azure Storage-konto**: Använd Blob Storage som data lager för _källa_  och _mottagare_ . Om du inte har något Azure-lagringskonto finns det anvisningar i [Skapa ett lagringskonto](../storage/common/storage-account-create.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Skapa två behållare i Blob Storage
 
@@ -56,19 +50,19 @@ Förbered blob-lagringen för självstudien genom att utföra dessa steg.
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
-1. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory** :
+1. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory**:
 
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. I fönstret **Ny datafabrik** , under **Namn** anger du **ADFTutorialDataFactory**.
+2. I fönstret **Ny datafabrik**, under **Namn** anger du **ADFTutorialDataFactory**.
 
     Namnet på datafabriken måste vara _globalt unikt_. Du kan få följande felmeddelande:
 
    ![Felmeddelande för ny datafabrik](./media/doc-common-process/name-not-available-error.png)
 
    Ange ett annat namn för datafabriken om du får ett felmeddelande om namnvärdet. Använd till exempel namnet _**dittnamn**_**ADFTutorialDataFactory**. Se artikeln [Data Factory – namnregler](naming-rules.md) för namnregler för Data Factory-artefakter.
-3. Välj den Azure- **prenumeration** som du vill skapa den nya datafabriken i.
-4. Gör något av följande för **Resursgrupp** :
+3. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
+4. Gör något av följande för **Resursgrupp**:
 
     a. Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan.
 
@@ -93,7 +87,7 @@ Förbered blob-lagringen för självstudien genom att utföra dessa steg.
 
 2. Utför följande steg på sidan **Egenskaper** :
 
-    a. Under **uppgifts namn** , anger du **DeltaCopyFromBlobPipeline**.
+    a. Under **uppgifts namn**, anger du **DeltaCopyFromBlobPipeline**.
 
     b. Under **aktivitets takt eller aktivitets schema** väljer du **kör regelbundet enligt schema**.
 
@@ -106,7 +100,7 @@ Förbered blob-lagringen för självstudien genom att utföra dessa steg.
     Med användargränssnittet för Data Factory skapas en pipeline med angivet aktivitetsnamn.
 
     ![Sidan Egenskaper](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
-3. Gör följande på sidan **Källdatalager** :
+3. Gör följande på sidan **Källdatalager**:
 
     a. Klicka på **+ Skapa ny anslutning** för att lägga till en anslutning
     
@@ -118,7 +112,7 @@ Förbered blob-lagringen för självstudien genom att utföra dessa steg.
 
     d. Välj den nyligen skapade länkade tjänsten på sidan **käll data lager** och klicka sedan på **Nästa**.
 
-4. Gör följande på sidan **Välj indatafil eller mapp** :
+4. Gör följande på sidan **Välj indatafil eller mapp**:
 
     a. Bläddra och välj **käll** behållaren och välj sedan **Välj**.
 
@@ -130,7 +124,7 @@ Förbered blob-lagringen för självstudien genom att utföra dessa steg.
 
     ![Skärm bild som visar dialog rutan Välj indatafil eller mapp med en mapp vald.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
 
-5. På sidan **mål data lager** väljer du **AzureBlobStorage** , som är samma lagrings konto som data källans lager och klickar sedan på **Nästa**.
+5. På sidan **mål data lager** väljer du **AzureBlobStorage**, som är samma lagrings konto som data källans lager och klickar sedan på **Nästa**.
 
     ![Sidan Måldatalager](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png)
 6. Utför följande steg på sidan **Välj utdatafil eller mapp** :

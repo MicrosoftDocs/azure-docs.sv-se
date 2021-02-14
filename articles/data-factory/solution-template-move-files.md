@@ -1,22 +1,19 @@
 ---
 title: Flytta filer mellan filbaserad lagring
 description: Lär dig hur du använder en lösnings mall för att flytta filer mellan filbaserad lagring med hjälp av Azure Data Factory.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88f2d25046ee017fccd2cee6e951be72d4dda91
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522728"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361952"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Flytta filer med Azure Data Factory
 
@@ -62,7 +59,7 @@ Mallen definierar fyra parametrar:
 
     ![Visa pipelinen](media/solution-template-move-files/move-files4.png)
 
-5. Välj **Felsök**, ange **parametrarna**och välj sedan **Slutför**.   Parametrarna är sökvägen till mappen där du vill flytta filer från och den mappsökväg dit du vill flytta filer. 
+5. Välj **Felsök**, ange **parametrarna** och välj sedan **Slutför**.   Parametrarna är sökvägen till mappen där du vill flytta filer från och den mappsökväg dit du vill flytta filer. 
 
     ![Köra en pipeline](media/solution-template-move-files/move-files5.png)
 

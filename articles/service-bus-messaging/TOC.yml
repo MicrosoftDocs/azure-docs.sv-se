@@ -15,7 +15,7 @@
       items:
         - name: Skapa en Service Bus-kö
           items:
-            - name: Azure-portalen
+            - name: Azure Portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -144,6 +144,10 @@
           href: ./security-controls-policy.md
         - name: Nätverkssäkerhet
           href: network-security.md
+    - name: Integrering med andra tjänster
+      items:
+        - name: Azure Service Bus och Azure Event Grid-integrering
+          href: service-bus-to-event-grid-integration-concept.md
 - name: Anvisningar
   items:
     - name: Flytta mellan regioner
@@ -168,8 +172,6 @@
               href: message-sequencing.md
             - name: Förfallodatum för meddelanden (Time to Live)
               href: message-expiration.md
-            - name: Meddelandehantering med hjälp av Azure Event Grid
-              href: service-bus-to-event-grid-integration-concept.md
         - name: Ämnesfilter och åtgärder
           href: topic-filters.md
         - name: Migrera från Standard- till Premium-namnområden

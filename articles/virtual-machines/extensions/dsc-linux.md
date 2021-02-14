@@ -3,8 +3,7 @@ title: Azure DSC-tillägg för Linux
 description: Installerar OMI-och DSC-paket så att en virtuell Azure Linux-dator kan konfigureras med önskad tillstånds konfiguration.
 services: virtual-machines-linux
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -13,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
-ms.author: robreed
-ms.openlocfilehash: 1d1a5cf67a10a83a227f240fc31d25abfe9c7dd0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.author: magoedte
+ms.openlocfilehash: bfd5da519116eff66aede607f4cab7c207b30ee6
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955947"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093717"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-tillägg för Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
 Önskad tillstånds konfiguration (DSC) är en hanterings plattform som du kan använda för att hantera IT-och utvecklings infrastrukturen med konfiguration som kod.
 
 > [!NOTE]
-> DSC-tillägget för Linux och [Azure Monitor tillägg för virtuell dator för Linux](./oms-linux.md) presenterar en konflikt som inte stöds i en sida-vid-sida-konfiguration. Använd inte de två lösningarna tillsammans på samma virtuella dator.
+> DSC-tillägget för Linux och [Log Analytics tillägg för virtuell dator för Linux](./oms-linux.md) presenterar en konflikt som inte stöds i en sida-vid-sida-konfiguration. Använd inte de två lösningarna tillsammans på samma virtuella dator.
 
 DSCForLinux-tillägget har publicerats och stöds av Microsoft. Tillägget installerar OMI-och DSC-agenten på virtuella Azure-datorer. DSC-tillägget kan också utföra följande åtgärder:
 
@@ -36,7 +35,7 @@ DSCForLinux-tillägget har publicerats och stöds av Microsoft. Tillägget insta
 - Installera anpassade DSC-moduler till den virtuella Linux-datorn (installera ExtensionAction).
 - Ta bort anpassade DSC-moduler från den virtuella Linux-datorn (ta bort ExtensionAction).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="operating-system"></a>Operativsystem
 
@@ -75,10 +74,10 @@ Här följer alla skyddade konfigurations parametrar som stöds:
 * `RegistrationUrl`: (valfritt, sträng) URL: en för det Azure Automation kontot
 * `RegistrationKey`: (valfritt, sträng) åtkomst nyckeln för det Azure Automation kontot
 
-
 ## <a name="scenarios"></a>Scenarier
 
 ### <a name="register-an-azure-automation-account"></a>Registrera ett Azure Automation konto
+
 protected.jspå
 ```json
 {
@@ -144,7 +143,6 @@ $publicConfig = '{
 }'
 ```
 
-
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Tillämpa en MOF-konfigurationsfil (i offentlig lagring) på den virtuella datorn
 
 public.jspå
@@ -193,14 +191,18 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Tillämpa en konfigurations fil för meta MOF (i offentlig lagring) på den virtuella datorn
+
 public.jspå
+
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
   "ExtensionAction": "Pull"
 }
 ```
+
 PowerShell-format
+
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -209,14 +211,18 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Installera en anpassad resurspool (en zip-fil i ett Azure Storage-konto) till den virtuella datorn
+
 protected.jspå
+
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
+
 public.jspå
+
 ```json
 {
   "ExtensionAction": "Install",
@@ -238,14 +244,19 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Installera en anpassad resurspool (en zip-fil i offentlig lagring) på den virtuella datorn
+
 public.jspå
+
 ```json
 {
   "ExtensionAction": "Install",
   "FileUri": "<resource-zip-file-uri>"
 }
+
 ```
+
 PowerShell-format
+
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -254,14 +265,18 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Ta bort en anpassad resurspool från den virtuella datorn
+
 public.jspå
+
 ```json
 {
   "ResourceName": "<resource-name>",
   "ExtensionAction": "Remove"
 }
 ```
+
 PowerShell-format
+
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -277,10 +292,10 @@ Exempel Resource Manager-mallen är [201-DSC-Linux-Azure-Storage-on-Ubuntu](http
 
 Mer information om Azure Resource Manager-mallen finns i [redigera Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md).
 
-
 ## <a name="azure-cli-deployment"></a>Azure CLI-distribution
 
 ### <a name="use-azure-cliazure-cli"></a>Använda [Azure CLI] [Azure-CLI]
+
 Innan du distribuerar DSCForLinux-tillägget konfigurerar du `public.json` och `protected.json` enligt de olika scenarierna i avsnitt 3.
 
 #### <a name="classic"></a>Klassisk
@@ -288,33 +303,40 @@ Innan du distribuerar DSCForLinux-tillägget konfigurerar du `public.json` och `
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Det klassiska distributions läget kallas även för Azure Service Management-läge. Du kan växla till den genom att köra:
+
 ```
 $ azure config mode asm
 ```
 
 Du kan distribuera DSCForLinux-tillägget genom att köra:
+
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
 För att lära dig den senaste tilläggs versionen som är tillgänglig, kör:
+
 ```
 $ azure vm extension list
 ```
 
 #### <a name="resource-manager"></a>Resource Manager
+
 Du kan växla till Azure Resource Manager läge genom att köra:
+
 ```
 $ azure config mode arm
 ```
 
 Du kan distribuera DSCForLinux-tillägget genom att köra:
+
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
+
 > [!NOTE]
 > I Azure Resource Manager läge är `azure vm extension list` inte tillgängligt för tillfället.
 >
@@ -340,6 +362,7 @@ $version = '< version>'
 ```
 
 Ändra innehållet i $privateConfig och $publicConfig enligt olika scenarier i föregående avsnitt.
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -354,7 +377,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher `
   -Version $version -PrivateConfiguration $privateConfig `
   -PublicConfiguration $publicConfig | Update-AzureVM
@@ -382,6 +405,7 @@ $version = '< version>'
 ```
 
 Ändra innehållet i $privateConfig och $publicConfig enligt olika scenarier i föregående avsnitt.
+
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -396,7 +420,7 @@ $publicConfig = '{
 }'
 ```
 
-```
+```powershell
 Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
@@ -421,11 +445,10 @@ Utökning av utdata loggas i följande fil:
 Felkod: 51 representerar en distribution som inte stöds eller en tilläggs åtgärd som inte stöds.
 I vissa fall kan DSC Linux-tillägget inte installera OMI när det redan finns en senare version av OMI på datorn. [fel svar: (000003) nedgradering tillåts inte]
 
-
-
 ### <a name="support"></a>Support
 
 Om du behöver mer hjälp när som helst i den här artikeln kan du kontakta Azure-experterna i [MSDN Azure och Stack Overflow forum](https://azure.microsoft.com/support/community/). Du kan också skriva en support incident för Azure. Gå till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/)och välj **få support**. Information om hur du använder Azure-support finns i [vanliga frågor och svar om Microsoft Azure support](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Nästa steg
+
 Mer information om tillägg finns i [tillägg för virtuella datorer och funktioner för Linux](features-linux.md).

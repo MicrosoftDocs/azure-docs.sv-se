@@ -3,12 +3,12 @@ title: Distribuera resurser med Azure CLI och mall
 description: Använd Azure Resource Manager och Azure CLI för att distribuera resurser till Azure. Resurserna definieras i en Resource Manager-mall.
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: f01409db36ca29deb2f6938ce3118cdcb20cd1a1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881307"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378680"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Distribuera resurser med ARM-mallar och Azure CLI
 
@@ -106,7 +106,7 @@ I föregående exempel krävs en offentligt tillgänglig URI för mallen som fun
 
 Använd `query-string` för att ange SAS-token för att distribuera fjärranslutna länkade mallar med relativa sökvägar som lagras i ett lagrings konto:
 
-```azurepowershell
+```azurecli-interactive
 az deployment group create \
   --name linkedTemplateWithRelativePath \
   --resource-group myResourceGroup \

@@ -3,22 +3,22 @@ title: 'ML Studio (klassisk): utvärdera & kors validerings modeller – Azure'
 description: Lär dig mer om de mått som du kan använda för att övervaka modell prestanda i Azure Machine Learning Studio (klassisk).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ca369f8a3e680a4d2aae49df83dda0cdd3dc4075
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310160"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520025"
 ---
 # <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Utvärdera modell prestanda i Azure Machine Learning Studio (klassisk)
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 I den här artikeln får du lära dig mer om de mått som du kan använda för att övervaka modell prestanda i Azure Machine Learning Studio (klassisk).  Utvärdering av prestanda för en modell är en av kärn stegen i data vetenskaps processen. Det visar hur framgångs poängen (förutsägelserna) av en data uppsättning har varit av en utbildad modell. Azure Machine Learning Studio (klassisk) stöder utvärdering av modeller genom två av dess huvudsakliga Machine Learning-moduler: 
@@ -47,7 +47,7 @@ Du kan också använda kors validering för att utföra ett antal åtgärder fö
 I följande avsnitt kommer vi att bygga enkla Regressions-och klassificerings modeller och utvärdera deras prestanda med hjälp av modulerna [utvärdera modell][evaluate-model] och [kors validering][cross-validate-model] .
 
 ## <a name="evaluating-a-regression-model"></a>Utvärdera en Regressions modell
-Anta att vi vill förutsäga priset på en bil med hjälp av funktioner som dimensioner, häst krafter, motor specifikationer och så vidare. Detta är ett typiskt Regressions problem, där mål variabeln ( *pris* ) är ett kontinuerligt numeriskt värde. Vi kan få en linjär Regressions modell som, med tanke på funktions värden för en viss bil, kan förutsäga priset på den bilen. Denna Regressions modell kan användas för att räkna med samma data uppsättning som vi tränade på. När vi har de förutsagda bil priserna kan vi utvärdera modell prestandan genom att titta på hur mycket förutsägelserna avviker från de faktiska priserna i genomsnitt. För att illustrera detta använder vi *data uppsättningen för Automobile-pris (RAW)* som är tillgänglig i avsnittet **sparade data uppsättningar** i Machine Learning Studio (klassisk).
+Anta att vi vill förutsäga priset på en bil med hjälp av funktioner som dimensioner, häst krafter, motor specifikationer och så vidare. Detta är ett typiskt Regressions problem, där mål variabeln (*pris*) är ett kontinuerligt numeriskt värde. Vi kan få en linjär Regressions modell som, med tanke på funktions värden för en viss bil, kan förutsäga priset på den bilen. Denna Regressions modell kan användas för att räkna med samma data uppsättning som vi tränade på. När vi har de förutsagda bil priserna kan vi utvärdera modell prestandan genom att titta på hur mycket förutsägelserna avviker från de faktiska priserna i genomsnitt. För att illustrera detta använder vi *data uppsättningen för Automobile-pris (RAW)* som är tillgänglig i avsnittet **sparade data uppsättningar** i Machine Learning Studio (klassisk).
 
 ### <a name="creating-the-experiment"></a>Skapa experimentet
 Lägg till följande moduler till din arbets yta i Azure Machine Learning Studio (klassisk):
@@ -65,7 +65,7 @@ Anslut portarna enligt beskrivningen nedan i bild 1 och Ställ in kolumnen etike
 Bild 1. Utvärdera en Regressions modell.
 
 ### <a name="inspecting-the-evaluation-results"></a>Inspektera utvärderings resultaten
-När du har kört experimentet kan du klicka på utdataporten för modulen [utvärdera modell][evaluate-model] och välja *visualisera* för att se utvärderings resultatet. De utvärderings mått som är tillgängliga för Regressions modeller är: *medels absolut fel* , *rot medelvärde absolut fel* , *relativt absolut fel* , *relativt kvadratvärde* och *koefficienten för bestämning*.
+När du har kört experimentet kan du klicka på utdataporten för modulen [utvärdera modell][evaluate-model] och välja *visualisera* för att se utvärderings resultatet. De utvärderings mått som är tillgängliga för Regressions modeller är: *medels absolut fel*, *rot medelvärde absolut fel*, *relativt absolut fel*, *relativt kvadratvärde* och *koefficienten för bestämning*.
 
 Termen "fel" här representerar skillnaden mellan det förväntade värdet och det sanna värdet. Det absoluta värdet eller kvadraten av denna skillnad beräknas vanligt vis för att fånga den totala storleken på fel i alla instanser, eftersom skillnaden mellan det förväntade och sanna värdet kan vara negativ i vissa fall. Fel måtten mäter förutsägelse prestanda för en Regressions modell i termer av genomsnitts avvikelsen för dess förutsägelser från de sanna värdena. Lägre fel värden innebär att modellen är mer exakt för att göra förutsägelser. En övergripande felvärdet noll innebär att modellen passar data perfekt.
 
@@ -107,7 +107,7 @@ Anslut portarna enligt vad som visas nedan i bild 5 och Ställ in kolumnen etike
 Bild 5. Utvärdera en binär klassificerings modell.
 
 ### <a name="inspecting-the-evaluation-results"></a>Inspektera utvärderings resultaten
-När du har kört experimentet kan du klicka på utdataporten för modulen [utvärdera modell][evaluate-model] och välja *visualisera* för att se utvärderings resultaten (bild 7). De utvärderings mått som är tillgängliga för binära klassificerings modeller är: *precision* , *precision* , *återkallande* , *F1-Poäng* och *AUC*. Dessutom visar modulen en Förväxlings mat ris som visar antalet sanna positiva identifieringar, falska negativa tal, falska positiva identifieringar och sanna negativ, samt *Roc* , *precision/återkallande* och *lyft* kurvor.
+När du har kört experimentet kan du klicka på utdataporten för modulen [utvärdera modell][evaluate-model] och välja *visualisera* för att se utvärderings resultaten (bild 7). De utvärderings mått som är tillgängliga för binära klassificerings modeller är: *precision*, *precision*, *återkallande*, *F1-Poäng* och *AUC*. Dessutom visar modulen en Förväxlings mat ris som visar antalet sanna positiva identifieringar, falska negativa tal, falska positiva identifieringar och sanna negativ, samt *Roc*, *precision/återkallande* och *lyft* kurvor.
 
 Noggrannhet är bara den andel av korrekt klassificerade instanser. Det är vanligt vis det första mått du tittar på när du utvärderar en klassificerare. Men om test data inte är balanserade (där de flesta instanserna tillhör en av klasserna), eller om du är mer intresserade av prestandan i någon av klasserna, så är noggrannheten inte riktigt att en klassificerare är effektiv. I klassificerings scenariot för inkomst nivån förutsätter du att du testar på vissa data där 99% av instanserna representerar personer som har mindre än eller lika med 50 000 per år. Det är möjligt att uppnå en 0,99 precision genom att förutsäga klassen "<= 50 000" för alla instanser. Klassificeraren i det här fallet verkar vara en effektiv uppgift, men i verkligheten går det inte att klassificera någon av de enskilda inkomst personerna (1%) Bra.
 
@@ -123,7 +123,7 @@ Om du går tillbaka till intäkts klassificeringen skulle vi vilja ställa flera
 
 Bild 7. Resultat av binära klassificerings utvärdering.
 
-Ett annat relaterat mått som ofta används är **F1-poängen** , som tar både precision och åter användning. Det är det harmoniska medelvärdet av dessa två mått och beräknas som sådant: F1 = 2 (precision x återkalla)/(precision + återkalla). F1-poängen är ett bra sätt att sammanfatta utvärderingen i ett enda tal, men det är alltid en bra idé att titta på både precisionen och återkalla tillsammans för att bättre förstå hur en klassificerare fungerar.
+Ett annat relaterat mått som ofta används är **F1-poängen**, som tar både precision och åter användning. Det är det harmoniska medelvärdet av dessa två mått och beräknas som sådant: F1 = 2 (precision x återkalla)/(precision + återkalla). F1-poängen är ett bra sätt att sammanfatta utvärderingen i ett enda tal, men det är alltid en bra idé att titta på både precisionen och återkalla tillsammans för att bättre förstå hur en klassificerare fungerar.
 
 Dessutom kan en granska den sanna positiva nivån jämfört med den falska positiva positiva frekvensen i **Roc-kurvan (receiver Operational)** och motsvarande **del under värdet kurva (AUC)** . Den närmare kurvan är i det övre vänstra hörnet, desto bättre klassificerarens prestanda (som maximerar den sanna positiva hastigheten och minimerar den falska positiva positiva frekvensen). Kurvor som ligger nära ritytans Diagonal, är resultatet av klassificerare som tenderar att göra förutsägelser som är nära att gissa sig.
 

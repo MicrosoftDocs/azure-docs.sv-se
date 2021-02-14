@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019643"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382896"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Anslutningsprogram för Azure Logic Apps
 
@@ -452,15 +452,21 @@ Om du vill anropa API: er som kör anpassad kod eller som inte är tillgängliga
 >
 > Mer information om hur du skapar ISEs finns i [ansluta till virtuella Azure-nätverk från Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
+## <a name="get-ready-for-deployment"></a>Gör dig redo för distribution
+
+Även om du skapar anslutningar inifrån en Logic app, är anslutningarna separata Azure-resurser med sina egna resurs definitioner. Om du vill granska dessa anslutnings resurs definitioner [laddar du ned din Logic app från Azure till Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md), vilket är det enklaste sättet att skapa en giltig mall för parametriserade appar som är redo för distribution.
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>Blockera skapande av anslutningar
 
 Om din organisation inte tillåter att du ansluter till vissa resurser genom att använda deras anslutningar i Azure Logic Apps kan du [blockera möjligheten att skapa anslutningar](../logic-apps/block-connections-connectors.md) för vissa anslutningar i Logic app-arbetsflöden genom att använda [Azure policy](../governance/policy/overview.md). Mer information finns i [blockera anslutningar som skapats av vissa anslutningar i Azure Logic Apps](../logic-apps/block-connections-connectors.md).
 
-## <a name="get-ready-for-deployment"></a>Gör dig redo för distribution
+## <a name="known-issues"></a>Kända problem
 
-Även om du skapar anslutningar inifrån en Logic app, är anslutningarna separata Azure-resurser med sina egna resurs definitioner. Om du vill granska dessa anslutnings resurs definitioner [laddar du ned din Logic app från Azure till Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md), vilket är det enklaste sättet att skapa en giltig mall för parametriserade appar som är redo för distribution.
+#### <a name="error-badgateway-client-request-id-guid"></a>Fel: BadGateway. Klient begär ande-ID: {GUID}
+
+Det här felet uppstår vid uppdatering av taggarna i en Logic-app där en eller flera anslutningar inte stöder Azure Active Directory (Azure AD) OAuth-autentisering, till exempel SFTP AD SQL, och bryter dessa anslutningar. Undvik det här problemet genom att undvika att uppdatera taggarna.
 
 ## <a name="next-steps"></a>Nästa steg
 

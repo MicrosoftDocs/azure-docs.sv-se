@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f9b970f498db7530b35c57a75edeae55dec3f22d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739193"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098851"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Skapa ett Azure Machine Learning beräknings kluster
 
@@ -100,7 +100,7 @@ Information om hur du skapar ett beräknings kluster i Studio finns i [skapa ber
 
  ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Sänk din beräknings kluster kostnad
 
-Du kan också välja att använda [virtuella datorer med låg prioritet](concept-plan-manage-cost.md#low-pri-vm) för att köra vissa eller alla arbets belastningar. De här virtuella datorerna har inte garanterad tillgänglighet och kan komma att blockeras när den används. Ett väntande jobb startas om, inte återupptas. 
+Du kan också välja att använda [virtuella datorer med låg prioritet](concept-plan-manage-cost.md#low-pri-vm) för att köra vissa eller alla arbets belastningar. De här virtuella datorerna har inte garanterad tillgänglighet och kan komma att blockeras när den används. Du måste starta om ett jobb som inte körs. 
 
 Använd något av följande sätt för att ange en virtuell dator med låg prioritet:
     

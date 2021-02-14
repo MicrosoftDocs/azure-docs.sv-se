@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från DB2 med Azure Data Factory
 description: Lär dig hur du kopierar data från DB2 till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 642f12386a7695e026eb0c30016acf6f53fc9e95
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638201"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381128"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiera data från DB2 med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -57,7 +52,7 @@ Mer specifikt stöder den här DB2-anslutaren följande IBM DB2-plattformar och 
 
 Integration Runtime tillhandahåller en inbyggd DB2-drivrutin, och du behöver därför inte installera någon driv rutin manuellt när du kopierar data från DB2.
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -71,7 +66,7 @@ Följande egenskaper stöds för DB2-länkad tjänst:
 |:--- |:--- |:--- |
 | typ | Egenskapen Type måste anges till: **DB2** | Ja |
 | Begär | Ange information som krävs för att ansluta till DB2-instansen.<br/> Du kan också ställa in lösen ord i Azure Key Vault och hämta `password` konfigurationen från anslutnings strängen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) artikel med mer information. | Ja |
-| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Nej |
+| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 Typiska egenskaper i anslutnings strängen:
 
@@ -79,11 +74,11 @@ Typiska egenskaper i anslutnings strängen:
 |:--- |:--- |:--- |
 | server |Namnet på DB2-servern. Du kan ange port numret som följer Server namnet avgränsat med kolon, t. ex. `server:port` .<br>DB2-anslutaren använder DDM/DRDA-protokollet och använder som standard port 50000 om inget värde anges. Porten som din speciella DB2-databas använder kan vara olika beroende på versionen och dina inställningar, t. ex. för DB2-LUW är standard porten 50000, för AS400 är standard porten 446 eller 448 när TLS är aktiverat. Se följande DB2-dokument på hur porten konfigureras vanligt vis: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)och [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Ja |
 | databas |Namnet på DB2-databasen. |Ja |
-| authenticationType |Typ av autentisering som används för att ansluta till DB2-databasen.<br/>Tillåtet värde är: **Basic** . |Ja |
+| authenticationType |Typ av autentisering som används för att ansluta till DB2-databasen.<br/>Tillåtet värde är: **Basic**. |Ja |
 | användarnamn |Ange användar namnet för att ansluta till DB2-databasen. |Ja |
 | password |Ange lösen ordet för det användar konto som du har angett för användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| packageCollection | Ange under där de nödvändiga paketen skapas automatiskt av ADF när du frågar databasen. Om detta inte anges använder Data Factory {username} som standardvärde. | Nej |
-| certificateCommonName | När du använder Secure Sockets Layer (SSL) eller Transport Layer Security kryptering (TLS) måste du ange ett värde för certifikatets egna namn. | Nej |
+| packageCollection    | Ange under där de nödvändiga paketen skapas automatiskt av ADF när du frågar databasen. Om detta inte anges använder Data Factory {username} som standardvärde. | Inga |
+| certificateCommonName | När du använder Secure Sockets Layer (SSL) eller Transport Layer Security kryptering (TLS) måste du ange ett värde för certifikatets egna namn. | Inga |
 
 > [!TIP]
 > Om du får ett fel meddelande om att det finns ett fel meddelande `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` , är orsaken till att ett nödvändigt paket inte skapas för användaren. Som standard försöker ADF skapa ett paket under samlingen med namnet som den användare som du använde för att ansluta till DB2. Ange egenskapen för paket samling för att ange under var du vill att ADF ska skapa nödvändiga paket när du frågar databasen.
@@ -202,7 +197,7 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** för att k
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **Db2Source** | Ja |
-| DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Till exempel `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nej (om "tableName" i data uppsättningen har angetts) |
+| DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Exempel: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nej (om "tableName" i data uppsättningen har angetts) |
 
 **Exempel:**
 
@@ -249,7 +244,7 @@ När du kopierar data från DB2 används följande mappningar från DB2-datatype
 | Blob |Byte [] |
 | Char |Sträng |
 | CLOB |Sträng |
-| Date |Datumtid |
+| Datum |Datumtid |
 | DB2DynArray |Sträng |
 | DbClob |Sträng |
 | Decimal |Decimal |
@@ -261,7 +256,7 @@ När du kopierar data från DB2 används följande mappningar från DB2-datatype
 | LongVarBinary |Byte [] |
 | LongVarChar |Sträng |
 | LongVarGraphic |Sträng |
-| Numeriskt |Decimal |
+| Numerisk |Decimal |
 | Verkligen |Enkel |
 | SmallInt |Int16 |
 | Tid |TimeSpan |

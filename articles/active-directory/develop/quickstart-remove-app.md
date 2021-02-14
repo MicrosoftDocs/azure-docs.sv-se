@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 8953f9ca174414c55e6e06774167d3951d0bbd41
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4afffb558b9cbf53a762b1b2bb1ce544e554feaf
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090246"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103897"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Ta bort ett program som är registrerat med Microsoft Identity Platform
 
@@ -39,9 +39,10 @@ Program som du eller din organisation har registrerat representeras av både ett
 
 Om du vill ta bort ett program ska du listas som ägare till programmet eller ha administratörs behörighet.
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.
-1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** och väljer sedan **Appregistreringar**. Leta upp och välj det program som du vill konfigurera. När du har valt appen ser du programmets **översiktssida**.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: på den översta menyn för att välja den klient som appen är registrerad i.
+1. Sök och välj **Azure Active Directory**. 
+1. Under **Hantera** väljer du **Appregistreringar**  och väljer det program som du vill konfigurera. När du har valt appen ser du programmets **översiktssida**.
 1. På sidan **Översikt** väljer du **Ta bort**.
 1. Välj **Ja** för att bekräfta att du vill ta bort appen.
 

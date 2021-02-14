@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573198"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361714"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk gränser
 
@@ -64,7 +64,7 @@ Här följer gränserna för storleken på de data som kan kopieras till ett lag
 
 | Typ av data             | Standardgräns          |
 |--------------------------|------------------------|
-| blockera BLOB, Page BLOB    | Aktuell information om dessa begränsningar finns i [skalnings mål för Azure Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Azure standard Storage Scale-mål](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)och [Azure Files skala mål](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> Gränserna innehåller data från alla källor, inklusive Data Box Disk.|
+| blockera BLOB, Page BLOB    | Aktuell information om dessa begränsningar finns i [skalnings mål för Azure Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [Azure standard Storage Scale-mål](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)och [Azure Files skala mål](../storage/files/storage-files-scale-targets.md). <br /><br /> Gränserna innehåller data från alla källor, inklusive Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Storleks gränser för Azure-objekt

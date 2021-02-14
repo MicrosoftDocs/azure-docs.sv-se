@@ -2,13 +2,13 @@
 title: Azure Service Bus mått i Azure Monitor | Microsoft Docs
 description: Den här artikeln förklarar hur du använder Azure Monitor för att övervaka Service Bus entiteter (köer, ämnen och prenumerationer).
 ms.topic: article
-ms.date: 11/18/2020
-ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 02/12/2021
+ms.openlocfilehash: fa242b4d8c8a6ce83801667e686864f858f8a000
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916890"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519107"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus mått i Azure Monitor
 
@@ -74,7 +74,7 @@ Följande två typer av fel klassificeras som användar fel:
 
 | Måttnamn | Beskrivning |
 | ------------------- | ----------------- |
-|Inkommande meddelanden|Antalet händelser eller meddelanden som skickats till Service Bus under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: entitetsnamn|
+|Inkommande meddelanden|Antalet händelser eller meddelanden som skickats till Service Bus under en angiven period. Det här måttet inkluderar inte meddelanden som är automatiskt vidarebefordrade.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: entitetsnamn|
 |Utgående meddelanden|Antalet händelser eller meddelanden som har tagits emot från Service Bus under en angiven period.<br/><br/> Enhet: antal <br/> Sammansättnings typ: totalt <br/> Dimension: entitetsnamn|
 | Meddelanden| Antal meddelanden i en kö/ett ämne. <br/><br/> Enhet: antal <br/> Sammansättnings typ: genomsnitt <br/> Dimension: entitetsnamn |
 | Aktiva meddelanden| Antal aktiva meddelanden i en kö/ett ämne. <br/><br/> Enhet: antal <br/> Sammansättnings typ: genomsnitt <br/> Dimension: entitetsnamn |

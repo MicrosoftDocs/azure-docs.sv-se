@@ -2,19 +2,19 @@
 title: Hantera bibliotek för Apache Spark
 description: Lär dig hur du lägger till och hanterar bibliotek som används av Apache Spark i Azure Synapse Analytics.
 services: synapse-analytics
-author: euangMS
+author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0458fb8b140166b7bdf0fc0df41dbb207fdce3c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518529"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hantera bibliotek för Apache Spark i Azure Synapse Analytics
 
@@ -24,21 +24,23 @@ Bibliotek ger återanvändbar kod som du kanske vill inkludera i dina program el
 - Om du vill installera och uppdatera bibliotek måste du ha behörighet för **Storage BLOB-data deltagare** eller **lagrings-BLOB-data** på det primära Gen2 lagrings konto som är länkat till Azure Synapse Analytics-arbetsytan.
   
 ## <a name="default-installation"></a>Standard installation
-Apache Spark i Azure Synapse Analytics har en fullständig Anacondas-installation plus ytterligare bibliotek. Du hittar den fullständiga biblioteks listan på [Apache Spark versions stöd](apache-spark-version-support.md). 
+Apache Spark i Azure Synapse Analytics har en fullständig Anacondas-installation plus extra bibliotek. Du hittar den fullständiga biblioteks listan på [Apache Spark versions stöd](apache-spark-version-support.md). 
 
-När en spark-instans startar, tas dessa bibliotek automatiskt med. Ytterligare python och anpassade, skapade paket kan läggas till på nivån för Spark-poolen.
+När en spark-instans startar, tas dessa bibliotek automatiskt med. Extra python och anpassade-skapade paket kan läggas till på nivån för Spark-poolen.
 
 
 ## <a name="manage-python-packages"></a>Hantera python-paket
 När du har identifierat de bibliotek som du vill använda för Spark-programmet kan du installera dem i en spark-pool. 
 
- En *requirements.txt* -fil (utdata från `pip freeze` kommandot) kan användas för att uppgradera den virtuella miljön. Paketen som anges i den här filen för installation eller uppgradering laddas ned från PyPi vid tidpunkten för poolen startades. Den här krav filen används varje gång en spark-instans skapas från den Spark-poolen.
+ En *requirements.txt* -fil (utdata från `pip freeze` kommandot) kan användas för att uppgradera den virtuella miljön. Paketen som anges i den här filen för installation eller uppgradering laddas ned från PyPI vid tidpunkten för poolen startades. Den här krav filen används varje gång en spark-instans skapas från den Spark-poolen.
 
 > [!IMPORTANT]
 > - Om paketet som du installerar är stort eller tar lång tid att installera, påverkar detta start tiden för Spark-instansen.
 > - Paket som kräver kompilatorstöd vid installationstillfället, till exempel GCC, stöds inte.
 > - Paket kan inte nedgraderas, bara läggas till eller uppgraderas.
-> - Om du vill installera bibliotek måste du ha behörigheter för Storage BLOB-data deltagare eller lagrings-BLOB-data på det primära Gen2-lagrings kontot som är kopplat till Synapse-arbetsytan.
+> - Det finns inte stöd för att ändra PySpark-, python-, Scala-/Java-, .NET-eller Spark-versionen.
+> - Det finns inte stöd för att installera paket från PyPI i DEP-aktiverade arbets ytor.
+
 
 ### <a name="requirements-format"></a>Krav format
 
@@ -53,6 +55,9 @@ alabaster==0.7.10
 ### <a name="install-python-packages"></a>Installera python-paket
 När du utvecklar Spark-programmet kanske du upptäcker att du behöver uppdatera befintliga eller installera nya bibliotek. Bibliotek kan uppdateras under eller efter att poolen har skapats.
 
+> [!IMPORTANT]
+> Om du vill installera bibliotek måste du ha behörigheter för Storage BLOB-data deltagare eller lagrings-BLOB-data på det primära Gen2-lagrings kontot som är kopplat till Synapse-arbetsytan.
+
 #### <a name="install-packages-during-pool-creation"></a>Installera paket när du skapar en pool
 Så här installerar du bibliotek till en spark-pool när du skapar en pool:
    
@@ -66,7 +71,7 @@ Så här installerar du bibliotek till en spark-pool när du skapar en pool:
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Installera paket från arbets ytan Synapse
-Uppdatera eller lägga till ytterligare bibliotek i en spark-pool från Azure Synapse Analytics-portalen:
+Uppdatera eller lägga till fler bibliotek i en spark-pool från Azure Synapse Analytics-portalen:
 
 1.  Navigera till din Azure Synapse Analytics-arbetsyta från Azure Portal.
    
@@ -101,7 +106,7 @@ for d in pkg_resources.working_set:
      print(d)
 ```
 ### <a name="update-python-packages"></a>Uppdatera python-paket
-Paket kan läggas till eller ändras när som helst mellan sessioner. När en ny paket konfigurations fil överförs skrivs befintliga paket och versioner över.  
+Paket kan läggas till eller ändras när som helst mellan sessioner. En ny paket konfigurations fil kommer skriva över befintliga paket och versioner.  
 
 Så här uppdaterar eller avinstallerar du ett bibliotek:
 1. Navigera till din Azure Synapse Analytics-arbetsyta. 
@@ -124,13 +129,15 @@ Så här uppdaterar eller avinstallerar du ett bibliotek:
 ## <a name="manage-a-python-wheel"></a>Hantera ett python-hjul
 
 ### <a name="install-a-custom-wheel-file"></a>Installera en anpassad Wheel-fil
-Anpassade, inbyggda hjul paket kan installeras på den Apache Spark poolen genom att ladda upp alla hjul till Azure Data Lake Storage-kontot (Gen2) som är länkat till arbets ytan Synapse. 
+Anpassade hjul paket kan installeras på den Apache Spark poolen genom att ladda upp alla hjul till Azure Data Lake Storage-kontot (Gen2) som är länkat till arbets ytan Synapse. 
 
 Filerna ska överföras till följande sökväg i lagrings kontots standard behållare: 
 
 ```
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
+
+Du kan behöva lägga till ```python``` mappen i ```libraries``` mappen om den inte redan finns.
 
 >[!IMPORTANT]
 >Anpassade paket kan läggas till eller ändras mellan sessioner. Du måste dock vänta tills poolen och sessionen startats om för att se det uppdaterade paketet.

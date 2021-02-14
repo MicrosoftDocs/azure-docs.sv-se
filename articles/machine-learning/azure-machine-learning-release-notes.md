@@ -9,16 +9,46 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: b814c12a0d57230a81a68f6030a26ded93bd0399
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100097083"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375569"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>Azure Machine Learning SDK för python v-1.22.0
++ **Fel korrigeringar och förbättringar**
+  + **azureml-automl-core**
+    + Åtgärdat fel där ett extra pip-beroende har lagts till i Conda YML-filen för visioner-modeller.
+  + **azureml-automl-runtime**
+    + Ett fel har åtgärd ATS där klassiska prognos modeller (t. ex. AutoArima) kan ta emot tränings data där rader med imputerade mål värden inte fanns. Detta bröt mot data kontraktet för dessa modeller. * Korrigerade olika buggar med beteende vid fördröjning i tids seriernas isolerings operator. Tidigare markerades inte alla imputerade rader på rätt sätt, vilket innebär att inte alltid genererar rätt värde för förekomst fördröjning. Även vissa kompatibilitetsproblem har åtgärd ATS mellan fördröjnings operatorn och den rullande fönster operatorn med beteendet vänte-vid-förekomst. Detta ledde tidigare till att den rullande fönster operatorn tar bort några rader från tränings data som den annars bör använda.
+  + **azureml-core**
+    + Lägger till stöd för token-autentisering per mål grupp.
+    + Lägg till `process_count` i [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) för att stödja PyTorch-jobb med flera processer.
+  + **azureml-pipeline-steps**
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) nu till GA och inte längre experiment.
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): Lägg till argumentet allowed_failed_count och allowed_failed_percent för att kontrol lera fel tröskeln på Mini batchnivå. Fel tröskeln har 3 varianter nu:
+       + error_threshold-antalet tillåtna misslyckade mini batch-objekt. 
+       + allowed_failed_count-antalet tillåtna Felaktiga mini-batchar; 
+       + allowed_failed_percent-procent tillåtna misslyckade mini batchar. 
+       
+       Ett jobb stoppas om det överskrider något av dem. error_threshold krävs för att hålla den bakåtkompatibilitet. Ange värdet-1 för att ignorera det.
+    + Fast utrymmes hantering i AutoMLStep-namn.
+    + ScriptRunConfig stöds nu av HyperDriveStep
+  + **azureml-train-core**
+    + HyperDrive-körningar som anropas från en ScriptRun kommer nu att anses vara en underordnad körning.
+    + Lägg till `process_count` i [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) för att stödja PyTorch-jobb med flera processer.
+  + **azureml-widgets**
+    + Lägg till widgeten ParallelRunStepDetails för att visualisera status för en ParallelRunStep.
+    + Tillåter HyperDrive-användare att se ytterligare en axel i det parallella koordinat diagrammet som visar det mått värde som motsvarar varje uppsättning med för varje underordnad körning.
+
 
  ## <a name="2021-01-31"></a>2021-01-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio Notebooks Experience (januari Update)
@@ -35,6 +65,7 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
   + Förbättrade prestanda 
   + Förbättrad hastighet och kernel-tillförlitlighet
   
+
  ## <a name="2021-01-25"></a>2021-01-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK för python v-1.21.0
@@ -145,7 +176,7 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
     + HyperDriveRun.get_children_sorted_by_primary_metric () bör bli snabbare nu
     + Förbättrad fel hantering i HyperDrive SDK.
     +  Föråldrade alla uppskattnings klasser i förmån att använda ScriptRunConfig för att konfigurera experiment körningar. Inaktuella klasser är:
-        + MMLBaseEstimator
+        + MMLBase
         + Uppskattning
         + PyTorch 
         + TensorFlow 
@@ -940,7 +971,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Description  |
+| Webbaserat verktyg  |     Beskrivning  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1452,7 +1483,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Description | 
+| Webbaserat verktyg | Beskrivning | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

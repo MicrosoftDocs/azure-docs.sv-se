@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8d69033dedc3a45263b087c9b9ee5b156af460be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615809"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361068"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Åtkomst och identitetsalternativ för Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ När du skapar ett kluster, skapar eller ändrar AKS de resurser som krävs för
 
 Följande behörigheter krävs av identiteten för att skapa och driva klustret.
 
-| Behörighet | Orsak |
+| Behörighet | Anledning |
 |---|---|
 | Microsoft. Compute/diskEncryptionSets/Read | Krävs för att läsa disk krypterings uppsättningens ID. |
 | Microsoft. Compute/proximityPlacementGroups/Write | Krävs för att uppdatera närhets placerings grupper. |
@@ -40,7 +40,7 @@ Följande behörigheter krävs av identiteten för att skapa och driva klustret.
 
 Följande behörigheter används av AKS-kluster identiteten, som skapas och associeras med AKS-klustret när klustret skapas. Varje behörighet används av följande orsaker:
 
-| Behörighet | Orsak |
+| Behörighet | Anledning |
 |---|---|
 | Microsoft. Network/belastningsutjämnare/Delete <br/> Microsoft. Network/belastningsutjämnare/Read <br/> Microsoft. Network/belastningsutjämnare/Write | Krävs för att konfigurera belastningsutjämnaren för en LoadBalancer-tjänst. |
 | Microsoft. Network/publicIPAddresses/Delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | Krävs för att hitta och konfigurera offentliga IP-adresser för en LoadBalancer-tjänst. |
@@ -66,7 +66,7 @@ Följande behörigheter används av AKS-kluster identiteten, som skapas och asso
 
 Följande ytterligare behörigheter krävs av kluster identiteten när du skapar ett kluster med vissa attribut. Dessa behörigheter tilldelas inte automatiskt, så du måste lägga till dessa behörigheter till kluster identiteten när de har skapats.
 
-| Behörighet | Orsak |
+| Behörighet | Anledning |
 |---|---|
 | Microsoft. Network/networkSecurityGroups/Write <br/> Microsoft. Network/networkSecurityGroups/Read | Krävs om du använder en nätverks säkerhets grupp i en annan resurs grupp. Krävs för att konfigurera säkerhets regler för en LoadBalancer-tjänst. |
 | Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Krävs om du använder ett undernät i en annan resurs grupp, till exempel ett anpassat VNET. |
@@ -166,7 +166,7 @@ Med Azure RBAC-integrering använder AKS en Kubernetes-auktoriserings-webhook-se
 
 ![Azure RBAC för Kubernetes-auktoriseringsarkiv](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 
-Som du ser i diagrammet ovan, när du använder Azure RBAC-integrering, kommer alla begär anden till Kubernetes-API: et att följa samma autentiseringspaket som beskrivs i [avsnittet om Azure Active integration](#azure-active-directory-integration). 
+Som du ser i diagrammet ovan, när du använder Azure RBAC-integrering, kommer alla begär anden till Kubernetes-API: et att följa samma autentiseringspaket som beskrivs i [avsnittet Azure Active Directory-integration](#azure-active-directory-integration). 
 
 Men efter det, i stället för att enbart förlita sig på Kubernetes RBAC för auktorisering, kommer begäran faktiskt att godkännas av Azure, så länge identiteten som gjorde begäran finns i AAD. Om identiteten inte finns i AAD, till exempel ett Kubernetes-tjänstkonto, kommer inte Azure RBAC att lanseras och det är den normala Kubernetes RBAC.
 
@@ -174,6 +174,8 @@ I det här scenariot kan du ge användarna en av de fyra inbyggda rollerna eller
 
 Med den här funktionen kan du till exempel inte bara ge användare behörighet till AKS-resursen över prenumerationer, men konfigurera och ge dem rollen och behörighet som de kommer att ha i vart och ett av dessa kluster som styr åtkomsten till Kubernetes-API: et. Du kan till exempel bevilja `Azure Kubernetes Service RBAC Viewer` rollen i prenumerations omfånget och dess mottagare kommer att kunna visa och hämta alla Kubernetes-objekt från alla kluster, men inte ändra dem.
 
+> [!IMPORTANT]
+> Observera att du måste aktivera Azure RBAC för Kubernetes-auktorisering innan du använder den här funktionen. Mer information och stegvisa anvisningar [finns här](manage-azure-rbac.md).
 
 #### <a name="built-in-roles"></a>Inbyggda roller
 
@@ -186,7 +188,6 @@ AKS tillhandahåller följande fyra inbyggda roller. De liknar de [inbyggda roll
 | RBAC-administratör för Azure Kubernetes-tjänsten  | Tillåter administratörs åtkomst, som är avsedd att beviljas inom ett namn område. Tillåter Läs-/skriv åtkomst till de flesta resurser i ett namn område (eller ett kluster omfång), inklusive möjligheten att skapa roller och roll bindningar i namn området. Den här rollen tillåter inte skriv åtkomst till resurs kvot eller själva namn området. |
 | Azure Kubernetes service RBAC-kluster administratör  | Ger åtkomst till superanvändare för att utföra alla åtgärder på en resurs. Den ger fullständig kontroll över alla resurser i klustret och i alla namn områden. |
 
-**[Läs här](manage-azure-rbac.md)om du vill veta mer om hur du aktiverar Azure RBAC för Kubernetes-auktorisering.**
 
 ## <a name="summary"></a>Sammanfattning
 

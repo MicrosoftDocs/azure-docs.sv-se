@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 584266a8f6aa82d8a47b5e3faff044acf0ef298c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027007"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361629"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurera inställningar för Azure AD-Multi-Factor Authentication
 
@@ -65,9 +65,7 @@ Utför följande steg för att blockera en användare:
 
 1. Bläddra till **Azure Active Directory**  >  **säkerhets**  >  **MFA**  >  **blockera/avblockera användare**.
 1. Välj **Lägg till** för att blockera en användare.
-1. Välj **replik gruppen** och välj sedan *Azure default*.
-
-    Ange användar namnet för den blockerade användaren som `username\@domain.com` och ange sedan en kommentar i fältet *orsak* .
+1. Ange användar namnet för den blockerade användaren som `username@domain.com` och ange sedan en kommentar i fältet *orsak* .
 1. När du är klar väljer du **OK** för att blockera användaren.
 
 ### <a name="unblock-a-user"></a>Avblockera en användare
@@ -244,7 +242,7 @@ Om din organisation distribuerar NPS-tillägget för att tillhandahålla MFA til
 
 | Typ av Azure AD-klient | Alternativ för betrodda IP-funktioner |
 |:--- |:--- |
-| Hanterade |Ett **särskilt intervall med IP-adresser**: administratörer anger ett intervall med IP-adresser som kan kringgå Multi-Factor Authentication för användare som loggar in från företagets intranät. Högst 50 betrodda IP-intervall kan konfigureras.|
+| Hanterad |Ett **särskilt intervall med IP-adresser**: administratörer anger ett intervall med IP-adresser som kan kringgå Multi-Factor Authentication för användare som loggar in från företagets intranät. Högst 50 betrodda IP-intervall kan konfigureras.|
 | Federerade |**Alla federerade användare**: alla federerade användare som loggar in från i organisationen kan kringgå Multi-Factor Authentication. Användarna kringgår verifieringen genom att använda ett anspråk som utfärdats av Active Directory Federation Services (AD FS) (AD FS).<br/>Ett **särskilt intervall med IP-adresser**: administratörer anger ett intervall med IP-adresser som kan kringgå Multi-Factor Authentication för användare som loggar in från företagets intranät. |
 
 Överanvändning av betrodda IP-arbeten är bara inifrån företagets intranät. Om du väljer alternativet **alla federerade användare** och en användare loggar in utanför företagets intranät, måste användaren autentisera med hjälp av Multi-Factor Authentication. Processen är densamma även om användaren presenterar ett AD FS-anspråk.

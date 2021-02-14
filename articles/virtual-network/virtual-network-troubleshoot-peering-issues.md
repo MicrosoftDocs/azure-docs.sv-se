@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096397"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518172"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Felsöka problem med peering i virtuella nätverk
 
@@ -233,7 +233,7 @@ Lös problemet genom att ta bort peering från båda de virtuella nätverken och
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Det gick inte att peer-koppla ett Databricks virtuellt nätverk
 
-Lös problemet genom att konfigurera det virtuella nätverkets peering under **Azure Databricks** och ange det virtuella mål nätverket med hjälp av **resurs-ID**. Mer information finns i [peer a Databricks Virtual Network to a Remote Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+Lös problemet genom att konfigurera det virtuella nätverkets peering under **Azure Databricks** och ange det virtuella mål nätverket med hjälp av **resurs-ID**. Mer information finns i [peer a Databricks Virtual Network to a Remote Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2).
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Det virtuella fjärrnätverket saknar Gateway
 

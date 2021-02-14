@@ -3,15 +3,15 @@ title: Windows Virtual Desktop MSIX-appen koppla Portal Preview – Azure
 description: Så här konfigurerar du MSIX-appen för att ansluta till virtuella Windows-datorer med hjälp av Azure Portal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185962"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373478"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Konfigurera MSIX-appbifogning med Azure Portal
 
@@ -65,7 +65,7 @@ Därefter måste du ladda ned och konfigurera MSIX-appen för att ansluta hanter
 
 Konfigurera hanterings gränssnittet:
 
-1. [Öppna Preview-portalen](https://preview.portal.azure.com/?feature.msixapplications=true#home).
+1. [Öppna Azure Portal](https://portal.azure.com).
 2. Om du får en uppmaning om att fråga om du vill ha det betrodda tillägget väljer du **Tillåt**.
 
       > [!div class="mx-imgBorder"]
@@ -171,6 +171,9 @@ Så här publicerar du apparna:
 ## <a name="assign-a-user-to-an-app-group"></a>Tilldela en användare till en app-grupp
 
 När du har tilldelat MSIX-appar till en app-grupp måste du ge användarna åtkomst till dem. Du kan tilldela åtkomst genom att lägga till användare eller användar grupper i en app-grupp med publicerade MSIX-program. Följ anvisningarna i [Hantera app-grupper med Azure Portal](manage-app-groups.md) för att tilldela dina användare till en app-grupp.
+
+>[!NOTE]
+>MSIX-appen som ansluter fjärrappar kan försvinna från flödet när du testar fjärrappar under en offentlig för hands version. Apparna visas inte eftersom den värdbaserade pool som du använder i utvärderings miljön hanteras av en RD Broker i produktions miljön. Eftersom RD Broker i produktions miljön inte registrerar närvaron av MSIX-appen bifoga fjärrappar, visas inte apparna i feeden.
 
 ## <a name="change-msix-package-state"></a>Ändra paket status för MSIX
 

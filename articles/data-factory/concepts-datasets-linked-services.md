@@ -1,23 +1,19 @@
 ---
 title: Datauppsättningar
 description: Lär dig mer om data uppsättningar i Data Factory. Data uppsättningar representerar indata/utdata.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 6a9de6ff174adc5f6be9647560ad4e26367cb4ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4dafb738fd7d44893705994baa962831c101804b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500129"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390036"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datauppsättningar i Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -67,12 +63,12 @@ En data uppsättning i Data Factory definieras i följande JSON-format:
 ```
 I följande tabell beskrivs egenskaperna i ovanstående JSON:
 
-Egenskap | Beskrivning | Krävs |
+Egenskap | Beskrivning | Obligatorisk |
 -------- | ----------- | -------- |
-name | Data uppsättningens namn. Se [Azure Data Factory namngivnings regler](naming-rules.md). |  Yes |
-typ | Typ av data uppsättning. Ange en av de typer som stöds av Data Factory (till exempel: DelimitedText, AzureSqlTable). <br/><br/>Mer information finns i [data uppsättnings typer](#dataset-type). | Yes |
-schema | Schemat för data uppsättningen representerar den fysiska data typen och formen. | No |
-typeProperties | Typ egenskaperna är olika för varje typ. Mer information om de typer som stöds och deras egenskaper finns i [data uppsättnings typ](#dataset-type). | Yes |
+name | Data uppsättningens namn. Se [Azure Data Factory namngivnings regler](naming-rules.md). |  Ja |
+typ | Typ av data uppsättning. Ange en av de typer som stöds av Data Factory (till exempel: DelimitedText, AzureSqlTable). <br/><br/>Mer information finns i [data uppsättnings typer](#dataset-type). | Ja |
+schema | Schemat för data uppsättningen representerar den fysiska data typen och formen. | Inga |
+typeProperties | Typ egenskaperna är olika för varje typ. Mer information om de typer som stöds och deras egenskaper finns i [data uppsättnings typ](#dataset-type). | Ja |
 
 När du importerar schemat för data uppsättningen väljer du knappen **Importera schema** och väljer att importera från källan eller från en lokal fil. I de flesta fall importerar du schemat direkt från källan. Men om du redan har en lokal schema fil (en Parquet-fil eller en CSV-fil med rubriker) kan du direkt Data Factory för att basera schemat på filen.
 

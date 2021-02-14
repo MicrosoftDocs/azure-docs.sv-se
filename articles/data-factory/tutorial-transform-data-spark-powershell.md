@@ -1,21 +1,17 @@
 ---
 title: 'Transformera data med Spark i Azure Data Factory '
 description: Den här självstudiekursen innehåller stegvisa instruktioner för hur du transformerar data genom att använda en Spark-aktivitet i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf425ecb1a8aebf594828bfba50e9aba8ca9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81409090"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377626"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformera data i molnet genom att använda Spark-aktivitet i Azure Data Factory
 
@@ -32,7 +28,7 @@ I den här självstudien använder du Azure PowerShell för att skapa en Data Fa
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -66,7 +62,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
     if __name__ == "__main__":
         main()
     ```
-2. Ersätt ** &lt; storageAccountName &gt; ** med namnet på ditt Azure Storage-konto. Spara sedan filen. 
+2. Ersätt **&lt; storageAccountName &gt;** med namnet på ditt Azure Storage-konto. Spara sedan filen. 
 3. Skapa en container med namnet **adftutorial** i Azure Blob Storage om den inte finns. 
 4. Skapa en mapp med namnet **spark**.
 5. Skapa en undermapp med namnet **script** under mappen **spark**. 
@@ -182,7 +178,7 @@ Observera följande punkter:
 
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik 
-Du har skapat definitioner för länkad tjänst och pipeline i JSON-filer. Nu ska vi skapa en datafabrik och distribuera den länkade tjänsten och pipeline-JSON-filerna med hjälp av PowerShell-cmdlets. Kör följande PowerShell-kommandon ett i taget: 
+Du har skapat definitioner för länkad tjänst och pipeline i JSON-filer. Nu ska vi skapa en data fabrik och distribuera de länkade tjänsterna och pipelinens JSON-filer med hjälp av PowerShell-cmdletar. Kör följande PowerShell-kommandon ett i taget: 
 
 1. Ange variabler en i taget.
 

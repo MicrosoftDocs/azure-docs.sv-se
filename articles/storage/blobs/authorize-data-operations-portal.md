@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8c963f11a34217253f02cb5d116d66cdbf8bcc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033966"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391549"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Välj hur du vill ge åtkomst till BLOB-data i Azure Portal
 
@@ -37,6 +37,9 @@ För att få åtkomst till BLOB-data med åtkomst nyckeln för kontot måste du 
 - Rollen [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 När du försöker få åtkomst till BLOB-data i Azure Portal, kontrollerar portalen först om du har tilldelats en roll med **Microsoft. Storage/storageAccounts/listnycklar/Action**. Om du har tilldelats en roll med den här åtgärden använder portalen konto nyckeln för att få åtkomst till BLOB-data. Om du inte har tilldelats en roll med den här åtgärden försöker portalen komma åt data med ditt Azure AD-konto.
+
+> [!IMPORTANT]
+> När ett lagrings konto är låst med ett Azure Resource Manager **skrivskyddat** lås, tillåts inte [list nyckel](/rest/api/storagerp/storageaccounts/listkeys) åtgärden för det lagrings kontot. **List nycklar** är en post-åtgärd och alla post-åtgärder förhindras när ett **skrivskyddat** lås har kon figurer ATS för kontot. Därför måste användarna använda autentiseringsuppgifter för Azure AD för att få åtkomst till BLOB-data i portalen när kontot är låst med ett **skrivskyddat** lås. Information om hur du kommer åt BLOB-data i portalen med Azure AD finns i [Använd ditt Azure AD-konto](#use-your-azure-ad-account).
 
 > [!NOTE]
 > Administratören för rollen administratör för den klassiska prenumerationen och Co-Administrator innehåller motsvarigheten till Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) -rollen. **Ägar** rollen innehåller alla åtgärder, inklusive **Microsoft. Storage/storageAccounts/listnycklar/Action**, så en användare med någon av dessa administrativa roller kan också komma åt BLOB-data med konto nyckeln. Mer information finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-administratörer](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
@@ -111,6 +114,6 @@ Följ dessa steg om du vill ange hur du ska auktorisera en BLOB-uppladdnings åt
 ## <a name="next-steps"></a>Nästa steg
 
 - [Autentisera åtkomst till Azure-blobbar och köer med hjälp av Azure Active Directory](../common/storage-auth-aad.md)
-- [Använd Azure Portal för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-portal.md)
+- [Använda Azure-portalen för tilldelning av en Azure-roll för åtkomst till blob- och ködata](../common/storage-auth-aad-rbac-portal.md)
 - [Använd Azure CLI för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-cli.md)
 - [Använd Azure PowerShell-modulen för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-powershell.md)

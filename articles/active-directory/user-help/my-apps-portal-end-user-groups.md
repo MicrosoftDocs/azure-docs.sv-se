@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc8d211160e757c78a8e2adafad703118628e6dc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004167"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095052"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uppdatera dina grupp information på portalen Mina appar
 
@@ -27,6 +27,11 @@ Du kan använda ditt arbets-eller skol konto med den webbaserade **min Apps** -p
 
 >[!Important]
 >Innehållet är avsett för användare. Om du är administratör kan du hitta mer information om hur du konfigurerar och hanterar dina molnbaserade appar i [program hanterings dokumentationen](../manage-apps/index.yml).
+>
+> Om du ser ett fel när du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller **klient organisations-ID: t** för din organisation från administratören i någon av följande URL: er:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-groups-information"></a>Visa information om dina grupper
 
@@ -40,7 +45,11 @@ Om administratören har gett dig behörighet att visa panelen **grupper** kan du
 
 1. Logga in på ditt arbets-eller skol konto.
 
-2. Öppna webbläsaren och gå till https://myapps.microsoft.com eller Använd den länk som tillhandahålls av din organisation. Du kan till exempel dirigeras till en anpassad sida för din organisation, till exempel https://myapps.microsoft.com/contoso.com .
+2. Öppna webbläsaren och gå till https://myapps.microsoft.com eller Använd den länk som tillhandahålls av din organisation. Du kan till exempel dirigeras till en anpassad sida för din organisation, till exempel https://myapps.microsoft.com/contoso.com . Om du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller klient organisations **-ID: t** för din organisation från administratören i någon av följande URL: er:
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
+
 
     Sidan **appar** visas och visar alla molnbaserade appar som ägs av din organisation och som du kan använda.
 
@@ -80,7 +89,7 @@ Om administratören har gett dig behörighet att visa panelen **grupper** kan du
 
         - **Bullet.** Används för att hantera medlems- och datoråtkomst till delade resurser för en grupp användare. Du kan till exempel skapa en säkerhetsgrupp för en specifik säkerhetsprincip. På det här sättet kan du ge en uppsättning behörigheter till alla medlemmar på samma gång utan att behöva lägga till behörigheterna för varje medlem individuellt.
 
-        - **Office 365.** Ger samarbetsmöjligheter genom att ge medlemmar tillgång till en delad postlåda, kalender, filer, SharePoint-webbplats och mer. Med det här alternativet kan du också ge personer utanför organisationen åtkomst till gruppen.
+        - **Office 365.** Ger samarbetsmöjligheter genom att ge medlemmar tillgång till en delad postlåda, kalender, filer, SharePoint-webbplats och mer. Med det här alternativet kan du även ge personer utanför organisationen tillgång till gruppen.
 
     - **Grupp namn.** Lägg till ett namn för gruppen, något som du kommer ihåg och som låter logiskt.
 

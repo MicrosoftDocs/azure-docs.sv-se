@@ -1,23 +1,18 @@
 ---
 title: Kopiera data till eller från Azure Datautforskaren
 description: Lär dig hur du kopierar data till eller från Azure Datautforskaren med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
 ms.author: orspodek
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: fa8219db0e11694b6f70547d5f75bd892fbfa1f8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633169"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379989"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopiera data till eller från Azure Datautforskaren med Azure Data Factory
 
@@ -42,11 +37,11 @@ Du kan kopiera data från alla käll data lager som stöds till Azure Datautfors
 
 Med Azure Datautforskaren-anslutningen kan du göra följande:
 
-* Kopiera data med hjälp av Azure Active Directory (Azure AD) Application token-autentisering med ett **huvud namn för tjänsten** .
+* Kopiera data med hjälp av Azure Active Directory (Azure AD) Application token-autentisering med ett **huvud namn för tjänsten**.
 * Som källa hämtar du data med hjälp av en KQL-fråga (Kusto).
 * Lägg till data i en mål tabell som mottagare.
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
 >[!TIP]
 >En genom gång av Azure Datautforskaren Connector finns i [Kopiera data till/från Azure datautforskaren med Azure Data Factory](/azure/data-explorer/data-factory-load-data) och [Mass kopiering från en databas till Azure datautforskaren](/azure/data-explorer/data-factory-template).
@@ -63,12 +58,12 @@ Azure Datautforskaren-anslutningen använder autentisering av tjänstens huvud n
 
     - Program-ID
     - Program nyckel
-    - Klientorganisations-ID
+    - Klient-ID:t
 
 2. Ge tjänstens huvud namn rätt behörigheter i Azure Datautforskaren. Mer detaljerad information om roller och behörigheter och om att hantera behörigheter finns i [Hantera behörigheter för Azure datautforskaren Database](/azure/data-explorer/manage-database-permissions) . I allmänhet måste du:
 
-    - **Som källa** , beviljar du minst rollen **databas hanterare** till din databas
-    - **Som mottagare** , beviljar du minst rollen **databas** inmatnings roll till din databas
+    - **Som källa**, beviljar du minst rollen **databas hanterare** till din databas
+    - **Som mottagare**, beviljar du minst rollen **databas** inmatnings roll till din databas
 
 >[!NOTE]
 >När du använder Data Factory gränssnittet för att redigera, används ditt inloggnings användar konto för att Visa Azure Datautforskaren-kluster, databaser och tabeller. Ange namnet manuellt om du inte har behörighet för de här åtgärderna.
@@ -77,7 +72,7 @@ Följande egenskaper stöds för den länkade Azure Datautforskaren-tjänsten:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** måste anges till **AzureDataExplorer** . | Ja |
+| typ | Egenskapen **Type** måste anges till **AzureDataExplorer**. | Ja |
 | slutpunkt | Slut punkts-URL för Azure Datautforskaren-klustret, med formatet `https://<clusterName>.<regionName>.kusto.windows.net` . | Ja |
 | databas | Namn på databasen. | Ja |
 | tenant | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Detta kallas "auktoritets-ID" i [Kusto anslutnings sträng](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Hämta den genom att hovra med mus pekaren i det övre högra hörnet av Azure Portal. | Ja |
@@ -109,13 +104,13 @@ Följande egenskaper stöds för den länkade Azure Datautforskaren-tjänsten:
 
 En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns [i data uppsättningar i Azure Data Factory](concepts-datasets-linked-services.md). I det här avsnittet visas egenskaper som stöds av Azure Datautforskaren-datauppsättningen.
 
-Om du vill kopiera data till Azure Datautforskaren anger du egenskapen type för data uppsättningen till **AzureDataExplorerTable** .
+Om du vill kopiera data till Azure Datautforskaren anger du egenskapen type för data uppsättningen till **AzureDataExplorerTable**.
 
 Följande egenskaper stöds:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** måste anges till **AzureDataExplorerTable** . | Ja |
+| typ | Egenskapen **Type** måste anges till **AzureDataExplorerTable**. | Ja |
 | tabell | Namnet på den tabell som den länkade tjänsten refererar till. | Ja för mottagare; Nej för källa |
 
 **Exempel på data uppsättnings egenskaper:**
@@ -143,14 +138,14 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 
 ### <a name="azure-data-explorer-as-source"></a>Azure Datautforskaren som källa
 
-Om du vill kopiera data från Azure Datautforskaren anger du egenskapen **Type** i kopierings aktivitetens källa till **AzureDataExplorerSource** . Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
+Om du vill kopiera data från Azure Datautforskaren anger du egenskapen **Type** i kopierings aktivitetens källa till **AzureDataExplorerSource**. Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till: **AzureDataExplorerSource** | Ja |
 | DocumentDB | En skrivskyddad begäran har angetts i ett [KQL-format](/azure/kusto/query/). Använd den anpassade KQL-frågan som referens. | Ja |
-| queryTimeout | Vänte tiden innan fråge förfrågningen nådde tids gränsen. Standardvärdet är 10 min (00:10:00); det högsta tillåtna värdet är 1 timme (01:00:00). | Nej |
-| notrunkering | Anger om den returnerade resultat uppsättningen ska trunkeras. Som standard trunkeras resultatet efter 500 000 poster eller 64 megabyte (MB). Trunkering rekommenderas starkt för att säkerställa rätt beteende för aktiviteten. |Nej |
+| queryTimeout | Vänte tiden innan fråge förfrågningen nådde tids gränsen. Standardvärdet är 10 min (00:10:00); det högsta tillåtna värdet är 1 timme (01:00:00). | Inga |
+| notrunkering | Anger om den returnerade resultat uppsättningen ska trunkeras. Som standard trunkeras resultatet efter 500 000 poster eller 64 megabyte (MB). Trunkering rekommenderas starkt för att säkerställa rätt beteende för aktiviteten. |Inga |
 
 >[!NOTE]
 >Som standard har Azure Datautforskaren-källan en storleks gräns på 500 000 poster eller 64 MB. Om du vill hämta alla poster utan trunkering kan du ange `set notruncation;` i början av frågan. Mer information finns i [begränsningar för frågor](/azure/kusto/concepts/querylimits).
@@ -190,13 +185,13 @@ Om du vill kopiera data från Azure Datautforskaren anger du egenskapen **Type**
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure Datautforskaren som mottagare
 
-Om du vill kopiera data till Azure Datautforskaren anger du egenskapen type i kopierings aktiviteten Sink till **AzureDataExplorerSink** . Följande egenskaper stöds i avsnittet Kopiera aktivitets **mottagare** :
+Om du vill kopiera data till Azure Datautforskaren anger du egenskapen type i kopierings aktiviteten Sink till **AzureDataExplorerSink**. Följande egenskaper stöds i avsnittet Kopiera aktivitets **mottagare** :
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** för kopierings aktivitetens Sink måste anges till: **AzureDataExplorerSink** . | Ja |
-| ingestionMappingName | Namnet på en i förväg skapad [mappning](/azure/kusto/management/mappings#csv-mapping) i en Kusto-tabell. För att mappa kolumnerna från källa till Azure Datautforskaren (som gäller för [Alla käll Arkiv och format som stöds](copy-activity-overview.md#supported-data-stores-and-formats), inklusive CSV/JSON/Avro-format), kan du använda [kolumn mappningen](copy-activity-schema-and-type-mapping.md) kopiera aktivitet (implicit efter namn eller uttryckligen konfigurerad) och/eller Azure datautforskaren-mappningar. | Nej |
-| additionalProperties | En egenskaps uppsättning som kan användas för att ange någon av de inmatnings egenskaper som inte redan anges av Azure Datautforskaren-mottagare. Mer specifikt kan det vara praktiskt att ange inmatnings etiketter. Läs mer från [Azure Data utforska data inmatnings dokument](/azure/data-explorer/ingestion-properties). | Nej |
+| typ | Egenskapen **Type** för kopierings aktivitetens Sink måste anges till: **AzureDataExplorerSink**. | Ja |
+| ingestionMappingName | Namnet på en i förväg skapad [mappning](/azure/kusto/management/mappings#csv-mapping) i en Kusto-tabell. För att mappa kolumnerna från källa till Azure Datautforskaren (som gäller för [Alla käll Arkiv och format som stöds](copy-activity-overview.md#supported-data-stores-and-formats), inklusive CSV/JSON/Avro-format), kan du använda [kolumn mappningen](copy-activity-schema-and-type-mapping.md) kopiera aktivitet (implicit efter namn eller uttryckligen konfigurerad) och/eller Azure datautforskaren-mappningar. | Inga |
+| additionalProperties | En egenskaps uppsättning som kan användas för att ange någon av de inmatnings egenskaper som inte redan anges av Azure Datautforskaren-mottagare. Mer specifikt kan det vara praktiskt att ange inmatnings etiketter. Läs mer från [Azure Data utforska data inmatnings dokument](/azure/data-explorer/ingestion-properties). | Inga |
 
 **Exempel:**
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fc5d9cbd02490748c17a9f40a1440c5ad0c46278
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754953"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104118"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrera en JavaScript-app med en sida från implicit beviljande till auth Code Flow
 
@@ -41,7 +41,7 @@ Om du vill fortsätta att använda din befintliga App-registrering för dina pro
 
 Följ de här stegen för app-registreringar som är konfigurerade med omdirigerings-URI: er för **webb** plattform:
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> och välj **Azure Active Directory** klient.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> och välj **Azure Active Directory** klient.
 1. I **Appregistreringar** väljer du ditt program och sedan **autentisering**.
 1. I panelen **webb** plattform under **omdirigerings-URI** väljer du varnings banderollen som anger att du bör migrera dina URI: er.
 

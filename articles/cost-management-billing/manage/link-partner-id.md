@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132558"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370486"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Länka ett partner-ID till dina Azure-konton
 
@@ -162,9 +162,7 @@ Ja, du kan länka ditt partner-ID för Azure Stack.
 
 **Hur gör jag för att länka mitt partner-ID om mitt företag använder [Azure Lighthouse](../../lighthouse/overview.md) för att komma åt kundresurser?**
 
-Om du registrerar kunder i Azure-delegerad resurshantering genom att [publicera ett erbjudande om hanterade tjänster på Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) associeras ditt MPN-ID automatiskt.
-
-Om du [registrerar kunder genom att distribuera Azure Resource Manager-mallar](../../lighthouse/how-to/onboard-customer.md) måste du associera ditt MPN-ID med minst ett användarkonto som har åtkomst till var och en av dina registrerade prenumerationer. Observera att du måste göra detta i klientorganisationen för tjänstleverantören, och inte i varje kunds klientorganisation. För enkelhetens skull rekommenderar vi att du skapar ett konto för tjänstens huvudnamn i din klientorganisation, kopplar det till ditt MPN-ID och sedan ger det åtkomst till alla kunder som du registrerar med en [inbyggd Azure-roll som är kvalificerad för partnerintjänad kredit](/partner-center/azure-roles-perms-pec). Mer information finns i [Länka ditt partner-ID för att se hur du påverkar delegerade resurser](../../lighthouse/how-to/partner-earned-credit.md).
+För att Azure Lighthouse-aktiviteter ska kunna identifieras måste du associera ditt MPN-ID med minst ett användar konto som har åtkomst till var och en av dina inbyggda prenumerationer. Observera att du måste göra detta i klientorganisationen för tjänstleverantören, och inte i varje kunds klientorganisation. För enkelhetens skull rekommenderar vi att du skapar ett konto för tjänstens huvudnamn i din klientorganisation, kopplar det till ditt MPN-ID och sedan ger det åtkomst till alla kunder som du registrerar med en [inbyggd Azure-roll som är kvalificerad för partnerintjänad kredit](/partner-center/azure-roles-perms-pec). Mer information finns i [Länka ditt partner-ID för att se hur du påverkar delegerade resurser](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Hur förklarar jag partneradministratörslänken (PAL) för min kund?**
 

@@ -1,16 +1,16 @@
 ---
 title: Inbyggda princip definitioner för Azure Logic Apps
 description: Visar Azure Policy inbyggda princip definitioner för Azure Logic Apps. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: fe343dff39929aaa616c62d0b2b6d0f331e9ffe2
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 392f17b2c1920846ca02fcc67c4caf9fed5ef953
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560313"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099225"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>Azure Policy inbyggda definitioner för Azure Logic Apps
 

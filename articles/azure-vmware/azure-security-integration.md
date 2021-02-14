@@ -1,26 +1,26 @@
 ---
 title: Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
-description: Lär dig hur du skyddar dina virtuella Azure VMware-lösningar med Azures inbyggda säkerhets verktyg från en enda instrument panel i Azure Security Center.
+description: Skydda dina virtuella datorer med Azure VMware-lösningen med Azures inbyggda säkerhets verktyg från Azure Security Center instrument panelen.
 ms.topic: how-to
-ms.date: 02/04/2021
-ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 02/12/2021
+ms.openlocfilehash: b37d09d6e8f239586a18c0fa3b1dcd7bfee98102
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584965"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516370"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
 
-Inbyggda Azure-säkerhetsverktyg ger en säker infrastruktur för en hybrid miljö i Azure, Azure VMware-lösning och lokala virtuella datorer (VM). Den här artikeln visar hur du konfigurerar Azure-verktyg för hybrid miljö säkerhet. Du använder olika verktyg för att identifiera och hantera olika typer av hot.
+Azures inbyggda säkerhets verktyg ger skydd för en hybrid miljö i Azure, Azure VMware-lösning och lokala virtuella datorer (VM). Den här artikeln visar hur du konfigurerar Azure-verktyg för hybrid miljö säkerhet. Du använder dessa verktyg för att identifiera och åtgärda olika hot.
 
 ## <a name="azure-native-services"></a>Inbyggda Azure-tjänster
 
-Här är en snabb sammanfattning av varje Azure Native-tjänst:
+Här är en snabb översikt över Azure Native Services:
 
 - **Log Analytics arbets yta:** Log Analytics-arbetsytan är en unik miljö för lagring av loggdata. Varje arbetsyta har sitt eget datalager och sin egen konfiguration. Data källor och lösningar har kon figurer ATS för att lagra data i en angiven arbets yta.
-- **Azure Security Center:** Azure Security Center är ett enhetligt infrastruktur säkerhets hanterings system. Det stärker säkerhets positionen i data centren och ger avancerat skydd för Hybrid arbets belastningar i molnet eller lokalt.
-- **Azure Sentinel:** Azure Sentinel är en molnbaserad SIEM-lösning (Security information Event Management) och SOAR (Security Orchestration autoresponse). Den ger intelligent säkerhets analys och hot information i en miljö. Det är en enskild lösning för aviserings identifiering, Hot synlighet, proaktiv jakt och hot svar.
+- **Azure Security Center:** Azure Security Center är ett enhetligt infrastruktur säkerhets hanterings system. Det stärker säkerheten för data Center och ger avancerat skydd i hybrid arbets belastningar i molnet eller lokalt.
+- **Azure Sentinel:** Azure Sentinel är en molnbaserad SIEM-lösning (Security information Event Management). Den ger säkerhets analyser, aviserings identifiering och automatiserat hot svar i en miljö.
 
 ## <a name="topology"></a>Topologi
 
@@ -30,13 +30,13 @@ Log Analytics agenten aktiverar insamling av loggdata från Azure, Azure VMware-
 
 När loggarna har samlats in av Log Analytics arbets ytan kan du konfigurera arbets ytan Log Analytics med Azure Security Center. Azure Security Center kommer att bedöma sårbarhets statusen för virtuella Azure VMware-lösningar och utlösa en avisering för eventuella kritiska säkerhets risker. Till exempel utvärderas saknade korrigeringsfiler för operativ system, felaktig säkerhet och [Endpoint Protection](../security-center/security-center-services.md).
 
-Du kan konfigurera arbets ytan Log Analytics med Azure Sentinel för aviserings identifiering, Hot synlighet, proaktiv jakt och hot svar. I föregående diagram är Azure Security Center ansluten till Azure Sentinel med hjälp av Azure Security Center Connector. Azure Security Center vidarebefordrar miljö problemet till Azure Sentinel för att skapa en incident och mappa med andra hot. Du kan också skapa en fråga för schemalagda regler för att identifiera oönskad aktivitet och konvertera den till incidenterna.
+Du kan konfigurera arbets ytan Log Analytics med Azure Sentinel för aviserings identifiering, Hot synlighet, jakt och hot svar. I föregående diagram är Azure Security Center ansluten till Azure Sentinel med hjälp av Azure Security Center Connector. Azure Security Center vidarebefordrar miljö problemet till Azure Sentinel för att skapa en incident och mappa med andra hot. Du kan också skapa en fråga för schemalagda regler för att identifiera oönskad aktivitet och konvertera den till incidenterna.
 
 ## <a name="benefits"></a>Fördelar
 
 - Azure inbyggda tjänster kan användas för hybrid miljö säkerhet i Azure, Azure VMware-lösning och lokala tjänster.
 - Med hjälp av en Log Analytics arbets yta kan du samla in data eller loggarna till en enda punkt och presentera samma data för olika Azure Native-tjänster.
-- Azure Security Center erbjuder ett antal funktioner, bland annat:
+- Azure Security Center innehåller många funktioner, inklusive:
     - Övervakning av filintegritet
     - Avkänning av filbaserad attack
     - Utvärdering av operativ Systems korrigering 
@@ -54,11 +54,11 @@ Du behöver en Log Analytics arbets yta för att samla in data från olika käll
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Distribuera Security Center och konfigurera virtuella datorer med Azure VMware-lösningen
 
-Azure Security Center är ett förkonfigurerat verktyg och behöver inte distribueras. Sök efter **Security Center** i Azure Portal och markera den.
+Azure Security Center är ett förkonfigurerat verktyg som inte kräver distribution. Sök efter **Security Center** i Azure Portal och markera den.
 
 ### <a name="enable-azure-defender"></a>Aktivera Azure Defender
 
-Azure Defender utökar Azure Security Centers avancerade hot skydd i dina hybrid arbets belastningar både lokalt och i molnet. För att skydda dina virtuella datorer i Azure VMware-lösningen måste du aktivera Azure Defender. 
+Azure Defender utökar Azure Security Centers avancerade hot skydd i dina hybrid arbets belastningar, både lokalt och i molnet. För att skydda dina virtuella datorer i Azure VMware-lösningen måste du aktivera Azure Defender. 
 
 1. I Security Center väljer du **komma igång**.
 
@@ -149,7 +149,7 @@ Nu är du redo att ansluta Azure Sentinel med dina data källor, i det här fall
 
 ## <a name="create-rules-to-identify-security-threats"></a>Skapa regler för att identifiera säkerhetshot
 
-När du har anslutit data källor till Azure Sentinel kan du skapa regler för att generera aviseringar baserat på identifierade hot. I följande exempel skapar vi en regel för att identifiera försök att logga in på Windows Server med fel lösen ord.
+När du har anslutit data källor till Azure Sentinel kan du skapa regler för att generera aviseringar för identifierade hot. I följande exempel skapar vi en regel för att försöka logga in på Windows Server med fel lösen ord.
 
 1. På översikts sidan för Azure Sentinel väljer du **Analytics** under konfigurationer.
 
@@ -159,7 +159,7 @@ När du har anslutit data källor till Azure Sentinel kan du skapa regler för a
 
 4. Ange den information som krävs på fliken **Allmänt** .
 
-    - Name
+    - Namn
     - Beskrivning
     - Taktiker
     - Allvarlighetsgrad
@@ -196,7 +196,7 @@ När du har anslutit data källor till Azure Sentinel kan du skapa regler för a
 
 När det tredje misslyckade försöket att logga in på Windows Server utlöser den skapade regeln en incident för varje misslyckat försök.
 
-## <a name="view-generated-alerts"></a>Visa genererade aviseringar
+## <a name="view-alerts"></a>Visa aviseringar
 
 Du kan visa genererade incidenter med Azure Sentinel. Du kan också tilldela incidenter och stänga dem när de har lösts, allt från Azure Sentinel.
 
@@ -230,7 +230,7 @@ Du kan skapa frågor eller använda den tillgängliga fördefinierade frågan i 
 
 2. Fyll i följande information för att skapa en anpassad fråga.
 
-    - Name
+    - Namn
     - Beskrivning
     - Anpassad fråga
     - Ange mappning

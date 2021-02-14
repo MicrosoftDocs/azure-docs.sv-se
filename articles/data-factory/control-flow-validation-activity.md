@@ -1,22 +1,18 @@
 ---
 title: Validerings aktivitet i Azure Data Factory
 description: Validerings aktiviteten fortsätter inte att köra pipelinen förrän den verifierar den bifogade data uppsättningen med vissa villkor som användaren anger.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 63f4a7df76fc0480a2b0cdf2de13ff5e85aa93ef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e00090fc31c129f35632d30b9a5ed6c39c13a414
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485866"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385259"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Validerings aktivitet i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -62,12 +58,12 @@ Du kan använda en verifiering i en pipeline för att se till att pipelinen bara
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-name | Namnet på validerings aktiviteten | Sträng | Yes |
-typ | Måste vara inställd på  **verifiering**. | Sträng | Yes |
-data uppsättning | Aktiviteten blockerar körningen tills den har verifierat att den här data uppsättnings referensen finns och att den uppfyller de angivna villkoren, eller också har tids gränsen nåtts. Den angivna data uppsättningen ska ha stöd för egenskapen "MinimumSize" eller "ChildItems". | Referens för data mängd | Yes |
-timeout | Anger tidsgränsen för aktivitetens körning. Om inget värde anges är standardvärdet 7 dagar ("7.00:00:00"). Formatet är d. hh: mm: SS | Sträng | No |
-Spar | En fördröjning i sekunder mellan verifierings försök. Om inget värde anges är standardvärdet 10 sekunder. | Integer | No |
-childItems | Kontrollerar om mappen har underordnade objekt. Kan anges till-True: kontrol lera att mappen finns och att den har objekt. Block tills minst ett objekt finns i mappen eller så har timeout-värdet nåtts.-false: kontrol lera att mappen finns och att den är tom. Blockerar tills mappen är tom eller tills timeout-värdet nås. Om inget värde anges blockerar aktiviteten tills mappen finns eller tills tids gränsen har nåtts. | Boolesk | No |
+name | Namnet på validerings aktiviteten | Sträng | Ja |
+typ | Måste vara inställd på  **verifiering**. | Sträng | Ja |
+data uppsättning | Aktiviteten blockerar körningen tills den har verifierat att den här data uppsättnings referensen finns och att den uppfyller de angivna villkoren, eller också har tids gränsen nåtts. Den angivna data uppsättningen ska ha stöd för egenskapen "MinimumSize" eller "ChildItems". | Referens för data mängd | Ja |
+timeout | Anger tidsgränsen för aktivitetens körning. Om inget värde anges är standardvärdet 7 dagar ("7.00:00:00"). Formatet är d. hh: mm: SS | Sträng | Inga |
+Spar | En fördröjning i sekunder mellan verifierings försök. Om inget värde anges är standardvärdet 10 sekunder. | Integer | Inga |
+childItems | Kontrollerar om mappen har underordnade objekt. Kan anges till-True: kontrol lera att mappen finns och att den har objekt. Block tills minst ett objekt finns i mappen eller så har timeout-värdet nåtts.-false: kontrol lera att mappen finns och att den är tom. Blockerar tills mappen är tom eller tills timeout-värdet nås. Om inget värde anges blockerar aktiviteten tills mappen finns eller tills tids gränsen har nåtts. | Boolesk | Inga |
 minimumSize | Minsta storlek på en fil i byte. Om inget värde anges är standardvärdet 0 byte | Integer | Nej |
 
 
