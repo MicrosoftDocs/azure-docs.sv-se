@@ -1,22 +1,18 @@
 ---
 title: Transformering med Azure Databricks
 description: Lär dig hur du använder en lösnings mall för att transformera data med hjälp av en Databricks Notebook i Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: 1c20508d27d03c00a6842979731fb905bbaa9def
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ee663423071458605f37f07293693dbc91f592bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461246"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362122"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformering med Azure Databricks
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0fa5e09dbe7c0a8cd45557d535353ea4a0a00b16
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ccc2b6baba0e97320a5352013dbecfc121188457
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833107"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361034"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Övervakning av nätverks anslutning med anslutnings övervakaren
 
@@ -74,11 +74,24 @@ Regler för en nätverks säkerhets grupp (NSG) eller brand vägg kan blockera k
 
 ### <a name="agents-for-on-premises-machines"></a>Agenter för lokala datorer
 
-Om du vill att anslutnings övervakaren ska identifiera dina lokala datorer som källor för övervakning installerar du Log Analytics agent på datorerna. Aktivera sedan Övervakare av nätverksprestanda-lösningen. Dessa agenter är länkade till Log Analytics arbets ytor, så du måste konfigurera arbetsyte-ID och primär nyckel innan agenterna kan börja övervaka.
+Om du vill att anslutnings övervakaren ska identifiera dina lokala datorer som källor för övervakning installerar du Log Analytics agent på datorerna.  Aktivera sedan Övervakare av nätverksprestanda-lösningen. Dessa agenter är länkade till Log Analytics arbets ytor, så du måste konfigurera arbetsyte-ID och primär nyckel innan agenterna kan börja övervaka.
 
 För att installera Log Analytics agent för Windows-datorer, se [Azure Monitor tillägg för virtuell dator för Windows](../virtual-machines/extensions/oms-windows.md).
 
 Om sökvägen omfattar brand väggar eller virtuella nätverks installationer (NVA) kontrollerar du att målet kan kontaktas.
+
+För att öppna porten för Windows-datorer kör du [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell-skriptet utan parametrar i ett PowerShell-fönster med administratörs behörighet.
+
+PortNumbers som ska användas måste ändras manuellt för Linux-datorer. 
+* Navigera till sökvägen:/var/opt/Microsoft/omsagent/npm_state. 
+* Öppna fil: npmdregistry
+* Ändra värdet för port nummer ```“PortNumber:<port of your choice>”```
+
+ Observera att port nummer som används ska vara samma för alla agenter som används i en arbets yta. 
+
+Skriptet skapar register nycklar som krävs av lösningen. Det skapar också regler för Windows-brandväggen för att tillåta agenter att skapa TCP-anslutningar med varandra. Register nycklarna som skapas av skriptet anger om fel söknings loggarna och sökvägen till logg filen ska loggas. Skriptet definierar också den agent-TCP-port som används för kommunikation. Värdena för dessa nycklar anges automatiskt av skriptet. Ändra inte nycklarna manuellt. Porten som öppnas som standard är 8084. Du kan använda en anpassad port genom att ange parametern port nummer i skriptet. Använd samma port på alla datorer där skriptet körs. [Läs mer](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#network-requirements) om nätverks kraven för Log Analytics agenter
+
+Skriptet konfigurerar endast Windows-brandväggen lokalt. Om du har en nätverks brand vägg kontrollerar du att den tillåter trafik som är avsedd för TCP-porten som används av Övervakare av nätverksprestanda.
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>Aktivera Network Watcher på din prenumeration
 
@@ -274,7 +287,7 @@ I anslutnings Övervakare som skapades före anslutnings övervakaren, är alla 
 
 När du använder mått anger du resurs typen som Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metric | Visningsnamn | Enhet | Sammansättningstyp | Description | Dimensioner |
+| Metric | Visningsnamn | Enhet | Sammansättningstyp | Beskrivning | Dimensioner |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent (klassisk) | % Avsökningar misslyckades (klassisk) | Procent | Genomsnitt | Procent av anslutnings övervaknings avsökningarna misslyckades. | Inga dimensioner |
 | AverageRoundtripMs (klassisk) | Genomsnittlig tid för tur och retur (MS) (klassisk) | Millisekunder | Genomsnitt | Genomsnittlig för inblandning av nätverks belastning för anslutnings övervaknings avsökningar skickas mellan källa och mål. |             Inga dimensioner |

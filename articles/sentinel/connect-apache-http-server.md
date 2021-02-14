@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 59ef34f9d6d42277d8e83bf4e0ebb8ee29096f52
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6a1a2a2a7dac961e49e6ced38803649ebf5ad523
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99566935"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096862"
 ---
 # <a name="connect-your-apache-http-server-to-azure-sentinel"></a>Anslut din Apache HTTP-server till Azure Sentinel
 
@@ -37,7 +37,7 @@ Den här artikeln förklarar hur du ansluter din Apache HTTP-server till Azure S
 
 ## <a name="configure-and-integrate-apache-http-server-logs-via-log-analytics-agent"></a>Konfigurera och integrera Apache HTTP server-loggar via Log Analytics agent
 
-Konfigurera platsen för HTTP-servern för Apache för att vidarebefordra data till Azure-arbetsytan via Log Analytics-agenten.
+Konfigurera Apache HTTP-server för att skicka loggfiler till Azure-arbetsytan via Log Analytics-agenten.
 Konfigurera Log Analytics agent för att läsa Apache HTTP server-loggfiler.
 
 1. Följ anvisningarna på https://httpd.apache.org/docs/2.4/logs.html för att ställa in platsen för loggfiler i Apache HTTP server.

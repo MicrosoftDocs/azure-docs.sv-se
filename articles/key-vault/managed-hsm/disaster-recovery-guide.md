@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 69a0272061d8518119114e8fe7b023c889639844
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8c284e9993002f6e05e41ca00d00b388feef8f82
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171571"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376011"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Katastrof återställning av hanterad HSM
 
@@ -105,7 +105,7 @@ Om du vill skapa en HSM-säkerhetskopiering behöver du följande
 Vi använder `az keyvault backup` kommandot för HSM-säkerhetskopieringen i lagrings behållaren **mhsmbackupcontainer**, som finns i **ContosoBackup** för lagrings kontot i exemplet nedan. Vi skapar en SAS-token som upphör att gälla om 30 minuter och anger att en hanterad HSM ska skriva säkerhets kopian.
 
 ```azurecli-interactive
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
 az storage container create --account-name  mhsmdemobackup --name mhsmbackupcontainer  --account-key $skey
 sas=$(az storage container generate-sas -n mhsmbackupcontainer --account-name ContosoBackup --permissions crdw --expiry $end --account-key $skey -o tsv)
@@ -122,7 +122,7 @@ I det här steget behöver du följande:
 
 
 ```azurecli-interactive
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
 sas=$(az storage container generate-sas -n mhsmdemobackupcontainer --account-name ContosoBackup --permissions rl --expiry $end --account-key $skey -o tsv)
 az keyvault restore start --hsm-name ContosoMHSM2 --storage-account-name ContosoBackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas --backup-folder mhsm-ContosoMHSM-2020083120161860

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: f7f1952ab8c98553a447c3ed1955fb556ba48124
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e524905aaeed54de6501eb6f024bf28dbab9c594
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831951"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362173"
 ---
 # <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Självstudie: Distribuera ett IoT Central program med hjälp av program mal len video analys – objekt och rörelse identifiering
 
@@ -22,6 +22,13 @@ En översikt över program komponenterna för nyckel *video analys – objekt oc
 Följande videoklipp ger en genom gång av hur du använder _program mal len video analys – objekt och rörelse identifiering_ för att distribuera en IoT Central-lösning:
 
 > [!VIDEO https://www.youtube.com/embed/Bo3FziU9bSA]
+
+I den här uppsättningen med självstudier får du lära dig att:
+
+> [!div class="checklist"]
+> * Distribuera programmet
+> * Distribuera en IoT Edge-instans som ansluter till programmet
+> * Övervaka och hantera programmet
 
 ## <a name="prerequisites"></a>Förutsättningar
 

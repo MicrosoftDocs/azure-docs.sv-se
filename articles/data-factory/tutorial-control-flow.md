@@ -1,22 +1,19 @@
 ---
 title: Förgrening i Azure Data Factory pipeline
 description: Lär dig hur du styr flödet av data i Azure Data Factory genom branchning och kedjesammansättning av aktiviteter.
-services: data-factory
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496967"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386024"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Branchning och kedjesammansättning av aktiviteter i en Data Factory-pipeline
 
@@ -79,7 +76,7 @@ Skapa ett C# .NET-konsol program:
 
 ### <a name="install-nuget-packages"></a>Installera NuGet-paket
 
-1. Välj **verktyg**  >  **NuGet Package Manager**  >  **Package** Manager-konsolen.
+1. Välj **Verktyg** > **NuGet-pakethanteraren** > **Pakethanterarkonsolen**.
 1. Kör följande kommandon i **Package Manager Console** för att installera paket. Mer information finns i [Microsoft. Azure. Management. DataFactory NuGet-paketet](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -610,7 +607,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +750,7 @@ Press any key to exit...
 Du har följande uppgifter i den här självstudien:
 
 > [!div class="checklist"]
-> _ Skapa en data fabrik
+> * Skapa en datafabrik
 > * Skapa en länkad Azure Storage-tjänst
 > * Skapa en Azure Blob-datauppsättning
 > * Skapa en pipeline som innehåller en kopieringsaktivitet och en webbaktivitet

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/19/2020
-ms.openlocfilehash: 0e7fcf51d9c663ca4a289f54972f00ef037cb323
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3da3b1694a16507203d7f1f1f6cb5df58dd54423
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542277"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366185"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Snabb start: Använd en ARM-mall för att skapa en Azure Database for MySQL-Server
 
@@ -70,30 +70,30 @@ Välj följande länk för att distribuera Azure Database for MySQL server mal l
 
 På sidan **distribuera Azure Database for MySQL med VNet** :
 
-1. För **resurs grupp** väljer du **Skapa ny** , anger ett namn för den nya resurs gruppen och väljer **OK**.
+1. För **resurs grupp** väljer du **Skapa ny**, anger ett namn för den nya resurs gruppen och väljer **OK**.
 
 2. Om du har skapat en ny resurs grupp väljer du en **plats** för resurs gruppen och den nya servern.
 
-3. Ange ett **Server namn** , **Administratörs inloggning** och **lösen ord för Administratörs inloggning**.
+3. Ange ett **Server namn**, **Administratörs inloggning** och **lösen ord för Administratörs inloggning**.
 
     :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Distribuera Azure Database for MySQL med VNet-fönstret, Azure snabb starts mal len Azure Portal":::
 
 4. Ändra de andra standardinställningarna om du vill:
 
-    * **Prenumeration** : den Azure-prenumeration som du vill använda för servern.
-    * **SKU-kapacitet** : vCore-kapaciteten, som kan *vara 2* (standard), *4* , *8* , *16* , *32* eller *64*.
-    * **SKU-namn** : SKU-nivåns prefix, SKU-serien och SKU-kapaciteten som ingår i under streck, till exempel *B_Gen5_1* , *GP_Gen5_2* (standard) eller *MO_Gen5_32*.
-    * **SKU-storlek MB** : lagrings utrymmet i megabyte för Azure Database for MySQL server (standard *5120* ).
-    * **SKU-nivå** : distributions nivån, till *exempel Basic* , *generalpurpose* (standard) eller *MemoryOptimized*.
-    * **SKU-familj** : *Gen4* eller *Gen5* (standard), vilket indikerar maskin varu generering för Server distribution.
-    * **MySQL-version** : den version av MySQL-server som ska distribueras, till exempel *5,6* eller *5,7* (standard).
-    * **Kvarhållning av säkerhets kopierings dagar** : den önskade perioden för kvarhållning av Geo-redundant säkerhets kopia i dagar (standard *7* ).
-    * **Geo-redundant säkerhets kopiering** : *aktive rad* eller *inaktive* rad (standard), beroende på krav för geo-haveri beredskap (geo-Dr).
-    * **Virtual Network namn** : namnet på det virtuella nätverket (standard *azure_mysql_vnet* ).
-    * **Under näts namn** : namnet på under nätet (standard *azure_mysql_subnet* ).
-    * **Virtual Network regel namn** : namnet på den virtuella nätverks regel som tillåter under nätet (standard *AllowSubnet* ).
-    * **VNet-** adressprefix: adressprefixet för det virtuella nätverket (standard *10.0.0.0/16* ).
-    * **Undernätsprefixet** : adressprefixet för under nätet (standard *10.0.0.0/16* ).
+    * **Prenumeration**: den Azure-prenumeration som du vill använda för servern.
+    * **SKU-kapacitet**: vCore-kapaciteten, som kan *vara 2* (standard), *4*, *8*, *16*, *32* eller *64*.
+    * **SKU-namn**: SKU-nivåns prefix, SKU-serien och SKU-kapaciteten som ingår i under streck, till exempel *B_Gen5_1*, *GP_Gen5_2* (standard) eller *MO_Gen5_32*.
+    * **SKU-storlek MB**: lagrings utrymmet i megabyte för Azure Database for MySQL server (standard *5120*).
+    * **SKU-nivå**: distributions nivån, till *exempel Basic*, *generalpurpose* (standard) eller *MemoryOptimized*.
+    * **SKU-familj**: *Gen4* eller *Gen5* (standard), vilket indikerar maskin varu generering för Server distribution.
+    * **MySQL-version**: den version av MySQL-server som ska distribueras, till exempel *5,6* eller *5,7* (standard).
+    * **Kvarhållning av säkerhets kopierings dagar**: den önskade perioden för kvarhållning av Geo-redundant säkerhets kopia i dagar (standard *7*).
+    * **Geo-redundant säkerhets kopiering**: *aktive rad* eller *inaktive* rad (standard), beroende på krav för geo-haveri beredskap (geo-Dr).
+    * **Virtual Network namn**: namnet på det virtuella nätverket (standard *azure_mysql_vnet*).
+    * **Under näts namn**: namnet på under nätet (standard *azure_mysql_subnet*).
+    * **Virtual Network regel namn**: namnet på den virtuella nätverks regel som tillåter under nätet (standard *AllowSubnet*).
+    * **VNet-** adressprefix: adressprefixet för det virtuella nätverket (standard *10.0.0.0/16*).
+    * **Undernätsprefixet**: adressprefixet för under nätet (standard *10.0.0.0/16*).
 
 5. Läs de allmänna villkoren och välj sedan **Jag accepterar villkoren som anges ovan**.
 
@@ -180,6 +180,32 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>Exportera ARM-mall från portalen
+Du kan [Exportera en arm-mall](../azure-resource-manager/templates/export-template-portal.md) från Azure Portal. Det finns två sätt att exportera en mall:
+
+- [Exportera från resurs grupp eller resurs](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Med det här alternativet skapas en ny mall från befintliga resurser. Den exporterade mallen är en "ögonblicks bild" av resurs gruppens aktuella tillstånd. Du kan exportera en hel resurs grupp eller vissa resurser inom den resurs gruppen.
+- [Exportera före distribution eller från historik](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Med det här alternativet hämtas en exakt kopia av en mall som används för distribution.
+
+När du exporterar mallen visas i ```"properties":{ }``` avsnittet i MySQL-serverns resurs att du ser att ```administratorLogin``` och ```administratorLoginPassword``` inte tas med av säkerhets skäl. Du **måste** lägga till de här parametrarna i mallen innan du distribuerar mallen, annars Miss kommer mallen.
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforMySQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

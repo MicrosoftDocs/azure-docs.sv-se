@@ -3,12 +3,12 @@ title: Lär dig att granska innehållet i virtuella datorer
 description: Lär dig hur Azure Policy använder klienten för gäst konfiguration för att granska inställningar i virtuella datorer.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210128"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104815"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
 
@@ -60,7 +60,7 @@ Klienten för gäst konfiguration söker efter nytt innehåll var 5: e minut. N�
 
 Princip definitioner för gäst konfiguration inkluderar nya versioner. Äldre versioner av operativ system som är tillgängliga på Azure Marketplace utesluts om gäst konfigurations klienten inte är kompatibel. I följande tabell visas en lista över operativ system som stöds på Azure-avbildningar:
 
-|Publisher|Name|Versioner|
+|Publisher|Namn|Versioner|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 och senare|
@@ -142,11 +142,15 @@ När du tilldelar definitioner som börjar med _Konfigurera_ måste du också ti
 
 De gransknings princip definitioner som är tillgängliga för gäst konfiguration är resurs typen **Microsoft. HybridCompute/Machines** . Alla datorer som har publicerats till [Azure-bågen för servrar](../../../azure-arc/servers/overview.md) som omfattas av princip tilldelningen ingår automatiskt.
 
+## <a name="troubleshooting-guest-configuration"></a>Felsöka gäst konfiguration
+
+Mer information om hur du felsöker gäst konfiguration finns [Azure policy fel sökning](../troubleshoot/general.md).
+
 ### <a name="multiple-assignments"></a>Flera tilldelningar
 
 Princip definitioner för gäst konfiguration stöder för närvarande endast tilldelning av samma gäst tilldelning en gång per dator, även om princip tilldelningen använder olika parametrar.
 
-## <a name="client-log-files"></a>Loggfiler för klienter
+### <a name="client-log-files"></a>Loggfiler för klienter
 
 Gäst konfigurations tillägget skriver loggfiler till följande platser:
 
@@ -180,6 +184,15 @@ linesToIncludeAfterMatch=10
 logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
 egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
+
+### <a name="client-files"></a>Klient filer
+
+Klienten för gäst konfiguration laddar ned innehålls paket till en dator och extraherar innehållet.
+Du kan kontrol lera vilka innehåll som har hämtats och lagrats genom att visa mapparna nedan.
+
+Windows: `c:\programdata\guestconfig\configurations`
+
+Linux: `/var/lib/guestconfig/configurations`
 
 ## <a name="guest-configuration-samples"></a>Exempel på gäst konfiguration
 

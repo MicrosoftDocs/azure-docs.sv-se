@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f3eff6f5660089472ef431bad9a4f05be1fffe24
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178746"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104153"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Så här: begränsa din Azure AD-App till en uppsättning användare i en Azure AD-klient
 
@@ -47,7 +47,7 @@ Det finns två sätt att skapa ett program med aktive rad användar tilldelning.
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Företags program (kräver rollen som global administratör)
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a> som **Global administratör**.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> som **Global administratör**.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **företags program**  >  **alla program**.
@@ -59,13 +59,13 @@ Det finns två sätt att skapa ett program med aktive rad användar tilldelning.
 
 ### <a name="app-registration"></a>Appregistrering
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj **Appregistreringar** under **Hantera**.
 1. Skapa eller Välj den app som du vill hantera. Du måste vara **ägare** till det här programmet.
 1. På sidan **Översikt** för program väljer du länken **hanterat program i lokal katalog** i avsnittet **Essentials** .
-1. Under **Hantera**, väljer du **Egenskaper**.
+1. Välj **Egenskaper** under **Hantera**.
 1. Leta upp inställningen **användar tilldelning krävs?** och ange den till **Ja**. När det här alternativet är inställt på **Ja** måste användare i klient organisationen först tilldelas till det här programmet, annars kan de inte logga in i programmet.
 1. Välj **Spara**.
 

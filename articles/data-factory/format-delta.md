@@ -3,16 +3,15 @@ title: Delta format i Azure Data Factory
 description: Transformera och flytta data från en delta Lake med delta formatet
 author: djpmsft
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854979"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386500"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Delta format i Azure Data Factory
 

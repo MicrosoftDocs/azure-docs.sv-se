@@ -4,15 +4,15 @@ description: Ta bort en virtuell nätverksgateway med hjälp av Azure Portal
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 10/16/2020
+ms.date: 02/10/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 7d9ae31b5701707589d79fd5f3d7eb0802038eb9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 413fd8c7f03ef44abe4bece39ca717c533dea66b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148226"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376400"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Ta bort en virtuell nätverksgateway med portalen
 
@@ -45,23 +45,23 @@ Följande steg hjälper dig att ta bort alla resurser som inte längre används.
 #### <a name="to-delete-the-local-network-gateway"></a>Ta bort den lokala Nätverksgatewayen
 
 1. I **alla resurser**, letar du reda på lokala nätverksgateway som var associerade med varje anslutning.
-1. Klicka på **ta bort**på bladet **Översikt** för den lokala Nätverksgatewayen.
+1. Klicka på **ta bort** på bladet **Översikt** för den lokala Nätverksgatewayen.
 
 #### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Ta bort den offentliga IP-adressresursen för gatewayen
 
-1. I **alla resurser**letar du upp den offentliga IP-adressresursen som var kopplad till gatewayen. Om den virtuella Nätverksgatewayen var aktiv-aktiv, visas två offentliga IP-adresser.
-1. På sidan **Översikt** för den offentliga IP-adressen klickar du på **ta bort**och sedan på **Ja** för att bekräfta.
+1. I **alla resurser** letar du upp den offentliga IP-adressresursen som var kopplad till gatewayen. Om den virtuella Nätverksgatewayen var aktiv-aktiv, visas två offentliga IP-adresser.
+1. På sidan **Översikt** för den offentliga IP-adressen klickar du på **ta bort** och sedan på **Ja** för att bekräfta.
 
 #### <a name="to-delete-the-gateway-subnet"></a>Ta bort Gateway-undernätet
 
 1. Leta upp det virtuella nätverket i **alla resurser**. 
-1. På bladet **undernät** klickar du på **GatewaySubnet**och sedan på **ta bort**. 
+1. På bladet **undernät** klickar du på **GatewaySubnet** och sedan på **ta bort**. 
 1. Klicka på **Ja** för att bekräfta att du vill ta bort Gateway-undernätet.
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>Ta bort en VPN-gateway genom att ta bort resurs gruppen
 
 Om du inte är bekymrad över att behålla någon av dina resurser i resurs gruppen och du bara vill börja om kan du ta bort en hel resurs grupp. Det här är ett snabbt sätt att ta bort allt. Följande steg gäller endast för distributions modellen Resource Manager.
 
-1. Leta upp resurs gruppen i **alla resurser**och klicka för att öppna bladet.
+1. Leta upp resurs gruppen i **alla resurser** och klicka för att öppna bladet.
 1. Klicka på **Ta bort**. På bladet ta bort ser du de resurser som påverkas. Se till att du vill ta bort alla dessa resurser. Annars kan du använda stegen i ta bort en VPN-gateway överst i den här artikeln.
 1. Fortsätt genom att skriva namnet på den resurs grupp som du vill ta bort och klicka sedan på **ta bort**.

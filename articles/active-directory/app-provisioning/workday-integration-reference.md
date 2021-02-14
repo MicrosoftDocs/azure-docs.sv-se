@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: f260bca196839a091ae7d12be6d5f85912bf92db
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255992"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104339"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Hur Azure Active Directory etablering integreras med Workday
 
@@ -448,6 +448,21 @@ Anta att du vill hämta certifieringar som är associerade med en användare. De
 Anta att du vill hämta *etablerings grupper* som har tilldelats en arbets tagare. Den här informationen är tillgänglig som en del av data uppsättningen för *konto etablering* . Använd följande XPATH för att hämta den här data uppsättningen som en del av *Get_Workers* svaret: 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>Hantera olika HR-scenarier
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>Hämtar internationella jobb tilldelningar och information om sekundära jobb
+
+Som standard hämtar anslutnings programmet attribut som är associerade med arbetarens primära jobb. Anslutningen har även stöd för att hämta *ytterligare jobb data* som är associerade med internationella jobb tilldelningar eller sekundära jobb. 
+
+Använd stegen nedan för att hämta attribut som är associerade med internationella jobb tilldelningar: 
+
+1. Ange arbets dag för anslutnings-URL: en med hjälp av webb tjänsten för arbets dagar, version 30,0 eller senare. Ange därför [rätt XPath-värden](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) i din arbets Plans etablerings app. 
+1. Använd väljaren `@wd:Primary_Job=0` på `Worker_Job_Data` noden för att hämta rätt attribut. 
+   * **Exempel 1:** För att få `SecondaryBusinessTitle` använda XPath `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()`
+   * **Exempel 2:** För att få `SecondaryBusinessLocation` använda XPath `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor`
+
+ 
 
 ## <a name="next-steps"></a>Nästa steg
 

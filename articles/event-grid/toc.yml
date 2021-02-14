@@ -54,8 +54,12 @@
       href: ensure-tags-exists-on-new-virtual-machines.md
     - name: Skicka e-post när IoT Hub-enheter kopplas från
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Svara på Service Bus-händelser
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Hantera Service Bus-händelser via Event Grid
+      items:
+        - name: Azure Logic Apps
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure Functions
+          href: ../service-bus-messaging/service-bus-to-event-grid-integration-function.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Strömma data med Event Hubs
       href: event-grid-event-hubs-integration.md
     - name: Routning för Media Services-händelser
@@ -262,14 +266,18 @@
       items:
         - name: Publicera händelser säkert över en privat länk
           href: configure-private-endpoints.md
+        - name: Leverera händelser med hanterad identitet
+          href: managed-service-identity.md
+        - name: Leverera händelser på ett säkert sätt över en privat länk
+          href: consume-private-endpoints.md
         - name: Konfigurera IP-brandvägg
           href: configure-firewall.md
         - name: Skydda en webhook med Azure Active Directory
           href: secure-webhook-delivery.md
-        - name: 'Händelseleverans, hanterad identitet och privat länk'
-          href: managed-service-identity.md
     - name: Felsöka
       items:
+        - name: Felsöka Event Grid problem
+          href: troubleshoot-issues.md
         - name: Aktivera diagnostikloggar
           href: enable-diagnostic-logs-topic.md
         - name: Felsöka fel

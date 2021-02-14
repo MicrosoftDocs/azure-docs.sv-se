@@ -1,18 +1,17 @@
 ---
 title: Felsöka integration runtime med egen värd i Azure Data Factory
 description: Lär dig hur du felsöker problem med integration runtime med egen värd i Azure Data Factory.
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 3735d7b21faf62905ed4c06dbef80c9737e7329e
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376470"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Felsöka Integration Runtime (lokal installation)
 
@@ -83,8 +82,8 @@ Exempel scenario: det maximala värdet för samtidiga jobb är för närvarande 
 Gränsen för antalet samtidiga jobb beror på datorns logik kärna och minne. Försök att justera värdet nedåt till ett värde, till exempel 24, och Visa sedan resultatet.
 
 > [!TIP] 
-> - Om du vill veta mer om Logic Core-antal och fastställa din dators logiska kärn antal, se [fyra sätt att hitta antalet kärnor i din CPU i Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
-> - Om du vill veta hur du beräknar matematik. log går du till [logaritmen](https://www.rapidtables.com/calc/math/Log_Calculator.html).
+> -    Om du vill veta mer om Logic Core-antal och fastställa din dators logiska kärn antal, se [fyra sätt att hitta antalet kärnor i din CPU i Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> -    Om du vill veta hur du beräknar matematik. log går du till [logaritmen](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>SSL-certifikat med egen värd för IR-certifikat med hög tillgänglighet
