@@ -1,22 +1,18 @@
 ---
 title: Viktig information för gateway för datahantering
 description: Viktig information om Data Management Gateway Tory
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0538777cadf7935a6684932a17fadc10849518d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b5bf0c6d6996a67e8b0fec3ec51e31fef8eedf26
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001634"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363924"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Viktig information för gateway för datahantering
 > [!NOTE]
@@ -46,12 +42,12 @@ Det går inte att uppdatera viktig information här. Hämta senaste versions inf
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Funktioner
--   Du kan lägga till DNS-poster för att tillåta Service Bus snarare än att tillåta alla Azure IP-adresser från din brand vägg (om det behövs). Mer information finns här.
--   Nu kan du kopiera data till/från en enda Block-Blob upp till 4,75 TB, vilket är den högsta tillåtna storleken för Block-Blob. (den tidigare gränsen var 195 GB).
--   Fast: problem med slut på minne när flera små filer har zippats under kopierings aktiviteten.
--   Fixed: index out of Range-problem vid kopiering från dokument databas till SQL Server med idempotens-funktionen.
--   Fast: SQL Cleanup-skriptet fungerar inte med SQL Server från guiden Kopiera.
--   Fast: kolumn namn med blank steg i slutet fungerar inte i kopierings aktiviteten.
+-    Du kan lägga till DNS-poster för att tillåta Service Bus snarare än att tillåta alla Azure IP-adresser från din brand vägg (om det behövs). Mer information finns här.
+-    Nu kan du kopiera data till/från en enda Block-Blob upp till 4,75 TB, vilket är den högsta tillåtna storleken för Block-Blob. (den tidigare gränsen var 195 GB).
+-    Fast: problem med slut på minne när flera små filer har zippats under kopierings aktiviteten.
+-    Fixed: index out of Range-problem vid kopiering från dokument databas till SQL Server med idempotens-funktionen.
+-    Fast: SQL Cleanup-skriptet fungerar inte med SQL Server från guiden Kopiera.
+-    Fast: kolumn namn med blank steg i slutet fungerar inte i kopierings aktiviteten.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Funktioner

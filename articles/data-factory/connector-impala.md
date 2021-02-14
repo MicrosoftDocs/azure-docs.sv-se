@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Impala med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från Impala till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Data Factory-pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b70db03e03ce914ea1d81d94cd2803a36eccfc88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810ee757b70550c9dbeea708266b3fec48669571
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418226"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378578"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopiera data från Impala med hjälp av Azure Data Factory
 
@@ -35,7 +30,7 @@ Du kan kopiera data från Impala till alla mottagar data lager som stöds. En li
 
 Data Factory innehåller en inbyggd driv rutin som möjliggör anslutning. Därför behöver du inte installera en driv rutin manuellt för att använda den här anslutningen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -54,7 +49,7 @@ Följande egenskaper stöds för den länkade Impala-tjänsten.
 | typ | Egenskapen Type måste anges till **Impala**. | Ja |
 | värd | IP-adressen eller värd namnet för Impala-servern (det vill säga 192.168.222.160).  | Ja |
 | port | TCP-porten som Impala-servern använder för att lyssna efter klient anslutningar. Standardvärdet är 21050.  | Inga |
-| authenticationType | Autentiseringstypen som ska användas. <br/>Tillåtna värden är **Anonymous**, **SASLUsername**och **UsernameAndPassword**. | Ja |
+| authenticationType | Autentiseringstypen som ska användas. <br/>Tillåtna värden är **Anonymous**, **SASLUsername** och **UsernameAndPassword**. | Ja |
 | användarnamn | Det användar namn som används för att få åtkomst till Impala-servern. Standardvärdet är anonyma när du använder SASLUsername.  | Inga |
 | password | Det lösen ord som motsvarar användar namnet när du använder UsernameAndPassword. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Inga |
 | enableSsl | Anger om anslutningarna till servern krypteras med hjälp av TLS. Standardvärdet är **falskt**.  | Inga |

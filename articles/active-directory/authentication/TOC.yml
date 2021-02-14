@@ -154,6 +154,8 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Agentversionshistorik
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Använd ett tillfälligt åtkomst pass (förhands granskning)
+      href: howto-authentication-temporary-access-pass.md
     - name: Använd SMS-baserad autentisering
       href: howto-authentication-sms-signin.md
     - name: Använd e-postadress för inloggning

@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 0f9ef58fc9ad8c94e445638f98bcb57a19716ff6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d3af0d360ec15ae793f9487693d8b94be686a783
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366015"
+ms.locfileid: "100516115"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videor från Microsofts identitetsplattform
 
@@ -31,16 +31,16 @@ ___
 
 :::row:::
     :::column:::
+        <a href="https://www.youtube.com/watch?v=uDU1QTSw7Ps" target="_blank">Vad är Microsoft Identity Platform?</a> (14:54)
+    :::column-end:::
+    :::column:::
+        > [!Video https://www.youtube.com/embed/uDU1QTSw7Ps] 
+    :::column-end:::
+    :::column:::
         <a href="https://www.youtube.com/watch?v=tkQJSHFsduY" target="_blank">Grunderna för modern autentisering – Microsoft Identity Platform</a>(12:28)
     :::column-end:::
     :::column:::
         > [!Video https://www.youtube.com/embed/tkQJSHFsduY] 
-    :::column-end:::
-    :::column:::
-        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank">Modern autentisering: hur vi blev här – Microsoft Identity Platform</a>(15:47)
-    :::column-end:::
-    :::column:::
-        > [!Video https://www.youtube.com/embed/7_vxnHiUA1M]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -51,8 +51,10 @@ ___
         >[!Video https://www.youtube.com/embed/JpeMeTjQJ04]
     :::column-end:::
     :::column:::
+        <a href="https://www.youtube.com/watch?v=7_vxnHiUA1M" target="_blank">Modern autentisering: hur vi blev här – Microsoft Identity Platform</a>(15:47)
     :::column-end:::
     :::column:::
+        > [!Video https://www.youtube.com/embed/7_vxnHiUA1M]
     :::column-end:::
 :::row-end:::
 

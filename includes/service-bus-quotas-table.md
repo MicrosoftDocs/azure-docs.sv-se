@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 764d75872eb1bad0647235cd70f9984ebd7789bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 46e5400627e4d2896265ed95410c8afcb918043b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025725"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106283"
 ---
 I följande tabell visas kvot information som är speciell för Azure Service Bus meddelande tjänster. För information om priser och andra kvoter för Service Bus, se [Service Bus prissättning](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -24,7 +24,7 @@ I följande tabell visas kvot information som är speciell för Azure Service Bu
 | Köns-eller ämnes storlek |Entitet |Definieras när kön eller ämnet skapas. <br/><br/> Efterföljande inkommande meddelanden avvisas och ett undantag tas emot av den anropande koden. |1, 2, 3, 4 GB eller 5 GB.<br /><br />I Premium-SKU: n och standard-SKU: n med [partitionering](../articles/service-bus-messaging/service-bus-partitioning.md) aktive rad är den maximala kön eller ämnes storleken 80 GB. |
 | Antalet samtidiga anslutningar i ett namn område |Namnområde |Efterföljande begär Anden om ytterligare anslutningar avvisas och ett undantag tas emot av den anropande koden. REST-åtgärder räknas inte mot samtidiga TCP-anslutningar. |NET Messaging: 1 000.<br /><br />AMQP: 5 000. |
 | Antal samtidiga mottagnings begär Anden för en kö, ett ämne eller en prenumerations enhet |Entitet |Efterföljande mottagnings begär Anden avvisas och ett undantag tas emot av den anropande koden. Den här kvoten gäller för det kombinerade antalet samtidiga mottagnings åtgärder för alla prenumerationer på ett ämne. |5 000 |
-| Antal ämnen eller köer per namnrymd |Namnområde |Efterföljande begär Anden om att skapa ett nytt ämne eller en kö i namn området avvisas. Därför genereras ett fel meddelande om det konfigureras via [Azure Portal][Azure portal]. Om det anropas från hanterings-API: et tas ett undantag emot av den anropande koden. |10 000 för nivån Basic eller standard. Det totala antalet ämnen och köer i ett namn område måste vara mindre än eller lika med 10 000. <br/><br/>För Premium-nivån 1 000 per meddelande enhet (MU). Max gränsen är 4 000. |
+| Antal ämnen eller köer per namnrymd |Namnområde |Efterföljande begär Anden om att skapa ett nytt ämne eller en kö i namn området avvisas. Därför genereras ett fel meddelande om det konfigureras via [Azure Portal][Azure portal]. Om det anropas från hanterings-API: et tas ett undantag emot av den anropande koden. |10 000 för nivån Basic eller standard. Det totala antalet ämnen och köer i ett namn område måste vara mindre än eller lika med 10 000. <br/><br/>För Premium-nivån 1 000 per meddelande enhet (MU). |
 | Antal [partitionerade ämnen eller köer](../articles/service-bus-messaging/service-bus-partitioning.md) per namnrymd |Namnområde |Efterföljande begär Anden om att skapa ett nytt, partitionerat ämne eller kö i namn området avvisas. Därför genereras ett fel meddelande om det konfigureras via [Azure Portal][Azure portal]. Om det anropas från hanterings-API: t tas undantags **QuotaExceededException** emot av den anropande koden. |Nivåerna Basic och standard: 100.<br/><br/>Partitionerade entiteter stöds inte på [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) -nivån.<br/><br />Varje partitionerad kö eller ämne räknas mot kvoten på 1 000 entiteter per namnrymd. |
 | Maximal storlek för valfri sökväg för meddelande enhet: kö eller ämne |Entitet |- |260 tecken. |
 | Maximal storlek för alla meddelande enhets namn: namn område, prenumeration eller prenumerations regel |Entitet |- |50 tecken. |

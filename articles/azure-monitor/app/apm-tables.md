@@ -3,14 +3,14 @@ title: Azure Monitor Application Insights arbets yta-baserat resurs schema
 description: Lär dig mer om den nya tabell strukturen och schemat för Azure Monitor Application Insights arbets ytans baserade resurser.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: 8f0bee64d74cfd5b6abef5c918c023974fda3fcf
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e63d4a680ad76ccd6895aed53f3276a5775b1226
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931061"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385973"
 ---
-# <a name="workspace-based-resource-changes-preview"></a>Arbets ytans baserade resurs ändringar (för hands version)
+# <a name="workspace-based-resource-changes"></a>Arbets ytans-baserade resurs ändringar
 
 Innan du inför införandet av [arbets ytans baserade Application Insights resurser](create-workspace-resource.md), lagrades Application Insights data separat från andra loggdata i Azure Monitor. Båda baseras på Azure Datautforskaren och använder samma KQL (Kusto Query Language). Detta beskrivs i [loggarna i Azure Monitor](../platform/data-platform-logs.md).
 
@@ -18,7 +18,7 @@ Med arbets ytans baserade Application Insights resurs data lagras i en Log Analy
 
 ## <a name="table-structure"></a>Tabellstruktur
 
-| Äldre tabell namn | Nytt tabell namn | Beskrivning |
+| Äldre tabell namn | Nytt tabellnamn | Beskrivning |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Sammanfattnings data från tillgänglighets test.|
 | browserTimings | AppBrowserTimings | Data om klient prestanda, till exempel hur lång tid det tar att bearbeta inkommande data.|
@@ -64,7 +64,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |itemCount|int|ItemCount|int|
 |itemId|sträng|\_ItemId|sträng|
 |itemType|sträng|Typ|Sträng|
-|location|sträng|Plats|sträng|
+|location|sträng|Location|sträng|
 |meddelande|sträng|Meddelande|sträng|
 |name|sträng|Namn|sträng|
 |operation_Id|sträng|OperationId|sträng|
@@ -74,7 +74,7 @@ De flesta av kolumnerna har samma namn med olika Skift läge. Eftersom KQL är S
 |performanceBucket|sträng|PerformanceBucket|sträng|
 |sdkVersion|sträng|SdkVersion|sträng|
 |session_Id|sträng|SessionId|sträng|
-|size|real|Storlek|real|
+|ikoner|real|Storlek|real|
 |lyckades|sträng|Klart|Bool|
 |timestamp|datetime|TimeGenerated|datetime|
 |user_AccountId|sträng|UserAccountId|sträng|

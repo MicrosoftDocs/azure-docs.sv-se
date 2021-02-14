@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från ServiceNow
 description: Lär dig hur du kopierar data från ServiceNow till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: bc48f651a1adb099017e8f47d9fa6bcfa8078fa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7ebc422a9fd8503c5a3b004e1d06cb5ebfb987
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415339"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378459"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiera data från ServiceNow med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -120,12 +116,11 @@ Om du vill kopiera data från ServiceNow anger du käll typen i kopierings aktiv
 
 Tänk på följande när du anger schema och kolumn för ServiceNow i Query och **se [prestanda tips](#performance-tips) för indirekt för kopierings prestanda**.
 
-- **Schema:** ange schemat som `Actual` eller `Display` i ServiceNow-frågan, som du kan titta på som parametern till `sysparm_display_value` true eller false när du anropar [ServiceNow RESTful-API: er](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Schema:** ange schemat som `Actual` eller `Display` i ServiceNow-frågan, som du kan titta på som parametern till `sysparm_display_value` true eller false när du anropar [ServiceNow RESTful-API: er](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
 - **Kolumn:** kolumn namnet för det faktiska värdet under `Actual` schemat är `[column name]_value` , men för visnings värde under `Display` schema är `[column name]_display_value` . Observera att kolumn namnet måste mappas till det schema som används i frågan.
 
 **Exempel fråga:** 
- `SELECT col_value FROM Actual.alm_asset` ELLER 
-`SELECT col_display_value FROM Display.alm_asset`
+ `SELECT col_value FROM Actual.alm_asset` ELLER`SELECT col_display_value FROM Display.alm_asset`
 
 **Exempel:**
 

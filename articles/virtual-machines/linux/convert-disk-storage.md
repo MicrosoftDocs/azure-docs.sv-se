@@ -1,26 +1,26 @@
 ---
-title: Konvertera Managed disks Storage mellan standard och Premium SSD
-description: Så här konverterar du Azure Managed disks Storage från standard till Premium eller Premium till standard med hjälp av Azure CLI.
+title: Konvertera Managed disks Storage mellan olika disk typer med hjälp av Azure CLI
+description: Så här konverterar du Azure Managed disks mellan olika disk typer med hjälp av Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 07/12/2018
-ms.author: rogarana
+ms.date: 02/13/2021
+ms.author: albecker
 ms.subservice: disks
-ms.openlocfilehash: 10674d15a7515b01b0df6cf37bce89f153cb9b0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec6d5b10b4c2336ba7fd221b43a7dbf43ed5cee1
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870693"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516829"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Konvertera Azure Managed disks Storage från standard till Premium eller Premium till standard
 
-Det finns fyra disk typer av Azure Managed disks: Azure Ultra disks, Premium SSD, standard SSD och standard-HDD. Du kan växla mellan de tre GA disk typerna (Premium SSD, standard SSD och standard-HDD) utifrån dina prestanda behov. Du kan inte byta från eller till en Ultra disk, du måste distribuera en ny.
+Det finns fyra disk typer av Azure Managed disks: Azure Ultra disks, Premium SSD, standard SSD och standard-HDD. Du kan växla mellan Premium SSD, standard SSD och standard-HDD baserat på dina prestanda behov. Du kan inte byta från eller till en Ultra disk, du måste distribuera en ny.
 
 Den här funktionen stöds inte för ohanterade diskar. Men du kan enkelt [konvertera en ohanterad disk till en hanterad disk](convert-unmanaged-to-managed-disks.md) för att kunna växla mellan disk typer.
 
-Den här artikeln visar hur du konverterar Managed disks från standard till Premium eller Premium till standard med hjälp av Azure CLI. Information om hur du installerar eller uppgraderar verktyget finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
+Den här artikeln visar hur du konverterar hanterade diskar från en disk typ till en annan med hjälp av Azure CLI. Information om hur du installerar eller uppgraderar verktyget finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -28,9 +28,9 @@ Den här artikeln visar hur du konverterar Managed disks från standard till Pre
 * För ohanterade diskar måste du först [konvertera till Managed disks](convert-unmanaged-to-managed-disks.md) så att du kan växla mellan lagrings alternativen.
 
 
-## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Växla alla hanterade diskar för en virtuell dator mellan Premium och standard
+## <a name="switch-all-managed-disks-of-a-vm-between-from-one-account-to-another"></a>Växla alla hanterade diskar för en virtuell dator mellan från ett konto till ett annat
 
-I det här exemplet visas hur du konverterar alla diskar från standard till Premium Storage eller från Premium till standard lagring. Om du vill använda Premium Managed disks måste den virtuella datorn använda en [VM-storlek](../sizes.md) som har stöd för Premium Storage. Det här exemplet växlar också till en storlek som har stöd för Premium Storage.
+Det här exemplet visar hur du konverterar alla diskar i en virtuell dator till Premium Storage. Men genom att ändra SKU-variabeln i det här exemplet kan du konvertera den virtuella datorns disk typer till standard SSD eller standard-HDD. Observera att om du använder Premium Managed disks måste den virtuella datorn använda en [VM-storlek](../sizes.md) som har stöd för Premium Storage. Det här exemplet växlar också till en storlek som har stöd för Premium Storage.
 
  ```azurecli
 
@@ -44,7 +44,7 @@ vmName='yourVM'
 #Required only if converting from Standard to Premium
 size='Standard_DS2_v2'
 
-#Choose between Standard_LRS and Premium_LRS based on your scenario
+#Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario
 sku='Premium_LRS'
 
 #Deallocate the VM before changing the size of the VM
@@ -65,9 +65,9 @@ az vm show -n $vmName -g $rgName --query storageProfile.osDisk.managedDisk -o ts
 az vm start --name $vmName --resource-group $rgName
 
 ```
-## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Växla mellan de enskilda hanterade diskarna mellan standard och Premium
+## <a name="switch-individual-managed-disks-from-one-disk-type-to-another"></a>Växla enskilda hanterade diskar från en disktyp till en annan
 
-För din arbets belastning för utveckling/testning kanske du vill ha en blandning av standard-och Premium-diskar för att minska kostnaderna. Du kan välja att bara uppgradera de diskar som behöver bättre prestanda. Det här exemplet visar hur du konverterar en enskild virtuell dator disk från standard till Premium Storage eller från Premium till standard lagring. Om du vill använda Premium Managed disks måste den virtuella datorn använda en [VM-storlek](../sizes.md) som har stöd för Premium Storage. Det här exemplet växlar också till en storlek som har stöd för Premium Storage.
+För din arbets belastning för utveckling/testning kanske du vill ha en blandning av standard-och Premium-diskar för att minska kostnaderna. Du kan välja att bara uppgradera de diskar som behöver bättre prestanda. Det här exemplet visar hur du konverterar en enskild virtuell dator disk från standard till Premium Storage. Men genom att ändra SKU-variabeln i det här exemplet kan du konvertera den virtuella datorns disk typer till standard SSD eller standard-HDD. Om du vill använda Premium Managed disks måste den virtuella datorn använda en [VM-storlek](../sizes.md) som har stöd för Premium Storage. Det här exemplet växlar också till en storlek som har stöd för Premium Storage.
 
  ```azurecli
 
@@ -81,7 +81,7 @@ diskName='yourManagedDiskName'
 #Required only if converting from Standard to Premium
 size='Standard_DS2_v2'
 
-#Choose between Standard_LRS and Premium_LRS based on your scenario
+#Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario
 sku='Premium_LRS'
 
 #Get the parent VM Id 
@@ -100,34 +100,7 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="switch-managed-disks-between-standard-hdd-and-standard-ssd"></a>Växla Managed disks mellan Standard HDD och Standard SSD
-
-Det här exemplet visar hur du konverterar en enskild virtuell dator disk från Standard HDD till Standard SSD eller från Standard SSD till Standard HDD.
-
- ```azurecli
-
-#resource group that contains the managed disk
-rgName='yourResourceGroup'
-
-#Name of your managed disk
-diskName='yourManagedDiskName'
-
-#Choose between Standard_LRS and StandardSSD_LRS based on your scenario
-sku='StandardSSD_LRS'
-
-#Get the parent VM ID 
-vmId=$(az disk show --name $diskName --resource-group $rgName --query managedBy --output tsv)
-
-#Deallocate the VM before changing the disk type
-az vm deallocate --ids $vmId 
-
-# Update the SKU
-az disk update --sku $sku --name $diskName --resource-group $rgName 
-
-az vm start --ids $vmId 
-```
-
-## <a name="switch-managed-disks-between-standard-and-premium-in-azure-portal"></a>Växla Managed disks mellan standard och Premium i Azure Portal
+## <a name="switch-managed-disks-from-one-disk-type-to-another"></a>Växla Managed disks från en typ av disk till en annan
 
 Gör så här:
 
@@ -137,8 +110,8 @@ Gör så här:
 4. I fönstret för den virtuella datorn väljer du **diskar** på menyn.
 5. Välj den disk som du vill konvertera.
 6. Välj **konfiguration** på menyn.
-7. Ändra **konto typen** från **standard HDD** till **Premium SSD** eller från **Premium SSD** till **standard HDD**.
-8. Välj **Spara**och Stäng disk fönstret.
+7. Ändra **konto typen** från den ursprungliga disk typen till den önskade disk typen.
+8. Välj **Spara** och Stäng disk fönstret.
 
 Uppdatering av disk typen är omedelbar. Du kan starta om den virtuella datorn efter konverteringen.
 

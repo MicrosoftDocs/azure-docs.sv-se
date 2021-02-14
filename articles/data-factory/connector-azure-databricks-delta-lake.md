@@ -1,22 +1,18 @@
 ---
 title: Kopiera data till och från Azure Databricks delta Lake
 description: Lär dig hur du kopierar data till och från Azure Databricks delta sjö genom att använda en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221167"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364247"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopiera data till och från Azure Databricks delta Lake med hjälp av Azure Data Factory
 
@@ -151,8 +147,8 @@ Om du vill kopiera data från Azure Databricks delta Lake stöds följande egens
 | typ                         | Typ egenskapen för kopierings aktivitets källan måste anges till **AzureDatabricksDeltaLakeSource**. | Ja      |
 | DocumentDB          | Ange SQL-frågan för att läsa data. För tids resans kontroll följer du mönstret nedan:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Inga       |
 | exportSettings | Avancerade inställningar som används för att hämta data från delta tabell. | Inga       |
-| ***Under `exportSettings` :** _ |  |  |
-| typ | Typ av export kommando, anges till _ * AzureDatabricksDeltaLakeExportCommand * *. | Ja |
+| ***Under `exportSettings` :*** |  |  |
+| typ | Typ av export kommando, anges till **AzureDatabricksDeltaLakeExportCommand**. | Ja |
 | dateFormat | Formatera datum typ till sträng med datum format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd` . | Inga |
 | timestampFormat | Formatera timestamp-typ till en sträng med ett tidsstämpel-format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Inga |
 
@@ -265,8 +261,8 @@ Om du vill kopiera data till Azure Databricks delta Lake stöds följande egensk
 | typ          | Egenskapen Type för kopierings aktivitetens Sink, anges till **AzureDatabricksDeltaLakeSink**. | Ja      |
 | preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan data skrivs till Databricks delta-tabellen i varje körning. Du kan använda den här egenskapen för att rensa förinstallerade data eller lägga till en Trunkerande tabell eller vakuum-instruktion. | Inga       |
 | importSettings | Avancerade inställningar som används för att skriva data till en delta tabell. | Inga |
-| **_Under `importSettings` :_* _ |                                                              |  |
-| typ | Typ av import kommando, anges till _ * AzureDatabricksDeltaLakeImportCommand * *. | Ja |
+| ***Under `importSettings` :*** |                                                              |  |
+| typ | Typ av import kommando, anges till **AzureDatabricksDeltaLakeImportCommand**. | Ja |
 | dateFormat | Formatera strängen till Date-typ med ett datum format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd` . | Inga |
 | timestampFormat | Formatera sträng till timestamp-typ med ett tidsstämpel-format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Inga |
 

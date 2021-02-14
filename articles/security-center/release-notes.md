@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fe031fa6de86b8059ba175fc4e1df6385ca7e796
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d40d6107d3eee4b45f2184a61b1cdfc99559e9c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551034"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379050"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -39,6 +39,7 @@ Uppdateringar i februari inkluderar:
 - [Direkt länk till princip från rekommendations informations sida](#direct-link-to-policy-from-recommendation-details-page)
 - [Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [Förbättringar av till gångs inventerings Sidan](#asset-inventory-page-enhancements)
 
 ### <a name="kubernetes-workload-protection-recommendations-released-for-general-availability-ga"></a>Kubernetes-rekommendationer för arbets belastnings skydd som har släppts för allmän tillgänglighet (GA)
 
@@ -70,16 +71,32 @@ Om du granskar listan över rekommendationer i [referens guiden för säkerhets 
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Rekommendationen om SQL data klassificering påverkar inte längre dina säkra Poäng
-
 Rekommendations **känsliga data i SQL-databaserna ska klassificeras** inte längre påverkar dina säkra poäng. Detta är den enda rekommendationen i säkerhets kontrollen **tillämpa data klassificering** , så att kontrollen nu har ett säkert Poäng värde på 0.
 
 
 ### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>Automatisering av arbets flöden kan utlösas genom ändringar av regelefterlevnad (för hands version)
-
 Vi har lagt till en tredje datatyp till Utlösar alternativen för arbets flödes automatiseringar: ändringar i regelefterlevnad.
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Använda ändringar i regelefterlevnad för att utlösa en arbets flödes automatisering" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
+
+### <a name="asset-inventory-page-enhancements"></a>Förbättringar av till gångs inventerings Sidan
+Security Center sidan till gångs lager har förbättrats på följande sätt:
+
+- Sammanfattningar överst på sidan innehåller nu **oregistrerade prenumerationer** som visar antalet prenumerationer utan Security Center aktiverat.
+
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="Antal oregistrerade prenumerationer i sammanfattningarna överst på till gångs inventerings Sidan":::
+
+- Filter har utökats och förbättrats för att inkludera:
+    - **Antal** – varje filter visar antalet resurser som uppfyller kriterierna för varje kategori
+
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Antal i filtren på sidan till gångs lager i Azure Security Center":::
+
+    - **Innehåller undantags filter** (valfritt) – begränsa resultaten till resurser som har/inte har fått undantag. Filtret visas inte som standard, men det är tillgängligt från knappen **Lägg till filter** .
+
+        :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="Om du lägger till filtret innehåller undantag i Azure Security Center sidan till gångs inventering":::
+
+Lär dig mer om hur du [utforskar och hanterar dina resurser med till gångs inventering](asset-inventory.md).
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -630,7 +647,7 @@ Security Centers instrument panel för kontroll av efterlevnad ger insikter om d
 
 Instrument panelen innehåller en standard uppsättning regler. Om någon av de angivna standarderna inte är relevant för din organisation, är det nu en enkel process att ta bort dem från användar gränssnittet för en prenumeration. Standarder kan bara tas bort på *prenumerations* nivå. inte hanterings gruppens omfattning.
 
-Läs mer i [ta bort en standard från din instrument panel](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
+Läs mer i [ta bort en standard från din instrument panel](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/securityStatuses-tabellen har tagits bort från Azure Resource Graph (ARG)

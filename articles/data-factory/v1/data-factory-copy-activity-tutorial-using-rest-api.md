@@ -1,24 +1,18 @@
 ---
 title: 'Självstudie: använda REST API för att skapa en Azure Data Factory pipeline '
 description: I den här självstudien använder du REST API för att skapa en Azure Data Factory-pipeline med en kopierings aktivitet för att kopiera data från en Azure Blob Storage till Azure SQL Database.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7488834252dcd4e231c2d91a1435838befe7b1d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053811"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377031"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Självstudier: Använd REST API för att skapa ett Azure Data Factory-pipeline för att kopiera data 
 > [!div class="op_single_selector"]
@@ -46,7 +40,7 @@ En pipeline kan ha fler än en aktivitet. Du kan länka två aktiviteter (köra 
 >  
 > Datapipelinen i den här självstudien kopierar data från ett källdatalager till ett måldatalager. Om du vill se en självstudie som visar hur du omvandlar data med Azure Data Factory går du till [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Självstudie: Bygg en pipeline för att omvandla data med Hadoop-kluster).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -70,7 +64,7 @@ En pipeline kan ha fler än en aktivitet. Du kan länka två aktiviteter (köra 
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt ** &lt; NameOfAzureSubscription** &gt; med namnet på din Azure-prenumeration. 
+  3. Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt **&lt; NameOfAzureSubscription** &gt; med namnet på din Azure-prenumeration. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -121,7 +115,7 @@ Mer information om egenskaper som JSON finns i [Azure Storage länkade tjänster
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice.json
 > [!IMPORTANT]
-> Ersätt **servername**, **databasename**, **username**och **Password** med namnet på servern, namnet på SQL-databasen, användar kontot och lösen ordet för kontot.  
+> Ersätt **servername**, **databasename**, **username** och **Password** med namnet på servern, namnet på SQL-databasen, användar kontot och lösen ordet för kontot.  
 > 
 >
 
@@ -283,11 +277,11 @@ Observera följande punkter:
 - Indata för aktiviteten är inställd på **AzureBlobInput** och utdata för aktiviteten är inställd på **AzureSqlOutput**. 
 - I avsnittet för **typeProperties** har **BlobSource** angetts som källtyp och **SqlSink** har angetts som mottagartyp. En fullständig lista över datakällor som stöds av kopieringsaktiviteten som källor och mottagare finns i [Datalager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Klicka på länken i tabellen om du vill veta hur du använder ett visst datalager som stöds som källa/mottagare.  
  
-Ersätt värdet i **start**egenskapen med den aktuella dagen och **slut**värdet med nästa dag. Du kan ange endast datumdelen och hoppa över tidsvärdet. Till exempel ”2017-02-03” som motsvarar ”2017-02-03T00:00:00Z”
+Ersätt värdet i **start** egenskapen med den aktuella dagen och **slut** värdet med nästa dag. Du kan ange endast datumdelen och hoppa över tidsvärdet. Till exempel ”2017-02-03” som motsvarar ”2017-02-03T00:00:00Z”
  
 Både start- och slutdatum måste vara i [ISO-format](https://en.wikipedia.org/wiki/ISO_8601). Exempel: 2016-10-14T16:32:41Z. **Sluttiden** är valfri, men vi använder den i den här självstudiekursen. 
  
-Om du inte anger värdet för **slut** egenskapen, beräknas det som "**Start + 48 timmar**". Om du vill köra pipelinen på obestämd tid, anger du **9999-09-09** som värde för **slut**egenskapen.
+Om du inte anger värdet för **slut** egenskapen, beräknas det som "**Start + 48 timmar**". Om du vill köra pipelinen på obestämd tid, anger du **9999-09-09** som värde för **slut** egenskapen.
  
 I det föregående exemplet finns det 24 datasektorer eftersom varje datasektor skapas varje timme.
 
@@ -351,7 +345,7 @@ I det här steget ska du skapa en Azure Data Factory med namnet **ADFCopyTutoria
 
 Observera följande punkter:
 
-* Namnet på Azure Data Factory måste vara globalt unikt. Om felet **Datafabriksnamnet ”ADFCopyTutorialDF” är inte tillgängligt** returneras går du igenom följande steg:  
+* Namnet på Azure Data Factory måste vara globalt unikt. Om du ser felet i resultatet: **data fabriks namnet "ADFCopyTutorialDF" är inte tillgängligt**, utför följande steg:  
   
   1. Ändra namnet (till exempel dittnamnADFCopyTutorialDF) i filen **datafactory.json**.
   2. I det första kommandot där variabeln **$cmd** tilldelas ett värde ersätter du ADFCopyTutorialDF med det nya namnet och kör kommandot. 

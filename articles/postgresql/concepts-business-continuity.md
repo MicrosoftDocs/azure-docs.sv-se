@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: f8d8547c2d4900e6258f7360c50d8dfc17157832
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423053"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517252"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Översikt över affärs kontinuitet med Azure Database for PostgreSQL-enskild server
 
@@ -21,7 +21,7 @@ Den här översikten beskriver de funktioner som Azure Database for PostgreSQL t
 
 När du utvecklar din verksamhets kontinuitets plan måste du förstå hur lång tid det tar innan programmet återställs fullständigt efter störnings händelsen – detta är ditt återställnings tids mål (RTO). Du måste också förstå den maximala mängden senaste data uppdateringar (tidsintervall) som programmet kan tolerera vid återställning efter en störnings händelse – detta är återställnings punkt målet.
 
-Azure Database for PostgreSQL tillhandahåller funktioner för verksamhets kontinuitet som innehåller geo-redundanta säkerhets kopieringar med möjligheten att initiera geo-återställning och distribuera Läs repliker i en annan region. Var och en har olika egenskaper för återställnings tiden och eventuell data förlust. Med funktionen [geo-återställning](concepts-backup.md) skapas en ny server med hjälp av de säkerhetskopierade data som replikeras från en annan region. Den totala tid det tar att återställa och återställa beror på databasens storlek och mängden loggar som ska återställas. Den totala tiden för att upprätta servern varierar från några minuter till några timmar. Med [Läs repliker](concepts-read-replicas.md)strömmas transaktions loggar från den primära asynkront till repliken. Om det uppstår ett avbrott i den primära databasen på grund av ett fel på zon nivå eller ett fel på regions nivå, är det en kortare RTO och minskad data förlust.
+Azure Database for PostgreSQL tillhandahåller funktioner för verksamhetskontinuitet som innefattar georedundanta säkerhetskopieringar, med möjlighet att initiera geoåterställning och distribuera skrivskyddade repliker i en annan region. Var och en har olika egenskaper för återställnings tiden och eventuell data förlust. Med funktionen [geo-återställning](concepts-backup.md) skapas en ny server med hjälp av de säkerhetskopierade data som replikeras från en annan region. Den totala tid det tar att återställa och återställa beror på databasens storlek och mängden loggar som ska återställas. Den totala tiden för att upprätta servern varierar från några minuter till några timmar. Med [Läs repliker](concepts-read-replicas.md)strömmas transaktions loggar från den primära asynkront till repliken. Om det uppstår ett avbrott i den primära databasen på grund av ett fel på zon nivå eller ett fel på regions nivå, är det en kortare RTO och minskad data förlust.
 
 > [!NOTE]
 > Fördröjningen mellan den primära och repliken beror på svars tiden mellan platserna, mängden data som ska överföras och viktigast av den primära serverns Skriv arbets belastning. Tung Skriv arbets belastningar kan generera betydande fördröjning. 
@@ -32,7 +32,7 @@ I följande tabell jämförs RTO och återställnings punkt i ett **typiskt arbe
 
 | **Kapacitet** | **Basic** | **Generell användning** | **Minnesoptimerad** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Återställning till tidpunkt från säkerhetskopia | Alla återställnings punkter inom kvarhållningsperioden | Alla återställnings punkter inom kvarhållningsperioden | Alla återställnings punkter inom kvarhållningsperioden |
+| Återställning till tidpunkt från säkerhetskopia | Alla återställnings punkter inom kvarhållningsperioden <br/> RTO – varierar <br/>Återställnings < 15 min| Alla återställnings punkter inom kvarhållningsperioden <br/> RTO – varierar <br/>Återställnings < 15 min | Alla återställnings punkter inom kvarhållningsperioden <br/> RTO – varierar <br/>Återställnings < 15 min |
 | Geo-återställning från geo-replikerade säkerhets kopieringar | Stöds inte | RTO – varierar <br/>Återställnings < 1 h | RTO – varierar <br/>Återställnings < 1 h |
 | Skrivskyddade repliker | RTO-minuter * <br/>Återställnings < 5 min * | RTO-minuter * <br/>Återställnings < 5 min *| RTO-minuter * <br/>Återställnings < 5 min *|
 

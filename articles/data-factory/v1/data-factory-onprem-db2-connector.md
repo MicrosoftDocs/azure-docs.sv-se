@@ -1,23 +1,18 @@
 ---
 title: Flytta data från DB2 med hjälp av Azure Data Factory
 description: Lär dig hur du flyttar data från en lokal DB2-databas med hjälp av Azure Data Factory kopierings aktivitet
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001073"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387367"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Flytta data från DB2 med Azure Data Factory kopierings aktivitet
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -80,14 +75,14 @@ I följande tabell visas de JSON-egenskaper som är speciella för en DB2-länka
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| **bastyp** |Den här egenskapen måste anges till **OnPremisesDb2**. |Yes |
-| **servernamn** |Namnet på DB2-servern. |Yes |
-| **databas** |Namnet på DB2-databasen. |Yes |
-| **schema** |Namnet på schemat i DB2-databasen. Den här egenskapen är Skift läges känslig. |No |
-| **authenticationType** |Den typ av autentisering som används för att ansluta till DB2-databasen. Möjliga värden är: Anonym, Basic och Windows. |Yes |
-| **användar** |Namnet på användar kontot om du använder Basic-eller Windows-autentisering. |No |
-| **lösenord** |Lösen ordet för användar kontot. |No |
-| **gatewayName** |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala DB2-databasen. |Yes |
+| **bastyp** |Den här egenskapen måste anges till **OnPremisesDb2**. |Ja |
+| **servernamn** |Namnet på DB2-servern. |Ja |
+| **databas** |Namnet på DB2-databasen. |Ja |
+| **schema** |Namnet på schemat i DB2-databasen. Den här egenskapen är Skift läges känslig. |Inga |
+| **authenticationType** |Den typ av autentisering som används för att ansluta till DB2-databasen. Möjliga värden är: Anonym, Basic och Windows. |Ja |
+| **användar** |Namnet på användar kontot om du använder Basic-eller Windows-autentisering. |Inga |
+| **lösenord** |Lösen ordet för användar kontot. |Inga |
+| **gatewayName** |Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala DB2-databasen. |Ja |
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
 En lista över de avsnitt och egenskaper som är tillgängliga för att definiera data uppsättningar finns i artikeln [skapa data uppsättningar](data-factory-create-datasets.md) . Avsnitt, till exempel **struktur**, **tillgänglighet** och **principen** för en data uppsättnings-JSON, liknar alla typer av data uppsättningar (Azure SQL, Azure Blob Storage, Azure Table Storage och så vidare).
@@ -310,12 +305,12 @@ Följande mappningar används när kopierings aktiviteten konverterar data från
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Verkligen |Enskilt |
+| Verkligen |Enkel |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeriskt |Decimal |
+| Numerisk |Decimal |
 | Datum |DateTime |
 | Tid |TimeSpan |
 | Timestamp |DateTime |
@@ -336,12 +331,12 @@ Följande mappningar används när kopierings aktiviteten konverterar data från
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Verkligen |Enskilt |
+| Verkligen |Enkel |
 | Double |Double |
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| Numeriskt |Decimal |
+| Numerisk |Decimal |
 | Datum |DateTime |
 | Tid |TimeSpan |
 | Timestamp |DateTime |

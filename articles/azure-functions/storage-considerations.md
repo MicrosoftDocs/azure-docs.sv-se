@@ -3,12 +3,12 @@ title: Lagrings överväganden för Azure Functions
 description: Läs mer om lagrings kraven för Azure Functions och om kryptering av lagrade data.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936166"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517271"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Lagrings överväganden för Azure Functions
 
@@ -27,7 +27,7 @@ Azure Functions kräver ett Azure Storage-konto när du skapar en Function App-i
 
 ## <a name="storage-account-requirements"></a>Krav för lagringskonto
 
-När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Detta beror på att funktioner förlitar sig på Azure Storage för åtgärder som att hantera utlösare och loggning av funktions körningar. Vissa lagrings konton stöder inte köer och tabeller. Dessa konton inkluderar enbart BLOB-lagrings konton, Azure Premium Storage och allmänna lagrings konton med ZRS-replikering.
+När du skapar en Function-app måste du skapa eller länka till ett allmänt Azure Storage konto som har stöd för BLOB-, Queue-och table-lagring. Detta beror på att funktioner förlitar sig på Azure Storage för åtgärder som att hantera utlösare och loggning av funktions körningar. Vissa lagrings konton stöder inte köer och tabeller. Dessa konton inkluderar enbart BLOB-lagrings konton och Azure Premium Storage.
 
 Mer information om lagringskontotyper finns i [introduktionen till Azure Storage Services](../storage/common/storage-introduction.md#core-storage-services). 
 

@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881931"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378306"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -19,7 +19,7 @@ App-inställningar i en Function-app innehåller globala konfigurations alternat
 Det finns andra globala konfigurations alternativ i [host.jspå](functions-host-json.md) filen och i [local.settings.js](functions-run-local.md#local-settings-file) filen.
 
 > [!NOTE]  
-> Du kan använda program inställningarna för att åsidosätta host.jsatt ange värden utan att behöva ändra host.jspå själva filen. Detta är användbart för scenarier där du behöver konfigurera eller ändra vissa host.jspå Inställningar för en speciell miljö. Detta gör det också möjligt att ändra host.jspå inställningar utan att behöva publicera projektet på annat sätt. Mer information finns i [ referens artikelnhost.js](functions-host-json.md#override-hostjson-values).  
+> Du kan använda program inställningarna för att åsidosätta host.jsatt ange värden utan att behöva ändra host.jspå själva filen. Detta är användbart för scenarier där du behöver konfigurera eller ändra vissa host.jspå Inställningar för en speciell miljö. Detta gör det också möjligt att ändra host.jspå inställningar utan att behöva publicera projektet på annat sätt. Mer information finns i [ referens artikelnhost.js](functions-host-json.md#override-hostjson-values). Ändringar av programmets funktions inställningar kräver att din Function-app startas om.
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -213,7 +213,7 @@ Värdet för den här inställningen indikerar en anpassad URL för paket index 
 
 Mer information finns i [anpassade beroenden](functions-reference-python.md#remote-build-with-extra-index-url) i python Developer reference.
 
-## <a name="scale_controller_logging_enable"></a>\_ \_ Aktivera loggning av skalnings styrenhet \_
+## <a name="scale_controller_logging_enabled"></a>\_ \_ Aktivera loggning av skalnings styrenhet \_
 
 _Den här inställningen är för närvarande en för hands version._  
 
@@ -221,7 +221,7 @@ Den här inställningen styr loggning från den Azure Functions skalnings styren
 
 |Nyckel|Exempelvärde|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights: utförlig|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights: utförlig|
 
 Värdet för den här nyckeln anges i formatet `<DESTINATION>:<VERBOSITY>` , som definieras enligt följande:
 
@@ -235,7 +235,7 @@ Anslutnings sträng för lagrings kontot där programmets kod och konfiguration 
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [namn]; AccountKey = [nyckel]|
 
-Används endast när du distribuerar till användnings-eller Premium-planer som körs i Windows. Stöds inte för Linux. Om du ändrar eller tar bort den här inställningen kan det leda till att Function-appen inte startar. Mer information finns i [den här fel söknings artikeln](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
+Används endast vid distribution till en Premium-plan eller till en förbruknings plan som körs i Windows. Stöds inte för förbruknings planer som kör Linux. Om du ändrar eller tar bort den här inställningen kan det leda till att Function-appen inte startar. Mer information finns i [den här fel söknings artikeln](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
 
 ## <a name="website_contentovervnet"></a>WEBBPLATS \_ CONTENTOVERVNET
 
@@ -253,7 +253,7 @@ Fil Sök vägen till programmets kod och konfiguration i en händelse driven ska
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-Används endast av Function-appar för användnings-eller Premium-planer som körs i Windows. Stöds inte för Linux. Om du ändrar eller tar bort den här inställningen kan det leda till att Function-appen inte startar. Mer information finns i [den här fel söknings artikeln](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+Används endast vid distribution till en Premium-plan eller till en förbruknings plan som körs i Windows. Stöds inte för förbruknings planer som kör Linux. Om du ändrar eller tar bort den här inställningen kan det leda till att Function-appen inte startar. Mer information finns i [den här fel söknings artikeln](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
 När du använder en Azure Resource Manager för att skapa en Function-app under distributionen ska du inte ta med WEBSITE_CONTENTSHARE i mallen. Den här program inställningen genereras under distributionen. Läs mer i [Automatisera resurs distribution för din Function-app](functions-infrastructure-as-code.md#windows).   
 

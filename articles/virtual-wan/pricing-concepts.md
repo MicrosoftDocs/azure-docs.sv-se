@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905544"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517696"
 ---
 # <a name="about-virtual-wan-pricing"></a>Om priser för virtuella WAN-nätverk
 
@@ -23,8 +23,7 @@ Azure Virtual WAN ger flera nätverks-och säkerhets tjänster tillsammans i ett
 Varje tjänst i det virtuella WAN-nätverket priss ätts. Därför är det inte möjligt att föreslå ett enskilt pris på virtuellt WAN. [Pris Kalkylatorn i Azure](https://azure.microsoft.com/pricing/calculator/) är en mekanism för att härleda kostnaden, som baseras på de tjänster som tillhandahålls i ett virtuellt WAN. I den här artikeln beskrivs vanliga frågor om virtuella WAN-priser.
 
 >[!NOTE]
->Aktuell pris information finns i [priser för virtuella WAN-nätverk](https://azure.microsoft.com/pricing/details/virtual-wan/).
->
+>Aktuell pris information finns i [priser för virtuella WAN-nätverk](https://azure.microsoft.com/pricing/details/virtual-wan/). Avgifter mellan hubb (hubb till hubb) visas inte på pris sidan för virtuella WAN-nätverk eftersom det är underkastat Inter-Region (Intra/interkontinental) avgifter för [Azure data överföring](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>Vanliga pris frågor
 

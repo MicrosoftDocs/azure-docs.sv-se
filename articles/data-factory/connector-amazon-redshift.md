@@ -1,21 +1,17 @@
 ---
 title: Kopiera data från Amazon RedShift
 description: Läs om hur du kopierar data från Amazon RedShift till mottagar data lager som stöds med hjälp av Azure Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: b17c567b2e83bef3c37c8f1272091021a1943b15
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364266"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopiera data från Amazon RedShift med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -57,13 +53,13 @@ Följande egenskaper stöds för Amazon RedShift-länkade tjänst:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till: **AmazonRedshift** | Yes |
-| server |IP-adressen eller värd namnet för Amazon RedShift-servern. |Yes |
+| typ | Egenskapen Type måste anges till: **AmazonRedshift** | Ja |
+| server |IP-adressen eller värd namnet för Amazon RedShift-servern. |Ja |
 | port |Numret på den TCP-port som Amazon RedShift-servern använder för att lyssna efter klient anslutningar. |Nej, standard är 5439 |
-| databas |Namnet på Amazon RedShift-databasen. |Yes |
-| användarnamn |Namnet på den användare som har åtkomst till databasen. |Yes |
-| password |Lösen ord för användar kontot. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |No |
+| databas |Namnet på Amazon RedShift-databasen. |Ja |
+| användarnamn |Namnet på den användare som har åtkomst till databasen. |Ja |
+| password |Lösen ord för användar kontot. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 **Exempel:**
 
@@ -99,7 +95,7 @@ Följande egenskaper stöds för att kopiera data från Amazon RedShift:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till: **AmazonRedshiftTable** | Yes |
+| typ | Data uppsättningens typ-egenskap måste anges till: **AmazonRedshiftTable** | Ja |
 | schema | Schemats namn. |Nej (om "fråga" i aktivitets källan har angetts)  |
 | tabell | Tabellens namn. |Nej (om "fråga" i aktivitets källan har angetts)  |
 | tableName | Namnet på tabellen med schemat. Den här egenskapen stöds för bakåtkompatibilitet. Använd `schema` och `table` för nya arbets belastningar. | Nej (om "fråga" i aktivitets källan har angetts) |
@@ -134,9 +130,9 @@ Om du vill kopiera data från Amazon RedShift anger du käll typen i kopierings 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **AmazonRedshiftSource** | Yes |
+| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **AmazonRedshiftSource** | Ja |
 | DocumentDB |Använd den anpassade frågan för att läsa data. Exempel: Välj * från tabellen tabell. |Nej (om "tableName" i data uppsättningen har angetts) |
-| redshiftUnloadSettings | Egenskaps grupp när Amazon RedShift tas bort från minnet. | No |
+| redshiftUnloadSettings | Egenskaps grupp när Amazon RedShift tas bort från minnet. | Inga |
 | s3LinkedServiceName | Avser en Amazon S3 som ska användas som en tillfällig lagring genom att ange ett länkat tjänst namn av typen "AmazonS3". | Ja om du använder inaktivera |
 | bucketName | Ange S3-Bucket för att lagra interims data. Om den inte anges genererar Data Factory tjänsten automatiskt.  | Ja om du använder inaktivera |
 
@@ -225,7 +221,7 @@ När du kopierar data från Amazon RedShift används följande mappningar från 
 | DECIMAL |Decimal |
 | DUBBEL PRECISION |Double |
 | INTEGER |Int32 |
-| REAL |Enskilt |
+| REAL |Enkel |
 | SMALLINT |Int16 |
 | TEXT |Sträng |
 | TIMESTAMP |DateTime |

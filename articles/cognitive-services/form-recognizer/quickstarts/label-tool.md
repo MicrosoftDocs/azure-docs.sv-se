@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokument bearbetning
-ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584727"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364806"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter
 
@@ -228,7 +228,7 @@ Följ stegen ovan för att etikettera minst fem av formulären.
 Alternativt kan du ange den förväntade data typen för varje tagg. Öppna snabb menyn till höger om en tagg och välj en typ på menyn. Med den här funktionen kan detektions algoritmen göra vissa antaganden som förbättrar precisionen för text identifiering. Det säkerställer också att de identifierade värdena returneras i standardiserat format i de slutliga JSON-utdata. Värde typs information sparas i *fields.jspå* filen i samma sökväg som dina etikettfiler.
 
 > [!div class="mx-imgBorder"]
-> ![Val av värde typ med exempel etikett verktyg](../media/whats-new/formre-value-type.png)
+> ![Val av värde typ med exempel etikett verktyg](../media/whats-new/value-type.png)
 
 Följande värde typer och varianter stöds för närvarande:
 * `string`

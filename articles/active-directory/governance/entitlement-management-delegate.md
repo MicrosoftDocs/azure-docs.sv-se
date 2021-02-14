@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937682"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515656"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegering och roller i hantering av Azure AD-rättigheter
 
@@ -76,7 +76,7 @@ Efter delegeringen kan marknadsförings avdelningen ha roller som liknar följan
 
 Rättighets hantering har följande roller som är speciella för rättighets hantering.
 
-| Rättighets hanterings roll | Description |
+| Rättighets hanterings roll | Beskrivning |
 | --- | --- |
 | Katalog skapare | Skapa och hantera kataloger. Vanligt vis en IT-administratör som inte är en global administratör eller en resurs ägare för en samling resurser. Personen som skapar en katalog blir automatiskt katalogens första katalog ägare och kan lägga till ytterligare katalog ägare. En katalog skapare kan inte hantera eller se kataloger som de inte äger och kan inte lägga till resurser som de inte äger i en katalog. Om katalog skaparen behöver hantera en annan katalog eller lägga till resurser som de inte äger, kan de begära att bli medägare till katalogen eller resursen. |
 | Katalog ägare | Redigera och hantera befintliga kataloger. Vanligt vis en IT-administratör eller resurs ägare, eller en användare som har tilldelats katalog ägaren. |
@@ -85,7 +85,7 @@ Rättighets hantering har följande roller som är speciella för rättighets ha
 
 Dessutom har en utsedd god kännare och en beställare av ett Access-paket även rättigheter, även om de inte är roller.
 
-| Höger | Description |
+| Höger | Beskrivning |
 | --- | --- |
 | Godkännare | Auktoriserad av en princip för att godkänna eller neka begär Anden om åtkomst till paket, även om de inte kan ändra definitioner för åtkomst paket. |
 | Requestor | Auktoriserad av en princip för ett Access-paket för att begära det Access-paketet. |
@@ -133,9 +133,6 @@ För en användare som inte är en global administratör eller en användar admi
 | [Program administratör](../roles/permissions-reference.md) | Katalog ägare |  |  | :heavy_check_mark: |  |
 | [Moln program administratör](../roles/permissions-reference.md) | Katalog ägare |  |  | :heavy_check_mark: |  |
 | User | Katalog ägare | Endast om grupp ägare | Endast om grupp ägare | Endast om app-ägare |  |
-
-> [!NOTE]
-> Om en användare lägger till en säkerhets grupp eller Microsoft 365 grupp kan gruppen inte vara roll tilldelnings bara. Om användaren lägger till en grupp som är roll tilldelnings bara när de skapar åtkomst paketet måste de också vara ägare till den roll tilldelnings bara gruppen. Om du vill ha mer information [skapar du en roll tilldelnings grupp i Azure Active Directory](../roles/groups-create-eligible.md).
 
 Om du vill fastställa den lägsta privilegierade rollen för en aktivitet kan du också referera till [Administratörs roller efter administratörs uppgift i Azure Active Directory](../roles/delegate-by-task.md#entitlement-management).
 

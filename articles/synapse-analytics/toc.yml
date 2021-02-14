@@ -113,6 +113,8 @@
                   href: ./security/workspace-data-exfiltration-protection.md
                 - name: Synapse-arbetsyta med privata länkhubbar
                   href: ./security/synapse-private-link-hubs.md
+                - name: Anslut till ett skyddat lagrings konto
+                  href: ./security/connect-to-a-secure-storage-account.md
             - name: Autentisering och vidarekoppling
               items:
                 - name: Azure Active Directory
@@ -571,7 +573,11 @@
         - name: Arbeta med Delta Lake
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Hantera bibliotek
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
+          items:
+            - name: Lägg till och hantera bibliotek
+              href: ./spark/apache-spark-azure-portal-add-libraries.md
+            - name: Felsöka biblioteks installations fel
+              href: ./spark/apache-spark-troubleshoot-library-errors.md
         - name: Använda notebook-filer och IDE-verktyg
           items:
             - name: Hantera anteckningsböcker

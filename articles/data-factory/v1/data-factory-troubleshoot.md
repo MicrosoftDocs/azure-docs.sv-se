@@ -1,24 +1,19 @@
 ---
 title: Felsöka Azure Data Factory problem
 description: Lär dig hur du felsöker problem med att använda Azure Data Factory.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494978"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388251"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Felsök Data Factory-problem
 > [!NOTE]
@@ -35,14 +30,15 @@ Om du får det här felmeddelandet har inte Azure Data Factory-resursprovidern r
 1. Starta Azure PowerShell.
 2. Logga in på ditt Azure-konto med hjälp av följande kommando.
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. Kör följande kommando för att registrera Azure Data Factory-providern.
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problem: ett obehörigt fel inträffade vid körning av en Data Factory-cmdlet
 Du använder förmodligen inte rätt Azure-konto eller -prenumeration med Azure PowerShell. Använd följande cmdlets för att välja rätt Azure-konto och -prenumeration för Azure PowerShell.
@@ -67,7 +63,7 @@ Starta **Data Management Gateway Configuration Manager** på gateway-datorn och 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Problem: angivna sektorer är i vänte läge för alltid
 Sektorerna kan vara i **vänte** läge på grund av olika orsaker. En av de vanligaste orsakerna är att den **externa** egenskapen inte har angetts till **True**. Alla data uppsättningar som skapas utanför omfånget för Azure Data Factory ska markeras med **extern** egenskap. Den här egenskapen anger att data är externa och inte backas upp av några pipelines i data fabriken. Datasektorerna markeras som **Klar** när datauppsättningen är tillgänglig i respektive lager.
 
-I följande exempel kan du se hur egenskapen **external** används. Du kan också ange **extern Aldata** _ när du ställer in external till true.
+I följande exempel kan du se hur egenskapen **external** används. Du kan också ange **extern Aldata*** när du ställer in external till true.
 
 Mer info om den här egenskapen finns i artikeln om [datauppsättningar](data-factory-create-datasets.md).
 
@@ -97,7 +93,7 @@ Mer info om den här egenskapen finns i artikeln om [datauppsättningar](data-fa
 }
 ```
 
-Lös problemet genom att lägga till egenskapen _ *external** och det valfria **extern Aldata** -avsnittet i JSON-definitionen för tabellen indatamängd och återskapa tabellen.
+Lös problemet genom att lägga till egenskapen **external** och det valfria avsnittet **externalData** i indatatabellens JSON-definition. Återskapa sedan tabellen.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Problem: det går inte att utföra hybrid kopiering
 Se [Felsök Gateway-problem](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) för steg för att felsöka problem med att kopiera till/från ett lokalt data lager med hjälp av data Management Gateway.

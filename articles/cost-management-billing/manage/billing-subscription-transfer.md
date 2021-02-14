@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 87f29395e716ad3f06a99d6243b080acf86e4310
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979441"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367205"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Överföra faktureringsägarskap för en Azure-prenumeration till ett annat konto
 
@@ -91,9 +91,12 @@ Använd följande felsökningsinformation om det uppstår problem med överföri
 
 ### <a name="original-azure-subscription-billing-owner-leaves-your-organization"></a>Den ursprungliga Azure-prenumerationens fakturerings ägare lämnar din organisation
 
-Det är möjligt att den ursprungliga fakturerings ägaren som skapade ett Azure-konto och en Azure-prenumeration lämnar din organisation. Om denna situation inträffar är användar identiteten inte längre i organisationens Azure Active Directory. Sedan har Azure-prenumerationen ingen fakturerings ägare. Den här situationen förhindrar att vem som helst utför fakturerings åtgärder för kontot, inklusive visning och betalning av fakturor. Prenumerationen kan hamna i förfallet tillstånd. Slutligen kan prenumerationen inaktive ras på grund av utebliven betalning. Slutligen kan prenumerationen tas bort och den påverkar alla tjänster som körs i prenumerationen.
+> [!Note]
+> Det här avsnittet gäller specifikt för ett fakturerings konto för ett Microsofts kund avtal. Kontrol lera om du har åtkomst till ett [Microsofts kund avtal](mca-request-billing-ownership.md#check-for-access).
 
-När en prenumeration inte längre har en giltig fakturerings ägare, skickar Azure ett e-postmeddelande till andra fakturerings ägare, tjänst administratörer, samadministratörer och prenumerations ägare som informerar dem i situationen och ger dem en länk för att acceptera prenumerationens fakturerings ägarskap. En av användarna kan välja länken för att acceptera fakturerings ägande. Mer information om fakturerings roller finns i [fakturerings roller](understand-mca-roles.md) och [klassiska roller och Azure RBAC-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Det är möjligt att den ursprungliga ägaren av fakturerings kontot som skapade ett Azure-konto och en Azure-prenumeration lämnar din organisation. Om denna situation inträffar är användar identiteten inte längre i organisationens Azure Active Directory. Sedan har Azure-prenumerationen ingen fakturerings ägare. Den här situationen förhindrar att vem som helst utför fakturerings åtgärder för kontot, inklusive visning och betalning av fakturor. Prenumerationen kan hamna i förfallet tillstånd. Slutligen kan prenumerationen inaktive ras på grund av utebliven betalning. Slutligen kan prenumerationen tas bort och den påverkar alla tjänster som körs i prenumerationen.
+
+När en prenumeration inte längre har en giltig fakturerings konto ägare, skickar Azure ett e-postmeddelande till andra ägare till fakturerings konto, tjänst administratörer (om det finns några), Co-Administrators (om det finns några) och prenumerations ägare informerar dem i situationen och ger dem en länk för att godkänna prenumerationens fakturerings ägarskap. En av användarna kan välja länken för att acceptera fakturerings ägande. Mer information om fakturerings roller finns i [fakturerings roller](understand-mca-roles.md) och [klassiska roller och Azure RBAC-roller](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 Här är ett exempel på hur e-postmeddelandet ser ut.
 

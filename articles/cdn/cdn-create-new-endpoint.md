@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7a3c4bc2a0445a2821e212986b495993695652a6
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 45edf57ed41f8cf7be839edade5038a0787424a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165934"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367305"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Snabbstart: Skapa en Azure CDN-profil och CDN-slutpunkt
 
 I den här snabb starten aktiverar du Azure Content Delivery Network (CDN) genom att skapa en ny CDN-profil, som är en samling av en eller flera CDN-slutpunkter. När du har skapat en profil och en slutpunkt kan du börja leverera innehåll till dina kunder.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Ett Azure Storage-konto med namnet *cdnstorageacct123* som du använder för ursprungs värd namnet. För att slutföra det här kravet, se [integrera ett Azure Storage-konto med Azure CDN](cdn-create-a-storage-account-with-cdn.md).
@@ -51,7 +51,7 @@ När du har skapat en CDN-profil använder du den för att skapa en slut punkt.
 
 3. Ange följande inställnings värden:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | **Namn** | Ange *CDN-Endpoint-123* för slut punktens värdnamn. Det här namnet måste vara globalt unikt i Azure. Ange ett annat namn om det redan används. Det här namnet används för att komma åt dina cachelagrade resurser på domänen _&lt; slut &gt; punkt-Name_. azureedge.net.|
     | **Ursprungstyp** | Välj **lagring**. | 
@@ -81,7 +81,7 @@ I föregående steg skapade du en CDN-profil och en CDN-slutpunkt i en resursgru
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Självstudie: Använd CDN till Server statiskt innehåll från en webbapp](cdn-add-to-web-app.md)
+> [Självstudie: Använd CDN för att hantera statiskt innehåll från en webbapp](cdn-add-to-web-app.md)
 
 > [!div class="nextstepaction"]
 > [Självstudier: Lägga till en anpassad domän i Azure CDN-slutpunkten](cdn-map-content-to-custom-domain.md)

@@ -1,22 +1,18 @@
 ---
 title: Uppdatera Azure Machine Learning Studio (klassiska) modeller med Azure Data Factory
 description: Beskriver hur du skapar förutsägbara pipelines med hjälp av Azure Data Factory och Azure Machine Learning Studio (klassisk)
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ef89ecef34a7c5afb94547181f449b0fc393e67c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496763"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377575"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Uppdatera Azure Machine Learning Studio (klassiska) modeller med hjälp av aktiviteten uppdatera resurs
 
@@ -59,15 +55,15 @@ Följande JSON-kodfragment definierar en Azure Machine Learning Studio (klassisk
 }
 ```
 
-| Egenskap                      | Beskrivning                              | Krävs |
+| Egenskap                      | Beskrivning                              | Obligatorisk |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | Namn på aktiviteten i pipelinen     | Yes      |
-| beskrivning                   | Text som beskriver vad aktiviteten gör.  | No       |
-| typ                          | För Azure Machine Learning Studio (klassisk) uppdatera resurs aktivitet är aktivitets typen  **AzureMLUpdateResource**. | Yes      |
-| linkedServiceName             | Azure Machine Learning Studio (klassisk) länkad tjänst som innehåller egenskapen updateResourceEndpoint. | Yes      |
-| trainedModelName              | Namnet på den tränade modell modulen i webb tjänst experimentet som ska uppdateras | Yes      |
-| trainedModelLinkedServiceName | Namnet på Azure Storage länkade tjänsten som innehåller den ilearner-fil som överförs av uppdaterings åtgärden | Yes      |
-| trainedModelFilePath          | Den relativa fil Sök vägen i trainedModelLinkedService för att representera ilearner-filen som överförs av uppdaterings åtgärden | Yes      |
+| name                          | Namn på aktiviteten i pipelinen     | Ja      |
+| beskrivning                   | Text som beskriver vad aktiviteten gör.  | Inga       |
+| typ                          | För Azure Machine Learning Studio (klassisk) uppdatera resurs aktivitet är aktivitets typen  **AzureMLUpdateResource**. | Ja      |
+| linkedServiceName             | Azure Machine Learning Studio (klassisk) länkad tjänst som innehåller egenskapen updateResourceEndpoint. | Ja      |
+| trainedModelName              | Namnet på den tränade modell modulen i webb tjänst experimentet som ska uppdateras | Ja      |
+| trainedModelLinkedServiceName | Namnet på Azure Storage länkade tjänsten som innehåller den ilearner-fil som överförs av uppdaterings åtgärden | Ja      |
+| trainedModelFilePath          | Den relativa fil Sök vägen i trainedModelLinkedService för att representera ilearner-filen som överförs av uppdaterings åtgärden | Ja      |
 
 ## <a name="end-to-end-workflow"></a>Arbetsflödet slutpunkt till slutpunkt
 
@@ -97,9 +93,9 @@ Du kan hämta värden för plats hållare i URL: en när du frågar webb tjänst
 
 Den nya typen av resurs slut punkt för uppdateringar kräver tjänstens huvud namns autentisering. Om du vill använda tjänstens huvud namns autentisering registrerar du en programentitet i Azure Active Directory (Azure AD) och ger rollen som **deltagare** eller **ägare** till den prenumeration eller resurs grupp där webb tjänsten tillhör. Se [hur du skapar tjänstens huvud namn och tilldelar behörigheter för att hantera Azure-resurser](../active-directory/develop/howto-create-service-principal-portal.md). Anteckna följande värden som du använder för att definiera den länkade tjänsten:
 
-- Program-ID:t
+- Program-ID
 - Program nyckel
-- Klientorganisations-ID
+- Klient-ID:t
 
 Här är en exempel på en länkad tjänst definition:
 

@@ -3,22 +3,22 @@ title: 'ML Studio (klassisk): Visa & köra experiment igen – Azure'
 description: Hantera experiment körningar i Azure Machine Learning Studio (klassisk). Du kan granska tidigare körningar av dina experiment när som helst för att kunna anropa, gå tillbaka, och i slut ändan antingen bekräfta eller förfina tidigare antaganden.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: c958de5e49fbb7519ae71b13e9deba9af0c698de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 419a696da1244afab7aa03cd8c4521ea819a5298
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312866"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515962"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Hantera experiment körningar i Azure Machine Learning Studio (klassisk)
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Att utveckla en förutsägelse analys modell är en iterativ process – när du ändrar de olika funktionerna och parametrarna i experimentet konvergerar resultatet tills du är nöjd med att du har en tränad, effektiv modell. Nyckeln till den här processen spårar olika iterationer av dina experiment parametrar och konfigurationer.
@@ -42,7 +42,7 @@ Anta till exempel att du skapar ett experiment med modulen [linjär regression][
 
 | Inlärnings pris värde | Kör Start tid |
 | --- | --- |
-| 0,1 |9/11/2014 4:18:58 PM |
+| 0.1 |9/11/2014 4:18:58 PM |
 | 0,2 |9/11/2014 4:24:33 PM |
 | 0,4 |9/11/2014 4:28:36 PM |
 | 0,5 |9/11/2014 4:33:31 PM |
@@ -58,7 +58,7 @@ Klicka på någon av dessa körningar för att visa en ögonblicks bild av exper
 > 
 > 
 
-I listan över experiment på fliken **experiment** i Machine Learning Studio (klassisk) visas alltid den senaste versionen av ett experiment. Om du öppnar en tidigare körning av experimentet (med tidigare **Kör** eller **Visa körnings historik** ) kan du gå tillbaka till utkastet genom att klicka på **Visa körnings historik** och välja den iteration som har **statusen** **redigerbar**.
+I listan över experiment på fliken **experiment** i Machine Learning Studio (klassisk) visas alltid den senaste versionen av ett experiment. Om du öppnar en tidigare körning av experimentet (med tidigare **Kör** eller **Visa körnings historik**) kan du gå tillbaka till utkastet genom att klicka på **Visa körnings historik** och välja den iteration som har **statusen** **redigerbar**.
 
 ## <a name="run-a-previous-experiment"></a>Kör ett tidigare experiment
 När du klickar på **föregående körning** eller **Visa körnings historik** och öppnar en tidigare körning kan du visa ett klart experiment i skrivskyddat läge.

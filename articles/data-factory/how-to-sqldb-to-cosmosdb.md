@@ -1,19 +1,17 @@
 ---
 title: Migrera Azure SQL Database tabeller till Azure-CosmosDB med Azure Data Factory
 description: Ta ett befintligt normaliserat databas schema från Azure SQL Database och migrera till en avnormaliserad Azure CosmosDB-behållare med Azure Data Factory.
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383950"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrera normaliserat databasschema från Azure SQL Database till avnormaliserad Azure CosmosDB-container
 
@@ -50,7 +48,7 @@ Den resulterande CosmosDB-containern kommer att bädda in den inre frågan i ett
 
 2. Lägg till en data flödes aktivitet
 
-3. I data flödes aktiviteten väljer du **nytt data flöde för mappning** .
+3. I data flödes aktiviteten väljer du **nytt data flöde för mappning**.
 
 4. Vi kommer att skapa det här data flödes diagrammet nedan
 

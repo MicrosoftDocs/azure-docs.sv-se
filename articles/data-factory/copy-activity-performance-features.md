@@ -1,23 +1,18 @@
 ---
 title: Kopiera aktivitets prestanda optimerings funktioner
 description: Lär dig mer om de viktiga funktioner som hjälper dig att optimera prestanda för kopierings aktiviteten i Azure Data Factory från en omfattande
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324339"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387809"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Kopiera aktivitets prestanda optimerings funktioner
 
@@ -126,10 +121,10 @@ När du anger ett värde för `parallelCopies` egenskapen ska du ta belastnings 
 
 När du kopierar data från ett käll data lager till ett data lager för mottagare kan du välja att använda Azure Blob Storage eller Azure Data Lake Storage Gen2 som ett interimistiskt mellanlagrings lager. Mellanlagring är särskilt användbart i följande fall:
 
-- **Du vill mata in data från olika data lager i Azure Synapse Analytics (tidigare SQL Data Warehouse) via PolyBase, kopiera data från/till snö eller mata in data från Amazon RedShift/HDFS performantly.** Lär dig mer om att:
+- **Du vill mata in data från olika data lager i Azure Synapse Analytics via PolyBase, kopiera data från/till snö flingor eller mata in data från Amazon RedShift/HDFS performantly.** Lär dig mer om att:
   - [Använd PolyBase för att läsa in data i Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics).
   - [Snö-koppling](connector-snowflake.md)
-  - [Amazon RedShift-anslutning](connector-amazon-redshift.md)
+  - [Anslutningsapp för Amazon Redshift](connector-amazon-redshift.md)
   - [HDFS-anslutning](connector-hdfs.md)
 - **Du vill inte öppna andra portar än port 80 och port 443 i brand väggen på grund av företagets IT-principer.** När du till exempel kopierar data från ett lokalt data lager till en Azure SQL Database eller en Azure Synapse-analys måste du aktivera utgående TCP-kommunikation på port 1433 för både Windows-brandväggen och företags brand väggen. I det här scenariot kan mellanlagrad kopiering dra nytta av den lokala integrerings körningen för att först kopiera data till en mellanlagring via HTTP eller HTTPS på port 443 och sedan läsa in data från mellanlagring i SQL Database eller Azure Synapse Analytics. I det här flödet behöver du inte aktivera port 1433.
 - **Ibland tar det en stund att utföra en hybrid data förflyttning (det vill säga kopiera från ett lokalt data lager till ett moln data lager) över en långsam nätverks anslutning.** Du kan förbättra prestanda genom att använda mellanlagrad kopia för att komprimera data lokalt så att det tar mindre tid att flytta data till lagrings data lagret i molnet. Sedan kan du expandera data i mellanlagrings platsen innan du läser in i mål data lagret.
@@ -148,11 +143,11 @@ För närvarande kan du inte kopiera data mellan två data lager som är anslutn
 
 Konfigurera **enableStaging** -inställningen i kopierings aktiviteten och ange om du vill att data ska mellanlagras i lagrings utrymmet innan du läser in dem i ett mål data lager. När du ställer in **enableStaging** på `TRUE` anger du ytterligare egenskaper som anges i följande tabell. 
 
-| Egenskap | Beskrivning | Standardvärde | Krävs |
+| Egenskap | Beskrivning | Standardvärde | Obligatorisk |
 | --- | --- | --- | --- |
 | enableStaging |Ange om du vill kopiera data via ett interimistiskt lagrings lager. |Falskt |Inga |
-| linkedServiceName |Ange namnet på en [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) -eller [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) -länkad tjänst, som refererar till den lagrings instans som du använder som ett interimistiskt mellanlagrings lager. |E.t. |Ja, när **enableStaging** är inställt på True |
-| path |Ange den sökväg som du vill ska innehålla mellanlagrade data. Om du inte anger en sökväg skapar tjänsten en behållare för att lagra temporära data. |E.t. |Inga |
+| linkedServiceName |Ange namnet på en [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) -eller [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) -länkad tjänst, som refererar till den lagrings instans som du använder som ett interimistiskt mellanlagrings lager. |Ej tillämpligt |Ja, när **enableStaging** är inställt på True |
+| path |Ange den sökväg som du vill ska innehålla mellanlagrade data. Om du inte anger en sökväg skapar tjänsten en behållare för att lagra temporära data. |Ej tillämpligt |Inga |
 | enableCompression |Anger om data ska komprimeras innan de kopieras till målet. Den här inställningen minskar mängden data som överförs. |Falskt |Inga |
 
 >[!NOTE]
@@ -197,8 +192,8 @@ Du debiteras baserat på två steg: kopiera varaktighet och kopierings typ.
 ## <a name="next-steps"></a>Nästa steg
 Se andra artiklar om kopierings aktiviteter:
 
-- [Översikt över kopieringsaktivitet](copy-activity-overview.md)
-- [Guiden Kopiera aktivitets prestanda och skalbarhet](copy-activity-performance.md)
+- [Översikt över kopierings aktivitet](copy-activity-overview.md)
+- [Vägledning om prestanda och skalbarhet för kopieringsaktivitet](copy-activity-performance.md)
 - [Felsöka prestanda för kopierings aktivitet](copy-activity-performance-troubleshooting.md)
 - [Använd Azure Data Factory för att migrera data från data Lake eller data lager till Azure](data-migration-guidance-overview.md)
 - [Migrera data från Amazon S3 till Azure Storage](data-migration-guidance-s3-azure-storage.md)

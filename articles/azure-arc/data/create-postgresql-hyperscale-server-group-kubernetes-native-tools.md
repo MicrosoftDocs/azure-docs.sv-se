@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955254"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384953"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Skapa en PostgreSQL-Server grupp med Kubernetes-verktyg
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du bör redan ha skapat en [data styrenhet för Azure-bågen](./create-data-controller.md).
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Anpassa namnet
 
-Mallen har värdet ' example ' för attributet name.  Du kan ändra detta, men det måste vara tecken som följer DNS-namngivnings standarderna.  Du måste också ändra namnet på den hemlighet som ska matchas.  Om du till exempel ändrar namnet på PostgreSQL-Server gruppen till "postgres1" måste du ändra namnet på hemligheten från "exempel-login-Secret" till "postgres1-login-Secret"
+Mallen har värdet ' SG1 ' för attributet name.  Du kan ändra detta, men det måste vara tecken som följer DNS-namngivnings standarderna.  Du måste också ändra namnet på den hemlighet som ska matchas.  Om du till exempel ändrar namnet på PostgreSQL-Server gruppen till "SG2" måste du ändra namnet på hemligheten från "SG1-login-Secret" till "SG2-login-Secret"
 
 ### <a name="customizing-the-engine-version"></a>Anpassa motor versionen
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 Det tar några minuter att skapa PostgreSQL-Server gruppen. Du kan övervaka förloppet i ett annat terminalfönster med följande kommandon:
 
 > [!NOTE]
->  Exempel kommandona nedan förutsätter att du har skapat en PostgreSQL-Server grupp med namnet "postgres1" och Kubernetes namespace med namnet "Arc".  Om du har använt ett annat namn på en namnrymd/PostgreSQL-Server grupp kan du ersätta "Arc" och "postgres1" med dina namn.
+>  Exempel kommandona nedan förutsätter att du har skapat en PostgreSQL-Server grupp med namnet "SG1" och Kubernetes namespace med namnet "Arc".  Om du har använt ett annat namn på en namnrymd/PostgreSQL-Server grupp kan du ersätta "Arc" och "SG1" med dina namn.
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ Du kan också kontrol lera skapande status för alla specifika Pod genom att kö
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>Fel sökning av problem med skapande

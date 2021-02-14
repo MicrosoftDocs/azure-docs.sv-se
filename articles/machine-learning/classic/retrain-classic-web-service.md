@@ -3,22 +3,22 @@ title: 'ML Studio (klassisk): återträna klassisk webb tjänst – Azure'
 description: Lär dig hur du omtränar en modell och uppdaterar en klassisk webb tjänst för att använda den nyligen utbildade modellen i Azure Machine Learning Studio (klassisk).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325781"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517577"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Omträna och distribuera en klassisk Studio (klassisk) webb tjänst
 
-**gäller för:** ![ Grön bock markering. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiskt) ![ X som anger Nej. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Grön bock markering. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiskt) ![ X som anger Nej.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Retraining Machine Learning-modeller är ett sätt att se till att de håller sig noggrann och utifrån de mest relevanta data som finns tillgängliga. I den här artikeln visas hur du återskapar en klassisk Studio (klassisk) webb tjänst. En guide om hur du återskapar en ny Studio-webbtjänst (klassisk) finns i [den här instruktions artikeln.](retrain-machine-learning-model.md)
@@ -76,7 +76,7 @@ Hjälp sidan för KORRIGERINGs filen innehåller KORRIGERINGs-URL: en som du må
 
 Nu kan du använda den tränade modellen för att uppdatera poäng slut punkten som du skapade tidigare.
 
-Följande exempel kod visar hur du använder URL: en för *BaseLocation* , *RelativeLocation* , *SasBlobToken* och patch för att uppdatera slut punkten.
+Följande exempel kod visar hur du använder URL: en för *BaseLocation*, *RelativeLocation*, *SasBlobToken* och patch för att uppdatera slut punkten.
 
 ```csharp
 private async Task OverwriteModel()
@@ -122,7 +122,7 @@ private async Task OverwriteModel()
 
 Värdet för *namn* parametern i *resurser* måste matcha resurs namnet för den sparade tränade modellen i förutsägande experimentet. Så här hämtar du resurs namnet:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Klicka på **Machine Learning** på den vänstra menyn.
 1. Under namn klickar du på din arbets yta och sedan på **webb tjänster**.
 1. Under namn klickar du på **inventerings modell [förutsägande exp.]**.

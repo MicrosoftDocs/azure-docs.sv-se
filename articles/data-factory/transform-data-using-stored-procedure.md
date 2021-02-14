@@ -1,22 +1,18 @@
 ---
 title: Transformera data med hjälp av aktiviteten lagrad procedur
 description: Förklarar hur du använder SQL Server lagrade procedur aktiviteter för att anropa en lagrad procedur i ett Azure SQL Database/informations lager från en Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b9ba2f9de82522d4348fa341ad0b41d43c3eebcc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387549"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375654"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformera data med hjälp av aktiviteten SQL Server lagrad procedur i Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -68,10 +64,10 @@ Här är JSON-formatet för att definiera en lagrad procedur aktivitet:
 
 Följande tabell beskriver de här JSON-egenskaperna:
 
-| Egenskap                  | Beskrivning                              | Krävs |
+| Egenskap                  | Beskrivning                              | Obligatorisk |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Namn på aktiviteten                     | Ja      |
-| description               | Text som beskriver vad aktiviteten används för | Inga       |
+| beskrivning               | Text som beskriver vad aktiviteten används för | Inga       |
 | typ                      | För lagrad procedur aktivitet är aktivitets typen **SqlServerStoredProcedure** | Ja      |
 | linkedServiceName         | Referens till **Azure SQL Database** -eller **Azure Synapse Analytics** -eller **SQL Server** som registrerats som en länkad tjänst i Data Factory. Mer information om den här länkade tjänsten finns i artikeln [Compute-länkade tjänster](compute-linked-services.md) . | Ja      |
 | storedProcedureName       | Ange namnet på den lagrade proceduren som ska anropas. | Ja      |

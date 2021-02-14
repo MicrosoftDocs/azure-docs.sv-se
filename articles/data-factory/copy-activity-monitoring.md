@@ -1,22 +1,17 @@
 ---
 title: Övervaka kopieringsaktivitet
 description: Lär dig mer om att övervaka körningen av kopierings aktiviteten i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 92119709aa260f3180c503a77064f6e80dece6e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440617"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388302"
 ---
 # <a name="monitor-copy-activity"></a>Övervaka kopieringsaktivitet
 
@@ -48,7 +43,7 @@ Den nedre **körnings informationen och varaktigheten** beskriver de viktigaste 
 
 ## <a name="monitor-programmatically"></a>Övervaka program mässigt
 
-Information om körningen av kopierings aktiviteten och prestanda egenskaperna returneras också i avsnittet **Kopiera aktivitets körnings resultat**  >  **Output** , som används för att återge vyn UI-övervakning. Nedan visas en fullständig lista över egenskaper som kan returneras. Du ser bara de egenskaper som gäller för ditt kopierings scenario. Information om hur du övervakar aktivitets körningar programmatiskt i allmänhet finns i [program mässigt övervaka en Azure-datafabrik](monitor-programmatically.md).
+Information om körningen av kopierings aktiviteten och prestanda egenskaperna returneras också i avsnittet **Kopiera aktivitets körnings resultat**  >   , som används för att återge vyn UI-övervakning. Nedan visas en fullständig lista över egenskaper som kan returneras. Du ser bara de egenskaper som gäller för ditt kopierings scenario. Information om hur du övervakar aktivitets körningar programmatiskt i allmänhet finns i [program mässigt övervaka en Azure-datafabrik](monitor-programmatically.md).
 
 | Egenskapsnamn  | Beskrivning | Enhet i utdata |
 |:--- |:--- |:--- |
@@ -67,7 +62,7 @@ Information om körningen av kopierings aktiviteten och prestanda egenskaperna r
 | dataflöde | Hastighet för data överföring. | Flytt ALS nummer, i kbit/s |
 | sourcePeakConnections | Det högsta antalet samtidiga anslutningar som upprättats till käll data lagret under kopierings aktivitets körningen. | Int32-värde (ingen enhet) |
 | sinkPeakConnections| Det högsta antalet samtidiga anslutningar som upprättats till mottagar data lagret under kopierings aktiviteten.| Int32-värde (ingen enhet) |
-| sqlDwPolyBase | Om PolyBase används när data kopieras till Azure Synapse Analytics (tidigare SQL Data Warehouse). | Boolesk |
+| sqlDwPolyBase | Om PolyBase används när data kopieras till Azure Synapse Analytics. | Boolesk |
 | redshiftUnload | Anger om borttagning används när data kopieras från RedShift. | Boolesk |
 | hdfsDistcp | Om DistCp används när data kopieras från HDFS. | Boolesk |
 | effectiveIntegrationRuntime | Integrerings körningen (IR) eller körningar som används för att starta aktivitets körningen i formatet `<IR name> (<region if it's Azure IR>)` . | Text (sträng) |
@@ -163,6 +158,6 @@ Information om körningen av kopierings aktiviteten och prestanda egenskaperna r
 ## <a name="next-steps"></a>Nästa steg
 Se andra artiklar om kopierings aktiviteter:
 
-\- [Översikt över kopieringsaktivitet](copy-activity-overview.md)
+\-[Översikt över kopierings aktivitet](copy-activity-overview.md)
 
 \- [Kopiera aktivitetsprestanda](copy-activity-performance.md)

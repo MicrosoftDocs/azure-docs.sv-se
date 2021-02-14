@@ -6,15 +6,15 @@ author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503906"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517390"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Självstudie 3: Distribuera kredit risk modell – Azure Machine Learning Studio (klassisk)
 
@@ -48,12 +48,12 @@ Slutför [del två av självstudien](tutorial-part2-credit-risk-train.md).
 ## <a name="prepare-for-deployment"></a>Förbereda för distribution
 För att ge andra chansen att använda den förutsägande modell som du utvecklade i självstudien, måste du distribuera den som en webbtjänst i Azure.
 
-Hittills har du experimenterat med att träna vår modell. Men den distribuerade tjänsten kommer inte längre att tränas – den kommer att generera nya förutsägelser genom bedömning av användarindata baserat på vår modell. Vi planerar att göra några förberedelser för att konvertera det här experimentet från en *-**utbildning**, men experimenterar med ett _*_förutsägelse_*_ experiment. 
+Hittills har du experimenterat med att träna vår modell. Men den distribuerade tjänsten kommer inte längre att tränas – den kommer att generera nya förutsägelser genom bedömning av användarindata baserat på vår modell. Vi kommer att göra en förberedelse för att konvertera det här experimentet från en *-**utbildning**, och experimentera till ett _ *_förutsägande_** experiment. 
 
 Att förbereda distributionen är en process i tre steg:  
 
 1. Ta bort en av modellerna
-1. Konvertera _training experiment * du har skapat ett *förutsägelset experiment*
+1. Konvertera det *träningsexperiment* som du skapade till ett *förutsägelseexperiment*
 1. Distribuera förutsägelseexperimentet som en webbtjänst
 
 ### <a name="remove-one-of-the-models"></a>Ta bort en av modellerna

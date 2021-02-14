@@ -1,23 +1,18 @@
 ---
 title: Guide till prestandajustering för kopieringsaktiviteter
 description: Lär dig mer om viktiga faktorer som påverkar prestanda för data förflyttning i Azure Data Factory när du använder kopierings aktivitet.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5910b94dba03f105197a94cf1ea1805f45249f3f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451354"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377218"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Guide till prestandajustering för kopieringsaktiviteter
 
@@ -34,7 +29,7 @@ Azure tillhandahåller en uppsättning data lagrings-och informations lager lös
 
 * Läser in data i **Azure Synapse Analytics** med **1,2 Gbit/s**. För en genom gång med ett användnings fall läser du [läsa in 1 TB i Azure Synapse Analytics under 15 minuter med Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 * Läsa in data i **Azure Blob Storage** med **1,0 Gbit/s**
-* Läser in data **Azure Data Lake Store** i Azure Data Lake Store **1,0 Gbit/s**
+* Läser in data  i Azure Data Lake Store **1,0 Gbit/s**
 
 I den här artikeln beskrivs:
 
@@ -207,10 +202,10 @@ Konfigurera **enableStaging** -inställningen i kopierings aktivitet för att an
 
 | Egenskap | Beskrivning | Standardvärde | Obligatorisk |
 | --- | --- | --- | --- |
-| **enableStaging** |Ange om du vill kopiera data via ett interimistiskt lagrings lager. |Falskt |No |
+| **enableStaging** |Ange om du vill kopiera data via ett interimistiskt lagrings lager. |Falskt |Inga |
 | **linkedServiceName** |Ange namnet på en länkad [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) -eller [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -tjänst som refererar till den lagrings instans som du använder som ett interimistiskt mellanlagrings lager. <br/><br/> Du kan inte använda Storage med en signatur för delad åtkomst för att läsa in data i Azure Synapse Analytics via PolyBase. Du kan använda den i alla andra scenarier. |Ej tillämpligt |Ja, när **enableStaging** är inställt på True |
-| **sökväg** |Ange den Blob Storage-sökväg som du vill ska innehålla de mellanlagrade data. Om du inte anger en sökväg, skapar tjänsten en behållare för att lagra temporära data. <br/><br/> Ange endast en sökväg om du använder lagring med en signatur för delad åtkomst, eller om du vill att tillfälliga data ska finnas på en bestämd plats. |Ej tillämpligt |No |
-| **enableCompression** |Anger om data ska komprimeras innan de kopieras till målet. Den här inställningen minskar mängden data som överförs. |Falskt |No |
+| **sökväg** |Ange den Blob Storage-sökväg som du vill ska innehålla de mellanlagrade data. Om du inte anger en sökväg, skapar tjänsten en behållare för att lagra temporära data. <br/><br/> Ange endast en sökväg om du använder lagring med en signatur för delad åtkomst, eller om du vill att tillfälliga data ska finnas på en bestämd plats. |Ej tillämpligt |Inga |
+| **enableCompression** |Anger om data ska komprimeras innan de kopieras till målet. Den här inställningen minskar mängden data som överförs. |Falskt |Inga |
 
 Här är en exempel definition av kopierings aktiviteten med de egenskaper som beskrivs i föregående tabell:
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/03/2021
 ms.author: jeedes
-ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: de54e179c6972ca1f79dbcd6e210ff64ee3480bb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621492"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378907"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med openaten
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar openaten med Azure 
 * Kontroll i Azure AD som har åtkomst till openaten.
 * Gör det möjligt för användarna att logga in automatiskt för att openaten med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -42,22 +40,22 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 * OpenAthens stöder **IDP**-initierad enkel inloggning
 * OpenAthens stöder **just-in-time**-användaretablering
 
-## <a name="adding-openathens-from-the-gallery"></a>Lägga till OpenAthens från galleriet
+## <a name="add-openathens-from-the-gallery"></a>Lägg till openaten från galleriet
 
 För att konfigurera integrering av OpenAthens i Azure AD behöver du lägga till OpenAthens från galleriet i din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **openaten** i sökrutan.
 1. Välj **openaten** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>Konfigurera och testa enkel inloggning med Azure AD för openaten
+## <a name="configure-and-test-azure-ad-sso-for-openathens"></a>Konfigurera och testa Azure AD SSO för openaten
 
 Konfigurera och testa Azure AD SSO med openaten med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i openaten.
 
-Om du vill konfigurera och testa Azure AD SSO med openaten slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med openaten:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     * **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -70,9 +68,9 @@ Om du vill konfigurera och testa Azure AD SSO med openaten slutför du följande
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan **openaten** program integration och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal går du till sidan **openaten** program integration och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -106,7 +104,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -117,15 +115,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **openaten**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-openathens-sso"></a>Konfigurera openaten SSO
@@ -134,19 +126,19 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Välj **Anslutningar** i listan på fliken **Hantering**.
 
-    ![Skärm bild som visar sidan "openaten"-företags webbplats med "anslutningar" valt från fliken "hantering".](./media/openathens-tutorial/tutorial_openathens_application1.png)
+    ![Skärm bild som visar sidan "openaten"-företags webbplats med "anslutningar" valt från fliken "hantering".](./media/openathens-tutorial/connections.png)
 
 1. Välj **SAML 1.1/2.0**, och klicka sedan på knappen **Konfigurera**.
 
-    ![Skärm bild som visar system typen "Välj lokal autentisering". dialog rutan med "S A M L 1.1/2.0" och knappen "Konfigurera" är markerad.](./media/openathens-tutorial/tutorial_openathens_application2.png)
+    ![Skärm bild som visar system typen "Välj lokal autentisering". dialog rutan med "S A M L 1.1/2.0" och knappen "Konfigurera" är markerad.](./media/openathens-tutorial/saml.png)
 
 1. Om du vill lägga till konfigurationen väljer du knappen **Bläddra** för att överföra .xml-metadatafilen som du laddade ned från Azure-portalen, och väljer sedan **Lägg till**.
 
-    ![Skärm bild som visar Authentication-systemet "Lägg till en M L-autentisering". i dialog rutan med åtgärden "Bläddra" och knappen Lägg till markerad.](./media/openathens-tutorial/tutorial_openathens_application3.png)
+    ![Skärm bild som visar Authentication-systemet "Lägg till en M L-autentisering". i dialog rutan med åtgärden "Bläddra" och knappen Lägg till markerad.](./media/openathens-tutorial/configure.png)
 
 1. Utför följande steg under fliken **Information**.
 
-    ![Konfigurera enkel inloggning](./media/openathens-tutorial/tutorial_openathens_application4.png)
+    ![Konfigurera enkel inloggning](./media/openathens-tutorial/add.png)
 
     a. I **Mappning för visningsnamn** väljer du **Använd attribut**.
 
@@ -164,7 +156,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     h. Från fliken **</> Förlitande part** ska du nu kopiera **Metadata-URL:en** och öppna den i webbläsaren för att ladda ned **XML-filen för SP-metadata**. Ladda upp SP-metadatafilen på avsnittet **Grundläggande SAML-konfiguration** i Azure AD.
 
-    ![Skärm bild som visar fliken "förlitande part" markerad och "metadata U R L" markerat.](./media/openathens-tutorial/tutorial_openathens_application5.png)
+    ![Skärm bild som visar fliken "förlitande part" markerad och "metadata U R L" markerat.](./media/openathens-tutorial/metadata.png)
 
 ### <a name="create-openathens-test-user"></a>Skapa OpenAthens-testanvändare
 
@@ -172,16 +164,12 @@ I det här avsnittet skapas en användare som heter Britta Simon i OpenAthens. O
 
 ## <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-När du klickar på OpenAthens-panelen i åtkomstpanelen bör du automatiskt loggas in på OpenAthens som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på testa det här programmet i Azure Portal så bör du loggas in automatiskt på openaten som du ställer in SSO för.
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Du kan använda Microsoft Mina appar. När du klickar på panelen openaten i Mina appar, bör du loggas in automatiskt på openaten som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Prova openaten med Azure AD](https://aad.portal.azure.com/)
+När du har konfigurerat openaten kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

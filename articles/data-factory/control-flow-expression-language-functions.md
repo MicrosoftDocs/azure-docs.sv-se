@@ -1,21 +1,18 @@
 ---
 title: Uttryck och funktioner i Azure Data Factory
 description: Den här artikeln innehåller information om uttryck och funktioner som du kan använda för att skapa Data Factory-entiteter.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 1b10146e59cefb17ff267eb0b470dd83004a7c2a
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 997700b27f52af174dab914097ceeef8d20ff148
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385633"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Uttryck och funktioner i Azure Data Factory
 
@@ -28,7 +25,7 @@ Den här artikeln innehåller information om uttryck och funktioner som stöds a
 
 ## <a name="expressions"></a>Uttryck
 
-JSON-värden i definitionen kan vara literala eller uttryck som utvärderas vid körning. Ett exempel:  
+JSON-värden i definitionen kan vara literala eller uttryck som utvärderas vid körning. Exempel:  
   
 ```json
 "name": "value"
@@ -144,7 +141,7 @@ I följande exempel använder pipelinen **inputPath** -och **outputPath** -param
     }
 }
 ```
-### <a name="tutorial"></a>Självstudier
+### <a name="tutorial"></a>Självstudie
 Den här [självstudien](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vägleder dig genom hur du skickar parametrar mellan en pipeline och aktivitet samt mellan aktiviteterna.
 
   
@@ -157,7 +154,7 @@ Du kan anropa Functions i uttryck. I följande avsnitt finns information om de f
 Om du vill arbeta med strängar kan du använda dessa sträng funktioner och även vissa [samlings funktioner](#collection-functions).
 Sträng funktioner fungerar bara för strängar.
 
-| Funktionen String | Aktivitet |
+| Funktionen String | Uppgift |
 | --------------- | ---- |
 | [concat](control-flow-expression-language-functions.md#concat) | Kombinera två eller fler strängar och returnera den kombinerade strängen. |
 | [endsWith](control-flow-expression-language-functions.md#endswith) | Kontrol lera om en sträng slutar med den angivna under strängen. |
@@ -176,7 +173,7 @@ Sträng funktioner fungerar bara för strängar.
 
 Om du vill arbeta med samlingar, vanligt vis matriser, strängar och ibland kan du använda de här samlings funktionerna.
 
-| Samlings funktion | Aktivitet |
+| Samlings funktion | Uppgift |
 | ------------------- | ---- |
 | [ingår](control-flow-expression-language-functions.md#contains) | Kontrol lera om en samling har ett angivet objekt. |
 | [tomt](control-flow-expression-language-functions.md#empty) | Kontrol lera om en samling är tom. |
@@ -193,7 +190,7 @@ Om du vill arbeta med samlingar, vanligt vis matriser, strängar och ibland kan 
 
 Dessa funktioner är användbara i villkor, de kan användas för att utvärdera vilken typ av logik som helst.  
   
-| Funktion för logisk jämförelse | Aktivitet |
+| Funktion för logisk jämförelse | Uppgift |
 | --------------------------- | ---- |
 | [and](control-flow-expression-language-functions.md#and) | Kontrol lera om alla uttryck är sanna. |
 | [är lika med](control-flow-expression-language-functions.md#equals) | Kontrol lera om båda värdena är likvärdiga. |
@@ -215,7 +212,7 @@ Dessa funktioner är användbara i villkor, de kan användas för att utvärdera
 -   lagringsmatriser
 -   lista
 
-| Konverterings funktion | Aktivitet |
+| Konverterings funktion | Uppgift |
 | ------------------- | ---- |
 | [matris](control-flow-expression-language-functions.md#array) | Returnera en matris från en angiven Indatatyp. För flera indata, se [createArray](control-flow-expression-language-functions.md#createArray). |
 | [base64](control-flow-expression-language-functions.md#base64) | Returnera Base64-kodad version för en sträng. |
@@ -245,12 +242,12 @@ Dessa funktioner är användbara i villkor, de kan användas för att utvärdera
 ## <a name="math-functions"></a>Matematiska funktioner  
  Dessa funktioner kan användas för antingen typer av tal: **heltal** och **flyttal**.  
 
-| Matematik funktion | Aktivitet |
+| Matematik funktion | Uppgift |
 | ------------- | ---- |
-| [skapa](control-flow-expression-language-functions.md#add) | Returnera resultatet från att lägga till två tal. |
+| [add](control-flow-expression-language-functions.md#add) | Returnera resultatet från att lägga till två tal. |
 | [div](control-flow-expression-language-functions.md#div) | Returnera resultatet från att dividera två tal. |
 | [bekräftat](control-flow-expression-language-functions.md#max) | Returnera det högsta värdet från en uppsättning tal eller en matris. |
-| [minimum](control-flow-expression-language-functions.md#min) | Returnera det lägsta värdet från en uppsättning tal eller en matris. |
+| [min](control-flow-expression-language-functions.md#min) | Returnera det lägsta värdet från en uppsättning tal eller en matris. |
 | [rest](control-flow-expression-language-functions.md#mod) | Returnera resten från att dividera två tal. |
 | [mul](control-flow-expression-language-functions.md#mul) | Returnera produkten från att multiplicera två tal. |
 | [slump](control-flow-expression-language-functions.md#rand) | Returnera ett slumpmässigt heltal från ett angivet intervall. |
@@ -259,7 +256,7 @@ Dessa funktioner är användbara i villkor, de kan användas för att utvärdera
   
 ## <a name="date-functions"></a>Datumfunktioner  
 
-| Funktionen datum/tid | Aktivitet |
+| Funktionen datum/tid | Uppgift |
 | --------------------- | ---- |
 | [addDays](control-flow-expression-language-functions.md#addDays) | Lägg till ett antal dagar i en tidstämpel. |
 | [addHours](control-flow-expression-language-functions.md#addHours) | Lägg till ett antal timmar i en tidsstämpel. |

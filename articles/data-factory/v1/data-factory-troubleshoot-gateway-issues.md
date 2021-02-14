@@ -1,22 +1,18 @@
 ---
 title: Felsöka Data Management Gateway problem
 description: Innehåller tips för att felsöka problem som rör Data Management Gateway.
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896573"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388353"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Felsöka problem med gateway för datahantering
 Den här artikeln innehåller information om fel sökning av problem med att använda Data Management Gateway.
@@ -99,7 +95,7 @@ Om installationen är aktuell/senaste och gateway fortfarande finns på portalen
 ### <a name="6-problem"></a>6. problem
 Du kan se följande fel meddelande när du registrerar en gateway.
 
-`Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
+`Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
 ![Gateway-nyckeln är ogiltig eller tom](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
@@ -107,7 +103,7 @@ Du kan se följande fel meddelande när du registrerar en gateway.
 Det här felet kan inträffa på grund av att gatewayen har tagits bort eller att den associerade Gateway-nyckeln har återskapats.
 
 #### <a name="resolution"></a>Lösning
-Om gatewayen har tagits bort skapar du gatewayen på nytt från portalen, klickar på **Registrera** , kopierar nyckeln från portalen, klistrar in den och försöker registrera gatewayen.
+Om gatewayen har tagits bort skapar du gatewayen på nytt från portalen, klickar på **Registrera**, kopierar nyckeln från portalen, klistrar in den och försöker registrera gatewayen.
 
 Om gatewayen fortfarande finns men dess nyckel har återskapats använder du den nya nyckeln för att registrera gatewayen. Om du inte har nyckeln kan du återskapa nyckeln igen från portalen.
 
@@ -167,7 +163,7 @@ Gatewayen kan inte ansluta till moln tjänsten via Service Bus.
 #### <a name="resolution"></a>Lösning
 Följ dessa steg om du vill hämta gatewayen online igen:
 
-1. Tillåt utgående regler för IP-adress på gateway-datorn och företags brand väggen. Du kan hitta IP-adresser från Windows-händelseloggen (ID = = 401): ett försök gjordes att få åtkomst till en socket på ett sätt som är förbjudet av åtkomst behörigheterna XX. XX. XX. XX: 9350.
+1. Tillåt utgående regler för IP-adress på gateway-datorn och företags brand väggen. Du hittar IP-adresser från Windows-händelseloggen (ID = = 401): ett försök gjordes att få åtkomst till en socket på ett sätt som tillåts av dess åtkomst behörigheter XX. xx. xx. XX: 9350.
 1. Konfigurera proxyinställningar på gatewayen. Mer information finns i avsnittet om proxy server-överväganden.
 1. Aktivera utgående portar 5671 och 9350-9354 både i Windows-brandväggen på gateway-datorn och i företags brand väggen. Mer information finns i avsnittet om portar och brand väggar. Det här steget är valfritt, men vi rekommenderar det för prestanda överväganden.
 
@@ -278,8 +274,8 @@ Klicka på länken **arkivera Gateway-loggar** för att arkivera och Spara logga
 ### <a name="locate-gateway-logs"></a>Hitta Gateway-loggar
 Du hittar detaljerad information om Gateway-loggen i händelse loggarna i Windows.
 
-1. Starta Windows **Loggboken** .
-2. Hitta loggar i Data Management Gateway mappen **program-och tjänst loggar**  >  **Data Management Gateway** .
+1. Starta Windows **Loggboken**.
+2. Hitta loggar i Data Management Gateway mappen **program-och tjänst loggar**  >   .
 
    När du felsöker Gateway-relaterade problem kan du leta efter fel nivå händelser i logg boken.
 

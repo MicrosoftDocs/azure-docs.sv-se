@@ -5,15 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 02/11/2021
 ms.author: normesta
-ms.reviewer: stewu
-ms.openlocfilehash: 2b195d865a07af9f3166c5225e8de3d0a9b0e749
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879317"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516286"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob Storage-funktioner som är tillgängliga i Azure Data Lake Storage Gen2
 
@@ -45,18 +44,19 @@ Följande tabell visar hur varje Blob Storage-funktion stöds med Data Lake Stor
 |Oåterkalleligt lagrings utrymme|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Lagra affärskritiska blobdata med oföränderlig lagring](storage-blob-immutable-storage.md)|
 |Mjuk borttagning av behållare|Förhandsgranskning|Förhandsgranskning|[Mjuk borttagning för behållare (förhands granskning)](soft-delete-container-overview.md)|
 |Azure Storage inventering|Förhandsgranskning|Förhandsgranskning|[Använd Azure Storage inventering för att hantera BLOB-data (för hands version)](blob-inventory.md)|
+|Anpassade domäner|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|Förhandsgranskning<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[Mappa en anpassad domän till en Azure Blob Storage-slutpunkt](storage-custom-domain-name.md)|
 |BLOB-mjuk borttagning|Stöds inte ännu|Stöds inte ännu|[Mjuk borttagning för blobar](./soft-delete-blob-overview.md)|
 |Blobfuse|Allmänt tillgänglig|Allmänt tillgänglig|[Montera Blob Storage som ett fil system med blobfuse](storage-how-to-mount-container-linux.md)|
 |Anonym offentlig åtkomst |Allmänt tillgänglig|Allmänt tillgänglig| Se [Konfigurera anonym offentlig Läs behörighet för behållare och blobbar](anonymous-read-access-configure.md).|
 |Redundansväxling av kund hanterat konto|Stöds inte ännu|Stöds inte ännu|[Haveri beredskap och redundansväxling av konto](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Kund-tillhandahållna nycklar|Stöds inte ännu|Stöds inte ännu|[Ange en krypterings nyckel för en begäran till Blob Storage](encryption-customer-provided-keys.md)|
-|Anpassade domäner|Stöds inte ännu|Stöds inte ännu|[Mappa en anpassad domän till en Azure Blob Storage-slutpunkt](storage-custom-domain-name.md)|
 |Krypteringsomfång|Stöds inte ännu|Stöds inte ännu|[Skapa och hantera krypterings omfång (förhands granskning)](encryption-scope-manage.md)|
 |Ändringsfeed|Stöds inte ännu|Stöds inte ännu|[Ändra feed-stöd i Azure Blob Storage](storage-blob-change-feed.md)|
 |Objektreplikering|Stöds inte ännu|Stöds inte ännu|[Konfigurera objekt replikering för block-blobar](object-replication-configure.md)|
 |BLOB-versioner|Stöds inte ännu|Stöds inte ännu|[Aktivera och hantera BLOB-versioner](versioning-enable.md)|
 
 <div id="preview-form"><sup>1</sup> Om du vill använda ögonblicks bilder, oföränderligt lagrings utrymme eller statiska webbplatser med Data Lake Storage Gen2 måste du registrera dig i förhands granskningen genom att fylla i det här <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>formuläret</a>.  </div>
+<div id="preview-form-2"><sup>2</sup> Ett anpassat domän namn kan endast mappas till Blob-tjänsten eller slut punkten för statisk webbplats. Slut punkten för Data Lake-lagring stöds inte. </a> ..  </div>
 
 ## <a name="see-also"></a>Se även
 
