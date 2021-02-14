@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: bf0df4cc6e686b553baf8c2439c807d2f07ef440
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 701fe4ffc6147086dde740bfdb2dc7db92508e28
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807486"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380244"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Självstudie: använda funktions flaggor i en ASP.NET Core app
 
@@ -218,7 +218,7 @@ Efter konvention `FeatureManagement` används avsnittet i det här JSON-dokument
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>Använd beroende insprutning för att få åtkomst till IFeatureManager 
 
-För vissa åtgärder, t. ex. kontroll av funktions flagg värden manuellt, måste du hämta en instans av [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanage). I ASP.NET Core MVC kan du komma åt funktions hanteraren `IFeatureManager` via beroende inmatning. I följande exempel läggs ett argument av typen `IFeatureManager` till i signaturen för konstruktorn för en kontrollant. Körningen löser automatiskt referensen och tillhandahåller ett av gränssnittet när du anropar konstruktorn. Om du använder en Programmall där kontrollanten redan har ett eller flera argument för beroende inmatning i konstruktorn, till exempel `ILogger` , kan du bara lägga till `IFeatureManager` som ett ytterligare argument:
+För vissa åtgärder, t. ex. kontroll av funktions flagg värden manuellt, måste du hämta en instans av [IFeatureManager](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview). I ASP.NET Core MVC kan du komma åt funktions hanteraren `IFeatureManager` via beroende inmatning. I följande exempel läggs ett argument av typen `IFeatureManager` till i signaturen för konstruktorn för en kontrollant. Körningen löser automatiskt referensen och tillhandahåller ett av gränssnittet när du anropar konstruktorn. Om du använder en Programmall där kontrollanten redan har ett eller flera argument för beroende inmatning i konstruktorn, till exempel `ILogger` , kan du bara lägga till `IFeatureManager` som ett ytterligare argument:
 
 ### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
     

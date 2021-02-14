@@ -1,22 +1,17 @@
 ---
 title: Kopiera och transformera data i Azure Synapse Analytics
 description: Lär dig hur du kopierar data till och från Azure Synapse Analytics och transformerar data i Azure Synapse Analytics med hjälp av Data Factory.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 386547aa6e815ad6ba7d860c513a3e24c4040cca
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223245"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364298"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Synapse Analytics med hjälp av Azure Data Factory
 
@@ -68,7 +63,7 @@ Följande egenskaper stöds för en länkad Azure Synapse Analytics-tjänst:
 | servicePrincipalId  | Ange programmets klient-ID.                         | Ja, när du använder Azure AD-autentisering med ett huvud namn för tjänsten. |
 | servicePrincipalKey | Ange programmets nyckel. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja, när du använder Azure AD-autentisering med ett huvud namn för tjänsten. |
 | tenant              | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Du kan hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. | Ja, när du använder Azure AD-autentisering med ett huvud namn för tjänsten. |
-| azureCloudType | För autentisering av tjänstens huvud namn anger du vilken typ av Azure-moln miljö som Azure AD-programmet är registrerat för. <br/> Tillåtna värden är **AzurePublic**, **AzureChina**, **azureusgovernment eller** och **AzureGermany**. Som standard används data fabrikens moln miljö. | Inga |
+| azureCloudType | För autentisering av tjänstens huvud namn anger du vilken typ av Azure-moln miljö som Azure AD-programmet är registrerat för. <br/> Tillåtna värden är `AzurePublic` , `AzureChina` , `AzureUsGovernment` och `AzureGermany` . Som standard används data fabrikens moln miljö. | Inga |
 | connectVia          | [Integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller en egen värd för integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. | Inga                                                           |
 
 För olika typer av autentiseringar, se följande avsnitt om krav respektive JSON-exempel:
@@ -137,7 +132,7 @@ Följ dessa steg om du vill använda tjänstens huvud-baserade Azure AD Applicat
 
    - Program-ID
    - Program nyckel
-   - Klientorganisations-ID
+   - Klient-ID:t
 
 2. **[Etablera en Azure Active Directory administratör](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)** för servern i Azure Portal om du inte redan har gjort det. Azure AD-administratören kan vara en Azure AD-användare eller Azure AD-grupp. Hoppa över steg 3 och 4 om du beviljar gruppen med hanterad identitet en administratörs roll. Administratören får fullständig åtkomst till databasen.
 
@@ -270,11 +265,11 @@ Om du vill kopiera data från Azure Synapse Analytics ställer du in egenskapen 
 | sqlReaderQuery               | Använd den anpassade SQL-frågan för att läsa data. Exempel: `select * from MyTable`. | Inga       |
 | sqlReaderStoredProcedureName | Namnet på den lagrade proceduren som läser data från käll tabellen. Den sista SQL-instruktionen måste vara en SELECT-instruktion i den lagrade proceduren. | Inga       |
 | storedProcedureParameters    | Parametrar för den lagrade proceduren.<br/>Tillåtna värden är namn-eller värdepar. Namn och Skift läge för parametrar måste matcha namn och Skift läge för parametrarna för den lagrade proceduren. | Inga       |
-| isolationLevel | Anger transaktions låsnings beteendet för SQL-källan. De tillåtna värdena är: **ReadCommitted**, **ReadUncommitted**, **RepeatableRead**, **Serializable**, **Snapshot**. Om inget värde anges används databasens standard isolerings nivå. Mer information finns i [det här dokumentet](/dotnet/api/system.data.isolationlevel) . | Inga |
+| isolationLevel | Anger transaktions låsnings beteendet för SQL-källan. De tillåtna värdena är: **ReadCommitted**, **ReadUncommitted**, **RepeatableRead**, **Serializable**, **Snapshot**. Om inget värde anges används databasens standard isolerings nivå. Mer information finns i [system. data. IsolationLevel](/dotnet/api/system.data.isolationlevel). | Inga |
 | partitionOptions | Anger de data partitionerings alternativ som används för att läsa in data från Azure Synapse Analytics. <br>Tillåtna värden är: **ingen** (standard), **PhysicalPartitionsOfTable** och **DynamicRange**.<br>När ett partitions alternativ är aktiverat (dvs. inte `None` ), kontrol leras graden av parallellitet för att samtidigt läsa in data från en Azure Synapse Analytics med [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) inställningen på kopierings aktiviteten. | Inga |
 | partitionSettings | Ange gruppen med inställningar för data partitionering. <br>Använd när alternativet partition inte är det `None` . | Inga |
-| **_Under `partitionSettings` :_* _ | | |
-| partitionColumnName | Ange namnet på käll kolumnen _ *i Integer-eller date/datetime-typ** (,,,,,, `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` eller `datetimeoffset` ) som ska användas av intervall partitionering för parallell kopiering. Om detta inte anges identifieras indexet eller primär nyckeln för tabellen automatiskt och används som partition-kolumn.<br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook  `?AdfDynamicRangePartitionCondition ` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från SQL-databas](#parallel-copy-from-azure-synapse-analytics) . | Inga |
+| ***Under `partitionSettings` :*** | | |
+| partitionColumnName | Ange namnet på käll kolumnen **i Integer-eller date/datetime-typ** (,,,,,, `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` eller `datetimeoffset` ) som ska användas av intervall partitionering för parallell kopiering. Om detta inte anges identifieras indexet eller primär nyckeln för tabellen automatiskt och används som partition-kolumn.<br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook  `?AdfDynamicRangePartitionCondition ` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från SQL-databas](#parallel-copy-from-azure-synapse-analytics) . | Inga |
 | partitionUpperBound | Det maximala värdet för partition-kolumnen för delning av partition intervall. Det här värdet används för att bestämma partitionens kliv, inte för att filtrera raderna i tabellen. Alla rader i tabellen eller frågeresultatet kommer att partitioneras och kopieras. Om inget värde anges identifierar kopierings aktiviteten automatiskt värdet.  <br>Använd när alternativet partition är `DynamicRange` . Ett exempel finns i avsnittet [parallell kopiering från SQL-databas](#parallel-copy-from-azure-synapse-analytics) . | Inga |
 | partitionLowerBound | Det minsta värdet för partition-kolumnen för delning av partition intervall. Det här värdet används för att bestämma partitionens kliv, inte för att filtrera raderna i tabellen. Alla rader i tabellen eller frågeresultatet kommer att partitioneras och kopieras. Om inget värde anges identifierar kopierings aktiviteten automatiskt värdet.<br>Använd när alternativet partition är `DynamicRange` . Ett exempel finns i avsnittet [parallell kopiering från SQL-databas](#parallel-copy-from-azure-synapse-analytics) . | Inga |
 
@@ -282,7 +277,7 @@ Om du vill kopiera data från Azure Synapse Analytics ställer du in egenskapen 
 
 - När du använder lagrad procedur i källa för att hämta data, Tänk på om din lagrade procedur har utformats för att returnera ett annat schema när ett annat parameter värde skickas in, kan du stöta på fel eller Visa oväntat resultat när du importerar schema från användar gränssnittet eller när du kopierar data till SQL Database med automatisk tabell skapande.
 
-**Exempel: använda SQL-fråga**
+#### <a name="example-using-sql-query"></a>Exempel: använda SQL-fråga
 
 ```json
 "activities":[
@@ -314,7 +309,7 @@ Om du vill kopiera data från Azure Synapse Analytics ställer du in egenskapen 
 ]
 ```
 
-**Exempel: använda lagrad procedur**
+#### <a name="example-using-stored-procedure"></a>Exempel: använda lagrad procedur
 
 ```json
 "activities":[
@@ -350,7 +345,7 @@ Om du vill kopiera data från Azure Synapse Analytics ställer du in egenskapen 
 ]
 ```
 
-**Exempel på lagrad procedur:**
+#### <a name="sample-stored-procedure"></a>Exempel på lagrad procedur:
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -529,7 +524,7 @@ Om kraven inte uppfylls kontrollerar Azure Data Factory inställningarna och åt
 
 3. Om din källa är en mapp `recursive` måste i kopierings aktiviteten vara inställd på sant.
 
-4. `wildcardFolderPath` , `wildcardFilename` ,,, `modifiedDateTimeStart` `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` och `additionalColumns` har inte angetts.
+4. `wildcardFolderPath` ,,,,, `wildcardFilename` `modifiedDateTimeStart` `modifiedDateTimeEnd` `prefix` `enablePartitionDiscovery` och `additionalColumns` har inte angetts.
 
 >[!NOTE]
 >Om din källa är en mapp hämtas filer från mappen och alla dess undermappar, och data hämtas inte från filer vars fil namn börjar med en understrykning (_) eller en punkt (.), enligt beskrivningen [här – plats argument](/sql/t-sql/statements/create-external-table-transact-sql#arguments-2).
@@ -578,6 +573,9 @@ Om du vill använda den här funktionen skapar du en [Azure Blob Storage länkad
 >- När du använder hanterad identitetsautentisering för den länkade mellanlagrings tjänsten bör du läsa de konfigurationer som krävs för [Azure-Blob](connector-azure-blob-storage.md#managed-identity) respektive [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
 >- Om din mellanlagrings Azure Storage har kon figurer ATS med VNet-tjänstens slut punkt måste du använda hanterad identitetsautentisering med "Tillåt betrodd Microsoft-tjänst" på lagrings konto, se [effekten av att använda VNet-tjänstens slut punkter med Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). 
 
+>[!IMPORTANT]
+>Om din mellanlagrings Azure Storage har kon figurer ATS med hanterad privat slut punkt och har lagrings brand väggen aktive rad, måste du använda hanterad identitetsautentisering och bevilja Storage BLOB data Reader-behörighet till Synapse-SQL Server för att säkerställa att den kan komma åt mellanlagrade filer under PolyBase-belastningen
+
 ```json
 "activities":[
     {
@@ -617,7 +615,7 @@ Om du vill använda den här funktionen skapar du en [Azure Blob Storage länkad
 
 ### <a name="best-practices-for-using-polybase"></a>Metod tips för att använda PolyBase
 
-Följande avsnitt innehåller metod tips utöver de som nämns i [metod tips för Azure Synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md).
+Följande avsnitt innehåller metod tips utöver de metoder som nämns i [metod tips för Azure Synapse Analytics](../synapse-analytics/sql/best-practices-sql-pool.md).
 
 #### <a name="required-database-permission"></a>Nödvändig databas behörighet
 
@@ -637,17 +635,17 @@ För att uppnå bästa möjliga data flöde tilldelar du en större resurs klass
 
 #### <a name="polybase-troubleshooting"></a>PolyBase-fel sökning
 
-**Läser in till decimal kolumn**
+#### <a name="loading-to-decimal-column"></a>Läser in till decimal kolumn
 
-Om dina källdata är i text format eller andra icke-PolyBase-kompatibla lager (med mellanlagrad kopia och PolyBase) och den innehåller ett tomt värde som ska läsas in i Azure Synapse Analytics-kolumnen, kan du trycka på följande fel:
+Om dina källdata är i text format eller andra icke-PolyBase-kompatibla lager (med mellanlagrad kopia och PolyBase) och den innehåller ett tomt värde som ska läsas in i Azure Synapse Analytics-kolumnen, kan du få följande fel meddelande:
 
-```
+```output
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
 Lösningen är att avmarkera alternativet **Använd standard** alternativet (som falskt) i kopierings aktiviteten handfat-> PolyBase-inställningar. "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" är en PolyBase-inbyggd konfiguration som anger hur du ska hantera saknade värden i avgränsade textfiler när PolyBase hämtar data från text filen.
 
-**`tableName` i Azure Synapse Analytics**
+#### <a name="check-the-tablename-property-in-azure-synapse-analytics"></a>Kontrol lera egenskapen tableName i Azure Synapse Analytics
 
 Följande tabell innehåller exempel på hur du anger egenskapen **TableName** i JSON-datauppsättningen. Det visar flera kombinationer av schema-och tabell namn.
 
@@ -660,19 +658,29 @@ Följande tabell innehåller exempel på hur du anger egenskapen **TableName** i
 
 Om du ser följande fel kan problemet vara det värde som du har angett för egenskapen **TableName** . I tabellen ovan finns det korrekta sättet att ange värden för JSON-egenskapen **TableName** .
 
-```
+```output
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-**Kolumner med standardvärden**
+#### <a name="columns-with-default-values"></a>Kolumner med standardvärden
 
 För närvarande accepterar PolyBase-funktionen i Data Factory bara samma antal kolumner som i mål tabellen. Ett exempel är en tabell med fyra kolumner där en av dem definieras med ett standardvärde. Indata behöver fortfarande ha fyra kolumner. En data uppsättning med tre kolumner ger ett fel som liknar följande meddelande:
 
-```
+```output
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
 NULL-värdet är en särskild form av standardvärdet. Om kolumnen kan vara null kan indata i bloben för den kolumnen vara tomma. Men det kan inte saknas i indata-datauppsättningen. PolyBase infogar NULL för saknade värden i Azure Synapse Analytics.
+
+#### <a name="external-file-access-failed"></a>Åtkomst till extern fil misslyckades
+
+Om du får följande fel ser du till att du använder hanterad identitetsautentisering och har beviljats behörighet för Storage BLOB-dataläsaren till den hanterade identiteten för Azure Synapse-arbetsytan.
+
+```output
+Job failed due to reason: at Sink '[SinkName]': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: External file access failed due to internal error: 'Error occurred while accessing HDFS: Java exception raised on call to HdfsBridge_IsDirExist. Java exception message:\r\nHdfsBridge::isDirExist 
+```
+
+Mer information finns i [bevilja behörigheter till hanterad identitet efter att arbets ytan har skapats](../synapse-analytics/security/how-to-grant-workspace-managed-identity-permissions.md#grant-permissions-to-managed-identity-after-workspace-creation).
 
 ## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics"></a><a name="use-copy-statement"></a> Använda COPY-instruktionen för att läsa in data i Azure Synapse Analytics
 

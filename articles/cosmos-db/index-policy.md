@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/10/2021
 ms.author: tisande
-ms.openlocfilehash: 58ee3bcd0ba14359ea9adaa131b8280b81008b57
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526780"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378816"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indexeringsprinciper i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -290,7 +290,7 @@ WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true)
 ORDER BY c.firstName, c.lastName
 ```
 
-Följande överväganden används när du skapar sammansatta index för att optimera en fråga med en filter-och- `ORDER BY` sats:
+Följande överväganden gäller när du skapar sammansatta index för att optimera en fråga med en filter-och- `ORDER BY` sats:
 
 * Om du inte definierar ett sammansatt index för en fråga med ett filter på en egenskap och en separat `ORDER BY` sats med en annan egenskap, kommer frågan fortfarande att lyckas. RU-kostnaden för frågan kan dock minskas med ett sammansatt index, särskilt om egenskapen i- `ORDER BY` satsen har en hög kardinalitet.
 * Om frågan filtreras efter egenskaper bör dessa tas med först i- `ORDER BY` satsen.
@@ -308,6 +308,26 @@ Följande överväganden används när du skapar sammansatta index för att opti
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
+### <a name="queries-with-a-filter-and-an-aggregate"></a>Frågor med ett filter och en mängd 
+
+Om en fråga filtrerar på en eller flera egenskaper och har en funktion för mängd funktioner, kan det vara praktiskt att skapa ett sammansatt index för egenskaperna i funktionen filter och funktionen Aggregate system. Den här optimeringen gäller för funktionerna [Sum](sql-query-aggregate-sum.md) och [AVG](sql-query-aggregate-avg.md) system.
+
+Följande överväganden gäller när du skapar sammansatta index för att optimera en fråga med en filter-och sammansatt systemfunktion.
+
+* Sammansatta index är valfria när du kör frågor med agg regeringar. RU-kostnaden för frågan kan dock ofta kraftigt minska med ett sammansatt index.
+* Om frågan filtrerar på flera egenskaper måste likhets filtren vara de första egenskaperna i det sammansatta indexet.
+* Du kan ha maximalt ett intervall filter per sammansatt index och det måste finnas i egenskapen i funktionen Aggregate system.
+* Egenskapen i funktionen sammansatt system ska definieras sist i det sammansatta indexet.
+* `order`( `ASC` Eller) spelar ingen `DESC` roll.
+
+| **Sammansatt index**                      | **Exempel fråga**                                  | **Stöds av sammansatt index?** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `Yes` |
+| ```(timestamp ASC, name ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John"``` | `No` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
+| ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
+| ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
 ## <a name="index-transformationmodifying-the-indexing-policy"></a><index-Transformation>ändra indexerings principen
 

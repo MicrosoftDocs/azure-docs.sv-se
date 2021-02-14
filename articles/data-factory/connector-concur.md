@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Concur med Azure Data Factory (för hands version)
 description: Lär dig hur du kopierar data från Concur till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030806"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383678"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopiera data från Concur med Azure Data Factory (för hands version)
 
@@ -51,21 +46,21 @@ Följande egenskaper stöds för den länkade tjänsten Concur:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till: **Concur** | Yes |
-| connectionProperties | En grupp egenskaper som definierar hur du ansluter till Concur. | Yes |
-| **_Under `connectionProperties` :_* _ | | |
-| authenticationType | Tillåtna värden är `OAuth_2.0_Bearer` och `OAuth_2.0` (bakåtkompatibelt). Alternativet OAuth 2,0-autentisering fungerar med det gamla API: t Concur som inaktuell sedan feb 2017. | Yes |
-| värd | Slut punkten för Concur-servern, `implementation.concursolutions.com` t. ex..  | Yes |
+| typ | Egenskapen Type måste anges till: **Concur** | Ja |
+| connectionProperties | En grupp egenskaper som definierar hur du ansluter till Concur. | Ja |
+| ***Under `connectionProperties` :*** | | |
+| authenticationType | Tillåtna värden är `OAuth_2.0_Bearer` och `OAuth_2.0` (bakåtkompatibelt). Alternativet OAuth 2,0-autentisering fungerar med det gamla API: t Concur som inaktuell sedan feb 2017. | Ja |
+| värd | Slut punkten för Concur-servern, `implementation.concursolutions.com` t. ex..  | Ja |
 | baseUrl | Bas-URL: en för din Concur behörighets webb adress. | Ja för `OAuth_2.0_Bearer` autentisering |
-| ClientID | Program klient-ID som tillhandahålls av Concur app Management.  | Yes |
+| ClientID | Program klient-ID som tillhandahålls av Concur app Management.  | Ja |
 | clientSecret | Den klient hemlighet som motsvarar klient-ID: t. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja för `OAuth_2.0_Bearer` autentisering |
-| användarnamn | Det användar namn som du använder för att komma åt Concur-tjänsten. | Yes |
-| password | Lösen ordet som motsvarar det användar namn som du angav i fältet användar namn. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| useEncryptedEndpoints | Anger om data källans slut punkter krypteras med HTTPS. Standardvärdet är True.  | No |
-| useHostVerification | Anger om värd namnet i Server certifikatet måste matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är True.  | No |
-| usePeerVerification | Anger om du vill verifiera serverns identitet vid anslutning via TLS. Standardvärdet är True.  | No |
+| användarnamn | Det användar namn som du använder för att komma åt Concur-tjänsten. | Ja |
+| password | Lösen ordet som motsvarar det användar namn som du angav i fältet användar namn. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| useEncryptedEndpoints | Anger om data källans slut punkter krypteras med HTTPS. Standardvärdet är True.  | Inga |
+| useHostVerification | Anger om värd namnet i Server certifikatet måste matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är True.  | Inga |
+| usePeerVerification | Anger om du vill verifiera serverns identitet vid anslutning via TLS. Standardvärdet är True.  | Inga |
 
-_ *Exempel:**
+**Exempel:**
 
 ```json
 { 
@@ -125,7 +120,7 @@ Om du vill kopiera data från Concur anger du egenskapen type för data uppsätt
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till: **ConcurObject** | Yes |
+| typ | Data uppsättningens typ-egenskap måste anges till: **ConcurObject** | Ja |
 | tableName | Tabellens namn. | Nej (om "fråga" i aktivitets källan har angetts) |
 
 
@@ -156,8 +151,8 @@ Om du vill kopiera data från Concur anger du käll typen i kopierings aktivitet
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **ConcurSource** | Yes |
-| DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Till exempel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nej (om "tableName" i data uppsättningen har angetts) |
+| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **ConcurSource** | Ja |
+| DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Exempel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nej (om "tableName" i data uppsättningen har angetts) |
 
 **Exempel:**
 

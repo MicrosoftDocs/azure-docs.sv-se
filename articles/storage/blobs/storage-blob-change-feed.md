@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 9a439541880cc8e20457edc8d24c5600ba2747c8
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 3e4211da59193d0c48398d9f2822fd12cc217d8b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979234"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390580"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Ändra stöd för feed i Azure Blob Storage
 
@@ -159,7 +159,7 @@ Se [processen ändra flödes loggar i Azure Blob Storage](storage-blob-change-fe
 
 Ändrings flödet är en logg över ändringar som organiseras i **Tim** *segment* , men som läggs till och uppdateras med några minuter. Segmenten skapas endast när det finns BLOB Change-händelser som inträffar under den timmen. Detta gör att klient programmet kan använda ändringar som sker inom specifika tidsintervall utan att behöva söka igenom hela loggen. Mer information finns i [specifikationerna](#specifications).
 
-Ett tillgängligt Tim segment i ändrings flödet beskrivs i en manifest fil som anger Sök vägarna till filerna för byte av byte för det segmentet. I listen av den `$blobchangefeed/idx/segments/` virtuella katalogen visas de segment som sorteras efter tid. Segmentets sökväg beskriver starten av tids intervallet för varje timme som segmentet representerar. Du kan använda listan för att filtrera ut segmenten med loggar som är intressanta för dig.
+Ett tillgängligt Tim segment i ändrings flödet beskrivs i en manifest fil som anger Sök vägarna till filerna för byte av byte för det segmentet. I listen av den `$blobchangefeed/idx/segments/` virtuella katalogen visas de segment som sorteras efter tid. Segmentets sökväg beskriver starten av tids intervallet för varje timme som segmentet representerar. Du kan använda listan för att filtrera ut segmenten med loggar som är av intresse för dig.
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    

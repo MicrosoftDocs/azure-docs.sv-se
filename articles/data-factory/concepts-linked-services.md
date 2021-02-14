@@ -1,22 +1,18 @@
 ---
 title: Det finns inte några länkade tjänster i Azure Data Factory
 description: Lär dig mer om länkade tjänster i Data Factory. Länkade tjänster länkar beräknings-/data lager till Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 172694363b482edf6d463aa74b85e81c91fa6a9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 768af9e8568a3842b642a3ebd447d9df8064e840
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500112"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389934"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Det finns inte några länkade tjänster i Azure Data Factory
 
@@ -66,12 +62,12 @@ En länkad tjänst i Data Factory definieras i JSON-format enligt följande:
 
 I följande tabell beskrivs egenskaperna i ovanstående JSON:
 
-Egenskap | Beskrivning | Krävs |
+Egenskap | Beskrivning | Obligatorisk |
 -------- | ----------- | -------- |
-name | Namnet på den länkade tjänsten. Se [Azure Data Factory namngivnings regler](naming-rules.md). |  Yes |
-typ | Typ av länkad tjänst. Till exempel: AzureBlobStorage (data Store) eller AzureBatch (Compute). Se beskrivningen av typeProperties. | Yes |
-typeProperties | Typ egenskaperna är olika för varje data lager eller beräkning. <br/><br/> Information om vilka data lagrings typer som stöds och deras typ egenskaper finns i artikeln [Översikt över koppling](copy-activity-overview.md#supported-data-stores-and-formats) . Gå till artikeln data Store Connector om du vill veta mer om typ egenskaper som är speciella för ett data lager. <br/><br/> För beräknings typer som stöds och deras typ egenskaper, se [Compute-länkade tjänster](compute-linked-services.md). | Yes |
-connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. | No
+name | Namnet på den länkade tjänsten. Se [Azure Data Factory namngivnings regler](naming-rules.md). |  Ja |
+typ | Typ av länkad tjänst. Till exempel: AzureBlobStorage (data Store) eller AzureBatch (Compute). Se beskrivningen av typeProperties. | Ja |
+typeProperties | Typ egenskaperna är olika för varje data lager eller beräkning. <br/><br/> Information om vilka data lagrings typer som stöds och deras typ egenskaper finns i artikeln [Översikt över koppling](copy-activity-overview.md#supported-data-stores-and-formats) . Gå till artikeln data Store Connector om du vill veta mer om typ egenskaper som är speciella för ett data lager. <br/><br/> För beräknings typer som stöds och deras typ egenskaper, se [Compute-länkade tjänster](compute-linked-services.md). | Ja |
+connectVia | Den [integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure Integration Runtime. | Inga
 
 ## <a name="linked-service-example"></a>Exempel på länkad tjänst
 

@@ -1,22 +1,18 @@
 ---
 title: Övervaka en Azure-datafabrik via programmering
 description: 'Lär dig hur du övervakar en pipeline i en data fabrik med hjälp av olika SDK: er (Software Development Kits).'
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 038da033c2bdf78a0a2547cc713944bc11bf093d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556570"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379904"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Övervaka en Azure-datafabrik via programmering
 
@@ -28,9 +24,20 @@ Den här artikeln beskriver hur du övervakar en pipeline i en data fabrik med h
 
 ## <a name="data-range"></a>Data intervall
 
-Data Factory lagrar endast pipeline-körnings data i 45 dagar. När du frågar program mässigt efter data om Data Factory pipelines körs, till exempel med PowerShell-kommandot, `Get-AzDataFactoryV2PipelineRun` finns det inga maximala datum för valfria-och- `LastUpdatedAfter` `LastUpdatedBefore` parametrarna. Men om du frågar efter data för det gångna året returnerar inte frågan ett fel, men returnerar bara pipelines kör data från de senaste 45 dagarna.
+Data Factory lagrar endast pipeline-körnings data i 45 dagar. När du frågar program mässigt efter data om Data Factory pipelines körs, till exempel med PowerShell-kommandot, `Get-AzDataFactoryV2PipelineRun` finns det inga maximala datum för valfria-och- `LastUpdatedAfter` `LastUpdatedBefore` parametrarna. Men om du frågar efter data för det senaste året får du till exempel inte ett fel, utan endast pipelines kör data från de senaste 45 dagarna.
 
-Om du vill spara pipelines körnings data i mer än 45 dagar konfigurerar du din egen diagnostiska loggning med [Azure Monitor](monitor-using-azure-monitor.md).
+Om du vill behålla pipeline-körningar i mer än 45 dagar konfigurerar du din egen diagnostiska loggning med [Azure Monitor](monitor-using-azure-monitor.md).
+
+## <a name="pipeline-run-information"></a>Körnings information för pipeline
+
+För körnings egenskaper för pipeline, se [PIPELINERUN API-referens](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/get#pipelinerun). En pipeline-körning har olika status under livs cykeln, och möjliga värden för körnings status visas nedan:
+
+* I kö
+* Pågår
+* Lyckades
+* Misslyckad
+* Avbryter
+* Avbrutna
 
 ## <a name="net"></a>.NET
 En fullständig genom gång av hur du skapar och övervakar en pipeline med hjälp av .NET SDK finns i [skapa en data fabrik och pipeline med hjälp av .net](quickstart-create-data-factory-dot-net.md).
@@ -45,7 +52,7 @@ En fullständig genom gång av hur du skapar och övervakar en pipeline med hjä
     {
         pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
         Console.WriteLine("Status: " + pipelineRun.Status);
-        if (pipelineRun.Status == "InProgress")
+        if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
             System.Threading.Thread.Sleep(15000);
         else
             break;
@@ -99,7 +106,7 @@ En fullständig genom gång av hur du skapar och övervakar en pipeline med hjä
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {
@@ -128,12 +135,12 @@ En fullständig genom gång av hur du skapar och övervakar en pipeline med hjä
         $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
-            if ($run.Status -ne 'InProgress') {
-                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+            if ( ($run.Status -ne "InProgress") -and ($run.Status -ne "Queued") ) {
+                Write-Output ("Pipeline run finished. The status is: " +  $run.Status)
                 $run
                 break
             }
-            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+            Write-Output ("Pipeline is running...status: " + $run.Status)
         }
 
         Start-Sleep -Seconds 30

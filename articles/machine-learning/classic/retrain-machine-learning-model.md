@@ -3,22 +3,22 @@ title: 'ML Studio (klassisk): återträna en webb tjänst – Azure'
 description: Lär dig hur du uppdaterar en webb tjänst för att använda en nytränad maskin inlärnings modell i Azure Machine Learning Studio (klassisk).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325823"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517594"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Omträna och distribuera en maskin inlärnings modell
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Retraining är ett sätt att se till att maskin inlärnings modeller hålls korrekta och baseras på de mest relevanta data som finns tillgängliga. Den här artikeln visar hur du omtränar och distribuerar en maskin inlärnings modell som en ny webb tjänst i Studio (klassisk). Om du vill träna en klassisk webb tjänst kan du [läsa den här instruktions artikeln.](retrain-classic-web-service.md)
@@ -35,7 +35,7 @@ Du följer de här stegen för att omträna och distribuera en ny webb tjänst f
 
 ## <a name="deploy-the-retraining-web-service"></a>Distribuera webb tjänsten för retraining
 
-Med en retraining-webbtjänst kan du träna om din modell med en ny uppsättning parametrar, t. ex. nya data och spara den för senare. När du ansluter en **webb tjänst utmatning**  till en **tåg modell** , kommer övnings experimentet att generera en ny modell som du kan använda.
+Med en retraining-webbtjänst kan du träna om din modell med en ny uppsättning parametrar, t. ex. nya data och spara den för senare. När du ansluter en **webb tjänst utmatning**  till en **tåg modell**, kommer övnings experimentet att generera en ny modell som du kan använda.
 
 Använd följande steg för att distribuera en retraining-webb tjänst:
 
@@ -96,7 +96,7 @@ Exempel koden BES laddar upp en fil från en lokal enhet (till exempel "C:\temp\
 1. Klicka på **blobbar** i den vänstra navigerings kolumnen.
 1. Välj en befintlig behållare eller skapa en ny och spara namnet.
 
-Leta upp *StorageAccountName* -, *StorageAccountKey* -och *StorageContainerName* -deklarationerna och uppdatera värdena som du sparade från portalen.
+Leta upp *StorageAccountName*-, *StorageAccountKey*-och *StorageContainerName* -deklarationerna och uppdatera värdena som du sparade från portalen.
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -130,11 +130,11 @@ Här är ett exempel på omskolning av utdata:
 
 När du kör programmet, innehåller utdata URL och signaturer för delad åtkomst som krävs för att få åtkomst till utvärderings resultatet.
 
-Du kan se prestanda resultatet för den omtränade modellen genom att kombinera *BaseLocation* , *RelativeLocation* och *SasBlobToken* från resultatet av utdata för *output2* och klistra in den fullständiga URL-adressen i webbläsarens Adress fält.
+Du kan se prestanda resultatet för den omtränade modellen genom att kombinera *BaseLocation*, *RelativeLocation* och *SasBlobToken* från resultatet av utdata för *output2* och klistra in den fullständiga URL-adressen i webbläsarens Adress fält.
 
 Granska resultaten för att avgöra om den nyligen intränade modellen fungerar bättre än den befintliga.
 
-Spara *BaseLocation* , *RelativeLocation* och *SasBlobToken* från resultatet av utdata.
+Spara *BaseLocation*, *RelativeLocation* och *SasBlobToken* från resultatet av utdata.
 
 ## <a name="update-the-predictive-experiment"></a>Uppdatera förutsägande experiment
 

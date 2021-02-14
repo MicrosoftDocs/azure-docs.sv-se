@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678609"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389815"
 ---
 # <a name="what-is-azure-data-box"></a>Vad är Azure Data Box?
 
@@ -42,7 +42,7 @@ Här följer de olika scenarier där Data Box-enhet kan användas för att expor
 
 - **Haveri beredskap** – när en kopia av data från Azure återställs till ett lokalt nätverk. I ett typiskt haveri beredskaps scenario exporteras en stor mängd Azure-data till en Data Box-enhet. Microsoft levererar sedan den här Data Box-enhet och data återställs lokalt på kort tid.
 
-- **Säkerhets krav** – när du behöver kunna exportera data till Azure på grund av myndighets krav eller säkerhets krav. Azure Storage är till exempel tillgängligt i molnet med hemliga och överordnade hemligheter och du kan använda Data Box-enhet för att exportera data från Azure. 
+- **Säkerhets krav** – när du behöver kunna exportera data från Azure på grund av myndighets-eller säkerhets krav. Azure Storage är till exempel tillgängligt i molnet med hemliga och överordnade hemligheter och du kan använda Data Box-enhet för att exportera data från Azure. 
 
 - **Migrera tillbaka till lokalt eller till en annan moln tjänst leverantör** – när du vill flytta alla data tillbaka till lokal, eller till en annan moln tjänst leverantör, exportera data via data Box-enhet för att migrera arbets belastningarna.
 

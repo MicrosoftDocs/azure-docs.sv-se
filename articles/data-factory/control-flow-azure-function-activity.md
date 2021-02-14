@@ -1,22 +1,18 @@
 ---
 title: Azure Function-aktivitet i Azure Data Factory
 description: Lär dig hur du använder Azure Function-aktiviteten för att köra en Azure-funktion i en Data Factory pipeline
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: f7c8f1e5ae0da9e7c404a942fcb4f554281486a7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 51cf396fb6f1fcc86a0187e9f3be6b81487b86c2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500058"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383413"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Function-aktivitet i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,21 +28,21 @@ Retur typen för Azure-funktionen måste vara giltig `JObject` . (Tänk på att 
 
 | **Egenskap** | **Beskrivning** | **Obligatoriskt** |
 | --- | --- | --- |
-| typ   | Egenskapen Type måste anges till: **AzureFunction** | yes |
-| URL till Function-app | URL för Azure-Funktionsapp. Formatet är `https://<accountname>.azurewebsites.net` . URL: en är värdet under **URL** -avsnittet när du visar Funktionsapp i Azure Portal  | yes |
-| funktions nyckel | Åtkomst nyckel för Azure-funktionen. Klicka på **Hantera** -avsnittet för respektive funktion och kopiera antingen **funktions nyckeln** eller **värd nyckeln**. Läs mer här: [Azure Functions HTTP-utlösare och bindningar](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | yes |
+| typ   | Egenskapen Type måste anges till: **AzureFunction** | ja |
+| URL till Function-app | URL för Azure-Funktionsapp. Formatet är `https://<accountname>.azurewebsites.net` . URL: en är värdet under **URL** -avsnittet när du visar Funktionsapp i Azure Portal  | ja |
+| funktions nyckel | Åtkomst nyckel för Azure-funktionen. Klicka på **Hantera** -avsnittet för respektive funktion och kopiera antingen **funktions nyckeln** eller **värd nyckeln**. Läs mer här: [Azure Functions HTTP-utlösare och bindningar](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure Function-aktivitet
 
 | **Egenskap**  | **Beskrivning** | **Tillåtna värden** | **Obligatoriskt** |
 | --- | --- | --- | --- |
-| name  | Namn på aktiviteten i pipelinen  | Sträng | yes |
-| typ  | Typ av aktivitet är ' AzureFunctionActivity ' | Sträng | yes |
-| länkad tjänst | Den länkade Azure Function-tjänsten för motsvarande Azure-Funktionsapp  | Länkad tjänst referens | yes |
-| funktions namn  | Namnet på funktionen i Azure-Funktionsapp som den här aktiviteten anropar | Sträng | yes |
-| metod  | REST API metod för funktions anropet | Strängar som stöds: "GET", "POST", "placera"   | yes |
-| sidhuvud  | Huvuden som skickas till begäran. Om du till exempel vill ange språk och typ på en begäran: "huvuden": {"Accept-language": "en-US", "innehålls typ": "Application/JSON"} | Sträng (eller uttryck med resultType för sträng) | No |
+| name  | Namn på aktiviteten i pipelinen  | Sträng | ja |
+| typ  | Typ av aktivitet är ' AzureFunctionActivity ' | Sträng | ja |
+| länkad tjänst | Den länkade Azure Function-tjänsten för motsvarande Azure-Funktionsapp  | Länkad tjänst referens | ja |
+| funktions namn  | Namnet på funktionen i Azure-Funktionsapp som den här aktiviteten anropar | Sträng | ja |
+| metod  | REST API metod för funktions anropet | Strängar som stöds: "GET", "POST", "placera"   | ja |
+| sidhuvud  | Huvuden som skickas till begäran. Om du till exempel vill ange språk och typ på en begäran: "huvuden": {"Accept-language": "en-US", "innehålls typ": "Application/JSON"} | Sträng (eller uttryck med resultType för sträng) | Inga |
 | body  | brödtext som skickas tillsammans med begäran till API-metoden för funktioner  | Sträng (eller uttryck med resultType för sträng) eller objekt.   | Krävs för metoder för att skicka/publicera |
 |   |   |   | |
 

@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: fb7cb0638ca86ea736749e6fb35e2295128162aa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7fc57b46055281c64b39767047f6b7cb5b748ad2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032991"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373835"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurera en IoT Edge-enhet för att kommunicera via en proxyserver
 
@@ -245,7 +245,7 @@ När miljövariablerna ingår bör din modultyp se ut som följande edgeHub-exem
 "edgeHub": {
     "type": "docker",
     "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+        "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
         "createOptions": ""
     },
     "env": {
@@ -275,7 +275,7 @@ Om du har inkluderat miljövariabeln **UpstreamProtocol** i filen config. yaml p
 
 Om proxyn som du försöker använda utför trafik kontroll på TLS-skyddade anslutningar är det viktigt att Observera att autentisering med X. 509-certifikat inte fungerar. IoT Edge upprättar en TLS-kanal som är krypterad och slutar med det tillhandahållna certifikatet och nyckeln. Om kanalen är bruten för trafik kontroll kan proxyn inte återupprätta kanalen med rätt autentiseringsuppgifter och IoT Hub och IoT Hub enhets etablerings tjänsten returnerar ett `Unauthorized` fel.
 
-Om du vill använda en proxy som utför trafik inspektionen måste du använda antingen autentisering med delad åtkomst eller IoT Hub och IoT Hub enhets etablerings tjänsten som har lagts till i en tillåten för att undvika inspektion.
+Om du vill använda en proxy som utför trafik inspektionen måste du använda antingen autentisering med delad åtkomst eller IoT Hub och IoT Hub enhets etablerings tjänsten som lagts till i en lista över tillåtna för att undvika inspektion.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: 651e0635f0b556cd47adfccdbac59ef587570128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2caa09d41abb1842100ed8259e82ec411390ccb
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535737"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520637"
 ---
 # <a name="ranking-algorithm-in-azure-cognitive-search"></a>Ranknings algoritm i Azure Kognitiv sökning
 
@@ -32,7 +32,7 @@ Samtidigt som den äldre klassiska likhets algoritmen används, tar BM25 sin rot
 
 När du skapar ett nytt index kan du ange en **likhets** egenskap för att ange algoritmen. Du kan använda `api-version=2019-05-06-Preview` , som du ser nedan, eller `api-version=2020-06-30` .
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
 ```
 
@@ -105,7 +105,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## <a name="see-also"></a>Se även  
 
-+ [Referens för REST API](/rest/api/searchservice/)
++ [REST API referens](/rest/api/searchservice/)
 + [Lägg till bedömnings profiler i ditt index](index-add-scoring-profiles.md)
 + [Skapa index-API](/rest/api/searchservice/create-index)
 + [Azure Kognitiv sökning .NET SDK](/dotnet/api/overview/azure/search)

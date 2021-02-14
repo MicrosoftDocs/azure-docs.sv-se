@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 38bf8b3c1c39322aea27f5f4d427c31010837bfb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872900"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391028"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux guld-avbildningar för prenumerationer i Azure
 
@@ -30,9 +30,6 @@ Red Hat Enterprise Linux-avbildningar (RHEL) är tillgängliga i Azure via en "b
 - De virtuella datorer som tillhandahålls från Red Hat Gold-avbildningar har inte RHEL-avgifter som är kopplade till RHEL-avbildningar enligt principen betala per användning.
 - Bilderna är inte berättigade. Du måste använda Red Hat-Subscription-Manager för att registrera och prenumerera på de virtuella datorerna för att få uppdateringar från Red Hat direkt.
 - Det går att växla från avbildningar med betala per användning till BYOS med hjälp av [Azure Hybrid-förmån](../../linux/azure-hybrid-benefit-linux.md). Det är dock inte möjligt att växla från en ursprungligen distribuerad BYOS till fakturerings modeller enligt principen betala per användning för Linux-avbildningar. Om du vill byta fakturerings modell från BYOS till "betala per användning" måste du distribuera om den virtuella datorn från respektive avbildning.
-
->[!NOTE]
-> Generation 2 RHEL BYOS-avbildningar är inte tillgängliga via Marketplace-erbjudandet. Om du behöver en generation 2 RHEL BYOS-avbildning kan du gå till instrument panelen för moln åtkomst i Red Hat-prenumerations hantering. Mer information finns i [Red Hat-dokumentationen](https://access.redhat.com/articles/4847681).
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Krav och villkor för åtkomst till Red Hat Gold-avbildningar
 

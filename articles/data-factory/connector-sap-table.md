@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från en SAP-tabell
 description: Lär dig hur du kopierar data från en SAP-tabell till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: b796b9eb065a221904fe4487c900efa2db1955af
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: e4f756631b51ce9c5fba32939d1c6651e7b328d0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429584"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378527"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiera data från en SAP-tabell med hjälp av Azure Data Factory
 
@@ -226,8 +222,8 @@ Följande egenskaper stöds för att kopiera data från en SAP-tabell:
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type`Egenskapen måste anges till `SapTableSource` .         | Ja      |
 | `rowCount`                         | Antalet rader som ska hämtas.                              | Inga       |
-| `rfcTableFields`                 | De fält (kolumner) som ska kopieras från SAP-tabellen. Ett exempel är `column0, column1`. | Inga       |
-| `rfcTableOptions`                | Alternativen för att filtrera raderna i en SAP-tabell. Ett exempel är `COLUMN0 EQ 'SOMEVALUE'`. Se även tabellen SAP Query-operator längre fram i den här artikeln. | Inga       |
+| `rfcTableFields`                 | De fält (kolumner) som ska kopieras från SAP-tabellen. Till exempel `column0, column1`. | Inga       |
+| `rfcTableOptions`                | Alternativen för att filtrera raderna i en SAP-tabell. Till exempel `COLUMN0 EQ 'SOMEVALUE'`. Se även tabellen SAP Query-operator längre fram i den här artikeln. | Inga       |
 | `customRfcReadTableFunctionModule` | En anpassad RFC Function-modul som kan användas för att läsa data från en SAP-tabell.<br>Du kan använda en anpassad RFC Function-modul för att definiera hur data hämtas från SAP-systemet och returneras till Data Factory. Modulen för anpassad funktion måste ha ett implementerat gränssnitt (importera, exportera, tabeller) som liknar `/SAPDS/RFC_READ_TABLE2` , vilket är det standard gränssnitt som används av Data Factory.<br>Data Factory | Inga       |
 | `partitionOption`                  | Den partition mekanism som ska läsas från en SAP-tabell. Alternativ som stöds är: <ul><li>`None`</li><li>`PartitionOnInt` (vanliga heltals-eller heltals värden med utfyllnaden noll till vänster, till exempel `0000012345` )</li><li>`PartitionOnCalendarYear` (4 siffror i formatet "åååå")</li><li>`PartitionOnCalendarMonth` (6 siffror i formatet "YYYYMM")</li><li>`PartitionOnCalendarDate` (8 siffror i formatet "ÅÅÅÅMMDD")</li><li>`PartitionOntime` (6 siffror i formatet "HHMMSS", t. ex. `235959` )</li></ul> | Inga       |
 | `partitionColumnName`              | Namnet på den kolumn som används för att partitionera data.                | Inga       |

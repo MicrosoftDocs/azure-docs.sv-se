@@ -3,18 +3,17 @@ title: Experiment spårning och distribution av modeller
 titleSuffix: Azure Data Science Virtual Machine
 description: Lär dig hur du spårar och loggar experiment från Data Science Virtual Machine med Azure Machine Learning och/eller MLFlow.
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 3795d531c5c4c543587ab817c05cd1cfeea6be06
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704548"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518546"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Spåra experiment och distribuera modeller i Azure Machine Learning
 
@@ -24,13 +23,13 @@ Följande diagram illustrerar att med MLflow spårning spårar du ett Experiment
 
 ![spåra experiment](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Du måste [etablera en Azure Machine Learning-arbetsyta](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>Skapa en ny notebook
 
-Azure Machine Learning-och MLFlow SDK är förinstallerade på Data Science VM och kan nås i **azureml_py36_ \** _ Conda-miljön. I JupyterLab klickar du på starta och väljer följande kernel:
+Azure Machine Learning-och MLFlow SDK är förinstallerade på Data Science VM och kan nås i **azureml_py36_ \*** Conda-miljön. I JupyterLab klickar du på starta och väljer följande kernel:
 
 ![Val av kernel](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +136,7 @@ På den vänstra menyn i [azureml Studio](https://ml.azure.com) klickar du på _
 
 I fönstret __nytt__ fyllnings kluster fyllnings information för:
 
-_ Compute Name
+* Compute-namn
 * Kubernetes-tjänst – Välj Skapa ny
 * Välj region
 * Välj den virtuella datorns storlek (i den här självstudien är standardvärdet för Standard_D3_v2 tillräckligt)

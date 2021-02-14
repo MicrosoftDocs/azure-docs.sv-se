@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 21924ad5da8833ca5cf8373270ed1bfd3facfdc9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226564"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388625"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Vanliga frågor och svar om tal till text
 
@@ -140,7 +140,7 @@ S **: samla** in data som är så nära program scenariot och användnings falle
 
 Använd en av [regionerna](custom-speech-overview.md#set-up-your-azure-account) där dedikerad maskin vara är tillgänglig för utbildning för snabbare resultat. I allmänhet bearbetar tjänsten cirka 10 timmar ljud data per dag i regioner med sådan maskin vara. Det kan bara bearbeta ungefär 1 timme ljud data per dag i andra regioner. Du kan kopiera den helt utbildade modellen till en annan region med hjälp av [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Utbildning med enbart text är mycket snabbare och slutförs vanligt vis inom några minuter.
 
-Vissa bas modeller kan inte anpassas med ljud data. För dem använder tjänsten bara texten i avskriften för utbildning och ignorerar ljuddata. Träningen kommer att bli mycket snabbare och resultatet är detsamma som utbildning med enbart text.
+Vissa bas modeller kan inte anpassas med ljud data. För dem använder tjänsten bara texten i avskriften för utbildning och ignorerar ljuddata. Träningen kommer att bli mycket snabbare och resultatet är detsamma som utbildning med enbart text. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data.
 
 ## <a name="accuracy-testing"></a>Precisions testning
 

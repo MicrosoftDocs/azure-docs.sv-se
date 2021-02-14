@@ -1,24 +1,20 @@
 ---
 title: Hanterade virtuella nätverk & hanterade privata slut punkter
 description: Lär dig mer om hanterade virtuella nätverk och hanterade privata slut punkter i Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980386"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379581"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory hanterad Virtual Network (förhands granskning)
 
@@ -51,7 +47,7 @@ Hanterade privata slut punkter är privata slut punkter som skapats i den Azure 
 
 ![Ny hanterad privat slut punkt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory stöder privata länkar. Med privat länk kan du komma åt Azure-tjänster (PaaS) (till exempel Azure Storage, Azure Cosmos DB Azure Synapse Analytics (tidigare SQL Data Warehouse)).
+Azure Data Factory stöder privata länkar. Med privat länk kan du komma åt Azure-tjänster (PaaS) (till exempel Azure Storage, Azure Cosmos DB Azure Synapse Analytics).
 
 När du använder en privat länk passerar trafiken mellan dina data lager och hanterade Virtual Network helt över Microsoft stamnät nätverket. Privat länk skyddar mot data exfiltrering-risker. Du upprättar en privat länk till en resurs genom att skapa en privat slut punkt.
 
@@ -86,7 +82,7 @@ Under data källor finns stöd för att ansluta via en privat länk från ADF-ha
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (inte inklusive Azure SQL-hanterad instans)
-- Azure Synapse Analytics (tidigare SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure privat länk-tjänst
@@ -103,7 +99,7 @@ Under data källor finns stöd för att ansluta via en privat länk från ADF-ha
 - USA, västra 2
 - USA, södra centrala
 - Central US
-- Norra Europa
+- Europa, norra
 - Europa, västra
 - Storbritannien, södra
 - Sydostasien
@@ -115,7 +111,7 @@ Under data källor finns stöd för att ansluta via en privat länk från ADF-ha
 - Azure Storage-och Azure Data Lake-Gen2 stöds inte för anslutning via den offentliga slut punkten från ADF-hanterad Virtual Network.
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault för att skapa länkade tjänster 
-- När du skapar en länkad tjänst för Azure Key Vault finns det ingen Azure Integration Runtime referens. Det går inte att skapa en privat slut punkt under skapandet av den länkade tjänsten Azure Key Vault. Men när du skapar en länkad tjänst för data lager som refererar Azure Key Vault länkade tjänsten och den här länkade tjänsten refererar Azure Integration Runtime med hanterade Virtual Network aktiverade, kan du skapa en privat slut punkt för den Azure Key Vault länkade tjänsten under skapandet. 
+- När du skapar en länkad tjänst för Azure Key Vault finns det ingen Azure Integration Runtime-referens. Det går inte att skapa en privat slut punkt under skapandet av den länkade tjänsten Azure Key Vault. Men när du skapar en länkad tjänst för data lager som refererar Azure Key Vault länkade tjänsten och den här länkade tjänsten refererar Azure Integration Runtime med hanterade Virtual Network aktiverade, kan du skapa en privat slut punkt för den Azure Key Vault länkade tjänsten under skapandet. 
 - **Test anslutnings** åtgärd för länkad tjänst för Azure Key Vault verifierar bara URL-formatet, men ingen nätverks åtgärd.
 
 ## <a name="next-steps"></a>Nästa steg

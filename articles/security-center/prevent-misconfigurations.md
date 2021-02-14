@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: a3da9cdea543894aa7aec66112e28658beac84b5
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 2607ff3a6c4bb7bf301818925990521572777ab9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558194"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379205"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Förhindra felkonfiguration med Enforce/Deny-rekommendationer
 
-Fel konfiguration av säkerhet är en stor orsak till säkerhets incidenter. Security Center kan nu hjälpa till *att förhindra* fel konfiguration av nya resurser med avseende på särskilda rekommendationer. 
+Fel konfiguration av säkerhet är en stor orsak till säkerhets incidenter. Security Center kan nu hjälpa till *att förhindra* fel konfiguration av nya resurser med avseende på vissa rekommendationer. 
 
 Den här funktionen kan hjälpa till att hålla arbets belastningarna säkra och stabilisera dina säkra poäng.
 
@@ -62,40 +62,7 @@ Du hittar det här längst upp på sidan resursinformation för de valda säkerh
 
 Dessa rekommendationer kan användas med alternativet **neka** :
 
-- Åtkomst till lagrings konton med brand väggar och virtuella nätverkskonfigurationer bör begränsas
-- Azure cache för Redis bör finnas i ett virtuellt nätverk
-- Azure Cosmos DB konton ska använda Kundhanterade nycklar för att kryptera data i vila
-- Azure Machine Learning-arbetsytor bör krypteras med en kundhanterad nyckel (CMK)
-- Azure våren Cloud ska använda nätverks inmatning
-- Cognitive Services konton ska aktivera data kryptering med en kundhanterad nyckel (CMK)
-- CPU-och minnes gränser för containern ska tillämpas
-- Behållar avbildningar bör endast distribueras från betrodda register
-- Behållar register ska krypteras med en kundhanterad nyckel (CMK)
-- Container med behörighets eskalering bör undvikas
-- Behållare som delar känsliga värd namn områden bör undvikas
-- Behållare ska bara lyssna på tillåtna portar
-- Oföränderligt (skrivskyddat) rot fil system ska tillämpas för behållare
-- Key Vault nycklar ska ha ett utgångs datum
-- Key Vault hemligheter bör ha ett utgångs datum
-- Rensnings skydd måste vara aktiverat för nyckel valv
-- Mjuk borttagning är aktiverat för nyckel valv
-- Minst privilegierade Linux-funktioner bör tillämpas för behållare
-- Endast säkra anslutningar till din Redis Cache ska vara aktiverade
-- Åsidosättning eller inaktive ring av behållare AppArmor-profilen bör vara begränsad
-- Privilegierade behållare bör undvikas
-- Att köra behållare som rot användare bör undvikas
-- Säker överföring till lagringskonton ska vara aktiverat
-- Service Fabric-kluster ska ha egenskapen ClusterProtectionLevel inställd på EncryptAndSign
-- Service Fabric kluster bör endast använda Azure Active Directory för klientautentisering
-- Tjänsterna ska bara lyssna på tillåtna portar
-- Lagrings konton ska migreras till nya Azure Resource Manager resurser
-- Lagrings konton bör begränsa nätverks åtkomsten med hjälp av regler för virtuella nätverk
-- Användning av värd nätverk och portar ska begränsas
-- Användningen av Pod HostPath-volym monteringar bör begränsas till en känd lista för att begränsa åtkomsten till noden från komprometterade behållare
-- Giltighets tiden för certifikat som lagras i Azure Key Vault får inte överstiga 12 månader
-- Virtuella datorer ska migreras till nya Azure Resource Manager-resurser
-- Brand vägg för webbaserade program (WAF) måste vara aktive rad för Application Gateway
-- Brand vägg för webbaserade program (WAF) måste vara aktive rad för tjänsten Azure frontend dörr service
+[!INCLUDE [azure-security-center-recommendations-deny](../../includes/asc/recommendations-with-deny.md)]
 
 Dessa rekommendationer kan användas med alternativet **tillämpa** :
 

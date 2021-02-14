@@ -11,18 +11,18 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938791"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370435"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurera en IoT Edge-enhet till att fungera som en transparent gateway
 
 Den här artikeln innehåller detaljerade anvisningar för hur du konfigurerar en IoT Edge-enhet så att den fungerar som en transparent Gateway för andra enheter att kommunicera med IoT Hub. I den här artikeln används termen *IoT Edge Gateway* för att referera till en IoT Edge enhet som kon figurer ATS som en transparent Gateway. Mer information finns i [så här kan en IoT Edge enhet användas som en gateway](./iot-edge-as-gateway.md).
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
@@ -60,7 +60,7 @@ Du kan skapa en certifikat infrastruktur som aktiverar det förtroende som kräv
 
 Följande steg vägleder dig genom processen att skapa certifikaten och installera dem på rätt plats på gatewayen. Du kan använda vilken dator som helst för att generera certifikaten och sedan kopiera dem till din IoT Edge-enhet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 En Linux-eller Windows-enhet med IoT Edge installerat.
 
@@ -97,8 +97,8 @@ För produktions scenarier bör du generera dessa filer med din egen certifikat 
 2. Om du har skapat certifikaten på en annan dator kopierar du dem till din IoT Edge-enhet.
 
 3. Öppna konfigurations filen för daemon på din IoT Edge-enhet.
-   * Aktivitets `C:\ProgramData\iotedge\config.yaml`
-   * Linux `/etc/iotedge/config.yaml`
+   * Windows: `C:\ProgramData\iotedge\config.yaml`
+   * Linux: `/etc/iotedge/config.yaml`
 
 4. Hitta avsnittet **certifikat inställningar** i filen. Ta bort kommentarer till de fyra raderna som börjar med **certifikat:** och ange fil-URI: erna till dina tre filer som värden för följande egenskaper:
    * **device_ca_cert**: ENHETens CA-certifikat
@@ -110,8 +110,8 @@ För produktions scenarier bör du generera dessa filer med din egen certifikat 
 5. Spara och stäng filen.
 
 6. Starta om IoT Edge.
-   * Aktivitets `Restart-Service iotedge`
-   * Linux `sudo systemctl restart iotedge`
+   * Windows: `Restart-Service iotedge`
+   * Linux: `sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-and-route-messages"></a>Distribuera edgeHub och dirigera meddelanden
 

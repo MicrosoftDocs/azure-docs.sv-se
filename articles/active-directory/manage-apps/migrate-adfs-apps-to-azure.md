@@ -1,6 +1,6 @@
 ---
 title: Flytta programautentisering från AD FS till Azure Active Directory
-description: Den här artikeln är avsedd att hjälpa organisationer att förstå hur de flyttar program till Azure AD, med fokus på federerade SaaS-program.
+description: Den här artikeln är avsedd att hjälpa organisationer att förstå hur de flyttar program till Azure Active Directory, med fokus på federerade SaaS-program.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,25 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.date: 04/01/2020
+ms.date: 02/10/2021
 ms.author: kenwith
 ms.reviewer: baselden
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27ccf5a861295ae83b5ddc021e77de75962de48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8ad137389ac11a41872190122eae6405a126b5b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258396"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381247"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory
 
 [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) erbjuder en Universal Identity-plattform som ger dina personer, partners och kunder en enda identitet för att komma åt program och samar beta från vilken plattform och enhet som helst. Azure AD har en [fullständig uppsättning funktioner för identitets hantering](../fundamentals/active-directory-whatis.md). Genom att standardisera din program-autentisering och auktorisering till Azure AD kan du använda fördelarna med dessa funktioner.
 
 > [!TIP]
-> Den här artikeln är avsedd för en utvecklare. Projektledare och administratörer som planerar ett programs flytt till Azure AD bör läsa vår [migrering av programautentisering till Azure ad](https://aka.ms/migrateapps/whitepaper) White Paper (PDF).
+> Den här artikeln är avsedd för en utvecklare. Projektledare och administratörer som planerar ett programs flytt till Azure AD bör läsa vår artikel om [migrering av program till Azure AD](migrate-application-authentication-to-azure-active-directory.md) .
 
 ## <a name="introduction"></a>Introduktion
 

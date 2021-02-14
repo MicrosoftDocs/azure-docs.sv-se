@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001243"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381502"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-utlösare för Azure Functions
 
@@ -351,19 +351,21 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `QueueTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp** | saknas| Måste anges till `queueTrigger` . Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position**| saknas | Endast i *function.jsendast på* fil. Måste anges till `in` . Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
 |**Namn** | saknas |Namnet på den variabel som innehåller köns objektets nytto Last i funktions koden.  |
 |**queueName** | **QueueName**| Namnet på kön som ska avsökas. |
-|**anslutningen** | **Anslutning** |Namnet på en app-inställning som innehåller den lagrings anslutnings sträng som ska användas för den här bindningen. Om appens inställnings namn börjar med "AzureWebJobs" kan du bara ange resten av namnet här. Om du till exempel ställer in `connection` på "telestorage" söker Functions-körningen efter en app-inställning med namnet "Storage". Om du lämnar `connection` tomt använder Functions-körningen standard anslutnings strängen för lagring i den angivna app-inställningen `AzureWebJobsStorage` .|
+|**anslutningen** | **Anslutning** |Namnet på en app-inställning som innehåller den lagrings anslutnings sträng som ska användas för den här bindningen. Om appens inställnings namn börjar med "AzureWebJobs" kan du bara ange resten av namnet här.<br><br>Om du till exempel ställer in `connection` på "telestorage" söker Functions-körningen efter en app-inställning med namnet "Storage". Om du lämnar `connection` tomt använder Functions-körningen standard anslutnings strängen för lagring i den angivna app-inställningen `AzureWebJobsStorage` .<br><br>Om du använder [version 5. x eller högre av tillägget](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher), i stället för en anslutnings sträng, kan du ange en referens till ett konfigurations avsnitt som definierar anslutningen. Se [anslutningar](./functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Användning
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Standardvärde
 
 Få åtkomst till meddelande data med hjälp av en metod parameter, till exempel `string paramName` . Du kan binda till någon av följande typer:
 
@@ -374,7 +376,17 @@ Få åtkomst till meddelande data med hjälp av en metod parameter, till exempel
 
 Om du försöker binda till `CloudQueueMessage` och få ett fel meddelande, se till att du har en referens till [rätt Storage SDK-version](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
+### <a name="additional-types"></a>Ytterligare typer
+
+Appar som använder [5.0.0 eller en senare version av lagrings tillägget](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) kan också använda typer från [Azure SDK för .net](/dotnet/api/overview/azure/storage.queues-readme). Den här versionen har stöd för den äldre `CloudQueueMessage` typen som prioriteras av följande typer:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+ 
+Exempel som använder de här typerna finns i [GitHub-lagringsplatsen för tillägget](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
+
 # <a name="c-script"></a>[C#-skript](#tab/csharp-script)
+
+### <a name="default"></a>Standardvärde
 
 Få åtkomst till meddelande data med hjälp av en metod parameter, till exempel `string paramName` . `paramName`Värdet som anges i `name` egenskapen för *function.jspå*. Du kan binda till någon av följande typer:
 
@@ -384,6 +396,14 @@ Få åtkomst till meddelande data med hjälp av en metod parameter, till exempel
 * [CloudQueueMessage]
 
 Om du försöker binda till `CloudQueueMessage` och få ett fel meddelande, se till att du har en referens till [rätt Storage SDK-version](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
+
+### <a name="additional-types"></a>Ytterligare typer
+
+Appar som använder [5.0.0 eller en senare version av lagrings tillägget](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) kan också använda typer från [Azure SDK för .net](/dotnet/api/overview/azure/storage.queues-readme). Den här versionen har stöd för den äldre `CloudQueueMessage` typen som prioriteras av följande typer:
+
+- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
+
+Exempel som använder de här typerna finns i [GitHub-lagringsplatsen för tillägget](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -407,7 +427,7 @@ Få åtkomst till Queue-meddelandet via parametern som anges som [QueueMessage](
 
 Utlösaren för kön innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. Egenskaperna är medlemmar i klassen [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Egenskap|Typ|Description|
+|Egenskap|Typ|Beskrivning|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Köns nytto Last (om en giltig sträng). Om nytto lasten i kön är en sträng, `QueueTrigger` har samma värde som variabeln som namnges av `name` egenskapen i *function.jspå*.|
 |`DequeueCount`|`int`|Antal gånger som det här meddelandet har tagits ur kö.|
@@ -448,7 +468,7 @@ Queue-utlösaren förhindrar automatiskt en funktion från att bearbeta ett köo
 
 ## <a name="hostjson-properties"></a>host.jspå egenskaper
 
-[host.js](functions-host-json.md#queues) filen innehåller inställningar som styr beteendet för kön utlösare. Mer information om tillgängliga inställningar finns i avsnittet [host.jsi inställningar](functions-bindings-storage-queue-output.md#hostjson-settings) .
+[host.js](functions-host-json.md#queues) filen innehåller inställningar som styr beteendet för kön utlösare. Mer information om tillgängliga inställningar finns i avsnittet [host.jsi inställningar](functions-bindings-storage-queue.md#hostjson-settings) .
 
 ## <a name="next-steps"></a>Nästa steg
 

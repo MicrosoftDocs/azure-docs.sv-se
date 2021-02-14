@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 489c6be7bf977d01207fee4d1bd1fda13dc12025
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820525"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518954"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versioner i Azure Kognitiv sökning
 
@@ -96,19 +96,19 @@ Följande tabell innehåller länkar till nyare SDK-versioner.
 
 | SDK-version | Status | Beskrivning  |
 |-------------|--------|------------------------------|
-| [Java Azure-Search-dokument 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Nytt klient bibliotek från Azure .NET SDK, lanserat juli 2020. Mål för search REST API-version = 2019-05-06. |
+| [Java Azure-Search-dokument 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | Nytt klient bibliotek från Azure Java SDK, lanserat juli 2020. Mål för search REST API-version = 2019-05-06. |
 | [1.35.0 för Java-hanterings klient](/java/api/overview/azure/search/management) | Stable | Rikta in the Management REST API-version = 2015-08-19. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK för Java Script
 
 | SDK-version | Status | Beskrivning  |
 |-------------|--------|------------------------------|
-| [Java Script – Sök 11,0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | Nytt klient bibliotek från Azure .NET SDK, lanserat juli 2020. Mål för search REST API-version = 2016-09-01. |
-| [Java Script-arm-search](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | Rikta in the Management REST API-version = 2015-08-19. |
+| [Java Script @azure/search-documents 11,0](https://www.npmjs.com/package/@azure/search-documents) | Stable | Nytt klient bibliotek från Azure Java Script & TypesScript SDK, lanserades 2020 juli. Mål för search REST API-version = 2016-09-01. |
+| [Java @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | Rikta in the Management REST API-version = 2015-08-19. |
 
 ## <a name="azure-sdk-for-python"></a>Azure SDK för Python
 
 | SDK-version | Status | Beskrivning  |
 |-------------|--------|------------------------------|
-| [Python Azure-Search-dokument 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | Nytt klient bibliotek från Azure .NET SDK, lanserat juli 2020. Mål för search REST API-version = 2019-05-06. |
-| [Python Azure-MGMT-search 1,0](/python/api/overview/azure/search) | Stable | Rikta in the Management REST API-version = 2015-08-19. |
+| [Python Azure-Search-dokument 11,0](https://pypi.org/project/azure-search-documents/) | Stable | Nytt klient bibliotek från Azure python SDK, lanserat juli 2020. Mål för search REST API-version = 2019-05-06. |
+| [Python Azure-MGMT-search 8,0](https://pypi.org/project/azure-mgmt-search/) | Stable | Rikta in the Management REST API-version = 2015-08-19. |

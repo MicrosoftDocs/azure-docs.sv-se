@@ -3,16 +3,16 @@ title: Exchange-meddelanden med Azure Service Bus
 description: Skapa automatiserade uppgifter och arbets flöden som skickar och tar emot meddelanden med hjälp av Azure Service Bus i Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 02/10/2021
 tags: connectors
-ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98d2ee8a85d25065c0021841a9b99a6d616a35d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019725"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367426"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-meddelanden i molnet med hjälp av Azure Logic Apps och Azure Service Bus
 
@@ -169,7 +169,7 @@ När du skapar en Logic app kan du välja den **korrelerade leveransen med hjäl
 
 ## <a name="delays-in-updates-to-your-logic-app-taking-effect"></a>Fördröjningar i uppdateringar av din Logic app börjar fungera
 
-Om avsöknings intervallet för en Service Bus-utlösare är litet, till exempel 10 sekunder, kan det hända att uppdateringar av din Logi Kap par inte börjar gälla i upp till 10 minuter. För att undvika det här problemet kan du tillfälligt öka avsöknings intervallet till ett större värde, till exempel 30 sekunder eller 1 minut, innan du uppdaterar din Logic app. När du har gjort uppdateringen kan du återställa avsöknings intervallet till det ursprungliga värdet. 
+Om avsöknings intervallet för en Service Bus-utlösare är litet, till exempel 10 sekunder, kan det hända att uppdateringar av din Logi Kap par inte börjar gälla i upp till 10 minuter. För att undvika det här problemet kan du inaktivera Logic-appen, göra ändringarna och sedan aktivera den igen.
 
 <a name="connector-reference"></a>
 

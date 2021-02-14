@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från en HTTP-källa med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från en moln-eller lokal HTTP-källa till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0462dac12d41fff667212902152b420d1460186d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416944"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383644"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiera data från en HTTP-slutpunkt med hjälp av Azure Data Factory
 
@@ -46,13 +41,13 @@ Du kan kopiera data från en HTTP-källa till alla mottagar data lager som stöd
 Du kan använda den här HTTP-anslutningen för att:
 
 - Hämta data från en HTTP/S-slutpunkt med hjälp av metoderna HTTP **Get** eller **post** .
-- Hämta data genom att använda någon av följande autentiseringar: **Anonym**, **grundläggande**, **Sammanfattad**, **Windows**eller **ClientCertificate**.
+- Hämta data genom att använda någon av följande autentiseringar: **Anonym**, **grundläggande**, **Sammanfattad**, **Windows** eller **ClientCertificate**.
 - Kopiera HTTP-svaret i befintligt skick eller parsa det genom att använda [fil format och komprimerings-codec som stöds](supported-file-formats-and-compression-codecs.md).
 
 > [!TIP]
 > Om du vill testa en HTTP-begäran för data hämtning innan du konfigurerar HTTP-anslutningen i Data Factory kan du läsa om API-specifikationen för sidhuvuds-och text krav. Du kan använda verktyg som Postman eller webbläsare för att validera.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -71,12 +66,12 @@ Följande egenskaper stöds för den länkade HTTP-tjänsten:
 | typ | Egenskapen **Type** måste anges till **HttpServer**. | Ja |
 | url | Bas-URL: en till webb servern. | Ja |
 | enableServerCertificateValidation | Ange om du vill aktivera verifiering av Server-TLS/SSL-certifikat när du ansluter till en HTTP-slutpunkt. Om HTTPS-servern använder ett självsignerat certifikat ställer du in den här egenskapen på **falskt**. | Inga<br /> (Standardvärdet är **Sant**) |
-| authenticationType | Anger autentiseringstypen. Tillåtna värden är **Anonym**, **Basic**, **Digest**, **Windows**och **ClientCertificate**. <br><br> Se de avsnitt som följer den här tabellen för fler egenskaper och JSON-exempel för de här typerna av autentisering. | Ja |
+| authenticationType | Anger autentiseringstypen. Tillåtna värden är **Anonym**, **Basic**, **Digest**, **Windows** och **ClientCertificate**. <br><br> Se de avsnitt som följer den här tabellen för fler egenskaper och JSON-exempel för de här typerna av autentisering. | Ja |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Använda Basic-, Digest-eller Windows-autentisering
 
-Ange egenskapen **authenticationType** som **Basic**, **Digest**eller **Windows**. Förutom de allmänna egenskaper som beskrivs i föregående avsnitt anger du följande egenskaper:
+Ange egenskapen **authenticationType** som **Basic**, **Digest** eller **Windows**. Förutom de allmänna egenskaper som beskrivs i föregående avsnitt anger du följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
@@ -120,7 +115,7 @@ Om du vill använda ClientCertificate-autentisering ställer du in egenskapen **
 Om du använder **certThumbprint** för autentisering och certifikatet är installerat i det personliga arkivet på den lokala datorn ger du Läs behörighet till den lokala datorn integration Runtime:
 
 1. Öppna Microsoft Management Console (MMC). Lägg till snapin-modulen **certifikat** som är riktad mot den **lokala datorn**.
-2. Expandera **certifikat**  >  **personliga**och välj sedan **certifikat**.
+2. Expandera **certifikat**  >  **personliga** och välj sedan **certifikat**.
 3. Högerklicka på certifikatet i det personliga arkivet och välj sedan **alla aktiviteter**  >  **hantera privata nycklar**.
 3. På fliken **säkerhet** lägger du till det användar konto som integration runtime värd tjänsten (dia Host service) körs under, med Läs behörighet till certifikatet.
 
@@ -290,8 +285,8 @@ Om du vill veta mer om egenskaperna kontrollerar du [söknings aktiviteten](cont
 | requestMethod | HTTP-metoden. Tillåtna värden är **Get** (standard) och **post**. | Inga |
 | additionalHeaders | Ytterligare rubriker för HTTP-begäran. | Inga |
 | requestBody | Bröd texten för HTTP-begäran. | Inga |
-| format | Om du vill hämta data från HTTP-slutpunkten i befintligt skick utan att parsa den, och sedan kopiera data till en filbaserad lagring, hoppar du över avsnittet **format** i både indata och utdata-datauppsättnings definitioner.<br/><br/>Om du vill parsa innehållet i HTTP-svar under kopieringen stöds följande fil format **typer: text**format, **JsonFormat**, **AvroFormat**, **OrcFormat**och **ParquetFormat**. Under **format**anger du egenskapen **Type** till något av dessa värden. Mer information finns i [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-format, Orc- [format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet-format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Inga |
-| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Typer som stöds: **gzip**, **DEFLATE**, **BZip2**och **ZipDeflate**.<br/>Nivåer som stöds:  **optimal** och **snabbast**. |Inga |
+| format | Om du vill hämta data från HTTP-slutpunkten i befintligt skick utan att parsa den, och sedan kopiera data till en filbaserad lagring, hoppar du över avsnittet **format** i både indata och utdata-datauppsättnings definitioner.<br/><br/>Om du vill parsa innehållet i HTTP-svar under kopieringen stöds följande fil format **typer: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Under **format** anger du egenskapen **Type** till något av dessa värden. Mer information finns i [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-format, Orc- [format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet-format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Inga |
+| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Typer som stöds: **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**.<br/>Nivåer som stöds:  **optimal** och **snabbast**. |Inga |
 
 > [!NOTE]
 > Den begärda nytto Last storleken för HTTP-begäran är cirka 500 KB. Om den nytto Last storlek som du vill skicka till webb slut punkten är större än 500 KB bör du överväga att lägga till nytto lasten i mindre segment.

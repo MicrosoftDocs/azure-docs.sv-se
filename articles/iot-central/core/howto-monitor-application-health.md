@@ -3,25 +3,25 @@ title: Övervaka hälso tillståndet för ett Azure IoT Central-program | Micros
 description: Som operatör eller administratör övervakar du övergripande hälso tillstånd för de enheter som är anslutna till ditt IoT Central-program.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12485e07bc3cad9d420141ecc6ee66763ac010b7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 1c16da10a8a7853b1392383855aba0ff24424f33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760763"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515877"
 ---
-# <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Övervaka den övergripande hälsan hos enheter som är anslutna till ett IoT Central program
+# <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Övervaka den övergripande hälsan för ett IoT Central program
 
 > [!NOTE]
 > Mått är bara tillgängliga för version 3 IoT Central-program. Information om hur du kontrollerar program versionen finns i [om ditt program](./howto-get-app-info.md).
 
 *Den här artikeln gäller för operatörer och administratörer.*
 
-I den här artikeln får du lära dig hur du använder den uppsättning mått som tillhandahålls av IoT Central för att utvärdera den övergripande hälsan hos de enheter som är anslutna till ditt IoT Central-program.
+I den här artikeln får du lära dig hur du använder den uppsättning mått som tillhandahålls av IoT Central för att utvärdera hälso tillståndet för enheter som är anslutna till ditt IoT Central program och hälsan för dina data exporter som körs.
 
 Mått är aktiverade som standard för ditt IoT Central program och du kommer åt dem från [Azure Portal](https://portal.azure.com/). [Azure Monitor data plattformen visar dessa mått](../../azure-monitor/platform/data-platform-metrics.md) och ger dig flera olika sätt att interagera med dem. Du kan till exempel använda diagram i Azure Portal, en REST API eller frågor i PowerShell eller Azure CLI.
 
@@ -31,7 +31,7 @@ Program som använder den kostnads fria utvärderings planen har ingen tillhör 
 
 ## <a name="view-metrics-in-the-azure-portal"></a>Visa mått i Azure Portal
 
-Följande steg förutsätter att du har ett [IoT Central-program](./quick-deploy-iot-central.md) med vissa [anslutna enheter](./tutorial-connect-device.md).
+Följande steg förutsätter att du har ett [IoT Central-program](./quick-deploy-iot-central.md) med vissa [anslutna enheter](./tutorial-connect-device.md) eller en pågående [data export](howto-export-data.md).
 
 Visa IoT Central mått i portalen:
 

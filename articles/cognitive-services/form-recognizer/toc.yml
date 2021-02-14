@@ -55,10 +55,8 @@
       href: disaster-recovery.md
 - name: Referens
   items:
-    - name: API för Formigenkänning v2.1 – förhandsversion
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
-    - name: API för Formigenkänning v2.0
-      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
+    - name: REST-API
+      href: 'https://docs.microsoft.com/rest/api/formrecognizer/'
     - name: 'SDK:er'
       items:
         - name: .NET

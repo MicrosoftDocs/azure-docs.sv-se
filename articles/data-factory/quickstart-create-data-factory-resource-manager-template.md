@@ -1,22 +1,20 @@
 ---
 title: Skapa en Azure Data Factory med hjälp av en Azure Resource Manager-mall (ARM-mall)
 description: Skapa ett exempel Azure Data Factory pipeline med hjälp av en Azure Resource Manager-mall (ARM-mall).
-services: data-factory
 ms.service: data-factory
 tags: azure-resource-manager
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: 0a9c4f6d9e98e721370f54dfbe261025cf186b6c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497497"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373852"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>Snabb start: skapa en Azure Data Factory med ARM-mall
 
@@ -41,7 +39,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 ### <a name="azure-subscription"></a>Azure-prenumeration
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
 ### <a name="create-a-file"></a>Skapa en fil
 
@@ -104,7 +102,7 @@ Du hittar fler Azure Data Factory mal sampel i [galleriet snabb starts mal len](
 2. Verifiera att ditt lagrings konto har skapats.
     1. Lagrings kontots namn är i formatet-lagring \<uniqueid\> .
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Lagrings konto":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="Lagringskonto":::
 
 3. Välj det lagrings konto som skapats och välj **behållare**.
     1. På sidan **behållare** väljer du den BLOB-behållare som du skapade.

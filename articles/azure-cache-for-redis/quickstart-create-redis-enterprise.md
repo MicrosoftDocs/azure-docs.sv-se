@@ -1,20 +1,20 @@
 ---
-title: 'Snabb start: skapa en cacheminne för företags nivå'
-description: I den här snabb starten lär du dig hur du skapar en instans av Azure cache för Redis Enterprise-nivå
+title: 'Snabb start: skapa en Redis företags-cache'
+description: I den här snabb starten får du lära dig hur du skapar en instans av Azure cache för Redis på företags nivåer
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/28/2020
-ms.openlocfilehash: 95f6e2cf7803ff0b152f33c08f170725b5a0e94e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 02/08/2021
+ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795678"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365012"
 ---
-# <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Snabb start: skapa en cacheminne för företags nivå (för hands version)
+# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>Snabb start: skapa en Redis Enterprise-cache (för hands version)
 
 Azure cache för Redis "företags nivåer ger fullständigt integrerat och hanterade [Redis Enterprise](https://redislabs.com/redis-enterprise/) på Azure. De är för närvarande tillgängliga som för hands version. Det finns två nya nivåer i den här förhands granskningen:
 * Enterprise, som använder flyktigt minne (DRAM) på en virtuell dator för att lagra data
@@ -22,7 +22,7 @@ Azure cache för Redis "företags nivåer ger fullständigt integrerat och hante
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Du behöver en Azure-prenumeration innan du börjar. Skapa ett [konto](https://azure.microsoft.com/)om du inte har något. Mer information finns i [krav för företags nivå](cache-overview.md#enterprise-tier-requirements).
+Du behöver en Azure-prenumeration innan du börjar. Skapa ett [konto](https://azure.microsoft.com/)om du inte har något. Mer information finns i [krav för företags nivå](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements).
 
 ## <a name="create-a-cache"></a>Skapa en cache
 1. Om du vill skapa en cache loggar du in på Azure Portal med hjälp av länken i din förhands gransknings inbjudan och väljer **skapa en resurs**.

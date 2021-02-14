@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Lär dig mer om de verktyg och integrerade utvecklings miljöer som är tillgängliga på Data Science Virtual Machine.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecc195b8b97ffd9b25cf12898726352ddd698a9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519447"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Utvecklingsverktyg på Azure-Data Science Virtual Machine
 
@@ -35,7 +34,7 @@ Data Science Virtual Machine (DSVM) paketerar flera populära verktyg i ett myck
 > [!NOTE]
 > Du kan få ett meddelande om att utvärderings perioden har upphört att gälla. Ange dina Microsoft-konto autentiseringsuppgifter. Eller skapa ett nytt kostnads fritt konto för att få åtkomst till Visual Studio Community.
 
-## <a name="visual-studio-code"></a>Visual Studio-koden 
+## <a name="visual-studio-code"></a>Visuell Studio-kod 
 
 | Kategori | Värde |
 | ------------- | ------------- |
@@ -63,7 +62,7 @@ Data Science Virtual Machine (DSVM) paketerar flera populära verktyg i ett myck
 | Vad är det?   | Webbaserad IDE för R    |
 | DSVM-versioner som stöds      | Linux      |
 | Vanliga användnings områden      |  R-utveckling     |
-| Använda och köra den      | Aktivera tjänsten med _systemctl aktivera RStudio-Server_och starta sedan tjänsten med _systemctl start RStudio-Server_. Logga sedan in på RStudio-servern på http: \/ /Your-VM-IP: 8787.       |
+| Använda och köra den      | Aktivera tjänsten med _systemctl aktivera RStudio-Server_ och starta sedan tjänsten med _systemctl start RStudio-Server_. Logga sedan in på RStudio-servern på http: \/ /Your-VM-IP: 8787.       |
 | Relaterade verktyg på DSVM      |   Visual Studio, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

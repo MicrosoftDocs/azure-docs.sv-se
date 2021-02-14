@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710081"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519396"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Beräknings-och lagrings alternativ i Azure Database for PostgreSQL-flexibel Server
 
@@ -151,7 +151,10 @@ När du markerar med en \* begränsas i/O-bandbredden av den VM-typ som du har v
 
 När du når lagrings gränsen börjar servern att returnera fel och förhindra ytterligare ändringar. Detta kan också orsaka problem med andra operativa aktiviteter, t. ex. säkerhets kopiering och WAL arkivering.
 
+För att undvika den här situationen, när lagrings användningen når 95% eller om den tillgängliga kapaciteten är mindre än 5 GiB, växlas servern automatiskt till **skrivskyddat läge**.
+
 Vi rekommenderar att du aktivt övervakar disk utrymmet som används och ökar disk storleken före eventuell slut på lagrings situationen. Du kan ställa in en avisering för att meddela dig när Server lagringen närmar sig disk utrymme så att du kan undvika eventuella problem med att disk utrymmet tar slut. Mer information finns i dokumentationen om [hur du konfigurerar en avisering](howto-alert-on-metrics.md).
+
 
 ### <a name="storage-auto-grow"></a>Utöka lagring automatiskt
 
