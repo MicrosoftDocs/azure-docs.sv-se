@@ -3,12 +3,12 @@ title: Säkerhetskopiera och återställa virtuella Azure-datorer med PowerShell
 description: Beskriver hur du säkerhetskopierar och återställer virtuella Azure-datorer med hjälp av Azure Backup med PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 66b8fe0109a4dd2e054106b67f893def2ee596b0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804800"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095094"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Säkerhetskopiera och återställa virtuella Azure-datorer med PowerShell
 
@@ -526,6 +526,53 @@ En användare kan selektivt återställa få diskar i stället för hela den sä
 > En måste selektivt säkerhetskopiera diskar för att selektivt återställa diskar. Mer information finns [här](selective-disk-backup-restore.md#selective-disk-restore).
 
 När du har återställt diskarna går du till nästa avsnitt för att skapa den virtuella datorn.
+
+#### <a name="restore-disks-to-a-secondary-region"></a>Återställa diskar till en sekundär region
+
+Om återställning mellan regioner är aktiverat i valvet som du har skyddat dina virtuella datorer med, replikeras säkerhetskopierade data till den sekundära regionen. Du kan använda säkerhets kopierings data för att utföra en återställning. Utför följande steg för att utlösa en återställning i den sekundära regionen:
+
+1. [Hämta det valv-ID](#fetch-the-vault-id) som dina virtuella datorer skyddas med.
+1. Välj [rätt säkerhets kopierings objekt som ska återställas](#select-the-vm-when-restoring-files).
+1. Välj lämplig återställnings punkt i den sekundära regionen som du vill använda för att utföra återställningen.
+
+    Slutför det här steget genom att köra det här kommandot:
+
+    ```powershell
+    $rp=Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion -Item $backupitem -VaultId $targetVault.ID
+    $rp=$rp[0]
+    ```
+
+1. Kör cmdleten [restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) med `-RestoreToSecondaryRegion` parametern för att utlösa en återställning i den sekundära regionen.
+
+    Slutför det här steget genom att köra det här kommandot:
+
+    ```powershell
+    $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -VaultLocation $targetVault.Location -RestoreToSecondaryRegion -RestoreOnlyOSDisk
+    ```
+
+    Utdatan blir något som liknar följande exempel:
+
+    ```output
+    WorkloadName     Operation             Status              StartTime                 EndTime          JobID
+    ------------     ---------             ------              ---------                 -------          ----------
+    V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+    ```
+
+1. Kör cmdleten [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) med `-UseSecondaryRegion` parametern för att övervaka återställnings jobbet.
+
+    Slutför det här steget genom att köra det här kommandot:
+
+    ```powershell
+    Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -To (Get-Date).ToUniversalTime() -UseSecondaryRegion -VaultId $targetVault.ID
+    ```
+
+    Utdatan blir något som liknar följande exempel:
+
+    ```output
+    WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+    ------------     ---------            ------               ---------                 -------                   -----
+    V2VM             CrossRegionRestore   InProgress           2/8/2021 4:24:57 PM                                 2d071b07-8f7c-4368-bc39-98c7fb2983f7
+    ```
 
 ## <a name="replace-disks-in-azure-vm"></a>Ersätt diskar i Azure VM
 

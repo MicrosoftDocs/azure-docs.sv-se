@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 8e3c372cb186d3043e89b0b084a86b7be128146d
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475260"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099956"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Felsök vanliga problem med Windows Virtual Desktop agent
 
@@ -184,7 +184,7 @@ Lös problemet genom att ändra tröskelvärdet för pulsslag:
 1. Öppna kommando tolken som administratör.
 2. Ange kommandot **Qwinsta** och kör det.
 3. Två stack-komponenter ska visas: **RDP-TCP** och **RDP-SXS**. 
-   - Beroende på vilken version av operativ systemet som du använder, kan **RDP-SXS** följas av build-numret som visas på följande skärm bild. Om det är det, så se till att skriva det här numret nedåt för senare.
+   - Beroende på vilken version av operativ systemet du använder kan **RDP-SXS** följas av versions numret. Om det är det, så se till att skriva det här numret nedåt för senare.
 4. Öppna Registereditorn.
 5. Gå till **HKEY_LOCAL_MACHINE**  >  **system**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **WinStations**.
 6. Under **WinStations** kan du se flera mappar för olika stack-versioner. Välj den mapp som matchar versions numret från steg 3.
@@ -207,7 +207,7 @@ Lös problemet genom att göra utrymme på disken genom att:
 Öppna ett PowerShell-fönster som administratör och kör följande cmdlet:
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object *
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 Om statusen som anges för sessionens värd eller värdar i din värddator alltid står **otillgänglig** eller **uppgradering** kan agenten eller stack installationen ha misslyckats

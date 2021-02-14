@@ -6,18 +6,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 02/08/2021
+ms.date: 02/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3f6eeab13a29eddd671411f46ac2220c10f68f
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: 08491dcaf66789f13aa9f2e058303a28e7ab8388
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820865"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099531"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
 Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten. Läs för [hands versions funktions listan](search-api-preview.md) för att visa funktioner i offentlig för hands version.
+
+## <a name="february-2021"></a>Februari 2021
+
+|Zoomfunktionen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Description | Tillgänglighet  |
+|------------------------------|---------------|---------------|
+| [Återställ dokument (förhands granskning)](search-howto-run-reset-indexers.md) |  Ombearbetar individuellt valda Sök dokument i Indexer-arbetsbelastningar. | [Sök REST API 2020-06-30 – för hands version](/rest/api/searchservice/index-preview) |
+| Support för tillgänglighets zon | Sök tjänster med två eller fler repliker i vissa regioner, som listas i [skala för prestanda](search-performance-optimization.md), få återhämtning genom att ha repliker på två eller flera distinkta fysiska platser.  | Regionen och datumet för skapandet av Sök tjänsten fastställer tillgänglighet. Mer information finns i dokumentet om prestanda justering. |
 
 ## <a name="january-2021"></a>Januari 2021
 

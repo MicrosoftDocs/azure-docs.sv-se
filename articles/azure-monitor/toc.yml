@@ -781,6 +781,8 @@
             - name: Tillgänglighetsaviseringar
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
+            - name: SLA-rapport
+              href: app/sla-report.md
             - name: Felsökning
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -794,8 +796,8 @@
         - name: Live Metric Stream
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
-        - name: SLA-rapport
-          href: app/sla-report.md
+        - name: Integration av arbets objekt
+          href: app/work-item-integration.md
         - name: Mått
           items:
             - name: Loggbaserade och föraggregerade mått

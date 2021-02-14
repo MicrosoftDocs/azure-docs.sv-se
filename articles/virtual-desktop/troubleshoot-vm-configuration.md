@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539746"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099922"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Session för konfiguration av virtuell värddator
 
@@ -193,7 +193,7 @@ Utdata från **Qwinsta** visar **RDP-SXS** i utdata om stacken sida vid sida är
 > [!div class="mx-imgBorder"]
 > ![Staplad sida vid sida installeras eller aktive ras med Qwinsta listad som RDP-SXS i utdata.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Granska register posterna i listan nedan och bekräfta att värdena stämmer överens. Om register nycklar saknas eller om värdena inte överensstämmer, följer du anvisningarna i [skapa en adresspool med PowerShell](create-host-pools-powershell.md) om hur du installerar om stacken sida vid sida.
+Granska register posterna i listan nedan och bekräfta att värdena stämmer överens. Om register nycklar saknas eller om värdena inte matchar varandra, kontrollerar du att du kör [ett operativ system som stöds](troubleshoot-agent.md#error-operating-a-pro-vm-or-other-unsupported-os). Om du är det följer du instruktionerna i [skapa en adresspool med PowerShell](create-host-pools-powershell.md) om hur du installerar om stacken sida vid sida.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal

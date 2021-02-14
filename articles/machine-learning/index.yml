@@ -13,20 +13,20 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: 44f260d5e336433c7366dcbe7ce6f1bb79f92c3c
-  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+  ms.openlocfilehash: b52e7908d07dcd342be59f9870dece13701f1dc6
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98707844"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100096335"
 landingContent:
 - title: 'Kom igång: Kod i fokus'
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Självstudier för att komma igång (Python)
+    - text: Kom igång med python-skript
       url: tutorial-1st-experiment-sdk-setup-local.md
-    - text: Självstudier för att använda Jupyter Notebook
+    - text: Kom igång med Jupyter Notebooks (python)
       url: tutorial-1st-experiment-sdk-setup.md
     - text: Batch-slutsatsdragning med ML-pipelines (Python)
       url: tutorial-pipeline-batch-scoring-classification.md

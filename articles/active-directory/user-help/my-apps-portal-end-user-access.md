@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 10/19/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 61dd185d00cef2382763e7435c081e1d412cdb92
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127884"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095009"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Logga in och starta appar från portalen Mina appar
 
@@ -31,6 +31,11 @@ Om du inte har åtkomst till portalen **Mina appar** kontaktar du organisationen
 
 > [!IMPORTANT]
 > Det här innehållet är avsett för **Mina Apps** -användare. Om du är administratör kan du hitta mer information om hur du konfigurerar och hanterar dina molnbaserade appar i [program hanterings dokumentationen](../manage-apps/index.yml).
+>
+> Om du ser ett fel när du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller **klient organisations-ID: t** för din organisation från administratören i någon av följande URL: er:
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="supported-browsers"></a>Webbläsare som stöds
 
@@ -60,7 +65,7 @@ Om du har åtkomst behörighet till och använder din organisations molnbaserade
 
 ### <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>Ladda ned och installera säkra inloggnings tillägg för Mina appar
 
-Hämta och installera **säker inloggnings tillägg för Mina appar** om du uppmanas att göra det. Med det här tillägget får du hjälp med att använda enkel inloggning med din organisations molnappar. Hovra bara över en app i portalen för **Mina appar** **.** Välj sedan **Hantera ditt program** .
+Hämta och installera **säker inloggnings tillägg för Mina appar** om du uppmanas att göra det. Med det här tillägget får du hjälp med att använda enkel inloggning med din organisations molnappar. Hovra bara över en app i portalen för **Mina appar** **.** Välj sedan **Hantera ditt program**.
 
 Om din organisation redan har konfigurerat dig för enkel inloggning installeras tillägget automatiskt och du kan hoppa över det här avsnittet.
 
@@ -77,9 +82,9 @@ Hämta och installera tillägget, baserat på den webbläsare som du använder.
 
 - **Microsoft Edge** – från Microsoft Store går du till funktionen [Mina appar säker inloggnings tillägg](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl) och väljer **Hämta** för att hämta tillägget för Microsoft Edge Legacy-webbläsare.
 
-- **Google Chrome** – från Chrome Web Store går du till funktionen [Mina appar säker inloggnings tillägg](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) och väljer sedan **Lägg till i Chrome** .
+- **Google Chrome** – från Chrome Web Store går du till funktionen [Mina appar säker inloggnings tillägg](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) och väljer sedan **Lägg till i Chrome**.
 
-- **Mozilla Firefox** – från sidan **Firefox-tillägg** går du till funktionen [Mina appar säker inloggnings tillägg](https://addons.mozilla.org/firefox/addon/access-panel-extension/) och väljer sedan **Lägg till i Firefox** .
+- **Mozilla Firefox** – från sidan **Firefox-tillägg** går du till funktionen [Mina appar säker inloggnings tillägg](https://addons.mozilla.org/firefox/addon/access-panel-extension/) och väljer sedan **Lägg till i Firefox**.
 
 En ikon läggs till till höger i **adress** fältet, så att du kan logga in och anpassa tillägget.
 
@@ -87,9 +92,9 @@ En ikon läggs till till höger i **adress** fältet, så att du kan logga in oc
 
 Du kan välja hur många appar som ska visas i avsnittet som **används nyligen** och bestämma om du vill tillåta att organisationens interna URL: er omdirigeras.
 
-1. Välj ikonen för den nya ikonen **Mina appar säker inloggnings** tillägg ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) till höger om **adress** fältet och välj sedan **Logga in för att komma igång** .
+1. Välj ikonen för den nya ikonen **Mina appar säker inloggnings** tillägg ![ ](media/my-apps-portal/my-apps-portal-extension-icon.png) till höger om **adress** fältet och välj sedan **Logga in för att komma igång**.
 
-1. Högerklicka på ikonen Inställningar **inställnings ikon** ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) och välj sedan **Inställningar** .
+1. Högerklicka på ikonen Inställningar **inställnings ikon** ![ ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) och välj sedan **Inställningar**.
 
 1. I rutan **Inställningar** väljer du det antal senaste appar som du vill se på portalen, och om du vill att organisationens interna URL: er ska omdirigeras så att du kan använda dem via en fjärr anslutning.
 
@@ -117,7 +122,7 @@ Om din administratör har gett dig behörighet kan du lägga till en ny app på 
 
    ![Sidan Lägg till appar i portalen Mina appar på myapplications.microsoft.com](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
-1. Välj den app som du vill lägga till i listan och välj sedan **Lägg till** .
+1. Välj den app som du vill lägga till i listan och välj sedan **Lägg till**.
 
 1. Appen läggs till i listan på sidan **appar** .
 

@@ -39,8 +39,6 @@
       href: access-control.md
     - name: Inbyggda roller för lokal rollbaserad åtkomstkontroll
       href: built-in-roles.md
-- name: Anvisningar
-  items: null
 - name: Referens
   items:
     - name: Azure PowerShell

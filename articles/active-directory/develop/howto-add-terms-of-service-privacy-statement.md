@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013676"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104203"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gör så här: konfigurera villkor för service och sekretess policy för en app
 
@@ -55,14 +55,14 @@ När tjänst villkoren och sekretess policyn är klara kan du lägga till länka
 * [Använda app Object JSON](#app-object-json)
 * [Använda Microsoft Graph API](#msgraph-rest-api)
 
-### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Använda Azure Portal
 Följ de här stegen i Azure Portal.
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, Välj rätt AzureAD-klient (inte B2C).
-2. Gå till avsnittet **app Registration** och välj din app.
-3. Öppna fönstret **varumärkes anpassning** .
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> och välj rätt Azure AD-klient (inte B2C).
+2. Navigera till avsnittet **Appregistreringar** och välj din app.
+3. Under **Hantera** väljer du **märkes anpassning**.
 4. Fyll i URL **-fälten för användnings villkoren** och **URL: en för sekretess policy** .
-5. Spara ändringarna.
+5. Välj **Spara**.
 
     ![App-egenskaperna innehåller URL: er för användnings villkor och sekretess policy](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 

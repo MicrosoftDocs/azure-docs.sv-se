@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b6bd16eacf4b1bbb7b93f5500813e7fa9dc7eef
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993760"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095855"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Aktivera och hantera BLOB-versioner
 
-Du kan aktivera Blob Storage-versioner för att automatiskt underhålla tidigare versioner av ett objekt.  När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
+Du kan aktivera Blob Storage-versioner för att automatiskt underhålla tidigare versioner av en BLOB när den ändras eller tas bort. När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
 
 Den här artikeln visar hur du aktiverar eller inaktiverar BLOB-versioner för lagrings kontot med hjälp av Azure Portal eller en Azure Resource Manager mall. Mer information om BLOB-versioner finns i [BLOB-versioner](versioning-overview.md).
 
@@ -29,13 +29,39 @@ Den här artikeln visar hur du aktiverar eller inaktiverar BLOB-versioner för l
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Så här aktiverar du Blob-versioner i Azure Portal:
+Så här aktiverar du Blob-versioner för ett lagrings konto i Azure Portal:
 
 1. Navigera till ditt lagrings konto i portalen.
 1. Under **BLOB service** väljer du **data skydd**.
 1. I avsnittet **versions hantering** väljer du **aktive rad**.
 
 :::image type="content" source="media/versioning-enable/portal-enable-versioning.png" alt-text="Skärm bild som visar hur du aktiverar BLOB-versioner i Azure Portal":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Om du vill aktivera BLOB-versioner för ett lagrings konto med PowerShell installerar du först [AZ. Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.3.0 eller senare. Anropa sedan kommandot [Update-AzStorageBlobServiceProperty](/powershell/module/az.storage/update-azstorageblobserviceproperty) för att aktivera versions hantering, som du ser i följande exempel. Kom ihåg att ersätta värdena i vinkelparenteser med dina egna värden:
+
+```powershell
+# Set resource group and account variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Enable versioning.
+Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -IsVersioningEnabled $true
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Om du vill aktivera BLOB-versioner för ett lagrings konto med Azure CLI måste du först installera Azure CLI version 2.2.0 eller senare. Anropa sedan kommandot [AZ Storage Account BLOB-service-Properties Update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) för att aktivera versions hantering, som du ser i följande exempel. Kom ihåg att ersätta värdena i vinkelparenteser med dina egna värden:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-versioning true
+```
 
 # <a name="template"></a>[Mall](#tab/template)
 

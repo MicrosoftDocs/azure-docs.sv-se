@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: eea42ab17311b85bdce429e22e8d0ed694e2f0ec
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608273"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096352"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Självstudie: mappa ett befintligt anpassat DNS-namn till Azure App Service
 
@@ -309,17 +309,20 @@ Om du får ett HTTP 404-fel (hittades inte) när du bläddrar till URL: en för 
 - Den anpassade domänen som har kon figurer ATS saknar en A-post eller en CNAME-post.
 - Webbläsarklienten har cachat din domäns gamla IP-adress. Rensa cacheminnet och testa DNS-matchningen igen. På en Windows-dator rensar du cachen med `ipconfig /flushdns`.
 
-<a name="virtualdir" aria-hidden="true"></a>
-
 ## <a name="migrate-an-active-domain"></a>Migrera en aktiv domän
 
 Om du vill migrera en live-webbplats och dess DNS-domännamn till App Service utan avbrott kan du läsa [Migrera ett aktivt DNS-namn till Azure App Service](manage-custom-dns-migrate-domain.md).
+
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="redirect-to-a-custom-directory"></a>Omdirigera till en anpassad katalog
 
 Som standard dirigerar App Service webbegäranden till rotkatalogen för din appkod. Men vissa webb ramverk startar inte i rot katalogen. [Laravel](https://laravel.com/) startar till exempel i underkatalogen `public`. För att fortsätta med `contoso.com` DNS-exemplet är en sådan app tillgänglig på `http://contoso.com/public` , men du vill direkt `http://contoso.com` till `public` katalogen i stället. Det här steget omfattar inte DNS-matchning, men handlar om att anpassa den virtuella katalogen.
 
-Om du vill anpassa en virtuell katalog väljer du **program inställningar** i den vänstra rutan på sidan för din webbapp.
+Om du vill anpassa en virtuell katalog för Windows-appar väljer du **program inställningar** i den vänstra rutan på sidan för din webbapp. 
+
+> [!NOTE]
+> Linux-appar har inte den här sidan. Om du vill ändra plats roten för Linux-appar, se språkspecifika konfigurations guider ([php](configure-language-php.md?pivots=platform-linux#change-site-root), till exempel).
 
 Längst ned på sidan pekar den virtuella rotkatalogen `/` till `site\wwwroot` som standard, vilket är rotkatalogen för din appkod. Ändra den så att den pekar till exempelvis `site\wwwroot\public` i stället, och spara ändringarna.
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 6ca489dc0c5c7ba8ba67f3456d04be953544a8fb
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: b7c71524dc40f7eabd5ff86ee21c8197acfae1a3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987817"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102299"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Skalbarhet för prestanda på Azure Kognitiv sökning
 
@@ -87,13 +87,16 @@ Mer information finns på [Azure Kognitiv sökning serviceavtal](https://azure.m
 
 Eftersom repliker är kopior av dina data kan du med flera repliker tillåta Azure Kognitiv sökning att starta om datorn och underhåll mot en replik, medan frågekörningen fortsätter på andra repliker. Om du däremot tar bort repliker tar du en fråga om prestanda försämring, förutsatt att dessa repliker var en underutnyttjad resurs.
 
+<a name="availability-zones"></a>
+
 ### <a name="availability-zones"></a>Tillgänglighetszoner
 
-[Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview) dela upp en regions Data Center i distinkta fysiska plats grupper för att tillhandahålla hög tillgänglighet inom regional nivå. Sök tjänsten körs inom en region. replikerna körs i olika zoner.
+[Tillgänglighetszoner](https://docs.microsoft.com/azure/availability-zones/az-overview) dela upp en regions Data Center i distinkta fysiska plats grupper för att tillhandahålla hög tillgänglighet inom samma region. För Kognitiv sökning är enskilda repliker enheterna för zon tilldelning. En Sök tjänst körs inom en region. dess repliker körs i olika zoner.
 
 Du kan använda Tillgänglighetszoner med Azure Kognitiv sökning genom att lägga till två eller fler repliker till din Sök tjänst. Varje replik kommer att placeras i en annan tillgänglighets zon inom regionen. Om du har fler repliker än Tillgänglighetszoner kommer replikerna att fördelas på Tillgänglighetszoner så jämnt som möjligt.
 
 Azure Kognitiv sökning stöder för närvarande Tillgänglighetszoner för standard nivå eller högre Sök tjänster som har skapats i någon av följande regioner:
+
 + Östra Australien (skapad 30 januari 2021 eller senare)
 + Kanada, centrala (skapad 30 januari 2021 eller senare)
 + USA, centrala (skapad av 4 december 2020 eller senare)
@@ -106,7 +109,7 @@ Azure Kognitiv sökning stöder för närvarande Tillgänglighetszoner för stan
 + Europa, västra (skapad den 29 januari 2021 eller senare)
 + USA, västra 2 (skapad 30 januari 2021 eller senare)
 
-Tillgänglighetszoner påverkar inte [Azure kognitiv sökning-serviceavtal](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Tillgänglighetszoner påverkar inte [Azure kognitiv sökning-serviceavtal](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Du behöver fortfarande tre eller fler repliker för att fråga hög tillgänglighet.
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Skala för geo-distribuerade arbets belastningar och GEO-redundans
 

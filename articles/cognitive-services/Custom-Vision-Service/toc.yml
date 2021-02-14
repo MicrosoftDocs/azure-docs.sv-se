@@ -31,7 +31,7 @@
   items:
     - name: Testa din modell
       href: test-your-model.md
-    - name: Förbättra din klassificerare
+    - name: Förbättra din modell
       href: getting-started-improving-your-classifier.md
     - name: Välj en domän
       href: select-domain.md

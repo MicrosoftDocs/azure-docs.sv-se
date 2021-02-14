@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/12/2021
+ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055186"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104509"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Säker åtkomst och data i Azure Logic Apps
 
@@ -123,11 +123,11 @@ I bröd texten inkluderar du `KeyType` egenskapen som antingen `Primary` eller `
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Aktivera Azure Active Directory öppna autentisering (Azure AD OAuth)
 
-För inkommande anrop till en slut punkt som skapats av en begärd utlösare kan du aktivera [Azure Active Directory öppna autentisering (Azure AD OAuth)](../active-directory/develop/index.yml) genom att definiera eller lägga till en auktoriseringsprincip för din Logic app. På så sätt använder inkommande anrop OAuth- [åtkomsttoken](../active-directory/develop/access-tokens.md) för auktorisering.
+För inkommande anrop till en slut punkt som skapats av en begärd utlösare kan du aktivera [Azure AD OAuth](../active-directory/develop/index.yml) genom att definiera eller lägga till en auktoriseringsprincip för din Logic app. På så sätt använder inkommande anrop OAuth- [åtkomsttoken](../active-directory/develop/access-tokens.md) för auktorisering.
 
 När din Logi Kap par tar emot en inkommande begäran som innehåller en OAuth-åtkomsttoken, jämför Azure Logic Apps tjänsten token-anspråk mot de anspråk som anges av varje auktoriseringsprincip. Om det finns en matchning mellan token-anspråk och alla anspråk i minst en princip, lyckas auktoriseringen för den inkommande begäran. Token kan ha fler anspråk än det antal som anges av auktoriseringsprincipen.
 
-Innan du aktiverar Azure AD OAuth bör du gå igenom följande överväganden:
+#### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Att tänka på innan du aktiverar Azure AD OAuth
 
 * Ett inkommande anrop till begär ande slut punkten kan endast använda ett Authorization-schema, antingen Azure AD OAuth eller [signaturen för delad åtkomst (SAS)](#sas). Även om ett schema inte inaktiverar det andra schemat, orsakar det ett fel på grund av att den Logic Apps tjänsten inte vet vilket schema som ska väljas.
 
@@ -180,11 +180,15 @@ Innan du aktiverar Azure AD OAuth bör du gå igenom följande överväganden:
    }
    ```
 
+#### <a name="enable-azure-ad-oauth-for-your-logic-app"></a>Aktivera Azure AD OAuth för din Logic app
+
+Följ dessa steg för antingen Azure Portal eller din Azure Resource Manager-mall:
+
 <a name="define-authorization-policy-portal"></a>
 
-#### <a name="define-authorization-policy-in-azure-portal"></a>Definiera auktoriseringsprincipen i Azure Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Om du vill aktivera Azure AD OAuth för din Logic-app i Azure Portal följer du dessa steg för att lägga till en eller flera auktoriseringsprinciper i din Logic app:
+Lägg till en eller flera auktoriseringsprinciper i din Logic app i [Azure Portal](https://portal.azure.com):
 
 1. I [Azure Portal](https://portal.microsoft.com)kan du söka efter och öppna din Logic app i Logic App Designer.
 
@@ -216,9 +220,9 @@ Om du vill aktivera Azure AD OAuth för din Logic-app i Azure Portal följer du 
 
 <a name="define-authorization-policy-template"></a>
 
-#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Definiera auktoriseringsprincipen i Azure Resource Manager mall
+#### <a name="resource-manager-template"></a>[Resource Manager-mall](#tab/azure-resource-manager)
 
-Om du vill aktivera Azure AD OAuth i ARM-mallen för distribution av din Logic app, följer du dessa steg och syntaxen nedan:
+I ARM-mallen definierar du en auktoriseringsprincip genom att följa dessa steg och syntax nedan:
 
 1. I `properties` avsnittet för din [Logic Apps resurs definition](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)lägger du till ett `accessControl` objekt, om det finns något, som innehåller ett `triggers` objekt.
 
@@ -271,6 +275,8 @@ Använd följande syntax:
 ],
 ```
 
+---
+
 <a name="include-auth-header"></a>
 
 #### <a name="include-authorization-header-in-request-trigger-outputs"></a>Ta med ' Authorization '-huvud i utlösare utdata
@@ -310,11 +316,13 @@ Tillsammans med signaturen för delad åtkomst (SAS) kanske du vill begränsa vi
 
 Oavsett vilka IP-adresser som du anger kan du fortfarande köra en Logic-app som har en begäran-baserad utlösare med hjälp av [Logic Apps REST API: arbets flödes utlösare-kör](/rest/api/logic/workflowtriggers/run) begäran eller med hjälp av API Management. Det här scenariot kräver dock fortfarande [autentisering](../active-directory/develop/authentication-vs-authorization.md) mot Azure-REST API. Alla händelser visas i gransknings loggen i Azure. Se till att du anger principer för åtkomst kontroll i enlighet med detta.
 
+Om du vill begränsa de inkommande IP-adresserna för din Logic app följer du de här stegen för antingen Azure Portal eller din Azure Resource Manager-mall:
+
 <a name="restrict-inbound-ip-portal"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Begränsa inkommande IP-intervall i Azure Portal
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-När du använder portalen för att begränsa inkommande IP-adresser för din Logic app påverkar dessa begränsningar både utlösare *och* åtgärder, trots beskrivningen i portalen under **tillåtna inkommande IP-adresser**. Om du vill ställa in begränsningar för utlösare separat från åtgärder, använder du [ `accessControl` objektet i din logic Apps Azure Resource Manager-mall](#restrict-inbound-ip-template) eller [Logic Apps REST API: arbets flöde-skapa eller uppdatera](/rest/api/logic/workflows/createorupdate).
+I [Azure Portal](https://portal.azure.com)påverkar det här filtret både utlösare *och* åtgärder, i motsats till beskrivningen i portalen under **tillåtna inkommande IP-adresser**. Om du vill ställa in filtret separat för utlösare och för åtgärder, använder du `accessControl` objektet i en Azure Resource Manager mall för din Logic app eller [Logic Apps REST API: arbets flöde – skapa eller uppdatera](/rest/api/logic/workflows/createorupdate).
 
 1. I [Azure Portal](https://portal.azure.com)öppnar du din Logic app i Logic Apps designer.
 
@@ -323,27 +331,27 @@ När du använder portalen för att begränsa inkommande IP-adresser för din Lo
 1. I avsnittet **konfiguration av åtkomst kontroll** under **tillåtna inkommande IP-adresser** väljer du sökvägen för ditt scenario:
 
    * Om du bara vill att din Logi Kap par ska anropas som en kapslad Logic-app med hjälp av den inbyggda [Azure Logic Apps åtgärden](../logic-apps/logic-apps-http-endpoint.md), väljer du **bara andra Logic Apps**, som fungerar *bara* när du använder **Azure Logic Apps** -åtgärden för att anropa den kapslade Logic-appen.
-   
+
      Det här alternativet skriver en tom matris till din Logic app-resurs och kräver att endast anrop från överordnade Logic-appar som använder den inbyggda **Azure Logic Apps** åtgärden kan utlösa den kapslade Logic-appen.
 
    * Om du bara vill att din Logi Kap par ska anropas som en kapslad app med hjälp av HTTP-åtgärden väljer du **vissa IP-intervall**, *inte* **bara andra Logic Apps**. När rutan **IP-intervall för utlösare** visas anger du den överordnade Logic [-appens utgående IP-adresser](../logic-apps/logic-apps-limits-and-config.md#outbound). Ett giltigt IP-intervall använder följande format: *x. x. x. x/x* eller *x. x. x-x.* x. x. x.
-   
+
      > [!NOTE]
      > Om du använder alternativet **endast andra Logic Apps** och http-åtgärden för att anropa din kapslade Logic-app, blockeras anropet och du får felet "401 obehörig".
-        
+
    * För scenarier där du vill begränsa inkommande anrop från andra IP-adresser, när rutan **IP-intervall för utlösare** visas, anger du de IP-adressintervall som utlösaren accepterar. Ett giltigt IP-intervall använder följande format: *x. x. x. x/x* eller *x. x. x-x.* x. x. x.
 
 1. Om du vill kan du ange IP-adressintervall för inkommande samtal som kan komma åt inkommande och utgående meddelanden i körnings historik under **begränsa anrop till att hämta indata och utdata från körnings historiken till de angivna IP-adresserna**.
 
 <a name="restrict-inbound-ip-template"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Begränsa inkommande IP-intervall i Azure Resource Manager mall
+#### <a name="resource-manager-template"></a>[Resource Manager-mall](#tab/azure-resource-manager)
 
-Om du [automatiserar distributionen för logi Kap par med hjälp av Resource Manager-mallar](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)kan du ange tillåtna inkommande IP-adressintervall i din Logi kap Apps resurs definition med hjälp av `accessControl` avsnittet. I det här avsnittet använder du `triggers` , `actions` och de valfria `contents` avsnitten efter behov, genom att inkludera `allowedCallerIpAddresses` avsnittet med `addressRange` egenskapen och ange egenskap svärdet till det tillåtna IP-intervallet i *x. x* . x. x/x eller x. x. x *-x. x* . x. x-formatet.
+I ARM-mallen anger du tillåtna inkommande IP-adressintervall i din Logic Apps resurs definition med hjälp av `accessControl` avsnittet. I det här avsnittet använder du `triggers` , `actions` och de valfria `contents` avsnitten efter behov, genom att inkludera `allowedCallerIpAddresses` avsnittet med `addressRange` egenskapen och ange egenskap svärdet till det tillåtna IP-intervallet i *x. x* . x. x/x eller x. x. x *-x. x* . x. x-formatet.
 
 * Om din kapslade Logic-app använder alternativet **endast andra Logic Apps** , som tillåter inkommande anrop enbart från andra Logic Apps som använder åtgärden Azure Logic Apps, anger du `addressRange` egenskapen till en tom matris (**[]**).
 
-* Om din kapslade Logic-app använder alternativet för **speciella IP-intervall** för andra inkommande anrop, till exempel andra Logic Apps som använder http-åtgärden, anger du `addressRange` egenskapen till det tillåtna IP-intervallet.
+* Om din kapslade Logic-app använder alternativet **speciella IP-adressintervall** för andra inkommande anrop, till exempel andra Logic Apps som använder http-åtgärden, anger du `addressRange` egenskapen till tillåtet IP-intervall.
 
 I det här exemplet visas en resurs definition för en kapslad Logic-app som tillåter inkommande samtal enbart från Logic Apps som använder den inbyggda Azure Logic Apps åtgärden:
 
@@ -439,6 +447,8 @@ I det här exemplet visas en resurs definition för en kapslad Logic-app som til
 }
 ```
 
+---
+
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>Åtkomst till Logic app-åtgärder
@@ -473,11 +483,15 @@ Om du vill kontrol lera åtkomsten till indata och utdata i din Logic Apps körn
 
 ### <a name="restrict-access-by-ip-address-range"></a>Begränsa åtkomst efter IP-adressintervall
 
-Du kan begränsa åtkomsten till indata och utdata i din Logic Apps körnings historik så att endast förfrågningar från vissa IP-adressintervall kan visa dessa data. Om du till exempel vill blockera alla från att komma åt indata och utdata anger du ett IP-adressintervall som `0.0.0.0-0.0.0.0` . Endast en person med administratörs behörighet kan ta bort den här begränsningen, vilket ger möjlighet till just-in-Time-åtkomst till din Logic Apps-data. Du kan ange vilka IP-intervall som ska begränsas genom att använda Azure Portal eller i en Azure Resource Manager mall som du använder för Logic app-distribution.
+Du kan begränsa åtkomsten till indata och utdata i din Logic Apps körnings historik så att endast förfrågningar från vissa IP-adressintervall kan visa dessa data.
 
-#### <a name="restrict-ip-ranges-in-azure-portal"></a>Begränsa IP-intervall i Azure Portal
+Om du till exempel vill blockera alla från att komma åt indata och utdata anger du ett IP-adressintervall som `0.0.0.0-0.0.0.0` . Endast en person med administratörs behörighet kan ta bort den här begränsningen, vilket ger möjlighet till just-in-Time-åtkomst till din Logic Apps-data.
 
-1. I Azure Portal öppnar du din Logic app i Logic Apps designer.
+Om du vill ange tillåtna IP-intervall följer du de här stegen för antingen Azure Portal eller din Azure Resource Manager-mall:
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. I [Azure Portal](https://portal.azure.com)öppnar du din Logic app i Logic Apps designer.
 
 1. På din Logic Apps-meny, under **Inställningar**, väljer du **arbets flödes inställningar**.
 
@@ -487,9 +501,9 @@ Du kan begränsa åtkomsten till indata och utdata i din Logic Apps körnings hi
 
    Ett giltigt IP-intervall använder följande format: *x. x. x. x/x* eller *x. x. x* . x-x. x
 
-#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Begränsa IP-intervall i Azure Resource Manager mall
+#### <a name="resource-manager-template"></a>[Resource Manager-mall](#tab/azure-resource-manager)
 
-Om du [automatiserar distributionen för logi Kap par med hjälp av Resource Manager-mallar](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)kan du ange IP-intervallen med hjälp av `accessControl` avsnittet med `contents` avsnittet i din Logic Apps resurs definition, till exempel:
+I ARM-mallen anger du IP-intervallen genom att använda `accessControl` avsnittet med `contents` avsnittet i din Logic Apps resurs definition, till exempel:
 
 ``` json
 {
@@ -528,11 +542,41 @@ Om du [automatiserar distributionen för logi Kap par med hjälp av Resource Man
 }
 ```
 
+---
+
 <a name="obfuscate"></a>
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>Skydda data i körnings historiken med hjälp av döljande
 
-Många utlösare och åtgärder har inställningar för att skydda indata, utdata eller både och från en Logic Apps körnings historik. Innan du använder de här inställningarna för att skydda dessa data bör du [gå igenom dessa överväganden](#obfuscation-considerations).
+Många utlösare och åtgärder har inställningar för att skydda indata, utdata eller både och från en Logic Apps körnings historik. Innan du använder de här inställningarna för att skydda dessa data bör du gå igenom följande överväganden:
+
+* När du skymmer indata eller utdata på en utlösare eller åtgärd skickar Logic Apps inga skyddade data till Azure Log Analytics. Du kan inte heller lägga till [spårade egenskaper](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) till den utlösaren eller åtgärden för övervakning.
+
+* [Logic Apps-API för hantering av arbets flödes historik](/rest/api/logic/) returnerar inte säkra utdata.
+
+* Om du vill skydda utdata från en åtgärd som skymmer indata eller tydligt skymmer utdata, aktiverar du **säkert utdata** manuellt i den åtgärden.
+
+* Kontrol lera att du aktiverar **säkra indata** eller **säkra utdata** i efterföljande åtgärder där du förväntar dig att körnings historiken ska dölja dessa data.
+
+  **Inställning av säkra utdata**
+
+  När du aktiverar **säkra utdata** manuellt i en utlösare eller åtgärd kan Logic Apps dölja dessa utdata i körnings historiken. Om en underordnad åtgärd uttryckligen använder dessa skyddade utdata som indata, Logic Apps döljer den här åtgärdens indata i körnings historiken, men *aktiverar inte* åtgärdens inställning för **säker indata** .
+
+  ![Skyddade utdata som indata och effekt påverkan på de flesta åtgärder](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  Åtgärderna Skriv, parsa JSON och Response har bara inställningen **säkra indata** . När inställningen är aktive rad döljs även dessa åtgärders utdata. Om dessa åtgärder uttryckligen använder överordnade säkra utdata som indata, Logic Apps döljer dessa åtgärders indata och utdata, men *aktiverar inte* dessa åtgärders inställning för **säkra indata** . Om en underordnad åtgärd uttryckligen använder dolda utdata från Skriv-, parsa-JSON-eller Response-åtgärder som indata, kan Logic Apps *inte dölja den här underordnade åtgärdens indata eller utdata*.
+
+  ![Skyddade utdata som indata med effekt på vissa åtgärder](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  **Inställningar för säker indata**
+
+  När du aktiverar **säkra indata** manuellt i en utlösare eller åtgärd, Logic Apps döljer dessa indata i körnings historiken. Om en underordnad åtgärd uttryckligen använder synliga utdata från den utlösaren eller åtgärden som indata, kan Logic Apps dölja denna underordnade åtgärds indata i körnings historiken, men *aktiverar inte* **säkra** inmatningar i den här åtgärden och döljer inte den här åtgärden.
+
+  ![Skyddade indata och effekt påverkan på de flesta åtgärder](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
+
+  Om Skriv, parsa JSON och svars åtgärder uttryckligen använder synliga utdata från utlösaren eller åtgärden som har skyddade indata, Logic Apps döljer dessa åtgärders indata och utdata, men *aktiverar inte* den här åtgärdens inställning för **säkra indata** . Om en underordnad åtgärd uttryckligen använder dolda utdata från Skriv-, parsa-JSON-eller Response-åtgärder som indata, kan Logic Apps *inte dölja den här underordnade åtgärdens indata eller utdata*.
+
+  ![Skyddade indata och effekter på vissa åtgärder](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>Säkra indata och utdata i designern
 
@@ -575,8 +619,6 @@ I den underliggande utlösaren eller åtgärds definitionen lägger du till elle
 * `"inputs"`: Skyddar indata i körnings historik.
 * `"outputs"`: Skyddar utdata i körnings historiken.
 
-Här är några [saker som du bör tänka på](#obfuscation-considerations) när du använder dessa inställningar för att skydda dessa data.
-
 ```json
 "<trigger-or-action-name>": {
    "type": "<trigger-or-action-type>",
@@ -594,38 +636,6 @@ Här är några [saker som du bör tänka på](#obfuscation-considerations) när
    <other-attributes>
 }
 ```
-
-<a name="obfuscation-considerations"></a>
-
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>Att tänka på när du skyddar indata och utdata
-
-* När du skymmer indata eller utdata på en utlösare eller åtgärd skickar Logic Apps inga skyddade data till Azure Log Analytics. Du kan inte heller lägga till [spårade egenskaper](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) till den utlösaren eller åtgärden för övervakning.
-
-* [Logic Apps-API för hantering av arbets flödes historik](/rest/api/logic/) returnerar inte säkra utdata.
-
-* Om du vill skydda utdata från en åtgärd som skymmer indata eller tydligt skymmer utdata, aktiverar du **säkert utdata** manuellt i den åtgärden.
-
-* Kontrol lera att du aktiverar **säkra indata** eller **säkra utdata** i efterföljande åtgärder där du förväntar dig att körnings historiken ska dölja dessa data.
-
-  **Inställning av säkra utdata**
-
-  När du aktiverar **säkra utdata** manuellt i en utlösare eller åtgärd kan Logic Apps dölja dessa utdata i körnings historiken. Om en underordnad åtgärd uttryckligen använder dessa skyddade utdata som indata, Logic Apps döljer den här åtgärdens indata i körnings historiken, men *aktiverar inte* åtgärdens inställning för **säker indata** .
-
-  ![Skyddade utdata som indata och effekt påverkan på de flesta åtgärder](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
-
-  Åtgärderna Skriv, parsa JSON och Response har bara inställningen **säkra indata** . När inställningen är aktive rad döljs även dessa åtgärders utdata. Om dessa åtgärder uttryckligen använder överordnade säkra utdata som indata, Logic Apps döljer dessa åtgärders indata och utdata, men *aktiverar inte* dessa åtgärders inställning för **säkra indata** . Om en underordnad åtgärd uttryckligen använder dolda utdata från Skriv-, parsa-JSON-eller Response-åtgärder som indata, kan Logic Apps *inte dölja den här underordnade åtgärdens indata eller utdata*.
-
-  ![Skyddade utdata som indata med effekt på vissa åtgärder](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
-
-  **Inställningar för säker indata**
-
-  När du aktiverar **säkra indata** manuellt i en utlösare eller åtgärd, Logic Apps döljer dessa indata i körnings historiken. Om en underordnad åtgärd uttryckligen använder synliga utdata från den utlösaren eller åtgärden som indata, kan Logic Apps dölja denna underordnade åtgärds indata i körnings historiken, men *aktiverar inte* **säkra** inmatningar i den här åtgärden och döljer inte den här åtgärden.
-
-  ![Skyddade indata och effekt påverkan på de flesta åtgärder](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
-
-  Om Skriv, parsa JSON och svars åtgärder uttryckligen använder synliga utdata från utlösaren eller åtgärden som har skyddade indata, Logic Apps döljer dessa åtgärders indata och utdata, men *aktiverar inte* den här åtgärdens inställning för **säkra indata** . Om en underordnad åtgärd uttryckligen använder dolda utdata från Skriv-, parsa-JSON-eller Response-åtgärder som indata, kan Logic Apps *inte dölja den här underordnade åtgärdens indata eller utdata*.
-
-  ![Skyddade indata och effekter på vissa åtgärder](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 <a name="secure-action-parameters"></a>
 

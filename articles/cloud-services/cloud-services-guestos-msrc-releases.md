@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2021
+ms.date: 2/9/2021
 ms.author: yohaddad
-ms.openlocfilehash: d5892d0b2ae2004f8604333294411e849dc8394b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bd295a753447771654522b3aef938b9a32c468c5
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805892"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100105138"
 ---
 # <a name="azure-guest-os"></a>Azure gäst operativ system
 Följande tabeller visar de uppdateringar av Microsoft Security Response Center (MSRC) som tillämpas på Azures gäst operativ system. Sök i den här artikeln för att avgöra om en viss uppdatering gäller det gäst operativ system som du använder. Uppdateringar överför alltid den specifika [familj][family-explain] som de introducerades i.
+
+## <a name="february-2021-guest-os"></a>Gäst operativ system februari 2021
+
+>[!NOTE] 
+
+>Gäst operativ systemet februari distribueras för närvarande till virtuella datorer i moln tjänsten som har kon figurer ATS för automatiska uppdateringar. När distributionen är klar görs den här versionen tillgänglig för manuella uppdateringar via Azure Portal-och konfigurationsfiler. Följande korrigeringar ingår i gäst operativ systemet i februari. Den här listan kan ändras. 
+
+| Produktkategori | Överordnad KB-artikel | Beskrivning av sårbarhet | Gästoperativsystem | Datum för första gången |
+| --- | --- | --- | --- | --- |
+|  Rel 21-02 |  [4601345]  |  Senaste kumulativa uppdateringen (LCU) | 6,28 | Feb 9, 2021 |
+|  Rel 21-02 |  [4580325]  |  Uppdatera Flash | 3,94, 4,87, 5,52, 6,28 | 13 oktober 2020 |
+|  Rel 21-02 |  [4586768]  |  Kumulativa uppdateringar för IE | 2,107, 3,94, 4,87 | Den 10 november 2020 |
+|  Rel 21-02 |  [4601318]  |  Senaste kumulativa uppdateringen (LCU) | 5,52 | Feb 9, 2021 |
+|  Rel 21-02 |  [4578952]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning | 2,107 | 12 Jan 2021 |
+|  Rel 21-02 |  [4578955]  |  .NET Framework 4.5.2 säkerhet och kvalitet | 2,107 | 12 Jan 2021 |
+|  Rel 21-02 |  [4578953]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning | 4,87 | 12 Jan 2021 |
+|  Rel 21-02 |  [4578956]  |  .NET Framework 4.5.2 säkerhet och kvalitet | 4,87 | 12 Jan 2021 |
+|  Rel 21-02 |  [4578950]  |  .NET Framework 3,5 säkerhets-och kvalitets sammanslagning | 3,94 | 12 Jan 2021 |
+|  Rel 21-02 |  [4578954]  |  . NET Framework 4.5.2 säkerhet och kvalitets sammanslagning | 3,94 | 12 Jan 2021 |
+|  Rel 21-02 |  [4578966]  |  . NET Framework 3,5 och 4.7.2 Cumulative Update | 6,28 | 13 oktober 2020 |
+|  Rel 21-02 |  [4601347]  |  Månatlig sammanställning | 2,107 | Feb 9, 2021 |
+|  Rel 21-02 |  [4601348]  |  Månatlig sammanställning | 3,94 | Feb 9, 2021 |
+|  Rel 21-02 |  [4601384]  |  Månatlig sammanställning | 4,87 | Feb 9, 2021 |
+|  Rel 21-02 |  [4566426]  |  Uppdatering av underhålls stack | 3,94 | 14 juli 2020 |
+|  Rel 21-02 |  [4566425]  |  Uppdatering av underhålls stack | 4,87 | 14 juli 2020 |
+|  Rel 21-02 OOB |  [4578013]  |  Fristående säkerhets uppdatering | 4,87 | Aug 19, 2020 |
+|  Rel 21-02 |  [4601392]  |  Uppdatering av underhålls stack | 5,52 | Feb 9, 2021 |
+|  Rel 21-02 |  [4592510]  |  Uppdatering av underhålls stack | 2,107 | Dec 8, 2020 |
+|  Rel 21-02 |  [4601393]  |  Uppdatering av underhålls stack | 6,28 | Feb 9, 2021 |
+|  Rel 21-02 |  [4494175]  |  Microcode | 5,52 | Sep 1, 2020 |
+|  Rel 21-02 |  [4494174]  |  Microcode | 6,28 | Sep 1, 2020 |
+
+[4601345]: https://support.microsoft.com/kb/4601345
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4601318]: https://support.microsoft.com/kb/4601318
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4601347]: https://support.microsoft.com/kb/4601347
+[4601348]: https://support.microsoft.com/kb/4601348
+[4601384]: https://support.microsoft.com/kb/4601384
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4601392]: https://support.microsoft.com/kb/4601392
+[4592510]: https://support.microsoft.com/kb/4592510
+[4601393]: https://support.microsoft.com/kb/4601393
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="january-2021-guest-os"></a>Januari 2021 gäst operativ system
 

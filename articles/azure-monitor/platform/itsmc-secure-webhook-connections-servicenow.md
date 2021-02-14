@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: fc384ffbc246f5ce9fa84b8161cbc4a5226fa5c8
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7801145ba1bcaa2ffd543becfe190f05d232e8c8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843623"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104968"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>Anslut ServiceNow till Azure Monitor
 
@@ -22,7 +22,7 @@ Följande avsnitt innehåller information om hur du ansluter din ServiceNow-prod
 Se till att du uppfyller följande krav:
 
 * Azure AD har registrerats.
-* Du har den version av ServiceNow Event Management – ITOM (version Orlando eller senare) som stöds.
+* Du har den version av ServiceNow Event Management – ITOM (version New York eller senare) som stöds.
 
 ## <a name="configure-the-servicenow-connection"></a>Konfigurera ServiceNow-anslutningen
 

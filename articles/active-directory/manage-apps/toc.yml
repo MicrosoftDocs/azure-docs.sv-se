@@ -158,6 +158,8 @@
           href: migration-resources.md
         - name: Migrera en AD FS-app till Azure
           href: migrate-adfs-apps-to-azure.md
+        - name: Migrera programautentisering till Azure Active Directory
+          href: migrate-application-authentication-to-azure-active-directory.md
         - name: Använda AD FS-programaktivitetsrapporten (förhandsversion)
           href: migrate-adfs-application-activity.md
     - name: Konfigurera lokala anslutningsprogram

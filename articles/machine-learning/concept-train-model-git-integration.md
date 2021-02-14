@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 989fc7cb66cf5381d174a3aad12f84f5b055aab8
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 7c10d3066dc7b9ee0994de8c327b286bf8c917e7
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701644"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099480"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integrering för Azure Machine Learning
 
@@ -28,7 +28,7 @@ Eftersom Azure Machine Learning spårar information från en lokal git-lagrings 
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klona Git-databaser till arbetsytans filsystem
 Azure Machine Learning tillhandahåller ett delat fil system för alla användare på arbets ytan.
-Om du vill klona en git-lagringsplats till den här fil resursen rekommenderar vi att du skapar en beräknings instans & öppnar en Terminal.
+Om du vill klona en git-lagringsplats till den här fil resursen rekommenderar vi att du skapar en beräknings instans & [öppnar en Terminal](how-to-access-terminal.md).
 När terminalen har öppnats har du åtkomst till en fullständig git-klient och kan klona och arbeta med git via git CLI-upplevelsen.
 
 Vi rekommenderar att du klonar lagrings platsen till din användar katalog så att andra inte kommer att göra kollisioner direkt på din arbets gren.
@@ -39,7 +39,7 @@ Mer information om kloning finns i guiden om [hur du använder git CLI](https://
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>Autentisera ditt git-konto med SSH
 ### <a name="generate-a-new-ssh-key"></a>Generera en ny SSH-nyckel
-1) [Öppna terminalfönstret](./how-to-run-jupyter-notebooks.md#terminal) på fliken Azure Machine Learning antecknings bok.
+1) [Öppna terminalfönstret](./how-to-access-terminal.md) på fliken Azure Machine Learning antecknings bok.
 
 2) Klistra in texten nedan och ersätt den med din e-postadress.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Starta i **steg 2**.
++ [Azure-DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true)  Starta i **steg 2**.
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Starta i **steg 4**.
 
@@ -123,7 +123,7 @@ SSH visar det här finger avtrycket när det ansluter till en okänd värd för 
 
 När du skickar en utbildning som körs från python SDK eller Machine Learning CLI överförs filerna som behövs för att träna modellen till din arbets yta. Om `git` kommandot är tillgängligt i utvecklings miljön använder överförings processen för att kontrol lera om filerna är lagrade i en git-lagringsplats. I så fall, överförs information från git-lagringsplatsen också som en del av övnings körningen. Den här informationen lagras i följande egenskaper för övnings körningen:
 
-| Egenskap | Git-kommando som används för att hämta värdet | Beskrivning |
+| Egenskap | Git-kommando som används för att hämta värdet | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Den URI som din lagrings plats har kopierats från. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Den URI som din lagrings plats har kopierats från. |

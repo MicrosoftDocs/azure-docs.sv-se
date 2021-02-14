@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82b59e887eb35a972812dd82dbca5ca6bc5179b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798218"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096216"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Hantera dina anslutna enheter från sidan enheter
 
@@ -27,7 +27,12 @@ Sidan **enheter** i portalen **My-Account** hjälper dig att hantera enheter som
 - Inaktivera alla enheter som du inte längre äger, har tappat bort eller blivit stulna.
 
 >[!Important]
->Den här artikeln är avsedd för användare som försöker uppdatera enhets informationen som är ansluten till ett arbets-eller skol konto. Om du är administratör för att söka efter information om enhets hantering för dina anställda och andra användnings områden, se [dokumentationen om enhets identiteter](../devices/index.yml).
+>Den här artikeln är avsedd för användare som försöker uppdatera enhets informationen som är ansluten till ett arbets-eller skol konto. Om du ser ett fel när du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller klient organisations **-ID: t** för din organisation från administratören i någon av följande URL: er:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>Om du är administratör för att söka efter information om enhets hantering för dina anställda och andra användnings områden, se [dokumentationen om enhets identiteter](../devices/index.yml).
 
 ## <a name="view-your-connected-devices"></a>Visa dina anslutna enheter
 

@@ -2,17 +2,20 @@
 title: Skapa en ny Azure Application Insights-resurs | Microsoft Docs
 description: Konfigurera Application Insights övervakning manuellt för ett nytt Live-program.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e69611d650f61630c8b36f7387b79cffbb61f227
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/10/2021
+ms.openlocfilehash: 3233aed895eac269bd34a961728b3302581ff360
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062921"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104594"
 ---
 # <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 
 Azure Application Insights visar data om ditt program i en Microsoft Azure *resurs*. Att skapa en ny resurs är därför en del av [att konfigurera Application Insights för att övervaka ett nytt program][start]. När du har skapat din nya resurs kan du hämta dess instrument nyckel och använda den för att konfigurera Application Insights SDK. Instrumentation-nyckeln länkar din telemetri till resursen.
+
+> [!IMPORTANT]
+> Den klassiska Application Insights är föråldrad. Följ de här [anvisningarna om hur du uppgraderar till arbets ytans baserade Application Insights](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Logga in på Microsoft Azure
 
