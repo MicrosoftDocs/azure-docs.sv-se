@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e06a388f2391f4ed94370dd072a66a162ba5240f
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257954"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526671"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Översikt av mjuk borttagning för Azure Key Vault
 
 > [!IMPORTANT]
 > Du måste aktivera mjuk borttagning i nyckel valven direkt. Möjligheten att välja bort mjuk borttagning är snart inaktuell. Se fullständig information [här](soft-delete-change.md)
+
+> [!IMPORTANT]
+> Mjuk borttagning av valv utlösare ta bort inställningar för integrering med Key Vault tjänster, d.v.s. Azure RBAC-roller tilldelningar, Event Grid prenumerationer, Azure Monitor diagnostikinställningar. När återställningen av mjuk borttagnings Key Vault inställningar för integrerade tjänster måste återskapas manuellt. 
 
 Key Vault funktionen för mjuk borttagning kan återställa de borttagna valven och borttagna Key Vault-objekt (till exempel nycklar, hemligheter, certifikat), som kallas mjuk borttagning. Mer specifikt åtgärdar vi följande scenarier: det här skyddet erbjuder följande skydd:
 
@@ -27,7 +30,7 @@ Key Vault funktionen för mjuk borttagning kan återställa de borttagna valven 
 
 ## <a name="supporting-interfaces"></a>Stöd för gränssnitt
 
-Funktionen mjuk borttagning är tillgänglig via [REST API](/rest/api/keyvault/), [Azure CLI](./key-vault-recovery.md)-, [Azure PowerShell](./key-vault-recovery.md)-och [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) -gränssnitt, samt [arm-mallar](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
+Funktionen mjuk borttagning är tillgänglig via [REST API](/rest/api/keyvault/), [Azure CLI](./key-vault-recovery.md)-, [Azure PowerShell](./key-vault-recovery.md)-och [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) -gränssnitt, samt [arm-mallar](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
 
 ## <a name="scenarios"></a>Scenarier
 

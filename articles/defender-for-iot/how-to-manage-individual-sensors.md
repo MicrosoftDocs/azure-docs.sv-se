@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: ba98eb7e87ba277dcd5279ecf17373a8276b1cb1
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c8bb44d323574f6815aa570b271ed4c0df1fc6be
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523982"
+ms.locfileid: "100526926"
 ---
 # <a name="manage-individual-sensors"></a>Hantera enskilda sensorer
 
@@ -570,7 +570,7 @@ För att komma åt system egenskaper:
 
 3. Välj **system egenskaper** i avsnittet **Allmänt** .
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Forsknings och paket för hot information](how-to-work-with-threat-intelligence-packages.md)
 

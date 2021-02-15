@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786047"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526653"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Om Azure Key Vault hemligheter
 
@@ -74,7 +74,7 @@ Instruktions guider för att kontrol lera åtkomst i Key Vault:
 - [Tilldela en Key Vault åtkomst princip med CLI](../general/assign-access-policy-cli.md)
 - [Tilldela en Key Vault åtkomst princip med hjälp av PowerShell](../general/assign-access-policy-powershell.md)
 - [Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal](../general/assign-access-policy-portal.md)
-- [Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure (för hands version)](../general/rbac-guide.md)
+- [Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>Hemliga Taggar  
 Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault stöder upp till 15 taggar, som var och en kan ha ett 256-namn och ett värde på 256.  
@@ -124,7 +124,7 @@ Instruktions guider för att kontrol lera åtkomst i Key Vault:
 - [Tilldela en Key Vault åtkomst princip med CLI](../general/assign-access-policy-cli.md)
 - [Tilldela en Key Vault åtkomst princip med hjälp av PowerShell](../general/assign-access-policy-powershell.md)
 - [Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal](../general/assign-access-policy-portal.md)
-- [Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure (för hands version)](../general/rbac-guide.md)
+- [Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>Nästa steg

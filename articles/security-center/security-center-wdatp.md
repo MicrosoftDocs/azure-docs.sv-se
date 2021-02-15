@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876401"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526977"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -43,12 +43,11 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 | Versions tillstånd:                  | Allmänt tillgänglig (GA)                                                                                                                                                                                                                                                                                      |
 | Priset                        | Kräver [Azure Defender för servrar](security-center-pricing.md)                                                                                                                                                                                                                                             |
 | Plattformar som stöds:            | Azure-datorer som kör Windows<br>Azure Arc-datorer som kör Windows|
-| Versioner av Windows som stöds:  |  • Security Center stöder identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • Övervakning av Server slut punkt med denna integrering har inaktiverats för Office 365 GCC-kunder|
-| Operativ system som inte stöds:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
+| Versioner av Windows som stöds:  |  • Security Center stöder identifiering på Windows Server 2019, 2016, 2012 R2 och 2008 R2 SP1<br> • Övervakning av Server slut punkt med denna integrering har inaktiverats för Office 365 GCC-kunder<br> • [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)<br> •  [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)|
+| Operativ system som inte stöds:  |  • Windows 10 (annat än EVD eller WVD)<br> • Linux|
 | Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
 | Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov<br>![Nej](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
-
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Microsoft Defender för slut punkts funktioner i Security Center
 
@@ -62,7 +61,7 @@ Microsoft Defender för slut punkt innehåller:
 
 Genom att integrera Defender för slut punkt med Security Center kan du dra nytta av följande ytterligare funktioner:
 
-- **Automatiserad onboarding**. Security Center aktiverar automatiskt Microsoft Defender för slut punkts sensor för alla Windows-servrar som övervakas av Security Center. Förutom för de som kör Windows Server 2019, som måste registreras via lokalt skript, grupprincip objekt (GPO) eller [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (tidigare SCCM).
+- **Automatiserad onboarding**. Security Center aktiverar automatiskt Microsoft Defender för slut punkts sensor för alla Windows-servrar som övervakas av Security Center.
 
 - **En ruta i glaset**. I Security Center-konsolen visas Microsoft Defender för slut punkts varningar. Om du vill undersöka ytterligare använder du Microsoft Defender för slut punktens egna Portal sidor där du kan se ytterligare information som varnings process trädet och incident diagrammet. Du kan också se en detaljerad dator tids linje som visar varje beteende för en historisk period på upp till sex månader.
 

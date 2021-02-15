@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 091f4d7a4acdcc5d1a2b89a5121ee0cff3ee1f55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9ffc450294f186b77cc7a6c44c10eecf266161d3
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381196"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526705"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Autentiseringsuppgifter för Source Authentication i Azure avdelningens kontroll
 
@@ -67,7 +67,7 @@ Innan du kan skapa en autentiseringsuppgift måste du först associera en eller 
 
 4. Välj **Get** -och **list** -behörigheter i list rutan **hemligheter** .
 
-5. För **Välj huvud konto** väljer du den avdelningens kontroll-hanterade identiteten.
+5. För **Välj huvud konto** väljer du den avdelningens kontroll-hanterade identiteten. Du kan söka efter avdelningens kontroll-MSI med antingen avdelningens kontroll-instansnamnet **eller** det hanterade ID: t för identitets programmet. Vi stöder för närvarande inte sammansatta identiteter (hanterat identitets namn + program-ID).
 
    :::image type="content" source="media/manage-credentials/add-access-policy.png" alt-text="Lägg till åtkomst princip":::
 

@@ -4,12 +4,12 @@ description: Lär dig mer om kryptering – resten av ditt Azure Container Regis
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062736"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526450"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Kryptera registret med en kundhanterad nyckel
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-Du kan också använda [Azure RBAC för Key Vault](../key-vault/general/rbac-guide.md) (för hands version) för att tilldela behörigheter till identiteten för att få åtkomst till nyckel valvet. Tilldela till exempel krypterings rollen Key Vault krypterings tjänst till identiteten med hjälp av kommandot [AZ roll tilldelning Create](/cli/azure/role/assignment#az-role-assignment-create) :
+Du kan också använda [Azure RBAC för Key Vault](../key-vault/general/rbac-guide.md) för att tilldela behörigheter till identiteten för att få åtkomst till nyckel valvet. Tilldela till exempel krypterings rollen Key Vault krypterings tjänst till identiteten med hjälp av kommandot [AZ roll tilldelning Create](/cli/azure/role/assignment#az-role-assignment-create) :
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ Konfigurera en princip för nyckel valvet så att identiteten kan komma åt den.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="Skapa åtkomst princip för nyckel valv":::
 
-Du kan också använda [Azure RBAC för Key Vault](../key-vault/general/rbac-guide.md) (för hands version) för att tilldela behörigheter till identiteten för att få åtkomst till nyckel valvet. Tilldela till exempel krypterings rollen Key Vault krypterings tjänst till identiteten.
+Du kan också använda [Azure RBAC för Key Vault](../key-vault/general/rbac-guide.md) för att tilldela behörigheter till identiteten för att få åtkomst till nyckel valvet. Tilldela till exempel krypterings rollen Key Vault krypterings tjänst till identiteten.
 
 1. Navigera till ditt nyckel valv.
 1. Välj **åtkomst kontroll (IAM)**  >  **+ Lägg** till  >  **Lägg till roll tilldelning**.
 1. I fönstret **Lägg till roll tilldelning** :
-    1. Välj Key Vault rollen kryptering av krypterings **tjänst (för hands version)** . 
+    1. Välj **Key Vault användar rollen krypterings tjänst kryptering** . 
     1. Tilldela åtkomst till **användare som tilldelats en hanterad identitet**.
     1. Välj resurs namnet för din användarspecifika hanterade identitet och välj **Spara**.
 

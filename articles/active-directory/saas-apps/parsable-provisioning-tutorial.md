@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731451"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526433"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>Självstudie: Konfigurera parsning för automatisk användar etablering
 
@@ -32,8 +32,9 @@ I den här självstudien beskrivs de steg som du måste utföra i både parsable
 > * Skapa användare som går att parsa
 > * Ta bort användare som kan parsas när de inte behöver åtkomst längre
 > * Behåll användarattribut synkroniserade mellan Azure AD och parsning
+> * Etablera grupper och grupp medlemskap i tolknings bara
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -107,17 +108,25 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |userName|Sträng|&check;|
    |displayName|Sträng|
 
-10. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Under avsnittet **mappningar** väljer **du synkronisera Azure Active Directory grupper som ska kunna parsas**.
 
-11. Om du vill att Azure AD Provisioning-tjänsten ska kunna parsas ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
+11. Granska gruppattributen som synkroniseras från Azure AD till parsning i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha grupperna som kan parsas för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
+
+      |Attribut|Typ|Stöds för filtrering|
+      |---|---|---|
+      |displayName|Sträng|&check;|
+      |medlemmar|Referens|
+12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Om du vill att Azure AD Provisioning-tjänsten ska kunna parsas ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
 
     ![Etableringsstatus är på](common/provisioning-toggle-on.png)
 
-12. Definiera de användare och/eller grupper som du vill etablera till parsning genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+14. Definiera de användare och/eller grupper som du vill etablera till parsning genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
 
     ![Etableringsomfång](common/provisioning-scope.png)
 
-13. När du är redo att etablera klickar du på **Spara**.
+15. När du är redo att etablera klickar du på **Spara**.
 
     ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
 
@@ -129,6 +138,10 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
 3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Ändringslogg
+
+* 02/15/2021-grupp etablering har Aktiver ATS.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

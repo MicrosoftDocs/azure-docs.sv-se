@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d4bc59a9bd5299698bff9949aaaa881fbdf385ee
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501064"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526280"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Kryptering för Azure Synapse Analytics-arbetsytor
 
@@ -39,7 +39,7 @@ Data i följande Synapse-komponenter krypteras med den Kundhanterade nyckeln som
 * SQL-pooler
  * Dedikerade SQL-pooler
  * SQL-pooler utan Server
-* Apache Spark pooler
+* Apache Spark-pooler
 * Azure Data Factory integrerings körningar, pipeliner, data uppsättningar.
 
 ## <a name="workspace-encryption-configuration"></a>Konfiguration av arbets ytans kryptering
@@ -53,7 +53,7 @@ Arbets ytor kan konfigureras för att aktivera Double Encryption med en kundhant
 
 ### <a name="key-access-and-workspace-activation"></a>Åtkomst till nyckel och arbets yta
 
-Azure-Synapse krypterings modell med Kundhanterade nycklar omfattar arbets ytan som har åtkomst till nycklarna i Azure Key Vault för att kryptera och dekryptera efter behov. Nycklarna görs tillgängliga för arbets ytan antingen via en åtkomst princip eller Azure Key Vault RBAC-åtkomst (för[hands version](../../key-vault/general/rbac-guide.md)). När du beviljar behörigheter via en Azure Key Vault åtkomst princip väljer du alternativet ["endast program"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) när du skapar principer (Välj arbets ytans hanterade identitet och Lägg inte till den som ett auktoriserat program).
+Azure-Synapse krypterings modell med Kundhanterade nycklar omfattar arbets ytan som har åtkomst till nycklarna i Azure Key Vault för att kryptera och dekryptera efter behov. Nycklarna görs tillgängliga för arbets ytan antingen via en åtkomst princip eller [Azure Key Vault RBAC-åtkomst](../../key-vault/general/rbac-guide.md). När du beviljar behörigheter via en Azure Key Vault åtkomst princip väljer du alternativet ["endast program"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) när du skapar principer (Välj arbets ytans hanterade identitet och Lägg inte till den som ett auktoriserat program).
 
  Arbets ytans hanterade identitet måste beviljas de behörigheter som krävs för nyckel valvet innan arbets ytan kan aktive ras. Med den här stegvisa metoden för aktivering av arbets ytor ser du till att data i arbets ytan krypteras med den Kundhanterade nyckeln. Observera att kryptering kan aktive ras eller inaktive ras för dedikerade SQL-pooler – varje pool är inte aktive rad för kryptering som standard.
 

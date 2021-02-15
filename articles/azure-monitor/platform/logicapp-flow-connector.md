@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: d06501abe69ce9b06656cfa8949c42bb53a03983
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fdd3886dda794ff9a91e2c2be6a3d810086d0ed2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019046"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526994"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Azure Monitor loggar Connector för Logic Apps och energi automatisering
 Med [Azure Logic Apps](../../logic-apps/index.yml) och [energi spar läge](https://flow.microsoft.com) kan du skapa automatiserade arbets flöden med hundratals åtgärder för olika tjänster. Med anslutnings programmet för Azure Monitor loggar kan du bygga arbets flöden som hämtar data från en Log Analytics arbets yta eller ett Application Insights program i Azure Monitor. I den här artikeln beskrivs de åtgärder som ingår i kopplingen och en genom gång av hur du skapar ett arbets flöde med dessa data.
@@ -25,6 +25,7 @@ Azure Monitor loggar Connector har följande gränser:
 * Maximal svars storlek för fråga 100 MB
 * Max antal poster: 500 000
 * Maximal tids gräns för fråga 110 sekund.
+* Diagram visualiseringar kan vara tillgängliga på sidan loggar och saknas i kopplingen eftersom sidan koppling och loggar inte använder samma diagram bibliotek för tillfället.
 
 Beroende på storleken på dina data och frågan som du använder, kan det hända att anslutnings programmet når sina gränser och Miss lyckas. Du kan undvika sådana fall när du justerar upprepningen av utlösaren så att den körs oftare och frågar mindre data. Du kan använda frågor som sammanställer dina data för att returnera mindre poster och kolumner.
 

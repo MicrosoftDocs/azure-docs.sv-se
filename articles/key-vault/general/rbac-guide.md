@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936251"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527072"
 ---
-# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure (för hands version)
+# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure
 
 > [!NOTE]
 > Key Vault Resource provider stöder två resurs typer: **valv** och **hanterade HSM: er**. Åtkomst kontroll som beskrivs i den här artikeln gäller endast **valv**. Mer information om åtkomst kontroll för hanterad HSM finns i [hanterad HSM Access Control](../managed-hsm/access-control.md).
@@ -44,20 +44,20 @@ Mer information om rikt linjer för Azure Key Vault hantering finns i:
 - [Översikt över Azure Key Vault säkerhet](security-overview.md)
 - [Azure Key Vault tjänst gränser](service-limits.md)
 
-## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Inbyggda Azure-roller för Key Vault data Plans åtgärder (för hands version)
+## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Inbyggda Azure-roller för Key Vault data Plans åtgärder
 > [!NOTE]
 > `Key Vault Contributor` rollen är för hanterings Plans åtgärder för att hantera nyckel valv. Den tillåter inte åtkomst till nycklar, hemligheter och certifikat.
 
 | Inbyggd roll | Description | ID |
 | --- | --- | --- |
-| Key Vault administratör (förhands granskning) | Utför alla data Plans åtgärder på ett nyckel valv och alla objekt, inklusive certifikat, nycklar och hemligheter. Det går inte att hantera Key Vault-resurser eller hantera roll tilldelningar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-| Key Vault certifikat ansvarig (förhands granskning) | Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | a4417e6f-fecd-4de8-b567-7b0420556985 |
-| Key Vault kryptografi utanordnare (förhands granskning)| Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-| Key Vault kryptering av krypterings tjänst (för hands version) | Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-| Key Vault krypto-användare (förhands granskning) | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 12338af0-0e69-4776-bea7-57ae8d297424 |
-| Key Vault läsare (förhands granskning)| Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckel material. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 21090545-7ca7-4776-b22c-e363652d74d2 |
-| Key Vault hemligheter (förhands granskning)| Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-| Key Vault hemligheter, användare (förhands granskning)| Läsa hemligt innehåll. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 4633458b-17de-408a-b874-0445c86b69e6 |
+| Key Vault administratör| Utför alla data Plans åtgärder på ett nyckel valv och alla objekt, inklusive certifikat, nycklar och hemligheter. Det går inte att hantera Key Vault-resurser eller hantera roll tilldelningar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+| Key Vault certifikats ansvarig | Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | a4417e6f-fecd-4de8-b567-7b0420556985 |
+| Key Vault kryptografi utanordnare | Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+| Krypterings användare för Key Vault krypterings tjänsten | Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+| Key Vault krypto-användare  | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 12338af0-0e69-4776-bea7-57ae8d297424 |
+| Key Vault läsare | Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckel material. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 21090545-7ca7-4776-b22c-e363652d74d2 |
+| Key Vault hemligheter| Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+| Användare med Key Vault hemligheter | Läsa hemligt innehåll. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 4633458b-17de-408a-b874-0445c86b69e6 |
 
 Mer information om definitioner av inbyggda Azure-roller finns i [inbyggda roller i Azure](../../role-based-access-control/built-in-roles.md).
 
@@ -65,7 +65,7 @@ Mer information om definitioner av inbyggda Azure-roller finns i [inbyggda rolle
 
 Den nya Azure RBAC-behörighets modellen för Key Vault ger ett alternativ till åtkomst princips modellen för valv. 
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 Om du vill lägga till roll tilldelningar måste du ha:
 
@@ -74,8 +74,8 @@ Om du vill lägga till roll tilldelningar måste du ha:
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Aktivera Azure RBAC-behörigheter på Key Vault
 
-> [!IMPORTANT]
-> Om du ställer in Azure RBAC-behörighets modell inaktive ras alla behörigheter för åtkomst principer. Det kan orsaka avbrott när motsvarande Azure-roller inte är tilldelade.
+> [!NOTE]
+> Ändring av behörighets modellen kräver behörigheten Microsoft. Authorization/roleAssignments/Write, som är en del av [Administratörs](../../role-based-access-control/built-in-roles.md#user-access-administrator) rollerna [ägare](../../role-based-access-control/built-in-roles.md#owner) och användar åtkomst. Administratörs rollen för klassiska prenumerationer som "tjänst administratör" och "co-Administrator" stöds inte.
 
 1.  Aktivera Azure RBAC-behörigheter för nya nyckel valv:
 
@@ -85,10 +85,13 @@ Om du vill lägga till roll tilldelningar måste du ha:
 
     ![Aktivera Azure RBAC-behörigheter – befintligt valv](../media/rbac/image-2.png)
 
+> [!IMPORTANT]
+> Om du ställer in Azure RBAC-behörighets modell inaktive ras alla behörigheter för åtkomst principer. Det kan orsaka avbrott när motsvarande Azure-roller inte är tilldelade.
+
 ### <a name="assign-role"></a>Tilldela rollen
 
 > [!Note]
-> Vi rekommenderar att du använder det unika roll-ID: t i stället för roll namnet i skript. Därför fortsätter skripten att fungera om en roll får ett nytt namn. Under för hands versionen skulle varje roll ha "(för hands version)"-suffix, vilket skulle tas bort senare. I detta dokument roll namn används endast för läsbarhet.
+> Vi rekommenderar att du använder det unika roll-ID: t i stället för roll namnet i skript. Därför fortsätter skripten att fungera om en roll får ett nytt namn. I detta dokument roll namn används endast för läsbarhet.
 
 Azure CLI-kommando för att skapa en roll tilldelning:
 
@@ -107,13 +110,13 @@ På den Azure Portal är skärmen roll tilldelningar för Azure tillgängligt f�
 
 2.  Klicka på åtkomst kontroll (IAM) \> Lägg till roll tilldelning \> Lägg till
 
-3.  Skapa Key Vault läsar roll Key Vault läsare (för hands version) för den aktuella användaren
+3.  Skapa Key Vault läsar rollen Key Vault läsare för den aktuella användaren
 
     ![Lägg till roll resurs grupp](../media/rbac/image-5.png)
 
 Azure CLI:
 ```azurecli
-az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
 
 Över roll tilldelningen ger möjlighet att lista Key Vault-objekt i Key Vault.
@@ -124,14 +127,14 @@ az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e us
 
 2. Klicka på Lägg till roll tilldelning \> Lägg till
 
-3. Skapa rollen som administratör för nyckel hemligheter "Key Vault hemligheter (förhands granskning) för den aktuella användaren.
+3. Skapa rollen som administratör för nyckel hemligheter "Key Vault hemligheter" för den aktuella användaren.
 
     ![Roll tilldelning – nyckel valv](../media/rbac/image-6.png)
 
  Azure CLI:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
 
 När du har skapat roll tilldelningen ovan kan du skapa/uppdatera/ta bort hemligheter.
@@ -142,18 +145,18 @@ När du har skapat roll tilldelningen ovan kan du skapa/uppdatera/ta bort hemlig
 
 ### <a name="secret-scope-role-assignment"></a>Roll tilldelning för hemlig omfattning
 
-1. Öppna en av tidigare skapade hemligheter, meddelande översikt och åtkomst kontroll (IAM) (för hands version)
+1. Öppna en av tidigare skapade hemligheter, meddelande översikt och åtkomst kontroll (IAM) 
 
-2. Klicka på åtkomst kontroll (IAM) (för hands version) fliken
+2. Klicka på fliken åtkomst kontroll (IAM)
 
     ![Roll tilldelning – hemlighet](../media/rbac/image-8.png)
 
-3. Skapa rollen som administratör för nyckel hemligheter "Key Vault hemligheter (förhands granskning) för den aktuella användaren, samma som den gjorde ovan för Key Vault.
+3. Skapa rollen som administratör för nyckel hemligheter "Key Vault hemligheter" för den aktuella användaren, samma som den gjorde ovan för Key Vault.
 
 Azure CLI:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
 
 ### <a name="test-and-verify"></a>Testa och verifiera
@@ -164,7 +167,7 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 1. Verifiera att lägga till ny hemlighet utan rollen "Key Vault hemligheter" på nyckel valvs nivå.
 
-Gå till fliken nyckel valv åtkomst kontroll (IAM) och ta bort roll tilldelningen Key Vault hemligheter (förhands granskning) för den här resursen.
+Gå till fliken nyckel valv åtkomst kontroll (IAM) och ta bort roll tilldelningen Key Vault hemligheter för den här resursen.
 
 ![Ta bort tilldelning – nyckel valv](../media/rbac/image-9.png)
 
@@ -178,7 +181,7 @@ Create New Secret (hemligheter \> + generate/import) ska visa följande fel:
 
 2.  Verifiera hemlighet redigering utan rollen "Key Vault hemlig tjänsteman" på nivån SECRET.
 
--   Gå till den tidigare skapade fliken Secret Access Control (IAM) (för hands version) och ta bort roll tilldelningen Key Vault hemligheter (förhands granskning) för den här resursen.
+-   Gå till den tidigare skapade fliken Secret Access Control (IAM) och ta bort roll tilldelningen "Key Vault hemligheter" för den här resursen.
 
 -   Navigera till tidigare skapade hemligheter. Du kan se hemliga egenskaper.
 
@@ -186,7 +189,7 @@ Create New Secret (hemligheter \> + generate/import) ska visa följande fel:
 
 3. Verifiera hemligheter Läs utan läsar roll på Key Vault-nivå.
 
--   Gå till Key Vault resurs gruppens åtkomst kontroll (IAM) och ta bort roll tilldelningen Key Vault Reader (för hands version).
+-   Gå till Key Vault resurs gruppens åtkomst kontroll (IAM) och ta bort roll tilldelningen Key Vault läsare.
 
 -   Om du navigerar till Key Vault-fliken hemligheter visas följande fel:
 
@@ -224,7 +227,7 @@ Mer information om hur du skapar anpassade roller finns i:
 
 -   Svars tid för roll tilldelningar: vid aktuell förväntad prestanda tar det upp till 10 minuter (600 sekunder) efter att roll tilldelningarna har ändrats för att rollen ska tillämpas
 
-## <a name="learn-more"></a>Mer information
+## <a name="learn-more"></a>Läs mer
 
 - [Översikt över Azure RBAC](../../role-based-access-control/overview.md)
 - [Själv studie kurs om anpassade roller](../../role-based-access-control/tutorial-custom-role-cli.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: b79a63d16229c761b29776667c771e940d8f69d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673386"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527130"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Självstudie: Konfigurera CybSafe för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både CybSafe oc
 > * Behåll användarattribut synkroniserade mellan Azure AD och CybSafe
 > * Etablera grupper och grupp medlemskap i CybSafe
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -121,6 +121,10 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |locale|Sträng|
    |timezone|Sträng|
    |userType|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Division|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: organisation|Sträng|
+   
 
 10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till CybSafe**.
 
@@ -153,6 +157,10 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 1. Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 2. Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
 3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Ändringslogg
+
+* 02/15/2021 – användarens företags tillägg **avdelning**, **avdelning** och **organisation** har lagts till.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e5009e59477e6862c4441090a6480075c9e22385
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388200"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526791"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Hantera en graf med digitala dubbla med relationer
 
@@ -53,7 +53,7 @@ Följande kod exempel illustrerar hur du skapar en relation i din Azure Digital-
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
 
-I din huvud metod kan du nu anropa `CreateRelationship()` funktionen för att skapa en _contains_ -relation så här: 
+I din huvud metod kan du nu anropa den anpassade funktionen för att skapa en _contains_ -relation så här: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -86,7 +86,7 @@ Här är ett exempel som hämtar en lista med relationer:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
-Nu kan du anropa den här metoden för att se de utgående relationerna för de dubblarna så här:
+Nu kan du anropa den här anpassade metoden för att se de utgående relationerna för de dubblarna så här:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
@@ -102,17 +102,17 @@ Observera att `IncomingRelationship` anropen inte returnerar hela bröd texten i
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
 
-Nu kan du anropa den här metoden för att se de ingående relationerna för de dubblarna så här:
+Nu kan du anropa den här anpassade metoden för att se de ingående relationerna för de dubblarna så här:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindIncomingRelationships":::
 
 ### <a name="list-all-twin-properties-and-relationships"></a>Lista alla dubbla egenskaper och relationer
 
-Med hjälp av ovanstående metoder för att visa utgående och inkommande relationer till en dubbel, kan du skapa en metod som skriver ut fullständig dubbel information, inklusive de dubbla egenskaperna och båda typerna av dess relationer. Här är en exempel metod som kallas `FetchAndPrintTwinAsync()` för att visa hur du gör detta.
+Med hjälp av ovanstående metoder för att visa utgående och inkommande relationer till en dubbel, kan du skapa en metod som skriver ut fullständig dubbel information, inklusive de dubbla egenskaperna och båda typerna av dess relationer. Här är ett exempel på en anpassad metod som visar hur du gör detta.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-Nu kan du anropa den här funktionen i din main-metod så här: 
+Nu kan du anropa den här anpassade funktionen i huvud metoden, så här: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
 
@@ -127,7 +127,7 @@ De parametrar som krävs för klient anropet är ID: t för den dubbla källan (
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
 
-Här är ett exempel på ett anrop till den här metoden som skickar ett JSON-dokument med information för att uppdatera en egenskap.
+Här är ett exempel på ett anrop till den här anpassade metoden, genom att skicka ett JSON-dokument med information för att uppdatera en egenskap.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
@@ -137,7 +137,7 @@ Den första parametern anger den dubbla källan (den dubbla där relationen komm
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
 
-Du kan nu anropa den här metoden för att ta bort en relation så här:
+Nu kan du anropa den här anpassade metoden för att ta bort en relation så här:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 

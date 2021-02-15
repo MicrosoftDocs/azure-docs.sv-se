@@ -96,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: Portalen
               href: assign-access-policy-portal.md
-        - name: 'Använd en Azure RBAC för att hantera åtkomsten till nycklar, hemligheter och certifikat (förhandsversion)'
-          href: rbac-guide.md
-        - name: Valvåtkomstprinciper för Azure RBAC-migreringsguide
-          href: rbac-migration.md
+        - name: Azure RBAC-behörighets modell
+          items:
+            - name: 'Använd en Azure RBAC för att hantera åtkomst till nycklar, hemligheter och certifikat'
+              href: rbac-guide.md
+            - name: Valvåtkomstprinciper för Azure RBAC-migreringsguide
+              href: rbac-migration.md
         - name: Felsökning av åtkomstproblem
           href: troubleshooting-access-issues.md
     - name: Utveckla

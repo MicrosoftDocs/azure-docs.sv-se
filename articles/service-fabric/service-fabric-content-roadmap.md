@@ -3,12 +3,12 @@ title: Läs mer om Azure Service Fabric
 description: Lär dig mer om grundläggande begrepp och viktiga områden i Azure Service Fabric. Ger en utökad översikt över Service Fabric och hur du skapar mikrotjänster.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 011ddf5db1555e83a1a61a349cc19ed791ab900b
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485458"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526774"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Vill du veta mer om Service Fabric?
 Azure Service Fabric är en distribuerad systemplattform som gör det enkelt att paketera, distribuera och hantera skalbara och tillförlitliga mikrotjänster.  Service Fabric har ett stort ytdiagram, men det är mycket att lära sig.  Den här artikeln innehåller en sammanfattning av Service Fabric och beskriver viktiga begrepp, programmerings modeller, program livs cykel, testning, kluster och hälso övervakning. Läs [översikten](service-fabric-overview.md) och [Vad är mikrotjänster?](service-fabric-overview-microservices.md) för en introduktion och hur Service Fabric kan användas för att skapa mikrotjänster. Den här artikeln innehåller ingen omfattande innehålls lista, men länkar till översikt och att komma igång-artiklar för varje Service Fabric. 
@@ -66,7 +66,7 @@ Varför har tillstånds känsliga mikrotjänster tillsammans med tillstånds lö
 ## <a name="supported-programming-models"></a>Programmeringsmodeller som stöds
 Service Fabric erbjuder flera olika sätt att skriva och hantera dina tjänster. Tjänster kan använda Service Fabric API: er för att dra full nytta av plattformens funktioner och program ramverk. Tjänster kan också vara alla kompilerade körbara program som skrivits på valfritt språk och som finns på ett Service Fabric-kluster. Mer information finns i [programmerings modeller som stöds](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Containrar
+### <a name="containers"></a>Containers
 Som standard distribuerar Service Fabric och aktiverar tjänster som processer. Service Fabric kan även distribuera tjänster i [behållare](service-fabric-containers-overview.md). Det är viktigt att du blandar tjänster i processer och tjänster i behållare i samma program. Service Fabric stöder distribution av Linux-behållare och Windows-behållare på Windows Server 2016. Du kan distribuera befintliga program, tillstånds lösa tjänster eller tillstånds känsliga tjänster i behållare. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -87,7 +87,7 @@ En [körbar gäst](service-fabric-guest-executables-introduction.md) är en befi
 ## <a name="application-lifecycle"></a>Programlivscykel
 Precis som med andra plattformar går ett program på Service Fabric vanligt vis igenom följande faser: design, utveckling, testning, distribution, uppgradering, underhåll och borttagning. Service Fabric ger förstklassig support för hela program livs cykeln för moln program, från utveckling genom distribution, daglig hantering och underhåll av eventuell inaktive ring. Tjänste modellen gör det möjligt för flera olika roller att delta oberoende av programmets livs cykel. [Service Fabric-programmets livs cykel](service-fabric-application-lifecycle.md) ger en översikt över API: erna och hur de används av de olika rollerna under faserna i Service Fabric programmets livs cykel. 
 
-Hela appens livs cykel kan hanteras med [PowerShell-cmdletar](/powershell/module/ServiceFabric/), [CLI-kommandon](service-fabric-sfctl.md), [C# API: er](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java API](/java/api/overview/azure/servicefabric): er och [REST API: er](/rest/api/servicefabric/). Du kan också ställa in kontinuerlig integrering/kontinuerliga distributions pipeline med verktyg som [Azure-pipeliner](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) eller [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
+Hela appens livs cykel kan hanteras med [PowerShell-cmdletar](/powershell/module/ServiceFabric/New-ServiceFabricService), [CLI-kommandon](service-fabric-sfctl.md), [C# API: er](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java API](/java/api/overview/azure/servicefabric): er och [REST API: er](/rest/api/servicefabric/). Du kan också ställa in kontinuerlig integrering/kontinuerliga distributions pipeline med verktyg som [Azure-pipeliner](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) eller [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster).
 
 ## <a name="test-applications-and-services"></a>Testa program och tjänster
 För att skapa verkliga molnbaserade tjänster är det viktigt att kontrol lera att dina program och tjänster kan motstå verkliga problem. Tjänsten fel analys är utformad för att testa tjänster som bygger på Service Fabric. Med [fel analys tjänsten](service-fabric-testability-overview.md)kan du orsaka meningsfulla fel och köra fullständiga test scenarier mot dina program. Dessa fel och scenarier använder och validerar de många tillstånd och över gångar som en tjänst kommer att uppleva under hela sin livs längd, allt på ett kontrollerat, säkert och konsekvent sätt.
@@ -160,7 +160,7 @@ Service Fabric-komponenter rapporterar hälsa på alla entiteter i klustret. [Sy
 
 Service Fabric tillhandahåller flera olika sätt att [Visa hälso rapporter](service-fabric-view-entities-aggregated-health.md) sammanställda i hälso lagret:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) eller andra visualiserings verktyg.
-* Hälso frågor (via [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), [C# FabricClient API: er](/dotnet/api/system.fabric.fabricclient.healthclient) och [Java FabricClient-API: er](/java/api/system.fabric)eller rest- [API](/rest/api/servicefabric): er).
+* Hälso frågor (via [PowerShell](/powershell/module/ServiceFabric/New-ServiceFabricService), [CLI](service-fabric-sfctl.md), [C# FabricClient API: er](/dotnet/api/system.fabric.fabricclient.healthclient) och [Java FabricClient-API: er](/java/api/system.fabric)eller rest- [API](/rest/api/servicefabric): er).
 * Allmänna frågor som returnerar en lista över entiteter som har hälso tillstånd som en av egenskaperna (via PowerShell, CLI, API: er eller REST).
 
 ## <a name="monitoring-and-diagnostics"></a>Övervakning och diagnostik

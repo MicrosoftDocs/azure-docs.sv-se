@@ -1,5 +1,5 @@
 ---
-title: Säker åtkomst till ett nyckel valv
+title: Säker åtkomst till ett nyckelvalv
 description: Åtkomst modell för Azure Key Vault, inklusive Active Directory autentiserings-och resurs slut punkter.
 services: key-vault
 author: ShaneBala-keyvault
@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f82c7060f703aff6c19f0082454779b8fea1ba76
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796507"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526263"
 ---
-# <a name="secure-access-to-a-key-vault"></a>Säker åtkomst till ett nyckel valv
+# <a name="secure-access-to-a-key-vault"></a>Säker åtkomst till ett nyckelvalv
 
 Azure Key Vault är en moln tjänst som skyddar krypterings nycklar och hemligheter som certifikat, anslutnings strängar och lösen ord. Eftersom dessa data är känsliga och affärs kritiska måste du skydda åtkomsten till dina nyckel valv genom att bara tillåta behöriga program och användare. Den här artikeln ger en översikt över Key Vault åtkomst modell. Den förklarar autentisering och auktorisering och beskriver hur du skyddar åtkomsten till dina nyckel valv.
 
@@ -26,7 +26,7 @@ Mer information om Key Vault finns i [About Azure Key Vault](overview.md); Mer i
 
 Åtkomst till ett nyckel valv styrs via två gränssnitt: **hanterings planet** och **data planet**. Hanterings planet är den plats där du hanterar Key Vault sig själv. Åtgärder i det här planet innefattar att skapa och ta bort nyckel valv, Hämta Key Vault egenskaper och uppdatera åtkomst principer. Data planet är den plats där du arbetar med de data som lagras i ett nyckel valv. Du kan lägga till, ta bort och ändra nycklar, hemligheter och certifikat.
 
-Båda planerna använder [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) för autentisering. För auktorisering använder hanterings planet [Azure-rollbaserad åtkomst kontroll (Azure RBAC)](../../role-based-access-control/overview.md) och data planet använder en [Key Vault åtkomst princip](./assign-access-policy-portal.md) och [Azure RBAC för Key Vault data Plans åtgärder (för hands version)](./rbac-guide.md).
+Båda planerna använder [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) för autentisering. För auktorisering använder hanterings planet [Azure-rollbaserad åtkomst kontroll (Azure RBAC)](../../role-based-access-control/overview.md) och data planet använder en [Key Vault åtkomst princip](./assign-access-policy-portal.md) och [Azure RBAC för Key Vault data Plans åtgärder](./rbac-guide.md).
 
 För att få åtkomst till ett nyckel valv i något av planerna måste alla anropare (användare eller program) ha korrekt autentisering och auktorisering. Autentisering upprättar identiteten för anroparen. Auktorisering avgör vilka åtgärder som anroparen kan köra. Autentisering med Key Vault fungerar tillsammans med [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), som ansvarar för att autentisera identiteten för ett specifikt **säkerhets objekt**.
 
@@ -111,7 +111,7 @@ När en Azure-roll tilldelas till ett säkerhets objekt för Azure AD ger Azure 
 
 Viktiga fördelar med att använda Azure RBAC-behörighet över valv åtkomst principer är centraliserad hantering av åtkomst kontroll och dess integrering med [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md). Privileged Identity Management tillhandahåller tidsbaserad och godkännande-baserad roll aktivering för att minimera riskerna med alltför stora, onödiga eller felanvända åtkomst behörigheter för resurser som du bryr dig om.
 
-Mer information om Key Vault data plan med Azure RBAC finns i [Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure (för hands version)](rbac-guide.md)
+Mer information om Key Vault data plan med Azure RBAC finns i [Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure](rbac-guide.md)
 
 ## <a name="firewalls-and-virtual-networks"></a>Brandväggar och virtuella nätverk
 
@@ -186,9 +186,9 @@ I följande tabell sammanfattas åtkomst behörigheterna för våra roller och p
 | --- | --- | --- | --- |
 | Säkerhetsteamet | [Key Vault deltagare](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Certifikat: alla åtgärder <br> Nycklar: alla åtgärder <br> Hemligheter: alla åtgärder | [Key Vault administratör (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | Utvecklare och &nbsp; operatörer | Key Vault distributions behörighet<br><br> **Obs!** den här behörigheten gör att distribuerade virtuella datorer kan hämta hemligheter från ett nyckel valv. | Inga | Inga |
-| Granskare | Ingen | Certifikat: lista <br> Nycklar: lista<br>Hemligheter: lista<br><br> **Obs!** den här behörigheten gör det möjligt för granskare att inspektera attribut (Taggar, aktiverings datum, förfallo datum) för nycklar och hemligheter som inte genereras i loggarna. | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure Storage-konto | Ingen | Nycklar: get, list, wrapKey, unwrapKey <br> | [Krypterings användare för Key Vault krypterings tjänsten](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Program | Ingen | Hemligheter: get, list <br> Certifikat: Hämta, lista | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) [Key Vault hemlig användare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Granskare | Inget | Certifikat: lista <br> Nycklar: lista<br>Hemligheter: lista<br><br> **Obs!** den här behörigheten gör det möjligt för granskare att inspektera attribut (Taggar, aktiverings datum, förfallo datum) för nycklar och hemligheter som inte genereras i loggarna. | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage-konto | Inget | Nycklar: get, list, wrapKey, unwrapKey <br> | [Krypterings användare för Key Vault krypterings tjänsten](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
+| Program | Inget | Hemligheter: get, list <br> Certifikat: Hämta, lista | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) [Key Vault hemlig användare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 De tre team rollerna behöver åtkomst till andra resurser tillsammans med Key Vault behörigheter. Utvecklare och operatörer behöver distribuera åtkomst för att distribuera virtuella datorer (eller Web Apps-funktionen i Azure App Service). Granskare behöver Läs behörighet till lagrings kontot där Key Vaults loggarna lagras.
 

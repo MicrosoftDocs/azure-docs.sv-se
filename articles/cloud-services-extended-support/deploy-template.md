@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5c7ecfeace88f613d6f15606382bdbb3117a0cce
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881829"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526652"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
@@ -441,14 +441,15 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
             ]
           }
         }
-      }
+       }
+      ]
     }
     ```
  
-8. Distribuera mallen och skapa moln tjänsten (utökad support) distribution. 
+8. Distribuera mallen och parameter filen (definiera parametrar i mallfilen) för att skapa moln tjänsten (utökad support) distribution. Se dessa [exempel mallar](https://github.com/Azure-Samples/cloud-services-extended-support) som obligatoriska.
 
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg -TemplateFile "file path to your template file”  
+    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg"  -TemplateFile "file path to your template file” -TemplateParameterFile "file path to your parameter file"
     ```
  
 ## <a name="next-steps"></a>Nästa steg 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 459bac2ef01e69b9316af7e8374e7416ab51d915
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7cc4fe4e2b675fb1b46bb4404d892c02a1f00553
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523914"
+ms.locfileid: "100526879"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>Publicera och hantera sensorer i Defender för IoT-portalen
 
@@ -123,6 +123,6 @@ Så här återaktiverar du en sensor:
 
 9. Välj **Aktivera**.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
 [Aktivera och konfigurera sensor](how-to-activate-and-set-up-your-sensor.md)

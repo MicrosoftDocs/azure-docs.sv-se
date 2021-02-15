@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ae3865c1ee5e656fc4feda48de9ab67995619593
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936380"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526246"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Kom igång med anpassade principer i Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "96936380"
 
 [Anpassade principer](custom-policy-overview.md) är konfigurationsfiler som definierar beteendet för din Azure Active Directory B2C (Azure AD B2C)-klient. I den här artikeln skapar du en anpassad princip som stöder registrering av lokalt konto eller inloggning med hjälp av en e-postadress och ett lösen ord. Du förbereder också din miljö för att lägga till identitets leverantörer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte redan har en, [skapar du en Azure AD B2C klient](tutorial-create-tenant.md) som är länkad till din Azure-prenumeration.
 - [Registrera ditt program](tutorial-register-applications.md) i klient organisationen som du skapade så att den kan kommunicera med Azure AD B2C.
@@ -111,7 +111,7 @@ Sedan exponerar du API: et genom att lägga till ett omfång:
 Ange sedan att programmet ska behandlas som en offentlig klient:
 
 1. På den vänstra menyn, under **Hantera**, väljer du **autentisering**.
-1. Under **Avancerade inställningar** aktiverar du **behandla program som en offentlig klient** (Välj **Ja**). Se till att **"allowPublicClient": true** har angetts i applikations manifestet. 
+1. Under **Avancerade inställningar** i avsnittet **Tillåt offentliga klient flöden** anger du **Aktivera följande mobila och skriv bords flöden** till **Ja**. Se till att **"allowPublicClient": true** har angetts i applikations manifestet. 
 1. Välj **Spara**.
 
 Bevilja nu behörighet till API-omfånget som du visade tidigare i *IdentityExperienceFramework* -registreringen:
