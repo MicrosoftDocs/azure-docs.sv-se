@@ -2,13 +2,13 @@
 title: Virtual Network tjänst slut punkter – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller information om hur du lägger till en Microsoft. EventHub-tjänsteslutpunkt till ett virtuellt nätverk.
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/12/2021
+ms.openlocfilehash: f725c4f4d94cbf7d0463ce49c1d2809444ef6f7a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015596"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516692"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Tillåt åtkomst till Azure Event Hubs-namnrymder från vissa virtuella nätverk 
 
@@ -46,8 +46,8 @@ Det här avsnittet visar hur du använder Azure Portal för att lägga till en t
 1. Navigera till **Event Hubs namn området** i [Azure Portal](https://portal.azure.com).
 4. Välj **nätverk** under **Inställningar** på den vänstra menyn. Fliken **nätverk** visas endast för **standard** -eller **dedikerade** namn områden. 
 
-    > [!NOTE]
-    > Som standard är alternativet **valda nätverk** markerat som visas i följande bild. Om du inte anger en IP-brandväggsregel eller lägger till ett virtuellt nätverk på den här sidan, kan namn området nås via **offentliga Internet** (med hjälp av åtkomst nyckeln). 
+    > [!WARNING]
+    > Om du väljer alternativet **valda nätverk** och inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan, kan namn området nås via **offentliga Internet** (med hjälp av åtkomst nyckeln). 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Fliken nätverk – alternativet valda nätverk" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -79,28 +79,12 @@ Det här avsnittet visar hur du använder Azure Portal för att lägga till en t
 [!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Använda Resource Manager-mallar
+Följande exempel på en Resource Manager-mall lägger till en virtuell nätverks regel i ett befintligt Event Hubs-namnområde. För nätverks regeln anger det ID: t för ett undernät i ett virtuellt nätverk. 
 
-Följande Resource Manager-mall gör det möjligt att lägga till en virtuell nätverks regel i ett befintligt Event Hubs-namnområde.
+ID är en fullständigt kvalificerad Resource Manager-sökväg för det virtuella nätverkets undernät. Till exempel `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` för standard under nätet för ett virtuellt nätverk.
 
-Mallparametrar:
+När du lägger till regler för virtuella nätverk eller brand väggar ställer du in värdet `defaultAction` till `Deny` .
 
-* `namespaceName`: Event Hubs namn område.
-* `vnetRuleName`: Namnet på den Virtual Networks regel som ska skapas.
-* `virtualNetworkingSubnetId`: Fullständigt kvalificerad Resource Manager-sökväg för det virtuella nätverkets undernät; till exempel `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` för standard under nätet för ett virtuellt nätverk.
-
-> [!NOTE]
-> Även om det inte finns några tillåtna nekade regler, har Azure Resource Manager mal len standard åtgärden inställd på **Tillåt** , vilket inte begränsar anslutningar.
-> När du skapar Virtual Network-eller brand Väggs regler måste vi ändra **_"defaultAction"_**
-> 
-> Från
-> ```json
-> "defaultAction": "Allow"
-> ```
-> på
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -202,6 +186,9 @@ Mallparametrar:
 ```
 
 Följ anvisningarna för [Azure Resource Manager][lnk-deploy]om du vill distribuera mallen.
+
+> [!IMPORTANT]
+> Om det inte finns några IP-och virtuella nätverks regler, flödar all trafik till namn området även om du ställer in `defaultAction` till `deny` .  Namn området kan nås via det offentliga Internet (med hjälp av åtkomst nyckeln). Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk.  
 
 ## <a name="next-steps"></a>Nästa steg
 

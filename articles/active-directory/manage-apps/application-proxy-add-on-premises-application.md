@@ -8,22 +8,26 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: f18126448f5a6dca29e798ad80cb53a8760689d8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576522"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095179"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
-Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Den här självstudien förbereder din miljö för användning med programproxy. När din miljö är redo använder du Azure-portalen för att lägga till ett lokalt program till Azure AD-klientorganisationen. Om du vill **Visa dina appar och snabbt komma** igång med program hantering i Azure bör du ta en titt på [snabb starts serien](view-applications-portal.md).
+Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Mer information om Application Proxy finns i [Vad är App proxy?](what-is-application-proxy.md). Den här självstudien förbereder din miljö för användning med programproxy. När din miljö är redo använder du Azure-portalen för att lägga till ett lokalt program till Azure AD-klientorganisationen. 
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Översikts diagram över Application Proxy" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
+
+Innan du börjar ska du kontrol lera att du är van vid hantering av appar och **enkla Sign-On (SSO)** . Kolla in följande länkar:
+- [Snabb starts serie för app Management i Azure AD](view-applications-portal.md)
+- [Vad är enkel Sign-On (SSO)?](what-is-single-sign-on.md)
 
 Kopplingar är en viktig del av programproxyn. Mer information om anslutningar finns i [förstå Azure AD-programproxy-kopplingar](application-proxy-connectors.md).
 

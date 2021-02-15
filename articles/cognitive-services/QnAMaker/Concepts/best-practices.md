@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988040"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104526"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Metod tips för en QnA Maker kunskaps bas
 
@@ -147,7 +147,7 @@ QnA Maker gör det möjligt för användare att samar beta i en kunskaps bas. An
 
 ## <a name="active-learning"></a>Aktiv inlärning
 
-[Active Learning](../How-to/use-active-learning.md) gör det bästa sättet att föreslå alternativa frågor när det finns många olika kvalitets-och mängd användarbaserade frågor. Det är viktigt att tillåta att klient programs användar frågor deltar i den aktiva inlärnings feedback-loopen utan censorship. När frågorna föreslås i QnA Maker Portal kan du **[Filtrera efter förslag](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** och sedan granska och godkänna eller avvisa dessa förslag.
+[Active Learning](../How-to/use-active-learning.md) gör det bästa sättet att föreslå alternativa frågor när det finns många olika kvalitets-och mängd användarbaserade frågor. Det är viktigt att tillåta att klient programs användar frågor deltar i den aktiva inlärnings feedback-loopen utan censorship. När frågorna föreslås i QnA Maker Portal kan du **[Filtrera efter förslag](../How-To/improve-knowledge-base.md)** och sedan granska och godkänna eller avvisa dessa förslag.
 
 ## <a name="next-steps"></a>Nästa steg
 

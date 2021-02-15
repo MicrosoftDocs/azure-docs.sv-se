@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879838"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361561"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändra licensmodellen för en virtuell SQL-dator i Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -119,7 +119,6 @@ Att ändra licens modellen är:
    - Stöds endast för standard-och Enterprise-utgåvorna av SQL Server. Licens ändringar för Express, webb och utvecklare stöds inte. 
    - Stöds endast för virtuella datorer som distribueras via Azure Resource Managers modellen. Virtuella datorer som distribueras via den klassiska modellen stöds inte. 
    - Endast tillgängligt för offentliga eller Azure Government moln. 
-   - Stöds endast på virtuella datorer som har ett enda nätverks gränssnitt (NIC). 
 
 > [!Note]
 > Endast SQL Server Core-baserad licensiering med Software Assurance-eller prenumerations licenser är berättigade till Azure Hybrid-förmån. Om du använder Server + CAL-licensiering för SQL Server och du har Software Assurance kan du använda en egen licens för en Azure SQL Server avbildning av virtuella datorer för att utnyttja License Mobility för dessa servrar, men du kan inte utnyttja de andra funktionerna i Azure Hybrid-förmån. 
@@ -136,10 +135,6 @@ Det här felet uppstår när du försöker ändra licens modellen på ett SQL Se
 
 Du måste registrera din prenumeration med resurs leverantören och sedan [registrera SQL Server VM med agent tillägget för SQL-IaaS](sql-agent-extension-manually-register-single-vm.md). 
 
-
-**Den virtuella datorn \<vmname\> har mer än ett nätverkskort kopplat**
-
-Det här felet uppstår på virtuella datorer som har mer än ett nätverkskort. Ta bort ett nätverkskort innan du ändrar licensierings modellen. Även om du kan lägga till NIC-kortet på den virtuella datorn efter att du har ändrat licens modellen, stöds inte längre åtgärder i Azure Portal, till exempel automatisk säkerhets kopiering och korrigering. 
 
 
 ## <a name="next-steps"></a>Nästa steg

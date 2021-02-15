@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015937"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104101"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Gör så här: aktivera enkel inloggning mellan appar på Android med MSAL
 
@@ -81,7 +81,7 @@ Om en enhet inte redan har en Service Broker-app installerad instruerar MSAL anv
 
 När en Broker installeras på en enhet hanteras alla efterföljande interaktiva Tokenbegäran (anrop till `acquireToken()` ) av Service Broker i stället för lokalt av MSAL. SSO-tillstånd som tidigare var tillgängligt för MSAL är inte tillgängligt för Broker. Detta innebär att användaren måste autentisera igen eller välja ett konto i den befintliga listan över konton som är kända för enheten.
 
-Att installera en Broker kräver inte att användaren loggar in igen. Endast när användaren behöver matcha en `MsalUiRequiredException` skickas nästa begäran till Service Broker. `MsalUiRequiredException` kan genereras av flera olika orsaker och måste lösas interaktivt. Ett exempel:
+Att installera en Broker kräver inte att användaren loggar in igen. Endast när användaren behöver matcha en `MsalUiRequiredException` skickas nästa begäran till Service Broker. `MsalUiRequiredException` kan genereras av flera olika orsaker och måste lösas interaktivt. Exempel:
 
 - Användaren ändrade lösen ordet som är kopplat till sitt konto.
 - Användarens konto uppfyller inte längre en princip för villkorlig åtkomst.
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 När du har genererat en signatur-hash med ett- *verktyg* använder du Azure Portal för att generera omdirigerings-URI: n:
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> och välj din Android-app i **Appregistreringar**.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> och välj din Android-app i **Appregistreringar**.
 1. Välj **autentisering**  >  **Lägg till en plattforms**-  >  **Android**.
 1. I fönstret **Konfigurera din Android-app** som öppnas anger du **signaturens hash** som du skapade tidigare och ett **paket namn**.
 1. Välj knappen **Konfigurera** .

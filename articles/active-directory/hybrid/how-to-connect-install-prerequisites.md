@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1957adc0effd5b37d7aff3f813267da6ca065e0a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201730"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368973"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Förhandskrav för Azure AD Connect
 I den här artikeln beskrivs kraven och maskin varu kraven för Azure Active Directory (Azure AD) Connect.
@@ -73,6 +73,7 @@ Mer information om hur du skyddar din Active Directory-miljö finns i [metod tip
     - Du måste konfigurera TLS/SSL-certifikat. Mer information finns i [Hantera SSL/TLS-protokoll och chiffersviter för AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) och [Hantera SSL-certifikat i AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
     - Du måste konfigurera namn matchning. 
 - Om dina globala administratörer har MFA aktiverat måste URL: en https://secure.aadcdn.microsoftonline-p.com  vara i listan över betrodda platser. Du uppmanas att lägga till den här platsen i listan över betrodda platser när du uppmanas att ange en MFA-utmaning och inte har lagts till tidigare. Du kan använda Internet Explorer för att lägga till den på dina betrodda platser.
+- Om du planerar att använda Azure AD Connect Health för synkronisering bör du se till att kraven för Azure AD Connect Health också uppfylls. Mer information finns i [Azure AD Connect Health Agent installation](how-to-connect-health-agent-install.md).
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Skärp din Azure AD Connect-Server 
 Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säkerhets attack ytan för den här viktiga komponenten i din IT-miljö. Genom att följa de här rekommendationerna kan du undvika vissa säkerhets risker för din organisation.
@@ -99,7 +100,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 * Om du använder [Express inställningar](reference-connect-accounts-permissions.md#express-settings-installation) eller uppgraderar från DirSync måste du ha ett företags administratörs konto för din lokala Active Directory.
 * Om du använder installations Sök vägen för anpassade inställningar har du fler alternativ. Mer information finns i [anpassade installations inställningar](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Anslutningar
+### <a name="connectivity"></a>Anslutning
 * Den Azure AD Connect servern behöver DNS-matchning för både intranätet och Internet. DNS-servern måste kunna matcha namn både till din lokala Active Directory och Azure AD-slutpunkter.
 * Om du har brand väggar i intranätet och du behöver öppna portar mellan Azure AD Connect-servrar och domän kontrol Lanterna, se [Azure AD Connect portar](reference-connect-ports.md) för mer information.
 * Om din proxy eller brand vägg begränsar vilka URL: er som kan nås, måste URL: erna som dokumenteras i [Office 365-URL: er och IP-adressintervall](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) öppnas. Se även [Safelist Azure Portal URL: er på brand väggen eller proxyservern](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud).
@@ -140,7 +141,7 @@ Vi rekommenderar att du skärper Azure AD Connect-servern för att minska säker
 Mer information finns i MSDN om [default proxy-elementet](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Mer information om problem med anslutningen finns i [Felsöka anslutnings problem](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Övrigt
+### <a name="other"></a>Annat
 Valfritt: Använd ett test användar konto för att verifiera synkroniseringen.
 
 ## <a name="component-prerequisites"></a>Komponent krav

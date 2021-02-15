@@ -7,18 +7,45 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f303ddb4d32da4c4cb6609f3ceec34e5c83529a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391464"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Viktig information – Azure Arc-aktiverade data tjänster (för hands version)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="january-2021"></a>Januari 2021
+
+### <a name="new-capabilities-and-features"></a>Nya funktioner och funktioner
+
+Versions nummer för Azure Data CLI ( `azdata` ): 20.3.0. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) . Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+
+
+Ytterligare uppdateringar är:
+- Lokaliserad portal tillgänglig för 17 nya språk
+- Mindre ändringar i Kube-ursprungliga. yaml-filer
+- Nya versioner av Grafana och Kibana
+- Problem med python-miljöer när du använder azdata i antecknings böcker i Azure Data Studio löst
+- Pg_audit-tillägget är nu tillgängligt för PostgreSQL-storskalig
+- Ett säkerhets kopierings-ID krävs inte längre vid en fullständig återställning av en PostgreSQL-storskalig databas
+- Status (hälso tillstånd) rapporteras för var och en av de PostgreSQL-instanser som utgör en Server grupp
+
+   I tidigare versioner sammanställdes statusen på Server grupps nivå och inte på PostgreSQL Node-nivå.
+
+- PostgreSQL-distributioner följer nu parametrarna för volym storlek som anges i skapa-kommandon
+- Parametrarna för motor versionen är nu påslagna när du redigerar en Server grupp
+- Namngivnings konventionen för poddar för Azure Arc-aktiverad PostgreSQL-skalning har ändrats
+
+    Nu är det i formatet: `ServergroupName{c, w}-n` . Till exempel, en Server grupp med tre noder, en koordinator-nod och två arbetsnoder visas som:
+   - `Postgres01c-0` (koordinator nod)
+   - `Postgres01w-0` (arbetsnoden)
+   - `Postgres01w-1` (arbetsnoden)
 
 ## <a name="december-2020"></a>December 2020
 

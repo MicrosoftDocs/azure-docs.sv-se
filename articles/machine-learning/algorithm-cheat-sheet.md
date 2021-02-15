@@ -9,18 +9,19 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+adobe-target: true
+ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82890980"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367064"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Lathund-bladet Machine Learning algorithm för Azure Machine Learning designer
 
 I **lathund-bladet Azure Machine Learning algorithm** kan du välja rätt algoritm från designern för en förutsägelse analys modell.
 
-Azure Machine Learning har ett stort bibliotek med algoritmer från ***klassificering***, ***rekommenderade system***, ***klustring***, ***avvikelse identifiering***, ***regression***och ***text analys*** familjer. Var och en är utformad för att lösa en annan typ av Machine Learning-problem.
+Azure Machine Learning har ett stort bibliotek med algoritmer från ***klassificering** _, _*_rekommenderade system_*_, _*_klustring_*_, _*_avvikelse identifiering_*_, _*_regression_*_ och _ *_text analys_** familjer. Var och en är utformad för att lösa en annan typ av Machine Learning-problem.
 
 Ytterligare vägledning finns i [så här väljer du algoritmer](how-to-select-algorithms.md)
 
@@ -42,7 +43,7 @@ Om du vill veta mer om algoritmerna i Azure Machine Learning designer går du ti
 
 ## <a name="kinds-of-machine-learning"></a>Typer av maskin inlärning
 
-Det finns tre huvudsakliga kategorier av Machine Learning: *övervakad utbildning*, *inövervakad inlärning*och *förstärknings inlärning*.
+Det finns tre huvudsakliga kategorier av Machine Learning: *övervakad utbildning*, *inövervakad inlärning* och *förstärknings inlärning*.
 
 ### <a name="supervised-learning"></a>Övervakad utbildning
 

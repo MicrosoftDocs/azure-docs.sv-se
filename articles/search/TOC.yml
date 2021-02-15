@@ -212,6 +212,8 @@
       items:
         - name: Skapa en indexerare
           href: search-howto-create-indexers.md
+        - name: Köra eller återställa indexerare
+          href: search-howto-run-reset-indexers.md
         - name: Schemalägga en indexerare
           href: search-howto-schedule-indexers.md
         - name: Definiera fält mappningar

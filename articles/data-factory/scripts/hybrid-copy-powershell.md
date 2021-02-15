@@ -1,21 +1,18 @@
 ---
 title: Kopiera data från en lokal plats till Azure med hjälp av PowerShell
 description: Det här PowerShell-skriptet kopierar data från en SQL Server-databas till en annan Azure-Blob Storage.
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632240"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373393"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Använd PowerShell för att skapa en Data Factory-pipeline för att kopiera data från SQL Server till Azure
 
@@ -27,9 +24,9 @@ Det här exemplet på PowerShell-skriptet skapar en pipeline i Azure Data Factor
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- **SQL Server** . Du använder en SQL Server databas som **käll** data lager i det här exemplet.
-- **Azure Storage konto** . Du använder Azure Blob Storage som data lager för **destination/mottagare** i det här exemplet. om du inte har ett Azure Storage-konto finns det anvisningar om hur du skapar ett i artikeln [Skapa ett lagringskonto](../../storage/common/storage-account-create.md).
-- **Integration runtime med egen värd** . Ladda ned MSI-filen från [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) och kör den för att installera en lokal integration runtime på din dator.  
+- **SQL Server**. Du använder en SQL Server databas som **käll** data lager i det här exemplet.
+- **Azure Storage konto**. Du använder Azure Blob Storage som data lager för **destination/mottagare** i det här exemplet. om du inte har ett Azure Storage-konto finns det anvisningar om hur du skapar ett i artikeln [Skapa ett lagringskonto](../../storage/common/storage-account-create.md).
+- **Integration runtime med egen värd**. Ladda ned MSI-filen från [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) och kör den för att installera en lokal integration runtime på din dator.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Skapa exempel databas i SQL Server
 1. I SQL Server-databasen skapar du en tabell med namnet **EMP** med hjälp av följande SQL-skript:

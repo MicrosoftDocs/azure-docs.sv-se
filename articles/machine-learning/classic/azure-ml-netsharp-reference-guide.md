@@ -3,18 +3,18 @@ title: 'ML Studio (klassisk): net # Custom neurala Networks – Azure'
 description: 'Syntax guide för net # neurala Networks Specification-språk. Lär dig hur du skapar anpassade neurala-nätverks modeller i Azure Machine Learning Studio (klassisk).'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302800"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519260"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Guide till net # neurala Network Specification language för Machine Learning Studio (klassisk)
 
@@ -90,17 +90,17 @@ Följande uttryck definierar till exempel en konstant `x` :
 
 `Const X = 28;`
 
-Om du vill definiera två eller flera konstanter samtidigt, omger du Identifierarens namn och värden inom klammerparenteser och avgränsar dem med hjälp av semikolon. Ett exempel:
+Om du vill definiera två eller flera konstanter samtidigt, omger du Identifierarens namn och värden inom klammerparenteser och avgränsar dem med hjälp av semikolon. Exempel:
 
 `Const { X = 28; Y = 4; }`
 
-Höger sida av varje tilldelnings uttryck kan vara ett heltal, ett reellt tal, ett booleskt värde (sant eller falskt) eller ett matematiskt uttryck. Ett exempel:
+Höger sida av varje tilldelnings uttryck kan vara ett heltal, ett reellt tal, ett booleskt värde (sant eller falskt) eller ett matematiskt uttryck. Exempel:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Lager deklaration
 
-Lager deklarationen krävs. Den definierar lagrets storlek och källa, inklusive dess anslutnings paket och attribut. Deklarations instruktionen börjar med namnet på lagret (indata, dold eller utdata) följt av lagrets mått (en tupel med positiva heltal). Ett exempel:
+Lager deklarationen krävs. Den definierar lagrets storlek och källa, inklusive dess anslutnings paket och attribut. Deklarations instruktionen börjar med namnet på lagret (indata, dold eller utdata) följt av lagrets mått (en tupel med positiva heltal). Exempel:
 
 ```Net#
 input Data auto;
@@ -266,9 +266,9 @@ Normalisering av svar används för att under lätta generaliseringen i neurala-
 
 Paket för normalisering av svar har stöd för alla (convolutional-attribut förutom **delning**, **MapCount** och **vikter**.
 
-+ Om kärnan innehåller neurons i samma karta som **_x_*_, kallas normaliserings schemat för _* samma mappnings-normalisering**. Om du vill definiera samma mappnings-normalisering måste den första koordinaten i **InputShape** ha värdet 1.
++ Om kärnan innehåller neurons i samma karta som ***x** _, kallas normaliserings schema _ * samma mappnings-normalisering * *. Om du vill definiera samma mappnings-normalisering måste den första koordinaten i **InputShape** ha värdet 1.
 
-+ Om kärnan innehåller neurons i samma spatialdata som **_x_*_, men neurons finns i andra Maps, kallas normaliserings schemat _* över Maps-normalisering**. Den här typen av svars normalisering implementerar en form av lateralt hämmande som inspireras av den typ som påträffades i verklig neurons, vilket skapar en tävling för stor aktiverings nivå bland neuron utdata som beräknas på olika kartor. För att definiera över Maps-normalisering måste den första koordinaten vara ett heltal som är större än ett och inte större än antalet mappningar, och resten av koordinaterna måste ha värdet 1.
++ Om kärnan innehåller neurons i samma spatialdata som ***x** _, men neurons finns i andra Maps, kallas normaliserings schema _ * över Maps-normalisering * *. Den här typen av svars normalisering implementerar en form av lateralt hämmande som inspireras av den typ som påträffades i verklig neurons, vilket skapar en tävling för stor aktiverings nivå bland neuron utdata som beräknas på olika kartor. För att definiera över Maps-normalisering måste den första koordinaten vara ett heltal som är större än ett och inte större än antalet mappningar, och resten av koordinaterna måste ha värdet 1.
 
 Eftersom paket för normalisering av svar tillämpar en fördefinierad funktion för Källnoden för att fastställa värdet för målnoden, har de inte något tåg tillstånd (vikt eller bias).
 

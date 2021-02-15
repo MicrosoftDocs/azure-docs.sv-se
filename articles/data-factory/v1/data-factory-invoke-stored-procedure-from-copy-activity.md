@@ -1,23 +1,18 @@
 ---
 title: Anropa lagrad procedur från Azure Data Factory kopierings aktivitet
 description: Lär dig att anropa en lagrad procedur i Azure SQL Database eller SQL Server från en Azure Data Factory kopierings aktivitet.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2b10744222da8e5d85b19e1ded5aa24cf9c9706
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637861"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374974"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Anropa lagrad procedur från kopierings aktivitet i Azure Data Factory
 > [!NOTE]
@@ -29,7 +24,7 @@ När du kopierar data till [SQL Server](data-factory-sqlserver-connector.md) ell
 Följande exempel visar hur du anropar en lagrad procedur i en SQL Server databas från en Data Factory pipeline (kopierings aktivitet):  
 
 ## <a name="output-dataset-json"></a>JSON för utgående data mängd
-I JSON för utgående data uppsättning anger du **typen** till: **SqlServerTable** . Ange den som **AzureSqlTable** som ska användas med Azure SQL Database. Värdet för egenskapen **TableName** måste matcha namnet på den första parametern för den lagrade proceduren.  
+I JSON för utgående data uppsättning anger du **typen** till: **SqlServerTable**. Ange den som **AzureSqlTable** som ska användas med Azure SQL Database. Värdet för egenskapen **TableName** måste matcha namnet på den första parametern för den lagrade proceduren.  
 
 ```json
 {
@@ -68,7 +63,7 @@ Definiera avsnittet **SqlSink** i JSON-filen för kopierings aktiviteten enligt 
 ```
 
 ## <a name="stored-procedure-definition"></a>Definition av lagrad procedur 
-I databasen definierar du den lagrade proceduren med samma namn som **SqlWriterStoredProcedureName** . Den lagrade proceduren hanterar indata från käll data lagret och infogar data i en tabell i mål databasen. Namnet på den första parametern för den lagrade proceduren måste matcha det tableName som definierats i data uppsättnings-JSON (Marketing).
+I databasen definierar du den lagrade proceduren med samma namn som **SqlWriterStoredProcedureName**. Den lagrade proceduren hanterar indata från käll data lagret och infogar data i en tabell i mål databasen. Namnet på den första parametern för den lagrade proceduren måste matcha det tableName som definierats i data uppsättnings-JSON (Marketing).
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -81,7 +76,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>Definition av tabell typ
-I databasen definierar du tabell typen med samma namn som **SqlWriterTableType** . Schemat för tabell typen måste matcha schemat för data uppsättningen för indata.
+I databasen definierar du tabell typen med samma namn som **SqlWriterTableType**. Schemat för tabell typen måste matcha schemat för data uppsättningen för indata.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

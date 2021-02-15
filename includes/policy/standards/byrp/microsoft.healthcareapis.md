@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f802758c20e06a8e7201c08087b990c4924e434b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6dd60d30daa80b8d7b522c0695ada782e4bdb38b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555296"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106338"
 ---
 ## <a name="cmmc-level-3"></a>CMMC nivå 3
 
@@ -23,6 +23,6 @@ Mer information om den här standarden för efterlevnad finns i [cybersäkerhet 
 |Åtkomstkontroll |AC. 1.002 |Begränsa informations systemets åtkomst till de typer av transaktioner och funktioner som behöriga användare tillåts att köra. |[CORS bör inte tillåta varje domän åtkomst till ditt API för FHIR](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fea8f8a-4169-495d-8307-30ec335f387d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_RestrictCORSAccess_Audit.json) |
 |Åtkomstkontroll |AC. 2.016 |Styr flödet av CUI i enlighet med godkända auktoriseringar. |[CORS bör inte tillåta varje domän åtkomst till ditt API för FHIR](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fea8f8a-4169-495d-8307-30ec335f387d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_RestrictCORSAccess_Audit.json) |
 |Konfigurationshantering |CM. 3.068 |Begränsa, inaktivera eller förhindra användning av icke-viktiga program, funktioner, portar, protokoll och tjänster. |[CORS bör inte tillåta varje domän åtkomst till ditt API för FHIR](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fea8f8a-4169-495d-8307-30ec335f387d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_RestrictCORSAccess_Audit.json) |
-|System-och kommunikations skydd |SC. 3.177 |Använd FIPS-validerad kryptografi när den används för att skydda konfidentialiteten hos CUI. |[Azure API för FHIR bör använda en kundhanterad nyckel (CMK) för att kryptera data i vila](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F051cba44-2429-45b9-9649-46cec11c7119) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_EnableByok_Audit.json) |
+|System-och kommunikations skydd |SC. 3.177 |Använd FIPS-validerad kryptografi när den används för att skydda konfidentialiteten hos CUI. |[Azure API för FHIR bör använda en kundhanterad nyckel för att kryptera data i vila](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F051cba44-2429-45b9-9649-46cec11c7119) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_EnableByok_Audit.json) |
 |System-och kommunikations skydd |SC. 3.183 |Neka nätverks kommunikations trafik som standard och Tillåt nätverks kommunikations trafik genom undantag (t. ex. neka alla, Tillåt undantag). |[CORS bör inte tillåta varje domän åtkomst till ditt API för FHIR](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fea8f8a-4169-495d-8307-30ec335f387d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_RestrictCORSAccess_Audit.json) |
 

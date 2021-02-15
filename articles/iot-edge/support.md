@@ -4,16 +4,16 @@ description: Lär dig vilka operativ system som kan köra Azure IoT Edge daemon 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/09/2020
+ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9a9361df817db46028259d8792d9a1431df4ce67
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630538"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516333"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge system som stöds
 
@@ -62,12 +62,11 @@ Azure IoT Edge stöder moduler som skapats som Linux-eller Windows-behållare. L
 
 Moduler som skapats som Linux-behållare kan distribueras till antingen Linux-eller Windows-enheter. För Linux-enheter installeras IoT Edge runtime direkt på värd enheten. För Windows-enheter är en virtuell Linux-dator som är fördefinierad med IoT Edge runtime körs på värd enheten.
 
-IoT Edge för Linux på Windows är för närvarande en offentlig för hands version, men är det rekommenderade sättet att köra IoT Edge på Windows-enheter.
+[IoT Edge för Linux på Windows](iot-edge-for-linux-on-windows.md) är för närvarande en offentlig för hands version, men är det rekommenderade sättet att köra IoT Edge på Windows-enheter.
 
 | Operativsystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspberry Pi OS-storlek |  | ![Raspberry Pi OS-utsträckning + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 16.04 | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Offentlig för hands version  |
 | Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Offentlig för hands version |
 | Windows 10 Pro | Offentlig för hands version |  |  |
 | Windows 10 Enterprise | Offentlig för hands version |  |  |
@@ -76,20 +75,26 @@ IoT Edge för Linux på Windows är för närvarande en offentlig för hands ver
 
 Alla Windows-operativsystem måste vara version 1809 (build 17763) eller senare.
 
+>[!NOTE]
+>Ubuntu Server 16,04-stöd avslutades med lanseringen av IoT Edge version 1,1.
+
 #### <a name="windows-containers"></a>Windows-containrar
+
+>[!IMPORTANT]
+>IoT Edge 1,1 LTS är den sista versions kanal som stöder Windows-behållare. Från och med version 1,2 kommer Windows-behållare inte att stödjas. Överväg att använda eller flytta till [IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md) för att köra IoT Edge på Windows-enheter.
 
 Moduler som skapats som Windows-behållare kan bara distribueras till Windows-enheter.
 
 | Operativsystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Windows 10 IoT Enterprise | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows 10 IoT Core<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
 | Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-
-<sup>1</sup> Windows 10 IoT Core kommer inte att stödjas efter version 1.0.10
+| Windows Server IoT 2019 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
 
 Alla Windows-operativsystem måste vara version 1809 (build 17763). Den specifika versionen av Windows krävs för IoT Edge i Windows eftersom Windows-behållarens version måste matcha Windows-enhetens version exakt. Windows-behållare använder för närvarande bara build 17763.
+
+>[!NOTE]
+>Support för Windows 10 IoT Core slutade med lanseringen av IoT Edge version 1,1.
 
 ### <a name="tier-2"></a>Nivå 2
 
@@ -98,20 +103,18 @@ De system som anges i följande tabell anses vara kompatibla med Azure IoT Edge,
 | Operativsystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | [CentOS 7.5](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1804) | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 8](https://www.debian.org/releases/jessie/) | ![Debian 8 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 20,04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 9](https://www.debian.org/releases/stretch/) | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 10](https://www.debian.org/releases/buster/) | ![Debian 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Mentor Embedded Linux Flex OS](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Mentor Embedded Linux Omni OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/tutorial-c-module/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [RHEL 7.5](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/7.5_release_notes/index) | ![RHEL 7,5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7,5 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu 16,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Vind floden 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspberry Pi OS-Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 20,04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> Debian 9-paketen från [Azure IoT Edge releases lagrings platsen](https://github.com/Azure/azure-iotedge/releases) bör fungera direkt med Ubuntu 20,04.
+<sup>1</sup> installations stegen för Ubuntu Server 18,04 i installations- [eller avinstallations Azure IoT Edge för Linux](how-to-install-iot-edge.md) bör fungera utan några ändringar på Ubuntu 20,04.
 
 ## <a name="releases"></a>Versioner
 
@@ -121,21 +124,30 @@ IoT Edge-komponenter kan installeras eller uppdateras individuellt och är bakå
 
 | Frisläpp | Security daemon | Edge Hub<br>Edge-agent | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.10** | 1.0.10 | 1.0.10 | 1.0.10 |  |
+| **1.1.0 LTS**<sup>1</sup> | 1.1.0 | 1.1.0 | 1.1.0 |   |
+| **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
+<sup>1</sup> IoT Edge 1,1 är den första versionen av LTS-versionen (Long-term support). Den här versionen introducerade inga nya funktioner, men får fel korrigeringar och säkerhets korrigeringar. IoT Edge 1,1 LTS använder .NET Core 3,1 och kommer att stödjas fram till 3 december 2022 för att matcha [livs cykeln för .net Core och .net 5](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+
+>[!IMPORTANT]
+>I och med lanseringen av en långsiktig support kanal rekommenderar vi att alla aktuella kunder som kör 1.0. x uppgraderar sina enheter till 1,1. x för att få kontinuerlig support.
+
 IoT Edge använder Microsoft. Azure. devices. client SDK. Mer information finns i [Azure IoT C# SDK GitHub-lagrings platsen](https://github.com/Azure/azure-iot-sdk-csharp) eller [Azure SDK för .net-referens innehåll](/dotnet/api/overview/azure/iot/client). I följande lista visas den version av klient-SDK: n som varje version testas mot:
 
-* **IoT Edge 1.0.10**: klient-SDK-1.28.0
-* **IoT Edge 1.0.9**: klient-SDK-1.21.1
-* **IoT Edge 1.0.8**: klient-SDK-1.20.3
-* **IoT Edge 1.0.7**: klient-SDK-1.20.1
-* **IoT Edge 1.0.6**: klient-SDK-1.17.1
-* **IoT Edge 1.0.5**: klient-SDK-1.17.1
+| IoT Edge-version | Microsoft. Azure. devices. client SDK-version |
+|------------------|--------------------------------------------|
+| 1.1.0 (LTS)      | 1.28.0                                     |
+| 1.0.10           | 1.28.0                                     |
+| 1.0.9            | 1.21.1                                     |
+| 1.0.8            | 1.20.3                                     |
+| 1.0.7            | 1.20.1                                     |
+| 1.0.6            | 1.17.1                                     |
+| 1.0.5            | 1.17.1                                     |
 
 ## <a name="virtual-machines"></a>Virtual Machines
 

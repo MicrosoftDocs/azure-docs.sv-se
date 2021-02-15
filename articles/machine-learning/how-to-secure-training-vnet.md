@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538008"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515996"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning utbildnings miljö med virtuella nätverk
 
@@ -26,7 +26,7 @@ Den här artikeln är del tre i en serie med fem delar som vägleder dig genom a
 
 Se de andra artiklarna i den här serien:
 
-[1. VNet-översikt](how-to-network-security-overview.md)  >  [skydda arbets ytan](how-to-secure-workspace-vnet.md)  >  **3. Skydda inlärnings miljö**  >  [4. Skydda inferencing-miljön](how-to-secure-inferencing-vnet.md)   >  [5. Aktivera Studio-funktioner](how-to-enable-studio-virtual-network.md)
+[1. VNet-översikt](how-to-network-security-overview.md)  >  [2. Skydda arbets ytan](how-to-secure-workspace-vnet.md)  >  **3. Skydda inlärnings miljö**  >  [4. Skydda inferencing-miljön](how-to-secure-inferencing-vnet.md)   >  [5. Aktivera Studio-funktioner](how-to-enable-studio-virtual-network.md)
 
 I den här artikeln får du lära dig att skydda följande utbildnings beräknings resurser i ett virtuellt nätverk:
 > [!div class="checklist"]
@@ -273,7 +273,7 @@ Om du vill använda Azure Databricks i ett virtuellt nätverk med din arbets yta
 > * Om Azure Storage kontona för arbets ytan också är skyddade i ett virtuellt nätverk måste de finnas i samma virtuella nätverk som Azure Databricks-klustret.
 > * Förutom de __databricks-privata__ och __databricks-offentliga__ undernät som används av Azure Databricks, krävs även det __standard__ -undernät som skapats för det virtuella nätverket.
 
-För detaljerad information om hur du använder Azure Databricks med ett virtuellt nätverk, se [distribuera Azure Databricks i Azure-Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+För detaljerad information om hur du använder Azure Databricks med ett virtuellt nätverk, se [distribuera Azure Databricks i Azure-Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 <a id="vmorhdi"></a>
 

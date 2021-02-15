@@ -6,16 +6,16 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozgun
-ms.date: 09/14/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: bf2696d329f852741c42219219600dc773090623
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 61bcf7abca2860078bd89da070309a0057360f0c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590723"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370231"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Kör PowerShell-kommandon med Azure AD-autentiseringsuppgifter för att komma åt köade data
 
@@ -28,6 +28,9 @@ Du kan tilldela behörigheter till köa data till ett säkerhets objekt i Azure 
 Azure Storage-tilläggen stöds för åtgärder på köa data. Vilka åtgärder som kan anropas beror på vilka behörigheter som beviljats för det säkerhets objekt i Azure AD som du loggar in på PowerShell. Behörigheter till köer tilldelas via Azure RBAC. Om du till exempel har tilldelats rollen **Queue data Reader** kan du köra skript kommandon som läser data från en kö. Om du har tilldelats rollen **Queue data Contributor** kan du köra skript kommandon som läser, skriver eller tar bort en kö eller de data som de innehåller.
 
 Mer information om de behörigheter som krävs för varje Azure Storage-åtgärd i en kö finns i [anropa lagrings åtgärder med OAuth-token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
+
+> [!IMPORTANT]
+> När ett lagrings konto är låst med ett Azure Resource Manager **skrivskyddat** lås, tillåts inte [list nyckel](/rest/api/storagerp/storageaccounts/listkeys) åtgärden för det lagrings kontot. **List nycklar** är en post-åtgärd och alla post-åtgärder förhindras när ett **skrivskyddat** lås har kon figurer ATS för kontot. Av den anledningen måste användare som inte redan har konto nycklar använda Azure AD-autentiseringsuppgifter för att få åtkomst till köa data när kontot är låst med ett **skrivskyddat** lås. I PowerShell inkluderar du `-UseConnectedAccount` parametern för att skapa ett **AzureStorageContext** -objekt med dina AUTENTISERINGSUPPGIFTER för Azure AD.
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Anropa PowerShell-kommandon med Azure AD-autentiseringsuppgifter
 

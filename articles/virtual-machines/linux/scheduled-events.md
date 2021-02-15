@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 99528d1575056917b68bcb38f41a24d065822827
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3bda1e2076e29fc1365bfc236adc9071db2564a1
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792811"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104747"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Schemalagda händelser för virtuella Linux-datorer
 
@@ -71,7 +71,7 @@ För virtuella VNET-aktiverade virtuella datorer är Metadata Service tillgängl
 Om den virtuella datorn inte har skapats inom en Virtual Network, krävs standard fall för moln tjänster och klassiska virtuella datorer, men ytterligare logik krävs för att identifiera IP-adressen som ska användas. Information om hur du [identifierar värd slut punkten](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)finns i det här exemplet.
 
 ### <a name="version-and-region-availability"></a>Tillgänglighet för version och region
-Den Schemalagda händelser tjänsten har versions hantering. Versioner är obligatoriska. den aktuella versionen är `2019-01-01` .
+Den Schemalagda händelser tjänsten har versions hantering. Versioner är obligatoriska. den aktuella versionen är `2019-08-01` .
 
 | Version | Versions typ | Regioner | Viktig information | 
 | - | - | - | - | 
@@ -138,7 +138,7 @@ Om det finns schemalagda händelser innehåller svaret en händelse mat ris.
 | Resurser| Lista över resurser som den här händelsen påverkar. Listan är garanterat att innehålla datorer från högst en [uppdaterings domän](../manage-availability.md), men den innehåller kanske inte alla datorer i UD. <br><br> Exempel: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Status för den här händelsen. <br><br> Värden: <ul><li>`Scheduled`: Den här händelsen är schemalagd att starta efter den tid som anges i `NotBefore` egenskapen.<li>`Started`: Den här händelsen har startats.</ul> `Completed`Det finns aldrig någon eller liknande status. Händelsen returneras inte längre när händelsen är färdig.
 | NotBefore| Tid när den här händelsen kan starta. <br><br> Exempel: <br><ul><li> Mån, 19 Sep 2016 18:29:47 GMT  |
-| Beskrivning | Beskrivning av den här händelsen. <br><br> Exempel: <br><ul><li> Underhåll pågår för värd servern. |
+| Description | Beskrivning av den här händelsen. <br><br> Exempel: <br><ul><li> Underhåll pågår för värd servern. |
 | EventSource | Händelsens initierare. <br><br> Exempel: <br><ul><li> `Platform`: Den här händelsen initieras av plattformen. <li>`User`: Den här händelsen initieras av användaren. |
 
 ### <a name="event-scheduling"></a>Händelse schemaläggning

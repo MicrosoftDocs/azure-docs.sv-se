@@ -2,13 +2,13 @@
 title: Regler för Azure Event Hubs-brandvägg | Microsoft Docs
 description: Använd brand Väggs regler för att tillåta anslutningar från vissa IP-adresser till Azure Event Hubs.
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: e07f863bf8b7d5f64ec0ba04bf16fba12f4a785d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: 18d043ebff7ff317207d0a33eaeba741fea8cc8a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427453"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517203"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Tillåt åtkomst till Azure Event Hubs-namnrymder från vissa IP-adresser eller intervall
 Som standard är Event Hubs-namnrymder tillgängliga från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -26,8 +26,9 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandv�
 
 1. Navigera till **Event Hubs namn området** i [Azure Portal](https://portal.azure.com).
 4. Välj **nätverk** under **Inställningar** på den vänstra menyn. Fliken **nätverk** visas endast för **standard** -eller **dedikerade** namn områden. 
-    > [!NOTE]
-    > Som standard är alternativet **valda nätverk** markerat som visas i följande bild. Om du inte anger en IP-brandväggsregel eller lägger till ett virtuellt nätverk på den här sidan, kan namn området nås via **offentliga Internet** (med hjälp av åtkomst nyckeln).  
+    
+    > [!WARNING]
+    > Om du väljer alternativet **valda nätverk** och inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan, kan namn området nås via **offentliga Internet** (med hjälp av åtkomst nyckeln).  
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Fliken nätverk – alternativet valda nätverk" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -55,23 +56,9 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandv�
 
 Följande Resource Manager-mall gör det möjligt att lägga till en IP-filterlista till ett befintligt Event Hubs-namnområde.
 
-Mallparametrar:
+**ipMask** i mallen är en enskild IPv4-adress eller ett block med IP-adresser i CIDR-format. I CIDR-notation 70.37.104.0/24 representerar till exempel 256 IPv4-adresser från 70.37.104.0 till 70.37.104.255, med 24 som anger antalet signifikanta prefix för intervallet.
 
-- **ipMask** är en enskild IPv4-adress eller ett block med IP-adresser i CIDR-notation. I CIDR-notation 70.37.104.0/24 representerar till exempel 256 IPv4-adresser från 70.37.104.0 till 70.37.104.255, med 24 som anger antalet signifikanta prefix för intervallet.
-
-> [!NOTE]
-> Även om det inte finns några tillåtna nekade regler, har Azure Resource Manager mal len standard åtgärden inställd på **Tillåt** , vilket inte begränsar anslutningar.
-> När du skapar Virtual Network-eller brand Väggs regler måste vi ändra **_"defaultAction"_**
-> 
-> Från
-> ```json
-> "defaultAction": "Allow"
-> ```
-> på
-> ```json
-> "defaultAction": "Deny"
-> ```
->
+När du lägger till regler för virtuella nätverk eller brand väggar ställer du in värdet `defaultAction` till `Deny` .
 
 ```json
 {
@@ -136,6 +123,9 @@ Mallparametrar:
 ```
 
 Följ anvisningarna för [Azure Resource Manager][lnk-deploy]om du vill distribuera mallen.
+
+> [!IMPORTANT]
+> Om det inte finns några IP-och virtuella nätverks regler, flödar all trafik till namn området även om du ställer in `defaultAction` till `deny` .  Namn området kan nås via det offentliga Internet (med hjälp av åtkomst nyckeln). Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk.  
 
 ## <a name="next-steps"></a>Nästa steg
 

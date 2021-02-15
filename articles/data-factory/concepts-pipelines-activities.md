@@ -1,20 +1,17 @@
 ---
 title: Pipelines och aktiviteter i Azure Data Factory
 description: Läs mer om pipelines och aktiviteter i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: ceaced5860976b0fa9f84903804700f778ed9550
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500095"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364536"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines och aktiviteter i Azure Data Factory
 
@@ -69,7 +66,7 @@ Mer information finns i artikeln om [datatransformeringsaktiviteter](transform-d
 ## <a name="control-flow-activities"></a>Kontroll flödes aktiviteter
 Följande kontrollflödesaktiviteter stöds:
 
-Kontrollaktivitet | Description
+Kontrollaktivitet | Beskrivning
 ---------------- | -----------
 [Lägg till variabel](control-flow-append-variable-activity.md) | Lägg till ett värde i en befintlig mat ris variabel.
 [Kör pipeline](control-flow-execute-pipeline-activity.md) | Med Execute Pipeline-aktiviteten kan en Data Factory-pipeline anropa en annan pipeline.
@@ -106,14 +103,14 @@ Så här definieras en pipeline i JSON-format:
 }
 ```
 
-Tagga | Beskrivning | Typ | Obligatorisk
+Tagg | Beskrivning | Typ | Obligatorisk
 --- | ----------- | ---- | --------
-name | Namnet på pipeline. Ange ett namn som representerar åtgärden som pipeline utför. <br/><ul><li>Maximalt antal tecken: 140</li><li>Måste börja med en bokstav, en siffra eller ett under streck ( \_ )</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Sträng | Yes
-beskrivning | Ange texten som beskriver vad pipeline används till. | Sträng | No
-activities | Avsnittet **activities** kan ha en eller flera definierade aktiviteter. I avsnittet [Aktivitets-JSON](#activity-json) finns information om aktivitets-JSON-elementet. | Matris | Yes
-parametrar | Avsnittet **parameters** kan ha en eller flera definierade parametrar i pipeline, vilket gör pipeline flexibel för återanvändning. | Lista | No
-samtidighet | Det maximala antalet samtidiga körningar som pipelinen kan ha. Som standard finns det inget maximum. Om samtidigheten uppnås placeras ytterligare pipeline-körningar i kö tills de tidigare är klara | Antal | No 
-anteckningar | En lista med taggar som är associerade med pipelinen | Matris | No
+name | Namnet på pipeline. Ange ett namn som representerar åtgärden som pipeline utför. <br/><ul><li>Maximalt antal tecken: 140</li><li>Måste börja med en bokstav, en siffra eller ett under streck ( \_ )</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Sträng | Ja
+beskrivning | Ange texten som beskriver vad pipeline används till. | Sträng | Inga
+activities | Avsnittet **activities** kan ha en eller flera definierade aktiviteter. I avsnittet [Aktivitets-JSON](#activity-json) finns information om aktivitets-JSON-elementet. | Matris | Ja
+parametrar | Avsnittet **parameters** kan ha en eller flera definierade parametrar i pipeline, vilket gör pipeline flexibel för återanvändning. | Lista | Inga
+samtidighet | Det maximala antalet samtidiga körningar som pipelinen kan ha. Som standard finns det inget maximum. Om samtidigheten uppnås placeras ytterligare pipeline-körningar i kö tills de tidigare är klara | Antal | Inga 
+anteckningar | En lista med taggar som är associerade med pipelinen | Matris | Inga
 
 ## <a name="activity-json"></a>Aktivitets-JSON
 Avsnittet **activities** kan ha en eller flera definierade aktiviteter. Det finns två huvudtyper av aktiviteter: körnings- och kontrollaktiviteter.
@@ -141,15 +138,15 @@ I körningsaktiviteter ingår [dataförflyttning](#data-movement-activities) och
 
 I följande tabell beskrivs egenskaperna i definitionen för aktivitets-JSON:
 
-Tagga | Beskrivning | Krävs
+Tagg | Beskrivning | Obligatorisk
 --- | ----------- | ---------
-name | Namnet på aktiviteten. Ange ett namn som representerar åtgärden som aktiviteten utför. <br/><ul><li>Maximalt antal tecken: 55</li><li>Måste börja med en bokstavs siffra eller ett under streck ( \_ )</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li></ul>
-beskrivning | Text som beskriver vad aktiviteten används till | Yes
-typ | Typ av aktivitet. Se avsnittet [data förflyttnings](#data-movement-activities)aktiviteter, [data omvandling](#data-transformation-activities)och [kontroll av aktiviteter](#control-flow-activities) för olika typer av aktiviteter. | Yes
+name | Namnet på aktiviteten. Ange ett namn som representerar åtgärden som aktiviteten utför. <br/><ul><li>Maximalt antal tecken: 55</li><li>Måste börja med en bokstavs siffra eller ett under streck ( \_ )</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Ja</li></ul>
+beskrivning | Text som beskriver vad aktiviteten används till | Ja
+typ | Typ av aktivitet. Se avsnittet [data förflyttnings](#data-movement-activities)aktiviteter, [data omvandling](#data-transformation-activities)och [kontroll av aktiviteter](#control-flow-activities) för olika typer av aktiviteter. | Ja
 linkedServiceName | Namnet på den länkade tjänst som används av aktiviteten.<br/><br/>En aktivitet kan kräva att du anger den länkade tjänst som länkar till den nödvändiga beräkningsmiljön. | Ja för HDInsight-aktivitet, Azure Machine Learning Studio (klassisk) kommando bedömnings aktivitet, lagrad procedur aktivitet. <br/><br/>Nej för alla andra
-typeProperties | Egenskaperna i avsnittet typeProperties beror på varje typ av aktivitet. Om du vill visa typegenskaper för en aktivitet klickar du på länkarna till aktiviteten i föregående avsnitt. | No
-policy | Principer som påverkar körningsbeteende för aktiviteten. Den här egenskapen innehåller en tids gräns och ett omprövnings beteende. Om inget värde anges används standardvärden. Mer information finns i avsnittet [Aktivitetsprincip](#activity-policy). | No
-dependsOn | Den här egenskapen används till att definiera aktivitetsberoenden och hur efterföljande aktiviteter beror på tidigare aktiviteter. Mer information finns i [Aktivitetsberoende](#activity-dependency) | No
+typeProperties | Egenskaperna i avsnittet typeProperties beror på varje typ av aktivitet. Om du vill visa typegenskaper för en aktivitet klickar du på länkarna till aktiviteten i föregående avsnitt. | Inga
+policy | Principer som påverkar körningsbeteende för aktiviteten. Den här egenskapen innehåller en tids gräns och ett omprövnings beteende. Om inget värde anges används standardvärden. Mer information finns i avsnittet [Aktivitetsprincip](#activity-policy). | Inga
+dependsOn | Den här egenskapen används till att definiera aktivitetsberoenden och hur efterföljande aktiviteter beror på tidigare aktiviteter. Mer information finns i [Aktivitetsberoende](#activity-dependency) | Inga
 
 ### <a name="activity-policy"></a>Aktivitetsprincip
 Principer påverkar körningsbeteendet hos en aktivitet och ger konfigurationsalternativ. Aktivitetsprinciper är bar tillgängliga för körningsaktiviteter.
@@ -182,7 +179,7 @@ Principer påverkar körningsbeteendet hos en aktivitet och ger konfigurationsal
 }
 ```
 
-JSON-namn | Description | Tillåtna värden | Obligatorisk
+JSON-namn | Beskrivning | Tillåtna värden | Obligatorisk
 --------- | ----------- | -------------- | --------
 timeout | Anger tidsgränsen för aktivitetens körning. | Tidsintervall | Nej. Standardtidsgränsen är 7 dagar.
 retry | Max. antal omförsök | Integer | Nej. Standardvärdet är 0
@@ -206,13 +203,13 @@ Kontrollaktiviteter har följande toppnivåstruktur:
 }
 ```
 
-Tagga | Beskrivning | Krävs
+Tagg | Beskrivning | Obligatorisk
 --- | ----------- | --------
-name | Namnet på aktiviteten. Ange ett namn som representerar åtgärden som aktiviteten utför.<br/><ul><li>Maximalt antal tecken: 55</li><li>Måste börja med en bokstavs siffra eller ett under streck ( \_ )</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Yes</li><ul>
-beskrivning | Text som beskriver vad aktiviteten används till | Yes
-typ | Typ av aktivitet. Information om olika typer av aktiviteter finns i avsnitten [Dataförflyttningsaktiviteter](#data-movement-activities), [Datatransformeringsaktiviteter](#data-transformation-activities) och [Kontrollaktiviteter](#control-flow-activities). | Yes
-typeProperties | Egenskaperna i avsnittet typeProperties beror på varje typ av aktivitet. Om du vill visa typegenskaper för en aktivitet klickar du på länkarna till aktiviteten i föregående avsnitt. | No
-dependsOn | Den här egenskapen används till att definiera aktivitetsberoende och hur efterföljande aktiviteter beror på tidigare aktiviteter. Mer information finns i [aktivitets beroende](#activity-dependency). | No
+name | Namnet på aktiviteten. Ange ett namn som representerar åtgärden som aktiviteten utför.<br/><ul><li>Maximalt antal tecken: 55</li><li>Måste börja med en bokstavs siffra eller ett under streck ( \_ )</li><li>Följande tecken är inte tillåtna: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" | Ja</li><ul>
+beskrivning | Text som beskriver vad aktiviteten används till | Ja
+typ | Typ av aktivitet. Information om olika typer av aktiviteter finns i avsnitten [Dataförflyttningsaktiviteter](#data-movement-activities), [Datatransformeringsaktiviteter](#data-transformation-activities) och [Kontrollaktiviteter](#control-flow-activities). | Ja
+typeProperties | Egenskaperna i avsnittet typeProperties beror på varje typ av aktivitet. Om du vill visa typegenskaper för en aktivitet klickar du på länkarna till aktiviteten i föregående avsnitt. | Inga
+dependsOn | Den här egenskapen används till att definiera aktivitetsberoende och hur efterföljande aktiviteter beror på tidigare aktiviteter. Mer information finns i [aktivitets beroende](#activity-dependency). | Inga
 
 ### <a name="activity-dependency"></a>Aktivitetsberoende
 Aktivitets beroende definierar hur efterföljande aktiviteter beror på tidigare aktiviteter, vilket fastställer villkoret för om du vill fortsätta att köra nästa uppgift. En aktivitet kan vara beroende av en eller flera tidigare aktiviteter med olika beroendevillkor.

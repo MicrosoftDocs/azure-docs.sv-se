@@ -1,22 +1,18 @@
 ---
 title: Läs in data från SAP Business Warehouse
 description: Använd Azure Data Factory för att kopiera data från SAP Business Warehouse (BW)
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360811"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370707"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopiera data från SAP Business Warehouse med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,7 +47,7 @@ Gå till datafabriken i Azure-portalen. Välj **författar & övervakare** för 
 
 1. På sidan **nu sätter vi igång** väljer du **Kopiera data** för att öppna kopiera datas verktyget.
 
-2. På sidan **Egenskaper** anger du ett **aktivitets namn**och väljer sedan **Nästa**.
+2. På sidan **Egenskaper** anger du ett **aktivitets namn** och väljer sedan **Nästa**.
 
 3. På sidan **käll data lager** väljer du **+ Skapa ny anslutning**. Välj **SAP BW öppna hubben** från kopplings galleriet och välj sedan **Fortsätt**. Om du vill filtrera anslutningarna kan du skriva **SAP** i sökrutan.
 
@@ -61,11 +57,11 @@ Gå till datafabriken i Azure-portalen. Välj **författar & övervakare** för 
 
    1. I listan **Anslut via integration runtime** väljer du en befintlig egen värd för IR. Eller Välj att skapa en om du inte har en ännu.
 
-      Om du vill skapa en ny egen IR-anslutning väljer du **+ ny**och väljer sedan **egen värd**. Ange ett **namn**och välj sedan **Nästa**. Välj **Express installation** för att installera på den aktuella datorn eller följ de **manuella installations** stegen som tillhandahålls.
+      Om du vill skapa en ny egen IR-anslutning väljer du **+ ny** och väljer sedan **egen värd**. Ange ett **namn** och välj sedan **Nästa**. Välj **Express installation** för att installera på den aktuella datorn eller följ de **manuella installations** stegen som tillhandahålls.
 
       Se till att du har SAP Connector för Microsoft .NET 3,0 installerat på samma dator som den lokala [IR-](#prerequisites)körningen körs på.
 
-   2. Fyll i SAP BW **Server namn**, **system nummer**, **klient-ID,** **språk** (om annat än **en**), **användar namn**och **lösen ord**.
+   2. Fyll i SAP BW **Server namn**, **system nummer**, **klient-ID,** **språk** (om annat än **en**), **användar namn** och **lösen ord**.
 
    3. Välj **Testa anslutning** för att validera inställningarna och välj sedan **Slutför**.
 
@@ -77,7 +73,7 @@ Gå till datafabriken i Azure-portalen. Välj **författar & övervakare** för 
 
 6. Ange ett filter om du behöver ett. Om din OHD endast innehåller data från en enskild DTP-körning (Data Transfer process) med ett ID för begäran, eller om du är säker på att DTP har slutförts och du vill kopiera data, avmarkerar du kryss rutan **exkludera senaste begäran** .
 
-   Läs mer om de här inställningarna i avsnittet [SAP BW Open Hub destination Configurations](#sap-bw-open-hub-destination-configurations) i den här artikeln. Välj **Verifiera** för att dubbelkolla vilka data som ska returneras. Välj **Nästa**.
+   Läs mer om de här inställningarna i avsnittet [SAP BW Open Hub destination Configurations](#sap-bw-open-hub-destination-configurations) i den här artikeln. Välj **Verifiera** för att dubbelkolla vilka data som ska returneras. Välj sedan **Nästa**.
 
    ![Konfigurera SAP BW öppna Hubbs filter](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
@@ -88,9 +84,9 @@ Gå till datafabriken i Azure-portalen. Välj **författar & övervakare** för 
    ![Skapa en ADLS Gen2 länkad tjänst sida](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
    1. Välj ditt Data Lake Storage Gen2-kapabla konto i list rutan **namn** .
-   2. Välj **Slutför** för att skapa anslutningen. Välj **Nästa**.
+   2. Välj **Slutför** för att skapa anslutningen. Välj sedan **Nästa**.
 
-9. På sidan **Välj utdatafil eller mapp** anger du **copyfromopenhub** som namn på mappen utdata. Välj **Nästa**.
+9. På sidan **Välj utdatafil eller mapp** anger du **copyfromopenhub** som namn på mappen utdata. Välj sedan **Nästa**.
 
    ![Sidan Välj mapp för utdata](media/load-sap-bw-data/choose-output-folder.png)
 
@@ -98,11 +94,11 @@ Gå till datafabriken i Azure-portalen. Välj **författar & övervakare** för 
 
     ![Sidan Ange format för mottagare](media/load-sap-bw-data/specify-sink-format.png)
 
-11. På sidan **Inställningar** expanderar du **prestanda inställningar**. Ange ett värde för **graden av kopierings parallellitet** , till exempel 5, som ska läsas in från SAP BW parallellt. Välj **Nästa**.
+11. På sidan **Inställningar** expanderar du **prestanda inställningar**. Ange ett värde för **graden av kopierings parallellitet** , till exempel 5, som ska läsas in från SAP BW parallellt. Välj sedan **Nästa**.
 
     ![Konfigurera kopierings inställningar](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Granska inställningarna på sidan **Sammanfattning** . Välj **Nästa**.
+12. Granska inställningarna på sidan **Sammanfattning** . Välj sedan **Nästa**.
 
 13. På sidan **distribution** väljer du **övervakare** för att övervaka pipelinen.
 
@@ -120,7 +116,7 @@ Gå till datafabriken i Azure-portalen. Välj **författar & övervakare** för 
 
     ![Information om aktivitets övervakning](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. Om du vill visa det **maximala ID: t för begäran**går du tillbaka till vyn aktivitets övervakning och väljer **utdata** under **åtgärder**.
+17. Om du vill visa det **maximala ID: t för begäran** går du tillbaka till vyn aktivitets övervakning och väljer **utdata** under **åtgärder**.
 
     ![Skärmen utdata för aktivitet](media/load-sap-bw-data/activity-output.png)
 
@@ -149,7 +145,7 @@ På sidan för att **komma igång** med Data Factory väljer du **skapa pipeline
 
    ![Stegvis kopiering från SAP BW mall](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Den här mallen skapar en pipeline med följande tre aktiviteter och gör dem sammankopplade: *Lookup*, *Kopiera data*och *Web*.
+3. Den här mallen skapar en pipeline med följande tre aktiviteter och gör dem sammankopplade: *Lookup*, *Kopiera data* och *Web*.
 
    Gå till fliken pipeline- **parametrar** . Du ser alla konfigurationer som du måste ange.
 
@@ -190,7 +186,7 @@ På sidan för att **komma igång** med Data Factory väljer du **skapa pipeline
          }
          ```
 
-      3. Lägg till en åtgärd för att **skapa BLOB** . För **mappsökväg** och **BLOB-namn**använder du samma värden som du konfigurerade tidigare i *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* och *HighWatermarkBlobName*.
+      3. Lägg till en åtgärd för att **skapa BLOB** . För **mappsökväg** och **BLOB-namn** använder du samma värden som du konfigurerade tidigare i *HighWatermarkBlobContainer + HighWatermarkBlobDirectory* och *HighWatermarkBlobName*.
 
       4. Välj **Spara**. Kopiera sedan värdet för **http post-URL** som ska användas i Data Factory pipelinen.
 
@@ -267,7 +263,7 @@ Ett SAP Open Hub-mål är inte ett data mart-kontrollerat data mål (i alla SAP 
 
 Därefter fungerar alla efterföljande delta-DTPs och Data Factory delta-extraheringar som förväntat.
 
-Om du vill ange statusen för delta-DTP som **hämtas**kan du använda följande alternativ för att köra delta-DTP manuellt:
+Om du vill ange statusen för delta-DTP som **hämtas** kan du använda följande alternativ för att köra delta-DTP manuellt:
 
 *Ingen Dataöverföring; Delta status i Källa: Hämtad*
 

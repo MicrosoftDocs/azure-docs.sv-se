@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36b21196207f65975dae950f43ec0c7094991dad
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537352"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362037"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Avancerad begränsning av begäranden med Azure API Management
 Att kunna begränsa inkommande begär Anden är en viktig roll i Azure API Management. Antingen genom att kontrol lera antalet begär Anden eller de totala begär Anden/data som överförs, tillåter API Management att API-providers skyddar sina API: er från missbruk och skapar värden för olika API-produktsortiment.
@@ -40,14 +40,14 @@ I Azure API Management sprids hastighets gränserna ofta snabbare över noderna 
 > På grund av den distribuerade typen av begränsnings arkitektur är hastighets begränsningen aldrig helt korrekt. Skillnaden mellan det konfigurerade och det verkliga antalet tillåtna begär Anden varierar beroende på volym och hastighet för begäran, Server svars tid och andra faktorer.
 
 ## <a name="product-based-throttling"></a>Produkt-baserad begränsning
-Hittills har frekvens begränsnings funktionerna begränsats till en viss produkt prenumeration, som definieras i Azure Portal. Detta är användbart för API-providern för att tillämpa gränser på de utvecklare som har registrerat sig för att använda deras API, men den hjälper inte till exempel att begränsa enskilda slutanvändare av API: et. Det är möjligt att användare av utvecklarens program kan använda hela kvoten och sedan hindra andra utvecklare från att kunna använda programmet. Dessutom kan flera kunder som kan generera en stor mängd begär Anden begränsa åtkomsten till tillfälliga användare.
+Hastighets begränsnings funktioner som är begränsade till en viss prenumeration är användbara för API-providern för att tillämpa gränser på de utvecklare som har registrerat sig för att använda API: et. Den kan dock inte hjälpa till exempel att begränsa enskilda slutanvändare av API: et. Det är möjligt för en användare av utvecklarens program att använda hela kvoten och sedan förhindra att andras kunder av utvecklaren kan använda programmet. Dessutom kan flera kunder som kan generera en stor mängd begär Anden begränsa åtkomsten till tillfälliga användare.
 
 ## <a name="custom-key-based-throttling"></a>Anpassad nyckelbaserad begränsning
 
 > [!NOTE]
 > - `rate-limit-by-key` Och- `quota-by-key` principerna är inte tillgängliga när du arbetar på användnings nivån i Azure API Management. 
 
-De nya principerna för [hastighets begränsning](./api-management-access-restriction-policies.md#LimitCallRateByKey) och [kvot-till-nyckel](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) ger en mer flexibel lösning för trafik kontroll. Med de här nya principerna kan du definiera uttryck för att identifiera de nycklar som används för att spåra användning av trafiken. Sättet det här fungerar är enkelt att illustrera med ett exempel. 
+Principerna [-gräns-till-nyckel](./api-management-access-restriction-policies.md#LimitCallRateByKey) -och [kvot-för-nyckel-](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) principer ger en mer flexibel lösning för trafik kontroll. Med dessa principer kan du definiera uttryck för att identifiera de nycklar som används för att spåra användning av trafiken. Sättet det här fungerar är enkelt att illustrera med ett exempel. 
 
 ## <a name="ip-address-throttling"></a>IP-adress begränsning
 Följande principer begränsar en enskild klients IP-adress till endast 10 anrop varje minut, med totalt 1 000 000 anrop och 10 000 KB bandbredd per månad. 
@@ -77,7 +77,7 @@ Om en slutanvändare autentiseras kan en begränsnings nyckel genereras baserat 
 Det här exemplet visar hur du extraherar Authorization-huvudet, konverterar det till- `JWT` objekt och använder ämnet för token för att identifiera användaren och använda den som begränsnings nyckel. Om användar identiteten lagras i `JWT` som en av de andra anspråken, kan det värdet användas i sitt ställe.
 
 ## <a name="combined-policies"></a>Kombinerade principer
-Även om de nya begränsnings principerna ger mer kontroll än befintliga begränsnings principer finns det fortfarande värde som kombinerar båda funktionerna. Begränsning av produkt prenumerations nyckel ([begränsa anrops frekvensen per](./api-management-access-restriction-policies.md#LimitCallRate) prenumeration och [Ange användnings kvoten för prenumerationen](./api-management-access-restriction-policies.md#SetUsageQuota)) är ett bra sätt att aktivera monetarisering av ett API genom att debiteras baserat på användnings nivåer. Den bättre korniga kontrollen av att kunna begränsas av användaren är kompletterande och förhindrar en användares beteende från att försämra upplevelsen av en annan. 
+Även om de användarspecifika begränsnings principerna ger mer kontroll än de prenumerations begränsnings principerna, finns det fortfarande värde som kombinerar båda funktionerna. Begränsning av produkt prenumerations nyckel ([begränsa anrops frekvensen per](./api-management-access-restriction-policies.md#LimitCallRate) prenumeration och [Ange användnings kvoten för prenumerationen](./api-management-access-restriction-policies.md#SetUsageQuota)) är ett bra sätt att aktivera monetarisering av ett API genom att debiteras baserat på användnings nivåer. Den bättre korniga kontrollen av att kunna begränsas av användaren är kompletterande och förhindrar en användares beteende från att försämra upplevelsen av en annan. 
 
 ## <a name="client-driven-throttling"></a>Klient driven begränsning
 När begränsnings nyckeln definieras med ett [princip uttryck](./api-management-policy-expressions.md)är det den API-provider som väljer hur begränsningen är begränsad. En utvecklare kan dock vilja styra hur de begränsar sina egna kunder. Detta kan aktive ras av API-providern genom att introducera en anpassad rubrik så att utvecklarens klient program kan kommunicera nyckeln till API: et.

@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c28ab557f6aac94fa9acde78c7433b850ecba0be
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033365"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097270"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Uppdatera befintliga erbjudanden på den kommersiella Marketplace
 
@@ -31,6 +31,10 @@ Följ dessa steg om du vill uppdatera ett erbjudande som har publicerats i för 
     - **Opublicerade ändringar**: avsnittet har uppdaterats och är klart. Alla begärda data har angetts och inga fel infördes i uppdateringarna.
     - **Ofullständig**: uppdateringar som görs i avsnittet introducerade fel som måste åtgärdas eller som kräver mer information.
 2. Välj **publicera** för att skicka det uppdaterade publicerings erbjudandet. Ditt erbjudande kommer sedan att gå igenom standard [validerings-och publicerings stegen](../review-publish-offer.md#validation-and-publishing-steps).
+
+## <a name="changing-offer-type"></a>Ändrar erbjudande typ
+
+[!INCLUDE [change-offer-type](../includes/change-offer-type.md)]
 
 > [!IMPORTANT]
 > Du måste granska din för hands version av erbjudandet när den är tillgänglig och välja **Go-Live** för att publicera ditt uppdaterade erbjudande till din avsedda mål grupp (offentlig eller privat).

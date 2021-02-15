@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f37c7e2f21c76fcc902b0922399081b9be949e99
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725503"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365539"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-postautentisering med eng ång slö sen ord
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver hur du aktiverar autentisering med eng ång slö sen
 ![Översikts diagram över e-post med eng ång slö sen ord](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> **Från mars 2021** aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Om du inte vill att den här funktionen ska aktive ras automatiskt kan du inaktivera den. Se [inaktivera e-post med eng ång slö sen ord](#disable-email-one-time-passcode) nedan.
+> Från och med 1 **oktober 2021** aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Om du inte vill att den här funktionen ska aktive ras automatiskt kan du inaktivera den. Se [inaktivera e-post med eng ång slö sen ord](#disable-email-one-time-passcode) nedan.
 
 > [!NOTE]
 > Användare av eng ång slö sen ord måste logga in med en länk som innehåller klient kontexten (till exempel `https://myapps.microsoft.com/?tenantid=<tenant id>` eller `https://portal.azure.com/<tenant id>` , eller, om det är en verifierad domän `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Direkt länkar till program och resurser fungerar även så länge de omfattar klient kontexten. Gäst användare kan för närvarande inte logga in med slut punkter som inte har någon klient kontext. Om du till exempel `https://myapps.microsoft.com` använder `https://portal.azure.com` resulterar det i ett fel.
@@ -71,7 +71,7 @@ Gäst användare teri@gmail.com bjuds in till Fabrikam, som inte har konfigurera
 
 ## <a name="disable-email-one-time-passcode"></a>Inaktivera e-post med eng ång slö sen ord
 
-Från mars 2021 aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vid detta tillfälle kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade ("virus" eller "just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den.
+Från och med 1 oktober 2021 aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vid detta tillfälle kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade ("virus" eller "just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den.
 
 > [!NOTE]
 >
@@ -87,10 +87,8 @@ Från mars 2021 aktive ras funktionen för eng ång slö sen ord för alla befin
 
 4. Under **email eng ång slö sen ord för gäster** väljer du **inaktivera e-post med eng ång slö sen ord för gäster**.
 
-    ![E-postinställningar för eng ång slö sen ord](media/one-time-passcode/otp-admin-settings.png)
-
    > [!NOTE]
-   > Om du ser följande växling i stället för de alternativ som visas ovan innebär det att du tidigare har aktiverat, inaktiverat eller valt i för hands versionen av funktionen. Välj **Nej** om du vill inaktivera funktionen.
+   > Om du ser följande växling i stället för e-post med eng ång slö sen ord, innebär det att du tidigare har aktiverat, inaktiverat eller valt i för hands versionen av funktionen. Välj **Nej** om du vill inaktivera funktionen.
    >
    >![Aktivera e-post för eng ång slö sen ord](media/delegate-invitations/enable-email-otp-opted-in.png)
 
@@ -98,14 +96,14 @@ Från mars 2021 aktive ras funktionen för eng ång slö sen ord för alla befin
 
 ## <a name="note-for-public-preview-customers"></a>Obs! för kunder med offentlig för hands version
 
-Om du tidigare har valt att använda e-postlösenordet med eng ång slö sen ord, är det datum mars 2021 för automatisk funktions aktivering inte tillämpligt för dig, så dina relaterade affärs processer påverkas inte. Dessutom visas inte alternativet för att automatiskt aktivera e-postlösenord med **eng ång slö sen ord för gäster i mars 2021**, under e-postlösenord med **eng ång slö sen ord för gäster** i Azure Portal. I stället visas följande **Ja** eller **ingen** växling:
+Om du tidigare har valt att använda e-postlösenordet med eng ång slö sen ord, är datumet för automatisk funktion i oktober 2021 för automatisk funktion inte tillämpligt, så dina relaterade affärs processer påverkas inte. Dessutom visas inte alternativet för att automatiskt aktivera e-postlösenord med **eng ång slö sen ord för gäster i oktober 2021**, under e-postlösenord med **eng ång slö sen ord för gäster** i Azure Portal. I stället visas följande **Ja** eller **ingen** växling:
 
 ![Aktivera e-post för eng ång slö sen ord](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Men om du hellre vill inaktivera funktionen och tillåta att den automatiskt aktive ras i mars 2021, kan du återgå till standardinställningarna med hjälp av [resurs typen konfiguration av Microsoft Graph-API email Authentication](/graph/api/resources/emailauthenticationmethodconfiguration). När du har återställt standardinställningarna kommer följande alternativ att vara tillgängliga under **email eng ång slö sen ord för gäster**:
+Men om du hellre vill inaktivera funktionen och tillåta att den aktive ras automatiskt i oktober 2021, kan du återgå till standardinställningarna med hjälp av [resurs typen konfiguration av Microsoft Graph-API email Authentication](/graph/api/resources/emailauthenticationmethodconfiguration). När du har återställt standardinställningarna kommer följande alternativ att vara tillgängliga under **email eng ång slö sen ord för gäster**:
 
-- **Aktivera automatiskt e-postlösenord för gäster i mars 2021**. Objekt Om e-postfunktionen för eng ång slö sen ord inte redan är aktive rad för din klient, aktive ras den automatiskt den 1 mars 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska vara aktive rad vid den tiden. Om du redan har aktiverat eller inaktiverat funktionen kommer det här alternativet att vara otillgängligt.
+- **Aktivera automatiskt e-postlösenord för gäster i oktober 2021**. Objekt Om e-postfunktionen för eng ång slö sen ord inte redan är aktive rad för din klient, aktive ras den automatiskt i oktober 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska vara aktive rad vid den tiden. Om du redan har aktiverat eller inaktiverat funktionen kommer det här alternativet att vara otillgängligt.
 
 - **Aktivera e-post med eng ång slö sen ord för gäster gällande nu**. Aktiverar funktionen email eng ång slö sen ord för din klient.
 
-- **Inaktivera e-post med eng ång slö sen ord för gäster**. Inaktiverar funktionen för eng ång slö sen ord för din klient och förhindrar att funktionen aktive ras i mars 2021.
+- **Inaktivera e-post med eng ång slö sen ord för gäster**. Inaktiverar funktionen för eng ång slö sen ord för din klient och förhindrar att funktionen aktive ras i oktober 2021.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 5381c12253f3f301099d469639cc75e390ebceff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509392"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360966"
 ---
 # <a name="creating-indexers-in-azure-cognitive-search"></a>Skapa indexerare i Azure Kognitiv sökning
 
@@ -142,6 +142,20 @@ Schemalagd bearbetning sammanfaller vanligt vis med ett behov av stegvis indexer
 + [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)
 + [Azure Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+
+## <a name="change-detection-and-indexer-state"></a>Status för ändrings identifiering och indexerare
+
+Indexerare kan upptäcka ändringar i underliggande data och endast bearbeta nya eller uppdaterade dokument på varje indexerare-körning. Om indexerings status till exempel säger att en körning lyckades med `0/0` bearbetade dokument, innebär det att indexeraren inte hittade några nya eller ändrade rader eller blobbar i den underliggande data källan.
+
+Hur en indexerare stöder ändrings identifiering varierar beroende på data Källa:
+
++ Azure Blob Storage, Azure Table Storage och Azure Data Lake Storage Gen2 stämpla varje BLOB eller rad uppdatering med ett datum och en tid. De olika indexerarna använder den här informationen för att avgöra vilka dokument som ska uppdateras i indexet. Inbyggd ändrings identifiering innebär att en indexerare kan identifiera nya och uppdaterade dokument, utan ytterligare konfiguration som krävs för din del.
+
++ Azure SQL och Cosmos DB tillhandahålla funktioner för ändrings identifiering på deras plattformar. Du kan ange principen för ändrings identifiering i din data käll definition.
+
+För stora indexerings inläsningar sparar en indexerare också det senaste dokumentet som bearbetas genom ett internt "högt vatten märke". Markören exponeras aldrig i API: et, men internt indexeraren håller reda på var den stoppades. När indexeringen återupptas, antingen via en schemalagd körning eller ett anrop på begäran, refererar indexeraren till det övre vatten märket så att det kan fortsätta där det slutade.
+
+Om du behöver ta bort det övre vatten märket för att indexera om fullständigt kan du använda [Återställ indexeraren](https://docs.microsoft.com/rest/api/searchservice/reset-indexer). Använd [Återställ kunskaper](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) eller [Återställ dokument](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-documents)för mer selektiv Omindexering. Genom att återställa API: erna kan du rensa det interna läget och tömma cachen om du har aktiverat [stegvis berikning](search-howto-incremental-index.md). Mer bakgrund och jämförelse av varje återställnings alternativ finns i [köra eller återställa indexerare, kunskaper och dokument](search-howto-run-reset-indexers.md).
 
 ## <a name="know-your-data"></a>Känna till dina data
 

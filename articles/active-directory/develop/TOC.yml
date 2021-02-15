@@ -475,6 +475,10 @@
           href: reference-third-party-cookies-spas.md
         - name: Hantera cookieändringar för SameSite i Chrome
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: Stöd för lösenordsskyddad autentisering
+      items:
+        - name: Stöd för FIDO2-autentisering
+          href: support-fido2-authentication.md
     - name: Autentisera appar och tjänster
       items:
         - name: Skapa ett huvudnamn för tjänsten med hjälp av Azure PowerShell

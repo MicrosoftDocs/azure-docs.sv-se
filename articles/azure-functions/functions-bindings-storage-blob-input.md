@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6ac3a492c5544a4a782871ff50cda9a248fe50f4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 678b6f02245e463870fc5b2c4bfc8b5ffa50de60
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882389"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381705"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob Storage-indata-bindning för Azure Functions
 
@@ -262,7 +262,7 @@ I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
 
 `dataType`Egenskapen bestämmer vilken bindning som används. Följande värden är tillgängliga för att stödja olika bindnings strategier:
 
-| Bindnings värde | Standard | Beskrivning | Exempel |
+| Bindnings värde | Standardvärde | Beskrivning | Exempel |
 | --- | --- | --- | --- |
 | `undefined` | Y | Använder omfattande bindning | `def main(input: func.InputStream)` |
 | `string` | N | Använder generisk bindning och anger indatatypen som en `string` | `def main(input: str)` |
@@ -343,13 +343,13 @@ Attribut stöds inte av python.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `Blob` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste anges till `blob` . |
 |**position** | saknas | Måste anges till `in` . Undantag anges i [användnings](#usage) avsnittet. |
 |**Namn** | saknas | Namnet på variabeln som representerar blobben i funktions koden.|
 |**sökväg** |**BlobPath** | Sökvägen till blobben. |
-|**anslutningen** |**Anslutning**| Namnet på en app-inställning som innehåller den [lagrings anslutnings sträng](../storage/common/storage-configure-connection-string.md) som ska användas för den här bindningen. Om appens inställnings namn börjar med "AzureWebJobs" kan du bara ange resten av namnet här. Om du till exempel anger `connection` "unstorage" söker funktions körningen efter en app-inställning med namnet "AzureWebJobsMyStorage". Om du lämnar `connection` tomt använder Functions-körningen standard anslutnings strängen för lagring i den angivna app-inställningen `AzureWebJobsStorage` .<br><br>Anslutnings strängen måste vara avsedd för ett allmänt lagrings konto, inte ett [enbart BLOB-lagrings konto](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**anslutningen** |**Anslutning**| Namnet på en app-inställning som innehåller den [lagrings anslutnings sträng](../storage/common/storage-configure-connection-string.md) som ska användas för den här bindningen. Om appens inställnings namn börjar med "AzureWebJobs" kan du bara ange resten av namnet här. Om du till exempel anger `connection` "unstorage" söker funktions körningen efter en app-inställning med namnet "AzureWebJobsMyStorage". Om du lämnar `connection` tomt använder Functions-körningen standard anslutnings strängen för lagring i den angivna app-inställningen `AzureWebJobsStorage` .<br><br>Anslutnings strängen måste vara avsedd för ett allmänt lagrings konto, inte ett [enbart BLOB-lagrings konto](../storage/common/storage-account-overview.md#types-of-storage-accounts).<br><br>Om du använder [version 5. x eller högre av tillägget](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher), i stället för en anslutnings sträng, kan du ange en referens till ett konfigurations avsnitt som definierar anslutningen. Se [anslutningar](./functions-reference.md#connections).|
 |**dataType**| saknas | För dynamiskt skrivna språk anger den underliggande data typen. Möjliga värden är `string` , `binary` , eller `stream` . Mer information finns i [utlösare och bindningar begrepp](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions). |
 |saknas | **Åtkomst** | Anger om du kommer att läsa eller skriva. |
 

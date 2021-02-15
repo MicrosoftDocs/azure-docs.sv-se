@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
-ms.openlocfilehash: ab783d6cb20f1c2fe31e8556dc57999df20d5637
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: efbae71162bdd0c126287191f7ad35cf903db138
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629818"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378085"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Installera eller avinstallera Azure IoT Edge för Linux
 
@@ -32,7 +32,7 @@ Den här artikeln beskriver stegen för att installera Azure IoT Edge runtime p�
 
 * En Linux-enhet
 
-  Ha en x64-, ARM32-eller ARM64 Linux-enhet. Microsoft tillhandahåller installations paket för Ubuntu Server 16,04, Ubuntu Server 18,04 och Raspberry Pi OS-omskalande operativ system.
+  Ha en x64-, ARM32-eller ARM64 Linux-enhet. Microsoft tillhandahåller installations paket för Ubuntu Server 18,04 och Raspberry Pi OS-omskalande operativ system.
 
   Den senaste informationen om vilka operativ system som för närvarande stöds för produktions scenarier finns i [Azure IoT Edge system som stöds](support.md#operating-systems)
 
@@ -42,12 +42,6 @@ Den här artikeln beskriver stegen för att installera Azure IoT Edge runtime p�
 * Förbered din enhet för att få åtkomst till Microsoft-installations paketen.
 
   Installera den lagrings plats konfiguration som matchar enhetens operativ system.
-
-  * **Ubuntu Server 16,04**:
-
-    ```bash
-    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-    ```
 
   * **Ubuntu Server 18,04**:
 
@@ -208,10 +202,10 @@ Hitta konfigurations avsnittet för etablering i filen och ta bort kommentarer t
 
 Uppdatera följande fält:
 
-* **iothub_hostname**: värd namnet för den IoT-hubb som enheten ska ansluta till. Ett exempel är `{IoT hub name}.azure-devices.net`.
+* **iothub_hostname**: värd namnet för den IoT-hubb som enheten ska ansluta till. Till exempel `{IoT hub name}.azure-devices.net`.
 * **device_id**: det ID som du angav när du registrerade enheten.
-* **identity_cert**: URI till ett identitets certifikat på enheten. Ett exempel är `file:///path/identity_certificate.pem`.
-* **identity_pk**: URI till den privata nyckel filen för det tillhandahållna identitets certifikatet. Ett exempel är `file:///path/identity_key.pem`.
+* **identity_cert**: URI till ett identitets certifikat på enheten. Till exempel `file:///path/identity_certificate.pem`.
+* **identity_pk**: URI till den privata nyckel filen för det tillhandahållna identitets certifikatet. Till exempel `file:///path/identity_key.pem`.
 
 Spara och stäng filen.
 

@@ -20,23 +20,29 @@
           href: getting-started.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Konfigurera säkerhetsmodulen för Azure-återställnings tider
-          href: quickstart-azure-rtos-security-module.md
         - name: Publicera till Defender för IoT-agent-baserad lösning
+          displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
+        - name: Installera Defender för IoT Micro agent (för hands version)
+          displayName: 'package, authentication, methods, certificate, authenticate, version'
+          href: quickstart-standalone-agent-binary-installation.md
         - name: 'Skapa en Defender IoT Micro agent-modul, delad (för hands version)'
           href: quickstart-create-micro-agent-module-twin.md
-        - name: Installera Defender för IoT Micro agent (för hands version)
-          href: quickstart-standalone-agent-binary-installation.md
         - name: Bygg in Defender för IoT Micro agent från käll koden (för hands version)
+          displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
+        - name: Konfigurera säkerhetsmodulen för Azure-återställnings tider
+          href: quickstart-azure-rtos-security-module.md
         - name: Lägg till Azure-resurser i din IoT-lösning
+          displayName: 'resources, monitored, resource'
           href: quickstart-configure-your-solution.md
         - name: Klassisk
           items:
             - name: Översikt över säkerhets agent
+              displayName: 'platforms, C, C#, agent,'
               href: security-agent-architecture.md
             - name: Skapa en azureiotsecurity-modul med dubbla
+              displayName: 'module twin, security module'
               href: quickstart-create-security-twin.md
 - name: Begrepp
   items:
@@ -47,16 +53,21 @@
     - name: Agentbaserad lösning för enhetsskapare
       items:
         - name: Översikt över agent portfölj och OS-support (för hands version)
+          displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
         - name: Översikt över fristående Micro agent (för hands version)
+          displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
         - name: Autentisering av säkerhets agent (för hands version)
+          displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: Säkerhet position – CIS-benchmark
           href: concept-security-posture.md
         - name: Händelse agg regering (för hands version)
+          displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: Säkerhetsaviseringar
+          displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
           href: concept-security-alerts.md
         - name: Anpassade säkerhets aviseringar
           href: concept-customizable-security-alerts.md
@@ -65,18 +76,23 @@
         - name: Klassisk
           items:
             - name: Säkerhetsmodul
+              displayName: 'device twins, security module twin'
               href: concept-security-module.md
             - name: Edge-säkerhetsmodul
               href: security-edge-architecture.md
             - name: Säkerhetsagenter
               href: overview-security-agents.md
             - name: Autentisering av säkerhetsagent
+              displayName: 'method, C, C#, module, device, installation, authentication'
               href: concept-security-agent-authentication-methods.md
             - name: Baslinje
+              displayName: 'custom, setting, properties'
               href: concept-baseline.md
             - name: Azures säkerhets bas linje för Azure Defender för IoT
+              displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
               href: security-baseline.md
             - name: Klassisk händelse agg regering för säkerhetsmodulen
+              displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
 - name: Anvisningar
   items:
@@ -85,52 +101,52 @@
         - name: Förbereda nätverket
           items:
             - name: Identifiera apparater som krävs
-              href: how-to-identify-required-appliances.md
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
+              href: how-to-identify-required-appliances.md
             - name: Installera programvara
-              href: how-to-install-software.md
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
+              href: how-to-install-software.md
             - name: Konfigurera ditt nätverk
-              href: how-to-set-up-your-network.md
               displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
+              href: how-to-set-up-your-network.md
         - name: Förbereda sensorer
           items:
             - name: Registrera sensorer
-              href: how-to-manage-sensors-on-the-cloud.md
               displayName: 'onboard, cloud, register, activate'
+              href: how-to-manage-sensors-on-the-cloud.md
             - name: Aktivera och konfigurera sensor
-              href: how-to-activate-and-set-up-your-sensor.md
               displayName: 'onboard, register, activation, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              href: how-to-activate-and-set-up-your-sensor.md
         - name: Förbereda den lokala hanteringskonsolen
           items:
             - name: Aktivera och konfigurera den lokala hanteringskonsolen
-              href: how-to-activate-and-set-up-your-on-premises-management-console.md
               displayName: 'activate, certificate, sign in, login, setup, initial, committed'
+              href: how-to-activate-and-set-up-your-on-premises-management-console.md
             - name: Konfigurera hög tillgänglighet
-              href: how-to-set-up-high-availability.md
               displayName: 'primary, secondary, failover, failback fail, recovery'
+              href: how-to-set-up-high-availability.md
         - name: Hantera användare och användaråtkomst
           items:
             - name: Skapa och hantera användare
-              href: how-to-create-and-manage-users.md
               displayName: 'Active Directory, roles, permissions'
+              href: how-to-create-and-manage-users.md
             - name: Definiera global användaråtkomstkontroll
-              href: how-to-define-global-user-access-control.md
               displayName: 'business unit, site, region'
+              href: how-to-define-global-user-access-control.md
         - name: Styr vilken trafik som övervakas
-          href: how-to-control-what-traffic-is-monitored.md
           displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
+          href: how-to-control-what-traffic-is-monitored.md
         - name: Hantera sensor från den lokala hanteringskonsolen
-          href: how-to-manage-sensors-from-the-on-premises-management-console.md
           displayName: 'disconnect, connect, activation file, sensor backup'
+          href: how-to-manage-sensors-from-the-on-premises-management-console.md
         - name: Hantera enskilda sensorer
-          href: how-to-manage-individual-sensors.md
           displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
+          href: how-to-manage-individual-sensors.md
         - name: Hantera sensorer i molnet
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Hantera den lokala hanteringskonsolen
-          href: how-to-manage-the-on-premises-management-console.md
           displayName: 'activation, certificate, software update, backup, restore, proxy, password recovery'
+          href: how-to-manage-the-on-premises-management-console.md
         - name: Arbeta med paket för hotinformation
           href: how-to-work-with-threat-intelligence-packages.md
         - name: Arbeta med information om enhetsinventering
@@ -174,17 +190,17 @@
         - name: Berika enhetsinformation
           items:
             - name: Arbeta med enhetsmeddelanden
-              href: how-to-work-with-device-notifications.md
               displayName: 'notifications, operating systems, enrich, device information, classification'
+              href: how-to-work-with-device-notifications.md
             - name: Förbättra port- och VLAN-namnmatchning
-              href: how-to-enhance-port-and-vlan-name-resolution.md
               displayName: 'port, VLAN'
+              href: how-to-enhance-port-and-vlan-name-resolution.md
             - name: Importera enhetsinformation
-              href: how-to-import-device-information.md
               displayName: 'import, enrich'
+              href: how-to-import-device-information.md
         - name: Spåra sensoraktivitet
+          displayName: 'timeline, time line, time-line, event'
           href: how-to-track-sensor-activity.md
-          displayName: 'timeline, time line, time-line, event, audit'
         - name: Felsöka sensorn och den lokala hanteringskonsolen
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Konfigurera SNMP MIB-övervakning
@@ -206,6 +222,20 @@
               href: integration-splunk.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
+        - name: Ansluta till Azure Sentinel
+          displayName: 'log analytics, service notes'
+          href: how-to-configure-with-sentinel.md
+        - name: Konfigurera Azure Defender för IoT agent-baserad lösning
+          displayName: 'data, collection, geolocation, log analytics, raw events'
+          href: how-to-configure-agent-based-solution.md
+        - name: Undersök benchmark-rekommendation för CIS
+          displayName: 'investigation, queries, investigate'
+          href: how-to-configure-agent-based-solution.md
+        - name: Undersök benchmark-rekommendation för CIS
+          href: how-to-investigate-cis-benchmark.md
+        - name: Skapa anpassade aviseringar
+          displayName: security group
+          href: quickstart-create-custom-alerts.md
         - name: Säkerhetsmodul för Azure RTOS
           href: iot-security-azure-rtos.md
           items:
@@ -215,18 +245,6 @@
               href: concept-rtos-security-module.md
             - name: Aviseringar och rekommendationer för säkerhetsmodul för Azure RTOS
               href: concept-rtos-security-alerts-recommendations.md
-        - name: Ansluta till Azure Sentinel
-          href: how-to-configure-with-sentinel.md
-        - name: Konfigurera Azure Defender för IoT agent-baserad lösning
-          href: how-to-configure-agent-based-solution.md
-        - name: Undersök benchmark-rekommendation för CIS
-          href: how-to-investigate-cis-benchmark.md
-        - name: Undersöka säkerhetsrekommendationer
-          href: quickstart-investigate-security-recommendations.md
-        - name: Undersöka säkerhetsaviseringar
-          href: quickstart-investigate-security-alerts.md
-        - name: Skapa anpassade aviseringar
-          href: quickstart-create-custom-alerts.md
         - name: Klassisk
           items:
             - name: Vilken agent ska jag distribuera?
@@ -250,20 +268,25 @@
             - name: Distribuera Edge-säkerhetsmodul
               href: how-to-deploy-edge.md
             - name: Konfigurera säkerhetsagenter
+              displayName: property
               href: how-to-agent-configuration.md
             - name: Skicka dina egna säkerhetsmeddelanden
               href: how-to-send-security-messages.md
             - name: Få åtkomst till råsäkerhetsdata
+              displayName: 'log analytics, alerts,'
               href: how-to-security-data-access.md
             - name: Undersöka en enhet
+              displayName: 'access, data, kql, ports, logins, process'
               href: how-to-investigate-device.md
 - name: Felsökning
   items:
     - name: Fel sökning av Defender IoT Micro-agent (för hands version)
+      displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: Funktions support och pensionering
   items:
     - name: Funktions support och pensionering
+      displayName: 'C, C#, deprecation, support'
       href: edge-security-module-deprecation.md
 - name: Referenser
   items:
@@ -279,18 +302,21 @@
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Hantera upphovsrättsskyddade protokoll (Horisont)
           href: resources-manage-proprietary-protocols.md
-        - name: Defender för IoT-ordlista
-          href: references-defender-for-iot-glossary.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
         - name: Säkerhetsmodul för Azure RTOS-API
+          displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: Vanliga frågor och svar – tjänst
+          displayName: 'regulation, internet, connection, hardware, appliances, ports, logs'
           href: resources-frequently-asked-questions.md
         - name: Vanliga frågor och svar – agent
+          displayName: 'embedded, dependencies, data, quota, internet,'
           href: resources-agent-frequently-asked-questions.md
         - name: Azure-översikt
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Defender för IoT-ordlista
+      href: references-defender-for-iot-glossary.md
 - name: Resurser
   items:
     - name: Agentbaserad lösning för enhetsskapare
