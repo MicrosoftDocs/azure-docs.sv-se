@@ -2,19 +2,16 @@
 title: JSON-format i Azure Data Factory
 description: I det här avsnittet beskrivs hur du hanterar JSON-format i Azure Data Factory.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: d582278debef67e3a6cf9c9e13ffd45e4f320778
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30b8cb2b5c8b1ccd0c927a6ff8a3a282d3d43c69
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349409"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386551"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-format i Azure Data Factory
 
@@ -71,7 +68,7 @@ Lär dig mer om hur du extraherar data från JSON-filer och mappar till Sink dat
 
 ### <a name="json-as-source"></a>JSON som källa
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ källa \****.
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* källa \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -90,7 +87,7 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ källa \****.
 
 ### <a name="json-as-sink"></a>JSON som mottagare
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitet **_ \_ mottagare \****.
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* mottagare \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -204,7 +201,7 @@ I mappa data flöden kan du läsa och skriva till JSON-format i följande data l
 
 I tabellen nedan visas de egenskaper som stöds av en JSON-källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
 
-| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Jokertecken sökvägar | Alla filer som matchar sökvägen för jokertecken kommer att bearbetas. Åsidosätter mappen och fil Sök vägen som angetts i data uppsättningen. | nej | Sträng [] | wildcardPaths |
 | Partitionens rot Sök väg | För fildata som är partitionerade kan du ange en rot Sök väg för partitionen för att kunna läsa partitionerade mappar som kolumner | nej | Sträng | partitionRootPath |
@@ -300,7 +297,7 @@ Välj **omvänt snedstreck Escaped** om omvända snedstreck används för att un
 
 I tabellen nedan visas de egenskaper som stöds av en JSON-mottagare. Du kan redigera dessa egenskaper på fliken **Inställningar** .
 
-| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| Namn | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Rensa mappen | Om målmappen rensas innan den skrivs | nej | `true` eller `false` | truncate |
 | Fil namns alternativ | Namngivnings formatet för de data som skrivits. Som standard är en fil per partition i format `part-#####-tid-<guid>` | nej | Mönster: sträng <br> Per partition: sträng [] <br> Som data i kolumnen: sträng <br> Utdata till en enskild fil: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

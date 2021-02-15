@@ -1,22 +1,18 @@
 ---
 title: Migrera data från Amazon S3 till Azure Storage
 description: Använd Azure Data Factory för att migrera data från Amazon S3 till Azure Storage.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2be8a9c7476bda6952ed1eaa15d29fe9c01b59a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638048"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371319"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Använd Azure Data Factory för att migrera data från Amazon S3 till Azure Storage 
 
@@ -57,7 +53,7 @@ Som standard överför ADF data från Amazon S3 till Azure Blob Storage eller Az
 
 Alternativt, om du inte vill att data ska överföras över offentliga Internet, kan du öka säkerheten genom att överföra data via en privat peering-länk mellan AWS Direct Connect och Azure Express Route.  Se lösnings arkitekturen nedan om hur detta kan uppnås. 
 
-## <a name="solution-architecture"></a>Lösningsarkitekturen
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 Migrera data över offentliga Internet:
 

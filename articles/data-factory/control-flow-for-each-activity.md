@@ -1,22 +1,18 @@
 ---
 title: Förgrunds aktiviteter i Azure Data Factory
 description: För varje aktivitet definieras ett upprepat kontroll flöde i din pipeline. Den används för att iterera över en samling och köra angivna aktiviteter.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499517"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385616"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Förgrunds aktiviteter i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -72,12 +68,12 @@ Egenskaperna beskrivs längre fram i den här artikeln. Egenskapen Items är sam
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-name | Namnet på for-each-aktiviteten. | Sträng | Yes
-typ | Måste vara inställt **på Sol** | Sträng | Yes
+name | Namnet på for-each-aktiviteten. | Sträng | Ja
+typ | Måste vara inställt **på Sol** | Sträng | Ja
 isSequential | Anger om loopen ska köras sekventiellt eller parallellt.  Högst 20 upprepnings iterationer kan köras samtidigt parallellt). Om du till exempel har en titt på en aktivitet med 10 olika käll-och mottagar data uppsättningar med **isSequential** inställt på falskt körs alla kopior samtidigt. Standardvärdet är false. <br/><br/> Om "isSequential" är inställt på false kontrollerar du att det finns en korrekt konfiguration för att köra flera körbara filer. Annars bör den här egenskapen användas med försiktighet för att undvika att skapa Skriv konflikter. Mer information finns i avsnittet om [parallell körning](#parallel-execution) . | Boolesk | Nej. Standardvärdet är false.
 batchCount | Antal batchar som ska användas för att kontrol lera antalet parallell körningar (när isSequential är inställt på falskt). Detta är den övre samtidiga gränsen, men för-varje aktivitet kommer inte alltid att köras på det här numret | Heltal (högst 50) | Nej. Standardvärdet är 20.
-Poster | Ett uttryck som returnerar en JSON-matris som ska upprepas. | Uttryck (som returnerar en JSON-matris) | Yes
-Aktiviteter | De aktiviteter som ska utföras. | Lista med aktiviteter | Yes
+Poster | Ett uttryck som returnerar en JSON-matris som ska upprepas. | Uttryck (som returnerar en JSON-matris) | Ja
+Aktiviteter | De aktiviteter som ska utföras. | Lista med aktiviteter | Ja
 
 ## <a name="parallel-execution"></a>Parallell körning
 Om **isSequential** har angetts till false, upprepas aktiviteten parallellt med maximalt 20 samtidiga iterationer. Den här inställningen bör användas med försiktighet. Om samtidiga iterationer skrivs till samma mapp, men till olika filer, är den här metoden bra. Om samtidiga iterationer skrivs samtidigt till exakt samma fil, orsakar den här metoden förmodligen ett fel. 

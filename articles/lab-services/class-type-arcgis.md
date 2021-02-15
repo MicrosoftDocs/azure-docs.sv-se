@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628172"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373716"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Konfigurera ett labb för ArcMap\ArcGIS Desktop
 
@@ -55,7 +55,7 @@ Stegen i det här avsnittet visar hur du konfigurerar mallen VM:
 1.  Starta mallen VM och Anslut till datorn med RDP.
 
 2.  Hämta och installera ArcGIS Desktop-komponenter med hjälp av anvisningarna från av ESRI.  De här stegen omfattar att tilldela License Manager för samtidig användnings licensiering: 
-    - [Introduktion till installation och konfiguration av ArcGIS Desktop](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [Introduktion till installation och konfiguration av ArcGIS Desktop](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  Konfigurera extern lagring för säkerhets kopiering för studenter.  Studenter kan spara filer direkt till den tilldelade virtuella datorn eftersom alla ändringar som de gör sparas mellan sessioner.  Vi rekommenderar dock att eleverna säkerhetskopierar sitt arbete till lagring som är externt från den virtuella datorn av några möjliga orsaker:
     - För att göra det möjligt för studenter att komma åt sitt arbete när klassen och labbet slutar.  

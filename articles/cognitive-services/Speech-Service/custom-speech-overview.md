@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.custom: contperf-fy21q2; references_regions
+ms.openlocfilehash: f2dca513b4413f1761ea1b21bf71f90bb27d3053
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854901"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388659"
 ---
 # <a name="what-is-custom-speech"></a>Vad är Custom Speech?
 
@@ -26,25 +26,26 @@ ms.locfileid: "97854901"
 
 Innan du kan göra något med Custom Speech behöver du ett Azure-konto och en röst tjänst prenumeration. När du har ett konto kan du Förbered dina data, träna och testa dina modeller, granska igenkännings kvalitet, utvärdera precision och slutligen distribuera och använda den anpassade tal-till-text-modellen.
 
-Det här diagrammet visar de delar som utgör den [Custom Speech portalen](https://aka.ms/customspeech). Använd länkarna nedan för att lära dig mer om varje steg.
+Det här diagrammet visar de delar som utgör [Custom speechs delen av tal Studio](https://aka.ms/customspeech). Använd länkarna nedan för att lära dig mer om varje steg.
 
-![Diagram som visar de komponenter som utgör Custom Speechs portalen.](./media/custom-speech/custom-speech-overview.png)
+![Diagram som visar de komponenter som utgör Custom Speechs delen av tal Studio.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Prenumerera och skapa ett projekt](#set-up-your-azure-account). Skapa ett Azure-konto och prenumerera på tal tjänsten. Den här enhetliga prenumerationen ger dig åtkomst till tal översättning av tal till text, text till tal, tal översättning och [Custom Speech-portalen](https://speech.microsoft.com/customspeech). Sedan kan du använda prenumerationen för din röst tjänst för att skapa ditt första Custom Speech-projekt.
+1. [Prenumerera och skapa ett projekt](#set-up-your-azure-account). Skapa ett Azure-konto och prenumerera på tal tjänsten. Den här enhetliga prenumerationen ger dig åtkomst till tal översättning av tal till text, text till tal, tal översättning och [tal Studio](https://speech.microsoft.com/customspeech). Sedan kan du använda prenumerationen för din röst tjänst för att skapa ditt första Custom Speech-projekt.
 
 1. [Ladda upp test data](./how-to-custom-speech-test-and-train.md). Ladda upp test data (ljudfiler) för att utvärdera Microsoft tal-till-text-erbjudandet för dina program, verktyg och produkter.
 
-1. [Inspektera igenkännings kvaliteten](how-to-custom-speech-inspect-data.md). Använd [Custom Speech-portalen](https://speech.microsoft.com/customspeech) för att spela upp ljud som laddats upp och granska kvaliteten på test data. Information om kvantitativa mått finns i [Granska data](how-to-custom-speech-inspect-data.md).
+1. [Inspektera igenkännings kvaliteten](how-to-custom-speech-inspect-data.md). Använd [tal Studio](https://speech.microsoft.com/customspeech) för att spela upp ljud som laddats upp och granska kvaliteten på test data. Information om kvantitativa mått finns i [Granska data](how-to-custom-speech-inspect-data.md).
 
-1. [Utvärdera och förbättra noggrannheten](how-to-custom-speech-evaluate-data.md). Utvärdera och förbättra noggrannheten hos tal-till-text-modellen. [Custom Speech Portal](https://speech.microsoft.com/customspeech) ger en *fel frekvens för Word*, som du kan använda för att avgöra om det krävs ytterligare utbildning. Om du är nöjd med noggrannheten kan du använda API: erna för Speech service direkt. Om du vill förbättra noggrannheten med ett relativt genomsnitt på 5% till 20% använder du fliken **utbildning** i portalen för att ladda upp ytterligare tränings data, t. ex. person etiketter och relaterad text.
+1. [Utvärdera och förbättra noggrannheten](how-to-custom-speech-evaluate-data.md). Utvärdera och förbättra noggrannheten hos tal-till-text-modellen. [Talet Studio](https://speech.microsoft.com/customspeech) visar en *fel frekvens för Word*, som du kan använda för att avgöra om det krävs ytterligare utbildning. Om du är nöjd med noggrannheten kan du använda API: erna för Speech service direkt. Om du vill förbättra noggrannheten med ett relativt genomsnitt på 5% till 20% använder du fliken **utbildning** i portalen för att ladda upp ytterligare tränings data, t. ex. person etiketter och relaterad text.
 
 1. [Träna och distribuera en modell](how-to-custom-speech-train-model.md). Förbättra noggrannheten i tal-till-text-modellen genom att tillhandahålla skrivna avskrifter (10 till 1 000 timmar) och relaterad text (<200 MB) tillsammans med dina ljud test data. Dessa data hjälper till att träna tal-till-text-modellen. Efter inlärningen testar du om. Om du är nöjd med resultatet kan du distribuera din modell till en anpassad slut punkt.
 
 ## <a name="set-up-your-azure-account"></a>Konfigurera ditt Azure-konto
 
-Du måste ha ett Azure-konto och en röst tjänst prenumeration innan du kan använda [Custom Speech Portal](https://speech.microsoft.com/customspeech) för att skapa en anpassad modell. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](overview.md#try-the-speech-service-for-free).
+Du måste ha ett Azure-konto och en röst tjänst prenumeration innan du kan använda [tal Studio](https://speech.microsoft.com/customspeech) för att skapa en anpassad modell. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](overview.md#try-the-speech-service-for-free).
 
-Om du planerar att träna en anpassad modell med ljuddata väljer du någon av följande regioner som har dedikerad maskin vara tillgänglig för utbildning. Detta minskar den tid det tar att träna en modell.
+> [!NOTE]
+> Om du planerar att träna en anpassad modell med **ljuddata** väljer du någon av följande regioner som har dedikerad maskin vara tillgänglig för utbildning. Detta minskar den tid det tar att träna en modell.
 
 * Australien, östra
 * Kanada, centrala
@@ -52,7 +53,7 @@ Om du planerar att träna en anpassad modell med ljuddata väljer du någon av f
 * East US
 * USA, östra 2
 * USA, norra centrala
-* Norra Europa
+* Europa, norra
 * USA, södra centrala
 * Sydostasien
 * Storbritannien, södra
@@ -64,20 +65,20 @@ Om du planerar att träna en anpassad modell med ljuddata väljer du någon av f
 > [!NOTE]
 > Kom ihåg att skapa en standard prenumeration (S0). Kostnads fria (F0) prenumerationer stöds inte.
 
-När du har skapat ett Azure-konto och en röst tjänst prenumeration måste du logga in på [Custom Speech Portal](https://speech.microsoft.com/customspeech) och ansluta din prenumeration.
+När du har skapat ett Azure-konto och en röst tjänst prenumeration måste du logga in på [tal Studio](https://speech.microsoft.com/customspeech) och ansluta din prenumeration.
 
-1. Logga in på [Custom Speech Portal](https://aka.ms/custom-speech).
+1. Logga in på [tal Studio](https://aka.ms/custom-speech).
 1. Välj den prenumeration du behöver för att arbeta i och skapa ett tal projekt.
 1. Om du vill ändra din prenumeration väljer du knappen kugg hjuls på den översta menyn.
 
 ## <a name="how-to-create-a-project"></a>Så här skapar du ett projekt
 
-Innehåll som data, modeller, tester och slut punkter organiseras i *projekt* i [Custom Speech portalen](https://speech.microsoft.com/customspeech). Varje projekt är specifika för en domän och ett land/språk. Du kan till exempel skapa ett projekt för Call Center som använder engelska i USA.
+Innehåll som data, modeller, tester och slut punkter organiseras i *Projects* i [tal Studio](https://speech.microsoft.com/customspeech). Varje projekt är specifika för en domän och ett land/språk. Du kan till exempel skapa ett projekt för Call Center som använder engelska i USA.
 
 Skapa ditt första projekt genom att välja **tal-till-text/anpassad tal** och välj sedan **nytt projekt**. Följ anvisningarna i guiden för att skapa projektet. När du har skapat ett projekt bör du se fyra flikar: **data**, **testning**, **utbildning** och **distribution**. Använd länkarna som beskrivs i [Nästa steg](#next-steps) för att lära dig hur du använder varje flik.
 
 > [!IMPORTANT]
-> [Custom Speech portalen](https://aka.ms/custom-speech) uppdaterades nyligen! Om du har skapat tidigare data, modeller, tester och publicerade slut punkter i CRIS.ai-portalen eller med API: er, måste du skapa ett nytt projekt i den nya portalen för att ansluta till dessa gamla entiteter.
+> [Tal Studio](https://aka.ms/custom-speech) tidigare kallat "Custom Speech portal" uppdaterades nyligen! Om du har skapat tidigare data, modeller, tester och publicerade slut punkter i CRIS.ai-portalen eller med API: er, måste du skapa ett nytt projekt i den nya portalen för att ansluta till dessa gamla entiteter.
 
 ## <a name="model-lifecycle"></a>Modell livs cykel
 
@@ -106,7 +107,7 @@ När nya modeller och nya funktioner blir tillgängliga och äldre, tas mindre e
 * Avkodning: tillgänglig i två år efter att modellen har skapats. Så du kan använda den anpassade modellen i två år (batch/Real/test) när den har skapats. Efter två år *bör du träna modellen* på grund av att bas modellen normalt sett är föråldrad för anpassning.  
 * Slut punkter: tillgängliga på samma tids linje som avkodning.
 
-När antingen en bas modell eller anpassad modell upphör att gälla, kommer den alltid att återgå till den *senaste bas modell versionen*. Därför kommer din implementering aldrig att brytas, men det kan bli mindre exakt för *dina data* om anpassade modeller upphör att gälla. Du kan se förfallo datum för en modell på följande platser i Custom Speech-portalen:
+När antingen en bas modell eller anpassad modell upphör att gälla, kommer den alltid att återgå till den *senaste bas modell versionen*. Därför kommer din implementering aldrig att brytas, men det kan bli mindre exakt för *dina data* om anpassade modeller upphör att gälla. Du kan se förfallo datum för en modell på följande platser i Custom Speech-avsnittet i tal Studio:
 
 * Sammanfattning av modell utbildning
 * Information om modell utbildning
@@ -115,7 +116,7 @@ När antingen en bas modell eller anpassad modell upphör att gälla, kommer den
 
 Du kan också kontrol lera förfallo datumen via [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) och [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) anpassade tal-API: er under `deprecationDates` egenskapen i JSON-svaret.
 
-Observera att du kan uppgradera modellen på en anpassad tal slut punkt utan drift stopp genom att ändra modellen som används av slut punkten i distributions avsnittet i den anpassade tal portalen, eller via det anpassade tal-API: et.
+Observera att du kan uppgradera modellen på en anpassad tal slut punkt utan drift stopp genom att ändra modellen som används av slut punkten i distributions avsnittet i tal Studio, eller via det anpassade tal-API: et.
 
 ## <a name="next-steps"></a>Nästa steg
 

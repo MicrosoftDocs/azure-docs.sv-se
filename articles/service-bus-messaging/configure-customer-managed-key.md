@@ -2,13 +2,13 @@
 title: Konfigurera din egen nyckel för att kryptera Azure Service Bus data i vila
 description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för att kryptera Azure Service Bus data rest.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 132ee3883b818dcc5a5d8e0cc7b372daee41e273
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/10/2021
+ms.openlocfilehash: 5d14c8953819575d1c2688520838135efc7121e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928091"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378323"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurera Kundhanterade nycklar för att kryptera Azure Service Bus data i vila med hjälp av Azure Portal
 Azure Service Bus Premium tillhandahåller kryptering av data i vila med Azure Storage Service Encryption (Azure SSE). Service Bus Premium använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med hjälp av Microsoft-hanterade nycklar. Om du använder din egen nyckel (kallas även Bring Your Own Key (BYOK) eller kundhanterad nyckel) krypteras data fortfarande med hjälp av den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den Kundhanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till Kundhanterade nycklar som används för kryptering av Microsoft-hanterade nycklar. Att aktivera funktionen BYOK är en tids inställnings process i namn området.
@@ -94,6 +94,17 @@ Du kan rotera din nyckel i nyckel valvet med hjälp av rotations funktionen för
 Om du återkallar åtkomst till krypterings nycklarna rensas inte data från Service Bus. Men det går inte att komma åt data från namn området Service Bus. Du kan återkalla krypterings nyckeln via åtkomst principen eller genom att ta bort nyckeln. Läs mer om åtkomst principer och skydda nyckel valvet från [säker åtkomst till ett nyckel valv](../key-vault/general/secure-your-key-vault.md).
 
 När krypterings nyckeln har återkallats går Service Buss tjänsten på det krypterade namn området inte att fungera. Om åtkomsten till nyckeln är aktive rad eller om den borttagna nyckeln återställs, kommer Service Bus-tjänsten att välja nyckeln så att du kan komma åt data från namn området krypterad Service Bus.
+
+## <a name="caching-of-keys"></a>Cachelagring av nycklar
+Den Service Bus-instansen avsöker de angivna krypterings nycklarna var 5: e minut. Den cachelagrar och använder dem fram till nästa omröstning, vilket är efter 5 minuter. Så länge minst en nyckel är tillgänglig är köer och ämnen tillgängliga. Om alla nycklar i listan inte är tillgängliga när den avsöker, kommer alla köer och ämnen att bli otillgängliga. 
+
+Här finns mer information: 
+
+- Var 5: e minut söker tjänsten Service Bus efter alla Kundhanterade nycklar som anges i namn områdets post:
+    - Om en nyckel har roterats uppdateras posten med den nya nyckeln.
+    - Om en nyckel har återkallats tas nyckeln bort från posten.
+    - Om alla nycklar har återkallats, anges namn områdets krypterings status som **återkallad**. Det går inte att komma åt data från namn området Service Bus.. 
+    
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>Använd Resource Manager-mall för att aktivera kryptering
 I det här avsnittet visas hur du utför följande uppgifter med hjälp av **Azure Resource Manager mallar**. 

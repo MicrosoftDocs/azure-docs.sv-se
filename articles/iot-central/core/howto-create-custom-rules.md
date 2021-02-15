@@ -1,20 +1,20 @@
 ---
 title: Utöka Azure-IoT Central med anpassade regler och meddelanden | Microsoft Docs
 description: Som en lösnings utvecklare konfigurerar du ett IoT Central program för att skicka e-postaviseringar när en enhet slutar skicka telemetri. Den här lösningen använder Azure Stream Analytics, Azure Functions och SendGrid.
-author: dominicbetts
-ms.author: dobett
-ms.date: 12/02/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7e3292a9070e6676faad15e73d357e7f6875b5f4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220274"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371704"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Utöka Azure IoT Central med anpassade regler med hjälp av Stream Analytics, Azure Functions och SendGrid
 
@@ -32,7 +32,7 @@ I den här instruktions guiden får du lära dig att:
 
 För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ### <a name="iot-central-application"></a>IoT Central program
 
@@ -97,22 +97,18 @@ Använd [Azure Portal för att skapa en Function-app](https://portal.azure.com/#
 | Körningsstack | .NET |
 | Storage | Skapa ny |
 
-### <a name="sendgrid-account"></a>SendGrid-konto
+### <a name="sendgrid-account-and-api-keys"></a>SendGrid-konto och API-nycklar
 
-Använd [Azure Portal för att skapa ett SendGrid-konto](https://portal.azure.com/#create/Sendgrid.sendgrid) med följande inställningar:
+Om du inte har ett SendGrid-konto kan du skapa ett [kostnads fritt konto](https://app.sendgrid.com/) innan du börjar.
 
-| Inställning | Värde |
-| ------- | ----- |
-| Namn    | Välj ditt SendGrid-konto namn |
-| Lösenord | Skapa ett lösen ord |
-| Prenumeration | Din prenumeration |
-| Resursgrupp | DetectStoppedDevices |
-| Prisnivå | F1 Kostnadsfri |
-| Kontaktinformation | Fyll i nödvändig information |
+1. Välj **API-nycklar** på SendGrid instrument panels inställningar på den vänstra menyn.
+1. Klicka på **skapa API-nyckel.**
+1. Ge den nya API-nyckeln **AzureFunctionAccess.**
+1. Klicka på **skapa & vy**.
 
-När du har skapat alla nödvändiga resurser ser **DetectStoppedDevices** -resurs gruppen ut som följande skärm bild:
+    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Skärm bild av API-nyckeln Create SendGrid.":::
 
-![Identifiera resurs gruppen stoppade enheter](media/howto-create-custom-rules/resource-group.png)
+Därefter får du en API-nyckel. Spara den här strängen för senare användning.
 
 ## <a name="create-an-event-hub"></a>Skapa en händelsehubb
 
@@ -121,21 +117,9 @@ Du kan konfigurera ett IoT Central program för att kontinuerligt exportera tele
 1. I Azure Portal navigerar du till Event Hubs namn området och väljer **+ Event Hub**.
 1. Namnge Event Hub- **centralexport** och välj **skapa**.
 
-Event Hubs namn området ser ut som på följande skärm bild:
+Event Hubs namn området ser ut som på följande skärm bild: 
 
-![Event Hubs-namnområde](media/howto-create-custom-rules/event-hubs-namespace.png)
-
-## <a name="get-sendgrid-api-key"></a>Hämta SendGrid API-nyckel
-
-Din Function-app behöver en SendGrid API-nyckel för att skicka e-postmeddelanden. Så här skapar du en SendGrid API-nyckel:
-
-1. I Azure Portal navigerar du till ditt SendGrid-konto. Välj sedan **Hantera** för att komma åt ditt SendGrid-konto.
-1. I ditt SendGrid-konto väljer du **Inställningar** och sedan **API-nycklar**. Välj **skapa API-nyckel**:
-
-    ![Skapa SendGrid API-nyckel](media/howto-create-custom-rules/sendgrid-api-keys.png)
-
-1. På sidan **skapa API-nyckel** skapar du en nyckel med namnet **AzureFunctionAccess** med **fullständig** behörighet.
-1. Anteckna API-nyckeln, du behöver den när du konfigurerar din Function-app.
+    :::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
 ## <a name="define-the-function"></a>Definiera funktionen
 
@@ -143,37 +127,22 @@ Den här lösningen använder en Azure Functions app för att skicka ett e-postm
 
 1. I Azure Portal navigerar du till **App Service** -instansen i resurs gruppen **DetectStoppedDevices** .
 1. Välj **+** om du vill skapa en ny funktion.
-1. På sidan **Välj en utvecklings miljö** väljer du **i portalen** och väljer sedan **Fortsätt**.
-1. På sidan **skapa en funktion** väljer du **webhook + API** och väljer sedan **skapa**.
+1. Välj **http-utlösare**.
+1. Välj **Lägg till**.
+
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Bild av standard funktionen för HTTP-utlösare"::: 
+
+## <a name="edit-code-for-http-trigger"></a>Redigera kod för HTTP-utlösare
 
 Portalen skapar en standard funktion som kallas **HttpTrigger1**:
 
-![Standard funktion för HTTP-utlösare](media/howto-create-custom-rules/default-function.png)
+    :::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
 
-### <a name="configure-function-bindings"></a>Konfigurera funktions bindningar
-
-Om du vill skicka e-postmeddelanden med SendGrid måste du konfigurera bindningarna för din funktion på följande sätt:
-
-1. Välj **integrera**, Välj utdata **http ($Return)** och välj sedan **ta bort**.
-1. Välj **+ nya utdata**, Välj **SendGrid** och välj sedan **Välj**. Välj **Installera** för att installera SendGrid-tillägget.
-1. När installationen är klar väljer du **Använd funktions retur värde**. Lägg till en giltig **adress för att** ta emot e-postaviseringar.  Lägg till en giltig **från-adress** som ska användas som e-postavsändaren.
-1. Välj **ny** bredvid **SendGrid API Key app Setting**. Ange **SendGridAPIKey** som nyckel och den SendGrid API-nyckel som du antecknade tidigare som värde. Välj sedan **Skapa**.
-1. Välj **Spara** för att spara SendGrid-bindningarna för din funktion.
-
-De integrerande inställningarna ser ut som på följande skärm bild:
-
-![Function-programintegrationer](media/howto-create-custom-rules/function-integrate.png)
-
-### <a name="add-the-function-code"></a>Lägg till funktions koden
-
-Om du vill implementera din funktion lägger du till C#-koden för att parsa inkommande HTTP-begäran och skicka e-postmeddelanden enligt följande:
-
-1. Välj funktionen **HttpTrigger1** i din Function-app och Ersätt C#-koden med följande kod:
+1. Ersätt C#-koden med följande kod:
 
     ```csharp
     #r "Newtonsoft.Json"
-    #r "..\bin\SendGrid.dll"
-
+    #r "SendGrid"
     using System;
     using SendGrid.Helpers.Mail;
     using Microsoft.Azure.WebJobs.Host;
@@ -196,7 +165,7 @@ Om du vill implementera din funktion lägger du till C#-koden för att parsa ink
             content += $"<tr><td>{notification.deviceid}</td><td>{notification.time}</td></tr>";
         }
         content += "</table>";
-        message.AddContent("text/html", content);
+        message.AddContent("text/html", content);  
 
         return message;
     }
@@ -209,8 +178,45 @@ Om du vill implementera din funktion lägger du till C#-koden för att parsa ink
     ```
 
     Du kan se ett fel meddelande tills du har sparat den nya koden.
-
 1. Spara funktionen genom att välja **Spara** .
+
+## <a name="add-sendgrid-key"></a>Lägg till SendGrid-nyckel
+
+Om du vill lägga till din SendGrid API-nyckel måste du lägga till den i **funktions nycklarna** enligt följande:
+
+1. Välj **funktions tangenter**.
+1. Välj **+ ny funktions nyckel**.
+1. Ange *namn* och *värde* för den API-nyckel som du skapade tidigare.
+1. Klicka på **OK.**
+
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Skärm bild av Lägg till Sangrid-nyckel.":::
+
+
+## <a name="configure-httptrigger-function-to-use-sendgrid"></a>Konfigurera HttpTrigger-funktionen för att använda SendGrid
+
+Om du vill skicka e-postmeddelanden med SendGrid måste du konfigurera bindningarna för din funktion på följande sätt:
+
+1. Välj **Integrera**.
+1. Välj **Lägg till utdata** under **http ($Return)**.
+1. Välj **ta bort.**
+1. Välj **+ ny utdata**.
+1. För bindnings typ väljer du **SendGrid**.
+1. För inställnings typen SendGrid API-nyckel klickar du på ny.
+1. Ange *namn* och *värde* för din SendGrid API-nyckel.
+1. Lägg till följande information:
+
+| Inställning | Värde |
+| ------- | ----- |
+| Meddelandeparameternamn | Välj ditt namn |
+| För att adressera | Välj namn på din adress |
+| Avsändaradress | Välj namnet på din från-adress |
+| Meddelandets ämne | Ange ditt ämnes huvud |
+| Meddelandetext | Ange meddelandet från din integrering |
+
+1. Välj **OK**.
+
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Skärm bild av Lägg till SandGrid-utdata.":::
+
 
 ### <a name="test-the-function-works"></a>Testa funktionen fungerar
 
@@ -222,7 +228,7 @@ Om du vill testa funktionen i portalen väljer du först **loggar** längst ned 
 
 Funktions logg meddelanden visas på panelen **loggar** :
 
-![Funktions loggens utdata](media/howto-create-custom-rules/function-app-logs.png)
+    :::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
 Efter några minuter får e-postadressen ett e **-postmeddelande med** följande innehåll:
 
@@ -303,14 +309,14 @@ I den här lösningen används en Stream Analytics fråga för att identifiera n
 1. Välj **Spara**.
 1. Starta Stream Analytics jobb genom att välja **Översikt**, sedan **Start** **och sedan** **Starta**:
 
-    ![Stream Analytics](media/howto-create-custom-rules/stream-analytics.png)
+    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Skärm bild av Stream Analytics.":::
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurera export i IoT Central
 
 På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du skapade från contoso-mallen. I det här avsnittet konfigurerar du programmet för att strömma Telemetrin från dess simulerade enheter till händelsehubben. Konfigurera exporten:
 
 1. Gå till sidan **data export** , Välj **+ ny** och sedan **Azure Event Hubs**.
-1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara**:
+1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara**: 
 
     | Inställning | Värde |
     | ------- | ----- |
@@ -319,10 +325,10 @@ På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentra
     | Event Hubs-namnområde | Namnet på Event Hubs namn området |
     | Händelsehubb | centralexport |
     | Mått | På |
-    | Egenskaper | Av |
+    | Enheter | Av |
     | Enhetsmallar | Av |
 
-![Konfiguration av kontinuerlig data export](media/howto-create-custom-rules/cde-configuration.png)
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Skärm bild av konfiguration av kontinuerlig data export.":::
 
 Vänta tills export status är **igång** innan du fortsätter.
 

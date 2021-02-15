@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413385"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378714"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Använda kartkontrollen i Azure Maps
 
 Med Kartkontroll på klient sidans JavaScript-bibliotek kan du återge kartor och inbäddade Azure Maps funktioner i ditt webb-eller mobil program.
+
+I den här dokumentationen används Azure Maps Web SDK, men Azure Maps tjänsterna kan användas med valfri kart kontroll. [Här](open-source-projects.md#third-part-map-control-plugins) följer några populära kart kontroller med öppen källkod som Azure Mapss teamet har skapat plugin-program för.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

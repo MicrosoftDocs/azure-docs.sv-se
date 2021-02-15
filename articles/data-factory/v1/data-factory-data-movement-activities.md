@@ -1,23 +1,18 @@
 ---
 title: Flytta data med hjälp av kopierings aktivitet
 description: 'Lär dig mer om data förflyttning i Data Factory pipelines: datamigrering mellan moln lager och mellan en lokal lagrings plats och ett moln lager. Använd kopierings aktivitet.'
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3fe99896ff244d2e35737919e6797141095acb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195972"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364026"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Flytta data med hjälp av kopierings aktivitet
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -105,7 +100,7 @@ När både käll-och mottagar data lager finns i molnet använder Data Factory e
 | Kanada | Kanada, östra | Kanada, centrala |
 | &nbsp; | Kanada, centrala | Kanada, centrala |
 | Brasilien | Brasilien, södra | Brasilien, södra |
-| Europa | Norra Europa | Norra Europa |
+| Europa | Europa, norra | Europa, norra |
 | &nbsp; | Europa, västra | Europa, västra |
 | Storbritannien | Storbritannien, västra | Storbritannien, södra |
 | &nbsp; | Storbritannien, södra | Storbritannien, södra |
@@ -186,7 +181,7 @@ Här är ett exempel på en JSON-definition:
   }
 }
 ```
-Schemat som definieras i data uppsättningen för utdata avgör när aktiviteten körs (till exempel: **daglig**, frekvens som **dag**och intervall som **1**). Aktiviteten kopierar data från en data uppsättning (**källa**) till en data uppsättning för utdata (**Sink**).
+Schemat som definieras i data uppsättningen för utdata avgör när aktiviteten körs (till exempel: **daglig**, frekvens som **dag** och intervall som **1**). Aktiviteten kopierar data från en data uppsättning (**källa**) till en data uppsättning för utdata (**Sink**).
 
 Du kan ange fler än en indata-datauppsättning för kopiering av aktivitet. De används för att verifiera beroenden innan aktiviteten körs. Men endast data från den första data uppsättningen kopieras till mål data uppsättningen. Mer information finns i [schemaläggning och körning](data-factory-scheduling-and-execution.md).  
 

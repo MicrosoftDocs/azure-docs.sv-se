@@ -1,22 +1,17 @@
 ---
 title: Kopiera data verktyget Azure Data Factory
 description: Innehåller information om Kopiera data-verktyget i Azure Data Factory UI
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434205"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373002"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Verktyget Kopiera data i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +64,7 @@ Schemat för data källan får inte vara detsamma som data målets schema i mån
 Verktyget Kopiera data övervakar och lär dig hur du mappar kolumner mellan käll-och mål lager. När du har valt en eller några få kolumner från käll data lagret och mappar dem till mål schemat, börjar verktyget Kopiera data att analysera mönstret för kolumn par som du har valt från båda sidor. Sedan tillämpas samma mönster på resten av kolumnerna. Därför kan du se att alla kolumner har mappats till målet på ett sätt som du vill precis efter flera klick.  Om du inte är nöjd med valet av kolumn mappning som tillhandahålls av Kopiera data-verktyget kan du ignorera det och fortsätta att mappa kolumnerna manuellt. Under tiden lär sig Kopiera data-verktyget hela tiden att lära sig och uppdatera mönstret och når slutligen det högra mönstret för den kolumn mappning som du vill uppnå. 
 
 > [!NOTE]
-> När du kopierar data från SQL Server eller Azure SQL Database till Azure Synapse Analytics (tidigare SQL Data Warehouse), och om tabellen inte finns i mål lagret, stöder Kopiera data-verktyget att tabellen skapas automatiskt med hjälp av käll schemat. 
+> När du kopierar data från SQL Server eller Azure SQL Database till Azure Synapse Analytics, om tabellen inte finns i mål lagret, kan Kopiera data verktyget skapa tabellen automatiskt med hjälp av käll schemat. 
 
 ## <a name="filter-data"></a>Filtrera data
 Du kan filtrera källdata om du bara vill välja de data som behöver kopieras till mottagar data lagret. Filtrering minskar mängden data som ska kopieras till Sink-datalagret och ökar därför data flödet för kopierings åtgärden. Kopiera data-verktyget är ett flexibelt sätt att filtrera data i en Relations databas med hjälp av SQL-frågespråket eller filer i en Azure Blob-mapp. 

@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791231"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390648"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Korrigera operativ systemet Windows i Service Fabric-klustret
 
-> 
 > [!IMPORTANT]
-> Från och med den 30 april 2019 stöds inte längre uppdaterings program version 1,2. *. Se till att uppgradera till den senaste versionen.
+> Från och med den 30 april 2019 stöds inte längre uppdaterings program version 1,2. *. Se till att uppgradera till den senaste versionen. VM-uppgraderingar där "Windows Update" tillämpar korrigeringsfiler för operativ system utan att ersätta OS-disken stöds inte. 
 
 > [!NOTE]
-> Att hämta [automatiska operativ system avbildningar på den virtuella datorns skalnings uppsättning](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) är den bästa metoden för att hålla operativ systemet uppdaterad i Azure. För skalnings uppsättningar för virtuella datorer som baseras på automatiska uppgraderingar av OS-avbildningar krävs silver eller större hållbarhet på en skalnings uppsättning.
->
+> Att hämta [automatiska operativ system avbildningar på den virtuella datorns skalnings uppsättning](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) är den bästa metoden för att hålla operativ systemet uppdaterad i Azure. För skalnings uppsättningar för virtuella datorer som baseras på automatiska uppgraderingar av OS-avbildningar krävs silver eller större hållbarhet på en skalnings uppsättning. I det här fallet kan du inte använda uppdaterings programmet för att välja Node-typer med hög tålighet på nivån brons.
 
- POA (patch Orchestration Application) är en omslutning runt Azure Service Fabric Repair Manager-tjänsten, som möjliggör konfigurations-baserad operativ Systems uppdaterings schemaläggning för icke-Azure-värdbaserade kluster. POA krävs inte för icke-Azure-värdbaserade kluster, men planerings korrigerings installation av uppdaterings domän krävs för att korrigera Service Fabric kluster värdar utan att det uppstår avbrott.
+POA (patch Orchestration Application) är en omslutning runt Azure Service Fabric Repair Manager-tjänsten, som möjliggör konfigurations-baserad operativ Systems uppdaterings schemaläggning för icke-Azure-värdbaserade kluster. POA krävs inte för icke-Azure-värdbaserade kluster, men planerings korrigerings installation av uppdaterings domän krävs för att korrigera Service Fabric kluster värdar utan att det uppstår avbrott.
 
 POA är ett Service Fabric program som automatiserar operativ Systems korrigeringar i ett Service Fabric kluster utan att det uppstår avbrott.
 
@@ -63,7 +61,7 @@ POA består av följande del komponenter:
 > [!NOTE]
 > POA använder tjänsten Service Fabric Repair Manager för att inaktivera eller aktivera noden och utföra hälso kontroller. Den reparations uppgift som skapas av POA spårar Windows Update förloppet för varje nod.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!NOTE]
 > Den lägsta .NET Framework versionen som krävs är 4,6.

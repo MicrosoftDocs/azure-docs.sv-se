@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 00d5fa43245fb25b8ee99a0523d680bef891b71e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108253"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387010"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Självstudie: Power BI integration – skapa en förutsägelse modell med en Jupyter Notebook (del 1 av 2)
 
@@ -118,7 +118,7 @@ Skapa en ny *kod cell* i din bärbara dator. Kopiera sedan följande kod och kli
 import joblib
 from sklearn.linear_model import Ridge
 
-model = Ridge().fit(X,y)
+model = Ridge().fit(X_df,y_df)
 joblib.dump(model, 'sklearn_regression_model.pkl')
 ```
 
@@ -286,10 +286,8 @@ Vi rekommenderar att du testar webb tjänsten för att säkerställa att den fun
 ```python
 import json
 
-
 input_payload = json.dumps({
-    'data': X_df[0:2].values.tolist(),
-    'method': 'predict'  # If you have a classification model, you can get probabilities by changing this to 'predict_proba'.
+    'data': X_df[0:2].values.tolist()
 })
 
 output = service.run(input_payload)

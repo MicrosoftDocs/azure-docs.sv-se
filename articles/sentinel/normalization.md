@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
-ms.openlocfilehash: 66c315132ef0ef4d320e9edd8e9bcc28b2240924
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3d9e436d636fbd5414367efb0e122748a8e9e2cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390818"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalisering i Azure Sentinel
 
@@ -70,6 +70,9 @@ Schema referensen innehåller också värde-och format standardisering. Käll f�
 
 ## <a name="parsers"></a>Tolkar
 
+- [Vad är parsning](#what-is-parsing)
+- [Använda parsar för Query Time](#using-query-time-parsers)
+
 ### <a name="what-is-parsing"></a>Vad är parsning
 
 Med en grundläggande uppsättning definierade normaliserade tabeller tillgängliga måste du omvandla (parsa/mappa) dina data till dessa tabeller. Det innebär att du kommer att extrahera vissa data från dess RAW-form till välkända kolumner i det normaliserade schemat. Parsning i Azure Sentinel sker vid **fråge tids** -tolkare skapas som Log Analytics användar funktioner (med Kusto Query Language-KQL) som transformerar data i befintliga tabeller (till exempel CommonSecurityLog, anpassade loggnings tabeller, syslog) till schemat för normaliserade tabeller.
@@ -77,6 +80,10 @@ Med en grundläggande uppsättning definierade normaliserade tabeller tillgängl
 Den andra typen av parsning, som ännu inte stöds i Azure Sentinel, är vid inläsnings **tid** – så att du kan samla in data direkt i de normaliserade tabellerna som de matas in från dess data källor. Hämtnings tids parsning ger bättre prestanda när data modellen efter frågas direkt utan att du behöver använda funktioner.
 
 ### <a name="using-query-time-parsers"></a>Använda parsar för Query Time
+
+- [Installera en parser](#installing-a-parser)
+- [Använda parsern](#using-the-parsers)
+- [Anpassa tolkare](#customizing-parsers)
 
 #### <a name="installing-a-parser"></a>Installera en parser
 
@@ -119,6 +126,12 @@ I fönstret till höger expanderar du avsnittet "sparade frågor" och letar reda
 
 Du kan klicka på varje enskild parser och se den underliggande funktionen den använder och köra den (eller komma åt den direkt via dess alias, enligt beskrivningen ovan). Observera att vissa tolkare kan behålla de ursprungliga fälten sida vid sida till de normaliserade fälten för bekvämlighet. Detta kan enkelt redige ras i parser-frågans fråga.
 
+> [!TIP]
+> Du kan använda dina sparade funktioner i stället för Azure Sentinel-tabeller i alla frågor, inklusive frågor om jakt och identifiering. Mer information finns i:
+>
+> - [Data normalisering i Azure Sentinel](normalization.md#parsers)
+> - [Tolka text i Azure Monitor loggar](/azure/azure-monitor/log-query/parse-text)
+>
 #### <a name="customizing-parsers"></a>Anpassa tolkare
 
 Du kan upprepa stegen ovan (hitta parsern i Query Explorer), klicka på relevant parser och se dess funktions implementering.
@@ -131,6 +144,8 @@ När funktionen har ändrats klickar du på Spara igen och använder samma namn,
 :::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Är du säker":::
 
 #### <a name="additional-information"></a>Ytterligare information
+
+JSON, XML och CSV är särskilt praktiska för parsning vid tidpunkt. Azure Sentinel har inbyggda analys funktioner för JSON, XML och CSV, samt ett JSON-parsningsfel.  Mer information finns i [använda JSON-fält i Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/tip-easily-use-json-fields-in-sentinel/ba-p/768747) (blogg). 
 
 Läs mer om [sparade frågor](../azure-monitor/log-query/example-queries.md) (implementeringen av fråge tids parser) i Log Analytics.
 

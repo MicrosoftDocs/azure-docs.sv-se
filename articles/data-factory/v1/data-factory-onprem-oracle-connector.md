@@ -1,23 +1,18 @@
 ---
 title: Kopiera data till eller från Oracle med hjälp av Data Factory
 description: Lär dig hur du kopierar data till eller från en lokal Oracle-databas med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084298"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387350"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiera data till eller från Oracle lokalt genom att använda Azure Data Factory
 
@@ -41,7 +36,7 @@ Du kan kopiera data från följande data lager *till en Oracle-databas*:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Data Factory stöder anslutning till lokala Oracle-källor med hjälp av Data Management Gateway. Mer information om Data Management Gateway finns i [Data Management Gateway](data-factory-data-management-gateway.md) . Stegvisa instruktioner för hur du konfigurerar gatewayen i en datapipeline för att flytta data finns i [Flytta data från lokalt till molnet](data-factory-move-data-between-onprem-and-cloud.md).
 
@@ -70,7 +65,7 @@ Den här Oracle-anslutaren stöder två versioner av driv rutiner:
 
 - **Oracle Data Provider för .net**: du kan använda Oracle-dataleverantören för att kopiera data från eller till Oracle. Den här komponenten ingår i [Oracle Data Access Components för Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Installera den relevanta versionen (32-bitars eller 64-bitars) på den dator där gatewayen är installerad. [Oracle Data Provider .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) har åtkomst till Oracle Database 10g version 2 och senare versioner.
 
-    Om du väljer **xcopy-installation**slutför du stegen som beskrivs i readme.htm-filen. Vi rekommenderar att du väljer det installations program som har användar gränssnittet (inte installations programmet för XCopy).
+    Om du väljer **xcopy-installation** slutför du stegen som beskrivs i readme.htm-filen. Vi rekommenderar att du väljer det installations program som har användar gränssnittet (inte installations programmet för XCopy).
 
     När du har installerat providern startar du om Data Management Gateway värd tjänsten på datorn med hjälp av tjänst-appleten eller Data Management Gateway Configuration Manager.
 
@@ -82,7 +77,7 @@ Du kan skapa en pipeline som har en kopierings aktivitet. Pipelinen flyttar data
 
 Det enklaste sättet att skapa en pipeline är att använda guiden Kopiera. Se [Självstudier: skapa en pipeline med hjälp av kopierings guiden](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda något av följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, en **Azure Resource Manager mall**, .net- **API**eller **REST API**. I [självstudien om kopierings aktiviteten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finns stegvisa anvisningar om hur du skapar en pipeline med en kopierings aktivitet.
+Du kan också använda något av följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, en **Azure Resource Manager mall**, .net- **API** eller **REST API**. I [självstudien om kopierings aktiviteten](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finns stegvisa anvisningar om hur du skapar en pipeline med en kopierings aktivitet.
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
@@ -169,7 +164,7 @@ Egenskaper som är tillgängliga i **typeProperties** -avsnittet av aktiviteten 
 
 När källan är av typen **OracleSource** i kopierings aktivitet är följande egenskaper tillgängliga i avsnittet **typeProperties** :
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Använd den anpassade frågan för att läsa data. |En SQL-frågesträng. Till exempel "Välj \* från **tabellen**". <br/><br/>Om detta inte anges körs SQL-instruktionen: "Välj \* från **tabellen**" |Inga<br />(om **TableName** för **dataset** har angetts) |
 
@@ -177,7 +172,7 @@ När källan är av typen **OracleSource** i kopierings aktivitet är följande 
 
 **OracleSink** stöder följande egenskaper:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Vänte tiden för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes. |**tidsintervall**<br/><br/> Exempel: 00:30:00 (30 minuter) |Inga |
 | writeBatchSize |Infogar data i SQL-tabellen när buffertstorleken når värdet för **writeBatchSize**. |Heltal (antal rader) |Nej (standard: 100) |

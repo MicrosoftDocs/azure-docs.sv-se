@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 01e5095e5ff5c65bff508f4bd526ee5f85e3dc56
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fa61855b5647c1caefd939af17b70c9d08c2f8f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517832"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database trafikmigrering till nyare gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,22 @@ Den senaste informationen kommer att behållas i tabellen [Azure SQL Database Ga
 ## <a name="status-updates"></a>Status uppdateringar
 
 # <a name="in-progress"></a>[Pågår](#tab/in-progress-ip)
+## <a name="march-2021"></a>Mars 2021
+Följande SQL-gatewayer i flera regioner håller på att inaktive ras:
+
+- Södra Brasilien: 104.41.11.5
+- Asien, östra: 191.234.2.139
+- USA, östra: 191.238.6.43
+- Japan, öst: 191.237.240.43
+- Västra Japan: 191.238.68.11
+- Nord Europa: 191.235.193.75
+- Södra centrala USA: 23.98.162.75
+- Sydostasien: 23.100.117.95
+- Västeuropa: 191.237.232.75
+- Västra USA: 23.99.34.75
+
+Ingen kund påverkan förväntas eftersom dessa gatewayer (som körs på äldre maskin vara) inte dirigerar någon kund trafik. IP-adresserna för dessa gateways måste inaktive ras den 15 mars 2021.
+
 ## <a name="february-2021"></a>Februari 2021
 Nya SQL-gatewayer läggs till i följande regioner:
 
@@ -95,7 +111,7 @@ Nya SQL-gatewayer läggs till i följande regioner. Dessa SQL-gatewayer ska bör
 - Västeuropa: 52.236.184.163 
 - Södra centrala USA: 20.45.121.1, 20.49.88.1 
 
-Befintliga SQL-gatewayer börjar att acceptera trafik i följande regioner. Dessa SQL-gatewayer ska börja acceptera kund trafik den **1 September 2020** :
+Befintliga SQL-gatewayer börjar att acceptera trafik i följande regioner. Dessa SQL-gatewayer ska börja acceptera kund trafik den **1 September 2020**:
 - Japan, öst: 40.79.184.8, 40.79.192.5
 
 

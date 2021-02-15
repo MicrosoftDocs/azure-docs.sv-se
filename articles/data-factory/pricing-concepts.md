@@ -1,21 +1,18 @@
 ---
 title: Förstå Azure Data Factory priser via exempel
 description: Den här artikeln beskriver och demonstrerar Azure Data Factory pris modell med detaljerade exempel
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: cea8ae07585f09c644f0ef6e1e6142998ddc7f08
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b9f163a7632ca59d4f97aef21d8d62157610ba73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497511"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372815"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Förstå Data Factory-priser genom exempel
 
@@ -205,7 +202,7 @@ I det här scenariot vill du ta bort original filerna på Azure Blob Storage och
 > [!NOTE]
 > Dessa priser är endast till exempel syfte.
 
-**Vanliga frågor och svar**
+**VANLIGA FRÅGOR OCH SVAR**
 
 F: kan de här aktiviteterna köras samtidigt om jag vill köra fler än 50 pipeline-aktiviteter?
 

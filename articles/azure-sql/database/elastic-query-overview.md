@@ -11,17 +11,17 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781064"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364961"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Översikt över Azure SQL Database elastisk fråga (för hands version)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Funktionen elastisk fråga (i för hands version) gör att du kan köra en Transact-SQL-fråga som sträcker sig över flera databaser i Azure SQL Database. Det gör att du kan utföra frågor över flera databaser för att få åtkomst till fjärrtabeller och ansluta Microsoft och verktyg från tredje part (Excel, Power BI, Tableau osv.) för att fråga över data nivåer med flera databaser. Med den här funktionen kan du skala ut frågor till stora data nivåer och visualisera resultaten i Business Intelligence (BI) rapporter.
+Funktionen för elastisk fråga (i förhandsversion) gör att du kan köra en Transact-SQL-fråga som sträcker sig över flera databaser i Azure SQL Database. Det gör att du kan utföra frågor över flera databaser för att få åtkomst till fjärrtabeller och ansluta Microsoft och verktyg från tredje part (Excel, Power BI, Tableau osv.) för att fråga över data nivåer med flera databaser. Med den här funktionen kan du skala ut frågor till omfattande datanivåer och visualisera resultaten i BI-rapporter (Business Intelligence).
 
 ## <a name="why-use-elastic-queries"></a>Varför ska man använda elastiska frågor
 
@@ -73,7 +73,7 @@ En elastisk fråga kan användas för att göra data som finns i en databas i SQ
 > Du måste ha behörighet för att ändra en extern DATA källa. Den här behörigheten ingår i ALTER DATABASE-behörigheten. ÄNDRA behörigheter för en extern DATA källa krävs för att referera till den underliggande data källan.
 >
 
-**Referens data** : topologin används för referens data hantering. I bilden nedan sparas två tabeller (T1 och T2) med referens data i en dedikerad databas. Med en elastisk fråga kan du nu komma åt tabeller T1 och T2 via fjärr anslutning från andra databaser, som du ser i bilden. Använd topologi 1 om referens tabeller är små eller fjärranslutna frågor till referens tabellen har selektiva predikat.
+**Referens data**: topologin används för referens data hantering. I bilden nedan sparas två tabeller (T1 och T2) med referens data i en dedikerad databas. Med en elastisk fråga kan du nu komma åt tabeller T1 och T2 via fjärr anslutning från andra databaser, som du ser i bilden. Använd topologi 1 om referens tabeller är små eller fjärranslutna frågor till referens tabellen har selektiva predikat.
 
 **Bild 2** Vertikal partitionering-använda elastisk fråga för att fråga referens data
 
@@ -120,7 +120,7 @@ Mer information om de steg som krävs för det horisontella partitionerings scen
 För att börja koda, se [komma igång med elastisk fråga för horisontell partitionering (horisontell partitionering)](elastic-query-getting-started.md).
 
 > [!IMPORTANT]
-> Lyckad körning av elastiska frågor över en stor uppsättning databaser är beroende av tillgängligheten för varje databas under frågekörningen. Om en av databaserna inte är tillgänglig, kommer hela frågan att Miss förvänta. Om du planerar att fråga hundratals eller tusentals databaser samtidigt, kontrollerar du att ditt klient program har omslags logik inbäddat, eller funderar över [Elastic Database jobb](./job-automation-overview.md#elastic-database-jobs-preview) (för hands version) och frågar efter mindre del mängder av databaser, konsoliderar resultat från varje fråga till ett enda mål.
+> Lyckad körning av elastiska frågor över en stor uppsättning databaser är beroende av tillgängligheten för varje databas under frågekörningen. Om en av databaserna inte är tillgänglig, kommer hela frågan att Miss förvänta. Om du planerar att fråga hundratals eller tusentals databaser samtidigt, kontrollerar du att ditt klient program har omslags logik inbäddat, eller funderar över [Elastic Database jobb](./job-automation-overview.md) (för hands version) och frågar efter mindre del mängder av databaser, konsoliderar resultat från varje fråga till ett enda mål.
 
 ## <a name="t-sql-querying"></a>T-SQL-fråga
 
@@ -133,7 +133,7 @@ Du kan använda vanliga SQL Server anslutnings strängar för att ansluta dina p
 > [!IMPORTANT]
 > Autentisering med Azure Active Directory med elastiska frågor stöds inte för närvarande.
 
-## <a name="cost"></a>Kostnad
+## <a name="cost"></a>Cost
 
 Elastisk fråga ingår i kostnaden för Azure SQL Database. Observera att topologier där fjärrdatabaserna finns i ett annat data Center än den elastiska fråge slut punkten stöds, men utgående data från fjärrdatabaser debiteras regelbundet med [Azure-priser](https://azure.microsoft.com/pricing/details/data-transfers/).
 

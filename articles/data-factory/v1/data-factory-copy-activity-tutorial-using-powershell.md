@@ -1,24 +1,18 @@
 ---
 title: 'Självstudie: skapa en pipeline för att flytta data med hjälp av Azure PowerShell '
 description: I den här självstudiekursen kommer du att skapa en Azure Data Factory-pipeline med en kopieringsaktivitet genom att använda Azure PowerShell.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: ''
-editor: ''
-ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa97fd2ac12ca73d1a317fb09e03e49d0056ceb1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 54c296ed8013b9962de9487cfec3e2568c03e738
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608637"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377048"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Självstudiekurs: Skapa en Data Factory-pipeline som flyttar data med hjälp av Azure PowerShell
 > [!div class="op_single_selector"]
@@ -44,7 +38,7 @@ En pipeline kan ha fler än en aktivitet. Du kan länka två aktiviteter (köra 
 > 
 > Datapipelinen i den här självstudien kopierar data från ett källdatalager till ett måldatalager. Om du vill se en självstudie som visar hur du omvandlar data med Azure Data Factory går du till [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Självstudie: Bygg en pipeline för att omvandla data med Hadoop-kluster).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -114,7 +108,7 @@ Observera följande punkter:
 * Namnet på Azure Data Factory måste vara globalt unikt. Om du får följande fel ändrar du namnet (till exempel dittnamnADFTutorialDataFactoryPSH). Använd det här namnet i stället för ADFTutorialFactoryPSH när du utför stegen i självstudien. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för information om Data Factory-artefakter.
 
     ```
-    Data factory name “ADFTutorialDataFactoryPSH” is not available
+    Data factory name "ADFTutorialDataFactoryPSH" is not available
     ```
 * Om du vill skapa Data Factory-instanser måste du vara deltagare/administratör för Azure-prenumerationen.
 * Namnet på datafabriken kan registreras som ett DNS-namn i framtiden och blir då synligt offentligt.
@@ -452,7 +446,7 @@ Schemat styrs för närvarande av utdatamängd. I den här självstudiekursen ä
 **Grattis!** Du har skapat en Azure-datafabrik med en pipeline för att kopiera data från en Azure Blob Storage till Azure SQL Database. 
 
 ## <a name="monitor-the-pipeline"></a>Övervaka pipeline
-I det här steget använder du Azure PowerShell till att övervaka vad som händer i en Azure Data Factory.
+I det här steget ska du använda Azure PowerShell för att övervaka vad som händer i en Azure Data Factory.
 
 1. Ersätt &lt; DataFactoryName &gt; med namnet på din data fabrik och kör **Get-AzDataFactory** och tilldela utdata till en variabel $DF.
 

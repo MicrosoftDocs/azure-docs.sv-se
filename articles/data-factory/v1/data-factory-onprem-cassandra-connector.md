@@ -1,23 +1,18 @@
 ---
 title: Flytta data från Cassandra med hjälp av Data Factory
 description: Lär dig mer om hur du flyttar data från en lokal Cassandra-databas med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 005fd85a152ee2765facda0d961bd9119d1598e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019641"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387418"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Flytta data från en lokal Cassandra-databas med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -65,14 +60,14 @@ Följande tabell innehåller en beskrivning av JSON-element som är speciella f�
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen Type måste anges till: **OnPremisesCassandra** |Yes |
-| värd |En eller flera IP-adresser eller värd namn för Cassandra-servrar.<br/><br/>Ange en kommaavgränsad lista med IP-adresser eller värdnamn för att ansluta till alla servrar samtidigt. |Yes |
+| typ |Egenskapen Type måste anges till: **OnPremisesCassandra** |Ja |
+| värd |En eller flera IP-adresser eller värd namn för Cassandra-servrar.<br/><br/>Ange en kommaavgränsad lista med IP-adresser eller värdnamn för att ansluta till alla servrar samtidigt. |Ja |
 | port |TCP-porten som Cassandra-servern använder för att lyssna efter klient anslutningar. |Nej, standardvärde: 9042 |
-| authenticationType |Basic eller Anonymous |Yes |
+| authenticationType |Basic eller Anonymous |Ja |
 | användarnamn |Ange användar namn för användar kontot. |Ja, om authenticationType har angetts till Basic. |
 | password |Ange lösen ordet för användar kontot. |Ja, om authenticationType har angetts till Basic. |
-| gatewayName |Namnet på den gateway som används för att ansluta till den lokala Cassandra-databasen. |Yes |
-| encryptedCredential |Autentiseringsuppgifterna har krypterats av gatewayen. |No |
+| gatewayName |Namnet på den gateway som används för att ansluta till den lokala Cassandra-databasen. |Ja |
+| encryptedCredential |Autentiseringsuppgifterna har krypterats av gatewayen. |Inga |
 
 >[!NOTE]
 >Anslutning till Cassandra som använder TLS stöds inte.
@@ -267,7 +262,7 @@ Se [RelationalSource typ egenskaper](#copy-activity-properties) för listan öve
 | BOOLESKT |Boolesk |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
-| FLYTA |Enskilt |
+| FLYTA |Enkel |
 | INET |Sträng |
 | INT |Int32 |
 | TEXT |Sträng |

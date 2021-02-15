@@ -1,21 +1,18 @@
 ---
 title: Data Factory funktioner och systemvariabler
 description: Innehåller en lista över Azure Data Factory funktioner och systemvariabler
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d47a26b46fad1ab8238f9fa7a1183aad20530ef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495658"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363941"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory-Functions och systemvariabler
 > [!NOTE]
@@ -25,7 +22,7 @@ Den här artikeln innehåller information om funktioner och variabler som stöds
 
 ## <a name="data-factory-system-variables"></a>Data Factory systemvariabler
 
-| Variabelnamn | Description | Objekt omfång | JSON-omfång och användnings fall |
+| Variabelnamn | Beskrivning | Objekt omfång | JSON-omfång och användnings fall |
 | --- | --- | --- | --- |
 | WindowStart |Början på tidsintervallet för den aktuella aktivitets körnings perioden |aktivitet |<ol><li>Ange data urvals frågor. Se de kopplings artiklar som refereras i artikeln [data förflyttnings aktiviteter](data-factory-data-movement-activities.md) .</li> |
 | WindowEnd |Tidsintervall för pågående aktivitets körnings fönster |aktivitet |samma som WindowStart. |
@@ -75,7 +72,7 @@ Se avsnittet [anpassade datum-och tids format strängar](/dotnet/standard/base-t
 ### <a name="functions"></a>Functions
 I följande tabeller visas alla funktioner i Azure Data Factory:
 
-| Kategori | Funktion | Parametrar | Description |
+| Kategori | Funktion | Parametrar | Beskrivning |
 | --- | --- | --- | --- |
 | Tid |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Lägger till Y-timmar på den aktuella tiden X. <br/><br/>Exempel: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Tid |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |Lägger till Y minuter till X.<br/><br/>Exempel: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

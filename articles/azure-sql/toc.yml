@@ -143,8 +143,10 @@
       items:
         - name: Begär kvotökningar
           href: database/quota-increase-request.md
-        - name: Jobbautomation
+        - name: Jobb automatisering med elastiska jobb
           href: database/job-automation-overview.md
+        - name: Jobb automatisering med SQL-Agent
+          href: database/job-automation-managed-instances.md
         - name: Verksamhetskontinuitet
           items:
             - name: Konfigurera redundansgrupp

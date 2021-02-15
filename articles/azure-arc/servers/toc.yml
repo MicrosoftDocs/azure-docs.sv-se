@@ -59,6 +59,8 @@
           href: managed-identity-authentication.md
         - name: Hantera agent
           href: manage-agent.md
+        - name: Migrera datorer mellan regioner
+          href: manage-howto-migrate.md
     - name: Scenarier
       items:
         - name: Registrera till Azure Sentinel

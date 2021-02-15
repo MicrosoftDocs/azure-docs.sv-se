@@ -1,21 +1,17 @@
 ---
 title: Köra Azure Machine Learning pipelines
 description: Lär dig hur du kör Azure Machine Learning pipelines i Azure Data Factory pipeliner.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
-manager: anandsub
 ms.date: 07/16/2020
-ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db1816baf0ebc476a132b344d8db3cdbdd170e50
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337695"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373937"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Köra Azure Machine Learning pipelines i Azure Data Factory
 
@@ -50,7 +46,7 @@ Den här videon innehåller sex minuters introduktion och demonstration av den h
 
 ## <a name="type-properties"></a>Typ egenskaper
 
-Egenskap | Beskrivning | Tillåtna värden | Krävs
+Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
 name | Namn på aktiviteten i pipelinen | Sträng | Ja
 typ | Typ av aktivitet är ' AzureMLExecutePipeline ' | Sträng | Ja

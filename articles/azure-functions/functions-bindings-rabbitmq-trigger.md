@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760409"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388999"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-utlösare för Azure Functions översikt
 
@@ -27,7 +27,7 @@ Information om konfiguration och konfigurations information finns i [översikten
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-I följande exempel visas en [C#-funktion](functions-dotnet-class-library.md) som läser och loggar rabbitmq-meddelandet som en [rabbitmq-händelse](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html):
+I följande exempel visas en [C#-funktion](functions-dotnet-class-library.md) som läser och loggar rabbitmq-meddelandet som en [rabbitmq-händelse](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html):
 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
@@ -229,7 +229,7 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Standard meddelande typen är [rabbitmq-händelse](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)och `Body` egenskapen för rabbitmq-händelsen kan läsas som de typer som anges nedan:
+Standard meddelande typen är [rabbitmq-händelse](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)och `Body` egenskapen för rabbitmq-händelsen kan läsas som de typer som anges nedan:
 
 * `An object serializable as JSON` – Meddelandet levereras som en giltig JSON-sträng.
 * `string`
@@ -238,7 +238,7 @@ Standard meddelande typen är [rabbitmq-händelse](https://www.rabbitmq.com/rele
 
 # <a name="c-script"></a>[C#-skript](#tab/csharp-script)
 
-Standard meddelande typen är [rabbitmq-händelse](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)och `Body` egenskapen för rabbitmq-händelsen kan läsas som de typer som anges nedan:
+Standard meddelande typen är [rabbitmq-händelse](https://rabbitmq.github.io/rabbitmq-dotnet-client/api/RabbitMQ.Client.Events.BasicDeliverEventArgs.html)och `Body` egenskapen för rabbitmq-händelsen kan läsas som de typer som anges nedan:
 
 * `An object serializable as JSON` – Meddelandet levereras som en giltig JSON-sträng.
 * `string`
@@ -280,7 +280,7 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 }
 ```
 
-|Egenskap  |Standard | Beskrivning |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
 |prefetchCount|30|Hämtar eller anger antalet meddelanden som meddelande mottagaren kan begära och cachelagras samtidigt.|
 |queueName|saknas| Namnet på kön att ta emot meddelanden från.|
@@ -308,7 +308,7 @@ Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "
 }
 ```
 
-|Egenskap  |Standard | Beskrivning |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
 |Värdnamn|saknas|(ignoreras om connectionString används) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
 |userName|saknas|(ignoreras om connectionString används) <br>Namn för att komma åt kön |

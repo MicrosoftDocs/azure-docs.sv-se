@@ -1,20 +1,17 @@
 ---
 title: Flytta data från MongoDB
 description: Lär dig mer om hur du flyttar data från MongoDB Database med Azure Data Factory.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
-ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79281345"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387520"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Flytta data från MongoDB med hjälp av Azure Data Factory
 
@@ -30,7 +27,7 @@ Den här artikeln förklarar hur du använder kopierings aktiviteten i Azure Dat
 
 Du kan kopiera data från ett lokalt MongoDB-data lager till alla mottagar data lager som stöds. En lista över data lager som stöds som mottagare av kopierings aktiviteten finns i tabellen över [data lager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory har för närvarande endast stöd för att flytta data från ett MongoDB data lager till andra data lager, men inte för att flytta data från andra data lager till ett MongoDB-datalager.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 För att Azure Data Factorys tjänsten ska kunna ansluta till din lokala MongoDB-databas måste du installera följande komponenter:
 
 - De MongoDB-versioner som stöds är: 2,4, 2,6, 3,0, 3,2, 3,4 och 3,6.
@@ -46,7 +43,7 @@ Du kan skapa en pipeline med en kopierings aktivitet som flyttar data från ett 
 
 Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API**och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
@@ -90,7 +87,7 @@ Vilka egenskaper som är tillgängliga i avsnittet **typeProperties** i aktivite
 
 När källan är av typen **MongoDbSource** finns följande egenskaper i avsnittet typeProperties:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | DocumentDB |Använd den anpassade frågan för att läsa data. |SQL-92-frågesträng. Exempel: Välj * från tabellen tabell. |Nej (om **samlings** - **dataset** har angetts) |
 
@@ -311,7 +308,7 @@ För närvarande stöds inte följande MongoDB-data typer: DBPointer, Java Scrip
 ## <a name="support-for-complex-types-using-virtual-tables"></a>Stöd för komplexa typer med hjälp av virtuella tabeller
 Azure Data Factory använder en inbyggd ODBC-drivrutin för att ansluta till och kopiera data från MongoDB-databasen. För komplexa typer, till exempel matriser eller objekt med olika typer i dokument, normaliserar driv rutinen data till motsvarande virtuella tabeller. Mer specifikt, om en tabell innehåller sådana kolumner, genererar driv rutinen följande virtuella tabeller:
 
-* En **bas tabell**som innehåller samma data som den verkliga tabellen förutom de komplexa typ kolumnerna. Bas tabellen använder samma namn som den verkliga tabell som den representerar.
+* En **bas tabell** som innehåller samma data som den verkliga tabellen förutom de komplexa typ kolumnerna. Bas tabellen använder samma namn som den verkliga tabell som den representerar.
 * En **virtuell tabell** för varje komplex typ kolumn som utökar de kapslade data. De virtuella tabellerna namnges med hjälp av namnet på den verkliga tabellen, avgränsaren "_" och namnet på matrisen eller objektet.
 
 Virtuella tabeller refererar till datan i den verkliga tabellen, vilket gör att driv rutinen kan komma åt denormaliserade data. Se exempel avsnittet nedan. Du kan komma åt innehållet i MongoDB-matriser genom att fråga och ansluta till de virtuella tabellerna.

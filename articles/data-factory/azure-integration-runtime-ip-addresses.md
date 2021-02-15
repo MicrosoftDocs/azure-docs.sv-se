@@ -1,22 +1,18 @@
 ---
 title: IP-adresser i Azure Integration Runtime
 description: Lär dig vilka IP-adresser du måste tillåta inkommande trafik från, för att konfigurera brand väggar korrekt för att skydda nätverks åtkomsten till data lager.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638303"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371404"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>IP-adresser i Azure Integration Runtime
 
@@ -31,7 +27,7 @@ Vilka IP-adresser som Azure Integration Runtime använder beror på den region d
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP-adresser: vissa regioner
 
-Tillåt trafik från IP-adresserna som anges för Azure integration runtime i den aktuella Azure-region där dina resurser finns. Du kan hämta en lista över tjänst etiketter från service märken från [service Tags-länken för hämtning av IP-intervall](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Om Azure-regionen till exempel är **AustraliaEast** kan du hämta en lista över IP-intervall från **DataFactory. AustraliaEast** .
+Tillåt trafik från IP-adresserna som anges för Azure integration runtime i den aktuella Azure-region där dina resurser finns. Du kan hämta en lista över tjänst etiketter från service märken från [service Tags-länken för hämtning av IP-intervall](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). Om Azure-regionen till exempel är **AustraliaEast** kan du hämta en lista över IP-intervall från **DataFactory. AustraliaEast**.
 
 
 ## <a name="known-issue-with-azure-storage"></a>Känt problem med Azure Storage

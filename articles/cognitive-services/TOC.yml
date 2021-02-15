@@ -51,7 +51,7 @@
     - name: Taggar och viktig information för containeravbildningar
       href: ./containers/container-image-tags.md
     - name: Vanliga frågor och svar om containrar
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: Containerinstruktioner
       items:
         - name: Containeråteranvändning

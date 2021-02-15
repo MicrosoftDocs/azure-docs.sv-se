@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: ce063e27620c3b0ccec9336e7a45ebb2ee1ad10d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101720"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382828"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Migrera arbets belastningar från en Azure Stack Edge Pro-FPGA till en Azure Stack Edge Pro GPU
 
@@ -190,8 +190,8 @@ Följ dessa steg om du vill återställa data från lokala resurser:
 
 När IoT Edge modulerna har för beretts måste du distribuera IoT Edge arbets belastningar på mål enheten. Om du möter eventuella fel i distributionen IoT Edge-moduler, se:
 
-- [Vanliga problem och lösningar för Azure IoT Edge](../iot-edge/troubleshoot-common-errors.md)och 
-- [IoT Edge körnings fel] [Hantera en Azure Stack Edge Pro GPU-enhet via Windows PowerShell](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors).
+- [Vanliga problem och lösningar för Azure IoT Edge](../iot-edge/troubleshoot-common-errors.md). 
+- [IoT Edge körnings fel](azure-stack-edge-gpu-troubleshoot.md#troubleshoot-iot-edge-errors).
 
 ## <a name="verify-data"></a>Verifiera data
 

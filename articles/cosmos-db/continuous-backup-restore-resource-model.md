@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 91421b66af441ed2c7e9c8b66c16ee83f489b03e
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: d838425583638aef5199b52df4869923c826553d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538518"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369976"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Resurs modell för Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -30,29 +30,29 @@ Databas kontots resurs modell uppdateras med några extra egenskaper som stöd f
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-En ny egenskap i säkerhets kopierings principen på konto nivå med namnet "typ" under parametern "backuppolicy" möjliggör kontinuerliga säkerhets kopierings-och återställnings funktioner för tidpunkter. Det här läget kallas **kontinuerlig säkerhets kopiering**. I den offentliga för hands versionen kan du bara ange det här läget när du skapar kontot. När den är aktive rad kommer alla behållare och databaser som skapats i det här kontot att ha kontinuerliga säkerhets kopierings-och återställnings funktioner för tidpunkter aktiverade som standard.
+En ny egenskap i säkerhets kopierings principen på konto nivå med namnet `Type` under `backuppolicy` parameter aktiverar kontinuerliga säkerhets kopierings-och återställnings funktioner vid en viss tidpunkt. Det här läget kallas **kontinuerlig säkerhets kopiering**. I den offentliga för hands versionen kan du bara ange det här läget när du skapar kontot. När den är aktive rad kommer alla behållare och databaser som skapats i det här kontot att ha kontinuerliga säkerhets kopierings-och återställnings funktioner för tidpunkter aktiverade som standard.
 
 > [!NOTE]
 > För närvarande är funktionen för automatisk återställning tillgänglig i en offentlig för hands version och den är tillgänglig för Azure Cosmos DB API för MongoDB och SQL-konton. När du har skapat ett konto med kontinuerligt läge kan du inte växla det till ett periodiskt läge.
 
 ### <a name="createmode"></a>CreateMode
 
-Den här egenskapen anger hur kontot skapades. De möjliga värdena är "default" och "Restore". Om du vill utföra en återställning ställer du in värdet på "Restore" och anger lämpliga värden i `RestoreParameters` egenskapen.
+Den här egenskapen anger hur kontot skapades. De möjliga värdena är *standard* och *restore*. Om du vill utföra en återställning ställer du in det här värdet på *Återställ* och anger lämpliga värden i `RestoreParameters` egenskapen.
 
 ### <a name="restoreparameters"></a>RestoreParameters
 
 `RestoreParameters`Resursen innehåller information om återställnings åtgärden, inklusive konto-ID, tid att återställa och vilka resurser som behöver återställas.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
-|restoreMode  | Återställnings läget ska vara "PointInTime" |
+|restoreMode  | Återställnings läget ska vara *PointInTime* |
 |restoreSource   |  InstanceId för det käll konto som återställningen ska initieras från.       |
 |restoreTimestampInUtc  | Tidpunkt i UTC till vilken kontot ska återställas. |
 |databasesToRestore   | Lista med `DatabaseRestoreSource` objekt som anger vilka databaser och behållare som ska återställas. Om det här värdet är tomt återställs hela kontot.   |
 
 **DatabaseRestoreResource** – varje resurs representerar en enskild databas och alla samlingar under den databasen.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 |Databas | Namnet på databasen |
 | collectionNames| Listan över behållare under den här databasen |
@@ -134,7 +134,7 @@ Om du vill hämta en lista över alla återställas-konton, se [återställas Da
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat på SQL Database. Den här informationen kan hjälpa dig i scenarier där databasen har tagits bort av misstag och om du behöver ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | eventTimestamp | Tiden i UTC när databasen skapas eller tas bort. |
 | ownerId | Namnet på SQL-databasen. |
@@ -148,7 +148,7 @@ Om du vill hämta en lista över alla databas mutationer, se artikeln [återstä
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat på SQL-behållaren. Den här informationen kan vara till hjälp i scenarier där behållaren har ändrats eller tagits bort, och om du behöver ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | eventTimestamp    | Tiden i UTC när den här behållar händelsen inträffade.|
 | ownerId| SQL-behållarens namn.|
@@ -162,7 +162,7 @@ Om du vill hämta en lista över alla behållar mutationer under samma databas k
 
 Varje resurs representerar en enda databas och alla behållare under den databasen.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | Databas  | Namnet på SQL-databasen.
 | collectionNames   | Listan över SQL-behållare under den här databasen.|
@@ -173,7 +173,7 @@ Om du vill hämta en lista över SQL Database-och container-kombination som finn
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som har inträffat i MongoDB-databasen. Den här informationen kan vara till hjälp i scenariot där databasen har tagits bort av misstag och användaren måste ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 |eventTimestamp| Tiden i UTC när den här databas händelsen inträffade.|
 | ownerId| Namnet på MongoDB-databasen. |
@@ -186,7 +186,7 @@ Om du vill hämta en lista över alla databas mutationer, se artikeln [återstä
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat i MongoDB-samlingen. Den här informationen kan hjälpa dig i scenarier där samlingen har ändrats eller tagits bort, och användaren måste ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | eventTimestamp |Tiden i UTC när den här samlings händelsen inträffade. |
 | ownerId| Namnet på MongoDB-samlingen. |
@@ -199,7 +199,7 @@ Om du vill hämta en lista över alla behållar mutationer under samma databas k
 
 Varje resurs representerar en enda databas och alla samlingar under den databasen.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | Databas  |Namnet på MongoDB-databasen. |
 | collectionNames | Listan med MongoDB-samlingar under den här databasen. |

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679454"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388965"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Självstudie: Migrera från Bing Maps till Azure Maps
 
@@ -30,7 +30,7 @@ I den här självstudiekursen lär du dig:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -47,8 +47,8 @@ I följande tabell finns en lista över Bing Maps-funktioner på hög nivå och 
 | Web SDK                               | ✓                  |
 | Android SDK                           | ✓                  |
 | iOS SDK                               | Planerad            |
-| UWP SDK                               | Planerad            |
-| WPF SDK                               | Planerad            |
+| UWP SDK                               | Ej tillämpligt                 |
+| WPF SDK                               | Ej tillämpligt                 |
 | API: er för REST service                     | ✓                  |
 | Automatiska förslag                           | ✓                  |
 | Vägvisningar (inklusive Truck)          | ✓                  |
@@ -66,7 +66,7 @@ I följande tabell finns en lista över Bing Maps-funktioner på hög nivå och 
 | Avstånds Data Services (SDS)           | Delvis            |
 | Tidszon                             | ✓                  |
 | Trafik incidenter                     | ✓                  |
-| Konfigurations drivna kartor             | Saknas                |
+| Konfigurations drivna kartor             | Ej tillämpligt                |
 
 Bing Maps innehåller grundläggande nyckelbaserad autentisering. Azure Maps ger både grundläggande nyckelbaserad autentisering och mycket säker Azure Active Directory autentisering.
 
@@ -100,7 +100,7 @@ Här är ett exempel på en plan med hög nivå migrering.
 
 Följ dessa steg om du vill skapa ett Azure Maps konto och få åtkomst till Azure Maps-plattformen:
 
-1. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. Logga in på [Azure-portalen](https://portal.azure.com/).
 3. Skapa ett [Azure Maps-konto](./how-to-manage-account-keys.md).
 4. [Hämta din Azure Maps prenumerations nyckel](./how-to-manage-authentication.md#view-authentication-details) eller konfigurera Azure Active Directory autentisering för förbättrad säkerhet.
@@ -136,7 +136,7 @@ Följande lista innehåller vanliga villkor för Bing Maps och deras motsvarande
 | Mark överlägg                    | Bild skikt                                                    |
 | Hybrid (i referens till mappnings typ) | Satellit med vägar                                           |
 | Inforuta                           | Popup                                                          |
-| Plats                          | Position                                                       |
+| Location                          | Position                                                       |
 | `LocationRect`                    | Avgränsnings ruta                                                   |
 | Map Type                          | Kart stil                                                      |
 | Navigeringsfält                    | Kartans stil väljare, zoomnings kontroll, bredd kontroll, kompass kontroll |

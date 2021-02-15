@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684832"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389118"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Självstudier: Migrera en webbapp från Bing Maps
 
@@ -33,9 +33,9 @@ Webb program som använder Bing Maps använder ofta Bing Maps V8 Java Script SDK
 
 Om du migrerar ett befintligt webb program kontrollerar du att det använder ett kart kontroll bibliotek med öppen källkod, till exempel cesium, häfte och openlager. Om det är och du föredrar att fortsätta att använda biblioteket kan du ansluta det till Azure Maps panel[tjänster (satellit paneler i](/rest/api/maps/render/getmaptile) panelens \| [satellit paneler](/rest/api/maps/render/getmapimagerytile)). Länkarna nedan innehåller information om hur du använder Azure Maps i några ofta använda kart kontroll bibliotek med öppen källkod.
 
-* Cesium – en 3D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentation](https://cesiumjs.org/)
-* Broschyr – förenklad 2D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentation](https://leafletjs.com/)
-* OpenLayers – en 2D-kart kontroll för webben som stöder projektioner. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentation](https://openlayers.org/)
+* [Cesium](https://cesiumjs.org/) – en 3D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [Plugin-lagrings platsen]()
+* [Broschyr](https://leafletjs.com/) – förenklad 2D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [Plugin-lagrings platsen]()
+* [OpenLayers](https://openlayers.org/) – en 2D-kart kontroll för webben som stöder projektioner. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [Plugin-lagrings platsen]()
 
 Om du utvecklar med ett JavaScript-ramverk kan något av följande projekt med öppen källkod vara användbart:
 
@@ -64,7 +64,7 @@ I följande tabell visas viktiga API-funktioner i Bing Maps V8 JavaScript SDK oc
 | Panel lager              | ✓                                                                                      |
 | KML-skikt                | ✓                                                                                      |
 | Kon tur lager            | [Exempel](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Data diskretisering-skikt       | [Exempel](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Data diskretisering-skikt       | Ingår i modulen med öppen källkod Azure Maps [Gridded-datakälla](https://github.com/Azure-Samples/azure-maps-gridded-data-source)       |
 | Animerat panel lager      | Ingår i modulen för öppen källkod Azure Maps- [animering](https://github.com/Azure-Samples/azure-maps-animations) |
 | Ritningsverktyg            | ✓                                                                                      |
 | Netencoder-tjänst         | ✓                                                                                      |
@@ -72,10 +72,10 @@ I följande tabell visas viktiga API-funktioner i Bing Maps V8 JavaScript SDK oc
 | Distans mat ris tjänst  | ✓                                                                                      |
 | Spatial data tjänst     | Ej tillämpligt                                                                                    |
 | Satellit-/flyg bilder | ✓                                                                                      |
-| Fåglars ögon bilder         | Planerad                                                                                |
-| Streetside bilder       | Planerad                                                                                |
+| Fåglars ögon bilder         | Ej tillämpligt                                                                                |
+| Streetside bilder       | Ej tillämpligt                                                                                |
 | Stöd för interjson          | ✓                                                                                      |
-| GeoXML-stöd           | ✓                                                                                      |
+| GeoXML-stöd           | ✓ [Spatial-IO-modul](how-to-use-spatial-io-module.md)                                                                                     |
 | Stöd för Well-Known text  | ✓                                                                                      |
 | Anpassade kart format        | Delvis                                                                                |
 
@@ -909,7 +909,7 @@ I Azure Maps läggs data till och hanteras av en data källa. Lager ansluter til
 
 När klustring är aktiverat skickar data källan klustrade och data punkter som inte är klustrade till lager för åter givning. Data källan kan klustra hundratals tusen data punkter. En klustrad data punkt har följande egenskaper:
 
-| Egenskapsnamn               | Typ    | Description                                    |
+| Egenskapsnamn               | Typ    | Beskrivning                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Anger om funktionen representerar ett kluster.     |
 | `cluster_id`                | sträng  | Ett unikt ID för klustret som kan användas med `DataSource` klasserna `getClusterExpansionZoom` , `getClusterChildren` och `getClusterLeaves` . |
@@ -918,7 +918,7 @@ När klustring är aktiverat skickar data källan klustrade och data punkter som
 
 `DataSource`Klassen har följande hjälp funktion för att få åtkomst till ytterligare information om ett kluster med hjälp av `cluster_id` .
 
-| Funktion       | Returtyp        | Description     |
+| Funktion       | Returtyp        | Beskrivning     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Hämtar underordnade för det aktuella klustret på nästa zoomnings nivå. Dessa underordnade kan vara en kombination av former och del kluster. Under klustren är funktioner med egenskaper som matchar kluster egenskaper. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Beräknar en zoomnings nivå som klustret börjar att utöka eller dela upp.    |

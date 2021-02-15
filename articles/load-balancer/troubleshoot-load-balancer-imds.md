@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 02/12/2021
 ms.author: allensu
-ms.openlocfilehash: e648d71ed3c501c07a2491054b273a13d74cedaf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e932e211996a05b2740613381735a7de3492e5bf
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100418076"
+ms.locfileid: "100519192"
 ---
 # <a name="error-codes-common-error-codes-when-using-imds-to-retrieve-load-balancer-information"></a>Felkoder: vanliga felkoder när du använder IMDS för att hämta information om belastnings utjämning
 
@@ -28,8 +28,8 @@ I den här artikeln beskrivs vanliga distributions fel och hur du löser dessa f
 | 400 | Oväntad begäran. Kontrol lera frågeparametrarna och försök igen. | Felkoden anger att formatet för begäran inte är korrekt konfigurerat. </br> Mer information finns i [hur du hämtar metadata för belastningsutjämnare med hjälp av Azure instance metadata service (IMDS)](howto-load-balancer-imds.md#sample-request-and-response) för att åtgärda begär ande texten och skicka ett nytt försök. |
 | 404 | Inga metadata för belastningsutjämnare har hittats. Kontrol lera att den virtuella datorn använder en icke-grundläggande SKU-belastningsutjämnare och försök igen senare. | Felkoden anger att den virtuella datorn inte är associerad med en belastningsutjämnare eller att belastningsutjämnaren är en grundläggande SKU i stället för standard. </br> Mer information finns i [snabb start: skapa en offentlig belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal](quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard) för att distribuera en standard belastningsutjämnare.|
 | 404 | Det gick inte att hitta API: sökväg = " \<UrlPath> ", metod = " \<Method> " | Felkoden anger en felaktig konfiguration av sökvägen. </br> Mer information finns i [hur du hämtar metadata för belastningsutjämnare med hjälp av Azure instance metadata service (IMDS)](howto-load-balancer-imds.md#sample-request-and-response) för att åtgärda begär ande texten och skicka ett nytt försök.|
-| 405 | Http-metoden tillåts inte: sökväg = " \<UrlPath> ", metod = " \<Method> " | Felkoden anger ett HTTP-verb som inte stöds. </br> Mer information finns i [Azure instance metadata service (IMDS)](/virtual-machines/windows/instance-metadata-service?tabs=windows.md#http-verbs) för verb som stöds. |
-| 429 | För många begär Anden | Felkoden anger en hastighets gräns. </br> Mer information om hastighets begränsning finns i [Azure instance metadata service (IMDS)](/virtual-machines/windows/instance-metadata-service?tabs=windows#rate-limiting).|
+| 405 | Http-metoden tillåts inte: sökväg = " \<UrlPath> ", metod = " \<Method> " | Felkoden anger ett HTTP-verb som inte stöds. </br> Mer information finns i [Azure instance metadata service (IMDS)](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#http-verbs) för verb som stöds. |
+| 429 | För många begär Anden | Felkoden anger en hastighets gräns. </br> Mer information om hastighets begränsning finns i [Azure instance metadata service (IMDS)](../virtual-machines/windows/instance-metadata-service.md?tabs=windows#rate-limiting).|
 | 400 | Begär ande texten är större än MaxBodyLength:... | Felkoden anger en begäran som är större än MaxBodyLength. </br> Mer information om längd på brödtext finns i [så här hämtar du metadata för belastningsutjämnare med hjälp av Azure instance metadata service (IMDS)](howto-load-balancer-imds.md#sample-request-and-response).|
 | 400 | Parameter nyckel längden är större än MaxParameterKeyLength:... | Felkoden anger en parameter nyckel som är större än MaxParameterKeyLength. </br> Mer information om längd på brödtext finns i [så här hämtar du metadata för belastningsutjämnare med hjälp av Azure instance metadata service (IMDS)](howto-load-balancer-imds.md#sample-request-and-response). |
 | 400 | Parameter värdets längd är större än MaxParameterValueLength:... | Felkoden anger en parameter nyckel som är större än MaxParameterValueLength. </br> Mer information om värde längd finns i [hur du hämtar metadata för belastningsutjämnare med hjälp av Azure instance metadata service (IMDS)](howto-load-balancer-imds.md#sample-request-and-response).|
@@ -41,5 +41,5 @@ I den här artikeln beskrivs vanliga distributions fel och hur du löser dessa f
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om [Azure instance metadata service](/virtual-machines/windows/instance-metadata-service.md)
+Läs mer om [Azure instance metadata service](../virtual-machines/windows/instance-metadata-service.md)
 

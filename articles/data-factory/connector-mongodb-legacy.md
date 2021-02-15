@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från MongoDB med hjälp av äldre
 description: Lär dig hur du kopierar data från Mongo DB till mottagar data lager med stöd för en kopierings aktivitet i en äldre Azure Data Factory pipeline.
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331989"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368854"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopiera data från MongoDB med Azure Data Factory (bakåtkompatibelt)
 
@@ -61,7 +57,7 @@ Följande egenskaper stöds för den länkade tjänsten MongoDB:
 | server |IP-adressen eller värd namnet för MongoDB-servern. |Ja |
 | port |TCP-port som MongoDB-servern använder för att lyssna efter klient anslutningar. |Nej (standard är 27017) |
 | Databas |Namnet på MongoDB-databasen som du vill komma åt. |Ja |
-| authenticationType | Typ av autentisering som används för att ansluta till MongoDB-databasen.<br/>Tillåtna värden är: **Basic**och **Anonymous**. |Ja |
+| authenticationType | Typ av autentisering som används för att ansluta till MongoDB-databasen.<br/>Tillåtna värden är: **Basic** och **Anonymous**. |Ja |
 | användarnamn |Användar konto för åtkomst till MongoDB. |Ja (om grundläggande autentisering används). |
 | password |Lösenordet för användaren. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). |Ja (om grundläggande autentisering används). |
 | authSource |Namnet på MongoDB-databasen som du vill använda för att kontrol lera autentiseringsuppgifterna för autentisering. |Nej. För grundläggande autentisering är standardvärdet att använda administratörs kontot och den databas som anges med egenskapen databaseName. |
@@ -199,7 +195,7 @@ När du kopierar data från MongoDB används följande mappningar från MongoDB 
 
 Azure Data Factory använder en inbyggd ODBC-drivrutin för att ansluta till och kopiera data från MongoDB-databasen. För komplexa typer, till exempel matriser eller objekt med olika typer i dokument, normaliserar driv rutinen data till motsvarande virtuella tabeller. Mer specifikt, om en tabell innehåller sådana kolumner, genererar driv rutinen följande virtuella tabeller:
 
-* En **bas tabell**som innehåller samma data som den verkliga tabellen förutom de komplexa typ kolumnerna. Bas tabellen använder samma namn som den verkliga tabell som den representerar.
+* En **bas tabell** som innehåller samma data som den verkliga tabellen förutom de komplexa typ kolumnerna. Bas tabellen använder samma namn som den verkliga tabell som den representerar.
 * En **virtuell tabell** för varje komplex typ kolumn som utökar de kapslade data. De virtuella tabellerna namnges med hjälp av namnet på den verkliga tabellen, avgränsaren "_" och namnet på matrisen eller objektet.
 
 Virtuella tabeller refererar till datan i den verkliga tabellen, vilket gör att driv rutinen kan komma åt denormaliserade data. Du kan komma åt innehållet i MongoDB-matriser genom att fråga och ansluta till de virtuella tabellerna.

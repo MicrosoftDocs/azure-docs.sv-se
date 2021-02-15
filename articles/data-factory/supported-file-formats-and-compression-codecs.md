@@ -2,19 +2,16 @@
 title: Fil format som stöds av kopierings aktivitet i Azure Data Factory
 description: I det här avsnittet beskrivs de fil format och komprimerings koder som stöds av kopierings aktiviteten i Azure Data Factory.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jingwang
-ms.openlocfilehash: c044208699bf5bebb6383cfef00bf53b744369d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb773d01124b99b4837f393b610e00ecbfa510fb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86522455"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364621"
 ---
 # <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Fil format och komprimerings-codec som stöds av kopierings aktiviteten i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,5 +34,5 @@ Dessutom kan du också tolka eller generera filer av ett angivet format. Du kan 
 
 Se andra artiklar om kopierings aktiviteter:
 
-- [Översikt över kopieringsaktivitet](copy-activity-overview.md)
+- [Översikt över kopierings aktivitet](copy-activity-overview.md)
 - [Kopiera aktivitetsprestanda](copy-activity-performance.md)

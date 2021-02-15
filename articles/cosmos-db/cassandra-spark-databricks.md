@@ -8,17 +8,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5aaf31d8c629e0770b913485de175c38f708390c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516574"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Åtkomst Azure Cosmos DB API för Cassandra data från Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Den här artikeln beskriver hur du workwith Azure Cosmos DB API för Cassandra från Spark på [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
+Den här artikeln beskriver hur du arbetar med Azure Cosmos DB API för Cassandra från Spark på [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -62,7 +62,7 @@ Spark-program körs som automatiserade processer på Azure Databricks skickas ti
 
 Följande är länkar som hjälper dig att komma igång med att skapa Spark Scala-program för att interagera med Azure Cosmos DB API för Cassandra.
 * [Så här ansluter du till Azure Cosmos DB API för Cassandra från ett Spark Scala-program](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Så här kör du ett Spark Scala-program som ett automatiserat jobb på Azure Databricks](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Så här kör du ett Spark Scala-program som ett automatiserat jobb på Azure Databricks](/azure/databricks/jobs)
 * [Fullständig lista över kod exempel för att arbeta med API för Cassandra](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>Nästa steg

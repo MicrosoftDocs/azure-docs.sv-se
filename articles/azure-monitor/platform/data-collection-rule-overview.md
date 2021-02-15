@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: 7013a4ab1becd6108d30d8369f1f72bcb3e55c37
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: d48d72a0ccbec67c6700af9120e0dd914db11f32
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611074"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374923"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Data insamlings regler i Azure Monitor (för hands version)
 Data insamlings regler (DCR) definierar data som kommer till Azure Monitor och anger var data ska skickas eller lagras. Den här artikeln innehåller en översikt över data insamlings regler, inklusive deras innehåll och struktur och hur du kan skapa och arbeta med dem.
@@ -40,7 +40,7 @@ Följande diagram visar komponenterna i en data insamlings regel och deras relat
 ### <a name="data-source-types"></a>Typer av datakälla
 Varje data källa har en typ av data källa. Varje typ definierar en unik uppsättning egenskaper som måste anges för varje data källa. De data käll typer som är tillgängliga visas i följande tabell.
 
-| Typ av data Källa | Description | 
+| Typ av data Källa | Beskrivning | 
 |:---|:---|
 | utöka | VM-baserad data Källa |
 | performanceCounters | Prestanda räknare för både Windows och Linux |
@@ -119,7 +119,7 @@ Exempel data insamlings regeln nedan är för virtuella datorer med Azures hante
           {
             "name": "cloudSecurityTeamEvents",
             "streams": [
-              "Microsoft-WindowsEvent"
+              "Microsoft-Event"
             ],
             "scheduledTransferPeriod": "PT1M",
             "xPathQueries": [
@@ -129,7 +129,7 @@ Exempel data insamlings regeln nedan är för virtuella datorer med Azures hante
           {
             "name": "appTeam1AppEvents",
             "streams": [
-              "Microsoft-WindowsEvent"
+              "Microsoft-Event"
             ],
             "scheduledTransferPeriod": "PT5M",
             "xPathQueries": [
@@ -182,7 +182,7 @@ Exempel data insamlings regeln nedan är för virtuella datorer med Azures hante
           "streams": [
             "Microsoft-Perf",
             "Microsoft-Syslog",
-            "Microsoft-WindowsEvent"
+            "Microsoft-Event"
           ],
           "destinations": [
             "centralWorkspace"
