@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: daf7a9fe3291850bea8c78680bcf375931383020
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: e926dcd4b05d137c7927bdfe5221923d25d4670c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805621"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093496"
 ---
 # <a name="full-backup-and-restore"></a>Fullständig säkerhets kopiering och återställning
 
@@ -44,9 +44,9 @@ Backup är en tids krävande åtgärd, men returnerar omedelbart ett jobb-ID. Du
 När säkerhets kopieringen pågår fungerar inte HSM vid fullständig genom strömning eftersom vissa HSM-partitioner är upptagna med att utföra säkerhets kopierings åtgärden.
 
 ```azurecli-interactive
-# time for 30 minutes later for SAS token expiry
+# time for 500 minutes later for SAS token expiry
 
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 
 # Get storage account key
 
@@ -84,9 +84,9 @@ Du måste ange följande information för att köra en fullständig återställn
 Restore är en tids krävande åtgärd, men returnerar omedelbart ett jobb-ID. Du kan kontrol lera status för återställnings processen med detta jobb-ID. När återställnings processen pågår, anger HSM ett återställnings läge och alla data planet kommando (förutom kontrol lera återställnings status) inaktive ras.
 
 ```azurecli-interactive
-#### time for 30 minutes later for SAS token expiry
+#### time for 500 minutes later for SAS token expiry
 
-end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
+end=$(date -u -d "500 minutes" '+%Y-%m-%dT%H:%MZ')
 
 # Get storage account key
 

@@ -33,8 +33,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurera portvidarebefordran i Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
-    - name: Skapa lastbalanserare mellan regioner – portalen
-      href: tutorial-cross-region-portal.md
+    - name: Lastbalanserare mellan regioner
+      items:
+        - name: Skapa lastbalanserare mellan regioner – portalen
+          href: tutorial-cross-region-portal.md
+        - name: Skapa en belastningsutjämnare för flera regioner – PowerShell
+          href: tutorial-cross-region-powershell.md
 - name: Exempel
   items:
     - name: Azure CLI
@@ -89,6 +93,8 @@
       href: backend-pool-management.md
     - name: Standard Load Balancer och skalningsuppsättningar för virtuella datorer
       href: load-balancer-standard-virtual-machine-scale-sets.md
+    - name: Hämta information med Azure-Instance Metadata Service
+      href: instance-metadata-service-load-balancer.md
 - name: Så här gör du
   items:
     - name: Portalinställningar
@@ -144,6 +150,8 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Konfiguration för lastbalanserare med ”endast utgående”
       href: egress-only.md
+    - name: Hämta metadata med Azure-IMDS
+      href: howto-load-balancer-imds.md
     - name: Felsöka
       items:
         - name: Felsök Azure Load Balancer
@@ -181,6 +189,8 @@
     - name: Resource Manager-mall
       href: /azure/templates/microsoft.network/loadbalancers
       displayName: ARM
+    - name: Vanliga felkoder för Azure Instance Metadata Service (IMDS)
+      href: troubleshoot-load-balancer-imds.md
 - name: Resurser
   items:
     - name: Utveckla dina färdigheter med Microsoft Learn

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430470"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098103"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexerare i Azure Cognitive Search
 
@@ -118,6 +118,7 @@ Du kan övervaka indexerings status i portalen eller genom att [Hämta indexerin
 Nu när du har lanserat, är ett nästa steg att granska indexerare egenskaper och parametrar, schemaläggning och övervakning av indexerare. Alternativt kan du gå tillbaka till listan över [data källor som stöds](#supported-data-sources) för mer information om en speciell källa.
 
 + [Skapa indexerare](search-howto-create-indexers.md)
++ [Återställa och köra indexerare](search-howto-run-reset-indexers.md)
 + [Schema för indexerare](search-howto-schedule-indexers.md)
 + [Definiera fält mappningar](search-indexer-field-mappings.md)
 + [Övervaka indexerings status](search-howto-monitor-indexers.md)

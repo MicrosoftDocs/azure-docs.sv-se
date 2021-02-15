@@ -1,22 +1,17 @@
 ---
 title: Omkonfigurera Azure SSIS-integreringskörningen
 description: Lär dig hur du konfigurerar om en Azure-SSIS integration runtime i Azure Data Factory när du redan har gjort det.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: 7545f593aea2aca8c0aa240d44bcef3b7a1ca7c6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636280"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370690"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Omkonfigurera Azure SSIS-integreringskörningen
 
@@ -28,10 +23,10 @@ Den här artikeln beskriver hur du konfigurerar om en befintlig Azure-SSIS integ
 Du kan använda Data Factory UI för att stoppa, redigera/omkonfigurera eller ta bort ett Azure-SSIS IR. 
 
 1. Öppna Data Factory UI genom att välja panelen **författare & Monitor** på Start sidan för din data fabrik.
-2. Välj **hanterings** hubben under **Start** , **Redigera** och **övervaka** hubbar för att visa fönstret **anslutningar** .
+2. Välj **hanterings** hubben under **Start**, **Redigera** och **övervaka** hubbar för att visa fönstret **anslutningar** .
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Så här konfigurerar du om en Azure-SSIS IR
-I fönstret **anslutningar** i **Hantera** hubb växlar du till sidan **integrerings körningar** och väljer **Uppdatera** . 
+I fönstret **anslutningar** i **Hantera** hubb växlar du till sidan **integrerings körningar** och väljer **Uppdatera**. 
 
    ![Fönstret anslutningar](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
 

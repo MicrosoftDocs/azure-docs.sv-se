@@ -1,22 +1,18 @@
 ---
 title: Migrera data från ett lokalt Hadoop-kluster till Azure Storage
 description: Lär dig hur du använder Azure Data Factory för att migrera data från ett lokalt Hadoop-kluster till Azure Storage.
-services: data-factory
 ms.author: yexu
 author: dearandyxu
-ms.reviewer: ''
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: 3e691244c4c03635eb87a7905eff6756da5c04f9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9959a37d9b68d756437a3b4f0d75a2d63385758e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638133"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367800"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Använd Azure Data Factory för att migrera data från ett lokalt Hadoop-kluster till Azure Storage 
 
@@ -27,7 +23,7 @@ Azure Data Factory tillhandahåller en genomförd, robust och kostnads effektiv 
 Data Factory erbjuder två grundläggande metoder för att migrera data från en lokal HDFS till Azure. Du kan välja metod baserat på ditt scenario. 
 
 - **Data Factory DistCp-läge** (rekommenderas): i Data Factory kan du använda [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (distribuerad kopia) för att kopiera filer som-är till Azure Blob Storage (inklusive [mellanlagrad kopia](./copy-activity-performance.md#staged-copy)) eller Azure Data Lake Store Gen2. Använd Data Factory integrerat med DistCp för att dra nytta av ett befintligt kraftfullt kluster för att uppnå bästa kopiering av data flödet. Du får också fördelarna med flexibel schemaläggning och en enhetlig övervaknings upplevelse från Data Factory. Beroende på din Data Factory konfiguration konstruerar kopierings aktiviteten automatiskt ett DistCp-kommando, skickar data till ditt Hadoop-kluster och övervakar sedan kopierings statusen. Vi rekommenderar Data Factory DistCp-läge för att migrera data från ett lokalt Hadoop-kluster till Azure.
-- **Data Factory ursprungligt integrerings körnings läge** : DistCp är inte ett alternativ i alla scenarier. I en Azure Virtual Networks-miljö stöder t. ex. DistCp-verktyget inte Azure ExpressRoute Private-peering med en Azure Storage virtuell nätverks slut punkt. I vissa fall vill du inte använda ditt befintliga Hadoop-kluster som en motor för att migrera data så att du inte lägger till tung belastning i klustret, vilket kan påverka prestanda för befintliga ETL-jobb. I stället kan du använda den inbyggda funktionen i Data Factory integration runtime som motor som kopierar data från en lokal HDFS till Azure.
+- **Data Factory ursprungligt integrerings körnings läge**: DistCp är inte ett alternativ i alla scenarier. I en Azure Virtual Networks-miljö stöder t. ex. DistCp-verktyget inte Azure ExpressRoute Private-peering med en Azure Storage virtuell nätverks slut punkt. I vissa fall vill du inte använda ditt befintliga Hadoop-kluster som en motor för att migrera data så att du inte lägger till tung belastning i klustret, vilket kan påverka prestanda för befintliga ETL-jobb. I stället kan du använda den inbyggda funktionen i Data Factory integration runtime som motor som kopierar data från en lokal HDFS till Azure.
 
 Den här artikeln innehåller följande information om båda metoderna:
 > [!div class="checklist"]
@@ -65,7 +61,7 @@ Data Factory överför som standard data från en lokal HDFS till Blob Storage e
 
 Alternativt, om du inte vill att data ska överföras via det offentliga Internet, kan du överföra data via en privat peering-länk via ExpressRoute, för högre säkerhet. 
 
-## <a name="solution-architecture"></a>Lösningsarkitekturen
+## <a name="solution-architecture"></a>Lösningsarkitektur
 
 Den här bilden visar hur du migrerar data via det offentliga Internet:
 
@@ -110,7 +106,7 @@ Om något av kopierings jobben Miss lyckas på grund av tillfälliga problem med
 
 I Data Factory DistCp-läge kan du använda kommando rads parametern DistCp `-update` , skriva data när käll filen och målfilen skiljer sig i storlek, för migrering av delta data.
 
-I Data Factory enhetligt integrerings läge, är det mest presterande sättet att identifiera nya eller ändrade filer från HDFS genom att använda en tidspartitionerad namngivnings konvention. När dina data i HDFS har tidspartitioner ATS med Time-slice-information i fil-eller mappnamnet (till exempel */yyyy/mm/dd/file.csv* ), kan pipelinen enkelt identifiera vilka filer och mappar som ska kopieras stegvis.
+I Data Factory enhetligt integrerings läge, är det mest presterande sättet att identifiera nya eller ändrade filer från HDFS genom att använda en tidspartitionerad namngivnings konvention. När dina data i HDFS har tidspartitioner ATS med Time-slice-information i fil-eller mappnamnet (till exempel */yyyy/mm/dd/file.csv*), kan pipelinen enkelt identifiera vilka filer och mappar som ska kopieras stegvis.
 
 Alternativt, om dina data i HDFS inte är tidspartitionerade, kan Data Factory identifiera nya eller ändrade filer med hjälp av deras **LastModifiedDate** -värde. Data Factory genomsöker alla filer från HDFS och kopierar endast nya och uppdaterade filer som har en senast modifierad tidstämpel som är större än ett angivet värde. 
 

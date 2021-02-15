@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 69a970b7b088795602dfb842b20ad6457d5f27c4
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: b173342c1c384213e88f216334b5e03cd8b7bea7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374498"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Det innebär att du kan ändra volymens hård kvot för din Azure NetApp Files-tjänst
 
 Från början av tjänsten har Azure NetApp Files använt en pool för kapacitets etablering och automatisk tillväxt. Azure NetApp Files volymer är tunt etablerade på en underställd pool med kundetablerad kapacitet för en vald nivå och storlek. Volym storlekar (kvoter) används för att tillhandahålla prestanda och kapacitet, och kvoterna kan justeras direkt när som helst. Detta innebär att volym kvoten för närvarande är en prestanda inställning som används för att styra bandbredden för volymen. För närvarande växer automatiskt kapacitets pooler när kapaciteten fylls.   
 
 > [!IMPORTANT] 
-> Azure NetApp Files beteendet för volym-och kapacitets etablerings etableringen kommer att ändras till en *manuell* och *kontrollerbar* mekanism. **Från och med 15 mars 2021 kommer volym storlekar (kvot) att hantera bandbredds prestanda, samt en etablerad kapacitet, och de underliggande kapacitets poolerna kommer inte längre att växa automatiskt.** 
+> Azure NetApp Files beteendet för volym-och kapacitets etablerings etableringen kommer att ändras till en *manuell* och *kontrollerbar* mekanism. **Från och med den 1 april 2021 kommer volym storlekar (kvot) att hantera bandbredds prestanda, samt etablerade kapaciteter och de underliggande kapacitets poolerna kommer inte längre att växa automatiskt.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Orsaker till volymens hård kvot ändring
 
@@ -158,7 +158,7 @@ Förutom övervakning och avisering bör du även inkludera en användning av pr
 
 Du kan använda portalen eller CLI för att öka storleken på volymer eller kapacitets pooler manuellt. 
 
-##### <a name="portal"></a>Portal 
+##### <a name="portal"></a>Portalen 
 
 Du kan [ändra storlek på en volym om det](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume) behövs. En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet.
 

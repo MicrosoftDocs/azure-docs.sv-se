@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 12/11/2020
+ms.date: 02/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0d0d032c2ab6ae1d6c5e6b1c8b1793a6b3bd7c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090645"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365437"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Felsöka Azure Active Directory B2B-samarbete
 
@@ -27,7 +27,7 @@ Här följer några lösningar på vanliga problem med Azure Active Directory (A
 
    > [!IMPORTANT]
    > - Från och med den **4 januari 2021** är Google [inaktuell WebView-inloggning support](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Om du använder Google Federation eller självbetjänings registrering med Gmail bör du [testa dina verksamhetsbaserade interna program för kompatibilitet](google-federation.md#deprecation-of-webview-sign-in-support).
-   > - Från och med den **31 mars 2021** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade Azure AD-konton och klienter för B2B-samarbets scenarier. Vi rekommenderar att kunderna väljer [autentisering med e-post med eng ång slö sen ord](one-time-passcode.md). Vi välkomnar din feedback om den här offentliga för hands versionen och är glada att skapa ännu fler sätt att samar beta.
+   > - **Från den 2021 oktober** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade Azure AD-konton och klienter för B2B-samarbets scenarier. Vi rekommenderar att kunderna väljer [autentisering med e-post med eng ång slö sen ord](one-time-passcode.md). Vi välkomnar din feedback om den här offentliga för hands versionen och är glada att skapa ännu fler sätt att samar beta.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Jag har lagt till en extern användare men ser inte dem i den globala adress boken eller i person väljaren
 
@@ -112,7 +112,7 @@ I Azure-molnet för amerikanska myndigheter stöds för närvarande inte B2B-sam
 
 När du använder självbetjänings registrerings funktioner, t. ex. anpassade användarattribut eller användar flöden, skapas automatiskt en app som heter `aad-extensions-app. Do not modify. Used by AAD for storing user data.` . Den används av externa Azure AD-identiteter för att lagra information om användare som registrerar sig för och anpassade attribut som samlas in.
 
-Om du har tagit bort av misstag `aad-extensions-app` har du 30 dagar på dig att återställa den. Du kan återställa appen med hjälp av Azure AD PowerShell-modulen.
+Om du har tagit bort `aad-extensions-app` av misstag har du 30 dagar på dig att återställa den. Du kan återställa appen med hjälp av Azure AD PowerShell-modulen.
 
 1. Starta Azure AD PowerShell-modulen och kör `Connect-AzureAD` .
 1. Logga in som global administratör för den Azure AD-klient som du vill återställa den borttagna appen för.

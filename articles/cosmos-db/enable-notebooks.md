@@ -5,35 +5,36 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/22/2019
+ms.date: 02/09/2021
 ms.author: dech
-ms.openlocfilehash: 7b52a066f80b686a0e424d8f63d520d46691a72a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: references_regions
+ms.openlocfilehash: b8ce745a0a0db96e7f6b9e3a0140d46364246e4a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187824"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379615"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Aktivera antecknings böcker för Azure Cosmos DB-konton (förhands granskning)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
-> Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgängliga i följande Azure-regioner: östra Australien, östra USA, östra USA 2, norra Europa, södra centrala USA, Sydostasien, Storbritannien, södra, Västeuropa och västra USA 2. Om du vill använda antecknings böcker [skapar du ett nytt konto med antecknings böcker](#enable-notebooks-in-a-new-cosmos-account) eller [aktiverar antecknings böcker på ett befintligt konto](#enable-notebooks-in-an-existing-cosmos-account) i någon av dessa regioner.
+> Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgängliga i [29 regioner](#supported-regions). Om du vill använda antecknings böcker [skapar du ett nytt Cosmos-konto](#create-a-new-cosmos-account) eller [aktiverar antecknings böcker på ett befintligt konto](#enable-notebooks-in-an-existing-cosmos-account) i någon av dessa regioner. 
 
 Inbyggda Jupyter Notebook i Azure Cosmos DB gör att du kan analysera och visualisera dina data från Azure Portal. Den här artikeln beskriver hur du aktiverar den här funktionen för ditt Azure Cosmos DB-konto.
 
-## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Aktivera antecknings böcker i ett nytt Cosmos-konto
-
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+## <a name="create-a-new-cosmos-account"></a>Skapa ett nytt Cosmos-konto
+Från och med 10 februari 2021 har nya Azure Cosmos-konton som skapats i en av de [regioner som stöds](#supported-regions) aktiverat automatiskt antecknings böcker. Det krävs ingen ytterligare konfiguration för att aktivera antecknings böcker. Använd följande instruktioner för att skapa ett nytt konto:
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Välj **skapa en resurs**  >  **databas**  >  **Azure Cosmos DB**.
-1. På sidan **skapa Azure Cosmos DB konto** väljer du **antecknings böcker**. 
+1. Ange grundläggande inställningar för kontot. 
  
-    :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks.png" alt-text="Alternativet Välj antecknings böcker i Azure Cosmos DB skapa bladet":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail-2.png" alt-text="Den nya kontosidan för Azure Cosmos DB":::
 
 1. Välj **Granska + skapa**. Du kan hoppa över alternativet **nätverk** och **taggar** . 
 1. Granska kontoinställningarna och välj sedan **Skapa**. Det tar några minuter att skapa kontot. Vänta tills portalsidan visar meddelandet **Distributionen är klar**. 
 
-   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Meddelandefönstret i Azure-portalen":::
+   :::image type="content" source="media/enable-notebooks/create-new-account-with-notebooks-complete.png" alt-text="Meddelandefönstret på Azure-portalen":::
 
 1. Välj **Gå till resurs** för att gå till sidan för Azure Cosmos DB-kontot.
 
@@ -74,6 +75,45 @@ Du kan också välja **ny Notebook** för att skapa en ny antecknings bok eller 
 
 :::image type="content" source="media/enable-notebooks/create-or-upload-new-notebook.png" alt-text="Skapa eller ladda upp en ny antecknings bok":::
 
+## <a name="supported-regions"></a>Regioner som stöds
+Inbyggda antecknings böcker för Azure Cosmos DB är för närvarande tillgängliga i 29 Azure-regioner. Nya Azure Cosmos-konton som skapats i dessa regioner kommer att ha antecknings böcker automatiskt aktiverade. Antecknings böcker är kostnads fria med ditt konto. 
+
+- Australien, centrala
+- Australien, centrala 2
+- Australien, östra
+- Australien, sydöstra
+- Brasilien, södra
+- Kanada, centrala
+- Kanada, östra
+- Indien, centrala
+- Central US
+- East US
+- USA, östra 2
+- Frankrike, centrala
+- Frankrike, södra
+- Tyskland, norra
+- Tyskland, västra centrala
+- Japan, västra
+- Sydkorea, södra
+- Norra centrala USA
+- Europa, norra
+- Södra centrala USA
+- Sydostasien
+- Schweiz, norra
+- Förenade Arabemiraten Central
+- Storbritannien, södra
+- Storbritannien, västra
+- USA, västra centrala
+- Europa, västra
+- Indien, västra
+- USA, västra 2
+
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om fördelarna med att [Azure Cosmos DB Jupyter Notebooks](cosmosdb-jupyter-notebooks.md)
+* Lär dig mer om fördelarna med att [Azure Cosmos DB Jupyter Notebooks](cosmosdb-jupyter-notebooks.md)
+* [Utforska exempel galleriet för bärbara datorer](https://cosmos.azure.com/gallery.html)
+* [Använda python-funktioner och-kommandon i python](use-python-notebook-features-and-commands.md)
+* [Använda C#-funktioner och-kommandon i C#](use-csharp-notebook-features-and-commands.md)
+* [Importera antecknings böcker från en GitHub-lagrings platsen](import-github-notebooks.md)
+
+

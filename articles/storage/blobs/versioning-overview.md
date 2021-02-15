@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 267fd57b2fd359a73d5c1e01568aba14594e9290
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980278"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380822"
 ---
 # <a name="blob-versioning"></a>BLOB-versioner
 
@@ -28,7 +28,7 @@ Microsoft rekommenderar att du använder BLOB-versioner för att underhålla tid
 Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
 
 > [!IMPORTANT]
-> BLOB-versioner kan inte hjälpa dig att återställa från oavsiktlig borttagning av ett lagrings konto eller behållare. Förhindra oavsiktlig borttagning av lagrings kontot genom att konfigurera ett **CannotDelete** -lås på lagrings konto resursen. Mer information om hur du låser Azure-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+> BLOB-versioner kan inte hjälpa dig att återställa från oavsiktlig borttagning av ett lagrings konto eller behållare. Förhindra oavsiktlig borttagning av lagrings kontot genom att konfigurera ett lås på lagrings konto resursen. Mer information om hur du låser Azure-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md). Om du vill skydda behållare från oavsiktlig borttagning konfigurerar du behållaren mjuk borttagning för lagrings kontot. Mer information finns i [Soft Delete for containers (för hands version)](soft-delete-container-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -191,7 +191,7 @@ BLOB-versioner är utformad för att skydda dina data från oavsiktlig eller ska
 
 I följande tabell visas vilka Azure RBAC-åtgärder som stöder borttagning av BLOB-eller BLOB-versioner.
 
-| Description | Blob Service åtgärd | Azure RBAC-dataåtgärd krävs | Stöd för inbyggd Azure-roll |
+| Beskrivning | Blob Service åtgärd | Azure RBAC-dataåtgärd krävs | Stöd för inbyggd Azure-roll |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Tar bort den aktuella versionen av blobben | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/Delete** | Storage Blob Data-deltagare |
 | Tar bort en version | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/deleteBlobVersion/åtgärd** | Storage Blob Data-ägare |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366368"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364587"
 ---
 # <a name="conditional-access-users-and-groups"></a>Villkorlig åtkomst: användare och grupper
 
@@ -42,6 +42,9 @@ Följande alternativ är tillgängliga för att ta med när du skapar en princip
    - Användare och grupper
       - Tillåter mål för specifika uppsättningar av användare. Organisationer kan till exempel välja en grupp som innehåller alla medlemmar i PERSONALAVDELNINGEN när en HR-app väljs som Cloud-App. En grupp kan vara vilken typ av grupp som helst i Azure AD, inklusive dynamiska eller tilldelade säkerhets-och distributions grupper. Principen kommer att tillämpas på kapslade användare och grupper.
 
+> [!IMPORTANT]
+> När du väljer vilka användare och grupper som ska ingå i en princip för villkorlig åtkomst finns det en gräns för hur många enskilda användare som kan läggas till direkt i en princip för villkorlig åtkomst. Om det finns stora mängder enskilda användare som behövs för att läggas till direkt i en princip för villkorlig åtkomst, rekommenderar vi att du placerar användarna i en grupp och tilldelar gruppen till principen för villkorlig åtkomst i stället.
+
 > [!WARNING]
 > Om användare eller grupper är medlem i över 2048 grupper kan deras åtkomst blockeras. Den här gränsen gäller både direkt och kapslad grupp medlemskap.
 
@@ -52,7 +55,7 @@ Följande alternativ är tillgängliga för att ta med när du skapar en princip
 
 När organisationer både inkluderar och exkluderar en användare eller grupp, undantas användaren eller gruppen från principen, eftersom en undantags åtgärd åsidosätter en inkludera i principen. Undantag används ofta för nöd åtkomst eller Bryt glass konton. Mer information om konton för nöd åtkomst och varför de är viktiga finns i följande artiklar: 
 
-* [Hantera konton för nöd åtkomst i Azure AD](../roles/security-emergency-access.md)
+* [Hantera konton för nödåtkomst i Azure AD](../roles/security-emergency-access.md)
 * [Skapa en elastisk strategi för hantering av åtkomst kontroll med Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 Följande alternativ är tillgängliga för att undanta när du skapar en princip för villkorlig åtkomst.
@@ -66,7 +69,7 @@ Följande alternativ är tillgängliga för att undanta när du skapar en princi
 
 ### <a name="preventing-administrator-lockout"></a>Förhindra administratörs utelåsning
 
-För att förhindra att en administratör låser sig själva från sin katalog när du skapar en princip som tillämpas på **alla användare** och **alla appar**visas följande varning.
+För att förhindra att en administratör låser sig själva från sin katalog när du skapar en princip som tillämpas på **alla användare** och **alla appar** visas följande varning.
 
 > Lås inte dig själv! Vi rekommenderar att du använder en princip för en liten uppsättning användare först för att kontrol lera att den fungerar som förväntat. Vi rekommenderar också att du undantar minst en administratör från den här principen. Detta säkerställer att du fortfarande har åtkomst och kan uppdatera en princip om en ändring krävs. Granska berörda användare och appar.
 

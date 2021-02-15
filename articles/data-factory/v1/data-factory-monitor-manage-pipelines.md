@@ -1,22 +1,18 @@
 ---
 title: Övervaka och hantera pipelines med hjälp av Azure Portal och PowerShell
 description: Lär dig hur du använder Azure Portal och Azure PowerShell för att övervaka och hantera Azure-datafabriker och pipeliner som du har skapat.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 486f12c29c473d46e3aff73abe747f8aa5a2ef8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495862"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380414"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Övervaka och hantera Azure Data Factory pipelines med hjälp av Azure Portal och PowerShell
 > [!div class="op_single_selector"]
@@ -87,7 +83,7 @@ Data uppsättnings sektorerna i data fabriken kan ha en av följande status:
 
 <table>
 <tr>
-    <th align="left">Stat</th><th align="left">Delstat</th><th align="left">Description</th>
+    <th align="left">Stat</th><th align="left">Delstat</th><th align="left">Beskrivning</th>
 </tr>
 <tr>
     <td rowspan="8">Väntar</td><td>ScheduleTime</td><td>Tiden har inte kommit för att sektorn ska kunna köras.</td>

@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131941"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368837"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Skapa en elastisk jobb agent med PowerShell (för hands version)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastiska jobb (för hands version)](job-automation-overview.md#elastic-database-jobs-preview) aktiverar körning av ett eller flera Transact-SQL-skript (T-SQL) parallellt över flera databaser.
+[Elastiska jobb (för hands version)](job-automation-overview.md) aktiverar körning av ett eller flera Transact-SQL-skript (T-SQL) parallellt över flera databaser.
 
 I den här självstudien får du lära dig de steg som krävs för att köra en fråga över flera databaser:
 
@@ -63,7 +63,7 @@ Förutom **AZ. SQL** -modulen kräver den här kursen även *SQLServer* PowerShe
 
 ## <a name="create-required-resources"></a>Skapa nödvändiga resurser
 
-För att skapa elastiska jobbagenter krävs en databas (S0 eller högre) som kan användas som [jobbdatabas](job-automation-overview.md#job-database).
+För att skapa elastiska jobbagenter krävs en databas (S0 eller högre) som kan användas som [jobbdatabas](job-automation-overview.md#elastic-job-database).
 
 Skriptet nedan skapar en ny resursgrupp, server och databas som ska användas som jobbdatabas. Det andra skriptet skapar en andra server med två tomma databaser för att köra jobb mot.
 

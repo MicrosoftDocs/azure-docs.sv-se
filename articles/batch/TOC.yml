@@ -3,36 +3,48 @@
 - name: Översikt
   items:
     - name: Vad är Azure Batch?
+      displayName: overview
       href: batch-technical-overview.md
 - name: Snabbstarter
   expanded: true
   items:
     - name: Köra ett Batch-jobb – CLI
+      displayName: 'quickstart, first, create'
       href: quick-create-cli.md
     - name: Köra ett Batch-jobb – Portal
+      displayName: 'quickstart, first, create'
       href: quick-create-portal.md
     - name: Köra ett Batch-jobb – .NET
+      displayName: 'quickstart, first, create, c#, csharp'
       href: quick-run-dotnet.md
     - name: Köra ett Batch-jobb – Python
+      displayName: 'quickstart, first, create'
       href: quick-run-python.md
     - name: Skapa ett batch-konto – ARM-mall
       href: quick-create-template.md
-      displayName: Resource Manager
+      displayName: 'Resource Manager, quickstart, first, create'
 - name: Självstudier
   items:
     - name: Parallell filbearbetning – .NET
+      displayName: 'tutorial, hpc, high-performance, large, c#, csharp'
       href: tutorial-parallel-dotnet.md
     - name: Parallell filbearbetning – Python
+      displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
     - name: Scenrendering med Arnold
+      displayName: tutorial
       href: tutorial-rendering-cli.md
     - name: Rendering med hjälp av Batch Explorer
+      displayName: tutorial
       href: tutorial-rendering-batchexplorer-blender.md
     - name: Parallell R-simulering
+      displayName: 'tutorial, doAzureParallel, rstudio'
       href: tutorial-r-doazureparallel.md
     - name: OCR med Batch och Functions
+      displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
     - name: Python-skript med Data Factory
+      displayName: tutorial
       href: tutorial-run-python-batch-azure-data-factory.md
 - name: Exempel
   items:
@@ -68,20 +80,20 @@
         - name: Metodtips för säkerhet
           href: security-best-practices.md
     - name: Batch-tjänstens arbetsflöde och resurser
-      displayName: developer features
+      displayName: 'developer features, core, component, overview'
       href: batch-service-workflow-features.md
       items:
         - name: Batch-konton
           displayName: storage account
           href: accounts.md
         - name: Noder och pooler
-          displayName: 'compute node, application package, scaling, schedule, os'
+          displayName: 'compute node, application package, scaling, schedule, os, configuration'
           href: nodes-and-pools.md
         - name: Jobb och uppgifter
-          displayName: Batch job
+          displayName: 'Batch job, start task, environment'
           href: jobs-and-tasks.md
         - name: Filer och kataloger
-          displayName: Batch file
+          displayName: 'Batch file, working directory'
           href: files-and-directories.md
     - name: 'API:er och verktyg'
       href: batch-apis-tools.md
@@ -131,26 +143,34 @@
     - name: Skapa och hantera pooler
       items:
         - name: Automatisk skalning för beräkningsnoder
+          displayName: 'scaling, dynamic, formula'
           href: batch-automatic-scaling.md
         - name: Välja en VM-storlek för beräkningsnoder
           href: batch-pool-vm-sizes.md
         - name: Flytta från molntjänst till pooler för virtuella datorer
+          displayName: migrate
           href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Konfigurera åtkomst till beräkningsnoder
+          displayName: 'rdp, ssh, network, remote'
           href: pool-endpoint-configuration.md
         - name: Skapa en pool med Shared Image Gallery
+          displayName: 'managed image, sig'
           href: batch-sig-images.md
         - name: Skapa en pool med en hanterad avbildningsresurs
           href: batch-custom-images.md
         - name: Skapa en pool över Tillgänglighetszoner
+          displayName: 'region, zonal policy'
           href: create-pool-availability-zones.md
         - name: Skapa en pool med diskkryptering aktiverat
           href: disk-encryption.md
         - name: Skapa en pool i ett virtuellt nätverk
+          displayName: vNet
           href: batch-virtual-network.md
         - name: Skapa en pool med offentliga IP-adresser
+          displayName: static
           href: create-pool-public-ip.md
         - name: Skapa en pool utan offentliga IP-adresser
+          displayName: private
           href: batch-pool-no-public-ip-address.md
         - name: Montera ett virtuellt filsystem
           href: virtual-file-mount.md
@@ -161,17 +181,21 @@
         - name: Använda Linux-beräkningsnoder
           href: batch-linux-nodes.md
         - name: Använda lågprioriterade virtuella datorer
+          displayName: 'preempted, surplus, capacity'
           href: batch-low-pri-vms.md
         - name: Söka efter pool- och nodfel
+          displayName: 'troubleshoot, failure'
           href: batch-pool-node-error-checking.md
     - name: Skapa en CI-/CD-pipeline för Batch
+      displayName: 'Azure DevOps, devops, continuous'
       href: batch-ci-cd.md
     - name: Hantera jobb och uppgifter
       items:
         - name: Aktiviteter för jobbförberedelse och -slutförande
+          displayName: 'release, job release'
           href: batch-job-prep-release.md
         - name: Samtidiga nodaktiviteter
-          displayName: concurrent
+          displayName: 'variable, maximize'
           href: batch-parallel-node-tasks.md
         - name: Aktivitetsberoenden
           href: batch-task-dependencies.md
@@ -182,6 +206,7 @@
         - name: Schemalägg jobb för bättre effektivitet
           href: batch-job-schedule.md
         - name: Söka efter jobb- och uppgiftsfel
+          displayName: 'failure, troubleshoot'
           href: batch-job-task-error-checking.md
     - name: Bevara jobb- och uppgiftsutdata
       href: batch-task-output.md
@@ -194,29 +219,37 @@
       href: monitoring-overview.md
       items:
         - name: Använd mått och diagnostikloggar
+          displayName: 'alert, monitor'
           href: batch-diagnostics.md
         - name: Övervaka med Application Insights
+          displayName: debug
           href: monitor-application-insights.md
         - name: Räkna resurser efter tillstånd
           href: batch-get-resource-counts.md
         - name: Fråga resurser effektivt
+          displayName: 'monitor, queries'
           href: batch-efficient-list-queries.md
     - name: Använd skriptverktyg
       items:
         - name: Använda Azure PowerShell
+          displayName: 'ps, scripting, cmdlet'
           href: batch-powershell-cmdlets-get-started.md
         - name: Använda Azure CLI
+          displayName: command line
           href: batch-cli-get-started.md
-          items:
-            - name: Använda Batch CLI-mallar
-              href: batch-cli-templates.md
+        - name: Använda Batch CLI-mallar
+          diplayName: extension
+          href: batch-cli-templates.md
     - name: Använd Batch Node.js SDK
+      displayName: json
       href: batch-nodejs-get-started.md
     - name: Köra arbetsbelastningar
       items:
-        - name: MPI-jobb
+        - name: MPI
+          displayName: 'multi-instance, message passing interface'
           href: batch-mpi.md
         - name: Containerarbetsbelastningar
+          displayName: docker
           href: batch-docker-container-workloads.md
         - name: Rendering
           items:
@@ -231,6 +264,7 @@
             - name: Renderingsprogramreferens
               href: batch-rendering-application-reference.md
             - name: Lagring och dataflytt
+              displayName: 'rendering, assets'
               href: batch-rendering-storage-data-movement.md
             - name: Renderingsarkitekturer
               href: batch-rendering-architectures.md

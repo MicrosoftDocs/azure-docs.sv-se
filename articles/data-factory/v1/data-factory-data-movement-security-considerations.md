@@ -1,22 +1,18 @@
 ---
 title: Säkerhets överväganden för data förflyttning i Azure Data Factory
 description: Lär dig mer om att skydda data flyttning i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c694cf58f4c6b613cbc183753785a34bc15063bd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093612"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375110"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-säkerhets överväganden för data förflyttning
 
@@ -33,10 +29,10 @@ I en Data Factory-lösning skapar du en eller flera data[pipelines](data-factory
 Azure Data Factory lagrar inga data utom länkade autentiseringsuppgifter för tjänsten för moln data lager som är krypterade med certifikat. Det gör att du kan skapa data drivna arbets flöden för att dirigera data flödet mellan [data lager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats) och bearbetning av data med hjälp av [beräknings tjänster](data-factory-compute-linked-services.md) i andra regioner eller i en lokal miljö. Du kan också [övervaka och hantera arbets flöden](data-factory-monitor-manage-pipelines.md) med både programmerings-och gränssnitts metoder.
 
 Data förflyttning med Azure Data Factory har **certifierats** för:
--   [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
--   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA-STJÄRNA](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-    [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
+-    [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-    [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-    [CSA-STJÄRNA](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Om du är intresse rad av Azure-kompatibilitet och hur Azure skyddar sin egen infrastruktur kan du gå till [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
@@ -122,7 +118,7 @@ Alla data överföringar sker via säker kanal- **https** och **TLS över TCP** 
  
 Du kan också använda [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) eller [Express Route](../../expressroute/expressroute-introduction.md) för att ytterligare skydda kommunikations kanalen mellan ditt lokala nätverk och Azure.
 
-Virtual Network är en logisk representation av ditt nätverk i molnet. Du kan ansluta ett lokalt nätverk till ditt virtuella Azure-nätverk (VNet) genom att konfigurera IPSec VPN (plats-till-plats) eller Express Route (privat peering)     
+Virtual Network är en logisk representation av ditt nätverk i molnet. Du kan ansluta ett lokalt nätverk till ditt virtuella Azure-nätverk (VNet) genom att konfigurera IPSec VPN (plats-till-plats) eller Express Route (privat peering)        
 
 I följande tabell sammanfattas rekommendationerna för nätverks-och gateway-konfiguration baserat på olika kombinationer av käll-och mål platser för Hybrid data förflyttning.
 
@@ -144,17 +140,17 @@ I följande bilder visas användningen av Data Management Gateway för att flytt
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Brand Väggs konfigurationer och filtrering av IP-adresser för gateway
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Brand Väggs krav för lokalt/privat nätverk  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Brand Väggs krav för lokalt/privat nätverk    
 I ett företag körs en **företags brand vägg** på den centrala routern i organisationen. Och **Windows-brandväggen** körs som en daemon på den lokala dator där gatewayen är installerad. 
 
 Följande tabell innehåller **utgående port** -och domän krav för **företags brand väggen**.
 
-| Domännamn | Utgående portar | Description |
+| Domännamn | Utgående portar | Beskrivning |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Krävs av gatewayen för att ansluta till data flytt tjänster i Data Factory |
 | `*.core.windows.net` | 443 | Används av gatewayen för att ansluta till Azure Storage-kontot när du använder funktionen för [mellanlagrad kopiering](data-factory-copy-activity-performance.md#staged-copy) . | 
 | `*.frontend.clouddatahub.net` | 443 | Krävs av gatewayen för att ansluta till Azure Data Factorys tjänsten. | 
-| `*.database.windows.net` | 1433   | (Valfritt) behövs när målet är Azure SQL Database/Azure Synapse Analytics. Använd funktionen för mellanlagrad kopiering för att kopiera data till Azure SQL Database/Azure Synapse Analytics utan att öppna port 1433. | 
+| `*.database.windows.net` | 1433    | (Valfritt) behövs när målet är Azure SQL Database/Azure Synapse Analytics. Använd funktionen för mellanlagrad kopiering för att kopiera data till Azure SQL Database/Azure Synapse Analytics utan att öppna port 1433. | 
 | `*.azuredatalakestore.net` | 443 | (Valfritt) krävs när målet är Azure Data Lake Store | 
 
 > [!NOTE] 
@@ -162,7 +158,7 @@ Följande tabell innehåller **utgående port** -och domän krav för **företag
 
 Följande tabell innehåller krav på **inkommande portar** för **Windows-brandväggen**.
 
-| Ingående portar | Description | 
+| Ingående portar | Beskrivning | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Krävs av Credential Manager-programmet för att på ett säkert sätt ange autentiseringsuppgifter för lokala data lager på gatewayen. | 
 

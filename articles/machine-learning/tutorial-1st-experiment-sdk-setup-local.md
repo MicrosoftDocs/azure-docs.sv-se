@@ -9,14 +9,15 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+adobe-target: true
+ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250697"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369157"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Självstudie: kom igång med Azure Machine Learning i utvecklings miljön (del 1 av 4)
 
@@ -68,7 +69,7 @@ pip install azureml-core
 > [!NOTE]
 > Det tar ungefär 2 minuter innan installationen av Azure Machine Learning SDK slutförts.
 >
-> Försök intstead om du får ett timeout-fel `pip install --default-timeout=100 azureml-core` .
+> Om du får ett timeout-fel kan du försöka `pip install --default-timeout=100 azureml-core` i stället.
 
 
 > [!div class="nextstepaction"]
@@ -78,20 +79,29 @@ pip install azureml-core
 
 Vi rekommenderar att du konfigurerar följande enkla katalog struktur för den här självstudien:
 
-```markdown
-tutorial
-└──.azureml
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-1.png" alt-text="katalog struktur: självstudie översta nivån med under katalogen. azureml":::
+
 
 - `tutorial`: Katalogen på den översta nivån i projektet.
 - `.azureml`: Dold under katalog för lagring av Azure Machine Learning konfigurationsfiler.
 
+För att till exempel skapa detta i ett bash-fönster:
+
+```bash
+mkdir tutorial
+cd tutorial
+mkdir .azureml
+```
+
 > [!TIP]
-> Du kan skapa en dold. azureml-underkatalog i ett terminalfönster.  Eller Använd följande:
+> Om du vill skapa eller Visa strukturen i ett grafiskt fönster aktiverar du först möjligheten att se och skapa dolda filer och mappar:
 >
-> * I ett Mac Finder-fönster använder du **Kommando + Skift +.** så här växlar du möjlighet att visa och skapa kataloger som börjar med en punkt.  
+> * I ett Mac Finder-fönster använder du **Kommando + Skift +.** för att växla visning av dolda filer/mappar.  
 > * I en Windows 10-fil Utforskare, se [så här visar du dolda filer och mappar](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * I det grafiska Linux-gränssnittet använder du **CTRL + h** eller **Visa** -menyn och markerar kryss rutan för att **Visa dolda filer**.
+
+
+
 
 > [!div class="nextstepaction"]
 > [Jag har skapat en katalog](?success=create-dir#workspace) som [Jag stötte på ett problem](https://www.research.net/r/7C8Z3DN?issue=create-dir)
@@ -138,12 +148,7 @@ python ./01-create-workspace.py
 
 När du har kört *01-Create-Workspace.py* kommer mappstrukturen att se ut så här:
 
-```markdown
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-2.png" alt-text="Filen config.jspå visas i. azureml-underkatalogen när 01-create-workspace.py har körts":::
 
 Filen `.azureml/config.json` innehåller de metadata som krävs för att ansluta till din Azure Machine Learning-arbetsyta. Den innehåller alltså ditt prenumerations-ID, resurs grupp och namn på arbets ytan. 
 
@@ -196,13 +201,7 @@ python ./02-create-compute.py
 
 Mappstrukturen kommer nu att se ut så här:
 
-```bash
-tutorial
-└──.azureml
-|  └──config.json
-└──01-create-workspace.py
-└──02-create-compute.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/directory-structure-3.png" alt-text="Lägg till 02-create-compute.py i själv studie katalogen":::
 
 > [!div class="nextstepaction"]
 > [Jag har skapat ett beräknings kluster](?success=create-compute-cluster#next-steps) som [Jag stötte på ett problem](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)

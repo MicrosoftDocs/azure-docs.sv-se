@@ -216,7 +216,7 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Konfigurera haveriberedskap för virtuella Azure-datorer efter migrering till Azure
               href: azure-to-azure-replicate-after-migration.md
-            - name: Aktivera katastrofåterställning mellan zoner
+            - name: Katastrof återställning av zon till zon
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Hantera
           items:

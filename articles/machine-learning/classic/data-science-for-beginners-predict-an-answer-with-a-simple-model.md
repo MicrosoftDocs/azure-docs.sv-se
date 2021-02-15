@@ -3,18 +3,18 @@ title: 'ML Studio (klassisk): förutsäga svar med Regressions modeller – Azur
 description: Så här skapar du en enkel Regressions modell för att förutsäga ett pris i data vetenskap för nybörjare, video 4. Innehåller en linjär regression med mål data.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: c02abf095beefdd131a5835d015175d56a63de47
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c6d78b10b98abe33744673459b3d31d8941aac89
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322821"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520416"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Förutsäga ett svar med en enkel modell
 
@@ -98,7 +98,7 @@ För att besvara vår fråga ögonglobsikonen vi 1,35 Carats och rita en lodrät
 ![Hitta svaret på modellen](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Skapa ett konfidens intervall
-Det är naturligt att undrar hur exakt denna förutsägelse är. Det är användbart att veta om 1,35-cirkumflex romben kommer att vara mycket nära $10 000 eller mycket högre eller lägre. Vi ritar ett kuvert runt Regressions linjen som innehåller de flesta punkterna. Det här kuvertet kallas vårt *konfidens intervall* : vi är ganska säkra på att priserna faller inom det här kuvertet, eftersom de flesta har de senaste. Vi kan rita två fler horisontella linjer från där 1,35 cirkumflex-linjen korsar den övre kanten och längst ned på kuvertet.
+Det är naturligt att undrar hur exakt denna förutsägelse är. Det är användbart att veta om 1,35-cirkumflex romben kommer att vara mycket nära $10 000 eller mycket högre eller lägre. Vi ritar ett kuvert runt Regressions linjen som innehåller de flesta punkterna. Det här kuvertet kallas vårt *konfidens intervall*: vi är ganska säkra på att priserna faller inom det här kuvertet, eftersom de flesta har de senaste. Vi kan rita två fler horisontella linjer från där 1,35 cirkumflex-linjen korsar den övre kanten och längst ned på kuvertet.
 
 ![Konfidensintervall](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -109,7 +109,7 @@ Vi gjorde vad data experter betalar för att göra och vi gjorde det bara genom 
 
 * Vi har begärt en fråga som vi kunde besvara med data
 * Vi har byggt en *modell* med *linjär regression*
-* Vi har gjort en *förutsägelse* , komplett med ett *konfidens intervall*
+* Vi har gjort en *förutsägelse*, komplett med ett *konfidens intervall*
 
 Och vi använde inte matematik eller datorer för att göra det.
 

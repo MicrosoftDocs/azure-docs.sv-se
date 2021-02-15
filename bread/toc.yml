@@ -215,22 +215,6 @@
         - name: IoT Central
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
-          items:
-            - name: IoT Central
-              tocHref: /azure/iot-central/core/
-              topicHref: /azure/iot-central/core/
-            - name: IoT Central för energi
-              tocHref: /azure/iot-central/energy/
-              topicHref: /azure/iot-central/energy/
-            - name: IoT Central för myndigheter
-              tocHref: /azure/iot-central/government/
-              topicHref: /azure/iot-central/government/
-            - name: IoT Central för hälso- och sjukvård
-              tocHref: /azure/iot-central/healthcare/
-              topicHref: /azure/iot-central/healthcare/
-            - name: IoT Central för detaljhandeln
-              tocHref: /azure/iot-central/retail/
-              topicHref: /azure/iot-central/retail/
         - name: IoT Edge
           tocHref: /azure/iot-edge/
           topicHref: /azure/iot-edge/

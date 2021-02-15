@@ -2,20 +2,18 @@
 title: Azure App konfiguration som Event Grid källa
 description: I den här artikeln beskrivs hur du använder Azure App konfiguration som en Event Grid händelse källa. Det innehåller schemat och länkar till självstudier och instruktions artiklar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: d305236e8408052be4be28ec003f4e545119fc59
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 02/11/2021
+ms.openlocfilehash: a64c6fead5e6d95ba11bc98d7e9a52e3021c3be2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550682"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366780"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Azure App konfiguration som en Event Grid källa
 Den här artikeln innehåller egenskaper och schema för Azure App konfigurations händelser. En introduktion till händelse scheman finns i [Azure Event Grid händelse schema](event-schema.md). Du får också en lista med snabb starter och självstudier för att använda Azure App konfiguration som en händelse källa.
 
-## <a name="event-grid-event-schema"></a>Event Grid-händelseschema
-
-### <a name="available-event-types"></a>Tillgängliga händelse typer
+## <a name="available-event-types"></a>Tillgängliga händelse typer
 
 Azure App konfiguration avger följande händelse typer:
 
@@ -24,8 +22,9 @@ Azure App konfiguration avger följande händelse typer:
 | Microsoft. AppConfiguration. KeyValueModified | Utlöses när ett nyckel värde skapas eller ersätts. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Utlöses när ett nyckel värde tas bort. |
 
-### <a name="example-event"></a>Exempel händelse
+## <a name="example-event"></a>Exempel händelse
 
+# <a name="event-grid-event-schema"></a>[Event Grid-händelseschema](#tab/event-grid-event-schema)
 I följande exempel visas schemat för en händelse med nyckel värdes ändringar: 
 
 ```json
@@ -63,29 +62,87 @@ Schemat för en händelse som tar bort nyckel värde liknar:
   "metadataVersion": "1"
 }]
 ```
- 
-### <a name="event-properties"></a>Händelse egenskaper
+# <a name="cloud-event-schema"></a>[Molnbaserat händelseschema](#tab/cloud-event-schema)
+
+I följande exempel visas schemat för en händelse med nyckel värdes ändringar: 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueModified",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+Schemat för en händelse som tar bort nyckel värde liknar: 
+
+```json
+[{
+  "id": "84e17ea4-66db-4b54-8050-df8f7763f87b",
+  "source": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/microsoft.appconfiguration/configurationstores/contoso",
+  "subject": "https://contoso.azconfig.io/kv/Foo?label=FizzBuzz",
+  "data": {
+    "key": "Foo",
+    "label": "FizzBuzz",
+    "etag": "FnUExLaj2moIi4tJX9AXn9sakm0"
+  },
+  "type": "Microsoft.AppConfiguration.KeyValueDeleted",
+  "time": "2019-05-31T20:05:03Z",
+  "specversion": "1.0"
+}]
+```
+
+---
+
+## <a name="event-properties"></a>Händelse egenskaper
+
+# <a name="event-grid-event-schema"></a>[Event Grid-händelseschema](#tab/event-grid-event-schema)
+En händelse har följande data på översta nivån:
+
+| Egenskap | Typ | Description |
+| -------- | ---- | ----------- |
+| `topic` | sträng | Fullständig resurs Sök väg till händelse källan. Det går inte att skriva till det här fältet. Event Grid ger det här värdet. |
+| `subject` | sträng | Utgivardefinierad sökväg till händelseobjektet. |
+| `eventType` | sträng | En av de registrerade händelsetyperna för den här händelsekällan. |
+| `eventTime` | sträng | Tiden då händelsen genereras baserat på providerns UTC-tid. |
+| `id` | sträng | Unikt ID för händelsen. |
+| `data` | objekt | Händelse data för app-konfiguration. |
+| `dataVersion` | sträng | Dataobjektets schemaversion. Utgivaren definierar schemaversion. |
+| `metadataVersion` | sträng | Schemaversionen av händelsens metadata. Event Grid definierar schemat för de översta egenskaperna. Event Grid ger det här värdet. |
+
+
+# <a name="cloud-event-schema"></a>[Molnbaserat händelseschema](#tab/cloud-event-schema)
 
 En händelse har följande data på översta nivån:
 
 | Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
-| ämne | sträng | Fullständig resurs Sök väg till händelse källan. Det går inte att skriva till det här fältet. Event Grid ger det här värdet. |
-| Ämne | sträng | Utgivardefinierad sökväg till händelseobjektet. |
-| Händelsetyp | sträng | En av de registrerade händelsetyperna för den här händelsekällan. |
-| Händelsetid | sträng | Tiden då händelsen genereras baserat på providerns UTC-tid. |
-| ID | sträng | Unikt ID för händelsen. |
-| data | objekt | Händelse data för app-konfiguration. |
-| Dataversion | sträng | Dataobjektets schemaversion. Utgivaren definierar schemaversion. |
-| Metadataversion | sträng | Schemaversionen av händelsens metadata. Event Grid definierar schemat för de översta egenskaperna. Event Grid ger det här värdet. |
+| `source` | sträng | Fullständig resurs Sök väg till händelse källan. Det går inte att skriva till det här fältet. Event Grid ger det här värdet. |
+| `subject` | sträng | Utgivardefinierad sökväg till händelseobjektet. |
+| `type` | sträng | En av de registrerade händelsetyperna för den här händelsekällan. |
+| `time` | sträng | Tiden då händelsen genereras baserat på providerns UTC-tid. |
+| `id` | sträng | Unikt ID för händelsen. |
+| `data` | objekt | Händelse data för app-konfiguration. |
+| `specversion` | sträng | CloudEvents schema Specifikations version. |
+
+---
 
 Data-objektet har följande egenskaper:
 
 | Egenskap | Typ | Description |
 | -------- | ---- | ----------- |
-| key | sträng | Nyckeln till det nyckel värde som ändrades eller togs bort. |
-| etikett | sträng | Etiketten, om det finns, för det nyckel värde som ändrades eller togs bort. |
-| etag | sträng | För `KeyValueModified` etag för det nya nyckel värdet. För `KeyValueDeleted` etag för det nyckel värde som har tagits bort. |
+| `key` | sträng | Nyckeln till det nyckel värde som ändrades eller togs bort. |
+| `label` | sträng | Etiketten, om det finns, för det nyckel värde som ändrades eller togs bort. |
+| `etag` | sträng | För `KeyValueModified` etag för det nya nyckel värdet. För `KeyValueDeleted` etag för det nyckel värde som har tagits bort. |
+
 
 ## <a name="tutorials-and-how-tos"></a>Självstudier och instruktioner
 

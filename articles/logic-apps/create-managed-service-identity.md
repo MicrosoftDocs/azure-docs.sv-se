@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 02/12/2021
+ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520671"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Autentisera åtkomst till Azure-resurser med hjälp av hanterade identiteter i Azure Logic Apps
 
@@ -30,6 +30,9 @@ För närvarande kan endast [vissa inbyggda utlösare och åtgärder](../logic-a
 * Azure Functions
 * HTTP
 * HTTP + webhook
+
+> [!NOTE]
+> Även om HTTP-utlösaren och åtgärden kan autentisera anslutningar för att Azure Storage konton bakom Azure-brandväggar med hjälp av den systemtilldelade hanterade identiteten, kan de inte använda den användare som tilldelats den hanterade identiteten för att autentisera samma anslutningar.
 
 **Hanterade anslutningar**
 
@@ -457,8 +460,8 @@ HTTP-utlösaren eller åtgärden kan använda den systemtilldelade identitet som
 |----------|----------|-------------|
 | **Metod** | Ja | HTTP-metoden som används av den åtgärd som du vill köra |
 | **URI** | Ja | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
-| **Sidhuvuden** | Nej | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
-| **Frågor** | Nej | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
+| **Sidhuvuden** | Inga | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
+| **Frågor** | Inga | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
 | **Autentisering** | Ja | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
 ||||
 

@@ -4,12 +4,12 @@ description: Lär dig Azure Functions koncept och tekniker som du behöver för 
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936744"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386908"
 ---
 # <a name="azure-functions-developer-guide"></a>Utvecklarguide för Azure Functions
 I Azure Functions delar specifika funktioner några viktiga tekniska koncept och komponenter, oavsett vilket språk eller vilken bindning du använder. Innan du hoppar till inlärnings information som är specifik för ett specifikt språk eller en bindning bör du läsa igenom den här översikten som gäller för alla.
@@ -40,11 +40,11 @@ Mer information finns i [Azure Functions utlösare och bindningar begrepp](funct
 
 `bindings`Egenskapen är den plats där du konfigurerar både utlösare och bindningar. Varje bindning delar några vanliga inställningar och vissa inställningar som är specifika för en viss typ av bindning. Varje bindning kräver följande inställningar:
 
-| Egenskap | Värden/typer | Kommentarer |
-| --- | --- | --- |
-| `type` |sträng |Bindnings typ. Ett exempel är `queueTrigger`. |
-| `direction` |in, out |Anger om bindningen avser att ta emot data i funktionen eller skicka data från funktionen. |
-| `name` |sträng |Namnet som används för de data som är kopplade till funktionen. För C# är detta ett argument namn. för Java Script är det nyckeln i en nyckel/värde-lista. |
+| Egenskap    | Värden | Typ | Kommentarer|
+|---|---|---|---|
+| typ  | Bindnings namn.<br><br>Till exempel `queueTrigger`. | sträng | |
+| riktning | `in`, `out`  | sträng | Anger om bindningen avser att ta emot data i funktionen eller skicka data från funktionen. |
+| name | Funktions identifierare.<br><br>Till exempel `myQueue`. | sträng | Namnet som används för de data som är kopplade till funktionen. För C# är detta ett argument namn. för Java Script är det nyckeln i en nyckel/värde-lista. |
 
 ## <a name="function-app"></a>Funktionsapp
 En Function-app tillhandahåller en körnings kontext i Azure där dina funktioner körs. Därför är det enheten för distribution och hantering av dina funktioner. En Function-app består av en eller flera enskilda funktioner som hanteras, distribueras och skalas tillsammans. Alla funktioner i en Function-app delar samma pris plan, distributions metod och körnings version. Tänk på en Function-app som ett sätt att ordna och hantera dina funktioner gemensamt. Mer information finns i [hantera en Function-app](functions-how-to-use-azure-function-app-settings.md). 
@@ -91,6 +91,83 @@ Här är en tabell med alla bindningar som stöds.
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
 
 Har du problem med fel som kommer från bindningarna? Läs dokumentationen om [Azure Functions bindnings fel koder](functions-bindings-error-pages.md) .
+
+
+## <a name="connections"></a>Anslutningar
+
+Ditt funktions projekt refererar anslutnings information efter namn från dess Konfigurationsprovider. Anslutnings informationen accepteras inte direkt, så att de kan ändras i olika miljöer. En utlösnings definition kan till exempel innehålla en `connection` egenskap. Detta kan referera till en anslutnings sträng, men du kan inte ange anslutnings strängen direkt i en `function.json` . I stället skulle du ange `connection` namnet på en miljö variabel som innehåller anslutnings strängen.
+
+Standardprovidern för konfiguration använder miljövariabler. De kan ställas in genom [program inställningar](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) när de körs i Azure Functionss tjänsten eller från den [lokala inställnings filen](functions-run-local.md#local-settings-file) när du utvecklar lokalt.
+
+### <a name="connection-values"></a>Anslutnings värden
+
+När anslutnings namnet matchar ett enda exakt värde, identifierar körningen värdet som en _anslutnings sträng_, som vanligt vis innehåller en hemlighet. Information om en anslutnings sträng definieras av den tjänst som du vill ansluta till.
+
+Ett anslutnings namn kan dock också referera till en samling med flera konfigurations objekt. Miljövariabler kan behandlas som en samling med hjälp av ett delat prefix som slutar med dubbel under streck `__` . Gruppen kan sedan refereras genom att ange anslutnings namnet till det här prefixet.
+
+Till exempel `connection` kan egenskapen för en definition av en Azure Blob-utlösare vara `Storage1` . Så länge det inte finns något enskilt sträng värde konfigurerat med `Storage1` som namn, `Storage1__serviceUri` skulle användas för `serviceUri` anslutningens egenskap. Anslutnings egenskaperna är olika för varje tjänst. Läs dokumentationen för tillägget som använder-anslutningen.
+
+### <a name="configure-an-identity-based-connection"></a>Konfigurera en Identity-baserad anslutning
+
+Vissa anslutningar i Azure Functions konfigureras för att använda en identitet i stället för en hemlighet. Stödet är beroende av tillägget med anslutningen. I vissa fall kan en anslutnings sträng fortfarande krävas i functions även om tjänsten som du ansluter till har stöd för identitetsbaserade anslutningar.
+
+> [!IMPORTANT]
+> Även om ett bindnings tillägg har stöd för identitetsbaserade anslutningar kanske den konfigurationen inte stöds än i förbruknings planen. Se support tabellen nedan.
+
+Identitetsbaserade anslutningar stöds av följande utlösare och bindnings tillägg:
+
+| Tilläggs namn | Tilläggsversion                                                                                     | Har stöd för identitetsbaserade anslutningar i förbruknings planen |
+|----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Azure-blobb     | [Version 5.0.0 – beta1 eller senare](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | Inga                                    |
+| Azure Queue    | [Version 5.0.0 – beta1 eller senare](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | Inga                                    |
+
+> [!NOTE]
+> Stöd för identitetsbaserade anslutningar är ännu inte tillgängligt för lagrings anslutningar som används av Functions-körningen för kärn funktioner. Det innebär att `AzureWebJobsStorage` inställningen måste vara en anslutnings sträng.
+
+#### <a name="connection-properties"></a>Anslutningsegenskaper
+
+En identitets baserad anslutning för en Azure-tjänst godkänner följande egenskaper:
+
+| Egenskap    | Miljövariabel | Krävs | Beskrivning |
+|---|---|---|---|
+| Tjänst-URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Ja | Data planens URI för tjänsten som du ansluter till. |
+
+Ytterligare alternativ kan ha stöd för en specifik Anslutnings typ. Se dokumentationen för komponenten som gör anslutningen.
+
+När den Azure Functions tjänsten används en [hanterad identitet](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)i identitetsbaserade anslutningar. Den systemtilldelade identiteten används som standard. När den körs i andra kontexter, till exempel lokal utveckling, används din utvecklares identitet istället, även om detta kan anpassas med alternativa anslutnings parametrar.
+
+##### <a name="local-development"></a>Lokal utveckling
+
+När du kör lokalt visas konfigurationen ovan för körning av den lokala utvecklarens identitet. Anslutningen kommer att försöka hämta en token från följande platser i ordning:
+
+- En lokal cache som delas mellan Microsoft-program
+- Den aktuella användar kontexten i Visual Studio
+- Den aktuella användar kontexten i Visual Studio Code
+- Den aktuella användar kontexten i Azure CLI
+
+Om inget av dessa alternativ lyckas uppstår ett fel.
+
+I vissa fall kanske du vill ange användning av en annan identitet. Du kan lägga till konfigurations egenskaper för den anslutning som pekar på den alternativa identiteten.
+
+> [!NOTE]
+> Följande konfigurations alternativ stöds inte när tjänsten Azure Functions körs.
+
+Om du vill ansluta med ett Azure Active Directory tjänstens huvud namn med ett klient-ID och en hemlighet definierar du anslutningen med följande egenskaper:
+
+| Egenskap    | Miljövariabel | Krävs | Beskrivning |
+|---|---|---|---|
+| Tjänst-URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | Ja | Data planens URI för tjänsten som du ansluter till. |
+| Klient-ID:t | `<CONNECTION_NAME_PREFIX>__tenantId` | Ja | ID för Azure Active Directory klient organisation (katalog). |
+| Klient-ID | `<CONNECTION_NAME_PREFIX>__clientId` | Ja |  Klient-ID för en app-registrering i klienten. |
+| Klienthemlighet | `<CONNECTION_NAME_PREFIX>__clientSecret` | Ja | En klient hemlighet som genererades för registrering av appen. |
+
+#### <a name="grant-permission-to-the-identity"></a>Bevilja behörighet till identiteten
+
+Vilken identitet som används måste ha behörighet att utföra de avsedda åtgärderna. Detta görs vanligt vis genom att tilldela en roll i Azure RBAC eller ange identiteten i en åtkomst princip, beroende på vilken tjänst som du ansluter till. Läs dokumentationen för varje tjänst om vilka behörigheter som krävs och hur de kan ställas in.
+
+> [!IMPORTANT]
+> Vissa behörigheter kan exponeras av tjänsten som inte behövs för alla sammanhang. Om möjligt följer du **principen om minsta behörighet** och beviljar endast behörighet som krävs av identiteten. Om appen till exempel bara behöver läsa från en BLOB, använder du rollen [Storage BLOB data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) som [lagrings data ägarens BLOB-dataägare](../role-based-access-control/built-in-roles.md#storage-blob-data-owner) , inklusive för hög behörighet för en Läs åtgärd.
+
 
 ## <a name="reporting-issues"></a>Rapporterings problem
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

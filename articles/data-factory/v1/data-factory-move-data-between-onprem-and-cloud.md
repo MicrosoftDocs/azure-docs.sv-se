@@ -1,23 +1,18 @@
 ---
 title: Flytta data – Data Management Gateway
 description: Konfigurera en datagateway för att flytta data mellan lokala platser och molnet. Använd Data Management Gateway i Azure Data Factory för att flytta dina data.
-services: data-factory
-documentationcenter: ''
 author: nabhishek
-manager: anandsub
-ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
+ms.author: abnarain
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019692"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380295"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Flytta data mellan lokala källor och molnet med Data Management Gateway
 > [!NOTE]
@@ -236,7 +231,7 @@ I det här steget kan du skapa indata och utdata datauppsättningar som represen
             }
         }
     }     
-    ```     
+    ```       
    Observera följande punkter:
 
    * **typ** är inställd på **SqlServerTable**.
@@ -384,7 +379,7 @@ I det här steget skapar du en **pipeline** med en **kopierings aktivitet** som 
     Du kan zooma in, zooma ut, zooma till 100%, zooma för att passa, placera pipelines och data uppsättningar automatiskt och Visa härkomst information (markerar överordnade och underordnade objekt till markerade objekt).  Du kan dubbelklicka på ett objekt (data uppsättning för indata/utdata eller pipelinen) om du vill se egenskaper för det.
 
 ## <a name="monitor-pipeline"></a>Övervaka pipeline
-I det här steget ska du använda Azure-portalen för att övervaka vad som händer i en Azure-datafabrik. Du kan också använda PowerShell-cmdletar för att övervaka datauppsättningar och pipelines. Mer information om övervakning finns i [övervaka och hantera pipeliner](data-factory-monitor-manage-pipelines.md).
+I det här steget använder du Azure Portal för att övervaka vad som händer i en Azure Data Factory. Du kan också använda PowerShell-cmdletar för att övervaka datauppsättningar och pipelines. Mer information om övervakning finns i [övervaka och hantera pipeliner](data-factory-monitor-manage-pipelines.md).
 
 1. I diagrammet dubbelklickar du på **EmpOnPremSQLTable**.  
 
@@ -408,7 +403,7 @@ I det här steget ska du använda Azure-portalen för att övervaka vad som hän
 8. valfritt Klicka på **pipeliner**, klicka på **ADFTutorialOnPremDF** och gå igenom inmatnings tabeller (**förbrukade**) eller utdata-datauppsättningar (**producerade**).
 9. Använd verktyg som [Microsoft Storage Explorer](https://storageexplorer.com/) för att kontrol lera att en BLOB/fil skapas för varje timme.
 
-   ![Azure Lagringsutforskaren](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Nästa steg
 * Se [Data Management Gateway](data-factory-data-management-gateway.md) artikel för all information om data Management Gateway.
