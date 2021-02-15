@@ -6,18 +6,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 40003db9c3bd2c736f9cedd73b8b7a31a77f625f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: d63a31eae57d09f1658f5f19c1518cb0648fa4e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854588"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373765"
 ---
-# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Använd Azure Portal för att tilldela en Azure-roll för åtkomst till blob-och Queue-data
+# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Använda Azure-portalen för tilldelning av en Azure-roll för åtkomst till blob- och ködata
 
 Azure Active Directory (Azure AD) tillåter åtkomst rättigheter till skyddade resurser via [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../role-based-access-control/overview.md). Azure Storage definierar en uppsättning inbyggda Azure-roller som omfattar vanliga uppsättningar behörigheter som används för att få åtkomst till BLOB-eller Queue-data.
 
@@ -43,10 +43,12 @@ När du har bestämt lämplig omfattning för en roll tilldelning navigerar du t
 
 I följande avsnitt beskrivs var och en av de här stegen i detalj.
 
-> [!NOTE]
+> [!IMPORTANT]
 > När du skapar ett Azure Storage-konto tilldelas du inte automatiskt behörigheter för åtkomst till data via Azure AD. Du måste uttryckligen tilldela dig själv en Azure-roll för Azure Storage. Du kan tilldela den på nivån för din prenumeration, resurs grupp, lagrings konto eller behållare eller kö.
 >
 > Innan du tilldelar dig själv en roll för data åtkomst kommer du att kunna komma åt data i ditt lagrings konto via Azure Portal eftersom Azure Portal även kan använda konto nyckeln för data åtkomst. Mer information finns i [Välj hur du godkänner åtkomst till BLOB-data i Azure Portal](../blobs/authorize-data-operations-portal.md).
+>
+> Om lagrings kontot är låst med ett Azure Resource Manager skrivskyddat lås, förhindrar låset tilldelningen av Azure RBAC-roller som är begränsade till lagrings kontot eller till en data behållare (BLOB container eller queue).
 
 ### <a name="assign-an-azure-built-in-role"></a>Tilldela en inbyggd Azure-roll
 

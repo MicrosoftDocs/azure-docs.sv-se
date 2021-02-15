@@ -1,21 +1,18 @@
 ---
 title: Använd anpassade aktiviteter i en pipeline
 description: Lär dig hur du skapar anpassade aktiviteter med hjälp av .NET och sedan använder aktiviteterna i en Azure Data Factory pipeline.
-services: data-factory
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ec1e7c77c44cf1969e472a6e7288d1af5d6640e1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632115"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374804"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Använda anpassade aktiviteter i en Azure Data Factory-pipeline)
 
@@ -100,18 +97,18 @@ I det här exemplet är helloworld.exe ett anpassat program som lagras i mappen 
 
 I följande tabell beskrivs namn och beskrivningar av egenskaper som är unika för den här aktiviteten.
 
-| Egenskap              | Beskrivning                              | Krävs |
+| Egenskap              | Beskrivning                              | Obligatorisk |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | Namn på aktiviteten i pipelinen     | Ja      |
-| description           | Text som beskriver vad aktiviteten gör.  | Nej       |
-| typ                  | För anpassad aktivitet är aktivitets typen **anpassad** . | Ja      |
+| beskrivning           | Text som beskriver vad aktiviteten gör.  | Inga       |
+| typ                  | För anpassad aktivitet är aktivitets typen **anpassad**. | Ja      |
 | linkedServiceName     | Länkad tjänst till Azure Batch. Mer information om den här länkade tjänsten finns i artikeln [Compute-länkade tjänster](compute-linked-services.md) .  | Ja      |
 | command               | Kommando för det anpassade program som ska köras. Om programmet redan är tillgängligt i noden Azure Batch pool kan resourceLinkedService och folderPath hoppas över. Du kan till exempel ange kommandot som `cmd /c dir` är inbyggt i Windows batch pool-noden. | Ja      |
 | resourceLinkedService | Azure Storage länkad tjänst till lagrings kontot där det anpassade programmet lagras | Inga &#42;       |
 | folderPath            | Sökväg till mappen för det anpassade programmet och alla dess beroenden<br/><br/>Om du har beroenden lagrade i undermappar – det vill säga i en hierarkisk mappstruktur under *folderPath* , är mappstrukturen för närvarande utplattad när filerna kopieras till Azure Batch. Det innebär att alla filer kopieras till en enda mapp utan undermappar. Undvik problemet genom att komprimera filerna, kopiera den komprimerade filen och packa upp den med anpassad kod på önskad plats. | Inga &#42;       |
-| referenceObjects      | En matris med befintliga länkade tjänster och data uppsättningar. Refererade länkade tjänster och data uppsättningar skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till resurser i Data Factory | Nej       |
-| extendedProperties    | Användardefinierade egenskaper som kan skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till ytterligare egenskaper | Nej       |
-| retentionTimeInDays | Retentions tiden för de filer som skickas för den anpassade aktiviteten. Standardvärdet är 30 dagar. | Nej |
+| referenceObjects      | En matris med befintliga länkade tjänster och data uppsättningar. Refererade länkade tjänster och data uppsättningar skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till resurser i Data Factory | Inga       |
+| extendedProperties    | Användardefinierade egenskaper som kan skickas till det anpassade programmet i JSON-format så att din anpassade kod kan referera till ytterligare egenskaper | Inga       |
+| retentionTimeInDays | Retentions tiden för de filer som skickas för den anpassade aktiviteten. Standardvärdet är 30 dagar. | Inga |
 
 &#42; egenskaperna `resourceLinkedService` och `folderPath` måste antingen anges eller båda utelämnas.
 
@@ -310,7 +307,7 @@ Du kan skicka anpassade värden från koden i en anpassad aktivitet tillbaka til
 
 ## <a name="retrieve-securestring-outputs"></a>Hämta SecureString-utdata
 
-Känsliga egenskaps värden som anges som typ *SecureString* , som du ser i några av exemplen i den här artikeln, maskeras ut i fliken övervakning i Data Factory användar gränssnitt.  I faktisk pipeline-körning serialiseras dock egenskapen *SecureString* som JSON i `activity.json` filen som oformaterad text. Exempel:
+Känsliga egenskaps värden som anges som typ *SecureString*, som du ser i några av exemplen i den här artikeln, maskeras ut i fliken övervakning i Data Factory användar gränssnitt.  I faktisk pipeline-körning serialiseras dock egenskapen *SecureString* som JSON i `activity.json` filen som oformaterad text. Exempel:
 
 ```json
 "extendedProperties": {
@@ -342,7 +339,7 @@ I följande tabell beskrivs skillnaderna mellan den anpassade aktiviteten Data F
 |Så här definieras anpassad logik      |Genom att tillhandahålla en körbar fil      |Genom att implementera en .NET-DLL      |
 |Körnings miljö för den anpassade logiken      |Windows eller Linux      |Windows (.NET Framework 4.5.2)      |
 |Kör skript      |Stöder körning av skript direkt (till exempel "cmd/c ECHO Hello World" på Windows VM)      |Kräver implementering i .NET-DLL      |
-|Data mängd krävs      |Valfri      |Krävs för att kedja aktiviteter och skicka information      |
+|Data mängd krävs      |Valfritt      |Krävs för att kedja aktiviteter och skicka information      |
 |Skicka information från aktivitet till anpassad logik      |Genom ReferenceObjects (LinkedServices och data uppsättningar) och ExtendedProperties (anpassade egenskaper)      |Via ExtendedProperties (anpassade egenskaper), indata och utdata för data uppsättningar      |
 |Hämta information i anpassad logik      |Parsar activity.jspå, linkedServices.jspå och datasets.jslagrade i samma mapp som den körbara filen      |Via .NET SDK (.NET Frame 4.5.2)      |
 |Loggning      |Skriver direkt till STDOUT      |Implementera loggar i .NET-DLL      |

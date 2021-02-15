@@ -1,24 +1,19 @@
 ---
 title: Use custom activities in an Azure Data Factory pipeline (Använda anpassade aktiviteter i en Azure Data Factory-pipeline)
 description: Lär dig hur du skapar anpassade aktiviteter och använder dem i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
-ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-csharp
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3832175910f3a6d3e6a7de8da932b32436cc2452
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606954"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393028"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Använd anpassade aktiviteter i en Azure Data Factory version 1-pipeline
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -43,18 +38,18 @@ Följande genom gång innehåller stegvisa instruktioner för hur du skapar en a
 > - Det går inte att använda en Data Management Gateway från en anpassad aktivitet för att komma åt lokala data källor. För närvarande stöder [Data Management Gateway](data-factory-data-management-gateway.md) endast aktiviteten Kopiera aktivitet och lagrad procedur i Data Factory.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Genom gång: skapa en anpassad aktivitet
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 * Visual Studio 2012/2013/2015/2017
 * Ladda ned och installera [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch förutsättningar
 I genom gången kör du dina anpassade .NET-aktiviteter med Azure Batch som en beräknings resurs. **Azure Batch** är en plattformstjänst för effektiv körning av storskaliga parallella program och HPC-program (databehandling med höga prestanda) i molnet. Azure Batch schemalägger beräknings intensiva arbete som ska köras på en hanterad **samling virtuella datorer** och kan automatiskt skala beräknings resurser för att uppfylla jobbens behov. En detaljerad översikt över tjänsten Azure Batch finns i artikeln [Azure Batch grundläggande][batch-technical-overview] information.
 
-För självstudien skapar du ett Azure Batch-konto med en pool med virtuella datorer. Gör så här:
+För självstudien skapar du ett Azure Batch-konto med en pool med virtuella datorer. Här är stegen:
 
 1. Skapa ett **Azure Batch konto** med hjälp av [Azure Portal](https://portal.azure.com). Instruktioner finns i artikeln [skapa och hantera en Azure Batch konto][batch-create-account] .
 2. Anteckna Azure Batch konto namn, konto nyckel, URI och poolnamn. Du behöver dem för att skapa en Azure Batch länkad tjänst.
-    1. På Start sidan för Azure Batch konto visas en **URL** i följande format: `https://myaccount.westus.batch.azure.com` . I det här exemplet är ditt **konto** namnet på Azure Batch kontot. URI som du använder i den länkade tjänst definitionen är URL: en utan namnet på kontot. Till exempel: `https://<region>.batch.azure.com`.
+    1. På Start sidan för Azure Batch konto visas en **URL** i följande format: `https://myaccount.westus.batch.azure.com` . I det här exemplet är ditt **konto** namnet på Azure Batch kontot. URI som du använder i den länkade tjänst definitionen är URL: en utan namnet på kontot. Exempel: `https://<region>.batch.azure.com`.
     2. Klicka på **nycklar** i den vänstra menyn och kopiera den **primära åtkomst nyckeln**.
     3. Om du vill använda en befintlig pool klickar du på **pooler** på menyn och noterar **ID** för poolen. Om du inte har en befintlig pool går du vidare till nästa steg.
 2. Skapa en **Azure Batch pool**.
@@ -247,7 +242,7 @@ Metoden returnerar en ord lista som kan användas för att kedja samman anpassad
                                      null);
 
             // Calculate method returns the number of occurrences of
-            // the search term (“Microsoft”) in each blob associated
+            // the search term ("Microsoft") in each blob associated
             // with the data slice. definition of the method is shown in the next step.
 
             output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");

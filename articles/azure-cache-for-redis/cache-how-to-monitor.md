@@ -1,19 +1,19 @@
 ---
-title: Övervaka Azure Cache for Redis
+title: Övervaka Azure cache för Redis
 description: Lär dig hur du övervakar hälsa och prestanda för Azure-cache för Redis-instanser
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.date: 07/13/2017
-ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/08/2021
+ms.openlocfilehash: ea99c34f03cd74185840767605c17ee6c65eb701
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327346"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389713"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Övervaka Azure Cache for Redis
+# <a name="monitor-azure-cache-for-redis"></a>Övervaka Azure cache för Redis
 
 Azure cache för Redis använder [Azure Monitor](../azure-monitor/index.yml) för att tillhandahålla flera alternativ för att övervaka dina cache-instanser. Du kan visa mått, fästa mått diagram på Start sidan, anpassa datum-och tidsintervallet för övervaknings diagram, lägga till och ta bort mått från diagrammen och ange aviseringar när vissa villkor uppfylls. Med de här verktygen kan du övervaka Azure-cachens hälso tillstånd för Redis-instanser och hjälpa dig att hantera dina cachelagring-program.
 
@@ -109,7 +109,7 @@ Varje mått innehåller två versioner. Ett mått mäter prestanda för hela cac
 | Hämtningar |Antalet get-åtgärder från cachen under det angivna rapporterings intervallet. Det här värdet är summan av följande värden från Redis-information alla kommando:,,,,,, och `cmdstat_get` `cmdstat_hget` `cmdstat_hgetall` `cmdstat_hmget` `cmdstat_mget` `cmdstat_getbit` `cmdstat_getrange` motsvarar summan av cacheträffar och missar under rapporterings intervallet. |
 | Åtgärder per sekund | Det totala antalet kommandon som bearbetas per sekund av cache-servern under det angivna rapporterings intervallet.  Det här värdet mappar till "instantaneous_ops_per_sec" från kommandot Redis INFO. |
 | Redis server-belastning |Procent andelen cykler där Redis-servern är upptagen och väntar inte på inaktivitet för meddelanden. Om den här räknaren når 100 innebär det att Redis-servern har uppnått ett prestanda tak och att processorn inte kan bearbeta arbetet snabbare. Om du ser hög redis server belastning visas timeout-undantag i klienten. I detta fall bör du överväga att skala upp eller partitionera data i flera cacheminnen. |
-| Inställningar |Antalet set-åtgärder som ska cachelagras under det angivna rapporterings intervallet. Det här värdet är summan av följande värden från Redis information all-kommando:,,,,,,,,, `cmdstat_set` `cmdstat_hset` `cmdstat_hmset` `cmdstat_hsetnx` `cmdstat_lset` `cmdstat_mset` `cmdstat_msetnx` `cmdstat_setbit` `cmdstat_setex` `cmdstat_setrange` och `cmdstat_setnx` . |
+| Uppsättningar |Antalet set-åtgärder som ska cachelagras under det angivna rapporterings intervallet. Det här värdet är summan av följande värden från Redis information all-kommando:,,,,,,,,, `cmdstat_set` `cmdstat_hset` `cmdstat_hmset` `cmdstat_hsetnx` `cmdstat_lset` `cmdstat_mset` `cmdstat_msetnx` `cmdstat_setbit` `cmdstat_setex` `cmdstat_setrange` och `cmdstat_setnx` . |
 | Totalt antal nycklar  | Det maximala antalet nycklar i cacheminnet under den förflutna tids perioden för rapportering. Det här numret mappar till `keyspace` från REDIS information-kommandot. På grund av en begränsning i det underliggande mått systemet, returnerar totalt antal nycklar det maximala antalet nycklar för Shard som hade det maximala antalet nycklar under rapporterings intervallet.  |
 | Totalt antal åtgärder |Det totala antalet kommandon som bearbetas av cache-servern under det angivna rapporterings intervallet. Det här värdet mappar till `total_commands_processed` från REDIS information-kommandot. När Azure cache för Redis används rent för pub/sub, kommer det inte att finnas några mått för `Cache Hits` , `Cache Misses` ,, `Gets` eller `Sets` , men det kommer att finnas `Total Operations` mått som återspeglar cache-användningen för pub/sub-åtgärder. |
 | Använt minne |Mängden cache-minne som används för nyckel/värde-par i cacheminnet i MB under det angivna rapporterings intervallet. Det här värdet mappar till `used_memory` från REDIS information-kommandot. Det här värdet inkluderar inte metadata eller fragmentering. |

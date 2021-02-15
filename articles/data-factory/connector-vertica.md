@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Vertica med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från Vertica till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f9b743d768aabbd7949094ae4b7366c46eabf4c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95cbc459da3935a39d2830a074f4e5d8e72e617
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410073"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384052"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopiera data från Vertica med hjälp av Azure Data Factory 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +29,7 @@ Du kan kopiera data från Vertica till alla mottagar data lager som stöds. En l
 
 Azure Data Factory innehåller en inbyggd driv rutin som möjliggör anslutning, och du behöver därför inte installera någon driv rutin manuellt med hjälp av den här anslutningen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -81,13 +76,13 @@ Följande egenskaper stöds för den länkade tjänsten Vertica:
         "type": "Vertica",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

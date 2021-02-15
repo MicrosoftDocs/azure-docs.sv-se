@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99579813"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515095"
 ---
 ## <a name="download-and-install"></a>Hämta och installera
 
@@ -39,6 +39,16 @@ Om du skriver ut till en fil kan en text redigerare som anteckningar eller en we
 
 #### <a name="linux-install"></a>[Linux-installation](#tab/linuxinstall)
 
+Följande Linux-distributioner stöds för x64-arkitekturer med hjälp av tal CLI:
+
+* CentOS 7/8
+* Debian 9/10 
+* Red Hat Enterprise Linux (RHEL) 7/8
+* Ubuntu 16.04/18.04/20.04
+
+> [!NOTE]
+> Fler arkitekturer stöds av talet SDK (inte tal-CLI). Mer information finns i [om tal-SDK](../speech-sdk.md).
+
 Följ de här stegen för att installera Speech CLI på Linux på en x64-processor:
 
 1. Installera [.net Core 3,1](/dotnet/core/install/linux).
@@ -49,7 +59,7 @@ Följ de här stegen för att installera Speech CLI på Linux på en x64-process
 Skriv `spx` för att se hjälp för tal-cli.
 
 > [!NOTE]
-> Som ett alternativ till NuGet kan du hämta binärfilerna i zip- [arkivet](https://aka.ms/speech/spx-zips.zip), extrahera `spx-netcore-30-linux-x64` till en ny `~/spx` katalog, skriva `sudo chmod +r+x spx` på den binära och lägga till `~/spx` sökvägen till din PATH-systemvariabel.
+> Som ett alternativ till NuGet kan du hämta binärfilerna i zip- [arkivet](https://aka.ms/speech/spx-zips.zip), extrahera `spx-netcore-30-linux-x64.zip` till en ny `~/spx` katalog, skriva `sudo chmod +r+x spx` på den binära och lägga till `~/spx` sökvägen till din PATH-systemvariabel.
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker-installation (Windows, Linux, macOS)](#tab/dockerinstall)
@@ -107,7 +117,7 @@ Om du vill använda `spx` kommandot som är installerat i en behållare, anger d
 I Windows anger det här kommandot till exempel din nyckel:
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
 ```
 
 För mer utökad interaktion med kommando rads verktyget kan du starta en behållare med ett interaktivt bash-gränssnitt genom att lägga till en EntryPoint-parameter.
@@ -160,8 +170,8 @@ Om du vill börja använda tal-CLI måste du ange din röst prenumerations nycke
 När du har en prenumerations nyckel och region-ID (t. ex. `eastus`, `westus` ), kör följande kommandon.
 
 ```console
-spx config @key --set SUBSCRIPTION-KEY
-spx config @region --set REGION
+spx config --set @key SUBSCRIPTION-KEY
+spx config --set @region REGION
 ```
 
 Din prenumerations-autentisering lagras nu för framtida SPX-begäranden. Om du behöver ta bort något av dessa lagrade värden kör `spx config @region --clear` eller `spx config @key --clear` .

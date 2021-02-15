@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2884df3a9b5cb3954c1c5e57d923eff97809a745
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012773"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382182"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Snabb start: hantera blobbar med Java Script V12 SDK i Node.js
 
@@ -240,7 +240,7 @@ console.log('\nDownloaded blob content...');
 console.log('\t', await streamToString(downloadBlockBlobResponse.readableStreamBody));
 ```
 
-Lägg till den här hjälp *after* funktionen efter `main` funktionen:
+Lägg till den här hjälp  funktionen efter `main` funktionen:
 
 ```javascript
 // A helper function used to read a Node.js readable stream into a string
@@ -276,7 +276,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 Den här appen skapar en text sträng och laddar upp den till Blob Storage. I exemplet visas sedan en lista över blobarna i behållaren, laddar ned bloben och visar hämtade data.
 
-Från en konsol tolk navigerar du till katalogen som innehåller filen *BLOB-QuickStart-V12.py* och kör sedan följande `node` kommando för att köra appen.
+Gå till den katalog som innehåller *blob-quickstart-v12.js* -filen från en konsol tolk och kör sedan följande `node` kommando för att köra appen.
 
 ```console
 node blob-quickstart-v12.js

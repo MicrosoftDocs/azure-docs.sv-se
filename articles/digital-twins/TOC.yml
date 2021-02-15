@@ -52,7 +52,11 @@
             - name: Skriptad version
               href: how-to-set-up-instance-scripted.md
         - name: Aktivera privat åtkomst med Private Link
-          href: how-to-enable-private-link.md
+          items:
+            - name: Portalversion
+              href: how-to-enable-private-link-portal.md
+            - name: CLI-version
+              href: how-to-enable-private-link-cli.md
         - name: Skriva appautentiseringskod
           href: how-to-authenticate-client.md
         - name: Skapa en appregistrering
@@ -103,12 +107,16 @@
       items:
         - name: Hantera slutpunkter och vägar
           items:
-            - name: 'API:er och CLI-version'
-              href: how-to-manage-routes-apis-cli.md
             - name: Portalversion
               href: how-to-manage-routes-portal.md
+            - name: 'API:er och CLI-version'
+              href: how-to-manage-routes-apis-cli.md
         - name: Aktivera en hanterad identitet för routning av händelser
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: Portalversion
+              href: how-to-enable-managed-identities-portal.md
+            - name: CLI-version
+              href: how-to-enable-managed-identities-cli.md
         - name: Integrera med Azure Maps
           href: how-to-integrate-maps.md
         - name: Integrera med Azure Time Series Insights

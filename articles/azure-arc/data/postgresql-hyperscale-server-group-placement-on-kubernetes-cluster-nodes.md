@@ -7,18 +7,18 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: ecc2e98d4c6c58e11b2bdc86b623f31d828cabc0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: b88b36ba8ec1d2d612adbbf19a6cf1e91fbb2cfd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985928"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377762"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc Enabled PostgreSQL, placering av Server grupp för storskalig Server grupp
 
-I den här artikeln får vi ett exempel på hur du kan illustrera hur PostgreSQL-instanser av Azure Arc-aktiverade PostgreSQL för storskaliga Server grupper placeras på de fysiska noderna i det Kubernetes-kluster som är värdar för dem. 
+I den här artikeln tar vi ett exempel på hur du kan illustrera hur PostgreSQL-instanser av Azure Arc-aktiverade PostgreSQL för storskalig Server grupp placeras på de fysiska noderna i det Kubernetes-kluster som är värdar för dem. 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -28,13 +28,13 @@ I det här exemplet använder vi ett Azure Kubernetes service-kluster (AKS) som 
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/1_cluster_portal.png" alt-text="4 Node AKS-kluster i Azure Portal":::
 
-Visa en lista över de fysiska noderna i Kubernetes-klustret genom att köra kommandot:
+Visa en lista över de fysiska noderna i Kubernetes-klustret. Kör kommandot:
 
 ```console
 kubectl get nodes
 ```
 
-Som visar de fyra fysiska noderna i Kubernetes-klustret:
+`kubectl` Returnerar fyra fysiska noder inuti Kubernetes-klustret:
 
 ```output
 NAME                                STATUS   ROLES   AGE   VERSION
@@ -55,7 +55,7 @@ Ange poddar med kommandot:
 ```console
 kubectl get pods -n arc3
 ```
-Som ger följande utdata:
+`kubectl` avkastning
 
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -64,7 +64,7 @@ postgres01c-0         3/3     Running   0          9h
 postgres01w-0         3/3     Running   0          9h
 postgres01w-1         3/3     Running   0          9h
 ```
-Var och en av dessa poddar är värd för en PostgreSQL-instans. Tillsammans bildar de Azure Arc-aktiverade PostgreSQL-Server gruppen:
+Var och en av dessa poddar är värd för en PostgreSQL-instans. Tillsammans utgör poddar en Azure Arc-aktiverad PostgreSQL-Server grupp:
 
 ```output
 Pod name        Role in the server group
@@ -80,7 +80,7 @@ Nu ska vi titta på hur Kubernetes placerar poddar i Server gruppen. Beskriv var
 kubectl describe pod postgres01c-0 -n arc3
 ```
 
-Som ger följande utdata:
+`kubectl` avkastning
 
 ```output
 Name:         postgres01c-0
@@ -104,7 +104,7 @@ Och Observera också i beskrivningen av poddar, namnen på de behållare som var
 kubectl describe pod postgres01w-1 -n arc3
 ```
 
-Som ger följande utdata:
+`kubectl` avkastning
 
 ```output
 …
@@ -121,7 +121,7 @@ Containers:
 
 Varje Pod som är en del av Azure Arc-aktiverade PostgreSQL för skalnings Server gruppen värd för följande tre behållare:
 
-|Containers|Description
+|Containers|Beskrivning
 |----|----|
 |`Fluentbit` |Data * logg insamlare: https://fluentbit.io/
 |`Postgres`|PostgreSQL instans del av Azure Arc-aktiverade PosgreSQL för storskalig Server grupp
@@ -131,7 +131,7 @@ Arkitekturen ser ut så här:
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3 poddar varje placering på separata noder":::
 
-Det innebär att varje PostgreSQL-instans som utgörs av Azure Arc-aktiverade PostgreSQL för storskalig Server grupp finns på en viss fysisk värd i Kubernetes-behållaren. Det här är den bästa konfigurationen för att få ut mesta möjliga prestanda av Azure-bågen aktiverade PostgreSQL för storskalig Server grupp som varje roll (koordinator och arbetare) använder resurserna för varje fysisk nod. Dessa resurser delas inte mellan flera PostgreSQL-roller.
+Det innebär att varje PostgreSQL-instans som utgörs av Azure Arc-aktiverade PostgreSQL för storskalig Server grupp finns på en viss fysisk värd i Kubernetes-behållaren. Den här konfigurationen ger flest prestanda från Azure-bågen aktiverat PostgreSQL-Server gruppen för hög skalning som varje roll (koordinator och arbetare) använder resurserna för varje fysisk nod. Dessa resurser delas inte mellan flera PostgreSQL-roller.
 
 ## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale"></a>Skala ut Azure Arc Enabled PostgreSQL-skalning
 
@@ -217,19 +217,19 @@ Använda samma kommandon som ovan. Vi ser vad varje fysisk nod är värd för:
 
 |Andra poddar namn\* |Användning|Kubernetes fysiska nod som värd för poddar
 |----|----|----
-|Start program – jh48b|Det här är en tjänst som hanterar inkommande begär Anden för att skapa, redigera och ta bort anpassade resurser, till exempel SQL-hanterade instanser, PostgreSQL för storskaliga Server grupper och data kontroller|AKS-agentpoolegenskap-42715708-vmss000003
+|Start program – jh48b|En tjänst som hanterar inkommande begär Anden för att skapa, redigera och ta bort anpassade resurser, till exempel SQL-hanterade instanser, PostgreSQL för storskaliga Server grupper och data kontroller|AKS-agentpoolegenskap-42715708-vmss000003
 |kontroll – gwmbs||AKS-agentpoolegenskap-42715708-vmss000002
-|controldb-0|Det här är det kontroll enhets data lager som används för att lagra konfiguration och tillstånd för datakontrollanten.|AKS-agentpoolegenskap-42715708-vmss000001
-|controlwd-zzjp7|Det här är tjänsten kontrollanten Watch hund som håller ett öga på tillgängligheten för datakontrollanten.|AKS-agentpoolegenskap-42715708-vmss000000
-|logsdb-0|Det här är en elastisk Sök instans som används för att lagra alla loggar som samlats in över alla Arc Data Services-poddar. ElasticSearch tar emot data från `Fluentbit` behållare för varje Pod|AKS-agentpoolegenskap-42715708-vmss000003
-|logsui-5fzv5|Det här är en Kibana-instans som finns ovanpå den elastiska Sök databasen för att presentera ett gränssnitt för Log Analytics.|AKS-agentpoolegenskap-42715708-vmss000003
-|metricsdb-0|Det här är en InfluxDB-instans som används för att lagra alla mått som samlas in över alla Arc Data Services-poddar. InfluxDB tar emot data från `Telegraf` behållaren för varje Pod|AKS-agentpoolegenskap-42715708-vmss000000
-|metricsdc-47d47|Det här är en daemonset som distribueras på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000002
-|metricsdc-864kj|Det här är en daemonset som distribueras på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000001
-|metricsdc-l8jkf|Det här är en daemonset som distribueras på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000003
-|metricsdc-nxm4l|Det här är en daemonset som distribueras på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000000
-|metricsui-4fb7l|Det här är en Grafana-instans som finns ovanpå InfluxDB-databasen för att presentera ett användar gränssnitt för övervakning av instrument paneler.|AKS-agentpoolegenskap-42715708-vmss000003
-|mgmtproxy-4qppp|Det här är ett proxy-lager för webbprogramproxy som är framför Grafana-och Kibana-instanserna.|AKS-agentpoolegenskap-42715708-vmss000002
+|controldb-0|Styrenhets data lagret som används för att lagra konfiguration och tillstånd för datakontrollanten.|AKS-agentpoolegenskap-42715708-vmss000001
+|controlwd-zzjp7|Tjänsten kontrollanten Watch hund som håller ett öga på tillgängligheten för datakontrollanten.|AKS-agentpoolegenskap-42715708-vmss000000
+|logsdb-0|En elastisk Sök instans som används för att lagra alla loggar som samlats in över alla Arc Data Services-poddar. ElasticSearch tar emot data från `Fluentbit` behållare för varje Pod|AKS-agentpoolegenskap-42715708-vmss000003
+|logsui-5fzv5|En Kibana-instans som placeras ovanpå den elastiska Sök databasen för att presentera ett gränssnitt för Log Analytics.|AKS-agentpoolegenskap-42715708-vmss000003
+|metricsdb-0|En InfluxDB-instans som används för att lagra alla mått som samlas in över alla Arc Data Services-poddar. InfluxDB tar emot data från `Telegraf` behållaren för varje Pod|AKS-agentpoolegenskap-42715708-vmss000000
+|metricsdc-47d47|En daemon-uppsättning distribuerad på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000002
+|metricsdc-864kj|En daemon-uppsättning distribuerad på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000001
+|metricsdc-l8jkf|En daemon-uppsättning distribuerad på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000003
+|metricsdc-nxm4l|En daemon-uppsättning distribuerad på alla Kubernetes-noder i klustret för att samla in mått på noder på radnivå.|AKS-agentpoolegenskap-42715708-vmss000000
+|metricsui-4fb7l|En Grafana-instans som finns ovanpå InfluxDB-databasen för att presentera ett användar gränssnitt för övervakning av instrument paneler.|AKS-agentpoolegenskap-42715708-vmss000003
+|mgmtproxy-4qppp|Ett proxy-skikt för webbprogramproxy som ligger framför Grafana-och Kibana-instanserna.|AKS-agentpoolegenskap-42715708-vmss000002
 
 > \* Suffixet på pod namn varierar beroende på andra distributioner. Dessutom visas en lista med de poddar som finns i Kubernetes-namnområdet för Azure Arc-datakontrollanten.
 
@@ -237,7 +237,7 @@ Arkitekturen ser ut så här:
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Alla poddar i namn området på olika noder":::
 
-Det innebär att koordinator-noderna (Pod 1) för den Azure-Arc-aktiverade postgres Server gruppen delar samma fysiska resurser som den tredje arbetsnoden (Pod 4) i Server gruppen. Det är acceptabelt som koordinator-noden använder vanligt vis mycket små resurser i jämförelse med hur en arbetsnoden kan använda. Från detta kan du härleda att du noga bör välja:
+Som det beskrivs ovan delar koordinator-noderna (Pod 1) för den Azure-Arc-aktiverade postgres Server gruppen samma fysiska resurser som den tredje arbetsnoden (Pod 4) i Server gruppen. Detta är acceptabelt eftersom koordinator-noden vanligt vis använder mycket få resurser jämfört med vad en arbetsnoden kan använda. Av den anledningen väljer du noggrant:
 - storleken på Kubernetes-klustret och egenskaperna för var och en av dess fysiska noder (minne, vCore)
 - antalet fysiska noder i Kubernetes-klustret
 - de program eller arbets belastningar som du är värd för Kubernetes-klustret.

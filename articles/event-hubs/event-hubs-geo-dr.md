@@ -2,13 +2,13 @@
 title: Geo-haveri beredskap – Azure Event Hubs | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och utföra haveri beredskap i Azure Event Hubs
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4470b55973f53c924caba8665199d261fe63a8fc
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222890"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390682"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-geo-haveri beredskap 
 
@@ -75,24 +75,27 @@ Följande avsnitt innehåller en översikt över redundansväxlingen och förkla
 Först skapar du eller använder ett befintligt primärt namn område och ett nytt sekundärt namn område och kopplar sedan samman de två. Den här ihopparningen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutnings strängarna. Det går bara att lägga till nya namn områden i ihopparningen för redundans. 
 
 1. Skapa det primära namn området.
-1. Skapa det sekundära namn området i prenumerationen och resurs gruppen som har det primära namn området. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
+1. Skapa det sekundära namn området i prenumerationen och resurs gruppen som har det primära namn området, men i en annan region. Det här är valfritt. Du kan skapa det sekundära namn området när du skapar kopplingen i nästa steg. 
 1. I Azure Portal navigerar du till ditt primära namn område.
 1. Välj **geo-återställning** på den vänstra menyn och välj **Starta koppling** i verktygsfältet. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Starta koppling från det primära namn området":::    
-1. På sidan **initiera koppling** väljer du ett befintligt sekundärt namn område eller skapar ett i prenumerationen och resurs gruppen som har det primära namn området. Välj sedan **Skapa**. I följande exempel väljs ett befintligt sekundärt namn område. 
+1. På sidan **initiera koppling** , följer du dessa steg:
+    1. Välj ett befintligt sekundärt namn område eller skapa ett i prenumerationen och resurs gruppen som har det primära namn området. I det här exemplet är ett befintligt namn område markerat.  
+    1. Ange ett alias för geo-Dr-paret för **alias**. 
+    1. Välj sedan **Skapa**. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Välj sekundär namnrymd":::        
-1. När du nu väljer **geo-återställning** för det primära namn området bör du se sidan **geo-Dr-alias** som ser ut som följande bild:
+1. Du bör se sidan **geo-Dr-alias** . Du kan också navigera till den här sidan från det primära namn området genom att välja **geo-återställning** på den vänstra menyn.
 
     :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Sidan geo-DR-alias":::    
+1. På sidan **geo-Dr-alias** väljer du **principer för delad åtkomst** på den vänstra menyn för att få åtkomst till den primära anslutnings strängen för aliaset. Använd den här anslutnings strängen i stället för att använda anslutnings strängen till det primära/sekundära namn området direkt. 
 1. På den här **översikts** sidan kan du utföra följande åtgärder: 
     1. Bryt kopplingen mellan primära och sekundära namn områden. Välj **Bryt ihopparning** i verktygsfältet. 
     1. Manuell redundans till det sekundära namn området. Välj **redundans** i verktygsfältet. 
     
         > [!WARNING]
         > Vid växling aktive ras det sekundära namn området och det primära namn området tas bort från Geo-Disaster återställnings par. Skapa ett nytt namn område med ett nytt geo-haveri återställnings par. 
-1. På sidan **geo-Dr-alias** väljer du **principer för delad åtkomst** för att få åtkomst till den primära anslutnings strängen för aliaset. Använd den här anslutnings strängen i stället för att använda anslutnings strängen till det primära/sekundära namn området direkt. 
 
 Slutligen bör du lägga till viss övervakning för att upptäcka om det behövs en redundansväxling. I de flesta fall är tjänsten en del av ett stort eko system, vilket innebär att det inte går att använda automatiska redundanser, eftersom ofta redundans måste utföras i synkronisering med det återstående del systemet eller infrastrukturen.
 
@@ -133,9 +136,9 @@ Tänk på följande när du tänker på följande:
 
 1. Enligt design replikeras Event Hubs geo-haveri beredskap inte replikerar data, och därför kan du inte återanvända det gamla förskjutning svärdet för din primära händelsehubben på den sekundära händelsehubben. Vi rekommenderar att du startar om din händelse mottagare med någon av följande metoder:
 
-- *EventPosition. FromStart ()* – om du vill läsa alla data på den sekundära händelsehubben.
-- *EventPosition. FromEnd ()* – om du vill läsa alla nya data från tiden för anslutningen till den sekundära händelsehubben.
-- *EventPosition. FromEnqueuedTime (datetime)* – om du vill läsa alla data som tas emot i den sekundära händelsehubben från ett visst datum och en specifik tidpunkt.
+   - *EventPosition. FromStart ()* – om du vill läsa alla data på den sekundära händelsehubben.
+   - *EventPosition. FromEnd ()* – om du vill läsa alla nya data från tiden för anslutningen till den sekundära händelsehubben.
+   - *EventPosition. FromEnqueuedTime (datetime)* – om du vill läsa alla data som tas emot i den sekundära händelsehubben från ett visst datum och en specifik tidpunkt.
 
 2. I planeringen av redundansväxling bör du även överväga tids faktorn. Om du till exempel förlorar anslutningen i mer än 15 till 20 minuter kan du välja att initiera redundansväxlingen. 
  
@@ -153,6 +156,8 @@ Event Hubs standard-SKU: n stöder [Tillgänglighetszoner](../availability-zones
 > Tillgänglighetszoner stöd för Azure Event Hubs standard är bara tillgängligt i [Azure-regioner](../availability-zones/az-region.md) där tillgänglighets zoner finns.
 
 Du kan bara aktivera Tillgänglighetszoner på nya namn områden med hjälp av Azure Portal. Event Hubs stöder inte migrering av befintliga namn rymder. Du kan inte inaktivera zon redundans när du har aktiverat den i namn området.
+
+När du använder tillgänglighets zoner replikeras både metadata och data (händelser) över data Center i tillgänglighets zonen. 
 
 ![3][]
 

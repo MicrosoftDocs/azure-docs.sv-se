@@ -7,20 +7,20 @@ ms.subservice: azure-arc-data
 author: vin-yu
 ms.author: vinsonyu
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: cade888d951c2071f8f40c145e28eed3c3a5d27c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955237"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384256"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Skapa en hanterad Azure SQL-instans med Kubernetes-verktyg
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du bör redan ha skapat en [data styrenhet för Azure-bågen](./create-data-controller.md).
 
@@ -45,13 +45,13 @@ data:
   username: <your base64 encoded user name. 'sa' is not allowed>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: sql1-login-secret
 type: Opaque
 ---
 apiVersion: sql.arcdata.microsoft.com/v1alpha1
 kind: sqlmanagedinstance
 metadata:
-  name: example
+  name: sql1
 spec:
   limits:
     memory: 4Gi
@@ -62,13 +62,7 @@ spec:
   service:
     type: LoadBalancer
   storage:
-    backups:
-      className: default
-      size: 5Gi
     data:
-      className: default
-      size: 5Gi
-    datalogs:
       className: default
       size: 5Gi
     logs:
@@ -107,7 +101,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Anpassa namnet
 
-Mallen har värdet ' example ' för attributet name.  Du kan ändra detta, men det måste vara tecken som följer DNS-namngivnings standarderna.  Du måste också ändra namnet på den hemlighet som ska matchas.  Om du till exempel ändrar namnet på den SQL-hanterade instansen till "SQL1" måste du ändra namnet på hemligheten från "exempel-login-Secret" till "SQL1-login-Secret"
+Mallen har värdet ' SQL1 ' för attributet name.  Du kan ändra detta, men det måste vara tecken som följer DNS-namngivnings standarderna.  Du måste också ändra namnet på den hemlighet som ska matchas.  Om du till exempel ändrar namnet på den SQL-hanterade instansen till "sql2" måste du ändra namnet på hemligheten från "SQL1-login-Secret" till "sql2-login-Secret"
 
 ### <a name="customizing-the-resource-requirements"></a>Anpassa resurs kraven
 

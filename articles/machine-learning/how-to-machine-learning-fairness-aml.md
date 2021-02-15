@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: ee589aed2b8f3c53d21c1f762a5d2027f3762649
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222776"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366995"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Använd Azure Machine Learning med Fairlearn-paketet med öppen källkod för att utvärdera skälighet för ML-modeller (för hands version)
 
@@ -214,10 +214,15 @@ I följande exempel visas hur du använder skälighet-paketet. Vi kommer att öv
     1. Välj **experiment** i det vänstra fönstret om du vill se en lista över experiment som du har kört på Azure Machine Learning.
     1. Välj ett särskilt experiment för att visa alla körningar i experimentet.
     1. Välj en körning och sedan fliken **skälighet** till instrument panelen förklarings visualisering.
+    1. När du har landning på fliken **skälighet** klickar du på ett **skälighet-ID** på menyn till höger.
+    1. Konfigurera din instrument panel genom att välja känsligt attribut, prestanda mått och skälighet-mått för mark på skälighet-utvärderings sidan.
+    1. Växla diagram typ från en till en annan för att Observera att både **allokeringar** skadas och **kvaliteten på tjänsten** skadas.
 
 
-    [![Skälighet-instrumentpanel](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
+
+    [![Skälighet instrument panels tilldelning](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
+    [![Service kvalitet för skälighet-instrumentpanel](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * **Fönstret modeller**
     1. Om du har registrerat din ursprungliga modell genom att följa föregående steg kan du välja **modeller** i det vänstra fönstret för att visa den.
     1. Välj en modell och klicka sedan på fliken **skälighet** för att visa instrument panelen för förklarings visualisering.

@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från Oracle Eloqua (för hands version)
 description: Lär dig hur du kopierar data från Oracle Eloqua till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 3ea9d7baf427e70df349c926a0b6b8b72ba82293
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bb392b05fb54f22720202b83f1af707e381251
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416859"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372237"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopiera data från Oracle Eloqua med Azure Data Factory (för hands version)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

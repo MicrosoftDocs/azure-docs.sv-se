@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb8533f4ca714402482c666c520c1d0bd745e8cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509eae7acf0dd9f6b8ae80befb7423422f778710
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363278"
+ms.locfileid: "100518835"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Behörigheter för administratörsroller i Azure Active Directory
 
@@ -83,11 +83,11 @@ Rollen [Privileged Authentication Administrator](#privileged-authentication-admi
 
 [Administratörs rollen autentiseringsprincip](#authentication-policy-administrator) har behörighet att ange innehavarens autentiseringsmetod för autentisering som avgör vilka metoder som varje användare kan registrera sig och använda.
 
-| Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |  
+| Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare  |Inga | Inga  |Inga | 
-| Administratör för autentiseringsprincip | Inga  |Inga | Ja | Ja | Ja | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
+| Administratör för autentiseringsprincip | Inga |Inga | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
@@ -107,11 +107,11 @@ Användare med den här rollen kan konfigurera principen för autentiserings met
 
 Administratörs rollerna för [autentisering administratör](#authentication-administrator) och [privilegie rad autentisering](#privileged-authentication-administrator) har behörighet att hantera registrerade autentiseringsmetoder för användare och kan framtvinga omregistrering och Multi-Factor Authentication för alla användare. 
 
-| Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |  
+| Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare  |Inga | Inga  |Inga | 
-| Administratör för autentiseringsprincip | Inga  |Inga | Ja | Ja | Ja | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
+| Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Den här rollen kan för närvarande inte hantera MFA-inställningar i den äldre hanterings portalen för MFA.
@@ -293,7 +293,7 @@ Den här rollen kallades tidigare för "lösen ords administratör" i [Azure Por
 
 ### <a name="hybrid-identity-administrator"></a>[Hybrid identitets administratör](#hybrid-identity-administrator-permissions)
 
-Användare med den här rollen kan skapa, hantera och distribuera konfigurations konfigurations inställningar från AD till Azure AD med hjälp av moln etablering och hantera Federations inställningar. Användare kan också felsöka och övervaka loggar med den här rollen.  
+Användare med den här rollen kan skapa, hantera och distribuera konfigurations konfigurations inställningar från AD till Azure AD med hjälp av moln etablering och hantera Federations inställningar. Användare kan också felsöka och övervaka loggar med den här rollen.
 
 ### <a name="insights-administrator"></a>[Insights-administratör](#insights-administrator-permissions)
 Användare med den här rollen har åtkomst till en fullständig uppsättning administrativa funktioner i [M365 Insights-programmet](https://go.microsoft.com/fwlink/?linkid=2129521). Den här rollen har möjlighet att läsa katalog information, övervaka tjänstens hälsa, stöd för fil support och få åtkomst till Insikternas administrations inställningar.
@@ -336,10 +336,10 @@ Användare med en modern Commerce-användargrupp har vanligt vis administratörs
 
 **När tilldelas den moderna Commerce användar rollen?**
 
-* **Självbetjänings köp i Microsoft 365 administrations Center** – självbetjänings köp ger användarna möjlighet att prova nya produkter genom att köpa eller registrera sig för dem på egen hand. Dessa produkter hanteras i administrations centret. Användare som gör ett självbetjänings köp tilldelas en roll i handels systemet och den ständiga Commerce användar rollen så att de kan hantera sina inköp i administrations centret. Administratörer kan blockera självbetjänings köp (för Power BI, Power Apps, energi automatisering) via [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Mer information finns i [Vanliga frågor och svar om självbetjäningsköp](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
-* **Köp från Microsofts kommersiella marknads platser**  – på liknande sätt som självbetjänings köp, när en användare köper en produkt eller tjänst från Microsoft AppSource eller Azure Marketplace, tilldelas den ständiga handels användar rollen om de inte har rollen som global administratör eller fakturerings administratör. I vissa fall kan användarna blockeras från att göra dessa inköp. Mer information finns på [Microsofts kommersiella marknads platser](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
-* **Förslag från Microsoft**  – ett förslag är ett formellt erbjudande från Microsoft för din organisation att köpa produkter och tjänster från Microsoft. När den person som accepterar förslaget inte har rollen som global administratör eller fakturerings administratör i Azure AD, tilldelas de både en handelsbestämd roll för att slutföra förslaget och den moderna Commerce-rollen för att få åtkomst till administrations centret. När de får åtkomst till administrations centret kan de endast använda funktioner som har godkänts av sin handelsbestämd roll.
-* **Handelsrelaterade roller** – vissa användare har tilldelats handelsrelaterade roller. Om en användare inte är en global administratör eller fakturerings administratör får de en modern Commerce-användar roll så att de kan komma åt administrations centret.  
+* **Självbetjänings köp i Microsoft 365 administrations Center** – självbetjänings köp ger användarna möjlighet att prova nya produkter genom att köpa eller registrera sig för dem på egen hand. Dessa produkter hanteras i administrations centret. Användare som gör ett självbetjänings köp tilldelas en roll i handels systemet och den ständiga Commerce användar rollen så att de kan hantera sina inköp i administrations centret. Administratörer kan blockera självbetjänings köp (för Power BI, Power Apps, energi automatisering) via [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Mer information finns i [Vanliga frågor och svar om självbetjäningsköp](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
+* **Köp från Microsofts kommersiella marknads platser** – på liknande sätt som självbetjänings köp, när en användare köper en produkt eller tjänst från Microsoft AppSource eller Azure Marketplace, tilldelas den ständiga handels användar rollen om de inte har rollen som global administratör eller fakturerings administratör. I vissa fall kan användarna blockeras från att göra dessa inköp. Mer information finns på [Microsofts kommersiella marknads platser](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
+* **Förslag från Microsoft** – ett förslag är ett formellt erbjudande från Microsoft för din organisation att köpa produkter och tjänster från Microsoft. När den person som accepterar förslaget inte har rollen som global administratör eller fakturerings administratör i Azure AD, tilldelas de både en handelsbestämd roll för att slutföra förslaget och den moderna Commerce-rollen för att få åtkomst till administrations centret. När de får åtkomst till administrations centret kan de endast använda funktioner som har godkänts av sin handelsbestämd roll.
+* **Handelsrelaterade roller** – vissa användare har tilldelats handelsrelaterade roller. Om en användare inte är en global administratör eller fakturerings administratör får de en modern Commerce-användar roll så att de kan komma åt administrations centret.
 
 Om den moderna Commerce-rollen är otilldelad från en användare förlorar han eller hon åtkomst till Microsoft 365 administrations Center. Om de hanterade produkter, antingen för sig själva eller för din organisation, kan de inte hantera dem. Detta kan inkludera att tilldela licenser, ändra betalnings metoder, betala fakturor eller andra aktiviteter för att hantera prenumerationer.
 
@@ -389,11 +389,11 @@ Rollen som [administratör för autentisering](#authentication-administrator) ha
 
 [Administratörs rollen autentiseringsprincip](#authentication-policy-administrator) har behörighet att ange innehavarens autentiseringsmetod för autentisering som avgör vilka metoder som varje användare kan registrera sig och använda.
 
-| Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |  
+| Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera principen för auth-metoden | Hantera lösen ords skydds princip |
 | ---- | ---- | ---- | ---- | ---- | ---- | 
 | Administratör för autentisering | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga | 
-| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare  |Inga | Inga  |Inga | 
-| Administratör för autentiseringsprincip | Inga  |Inga | Ja | Ja | Ja | 
+| Administratör för privilegie rad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga | 
+| Administratör för autentiseringsprincip | Inga | Inga | Ja | Ja | Ja | 
 
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära att du förutsätter att användarens identitet och behörigheter. Exempel:
@@ -992,7 +992,7 @@ Kan läsa & skriva grundläggande katalog information. För att bevilja åtkomst
 > | --- | --- |
 > | Microsoft. Directory/Groups/appRoleAssignments/Update | Uppdatera Groups. appRoleAssignments-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/grupper/assignLicense | Hantera licenser för grupper i Azure Active Directory. |
-> | Microsoft. Directory/grupper/Basic/Update | Uppdatera grundläggande egenskaper för grupper i Azure Active Directory.  |
+> | Microsoft. Directory/grupper/Basic/Update | Uppdatera grundläggande egenskaper för grupper i Azure Active Directory. |
 > | Microsoft. Directory/grupper/klassificering/uppdatera | Uppdatera klassificerings egenskap för gruppen i Azure Active Directory. |
 > | Microsoft. Directory/grupper/skapa | Skapa grupper i Azure Active Directory. |
 > | Microsoft. Directory/Groups/groupType/Update | Uppdatera groupType-egenskapen för en grupp i Azure Active Directory. |
@@ -1183,69 +1183,69 @@ Kan läsa allt som en global administratör kan, men inte redigera något.
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | Microsoft. Commerce. fakturering/utlånare/Läs    | Läs alla aspekter av faktureringen. |
-> | Microsoft. Directory/administrativeUnits/Basic/Read    | Läsa grundläggande egenskaper för administrativeUnits i Azure Active Directory. |
-> | Microsoft. Directory/administrativeUnits/members/Read    | Läs administrativeUnits. members-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/program/Basic/Read    | Läsa grundläggande egenskaper för program i Azure Active Directory. |
-> | Microsoft. Directory/program/ägare/läsa    | Läsa program. Owners-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Applications/policies/Read    | Läsa program. policys-egenskapen i Azure Active Directory. |
+> | Microsoft. Commerce. fakturering/utlånare/Läs | Läs alla aspekter av faktureringen. |
+> | Microsoft. Directory/administrativeUnits/Basic/Read | Läsa grundläggande egenskaper för administrativeUnits i Azure Active Directory. |
+> | Microsoft. Directory/administrativeUnits/members/Read | Läs administrativeUnits. members-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/program/Basic/Read | Läsa grundläggande egenskaper för program i Azure Active Directory. |
+> | Microsoft. Directory/program/ägare/läsa | Läsa program. Owners-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Applications/policies/Read | Läsa program. policys-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/bitlockerKeys/Key/Read | Läs BitLocker-nyckel objekt och egenskaper (inklusive återställnings nyckel) i Azure Active Directory. |
-> | Microsoft. Directory/Contacts/Basic/Read    | Läsa grundläggande egenskaper för kontakter i Azure Active Directory. |
-> | Microsoft. Directory/Contacts/memberOf/läsa    | Läsa contacts. memberOf-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/kontrakt/Basic/Read    | Läsa grundläggande egenskaper för kontrakt i Azure Active Directory. |
-> | Microsoft. Directory/Devices/Basic/Read    | Läsa grundläggande egenskaper för enheter i Azure Active Directory. |
-> | Microsoft. Directory/Devices/memberOf/Read    | Läsa Devices. memberOf-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Devices/registeredOwners/Read    | Läsa Devices. registeredOwners-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Devices/registeredUsers/Read    | Läsa Devices. registeredUsers-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/Basic/Read    | Läsa grundläggande egenskaper för directoryRoles i Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/eligibleMembers/Read    | Läsa directoryRoles. eligibleMembers-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/directoryRoles/members/Read    | Läs directoryRoles. members-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Domains/Basic/Read    | Läsa grundläggande egenskaper för domäner i Azure Active Directory. |
+> | Microsoft. Directory/Contacts/Basic/Read | Läsa grundläggande egenskaper för kontakter i Azure Active Directory. |
+> | Microsoft. Directory/Contacts/memberOf/läsa | Läsa contacts. memberOf-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/kontrakt/Basic/Read | Läsa grundläggande egenskaper för kontrakt i Azure Active Directory. |
+> | Microsoft. Directory/Devices/Basic/Read | Läsa grundläggande egenskaper för enheter i Azure Active Directory. |
+> | Microsoft. Directory/Devices/memberOf/Read | Läsa Devices. memberOf-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredOwners/Read | Läsa Devices. registeredOwners-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Devices/registeredUsers/Read | Läsa Devices. registeredUsers-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/Basic/Read | Läsa grundläggande egenskaper för directoryRoles i Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/eligibleMembers/Read | Läsa directoryRoles. eligibleMembers-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/directoryRoles/members/Read | Läs directoryRoles. members-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Domains/Basic/Read | Läsa grundläggande egenskaper för domäner i Azure Active Directory. |
 > | Microsoft. Directory/entitlementManagement/allProperties/Read | Läs alla egenskaper i hantering av Azure AD-rättigheter. |
-> | Microsoft. Directory/grupper/appRoleAssignments/Read    | Läs Groups. appRoleAssignments-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/grupper/Basic/Read    | Läsa grundläggande egenskaper för grupper i Azure Active Directory. |
-> | Microsoft. Directory/grupper/hiddenMembers/Read    | Läs Groups. hiddenMembers-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/grupper/memberOf/läsa    | Läsa Groups. memberOf-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/grupper/medlemmar/läsa    | Läsa Groups. members-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/grupper/ägare/läsa    | Läsa Groups. Owners-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/grupper/inställningar/Läs    | Läsa Groups. Settings-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/groupSettings/Basic/Read    | Läsa grundläggande egenskaper för groupSettings i Azure Active Directory. |
-> | Microsoft. Directory/groupSettingTemplates/Basic/Read    | Läsa grundläggande egenskaper för groupSettingTemplates i Azure Active Directory. |
-> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read    | Läsa grundläggande egenskaper för oAuth2PermissionGrants i Azure Active Directory. |
-> | Microsoft. Directory/Organization/Basic/Read    | Läsa grundläggande egenskaper för organisation i Azure Active Directory. |
-> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read    | Läs organisation. trustedCAsForPasswordlessAuth-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/policys/standard/Read    | Läs standard principer i Azure Active Directory. |
+> | Microsoft. Directory/grupper/appRoleAssignments/Read | Läs Groups. appRoleAssignments-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/grupper/Basic/Read | Läsa grundläggande egenskaper för grupper i Azure Active Directory. |
+> | Microsoft. Directory/grupper/hiddenMembers/Read | Läs Groups. hiddenMembers-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/grupper/memberOf/läsa | Läsa Groups. memberOf-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/grupper/medlemmar/läsa | Läsa Groups. members-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/grupper/ägare/läsa | Läsa Groups. Owners-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/grupper/inställningar/Läs | Läsa Groups. Settings-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/groupSettings/Basic/Read | Läsa grundläggande egenskaper för groupSettings i Azure Active Directory. |
+> | Microsoft. Directory/groupSettingTemplates/Basic/Read | Läsa grundläggande egenskaper för groupSettingTemplates i Azure Active Directory. |
+> | Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Läsa grundläggande egenskaper för oAuth2PermissionGrants i Azure Active Directory. |
+> | Microsoft. Directory/Organization/Basic/Read | Läsa grundläggande egenskaper för organisation i Azure Active Directory. |
+> | Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/Read | Läs organisation. trustedCAsForPasswordlessAuth-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/policys/standard/Read | Läs standard principer i Azure Active Directory. |
 > | Microsoft. Directory/provisioningLogs/allProperties/Read | Läs alla egenskaper för etablerings loggar. |
-> | Microsoft. Directory/roleAssignments/Basic/Read    | Läsa grundläggande egenskaper för roleAssignments i Azure Active Directory. |
-> | Microsoft. Directory/roleDefinitions/Basic/Read    | Läsa grundläggande egenskaper för roleDefinitions i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Read    | Läsa service princip ALS. appRoleAssignedTo-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/appRoleAssignments/Read    | Läsa service princip ALS. appRoleAssignments-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/Basic/Read    | Läsa grundläggande egenskaper för service princip ALS i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/memberOf/läsa    | Läs service princip ALS. memberOf-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/oAuth2PermissionGrants/Basic/Read    | Läsa service princip ALS. oAuth2PermissionGrants-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/ownedObjects/Read    | Läsa service princip ALS. ownedObjects-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/Owners/Read    | Läsa service princip ALS. Owners-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Service princip ALS/policies/Read    | Läs service princip ALS. policys-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/signInReports/allProperties/Read    | Läs alla egenskaper (inklusive privilegierade egenskaper) på signInReports i Azure Active Directory. |
-> | Microsoft. Directory/subscribedSkus/Basic/Read    | Läsa grundläggande egenskaper för subscribedSkus i Azure Active Directory. |
-> | Microsoft. Directory/Users/appRoleAssignments/Read    | Läsa users. appRoleAssignments-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/Basic/Read    | Läsa grundläggande egenskaper för användare i Azure Active Directory. |
-> | Microsoft. Directory/Users/directReports/Read    | Läsa users. directReports-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/Manager/Read    | Läsa users. Manager-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/memberOf/Read    | Läsa users. memberOf-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read    | Läsa users. oAuth2PermissionGrants-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/ownedDevices/Read    | Läsa users. ownedDevices-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/ownedObjects/Read    | Läsa users. ownedObjects-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/registeredDevices/Read    | Läsa users. registeredDevices-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/Users/strongAuthentication/Read    | Läs egenskaper för stark autentisering som MFA-autentiseringsinformation. |
-> | Microsoft. Office365. Exchange/-utlånare/Läs    | Läs alla aspekter av Exchange Online. |
-> | Microsoft. Office365. messageCenter/meddelanden/läsa    | Läs meddelanden i Microsoft. Office365. messageCenter. |
-> | Microsoft. Office365. messageCenter/securityMessages/Read    | Läs securityMessages i Microsoft. Office365. messageCenter. |
+> | Microsoft. Directory/roleAssignments/Basic/Read | Läsa grundläggande egenskaper för roleAssignments i Azure Active Directory. |
+> | Microsoft. Directory/roleDefinitions/Basic/Read | Läsa grundläggande egenskaper för roleDefinitions i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/appRoleAssignedTo/Read | Läsa service princip ALS. appRoleAssignedTo-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/appRoleAssignments/Read | Läsa service princip ALS. appRoleAssignments-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/Basic/Read | Läsa grundläggande egenskaper för service princip ALS i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/memberOf/läsa | Läs service princip ALS. memberOf-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/oAuth2PermissionGrants/Basic/Read | Läsa service princip ALS. oAuth2PermissionGrants-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/ownedObjects/Read | Läsa service princip ALS. ownedObjects-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/Owners/Read | Läsa service princip ALS. Owners-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Service princip ALS/policies/Read | Läs service princip ALS. policys-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/signInReports/allProperties/Read | Läs alla egenskaper (inklusive privilegierade egenskaper) på signInReports i Azure Active Directory. |
+> | Microsoft. Directory/subscribedSkus/Basic/Read | Läsa grundläggande egenskaper för subscribedSkus i Azure Active Directory. |
+> | Microsoft. Directory/Users/appRoleAssignments/Read | Läsa users. appRoleAssignments-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/Basic/Read | Läsa grundläggande egenskaper för användare i Azure Active Directory. |
+> | Microsoft. Directory/Users/directReports/Read | Läsa users. directReports-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/Manager/Read | Läsa users. Manager-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/memberOf/Read | Läsa users. memberOf-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read | Läsa users. oAuth2PermissionGrants-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedDevices/Read | Läsa users. ownedDevices-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/ownedObjects/Read | Läsa users. ownedObjects-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/registeredDevices/Read | Läsa users. registeredDevices-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/Users/strongAuthentication/Read | Läs egenskaper för stark autentisering som MFA-autentiseringsinformation. |
+> | Microsoft. Office365. Exchange/-utlånare/Läs | Läs alla aspekter av Exchange Online. |
+> | Microsoft. Office365. messageCenter/meddelanden/läsa | Läs meddelanden i Microsoft. Office365. messageCenter. |
+> | Microsoft. Office365. messageCenter/securityMessages/Read | Läs securityMessages i Microsoft. Office365. messageCenter. |
 > | Microsoft. Office365. Network/Performance/allProperties/Read | Läs nätverks prestanda sidor i Microsoft 365 administrations Center. |
-> | Microsoft. Office365. protectionCenter/upplånade/upplånade/lästa    | Läs alla aspekter av Office 365 Protection Center. |
-> | Microsoft. Office365. securityComplianceCenter/upplånade/upplånade/lästa    | Läs alla standard egenskaper i Microsoft. Office365. securityComplianceCenter. |
-> | Microsoft. Office365. usageReports/upplånade/upplånade/lästa    | Läs Office 365-användnings rapporter. |
-> | Microsoft. Office365. webports/-upplånare/standard/Read    | Läsa standard egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
+> | Microsoft. Office365. protectionCenter/upplånade/upplånade/lästa | Läs alla aspekter av Office 365 Protection Center. |
+> | Microsoft. Office365. securityComplianceCenter/upplånade/upplånade/lästa | Läs alla standard egenskaper i Microsoft. Office365. securityComplianceCenter. |
+> | Microsoft. Office365. usageReports/upplånade/upplånade/lästa | Läs Office 365-användnings rapporter. |
+> | Microsoft. Office365. webports/-upplånare/standard/Read | Läsa standard egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="groups-administrator-permissions"></a>Grupper administratörs behörigheter
 
@@ -1313,8 +1313,8 @@ Kan hantera AD till moln etablering och Federations inställningar i Azure AD.
 > | --- | --- |
 > | Microsoft. Azure. serviceHealth/upplånade/allTasks | Läsa och konfigurera Azure Service Health. |
 > | Microsoft. Azure. supportTickets/upplånade/allTasks | Skapa och hantera Azure-support biljetter för katalog nivå tjänster. |
-> | Microsoft. Directory/program/mål grupp/uppdatering  | Uppdatera program. Audience-egenskapen i Azure Active Directory. |
-> | Microsoft. Directory/program/autentisering/uppdatering | Uppdatera program. Authentication-egenskapen i Azure Active Directory.  |
+> | Microsoft. Directory/program/mål grupp/uppdatering | Uppdatera program. Audience-egenskapen i Azure Active Directory. |
+> | Microsoft. Directory/program/autentisering/uppdatering | Uppdatera program. Authentication-egenskapen i Azure Active Directory. |
 > | Microsoft. Directory/Applications/Basic/Update | Uppdatera grundläggande egenskaper för program i Azure Active Directory. |
 > | Microsoft. Directory/program/skapa | Skapa program i Azure Active Directory. |
 > | Microsoft. Directory/program/autentiseringsuppgifter/uppdatera | Uppdatera program. credentials-egenskapen i Azure Active Directory. |
@@ -1491,7 +1491,7 @@ Kan hantera nätverks platser och granska Enterprise Network design Insights fö
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | Microsoft. Office365. Network/Performance/allProperties/Read | Läs nätverks prestanda sidor i M365 administrations Center.  |
+> | Microsoft. Office365. Network/Performance/allProperties/Read | Läs nätverks prestanda sidor i M365 administrations Center. |
 > | Microsoft. Office365. Network/locations/allProperties/allTasks | Läsa och konfigurera egenskaper för nätverks platser för varje plats. |
 
 ### <a name="office-apps-administrator-permissions"></a>Administratörs behörighet för Office-appar
@@ -1896,7 +1896,7 @@ Kan hantera alla aspekter av Skype för företag-produkten.
 > | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Microsoft 365 Service Health. |
 > | Microsoft. Office365. skypeForBusiness/uplånar/allTasks | Hantera alla aspekter av Skype för företag – online. |
 > | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Office 365-support biljetter. |
-> | Microsoft. Office365. usageReports/upplånade/upplånade/lästa    | Läs Office 365-användnings rapporter. |
+> | Microsoft. Office365. usageReports/upplånade/upplånade/lästa | Läs Office 365-användnings rapporter. |
 > | Microsoft. Office365. webports/-upplånare/grundläggande/lästa | Läsa grundläggande egenskaper för alla resurser i Microsoft. Office365. Web-Portal. |
 
 ### <a name="teams-administrator-permissions"></a>Team administratörs behörighet
@@ -2144,7 +2144,7 @@ Enhets anslutning | Inaktuell | [Dokumentation om föråldrade roller](permissio
 Enhets hanterare | Inaktuell | [Dokumentation om föråldrade roller](permissions-reference.md#deprecated-roles)
 Enhets användare | Inaktuell | [Dokumentation om föråldrade roller](permissions-reference.md#deprecated-roles)
 Konton för katalog synkronisering | Visas inte eftersom det inte ska användas | [Dokumentation om Directory Synchronization-konton](permissions-reference.md#directory-synchronization-accounts)
-Gästanvändare | Visas inte eftersom det inte kan användas  | NA
+Gästanvändare | Visas inte eftersom det inte kan användas | NA
 Support på partner nivå 1 | Visas inte eftersom det inte ska användas | [Support dokumentation för partner 1](permissions-reference.md#partner-tier1-support)
 Support på partner nivå 2 | Visas inte eftersom det inte ska användas | [Support dokumentation för partner – nivå 2](permissions-reference.md#partner-tier2-support)
 Begränsad gäst användare | Visas inte eftersom det inte kan användas | NA

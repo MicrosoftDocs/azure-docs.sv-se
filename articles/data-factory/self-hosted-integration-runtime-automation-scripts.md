@@ -1,29 +1,25 @@
 ---
 title: Automatisera installation av egen värd för integration runtime med hjälp av lokala PowerShell-skript
 description: Automatisera installationen av lokala Integration Runtime på lokala datorer.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8cbe54a23cb1c8b55afd86a18b51c0e392c3f78a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636977"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376215"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatisera installation av egen värd för integration runtime med hjälp av lokala PowerShell-skript
 Om du vill automatisera installationen av egen värd Integration Runtime på lokala datorer (andra än virtuella Azure-datorer där vi kan använda Resource Manager-mallen i stället) kan du använda lokala PowerShell-skript. I den här artikeln beskrivs två skript som du kan använda.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Starta PowerShell på den lokala datorn. Om du vill köra skripten måste du välja **Kör som administratör** .
+* Starta PowerShell på den lokala datorn. Om du vill köra skripten måste du välja **Kör som administratör**.
 * [Ladda ned](https://www.microsoft.com/download/details.aspx?id=39717) program varan för egen värd integrerings körning. Kopiera sökvägen till den hämtade filen. 
 * Du behöver också en **autentiseringsnyckel** för att registrera integration runtime med egen värd.
 * För att automatisera manuella uppdateringar måste du ha en förkonfigurerad integration runtime med egen värd.
@@ -38,7 +34,7 @@ Om du vill automatisera installationen av egen värd Integration Runtime på lok
 
 * För att automatisera manuella uppdateringar: uppdatera IR-noden med en angiven version eller till den senaste versionen **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** – detta stöds också om du har stängt av den automatiska uppdateringen eller vill ha mer kontroll över uppdateringar. Skriptet kan användas för att uppdatera noden för integration runtime med egen värd till den senaste versionen eller till en angiven högre version (nedgradering fungerar inte). Det accepterar ett argument för att ange versions nummer (exempel:-version 3.13.6942.1). När ingen version har angetts uppdaterar den alltid den egna IR-IR-enheten till den senaste versionen som finns i [nedladdningen](https://www.microsoft.com/download/details.aspx?id=39717).
     > [!NOTE]
-    > Endast de senaste 3 versionerna kan anges. Vi rekommenderar att detta används för att uppdatera en befintlig nod till den senaste versionen. **det förutsätter att du har en registrerad egen IR-värd** . 
+    > Endast de senaste 3 versionerna kan anges. Vi rekommenderar att detta används för att uppdatera en befintlig nod till den senaste versionen. **det förutsätter att du har en registrerad egen IR-värd**. 
 
 ## <a name="usage-examples"></a>Användningsexempel
 

@@ -10,12 +10,12 @@ ms.date: 01/20/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 9c719d222e8c38030556214d42f6519768d99f0a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 92b78cae7d1af5dc71509381afd7eaf3f962a8fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090776"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515019"
 ---
 <a name="HOLTop"></a>
 
@@ -678,7 +678,7 @@ Recognized entity: Bill Gates, entity category: Person, entity subcategory: null
 Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
 ```
 
-Du kan också använda analys åtgärden för att identifiera personligt identifierbar information och extrahering av nyckel fraser. Se [analys exemplet](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeTasksAsync.java) på GitHub.
+Du kan också använda analys åtgärden för att identifiera personligt identifierbar information och extrahering av nyckel fraser. Se [analys exemplet](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro) på GitHub.
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 

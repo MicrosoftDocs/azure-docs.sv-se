@@ -4,12 +4,12 @@ description: I den här snabb starten använder du Java Script för att skapa en
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 25fd93e51c1b49519bb315aab28cdfc44a2a0c58
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 99a2ed406d4837f6fc346e68b3b400003feed38c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593984"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099157"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Snabb start: skapa en hanterings grupp med Java Script
 
@@ -29,7 +29,7 @@ Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter
 
 ## <a name="application-setup"></a>Programkonfiguration
 
-Om du vill aktivera Java Script för att fråga Azure Resource Graph måste miljön konfigureras. Den här installationen fungerar där Java Script kan användas, inklusive [bash i Windows 10](/windows/wsl/install-win10).
+Om du vill aktivera Java Script för att hantera hanterings grupper måste miljön konfigureras. Den här installationen fungerar där Java Script kan användas, inklusive [bash i Windows 10](/windows/wsl/install-win10).
 
 1. Skapa ett nytt Node.js-projekt genom att köra följande kommando.
 

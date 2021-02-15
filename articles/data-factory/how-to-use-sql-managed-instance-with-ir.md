@@ -1,22 +1,17 @@
 ---
 title: Använd Azure SQL Managed instance med Azure-SQL Server Integration Services (SSIS) i Azure Data Factory
 description: Lär dig hur du använder Azure SQL-hanterad instans med SQL Server Integration Services (SSIS) i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 43b118b8f3f7444cd3c4d0cfa31b72a3522d6d84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555670"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392586"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Använd Azure SQL-hanterad instans med SQL Server Integration Services (SSIS) i Azure Data Factory
 

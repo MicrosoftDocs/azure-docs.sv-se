@@ -1,21 +1,18 @@
 ---
 title: Kopiera data i molnet med hjälp av PowerShell
 description: Det här PowerShell-skriptet kopierar data från en plats i ett Azure-Blob Storage till en annan plats i samma Blob Storage.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 169420aee32a49549a71746708bd8377a4c63b5d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637997"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370299"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Använd PowerShell för att skapa en Data Factory-pipeline för att kopiera data i molnet
 
@@ -26,7 +23,7 @@ Det här exemplet på PowerShell-skriptet skapar en pipeline i Azure Data Factor
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
-* **Azure Storage konto** . Du kan använda blob-lagringen både som **källa** och **mottagare** för datalagringen. Om du inte har något Azure Storage-konto finns det anvisningar om hur du skapar ett i artikeln [Skapa ett lagringskonto](../../storage/common/storage-account-create.md). 
+* **Azure Storage konto**. Du kan använda blob-lagringen både som **källa** och **mottagare** för datalagringen. Om du inte har något Azure Storage-konto finns det anvisningar om hur du skapar ett i artikeln [Skapa ett lagringskonto](../../storage/common/storage-account-create.md). 
 * Skapa en **blobcontainer** i Blob Storage, skapa en **indatamapp** i containern och ladda upp några filer till mappen. Du kan använda verktyg som [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att ansluta till Azure Blob Storage, skapa en BLOB-behållare, ladda upp indatafilen och verifiera utdatafilen.
 
 ## <a name="sample-script"></a>Exempelskript

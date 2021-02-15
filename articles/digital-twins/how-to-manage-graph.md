@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bc548d4cc728611387b36451d563be6ca0e21530
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601067"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388200"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Hantera en graf med digitala dubbla med relationer
 
@@ -115,6 +115,21 @@ Med hjälp av ovanstående metoder för att visa utgående och inkommande relati
 Nu kan du anropa den här funktionen i din main-metod så här: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
+
+## <a name="update-relationships"></a>Uppdatera relationer
+
+Relationerna uppdateras med hjälp av- `UpdateRelationship` metoden. 
+
+>[!NOTE]
+>Den här metoden används för att uppdatera **egenskaperna** för en relation. Om du behöver ändra källans dubbla eller målets dubbla Relations hip måste du [ta bort relationen](#delete-relationships) och återskapa den med [hjälp av de](#create-relationships) nya dubbla.
+
+De parametrar som krävs för klient anropet är ID: t för den dubbla källan (den dubbla där relationen härstammar), ID: t för den relation som ska uppdateras och ett [JSON-patch](http://jsonpatch.com/) -dokument som innehåller de egenskaper och nya värden som du vill uppdatera.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod":::
+
+Här är ett exempel på ett anrop till den här metoden som skickar ett JSON-dokument med information för att uppdatera en egenskap.
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
 ## <a name="delete-relationships"></a>Ta bort relationer
 

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746464"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097321"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ utgående bindning för Azure Functions översikt
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-I följande exempel visas en Java-funktion som skickar ett meddelande till RabbitMQ-kön när den utlöses av en TimerTrigger var 5: e minut.
+Följande Java-funktion använder `@RabbitMQOutput` anteckningen från [Java rabbitmq-typerna](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq) för att beskriva konfigurationen för en dataRabbitMQ i kön. Funktionen skickar ett meddelande till RabbitMQ-kön när den utlöses av en TimerTrigger var 5: e minut.
 
 ```java
 @FunctionName("RabbitMQOutputExample")
@@ -266,7 +266,7 @@ Se [exempel](#example) på utdata-bindning för mer information.
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `RabbitMQ` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas | Måste vara inställd på "RabbitMQ".|
 |**position** | saknas | Måste anges till "out". |

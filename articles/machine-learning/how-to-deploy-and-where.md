@@ -11,12 +11,13 @@ ms.reviewer: larryfr
 ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+adobe-target: true
+ms.openlocfilehash: da47967b719b5ce601d8049f54597c207ea732c8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185809"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372042"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Distribuera Machine Learning-modeller till Azure
 
@@ -314,13 +315,13 @@ Under modell distributionen kan tjänst tillstånds ändringen visas när den di
 
 I följande tabell beskrivs de olika tjänst tillstånden:
 
-| Webservice-tillstånd | Description | Slutligt tillstånd?
+| Webservice-tillstånd | Beskrivning | Slutligt tillstånd?
 | ----- | ----- | ----- |
-| Övergår | Tjänsten håller på att distribueras. | No |
-| Ohälsosamt | Tjänsten har distribuerats men är för närvarande inte tillgänglig.  | No |
-| Unschedulable | Det går inte att distribuera tjänsten för tillfället på grund av bristande resurser. | No |
-| Misslyckad | Det gick inte att distribuera tjänsten på grund av ett fel eller en krasch. | Yes |
-| Felfri | Tjänsten är felfri och slut punkten är tillgänglig. | Yes |
+| Övergår | Tjänsten håller på att distribueras. | Inga |
+| Ohälsosamt | Tjänsten har distribuerats men är för närvarande inte tillgänglig.  | Inga |
+| Unschedulable | Det går inte att distribuera tjänsten för tillfället på grund av bristande resurser. | Inga |
+| Misslyckad | Det gick inte att distribuera tjänsten på grund av ett fel eller en krasch. | Ja |
+| Felfri | Tjänsten är felfri och slut punkten är tillgänglig. | Ja |
 
 > [!TIP]
 > När du distribuerar är Docker-avbildningar för beräknings mål byggda och inlästa från Azure Container Registry (ACR). Azure Machine Learning skapar som standard en ACR som använder tjänst nivån *Basic* . Att ändra ACR för arbets ytan till standard-eller Premium-nivån kan minska den tid det tar att bygga och distribuera avbildningar till dina beräknings mål. Mer information finns i [Azure Container Registry tjänst nivåer](../container-registry/container-registry-skus.md).

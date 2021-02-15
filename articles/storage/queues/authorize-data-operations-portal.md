@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590757"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385021"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Välj hur du vill ge åtkomst till köade data i Azure Portal
 
@@ -28,16 +28,19 @@ Beroende på hur du vill ge åtkomst till köade data i Azure Portal måste du h
 
 ### <a name="use-the-account-access-key"></a>Använda kontots åtkomst nyckel
 
-Om du vill komma åt Queue data med åtkomst nyckeln för kontot måste du ha en Azure-roll som är tilldelad till dig som innehåller Azure RBAC-åtgärden `Microsoft.Storage/storageAccounts/listkeys/action` . Den här Azure-rollen kan vara en inbyggd eller anpassad roll. Inbyggda roller som stöder `Microsoft.Storage/storageAccounts/listkeys/action` är:
+Om du vill komma åt Queue data med åtkomst nyckeln för kontot måste du ha en Azure-roll som är tilldelad till dig som innehåller Azure RBAC **-åtgärden Microsoft. Storage/storageAccounts/listnycklar/Action**. Den här Azure-rollen kan vara en inbyggd eller anpassad roll. Inbyggda roller som stöder **Microsoft. Storage/storageAccounts/listnycklar/Action** är:
 
 - Rollen Azure Resource Manager [ägare](../../role-based-access-control/built-in-roles.md#owner)
 - Rollen Azure Resource Manager [Contributor](../../role-based-access-control/built-in-roles.md#contributor)
 - [Rollen lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-När du försöker komma åt Queue data i Azure Portal, kontrollerar portalen först om du har tilldelats en roll med `Microsoft.Storage/storageAccounts/listkeys/action` . Om du har tilldelats en roll med den här åtgärden använder portalen konto nyckeln för att komma åt data i kön. Om du inte har tilldelats en roll med den här åtgärden försöker portalen komma åt data med ditt Azure AD-konto.
+När du försöker komma åt Queue data i Azure Portal, kontrollerar portalen först om du har tilldelats en roll med **Microsoft. Storage/storageAccounts/listnycklar/Action**. Om du har tilldelats en roll med den här åtgärden använder portalen konto nyckeln för att komma åt data i kön. Om du inte har tilldelats en roll med den här åtgärden försöker portalen komma åt data med ditt Azure AD-konto.
+
+> [!IMPORTANT]
+> När ett lagrings konto är låst med ett Azure Resource Manager **skrivskyddat** lås, tillåts inte [list nyckel](/rest/api/storagerp/storageaccounts/listkeys) åtgärden för det lagrings kontot. **List nycklar** är en post-åtgärd och alla post-åtgärder förhindras när ett **skrivskyddat** lås har kon figurer ATS för kontot. Därför måste användarna använda autentiseringsuppgifter för Azure AD för att få åtkomst till köa data i portalen när kontot är låst med ett **skrivskyddat** lås. Information om hur du kommer åt köa data i portalen med Azure AD finns i [använda ditt Azure AD-konto](#use-your-azure-ad-account).
 
 > [!NOTE]
-> Administratör och **medadministratör** för rollen administratör i den klassiska prenumerationen är motsvarigheten till Azure Resource Manager **-** [`Owner`](../../role-based-access-control/built-in-roles.md#owner) rollen. **Ägar** rollen innehåller alla åtgärder, inklusive `Microsoft.Storage/storageAccounts/listkeys/action` , så en användare med någon av dessa administrativa roller kan också komma åt köade data med konto nyckeln. Mer information finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-administratörer](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Administratör och **medadministratör** för rollen administratör i den klassiska prenumerationen är motsvarigheten till Azure Resource Manager **-** [`Owner`](../../role-based-access-control/built-in-roles.md#owner) rollen. **Ägar** rollen innehåller alla åtgärder, inklusive **Microsoft. Storage/storageAccounts/listnycklar/Action**, så en användare med någon av dessa administrativa roller kan också komma åt köa data med konto nyckeln. Mer information finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-administratörer](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Använd ditt Azure AD-konto
 
@@ -58,7 +61,7 @@ Anpassade roller har stöd för olika kombinationer av samma behörigheter som t
 Det finns inte stöd för att Visa köer med en klassisk prenumerations administratörs roll. Om du vill visa en lista över köer måste användaren ha tilldelats rollen som Azure Resource Managers **läsare** , rollen **data läsare för lagrings kön** eller rollen **data deltagare i lagrings kön** .
 
 > [!IMPORTANT]
-> För hands versionen av Storage Explorer i Azure Portal stöder inte användning av Azure AD-autentiseringsuppgifter för att visa och ändra köade data. Storage Explorer i Azure Portal använder alltid konto nycklar för att komma åt data. Om du vill använda Storage Explorer i Azure Portal måste du ha tilldelats en roll som innehåller `Microsoft.Storage/storageAccounts/listkeys/action` .
+> För hands versionen av Storage Explorer i Azure Portal stöder inte användning av Azure AD-autentiseringsuppgifter för att visa och ändra köade data. Storage Explorer i Azure Portal använder alltid konto nycklar för att komma åt data. Om du vill använda Storage Explorer i Azure Portal måste du ha tilldelats en roll som innehåller **Microsoft. Storage/storageAccounts/listnycklar/Action**.
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Navigera till köer i Azure Portal
 
@@ -95,6 +98,6 @@ Köer visas inte i portalen om du inte har åtkomst till konto nycklarna. Klicka
 ## <a name="next-steps"></a>Nästa steg
 
 - [Autentisera åtkomst till Azure-blobbar och köer med hjälp av Azure Active Directory](../common/storage-auth-aad.md)
-- [Använd Azure Portal för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-portal.md)
+- [Använda Azure-portalen för tilldelning av en Azure-roll för åtkomst till blob- och ködata](../common/storage-auth-aad-rbac-portal.md)
 - [Använd Azure CLI för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-cli.md)
 - [Använd Azure PowerShell-modulen för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-powershell.md)

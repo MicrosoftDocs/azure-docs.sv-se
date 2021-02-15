@@ -1,21 +1,20 @@
 ---
-title: Så här skalar du Azure Cache for Redis
-description: Lär dig hur du skalar Azure cache för Redis-instanser med hjälp av Azure Portal och verktyg som Azure PowerShell och Azure CLI.
+title: Skala en Azure-cache för Redis-instans
+description: Lär dig hur du skalar Azure cache för Redis-instanser med hjälp av Azure Portal och verktyg som Azure PowerShell och Azure CLI
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: 332233873bfbcb2ae77f5a70b4aaa5a6102cecec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537855"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382403"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Så här skalar du Azure Cache for Redis
-Azure cache för Redis har olika cache-erbjudanden, vilket ger flexibilitet i valet av cache-storlek och-funktioner. När en cache har skapats kan du skala storlek och pris nivå för cachen om kraven för ditt program ändras. Den här artikeln visar hur du skalar cacheminnet med hjälp av Azure Portal och verktyg som Azure PowerShell och Azure CLI.
+# <a name="scale-an-azure-cache-for-redis-instance"></a>Skala en Azure-cache för Redis-instans
+Azure cache för Redis har olika cache-erbjudanden, vilket ger flexibilitet i valet av cache-storlek och-funktioner. För en Basic-, standard-eller Premium-cache kan du ändra storlek och nivå när den har skapats för att hålla dig uppdaterad med dina program behov. Den här artikeln visar hur du skalar cacheminnet med hjälp av Azure Portal och verktyg som Azure PowerShell och Azure CLI.
 
 ## <a name="when-to-scale"></a>När ska du skala
 Du kan använda [övervakningsfunktionerna](cache-how-to-monitor.md) i Azure cache för Redis för att övervaka hälso tillståndet och prestandan för cacheminnet och för att avgöra när cachen ska skalas. 
@@ -30,11 +29,11 @@ Du kan övervaka följande mått för att hjälpa dig att avgöra om du behöver
 Om du fastställer att cachen inte längre uppfyller programmets krav kan du skala till en större eller mindre cache-pris nivå som passar ditt program. Mer information om hur du avgör vilken pris nivå för cache som ska användas finns i [välja rätt nivå](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="scale-a-cache"></a>Skala en cache
-Om du vill skala cacheminnet [bläddrar du till cachen](cache-configure.md#configure-azure-cache-for-redis-settings) i [Azure Portal](https://portal.azure.com) och klickar på **skala** på **resurs-menyn** .
+Om du vill skala cacheminnet [bläddrar du till cachen](cache-configure.md#configure-azure-cache-for-redis-settings) i [Azure Portal](https://portal.azure.com) och klickar på **skala** på **resurs-menyn**.
 
 ![Skala](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-Välj önskad pris nivå på bladet **Välj pris nivå** och klicka på **Välj** .
+Välj önskad pris nivå på bladet **Välj pris nivå** och klicka på **Välj**.
 
 ![Prisnivå][redis-cache-pricing-tier-blade]
 
@@ -52,7 +51,7 @@ Medan cachen skalas till den nya pris nivån visas en **skalnings** status i bla
 
 ![Skalning][redis-cache-scaling]
 
-När skalningen är klar ändras statusen från **skalning** till **körs** .
+När skalningen är klar ändras statusen från **skalning** till **körs**.
 
 ## <a name="how-to-automate-a-scaling-operation"></a>Automatisera en skalnings åtgärd
 Förutom att skala dina cache-instanser i Azure Portal kan du skala med hjälp av PowerShell-cmdletar, Azure CLI och med hjälp av Microsoft Azure hanterings bibliotek (MAML). 
@@ -174,7 +173,7 @@ Om en skalnings åtgärd Miss lyckas försöker tjänsten återställa åtgärde
 Skalnings tiden beror på hur mycket data som finns i cacheminnet, med större mängder data som tar längre tid att slutföra. Skalning tar cirka 20 minuter. För klustrade cacheminnen tar skalning cirka 20 minuter per Shard.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Hur kan jag se när skalningen är klar?
-I Azure Portal kan du se att skalnings åtgärden pågår. När skalningen är klar ändras statusen för cachen till **körs** .
+I Azure Portal kan du se att skalnings åtgärden pågår. När skalningen är klar ändras statusen för cachen till **körs**.
 
 <!-- IMAGES -->
 

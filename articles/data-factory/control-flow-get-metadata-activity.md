@@ -1,23 +1,17 @@
 ---
 title: Hämta metadata-aktivitet i Azure Data Factory
 description: Lär dig hur du använder aktiviteten hämta metadata i en Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: ''
-ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297614"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385497"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Hämta metadata-aktivitet i Azure Data Factory
 
@@ -44,7 +38,7 @@ Aktiviteten hämta metadata tar en data uppsättning som indata och returnerar m
 
 **File Storage**
 
-| Koppling/metadata | itemName<br>(fil/mapp) | itemType<br>(fil/mapp) | size<br>Arkiv | Create<br>(fil/mapp) | lastModified<br>(fil/mapp) |childItems<br>projektbevakningsmappen |contentMD5<br>Arkiv | hierarkistruktur<br/>Arkiv | Antal<br>Arkiv | finns<br>(fil/mapp) |
+| Koppling/metadata | itemName<br>(fil/mapp) | itemType<br>(fil/mapp) | ikoner<br>Arkiv | Create<br>(fil/mapp) | lastModified<br>(fil/mapp) |childItems<br>projektbevakningsmappen |contentMD5<br>Arkiv | hierarkistruktur<br/>Arkiv | Antal<br>Arkiv | finns<br>(fil/mapp) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
@@ -80,7 +74,7 @@ Du kan ange följande typer av metadata i listan Hämta metadata aktivitet fält
 |:--- |:--- |
 | itemName | Filens eller mappens namn. |
 | itemType | Typ av fil eller mapp. Returnerat värde är `File` eller `Folder` . |
-| size | Filens storlek i byte. Gäller endast för filer. |
+| ikoner | Filens storlek i byte. Gäller endast för filer. |
 | Create | Datum/tid för filen eller mappen har skapats. |
 | lastModified | Datum och tid då filen eller mappen senast ändrades. |
 | childItems | Lista över undermappar och filer i den aktuella mappen. Gäller endast för mappar. Returnerat värde är en lista över namn och typ för varje underordnat objekt. |
@@ -136,7 +130,7 @@ Du kan ange följande typer av metadata i listan Hämta metadata aktivitet fält
 }
 ```
 
-**Datamängd**
+**Data uppsättning**
 
 ```json
 {

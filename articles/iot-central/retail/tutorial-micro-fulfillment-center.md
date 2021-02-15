@@ -7,16 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 938d5e96667db6de4a45134cbec2396d45bac9d6
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832138"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390478"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Självstudie: Distribuera och gå igenom en Programmall för Micro-uppfyllelse Center
 
-I den här självstudien använder du programmallen Azure IoT Central Micro-uppfyllelse Center för att bygga en detalj handels lösning. Du får lära dig mer om hur du distribuerar mallen, vad som ingår i den och vad du kanske vill göra härnäst.
+I den här självstudien använder du programmallen Azure IoT Central Micro-uppfyllelse Center för att bygga en detalj handels lösning.
+
+I den här självstudien får du lära dig:
+
+> [!div class="checklist"]
+> * Så här distribuerar du program mal len
+> * Så här använder du program mal len
 
 ## <a name="prerequisites"></a>Förutsättningar
 Du behöver en Azure-prenumeration för att kunna slutföra den här själv studie serien. Du kan välja att använda en kostnads fri 7-dagars utvärderings version. Om du inte har någon Azure-prenumeration kan du skapa en på [sidan för Azure-registrering](https://aka.ms/createazuresubscription).

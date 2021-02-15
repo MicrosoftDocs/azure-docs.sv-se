@@ -7,14 +7,14 @@ author: vladvino
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 11/23/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: e38dcf1e12629405ae5f28a987ba20557037ee67
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 0b18a73d0357b5dd90b329ba55c6601e60df5bbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683435"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367579"
 ---
 # <a name="api-management-access-restriction-policies"></a>Principer för åtkomstbegränsning i API Management
 
@@ -63,12 +63,12 @@ Använd `check-header` principen för att genomdriva att en begäran har ett ang
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standard |
+| Namn                       | Beskrivning                                                                                                                                                            | Krävs | Standardvärde |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| misslyckades-kontrol lera fel meddelande | Fel meddelande att returnera i HTTP-svarets text om huvudet inte finns eller har ett ogiltigt värde. Det här meddelandet måste ha specialtecken som kan undantas korrekt. | Ja      | Saknas     |
-| misslyckades-check-httpcode      | HTTP-statuskod att returnera om huvudet inte finns eller har ett ogiltigt värde.                                                                                        | Ja      | Saknas     |
-| rubrik-namn                | Namnet på det HTTP-huvud som ska kontrol leras.                                                                                                                                  | Ja      | Saknas     |
-| Ignorera Skift läge                | Kan anges till true eller false. Om värdet är sant ignoreras när värdet för huvudet jämförs med en uppsättning acceptabla värden.                                    | Ja      | Saknas     |
+| misslyckades-kontrol lera fel meddelande | Fel meddelande att returnera i HTTP-svarets text om huvudet inte finns eller har ett ogiltigt värde. Det här meddelandet måste ha specialtecken som kan undantas korrekt. | Ja      | Ej tillämpligt     |
+| misslyckades-check-httpcode      | HTTP-statuskod att returnera om huvudet inte finns eller har ett ogiltigt värde.                                                                                        | Ja      | Ej tillämpligt     |
+| rubrik-namn                | Namnet på det HTTP-huvud som ska kontrol leras.                                                                                                                                  | Ja      | Ej tillämpligt     |
+| Ignorera Skift läge                | Kan anges till true eller false. Om värdet är sant ignoreras när värdet för huvudet jämförs med en uppsättning acceptabla värden.                                    | Ja      | Ej tillämpligt     |
 
 ### <a name="usage"></a>Användning
 
@@ -80,7 +80,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 
 ## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> Begränsa anrops frekvens per prenumeration
 
-`rate-limit`Principen förhindrar att API-användningen upprättar per prenumeration genom att begränsa anrops hastigheten till ett angivet antal per angiven tids period. När den här principen utlöses får anroparen en `429 Too Many Requests` svars status kod.
+`rate-limit`Principen förhindrar att API-användningen upprättar per prenumeration genom att begränsa anrops hastigheten till ett angivet antal per angiven tids period. När anrops frekvensen överskrids får anroparen en `429 Too Many Requests` svars status kod.
 
 > [!IMPORTANT]
 > Den här principen kan bara användas en gång per princip dokument.
@@ -98,18 +98,25 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
     <api name="API name" id="API id" calls="number" renewal-period="seconds" />
-        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
+        retry-after-header-name="header name" 
+        retry-after-variable-name="policy expression variable name"
+        remaining-calls-header-name="header name"  
+        remaining-calls-variable-name="policy expression variable name"
+        total-calls-header-name="header name"/>
     </api>
 </rate-limit>
 ```
 
 ### <a name="example"></a>Exempel
 
+I följande exempel är antalet per prenumerations frekvens 20 anrop per 90 sekunder. Efter varje princip körning lagras de återstående anropen som tillåts under tids perioden i variabeln `remainingCallsPerSubscription` .
+
 ```xml
 <policies>
     <inbound>
         <base />
-        <rate-limit calls="20" renewal-period="90" />
+        <rate-limit calls="20" renewal-period="90" remaining-calls-variable-name="remainingCallsPerSubscription"/>
     </inbound>
     <outbound>
         <base />
@@ -127,11 +134,16 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 
 ### <a name="attributes"></a>Attribut
 
-| Namn           | Beskrivning                                                                                           | Krävs | Standard |
+| Namn           | Beskrivning                                                                                           | Krävs | Standardvärde |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | Namnet på det API som hastighets begränsningen ska tillämpas för.                                                | Ja      | Saknas     |
-| fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Saknas     |
-| förnyelse-period | Tids perioden i sekunder efter vilken kvoten återställs.                                              | Ja      | Saknas     |
+| name           | Namnet på det API som hastighets begränsningen ska tillämpas för.                                                | Ja      | Ej tillämpligt     |
+| fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Ej tillämpligt     |
+| förnyelse-period | Den tids period i sekunder efter vilken frekvensen återställs.                                              | Ja      | Ej tillämpligt     |
+| nytt försök-efter-rubrik-namn    | Namnet på ett svars huvud vars värde är det rekommenderade intervallet för återförsök i sekunder efter det att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
+| försök igen – efter variabel namn    | Namnet på en princip uttrycks variabel som lagrar det rekommenderade återförsöksintervallet i sekunder efter att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
+| återstående-anrop – rubrik-namn    | Namnet på ett svars huvud vars värde efter varje princip körning är antalet återstående anrop som tillåts för det tidsintervall som anges i `renewal-period` . |  Inga | Ej tillämpligt  |
+| återstående anrop – variabel namn    | Namnet på en princip uttryck variabel som efter varje princip körning lagrar antalet återstående anrop som tillåts för det tidsintervall som anges i `renewal-period` . |  Inga | Ej tillämpligt  |
+| Totalt-anrop – rubrik-namn    | Namnet på ett svars huvud vars värde är det värde som anges i `calls` . |  Inga | Ej tillämpligt  |
 
 ### <a name="usage"></a>Användning
 
@@ -146,7 +158,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 > [!IMPORTANT]
 > Den här funktionen är inte tillgänglig på **förbruknings** nivån för API Management.
 
-`rate-limit-by-key`Principen förhindrar att API-användningen upprättar per nyckel genom att begränsa anrops hastigheten till ett angivet antal per angiven tids period. Nyckeln kan ha ett godtyckligt sträng värde och anges vanligt vis med ett princip uttryck. Valfritt öknings villkor kan läggas till för att ange vilka begär Anden som ska räknas mot gränsen. När den här principen utlöses får anroparen en `429 Too Many Requests` svars status kod.
+`rate-limit-by-key`Principen förhindrar att API-användningen upprättar per nyckel genom att begränsa anrops hastigheten till ett angivet antal per angiven tids period. Nyckeln kan ha ett godtyckligt sträng värde och anges vanligt vis med ett princip uttryck. Valfritt öknings villkor kan läggas till för att ange vilka begär Anden som ska räknas mot gränsen. När den här anrops frekvensen överskrids får anroparen en `429 Too Many Requests` svars status kod.
 
 Mer information och exempel på den här principen finns i [Avancerad begränsning av förfrågningar med Azure API Management](./api-management-sample-flexible-throttling.md).
 
@@ -162,13 +174,16 @@ Mer information och exempel på den här principen finns i [Avancerad begränsni
 <rate-limit-by-key calls="number"
                    renewal-period="seconds"
                    increment-condition="condition"
-                   counter-key="key value" />
+                   counter-key="key value" 
+                   retry-after-header-name="header name" retry-after-variable-name="policy expression variable name"
+                   remaining-calls-header-name="header name"  remaining-calls-variable-name="policy expression variable name"
+                   total-calls-header-name="header name"/> 
 
 ```
 
 ### <a name="example"></a>Exempel
 
-I följande exempel anges frekvens gränsen av IP-adressen för anroparen.
+I följande exempel anges frekvens gränsen på 10 anrop per 60 sekunder av IP-adressen för anroparen. Efter varje princip körning lagras de återstående anropen som tillåts under tids perioden i variabeln `remainingCallsPerIP` .
 
 ```xml
 <policies>
@@ -177,7 +192,8 @@ I följande exempel anges frekvens gränsen av IP-adressen för anroparen.
         <rate-limit-by-key  calls="10"
               renewal-period="60"
               increment-condition="@(context.Response.StatusCode == 200)"
-              counter-key="@(context.Request.IpAddress)"/>
+              counter-key="@(context.Request.IpAddress)"
+              remaining-calls-variable-name="remainingCallsPerIP"/>
     </inbound>
     <outbound>
         <base />
@@ -193,12 +209,17 @@ I följande exempel anges frekvens gränsen av IP-adressen för anroparen.
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                | Beskrivning                                                                                           | Krävs | Standard |
+| Namn                | Beskrivning                                                                                           | Krävs | Standardvärde |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Saknas     |
-| räknare-nyckel         | Den nyckel som ska användas för frekvens begränsnings principen.                                                             | Ja      | Saknas     |
-| Increment-Condition | Det booleska uttryck som anger om begäran ska räknas mot kvoten ( `true` ).        | Inga       | Saknas     |
-| förnyelse-period      | Tids perioden i sekunder efter vilken kvoten återställs.                                              | Ja      | Saknas     |
+| fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` . | Ja      | Ej tillämpligt     |
+| räknare-nyckel         | Den nyckel som ska användas för frekvens begränsnings principen.                                                             | Ja      | Ej tillämpligt     |
+| Increment-Condition | Det booleska uttryck som anger om begäran ska räknas mot frekvensen ( `true` ).        | Inga       | Ej tillämpligt     |
+| förnyelse-period      | Den tids period i sekunder efter vilken frekvensen återställs.                                              | Ja      | Ej tillämpligt     |
+| nytt försök-efter-rubrik-namn    | Namnet på ett svars huvud vars värde är det rekommenderade intervallet för återförsök i sekunder efter det att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
+| försök igen – efter variabel namn    | Namnet på en princip uttrycks variabel som lagrar det rekommenderade återförsöksintervallet i sekunder efter att den angivna anrops hastigheten har överskridits. |  Inga | Ej tillämpligt  |
+| återstående-anrop – rubrik-namn    | Namnet på ett svars huvud vars värde efter varje princip körning är antalet återstående anrop som tillåts för det tidsintervall som anges i `renewal-period` . |  Inga | Ej tillämpligt  |
+| återstående anrop – variabel namn    | Namnet på en princip uttryck variabel som efter varje princip körning lagrar antalet återstående anrop som tillåts för det tidsintervall som anges i `renewal-period` . |  Inga | Ej tillämpligt  |
+| Totalt-anrop – rubrik-namn    | Namnet på ett svars huvud vars värde är det värde som anges i `calls` . |  Inga | Ej tillämpligt  |
 
 ### <a name="usage"></a>Användning
 
@@ -242,10 +263,10 @@ I följande exempel tillåter principen bara begär Anden som kommer från den e
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                                      | Beskrivning                                                                                 | Krävs                                           | Standard |
+| Namn                                      | Beskrivning                                                                                 | Krävs                                           | Standardvärde |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| adress – intervall från = "adress" till = "adress" | Ett intervall med IP-adresser som tillåter eller nekar åtkomst för.                                        | Krävs när `address-range` elementet används. | Saknas     |
-| IP-filter åtgärd = "Tillåt &#124; nekad"    | Anger om anrop ska tillåtas eller inte för de angivna IP-adresserna och intervallen. | Ja                                                | Saknas     |
+| adress – intervall från = "adress" till = "adress" | Ett intervall med IP-adresser som tillåter eller nekar åtkomst för.                                        | Krävs när `address-range` elementet används. | Ej tillämpligt     |
+| IP-filter åtgärd = "Tillåt &#124; nekad"    | Anger om anrop ska tillåtas eller inte för de angivna IP-adresserna och intervallen. | Ja                                                | Ej tillämpligt     |
 
 ### <a name="usage"></a>Användning
 
@@ -300,12 +321,12 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 
 ### <a name="attributes"></a>Attribut
 
-| Namn           | Beskrivning                                                                                               | Krävs                                                         | Standard |
+| Namn           | Beskrivning                                                                                               | Krävs                                                         | Standardvärde |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | Namnet på det API eller den åtgärd som kvoten gäller.                                             | Ja                                                              | Saknas     |
-| bredd      | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Saknas     |
-| fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Saknas     |
-| förnyelse-period | Tids perioden i sekunder efter vilken kvoten återställs.                                                  | Ja                                                              | Saknas     |
+| name           | Namnet på det API eller den åtgärd som kvoten gäller.                                             | Ja                                                              | Ej tillämpligt     |
+| bredd      | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
+| fjärrproceduranrop          | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
+| förnyelse-period | Tids perioden i sekunder efter vilken kvoten återställs.                                                  | Ja                                                              | Ej tillämpligt     |
 
 ### <a name="usage"></a>Användning
 
@@ -319,7 +340,7 @@ Den här principen kan användas i följande princip [avsnitt](./api-management-
 > [!IMPORTANT]
 > Den här funktionen är inte tillgänglig på **förbruknings** nivån för API Management.
 
-`quota-by-key`Principen tillämpar en förnyad eller livs längds anrops volym och/eller bandbredds kvot, per nyckel. Nyckeln kan ha ett godtyckligt sträng värde och anges vanligt vis med ett princip uttryck. Valfritt öknings villkor kan läggas till för att ange vilka begär Anden som ska räknas mot kvoten. Om flera principer ökar samma nyckel värde ökas det bara en gång per begäran. När anrops gränsen har nåtts får anroparen en `403 Forbidden` svars status kod.
+`quota-by-key`Principen tillämpar en förnyad eller livs längds anrops volym och/eller bandbredds kvot, per nyckel. Nyckeln kan ha ett godtyckligt sträng värde och anges vanligt vis med ett princip uttryck. Valfritt öknings villkor kan läggas till för att ange vilka begär Anden som ska räknas mot kvoten. Om flera principer ökar samma nyckel värde ökas det bara en gång per begäran. När anrops frekvensen överskrids får anroparen en `403 Forbidden` svars status kod.
 
 Mer information och exempel på den här principen finns i [Avancerad begränsning av förfrågningar med Azure API Management](./api-management-sample-flexible-throttling.md).
 
@@ -363,13 +384,13 @@ I följande exempel anges kvoten av IP-adressen för anroparen.
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                | Beskrivning                                                                                               | Krävs                                                         | Standard |
+| Namn                | Beskrivning                                                                                               | Krävs                                                         | Standardvärde |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bredd           | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Saknas     |
-| fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Saknas     |
-| räknare-nyckel         | Den nyckel som ska användas för kvot principen.                                                                      | Ja                                                              | Saknas     |
-| Increment-Condition | Det booleska uttryck som anger om begäran ska räknas mot kvoten ( `true` )             | Inga                                                               | Saknas     |
-| förnyelse-period      | Tids perioden i sekunder efter vilken kvoten återställs.                                                  | Ja                                                              | Saknas     |
+| bredd           | Det maximala totala antalet kilobyte som tillåts under det tidsintervall som anges i `renewal-period` . | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
+| fjärrproceduranrop               | Maximalt antal anrop som tillåts under det tidsintervall som anges i `renewal-period` .     | Antingen `calls` , `bandwidth` eller båda tillsammans måste anges. | Ej tillämpligt     |
+| räknare-nyckel         | Den nyckel som ska användas för kvot principen.                                                                      | Ja                                                              | Ej tillämpligt     |
+| Increment-Condition | Det booleska uttryck som anger om begäran ska räknas mot kvoten ( `true` )             | Inga                                                               | Ej tillämpligt     |
+| förnyelse-period      | Tids perioden i sekunder efter vilken kvoten återställs.                                                  | Ja                                                              | Ej tillämpligt     |
 
 ### <a name="usage"></a>Användning
 
@@ -539,22 +560,22 @@ Det här exemplet visar hur du använder [validate JWT](api-management-access-re
 
 ### <a name="attributes"></a>Attribut
 
-| Namn                            | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                                            | Krävs                                                                         | Standard                                                                           |
+| Namn                            | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                                            | Krävs                                                                         | Standardvärde                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | klock skevning                      | Intervall. Används för att ange den maximala förväntade tids skillnaden mellan system klockorna i token Issuer och API Management-instansen.                                                                                                                                                                                                                                                                                                               | Inga                                                                               | 0 sekunder                                                                         |
 | misslyckades-validering-fel-meddelande | Fel meddelande att returnera i HTTP-svarets text om JWT inte klarar verifieringen. Det här meddelandet måste ha specialtecken som kan undantas korrekt.                                                                                                                                                                                                                                                                                                 | Inga                                                                               | Standard fel meddelandet är beroende av verifierings problemet, till exempel "JWT saknas". |
 | misslyckades – validering-httpcode      | HTTP-statuskod att returnera om JWT inte klarar verifieringen.                                                                                                                                                                                                                                                                                                                                                                                         | Inga                                                                               | 401                                                                               |
-| rubrik-namn                     | Namnet på det HTTP-huvud som innehåller token.                                                                                                                                                                                                                                                                                                                                                                                                         | En av `header-name` , `query-parameter-name` eller `token-value` måste anges. | Saknas                                                                               |
-| fråga-parameter-Name            | Namnet på frågeparametern som innehåller token.                                                                                                                                                                                                                                                                                                                                                                                                     | En av `header-name` , `query-parameter-name` eller `token-value` måste anges. | Saknas                                                                               |
-| token-värde                     | Uttrycket returnerar en sträng som innehåller JWT-token                                                                                                                                                                                                                                                                                                                                                                                                     | En av `header-name` , `query-parameter-name` eller `token-value` måste anges. | Saknas                                                                               |
-| id                              | `id`Attributet i- `key` elementet gör att du kan ange den sträng som ska matchas mot `kid` anspråk i token (om det finns) för att ta reda på vilken nyckel som ska användas för verifiering av signaturen.                                                                                                                                                                                                                                           | Inga                                                                               | Saknas                                                                               |
+| rubrik-namn                     | Namnet på det HTTP-huvud som innehåller token.                                                                                                                                                                                                                                                                                                                                                                                                         | En av `header-name` , `query-parameter-name` eller `token-value` måste anges. | Ej tillämpligt                                                                               |
+| fråga-parameter-Name            | Namnet på frågeparametern som innehåller token.                                                                                                                                                                                                                                                                                                                                                                                                     | En av `header-name` , `query-parameter-name` eller `token-value` måste anges. | Ej tillämpligt                                                                               |
+| token-värde                     | Uttrycket returnerar en sträng som innehåller JWT-token                                                                                                                                                                                                                                                                                                                                                                                                     | En av `header-name` , `query-parameter-name` eller `token-value` måste anges. | Ej tillämpligt                                                                               |
+| id                              | `id`Attributet i- `key` elementet gör att du kan ange den sträng som ska matchas mot `kid` anspråk i token (om det finns) för att ta reda på vilken nyckel som ska användas för verifiering av signaturen.                                                                                                                                                                                                                                           | Inga                                                                               | Ej tillämpligt                                                                               |
 | villkoren                           | `match`Attributet i `claim` elementet anger om alla anspråks värden i principen måste finnas i token för att verifieringen ska lyckas. Möjliga värden:<br /><br /> - `all` -alla anspråks värden i principen måste finnas i token för att verifieringen ska lyckas.<br /><br /> - `any` -minst ett anspråks värde måste finnas i token för att verifieringen ska lyckas.                                                       | Inga                                                                               | all                                                                               |
 | Kräv förfallo tid         | Booleskt. Anger om ett förfallo datum måste anges i token.                                                                                                                                                                                                                                                                                                                                                                               | Inga                                                                               | true                                                                              |
-| Kräv schema                  | Namnet på token-schemat, t. ex. "Bearer". När det här attributet anges ser principen till att det angivna schemat finns i värdet för Authorization-huvudet.                                                                                                                                                                                                                                                                                    | Inga                                                                               | Saknas                                                                               |
+| Kräv schema                  | Namnet på token-schemat, t. ex. "Bearer". När det här attributet anges ser principen till att det angivna schemat finns i värdet för Authorization-huvudet.                                                                                                                                                                                                                                                                                    | Inga                                                                               | Ej tillämpligt                                                                               |
 | Kräv-signerade-token           | Booleskt. Anger om en token måste signeras.                                                                                                                                                                                                                                                                                                                                                                                           | Inga                                                                               | true                                                                              |
-| brytning                       | Sträng. Anger en avgränsare (t. ex. ",") som ska användas för att extrahera en uppsättning värden från ett multi-Value-anspråk.                                                                                                                                                                                                                                                                                                                                          | Inga                                                                               | Saknas                                                                               |
-| url                             | URL för konfiguration av öppen ID-konfiguration från där det går att hämta metadata för konfiguration av öppen ID. Svaret bör vara enligt de specifikationer som definierats på URL: en: `https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` . För Azure Active Directory använder du följande URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` ersätta din katalogs klient namn, t. ex.. `contoso.onmicrosoft.com` | Ja                                                                              | Saknas                                                                               |
-| output-token-variabel-namn      | Sträng. Namnet på den Sammanhangs variabel som kommer att ta emot token-värde som ett objekt av typen [`Jwt`](api-management-policy-expressions.md) vid lyckad token-verifiering                                                                                                                                                                                                                                                                                     | Inga                                                                               | Saknas                                                                               |
+| brytning                       | Sträng. Anger en avgränsare (t. ex. ",") som ska användas för att extrahera en uppsättning värden från ett multi-Value-anspråk.                                                                                                                                                                                                                                                                                                                                          | Inga                                                                               | Ej tillämpligt                                                                               |
+| url                             | URL för konfiguration av öppen ID-konfiguration från där det går att hämta metadata för konfiguration av öppen ID. Svaret bör vara enligt de specifikationer som definierats på URL: en: `https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` . För Azure Active Directory använder du följande URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` ersätta din katalogs klient namn, t. ex.. `contoso.onmicrosoft.com` | Ja                                                                              | Ej tillämpligt                                                                               |
+| output-token-variabel-namn      | Sträng. Namnet på den Sammanhangs variabel som kommer att ta emot token-värde som ett objekt av typen [`Jwt`](api-management-policy-expressions.md) vid lyckad token-verifiering                                                                                                                                                                                                                                                                                     | Inga                                                                               | Ej tillämpligt                                                                               |
 
 ### <a name="usage"></a>Användning
 

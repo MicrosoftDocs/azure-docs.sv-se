@@ -1,21 +1,17 @@
 ---
 title: Övervaka integration runtime i Azure Data Factory
 description: Lär dig hur du övervakar olika typer av integration runtime i Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862453"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377507"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Övervaka en integreringskörning i Azure Data Factory
 
@@ -49,7 +45,7 @@ Följande tabell innehåller beskrivningar av egenskaper som returneras av cmdle
 -------- | ------------- | 
 | Namn | Namnet på Azure integration Runtime. |  
 | Stat | Status för Azure integration Runtime. | 
-| Plats | Platsen för Azure integration Runtime. Mer information om platsen för en Azure integration runtime finns i [Introduktion till integration runtime](concepts-integration-runtime.md). |
+| Location | Platsen för Azure integration Runtime. Mer information om platsen för en Azure integration runtime finns i [Introduktion till integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Namnet på den data fabrik som Azure integration runtime tillhör. | 
 | ResourceGroupName | Namnet på den resurs grupp som data fabriken tillhör.  |
 | Beskrivning | Beskrivning av integrerings körningen.  |
@@ -83,7 +79,7 @@ Följande tabell innehåller beskrivningar av övervaknings egenskaper för **va
 | CPU-användning | CPU-användning för en egen värd för integration runtime-noden. Det här värdet är en nära real tids ögonblicks bild. |
 | Nätverk (in/ut) | Nätverks användning av en egen värd för integration runtime-noden. Det här värdet är en nära real tids ögonblicks bild. | 
 | Samtidiga jobb (som körs/begränsas) | **Körs**. Antal jobb eller aktiviteter som körs på varje nod. Det här värdet är en nära real tids ögonblicks bild. <br/><br/>**Begränsa**. Gränsen visar maximalt antal samtidiga jobb för varje nod. Det här värdet definieras baserat på datorns storlek. Du kan öka gränsen för att skala upp samtidiga jobb körningar i avancerade scenarier, när aktiviteterna är tids gräns, även om processor, minne eller nätverk används. Den här funktionen är också tillgänglig med en lokal integration runtime med egen värd. |
-| Role | Det finns två typer av roller i en integration runtime med egen värd för flera noder – dispatcher och Worker. Alla noder är arbetare, vilket innebär att de kan användas för att köra jobb. Det finns bara en dispatcher-nod som används för att hämta aktiviteter/jobb från moln tjänster och skicka dem till olika arbetsnoder. Dispatcher-noden är också en arbetsnod. |
+| Roll | Det finns två typer av roller i en integration runtime med egen värd för flera noder – dispatcher och Worker. Alla noder är arbetare, vilket innebär att de kan användas för att köra jobb. Det finns bara en dispatcher-nod som används för att hämta aktiviteter/jobb från moln tjänster och skicka dem till olika arbetsnoder. Dispatcher-noden är också en arbetsnod. |
 
 Vissa inställningar för egenskaperna är mer begripliga när det finns två eller fler noder i den egna värdbaserade integrerings körningen (det vill säga i ett scenario med skala ut).
 
@@ -103,7 +99,7 @@ Följande tabell innehåller möjliga status värden för en egen värd för int
 | ------ | ------------------ | 
 | Online | Noden är ansluten till Data Factory tjänsten. |
 | Offline | Noden är offline. |
-| Fortsätter | Noden uppdateras automatiskt. |
+| Uppgradera | Noden uppdateras automatiskt. |
 | Begränsad | På grund av ett anslutnings problem. Kan bero på HTTP-port 8060 problem, problem med Service Bus-anslutning eller problem med synkronisering av autentiseringsuppgifter. |
 | Inaktiv | Noden har en annan konfiguration än konfigurationen av andra majoritets noder. |
 
@@ -182,7 +178,7 @@ Följande tabell innehåller beskrivningar av egenskaper som returneras av ovans
 | OtherErrors                  | De åtgärds bara fel som inte är noder i Azure-SSIS IR. |
 | LastOperation                | Resultatet av den senaste start-/stopp åtgärden på Azure-SSIS IR med åtgärds bara fel om det Miss lyckas. |
 | Stat                        | Övergripande status (första/starta/starta/stoppa/stoppas) för Azure-SSIS IR. |
-| Plats                     | Azure-SSIS IR plats. |
+| Location                     | Azure-SSIS IR plats. |
 | NodeSize                     | Storleken på varje nod i Azure-SSIS IR. |
 | NodeCount                    | Antalet noder i Azure-SSIS IR. |
 | MaxParallelExecutionsPerNode | Det maximala antalet parallella körningar per nod i Azure-SSIS IR. |
@@ -208,7 +204,7 @@ Följande tabell innehåller möjliga status värden för en Azure-SSIS IR-nod:
 | Startar             | Den här noden förbereds. |
 | Tillgänglig            | Den här noden är redo att distribuera/köra SSIS-paket. |
 | Pappers            | Den här noden repareras/startas om. |
-| Ej tillgänglig          | Den här noden kan inte användas för att distribuera/köra SSIS-paket och har åtgärds bara fel/problem som du kan lösa. |
+| Inte tillgänglig          | Den här noden kan inte användas för att distribuera/köra SSIS-paket och har åtgärds bara fel/problem som du kan lösa. |
 
 #### <a name="status-overall-azure-ssis-ir"></a>Status (övergripande Azure-SSIS IR)
 

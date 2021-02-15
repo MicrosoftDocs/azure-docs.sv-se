@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108576"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374736"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Åtkomst till Azure Virtual Network-resurser från Azure Logic Apps med hjälp av integrerings tjänst miljöer (ISEs)
 
@@ -93,20 +93,22 @@ För att komma åt lokala system och data källor som inte har ISE-kopplingar, �
 
 ## <a name="ise-skus"></a>ISE SKU: er
 
-När du skapar din ISE kan du välja Developer SKU eller Premium SKU. Här följer skillnaderna mellan dessa SKU: er:
+När du skapar din ISE kan du välja Developer SKU eller Premium SKU. Detta SKU-alternativ är endast tillgängligt vid skapande av ISE och kan inte ändras senare. Här följer skillnaderna mellan dessa SKU: er:
 
 * **Utvecklare**
 
-  Tillhandahåller en miljö med lägre kostnad som du kan använda för experimentering, utveckling och testning, men inte för produktions-eller prestanda testning. Developer SKU: n innehåller inbyggda utlösare och åtgärder, standard anslutningar, företags anslutningar och ett enda [kostnads fritt nivå](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrations konto för ett fast månads pris. Detta SKU omfattar dock inte något service avtal (SLA), alternativ för att skala upp kapacitet eller redundans vid återvinning, vilket innebär att du kan uppleva fördröjningar eller drift stopp.
+  Tillhandahåller en miljö med lägre kostnad som du kan använda för utforskning, experiment, utveckling och testning, men inte för produktion eller prestanda testning. Developer SKU: n innehåller inbyggda utlösare och åtgärder, standard anslutningar, företags anslutningar och ett enda [kostnads fritt nivå](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrations konto för ett [fast månads pris](https://azure.microsoft.com/pricing/details/logic-apps). 
+
+  > [!IMPORTANT]
+  > Denna SKU har inget service avtal (SLA), skalnings kapacitet eller redundans under återvinning, vilket innebär att du kan uppleva fördröjningar eller drift stopp. Server dels uppdateringar kan tillfälligt avbryta tjänsten.
+
+  Information om kapacitet och begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). Information om hur faktureringen fungerar för ISEs finns i [prissättnings modellen för Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
 
 * **Premium**
 
-  Tillhandahåller en ISE som du kan använda för produktion och innehåller SLA-support, inbyggda utlösare och åtgärder, standard anslutningar, företags anslutningar, ett enda integrations konto på [Standard nivå](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , alternativ för att skala upp kapaciteten och redundans under återvinning för ett fast månads pris.
+  Tillhandahåller en ISE som du kan använda för produktions-och prestanda testning. Premium-SKU: n innehåller SLA-support, inbyggda utlösare och åtgärder, standard anslutningar, företags anslutningar, ett enda integrations konto på [Standard nivå](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) , skalnings möjligheter och redundans vid återvinning för ett [fast månads pris](https://azure.microsoft.com/pricing/details/logic-apps).
 
-> [!IMPORTANT]
-> Alternativet SKU är bara tillgängligt vid skapande av ISE och kan inte ändras senare.
-
-Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/). Information om hur priser och fakturering fungerar för ISEs finns i [pris modellen Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
+  Information om kapacitet och begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). Information om hur faktureringen fungerar för ISEs finns i [prissättnings modellen för Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing).
 
 <a name="endpoint-access"></a>
 

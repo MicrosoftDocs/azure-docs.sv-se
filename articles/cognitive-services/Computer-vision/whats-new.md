@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: dbe0b5ac207b361a9584603bbe2d59abd5e5ca4e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007405"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390410"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
@@ -26,7 +26,7 @@ Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, 
 ### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Läs API v 3.2 offentlig för hands version med OCR-stöd för 73 språk
 Visuellt innehåll s Read API v 3.2 offentlig för hands version, som är tillgänglig som moln tjänst och Docker-behållare, innehåller följande uppdateringar:
 * [OCR för 73-språk](./language-support.md#optical-character-recognition-ocr) , inklusive förenklade och traditionella kinesiska, japanska, koreanska och latinska språk.
-* Naturlig Läs ordning för text radens utdata.
+* Naturlig Läs ordning för text radens utdata (endast latinska språk)
 * Stil klassificering för hand skrift för text rader tillsammans med en förtroende poäng (endast latinska språk).
 * Extrahera endast text för markerade sidor för ett flersidigt dokument.
 * Tillgängligt som en [Distroless-behållare](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.

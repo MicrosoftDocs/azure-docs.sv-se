@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165152"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365828"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Vanliga frågor och svar om Azure Active Directory enhets hantering
 
@@ -299,6 +299,11 @@ UPN-ändringar stöds med Windows 10 2004 Update. Användare på enheter med den
 - För registrerade enheter med Windows 10 Azure AD går du till **Inställningar**  >  **konton**  >  **åtkomst till arbete eller skola**. Välj ditt konto och välj **Koppla från**. Enhets registrering är per användar profil i Windows 10.
 - För iOS och Android kan du använda Microsoft Authenticator program **Inställningar**  >  **enhets registrering** och välja **avregistrera enheten**.
 - För macOS kan du använda Microsoft Intune Företagsportal programmet för att avregistrera enheten från hanteringen och ta bort eventuell registrering. 
+
+För Windows 10-enheter kan den här processen automatiseras med [verktyget för borttagning av Workplace Join (WPJ)](https://download.microsoft.com/download/8/e/f/8ef13ae0-6aa8-48a2-8697-5b1711134730/WPJCleanUp.zip)
+
+> [!NOTE]
+> Det här verktyget tar bort alla SSO-konton på enheten. Efter den här åtgärden går alla program förlorade SSO-tillstånd och enheten avregistreras från hanterings verktyg (MDM) och avregistreras från molnet. Nästa gång ett program försöker logga in uppmanas användarna att lägga till kontot igen.
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>F: Hur kan jag blockera användare från att lägga till ytterligare arbets konton (registrerade Azure AD) på mina företags Windows 10-enheter?
