@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/09/2020
+ms.date: 02/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 4d095c3cc7e67938120260c35376b128be73ffa8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cd6ba1da92a19a1f73fc67c0165bfb19b3bb77aa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98727027"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeter-81"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med perimeter 81
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar perimeter 81 med Az
 * Gör det möjligt för användarna att logga in automatiskt till perimeter 81 med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -71,13 +71,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal på sidan **Perimeter 81** program integration, letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `urn:auth0:perimeter81:<SUBDOMAIN>`
+    a. I text rutan **identifierare** anger du ett värde med hjälp av följande mönster: `urn:auth0:perimeter81:<SUBDOMAIN>`
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://auth.perimeter81.com/login/callback?connection=<SUBDOMAIN>`
 
@@ -88,9 +88,14 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Perimeter 81-klient support teamet](mailto:support@perimeter81.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på Kopiera för att kopiera **URL: en för appens Federations-metadata** och spara den på din dator.
+1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
-    ![Länk för nedladdning av certifikatet](common/copy-metadataurl.png)
+    ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
+
+1. I avsnittet **Konfigurera Perimeter 81** kopierar du lämpliga URL: er baserat på ditt krav.
+
+    ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
@@ -99,7 +104,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -117,7 +122,42 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-perimeter-81-sso"></a>Konfigurera perimeter 81 SSO
 
-Om du vill konfigurera enkel inloggning på **Perimeter 81** -sidan måste du skicka **URL: en för appens Federations-metadata** till [support teamet för perimeter 81](mailto:support@perimeter81.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+1. Om du vill automatisera konfigurationen inom perimeter 81 måste du installera **webb läsar tillägget Mina appar med säker inloggning** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren, klickar du på **Konfigurera Perimeter 81** för att dirigera dig till perimeter 81-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på perimeter 81. Webbläsartillägget konfigurerar automatiskt programmet åt dig och automatiserar steg 3–7.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera omkrets 81 manuellt, i ett annat webbläsarfönster, loggar du in på din perimeter 81-företags plats som administratör.
+
+4. Gå till **Inställningar** och klicka på **identitets leverantörer**.
+
+    ![Inställningar för perimeter 81](./media/perimeter-81-tutorial/settings.png)
+
+5. Klicka på knappen **Lägg till provider** .
+
+    ![Perimeter 81 Lägg till Provider](./media/perimeter-81-tutorial/add-provider.png)
+
+6. Välj **SAML 2,0 Identity providers** och klicka på **Fortsätt** .
+
+    ![Perimeter 81 Lägg till identitets leverantör](./media/perimeter-81-tutorial/add-identity-provider.png)
+
+7. I avsnittet **SAML 2,0 Identity providers** , utför följande steg:
+
+    ![Perimeter 81-konfiguration av SAML](./media/perimeter-81-tutorial/setting-up-saml.png)
+
+    a. I text rutan **inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
+
+    b. I text rutan **domän Ali Aset** anger du ditt domän Ali Aset-värde.
+
+    c. Öppna det hämtade **certifikatet (base64)** från Azure Portal i anteckningar och klistra in innehållet i text rutan **X509-signerings certifikat** .
+
+    > [!NOTE]
+    > Du kan också klicka på **Ladda upp PEM/cert-filen** för att ladda upp det **certifikat (base64)** som du laddade ned från Azure Portal.
+    
+    d. Klicka på **Klar**.
 
 ### <a name="create-perimeter-81-test-user"></a>Skapa perimeter 81-test användare
 
@@ -135,7 +175,7 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 #### <a name="idp-initiated"></a>IDP initierad:
 
-* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den omkrets 81 som du ställer in SSO för. 
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den omkrets 81 som du ställer in SSO för.
 
 Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på ikonen för perimeter 81 i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt på den perimeter 81 som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
 

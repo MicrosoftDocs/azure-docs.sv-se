@@ -1,23 +1,19 @@
 ---
 title: Bearbeta data uppsättningar i stor skala med hjälp av Data Factory och batch
 description: Beskriver hur du bearbetar stora mängder data i en Azure Data Factory pipelinen med hjälp av parallell bearbetnings funktionen i Azure Batch.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 365de79db450eda897621ccde3b92478ed93ecc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496168"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364281"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Bearbeta data uppsättningar i stor skala med hjälp av Data Factory och batch
 > [!NOTE]
@@ -122,7 +118,7 @@ Skapa en batch-pool med minst två Compute-noder.
 
    f. Välj **OK** för att skapa poolen.
 
-#### <a name="azure-storage-explorer"></a>Azure Lagringsutforskaren
+#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
 Du använder [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) eller [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (från ClumsyLeaf Software) för att granska och ändra data i dina lagrings projekt. Du kan också inspektera och ändra data i loggarna för dina molnbaserade program.
 
 1. Skapa en behållare med **namnet $** med privat åtkomst (ingen anonym åtkomst).
@@ -193,7 +189,7 @@ Metoden har några viktiga komponenter som du behöver förstå:
 
    ex. Klicka på **OK** för att skapa projektet.
 
-1. Välj **verktyg**  >  **NuGet Package Manager**  >  **Package** Manager-konsolen.
+1. Välj **Verktyg** > **NuGet-pakethanteraren** > **Pakethanterarkonsolen**.
 
 1. Kör följande kommando i Package Manager-konsolen för att importera Microsoft. Azure. Management. DataFactories:
 
@@ -868,7 +864,7 @@ I det här steget ska du testa pipelinen genom att släppa filer i inmapparna. B
 #### <a name="data-factory-and-batch-integration"></a>Data Factory-och batch-integrering
 Data Factorys tjänsten skapar ett jobb i batch med namnet `adf-poolname:job-xxx` .
 
-![Batch-jobb](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+![Batchjobb](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
 En uppgift i jobbet skapas för varje aktivitets körning i en sektor. Om 10 sektorer är redo att bearbetas skapas 10 aktiviteter i jobbet. Du kan ha mer än en sektor som körs parallellt om du har flera Compute-noder i poolen. Om det maximala antalet aktiviteter per datornod är inställt på större än ett, kan mer än en sektor köras i samma beräkning.
 

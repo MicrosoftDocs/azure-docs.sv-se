@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583849"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103999"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Använda Microsoft Authenticator eller Intune-företagsportal på Xamarin-program
 
@@ -183,7 +183,7 @@ Lägg till omdirigerings-URI: n i appens registrering i [Azure Portal](https://p
 
 **Generera omdirigerings-URI: n:**
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Välj **Azure Active Directory**  >  **Appregistreringar** > din registrerade app
 1. Välj **autentisering**  >  **Lägg till en plattform**  >  **iOS/MacOS**
 1. Ange ditt paket-ID och välj sedan **Konfigurera**.

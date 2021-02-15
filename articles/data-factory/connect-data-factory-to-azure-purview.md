@@ -1,24 +1,20 @@
 ---
 title: Ansluta en datafabrik till Azure Purview
 description: Lär dig hur du ansluter en Data Factory till Azure-avdelningens kontroll
-services: data-factory
 ms.author: lle
 author: lrtoyou1223
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: ce37e26730fbef9e5e40fd95190727062f9044ac
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: c42eb8cac283ce096c42c9e5d4b7eac9a3e12625
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428947"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364383"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Ansluta Data Factory till Azure-avdelningens kontroll (för hands version)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]

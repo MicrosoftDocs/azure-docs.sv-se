@@ -2,19 +2,16 @@
 title: ORC-format i Azure Data Factory
 description: I det här avsnittet beskrivs hur du hanterar ORC-format i Azure Data Factory.
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 8973692b90cc9d6caa852616bf2962371d25abfa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945795"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386466"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>ORC-format i Azure Data Factory
 
@@ -32,7 +29,7 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 | ---------------- | ------------------------------------------------------------ | -------- |
 | typ             | Data uppsättningens typ-egenskap måste anges till **Orc**. | Ja      |
 | location         | Plats inställningar för filen/filerna. Varje filbaserad koppling har sin egen plats typ och de egenskaper som stöds under `location` . **Se information i avsnittet kopplings artikel – egenskaper för > data uppsättning**. | Ja      |
-| compressionCodec         | Den komprimerings-codec som ska användas när du skriver till ORC-filer. Vid läsning från ORC-filer bestämmer data fabrikerna automatiskt komprimerings-codecen baserat på filens metadata.<br>De typer som stöds är **none**, **zlib**, **fästfunktionen** (default) och **LZO**. Obs! kopierings aktiviteten stöder för närvarande inte LZO vid läsning/skrivning av ORC-filer. | Nej      |
+| compressionCodec         | Den komprimerings-codec som ska användas när du skriver till ORC-filer. Vid läsning från ORC-filer bestämmer data fabrikerna automatiskt komprimerings-codecen baserat på filens metadata.<br>De typer som stöds är **none**, **zlib**, **fästfunktionen** (default) och **LZO**. Obs! kopierings aktiviteten stöder för närvarande inte LZO vid läsning/skrivning av ORC-filer. | Inga      |
 
 Nedan visas ett exempel på en ORC-datauppsättning på Azure Blob Storage:
 
@@ -68,30 +65,30 @@ En fullständig lista över avsnitt och egenskaper som är tillgängliga för at
 
 ### <a name="orc-as-source"></a>ORC som källa
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitets *** \* källa \* *** .
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* källa \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Typ egenskapen för kopierings aktivitets källan måste anges till **OrcSource**. | Ja      |
-| storeSettings | En grupp egenskaper för att läsa data från ett data lager. Varje filbaserad koppling har sina egna Läs inställningar som stöds under `storeSettings` . **Se information i kopplings artikeln – > avsnittet Egenskaper för kopierings aktivitet**. | Nej       |
+| storeSettings | En grupp egenskaper för att läsa data från ett data lager. Varje filbaserad koppling har sina egna Läs inställningar som stöds under `storeSettings` . **Se information i kopplings artikeln – > avsnittet Egenskaper för kopierings aktivitet**. | Inga       |
 
 ### <a name="orc-as-sink"></a>ORC som mottagare
 
-Följande egenskaper stöds i avsnittet Kopiera aktivitets *** \* mottagare \* *** .
+Följande egenskaper stöds i avsnittet Kopiera aktivitets ***\* mottagare \**** .
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | ------------- | ------------------------------------------------------------ | -------- |
 | typ          | Egenskapen Type för kopierings aktivitetens Sink måste anges till **OrcSink**. | Ja      |
-| formatSettings | En grupp med egenskaper. Se **Orc Write Settings** Table nedan. |    Nej      |
-| storeSettings | En grupp egenskaper för hur du skriver data till ett data lager. Varje filbaserad koppling har sina egna Skriv inställningar som stöds under `storeSettings` . **Se information i kopplings artikeln – > avsnittet Egenskaper för kopierings aktivitet**. | Nej       |
+| formatSettings | En grupp med egenskaper. Se **Orc Write Settings** Table nedan. |    Inga      |
+| storeSettings | En grupp egenskaper för hur du skriver data till ett data lager. Varje filbaserad koppling har sina egna Skriv inställningar som stöds under `storeSettings` . **Se information i kopplings artikeln – > avsnittet Egenskaper för kopierings aktivitet**. | Inga       |
 
 **Skriv inställningar för Orc** som stöds under `formatSettings` :
 
 | Egenskap      | Beskrivning                                                  | Krävs                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | typ          | Typen för formatSettings måste anges till **OrcWriteSettings**. | Ja                                                   |
-| maxRowsPerFile | När du skriver data till en mapp kan du välja att skriva till flera filer och ange max rader per fil.  | Nej |
-| fileNamePrefix | Gäller när `maxRowsPerFile` har kon figurer ATS.<br> Ange prefixet för fil namn när du skriver data till flera filer, vilket resulterade i det här mönstret: `<fileNamePrefix>_00000.<fileExtension>` . Om inget anges skapas prefixet för fil namn automatiskt. Den här egenskapen gäller inte när källan är filbaserad lagring eller [partition-alternativ-aktiverat data lager](copy-activity-performance-features.md).  | Nej |
+| maxRowsPerFile | När du skriver data till en mapp kan du välja att skriva till flera filer och ange max rader per fil.  | Inga |
+| fileNamePrefix | Gäller när `maxRowsPerFile` har kon figurer ATS.<br> Ange prefixet för fil namn när du skriver data till flera filer, vilket resulterade i det här mönstret: `<fileNamePrefix>_00000.<fileExtension>` . Om inget anges skapas prefixet för fil namn automatiskt. Den här egenskapen gäller inte när källan är filbaserad lagring eller [partition-alternativ-aktiverat data lager](copy-activity-performance-features.md).  | Inga |
 
 ## <a name="mapping-data-flow-properties"></a>Mappa data flödes egenskaper
 
@@ -157,7 +154,7 @@ OrcSource sink(
 ## <a name="using-self-hosted-integration-runtime"></a>Använda egen värd Integration Runtime
 
 > [!IMPORTANT]
-> Om du inte kopierar ORC-filer **som du har**befogenhet att kopiera med egen värd integration runtime, t. ex. mellan lokala och molnbaserade data lager, måste du installera **64-bitars JRE 8 (Java Runtime Environment) eller openjdk** och **Microsoft Visual C++ 2010 Redistributable Package** på din IR-dator. Mer information finns i följande stycke.
+> Om du inte kopierar ORC-filer **som du har** befogenhet att kopiera med egen värd integration runtime, t. ex. mellan lokala och molnbaserade data lager, måste du installera **64-bitars JRE 8 (Java Runtime Environment) eller openjdk** och **Microsoft Visual C++ 2010 Redistributable Package** på din IR-dator. Mer information finns i följande stycke.
 
 För kopiering som körs på egen värd-IR med ORC-filserialisering/deserialisering, hittar ADF Java-körningen genom att först kontrol lera registret *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* för JRE, om det inte hittas, och sedan kontrol lera system variabeln *`JAVA_HOME`* för openjdk.
 
@@ -174,6 +171,6 @@ Exempel: Ange variabeln `_JAVA_OPTIONS` med värde `-Xms256m -Xmx16g` . Flaggan 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Översikt över kopieringsaktivitet](copy-activity-overview.md)
+- [Översikt över kopierings aktivitet](copy-activity-overview.md)
 - [Söknings aktivitet](control-flow-lookup-activity.md)
 - [GetMetadata-aktivitet](control-flow-get-metadata-activity.md)

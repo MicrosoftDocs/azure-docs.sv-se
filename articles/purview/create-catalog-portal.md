@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82b72567a0db4dc9dbff9128402d0ee9f40f3512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880041"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094159"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal
 
@@ -115,6 +115,9 @@ Om det behövs följer du de här stegen för att konfigurera din prenumeration 
 1. Gå till sidan med **avdelningens kontroll-konton** i Azure Portal och välj sedan **Lägg till** för att skapa ett nytt Azure avdelningens kontroll-konto. Alternativt kan du gå till Marketplace-sökning efter **avdelningens kontroll-konton** och välja **skapa**. Observera att du bara kan lägga till ett Azure avdelningens kontroll-konto i taget.
 
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Skärm bild som visar hur du skapar en Azure avdelningens kontroll-konto instans i Azure Portal.":::
+
+    > [!Note] 
+    > Azure avdelningens kontroll stöder inte flytt av sitt konto mellan regioner. Du hittar mer information om det här på [sidan tjänster som stöds av Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/region-move-support).
 
 1. Gör följande på fliken **grundläggande** :
     1. Välj en **resurs grupp**.

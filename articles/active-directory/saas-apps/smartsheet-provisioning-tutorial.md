@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e9ee994564e175d3c41cfd5ce415ead8c67df353
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181453"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103591"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Smartsheet för automatisk användar etablering
 
@@ -137,22 +137,20 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD till Smartsheet i avsnittet **Mappning av attribut** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Smartsheet för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-   |Attribut|Typ|
-   |---|---|
+   |Attribut|Typ|Stöds för filtrering|
+   |---|---|---|
+   |userName|Sträng|&check;|
    |aktiv|Boolesk|
    |title|Sträng|
-   |userName|Sträng|
    |name.givenName|Sträng|
    |name.familyName|Sträng|
    |phoneNumbers[type eq "work"].value|Sträng|
    |phoneNumbers[type eq "mobile"].value|Sträng|
    |phoneNumbers [Type EQ "fax"]. värde|Sträng|
+   |emails[type eq "work"].value|Sträng|
    |externalId|Sträng|
-   |roller [Primary EQ "true"]. Visa|Sträng|
-   |roller [Primary EQ "true"]. typ|Sträng|
-   |roles[primary eq "True"].value|Sträng|
    |roller|Sträng|
-   urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
+   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Division|Sträng|
    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: costCenter|Sträng|
    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Manager|Sträng|
@@ -188,6 +186,7 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 ## <a name="change-log"></a>Ändringslogg
 
 * 06/16/2020 – stöd för företags tilläggets attribut "cost center", "Division", "chef" och "Department" för användare har lagts till.
+* 02/10/2021 – stöd för Core-attribut "e-post [Type EQ" Work "]" har lagts till för användare.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

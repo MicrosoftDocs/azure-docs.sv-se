@@ -1,25 +1,20 @@
 ---
-title: Guiden Kopiera aktivitets prestanda och skalbarhet
+title: Vägledning om prestanda och skalbarhet för kopieringsaktivitet
 description: Lär dig mer om viktiga faktorer som påverkar prestanda för data förflyttning i Azure Data Factory när du använder kopierings aktiviteten.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: a6e89883ec0e1e493bad9572876af86f4a0d3853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324458"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387673"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>Guiden Kopiera aktivitets prestanda och skalbarhet
+# <a name="copy-activity-performance-and-scalability-guide"></a>Vägledning om prestanda och skalbarhet för kopieringsaktivitet
 
 > [!div class="op_single_selector" title1="Välj den version av Azure Data Factory som du använder:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
@@ -149,7 +144,7 @@ Azure Data Factory innehåller följande funktioner för prestanda optimering:
 
 ### <a name="data-integration-units"></a>Dataintegrationsenheter
 
-En data integrerings enhet (DIU) är ett mått som representerar kraften hos en enskild enhet i Azure Data Factory. Kraften är en kombination av processor, minne och tilldelning av nätverks resurser. DIU gäller bara för [Azure integration runtime](concepts-integration-runtime.md#azure-integration-runtime). DIU gäller inte för [integration runtime med egen värd](concepts-integration-runtime.md#self-hosted-integration-runtime). [Läs mer här](copy-activity-performance-features.md#data-integration-units).
+En data integrerings enhet (DIU) är ett mått som representerar kraften hos en enskild enhet i Azure Data Factory. Kraften är en kombination av processor, minne och tilldelning av nätverks resurser. DIU gäller bara för [Azure integration runtime](concepts-integration-runtime.md#azure-integration-runtime). DIU gäller inte för [integration runtime med egen värd](concepts-integration-runtime.md#self-hosted-integration-runtime). [Mer information finns här](copy-activity-performance-features.md#data-integration-units).
 
 ### <a name="self-hosted-integration-runtime-scalability"></a>Skalbarhet för integration runtime med egen värd
 
@@ -176,7 +171,7 @@ En data kopierings åtgärd kan skicka data _direkt_ till data lagret för motta
 
 Se andra artiklar om kopierings aktiviteter:
 
-* [Översikt över kopieringsaktivitet](copy-activity-overview.md)
+* [Översikt över kopierings aktivitet](copy-activity-overview.md)
 * [Felsöka prestanda för kopierings aktivitet](copy-activity-performance-troubleshooting.md)
 * [Kopiera aktivitets prestanda optimerings funktioner](copy-activity-performance-features.md)
 * [Använd Azure Data Factory för att migrera data från data Lake eller data lager till Azure](data-migration-guidance-overview.md)

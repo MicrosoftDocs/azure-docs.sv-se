@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 02/12/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 767f60cae2f74f7e2a928253d45011bb6ceb5d0e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653851"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361272"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Lägg till AD FS som en SAML Identity-Provider med anpassade principer i Azure Active Directory B2C
 
@@ -36,11 +36,13 @@ ms.locfileid: "97653851"
 
 Den här artikeln visar hur du aktiverar inloggning för ett AD FS användar konto med hjälp av [anpassade principer](custom-policy-overview.md) i Azure Active Directory B2C (Azure AD B2C). Du aktiverar inloggning genom att lägga till en [teknisk profil för SAML Identity Provider](saml-identity-provider-technical-profile.md) i en anpassad princip.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-- Slutför stegen i [Kom igång med anpassade principer i Azure Active Directory B2C](custom-policy-get-started.md).
-- Se till att du har åtkomst till en Certificate. pfx-fil med en privat nyckel. Du kan skapa ett eget signerat certifikat och överföra det till Azure AD B2C. Azure AD B2C använder det här certifikatet för att signera SAML-begäran som skickats till din SAML Identity-Provider. Mer information om hur du skapar ett certifikat finns i [generera ett signerings certifikat](identity-provider-salesforce-saml.md#generate-a-signing-certificate).
-- För att Azure ska kunna godkänna. pfx-filens lösen ord måste lösen ordet vara krypterat med alternativet TripleDES-SHA1 i export verktyget för Windows Certificate Store i stället för AES256-SHA256.
+[!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
+
+## <a name="create-a-self-signed-certificate"></a>Skapa ett självsignerat certifikat
+
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ## <a name="create-a-policy-key"></a>Skapa en princip nyckel
 
@@ -52,7 +54,7 @@ Du måste lagra ditt certifikat i Azure AD B2C-klienten.
 4. På sidan Översikt väljer du **ID för identitets miljö**.
 5. Välj **princip nycklar** och välj sedan **Lägg till**.
 6. För **alternativ** väljer du `Upload` .
-7. Ange ett **namn** för princip nyckeln. Ett exempel är `ADFSSamlCert`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+7. Ange ett **namn** för princip nyckeln. Till exempel `SAMLSigningCert`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 8. Bläddra till och välj din Certificate. pfx-fil med den privata nyckeln.
 9. Klicka på **Skapa**.
 
@@ -80,7 +82,7 @@ Du kan definiera ett AD FS-konto som en anspråks leverantör genom att lägga t
             <Item Key="PartnerEntity">https://your-AD-FS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlCert"/>
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userPrincipalName" />
@@ -125,54 +127,26 @@ Du kan definiera ett AD FS-konto som en anspråks leverantör genom att lägga t
 
 1. Spara filen.
 
-### <a name="upload-the-extension-file-for-verification"></a>Ladda upp tilläggs filen för verifiering
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-Nu har du konfigurerat principen så att Azure AD B2C vet hur de kan kommunicera med AD FS konto. Försök att ladda upp tilläggs filen för principen för att bekräfta att den inte har några problem hittills.
-
-1. På sidan **anpassade principer** i Azure AD B2C klienten väljer du **Ladda upp princip**.
-2. Aktivera **Skriv över principen om den finns** och bläddra sedan till och välj *TrustFrameworkExtensions.xml* -filen.
-3. Klicka på **Överför**.
-
-> [!NOTE]
-> Visual Studio Code B2C-tillägget använder "socialIdpUserId". En social policy krävs också för AD FS.
->
-
-## <a name="register-the-claims-provider"></a>Registrera anspråks leverantören
-
-Nu har identitets leverantören kon figurer ATS, men den är inte tillgänglig på någon av registrerings-eller inloggnings skärmarna. För att göra det tillgängligt, skapar du en dubblett av en befintlig användar resa och ändrar den så att den även har AD FS identitets leverantör.
-
-1. Öppna *TrustFrameworkBase.xml* -filen från start paketet.
-2. Sök efter och kopiera hela innehållet i **UserJourney** -elementet som innehåller `Id="SignUpOrSignIn"` .
-3. Öppna *TrustFrameworkExtensions.xml* och hitta **UserJourneys** -elementet. Om elementet inte finns lägger du till ett.
-4. Klistra in hela innehållet i **UserJourney** -elementet som du kopierade som ett underordnat objekt till **UserJourneys** -elementet.
-5. Byt namn på användar resans ID. Ett exempel är `SignUpSignInADFS`.
-
-### <a name="display-the-button"></a>Visa knappen
-
-**ClaimsProviderSelection** -elementet är detsamma som en identitetsprovider på en registrerings-eller inloggnings skärm. Om du lägger till ett **ClaimsProviderSelection** -element för ett AD FS-konto visas en ny knapp när en användare hamnar på sidan.
-
-1. Hitta **OrchestrationStep** -elementet som innehåller `Order="1"` i användar resan som du skapade.
-2. Lägg till följande-element under **ClaimsProviderSelections**. Ange värdet för **TargetClaimsExchangeId** till ett lämpligt värde, till exempel `ContosoExchange` :
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>Länka knappen till en åtgärd
-
-Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgärden, i det här fallet, är att Azure AD B2C kommunicera med ett AD FS konto för att ta emot en token.
-
-1. Hitta **OrchestrationStep** som ingår `Order="2"` i användar resan.
-2. Lägg till följande **ClaimsExchange** -element och kontrol lera att du använder samma värde för det ID som du använde för **TargetClaimsExchangeId**:
-
-    ```xml
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
-    ```
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-    Uppdatera värdet för **TechnicalProfileReferenceId** till ID: t för den tekniska profil som du skapade tidigare. Ett exempel är `Contoso-SAML2`.
-
-3. Spara *TrustFrameworkExtensions.xml* -filen och ladda upp den igen för verifiering.
-
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
 ## <a name="configure-an-ad-fs-relying-party-trust"></a>Konfigurera ett AD FS förtroende för förlitande part
 
@@ -216,17 +190,17 @@ Ersätt följande värden:
 13. I Serverhanteraren väljer du **verktyg** och väljer sedan **AD FS hantering**.
 14. Välj det förtroende för förlitande part som du har skapat, Välj **Uppdatera från federationsmetadata** och klicka sedan på **Uppdatera**.
 
-### <a name="update-and-test-the-relying-party-file"></a>Uppdatera och testa den förlitande part filen
+## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
-Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller Azure AD B2C klienten.
+1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
+1. Under **principer** väljer du **Identity Experience Framework**
+1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj knappen **Kör nu** .
 
-1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInADFS.xml*.
-2. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInADFS`.
-3. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_adfs`
-4. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID för den nya användar resan som du skapade (SignUpSignInADFS).
-5. Spara ändringarna, ladda upp filen och välj sedan den nya principen i listan.
-6. Kontrol lera att Azure AD B2C programmet som du har skapat är markerat i fältet **Välj program** och testa det genom att klicka på **Kör nu**.
-
+Om inloggnings processen lyckas omdirigeras webbläsaren till `https://jwt.ms` , som visar innehållet i den token som returnerades av Azure AD B2C.
 ## <a name="troubleshooting-ad-fs-service"></a>Felsöka AD FS tjänsten  
 
 AD FS har kon figurer ATS för att använda Windows program logg. Om du upplever utmaningar med att konfigurera AD FS som en SAML-identitetsprovider som använder anpassade principer i Azure AD B2C, vill du kanske kontrol lera AD FS händelse loggen:

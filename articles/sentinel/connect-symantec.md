@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b32baa23a31342095e542d60745a503b81e89a9
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564923"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092714"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Anslut Symantec ICDx-enheten 
 
@@ -38,14 +38,14 @@ Symantec ICDx kan integrera och exportera loggar direkt till Azure Sentinel.
 
 1. Öppna ICDx-hanteringskonsolen för att lägga till Microsoft Azure Sentinel-vidarebefordrare (Log Analytics).
 2. I navigerings fältet ICDx klickar du på **konfiguration**. 
-3. Klicka på **vidarebefordrare**längst upp på sidan **konfiguration** .
+3. Klicka på **vidarebefordrare** längst upp på sidan **konfiguration** .
 4. Under **vidarebefordrare**, bredvid Microsoft Azure Sentinel (Log Analytics), klickar du på **Lägg till**. 
 4. I fönstret **Microsoft Azure Sentinel (Log Analytics)** klickar du på **Visa Avancerat**. 
 5. Överst i fönstret utökat till Microsoft Azure Sentinel (Log Analytics) gör du följande:
     -   **Namn**: Ange ett namn för vidarebefordraren som innehåller högst 30 tecken. Välj ett unikt, beskrivande namn. Det här namnet visas i listan över vidarebefordrare på **konfigurations** skärmen och i instrument panelerna på **instrument panelens** skärm. Exempel: Microsoft Azure Log Analytics öst. Det här fältet är obligatoriskt.
     -   **Beskrivning**: Ange en beskrivning av vidarebefordraren. Den här beskrivningen visas också i listan över vidarebefordrare på **konfigurations** skärmen. Inkludera information, till exempel händelse typen som vidarebefordras och gruppen som måste granska data.
     -   **Starttyp**: Välj Start metod för konfigurationen av vidarebefordraren. Alternativen är manuella och automatiska.<br>Standardvärdet är automatisk. 
-6. Under **händelser**gör du följande: 
+6. Under **händelser** gör du följande: 
     - **Källa**: Välj en eller flera arkiv som händelser ska vidarebefordras från. Du kan välja aktiva insamlade arkiv (inklusive det gemensamma arkivet), överblivna insamlade arkiv (dvs. Arkiv för de insamlare som du har tagit bort), ICDx mottagar arkiv eller system arkivet. <br>Standard är gemensamt arkiv.
       > [!NOTE]
       > ICDx mottagar Arkiv anges separat, efter namn. 
@@ -64,7 +64,7 @@ Symantec ICDx kan integrera och exportera loggar direkt till Azure Sentinel.
     - **Primär nyckel**: klistra in primär nyckeln från nedan. Det här fältet är obligatoriskt.
     - **Namn på anpassad logg**: Skriv namnet på den anpassade loggen i Microsoft Azure-portalen Log Analytics arbets ytan som du ska vidarebefordra händelser till. Standardvärdet är SymantecICDx. Det här fältet är obligatoriskt.
 8. Klicka på *Spara* för att slutföra konfigurationen av vidarebefordraren. 
-9. Starta vidarebefordraren under **alternativ**genom att klicka på **mer** och sedan på **Starta**.
+9. Starta vidarebefordraren under **alternativ** genom att klicka på **mer** och sedan på **Starta**.
 10. Om du vill använda det relevanta schemat i Log Analytics för Symantec ICDx-händelser söker du efter **SymantecICDx_CL**.
 
 

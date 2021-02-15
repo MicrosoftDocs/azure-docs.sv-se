@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 076054b7240712fec57d0908615ce7abbfb62013
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 38673df29dd50e77acc4b4d106d69a82cad9c040
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582238"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104356"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gör så här: konfigurera det roll anspråk som utfärdats i SAML-token för företags program
 
@@ -34,7 +34,7 @@ Använd den här funktionen om programmet förväntar sig anpassade roller i SAM
 
 ## <a name="create-roles-for-an-application"></a>Skapa roller för ett program
 
-1. I <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>i det vänstra fönstret väljer du ikonen **Azure Active Directory** .
+1. I <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>i det vänstra fönstret väljer du ikonen **Azure Active Directory** .
 
     ![Azure Active Directory ikon][1]
 

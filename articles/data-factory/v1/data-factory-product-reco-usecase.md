@@ -1,23 +1,18 @@
 ---
 title: Data Factory användnings fall – produkt rekommendationer
 description: Lär dig mer om ett användnings fall som implementeras med hjälp av Azure Data Factory tillsammans med andra tjänster.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
-ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc1e0398f98dc72d57039530dce9751af012f154
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495301"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387197"
 ---
 # <a name="use-case---product-recommendations"></a>Användnings fall – produkt rekommendationer
 Azure Data Factory är en av många tjänster som används för att implementera Cortana Intelligence Suite av lösnings acceleratorer.  Se [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) sida för information om den här sviten. I det här dokumentet beskriver vi ett vanligt användnings fall som Azure-användare redan har löst och implementerat med hjälp av Azure Data Factory och andra Cortana Intelligence komponent tjänster.

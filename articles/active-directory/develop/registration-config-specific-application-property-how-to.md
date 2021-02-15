@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 82c3dd4ce7f5e7e9f3d5a226bfe65e27eca2d3d4
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937865"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103251"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registreringsfält för Azure-portalen för egenutvecklade appar
 
@@ -25,7 +25,7 @@ Den här artikeln innehåller en kort beskrivning av alla tillgängliga fält i 
 
 ## <a name="register-a-new-application"></a>Registrera ett nytt program
 
--   Om du vill registrera ett nytt program går du <a href="https://portal.azure.com/" target="_blank">till <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>.
+-   Om du vill registrera ett nytt program går du till <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 
 -   Klicka på Azure Active Directory i det vänstra navigerings fönstret **.**
 
@@ -37,7 +37,7 @@ Den här artikeln innehåller en kort beskrivning av alla tillgängliga fält i 
 
 | Fält            | Beskrivning                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | Namnet på programmet. Det får innehålla minst fyra tecken.                |
+| Namn             | Namnet på programmet. Det får innehålla minst fyra tecken.                |
 | Kontotyper som stöds| Välj vilka konton som du vill att ditt program ska stödja: konton i den här organisations katalogen, konton i valfri organisations katalog eller konton i alla organisations kataloger och personliga Microsoft-konton.  |
 | Omdirigerings-URI (valfritt) | Välj den typ av app som du skapar, **webb** eller **offentlig klient (mobilt & Desktop)** och ange omdirigerings-URI (eller svars-URL) för ditt program. För webbappar anger du grundläggande URL för appen. Till exempel kan http://localhost:31544 vara URL för en webbapp som körs på din lokala dator. Användare skulle då använda den här URL:en för att logga in till ett webbklientprogram. För offentliga klientprogram anger du den URI som används av Azure AD för att returnera tokensvar. Ange ett värde som är specifik för ditt program, till exempel myapp://auth. Om du vill se specifika exempel för webb program eller interna program kan du titta på våra [snabb starter](./index.yml).|
 

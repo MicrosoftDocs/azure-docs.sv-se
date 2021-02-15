@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4c4158fe9c976ca214409ef4c0c9833c610ee34c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584338"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102656"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Självstudie: anropa Microsoft Graph API från ett Universell Windows-plattform-program (UWP)
 
@@ -345,7 +345,7 @@ private async Task DisplayMessageAsync(string message)
 
 Registrera ditt program nu:
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -356,8 +356,8 @@ Registrera ditt program nu:
 
 Konfigurera autentisering för ditt program:
 
-1. Gå tillbaka till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>, under **Hantera**, Välj **autentisering**  >  **Lägg till en plattform** och välj sedan **mobil-och skriv bords program**.
-1. I avsnittet **omdirigerings-URI: er** , kontrollerar du **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Gå tillbaka till <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>, under **Hantera**, Välj **autentisering**  >  **Lägg till en plattform** och välj sedan **mobil-och skriv bords program**.
+1. I avsnittet **omdirigerings-URI** anger du `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 1. Välj **Konfigurera**.
 
 Konfigurera API-behörigheter för ditt program:

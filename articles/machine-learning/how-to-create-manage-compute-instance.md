@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842897"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097202"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Skapa och hantera en Azure Machine Learning beräknings instans
 
@@ -44,7 +44,7 @@ Beräknings instanser kan köra jobb på ett säkert sätt i en [virtuell nätve
 
 **Tids uppskattning**: cirka 5 minuter.
 
-Att skapa en beräknings instans är en process som en gång för din arbets yta. Du kan återanvända den här beräkningen som en utvecklings arbets Station eller som ett beräknings mål för träning. Du kan ha flera beräknings instanser kopplade till din arbets yta.
+Att skapa en beräknings instans är en process som en gång för din arbets yta. Du kan återanvända beräkningen som en utvecklings arbets Station eller som ett beräknings mål för träning. Du kan ha flera beräknings instanser kopplade till din arbets yta.
 
 De dedikerade kärnorna per region per VM-tullkvot och den totala regionala kvoten som gäller för skapande av beräknings instanser, är enhetliga och delade med Azure Machine Learning inlärnings kluster kvot. Att stoppa beräknings instansen frigör inte kvoten för att se till att du kommer att kunna starta om beräknings instansen. Observera att det inte går att ändra storlek på en beräknings instans för den virtuella datorn när den har skapats.
 
@@ -230,68 +230,14 @@ Med [Azure RBAC](../role-based-access-control/overview.md) kan du styra vilka an
 
 De här åtgärderna kan styras av Azure RBAC:
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/läsning*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/skrivning*
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/ta bort*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/start/åtgärd*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/stoppa/åtgärd*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/omstart/åtgärd*
 
-
-## <a name="access-the-terminal-window"></a>Få åtkomst till terminalfönstret
-
-Öppna terminalfönstret för beräknings instansen på något av följande sätt:
-
-* RStudio: Välj fliken **Terminal** längst upp till vänster.
-* Jupyter Lab: Välj panelen **Terminal** under den **andra** rubriken på fliken Start.
-* Jupyter: Välj **ny>Terminal** överst till höger på fliken filer.
-* SSH till datorn, om du har aktiverat SSH-åtkomst när beräknings instansen skapades.
-
-Använd terminalfönstret för att installera paket och skapa ytterligare kernel-fönster.
-
-## <a name="install-packages"></a>Installera paket
-
-Du kan installera paket direkt i Jupyter Notebook eller RStudio:
-
-* RStudio Använd fliken **paket** längst ned till höger eller fliken **konsol** längst upp till vänster.  
-* Python: Lägg till installations kod och kör i en Jupyter Notebook cell.
-
-Eller så kan du installera från ett terminalfönster. Installera python-paket i **python 3,6-azureml-** miljön.  Installera R-paket i **R** -miljön.
-
-> [!NOTE]
-> För paket hantering i en bärbar dator använder du **% pip** eller **% Conda** Magic Functions för att automatiskt installera paket i den **aktuella kerneln** i stället för **! pip** eller **! Conda** som refererar till alla paket (inklusive paket utanför den aktuella kerneln som körs)
-
-## <a name="add-new-kernels"></a>Lägg till nya kärnor
-
-> [!WARNING]
->  När du anpassar beräknings instansen ser du till att du inte tar bort **azureml_py36** Conda-miljön eller **python 3,6-azureml-** kärnan. Detta krävs för Jupyter/JupyterLab-funktioner
-
-Så här lägger du till en ny Jupyter-kernel till beräknings instansen:
-
-1. Skapa en ny terminal från fönstret Jupyter, JupyterLab eller från antecknings böcker eller SSH till beräknings instansen
-2. Använd terminalfönstret för att skapa en ny miljö.  Koden nedan skapar till exempel `newenv` :
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. Aktivera miljön.  Till exempel när du har skapat `newenv` :
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. Installera pip-och ipykernel-paketet i den nya miljön och skapa en kernel för det Conda-avsnittet
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-Alla [tillgängliga Jupyter-kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kan installeras.
-
-
-
 ## <a name="next-steps"></a>Nästa steg
 
+* [Få åtkomst till beräknings instansens Terminal](how-to-access-terminal.md)
+* [Skapa och hantera filer](how-to-manage-files.md)
 * [Skicka in en utbildnings körning](how-to-set-up-training-targets.md)

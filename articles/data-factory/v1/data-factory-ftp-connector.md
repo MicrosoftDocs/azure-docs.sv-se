@@ -1,23 +1,18 @@
 ---
 title: Flytta data från en FTP-server med hjälp av Azure Data Factory
 description: Lär dig mer om hur du flyttar data från en FTP-server med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8a8ca44fbdb7610f85bc53c23d502d2efb01c8b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001651"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363958"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Flytta data från en FTP-server med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -64,16 +59,16 @@ I följande tabell beskrivs JSON-element som är begränsade till en länkad FTP
 
 | Egenskap | Beskrivning | Krävs | Standardvärde |
 | --- | --- | --- | --- |
-| typ |Ange till FtpServer. |Yes |&nbsp; |
-| värd |Ange namnet eller IP-adressen för FTP-servern. |Yes |&nbsp; |
-| authenticationType |Ange autentiseringstyp. |Yes |Grundläggande, anonym |
-| användarnamn |Ange den användare som har åtkomst till FTP-servern. |No |&nbsp; |
-| password |Ange lösen ordet för användaren (användar namn). |No |&nbsp; |
-| encryptedCredential |Ange krypterade autentiseringsuppgifter för åtkomst till FTP-servern. |No |&nbsp; |
-| gatewayName |Ange namnet på gatewayen i Data Management Gateway för att ansluta till en lokal FTP-server. |No |&nbsp; |
-| port |Ange den port som FTP-servern lyssnar på. |No |21 |
-| enableSsl |Ange om FTP ska användas över en SSL/TLS-kanal. |No |true |
-| enableServerCertificateValidation |Ange om du vill aktivera verifiering av Server-TLS/SSL-certifikat när du använder FTP över SSL/TLS-kanal. |No |true |
+| typ |Ange till FtpServer. |Ja |&nbsp; |
+| värd |Ange namnet eller IP-adressen för FTP-servern. |Ja |&nbsp; |
+| authenticationType |Ange autentiseringstyp. |Ja |Grundläggande, anonym |
+| användarnamn |Ange den användare som har åtkomst till FTP-servern. |Inga |&nbsp; |
+| password |Ange lösen ordet för användaren (användar namn). |Inga |&nbsp; |
+| encryptedCredential |Ange krypterade autentiseringsuppgifter för åtkomst till FTP-servern. |Inga |&nbsp; |
+| gatewayName |Ange namnet på gatewayen i Data Management Gateway för att ansluta till en lokal FTP-server. |Inga |&nbsp; |
+| port |Ange den port som FTP-servern lyssnar på. |Inga |21 |
+| enableSsl |Ange om FTP ska användas över en SSL/TLS-kanal. |Inga |true |
+| enableServerCertificateValidation |Ange om du vill aktivera verifiering av Server-TLS/SSL-certifikat när du använder FTP över SSL/TLS-kanal. |Inga |true |
 
 >[!NOTE]
 >FTP-anslutningen har stöd för åtkomst till FTP-servern med antingen ingen kryptering eller explicit SSL/TLS-kryptering. den har inte stöd för implicit SSL/TLS-kryptering.
@@ -154,13 +149,13 @@ Avsnittet **typeProperties** är olika för varje typ av data uppsättning. Den 
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| folderPath |Under Sök väg till mappen. Använd escape-tecknet "\" för specialtecken i strängen. Se exempel på länkade tjänst-och data uppsättnings definitioner.<br/><br/>Du kan kombinera den här egenskapen med **partitionby kolumndefinitionerna** för att ha mappsökvägar baserade på sektor start-och slutdatum-gånger. |Yes |
-| fileName |Ange namnet på filen i **folderPath** om du vill att tabellen ska referera till en speciell fil i mappen. Om du inte anger något värde för den här egenskapen pekar tabellen på alla filer i mappen.<br/><br/>När inget **fil namn** har angetts för en data uppsättning för utdata är namnet på den genererade filen i följande format: <br/><br/>`Data.<Guid>.txt` (Exempel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
-| fileFilter |Ange ett filter som ska användas för att välja en delmängd av filer i **folderPath** i stället för alla filer.<br/><br/>Tillåtna värden är: `*` (flera tecken) och `?` (ett tecken).<br/><br/>Exempel 1: `"fileFilter": "*.log"`<br/>Exempel 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** är tillämpligt för en data uppsättning för en indata-fileshare. Den här egenskapen stöds inte med Hadoop Distributed File System (HDFS). |No |
-| partitionedBy |Används för att ange en dynamisk **folderPath** och ett **fil namn** för Time Series-data. Du kan till exempel ange en **folderPath** som är parameterstyrda för varje timme med data. |No |
-| format | Följande format typer **stöds: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ange egenskapen **Type** under format till något av dessa värden. Mer information finns i avsnitten [text format](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format)och [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Om du vill kopiera filer som de är mellan filbaserade arkiv (binär kopia) hoppar du över avsnittet format i definitionerna för både indata och utdata. |No |
-| komprimering | Ange typ och nivå för komprimeringen för data. De typer som stöds är **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**, och de nivåer som stöds är **optimala** och **snabbaste**. Mer information finns i [fil-och komprimerings format i Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
-| useBinaryTransfer |Ange om du vill använda binärt överförings läge. Värdena är true för binärt läge (detta är standardvärdet) och falskt för ASCII. Den här egenskapen kan endast användas när den associerade länkade tjänst typen är av typen: FtpServer. |No |
+| folderPath |Under Sök väg till mappen. Använd escape-tecknet "\" för specialtecken i strängen. Se exempel på länkade tjänst-och data uppsättnings definitioner.<br/><br/>Du kan kombinera den här egenskapen med **partitionby kolumndefinitionerna** för att ha mappsökvägar baserade på sektor start-och slutdatum-gånger. |Ja |
+| fileName |Ange namnet på filen i **folderPath** om du vill att tabellen ska referera till en speciell fil i mappen. Om du inte anger något värde för den här egenskapen pekar tabellen på alla filer i mappen.<br/><br/>När inget **fil namn** har angetts för en data uppsättning för utdata är namnet på den genererade filen i följande format: <br/><br/>`Data.<Guid>.txt` (Exempel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Inga |
+| fileFilter |Ange ett filter som ska användas för att välja en delmängd av filer i **folderPath** i stället för alla filer.<br/><br/>Tillåtna värden är: `*` (flera tecken) och `?` (ett tecken).<br/><br/>Exempel 1: `"fileFilter": "*.log"`<br/>Exempel 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** är tillämpligt för en data uppsättning för en indata-fileshare. Den här egenskapen stöds inte med Hadoop Distributed File System (HDFS). |Inga |
+| partitionedBy |Används för att ange en dynamisk **folderPath** och ett **fil namn** för Time Series-data. Du kan till exempel ange en **folderPath** som är parameterstyrda för varje timme med data. |Inga |
+| format | Följande format typer **stöds: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ange egenskapen **Type** under format till något av dessa värden. Mer information finns i avsnitten [text format](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format)och [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Om du vill kopiera filer som de är mellan filbaserade arkiv (binär kopia) hoppar du över avsnittet format i definitionerna för både indata och utdata. |Inga |
+| komprimering | Ange typ och nivå för komprimeringen för data. De typer som stöds är **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**, och de nivåer som stöds är **optimala** och **snabbaste**. Mer information finns i [fil-och komprimerings format i Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Inga |
+| useBinaryTransfer |Ange om du vill använda binärt överförings läge. Värdena är true för binärt läge (detta är standardvärdet) och falskt för ASCII. Den här egenskapen kan endast användas när den associerade länkade tjänst typen är av typen: FtpServer. |Inga |
 
 > [!NOTE]
 > Det går inte att använda **filename** och **fileFilter** samtidigt.
@@ -205,7 +200,7 @@ När källan är av typen **FileSystemSource** i kopierings aktivitet är följa
 
 | Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| rekursiva |Anger om data ska läsas rekursivt från undermapparna, eller endast från den angivna mappen. |Sant, falskt (standard) |No |
+| rekursiva |Anger om data ska läsas rekursivt från undermapparna, eller endast från den angivna mappen. |Sant, falskt (standard) |Inga |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON-exempel: kopiera data från FTP-server till Azure-Blob
 Det här exemplet visar hur du kopierar data från en FTP-server till Azure Blob Storage. Data kan dock kopieras direkt till någon av de handfat som anges i de [data lager och format som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats), genom att använda kopierings aktiviteten i Data Factory.

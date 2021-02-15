@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 820bc7dfe9123db495c151cd5cd0ea5ae337619f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017760"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103982"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Snabb start: Konfigurera ett program för att exponera ett webb-API
 
@@ -45,7 +45,7 @@ Koden i ett klient program begär behörighet att utföra åtgärder som definie
 
 Börja med att följa de här stegen för att skapa ett exempel omfång med namnet `Employees.Read.All` :
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: på den översta menyn och väljer den klient som innehåller klient appens registrering.
 1. Välj **Azure Active Directory**  >  **Appregistreringar** och välj sedan ditt API: s app-registrering.
 1. Välj **exponera ett API**  >  **Lägg till ett omfång**.

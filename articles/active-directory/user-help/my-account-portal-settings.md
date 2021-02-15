@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798099"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093836"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>Visa eller ändra inställningarna i mitt konto Portal
 
 Du kan visa eller ändra dina konto inställningar i portalen mitt konto, till exempel språk och tidszon, på sidan **inställningar & sekretess** i portalen **mitt konto** .
 
+>[!Note]
+> Om du ser ett fel när du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller klient organisations **-ID: t** för din organisation från administratören i någon av följande URL: er:
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>Visa och hantera ditt språk och nationella inställningar
 
-1. Logga in på ditt arbets-eller skol konto och gå sedan till din https://myaccount.microsoft.com/ sida.
+1. Logga in på ditt arbets-eller skol konto och gå sedan till din https://myaccount.microsoft.com/ sida. Om du loggar in med en personlig Microsoft-konto kan du fortfarande logga in med domän namnet för din organisation (t. ex. contoso.com) eller klient organisations **-ID: t** för din organisation från administratören i någon av följande URL: er:
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 1. Välj **inställningar & sekretess** i det vänstra navigerings fönstret eller Välj länken **vyinställningar och sekretess** från **inställningarna & sekretess** block.
 
@@ -34,7 +43,7 @@ Du kan visa eller ändra dina konto inställningar i portalen mitt konto, till e
     * *Visnings språk*: det språk som används för knappar, menyer och visst innehåll på Microsoft-webbplatser.
     * *Prioriterade språk*: språk som du förstår och använder för att skapa eller använda innehåll.
     * *Regions format*: Microsoft-webbplatser använder den här inställningen för att formatera datum och tider.
-    * *Tidszon: används*för att effektivt schemalägga möten i din Microsoft-kalender.
+    * *Tidszon: används* för att effektivt schemalägga möten i din Microsoft-kalender.
 
 När du har ändrat visnings språket rekommenderar vi att du loggar ut och loggar in på ditt arbets-eller skol konto för att se till att visnings språket uppdateras.
 

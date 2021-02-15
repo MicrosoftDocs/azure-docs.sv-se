@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure RBAC
 description: Visar Azure Policy inbyggda princip definitioner för Azure RBAC. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 2ec5027351c02e297b4a187392923657e1488794
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a8560f1b961bae81a877294333b9161fb828b675
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555479"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092340"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Azure Policy inbyggda definitioner för Azure RBAC
 

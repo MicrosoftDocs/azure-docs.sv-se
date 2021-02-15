@@ -1,21 +1,17 @@
 ---
 title: Spara autentiseringsuppgifter i Azure Key Vault
 description: Lär dig hur du lagrar autentiseringsuppgifter för data lager som används i ett Azure Key Vault som Azure Data Factory kan hämta automatiskt vid körning.
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 828794715af1e7676253714da6fdc1a487c7c107
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81451694"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361901"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Lagra autentiseringsuppgifter i Azure Key Vault
 
@@ -25,7 +21,7 @@ Du kan lagra autentiseringsuppgifter för data lager och beräkningar i en [Azur
 
 För närvarande har alla aktivitets typer förutom anpassad aktivitet stöd för den här funktionen. För kopplings konfiguration är det specifikt att se avsnittet "egenskaper för länkad tjänst" i [varje anslutnings avsnitt](copy-activity-overview.md#supported-data-stores-and-formats) för mer information.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här funktionen använder den hanterade identiteten för Data Factory. Lär dig hur det fungerar från [hanterad identitet för Data Factory](data-factory-service-identity.md) och se till att data fabriken har en associerad.
 

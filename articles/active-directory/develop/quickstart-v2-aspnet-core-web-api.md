@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: da53d6bad790e6b204fa2a2b045e7bfdd83e0cc9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754470"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102537"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Snabb start: skydda ett ASP.NET Core webb-API med Microsoft Identity Platform
 
 I den här snabb starten laddar du ned ett ASP.NET Core webb-API kod exempel och kontrollerar koden som begränsar åtkomsten till resurser till endast auktoriserade konton. Exemplet stöder auktorisering av personliga Microsoft-konton och konton i valfri Azure Active Directory (Azure AD)-organisation.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Krav
+> ## <a name="prerequisites"></a>Förutsättningar
 >
 > - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Azure Active Directory klient](quickstart-create-new-tenant.md)
@@ -35,7 +35,7 @@ I den här snabb starten laddar du ned ett ASP.NET Core webb-API kod exempel och
 >
 > Registrera först webb-API: et i Azure AD-klienten och Lägg till ett omfång genom att följa dessa steg:
 >
-> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
 > 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
@@ -98,7 +98,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApi` lägger till Microsoft Identity Platform-auktorisering till ditt webb-API. Den konfigureras sedan för att verifiera åtkomsttoken som utfärdats av Microsoft Identity Platform baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |
