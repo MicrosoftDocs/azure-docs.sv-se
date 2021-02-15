@@ -9,12 +9,12 @@ ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a739736182713b35c3a5e9e25742aa39c5d1122
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 0adcbf49ff2128fdbe623121838058c5ed89dce2
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633145"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378034"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Uppdatera IoT Edge-säkerhetsdaemon och runtime
 
@@ -35,12 +35,6 @@ Kontrol lera vilken version av säkerhets-daemon som körs på enheten med hjäl
 På linux x64-enheter använder du apt-get eller lämplig Package Manager för att uppdatera säkerhets daemonen till den senaste versionen.
 
 Hämta den senaste databas konfigurationen från Microsoft:
-
-* **Ubuntu Server 16,04**:
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-   ```
 
 * **Ubuntu Server 18,04**:
 
@@ -100,7 +94,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 Med IoT Edge för Linux i Windows IoT Edge körs på en virtuell Linux-dator som finns på en Windows-enhet. Den här virtuella datorn är förinstallerad med IoT Edge och hanteras med Microsoft Update för att hålla komponenterna aktuella. Det finns för närvarande inga tillgängliga uppdateringar.

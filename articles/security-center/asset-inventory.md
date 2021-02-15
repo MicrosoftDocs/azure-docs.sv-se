@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 12/22/2020
+ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 5b8d167992e57cd0fae35c57212ea700cd677afa
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920434"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393367"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Utforska och hantera dina resurser med till gångs inventering
 
@@ -37,7 +37,6 @@ Till gångs hanterings möjligheterna för det här verktyget är väsentliga oc
 
 
 ## <a name="availability"></a>Tillgänglighet
-
 |Aspekt|Information|
 |----|:----|
 |Versions tillstånd:|Allmän tillgänglighet (GA)|
@@ -48,33 +47,36 @@ Till gångs hanterings möjligheterna för det här verktyget är väsentliga oc
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Vilka är huvud funktionerna i till gångs inventering?
-
 Inventerings sidan innehåller följande verktyg:
 
-- **Sammanfattningar** – innan du definierar några filter visas en framträdande remsa med värden överst i vyn inventering:
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Huvud funktionerna på sidan till gångs inventering i Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
-    - **Totalt antal resurser**: det totala antalet resurser som är anslutna till Security Center.
-    - **Felaktiga resurser**: resurser med aktiva säkerhets rekommendationer. [Läs mer om säkerhets rekommendationer](security-center-recommendations.md).
-    - **Oövervakade resurser**: resurser med agent övervaknings problem – de har Log Analytics agenten distribueras, men agenten skickar inte data eller har andra hälso problem.
 
-- **Filter** – flera filter överst på sidan ger ett sätt att snabbt förfina listan över resurser enligt den fråga som du försöker besvara. Om du till exempel vill svara på frågan *vilka av mina datorer med taggen "produktion" saknas Log Analytics agenten?* du kan kombinera **agent övervaknings** filtret med **tagg** filtret som du ser i följande klipp:
+### <a name="1---summaries"></a>1 – sammanfattningar
+Innan du definierar några filter, visar en framträdande remsa med värden överst i vyn inventering:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Filtrering av produktions resurser som inte övervakas":::
+- **Totalt antal resurser**: det totala antalet resurser som är anslutna till Security Center.
+- **Felaktiga resurser**: resurser med aktiva säkerhets rekommendationer. [Läs mer om säkerhets rekommendationer](security-center-recommendations.md).
+- **Oövervakade resurser**: resurser med agent övervaknings problem – de har Log Analytics agenten distribueras, men agenten skickar inte data eller har andra hälso problem.
+- **Oregistrerade prenumerationer**: alla prenumerationer i det valda omfånget som ännu inte har anslutits till Azure Security Center.
 
-    När du har tillämpat filter uppdateras sammanfattnings värdena så att de relaterar till frågeresultaten. 
+### <a name="2---filters"></a>2-filter
+De flera filtren överst på sidan ger ett sätt att snabbt förfina listan över resurser enligt den fråga som du försöker besvara. Om du till exempel vill svara på frågan *vilka av mina datorer med taggen "produktion" saknas Log Analytics agenten?* du kan kombinera **agent övervaknings** filtret med filtret **taggar** .
 
-- **Export alternativ** – inventering ger möjlighet att exportera resultaten av de valda filter alternativen till en CSV-fil. Dessutom kan du exportera själva frågan till Azure Resource Graph Explorer för att ytterligare förfina, Spara eller ändra KQL-frågan (Query Language) i Kusto.
+När du har tillämpat filter uppdateras sammanfattnings värdena så att de relaterar till frågeresultaten. 
 
-    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Lager export alternativ":::
+### <a name="3---export-and-asset-management-tools"></a>3 – export-och till gångs hanterings verktyg
 
-    > [!TIP]
-    > KQL-dokumentationen innehåller en databas med några exempel data tillsammans med några enkla frågor för att få "känsla" för språket. [Läs mer i den här självstudien om KQL](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+**Export alternativ** – inventering innehåller ett alternativ för att exportera resultaten av de valda filter alternativen till en CSV-fil. Du kan också exportera själva frågan till Azure Resource Graph Explorer för att ytterligare förfina, Spara eller ändra KQL-frågan (Query Language) i Kusto.
 
-- Med **alternativ för till gångs hantering** – med lager kan du utföra komplexa identifierings frågor. När du har hittat de resurser som matchar dina frågor tillhandahåller inventeringen genvägar för åtgärder som:
+> [!TIP]
+> KQL-dokumentationen innehåller en databas med några exempel data tillsammans med några enkla frågor för att få "känsla" för språket. [Läs mer i den här självstudien om KQL](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
-    - Tilldela taggar till de filtrerade resurserna – Markera kryss rutorna bredvid de resurser som du vill tagga.
-    - Publicera nya servrar till Security Center – Använd verktygsfälts knappen **Lägg till icke-Azure-servrar** .
-    - Automatisera arbets belastningar med Azure Logic Apps – Använd knappen **Utlös Logic app** för att köra en Logic app på en eller flera resurser. Dina Logi Kap par måste förberedas i förväg och acceptera relevant utlösare (HTTP-begäran). [Läs mer om Logic Apps](../logic-apps/logic-apps-overview.md).
+Med **alternativ för till gångs hantering** – med lager kan du utföra komplexa identifierings frågor. När du har hittat de resurser som matchar dina frågor tillhandahåller inventeringen genvägar för åtgärder som:
+
+- Tilldela taggar till de filtrerade resurserna – Markera kryss rutorna bredvid de resurser som du vill tagga.
+- Publicera nya servrar till Security Center – Använd verktygsfälts knappen **Lägg till icke-Azure-servrar** .
+- Automatisera arbets belastningar med Azure Logic Apps – Använd knappen **Utlös Logic app** för att köra en Logic app på en eller flera resurser. Dina Logi Kap par måste förberedas i förväg och acceptera relevant utlösare (HTTP-begäran). [Läs mer om Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Hur fungerar inventarie Inventory?
@@ -94,14 +96,14 @@ Med hjälp av [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)kan
 
 1. Välj de relevanta alternativen i filtren för att skapa en speciell fråga som du vill utföra.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Lager filtrerings alternativ" lightbox="./media/asset-inventory/inventory-filters.png":::
-
     Som standard sorteras resurserna efter antalet aktiva säkerhets rekommendationer.
 
     > [!IMPORTANT]
     > Alternativen i varje filter är speciella för resurserna i de markerade prenumerationerna **och** dina val i de andra filtren.
     >
     > Om du till exempel har valt endast en prenumeration och prenumerationen inte har några resurser med utestående säkerhets rekommendationer för att åtgärda (0 resurser som inte är felfria), har inte **rekommendations** filtret några alternativ. 
+
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Använd filter alternativen i Azure Security Center till gångs lager för att filtrera resurser till produktions resurser som inte övervakas":::
 
 1. Om du vill använda **säkerhets resultaten innehåller** filter anger du FRITEXT från ID, säkerhets kontroll eller CVE namn på ett säkerhets problem som söker efter filter till de berörda resurserna:
 

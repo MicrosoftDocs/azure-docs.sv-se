@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654837"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092136"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
@@ -34,6 +34,16 @@ Innan du använder API för textanalys måste du skapa en Azure-resurs med en ny
 2.  Välj den region som du vill använda för slut punkten.  Observera att `/analyze` och `/health` slut punkterna endast är tillgängliga i följande regioner: västra USA 2, östra USA 2, centrala USA, norra Europa och Västeuropa.
 
 3.  Skapa Textanalys resursen och gå till bladet "nycklar och slut punkt" till vänster på sidan. Kopiera nyckeln som ska användas senare när du anropar API: erna. Du lägger till detta senare som ett värde för `Ocp-Apim-Subscription-Key` sidhuvudet.
+
+## <a name="change-your-pricing-tier"></a>Ändra din pris nivå 
+
+Om du har en befintlig Textanalys resurs med hjälp av pris nivån S0 till S4, kan du uppdatera den så att den använder standard [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)(S):
+
+1. Navigera till din Textanalys-resurs i [Azure Portal](https://portal.azure.com/).
+2. Välj **pris nivå** i den vänstra navigerings menyn. Den kommer att vara under **resurs hantering**. 
+3. Välj pris nivån standard (S). Klicka sedan på **Välj**.
+
+Du kan också skapa en ny Textanalys resurs med pris nivån standard (S) och migrera dina program så att de använder autentiseringsuppgifterna för den nya resursen. 
 
 ## <a name="using-the-api-synchronously"></a>Använda API: et synkront
 
@@ -254,8 +264,8 @@ När du har slut punkten, i Postman (eller något annat verktyg för webb-API-te
 
 5. Klistra in vissa JSON-dokument i ett giltigt format. Använd exemplen i avsnittet **API Request format** ovan och mer information och exempel finns i avsnitten nedan:
 
-      + [Språkidentifiering](text-analytics-how-to-language-detection.md)
-      + [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md)
+      + [Språk identifiering](text-analytics-how-to-language-detection.md)
+      + [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md)
       + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md)
       + [Enhets igenkänning](text-analytics-how-to-entity-linking.md)
 
@@ -284,8 +294,8 @@ Observera att `/analyze` `/health` resultaten från get-begäran i steg 2 är ti
 
 Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du använder. Se följande artiklar för exempel svar.
 
-+ [Språkidentifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Språk identifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
++ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 
@@ -295,7 +305,7 @@ Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du 
 
 Om det lyckas, kommer GET-begäran till `/analyze` slut punkten returnera ett objekt som innehåller de tilldelade aktiviteterna. Till exempel `keyPhraseExtractionTasks`. Dessa aktiviteter innehåller objektet Response från lämplig Textanalys funktion. Se följande artiklar för mer information.
 
-+ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 + [Textanalys för hälsa](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 

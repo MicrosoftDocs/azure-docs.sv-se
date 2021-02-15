@@ -1,23 +1,18 @@
 ---
 title: Kopiera data till/från ett fil system med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data till och från ett lokalt fil system med hjälp av Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ce19f1ae-358e-4ffc-8a80-d802505c9c84
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9acd2adb68347978bb123d2239eedbb3e5595bc3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847597"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387401"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopiera data till och från ett lokalt fil system med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -54,7 +49,7 @@ Du kan skapa en pipeline med en kopierings aktivitet som flyttar data till/från
 
 Det enklaste sättet att skapa en pipeline är att använda **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genom gång av hur du skapar en pipeline med hjälp av guiden Kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API**och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+Du kan också använda följande verktyg för att skapa en pipeline: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager mall**, .net- **API** och **REST API**. Mer information om hur du skapar en pipeline med en kopierings aktivitet finns i [själv studie kursen kopiera aktivitet](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Oavsett om du använder verktygen eller API: erna utför du följande steg för att skapa en pipeline som flyttar data från ett käll data lager till ett mottagar data lager:
 
@@ -133,8 +128,8 @@ Avsnittet typeProperties är olika för varje typ av data uppsättning. Den inne
 | fileName |Ange namnet på filen i **folderPath** om du vill att tabellen ska referera till en speciell fil i mappen. Om du inte anger något värde för den här egenskapen pekar tabellen på alla filer i mappen.<br/><br/>Om inget **fil namn** har angetts för en data uppsättning för utdata och **preserveHierarchy** inte har angetts i aktivitets mottagaren, är namnet på den genererade filen i följande format: <br/><br/>`Data.<Guid>.txt` (Exempel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Inga |
 | fileFilter |Ange ett filter som ska användas för att välja en delmängd av filer i folderPath i stället för alla filer. <br/><br/>Tillåtna värden är: `*` (flera tecken) och `?` (ett tecken).<br/><br/>Exempel 1: "fileFilter": "*. log"<br/>Exempel 2: "fileFilter": 2014-1-?. format<br/><br/>Observera att fileFilter är tillämpligt för en data uppsättning för en indata-FileShare. |Inga |
 | partitionedBy |Du kan använda partitionedBy för att ange ett dynamiskt folderPath/fileName för Time Series-data. Ett exempel är folderPath-parameter för varje timme med data. |Inga |
-| format | Följande format typer **stöds: text**format, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ange egenskapen **Type** under format till något av dessa värden. Mer information finns i [text format](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-format](data-factory-supported-file-and-compression-formats.md#avro-format), Orc- [format](data-factory-supported-file-and-compression-formats.md#orc-format)och [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) -avsnitt. <br><br> Om du vill **Kopiera filer som är** mellan filbaserade butiker (binär kopia), hoppar du över avsnittet format i definitionerna för in-och utdata-datauppsättningar. |Inga |
-| komprimering | Ange typ och nivå för komprimeringen för data. De typer som stöds är: **gzip**, **DEFLATE**, **BZip2**och **ZipDeflate**. De nivåer som stöds är: **optimalt** och **snabbast**. Se [fil-och komprimerings format i Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Inga |
+| format | Följande format typer **stöds: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ange egenskapen **Type** under format till något av dessa värden. Mer information finns i [text format](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-format](data-factory-supported-file-and-compression-formats.md#avro-format), Orc- [format](data-factory-supported-file-and-compression-formats.md#orc-format)och [Parquet format](data-factory-supported-file-and-compression-formats.md#parquet-format) -avsnitt. <br><br> Om du vill **Kopiera filer som är** mellan filbaserade butiker (binär kopia), hoppar du över avsnittet format i definitionerna för in-och utdata-datauppsättningar. |Inga |
+| komprimering | Ange typ och nivå för komprimeringen för data. De typer som stöds är: **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**. De nivåer som stöds är: **optimalt** och **snabbast**. Se [fil-och komprimerings format i Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Inga |
 
 > [!NOTE]
 > Du kan inte använda fileName och fileFilter samtidigt.
@@ -179,13 +174,13 @@ För kopierings aktivitet varierar de beroende på typerna av källor och mottag
 
 **FileSystemSource** stöder följande egenskaper:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | rekursiva |Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. |Sant, falskt (standard) |Inga |
 
 **FileSystemSink** stöder följande egenskaper:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | copyBehavior |Definierar kopierings beteendet när källan är BlobSource eller FileSystem. |**PreserveHierarchy:** Bevarar filens hierarki i målmappen. Det vill säga att käll filens relativa sökväg är samma som den relativa sökvägen till mål filen i målmappen.<br/><br/>**FlattenHierarchy:** Alla filer från källmappen skapas på den första nivån i målmappen. Målattribut skapas med ett automatiskt genererat namn.<br/><br/>**MergeFiles:** Sammanfogar alla filer från källmappen till en fil. Om fil namnet/blobb namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars är det ett automatiskt genererat fil namn. |Inga |
 
@@ -381,7 +376,7 @@ Data skrivs till en ny BLOB varje timme (frekvens: timme, intervall: 1). Mappsö
 
 **En kopierings aktivitet i en pipeline med fil system källa och blob-mottagare:**
 
-Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **FileSystemSource**och **mottagar** typen är inställd på **BlobSink**.
+Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **FileSystemSource** och **mottagar** typen är inställd på **BlobSink**.
 
 ```JSON
 {
@@ -477,7 +472,7 @@ Vi rekommenderar att du använder egenskapen **encryptedCredential** i stället 
 
 Exemplet förutsätter att du har skapat en tabell "Tabell" i Azure SQL och att den innehåller en kolumn med namnet "timestampcolumn" för Time Series-data.
 
-Inställningen ``“external”: ”true”`` informerar Data Factory att data uppsättningen är extern för data fabriken och inte produceras av en aktivitet i data fabriken.
+Inställningen ``"external": "true"`` informerar Data Factory att data uppsättningen är extern för data fabriken och inte produceras av en aktivitet i data fabriken.
 
 ```JSON
 {
@@ -570,7 +565,7 @@ Data kopieras till en ny fil varje timme. FolderPath och fileName för blobben b
 
 **En kopierings aktivitet i en pipeline med SQL-källa och fil Systems mottagare:**
 
-Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **SqlSource**och **mottagar** typen är inställd på **FileSystemSink**. SQL-frågan som anges för egenskapen **SqlReaderQuery** väljer data under den senaste timmen som ska kopieras.
+Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att använda data uppsättningar för indata och utdata och är schemalagda att köras varje timme. I JSON-definitionen för pipelinen är **käll** typen inställt på **SqlSource** och **mottagar** typen är inställd på **FileSystemSink**. SQL-frågan som anges för egenskapen **SqlReaderQuery** väljer data under den senaste timmen som ska kopieras.
 
 ```JSON
 {

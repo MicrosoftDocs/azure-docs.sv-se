@@ -3,33 +3,33 @@ title: 'ML Studio (klassisk): hur en modell blir en webb tjänst – Azure'
 description: En översikt över Mechanics för hur din Azure Machine Learning Studio (klassiska) modell förloppet från ett utvecklings experiment till en webb tjänst.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c92f8c74da76b2ac938892e27f3d6be9c70c3238
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95507257"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518631"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hur en Machine Learning Studio (klassisk) modell går från ett experiment till en webb tjänst
 
 **gäller för:** ![ Detta är en bock markering, vilket innebär att den här artikeln gäller Machine Learning Studio (klassisk). ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ Detta är ett X, vilket innebär att den här artikeln gäller för Azure Machine Learning ](../../../includes/media/aml-applies-to-skus/no.png)[ . Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
-Azure Machine Learning Studio (klassisk) tillhandahåller en interaktiv arbets yta som gör att du kan utveckla, köra, testa och iterera ett **_experiment_* _ som representerar en förutsägelse analys modell. Det finns en mängd olika moduler som kan:
+Azure Machine Learning Studio (klassisk) tillhandahåller en interaktiv arbets yta som gör att du kan utveckla, köra, testa och iterera ett ***experiment*** som representerar en förutsägelse analys modell. Det finns en mängd olika moduler som kan:
 
-_ Mata in data i experimentet
+* Mata in data i experimentet
 * Ändra data
 * Träna en modell med Machine Learning-algoritmer
 * Poängsätta modellen
 * Utvärdera resultatet
 * Utgående slutgiltiga värden
 
-När du är nöjd med experimentet kan du distribuera det som en ***klassisk Azure Machine Learning-webbtjänst** _ eller en _*_ny Azure Machine Learning webb tjänst_*_ så att användarna kan skicka nya data och få tillbaka resultatet.
+När du är nöjd med experimentet kan du distribuera det som en ***klassisk Azure Machine Learning-webbtjänst** _ eller en _ *_ny Azure Machine Learning-webbtjänst_** så att användarna kan skicka nya data och ta emot tillbaka resultatet.
 
 I den här artikeln ger vi en översikt över Mechanics för hur din Machine Learning modell fortlöper från ett utvecklings experiment till en drifts webb tjänst.
 
@@ -38,7 +38,7 @@ I den här artikeln ger vi en översikt över Mechanics för hur din Machine Lea
 >
 >
 
-Medan Azure Machine Learning Studio (klassisk) är utformat för att hjälpa dig att utveckla och distribuera en _predictive analys modell *, är det möjligt att använda Studio (klassisk) för att utveckla ett experiment som inte innehåller en förutsägelse analys modell. Till exempel kan ett experiment bara mata in data, manipulera det och sedan spara resultatet. Precis som ett experiment med förutsägelse analys kan du distribuera detta icke-förutsägande experiment som en webb tjänst, men det är en enklare process eftersom experimentet inte tränar eller beräknar en maskin inlärnings modell. Det är inte vanligt att använda Studio (klassisk) på det här sättet, men vi inkluderar dem i diskussionen så att vi kan ge en fullständig förklaring av hur Studio (klassisk) fungerar.
+Medan Azure Machine Learning Studio (klassisk) är utformat för att hjälpa dig att utveckla och distribuera en *förutsägelse analys modell*, är det möjligt att använda Studio (klassisk) för att utveckla ett experiment som inte innehåller en förutsägelse analys modell. Till exempel kan ett experiment bara mata in data, manipulera det och sedan spara resultatet. Precis som ett experiment med förutsägelse analys kan du distribuera detta icke-förutsägande experiment som en webb tjänst, men det är en enklare process eftersom experimentet inte tränar eller beräknar en maskin inlärnings modell. Det är inte vanligt att använda Studio (klassisk) på det här sättet, men vi inkluderar dem i diskussionen så att vi kan ge en fullständig förklaring av hur Studio (klassisk) fungerar.
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>Utveckla och distribuera en förutsägbar webb tjänst
 Här följer de steg som en typisk lösning följer när du utvecklar och distribuerar den med hjälp av Machine Learning Studio (klassisk):
@@ -48,14 +48,14 @@ Här följer de steg som en typisk lösning följer när du utvecklar och distri
 *Figur 1 – faser i en typisk förutsägelse analys modell*
 
 ### <a name="the-training-experiment"></a>Utbildnings experimentet
-***Övnings experimentet** _ är den inledande fasen i att utveckla din webb tjänst i Machine Learning Studio (klassisk). Syftet med övnings experimentet är att ge dig en plats för att utveckla, testa, iterera och slutligen träna en maskin inlärnings modell. Du kan till och med träna flera modeller samtidigt när du söker efter den bästa lösningen, men när du är klar med experimentet väljer du en enda utbildad modell och tar bort resten från experimentet. Ett exempel på att utveckla ett förutsägelse analys experiment finns i [utveckla en förutsägelse analys lösning för kredit riskbedömning i Azure Machine Learning Studio (klassisk)](tutorial-part1-credit-risk.md).
+***Övnings experimentet*** är den inledande fasen av att utveckla din webb tjänst i Machine Learning Studio (klassisk). Syftet med övnings experimentet är att ge dig en plats för att utveckla, testa, iterera och slutligen träna en maskin inlärnings modell. Du kan till och med träna flera modeller samtidigt när du söker efter den bästa lösningen, men när du är klar med experimentet väljer du en enda utbildad modell och tar bort resten från experimentet. Ett exempel på att utveckla ett förutsägelse analys experiment finns i [utveckla en förutsägelse analys lösning för kredit riskbedömning i Azure Machine Learning Studio (klassisk)](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Förutsägande experiment
-När du har en tränad modell i ditt utbildnings experiment klickar du på _*Konfigurera webb tjänst** och väljer **förutsägbar webb tjänst** i Machine Learning Studio (klassisk) för att starta processen med att konvertera ditt utbildnings experiment till ett **_förutsägande experiment_*_. Syftet med förutsägande experiment är att använda din tränade modell för att ta fram nya data, med målet att bli drifts dugligd som en Azure-webbtjänst.
+När du har en tränad modell i ditt utbildnings experiment klickar du på **Konfigurera webb tjänsten** och väljer **förutsägbar webb tjänst** i Machine Learning Studio (klassisk) för att starta processen med att konvertera ditt utbildnings experiment till ett **_förutsägelse experiment_**. Syftet med förutsägande experiment är att använda din tränade modell för att ta fram nya data, med målet att bli drifts dugligd som en Azure-webbtjänst.
 
 Den här omvandlingen görs med hjälp av följande steg:
 
-_ Konvertera uppsättningen moduler som används för utbildning i en enda modul och spara den som en utbildad modell
+* Konvertera den uppsättning moduler som används för utbildning i en enda modul och spara den som en utbildad modell
 * Eliminera eventuella främmande moduler som inte är relaterade till Poäng
 * Lägg till indata-och utgående portar som den andra webb tjänsten kommer att använda
 

@@ -2,21 +2,21 @@
 title: Anpassat skript tillägg för Azure för Windows
 description: Automatisera konfigurations uppgifter för virtuella Windows-datorer med hjälp av tillägget för anpassat skript
 services: virtual-machines-windows
-manager: carmonm
-author: bobbytreed
+manager: gwallace
+author: amjads1
 ms.service: virtual-machines-windows
 ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
-ms.author: robreed
-ms.openlocfilehash: d4cfb8d6a48ac41b4deb8913d4277f07cbb43208
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.author: amjads
+ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258712"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390138"
 ---
 # <a name="custom-script-extension-for-windows"></a>Anpassat skripttillägg för Windows
 
@@ -32,6 +32,7 @@ Det här dokumentet beskriver hur du använder tillägget för anpassat skript m
 ### <a name="operating-system"></a>Operativsystem
 
 Tillägget för anpassat skript för Windows kommer att köras i tillägget tillägg som stöds OSs.
+
 ### <a name="windows"></a>Windows
 
 * Windows Server 2008 R2
@@ -67,7 +68,7 @@ Om ditt skript finns på en lokal server kanske du fortfarande behöver fler bra
 * Tillägget kör bara ett skript en gång. Om du vill köra ett skript vid varje start måste du använda tillägget för att skapa en schemalagd uppgift i Windows.
 * Om du vill schemalägga när ett skript ska köras använder du tillägget för att skapa en schemalagd uppgift i Windows.
 * När skriptet körs visas tillägget med övergångsstatus på Azure-portalen eller i CLI. Om du behöver mer frekventa statusuppdateringar för ett skript som körs måste du skapa en egen lösning.
-* Anpassat skript tillägg stöder inte proxyservrar, men du kan använda ett fil överförings verktyg som stöder proxyservrar i skriptet, till exempel *vändning*
+* Anpassat skript tillägg stöder inte proxyservrar, men du kan använda ett fil överförings verktyg som stöder proxyservrar i skriptet, till exempel *Invoke-webbegäran*
 * Om dina skript eller kommandon använder andra katalogplatser än standardplatserna krävs logik som kan hantera den situationen.
 * Anpassat skript tillägg körs under kontot LocalSystem
 * Om du planerar att använda egenskaperna *storageAccountName* och *storageAccountKey* måste dessa egenskaper vara samordnad i *protectedSettings*.
@@ -125,7 +126,7 @@ De här objekten ska behandlas som känsliga data och anges i konfigurationerna 
 
 ### <a name="property-values"></a>Egenskaps värden
 
-| Name | Värde/exempel | Datatyp |
+| Namn | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | utgivare | Microsoft.Compute | sträng |

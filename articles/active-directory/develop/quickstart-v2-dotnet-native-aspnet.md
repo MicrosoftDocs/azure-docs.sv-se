@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec8fd05c0661178cc07b9165793c9f34f2463948
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9dc787c57ef3ab84d9a2b90cfe059594b0a31d08
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754323"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102520"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Snabb start: anropa ett ASP.NET webb-API som skyddas av Microsoft Identity Platform
 
@@ -25,7 +25,7 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur du
 
 I artikeln används också en Windows Presentation Foundation-app (WPF) för att visa hur du kan begära en åtkomsttoken för att få åtkomst till ett webb-API.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Visual Studio 2017 eller 2019. Hämta [Visual Studio kostnads fritt](https://www.visualstudio.com/downloads/).
@@ -48,13 +48,12 @@ I det här avsnittet registrerar du ditt webb-API i **Appregistreringar** i Azur
 
 Om du vill registrera dina appar manuellt väljer du den Azure Active Directory (Azure AD) som du vill skapa dina appar för.
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> med ett arbets-eller skol konto eller en personlig Microsoft-konto.
-1. Om ditt konto finns i fler än en Azure AD-klient väljer du din profil längst upp till höger och väljer sedan **Växla katalog**.
-1. Ändra din portal-session till den Azure AD-klient som du vill använda.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: på den översta menyn för att välja den klient som du vill använda.
 
 ### <a name="register-the-todolistservice-app"></a>Registrera TodoListService-appen
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

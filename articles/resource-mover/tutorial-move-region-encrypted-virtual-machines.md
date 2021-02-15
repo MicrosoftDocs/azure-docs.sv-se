@@ -5,15 +5,15 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0bc70e14e341d9681c75933455eae6b0278724ca
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99982294"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361017"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Självstudie: flytta krypterade virtuella Azure-datorer över regioner
 
@@ -54,26 +54,49 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 **Avgifter för mål region** | Kontrol lera priser och avgifter som är kopplade till den mål region som du flyttar virtuella datorer till. Använd [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/) för att hjälpa dig.
 
 
-## <a name="verify-key-vault-permissions-azure-disk-encryption"></a>Verifiera nyckel valvs behörigheter (Azure Disk Encryption)
+## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>Verifiera användar behörigheter för nyckel valv för virtuella datorer som använder Azure Disk Encryption (ADE)
 
-Om du flyttar virtuella datorer som har Azure Disk Encryption aktiverat, går du till nyckel valven i käll-och mål regionerna och kontrollerar/anger behörigheter för att säkerställa att flytta krypterade virtuella datorer fungerar som förväntat. 
+Om du flyttar virtuella datorer som har Azure Disk Encryption aktiverat måste du köra ett skript enligt [nedan](#copy-the-keys-to-the-destination-key-vault) för vilket användaren som kör skriptet ska ha rätt behörighet. Se tabellen nedan om du vill veta mer om vilka behörigheter som krävs. Du kan hitta alternativen för att ändra behörigheterna genom att gå till nyckel valvet i Azure Portal, under **Inställningar**, Välj **åtkomst principer**.
 
-1. I Azure Portal öppnar du nyckel valvet i käll regionen.
-2. Under **Inställningar** väljer du **åtkomst principer**.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Knapp för att öppna åtkomst principer för nyckel valv." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Knapp för att öppna åtkomst principer för nyckel valv." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+Om det inte finns några användar behörigheter väljer du **Lägg till åtkomst princip** och anger behörigheterna. Om användar kontot redan har en princip, under **användare**, anger du behörigheterna enligt tabellen nedan.
 
-3. Om det inte finns några användar behörigheter väljer du **Lägg till åtkomst princip** och anger behörigheterna. Om användar kontot redan har en princip anger du behörigheterna under **användare**.
+Virtuella Azure-datorer med hjälp av ADE kan ha följande variationer och behörigheterna måste anges i enlighet med detta för relevanta komponenter.
+- Standard alternativet där disken krypteras med endast hemligheter
+- Ökad säkerhet med [nyckel krypterings nyckel](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
 
-    - Om de virtuella datorer som du vill flytta är aktiverade med Azure Disk Encryption ( ade)  >  väljer du **Hämta** och **lista** om de inte är markerade i nyckel **hanterings åtgärder** för nyckel behörigheter.
-    - Om du använder Kundhanterade nycklar (CMKs) för att kryptera disk krypterings nycklar som används för kryptering vid vila (kryptering på Server sidan),   >  väljer du **Hämta** och **lista** i nyckel **hanterings åtgärder** för nyckel behörigheter. I **kryptografiska åtgärder** väljer du dessutom **dekryptera** och **kryptera**
- 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png" alt-text="Listruta för att välja Key Vault-behörigheter." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/set-vault-permissions.png":::
+### <a name="source-region-keyvault"></a>Käll regions nyckel valv
 
-4. I **hemliga behörigheter**,  **hemliga hanterings åtgärder**, väljer du **Hämta**, **lista** och **Ange**. 
-5. Om du tilldelar behörigheter till ett nytt användar konto väljer du den användare som du vill tilldela behörigheter i **Välj huvud namn**.
-6. I **åtkomst principer** kontrollerar du att **Azure Disk Encryption för volym kryptering** har Aktiver ATS.
-7. Upprepa proceduren för nyckel valvet i mål regionen.
+Nedanstående behörigheter måste anges för användaren som kör skriptet 
+
+**Komponent** | **Behörighet krävs**
+--- | ---
+Hemligheter|  Hämta behörighet <br> </br> I hemliga >   **hanterings åtgärder** för hemliga behörigheter väljer du **Hämta** 
+Nycklar <br> </br> Om du använder nyckel krypterings nyckel (KEK) behöver du den här behörigheten förutom hemligheter| Hämta och dekryptera behörighet <br> </br> I **nyckel**  >  **hanterings åtgärder** för nyckel behörigheter väljer du **Hämta**. I **kryptografiska åtgärder** väljer du **dekryptera**.
+
+### <a name="destination-region-keyvault"></a>Mål regions nyckel valv
+
+I **åtkomst principer** kontrollerar du att **Azure Disk Encryption för volym kryptering** har Aktiver ATS. 
+
+Nedanstående behörigheter måste anges för användaren som kör skriptet 
+
+**Komponent** | **Behörighet krävs**
+--- | ---
+Hemligheter|  Ange behörighet <br> </br> I hemliga >   **hanterings åtgärder** för hemliga behörigheter väljer du **Ange** 
+Nycklar <br> </br> Om du använder nyckel krypterings nyckel (KEK) behöver du den här behörigheten förutom hemligheter| Hämta, skapa och kryptera behörighet <br> </br> I **nyckel**  >  **hanterings åtgärder** för nyckel behörigheter väljer du **Hämta** och **skapa** . I **kryptografiska operationer** väljer du **kryptera**.
+
+Förutom ovanstående behörigheter måste du i mål nyckel valvet lägga till behörigheter för den [hanterade system identitet](./common-questions.md#how-is-managed-identity-used-in-resource-mover) som resurs förflyttningen använder för att få åtkomst till Azure-resurser för din räkning. 
+
+1. Under **Inställningar** väljer du **Lägg till åtkomst principer**. 
+2. I **Välj huvud konto** söker du efter MSI. MSI-namnet är ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
+3. Lägg till nedanstående behörigheter för MSI
+
+**Komponent** | **Behörighet krävs**
+--- | ---
+Hemligheter|  Hämta och lista behörighet <br> </br> I hemliga **behörigheter för** >   **hemliga hanterings åtgärder** väljer du **Hämta** och **lista** 
+Nycklar <br> </br> Om du använder nyckel krypterings nyckel (KEK) behöver du den här behörigheten förutom hemligheter| Hämta, lista behörighet <br> </br> I **nyckel**  >  **hanterings åtgärder** för nyckel behörigheter väljer du **Hämta** och **lista**
+
 
 
 ### <a name="copy-the-keys-to-the-destination-key-vault"></a>Kopiera nycklarna till mål nyckel valvet

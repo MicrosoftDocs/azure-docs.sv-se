@@ -1,22 +1,18 @@
 ---
 title: Integration runtime
 description: Mer information om Integration Runtime i Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636654"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389951"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime i Azure Data Factory 
 
@@ -24,10 +20,10 @@ ms.locfileid: "92636654"
 
 Integration Runtime (IR) är beräkningsinfrastrukturen som används av Azure Data Factory för att ge olika nätverksmiljöer integrationsfunktioner:
 
-- **Data flöde** : kör ett [data flöde](concepts-data-flow-overview.md) i en hanterad Azure Compute-miljö.  
-- **Data förflyttning** : kopiera data mellan data lager i offentliga nätverk och data lager i privata nätverk (lokalt eller virtuellt privat nätverk). Den ger stöd åt inbyggda anslutningsappar, konvertering av format, kolumnmappning och bättre och skalbar dataöverföring.
-- **Aktivitets sändning** : sändnings-och övervaknings omvandlings aktiviteter som körs på en mängd olika beräknings tjänster, till exempel Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server med mera.
-- **SSIS paketkörning** : Internt köra SQL Server Integration Services-paket (SSIS) i en hanterad Azure-beräkningsmiljö.
+- **Data flöde**: kör ett [data flöde](concepts-data-flow-overview.md) i en hanterad Azure Compute-miljö.  
+- **Data förflyttning**: kopiera data mellan data lager i offentliga nätverk och data lager i privata nätverk (lokalt eller virtuellt privat nätverk). Den ger stöd åt inbyggda anslutningsappar, konvertering av format, kolumnmappning och bättre och skalbar dataöverföring.
+- **Aktivitets sändning**: sändnings-och övervaknings omvandlings aktiviteter som körs på en mängd olika beräknings tjänster, till exempel Azure Databricks, Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server med mera.
+- **SSIS paketkörning**: Internt köra SQL Server Integration Services-paket (SSIS) i en hanterad Azure-beräkningsmiljö.
 
 I Data Factory definierar en aktivitet åtgärden som ska utföras. En länkad tjänst definierar ett datalager som mål eller en beräkningstjänst. Integration Runtime utgör bryggan mellan aktiviteten och länkade tjänster.  Det refereras av den länkade tjänsten eller aktiviteten och tillhandahåller den beräknings miljö där aktiviteten antingen körs eller skickas från. På så sätt kan aktiviteten utföras i regionen som är den närmaste möjliga till måldatalagret eller beräkningstjänsten på det bästa sättet samtidigt som den uppfyller säkerhets- och efterlevnadsbehoven.
 
@@ -180,9 +176,9 @@ I följande diagram visas platsinställningar för Data Factory och dess Integra
 
 För kopieringsaktiviteten kräver den länkade tjänster-källa och länkade tjänster-mottagare för att definiera dataflödets riktning. Följande logik används till att bestämma vilken Integration Runtime-instans som används för att utföra kopieringen: 
 
-- **Kopiera mellan två moln data källor** : när de länkade tjänsterna källa och mottagare använder Azure IR, använder ADF den regionala Azure IR om du har angett, eller automatiskt bestämmer en plats för Azure IR om du väljer automatcha IR (standard) enligt beskrivningen i avsnittet [integration runtime location](#integration-runtime-location) .
-- **Kopiera mellan molndatalager och datakälla i privat nätverk** : om den länkade källtjänsten eller den länkade mottagartjänsten pekar på en IR med egen värd körs kopieringsaktiviteten på den Integration Runtime med egen värd.
-- **Kopiera mellan två data källor i privat nätverk** : både den länkade källan och mottagar tjänsten måste peka på samma instans av integration Runtime och att integration runtime används för att köra kopierings aktiviteten.
+- **Kopiera mellan två moln data källor**: när de länkade tjänsterna källa och mottagare använder Azure IR, använder ADF den regionala Azure IR om du har angett, eller automatiskt bestämmer en plats för Azure IR om du väljer automatcha IR (standard) enligt beskrivningen i avsnittet [integration runtime location](#integration-runtime-location) .
+- **Kopiera mellan molndatalager och datakälla i privat nätverk**: om den länkade källtjänsten eller den länkade mottagartjänsten pekar på en IR med egen värd körs kopieringsaktiviteten på den Integration Runtime med egen värd.
+- **Kopiera mellan två data källor i privat nätverk**: både den länkade källan och mottagar tjänsten måste peka på samma instans av integration Runtime och att integration runtime används för att köra kopierings aktiviteten.
 
 ### <a name="lookup-and-getmetadata-activity"></a>Lookup och GetMetadata-aktivitet
 

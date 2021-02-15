@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 73652f821abfa4a092e4a61ffe2be9e7262a2f10
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5261075a82eaefd91cbedd2dd2fe08cb1e0a20b4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538568"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381842"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-powershell"></a>Konfigurera och hantera kontinuerlig säkerhets kopiering och tidpunkts återställning (för hands version) – med Azure PowerShell
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -50,7 +50,7 @@ Den här artikeln beskriver hur du etablerar ett konto med kontinuerlig säkerhe
 
 Om du vill etablera ett konto med kontinuerlig säkerhets kopiering lägger du till ett argument `-BackupPolicyType Continuous` tillsammans med det vanliga etablerings kommandot.
 
-Följande cmdlet är ett exempel på ett enda regions Skriv konto `pitracct2` med kontinuerlig säkerhets kopierings princip som skapats i regionen "västra USA" under resurs gruppen "myrg":
+Följande cmdlet är ett exempel på ett enda region Skriv konto `pitracct2` med kontinuerlig säkerhets kopierings princip som skapats i regionen *västra USA* under *myrg* resurs grupp:
 
 ```azurepowershell
 
@@ -65,7 +65,7 @@ New-AzCosmosDBAccount `
 
 ## <a name="provision-a-mongodb-api-account-with-continuous-backup"></a><a id="provision-mongodb-api"></a>Etablera ett MongoDB API-konto med kontinuerlig säkerhets kopiering
 
-Följande cmdlet är ett exempel på ett kontinuerligt säkerhets kopierings konto "pitracct2" som skapats i regionen "västra USA" under resurs gruppen "myrg":
+Följande cmdlet är ett exempel på ett kontinuerligt säkerhets kopierings konto *pitracct2* som skapats i regionen *västra USA* under *myrg* -resurs grupp:
 
 ```azurepowershell
 
@@ -162,13 +162,13 @@ Svaret innehåller alla databas konton (både Live och borttaget) som kan åters
   },
 ```
 
-Precis som "CreationTime" eller "DeletionTime" för kontot finns det också en "CreationTime" eller "DeletionTime" för regionen. Med de här tiderna kan du välja rätt region och ett giltigt tidsintervall för att återställa till den regionen.
+Precis som `CreationTime` eller `DeletionTime` för kontot finns det `CreationTime` också en eller `DeletionTime` för regionen. Med de här tiderna kan du välja rätt region och ett giltigt tidsintervall för att återställa till den regionen.
 
 **Visa en lista över alla versioner av SQL-databaser i ett Live Database-konto**
 
 Genom att visa alla versioner av databaserna kan du välja rätt databas i ett scenario där den faktiska tiden det finns en okänd databas.
 
-Kör följande PowerShell-kommando för att visa en lista över alla versioner av-databaser. Det här kommandot fungerar bara med Live-konton. Parametrarna "DatabaseAccountInstanceId" och "LocationName" hämtas från egenskaperna "name" och "location" i svar på `Get-AzCosmosDBRestorableDatabaseAccount` cmdleten. Attributet "DatabaseAccountInstanceId" refererar till egenskapen "instanceId" för käll databas kontot som återställs:
+Kör följande PowerShell-kommando för att visa en lista över alla versioner av-databaser. Det här kommandot fungerar bara med Live-konton. `DatabaseAccountInstanceId` `LocationName` Parametrarna och hämtas från-och- `name` `location` egenskaperna i svar på `Get-AzCosmosDBRestorableDatabaseAccount` cmdleten. `DatabaseAccountInstanceId`Attributet refererar till `instanceId` egenskapen för det käll databas konto som återställs:
 
 
 ```azurepowershell
@@ -181,7 +181,7 @@ Get-AzCosmosdbSqlRestorableDatabase `
 
 **Visa en lista över alla versioner av SQL-behållare för en databas i ett Live Database-konto.**
 
-Använd följande kommando för att visa en lista över alla versioner av SQL-behållare. Det här kommandot fungerar bara med Live-konton. Parametern "DatabaseRid" är "ResourceId" för den databas som du vill återställa. Det är värdet för attributet "ownerResourceid" som finns i svar på `Get-AzCosmosdbSqlRestorableDatabase` cmdlet. Svaret innehåller också en lista med åtgärder som utförs på alla behållare i den här databasen.
+Använd följande kommando för att visa en lista över alla versioner av SQL-behållare. Det här kommandot fungerar bara med Live-konton. `DatabaseRid`Parametern är `ResourceId` av den databas som du vill återställa. Det är värdet för `ownerResourceid` attributet som finns i svar på `Get-AzCosmosdbSqlRestorableDatabase` cmdleten. Svaret innehåller också en lista med åtgärder som utförs på alla behållare i den här databasen.
 
 ```azurepowershell
 
@@ -208,7 +208,7 @@ Get-AzCosmosdbSqlRestorableResource `
 
 ## <a name="enumerate-restorable-resources-for-mongodb"></a><a id="enumerate-mongodb-api"></a>Räkna upp återställas-resurser för MongoDB
 
-Uppräknings kommandon som beskrivs nedan hjälper dig att identifiera de resurser som är tillgängliga för återställning vid olika tidsstämplar. Dessutom ger de också en feed av viktiga händelser för återställas-kontot,-databasen och container resurserna. Dessa kommandon fungerar bara för Live-konton och de liknar SQL API-kommandon, men med "MongoDB" i kommando namnet i stället för "SQL".
+Uppräknings kommandon som beskrivs nedan hjälper dig att identifiera de resurser som är tillgängliga för återställning vid olika tidsstämplar. Dessutom ger de också en feed av viktiga händelser för återställas-kontot,-databasen och container resurserna. Dessa kommandon fungerar bara för Live-konton och de liknar SQL API-kommandon, men med `MongoDB` i kommando namnet i stället för `sql` .
 
 **Visa en lista över alla versioner av MongoDB-databaser i ett Live Database-konto**
 

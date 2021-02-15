@@ -1,23 +1,18 @@
 ---
 title: Flytta data från SAP HANA med Azure Data Factory
 description: Lär dig mer om hur du flyttar data från SAP HANA med Azure Data Factory.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c08aeca8e7aaa71e5a2a80cbdece762b989e28c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9c192a5f84f36fbdea0dd1d280928aa40186d4ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510149"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386993"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Flytta data från SAP HANA med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -57,7 +52,7 @@ I följande avsnitt finns information om JSON-egenskaper som används för att d
 ## <a name="linked-service-properties"></a>Egenskaper för länkad tjänst
 Följande tabell innehåller en beskrivning av JSON-element som är speciella för SAP HANA länkade tjänsten.
 
-Egenskap | Beskrivning | Tillåtna värden | Krävs
+Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
 server | Namnet på den server där SAP HANA-instansen finns. Om servern använder en anpassad port anger du `server:port` . | sträng | Ja
 authenticationType | Typ av autentisering. | nollängd. "Basic" eller "Windows" | Ja 
@@ -79,7 +74,7 @@ De egenskaper som är tillgängliga i avsnittet **typeProperties** i aktiviteten
 
 När källan i kopierings aktiviteten är av typen **RelationalSource** (som innehåller SAP HANA) finns följande egenskaper i avsnittet typeProperties:
 
-| Egenskap | Beskrivning | Tillåtna värden | Krävs |
+| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
 | DocumentDB | Anger SQL-frågan för att läsa data från SAP HANA-instansen. | SQL-fråga. | Ja |
 
@@ -287,8 +282,8 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-REAL | Enskilt
-DOUBLE | Enskilt
+REAL | Enkel
+DOUBLE | Enkel
 DECIMAL | Decimal
 BOOLESKT | Byte
 VARCHAR | Sträng

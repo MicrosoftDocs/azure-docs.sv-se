@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226346"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103183"
 ---
 # <a name="single-page-application-app-registration"></a>Program med en sida: app-registrering
 
@@ -27,7 +27,7 @@ Utför följande steg för att registrera ett program med en enda sida (SPA) i M
 
 Börja med att utföra följande steg för att skapa den första appens registrering för både MSAL.js 1,0-och 2,0-baserade program.
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

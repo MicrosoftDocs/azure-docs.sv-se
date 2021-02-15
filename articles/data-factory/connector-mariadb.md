@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från MariaDB med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från MariaDB till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: c2c036cc8538fbceb21da7c5166df52b3a04e12e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f515738ad2af6b7779495b55226c10fef9272b13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81414988"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385684"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopiera data från MariaDB med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,7 +31,7 @@ Azure Data Factory innehåller en inbyggd driv rutin som möjliggör anslutning,
 
 Den här anslutningen stöder för närvarande MariaDB av version 10,0 till 10,2.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -83,13 +78,13 @@ Följande egenskaper stöds för den länkade tjänsten MariaDB:
         "type": "MariaDB",
         "typeProperties": {
             "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

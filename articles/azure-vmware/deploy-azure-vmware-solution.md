@@ -3,12 +3,12 @@ title: Distribuera och konfigurera Azure VMware-lösning
 description: Lär dig hur du använder den information som samlas in i planerings fasen för att distribuera Azure VMware-lösningens privata moln.
 ms.topic: tutorial
 ms.date: 12/24/2020
-ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 4c6929ca59bae022642082e8382203a10bd41309
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98760883"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382063"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Distribuera och konfigurera Azure VMware-lösning
 
@@ -68,13 +68,13 @@ I det här exemplet har 10.74.72.0/22-nätverket inträffat under distributionen
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>Anslut och logga in på vCenter och NSX-T
 
-Logga in i hopp rutan som du skapade i föregående steg. När du har loggat in öppnar du en webbläsare och går till och loggar in i både vCenter-och NSX-T-admin-konsolen.  
+Logga in i hopp rutan som du skapade i föregående steg. När du har loggat in öppnar du en webbläsare och navigerar till och loggar in i både vCenter-och NSX-chef.  
 
-Du kan identifiera vCenter-och NSX-T-admin-konsolens IP-adresser och autentiseringsuppgifter i Azure Portal.  Välj ditt privata moln och välj sedan **identitet > standard** i vyn **Översikt** . 
+Du kan identifiera vCenter-och NSX-konsolens IP-adresser och autentiseringsuppgifter i Azure Portal.  Välj ditt privata moln och välj sedan **identitet > standard** i vyn **Översikt** . 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Skapa ett nätverks segment i Azure VMware-lösningen
 
-Du använder NSX-T för att skapa nya nätverks segment i din Azure VMware-lösnings miljö.  Du definierade de nätverk som du vill skapa i [planerings avsnittet](production-ready-deployment-steps.md).  Om du inte har definierat dem går du tillbaka till [planerings avsnittet](production-ready-deployment-steps.md) innan du fortsätter.
+Du använder NSX-T Manager för att skapa nya nätverks segment i din Azure VMware-lösnings miljö.  Du definierade de nätverk som du vill skapa i [planerings avsnittet](production-ready-deployment-steps.md).  Om du inte har definierat dem går du tillbaka till [planerings avsnittet](production-ready-deployment-steps.md) innan du fortsätter.
 
 >[!IMPORTANT]
 >Kontrol lera att det CIDR-adressblock som du definierat inte överlappar något i dina Azure-eller lokala miljöer.  

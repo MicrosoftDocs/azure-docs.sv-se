@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/12/2021
+ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85937561"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517135"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>Hantera offentlig nätverks åtkomst för IoT Hub
 
@@ -28,7 +28,13 @@ Om du vill begränsa åtkomsten till enbart [privat slut punkt för din IoT Hub 
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="Bild som visar Azure Portal där du kan inaktivera offentlig nätverks åtkomst" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-Aktivera offentlig nätverks åtkomst genom att välja **aktive rad**och sedan **Spara**.
+Om du vill aktivera offentlig nätverks åtkomst väljer du **alla nätverk** och sedan **Spara**.
+
+## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>IoT Hub-slutpunkt, IP-adress och portar efter inaktive ring av offentlig nätverks åtkomst
+
+IoT Hub är en PaaS (Platform-as-a-Service) med flera innehavare så att olika kunder delar samma pool med beräknings-, nätverks-och lagrings maskin varu resurser. IoT Hubs värdnamn mappas till en offentlig slut punkt med en offentligt dirigerad IP-adress via Internet. Olika kunder delar den här IoT Hub offentliga slut punkten och IoT-enheter i över WAN-nätverk och lokala nätverk kan komma åt dem. 
+
+Inaktive ring av offentlig nätverks åtkomst tillämpas på en angiven IoT Hub-resurs, vilket säkerställer isolering. Om du vill hålla tjänsten aktiv för andra kund resurser med hjälp av den offentliga sökvägen kan dess offentliga slut punkt fortsätta att matchas, IP-adresser upptäckas och portarna förblir öppna. Detta är inte en orsak till att Microsoft integrerar flera säkerhets nivåer för att säkerställa en fullständig isolering mellan klienter. Mer information finns i [isolera i det offentliga Azure-molnet](../security/fundamentals/isolation-choices.md#tenant-level-isolation).
 
 ## <a name="ip-filter"></a>IP-filter 
 

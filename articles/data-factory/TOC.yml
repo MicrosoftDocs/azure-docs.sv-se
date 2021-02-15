@@ -736,6 +736,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: Dedupe och null-kontroll med kodavsnitt
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: Bearbeta data från AML modeller med hjälp av data flöde
+              href: scenario-dataflow-process-data-aml-models.md
         - name: SSIS-migrering från lokal plats
           items:
             - name: Översikt över SSIS-migrering

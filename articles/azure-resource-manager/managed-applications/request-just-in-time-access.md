@@ -5,16 +5,16 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377371"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Aktivera och begär just-in-Time-åtkomst för Azure Managed Applications
 
-Konsumenter av det hanterade programmet kan vara ovilliga för att ge dig permanent åtkomst till den hanterade resurs gruppen. Som utgivare av ett hanterings program kanske du föredrar att konsumenter vet exakt när du behöver åtkomst till de hanterade resurserna. Azure Managed Applications tillhandahåller en funktion som kallas JIT-åtkomst (just-in-Time) för att ge konsumenterna större kontroll över beviljandet av åtkomst till hanterade resurser. Den här funktionen finns för närvarande som en förhandsversion.
+Konsumenter av det hanterade programmet kan vara ovilliga för att ge dig permanent åtkomst till den hanterade resurs gruppen. Som utgivare av ett hanterat program kanske du föredrar att konsumenter vet exakt när du behöver åtkomst till de hanterade resurserna. Azure Managed Applications tillhandahåller en funktion som kallas JIT-åtkomst (just-in-Time) för att ge konsumenterna större kontroll över beviljandet av åtkomst till hanterade resurser. Den här funktionen finns för närvarande som en förhandsversion.
 
 Med JIT-åtkomst kan du begära utökad åtkomst till ett hanterat programs resurser för fel sökning eller underhåll. Du har alltid skrivskyddad åtkomst till resurserna, men under en viss tids period kan du ha större åtkomst.
 

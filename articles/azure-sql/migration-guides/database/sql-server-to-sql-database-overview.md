@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357344"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368055"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Översikt över migrering: SQL Server till SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -166,7 +166,7 @@ Manuell installation av SQL Server funktioner med hög tillgänglighet som Alway
 Utöver den hög tillgänglighets arkitektur som ingår i SQL Database finns det också en funktion för [Automatisk redundans](../../database/auto-failover-group-overview.md) som gör att du kan hantera replikering och redundans av databaser i en hanterad instans till en annan region. 
 
 #### <a name="sql-agent-jobs"></a>SQL Agent-jobb
-SQL Agent-jobb stöds inte direkt i Azure SQL Database och måste distribueras till [Elastic Database jobb (för hands version)](../../database/job-automation-overview.md#elastic-database-jobs-preview).
+SQL Agent-jobb stöds inte direkt i Azure SQL Database och måste distribueras till [Elastic Database jobb (för hands version)](../../database/job-automation-overview.md).
 
 #### <a name="logins-and-groups"></a>Inloggningar och grupper
 Flytta SQL-inloggningar från käll SQL Server till Azure SQL Database med Database Migration Service (DMS) i offline-läge.  Använd bladet **valda inloggningar** i **migreringsguiden** för att migrera inloggningar till mål SQL Database. 

@@ -1,14 +1,14 @@
 ---
 title: Övervaka delegerade resurser i stor skala
 description: Lär dig hur du effektivt använder Azure Monitor loggar på ett skalbart sätt över de kund innehavare som du hanterar.
-ms.date: 02/02/2021
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8847c2e5ee4986d35ad676440720b150794003e8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f3a789c855f7b05d24cdacd0fb31ee7d6d3e188b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575914"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379241"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Övervaka delegerade resurser i stor skala
 
@@ -65,7 +65,6 @@ alertsmanagementresources
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Prova [aktivitets loggarna efter domän](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) arbets bok på GitHub.
 - Utforska den här [MVP-skapade exempel arbets boken](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks), som spårar patch-rapportering genom att [skicka frågor till uppdateringshantering loggar](../../automation/update-management/query-logs.md) över flera Log Analytics arbets ytor. 
-- Läs mer om [Azure Monitor](../../azure-monitor/index.yml).
-- Lär dig mer om [Azure Monitor loggar](../../azure-monitor/platform/data-platform-logs.md).
-- Lär dig mer om [hanterings upplevelser mellan flera innehavare](../concepts/cross-tenant-management-experience.md).
+- Lär dig mer om andra [hanterings upplevelser för flera innehavare](../concepts/cross-tenant-management-experience.md).

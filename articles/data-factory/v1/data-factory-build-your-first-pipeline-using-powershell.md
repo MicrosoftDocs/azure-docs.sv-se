@@ -1,22 +1,18 @@
 ---
 title: Bygg din första data fabrik (PowerShell)
 description: I den här självstudien skapar du ett exempel på en Azure Data Factory-pipeline med hjälp av Azure PowerShell.
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: bbeb87c6e96c75e62fe97db031ae926ce30b6a19
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 60fb3a8c1fed8e8005ba0b8f67865a7d39c754d5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496355"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392059"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Självstudier: Skapa din första Azure-datafabrik med Azure PowerShell
 > [!div class="op_single_selector"]
@@ -411,7 +407,7 @@ I den här artikeln har du skapat en pipeline med en transformeringsaktivitet (H
 
 ## <a name="see-also"></a>Se även
 
-| Avsnitt | Description |
+| Avsnitt | Beskrivning |
 |:--- |:--- |
 | [Cmdlet-referens för Data Factory](/powershell/module/az.datafactory) |Se den omfattande dokumentationen för Data Factory-cmdletar |
 | [Pipelines](data-factory-create-pipelines.md) |I den här artikeln beskriver vi pipelines och aktiviteter i Azure Data Factory och hur du kan använda dem för att konstruera datadrivna arbetsflöden från slutpunkt till slutpunkt för ditt scenario eller ditt företag. |

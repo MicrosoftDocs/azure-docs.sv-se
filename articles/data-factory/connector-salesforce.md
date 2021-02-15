@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från och till Salesforce
 description: Lär dig hur du kopierar data från Salesforce till mottagar data lager eller från käll data lager som stöds till Salesforce genom att använda en kopierings aktivitet i en Data Factory-pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 9c85b02ac0e83f3463c458629411989062adc4e6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: d820be66c70ae336361de7209722c4018ffd5077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430755"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392178"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopiera data från och till Salesforce med hjälp av Azure Data Factory
 

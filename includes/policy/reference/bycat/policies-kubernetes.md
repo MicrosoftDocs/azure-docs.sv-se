@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3cf911e670be5f85b749b366ef79d1d102c4c129
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 4206f4f1fbca61719b627af919d6676c06a7c37e
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99561622"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100100549"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
+|Namn<br /><sub>(Azure Portal)</sub> |Description |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Policy tillägg för Kubernetes-tjänsten (AKS) ska installeras och aktive ras i klustren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Azure Policy-tillägget för Kubernetes-tjänsten (AKS) utökar Gatekeeper v3, en webhook för en Admission Controller för Open Policy Agent (OPA) för att tillämpa i/skala-användning och skydd i klustren på ett centraliserat, konsekvent sätt. |Granskning, inaktive rad |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Både operativ system och data diskar i Azure Kubernetes service-kluster bör krypteras med Kundhanterade nycklar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Kryptering av operativ system och data diskar med Kundhanterade nycklar ger mer kontroll och större flexibilitet i hanteringen av nycklar. Detta är ett vanligt krav i många regler och standarder för efterlevnad av bransch. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |

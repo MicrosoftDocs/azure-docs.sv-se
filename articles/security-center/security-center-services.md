@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2021
 ms.author: memildin
-ms.openlocfilehash: e827178d8ccb0f7de8d32433d03502a7412d1139
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 7034d1b5f06fcbcead79d85df10042eee3581b0b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834058"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369364"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktions täckning för datorer
 
@@ -96,10 +96,8 @@ Information om när rekommendationer genereras för vart och ett av dessa skydd 
 | Trend Micro – djup säkerhet | Windows Server-familjen  | Inga | Ja |
 | Symantec v12.1.1100+| Windows Server-familjen  | Inga | Ja |
 | McAfee v10 + | Windows Server-familjen  | Inga | Ja |
-| McAfee v10 + | Linux Server-serien  | Inga | Ja **\*** |
-| Sophos v9 +| Linux Server-serien  | Inga | Ja  **\***  |
-
- **\*** Täcknings tillstånd och kompletterande data är för närvarande bara tillgängligt i Log Analytics arbets ytan som är kopplad till dina skyddade prenumerationer. Den visas inte i Azure Security Center portalen.
+| McAfee v10 + | Linux Server-serien  | Inga | Ja |
+| Sophos v9 +| Linux Server-serien  | Inga | Ja |
 
 > [!NOTE]
 > Identifiering av System Center Endpoint Protection (SCEP) på en virtuell dator med Windows Server 2008 R2 kräver SCEP för att installeras efter PowerShell (v 3.0 eller senare).

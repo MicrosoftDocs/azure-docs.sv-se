@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5734844d91e95fe7d4081e5986095934ea02b4fd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: e273b1c41a9c418bf0121e87e73ec59e65f2242e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584288"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102962"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Självstudie: Logga in användare och anropa Microsoft Graph från en iOS-eller macOS-app
 
@@ -71,7 +71,7 @@ Om du vill ladda ned en slutförd version av appen som du skapar i den här sjä
 
 ## <a name="register-your-application"></a>Registrera ditt program
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 1. Sök efter och välj **Azure Active Directory**.
 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.

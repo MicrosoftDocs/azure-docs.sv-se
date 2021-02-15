@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 05d6607c091361ecee3fcd5527025b6f9fb59051
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a7f82ec5a4ef918b1bc7ab0fd6813199c0a1d772
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573215"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366400"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Självstudie: skapa en hierarki med IoT Edge enheter (förhands granskning)
 
@@ -27,7 +27,7 @@ Du kan strukturera en hierarki med enheter så att endast det översta lagret ha
 
 Målet med den här självstudien är att skapa en hierarki med IoT Edge enheter som simulerar en produktions miljö. I slutet kommer du att distribuera den [simulerade temperatur sensor modulen](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) till en enhet med lägre lager utan Internet åtkomst genom att hämta behållar avbildningar via hierarkin.
 
-För att uppnå det här målet vägleder dig genom den här självstudien genom att skapa en hierarki med IoT Edge enheter, distribuera IoT Edge runtime-behållare till dina enheter och konfigurera enheterna lokalt. I de här självstudierna får du lära dig att
+För att uppnå det här målet vägleder dig genom den här självstudien genom att skapa en hierarki med IoT Edge enheter, distribuera IoT Edge runtime-behållare till dina enheter och konfigurera enheterna lokalt. I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
@@ -190,12 +190,6 @@ Varje enhet behöver en kopia av rot certifikat utfärdarens certifikat och en k
 Installera IoT Edge genom att följa dessa steg på båda enheterna.
 
 1. Installera den lagrings plats konfiguration som matchar enhetens operativ system.
-
-   * **Ubuntu Server 16,04**:
-
-     ```bash
-     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
-     ```
 
    * **Ubuntu Server 18,04**:
 
@@ -360,7 +354,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 1. Lägg till följande miljövariabler i din Edge Hub-modul:
 
-    | Name | Värde |
+    | Namn | Värde |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -373,7 +367,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 1. Under fliken miljövariabler anger du följande Miljövariabelns namn-värde-par:
 
-    | Name | Värde |
+    | Namn | Värde |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -532,7 +526,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 1. Lägg till följande miljövariabler i din Edge Hub-modul:
 
-    | Name | Värde |
+    | Namn | Värde |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -651,7 +645,7 @@ sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azur
    
 `azureiotedge-diagnostics`Värdet hämtas från behållar registret som är länkat till register-modulen. Den här självstudien har den angetts som standard till https://mcr.microsoft.com:
 
-| Name | Värde |
+| Namn | Värde |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 

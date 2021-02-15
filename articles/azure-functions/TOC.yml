@@ -138,6 +138,23 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Begrepp
   items:
+    - name: Bästa praxis
+      items:
+        - name: Prestanda och tillförlitlighet
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: Hantera anslutningar
+          href: manage-connections.md
+          displayName: best practices
+        - name: Överväganden för lagring
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: Fel hantering och funktions försök
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: Säkerhet
+          href: security-concepts.md
+          displayName: best practices
     - name: Jämföra CLR-versioner
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
@@ -212,12 +229,7 @@
       href: functions-diagnostics.md
     - name: Kostnader för förbrukningsplan
       href: functions-consumption-costs.md
-    - name: Saker att tänka på gällande prestanda
-      href: functions-best-practices.md
       displayName: best practice
-    - name: Överväganden för lagring
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: Functions-proxyservrar
       href: functions-proxies.md
     - name: Nätverksalternativ

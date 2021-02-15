@@ -3,18 +3,18 @@ title: 'ML Studio (klassisk): Azure AI Gallery – Azure'
 description: Dela och upptäck Analytics-resurser med mera i Azure AI Gallery. Lär dig av andra och gör dina egna bidrag till communityn.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486134"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519855"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Dela och identifiera resurser i Azure AI Gallery
 

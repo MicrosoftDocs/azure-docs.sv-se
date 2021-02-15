@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 186ded90b504420a2f315d054551d97821cf8465
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778195"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385055"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Läsa in tillgångar för en Azure CDN-slutpunkt i förväg
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,7 +37,7 @@ Den här självstudien vägleder dig genom förladdningen av cachelagrat innehå
 1. I [Azure Portal](https://portal.azure.com)bläddrar du till CDN-profilen som innehåller den slut punkt som du vill läsa in i förväg. Profil fönstret öppnas.
     
 2. Klicka på slut punkten i listan. Slut punkts fönstret öppnas.
-3. I fönstret CDN-slutpunkt väljer du **load** .
+3. I fönstret CDN-slutpunkt väljer du **load**.
    
     ![Fönstret CDN-slutpunkt](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
@@ -47,7 +47,7 @@ Den här självstudien vägleder dig genom förladdningen av cachelagrat innehå
 4. För **innehålls Sök väg** anger du den fullständiga sökvägen till varje till gång som du vill läsa in (till exempel `/pictures/kitten.png` ).
    
    > [!TIP]
-   > När du har påbörjat ange text visas text rutorna för **innehålls Sök vägen** så att du kan skapa en lista över flera till gångar. Om du vill ta bort till gångar från listan väljer du knappen med tre punkter (...) och väljer sedan **ta bort** .
+   > När du har påbörjat ange text visas text rutorna för **innehålls Sök vägen** så att du kan skapa en lista över flera till gångar. Om du vill ta bort till gångar från listan väljer du knappen med tre punkter (...) och väljer sedan **ta bort**.
    > 
    > Varje innehålls Sök väg måste vara en relativ URL som passar följande [reguljära uttryck](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
    > - Läs in en enda fil Sök väg: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ Den här självstudien vägleder dig genom förladdningen av cachelagrat innehå
    > 
    
     ![Knappen Läs in](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. När du är klar med att ange innehålls Sök vägar väljer du **load** .
+5. När du är klar med att ange innehålls Sök vägar väljer du **load**.
    
 
 > [!NOTE]
@@ -68,5 +68,5 @@ Den här självstudien vägleder dig genom förladdningen av cachelagrat innehå
 
 ## <a name="see-also"></a>Se även
 * [Rensa en Azure CDN-slutpunkt](cdn-purge-endpoint.md)
-* [Referens för Azure CDN REST API: för inläsning av innehåll på en slut punkt](/rest/api/cdn/endpoints/loadcontent)
-* [Referens för Azure CDN REST API: Rensa innehåll från en slut punkt](/rest/api/cdn/endpoints/purgecontent)
+* [Referens för Azure CDN REST API: för inläsning av innehåll på en slut punkt](/rest/api/cdn/cdn/endpoints/loadcontent)
+* [Referens för Azure CDN REST API: Rensa innehåll från en slut punkt](/rest/api/cdn/cdn/endpoints/purgecontent)

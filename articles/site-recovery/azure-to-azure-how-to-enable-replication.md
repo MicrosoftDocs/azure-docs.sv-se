@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 49929cfe0abc634dc4b704aba1c7b11a5d7dd777
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 427b471158e89b2b3ae4ea6477133f1e69247078
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383593"
+ms.locfileid: "100518852"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikera virtuella Azure-datorer till en annan Azure-region
 
@@ -54,7 +54,7 @@ Aktivera replikering. Den här proceduren förutsätter att den primära Azure-r
    - **Mål lagrings konton (den virtuella käll datorn använder inte hanterade diskar)**: som standard skapar Site Recovery ett nytt mål lagrings konto mimicking din käll konfiguration för VM-lagring. Om lagrings kontot redan finns återanvänds det.
    - **Replik-hanterade diskar (virtuell käll dator använder Managed Disks)**: Site Recovery skapar nya replikbaserade diskar i mål regionen för att spegla den virtuella käll datorns hanterade diskar med samma lagrings typ (standard eller Premium) som den virtuella käll datorn för den virtuella datorn.
    - **Cache-lagrings konton**: Site Recovery behöver ett extra lagrings konto som heter cache Storage i käll regionen. Alla ändringar som sker på de virtuella käll datorerna spåras och skickas till cache Storage-kontot innan de replikeras till mål platsen. Det här lagrings kontot bör vara standard.
-   - **Tillgänglighets uppsättningar för mål**: som standard skapar Site Recovery en ny tillgänglighets uppsättning i mål regionen med suffixet "Azure Site Recovery" i namnet, för virtuella datorer som ingår i en tillgänglighets uppsättning i käll regionen. Om tillgänglighets uppsättningen som skapats av Site Recovery redan finns återanvänds den.
+   - **Tillgänglighets uppsättningar för mål**: som standard skapar Site Recovery en ny tillgänglighets uppsättning i mål regionen med suffixet "ASR" i namnet, för virtuella datorer som ingår i en tillgänglighets uppsättning i käll regionen. Om tillgänglighets uppsättningen som skapats av Site Recovery redan finns återanvänds den.
      >[!NOTE]
      >När du konfigurerar mål tillgänglighets uppsättningarna konfigurerar du olika tillgänglighets uppsättningar för virtuella datorer med olika storlek. 
      >

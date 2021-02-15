@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024967"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388591"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Förbättra syntesen med verktyget för att skapa ljud innehåll
 
@@ -125,7 +125,7 @@ När du har granskat din ljud uppspelning och är nöjd med justeringen och just
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>Hur du lägger till/tar bort ljud innehålls användare?
 
-Om fler än en användare vill använda framställning av ljud innehåll kan du antingen dela ditt Azure-konto och lösen ord med användaren eller bevilja användar åtkomst till Azure-prenumerationen och tal resursen. Om du lägger till en användare i en Azure-prenumeration har användaren åtkomst till alla resurser i Azure-prenumerationen. Men om du bara lägger till en användare till en tal resurs får användaren bara åtkomst till tal resursen och kan inte komma åt andra resurser i Azure-prenumerationen. En användare med åtkomst till tal resursen kan använda ljud innehåll.
+Om fler än en användare vill använda framställning av ljud innehåll kan du bevilja användar åtkomst till Azure-prenumerationen och tal resursen. Om du lägger till en användare i en Azure-prenumeration har användaren åtkomst till alla resurser i Azure-prenumerationen. Men om du bara lägger till en användare till en tal resurs får användaren bara åtkomst till tal resursen och kan inte komma åt andra resurser i Azure-prenumerationen. En användare med åtkomst till tal resursen kan använda ljud innehåll.
 
 ### <a name="add-users-to-a-speech-resource"></a>Lägga till användare till en tal resurs
 
@@ -146,7 +146,7 @@ Användare som är i samma tal resurs ser var och en av de andra arbetar med att
 
 ### <a name="remove-users-from-a-speech-resource"></a>Ta bort användare från en tal resurs
 1. Sök efter **kognitiva tjänster** i Azure Portal väljer du den tal resurs som du vill ta bort användare från.
-2. Klicka på **Åtkomstkontroll (IAM)** . Klicka på fliken **roll tilldelningar** för att visa alla roll tilldelningar för den här tal resursen.
+2. Klicka på **Åtkomstkontroll (IAM)**. Klicka på fliken **roll tilldelningar** för att visa alla roll tilldelningar för den här tal resursen.
 3. Välj de användare som du vill ta bort och klicka på **ta bort**  >  **OK**.
     :::image source="media/audio-content-creation/remove-user.png" alt-text="Knappen Ta bort":::
 

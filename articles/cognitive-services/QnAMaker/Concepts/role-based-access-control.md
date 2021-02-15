@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: f43fa06cf93d383efcb0fe746de28ab143280e50
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1d434697802596a0200dc0cb5f1afe5bc67afef5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988024"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379717"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Samar beta med andra författare och redigerare
 
@@ -23,6 +23,9 @@ Alla behörigheter styrs av de behörigheter som har placerats på QnA Maker res
 Den här Azure RBAC-funktionen innehåller:
 * Azure Active Directory (AAD) är 100% bakåtkompatibel med nyckelbaserad autentisering för ägare och deltagare. Kunder kan använda antingen nyckelbaserad autentisering eller Azure RBAC-baserad autentisering i sina begär Anden.
 * Lägg snabbt till författare och redigerare i alla kunskaps banker i resursen eftersom kontrollen finns på resurs nivå, inte på kunskaps bas nivån.
+
+> [!NOTE]
+> När du är säker på att du vill lägga till en anpassad under domän för resursen. Den [anpassade under domänen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) ska vara närvarande som standard, men om den inte är det lägger du till den
 
 ## <a name="access-is-provided-by-a-defined-role"></a>Åtkomst tillhandahålls av en definierad roll
 

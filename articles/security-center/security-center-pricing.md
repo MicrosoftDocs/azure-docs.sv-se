@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2021
+ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: c12ad505777111499fb354709ce606189398458f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8d6cee5e8d9683ca88a71608595b7dfde8261b8d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391953"
+ms.locfileid: "100520535"
 ---
 # <a name="pricing-of-azure-security-center"></a>Prissättning för Azure Security Center
 Azure Security Center har en enhetlig säkerhetshantering och avancerat skydd mot hot för arbetsbelastningar som körs i Azure, lokalt och i andra moln. Den ger insyn och kontroll över hybrid moln arbets belastningar, aktiva försvar som minskar exponeringen för hot och intelligent identifiering som hjälper dig att hålla jämna steg med snabbt växande cyberhot-risker.
@@ -118,7 +118,18 @@ Om du redan har en licens för Microsoft Defender för slut punkt behöver du in
 Om du vill bekräfta rabatten kontaktar du Security Center support teamet och anger relevant arbetsyte-ID, region och licens information för varje relevant licens.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång? 
-Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration debiteras du inte för några servrar som har statusen "frigjord" när de befinner sig i det aktuella läget.
+Nej. När du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md) i en prenumeration debiteras du inte för datorer som har ett friallokerat energi tillstånd när de befinner sig i det aktuella läget. Datorer faktureras enligt det energi tillstånd som visas i följande tabell:
+
+| Stat        | Beskrivning                                                                                                                                      | Användning av instans fakturerad |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| Startar     | Den virtuella datorn startas.                                                                                                                               | Ej fakturerat            |
+| Körs      | Normalt arbets läge för en virtuell dator                                                                                                                    | Debiteras                |
+| Stoppas     | Detta är ett över gångs tillstånd. När det är slutfört visas det som stoppad.                                                                           | Debiteras                |
+| Stoppad      | Den virtuella datorn har stängts av från gäst operativ systemet eller använder avstängnings läge-API: er. Maskin varan är fortfarande allokerad till den virtuella datorn och den finns kvar på värden. | Fakturerat (1)            |
+| Frigör | Över gångs tillstånd. När den är klar visas den virtuella datorn som frigjord.                                                                             | Ej fakturerat (1)        |
+| Frigjord  | Den virtuella datorn har stoppats och tagits bort från värden.                                                                                  | Ej fakturerat            |
+
+(1) vissa Azure-resurser, till exempel diskar och nätverk, debiteras. Program varu licenser på instansen debiteras inte.
 
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Azure Virtual Machines som visar en fribelagd dator":::
 

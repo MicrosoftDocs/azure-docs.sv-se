@@ -2,19 +2,19 @@
 title: Så här distribuerar du verktyget formulär igenkänning exempel etiketting
 titleSuffix: Azure Cognitive Services
 description: Lär dig de olika sätt som du kan använda för att distribuera formulär tolkens exempel etikett verktyg som hjälper dig med övervakad inlärning.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 04/14/2020
-ms.author: pafarley
-ms.openlocfilehash: 084ca039e7f388a11e15b29c579606c6ed3086db
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 02/11/2021
+ms.author: lajanuar
+ms.openlocfilehash: 9535c1aa044fdce529d83c2e46a1b585e8e5f056
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790435"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370070"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Distribuera exempeletikettverktyget
 
@@ -32,7 +32,7 @@ Det snabbaste sättet att starta märkning av data är att köra verktyget för 
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Distribuera med Azure Container Instances (ACI)
 
-Innan vi börjar är det viktigt att Observera att det finns två sätt att distribuera exempel etikett verktyget till en Azure Container Instance (ACI). Båda alternativen används för att köra verktyget för etikettering med ACI: 
+Innan vi börjar är det viktigt att Observera att det finns två sätt att distribuera exempel etikett verktyget till en Azure Container Instance (ACI). Båda alternativen används för att köra verktyget för etikettering med ACI:
 
 * [Använda Azure Portal](#azure-portal)
 * [Använda Azure CLI](#azure-cli)
@@ -42,16 +42,16 @@ Innan vi börjar är det viktigt att Observera att det finns två sätt att dist
 Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal: 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/signin/index/).
-2. Välj **Skapa en resurs**. 
-3. Välj sedan **webbapp**. 
+2. Välj **Skapa en resurs**.
+3. Välj sedan **webbapp**.
 
    > [!div class="mx-imgBorder"]
-   > ![Välja webbapp](./media/quickstarts/formre-create-web-app.png)
-   
-4. Se först till att fliken **grundläggande** är markerad. Nu kommer du att behöva ange viss information: 
+   > ![Välja webbapp](./media/quickstarts/create-web-app.png)
+
+4. Se först till att fliken **grundläggande** är markerad. Nu kommer du att behöva ange viss information:
 
    > [!div class="mx-imgBorder"]
-   > ![Välj grunderna](./media/quickstarts/formre-select-basics.png)
+   > ![Välj grunderna](./media/quickstarts/select-basics.png)
    * Prenumeration – Välj en befintlig Azure-prenumeration
    * Resurs grupp – du kan återanvända en befintlig resurs grupp eller skapa en ny för projektet. Vi rekommenderar att du skapar en ny resurs grupp.
    * Namn – ge din webbapp ett namn. 
@@ -61,44 +61,46 @@ Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal:
    * Linux-plan – Välj en pris nivå/plan för din app service. 
 
    > [!div class="mx-imgBorder"]
-   > ![Konfigurera din webbapp](./media/quickstarts/formre-select-docker-linux.png)
+   > ![Konfigurera din webbapp](./media/quickstarts/select-docker.png)
 
-5. Välj sedan fliken **Docker** . 
+5. Välj sedan fliken **Docker** .
 
    > [!div class="mx-imgBorder"]
-   > ![Välj Docker](./media/quickstarts/formre-select-docker.png)
+   > ![Välj Docker](./media/quickstarts/select-docker.png)
 
 6. Nu ska vi konfigurera din Docker-behållare. Alla fält är obligatoriska om inget annat anges:
 
-    # <a name="v20"></a>[v2.0](#tab/v2-0)  
-   * Alternativ-Välj **en behållare**
-   * Avbildnings källa – Välj **privat register** 
-   * Server-URL – ange detta till `https://mcr.microsoft.com`
-   * Användar namn (valfritt) – skapa ett användar namn. 
-   * Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
-   * Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-   * Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
-   * Start kommando – ange detta till `./run.sh eula=accept`
+    # <a name="v20"></a>[v2.0](#tab/v2-0)
+
+* Alternativ-Välj **en behållare**
+* Avbildnings källa – Välj **privat register** 
+* Server-URL – ange detta till `https://mcr.microsoft.com`
+* Användar namn (valfritt) – skapa ett användar namn. 
+* Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
+* Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+* Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
+* Start kommando – ange detta till `./run.sh eula=accept`
 
     # <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1) 
-   * Alternativ-Välj **en behållare**
-   * Avbildnings källa – Välj **privat register** 
-   * Server-URL – ange detta till `https://mcr.microsoft.com`
-   * Användar namn (valfritt) – skapa ett användar namn. 
-   * Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
-   * Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
-   * Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
-   * Start kommando – ange detta till `./run.sh eula=accept`
-    
+
+* Alternativ-Välj **en behållare**
+* Avbildnings källa – Välj **privat register** 
+* Server-URL – ange detta till `https://mcr.microsoft.com`
+* Användar namn (valfritt) – skapa ett användar namn. 
+* Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
+* Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
+* Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
+* Start kommando – ange detta till `./run.sh eula=accept`
+
     ---
 
    > [!div class="mx-imgBorder"]
-   > ![Konfigurera Docker](./media/quickstarts/formre-configure-docker.png)
+   > ![Konfigurera Docker](./media/quickstarts/configure-docker.png)
 
 7. Klart! Välj sedan **Granska + skapa** och sedan **skapa** för att distribuera din webbapp. När du är klar kan du komma åt din webbapp på den URL som anges i **översikten** för din resurs.
 
 > [!NOTE]
-> När du skapar din webbapp kan du också konfigurera auktorisering/autentisering. Detta är inte nödvändigt för att komma igång. 
+> När du skapar din webbapp kan du också konfigurera auktorisering/autentisering. Detta är inte nödvändigt för att komma igång.
 
 > [!IMPORTANT]
 > Du kan behöva aktivera TLS för din webbapp för att kunna visa den på `https` adressen. Följ anvisningarna i [Aktivera en TLS-slutpunkt](../../container-instances/container-instances-container-group-ssl.md) för att konfigurera en sidvagn-behållare än aktiverar TLS/SSL för din webbapp.
@@ -114,10 +116,10 @@ Det finns några saker du behöver veta om det här kommandot:
 * Du måste ange var du vill skapa resursen. Ersätt `<region name>` med din önskade region för webb programmet. 
 * Det här kommandot accepterar EULA automatiskt.
 
-Kör det här kommandot från Azure CLI för att skapa en Web App-resurs för verktyget för etikettering: 
+Kör det här kommandot från Azure CLI för att skapa en Web App-resurs för verktyget för etikettering:
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 
-# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -131,8 +133,10 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
-``` 
-# <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)    
+`
+
+# [v2.1 preview](#tab/v2-1) 
+   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 

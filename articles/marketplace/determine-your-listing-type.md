@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
-ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247562"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099242"
 ---
 # <a name="introduction-to-listing-options"></a>Introduktion till List alternativ
 
@@ -38,7 +38,11 @@ Den här tabellen visar vilka List alternativ som är tillgängliga för varje e
 
 &#42; hämtnings alternativet Hämta nu finns det nu (kostnads fritt), ta med din egen licens (BYOL), prenumeration och användnings baserat pris. Mer information finns i [Hämta nu](#get-it-now).
 
-### <a name="free-trial"></a>Kostnadsfri utvärdering
+## <a name="changing-offer-type"></a>Ändrar erbjudande typ
+
+[!INCLUDE [change-offer-type](./includes/change-offer-type.md)]
+
+## <a name="free-trial"></a>Kostnadsfri utvärdering
 
 Använd den kommersiella Marketplace för att förbättra identifieringen och automatisera etableringen av din lösnings utvärderings upplevelse. Detta gör det möjligt för potentiella kunder att använda din program vara som en tjänst (SaaS), IaaS eller Microsoft app-upplevelse utan kostnad från 30 dagar till sex månader, beroende på typen av erbjudande.
 
@@ -46,18 +50,18 @@ Kunderna använder den _kostnads fria utvärderings_ knappen på ditt erbjudande
 
 För erbjudanden om virtuella datorer debiteras kunderna Azures infrastruktur kostnader för användning av erbjudandet under en utvärderings period. När utvärderings perioden har löpt ut debiteras kunderna automatiskt för den senaste planen de försökte baseras på standardpriser, såvida de inte annulleras före utvärderings periodens slut.
 
-### <a name="test-drive"></a>Test Drive
+## <a name="test-drive"></a>Test Drive
 
 Kunderna använder knappen _testa enhet_ på ditt erbjudandes List sida för att få åtkomst till en förkonfigurerad miljö för ett fast antal timmar. Mer information om test enheter finns i [Vad är en test enhet?](what-is-test-drive.md)
 
 > [!TIP]
 > En testen het skiljer sig från en kostnads fri utvärderings version. Du kan erbjuda en testenhet, en kostnads fri utvärderings version eller både och. De förser båda kunderna med din lösning under en fast period. Men en testenhet innehåller även en praktisk guidad rundtur i produktens viktiga funktioner och fördelar som visas i ett verkligt implementerings scenario.
 
-### <a name="contact-me"></a>Kontakta mig
+## <a name="contact-me"></a>Kontakta mig
 
 Enkel lista över ditt program eller din tjänst. Kunder använder knappen _kontakta mig_ på ditt erbjudandes List sida för att begära att du ansluter till dem om ditt erbjudande.
 
-### <a name="get-it-now"></a>Hämta nu
+## <a name="get-it-now"></a>Hämta nu
 
 Det här List alternativet innehåller transactable-erbjudanden (prenumerationer och användarbaserade priser), framförar egna licens erbjudanden och skaffar det nu (kostnads fritt). Transactable-erbjudanden säljs via den kommersiella marknads platsen. Microsoft ansvarar för fakturering och samlingar. Kunderna använder _knappen Hämta nu_ för att hämta erbjudandet.
 
@@ -92,28 +96,28 @@ Den här tabellen visar vilka erbjudande typer som har stöd för ytterligare pr
 
 <sup>2</sup> pris per timme och faktureras per månad.
 
-#### <a name="get-it-now-free"></a>Hämta nu (kostnads fritt)
+### <a name="get-it-now-free"></a>Hämta nu (kostnads fritt)
 
 Använd det här alternativet om du vill erbjuda ditt program kostnads fritt. Kunderna använder knappen _Hämta nu_ för att få ditt kostnads fria erbjudande.
 
 > [!NOTE]
 > Hämta nu (kostnads fria) erbjudanden är inte berättigade till förmåner för marknads plats förmåner för transactable-erbjudanden. Eftersom det inte finns någon transaktion via butik kategoriseras dessa som "utvärderings version". Se [marknads förmånerna](#marketplace-rewards) nedan.
 
-#### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
+### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
 
 Använd det här alternativet för att låta kunderna distribuera ditt erbjudande med en licens som köpts utanför den kommersiella marknads platsen. Det här alternativet är idealiskt för migrering lokalt till molnet. Kunder använder knappen _Hämta nu_ för att köpa ditt erbjudande med en licens som de förhandlat från dig.
 
 > [!NOTE]
 > BYOL-erbjudanden är inte berättigade till förmåner för Marketplace-förmåner för vissa erbjudanden. Eftersom dessa kräver att en kund förvärvar licensen från partnern och det inte finns någon transaktion via de kommersiella Marketplace-butik, kategoriseras dessa som "lista". Se [marknads förmånerna](#marketplace-rewards) nedan.
 
-#### <a name="subscription"></a>Prenumeration
+### <a name="subscription"></a>Prenumeration
 
 Du kan debitera en fast avgift för dessa erbjudande typer:
 
 - Azure Application (hanterad app) erbjuder support månads prenumerationer.
 - SaaS erbjuder stöd för både månatliga och årliga prenumerationer.
 
-#### <a name="usage-based-pricing"></a>Användnings-baserade priser
+### <a name="usage-based-pricing"></a>Användnings-baserade priser
 
 Följande erbjudande typer stöder användnings-baserade priser:
 

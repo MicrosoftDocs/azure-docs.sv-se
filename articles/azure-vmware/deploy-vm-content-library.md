@@ -3,12 +3,12 @@ title: Skapa ett innehålls bibliotek för att distribuera virtuella datorer i A
 description: Skapa ett innehålls bibliotek för att distribuera en virtuell dator i ett privat moln i Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 9e27529ee355ece62f12cc2e6de491dddb5d3f28
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550546"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382012"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Skapa ett innehålls bibliotek för att distribuera virtuella datorer i Azure VMware-lösningen
 
@@ -18,7 +18,7 @@ I den här artikeln går vi igenom proceduren för att skapa ett innehålls bibl
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Ett NSX-T logiskt växel segment och en hanterad DHCP-tjänst krävs för att slutföra den här självstudien.  Mer information finns i artikeln [Hantera DHCP i Azure VMware Solution](manage-dhcp.md) .
+Ett NSX-T-segment (logisk växel) och en hanterad DHCP-tjänst krävs för att slutföra den här självstudien.  Mer information finns i artikeln [Hantera DHCP i Azure VMware Solution](manage-dhcp.md) .
 
 ## <a name="create-a-content-library"></a>Skapa ett innehålls bibliotek
 

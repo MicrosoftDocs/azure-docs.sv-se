@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581762"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104220"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Anvisningar: Använd portalen för att skapa ett Azure AD-program och huvudnamn för tjänsten som kan komma åt resurser
 
@@ -75,7 +75,7 @@ Så här kontrollerar du dina prenumerations behörigheter:
 
 Nu ska vi gå direkt till att skapa identiteten. Om du stöter på ett problem kontrollerar du de [behörigheter som krävs](#permissions-required-for-registering-an-app) för att se till att ditt konto kan skapa identiteten.
 
-1. Logga in på ditt Azure-konto via <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på ditt Azure-konto via <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>.
 1. Välj **Azure Active Directory**.
 1. Välj **Appregistreringar**.
 1. Välj **ny registrering**.
@@ -181,7 +181,7 @@ Om du väljer att inte använda ett certifikat kan du skapa en ny program hemlig
 ## <a name="configure-access-policies-on-resources"></a>Konfigurera åtkomst principer för resurser
 Kom ihåg att du kan behöva konfigurera ytterligare behörigheter för resurser som ditt program behöver ha åtkomst till. Till exempel måste du också [Uppdatera ett nyckel valvs åtkomst principer](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) för att ge programmet åtkomst till nycklar, hemligheter eller certifikat.
 
-1. I <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>navigerar du till ditt nyckel valv och väljer **åtkomst principer**.
+1. I <a href="https://portal.azure.com/" target="_blank">Azure Portal</a>navigerar du till ditt nyckel valv och väljer **åtkomst principer**.
 1. Välj **Lägg till åtkomst princip** och välj sedan de nyckel-, hemlighet-och certifikat behörigheter som du vill ge ditt program.  Välj tjänstens huvud namn som du skapade tidigare.
 1. Välj **Lägg** till för att lägga till åtkomst principen och spara för att **Spara** ändringarna.
     ![Lägg till åtkomst princip](./media/howto-create-service-principal-portal/add-access-policy.png)

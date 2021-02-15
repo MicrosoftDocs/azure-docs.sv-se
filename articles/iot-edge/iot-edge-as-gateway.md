@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 83e8089073f7e7e7634ddf00f7276e12aaf645b0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536446"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371114"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Så kan en IoT Edge-enhet användas som gateway
 
@@ -37,7 +37,7 @@ Alla gateway-mönster ger följande fördelar:
 
 * **Analys vid gränsen** – Använd AI-tjänster lokalt för att bearbeta data som kommer från underordnade enheter utan att skicka full Fidelity telemetri till molnet. Hitta och reagera på insikter lokalt och skicka endast en delmängd data till IoT Hub.
 * **Isolering av underordnad enhet** – gateway-enheten kan förhindra att alla underordnade enheter exponeras för Internet. Den kan sitta mellan ett nätverk för drift teknik som inte har någon anslutning och ett IT-nätverk (IT-teknik) som ger åtkomst till webben. På samma sätt kan enheter som inte har möjlighet att ansluta till IoT Hub på egen hand ansluta till en gateway-enhet i stället.
-* **Anslutnings-multiplexering** – alla enheter som ansluter till IoT Hub via en IoT Edge Gateway använder samma underliggande anslutning.
+* **Anslutnings-multiplexering** – alla enheter som ansluter till IoT Hub via en IoT Edge Gateway kan använda samma underliggande anslutning. Den här funktionen för multiplexering kräver att IoT Edge Gateway använder AMQP som dess överordnade protokoll.
 * **Trafik utjämning** – IoT Edges enheten implementerar automatiskt exponentiella backoff om IoT Hub begränsar trafik, samtidigt som meddelandena sparas lokalt. Den här förmånen gör din lösning flexibel till toppar i trafik.
 * **Offline-support** – gateway-enheten lagrar meddelanden och dubbla uppdateringar som inte kan levereras till IoT Hub.
 
@@ -45,7 +45,9 @@ Alla gateway-mönster ger följande fördelar:
 
 I det transparenta Gateway-mönstret kan enheter som teoretiskt kan ansluta till IoT Hub ansluta till en gateway-enhet i stället. De underordnade enheterna har sina egna IoT Hub identiteter och ansluter med antingen MQTT-eller AMQP-protokoll. Gatewayen skickar helt enkelt kommunikation mellan enheterna och IoT Hub. Både enheter och användare som interagerar med dem via IoT Hub är inte medvetna om att en gateway är underställd deras kommunikation. Detta brist på medvetenhet innebär att gatewayen betraktas som *transparent*.
 
-<!-- 1.0.10 -->
+Mer information om hur IoT Edge Hub hanterar kommunikation mellan underordnade enheter och molnet finns i [förstå Azure IoT Edge Runtime och dess arkitektur](iot-edge-runtime.md).
+
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
 IoT Edge enheter får inte ligga bakom en IoT Edge Gateway.
@@ -73,6 +75,11 @@ Du deklarerar transparenta Gateway-relationer i IoT Hub genom att ange IoT Edge 
 
 Alla enheter i ett scenario med transparent Gateway behöver moln identiteter så att de kan autentisera till IoT Hub. När du skapar eller uppdaterar en enhets identitet kan du ange enhetens överordnade eller underordnade enheter. Den här konfigurationen tillåter att den överordnade gatewayenheten hanterar autentisering för sina underordnade enheter.
 
+>[!NOTE]
+>Att ställa in den överordnade enheten i IoT Hub används som ett valfritt steg för underordnade enheter som använder symmetrisk nyckel autentisering. Men från och med version 1.1.0 måste varje underordnad enhet tilldelas till en överordnad enhet.
+>
+>Du kan konfigurera IoT Edge Hub så att den går tillbaka till föregående beteende genom att ställa in miljövariabeln **AuthenticationMode** på värdet **CloudAndScope**.
+
 Underordnade enheter kan bara ha en överordnad. Varje överordnad kan ha upp till 100 underordnade.
 
 <!-- 1.2.0 -->
@@ -82,7 +89,7 @@ IoT Edge-enheter kan vara både överordnade och underordnade i transparent Gate
 
 #### <a name="gateway-discovery"></a>Gateway-identifiering
 
-En underordnad enhet måste kunna hitta sin överordnade enhet i det lokala nätverket. Konfigurera Gateway-enheter med ett **värdnamn** , antingen ett fullständigt kvalificerat domän namn (FQDN) eller en IP-adress som de underordnade enheterna ska använda för att hitta den.
+En underordnad enhet måste kunna hitta sin överordnade enhet i det lokala nätverket. Konfigurera Gateway-enheter med ett **värdnamn**, antingen ett fullständigt kvalificerat domän namn (FQDN) eller en IP-adress som de underordnade enheterna ska använda för att hitta den.
 
 På underordnade IoT-enheter använder du parametern **gatewayHostname** i anslutnings strängen för att peka på den överordnade enheten.
 
@@ -106,10 +113,10 @@ Alla IoT Hub primitiver som fungerar med IoT Edges pipeline-pipeline stöder äv
 
 Använd följande tabell för att se hur olika IoT Hub funktioner stöds för enheter som jämförs med enheter bakom gatewayer.
 
-<!-- 1.0.10 -->
+<!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
 
-| Kapacitet | IoT-enhet | IoT bakom en gateway |
+| Funktion | IoT-enhet | IoT bakom en gateway |
 | ---------- | ---------- | -------------------- |
 | [D2C-meddelanden (enhet till moln)](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Ja – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – underordnad IoT-D2C](./media/iot-edge-as-gateway/check-yes.png) |
 | [Meddelanden från moln till enhet (C2D)](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Ja – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – underordnad IoT-C2D](./media/iot-edge-as-gateway/check-yes.png) |
@@ -122,7 +129,7 @@ Använd följande tabell för att se hur olika IoT Hub funktioner stöds för en
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
 
-| Kapacitet | IoT-enhet | IoT bakom en gateway | IoT Edge-enhet | IoT Edge bakom en gateway |
+| Funktion | IoT-enhet | IoT bakom en gateway | IoT Edge-enhet | IoT Edge bakom en gateway |
 | ---------- | ---------- | --------------------------- | --------------- | -------------------------------- |
 | [D2C-meddelanden (enhet till moln)](../iot-hub/iot-hub-devguide-messages-d2c.md) |  ![Ja – IoT D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – underordnad IoT-D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja-IoT Edge D2C](./media/iot-edge-as-gateway/check-yes.png) | ![Ja-underordnad IoT Edge D2C](./media/iot-edge-as-gateway/check-yes.png) |
 | [Meddelanden från moln till enhet (C2D)](../iot-hub/iot-hub-devguide-messages-c2d.md) | ![Ja – IoT C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ja – underordnad IoT-C2D](./media/iot-edge-as-gateway/check-yes.png) | ![Ingen-IoT Edge C2D](./media/iot-edge-as-gateway/crossout-no.png) | ![Ingen-IoT Edge underordnade C2D](./media/iot-edge-as-gateway/crossout-no.png) |
@@ -134,7 +141,7 @@ Använd följande tabell för att se hur olika IoT Hub funktioner stöds för en
 
 **Behållar avbildningar** kan laddas ned, lagras och levereras från överordnade enheter till underordnade enheter.
 
-**Blobbar** , inklusive stöd paket och loggar, kan överföras från underordnade enheter till överordnade enheter.
+**Blobbar**, inklusive stöd paket och loggar, kan överföras från underordnade enheter till överordnade enheter.
 
 ::: moniker-end
 
@@ -164,7 +171,7 @@ Identitets översättning ger fördelarna med protokoll översättning och ger o
 
 I följande tabell förklaras hur IoT Hub funktioner utökas till underordnade enheter i båda mönstren för översättnings Gateway.
 
-| Kapacitet | Protokoll Översättning | Identitets Översättning |
+| Funktion | Protokoll Översättning | Identitets Översättning |
 | ---------- | -------------------- | -------------------- |
 | Identiteter lagrade i IoT Hub identitets registret | Endast gateway-enhetens identitet | Identiteter för alla anslutna enheter |
 | Enhetstvilling | Endast gatewayen har en enhet och modul är dubbla | Varje ansluten enhet har sin egen enhet |

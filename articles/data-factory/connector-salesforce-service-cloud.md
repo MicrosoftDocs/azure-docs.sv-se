@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från och till Salesforce-tjänstemoln
 description: Lär dig hur du kopierar data från Salesforce-tjänstemolnet till mottagar data lager eller från käll data lager som stöds till Salesforce-tjänstens moln genom att använda en kopierings aktivitet i en Data Factory-pipeline.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4075552e2070eba653fba54c7db1d021016644c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430772"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369772"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Kopiera data från och till Salesforce-tjänstemolnet med hjälp av Azure Data Factory
 

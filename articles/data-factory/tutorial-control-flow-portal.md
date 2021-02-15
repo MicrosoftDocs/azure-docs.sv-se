@@ -1,22 +1,19 @@
 ---
 title: Branchning och länkning av aktiviteter i en pipeline med hjälp av Azure Portal
 description: Lär dig hur du styr flödet av data i Azure Data Factory pipelinen med hjälp av Azure Portal.
-services: data-factory
 author: dcstwh
 ms.author: weetok
-manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: dc82cfdc4e5a063e7c5cb833b617da58023d1ba6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9d8d9af4892001ff1f8f60a92f28aedad14c17cf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497460"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378612"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Branchning och länkning av aktiviteter i en Azure Data Factory pipelinen med hjälp av Azure Portal
 

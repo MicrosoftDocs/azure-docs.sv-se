@@ -4,13 +4,13 @@ description: Lär dig hur du replikerar virtuella Azure-datorer som körs i när
 author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
-ms.openlocfilehash: 7ac836992db33c6212fd009b914b30b7221249d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.date: 02/11/2021
+ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745591"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380780"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikera virtuella Azure-datorer som körs i närhetsplaceringsgrupper till en annan region
 
@@ -25,21 +25,72 @@ I ett typiskt scenario kan du ha dina virtuella datorer som körs i en närhets 
 ## <a name="considerations"></a>Överväganden
 
 - Det bästa arbetet är att redundansväxla/redundansväxla de virtuella datorerna till en närhets placerings grupp. Men om den virtuella datorn inte kan hamna i närheten vid växling vid fel/återställning efter fel, kommer redundansväxlingen/failback fortfarande att ske, och virtuella datorer skapas utanför en närhets placerings grupp.
--  Om en tillgänglighets uppsättning fästs på en närhets placerings grupp och under redundansväxling/failback-datorer i tillgänglighets uppsättningen har en tilldelnings begränsning skapas de virtuella datorerna utanför både tillgänglighets uppsättningen och närhets placerings gruppen.
--  Site Recovery för närhets placerings grupper stöds inte för ohanterade diskar.
+- Om en tillgänglighets uppsättning fästs på en närhets placerings grupp och under redundansväxling/failback-datorer i tillgänglighets uppsättningen har en tilldelnings begränsning skapas de virtuella datorerna utanför både tillgänglighets uppsättningen och närhets placerings gruppen.
+- Site Recovery för närhets placerings grupper stöds inte för ohanterade diskar.
 
 > [!NOTE]
 > Azure Site Recovery har inte stöd för återställning efter fel från hanterade diskar för Hyper-V till Azure-scenarier. Därför stöds inte failback från närhets placerings gruppen i Azure till Hyper-V.
 
-## <a name="prerequisites"></a>Krav
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>Konfigurera katastrof återställning för virtuella datorer i närhets placerings grupper via portalen
+
+### <a name="azure-to-azure-via-portal"></a>Azure till Azure via portalen
+
+Du kan välja att aktivera replikering för en virtuell dator via sidan för haveri beredskap för virtuella datorer eller genom att gå till ett förskapat valv och navigera till Site Recovery avsnittet och sedan aktivera replikering. Nu ska vi titta på hur Site Recovery kan konfigureras för virtuella datorer i en PPG genom båda metoderna:
+
+- Så här väljer du PPG i DR-regionen samtidigt som du aktiverar replikering via det virtuella IaaS-bladet för VM:
+  1. Gå till den virtuella datorn. På bladet till vänster, under "åtgärder" väljer du "haveri beredskap"
+  2. På fliken "grunder" väljer du den DR-region som du vill replikera den virtuella datorn till. Gå till avancerade inställningar
+  3. Här kan du se placerings gruppen för den virtuella datorn och välja en PPG i DR-regionen. Site Recovery ger dig också möjlighet att använda en ny närhets grupp som skapas åt dig om du väljer att använda det här standard alternativet. Du är kostnads fri att välja önskad närhets grupp och sedan gå till "granska + starta replikering" och slutligen aktivera replikering.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="Aktivera replikering.":::
+
+- Så här väljer du PPG i DR-regionen när du aktiverar replikering via valv bladet:
+  1. Gå till Recovery Services valvet och gå till fliken Site Recovery
+  2. Klicka på "+ Aktivera Site Recovery" och välj sedan ' 1: Aktivera replikering ' under Azure Virtual Machines (som du vill replikera en virtuell Azure-dator)
+  3. Fyll i de obligatoriska fälten på fliken Källa och klicka på nästa
+  4. Välj listan över virtuella datorer som du vill aktivera replikering för på fliken "virtuella datorer" och klicka på "Nästa"
+  5. Här kan du se alternativet för att välja en PPG i DR-regionen. Site Recovery ger dig också möjlighet att använda en ny PPG som skapas för dig om du väljer att använda det här standard alternativet. Du kan välja de PPG som du vill använda och sedan fortsätta att aktivera replikering.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="Aktivera replikering via valv.":::
+
+Observera att du enkelt kan uppdatera PPG-valet i DR-regionen när replikering har Aktiver ATS för den virtuella datorn.
+
+1. Gå till den virtuella datorn och på bladet till vänster, under "åtgärder" väljer du haveri beredskap
+2. Gå till bladet beräkning och nätverk och klicka på Redigera överst på sidan
+3. Du kan se alternativen för att redigera flera mål inställningar, inklusive mål PPG. Välj den PPG som du vill att den virtuella datorn ska redundansväxla till och klicka på Spara.
+
+### <a name="vmware-to-azure-via-portal"></a>VMware till Azure via portalen
+
+Närhets placerings gruppen för den virtuella mål datorn kan konfigureras när replikeringen för den virtuella datorn har Aktiver ATS. Se till att du måste skapa PPG i mål regionen separat enligt ditt krav. Därefter kan du enkelt uppdatera PPG-valet i DR-regionen när replikering har Aktiver ATS för den virtuella datorn.
+
+1. Välj den virtuella datorn från valvet och välj haveri beredskap under "åtgärder" på bladet till vänster.
+2. Gå till bladet beräkning och nätverk och klicka på Redigera överst på sidan
+3. Du kan se alternativen för att redigera flera mål inställningar, inklusive mål PPG. Välj den PPG som du vill att den virtuella datorn ska redundansväxla till och klicka på Spara.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="Uppdatera PPG V2A":::
+
+### <a name="hyper-v-to-azure-via-portal"></a>Hyper-V till Azure via portalen
+
+Närhets placerings gruppen för den virtuella mål datorn kan konfigureras när replikeringen för den virtuella datorn har Aktiver ATS. Se till att du måste skapa PPG i mål regionen separat enligt ditt krav. Därefter kan du enkelt uppdatera PPG-valet i DR-regionen när replikering har Aktiver ATS för den virtuella datorn.
+
+1. Välj den virtuella datorn från valvet och välj haveri beredskap under "åtgärder" på bladet till vänster.
+2. Gå till bladet beräkning och nätverk och klicka på Redigera överst på sidan
+3. Du kan se alternativen för att redigera flera mål inställningar, inklusive mål PPG. Välj den PPG som du vill att den virtuella datorn ska redundansväxla till och klicka på Spara.
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="Uppdatera PPG H2A":::
+
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>Konfigurera katastrof återställning för virtuella datorer i närhets placerings grupper via PowerShell
+
+### <a name="prerequisites"></a>Förutsättningar 
 
 1. Kontrol lera att du har modulen Azure PowerShell AZ. Om du behöver installera eller uppgradera Azure PowerShell, följ den här [guiden för att installera och konfigurera Azure PowerShell](/powershell/azure/install-az-ps).
 2. Den minsta Azure PowerShell AZ-versionen ska vara 4.1.0. Om du vill kontrol lera den aktuella versionen använder du kommandot nedan.
+
     ```
     Get-InstalledModule -Name Az
     ```
 
-## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Konfigurera Site Recovery för Virtual Machines i närhets placerings grupp
+### <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Konfigurera Site Recovery för Virtual Machines i närhets placerings grupp
 
 > [!NOTE]
 > Kontrol lera att du har det unika ID: t för målets närhets placering. Om du skapar en ny närhets grupp, kontrollerar du kommandot [här](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) och om du använder en befintlig närhets placerings grupp använder du kommandot [här](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups).
@@ -165,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. Om du vill inaktivera replikering följer du stegen [här](./azure-to-azure-powershell.md#disable-replication).
 
-### <a name="vmware-to-azure"></a>VMware till Azure
+### <a name="vmware-to-azure-via-powershell"></a>VMware till Azure via PowerShell
 
 1. Se till att [förbereda dina lokala VMware-servrar](./vmware-azure-tutorial-prepare-on-premises.md) för haveri beredskap till Azure.
 2. Logga in på ditt konto och Ställ in din prenumeration enligt vad som anges [här](./vmware-azure-disaster-recovery-powershell.md#log-into-azure).
@@ -203,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. [Kör](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover) ett redundanstest.
 11. Redundansväxla till Azure med hjälp av [de här](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) stegen.
 
-### <a name="hyper-v-to-azure"></a>Hyper-V till Azure
+### <a name="hyper-v-to-azure-via-powershell"></a>Hyper-V till Azure via PowerShell
 
 1. Se till att [förbereda dina lokala Hyper-V-servrar](./hyper-v-prepare-on-premises-tutorial.md) för haveri beredskap till Azure.
 2. [Logga in](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account) på Azure.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008562"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094006"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Vanliga frågor och svar om Azure App Service on Linux
 
@@ -110,7 +110,7 @@ Ja, under en Git-distribution ska kudu identifiera att du distribuerar ett PHP-p
 
 **Jag använder min egen anpassade behållare. Jag vill att plattformen ska montera en SMB-resurs till `/home/` katalogen.**
 
-Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` inställningen är **ospecificerad** eller har värdet *True*, `/home/` kommer katalogen **att delas** mellan skalnings instanser och filer som skrivs **behålls** över omstarter. Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` du anger *false* inaktive ras monteringen.
+Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` inställningen är **ospecificerad** eller är inställd på *falskt*, `/home/` **delas katalogen inte** mellan skalnings instanser och filer som skrivs **behålls inte** i omstarter. Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` du anger *True* aktive ras monteringen.
 
 **Min anpassade behållare tar lång tid att starta och plattformen startar om behållaren innan den har startats.**
 

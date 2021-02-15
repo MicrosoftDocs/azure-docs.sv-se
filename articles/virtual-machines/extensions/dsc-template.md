@@ -2,8 +2,7 @@
 title: Önskat tillstånds konfigurations tillägg med Azure Resource Manager mallar
 description: Lär dig mer om Resource Manager-mallen för Desired State Configuration (DSC)-tillägget i Azure.
 services: virtual-machines-windows
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -12,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 10/05/2018
-ms.author: robreed
-ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/09/2021
+ms.author: magoedte
+ms.openlocfilehash: 4e9133697cda4a46a895c7e41eff6d17ccd01e4a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735698"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093666"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Önskat tillstånds konfigurations tillägg med Azure Resource Manager mallar
 
@@ -37,7 +36,7 @@ Mer information finns i [VirtualMachineExtension-klass](/dotnet/api/microsoft.az
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "Microsoft.Powershell.DSC",
+  "name": "[concat(parameters('VMName'), '/Microsoft.Powershell.DSC')]",
   "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -178,7 +177,7 @@ En lista över de argument som är tillgängliga för standard konfigurations sk
 
 ## <a name="details"></a>Information
 
-| Egenskapsnamn | Typ | Beskrivning |
+| Egenskapsnamn | Typ | Description |
 | --- | --- | --- |
 | Settings. wmfVersion |sträng |Anger den version av Windows Management Framework (WMF) som ska installeras på den virtuella datorn. Om du anger den här egenskapen till **senaste** installeras den senaste versionen av WMF. För närvarande är de enda möjliga värdena för den här egenskapen **4,0**, **5,0**, **5,1** och **senaste**. Dessa möjliga värden är beroende av uppdateringar. Standardvärdet är **senaste**. |
 | settings.configuration. URL |sträng |Anger den URL-plats från vilken du vill ladda ned din DSC-konfiguration. zip-fil. Om den angivna URL: en kräver en SAS-token för åtkomst, ställer du in egenskapen **protectedSettings.configurationUrlSasToken** på värdet för din SAS-token. Den här egenskapen krävs om **settings.configuration. script** eller **settings.configuration. Function** definieras. Om inget värde anges för dessa egenskaper anropar tillägget standard konfigurations skriptet för att ange plats Configuration Manager (LCM) metadata och argument ska anges. |
@@ -197,7 +196,7 @@ En lista över de argument som är tillgängliga för standard konfigurations sk
 Mer information om följande värden finns i [grundläggande inställningar för lokala Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Du kan använda standard konfigurations skriptet för DSC-tillägget för att konfigurera LCM-egenskaperna som visas i följande tabell.
 
-| Egenskapsnamn | Typ | Beskrivning |
+| Egenskapsnamn | Typ | Description |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Nödvändig egenskap. Anger den nyckel som används för en nod för att registrera med Azure Automation tjänsten som lösen ord för ett PowerShell-Credential-objekt. Det här värdet kan identifieras automatiskt med hjälp av metoden **listnycklar** mot Automation-kontot.  Se [exemplet](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |sträng |Nödvändig egenskap. Anger URL: en för den Automation-slutpunkt där noden försöker registrera sig. Det här värdet kan identifieras automatiskt med hjälp av **referens** metoden mot Automation-kontot. |

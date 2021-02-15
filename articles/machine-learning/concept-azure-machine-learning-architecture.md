@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540194"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091677"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hur Azure Machine Learning fungerar: arkitektur och koncept
 
@@ -47,28 +47,15 @@ En arbets yta innehåller andra Azure-resurser som används av arbets ytan:
 
 Du kan dela en arbets yta med andra.
 
-### <a name="create-workspace"></a>Skapa arbetsyta
-
-I följande diagram visas arbets ytan skapa arbets yta.
-
-* Du loggar in på Azure AD från någon av de Azure Machine Learning klienter som stöds (Azure CLI, python SDK, Azure Portal) och begär rätt Azure Resource Manager-token.
-* Du anropar Azure Resource Manager för att skapa arbets ytan. 
-* Azure Resource Manager kontaktar Azure Machine Learning Resource Provider för att etablera arbets ytan.
-* Om du inte anger befintliga resurser skapas ytterligare nödvändiga resurser i din prenumeration..
-
-Du kan också etablera andra beräknings mål som är kopplade till en arbets yta (t. ex. Azure Kubernetes service eller VM) efter behov.
-
-[![Skapa arbets ytans arbets flöde](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
-
 ## <a name="computes"></a>Beräknar
 
 <a name="compute-targets"></a> Ett [beräknings mål](concept-compute-target.md) är en dator eller en uppsättning datorer som du använder för att köra ditt utbildnings skript eller vara värd för tjänst distributionen. Du kan använda din lokala dator eller en fjärran sluten beräknings resurs som ett beräknings mål.  Med beräknings mål kan du börja träna på din lokala dator och sedan skala ut till molnet utan att ändra ditt utbildnings skript.
 
 Azure Machine Learning introducerar två fullständigt hanterade molnbaserade virtuella datorer (VM) som har kon figurer ATS för Machine Learning-aktiviteter:
 
-* <a name="compute-instance"></a>**Beräknings instans** : en beräknings instans är en virtuell dator som innehåller flera verktyg och miljöer installerade för Machine Learning. Den primära användningen av en beräknings instans är för din utvecklings arbets Station.  Du kan börja köra exempel antecknings böcker utan att behöva konfigurera några inställningar. En beräknings instans kan också användas som beräknings mål för utbildnings-och inferencing-jobb.
+* <a name="compute-instance"></a>**Beräknings instans**: en beräknings instans är en virtuell dator som innehåller flera verktyg och miljöer installerade för Machine Learning. Den primära användningen av en beräknings instans är för din utvecklings arbets Station.  Du kan börja köra exempel antecknings böcker utan att behöva konfigurera några inställningar. En beräknings instans kan också användas som beräknings mål för utbildnings-och inferencing-jobb.
 
-* **Beräknings kluster** : beräknings kluster är ett kluster med virtuella datorer med skalnings funktioner för flera noder. Compute-kluster passar bättre för beräknings mål för stora jobb och produktion.  Klustret skalas upp automatiskt när ett jobb skickas.  Använd som inlärnings mål eller för utveckling och testning av distribution.
+* **Beräknings kluster**: beräknings kluster är ett kluster med virtuella datorer med skalnings funktioner för flera noder. Compute-kluster passar bättre för beräknings mål för stora jobb och produktion.  Klustret skalas upp automatiskt när ett jobb skickas.  Använd som inlärnings mål eller för utveckling och testning av distribution.
 
 Mer information om inlärnings mål finns i [träna beräknings mål](concept-compute-target.md#train).  Mer information om beräknings mål för distribution finns i [distributions mål](concept-compute-target.md#deploy).
 
@@ -126,10 +113,6 @@ Du kan till exempel köra konfigurationer i [Konfigurera en tränings körning](
 [Arbets yta](#workspace)  >  [Experiment](#experiments)  >  [Kör](#runs)  >  **Ögonblicks bild**
 
 När du skickar en körning komprimerar Azure Machine Learning den katalog som innehåller skriptet som en zip-fil och skickar den till beräknings målet. Zip-filen extraheras sedan och skriptet körs där. Azure Machine Learning lagrar också zip-filen som en ögonblicks bild som en del av körnings posten. Alla som har åtkomst till arbets ytan kan bläddra i en körnings post och ladda ned ögonblicks bilden.
-
-Följande diagram visar arbets flödet för kod ögonblicks bilder.
-
-[![Arbets flöde för kod ögonblicks bild](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
 
 ### <a name="logging"></a>Loggning
 

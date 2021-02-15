@@ -1,22 +1,18 @@
 ---
 title: Lägg till fel tolerans i Azure Data Factory kopierings aktivitet genom att hoppa över inkompatibla rader
 description: Lär dig hur du lägger till fel tolerans i Azure Data Factory kopierings aktivitet genom att hoppa över inkompatibla rader under kopiering
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452293"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377184"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Lägg till fel tolerans i kopierings aktiviteten genom att hoppa över inkompatibla rader
 
@@ -71,10 +67,10 @@ I följande exempel visas en JSON-definition som hoppar över inkompatibla rader
 
 | Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
 | --- | --- | --- | --- |
-| **enableSkipIncompatibleRow** | Aktivera hoppa över inkompatibla rader under kopian eller inte. | Sant<br/>False (standard) | No |
-| **redirectIncompatibleRowSettings** | En grupp egenskaper som kan anges när du vill logga de inkompatibla raderna. | &nbsp; | No |
-| **linkedServiceName** | Den länkade tjänsten med Azure Storage för att lagra loggen som innehåller de överhoppade raderna. | Namnet på en länkad [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) -eller [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -tjänst som refererar till den lagrings instans som du vill använda för att lagra logg filen. | No |
-| **sökväg** | Sökvägen till logg filen som innehåller de överhoppade raderna. | Ange den Blob Storage-sökväg som du vill använda för att logga inkompatibla data. Om du inte anger en sökväg skapar tjänsten en behållare åt dig. | No |
+| **enableSkipIncompatibleRow** | Aktivera hoppa över inkompatibla rader under kopian eller inte. | Sant<br/>False (standard) | Inga |
+| **redirectIncompatibleRowSettings** | En grupp egenskaper som kan anges när du vill logga de inkompatibla raderna. | &nbsp; | Inga |
+| **linkedServiceName** | Den länkade tjänsten med Azure Storage för att lagra loggen som innehåller de överhoppade raderna. | Namnet på en länkad [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) -eller [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -tjänst som refererar till den lagrings instans som du vill använda för att lagra logg filen. | Inga |
+| **sökväg** | Sökvägen till logg filen som innehåller de överhoppade raderna. | Ange den Blob Storage-sökväg som du vill använda för att logga inkompatibla data. Om du inte anger en sökväg skapar tjänsten en behållare åt dig. | Inga |
 
 ## <a name="monitoring"></a>Övervakning
 När körningen av kopierings aktiviteten är klar kan du se antalet rader som hoppats över i avsnittet övervakning:

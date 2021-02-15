@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a35bafd2c5dc78f0d9d1debbf21babb6279545
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a204db8453ec8126e1aa9033e10f739a6f8a0d43
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740099"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095145"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Använd moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)
 
@@ -28,7 +28,7 @@ Tänk på det här exemplet: contoso har anlitat personer över geografiska omr�
 
 ## <a name="how-this-feature-works"></a>Så här fungerar funktionen
 
-Skapa en ny Microsoft 365 eller säkerhets grupp med egenskapen "isAssignableToRole" inställd på "true". Du kan också aktivera den här egenskapen när du skapar en grupp i Azure Portal genom att aktivera **Azure AD-roller kan tilldelas gruppen**. Oavsett hur du vill kan du tilldela gruppen till en eller flera Azure AD-roller på samma sätt som du tilldelar roller till användare. Högst 200 roll tilldelnings bara grupper kan skapas i en enda Azure AD-organisation (klient).
+Skapa en ny Microsoft 365 eller säkerhets grupp med egenskapen "isAssignableToRole" inställd på "true". Du kan också aktivera den här egenskapen när du skapar en grupp i Azure Portal genom att aktivera **Azure AD-roller kan tilldelas gruppen**. Oavsett hur du vill kan du tilldela gruppen till en eller flera Azure AD-roller på samma sätt som du tilldelar roller till användare. Högst 250 roll tilldelnings bara grupper kan skapas i en enda Azure AD-organisation (klient).
 
 Om du inte vill att medlemmar i gruppen ska ha ständig åtkomst till rollen kan du använda Azure AD Privileged Identity Management. Tilldela en grupp som en berättigad medlem i en Azure AD-roll. Varje medlem i gruppen kan sedan ha tilldelningen aktive rad för den roll som gruppen är tilldelad till. De kan sedan aktivera sin roll tilldelning för en fast tids period.
 
