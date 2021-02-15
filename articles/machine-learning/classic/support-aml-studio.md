@@ -3,21 +3,21 @@ title: ML Studio (klassisk) självstudie support & utbildning – Azure
 description: Få support och utbildning och ge feedback för Azure Machine Learning Studio (klassisk)
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: c49437db6bc3651d27181ef8e8f5248b5785e089
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 606229f8baf1016938ed531682d11297d14145fd
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325661"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517475"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Få support och utbildning för Azure Machine Learning Studio (klassisk)
 
-**gäller för:** ![ Grön bock markering. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiskt) ![ X som anger Nej. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Grön bock markering. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiskt) ![ X som anger Nej.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -38,10 +38,10 @@ Du kan **Skicka begär Anden** om ytterligare inlärnings material med hjälp av
 
 Kolla ut följande support resurser:
 
-+ **Teknisk support för Azure-kunder** : [skicka och hantera support förfrågningar](../../azure-portal/supportability/how-to-create-azure-support-request.md) via Azure Portal.
++ **Teknisk support för Azure-kunder**: [skicka och hantera support förfrågningar](../../azure-portal/supportability/how-to-create-azure-support-request.md) via Azure Portal.
 
-+ **Användar forum** : Ställ frågor, besvara frågor och Anslut till andra användare i det [Azure Machine Learning Studio (klassiska) support forum](/answers/topics/azure-machine-learning.html).
++ **Användar forum**: Ställ frågor, besvara frågor och Anslut till andra användare i det [Azure Machine Learning Studio (klassiska) support forum](/answers/topics/azure-machine-learning.html).
 
-+ **Stack Overflow** : besök Azure Machine Learning community på [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) taggade med "Azure-Machine-Learning".
++ **Stack Overflow**: besök Azure Machine Learning community på [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) taggade med "Azure-Machine-Learning".
 
 + **Dela produkt förslag** och funktions förfrågningar i vår [Azure Machine Learning feedback-kanal](https://feedback.azure.com/forums/257792-machine-learning). Om du vill dela din feedback väljer du knappen **produkt feedback** i slutet av varje artikel.

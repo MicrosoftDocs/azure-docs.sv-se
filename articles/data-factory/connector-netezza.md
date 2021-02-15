@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Netezza med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från Netezza till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f98fee687fca6a2b6e746b24ca582671e28391f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b12c1f24f389634004de3d487a693bc588a7241
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84216395"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374362"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopiera data från Netezza med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,7 +35,7 @@ Netezza-anslutaren stöder parallell kopiering från källan. Mer information fi
 
 Azure Data Factory innehåller en inbyggd driv rutin som möjliggör anslutning. Du behöver inte installera någon driv rutin manuellt för att använda den här anslutningen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -94,13 +89,13 @@ En typisk anslutnings sträng är `Server=<server>;Port=<port>;Database=<databas
         "type": "Netezza",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<user name>;",
-            "pwd": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -159,7 +154,7 @@ Om du vill kopiera data från Netezza anger du **käll** typen i kopierings akti
 |:--- |:--- |:--- |
 | typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **NetezzaSource**. | Ja |
 | DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Exempel: `"SELECT * FROM MyTable"` | Nej (om "tableName" i data uppsättningen har angetts) |
-| partitionOptions | Anger de data partitionerings alternativ som används för att läsa in data från Netezza. <br>Tillåtna värden är: **ingen** (standard), **DataSlice**och **DynamicRange**.<br>När ett partitions alternativ är aktiverat (dvs. inte `None` ), styrs graden av parallellitet för data från en Netezza-databas genom [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) att ställa in på kopierings aktiviteten. | Inga |
+| partitionOptions | Anger de data partitionerings alternativ som används för att läsa in data från Netezza. <br>Tillåtna värden är: **ingen** (standard), **DataSlice** och **DynamicRange**.<br>När ett partitions alternativ är aktiverat (dvs. inte `None` ), styrs graden av parallellitet för data från en Netezza-databas genom [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) att ställa in på kopierings aktiviteten. | Inga |
 | partitionSettings | Ange gruppen med inställningar för data partitionering. <br>Använd när partition alternativet inte är `None` . | Inga |
 | partitionColumnName | Ange namnet på den käll kolumn **i Integer-typ** som ska användas av intervall partitionering för parallell kopiering. Om den inte anges identifieras primär nyckeln för tabellen automatiskt och används som partition-kolumn. <br>Använd när alternativet partition är `DynamicRange` . Om du använder en fråga för att hämta källdata, Hook `?AdfRangePartitionColumnName` i WHERE-satsen. Se exempel i [parallell kopiering från avsnittet Netezza](#parallel-copy-from-netezza) . | Inga |
 | partitionUpperBound | Det maximala värdet för partition-kolumnen för att kopiera data. <br>Använd när partition alternativet är `DynamicRange` . Om du använder Query för att hämta källdata, Hook `?AdfRangePartitionUpbound` i WHERE-satsen. Ett exempel finns i avsnittet [parallell kopiering från Netezza](#parallel-copy-from-netezza) . | Inga |

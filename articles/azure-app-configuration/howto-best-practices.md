@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737209"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371557"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Metod tips för Azure App konfiguration
 
@@ -92,7 +92,7 @@ Konfiguration av appar är regional tjänst. För program med olika konfiguratio
 
 ## <a name="client-applications-in-app-configuration"></a>Klient program i app-konfiguration 
 
-För många begär anden till app-konfigurationen kan leda till begränsning eller överbelastnings kostnader. Programmen drar nytta av cachelagring och intelligent uppdatering som är tillgängliga för att optimera antalet förfrågningar som de skickar. Den här processen kan speglas i klient program med hög volym genom att undvika direkta anslutningar till konfigurations arkivet. I stället ansluter klient programmen till en anpassad tjänst och den här tjänsten kommunicerar med konfigurations lagret. Den här proxyservern kan se till att klient programmen inte närmar sig begränsnings gränsen i konfigurations arkivet. Mer information om begränsning finns i [vanliga frågor och svar](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
+För många begär anden till app-konfigurationen kan leda till begränsning eller överbelastnings kostnader. Programmen drar nytta av cachelagring och intelligent uppdatering som är tillgängliga för att optimera antalet förfrågningar som de skickar. Den här processen kan speglas i klient program med hög volym genom att undvika direkta anslutningar till konfigurations arkivet. I stället ansluter klient programmen till en anpassad tjänst och den här tjänsten kommunicerar med konfigurations lagret. Den här proxyservern kan se till att klient programmen inte närmar sig begränsnings gränsen i konfigurations arkivet. Mer information om begränsning finns i [vanliga frågor och svar](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Nästa steg
 

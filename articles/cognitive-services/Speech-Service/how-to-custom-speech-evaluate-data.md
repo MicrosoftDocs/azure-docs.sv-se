@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/11/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 078118ec793530720a49a19046854e5ea4b7f5c4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857366"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388948"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Utvärdera och förbättra noggrannhet i Custom Speech
 
@@ -115,10 +115,15 @@ Ljud med medmärkta avskrifter ger störst precisions förbättringar om ljudet 
 * När kvaliteten på avskrifter varierar kan du duplicera undantagna meningar (t. ex. utmärkta avskrifter som innehåller viktiga fraser) för att öka deras vikt.
 * Tal tjänsten använder automatiskt avskrifterna för att förbättra erkännandet av domänanslutna ord och fraser som om de har lagts till som relaterad text.
 * Utbildning med ljud ger flest fördelar om ljudet också är svårt att förstå för människor. I de flesta fall bör du börja träna genom att bara använda relaterad text.
-* Det kan ta flera dagar för en utbildnings åtgärd att slutföras. För att förbättra utbildningens hastighet måste du skapa en prenumeration på din röst tjänst i en [region med särskild maskin vara](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
+* Det kan ta flera dagar för en utbildnings åtgärd att slutföras. För att förbättra utbildningens hastighet måste du skapa en prenumeration på din röst tjänst i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 
 > [!NOTE]
-> Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet.
+> Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet. Se [språk stöd](language-support.md#speech-to-text) för en lista över bas modeller som stöder utbildning med ljud data.
+
+> [!NOTE]
+> I fall när du ändrar bas modellen som används för utbildning och du har ljud i träning-datauppsättningen, kontrollerar du *alltid* om den nya valda bas modellen [stöder utbildning med ljuddata](language-support.md#speech-to-text). Om den tidigare använda bas modellen inte har stöd för utbildning med ljuddata, och hierarkin data uppsättning innehåller ljud, ökar inlärnings tiden med den nya bas modellen **drastiskt** , och det kan enkelt gå från flera timmar till flera dagar. Detta gäller särskilt om din röst tjänst prenumeration **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
+>
+> Om du möter problemet som beskrivs i stycket ovan kan du snabbt minska inlärnings tiden genom att minska mängden ljud i data uppsättningen eller ta bort det helt och hållet texten kvar. Det sistnämnda alternativet är starkt rekommenderat om din prenumeration på röst tjänsten **inte** finns i en [region med den dedikerade maskin varan](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
 
 ### <a name="add-new-words-with-pronunciation"></a>Lägg till nya ord med uttal
 

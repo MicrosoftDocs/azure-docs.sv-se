@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d712dc0ebe91ea8815adf235e02b8945e0dea84
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912832"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518869"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Snabb start: analysera data med Databricks
 
@@ -76,7 +76,7 @@ I det här avsnittet skapar du en Azure Databricks-arbetsyta med Azure-portalen.
 
 4. Välj **skapa kluster**. När klustret körs kan du ansluta anteckningsböcker till klustret och köra Spark-jobb.
 
-Mer information om att skapa kluster finns i [Skapa ett Spark-kluster i Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+Mer information om att skapa kluster finns i [Skapa ett Spark-kluster i Azure Databricks](/azure/databricks/clusters/create).
 
 ## <a name="create-notebook"></a>Skapa antecknings bok
 
@@ -149,7 +149,7 @@ Utför följande åtgärder för att köra ett Spark SQL-jobb på data.
 
     När kommandot har slutförts har du alla data från JSON-filen som en tabell i Databricks-klustret.
 
-    Med det magiska språkkommandot `%sql` kan du köra en SQL-kod från anteckningsboken även om anteckningsboken är av en annan typ. Mer information finns i [Mixing languages in a notebook](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook) (Blanda språk i en anteckningsbok).
+    Med det magiska språkkommandot `%sql` kan du köra en SQL-kod från anteckningsboken även om anteckningsboken är av en annan typ. Mer information finns i [Mixing languages in a notebook](/azure/databricks/notebooks/notebooks-use#mix-languages) (Blanda språk i en anteckningsbok).
 
 2. Nu ska vi titta på en ögonblicksbild av JSON-exempeldata för att bättre förstå den fråga som körs. Klistra in följande kodfragment i kodcellen och tryck på **SKIFT + RETUR**.
 
@@ -177,7 +177,7 @@ Utför följande åtgärder för att köra ett Spark SQL-jobb på data.
     - Ställ in **Värden** på **nivå**.
     - Ställ in **Sammansättning** på **COUNT** (Antal).
 
-6. Klicka på **Använd**.
+6. Klicka på **Applicera**.
 
 7. Utdata visar den visuella representationen som visas i följande skärmbild:
 
@@ -200,6 +200,6 @@ Gå till nästa artikel om du vill lära dig hur du utför en ETL-åtgärd (extr
 > [!div class="nextstepaction"]
 >[Extrahera, transformera och läsa in data med Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
-- Information om hur du importerar data från andra data källor till Azure Databricks finns i [Spark-datakällor](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
+- Information om hur du importerar data från andra data källor till Azure Databricks finns i [Spark-datakällor](/azure/databricks/data/data-sources/).
 
-- Information om andra sätt att komma åt Azure Data Lake Storage Gen2 från en Azure Databricks arbets yta finns i [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).
+- Information om andra sätt att komma åt Azure Data Lake Storage Gen2 från en Azure Databricks arbets yta finns i [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2).

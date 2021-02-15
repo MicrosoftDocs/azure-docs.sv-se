@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583051"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103353"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-appmanifest
 
@@ -33,7 +33,7 @@ Du kan konfigurera en Apps attribut via Azure Portal eller program mässigt med 
 
 Så här konfigurerar du applikations manifestet:
 
-1. Gå till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Sök efter och välj tjänsten **Azure Active Directory** .
+1. Gå till <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>. Sök efter och välj tjänsten **Azure Active Directory** .
 1. Välj **Appregistreringar**.
 1. Välj den app som du vill konfigurera.
 1. På appens **översiktssida** väljer du avsnittet **Manifest**. En webbaserad manifest redigerare öppnas, så att du kan redigera manifestet i portalen. Alternativt kan du välja **Ladda ned** för att redigera manifestet lokalt och sedan använda **upload** för att tillämpa det igen på ditt program.

@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du hanterar säkerhe
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb552c5a336c3c55652936b87a668b54cfdeb41e
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 665dfc64e750f448fc4c1a2d7e18f0cb6552f223
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507239"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371778"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Självstudie: hantera SAP HANA databaser i en virtuell Azure-dator med Azure CLI
 
@@ -95,7 +95,7 @@ Exempel:
 az backup policy create --resource-group saphanaResourceGroup --vault-name saphanaVault --name sappolicy --backup-management-type AzureWorkload --policy sappolicy.json --workload-type SAPHana
 ```
 
-Exempel-JSON-utdata (sappolicy.jspå):
+Exempel-JSON (sappolicy.jspå):
 
 ```json
   "eTag": null,
@@ -226,11 +226,12 @@ Exempel-JSON-utdata (sappolicy.jspå):
     ],
     "workLoadType": "SAPHanaDatabase"
   },
-  "resourceGroup": "azurefiles",
+  "resourceGroup": "saphanaResourceGroup",
   "tags": null,
   "type": "Microsoft.RecoveryServices/vaults/backupPolicies"
 } 
 ```
+När principen har skapats visas den princip-JSON som du skickade som en parameter när du körde kommandot i kommandots utdata.
 
 Du kan ändra följande avsnitt i principen om du vill ange önskad säkerhets kopierings frekvens och kvarhållning för stegvis säkerhets kopiering.
 

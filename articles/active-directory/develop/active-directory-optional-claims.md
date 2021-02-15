@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6855e8f550c14574795ec00f4fed36762944dca1
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 7c0394e765923c027cc15a6278ee451fb13ed1b2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756035"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104288"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -49,7 +49,7 @@ Den uppsättning valfria anspråk som är tillgängliga som standard för progra
 
 **Tabell 2: v 1.0 och v 2.0 valfri anspråks uppsättning**
 
-| Name                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
+| Namn                       |  Beskrivning   | Tokentyp | Användar typ | Kommentarer  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tid när användaren senast autentiserades. Se OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Resurs innehavarens region | JWT        |           | |
@@ -76,7 +76,7 @@ De här anspråken ingår alltid i v 1.0 Azure AD-tokens, men ingår inte i v 2.
 
 **Tabell 3: v 2.0 – endast valfria anspråk**
 
-| JWT-anspråk     | Name                            | Beskrivning                                | Kommentarer |
+| JWT-anspråk     | Namn                            | Beskrivning                                | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adress                      | IP-adressen som klienten loggade in från.   |       |
 | `onprem_sid`  | Lokal säkerhets identifierare |                                             |       |
@@ -94,7 +94,7 @@ Några av förbättringarna av v2-token-formatet är tillgängliga för appar so
 **Tabell 4: v 1.0 – endast valfria anspråk**
 
 
-| JWT-anspråk     | Name                            | Beskrivning | Kommentarer |
+| JWT-anspråk     | Namn                            | Beskrivning | Kommentarer |
 |---------------|---------------------------------|-------------|-------|
 |`aud`          | Målgrupp | Finns alltid i JWTs, men i v1-åtkomsttoken kan den genereras på flera olika sätt: alla appID-URI: er, med eller utan avslutande snedstreck, samt klient-ID för resursen. Den här slumpmässigheten kan vara svår att koda mot när du utför verifiering av token.  Använd [Ytterligare egenskaper för det här anspråket](#additional-properties-of-optional-claims) för att säkerställa att det alltid är inställt på resurs-ID: t för resursen i v1-åtkomsttoken. | endast v1 JWT-åtkomsttoken|
 |`preferred_username` | Önskat användar namn        | Tillhandahåller önskat användar namns anspråk inom v1-token. Detta gör det enklare för appar att tillhandahålla användar tips och Visa visnings namn som kan läsas av människa, oavsett tokentyp.  Vi rekommenderar att du använder det här valfria kravet i stället för att använda t. ex. `upn` eller `unique_name` . | v1 ID-token och åtkomsttoken |
@@ -105,7 +105,7 @@ Vissa valfria anspråk kan konfigureras för att ändra hur anspråket returnera
 
 **Tabell 4: värden för konfiguration av valfria anspråk**
 
-| Egenskapsnamn  | Ytterligare egenskaps namn | Beskrivning |
+| Egenskapsnamn  | Ytterligare egenskaps namn | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kan användas för både SAML-och JWT-svar och för v 1.0-och v 2.0-token. |
 |                | `include_externally_authenticated_upn`  | Inkluderar gäst-UPN som lagrats i resurs klienten. Till exempel `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -138,7 +138,7 @@ Detta OptionalClaims-objekt gör att ID-token returneras till klienten för att 
 
 Du kan konfigurera valfria anspråk för ditt program via användar gränssnittet eller applikations manifestet.
 
-1. Gå till <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. 
+1. Gå till <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>. 
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj **Appregistreringar** under **Hantera**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
@@ -201,7 +201,7 @@ Deklarerar de valfria anspråk som begärs av ett program. Ett program kan konfi
 
 **Tabell 5: egenskaper för OptionalClaims-typ**
 
-| Namn          | Typ                       | Beskrivning                                           |
+| Namn          | Typ                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Samling (OptionalClaim) | De valfria anspråk som returneras i JWT ID-token.     |
 | `accessToken` | Samling (OptionalClaim) | De valfria anspråk som returneras i JWT-åtkomsttoken. |
@@ -214,7 +214,7 @@ Om det stöds av ett angivet anspråk kan du också ändra beteendet för Option
 
 **Tabell 6: egenskaper för OptionalClaim-typ**
 
-| Namn                   | Typ                    | Beskrivning                                                                                                                                                                                                                                                                                                   |
+| Namn                   | Typ                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Namnet på det valfria anspråket.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Källa (katalog objekt) för anspråket. Det finns fördefinierade anspråk och användardefinierade anspråk från tilläggs egenskaper. Om source-värdet är null är anspråket ett fördefinierat valfritt anspråk. Om source-värdet är User är värdet i egenskapen name egenskapen Extension från objektet User. |
@@ -246,7 +246,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
 
 **Konfigurera grupper valfria anspråk genom användar gränssnittet:**
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj **Appregistreringar** under **Hantera**.
@@ -259,7 +259,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
 
 **Konfigurera grupper valfria anspråk via applikations manifestet:**
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 1. Sök efter och välj **Azure Active Directory**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
@@ -273,7 +273,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - "DirectoryRole"
    - "Variabeln applicationgroup" (det här alternativet inkluderar endast grupper som är kopplade till programmet)
 
-   Ett exempel:
+   Exempel:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -388,7 +388,7 @@ I exemplet nedan använder du användar gränssnittet för **token-konfiguration
 
 **GRÄNSSNITTs konfiguration:**
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 
 1. Sök efter och välj **Azure Active Directory**.
@@ -411,7 +411,7 @@ I exemplet nedan använder du användar gränssnittet för **token-konfiguration
 
 **Manifest konfiguration:**
 
-1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 1. Sök efter och välj **Azure Active Directory**.
 1. Hitta det program som du vill konfigurera valfria anspråk för i listan och markera det.

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 4fda6c51121838bfa1f3624759b1230d8554d573
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 719fcca74d2cd048bf170940eff7da6a25425469
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753951"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373291"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeta med den tidigare versionen av Azure Migrate
 
@@ -22,7 +22,7 @@ Den här artikeln innehåller information om hur du arbetar med den tidigare ver
 Det finns två versioner av tjänsten Azure Migrate:
 
 - **Aktuell version**: Använd den här versionen för att skapa Azure Migrate projekt, identifiera lokala datorer och dirigera utvärderingar och migreringar. [Läs mer](whats-new.md) om vad som är nytt i den här versionen.
-- **Tidigare version**: om du använder den tidigare versionen av Azure Migrate (endast utvärdering av lokala virtuella VMware-datorer stöds) bör du nu använda den aktuella versionen. De tidigare versions projekten kallas klassiska projekt i den här artikeln. Om du fortfarande behöver använda Azure Migrate projekt som skapats i den tidigare versionen kan du inte göra något av följande:
+- **Tidigare version**: om du använder den tidigare versionen av Azure Migrate (endast utvärdering av lokala virtuella VMware-datorer stöds) bör du nu använda den aktuella versionen. De tidigare versions projekten kallas klassiska projekt i den här artikeln. Den klassiska Azure Migrate tas ur bruk i feb 2024. Efter feb 2024 kommer den klassiska versionen av Azure Migrate inte längre att stödjas och lager-metadata i klassiska projekt kommer att tas bort. Om du fortfarande behöver använda klassiska Azure Migrate-projekt kan du inte göra något av följande:
     - Du kan inte längre skapa migreringsjobb.
     - Vi rekommenderar att du inte genomför nya identifieringar.
     - Du kan fortfarande komma åt befintliga projekt.
@@ -304,7 +304,7 @@ Så här kör du Kusto-frågorna:
 
 1. När du har installerat agenterna går du till portalen och klickar på **Översikt**.
 2. I **Översikt** går du till avsnittet **Essentials** i projektet och klickar på arbets ytans namn bredvid **OMS-arbetsytan**.
-3. Klicka på **allmänna** loggar på sidan Log Analytics arbets yta  >  **Logs**.
+3. Klicka på **allmänna** loggar på sidan Log Analytics arbets yta  >  .
 4. Skriv din fråga för att samla in beroende data med Azure Monitor loggar. Sök efter exempel frågor i nästa avsnitt.
 5. Kör frågan genom att klicka på Kör. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: bffa7894f7603f95c4840019be5e5670797881df
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1d22a992ac4ae69c8541b6efbaee58340f48caa4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873254"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517883"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Använda Azure Data Lake Storage Gen2 för Big data-krav
 
@@ -119,7 +119,7 @@ Här är en lista med verktyg som du kan använda för att köra data analys job
 |Verktyg | Vägledning |
 |---|--|
 |Azure HDInsight | [Använda Azure Data Lake Storage Gen2 med Azure HDInsight-kluster](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Snabb start: analysera data i Azure Data Lake Storage Gen2 med Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Självstudie: Extrahera, transformera och läsa in data med hjälp av Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage Gen2](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)<br><br>[Snabb start: analysera data i Azure Data Lake Storage Gen2 med Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Självstudie: Extrahera, transformera och läsa in data med hjälp av Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Visualisera datan
 

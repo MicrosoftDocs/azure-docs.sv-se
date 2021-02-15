@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure våren Cloud
 description: Visar Azure Policy inbyggda princip definitioner för Azure våren Cloud. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: 398967fe168d25f18743e860d2234f8c00abf95f
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 01a2647ab75ca0dbc06d44e54693655087bc3e7b
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556690"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099867"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Policy inbyggda definitioner för Azure våren Cloud
 

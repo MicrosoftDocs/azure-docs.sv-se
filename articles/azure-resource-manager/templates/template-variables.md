@@ -1,28 +1,82 @@
 ---
 title: Variabler i mallar
-description: Beskriver hur du definierar variabler i en Azure Resource Manager-mall (ARM-mall).
+description: Beskriver hur du definierar variabler i en Azure Resource Manager mall (ARM-mall) och bicep-fil.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/12/2021
+ms.openlocfilehash: cafd42112e5d296cb73f88e292a66ca2203f3810
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874442"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364468"
 ---
-# <a name="variables-in-arm-template"></a>Variabler i ARM-mallen
+# <a name="variables-in-arm-templates"></a>Variabler i ARM-mallar
 
-Den här artikeln beskriver hur du definierar och använder variabler i din Azure Resource Manager-mall (ARM-mall). Du kan använda variabler för att förenkla din mall. I stället för att upprepa komplexa uttryck i hela mallen definierar du en variabel som innehåller det komplexa uttrycket. Sedan kan du referera till variabeln efter behov i hela mallen.
+Den här artikeln beskriver hur du definierar och använder variabler i din Azure Resource Manager-mall (ARM-mall) eller bicep-fil. Du kan använda variabler för att förenkla din mall. I stället för att upprepa komplexa uttryck i hela mallen definierar du en variabel som innehåller det komplexa uttrycket. Sedan använder du denna variabel vid behov i hela mallen.
 
 Resource Manager löser variabler innan distributions åtgärderna påbörjas. Oavsett var variabeln används i mallen ersätter Resource Manager den med det matchade värdet.
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="define-variable"></a>Definiera variabel
 
-När du definierar en variabel anger du ett värde-eller mall-uttryck som matchar en [datatyp](template-syntax.md#data-types). Du kan använda värdet från en parameter eller en annan variabel när du skapar variabeln.
+När du definierar en variabel anger du inte en [datatyp](template-syntax.md#data-types) för variabeln. Ange i stället ett värde-eller mall-uttryck. Variabel typen härleds från det matchade värdet. I följande exempel anges en variabel till en sträng.
 
-Du kan använda [mallar](template-functions.md) i variabel deklarationen, men du kan inte använda funktionen [Reference](template-functions-resource.md#reference) eller någon av [list](template-functions-resource.md#list) funktionerna. Dessa funktioner hämtar körnings status för en resurs och kan inte utföras före distributionen när variablerna är lösta.
+# <a name="json"></a>[JSON](#tab/json)
 
-I följande exempel visas en variabel definition. Det skapar ett sträng värde för ett lagrings konto namn. Den använder flera mallar för att hämta ett parameter värde och sammanfogar dem till en unik sträng.
+```json
+"variables": {
+  "stringVar": "example value"
+},
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var stringVar = 'example value'
+```
+
+---
+
+Du kan använda värdet från en parameter eller en annan variabel när du skapar variabeln.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+"parameters": {
+  "inputValue": {
+    "defaultValue": "deployment parameter",
+    "type": "string"
+  }
+},
+"variables": {
+  "stringVar": "myVariable",
+  "concatToVar": "[concat(variables('stringVar'), '-addtovar') ]",
+  "concatToParam": "[concat(parameters('inputValue'), '-addtoparam')]"
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param inputValue string = 'deployment parameter'
+
+var stringVar = 'myVariable'
+var concatToVar =  '${stringVar}-addtovar'
+var concatToParam = '${inputValue}-addtoparam'
+```
+
+---
+
+Du kan använda [mall funktioner](template-functions.md) för att skapa variabelvärdet.
+
+I JSON-mallar kan du inte använda [referens](template-functions-resource.md#reference) funktionen eller någon av [list](template-functions-resource.md#list) funktionerna i variabel deklarationen. Dessa funktioner hämtar körnings status för en resurs och kan inte utföras före distributionen när variablerna är lösta.
+
+Referens-och list funktionerna är giltiga när du deklarerar en variabel i en bicep-fil.
+
+I följande exempel skapas ett sträng värde för ett lagrings konto namn. Den använder flera mallar för att hämta ett parameter värde och sammanfogar dem till en unik sträng.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -30,9 +84,21 @@ I följande exempel visas en variabel definition. Det skapar ett sträng värde 
 },
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
+```
+
+---
+
 ## <a name="use-variable"></a>Använd variabel
 
-I mallen refererar du till värdet för parametern med hjälp av funktionen [variabler](template-functions-deployment.md#variables) . I följande exempel visas hur du använder variabeln för en resurs egenskap.
+I följande exempel visas hur du använder variabeln för en resurs egenskap.
+
+# <a name="json"></a>[JSON](#tab/json)
+
+I en JSON-mall refererar du till värdet för variabeln med hjälp av funktionen [variabler](template-functions-deployment.md#variables) .
 
 ```json
 "resources": [
@@ -44,17 +110,46 @@ I mallen refererar du till värdet för parametern med hjälp av funktionen [var
 ]
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+I en bicep-fil refererar du till värdet för variabeln genom att ange variabel namnet.
+
+```bicep
+resource demoAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+```
+
+---
+
 ## <a name="example-template"></a>Exempel mal len
 
-Följande mall distribuerar inga resurser. Det visar bara några sätt att deklarera variabler.
+Följande mall distribuerar inga resurser. Det visar några sätt att deklarera variabler av olika typer.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+Bicep stöder för närvarande inte slingor.
+
+:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+
+---
+
 ## <a name="configuration-variables"></a>Variabler för konfiguration
 
-Du kan definiera variabler som innehåller relaterade värden för att konfigurera en miljö. Du definierar variabeln som ett objekt med värdena. I följande exempel visas ett objekt som innehåller värden för två miljöer – **test** och **Prod**. Du skickar ett av följande värden under distributionen.
+Du kan definiera variabler som innehåller relaterade värden för att konfigurera en miljö. Du definierar variabeln som ett objekt med värdena. I följande exempel visas ett objekt som innehåller värden för två miljöer – **test** och **Prod**. Skicka in ett av dessa värden under distributionen.
+
+# <a name="json"></a>[JSON](#tab/json)
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+
+---
 
 ## <a name="next-steps"></a>Nästa steg
 

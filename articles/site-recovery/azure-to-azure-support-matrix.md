@@ -4,12 +4,12 @@ description: Sammanfattar stöd för haveri beredskap för virtuella Azure-dator
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 856d8961cbdf77fc848df41502678cb438773dbe
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 78c27292a92152946ba33258d27940e3c1aea47d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550125"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391583"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Supportmatris för haveriberedskap för virtuella Azure-datorer mellan Azure-regioner
 
@@ -35,6 +35,7 @@ Den här artikeln sammanfattar support och krav för haveri beredskap för virtu
 **Replikera virtuella Azure-datorer från en prenumeration till en annan för haveri beredskap** | Stöds inom samma Azure Active Directory-klient.
 **Migrera virtuella datorer mellan regioner inom de geografiska kluster som stöds (inom och över prenumerationer)** | Stöds inom samma Azure Active Directory-klient.
 **Migrera virtuella datorer inom samma region** | Stöds inte.
+**Dedikerade Azure-värdar** | Stöds inte.
 
 ## <a name="region-support"></a>Stöd för regioner
 
@@ -205,7 +206,7 @@ Virtuella datorer som migrerats med Site Recovery | Stöds | Om en virtuell VMwa
 Azure RBAC-principer | Stöds inte | Azure-rollbaserad åtkomst kontroll (Azure RBAC) principer för virtuella datorer replikeras inte till den virtuella redundansväxlingen i mål regionen.
 Tillägg | Stöds inte | Tillägg replikeras inte till den virtuella redundansväxlingen i mål regionen. Den måste installeras manuellt efter redundansväxlingen.
 Placerings grupper för närhet | Stöds | Virtuella datorer som finns inuti en närhets placerings grupp kan skyddas med hjälp av Site Recovery.
-Taggar  | Stöds | Användardefinierade taggar som används på virtuella käll datorer överförs till virtuella mål datorer efter redundanstest eller redundans.
+Taggar  | Stöds | Användardefinierade taggar som används på virtuella käll datorer överförs till virtuella mål datorer efter redundanstest eller redundans. Taggar på VM: ar replikeras en gång var 24: e timme så länge som de virtuella datorerna finns i mål regionen.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replikerade datorer – disk åtgärder
@@ -265,7 +266,7 @@ NVMe-diskar | Stöds inte
 Delade diskar i Azure | Stöds inte
 Alternativ för säker överföring | Stöds
 Skriv Accelerator aktiverade diskar | Stöds inte
-Taggar  | Användardefinierade Taggar replikeras var 24: e timme.
+Taggar  | Stöds | Användardefinierade Taggar replikeras var 24: e timme.
 
 >[!IMPORTANT]
 > För att undvika prestanda problem måste du kontrol lera att du följer skalbarhets-och prestanda mål för virtuella datorer för [hanterade diskar](../virtual-machines/disks-scalability-targets.md). Om du använder standardinställningarna skapar Site Recovery de nödvändiga diskarna och lagrings kontona baserat på käll konfigurationen. Om du anpassar och väljer dina egna inställningar följer du diskens skalbarhet och prestanda mål för dina virtuella käll datorer.

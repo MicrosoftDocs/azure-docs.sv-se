@@ -2,13 +2,13 @@
 title: Konfigurera IP brand Väggs regler för Azure Service Bus
 description: Hur du använder brand Väggs regler för att tillåta anslutningar från vissa IP-adresser till Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3aacf54dca07f0e1f2a66c8cdd85f892dda68cd4
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.date: 02/12/2021
+ms.openlocfilehash: 11a17575e65bc8878819767804d7f69f3d590ad3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516557"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Tillåt åtkomst till Azure Service Bus namnrymd från vissa IP-adresser eller intervall
 Som standard är Service Bus-namnrymder tillgängliga från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -37,7 +37,8 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandv�
     > [!NOTE]
     > Fliken **nätverk** visas endast för **Premium** -namnområden.  
     
-    Som standard är alternativet **valda nätverk** markerat. Om du inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
+    >[!WARNING]
+    > Om du väljer alternativet **valda nätverk** och inte lägger till minst en IP-brandväggsregel eller ett virtuellt nätverk på den här sidan, kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln).
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Sidan nätverk – standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
@@ -61,28 +62,12 @@ Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandv�
 [!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Använda Resource Manager-mallar
-Det här avsnittet innehåller ett exempel på en Azure Resource Manager mall som skapar ett virtuellt nätverk och en brand Väggs regel.
+Det här avsnittet innehåller ett exempel på en Azure Resource Manager mall som lägger till ett virtuellt nätverk och en brand Väggs regel i ett befintligt Service Bus-namnområde.
 
+**ipMask** är en enskild IPv4-adress eller ett block med IP-adresser i CIDR-notation. I CIDR-notation 70.37.104.0/24 representerar till exempel 256 IPv4-adresser från 70.37.104.0 till 70.37.104.255, med 24 som anger antalet signifikanta prefix för intervallet.
 
-Följande Resource Manager-mall gör det möjligt att lägga till en virtuell nätverks regel i ett befintligt Service Bus-namnområde.
+När du lägger till regler för virtuella nätverk eller brand väggar ställer du in värdet `defaultAction` till `Deny` .
 
-Mallparametrar:
-
-- **ipMask** är en enskild IPv4-adress eller ett block med IP-adresser i CIDR-notation. I CIDR-notation 70.37.104.0/24 representerar till exempel 256 IPv4-adresser från 70.37.104.0 till 70.37.104.255, med 24 som anger antalet signifikanta prefix för intervallet.
-
-> [!NOTE]
-> Även om det inte finns några tillåtna nekade regler, har Azure Resource Manager mal len standard åtgärden inställd på **Tillåt** , vilket inte begränsar anslutningar.
-> När du skapar Virtual Network-eller brand Väggs regler måste vi ändra **_"defaultAction"_**
-> 
-> Från
-> ```json
-> "defaultAction": "Allow"
-> ```
-> på
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -147,6 +132,10 @@ Mallparametrar:
 ```
 
 Följ anvisningarna för [Azure Resource Manager][lnk-deploy]om du vill distribuera mallen.
+
+> [!IMPORTANT]
+> Om det inte finns några IP-och virtuella nätverks regler, flödar all trafik till namn området även om du ställer in `defaultAction` till `deny` . Namn området kan nås via det offentliga Internet (med hjälp av åtkomst nyckeln). Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk.  
+
 
 ## <a name="next-steps"></a>Nästa steg
 

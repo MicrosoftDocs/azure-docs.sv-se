@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12d858488c4530e4b0d949cd36ed9ad2f7df4c59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590568"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384494"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Skapa en arbets yta med data exfiltrering Protection aktiverat
 Den här artikeln beskriver hur du skapar en arbets yta med data exfiltrering Protection aktiverat och hur du hanterar godkända Azure AD-klienter för den här arbets ytan.
@@ -21,7 +21,7 @@ Den här artikeln beskriver hur du skapar en arbets yta med data exfiltrering Pr
 >[!Note]
 >Du kan inte ändra konfigurationen för arbets ytan för hanterat virtuellt nätverk och data exfiltrering-skydd när arbets ytan har skapats.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 - Behörigheter för att skapa en resurs för arbets ytor i Azure.
 - Synapse-arbetsytans behörigheter för att skapa hanterade privata slut punkter.
 - Prenumerationer registrerade för nätverks resurs leverantören. [Läs mer.](../../azure-resource-manager/management/resource-providers-and-types.md)
@@ -49,6 +49,9 @@ Du kan skapa hanterade privata slut punkter för att ansluta till Azure-resurser
 >[!IMPORTANT]
 >Resurser i andra klienter än arbets ytans klient organisation måste inte ha blockerade brand Väggs regler på plats för att SQL-poolerna ska kunna ansluta till dem. Resurser inom arbets ytans hanterade virtuella nätverk, till exempel Spark-kluster, kan ansluta via hanterade privata länkar till brand Väggs skyddade resurser.
 
+## <a name="known-limitations"></a>Kända begränsningar
+Användare kan ange en miljö konfigurations fil för att installera python-paket från offentliga databaser som PyPI. I data exfiltrering skyddade arbets ytor blockeras anslutningar till utgående databaser. Det innebär att python-biblioteket som installeras från offentliga databaser som PyPI inte stöds. 
+  
 ## <a name="next-steps"></a>Nästa steg
 
 Läs mer om [data exfiltrering Protection i Synapse-arbetsytor](./workspace-data-exfiltration-protection.md)

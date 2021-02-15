@@ -1,14 +1,14 @@
 ---
 title: Index för skissexempel
 description: Index över efterlevnads- och standardexempel för distribution av miljöer, principer och ramverket för molnimplementering med Azure Blueprints.
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225149"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370962"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-exempel
 
@@ -18,9 +18,10 @@ Följande tabell innehåller länkar till exempel för Azure Blueprints. Alla ex
 
 | Exempel | Beskrivning |
 |---------|---------|
-| [Den australiska regeringens ISM PROTECTED-kontroller](./ism-protected/index.md) | Tillhandahåller guardrails för efterlevnad med den australiska regeringens ISM-skyddad. |
-| [Azure-säkerhet för prestandatest v1](./azure-security-benchmark.md) | Tillhandahåller guardrails för kompatibilitet med [Azures säkerhets benchmark v1](../../../security/benchmarks/overview.md). |
-| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Tillhandahåller guardrails för kompatibilitet med Kanadas federala skyddade B, medelhög integritet, medelhög tillgänglighet (PBMM). |
+| [Den australiska regeringens ISM PROTECTED-kontroller](./ism-protected/index.md) | Tillhandahåller styrningsriktlinjer för efterlevnad av den australiska regeringens ISM PROTECTED-kontroller. |
+| [Benchmark för Azure-säkerhet](./azure-security-benchmark.md) | Innehåller riktlinjer för efterlevnad av [Azure Security Benchmark](../../../security/benchmarks/overview.md). |
+| [Azure Security benchmark Foundation](./azure-security-benchmark-foundation/index.md) | Distribuerar och konfigurerar Azure Security benchmark Foundation. |
+| [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Tillhandahåller riktlinjer för överensstämmelse med Kanadas PBMM (Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Innehåller en uppsättning principer som hjälper dig att följa CIS Microsoft Azure Foundations Benchmark-rekommendationerna. |
 | [DoD:s effektnivå 4](./dod-impact-level-4/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa DoD:s effektnivå 4. |
 | [DoD:s effektnivå 5](./dod-impact-level-5/index.md) | Tillhandahåller en uppsättning principer som hjälper dig att följa DoD:s effektnivå 5. |

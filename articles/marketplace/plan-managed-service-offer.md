@@ -8,22 +8,22 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: 57a6883a2c4fff14507df27b55ac0f6621306bf5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879283"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371948"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Planera ett hanterat tjänst erbjudande för Microsofts kommersiella marknads plats
 
 I den här artikeln beskrivs kraven för att publicera ett hanterat tjänst erbjudande på Microsofts kommersiella marknads plats via partner Center.
 
-Hanterade tjänster är Azure Marketplace-erbjudanden som möjliggör mellan-klienter och hantering av flera innehavare med Azure Lighthouse. Mer information finns i [Vad är Azure Lighthouse?](../lighthouse/overview.md) När en kund köper ett hanterat tjänst erbjudande kan de delegera en eller flera prenumerationer eller resurs grupper
+Hanterade tjänster är Azure Marketplace-erbjudanden som möjliggör mellan-klienter och hantering av flera innehavare med Azure Lighthouse. Mer information finns i [Vad är Azure Lighthouse?](../lighthouse/overview.md) När en kund köper ett hanterat tjänst erbjudande kan de delegera en eller flera prenumerationer eller resurs grupper. Du kan sedan arbeta med dessa resurser med hjälp av [Azures delegerade resurs hanterings](../lighthouse/concepts/azure-delegated-resource-management.md) funktioner i Azure Lighthouse.
 
 ## <a name="eligibility-requirements"></a>Behörighetskrav
 
-Om du vill publicera en hanterad tjänst måste du ha fått Microsoft-kompetensen guld eller silver i moln plattformen. Den här kompetensen visar dina expert kunskaper för kunderna. Mer information finns i [Microsoft Partner Network kompetenser](https://partner.microsoft.com/membership/competencies).
+Om du vill publicera ett hanterat tjänst erbjudande måste du ha fått Microsoft-kompetensen guld eller silver i moln plattformen. Den här kompetensen visar dina expert kunskaper för kunderna. Mer information finns i [Microsoft Partner Network kompetenser](https://partner.microsoft.com/membership/competencies).
 
 Erbjudanden måste uppfylla alla tillämpliga [certifierings principer för kommersiella marknads platser](/legal/marketplace/certification-policies) som ska publiceras på Azure Marketplace.
 
@@ -46,11 +46,11 @@ När du skapar ett hanterat tjänst erbjudande i Partner Center, anger du text, 
 **Beskrivningar av anrop**
 
 1. Logotyp
-1. Name
+1. Namn
 1. Kort beskrivning
 1. Kategorier
 1. Juridiska avtal och sekretess policy
-1. Description
+1. Beskrivning
 1. Skärm bilder/videor
 1. Användbara länkar
 
@@ -60,7 +60,7 @@ Här är ett exempel på hur erbjudande listan visas i Azure Portal:
 
 **Beskrivningar av anrop**
 
-1. Name
+1. Namn
 2. Beskrivning
 3. Användbara länkar
 4. Skärm bilder/videor

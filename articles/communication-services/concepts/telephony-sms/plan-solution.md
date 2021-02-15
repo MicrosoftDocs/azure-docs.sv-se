@@ -1,7 +1,7 @@
 ---
-title: Planera din Azure Communication Services-telefoni och SMS-lösning
+title: Telefonnummer typer i Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Lär dig att effektivt planera din användning av telefonnummer och telefoni.
+description: Lär dig hur du effektivt använder olika typer av telefonnummer för SMS och telefoni.
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,26 +10,21 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 97ac8a63740bb3a0df74a2a698cacecf842760e9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937244"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366474"
 ---
-# <a name="plan-your-telephony-and-sms-solution"></a>Planera din telefoni- och SMS-lösning
+# <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummer typer i Azure Communication Services
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services gör att du kan använda telefonnummer för att ringa röst samtal och skicka SMS-meddelanden med det offentliga telefonnätet. I det här dokumentet granskar vi telefonnummer typer, konfigurations alternativ och regions tillgänglighet för att planera din telefoni-och SMS-lösning med hjälp av kommunikations tjänster.
 
-
-
-
-
-## <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummer typer i Azure Communication Services
- 
+## <a name="number-types-and-features"></a>Tal typer och funktioner
 Kommunikations tjänsterna erbjuder två typer av telefonnummer: **lokalt** och **avgiftsfritt**. 
 
 ### <a name="local-numbers"></a>Lokala nummer
@@ -52,7 +47,7 @@ I tabellen nedan sammanfattas dessa telefonnummer typer:
 | Toll-Free         | + 1 (avgiftsfrit rikt *nummer*) xxx xx xx | USA                      | Anrop (utgående), SMS (inkommande/utgående)| Tilldela telefonnummer till IVR-system/robotar-system (Interactive Voice Response), SMS-program                                        |
 
 
-## <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services 
+### <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services 
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -92,5 +87,6 @@ För närvarande är telefonnumret för tillgänglighet begränsat till Azure-pr
 ### <a name="conceptual-documentation"></a>Konceptuell dokumentation
 
 - [Begrepp inom röst- och videosamtal](../voice-video-calling/about-call-types.md)
+- [Telefoni koncept](./telephony-concept.md)
 - [Samtals flöden](../call-flows.md)
 - [Prissättning](../pricing.md)

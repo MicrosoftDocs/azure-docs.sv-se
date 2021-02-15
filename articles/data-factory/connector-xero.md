@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från Xero med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från Xero till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.author: jingwang
-ms.openlocfilehash: 3f8c74f36c1c441e00b808954ce7f7710d3fbd52
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d795f8355943032751b911423b8aaa93b2df3206
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879973"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366916"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopiera data från Xero med hjälp av Azure Data Factory
 
@@ -52,16 +47,16 @@ Följande egenskaper stöds för den länkade tjänsten Xero:
 |:--- |:--- |:--- |
 | typ | Egenskapen Type måste anges till: **Xero** | Ja |
 | connectionProperties | En grupp egenskaper som definierar hur du ansluter till Xero. | Ja |
-| **_Under `connectionProperties` :_* _ | | |
+| ***Under `connectionProperties` :*** | | |
 | värd | Slut punkten för Xero-servern ( `api.xero.com` ).  | Ja |
 | authenticationType | Tillåtna värden är `OAuth_2.0` och `OAuth_1.0` . | Ja |
-| consumerKey | För OAuth 2,0 anger du _ *klient-ID** för ditt Xero-program.<br>För OAuth 1,0 anger du den konsument nyckel som är kopplad till Xero-programmet.<br>Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| consumerKey | För OAuth 2,0 anger du **klient-ID** för ditt Xero-program.<br>För OAuth 1,0 anger du den konsument nyckel som är kopplad till Xero-programmet.<br>Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | privateKey | För OAuth 2,0 anger du **klient hemligheten** för ditt Xero-program.<br>För OAuth 1,0 anger du den privata nyckeln från den. PEM-fil som skapades för ditt Xero privata program, se [skapa ett offentligt/privat nyckel par](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Obs! det går inte att **skapa PrivateKey. pem med numbits 512** med `openssl genrsa -out privatekey.pem 512` 1024. Ta med all text från. pem-filen, inklusive UNIX-slutpunkter (\n), se exemplet nedan.<br/><br>Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenantId | Det klient-ID som är associerat med ditt Xero-program. Gäller för OAuth 2,0-autentisering.<br>Lär dig hur du hämtar klient-ID: t från [kontrol lera de innehavare som du har behörighet att komma åt](https://developer.xero.com/documentation/oauth2/auth-flow). | Ja för OAuth 2,0-autentisering |
 | refreshToken | Gäller för OAuth 2,0-autentisering.<br/>OAuth 2,0-uppdateringstoken är associerad med Xero-programmet och används för att uppdatera åtkomsttoken. åtkomsttoken upphör att gälla efter 30 minuter. Lär dig mer om hur Xero-auktoriseringsarkivet fungerar och hur du hämtar uppdateringstoken från [den här artikeln](https://developer.xero.com/documentation/oauth2/auth-flow). Om du vill hämta en uppdateringstoken måste du begära [offline_access-omfånget](https://developer.xero.com/documentation/oauth2/scopes). <br/>**Känn till begränsning**: Obs! Xero återställer uppdateringstoken när den används för att uppdatera åtkomsttoken. För drift arbets belastning måste du, innan varje kopierings aktivitet körs, ange en giltig uppdateringstoken för att ADF ska användas.<br/>Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja för OAuth 2,0-autentisering |
-| useEncryptedEndpoints | Anger om data källans slut punkter krypteras med HTTPS. Standardvärdet är True.  | Nej |
-| useHostVerification | Anger om värd namnet krävs i serverns certifikat för att matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är True.  | Nej |
-| usePeerVerification | Anger om du vill verifiera serverns identitet vid anslutning via TLS. Standardvärdet är True.  | Nej |
+| useEncryptedEndpoints | Anger om data källans slut punkter krypteras med HTTPS. Standardvärdet är True.  | Inga |
+| useHostVerification | Anger om värd namnet krävs i serverns certifikat för att matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är True.  | Inga |
+| usePeerVerification | Anger om du vill verifiera serverns identitet vid anslutning via TLS. Standardvärdet är True.  | Inga |
 
 **Exempel: OAuth 2,0-autentisering**
 

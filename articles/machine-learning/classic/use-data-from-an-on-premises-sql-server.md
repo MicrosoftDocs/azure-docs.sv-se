@@ -3,22 +3,22 @@ title: 'ML Studio (klassisk): lokal SQL Server – Azure'
 description: Använd data från en SQL Server Database för att utföra avancerad analys med Azure Machine Learning Studio (klassisk).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8cdf1029371e0e11c38616e7800652ca9debbba7
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325708"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517407"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Utföra analyser med Azure Machine Learning Studio (klassisk) med hjälp av en SQL Server databas
 
-**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**gäller för:** ![ Gäller för. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassisk) ![ gäller inte för.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Företag som arbetar med lokala data skulle till exempel kunna dra nytta av molnets skala och flexibilitet för sina arbets belastningar för Machine Learning. Men de vill inte störa sina aktuella affärs processer och arbets flöden genom att flytta sina lokala data till molnet. Azure Machine Learning Studio (klassisk) har nu stöd för att läsa data från en SQL Server-databas och sedan träna och värdera en modell med dessa data. Du behöver inte längre kopiera och synkronisera data mellan molnet och den lokala servern manuellt. I stället kan modulen **Importera data** i Azure Machine Learning Studio (klassisk) nu läsas direkt från din SQL Server databas för dina utbildnings-och Poäng jobb.
@@ -91,7 +91,7 @@ Det första steget är att skapa och konfigurera en gateway för att få åtkoms
     ![Hämta och registrera datagateway](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>Om du ännu inte har laddat ned och installerat Microsoft Data Management Gateway klickar du på **Hämta data Management Gateway**. Då går du till Microsoft Download Center där du kan välja den gateway-version du behöver, ladda ned den och installera den. Du hittar detaljerad information om installations krav, installations steg och fel söknings tips i de inledande avsnitten i artikeln [Flytta data mellan lokala källor och molnet med data Management Gateway](../../data-factory/tutorial-hybrid-copy-portal.md).
 7. När gatewayen har installerats öppnas Data Management Gateway Configuration Manager och dialog rutan **Registrera Gateway** visas. Klistra in **nyckeln för gateway-registreringen** som du kopierade till Urklipp och klicka på **Registrera**.
-8. Om du redan har en gateway installerad, kör Data Management Gateway Configuration Manager. Klicka på **ändra nyckel** , klistra in den **Gateway-registreringsnyckeln** som du kopierade till Urklipp i föregående steg och klicka på **OK**.
+8. Om du redan har en gateway installerad, kör Data Management Gateway Configuration Manager. Klicka på **ändra nyckel**, klistra in den **Gateway-registreringsnyckeln** som du kopierade till Urklipp i föregående steg och klicka på **OK**.
 9. När installationen är klar visas dialog rutan **Registrera Gateway** för Microsoft Data Management Gateway Configuration Manager. Klistra in nyckeln för GATEWAY-registreringen som du kopierade till Urklipp i föregående steg och klicka på **Registrera**.
 
     ![Registrera gatewayen](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
@@ -134,7 +134,7 @@ När du har konfigurerat gatewayen kan du lägga till en modul för att **Import
 5. Välj den **datagateway** som du har installerat och registrerat. Du kan konfigurera en annan gateway genom att välja "(Lägg till ny datagateway...)".
 
    ![Välj data Gateway för modulen importera data](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Ange SQL **Database-servernamnet** och **databas namnet** , tillsammans med den SQL **Database-fråga** som du vill köra.
+6. Ange SQL **Database-servernamnet** och **databas namnet**, tillsammans med den SQL **Database-fråga** som du vill köra.
 7. Klicka på **Ange värden** under **användar namn och lösen ord** och ange autentiseringsuppgifterna för databasen. Du kan använda Windows-integrerad autentisering eller SQL Server autentisering beroende på hur din SQL Server har kon figurer ATS.
 
    ![Ange autentiseringsuppgifter för databasen](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)

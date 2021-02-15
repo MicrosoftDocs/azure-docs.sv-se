@@ -5,12 +5,12 @@ description: Lär dig metod tips för kluster operatörer för virtuella nätver
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 9ec6423a853aacbc8a03cc5472bf1a95a5623b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f004e0e78d7a626f878ba3651e4c6078f9cd21e8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482733"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366576"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Metodtips för nätverksanslutning och säkerhet i Azure Kubernetes Service (AKS)
 
@@ -19,7 +19,7 @@ När du skapar och hanterar kluster i Azure Kubernetes service (AKS), ger du nä
 I den här artikeln fokuserar vi på nätverks anslutning och säkerhet för kluster operatörer. I den här artikeln kan du se hur du:
 
 > [!div class="checklist"]
-> * Jämför nätverks lägena Kubernetes och Azure CNI i AKS
+> * Jämför nätverks lägena Kubernetes och Azure Container Network Interface (CNI) i AKS
 > * Planera för nödvändig IP-adressering och anslutning
 > * Distribuera trafik med belastningsutjämnare, ingångs styrenheter eller en brand vägg för webbaserade program (WAF)
 > * Anslut säkert till klusternoder
@@ -33,11 +33,13 @@ Virtuella nätverk ger grundläggande anslutning för AKS-noder och kunder för 
 * **Kubernetes Network** – Azure hanterar de virtuella nätverks resurserna när klustret distribueras och använder [Kubernetes][kubenet] Kubernetes-pluginprogrammet.
 * **Azure cni Network** – distribuerar till ett virtuellt nätverk och använder [cni-plugin-programmet (Azure Container Network Interface)][cni-networking] . Poddar tar emot enskilda IP-adresser som kan vidarebefordra till andra nätverks tjänster eller lokala resurser.
 
-CNI (container Networking Interface) är ett oberoende protokoll som gör det möjligt för container runtime att göra förfrågningar till en nätverks leverantör. Azure-CNI tilldelar IP-adresser till poddar och noder, och tillhandahåller funktioner för IP-adress hantering (IPAM) när du ansluter till befintliga virtuella Azure-nätverk. Varje nod och Pod resurs får en IP-adress i det virtuella Azure-nätverket och ingen ytterligare Routning krävs för att kommunicera med andra resurser eller tjänster.
+För produktions distributioner är både Kubernetes och Azure CNI giltiga alternativ.
+
+### <a name="cni-networking"></a>CNI nätverk
+
+CNI (container Networking Interface) är ett oberoende protokoll som gör det möjligt för container runtime att göra förfrågningar till en nätverks leverantör. Azure-CNI tilldelar IP-adresser till poddar och noder, och tillhandahåller funktioner för IP-adress hantering (IPAM) när du ansluter till befintliga virtuella Azure-nätverk. Varje nod och Pod resurs får en IP-adress i det virtuella Azure-nätverket och ingen extra routning behövs för att kommunicera med andra resurser eller tjänster.
 
 ![Diagram som visar två noder med bryggor som ansluter var och en till ett enda Azure VNet](media/operator-best-practices-network/advanced-networking-diagram.png)
-
-För produktions distributioner är både Kubernetes och Azure CNI giltiga alternativ.
 
 En viktig fördel med Azure CNI Networking för produktion är att nätverks modellen gör det möjligt att separera kontroll och hantering av resurser. Från ett säkerhets perspektiv vill du ofta att olika team ska kunna hantera och skydda resurserna. Med Azure CNI Networking kan du ansluta till befintliga Azure-resurser, lokala resurser eller andra tjänster direkt via IP-adresser tilldelade till varje pod.
 
@@ -47,22 +49,26 @@ När du använder Azure CNI-nätverk finns den virtuella nätverks resursen i en
 
 Mer information om delegering av AKS tjänst objekt finns i [Delegera åtkomst till andra Azure-resurser][sp-delegation]. I stället för ett huvud namn för tjänsten kan du också använda systemtilldelad hanterad identitet för behörigheter. Mer information finns i [använda hanterade identiteter](use-managed-identity.md).
 
-När varje nod och Pod tar emot sin egen IP-adress ska du planera ut adress intervallen för AKS-undernätet. Under nätet måste vara tillräckligt stort för att tillhandahålla IP-adresser för varje nod, poddar och nätverks resurser som du distribuerar. Varje AKS-kluster måste placeras i sitt eget undernät. Använd inte IP-adressintervall som överlappar befintliga nätverks resurser för att tillåta anslutning till lokala eller peer-anslutna nätverk i Azure. Det finns standard gränser för antalet poddar som varje nod kör med både Kubernetes och Azure CNI-nätverk. Om du vill hantera utskalning av händelser eller kluster uppgraderingar behöver du också ytterligare IP-adresser som är tillgängliga för användning i det tilldelade under nätet. Det här ytterligare adress utrymmet är särskilt viktigt om du använder Windows Server-behållare, eftersom de noderna kräver en uppgradering för att tillämpa de senaste säkerhets korrigeringarna. Mer information om Windows Server-noder finns [i uppgradera en Node-pool i AKS][nodepool-upgrade].
+När varje nod och Pod tar emot sin egen IP-adress ska du planera ut adress intervallen för AKS-undernätet. Under nätet måste vara tillräckligt stort för att tillhandahålla IP-adresser för varje nod, poddar och nätverks resurser som du distribuerar. Varje AKS-kluster måste placeras i sitt eget undernät. Använd inte IP-adressintervall som överlappar befintliga nätverks resurser för att tillåta anslutning till lokala eller peer-anslutna nätverk i Azure. Det finns standard gränser för antalet poddar som varje nod kör med både Kubernetes och Azure CNI-nätverk. Om du vill hantera utskalning av händelser eller kluster uppgraderingar behöver du även extra IP-adresser som är tillgängliga för användning i det tilldelade under nätet. Det här extra adress utrymmet är särskilt viktigt om du använder Windows Server-behållare, eftersom de noderna kräver en uppgradering för att tillämpa de senaste säkerhets korrigeringarna. Mer information om Windows Server-noder finns [i uppgradera en Node-pool i AKS][nodepool-upgrade].
 
 Information om vilka IP-adresser som krävs finns i [Konfigurera Azure cni Networking i AKS][advanced-networking].
+
+När du skapar ett kluster med Azure CNI Networking anger du andra adress intervall som ska användas av klustret, till exempel Docker Bridge-adress, DNS-tjänstens IP-adress och tjänst adress intervall. I allmänhet bör dessa adress intervall inte överlappa varandra och ska inte överlappa några nätverk som är associerade med klustret, inklusive virtuella nätverk, undernät, lokala och peer-baserade nätverk. Mer information kring gränser och storlek för dessa adress intervall finns i [Konfigurera Azure cni-nätverk i AKS][advanced-networking].
 
 ### <a name="kubenet-networking"></a>Kubernetes nätverk
 
 Även om Kubernetes inte kräver att du konfigurerar de virtuella nätverken innan klustret distribueras, finns det några nack delar:
 
-* Noder och poddar placeras i olika IP-undernät. Användardefinierad routning (UDR) och IP-vidarebefordring används för att dirigera trafik mellan poddar och noder. Den här ytterligare routningen kan minska nätverks prestandan.
+* Noder och poddar placeras i olika IP-undernät. Användardefinierad routning (UDR) och IP-vidarebefordring används för att dirigera trafik mellan poddar och noder. Den här extra routningen kan minska nätverks prestandan.
 * Anslutningar till befintliga lokala nätverk eller peering till andra virtuella Azure-nätverk kan vara komplexa.
 
-Kubernetes är lämpligt för små utvecklings-eller test arbets belastningar eftersom du inte behöver skapa det virtuella nätverket och undernät separat från AKS-klustret. Enkla webbplatser med låg trafik, eller för att lyfta och byta arbets belastningar till behållare, kan också dra nytta av att förenkla AKS-kluster som distribueras med Kubernetes-nätverk. För de flesta produktions distributioner bör du planera för och använda Azure CNI-nätverk. Du kan också [Konfigurera egna IP-adressintervall och virtuella nätverk med Kubernetes][aks-configure-kubenet-networking].
+Kubernetes är lämpligt för små utvecklings-eller test arbets belastningar eftersom du inte behöver skapa det virtuella nätverket och undernät separat från AKS-klustret. Enkla webbplatser med låg trafik, eller för att lyfta och byta arbets belastningar till behållare, kan också dra nytta av att förenkla AKS-kluster som distribueras med Kubernetes-nätverk. För de flesta produktions distributioner bör du planera för och använda Azure CNI-nätverk.
+
+Du kan också [Konfigurera egna IP-adressintervall och virtuella nätverk med Kubernetes][aks-configure-kubenet-networking]. På liknande sätt som med Azure CNI-nätverk överlappar inte dessa adress intervall varandra och får inte överlappa några nätverk som är associerade med klustret, inklusive virtuella nätverk, undernät, lokala och peer-anslutna nätverk. Mer information kring gränser och storlek för dessa adress intervall finns i [använda Kubernetes-nätverk med dina egna IP-adressintervall i AKS][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Distribuera inkommande trafik
 
-**Metod tips** om hur du distribuerar http-eller HTTPS-trafik till dina program med hjälp av ingress-resurser och styrenheter. Ingångs styrenheter ger ytterligare funktioner via en vanlig Azure Load Balancer och kan hanteras som interna Kubernetes-resurser.
+**Metod tips** om hur du distribuerar http-eller HTTPS-trafik till dina program med hjälp av ingress-resurser och styrenheter. Ingångs styrenheter ger extra funktioner över en vanlig Azure Load Balancer och kan hanteras som interna Kubernetes-resurser.
 
 En Azure Load Balancer kan distribuera kund trafik till program i ditt AKS-kluster, men det är begränsat i vad den förstår för trafiken. En belastnings Utjämnings resurs arbetar på nivå 4 och distribuerar trafik baserat på protokoll eller portar. De flesta webb program som använder HTTP eller HTTPS bör använda Kubernetes ingress-resurser och kontrollanter som arbetar på nivå 7. Ingress kan distribuera trafik baserat på programmets URL och hantera TLS/SSL-avslutning. Den här möjligheten minskar också antalet IP-adresser som du exponerar och mappar. Med en belastningsutjämnare behöver varje program vanligt vis en offentlig IP-adress som tilldelats och mappas till tjänsten i AKS-klustret. Med en ingress-resurs kan en enskild IP-adress distribuera trafik till flera program.
 
@@ -70,7 +76,7 @@ En Azure Load Balancer kan distribuera kund trafik till program i ditt AKS-klust
 
  Det finns två komponenter för ingress:
 
- * En ingress- *resurs*och
+ * En ingress- *resurs* och
  * En ingångs *kontroll*
 
 Ingångs resursen är ett YAML manifest `kind: Ingress` som definierar värden, certifikat och regler för att dirigera trafik till tjänster som körs i ditt AKS-kluster. Följande exempel på YAML-manifest distribuerar trafik för *MyApp.com* till en av två tjänster, *blogservice* eller *storeservice*. Kunden dirigeras till en tjänst eller till en annan utifrån den URL som de har åtkomst till.

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754087"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389543"
 ---
 # <a name="about-azure-migrate"></a>Om Azure Migrate
 
@@ -121,7 +121,7 @@ Om du behöver hjälp med att komma igång har Microsoft kvalificerad [Azure exp
 Det finns två versioner av tjänsten Azure Migrate.
 
 - **Aktuell version**: Använd den här versionen för att skapa Azure Migrate projekt, identifiera lokala datorer och dirigera utvärderingar och migreringar. [Läs mer](whats-new.md) om vad som är nytt i den här versionen.
-- **Tidigare version**: den tidigare versionen av Azure Migrate stöder endast utvärdering av lokala virtuella VMware-datorer. Om du använde den tidigare versionen bör du nu använda den aktuella versionen. Du kan inte längre skapa Azure Migrate projekt med hjälp av den tidigare versionen. Och vi rekommenderar att du inte gör nya identifieringar med den.
+- **Tidigare version**: den tidigare versionen av Azure Migrate, även kallat klassisk Azure Migrate, stöder endast utvärdering av lokala virtuella VMware-datorer. Den klassiska Azure Migrate tas ur bruk i feb 2024. Efter feb 2024 kommer den klassiska versionen av Azure Migrate inte längre att stödjas och lager-metadata i klassiska projekt kommer att tas bort. Du kan inte uppgradera projekt eller komponenter i den tidigare versionen till den nya versionen. Du måste [skapa ett nytt Azure Migrate-projekt](create-manage-projects.md)och [lägga till verktyg för utvärdering och migrering](./create-manage-projects.md) i det. Använd självstudierna för att lära dig hur du använder verktyg för bedömning och migrering som är tillgängliga. Om du har en Log Analytics arbets yta som är kopplad till ett klassiskt projekt kan du koppla den till ett projekt med aktuell version när du har tagit bort det klassiska projektet.
 
     Om du vill komma åt befintliga projekt i Azure Portal söker du efter och väljer **Azure Migrate**. **Azure Migrate** -instrumentpanelen har ett meddelande och en länk för att komma åt gamla Azure Migrate-projekt.
 

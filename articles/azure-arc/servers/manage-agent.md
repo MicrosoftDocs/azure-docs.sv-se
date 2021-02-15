@@ -1,14 +1,14 @@
 ---
 title: Hantera Azure Arc-aktiverade servrar-agenten
 description: I den här artikeln beskrivs de olika hanterings aktiviteter som du vanligt vis utför under livs cykeln för Azure Arc-aktiverade servrar som är anslutna till dator agenten.
-ms.date: 01/21/2021
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cc42830fc73612e744942bdd8b353832e0ccbf2a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662134"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368463"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Hantera och underhålla den anslutna dator agenten
 
@@ -48,60 +48,17 @@ För Arc-aktiverade servrar måste du ta bort de virtuella dator tilläggen inna
 > [!WARNING]
 > Vi rekommenderar att du undviker att byta namn på datorns dator namn och bara utföra den här proceduren om det är absolut nödvändigt.
 
-Stegen nedan sammanfattar datorns namnbytes steg.
-
 1. Granska de VM-tillägg som är installerade på datorn och anteckna konfigurationen, med hjälp av [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) eller med [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed).
 
-2. Ta bort VM-tilläggen med PowerShell, Azure CLI eller från Azure Portal.
+2. Ta bort VM-tillägg som är installerade från [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension), med hjälp av [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)eller med [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension).
 
-    > [!NOTE]
-    > Om du har distribuerat Azure Monitor for VMs-agenten (insikter) eller Log Analytics agent med hjälp av en Azure Policy princip för gäst konfiguration omdistribueras agenterna efter nästa [utvärderings cykel](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) och efter att den omdöpta datorn har registrerats med ARC-aktiverade servrar.
+3. Använd **azcmagent** -verktyget med från [kopplings](manage-agent.md#disconnect) parametern för att koppla bort datorn från Azure-bågen och ta bort dator resursen från Azure. Om du kopplar från datorn från Arc-aktiverade servrar tas inte den anslutna dator agenten bort, och du behöver inte ta bort agenten som en del av den här processen. Du kan köra det här manuellt när du är inloggad interaktivt eller automatiserar användningen av samma huvud namn för tjänsten som du använde för att publicera flera agenter eller med [en åtkomsttoken för Microsoft Identity Platform.](../../active-directory/develop/access-tokens.md) Om du inte använde ett huvud namn för tjänsten för att registrera datorn med Azure Arc-aktiverade servrar, kan du läsa följande [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) för att skapa ett huvud namn för tjänsten.
 
-3. Koppla bort datorn från Arc-aktiverade servrar med PowerShell, Azure CLI eller från portalen.
+4. Byt namn på datorernas dator namn.
 
-4. Byt namn på datorn.
+5. Registrera den anslutna dator agenten på nytt med ARC-aktiverade servrar. Kör `azcmagent` verktyget med [Connect](manage-agent.md#connect) -parametern slutför det här steget.
 
-5. Anslut datorn med ARC-aktiverade servrar med `Azcmagent` verktyget för att registrera och skapa en ny resurs i Azure.
-
-6. Distribuera VM-tillägg som tidigare installerats på mål datorn.
-
-Använd följande steg för att slutföra den här uppgiften.
-
-1. Ta bort VM-tillägg som är installerade från [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension), med hjälp av [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)eller med [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension).
-
-2. Använd någon av följande metoder för att koppla bort datorn från Azure-bågen. Om du kopplar från datorn från Arc-aktiverade servrar tas inte den anslutna dator agenten bort, och du behöver inte ta bort agenten som en del av den här processen. Alla VM-tillägg som distribueras till datorn fortsätter att fungera under den här processen.
-
-    # <a name="azure-portal"></a>[Azure-portalen](#tab/azure-portal)
-
-    1. Gå till [Azure Portal](https://portal.azure.com)i webbläsaren.
-    1. I portalen bläddrar du till **servrar – Azure Arc** och väljer hybrid datorn i listan.
-    1. Välj **ta bort** från det översta fältet på den valda registrerade Arc-aktiverad servern för att ta bort resursen i Azure.
-
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    ```azurecli
-    az resource delete \
-      --resource-group ExampleResourceGroup \
-      --name ExampleArcMachine \
-      --resource-type "Microsoft.HybridCompute/machines"
-    ```
-
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-    ```powershell
-    Remove-AzResource `
-     -ResourceGroupName ExampleResourceGroup `
-     -ResourceName ExampleArcMachine `
-     -ResourceType Microsoft.HybridCompute/machines
-    ```
-
-3. Byt namn på datorns dator namn.
-
-### <a name="after-renaming-operation"></a>Efter namnbytets åtgärd
-
-När en dator har bytt namn måste den anslutna dator agenten registreras igen med ARC-aktiverade servrar. Kör `azcmagent` verktyget med [Connect](#connect) -parametern slutför det här steget.
-
-Distribuera om de VM-tillägg som ursprungligen distribuerades till datorn från Arc-aktiverade servrar. Om du har distribuerat Azure Monitor for VMs-agenten (insikter) eller Log Analytics agent med en Azure Policy princip för gäst konfiguration omdistribueras agenterna efter nästa [utvärderings cykel](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers).
+6. Distribuera om de VM-tillägg som ursprungligen distribuerades till datorn från Arc-aktiverade servrar. Om du har distribuerat Azure Monitor for VMs-agenten (insikter) eller Log Analytics agent med hjälp av en Azure-princip distribueras agenterna om efter nästa [utvärderings cykel](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers).
 
 ## <a name="upgrading-agent"></a>Uppgraderar agent
 

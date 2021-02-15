@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5477aa0c4eb2a66af816b287a8b6d7da8a53952f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ed6d5d676fd2c6eefd3288b7609446eb61611ed6
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534899"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517985"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Server koncept i Azure Database for MySQL
 
@@ -46,7 +46,7 @@ Följande element hjälper till att säkerställa säker åtkomst till din datab
 | **Brandvägg** | För att skydda dina data förhindrar en brand Väggs regel all åtkomst till din databas server tills du anger vilka datorer som har behörighet. Se [Azure Database for MySQL server brand Väggs regler](./concepts-firewall-rules.md). |
 | **SSL** | Tjänsten har stöd för att tvinga SSL-anslutningar mellan dina program och databas servern.  Se [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL](./howto-configure-ssl.md) (Konfigurera SSL-anslutning i ditt program för att säkert ansluta till Azure Database för MySQL). |
 
-## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Stoppa/starta en Azure Database for MySQL (förhands granskning)
+## <a name="stopstart-an-azure-database-for-mysql"></a>Stoppa/starta en Azure Database for MySQL
 
 Azure Database for MySQL ger dig möjlighet att **stoppa** servern när den inte används och **Starta** servern när du återupptar aktiviteten. Detta görs i grunden för att spara kostnaderna på databas servrarna och bara betala för resursen när den används. Detta blir ännu mer viktigt för arbets belastningar för utveckling och testning och när du bara använder servern för en del av dagen. När du stoppar servern kommer alla aktiva anslutningar att tas bort. Senare kan du antingen använda [Azure Portal](how-to-stop-start-server.md) eller [CLI](how-to-stop-start-server.md)när du vill ta tillbaka servern online.
 

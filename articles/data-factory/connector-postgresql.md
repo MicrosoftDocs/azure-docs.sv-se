@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från PostgreSQL med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från PostgreSQL till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d8783c4b07c8c87e57ccd9a5d65983825347c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81416752"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384103"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiera data från PostgreSQL med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -38,7 +33,7 @@ Du kan kopiera data från PostgreSQL-databasen till alla mottagar data lager som
 
 Mer specifikt stöder denna PostgreSQL-anslutning PostgreSQL **version 7,4 och senare**.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -62,7 +57,7 @@ Följande egenskaper stöds för den länkade tjänsten PostgreSQL:
 
 En typisk anslutnings sträng är `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . Fler egenskaper som du kan ställa in per ärende:
 
-| Egenskap | Beskrivning | Alternativ | Krävs |
+| Egenskap | Beskrivning | Alternativ | Obligatorisk |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| Den metod som driv rutinen använder för att kryptera data som skickas mellan driv rutinen och databas servern. T. ex.,  `EncryptionMethod=<0/1/6>;`| 0 (ingen kryptering) **(standard)** /1 (SSL)/6 (RequestSSL) | Inga |
 | ValidateServerCertificate (VSC) | Avgör om driv rutinen verifierar certifikatet som skickas av databas servern när SSL-kryptering är aktiverat (krypterings metod = 1). T. ex.,  `ValidateServerCertificate=<0/1>;`| 0 (inaktive rad) **(standard)** /1 (aktive rad) | Inga |
@@ -94,13 +89,13 @@ En typisk anslutnings sträng är `Server=<server>;Database=<database>;Port=<por
         "type": "PostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

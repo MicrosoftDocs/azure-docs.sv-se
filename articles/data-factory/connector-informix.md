@@ -1,22 +1,17 @@
 ---
 title: Kopiera data från och till IBM Informix med Azure Data Factory
 description: Lär dig hur du kopierar data från och till IBM Informix genom att använda en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95ecb44f154ab84a60a1ee673826d83fc51305b3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508817"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383508"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopiera data från och till IBM Informix med Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +27,7 @@ Den här Informix-anslutningen stöds för följande aktiviteter:
 
 Du kan kopiera data från en Informix-källa till alla mottagar data lager som stöds, eller kopiera från alla käll data lager som stöds till Informix-mottagare. En lista över data lager som stöds som källor/mottagare av kopierings aktiviteten finns i tabellen över [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda den här Informix-anslutningen måste du:
 
@@ -52,7 +47,7 @@ Följande egenskaper stöds för den länkade Informix-tjänsten:
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Typ egenskapen måste anges till: **Informix** | Ja |
-| Begär | ODBC-anslutningssträngen exklusive Credential-delen. Du kan ange anslutnings strängen eller använda system-DSN (data källans namn) som du ställer in på den Integration Runtime datorn (du behöver fortfarande ange Credential-delen i den länkade tjänsten). <br> Du kan också ange ett lösen ord i Azure Key Vault och hämta  `password`   konfigurationen från anslutnings strängen. Mer information finns [i lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md)   .| Ja |
+| Begär | ODBC-anslutningssträngen exklusive Credential-delen. Du kan ange anslutnings strängen eller använda system-DSN (data källans namn) som du ställer in på den Integration Runtime datorn (du behöver fortfarande ange Credential-delen i den länkade tjänsten). <br> Du kan också ange ett lösen ord i Azure Key Vault och hämta `password` konfigurationen från anslutnings strängen. Mer information finns [i lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) .| Ja |
 | authenticationType | Typ av autentisering som används för att ansluta till data lagret för Informix.<br/>Tillåtna värden är: **Basic** och **Anonymous**. | Ja |
 | userName | Ange användar namn om du använder grundläggande autentisering. | Inga |
 | password | Ange lösen ordet för det användar konto som du har angett för användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Inga |

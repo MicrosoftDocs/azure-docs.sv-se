@@ -1,24 +1,18 @@
 ---
 title: Skapa en Azure-datafabrik med hjälp av REST API
 description: Skapa en Azure Data Factory-pipeline för att kopiera data från en plats i Azure Blob Storage till en annan plats.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 34a2e423e06782b0d43766cccac9319ce68239d4
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 527f8d63f2a2fd5c44e187c00c0651300eb4ad9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569478"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373733"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Snabbstart: Skapa en Azure -datafabrik och pipeline med REST API
 
@@ -34,7 +28,7 @@ Den här snabbstarten beskriver hur du använder REST API till att skapa en Azur
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -410,7 +404,7 @@ Här är exempel på utdata:
         $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
         Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
 
-        if ($response.Status -eq "InProgress") {
+        if ( ($response.Status -eq "InProgress") -or ($response.Status -eq "Queued") ) {
             Start-Sleep -Seconds 15
         }
         else {

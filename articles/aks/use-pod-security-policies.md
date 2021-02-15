@@ -3,18 +3,18 @@ title: Använda Pod säkerhets principer i Azure Kubernetes service (AKS)
 description: Lär dig hur du styr Pod-inåtkomster med PodSecurityPolicy i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: 77c618429503caf9aa7bb6abda109504bbf68d71
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 02/12/2021
+ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696004"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371234"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>För hands version – skydda klustret med Pod säkerhets principer i Azure Kubernetes service (AKS)
 
 > [!WARNING]
-> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets princip (förhands granskning) har angetts för utfasning och kommer inte längre att vara tillgänglig efter den 31 maj 2021** för [Azure policy för AKS](use-pod-security-on-azure-policy.md). Utfasnings datumet har förlängts från föregående datum den 15 oktober 2020.
+> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets princip (förhands granskning) har angetts för utfasning och kommer inte längre att vara tillgänglig efter den 30 juni 2021** i [Azure policy för AKS](use-pod-security-on-azure-policy.md). Utfasnings datumet har förlängts från föregående datum den 15 oktober 2020.
 >
 > När Pod säkerhets princip (förhands granskning) är föråldrad måste du inaktivera funktionen på alla befintliga kluster med hjälp av den föråldrade funktionen för att utföra framtida kluster uppgraderingar och hålla koll på Azure-supporten.
 >

@@ -9,12 +9,12 @@ ms.date: 01/27/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 8172abb5e220f28061c7826af24a5d9a2043f4ad
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 5e08af509487188245b0fad9ba2d0f490944868f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219917"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371795"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -371,10 +371,12 @@ I vissa fall kan ett program vara beroende av Azure-resurser som inte kan isoler
 
 De typer av åtgärder som en resurs instans kan utföra på lagrings konto data bestäms av resurs instansens [Azure-roll tilldelningar](storage-auth-aad.md#assign-azure-roles-for-access-rights) . Resurs instanser måste vara från samma klient organisation som ditt lagrings konto, men de kan tillhöra alla prenumerationer i klienten.
 
-Listan med Azure-tjänster som stöds visas i avsnittet [betrodd åtkomst baserat på en hanterad identitet som tilldelats av systemet](#trusted-access-system-assigned-managed-identity) i den här artikeln.
+> [!NOTE]
+> Den här funktionen finns i en offentlig för hands version och är tillgänglig i alla offentliga moln regioner.
 
 > [!NOTE]
-> Den här funktionen finns i en offentlig för hands version och är tillgänglig i alla offentliga moln regioner. 
+> Det finns för närvarande endast stöd för resurs instans regler för Azure-Synapse. Stöd för andra Azure-tjänster som anges i avsnittet [betrodd åtkomst baserat på systemtilldelad hanterad identitet](#trusted-access-system-assigned-managed-identity) i den här artikeln är tillgängliga under de kommande veckorna.
+
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
