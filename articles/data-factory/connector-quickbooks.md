@@ -1,23 +1,18 @@
 ---
 title: Kopiera data från QuickBooks online med Azure Data Factory (för hands version)
 description: Lär dig hur du kopierar data från QuickBooks online till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: eecbcb817ad31480f8f6c3c7272328d06b17c081
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233176"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384069"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopiera data från QuickBooks online med Azure Data Factory (för hands version)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +33,7 @@ Du kan kopiera data från QuickBooks online till alla mottagar data lager som st
 
 Den här anslutningen stöder QuickBooks OAuth 2,0-autentisering.
 
-## <a name="getting-started"></a>Kom igång
+## <a name="getting-started"></a>Komma igång
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -52,15 +47,15 @@ Följande egenskaper stöds för QuickBooks-länkade tjänster:
 |:--- |:--- |:--- |
 | typ | Egenskapen Type måste anges till: **QuickBooks** | Ja |
 | connectionProperties | En grupp egenskaper som definierar hur du ansluter till QuickBooks. | Ja |
-| **_Under `connectionProperties` :_* _ | | |
+| ***Under `connectionProperties` :*** | | |
 | slutpunkt | Slut punkten för QuickBooks Online-servern. (det vill säga quickbooks.api.intuit.com)  | Ja |
 | companyId | Företags-ID för QuickBooks-företaget som ska auktoriseras. Information om hur du hittar företags-ID finns i [Hur gör jag för att hitta mitt företags-ID](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ja |
 | consumerKey | Klient-ID för ditt QuickBooks online-program för OAuth 2,0-autentisering. Läs mer [här](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). | Ja |
 | consumerSecret | Klient hemligheten för ditt QuickBooks online-program för OAuth 2,0-autentisering. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | refreshToken | OAuth 2,0-uppdateringstoken som är associerad med QuickBooks-programmet. Läs mer [här](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Observera att uppdateringstoken upphör att gälla efter 180 dagar. Kunden måste regelbundet uppdatera uppdateringstoken. <br/>Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md).| Ja |
-| useEncryptedEndpoints | Anger om data källans slut punkter krypteras med HTTPS. Standardvärdet är True.  | Nej |
+| useEncryptedEndpoints | Anger om data källans slut punkter krypteras med HTTPS. Standardvärdet är True.  | Inga |
 
-_ *Exempel:**
+**Exempel:**
 
 ```json
 {

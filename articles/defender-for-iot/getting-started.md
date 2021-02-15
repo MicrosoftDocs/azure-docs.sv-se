@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/26/2020
 ms.author: shhazam
-ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 06cf8b5f35bdebed0ebaa9e6949261d7c0d516f2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807893"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522571"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Kom igång med Defender för IoT
 
@@ -126,9 +126,8 @@ Mer information finns i [ansluta sensorer till den lokala hanterings konsolen](h
 ## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. Fyll i Azure Sentinel med varnings information (valfritt)
 
 Skicka aviserings information till Azure Sentinel genom att konfigurera Azure Sentinel. Se [Anslut dina data från Defender för IoT till Azure Sentinel](how-to-configure-with-sentinel.md).
+## <a name="next-steps"></a>Nästa steg
 
-## <a name="see-also"></a>Se även
+[Välkommen till Azure Defender för IoT](overview.md)
 
-- [Välkommen till Azure Defender för IoT](overview.md)
-
-- [Azure Defender för IoT-arkitektur](architecture.md)
+[Azure Defender för IoT-arkitektur](architecture.md)

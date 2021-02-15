@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219731"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517305"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Säkerhets kopiering och återställning i Azure Database for PostgreSQL-enskild server
 
@@ -66,7 +66,7 @@ Det finns två typer av återställning:
 - **Återställning av tidpunkt** är tillgängligt med alternativ för redundans och skapar en ny server i samma region som den ursprungliga servern.
 - **Geo-återställning** är bara tillgängligt om du har konfigurerat servern för Geo-redundant lagring och du kan återställa servern till en annan region.
 
-Den uppskattade återställnings tiden beror på flera faktorer, till exempel databasens storlek, transaktions loggens storlek, nätverks bandbredden och det totala antalet databaser som återställs i samma region på samma tid. Återställnings tiden är vanligt vis mindre än 12 timmar.
+Den uppskattade återställnings tiden beror på flera faktorer, till exempel databasens storlek, transaktions loggens storlek, nätverks bandbredden och det totala antalet databaser som återställs i samma region på samma tid. Återställnings tiden varierar beroende på den senaste data säkerhets kopieringen och mängden återställning som måste utföras. Det är vanligt vis mindre än 12 timmar.
 
 > [!NOTE] 
 > Om din käll PostgreSQL-Server är krypterad med Kundhanterade nycklar kan du läsa [dokumentationen](concepts-data-encryption-postgresql.md) för ytterligare överväganden. 

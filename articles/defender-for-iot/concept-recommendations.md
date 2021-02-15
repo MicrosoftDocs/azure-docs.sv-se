@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: d11154e26e2ffe97a1ea102a11dddb746db9433a
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809277"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521874"
 ---
 # <a name="security-recommendations"></a>Säkerhetsrekommendationer
 
@@ -31,7 +31,7 @@ I den här artikeln hittar du en lista över rekommendationer som kan utlösas p
 
 Enhets rekommendationer ger insikter och förslag för att förbättra position för enhets säkerhet.
 
-| Allvarlighetsgrad | Name | Datakälla | Description |
+| Allvarlighetsgrad | Namn | Datakälla | Beskrivning |
 |--|--|--|--|
 | Medel | Öppna portar på enheten | Klassisk säkerhetsmodul | En lyssnande slut punkt hittades på enheten. |
 | Medel | Princip för att tillåta brand vägg hittas i en av kedjorna. | Klassisk säkerhetsmodul | Tillåten brand Väggs princip hittades (indata/utdata). Brand Väggs principen bör neka all trafik som standard och definiera regler för att tillåta nödvändig kommunikation till/från enheten. |
@@ -43,7 +43,7 @@ Enhets rekommendationer ger insikter och förslag för att förbättra position 
 
 Drift rekommendationer ger insikter och förslag för att förbättra konfigurationen av säkerhets agenten.
 
-| Allvarlighetsgrad | Name | Datakälla | Description |
+| Allvarlighetsgrad | Namn | Datakälla | Beskrivning |
 |--|--|--|--|
 | Låg | Agent skickar meddelanden som inte används | Klassisk säkerhetsmodul | 10% eller flera säkerhets meddelanden var mindre än 4 KB under de senaste 24 timmarna. |
 | Låg | Säkerhet, dubbel konfiguration inte optimal | Klassisk säkerhetsmodul | En dubbel säkerhets konfiguration är inte optimalt. |
@@ -54,13 +54,12 @@ Drift rekommendationer ger insikter och förslag för att förbättra konfigurat
 
 Rekommendations aviseringar ger insikter och förslag på åtgärder för att förbättra position säkerhets miljö.
 
-| Allvarlighetsgrad | Name | Datakälla | Description |
+| Allvarlighetsgrad | Namn | Datakälla | Beskrivning |
 |--|--|--|--|
 | Högt | Identiska autentiseringsuppgifter för autentisering används av flera enheter | IoT Hub | IoT Hub autentiseringsuppgifter för autentisering används av flera enheter. Den här processen kan tyda på en Illegitimate-enhet som personifierar en legitim enhet. Dubblett av autentiseringsuppgifter ökar risken för personifiering av enheter av en skadlig aktör. |
 | Medel | Standard princip för IP-filter ska nekas | IoT Hub | IP-filterlistan måste ha definierade regler för tillåten trafik och ska som standard neka all annan trafik som standard. |
 | Medel | IP-filterlistan innehåller stora IP-intervall | IoT Hub | En Tillåt källa för IP-filterlistan är för stor. Överskrivna regler kan exponera IoT-hubben för skadliga aktörer. |
 | Låg | Aktivera diagnostikloggar i IoT Hub | IoT Hub | Aktivera loggar och behåll dem i upp till ett år. Om du behåller loggarna kan du återskapa aktivitets spårningar i utrednings syfte när en säkerhets incident inträffar eller nätverket komprometteras. |
-
 
 ## <a name="next-steps"></a>Nästa steg
 

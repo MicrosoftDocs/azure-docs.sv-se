@@ -1,22 +1,18 @@
 ---
 title: Kopiera en tabell stegvis med Azure Portal
 description: I den här självstudien skapar du en Azure Data Factory med en pipeline som läser in delta data från en tabell i Azure SQL Database till Azure Blob Storage.
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1f88571b407c138516568a7f74476ca35425da75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508534"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384698"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Läs in data stegvis från Azure SQL Database till Azure Blob Storage med hjälp av Azure Portal
 
@@ -64,7 +60,7 @@ Här är några viktiga steg för att skapa den här lösningen:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * **Azure SQL Database**. Du använder databasen som källa för datalagringen. Om du inte har en databas i Azure SQL Database, se [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) för att skapa en.
 * **Azure Storage**. Du kan använda blob-lagringen som mottagare för datalagringen. Om du inte har ett lagringskonto finns det anvisningar om hur du skapar ett i [Skapa ett lagringskonto](../storage/common/storage-account-create.md). Skapa en container med namnet adftutorial. 
 

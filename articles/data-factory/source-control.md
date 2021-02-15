@@ -1,22 +1,18 @@
 ---
 title: Källkontroll
 description: Lär dig hur du konfigurerar käll kontroll i Azure Data Factory
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 5bf1877edaa6c13cb0c645eb2d1c7ec2dc53ad00
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127744"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392450"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Käll kontroll i Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -30,7 +26,7 @@ Som standard redigerar Azure Data Factory användar gränssnitts upplevelsen (UX
 För att ge en bättre redigerings upplevelse kan Azure Data Factory konfigurera en git-lagringsplats med antingen Azure-databaser eller GitHub. Git är ett versions kontroll system som möjliggör enklare ändrings spårning och samarbete. Den här artikeln beskriver hur du konfigurerar och arbetar i en git-lagringsplats tillsammans med att markera bästa praxis och en fel söknings guide.
 
 > [!NOTE]
-> Azure Data Factory git-integrering är bara tillgängligt för GitHub Enterprise i Azure Government molnet.
+> För Azure Government Cloud är endast GitHub Enterprise tillgängligt.
 
 Om du vill veta mer om hur Azure Data Factory integreras med git kan du läsa 15-minuters självstudie video nedan:
 

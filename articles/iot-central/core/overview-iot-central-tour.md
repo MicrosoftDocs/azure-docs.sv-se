@@ -1,26 +1,26 @@
 ---
 title: Ta en rundtur i Azure IoT Central-användargränssnittet | Microsoft Docs
 description: Bekanta dig med viktiga områden i Azure IoT Central UI som du använder för att skapa, hantera och använda din IoT-lösning.
-author: lmasieri
-ms.author: lmasieri
-ms.date: 12/09/2019
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 02/09/2021
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c07d247358d980152648fdf7f702c8efcb72bab9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c702cb16267d5495feedd8d361092b23b6d4deac
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90020081"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372473"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ta en rundtur i Azure IoT Central-användargränssnittet
 
 Den här artikeln beskriver Microsoft Azure IoT Central-användargränssnittet. Du kan använda gränssnittet till att skapa, hantera och använda en Azure IoT Central-lösning och dess anslutna enheter.
 
-Som _Solution Builder_använder du Azure IoT Central-användargränssnittet för att definiera din Azure IoT Central-lösning. Du kan använda användargränssnittet till att:
+Som _Solution Builder_ använder du Azure IoT Central-användargränssnittet för att definiera din Azure IoT Central-lösning. Du kan använda användargränssnittet till att:
 
 * ange vilka enhetstyper som kan ansluta till din lösning
 * konfigurera regler och åtgärder för dina enheter 
@@ -37,14 +37,13 @@ Som _operatör_ använder du Azure IoT Central-användargränssnittet till att h
 
 Sidan [IoT Central start](https://aka.ms/iotcentral-get-started) sida är den plats där du kan lära dig mer om de senaste nyheterna och funktionerna som finns på IoT Central, skapa nya program och se och starta ditt befintliga program.
 
-> [!div class="mx-imgBorder"]
-> ![IoT Central start sida](media/overview-iot-central-tour/iot-central-homepage-pnp.png)
+:::image type="content" source="media/overview-iot-central-tour/iot-central-homepage.png" alt-text="IoT Central start sida":::
 
 ### <a name="create-an-application"></a>Skapa ett program
 
 I avsnittet build kan du bläddra i listan över bransch relevanta IoT Central mallar som hjälper dig att komma igång snabbt eller börja från början med en anpassad app-mall.  
-> [!div class="mx-imgBorder"]
-> ![IoT Central Bygg sida](media/overview-iot-central-tour/iot-central-build-pnp.png)
+
+:::image type="content" source="media/overview-iot-central-tour/iot-central-build.png" alt-text="IoT Central Bygg sida":::
 
 Mer information finns i snabb starten för att [skapa ett Azure IoT Central-program](quick-deploy-iot-central.md) .
 
@@ -52,8 +51,7 @@ Mer information finns i snabb starten för att [skapa ett Azure IoT Central-prog
 
 Du kan starta ditt IoT Central-program genom att gå till URL: en som du eller Solution Builder väljer när du skapar en app. Du kan också se en lista över alla program som du har åtkomst till i [IoT Central App Manager](https://aka.ms/iotcentral-apps).
 
-> [!div class="mx-imgBorder"]
-> ![IoT Central App Manager](media/overview-iot-central-tour/app-manager-pnp.png)
+:::image type="content" source="media/overview-iot-central-tour/app-manager.png" alt-text="IoT Central App Manager":::
 
 ## <a name="navigate-your-application"></a>Navigera i ditt program
 
@@ -64,11 +62,11 @@ När du är i IoT-programmet använder du den vänstra rutan för att få åtkom
 
 :::row:::
   :::column span="":::
-      > [!div class="mx-imgBorder"]
-      > ![vänster fönster](media/overview-iot-central-tour/navigationbar-pnp.png)
+      :::image type="content" source="media/overview-iot-central-tour/navigation-bar.png" alt-text="vänster fönster":::
+
   :::column-end:::
   :::column span="2":::
-     **Instrument** panelen visar din program instrument panel. Som *Solution Builder*kan du anpassa den globala instrument panelen för dina operatörer. Beroende på deras användar roll kan operatörer även skapa egna personliga instrument paneler.
+     **Instrument** panelen visar din program instrument panel. Som *Solution Builder* kan du anpassa den globala instrument panelen för dina operatörer. Beroende på deras användar roll kan operatörer även skapa egna personliga instrument paneler.
      
      Med **enheter** kan du hantera anslutna enheter – verkliga och simulerade enheter.
 
@@ -95,8 +93,7 @@ När du är i IoT-programmet använder du den vänstra rutan för att få åtkom
 
 Den översta menyn visas på varje sida:
 
-> [!div class="mx-imgBorder"]
-> ![Verktygsfält](media/overview-iot-central-tour/toolbar-pnp.png)
+:::image type="content" source="media/overview-iot-central-tour/toolbar.png" alt-text="IoT Central verktygsfält":::
 
 * Ange **ett** sökvärde om du vill söka efter enhets mallar och enheter.
 * Om du vill ändra språket eller temat för användar gränssnittet väljer du ikonen **Inställningar** . Läs mer om hur [du hanterar dina program inställningar](howto-manage-preferences.md)
@@ -108,21 +105,19 @@ Du kan välja mellan ett ljust eller ett mörkt tema för användargränssnittet
 > [!NOTE]
 > Alternativet att välja mellan ljust och mörkt teman är inte tillgängligt om administratören har konfigurerat ett anpassat tema för programmet.
 
-> [!div class="mx-imgBorder"]
-> ![Välja ett tema för användargränssnittet](media/overview-iot-central-tour/themes-pnp.png)
+:::image type="content" source="media/overview-iot-central-tour/themes.png" alt-text="Skärm bild av IoT Central välja ett tema.":::
 
 ### <a name="dashboard"></a>Instrumentpanel
-> [!div class="mx-imgBorder"]
-> ![Instrumentpanel](media/overview-iot-central-tour/dashboard-pnp.png)
 
-* Instrument panelen är den första sidan som visas när du loggar in på ditt Azure IoT Central-program. Som *Solution Builder*kan du skapa och anpassa flera globala program instrument paneler för andra användare. Lär dig mer om att [lägga till paneler på din instrument panel](howto-add-tiles-to-your-dashboard.md)
+:::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="Skärm bild av IoT Central instrument panel.":::
+
+* Instrument panelen är den första sidan som visas när du loggar in på ditt Azure IoT Central-program. Som *Solution Builder* kan du skapa och anpassa flera globala program instrument paneler för andra användare. Lär dig mer om att [lägga till paneler på din instrument panel](howto-add-tiles-to-your-dashboard.md)
 
 * Som *operatör*, om din användar roll tillåter det, kan du skapa personliga instrument paneler för att övervaka vad du bryr dig om. Mer information finns i artikeln [Skapa Azure IoT Central personliga instrument paneler](howto-create-personal-dashboards.md) instruktioner.
 
 ### <a name="devices"></a>Enheter
 
-> [!div class="mx-imgBorder"]
-> ![Sidan enheter](media/overview-iot-central-tour/devices-pnp.png)
+:::image type="content" source="Media/overview-iot-central-tour/devices.png" alt-text="Skärm bild av sidan enheter.":::
 
 På utforskningssidan visas de _enheter_ som finns i ditt Azure IoT Central-program grupperade efter _enhetsmall_. 
 
@@ -133,35 +128,30 @@ Mer information finns i [övervaka dina enheter](./quick-monitor-devices.md) sna
 
 ### <a name="device-groups"></a>Enhetsgrupper
 
-> [!div class="mx-imgBorder"]
-> ![Sidan enhets grupper](media/overview-iot-central-tour/device-groups-pnp.png)
+:::image type="content" source="Media/overview-iot-central-tour/device-groups.png" alt-text="Sidan enhets grupp":::
 
 Enhets grupp är en samling relaterade enheter. En *Solution Builder* definierar en fråga för att identifiera de enheter som ingår i en enhets grupp. Du kan använda enhets grupper för att utföra Mass åtgärder i ditt program. Läs mer i [använda enhets grupper i Azure IoT Central program](tutorial-use-device-groups.md) -artikeln.
 
 ### <a name="rules"></a>Regler
-> [!div class="mx-imgBorder"]
-> ![Sidan Regler](media/overview-iot-central-tour/rules-pnp.png)
+:::image type="content" source="Media/overview-iot-central-tour/rules.png" alt-text="Skärm bild av sidan regler.":::
 
 På sidan regler kan du definiera regler baserat på enheternas telemetri, tillstånd eller händelser. När en regel utlöses kan den utlösa en eller flera åtgärder, till exempel att skicka ett e-postmeddelande, meddela ett externt system via webhook-aviseringar osv. Mer information finns i själv studie kursen [Konfigurera regler](tutorial-create-telemetry-rules.md) . 
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>Analys
 
-> [!div class="mx-imgBorder"]
-> ![Analyssidan](media/overview-iot-central-tour/analytics-pnp.png)
+:::image type="content" source="Media/overview-iot-central-tour/analytics.png" alt-text="Skärm bild av Analytics-sidan.":::
 
 Med Analytics kan du skapa anpassade vyer ovanpå enhets data för att få insikter från ditt program. Mer information finns i artikeln [skapa analyser för ditt Azure IoT Central-program](howto-create-analytics.md) .
 
 ### <a name="jobs"></a>Jobb
 
-> [!div class="mx-imgBorder"]
-> ![Sidan Jobb](media/overview-iot-central-tour/jobs-pnp.png)
+:::image type="content" source="Media/overview-iot-central-tour/jobs.png" alt-text="Sidan jobb":::
 
 På sidan jobb kan du köra hanterings åtgärder för flera enheter på dina enheter. Du kan uppdatera enhets egenskaper, inställningar och köra kommandon mot enhets grupper. Mer information finns i artikeln [Köra ett jobb](howto-run-a-job.md).
 
 ### <a name="device-templates"></a>Enhetsmallar
 
-> [!div class="mx-imgBorder"]
-> ![Sidan enhets mallar](media/overview-iot-central-tour/templates-pnp.png)
+:::image type="content" source="Media/overview-iot-central-tour/templates.png" alt-text="Skärm bild av enhets mallar.":::
 
 Sidan för enhetsmallar är där en byggare skapar och hanterar enhetsmallarna i programmet. En enhets mal len anger enhets egenskaper som:
 
@@ -175,14 +165,14 @@ Sidan för enhetsmallar är där en byggare skapar och hanterar enhetsmallarna i
 Mer information finns i självstudien om att [definiera en ny enhetstyp i Azure IoT Central-programmet](howto-set-up-template.md). 
 
 ### <a name="data-export"></a>Dataexport
-> [!div class="mx-imgBorder"]
-> ![Sidan data export](media/overview-iot-central-tour/export-pnp.png)
+
+:::image type="content" source="Media/overview-iot-central-tour/export.png" alt-text="Data export":::
 
 Med data export kan du konfigurera data strömmar, till exempel telemetri, från programmet till externa system. Mer information finns i artikeln om att [exportera dina data i Azure IoT Central](./howto-export-data.md).
 
 ### <a name="administration"></a>Administration
-> [!div class="mx-imgBorder"]
-> ![Sidan Administration](media/overview-iot-central-tour/administration-pnp.png)
+
+:::image type="content" source="media/overview-iot-central-tour/administration.png" alt-text="Skärm bild av IoT-administration.":::
 
 På sidan Administration kan du konfigurera och anpassa ditt IoT Central-program. Här kan du ändra ditt program namn, URL, de, hantera användare och roller, skapa API-token och exportera ditt program. Mer information finns i artikeln om att [administrera ditt Azure IoT Central-program](howto-administer.md).
 

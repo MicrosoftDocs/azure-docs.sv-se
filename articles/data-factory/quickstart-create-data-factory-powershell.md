@@ -1,24 +1,18 @@
 ---
 title: Kopiera data i Blob Storage med Azure Data Factory
 description: Skapa en Azure Data Factory med PowerShell för att kopiera data från en plats i Azure Blob Storage till en annan plats.
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9f419d89a9757a11055781335cbf98e9eb651548
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013371"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372730"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snabb start: skapa en Azure Data Factory med PowerShell
 
@@ -40,6 +34,9 @@ I den här snabb starten beskrivs hur du använder PowerShell för att skapa en 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Installera de senaste Azure PowerShell-modulerna enligt instruktionerna i [Installera och konfigurera Azure PowerShell](/powershell/azure/install-Az-ps).
+
+>[!WARNING]
+>Om du inte använder de senaste versionerna av PowerShell och Data Factory modul kan du köra fel vid deserialisering när du kör kommandona. 
 
 #### <a name="log-in-to-powershell"></a>Logga in på PowerShell
 
@@ -65,7 +62,7 @@ Installera de senaste Azure PowerShell-modulerna enligt instruktionerna i [Insta
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
-1. Definiera en variabel för resursgruppens namn som du kan använda senare i PowerShell-kommandon. Kopiera följande kommandotext till PowerShell, ange ett namn för [Azure-resursgruppen](../azure-resource-manager/management/overview.md), sätt dubbla citattecken omkring namnet och kör sedan kommandot. Till exempel: `"ADFQuickStartRG"`.
+1. Definiera en variabel för resursgruppens namn som du kan använda senare i PowerShell-kommandon. Kopiera följande kommandotext till PowerShell, ange ett namn för [Azure-resursgruppen](../azure-resource-manager/management/overview.md), sätt dubbla citattecken omkring namnet och kör sedan kommandot. Exempel: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
@@ -136,7 +133,7 @@ Skapa länkade tjänster i en datafabrik för att länka ditt datalager och ber�
     }
     ```
 
-    Om du använder Anteckningar ska du välja **Alla filer** för det **filformat** som anges i dialogrutan **Spara som**. Annars kan tillägget `.txt` läggas till för filen. Exempelvis `AzureStorageLinkedService.json.txt`. Om du skapar en fil i Utforskaren innan du öppnar den i Anteckningar kanske du inte ser tillägget `.txt` eftersom alternativet för att **dölja tillägg för alla kända filtyper** är valt som standard. Ta bort tillägget `.txt` innan du fortsätter till nästa steg.
+    Om du använder Anteckningar ska du välja **Alla filer** för det **filformat** som anges i dialogrutan **Spara som**. Annars kan tillägget `.txt` läggas till för filen. Till exempel `AzureStorageLinkedService.json.txt`. Om du skapar en fil i Utforskaren innan du öppnar den i Anteckningar kanske du inte ser tillägget `.txt` eftersom alternativet för att **dölja tillägg för alla kända filtyper** är valt som standard. Ta bort tillägget `.txt` innan du fortsätter till nästa steg.
 
 2. I **PowerShell** växlar du till mappen **ADFv2QuickStartPSH**.
 
@@ -341,12 +338,12 @@ $RunId = Invoke-AzDataFactoryV2Pipeline `
             -PipelineRunId $RunId
 
         if ($Run) {
-            if ($run.Status -ne 'InProgress') {
+            if ( ($Run.Status -ne "InProgress") -and ($Run.Status -ne "Queued") ) {
                 Write-Output ("Pipeline run finished. The status is: " +  $Run.Status)
                 $Run
                 break
             }
-            Write-Output "Pipeline is running...status: InProgress"
+            Write-Output ("Pipeline is running...status: " + $Run.Status)
         }
 
         Start-Sleep -Seconds 10

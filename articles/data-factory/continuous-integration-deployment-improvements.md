@@ -1,22 +1,18 @@
 ---
 title: Automatiserad publicering för kontinuerlig integrering och leverans
 description: Lär dig hur du publicerar för kontinuerlig integrering och leverans automatiskt.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: maghan
-manager: weetok
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 7b9e07c6bd2cb52858550fe5c34b2660c4d977eb
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b5becd8ddaf74ab2acd059054a095ce9d21c178f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99431287"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366848"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatiserad publicering för kontinuerlig integrering och leverans
 
@@ -26,7 +22,7 @@ ms.locfileid: "99431287"
 
 Kontinuerlig integrering är en metod för att testa varje ändring av kodbasen automatiskt och så snart som möjligt kontinuerlig leverans följer testerna som sker under kontinuerlig integrering och skickar ändringar till ett mellanlagrings-eller produktions system.
 
-I Azure Data Factory innebär kontinuerlig integrering och leverans (CI/CD) flytt av Data Factory pipelines från en miljö (utveckling, testning, produktion) till en annan. Azure Data Factory använder [Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md) för att lagra konfigurationen av dina olika ADF-enheter (pipelines, data uppsättningar, data flöden osv.). Det finns två föreslagna metoder för att flytta en data fabrik till en annan miljö:
+I Azure Data Factory innebär kontinuerlig integrering och leverans (CI/CD) flytt av Data Factory-pipelines från en miljö (utveckling, testning, produktion) till en annan. Azure Data Factory använder [Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md) för att lagra konfigurationen av dina olika ADF-enheter (pipelines, data uppsättningar, data flöden osv.). Det finns två föreslagna metoder för att flytta en data fabrik till en annan miljö:
 
 - Automatiserad distribution med hjälp av Data Factorys integrering med [Azure-pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines).
 - Ladda upp en Resource Manager-mall manuellt med hjälp av Data Factory UX-integrering med Azure Resource Manager.

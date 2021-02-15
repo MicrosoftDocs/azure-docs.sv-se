@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 60b5a2bf5c0aed3d1a4621e179429a157c2a0962
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: db59a9e7693190582736b9460658f629f4f1e555
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99421580"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369636"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Självstudie: förbereda en webbapp för Azure Communication Services (Node.js)
 
@@ -106,11 +106,25 @@ Följ samma steg för [Azure Functions](https://marketplace.visualstudio.com/ite
 
 ## <a name="set-up-a-local-webserver"></a>Konfigurera en lokal webserver
 
+### <a name="create-a-new-npm-package"></a>Skapa ett nytt NPM-paket
+
+I terminalen, från sökvägen till din arbets yta, skriver du:
+
+``` console
+npm init -y
+```
+
+Det här kommandot initierar ett nytt NPM-paket och lägger till `package.json` i rotmappen i projektet.
+
+:::image type="content" source="./media/step-one-pic-eight.png" alt-text="Paket-JSON":::
+
+Ytterligare dokumentation om NPM init-kommandot hittar du [här](https://docs.npmjs.com/cli/v6/commands/npm-init)
+
 ### <a name="install-webpack"></a>Installera WebPack
 
 med [WebPack](https://webpack.js.org/) kan du paketera kod i statiska filer som du kan distribuera till Azure. Den har också en utvecklings server som vi ska konfigurera för att använda med det anropande exemplet.
 
-Skriv följande i den öppna terminalen för att installera WebPack:
+I terminalen skriver du följande för att installera WebPack:
 
 ``` Console
 npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
@@ -175,7 +189,7 @@ Käll mappnings alternativ visas [här](https://webpack.js.org/configuration/dev
 
 :::image type="content" source="./media/step-one-pic-11.png" alt-text="Konfigurerar WebPack":::
 
-Om du vill köra utvecklings servern går du till `package.json.js` och lägger till följande kod under skript:
+Om du vill köra utvecklings servern går du till `package.json` och lägger till följande kod under skript:
 
 ```JavaScript
     "build:dev": "webpack-dev-server --config webpack.dev.js"
@@ -206,7 +220,7 @@ Filen bör nu se ut så här:
 
 Du har lagt till kommandot som kan användas från NPM. 
 
-:::image type="content" source="./media/step-one-pic-12.png" alt-text="Ändra package-json.js":::
+:::image type="content" source="./media/step-one-pic-12.png" alt-text="Ändra package.jspå":::
 
 ### <a name="testing-the-development-server"></a>Testa utvecklings servern
 
@@ -261,7 +275,7 @@ Använd följande Terminal-kommando för att testa utvecklings konfigurationen:
 npm run build:dev
 ```
 
-I-konsolen visas var servern körs. Som standard är det `http://localhost:8080` . Kommandot build: dev är kommandot som vi lade till `package-json.js` tidigare.
+I-konsolen visas var servern körs. Som standard är det `http://localhost:8080` . Kommandot build: dev är kommandot som vi lade till `package.json` tidigare.
 
  :::image type="content" source="./media/step-one-pic-16.png" alt-text="Starta en utvecklings Server":::
  
@@ -289,26 +303,11 @@ Den här åtgärden lägger till vanliga och anropande paket för Azure Communic
 
 :::image type="content" source="./media/step-one-pic-nine.png" alt-text="Installera Azure Communication Services-paket":::
 
-De här paketen tillhandahålls av Azure Communication Services-teamet och inkluderar autentiserings-och anrops bibliotek. Kommandot "--Save" signalerar att vårt program är beroende av dessa paket för produktions användning och kommer att ingå i `dependencies` vår `package-json.js` fil. När vi bygger programmet för produktion ingår paketen i produktions koden.
+De här paketen tillhandahålls av Azure Communication Services-teamet och inkluderar autentiserings-och anrops bibliotek. Kommandot "--Save" signalerar att vårt program är beroende av dessa paket för produktions användning och kommer att ingå i `dependencies` vår `package.json` fil. När vi bygger programmet för produktion ingår paketen i produktions koden.
 
 
 ## <a name="publish-your-website-to-azure-static-websites"></a>Publicera din webbplats på Azures statiska webbplatser
 
-### <a name="create-a-new-npm-package"></a>Skapa ett nytt NPM-paket
-
-I terminalen, från sökvägen till din arbets yta, skriver du:
-
-``` console
-npm init -y
-```
-
-Det här kommandot initierar ett nytt NPM-paket och lägger till `package.json` i rotmappen i projektet.
-
-:::image type="content" source="./media/step-one-pic-eight.png" alt-text="Paket-JSON":::
-
-Ytterligare dokumentation om NPM init-kommandot hittar du [här](https://docs.npmjs.com/cli/v6/commands/npm-init)
-
- 
 ### <a name="create-a-configuration-for-production-deployment"></a>Skapa en konfiguration för produktions distribution
 
 Lägg till följande kod i `webpack.prod.js` :

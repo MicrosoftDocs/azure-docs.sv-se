@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 6d6f56fb47bfdaadc6704e2a13ebcf0e893b8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ad0e73a90e733af0dd752100ebc71908f68181a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602361"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388489"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>Hantera resurser som har skapats för flytt av virtuella datorer
 
@@ -28,7 +28,7 @@ Ta bort flyttnings samlingen manuellt och Site Recovery resurser som skapats fö
 2. Kontrol lera att den virtuella datorn och alla andra käll resurser i flyttnings samlingen har flyttats/tagits bort. Detta säkerställer att det inte finns några väntande resurser som använder dem.
 2. Ta bort dessa resurser.
 
-    - Namnet på flyttnings samlingen är ```movecollection-<sourceregion>-<target-region>``` .
+    - Namnet på flyttnings samlingen är ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` .
     - Namnet på cachens lagrings konto är ```resmovecache<guid>```
     - Valv namnet är ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
 

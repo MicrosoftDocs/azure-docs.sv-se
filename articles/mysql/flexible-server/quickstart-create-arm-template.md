@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 5be0bf21514dd92c2f980081bb57d873895bbb91
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: def9e4f1b3f1c4e8f88f77dfe6906a8c96a94744
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099939"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389475"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Snabb start: Använd en ARM-mall för att skapa en Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -204,22 +204,6 @@ read serverName &&
 echo "Enter the resource group where the Azure Database for MySQL server exists:" &&
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
-```
-## <a name="exporting-arm-template-from-the-portal"></a>Exportera ARM-mall från portalen
-Du kan [Exportera en arm-mall](../../azure-resource-manager/templates/export-template-portal.md) från Azure Portal. Det finns två sätt att exportera en mall:
-
-- [Exportera från resurs grupp eller resurs](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Med det här alternativet skapas en ny mall från befintliga resurser. Den exporterade mallen är en "ögonblicks bild" av resurs gruppens aktuella tillstånd. Du kan exportera en hel resurs grupp eller vissa resurser inom den resurs gruppen.
-- [Exportera före distribution eller från historik](../../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Med det här alternativet hämtas en exakt kopia av en mall som används för distribution.
-
-När du exporterar mallen i ```"parameters":{ }``` avsnittet i mallen ser du att ```administratorLogin``` och ```administratorLoginPassword``` kommer inte att inkluderas av säkerhets skäl. Du **måste** lägga till de här parametrarna i mallen innan du distribuerar mallen, annars Miss kommer mallen.
-
-```
-"administratorLogin": {
-      "type": "String"
-    },
-"administratorLoginPassword": {
-      "type": "SecureString"
-    },
 ```
 
 ## <a name="clean-up-resources"></a>Rensa resurser

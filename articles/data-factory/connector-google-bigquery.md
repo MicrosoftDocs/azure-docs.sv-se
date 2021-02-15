@@ -1,23 +1,18 @@
 ---
 title: Kopiera data från Google BigQuery med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från Google BigQuery till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Data Factory-pipeline.
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3fcaa6c1542578d983461623da743724a3114d9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417324"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389696"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopiera data från Google BigQuery med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -58,7 +53,7 @@ Följande egenskaper stöds för den länkade Google BigQuery-tjänsten.
 
 ### <a name="using-user-authentication"></a>Använda användarautentisering
 
-Ange egenskapen "authenticationType" till **UserAuthentication**och ange följande egenskaper tillsammans med allmänna egenskaper som beskrivs i föregående avsnitt:
+Ange egenskapen "authenticationType" till **UserAuthentication** och ange följande egenskaper tillsammans med allmänna egenskaper som beskrivs i föregående avsnitt:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
@@ -94,7 +89,7 @@ Ange egenskapen "authenticationType" till **UserAuthentication**och ange följan
 
 ### <a name="using-service-authentication"></a>Använda tjänsteautentisering
 
-Ange egenskapen "authenticationType" till **ServiceAuthentication**och ange följande egenskaper tillsammans med allmänna egenskaper som beskrivs i föregående avsnitt. Den här autentiseringstypen kan endast användas på egna värdbaserade Integration Runtime.
+Ange egenskapen "authenticationType" till **ServiceAuthentication** och ange följande egenskaper tillsammans med allmänna egenskaper som beskrivs i föregående avsnitt. Den här autentiseringstypen kan endast användas på egna värdbaserade Integration Runtime.
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |

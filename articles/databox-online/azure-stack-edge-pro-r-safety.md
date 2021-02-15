@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: cc24839396116a5b581758b29b087c237a6f902b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981348"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363074"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Instruktioner för Azure Stack Edge Pro R-säkerhet
 
@@ -27,14 +27,14 @@ Läs all säkerhets information i den här artikeln innan du använder din Azure
 
 Följande signal ord för varnings signaler är:
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Risk:** Indikerar en farlig situation som, om de inte undviks, leder till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till mindre eller måttlig skada.|
 |
 
 Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azure Stack Edge Pro R Edge-enhet:
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Läs alla instruktioner först](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Läs alla instruktioner först |
 | ![Meddelande Ikons ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **meddelande:** | Anger information som anses viktig, men inte risk relaterad. || ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Varnings symbol |
@@ -134,6 +134,7 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
 
 * För system utan en oavbruten strömförsörjning (UPS) avkopplar du alla AC-kablar för att helt ta bort AC-strömmen från utrustningen.
 * För system med UPS kopplar du från alla AC-sladdar och använder UPS-Förstärk för att ta bort systemet. UPS innehåller farliga nät och DC-spänningar.
+* Om ett system innehåller en UPS, tillhandahölls UPS-enheten med en skärmad ström kabel för indata. Du måste använda skärm kabeln för skärmade inströms läge, Ersätt eller ändra inte kabeln.
 
 ![Varnings ikon varnings ikon för ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
  ![ elektrisk stöt vid fel ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **:**
@@ -210,21 +211,22 @@ A device that has a UPS installed is designed to operate in the following enviro
 
 > ![Meddelande ikon – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **meddelande:** &nbsp; ändringar eller ändringar som gjorts i utrustning som inte uttryckligen godkänns av Microsoft kan säga till att användarens myndighet kan använda utrustningen.
 
-Kanada och USA:
+#### <a name="canada-and-usa"></a>Kanada och USA:
 
-OBS! den här utrustningen har testats och visat sig uppfylla gränserna för en klass med en digital enhet, i enlighet med del 15 i FCC-reglerna. Dessa gränser är utformade för att ge ett rimligt skydd mot skadlig störning när utrustningen drivs i en kommersiell miljö. Den här utrustningen genererar, använder och kan stråla radio frekvens energi och, om de inte är installerade och används i enlighet med instruktions hand boken, kan orsaka skadlig störning av radio kommunikation. Driften av den här utrustningen i ett bostads område kan förmodligen orsaka skadlig störning, vilket innebär att användaren måste korrigera störningen vid egna utgifter.
+> ![Meddelande ikon – 2 ](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **meddelande:** &nbsp; denna utrustning har testats och visat sig uppfylla gränserna för en klass med en digital enhet, i enlighet med del 15 i FCC-reglerna. Dessa gränser är utformade för att ge ett rimligt skydd mot skadlig störning när utrustningen drivs i en kommersiell miljö. Den här utrustningen genererar, använder och kan stråla radio frekvens energi och, om de inte är installerade och används i enlighet med instruktions hand boken, kan orsaka skadlig störning av radio kommunikation. Driften av den här utrustningen i ett bostads område kan förmodligen orsaka skadlig störning, vilket innebär att användaren måste korrigera störningen vid egna utgifter.
 
 Den här enheten uppfyller kraven i del 15 i FCC-reglerna och bransch licens licenser – undantagna RSS-standarder (s). Åtgärden omfattas av följande två villkor: (1) den här enheten kan inte orsaka skadlig störning och (2) den här enheten måste acceptera eventuella störningar som tas emot, inklusive störningar som kan orsaka oönskad åtgärd på enheten.
 
 ![Regel informations varning 1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-KAN ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-USA: (800) 426-9400 Kanada: (800) 933-4750
+KAN ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA USA: (800) 426-9400 Kanada: (800) 933-4750
 
-Europeiska unionen: begär en kopia av EU: s försäkran om överensstämmelse. 
+#### <a name="european-union"></a>EUROPEISKA UNIONEN:
 
-![Varnings ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+Begära en kopia av EU: s försäkran om överensstämmelse. Skicka ett e-postmeddelande till [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com).
+
+![Varnings ikon ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **Varning!**
 
 Detta är en produkt i en klass. I en inhemsk miljö kan den här produkten orsaka radio störningar, vilket innebär att användaren kan behöva vidta lämpliga åtgärder.
 
@@ -237,7 +239,6 @@ Den här symbolen på produkten eller dess batterier eller dess förpackning inn
 Den här produkten innehåller mynt batteri (er).
 
 Microsoft Ireland Sandyford IND Est Dublin D18 KX32 IRL telefonnumret: + 353 1 295 3826 Fax nummer: + 353 1 706 4110
-
 
 
 ## <a name="next-steps"></a>Nästa steg

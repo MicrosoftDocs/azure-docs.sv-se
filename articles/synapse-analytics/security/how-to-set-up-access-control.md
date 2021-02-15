@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6ec84d41d113a38e78ab13404ef19faf625530b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102180"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369007"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Så här konfigurerar du åtkomst kontroll för din Synapse-arbetsyta 
 
@@ -43,7 +43,7 @@ För att skydda en Synapse-arbetsyta följer du ett mönster för att konfigurer
 
 I det här dokumentet används standard namn för att förenkla anvisningarna. Ersätt dem med namn som du väljer själv.
 
-|Inställning | Standard namn | Description |
+|Inställning | Standard namn | Beskrivning |
 | :------ | :-------------- | :---------- |
 | **Synapse-arbetsyta** | `workspace1` |  Namnet som Synapse-arbetsytan kommer att ha. |
 | **ADLSGEN2-konto** | `storage1` | ADLS-kontot som ska användas med din arbets yta. |
@@ -132,7 +132,7 @@ För att kunna skapa SQL-pooler, Apache Spark pooler och integrerings körningar
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>STEG 6: tilldela administratörs rollen för SQL Active Directory
 
-Arbets stationens skapare konfigureras automatiskt som SQL Active Directory-administratör för arbets ytan.  Endast en enskild användare eller grupp kan tilldelas den här rollen. I det här steget tilldelar du SQL Active Directory-administratören på arbets ytan till `workspace1_SQLAdmins` säkerhets gruppen.  Genom att tilldela den här rollen får du den här gruppen hög privilegie rad administratörs åtkomst till alla SQL-pooler och databaser i arbets ytan.   
+Arbets ytans skapare konfigureras automatiskt som SQL Active Directory-administratör för arbets ytan.  Endast en enskild användare eller grupp kan tilldelas den här rollen. I det här steget tilldelar du SQL Active Directory-administratören på arbets ytan till `workspace1_SQLAdmins` säkerhets gruppen.  Genom att tilldela den här rollen får du den här gruppen hög privilegie rad administratörs åtkomst till alla SQL-pooler och databaser i arbets ytan.   
 
 - Öppna Azure-portalen
 - Navigera till `workspace1`

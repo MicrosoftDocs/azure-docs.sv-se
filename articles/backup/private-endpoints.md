@@ -3,12 +3,12 @@ title: Privata slutpunkter
 description: Förstå processen med att skapa privata slut punkter för Azure Backup och scenarier där privata slut punkter används för att upprätthålla säkerheten för dina resurser.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0d9d77c139896f9067f73943dbb213fc655f00f6
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: a22da7341e3ebeff29bc784cfff0cc8aeb87fb9b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054880"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362594"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privata slut punkter för Azure Backup
 
@@ -27,26 +27,29 @@ Den här artikeln hjälper dig att förstå processen med att skapa privata slut
 - Virtuella nätverk med nätverks principer stöds inte för privata slut punkter. Du måste inaktivera nätverks principer innan du fortsätter.
 - Du måste registrera om Recovery Services Resource Provider med prenumerationen om du registrerade den innan maj 1 2020. Om du vill registrera providern igen går du till prenumerationen i Azure Portal, navigerar till **resurs leverantören** i det vänstra navigerings fältet och väljer sedan **Microsoft. RecoveryServices** och väljer **Omregistrera**.
 - [Återställning mellan regioner](backup-create-rs-vault.md#set-cross-region-restore) för SQL och SAP HANA databas säkerhets kopieringar stöds inte om valvet har aktiverade privata slut punkter.
+- När du flyttar ett Recovery Services valv som redan använder privata slut punkter till en ny klient måste du uppdatera Recovery Services-valvet för att återskapa och konfigurera om valvets hanterade identitet och skapa nya privata slut punkter efter behov (som bör finnas i den nya klienten). Om detta inte är slutfört kommer säkerhets kopierings-och återställnings åtgärderna att börja fungera. Dessutom måste alla rollbaserade behörigheter för åtkomst kontroll (RBAC) som kon figurer ATS i prenumerationen konfigureras om.
 
 ## <a name="recommended-and-supported-scenarios"></a>Rekommenderade och stödda scenarier
 
 När privata slut punkter är aktiverade för valvet används de för säkerhets kopiering och återställning av SQL och SAP HANA arbets belastningar i en Azure VM-och MARS agent-säkerhetskopiering. Du kan också använda valvet för säkerhets kopiering av andra arbets belastningar även (de kräver inte privata slut punkter). Förutom säkerhets kopiering av SQL och SAP HANA arbets belastningar och säkerhets kopiering med MARS-agenten används även privata slut punkter för att utföra fil återställning för Azure VM-säkerhetskopiering. Mer information finns i följande tabell:
 
-| Säkerhets kopiering av arbets belastningar i Azure VM (SQL, SAP HANA), säkerhets kopiering med MARS-agenten | Användning av privata slut punkter rekommenderas för att tillåta säkerhets kopiering och återställning utan att behöva tillåten IP-adresser/FQDN för Azure Backup eller Azure Storage från dina virtuella nätverk. I det scenariot ser du till att virtuella datorer som är värdar för SQL-databaser kan komma åt Azure AD IP-adresser eller FQDN. |
+| Säkerhets kopiering av arbets belastningar i Azure VM (SQL, SAP HANA), säkerhets kopiering med MARS-agenten | Användning av privata slut punkter rekommenderas för att tillåta säkerhets kopiering och återställning utan att behöva lägga till i en lista över tillåtna IP-adresser/FQDN: er för Azure Backup eller Azure Storage från dina virtuella nätverk. I det scenariot ser du till att virtuella datorer som är värdar för SQL-databaser kan komma åt Azure AD IP-adresser eller FQDN. |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **VIRTUELL Azure-säkerhetskopiering**                                         | Säkerhets kopiering av virtuella datorer kräver inte att du tillåter åtkomst till några IP-adresser eller FQDN. Det kräver därför inte privata slut punkter för säkerhets kopiering och återställning av diskar.  <br><br>   Fil återställning från ett valv som innehåller privata slut punkter skulle dock begränsas till virtuella nätverk som innehåller en privat slut punkt för valvet. <br><br>    När du använder ACL'ed ohanterade diskar bör du se till att lagrings kontot som innehåller diskarna ger till gång till **betrodda Microsoft-tjänster** om det är ACL'ed. |
 | **Azure Files säkerhets kopiering**                                      | Azure Files säkerhets kopior lagras i det lokala lagrings kontot. Det kräver därför inte privata slut punkter för säkerhets kopiering och återställning. |
 
-## <a name="creating-and-using-private-endpoints-for-backup"></a>Skapa och använda privata slut punkter för säkerhets kopiering
+## <a name="get-started-with-creating-private-endpoints-for-backup"></a>Kom igång med att skapa privata slut punkter för säkerhets kopiering
 
-Det här avsnittet beskriver de steg som ingår i att skapa och använda privata slut punkter för Azure Backup i dina virtuella nätverk.
+I följande avsnitt beskrivs de steg som ingår i att skapa och använda privata slut punkter för Azure Backup i dina virtuella nätverk.
 
 >[!IMPORTANT]
 > Vi rekommenderar starkt att du följer stegen i samma ordning som anges i det här dokumentet. Om du inte gör det kan det leda till att valvet återges som inkompatibelt för att använda privata slut punkter och kräver att du startar om processen med ett nytt valv.
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+## <a name="create-a-recovery-services-vault"></a>skapar ett Recovery Services-valv
 
-I [det här avsnittet](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) finns information om hur du skapar ett valv med hjälp av Azure Resource Manager-klienten. Detta skapar ett valv med dess hanterade identitet redan aktive rad. Läs mer om Recovery Services-valv [här](./backup-azure-recovery-services-vault-overview.md).
+Privata slut punkter för säkerhets kopiering kan bara skapas för Recovery Services valv som inte har några objekt skyddade (eller inte haft några objekt som försökte skyddas eller registrerats tidigare). Vi föreslår att du skapar ett nytt valv att börja med. Mer information om hur du skapar ett nytt valv finns i  [skapa och konfigurera ett Recovery Services valv](backup-create-rs-vault.md).
+
+I [det här avsnittet](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) finns information om hur du skapar ett valv med hjälp av Azure Resource Manager-klienten. Detta skapar ett valv med dess hanterade identitet redan aktive rad.
 
 ## <a name="enable-managed-identity-for-your-vault"></a>Aktivera hanterad identitet för ditt valv
 
@@ -69,7 +72,7 @@ För att skapa nödvändiga privata slut punkter för Azure Backup måste valvet
 
 - Resurs gruppen som innehåller det virtuella mål nätverket
 - Resurs gruppen där de privata slut punkterna ska skapas
-- Resurs gruppen som innehåller Privat DNS zoner, som beskrivs i detalj [här](#creating-private-endpoints-for-backup)
+- Resurs gruppen som innehåller Privat DNS zoner, som beskrivs i detalj [här](#create-private-endpoints-for-azure-backup)
 
 Vi rekommenderar att du ger **deltagar** rollen för dessa tre resurs grupper till valvet (hanterad identitet). Följande steg beskriver hur du gör detta för en viss resurs grupp (detta måste göras för var och en av de tre resurs grupperna):
 
@@ -84,41 +87,39 @@ Vi rekommenderar att du ger **deltagar** rollen för dessa tre resurs grupper ti
 
 Information om hur du hanterar behörigheter på en mer detaljerad nivå finns i [skapa roller och behörigheter manuellt](#create-roles-and-permissions-manually).
 
-## <a name="creating-and-approving-private-endpoints-for-azure-backup"></a>Skapa och godkänna privata slut punkter för Azure Backup
+## <a name="create-private-endpoints-for-azure-backup"></a>Skapa privata slut punkter för Azure Backup
 
-### <a name="creating-private-endpoints-for-backup"></a>Skapar privata slut punkter för säkerhets kopiering
+I det här avsnittet beskrivs hur du skapar en privat slut punkt för ditt valv.
 
-I det här avsnittet beskrivs processen för att skapa en privat slut punkt för ditt valv.
+1. Navigera till valvet som du skapade ovan och gå till **anslutningar för privata slut punkter** i det vänstra navigerings fältet. Välj **+ privat slut punkt** överst för att börja skapa en ny privat slut punkt för valvet.
 
-1. I Sök fältet söker du efter och väljer **privat länk**. Det tar dig till det **privata länk centret**.
-
-    ![Sök efter privat länk](./media/private-endpoints/search-for-private-link.png)
-
-1. I det vänstra navigerings fältet väljer du **privata slut punkter**. I fönstret **privata slut punkter** väljer du **+ Lägg** till för att börja skapa en privat slut punkt för valvet.
-
-    ![Lägg till privat slut punkt i privat länk Center](./media/private-endpoints/add-private-endpoint.png)
+    ![Skapa ny privat slut punkt](./media/private-endpoints/new-private-endpoint.png)
 
 1. En gång i processen för att **skapa en privat slut punkt** måste du ange information om hur du skapar din privata slut punkts anslutning.
+  
+    1. **Grundläggande** information: Fyll i den grundläggande informationen för dina privata slut punkter. Regionen ska vara samma som valvet och den resurs som säkerhets kopie ras.
 
-    1. **Grundläggande** information: Fyll i den grundläggande informationen för dina privata slut punkter. Regionen ska vara samma som valvet och resursen.
+        ![Fyll i grundläggande information](./media/private-endpoints/basics-tab.png)
 
-        ![Fyll i grundläggande information](./media/private-endpoints/basic-details.png)
+    1. **Resurs**: den här fliken kräver att du väljer den PaaS-resurs som du vill skapa anslutningen för. Välj **Microsoft. RecoveryServices/valv** från resurs typen för den önskade prenumerationen. När du är färdig väljer du namnet på Recovery Services valvet som **resurs** -och **AzureBackup** som **mål under resurs**.
 
-    1. **Resurs**: den här fliken kräver att du nämner den PaaS-resurs som du vill skapa anslutningen för. Välj **Microsoft. RecoveryServices/valv** från resurs typen för den önskade prenumerationen. När du är färdig väljer du namnet på Recovery Services valvet som **resurs** -och **AzureBackup** som **mål under resurs**.
+        ![Välj resurs för anslutningen](./media/private-endpoints/resource-tab.png)
 
-        ![Fyll i fliken resurs](./media/private-endpoints/resource-tab.png)
+    1. **Konfiguration**: i konfiguration anger du det virtuella nätverk och undernät där du vill att den privata slut punkten ska skapas. Detta är det VNet där den virtuella datorn finns.
 
-    1. **Konfiguration**: i konfiguration anger du det virtuella nätverk och undernät där du vill att den privata slut punkten ska skapas. Detta är det VNet där den virtuella datorn finns. Du kan välja att **integrera din privata slut punkt** med en privat DNS-zon. Alternativt kan du också använda din anpassade DNS-server eller skapa en privat DNS-zon.
+        För att du ska kunna ansluta privat behöver du nödvändiga DNS-poster. Beroende på din nätverks konfiguration kan du välja något av följande:
 
-        ![Fyll i fliken konfiguration](./media/private-endpoints/configuration-tab.png)
+          - Integrera din privata slut punkt med en privat DNS-zon: Välj **Ja** om du vill integrera.
+          - Använd din anpassade DNS-Server: Välj **Nej** om du vill använda din egen DNS-server.
 
-        Se [det här avsnittet](#dns-changes-for-custom-dns-servers) om du vill använda dina anpassade DNS-servrar i stället för att integrera med Azure privat DNS zoner.  
+        Hantering av DNS-poster för båda dessa [beskrivs senare](#manage-dns-records).
+
+          ![Ange det virtuella nätverket och under nätet](./media/private-endpoints/configuration-tab.png)
 
     1. Du kan också lägga till **taggar** för din privata slut punkt.
-
     1. Fortsätt att **Granska + skapa** när du har skrivit in information. När verifieringen är klar väljer du **skapa** för att skapa den privata slut punkten.
 
-## <a name="approving-private-endpoints"></a>Godkänner privata slut punkter
+## <a name="approve-private-endpoints"></a>Godkänn privata slut punkter
 
 Om användaren som skapar den privata slut punkten också är ägare av Recovery Services-valvet, godkänns den privata slut punkten som skapades ovan automatiskt. Annars måste ägaren av valvet godkänna den privata slut punkten innan du kan använda den. I det här avsnittet beskrivs manuella godkännanden av privata slut punkter via Azure Portal.
 
@@ -130,7 +131,90 @@ Se [manuellt godkännande av privata slut punkter med hjälp av Azure Resource M
 
     ![Godkänn privata slut punkter](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="using-private-endpoints-for-backup"></a>Använda privata slut punkter för säkerhets kopiering
+## <a name="manage-dns-records"></a>Hantera DNS-poster
+
+Som tidigare beskrivits behöver du nödvändiga DNS-poster i dina privata DNS-zoner eller-servrar för att kunna ansluta privat. Du kan antingen integrera din privata slut punkt direkt med Azures privata DNS-zoner eller använda dina anpassade DNS-servrar för att uppnå detta, baserat på dina nätverks inställningar. Detta måste göras för alla tre tjänsterna: säkerhets kopiering, blobbar och köer.
+
+### <a name="when-integrating-private-endpoints-with-azure-private-dns-zones"></a>När du integrerar privata slut punkter med Azures privata DNS-zoner
+
+Om du väljer att integrera din privata slut punkt med privata DNS-zoner lägger backup till de DNS-poster som krävs. Du kan visa de privata DNS-zoner som används under **DNS-konfigurationen** av den privata slut punkten. Om dessa DNS-zoner inte finns skapas de automatiskt när den privata slut punkten skapas. Du måste dock kontrol lera att det virtuella nätverket (som innehåller de resurser som ska säkerhets kopie RAS) är korrekt länkat till alla tre privata DNS-zoner, enligt beskrivningen nedan.
+
+![DNS-konfiguration i Azures privata DNS-zon](./media/private-endpoints/dns-configuration.png)
+
+#### <a name="validate-virtual-network-links-in-private-dns-zones"></a>Verifiera virtuella nätverks länkar i privata DNS-zoner
+
+För **varje privat DNS-** zon som anges ovan (för säkerhets kopiering, blobbar och köer) gör du följande:
+
+1. Navigera till respektive **virtuella nätverks länkar** -alternativ i det vänstra navigerings fältet.
+1. Du bör kunna se en post för det virtuella nätverk som du har skapat den privata slut punkten för, som den som visas nedan:
+
+    ![Virtuellt nätverk för privat slut punkt](./media/private-endpoints/virtual-network-links.png)
+
+1. Om du inte ser någon post lägger du till en virtuell nätverks länk till alla DNS-zoner som inte har dem.
+
+    ![Lägg till virtuellt nätverks länk](./media/private-endpoints/add-virtual-network-link.png)
+
+### <a name="when-using-custom-dns-server-or-host-files"></a>När du använder anpassade DNS-servrar eller-databasfiler
+
+Om du använder dina anpassade DNS-servrar måste du skapa de DNS-zoner som krävs och lägga till DNS-posterna som krävs av de privata slut punkterna på dina DNS-servrar. För blobbar och köer kan du också använda villkorliga vidarebefordrare.
+
+#### <a name="for-the-backup-service"></a>För säkerhets kopierings tjänsten
+
+1. I DNS-servern skapar du en DNS-zon för säkerhets kopiering enligt följande namngivnings konvention:
+
+    |Zon |Tjänst |
+    |---------|---------|
+    |`privatelink.<geo>.backup.windowsazure.com`   |  Backup        |
+
+    >[!NOTE]
+    > I ovanstående text `<geo>` avser region koden (till exempel *EUs* och *Ne* för USA, östra och Nord Europa). Se följande listor för regions koder:
+    >
+    > - [Alla offentliga moln](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
+    > - [Kina](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [Tyskland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
+    > - [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+
+1. Därefter måste vi lägga till de DNS-poster som krävs. Om du vill visa de poster som behöver läggas till i DNS-zonen för säkerhets kopiering navigerar du till den privata slut punkt som du skapade ovan och går till alternativet **DNS-konfiguration** i det vänstra navigerings fältet.
+
+    ![DNS-konfiguration för anpassad DNS-Server](./media/private-endpoints/custom-dns-configuration.png)
+
+1. Lägg till en post för varje FQDN och IP-adress som visas som en typ poster i din DNS-zon för säkerhets kopiering. Om du använder en värd fil för namn matchning ska du göra motsvarande poster i värd filen för varje IP-adress och FQDN enligt följande format:
+
+    `<private ip><space><backup service privatelink FQDN>`
+
+>[!NOTE]
+>Som du ser i skärm bilden ovan visas FQDN-namnen `xxxxxxxx.<geo>.backup.windowsazure.com` och inte `xxxxxxxx.privatelink.<geo>.backup. windowsazure.com` . I sådana fall måste du se till att du inkluderar (och vid behov lägger till) `.privatelink.` enligt det angivna formatet.
+
+#### <a name="for-blob-and-queue-services"></a>För blob-och Queue Services
+
+För blobbar och köer kan du antingen använda villkorliga vidarebefordrare eller skapa DNS-zoner på DNS-servern.
+
+##### <a name="if-using-conditional-forwarders"></a>Om du använder villkorliga vidarebefordrare
+
+Om du använder villkorliga vidarebefordrare lägger du till vidarebefordrare för blob-och Queue-FQDN enligt följande:
+
+|FQDN  |IP-adress  |
+|---------|---------|
+|`privatelink.blob.core.windows.net`     |  168.63.129.16       |
+|`privatelink.queue.core.windows.net`     | 168.63.129.16        |
+
+##### <a name="if-using-private-dns-zones"></a>Om du använder privata DNS-zoner
+
+Om du använder DNS-zoner för blobbar och köer måste du först skapa dessa DNS-zoner och senare lägga till nödvändiga poster.
+
+|Zon |Tjänst  |
+|---------|---------|
+|`privatelink.blob.core.windows.net`     |  Blob     |
+|`privatelink.queue.core.windows.net`     | Kö        |
+
+Just nu skapar vi bara zonerna för blobbar och köer när du använder anpassade DNS-servrar. Att lägga till DNS-poster görs senare i två steg:
+
+1. När du registrerar den första säkerhets kopierings instansen, det vill säga när du konfigurerar säkerhets kopiering för första gången
+1. När du kör den första säkerhets kopieringen
+
+Vi utför de här stegen i följande avsnitt.
+
+## <a name="use-private-endpoints-for-backup"></a>Använd privata slut punkter för säkerhets kopiering
 
 När de privata slut punkterna som har skapats för valvet i ditt VNet har godkänts, kan du börja använda dem för att utföra säkerhets kopiering och återställning.
 
@@ -138,15 +222,74 @@ När de privata slut punkterna som har skapats för valvet i ditt VNet har godk�
 >Se till att du har slutfört alla steg som anges ovan i dokumentet innan du fortsätter. För att Sammanfattning måste du ha slutfört stegen i följande check lista:
 >
 >1. Skapade ett (nytt) Recovery Services valv
->1. Har aktiverat valvet för att använda systemtilldelad hanterad identitet
->1. Tilldelade relevanta behörigheter till valvets hanterade identitet
->1. En privat slut punkt har skapats för valvet
->1. Godkände den privata slut punkten (om inte automatiskt godkänd)
+>2. Har aktiverat valvet för att använda systemtilldelad hanterad identitet
+>3. Tilldelade relevanta behörigheter till valvets hanterade identitet
+>4. En privat slut punkt har skapats för valvet
+>5. Godkände den privata slut punkten (om inte automatiskt godkänd)
+>6. Säkerställt att alla DNS-poster har lagts till korrekt (förutom blob-och Queue-poster för anpassade servrar, som kommer att diskuteras i följande avsnitt)
 
-### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>Säkerhets kopiering och återställning av arbets belastningar i virtuell Azure-dator (SQL, SAP HANA)
+### <a name="check-vm-connectivity"></a>Kontrol lera VM-anslutning
 
-När den privata slut punkten har skapats och godkänts krävs inga ytterligare ändringar från klient sidan för att använda den privata slut punkten. All kommunikation och data överföring från det skyddade nätverket till valvet utförs via den privata slut punkten.
-Men om du tar bort privata slut punkter för valvet efter att en server (SQL/SAP HANA) har registrerats på den, måste du registrera om behållaren med valvet. Du behöver inte sluta skydda dem.
+I den virtuella datorn i det låsta nätverket kontrollerar du följande:
+
+1. Den virtuella datorn ska ha åtkomst till AAD.
+2. Kör **nslookup** på säkerhets kopierings-URL: en ( `xxxxxxxx.privatelink.<geo>.backup. windowsazure.com` ) från din virtuella dator för att säkerställa anslutningen. Detta bör returnera den privata IP-adress som tilldelats i det virtuella nätverket.
+
+### <a name="configure-backup"></a>Konfigurera säkerhetskopiering
+
+När du ser till att ovanstående check lista och åtkomst har slutförts, kan du fortsätta att konfigurera säkerhets kopiering av arbets belastningar till valvet. Om du använder en anpassad DNS-server måste du lägga till DNS-poster för blobbar och köer som är tillgängliga när du har konfigurerat den första säkerhets kopieringen.
+
+#### <a name="dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration"></a>DNS-poster för blobbar och köer (endast för anpassade DNS-servrar/-värd-filer) efter den första registreringen
+
+När du har konfigurerat säkerhets kopiering för minst en resurs i ett aktiverat valv för privat slut punkt lägger du till de DNS-poster som krävs för blobbar och köer enligt beskrivningen nedan.
+
+1. Navigera till din resurs grupp och Sök efter den privata slut punkt som du skapade.
+1. Förutom namnet på den privata slut punkten som du fått av dig visas två fler privata slut punkter som skapas. Dessa börjar med `<the name of the private endpoint>_ecs` och används med respektive suffix `_blob` `_queue` .
+
+    ![Privata slut punkts resurser](./media/private-endpoints/private-endpoint-resources.png)
+
+1. Navigera till var och en av dessa privata slut punkter. I DNS-konfigurationsobjektet för var och en av de två privata slut punkterna visas en post med och ett fullständigt domän namn och en IP-adress. Lägg till båda dessa på din anpassade DNS-Server förutom de som beskrivs ovan.
+Om du använder en värd fil ska du göra motsvarande poster i värd filen för varje IP/FQDN enligt följande format:
+
+    `<private ip><space><blob service privatelink FQDN>`<br>
+    `<private ip><space><queue service privatelink FQDN>`
+
+    ![BLOB-DNS-konfiguration](./media/private-endpoints/blob-dns-configuration.png)
+
+Förutom ovanstående, finns det en annan post som krävs efter den första säkerhets kopieringen, som diskuteras [senare](#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup).
+
+### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-and-sap-hana"></a>Säkerhets kopiering och återställning av arbets belastningar i virtuell Azure-dator (SQL och SAP HANA)
+
+När den privata slut punkten har skapats och godkänts krävs inga andra ändringar från klient sidan för att använda den privata slut punkten (om du inte använder SQL-tillgänglighetsgrupper, som vi diskuterar senare i det här avsnittet). All kommunikation och data överföring från det skyddade nätverket till valvet utförs via den privata slut punkten. Men om du tar bort privata slut punkter för valvet efter att en server (SQL eller SAP HANA) har registrerats på den, måste du registrera om behållaren med valvet. Du behöver inte sluta skydda dem.
+
+#### <a name="dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup"></a>DNS-poster för blobbar (endast för anpassade DNS-servrar/-värd-filer) efter den första säkerhets kopieringen
+
+När du har kört den första säkerhets kopieringen och använder en anpassad DNS-server (utan villkorlig vidarebefordran), är det troligt att säkerhets kopieringen Miss kommer. Om det händer:
+
+1. Navigera till din resurs grupp och Sök efter den privata slut punkt som du skapade.
+1. Förutom de tre privata slut punkter som diskuterats tidigare ser du nu en fjärde privat slut punkt med namnet som börjar med `<the name of the private endpoint>_prot` och är suffix med `_blob` .
+
+    ![Privata endpoing med suffixet "prot"](./media/private-endpoints/private-endpoint-prot.png)
+
+1. Navigera till den här nya privata slut punkten. I alternativet DNS-konfiguration visas en post med ett fullständigt domän namn och en IP-adress. Lägg till dessa på din privata DNS-Server förutom de som beskrivs ovan.
+
+    Om du använder en värd fil ska du göra motsvarande poster i värd filen för varje IP-adress och FQDN enligt följande format:
+
+    `<private ip><space><blob service privatelink FQDN>`
+
+>[!NOTE]
+>Nu bör du kunna köra **nslookup** från den virtuella datorn och matcha till privata IP-adresser när du är färdig på valvets URL: er för säkerhets kopiering och lagring.
+
+### <a name="when-using-sql-availability-groups"></a>När du använder SQL-tillgänglighetsgrupper
+
+När du använder SQL Availability groups (AG) måste du etablera villkorlig vidarebefordran i den anpassade AG DNS enligt beskrivningen nedan:
+
+1. Logga in på domänkontrollanten.
+1. Under DNS-programmet lägger du till villkorliga vidarebefordrare för alla tre DNS-zoner (säkerhets kopiering, blobbar och köer) till värd-IP-168.63.129.16 eller den anpassade DNS-serverns IP-adress, om det behövs. Följande skärm bilder visas när du vidarebefordrar till Azure-värd-IP. Om du använder en egen DNS-Server ersätter du med IP-adressen för DNS-servern.
+
+    ![Villkorliga vidarebefordrare i DNS-hanteraren](./media/private-endpoints/dns-manager.png)
+
+    ![Ny villkorlig vidarebefordrare](./media/private-endpoints/new-conditional-forwarder.png)
 
 ### <a name="backup-and-restore-through-mars-agent"></a>Säkerhetskopiera och Återställ via MARS-agenten
 
@@ -337,7 +480,11 @@ $privateEndpointConnection = New-AzPrivateLinkServiceConnection `
         -Name $privateEndpointConnectionName `
         -PrivateLinkServiceId $vault.ID `
         -GroupId "AzureBackup"  
-  
+
+$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $VMResourceGroupName
+$subnet = $vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq '<subnetName>'}
+
+
 $privateEndpoint = New-AzPrivateEndpoint `
         -ResourceGroupName $vmResourceGroupName `
         -Name $privateEndpointName `
@@ -381,64 +528,6 @@ $privateEndpoint = New-AzPrivateEndpoint `
     }
     }
     ```
-
-### <a name="dns-changes-for-custom-dns-servers"></a>DNS-ändringar för anpassade DNS-servrar
-
-#### <a name="create-dns-zones-for-custom-dns-servers"></a>Skapa DNS-zoner för anpassade DNS-servrar
-
-Du måste skapa tre privata DNS-zoner och länka dem till det virtuella nätverket. Tänk på att i motsats till blob och kö registreras inte offentliga URL: er för säkerhets kopierings tjänsten i Azures offentliga DNS för omdirigering till DNS-zonerna för privata länkar. 
-
-| **Zon**                                                     | **Tjänst** |
-| ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
-| `privatelink.blob.core.windows.net`                            | Blob        |
-| `privatelink.queue.core.windows.net`                           | Kö       |
-
->[!NOTE]
->I texten ovan refererar *geo* till regions koden. Till exempel *wcus* och *Ne* för USA, västra centrala respektive Nord Europa.
-
-Referera till [den här listan](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) för region koder. Se följande länkar för URL-namn konventioner i nationella regioner:
-
-- [Kina](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Tyskland](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov](../azure-government/documentation-government-developer-guide.md)
-
-#### <a name="adding-dns-records-for-custom-dns-servers"></a>Lägga till DNS-poster för anpassade DNS-servrar
-
-Detta kräver att du skapar poster för varje FQDN i din privata slut punkt i din Privat DNS zon.
-
-Det bör noteras att vi använder de privata slut punkter som skapats för säkerhets kopiering, blob och Kötjänst.
-
-- Den privata slut punkten för valvet använder det namn som angavs när den privata slut punkten skapades
-- De privata slut punkterna för blob-och Queue Services har prefixet samma namn som valvet.
-
-Följande bild visar till exempel de tre privata slut punkter som har skapats för en privat slut punkts anslutning med namnet *pee2epe*:
-
-![Tre privata slut punkter för en privat slut punkts anslutning](./media/private-endpoints/three-private-endpoints.png)
-
-DNS-zon för säkerhets kopierings tjänsten ( `privatelink.<geo>.backup.windowsazure.com` ):
-
-1. Navigera till din privata slut punkt för säkerhets kopiering i det **privata länk centret**. På sidan Översikt visas FQDN och privata IP-adresser för din privata slut punkt.
-
-1. Lägg till en post för varje FQDN och privat IP som en typ post.
-
-    ![Lägg till post för varje FQDN och privat IP](./media/private-endpoints/add-entry-for-each-fqdn-and-ip.png)
-
-DNS-zon för Blob Service ( `privatelink.blob.core.windows.net` ):
-
-1. Navigera till din privata slut punkt för BLOB i det **privata länk centret**. På sidan Översikt visas FQDN och privata IP-adresser för din privata slut punkt.
-
-1. Lägg till en post för FQDN och privat IP som en typ post.
-
-    ![Lägg till post för FQDN och privat IP som en typ post för Blob Service](./media/private-endpoints/add-type-a-record-for-blob.png)
-
-DNS-zon för Kötjänst ( `privatelink.queue.core.windows.net` ):
-
-1. Navigera till din privata slut punkt för kön i det **privata länk centret**. På sidan Översikt visas FQDN och privata IP-adresser för din privata slut punkt.
-
-1. Lägg till en post för FQDN och privat IP som en typ post.
-
-    ![Lägg till post för FQDN och privat IP som en typ post för Kötjänst](./media/private-endpoints/add-type-a-record-for-queue.png)
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932463"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521449"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeta med Azure Functions Core Tools
 
@@ -39,9 +39,9 @@ Det finns tre versioner av Azure Functions Core Tools. Vilken version du använd
 
 Du kan bara installera en version av Core-verktyg på en specifik dator. Om inget annat anges är exemplen i den här artikeln för version 3. x.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Azure Functions Core Tools är för närvarande beroende av Azure CLI för autentisering med ditt Azure-konto. Det innebär att du måste [Installera Azure CLI lokalt](/cli/azure/install-azure-cli) för att kunna [Publicera till Azure](#publish) från Azure Functions Core tools. 
+Azure Functions Core Tools är för närvarande beroende av antingen [Azure CLI](/cli/azure/install-azure-cli) eller [Azure PowerShell](/powershell/azure/install-az-ps) för autentisering med ditt Azure-konto. Det innebär att du måste installera något av dessa verktyg för att kunna [Publicera till Azure](#publish) från Azure Functions Core tools. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Installera Azure Functions Core Tools
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools stöder två typer av distribution: Distribuera Function Project-filer direkt till din Function-app via [zip Deploy](functions-deployment-technologies.md#zip-deploy) och [distribuera en anpassad Docker-behållare](functions-deployment-technologies.md#docker-container). Du måste redan ha [skapat en Function-app i din Azure-prenumeration](functions-cli-samples.md#create), som du ska distribuera din kod till. Projekt som kräver kompilering bör skapas så att binärfilerna kan distribueras.
 
 >[!IMPORTANT]
->Du måste ha installerat [Azure CLI](/cli/azure/install-azure-cli) lokalt för att kunna publicera till Azure från kärn verktyg.  
+>Du måste ha [Azure CLI](/cli/azure/install-azure-cli) eller [Azure PowerShell](/powershell/azure/install-az-ps) installerat lokalt för att kunna publicera till Azure från kärn verktyg.  
 
 En projektmapp kan innehålla språkspecifika filer och kataloger som inte ska publiceras. Undantagna objekt visas i en. funcignore-fil i rotmappen.     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java använder Maven för att publicera ditt lokala projekt till Azure. Använd följande kommando för att publicera till Azure: `mvn azure-functions:deploy` . Azure-resurser skapas vid den första distributionen.
 
-Det här kommandot publicerar till en befintlig Function-app i Azure. Du får ett fel meddelande om du försöker publicera till en `<FunctionAppName>` som inte finns i din prenumeration. Information om hur du skapar en Function-app från kommando tolken eller terminalfönstret med hjälp av Azure CLI finns i [skapa en Funktionsapp för Server lös körning](./scripts/functions-cli-create-serverless.md). Som standard använder detta kommando [fjärrversion](functions-deployment-technologies.md#remote-build) och distribuerar din app för [körning från distributions paketet](run-functions-from-deployment-package.md). Om du vill inaktivera det rekommenderade distributions läget använder du `--nozip` alternativet.
+Det här kommandot publicerar till en befintlig Function-app i Azure. Du får ett fel meddelande om du försöker publicera till en `<FunctionAppName>` som inte finns i din prenumeration. Information om hur du skapar en Function-app från kommando tolken eller terminalfönstret med hjälp av Azure CLI eller Azure PowerShell finns i [skapa ett Funktionsapp för Server lös körning](./scripts/functions-cli-create-serverless.md). Som standard använder detta kommando [fjärrversion](functions-deployment-technologies.md#remote-build) och distribuerar din app för [körning från distributions paketet](run-functions-from-deployment-package.md). Om du vill inaktivera det rekommenderade distributions läget använder du `--nozip` alternativet.
 
 >[!IMPORTANT]
 > När du skapar en Function-app i Azure Portal, använder den version 3. x av funktionens körning som standard. Om du vill att Function-appen ska använda version 1. x av körnings miljön följer du anvisningarna i [köra på version 1. x](functions-versions.md#creating-1x-apps).

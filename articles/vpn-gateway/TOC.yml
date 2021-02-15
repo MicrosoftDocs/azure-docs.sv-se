@@ -14,7 +14,21 @@
 - name: Exempel
   items:
     - name: Azure PowerShell
-      href: powershell-samples.md
+      items:
+        - name: Exempelskript
+          href: powershell-samples.md
+        - name: Skapa en VPN-gateway
+          href: scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md
+        - name: VPN gateway + P2S RADIUS
+          href: scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md
+        - name: VPN gateway + P2S certifikatautentisering
+          href: scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md
+        - name: VPN-gateway + plats-till-plats
+          href: scripts/vpn-gateway-sample-site-to-site-powershell.md
+        - name: VNet-till-VNet
+          href: scripts/vpn-gateway-sample-vnet-vnet-powershell.md
+        - name: Ladda ned en VPN-enhetsmall
+          href: scripts/vpn-gateway-sample-site-to-site-download-devicescript-powershell.md
 - name: Begrepp
   items:
     - name: Distansarbete
@@ -101,8 +115,6 @@
           href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: VPN via privat peering
           href: site-to-site-vpn-private-peering.md
-    - name: Plats-till-plats-anslutning mellan Azure och AWS
-      href: create-vpn-azure-aws-managed-solutions.md
     - name: Anslutningar mellan virtuella nätverk
       items:
         - name: Konfigurera anslutningar mellan virtuella nätverk

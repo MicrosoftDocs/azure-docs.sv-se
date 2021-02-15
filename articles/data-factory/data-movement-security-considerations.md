@@ -1,22 +1,18 @@
 ---
 title: Säkerhetsöverväganden
 description: Beskriver grundläggande säkerhets infrastruktur som tjänster för data flyttning i Azure Data Factory använder för att skydda dina data.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 08a20349d012652fb15dc1818d0201d93175aed8
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550597"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371336"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Säkerhets överväganden för data förflyttning i Azure Data Factory
 
@@ -186,7 +182,7 @@ Följande tabell innehåller utgående port-och domän krav för företags brand
 
 Följande tabell innehåller krav på inkommande portar för Windows-brand väggen:
 
-| Ingående portar | Description                              |
+| Ingående portar | Beskrivning                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Krävs av PowerShell-krypterings-cmdleten enligt beskrivningen i [kryptera autentiseringsuppgifter för lokala data lager i Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)och av Credential Manager-programmet för att på ett säkert sätt ange autentiseringsuppgifter för lokala data lager på integration runtime med egen värd. |
 

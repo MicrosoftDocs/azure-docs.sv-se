@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631192"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366326"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 och 8600-migrering till Azure File Sync
 
@@ -33,12 +33,12 @@ När du börjar planera migreringen ska du först identifiera alla StorSimple-en
 
 ### <a name="migration-cost-summary"></a>Översikt över migrerings kostnad
 
-Migreringar till Azure-filresurser från StorSimple-volymer via tjänst jobb för data omvandling i en StorSimple Data Manager resurs är kostnads fria. Andra kostnader kan uppstå under och efter migreringen:
+Migreringar till Azure-filresurser från StorSimple-volymer via migreringsjobb i en StorSimple Data Manager resurs är kostnads fria. Andra kostnader kan uppstå under och efter migreringen:
 
 * **Utgående nätverk:** Dina StorSimple-filer är Live i ett lagrings konto inom en angiven Azure-region. Om du etablerar Azure-filresurser som du migrerar till ett lagrings konto som finns i samma Azure-region inträffar ingen utgående kostnad. Du kan flytta dina filer till ett lagrings konto i en annan region som en del av migreringen. I så fall kommer utgående kostnader att gälla för dig.
 * **Azure-fil resurs transaktioner:** När filer kopieras till en Azure-filresurs (som en del av en migrering eller utanför en), gäller transaktions kostnaderna som filer och metadata skrivs. Vi rekommenderar att du startar Azure-filresursen på transaktionens optimerade nivå under migreringen. Växla till önskad nivå när migreringen är färdig. Följande faser kommer att anropa detta vid lämplig tidpunkt.
 * **Ändra en Azure-fildelnings nivå:** Ändra nivån för en Azure-filresurs kostnader transaktioner. I de flesta fall är det mer kostnads effektivt att följa råd från föregående punkt.
-* **Lagrings kostnad:** När den här migreringen börjar kopiera filer till en Azure-filresurs, förbrukas Azure Files lagring och faktureras.
+* **Lagrings kostnad:** När den här migreringen börjar kopiera filer till en Azure-filresurs, förbrukas Azure Files lagring och faktureras. Migrerade säkerhets kopior blir [ögonblicks bilder av Azure-filresurser](storage-snapshots-files.md). Ögonblicks bilder av fil resurser förbrukar endast lagrings kapacitet för de skillnader som de innehåller.
 * **StorSimple:** Tills du har möjlighet att avetablera StorSimple-enheter och lagrings konton, kommer StorSimple-kostnader för lagring, säkerhets kopiering och installationer att fortsätta att gälla.
 
 ### <a name="direct-share-access-vs-azure-file-sync"></a>Direkt delning – åtkomst vs. Azure File Sync
@@ -49,7 +49,7 @@ Ett alternativ till direkt åtkomst är [Azure File Sync](./storage-sync-files-p
 
 Azure File Sync är en moln tjänst från Microsoft, baserat på två huvud komponenter:
 
-* Filsynkronisering och moln nivåer.
+* Filsynkronisering och moln nivåer för att skapa en cache för prestanda åtkomst på valfri Windows Server.
 * Fil resurser som intern lagring i Azure som kan nås via flera protokoll som SMB och fil REST.
 
 Azure-filresurser behåller viktiga fil åter givningen på lagrade filer som attribut, behörigheter och tidsstämplar. Med Azure-filresurser behöver du inte längre ha ett program eller en tjänst för att tolka filerna och mapparna som lagras i molnet. Du kan komma åt dem internt över välkända protokoll och klienter som Windows Utforskaren. Med Azure-filresurser kan du lagra generella fil Server data och program data i molnet. Säkerhets kopiering av en Azure-filresurs är en inbyggd funktion som kan förbättras ytterligare av Azure Backup.
@@ -61,14 +61,14 @@ Den här artikeln fokuserar på stegen för migreringen. Om du vill veta mer om 
 
 ### <a name="storsimple-service-data-encryption-key"></a>Krypterings nyckel för tjänst data för StorSimple
 
-När du först konfigurerar StorSimple-installationen skapade den en krypterings nyckel för tjänst data och instruerar dig att lagra nyckeln på ett säkert sätt. Den här nyckeln används för att kryptera alla data i det associerade Azure Storage-kontot där StorSimple-enheten lagrar dina filer.
+När du först konfigurerar StorSimple-installationen skapade den en "tjänst data krypterings nyckel" och instruerar dig att lagra nyckeln på ett säkert sätt. Den här nyckeln används för att kryptera alla data i det associerade Azure Storage-kontot där StorSimple-enheten lagrar dina filer.
 
-Krypterings nyckeln för tjänst data krävs för en lyckad migrering. Nu är det dags att hämta den här nyckeln från dina poster för var och en av de olika enheterna i inventeringen.
+Krypterings nyckeln för tjänst data krävs för en lyckad migrering. Nu är det dags att hämta den här nyckeln från dina poster, en för var och en av de olika enheterna i inventeringen.
 
 Om du inte hittar nycklarna i dina poster kan du hämta nyckeln från enheten. Varje apparat har en unik krypterings nyckel. Hämta nyckeln:
 
-* Skicka en support förfrågan med Microsoft Azure via Azure Portal. Innehållet i begäran ska ha StorSimple enhets serie nummer och begäran om att hämta krypterings nyckeln för tjänst data.
-* En StorSimple support tekniker kontaktar dig med en begäran om ett skärm delnings möte.
+* Skicka en support förfrågan med Microsoft Azure via Azure Portal. Begäran bör innehålla StorSimple enhetens serie nummer och en begäran att hämta krypterings nyckeln för tjänst data.
+* En StorSimple support tekniker kontaktar dig för att få en begäran om ett virtuellt möte.
 * Se till att innan mötet börjar ansluter du till din StorSimple-apparat [via en serie konsol](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) eller via en [fjärran sluten PowerShell-session](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple).
 
 > [!CAUTION]
@@ -81,15 +81,21 @@ Om du inte hittar nycklarna i dina poster kan du hämta nyckeln från enheten. V
 ### <a name="storsimple-volume-backups"></a>StorSimple Volume-säkerhetskopieringar
 
 StorSimple erbjuder differentiella säkerhets kopior på volym nivå. Azure-filresurser har också denna möjlighet, som kallas resurs ögonblicks bilder.
+Dina migreringsjobb kan bara flytta säkerhets kopior, inte data från den aktiva volymen. Så den senaste säkerhets kopian bör alltid finnas i listan över säkerhets kopior som flyttats i en migrering.
 
-Bestäm om du vill ha en del av migreringen och du har också en skyldighet att flytta eventuella säkerhets kopior.
+Bestäm om du behöver flytta några äldre säkerhets kopior under migreringen.
+Vi rekommenderar att du behåller listan så liten som möjligt, så att dina migreringsjobb slutförs snabbare.
+
+För att identifiera kritiska säkerhets kopior som måste migreras, gör du en check lista över dina säkerhets kopierings principer. Till exempel:
+* Den senaste säkerhets kopian. (Obs: den senaste säkerhets kopian bör alltid vara en del av den här listan.)
+* En säkerhets kopia per månad i 12 månader.
+* En säkerhets kopiering per år i tre år. 
+
+Senare, när du skapar dina migreringsjobb, kan du använda den här listan för att identifiera de exakta säkerhets kopiorna av StorSimple som måste migreras för att uppfylla kraven i listan.
 
 > [!CAUTION]
-> Stoppa detta om du måste migrera säkerhets kopior från StorSimple-volymer.
->
-> Du kan för närvarande bara migrera din senaste volym säkerhets kopia. Stöd för migrering av säkerhets kopia kommer att tas i slutet av 2020. Om du startar nu kan du inte "bult" dina säkerhets kopior senare. I den kommande versionen måste säkerhets kopieringarna "spelas upp" på Azure-filresurser från äldsta till nyaste, med ögonblicks bilder av Azure-filresurser som tagits i mellan.
-
-Om du bara vill migrera real tids data och inte har några krav på säkerhets kopieringar kan du fortsätta följa den här hand boken. Om du har ett kortsiktigt bevarande krav för kvarhållning av säkerhets kopior av, till exempel en månad eller två, kan du välja att fortsätta migreringen nu och avetablera dina StorSimple-resurser efter den perioden. Med den här metoden kan du skapa så mycket säkerhets kopierings historik på Azure-filresursens sida som du behöver. Under tiden som du håller båda systemen igång gäller ytterligare kostnader, vilket gör att du inte bör tänka på om du behöver mer än kortsiktig kvarhållning av säkerhets kopior.
+> Det går inte att välja fler än **50** StorSimple volym säkerhets kopieringar.
+> Dina migreringsjobb kan bara flytta säkerhets kopior, aldrig data från den aktiva volymen. Därför är den senaste säkerhets kopian närmast Live-data och bör därför alltid vara en del av listan över säkerhets kopior som ska flyttas i en migrering.
 
 ### <a name="map-your-existing-storsimple-volumes-to-azure-file-shares"></a>Mappa befintliga StorSimple-volymer till Azure-filresurser
 
@@ -103,27 +109,22 @@ Om dina fil resurser är mycket aktiva (används av många användare eller prog
 
 Ett bra tips är att distribuera lagrings konton med en enda fil resurs. Du kan poola flera Azure-filresurser till samma lagrings konto, om du har lagrings resurser i dem.
 
-Dessa överväganden gäller mer för [direkt åtkomst till molnet](#direct-share-access-vs-azure-file-sync) (via en virtuell Azure-dator eller-tjänst) än för Azure File Sync. Om du endast planerar att använda Azure File Sync på dessa resurser är det bra att gruppera flera i ett enda Azure Storage-konto. Tänk också på att du kanske vill lyfta upp och flytta en app till molnet som sedan kan komma åt en fil resurs direkt. Eller så kan du börja använda en tjänst i Azure som också kan dra nytta av högre IOPS-och data flödes nummer.
+Dessa överväganden gäller mer för [direkt åtkomst till molnet](#direct-share-access-vs-azure-file-sync) (via en virtuell Azure-dator eller-tjänst) än för Azure File Sync. Om du planerar att uteslutande använda Azure File Sync på dessa resurser är det bra att gruppera flera i ett enda Azure Storage-konto. I framtiden kanske du vill lyfta upp och flytta en app till molnet som sedan kan komma åt en fil resurs direkt, men det här scenariot skulle dra nytta av högre IOPS och data flöde. Eller så kan du börja använda en tjänst i Azure som också kan dra nytta av högre IOPS och data flöde.
 
 Om du har skapat en lista över dina resurser mappar du varje resurs till lagrings kontot där det kommer att finnas.
 
 > [!IMPORTANT]
 > Välj en Azure-region och kontrol lera att varje lagrings konto och Azure File Sync resurs matchar den region som du har valt.
+> Konfigurera inte nätverks-och brand Väggs inställningar för lagrings kontona nu. Att göra dessa konfigurationer i detta läge gör det omöjligt att migrera. Konfigurera de här inställningarna för Azure Storage när migreringen är klar.
 
 ### <a name="phase-1-summary"></a>Översikt över fas 1
 
 I slutet av fas 1:
 
 * Du har en översikt över dina StorSimple-enheter och-volymer.
-* Data omvandlings tjänsten är redo att komma åt dina StorSimple-volymer i molnet eftersom du har hämtat krypterings nyckeln för tjänst data för varje StorSimple-enhet.
-* Du har en plan för vilken volymer måste migreras och hur du mappar dina volymer till lämpligt antal Azure-filresurser och lagrings konton.
-
-> [!CAUTION]
-> Om du måste migrera säkerhets kopior från StorSimple-volymer ska du **stoppa här**.
->
-> Den här metoden är beroende av nya funktioner för datatransformations tjänsten som för närvarande inte kan migrera säkerhets kopior. Stöd för migrering av säkerhets kopia kommer att tas i slutet av 2020. Du kan för närvarande bara migrera dina real tids data. Om du startar nu kan du inte "bult" dina säkerhets kopior senare. Säkerhets kopieringar måste "spelas upp" på Azure-filresurser från äldsta till nyaste till real tids data, med Azure-filresurs ögonblicks bilder mellan.
-
-Om du bara vill migrera real tids data och inte har några krav på säkerhets kopieringar kan du fortsätta följa den här hand boken.
+* Data Managers tjänsten är redo att komma åt dina StorSimple-volymer i molnet eftersom du har hämtat din "krypterings nyckel för tjänst data" för varje StorSimple-enhet.
+* Du har en plan för vilken volymer och säkerhets kopior (om de inte längre är de senaste) som måste migreras.
+* Du vet hur du mappar dina volymer till rätt antal Azure-filresurser och lagrings konton.
 
 ## <a name="phase-2-deploy-azure-storage-and-migration-resources"></a>Fas 2: distribuera resurser för Azure-lagring och migrering
 
@@ -133,9 +134,12 @@ I det här avsnittet beskrivs överväganden kring hur du distribuerar de olika 
 
 Du behöver förmodligen distribuera flera Azure Storage-konton. Var och en har ett mindre antal Azure-filresurser, enligt din distributions plan, som slutfördes i föregående avsnitt i den här artikeln. Gå till Azure Portal för att [distribuera dina planerade lagrings konton](../common/storage-account-create.md#create-a-storage-account). Överväg att följa följande grundläggande inställningar för alla nya lagrings konton.
 
+> [!IMPORTANT]
+> Konfigurera inte nätverks-och brand Väggs inställningar för dina lagrings konton nu. Att göra dessa konfigurationer i det här läget gör det omöjligt att migrera. Konfigurera de här inställningarna för Azure Storage när migreringen är klar.
+
 #### <a name="subscription"></a>Prenumeration
 
-Du kan använda samma prenumeration som du använde för din StorSimple-distribution eller en annan. Den enda begränsningen är att prenumerationen måste vara i samma Azure Active Directory-klient som StorSimple-prenumerationen. Överväg att flytta StorSimple-prenumerationen till rätt klient organisation innan du påbörjar en migrering. Du kan bara flytta hela prenumerationen. Enskilda StorSimple-resurser kan inte flyttas till en annan klient organisation eller prenumeration.
+Du kan använda samma prenumeration som du använde för din StorSimple-distribution eller en annan. Den enda begränsningen är att prenumerationen måste vara i samma Azure Active Directory-klient som StorSimple-prenumerationen. Överväg att flytta StorSimple-prenumerationen till lämplig klient innan du påbörjar en migrering. Du kan bara flytta hela prenumerationen, enskilda StorSimple-resurser kan inte flyttas till en annan klient organisation eller prenumeration.
 
 #### <a name="resource-group"></a>Resursgrupp
 
@@ -145,7 +149,7 @@ Resurs grupper hjälper till med organisation av resurser och administrations ha
 
 Namnet på ditt lagrings konto kommer att bli en del av en URL och har vissa begränsningar. I namngivnings konventionen bör du tänka på att lagrings konto namn måste vara unika i världen, tillåta bara gemena bokstäver och siffror, kräva mellan 3 och 24 tecken och Tillåt inte specialtecken som bindestreck eller under streck. Mer information finns i [namngivnings regler för Azure Storage-resurser](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage).
 
-#### <a name="location"></a>Plats
+#### <a name="location"></a>Location
 
 Platsen eller Azure-regionen för ett lagrings konto är mycket viktigt. Om du använder Azure File Sync måste alla dina lagrings konton finnas i samma region som din resurs för synkroniseringstjänsten för lagring. Den Azure-region som du väljer bör vara nära eller central för dina lokala servrar och användare. När din resurs har distribuerats kan du inte ändra dess region.
 
@@ -197,7 +201,7 @@ Väljer för de stora, 100-TiB-kapacitets fil resurserna har flera fördelar:
 
 * Prestandan ökar avsevärt jämfört med de mindre 5 TiB kapacitets fil resurserna (till exempel 10 gånger IOPS).
 * Migreringen blir betydligt snabbare.
-* Du ser till att en fil resurs har tillräckligt med kapacitet för att rymma alla data som du migrerar till den.
+* Du ser till att en fil resurs har tillräckligt med kapacitet för att rymma alla data som du migrerar till den, inklusive säkerhets kopiorna för lagrings kapacitets skillnaderna kräver.
 * Framtida tillväxt omfattas.
 
 ### <a name="azure-file-shares"></a>Azure-filresurser
@@ -232,24 +236,57 @@ I slutet av fas 2 har du distribuerat dina lagrings konton och alla Azure-filres
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>Fas 3: skapa och kör ett migreringsjobb
 
-I det här avsnittet beskrivs hur du konfigurerar ett migreringsjobb och noga mappar katalogerna på en StorSimple-volym som ska kopieras till den Azure-filresurs du väljer. Kom igång genom att gå till StorSimple Data Manager, hitta **jobb definitioner** på menyn och välja **+ jobb definition**. Mål lagrings typen är standard **Azure-filresursen**.
+I det här avsnittet beskrivs hur du konfigurerar ett migreringsjobb och noga mappar katalogerna på en StorSimple-volym som ska kopieras till den Azure-filresurs du väljer. Kom igång genom att gå till StorSimple Data Manager, hitta **jobb definitioner** på menyn och välja **+ jobb definition**. Rätt mål lagrings typ är standard: **Azure-filresursen**.
 
 ![StorSimple 8000-seriens migreringsjobb.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "En skärm bild av dialog rutan jobb definitioner Azure Portal med en ny dialog ruta för jobb definitioner öppnas som frågar efter typen av jobb: kopiera till en fil resurs eller en BLOB-behållare.")
 
-> [!IMPORTANT]
-> Innan du kör ett migreringsjobb måste du stoppa eventuella automatiskt schemalagda säkerhets kopieringar av dina StorSimple-volymer.
-
 :::row:::
     :::column:::
-        ![Migrering av StorSimple 8000-serien.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "En skärm bild av det nya jobbet Skapa jobb för ett data omvandlings tjänst jobb.")
+        ![Migrering av StorSimple 8000-serien.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "En skärm bild av formuläret för att skapa ett nytt jobb för ett migreringsjobb.")
     :::column-end:::
     :::column:::
-        **Jobb definitions namn**</br>Det här namnet ska innehålla den uppsättning filer som du flyttar. Det är en bra idé att ge det samma namn som Azure-filresursen. </br></br>**Plats där jobbet körs**</br>När du väljer en region måste du välja samma region som ditt StorSimple-lagrings konto eller, om det inte är tillgängligt, en region nära den. </br></br><h3>Källa</h3>**Käll prenumeration**</br>Välj den prenumeration där du vill lagra StorSimple Enhetshanteraren-resursen. </br></br>**StorSimple-resurs**</br>Välj din StorSimple Enhetshanteraren din installation är registrerad hos. </br></br>**Krypterings nyckel för tjänst data**</br>Se det här [föregående avsnittet i den här artikeln](#storsimple-service-data-encryption-key) om du inte kan hitta nyckeln i dina poster. </br></br>**Enhet**</br>Välj din StorSimple-enhet som innehåller den volym dit du vill migrera. </br></br>**Volym**</br>Välj käll volymen. Senare bestämmer du om du vill migrera hela volymen eller under kataloger till Azure-webbplatsens mål resurs. </br></br><h3>Mål</h3>Välj prenumerationen, lagrings kontot och Azure-filresursen som målet för det här migreringsjobbet.
+        **Jobb definitions namn**</br>Det här namnet ska innehålla den uppsättning filer som du flyttar. Det är en bra idé att ge det samma namn som Azure-filresursen. </br></br>**Plats där jobbet körs**</br>När du väljer en region måste du välja samma region som ditt StorSimple-lagrings konto eller, om det inte är tillgängligt, en region nära den. </br></br><h3>Källa</h3>**Käll prenumeration**</br>Välj den prenumeration där du vill lagra StorSimple Enhetshanteraren-resursen. </br></br>**StorSimple-resurs**</br>Välj din StorSimple Enhetshanteraren din installation är registrerad hos. </br></br>**Krypterings nyckel för tjänst data**</br>Se det här [föregående avsnittet i den här artikeln](#storsimple-service-data-encryption-key) om du inte kan hitta nyckeln i dina poster. </br></br>**Enhet**</br>Välj din StorSimple-enhet som innehåller den volym dit du vill migrera. </br></br>**Volym**</br>Välj käll volymen. Senare bestämmer du om du vill migrera hela volymen eller under kataloger till Azure-webbplatsens mål resurs.</br></br> **Säkerhets kopior av volym**</br>Du kan välja *Välj säkerhets kopior* för att välja vilka säkerhets kopior som ska flyttas som en del av det här jobbet. Ett kommande, [dedikerat avsnitt i den här artikeln](#selecting-volume-backups-to-migrate) beskriver processen i detalj.</br></br><h3>Mål</h3>Välj prenumerationen, lagrings kontot och Azure-filresursen som målet för det här migreringsjobbet.</br></br><h3>Katalog mappning</h3>[Ett dedikerat avsnitt i den här artikeln](#directory-mapping)beskriver all relevant information.
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> Den senaste säkerhets kopian av volymen kommer att användas för att utföra migreringen. Se till att det finns minst en säkerhets kopia av volymen eller att jobbet inte fungerar. Se också till att den senaste säkerhets kopieringen du har varit ganska nyligen för att hålla delta i Live-resursen så liten som möjligt. Det kan vara värt att aktivera och slutföra en annan säkerhets kopiering av volymen manuellt *innan* du kör jobbet som du nyss skapade.
+### <a name="selecting-volume-backups-to-migrate"></a>Välja volym säkerhets kopior som ska migreras
+
+Det finns viktiga aspekter kring att välja säkerhets kopior som behöver migreras:
+
+- Dina migreringsjobb kan bara flytta säkerhets kopior, inte data från en Live-volym. Den senaste säkerhets kopian är närmast Live-data och bör alltid finnas i listan över säkerhets kopior som har flyttats i en migrering.
+- Se till att din senaste säkerhets kopia är nyligen för att hålla delta i Live-resursen så litet som möjligt. Det kan vara värt att aktivera och slutföra en annan säkerhets kopiering av volymen manuellt innan du skapar ett migreringsjobb. Ett litet delta i Live-resursen kommer att förbättra migreringen. Om den här förändringen kan vara noll = inga fler ändringar av StorSimple-volymen har skett efter den senaste säkerhets kopieringen i din lista – sedan fas 5: användarens klipp ut blir drastiskt förenklad och sped uppåt.
+- Säkerhets kopiorna måste spelas upp i Azure-filresursen **från äldsta till nyaste**. En äldre säkerhets kopiering kan inte sorteras i listan över säkerhets kopior på Azure-filresursen efter att ett migreringsjobb har körts. Därför måste du se till att listan över säkerhets kopieringar är klar *innan* du skapar ett jobb. 
+- Det går inte att ändra listan med säkerhets kopior i ett jobb när jobbet har skapats, även om jobbet aldrig körts. 
+
+:::row:::
+    :::column:::        
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups.png" alt-text="En skärm bild av formuläret för att skapa ett nytt jobb som beskriver den del där StorSimple-säkerhetskopieringar har valts för migrering." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-expanded.png":::
+    :::column-end:::
+    :::column:::
+        Välj säkerhets kopior av din StorSimple-volym för ditt migreringsjobb genom att välja *Välj säkerhets kopior av volymen* i formuläret Skapa jobb.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png" alt-text="En bild som visar att den övre halvan av bladet för att välja säkerhets kopior visar alla tillgängliga säkerhets kopior. En vald säkerhets kopia är nedtonad i listan och läggs till i en andra lista på den nedre halvan av bladet. Du kan också ta bort den igen." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-annotated.png":::
+    :::column-end:::
+    :::column:::
+        När bladet val av säkerhets kopiering öppnas delas det upp i två listor. I den första listan visas alla tillgängliga säkerhets kopior. Du kan expandera och begränsa resultat uppsättningen genom filtrering för ett specifikt tidsintervall. (se nästa avsnitt) </br></br>En vald säkerhets kopia visas som nedtonad och läggs till i en andra lista på den nedre halvan av bladet. I den andra listan visas alla säkerhets kopior som valts för migrering. En säkerhets kopia som valts i fel kan också tas bort igen.
+        > [!CAUTION]
+        > Du måste markera **alla** säkerhets kopior som du vill migrera. Du kan inte lägga till äldre säkerhets kopieringar senare. Du kan inte ändra jobbet för att ändra ditt val när jobbet har skapats.
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time.png" alt-text="En skärm bild som visar valet av ett tidsintervall för bladet för säkerhets kopierings val." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-job-select-backups-time-expanded.png":::
+    :::column-end:::
+    :::column:::
+        Som standard filtreras listan för att Visa säkerhets kopiorna av StorSimple-volymer inom de senaste sju dagarna så att det blir enkelt att välja den senaste säkerhets kopian. För säkerhets kopieringar tidigare tidigare använder du tids intervalls filtret överst på bladet. Du kan antingen välja från ett befintligt filter eller ange ett anpassat tidsintervall att filtrera efter enbart de säkerhets kopior som tagits under den här perioden.
+    :::column-end:::
+:::row-end:::
+
+> [!CAUTION]
+> Det går inte att välja fler än 50 StorSimple volym säkerhets kopieringar. Jobb med ett stort antal säkerhets kopieringar kan Miss lyckas.
 
 ### <a name="directory-mapping"></a>Katalog mappning
 
@@ -310,11 +347,30 @@ Sorterar flera käll platser i en ny katalog struktur:
 * Precis som Windows är mappnamnen inte Skift läges känsliga, men är Skift läges känsliga.
 
 > [!NOTE]
-> Innehållet i mappen *\System Volume Information* och *$Recycle. bin* på din StorSimple-volym kopieras inte av Transformations jobbet.
+> Innehållet i mappen *\System Volume Information* och *$Recycle. bin* på din StorSimple-volym kopieras inte av migreringsjobbet.
+
+### <a name="run-a-migration-job"></a>Köra ett migreringsjobb
+
+Dina migreringsjobb visas under *jobb definitioner* i den data Manager resurs som du har distribuerat till en resurs grupp.
+I listan över jobb definitioner väljer du det jobb som du vill köra.
+
+På bladet jobb som öppnas kan du se att jobbet körs i den nedre listan. Den här listan är inlednings vis tom. Längst upp på bladet finns ett kommando som kallas *körnings jobb*. Det här kommandot kommer inte att köra jobbet omedelbart, det öppnar bladet **jobb körning** :
+
+:::row:::
+    :::column:::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job.png" alt-text="En bild som visar bladet jobb körning med en listruta öppen och visar de valda säkerhets kopiorna som ska migreras. Den äldsta säkerhets kopian är markerad och måste väljas först." lightbox="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-run-job-expanded.png":::
+    :::column-end:::
+    :::column:::
+        I den här versionen måste varje jobb köras flera gånger. </br></br>**Du måste börja med den äldsta säkerhets kopian från listan över säkerhets kopior som du vill migrera.** (markerat i bilden)</br></br>Du kör jobbet igen, så många gånger som du har valt säkerhets kopieringar, varje gång mot en progressivt nyare säkerhets kopiering.
+        </br></br>
+        > [!CAUTION]
+        > Det är absolut nödvändigt att köra migreringsjobbet med den äldsta säkerhets kopian valt först och sedan igen, varje gång med en progressivt nyare säkerhets kopiering. Du måste alltid upprätthålla ordningen på dina säkerhets kopior manuellt – från äldsta till nyaste.
+    :::column-end:::
+:::row-end:::
 
 ### <a name="phase-3-summary"></a>Sammanfattning av fas 3
 
-I slutet av fas 3 har du kört dina data Transformation service-jobb från StorSimple-volymer till Azure-filresurser. Du kan nu fokusera på att antingen konfigurera Azure File Sync för resursen (när migreringen för en resurs har slutförts) eller dirigera resurs åtkomsten för dina informations arbetare och appar till Azure-filresursen.
+I slutet av fas 3 har du kört minst ett av dina migreringsjobb från StorSimple-volymer till Azure-filresurser. Du kommer att ha kört samma migreringsjobb flera gång, från äldsta till nyaste säkerhets kopior som måste migreras. Du kan nu fokusera på att antingen konfigurera Azure File Sync för resursen (när migreringsjobb för en resurs har slutförts) eller dirigera resurs åtkomsten för dina informations anställda och appar till Azure-filresursen.
 
 ## <a name="phase-4-access-your-azure-file-shares"></a>Fas 4: få åtkomst till dina Azure-filresurser
 
@@ -371,7 +427,7 @@ Din registrerade lokala Windows Server-instans måste vara klar och ansluten til
 
 :::row:::
     :::column:::
-        [![Steg-för-steg-guide och demo om hur du exponerar Azure-filresurser på ett säkert sätt direkt till informations arbetare och appar – Klicka för att spela upp!](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/KG0OX0RgytI)
+        [![Steg-för-steg-guide och demo om hur du exponerar Azure-filresurser på ett säkert sätt direkt till informations arbetare och appar – Klicka för att spela upp!](./media/storage-files-migration-storsimple-8000/azure-files-direct-access-video-placeholder.png)](https://youtu.be/a-Twfus0HWE)
     :::column-end:::
     :::column:::
         Den här videon är en guide och en demonstration av hur du på ett säkert sätt kan exponera Azure-filresurser direkt till informations arbetare och appar i fem enkla steg.</br>
@@ -391,21 +447,21 @@ Din registrerade lokala Windows Server-instans måste vara klar och ansluten til
 
 ### <a name="phase-4-summary"></a>Sammanfattning för fas 4
 
-I den här fasen har du skapat och kört flera data omvandlings tjänst jobb i din StorSimple Data Manager. Dessa jobb har migrerat dina filer och mappar till Azure-filresurser. Du har också distribuerat Azure File Sync eller för beredde nätverks-och lagrings konton för direkt delnings åtkomst.
+I den här fasen har du skapat och kört flera migreringsjobb i StorSimple Data Manager. Dessa jobb har migrerat dina filer och mappar till Azure-filresurser. Du har också distribuerat Azure File Sync eller för beredde nätverks-och lagrings konton för direkt delnings åtkomst.
 
 ## <a name="phase-5-user-cut-over"></a>Fas 5: överhuggen av användare
 
 Den här fasen är allt om att figursätta migreringen:
 
 * Planera stillestånds tiden.
-* Kom igång med alla ändringar som dina användare och appar har producerat på StorSimple-sidan medan data omvandlings jobben i fas 3 har körts.
+* Kom igång med alla ändringar som dina användare och appar har producerat på StorSimple-sidan medan migreringsjobb i fas 3 har körts.
 * Användarna får inte till gång till den nya Windows Server-instansen med Azure File Sync eller Azure-filresurser via direkt delning-åtkomst.
 
 ### <a name="plan-your-downtime"></a>Planera din stillestånds tid
 
 Den här metoden för migrering kräver vissa stillestånds tider för dina användare och appar. Målet är att hålla stillestånds tiden minst. Följande överväganden kan hjälpa dig:
 
-* Se till att dina StorSimple-volymer är tillgängliga när du kör dina data omvandlings jobb.
+* Se till att dina StorSimple-volymer är tillgängliga när du kör dina migreringsjobb.
 * När du har kört dina datamigreringar för en resurs är det dags att ta bort användar åtkomsten (minst Skriv åtkomst) från StorSimple-volymerna eller-resurserna. En slutgiltig RoboCopy kommer att fånga upp Azure-filresursen. Sedan kan du klippa över dina användare. Var du kör RoboCopy beror på om du väljer att använda Azure File Sync eller direkt delnings åtkomst. Det kommande avsnittet om RoboCopy omfattar detta ämne.
 * När du har slutfört RoboCopy-fångsten är du redo att exponera den nya platsen för dina användare genom antingen Azure-filresursen direkt eller en SMB-resurs på en Windows Server-instans med Azure File Sync. En DFS-N-distribution hjälper ofta att göra en klipps över snabbt och effektivt. Den behåller dina befintliga resurs adresser konsekvent och pekar på en ny plats som innehåller dina migrerade filer och mappar.
 
@@ -438,7 +494,7 @@ Nu finns det skillnader mellan den lokala Windows Server-instansen och StorSimpl
 
 1. Du måste komma igång med de ändringar som användare eller appar har producerat på StorSimple-sidan när migreringen var pågående.
 1. I de fall där du använder Azure File Sync: StorSimple-installationen har en fylld cache jämfört med Windows Server-instansen med bara ett namn område utan fil innehåll som lagras lokalt för tillfället. Den slutliga RoboCopy kan hjälpa dig att komma igång med din lokala Azure File Sync cache genom att hämta lokalt cachelagrat fil innehåll så mycket som det är tillgängligt och får plats på Azure File Sync-servern.
-1. Vissa filer kan ha lämnats av data omvandlings jobbet på grund av ogiltiga tecken. I så fall, kopierar du dem till den Azure File Sync-aktiverade Windows Server-instansen. Senare kan du justera dem så att de kommer att synkroniseras. Om du inte använder Azure File Sync för en viss resurs är det bättre att byta namn på filerna med ogiltiga tecken på StorSimple-volymen. Kör sedan RoboCopy direkt mot Azure-filresursen.
+1. Vissa filer kan ha lämnats kvar av migreringsjobbet på grund av ogiltiga tecken. I så fall, kopierar du dem till den Azure File Sync-aktiverade Windows Server-instansen. Senare kan du justera dem så att de kommer att synkroniseras. Om du inte använder Azure File Sync för en viss resurs är det bättre att byta namn på filerna med ogiltiga tecken på StorSimple-volymen. Kör sedan RoboCopy direkt mot Azure-filresursen.
 
 > [!WARNING]
 > Robocopy i Windows Server 2019 har för närvarande ett problem som gör att filer som skiktas av Azure File Sync på mål servern kopieras från källan och sedan överförs till Azure igen när funktionen/MIR i Robocopy används. Det är absolut nödvändigt att använda Robocopy på en Windows-Server som inte är 2019. Ett föredraget val är Windows Server 2016. Den här kommentaren kommer att uppdateras om problemet löses via Windows Update.

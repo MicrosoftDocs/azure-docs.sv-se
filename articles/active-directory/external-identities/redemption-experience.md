@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aef4ff77eb02723bcd95dcc99a55094bd10acd4c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 08f560f076caf90c9c930cedfd6a7ba9c6c8b37d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355485"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365454"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-samarbete för inbjudan
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inlösen av inbjudan till Azure Active Directory B2B-samarbete
 
 I den här artikeln beskrivs de olika sätt som gäst användare kan komma åt resurser och medgivande processen som de stöter på. Om du skickar ett e-postmeddelande med inbjudan till gästen innehåller inbjudan en länk som gästen kan lösa in för att få åtkomst till din app eller Portal. E-postinbjudan är bara ett av de sätt som gäster kan få åtkomst till dina resurser. Alternativt kan du lägga till gäster till katalogen och ge dem en direkt länk till portalen eller appen som du vill dela. Oavsett vilken metod de använder, vägleds gästerna genom en process för godkännande av första gången. Den här processen säkerställer att dina gäster samtycker till sekretess villkoren och accepterar de [användnings villkor](../conditional-access/terms-of-use.md) som du har konfigurerat.
 
@@ -26,7 +26,7 @@ När du lägger till en gäst användare i din katalog har gäst användar konto
 
    > [!IMPORTANT]
    > - Från och med den **4 januari 2021** är Google [inaktuell WebView-inloggning support](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Om du använder Google Federation eller självbetjänings registrering med Gmail bör du [testa dina verksamhetsbaserade interna program för kompatibilitet](google-federation.md#deprecation-of-webview-sign-in-support).
-   > - Från och med den **31 mars 2021** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade Azure AD-konton och klienter för B2B-samarbets scenarier. Vi rekommenderar att kunderna väljer [autentisering med e-post med eng ång slö sen ord](one-time-passcode.md). Vi välkomnar din feedback om den här offentliga för hands versionen och är glada att skapa ännu fler sätt att samar beta.
+   > - **Från den 2021 oktober** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade Azure AD-konton och klienter för B2B-samarbets scenarier. Vi rekommenderar att kunderna väljer [autentisering med e-post med eng ång slö sen ord](one-time-passcode.md). Vi välkomnar din feedback om den här offentliga för hands versionen och är glada att skapa ännu fler sätt att samar beta.
 
 ## <a name="redemption-through-the-invitation-email"></a>Inlösen via e-postinbjudan
 

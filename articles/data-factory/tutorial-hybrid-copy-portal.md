@@ -1,22 +1,18 @@
 ---
 title: Kopiera data från SQL Server till Blob Storage med Azure Portal
 description: Lär dig hur du kopierar data från ett lokalt datalager till molnet med hjälp av en lokal Integration Runtime i Azure Data Factory.
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 172ebb5f5b7896b6b642c1fe6c5d01afb1dbf479
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c44d00a5b23bff5e00864b44a396bcedfe5ea668
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553615"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391209"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopiera data från en SQL Server-databas till Azure Blob Storage
 
@@ -100,7 +96,7 @@ I det här avsnittet skapar du en blobcontainer med namnet **adftutorial** i Blo
 
 1. I **behållare** -fönstret väljer du **+ container** för att skapa en ny.
 
-1. I fönstret **Ny container** , under **Namn** anger du **adftutorial**. Välj sedan **Skapa**.
+1. I fönstret **Ny container**, under **Namn** anger du **adftutorial**. Välj sedan **Skapa**.
 
 1. I listan över behållare väljer du **adftutorial** som du nyss skapade.
 
@@ -110,18 +106,18 @@ I det här avsnittet skapar du en blobcontainer med namnet **adftutorial** i Blo
 I det här steget skapar du en datafabrik och startar sedan användargränssnittet för Data Factory för att skapa en pipeline i datafabriken.
 
 1. Öppna webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-1. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory** :
+1. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory**:
 
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. I fönstret **Ny datafabrik** , under **Namn** anger du **ADFTutorialDataFactory**.
+1. I fönstret **Ny datafabrik**, under **Namn** anger du **ADFTutorialDataFactory**.
 
    Namnet på data fabriken måste vara *globalt unikt*. Om följande felmeddelande visas för namnfältet ändrar du namnet på datafabriken (t.ex. dittnamnADFTutorialDataFactory). Se artikeln [Namnregler för Data Factory](naming-rules.md) för namnregler för Data Factory-artefakter.
 
    ![Namn på ny datafabrik](./media/doc-common-process/name-not-available-error.png)
 
-1. Välj den Azure- **prenumeration** som du vill skapa den nya datafabriken i.
-1. Gör något av följande för **Resursgrupp** :
+1. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
+1. Gör något av följande för **Resursgrupp**:
 
    - Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan.
 
@@ -174,13 +170,13 @@ I det här steget skapar du en datafabrik och startar sedan användargränssnitt
 
     b. Under **Servernamn** anger du namnet på SQL Server-instansen.
 
-    c. Under **Databasnamn** anger du namnet på databasen med **emp** -tabellen.
+    c. Under **Databasnamn** anger du namnet på databasen med **emp**-tabellen.
 
     d. Under **Autentiseringstyp** väljer du den autentiseringstyp som Data Factory ska använda för att ansluta till SQL Server-databasen.
 
     e. Under **Användarnamn** och **Lösenord** anger du användarnamnet och lösenordet. Använd min *domän \\* som användar namn om det behövs.
 
-    f. Välj **test anslutning**. Det här steget är att bekräfta att Data Factory kan ansluta till SQL Server-databasen med hjälp av den integration runtime med egen värd som du har skapat.
+    f. Välj **Testanslutning**. Det här steget är att bekräfta att Data Factory kan ansluta till SQL Server-databasen med hjälp av den integration runtime med egen värd som du har skapat.
 
     ex. Välj **skapa** om du vill spara den länkade tjänsten.
  
@@ -210,7 +206,7 @@ I det här steget skapar du en datafabrik och startar sedan användargränssnitt
 
 1. När den länkade tjänsten har skapats är du tillbaka till sidan **Ange egenskaper** . Välj **OK**.
 
-1. Öppna Sink-datauppsättningen. Gör följande på fliken **Anslutning** :
+1. Öppna Sink-datauppsättningen. Gör följande på fliken **Anslutning**:
 
     a. I **Länkad tjänst** bekräftar du att **AzureStorageLinkedService** är vald.
 
@@ -233,7 +229,7 @@ I det här steget skapar du en datafabrik och startar sedan användargränssnitt
 
 
 ## <a name="trigger-a-pipeline-run"></a>Utlösa en pipelinekörning
-Välj **Lägg till utlösare** i verktygsfältet för pipelinen och välj sedan **trigger Now (Utlös nu** ).
+Välj **Lägg till utlösare** i verktygsfältet för pipelinen och välj sedan **trigger Now (Utlös nu**).
 
 ## <a name="monitor-the-pipeline-run"></a>Övervaka pipelinekörningen
 

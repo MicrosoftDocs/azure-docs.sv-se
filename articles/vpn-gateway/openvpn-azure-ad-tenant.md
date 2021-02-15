@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3055c9dd1294af81c6c52603dd60bb5aa6075abd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777867"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390172"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Skapa en Azure Active Directory-klientorganisation för P2S-anslutningar med OpenVPN-protokoll
 
@@ -36,13 +36,13 @@ Din Azure AD-klient behöver följande konton: ett globalt administratörs konto
 Använd stegen i [Lägg till eller ta bort användare – Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) för att skapa minst två användare för din Azure AD-klient. Se till att ändra **katalog rollen** för att skapa konto typerna:
 
 * Global administratör
-* Användare
+* User
 
 ## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. Aktivera Azure AD-autentisering på VPN-gatewayen
 
 1. Leta upp katalog-ID: t för den katalog som du vill använda för autentisering. Den visas i avsnittet Egenskaper på sidan Active Directory.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Ny Azure AD-klient" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="Skärm bild som visar katalog egenskaperna" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
 
 1. Kopiera katalog-ID:t.
 
@@ -80,28 +80,28 @@ Använd stegen i [Lägg till eller ta bort användare – Azure Active Directory
 
 1. Välj det **globala administratörs** kontot om du uppmanas att göra det.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Ny Azure AD-klient" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="Välj ett konto" border="false":::
 1. Välj **acceptera** när du uppmanas till detta.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="Ny Azure AD-klient" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="Skärm bild som visar de meddelande behörigheter som har begärts acceptera för din organisation med information och alternativet att acceptera." border="false":::
 1. I **företags program** i Azure AD visas **Azure VPN** i listan.
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="Ny Azure AD-klient" lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azurevpn.png" alt-text="Skärm bild som visar sidan alla program." lightbox="./media/openvpn-create-azure-ad-tenant/azurevpn.png" :::
 1. Om du inte redan har en fungerande punkt-till-plats-miljö, följer du anvisningarna för att skapa en. Se [skapa en punkt-till-plats-VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) för att skapa och konfigurera en punkt-till-plats-VPN-gateway.
 
     > [!IMPORTANT]
     > Bas-SKU: n stöds inte för OpenVPN.
 
-1. Aktivera Azure AD-autentisering på VPN-gatewayen genom att gå till **punkt-till-plats-konfiguration** och plocknings- **OpenVPN (SSL)** som **tunnel typ** . Välj **Azure Active Directory** som **Autentiseringstyp** och fyll i informationen under avsnittet **Azure Active Directory** .
+1. Aktivera Azure AD-autentisering på VPN-gatewayen genom att gå till **punkt-till-plats-konfiguration** och plocknings- **OpenVPN (SSL)** som **tunnel typ**. Välj **Azure Active Directory** som **Autentiseringstyp** och fyll i informationen under avsnittet **Azure Active Directory** .
 
    * **Klient organisation:** TenantID för Azure AD-klienten ```https://login.microsoftonline.com/{AzureAD TenantID}/```
 
    * **Mål grupp:** ApplicationID för Azure VPN-appen Azure AD Enterprise ```{AppID of the "Azure VPN" AD Enterprise app}```
 
-   * **Utfärdare** : URL för Secure token service ```https://sts.windows.net/{AzureAD TenantID}/```
+   * **Utfärdare**: URL för Secure token service ```https://sts.windows.net/{AzureAD TenantID}/```
 
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="Ny Azure AD-klient" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="SAzure VPN" border="false":::
 
    > [!NOTE]
    > Se till att du inkluderar ett avslutande snedstreck i slutet av `AadIssuerUri` värdet. Annars kan anslutningen Miss lyckas.
@@ -117,4 +117,4 @@ Använd stegen i [Lägg till eller ta bort användare – Azure Active Directory
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du måste skapa och konfigurera en profil för VPN-klienter för att kunna använda det virtuella nätverket. Se [Konfigurera en VPN-klient för P2s VPN-anslutningar](openvpn-azure-ad-client.md).
+Skapa och konfigurera en profil för VPN-klienter. Se [Konfigurera en VPN-klient för P2s VPN-anslutningar](openvpn-azure-ad-client.md).

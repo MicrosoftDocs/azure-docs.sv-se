@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963405"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366610"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Lär dig hur du distribuerar moduler och etablerar vägar i IoT Edge
 
@@ -126,7 +126,7 @@ I listan med önskade egenskaper för IoT Edge agent kan du definiera vilka modu
 
 En fullständig lista över önskade egenskaper som kan eller måste inkluderas finns i [Egenskaper för IoT Edge agent och IoT Edge Hub](module-edgeagent-edgehub.md).
 
-Till exempel:
+Exempel:
 
 ```json
 {
@@ -230,11 +230,11 @@ Egenskapen source kan vara något av följande värden:
 | `/messages/modules/<moduleId>/outputs/*` | Alla enhets-till-moln-meddelanden som skickas av en viss modul via vissa utdata |
 | `/messages/modules/<moduleId>/outputs/<output>` | Alla enhets-till-moln-meddelanden som skickas av en modul via en speciell utdata |
 
-### <a name="condition"></a>Condition (Väderförhållanden)
+### <a name="condition"></a>Villkor
 
 Villkoret är valfritt i en flödes deklaration. Om du vill skicka alla meddelanden från källan till mottagaren ska du bara lämna **WHERE** -satsen helt. Eller så kan du använda det [IoT Hub frågespråket](../iot-hub/iot-hub-devguide-routing-query-syntax.md) för att filtrera efter vissa meddelanden eller meddelande typer som uppfyller villkoret. IoT Edge vägar stöder inte filtrering av meddelanden baserat på dubbla taggar eller egenskaper.
 
-Meddelanden som skickas mellan moduler i IoT Edge formateras på samma sätt som de meddelanden som skickas mellan enheterna och Azure IoT Hub. Alla meddelanden formateras som JSON och har parametrarna **systemProperties**, **appProperties**och **Body** .
+Meddelanden som skickas mellan moduler i IoT Edge formateras på samma sätt som de meddelanden som skickas mellan enheterna och Azure IoT Hub. Alla meddelanden formateras som JSON och har parametrarna **systemProperties**, **appProperties** och **Body** .
 
 Du kan bygga frågor runt någon av de tre parametrarna med följande syntax:
 
@@ -327,7 +327,7 @@ I följande exempel visas hur ett giltigt distributions manifest dokument kan se
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -337,7 +337,7 @@ I följande exempel visas hur ett giltigt distributions manifest dokument kan se
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

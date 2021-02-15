@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 598673bca5b893236cfd38a7fa220ff25ee9dd7e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094917"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388523"
 ---
 # <a name="azure-storage-redundancy"></a>Redundans i Azure Storage
 
@@ -185,6 +185,14 @@ Följande tabell visar om dina data är beständiga och tillgängliga i ett spec
 | Läs behörighet till den sekundära regionen är tillgängligt om den primära regionen blir otillgänglig | Inga | Inga | Ja (med RA-GRS) | Ja (med RA-GZRS) |
 
 <sup>1</sup> växling vid fel krävs för att återställa Skriv tillgängligheten om den primära regionen blir otillgänglig. Mer information finns i [haveri beredskap och redundans för lagrings konton](storage-disaster-recovery-guidance.md).
+
+### <a name="supported-azure-storage-services"></a>Azure Storage tjänster som stöds
+
+I följande tabell visas vilka alternativ för redundans som stöds av varje Azure Storage-tjänst.
+
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br />Azure Managed disks | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br /> | Blob Storage<br />Queue Storage<br />Table Storage<br />Azure Files<br /> |
 
 ### <a name="supported-storage-account-types"></a>Typer av lagrings konton som stöds
 

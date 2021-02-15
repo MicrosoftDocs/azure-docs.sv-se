@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: aa5a8a842a750e44d4beeb915008f86c6b5bbb70
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809260"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521653"
 ---
 # <a name="security-agent-authentication-methods"></a>Autentiseringsmetoder för säkerhets agent
 
@@ -55,7 +55,7 @@ Se [installations parametrar för säkerhets agent](#security-agent-installation
 När du [distribuerar en säkerhets agent](how-to-deploy-agent.md)måste autentiserings information tillhandahållas som argument.
 Dessa argument beskrivs i följande tabell.
 
-|Linux-parameter namn | Windows-parameter namn | Stenografisk parameter |Description|Alternativ|
+|Linux-parameter namn | Windows-parameter namn | Stenografisk parameter |Beskrivning|Alternativ|
 |---------------------|---------------|---------|---------------|---------------|
 |autentisering-identitet|AuthenticationIdentity|aui|Autentiseringsidentitet| **SecurityModule** eller **enhet**|
 |autentisering-metod|AuthenticationMethod|aum|Autentiseringsmetod|**SymmetricKey** eller **SelfSignedCertificate**|
@@ -101,8 +101,7 @@ Redigera _LocalConfiguration.js_ med följande parametrar:
     "HostName" : ""
 }
 ```
-
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över säkerhets agenter](security-agent-architecture.md)
 - [Distribuera säkerhets agent](how-to-deploy-agent.md)

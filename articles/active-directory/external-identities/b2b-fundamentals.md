@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/12/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f9ea8b1c1346deee9fed591493607270f18ad5b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547771"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365641"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Metod tips för Azure Active Directory B2B
 Den här artikeln innehåller rekommendationer och metod tips för samarbete mellan företag (B2B) i Azure Active Directory (Azure AD).
 
    > [!IMPORTANT]
-   > **Från och med mars 2021** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade ("virus" eller "just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vid detta tillfälle aktive ras e-postfunktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den. Mer information finns i [e-mail Authentication eng ång slö sen ord](one-time-passcode.md)
+   > Med **början från oktober 2021** kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade ("virus" eller "just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vid detta tillfälle aktive ras e-postfunktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den. Mer information finns i [e-mail Authentication eng ång slö sen ord](one-time-passcode.md)
 
 
 ## <a name="b2b-recommendations"></a>B2B-rekommendationer
